@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.openhab.binding</groupId>
+        <artifactId>pom</artifactId>
+        <version>2.0.0-SNAPSHOT</version>
+    </parent>
+    <groupId>org.openhab.binding</groupId>
+    <artifactId>org.openhab.binding.zwave</artifactId>
+    <version>2.0.0-SNAPSHOT</version>
+    <name>ZWave Binding</name>
+    <packaging>eclipse-plugin</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <repositories>
+        <!-- openHAB snapshots -->
+        <repository>
+            <id>jfrog</id>
+            <name>JFrog OSS Repository</name>
+            <url>http://oss.jfrog.org/libs-snapshot/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+        
+        <!-- SmartHome p2 repository -->
+        <repository>
+            <id>p2-smarthome</id>
+            <url>http://download.eclipse.org/smarthome/updates-stable</url>
+            <layout>p2</layout>
+        </repository>
+        
+        <!-- openHAB core p2 repository -->
+        <repository>
+            <id>p2-openhab-core</id>
+            <url>https://dl.bintray.com/openhab/p2/openhab-core/2.0.0.x</url>
+            <layout>p2</layout>
+        </repository>
+        
+        <!-- openHAB dependencies p2 repository -->
+        <repository>
+            <id>p2-openhab-deps-repo</id>
+            <url>https://dl.bintray.com/openhab/p2/openhab-deps-repo/1.0.6</url>
+            <layout>p2</layout>
+        </repository>
+    </repositories>
+    
+    
+    <build>
+        <testSourceDirectory>src/test</testSourceDirectory>
+        
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <executions>
+                    <execution>
+                        <id>test</id>
+                        <phase>test</phase>
+                        <configuration>
+                            <includes>
+                                <include>**/*Test.java</include>
+                            </includes>
+                        </configuration>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>compiletests</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.10.19</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
