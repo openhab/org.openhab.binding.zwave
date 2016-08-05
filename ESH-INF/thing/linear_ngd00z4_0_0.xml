@@ -11,12 +11,18 @@
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
+      <channel id="sensor_binary" typeId="sensor_binary">
+        <label>Sensor</label>
+        <properties>
+          <property name="binding:*:OnOffType">SENSOR_BINARY,BASIC</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Linear</property>
-      <property name="model">NGD00Z-4</property>
+      <property name="modelId">NGD00Z-4</property>
       <property name="manufacturerId">014F</property>
       <property name="manufacturerRef">4744:3030,4744:3530</property>
       <property name="defaultAssociations">1</property>
