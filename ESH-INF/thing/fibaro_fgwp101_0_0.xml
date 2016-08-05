@@ -5,8 +5,8 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="fibaro_fgwpe_00_000" listed="false">
-    <label>FGWPE Metered Wall Plug Switch</label>
+  <thing-type id="fibaro_fgwp101_00_000" listed="false">
+    <label>FGWP101 Metered Wall Plug Switch</label>
     <description>Metered Wall Plug Switch</description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -14,7 +14,7 @@
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
         </properties>
       </channel>
       <channel id="sensor_power" typeId="sensor_power">
@@ -40,7 +40,7 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Fibaro System</property>
-      <property name="modelId">FGWPE</property>
+      <property name="modelId">FGWP101</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0600:1000</property>
       <property name="defaultAssociations">3</property>
