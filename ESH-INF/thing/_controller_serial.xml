@@ -4,30 +4,30 @@
     xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
     xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 org.eclipse.smarthome.thing-description.xsd">
 
-	<bridge-type id="serial_zstick">
-		<label>Z-Wave Serial Controller</label>
-		<description>Z-Wave USB Stick with Serial Interface</description>
+    <bridge-type id="serial_zstick">
+        <label>Z-Wave Serial Controller</label>
+        <description>Z-Wave USB Stick with Serial Interface</description>
 
-		<channels>
-			<channel id="serial_sof" typeId="serial_sof" />
-			<channel id="serial_ack" typeId="serial_ack" />
-			<channel id="serial_nak" typeId="serial_nak" />
-			<channel id="serial_can" typeId="serial_can" />
-			<channel id="serial_oof" typeId="serial_oof" />
-		</channels>
+        <channels>
+            <channel id="serial_sof" typeId="serial_sof" />
+            <channel id="serial_ack" typeId="serial_ack" />
+            <channel id="serial_nak" typeId="serial_nak" />
+            <channel id="serial_can" typeId="serial_can" />
+            <channel id="serial_oof" typeId="serial_oof" />
+        </channels>
 
-		<config-description>
-			<parameter-group name="port">
-				<context>communication</context>
-				<label>Port Configuration</label>
-				<description></description>
-			</parameter-group>
+        <config-description>
+            <parameter-group name="port">
+                <context>communication</context>
+                <label>Port Configuration</label>
+                <description></description>
+            </parameter-group>
 
-			<parameter-group name="network">
-				<context>wireless</context>
-				<label>Z-Wave Network Settings</label>
-				<description></description>
-			</parameter-group>
+            <parameter-group name="network">
+                <context>wireless</context>
+                <label>Z-Wave Network Settings</label>
+                <description></description>
+            </parameter-group>
 
             <parameter-group name="heal">
                 <context>health</context>
@@ -43,33 +43,33 @@
             </parameter>
 
             <parameter name="controller_master" type="boolean" groupName="network">
-				<label>Controller is Master</label>
-				<description><![CDATA[This controller is the master controller in the network.<br/>
-				The binding will perform automatic configuration of the network.
-				This setting should be set to <i>true</i> unless you have another controller that is required to run the network.]]></description>
-				<options>
-					<option value="true">Yes</option>
-					<option value="false">No</option>
-				</options>
-				<default>true</default>
-				<advanced>true</advanced>
-			</parameter>
+                <label>Controller is Master</label>
+                <description><![CDATA[This controller is the master controller in the network.<br/>
+                The binding will perform automatic configuration of the network.
+                This setting should be set to <i>true</i> unless you have another controller that is required to run the network.]]></description>
+                <options>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </options>
+                <default>true</default>
+                <advanced>true</advanced>
+            </parameter>
 
-			<parameter name="controller_suc" type="boolean" groupName="network">
-				<label>Controller is SUC</label>
-				<description>Controller is SUC and will receive updates from other controllers in the network</description>
-				<options>
-					<option value="true">Yes</option>
-					<option value="false">No</option>
-				</options>
-				<default>false</default>
-				<advanced>true</advanced>
-			</parameter>
+            <parameter name="controller_suc" type="boolean" groupName="network">
+                <label>Controller is SUC</label>
+                <description>Controller is SUC and will receive updates from other controllers in the network</description>
+                <options>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </options>
+                <default>false</default>
+                <advanced>true</advanced>
+            </parameter>
 
-			<parameter name="heal_time" type="integer" groupName="heal">
-				<label>Heal Time</label>
-				<description></description>
-				<default>2</default>
+            <parameter name="heal_time" type="integer" groupName="heal">
+                <label>Heal Time</label>
+                <description></description>
+                <default>2</default>
                 <options>
                     <option value="-1">Disabled</option>
                     <option value="1">1 AM</option>
@@ -97,9 +97,9 @@
                     <option value="23">11 PM</option>
                     <option value="0">Midnight</option>
                 </options>
-			</parameter>
-			
-			<parameter-group name="actions">
+            </parameter>
+            
+            <parameter-group name="actions">
                 <context></context>
                 <label>Actions</label>
                 <description></description>
@@ -128,6 +128,16 @@
             <parameter name="controller_exclude" type="integer" groupName="actions">
                 <label>Exclude Devices</label>
                 <description>Puts the controller into Exclusion mode.</description>
+                <advanced>true</advanced>
+                <default>0</default>
+                <options>
+                    <option value="-232323">send</option>
+                </options>
+            </parameter>
+
+            <parameter name="controller_sync" type="integer" groupName="actions">
+                <label>Synchronize network</label>
+                <description>Download the network with the SUC</description>
                 <advanced>true</advanced>
                 <default>0</default>
                 <options>
@@ -172,6 +182,7 @@ In this mode, only <i>Entry Control Devices</i> such as locks will be securely i
                 <options>
                     <option value="1">All Devices</option>
                     <option value="0">Entry Control Devices</option>
+                    <option value="2">Do Not Use Security</option>
                 </options>
             </parameter>
 
@@ -182,47 +193,47 @@ In this mode, only <i>Entry Control Devices</i> such as locks will be securely i
                 <default></default>
             </parameter>
             
-		</config-description>
-	</bridge-type>
+        </config-description>
+    </bridge-type>
 
-	<channel-type id="serial_sof">
-		<item-type>Number</item-type>
-		<label>Start Frames</label>
-		<description>Counter tracking the number of SOF bytes received</description>
-		<category>Temperature</category>
-		<state pattern="%d" readOnly="true"></state>
-	</channel-type>
+    <channel-type id="serial_sof">
+        <item-type>Number</item-type>
+        <label>Start Frames</label>
+        <description>Counter tracking the number of SOF bytes received</description>
+        <category>Temperature</category>
+        <state pattern="%d" readOnly="true"></state>
+    </channel-type>
 
-	<channel-type id="serial_ack">
-		<item-type>Number</item-type>
-		<label>Frames Acknowledged</label>
-		<description>Counter tracking the number of frames acknowldeged by the controller</description>
-		<category>Temperature</category>
-		<state pattern="%d" readOnly="true"></state>
-	</channel-type>
+    <channel-type id="serial_ack">
+        <item-type>Number</item-type>
+        <label>Frames Acknowledged</label>
+        <description>Counter tracking the number of frames acknowldeged by the controller</description>
+        <category>Temperature</category>
+        <state pattern="%d" readOnly="true"></state>
+    </channel-type>
 
-	<channel-type id="serial_nak">
-		<item-type>Number</item-type>
-		<label>Frames Rejected</label>
-		<description>Counter tracking the number of frames rejected by the controller</description>
-		<category>Temperature</category>
-		<state pattern="%d" readOnly="true"></state>
-	</channel-type>
+    <channel-type id="serial_nak">
+        <item-type>Number</item-type>
+        <label>Frames Rejected</label>
+        <description>Counter tracking the number of frames rejected by the controller</description>
+        <category>Temperature</category>
+        <state pattern="%d" readOnly="true"></state>
+    </channel-type>
 
-	<channel-type id="serial_can">
-		<item-type>Number</item-type>
-		<label>Frames Cancelled</label>
-		<description>Counter tracking the number of frames cancelled by the controller</description>
-		<category>Temperature</category>
-		<state pattern="%d" readOnly="true"></state>
-	</channel-type>
+    <channel-type id="serial_can">
+        <item-type>Number</item-type>
+        <label>Frames Cancelled</label>
+        <description>Counter tracking the number of frames cancelled by the controller</description>
+        <category>Temperature</category>
+        <state pattern="%d" readOnly="true"></state>
+    </channel-type>
 
-	<channel-type id="serial_oof">
-		<item-type>Number</item-type>
-		<label>OOF Bytes Received</label>
-		<description>Counter tracking the number of out of flow bytes recieved</description>
-		<category>Temperature</category>
-		<state pattern="%d" readOnly="true"></state>
-	</channel-type>
+    <channel-type id="serial_oof">
+        <item-type>Number</item-type>
+        <label>OOF Bytes Received</label>
+        <description>Counter tracking the number of out of flow bytes received</description>
+        <category>Temperature</category>
+        <state pattern="%d" readOnly="true"></state>
+    </channel-type>
 
 </thing:thing-descriptions>
