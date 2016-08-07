@@ -447,7 +447,11 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
 
         boolean supportsMultiInstanceAssociation = false;
         ZWaveNode myNode = handler.getNode(nodeId);
-        if (myNode.getCommandClass(CommandClass.MULTI_INSTANCE_ASSOCIATION) != null) {
+        if (myNode == null) {
+            return null;
+        }
+
+        if (myNode != null && myNode.getCommandClass(CommandClass.MULTI_INSTANCE_ASSOCIATION) != null) {
             supportsMultiInstanceAssociation = true;
         }
 
