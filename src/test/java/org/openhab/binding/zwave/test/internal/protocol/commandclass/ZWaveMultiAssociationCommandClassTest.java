@@ -78,7 +78,7 @@ public class ZWaveMultiAssociationCommandClassTest extends ZWaveCommandClassTest
                 CommandClass.MULTI_INSTANCE_ASSOCIATION);
         SerialMessage msg;
 
-        byte[] expectedResponse1 = { 1, 11, 0, 19, 99, 4, -114, 1, 1, 2, 0, 4, 8 };
+        byte[] expectedResponse1 = { 1, 13, 0, 19, 99, 6, -114, 1, 1, 0, 2, 0, 0, 4, 12 };
         byte[] expectedResponse2 = { 1, 13, 0, 19, 99, 6, -114, 1, 1, 0, 2, 3, 0, 4, 15 };
 
         cls.setVersion(1);
