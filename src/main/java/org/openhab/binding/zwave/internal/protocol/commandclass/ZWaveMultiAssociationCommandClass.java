@@ -275,23 +275,19 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
         SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
                 SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Set);
 
+        // We only use the multi-endpoint version here, even if endpoint is 0.
+        // This is needed since at least in some devices using the multi-instance version
+        // configures the device to send mutli-instance responses.
         ByteArrayOutputStream outputData = new ByteArrayOutputStream();
         outputData.write(this.getNode().getNodeId());
-        if (endpoint == 0) {
-            outputData.write(4);
-        } else {
-            outputData.write(6);
-        }
+        outputData.write(6);
+
         outputData.write(getCommandClass().getKey());
         outputData.write(MULTI_ASSOCIATIONCMD_SET);
         outputData.write(group);
-        if (endpoint == 0) {
-            outputData.write(node);
-        } else {
-            outputData.write(0);
-            outputData.write(node);
-            outputData.write(endpoint);
-        }
+        outputData.write(0);
+        outputData.write(node);
+        outputData.write(endpoint);
         result.setMessagePayload(outputData.toByteArray());
 
         return result;
