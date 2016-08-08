@@ -311,21 +311,13 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
 
         ByteArrayOutputStream outputData = new ByteArrayOutputStream();
         outputData.write(this.getNode().getNodeId());
-        if (endpoint == 0) {
-            outputData.write(4);
-        } else {
-            outputData.write(6);
-        }
+        outputData.write(6);
         outputData.write(getCommandClass().getKey());
         outputData.write(MULTI_ASSOCIATIONCMD_REMOVE);
         outputData.write(group);
-        if (endpoint == 0) {
-            outputData.write(node);
-        } else {
-            outputData.write(0);
-            outputData.write(node);
-            outputData.write(endpoint);
-        }
+        outputData.write(0);
+        outputData.write(node);
+        outputData.write(endpoint);
         result.setMessagePayload(outputData.toByteArray());
 
         return result;
