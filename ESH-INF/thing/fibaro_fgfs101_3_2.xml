@@ -59,7 +59,7 @@
       <property name="vendor">Fibaro System</property>
       <property name="modelId">FGFS101</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0B01:1002</property>
+      <property name="manufacturerRef">0B00:1001,0B01:1002</property>
       <property name="versionMin">3.2</property>
       <property name="defaultAssociations">1</property>
     </properties>
