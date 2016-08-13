@@ -75,6 +75,9 @@ public class ZWaveNode {
     @XStreamConverter(HexToIntegerConverter.class)
     private int deviceType = Integer.MAX_VALUE;
 
+    private String deviceFactoryId;
+    private String deviceSerialId;
+
     private boolean listening; // i.e. sleeping
     private boolean frequentlyListening;
     private boolean routing;
@@ -1036,5 +1039,21 @@ public class ZWaveNode {
         }
 
         return null;
+    }
+
+    // public void setFactoryId(String deviceFactoryId) {
+    // this.deviceFactoryId = deviceFactoryId;
+    // }
+
+    // public String getFactoryId() {
+    // return deviceFactoryId;
+    // }
+
+    public void setSerialNumber(String deviceSerialId) {
+        this.deviceSerialId = deviceSerialId;
+    }
+
+    public String getSerialNumber() {
+        return deviceSerialId;
     }
 }
