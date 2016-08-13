@@ -29,7 +29,8 @@ public class ReplaceFailedNodeMessageClassTest {
         byte[] expectedResponse = { 1, 5, 0, 99, 12, 1, -108 };
 
         ReplaceFailedNodeMessageClass handler = new ReplaceFailedNodeMessageClass();
-        SerialMessage msg = handler.doRequest(12);
+        SerialMessage msg = handler.doRequest(12).getSerialMessage();
+        msg.setCallbackId(1);
 
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
     }

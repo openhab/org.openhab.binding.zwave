@@ -59,7 +59,8 @@ public class ZWaveProtectionCommandClassTest extends ZWaveCommandClassTest {
         cls.setVersion(cls.getMaxVersion());
 
         byte[] expectedResponse = { 99, 4, 117, 1, 1, 2 };
-        SerialMessage msg = cls.setValueMessage(LocalProtectionType.SEQUENCE, RfProtectionType.NORFRESPONSE);
+        SerialMessage msg = cls.setValueMessage(LocalProtectionType.SEQUENCE, RfProtectionType.NORFRESPONSE)
+                .getSerialMessage();
 
         assertTrue(Arrays.equals(msg.getMessagePayload(), expectedResponse));
     }

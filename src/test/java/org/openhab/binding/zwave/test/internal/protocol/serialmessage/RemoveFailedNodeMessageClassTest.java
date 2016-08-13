@@ -29,7 +29,8 @@ public class RemoveFailedNodeMessageClassTest {
         byte[] expectedResponse = { 1, 5, 0, 97, 12, 1, -106 };
 
         RemoveFailedNodeMessageClass handler = new RemoveFailedNodeMessageClass();
-        SerialMessage msg = handler.doRequest(12);
+        SerialMessage msg = handler.doRequest(12).getSerialMessage();
+        msg.setCallbackId(1);
 
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
     }

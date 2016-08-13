@@ -166,12 +166,12 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
                 getNode().getNodeId(), type);
 
         SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), MANUFACTURER_SPECIFIC_GET).withNodeId(getNode().getNodeId())
+                .withCommandClass(getCommandClass(), MANUFACTURER_SPECIFIC_DEVICE_GET).withNodeId(getNode().getNodeId())
                 .withPayload(type).build();
 
         return new ZWaveTransactionBuilder(serialMessage)
                 .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), MANUFACTURER_SPECIFIC_DEVICE_GET)
+                .withExpectedResponseCommandClass(getCommandClass(), MANUFACTURER_SPECIFIC_DEVICE_REPORT)
                 .withPriority(TransactionPriority.Config).build();
     }
 

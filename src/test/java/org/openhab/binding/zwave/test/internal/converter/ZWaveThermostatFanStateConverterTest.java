@@ -24,8 +24,8 @@ import org.mockito.Mockito;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.converter.ZWaveThermostatFanStateConverter;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveThermostatFanStateCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
@@ -62,16 +62,15 @@ public class ZWaveThermostatFanStateConverterTest {
         ZWaveThermostatFanStateCommandClass cls = mock(ZWaveThermostatFanStateCommandClass.class);
         when(node.resolveCommandClass(Matchers.eq(CommandClass.THERMOSTAT_FAN_STATE), Matchers.anyInt()))
                 .thenReturn(cls);
-        when(cls.getValueMessage()).thenReturn(new SerialMessage());
         when(cls.getCommandClass()).thenReturn(CommandClass.THERMOSTAT_FAN_STATE);
 
         // the actual call
-        List<SerialMessage> result = converter.executeRefresh(channel, node);
+        List<ZWaveTransaction> result = converter.executeRefresh(channel, node);
 
         // verify the results
         assertNotNull(result);
         assertEquals(result.size(), 1);
-        verify(node, times(1)).encapsulate(Matchers.any(SerialMessage.class),
+        verify(node, times(1)).encapsulate(Matchers.any(ZWaveTransaction.class),
                 Matchers.any(ZWaveThermostatFanStateCommandClass.class), Matchers.anyInt());
         verify(cls, times(1)).getValueMessage();
     }

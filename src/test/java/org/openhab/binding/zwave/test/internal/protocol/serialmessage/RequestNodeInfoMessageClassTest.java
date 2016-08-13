@@ -31,7 +31,7 @@ public class RequestNodeInfoMessageClassTest {
         SerialMessage msg;
         RequestNodeInfoMessageClass handler = new RequestNodeInfoMessageClass();
 
-        msg = handler.doRequest(12);
+        msg = handler.doRequest(12).getSerialMessage();
         msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
     }

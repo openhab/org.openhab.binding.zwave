@@ -29,7 +29,8 @@ public class DeleteReturnRouteMessageClassTest {
         byte[] expectedResponse = { 1, 5, 0, 71, 12, 1, -80 };
 
         DeleteReturnRouteMessageClass handler = new DeleteReturnRouteMessageClass();
-        SerialMessage msg = handler.doRequest(12);
+        SerialMessage msg = handler.doRequest(12).getSerialMessage();
+        msg.setCallbackId(1);
 
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
     }

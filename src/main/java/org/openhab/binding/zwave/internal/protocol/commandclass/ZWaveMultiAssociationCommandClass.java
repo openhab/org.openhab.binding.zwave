@@ -300,7 +300,7 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
         }
 
         SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), MULTI_ASSOCIATIONCMD_SET).withNodeId(getNode().getNodeId())
+                .withCommandClass(getCommandClass(), MULTI_ASSOCIATIONCMD_REMOVE).withNodeId(getNode().getNodeId())
                 .withPayload(payload).build();
 
         return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Config).build();

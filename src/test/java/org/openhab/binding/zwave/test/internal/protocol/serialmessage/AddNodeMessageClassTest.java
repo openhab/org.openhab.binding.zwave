@@ -34,16 +34,20 @@ public class AddNodeMessageClassTest {
         SerialMessage msg;
         AddNodeMessageClass handler = new AddNodeMessageClass();
 
-        msg = handler.doRequestStart(false, false);
+        msg = handler.doRequestStart(false, false).getSerialMessage();
+        msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseStartLocal));
 
-        msg = handler.doRequestStart(true, false);
+        msg = handler.doRequestStart(true, false).getSerialMessage();
+        msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseStartHigh));
 
-        msg = handler.doRequestStart(true, true);
+        msg = handler.doRequestStart(true, true).getSerialMessage();
+        msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseStartNetwork));
 
-        msg = handler.doRequestStop();
+        msg = handler.doRequestStop().getSerialMessage();
+        msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseStop));
     }
 }

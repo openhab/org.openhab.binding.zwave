@@ -658,7 +658,7 @@ public class SerialMessage {
                                             // configuration info
         AssignSucReturnRoute(0x51, "AssignSucReturnRoute", true, true), // Assign a return route to the SUC
         EnableSuc(0x52, "EnableSuc", true, false), // Make a controller a Static Update Controller
-        RequestNetworkUpdate(0x53, "RequestNetworkUpdate"), // Network update for a SUC(?)
+        RequestNetworkUpdate(0x53, "RequestNetworkUpdate", true, true), // Network update for a SUC(?)
         SetSucNodeID(0x54, "SetSucNodeID", true, true), // Identify a Static Update Controller node id
         DeleteSUCReturnRoute(0x55, "DeleteSUCReturnRoute", true, true), // Remove return routes to the SUC
         GetSucNodeId(0x56, "GetSucNodeId", true, false), // Try to retrieve a Static Update Controller node id (zero if

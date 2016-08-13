@@ -31,8 +31,8 @@ public class ZWaveIndicatorCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, -121, 2, 0, 0, 1 };
         cls.setVersion(1);
-        msg = cls.getValueMessage();
-        byte[] x = msg.getMessageBuffer();
+        msg = cls.getValueMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -43,8 +43,8 @@ public class ZWaveIndicatorCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, -121, 1, 34, 0, 0, 34 };
         cls.setVersion(1);
-        msg = cls.setValueMessage(34);
-        byte[] x = msg.getMessageBuffer();
+        msg = cls.setValueMessage(34).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 }

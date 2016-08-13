@@ -29,10 +29,10 @@ public class ZWaveBinarySwitchCommandClassTest extends ZWaveCommandClassTest {
         ZWaveBinarySwitchCommandClass cls = (ZWaveBinarySwitchCommandClass) getCommandClass(CommandClass.SWITCH_BINARY);
         SerialMessage msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 37, 2, 0, 0, -93 };
+        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 37, 2, 0, 1, -94 };
         cls.setVersion(1);
-        msg = cls.getValueMessage();
-        byte[] x = msg.getMessageBuffer();
+        msg = cls.getValueMessage().getSerialMessage();
+        msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -41,10 +41,10 @@ public class ZWaveBinarySwitchCommandClassTest extends ZWaveCommandClassTest {
         ZWaveBinarySwitchCommandClass cls = (ZWaveBinarySwitchCommandClass) getCommandClass(CommandClass.SWITCH_BINARY);
         SerialMessage msg;
 
-        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 37, 1, -1, 0, 0, 93 };
+        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 37, 1, -1, 0, 1, 92 };
         cls.setVersion(1);
-        msg = cls.setValueMessage(33);
-        byte[] x = msg.getMessageBuffer();
+        msg = cls.setValueMessage(33).getSerialMessage();
+        msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 }

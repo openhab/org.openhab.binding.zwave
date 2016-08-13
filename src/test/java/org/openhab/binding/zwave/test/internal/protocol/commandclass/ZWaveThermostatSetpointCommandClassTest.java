@@ -32,7 +32,8 @@ public class ZWaveThermostatSetpointCommandClassTest extends ZWaveCommandClassTe
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 67, 4, 0, 0, -61 };
         cls.setVersion(1);
-        msg = cls.getValueMessage();
+        msg = cls.getValueMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -46,6 +47,7 @@ public class ZWaveThermostatSetpointCommandClassTest extends ZWaveCommandClassTe
         cls.setVersion(1);
         // msg = cls.setValueMessage(34);
         // byte[] x = msg.getMessageBuffer();
+        // msg.setCallbackId(0);
         // assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -57,7 +59,8 @@ public class ZWaveThermostatSetpointCommandClassTest extends ZWaveCommandClassTe
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 67, 4, 0, 0, -61 };
         cls.setVersion(1);
-        msg = cls.getSupportedMessage();
+        msg = cls.getSupportedMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 }

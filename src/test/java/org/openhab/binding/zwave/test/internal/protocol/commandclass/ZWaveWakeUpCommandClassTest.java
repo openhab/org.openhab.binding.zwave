@@ -31,7 +31,8 @@ public class ZWaveWakeUpCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, -124, 8, 0, 0, 8 };
         cls.setVersion(1);
-        msg = cls.getNoMoreInformationMessage();
+        msg = cls.getNoMoreInformationMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -42,7 +43,8 @@ public class ZWaveWakeUpCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, -124, 5, 0, 0, 5 };
         cls.setVersion(1);
-        msg = cls.getIntervalMessage();
+        msg = cls.getIntervalMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -53,7 +55,8 @@ public class ZWaveWakeUpCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 13, 0, 19, 99, 6, -124, 4, 0, 38, -108, 0, 0, 0, -74 };
         cls.setVersion(1);
-        msg = cls.setInterval(9876);
+        msg = cls.setInterval(9876).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -64,8 +67,8 @@ public class ZWaveWakeUpCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, -124, 9, 0, 0, 9 };
         cls.setVersion(1);
-        msg = cls.getIntervalCapabilitiesMessage();
-        byte[] x = msg.getMessageBuffer();
+        msg = cls.getIntervalCapabilitiesMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 }

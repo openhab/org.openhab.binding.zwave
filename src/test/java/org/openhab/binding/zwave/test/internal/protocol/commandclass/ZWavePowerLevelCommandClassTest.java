@@ -32,7 +32,8 @@ public class ZWavePowerLevelCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 115, 2, 0, 0, -11 };
         cls.setVersion(1);
-        msg = cls.getValueMessage();
+        msg = cls.getValueMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -43,7 +44,8 @@ public class ZWavePowerLevelCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, 115, 1, 1, 1, 0, 0, -14 };
         cls.setVersion(1);
-        msg = cls.setValueMessage(1, 1);
+        msg = cls.setValueMessage(1, 1).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 }

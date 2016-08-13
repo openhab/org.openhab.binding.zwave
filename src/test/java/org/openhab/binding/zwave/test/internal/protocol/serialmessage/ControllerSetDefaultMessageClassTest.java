@@ -26,12 +26,12 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.ControllerSetDe
 public class ControllerSetDefaultMessageClassTest {
     @Test
     public void doRequest() {
-        byte[] expectedResponse = { 1, 3, 0, 66, -66 };
+        byte[] expectedResponse = { 1, 4, 0, 66, 1, -72 };
 
         SerialMessage msg;
         ControllerSetDefaultMessageClass handler = new ControllerSetDefaultMessageClass();
 
-        msg = handler.doRequest();
+        msg = handler.doRequest().getSerialMessage();
         msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
     }

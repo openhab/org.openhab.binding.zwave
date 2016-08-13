@@ -32,10 +32,12 @@ public class RemoveNodeMessageClassTest {
         RemoveNodeMessageClass handler = new RemoveNodeMessageClass();
         SerialMessage msg;
 
-        msg = handler.doRequestStart();
+        msg = handler.doRequestStart().getSerialMessage();
+        msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseStart));
 
-        msg = handler.doRequestStop();
+        msg = handler.doRequestStop().getSerialMessage();
+        msg.setCallbackId(0xfe);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseStop));
     }
 }

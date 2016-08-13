@@ -31,7 +31,7 @@ public class SerialApiSetTimeoutsMessageClassTest {
         SerialMessage msg;
         SerialApiSetTimeoutsMessageClass handler = new SerialApiSetTimeoutsMessageClass();
 
-        msg = handler.doRequest(12, 34);
+        msg = handler.doRequest(12, 34).getSerialMessage();
         msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
     }
