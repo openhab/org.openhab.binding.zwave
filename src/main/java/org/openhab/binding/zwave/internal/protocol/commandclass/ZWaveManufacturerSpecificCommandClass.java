@@ -8,6 +8,9 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
@@ -31,13 +34,23 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Jan-Willem Spuij
  */
 @XStreamAlias("manufacturerSpecificCommandClass")
-public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass {
+public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
+        implements ZWaveCommandClassInitialization {
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveManufacturerSpecificCommandClass.class);
 
     private static final int MANUFACTURER_SPECIFIC_GET = 0x04;
     private static final int MANUFACTURER_SPECIFIC_REPORT = 0x05;
+    private static final int MANUFACTURER_SPECIFIC_DEVICE_GET = 0x06;
+    private static final int MANUFACTURER_SPECIFIC_DEVICE_REPORT = 0x07;
+
+    private static final int MANUFACTURER_TYPE_FACTORYDEFAULT = 0x00;
+    private static final int MANUFACTURER_TYPE_SERIALNUMBER = 0x01;
+    // private static final int MANUFACTURER_TYPE_PSEUDORANDOM = 0x02;
+
+    // private boolean initFactoryDefault = false;
+    private boolean initSerialNumber = false;
 
     /**
      * Creates a new instance of the ZwaveManufacturerSpecificCommandClass class.
@@ -71,8 +84,6 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass {
         int command = serialMessage.getMessagePayloadByte(offset);
         switch (command) {
             case MANUFACTURER_SPECIFIC_REPORT:
-                logger.trace("Process Manufacturer Specific Report");
-
                 int tempMan = ((serialMessage.getMessagePayloadByte(offset + 1)) << 8)
                         | (serialMessage.getMessagePayloadByte(offset + 2));
                 int tempDeviceType = ((serialMessage.getMessagePayloadByte(offset + 3)) << 8)
@@ -80,21 +91,50 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass {
                 int tempDeviceId = ((serialMessage.getMessagePayloadByte(offset + 5)) << 8)
                         | (serialMessage.getMessagePayloadByte(offset + 6));
 
-                this.getNode().setManufacturer(tempMan);
-                this.getNode().setDeviceType(tempDeviceType);
-                this.getNode().setDeviceId(tempDeviceId);
+                getNode().setManufacturer(tempMan);
+                getNode().setDeviceType(tempDeviceType);
+                getNode().setDeviceId(tempDeviceId);
 
-                logger.debug(String.format("NODE %d: Manufacturer ID = 0x%04x", this.getNode().getNodeId(),
-                        this.getNode().getManufacturer()));
-                logger.debug(String.format("NODE %d: Device Type     = 0x%04x", this.getNode().getNodeId(),
-                        this.getNode().getDeviceType()));
-                logger.debug(String.format("NODE %d: Device ID       = 0x%04x", this.getNode().getNodeId(),
-                        this.getNode().getDeviceId()));
+                logger.debug(String.format("NODE %d: Manufacturer ID = 0x%04x", getNode().getNodeId(),
+                        getNode().getManufacturer()));
+                logger.debug(String.format("NODE %d: Device Type     = 0x%04x", getNode().getNodeId(),
+                        getNode().getDeviceType()));
+                logger.debug(String.format("NODE %d: Device ID       = 0x%04x", getNode().getNodeId(),
+                        getNode().getDeviceId()));
                 break;
+
+            case MANUFACTURER_SPECIFIC_DEVICE_REPORT:
+                int dataType = serialMessage.getMessagePayloadByte(offset + 1) & 0x07;
+                int dataFormat = (serialMessage.getMessagePayloadByte(offset + 2) & 0xe0) >> 0x05;
+                int dataLength = serialMessage.getMessagePayloadByte(offset + 2) & 0x1f;
+
+                StringBuilder dataBuilder = new StringBuilder(32);
+                for (int cnt = 0; cnt < dataLength; cnt++) {
+                    if (dataFormat == 0) {
+                        dataBuilder.append(serialMessage.getMessagePayloadByte(offset + cnt + 3));
+                    } else {
+                        dataBuilder
+                                .append(String.format("%02X", serialMessage.getMessagePayloadByte(offset + cnt + 3)));
+                    }
+                }
+
+                String data = dataBuilder.toString();
+
+                // if (dataType == MANUFACTURER_TYPE_FACTORYDEFAULT) {
+                // initFactoryDefault = true;
+                // getNode().setFactoryId(data);
+                // logger.debug("NODE {}: Factory Number = {}", getNode().getNodeId(), getNode().getFactoryId());
+                // }
+                if (dataType == MANUFACTURER_TYPE_SERIALNUMBER) {
+                    initSerialNumber = true;
+                    getNode().setSerialNumber(data);
+                    logger.debug("NODE {}: Serial Number   = {}", getNode().getNodeId(), getNode().getSerialNumber());
+                }
+                break;
+
             default:
                 logger.warn(String.format("NODE %d: Unsupported Command %d for command class %s (0x%02X).",
-                        this.getNode().getNodeId(), command, this.getCommandClass().getLabel(),
-                        this.getCommandClass().getKey()));
+                        getNode().getNodeId(), command, getCommandClass().getLabel(), getCommandClass().getKey()));
         }
     }
 
@@ -106,14 +146,42 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass {
     public ZWaveTransaction getManufacturerSpecificMessage() {
         logger.debug("NODE {}: Creating new message for command MANUFACTURER_SPECIFIC_GET", this.getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), MANUFACTURER_SPECIFIC_GET).withNodeId(getNode().getNodeId())
-                .build();
+    /**
+     * Gets a SerialMessage with the ManufacturerSpecific GET command
+     *
+     * @return the serial message
+     */
+    public SerialMessage getManufacturerSpecificDeviceMessage(int type) {
+        logger.debug("NODE {}: Creating new message for command MANUFACTURER_SPECIFIC_DEVICE_GET",
+                getNode().getNodeId());
+        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
+                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Config);
+        byte[] newPayload = { (byte) getNode().getNodeId(), 3, (byte) getCommandClass().getKey(),
+                (byte) MANUFACTURER_SPECIFIC_DEVICE_GET, (byte) type };
+        result.setMessagePayload(newPayload);
+        return result;
+    }
 
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), MANUFACTURER_SPECIFIC_REPORT)
-                .withPriority(TransactionPriority.Config).build();
+    @Override
+    public Collection<SerialMessage> initialize(boolean refresh) {
+        if (getVersion() == 1) {
+            return null;
+        }
+
+        if (refresh == true) {
+            // initFactoryDefault = false;
+            initSerialNumber = false;
+        }
+
+        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+        // if (initFactoryDefault == false) {
+        // result.add(getManufacturerSpecificDeviceMessage(MANUFACTURER_TYPE_FACTORYDEFAULT));
+        // }
+        if (initSerialNumber == false) {
+            result.add(getManufacturerSpecificDeviceMessage(MANUFACTURER_TYPE_SERIALNUMBER));
+        }
+
+        return result;
     }
 
 }

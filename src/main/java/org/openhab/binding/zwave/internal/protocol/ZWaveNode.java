@@ -24,8 +24,10 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageCl
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Generic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveVersionCommandClass;
@@ -72,6 +74,9 @@ public class ZWaveNode {
     private int deviceId = Integer.MAX_VALUE;
     @XStreamConverter(HexToIntegerConverter.class)
     private int deviceType = Integer.MAX_VALUE;
+
+    private String deviceFactoryId;
+    private String deviceSerialId;
 
     private boolean listening; // i.e. sleeping
     private boolean frequentlyListening;
@@ -990,5 +995,69 @@ public class ZWaveNode {
      */
     public Map<Integer, ZWaveAssociationGroup> getAssociationGroups() {
         return associationGroups;
+    }
+
+    public SerialMessage getAssociation(int group) {
+        ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
+                CommandClass.MULTI_INSTANCE_ASSOCIATION);
+        if (multiAssociationCommandClass != null) {
+            return multiAssociationCommandClass.getAssociationMessage(group);
+        }
+
+        ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(
+                CommandClass.ASSOCIATION);
+        if (associationCommandClass != null) {
+            return associationCommandClass.getAssociationMessage(group);
+        }
+
+        return null;
+    }
+
+    public SerialMessage setAssociation(int groupId, int nodeId, int endpointId) {
+        ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
+                CommandClass.MULTI_INSTANCE_ASSOCIATION);
+        if (multiAssociationCommandClass != null) {
+            return multiAssociationCommandClass.setAssociationMessage(groupId, nodeId, endpointId);
+        }
+
+        ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(
+                CommandClass.ASSOCIATION);
+        if (associationCommandClass != null) {
+            return associationCommandClass.setAssociationMessage(groupId, nodeId);
+        }
+
+        return null;
+    }
+
+    public SerialMessage removeAssociation(Integer groupId, int nodeId, int endpointId) {
+        ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
+                CommandClass.MULTI_INSTANCE_ASSOCIATION);
+        if (multiAssociationCommandClass != null) {
+            return multiAssociationCommandClass.removeAssociationMessage(groupId, nodeId, endpointId);
+        }
+
+        ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(
+                CommandClass.ASSOCIATION);
+        if (associationCommandClass != null) {
+            return associationCommandClass.removeAssociationMessage(groupId, nodeId);
+        }
+
+        return null;
+    }
+
+    // public void setFactoryId(String deviceFactoryId) {
+    // this.deviceFactoryId = deviceFactoryId;
+    // }
+
+    // public String getFactoryId() {
+    // return deviceFactoryId;
+    // }
+
+    public void setSerialNumber(String deviceSerialId) {
+        this.deviceSerialId = deviceSerialId;
+    }
+
+    public String getSerialNumber() {
+        return deviceSerialId;
     }
 }

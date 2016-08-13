@@ -11,10 +11,10 @@
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm</label>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
         </properties>
       </channel>
       <channel id="meter_powerfactor" typeId="meter_powerfactor">
@@ -47,10 +47,10 @@
           <property name="binding:*:DecimalType">METER;type=E_W</property>
         </properties>
       </channel>
-      <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
+      <channel id="alarm_general" typeId="alarm_general">
+        <label>Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">ALARM</property>
         </properties>
       </channel>
     </channels>
@@ -58,10 +58,11 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Philio Technology Corporation</property>
-      <property name="model">PAN11</property>
+      <property name="modelId">PAN11</property>
       <property name="manufacturerId">013C</property>
       <property name="manufacturerRef">0001:0001,0001:0011</property>
       <property name="commandClass:SWITCH_BINARY">getSupported=false</property>
+      <property name="commandClass:ALARM">getSupported=false</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -74,18 +75,12 @@
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter name="config_1_2" type="integer" groupName="configuration"
-                 min="0" max="32767">
-        <label>1: W meter report period</label>
-        <description>Default 1 hour (value = 720) Enable automatic interval in seconds reporting with an interval of 5s * the value. Set to 0 will disable the autoreporting function.</description>
-        <default>720</default>
-      </parameter>
-
       <parameter name="config_2_2" type="integer" groupName="configuration"
                  min="0" max="32767">
         <label>2: kWh meter report period</label>
         <description>Default 1 hour (value = 6) - Enable automatic interval in minutes reporting with an interval of 10min * the value. Set to 0 will disable the autoreporting function.</description>
         <default>6</default>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_3_2" type="integer" groupName="configuration"
@@ -138,6 +133,7 @@ If threshold of kWh is reached, a Meter Report will be generated<br /><h1>Overvi
         <label>8: Auto Off Timer</label>
         <description>Auto off timer. 0 will disable the auto off function.</description>
         <default>0</default>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration">
@@ -149,6 +145,20 @@ If threshold of kWh is reached, a Meter Report will be generated<br /><h1>Overvi
           <option value="2">Switch Toggle</option>
           <option value="3">Switch On</option>
         </options>
+      </parameter>
+
+      <!-- ACTION DEFINITIONS -->
+      <parameter-group name="actions">
+        <context>setup</context>
+        <label>Actions</label>
+      </parameter-group>
+
+      <parameter name="config_1_2_wo" type="integer" groupName="configuration"
+                 min="0" max="32767">
+        <label>1: W meter report period</label>
+        <description>Default 1 hour (value = 720) Enable automatic interval in seconds reporting with an interval of 5s * the value. Set to 0 will disable the autoreporting function.</description>
+        <default>720</default>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

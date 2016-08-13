@@ -14,7 +14,7 @@
       <channel id="sensor_binary" typeId="sensor_binary">
         <label>Binary Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
+          <property name="binding:*:OnOffType">SENSOR_BINARY,BASIC</property>
         </properties>
       </channel>
       <channel id="sensor_relhumidity" typeId="sensor_relhumidity">
@@ -45,7 +45,7 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Aeon Labs</property>
-      <property name="model">DSB05</property>
+      <property name="modelId">DSB05</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0002:0005</property>
       <property name="commandClass:SENSOR_MULTILEVEL">getSupported=false</property>
@@ -93,7 +93,7 @@ On time before sending off command<br /><h1>Overview</h1><p>How long should the 
         <default>1</default>
         <options>
           <option value="1">Send Basic Set</option>
-          <option value="16">send Sensor Binary report</option>
+          <option value="2">send Sensor Binary report</option>
         </options>
       </parameter>
 

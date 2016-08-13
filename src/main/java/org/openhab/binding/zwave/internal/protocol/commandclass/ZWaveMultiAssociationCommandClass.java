@@ -284,13 +284,9 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
         outputData.write(getCommandClass().getKey());
         outputData.write(MULTI_ASSOCIATIONCMD_SET);
         outputData.write(group);
-        if (endpoint == 0) {
-            outputData.write(node);
-        } else {
-            outputData.write(0);
-            outputData.write(node);
-            outputData.write(endpoint);
-        }
+        outputData.write(0);
+        outputData.write(node);
+        outputData.write(endpoint);
         result.setMessagePayload(outputData.toByteArray());
 
         SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()

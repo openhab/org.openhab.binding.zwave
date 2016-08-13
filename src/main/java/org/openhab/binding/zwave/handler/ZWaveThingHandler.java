@@ -56,7 +56,6 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClas
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurationCommandClass.ZWaveConfigurationParameterEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveDoorLockCommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveNodeNamingCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWavePlusCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWavePowerLevelCommandClass;
@@ -587,12 +586,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                 Integer groupIndex = Integer.valueOf(cfg[1]);
 
-                // Get the association command class - we'll use the multi_instance version if it exists.
-                ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) node
-                        .getCommandClass(CommandClass.ASSOCIATION);
-                ZWaveMultiAssociationCommandClass associationCommandClassMulti = (ZWaveMultiAssociationCommandClass) node
-                        .getCommandClass(CommandClass.MULTI_INSTANCE_ASSOCIATION);
-
                 // Get the configuration information.
                 // This should be an array of nodes, and/or nodes and endpoints
                 ArrayList<String> paramValues = new ArrayList<String>();
@@ -627,13 +620,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     // Is the current association still in the newMembers list?
                     if (newMembers.isAssociated(member.getNode(), member.getEndpoint()) == false) {
                         // No - so it needs to be removed
-                        if (associationCommandClassMulti != null) {
-                            controllerHandler.sendData(associationCommandClassMulti.removeAssociationMessage(groupIndex,
-                                    member.getNode(), member.getEndpoint()));
-                        } else {
-                            controllerHandler.sendData(
-                                    associationCommandClass.removeAssociationMessage(groupIndex, member.getNode()));
-                        }
+                        controllerHandler
+                                .sendData(node.removeAssociation(groupIndex, member.getNode(), member.getEndpoint()));
                     }
                 }
 
@@ -642,22 +630,13 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     // Is the new association still in the currentMembers list?
                     if (currentMembers.isAssociated(member.getNode(), member.getEndpoint()) == false) {
                         // No - so it needs to be added
-                        if (associationCommandClassMulti != null) {
-                            controllerHandler.sendData(associationCommandClassMulti.setAssociationMessage(groupIndex,
-                                    member.getNode(), member.getEndpoint()));
-                        } else {
-                            controllerHandler.sendData(
-                                    associationCommandClass.setAssociationMessage(groupIndex, member.getNode()));
-                        }
+                        controllerHandler
+                                .sendData(node.setAssociation(groupIndex, member.getNode(), member.getEndpoint()));
                     }
                 }
 
                 // Request an update to the association group
-                if (associationCommandClassMulti != null) {
-                    controllerHandler.sendData(associationCommandClassMulti.getAssociationMessage(groupIndex));
-                } else {
-                    controllerHandler.sendData(associationCommandClass.getAssociationMessage(groupIndex));
-                }
+                controllerHandler.sendData(node.getAssociation(groupIndex));
                 pendingCfg.put(configurationParameter.getKey(), valueObject);
             } else if ("wakeup".equals(cfg[0])) {
                 ZWaveWakeUpCommandClass wakeupCommandClass = (ZWaveWakeUpCommandClass) node
