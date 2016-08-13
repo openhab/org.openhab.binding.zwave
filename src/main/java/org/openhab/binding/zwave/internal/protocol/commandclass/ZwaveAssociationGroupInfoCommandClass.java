@@ -19,8 +19,6 @@ import java.util.Set;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
@@ -255,12 +253,12 @@ public class ZwaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
                 getNode().getNodeId(), groupidx);
 
         SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), GROUP_NAME_GET).withPayload(groupidx)
+                .withCommandClass(getCommandClass(), ASSOCIATION_GROUP_INFO_NAME_GET).withPayload(groupidx)
                 .withNodeId(getNode().getNodeId()).build();
 
         return new ZWaveTransactionBuilder(serialMessage)
                 .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), GROUP_NAME_REPORT)
+                .withExpectedResponseCommandClass(getCommandClass(), ASSOCIATION_GROUP_INFO_NAME_REPORT)
                 .withPriority(TransactionPriority.Config).build();
     }
 
@@ -279,12 +277,13 @@ public class ZwaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
             listMode = GET_LISTMODE_MASK;
         }
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), INFO_GET)
-                .withPayload(listMode, groupidx).withNodeId(getNode().getNodeId()).build();
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), ASSOCIATION_GROUP_INFO_GET).withPayload(listMode, groupidx)
+                .withNodeId(getNode().getNodeId()).build();
 
         return new ZWaveTransactionBuilder(serialMessage)
                 .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), INFO_REPORT)
+                .withExpectedResponseCommandClass(getCommandClass(), ASSOCIATION_GROUP_INFO_REPORT)
                 .withPriority(TransactionPriority.Config).build();
     }
 
@@ -300,12 +299,12 @@ public class ZwaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
         byte allowCache = 0;
 
         SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), COMMAND_LIST_GET).withPayload(allowCache, groupidx)
+                .withCommandClass(getCommandClass(), ASSOCIATION_GROUP_INFO_LIST_GET).withPayload(allowCache, groupidx)
                 .withNodeId(getNode().getNodeId()).build();
 
         return new ZWaveTransactionBuilder(serialMessage)
                 .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), COMMAND_LIST_REPORT)
+                .withExpectedResponseCommandClass(getCommandClass(), ASSOCIATION_GROUP_INFO_LIST_REPORT)
                 .withPriority(TransactionPriority.Config).build();
     }
 

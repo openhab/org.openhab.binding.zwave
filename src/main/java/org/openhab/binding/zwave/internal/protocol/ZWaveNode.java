@@ -997,7 +997,7 @@ public class ZWaveNode {
         return associationGroups;
     }
 
-    public SerialMessage getAssociation(int group) {
+    public ZWaveTransaction getAssociation(int group) {
         ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
                 CommandClass.MULTI_INSTANCE_ASSOCIATION);
         if (multiAssociationCommandClass != null) {
@@ -1013,7 +1013,7 @@ public class ZWaveNode {
         return null;
     }
 
-    public SerialMessage setAssociation(int groupId, int nodeId, int endpointId) {
+    public ZWaveTransaction setAssociation(int groupId, int nodeId, int endpointId) {
         ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
                 CommandClass.MULTI_INSTANCE_ASSOCIATION);
         if (multiAssociationCommandClass != null) {
@@ -1029,7 +1029,7 @@ public class ZWaveNode {
         return null;
     }
 
-    public SerialMessage removeAssociation(Integer groupId, int nodeId, int endpointId) {
+    public ZWaveTransaction removeAssociation(Integer groupId, int nodeId, int endpointId) {
         ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
                 CommandClass.MULTI_INSTANCE_ASSOCIATION);
         if (multiAssociationCommandClass != null) {

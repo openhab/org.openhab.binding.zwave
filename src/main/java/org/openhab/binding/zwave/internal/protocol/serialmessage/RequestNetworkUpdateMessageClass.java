@@ -10,10 +10,12 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,19 +33,16 @@ public class RequestNetworkUpdateMessageClass extends ZWaveCommandProcessor {
     private final int ZW_SUC_UPDATE_DISABLED = 0x03;
     private final int ZW_SUC_UPDATE_OVERFLOW = 0x04;
 
-    public SerialMessage doRequest() {
+    public ZWaveTransaction doRequest() {
         logger.debug("Request network update.");
 
-        // Queue the request
-        SerialMessage newMessage = new SerialMessage(SerialMessageClass.RequestNetworkUpdate, SerialMessageType.Request,
-                SerialMessageClass.RequestNetworkUpdate, SerialMessagePriority.High);
-        byte[] newPayload = { (byte) 0x01 };
-        newMessage.setMessagePayload(newPayload);
-        return newMessage;
+        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.RequestNetworkUpdate).build();
+
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.debug("Got RequestNetworkUpdate response.");
 
@@ -51,14 +50,13 @@ public class RequestNetworkUpdateMessageClass extends ZWaveCommandProcessor {
             logger.debug("RequestNetworkUpdate started.");
         } else {
             logger.warn("RequestNetworkUpdate not placed on stack.");
-            transactionComplete = true;
         }
 
         return true;
     }
 
     @Override
-    public boolean handleRequest(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
 
         logger.debug("Got ReplaceFailedNode request.");
@@ -66,27 +64,21 @@ public class RequestNetworkUpdateMessageClass extends ZWaveCommandProcessor {
             case ZW_SUC_UPDATE_DONE:
                 // The node is working properly (removed from the failed nodes list). Replace process is stopped.
                 logger.debug("Network updated.");
-                transactionComplete = true;
                 break;
             case ZW_SUC_UPDATE_ABORT:
                 logger.error("The update process aborted because of an error.");
-                transactionComplete = true;
                 break;
             case ZW_SUC_UPDATE_WAIT:
                 logger.error("The SUC node is busy.");
-                transactionComplete = true;
                 break;
             case ZW_SUC_UPDATE_DISABLED:
                 logger.error("The SUC functionality is disabled.");
-                transactionComplete = true;
                 break;
             case ZW_SUC_UPDATE_OVERFLOW:
                 logger.error("The SUC node is busy.");
-                transactionComplete = true;
                 break;
             default:
                 logger.info("The controller requested an update after more than 64 changes");
-                transactionComplete = true;
                 break;
         }
 

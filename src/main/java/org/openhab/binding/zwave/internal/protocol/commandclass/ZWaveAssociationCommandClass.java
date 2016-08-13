@@ -8,7 +8,6 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -46,8 +45,8 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
     private static final int ASSOCIATIONCMD_GET = 2;
     private static final int ASSOCIATIONCMD_REPORT = 3;
     private static final int ASSOCIATIONCMD_REMOVE = 4;
-    private static final int ASSOCIATIONCMD_GROUPINGSGET = 5;
-    private static final int ASSOCIATIONCMD_GROUPINGSREPORT = 6;
+    private static final int ASSOCIATIONCMD_GROUPINGS_GET = 5;
+    private static final int ASSOCIATIONCMD_GROUPINGS_REPORT = 6;
 
     @XStreamOmitField
     private int updateAssociationsNode = 0;

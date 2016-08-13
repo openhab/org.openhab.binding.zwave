@@ -8,7 +8,6 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -48,8 +47,8 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
     private static final int MULTI_ASSOCIATIONCMD_GET = 2;
     private static final int MULTI_ASSOCIATIONCMD_REPORT = 3;
     private static final int MULTI_ASSOCIATIONCMD_REMOVE = 4;
-    private static final int MULTI_ASSOCIATIONCMD_GROUPINGSGET = 5;
-    private static final int MULTI_ASSOCIATIONCMD_GROUPINGSREPORT = 6;
+    private static final int MULTI_ASSOCIATIONCMD_GROUPINGS_GET = 5;
+    private static final int MULTI_ASSOCIATIONCMD_GROUPINGS_REPORT = 6;
 
     // Stores the list of association groups
     // private Map<Integer, ZWaveAssociationGroup> configAssociations = new HashMap<Integer, ZWaveAssociationGroup>();
@@ -244,21 +243,11 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
         logger.debug("NODE {} processGroupingsReport number of groups {}", getNode(), maxGroups);
         // Start the process to query these nodes
         updateAssociationsNode = 1;
-        configAssociations.clear();
+
         ZWaveTransaction transaction = getAssociationMessage(updateAssociationsNode);
         if (transaction != null) {
             getController().sendData(transaction);
         }
-    }
-
-        // Start the process to query these nodes
-        // updateAssociationsNode = 1;
-        // SerialMessage sm = getAssociationMessage(updateAssociationsNode);
-        // if (sm != null) {
-        // getController().sendData(sm);
-        // }
-
-        initialiseDone = true;
     }
 
     /**
@@ -281,13 +270,6 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
             logger.trace("NODE {}: Endpoint not 0. Sending node and endpoint.", getNode().getNodeId());
             payload = new byte[] { (byte) (group & 0xff), 0, (byte) (node & 0xff), (byte) (endpoint & 0xff) };
         }
-        outputData.write(getCommandClass().getKey());
-        outputData.write(MULTI_ASSOCIATIONCMD_SET);
-        outputData.write(group);
-        outputData.write(0);
-        outputData.write(node);
-        outputData.write(endpoint);
-        result.setMessagePayload(outputData.toByteArray());
 
         SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
                 .withCommandClass(getCommandClass(), MULTI_ASSOCIATIONCMD_SET).withNodeId(getNode().getNodeId())
@@ -381,8 +363,8 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
     }
 
     @Override
-    public Collection<SerialMessage> initialize(boolean refresh) {
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+    public Collection<ZWaveTransaction> initialize(boolean refresh) {
+        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
         // If we're already initialized, then don't do it again unless we're refreshing
         if (refresh == true || initialiseDone == false) {
             result.add(getGroupingsMessage());
