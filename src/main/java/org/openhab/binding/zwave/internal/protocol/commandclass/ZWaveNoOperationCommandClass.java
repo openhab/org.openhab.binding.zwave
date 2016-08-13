@@ -9,12 +9,13 @@
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,6 +32,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  */
 @XStreamAlias("noOperationCommandClass")
 public class ZWaveNoOperationCommandClass extends ZWaveCommandClass {
+    private static final int NO_OPERATION_NONE = 0x01;
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveNoOperationCommandClass.class);
@@ -44,9 +46,6 @@ public class ZWaveNoOperationCommandClass extends ZWaveCommandClass {
      */
     public ZWaveNoOperationCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
-
-        // We don't want to request the version since some nodes won't respond and there's little point anyway!
-        setVersion(1);
     }
 
     /**
@@ -62,7 +61,7 @@ public class ZWaveNoOperationCommandClass extends ZWaveCommandClass {
      */
     @Override
     public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint) {
-        logger.debug("NODE {}: Received No Operation", this.getNode().getNodeId());
+        logger.debug("NODE {}: Received NO_OPERATION command V{}", getNode().getNodeId(), getVersion());
     }
 
     /**
@@ -70,12 +69,12 @@ public class ZWaveNoOperationCommandClass extends ZWaveCommandClass {
      *
      * @return the serial message
      */
-    public SerialMessage getNoOperationMessage() {
+    public ZWaveTransaction getNoOperationMessage() {
         logger.debug("NODE {}: Creating new message for command No Operation", this.getNode().getNodeId());
-        SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Poll);
-        byte[] newPayload = { (byte) this.getNode().getNodeId(), 1, (byte) getCommandClass().getKey() };
-        result.setMessagePayload(newPayload);
-        return result;
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), NO_OPERATION_NONE).withNodeId(getNode().getNodeId()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Config).build();
     }
 }

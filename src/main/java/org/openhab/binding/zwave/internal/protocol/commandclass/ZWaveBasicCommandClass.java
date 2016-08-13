@@ -12,12 +12,14 @@ import java.util.Map;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -105,10 +107,10 @@ public class ZWaveBasicCommandClass extends ZWaveCommandClass implements ZWaveBa
     protected void processBasicReport(SerialMessage serialMessage, int offset, int endpoint)
             throws ZWaveSerialMessageException {
         int value = serialMessage.getMessagePayloadByte(offset + 1);
-        logger.debug(String.format("NODE %d: Basic report, value = 0x%02X", this.getNode().getNodeId(), value));
-        ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(this.getNode().getNodeId(), endpoint,
-                this.getCommandClass(), value);
-        this.getController().notifyEventListeners(zEvent);
+        logger.debug("NODE {}: Basic report, value = {}", getNode().getNodeId(), value);
+        ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
+                getCommandClass(), value);
+        getController().notifyEventListeners(zEvent);
     }
 
     /**
@@ -117,19 +119,19 @@ public class ZWaveBasicCommandClass extends ZWaveCommandClass implements ZWaveBa
      * @return the serial message
      */
     @Override
-    public SerialMessage getValueMessage() {
+    public ZWaveTransaction getValueMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", this.getNode().getNodeId());
             return null;
         }
 
-        logger.debug("NODE {}: Creating new message for application command BASIC_GET", this.getNode().getNodeId());
-        SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        byte[] newPayload = { (byte) this.getNode().getNodeId(), 2, (byte) getCommandClass().getKey(),
-                (byte) BASIC_GET };
-        result.setMessagePayload(newPayload);
-        return result;
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), BASIC_GET)
+                .withNodeId(getNode().getNodeId()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), BASIC_REPORT).withPriority(TransactionPriority.Get)
+                .build();
     }
 
     @Override
@@ -148,14 +150,13 @@ public class ZWaveBasicCommandClass extends ZWaveCommandClass implements ZWaveBa
      * @return the serial message
      */
     @Override
-    public SerialMessage setValueMessage(int level) {
+    public ZWaveTransaction setValueMessage(int level) {
         logger.debug("NODE {}: Creating new message for application command BASIC_SET", this.getNode().getNodeId());
-        SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Set);
-        byte[] newPayload = { (byte) this.getNode().getNodeId(), 3, (byte) getCommandClass().getKey(), (byte) BASIC_SET,
-                (byte) level };
-        result.setMessagePayload(newPayload);
-        return result;
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), BASIC_SET)
+                .withPayload(level).withNodeId(getNode().getNodeId()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage).build();
     }
 
 }

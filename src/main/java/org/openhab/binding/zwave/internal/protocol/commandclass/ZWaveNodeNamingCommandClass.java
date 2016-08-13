@@ -17,12 +17,14 @@ import java.util.Collection;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -292,13 +294,16 @@ public class ZWaveNodeNamingCommandClass extends ZWaveCommandClass implements ZW
      *
      * @return the serial message
      */
-    public SerialMessage getNameMessage() {
-        logger.debug("NODE {}: Creating new message for application command NAME_GET", getNode().getNodeId());
-        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        byte[] newPayload = { (byte) getNode().getNodeId(), 2, (byte) getCommandClass().getKey(), (byte) NAME_GET };
-        result.setMessagePayload(newPayload);
-        return result;
+    public ZWaveTransaction getNameMessage() {
+        logger.debug("NODE {}: Creating new message for application command NAME_GET", this.getNode().getNodeId());
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), NAME_GET)
+                .withNodeId(getNode().getNodeId()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), NAME_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -306,13 +311,16 @@ public class ZWaveNodeNamingCommandClass extends ZWaveCommandClass implements ZW
      *
      * @return the serial message
      */
-    public SerialMessage getLocationMessage() {
-        logger.debug("NODE {}: Creating new message for application command LOCATION_GET", getNode().getNodeId());
-        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        byte[] newPayload = { (byte) getNode().getNodeId(), 2, (byte) getCommandClass().getKey(), (byte) LOCATION_GET };
-        result.setMessagePayload(newPayload);
-        return result;
+    public ZWaveTransaction getLocationMessage() {
+        logger.debug("NODE {}: Creating new message for application command LOCATION_GET", this.getNode().getNodeId());
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), LOCATION_GET).withNodeId(getNode().getNodeId()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), LOCATION_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -321,8 +329,8 @@ public class ZWaveNodeNamingCommandClass extends ZWaveCommandClass implements ZW
      * @param the level to set.
      * @return the serial message
      */
-    private SerialMessage setValueMessage(String str, int command) {
-        logger.debug("NODE {}: Creating new message for application command NAME_SET to {}", getNode().getNodeId(),
+    private ZWaveTransaction setValueMessage(String str, int command) {
+        logger.debug("NODE {}: Creating new message for application command NAME_SET to {}", this.getNode().getNodeId(),
                 str);
 
         byte[] nameBuffer = null;
@@ -342,30 +350,27 @@ public class ZWaveNodeNamingCommandClass extends ZWaveCommandClass implements ZW
             len = 16;
         }
 
-        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Set);
-        byte[] newPayload = { (byte) getNode().getNodeId(), (byte) ((byte) len + 3), (byte) getCommandClass().getKey(),
-                (byte) command, encoding };
+        byte[] payload = new byte[len + 1];
+        payload[0] = encoding;
+        System.arraycopy(nameBuffer, 0, payload, 1, len);
 
-        byte[] msg = new byte[newPayload.length + len];
-        System.arraycopy(newPayload, 0, msg, 0, newPayload.length);
-        System.arraycopy(nameBuffer, 0, msg, newPayload.length, len);
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), command)
+                .withNodeId(getNode().getNodeId()).withPayload(payload).build();
 
-        result.setMessagePayload(msg);
-        return result;
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Config).build();
     }
 
-    public SerialMessage setNameMessage(String name) {
+    public ZWaveTransaction setNameMessage(String name) {
         return setValueMessage(name, NAME_SET);
     }
 
-    public SerialMessage setLocationMessage(String location) {
+    public ZWaveTransaction setLocationMessage(String location) {
         return setValueMessage(location, LOCATION_SET);
     }
 
     @Override
-    public Collection<SerialMessage> getDynamicValues(boolean refresh) {
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+    public Collection<ZWaveTransaction> getDynamicValues(boolean refresh) {
+        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
 
         if (refresh == true) {
             initialiseName = false;

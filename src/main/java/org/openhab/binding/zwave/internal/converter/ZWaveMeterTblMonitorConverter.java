@@ -16,9 +16,9 @@ import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterTblMonitorCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterTblMonitorCommandClass.MeterTblMonitorScale;
@@ -50,7 +50,7 @@ public class ZWaveMeterTblMonitorConverter extends ZWaveCommandClassConverter {
      * {@inheritDoc}
      */
     @Override
-    public List<SerialMessage> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
+    public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveMeterTblMonitorCommandClass commandClass = (ZWaveMeterTblMonitorCommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.METER_TBL_MONITOR, channel.getEndpoint());
         if (commandClass == null) {
@@ -60,9 +60,8 @@ public class ZWaveMeterTblMonitorConverter extends ZWaveCommandClassConverter {
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
                 commandClass.getCommandClass().getLabel(), channel.getEndpoint());
 
-        List<SerialMessage> response = new ArrayList<SerialMessage>();
-
-        for (SerialMessage msg : commandClass.getDynamicValues(true)) {
+        List<ZWaveTransaction> response = new ArrayList<ZWaveTransaction>();
+        for (ZWaveTransaction msg : commandClass.getDynamicValues(true)) {
             response.add(node.encapsulate(msg, commandClass, channel.getEndpoint()));
         }
         return response;

@@ -18,12 +18,14 @@ import java.util.Map;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -227,23 +229,18 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    public SerialMessage getCurrentData(int dataset) {
+    public ZWaveTransaction getCurrentData(int dataset) {
         logger.debug("NODE {}: Creating new message for application command METER_TBL_CURRENT_DATA_GET",
                 getNode().getNodeId());
-        SerialMessage message = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
 
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write(this.getNode().getNodeId());
-        outputData.write(5);
-        outputData.write(getCommandClass().getKey());
-        outputData.write(METER_TBL_CURRENT_DATA_GET);
-        outputData.write(dataset >> 16);
-        outputData.write(dataset >> 8);
-        outputData.write(dataset);
-        message.setMessagePayload(outputData.toByteArray());
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), METER_TBL_CURRENT_DATA_GET).withNodeId(getNode().getNodeId())
+                .withPayload(dataset >> 16, dataset >> 8, dataset).build();
 
-        return message;
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), METER_TBL_CURRENT_DATA_REPORT)
+                .withPriority(TransactionPriority.Get).build();
     }
 
     /**
@@ -251,20 +248,18 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    public SerialMessage getCapabilityGet() {
+    public ZWaveTransaction getCapabilityGet() {
         logger.debug("NODE {}: Creating new message for application command METER_TBL_TABLE_CAPABILITY_GET",
                 getNode().getNodeId());
-        SerialMessage message = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
 
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write(this.getNode().getNodeId());
-        outputData.write(2);
-        outputData.write(getCommandClass().getKey());
-        outputData.write(METER_TBL_TABLE_CAPABILITY_GET);
-        message.setMessagePayload(outputData.toByteArray());
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), METER_TBL_TABLE_CAPABILITY_GET).withNodeId(getNode().getNodeId())
+                .build();
 
-        return message;
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), METER_TBL_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -272,25 +267,22 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    public SerialMessage getTableIDGet() {
+    public ZWaveTransaction getTableIDGet() {
         logger.debug("NODE {}: Creating new message for application command METER_TBL_TABLE_ID_GET",
                 getNode().getNodeId());
-        SerialMessage message = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
 
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write(this.getNode().getNodeId());
-        outputData.write(2);
-        outputData.write(getCommandClass().getKey());
-        outputData.write(METER_TBL_TABLE_ID_GET);
-        message.setMessagePayload(outputData.toByteArray());
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), METER_TBL_TABLE_ID_GET).withNodeId(getNode().getNodeId()).build();
 
-        return message;
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), METER_TBL_TABLE_ID_REPORT)
+                .withPriority(TransactionPriority.Get).build();
     }
 
     @Override
-    public Collection<SerialMessage> initialize(boolean refresh) {
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+    public Collection<ZWaveTransaction> initialize(boolean refresh) {
+        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
         // If we're already initialized, then don't do it again unless we're refreshing
         if (refresh == true || initialiseDone == false) {
             result.add(getCapabilityGet());
@@ -300,8 +292,8 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
     }
 
     @Override
-    public Collection<SerialMessage> getDynamicValues(boolean refresh) {
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+    public Collection<ZWaveTransaction> getDynamicValues(boolean refresh) {
+        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
 
         if (refresh == true || dynamicDone == false) {
             result.add(getCurrentData(dataset));

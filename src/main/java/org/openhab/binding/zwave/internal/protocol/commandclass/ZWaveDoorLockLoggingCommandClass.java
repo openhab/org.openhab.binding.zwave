@@ -8,7 +8,6 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -16,12 +15,14 @@ import java.util.Map;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -109,41 +110,38 @@ public class ZWaveDoorLockLoggingCommandClass extends ZWaveCommandClass implemen
         }
     }
 
-    public SerialMessage getSupported() {
+    public ZWaveTransaction getSupported() {
         logger.debug("NODE {}: Creating new message for application command LOGGING_SUPPORTED_GET",
                 this.getNode().getNodeId());
-        SerialMessage message = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write((byte) this.getNode().getNodeId());
-        outputData.write(2);
-        outputData.write((byte) getCommandClass().getKey());
-        outputData.write((byte) LOGGING_SUPPORTED_GET);
-        message.setMessagePayload(outputData.toByteArray());
-        return message;
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), LOGGING_SUPPORTED_GET).withNodeId(getNode().getNodeId()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), LOGGING_SUPPORTED_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
-    public SerialMessage getEntry(int id) {
-        logger.debug("NODE {}: Creating new message for application command LOGGING_RECORD_GET",
-                this.getNode().getNodeId());
-        SerialMessage message = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write((byte) this.getNode().getNodeId());
-        outputData.write(3);
-        outputData.write((byte) getCommandClass().getKey());
-        outputData.write((byte) LOGGING_RECORD_GET);
-        outputData.write((byte) id);
-        message.setMessagePayload(outputData.toByteArray());
-        return message;
+    public ZWaveTransaction getEntry(int id) {
+        logger.debug("NODE {}: Creating new message for application command LOGGING_RECORD_GET", getNode().getNodeId());
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), LOGGING_RECORD_GET).withNodeId(getNode().getNodeId())
+                .withPayload(id).build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), LOGGING_RECORD_REPORT)
+                .withPriority(TransactionPriority.Get).build();
     }
 
     @Override
-    public Collection<SerialMessage> initialize(boolean refresh) {
+    public Collection<ZWaveTransaction> initialize(boolean refresh) {
         if (refresh == false && supportedMessages != -1) {
             return null;
         }
-        Collection<SerialMessage> result = new ArrayList<SerialMessage>();
+        Collection<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
         result.add(getSupported());
         return result;
     }

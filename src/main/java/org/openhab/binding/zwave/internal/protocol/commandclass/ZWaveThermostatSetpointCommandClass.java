@@ -17,12 +17,14 @@ import java.util.Map;
 import org.apache.commons.lang.ArrayUtils;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -193,8 +195,8 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
      * {@inheritDoc}
      */
     @Override
-    public Collection<SerialMessage> initialize(boolean refresh) {
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+    public Collection<ZWaveTransaction> initialize(boolean refresh) {
+        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
         if (refresh == true || initialiseDone == false) {
             result.add(this.getSupportedMessage());
         }
@@ -205,11 +207,11 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
      * {@inheritDoc}
      */
     @Override
-    public Collection<SerialMessage> getDynamicValues(boolean refresh) {
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+    public Collection<ZWaveTransaction> getDynamicValues(boolean refresh) {
+        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
         for (Map.Entry<SetpointType, Setpoint> entry : this.setpoints.entrySet()) {
             if (refresh == true || entry.getValue().getInitialised() == false) {
-                SerialMessage mesg = getMessage(entry.getValue().getSetpointType());
+                ZWaveTransaction mesg = getMessage(entry.getValue().getSetpointType());
                 entry.getValue().incrementInitCount();
                 if (mesg == null) {
                     logger.warn("NODE {}: Ignoring null setpointType in setpointTypes", this.getNode().getNodeId());
@@ -225,7 +227,7 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
      * {@inheritDoc}
      */
     @Override
-    public SerialMessage getValueMessage() {
+    public ZWaveTransaction getValueMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", this.getNode().getNodeId());
             return null;
@@ -236,7 +238,7 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
         }
 
         // In case there are no supported setpoint types, get them.
-        return this.getSupportedMessage();
+        return getSupportedMessage();
     }
 
     @Override
@@ -254,19 +256,22 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
      * @param setpointType the setpoint type to get
      * @return the serial message
      */
-    public SerialMessage getMessage(SetpointType setpointType) {
+    public ZWaveTransaction getMessage(SetpointType setpointType) {
         if (setpointType == null) {
             return null;
         }
 
         logger.debug("NODE {}: Creating new message for application command THERMOSTAT_SETPOINT_GET ({})",
                 this.getNode().getNodeId(), setpointType.getLabel());
-        SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        byte[] payload = { (byte) this.getNode().getNodeId(), 3, (byte) getCommandClass().getKey(),
-                THERMOSTAT_SETPOINT_GET, (byte) setpointType.getKey() };
-        result.setMessagePayload(payload);
-        return result;
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), THERMOSTAT_SETPOINT_GET).withNodeId(getNode().getNodeId())
+                .withPayload(setpointType.getKey()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), THERMOSTAT_SETPOINT_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -274,23 +279,25 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
      *
      * @return the serial message, or null if the supported command is not supported.
      */
-    public SerialMessage getSupportedMessage() {
+    public ZWaveTransaction getSupportedMessage() {
         logger.debug("NODE {}: Creating new message for command THERMOSTAT_SETPOINT_SUPPORTED_GET",
                 this.getNode().getNodeId());
 
-        SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Config);
-        byte[] newPayload = { (byte) this.getNode().getNodeId(), 2, (byte) getCommandClass().getKey(),
-                THERMOSTAT_SETPOINT_SUPPORTED_GET };
-        result.setMessagePayload(newPayload);
-        return result;
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), THERMOSTAT_SETPOINT_SUPPORTED_GET)
+                .withNodeId(getNode().getNodeId()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), THERMOSTAT_SETPOINT_SUPPORTED_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public SerialMessage setValueMessage(int value) {
+    public ZWaveTransaction setValueMessage(int value) {
         return setMessage(0, new BigDecimal(value));
     }
 
@@ -300,13 +307,13 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
      * @param setpoint the setpoint to set.
      * @return the serial message
      */
-    public SerialMessage setMessage(int scale, BigDecimal setpoint) {
+    public ZWaveTransaction setMessage(int scale, BigDecimal setpoint) {
         for (Map.Entry<SetpointType, Setpoint> entry : this.setpoints.entrySet()) {
             return setMessage(scale, entry.getValue().getSetpointType(), setpoint);
         }
 
         // in case there are no supported setpoint types, get them.
-        return this.getSupportedMessage();
+        return getSupportedMessage();
     }
 
     /**
@@ -317,27 +324,25 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
      * @param setpoint the setpoint to set.
      * @return the serial message
      */
-    public SerialMessage setMessage(int scale, SetpointType setpointType, BigDecimal setpoint) {
-        logger.debug("NODE {}: Creating new message for command THERMOSTAT_SETPOINT_SET", this.getNode().getNodeId());
-        SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Set);
+    public ZWaveTransaction setMessage(int scale, SetpointType setpointType, BigDecimal setpoint) {
+        logger.debug("NODE {}: Creating new message for command THERMOSTAT_SETPOINT_SET", getNode().getNodeId());
 
         try {
             byte[] encodedValue = encodeValue(setpoint);
 
-            byte[] payload = ArrayUtils.addAll(
-                    new byte[] { (byte) this.getNode().getNodeId(), (byte) (3 + encodedValue.length),
-                            (byte) getCommandClass().getKey(), THERMOSTAT_SETPOINT_SET, (byte) setpointType.getKey() },
-                    encodedValue);
+            byte[] payload = ArrayUtils.addAll(new byte[] { (byte) setpointType.getKey() }, encodedValue);
             // Add the scale
             payload[5] += (byte) (scale << 3);
 
-            result.setMessagePayload(payload);
-            return result;
+            SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                    .withCommandClass(getCommandClass(), THERMOSTAT_SETPOINT_SET).withNodeId(getNode().getNodeId())
+                    .withPayload(payload).build();
+
+            return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Set).build();
         } catch (ArithmeticException e) {
             logger.error(
                     "NODE {}: Got an arithmetic exception converting value {} to a valid Z-Wave value. Ignoring THERMOSTAT_SETPOINT_SET message.",
-                    this.getNode().getNodeId(), setpoint);
+                    getNode().getNodeId(), setpoint);
             return null;
         }
     }

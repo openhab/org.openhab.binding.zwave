@@ -8,18 +8,19 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -99,7 +100,7 @@ public class ZWavePowerLevelCommandClass extends ZWaveCommandClass
         }
     }
 
-    public SerialMessage setValueMessage(int level, int timeout) {
+    public ZWaveTransaction setValueMessage(int level, int timeout) {
         logger.debug("NODE {}: Creating new message for application command POWERLEVEL_SET, level={}, timeout={}",
                 getNode().getNodeId(), level, timeout);
 
@@ -113,37 +114,29 @@ public class ZWavePowerLevelCommandClass extends ZWaveCommandClass
             return null;
         }
 
-        SerialMessage message = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Set);
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write((byte) getNode().getNodeId());
-        outputData.write(4);
-        outputData.write((byte) getCommandClass().getKey());
-        outputData.write((byte) POWERLEVEL_SET);
-        outputData.write((byte) level);
-        outputData.write((byte) timeout);
-        message.setMessagePayload(outputData.toByteArray());
-        return message;
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), POWERLEVEL_SET).withNodeId(getNode().getNodeId())
+                .withPayload(level, timeout).build();
+
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Config).build();
     }
 
     @Override
-    public SerialMessage getValueMessage() {
+    public ZWaveTransaction getValueMessage() {
         logger.debug("NODE {}: Creating new message for application command POWERLEVEL_GET", getNode().getNodeId());
-        SerialMessage message = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
 
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write((byte) getNode().getNodeId());
-        outputData.write(2);
-        outputData.write((byte) getCommandClass().getKey());
-        outputData.write((byte) POWERLEVEL_GET);
-        message.setMessagePayload(outputData.toByteArray());
-        return message;
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), POWERLEVEL_GET).withNodeId(getNode().getNodeId()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), POWERLEVEL_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     @Override
-    public Collection<SerialMessage> getDynamicValues(boolean refresh) {
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+    public Collection<ZWaveTransaction> getDynamicValues(boolean refresh) {
+        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
 
         if (refresh == true || initialiseDone == false) {
             result.add(getValueMessage());

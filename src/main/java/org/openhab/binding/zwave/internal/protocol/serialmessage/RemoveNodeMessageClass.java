@@ -8,11 +8,14 @@
  */
 package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
-import java.io.ByteArrayOutputStream;
-
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,40 +40,32 @@ public class RemoveNodeMessageClass extends ZWaveCommandProcessor {
     private final int REMOVE_NODE_STATUS_DONE = 6;
     private final int REMOVE_NODE_STATUS_FAILED = 7;
 
-    public SerialMessage doRequestStart() {
+    public ZWaveTransaction doRequestStart() {
         logger.debug("Setting controller into EXCLUSION mode.");
 
-        // Queue the request
-        SerialMessage newMessage = new SerialMessage(SerialMessage.SerialMessageClass.RemoveNodeFromNetwork,
-                SerialMessage.SerialMessageType.Request, SerialMessage.SerialMessageClass.RemoveNodeFromNetwork,
-                SerialMessage.SerialMessagePriority.High);
+        // Create the request
+        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.RemoveNodeFromNetwork)
+                .withPayload(REMOVE_NODE_ANY).build();
 
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write(REMOVE_NODE_ANY);
-        outputData.write(0x01); // TODO: This should use the callbackId
-        newMessage.setMessagePayload(outputData.toByteArray());
-
-        return newMessage;
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.RemoveNodeFromNetwork)
+                .withPriority(TransactionPriority.High).build();
     }
 
-    public SerialMessage doRequestStop() {
+    public ZWaveTransaction doRequestStop() {
         logger.debug("Ending EXCLUSION mode.");
 
-        // Queue the request
-        SerialMessage newMessage = new SerialMessage(SerialMessage.SerialMessageClass.RemoveNodeFromNetwork,
-                SerialMessage.SerialMessageType.Request, SerialMessage.SerialMessageClass.RemoveNodeFromNetwork,
-                SerialMessage.SerialMessagePriority.High);
+        // Create the request
+        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.RemoveNodeFromNetwork)
+                .withPayload(REMOVE_NODE_STOP).build();
 
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write(REMOVE_NODE_STOP);
-        outputData.write(254); // TODO: This should use the callbackId
-        newMessage.setMessagePayload(outputData.toByteArray());
-
-        return newMessage;
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.RemoveNodeFromNetwork)
+                .withPriority(TransactionPriority.High).build();
     }
 
     @Override
-    public boolean handleRequest(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         switch (incomingMessage.getMessagePayloadByte(1)) {
             case REMOVE_NODE_STATUS_LEARN_READY:
@@ -106,8 +101,8 @@ public class RemoveNodeMessageClass extends ZWaveCommandProcessor {
                 logger.debug("Remove Node: Unknown request ({}).", incomingMessage.getMessagePayloadByte(1));
                 break;
         }
-        checkTransactionComplete(lastSentMessage, incomingMessage);
+        checkTransactionComplete(transaction, incomingMessage);
 
-        return transactionComplete;
+        return true;
     }
 }

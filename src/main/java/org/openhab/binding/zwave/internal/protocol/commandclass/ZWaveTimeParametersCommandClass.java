@@ -16,12 +16,14 @@ import java.util.Date;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,18 +73,16 @@ public class ZWaveTimeParametersCommandClass extends ZWaveCommandClass
      * @return the serial message.
      */
     @Override
-    public SerialMessage getValueMessage() {
+    public ZWaveTransaction getValueMessage() {
         logger.debug("NODE {}: Creating new message for command TIME_GET", getNode().getNodeId());
 
-        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write(getNode().getNodeId());
-        outputData.write(2);
-        outputData.write(getCommandClass().getKey());
-        outputData.write(TIME_GET);
-        result.setMessagePayload(outputData.toByteArray());
-        return result;
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), TIME_GET)
+                .withNodeId(getNode().getNodeId()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), TIME_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -90,17 +90,10 @@ public class ZWaveTimeParametersCommandClass extends ZWaveCommandClass
      *
      * @return the serial message.
      */
-    public SerialMessage getSetMessage(Calendar cal) {
+    public ZWaveTransaction getSetMessage(Calendar cal) {
         logger.debug("NODE {}: Creating new message for command TIME_SET", getNode().getNodeId());
 
-        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.RealTime);
-
         ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write(getNode().getNodeId());
-        outputData.write(9);
-        outputData.write(getCommandClass().getKey());
-        outputData.write(TIME_SET);
         outputData.write((cal.get(Calendar.YEAR) & 0xff00) >> 8);
         outputData.write((cal.get(Calendar.YEAR) & 0xff));
         outputData.write(cal.get(Calendar.MONTH) + 1);
@@ -108,8 +101,11 @@ public class ZWaveTimeParametersCommandClass extends ZWaveCommandClass
         outputData.write(cal.get(Calendar.HOUR_OF_DAY));
         outputData.write(cal.get(Calendar.MINUTE));
         outputData.write(cal.get(Calendar.SECOND));
-        result.setMessagePayload(outputData.toByteArray());
-        return result;
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), TIME_SET)
+                .withNodeId(getNode().getNodeId()).withPayload(outputData.toByteArray()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.RealTime).build();
     }
 
     /**
@@ -150,8 +146,8 @@ public class ZWaveTimeParametersCommandClass extends ZWaveCommandClass
     }
 
     @Override
-    public Collection<SerialMessage> getDynamicValues(boolean refresh) {
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+    public Collection<ZWaveTransaction> getDynamicValues(boolean refresh) {
+        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
         if (refresh == true && getEndpoint() == null) {
             result.add(getValueMessage());
         }

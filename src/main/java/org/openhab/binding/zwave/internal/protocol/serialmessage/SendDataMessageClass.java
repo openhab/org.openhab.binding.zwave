@@ -16,6 +16,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNodeState;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
@@ -31,22 +32,22 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
     private static final Logger logger = LoggerFactory.getLogger(SendDataMessageClass.class);
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.trace("Handle Message Send Data Response");
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
-            logger.debug("NODE {}: Sent Data successfully placed on stack.", lastSentMessage.getMessageNode());
+            logger.debug("NODE {}: Sent Data successfully placed on stack.", transaction.getMessageNode());
 
             // This response is our controller ACK
-            lastSentMessage.setAckRecieved();
+            // lastSentMessage.setAckRecieved();
         } else {
             // This is an error. This means that the transaction is complete!
             // Set the flag, and return false.
-            logger.error("NODE {}: Sent Data was not placed on stack due to error {}.",
-                    lastSentMessage.getMessageNode(), incomingMessage.getMessagePayloadByte(0));
+            logger.error("NODE {}: Sent Data was not placed on stack due to error {}.", transaction.getMessageNode(),
+                    incomingMessage.getMessagePayloadByte(0));
 
             // We ought to cancel the transaction
-            lastSentMessage.setTransactionCanceled();
+            transaction.setTransactionCanceled();
 
             return false;
         }
@@ -55,11 +56,11 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
     }
 
     @Override
-    public boolean handleRequest(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.trace("Handle Message Send Data Request");
 
-        int callbackId = incomingMessage.getMessagePayloadByte(0);
+        // int callbackId = incomingMessage.getMessagePayloadByte(0);
         TransmissionState status = TransmissionState.getTransmissionState(incomingMessage.getMessagePayloadByte(1));
 
         if (status == null) {
@@ -67,16 +68,16 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
             return false;
         }
 
-        ZWaveNode node = zController.getNode(lastSentMessage.getMessageNode());
+        ZWaveNode node = zController.getNode(transaction.getMessageNode());
         if (node == null) {
-            logger.warn("Node {} not found!", lastSentMessage.getMessageNode());
+            logger.warn("Node {} not found!", transaction.getMessageNode());
             return false;
         }
 
-        logger.debug("NODE {}: SendData Request. CallBack ID = {}, Status = {}({})", node.getNodeId(), callbackId,
-                status.getLabel(), status.getKey());
+        logger.debug("NODE {}: SendData Request. CallBack ID = {}, Status = {}({})", node.getNodeId(),
+                incomingMessage.getCallbackId(), status.getLabel(), status.getKey());
 
-        if (lastSentMessage == null || lastSentMessage.getCallbackId() != callbackId) {
+        if (transaction == null || transaction.getCallbackId() != incomingMessage.getCallbackId()) {
             logger.warn("NODE {}: Already processed another send data request for this callback Id, ignoring.",
                     node.getNodeId());
             return false;
@@ -93,19 +94,18 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
                 } else {
                     node.resetResendCount();
                 }
-                checkTransactionComplete(lastSentMessage, incomingMessage);
+                checkTransactionComplete(transaction, incomingMessage);
                 return true;
             case COMPLETE_NO_ACK:
                 // Handle WAKE_UP_NO_MORE_INFORMATION differently
                 // Since the system can time out if the node goes to sleep before
                 // we get the response, then don't treat this like a timeout
-                byte[] payload = lastSentMessage.getMessagePayload();
+                byte[] payload = transaction.getSerialMessage().getMessagePayload();
                 if (payload.length >= 4 && (payload[2] & 0xFF) == ZWaveCommandClass.CommandClass.WAKE_UP.getKey()
                         && (payload[3] & 0xFF) == ZWaveWakeUpCommandClass.WAKE_UP_NO_MORE_INFORMATION) {
-                    checkTransactionComplete(lastSentMessage, incomingMessage);
+                    checkTransactionComplete(transaction, incomingMessage);
 
                     logger.debug("NODE {}: WAKE_UP_NO_MORE_INFORMATION. Treated as ACK.", node.getNodeId());
-
                     return true;
                 }
 
@@ -113,10 +113,11 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
             case COMPLETE_NOT_IDLE:
             case COMPLETE_NOROUTE:
                 try {
-                    handleFailedSendDataRequest(zController, lastSentMessage);
+                    // handleFailedSendDataRequest(zController, lastSentMessage);
                 } finally {
-                    transactionComplete = true;
+                    // transactionComplete = true;
                 }
+                transaction.setTransactionCanceled();
                 break;
             default:
                 break;
@@ -126,14 +127,13 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
     }
 
     public boolean handleFailedSendDataRequest(ZWaveController zController, SerialMessage originalMessage) {
-
         ZWaveNode node = zController.getNode(originalMessage.getMessageNode());
         if (node == null) {
             logger.error("Unknown node in handleFailedSendDataRequest");
             return false;
         }
 
-        logger.trace("NODE {}: Handling failed message.", node.getNodeId());
+        logger.debug("NODE {}: Handling failed message.", node.getNodeId());
 
         // Increment the resend count.
         // This will set the node to DEAD if we've exceeded the retries.
@@ -154,13 +154,13 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
                 // It's a battery operated device, place in wake-up queue.
                 // As this message failed, we assume the device is asleep
                 wakeUpCommandClass.setAwake(false);
-                wakeUpCommandClass.processOutgoingWakeupMessage(originalMessage);
+                // wakeUpCommandClass.processOutgoingWakeupMessage(originalMessage);
                 return false;
             }
         }
 
         logger.error("NODE {}: Got an error while sending data. Resending message.", node.getNodeId());
-        zController.sendData(originalMessage);
+        // zController.sendData(originalMessage);
         return true;
     }
 

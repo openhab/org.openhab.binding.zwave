@@ -33,6 +33,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent.Type;
 import org.openhab.binding.zwave.internal.protocol.initialization.ZWaveNodeSerializer;
@@ -191,7 +192,7 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
     /**
      * Security messages are time sensitive so mark them as high priority
      */
-    public static final SerialMessagePriority SECURITY_MESSAGE_PRIORITY = SerialMessagePriority.High;
+    public static final SerialMessagePriority SECURITY_MESSAGE_PRIORITY = SerialMessagePriority.Immediate;
 
     /**
      * Header is made up of 10 bytes:
@@ -314,9 +315,9 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 
     abstract boolean checkRealNetworkKeyLoaded();
 
-    protected void transmitMessage(SerialMessage serialMessage) {
+    protected void transmitMessage(ZWaveTransaction nonceReportMessage) {
         // Normal (non-inclusion mode) so give the message to the controller to be transmitted
-        getController().sendData(serialMessage);
+        // getController().sendData(serialMessage);
     }
 
     /**
@@ -379,6 +380,45 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
         traceHex("payload bytes for incoming security message", serialMessage.getMessagePayload());
         lastReceivedMessageTimestamp = System.currentTimeMillis();
         switch (command) {
+            /*
+             * case SECURITY_MESSAGE_ENCAP:
+             * case SECURITY_MESSAGE_ENCAP_NONCE_GET:
+             * logger.debug("NODE {}: Preparing to decrypt security encapsulated message, messagePayload={}",
+             * getNode().getNodeId(), SerialMessage.bb2hex(serialMessage.getMessagePayload()));
+             * int toDecryptLength = serialMessage.getMessageBuffer().length - 9;
+             * byte[] toDecrypt = new byte[toDecryptLength];
+             * System.arraycopy(serialMessage.getMessageBuffer(), 8, toDecrypt, 0, toDecryptLength);
+             * byte[] decryptedBytes = decryptMessage(toDecrypt, 0);
+             * if (decryptedBytes == null) {
+             * logger.error("NODE {}: Failed to decrypt message out of {} .", getNode().getNodeId(),
+             * serialMessage);
+             * break;
+             * }
+             *
+             * // Replace the payload with the decrypted data
+             * serialMessage.setMessagePayload(decryptedBytes);
+             *
+             * // Execute underlying command
+             * CommandClass commandClass;
+             * ZWaveCommandClass zwaveCommandClass;
+             * int commandClassCode = serialMessage.getMessagePayloadByte(offset);
+             * commandClass = CommandClass.getCommandClass(commandClassCode);
+             * if (commandClass == null) {
+             * logger.error(String.format("NODE %d: Unsupported command class 0x%02x", getNode().getNodeId(),
+             * commandClassCode));
+             * } else {
+             * zwaveCommandClass = getNode().getCommandClass(commandClass);
+             * logger.debug("NODE {}: Calling handleApplicationCommandRequest.", getNode().getNodeId());
+             * zwaveCommandClass.handleApplicationCommandRequest(serialMessage, offset + 1, 0);
+             * }
+             *
+             * if (command == SECURITY_MESSAGE_ENCAP_NONCE_GET) {
+             * // the Device wants to send us a Encrypted Packet, so we need to generate a nonce and send it
+             * lastNonceGetReceivedAt = System.currentTimeMillis();
+             * sendNonceReport();
+             * }
+             * break;
+             */
             case SECURITY_NONCE_GET:
                 logger.debug("NODE {}: Received SECURITY_NONCE_GET", getNode().getNodeId());
 
@@ -429,7 +469,7 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
     }
 
     public void sendNonceReport() throws ZWaveSerialMessageException {
-        SerialMessage nonceReportMessage = nonceGeneration.generateAndBuildNonceReport();
+        ZWaveTransaction nonceReportMessage = nonceGeneration.generateAndBuildNonceReport();
         if (nonceReportMessage == null) {
             logger.error("NODE {}: SECURITY_ERROR generateAndBuildNonceReport returned null");
         } else {
@@ -540,7 +580,7 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
     /**
      * Queues the given message for security encapsulation and transmission.
      *
-     * Note that, per the z-wave spec, we don't just encrypt the message and send it. We need to first request a nonce
+     * Note that, per the Z-Wave spec, we don't just encrypt the message and send it. We need to first request a nonce
      * from the node, wait for that response, then encrypt and send. Therefore this message will be split into one or
      * more security frames, placed into a queue until the next nonce is received. Only then will it be encrypted and
      * sent.
@@ -549,24 +589,25 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
      *            the unencrypted message to be transmitted
      * @throws ZWaveSerialMessageException
      */
-    public void queueMessageForEncapsulationAndTransmission(SerialMessage serialMessage) {
+    public void queueMessageForEncapsulationAndTransmission(ZWaveTransaction transaction) {
         checkInit();
+        SerialMessage serialMessage = transaction.getSerialMessage();
         if (serialMessage.getMessageBuffer().length < 7) {
             logger.error("NODE {}: SECURITY_ERROR Message too short for encapsulation, dropping message {}",
-                    this.getController().getNode(serialMessage.getMessageNode()).getNodeId(), serialMessage);
+                    this.getController().getNode(transaction.getMessageNode()).getNodeId(), transaction);
             return;
         }
 
         if (serialMessage.getMessageClass() != SerialMessageClass.SendData) {
             logger.error("NODE {}: SECURITY_ERROR Invalid message class {} for SendData for message {}",
                     getNode().getNodeId(), serialMessage.getMessageClass().getLabel(),
-                    serialMessage.getMessageClass().getKey(), serialMessage.toString());
+                    serialMessage.getMessageClass().getKey(), transaction.toString());
         }
 
         List<ZWaveSecurityPayloadFrame> securityPayloadFrameList = ZWaveSecurityPayloadFrame
                 .convertToSecurityPayload(getNode(), serialMessage);
         logger.debug("NODE {}: Converted serial message {} to securityPayload(): {}", getNode().getNodeId(),
-                serialMessage, securityPayloadFrameList);
+                transaction, securityPayloadFrameList);
 
         if (!payloadEncapsulationQueue.isEmpty()) {
             // Clean up expired items and check for duplicate requests. This is necessary as
@@ -660,7 +701,7 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 
         Nonce deviceNonce = nonceGeneration.getUseableDeviceNonce();
         if (deviceNonce == null) {
-            SerialMessage nonceGetMessage = nonceGeneration.buildNonceGetIfNeeded();
+            ZWaveTransaction nonceGetMessage = nonceGeneration.buildNonceGetIfNeeded();
             if (nonceGetMessage == null) {
                 // Nothing to do, we are already waiting for a nonce from the device
             } else {
@@ -677,7 +718,10 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
         }
 
         // Encapsulate the message fragment
-        debugHex("SecurityPayloadBytes", securityPayload.getMessageBytes());
+        // debugHex("SecurityPayloadBytes", securityPayload.getMessageBytes());
+
+        logger.debug("NODE {}: SECURITY_SENT {}", getNode().getNodeId(),
+                SerialMessage.bb2hex(securityPayload.getMessageBytes()));
 
         // Note that we set the expected reply to that of the original message, as it can vary
         SecurityEncapsulatedSerialMessage message = new SecurityEncapsulatedSerialMessage(SerialMessageClass.SendData,
@@ -772,7 +816,8 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
             message.setMessagePayload(payload);
             message.setSecurityPayload(securityPayload);
             lastEncapsulatedRequstMessage = message;
-            transmitMessage(message);
+            // TODO!!!
+            // transmitMessage(message);
         } catch (GeneralSecurityException | IOException e) {
             logger.error("NODE {}: Error in sendNextMessageWithNonce, message not sent", e);
         }

@@ -16,8 +16,8 @@ import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurationCommandClass.ZWaveConfigurationParameterEvent;
@@ -46,7 +46,7 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
      * {@inheritDoc}
      */
     @Override
-    public List<SerialMessage> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
+    public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveConfigurationCommandClass commandClass = (ZWaveConfigurationCommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.CONFIGURATION, channel.getEndpoint());
         if (commandClass == null) {
@@ -66,10 +66,10 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
             return null;
         }
 
-        SerialMessage serialMessage = node.encapsulate(commandClass.getConfigMessage(parmValue), commandClass,
+        ZWaveTransaction transaction = node.encapsulate(commandClass.getConfigMessage(parmValue), commandClass,
                 channel.getEndpoint());
-        List<SerialMessage> response = new ArrayList<SerialMessage>(1);
-        response.add(serialMessage);
+        List<ZWaveTransaction> response = new ArrayList<ZWaveTransaction>(1);
+        response.add(transaction);
         return response;
     }
 
@@ -106,7 +106,7 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
      * {@inheritDoc}
      */
     @Override
-    public List<SerialMessage> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
+    public List<ZWaveTransaction> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
 
         String parmNumber = channel.getArguments().get("parameter");
         if (parmNumber == null) {
@@ -161,8 +161,8 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
          * serialMessage = commandClass.getConfigMessage(paramIndex);
          * this.getController().sendData(serialMessage);
          */
-        SerialMessage serialMessage = null;
-        List<SerialMessage> messages = new ArrayList<SerialMessage>();
+        ZWaveTransaction serialMessage = null;
+        List<ZWaveTransaction> messages = new ArrayList<ZWaveTransaction>();
         messages.add(serialMessage);
         return messages;
 

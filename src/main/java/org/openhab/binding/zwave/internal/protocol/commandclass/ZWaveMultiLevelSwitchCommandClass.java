@@ -15,12 +15,14 @@ import java.util.Map;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -93,7 +95,7 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
     @Override
     public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
             throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received SWITCH_MULTILEVEL command V{}", getNode().getNodeId(), getVersion());
+        logger.debug("NODE {}: Received SWITCH_MULTILEVEL Command V{}", getNode().getNodeId(), getVersion());
         int command = serialMessage.getMessagePayloadByte(offset);
         switch (command) {
             case SWITCH_MULTILEVEL_SET:
@@ -129,19 +131,21 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
      * @return the serial message
      */
     @Override
-    public SerialMessage getValueMessage() {
+    public ZWaveTransaction getValueMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", getNode().getNodeId());
             return null;
         }
 
-        logger.debug("NODE {}: Creating new message for command SWITCH_MULTILEVEL_GET", getNode().getNodeId());
-        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        byte[] newPayload = { (byte) getNode().getNodeId(), 2, (byte) getCommandClass().getKey(),
-                (byte) SWITCH_MULTILEVEL_GET };
-        result.setMessagePayload(newPayload);
-        return result;
+        logger.debug("NODE {}: Creating new message for command SWITCH_MULTILEVEL_GET", this.getNode().getNodeId());
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), SWITCH_MULTILEVEL_GET).withNodeId(getNode().getNodeId()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), SWITCH_MULTILEVEL_REPORT)
+                .withPriority(TransactionPriority.Get).build();
     }
 
     @Override
@@ -160,14 +164,14 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
      * @return the serial message
      */
     @Override
-    public SerialMessage setValueMessage(int level) {
+    public ZWaveTransaction setValueMessage(int level) {
         logger.debug("NODE {}: Creating new message for command SWITCH_MULTILEVEL_SET", this.getNode().getNodeId());
-        SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Set);
-        byte[] newPayload = { (byte) this.getNode().getNodeId(), 3, (byte) getCommandClass().getKey(),
-                (byte) SWITCH_MULTILEVEL_SET, (byte) level };
-        result.setMessagePayload(newPayload);
-        return result;
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), SWITCH_MULTILEVEL_SET).withNodeId(getNode().getNodeId())
+                .withPayload(level).build();
+
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Set).build();
     }
 
     /**
@@ -175,15 +179,15 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    public SerialMessage stopLevelChangeMessage() {
+    public ZWaveTransaction stopLevelChangeMessage() {
         logger.debug("NODE {}: Creating new message for command SWITCH_MULTILEVEL_STOP_LEVEL_CHANGE",
-                getNode().getNodeId());
-        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Set);
-        byte[] newPayload = { (byte) getNode().getNodeId(), 2, (byte) getCommandClass().getKey(),
-                (byte) SWITCH_MULTILEVEL_STOP_LEVEL_CHANGE };
-        result.setMessagePayload(newPayload);
-        return result;
+                this.getNode().getNodeId());
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), SWITCH_MULTILEVEL_STOP_LEVEL_CHANGE)
+                .withNodeId(getNode().getNodeId()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Set).build();
     }
 
     /**
@@ -193,23 +197,24 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
      * @param duration sets the dimming duration
      * @return the serial message
      */
-    public SerialMessage startLevelChangeMessage(boolean increase, int duration) {
+    public ZWaveTransaction startLevelChangeMessage(boolean increase, int duration) {
         // TODO: This is only V2 implementation! V3 has some extra options.
         logger.debug("NODE {}: Creating new message for command SWITCH_MULTILEVEL_START_LEVEL_CHANGE",
                 getNode().getNodeId());
-        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Set);
-        byte[] newPayload = { (byte) getNode().getNodeId(), 5, (byte) getCommandClass().getKey(),
-                (byte) SWITCH_MULTILEVEL_START_LEVEL_CHANGE, 0, 0, 0 };
+        byte[] newPayload = { 0, 0, 0 };
         if (increase) {
-            newPayload[4] = 32;
+            newPayload[0] = 32;
         } else {
-            newPayload[4] = 96;
+            newPayload[0] = 96;
         }
-        newPayload[5] = 0; // Start level - ignored
-        newPayload[6] = (byte) duration;
-        result.setMessagePayload(newPayload);
-        return result;
+        newPayload[1] = 0; // Start level - ignored (for now!)
+        newPayload[2] = (byte) duration;
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), SWITCH_MULTILEVEL_START_LEVEL_CHANGE)
+                .withNodeId(getNode().getNodeId()).withPayload(newPayload).build();
+
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Set).build();
     }
 
     /**
@@ -218,23 +223,29 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
      * @param the level to set. 0 is mapped to off, > 0 is mapped to on.
      * @return the serial message
      */
-    public SerialMessage getSupportedMessage() {
+    public ZWaveTransaction getSupportedMessage() {
         logger.debug("NODE {}: Creating new message for command SWITCH_MULTILEVEL_SUPPORTED_GET",
                 getNode().getNodeId());
-        SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Set);
-        byte[] newPayload = { (byte) getNode().getNodeId(), 2, (byte) getCommandClass().getKey(),
-                (byte) SWITCH_MULTILEVEL_SUPPORTED_GET };
-        result.setMessagePayload(newPayload);
-        return result;
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), SWITCH_MULTILEVEL_SUPPORTED_GET).withNodeId(getNode().getNodeId())
+                .build();
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Set).build();
+
+        // SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
+        // SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Set);
+        // byte[] newPayload = { (byte) getNode().getNodeId(), 2, (byte) getCommandClass().getKey(),
+        // (byte) SWITCH_MULTILEVEL_SUPPORTED_GET };
+        // result.setMessagePayload(newPayload);
+        // return result;
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public Collection<SerialMessage> initialize(boolean refresh) {
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+    public Collection<ZWaveTransaction> initialize(boolean refresh) {
+        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
 
         if ((refresh == true || initialiseDone == false) && getVersion() >= 3) {
             result.add(getSupportedMessage());
@@ -249,8 +260,8 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
      * {@inheritDoc}
      */
     @Override
-    public Collection<SerialMessage> getDynamicValues(boolean refresh) {
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+    public Collection<ZWaveTransaction> getDynamicValues(boolean refresh) {
+        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
         if (refresh == true || dynamicDone == false) {
             result.add(getValueMessage());
         }

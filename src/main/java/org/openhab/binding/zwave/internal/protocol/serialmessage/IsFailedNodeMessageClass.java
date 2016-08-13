@@ -10,12 +10,14 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNodeState;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,19 +31,20 @@ import org.slf4j.LoggerFactory;
 public class IsFailedNodeMessageClass extends ZWaveCommandProcessor {
     private static final Logger logger = LoggerFactory.getLogger(IsFailedNodeMessageClass.class);
 
-    public SerialMessage doRequest(int nodeId) {
+    public ZWaveTransaction doRequest(int nodeId) {
         logger.debug("NODE {}: Requesting IsFailedNode status from controller.", nodeId);
-        SerialMessage newMessage = new SerialMessage(SerialMessageClass.IsFailedNodeID, SerialMessageType.Request,
-                SerialMessageClass.IsFailedNodeID, SerialMessagePriority.High);
-        byte[] newPayload = { (byte) nodeId };
-        newMessage.setMessagePayload(newPayload);
-        return newMessage;
+
+        // Create the request
+        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.IsFailedNodeID).withPayload(nodeId)
+                .build();
+
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
-        int nodeId = lastSentMessage.getMessagePayloadByte(0);
+        int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         ZWaveNode node = zController.getNode(nodeId);
         if (node == null) {
@@ -57,7 +60,7 @@ public class IsFailedNodeMessageClass extends ZWaveCommandProcessor {
             logger.debug("NODE {}: Is currently marked as healthy by the controller", nodeId);
         }
 
-        checkTransactionComplete(lastSentMessage, incomingMessage);
+        checkTransactionComplete(transaction, incomingMessage);
 
         return true;
     }

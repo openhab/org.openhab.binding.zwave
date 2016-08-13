@@ -19,12 +19,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -139,36 +141,34 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
         }
     }
 
-    public SerialMessage getSupported() {
+    public ZWaveTransaction getSupported() {
         logger.debug("NODE {}: Creating new message for application command USER_NUMBER_GET",
                 this.getNode().getNodeId());
-        SerialMessage message = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write((byte) this.getNode().getNodeId());
-        outputData.write(2);
-        outputData.write((byte) getCommandClass().getKey());
-        outputData.write((byte) USER_NUMBER_GET);
-        message.setMessagePayload(outputData.toByteArray());
-        return message;
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), USER_NUMBER_GET).withNodeId(getNode().getNodeId()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), USER_NUMBER_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
-    public SerialMessage getUserCode(int id) {
+    public ZWaveTransaction getUserCode(int id) {
         logger.debug("NODE {}: Creating new message for application command USER_CODE_GET({})",
                 this.getNode().getNodeId(), id);
-        SerialMessage message = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write((byte) this.getNode().getNodeId());
-        outputData.write(3);
-        outputData.write((byte) getCommandClass().getKey());
-        outputData.write((byte) USER_CODE_GET);
-        outputData.write((byte) (id));
-        message.setMessagePayload(outputData.toByteArray());
-        return message;
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), USER_CODE_GET).withNodeId(getNode().getNodeId()).withPayload(id)
+                .build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), USER_CODE_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
-    public SerialMessage setUserCode(int id, String code) {
+    public ZWaveTransaction setUserCode(int id, String code) {
         boolean codeIsZeros = true;
 
         // Zeros means delete the code
@@ -185,13 +185,8 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
         if (codeIsZeros || userCodeIsValid(code)) {
             logger.debug("NODE {}: {} user code for {}", this.getNode().getNodeId(),
                     codeIsZeros ? "Removing" : "Setting", id);
-            SerialMessage message = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                    SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Get);
+
             ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-            outputData.write((byte) this.getNode().getNodeId());
-            outputData.write(4 + code.length());
-            outputData.write((byte) getCommandClass().getKey());
-            outputData.write(USER_CODE_SET);
             outputData.write(id); // identifier, must be 1 or higher
             if (codeIsZeros) {
                 outputData.write(UserIdStatusType.AVAILABLE.key); // status
@@ -205,8 +200,11 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
                     logger.error("Got UnsupportedEncodingException", e);
                 }
             }
-            message.setMessagePayload(outputData.toByteArray());
-            return message;
+
+            SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                    .withCommandClass(getCommandClass(), USER_CODE_SET).withNodeId(getNode().getNodeId()).build();
+
+            return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Set).build();
         }
 
         return null;
@@ -231,20 +229,19 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
     }
 
     @Override
-    public Collection<SerialMessage> initialize(boolean refresh) {
+    public Collection<ZWaveTransaction> initialize(boolean refresh) {
         logger.debug("NODE {}: User Code initialize", getNode().getNodeId());
-        Collection<SerialMessage> result = new ArrayList<SerialMessage>();
+        Collection<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
         if (numberOfUsersSupported == UNKNOWN || refresh == true) {
             // Request it and wait for response
             logger.debug("NODE {}: numberOfUsersSupported=-1, refreshing", getNode().getNodeId());
-            SerialMessage message = getSupported();
-            result.add(message);
+            result.add(getSupported());
         }
         return result;
     }
 
     @Override
-    public Collection<SerialMessage> getDynamicValues(boolean refresh) {
+    public Collection<ZWaveTransaction> getDynamicValues(boolean refresh) {
         logger.debug("NODE {}: User Code initialize starting, refresh={}", getNode().getNodeId(), refresh);
         if (dynamicDone == true || refresh == false) {
             return null;
@@ -254,10 +251,9 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
         dynamicDone = true;
 
         // Request all user codes
-        Collection<SerialMessage> result = new ArrayList<SerialMessage>();
+        Collection<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
         for (int cnt = 1; cnt <= numberOfUsersSupported; cnt++) {
-            SerialMessage message = getUserCode(cnt);
-            result.add(message);
+            result.add(getUserCode(cnt));
         }
         return result;
     }

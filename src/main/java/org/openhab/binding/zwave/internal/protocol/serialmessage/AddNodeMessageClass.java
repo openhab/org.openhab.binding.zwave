@@ -8,16 +8,20 @@
  */
 package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Generic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
+import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
 import org.slf4j.Logger;
@@ -49,13 +53,9 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
     private final int OPTION_HIGH_POWER = 0x80;
     private final int OPTION_NETWORK_WIDE = 0x40;
 
-    public SerialMessage doRequestStart(boolean highPower, boolean networkWide) {
+    public ZWaveTransaction doRequestStart(boolean highPower, boolean networkWide) {
         logger.debug("Setting controller into INCLUSION mode, highPower:{} networkWide:{}.", highPower, networkWide);
 
-        // Queue the request
-        SerialMessage newMessage = new SerialMessage(SerialMessage.SerialMessageClass.AddNodeToNetwork,
-                SerialMessage.SerialMessageType.Request, SerialMessage.SerialMessageClass.AddNodeToNetwork,
-                SerialMessage.SerialMessagePriority.High);
         byte command = ADD_NODE_ANY;
         if (highPower == true) {
             command |= OPTION_HIGH_POWER;
@@ -64,32 +64,26 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
             command |= OPTION_NETWORK_WIDE;
         }
 
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write(command);
-        outputData.write(0x01); // TODO: This should use the callbackId
-        newMessage.setMessagePayload(outputData.toByteArray());
+        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.AddNodeToNetwork).withPayload(command)
+                .build();
 
-        return newMessage;
+        return new ZWaveTransactionBuilder(serialMessage).withExpectedResponseClass(SerialMessageClass.AddNodeToNetwork)
+                .withPriority(TransactionPriority.High).build();
     }
 
-    public SerialMessage doRequestStop() {
+    public ZWaveTransaction doRequestStop() {
         logger.debug("Ending INCLUSION mode.");
 
-        // Queue the request
-        SerialMessage newMessage = new SerialMessage(SerialMessage.SerialMessageClass.AddNodeToNetwork,
-                SerialMessage.SerialMessageType.Request, SerialMessage.SerialMessageClass.AddNodeToNetwork,
-                SerialMessage.SerialMessagePriority.High);
+        // Create the request
+        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.AddNodeToNetwork)
+                .withPayload(ADD_NODE_STOP).build();
 
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write(ADD_NODE_STOP);
-        outputData.write(0x01); // TODO: This should use the callbackId
-        newMessage.setMessagePayload(outputData.toByteArray());
-
-        return newMessage;
+        return new ZWaveTransactionBuilder(serialMessage).withExpectedResponseClass(SerialMessageClass.AddNodeToNetwork)
+                .withPriority(TransactionPriority.High).build();
     }
 
     @Override
-    public boolean handleRequest(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) {
         try {
             switch (incomingMessage.getMessagePayloadByte(1)) {
@@ -97,9 +91,11 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
                     logger.debug("Add Node: Learn ready.");
                     zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.IncludeStart));
                     break;
+
                 case ADD_NODE_STATUS_NODE_FOUND:
                     logger.debug("Add Node: New node found.");
                     break;
+
                 case ADD_NODE_STATUS_ADDING_SLAVE:
                     logger.debug("NODE {}: Adding slave.", incomingMessage.getMessagePayloadByte(2));
 
@@ -132,14 +128,17 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
                             incomingMessage.getMessagePayloadByte(2), basic, generic, specific, commandClasses);
                     zController.notifyEventListeners(event);
                     break;
+
                 case ADD_NODE_STATUS_ADDING_CONTROLLER:
                     logger.debug("NODE {}: Adding controller.", incomingMessage.getMessagePayloadByte(2));
                     zController.notifyEventListeners(new ZWaveInclusionEvent(
                             ZWaveInclusionEvent.Type.IncludeControllerFound, incomingMessage.getMessagePayloadByte(2)));
                     break;
+
                 case ADD_NODE_STATUS_PROTOCOL_DONE:
                     logger.debug("Add Node: Protocol done.");
                     break;
+
                 case ADD_NODE_STATUS_DONE:
                     logger.debug("Add Node: Done.");
                     // If the node ID is 0, ignore!
@@ -149,10 +148,12 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
                                 incomingMessage.getMessagePayloadByte(2)));
                     }
                     break;
+
                 case ADD_NODE_STATUS_FAILED:
                     logger.debug("Add Node: Failed.");
                     zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.IncludeFail));
                     break;
+
                 default:
                     logger.debug("Unknown request ({}).", incomingMessage.getMessagePayloadByte(1));
                     break;
@@ -161,8 +162,8 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        checkTransactionComplete(lastSentMessage, incomingMessage);
+        checkTransactionComplete(transaction, incomingMessage);
 
-        return transactionComplete;
+        return true;
     }
 }

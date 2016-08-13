@@ -8,7 +8,6 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -18,12 +17,14 @@ import java.util.Set;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -160,27 +161,24 @@ public class ZWaveBinarySensorCommandClass extends ZWaveCommandClass
      * @return the serial message
      */
     @Override
-    public SerialMessage getValueMessage() {
+    public ZWaveTransaction getValueMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", getNode().getNodeId());
             return null;
         }
 
         logger.debug("NODE {}: Creating new message for application command SENSOR_BINARY_GET", getNode().getNodeId());
-        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
 
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write(getNode().getNodeId());
-        outputData.write(2);
-        outputData.write(getCommandClass().getKey());
-        outputData.write(SENSOR_BINARY_GET);
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), SENSOR_BINARY_GET).withNodeId(getNode().getNodeId()).build();
 
-        result.setMessagePayload(outputData.toByteArray());
-        return result;
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), SENSOR_BINARY_REPORT)
+                .withPriority(TransactionPriority.Get).build();
     }
 
-    public SerialMessage getValueMessage(SensorType type) {
+    public ZWaveTransaction getValueMessage(SensorType type) {
         if (getVersion() == 1) {
             logger.debug("NODE {}: Node doesn't support SENSOR_BINARY_GET with SensorType", getNode().getNodeId());
             return null;
@@ -188,18 +186,15 @@ public class ZWaveBinarySensorCommandClass extends ZWaveCommandClass
 
         logger.debug("NODE {}: Creating new message for application command SENSOR_BINARY_GET for {}",
                 getNode().getNodeId(), type);
-        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
 
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write(getNode().getNodeId());
-        outputData.write(3);
-        outputData.write(getCommandClass().getKey());
-        outputData.write(SENSOR_BINARY_GET);
-        outputData.write(type.getKey());
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), SENSOR_BINARY_GET).withNodeId(getNode().getNodeId())
+                .withPayload(type.getKey()).build();
 
-        result.setMessagePayload(outputData.toByteArray());
-        return result;
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), SENSOR_BINARY_REPORT)
+                .withPriority(TransactionPriority.Get).build();
     }
 
     @Override
@@ -216,7 +211,7 @@ public class ZWaveBinarySensorCommandClass extends ZWaveCommandClass
      *
      * @return the serial message, or null if the supported command is not supported.
      */
-    public SerialMessage getSupportedMessage() {
+    public ZWaveTransaction getSupportedMessage() {
         if (getVersion() == 1) {
             logger.debug("NODE {}: SENSOR_BINARY_SUPPORTEDSENSOR_GET not supported for V1", getNode().getNodeId());
             return null;
@@ -225,23 +220,19 @@ public class ZWaveBinarySensorCommandClass extends ZWaveCommandClass
         logger.debug("NODE {}: Creating new message for command SENSOR_BINARY_SUPPORTEDSENSOR_GET",
                 getNode().getNodeId());
 
-        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), SENSOR_BINARY_SUPPORTEDSENSOR_GET)
+                .withNodeId(getNode().getNodeId()).build();
 
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write(getNode().getNodeId());
-        outputData.write(2);
-        outputData.write(getCommandClass().getKey());
-        outputData.write(SENSOR_BINARY_SUPPORTEDSENSOR_GET);
-
-        result.setMessagePayload(outputData.toByteArray());
-
-        return result;
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), SENSOR_BINARY_SUPPORTEDSENSOR_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     @Override
-    public Collection<SerialMessage> initialize(boolean refresh) {
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+    public Collection<ZWaveTransaction> initialize(boolean refresh) {
+        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
         if (refresh == true || initialiseDone == false) {
             if (getVersion() > 1) {
                 result.add(getSupportedMessage());
@@ -254,8 +245,8 @@ public class ZWaveBinarySensorCommandClass extends ZWaveCommandClass
      * {@inheritDoc}
      */
     @Override
-    public Collection<SerialMessage> getDynamicValues(boolean refresh) {
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+    public Collection<ZWaveTransaction> getDynamicValues(boolean refresh) {
+        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
         if (refresh == true || dynamicDone == false) {
             if (getVersion() == 1) {
                 result.add(getValueMessage());

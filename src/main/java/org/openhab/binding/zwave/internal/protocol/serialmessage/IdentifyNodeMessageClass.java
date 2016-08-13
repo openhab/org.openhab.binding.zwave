@@ -10,15 +10,17 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Generic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
+import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.slf4j.Logger;
@@ -32,27 +34,27 @@ import org.slf4j.LoggerFactory;
 public class IdentifyNodeMessageClass extends ZWaveCommandProcessor {
     private static final Logger logger = LoggerFactory.getLogger(IdentifyNodeMessageClass.class);
 
-    public SerialMessage doRequest(int nodeId) {
-        SerialMessage newMessage = new SerialMessage(SerialMessageClass.IdentifyNode, SerialMessageType.Request,
-                SerialMessageClass.IdentifyNode, SerialMessagePriority.High);
-        byte[] newPayload = { (byte) nodeId };
-        newMessage.setMessagePayload(newPayload);
-        return newMessage;
+    public ZWaveTransaction doRequest(int nodeId) {
+        // Create the request
+        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.IdentifyNode).withPayload(nodeId)
+                .build();
+
+        return new ZWaveTransactionBuilder(serialMessage).withNodeId(nodeId).withPriority(TransactionPriority.High)
+                .build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.trace("Handle Message Get Node ProtocolInfo Response");
 
-        // Check that this request is consistent with the response
-        if (lastSentMessage.getMessageClass() != SerialMessageClass.IdentifyNode) {
-            logger.warn("Got IdentifyNodeMessage without request, ignoring. Last message was {}.",
-                    lastSentMessage.getMessageClass());
+        if (transaction == null) {
             return false;
         }
-
-        int nodeId = lastSentMessage.getMessagePayloadByte(0);
+        if (transaction.getSerialMessage() == null) {
+            return false;
+        }
+        int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
         logger.debug("NODE {}: ProtocolInfo", nodeId);
 
         ZWaveNode node = zController.getNode(nodeId);
@@ -64,6 +66,7 @@ public class IdentifyNodeMessageClass extends ZWaveCommandProcessor {
         boolean beaming = ((incomingMessage.getMessagePayloadByte(1) & 0x10) != 0);
         boolean security = ((incomingMessage.getMessagePayloadByte(1) & 0x01) != 0);
 
+        // TODO: How about the 100kbps option?
         int maxBaudRate = 9600;
         if ((incomingMessage.getMessagePayloadByte(0) & 0x38) == 0x10) {
             maxBaudRate = 40000;
@@ -135,7 +138,7 @@ public class IdentifyNodeMessageClass extends ZWaveCommandProcessor {
             }
         }
 
-        checkTransactionComplete(lastSentMessage, incomingMessage);
+        // checkTransactionComplete(transaction, incomingMessage);
 
         return true;
     }
