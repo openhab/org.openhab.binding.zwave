@@ -37,6 +37,7 @@
       <property name="commandClass:SWITCH_ALL">setVersion=1</property>
       <property name="commandClass:SCENE_ACTIVATION">setVersion=1</property>
       <property name="commandClass:SCENE_ACTUATOR_CONF">setVersion=1</property>
+      <property name="commandClass:SCHEDULE">setVersion=1</property>
       <property name="commandClass:MANUFACTURER_SPECIFIC">setVersion=1</property>
       <property name="commandClass:POWERLEVEL">setVersion=1</property>
       <property name="commandClass:NODE_NAMING">setVersion=1</property>

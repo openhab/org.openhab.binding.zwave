@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="shenzhen_doorwindowsensor_00_000" listed="false">
+    <label>Door/Window Sensor Door/Window Sensor</label>
+    <description><![CDATA[
+Door/Window Sensor<br /><h2>Inclusion Information</h2><p>1) Disassemble the door sensor main body and insert the battery. Make sure the</p> <p>device is located within the direct range of the controller.</p> <p>2) Set the controller into the learning mode (see mail controller’s operating manual).</p> <p>3) Quickly, triple click the code button, LED light will flash for 5 times.</p> <p>4) Door sensor will be detected and included in the Z-Wave network.</p> <p>5) Wait for the main controller to configure the sensor.</p> <br /><h2>Exclusion Information</h2><p>1) Make sure the sensor is connected to power source.</p> <p>2) Set the main controller into the learning mode (see main controller’s operating</p> <p>manual).</p> <p>3) Quickly, triple click the code button, LED light will flash for 5 times.</p> <p>4) Wait for the main controller to delete the sensor.</p> <br /><h2>Wakeup Information</h2><p>The minimum wakeup interval is 300s (5 minutes)</p> <p>The maximum wakeup interval is 16,777,200s (about 194 days)</p> <p>Allowable min step among each wakeup interval is 60 seconds, such as 360s, 420s, 480s…</p> <p>Note: The default value is 12 hours. This value is longer, the battery life is greater.</p>
+    ]]></description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="sensor_binary" typeId="sensor_binary">
+        <label>Binary Sensor</label>
+        <properties>
+          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="alarm_access" typeId="alarm_access">
+        <label>Alarm (access)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=ACCESS_CONTROL</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">BATTERY</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Shenzhen Neo Electronics</property>
+      <property name="modelId">Door/Window Sensor</property>
+      <property name="manufacturerId">0258</property>
+      <property name="manufacturerRef">0003:1082</property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_0_0" type="integer" groupName="configuration"
+                 min="0" max="4294967295">
+        <label>0: </label>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_1_2" type="integer" groupName="configuration"
+                 min="0" max="65535">
+        <label>1: ON/OFF Delay</label>
+        <description>Adjust the amount of delay before the OFF command is transmitted. 0 means send OFF command immediately.</description>
+        <default>30</default>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>2: Basic Set Level</label>
+        <description><![CDATA[
+Basic Set Command will be sent when the door/window is opened or closed, the receiver will take it for consideration; for instance, if a lamp module received the BSC of which value is decisive as to how bright of dim level of lamp module shall be.<br /><h1>Overview</h1><p>Available Settings:</p> <p> 0 - Off, Alarm cancelling or turning a device OFF</p> <p>1 - 99 or 255 – ON (Binary Switch Device)</p> <p>                      Dim Level (Multilevel Switch Device)</p>
+        ]]></description>
+        <default>99</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Group 1</label>
+        <description><![CDATA[
+Is assigned to the device status - OPEN/CLOSED. It enables the sensor to send reports and readings to Z-Wave Controller or Z-Wave Gateway whenever the sensor is triggered.<br /><h1>Overview</h1><p>NOTIFICATION_REPORT</p> <p>BATTERY_REPORT</p> <p>SENSOR_BINARY_REPORT</p> <p>DEVICE_RESET_LOCALLY_NOTIFICATION</p>
+        ]]></description>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Group 2</label>
+        <description><![CDATA[
+Sending control commands to associated devices. This association group is configured through the advanced parameters no. 1 and 2.<br /><h1>Overview</h1><p>BASIC_SET</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Group 3</label>
+        <description><![CDATA[
+Send Notification to associated devices.<br /><h1>Overview</h1><p>NOTIFICATION_REPORT</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_4" type="text" groupName="association" multiple="true">
+        <label>4: Group 4</label>
+        <description><![CDATA[
+Send Notification to associated devices.<br /><h1>Overview</h1><p>SENSOR_BINARY_REPORT</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+</thing:thing-descriptions>
