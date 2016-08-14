@@ -57,7 +57,7 @@ Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltag
       <property name="modelId">Power Plug</property>
       <property name="manufacturerId">0258</property>
       <property name="manufacturerRef">0003:1087</property>
-      <property name="defaultAssociations">2</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -147,15 +147,27 @@ Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltag
         <label>Association Groups</label>
       </parameter-group>
 
-      <parameter name="group_1" type="text" groupName="association" multiple="true">
+      <parameter name="group_1" type="text" groupName="association">
         <label>1: Group 1</label>
-        <description>is assigned to Plugs status - On/Off. Allows for receiving control command from trigger devices whenever the Plug is turned On or Off.</description>
-        <multipleLimit>16</multipleLimit>
+        <description><![CDATA[
+is assigned to Plugs status - On/Off. Allows for receiving control command from trigger devices whenever the Plug is turned On or Off.<br /><h1>Overview</h1><p>NOTIFICATION_REPORT_V4</p> <p>METER_REPORT_V4</p> <p>SWITCH_BINARY_REPORT</p> <p>DEVICE_RESET_LOCALLY_NOTIFICATION</p>
+        ]]></description>
       </parameter>
 
-      <parameter name="group_2" type="text" groupName="association">
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Group 2</label>
-        <description>reports relay's status to just one device, Z-Wave network's main controller by default. It's not recommended to modify settings of this association group.</description>
+        <description><![CDATA[
+Sending control commands to associated devices. If current load is over the max current defined in parameter #3, the Plug will send a BASIC_SET (0xFF) to associated devices. When current load is normal, plug will send a BASIC_SET (0x00).<br /><h1>Overview</h1><p>BASIC_SET</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Group 3</label>
+        <description><![CDATA[
+Send Notification to associated devices.<br /><h1>Overview</h1><p>NOTIFICATION_REPORT_V4</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
       </parameter>
 
     </config-description>
