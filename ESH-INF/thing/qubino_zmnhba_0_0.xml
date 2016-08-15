@@ -17,6 +17,12 @@
           <property name="binding:*:OnOffType">SWITCH_BINARY</property>
         </properties>
       </channel>
+      <channel id="sensor_temperature" typeId="sensor_temperature">
+        <label>Sensor (temperature)</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+        </properties>
+      </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
         <label>Electric meter (kWh)</label>
         <properties>
@@ -32,7 +38,7 @@
       <channel id="switch_binary1" typeId="switch_binary">
         <label>Switch 1</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY:1</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY:1,BASIC:1</property>
         </properties>
       </channel>
       <channel id="meter_kwh1" typeId="meter_kwh">
@@ -50,7 +56,7 @@
       <channel id="switch_binary2" typeId="switch_binary">
         <label>Switch 2</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY:2</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY:2,BASIC:2</property>
         </properties>
       </channel>
       <channel id="meter_kwh2" typeId="meter_kwh">
@@ -73,7 +79,6 @@
       <property name="modelId">ZMNHBA</property>
       <property name="manufacturerId">0159</property>
       <property name="manufacturerRef">0002:0001</property>
-      <property name="commandClass:SENSOR_MULTILEVEL">getSupported=false</property>
       <property name="defaultAssociations">3</property>
     </properties>
 
