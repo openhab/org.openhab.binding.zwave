@@ -881,6 +881,12 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                         int groupId = Integer.parseInt(defaultGroups[c]);
                         ZWaveAssociation association = new ZWaveAssociation(controller.getOwnNodeId());
 
+                        // We should know about all groups at this stage.
+                        // If we don't know about the group, then assume it doesn't exist
+                        if (node.getAssociationGroup(groupId) == null) {
+                            continue;
+                        }
+
                         // Check if we're already a member
                         if (node.getAssociationGroup(groupId).getAssociations().contains(association)) {
                             logger.debug("NODE {}: Node advancer: SET_ASSOCIATION - ASSOCIATION set for group {}",
