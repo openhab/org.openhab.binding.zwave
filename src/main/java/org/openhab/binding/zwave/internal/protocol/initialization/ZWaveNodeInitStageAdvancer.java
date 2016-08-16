@@ -962,13 +962,14 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                             logger.debug("NODE {}: Node advancer: GET_CONFIGURATION - checking {} - config",
                                     node.getNodeId(), parm.getName());
                             int index = Integer.parseInt(cfg[1]);
+                            int size = Integer.parseInt(cfg[2]);
 
                             // Some parameters don't return anything, so don't request them!
                             if (Arrays.asList(cfg).contains("wo")) {
                                 logger.debug("NODE {}: Node advancer: GET_CONFIGURATION - checking {} - wo",
                                         node.getNodeId(), parm.getName());
 
-                                configurationCommandClass.setParameterWriteOnly(index, true);
+                                configurationCommandClass.setParameterWriteOnly(index, size, true);
                                 continue;
                             }
 

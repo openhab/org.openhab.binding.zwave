@@ -8,7 +8,7 @@
  */
 package org.openhab.binding.zwave.test.internal.protocol.commandclass;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
 
@@ -34,8 +34,37 @@ public class ZWaveConfigurationCommandClassTest extends ZWaveCommandClassTest {
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 112, 5, 12, 0, 0, -1 };
         cls.setVersion(1);
         msg = cls.getConfigMessage(12);
-        byte[] x = msg.getMessageBuffer();
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+    }
+
+    @Test
+    public void getValueMessage_WriteOnly() {
+        ZWaveConfigurationCommandClass cls = (ZWaveConfigurationCommandClass) getCommandClass(
+                CommandClass.CONFIGURATION);
+        cls.setVersion(1);
+
+        // Make sure we can't read
+        cls.setParameterWriteOnly(12, 2, true);
+        assertNull(cls.getConfigMessage(12));
+
+        // But we should generate a write request
+        ZWaveConfigurationParameter parameter = cls.getParameter(12);
+        assertNotNull(cls.setConfigMessage(parameter));
+    }
+
+    @Test
+    public void getValueMessage_ReadOnly() {
+        ZWaveConfigurationCommandClass cls = (ZWaveConfigurationCommandClass) getCommandClass(
+                CommandClass.CONFIGURATION);
+        cls.setVersion(1);
+
+        // Make sure we can read
+        cls.setParameterReadOnly(12, true);
+        assertNotNull(cls.getConfigMessage(12));
+
+        // But we shouldn't generate a write request
+        ZWaveConfigurationParameter parameter = cls.getParameter(12);
+        assertNull(cls.setConfigMessage(parameter));
     }
 
     @Test
@@ -49,7 +78,6 @@ public class ZWaveConfigurationCommandClassTest extends ZWaveCommandClassTest {
         byte[] expectedResponseV1 = { 1, 15, 0, 19, 99, 8, 112, 4, 12, 4, 0, 0, 0, 34, 0, 0, -42 };
         cls.setVersion(1);
         msg = cls.setConfigMessage(parameter);
-        byte[] x = msg.getMessageBuffer();
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 }
