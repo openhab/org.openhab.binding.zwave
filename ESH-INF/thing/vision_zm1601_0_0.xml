@@ -30,6 +30,7 @@
       <property name="modelId">ZM1601</property>
       <property name="manufacturerId">0109</property>
       <property name="manufacturerRef">2005:0503</property>
+      <property name="dbReference">108</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

@@ -36,6 +36,7 @@
       <property name="modelId">SF812</property>
       <property name="manufacturerId">0060</property>
       <property name="manufacturerRef">000D:0001</property>
+      <property name="dbReference">33</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

@@ -25,6 +25,7 @@
       <property name="modelId">FS20Z</property>
       <property name="manufacturerId">014F</property>
       <property name="manufacturerRef">5246:3133</property>
+      <property name="dbReference">10</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

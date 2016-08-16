@@ -38,6 +38,7 @@
       <property name="modelId">RF9540-N</property>
       <property name="manufacturerId">001A</property>
       <property name="manufacturerRef">4449:0101</property>
+      <property name="dbReference">16</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

@@ -25,6 +25,7 @@
       <property name="modelId">DZPA1</property>
       <property name="manufacturerId">001D</property>
       <property name="manufacturerRef">1A02:0334</property>
+      <property name="dbReference">305</property>
     </properties>
 
   </thing-type>

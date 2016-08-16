@@ -27,6 +27,7 @@ Wireless Water Shutoff Valve<br /><h1>Overview</h1><p>The EBV105 water shutoff c
       <property name="modelId">EBV-105</property>
       <property name="manufacturerId">0157</property>
       <property name="manufacturerRef">0003:0512</property>
+      <property name="dbReference">271</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

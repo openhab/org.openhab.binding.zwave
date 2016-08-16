@@ -94,6 +94,7 @@
       <property name="modelId">FGD212</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0102:1000,0102:3000</property>
+      <property name="dbReference">133</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

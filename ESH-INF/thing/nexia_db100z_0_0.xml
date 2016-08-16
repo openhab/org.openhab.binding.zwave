@@ -30,6 +30,7 @@
       <property name="modelId">DB100Z</property>
       <property name="manufacturerId">0178</property>
       <property name="manufacturerRef">4442:3130</property>
+      <property name="dbReference">309</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

@@ -28,6 +28,7 @@ In-Wall Smart Dimmer<br /><h2>Inclusion Information</h2><p>1. Follow the instruc
       <property name="modelId">12729</property>
       <property name="manufacturerId">0063</property>
       <property name="manufacturerRef">4944:3033</property>
+      <property name="dbReference">319</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

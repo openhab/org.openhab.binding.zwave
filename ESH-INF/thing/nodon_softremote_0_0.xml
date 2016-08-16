@@ -30,6 +30,7 @@
       <property name="modelId">Soft Remote</property>
       <property name="manufacturerId">0165</property>
       <property name="manufacturerRef">0002:0002</property>
+      <property name="dbReference">250</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

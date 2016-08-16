@@ -48,6 +48,7 @@
       <property name="modelId">Molite</property>
       <property name="manufacturerId">008A</property>
       <property name="manufacturerRef">0003:0101</property>
+      <property name="dbReference">374</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

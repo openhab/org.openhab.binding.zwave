@@ -31,6 +31,7 @@
       <property name="modelId">RFTR9505</property>
       <property name="manufacturerId">001A</property>
       <property name="manufacturerRef">5244:0000</property>
+      <property name="dbReference">311</property>
     </properties>
 
   </thing-type>

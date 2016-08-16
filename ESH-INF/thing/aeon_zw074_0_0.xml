@@ -54,6 +54,7 @@
       <property name="modelId">ZW074</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0002:004A,0102:004A,0202:004A</property>
+      <property name="dbReference">72</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

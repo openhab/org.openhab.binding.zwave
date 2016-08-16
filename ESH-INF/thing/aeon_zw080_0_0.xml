@@ -27,6 +27,7 @@ Siren Gen5<br /><h1>Overview</h1><p>Update command classes -:<br />METER:5 :: AD
       <property name="modelId">ZW080</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0004:0050,0104:0050,0204:0050</property>
+      <property name="dbReference">90</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

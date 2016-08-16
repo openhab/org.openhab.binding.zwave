@@ -37,6 +37,7 @@
       <property name="modelId">RF9501</property>
       <property name="manufacturerId">001A</property>
       <property name="manufacturerRef">534C:0000</property>
+      <property name="dbReference">18</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

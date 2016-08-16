@@ -25,6 +25,7 @@
       <property name="modelId">RFWC5</property>
       <property name="manufacturerId">001A</property>
       <property name="manufacturerRef">574D:0000</property>
+      <property name="dbReference">15</property>
       <property name="defaultAssociations">127</property>
     </properties>
 

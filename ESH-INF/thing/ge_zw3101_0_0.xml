@@ -26,6 +26,7 @@
       <property name="modelId">ZW3101</property>
       <property name="manufacturerId">0063</property>
       <property name="manufacturerRef">4450:3030</property>
+      <property name="dbReference">44</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

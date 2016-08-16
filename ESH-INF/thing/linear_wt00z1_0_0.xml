@@ -19,6 +19,7 @@
       <property name="modelId">WT00Z-1</property>
       <property name="manufacturerId">014F</property>
       <property name="manufacturerRef">5457:3033</property>
+      <property name="dbReference">13</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

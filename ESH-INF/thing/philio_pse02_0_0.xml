@@ -25,6 +25,7 @@
       <property name="modelId">PSE02</property>
       <property name="manufacturerId">013C</property>
       <property name="manufacturerRef">0004:000A</property>
+      <property name="dbReference">320</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

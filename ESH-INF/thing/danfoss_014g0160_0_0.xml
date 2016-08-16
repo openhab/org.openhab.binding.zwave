@@ -44,6 +44,7 @@ Z-Wave room sensor<br /><h2>Inclusion Information</h2><p>Push one time LED Butto
       <property name="modelId">014G0160</property>
       <property name="manufacturerId">0002</property>
       <property name="manufacturerRef">0003:8010</property>
+      <property name="dbReference">359</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

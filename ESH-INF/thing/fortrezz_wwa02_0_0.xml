@@ -36,6 +36,7 @@
       <property name="modelId">WWA-02</property>
       <property name="manufacturerId">0084</property>
       <property name="manufacturerRef">0063:010C</property>
+      <property name="dbReference">222</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

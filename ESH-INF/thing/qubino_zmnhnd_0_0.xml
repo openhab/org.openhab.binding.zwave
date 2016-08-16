@@ -25,6 +25,7 @@
       <property name="modelId">ZMNHND</property>
       <property name="manufacturerId">0159</property>
       <property name="manufacturerRef">0002:0053</property>
+      <property name="dbReference">207</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

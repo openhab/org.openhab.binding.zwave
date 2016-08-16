@@ -89,6 +89,7 @@
       <property name="modelId">ZMNHOD</property>
       <property name="manufacturerId">0159</property>
       <property name="manufacturerRef">0003:0053</property>
+      <property name="dbReference">214</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

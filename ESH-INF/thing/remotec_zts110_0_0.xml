@@ -66,6 +66,7 @@
       <property name="modelId">ZTS-110</property>
       <property name="manufacturerId">5254</property>
       <property name="manufacturerRef">0200:8031,0202:8031</property>
+      <property name="dbReference">203</property>
       <property name="defaultAssociations">3</property>
     </properties>
 

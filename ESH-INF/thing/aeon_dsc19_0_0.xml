@@ -50,6 +50,7 @@
       <property name="modelId">DSC19</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:0013</property>
+      <property name="dbReference">79</property>
       <property name="defaultAssociations">1,2</property>
     </properties>
 

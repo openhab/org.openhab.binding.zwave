@@ -31,6 +31,7 @@
       <property name="modelId">ASR-ZW</property>
       <property name="manufacturerId">0059</property>
       <property name="manufacturerRef">0003:0001</property>
+      <property name="dbReference">310</property>
     </properties>
 
   </thing-type>

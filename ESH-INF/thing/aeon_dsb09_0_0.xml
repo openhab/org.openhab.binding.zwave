@@ -96,6 +96,7 @@
       <property name="modelId">DSB09</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0002:0009</property>
+      <property name="dbReference">84</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

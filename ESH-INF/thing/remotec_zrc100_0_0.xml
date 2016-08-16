@@ -5,33 +5,27 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="leviton_dzr15_00_000" listed="false">
-    <label>DZR15 Scene Capable Receptacle</label>
-    <description>Scene Capable Receptacle</description>
+  <thing-type id="remotec_zrc100_00_000" listed="false">
+    <label>ZRC-100 Remote Control</label>
+    <description>Remote Control</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
-        <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
-        </properties>
-      </channel>
       <channel id="scene_number" typeId="scene_number">
         <label>Scene Number</label>
         <properties>
-          <property name="binding:*:DecimalType">SCENE_ACTIVATION</property>
+          <property name="binding:*:OnOffType">BASIC</property>
         </properties>
       </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Leviton</property>
-      <property name="modelId">DZR15</property>
-      <property name="manufacturerId">001D</property>
-      <property name="manufacturerRef">1D04:0334</property>
-      <property name="dbReference">200</property>
+      <property name="vendor">Remotec</property>
+      <property name="modelId">ZRC-100</property>
+      <property name="manufacturerId">5254</property>
+      <property name="manufacturerRef">0002:8380</property>
+      <property name="dbReference">404</property>
     </properties>
 
   </thing-type>

@@ -36,6 +36,7 @@
       <property name="modelId">FE599NX</property>
       <property name="manufacturerId">003B</property>
       <property name="manufacturerRef">634B:504C</property>
+      <property name="dbReference">403</property>
     </properties>
 
   </thing-type>

@@ -49,6 +49,7 @@
       <property name="modelId">CA8900</property>
       <property name="manufacturerId">0005</property>
       <property name="manufacturerRef">4341:8900</property>
+      <property name="dbReference">388</property>
     </properties>
 
   </thing-type>

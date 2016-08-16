@@ -25,6 +25,7 @@
       <property name="modelId">TZ66D</property>
       <property name="manufacturerId">0118</property>
       <property name="manufacturerRef">0102:1020</property>
+      <property name="dbReference">157</property>
       <property name="defaultAssociations">4</property>
     </properties>
 
