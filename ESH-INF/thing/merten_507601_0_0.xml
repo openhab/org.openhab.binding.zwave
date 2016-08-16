@@ -25,6 +25,7 @@
       <property name="modelId">507601</property>
       <property name="manufacturerId">007A</property>
       <property name="manufacturerRef">8001:8003</property>
+      <property name="dbReference">399</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

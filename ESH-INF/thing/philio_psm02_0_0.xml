@@ -54,6 +54,7 @@
       <property name="modelId">PSM02</property>
       <property name="manufacturerId">013C</property>
       <property name="manufacturerRef">0002:0002</property>
+      <property name="dbReference">167</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

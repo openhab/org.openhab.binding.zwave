@@ -116,6 +116,7 @@ FUGA Wall 4-way Switch + Relay<br /><h1>Overview</h1><p>ZHC5010 is a wall switch
       <property name="modelId">ZHC5010</property>
       <property name="manufacturerId">0234</property>
       <property name="manufacturerRef">0003:010A</property>
+      <property name="dbReference">386</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

@@ -42,6 +42,7 @@
       <property name="modelId">11-01-011</property>
       <property name="manufacturerId">019A</property>
       <property name="manufacturerRef">0003:0003</property>
+      <property name="dbReference">251</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

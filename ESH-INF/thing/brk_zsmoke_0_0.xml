@@ -30,6 +30,7 @@
       <property name="modelId">ZSMOKE</property>
       <property name="manufacturerId">0138</property>
       <property name="manufacturerRef">0001:0001</property>
+      <property name="dbReference">239</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

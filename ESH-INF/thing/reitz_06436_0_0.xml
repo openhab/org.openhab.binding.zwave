@@ -32,6 +32,7 @@
       <property name="modelId">06436</property>
       <property name="manufacturerId">0064</property>
       <property name="manufacturerRef">4001:0000</property>
+      <property name="dbReference">50</property>
     </properties>
 
   </thing-type>

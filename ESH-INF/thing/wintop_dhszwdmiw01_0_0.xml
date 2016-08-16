@@ -32,6 +32,7 @@
       <property name="modelId">DHSZWDMIW01</property>
       <property name="manufacturerId">0097</property>
       <property name="manufacturerRef">1200:5502</property>
+      <property name="dbReference">398</property>
     </properties>
 
   </thing-type>

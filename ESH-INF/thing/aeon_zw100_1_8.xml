@@ -61,6 +61,7 @@
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0002:0064,0102:0064</property>
       <property name="versionMin">1.8</property>
+      <property name="dbReference">387</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

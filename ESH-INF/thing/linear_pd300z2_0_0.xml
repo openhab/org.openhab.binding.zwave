@@ -32,6 +32,7 @@
       <property name="modelId">PD300Z-2</property>
       <property name="manufacturerId">014F</property>
       <property name="manufacturerRef">4450:3030</property>
+      <property name="dbReference">7</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

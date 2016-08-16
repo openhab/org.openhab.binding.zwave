@@ -19,6 +19,7 @@
       <property name="modelId">DSD37</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0004:0025,0019:0004</property>
+      <property name="dbReference">66</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

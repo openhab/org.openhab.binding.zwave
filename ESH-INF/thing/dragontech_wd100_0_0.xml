@@ -26,6 +26,7 @@
       <property name="modelId">WD-100</property>
       <property name="manufacturerId">0184</property>
       <property name="manufacturerRef">4447:3034</property>
+      <property name="dbReference">243</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

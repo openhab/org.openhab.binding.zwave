@@ -19,6 +19,7 @@
       <property name="modelId">ZRTSI</property>
       <property name="manufacturerId">0047</property>
       <property name="manufacturerRef">5A52:5400</property>
+      <property name="dbReference">369</property>
     </properties>
 
   </thing-type>

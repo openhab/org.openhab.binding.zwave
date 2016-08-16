@@ -78,6 +78,7 @@
       <property name="modelId">TBZ48</property>
       <property name="manufacturerId">014F</property>
       <property name="manufacturerRef">5442:5431</property>
+      <property name="dbReference">376</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

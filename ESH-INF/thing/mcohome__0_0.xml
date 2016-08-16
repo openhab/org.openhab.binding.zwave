@@ -19,6 +19,7 @@
       <property name="modelId">MH3700-HP</property>
       <property name="manufacturerId">015F</property>
       <property name="manufacturerRef">0000:0000</property>
+      <property name="dbReference">337</property>
     </properties>
 
   </thing-type>

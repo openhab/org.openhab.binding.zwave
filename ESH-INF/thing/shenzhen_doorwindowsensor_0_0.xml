@@ -38,6 +38,7 @@ Door/Window Sensor<br /><h2>Inclusion Information</h2><p>1) Disassemble the door
       <property name="modelId">Door/Window Sensor</property>
       <property name="manufacturerId">0258</property>
       <property name="manufacturerRef">0003:1082</property>
+      <property name="dbReference">400</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

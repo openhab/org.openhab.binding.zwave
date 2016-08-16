@@ -48,6 +48,7 @@
       <property name="modelId">PST02C</property>
       <property name="manufacturerId">013C</property>
       <property name="manufacturerRef">0002:000E</property>
+      <property name="dbReference">170</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

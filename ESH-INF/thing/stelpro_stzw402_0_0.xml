@@ -43,6 +43,7 @@
       <property name="modelId">STZW402</property>
       <property name="manufacturerId">0239</property>
       <property name="manufacturerRef">0001:0001</property>
+      <property name="dbReference">315</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

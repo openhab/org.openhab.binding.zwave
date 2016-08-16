@@ -25,6 +25,7 @@
       <property name="modelId">DZS15</property>
       <property name="manufacturerId">001D</property>
       <property name="manufacturerRef">1C02:0334</property>
+      <property name="dbReference">195</property>
     </properties>
 
   </thing-type>

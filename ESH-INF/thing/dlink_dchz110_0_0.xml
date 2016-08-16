@@ -48,6 +48,7 @@
       <property name="modelId">DCH-Z110</property>
       <property name="manufacturerId">0108</property>
       <property name="manufacturerRef">0002:000E</property>
+      <property name="dbReference">252</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

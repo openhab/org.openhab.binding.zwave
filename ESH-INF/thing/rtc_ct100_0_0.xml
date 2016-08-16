@@ -84,6 +84,7 @@
       <property name="modelId">CT100</property>
       <property name="manufacturerId">0098</property>
       <property name="manufacturerRef">6401:0015,6401:0106,6401:0107,6401:01FD</property>
+      <property name="dbReference">96</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

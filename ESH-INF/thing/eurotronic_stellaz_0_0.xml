@@ -61,6 +61,7 @@
       <property name="modelId">StellaZ</property>
       <property name="manufacturerId">0148</property>
       <property name="manufacturerRef">0001:0001</property>
+      <property name="dbReference">183</property>
     </properties>
 
   </thing-type>

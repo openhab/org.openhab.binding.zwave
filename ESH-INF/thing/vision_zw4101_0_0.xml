@@ -34,6 +34,7 @@ Drapery controller (up/stop/down)<br /><h1>Overview</h1><p>Drapery controller, s
       <property name="modelId">ZW4101</property>
       <property name="manufacturerId">0109</property>
       <property name="manufacturerRef">200D:0D03</property>
+      <property name="dbReference">300</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

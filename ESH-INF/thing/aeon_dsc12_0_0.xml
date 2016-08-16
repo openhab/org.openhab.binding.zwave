@@ -43,6 +43,7 @@
       <property name="modelId">DSC12</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:000C</property>
+      <property name="dbReference">277</property>
       <property name="defaultAssociations">1,2</property>
     </properties>
 

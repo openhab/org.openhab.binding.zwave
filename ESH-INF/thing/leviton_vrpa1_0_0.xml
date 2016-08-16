@@ -33,6 +33,7 @@ Vizia RF + Scene Capable Plug-in Module<br /><h1>Overview</h1><p>The Vizia RF + 
       <property name="modelId">VRPA1</property>
       <property name="manufacturerId">001D</property>
       <property name="manufacturerRef">1805:0334</property>
+      <property name="dbReference">350</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

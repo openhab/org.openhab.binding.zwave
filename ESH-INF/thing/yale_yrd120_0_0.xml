@@ -38,6 +38,7 @@ Touchscreen deadbolt without key<br /><h2>Inclusion Information</h2><p>The lock 
       <property name="modelId">YRD120</property>
       <property name="manufacturerId">0129</property>
       <property name="manufacturerRef">0002:0800</property>
+      <property name="dbReference">402</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

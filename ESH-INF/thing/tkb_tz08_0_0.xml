@@ -68,6 +68,7 @@
       <property name="modelId">TZ08</property>
       <property name="manufacturerId">0118</property>
       <property name="manufacturerRef">0001:0006</property>
+      <property name="dbReference">293</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

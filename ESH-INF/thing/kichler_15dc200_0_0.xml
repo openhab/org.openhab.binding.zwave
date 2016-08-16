@@ -61,6 +61,7 @@
       <property name="modelId">15DC200</property>
       <property name="manufacturerId">0114</property>
       <property name="manufacturerRef">B005:3B60</property>
+      <property name="dbReference">391</property>
     </properties>
 
   </thing-type>

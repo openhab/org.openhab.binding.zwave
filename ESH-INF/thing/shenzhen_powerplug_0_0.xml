@@ -57,6 +57,7 @@ Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltag
       <property name="modelId">Power Plug</property>
       <property name="manufacturerId">0258</property>
       <property name="manufacturerRef">0003:1087</property>
+      <property name="dbReference">397</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

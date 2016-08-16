@@ -25,6 +25,7 @@
       <property name="modelId">ZWN-333</property>
       <property name="manufacturerId">011A</property>
       <property name="manufacturerRef">0101:0104</property>
+      <property name="dbReference">395</property>
     </properties>
 
   </thing-type>

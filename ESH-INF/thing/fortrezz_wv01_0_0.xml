@@ -31,6 +31,7 @@
       <property name="modelId">WV-01</property>
       <property name="manufacturerId">0084</property>
       <property name="manufacturerRef">0213:0215</property>
+      <property name="dbReference">368</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

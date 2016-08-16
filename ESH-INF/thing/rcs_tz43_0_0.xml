@@ -67,6 +67,7 @@
       <property name="modelId">TZ43</property>
       <property name="manufacturerId">0010</property>
       <property name="manufacturerRef">0001:0002</property>
+      <property name="dbReference">380</property>
     </properties>
 
   </thing-type>

@@ -38,6 +38,7 @@
       <property name="modelId">LSM-15</property>
       <property name="manufacturerId">0113</property>
       <property name="manufacturerRef">5257:3533</property>
+      <property name="dbReference">318</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

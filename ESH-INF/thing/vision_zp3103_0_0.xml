@@ -36,6 +36,7 @@
       <property name="modelId">ZP3103</property>
       <property name="manufacturerId">0109</property>
       <property name="manufacturerRef">2003:0302</property>
+      <property name="dbReference">316</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

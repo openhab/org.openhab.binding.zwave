@@ -36,6 +36,7 @@
       <property name="modelId">DSB29</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0002:0004,0002:001D</property>
+      <property name="dbReference">70</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

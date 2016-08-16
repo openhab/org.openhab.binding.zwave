@@ -44,6 +44,7 @@
       <property name="modelId">ZMNHSD</property>
       <property name="manufacturerId">0159</property>
       <property name="manufacturerRef">0001:0052</property>
+      <property name="dbReference">324</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
