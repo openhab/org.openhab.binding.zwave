@@ -43,6 +43,7 @@
       <property name="modelId">TF016</property>
       <property name="manufacturerId">019B</property>
       <property name="manufacturerRef">0001:0001</property>
+      <property name="dbReference">247</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

@@ -38,6 +38,7 @@ Z-Wave PIR Motion Sensor<br /><h1>Overview</h1><p>The sensor has two Association
       <property name="modelId">Ecolink PIR</property>
       <property name="manufacturerId">014A</property>
       <property name="manufacturerRef">0001:0001</property>
+      <property name="dbReference">137</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

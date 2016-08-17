@@ -85,6 +85,7 @@
       <property name="modelId">FGRGBW</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0900:1000,0900:2000,0900:4000,0900:3000</property>
+      <property name="dbReference">131</property>
       <property name="commandClass:SWITCH_MULTILEVEL:1">getSupported=false</property>
       <property name="commandClass:SWITCH_MULTILEVEL:2">getSupported=false</property>
       <property name="commandClass:SWITCH_MULTILEVEL:3">getSupported=false</property>

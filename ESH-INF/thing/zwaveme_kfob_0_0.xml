@@ -30,6 +30,7 @@
       <property name="modelId">KFOB</property>
       <property name="manufacturerId">0115</property>
       <property name="manufacturerRef">0100:0001,0100:0002,0100:0101,0100:0102,0100:0103</property>
+      <property name="dbReference">146</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

@@ -25,6 +25,7 @@
       <property name="modelId">DSC26</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:001A</property>
+      <property name="dbReference">82</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

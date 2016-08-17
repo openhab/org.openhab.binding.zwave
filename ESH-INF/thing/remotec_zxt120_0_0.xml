@@ -54,6 +54,7 @@
       <property name="modelId">ZXT-120</property>
       <property name="manufacturerId">5254</property>
       <property name="manufacturerRef">0101:8377,0102:8377</property>
+      <property name="dbReference">202</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

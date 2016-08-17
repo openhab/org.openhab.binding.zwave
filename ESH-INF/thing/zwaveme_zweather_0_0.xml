@@ -78,6 +78,7 @@
       <property name="modelId">Z-Weather</property>
       <property name="manufacturerId">0115</property>
       <property name="manufacturerRef">0100:0400</property>
+      <property name="dbReference">258</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

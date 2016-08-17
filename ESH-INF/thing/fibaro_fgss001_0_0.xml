@@ -54,6 +54,7 @@
       <property name="modelId">FGSS001</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0C00:1000,0C00:3000</property>
+      <property name="dbReference">134</property>
       <property name="defaultAssociations">3</property>
     </properties>
 

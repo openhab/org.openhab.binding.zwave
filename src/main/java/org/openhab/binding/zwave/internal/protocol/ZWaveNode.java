@@ -230,7 +230,7 @@ public class ZWaveNode {
 
         switch (state) {
             case ALIVE:
-                logger.debug("NODE {}: Node is ALIVE. Init stage is {}:{}.", nodeId, getNodeInitStage().toString());
+                logger.debug("NODE {}: Node is ALIVE. Init stage is {}.", nodeId, getNodeInitStage().toString());
 
                 // Reset the resend counter
                 resendCount = 0;

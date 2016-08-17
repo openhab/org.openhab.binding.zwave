@@ -36,6 +36,7 @@
       <property name="modelId">YKFCON</property>
       <property name="manufacturerId">0129</property>
       <property name="manufacturerRef">0006:0000</property>
+      <property name="dbReference">292</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

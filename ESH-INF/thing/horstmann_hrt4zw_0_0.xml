@@ -50,6 +50,7 @@ Battery Powered Wall Thermostat<br /><h1>Overview</h1><p><strong>Note</strong>: 
       <property name="modelId">HRT4-ZW</property>
       <property name="manufacturerId">0059</property>
       <property name="manufacturerRef">0001:0003</property>
+      <property name="dbReference">20</property>
       <property name="defaultAssociations">1,2,3,4,5</property>
     </properties>
 

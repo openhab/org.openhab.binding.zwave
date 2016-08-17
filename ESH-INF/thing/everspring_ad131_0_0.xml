@@ -26,6 +26,7 @@
       <property name="modelId">AD131</property>
       <property name="manufacturerId">0060</property>
       <property name="manufacturerRef">0003:0001</property>
+      <property name="dbReference">23</property>
     </properties>
 
   </thing-type>

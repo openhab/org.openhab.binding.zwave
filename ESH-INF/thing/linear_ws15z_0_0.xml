@@ -43,6 +43,7 @@
       <property name="modelId">WS15Z-1</property>
       <property name="manufacturerId">014F</property>
       <property name="manufacturerRef">5257:3533</property>
+      <property name="dbReference">4</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

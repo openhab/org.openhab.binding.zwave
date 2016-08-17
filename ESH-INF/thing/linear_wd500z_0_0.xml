@@ -26,6 +26,7 @@
       <property name="modelId">WD500Z-1</property>
       <property name="manufacturerId">014F</property>
       <property name="manufacturerRef">4457:3034</property>
+      <property name="dbReference">6</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

@@ -33,6 +33,7 @@
       <property name="modelId">ZWS12</property>
       <property name="manufacturerId">0085</property>
       <property name="manufacturerRef">0003:0001</property>
+      <property name="dbReference">325</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

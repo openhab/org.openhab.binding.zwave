@@ -66,6 +66,7 @@
       <property name="modelId">PST02A</property>
       <property name="manufacturerId">013C</property>
       <property name="manufacturerRef">0002:000C</property>
+      <property name="dbReference">168</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

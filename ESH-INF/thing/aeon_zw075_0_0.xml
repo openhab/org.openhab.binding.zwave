@@ -60,6 +60,7 @@
       <property name="modelId">ZW075</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:004B,0203:004B</property>
+      <property name="dbReference">83</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

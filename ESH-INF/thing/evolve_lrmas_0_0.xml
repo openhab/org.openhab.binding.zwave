@@ -49,6 +49,7 @@
       <property name="modelId">LRM-AS</property>
       <property name="manufacturerId">0113</property>
       <property name="manufacturerRef">4457:3034</property>
+      <property name="dbReference">39</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

@@ -27,6 +27,7 @@
       <property name="modelId">ZW20R</property>
       <property name="manufacturerId">011A</property>
       <property name="manufacturerRef">0101:0603</property>
+      <property name="dbReference">185</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

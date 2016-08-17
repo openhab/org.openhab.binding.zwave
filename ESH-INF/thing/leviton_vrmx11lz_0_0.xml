@@ -38,6 +38,7 @@
       <property name="modelId">VRMX1-1LZ</property>
       <property name="manufacturerId">001D</property>
       <property name="manufacturerRef">0602:0334</property>
+      <property name="dbReference">191</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

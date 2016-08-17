@@ -44,6 +44,7 @@
       <property name="modelId">DSC08</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:0008</property>
+      <property name="dbReference">77</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

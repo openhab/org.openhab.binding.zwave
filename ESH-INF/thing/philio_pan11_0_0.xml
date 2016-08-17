@@ -61,6 +61,7 @@
       <property name="modelId">PAN11</property>
       <property name="manufacturerId">013C</property>
       <property name="manufacturerRef">0001:0001,0001:0011,0001:0030</property>
+      <property name="dbReference">177</property>
       <property name="commandClass:SWITCH_BINARY">getSupported=false</property>
       <property name="commandClass:ALARM">getSupported=false</property>
       <property name="defaultAssociations">1</property>

@@ -36,6 +36,7 @@
       <property name="modelId">SP103</property>
       <property name="manufacturerId">0060</property>
       <property name="manufacturerRef">0101:0001</property>
+      <property name="dbReference">29</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

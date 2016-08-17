@@ -54,6 +54,7 @@
       <property name="modelId">Multisensor</property>
       <property name="manufacturerId">0097</property>
       <property name="manufacturerRef">1180:5501</property>
+      <property name="dbReference">326</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

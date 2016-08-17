@@ -30,6 +30,7 @@
       <property name="modelId">WA105DBZ</property>
       <property name="manufacturerId">014F</property>
       <property name="manufacturerRef">2005:0503,2009:0903</property>
+      <property name="dbReference">365</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

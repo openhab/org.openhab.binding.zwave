@@ -8,7 +8,7 @@
  */
 package org.openhab.binding.zwave.test.internal.protocol.commandclass;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
 
@@ -36,6 +36,36 @@ public class ZWaveConfigurationCommandClassTest extends ZWaveCommandClassTest {
         msg = cls.getConfigMessage(12).getSerialMessage();
         msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+    }
+
+    @Test
+    public void getValueMessage_WriteOnly() {
+        ZWaveConfigurationCommandClass cls = (ZWaveConfigurationCommandClass) getCommandClass(
+                CommandClass.CONFIGURATION);
+        cls.setVersion(1);
+
+        // Make sure we can't read
+        cls.setParameterWriteOnly(12, 2, true);
+        assertNull(cls.getConfigMessage(12));
+
+        // But we should generate a write request
+        ZWaveConfigurationParameter parameter = cls.getParameter(12);
+        assertNotNull(cls.setConfigMessage(parameter));
+    }
+
+    @Test
+    public void getValueMessage_ReadOnly() {
+        ZWaveConfigurationCommandClass cls = (ZWaveConfigurationCommandClass) getCommandClass(
+                CommandClass.CONFIGURATION);
+        cls.setVersion(1);
+
+        // Make sure we can read
+        cls.setParameterReadOnly(12, true);
+        assertNotNull(cls.getConfigMessage(12));
+
+        // But we shouldn't generate a write request
+        ZWaveConfigurationParameter parameter = cls.getParameter(12);
+        assertNull(cls.setConfigMessage(parameter));
     }
 
     @Test

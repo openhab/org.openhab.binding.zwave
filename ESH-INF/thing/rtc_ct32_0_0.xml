@@ -173,6 +173,7 @@
       <property name="modelId">CT32</property>
       <property name="manufacturerId">0098</property>
       <property name="manufacturerRef">2002:0100</property>
+      <property name="dbReference">99</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

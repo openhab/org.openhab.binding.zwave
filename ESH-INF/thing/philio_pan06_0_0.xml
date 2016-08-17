@@ -49,6 +49,7 @@
       <property name="modelId">PAN06</property>
       <property name="manufacturerId">013C</property>
       <property name="manufacturerRef">0001:0004,0001:0013</property>
+      <property name="dbReference">173</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

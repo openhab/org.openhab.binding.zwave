@@ -219,19 +219,23 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                 if (cfg[1].equals("softreset") && value instanceof BigDecimal
                         && ((BigDecimal) value).intValue() == ZWaveBindingConstants.ACTION_CHECK_VALUE) {
                     controller.requestSoftReset();
-                    value = "";
+
+                    value = new BigDecimal(0);
                 } else if (cfg[1].equals("hardreset") && value instanceof BigDecimal
                         && ((BigDecimal) value).intValue() == ZWaveBindingConstants.ACTION_CHECK_VALUE) {
                     controller.requestHardReset();
-                    value = "";
+
+                    value = new BigDecimal(0);
                 } else if (cfg[1].equals("exclude") && value instanceof BigDecimal
                         && ((BigDecimal) value).intValue() == ZWaveBindingConstants.ACTION_CHECK_VALUE) {
                     controller.requestRemoveNodesStart();
-                    value = "";
+
+                    value = new BigDecimal(0);
                 } else if (cfg[1].equals("sync") && value instanceof BigDecimal
                         && ((BigDecimal) value).intValue() == ZWaveBindingConstants.ACTION_CHECK_VALUE) {
                     controller.requestRequestNetworkUpdate();
-                    value = "";
+
+                    value = new BigDecimal(0);
                 } else if (cfg[1].equals("suc") && value instanceof Boolean) {
                     // TODO: Do we need to set this immediately
                 }

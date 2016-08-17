@@ -38,6 +38,7 @@ Yale Real Living Touchscreen Lever Lock<br /><h2>Inclusion Information</h2><p>To
       <property name="modelId">YRL220</property>
       <property name="manufacturerId">0129</property>
       <property name="manufacturerRef">0001:0409</property>
+      <property name="dbReference">379</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

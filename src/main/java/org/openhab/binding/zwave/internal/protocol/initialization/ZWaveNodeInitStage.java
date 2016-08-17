@@ -80,13 +80,18 @@ public enum ZWaveNodeInitStage {
     /**
      * Check if the current stage has completed the static stages.
      *
-     * @return true if static stages complete
+     * @return true if static stages are complete
      */
     public boolean isStaticComplete() {
-        if (ordinal() > SESSION_START.ordinal()) {
-            return true;
-        }
-        return false;
+        return (ordinal() > SESSION_START.ordinal());
+    }
+
+    /**
+     *
+     * @return true if dynamic stages are complete
+     */
+    public boolean isDynamicComplete() {
+        return (ordinal() > DYNAMIC_END.ordinal());
     }
 
     /**

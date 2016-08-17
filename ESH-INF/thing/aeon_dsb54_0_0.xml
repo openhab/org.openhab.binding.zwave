@@ -30,6 +30,7 @@
       <property name="modelId">DSB54</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0002:0036</property>
+      <property name="dbReference">68</property>
       <property name="defaultAssociations">1,2</property>
     </properties>
 

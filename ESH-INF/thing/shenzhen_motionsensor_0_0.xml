@@ -44,6 +44,7 @@ PIR Motion Sensor<br /><h2>Inclusion Information</h2><p>1) Disassemble the PIR m
       <property name="modelId">Motion Sensor</property>
       <property name="manufacturerId">0258</property>
       <property name="manufacturerRef">0003:1083</property>
+      <property name="dbReference">401</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

@@ -25,6 +25,7 @@
       <property name="modelId">DSA03202</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0001:0003,0006:0002</property>
+      <property name="dbReference">74</property>
       <property name="commandClass:WAKE_UP">getSupported=false</property>
     </properties>
 

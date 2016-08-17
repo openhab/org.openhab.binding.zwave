@@ -25,6 +25,7 @@
       <property name="modelId">Reitz 05431</property>
       <property name="manufacturerId">0064</property>
       <property name="manufacturerRef">2001:0000</property>
+      <property name="dbReference">55</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

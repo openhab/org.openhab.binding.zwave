@@ -79,7 +79,7 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
     @Override
     public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
             throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received Configuration Request", this.getNode().getNodeId());
+        logger.debug("NODE {}: Received Configuration Request", getNode().getNodeId());
         int command = serialMessage.getMessagePayloadByte(offset);
         switch (command) {
             case CONFIGURATIONCMD_SET:
@@ -90,8 +90,7 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
                 break;
             default:
                 logger.warn(String.format("NODE %d: Unsupported Command 0x%02X for command class %s (0x%02X).",
-                        this.getNode().getNodeId(), command, this.getCommandClass().getLabel(),
-                        this.getCommandClass().getKey()));
+                        getNode().getNodeId(), command, getCommandClass().getLabel(), getCommandClass().getKey()));
         }
     }
 
@@ -114,7 +113,7 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
 
         // ZWave plus devices seem to return 0 if we request a parameter that doesn't exist
         if (size == 0) {
-            logger.warn("NODE {}: Parameter {} response has 0 length", this.getNode().getNodeId(), parameter);
+            logger.warn("NODE {}: Parameter {} response has 0 length", getNode().getNodeId(), parameter);
             return;
         }
 
@@ -123,23 +122,23 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
             int value = extractValue(serialMessage.getMessagePayload(), offset + 3, size);
 
             logger.debug("NODE {}: Node configuration report, parameter = {}, value = {}, size = {}",
-                    this.getNode().getNodeId(), parameter, value, size);
+                    getNode().getNodeId(), parameter, value, size);
 
             ZWaveConfigurationParameter configurationParameter;
 
             // Check if the parameter exists in our list
-            configurationParameter = this.configParameters.get(parameter);
+            configurationParameter = configParameters.get(parameter);
             if (configurationParameter == null) {
                 configurationParameter = new ZWaveConfigurationParameter(parameter, value, size);
             } else {
                 configurationParameter.setValue(value);
             }
 
-            this.configParameters.put(parameter, configurationParameter);
+            configParameters.put(parameter, configurationParameter);
 
-            ZWaveConfigurationParameterEvent zEvent = new ZWaveConfigurationParameterEvent(this.getNode().getNodeId(),
+            ZWaveConfigurationParameterEvent zEvent = new ZWaveConfigurationParameterEvent(getNode().getNodeId(),
                     configurationParameter);
-            this.getController().notifyEventListeners(zEvent);
+            getController().notifyEventListeners(zEvent);
         } catch (NumberFormatException e) {
             return;
         }
@@ -152,10 +151,10 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
      */
     public ZWaveTransaction getConfigMessage(int parameter) {
         // Check if the parameter exists in our list
-        ZWaveConfigurationParameter configurationParameter = this.configParameters.get(parameter);
+        ZWaveConfigurationParameter configurationParameter = configParameters.get(parameter);
         if (configurationParameter != null && configurationParameter.getWriteOnly() == true) {
             logger.debug("NODE {}: CONFIGURATIONCMD_GET ignored for parameter {} - parameter is write only",
-                    this.getNode().getNodeId(), parameter);
+                    getNode().getNodeId(), parameter);
             return null;
         }
 
@@ -181,7 +180,7 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
     public ZWaveTransaction setConfigMessage(ZWaveConfigurationParameter parameter) {
         if (parameter != null && parameter.getReadOnly() == true) {
             logger.debug("NODE {}: CONFIGURATIONCMD_SET ignored for parameter {} - parameter is read only",
-                    this.getNode().getNodeId(), parameter);
+                    getNode().getNodeId(), parameter);
             return null;
         }
 
@@ -237,6 +236,7 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
         configurationParameter = configParameters.get(index);
         if (configurationParameter == null) {
             configurationParameter = new ZWaveConfigurationParameter(index, 0, 1);
+            configParameters.put(index, configurationParameter);
         }
 
         configurationParameter.setReadOnly(readOnly);
@@ -248,15 +248,17 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
      * avoided.
      *
      * @param index the parameter index
+     * @param size the parameter size
      * @param writeOnly true if the parameter can not be read
      */
-    public void setParameterWriteOnly(Integer index, boolean writeOnly) {
+    public void setParameterWriteOnly(Integer index, Integer size, boolean writeOnly) {
         ZWaveConfigurationParameter configurationParameter;
 
         // Check if the parameter exists in our list
-        configurationParameter = this.configParameters.get(index);
+        configurationParameter = configParameters.get(index);
         if (configurationParameter == null) {
             configurationParameter = new ZWaveConfigurationParameter(index, 0, 1);
+            configParameters.put(index, configurationParameter);
         }
 
         configurationParameter.setWriteOnly(writeOnly);
@@ -285,7 +287,7 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
          * @return the configuration parameter.
          */
         public ZWaveConfigurationParameter getParameter() {
-            return (ZWaveConfigurationParameter) this.getValue();
+            return (ZWaveConfigurationParameter) getValue();
         }
     }
 }
