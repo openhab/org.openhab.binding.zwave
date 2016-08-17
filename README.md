@@ -5,11 +5,11 @@ layout: documentation
 {% include base.html %}
 
 # ZWave Binding
-The ZWave binding supports an interface to a wireless ZWave home automation network. 
+The ZWave binding supports an interface to a wireless Z-Wave home automation network. 
 
 ZWave is a wireless home automation protocol with reliable two way communications between nodes. It supports a mesh network where mains powered nodes can route messages between nodes that could otherwise not communicate with each other. The network supports hop distances of up to four hops.
 
-A wide range of devices are supported from lights, switches and sensors to smoke alarms, window coverings and keyfobs. ZWave certification guarantees that certified devices will be compatible with each other and the network. 
+A wide range of devices are supported from lights, switches and sensors to smoke alarms, window coverings and keyfobs. Z-Wave certification guarantees that certified devices will be compatible with each other and the network. 
 
 ## Supported Things
 
@@ -20,16 +20,84 @@ Before the binding can be used, a serial adapter must be added. This needs to be
 
 ## Discovery
 
-Once the binding is authorized, and an adapter is added, it automatically reads all devices that are set up on the ZWave controller and puts them in the Inbox.
+Once the binding is authorized, and an adapter is added, it automatically reads all devices that are set up on the Z-Wave controller and puts them in the Inbox.
 
 ## Binding Configuration
 
+There is no binding level configuration required for the Z-Wave binding. All configuration is performed on the devices, or the controller. This allows the system to support multiple controllers.
+
+### Controller Configuration
 
 
-## Thing Configuration
-
+### Thing Configuration
 
 
 ## Channels
 
+## Initialisation
 
+## Z-Wave Network
+
+This section provides information on the Z-Wave network, and how functions are implemented in the binding.
+
+### Network Overview
+
+The Z-Wave network includes devices known as *Controllers* and *Slaves*. As the name suggests, *Controllers* control how the network runs and provide network administration functions, while *Slaves* are users of the network.
+
+_Home ID_
+The network is identified with a *Home ID*. This is programmed into the controller, and can't be changed. It is used to identify the network in all frames that are transmitted over the air. When a device is included into a network, the controller sets the *Home ID* of the network in the slave so that the slave will only communicate over this network until it is removed from the network.
+
+_Node ID_
+Each node in the network is identified with a *Node ID*. The controller allocated the *Node ID* when the device is included into the network. A single Z-Wave network supports 232 devices (*Node ID* 1 to 232). The controller will allocate node IDs sequentially. Normally therefore the controller has Node ID 1 since it is normally the first device in the network. IDs will then be allocated sequentially up to number 232 after which the controller will allocate unused addresses.
+
+#### Message Routing
+
+A Z-Wave network is a *Mesh Network*. This allows each device in the network to route frames within the network so that devices don't need to communicate directly with the controller.  The Z-Wave network allows up to 4 hops.  For a network to work efficiently, each device must be able to communicate with a number of other devices - this creates what is known as a "Strong Mesh". It provides the controller with multiple options when selecting routes, and makes the network tolerant of device failures or radio interference issues.
+
+If a route doesn't work, the controller will try a different route - up to three routes will be tried and if the message is not delivered the controller will report the failure.
+
+Frames can also be transmitted as *Broadcast Frames* within the Z-Wave network, however to avoid overloading the network, *Broadcast Frames* are not routed so can only be used within direct communication of the sending device.
+
+#### Command Classes
+
+Z-Wave uses what are known as *Command Classes* to communicate. These *Command Classes* are a set of standardised commands to allow devices to perform specific functions. Each *Command Class* has a specific function, and each device will likely support multiple classes to allow the users to interact with the device.
+
+Every device supports the *BASIC* command class. This is normally mapped to a specific *Command Class* - the *BASIC* class is used to provide a high degree of interoperability between devices, and is especially useful when devices are communicating peer-to-peer as slaves do not need to know the detail of many different classes.
+
+### Controllers
+
+There are different types of controllers.
+
+#### Primary Controller
+There is a single *Primary* controller in the network. This controller provides the network routing table
+
+#### Static Update Controller (SUC)
+
+#### Static ID Server (SIS)
+
+### Slaves
+
+
+### Associations
+
+Associations are used by Z-Wave devices to send commands from one device to another, independent of the controller. This could be used to turn on a light when a movement sensor is triggered. Associations are also used to send state updates to the controller when the state of a device changes. For example, if you turn a light on, the device will let the controller know so that the state of the light is shown correctly within the user interface.
+
+Often there is a *Lifeline* association group, and normally this is the only association that is required in order to notify the binding of changes to the device. If you set the controller node into other association groups, you will likely receive multiple notifications - while this shouldn't cause problems most of the time, it can reduce battery life in battery powered devices, and may cause issues with rules.
+
+### Battery Devices
+
+Z-Wave battery devices require additional configuration in order for them to operate properly. In Z-Wave, most battery devices spend the majority of the time sleeping, and they only wake up very occasionally to allow commands to be sent to them. The binding therefore queues any messages to battery devices until they wake up - this can be every 10 minutes or so, or it could be once per day! All battery devices will have a a button, or some other way to wake the device up, and this can be useful while configuring the devices.
+
+In order to configure the device properly following its initial inclusion in the network, the device must be woken up a number of times while close to the controller. During this time, the binding will read the device information, but will also configure some settings. The most important is to configure the wakeup period, and wakeup node - until this is done, the device will not wake up periodically, and if it is out of direct range of the controller, it will not be able to communicate with the controller.
+
+### Binding Maintenance Functions
+
+#### Mesh Heal
+
+Sometimes the Z-Wave mesh can get messed up and nodes can become 'lost'. In theory, the Z-Wave controller should automatically resolve these issues, and any device that finds itself orphaned from the network should send a *Explorer Frames* to request a routing update.
+
+In order to manually repair the mesh, the binding implements a *mesh heal* function. This will systematically work through the network nodes, starting with the controller and working outwards. For each node, the controller will request an update to the nodes neighbors - this can take up to a minute to complete foe each node, although it is normally much less. The neighbor update will only be performed on nodes that are *listening* - this means battery devices will not be updated through this process but they should be updated by the controller.
+
+While the neighbor update is running, all nodes in the system will be taken offline to avoid network traffic that may adversely impact the update.
+
+Once the neighbor update is complete, the system will perform a routing update on all nodes. Z-Wave is a "source routed mesh network" which means that the controller needs to tell the end nodes information about its routes. Specifically, the controller will provide each node a list of routes required to talk to the controller, the SUC (if it exists in the network), and other nodes to which the controller needs to talk to (eg for associated devices). The binding simply instructs the stick to configure a route between two nodes - the route itself if derived by the stick and the binding has no visibility of the actual routes being used.
