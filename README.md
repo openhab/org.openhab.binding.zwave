@@ -28,6 +28,20 @@ There is no binding level configuration required for the Z-Wave binding. All con
 
 ### Controller Configuration
 
+#### Serial Port
+
+#### Controller Is Master
+
+#### Controller Is SUC
+
+#### Heal Time
+
+#### Inclusion Mode
+
+#### Secure Inclusion Mode
+
+#### Network Security Key
+
 
 ### Thing Configuration
 
@@ -44,10 +58,10 @@ This section provides information on the Z-Wave network, and how functions are i
 
 The Z-Wave network includes devices known as *Controllers* and *Slaves*. As the name suggests, *Controllers* control how the network runs and provide network administration functions, while *Slaves* are users of the network.
 
-_Home ID_
+#### Home ID
 The network is identified with a *Home ID*. This is programmed into the controller, and can't be changed. It is used to identify the network in all frames that are transmitted over the air. When a device is included into a network, the controller sets the *Home ID* of the network in the slave so that the slave will only communicate over this network until it is removed from the network.
 
-_Node ID_
+#### Node ID
 Each node in the network is identified with a *Node ID*. The controller allocated the *Node ID* when the device is included into the network. A single Z-Wave network supports 232 devices (*Node ID* 1 to 232). The controller will allocate node IDs sequentially. Normally therefore the controller has Node ID 1 since it is normally the first device in the network. IDs will then be allocated sequentially up to number 232 after which the controller will allocate unused addresses.
 
 #### Message Routing
@@ -90,6 +104,8 @@ Z-Wave battery devices require additional configuration in order for them to ope
 
 In order to configure the device properly following its initial inclusion in the network, the device must be woken up a number of times while close to the controller. During this time, the binding will read the device information, but will also configure some settings. The most important is to configure the wakeup period, and wakeup node - until this is done, the device will not wake up periodically, and if it is out of direct range of the controller, it will not be able to communicate with the controller.
 
+### Polling
+
 ### Binding Maintenance Functions
 
 #### Mesh Heal
@@ -101,3 +117,25 @@ In order to manually repair the mesh, the binding implements a *mesh heal* funct
 While the neighbor update is running, all nodes in the system will be taken offline to avoid network traffic that may adversely impact the update.
 
 Once the neighbor update is complete, the system will perform a routing update on all nodes. Z-Wave is a "source routed mesh network" which means that the controller needs to tell the end nodes information about its routes. Specifically, the controller will provide each node a list of routes required to talk to the controller, the SUC (if it exists in the network), and other nodes to which the controller needs to talk to (eg for associated devices). The binding simply instructs the stick to configure a route between two nodes - the route itself if derived by the stick and the binding has no visibility of the actual routes being used.
+
+### Z-Wave Device Database
+
+A database of device information is required for Z-Wave since there is no way to know the devices configuration directly from the device. Some Z-Wave command classes have preset configuration, and these we can implicitly configure, however the configuration command class has no device specific declarations. This data is normally provided by the device manufacturer in the manual, or on their website.
+
+The binding makes use of the database to derive device names, and provide a list of channels that are available on the device. If there is no database entry, then (currently) the device will show up as *Unknown* in the things list.
+
+Devices are identified in the database by 4 pieces of information that are provided by the device during the initial discovery process. These are -:
+
+* Manufacturer ID
+* Device Type
+* Device ID
+* Firmware version
+
+The primary identification is performed using the Manufacturer ID, Device Type and Device ID. Many devices use multiple deviceType and deviceId sets to identify different regions, or other minor differences, and some manufacturers will produce multiple firmware versions for the same device, so this information is also used in some instances.
+
+#### Unknown Devices 
+
+If the device is listed as *Unknown*, then the device has not been fully discovered by the binding. There are a few possible reasons for this -:
+
+* **The device is not in the database.** If the device attributes show that this device has a valid manufacturer ID, device ID and type, then this is likely the case. Even if the device is in the database, some manufacturers use multiple sets of references for different regions or versions, and your device references may not be in the database. In either case, the database must be updated and you should raise an issue to get this addressed.
+* **The device initialisation is not complete.** Once the device is included into the network, the binding must interrogate it to find out what type of device it is. One part of this process is to get the manufacturer information required to identify the device, and until this is done, the device will remain unknown. For mains powered devices, this will occur quickly, however for battery devices the device must be woken up a number of  times to allow the discovery phase to complete. This must be performed with the device close to the controller.  

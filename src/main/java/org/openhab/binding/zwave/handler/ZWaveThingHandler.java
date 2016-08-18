@@ -1151,7 +1151,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     break;
                 default:
                     if (finalTypeSet) {
-                        updateStatus(ThingStatus.ONLINE, ThingStatusDetail.NONE, initEvent.getStage().toString());
+                        updateStatus(ThingStatus.ONLINE, ThingStatusDetail.NONE,
+                                "Node initialising: " + initEvent.getStage().toString());
                     }
                     break;
             }
