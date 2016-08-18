@@ -29,7 +29,7 @@ import org.slf4j.LoggerFactory;
 public class SerialApiGetInitDataMessageClass extends ZWaveCommandProcessor {
     private static final Logger logger = LoggerFactory.getLogger(SerialApiGetInitDataMessageClass.class);
 
-    private ArrayList<Integer> zwaveNodes = new ArrayList<Integer>();
+    private final ArrayList<Integer> zwaveNodes = new ArrayList<Integer>();
 
     private static final int NODE_BYTES = 29; // 29 bytes = 232 bits, one for each supported node by Z-Wave;
 

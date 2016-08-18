@@ -134,6 +134,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE,
                 ZWaveBindingConstants.OFFLINE_CONTROLLER_OFFLINE_DEFAULT);
 
+        // Make sure the thingType is set correctly from the database
+        updateThingType();
+
         // TODO: Shouldn't the framework do this for us???
         Bridge bridge = getBridge();
         if (bridge != null) {
@@ -418,7 +421,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         // make sure we know the device state.
         ZWaveNode node = bridgeHandler.getNode(nodeId);
         if (node == null) {
-            updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.NONE, "Node not found in Z-Wave network");
+            updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.NONE,
+                    ZWaveBindingConstants.OFFLINE_NODE_NOTFOUND_DEFAULT);
         } else {
             switch (node.getNodeState()) {
                 case INITIALIZING:
