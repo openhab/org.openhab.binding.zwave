@@ -133,6 +133,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE,
                 ZWaveBindingConstants.OFFLINE_CONTROLLER_OFFLINE_DEFAULT);
 
+        // Make sure the thingType is set correctly from the database
+        updateThingType();
+
         // TODO: Shouldn't the framework do this for us???
         Bridge bridge = getBridge();
         if (bridge != null) {
