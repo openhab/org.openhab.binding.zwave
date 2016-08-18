@@ -88,6 +88,11 @@ public class ZWaveBindingConstants {
     public final static String CHANNEL_CFG_BINDING = "binding";
     public final static String CHANNEL_CFG_COMMANDCLASS = "commandClass";
 
+    public final static String OFFLINE_CONTROLLER_OFFLINE_KEY = "zwave.thingstate.controller_offline";
+    public final static String OFFLINE_CONTROLLER_OFFLINE_DEFAULT = "Controller is offline";
+    public final static String OFFLINE_NODE_DEAD_KEY = "zwave.thingstate.node_dead";
+    public final static String OFFLINE_NODE_DEAD_DEFAULT = "Node is not communicating with controller";
+
     public final static Integer ACTION_CHECK_VALUE = new Integer(-232323);
 
     public final static Set<ThingTypeUID> SUPPORTED_BRIDGE_TYPES_UIDS = ImmutableSet.of(CONTROLLER_SERIAL);

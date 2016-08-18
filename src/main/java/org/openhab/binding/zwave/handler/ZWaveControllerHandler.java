@@ -23,6 +23,7 @@ import org.eclipse.smarthome.config.discovery.DiscoveryService;
 import org.eclipse.smarthome.core.thing.Bridge;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.ThingStatus;
+import org.eclipse.smarthome.core.thing.ThingStatusDetail;
 import org.eclipse.smarthome.core.thing.UID;
 import org.eclipse.smarthome.core.thing.binding.BaseBridgeHandler;
 import org.eclipse.smarthome.core.types.Command;
@@ -122,7 +123,8 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         }
 
         // We must set the state
-        updateStatus(ThingStatus.OFFLINE);
+        updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE,
+                ZWaveBindingConstants.OFFLINE_CONTROLLER_OFFLINE_DEFAULT);
     }
 
     /**
@@ -321,13 +323,9 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                     ((ZWaveNetworkStateEvent) event).getNetworkState());
             if (((ZWaveNetworkStateEvent) event).getNetworkState() == true) {
                 updateStatus(ThingStatus.ONLINE);
-                // TODO: Shouldn't the framework do this for us? Maybe it does here as there's a state change?
-                // Bridge bridge = this.getThing();
-                // for (Thing child : bridge.getThings()) {
-                // ((ZWaveThingHandler) child.getHandler()).bridgeHandlerInitialized(this, bridge);
-                // }
             } else {
-                updateStatus(ThingStatus.OFFLINE);
+                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE,
+                        ZWaveBindingConstants.OFFLINE_CONTROLLER_OFFLINE_DEFAULT);
             }
         }
 
