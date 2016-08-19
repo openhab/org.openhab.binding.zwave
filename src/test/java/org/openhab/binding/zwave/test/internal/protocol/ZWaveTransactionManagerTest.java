@@ -147,7 +147,7 @@ public class ZWaveTransactionManagerTest {
         // It shouldn't be shorter!
         assertTrue(duration > 490);
         assertEquals(1, transactionCompleteCapture.getAllValues().size());
-        assertEquals(TransactionState.WAIT_RESPONSE, transactionCompleteCapture.getValue().getTransactionState());
+        assertEquals(TransactionState.CANCELLED, transactionCompleteCapture.getValue().getTransactionState());
     }
 
     @Test
@@ -183,7 +183,7 @@ public class ZWaveTransactionManagerTest {
         assertTrue(duration > 1500);
         assertEquals(3, txQueueCapture.getAllValues().size());
         assertEquals(1, transactionCompleteCapture.getAllValues().size());
-        assertEquals(TransactionState.WAIT_RESPONSE, transactionCompleteCapture.getValue().getTransactionState());
+        assertEquals(TransactionState.CANCELLED, transactionCompleteCapture.getValue().getTransactionState());
     }
 
     @Test
@@ -218,7 +218,7 @@ public class ZWaveTransactionManagerTest {
         // It shouldn't be shorter!
         assertTrue(duration > 2490);
         assertEquals(1, transactionCompleteCapture.getAllValues().size());
-        assertEquals(TransactionState.WAIT_REQUEST, transactionCompleteCapture.getValue().getTransactionState());
+        assertEquals(TransactionState.CANCELLED, transactionCompleteCapture.getValue().getTransactionState());
     }
 
     @Test
@@ -271,7 +271,7 @@ public class ZWaveTransactionManagerTest {
         // It shouldn't be shorter!
         assertTrue(duration > 2490);
         assertEquals(1, transactionCompleteCapture.getAllValues().size());
-        assertEquals(TransactionState.WAIT_DATA, transactionCompleteCapture.getValue().getTransactionState());
+        assertEquals(TransactionState.CANCELLED, transactionCompleteCapture.getValue().getTransactionState());
     }
 
     @Test
@@ -548,6 +548,9 @@ public class ZWaveTransactionManagerTest {
         assertEquals(threadCnt - 1, manager.getSendQueueLength());
     }
 
+    /**
+     * Tests the binding initialisation sequence
+     */
     @Test
     public void TestInitialization() {
         byte[] responsePacket1 = { 0x01, 0x10, 0x01, 0x15, 0x5A, 0x2D, 0x57, 0x61, 0x76, 0x65, 0x20, 0x33, 0x2E, 0x39,
@@ -582,6 +585,76 @@ public class ZWaveTransactionManagerTest {
 
         // Make sure a third frame is transmitted and 2 transactions are complete
         assertEquals(3, txQueueCapture.getAllValues().size());
+        assertEquals(2, transactionCompleteCapture.getAllValues().size());
+    }
+
+    /**
+     * Tests a failure sequence
+     * A METER request is sent. Once the ACK is received a PING is sent to a different node
+     * and the METER reading is received between responses
+     */
+    @Test
+    public void TestPingFailure() {
+        byte[] responsePacket1 = { 0x01, 0x04, 0x01, 0x13, 0x01, (byte) 0xE8 };
+        byte[] responsePacket2 = { 0x01, 0x07, 0x00, 0x13, 0x0A, 0x00, 0x00, 0x09, (byte) 0xE8 };
+        byte[] responsePacket3 = { 0x01, 0x04, 0x01, 0x13, 0x01, (byte) 0xE8 };
+        byte[] responsePacket4 = { 0x01, 0x14, 0x00, 0x04, 0x00, 0x0D, 0x0E, 0x32, 0x02, 0x21, 0x44, 0x00, 0x00, 0x00,
+                (byte) 0xAF, 0x09, (byte) 0xF7, 0x00, 0x00, 0x00, (byte) 0xAF, 0x47 };
+        byte[] responsePacket5 = { 0x01, 0x07, 0x00, 0x13, 0x08, 0x00, 0x00, 0x04, (byte) 0xE7 };
+
+        ZWaveTransactionManager manager = getTransactionManager();
+        System.out.println("TestPingFailure ------------------------------------------------------------------------");
+
+        // Queue transaction 1 (METER)
+        SerialMessage message = new ZWaveSendDataMessageBuilder().withCommandClass(CommandClass.METER, 1).withNodeId(13)
+                .withPayload(0x00).build();
+        ZWaveTransaction transaction1 = new ZWaveTransactionBuilder(message)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(CommandClass.METER, 2).build();
+        transaction1.getSerialMessage().setCallbackId(10);
+
+        // Queue transaction 2 (PING)
+        message = new ZWaveSendDataMessageBuilder().withCommandClass(CommandClass.NO_OPERATION, 1).withNodeId(4)
+                .build();
+        ZWaveTransaction transaction2 = new ZWaveTransactionBuilder(message).build();
+        transaction2.getSerialMessage().setCallbackId(8);
+
+        manager.queueTransactionForSend(transaction1);
+        manager.queueTransactionForSend(transaction2);
+
+        assertEquals(1, txQueueCapture.getAllValues().size());
+        assertEquals(0, transactionCompleteCapture.getAllValues().size());
+
+        // Send the response to the METER
+        message = new SerialMessage(responsePacket1);
+        manager.processReceiveMessage(message);
+
+        // Send the request to the METER
+        message = new SerialMessage(responsePacket2);
+        manager.processReceiveMessage(message);
+
+        // Make sure the transaction didn't complete
+        assertEquals(0, transactionCompleteCapture.getAllValues().size());
+
+        // PING should now have been sent
+        assertEquals(2, txQueueCapture.getAllValues().size());
+
+        // Send the response to the PING
+        message = new SerialMessage(responsePacket3);
+        manager.processReceiveMessage(message);
+
+        // Send the METER packet
+        message = new SerialMessage(responsePacket4);
+        manager.processReceiveMessage(message);
+
+        // Make sure the transaction completes
+        assertEquals(1, transactionCompleteCapture.getAllValues().size());
+
+        // Send the request to the PING
+        message = new SerialMessage(responsePacket5);
+        manager.processReceiveMessage(message);
+
+        // Make sure the transaction completes
         assertEquals(2, transactionCompleteCapture.getAllValues().size());
     }
 }

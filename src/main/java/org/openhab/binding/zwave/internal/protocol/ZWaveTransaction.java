@@ -291,6 +291,11 @@ public class ZWaveTransaction {
         return transactionStateTracker != stateTrackerStart;
     }
 
+    @Override
+    public String toString() {
+        return transactionStateTracker + ": callback: " + serialMessage.getCallbackId();
+    }
+
     /**
      * Comparator Class. Compares two serial messages with each other based on node status (awake / sleep), priority and
      * sequence number.

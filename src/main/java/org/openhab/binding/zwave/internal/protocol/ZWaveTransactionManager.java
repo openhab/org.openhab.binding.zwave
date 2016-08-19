@@ -8,7 +8,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.PriorityBlockingQueue;
 
-import org.openhab.binding.zwave.handler.ZWaveThingHandler;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveCommandProcessor;
@@ -106,7 +105,7 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class ZWaveTransactionManager {
-    private Logger logger = LoggerFactory.getLogger(ZWaveThingHandler.class);
+    private Logger logger = LoggerFactory.getLogger(ZWaveTransactionManager.class);
 
     // private static final int ZWAVE_RESPONSE_TIMEOUT = 5000;
     private static final int INITIAL_TX_QUEUE_SIZE = 128;
@@ -195,40 +194,48 @@ public class ZWaveTransactionManager {
         }
 
         synchronized (transactionSync) {
-            // Try and correlate this incoming message with a transaction
-            for (ZWaveTransaction transaction : outstandingTransactions) {
-                System.out.println("checking transaction " + transaction.getMessageNode() + "......");
+            System.out.println("Checking outstanding transactions: " + outstandingTransactions.size());
+            System.out.println("Last transaction: " + lastTransaction);
 
-                // If we are waiting for the RESponse, then check for this first
-                // There can only be a single outstanding RESponse
-                if (incomingMessage.getMessageType() == SerialMessageType.Response) {
-                    if (lastTransaction == null) {
-                        continue;
-                    }
-                    System.out.println("Message is response " + incomingMessage.getMessageClass() + "   "
-                            + lastTransaction.getSerialMessageClass());
-                    if (lastTransaction != null
-                            && incomingMessage.getMessageClass() == lastTransaction.getSerialMessageClass()) {
-                        System.out.println("Message class ok");
-                        currentTransaction = transaction;
-
-                        System.out
-                                .println("Transaction " + currentTransaction.getMessageNode() + " is last transaction");
-
-                        // No need to track this transaction now
-                        // lastTransaction = null;
-                        break;
-                    }
-
-                    continue;
+            // If we are waiting for the RESponse, then check for this first
+            // There can only be a single outstanding RESponse
+            if (incomingMessage.getMessageType() == SerialMessageType.Response) {
+                if (lastTransaction == null) {
+                    System.out.println("RESponse received when we weren't expecting one!");
+                    return;
                 }
 
-                ZWaveCommandProcessor msgClass = ZWaveCommandProcessor
-                        .getMessageDispatcher(incomingMessage.getMessageClass());
-                if (msgClass != null && msgClass.correlateTransactionResponse(transaction, incomingMessage)) {
-                    System.out.println("Correlated to transaction " + transaction.getMessageNode() + "......");
-                    currentTransaction = transaction;
-                    break;
+                System.out.println("Message is RESponse " + incomingMessage.getMessageClass() + "   "
+                        + lastTransaction.getSerialMessageClass());
+                if (incomingMessage.getMessageClass() != lastTransaction.getSerialMessageClass()) {
+                    System.out.println("Message class RESponse error");
+                    return;
+                }
+                currentTransaction = lastTransaction;
+
+                System.out.println("Transaction " + currentTransaction.getCallbackId() + " is last transaction");
+
+                // No need to track this transaction now
+                // lastTransaction = null;
+            } else {
+                // Try and correlate this incoming REQuest with a transaction
+                for (ZWaveTransaction transaction : outstandingTransactions) {
+                    System.out.println("checking transaction " + transaction.getCallbackId() + "......");
+
+                    // If we are waiting for the RESponse, then check for this first
+                    // There can only be a single outstanding RESponse
+                    if (incomingMessage.getMessageType() == SerialMessageType.Response) {
+
+                        continue;
+                    }
+
+                    ZWaveCommandProcessor msgClass = ZWaveCommandProcessor
+                            .getMessageDispatcher(incomingMessage.getMessageClass());
+                    if (msgClass != null && msgClass.correlateTransactionResponse(transaction, incomingMessage)) {
+                        System.out.println("Correlated to transaction " + transaction.getCallbackId() + "......");
+                        currentTransaction = transaction;
+                        break;
+                    }
                 }
             }
         }
@@ -245,7 +252,7 @@ public class ZWaveTransactionManager {
         // Handle the transaction state machine
         boolean transactionCompleted = false;
         if (currentTransaction.transactionAdvance(incomingMessage) == true) {
-            System.out.println("Transaction " + currentTransaction.getMessageNode() + " advanced to "
+            System.out.println("Transaction " + currentTransaction.getCallbackId() + " advanced to "
                     + currentTransaction.getTransactionState());
             // Transaction has advanced - update the timer.
             currentTransaction.setTimeout(getNextTimer(currentTransaction));
@@ -268,9 +275,9 @@ public class ZWaveTransactionManager {
                 if (currentTransaction.decrementAttemptsRemaining() >= 0) {
                     logger.error("NODE {}: ABORT while sending message. Requeueing - {} attempts left!",
                             currentTransaction.getMessageNode(), currentTransaction.getAttemptsRemaining());
-                            // if (lastSentMessage.getMessageClass() == SerialMessageClass.SendData) {
-                            // handleFailedSendDataRequest(lastSentMessage);
-                            // } else {
+                    // if (lastSentMessage.getMessageClass() == SerialMessageClass.SendData) {
+                    // handleFailedSendDataRequest(lastSentMessage);
+                    // } else {
 
                     // Reset the transaction
                     currentTransaction.resetTransaction();
@@ -306,7 +313,7 @@ public class ZWaveTransactionManager {
 
         if (transactionCompleted == true) {
             resetTransactionTimer();
-            System.out.println("Transaction " + currentTransaction.getMessageNode() + " completed");
+            System.out.println("Transaction " + currentTransaction.getCallbackId() + " completed");
             logger.debug("NODE {}: **** Transaction completed", currentTransaction.getMessageNode());
 
             // Remove the transaction from the
@@ -318,7 +325,7 @@ public class ZWaveTransactionManager {
                 outstandingTransactions.remove(currentTransaction);
             }
         } else {
-            System.out.println("Transaction " + currentTransaction.getMessageNode() + " NOT completed");
+            System.out.println("Transaction " + currentTransaction.getCallbackId() + " NOT completed");
             logger.debug("NODE {}: **** Transaction not completed", currentTransaction.getMessageNode());
         }
 
@@ -374,6 +381,7 @@ public class ZWaveTransactionManager {
             transaction.transactionStart();
             outstandingTransactions.add(transaction);
             System.out.println("Sending message " + transaction.getSerialMessage().toString());
+            System.out.println("Transactions outstanding: " + outstandingTransactions.size());
             transaction.setTimeout(getNextTimer(transaction));
             startTransactionTimer();
             lastTransaction = transaction;
@@ -414,8 +422,9 @@ public class ZWaveTransactionManager {
         // Stop any existing timer
         if (timerTask != null) {
             System.out.println("STOP transaction timer");
-            timerTask.cancel();
+            logger.debug("STOP transaction timer");
 
+            timerTask.cancel();
             timerTask = null;
         }
     }
@@ -425,8 +434,10 @@ public class ZWaveTransactionManager {
 
         @Override
         public void run() {
+            logger.debug("Timeout.......... {} outstanding transactions", outstandingTransactions.size());
             System.out.println("Timer run..... " + System.currentTimeMillis());
             synchronized (transactionSync) {
+                logger.debug("Timeout.......... {} outstanding transactions", outstandingTransactions.size());
                 Date now = new Date();
                 List<ZWaveTransaction> retries = new ArrayList<ZWaveTransaction>();
 
@@ -447,7 +458,10 @@ public class ZWaveTransactionManager {
 
                         // Remove this transaction from the outstanding transactions list
                         iterator.remove();
+
+                        // Resend if there are still attempts remaining
                         if (transaction.decrementAttemptsRemaining() == 0) {
+                            transaction.setTransactionCanceled();
                             controller.handleTransactionComplete(transaction, null);
                         } else {
                             // Resend
