@@ -40,4 +40,22 @@ public class ZWaveCommandProcessorTest {
             e.printStackTrace();
         }
     }
+
+    void ProcessRequest(ZWaveCommandProcessor handler, ZWaveTransaction transaction, byte[] packetData) {
+        SerialMessage msg = new SerialMessage(packetData);
+        assertEquals(true, msg.isValid);
+        assertEquals(SerialMessageType.Request, msg.getMessageType());
+
+        // Mock the controller so we can get any events
+        ZWaveController controller = Mockito.mock(ZWaveController.class);
+        // argument = ArgumentCaptor.forClass(ZWaveEvent.class);
+        // Mockito.doNothing().when(controller).notifyEventListeners(argument.capture());
+
+        try {
+            handler.handleRequest(controller, transaction, msg);
+        } catch (ZWaveSerialMessageException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 }

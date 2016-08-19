@@ -58,6 +58,11 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
     @Override
     public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
+        // SendData REQuests must be associated with a transaction
+        if (transaction == null) {
+            return false;
+        }
+
         logger.trace("Handle Message Send Data Request");
 
         // int callbackId = incomingMessage.getMessagePayloadByte(0);

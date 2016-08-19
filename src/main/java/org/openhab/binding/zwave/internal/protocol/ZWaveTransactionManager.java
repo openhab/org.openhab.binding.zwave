@@ -150,6 +150,7 @@ public class ZWaveTransactionManager {
         sendQueue.add(transaction);
 
         sendNextMessage();
+        startTransactionTimer();
     }
 
     /**
@@ -256,7 +257,7 @@ public class ZWaveTransactionManager {
                     + currentTransaction.getTransactionState());
             // Transaction has advanced - update the timer.
             currentTransaction.setTimeout(getNextTimer(currentTransaction));
-            startTransactionTimer();
+            // startTransactionTimer();
         }
 
         switch (currentTransaction.getTransactionState()) {
@@ -270,6 +271,7 @@ public class ZWaveTransactionManager {
             case CANCELLED:
                 // Transaction was cancelled
                 controller.handleTransactionComplete(currentTransaction, incomingMessage);
+                System.out.println("handleTransactionComplete CANCELLED " + currentTransaction.getCallbackId());
 
                 // Handle retries
                 if (currentTransaction.decrementAttemptsRemaining() >= 0) {
@@ -291,11 +293,11 @@ public class ZWaveTransactionManager {
                             currentTransaction.getMessageNode(), currentTransaction.toString());
                     transactionCompleted = true;
                 }
-
                 break;
 
             case DONE:
                 controller.handleTransactionComplete(currentTransaction, incomingMessage);
+                System.out.println("handleTransactionComplete DONE " + currentTransaction.getCallbackId());
 
                 // if (responseTime > longestResponseTime) {
                 // longestResponseTime = responseTime;
@@ -312,7 +314,6 @@ public class ZWaveTransactionManager {
         }
 
         if (transactionCompleted == true) {
-            resetTransactionTimer();
             System.out.println("Transaction " + currentTransaction.getCallbackId() + " completed");
             logger.debug("NODE {}: **** Transaction completed", currentTransaction.getMessageNode());
 
@@ -331,6 +332,7 @@ public class ZWaveTransactionManager {
 
         // See if we need to send another message
         sendNextMessage();
+        startTransactionTimer();
     }
 
     private Date getNextTimer(ZWaveTransaction transaction) {
@@ -362,16 +364,19 @@ public class ZWaveTransactionManager {
     }
 
     private void sendNextMessage() {
+        logger.debug("Transaction SendNextMessage");
         // If we're currently processing the core of a transaction, or there are too many outstanding transactions, then
         // don't start another right now.
         synchronized (transactionSync) {
             if (lastTransaction != null || outstandingTransactions.size() >= MAX_OUTSTANDING_TRANSACTIONS) {
+                logger.debug("Transaction SendNextMessage too many");
                 return;
             }
 
             final ZWaveTransaction transaction = getTransactionToSend();
             if (transaction == null) {
                 // Nothing to send!
+                logger.debug("Transaction SendNextMessage nothing");
                 return;
             }
 
@@ -382,8 +387,9 @@ public class ZWaveTransactionManager {
             outstandingTransactions.add(transaction);
             System.out.println("Sending message " + transaction.getSerialMessage().toString());
             System.out.println("Transactions outstanding: " + outstandingTransactions.size());
+            logger.debug("Transaction SendNextMessage Transactions outstanding: {}", outstandingTransactions.size());
             transaction.setTimeout(getNextTimer(transaction));
-            startTransactionTimer();
+            // startTransactionTimer();
             lastTransaction = transaction;
         }
     }
@@ -411,7 +417,8 @@ public class ZWaveTransactionManager {
 
         // Start the timer if required
         if (nextTimer != null) {
-            logger.debug("Start transaction timer to {}", nextTimer);
+            logger.debug("Start transaction timer to {} - {}ms", nextTimer,
+                    (nextTimer.getTime() - System.currentTimeMillis()));
             System.out.println("Start transaction timer to " + (nextTimer.getTime() - System.currentTimeMillis())
                     + "     " + nextTimer.getTime());
             timer.schedule(timerTask, nextTimer);
@@ -463,6 +470,7 @@ public class ZWaveTransactionManager {
                         if (transaction.decrementAttemptsRemaining() == 0) {
                             transaction.setTransactionCanceled();
                             controller.handleTransactionComplete(transaction, null);
+                            System.out.println("handleTransactionComplete CANCELLED x " + transaction.getCallbackId());
                         } else {
                             // Resend
                             transaction.resetTransaction();
@@ -478,6 +486,7 @@ public class ZWaveTransactionManager {
                 }
 
                 sendNextMessage();
+                startTransactionTimer();
             }
         }
     }
