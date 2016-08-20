@@ -32,6 +32,12 @@ There is no binding level configuration required for the Z-Wave binding. All con
 
 #### Controller Is Master
 
+When *Controller Is Master* is true, the binding expects to be the main Z-Wave controller in the system. This is not related to the type of controller (*Primary* or *Secondary*), but is related to how devices will be configured.  This will instruct the binding to perform configuration of the device to send network related information such as device wakeup to the binding.
+
+Many functions in Z-Wave only allow a single node to be set, and this is normally reserved for the main system controller. For example, battery device *Wakeup Node*, and *Lifeline* association groups usually only allow a single device to be set.
+
+For most systems, this should be set to *true* - the only time when it would be *false* is if you normally control your Z-Wave network through a different system.
+
 #### Controller Is SUC
 
 #### Heal Time
@@ -47,6 +53,20 @@ There is no binding level configuration required for the Z-Wave binding. All con
 
 
 ## Channels
+
+### Controller Channels
+
+| Channel    | Description                                            |
+|------------|--------------------------------------------------------|
+| serial_sof | Counts number of frames started                        |
+| serial_ack | Counts number of frames acknowledged by the controller |
+| serial_nak | Counts number of frame rejected by the controller      |
+| serial_can | Counts number of frames cancelled by the controller    |
+| serial_oof | Counts number of bytes received out of frame flow      |
+| serial_cse | Counts number of frames received with checksum error   |
+
+### Device Channels
+
 
 ## Initialisation
 
