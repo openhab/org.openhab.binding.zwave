@@ -44,6 +44,7 @@
       <property name="manufacturerRef">0002:0021</property>
       <property name="versionMin">1.11</property>
       <property name="versionMax">1.11</property>
+      <property name="dbReference">178</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

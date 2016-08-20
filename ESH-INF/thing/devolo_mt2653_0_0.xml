@@ -30,6 +30,7 @@
       <property name="modelId">MT2653</property>
       <property name="manufacturerId">0175</property>
       <property name="manufacturerRef">0100:0102</property>
+      <property name="dbReference">341</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

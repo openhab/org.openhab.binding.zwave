@@ -25,6 +25,7 @@
       <property name="modelId">DSD31</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0004:0050</property>
+      <property name="dbReference">86</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

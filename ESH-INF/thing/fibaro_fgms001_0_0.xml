@@ -49,6 +49,7 @@
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0800:1001,0800:2001,0800:3001,0801:1001,0801:2001</property>
       <property name="versionMax">2.8</property>
+      <property name="dbReference">115</property>
       <property name="defaultAssociations">3</property>
     </properties>
 

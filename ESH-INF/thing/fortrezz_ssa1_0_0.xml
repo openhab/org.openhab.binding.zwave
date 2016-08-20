@@ -34,6 +34,7 @@ Siren and Strobe Alarm<br /><h1>Overview</h1><h1>Description</h1> <p>The SSA1/SS
       <property name="modelId">SSA1/SSA2</property>
       <property name="manufacturerId">0084</property>
       <property name="manufacturerRef">0313:0108,0313:010B</property>
+      <property name="dbReference">220</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

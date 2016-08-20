@@ -19,6 +19,7 @@
       <property name="modelId">ST815</property>
       <property name="manufacturerId">0060</property>
       <property name="manufacturerRef">0007:0001</property>
+      <property name="dbReference">32</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

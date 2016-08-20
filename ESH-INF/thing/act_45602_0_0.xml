@@ -26,6 +26,7 @@
       <property name="modelId">45602</property>
       <property name="manufacturerId">0001</property>
       <property name="manufacturerRef">4450:3030</property>
+      <property name="dbReference">338</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

@@ -37,6 +37,7 @@
       <property name="modelId">FGS222</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0202:1002</property>
+      <property name="dbReference">124</property>
       <property name="defaultAssociations">3</property>
     </properties>
 

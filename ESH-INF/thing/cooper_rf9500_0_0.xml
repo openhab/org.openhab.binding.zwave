@@ -25,6 +25,7 @@
       <property name="modelId">RF9500</property>
       <property name="manufacturerId">001A</property>
       <property name="manufacturerRef">5342:0000</property>
+      <property name="dbReference">14</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

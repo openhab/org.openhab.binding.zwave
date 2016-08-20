@@ -62,6 +62,7 @@
       <property name="modelId">ZMNHDA</property>
       <property name="manufacturerId">0159</property>
       <property name="manufacturerRef">0001:0001</property>
+      <property name="dbReference">209</property>
       <property name="defaultAssociations">4</property>
     </properties>
 

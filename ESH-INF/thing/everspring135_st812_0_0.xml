@@ -30,6 +30,7 @@
       <property name="modelId">ST812</property>
       <property name="manufacturerId">0135</property>
       <property name="manufacturerRef">000B:0001</property>
+      <property name="dbReference">327</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

@@ -19,6 +19,7 @@
       <property name="modelId">SCSC-17</property>
       <property name="manufacturerId">0059</property>
       <property name="manufacturerRef">0004:0001</property>
+      <property name="dbReference">21</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

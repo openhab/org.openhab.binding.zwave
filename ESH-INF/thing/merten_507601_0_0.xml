@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="merten_507601_00_000" listed="false">
-    <label>507601 Wall Switch With Dual Pole</label>
-    <description>Wall Switch With Dual Pole</description>
+    <label>507601 Dual Pole Wall Switch</label>
+    <description>Dual Pole Wall Switch</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -25,6 +25,8 @@
       <property name="modelId">507601</property>
       <property name="manufacturerId">007A</property>
       <property name="manufacturerRef">8001:8003</property>
+      <property name="dbReference">399</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -38,20 +40,21 @@
 
       <parameter name="config_176_1" type="integer" groupName="configuration"
                  min="0" max="127">
-        <label>176: Staircase timer 1</label>
+        <label>176: Staircase timer byte 1</label>
         <default>0</default>
       </parameter>
 
       <parameter name="config_177_1" type="integer" groupName="configuration"
                  min="0" max="127">
-        <label>177: Staircase timer 2</label>
+        <label>177: Staircase timer byte 2</label>
         <default>0</default>
       </parameter>
 
       <parameter name="config_183_1" type="integer" groupName="configuration"
                  min="0" max="127">
         <label>183: Additional limit duration (after brief interruption)</label>
-        <default>0</default>
+        <description>Unsure what this does</description>
+        <default>30</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
@@ -62,7 +65,7 @@
 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
-        <multipleLimit>12</multipleLimit>
+        <multipleLimit>5</multipleLimit>
       </parameter>
 
     </config-description>

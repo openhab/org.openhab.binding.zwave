@@ -26,6 +26,7 @@
       <property name="modelId">DSC25</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:0019</property>
+      <property name="dbReference">276</property>
     </properties>
 
   </thing-type>

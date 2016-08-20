@@ -135,6 +135,7 @@ Multi-socket PowerNode (5-plug)<br /><h1>Overview</h1><p>This Configuration is f
       <property name="modelId">GWPN5</property>
       <property name="manufacturerId">0099</property>
       <property name="manufacturerRef">0003:0003</property>
+      <property name="dbReference">264</property>
       <property name="defaultAssociations">3,4</property>
     </properties>
 

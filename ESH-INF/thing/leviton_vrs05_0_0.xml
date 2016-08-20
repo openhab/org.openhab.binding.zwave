@@ -31,6 +31,7 @@
       <property name="modelId">VRS05</property>
       <property name="manufacturerId">001D</property>
       <property name="manufacturerRef">0F01:0209</property>
+      <property name="dbReference">366</property>
       <property name="commandClass:BASIC">setVersion=1</property>
       <property name="commandClass:SWITCH_BINARY">setVersion=1</property>
       <property name="commandClass:SWITCH_ALL">setVersion=1</property>
@@ -43,7 +44,7 @@
       <property name="commandClass:ASSOCIATION">setVersion=1</property>
       <property name="commandClass:VERSION">setVersion=1</property>
       <property name="commandClass:MANUFACTURER_PROPRIETARY">setVersion=1</property>
-      <property name="defaultAssociations">1,2</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -57,11 +58,6 @@
 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Group 2</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

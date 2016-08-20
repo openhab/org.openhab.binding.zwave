@@ -27,6 +27,7 @@ Doorbell<br /><h1>Overview</h1><p>Aeon Labs Doorbell is a switch binary device b
       <property name="modelId">ZW056</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0004:0038,0104:0038,0204:0038,0304:0038,0904:0038,0A04:0038,1A04:0038,1D04:0038</property>
+      <property name="dbReference">263</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -51,13 +52,6 @@ Doorbell<br /><h1>Overview</h1><p>Aeon Labs Doorbell is a switch binary device b
         <label>5: Default ringtone</label>
         <description>Set the default doorbell ringtone. Default=1</description>
         <default>1</default>
-      </parameter>
-
-      <parameter name="config_6_1" type="integer" groupName="configuration"
-                 min="0" max="100">
-        <label>6: Ringtone to play</label>
-        <description>Set a ringtone to play. Default=0</description>
-        <default>0</default>
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
@@ -151,6 +145,17 @@ Enable to send notifications to associated devices (Group1) when the state of Si
         <context>setup</context>
         <label>Actions</label>
       </parameter-group>
+
+      <parameter name="config_6_1_wo" type="integer" groupName="configuration"
+                 min="0" max="100">
+        <label>6: Ringtone to play</label>
+        <description>Set a ringtone to play. Default=0</description>
+        <default>0</default>
+        <options>
+          <option value="0">Stop</option>
+        </options>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
 
       <parameter name="config_255_4_wo" type="integer" groupName="configuration">
         <label>255: Reset</label>

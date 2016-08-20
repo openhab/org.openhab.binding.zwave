@@ -32,6 +32,7 @@
       <property name="modelId">DZPD3</property>
       <property name="manufacturerId">001D</property>
       <property name="manufacturerRef">1902:0334</property>
+      <property name="dbReference">322</property>
     </properties>
 
   </thing-type>

@@ -38,6 +38,7 @@ Touchpad Electronic Deadbolt<br /><h2>Inclusion Information</h2><p> Press butto
       <property name="modelId">914TRL</property>
       <property name="manufacturerId">0090</property>
       <property name="manufacturerRef">0001:0001</property>
+      <property name="dbReference">283</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

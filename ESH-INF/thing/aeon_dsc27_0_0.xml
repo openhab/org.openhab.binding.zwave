@@ -26,6 +26,7 @@
       <property name="modelId">DSC27</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:001B</property>
+      <property name="dbReference">80</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

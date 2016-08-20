@@ -36,6 +36,7 @@
       <property name="modelId">SM103</property>
       <property name="manufacturerId">0060</property>
       <property name="manufacturerRef">0002:0001</property>
+      <property name="dbReference">35</property>
       <property name="defaultAssociations">1,2</property>
     </properties>
 

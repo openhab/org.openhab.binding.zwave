@@ -44,6 +44,7 @@
       <property name="manufacturerId">0097</property>
       <property name="manufacturerRef">1122:5501</property>
       <property name="versionMin">1.4</property>
+      <property name="dbReference">348</property>
       <property name="commandClass:SWITCH_ALL:1">getSupported=false</property>
       <property name="commandClass:SWITCH_ALL:2">getSupported=false</property>
     </properties>

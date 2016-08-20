@@ -25,6 +25,7 @@
       <property name="modelId">LE120</property>
       <property name="manufacturerId">0097</property>
       <property name="manufacturerRef">6941:5501</property>
+      <property name="dbReference">389</property>
     </properties>
 
   </thing-type>

@@ -27,6 +27,7 @@ Siren<br /><h2>Inclusion Information</h2><ol><li>Have Z-Wave Controller enter in
       <property name="modelId">DCH-Z510</property>
       <property name="manufacturerId">0108</property>
       <property name="manufacturerRef">0004:000A</property>
+      <property name="dbReference">330</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

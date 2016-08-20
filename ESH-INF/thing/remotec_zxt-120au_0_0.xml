@@ -19,6 +19,7 @@
       <property name="modelId">ZXT-120AU</property>
       <property name="manufacturerId">5254</property>
       <property name="manufacturerRef">0102:8377</property>
+      <property name="dbReference">204</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

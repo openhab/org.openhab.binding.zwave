@@ -32,6 +32,7 @@
       <property name="modelId">VRP03</property>
       <property name="manufacturerId">001D</property>
       <property name="manufacturerRef">0202:030B</property>
+      <property name="dbReference">269</property>
       <property name="commandClass:BASIC">setVersion=1</property>
       <property name="commandClass:SWITCH_MULTILEVEL">setVersion=1</property>
       <property name="commandClass:SWITCH_ALL">setVersion=1</property>

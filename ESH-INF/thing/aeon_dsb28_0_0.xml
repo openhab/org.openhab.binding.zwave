@@ -121,6 +121,7 @@
       <property name="modelId">DSB28</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0002:001C</property>
+      <property name="dbReference">85</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

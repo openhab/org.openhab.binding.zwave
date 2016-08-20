@@ -60,6 +60,7 @@
       <property name="modelId">FGSD002</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0C02:1002</property>
+      <property name="dbReference">129</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

@@ -36,6 +36,7 @@
       <property name="modelId">NQ-9021</property>
       <property name="manufacturerId">0096</property>
       <property name="manufacturerRef">0001:0001</property>
+      <property name="dbReference">180</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

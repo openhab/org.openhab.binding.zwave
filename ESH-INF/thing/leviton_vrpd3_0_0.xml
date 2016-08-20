@@ -31,6 +31,7 @@
       <property name="modelId">VRPD3</property>
       <property name="manufacturerId">001D</property>
       <property name="manufacturerRef">1706:0334</property>
+      <property name="dbReference">199</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

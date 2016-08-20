@@ -26,6 +26,7 @@
       <property name="modelId">ZL7101</property>
       <property name="manufacturerId">0109</property>
       <property name="manufacturerRef">2008:0801</property>
+      <property name="dbReference">371</property>
     </properties>
 
   </thing-type>

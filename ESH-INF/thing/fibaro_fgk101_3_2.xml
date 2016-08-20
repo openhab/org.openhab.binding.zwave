@@ -49,6 +49,7 @@
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0701:1001</property>
       <property name="versionMin">3.2</property>
+      <property name="dbReference">381</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

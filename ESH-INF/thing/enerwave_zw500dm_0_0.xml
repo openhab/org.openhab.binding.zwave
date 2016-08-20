@@ -43,6 +43,7 @@
       <property name="modelId">ZW500DM</property>
       <property name="manufacturerId">011A</property>
       <property name="manufacturerRef">0111:0101</property>
+      <property name="dbReference">382</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

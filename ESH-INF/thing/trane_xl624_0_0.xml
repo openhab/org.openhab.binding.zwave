@@ -73,6 +73,7 @@
       <property name="modelId">XL624</property>
       <property name="manufacturerId">008B</property>
       <property name="manufacturerRef">5452:5439,5452:5443</property>
+      <property name="dbReference">282</property>
     </properties>
 
   </thing-type>

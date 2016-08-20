@@ -30,6 +30,7 @@
       <property name="modelId">ZWN-BPC</property>
       <property name="manufacturerId">011A</property>
       <property name="manufacturerRef">0601:0901</property>
+      <property name="dbReference">186</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
