@@ -91,7 +91,6 @@ public class ZWaveMeterCommandClassTest extends ZWaveCommandClassTest {
         options.put("meterCanReset", "true");
         cls.setOptions(options);
         msg = cls.getResetMessage();
-        byte[] x = msg.getMessageBuffer();
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -115,5 +114,25 @@ public class ZWaveMeterCommandClassTest extends ZWaveCommandClassTest {
         cls.setVersion(1);
         msg = cls.getMessage(MeterScale.E_KWh);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+    }
+
+    @Test
+    public void setOptions() {
+        ZWaveMeterCommandClass cls = (ZWaveMeterCommandClass) getCommandClass(CommandClass.METER);
+
+        // Not supported in V1
+        assertEquals(0, cls.initialize(true).size());
+
+        // Get supported in V2
+        cls.setVersion(2);
+        assertEquals(1, cls.initialize(true).size());
+
+        Map<String, String> options = new HashMap<String, String>(2);
+        options.put("meterType", "ELECTRIC");
+        options.put("meterScale", "E_W");
+        cls.setOptions(options);
+
+        // Don't request if we've set the type and scale
+        assertEquals(0, cls.initialize(true).size());
     }
 }
