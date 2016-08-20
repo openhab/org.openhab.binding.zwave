@@ -696,16 +696,23 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                         if ("commandClass".equals(cmds[0]) == false) {
                             continue;
                         }
-                        String args[] = value.split("=");
 
-                        if ("ccRemove".equals(args[0])) {
+                        String options[] = value.split(",");
+
+                        Map<String, String> optionMap = new HashMap<String, String>(1);
+                        for (String option : options) {
+                            String args[] = option.split("=");
+                            optionMap.put(args[0], args[1]);
+                        }
+
+                        if (optionMap.containsKey("ccRemove")) {
                             // If we want to remove the class, then remove it!
 
                             // TODO: This will only remove the root nodes and ignores endpoint
                             // TODO: Do we need to search into multi_instance?
                             node.removeCommandClass(CommandClass.getCommandClass(cmds[1]));
                             logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - removing {}", node.getNodeId(),
-                                    CommandClass.getCommandClass(args[0]).getLabel());
+                                    CommandClass.getCommandClass(optionMap.get("ccRemove")).getLabel());
                             continue;
                         }
 
@@ -716,20 +723,18 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
 
                         // If we found the command class, then set its options
                         if (zwaveClass != null) {
-                            Map<String, String> option = new HashMap<String, String>(1);
-                            option.put(args[0], args[1]);
-                            zwaveClass.setOptions(option);
+                            zwaveClass.setOptions(optionMap);
                             continue;
                         }
 
                         // Command class isn't found! Do we want to add it?
                         // TODO: Does this need to account for multiple endpoints!?!
-                        if ("ccAdd".equals(args[0])) {
-                            ZWaveCommandClass commandClass = ZWaveCommandClass
-                                    .getInstance(CommandClass.getCommandClass(args[0]).getKey(), node, controller);
+                        if (optionMap.containsKey("ccAdd")) {
+                            ZWaveCommandClass commandClass = ZWaveCommandClass.getInstance(
+                                    CommandClass.getCommandClass(optionMap.get("ccAdd")).getKey(), node, controller);
                             if (commandClass != null) {
                                 logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - adding {}", node.getNodeId(),
-                                        CommandClass.getCommandClass(args[0]).getLabel());
+                                        CommandClass.getCommandClass(optionMap.get("ccAdd")).getLabel());
                                 node.addCommandClass(commandClass);
                             }
                         }

@@ -51,12 +51,14 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
     private static final Logger logger = LoggerFactory.getLogger(ZWaveMeterCommandClass.class);
     private static final int MAX_SUPPORTED_VERSION = 3;
 
-    private static final int METER_GET = 0x01;
-    private static final int METER_REPORT = 0x02;
+    // Version 1
+    private static final int METER_GET = 1;
+    private static final int METER_REPORT = 2;
+
     // Version 2 and 3
-    private static final int METER_SUPPORTED_GET = 0x03;
-    private static final int METER_SUPPORTED_REPORT = 0x04;
-    private static final int METER_RESET = 0x05;
+    private static final int METER_SUPPORTED_GET = 3;
+    private static final int METER_SUPPORTED_REPORT = 4;
+    private static final int METER_RESET = 5;
 
     private MeterType meterType = null;
     private final Set<MeterScale> meterScales = new HashSet<MeterScale>();
@@ -243,7 +245,7 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
             meterType = MeterType.valueOf(options.get("meterType"));
             logger.debug("NODE {}: Set meter type {}", getNode().getNodeId(), meterType.getLabel());
 
-            List<String> scaleList = Arrays.asList(options.get("meterScale").split(","));
+            List<String> scaleList = Arrays.asList(options.get("meterScale").split(";"));
             for (String name : scaleList) {
                 MeterScale scale = MeterScale.valueOf(name);
                 logger.debug("NODE {}: Meter Scale {} = {}", getNode().getNodeId(), meterType.getLabel(),
