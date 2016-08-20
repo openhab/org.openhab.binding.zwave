@@ -84,6 +84,7 @@ public class ZWaveBindingConstants {
     public final static String CHANNEL_SERIAL_NAK = "serial_nak";
     public final static String CHANNEL_SERIAL_CAN = "serial_can";
     public final static String CHANNEL_SERIAL_OOF = "serial_oof";
+    public final static String CHANNEL_SERIAL_CSE = "serial_cse";
 
     public final static String CHANNEL_CFG_BINDING = "binding";
     public final static String CHANNEL_CFG_COMMANDCLASS = "commandClass";
