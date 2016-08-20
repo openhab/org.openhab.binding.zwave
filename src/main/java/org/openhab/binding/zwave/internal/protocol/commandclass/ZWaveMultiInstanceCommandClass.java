@@ -69,6 +69,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
 
     private final Map<Integer, ZWaveEndpoint> endpoints = new HashMap<Integer, ZWaveEndpoint>();
 
+    private boolean useDestEndpointAsSource = false;
     private boolean endpointsAreTheSameDeviceClass;
 
     // List of classes that DO NOT support multiple instances.
@@ -450,18 +451,12 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
         CommandClass commandClass;
         ZWaveCommandClass zwaveCommandClass;
         int originatingEndpointId = serialMessage.getMessagePayloadByte(offset);
+        int destinationEndpointId = serialMessage.getMessagePayloadByte(offset + 1);
 
-        {
-            int destinationEndpointId = serialMessage.getMessagePayloadByte(offset + 1);
-
-            if (destinationEndpointId != 1 && originatingEndpointId == 1) {
-                logger.debug(
-                        "NODE {}: Controller has no endpoints. Probably originating ({}) and destination ({}) endpoints should be swapped.",
-                        getNode().getNodeId(), originatingEndpointId, destinationEndpointId);
-                // not a full swap. Do not use destinationEndpointId after this line
-                // and leave scope intact.
-                originatingEndpointId = destinationEndpointId;
-            }
+        if (useDestEndpointAsSource) {
+            // Not a full swap. Do not use destinationEndpointId after this line
+            // and leave scope intact.
+            originatingEndpointId = destinationEndpointId;
         }
 
         int commandClassCode = serialMessage.getMessagePayloadByte(offset + 2);
@@ -665,4 +660,13 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
 
         return result;
     };
+
+    @Override
+    public boolean setOptions(Map<String, String> options) {
+        if ("true".equals(options.get("useDestination"))) {
+            useDestEndpointAsSource = true;
+        }
+
+        return true;
+    }
 }
