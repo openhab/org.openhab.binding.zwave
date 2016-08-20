@@ -30,6 +30,8 @@ There is no binding level configuration required for the Z-Wave binding. All con
 
 #### Serial Port
 
+Sets the serial port name for the controller.
+
 #### Controller Is Master
 
 When *Controller Is Master* is true, the binding expects to be the main Z-Wave controller in the system. This is not related to the type of controller (*Primary* or *Secondary*), but is related to how devices will be configured.  This will instruct the binding to perform configuration of the device to send network related information such as device wakeup to the binding.
@@ -46,7 +48,14 @@ For most systems, this should be set to *true* - the only time when it would be 
 
 #### Secure Inclusion Mode
 
+The secure command classes allow you to secure communications between devices in your network. This is a good thing, and for devices such as locks that protect the security of your property, it's mandatory. However, most devices support the same communications and functions over the standard communication classes, without security. The secure classes come with some negative points - the communicate more slowly, and consume more power in battery devices. This is because there is roughly twice as much communication required for the security classes.
+
+The his option allows you to select which classes will be configured to use security - you can elect to use security on all devices that support it, or only on entry control devices.
+
+
 #### Network Security Key
+
+This sets the network security key used in your network for securing communications using the secure command classes. It is a 16 byte value, specified in hexadecimal.
 
 
 ### Thing Configuration
@@ -69,6 +78,13 @@ For most systems, this should be set to *true* - the only time when it would be 
 
 
 ## Initialisation
+
+To initialise the bunding and get your Z-Wave network running, you need to follow the following steps -:
+
+* Manually install the serial controller. It doesn't matter what type of Z-Wave dongle you have, there is only a single *thing type* since all sticks use the same communication protocol, and the binding can detect what functions the device supports by communicating with the stick.
+* Set the serial port in the controller configuration.
+* In the UI enable *discovery* mode - this will add all existing things into the *discovery inbox*. From the *inbix* you can add the device directly into the system.
+* the binding should automatically detect the device type and should provide a list of *channels* to which you can attach *items*. Note that it may take some time to discover the device type - especially in battery devices.
 
 ## Z-Wave Network
 
@@ -111,6 +127,8 @@ There is a single *Primary* controller in the network. This controller provides 
 
 ### Slaves
 
+Most devices in your network are *slaves* - they coming in two types, *routing* and *non-routing*.
+
 
 ### Associations
 
@@ -125,6 +143,11 @@ Z-Wave battery devices require additional configuration in order for them to ope
 In order to configure the device properly following its initial inclusion in the network, the device must be woken up a number of times while close to the controller. During this time, the binding will read the device information, but will also configure some settings. The most important is to configure the wakeup period, and wakeup node - until this is done, the device will not wake up periodically, and if it is out of direct range of the controller, it will not be able to communicate with the controller.
 
 ### Polling
+
+The binding supports periodic polling. This has two purposes - firstly to ensure that a device is still responding, and secondly to update the bindings representation of the state of the device.  Where possible *associations* should be used to update the device state - this will keep network traffic to a minimum, which will improve the network latency, and it will be faster since *associations* send updates to the controller immediately where polling will always be noticeably slower.
+
+Keep the polling at a slow rate unless your device doesn't support *associations*.
+
 
 ### Binding Maintenance Functions
 
