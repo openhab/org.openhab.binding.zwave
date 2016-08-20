@@ -14,7 +14,7 @@
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
         </properties>
       </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">
@@ -80,6 +80,9 @@
       <property name="manufacturerId">0159</property>
       <property name="manufacturerRef">0002:0001</property>
       <property name="dbReference">208</property>
+      <property name="commandClass:METER">meterType=ELECTRIC,meterScale=E_W;E_KWh</property>
+      <property name="commandClass:METER:1">meterType=ELECTRIC,meterScale=E_W;E_KWh</property>
+      <property name="commandClass:METER:2">meterType=ELECTRIC,meterScale=E_W;E_KWh</property>
       <property name="defaultAssociations">3</property>
     </properties>
 

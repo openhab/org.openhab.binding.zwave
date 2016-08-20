@@ -238,7 +238,7 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
             meterType = MeterType.valueOf(options.get("meterType"));
             logger.debug("NODE {}: Set meter type {}", getNode().getNodeId(), meterType.getLabel());
 
-            List<String> scaleList = Arrays.asList(options.get("meterScale").split(","));
+            List<String> scaleList = Arrays.asList(options.get("meterScale").split(";"));
             for (String name : scaleList) {
                 MeterScale scale = MeterScale.valueOf(name);
                 logger.debug("NODE {}: Meter Scale {} = {}", getNode().getNodeId(), meterType.getLabel(),
