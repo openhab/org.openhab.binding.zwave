@@ -65,7 +65,9 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     private String networkKey;
     private Integer secureInclusionMode;
     private Integer healTime;
-    private int searchTime = 30;
+
+    private final int SEARCHTIME_DEFAULT = 30;
+    private int searchTime;
 
     public ZWaveControllerHandler(Bridge bridge) {
         super(bridge);
@@ -88,6 +90,13 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             secureInclusionMode = ((BigDecimal) param).intValue();
         } else {
             secureInclusionMode = 0;
+        }
+
+        param = getConfig().get(CONFIGURATION_INCLUSIONTIMEOUT);
+        if (param instanceof BigDecimal && param != null) {
+            searchTime = ((BigDecimal) param).intValue();
+        } else {
+            searchTime = SEARCHTIME_DEFAULT;
         }
 
         param = getConfig().get(CONFIGURATION_SUC);
@@ -240,6 +249,8 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                     value = new BigDecimal(0);
                 } else if (cfg[1].equals("suc") && value instanceof Boolean) {
                     // TODO: Do we need to set this immediately
+                } else if (cfg[1].equals("inclusiontimeout") && value instanceof BigDecimal) {
+                    reinitialise = true;
                 }
             }
             if ("security".equals(cfg[0])) {
