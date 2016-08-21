@@ -18,11 +18,14 @@ package org.openhab.binding.zwave.internal.protocol.event;
 public class ZWaveNetworkEvent extends ZWaveEvent {
     Type type;
     State state;
+    Object value;
 
     /**
      * Constructor. Creates a new instance of the ZWaveNetworkEvent class.
      *
-     * @param nodeId the nodeId of the event.
+     * @param type the type of event (generally the serial command)
+     * @param nodeId the nodeId of the event or 0 for a network wide event
+     * @param state
      */
     public ZWaveNetworkEvent(Type type, int nodeId, State state) {
         super(nodeId);
@@ -31,12 +34,24 @@ public class ZWaveNetworkEvent extends ZWaveEvent {
         this.state = state;
     }
 
+    public ZWaveNetworkEvent(Type type, int nodeId, State state, Object value) {
+        super(nodeId);
+
+        this.type = type;
+        this.state = state;
+        this.value = value;
+    }
+
     public Type getEvent() {
         return type;
     }
 
     public State getState() {
         return state;
+    }
+
+    public Object getValue() {
+        return value;
     }
 
     public enum Type {
@@ -48,7 +63,8 @@ public class ZWaveNetworkEvent extends ZWaveEvent {
         NodeRoutingInfo,
         AssociationUpdate,
         DeleteNode,
-        FailedNode
+        FailedNode,
+        RequestNetworkUpdate
     }
 
     public enum State {

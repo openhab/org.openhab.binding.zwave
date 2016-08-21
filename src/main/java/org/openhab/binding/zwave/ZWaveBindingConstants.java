@@ -121,6 +121,17 @@ public class ZWaveBindingConstants {
     public final static I18nConstant EVENT_EXCLUSION_FAILED = new I18nConstant("zwave.event.exclusion_failed",
             "Z-Wave network exclusion failed");
 
+    public final static I18nConstant EVENT_NETWORKUPDATE_DONE = new I18nConstant("zwave.event.networkupdate_done",
+            "Z-Wave network update completed");
+    public final static I18nConstant EVENT_NETWORKUPDATE_ABORT = new I18nConstant("zwave.event.networkupdate_abort",
+            "Z-Wave network update aborted");
+    public final static I18nConstant EVENT_NETWORKUPDATE_WAIT = new I18nConstant("zwave.event.networkupdate_wait",
+            "Z-Wave network update failed as SUC is busy");
+    public final static I18nConstant EVENT_NETWORKUPDATE_DISABLED = new I18nConstant(
+            "zwave.event.networkupdate_disabled", "Z-Wave network update failed as no SUC is available");
+    public final static I18nConstant EVENT_NETWORKUPDATE_OVERFLOW = new I18nConstant(
+            "zwave.event.networkupdate_overflow", "Z-Wave network update failed as more than 64 updates are required");
+
     public final static Integer ACTION_CHECK_VALUE = new Integer(-232323);
 
     public final static Set<ThingTypeUID> SUPPORTED_BRIDGE_TYPES_UIDS = ImmutableSet.of(CONTROLLER_SERIAL);

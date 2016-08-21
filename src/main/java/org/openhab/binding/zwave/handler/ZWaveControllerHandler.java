@@ -337,6 +337,12 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
     @Override
     public void ZWaveIncomingEvent(ZWaveEvent event) {
+        // If this event requires us to let the users know something, then we create a notification
+        I18nConstant eventKey = null;
+        BindingEventType eventState = null;
+        String eventEntity = null;
+        String eventId = null;
+
         if (event instanceof ZWaveNetworkStateEvent) {
             logger.debug("Controller: Incoming Network State Event {}",
                     ((ZWaveNetworkStateEvent) event).getNetworkState());
@@ -357,6 +363,39 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                         updateNeighbours();
                     }
                     break;
+                case RequestNetworkUpdate:
+                    eventEntity = "network";
+
+                    switch ((int) networkEvent.getValue()) {
+                        case 0: // ZW_SUC_UPDATE_DONE
+                            eventId = "ZW_SUC_UPDATE_DONE";
+                            eventKey = ZWaveBindingConstants.EVENT_NETWORKUPDATE_DONE;
+                            eventState = BindingEventType.SUCCESS;
+                            break;
+                        case 1: // ZW_SUC_UPDATE_ABORT
+                            eventId = "ZW_SUC_UPDATE_ABORT";
+                            eventKey = ZWaveBindingConstants.EVENT_NETWORKUPDATE_ABORT;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        case 2: // ZW_SUC_UPDATE_WAIT
+                            eventId = "ZW_SUC_UPDATE_WAIT";
+                            eventKey = ZWaveBindingConstants.EVENT_NETWORKUPDATE_WAIT;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        case 3: // ZW_SUC_UPDATE_DISABLED
+                            eventId = "ZW_SUC_UPDATE_DISABLED";
+                            eventKey = ZWaveBindingConstants.EVENT_NETWORKUPDATE_DISABLED;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        case 4: // ZW_SUC_UPDATE_OVERFLOW
+                            eventId = "ZW_SUC_UPDATE_OVERFLOW";
+                            eventKey = ZWaveBindingConstants.EVENT_NETWORKUPDATE_OVERFLOW;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
                 default:
                     break;
             }
@@ -365,16 +404,17 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         // Handle node discover inclusion events
         if (event instanceof ZWaveInclusionEvent) {
             ZWaveInclusionEvent incEvent = (ZWaveInclusionEvent) event;
-            I18nConstant eventKey = null;
-            BindingEventType eventType = null;
+
+            eventEntity = "network";
+            eventId = incEvent.getEvent().toString();
             switch (incEvent.getEvent()) {
                 case IncludeStart:
                     eventKey = ZWaveBindingConstants.EVENT_INCLUSION_STARTED;
-                    eventType = BindingEventType.SUCCESS;
+                    eventState = BindingEventType.SUCCESS;
                     break;
                 case IncludeFail:
                     eventKey = ZWaveBindingConstants.EVENT_INCLUSION_FAILED;
-                    eventType = BindingEventType.WARNING;
+                    eventState = BindingEventType.WARNING;
                     break;
                 case IncludeDone:
                     // Ignore node 0 - this just indicates inclusion is finished
@@ -382,36 +422,25 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                         discoveryService.deviceDiscovered(event.getNodeId());
                     }
                     eventKey = ZWaveBindingConstants.EVENT_INCLUSION_COMPLETED;
-                    eventType = BindingEventType.SUCCESS;
+                    eventState = BindingEventType.SUCCESS;
                     break;
                 case ExcludeStart:
                     eventKey = ZWaveBindingConstants.EVENT_EXCLUSION_STARTED;
-                    eventType = BindingEventType.SUCCESS;
+                    eventState = BindingEventType.SUCCESS;
                     break;
                 case ExcludeFail:
                     eventKey = ZWaveBindingConstants.EVENT_EXCLUSION_FAILED;
-                    eventType = BindingEventType.WARNING;
+                    eventState = BindingEventType.WARNING;
                     break;
                 case ExcludeDone:
                     eventKey = ZWaveBindingConstants.EVENT_EXCLUSION_COMPLETED;
-                    eventType = BindingEventType.SUCCESS;
+                    eventState = BindingEventType.SUCCESS;
                     break;
                 case ExcludeControllerFound:
                 case ExcludeSlaveFound:
                 case IncludeControllerFound:
                 case IncludeSlaveFound:
                     break;
-            }
-
-            if (eventKey != null) {
-                EventPublisher ep = ZWaveEventPublisher.getEventPublisher();
-                if (ep != null) {
-                    BindingEventDTO dto = new BindingEventDTO(eventType,
-                            ZWaveBindingConstants.getI18nConstant(eventKey));
-                    Event notification = BindingEventFactory.createBindingEvent(ZWaveBindingConstants.BINDING_ID,
-                            "network", incEvent.getEvent().toString(), dto);
-                    ep.post(notification);
-                }
             }
         }
 
@@ -429,6 +458,16 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                     }
                 default:
                     break;
+            }
+        }
+
+        if (eventKey != null) {
+            EventPublisher ep = ZWaveEventPublisher.getEventPublisher();
+            if (ep != null) {
+                BindingEventDTO dto = new BindingEventDTO(eventState, ZWaveBindingConstants.getI18nConstant(eventKey));
+                Event notification = BindingEventFactory.createBindingEvent(ZWaveBindingConstants.BINDING_ID,
+                        eventEntity, eventId, dto);
+                ep.post(notification);
             }
         }
     }
