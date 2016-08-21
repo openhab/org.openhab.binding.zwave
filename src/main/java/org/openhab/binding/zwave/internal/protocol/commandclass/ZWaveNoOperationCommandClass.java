@@ -62,7 +62,7 @@ public class ZWaveNoOperationCommandClass extends ZWaveCommandClass {
      */
     @Override
     public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint) {
-        logger.debug("NODE {}: Received No Operation", this.getNode().getNodeId());
+        logger.debug("NODE {}: Received NO_OPERATION command", getNode().getNodeId());
     }
 
     /**

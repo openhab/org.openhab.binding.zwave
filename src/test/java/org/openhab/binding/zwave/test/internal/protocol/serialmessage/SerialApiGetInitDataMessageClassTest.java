@@ -8,7 +8,7 @@
  */
 package org.openhab.binding.zwave.test.internal.protocol.serialmessage;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
 
@@ -23,7 +23,7 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.SerialApiGetIni
  * @author Chris Jackson
  *
  */
-public class SerialApiGetInitDataMessageClassTest {
+public class SerialApiGetInitDataMessageClassTest extends ZWaveCommandProcessorTest {
     @Test
     public void doRequest() {
         byte[] expectedResponse = { 1, 3, 0, 2, -2 };
@@ -34,5 +34,17 @@ public class SerialApiGetInitDataMessageClassTest {
         msg = handler.doRequest();
         msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
+    }
+
+    @Test
+    public void testIncomingRequest() {
+        byte[] packetData = { 0x01, 0x25, 0x01, 0x02, 0x05, 0x00, 0x1D, (byte) 0xFB, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00,
+                0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00 };
+
+        SerialApiGetInitDataMessageClass handler = new SerialApiGetInitDataMessageClass();
+        ProcessResponse(handler, packetData);
+
+        assertEquals(13, handler.getNodes().size());
     }
 }

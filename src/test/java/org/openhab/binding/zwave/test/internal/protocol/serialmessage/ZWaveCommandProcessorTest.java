@@ -8,6 +8,34 @@
  */
 package org.openhab.binding.zwave.test.internal.protocol.serialmessage;
 
+import static org.junit.Assert.assertEquals;
+
+import org.mockito.Mockito;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
+import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveCommandProcessor;
+
 public class ZWaveCommandProcessorTest {
 
+    void ProcessResponse(ZWaveCommandProcessor handler, byte[] packetData) {
+        SerialMessage msg = new SerialMessage(packetData);
+        assertEquals(true, msg.isValid);
+        assertEquals(SerialMessageType.Response, msg.getMessageType());
+
+        // Mock the controller so we can get any events
+        ZWaveController controller = Mockito.mock(ZWaveController.class);
+        // argument = ArgumentCaptor.forClass(ZWaveEvent.class);
+        // Mockito.doNothing().when(controller).notifyEventListeners(argument.capture());
+
+        // ZWaveTransaction transaction = new ZWaveTransactionBuilder(msg).build();
+
+        try {
+            handler.handleResponse(controller, msg, msg);
+        } catch (ZWaveSerialMessageException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 }

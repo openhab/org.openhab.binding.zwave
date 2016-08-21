@@ -84,9 +84,17 @@ public class ZWaveBindingConstants {
     public final static String CHANNEL_SERIAL_NAK = "serial_nak";
     public final static String CHANNEL_SERIAL_CAN = "serial_can";
     public final static String CHANNEL_SERIAL_OOF = "serial_oof";
+    public final static String CHANNEL_SERIAL_CSE = "serial_cse";
 
     public final static String CHANNEL_CFG_BINDING = "binding";
     public final static String CHANNEL_CFG_COMMANDCLASS = "commandClass";
+
+    public final static String OFFLINE_CONTROLLER_OFFLINE_KEY = "zwave.thingstate.controller_offline";
+    public final static String OFFLINE_CONTROLLER_OFFLINE_DEFAULT = "Controller is offline";
+    public final static String OFFLINE_NODE_DEAD_KEY = "zwave.thingstate.node_dead";
+    public final static String OFFLINE_NODE_DEAD_DEFAULT = "Node is not communicating with controller";
+    public final static String OFFLINE_NODE_NOTFOUND_KEY = "zwave.thingstate.node_notfound";
+    public final static String OFFLINE_NODE_NOTFOUND_DEFAULT = "Node not found in Z-Wave network";
 
     public final static Integer ACTION_CHECK_VALUE = new Integer(-232323);
 
