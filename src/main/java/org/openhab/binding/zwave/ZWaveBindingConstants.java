@@ -127,8 +127,8 @@ public class ZWaveBindingConstants {
         if (i18nProviderLocal == null) {
             return MessageFormat.format(constant.key, (Object[]) null);
         }
-        return i18nProvider.getText(ZWaveActivator.getContext().getBundle(), constant.key, constant.defaultText, null,
-                (Object[]) null);
+        return i18nProviderLocal.getText(ZWaveActivator.getContext().getBundle(), constant.key, constant.defaultText,
+                null, (Object[]) null);
     }
 
     public static String getI18nConstant(I18nConstant constant, Object... arguments) {
@@ -136,8 +136,8 @@ public class ZWaveBindingConstants {
         if (i18nProviderLocal == null) {
             return MessageFormat.format(constant.key, arguments);
         }
-        return i18nProvider.getText(ZWaveActivator.getContext().getBundle(), constant.key, constant.defaultText, null,
-                arguments);
+        return i18nProviderLocal.getText(ZWaveActivator.getContext().getBundle(), constant.key, constant.defaultText,
+                null, arguments);
     }
 
     static class I18nConstant {
