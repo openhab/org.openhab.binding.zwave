@@ -30,13 +30,15 @@ There is no binding level configuration required for the Z-Wave binding. All con
 
 #### Serial Port
 
+Sets the serial port name for the controller.
+
 #### Controller Is Master
 
 When *Controller Is Master* is true, the binding expects to be the main Z-Wave controller in the system. This is not related to the type of controller (*Primary* or *Secondary*), but is related to how devices will be configured.  This will instruct the binding to perform configuration of the device to send network related information such as device wakeup to the binding.
 
 Many functions in Z-Wave only allow a single node to be set, and this is normally reserved for the main system controller. For example, battery device *Wakeup Node*, and *Lifeline* association groups usually only allow a single device to be set.
 
-For most systems, this should be set to *true* - the only time when it would be *false* is if you normally control your Z-Wave network through a different system.
+For most systems, this should be set to *true* - the only time when it should be *false* is if you normally control your Z-Wave network through a different system.
 
 #### Controller Is SUC
 
@@ -46,7 +48,14 @@ For most systems, this should be set to *true* - the only time when it would be 
 
 #### Secure Inclusion Mode
 
+The secure command classes allow you to secure communications between devices in your network. Secure communications is a good thing, and for devices such as locks that protect the security of your property, it's mandatory. However, most devices support the same communications and functions over the standard communication classes, without security. The secure classes come with some negative points - they communicate more slowly, and consume more power in battery devices. This is because there is roughly twice as much communication required for the security classes. You should therefore consider if you need all devices secured, or if it is acceptable for your system to only secure entry devices.
+
+This option allows you to select which classes will be configured to use security - you can elect to use security on all devices that support it, or only on entry control devices.
+
+
 #### Network Security Key
+
+This sets the network security key used in your network for securing communications using the secure command classes. It is a 16 byte value, specified in hexadecimal.
 
 
 ### Thing Configuration
@@ -69,6 +78,13 @@ For most systems, this should be set to *true* - the only time when it would be 
 
 
 ## Initialisation
+
+To initialise the bunding and get your Z-Wave network running, you need to follow the following steps -:
+
+* Manually install the serial controller. It doesn't matter what type of Z-Wave dongle you have, there is only a single *thing type* since all sticks use the same communication protocol, and the binding can detect what functions the device supports by communicating with the stick.
+* Set the serial port in the controller configuration.
+* In the UI enable *discovery* mode - this will add all existing things into the *discovery inbox*. From the *inbix* you can add the device directly into the system.
+* the binding should automatically detect the device type and should provide a list of *channels* to which you can attach *items*. Note that it may take some time to discover the device type - especially in battery devices.
 
 ## Z-Wave Network
 
@@ -111,6 +127,15 @@ There is a single *Primary* controller in the network. This controller provides 
 
 ### Slaves
 
+Most devices in your network are *slaves* - they come in in two types, *routing* and *non-routing*.
+
+## Z-Wave in practice
+
+### Inclusion and Exclusion
+
+Inclusion and exclusion are always started by the primary controller, unless an *SIS* is available in the network, in which case any controller can start these functions.  To include or exclude a device in the network, set the controller into include mode, and press the appropriate button on the device to place the device into include mode.  All Z-Wave devices will have such a button, and you should refer to the device manual.
+
+Secure inclusion must be started from the binding. This is because once the device is included into the network, a key exchange takes place between the binding and the device. This key exchange must take place within a very short time of the inclusion, and if it doesn't succeed, the device must be excluded and included again.  Secure inclusion will generate a lot of activity on the network, so you should avoid other activities at the same time, and the device being included should be close to the controller to reduce any retries that could cause the security handshake to fail.
 
 ### Associations
 
@@ -125,6 +150,11 @@ Z-Wave battery devices require additional configuration in order for them to ope
 In order to configure the device properly following its initial inclusion in the network, the device must be woken up a number of times while close to the controller. During this time, the binding will read the device information, but will also configure some settings. The most important is to configure the wakeup period, and wakeup node - until this is done, the device will not wake up periodically, and if it is out of direct range of the controller, it will not be able to communicate with the controller.
 
 ### Polling
+
+The binding supports periodic polling. This has two purposes - firstly to ensure that a device is still responding, and secondly to update the bindings representation of the state of the device.  Where possible *associations* should be used to update the device state - this will keep network traffic to a minimum, which will improve the network latency, and it will be faster since *associations* send updates to the controller immediately where polling will always be noticeably slower.
+
+Keep the polling at a slow rate unless your device doesn't support *associations*.
+
 
 ### Binding Maintenance Functions
 
@@ -155,7 +185,7 @@ The primary identification is performed using the Manufacturer ID, Device Type a
 
 #### Unknown Devices 
 
-If the device is listed as *Unknown*, then the device has not been fully discovered by the binding. There are a few possible reasons for this -:
+If the device is listed as *Unknown*, then the device has not been fully discovered by the binding and will not work correctly. There are a few possible reasons for this -:
 
-* **The device is not in the database.** If the device attributes show that this device has a valid manufacturer ID, device ID and type, then this is likely the case. Even if the device is in the database, some manufacturers use multiple sets of references for different regions or versions, and your device references may not be in the database. In either case, the database must be updated and you should raise an issue to get this addressed.
+* **The device is not in the database.** If the device attributes show that this device has a valid manufacturer ID, device ID and type, then this is likely the case (eg. you see a label like "*Z-Wave node 1 (0082:6015:020D::2.0)*"). Even if the device appears to be in the database, some manufacturers use multiple sets of references for different regions or versions, and your device references may not be in the database. In either case, the database must be updated and you should raise an issue to get this addressed.
 * **The device initialisation is not complete.** Once the device is included into the network, the binding must interrogate it to find out what type of device it is. One part of this process is to get the manufacturer information required to identify the device, and until this is done, the device will remain unknown. For mains powered devices, this will occur quickly, however for battery devices the device must be woken up a number of  times to allow the discovery phase to complete. This must be performed with the device close to the controller.  
