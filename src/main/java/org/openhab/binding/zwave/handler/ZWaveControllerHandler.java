@@ -48,6 +48,7 @@ import org.openhab.binding.zwave.internal.protocol.event.ZWaveInitializationStat
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkStateEvent;
 import org.openhab.binding.zwave.internal.protocol.initialization.ZWaveNodeInitStage;
+import org.openhab.binding.zwave.internal.protocol.serialmessage.RemoveFailedNodeMessageClass.Report;
 import org.osgi.framework.ServiceRegistration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -342,6 +343,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         BindingEventType eventState = null;
         String eventEntity = null;
         String eventId = null;
+        Object eventArgs = null;
 
         if (event instanceof ZWaveNetworkStateEvent) {
             logger.debug("Controller: Incoming Network State Event {}",
@@ -361,6 +363,96 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                 case NodeRoutingInfo:
                     if (networkEvent.getNodeId() == getOwnNodeId()) {
                         updateNeighbours();
+                    }
+                    break;
+                case RemoveFailedNodeID:
+                    eventEntity = "network"; // ??
+                    eventArgs = new Integer(networkEvent.getNodeId());
+                    eventId = ((Report) networkEvent.getValue()).toString();
+                    switch ((Report) networkEvent.getValue()) {
+                        case FAILED_NODE_NOT_FOUND:
+                            eventKey = ZWaveBindingConstants.EVENT_REMOVEFAILED_NOTFOUND;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        case FAILED_NODE_NOT_PRIMARY_CONTROLLER:
+                            eventKey = ZWaveBindingConstants.EVENT_REMOVEFAILED_NOTCTLR;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        case FAILED_NODE_NOT_REMOVED:
+                            eventKey = ZWaveBindingConstants.EVENT_REMOVEFAILED_NOTREMOVED;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        case FAILED_NODE_NO_CALLBACK_FUNCTION:
+                            eventKey = ZWaveBindingConstants.EVENT_REMOVEFAILED_NOCALLBACK;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        case FAILED_NODE_OK:
+                            eventKey = ZWaveBindingConstants.EVENT_REMOVEFAILED_NODEOK;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        case FAILED_NODE_REMOVED:
+                            eventKey = ZWaveBindingConstants.EVENT_REMOVEFAILED_REMOVED;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        case FAILED_NODE_REMOVE_FAIL:
+                            eventKey = ZWaveBindingConstants.EVENT_REMOVEFAILED_FAILED;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        case FAILED_NODE_REMOVE_PROCESS_BUSY:
+                            eventKey = ZWaveBindingConstants.EVENT_REMOVEFAILED_BUSY;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        case FAILED_NODE_UNKNOWN_FAIL:
+                            eventKey = ZWaveBindingConstants.EVENT_REMOVEFAILED_UNKNOWN;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case ReplaceFailedNode:
+                    eventEntity = "network"; // ??
+                    eventArgs = new Integer(networkEvent.getNodeId());
+                    eventId = ((Report) networkEvent.getValue()).toString();
+                    switch ((Report) networkEvent.getValue()) {
+                        case FAILED_NODE_NOT_FOUND:
+                            eventKey = ZWaveBindingConstants.EVENT_REMOVEFAILED_NOTFOUND;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        case FAILED_NODE_NOT_PRIMARY_CONTROLLER:
+                            eventKey = ZWaveBindingConstants.EVENT_REMOVEFAILED_NOTCTLR;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        case FAILED_NODE_NOT_REMOVED:
+                            eventKey = ZWaveBindingConstants.EVENT_REMOVEFAILED_NOTREMOVED;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        case FAILED_NODE_NO_CALLBACK_FUNCTION:
+                            eventKey = ZWaveBindingConstants.EVENT_REMOVEFAILED_NOCALLBACK;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        case FAILED_NODE_OK:
+                            eventKey = ZWaveBindingConstants.EVENT_REMOVEFAILED_NODEOK;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        case FAILED_NODE_REMOVED:
+                            eventKey = ZWaveBindingConstants.EVENT_REMOVEFAILED_REMOVED;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        case FAILED_NODE_REMOVE_FAIL:
+                            eventKey = ZWaveBindingConstants.EVENT_REMOVEFAILED_FAILED;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        case FAILED_NODE_REMOVE_PROCESS_BUSY:
+                            eventKey = ZWaveBindingConstants.EVENT_REMOVEFAILED_BUSY;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        case FAILED_NODE_UNKNOWN_FAIL:
+                            eventKey = ZWaveBindingConstants.EVENT_REMOVEFAILED_UNKNOWN;
+                            eventState = BindingEventType.WARNING;
+                            break;
+                        default:
+                            break;
                     }
                     break;
                 case RequestNetworkUpdate:
@@ -464,7 +556,8 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         if (eventKey != null) {
             EventPublisher ep = ZWaveEventPublisher.getEventPublisher();
             if (ep != null) {
-                BindingEventDTO dto = new BindingEventDTO(eventState, ZWaveBindingConstants.getI18nConstant(eventKey));
+                BindingEventDTO dto = new BindingEventDTO(eventState,
+                        ZWaveBindingConstants.getI18nConstant(eventKey, eventArgs));
                 Event notification = BindingEventFactory.createBindingEvent(ZWaveBindingConstants.BINDING_ID,
                         eventEntity, eventId, dto);
                 ep.post(notification);
