@@ -67,6 +67,9 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     private Integer secureInclusionMode;
     private Integer healTime;
 
+    private final int SEARCHTIME_DEFAULT = 30;
+    private int searchTime;
+
     public ZWaveControllerHandler(Bridge bridge) {
         super(bridge);
     }
@@ -88,6 +91,13 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             secureInclusionMode = ((BigDecimal) param).intValue();
         } else {
             secureInclusionMode = 0;
+        }
+
+        param = getConfig().get(CONFIGURATION_INCLUSIONTIMEOUT);
+        if (param instanceof BigDecimal && param != null) {
+            searchTime = ((BigDecimal) param).intValue();
+        } else {
+            searchTime = SEARCHTIME_DEFAULT;
         }
 
         param = getConfig().get(CONFIGURATION_SUC);
@@ -125,7 +135,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
         // We must set the state
         updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE,
-                ZWaveBindingConstants.OFFLINE_CONTROLLER_OFFLINE_DEFAULT);
+                ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE));
     }
 
     /**
@@ -167,7 +177,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         // zController.addEventListener(this.zConfigurationService);
 
         // Start the discovery service
-        discoveryService = new ZWaveDiscoveryService(this);
+        discoveryService = new ZWaveDiscoveryService(this, searchTime);
         discoveryService.activate();
 
         // And register it as an OSGi service
@@ -240,6 +250,8 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                     value = new BigDecimal(0);
                 } else if (cfg[1].equals("suc") && value instanceof Boolean) {
                     // TODO: Do we need to set this immediately
+                } else if (cfg[1].equals("inclusiontimeout") && value instanceof BigDecimal) {
+                    reinitialise = true;
                 }
             }
             if ("security".equals(cfg[0])) {
@@ -326,7 +338,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                 updateStatus(ThingStatus.ONLINE);
             } else {
                 updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE,
-                        ZWaveBindingConstants.OFFLINE_CONTROLLER_OFFLINE_DEFAULT);
+                        ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE));
             }
         }
 

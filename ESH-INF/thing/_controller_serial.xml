@@ -65,6 +65,13 @@
                 <default>false</default>
                 <advanced>true</advanced>
             </parameter>
+            
+            <parameter name="controller_inclusiontimeout" type="integer" groupName="network" min="20" max="300">
+                <label>Inclusion Mode Timeout</label>
+                <description>Sets the amount of time the controller will keep inclusion and exclusion mode enabled.</description>
+                <default>30</default>
+                <advanced>true</advanced>
+            </parameter>
 
             <parameter name="heal_time" type="integer" groupName="heal">
                 <label>Heal Time</label>

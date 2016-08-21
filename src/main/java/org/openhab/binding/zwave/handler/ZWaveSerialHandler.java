@@ -19,6 +19,7 @@ import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.ThingStatus;
 import org.eclipse.smarthome.core.thing.ThingStatusDetail;
 import org.eclipse.smarthome.core.types.Command;
+import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -98,16 +99,16 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             initializeNetwork();
         } catch (NoSuchPortException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    "Serial Error: Port " + portId + " does not exist");
+                    ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_SERIAL_EXISTS, portId));
         } catch (PortInUseException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    "Serial Error: Port " + portId + " in use");
+                    ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_SERIAL_INUSE, portId));
         } catch (UnsupportedCommOperationException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    "Serial Error: Unsupported comm operation on Port " + portId);
+                    ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_SERIAL_UNSUPPORTED, portId));
         } catch (TooManyListenersException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    "Serial Error: Too many listeners on Port " + portId);
+                    ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_SERIAL_LISTENERS, portId));
         }
     }
 
