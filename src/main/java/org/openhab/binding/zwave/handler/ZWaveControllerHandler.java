@@ -134,7 +134,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
         // We must set the state
         updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE,
-                ZWaveBindingConstants.OFFLINE_CONTROLLER_OFFLINE_DEFAULT);
+                ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE));
     }
 
     /**
@@ -337,7 +337,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                 updateStatus(ThingStatus.ONLINE);
             } else {
                 updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE,
-                        ZWaveBindingConstants.OFFLINE_CONTROLLER_OFFLINE_DEFAULT);
+                        ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE));
             }
         }
 
