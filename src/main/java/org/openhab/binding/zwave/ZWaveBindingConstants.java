@@ -8,9 +8,12 @@
  */
 package org.openhab.binding.zwave;
 
+import java.text.MessageFormat;
 import java.util.Set;
 
+import org.eclipse.smarthome.core.i18n.I18nProvider;
 import org.eclipse.smarthome.core.thing.ThingTypeUID;
+import org.openhab.binding.zwave.internal.ZWaveActivator;
 
 import com.google.common.collect.ImmutableSet;
 
@@ -34,6 +37,7 @@ public class ZWaveBindingConstants {
     public final static String CONFIGURATION_SECUREINCLUSION = "security_inclusionmode";
     public final static String CONFIGURATION_HEALTIME = "heal_time";
     public final static String CONFIGURATION_INCLUSION_MODE = "inclusion_mode";
+    public final static String CONFIGURATION_INCLUSIONTIMEOUT = "controller_inclusiontimeout";
 
     public final static String CONFIGURATION_SWITCHALLMODE = "switchall_mode";
     public final static String CONFIGURATION_WAKEUPNODE = "wakeup_node";
@@ -84,11 +88,65 @@ public class ZWaveBindingConstants {
     public final static String CHANNEL_SERIAL_NAK = "serial_nak";
     public final static String CHANNEL_SERIAL_CAN = "serial_can";
     public final static String CHANNEL_SERIAL_OOF = "serial_oof";
+    public final static String CHANNEL_SERIAL_CSE = "serial_cse";
 
     public final static String CHANNEL_CFG_BINDING = "binding";
     public final static String CHANNEL_CFG_COMMANDCLASS = "commandClass";
 
+    public final static I18nConstant OFFLINE_CTLR_OFFLINE = new I18nConstant("zwave.thingstate.controller_offline",
+            "Controller is offline");
+    public final static I18nConstant OFFLINE_NODE_DEAD = new I18nConstant("zwave.thingstate.node_dead",
+            "Node is not communicating with controller");
+    public final static I18nConstant OFFLINE_NODE_NOTFOUND = new I18nConstant("zwave.thingstate.node_notfound",
+            "Node not found in Z-Wave network");
+    public final static I18nConstant OFFLINE_SERIAL_EXISTS = new I18nConstant("zwave.thingstate.serial_notfound",
+            "Serial Error: Port {0} does not exist");
+    public final static I18nConstant OFFLINE_SERIAL_INUSE = new I18nConstant("zwave.thingstate.serial_inuse",
+            "Serial Error: Port {0} is in use");
+    public final static I18nConstant OFFLINE_SERIAL_UNSUPPORTED = new I18nConstant(
+            "zwave.thingstate.serial_unsupported", "Serial Error: Unsupported operation on port {0}");
+    public final static I18nConstant OFFLINE_SERIAL_LISTENERS = new I18nConstant("zwave.thingstate.serial_listeners",
+            "Serial Error: Too many listeners on port {0}");
+
     public final static Integer ACTION_CHECK_VALUE = new Integer(-232323);
 
     public final static Set<ThingTypeUID> SUPPORTED_BRIDGE_TYPES_UIDS = ImmutableSet.of(CONTROLLER_SERIAL);
+
+    private static I18nProvider i18nProvider;
+
+    protected void setI18nProvider(I18nProvider i18nProvider) {
+        ZWaveBindingConstants.i18nProvider = i18nProvider;
+    }
+
+    protected void unsetI18nProvider(I18nProvider i18nProvider) {
+        ZWaveBindingConstants.i18nProvider = null;
+    }
+
+    public static String getI18nConstant(I18nConstant constant) {
+        I18nProvider i18nProviderLocal = i18nProvider;
+        if (i18nProviderLocal == null) {
+            return MessageFormat.format(constant.key, (Object[]) null);
+        }
+        return i18nProvider.getText(ZWaveActivator.getContext().getBundle(), constant.key, constant.defaultText, null,
+                (Object[]) null);
+    }
+
+    public static String getI18nConstant(I18nConstant constant, Object... arguments) {
+        I18nProvider i18nProviderLocal = i18nProvider;
+        if (i18nProviderLocal == null) {
+            return MessageFormat.format(constant.key, arguments);
+        }
+        return i18nProvider.getText(ZWaveActivator.getContext().getBundle(), constant.key, constant.defaultText, null,
+                arguments);
+    }
+
+    static class I18nConstant {
+        public String key;
+        public String defaultText;
+
+        I18nConstant(String key, String defaultText) {
+            this.key = key;
+            this.defaultText = defaultText;
+        }
+    }
 }

@@ -19,6 +19,7 @@ import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.ThingStatus;
 import org.eclipse.smarthome.core.thing.ThingStatusDetail;
 import org.eclipse.smarthome.core.types.Command;
+import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,8 +54,9 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
     private int NAKCount = 0;
     private int ACKCount = 0;
     private int OOFCount = 0;
+    private int CSECount = 0;
 
-    private static final int ZWAVE_RECEIVE_TIMEOUT = 1000;
+    private static final int SERIAL_RECEIVE_TIMEOUT = 250;
 
     private ZWaveReceiveThread receiveThread;
 
@@ -82,7 +84,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             serialPort.setSerialPortParams(115200, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
                     SerialPort.PARITY_NONE);
             serialPort.enableReceiveThreshold(1);
-            serialPort.enableReceiveTimeout(ZWAVE_RECEIVE_TIMEOUT);
+            serialPort.enableReceiveTimeout(SERIAL_RECEIVE_TIMEOUT);
             logger.debug("Starting receive thread");
             receiveThread = new ZWaveReceiveThread();
             receiveThread.start();
@@ -97,16 +99,16 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             initializeNetwork();
         } catch (NoSuchPortException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    "Serial Error: Port " + portId + " does not exist");
+                    ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_SERIAL_EXISTS, portId));
         } catch (PortInUseException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    "Serial Error: Port " + portId + " in use");
+                    ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_SERIAL_INUSE, portId));
         } catch (UnsupportedCommOperationException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    "Serial Error: Unsupported comm operation on Port " + portId);
+                    ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_SERIAL_UNSUPPORTED, portId));
         } catch (TooManyListenersException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    "Serial Error: Too many listeners on Port " + portId);
+                    ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_SERIAL_LISTENERS, portId));
         }
     }
 
@@ -144,6 +146,15 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
      * It uses a semaphore to synchronize communication with the sending thread.
      */
     private class ZWaveReceiveThread extends Thread implements SerialPortEventListener {
+
+        private final int SEARCH_SOF = 0;
+        private final int SEARCH_LEN = 1;
+        private final int SEARCH_DAT = 2;
+
+        private int rxState = SEARCH_SOF;
+        private int messageLength;
+        private int rxLength;
+        private byte[] rxBuffer;
 
         private static final int SOF = 0x01;
         private static final int ACK = 0x06;
@@ -199,7 +210,13 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                     try {
                         nextByte = serialPort.getInputStream().read();
 
+                        // If byte value is -1, this is a timeout
                         if (nextByte == -1) {
+                            if (rxState != SEARCH_SOF) {
+                                // If we're not searching for a new frame when we get a timeout, something bad happened
+                                logger.debug("Receive Timeout - Sending NAK");
+                                rxState = SEARCH_SOF;
+                            }
                             continue;
                         }
                     } catch (IOException e) {
@@ -207,91 +224,104 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                         break;
                     }
 
-                    switch (nextByte) {
-                        case SOF:
-                            // Keep track of statistics
-                            SOFCount++;
-                            updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_SOF),
-                                    new DecimalType(SOFCount));
+                    switch (rxState) {
+                        case SEARCH_SOF:
+                            switch (nextByte) {
+                                case SOF:
+                                    logger.trace("Received SOF");
 
-                            int messageLength;
-                            try {
-                                messageLength = serialPort.getInputStream().read();
-                            } catch (IOException e) {
-                                logger.error("Got I/O exception {} during receiving. exiting thread.",
-                                        e.getLocalizedMessage());
+                                    // Keep track of statistics
+                                    SOFCount++;
+                                    updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_SOF),
+                                            new DecimalType(SOFCount));
+                                    rxState = SEARCH_LEN;
+                                    break;
+
+                                case ACK:
+                                    // Keep track of statistics
+                                    ACKCount++;
+                                    updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_ACK),
+                                            new DecimalType(ACKCount));
+                                    logger.trace("Received ACK");
+                                    break;
+
+                                case NAK:
+                                    // A NAK means the CRC was incorrectly received by the controller
+                                    NAKCount++;
+                                    updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_NAK),
+                                            new DecimalType(NAKCount));
+                                    logger.debug("Protocol error (NAK), discarding");
+
+                                    // TODO: Add NAK processing
+                                    break;
+
+                                case CAN:
+                                    // The CAN means that the controller dropped the frame
+                                    CANCount++;
+                                    updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_CAN),
+                                            new DecimalType(CANCount));
+                                    logger.debug("Protocol error (CAN), resending");
+
+                                    // TODO: Add CAN processing (Resend?)
+                                    break;
+
+                                default:
+                                    OOFCount++;
+                                    updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_OOF),
+                                            new DecimalType(OOFCount));
+                                    logger.warn(String.format("Protocol error (OOF). Got 0x%02X.", nextByte));
+                                    // Let the timeout deal with sending the NAK
+                                    break;
+                            }
+                            break;
+
+                        case SEARCH_LEN:
+                            // Sanity check the frame length
+                            if (nextByte < 4 || nextByte > 64) {
+                                logger.debug("Frame length is out of limits ({})", nextByte);
 
                                 break;
                             }
+                            messageLength = (nextByte & 0xff) + 2;
 
-                            byte[] buffer = new byte[messageLength + 2];
-                            buffer[0] = SOF;
-                            buffer[1] = (byte) messageLength;
-                            int total = 0;
+                            rxBuffer = new byte[messageLength];
+                            rxBuffer[0] = SOF;
+                            rxBuffer[1] = (byte) nextByte;
+                            rxLength = 2;
+                            rxState = SEARCH_DAT;
+                            break;
 
-                            while (total < messageLength) {
-                                try {
-                                    int read = serialPort.getInputStream().read(buffer, total + 2,
-                                            messageLength - total);
-                                    total += (read > 0 ? read : 0);
-                                } catch (IOException e) {
-                                    logger.error("Got I/O exception {} during receiving. exiting thread.",
-                                            e.getLocalizedMessage());
-                                    return;
-                                }
+                        case SEARCH_DAT:
+                            rxBuffer[rxLength] = (byte) nextByte;
+                            rxLength++;
+
+                            if (rxLength < messageLength) {
+                                break;
                             }
 
-                            logger.debug("Receive Message = {}", SerialMessage.bb2hex(buffer));
-                            SerialMessage recvMessage = new SerialMessage(buffer);
+                            logger.debug("Receive Message = {}", SerialMessage.bb2hex(rxBuffer));
+                            SerialMessage recvMessage = new SerialMessage(rxBuffer);
                             if (recvMessage.isValid) {
                                 logger.trace("Message is valid, sending ACK");
                                 sendResponse(ACK);
 
                                 incomingMessage(recvMessage);
                             } else {
-                                logger.error("Message is invalid, discarding");
+                                CSECount++;
+                                updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_CSE),
+                                        new DecimalType(CSECount));
+
+                                logger.debug("Message is invalid, discarding");
                                 sendResponse(NAK);
                             }
-                            break;
-                        case ACK:
-                            // Keep track of statistics
-                            ACKCount++;
-                            updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_ACK),
-                                    new DecimalType(ACKCount));
-                            logger.trace("Received ACK");
-                            break;
-                        case NAK:
-                            NAKCount++;
-                            updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_NAK),
-                                    new DecimalType(NAKCount));
-                            logger.error("Protocol error (NAK), discarding");
 
-                            // TODO: Add NAK processing
-                            break;
-                        case CAN:
-                            CANCount++;
-                            updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_CAN),
-                                    new DecimalType(CANCount));
-                            logger.error("Protocol error (CAN), resending");
-                            try {
-                                Thread.sleep(100);
-                            } catch (InterruptedException e) {
-                                break;
-                            }
-
-                            // TODO: Add CAN processing (Resend?)
-                            break;
-                        default:
-                            OOFCount++;
-                            updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_OOF),
-                                    new DecimalType(OOFCount));
-                            logger.warn(String.format("Protocol error (OOF). Got 0x%02X. Sending NAK.", nextByte));
-                            sendResponse(NAK);
+                            rxState = SEARCH_SOF;
                             break;
                     }
+
                 }
             } catch (Exception e) {
-                logger.error("Exception during ZWave thread: Receive {}", e);
+                logger.error("Exception during ZWave thread: Receive {}", e.getMessage());
             }
             logger.debug("Stopped ZWave thread: Receive");
 

@@ -129,10 +129,12 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             return;
         }
 
-        updateThingType();
-
         // We need to set the status to OFFLINE so that the framework calls our notification handlers
-        updateStatus(ThingStatus.OFFLINE);
+        updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE,
+                ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE));
+
+        // Make sure the thingType is set correctly from the database
+        updateThingType();
 
         // TODO: Shouldn't the framework do this for us???
         Bridge bridge = getBridge();
@@ -405,7 +407,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         logger.debug("NODE {}: Controller status changed to {}.", nodeId, bridgeStatusInfo.getStatus());
 
         if (bridgeStatusInfo.getStatus() != ThingStatus.ONLINE) {
-            updateStatus(ThingStatus.OFFLINE);
+            updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE,
+                    ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE));
             logger.debug("NODE {}: Controller is not online.", nodeId, bridgeStatusInfo.getStatus());
             return;
         }
@@ -417,7 +420,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         // make sure we know the device state.
         ZWaveNode node = bridgeHandler.getNode(nodeId);
         if (node == null) {
-            updateStatus(ThingStatus.OFFLINE);
+            updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.NONE,
+                    ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_NODE_NOTFOUND));
         } else {
             switch (node.getNodeState()) {
                 case INITIALIZING:
@@ -426,7 +430,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     break;
                 case DEAD:
                 case FAILED:
-                    updateStatus(ThingStatus.OFFLINE);
+                    updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.COMMUNICATION_ERROR,
+                            ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_NODE_DEAD));
                     break;
             }
         }
@@ -1119,7 +1124,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 case DEAD:
                 case FAILED:
                     logger.debug("NODE {}: Setting OFFLINE", nodeId);
-                    updateStatus(ThingStatus.OFFLINE);
+                    updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.COMMUNICATION_ERROR,
+                            ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_NODE_DEAD));
                     break;
             }
 
@@ -1150,7 +1156,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     break;
                 default:
                     if (finalTypeSet) {
-                        updateStatus(ThingStatus.ONLINE, ThingStatusDetail.NONE, initEvent.getStage().toString());
+                        updateStatus(ThingStatus.ONLINE, ThingStatusDetail.NONE,
+                                "Node initialising: " + initEvent.getStage().toString());
                     }
                     break;
             }
