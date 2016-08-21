@@ -30,6 +30,7 @@ import org.eclipse.smarthome.core.thing.UID;
 import org.eclipse.smarthome.core.thing.binding.BaseBridgeHandler;
 import org.eclipse.smarthome.core.types.Command;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
+import org.openhab.binding.zwave.ZWaveBindingConstants.I18nConstant;
 import org.openhab.binding.zwave.discovery.ZWaveDiscoveryService;
 import org.openhab.binding.zwave.event.BindingEventDTO;
 import org.openhab.binding.zwave.event.BindingEventFactory;
@@ -364,31 +365,53 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         // Handle node discover inclusion events
         if (event instanceof ZWaveInclusionEvent) {
             ZWaveInclusionEvent incEvent = (ZWaveInclusionEvent) event;
+            I18nConstant eventKey = null;
+            BindingEventType eventType = null;
             switch (incEvent.getEvent()) {
+                case IncludeStart:
+                    eventKey = ZWaveBindingConstants.EVENT_INCLUSION_STARTED;
+                    eventType = BindingEventType.SUCCESS;
+                    break;
+                case IncludeFail:
+                    eventKey = ZWaveBindingConstants.EVENT_INCLUSION_FAILED;
+                    eventType = BindingEventType.WARNING;
+                    break;
                 case IncludeDone:
                     // Ignore node 0 - this just indicates inclusion is finished
                     if (incEvent.getNodeId() != 0) {
                         discoveryService.deviceDiscovered(event.getNodeId());
                     }
-                case ExcludeDone:
-                case ExcludeFail:
+                    eventKey = ZWaveBindingConstants.EVENT_INCLUSION_COMPLETED;
+                    eventType = BindingEventType.SUCCESS;
+                    break;
                 case ExcludeStart:
-                case IncludeStart:
-                case IncludeFail:
-                    EventPublisher ep = ZWaveEventPublisher.getEventPublisher();
-                    if (ep != null) {
-                        BindingEventDTO dto = new BindingEventDTO(BindingEventType.SUCCESS,
-                                "Z-Wave network inclusion/exclusion: " + incEvent.getEvent());
-                        Event notification = BindingEventFactory.createBindingEvent(ZWaveBindingConstants.BINDING_ID,
-                                "network", incEvent.getEvent().toString(), dto);
-                        ep.post(notification);
-                    }
+                    eventKey = ZWaveBindingConstants.EVENT_EXCLUSION_STARTED;
+                    eventType = BindingEventType.SUCCESS;
+                    break;
+                case ExcludeFail:
+                    eventKey = ZWaveBindingConstants.EVENT_EXCLUSION_FAILED;
+                    eventType = BindingEventType.WARNING;
+                    break;
+                case ExcludeDone:
+                    eventKey = ZWaveBindingConstants.EVENT_EXCLUSION_COMPLETED;
+                    eventType = BindingEventType.SUCCESS;
                     break;
                 case ExcludeControllerFound:
                 case ExcludeSlaveFound:
                 case IncludeControllerFound:
                 case IncludeSlaveFound:
                     break;
+            }
+
+            if (eventKey != null) {
+                EventPublisher ep = ZWaveEventPublisher.getEventPublisher();
+                if (ep != null) {
+                    BindingEventDTO dto = new BindingEventDTO(eventType,
+                            ZWaveBindingConstants.getI18nConstant(eventKey));
+                    Event notification = BindingEventFactory.createBindingEvent(ZWaveBindingConstants.BINDING_ID,
+                            "network", incEvent.getEvent().toString(), dto);
+                    ep.post(notification);
+                }
             }
         }
 

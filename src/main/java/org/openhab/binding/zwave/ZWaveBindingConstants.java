@@ -108,6 +108,19 @@ public class ZWaveBindingConstants {
     public final static I18nConstant OFFLINE_SERIAL_LISTENERS = new I18nConstant("zwave.thingstate.serial_listeners",
             "Serial Error: Too many listeners on port {0}");
 
+    public final static I18nConstant EVENT_INCLUSION_STARTED = new I18nConstant("zwave.event.inclusion_started",
+            "Z-Wave network inclusion started");
+    public final static I18nConstant EVENT_INCLUSION_COMPLETED = new I18nConstant("zwave.event.inclusion_completed",
+            "Z-Wave network inclusion completed");
+    public final static I18nConstant EVENT_INCLUSION_FAILED = new I18nConstant("zwave.event.inclusion_failed",
+            "Z-Wave network inclusion failed");
+    public final static I18nConstant EVENT_EXCLUSION_STARTED = new I18nConstant("zwave.event.exclusion_started",
+            "Z-Wave network exclusion started");
+    public final static I18nConstant EVENT_EXCLUSION_COMPLETED = new I18nConstant("zwave.event.exclusion_completed",
+            "Z-Wave network exclusion completed");
+    public final static I18nConstant EVENT_EXCLUSION_FAILED = new I18nConstant("zwave.event.exclusion_failed",
+            "Z-Wave network exclusion failed");
+
     public final static Integer ACTION_CHECK_VALUE = new Integer(-232323);
 
     public final static Set<ThingTypeUID> SUPPORTED_BRIDGE_TYPES_UIDS = ImmutableSet.of(CONTROLLER_SERIAL);
@@ -140,7 +153,7 @@ public class ZWaveBindingConstants {
                 arguments);
     }
 
-    static class I18nConstant {
+    public static class I18nConstant {
         public String key;
         public String defaultText;
 
