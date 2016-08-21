@@ -65,6 +65,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     private String networkKey;
     private Integer secureInclusionMode;
     private Integer healTime;
+    private int searchTime = 30;
 
     public ZWaveControllerHandler(Bridge bridge) {
         super(bridge);
@@ -166,7 +167,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         // zController.addEventListener(this.zConfigurationService);
 
         // Start the discovery service
-        discoveryService = new ZWaveDiscoveryService(this);
+        discoveryService = new ZWaveDiscoveryService(this, searchTime);
         discoveryService.activate();
 
         // And register it as an OSGi service

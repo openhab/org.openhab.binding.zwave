@@ -37,31 +37,21 @@ import org.slf4j.LoggerFactory;
 public class ZWaveDiscoveryService extends AbstractDiscoveryService implements ExtendedDiscoveryService {
     private final Logger logger = LoggerFactory.getLogger(ZWaveDiscoveryService.class);
 
-    private final static int SEARCH_TIME = 30;
-
     private ZWaveControllerHandler controllerHandler;
     private DiscoveryServiceCallback discoveryServiceCallback;
 
-    public ZWaveDiscoveryService(ZWaveControllerHandler coordinatorHandler) {
-        super(SEARCH_TIME);
+    public ZWaveDiscoveryService(ZWaveControllerHandler coordinatorHandler, int searchTime) {
+        super(searchTime);
         this.controllerHandler = coordinatorHandler;
     }
 
     public void activate() {
         logger.debug("Activating ZWave discovery service for {}", controllerHandler.getThing().getUID());
-
-        // Listen for device events
-        // coordinatorHandler.addDeviceListener(this);
-
-        // startScan();
     }
 
     @Override
     public void deactivate() {
         logger.debug("Deactivating ZWave discovery service for {}", controllerHandler.getThing().getUID());
-
-        // Remove the listener
-        // coordinatorHandler.removeDeviceListener(this);
     }
 
     @Override
@@ -80,11 +70,7 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
 
         // Add all existing devices
         for (ZWaveNode node : controllerHandler.getNodes()) {
-            // if (node.getManufacturer() == Integer.MAX_VALUE) {
-            // deviceDiscovered(node.getNodeId());
-            // } else {
             deviceAdded(node);
-            // }
         }
 
         // Start the search for new devices
@@ -103,41 +89,17 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
         super.stopScan();
     }
 
-    private ThingUID getThingUID(ZWaveNode node) {
-        ThingUID bridgeUID = controllerHandler.getThing().getUID();
-
-        logger.debug("NODE {}: Scanning for things to match {}", node.getNodeId(), node.toString());
-
-        ThingTypeUID thingTypeUID = null;
-        for (ZWaveProduct product : ZWaveConfigProvider.getProductIndex()) {
-            logger.debug("Scanning {}", product.toString());
-            if (product.match(node) == true) {
-                thingTypeUID = product.getThingTypeUID();
-                break;
-            }
-        }
-        logger.debug("Found {}", thingTypeUID);
-
-        if (thingTypeUID == null) {
-            logger.warn("NODE {}: Could note be resolved to a thingType! {}:{}:{}::{}", node.getNodeId(),
-                    String.format("%04X", node.getManufacturer()), String.format("%04X", node.getDeviceType()),
-                    String.format("%04X", node.getDeviceId()), node.getVersion());
-            return null;
-        }
-
-        // Our ThingType UID is based on the device type
-        // ThingTypeUID thingTypeUID = new ThingTypeUID(ZWaveBindingConstants.BINDING_ID, thingID);
-
-        if (getSupportedThingTypes().contains(thingTypeUID)) {
-            String thingId = "node" + node.getNodeId();
-            return new ThingUID(thingTypeUID, bridgeUID, thingId);
-        } else {
-            logger.warn("NODE {}: Thing type {} is not supported", node.getNodeId(), thingTypeUID);
-
-            return null;
-        }
-    }
-
+    /**
+     * Initial device discovered call.
+     * This is called when the device is first found. We know very little about the device at
+     * this stage - just its node number. We add this to the inbox so the users have feedback
+     * that the device is included into the network.
+     *
+     * {@link #deviceAdded} is called once more information is known about the device to add
+     * manufacturer information and other properties.
+     *
+     * @param nodeId the node to be added
+     */
     public void deviceDiscovered(int nodeId) {
         // Don't add the controller as a thing, and only add valid nodes
         if (controllerHandler.getOwnNodeId() == nodeId || nodeId == 0 || nodeId > 232) {
@@ -166,6 +128,12 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
         thingDiscovered(discoveryResult);
     }
 
+    /**
+     * This is called once the noe is fully discovered. At this point we know most of the information about
+     * the device including manufacturer information.
+     *
+     * @param node the node to be added
+     */
     public void deviceAdded(ZWaveNode node) {
         // Don't add the controller as a thing, and only add valid nodes
         if (controllerHandler.getOwnNodeId() == node.getNodeId() || node.getNodeId() == 0 || node.getNodeId() > 232) {
@@ -176,6 +144,7 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
 
         ThingUID bridgeUID = controllerHandler.getThing().getUID();
 
+        // Search the database for this product information
         ZWaveProduct foundProduct = null;
         for (ZWaveProduct product : ZWaveConfigProvider.getProductIndex()) {
             if (product == null) {
@@ -188,6 +157,8 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
             }
         }
 
+        // Create the thing UID
+        // The final thingType will be set once the device initialises
         ThingUID thingUID = new ThingUID(new ThingTypeUID(ZWaveBindingConstants.ZWAVE_THING), bridgeUID,
                 String.format("node%d", node.getNodeId()));
         Map<String, Object> properties = new HashMap<>(11);
@@ -229,6 +200,7 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
         }
         properties.put(ZWaveBindingConstants.PROPERTY_VERSION, node.getApplicationVersion());
 
+        // The following properties should always be known as they come from the controller
         properties.put(ZWaveBindingConstants.PROPERTY_CLASS_BASIC,
                 node.getDeviceClass().getBasicDeviceClass().toString());
         properties.put(ZWaveBindingConstants.PROPERTY_CLASS_GENERIC,
@@ -240,23 +212,11 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
         properties.put(ZWaveBindingConstants.PROPERTY_BEAMING, Boolean.toString(node.isBeaming()));
         properties.put(ZWaveBindingConstants.PROPERTY_ROUTING, Boolean.toString(node.isRouting()));
 
+        // Create the discovery result and add to the inbox
         DiscoveryResult discoveryResult = DiscoveryResultBuilder.create(thingUID).withProperties(properties)
                 .withBridge(bridgeUID).withLabel(label).build();
-
         thingDiscovered(discoveryResult);
 
         return;
-    }
-
-    public void deviceRemoved(ZWaveNode node) {
-        ThingUID thingUID = getThingUID(node);
-
-        if (thingUID != null) {
-            thingRemoved(thingUID);
-        }
-    }
-
-    @Override
-    protected void startBackgroundDiscovery() {
     }
 }
