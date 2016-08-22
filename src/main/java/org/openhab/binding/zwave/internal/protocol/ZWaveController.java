@@ -605,6 +605,11 @@ public class ZWaveController {
                     break;
 
                 case IncludeDone:
+                    // Ignore node 0 - this just indicates inclusion finished
+                    if (incEvent.getNodeId() == 0) {
+                        break;
+                    }
+
                     // Kick off the initialisation.
                     // Since the node is awake, we jump straight into the initialisation sequence
                     // without some of the initial stages like PING that are designed to detect if
@@ -641,6 +646,11 @@ public class ZWaveController {
                     break;
 
                 case ExcludeDone:
+                    // Ignore node 0 - this just indicates exclusion finished
+                    if (incEvent.getNodeId() == 0) {
+                        break;
+                    }
+
                     logger.debug("NODE {}: Excluding node.", incEvent.getNodeId());
                     // Remove the node from the controller
                     if (getNode(incEvent.getNodeId()) == null) {

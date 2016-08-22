@@ -16,6 +16,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -59,28 +60,38 @@ public class RequestNetworkUpdateMessageClass extends ZWaveCommandProcessor {
     public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
 
-        logger.debug("Got ReplaceFailedNode request.");
+        logger.debug("Got RequestNetworkUpdate request.");
+        ZWaveNetworkEvent.State state;
         switch (incomingMessage.getMessagePayloadByte(1)) {
             case ZW_SUC_UPDATE_DONE:
                 // The node is working properly (removed from the failed nodes list). Replace process is stopped.
                 logger.debug("Network updated.");
+                state = ZWaveNetworkEvent.State.Success;
                 break;
             case ZW_SUC_UPDATE_ABORT:
                 logger.error("The update process aborted because of an error.");
+                state = ZWaveNetworkEvent.State.Failure;
                 break;
             case ZW_SUC_UPDATE_WAIT:
                 logger.error("The SUC node is busy.");
+                state = ZWaveNetworkEvent.State.Failure;
                 break;
             case ZW_SUC_UPDATE_DISABLED:
                 logger.error("The SUC functionality is disabled.");
+                state = ZWaveNetworkEvent.State.Failure;
                 break;
             case ZW_SUC_UPDATE_OVERFLOW:
                 logger.error("The SUC node is busy.");
+                state = ZWaveNetworkEvent.State.Failure;
                 break;
             default:
                 logger.info("The controller requested an update after more than 64 changes");
+                state = ZWaveNetworkEvent.State.Failure;
                 break;
         }
+
+        zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.RequestNetworkUpdate, 0, state,
+                incomingMessage.getMessagePayloadByte(1)));
 
         return true;
     }

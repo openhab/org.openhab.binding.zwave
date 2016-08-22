@@ -41,6 +41,20 @@ public class RemoveFailedNodeMessageClass extends ZWaveCommandProcessor {
     private final int FAILED_NODE_REMOVED = 0x01;
     private final int FAILED_NODE_NOT_REMOVED = 0x02;
 
+    public enum Report {
+        FAILED_NODE_REMOVE_STARTED,
+        FAILED_NODE_NOT_PRIMARY_CONTROLLER,
+        FAILED_NODE_NO_CALLBACK_FUNCTION,
+        FAILED_NODE_NOT_FOUND,
+        FAILED_NODE_REMOVE_PROCESS_BUSY,
+        FAILED_NODE_REMOVE_FAIL,
+        FAILED_NODE_UNKNOWN_FAIL,
+
+        FAILED_NODE_OK,
+        FAILED_NODE_REMOVED,
+        FAILED_NODE_NOT_REMOVED
+    }
+
     public ZWaveTransaction doRequest(int nodeId) {
         logger.debug("NODE {}: Marking node as having failed.", nodeId);
 
@@ -59,37 +73,43 @@ public class RemoveFailedNodeMessageClass extends ZWaveCommandProcessor {
         logger.debug("Got RemoveFailedNode response.");
         int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
+        Report report = null;
         switch (incomingMessage.getMessagePayloadByte(0)) { // TODO: Should this be (&& 0x0f)?
             case FAILED_NODE_REMOVE_STARTED:
                 logger.debug("NODE {}: Remove failed node successfully placed on stack.", nodeId);
                 break;
             case FAILED_NODE_NOT_PRIMARY_CONTROLLER:
                 logger.error("NODE {}: Remove failed node failed as not Primary Controller for node!", nodeId);
-                transaction.setTransactionCanceled();
+                report = Report.FAILED_NODE_NOT_PRIMARY_CONTROLLER;
                 break;
             case FAILED_NODE_NO_CALLBACK_FUNCTION:
                 logger.error("NODE {}: Remove failed node failed as no callback function!", nodeId);
-                transaction.setTransactionCanceled();
+                report = Report.FAILED_NODE_NO_CALLBACK_FUNCTION;
                 break;
             case FAILED_NODE_NOT_FOUND:
                 logger.error("NODE {}: Remove failed node failed as node not found", nodeId);
-                transaction.setTransactionCanceled();
+                report = Report.FAILED_NODE_NOT_FOUND;
                 break;
             case FAILED_NODE_REMOVE_PROCESS_BUSY:
                 logger.error("NODE {}: Remove failed node failed as Controller Busy!", nodeId);
-                transaction.setTransactionCanceled();
+                report = Report.FAILED_NODE_REMOVE_PROCESS_BUSY;
                 break;
             case FAILED_NODE_REMOVE_FAIL:
                 logger.error("NODE {}: Remove failed node failed!", nodeId);
-                transaction.setTransactionCanceled();
+                report = Report.FAILED_NODE_REMOVE_FAIL;
                 break;
             default:
                 logger.error("NODE {}: Remove failed node not placed on stack due to error 0x{}.", nodeId,
                         Integer.toHexString(incomingMessage.getMessagePayloadByte(0)));
-                transaction.setTransactionCanceled();
+                report = Report.FAILED_NODE_UNKNOWN_FAIL;
                 break;
         }
 
+        // If this is a fail, then notify now, otherwise wait for the REQuest
+        if (report != null) {
+            zController.notifyEventListeners(
+                    new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.RemoveFailedNodeID, nodeId, State.Failure, report));
+        }
         return true;
     }
 
@@ -99,22 +119,35 @@ public class RemoveFailedNodeMessageClass extends ZWaveCommandProcessor {
         int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: Got RemoveFailedNode request.", nodeId);
+        ZWaveNetworkEvent.State state;
+        Report report = null;
         switch (incomingMessage.getMessagePayloadByte(1)) {
             case FAILED_NODE_OK:
                 logger.error("NODE {}: Unable to remove failed node as it has not failed!", nodeId);
+                state = ZWaveNetworkEvent.State.Failure;
+                report = Report.FAILED_NODE_OK;
                 break;
             case FAILED_NODE_REMOVED:
                 logger.debug("NODE {}: Successfully removed node from controller!", nodeId);
                 zController.notifyEventListeners(new ZWaveNetworkEvent(Type.DeleteNode, nodeId, State.Success));
+                state = ZWaveNetworkEvent.State.Success;
+                report = Report.FAILED_NODE_REMOVED;
                 break;
             case FAILED_NODE_NOT_REMOVED:
                 logger.error("NODE {}: Unable to remove failed node!", nodeId);
+                state = ZWaveNetworkEvent.State.Failure;
+                report = Report.FAILED_NODE_NOT_REMOVED;
                 break;
             default:
                 logger.error("NODE {}: Remove failed node failed with response 0x{}.", nodeId,
                         Integer.toHexString(incomingMessage.getMessagePayloadByte(1)));
+                state = ZWaveNetworkEvent.State.Failure;
+                report = Report.FAILED_NODE_UNKNOWN_FAIL;
                 break;
         }
+
+        zController.notifyEventListeners(
+                new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.RemoveFailedNodeID, nodeId, state, report));
 
         return true;
     }

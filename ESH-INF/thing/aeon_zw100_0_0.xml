@@ -12,7 +12,7 @@
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Binary Sensor</label>
+        <label>Sensor (motion)</label>
         <properties>
           <property name="binding:*:OnOffType">SENSOR_BINARY,BASIC</property>
         </properties>
