@@ -108,6 +108,49 @@ public class ZWaveBindingConstants {
     public final static I18nConstant OFFLINE_SERIAL_LISTENERS = new I18nConstant("zwave.thingstate.serial_listeners",
             "Serial Error: Too many listeners on port {0}");
 
+    public final static I18nConstant EVENT_INCLUSION_STARTED = new I18nConstant("zwave.event.inclusion_started",
+            "Z-Wave network inclusion started");
+    public final static I18nConstant EVENT_INCLUSION_COMPLETED = new I18nConstant("zwave.event.inclusion_completed",
+            "Z-Wave network inclusion completed");
+    public final static I18nConstant EVENT_INCLUSION_FAILED = new I18nConstant("zwave.event.inclusion_failed",
+            "Z-Wave network inclusion failed");
+    public final static I18nConstant EVENT_EXCLUSION_STARTED = new I18nConstant("zwave.event.exclusion_started",
+            "Z-Wave network exclusion started");
+    public final static I18nConstant EVENT_EXCLUSION_COMPLETED = new I18nConstant("zwave.event.exclusion_completed",
+            "Z-Wave network exclusion completed");
+    public final static I18nConstant EVENT_EXCLUSION_FAILED = new I18nConstant("zwave.event.exclusion_failed",
+            "Z-Wave network exclusion failed");
+
+    public final static I18nConstant EVENT_NETWORKUPDATE_DONE = new I18nConstant("zwave.event.networkupdate_done",
+            "Z-Wave network update completed");
+    public final static I18nConstant EVENT_NETWORKUPDATE_ABORT = new I18nConstant("zwave.event.networkupdate_abort",
+            "Z-Wave network update aborted");
+    public final static I18nConstant EVENT_NETWORKUPDATE_WAIT = new I18nConstant("zwave.event.networkupdate_wait",
+            "Z-Wave network update failed as SUC is busy");
+    public final static I18nConstant EVENT_NETWORKUPDATE_DISABLED = new I18nConstant(
+            "zwave.event.networkupdate_disabled", "Z-Wave network update failed as no SUC is available");
+    public final static I18nConstant EVENT_NETWORKUPDATE_OVERFLOW = new I18nConstant(
+            "zwave.event.networkupdate_overflow", "Z-Wave network update failed as more than 64 updates are required");
+
+    public final static I18nConstant EVENT_REMOVEFAILED_NOTFOUND = new I18nConstant("zwave.event.removenode_notfound",
+            "Remove node {0} failed as node was not found");
+    public final static I18nConstant EVENT_REMOVEFAILED_NOTCTLR = new I18nConstant(
+            "zwave.event.removenode_nocontroller", "Remove node {0} failed - this is not the Primary controller");
+    public final static I18nConstant EVENT_REMOVEFAILED_NOTREMOVED = new I18nConstant(
+            "zwave.event.removenode_notremoved", "Unable to remove node {0} from the network");
+    public final static I18nConstant EVENT_REMOVEFAILED_NOCALLBACK = new I18nConstant(
+            "zwave.event.removenode_nocallback", "Remove node {0} failed - no callback function was provided");
+    public final static I18nConstant EVENT_REMOVEFAILED_NODEOK = new I18nConstant("zwave.event.removenode_nodeok",
+            "Remove node {0} failed - the node is operating");
+    public final static I18nConstant EVENT_REMOVEFAILED_REMOVED = new I18nConstant("zwave.event.removenode_removed",
+            "Node {0} successfully removed from the network");
+    public final static I18nConstant EVENT_REMOVEFAILED_FAILED = new I18nConstant("zwave.event.removenode_failed",
+            "Remove node {0} from the network failed");
+    public final static I18nConstant EVENT_REMOVEFAILED_BUSY = new I18nConstant("zwave.event.removenode_busy",
+            "Remove node {0} failed - the controller is busy");
+    public final static I18nConstant EVENT_REMOVEFAILED_UNKNOWN = new I18nConstant("zwave.event.removenode_unknown",
+            "Remove node {0} failed with unknown error");
+
     public final static Integer ACTION_CHECK_VALUE = new Integer(-232323);
 
     public final static Set<ThingTypeUID> SUPPORTED_BRIDGE_TYPES_UIDS = ImmutableSet.of(CONTROLLER_SERIAL);
@@ -140,7 +183,7 @@ public class ZWaveBindingConstants {
                 null, arguments);
     }
 
-    static class I18nConstant {
+    public static class I18nConstant {
         public String key;
         public String defaultText;
 
