@@ -67,8 +67,7 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
         SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.AddNodeToNetwork).withPayload(command)
                 .build();
 
-        return new ZWaveTransactionBuilder(serialMessage).withExpectedResponseClass(SerialMessageClass.AddNodeToNetwork)
-                .withPriority(TransactionPriority.High).build();
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
     }
 
     public ZWaveTransaction doRequestStop() {

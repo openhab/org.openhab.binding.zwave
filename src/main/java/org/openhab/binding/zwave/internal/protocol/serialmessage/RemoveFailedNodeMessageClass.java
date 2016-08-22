@@ -62,9 +62,7 @@ public class RemoveFailedNodeMessageClass extends ZWaveCommandProcessor {
         SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.RemoveFailedNodeID).withPayload(nodeId)
                 .build();
 
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.RemoveFailedNodeID).withPriority(TransactionPriority.High)
-                .build();
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
     }
 
     @Override

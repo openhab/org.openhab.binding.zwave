@@ -35,9 +35,7 @@ public class AssignSucReturnRouteMessageClass extends ZWaveCommandProcessor {
         SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.AssignSucReturnRoute)
                 .withPayload(nodeId).build();
 
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.AssignSucReturnRoute)
-                .withPriority(TransactionPriority.High).build();
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
     }
 
     @Override

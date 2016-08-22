@@ -30,8 +30,7 @@ public class ControllerSetDefaultMessageClass extends ZWaveCommandProcessor {
         // Create the request
         SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.SetDefault).build();
 
-        return new ZWaveTransactionBuilder(serialMessage).withExpectedResponseClass(SerialMessageClass.SetDefault)
-                .withPriority(TransactionPriority.High).build();
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
     }
 
     @Override

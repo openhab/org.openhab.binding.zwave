@@ -51,8 +51,7 @@ public class SetSucNodeMessageClass extends ZWaveCommandProcessor {
         SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.SetSucNodeID).withPayload(payload)
                 .build();
 
-        return new ZWaveTransactionBuilder(serialMessage).withExpectedResponseClass(SerialMessageClass.SetSucNodeID)
-                .withPriority(TransactionPriority.High).build();
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
     }
 
     @Override

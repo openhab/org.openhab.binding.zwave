@@ -35,9 +35,7 @@ public class DeleteSucReturnRouteMessageClass extends ZWaveCommandProcessor {
         SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.DeleteSUCReturnRoute)
                 .withPayload(nodeId).build();
 
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.DeleteSUCReturnRoute)
-                .withPriority(TransactionPriority.High).build();
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
     }
 
     @Override

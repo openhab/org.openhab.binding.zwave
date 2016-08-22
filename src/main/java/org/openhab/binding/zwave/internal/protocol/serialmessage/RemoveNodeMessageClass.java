@@ -47,9 +47,7 @@ public class RemoveNodeMessageClass extends ZWaveCommandProcessor {
         SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.RemoveNodeFromNetwork)
                 .withPayload(REMOVE_NODE_ANY).build();
 
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.RemoveNodeFromNetwork)
-                .withPriority(TransactionPriority.High).build();
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
     }
 
     public ZWaveTransaction doRequestStop() {

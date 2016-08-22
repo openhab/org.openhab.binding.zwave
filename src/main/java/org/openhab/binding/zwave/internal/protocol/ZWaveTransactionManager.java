@@ -441,6 +441,9 @@ public class ZWaveTransactionManager {
 
         @Override
         public void run() {
+            // if (true) {
+            // return;
+            // }
             logger.debug("Timeout.......... {} outstanding transactions", outstandingTransactions.size());
             System.out.println("Timer run..... " + System.currentTimeMillis());
             synchronized (transactionSync) {

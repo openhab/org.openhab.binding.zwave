@@ -243,15 +243,13 @@ public class ZWaveTransaction {
                     break;
                 }
 
-                // TODO: This SendData check needs to be removed once callback id is properly handled
-                // if (getMessageClass() == SerialMessageClass.SendData
                 if (incomingMessage.getCallbackId() != getCallbackId()) {
                     break;
                 }
 
                 // We've received our request - advance
                 // TODO: Ultimately, getExpectedReply should return null if we're not waiting for data
-                if (expectedReplyClass != null && expectedReplyClass != incomingMessage.getMessageClass()) {
+                if (expectedReplyClass != null) { // && expectedReplyClass != incomingMessage.getMessageClass()) {
                     transactionStateTracker = TransactionState.WAIT_DATA;
                     break;
                 }

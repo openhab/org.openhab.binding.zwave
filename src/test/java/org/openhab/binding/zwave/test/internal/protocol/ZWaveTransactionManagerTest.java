@@ -23,6 +23,7 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.AssignReturnRou
 import org.openhab.binding.zwave.internal.protocol.serialmessage.GetSucNodeIdMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.GetVersionMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.MemoryGetIdMessageClass;
+import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeNeighborUpdateMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.SerialApiGetCapabilitiesMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.SerialApiSetTimeoutsMessageClass;
 
@@ -365,9 +366,53 @@ public class ZWaveTransactionManagerTest {
         // Check that this frame was sent
         assertEquals(1, txQueueCapture.getAllValues().size());
 
-        message = new SerialMessage(responsePacket1);
-
         // Provide the response
+        message = new SerialMessage(responsePacket1);
+        manager.processReceiveMessage(message);
+
+        // Check that the transaction completed
+        assertEquals(1, transactionCompleteCapture.getAllValues().size());
+        assertEquals(TransactionState.DONE, transactionCompleteCapture.getValue().getTransactionState());
+    }
+
+    @Test
+    public void TestTransactionType2Multi() {
+        SerialMessage message;
+        byte[] responsePacket1 = { 0x01, 0x05, 0x00, 0x48, 0x52, 0x21, (byte) 0xC1 };
+        byte[] responsePacket2 = { 0x01, 0x05, 0x00, 0x48, 0x52, 0x22, (byte) 0xC2 };
+        byte[] unrelatedPacket = { 0x01, 0x14, 0x00, 0x04, 0x00, 0x2C, 0x0E, 0x32, 0x02, 0x21, 0x34, 0x00, 0x00, 0x02,
+                0x6D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, (byte) 0x87 };
+
+        // Test transaction with just a REQuest - uses RequestNodeNeighborUpdate
+        ZWaveTransaction transaction = new RequestNodeNeighborUpdateMessageClass().doRequest(12);
+        transaction.getSerialMessage().setCallbackId(82);
+
+        ZWaveTransactionManager manager = getTransactionManager();
+        manager.queueTransactionForSend(transaction);
+
+        // Check that this frame was sent
+        assertEquals(1, txQueueCapture.getAllValues().size());
+
+        // Provide unrelated packet
+        message = new SerialMessage(unrelatedPacket);
+        manager.processReceiveMessage(message);
+
+        // Provide response 1
+        message = new SerialMessage(responsePacket1);
+        manager.processReceiveMessage(message);
+
+        // Check that the transaction has not completed
+        assertEquals(0, transactionCompleteCapture.getAllValues().size());
+
+        // Provide unrelated packet
+        message = new SerialMessage(unrelatedPacket);
+        manager.processReceiveMessage(message);
+
+        // Check that the transaction has not completed
+        assertEquals(0, transactionCompleteCapture.getAllValues().size());
+
+        // Provide response 2
+        message = new SerialMessage(responsePacket2);
         manager.processReceiveMessage(message);
 
         // Check that the transaction completed

@@ -35,9 +35,7 @@ public class AssignReturnRouteMessageClass extends ZWaveCommandProcessor {
         SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.AssignReturnRoute)
                 .withPayload(nodeId, destinationId).build();
 
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.AssignReturnRoute).withPriority(TransactionPriority.High)
-                .build();
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
     }
 
     @Override
