@@ -26,7 +26,7 @@
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM</property>
+          <property name="binding:*:OnOffType">ALARM,BASIC</property>
         </properties>
       </channel>
     </channels>
