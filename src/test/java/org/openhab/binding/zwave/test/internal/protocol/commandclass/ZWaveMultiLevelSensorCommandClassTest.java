@@ -63,4 +63,24 @@ public class ZWaveMultiLevelSensorCommandClassTest extends ZWaveCommandClassTest
         assertEquals(event.getValue(), new BigDecimal("27.4"));
         assertEquals(event.getSensorScale(), 0);
     }
+
+    @Test
+    public void Sensor_Temperature2() {
+        byte[] packetData = { 0x01, 0x0C, 0x00, 0x04, 0x00, 0x16, 0x06, 0x31, 0x05, 0x01, 0x22, 0x07, (byte) 0x99,
+                0x6E };
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData);
+
+        assertEquals(events.size(), 1);
+
+        ZWaveMultiLevelSensorValueEvent event = (ZWaveMultiLevelSensorValueEvent) events.get(0);
+
+        assertEquals(event.getCommandClass(), CommandClass.SENSOR_MULTILEVEL);
+        // assertEquals(event.getNodeId(), 2);
+        assertEquals(event.getEndpoint(), 0);
+        assertEquals(event.getSensorType(), ZWaveMultiLevelSensorCommandClass.SensorType.TEMPERATURE);
+        assertEquals(event.getValue(), new BigDecimal("194.5"));
+        assertEquals(event.getSensorScale(), 0);
+    }
+
 }
