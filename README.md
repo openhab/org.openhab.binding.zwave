@@ -11,6 +11,8 @@ ZWave is a wireless home automation protocol with reliable two way communication
 
 A wide range of devices are supported from lights, switches and sensors to smoke alarms, window coverings and keyfobs. Z-Wave certification guarantees that certified devices will be compatible with each other and the network.
 
+The binding uses a standard Z-Wave stick to communicate with the Z-Wave devices. There are many sticks available, and they all support the same interface so the binding does not distinguish between them.
+
 
 ## Supported Things
 
@@ -160,6 +162,16 @@ Most devices in your network are *slaves* - they come in in two types, *routing*
 Inclusion and exclusion are always started by the primary controller, unless an *SIS* is available in the network, in which case any controller can start these functions.  To include or exclude a device in the network, set the controller into include mode, and press the appropriate button on the device to place the device into include mode.  All Z-Wave devices will have such a button, and you should refer to the device manual.
 
 Secure inclusion must be started from the binding. This is because once the device is included into the network, a key exchange takes place between the binding and the device. This key exchange must take place within a very short time of the inclusion, and if it doesn't succeed, the device must be excluded and included again.  Secure inclusion will generate a lot of activity on the network, so you should avoid other activities at the same time, and the device being included should be close to the controller to reduce any retries that could cause the security handshake to fail.
+
+### Device Initialisation
+
+As soon as the device is discovered (eg included) it is added to the inbox. At this point we still don't know the manufacturer etc.
+
+During the initialisation of a device, the binding performs a discovery and configuration phase. It requests information from the device first to find out information like the manufacturer and what device classes are supported. Once it knows this, the device is shown in the inbox with a 'proper label' based on information from the database.
+
+We then initialise some information in the device such as associations. Association configuration is read from the database. Configuration parameters are not configured automatically and must be manually configured through a user interface.
+
+This discovery is only performed once, and the information is then persisted when the binding is restarted. On each restart the binding will perform an update of the information to read any dynamic data from the device.
 
 
 ### Associations
