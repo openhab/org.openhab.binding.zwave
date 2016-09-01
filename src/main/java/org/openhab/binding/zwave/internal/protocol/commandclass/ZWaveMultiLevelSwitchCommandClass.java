@@ -230,7 +230,10 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
         SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
                 .withCommandClass(getCommandClass(), SWITCH_MULTILEVEL_SUPPORTED_GET).withNodeId(getNode().getNodeId())
                 .build();
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Set).build();
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), SWITCH_MULTILEVEL_SUPPORTED_REPORT)
+                .withPriority(TransactionPriority.Get).build();
 
         // SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
         // SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Set);

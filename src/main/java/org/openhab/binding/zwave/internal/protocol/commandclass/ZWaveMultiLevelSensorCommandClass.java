@@ -248,16 +248,8 @@ public class ZWaveMultiLevelSensorCommandClass extends ZWaveCommandClass
         if (getVersion() < 5) {
             // pre v5 does not have a sensortype argument, but since we
             // used to use it, lets not break things and keep doing so....
-            outputData.write(getNode().getNodeId());
-            outputData.write(3);
-            outputData.write(getCommandClass().getKey());
-            outputData.write(SENSOR_MULTI_LEVEL_GET);
             outputData.write(sensorType.getKey());
         } else {
-            outputData.write(getNode().getNodeId());
-            outputData.write(4);
-            outputData.write(getCommandClass().getKey());
-            outputData.write(SENSOR_MULTI_LEVEL_GET);
             outputData.write(sensorType.getKey());
             outputData.write(0); // first scale }
         }
