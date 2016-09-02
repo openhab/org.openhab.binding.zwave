@@ -9,10 +9,11 @@
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
+import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
@@ -32,7 +33,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  */
 @XStreamAlias("noOperationCommandClass")
 public class ZWaveNoOperationCommandClass extends ZWaveCommandClass {
-    private static final int NO_OPERATION_PING = 0x01;
+    // private static final int NO_OPERATION_PING = 0x01;
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveNoOperationCommandClass.class);
@@ -72,8 +73,11 @@ public class ZWaveNoOperationCommandClass extends ZWaveCommandClass {
     public ZWaveTransaction getNoOperationMessage() {
         logger.debug("NODE {}: Creating new message for command NO_OPERATION_PING", getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), NO_OPERATION_PING).withNodeId(getNode().getNodeId()).build();
+        // SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass())
+        // .withNodeId(getNode().getNodeId()).build();
+        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.SendData)
+                .withPayload(getNode().getNodeId(), 1, CommandClass.NO_OPERATION.getKey())
+                .withNodeId(getNode().getNodeId()).build();
 
         return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Poll).build();
     }
