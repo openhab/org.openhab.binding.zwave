@@ -8,12 +8,14 @@
  */
 package org.openhab.binding.zwave.test.internal.protocol.commandclass;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSensorCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSensorCommandClass.ZWaveMultiLevelSensorValueEvent;
@@ -81,6 +83,19 @@ public class ZWaveMultiLevelSensorCommandClassTest extends ZWaveCommandClassTest
         assertEquals(event.getSensorType(), ZWaveMultiLevelSensorCommandClass.SensorType.TEMPERATURE);
         assertEquals(event.getValue(), new BigDecimal("194.5"));
         assertEquals(event.getSensorScale(), 0);
+    }
+
+    @Test
+    public void getMessage() {
+        ZWaveMultiLevelSensorCommandClass cls = (ZWaveMultiLevelSensorCommandClass) getCommandClass(
+                CommandClass.SENSOR_MULTILEVEL);
+        SerialMessage msg;
+
+        byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, 49, 4, 7, 0, 0, 16, -94 };
+        cls.setVersion(5);
+        msg = cls.getMessage(ZWaveMultiLevelSensorCommandClass.SensorType.DIRECTION);
+        msg.setCallbackId(16);
+        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
 }
