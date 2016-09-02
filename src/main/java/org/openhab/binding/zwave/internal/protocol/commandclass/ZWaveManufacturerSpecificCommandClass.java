@@ -152,7 +152,7 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
 
         return new ZWaveTransactionBuilder(serialMessage)
                 .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), MANUFACTURER_SPECIFIC_GET)
+                .withExpectedResponseCommandClass(getCommandClass(), MANUFACTURER_SPECIFIC_REPORT)
                 .withPriority(TransactionPriority.Config).build();
     }
 
