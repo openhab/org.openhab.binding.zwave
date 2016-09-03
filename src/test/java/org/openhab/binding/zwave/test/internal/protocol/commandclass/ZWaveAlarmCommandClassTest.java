@@ -17,6 +17,7 @@ import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.AlarmType;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.ReportType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.ZWaveAlarmValueEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
@@ -33,16 +34,57 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
         byte[] packetData = { 0x01, 0x10, 0x00, 0x04, 0x10, 0x28, 0x0A, 0x71, 0x05, 0x00, 0x00, 0x00, (byte) 0xFF, 0x01,
                 0x00, 0x01, 0x03, 0x51 };
 
-        List<ZWaveEvent> events = processCommandClassMessage(packetData);
+        List<ZWaveEvent> events = processCommandClassMessage(packetData, 3);
 
         assertEquals(events.size(), 1);
 
         ZWaveAlarmValueEvent event = (ZWaveAlarmValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.ALARM);
         // assertEquals(event.getNodeId(), 40);
         assertEquals(event.getEndpoint(), 0);
+        assertEquals(event.getCommandClass(), CommandClass.ALARM);
+        assertEquals(event.getReportType(), ReportType.NOTIFICATION);
         assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.SMOKE);
+        assertEquals(event.getAlarmStatus(), 0xFF);
+    }
+
+    @Test
+    public void Notification_Burglar_Motion() {
+        byte[] packetData = { 0x01, 0x10, 0x00, 0x04, 0x10, 0x28, 0x0A, 0x71, 0x05, 0x00, 0x00, 0x00, (byte) 0xFF, 0x07,
+                0x08, 0x00, 0x05, 0x58 };
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData, 3);
+
+        assertEquals(events.size(), 1);
+
+        ZWaveAlarmValueEvent event = (ZWaveAlarmValueEvent) events.get(0);
+
+        // assertEquals(event.getNodeId(), 40);
+        assertEquals(event.getEndpoint(), 0);
+        assertEquals(event.getCommandClass(), CommandClass.ALARM);
+        assertEquals(event.getReportType(), ReportType.NOTIFICATION);
+        assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.BURGLAR);
+        assertEquals(event.getAlarmEvent(), 8);
+        assertEquals(event.getAlarmStatus(), 0xFF);
+    }
+
+    @Test
+    public void Notification_AccessControl_Door() {
+        byte[] packetData = { 0x01, 0x10, 0x00, 0x04, 0x10, 0x28, 0x0A, 0x71, 0x05, 0x00, 0x00, 0x00, (byte) 0xFF, 0x06,
+                0x16, 0x00, 0x05, 0x47 };
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData, 3);
+
+        assertEquals(events.size(), 1);
+
+        ZWaveAlarmValueEvent event = (ZWaveAlarmValueEvent) events.get(0);
+
+        // assertEquals(event.getNodeId(), 40);
+        assertEquals(event.getEndpoint(), 0);
+        assertEquals(event.getCommandClass(), CommandClass.ALARM);
+        assertEquals(event.getReportType(), ReportType.NOTIFICATION);
+        assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.ACCESS_CONTROL);
+        assertEquals(event.getAlarmEvent(), 22);
         assertEquals(event.getAlarmStatus(), 0xFF);
     }
 
