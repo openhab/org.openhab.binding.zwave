@@ -33,8 +33,6 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  */
 @XStreamAlias("noOperationCommandClass")
 public class ZWaveNoOperationCommandClass extends ZWaveCommandClass {
-    // private static final int NO_OPERATION_PING = 0x01;
-
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveNoOperationCommandClass.class);
 
@@ -47,6 +45,10 @@ public class ZWaveNoOperationCommandClass extends ZWaveCommandClass {
      */
     public ZWaveNoOperationCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
+
+        // We don't want to request the version since some nodes won't respond
+        // There's also no point as this class must be implemented and there's only 1 version
+        setVersion(1);
     }
 
     /**
@@ -73,8 +75,6 @@ public class ZWaveNoOperationCommandClass extends ZWaveCommandClass {
     public ZWaveTransaction getNoOperationMessage() {
         logger.debug("NODE {}: Creating new message for command NO_OPERATION_PING", getNode().getNodeId());
 
-        // SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass())
-        // .withNodeId(getNode().getNodeId()).build();
         SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.SendData)
                 .withPayload(getNode().getNodeId(), 1, CommandClass.NO_OPERATION.getKey())
                 .withNodeId(getNode().getNodeId()).build();
