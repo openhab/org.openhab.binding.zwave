@@ -16,7 +16,7 @@ Smart Switch 6<br /><h1>Overview</h1><p>Aeon Labs Smart Switch is a Z-Wave power
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
@@ -121,6 +121,13 @@ Configure the state of the LED<br /><h1>Overview</h1><p>Configure the state of L
         </options>
       </parameter>
 
+      <parameter name="config_83_3" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>83: Color in night light mode</label>
+        <default>0</default>
+        <advanced>true</advanced>
+      </parameter>
+
       <parameter name="config_83_3_000000FF" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>83: Red night light color value</label>
@@ -146,6 +153,13 @@ Green night light color value<br /><h1>Overview</h1><p>Green color value for par
 Blue night light color value<br /><h1>Overview</h1><p>Value for parameter 83, night light blue color</p>
         ]]></description>
         <default>221</default>
+      </parameter>
+
+      <parameter name="config_84_3" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>84: Color in energy mode</label>
+        <default>0</default>
+        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_84_3_000000FF" type="integer" groupName="configuration"

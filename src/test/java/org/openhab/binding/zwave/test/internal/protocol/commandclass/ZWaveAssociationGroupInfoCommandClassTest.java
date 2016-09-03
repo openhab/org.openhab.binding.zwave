@@ -32,7 +32,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZwaveAssociation
  * @author Jorg de Jong - Initial version
  * @author Chris Jackson
  */
-public class ZWaveAssociationGroupInfoCommandClassTest {
+public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClassTest {
 
     /**
      * Test the processing of the supported messages types.
@@ -92,5 +92,41 @@ public class ZWaveAssociationGroupInfoCommandClassTest {
                 fail("Out of bounds exception processing data");
             }
         }
+    }
+
+    @Test
+    public void getGroupNameMessage() {
+        ZwaveAssociationGroupInfoCommandClass cls = (ZwaveAssociationGroupInfoCommandClass) getCommandClass(
+                CommandClass.ASSOCIATION_GROUP_INFO);
+        SerialMessage msg;
+
+        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 89, 1, 1, 0, 0, -33 };
+        cls.setVersion(1);
+        msg = cls.getGroupNameMessage(1);
+        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+    }
+
+    @Test
+    public void getCommandListMessage() {
+        ZwaveAssociationGroupInfoCommandClass cls = (ZwaveAssociationGroupInfoCommandClass) getCommandClass(
+                CommandClass.ASSOCIATION_GROUP_INFO);
+        SerialMessage msg;
+
+        byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, 89, 5, 0, 1, 0, 0, -35 };
+        cls.setVersion(1);
+        msg = cls.getCommandListMessage(1);
+        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+    }
+
+    @Test
+    public void getInfoMessage() {
+        ZwaveAssociationGroupInfoCommandClass cls = (ZwaveAssociationGroupInfoCommandClass) getCommandClass(
+                CommandClass.ASSOCIATION_GROUP_INFO);
+        SerialMessage msg;
+
+        byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, 89, 3, 0, 1, 0, 0, -37 };
+        cls.setVersion(1);
+        msg = cls.getInfoMessage(1);
+        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 }

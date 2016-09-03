@@ -14,6 +14,7 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePr
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,34 +62,44 @@ public class RequestNetworkUpdateMessageClass extends ZWaveCommandProcessor {
     public boolean handleRequest(ZWaveController zController, SerialMessage lastSentMessage,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
 
-        logger.debug("Got ReplaceFailedNode request.");
+        logger.debug("Got RequestNetworkUpdate request.");
+        ZWaveNetworkEvent.State state;
         switch (incomingMessage.getMessagePayloadByte(1)) {
             case ZW_SUC_UPDATE_DONE:
                 // The node is working properly (removed from the failed nodes list). Replace process is stopped.
                 logger.debug("Network updated.");
                 transactionComplete = true;
+                state = ZWaveNetworkEvent.State.Success;
                 break;
             case ZW_SUC_UPDATE_ABORT:
                 logger.error("The update process aborted because of an error.");
                 transactionComplete = true;
+                state = ZWaveNetworkEvent.State.Failure;
                 break;
             case ZW_SUC_UPDATE_WAIT:
                 logger.error("The SUC node is busy.");
                 transactionComplete = true;
+                state = ZWaveNetworkEvent.State.Failure;
                 break;
             case ZW_SUC_UPDATE_DISABLED:
                 logger.error("The SUC functionality is disabled.");
                 transactionComplete = true;
+                state = ZWaveNetworkEvent.State.Failure;
                 break;
             case ZW_SUC_UPDATE_OVERFLOW:
-                logger.error("The SUC node is busy.");
+                logger.error("The controller requested an update after more than 64 changes.");
                 transactionComplete = true;
+                state = ZWaveNetworkEvent.State.Failure;
                 break;
             default:
-                logger.info("The controller requested an update after more than 64 changes");
+                logger.info("Unknown error");
                 transactionComplete = true;
+                state = ZWaveNetworkEvent.State.Failure;
                 break;
         }
+
+        zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.RequestNetworkUpdate, 0, state,
+                incomingMessage.getMessagePayloadByte(1)));
 
         return true;
     }

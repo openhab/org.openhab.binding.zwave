@@ -8,12 +8,14 @@
  */
 package org.openhab.binding.zwave.test.internal.protocol.commandclass;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSensorCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSensorCommandClass.ZWaveMultiLevelSensorValueEvent;
@@ -63,4 +65,37 @@ public class ZWaveMultiLevelSensorCommandClassTest extends ZWaveCommandClassTest
         assertEquals(event.getValue(), new BigDecimal("27.4"));
         assertEquals(event.getSensorScale(), 0);
     }
+
+    @Test
+    public void Sensor_Temperature2() {
+        byte[] packetData = { 0x01, 0x0C, 0x00, 0x04, 0x00, 0x16, 0x06, 0x31, 0x05, 0x01, 0x22, 0x07, (byte) 0x99,
+                0x6E };
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData);
+
+        assertEquals(events.size(), 1);
+
+        ZWaveMultiLevelSensorValueEvent event = (ZWaveMultiLevelSensorValueEvent) events.get(0);
+
+        assertEquals(event.getCommandClass(), CommandClass.SENSOR_MULTILEVEL);
+        // assertEquals(event.getNodeId(), 2);
+        assertEquals(event.getEndpoint(), 0);
+        assertEquals(event.getSensorType(), ZWaveMultiLevelSensorCommandClass.SensorType.TEMPERATURE);
+        assertEquals(event.getValue(), new BigDecimal("194.5"));
+        assertEquals(event.getSensorScale(), 0);
+    }
+
+    @Test
+    public void getMessage() {
+        ZWaveMultiLevelSensorCommandClass cls = (ZWaveMultiLevelSensorCommandClass) getCommandClass(
+                CommandClass.SENSOR_MULTILEVEL);
+        SerialMessage msg;
+
+        byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, 49, 4, 7, 0, 0, 16, -94 };
+        cls.setVersion(5);
+        msg = cls.getMessage(ZWaveMultiLevelSensorCommandClass.SensorType.DIRECTION);
+        msg.setCallbackId(16);
+        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+    }
+
 }

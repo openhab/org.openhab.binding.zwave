@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="schlage_be469_00_000" listed="false">
+    <label>BE469 Touchscreen Deadbolt</label>
+    <description>Touchscreen Deadbolt</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="lock_door" typeId="lock_door">
+        <label>Door Lock</label>
+        <properties>
+          <property name="binding:*:OnOffType">DOOR_LOCK</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Schlage</property>
+      <property name="modelId">BE469</property>
+      <property name="manufacturerId">003B</property>
+      <property name="manufacturerRef">6341:5044</property>
+      <property name="dbReference">303</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration">
+        <label>3: Beeper</label>
+        <default>255</default>
+        <options>
+          <option value="0">Disable Beeper</option>
+          <option value="255">Enable Beeper</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_4_1" type="integer" groupName="configuration">
+        <label>4: Vacation Mode</label>
+        <default>0</default>
+        <options>
+          <option value="0">Disable Vacation Mode</option>
+          <option value="255">Enable Vacation Mode</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_5_1" type="integer" groupName="configuration">
+        <label>5: Lock &amp; Leave</label>
+        <default>0</default>
+        <options>
+          <option value="0">Disable Lock &amp; Leave</option>
+          <option value="255">Enable Lock &amp; Leave</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_7_1" type="integer" groupName="configuration">
+        <label>7: Lock Specific Alarm Mode</label>
+        <description>BE469 Only</description>
+        <default>0</default>
+        <options>
+          <option value="0">Alarm Off</option>
+          <option value="1">Alert</option>
+          <option value="2">Tamper</option>
+          <option value="3">Forced Entry</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_8_1" type="integer" groupName="configuration">
+        <label>8: Lock Specific Alarm Alert Sensitivity</label>
+        <default>0</default>
+        <options>
+          <option value="0">Not Supported</option>
+          <option value="1">Most Sensitive</option>
+          <option value="2"></option>
+          <option value="3">Medium Sensitivity</option>
+          <option value="4"></option>
+          <option value="5">Least Sensitive</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_9_1" type="integer" groupName="configuration">
+        <label>9: Lock Specific Alarm Tamper Sensitivity</label>
+        <default>0</default>
+        <options>
+          <option value="0">Not Supported</option>
+          <option value="1">Most Sensitive</option>
+          <option value="2"></option>
+          <option value="3">Medium Sensitivity</option>
+          <option value="4"></option>
+          <option value="5">Least Sensitive</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_10_1" type="integer" groupName="configuration">
+        <label>10: Lock Specific Alarm Kick Sensitivity</label>
+        <description>BE469 Only</description>
+        <default>0</default>
+        <options>
+          <option value="0">Not Supported</option>
+          <option value="1">Most Sensitive</option>
+          <option value="2"></option>
+          <option value="3">Medium Sensitivity</option>
+          <option value="4"></option>
+          <option value="5">Least Sensitive</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_11_1" type="integer" groupName="configuration">
+        <label>11: Lock Specific Alarm Disable—Local Controls</label>
+        <default>0</default>
+        <options>
+          <option value="0">Disable Local Control</option>
+          <option value="255">Enable Local Control</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_15_1" type="integer" groupName="configuration">
+        <label>15: Auto Lock</label>
+        <default>0</default>
+        <options>
+          <option value="0">Disable Auto Lock</option>
+          <option value="255">Enable Auto Lock</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_16_1" type="integer" groupName="configuration">
+        <label>16: User Code PIN Length</label>
+        <description>User Code PIN length, a value between 4 and 8 (default 4)</description>
+        <default>4</default>
+        <options>
+          <option value="4"></option>
+          <option value="5"></option>
+          <option value="6"></option>
+          <option value="7"></option>
+          <option value="8"></option>
+        </options>
+      </parameter>
+
+      <parameter name="config_18_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>18: Get Bootloader Version</label>
+        <default>0</default>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+</thing:thing-descriptions>

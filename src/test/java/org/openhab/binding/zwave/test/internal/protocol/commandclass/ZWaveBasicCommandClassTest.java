@@ -32,7 +32,6 @@ public class ZWaveBasicCommandClassTest extends ZWaveCommandClassTest {
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 32, 2, 0, 0, -90 };
         cls.setVersion(1);
         msg = cls.getValueMessage();
-        byte[] x = msg.getMessageBuffer();
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -44,7 +43,6 @@ public class ZWaveBasicCommandClassTest extends ZWaveCommandClassTest {
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 32, 1, 34, 0, 0, -123 };
         cls.setVersion(1);
         msg = cls.setValueMessage(34);
-        byte[] x = msg.getMessageBuffer();
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 }
