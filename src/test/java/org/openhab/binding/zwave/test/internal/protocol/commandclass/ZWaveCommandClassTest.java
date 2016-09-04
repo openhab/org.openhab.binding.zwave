@@ -95,7 +95,7 @@ public class ZWaveCommandClassTest {
      * @return List of ZWaveEvent(s)
      */
     protected List<ZWaveEvent> processCommandClassMessage(byte[] packetData) {
-        return processCommandClassMessage(packetData, 0);
+        return processCommandClassMessage(packetData, 1);
     }
 
     ZWaveCommandClass getCommandClass(CommandClass cls) {

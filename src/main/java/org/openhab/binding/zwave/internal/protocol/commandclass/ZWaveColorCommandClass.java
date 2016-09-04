@@ -93,7 +93,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
         switch (command) {
             case SWITCH_COLOR_SUPPORTED_REPORT:
                 logger.debug("NODE {}: Process SWITCH_COLOR_SUPPORTED_REPORT", getNode().getNodeId());
-                processColorReport(serialMessage, offset, endpoint);
+                processColorSupportedReport(serialMessage, offset, endpoint);
                 break;
             case SWITCH_COLOR_SET:
                 logger.debug("NODE {}: Process Color SWITCH_COLOR_SET", getNode().getNodeId());
