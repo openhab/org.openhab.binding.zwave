@@ -33,7 +33,7 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
         byte[] packetData = { 0x01, 0x10, 0x00, 0x04, 0x10, 0x28, 0x0A, 0x71, 0x05, 0x00, 0x00, 0x00, (byte) 0xFF, 0x01,
                 0x00, 0x01, 0x03, 0x51 };
 
-        List<ZWaveEvent> events = processCommandClassMessage(packetData);
+        List<ZWaveEvent> events = processCommandClassMessage(packetData, 3);
 
         assertEquals(events.size(), 1);
 
