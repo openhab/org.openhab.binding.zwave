@@ -67,6 +67,7 @@ public class ZWaveCommandClassTest {
         // Get the command class and process the response
         try {
             ZWaveCommandClass cls = ZWaveCommandClass.getInstance(msg.getMessagePayloadByte(3), node, controller);
+            cls.setEndpoint(endpoint);
             assertNotNull(cls);
             cls.setVersion(version);
             cls.handleApplicationCommandRequest(msg, 4, 0);
