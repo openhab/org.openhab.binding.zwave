@@ -8,14 +8,18 @@
  */
 package org.openhab.binding.zwave.test.internal.protocol.commandclass;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorCommandClass.ZWaveColorType;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorCommandClass.ZWaveColorValueEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 
 /**
  * Test cases for {@link ZWaveColorCommandClass}.
@@ -55,6 +59,29 @@ public class ZWaveColorCommandClassTest extends ZWaveCommandClassTest {
         cls.setVersion(1);
         msg = cls.setValueMessage(1, 80);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+    }
+
+    @Test
+    public void processCapabilitySupportedReport() {
+        byte[] packetData = { 0x01, 0x0A, 0x00, 0x04, 0x00, 0x0D, 0x04, 0x33, 0x02, 0x1C, 0x00, (byte) 0xD5 };
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData);
+
+        assertEquals(events.size(), 1);
+        ZWaveColorValueEvent event = (ZWaveColorValueEvent) events.get(0);
+
+        assertEquals(event.getCommandClass(), CommandClass.COLOR);
+        assertTrue(event.getColorMap().containsKey(ZWaveColorType.RED));
+        assertTrue(event.getColorMap().containsKey(ZWaveColorType.GREEN));
+        assertTrue(event.getColorMap().containsKey(ZWaveColorType.BLUE));
+        assertFalse(event.getColorMap().containsKey(ZWaveColorType.AMBER));
+        assertFalse(event.getColorMap().containsKey(ZWaveColorType.COLD_WHITE));
+        assertFalse(event.getColorMap().containsKey(ZWaveColorType.WARM_WHITE));
+        assertFalse(event.getColorMap().containsKey(ZWaveColorType.PURPLE));
+        assertFalse(event.getColorMap().containsKey(ZWaveColorType.INDEX));
+
+        // assertEquals(event.getNodeId(), 40);
+        assertEquals(event.getEndpoint(), 0);
     }
 
 }

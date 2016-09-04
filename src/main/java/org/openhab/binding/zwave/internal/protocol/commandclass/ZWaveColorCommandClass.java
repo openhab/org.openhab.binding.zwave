@@ -106,6 +106,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
             default:
                 logger.warn(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
                         getCommandClass().getLabel(), getCommandClass().getKey()));
+                break;
         }
     }
 
@@ -119,8 +120,9 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
      */
     protected void processColorSupportedReport(SerialMessage serialMessage, int offset, int endpoint)
             throws ZWaveSerialMessageException {
-        int deviceColors = serialMessage.getMessagePayloadByte(offset + 1);
-        for (int i = 0; i < 8; ++i) {
+        int deviceColors = serialMessage.getMessagePayloadByte(offset + 1)
+                + serialMessage.getMessagePayloadByte(offset + 2) * 256;
+        for (int i = 0; i < 16; ++i) {
             if ((deviceColors & (1 << i)) == (1 << i)) {
                 ZWaveColorType color = ZWaveColorType.getColorType(i);
 
@@ -135,11 +137,16 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
                 // Add color to the list of supported colors.
                 if (!supportedColors.contains(color)) {
                     supportedColors.add(color);
+                    colorMap.put(color, null);
                 }
             }
         }
 
         initialiseDone = true;
+
+        ZWaveCommandClassValueEvent zEvent = new ZWaveColorValueEvent(getNode().getNodeId(),
+                getEndpoint().getEndpointId(), colorMap);
+        getController().notifyEventListeners(zEvent);
     }
 
     /**
@@ -169,8 +176,10 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
         refreshList.remove(colorType);
         if (refreshList.isEmpty()) {
             // Yes - notify of a new color
+
             logger.info("NODE {}: Color report finished {}", getNode().getNodeId(), colorMap);
-            ZWaveCommandClassValueEvent zEvent = new ZWaveColorValueEvent(getNode().getNodeId(), 0, colorMap);
+            ZWaveCommandClassValueEvent zEvent = new ZWaveColorValueEvent(getNode().getNodeId(),
+                    getEndpoint().getEndpointId(), colorMap);
             getController().notifyEventListeners(zEvent);
         }
     }
@@ -320,6 +329,15 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
         result.add(msg);
 
         return result;
+    }
+
+    /**
+     * Gets the color map for this command class
+     *
+     * @return the {@link Map} of {@link ZWaveColorType} and {@link Integer}
+     */
+    public Map<ZWaveColorType, Integer> getColorMap() {
+        return colorMap;
     }
 
     /**
