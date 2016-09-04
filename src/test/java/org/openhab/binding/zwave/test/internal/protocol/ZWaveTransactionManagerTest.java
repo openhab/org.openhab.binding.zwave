@@ -5,12 +5,14 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
@@ -606,6 +608,100 @@ public class ZWaveTransactionManagerTest {
         manager.processReceiveMessage(message);
 
         System.out.println("------------------------------------------------------------------------");
+        assertEquals(2, transactionCompleteCapture.getAllValues().size());
+    }
+
+    /**
+     * Tests multiple outstanding transactions to the same node
+     * Two transactions are queued to the same node. The first should be sent immediately, and the second should be
+     * sent after the data response is received to the first transaction.
+     * We use the controller as the node here.
+     */
+    @Ignore
+    @Test
+    public void TestTransactionType4MultiSameNode() {
+        byte[] t1ResponsePacket1 = { 0x01, 0x05, 0x00, 0x48, 0x48, 0x21, (byte) 0xDB };
+        byte[] t1ResponsePacket2 = { 0x01, 0x05, 0x00, 0x48, 0x48, 0x22, (byte) 0xD8 };
+        byte[] t2ResponsePacket1 = { 0x01, 0x05, 0x00, 0x48, 0x56, 0x21, (byte) 0xC5 };
+        byte[] t2ResponsePacket2 = { 0x01, 0x05, 0x00, 0x48, 0x56, 0x22, (byte) 0xC6 };
+        byte[] unrelatedPacket = { 0x01, 0x14, 0x00, 0x04, 0x00, 0x2C, 0x0E, 0x32, 0x02, 0x21, 0x34, 0x00, 0x00, 0x02,
+                0x6D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, (byte) 0x87 };
+
+        ZWaveTransactionManager manager = getTransactionManager();
+        System.out.println("------------------------------------------------------------------------");
+
+        // Start transaction 1
+        SerialMessage message = new ZWaveMessageBuilder(SerialMessageClass.RequestNodeNeighborUpdate).withPayload(2)
+                .build();
+
+        ZWaveTransaction transaction1 = new ZWaveTransactionBuilder(message)
+                .withExpectedResponseClass(SerialMessageClass.RequestNodeNeighborUpdate)
+                .withPriority(TransactionPriority.High).build();
+        transaction1.getSerialMessage().setCallbackId(72);
+
+        manager.queueTransactionForSend(transaction1);
+        assertEquals(0, transactionCompleteCapture.getAllValues().size());
+
+        // Start transaction 2
+        message = new ZWaveMessageBuilder(SerialMessageClass.RequestNodeNeighborUpdate).withPayload(5).build();
+
+        ZWaveTransaction transaction2 = new ZWaveTransactionBuilder(message)
+                .withExpectedResponseClass(SerialMessageClass.RequestNodeNeighborUpdate)
+                .withPriority(TransactionPriority.High).build();
+        transaction2.getSerialMessage().setCallbackId(86);
+
+        manager.queueTransactionForSend(transaction2);
+        assertEquals(0, transactionCompleteCapture.getAllValues().size());
+
+        // Check that the first frame has been sent
+        assertEquals(1, txQueueCapture.getAllValues().size());
+        assertEquals(0, transactionCompleteCapture.getAllValues().size());
+
+        // Provide the response
+        message = new SerialMessage(t1ResponsePacket1);
+        manager.processReceiveMessage(message);
+
+        // Check that only the first frame has been sent and make sure the transaction didn't complete
+        assertEquals(1, txQueueCapture.getAllValues().size());
+        assertEquals(0, transactionCompleteCapture.getAllValues().size());
+
+        // Throw in an unrelated packet and make sure it doesn't impact the transaction
+        message = new SerialMessage(unrelatedPacket);
+        manager.processReceiveMessage(message);
+
+        assertEquals(1, txQueueCapture.getAllValues().size());
+        assertEquals(0, transactionCompleteCapture.getAllValues().size());
+
+        // And the request
+        message = new SerialMessage(t1ResponsePacket2);
+        manager.processReceiveMessage(message);
+
+        // Check that transaction 1 completed
+        assertEquals(1, transactionCompleteCapture.getAllValues().size());
+        assertEquals(0x48, transactionCompleteCapture.getValue().getCallbackId());
+        assertEquals(TransactionState.DONE, transactionCompleteCapture.getValue().getTransactionState());
+
+        // The second transaction should now have been sent
+        assertEquals(2, txQueueCapture.getAllValues().size());
+
+        // Throw in an unrelated packet and make sure it doesn't impact the transaction
+        message = new SerialMessage(unrelatedPacket);
+        manager.processReceiveMessage(message);
+        assertEquals(1, transactionCompleteCapture.getAllValues().size());
+
+        // And feed in all the second transaction packets
+        message = new SerialMessage(t2ResponsePacket1);
+        manager.processReceiveMessage(message);
+        assertEquals(1, transactionCompleteCapture.getAllValues().size());
+
+        // Throw in an unrelated packet and make sure it doesn't impact the transaction
+        message = new SerialMessage(unrelatedPacket);
+        manager.processReceiveMessage(message);
+        assertEquals(1, transactionCompleteCapture.getAllValues().size());
+
+        message = new SerialMessage(t2ResponsePacket2);
+        manager.processReceiveMessage(message);
+
         assertEquals(2, transactionCompleteCapture.getAllValues().size());
     }
 
