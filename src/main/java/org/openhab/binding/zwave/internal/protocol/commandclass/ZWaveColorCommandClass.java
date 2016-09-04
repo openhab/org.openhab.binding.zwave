@@ -19,10 +19,10 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -78,7 +78,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @throws ZWaveSerialMessageException
      */
     @Override
@@ -198,7 +198,8 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
     /**
      * Gets a SerialMessage with the COLOR_SET command
      *
-     * @param the level to set.
+     * @param channel the color channel to set
+     * @param level the level to set.
      * @return the serial message
      */
     public SerialMessage setValueMessage(int channel, int level) {
