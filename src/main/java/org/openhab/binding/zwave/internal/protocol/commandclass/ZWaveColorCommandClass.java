@@ -215,7 +215,8 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
     /**
      * Gets a SerialMessage with the COLOR_SET command
      *
-     * @param the level to set.
+     * @param channel the color channel to set
+     * @param level the level to set.
      * @return the serial message
      */
     public SerialMessage setValueMessage(int channel, int level) {
