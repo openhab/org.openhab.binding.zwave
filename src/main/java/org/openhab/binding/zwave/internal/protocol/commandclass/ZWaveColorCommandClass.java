@@ -110,7 +110,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
     }
 
     /**
-     * Processes a COLOR_REPORT message.
+     * Processes a SWITCH_COLOR_SUPPORTED_REPORT message.
      *
      * @param serialMessage the incoming message to process.
      * @param offset the offset position from which to start message processing.
@@ -143,7 +143,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
     }
 
     /**
-     * Processes a COLOR_REPORT message.
+     * Processes a SWITCH_COLOR_REPORT message.
      *
      * @param serialMessage the incoming message to process.
      * @param offset the offset position from which to start message processing.
@@ -176,7 +176,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
     }
 
     /**
-     * Gets a SerialMessage with the COLOR_GET command
+     * Gets a SerialMessage with the SWITCH_COLOR_GET command
      *
      * @return the serial message
      */
@@ -186,7 +186,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
             return null;
         }
 
-        logger.debug("NODE {}: Creating new message for application command COLOR_GET {}", getNode().getNodeId(),
+        logger.debug("NODE {}: Creating new message for application command SWITCH_COLOR_GET {}", getNode().getNodeId(),
                 color);
         SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
                 SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
@@ -197,12 +197,12 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
     }
 
     /**
-     * Gets a SerialMessage with the COLOR_CAPABILITY_GET command
+     * Gets a SerialMessage with the SWITCH_COLOR_SUPPORTED_GET command
      *
      * @return the serial message
      */
     public SerialMessage getCapabilityMessage() {
-        logger.debug("NODE {}: Creating new message for application command COLOR_CAPABILITY_GET",
+        logger.debug("NODE {}: Creating new message for application command SWITCH_COLOR_SUPPORTED_GET",
                 getNode().getNodeId());
         SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
                 SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
@@ -213,14 +213,14 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
     }
 
     /**
-     * Gets a SerialMessage with the COLOR_SET command
+     * Gets a SerialMessage with the SWITCH_COLOR_SET command
      *
      * @param channel the color channel to set
      * @param level the level to set.
      * @return the serial message
      */
     public SerialMessage setValueMessage(int channel, int level) {
-        logger.debug("NODE {}: Creating new message for application command COLOR_SET", getNode().getNodeId());
+        logger.debug("NODE {}: Creating new message for application command SWITCH_COLOR_SET", getNode().getNodeId());
         SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
                 SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Set);
         byte[] newPayload = { (byte) this.getNode().getNodeId(), 4, (byte) getCommandClass().getKey(),
