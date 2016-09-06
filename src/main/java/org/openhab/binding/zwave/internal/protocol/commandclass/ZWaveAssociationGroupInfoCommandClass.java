@@ -41,11 +41,11 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  */
 @XStreamAlias("associationGroupInfoCommandClass")
-public class ZwaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
+public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
         implements ZWaveCommandClassInitialization {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZwaveAssociationGroupInfoCommandClass.class);
+    private static final Logger logger = LoggerFactory.getLogger(ZWaveAssociationGroupInfoCommandClass.class);
 
     private static final byte ASSOCIATION_GROUP_INFO_NAME_GET = 1;
     private static final byte ASSOCIATION_GROUP_INFO_NAME_REPORT = 2;
@@ -87,7 +87,7 @@ public class ZwaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
      * @param endpoint
      *            the endpoint this Command class belongs to
      */
-    public ZwaveAssociationGroupInfoCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
+    public ZWaveAssociationGroupInfoCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
     }
 
@@ -165,7 +165,7 @@ public class ZwaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
         byte[] strBuffer = Arrays.copyOfRange(serialMessage.getMessagePayload(), offset + 3, offset + 3 + numBytes);
         String groupName = null;
         try {
-            groupName = new String(strBuffer, "ASCII");
+            groupName = new String(strBuffer, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             logger.debug("NODE {}: exeption during group name extraction ", getNode().getNodeId(), e);
         }
