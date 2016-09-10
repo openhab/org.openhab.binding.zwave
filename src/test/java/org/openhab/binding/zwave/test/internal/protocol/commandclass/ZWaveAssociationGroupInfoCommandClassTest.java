@@ -22,9 +22,9 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageTy
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationGroupInfoCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZwaveAssociationGroupInfoCommandClass;
 
 /**
  * Test cases for {@link ZWaveAssociationGroupInfoCommandClass}.
@@ -58,7 +58,7 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
         when(node.getCommandClass(Matchers.eq(CommandClass.DEVICE_RESET_LOCALLY))).thenReturn(reset);
 
         // Our test subject
-        ZwaveAssociationGroupInfoCommandClass cls = (ZwaveAssociationGroupInfoCommandClass) ZWaveCommandClass
+        ZWaveAssociationGroupInfoCommandClass cls = (ZWaveAssociationGroupInfoCommandClass) ZWaveCommandClass
                 .getInstance(CommandClass.ASSOCIATION_GROUP_INFO.getKey(), node, null);
 
         // Let our CC process the messages
@@ -96,7 +96,7 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
 
     @Test
     public void getGroupNameMessage() {
-        ZwaveAssociationGroupInfoCommandClass cls = (ZwaveAssociationGroupInfoCommandClass) getCommandClass(
+        ZWaveAssociationGroupInfoCommandClass cls = (ZWaveAssociationGroupInfoCommandClass) getCommandClass(
                 CommandClass.ASSOCIATION_GROUP_INFO);
         SerialMessage msg;
 
@@ -109,7 +109,7 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
 
     @Test
     public void getCommandListMessage() {
-        ZwaveAssociationGroupInfoCommandClass cls = (ZwaveAssociationGroupInfoCommandClass) getCommandClass(
+        ZWaveAssociationGroupInfoCommandClass cls = (ZWaveAssociationGroupInfoCommandClass) getCommandClass(
                 CommandClass.ASSOCIATION_GROUP_INFO);
         SerialMessage msg;
 
@@ -122,7 +122,7 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
 
     @Test
     public void getInfoMessage() {
-        ZwaveAssociationGroupInfoCommandClass cls = (ZwaveAssociationGroupInfoCommandClass) getCommandClass(
+        ZWaveAssociationGroupInfoCommandClass cls = (ZWaveAssociationGroupInfoCommandClass) getCommandClass(
                 CommandClass.ASSOCIATION_GROUP_INFO);
         SerialMessage msg;
 

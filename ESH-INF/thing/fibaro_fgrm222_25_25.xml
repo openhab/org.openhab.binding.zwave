@@ -5,7 +5,7 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="fibaro_fgrm222_00_000" listed="false">
+  <thing-type id="fibaro_fgrm222_25_025" listed="false">
     <label>FGRM222 Roller Shutter</label>
     <description>Roller Shutter</description>
 
@@ -17,12 +17,11 @@
           <property name="binding:*:OnOffType">SWITCH_BINARY</property>
         </properties>
       </channel>
-      <channel id="blinds_control" typeId="blinds_control">
-        <label>Blinds control</label>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:StopMoveType">SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:UpDownType">SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL,BASIC</property>
         </properties>
       </channel>
       <channel id="sensor_power" typeId="sensor_power">
@@ -32,15 +31,15 @@
         </properties>
       </channel>
       <channel id="meter_watts" typeId="meter_watts">
-        <label>Meter (watts)</label>
+        <label>Electric meter (watts)</label>
         <properties>
           <property name="binding:*:DecimalType">METER;type=E_W</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
-        <label>Meter (kWh)</label>
+        <label>Electric meter (kWh)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER;type=E_KWH</property>
+          <property name="binding:*:DecimalType">METER;type=E_KWh</property>
         </properties>
       </channel>
     </channels>
@@ -50,9 +49,9 @@
       <property name="vendor">Fibaro System</property>
       <property name="modelId">FGRM222</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0301:1001,0302:1000</property>
-      <property name="versionMax">2.2</property>
-      <property name="dbReference">116</property>
+      <property name="manufacturerRef">0302:1000</property>
+      <property name="versionMin">25.25</property>
+      <property name="dbReference">413</property>
       <property name="defaultAssociations">3</property>
     </properties>
 
@@ -64,26 +63,6 @@
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
-
-      <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: Local protection</label>
-        <description>Enables/disables local entry. If activated module stops responding to S1 and S2 push buttons, SCENE ID and association commands will not be sent. Only exception is the B-button.</description>
-        <default>255</default>
-        <options>
-          <option value="0">No protection. Roller Shutter responds to push buttons</option>
-          <option value="2">Local protection active. Roller Shutter does not respond to push butto</option>
-        </options>
-      </parameter>
-
-      <parameter name="config_2_1" type="integer" groupName="configuration">
-        <label>2: Radio protection</label>
-        <description>Enables/disables RF protection. If activated device stops responding to command frames. Configuration and polling still possible.</description>
-        <default>0</default>
-        <options>
-          <option value="0">No protection. Roller Shutter responds to command frames.</option>
-          <option value="1">RF Protection active. Roller Shutter does not respond to the Z-Wave co</option>
-        </options>
-      </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Reports type</label>
@@ -117,7 +96,7 @@
       <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Lamellas positioning mode</label>
         <description>Parameter influences the lamellas positioning in venetian blind mode (parameter 10 set to 2)</description>
-        <default>1</default>
+        <default>2</default>
         <options>
           <option value="0">Lamellas return to previously set position only in case of the main co</option>
           <option value="1">Lamellas return to previously set position in case of the main control</option>
@@ -189,7 +168,7 @@
 
       <parameter name="config_32_1" type="integer" groupName="configuration">
         <label>32: Response to Smoke, CO, CO2 Alarm</label>
-        <default>3</default>
+        <default>1</default>
         <options>
           <option value="0">No response to alarm frames</option>
           <option value="1">Open Blind</option>
@@ -225,14 +204,14 @@
       </parameter>
 
       <parameter name="config_42_2" type="integer" groupName="configuration"
-                 min="-32767" max="32767">
+                 min="0" max="65534">
         <label>42: Periodic power or energy reports</label>
         <description>Time to the next report. Value of 0 means the reports are turned off.</description>
         <default>3600</default>
       </parameter>
 
       <parameter name="config_43_1" type="integer" groupName="configuration"
-                 min="-126" max="127">
+                 min="0" max="254">
         <label>43: Energy reports</label>
         <description>Energy level change which will result in new energy value report being sent. Value of 0 means the reports are turned off.</description>
         <default>10</default>
