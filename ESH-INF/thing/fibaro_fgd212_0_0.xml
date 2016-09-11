@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgd212_00_000" listed="false">
-    <label>FGD212 Fibaro Dimmer 2</label>
-    <description>Fibaro Dimmer 2</description>
+    <label>FGD212 Dimmer 2</label>
+    <description>Dimmer 2</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

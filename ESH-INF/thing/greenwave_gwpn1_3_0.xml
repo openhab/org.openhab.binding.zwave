@@ -16,19 +16,19 @@ Single-socket PowerNode<br /><h1>Overview</h1><p>This Configuration is for the 1
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
         </properties>
       </channel>
       <channel id="meter_watts" typeId="meter_watts">
         <label>Electric meter (watts)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER</property>
+          <property name="binding:*:DecimalType">METER;type=E_W</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
         <label>Electric meter (kWh)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER</property>
+          <property name="binding:*:DecimalType">METER;type=E_KWh</property>
         </properties>
       </channel>
       <channel id="alarm_general" typeId="alarm_general">

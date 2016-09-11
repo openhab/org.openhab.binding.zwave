@@ -920,14 +920,8 @@
     <channel-type id="switch_binary">
         <item-type>Switch</item-type>
         <label>Switch</label>
-        <description>Switch the light on and off</description>
-        <category>Light</category>
-        <state>
-            <options>
-                <option value="On">On</option>
-                <option value="Off">Off</option>
-            </options>
-        </state>
+        <description>Switch the power on and off</description>
+        <category>Switch</category>
     </channel-type>
 
     <!-- Brightness (Dimmer) Channel -->
