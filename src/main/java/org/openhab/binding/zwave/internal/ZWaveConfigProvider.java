@@ -162,20 +162,21 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
             groups.add(new ConfigDescriptionParameterGroup("wakeup", "sleep", false, "Wakeup Configuration", null));
 
             parameters.add(ConfigDescriptionParameterBuilder
-                    .create(ZWaveBindingConstants.CONFIGURATION_WAKEUPINTERVAL, Type.TEXT).withLabel("Wakeup Interval")
+                    .create(ZWaveBindingConstants.CONFIGURATION_WAKEUPINTERVAL, Type.INTEGER)
+                    .withLabel("Wakeup Interval")
                     .withDescription("Sets the number of seconds that the device will wakeup<BR/>"
                             + "Setting a shorter time will allow openHAB to configure the device more regularly, but may use more battery power.<BR>"
                             + "<B>Note:</B> This setting does not impact device notifications such as alarms.")
                     .withDefault("").withGroupName("wakeup").build());
 
-            parameters.add(
-                    ConfigDescriptionParameterBuilder.create(ZWaveBindingConstants.CONFIGURATION_WAKEUPNODE, Type.TEXT)
-                            .withLabel("Wakeup Node").withAdvanced(true)
-                            .withDescription("Sets the wakeup node to which the device will send notifications.<BR/>"
-                                    + "This should normally be set to the openHAB controller - "
-                                    + "if it isn't, openHAB will not receive notifications when the device wakes up, "
-                                    + "and will not be able to configure the device.")
-                            .withDefault("").withGroupName("wakeup").build());
+            parameters.add(ConfigDescriptionParameterBuilder
+                    .create(ZWaveBindingConstants.CONFIGURATION_WAKEUPNODE, Type.INTEGER).withLabel("Wakeup Node")
+                    .withAdvanced(true)
+                    .withDescription("Sets the wakeup node to which the device will send notifications.<BR/>"
+                            + "This should normally be set to the openHAB controller - "
+                            + "if it isn't, openHAB will not receive notifications when the device wakes up, "
+                            + "and will not be able to configure the device.")
+                    .withDefault("").withGroupName("wakeup").build());
         }
 
         // If we support the node name class, then add the configuration
