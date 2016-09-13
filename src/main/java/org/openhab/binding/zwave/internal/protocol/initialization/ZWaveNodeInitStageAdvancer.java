@@ -473,6 +473,8 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                     }
 
                     if (doSecureInclusion == false) {
+                        // Remove the security command class
+                        node.removeCommandClass(CommandClass.SECURITY);
                         break;
                     }
 
