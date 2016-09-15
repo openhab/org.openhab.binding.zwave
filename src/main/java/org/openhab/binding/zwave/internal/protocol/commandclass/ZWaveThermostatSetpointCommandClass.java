@@ -9,7 +9,6 @@
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -329,10 +328,13 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
         logger.debug("NODE {}: Creating new message for command THERMOSTAT_SETPOINT_SET", getNode().getNodeId());
 
         try {
+            byte[] encodedValue = encodeValue(setpoint);
             ByteArrayOutputStream outputData = new ByteArrayOutputStream();
             outputData.write(setpointType.getKey());
-            outputData.write(encodeValue(setpoint));
-            outputData.write((scale << 3));
+            outputData.write(encodedValue[0] + (scale << 3));
+            for (int c = 1; c < encodedValue.length; c++) {
+                outputData.write(encodedValue[c]);
+            }
 
             SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
                     .withCommandClass(getCommandClass(), THERMOSTAT_SETPOINT_SET).withNodeId(getNode().getNodeId())
@@ -342,10 +344,6 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
         } catch (ArithmeticException e) {
             logger.error(
                     "NODE {}: Got an arithmetic exception converting value {} to a valid Z-Wave value. Ignoring THERMOSTAT_SETPOINT_SET message.",
-                    getNode().getNodeId(), setpoint);
-            return null;
-        } catch (IOException e) {
-            logger.error("NODE {}: Error encoding output data. Ignoring THERMOSTAT_SETPOINT_SET message.",
                     getNode().getNodeId(), setpoint);
             return null;
         }
