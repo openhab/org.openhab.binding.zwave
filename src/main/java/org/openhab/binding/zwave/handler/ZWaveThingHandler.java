@@ -436,15 +436,16 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             }
         }
 
+        // If we already know the controller, then we don't want to initialise again
         if (controllerHandler != null) {
             return;
         }
 
+        controllerHandler = bridgeHandler;
         if (node != null) {
             updateNodeNeighbours();
             updateNodeProperties();
         }
-        controllerHandler = bridgeHandler;
 
         // Add the listener for ZWave events.
         // This ensures we get called whenever there's an event we might be interested in
@@ -1213,6 +1214,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
     private void updateNodeNeighbours() {
         if (controllerHandler == null) {
+            logger.debug("NODE {}: Updating node neighbours. Controller not found.", nodeId);
             return;
         }
 
