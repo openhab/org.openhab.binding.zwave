@@ -33,12 +33,14 @@ There is no binding level configuration required for the Z-Wave binding. All con
 
 ### Controller Configuration
 
-#### Serial Port
+The following section lists the controller configuration. If using manual configuration in text files, the parameter names are given in the square brackets.
+
+#### Serial Port [port]
 
 Sets the serial port name for the controller.
 
 
-#### Controller Is Master
+#### Controller Is Master [controller_master]
 
 When *Controller Is Master* is true, the binding expects to be the main Z-Wave controller in the system. This is not related to the type of controller (*Primary* or *Secondary*), but is related to how devices will be configured.  This will instruct the binding to perform configuration of the device to send network related information such as device wakeup to the binding.
 
@@ -47,29 +49,30 @@ Many functions in Z-Wave only allow a single node to be set, and this is normall
 For most systems, this should be set to *true* - the only time when it should be *false* is if you normally control your Z-Wave network through a different system.
 
 
-#### Controller Is SUC
-
-#### Heal Time
+#### Controller Is SUC [controller_suc]
 
 
-#### Inclusion Mode
+#### Heal Time [heal_time]
 
 
-#### Secure Inclusion Mode
+#### Inclusion Mode [inclusion_mode]
+
+
+#### Secure Inclusion Mode [security_inclusionmode]
 
 The secure command classes allow you to secure communications between devices in your network. Secure communications is a good thing, and for devices such as locks that protect the security of your property, it's mandatory. However, most devices support the same communications and functions over the standard communication classes, without security. The secure classes come with some negative points - they communicate more slowly, and consume more power in battery devices. This is because there is roughly twice as much communication required for the security classes. You should therefore consider if you need all devices secured, or if it is acceptable for your system to only secure entry devices.
 
 This option allows you to select which classes will be configured to use security - you can elect to use security on all devices that support it, or only on entry control devices.
 
 
-#### Inclusion Mode Timeout
+#### Inclusion Mode Timeout [controller_inclusiontimeout]
 
 This sets the maximum time that the controller will remain in inclusion or exclusion mode. Once inclusion is enabled, it will be disabled either when the first device is discovered, or when the timeout occurs. Generally this should be kept to a minimum as it increases the opportunity for unwanted nodes to be included into the network.
 
 Note that updating this value will cause the controller to be reinitialised which will take all your Z-Wave devices offline for a short period.
 
 
-#### Network Security Key
+#### Network Security Key [security_networkkey]
 
 This sets the network security key used in your network for securing communications using the secure command classes. It is a 16 byte value, specified in hexadecimal.
 
@@ -206,6 +209,14 @@ In order to manually repair the mesh, the binding implements a *mesh heal* funct
 While the neighbor update is running, all nodes in the system will be taken offline to avoid network traffic that may adversely impact the update.
 
 Once the neighbor update is complete, the system will perform a routing update on all nodes. Z-Wave is a "source routed mesh network" which means that the controller needs to tell the end nodes information about its routes. Specifically, the controller will provide each node a list of routes required to talk to the controller, the SUC (if it exists in the network), and other nodes to which the controller needs to talk to (eg for associated devices). The binding simply instructs the stick to configure a route between two nodes - the route itself if derived by the stick and the binding has no visibility of the actual routes being used.
+
+#### Joining as a secondary controller
+
+The binding can be added to the network as a secondary controller. This can be useful if you already have another home automation system and you want to use the binding as a secondary controller.
+
+#### Network updates
+
+A secondary controller can receive an updated list of network nodes from the primary controller...
 
 
 ### Z-Wave Device Database
