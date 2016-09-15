@@ -290,18 +290,9 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
     public ZWaveTransaction removeAssociationMessage(int group, int node, int endpoint) {
         logger.debug("NODE {}: Creating new message for command MULTI_ASSOCIATIONCMD_REMOVE", getNode().getNodeId());
 
-        byte[] payload;
-        if (endpoint == 0) {
-            logger.trace("NODE {}: Endpoint is 0. Sending only node.", getNode().getNodeId());
-            payload = new byte[] { (byte) (group & 0xff), (byte) (node & 0xff) };
-        } else {
-            logger.trace("NODE {}: Endpoint not 0. Sending node and endpoint.", getNode().getNodeId());
-            payload = new byte[] { (byte) (group & 0xff), 0, (byte) (node & 0xff), (byte) (endpoint & 0xff) };
-        }
-
         SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
                 .withCommandClass(getCommandClass(), MULTI_ASSOCIATIONCMD_REMOVE).withNodeId(getNode().getNodeId())
-                .withPayload(payload).build();
+                .withPayload((group & 0xff), 0, (byte) (node & 0xff), (byte) (endpoint & 0xff)).build();
 
         return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Config).build();
     }

@@ -96,7 +96,7 @@ public class ZWaveVersionCommandClass extends ZWaveCommandClass {
                 logger.debug("NODE {}: Protocol Version    = {}", getNode().getNodeId(), protocolVersion);
                 logger.debug("NODE {}: Application Version = {}", getNode().getNodeId(), applicationVersion);
 
-                if (serialMessage.getMessagePayload().length >= (offset + 6)) {
+                if (serialMessage.getMessagePayload().length > (offset + 6)) {
                     // Version 2 includes hardware version, as well as additional versions for other processors
                     // The version 1 and version 2 requests are the same. We differentiate using the length since we may
                     // not have request the version of the VERSION command class at this point.

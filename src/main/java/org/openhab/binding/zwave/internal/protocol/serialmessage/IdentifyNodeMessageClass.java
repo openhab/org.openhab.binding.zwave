@@ -58,6 +58,10 @@ public class IdentifyNodeMessageClass extends ZWaveCommandProcessor {
         logger.debug("NODE {}: ProtocolInfo", nodeId);
 
         ZWaveNode node = zController.getNode(nodeId);
+        if (node == null) {
+            logger.warn("NODE {}: Node not found when processing ProtocolInfo");
+            return false;
+        }
 
         boolean listening = (incomingMessage.getMessagePayloadByte(0) & 0x80) != 0 ? true : false;
         boolean routing = (incomingMessage.getMessagePayloadByte(0) & 0x40) != 0 ? true : false;
