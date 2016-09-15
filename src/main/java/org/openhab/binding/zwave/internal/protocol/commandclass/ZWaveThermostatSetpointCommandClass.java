@@ -8,13 +8,14 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.lang.ArrayUtils;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
@@ -328,20 +329,23 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
         logger.debug("NODE {}: Creating new message for command THERMOSTAT_SETPOINT_SET", getNode().getNodeId());
 
         try {
-            byte[] encodedValue = encodeValue(setpoint);
-
-            byte[] payload = ArrayUtils.addAll(new byte[] { (byte) setpointType.getKey() }, encodedValue);
-            // Add the scale
-            payload[5] += (byte) (scale << 3);
+            ByteArrayOutputStream outputData = new ByteArrayOutputStream();
+            outputData.write(setpointType.getKey());
+            outputData.write(encodeValue(setpoint));
+            outputData.write((scale << 3));
 
             SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
                     .withCommandClass(getCommandClass(), THERMOSTAT_SETPOINT_SET).withNodeId(getNode().getNodeId())
-                    .withPayload(payload).build();
+                    .withPayload(outputData.toByteArray()).build();
 
             return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Set).build();
         } catch (ArithmeticException e) {
             logger.error(
                     "NODE {}: Got an arithmetic exception converting value {} to a valid Z-Wave value. Ignoring THERMOSTAT_SETPOINT_SET message.",
+                    getNode().getNodeId(), setpoint);
+            return null;
+        } catch (IOException e) {
+            logger.error("NODE {}: Error encoding output data. Ignoring THERMOSTAT_SETPOINT_SET message.",
                     getNode().getNodeId(), setpoint);
             return null;
         }

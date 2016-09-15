@@ -10,12 +10,14 @@ package org.openhab.binding.zwave.test.internal.protocol.commandclass;
 
 import static org.junit.Assert.assertTrue;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveThermostatSetpointCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveThermostatSetpointCommandClass.SetpointType;
 
 /**
  * Test cases for {@link ZWaveThermostatSetpointCommandClass}.
@@ -38,17 +40,17 @@ public class ZWaveThermostatSetpointCommandClassTest extends ZWaveCommandClassTe
     }
 
     @Test
-    public void setValueMessage() {
+    public void setMessage() {
         ZWaveThermostatSetpointCommandClass cls = (ZWaveThermostatSetpointCommandClass) getCommandClass(
                 CommandClass.THERMOSTAT_SETPOINT);
         SerialMessage msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 67, 4, 0, 0, -61 };
+        byte[] expectedResponse = { 1, 13, 0, 19, 99, 6, 67, 1, 2, 34, 0, -31, 0, 0, 7 };
         cls.setVersion(1);
-        // msg = cls.setValueMessage(34);
-        // byte[] x = msg.getMessageBuffer();
-        // msg.setCallbackId(0);
-        // assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.setMessage(0, SetpointType.COOLING, new BigDecimal(22.5)).getSerialMessage();
+        msg.setCallbackId(0);
+        byte[] x = msg.getMessageBuffer();
+        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
     }
 
     @Test
