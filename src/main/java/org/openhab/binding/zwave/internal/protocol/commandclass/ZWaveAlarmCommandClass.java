@@ -71,6 +71,11 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
 
     private boolean isGetSupported = true;
 
+    public enum ReportType {
+        ALARM,
+        NOTIFICATION
+    };
+
     /**
      * Creates a new instance of the ZWaveAlarmCommandClass class.
      *
@@ -99,7 +104,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
     @Override
     public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
             throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received Alarm Request V{}", getNode().getNodeId(), getVersion());
+        logger.debug("NODE {}: Received ALARM command V{}", getNode().getNodeId(), getVersion());
         int command = serialMessage.getMessagePayloadByte(offset);
         switch (command) {
             case ALARM_REPORT:
@@ -111,6 +116,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
                 int sensor = 0;
                 int event = 0;
                 int status = 0;
+                ReportType eventType;
 
                 // Check if this message is a V1 message based on length
                 int version = getVersion();
@@ -119,41 +125,45 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
                 }
 
                 if (version == 1) {
-                    logger.debug("NODE {}: Alarm report - {} = {}", getNode().getNodeId(), alarmTypeCode, value);
+                    eventType = ReportType.ALARM;
+
+                    logger.debug("NODE {}: ALARM report - {} = {}", getNode().getNodeId(), alarmTypeCode, value);
                 } else {
                     alarmTypeCode = serialMessage.getMessagePayloadByte(offset + 5);
                     sensor = serialMessage.getMessagePayloadByte(offset + 3);
                     event = serialMessage.getMessagePayloadByte(offset + 6);
                     status = serialMessage.getMessagePayloadByte(offset + 4);
-                    logger.debug("NODE {}: Alarm report - {} = {}, sensor={}, event={}, status={}",
+                    eventType = ReportType.NOTIFICATION;
+
+                    logger.debug("NODE {}: NOTIFICATION report - {} = {}, sensor={}, event={}, status={}",
                             getNode().getNodeId(), alarmTypeCode, value, sensor, event, status);
                 }
 
                 AlarmType alarmType = AlarmType.getAlarmType(alarmTypeCode);
-
                 if (alarmType == null) {
                     logger.error("NODE {}: Unknown Alarm Type = {}, ignoring report.", getNode().getNodeId(),
                             alarmTypeCode);
                     return;
                 }
 
-                // alarm type seems to be supported, add it to the list.
+                // Alarm type seems to be supported, add it to the list.
                 Alarm alarm = alarms.get(alarmType);
                 if (alarm == null) {
                     alarm = new Alarm(alarmType);
-                    this.alarms.put(alarmType, alarm);
+                    alarms.put(alarmType, alarm);
                 }
                 alarm.setInitialised();
 
-                logger.debug("NODE {}: Alarm Type = {} ({})", getNode().getNodeId(), alarmType.getLabel(),
+                logger.debug("NODE {}: Alarm Type = {} ({})", getNode().getNodeId(), alarmType.toString(),
                         alarmTypeCode);
 
-                ZWaveAlarmValueEvent zEvent = new ZWaveAlarmValueEvent(getNode().getNodeId(), endpoint, alarmType,
-                        event, status, value);
-                this.getController().notifyEventListeners(zEvent);
+                ZWaveAlarmValueEvent zEvent = new ZWaveAlarmValueEvent(getNode().getNodeId(), endpoint, eventType,
+                        alarmType, event, status, value);
+                getController().notifyEventListeners(zEvent);
 
                 dynamicDone = true;
                 break;
+
             case ALARM_SUPPORTED_REPORT:
                 logger.debug("NODE {}: Process Alarm Supported Report", getNode().getNodeId());
 
@@ -178,8 +188,9 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
                 }
                 supportedInitialised = true;
                 break;
+
             case ALARM_EVENTSUPPORTED_REPORT:
-                logger.debug("NODE {}: Process Alarm Event Supported Report", this.getNode().getNodeId());
+                logger.debug("NODE {}: Process Alarm Event Supported Report", getNode().getNodeId());
                 int notificationType = serialMessage.getMessagePayloadByte(offset + 1);
                 numBytes = serialMessage.getMessagePayloadByte(offset + 2);
                 List<Integer> types = new ArrayList<>();
@@ -194,7 +205,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
                         getAlarm(notificationType).getReportedEvents().add(index);
                     }
                 }
-                logger.debug("NODE {}: AlarmType: {} reported events -> {}", this.getNode().getNodeId(),
+                logger.debug("NODE {}: AlarmType: {} reported events -> {}", getNode().getNodeId(),
                         AlarmType.getAlarmType(notificationType), types);
 
                 eventsSupportedInitialised = true;
@@ -217,7 +228,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         // Add alarm to the list if it's not already there.
         Alarm alarm = alarms.get(alarmType);
         if (alarm == null) {
-            logger.debug("NODE {}: Adding new alarm type {}({})", getNode().getNodeId(), alarmType.getLabel(),
+            logger.debug("NODE {}: Adding new alarm type {}({})", getNode().getNodeId(), alarmType.toString(),
                     alarmTypeCode);
             alarm = new Alarm(alarmType);
             alarms.put(alarmType, alarm);
@@ -270,13 +281,13 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
      */
     public ZWaveTransaction getSupportedEventMessage(int index) {
         if (getVersion() < 2) {
-            logger.debug("NODE {}: ALARM_EVENTSUPPORTED_GET not supported for V1-2", this.getNode().getNodeId());
+            logger.debug("NODE {}: ALARM_EVENTSUPPORTED_GET not supported for V1-2", getNode().getNodeId());
             return null;
         }
 
-        logger.debug("NODE {}: Creating new message for command ALARM_EVENTSUPPORTED_GET", this.getNode().getNodeId());
+        logger.debug("NODE {}: Creating new message for command ALARM_EVENTSUPPORTED_GET", getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+       SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
                 .withCommandClass(getCommandClass(), ALARM_EVENTSUPPORTED_GET).withNodeId(getNode().getNodeId())
                 .withPayload(new byte[] { (byte) index }).build();
 
@@ -331,39 +342,20 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
      */
     @XStreamAlias("alarmType")
     public enum AlarmType {
-        GENERAL(0, "General"),
-        SMOKE(1, "Smoke"),
-        CARBON_MONOXIDE(2, "Carbon Monoxide"),
-        CARBON_DIOXIDE(3, "Carbon Dioxide"),
-        HEAT(4, "Heat"),
-        FLOOD(5, "Flood"),
-        ACCESS_CONTROL(6, "Access Control"),
-        BURGLAR(7, "Burglar"),
-        POWER_MANAGEMENT(8, "Power Management"),
-        SYSTEM(9, "System"),
-        // DEADBOLT_JAMMED(9, "Bolt is Jammed"),
-        EMERGENCY(10, "Emergency"),
-        CLOCK(11, "Clock"),
-        APPLIANCE(12, "Appliance"),
-        HOME_HEALTH(13, "Home Health"),
-        // CODE_ADDED(13, "Code was Added"),
-        UNLOCKED(16, "Unlocked"),
-        KEYPAD_LOCKED(18, "Locked with Keypad"),
-        KEYPAD_UNLOCK(19, "Unlocked by Keypad"),
-        MANUAL_LOCKED(21, "Manual Locked"),
-        MANUAL_UNLOCK(22, "Manual unlocked"),
-        RF_LOCKED(24, "Locked by RF module"),
-        RF_UNLOCK(25, "Unlocked by RF module"),
-        AUTO_LOCKED(27, "Auto Locked"),
-        ALL_CODES_DELETED(32, "All Codes Deleted"),
-        CODE_DELETED(33, "User Code Deleted"),
-        CODE_CHANGED(112, "User Code Changed"),
-        DUPLICATE_CODE(113, "Duplicate Code"),
-        POWER_CYCLED(130, "Power Cycled"),
-        TAMPER_ALARM(161, "Failed Code"),
-        BATTERY_LOW(167, "Battery Low"),
-        BATTERY_CRITICAL(168, "Battery Critical"),
-        BATTEERY_TOO_LOW(169, "Battery too low to operate");
+        GENERAL(0),
+        SMOKE(1),
+        CARBON_MONOXIDE(2),
+        CARBON_DIOXIDE(3),
+        HEAT(4),
+        FLOOD(5),
+        ACCESS_CONTROL(6),
+        BURGLAR(7),
+        POWER_MANAGEMENT(8),
+        SYSTEM(9),
+        EMERGENCY(10),
+        CLOCK(11),
+        APPLIANCE(12),
+        HOME_HEALTH(13);
 
         /**
          * A mapping between the integer code and its corresponding Alarm type to facilitate lookup by code.
@@ -371,11 +363,9 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         private static Map<Integer, AlarmType> codeToAlarmTypeMapping;
 
         private int key;
-        private String label;
 
-        private AlarmType(int key, String label) {
+        private AlarmType(int key) {
             this.key = key;
-            this.label = label;
         }
 
         private static void initMapping() {
@@ -405,13 +395,6 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
          */
         public int getKey() {
             return key;
-        }
-
-        /**
-         * @return the label
-         */
-        public String getLabel() {
-            return label;
         }
     }
 
@@ -454,6 +437,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
      */
     public class ZWaveAlarmValueEvent extends ZWaveCommandClassValueEvent {
 
+        private ReportType eventType;
         private AlarmType alarmType;
         private int alarmEvent;
         private int alarmStatus;
@@ -463,15 +447,24 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
          *
          * @param nodeId the nodeId of the event
          * @param endpoint the endpoint of the event.
+         * @param eventType
          * @param alarmType the alarm type that triggered the event;
          * @param value the value for the event.
          */
-        public ZWaveAlarmValueEvent(int nodeId, int endpoint, AlarmType alarmType, int alarmEvent, int alarmStatus,
-                Object value) {
+        public ZWaveAlarmValueEvent(int nodeId, int endpoint, ReportType eventType, AlarmType alarmType, int alarmEvent,
+                int alarmStatus, Object value) {
             super(nodeId, endpoint, CommandClass.ALARM, value);
+            this.eventType = eventType;
             this.alarmType = alarmType;
             this.alarmEvent = alarmEvent;
             this.alarmStatus = alarmStatus;
+        }
+
+        /**
+         * Gets the type of report (ALARM or NOTIFICATION)
+         */
+        public ReportType getReportType() {
+            return eventType;
         }
 
         /**
@@ -529,7 +522,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
     public Collection<ZWaveTransaction> getDynamicValues(boolean refresh) {
         ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
 
-        for (Map.Entry<AlarmType, Alarm> entry : this.alarms.entrySet()) {
+        for (Map.Entry<AlarmType, Alarm> entry : alarms.entrySet()) {
             if (refresh == true || entry.getValue().getInitialised() == false) {
                 result.add(getMessage(entry.getValue().getAlarmType()));
             }

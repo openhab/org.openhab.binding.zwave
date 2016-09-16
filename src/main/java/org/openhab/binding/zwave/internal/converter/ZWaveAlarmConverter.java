@@ -11,6 +11,7 @@ package org.openhab.binding.zwave.internal.converter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.library.types.OnOffType;
 import org.eclipse.smarthome.core.library.types.OpenClosedType;
 import org.eclipse.smarthome.core.types.State;
@@ -85,9 +86,19 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
     @Override
     public State handleEvent(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
         String alarmType = channel.getArguments().get("type");
-        String alarmEvent = channel.getArguments().get("event");
-        ZWaveAlarmValueEvent eventAlarm = (ZWaveAlarmValueEvent) event;
 
+        ZWaveAlarmValueEvent eventAlarm = (ZWaveAlarmValueEvent) event;
+        switch (eventAlarm.getReportType()) {
+            case ALARM:
+                return handleAlarmReport(channel, eventAlarm, alarmType);
+            case NOTIFICATION:
+                return handleNotificationReport(channel, eventAlarm, alarmType);
+        }
+
+        return null;
+    }
+
+    private State handleAlarmReport(ZWaveThingChannel channel, ZWaveAlarmValueEvent eventAlarm, String alarmType) {
         // Don't trigger event if this item is bound to another alarm type
         if (alarmType != null && AlarmType.valueOf(alarmType) != eventAlarm.getAlarmType()) {
             return null;
@@ -95,17 +106,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
 
         // Default to using the value.
         // If this is V3 then we'll use the event status instead
-        int value = (int) event.getValue();
-
-        // Alarm V3 use events...
-        if (alarmEvent != null) {
-            // Check the event type
-            if (Integer.parseInt(alarmEvent) != eventAlarm.getAlarmEvent()) {
-                return null;
-            }
-
-            value = eventAlarm.getAlarmStatus();
-        }
+        int value = eventAlarm.getValue();
 
         State state = null;
         switch (channel.getDataType()) {
@@ -116,7 +117,53 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                 state = value == 0 ? OpenClosedType.CLOSED : OpenClosedType.OPEN;
                 break;
             default:
-                logger.warn("No conversion in {} to {}", this.getClass().getSimpleName(), channel.getDataType());
+                logger.warn("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());
+                break;
+        }
+        return state;
+    }
+
+    private State handleNotificationReport(ZWaveThingChannel channel, ZWaveAlarmValueEvent eventAlarm,
+            String alarmType) {
+
+        // Don't trigger event if this item is bound to another event type
+        if (alarmType != null && AlarmType.valueOf(alarmType) != eventAlarm.getAlarmType()) {
+            return null;
+        }
+
+        // Handle event 0xfe as 'clear the event'
+        int event = eventAlarm.getAlarmEvent() == 0xfe ? 0 : eventAlarm.getAlarmEvent();
+
+        // TODO: Handle these event to state specific conversions in a table.
+        State state = null;
+        switch (channel.getDataType()) {
+            case OnOffType:
+                state = eventAlarm.getValue() == 0 ? OnOffType.OFF : OnOffType.ON;
+                break;
+            case OpenClosedType:
+                state = eventAlarm.getValue() == 0 ? OpenClosedType.CLOSED : OpenClosedType.OPEN;
+                if (eventAlarm.getAlarmType() == AlarmType.ACCESS_CONTROL) {
+                    switch (event) {
+                        case 22: // Window/Door is open
+                            state = OpenClosedType.OPEN;
+                            break;
+                        case 23: // Window/Door is closed
+                            state = OpenClosedType.CLOSED;
+                            break;
+                        default:
+                            logger.warn("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());
+                            break;
+                    }
+                } else {
+                    logger.warn("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());
+                }
+
+                break;
+            case DecimalType:
+                state = new DecimalType(eventAlarm.getValue());
+                break;
+            default:
+                logger.warn("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());
                 break;
         }
         return state;
