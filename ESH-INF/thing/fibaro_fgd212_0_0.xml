@@ -14,8 +14,8 @@
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL,BASIC</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -51,8 +51,8 @@
       <channel id="switch_dimmer1" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:1</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:1</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:1,BASIC:1</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:1,BASIC:1</property>
         </properties>
       </channel>
       <channel id="sensor_power1" typeId="sensor_power">
@@ -93,7 +93,7 @@
       <property name="vendor">Fibaro System</property>
       <property name="modelId">FGD212</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0102:1000,0102:3000</property>
+      <property name="manufacturerRef">0102:1000,0102:3000,0102:2000</property>
       <property name="dbReference">133</property>
       <property name="defaultAssociations">1</property>
     </properties>
