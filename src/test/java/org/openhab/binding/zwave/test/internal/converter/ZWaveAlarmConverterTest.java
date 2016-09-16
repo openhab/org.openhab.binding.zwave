@@ -8,9 +8,12 @@
  */
 package org.openhab.binding.zwave.test.internal.converter;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.smarthome.core.library.types.OnOffType;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.types.State;
 import org.junit.Test;
@@ -23,6 +26,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.AlarmType;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.ReportType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 
@@ -46,7 +50,7 @@ public class ZWaveAlarmConverterTest {
         ZWaveEndpoint endpoint = Mockito.mock(ZWaveEndpoint.class);
         ZWaveAlarmCommandClass cls = new ZWaveAlarmCommandClass(node, controller, endpoint);
 
-        return cls.new ZWaveAlarmValueEvent(1, 0, type, event, status, value);
+        return cls.new ZWaveAlarmValueEvent(1, 0, ReportType.ALARM, type, event, status, value);
     }
 
     @Test
@@ -54,11 +58,11 @@ public class ZWaveAlarmConverterTest {
         ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
         ZWaveThingChannel channel = createChannel(AlarmType.SMOKE.toString(), "0");
 
-        ZWaveCommandClassValueEvent event = createEvent(ZWaveAlarmCommandClass.AlarmType.SMOKE, 0xff, 0, 0);
+        ZWaveCommandClassValueEvent event = createEvent(ZWaveAlarmCommandClass.AlarmType.SMOKE, 0, 0, 0xff);
 
         State state = converter.handleEvent(channel, event);
 
-        // assertEquals(state.getClass(), OnOffType.class);
-        // assertEquals(state, OnOffType.ON);
+        assertEquals(state.getClass(), OnOffType.class);
+        assertEquals(state, OnOffType.ON);
     }
 }
