@@ -375,6 +375,18 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         }
                     }
 
+                    // If this is a battery device, then we want to check if it stops responding
+                    // If no message received in twice the wakeup period, then we're DEAD
+                    ZWaveWakeUpCommandClass wakeupCommandClass = (ZWaveWakeUpCommandClass) node
+                            .getCommandClass(CommandClass.WAKE_UP);
+                    if (wakeupCommandClass != null && wakeupCommandClass.getInterval() != 0) {
+                        if (node.getLastReceived()
+                                .getTime() < (System.currentTimeMillis() - (wakeupCommandClass.getInterval() * 2000))) {
+                            updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.COMMUNICATION_ERROR,
+                                    ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_NODE_DEAD));
+                        }
+                    }
+
                     // Send all the messages
                     for (SerialMessage message : messages) {
                         controllerHandler.sendData(message);
@@ -389,6 +401,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 TimeUnit.MILLISECONDS);
         logger.debug("NODE {}: Polling intialised at {} seconds - start in {} milliseconds.", nodeId, pollingPeriod,
                 initialPeriod);
+
     }
 
     private void startPolling() {
