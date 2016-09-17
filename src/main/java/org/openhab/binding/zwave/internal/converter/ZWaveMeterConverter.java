@@ -18,6 +18,7 @@ import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
+import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
@@ -66,7 +67,7 @@ public class ZWaveMeterConverter extends ZWaveCommandClassConverter {
         ZWaveTransaction serialMessage;
 
         // Don't refresh channels that are the reset button
-        if ("true".equalsIgnoreCase(channel.getArguments().get("reset"))) {
+        if (channel.getDataType() == DataType.OnOffType) {
             return null;
         }
 
@@ -93,7 +94,7 @@ public class ZWaveMeterConverter extends ZWaveCommandClassConverter {
     public State handleEvent(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
         // We ignore any meter reports for item bindings configured with 'reset=true'
         // since we don't want to be updating the 'reset' switch
-        if ("true".equalsIgnoreCase(channel.getArguments().get("reset"))) {
+        if (channel.getDataType() == DataType.OnOffType) {
             return null;
         }
 
@@ -126,7 +127,7 @@ public class ZWaveMeterConverter extends ZWaveCommandClassConverter {
     @Override
     public List<ZWaveTransaction> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
         // Is this channel a reset button - if not, just return
-        if ("true".equalsIgnoreCase(channel.getArguments().get("reset")) == false) {
+        if (channel.getDataType() != DataType.OnOffType) {
             return null;
         }
 

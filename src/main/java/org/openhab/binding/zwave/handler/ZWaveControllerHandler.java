@@ -74,6 +74,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     private String networkKey;
     private Integer secureInclusionMode;
     private Integer healTime;
+    private Integer wakeupDefaultPeriod;
 
     private final int SEARCHTIME_DEFAULT = 30;
     private int searchTime;
@@ -106,6 +107,13 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             searchTime = ((BigDecimal) param).intValue();
         } else {
             searchTime = SEARCHTIME_DEFAULT;
+        }
+
+        param = getConfig().get(CONFIGURATION_INCLUSIONTIMEOUT);
+        if (param instanceof BigDecimal && param != null) {
+            wakeupDefaultPeriod = ((BigDecimal) param).intValue();
+        } else {
+            wakeupDefaultPeriod = 0;
         }
 
         param = getConfig().get(CONFIGURATION_SUC);
@@ -160,6 +168,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         config.put("isSUC", isSUC ? "true" : "false");
         config.put("secureInclusion", secureInclusionMode.toString());
         config.put("networkKey", networkKey);
+        config.put("wakeupDefaultPeriod", wakeupDefaultPeriod.toString());
 
         // MAJOR BODGE
         // The security class uses a static member to set the key so for now

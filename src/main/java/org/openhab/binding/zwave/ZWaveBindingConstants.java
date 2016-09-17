@@ -151,6 +151,14 @@ public class ZWaveBindingConstants {
     public final static I18nConstant EVENT_REMOVEFAILED_UNKNOWN = new I18nConstant("zwave.event.removenode_unknown",
             "Remove node {0} failed with unknown error");
 
+    public final static I18nConstant CONFIG_BINDING_POLLINGPERIOD_LABEL = new I18nConstant(
+            "zwave.config.binding_pollingperiod_label", "Polling Period");
+    public final static I18nConstant CONFIG_BINDING_POLLINGPERIOD_DESC = new I18nConstant(
+            "zwave.config.binding_pollingperiod_desc",
+            "Set the minimum polling period for this device<BR/>"
+                    + "Note that the polling period may be longer than set since the binding treats "
+                    + "polls as the lowest priority data within the network.");
+
     public final static Integer ACTION_CHECK_VALUE = new Integer(-232323);
 
     public final static Set<ThingTypeUID> SUPPORTED_BRIDGE_TYPES_UIDS = ImmutableSet.of(CONTROLLER_SERIAL);

@@ -150,10 +150,11 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         groups.add(new ConfigDescriptionParameterGroup("thingcfg", "home", false, "Device Configuration", null));
 
         parameters.add(ConfigDescriptionParameterBuilder
-                .create(ZWaveBindingConstants.CONFIGURATION_POLLPERIOD, Type.INTEGER).withLabel("Polling Period")
-                .withDescription("Set the minimum polling period for this device<BR/>"
-                        + "Note that the polling period may be longer than set since the binding treats "
-                        + "polls as the lowest priority data within the network.")
+                .create(ZWaveBindingConstants.CONFIGURATION_POLLPERIOD, Type.INTEGER)
+                .withLabel(
+                        ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.CONFIG_BINDING_POLLINGPERIOD_LABEL))
+                .withDescription(
+                        ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.CONFIG_BINDING_POLLINGPERIOD_DESC))
                 .withDefault("1800").withMinimum(new BigDecimal(15)).withMaximum(new BigDecimal(7200))
                 .withGroupName("thingcfg").build());
 
