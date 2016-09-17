@@ -8,13 +8,16 @@
  */
 package org.openhab.binding.zwave.test.internal.converter;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.smarthome.core.library.types.DecimalType;
+import org.eclipse.smarthome.core.library.types.OnOffType;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.types.State;
 import org.junit.Test;
@@ -22,6 +25,7 @@ import org.mockito.Mockito;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.converter.ZWaveMeterConverter;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -31,7 +35,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterComman
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterCommandClass.MeterType;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 
-public class ZWaveMeterConverterTest {
+public class ZWaveMeterConverterTest extends ZWaveCommandClassConverterTest {
     final ChannelUID uid = new ChannelUID("zwave:node:bridge:channel");
 
     private ZWaveThingChannel createChannel(String type) {
@@ -62,5 +66,37 @@ public class ZWaveMeterConverterTest {
 
         assertEquals(state.getClass(), DecimalType.class);
         assertEquals(((DecimalType) state).toBigDecimal(), value);
+    }
+
+    @Test
+    public void Reset() {
+        Map<String, String> args = new HashMap<String, String>();
+        ZWaveThingChannel channel = new ZWaveThingChannel(null, uid, DataType.OnOffType, CommandClass.METER.toString(),
+                0, args);
+        ZWaveMeterConverter converter = new ZWaveMeterConverter(null);
+
+        Map<String, String> options = new HashMap<String, String>();
+        options.put("meterCanReset", "true");
+        ZWaveNode node = CreateMockedNode(2, options);
+
+        // Refresh won't return anything for meter channel
+        List<SerialMessage> msgs = converter.executeRefresh(channel, node);
+        assertNull(msgs);
+
+        ZWaveCommandClassValueEvent event = createEvent(ZWaveMeterCommandClass.MeterType.ELECTRIC,
+                ZWaveMeterCommandClass.MeterScale.E_KWh, new BigDecimal("3.3"));
+
+        // Event won't update state for meter channel
+        State state = converter.handleEvent(channel, event);
+        assertNull(state);
+
+        msgs = converter.receiveCommand(channel, node, OnOffType.ON);
+        assertNotNull(msgs);
+        assertEquals(1, msgs.size());
+
+        byte[] expectedResponse = { 1, 9, 0, 19, 0, 2, 50, 5, 0, 0, -48 };
+        SerialMessage msg = msgs.get(0);
+        msg.setCallbackId(0);
+        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
     }
 }
