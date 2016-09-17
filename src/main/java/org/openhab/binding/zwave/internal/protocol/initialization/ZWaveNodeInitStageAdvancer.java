@@ -838,10 +838,10 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                         break;
                     }
 
-                    int value = 3600;
-                    if (wakeupCommandClass.getInterval() == 0) {
-                        logger.debug("NODE {}: Node advancer: SET_WAKEUP - Interval is currently 0. Set to 3600",
-                                node.getNodeId());
+                    int value = controller.getSystemDefaultWakeupPeriod();
+                    if (wakeupCommandClass.getInterval() == 0 && value != 0) {
+                        logger.debug("NODE {}: Node advancer: SET_WAKEUP - Interval is currently 0. Set to {}",
+                                node.getNodeId(), value);
                     } else {
                         value = wakeupCommandClass.getInterval();
                     }

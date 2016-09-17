@@ -72,6 +72,13 @@ This sets the maximum time that the controller will remain in inclusion or exclu
 Note that updating this value will cause the controller to be reinitialised which will take all your Z-Wave devices offline for a short period.
 
 
+#### Default Wakeup Period [controller_wakeupperiod]
+
+This sets the system wide default wakeup period. If a battery device does not have the wakeup period set to a value, then the system will configure it to use this value during the device configuration. 
+
+It is defined in seconds.
+
+
 #### Network Security Key [security_networkkey]
 
 This sets the network security key used in your network for securing communications using the secure command classes. It is a 16 byte value, specified in hexadecimal.
