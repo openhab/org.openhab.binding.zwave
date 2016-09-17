@@ -144,7 +144,7 @@ public class ZWaveNodeSerializer {
                 reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
                 return (ZWaveNode) stream.fromXML(reader);
             } catch (IOException e) {
-                logger.error("NODE {}: Error serializing from file: {}", nodeId, e.getMessage());
+                logger.debug("NODE {}: Error serializing from file: {}", nodeId, e.getMessage());
             } finally {
                 if (reader != null) {
                     try {
