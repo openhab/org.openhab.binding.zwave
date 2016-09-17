@@ -701,7 +701,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                             if (args.length == 2) {
                                 optionMap.put(args[0], args[1]);
                             } else {
-                                optionMap.put(args[1], "");
+                                optionMap.put(args[0], "");
                             }
                         }
 
