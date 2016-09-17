@@ -23,7 +23,7 @@ Before the binding can be used, a serial adapter must be added. This needs to be
 
 ## Discovery
 
-Once the binding is authorized, and an adapter is added, it automatically reads all devices that are set up on the Z-Wave controller and puts them in the Inbox.
+Once the binding is authorized, and an adapter is added, it automatically reads all devices that are included into the network. This is read directly from the Z-Wave controller and new things are added to the Inbox.
 
 
 ## Binding Configuration
@@ -57,6 +57,11 @@ For most systems, this should be set to *true* - the only time when it should be
 
 #### Inclusion Mode [inclusion_mode]
 
+The inclusion mode setting allows the user to set how the controller will initiate inclusion when discovery is initiated. There are three options available -:
+
+* Low Power Inclusion: In this mode devices must be within 1 meter of the controller to be included.
+* High Power Inclusion: In this mode devices must be able to communicate directly with the controller, so can be 10 to 15 meters from the controller under most conditions.
+* Network Wide Inclusion: In this mode devices can be anywhere in the network. This mode 
 
 #### Secure Inclusion Mode [security_inclusionmode]
 
@@ -199,6 +204,8 @@ Keep the polling at a slow rate unless your device doesn't support *associations
 
 
 ### Binding Maintenance Functions
+
+The binding provides a number of facilities for maintaining the network.
 
 #### Mesh Heal
 
