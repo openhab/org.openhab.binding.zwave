@@ -698,7 +698,11 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                         Map<String, String> optionMap = new HashMap<String, String>(1);
                         for (String option : options) {
                             String args[] = option.split("=");
-                            optionMap.put(args[0], args[1]);
+                            if (args.length == 2) {
+                                optionMap.put(args[0], args[1]);
+                            } else {
+                                optionMap.put(args[1], "");
+                            }
                         }
 
                         if (optionMap.containsKey("ccRemove")) {
