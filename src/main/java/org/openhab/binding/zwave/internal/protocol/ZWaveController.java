@@ -125,6 +125,8 @@ public class ZWaveController {
     private int secureInclusionMode = 0;
     private Set<SerialMessageClass> apiCapabilities = new HashSet<>();
 
+    private int defaultWakeupPeriod = 0;
+
     private AtomicInteger timeOutCount = new AtomicInteger(0);
 
     private ZWaveIoHandler ioHandler;
@@ -154,6 +156,9 @@ public class ZWaveController {
         secureInclusionMode = config.containsKey("secureInclusion") ? Integer.parseInt(config.get("secureInclusion"))
                 : 0;
         final Integer timeout = config.containsKey("timeout") ? Integer.parseInt(config.get("timeout")) : 0;
+
+        defaultWakeupPeriod = config.containsKey("wakeupDefaultPeriod")
+                ? Integer.parseInt(config.get("wakeupDefaultPeriod")) : 0;
 
         logger.info("Starting ZWave controller");
 
@@ -1525,5 +1530,14 @@ public class ZWaveController {
      */
     public ZWaveInclusionEvent getLastIncludeSlaveFoundEvent() {
         return lastIncludeSlaveFoundEvent;
+    }
+
+    /**
+     * Gets the system wide default wakeup period
+     *
+     * @return the wakeup period in seconds, or 0 if no default is set
+     */
+    public int getSystemDefaultWakeupPeriod() {
+        return defaultWakeupPeriod;
     }
 }

@@ -72,6 +72,19 @@
                 <default>30</default>
                 <advanced>true</advanced>
             </parameter>
+            
+            <parameter name="controller_wakeupperiod" type="integer" groupName="network" min="60" max="86400">
+                <label>Default Wakeup Period</label>
+                <description>Sets the system wide default wakeup period for battery devices (in seconds).</description>
+                <default>3600</default>
+                <advanced>false</advanced>
+                <limitToOptions>false</limitToOptions>
+                <options>
+                    <option value="0">No Default</option>
+                    <option value="3600">Every Hour</option>
+                    <option value="86400">Every Day</option>
+                </options>                
+            </parameter>
 
             <parameter name="heal_time" type="integer" groupName="heal">
                 <label>Heal Time</label>
