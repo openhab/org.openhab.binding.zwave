@@ -31,6 +31,12 @@ Single-socket PowerNode<br /><h1>Overview</h1><p>This Configuration is for the 1
           <property name="binding:*:DecimalType">METER;type=E_KWh</property>
         </properties>
       </channel>
+      <channel id="meter_reset" typeId="meter_reset">
+        <label>Reset total power consumption</label>
+        <properties>
+          <property name="binding:*:OnOffType">METER</property>
+        </properties>
+      </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
         <properties>
