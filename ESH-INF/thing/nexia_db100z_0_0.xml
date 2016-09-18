@@ -11,10 +11,10 @@
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm (general)</label>
+      <channel id="notification_power_management" typeId="notification_power_management">
+        <label>Power Management Notification</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM,BASIC;type=GENERAL</property>
+          <property name="binding:*:OnOffType">ALARM,BASIC;type=POWER_MANAGEMENT</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
