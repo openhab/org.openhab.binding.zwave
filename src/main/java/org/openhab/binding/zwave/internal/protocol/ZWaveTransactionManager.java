@@ -180,6 +180,9 @@ public class ZWaveTransactionManager {
         return sendQueue.size();
     }
 
+    /**
+     * Clear the send queue
+     */
     public void clearSendQueue() {
         sendQueue.clear();
     }
@@ -190,7 +193,7 @@ public class ZWaveTransactionManager {
      * This returns the transaction being sent. All processing of the transaction, including retries etc
      * is handled within the transaction handler.
      *
-     * @return
+     * @return the next {@link ZWaveTransaction} to send
      */
     public ZWaveTransaction getTransactionToSend() {
         return sendQueue.poll();
