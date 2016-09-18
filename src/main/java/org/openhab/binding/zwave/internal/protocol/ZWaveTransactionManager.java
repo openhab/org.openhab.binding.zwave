@@ -10,6 +10,8 @@ import java.util.concurrent.PriorityBlockingQueue;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveCommandProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -142,6 +144,22 @@ public class ZWaveTransactionManager {
             logger.debug("NODE {}: Transaction already on the send queue. Removing original.",
                     transaction.getMessageNode());
             sendQueue.remove(transaction);
+        }
+
+        // Handle sleeping devices
+        ZWaveNode node = controller.getNode(transaction.getMessageNode());
+        if (node != null) {
+            // If the device isn't listening, queue the message if it supports the wakeup class
+            if (!node.isListening() && !node.isFrequentlyListening()) {
+                ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) node
+                        .getCommandClass(CommandClass.WAKE_UP);
+
+                // If it's a battery operated device, check if it's awake or
+                // place in wake-up queue.
+                if (wakeUpCommandClass != null && !wakeUpCommandClass.processOutgoingWakeupMessage(transaction)) {
+                    return;
+                }
+            }
         }
 
         // Add the message to the queue

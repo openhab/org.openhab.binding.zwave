@@ -8,11 +8,15 @@ import java.util.List;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
+import org.mockito.Matchers;
 import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
+import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
@@ -20,6 +24,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionS
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionManager;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.AddNodeMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.AssignReturnRouteMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.GetSucNodeIdMessageClass;
@@ -1008,4 +1013,49 @@ public class ZWaveTransactionManagerTest {
         assertTrue(duration < 5000);
     }
 
+    /**
+     * Tests a single type 4 transaction - sending a command class request, and receiving the data from the device.
+     * The device has the WAKEUP command class so message should not be sent until the device wakes up.
+     */
+    @Test
+    public void TestTransactionType4Wakeup() {
+        // Test transaction
+        SerialMessage message = new ZWaveSendDataMessageBuilder().withCommandClass(CommandClass.SENSOR_ALARM, 1)
+                .withNodeId(5).withPayload(5, 3, CommandClass.SENSOR_ALARM.getKey(), 1, 1).build();
+
+        ZWaveTransaction transaction = new ZWaveTransactionBuilder(message)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(CommandClass.SENSOR_ALARM, 2).build();
+        transaction.getSerialMessage().setCallbackId(83);
+
+        final ZWaveTransactionManager manager = getTransactionManager();
+
+        ZWaveNode node = Mockito.mock(ZWaveNode.class);
+        ZWaveWakeUpCommandClass wakeupCommandClass = new ZWaveWakeUpCommandClass(node, controller, null);
+        Mockito.when(node.isListening()).thenReturn(false);
+        Mockito.when(node.isFrequentlyListening()).thenReturn(false);
+        Mockito.when(node.getCommandClass(Matchers.any(CommandClass.class))).thenReturn(wakeupCommandClass);
+        Mockito.when(controller.getNode(Matchers.anyInt())).thenReturn(node);
+
+        Mockito.doAnswer((new Answer<Void>() {
+            @Override
+            public Void answer(InvocationOnMock invocation) {
+                manager.queueTransactionForSend((ZWaveTransaction) invocation.getArguments()[0]);
+                return null;
+            }
+        })).when(controller).enqueue(Matchers.any(ZWaveTransaction.class));
+
+        manager.queueTransactionForSend(transaction);
+
+        // Check that this frame was not sent
+        assertEquals(0, txQueueCapture.getAllValues().size());
+        assertEquals(0, transactionCompleteCapture.getAllValues().size());
+
+        // Wake this device up
+        wakeupCommandClass.setAwake(true);
+
+        // Check that this frame was now sent
+        assertEquals(1, txQueueCapture.getAllValues().size());
+        assertEquals(0, transactionCompleteCapture.getAllValues().size());
+    }
 }

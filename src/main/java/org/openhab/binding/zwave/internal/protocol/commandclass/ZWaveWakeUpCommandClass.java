@@ -421,7 +421,7 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass
             // Bump it's priority to highest to try and send it while the node is awake
             ZWaveTransaction nextTransaction = wakeUpQueue.poll();
             nextTransaction.setPriority(TransactionPriority.Immediate);
-            getController().sendData(nextTransaction);
+            getController().enqueue(nextTransaction);
         } else if (isAwake() == true) {
             // No more messages in the queue.
             // Start a timer to send the "Go To Sleep" message
@@ -472,7 +472,7 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass
                 // Bump it's priority to highest to try and send it while the node is awake
                 ZWaveTransaction nextTransaction = wakeUpQueue.poll();
                 nextTransaction.setPriority(TransactionPriority.Immediate);
-                getController().sendData(nextTransaction);
+                getController().enqueue(nextTransaction);
             } else {
                 // No messages in the queue.
                 // Start a timer to send the "Go To Sleep" message
@@ -562,7 +562,7 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass
             }
             // Tell the device to back to sleep.
             logger.debug("NODE {}: No more messages, go back to sleep", wakeup.getNode().getNodeId());
-            wakeup.getController().sendData(wakeup.getNoMoreInformationMessage());
+            wakeup.getController().enqueue(wakeup.getNoMoreInformationMessage());
         }
     }
 

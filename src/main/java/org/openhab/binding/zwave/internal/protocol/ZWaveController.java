@@ -496,10 +496,6 @@ public class ZWaveController {
 
         /*
          *
-         * // Make sure the transaction is reset - required if this is a retry
-         * // TODO: Needed still?
-         * transaction.resetTransaction();
-         *
          * // First try and get the node
          * // If we're sending to a node, then this obviously isn't to the controller, and we should
          * // queue anything to a battery node (ie a node supporting the WAKEUP class)!
@@ -518,17 +514,6 @@ public class ZWaveController {
          * return;
          * }
          *
-         * // If the device isn't listening, queue the message if it supports the wakeup class
-         * if (!node.isListening() && !node.isFrequentlyListening()) {
-         * ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) node
-         * .getCommandClass(CommandClass.WAKE_UP);
-         *
-         * // If it's a battery operated device, check if it's awake or
-         * // place in wake-up queue.
-         * if (wakeUpCommandClass != null && !wakeUpCommandClass.processOutgoingWakeupMessage(transaction)) {
-         * return;
-         * }
-         * }
          * }
          *
          * // Add the message to the queue
