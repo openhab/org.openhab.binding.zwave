@@ -28,8 +28,9 @@ public class ZWaveConfigurationParameter {
     /***
      * Constructor. Creates a new instance of the {@link ZWaveConfigurationParameter} class.
      *
-     * @param index. The parameter index.
-     * @param value. The parameter value;
+     * @param index The parameter index.
+     * @param value The parameter value;
+     * @param size The parameter size in bytes
      * @throws IllegalArgumentException thrown when the index or size arguments are out of range.
      */
     public ZWaveConfigurationParameter(Integer index, Integer value, Integer size) throws IllegalArgumentException {

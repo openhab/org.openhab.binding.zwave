@@ -17,6 +17,7 @@ import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.ZWaveConfigurationParameter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurationCommandClass;
@@ -144,30 +145,43 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
          * logger.error("NODE {}: Device has no parameter {}.", node.getNodeId(), paramIndex);
          * return;
          * }
-         * ConfigurationParameter configurationParameter = new ConfigurationParameter(paramIndex,
-         * (Integer) converter.convertFromCommandToValue(item, command), dbParameter.Size);
-         *
-         * // Set the parameter
-         * SerialMessage serialMessage = commandClass.setConfigMessage(configurationParameter);
-         * if (serialMessage == null) {
-         * logger.warn("NODE {}: Generating message failed for command class = {}, endpoint = {}", node.getNodeId(),
-         * commandClass.getCommandClass().getLabel(), endpointId);
-         * return;
-         * }
-         *
-         * this.getController().sendData(serialMessage);
-         *
-         * // And request a read-back
-         * serialMessage = commandClass.getConfigMessage(paramIndex);
-         * this.getController().sendData(serialMessage);
          */
-        SerialMessage serialMessage = null;
+
+        ZWaveConfigurationCommandClass commandClass = (ZWaveConfigurationCommandClass) node
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.CONFIGURATION, channel.getEndpoint());
+        if (commandClass == null) {
+            return null;
+        }
+
+        ZWaveConfigurationParameter configParameter = commandClass.getParameter(paramIndex);
+        if (configParameter == null) {
+            logger.debug("NODE {}: Config parameter {} not found in converter", node.getNodeId(), paramIndex);
+            return null;
+        }
+
+        if (command instanceof DecimalType) {
+            configParameter.setValue((int) ((DecimalType) command).longValue());
+        } else {
+            logger.debug("NODE {}: Config parameter {} no conversion from {}", node.getNodeId(), paramIndex,
+                    command.getClass().getSimpleName());
+            return null;
+        }
+
+        // Set the parameter
+        SerialMessage serialMessage = commandClass.setConfigMessage(configParameter);
+        if (serialMessage == null) {
+            logger.warn("NODE {}: Generating message failed for command class = {}", node.getNodeId(),
+                    commandClass.getCommandClass().getLabel());
+            return null;
+        }
+
         List<SerialMessage> messages = new ArrayList<SerialMessage>();
         messages.add(serialMessage);
-        return messages;
 
-        // if (command instanceof State) {
-        // TODO: this.getEventPublisher().postUpdate(item.getName(), (State) command);
-        // }
+        // And request a read-back
+        serialMessage = commandClass.getConfigMessage(paramIndex);
+        messages.add(serialMessage);
+
+        return messages;
     }
 }
