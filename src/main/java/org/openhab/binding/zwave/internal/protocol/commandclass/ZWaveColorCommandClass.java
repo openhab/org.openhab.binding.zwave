@@ -424,7 +424,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
          * @param colorType the color type that triggered the event;
          * @param value the value for the event.
          */
-        private ZWaveColorValueEvent(int nodeId, int endpoint, Map<ZWaveColorType, Integer> colorMap) {
+        public ZWaveColorValueEvent(int nodeId, int endpoint, Map<ZWaveColorType, Integer> colorMap) {
             super(nodeId, endpoint, CommandClass.COLOR, 0);
             this.colorMap = colorMap;
         }
