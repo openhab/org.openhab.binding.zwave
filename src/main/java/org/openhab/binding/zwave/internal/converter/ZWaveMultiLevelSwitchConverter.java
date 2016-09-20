@@ -134,6 +134,11 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
     public List<SerialMessage> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
         ZWaveMultiLevelSwitchCommandClass commandClass = (ZWaveMultiLevelSwitchCommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.SWITCH_MULTILEVEL, channel.getEndpoint());
+        if (commandClass == null) {
+            logger.debug("NODE {}: Command class SWITCH_MULTILEVEL not found when processing command on endpoint {}",
+                    node.getNodeId(), channel.getEndpoint());
+            return null;
+        }
 
         SerialMessage serialMessage = null;
         // boolean restoreLastValue = "true".equalsIgnoreCase(channel.getArguments().get("restoreLastValue"));
