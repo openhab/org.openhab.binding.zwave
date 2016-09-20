@@ -13,7 +13,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.library.types.OnOffType;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.types.State;
@@ -71,15 +70,21 @@ public class ZWaveAlarmConverterTest {
 
     @Test
     public void Event_PowerManagement_PowerApplied() {
+        // Simulates the Nexia doorbell
         ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
-        ZWaveThingChannel channel = createChannel(DataType.DecimalType, AlarmType.POWER_MANAGEMENT.toString(), null);
+        ZWaveThingChannel channel = createChannel(DataType.OnOffType, AlarmType.POWER_MANAGEMENT.toString(), null);
 
+        // Power has been applied
         ZWaveCommandClassValueEvent event = createEvent(ZWaveAlarmCommandClass.AlarmType.POWER_MANAGEMENT,
                 ReportType.NOTIFICATION, 1, 0xff, 0);
-
         State state = converter.handleEvent(channel, event);
+        assertEquals(state.getClass(), OnOffType.class);
+        assertEquals(state, OnOffType.ON);
 
-        assertEquals(state.getClass(), DecimalType.class);
-        assertEquals(state, new DecimalType(1));
+        // Events cleared
+        event = createEvent(ZWaveAlarmCommandClass.AlarmType.POWER_MANAGEMENT, ReportType.NOTIFICATION, 0, 0xff, 0);
+        state = converter.handleEvent(channel, event);
+        assertEquals(state.getClass(), OnOffType.class);
+        assertEquals(state, OnOffType.OFF);
     }
 }
