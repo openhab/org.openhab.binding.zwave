@@ -31,6 +31,11 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterTblMon
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterTblMonitorCommandClass.MeterTblMonitorType;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 
+/**
+ *
+ * @author Chris Jackson
+ *
+ */
 public class ZWaveMeterTblMonitorConverterTest {
     final ChannelUID uid = new ChannelUID("zwave:node:bridge:channel");
 

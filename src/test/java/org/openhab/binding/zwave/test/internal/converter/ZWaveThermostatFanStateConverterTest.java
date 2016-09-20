@@ -30,6 +30,11 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClas
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveThermostatFanStateCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 
+/**
+ *
+ * @author Chris Jackson
+ *
+ */
 public class ZWaveThermostatFanStateConverterTest {
     final ChannelUID uid = new ChannelUID("zwave:node:bridge:channel");
 

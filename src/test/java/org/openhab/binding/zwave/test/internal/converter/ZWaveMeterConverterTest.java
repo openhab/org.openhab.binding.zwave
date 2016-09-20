@@ -35,6 +35,11 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterComman
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterCommandClass.MeterType;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 
+/**
+ *
+ * @author Chris Jackson
+ *
+ */
 public class ZWaveMeterConverterTest extends ZWaveCommandClassConverterTest {
     final ChannelUID uid = new ChannelUID("zwave:node:bridge:channel");
 

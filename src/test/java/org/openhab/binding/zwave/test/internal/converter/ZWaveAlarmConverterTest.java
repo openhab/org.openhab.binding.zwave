@@ -31,6 +31,11 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmComman
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 
+/**
+ *
+ * @author Chris Jackson
+ *
+ */
 public class ZWaveAlarmConverterTest {
     final ChannelUID uid = new ChannelUID("zwave:node:bridge:channel");
 

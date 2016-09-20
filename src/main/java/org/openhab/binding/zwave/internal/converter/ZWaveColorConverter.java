@@ -88,8 +88,10 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
         switch (channel.getDataType()) {
             case HSBType:
                 float[] hsb = new float[3];
-                RGBtoHSB(colorMap.get(ZWaveColorType.RED), colorMap.get(ZWaveColorType.GREEN),
-                        colorMap.get(ZWaveColorType.BLUE), hsb);
+                int red = colorMap.get(ZWaveColorType.RED) != null ? colorMap.get(ZWaveColorType.RED) : 0;
+                int green = colorMap.get(ZWaveColorType.GREEN) != null ? colorMap.get(ZWaveColorType.GREEN) : 0;
+                int blue = colorMap.get(ZWaveColorType.BLUE) != null ? colorMap.get(ZWaveColorType.BLUE) : 0;
+                RGBtoHSB(red, green, blue, hsb);
                 HSBType hsbState = new HSBType(new DecimalType(hsb[0]), new PercentType((int) hsb[1]),
                         new PercentType((int) hsb[2]));
 
