@@ -131,36 +131,32 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
             return null;
         }
 
-        // Handle event 0xfe as 'clear the event'
-        int event = eventAlarm.getAlarmEvent() == 0xfe ? 0 : eventAlarm.getAlarmEvent();
+        // Handle event 0 as 'clear the event'
+        int event = eventAlarm.getAlarmEvent() == 0 ? 0 : eventAlarm.getAlarmStatus();
 
         // TODO: Handle these event to state specific conversions in a table.
         State state = null;
         switch (channel.getDataType()) {
             case OnOffType:
-                state = eventAlarm.getValue() == 0 ? OnOffType.OFF : OnOffType.ON;
+                state = event == 0 ? OnOffType.OFF : OnOffType.ON;
                 break;
             case OpenClosedType:
                 state = eventAlarm.getValue() == 0 ? OpenClosedType.CLOSED : OpenClosedType.OPEN;
                 if (eventAlarm.getAlarmType() == AlarmType.ACCESS_CONTROL) {
                     switch (event) {
                         case 22: // Window/Door is open
-                            state = OpenClosedType.OPEN;
+                            state = eventAlarm.getValue() == 0 ? OpenClosedType.CLOSED : OpenClosedType.OPEN;
                             break;
                         case 23: // Window/Door is closed
-                            state = OpenClosedType.CLOSED;
+                            state = eventAlarm.getValue() == 0 ? OpenClosedType.OPEN : OpenClosedType.CLOSED;
                             break;
                         default:
-                            logger.warn("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());
                             break;
                     }
-                } else {
-                    logger.warn("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());
                 }
-
                 break;
             case DecimalType:
-                state = new DecimalType(eventAlarm.getValue());
+                state = new DecimalType(event);
                 break;
             default:
                 logger.warn("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());

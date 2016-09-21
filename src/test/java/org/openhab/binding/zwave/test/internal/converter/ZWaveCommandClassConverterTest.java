@@ -1,5 +1,6 @@
 package org.openhab.binding.zwave.test.internal.converter;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.mockito.AdditionalAnswers;
@@ -22,6 +23,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClas
  */
 public class ZWaveCommandClassConverterTest {
     ZWaveNode CreateMockedNode(final int version, final Map<String, String> options) {
+        final Map<Integer, ZWaveCommandClass> classes = new HashMap<Integer, ZWaveCommandClass>();
         final ZWaveNode node = Mockito.mock(ZWaveNode.class);
         final ZWaveController controller = Mockito.mock(ZWaveController.class);
         Mockito.when(node.encapsulate(Matchers.any(ZWaveTransaction.class), Matchers.any(ZWaveCommandClass.class),
@@ -31,10 +33,15 @@ public class ZWaveCommandClassConverterTest {
                 .thenAnswer(new Answer<ZWaveCommandClass>() {
                     @Override
                     public ZWaveCommandClass answer(InvocationOnMock invocation) {
+                        if (classes.get(((CommandClass) invocation.getArguments()[0]).getKey()) != null) {
+                            return classes.get(((CommandClass) invocation.getArguments()[0]).getKey());
+                        }
                         ZWaveCommandClass commandClass = ZWaveCommandClass
                                 .getInstance(((CommandClass) invocation.getArguments()[0]).getKey(), node, controller);
                         commandClass.setVersion(version);
                         commandClass.setOptions(options);
+
+                        classes.put(((CommandClass) invocation.getArguments()[0]).getKey(), commandClass);
                         return commandClass;
                     }
                 });

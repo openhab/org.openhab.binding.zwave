@@ -147,6 +147,16 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
 
         initialiseDone = true;
 
+        if (getNode() == null) {
+            logger.debug("Node is null in processColorSupportedReport");
+            return;
+        }
+
+        if (getEndpoint() == null) {
+            logger.debug("NODE {}: Endpoint is null in processColorSupportedReport", getNode().getNodeId());
+            return;
+        }
+
         ZWaveCommandClassValueEvent zEvent = new ZWaveColorValueEvent(getNode().getNodeId(),
                 getEndpoint().getEndpointId(), colorMap);
         getController().notifyEventListeners(zEvent);
@@ -424,7 +434,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
          * @param colorType the color type that triggered the event;
          * @param value the value for the event.
          */
-        private ZWaveColorValueEvent(int nodeId, int endpoint, Map<ZWaveColorType, Integer> colorMap) {
+        public ZWaveColorValueEvent(int nodeId, int endpoint, Map<ZWaveColorType, Integer> colorMap) {
             super(nodeId, endpoint, CommandClass.COLOR, 0);
             this.colorMap = colorMap;
         }

@@ -220,7 +220,9 @@ public class ZWaveNode {
     }
 
     /**
-     * Sets the node to be 'undead'.
+     * Set the node state and alert the listeners that the state has changed
+     *
+     * @param state the new {@link ZWaveNodeState}
      */
     public void setNodeState(ZWaveNodeState state) {
         // Make sure we only handle real state changes
@@ -251,13 +253,8 @@ public class ZWaveNode {
                 break;
         }
 
-        // Don't alert state changes while we're still initialising
-        // if (nodeStageAdvancer.isInitializationComplete() == true) {
         ZWaveEvent zEvent = new ZWaveNodeStatusEvent(this.getNodeId(), state);
         controller.notifyEventListeners(zEvent);
-        // } else {
-        // logger.debug("NODE {}: Initialisation incomplete, not signalling state change.", this.nodeId);
-        // }
 
         nodeState = state;
     }

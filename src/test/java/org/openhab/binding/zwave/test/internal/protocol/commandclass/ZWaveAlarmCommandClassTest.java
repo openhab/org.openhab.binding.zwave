@@ -89,6 +89,26 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
     }
 
     @Test
+    public void Notification_PowerManagement_PowerApplied() {
+        byte[] packetData = { 0x01, 0x10, 0x00, 0x04, 0x00, 0x0E, 0x0A, 0x71, 0x05, 0x00, 0x00, 0x00, (byte) 0xFF, 0x08,
+                0x01, 0x00, 0x00, 0x6D };
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData, 3);
+
+        assertEquals(events.size(), 1);
+
+        ZWaveAlarmValueEvent event = (ZWaveAlarmValueEvent) events.get(0);
+
+        // assertEquals(event.getNodeId(), 40);
+        assertEquals(event.getEndpoint(), 0);
+        assertEquals(event.getCommandClass(), CommandClass.ALARM);
+        assertEquals(event.getReportType(), ReportType.NOTIFICATION);
+        assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.POWER_MANAGEMENT);
+        assertEquals(event.getAlarmEvent(), 1);
+        assertEquals(event.getAlarmStatus(), 0xFF);
+    }
+
+    @Test
     public void getSupportedMessage() {
         ZWaveAlarmCommandClass cls = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.ALARM);
         SerialMessage msg;

@@ -11,7 +11,7 @@ ZWave is a wireless home automation protocol with reliable two way communication
 
 A wide range of devices are supported from lights, switches and sensors to smoke alarms, window coverings and keyfobs. Z-Wave certification guarantees that certified devices will be compatible with each other and the network.
 
-The binding uses a standard Z-Wave stick to communicate with the Z-Wave devices. There are many sticks available, and they all support the same interface so the binding does not distinguish between them.
+The binding uses a standard Z-Wave serial stick to communicate with the Z-Wave devices. There are many sticks available, and they all support the same interface so the binding does not distinguish between them.
 
 
 ## Supported Things
@@ -23,7 +23,7 @@ Before the binding can be used, a serial adapter must be added. This needs to be
 
 ## Discovery
 
-Once the binding is authorized, and an adapter is added, it automatically reads all devices that are included into the network. This is read directly from the Z-Wave controller and new things are added to the Inbox.
+Once the binding is authorized, and an adapter is added, it automatically reads all devices that are included into the network. This is read directly from the Z-Wave controller and new things are added to the Inbox. When the discovery process is started, the binding will put the controller into inclusion mode for a defined period of time to allow new devices to be discovered and added to the network.
 
 
 ## Binding Configuration
@@ -90,6 +90,17 @@ This sets the network security key used in your network for securing communicati
 
 
 ### Thing Configuration
+
+There are a huge number of things supported by the Z-Wave binding, so configuration can not be covered here and you should refer to the device manual.
+
+Things configured manually require the following minimum configuration to be set. -:
+
+| Configuration    | Description                                                                                                   |
+|------------------|---------------------------------------------------------------------------------------------------------------|
+| zwave_nodeid     | Sets the node id of the node within the network.                                                              |
+| zwave_deviceid   | Specifies the manufacturer device ID for this device (as decimal). This is used to get the thing type from the database.  |
+| zwave_devicetype | Specifies the manufacturer device type for this device (as decimal). This is used to get the thing type from the database. |
+| zwave_version    | Specifies the application version for this device. This is used to get the thing type from the database.      |
 
 
 ## Channels
@@ -207,12 +218,15 @@ In order to configure the device properly following its initial inclusion in the
 
 The binding supports periodic polling. This has two purposes - firstly to ensure that a device is still responding, and secondly to update the bindings representation of the state of the device.  Where possible *associations* should be used to update the device state - this will keep network traffic to a minimum, which will improve the network latency, and it will be faster since *associations* send updates to the controller immediately where polling will always be noticeably slower.
 
+If a device fails to respond to a poll, then it will be marked as DEAD and shown as offline. For battery devices, if they do no provide a wakeup within a period of twice the wakeup period, then they will also be considered dead and taken offline.
+
 Keep the polling at a slow rate unless your device doesn't support *associations*.
 
 
 ### Binding Maintenance Functions
 
 The binding provides a number of facilities for maintaining the network.
+
 
 #### Mesh Heal
 

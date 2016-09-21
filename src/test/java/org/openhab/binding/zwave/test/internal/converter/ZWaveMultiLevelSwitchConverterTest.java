@@ -31,6 +31,11 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClas
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSwitchCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 
+/**
+ *
+ * @author Chris Jackson
+ *
+ */
 public class ZWaveMultiLevelSwitchConverterTest {
 
     private ZWaveControllerHandler controller;

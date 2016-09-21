@@ -16,6 +16,7 @@ import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
+import org.openhab.binding.zwave.internal.protocol.ZWaveConfigurationParameter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
@@ -144,30 +145,43 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
          * logger.error("NODE {}: Device has no parameter {}.", node.getNodeId(), paramIndex);
          * return;
          * }
-         * ConfigurationParameter configurationParameter = new ConfigurationParameter(paramIndex,
-         * (Integer) converter.convertFromCommandToValue(item, command), dbParameter.Size);
-         *
-         * // Set the parameter
-         * SerialMessage serialMessage = commandClass.setConfigMessage(configurationParameter);
-         * if (serialMessage == null) {
-         * logger.warn("NODE {}: Generating message failed for command class = {}, endpoint = {}", node.getNodeId(),
-         * commandClass.getCommandClass().getLabel(), endpointId);
-         * return;
-         * }
-         *
-         * this.getController().sendData(serialMessage);
-         *
-         * // And request a read-back
-         * serialMessage = commandClass.getConfigMessage(paramIndex);
-         * this.getController().sendData(serialMessage);
          */
-        ZWaveTransaction serialMessage = null;
-        List<ZWaveTransaction> messages = new ArrayList<ZWaveTransaction>();
-        messages.add(serialMessage);
-        return messages;
 
-        // if (command instanceof State) {
-        // TODO: this.getEventPublisher().postUpdate(item.getName(), (State) command);
-        // }
+        ZWaveConfigurationCommandClass commandClass = (ZWaveConfigurationCommandClass) node
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.CONFIGURATION, channel.getEndpoint());
+        if (commandClass == null) {
+            return null;
+        }
+
+        ZWaveConfigurationParameter configParameter = commandClass.getParameter(paramIndex);
+        if (configParameter == null) {
+            logger.debug("NODE {}: Config parameter {} not found in converter", node.getNodeId(), paramIndex);
+            return null;
+        }
+
+        if (command instanceof DecimalType) {
+            configParameter.setValue((int) ((DecimalType) command).longValue());
+        } else {
+            logger.debug("NODE {}: Config parameter {} no conversion from {}", node.getNodeId(), paramIndex,
+                    command.getClass().getSimpleName());
+            return null;
+        }
+
+        // Set the parameter
+        ZWaveTransaction transaction = commandClass.setConfigMessage(configParameter);
+        if (transaction == null) {
+            logger.warn("NODE {}: Generating message failed for command class = {}", node.getNodeId(),
+                    commandClass.getCommandClass().getLabel());
+            return null;
+        }
+
+        List<ZWaveTransaction> transactions = new ArrayList<ZWaveTransaction>();
+        transactions.add(transaction);
+
+        // And request a read-back
+        transaction = commandClass.getConfigMessage(paramIndex);
+        transactions.add(transaction);
+
+        return transactions;
     }
 }

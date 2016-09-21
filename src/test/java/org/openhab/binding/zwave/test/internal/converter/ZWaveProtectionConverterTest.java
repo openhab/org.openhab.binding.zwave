@@ -26,6 +26,11 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveProtectionC
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveProtectionCommandClass.Type;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 
+/**
+ *
+ * @author Chris Jackson
+ *
+ */
 public class ZWaveProtectionConverterTest {
     final ChannelUID uid = new ChannelUID("zwave:node:bridge:channel");
 
