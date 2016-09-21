@@ -51,6 +51,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveConfigurationParameter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEventListener;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveNodeState;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurationCommandClass.ZWaveConfigurationParameterEvent;
@@ -382,8 +383,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     if (wakeupCommandClass != null && wakeupCommandClass.getInterval() != 0) {
                         if (node.getLastReceived()
                                 .getTime() < (System.currentTimeMillis() - (wakeupCommandClass.getInterval() * 2000))) {
-                            updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.COMMUNICATION_ERROR,
-                                    ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_NODE_DEAD));
+                            node.setNodeState(ZWaveNodeState.DEAD);
                         }
                     }
 
