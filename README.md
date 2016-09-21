@@ -91,13 +91,15 @@ This sets the network security key used in your network for securing communicati
 
 ### Thing Configuration
 
-Things configured manually require the following minimum configuration
+There are a huge number of things supported by the Z-Wave binding, so configuration can not be covered here and you should refer to the device manual.
+
+Things configured manually require the following minimum configuration to be set. -:
 
 | Configuration    | Description                                                                                                   |
 |------------------|---------------------------------------------------------------------------------------------------------------|
 | zwave_nodeid     | Sets the node id of the node within the network.                                                              |
-| zwave_deviceid   | Specifies the manufacturer  device ID for this device. This is used to get the thing type from the database.  |
-| zwave_devicetype | Specifies the manufacturer device type for this device. This is used to get the thing type from the database. |
+| zwave_deviceid   | Specifies the manufacturer device ID for this device (as decimal). This is used to get the thing type from the database.  |
+| zwave_devicetype | Specifies the manufacturer device type for this device (as decimal). This is used to get the thing type from the database. |
 | zwave_version    | Specifies the application version for this device. This is used to get the thing type from the database.      |
 
 
@@ -216,12 +218,15 @@ In order to configure the device properly following its initial inclusion in the
 
 The binding supports periodic polling. This has two purposes - firstly to ensure that a device is still responding, and secondly to update the bindings representation of the state of the device.  Where possible *associations* should be used to update the device state - this will keep network traffic to a minimum, which will improve the network latency, and it will be faster since *associations* send updates to the controller immediately where polling will always be noticeably slower.
 
+If a device fails to respond to a poll, then it will be marked as DEAD and shown as offline. For battery devices, if they do no provide a wakeup within a period of twice the wakeup period, then they will also be considered dead and taken offline.
+
 Keep the polling at a slow rate unless your device doesn't support *associations*.
 
 
 ### Binding Maintenance Functions
 
 The binding provides a number of facilities for maintaining the network.
+
 
 #### Mesh Heal
 
