@@ -46,6 +46,7 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
         assertEquals(event.getReportType(), ReportType.NOTIFICATION);
         assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.SMOKE);
         assertEquals(event.getAlarmStatus(), 0xFF);
+        assertEquals(event.getAlarmEvent(), 0);
     }
 
     @Test

@@ -142,42 +142,39 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
 
     protected void processNotificationReport(SerialMessage serialMessage, int offset, int endpoint)
             throws ZWaveSerialMessageException {
-        int alarmTypeCode = serialMessage.getMessagePayloadByte(offset + 1);
-        int alarmLevel = serialMessage.getMessagePayloadByte(offset + 2);
-        int event = 0;
+        int v1AlarmTypeCode = serialMessage.getMessagePayloadByte(offset + 1);
+        int v1AlarmLevel = serialMessage.getMessagePayloadByte(offset + 2);
+        int notificationEvent = 0;
         int notificationStatus = 0;
         int notificationTypeCode = 0;
 
         AlarmType alarmType;
         ReportType eventType;
 
-        // Check if this message is a V1 message based on length
-        int version = getVersion();
-        if (serialMessage.getMessagePayload().length < 4) {
-            version = 1;
-        }
-
-        if (version == 1) {
+        if (getVersion() == 1) {
             eventType = ReportType.ALARM;
-            alarmType = AlarmType.getAlarmType(alarmTypeCode);
+            alarmType = AlarmType.getAlarmType(v1AlarmTypeCode);
 
-            logger.debug("NODE {}: ALARM report - {} = {}", getNode().getNodeId(), alarmTypeCode, alarmLevel);
+            notificationStatus = v1AlarmLevel;
+
+            logger.debug("NODE {}: ALARM report - {} = {}", getNode().getNodeId(), v1AlarmTypeCode, v1AlarmLevel);
         } else {
+            eventType = ReportType.NOTIFICATION;
+            // Indicates if reports are enabled or disabled
             notificationStatus = serialMessage.getMessagePayloadByte(offset + 4);
             notificationTypeCode = serialMessage.getMessagePayloadByte(offset + 5);
-            event = serialMessage.getMessagePayloadByte(offset + 6);
-            eventType = ReportType.NOTIFICATION;
+            notificationEvent = serialMessage.getMessagePayloadByte(offset + 6);
             alarmType = AlarmType.getAlarmType(notificationTypeCode);
 
             int parameterLength = serialMessage.getMessagePayloadByte(offset + 5) & 0x1f;
             boolean containsSequence = (serialMessage.getMessagePayloadByte(offset + 5) & 0x80) != 0;
 
             logger.debug("NODE {}: NOTIFICATION report - {} = {}, event={}, status={}", getNode().getNodeId(),
-                    alarmTypeCode, alarmLevel, event, notificationStatus);
+                    v1AlarmTypeCode, v1AlarmLevel, notificationEvent, notificationStatus);
         }
 
         if (alarmType == null) {
-            logger.error("NODE {}: Unknown Alarm Type = {}, ignoring report.", getNode().getNodeId(), alarmTypeCode);
+            logger.error("NODE {}: Unknown Alarm Type = {}, ignoring report.", getNode().getNodeId(), v1AlarmTypeCode);
             return;
         }
 
@@ -189,10 +186,10 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         }
         alarm.setInitialised();
 
-        logger.debug("NODE {}: Alarm Type = {} ({})", getNode().getNodeId(), alarmType.toString(), alarmTypeCode);
+        logger.debug("NODE {}: Alarm Type = {} ({})", getNode().getNodeId(), alarmType.toString(), v1AlarmTypeCode);
 
         ZWaveAlarmValueEvent zEvent = new ZWaveAlarmValueEvent(getNode().getNodeId(), endpoint, eventType, alarmType,
-                event, notificationStatus, alarm);
+                notificationEvent, notificationStatus);
         getController().notifyEventListeners(zEvent);
 
         dynamicDone = true;
@@ -546,8 +543,8 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
          * @param value the value for the event.
          */
         public ZWaveAlarmValueEvent(int nodeId, int endpoint, ReportType eventType, AlarmType alarmType, int alarmEvent,
-                int alarmStatus, Object value) {
-            super(nodeId, endpoint, CommandClass.ALARM, value);
+                int alarmStatus) {
+            super(nodeId, endpoint, CommandClass.ALARM, alarmStatus);
             this.eventType = eventType;
             this.alarmType = alarmType;
             this.alarmEvent = alarmEvent;

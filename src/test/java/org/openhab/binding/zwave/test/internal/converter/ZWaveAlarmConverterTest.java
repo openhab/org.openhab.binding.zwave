@@ -13,6 +13,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.library.types.OnOffType;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.types.State;
@@ -50,21 +51,21 @@ public class ZWaveAlarmConverterTest {
     }
 
     private ZWaveCommandClassValueEvent createEvent(AlarmType type, ReportType reportType, Integer event,
-            Integer status, Integer value) {
+            Integer status) {
         ZWaveController controller = Mockito.mock(ZWaveController.class);
         ZWaveNode node = Mockito.mock(ZWaveNode.class);
         ZWaveEndpoint endpoint = Mockito.mock(ZWaveEndpoint.class);
         ZWaveAlarmCommandClass cls = new ZWaveAlarmCommandClass(node, controller, endpoint);
 
-        return cls.new ZWaveAlarmValueEvent(1, 0, reportType, type, event, status, value);
+        return cls.new ZWaveAlarmValueEvent(1, 0, reportType, type, event, status);
     }
 
     @Test
-    public void Event_Smoke() {
+    public void Alarm_Smoke() {
         ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
         ZWaveThingChannel channel = createChannel(DataType.OnOffType, AlarmType.SMOKE.toString(), "0");
 
-        ZWaveCommandClassValueEvent event = createEvent(ZWaveAlarmCommandClass.AlarmType.SMOKE, ReportType.ALARM, 0, 0,
+        ZWaveCommandClassValueEvent event = createEvent(ZWaveAlarmCommandClass.AlarmType.SMOKE, ReportType.ALARM, 0,
                 0xff);
 
         State state = converter.handleEvent(channel, event);
@@ -74,20 +75,48 @@ public class ZWaveAlarmConverterTest {
     }
 
     @Test
-    public void Event_PowerManagement_PowerApplied() {
+    public void Notification_Smoke_OnOff() {
+        ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
+        ZWaveThingChannel channel = createChannel(DataType.OnOffType, AlarmType.SMOKE.toString(), "0");
+
+        ZWaveCommandClassValueEvent event = createEvent(ZWaveAlarmCommandClass.AlarmType.SMOKE, ReportType.NOTIFICATION,
+                0, 0xff);
+
+        State state = converter.handleEvent(channel, event);
+
+        assertEquals(state.getClass(), OnOffType.class);
+        assertEquals(state, OnOffType.OFF);
+    }
+
+    @Test
+    public void Notification_Smoke_Decimal() {
+        ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
+        ZWaveThingChannel channel = createChannel(DataType.DecimalType, AlarmType.SMOKE.toString(), null);
+
+        ZWaveCommandClassValueEvent event = createEvent(ZWaveAlarmCommandClass.AlarmType.SMOKE, ReportType.NOTIFICATION,
+                3, 0xff);
+
+        State state = converter.handleEvent(channel, event);
+
+        assertEquals(state.getClass(), DecimalType.class);
+        assertEquals(state, new DecimalType(3));
+    }
+
+    @Test
+    public void Notification_PowerManagement_PowerApplied() {
         // Simulates the Nexia doorbell
         ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
         ZWaveThingChannel channel = createChannel(DataType.OnOffType, AlarmType.POWER_MANAGEMENT.toString(), null);
 
         // Power has been applied
         ZWaveCommandClassValueEvent event = createEvent(ZWaveAlarmCommandClass.AlarmType.POWER_MANAGEMENT,
-                ReportType.NOTIFICATION, 1, 0xff, 0);
+                ReportType.NOTIFICATION, 1, 0xff);
         State state = converter.handleEvent(channel, event);
         assertEquals(state.getClass(), OnOffType.class);
         assertEquals(state, OnOffType.ON);
 
         // Events cleared
-        event = createEvent(ZWaveAlarmCommandClass.AlarmType.POWER_MANAGEMENT, ReportType.NOTIFICATION, 0, 0xff, 0);
+        event = createEvent(ZWaveAlarmCommandClass.AlarmType.POWER_MANAGEMENT, ReportType.NOTIFICATION, 0, 0xff);
         state = converter.handleEvent(channel, event);
         assertEquals(state.getClass(), OnOffType.class);
         assertEquals(state, OnOffType.OFF);
