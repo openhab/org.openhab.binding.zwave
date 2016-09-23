@@ -104,7 +104,7 @@ Smart Strip<br /><h1>Overview</h1><p>Update command classes -:<br />METER:5 :: A
         </properties>
       </channel>
       <channel id="switch_binary5" typeId="switch_binary">
-        <label></label>
+        <label>Switch 5</label>
         <properties>
           <property name="binding:*:OnOffType">SWITCH_BINARY:5,BASIC:5</property>
         </properties>
@@ -122,7 +122,7 @@ Smart Strip<br /><h1>Overview</h1><p>Update command classes -:<br />METER:5 :: A
         </properties>
       </channel>
       <channel id="switch_binary6" typeId="switch_binary">
-        <label></label>
+        <label>Switch 6</label>
         <properties>
           <property name="binding:*:OnOffType">SWITCH_BINARY:6,BASIC:6</property>
         </properties>
