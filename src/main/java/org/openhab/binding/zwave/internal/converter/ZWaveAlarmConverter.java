@@ -156,7 +156,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                 }
                 break;
             case DecimalType:
-                state = new DecimalType(event);
+                state = new DecimalType(eventAlarm.getAlarmEvent());
                 break;
             default:
                 logger.warn("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());
