@@ -433,11 +433,11 @@ public class ZWaveTransactionManager {
             }
         }
 
-        // Create the timer task
-        timerTask = new ZWaveTransactionTimer();
-
         // Start the timer if required
         if (nextTimer != null) {
+            // Create the timer task
+            timerTask = new ZWaveTransactionTimer();
+
             logger.debug("Start transaction timer to {} - {}ms", nextTimer,
                     (nextTimer.getTime() - System.currentTimeMillis()));
             System.out.println("Start transaction timer to " + (nextTimer.getTime() - System.currentTimeMillis())
