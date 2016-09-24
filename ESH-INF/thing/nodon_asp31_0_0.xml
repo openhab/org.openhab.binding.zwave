@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="nodon_asp31_00_000" listed="false">
+    <label>ASP-3-1 Smart Plug</label>
+    <description>Smart Plug</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
+        </properties>
+      </channel>
+      <channel id="alarm_system" typeId="alarm_system">
+        <label>Alarm (system)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=SYSTEM</property>
+        </properties>
+      </channel>
+      <channel id="alarm_power" typeId="alarm_power">
+        <label>Alarm (power)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Nodon</property>
+      <property name="modelId">ASP-3-1</property>
+      <property name="manufacturerId">0165</property>
+      <property name="manufacturerRef">0001:0001</property>
+      <property name="dbReference">425</property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: Default State</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Status of the Smart Plug after a Power Failure or after being plugged</p>
+        ]]></description>
+        <default>2</default>
+        <options>
+          <option value="0">OFF</option>
+          <option value="1">ON</option>
+          <option value="2">Status before Power Failure</option>
+          <option value="4">Enable group 5</option>
+          <option value="8">Enable group 6</option>
+          <option value="16">Enable group 7</option>
+          <option value="32">Enable group 8</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration">
+        <label>2: Power Failure</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>This parameter is to set-up the Power Failure / Recover notification and the associated group (Groups 4, 5, 6, 7, 8).</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Power Failure detection disable</option>
+          <option value="1">Power Failure enable (report to Lifeline only)</option>
+          <option value="2">Enable group 4</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration">
+        <label>3: Follow State</label>
+        <default>3</default>
+        <options>
+          <option value="0">Disable for group 2 &amp; 3</option>
+          <option value="1">Enable group 2</option>
+          <option value="2">Enable group 3</option>
+          <option value="32">Enable group 2 &amp; 3</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_4_1" type="integer" groupName="configuration">
+        <label>4: Always On</label>
+        <default>0</default>
+        <options>
+          <option value="0">Always ON disabled</option>
+          <option value="1">Always ON enabled</option>
+        </options>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>This group is generally used to report information of the Smart Plug to the Main Controller of the network.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Follow State</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>When the Smart Plug is switched ON (respectively OFF) using the local button, it will send ON (respectively OFF) command to the associated devices. No command is sent if the Smart Plug is switched ON or OFF wirelessly.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Follow Complementary State</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>When the Smart Plug is switched ON (respectively OFF) using the local button, it will send OFF (respectively ON) command to the associated devices. No command is sent if the Smart Plug is switched ON or OFF wirelessly.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_4" type="text" groupName="association" multiple="true">
+        <label>4: Power Failure Notification</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>When the Smart Plug detects a power failure or recovers from a power failure, it sends the notification report to the associated devices.</p> <p>The notification sent is “Notification Report: Power Management – AC Disconnected / Re-connected”.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_5" type="text" groupName="association" multiple="true">
+        <label>5: Power Failure Set ON</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>When the Smart Plug detects a Power Failure, it will switch ON the associated devices.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_6" type="text" groupName="association" multiple="true">
+        <label>6: Power Failure Set OFF</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>When the Smart Plug detects a Power Failure, it will switch OFF the associated devices.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_7" type="text" groupName="association" multiple="true">
+        <label>7: Power Recover Set ON</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>When the Smart Plug detects a Power Recover, it will switch ON the associated devices.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_8" type="text" groupName="association" multiple="true">
+        <label>8: Power Recover Set OFF</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>When the Smart Plug detects a Power Recover, it will switch OFF the associated devices.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+</thing:thing-descriptions>
