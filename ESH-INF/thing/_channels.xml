@@ -170,6 +170,21 @@
         </state>
     </channel-type>
 
+    <!-- System Alarm Channel -->
+    <channel-type id="alarm_system">
+        <item-type>Switch</item-type>
+        <label>System alarm</label>
+        <description>Indicates if a system alarm is triggered
+        </description>
+        <category>Door</category>
+        <state readOnly="true">
+            <options>
+                <option value="OFF">Ok</option>
+                <option value="ON">Alarm</option>
+            </options>
+        </state>
+    </channel-type>
+
     <!-- Tamper Alarm Channel -->
     <channel-type id="alarm_tamper">
         <item-type>Switch</item-type>
