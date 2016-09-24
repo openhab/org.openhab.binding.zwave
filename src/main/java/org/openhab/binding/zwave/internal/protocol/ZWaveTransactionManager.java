@@ -2,10 +2,8 @@ package org.openhab.binding.zwave.internal.protocol;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.PriorityBlockingQueue;
@@ -123,9 +121,10 @@ public class ZWaveTransactionManager {
 
     private final Timer timer = new Timer();
     private TimerTask timerTask = null;
-    // private final PriorityBlockingQueue<ZWaveTransaction> sendQueue = new PriorityBlockingQueue<ZWaveTransaction>(
-    // INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator());
-    private final Map<Integer, PriorityBlockingQueue<ZWaveTransaction>> sendQueue = new HashMap<Integer, PriorityBlockingQueue<ZWaveTransaction>>();
+    private final PriorityBlockingQueue<ZWaveTransaction> sendQueue = new PriorityBlockingQueue<ZWaveTransaction>(
+            INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator());
+    // private final Map<Integer, PriorityBlockingQueue<ZWaveTransaction>> sendQueue = new HashMap<Integer,
+    // PriorityBlockingQueue<ZWaveTransaction>>();
 
     private final List<ZWaveTransaction> outstandingTransactions = new ArrayList<ZWaveTransaction>();
 
@@ -161,13 +160,14 @@ public class ZWaveTransactionManager {
 
         // The queue is a map containing a queue for each node
         // Check if this node is in the queue
-        if (sendQueue.containsKey(transaction.getMessageNode())) {
-            if (sendQueue.get(transaction.getMessageNode()).contains(transaction)) {
-                logger.debug("NODE {}: Transaction already on the send queue. Removing original.",
-                        transaction.getMessageNode());
-                sendQueue.remove(transaction);
-            }
+        // if (sendQueue.containsKey(transaction.getMessageNode())) {
+        // if (sendQueue.get(transaction.getMessageNode()).contains(transaction)) {
+        if (sendQueue.contains(transaction)) {
+            logger.debug("NODE {}: Transaction already on the send queue. Removing original.",
+                    transaction.getMessageNode());
+            sendQueue.remove(transaction);
         }
+        // }
 
         // Add the message to the queue
         // We always add the most recent version, even though they are supposedly the same,

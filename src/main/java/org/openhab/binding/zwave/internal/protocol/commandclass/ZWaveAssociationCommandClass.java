@@ -41,6 +41,8 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveAssociationCommandClass.class);
 
+    private static final int MAX_SUPPORTED_VERSION = 2;
+
     private static final int ASSOCIATIONCMD_SET = 1;
     private static final int ASSOCIATIONCMD_GET = 2;
     private static final int ASSOCIATIONCMD_REPORT = 3;
@@ -72,6 +74,7 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
      */
     public ZWaveAssociationCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
+        versionMax = MAX_SUPPORTED_VERSION;
     }
 
     /**
@@ -268,7 +271,27 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
     }
 
     /**
-     * Gets a SerialMessage with the ASSOCIATIONCMD_GET command
+     * Gets a ZWaveTransaction with the ASSOCIATIONCMD_REMOVE command
+     *
+     * @param group
+     *            the association group
+     * @param node
+     *            the node to add to the specified group
+     * @return the serial message
+     */
+    public ZWaveTransaction clearAssociationMessage(int group) {
+        logger.debug("NODE {}: Creating new message for application command ASSOCIATIONCMD_REMOVE group={}, node=all",
+                getNode().getNodeId(), group);
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), ASSOCIATIONCMD_REMOVE).withPayload((group & 0xff))
+                .withNodeId(getNode().getNodeId()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Config).build();
+    }
+
+    /**
+     * Gets a ZWaveTransaction with the ASSOCIATIONCMD_GET command
      *
      * @param group
      *            the association group to read

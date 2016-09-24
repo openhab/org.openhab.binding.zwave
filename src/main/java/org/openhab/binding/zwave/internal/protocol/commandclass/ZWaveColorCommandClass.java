@@ -147,18 +147,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
 
         initialiseDone = true;
 
-        if (getNode() == null) {
-            logger.debug("Node is null in processColorSupportedReport");
-            return;
-        }
-
-        if (getEndpoint() == null) {
-            logger.debug("NODE {}: Endpoint is null in processColorSupportedReport", getNode().getNodeId());
-            return;
-        }
-
-        ZWaveCommandClassValueEvent zEvent = new ZWaveColorValueEvent(getNode().getNodeId(),
-                getEndpoint().getEndpointId(), colorMap);
+        ZWaveCommandClassValueEvent zEvent = new ZWaveColorValueEvent(getNode().getNodeId(), endpoint, colorMap);
         getController().notifyEventListeners(zEvent);
     }
 
@@ -191,8 +180,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
             // Yes - notify of a new color
 
             logger.info("NODE {}: Color report finished {}", getNode().getNodeId(), colorMap);
-            ZWaveCommandClassValueEvent zEvent = new ZWaveColorValueEvent(getNode().getNodeId(),
-                    getEndpoint().getEndpointId(), colorMap);
+            ZWaveCommandClassValueEvent zEvent = new ZWaveColorValueEvent(getNode().getNodeId(), endpoint, colorMap);
             getController().notifyEventListeners(zEvent);
         }
     }

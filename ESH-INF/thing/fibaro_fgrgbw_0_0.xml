@@ -14,8 +14,8 @@
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL,BASIC</property>
         </properties>
       </channel>
       <channel id="sensor_power" typeId="sensor_power">
@@ -36,42 +36,43 @@
           <property name="binding:*:DecimalType">METER;type=E_KWh</property>
         </properties>
       </channel>
+      <channel id="color_color" typeId="color_color">
+        <label>Color</label>
+        <properties>
+          <property name="binding:*:HSBType">COLOR;colorMode=RGB</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL</property>
+        </properties>
+      </channel>
       <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
         <label>Setpoint (heating)</label>
         <properties>
           <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=HEATING</property>
         </properties>
       </channel>
-      <channel id="switch_dimmer1" typeId="switch_dimmer">
-        <label>Dimmer 1</label>
-        <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:1,BASIC:1</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:1,BASIC:1</property>
-        </properties>
-      </channel>
       <channel id="switch_dimmer2" typeId="switch_dimmer">
-        <label>Dimmer 2</label>
+        <label>Green</label>
         <properties>
           <property name="binding:*:PercentType">SWITCH_MULTILEVEL:2,BASIC:2</property>
           <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:2,BASIC:2</property>
         </properties>
       </channel>
       <channel id="switch_dimmer3" typeId="switch_dimmer">
-        <label>Dimmer 3</label>
+        <label>Red</label>
         <properties>
           <property name="binding:*:PercentType">SWITCH_MULTILEVEL:3,BASIC:3</property>
           <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:3,BASIC:3</property>
         </properties>
       </channel>
       <channel id="switch_dimmer4" typeId="switch_dimmer">
-        <label>Dimmer 4</label>
+        <label>Blue</label>
         <properties>
           <property name="binding:*:PercentType">SWITCH_MULTILEVEL:4,BASIC:4</property>
           <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:4,BASIC:4</property>
         </properties>
       </channel>
       <channel id="switch_dimmer5" typeId="switch_dimmer">
-        <label>Dimmer 5</label>
+        <label>White</label>
         <properties>
           <property name="binding:*:PercentType">SWITCH_MULTILEVEL:5,BASIC:5</property>
           <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:5,BASIC:5</property>
@@ -282,10 +283,8 @@ Defines the required change in power to generate an unsolicited power report.<br
 
       <parameter name="config_72_1" type="integer" groupName="configuration"
                  min="1" max="10">
-        <label>72: Starting animation programm</label>
-        <description><![CDATA[
-Starting animation programm.<br /> Starting predefined program when device set to work in RGB/RGBW mode (parameter 14) - relevant for main controllers other than Home Center 2 only.<br /> Default setting: 1<br />
-        ]]></description>
+        <label>72: Starting animation program</label>
+        <description>Starting animation programm. Starting predefined program when device set to work in RGB/RGBW mode (parameter 14) - relevant for main controllers other than Home Center 2 only. Default setting: 1</description>
         <default>1</default>
       </parameter>
 

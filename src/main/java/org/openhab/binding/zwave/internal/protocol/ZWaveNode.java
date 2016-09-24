@@ -1057,6 +1057,22 @@ public class ZWaveNode {
         return null;
     }
 
+    public ZWaveTransaction clearAssociation(Integer groupId) {
+        ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
+                CommandClass.MULTI_INSTANCE_ASSOCIATION);
+        if (multiAssociationCommandClass != null) {
+            return multiAssociationCommandClass.clearAssociationMessage(groupId);
+        }
+
+        ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(
+                CommandClass.ASSOCIATION);
+        if (associationCommandClass != null) {
+            return associationCommandClass.clearAssociationMessage(groupId);
+        }
+
+        return null;
+    }
+
     // public void setFactoryId(String deviceFactoryId) {
     // this.deviceFactoryId = deviceFactoryId;
     // }
