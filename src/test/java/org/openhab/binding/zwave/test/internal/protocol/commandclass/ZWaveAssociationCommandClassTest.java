@@ -59,6 +59,17 @@ public class ZWaveAssociationCommandClassTest extends ZWaveCommandClassTest {
     }
 
     @Test
+    public void clearAssociationMessage() {
+        ZWaveAssociationCommandClass cls = (ZWaveAssociationCommandClass) getCommandClass(CommandClass.ASSOCIATION);
+        SerialMessage msg;
+
+        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, -123, 4, 1, 0, 0, 6 };
+        cls.setVersion(1);
+        msg = cls.clearAssociationMessage(1);
+        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+    }
+
+    @Test
     public void setAssociationMessage() {
         ZWaveAssociationCommandClass cls = (ZWaveAssociationCommandClass) getCommandClass(CommandClass.ASSOCIATION);
         SerialMessage msg;

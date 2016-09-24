@@ -654,6 +654,12 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     }
                 }
 
+                // If there are no known associations in the group, then let's clear the group completely
+                // This ensures we don't end up with strange ghost associations
+                if (node.getAssociationGroup(groupIndex).getAssociationCnt() == 0) {
+                    controllerHandler.sendData(node.clearAssociation(groupIndex));
+                }
+
                 // Request an update to the association group
                 controllerHandler.sendData(node.getAssociation(groupIndex));
                 pendingCfg.put(configurationParameter.getKey(), valueObject);
