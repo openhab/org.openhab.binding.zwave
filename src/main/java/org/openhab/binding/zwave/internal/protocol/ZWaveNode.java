@@ -1019,13 +1019,13 @@ public class ZWaveNode {
      * if the device endpoint is the root node, and the receive endpoint is 0, we use the
      * single instance command class, otherwise we use the multi instance class if it exists.
      *
-     * @param endpoint the endpoint required to semd the reports
+     * @param endpoint the {@link ZWaveEndpoint} required to send the reports
      * @param groupId the group to be set
      * @param nodeId the node to be set to report to (receive)
      * @param endpointId the endpoint to be set to report to (receive)
-     * @return
+     * @return {@link ZWaveTransaction}
      */
-    public ZWaveTransaction setAssociation(int groupId, int nodeId, int endpointId) {
+    public ZWaveTransaction setAssociation(ZWaveEndpoint endpoint, int groupId, int nodeId, int endpointId) {
         ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
                 CommandClass.MULTI_INSTANCE_ASSOCIATION);
         if (endpoint == null && endpointId != 0 && multiAssociationCommandClass != null) {
