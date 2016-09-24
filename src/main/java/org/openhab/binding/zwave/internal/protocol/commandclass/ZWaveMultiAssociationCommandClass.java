@@ -40,6 +40,8 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
 
     private static final Logger logger = LoggerFactory.getLogger(ZWaveMultiAssociationCommandClass.class);
 
+    private static final int MAX_SUPPORTED_VERSION = 3;
+
     private static final int MULTI_INSTANCE_MARKER = 0x00;
 
     private static final int MULTI_ASSOCIATIONCMD_SET = 1;
@@ -48,9 +50,6 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
     private static final int MULTI_ASSOCIATIONCMD_REMOVE = 4;
     private static final int MULTI_ASSOCIATIONCMD_GROUPINGSGET = 5;
     private static final int MULTI_ASSOCIATIONCMD_GROUPINGSREPORT = 6;
-
-    // Stores the list of association groups
-    // private Map<Integer, ZWaveAssociationGroup> configAssociations = new HashMap<Integer, ZWaveAssociationGroup>();
 
     @XStreamOmitField
     private int updateAssociationsNode = 0;
@@ -76,6 +75,7 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
      */
     public ZWaveMultiAssociationCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
+        versionMax = MAX_SUPPORTED_VERSION;
     }
 
     /**
@@ -280,14 +280,23 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
         // configures the device to send mutli-instance responses.
         ByteArrayOutputStream outputData = new ByteArrayOutputStream();
         outputData.write(this.getNode().getNodeId());
-        outputData.write(6);
 
-        outputData.write(getCommandClass().getKey());
-        outputData.write(MULTI_ASSOCIATIONCMD_SET);
-        outputData.write(group);
-        outputData.write(0);
-        outputData.write(node);
-        outputData.write(endpoint);
+        // Version 2 doesn't allow endpoint to be 0
+        if (getVersion() <= 2 && endpoint == 0) {
+            outputData.write(4);
+            outputData.write(getCommandClass().getKey());
+            outputData.write(MULTI_ASSOCIATIONCMD_SET);
+            outputData.write(group);
+            outputData.write(node);
+        } else {
+            outputData.write(6);
+            outputData.write(getCommandClass().getKey());
+            outputData.write(MULTI_ASSOCIATIONCMD_SET);
+            outputData.write(group);
+            outputData.write(0);
+            outputData.write(node);
+            outputData.write(endpoint);
+        }
         result.setMessagePayload(outputData.toByteArray());
 
         return result;
@@ -318,6 +327,33 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
         outputData.write(0);
         outputData.write(node);
         outputData.write(endpoint);
+        result.setMessagePayload(outputData.toByteArray());
+
+        return result;
+    }
+
+    /**
+     * Gets a SerialMessage with the MULTI_ASSOCIATIONCMD_REMOVE command to remove all nodes
+     *
+     * @param group
+     *            the association group
+     * @param node
+     *            the node to add to the specified group
+     * @return the serial message
+     */
+    public SerialMessage clearAssociationMessage(int group) {
+        logger.debug(
+                "NODE {}: Creating new message for command MULTI_ASSOCIATIONCMD_REMOVE node all, endpoint all, group {}",
+                getNode().getNodeId(), group);
+        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
+                SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Set);
+
+        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
+        outputData.write(this.getNode().getNodeId());
+        outputData.write(3);
+        outputData.write(getCommandClass().getKey());
+        outputData.write(MULTI_ASSOCIATIONCMD_REMOVE);
+        outputData.write(group);
         result.setMessagePayload(outputData.toByteArray());
 
         return result;

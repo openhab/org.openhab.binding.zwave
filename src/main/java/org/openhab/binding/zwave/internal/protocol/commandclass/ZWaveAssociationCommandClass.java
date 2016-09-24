@@ -40,6 +40,8 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveAssociationCommandClass.class);
 
+    private static final int MAX_SUPPORTED_VERSION = 2;
+
     private static final int ASSOCIATIONCMD_SET = 1;
     private static final int ASSOCIATIONCMD_GET = 2;
     private static final int ASSOCIATIONCMD_REPORT = 3;
@@ -71,6 +73,7 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
      */
     public ZWaveAssociationCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
+        versionMax = MAX_SUPPORTED_VERSION;
     }
 
     /**
@@ -274,6 +277,32 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
         outputData.write(ASSOCIATIONCMD_REMOVE);
         outputData.write(group);
         outputData.write(node);
+
+        result.setMessagePayload(outputData.toByteArray());
+        return result;
+    }
+
+    /**
+     * Gets a SerialMessage with the ASSOCIATIONCMD_REMOVE command
+     *
+     * @param group
+     *            the association group
+     * @param node
+     *            the node to add to the specified group
+     * @return the serial message
+     */
+    public SerialMessage clearAssociationMessage(int group) {
+        logger.debug("NODE {}: Creating new message for application command ASSOCIATIONCMD_REMOVE group={}, node=all",
+                getNode().getNodeId(), group);
+        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
+                SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Config);
+
+        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
+        outputData.write(getNode().getNodeId());
+        outputData.write(3);
+        outputData.write(getCommandClass().getKey());
+        outputData.write(ASSOCIATIONCMD_REMOVE);
+        outputData.write(group);
 
         result.setMessagePayload(outputData.toByteArray());
         return result;
