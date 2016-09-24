@@ -2,8 +2,10 @@ package org.openhab.binding.zwave.internal.protocol;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.PriorityBlockingQueue;
@@ -121,8 +123,9 @@ public class ZWaveTransactionManager {
 
     private final Timer timer = new Timer();
     private TimerTask timerTask = null;
-    private final PriorityBlockingQueue<ZWaveTransaction> sendQueue = new PriorityBlockingQueue<ZWaveTransaction>(
-            INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator());
+    // private final PriorityBlockingQueue<ZWaveTransaction> sendQueue = new PriorityBlockingQueue<ZWaveTransaction>(
+    // INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator());
+    private final Map<Integer, PriorityBlockingQueue<ZWaveTransaction>> sendQueue = new HashMap<Integer, PriorityBlockingQueue<ZWaveTransaction>>();
 
     private final List<ZWaveTransaction> outstandingTransactions = new ArrayList<ZWaveTransaction>();
 
@@ -140,12 +143,6 @@ public class ZWaveTransactionManager {
      * @param transaction
      */
     public void queueTransactionForSend(ZWaveTransaction transaction) {
-        if (sendQueue.contains(transaction)) {
-            logger.debug("NODE {}: Transaction already on the send queue. Removing original.",
-                    transaction.getMessageNode());
-            sendQueue.remove(transaction);
-        }
-
         // Handle sleeping devices
         ZWaveNode node = controller.getNode(transaction.getMessageNode());
         if (node != null) {
@@ -159,6 +156,16 @@ public class ZWaveTransactionManager {
                 if (wakeUpCommandClass != null && !wakeUpCommandClass.processOutgoingWakeupMessage(transaction)) {
                     return;
                 }
+            }
+        }
+
+        // The queue is a map containing a queue for each node
+        // Check if this node is in the queue
+        if (sendQueue.containsKey(transaction.getMessageNode())) {
+            if (sendQueue.get(transaction.getMessageNode()).contains(transaction)) {
+                logger.debug("NODE {}: Transaction already on the send queue. Removing original.",
+                        transaction.getMessageNode());
+                sendQueue.remove(transaction);
             }
         }
 
