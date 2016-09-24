@@ -1010,10 +1010,25 @@ public class ZWaveNode {
         return null;
     }
 
+    /**
+     * Sets an association.
+     * This method chooses the appropriate association command class to use for the device
+     * and the endpoint.
+     *
+     * The ZWave spec requires that source and destination endpoints can't be 0, therefore
+     * if the device endpoint is the root node, and the receive endpoint is 0, we use the
+     * single instance command class, otherwise we use the multi instance class if it exists.
+     *
+     * @param endpoint the endpoint required to semd the reports
+     * @param groupId the group to be set
+     * @param nodeId the node to be set to report to (receive)
+     * @param endpointId the endpoint to be set to report to (receive)
+     * @return
+     */
     public ZWaveTransaction setAssociation(int groupId, int nodeId, int endpointId) {
         ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
                 CommandClass.MULTI_INSTANCE_ASSOCIATION);
-        if (multiAssociationCommandClass != null) {
+        if (endpoint == null && endpointId != 0 && multiAssociationCommandClass != null) {
             return multiAssociationCommandClass.setAssociationMessage(groupId, nodeId, endpointId);
         }
 

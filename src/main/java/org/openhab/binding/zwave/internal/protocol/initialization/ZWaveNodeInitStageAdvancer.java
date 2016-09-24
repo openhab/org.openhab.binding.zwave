@@ -911,7 +911,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                             logger.debug("NODE {}: Node advancer: SET_ASSOCIATION - Adding ASSOCIATION to group {}",
                                     node.getNodeId(), groupId);
                             // Set the association, and request the update so we confirm if it's set
-                            addToQueue(node.setAssociation(groupId, controller.getOwnNodeId(), 0));
+                            addToQueue(node.setAssociation(null, groupId, controller.getOwnNodeId(), 0));
                             addToQueue(node.getAssociation(groupId));
                         }
                     }
