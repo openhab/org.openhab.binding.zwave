@@ -2,8 +2,10 @@ package org.openhab.binding.zwave.internal.protocol;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.PriorityBlockingQueue;
@@ -121,10 +123,9 @@ public class ZWaveTransactionManager {
 
     private final Timer timer = new Timer();
     private TimerTask timerTask = null;
-    private final PriorityBlockingQueue<ZWaveTransaction> sendQueue = new PriorityBlockingQueue<ZWaveTransaction>(
-            INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator());
-    // private final Map<Integer, PriorityBlockingQueue<ZWaveTransaction>> sendQueue = new HashMap<Integer,
-    // PriorityBlockingQueue<ZWaveTransaction>>();
+    // private final PriorityBlockingQueue<ZWaveTransaction> sendQueue = new PriorityBlockingQueue<ZWaveTransaction>(
+    // INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator());
+    private final Map<Integer, PriorityBlockingQueue<ZWaveTransaction>> sendQueue = new HashMap<Integer, PriorityBlockingQueue<ZWaveTransaction>>();
 
     private final List<ZWaveTransaction> outstandingTransactions = new ArrayList<ZWaveTransaction>();
 
@@ -158,21 +159,29 @@ public class ZWaveTransactionManager {
             }
         }
 
-        // The queue is a map containing a queue for each node
-        // Check if this node is in the queue
-        // if (sendQueue.containsKey(transaction.getMessageNode())) {
-        // if (sendQueue.get(transaction.getMessageNode()).contains(transaction)) {
-        if (sendQueue.contains(transaction)) {
-            logger.debug("NODE {}: Transaction already on the send queue. Removing original.",
-                    transaction.getMessageNode());
-            sendQueue.remove(transaction);
-        }
-        // }
+        synchronized (sendQueue) {
 
-        // Add the message to the queue
-        // We always add the most recent version, even though they are supposedly the same,
-        // in case things like priority have changed
-        sendQueue.add(transaction);
+            // The queue is a map containing a queue for each node
+            // Check if this node is in the queue
+            if (sendQueue.containsKey(transaction.getMessageNode())) {
+                // Now check if this transaction is already in the queue
+                if (sendQueue.get(transaction.getMessageNode()).contains(transaction)) {
+                    // if (sendQueue.contains(transaction)) {
+                    logger.debug("NODE {}: Transaction already on the send queue. Removing original.",
+                            transaction.getMessageNode());
+                    sendQueue.remove(transaction);
+                }
+            } else {
+                // There's no queue for this node, so add it
+                sendQueue.put(transaction.getMessageNode(), new PriorityBlockingQueue<ZWaveTransaction>(
+                        INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator()));
+            }
+
+            // Add the message to the queue
+            // We always add the most recent version, even though they are supposedly the same,
+            // in case things like priority have changed
+            sendQueue.get(transaction.getMessageNode()).add(transaction);
+        }
 
         sendNextMessage();
         startTransactionTimer();
@@ -191,7 +200,9 @@ public class ZWaveTransactionManager {
      * Clear the send queue
      */
     public void clearSendQueue() {
-        sendQueue.clear();
+        synchronized (sendQueue) {
+            sendQueue.clear();
+        }
     }
 
     /**
@@ -203,7 +214,25 @@ public class ZWaveTransactionManager {
      * @return the next {@link ZWaveTransaction} to send
      */
     public ZWaveTransaction getTransactionToSend() {
-        return sendQueue.poll();
+        ZWaveTransaction transaction = null;
+
+        // Look through all nodes in the queue and get the first entry.
+        // This will be the highest priority entry for each node
+        synchronized (sendQueue) {
+            for (int node : sendQueue.keySet()) {
+                // Make sure there's no
+
+                if (transaction == null) {
+                    transaction = sendQueue.get(node).peek();
+                } else {
+                    if (sendQueue.get(node).peek().getPriority().ordinal() < transaction.getPriority().ordinal()) {
+                        transaction = sendQueue.get(node).peek();
+                    }
+                }
+            }
+        }
+
+        return transaction;
     }
 
     /**
