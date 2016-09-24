@@ -648,8 +648,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     // Is the new association still in the currentMembers list?
                     if (currentMembers.isAssociated(member.getNode(), member.getEndpoint()) == false) {
                         // No - so it needs to be added
-                        controllerHandler
-                                .sendData(node.setAssociation(groupIndex, member.getNode(), member.getEndpoint()));
+                        // TODO: This needs to handle the sending endpoint not being root.
+                        controllerHandler.sendData(
+                                node.setAssociation(null, groupIndex, member.getNode(), member.getEndpoint()));
                     }
                 }
 
