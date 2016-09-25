@@ -336,6 +336,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     private void startPolling(long initialPeriod) {
         if (pollingJob != null) {
             pollingJob.cancel(true);
+            pollingJob = null;
         }
 
         if (pollingPeriod < POLLING_PERIOD_MIN) {
@@ -483,6 +484,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         if (pollingJob != null) {
             pollingJob.cancel(true);
+            pollingJob = null;
         }
 
         controllerHandler = null;
@@ -1224,6 +1226,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     // Stop polling
                     if (pollingJob != null) {
                         pollingJob.cancel(true);
+                        pollingJob = null;
                     }
                     break;
                 default:
