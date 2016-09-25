@@ -123,8 +123,11 @@ public class ZWaveTransactionManager {
 
     private final Timer timer = new Timer();
     private TimerTask timerTask = null;
-    // private final PriorityBlockingQueue<ZWaveTransaction> sendQueue = new PriorityBlockingQueue<ZWaveTransaction>(
-    // INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator());
+
+    /**
+     * The send queue is a map of queues - one queue per node. This allows us to be node specific when sending
+     * data - we can allow multiple transactions to be outstanding, but only a single transaction per node.
+     */
     private final Map<Integer, PriorityBlockingQueue<ZWaveTransaction>> sendQueue = new HashMap<Integer, PriorityBlockingQueue<ZWaveTransaction>>();
 
     private final List<ZWaveTransaction> outstandingTransactions = new ArrayList<ZWaveTransaction>();
@@ -169,7 +172,7 @@ public class ZWaveTransactionManager {
                     // if (sendQueue.contains(transaction)) {
                     logger.debug("NODE {}: Transaction already on the send queue. Removing original.",
                             transaction.getMessageNode());
-                    sendQueue.remove(transaction);
+                    sendQueue.get(transaction.getMessageNode()).remove(transaction);
                 }
             } else {
                 // There's no queue for this node, so add it
@@ -193,7 +196,12 @@ public class ZWaveTransactionManager {
      * @return
      */
     public int getSendQueueLength() {
-        return sendQueue.size();
+        int total = 0;
+        for (PriorityBlockingQueue<ZWaveTransaction> queue : sendQueue.values()) {
+            total += queue.size();
+        }
+
+        return total;
     }
 
     /**
@@ -220,7 +228,20 @@ public class ZWaveTransactionManager {
         // This will be the highest priority entry for each node
         synchronized (sendQueue) {
             for (int node : sendQueue.keySet()) {
-                // Make sure there's no
+                // Make sure there's no outstanding transaction for this node
+                boolean outstanding = false;
+                for (ZWaveTransaction outstandingTransaction : outstandingTransactions) {
+                    if (outstandingTransaction.getMessageNode() == node) {
+                        outstanding = true;
+                        break;
+                    }
+                }
+
+                // Outstanding transaction found?
+                // TODO: Allow security NONCE requests
+                if (outstanding == true) {
+                    continue;
+                }
 
                 if (transaction == null) {
                     transaction = sendQueue.get(node).peek();
@@ -228,6 +249,13 @@ public class ZWaveTransactionManager {
                     if (sendQueue.get(node).peek().getPriority().ordinal() < transaction.getPriority().ordinal()) {
                         transaction = sendQueue.get(node).peek();
                     }
+                }
+            }
+
+            if (transaction != null) {
+                sendQueue.get(transaction.getMessageNode()).remove(transaction);
+                if (sendQueue.get(transaction.getMessageNode()).isEmpty()) {
+                    sendQueue.remove(transaction.getMessageNode());
                 }
             }
         }

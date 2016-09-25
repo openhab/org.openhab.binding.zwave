@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Matchers;
@@ -80,7 +79,11 @@ public class ZWaveTransactionManagerTest {
         SerialMessage serialMessage;
 
         // We add a transaction which gets sent immediately so the rest are queued
-        serialMessage = new SerialMessage(packetData);
+        // Note that this needs to be a different node id to the rest since this will go into the
+        // outstandingTransaction list and will block any other messages to this node being returned
+        // in the getTransactionToSend method.
+        serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(CommandClass.SENSOR_ALARM, 1).withNodeId(5)
+                .withPayload(5, 3, CommandClass.SENSOR_ALARM.getKey(), 1, 1).build();
         transaction = new ZWaveTransactionBuilder(serialMessage).build();
         manager.queueTransactionForSend(transaction);
 
@@ -622,7 +625,6 @@ public class ZWaveTransactionManagerTest {
      * sent after the data response is received to the first transaction.
      * We use the controller as the node here.
      */
-    @Ignore
     @Test
     public void TestTransactionType4MultiSameNode() {
         byte[] t1ResponsePacket1 = { 0x01, 0x05, 0x00, 0x48, 0x48, 0x21, (byte) 0xDB };
