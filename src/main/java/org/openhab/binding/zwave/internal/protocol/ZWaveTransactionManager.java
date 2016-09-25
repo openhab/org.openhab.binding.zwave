@@ -360,7 +360,7 @@ public class ZWaveTransactionManager {
 
                 // Handle retries
                 if (currentTransaction.decrementAttemptsRemaining() >= 0) {
-                    logger.error("NODE {}: ABORT while sending message. Requeueing - {} attempts left!",
+                    logger.error("NODE {}: Timeout while sending message. Requeueing - {} attempts left!",
                             currentTransaction.getMessageNode(), currentTransaction.getAttemptsRemaining());
                     // if (lastSentMessage.getMessageClass() == SerialMessageClass.SendData) {
                     // handleFailedSendDataRequest(lastSentMessage);
@@ -374,7 +374,7 @@ public class ZWaveTransactionManager {
                     // enqueue(currentTransaction); TODO: Handle retries...
                     // }
                 } else {
-                    logger.warn("NODE {}: Too many retries. Discarding message: {}",
+                    logger.warn("NODE {}: Retry count exceeded. Discarding message: {}",
                             currentTransaction.getMessageNode(), currentTransaction.toString());
                     transactionCompleted = true;
                 }
