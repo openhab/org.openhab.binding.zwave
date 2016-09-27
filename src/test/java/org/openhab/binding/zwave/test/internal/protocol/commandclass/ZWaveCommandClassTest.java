@@ -10,6 +10,7 @@ package org.openhab.binding.zwave.test.internal.protocol.commandclass;
 
 import static org.junit.Assert.*;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 import org.mockito.ArgumentCaptor;
@@ -17,6 +18,7 @@ import org.mockito.Mockito;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -64,13 +66,22 @@ public class ZWaveCommandClassTest {
         ZWaveNode node = Mockito.mock(ZWaveNode.class);
         ZWaveEndpoint endpoint = Mockito.mock(ZWaveEndpoint.class);
 
-        // Get the command class and process the response
         try {
+            ByteArrayOutputStream payloadData = new ByteArrayOutputStream();
+            for (int index = 3; index < msg.getMessagePayload().length - 2; index++) {
+                payloadData.write((byte) msg.getMessagePayloadByte(index));
+            }
+
+            ZWaveCommandClassPayload payload = new ZWaveCommandClassPayload(payloadData.toByteArray());
+
+            // Get the command class and process the response
             ZWaveCommandClass cls = ZWaveCommandClass.getInstance(msg.getMessagePayloadByte(3), node, controller);
             cls.setEndpoint(endpoint);
             assertNotNull(cls);
             cls.setVersion(version);
-            cls.handleApplicationCommandRequest(msg, 4, 0);
+            cls.handleApplicationCommandRequest(payload, 0);
+
+            // cls.handleApplicationCommandRequest(msg, 4, 0);
         } catch (ZWaveSerialMessageException e) {
             fail("Out of bounds exception processing data");
         }

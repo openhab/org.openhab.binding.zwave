@@ -15,7 +15,7 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -35,6 +35,14 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Brian Crosby
  */
 public abstract class ZWaveCommandClass {
+
+    public interface ZWaveCommandHandler {
+        void handleCommandRequest(ZWaveCommandClassPayload payload, int endpoint) throws ZWaveSerialMessageException;
+
+        String getCommandName();
+    };
+
+    final Map<Integer, ZWaveCommandHandler> commands = new HashMap<Integer, ZWaveCommandHandler>();
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveCommandClass.class);
@@ -214,8 +222,20 @@ public abstract class ZWaveCommandClass {
      * @param offset the offset position from which to start message processing.
      * @param endpoint the endpoint or instance number this message is meant for.
      */
-    public abstract void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException;
+    public void handleApplicationCommandRequest(ZWaveCommandClassPayload payload, int endpoint)
+            throws ZWaveSerialMessageException {
+
+        if (commands.get(payload.getCommandClassCommand()) == null) {
+            logger.debug("NODE {}: Received {} V{} unknown command {}", getNode().getNodeId(), getCommandClass(),
+                    getVersion(), payload.getCommandClassCommand());
+            return;
+        }
+
+        logger.debug("NODE {}: Received {} V{} {}", getNode().getNodeId(), getCommandClass(), getVersion(),
+                commands.get(payload.getCommandClassCommand()).getCommandName());
+
+        commands.get(payload.getCommandClassCommand()).handleCommandRequest(payload, endpoint);
+    };
 
     /**
      * Gets an instance of the right command class.
@@ -275,16 +295,17 @@ public abstract class ZWaveCommandClass {
     /**
      * Extract a decimal value from a byte array.
      *
-     * @param buffer the buffer to be parsed.
+     * @param payload.getPayloadByte(offset) the buffer to be parsed.
      * @param offset the offset at which to start reading
      * @return the extracted decimal value
      */
-    protected BigDecimal extractValue(byte[] buffer, int offset) {
-        int size = buffer[offset] & SIZE_MASK;
-        int precision = (buffer[offset] & PRECISION_MASK) >> PRECISION_SHIFT;
+    protected BigDecimal extractValue(ZWaveCommandClassPayload payload, int offset) {
+        int size = payload.getPayloadByte(offset) & SIZE_MASK;
+        int precision = (payload.getPayloadByte(offset) & PRECISION_MASK) >> PRECISION_SHIFT;
 
-        if ((size + offset) >= buffer.length) {
-            logger.error("Error extracting value - length={}, offset={}, size={}.", buffer.length, offset, size);
+        if ((size + offset) >= payload.getPayloadLength()) {
+            logger.error("Error extracting value - length={}, offset={}, size={}.", payload.getPayloadLength(), offset,
+                    size);
             throw new NumberFormatException();
         }
 
@@ -292,12 +313,12 @@ public abstract class ZWaveCommandClass {
         int i;
         for (i = 0; i < size; ++i) {
             value <<= 8;
-            value |= buffer[offset + i + 1] & 0xFF;
+            value |= payload.getPayloadByte(offset + i + 1) & 0xFF;
         }
 
         // Deal with sign extension. All values are signed
         BigDecimal result;
-        if ((buffer[offset + 1] & 0x80) == 0x80) {
+        if ((payload.getPayloadByte(offset + 1) & 0x80) == 0x80) {
             // MSB is signed
             if (size == 1) {
                 value |= 0xffffff00;

@@ -311,7 +311,6 @@ public class ZWaveTransactionManager {
                     // If we are waiting for the RESponse, then check for this first
                     // There can only be a single outstanding RESponse
                     if (incomingMessage.getMessageType() == SerialMessageType.Response) {
-
                         continue;
                     }
 

@@ -17,6 +17,7 @@ import java.util.Map;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -76,6 +77,9 @@ public class ZWaveMultiLevelSensorCommandClass extends ZWaveCommandClass
     public ZWaveMultiLevelSensorCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
         versionMax = MAX_SUPPORTED_VERSION;
+
+        commands.put(SENSOR_MULTILEVEL_SUPPORTED_SENSOR_REPORT, new HandleMultilevelSupportedSensorReport());
+        commands.put(SENSOR_MULTILEVEL_REPORT, new HandleMultilevelReport());
     }
 
     /**
@@ -86,78 +90,77 @@ public class ZWaveMultiLevelSensorCommandClass extends ZWaveCommandClass
         return CommandClass.SENSOR_MULTILEVEL;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received COMMAND_CLASS_SENSOR_MULTILEVEL command V{}", getNode().getNodeId(),
-                getVersion());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case SENSOR_MULTILEVEL_SUPPORTED_SENSOR_REPORT:
-                logger.debug("NODE {}: Process Multi Level Supported Sensor Report", getNode().getNodeId());
+    class HandleMultilevelSupportedSensorReport implements ZWaveCommandHandler {
+        @Override
+        public String getCommandName() {
+            return "SENSOR_MULTILEVEL_SUPPORTED_SENSOR_REPORT";
+        }
 
-                int payloadLength = serialMessage.getMessagePayload().length;
+        @Override
+        public void handleCommandRequest(ZWaveCommandClassPayload payload, int endpoint)
+                throws ZWaveSerialMessageException {
+            int payloadLength = payload.getPayloadLength();
 
-                for (int i = offset + 1; i < payloadLength; ++i) {
-                    for (int bit = 0; bit < 8; ++bit) {
-                        if (((serialMessage.getMessagePayloadByte(i)) & (1 << bit)) == 0) {
-                            continue;
-                        }
-
-                        int index = ((i - (offset + 1)) * 8) + bit + 1;
-                        if (index >= SensorType.values().length) {
-                            continue;
-                        }
-
-                        // (n)th bit is set. n is the index for the sensor type enumeration.
-                        SensorType sensorTypeToAdd = SensorType.getSensorType(index);
-                        Sensor newSensor = new Sensor(sensorTypeToAdd);
-                        this.sensors.put(sensorTypeToAdd, newSensor);
-                        logger.debug("NODE {}: Added sensor type {} ({})", getNode().getNodeId(),
-                                sensorTypeToAdd.getLabel(), index);
+            for (int i = 2; i < payloadLength; ++i) {
+                for (int bit = 0; bit < 8; ++bit) {
+                    if (((payload.getPayloadByte(i)) & (1 << bit)) == 0) {
+                        continue;
                     }
-                }
 
-                initialiseDone = true;
-                break;
-            case SENSOR_MULTILEVEL_REPORT:
-                logger.debug("NODE {}: Sensor Multi Level REPORT received", getNode().getNodeId());
-
-                int sensorTypeCode = serialMessage.getMessagePayloadByte(offset + 1);
-                int sensorScale = (serialMessage.getMessagePayloadByte(offset + 2) >> 3) & 0x03;
-
-                // Sensor type seems to be supported, add it to the list.
-                Sensor sensor = getSensor(sensorTypeCode);
-                if (sensor != null) {
-                    sensor.setInitialised();
-
-                    logger.debug("NODE {}: Sensor Type = {}({}), Scale = {}", getNode().getNodeId(),
-                            sensor.getSensorType().getLabel(), sensorTypeCode, sensorScale);
-
-                    // Set the global flag. This is mainly used for version < 4
-                    dynamicDone = true;
-
-                    try {
-                        BigDecimal value = extractValue(serialMessage.getMessagePayload(), offset + 2);
-
-                        logger.debug("NODE {}: Sensor Value = {}", getNode().getNodeId(), value);
-
-                        ZWaveMultiLevelSensorValueEvent zEvent = new ZWaveMultiLevelSensorValueEvent(
-                                this.getNode().getNodeId(), endpoint, sensor.getSensorType(), sensorScale, value);
-                        this.getController().notifyEventListeners(zEvent);
-                    } catch (NumberFormatException e) {
-                        return;
+                    int index = ((i - 2) * 8) + bit + 1;
+                    if (index >= SensorType.values().length) {
+                        continue;
                     }
+
+                    // (n)th bit is set. n is the index for the sensor type enumeration.
+                    SensorType sensorTypeToAdd = SensorType.getSensorType(index);
+                    Sensor newSensor = new Sensor(sensorTypeToAdd);
+                    sensors.put(sensorTypeToAdd, newSensor);
+                    logger.debug("NODE {}: Added sensor type {} ({})", getNode().getNodeId(),
+                            sensorTypeToAdd.getLabel(), index);
                 }
-                break;
-            default:
-                logger.warn(String.format("Unsupported Command %d for command class %s (0x%02X).", command,
-                        this.getCommandClass().getLabel(), this.getCommandClass().getKey()));
+            }
+
+            initialiseDone = true;
+        }
+    }
+
+    class HandleMultilevelReport implements ZWaveCommandHandler {
+        @Override
+        public String getCommandName() {
+            return "SENSOR_MULTILEVEL_REPORT";
+        }
+
+        @Override
+        public void handleCommandRequest(ZWaveCommandClassPayload payload, int endpoint)
+                throws ZWaveSerialMessageException {
+
+            int sensorTypeCode = payload.getPayloadByte(2);
+            int sensorScale = (payload.getPayloadByte(3) >> 3) & 0x03;
+
+            // Sensor type seems to be supported, add it to the list.
+            Sensor sensor = getSensor(sensorTypeCode);
+            if (sensor != null) {
+                sensor.setInitialised();
+
+                logger.debug("NODE {}: Sensor Type = {}({}), Scale = {}", getNode().getNodeId(),
+                        sensor.getSensorType().getLabel(), sensorTypeCode, sensorScale);
+
+                // Set the global flag. This is mainly used for version < 4
+                dynamicDone = true;
+
+                try {
+                    BigDecimal value = extractValue(payload, 3);
+
+                    logger.debug("NODE {}: Sensor Value = {}", getNode().getNodeId(), value);
+
+                    ZWaveMultiLevelSensorValueEvent zEvent = new ZWaveMultiLevelSensorValueEvent(getNode().getNodeId(),
+                            endpoint, sensor.getSensorType(), sensorScale, value);
+                    getController().notifyEventListeners(zEvent);
+                } catch (NumberFormatException e) {
+                    return;
+                }
+            }
         }
     }
 

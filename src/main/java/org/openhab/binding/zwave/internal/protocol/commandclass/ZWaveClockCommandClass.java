@@ -69,42 +69,6 @@ public class ZWaveClockCommandClass extends ZWaveCommandClass
     }
 
     /**
-     * Gets a SerialMessage with the CLOCK_GET command
-     *
-     * @return the serial message.
-     */
-    @Override
-    public ZWaveTransaction getValueMessage() {
-        logger.debug("NODE {}: Creating new message for command CLOCK_GET", getNode().getNodeId());
-
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), CLOCK_GET)
-                .withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), CLOCK_REPORT).withPriority(TransactionPriority.Get)
-                .build();
-    }
-
-    /**
-     * Gets a SerialMessage with the CLOCK_SET command
-     *
-     * @return the serial message.
-     */
-    public ZWaveTransaction getSetMessage(Calendar cal) {
-        logger.debug("NODE {}: Creating new message for command CLOCK_SET", getNode().getNodeId());
-
-        int day = cal.get(Calendar.DAY_OF_WEEK) == 1 ? 7 : cal.get(Calendar.DAY_OF_WEEK) - 1;
-        int hour = cal.get(Calendar.HOUR_OF_DAY);
-        int minute = cal.get(Calendar.MINUTE);
-
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), CLOCK_SET)
-                .withNodeId(getNode().getNodeId()).withPayload((day << 5) | hour, minute).build();
-
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.RealTime).build();
-    }
-
-    /**
      * {@inheritDoc}
      *
      * @throws ZWaveSerialMessageException
@@ -138,6 +102,42 @@ public class ZWaveClockCommandClass extends ZWaveCommandClass
                         getNode().getNodeId(), command, getCommandClass().getLabel(), getCommandClass().getKey()));
                 break;
         }
+    }
+
+    /**
+     * Gets a SerialMessage with the CLOCK_GET command
+     *
+     * @return the serial message.
+     */
+    @Override
+    public ZWaveTransaction getValueMessage() {
+        logger.debug("NODE {}: Creating new message for command CLOCK_GET", getNode().getNodeId());
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), CLOCK_GET)
+                .withNodeId(getNode().getNodeId()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), CLOCK_REPORT).withPriority(TransactionPriority.Get)
+                .build();
+    }
+
+    /**
+     * Gets a SerialMessage with the CLOCK_SET command
+     *
+     * @return the serial message.
+     */
+    public ZWaveTransaction getSetMessage(Calendar cal) {
+        logger.debug("NODE {}: Creating new message for command CLOCK_SET", getNode().getNodeId());
+
+        int day = cal.get(Calendar.DAY_OF_WEEK) == 1 ? 7 : cal.get(Calendar.DAY_OF_WEEK) - 1;
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        int minute = cal.get(Calendar.MINUTE);
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), CLOCK_SET)
+                .withNodeId(getNode().getNodeId()).withPayload((day << 5) | hour, minute).build();
+
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.RealTime).build();
     }
 
     @Override
