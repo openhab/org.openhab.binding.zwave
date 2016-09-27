@@ -106,7 +106,8 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
                 // Since the system can time out if the node goes to sleep before
                 // we get the response, then don't treat this like a timeout
                 byte[] payload = transaction.getSerialMessage().getMessagePayload();
-                if (payload.length >= 4 && (payload[2] & 0xFF) == ZWaveCommandClass.CommandClass.WAKE_UP.getKey()
+                if (payload.length >= 4
+                        && (payload[2] & 0xFF) == ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP.getKey()
                         && (payload[3] & 0xFF) == ZWaveWakeUpCommandClass.WAKE_UP_NO_MORE_INFORMATION) {
                     checkTransactionComplete(transaction, incomingMessage);
 
@@ -153,7 +154,7 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
         // If this device isn't listening, queue the message in the wakeup class
         if (!node.isListening() && !node.isFrequentlyListening()) {
             ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) node
-                    .getCommandClass(CommandClass.WAKE_UP);
+                    .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
 
             if (wakeUpCommandClass != null) {
                 // It's a battery operated device, place in wake-up queue.

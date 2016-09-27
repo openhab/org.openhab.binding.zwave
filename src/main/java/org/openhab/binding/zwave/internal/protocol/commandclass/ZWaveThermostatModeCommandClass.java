@@ -17,6 +17,7 @@ import java.util.Set;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -38,7 +39,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  * @author Dan Cunningham
  */
-@XStreamAlias("thermostatModeCommandClass")
+@XStreamAlias("COMMAND_CLASS_THERMOSTAT_MODE")
 public class ZWaveThermostatModeCommandClass extends ZWaveCommandClass
         implements ZWaveBasicCommands, ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
 
@@ -76,7 +77,7 @@ public class ZWaveThermostatModeCommandClass extends ZWaveCommandClass
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.THERMOSTAT_MODE;
+        return CommandClass.COMMAND_CLASS_THERMOSTAT_MODE;
     }
 
     /**
@@ -87,55 +88,32 @@ public class ZWaveThermostatModeCommandClass extends ZWaveCommandClass
         return 2;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received Thermostat Mode Request", this.getNode().getNodeId());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case THERMOSTAT_MODE_SET:
-                processThermostatModeReport(serialMessage, offset, endpoint);
-                break;
-            case THERMOSTAT_MODE_SUPPORTED_REPORT:
-                logger.debug("NODE {}: Process Thermostat Supported Mode Report", this.getNode().getNodeId());
+    @ZWaveResponseHandler(id = THERMOSTAT_MODE_SUPPORTED_REPORT, name = "THERMOSTAT_MODE_SUPPORTED_REPORT")
+    public void handleThermostatFanStateReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int payloadLength = payload.getPayloadLength();
 
-                int payloadLength = serialMessage.getMessagePayload().length;
-
-                for (int i = offset + 1; i < payloadLength; ++i) {
-                    int bitMask = serialMessage.getMessagePayloadByte(i);
-                    for (int bit = 0; bit < 8; ++bit) {
-                        if ((bitMask & (1 << bit)) == 0) {
-                            continue;
-                        }
-
-                        int index = ((i - (offset + 1)) * 8) + bit;
-
-                        // (n)th bit is set. n is the index for the mode type enumeration.
-                        ModeType modeTypeToAdd = ModeType.getModeType(index);
-                        if (modeTypeToAdd != null) {
-                            this.modeTypes.add(modeTypeToAdd);
-                            logger.debug("NODE {}: Added mode type {} ({})", this.getNode().getNodeId(),
-                                    modeTypeToAdd.getLabel(), index);
-                        } else {
-                            logger.warn("NODE {}: Unknown mode type {}", this.getNode().getNodeId(), index);
-                        }
-                    }
+        for (int i = 2; i < payloadLength; ++i) {
+            int bitMask = payload.getPayloadByte(i);
+            for (int bit = 0; bit < 8; ++bit) {
+                if ((bitMask & (1 << bit)) == 0) {
+                    continue;
                 }
 
-                initialiseDone = true;
-                break;
-            case THERMOSTAT_MODE_REPORT:
-                processThermostatModeReport(serialMessage, offset, endpoint);
-                break;
-            default:
-                logger.warn("NODE {}: Unsupported Command {} for command class {} ({}).", this.getNode().getNodeId(),
-                        command, this.getCommandClass().getLabel(), this.getCommandClass().getKey());
+                int index = ((i - 2) * 8) + bit;
+
+                // (n)th bit is set. n is the index for the mode type enumeration.
+                ModeType modeTypeToAdd = ModeType.getModeType(index);
+                if (modeTypeToAdd != null) {
+                    this.modeTypes.add(modeTypeToAdd);
+                    logger.debug("NODE {}: Added mode type {} ({})", this.getNode().getNodeId(),
+                            modeTypeToAdd.getLabel(), index);
+                } else {
+                    logger.warn("NODE {}: Unknown mode type {}", this.getNode().getNodeId(), index);
+                }
+            }
         }
+
+        initialiseDone = true;
     }
 
     /**
@@ -146,10 +124,9 @@ public class ZWaveThermostatModeCommandClass extends ZWaveCommandClass
      * @param endpoint the endpoint or instance number this message is meant for.
      * @throws ZWaveSerialMessageException
      */
-    protected void processThermostatModeReport(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-
-        int value = serialMessage.getMessagePayloadByte(offset + 1);
+    @ZWaveResponseHandler(id = THERMOSTAT_MODE_REPORT, name = "THERMOSTAT_MODE_REPORT")
+    public void handleThermostatModeReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int value = payload.getPayloadByte(2);
 
         logger.debug("NODE {}: Thermostat Mode report, value = {}", this.getNode().getNodeId(), value);
 

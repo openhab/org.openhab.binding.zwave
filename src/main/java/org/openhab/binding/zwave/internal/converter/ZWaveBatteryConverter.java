@@ -49,13 +49,13 @@ public class ZWaveBatteryConverter extends ZWaveCommandClassConverter {
     @Override
     public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveBatteryCommandClass commandClass = (ZWaveBatteryCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.BATTERY, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_BATTERY, channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
 
         logger.debug("NODE {}: Generating poll message for {} endpoint {}", node.getNodeId(),
-                commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                commandClass.getCommandClass(), channel.getEndpoint());
         ZWaveTransaction transaction = node.encapsulate(commandClass.getValueMessage(), commandClass,
                 channel.getEndpoint());
         List<ZWaveTransaction> response = new ArrayList<ZWaveTransaction>(1);

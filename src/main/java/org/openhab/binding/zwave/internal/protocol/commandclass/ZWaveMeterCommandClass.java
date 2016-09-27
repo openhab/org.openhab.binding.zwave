@@ -20,11 +20,11 @@ import java.util.Set;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
@@ -43,7 +43,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Ben Jones
  * @author Jan-Willem Spuij
  */
-@XStreamAlias("meterCommandClass")
+@XStreamAlias("COMMAND_CLASS_METER")
 public class ZWaveMeterCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
 
@@ -93,119 +93,102 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.METER;
+        return CommandClass.COMMAND_CLASS_METER;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received METER command V{}", getNode().getNodeId(), getVersion());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        MeterScale scale;
-        int meterTypeIndex;
+    @ZWaveResponseHandler(id = METER_REPORT, name = "METER_REPORT")
+    public void handleMeterReport(ZWaveCommandClassPayload payload, int endpoint) {
+        // Sanity check
+        if (payload.getPayloadLength() < 4) {
+            logger.error("NODE {}: Meter Report: Buffer too short: length={}, required={}", getNode().getNodeId(),
+                    payload.getPayloadLength(), 4);
+            return;
+        }
 
-        switch (command) {
-            case METER_REPORT:
-                // Sanity check
-                if (serialMessage.getMessagePayload().length < offset + 3) {
-                    logger.error("NODE {}: Meter Report: Buffer too short: length={}, required={}",
-                            getNode().getNodeId(), serialMessage.getMessagePayload().length, offset + 3);
-                    return;
-                }
+        int meterTypeIndex = payload.getPayloadByte(2) & 0x1F;
+        if (meterTypeIndex >= MeterType.values().length) {
+            logger.warn("NODE {}: Invalid meter type {}", getNode().getNodeId(), meterTypeIndex);
+            return;
+        }
 
-                meterTypeIndex = serialMessage.getMessagePayloadByte(offset + 1) & 0x1F;
-                if (meterTypeIndex >= MeterType.values().length) {
-                    logger.warn("NODE {}: Invalid meter type {}", getNode().getNodeId(), meterTypeIndex);
-                    return;
-                }
+        int meterRateType = (payload.getPayloadByte(2) & 0x60) >> 5;
 
-                int meterRateType = (serialMessage.getMessagePayloadByte(offset + 1) & 0x60) >> 5;
+        meterType = MeterType.getMeterType(meterTypeIndex);
+        int scaleIndex = (payload.getPayloadByte(3) & 0x18) >> 0x03;
 
-                meterType = MeterType.getMeterType(meterTypeIndex);
-                int scaleIndex = (serialMessage.getMessagePayloadByte(offset + 2) & 0x18) >> 0x03;
+        // TODO: Does it matter about version? V1 and V2 require this to be 0 anyway.
+        if (getVersion() >= 3) {
+            // In version 3, an extra scale bit is stored in the meter type byte.
+            scaleIndex |= ((payload.getPayloadByte(2) & 0x80) >> 0x05);
+        }
 
-                // TODO: Does it matter about version? V1 and V2 require this to be 0 anyway.
-                if (getVersion() >= 3) {
-                    // In version 3, an extra scale bit is stored in the meter type byte.
-                    scaleIndex |= ((serialMessage.getMessagePayloadByte(offset + 1) & 0x80) >> 0x05);
-                }
+        MeterScale scale = MeterScale.getMeterScale(meterType, scaleIndex);
+        if (scale == null) {
+            logger.warn("NODE {}: Invalid meter scale {}", getNode().getNodeId(), scaleIndex);
+            return;
+        }
 
-                scale = MeterScale.getMeterScale(meterType, scaleIndex);
+        // add scale to the list of supported scales.
+        if (!meterScales.contains(scale)) {
+            meterScales.add(scale);
+        }
+
+        try {
+            BigDecimal value = extractValue(payload, 3);
+            logger.debug("NODE {}: Meter: Type={}({}), Scale={}({}), Value={}", getNode().getNodeId(),
+                    meterType.getLabel(), meterTypeIndex, scale.getUnit(), scale.getScale(), value);
+
+            ZWaveMeterValueEvent event = new ZWaveMeterValueEvent(getNode().getNodeId(), endpoint, meterType, scale,
+                    value);
+            getController().notifyEventListeners(event);
+        } catch (NumberFormatException e) {
+            logger.error("NODE {}: Meter Value Error {}", getNode().getNodeId(), e);
+            return;
+        }
+
+        dynamicDone = true;
+    }
+
+    @ZWaveResponseHandler(id = METER_SUPPORTED_REPORT, name = "METER_SUPPORTED_REPORT")
+    public void handleMeterSupportedReport(ZWaveCommandClassPayload payload, int endpoint) {
+        canReset = (payload.getPayloadByte(2) & 0x80) != 0;
+        int meterTypeIndex = payload.getPayloadByte(2) & 0x1F;
+        int supportedScales = payload.getPayloadByte(3);
+
+        // only 4 scales are supported in version 2 of the command.
+        if (getVersion() == 2) {
+            supportedScales &= 0x0F;
+        }
+
+        if (meterTypeIndex >= MeterType.values().length) {
+            logger.warn("NODE {}: Invalid meter type {}", getNode().getNodeId(), meterTypeIndex);
+            return;
+        }
+
+        meterType = MeterType.getMeterType(meterTypeIndex);
+        logger.debug("NODE {}: Identified meter type {}({})", getNode().getNodeId(), meterType.getLabel(),
+                meterTypeIndex);
+
+        for (int i = 0; i < 8; ++i) {
+            // scale is supported
+            if ((supportedScales & (1 << i)) == (1 << i)) {
+                MeterScale scale = MeterScale.getMeterScale(meterType, i);
+
                 if (scale == null) {
-                    logger.warn("NODE {}: Invalid meter scale {}", getNode().getNodeId(), scaleIndex);
-                    return;
+                    logger.warn("NODE {}: Invalid meter scale {}", getNode().getNodeId(), i);
+                    continue;
                 }
+
+                logger.debug("NODE {}: Meter Scale = {}({})", getNode().getNodeId(), scale.getUnit(), scale.getScale());
 
                 // add scale to the list of supported scales.
                 if (!meterScales.contains(scale)) {
                     meterScales.add(scale);
                 }
-
-                try {
-                    BigDecimal value = extractValue(serialMessage.getMessagePayload(), offset + 2);
-                    logger.debug("NODE {}: Meter: Type={}({}), Scale={}({}), Value={}", getNode().getNodeId(),
-                            meterType.getLabel(), meterTypeIndex, scale.getUnit(), scale.getScale(), value);
-
-                    ZWaveMeterValueEvent event = new ZWaveMeterValueEvent(getNode().getNodeId(), endpoint, meterType,
-                            scale, value);
-                    getController().notifyEventListeners(event);
-                } catch (NumberFormatException e) {
-                    logger.error("NODE {}: Meter Value Error {}", getNode().getNodeId(), e);
-                    return;
-                }
-
-                dynamicDone = true;
-                break;
-            case METER_SUPPORTED_REPORT:
-                canReset = (serialMessage.getMessagePayloadByte(offset + 1) & 0x80) != 0;
-                meterTypeIndex = serialMessage.getMessagePayloadByte(offset + 1) & 0x1F;
-                int supportedScales = serialMessage.getMessagePayloadByte(offset + 2);
-
-                // only 4 scales are supported in version 2 of the command.
-                if (getVersion() == 2) {
-                    supportedScales &= 0x0F;
-                }
-
-                if (meterTypeIndex >= MeterType.values().length) {
-                    logger.warn("NODE {}: Invalid meter type {}", getNode().getNodeId(), meterTypeIndex);
-                    return;
-                }
-
-                meterType = MeterType.getMeterType(meterTypeIndex);
-                logger.debug("NODE {}: Identified meter type {}({})", getNode().getNodeId(), meterType.getLabel(),
-                        meterTypeIndex);
-
-                for (int i = 0; i < 8; ++i) {
-                    // scale is supported
-                    if ((supportedScales & (1 << i)) == (1 << i)) {
-                        scale = MeterScale.getMeterScale(meterType, i);
-
-                        if (scale == null) {
-                            logger.warn("NODE {}: Invalid meter scale {}", getNode().getNodeId(), i);
-                            continue;
-                        }
-
-                        logger.debug("NODE {}: Meter Scale = {}({})", getNode().getNodeId(), scale.getUnit(),
-                                scale.getScale());
-
-                        // add scale to the list of supported scales.
-                        if (!meterScales.contains(scale)) {
-                            meterScales.add(scale);
-                        }
-                    }
-                }
-
-                initialiseDone = true;
-                break;
-            default:
-                logger.warn(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
-                        getCommandClass().getLabel(), getCommandClass().getKey()));
+            }
         }
+
+        initialiseDone = true;
     }
 
     /**
@@ -578,7 +561,7 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
          */
         public ZWaveMeterValueEvent(int nodeId, int endpoint, MeterType meterType, MeterScale meterScale,
                 Object value) {
-            super(nodeId, endpoint, CommandClass.METER, value);
+            super(nodeId, endpoint, CommandClass.COMMAND_CLASS_METER, value);
             this.meterType = meterType;
             this.meterScale = meterScale;
         }

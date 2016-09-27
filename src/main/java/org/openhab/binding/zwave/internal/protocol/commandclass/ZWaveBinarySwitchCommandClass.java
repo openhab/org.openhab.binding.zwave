@@ -14,6 +14,7 @@ import java.util.Map;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -37,7 +38,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  * @author Jan-Willem Spuij
  */
-@XStreamAlias("binarySwitchCommandClass")
+@XStreamAlias("COMMAND_CLASS_SWITCH_BINARY")
 public class ZWaveBinarySwitchCommandClass extends ZWaveCommandClass
         implements ZWaveBasicCommands, ZWaveCommandClassDynamicState {
 
@@ -69,48 +70,29 @@ public class ZWaveBinarySwitchCommandClass extends ZWaveCommandClass
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.SWITCH_BINARY;
+        return CommandClass.COMMAND_CLASS_SWITCH_BINARY;
     }
 
     /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug(String.format("Received Switch Binary Request for Node ID = %d", this.getNode().getNodeId()));
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case SWITCH_BINARY_SET:
-                logger.debug("NODE {}: Switch Binary SET", this.getNode().getNodeId());
-            case SWITCH_BINARY_REPORT:
-                processSwitchBinaryReport(serialMessage, offset, endpoint);
-
-                dynamicDone = true;
-                break;
-            default:
-                logger.warn(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
-                        this.getCommandClass().getLabel(), this.getCommandClass().getKey()));
-        }
-    }
-
-    /**
-     * Processes a SWITCH_BINARY_REPORT / SWITCH_BINARY_SET message.
+     * Processes a SWITCH_BINARY_REPORT message.
      *
      * @param serialMessage the incoming message to process.
      * @param offset the offset position from which to start message processing.
      * @param endpoint the endpoint or instance number this message is meant for.
      * @throws ZWaveSerialMessageException
      */
-    protected void processSwitchBinaryReport(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        int value = serialMessage.getMessagePayloadByte(offset + 1);
-        logger.debug("NODE {}: Switch Binary report, value = {}", this.getNode().getNodeId(), value);
-        ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(this.getNode().getNodeId(), endpoint,
-                this.getCommandClass(), value);
-        this.getController().notifyEventListeners(zEvent);
+    @ZWaveResponseHandler(id = SWITCH_BINARY_REPORT, name = "SWITCH_BINARY_REPORT")
+    public void handleSwitchBinaryReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int value = payload.getPayloadByte(2);
+        logger.debug("NODE {}: Switch Binary report, value = {}", getNode().getNodeId(), value);
+        ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
+                getCommandClass(), value);
+        getController().notifyEventListeners(zEvent);
+    }
+
+    @ZWaveResponseHandler(id = SWITCH_BINARY_SET, name = "SWITCH_BINARY_SET")
+    public void handleSwitchBinarySet(ZWaveCommandClassPayload payload, int endpoint) {
+        handleSwitchBinaryReport(payload, endpoint);
     }
 
     /**

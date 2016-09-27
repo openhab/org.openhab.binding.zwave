@@ -51,13 +51,13 @@ public class ZWaveClockConverter extends ZWaveCommandClassConverter {
     @Override
     public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveClockCommandClass commandClass = (ZWaveClockCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.CLOCK, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_CLOCK, channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
 
         logger.debug("NODE {}: Generating poll message for {} endpoint {}", node.getNodeId(),
-                commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                commandClass.getCommandClass(), channel.getEndpoint());
         ZWaveTransaction transaction = node.encapsulate(commandClass.getValueMessage(), commandClass,
                 channel.getEndpoint());
         List<ZWaveTransaction> response = new ArrayList<ZWaveTransaction>(1);
@@ -90,14 +90,14 @@ public class ZWaveClockConverter extends ZWaveCommandClassConverter {
                             clockOffset);
 
                     ZWaveNode node = controller.getNode(event.getNodeId());
-                    ZWaveClockCommandClass commandClass = (ZWaveClockCommandClass) node
-                            .resolveCommandClass(ZWaveCommandClass.CommandClass.CLOCK, channel.getEndpoint());
+                    ZWaveClockCommandClass commandClass = (ZWaveClockCommandClass) node.resolveCommandClass(
+                            ZWaveCommandClass.CommandClass.COMMAND_CLASS_CLOCK, channel.getEndpoint());
 
                     ZWaveTransaction transaction = node.encapsulate(commandClass.getSetMessage(Calendar.getInstance()),
                             commandClass, channel.getEndpoint());
                     if (transaction == null) {
                         logger.warn("Generating message failed for command class = {}, node = {}, endpoint = {}",
-                                commandClass.getCommandClass().getLabel(), node.getNodeId(), channel.getEndpoint());
+                                commandClass.getCommandClass(), node.getNodeId(), channel.getEndpoint());
                         return null;
                     } else {
                         controller.sendData(transaction);
@@ -111,7 +111,7 @@ public class ZWaveClockConverter extends ZWaveCommandClassConverter {
                     transaction = node.encapsulate(commandClass.getValueMessage(), commandClass, channel.getEndpoint());
                     if (transaction == null) {
                         logger.warn("Generating message failed for command class = {}, node = {}, endpoint = {}",
-                                commandClass.getCommandClass().getLabel(), node.getNodeId(), channel.getEndpoint());
+                                commandClass.getCommandClass(), node.getNodeId(), channel.getEndpoint());
                         return null;
                     } else {
                         controller.sendData(transaction);
@@ -134,13 +134,13 @@ public class ZWaveClockConverter extends ZWaveCommandClassConverter {
     @Override
     public List<ZWaveTransaction> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
         ZWaveClockCommandClass commandClass = (ZWaveClockCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.CLOCK, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_CLOCK, channel.getEndpoint());
 
         ZWaveTransaction transaction = node.encapsulate(commandClass.getSetMessage(Calendar.getInstance()),
                 commandClass, channel.getEndpoint());
         if (transaction == null) {
             logger.warn("Generating message failed for command class = {}, node = {}, endpoint = {}",
-                    commandClass.getCommandClass().getLabel(), node.getNodeId(), channel.getEndpoint());
+                    commandClass.getCommandClass(), node.getNodeId(), channel.getEndpoint());
             return null;
         }
 

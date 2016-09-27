@@ -51,8 +51,8 @@ public class ZWaveColorConverterTest extends ZWaveCommandClassConverterTest {
     public void Event_ColorSupported_None() {
         // This simulates the initial color_supported message which returns colors with null
         ZWaveColorConverter converter = new ZWaveColorConverter(null);
-        ZWaveThingChannel channel = new ZWaveThingChannel(null, uid, DataType.HSBType, CommandClass.COLOR.toString(), 0,
-                new HashMap<String, String>());
+        ZWaveThingChannel channel = new ZWaveThingChannel(null, uid, DataType.HSBType,
+                CommandClass.COMMAND_CLASS_SWITCH_COLOR.toString(), 0, new HashMap<String, String>());
 
         final Map<ZWaveColorType, Integer> colorMap = new HashMap<ZWaveColorType, Integer>();
         colorMap.put(ZWaveColorType.RED, null);

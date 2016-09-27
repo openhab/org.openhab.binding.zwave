@@ -15,6 +15,7 @@ import java.util.Map;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveConfigurationParameter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
@@ -36,7 +37,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  *
  * @author Chris Jackson
  */
-@XStreamAlias("configurationCommandClass")
+@XStreamAlias("COMMAND_CLASS_CONFIGURATION")
 public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
@@ -68,34 +69,11 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.CONFIGURATION;
+        return CommandClass.COMMAND_CLASS_CONFIGURATION;
     }
 
     /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received Configuration Request", getNode().getNodeId());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case CONFIGURATIONCMD_SET:
-                processConfigurationReport(serialMessage, offset);
-                break;
-            case CONFIGURATIONCMD_REPORT:
-                processConfigurationReport(serialMessage, offset);
-                break;
-            default:
-                logger.warn(String.format("NODE %d: Unsupported Command 0x%02X for command class %s (0x%02X).",
-                        getNode().getNodeId(), command, getCommandClass().getLabel(), getCommandClass().getKey()));
-        }
-    }
-
-    /**
-     * Processes a CONFIGURATIONCMD_REPORT / CONFIGURATIONCMD_SET message.
+     * Processes a CONFIGURATIONCMD_REPORT message.
      *
      * @param serialMessage
      *            the incoming message to process.
@@ -105,11 +83,11 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
      *            the endpoint or instance number this message is meant for.
      * @throws ZWaveSerialMessageException
      */
-    private void processConfigurationReport(SerialMessage serialMessage, int offset)
-            throws ZWaveSerialMessageException {
+    @ZWaveResponseHandler(id = CONFIGURATIONCMD_REPORT, name = "CONFIGURATIONCMD_REPORT")
+    public void handleConfigurationReport(ZWaveCommandClassPayload payload, int endpoint) {
         // Extract the parameter index and value
-        int parameter = serialMessage.getMessagePayloadByte(offset + 1);
-        int size = serialMessage.getMessagePayloadByte(offset + 2);
+        int parameter = payload.getPayloadByte(2);
+        int size = payload.getPayloadByte(3);
 
         // ZWave plus devices seem to return 0 if we request a parameter that doesn't exist
         if (size == 0) {
@@ -119,7 +97,7 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
 
         // Recover the data
         try {
-            int value = extractValue(serialMessage.getMessagePayload(), offset + 3, size);
+            int value = extractValue(payload.getPayloadBuffer(), 4, size);
 
             logger.debug("NODE {}: Node configuration report, parameter = {}, value = {}, size = {}",
                     getNode().getNodeId(), parameter, value, size);
@@ -278,7 +256,7 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
          * @param nodeId the nodeId of the event. Must be set to the controller node.
          */
         public ZWaveConfigurationParameterEvent(int nodeId, ZWaveConfigurationParameter parameter) {
-            super(nodeId, 0, CommandClass.CONFIGURATION, parameter);
+            super(nodeId, 0, CommandClass.COMMAND_CLASS_CONFIGURATION, parameter);
         }
 
         /**

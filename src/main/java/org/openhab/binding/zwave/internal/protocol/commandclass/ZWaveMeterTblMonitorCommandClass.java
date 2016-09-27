@@ -18,11 +18,11 @@ import java.util.Map;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
@@ -37,8 +37,9 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * Handles the Meter Tbl Monitor Command command class.
  *
  * @author Jorg de Jong
+ * @author Chris Jackson
  */
-@XStreamAlias("meterTblMonitorCommandClass")
+@XStreamAlias("COMMAND_CLASS_METER_TBL_MONITOR")
 public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
         implements ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
 
@@ -91,47 +92,18 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.METER_TBL_MONITOR;
+        return CommandClass.COMMAND_CLASS_METER_TBL_MONITOR;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpointId)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received Meter Tbl Monitor Request", this.getNode().getNodeId());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case METER_TBL_CURRENT_DATA_REPORT:
-                handleDataReport(serialMessage, offset, endpointId);
-                break;
-            case METER_TBL_TABLE_ID_REPORT:
-                handleTableIdReport(serialMessage, offset, endpointId);
-                break;
-            case METER_TBL_REPORT:
-                handleReport(serialMessage, offset, endpointId);
-                break;
-            default:
-                logger.warn(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
-                        getCommandClass().getLabel(), getCommandClass().getKey()));
-
-        }
-    }
-
-    private void handleTableIdReport(SerialMessage serialMessage, int offset, int endpointId)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received Meter Tbl Monitor Table ID Report", this.getNode().getNodeId());
-        int numBytes = serialMessage.getMessagePayloadByte(offset + 1) & 0x1F;
+    @ZWaveResponseHandler(id = METER_TBL_TABLE_ID_REPORT, name = "METER_TBL_TABLE_ID_REPORT")
+    public void handleTableIdReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int numBytes = payload.getPayloadByte(2) & 0x1F;
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         // Check for null terminations - ignore anything after the first null
         for (int c = 0; c < numBytes; c++) {
-            if (serialMessage.getMessagePayloadByte(c + offset + 2) > 32
-                    && serialMessage.getMessagePayloadByte(c + offset + 2) < 127) {
-                baos.write((byte) (serialMessage.getMessagePayloadByte(c + offset + 2)));
+            if (payload.getPayloadByte(c + 3) > 32 && payload.getPayloadByte(c + 3) < 127) {
+                baos.write((byte) (payload.getPayloadByte(c + 3)));
             }
         }
         String name;
@@ -142,26 +114,25 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
             name = "unsupported";
         }
         tableName = name;
-        logger.debug("NODE {}: table name: {}", this.getNode().getNodeId(), name);
+        logger.debug("NODE {}: table name: {}", getNode().getNodeId(), name);
     }
 
-    private void handleReport(SerialMessage serialMessage, int offset, int endpointId)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received Meter Tbl Monitor Report", this.getNode().getNodeId());
-        int meterType = serialMessage.getMessagePayloadByte(offset + 1) & 0x3F;
-        int rateType = (serialMessage.getMessagePayloadByte(offset + 1) & 0xC0) >> 6;
-        int properties = serialMessage.getMessagePayloadByte(offset + 2);
-        int datasetSupported = extractValue(serialMessage.getMessagePayload(), offset + 3, 3);
-        int datasetSupportedHistory = extractValue(serialMessage.getMessagePayload(), offset + 6, 3);
-        int dataSupportedHistory = extractValue(serialMessage.getMessagePayload(), offset + 9, 3);
+    @ZWaveResponseHandler(id = METER_TBL_CURRENT_DATA_REPORT, name = "METER_TBL_CURRENT_DATA_REPORT")
+    public void handleTableCurrentDataReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int meterType = payload.getPayloadByte(2) & 0x3F;
+        int rateType = (payload.getPayloadByte(2) & 0xC0) >> 6;
+        int properties = payload.getPayloadByte(3);
+        int datasetSupported = extractValue(payload.getPayloadBuffer(), 4, 3);
+        int datasetSupportedHistory = extractValue(payload.getPayloadBuffer(), 7, 3);
+        int dataSupportedHistory = extractValue(payload.getPayloadBuffer(), 10, 3);
 
-        logger.debug("NODE {}: meterType              : {} {}", this.getNode().getNodeId(), meterType,
+        logger.debug("NODE {}: meterType              : {} {}", getNode().getNodeId(), meterType,
                 MeterTblMonitorType.getMeterType(meterType));
-        logger.debug("NODE {}: rateType               : {}", this.getNode().getNodeId(), rateType);
-        logger.debug("NODE {}: properties             : {}", this.getNode().getNodeId(), properties);
-        logger.debug("NODE {}: datasetSupported       : {}", this.getNode().getNodeId(), datasetSupported);
-        logger.debug("NODE {}: datasetSupportedHistory: {}", this.getNode().getNodeId(), datasetSupportedHistory);
-        logger.debug("NODE {}: dataSupportedHistory   : {}", this.getNode().getNodeId(), dataSupportedHistory);
+        logger.debug("NODE {}: rateType               : {}", getNode().getNodeId(), rateType);
+        logger.debug("NODE {}: properties             : {}", getNode().getNodeId(), properties);
+        logger.debug("NODE {}: datasetSupported       : {}", getNode().getNodeId(), datasetSupported);
+        logger.debug("NODE {}: datasetSupportedHistory: {}", getNode().getNodeId(), datasetSupportedHistory);
+        logger.debug("NODE {}: dataSupportedHistory   : {}", getNode().getNodeId(), dataSupportedHistory);
 
         this.meterType = MeterTblMonitorType.getMeterType(meterType);
         this.rateType = rateType;
@@ -170,36 +141,35 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
         initialiseDone = true;
     }
 
-    private void handleDataReport(SerialMessage serialMessage, int offset, int endpointId)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received Meter Tbl Monitor Data Report", this.getNode().getNodeId());
-        int numReports = serialMessage.getMessagePayloadByte(offset + 1);
-        int rateType = serialMessage.getMessagePayloadByte(offset + 2) & 0x03;
-        boolean operatingStatus = (serialMessage.getMessagePayloadByte(offset + 2) & 0x80) > 0;
+    @ZWaveResponseHandler(id = METER_TBL_REPORT, name = "METER_TBL_REPORT")
+    public void handleTableDataReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int numReports = payload.getPayloadByte(2);
+        int rateType = payload.getPayloadByte(3) & 0x03;
+        boolean operatingStatus = (payload.getPayloadByte(3) & 0x80) > 0;
 
-        int dataset = extractValue(serialMessage.getMessagePayload(), offset + 3, 3);
-        int year = extractValue(serialMessage.getMessagePayload(), offset + 6, 2);
-        int month = serialMessage.getMessagePayloadByte(offset + 8);
-        int day = serialMessage.getMessagePayloadByte(offset + 9);
-        int hour = serialMessage.getMessagePayloadByte(offset + 10);
-        int minutes = serialMessage.getMessagePayloadByte(offset + 11);
-        int seconds = serialMessage.getMessagePayloadByte(offset + 12);
+        int dataset = extractValue(payload.getPayloadBuffer(), 4, 3);
+        int year = extractValue(payload.getPayloadBuffer(), 7, 2);
+        int month = payload.getPayloadByte(9);
+        int day = payload.getPayloadByte(10);
+        int hour = payload.getPayloadByte(11);
+        int minutes = payload.getPayloadByte(12);
+        int seconds = payload.getPayloadByte(13);
 
-        int scaleIndex = serialMessage.getMessagePayloadByte(offset + 13) & 0x1F;
-        int presision = (serialMessage.getMessagePayloadByte(offset + 13) & 0xE0) >> 5;
+        int scaleIndex = payload.getPayloadByte(14) & 0x1F;
+        int presision = (payload.getPayloadByte(14) & 0xE0) >> 5;
 
-        int valueRaw = extractValue(serialMessage.getMessagePayload(), offset + 14, 4);
+        int valueRaw = extractValue(payload.getPayloadBuffer(), 15, 4);
 
-        logger.trace("NODE {}: numReports:{}", this.getNode().getNodeId(), numReports);
-        logger.trace("NODE {}: rateType  :{}", this.getNode().getNodeId(), rateType);
-        logger.trace("NODE {}: operating :{}", this.getNode().getNodeId(), operatingStatus);
-        logger.trace("NODE {}: dataset   :{}", this.getNode().getNodeId(), dataset);
+        logger.trace("NODE {}: numReports:{}", getNode().getNodeId(), numReports);
+        logger.trace("NODE {}: rateType  :{}", getNode().getNodeId(), rateType);
+        logger.trace("NODE {}: operating :{}", getNode().getNodeId(), operatingStatus);
+        logger.trace("NODE {}: dataset   :{}", getNode().getNodeId(), dataset);
         logger.trace(String.format("NODE %d: time      :%04d-%02d-%02d %02d:%02d:%02d", this.getNode().getNodeId(),
                 year, month, day, hour, minutes, seconds));
 
-        logger.trace("NODE {}: scale     :{}", this.getNode().getNodeId(), scaleIndex);
-        logger.trace("NODE {}: presision :{}", this.getNode().getNodeId(), presision);
-        logger.trace("NODE {}: value     :{}", this.getNode().getNodeId(), valueRaw);
+        logger.trace("NODE {}: scale     :{}", getNode().getNodeId(), scaleIndex);
+        logger.trace("NODE {}: presision :{}", getNode().getNodeId(), presision);
+        logger.trace("NODE {}: value     :{}", getNode().getNodeId(), valueRaw);
 
         MeterTblMonitorScale scale = MeterTblMonitorScale.getMeterScale(meterType, scaleIndex);
         if (scale == null) {
@@ -213,9 +183,9 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
             logger.debug("NODE {}: Meter Tbl Monitor: Type={}, Scale={}({}), Value={}, Dataset={}",
                     getNode().getNodeId(), meterType.getLabel(), scale.getUnit(), scale.getScale(), value, dataset);
 
-            ZWaveMeterTblMonitorValueEvent zEvent = new ZWaveMeterTblMonitorValueEvent(getNode().getNodeId(),
-                    endpointId, meterType, scale, value);
-            this.getController().notifyEventListeners(zEvent);
+            ZWaveMeterTblMonitorValueEvent zEvent = new ZWaveMeterTblMonitorValueEvent(getNode().getNodeId(), endpoint,
+                    meterType, scale, value);
+            getController().notifyEventListeners(zEvent);
         } catch (NumberFormatException e) {
             logger.error("NODE {}: Meter Tbl Monitor Value Error {}", getNode().getNodeId(), e);
             return;
@@ -530,7 +500,7 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
          */
         public ZWaveMeterTblMonitorValueEvent(int nodeId, int endpoint, MeterTblMonitorType meterType,
                 MeterTblMonitorScale meterScale, Object value) {
-            super(nodeId, endpoint, CommandClass.METER_TBL_MONITOR, value);
+            super(nodeId, endpoint, CommandClass.COMMAND_CLASS_METER_TBL_MONITOR, value);
             this.meterType = meterType;
             this.meterScale = meterScale;
         }

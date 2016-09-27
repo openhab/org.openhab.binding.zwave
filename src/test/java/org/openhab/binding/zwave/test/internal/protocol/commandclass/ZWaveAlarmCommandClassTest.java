@@ -42,7 +42,7 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
 
         // assertEquals(event.getNodeId(), 40);
         assertEquals(event.getEndpoint(), 0);
-        assertEquals(event.getCommandClass(), CommandClass.ALARM);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_ALARM);
         assertEquals(event.getReportType(), ReportType.NOTIFICATION);
         assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.SMOKE);
         assertEquals(event.getAlarmStatus(), 0xFF);
@@ -62,7 +62,7 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
 
         // assertEquals(event.getNodeId(), 40);
         assertEquals(event.getEndpoint(), 0);
-        assertEquals(event.getCommandClass(), CommandClass.ALARM);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_ALARM);
         assertEquals(event.getReportType(), ReportType.NOTIFICATION);
         assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.BURGLAR);
         assertEquals(event.getAlarmEvent(), 8);
@@ -82,7 +82,7 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
 
         // assertEquals(event.getNodeId(), 40);
         assertEquals(event.getEndpoint(), 0);
-        assertEquals(event.getCommandClass(), CommandClass.ALARM);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_ALARM);
         assertEquals(event.getReportType(), ReportType.NOTIFICATION);
         assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.ACCESS_CONTROL);
         assertEquals(event.getAlarmEvent(), 22);
@@ -102,7 +102,7 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
 
         // assertEquals(event.getNodeId(), 40);
         assertEquals(event.getEndpoint(), 0);
-        assertEquals(event.getCommandClass(), CommandClass.ALARM);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_ALARM);
         assertEquals(event.getReportType(), ReportType.NOTIFICATION);
         assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.POWER_MANAGEMENT);
         assertEquals(event.getAlarmEvent(), 1);
@@ -111,7 +111,7 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void getSupportedMessage() {
-        ZWaveAlarmCommandClass cls = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.ALARM);
+        ZWaveAlarmCommandClass cls = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_ALARM);
         SerialMessage msg;
 
         cls.setVersion(1);
@@ -126,7 +126,7 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void getSupportedEventMessage() {
-        ZWaveAlarmCommandClass cls = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.ALARM);
+        ZWaveAlarmCommandClass cls = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_ALARM);
         SerialMessage msg;
 
         cls.setVersion(1);
@@ -141,7 +141,7 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void getMessage() {
-        ZWaveAlarmCommandClass cls = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.ALARM);
+        ZWaveAlarmCommandClass cls = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_ALARM);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 113, 4, 6, 0, 0, -11 };

@@ -37,7 +37,8 @@ public class ZWaveProtectionConverterTest {
     private ZWaveThingChannel createChannel(String type) {
         Map<String, String> args = new HashMap<String, String>();
         args.put("type", type);
-        return new ZWaveThingChannel(null, uid, DataType.DecimalType, CommandClass.PROTECTION.toString(), 0, args);
+        return new ZWaveThingChannel(null, uid, DataType.DecimalType, CommandClass.COMMAND_CLASS_PROTECTION.toString(),
+                0, args);
     }
 
     @Test
@@ -45,7 +46,7 @@ public class ZWaveProtectionConverterTest {
         ZWaveProtectionConverter converter = new ZWaveProtectionConverter(null);
         ZWaveThingChannel channel = createChannel(Type.PROTECTION_LOCAL.name());
 
-        ZWaveCommandClassValueEvent event = new ZWaveCommandClassValueEvent(0, 0, CommandClass.PROTECTION,
+        ZWaveCommandClassValueEvent event = new ZWaveCommandClassValueEvent(0, 0, CommandClass.COMMAND_CLASS_PROTECTION,
                 LocalProtectionType.SEQUENCE, Type.PROTECTION_LOCAL);
 
         State state = converter.handleEvent(channel, event);
@@ -59,7 +60,7 @@ public class ZWaveProtectionConverterTest {
         ZWaveProtectionConverter converter = new ZWaveProtectionConverter(null);
         ZWaveThingChannel channel = createChannel(Type.PROTECTION_RF.name());
 
-        ZWaveCommandClassValueEvent event = new ZWaveCommandClassValueEvent(0, 0, CommandClass.PROTECTION,
+        ZWaveCommandClassValueEvent event = new ZWaveCommandClassValueEvent(0, 0, CommandClass.COMMAND_CLASS_PROTECTION,
                 RfProtectionType.NORFRESPONSE, Type.PROTECTION_RF);
 
         State state = converter.handleEvent(channel, event);

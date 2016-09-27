@@ -53,13 +53,13 @@ public class ZWaveBasicConverter extends ZWaveCommandClassConverter {
     @Override
     public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveBasicCommandClass commandClass = (ZWaveBasicCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.BASIC, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_BASIC, channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
 
         logger.debug("NODE {}: Generating poll message for {} endpoint {}", node.getNodeId(),
-                commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                commandClass.getCommandClass(), channel.getEndpoint());
         ZWaveTransaction transaction = node.encapsulate(commandClass.getValueMessage(), commandClass,
                 channel.getEndpoint());
         List<ZWaveTransaction> response = new ArrayList<ZWaveTransaction>(1);
@@ -105,7 +105,7 @@ public class ZWaveBasicConverter extends ZWaveCommandClassConverter {
     @Override
     public List<ZWaveTransaction> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
         ZWaveBasicCommandClass commandClass = (ZWaveBasicCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.BASIC, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_BASIC, channel.getEndpoint());
 
         Integer value = null;
         if (command instanceof DecimalType) {
@@ -116,7 +116,7 @@ public class ZWaveBasicConverter extends ZWaveCommandClassConverter {
 
         if (serialMessage == null) {
             logger.warn("Generating message failed for command class = {}, node = {}, endpoint = {}",
-                    commandClass.getCommandClass().getLabel(), node.getNodeId(), channel.getEndpoint());
+                    commandClass.getCommandClass(), node.getNodeId(), channel.getEndpoint());
             return null;
         }
 

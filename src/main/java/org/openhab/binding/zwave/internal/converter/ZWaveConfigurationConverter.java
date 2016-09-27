@@ -49,13 +49,13 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
     @Override
     public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveConfigurationCommandClass commandClass = (ZWaveConfigurationCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.CONFIGURATION, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_CONFIGURATION, channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
 
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
-                commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                commandClass.getCommandClass(), channel.getEndpoint());
         String parmNumber = channel.getArguments().get("parameter");
         if (parmNumber == null) {
             logger.error("NODE {}: 'parameter' option must be specified.", node.getNodeId());
@@ -148,7 +148,7 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
          */
 
         ZWaveConfigurationCommandClass commandClass = (ZWaveConfigurationCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.CONFIGURATION, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_CONFIGURATION, channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
@@ -171,7 +171,7 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
         ZWaveTransaction transaction = commandClass.setConfigMessage(configParameter);
         if (transaction == null) {
             logger.warn("NODE {}: Generating message failed for command class = {}", node.getNodeId(),
-                    commandClass.getCommandClass().getLabel());
+                    commandClass.getCommandClass());
             return null;
         }
 

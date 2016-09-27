@@ -27,7 +27,8 @@ public class ZWaveCentralSceneCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void getValueMessage() {
-        ZWaveCentralSceneCommandClass cls = (ZWaveCentralSceneCommandClass) getCommandClass(CommandClass.CENTRAL_SCENE);
+        ZWaveCentralSceneCommandClass cls = (ZWaveCentralSceneCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_CENTRAL_SCENE);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 91, 1, 0, 0, -34 };

@@ -40,8 +40,8 @@ public class ZWaveMultiLevelSensorConverterTest {
     private ZWaveThingChannel createChannel(String type) {
         Map<String, String> args = new HashMap<String, String>();
         args.put("type", type);
-        return new ZWaveThingChannel(null, uid, DataType.DecimalType, CommandClass.SENSOR_MULTILEVEL.toString(), 0,
-                args);
+        return new ZWaveThingChannel(null, uid, DataType.DecimalType,
+                CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL.toString(), 0, args);
     }
 
     private ZWaveCommandClassValueEvent createEvent(ZWaveMultiLevelSensorCommandClass.SensorType type, int scale,

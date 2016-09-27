@@ -58,7 +58,7 @@ public class ZWaveMultiInstanceCommandClassTest extends ZWaveCommandClassTest {
 
         try {
             // This method only handles MULTI_INSTANCE
-            assertEquals(msg.getMessagePayloadByte(3), CommandClass.MULTI_INSTANCE.getKey());
+            assertEquals(msg.getMessagePayloadByte(3), CommandClass.COMMAND_CLASS_MULTI_CHANNEL.getKey());
 
             // Mock the controller so we can get any events
             final ZWaveController mockedController = Mockito.mock(ZWaveController.class);
@@ -69,7 +69,7 @@ public class ZWaveMultiInstanceCommandClassTest extends ZWaveCommandClassTest {
 
             // Get the command class and process the response
             ZWaveMultiInstanceCommandClass cls = (ZWaveMultiInstanceCommandClass) ZWaveCommandClass
-                    .getInstance(CommandClass.MULTI_INSTANCE.getKey(), node, mockedController);
+                    .getInstance(CommandClass.COMMAND_CLASS_MULTI_CHANNEL.getKey(), node, mockedController);
             assertNotNull(cls);
 
             // Create an endpoint to capture the requests so we can return the command classes
@@ -127,7 +127,7 @@ public class ZWaveMultiInstanceCommandClassTest extends ZWaveCommandClassTest {
         assertEquals(events.size(), 1);
         ZWaveCommandClassValueEvent event = (ZWaveCommandClassValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.SWITCH_BINARY);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_SWITCH_BINARY);
         // assertEquals(event.getNodeId(), 44);
         assertEquals(event.getEndpoint(), 2);
         assertEquals(event.getValue(), new Integer("255"));

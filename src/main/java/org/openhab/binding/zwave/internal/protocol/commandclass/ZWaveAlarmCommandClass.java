@@ -23,7 +23,6 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
@@ -51,7 +50,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  *
  * @author Chris Jackson
  */
-@XStreamAlias("alarmCommandClass")
+@XStreamAlias("COMMAND_CLASS_ALARM")
 public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveCommandClassDynamicState, ZWaveCommandClassInitialization {
 
@@ -101,10 +100,6 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
     public ZWaveAlarmCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
         versionMax = MAX_SUPPORTED_VERSION;
-
-        commands.put(NOTIFICATION_REPORT, new HandleNotificationReport());
-        commands.put(NOTIFICATION_SUPPORTED_REPORT, new HandleNotificationReport());
-        commands.put(EVENT_SUPPORTED_REPORT, new HandleNotificationReport());
     }
 
     /**
@@ -112,139 +107,113 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.ALARM;
+        return CommandClass.COMMAND_CLASS_ALARM;
     }
 
-    class HandleNotificationReport implements ZWaveCommandHandler {
-        @Override
-        public String getCommandName() {
-            return "NOTIFICATION_REPORT";
+    @ZWaveResponseHandler(id = NOTIFICATION_REPORT, name = "NOTIFICATION_REPORT")
+    public void handleNotificationReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int v1AlarmTypeCode = payload.getPayloadByte(2);
+        int v1AlarmLevel = payload.getPayloadByte(3);
+        int notificationEvent = 0;
+        int notificationStatus = 0;
+        int notificationTypeCode = 0;
+
+        AlarmType alarmType;
+        ReportType eventType;
+
+        if (getVersion() == 1) {
+            eventType = ReportType.ALARM;
+            alarmType = AlarmType.getAlarmType(v1AlarmTypeCode);
+
+            notificationStatus = v1AlarmLevel;
+
+            logger.debug("NODE {}: ALARM report - {} = {}", getNode().getNodeId(), v1AlarmTypeCode, v1AlarmLevel);
+        } else {
+            eventType = ReportType.NOTIFICATION;
+            // Indicates if reports are enabled or disabled
+            notificationStatus = payload.getPayloadByte(5);
+            notificationTypeCode = payload.getPayloadByte(6);
+            notificationEvent = payload.getPayloadByte(7);
+            alarmType = AlarmType.getAlarmType(notificationTypeCode);
+
+            int parameterLength = payload.getPayloadByte(6) & 0x1f;
+            boolean containsSequence = (payload.getPayloadByte(6) & 0x80) != 0;
+
+            logger.debug("NODE {}: NOTIFICATION report - {} = {}, event={}, status={}", getNode().getNodeId(),
+                    v1AlarmTypeCode, v1AlarmLevel, notificationEvent, notificationStatus);
         }
 
-        @Override
-        public void handleCommandRequest(ZWaveCommandClassPayload payload, int endpoint)
-                throws ZWaveSerialMessageException {
-            int v1AlarmTypeCode = payload.getPayloadByte(2);
-            int v1AlarmLevel = payload.getPayloadByte(3);
-            int notificationEvent = 0;
-            int notificationStatus = 0;
-            int notificationTypeCode = 0;
-
-            AlarmType alarmType;
-            ReportType eventType;
-
-            if (getVersion() == 1) {
-                eventType = ReportType.ALARM;
-                alarmType = AlarmType.getAlarmType(v1AlarmTypeCode);
-
-                notificationStatus = v1AlarmLevel;
-
-                logger.debug("NODE {}: ALARM report - {} = {}", getNode().getNodeId(), v1AlarmTypeCode, v1AlarmLevel);
-            } else {
-                eventType = ReportType.NOTIFICATION;
-                // Indicates if reports are enabled or disabled
-                notificationStatus = payload.getPayloadByte(5);
-                notificationTypeCode = payload.getPayloadByte(6);
-                notificationEvent = payload.getPayloadByte(7);
-                alarmType = AlarmType.getAlarmType(notificationTypeCode);
-
-                int parameterLength = payload.getPayloadByte(6) & 0x1f;
-                boolean containsSequence = (payload.getPayloadByte(6) & 0x80) != 0;
-
-                logger.debug("NODE {}: NOTIFICATION report - {} = {}, event={}, status={}", getNode().getNodeId(),
-                        v1AlarmTypeCode, v1AlarmLevel, notificationEvent, notificationStatus);
-            }
-
-            if (alarmType == null) {
-                logger.error("NODE {}: Unknown Alarm Type = {}, ignoring report.", getNode().getNodeId(),
-                        v1AlarmTypeCode);
-                return;
-            }
-
-            // Alarm type seems to be supported, add it to the list.
-            Alarm alarm = alarms.get(alarmType);
-            if (alarm == null) {
-                alarm = new Alarm(alarmType);
-                alarms.put(alarmType, alarm);
-            }
-            alarm.setInitialised();
-
-            logger.debug("NODE {}: Alarm Type = {} ({})", getNode().getNodeId(), alarmType.toString(), v1AlarmTypeCode);
-
-            ZWaveAlarmValueEvent zEvent = new ZWaveAlarmValueEvent(getNode().getNodeId(), endpoint, eventType,
-                    alarmType, notificationEvent, notificationStatus);
-            getController().notifyEventListeners(zEvent);
-
-            dynamicDone = true;
+        if (alarmType == null) {
+            logger.error("NODE {}: Unknown Alarm Type = {}, ignoring report.", getNode().getNodeId(), v1AlarmTypeCode);
+            return;
         }
+
+        // Alarm type seems to be supported, add it to the list.
+        Alarm alarm = alarms.get(alarmType);
+        if (alarm == null) {
+            alarm = new Alarm(alarmType);
+            alarms.put(alarmType, alarm);
+        }
+        alarm.setInitialised();
+
+        logger.debug("NODE {}: Alarm Type = {} ({})", getNode().getNodeId(), alarmType.toString(), v1AlarmTypeCode);
+
+        ZWaveAlarmValueEvent zEvent = new ZWaveAlarmValueEvent(getNode().getNodeId(), endpoint, eventType, alarmType,
+                notificationEvent, notificationStatus);
+        getController().notifyEventListeners(zEvent);
+
+        dynamicDone = true;
     }
 
-    class HandleNotificationSupportedReport implements ZWaveCommandHandler {
-        @Override
-        public String getCommandName() {
-            return "NOTIFICATION_SUPPORTED_REPORT";
+    @ZWaveResponseHandler(id = NOTIFICATION_SUPPORTED_REPORT, name = "NOTIFICATION_SUPPORTED_REPORT")
+    public void handleNotificationSupportedReport(ZWaveCommandClassPayload payload, int endpoint) {
+        // Check if this is a V1 alarm report
+        v1Supported = (payload.getPayloadByte(2) & 0x80) == 0;
+        if (v1Supported) {
+            logger.debug("NODE: NOTIFICATION_SUPPORTED_REPORT reports V1 ALARM support", getNode().getNodeId());
+
         }
 
-        @Override
-        public void handleCommandRequest(ZWaveCommandClassPayload payload, int endpoint)
-                throws ZWaveSerialMessageException {
-
-            // Check if this is a V1 alarm report
-            v1Supported = (payload.getPayloadByte(2) & 0x80) == 0;
-            if (v1Supported) {
-                logger.debug("NODE: NOTIFICATION_SUPPORTED_REPORT reports V1 ALARM support", getNode().getNodeId());
-
-            }
-
-            int numBytes = payload.getPayloadByte(2) & 0x1f;
-            for (int i = 0; i < numBytes; ++i) {
-                for (int bit = 0; bit < 8; ++bit) {
-                    if (((payload.getPayloadByte(i + 3)) & (1 << bit)) == 0) {
-                        continue;
-                    }
-
-                    int index = (i << 3) + bit;
-                    if (index >= AlarmType.values().length) {
-                        continue;
-                    }
-
-                    // (n)th bit is set. n is the index for the alarm type enumeration.
-                    // Alarm type seems to be supported, add it to the list if it's not already there.
-                    getAlarm(index);
+        int numBytes = payload.getPayloadByte(2) & 0x1f;
+        for (int i = 0; i < numBytes; ++i) {
+            for (int bit = 0; bit < 8; ++bit) {
+                if (((payload.getPayloadByte(i + 3)) & (1 << bit)) == 0) {
+                    continue;
                 }
+
+                int index = (i << 3) + bit;
+                if (index >= AlarmType.values().length) {
+                    continue;
+                }
+
+                // (n)th bit is set. n is the index for the alarm type enumeration.
+                // Alarm type seems to be supported, add it to the list if it's not already there.
+                getAlarm(index);
             }
-            supportedInitialised = true;
         }
+        supportedInitialised = true;
     }
 
-    class HandleEventSupportedReport implements ZWaveCommandHandler {
-        @Override
-        public String getCommandName() {
-            return "EVENT_SUPPORTED_REPORT";
-        }
-
-        @Override
-        public void handleCommandRequest(ZWaveCommandClassPayload payload, int endpoint)
-                throws ZWaveSerialMessageException {
-            int notificationType = payload.getPayloadByte(2);
-            int numBytes = payload.getPayloadByte(3) & 0x1f;
-            List<Integer> types = new ArrayList<>();
-            for (int i = 0; i < numBytes; ++i) {
-                for (int bit = 0; bit < 8; ++bit) {
-                    if (((payload.getPayloadByte(i + 4)) & (1 << bit)) == 0) {
-                        continue;
-                    }
-
-                    int index = (i << 3) + bit;
-                    types.add(index);
-                    getAlarm(notificationType).getReportedEvents().add(index);
+    @ZWaveResponseHandler(id = EVENT_SUPPORTED_REPORT, name = "EVENT_SUPPORTED_REPORT")
+    public void handleEventSupportedReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int notificationType = payload.getPayloadByte(2);
+        int numBytes = payload.getPayloadByte(3) & 0x1f;
+        List<Integer> types = new ArrayList<>();
+        for (int i = 0; i < numBytes; ++i) {
+            for (int bit = 0; bit < 8; ++bit) {
+                if (((payload.getPayloadByte(i + 4)) & (1 << bit)) == 0) {
+                    continue;
                 }
-            }
-            logger.debug("NODE {}: AlarmType: {} reported events -> {}", getNode().getNodeId(),
-                    AlarmType.getAlarmType(notificationType), types);
 
-            eventsSupportedInitialised = true;
+                int index = (i << 3) + bit;
+                types.add(index);
+                getAlarm(notificationType).getReportedEvents().add(index);
+            }
         }
+        logger.debug("NODE {}: AlarmType: {} reported events -> {}", getNode().getNodeId(),
+                AlarmType.getAlarmType(notificationType), types);
+
+        eventsSupportedInitialised = true;
     }
 
     private Alarm getAlarm(int alarmTypeCode) {
@@ -522,7 +491,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
          */
         public ZWaveAlarmValueEvent(int nodeId, int endpoint, ReportType eventType, AlarmType alarmType, int alarmEvent,
                 int alarmStatus) {
-            super(nodeId, endpoint, CommandClass.ALARM, alarmStatus);
+            super(nodeId, endpoint, CommandClass.COMMAND_CLASS_ALARM, alarmStatus);
             this.eventType = eventType;
             this.alarmType = alarmType;
             this.alarmEvent = alarmEvent;

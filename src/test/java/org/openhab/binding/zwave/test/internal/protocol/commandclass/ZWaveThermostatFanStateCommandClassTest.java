@@ -27,7 +27,7 @@ public class ZWaveThermostatFanStateCommandClassTest extends ZWaveCommandClassTe
     @Test
     public void getValueMessage() {
         ZWaveThermostatFanStateCommandClass cls = (ZWaveThermostatFanStateCommandClass) getCommandClass(
-                CommandClass.THERMOSTAT_FAN_STATE);
+                CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_STATE);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 69, 2, 0, 0, -61 };

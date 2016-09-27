@@ -37,14 +37,15 @@ public class ZWaveMeterPulseCommandClassTest extends ZWaveCommandClassTest {
 
         ZWaveCommandClassValueEvent event = (ZWaveCommandClassValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.METER_PULSE);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_METER_PULSE);
         assertEquals(event.getEndpoint(), 0);
         assertEquals((int) event.getValue(), 65536);
     }
 
     @Test
     public void getValueMessage() {
-        ZWaveMeterPulseCommandClass cls = (ZWaveMeterPulseCommandClass) getCommandClass(CommandClass.METER_PULSE);
+        ZWaveMeterPulseCommandClass cls = (ZWaveMeterPulseCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_METER_PULSE);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 53, 4, 0, 0, -75 };

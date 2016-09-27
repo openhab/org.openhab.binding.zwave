@@ -811,7 +811,7 @@ public class SerialMessage {
                 if (node != null && !node.isListening() && !node.isFrequentlyListening()) {
                     arg0Listening = false;
                     ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) node
-                            .getCommandClass(CommandClass.WAKE_UP);
+                            .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
 
                     if (wakeUpCommandClass != null && wakeUpCommandClass.isAwake()) {
                         arg0Awake = true;
@@ -826,7 +826,7 @@ public class SerialMessage {
                 if (node != null && !node.isListening() && !node.isFrequentlyListening()) {
                     arg1Listening = false;
                     ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) node
-                            .getCommandClass(CommandClass.WAKE_UP);
+                            .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
 
                     if (wakeUpCommandClass != null && wakeUpCommandClass.isAwake()) {
                         arg1Awake = true;

@@ -54,13 +54,13 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
     @Override
     public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveColorCommandClass commandClass = (ZWaveColorCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.COLOR, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_SWITCH_COLOR, channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
 
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
-                commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                commandClass.getCommandClass(), channel.getEndpoint());
 
         // Add a poll to update the color
         List<ZWaveTransaction> messages = new ArrayList<ZWaveTransaction>();
@@ -125,7 +125,7 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
     @Override
     public List<ZWaveTransaction> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
         ZWaveColorCommandClass commandClass = (ZWaveColorCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.COLOR, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_SWITCH_COLOR, channel.getEndpoint());
 
         Collection<ZWaveTransaction> rawMessages = null;
 

@@ -27,7 +27,7 @@ public class ZWaveBarrierOperatorCommandClassTest extends ZWaveCommandClassTest 
     @Test
     public void getValueMessage() {
         ZWaveBarrierOperatorCommandClass cls = (ZWaveBarrierOperatorCommandClass) getCommandClass(
-                CommandClass.BARRIER_OPERATOR);
+                CommandClass.COMMAND_CLASS_BARRIER_OPERATOR);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 102, 2, 0, 0, -32 };
@@ -40,7 +40,7 @@ public class ZWaveBarrierOperatorCommandClassTest extends ZWaveCommandClassTest 
     @Test
     public void setValueMessage() {
         ZWaveBarrierOperatorCommandClass cls = (ZWaveBarrierOperatorCommandClass) getCommandClass(
-                CommandClass.BARRIER_OPERATOR);
+                CommandClass.COMMAND_CLASS_BARRIER_OPERATOR);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 102, 1, -1, 0, 0, 30 };

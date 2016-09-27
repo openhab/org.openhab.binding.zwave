@@ -30,7 +30,7 @@ public class ZWaveColorCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void getCapabilityMessage() {
-        ZWaveColorCommandClass cls = (ZWaveColorCommandClass) getCommandClass(CommandClass.COLOR);
+        ZWaveColorCommandClass cls = (ZWaveColorCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_SWITCH_COLOR);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 51, 1, 0, 0, -74 };
@@ -42,7 +42,7 @@ public class ZWaveColorCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void getValueMessage() {
-        ZWaveColorCommandClass cls = (ZWaveColorCommandClass) getCommandClass(CommandClass.COLOR);
+        ZWaveColorCommandClass cls = (ZWaveColorCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_SWITCH_COLOR);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 51, 3, 1, 0, 0, -73 };
@@ -54,7 +54,7 @@ public class ZWaveColorCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void setValueMessage() {
-        ZWaveColorCommandClass cls = (ZWaveColorCommandClass) getCommandClass(CommandClass.COLOR);
+        ZWaveColorCommandClass cls = (ZWaveColorCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_SWITCH_COLOR);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 12, 0, 19, 99, 5, 51, 5, 1, 3, 80, 0, 0, -30 };
@@ -73,7 +73,7 @@ public class ZWaveColorCommandClassTest extends ZWaveCommandClassTest {
         assertEquals(events.size(), 1);
         ZWaveColorValueEvent event = (ZWaveColorValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.COLOR);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_SWITCH_COLOR);
         assertTrue(event.getColorMap().containsKey(ZWaveColorType.RED));
         assertTrue(event.getColorMap().containsKey(ZWaveColorType.GREEN));
         assertTrue(event.getColorMap().containsKey(ZWaveColorType.BLUE));

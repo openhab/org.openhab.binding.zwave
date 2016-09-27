@@ -74,7 +74,7 @@ public class ZWaveThingHandlerTest {
             Mockito.when(controller.getOwnNodeId()).thenReturn(1);
             Mockito.when(controllerHandler.getNode(Matchers.anyInt())).thenReturn(node);
             Mockito.when(node.getNodeId()).thenReturn(1);
-            Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.WAKE_UP))).thenReturn(wakeupClass);
+            Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_WAKE_UP))).thenReturn(wakeupClass);
         } catch (NoSuchFieldException | SecurityException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

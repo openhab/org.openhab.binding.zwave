@@ -13,11 +13,11 @@ import java.util.Collection;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
@@ -33,16 +33,19 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  *
  * @author Chris Jackson
  */
-@XStreamAlias("centralSceneCommandClass")
+@XStreamAlias("COMMAND_CLASS_CENTRAL_SCENE")
 public class ZWaveCentralSceneCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveCommandClassInitialization {
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveCentralSceneCommandClass.class);
 
-    private static final int SCENE_GET = 1;
-    private static final int SCENE_REPORT = 2;
-    private static final int SCENE_SET = 3;
+    private static final int CENTRAL_SCENE_SUPPORTED_GET = 1;
+    private static final int CENTRAL_SCENE_SUPPORTED_REPORT = 2;
+    private static final int CENTRAL_SCENE_NOTIFICATION = 3;
+    private static final int CENTRAL_SCENE_CONFIGURATION_SET = 4;
+    private static final int CENTRAL_SCENE_CONFIGURATION_GET = 5;
+    private static final int CENTRAL_SCENE_CONFIGURATION_REPORT = 6;
 
     @XStreamOmitField
     private boolean initialiseDone = false;
@@ -65,56 +68,43 @@ public class ZWaveCentralSceneCommandClass extends ZWaveCommandClass
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.CENTRAL_SCENE;
+        return CommandClass.COMMAND_CLASS_CENTRAL_SCENE;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received CENTRAL_SCENE command V{}", getNode().getNodeId(), getVersion());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case SCENE_SET:
-                // offset+1 is an incrementing number
-                int sceneId = serialMessage.getMessagePayloadByte(offset + 3);
-                int time = serialMessage.getMessagePayloadByte(offset + 2);
-                if (time > 127) {
-                    // Values of 128 and above are in minutes (128 = 1 minute)
-                    time = (time - 127) * 60;
-                }
-                logger.debug("NODE {}: Received scene {} at time {}", this.getNode().getNodeId(), sceneId, time);
-                ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(this.getNode().getNodeId(),
-                        endpoint, this.getCommandClass(), sceneId);
-                this.getController().notifyEventListeners(zEvent);
-                break;
-            case SCENE_REPORT:
-                sceneCount = serialMessage.getMessagePayloadByte(offset + 1);
-                logger.debug("NODE {}: Supports {} scenes", this.getNode().getNodeId(), sceneCount);
-                initialiseDone = true;
-                break;
-            default:
-                logger.warn(String.format("NODE %d: Unsupported Command %d for command class %s (0x%02X).",
-                        this.getNode().getNodeId(), command, this.getCommandClass().getLabel(),
-                        this.getCommandClass().getKey()));
+    @ZWaveResponseHandler(id = CENTRAL_SCENE_NOTIFICATION, name = "CENTRAL_SCENE_NOTIFICATION")
+    public void handleCentralSceneNotification(ZWaveCommandClassPayload payload, int endpoint) {
+        // offset+1 is an incrementing number
+        int sceneId = payload.getPayloadByte(4);
+        int time = payload.getPayloadByte(4);
+        if (time > 127) {
+            // Values of 128 and above are in minutes (128 = 1 minute)
+            time = (time - 127) * 60;
         }
+        logger.debug("NODE {}: Received scene {} at time {}", getNode().getNodeId(), sceneId, time);
+        ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
+                getCommandClass(), sceneId);
+        getController().notifyEventListeners(zEvent);
+    }
+
+    @ZWaveResponseHandler(id = CENTRAL_SCENE_SUPPORTED_REPORT, name = "CENTRAL_SCENE_SUPPORTED_REPORT")
+    public void handleCentralSceneSupportedReport(ZWaveCommandClassPayload payload, int endpoint) {
+        sceneCount = payload.getPayloadByte(2);
+        logger.debug("NODE {}: Supports {} scenes", getNode().getNodeId(), sceneCount);
+        initialiseDone = true;
     }
 
     @Override
     public ZWaveTransaction getValueMessage() {
         logger.debug("NODE {}: Creating new message for application command SCENE_GET", this.getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), SCENE_GET)
-                .withNodeId(getNode().getNodeId()).build();
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), CENTRAL_SCENE_SUPPORTED_GET).withNodeId(getNode().getNodeId())
+                .build();
 
         return new ZWaveTransactionBuilder(serialMessage)
                 .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), SCENE_REPORT).withPriority(TransactionPriority.Get)
-                .build();
+                .withExpectedResponseCommandClass(getCommandClass(), CENTRAL_SCENE_NOTIFICATION)
+                .withPriority(TransactionPriority.Get).build();
     }
 
     @Override
@@ -127,5 +117,4 @@ public class ZWaveCentralSceneCommandClass extends ZWaveCommandClass
 
         return result;
     }
-
 }

@@ -41,7 +41,7 @@ public class ZWaveClockCommandClassTest extends ZWaveCommandClassTest {
 
         ZWaveCommandClassValueEvent event = (ZWaveCommandClassValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.CLOCK);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_CLOCK);
         assertEquals(event.getEndpoint(), 0);
         Date date = (Date) event.getValue();
         assertNotNull(date);
@@ -56,7 +56,7 @@ public class ZWaveClockCommandClassTest extends ZWaveCommandClassTest {
     @Test
     // @Ignore
     public void setTime() {
-        ZWaveClockCommandClass cls = (ZWaveClockCommandClass) getCommandClass(CommandClass.CLOCK);
+        ZWaveClockCommandClass cls = (ZWaveClockCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_CLOCK);
 
         byte[] expectedResponse = { 99, 4, -127, 4, -128, 0 };
 

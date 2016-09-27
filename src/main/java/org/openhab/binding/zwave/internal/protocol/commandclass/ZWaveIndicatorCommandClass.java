@@ -14,6 +14,7 @@ import java.util.Map;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -40,7 +41,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Pedro Paixao
  */
 
-@XStreamAlias("indicatorCommandClass")
+@XStreamAlias("COMMAND_CLASS_INDICATOR")
 public class ZWaveIndicatorCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveSetCommands, ZWaveCommandClassDynamicState {
 
@@ -75,48 +76,20 @@ public class ZWaveIndicatorCommandClass extends ZWaveCommandClass
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.INDICATOR;
+        return CommandClass.COMMAND_CLASS_INDICATOR;
     }
 
     /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received Indicator Request", this.getNode().getNodeId());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case INDICATOR_SET:
-                logger.debug("NODE {}: Indicator Set sent to the controller will be processed as Indicator Report",
-                        this.getNode().getNodeId());
-
-                // Process this as if it was a value report.
-                processIndicatorReport(serialMessage, offset, endpoint);
-                break;
-            case INDICATOR_REPORT:
-                logger.trace("NODE {}: Process Indicator Report", this.getNode().getNodeId());
-                processIndicatorReport(serialMessage, offset, endpoint);
-                break;
-            default:
-                logger.warn(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
-                        this.getCommandClass().getLabel(), this.getCommandClass().getKey()));
-        }
-    }
-
-    /**
-     * Processes a INDICATOR_REPORT / INDICATOR_SET message.
+     * Processes a INDICATOR_REPORT message.
      *
      * @param serialMessage the incoming message to process.
      * @param offset the offset position from which to start message processing.
      * @param endpoint the endpoint or instance number this message is meant for.
      * @throws ZWaveSerialMessageException
      */
-    protected void processIndicatorReport(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        int newIndicator = serialMessage.getMessagePayloadByte(offset + 1);
+    @ZWaveResponseHandler(id = INDICATOR_REPORT, name = "INDICATOR_REPORT")
+    public void handleIndicatorReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int newIndicator = payload.getPayloadByte(2);
 
         logger.debug("NODE {}: Indicator report, value={}", this.getNode().getNodeId(), newIndicator);
 

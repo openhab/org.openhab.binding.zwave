@@ -583,7 +583,7 @@ public class ZWaveController {
                             logger.debug("NODE {}: Inclusion is adding command class {}.", incEvent.getNodeId(),
                                     commandClass);
                             // TODO: Add the network key to the security class
-                            if (commandClass == CommandClass.SECURITY) {
+                            if (commandClass == CommandClass.COMMAND_CLASS_SECURITY) {
                                 // ((ZWaveSecurityCommandClass)zwaveCommandClass).setRealNetworkKey(hexString);
                             }
                             newNode.addCommandClass(zwaveCommandClass);

@@ -18,6 +18,7 @@ import java.util.Set;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -39,7 +40,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  */
 
-@XStreamAlias("colorCommandClass")
+@XStreamAlias("COMMAND_CLASS_SWITCH_COLOR")
 public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCommandClassInitialization {
 
     @XStreamOmitField
@@ -80,37 +81,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.COLOR;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received COMMAND_CLASS_SWITCH_COLOR V{}", getNode().getNodeId(), getVersion());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case SWITCH_COLOR_SUPPORTED_REPORT:
-                logger.debug("NODE {}: Process SWITCH_COLOR_SUPPORTED_REPORT", getNode().getNodeId());
-                processColorSupportedReport(serialMessage, offset, endpoint);
-                break;
-            case SWITCH_COLOR_SET:
-                logger.debug("NODE {}: Process Color SWITCH_COLOR_SET", getNode().getNodeId());
-                processColorReport(serialMessage, offset, endpoint);
-                break;
-            case SWITCH_COLOR_REPORT:
-                logger.debug("NODE {}: Process Color SWITCH_COLOR_REPORT", getNode().getNodeId());
-                processColorReport(serialMessage, offset, endpoint);
-                break;
-            default:
-                logger.warn(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
-                        getCommandClass().getLabel(), getCommandClass().getKey()));
-                break;
-        }
+        return CommandClass.COMMAND_CLASS_SWITCH_COLOR;
     }
 
     /**
@@ -121,10 +92,9 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
      * @param endpoint the endpoint or instance number this message is meant for.
      * @throws ZWaveSerialMessageException
      */
-    protected void processColorSupportedReport(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        int deviceColors = serialMessage.getMessagePayloadByte(offset + 1)
-                + serialMessage.getMessagePayloadByte(offset + 2) * 256;
+    @ZWaveResponseHandler(id = SWITCH_COLOR_SUPPORTED_REPORT, name = "SWITCH_COLOR_SUPPORTED_REPORT")
+    public void handleSwitchColorSupportedReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int deviceColors = payload.getPayloadByte(2) + payload.getPayloadByte(3) * 256;
         for (int i = 0; i < 16; ++i) {
             if ((deviceColors & (1 << i)) == (1 << i)) {
                 ZWaveColorType color = ZWaveColorType.getColorType(i);
@@ -159,10 +129,10 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
      * @param endpoint the endpoint or instance number this message is meant for.
      * @throws ZWaveSerialMessageException
      */
-    protected void processColorReport(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        int color = serialMessage.getMessagePayloadByte(offset + 1);
-        int level = serialMessage.getMessagePayloadByte(offset + 2);
+    @ZWaveResponseHandler(id = SWITCH_COLOR_REPORT, name = "SWITCH_COLOR_REPORT")
+    public void handleSwitchColorReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int color = payload.getPayloadByte(2);
+        int level = payload.getPayloadByte(3);
         ZWaveColorType colorType = ZWaveColorType.getColorType(color);
         if (colorType == null) {
             logger.error("NODE {}: Color report for unknown color {} ({})", getNode().getNodeId(), color, level);
@@ -183,6 +153,11 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
             ZWaveCommandClassValueEvent zEvent = new ZWaveColorValueEvent(getNode().getNodeId(), endpoint, colorMap);
             getController().notifyEventListeners(zEvent);
         }
+    }
+
+    @ZWaveResponseHandler(id = SWITCH_COLOR_SET, name = "SWITCH_COLOR_SET")
+    public void handleSwitchColorSet(ZWaveCommandClassPayload payload, int endpoint) {
+        handleSwitchColorReport(payload, endpoint);
     }
 
     /**
@@ -423,7 +398,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
          * @param value the value for the event.
          */
         public ZWaveColorValueEvent(int nodeId, int endpoint, Map<ZWaveColorType, Integer> colorMap) {
-            super(nodeId, endpoint, CommandClass.COLOR, 0);
+            super(nodeId, endpoint, CommandClass.COMMAND_CLASS_SWITCH_COLOR, 0);
             this.colorMap = colorMap;
         }
 

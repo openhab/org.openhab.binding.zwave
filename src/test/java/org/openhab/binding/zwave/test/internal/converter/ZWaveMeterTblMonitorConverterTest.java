@@ -42,8 +42,8 @@ public class ZWaveMeterTblMonitorConverterTest {
     private ZWaveThingChannel createChannel(String type) {
         Map<String, String> args = new HashMap<String, String>();
         args.put("type", type);
-        return new ZWaveThingChannel(null, uid, DataType.DecimalType, CommandClass.METER_TBL_MONITOR.toString(), 0,
-                args);
+        return new ZWaveThingChannel(null, uid, DataType.DecimalType,
+                CommandClass.COMMAND_CLASS_METER_TBL_MONITOR.toString(), 0, args);
     }
 
     private ZWaveCommandClassValueEvent createEvent(MeterTblMonitorType type, MeterTblMonitorScale scale,

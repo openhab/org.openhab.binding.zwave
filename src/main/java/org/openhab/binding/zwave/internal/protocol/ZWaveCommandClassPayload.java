@@ -29,6 +29,10 @@ public class ZWaveCommandClassPayload {
         return payload.length;
     }
 
+    public byte[] getPayloadBuffer() {
+        return payload;
+    }
+
     // @Override
     // String toString() {
     // return String.format("Class:%02X, Cmd:%d" payload[0])

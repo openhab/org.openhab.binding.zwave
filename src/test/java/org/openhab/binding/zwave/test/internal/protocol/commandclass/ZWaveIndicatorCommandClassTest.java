@@ -26,7 +26,8 @@ public class ZWaveIndicatorCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void getValueMessage() {
-        ZWaveIndicatorCommandClass cls = (ZWaveIndicatorCommandClass) getCommandClass(CommandClass.INDICATOR);
+        ZWaveIndicatorCommandClass cls = (ZWaveIndicatorCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_INDICATOR);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, -121, 2, 0, 0, 1 };
@@ -38,7 +39,8 @@ public class ZWaveIndicatorCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void setValueMessage() {
-        ZWaveIndicatorCommandClass cls = (ZWaveIndicatorCommandClass) getCommandClass(CommandClass.INDICATOR);
+        ZWaveIndicatorCommandClass cls = (ZWaveIndicatorCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_INDICATOR);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, -121, 1, 34, 0, 0, 34 };

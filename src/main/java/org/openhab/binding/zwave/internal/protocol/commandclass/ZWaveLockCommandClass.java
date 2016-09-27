@@ -10,11 +10,11 @@ package org.openhab.binding.zwave.internal.protocol.commandclass;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
@@ -30,7 +30,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  * @author Chris Jackson
  * @author Dave Badia
  */
-@XStreamAlias("lockCommandClass")
+@XStreamAlias("COMMAND_CLASS_LOCK")
 public class ZWaveLockCommandClass extends ZWaveCommandClass implements ZWaveGetCommands, ZWaveSetCommands {
 
     private static final Logger logger = LoggerFactory.getLogger(ZWaveLockCommandClass.class);
@@ -61,33 +61,17 @@ public class ZWaveLockCommandClass extends ZWaveCommandClass implements ZWaveGet
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.LOCK;
+        return CommandClass.COMMAND_CLASS_LOCK;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received Lock Request", this.getNode().getNodeId());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case LOCK_REPORT:
-                int lockState = serialMessage.getMessagePayloadByte(offset + 1);
-                logger.debug("NODE {}: Lock report - lockState={}", this.getNode().getNodeId(), lockState);
+    @ZWaveResponseHandler(id = LOCK_REPORT, name = "LOCK_REPORT")
+    public void handleIndicatorReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int lockState = payload.getPayloadByte(2);
+        logger.debug("NODE {}: Lock report - lockState={}", this.getNode().getNodeId(), lockState);
 
-                ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(this.getNode().getNodeId(),
-                        endpoint, CommandClass.LOCK, lockState);
-                this.getController().notifyEventListeners(zEvent);
-                break;
-            default:
-                logger.warn(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
-                        this.getCommandClass().getLabel(), this.getCommandClass().getKey()));
-                break;
-        }
+        ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(this.getNode().getNodeId(), endpoint,
+                getCommandClass(), lockState);
+        this.getController().notifyEventListeners(zEvent);
     }
 
     /**

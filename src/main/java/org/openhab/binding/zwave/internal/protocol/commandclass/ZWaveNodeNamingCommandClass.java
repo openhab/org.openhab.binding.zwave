@@ -17,6 +17,7 @@ import java.util.Collection;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -46,7 +47,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Pedro Paixao
  */
 
-@XStreamAlias("nodeNamingCommandClass")
+@XStreamAlias("COMMAND_CLASS_NODE_NAMING")
 public class ZWaveNodeNamingCommandClass extends ZWaveCommandClass implements ZWaveCommandClassDynamicState {
 
     public enum Type {
@@ -109,36 +110,7 @@ public class ZWaveNodeNamingCommandClass extends ZWaveCommandClass implements ZW
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.NODE_NAMING;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received NODE_NAMING command V{}", getNode().getNodeId(), getVersion());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-
-            case NAME_REPORT:
-                logger.trace("NODE {}: Process Name Report", getNode().getNodeId());
-                processNameReport(serialMessage, offset, endpoint);
-                initialiseName = true;
-                break;
-            case LOCATION_REPORT:
-                logger.trace("NODE {}: Process Location Report", getNode().getNodeId());
-                processLocationReport(serialMessage, offset, endpoint);
-                initialiseLocation = true;
-                break;
-
-            default:
-                logger.warn(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
-                        getCommandClass().getLabel(), getCommandClass().getKey()));
-        }
+        return CommandClass.COMMAND_CLASS_NODE_NAMING;
     }
 
     /**
@@ -149,12 +121,8 @@ public class ZWaveNodeNamingCommandClass extends ZWaveCommandClass implements ZW
      * @return String
      * @throws ZWaveSerialMessageException
      */
-    protected String getString(SerialMessage serialMessage, int offset) throws ZWaveSerialMessageException {
-        if (serialMessage.getMessagePayload().length <= offset + 1) {
-            return new String();
-        }
-
-        int charPresentation = serialMessage.getMessagePayloadByte(offset + 1);
+    protected String getString(ZWaveCommandClassPayload payload) {
+        int charPresentation = payload.getPayloadByte(1);
 
         // First 5 bits are reserved so 0 them
         charPresentation = 0x07 & charPresentation;
@@ -176,11 +144,11 @@ public class ZWaveNodeNamingCommandClass extends ZWaveCommandClass implements ZW
                 return null;
         }
 
-        int numBytes = serialMessage.getMessagePayload().length - (offset + 2);
+        int numBytes = payload.getPayloadLength() - 2;
 
         if (numBytes < 0) {
             logger.error("NODE {} : Node Name report error in message length ({})", getNode().getNodeId(),
-                    serialMessage.getMessagePayload().length);
+                    payload.getPayloadLength());
             return null;
         }
 
@@ -203,9 +171,8 @@ public class ZWaveNodeNamingCommandClass extends ZWaveCommandClass implements ZW
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         // Check for null terminations - ignore anything after the first null
         for (int c = 0; c < numBytes; c++) {
-            if (serialMessage.getMessagePayloadByte(c + offset + 2) > 32
-                    && serialMessage.getMessagePayloadByte(c + offset + 2) < 127) {
-                baos.write((byte) (serialMessage.getMessagePayloadByte(c + offset + 2)));
+            if (payload.getPayloadByte(c + 3) > 32 && payload.getPayloadByte(c + 3) < 127) {
+                baos.write((byte) (payload.getPayloadByte(c + 3)));
             }
         }
         try {
@@ -245,17 +212,9 @@ public class ZWaveNodeNamingCommandClass extends ZWaveCommandClass implements ZW
          */
     }
 
-    /**
-     * Processes a NAME_REPORT message.
-     *
-     * @param serialMessage the incoming message to process.
-     * @param offset the offset position from which to start message processing.
-     * @param endpoint the endpoint or instance number this message is meant for.
-     * @throws ZWaveSerialMessageException
-     */
-    protected void processNameReport(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        String name = getString(serialMessage, offset);
+    @ZWaveResponseHandler(id = NAME_REPORT, name = "NAME_REPORT")
+    public void handleNameReport(ZWaveCommandClassPayload payload, int endpoint) {
+        String name = getString(payload);
         if (name == null) {
             return;
         }
@@ -267,17 +226,9 @@ public class ZWaveNodeNamingCommandClass extends ZWaveCommandClass implements ZW
         getController().notifyEventListeners(zEvent);
     }
 
-    /**
-     * Processes a LOCATION_REPORT / LOCATION_SET message.
-     *
-     * @param serialMessage the incoming message to process.
-     * @param offset the offset position from which to start message processing.
-     * @param endpoint the endpoint or instance number this message is meant for.
-     * @throws ZWaveSerialMessageException
-     */
-    protected void processLocationReport(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        String location = getString(serialMessage, offset);
+    @ZWaveResponseHandler(id = LOCATION_REPORT, name = "LOCATION_REPORT")
+    public void handleLocationReport(ZWaveCommandClassPayload payload, int endpoint) {
+        String location = getString(payload);
         if (name == null) {
             return;
         }

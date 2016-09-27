@@ -31,7 +31,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  * @author Jan-Willem Spuij
  */
-@XStreamAlias("noOperationCommandClass")
+@XStreamAlias("COMMAND_CLASS_NO_OPERATION")
 public class ZWaveNoOperationCommandClass extends ZWaveCommandClass {
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveNoOperationCommandClass.class);
@@ -56,15 +56,7 @@ public class ZWaveNoOperationCommandClass extends ZWaveCommandClass {
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.NO_OPERATION;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint) {
-        logger.debug("NODE {}: Received NO_OPERATION command V{}", getNode().getNodeId(), getVersion());
+        return CommandClass.COMMAND_CLASS_NO_OPERATION;
     }
 
     /**
@@ -76,8 +68,8 @@ public class ZWaveNoOperationCommandClass extends ZWaveCommandClass {
         logger.debug("NODE {}: Creating new message for command NO_OPERATION_PING", getNode().getNodeId());
 
         SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.SendData)
-                .withPayload(getNode().getNodeId(), 1, CommandClass.NO_OPERATION.getKey())
-                .withNodeId(getNode().getNodeId()).build();
+                .withPayload(getNode().getNodeId(), 1, getCommandClass().getKey()).withNodeId(getNode().getNodeId())
+                .build();
 
         return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Poll).build();
     }

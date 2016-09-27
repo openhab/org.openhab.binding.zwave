@@ -17,6 +17,7 @@ import java.util.Map;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -40,7 +41,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Jan-Willem Spuij
  * @author Dave Hock
  */
-@XStreamAlias("thermostatSetpointCommandClass")
+@XStreamAlias("COMMAND_CLASS_THERMOSTAT_SETPOINT")
 public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
         implements ZWaveBasicCommands, ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
 
@@ -82,7 +83,7 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.THERMOSTAT_SETPOINT;
+        return CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT;
     }
 
     /**
@@ -93,56 +94,36 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
         return 2;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received Thermostat Setpoint Request", this.getNode().getNodeId());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case THERMOSTAT_SETPOINT_SUPPORTED_REPORT:
-                logger.debug("NODE {}: Process Thermostat Supported Setpoint Report", this.getNode().getNodeId());
+    @ZWaveResponseHandler(id = THERMOSTAT_SETPOINT_SUPPORTED_REPORT, name = "THERMOSTAT_SETPOINT_SUPPORTED_REPORT")
+    public void handleThermostatSetpointSupportedReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int payloadLength = payload.getPayloadLength();
 
-                int payloadLength = serialMessage.getMessagePayload().length;
-
-                for (int i = offset + 1; i < payloadLength; ++i) {
-                    int bitMask = serialMessage.getMessagePayloadByte(i);
-                    for (int bit = 0; bit < 8; ++bit) {
-                        if ((bitMask & (1 << bit)) == 0) {
-                            continue;
-                        }
-
-                        int index = ((i - (offset + 1)) * 8) + bit;
-                        if (index >= SetpointType.values().length) {
-                            continue;
-                        }
-
-                        // (n)th bit is set. n is the index for the setpoint type enumeration.
-                        SetpointType setpointTypeToAdd = SetpointType.getSetpointType(index);
-                        if (setpointTypeToAdd != null) {
-                            Setpoint newSetpoint = new Setpoint(setpointTypeToAdd);
-                            this.setpoints.put(setpointTypeToAdd, newSetpoint);
-                            logger.debug("NODE {}: Added mode type {} ({})", this.getNode().getNodeId(),
-                                    setpointTypeToAdd.getLabel(), index);
-                        } else {
-                            logger.warn("NODE {}: Unknown mode type {}", this.getNode().getNodeId(), index);
-                        }
-                    }
+        for (int i = 2; i < payloadLength; ++i) {
+            int bitMask = payload.getPayloadByte(i);
+            for (int bit = 0; bit < 8; ++bit) {
+                if ((bitMask & (1 << bit)) == 0) {
+                    continue;
                 }
 
-                initialiseDone = true;
-                break;
-            case THERMOSTAT_SETPOINT_REPORT:
-                processThermostatSetpointReport(serialMessage, offset, endpoint);
-                break;
-            default:
-                logger.warn("NODE {}: Unsupported Command {} for command class {} ({}).", this.getNode().getNodeId(),
-                        command, this.getCommandClass().getLabel(), this.getCommandClass().getKey());
+                int index = ((i - 2) * 8) + bit;
+                if (index >= SetpointType.values().length) {
+                    continue;
+                }
+
+                // (n)th bit is set. n is the index for the setpoint type enumeration.
+                SetpointType setpointTypeToAdd = SetpointType.getSetpointType(index);
+                if (setpointTypeToAdd != null) {
+                    Setpoint newSetpoint = new Setpoint(setpointTypeToAdd);
+                    this.setpoints.put(setpointTypeToAdd, newSetpoint);
+                    logger.debug("NODE {}: Added mode type {} ({})", this.getNode().getNodeId(),
+                            setpointTypeToAdd.getLabel(), index);
+                } else {
+                    logger.warn("NODE {}: Unknown mode type {}", this.getNode().getNodeId(), index);
+                }
+            }
         }
+
+        initialiseDone = true;
     }
 
     /**
@@ -153,14 +134,14 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
      * @param endpoint the endpoint or instance number this message is meant for.
      * @throws ZWaveSerialMessageException
      */
-    protected void processThermostatSetpointReport(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
+    @ZWaveResponseHandler(id = THERMOSTAT_SETPOINT_REPORT, name = "THERMOSTAT_SETPOINT_REPORT")
+    public void handleThermostatSetpointReport(ZWaveCommandClassPayload payload, int endpoint) {
 
-        int setpointTypeCode = serialMessage.getMessagePayloadByte(offset + 1);
-        int scale = (serialMessage.getMessagePayloadByte(offset + 2) >> 3) & 0x03;
+        int setpointTypeCode = payload.getPayloadByte(2);
+        int scale = (payload.getPayloadByte(3) >> 3) & 0x03;
 
         try {
-            BigDecimal value = extractValue(serialMessage.getMessagePayload(), offset + 2);
+            BigDecimal value = extractValue(payload, 3);
 
             logger.debug("NODE {}: Thermostat Setpoint report Scale = {}", this.getNode().getNodeId(), scale);
             logger.debug("NODE {}: Thermostat Setpoint Value = {}", this.getNode().getNodeId(), value);
@@ -495,7 +476,7 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
          */
         private ZWaveThermostatSetpointValueEvent(int nodeId, int endpoint, SetpointType setpointType, int scale,
                 Object value) {
-            super(nodeId, endpoint, CommandClass.THERMOSTAT_SETPOINT, value);
+            super(nodeId, endpoint, CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT, value);
             this.setpointType = setpointType;
             this.scale = scale;
         }

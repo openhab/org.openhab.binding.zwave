@@ -27,7 +27,8 @@ public class ZWavePowerLevelCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void getValueMessage() {
-        ZWavePowerLevelCommandClass cls = (ZWavePowerLevelCommandClass) getCommandClass(CommandClass.POWERLEVEL);
+        ZWavePowerLevelCommandClass cls = (ZWavePowerLevelCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_POWERLEVEL);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 115, 2, 0, 0, -11 };
@@ -39,7 +40,8 @@ public class ZWavePowerLevelCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void setValueMessage() {
-        ZWavePowerLevelCommandClass cls = (ZWavePowerLevelCommandClass) getCommandClass(CommandClass.POWERLEVEL);
+        ZWavePowerLevelCommandClass cls = (ZWavePowerLevelCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_POWERLEVEL);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, 115, 1, 1, 1, 0, 0, -14 };

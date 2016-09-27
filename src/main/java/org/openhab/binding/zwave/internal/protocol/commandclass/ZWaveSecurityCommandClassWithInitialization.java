@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEventListener;
@@ -112,7 +113,8 @@ public class ZWaveSecurityCommandClassWithInitialization extends ZWaveSecurityCo
                     .getSecurityPayload();
             // if the message we just created is SECURITY_NETWORK_KEY_SET, then we need to change our Network Key
             // to use the real key, as the reply we will get back will be encrypted with the real Network key
-            if (bytesAreEqual(securityPayload.getMessageBytes()[0], ZWaveCommandClass.CommandClass.SECURITY.getKey())
+            if (bytesAreEqual(securityPayload.getMessageBytes()[0],
+                    ZWaveCommandClass.CommandClass.COMMAND_CLASS_SECURITY.getKey())
                     && bytesAreEqual(securityPayload.getMessageBytes()[1], SECURITY_NETWORK_KEY_SET)) {
                 logger.info("NODE {}: Setting Network Key to real key after SECURITY_NETWORK_KEY_SET",
                         getNode().getNodeId());
@@ -144,140 +146,114 @@ public class ZWaveSecurityCommandClassWithInitialization extends ZWaveSecurityCo
         }
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        byte command = (byte) serialMessage.getMessagePayloadByte(offset);
-
+    @ZWaveResponseHandler(id = SECURITY_SCHEME_REPORT, name = "SECURITY_SCHEME_REPORT")
+    protected void handleSecuritySchemeReport(ZWaveCommandClassPayload payload, int endpoint) {
         logger.debug("NODE {}: Received SECURITY command V{}", getNode().getNodeId(), getVersion());
-        traceHex("payload bytes for incoming security message", serialMessage.getMessagePayload());
+        traceHex("payload bytes for incoming security message", payload.getPayloadBuffer());
         lastReceivedMessageTimestamp = System.currentTimeMillis();
-        if (inclusionStateTracker != null && !inclusionStateTracker.verifyAndAdvanceState(command)) {
+        if (inclusionStateTracker != null && !inclusionStateTracker.verifyAndAdvanceState(payload.getPayloadByte(1))) {
             // bad order, abort
             return;
         }
-
-        switch (command) {
-            case SECURITY_SCHEME_REPORT:
-                // Should be received during inclusion only
-                if (!wasThisNodeJustIncluded() || inclusionStateTracker == null) {
-                    logger.error(
-                            "NODE {}: SECURITY_ERROR Received SECURITY_SCHEME_REPORT but we are not in inclusion mode! {}",
-                            serialMessage);
-                    return;
-                }
-
-                int schemes = serialMessage.getMessagePayloadByte(offset + 1);
-                logger.debug("NODE {}: Received Security Scheme Report: ", this.getNode().getNodeId(), schemes);
-                if (schemes == SECURITY_SCHEME_ZERO) {
-                    // Since we've agreed on a scheme for which to exchange our key
-                    // we now send our NetworkKey to the device
-                    logger.debug("NODE {}: Security scheme agreed.", getNode().getNodeId());
-
-                    SerialMessage networkKeyMessage = new ZWaveSendDataMessageBuilder()
-                            .withCommandClass(getCommandClass(), SECURITY_NETWORK_KEY_SET)
-                            .withPayload(realNetworkKey.getEncoded()).withNodeId(getNode().getNodeId()).build();
-
-                    ZWaveTransaction networkKeyTransaction = new ZWaveTransactionBuilder(networkKeyMessage)
-                            .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                            .withExpectedResponseCommandClass(getCommandClass(), SECURITY_NETWORK_KEY_VERIFY)
-                            .withPriority(TransactionPriority.Config).build();
-
-                    // We can't set SECURITY_NETWORK_KEY_SET in inclusionStateTracker because we need to do a
-                    // NONCE_GET before sending. So put this in our encrypt send queue
-                    // and give inclusionStateTracker/ZWaveNodeStageAdvancer the NONCE_GET
-                    queueMessageForEncapsulationAndTransmission(networkKeyTransaction);
-                    if (!inclusionStateTracker.verifyAndAdvanceState(SECURITY_NETWORK_KEY_SET)) {
-                        return;
-                    }
-
-                    ZWaveTransaction message = nonceGeneration.buildNonceGetIfNeeded();
-                    // Since we are in init mode, message should always != null
-                    if (message != null) {
-                        // TODO: DB is this true?: logger.error("NODE {}: "+SECURE_INCLUSION_FAILED_MESSAGE+" In
-                        // inclusion mode but buildNonceGetIfNeeded returned null, this may result in a deadlock");
-                        // Let ZWaveNodeStageAdvancer come get the NONCE_GET
-                        inclusionStateTracker.setNextRequest(message);
-                    }
-
-                } else {
-                    // No common security scheme. This really shouldn't happen
-                    inclusionStateTracker.setErrorState("TODO: Security scheme " + schemes + " is not supported");
-                    logger.error(
-                            "NODE {}: " + SECURE_INCLUSION_FAILED_MESSAGE
-                                    + " No common security scheme. Scheme requested was {}",
-                            getNode().getNodeId(), schemes);
-                }
-                return;
-
-            case SECURITY_NETWORK_KEY_VERIFY:
-                // Should be received during inclusion only
-                if (!wasThisNodeJustIncluded() || inclusionStateTracker == null) {
-                    logger.error(
-                            "NODE {}: SECURITY_ERROR Received SECURITY_NETWORK_KEY_VERIFY but we are not in inclusion mode! {}",
-                            serialMessage);
-                    return;
-                }
-
-                // Since we got here, it means we decrypted a packet using the key we sent in
-                // the SECURITY_NETWORK_KEY_SET message and the new key is in use by both sides.
-                // Next step is to send SECURITY_COMMANDS_SUPPORTED_GET
-                if (SEND_SECURITY_COMMANDS_SUPPORTED_GET_ON_STARTUP) {
-                    securePairingComplete = true;
-                }
-
-                SerialMessage supportedGetMessage = new ZWaveSendDataMessageBuilder()
-                        .withCommandClass(getCommandClass(), SECURITY_COMMANDS_SUPPORTED_GET)
-                        .withNodeId(getNode().getNodeId()).build();
-
-                ZWaveTransaction supportedGetTransaction = new ZWaveTransactionBuilder(supportedGetMessage)
-                        .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                        .withExpectedResponseCommandClass(getCommandClass(), SECURITY_COMMANDS_SUPPORTED_REPORT)
-                        .withPriority(TransactionPriority.Config).build();
-
-                inclusionStateTracker.verifyAndAdvanceState(SECURITY_COMMANDS_SUPPORTED_GET);
-                ZWaveTransaction nonceGetMessage = nonceGeneration.buildNonceGetIfNeeded();
-                // Since we are in init mode, message should always != null
-                if (nonceGetMessage == null) {
-                    inclusionStateTracker.setErrorState(SECURE_INCLUSION_FAILED_MESSAGE
-                            + " In inclusion mode but buildNonceGetIfNeeded returned null,"
-                            + " this may result in a deadlock");
-                    return;
-                }
-                inclusionStateTracker.setNextRequest(nonceGetMessage); // Let ZWaveNodeStageAdvancer come get it
-
-                // We can't set SECURITY_COMMANDS_SUPPORTED_GET in inclusionStateTracker because we need to do a
-                // NONCE_GET before sending. So put this in our encrypt send queue
-                // and give inclusionStateTracker/ZWaveNodeStageAdvancer the NONCE_GET
-                queueMessageForEncapsulationAndTransmission(supportedGetTransaction);
-                return;
-
-            case SECURITY_COMMANDS_SUPPORTED_REPORT:
-                processSecurityCommandsSupportedReport(serialMessage, offset);
-                // This can be received during device inclusion or outside of it
-                if (inclusionStateTracker != null) {
-                    // We're done with all of our NodeStage#SECURITY_REPORT stuff, set inclusionStateTracker to null
-                    inclusionStateTracker = null;
-                }
-                return;
-
-            case SECURITY_NONCE_GET: // SECURITY_NONCE_GET is handled by superclass
-            case SECURITY_NONCE_REPORT: // SECURITY_NONCE_GET is handled by superclass
-                super.handleApplicationCommandRequest(serialMessage, offset, endpoint);
-                return;
-
-            default:
-                logger.warn(String.format(
-                        "NODE %d: SECURITY_ERROR Unsupported Command 0x%02X for command class %s (0x%02X) for message %s.",
-                        getNode().getNodeId(), command, getCommandClass().getLabel(), getCommandClass().getKey(),
-                        serialMessage));
-                break;
+        // Should be received during inclusion only
+        if (!wasThisNodeJustIncluded() || inclusionStateTracker == null) {
+            logger.error("NODE {}: SECURITY_ERROR Received SECURITY_SCHEME_REPORT but we are not in inclusion mode! {}",
+                    payload);
+            return;
         }
+
+        int schemes = payload.getPayloadByte(2);
+        logger.debug("NODE {}: Received Security Scheme Report: ", getNode().getNodeId(), schemes);
+        if (schemes == SECURITY_SCHEME_ZERO) {
+            // Since we've agreed on a scheme for which to exchange our key
+            // we now send our NetworkKey to the device
+            logger.debug("NODE {}: Security scheme agreed.", getNode().getNodeId());
+
+            SerialMessage networkKeyMessage = new ZWaveSendDataMessageBuilder()
+                    .withCommandClass(getCommandClass(), SECURITY_NETWORK_KEY_SET)
+                    .withPayload(realNetworkKey.getEncoded()).withNodeId(getNode().getNodeId()).build();
+
+            ZWaveTransaction networkKeyTransaction = new ZWaveTransactionBuilder(networkKeyMessage)
+                    .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                    .withExpectedResponseCommandClass(getCommandClass(), SECURITY_NETWORK_KEY_VERIFY)
+                    .withPriority(TransactionPriority.Config).build();
+
+            // We can't set SECURITY_NETWORK_KEY_SET in inclusionStateTracker because we need to do a
+            // NONCE_GET before sending. So put this in our encrypt send queue
+            // and give inclusionStateTracker/ZWaveNodeStageAdvancer the NONCE_GET
+            queueMessageForEncapsulationAndTransmission(networkKeyTransaction);
+            if (!inclusionStateTracker.verifyAndAdvanceState(SECURITY_NETWORK_KEY_SET)) {
+                return;
+            }
+
+            ZWaveTransaction message = nonceGeneration.buildNonceGetIfNeeded();
+            // Since we are in init mode, message should always != null
+            if (message != null) {
+                // TODO: DB is this true?: logger.error("NODE {}: "+SECURE_INCLUSION_FAILED_MESSAGE+" In
+                // inclusion mode but buildNonceGetIfNeeded returned null, this may result in a deadlock");
+                // Let ZWaveNodeStageAdvancer come get the NONCE_GET
+                inclusionStateTracker.setNextRequest(message);
+            }
+
+        } else {
+            // No common security scheme. This really shouldn't happen
+            inclusionStateTracker.setErrorState("TODO: Security scheme " + schemes + " is not supported");
+            logger.error("NODE {}: " + SECURE_INCLUSION_FAILED_MESSAGE
+                    + " No common security scheme. Scheme requested was {}", getNode().getNodeId(), schemes);
+        }
+    }
+
+    @ZWaveResponseHandler(id = SECURITY_NETWORK_KEY_VERIFY, name = "SECURITY_NETWORK_KEY_VERIFY")
+    protected void handleSecurityNetworkKeyVerify(ZWaveCommandClassPayload payload, int endpoint) {
+        // Should be received during inclusion only
+        if (!wasThisNodeJustIncluded() || inclusionStateTracker == null) {
+            logger.error(
+                    "NODE {}: SECURITY_ERROR Received SECURITY_NETWORK_KEY_VERIFY but we are not in inclusion mode! {}",
+                    payload);
+            return;
+        }
+
+        // Since we got here, it means we decrypted a packet using the key we sent in
+        // the SECURITY_NETWORK_KEY_SET message and the new key is in use by both sides.
+        // Next step is to send SECURITY_COMMANDS_SUPPORTED_GET
+        if (SEND_SECURITY_COMMANDS_SUPPORTED_GET_ON_STARTUP) {
+            securePairingComplete = true;
+        }
+
+        SerialMessage supportedGetMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), SECURITY_COMMANDS_SUPPORTED_GET).withNodeId(getNode().getNodeId())
+                .build();
+
+        ZWaveTransaction supportedGetTransaction = new ZWaveTransactionBuilder(supportedGetMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), SECURITY_COMMANDS_SUPPORTED_REPORT)
+                .withPriority(TransactionPriority.Config).build();
+
+        inclusionStateTracker.verifyAndAdvanceState(SECURITY_COMMANDS_SUPPORTED_GET);
+        ZWaveTransaction nonceGetMessage = nonceGeneration.buildNonceGetIfNeeded();
+        // Since we are in init mode, message should always != null
+        if (nonceGetMessage == null) {
+            inclusionStateTracker.setErrorState(SECURE_INCLUSION_FAILED_MESSAGE
+                    + " In inclusion mode but buildNonceGetIfNeeded returned null," + " this may result in a deadlock");
+            return;
+        }
+        inclusionStateTracker.setNextRequest(nonceGetMessage); // Let ZWaveNodeStageAdvancer come get it
+
+        // We can't set SECURITY_COMMANDS_SUPPORTED_GET in inclusionStateTracker because we need to do a
+        // NONCE_GET before sending. So put this in our encrypt send queue
+        // and give inclusionStateTracker/ZWaveNodeStageAdvancer the NONCE_GET
+        queueMessageForEncapsulationAndTransmission(supportedGetTransaction);
+    }
+
+    @ZWaveResponseHandler(id = SECURITY_COMMANDS_SUPPORTED_REPORT, name = "SECURITY_COMMANDS_SUPPORTED_REPORT")
+    protected void handleSecurityCommandsReportedReport(ZWaveCommandClassPayload payload, int endpoint) {
+        // processSecurityCommandsSupportedReport(payload);
+        // This can be received during device inclusion or outside of it
+        if (inclusionStateTracker != null) {
+            // We're done with all of our NodeStage#SECURITY_REPORT stuff, set inclusionStateTracker to null
+            inclusionStateTracker = null;
+        }
+
     }
 
     // TODO: DB remove

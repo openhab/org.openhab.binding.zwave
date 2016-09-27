@@ -15,11 +15,11 @@ import java.util.Map;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
@@ -38,7 +38,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  * @author Jan-Willem Spuij
  */
-@XStreamAlias("alarmSensorCommandClass")
+@XStreamAlias("COMMAND_CLASS_SENSOR_ALARM")
 public class ZWaveAlarmSensorCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
 
@@ -74,88 +74,71 @@ public class ZWaveAlarmSensorCommandClass extends ZWaveCommandClass
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.SENSOR_ALARM;
+        return CommandClass.COMMAND_CLASS_SENSOR_ALARM;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received SENSOR_ALARM command V{}", getNode().getNodeId(), getVersion());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case SENSOR_ALARM_REPORT:
-                logger.trace("Process Sensor Alarm Report");
+    @ZWaveResponseHandler(id = SENSOR_ALARM_REPORT, name = "SENSOR_ALARM_REPORT")
+    public void handleSensorAlarmReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int sourceNode = payload.getPayloadByte(2);
+        int alarmTypeCode = payload.getPayloadByte(3);
+        int value = payload.getPayloadByte(4);
 
-                int sourceNode = serialMessage.getMessagePayloadByte(offset + 1);
-                int alarmTypeCode = serialMessage.getMessagePayloadByte(offset + 2);
-                int value = serialMessage.getMessagePayloadByte(offset + 3);
+        // Alarm type seems to be supported, add it to the list if it's not already there.
+        Alarm alarm = getAlarm(alarmTypeCode);
+        if (alarm != null) {
+            alarm.setInitialised();
+
+            logger.debug("NODE {}: Alarm Report: Source={}, Type={}({}), Value={}", getNode().getNodeId(), sourceNode,
+                    alarm.getAlarmType().getLabel(), alarmTypeCode, value);
+
+            ZWaveAlarmSensorValueEvent zEvent = new ZWaveAlarmSensorValueEvent(getNode().getNodeId(), endpoint,
+                    alarm.getAlarmType(), value);
+            getController().notifyEventListeners(zEvent);
+        }
+    }
+
+    @ZWaveResponseHandler(id = SENSOR_ALARM_SUPPORTED_REPORT, name = "SENSOR_ALARM_SUPPORTED_REPORT")
+    public void handleSensorAlarmSupportedReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int numBytes = payload.getPayloadByte(2);
+
+        int manufacturerId = this.getNode().getManufacturer();
+        int deviceType = this.getNode().getDeviceType();
+
+        // TODO: This bodge should be removed and configured through the database!!!
+        // Fibaro alarm sensors do not provide a bitmap of alarm types, but list them byte by byte.
+        if (manufacturerId == 0x010F && deviceType == 0x0700) {
+            logger.debug(
+                    "Detected Fibaro FGK - 101 Door / Window sensor, activating workaround for incorrect encoding of supported alarm bitmap.");
+
+            for (int i = 0; i < numBytes; ++i) {
+                int index = payload.getPayloadByte(i + 3);
+                if (index >= AlarmType.values().length) {
+                    continue;
+                }
 
                 // Alarm type seems to be supported, add it to the list if it's not already there.
-                Alarm alarm = getAlarm(alarmTypeCode);
-                if (alarm != null) {
-                    alarm.setInitialised();
-
-                    logger.debug("NODE {}: Alarm Report: Source={}, Type={}({}), Value={}", getNode().getNodeId(),
-                            sourceNode, alarm.getAlarmType().getLabel(), alarmTypeCode, value);
-
-                    ZWaveAlarmSensorValueEvent zEvent = new ZWaveAlarmSensorValueEvent(getNode().getNodeId(), endpoint,
-                            alarm.getAlarmType(), value);
-                    getController().notifyEventListeners(zEvent);
-                }
-                break;
-            case SENSOR_ALARM_SUPPORTED_REPORT:
-                logger.debug("NODE {}: Process Sensor Supported Alarm Report", this.getNode().getNodeId());
-
-                int numBytes = serialMessage.getMessagePayloadByte(offset + 1);
-
-                int manufacturerId = this.getNode().getManufacturer();
-                int deviceType = this.getNode().getDeviceType();
-
-                // TODO: This bodge should be removed and configured through the database!!!
-                // Fibaro alarm sensors do not provide a bitmap of alarm types, but list them byte by byte.
-                if (manufacturerId == 0x010F && deviceType == 0x0700) {
-                    logger.debug(
-                            "Detected Fibaro FGK - 101 Door / Window sensor, activating workaround for incorrect encoding of supported alarm bitmap.");
-
-                    for (int i = 0; i < numBytes; ++i) {
-                        int index = serialMessage.getMessagePayloadByte(offset + i + 2);
-                        if (index >= AlarmType.values().length) {
-                            continue;
-                        }
-
-                        // Alarm type seems to be supported, add it to the list if it's not already there.
-                        getAlarm(index);
+                getAlarm(index);
+            }
+        } else {
+            for (int i = 0; i < numBytes; ++i) {
+                for (int bit = 0; bit < 8; ++bit) {
+                    if (((payload.getPayloadByte(i + 3)) & (1 << bit)) == 0) {
+                        continue;
                     }
-                } else {
-                    for (int i = 0; i < numBytes; ++i) {
-                        for (int bit = 0; bit < 8; ++bit) {
-                            if (((serialMessage.getMessagePayloadByte(offset + i + 2)) & (1 << bit)) == 0) {
-                                continue;
-                            }
 
-                            int index = (i << 3) + bit;
-                            if (index >= AlarmType.values().length) {
-                                continue;
-                            }
-
-                            // (n)th bit is set. n is the index for the alarm type enumeration.
-                            // Alarm type seems to be supported, add it to the list if it's not already there.
-                            getAlarm(index);
-                        }
+                    int index = (i << 3) + bit;
+                    if (index >= AlarmType.values().length) {
+                        continue;
                     }
-                }
 
-                initialiseDone = true;
-                break;
-            default:
-                logger.warn(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
-                        this.getCommandClass().getLabel(), this.getCommandClass().getKey()));
+                    // (n)th bit is set. n is the index for the alarm type enumeration.
+                    // Alarm type seems to be supported, add it to the list if it's not already there.
+                    getAlarm(index);
+                }
+            }
         }
+
+        initialiseDone = true;
     }
 
     private Alarm getAlarm(int alarmTypeCode) {
@@ -421,7 +404,7 @@ public class ZWaveAlarmSensorCommandClass extends ZWaveCommandClass
          * @param value the value for the event.
          */
         private ZWaveAlarmSensorValueEvent(int nodeId, int endpoint, AlarmType alarmType, Integer value) {
-            super(nodeId, endpoint, CommandClass.SENSOR_ALARM, value);
+            super(nodeId, endpoint, CommandClass.COMMAND_CLASS_SENSOR_ALARM, value);
             this.alarmType = alarmType;
         }
 

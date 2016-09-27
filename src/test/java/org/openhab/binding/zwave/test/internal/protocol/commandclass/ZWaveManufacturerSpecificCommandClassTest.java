@@ -27,7 +27,7 @@ public class ZWaveManufacturerSpecificCommandClassTest extends ZWaveCommandClass
     @Test
     public void getValueMessage() {
         ZWaveManufacturerSpecificCommandClass cls = (ZWaveManufacturerSpecificCommandClass) getCommandClass(
-                CommandClass.MANUFACTURER_SPECIFIC);
+                CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 114, 4, 0, 0, -14 };
@@ -40,7 +40,7 @@ public class ZWaveManufacturerSpecificCommandClassTest extends ZWaveCommandClass
     @Test
     public void getManufacturerSpecificDeviceMessage() {
         ZWaveManufacturerSpecificCommandClass cls = (ZWaveManufacturerSpecificCommandClass) getCommandClass(
-                CommandClass.MANUFACTURER_SPECIFIC);
+                CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC);
         SerialMessage msg;
 
         byte[] expectedResponseSerialNumber = { 1, 10, 0, 19, 99, 3, 114, 6, 1, 0, 0, -13 };

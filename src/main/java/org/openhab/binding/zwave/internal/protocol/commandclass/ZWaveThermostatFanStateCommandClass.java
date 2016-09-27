@@ -17,6 +17,7 @@ import java.util.Set;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -38,7 +39,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  * @author Dan Cunningham
  */
-@XStreamAlias("thermostatFanStateCommandClass")
+@XStreamAlias("COMMAND_CLASS_THERMOSTAT_FAN_STATE")
 public class ZWaveThermostatFanStateCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveCommandClassDynamicState {
 
@@ -71,7 +72,7 @@ public class ZWaveThermostatFanStateCommandClass extends ZWaveCommandClass
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.THERMOSTAT_FAN_STATE;
+        return CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_STATE;
     }
 
     /**
@@ -83,27 +84,6 @@ public class ZWaveThermostatFanStateCommandClass extends ZWaveCommandClass
     }
 
     /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received Thermostat Fan State Request", this.getNode().getNodeId());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case THERMOSTAT_FAN_STATE_REPORT:
-                logger.trace("NODE {}: Process Thermostat Fan State Report", this.getNode().getNodeId());
-                processThermostatFanStateReport(serialMessage, offset, endpoint);
-                break;
-            default:
-                logger.warn("NODE {}: Unsupported Command {} for command class {} ({}).", this.getNode().getNodeId(),
-                        command, this.getCommandClass().getLabel(), this.getCommandClass().getKey());
-        }
-    }
-
-    /**
      * Processes a THERMOSTAT_FAN_STATE_REPORT message.
      *
      * @param serialMessage the incoming message to process.
@@ -111,10 +91,9 @@ public class ZWaveThermostatFanStateCommandClass extends ZWaveCommandClass
      * @param endpoint the endpoint or instance number this message is meant for.
      * @throws ZWaveSerialMessageException
      */
-    protected void processThermostatFanStateReport(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-
-        int value = serialMessage.getMessagePayloadByte(offset + 1);
+    @ZWaveResponseHandler(id = THERMOSTAT_FAN_STATE_REPORT, name = "THERMOSTAT_FAN_STATE_REPORT")
+    public void handleThermostatFanStateReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int value = payload.getPayloadByte(2);
 
         logger.debug("NODE {}: Thermostat fan state report value = {}", this.getNode().getNodeId(), value);
 

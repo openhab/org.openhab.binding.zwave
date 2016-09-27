@@ -115,7 +115,7 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
                         }
 
                         // Check if this is the control marker
-                        if (commandClass == CommandClass.MARK) {
+                        if (commandClass == CommandClass.COMMAND_CLASS_MARK) {
                             // TODO: Implement control command classes
                             break;
                         }

@@ -10,11 +10,11 @@ package org.openhab.binding.zwave.internal.protocol.commandclass;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
@@ -30,7 +30,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  *
  * @author Chris Jackson
  */
-@XStreamAlias("meterPulseCommandClass")
+@XStreamAlias("COMMAND_CLASS_METER_PULSE")
 public class ZWaveMeterPulseCommandClass extends ZWaveCommandClass implements ZWaveGetCommands {
 
     @XStreamOmitField
@@ -55,34 +55,17 @@ public class ZWaveMeterPulseCommandClass extends ZWaveCommandClass implements ZW
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.METER_PULSE;
+        return CommandClass.COMMAND_CLASS_METER_PULSE;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received METER_PULSE command V{}", getNode().getNodeId(), getVersion());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case METER_PULSE_REPORT:
-                int count = (serialMessage.getMessagePayloadByte(offset + 1) << 24)
-                        + (serialMessage.getMessagePayloadByte(offset + 2) << 16)
-                        + (serialMessage.getMessagePayloadByte(offset + 3) << 8)
-                        + serialMessage.getMessagePayloadByte(offset + 4);
-                logger.debug("NODE {}: Received meter pulse count {}", getNode().getNodeId(), count);
-                ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
-                        getCommandClass(), count);
-                getController().notifyEventListeners(zEvent);
-                break;
-            default:
-                logger.warn(String.format("NODE %d: Unsupported Command %d for command class %s (0x%02X).",
-                        getNode().getNodeId(), command, getCommandClass().getLabel(), getCommandClass().getKey()));
-        }
+    @ZWaveResponseHandler(id = METER_PULSE_REPORT, name = "METER_PULSE_REPORT")
+    public void handleMeterPulseReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int count = (payload.getPayloadByte(2) << 24) + (payload.getPayloadByte(3) << 16)
+                + (payload.getPayloadByte(4) << 8) + payload.getPayloadByte(5);
+        logger.debug("NODE {}: Received meter pulse count {}", getNode().getNodeId(), count);
+        ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
+                getCommandClass(), count);
+        getController().notifyEventListeners(zEvent);
     }
 
     @Override

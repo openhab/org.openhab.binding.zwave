@@ -45,30 +45,30 @@ public abstract class ZWaveCommandClassConverter {
     static {
         Map<CommandClass, Class<? extends ZWaveCommandClassConverter>> temp = new HashMap<CommandClass, Class<? extends ZWaveCommandClassConverter>>();
 
-        temp.put(CommandClass.ALARM, ZWaveAlarmConverter.class);
-        temp.put(CommandClass.BARRIER_OPERATOR, ZWaveBarrierOperatorConverter.class);
-        temp.put(CommandClass.BASIC, ZWaveBasicConverter.class);
-        temp.put(CommandClass.BATTERY, ZWaveBatteryConverter.class);
-        temp.put(CommandClass.CENTRAL_SCENE, ZWaveCentralSceneConverter.class);
-        temp.put(CommandClass.CLOCK, ZWaveClockConverter.class);
-        temp.put(CommandClass.COLOR, ZWaveColorConverter.class);
-        temp.put(CommandClass.CONFIGURATION, ZWaveConfigurationConverter.class);
-        temp.put(CommandClass.DOOR_LOCK, ZWaveDoorLockConverter.class);
-        temp.put(CommandClass.METER, ZWaveMeterConverter.class);
-        temp.put(CommandClass.METER_TBL_MONITOR, ZWaveMeterTblMonitorConverter.class);
-        temp.put(CommandClass.PROTECTION, ZWaveProtectionConverter.class);
-        temp.put(CommandClass.SCENE_ACTIVATION, ZWaveSceneActivationConverter.class);
-        temp.put(CommandClass.SENSOR_ALARM, ZWaveAlarmSensorConverter.class);
-        temp.put(CommandClass.SENSOR_BINARY, ZWaveBinarySensorConverter.class);
-        temp.put(CommandClass.SENSOR_MULTILEVEL, ZWaveMultiLevelSensorConverter.class);
-        temp.put(CommandClass.SWITCH_BINARY, ZWaveBinarySwitchConverter.class);
-        temp.put(CommandClass.SWITCH_MULTILEVEL, ZWaveMultiLevelSwitchConverter.class);
-        temp.put(CommandClass.THERMOSTAT_FAN_MODE, ZWaveThermostatFanModeConverter.class);
-        temp.put(CommandClass.THERMOSTAT_FAN_STATE, ZWaveThermostatFanStateConverter.class);
-        temp.put(CommandClass.THERMOSTAT_MODE, ZWaveThermostatModeConverter.class);
-        temp.put(CommandClass.THERMOSTAT_OPERATING_STATE, ZWaveThermostatOperatingStateConverter.class);
-        temp.put(CommandClass.THERMOSTAT_SETPOINT, ZWaveThermostatSetpointConverter.class);
-        temp.put(CommandClass.TIME_PARAMETERS, ZWaveTimeParametersConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_ALARM, ZWaveAlarmConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_BARRIER_OPERATOR, ZWaveBarrierOperatorConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_BASIC, ZWaveBasicConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_BATTERY, ZWaveBatteryConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_CENTRAL_SCENE, ZWaveCentralSceneConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_CLOCK, ZWaveClockConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_SWITCH_COLOR, ZWaveColorConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_CONFIGURATION, ZWaveConfigurationConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_DOOR_LOCK, ZWaveDoorLockConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_METER, ZWaveMeterConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_METER_TBL_MONITOR, ZWaveMeterTblMonitorConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_PROTECTION, ZWaveProtectionConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_SCENE_ACTIVATION, ZWaveSceneActivationConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_SENSOR_ALARM, ZWaveAlarmSensorConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_SENSOR_BINARY, ZWaveBinarySensorConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL, ZWaveMultiLevelSensorConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_SWITCH_BINARY, ZWaveBinarySwitchConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL, ZWaveMultiLevelSwitchConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_MODE, ZWaveThermostatFanModeConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_STATE, ZWaveThermostatFanStateConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_THERMOSTAT_MODE, ZWaveThermostatModeConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_THERMOSTAT_OPERATING_STATE, ZWaveThermostatOperatingStateConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT, ZWaveThermostatSetpointConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_TIME_PARAMETERS, ZWaveTimeParametersConverter.class);
 
         converterMap = Collections.unmodifiableMap(temp);
     }
@@ -130,7 +130,7 @@ public abstract class ZWaveCommandClassConverter {
         Constructor<? extends ZWaveCommandClassConverter> constructor;
         try {
             if (converterMap.get(commandClass) == null) {
-                logger.warn("CommandClass converter {} is not implemented!", commandClass.getLabel());
+                logger.warn("CommandClass converter {} is not implemented!", commandClass);
                 return null;
             }
             constructor = converterMap.get(commandClass).getConstructor(ZWaveControllerHandler.class);

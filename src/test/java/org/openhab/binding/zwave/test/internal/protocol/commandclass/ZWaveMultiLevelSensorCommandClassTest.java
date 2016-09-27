@@ -40,7 +40,7 @@ public class ZWaveMultiLevelSensorCommandClassTest extends ZWaveCommandClassTest
 
         ZWaveMultiLevelSensorValueEvent event = (ZWaveMultiLevelSensorValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.SENSOR_MULTILEVEL);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL);
         // assertEquals(event.getNodeId(), 2);
         assertEquals(event.getEndpoint(), 0);
         assertEquals(event.getSensorType(), ZWaveMultiLevelSensorCommandClass.SensorType.LUMINANCE);
@@ -59,7 +59,7 @@ public class ZWaveMultiLevelSensorCommandClassTest extends ZWaveCommandClassTest
 
         ZWaveMultiLevelSensorValueEvent event = (ZWaveMultiLevelSensorValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.SENSOR_MULTILEVEL);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL);
         // assertEquals(event.getNodeId(), 2);
         assertEquals(event.getEndpoint(), 0);
         assertEquals(event.getSensorType(), ZWaveMultiLevelSensorCommandClass.SensorType.TEMPERATURE);
@@ -78,7 +78,7 @@ public class ZWaveMultiLevelSensorCommandClassTest extends ZWaveCommandClassTest
 
         ZWaveMultiLevelSensorValueEvent event = (ZWaveMultiLevelSensorValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.SENSOR_MULTILEVEL);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL);
         // assertEquals(event.getNodeId(), 2);
         assertEquals(event.getEndpoint(), 0);
         assertEquals(event.getSensorType(), ZWaveMultiLevelSensorCommandClass.SensorType.TEMPERATURE);
@@ -89,7 +89,7 @@ public class ZWaveMultiLevelSensorCommandClassTest extends ZWaveCommandClassTest
     @Test
     public void getMessageDirectionV5() {
         ZWaveMultiLevelSensorCommandClass cls = (ZWaveMultiLevelSensorCommandClass) getCommandClass(
-                CommandClass.SENSOR_MULTILEVEL);
+                CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, 49, 4, 7, 0, 0, 16, -94 };
@@ -102,7 +102,7 @@ public class ZWaveMultiLevelSensorCommandClassTest extends ZWaveCommandClassTest
     @Test
     public void getMessageTemperatureV1() {
         ZWaveMultiLevelSensorCommandClass cls = (ZWaveMultiLevelSensorCommandClass) getCommandClass(
-                CommandClass.SENSOR_MULTILEVEL);
+                CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 49, 4, 0, 1, -80 };
@@ -116,7 +116,7 @@ public class ZWaveMultiLevelSensorCommandClassTest extends ZWaveCommandClassTest
     @Test
     public void getMessageTemperatureV5() {
         ZWaveMultiLevelSensorCommandClass cls = (ZWaveMultiLevelSensorCommandClass) getCommandClass(
-                CommandClass.SENSOR_MULTILEVEL);
+                CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, 49, 4, 1, 0, 0, 1, -75 };
@@ -129,7 +129,7 @@ public class ZWaveMultiLevelSensorCommandClassTest extends ZWaveCommandClassTest
     @Test
     public void getSupportedSensorMessage() {
         ZWaveMultiLevelSensorCommandClass cls = (ZWaveMultiLevelSensorCommandClass) getCommandClass(
-                CommandClass.SENSOR_MULTILEVEL);
+                CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL);
         SerialMessage msg;
 
         cls.setVersion(1);
@@ -146,7 +146,7 @@ public class ZWaveMultiLevelSensorCommandClassTest extends ZWaveCommandClassTest
     @Test
     public void getSupportedScaleMessage() {
         ZWaveMultiLevelSensorCommandClass cls = (ZWaveMultiLevelSensorCommandClass) getCommandClass(
-                CommandClass.SENSOR_MULTILEVEL);
+                CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL);
         SerialMessage msg;
 
         cls.setVersion(1);

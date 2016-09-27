@@ -52,13 +52,14 @@ public class ZWaveThermostatOperatingStateConverter extends ZWaveCommandClassCon
     @Override
     public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveThermostatOperatingStateCommandClass commandClass = (ZWaveThermostatOperatingStateCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.THERMOSTAT_OPERATING_STATE, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_THERMOSTAT_OPERATING_STATE,
+                        channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
 
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
-                commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                commandClass.getCommandClass(), channel.getEndpoint());
         ZWaveTransaction transaction = node.encapsulate(commandClass.getValueMessage(), commandClass,
                 channel.getEndpoint());
 

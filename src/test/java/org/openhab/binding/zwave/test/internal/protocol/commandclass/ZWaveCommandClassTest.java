@@ -68,7 +68,7 @@ public class ZWaveCommandClassTest {
 
         try {
             ByteArrayOutputStream payloadData = new ByteArrayOutputStream();
-            for (int index = 3; index < msg.getMessagePayload().length - 2; index++) {
+            for (int index = 3; index < msg.getMessagePayload().length; index++) {
                 payloadData.write((byte) msg.getMessagePayloadByte(index));
             }
 

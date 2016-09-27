@@ -47,7 +47,8 @@ public class ZWaveMeterConverterTest extends ZWaveCommandClassConverterTest {
     private ZWaveThingChannel createChannel(String type) {
         Map<String, String> args = new HashMap<String, String>();
         args.put("type", type);
-        return new ZWaveThingChannel(null, uid, DataType.DecimalType, CommandClass.METER.toString(), 0, args);
+        return new ZWaveThingChannel(null, uid, DataType.DecimalType, CommandClass.COMMAND_CLASS_METER.toString(), 0,
+                args);
     }
 
     private ZWaveCommandClassValueEvent createEvent(MeterType type, MeterScale scale, BigDecimal value) {
@@ -77,8 +78,8 @@ public class ZWaveMeterConverterTest extends ZWaveCommandClassConverterTest {
     @Test
     public void Reset() {
         Map<String, String> args = new HashMap<String, String>();
-        ZWaveThingChannel channel = new ZWaveThingChannel(null, uid, DataType.OnOffType, CommandClass.METER.toString(),
-                0, args);
+        ZWaveThingChannel channel = new ZWaveThingChannel(null, uid, DataType.OnOffType,
+                CommandClass.COMMAND_CLASS_METER.toString(), 0, args);
         ZWaveMeterConverter converter = new ZWaveMeterConverter(null);
 
         Map<String, String> options = new HashMap<String, String>();

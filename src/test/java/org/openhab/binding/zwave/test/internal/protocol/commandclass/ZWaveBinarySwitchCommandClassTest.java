@@ -26,7 +26,8 @@ public class ZWaveBinarySwitchCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void getValueMessage() {
-        ZWaveBinarySwitchCommandClass cls = (ZWaveBinarySwitchCommandClass) getCommandClass(CommandClass.SWITCH_BINARY);
+        ZWaveBinarySwitchCommandClass cls = (ZWaveBinarySwitchCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_SWITCH_BINARY);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 37, 2, 0, 1, -94 };
@@ -38,7 +39,8 @@ public class ZWaveBinarySwitchCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void setValueMessage() {
-        ZWaveBinarySwitchCommandClass cls = (ZWaveBinarySwitchCommandClass) getCommandClass(CommandClass.SWITCH_BINARY);
+        ZWaveBinarySwitchCommandClass cls = (ZWaveBinarySwitchCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_SWITCH_BINARY);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 37, 1, -1, 0, 1, 92 };

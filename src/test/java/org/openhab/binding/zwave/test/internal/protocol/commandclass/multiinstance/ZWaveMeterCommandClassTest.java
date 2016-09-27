@@ -38,7 +38,7 @@ public class ZWaveMeterCommandClassTest extends ZWaveMultiInstanceCommandClassTe
 
         ZWaveMeterValueEvent event = (ZWaveMeterValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.METER);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_METER);
         // assertEquals(event.getNodeId(), 59);
         assertEquals(event.getEndpoint(), 3);
         assertEquals(event.getMeterScale(), ZWaveMeterCommandClass.MeterScale.E_KWh);

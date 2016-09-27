@@ -27,7 +27,8 @@ public class ZWaveAlarmSensorCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void getSupportedMessage() {
-        ZWaveAlarmSensorCommandClass cls = (ZWaveAlarmSensorCommandClass) getCommandClass(CommandClass.SENSOR_ALARM);
+        ZWaveAlarmSensorCommandClass cls = (ZWaveAlarmSensorCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_SENSOR_ALARM);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, -100, 3, 0, 0, 27 };
@@ -39,7 +40,8 @@ public class ZWaveAlarmSensorCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void getMessage() {
-        ZWaveAlarmSensorCommandClass cls = (ZWaveAlarmSensorCommandClass) getCommandClass(CommandClass.SENSOR_ALARM);
+        ZWaveAlarmSensorCommandClass cls = (ZWaveAlarmSensorCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_SENSOR_ALARM);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, -100, 1, 6, 0, 0, 29 };

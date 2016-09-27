@@ -324,31 +324,36 @@ public class ZWaveDeviceClass {
                 case WINDOW_COVERING:
                 case THERMOSTAT:
                 case AV_CONTROL_POINT:
-                    return new CommandClass[] { CommandClass.NO_OPERATION, CommandClass.BASIC };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_NO_OPERATION,
+                            CommandClass.COMMAND_CLASS_BASIC };
                 case BINARY_SWITCH:
-                    return new CommandClass[] { CommandClass.NO_OPERATION, CommandClass.BASIC,
-                            CommandClass.SWITCH_BINARY };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_NO_OPERATION,
+                            CommandClass.COMMAND_CLASS_BASIC, CommandClass.COMMAND_CLASS_SWITCH_BINARY };
                 case MULTILEVEL_SWITCH:
-                    return new CommandClass[] { CommandClass.NO_OPERATION, CommandClass.BASIC,
-                            CommandClass.SWITCH_MULTILEVEL };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_NO_OPERATION,
+                            CommandClass.COMMAND_CLASS_BASIC, CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL };
                 case BINARY_SENSOR:
-                    return new CommandClass[] { CommandClass.NO_OPERATION, CommandClass.BASIC,
-                            CommandClass.SENSOR_BINARY };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_NO_OPERATION,
+                            CommandClass.COMMAND_CLASS_BASIC, CommandClass.COMMAND_CLASS_SENSOR_BINARY };
                 case MULTILEVEL_SENSOR:
-                    return new CommandClass[] { CommandClass.NO_OPERATION, CommandClass.BASIC,
-                            CommandClass.SENSOR_MULTILEVEL };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_NO_OPERATION,
+                            CommandClass.COMMAND_CLASS_BASIC, CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL };
                 case PULSE_METER:
-                    return new CommandClass[] { CommandClass.NO_OPERATION, CommandClass.BASIC,
-                            CommandClass.METER_PULSE };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_NO_OPERATION,
+                            CommandClass.COMMAND_CLASS_BASIC, CommandClass.COMMAND_CLASS_METER_PULSE };
                 case METER:
-                    return new CommandClass[] { CommandClass.NO_OPERATION, CommandClass.BASIC };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_NO_OPERATION,
+                            CommandClass.COMMAND_CLASS_BASIC };
                 case ENTRY_CONTROL:
-                    return new CommandClass[] { CommandClass.NO_OPERATION, CommandClass.BASIC, CommandClass.LOCK };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_NO_OPERATION,
+                            CommandClass.COMMAND_CLASS_BASIC, CommandClass.COMMAND_CLASS_LOCK };
                 case ALARM_SENSOR:
-                    return new CommandClass[] { CommandClass.NO_OPERATION, CommandClass.BASIC };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_NO_OPERATION,
+                            CommandClass.COMMAND_CLASS_BASIC };
                 case SEMI_INTEROPERABLE:
-                    return new CommandClass[] { CommandClass.NO_OPERATION, CommandClass.BASIC,
-                            CommandClass.MANUFACTURER_SPECIFIC, CommandClass.VERSION, CommandClass.PROPRIETARY };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_NO_OPERATION,
+                            CommandClass.COMMAND_CLASS_BASIC, CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC,
+                            CommandClass.COMMAND_CLASS_VERSION, CommandClass.COMMAND_CLASS_PROPRIETARY };
                 default:
                     return new CommandClass[0];
             }
@@ -529,7 +534,7 @@ public class ZWaveDeviceClass {
         public CommandClass[] getMandatoryCommandClasses() {
             switch (this) {
                 case SIREN_SWITCH_BINARY:
-                    return new CommandClass[] { CommandClass.MANUFACTURER_SPECIFIC };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC };
                 case NOT_USED:
                 case PORTABLE_REMOTE_CONTROLLER:
                 case PC_CONTROLLER:
@@ -547,8 +552,9 @@ public class ZWaveDeviceClass {
                     return new CommandClass[0];
                 case PORTABLE_SCENE_CONTROLLER:
                 case SCENE_CONTROLLER:
-                    return new CommandClass[] { CommandClass.ASSOCIATION, CommandClass.SCENE_CONTROLLER_CONF,
-                            CommandClass.MANUFACTURER_SPECIFIC };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_ASSOCIATION,
+                            CommandClass.COMMAND_CLASS_SCENE_CONTROLLER_CONF,
+                            CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC };
                 case POWER_SWITCH_BINARY:
                 case POWER_SWITCH_MULTILEVEL:
                     return new CommandClass[0];
@@ -556,63 +562,72 @@ public class ZWaveDeviceClass {
                 case SCENE_SWITCH_BINARY_DISCONTINUED:
                 case SCENE_SWITCH_MULTILEVEL:
                 case SCENE_SWITCH_MULTILEVEL_DISCONTINUED:
-                    return new CommandClass[] { CommandClass.SCENE_ACTIVATION, CommandClass.SCENE_ACTUATOR_CONF,
-                            CommandClass.MANUFACTURER_SPECIFIC };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_SCENE_ACTIVATION,
+                            CommandClass.COMMAND_CLASS_SCENE_ACTUATOR_CONF,
+                            CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC };
                 case MOTOR_MULTIPOSITION:
-                    return new CommandClass[] { CommandClass.VERSION, CommandClass.MANUFACTURER_SPECIFIC };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_VERSION,
+                            CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC };
                 case MOTOR_CONTROL_CLASS_A:
                 case MOTOR_CONTROL_CLASS_B:
                 case MOTOR_CONTROL_CLASS_C:
-                    return new CommandClass[] { CommandClass.SWITCH_BINARY, CommandClass.VERSION,
-                            CommandClass.MANUFACTURER_SPECIFIC };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_SWITCH_BINARY,
+                            CommandClass.COMMAND_CLASS_VERSION, CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC };
                 case SWITCH_TOGGLE_BINARY:
-                    return new CommandClass[] { CommandClass.SWITCH_TOGGLE_BINARY };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_SWITCH_TOGGLE_BINARY };
                 case SWITCH_TOGGLE_MULTILEVEL:
-                    return new CommandClass[] { CommandClass.SWITCH_TOGGLE_MULTILEVEL };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_SWITCH_TOGGLE_MULTILEVEL };
                 case ENERGY_PRODUCTION:
-                    return new CommandClass[] { CommandClass.ENERGY_PRODUCTION };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_ENERGY_PRODUCTION };
                 case SIMPLE_WINDOW_COVERING:
-                    return new CommandClass[] { CommandClass.BASIC_WINDOW_COVERING };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_BASIC_WINDOW_COVERING };
                 case THERMOSTAT_GENERAL:
-                    return new CommandClass[] { CommandClass.MANUFACTURER_SPECIFIC, CommandClass.THERMOSTAT_MODE,
-                            CommandClass.THERMOSTAT_SETPOINT };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC,
+                            CommandClass.COMMAND_CLASS_THERMOSTAT_MODE,
+                            CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT };
                 case SETBACK_SCHEDULE_THERMOSTAT:
                     // TODO: Battery and Wake Up command classes are mandatory for battery operated setback schedule
                     // thermostats.
-                    return new CommandClass[] { CommandClass.CLIMATE_CONTROL_SCHEDULE,
-                            CommandClass.MANUFACTURER_SPECIFIC, CommandClass.MULTI_CMD, CommandClass.VERSION };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_CLIMATE_CONTROL_SCHEDULE,
+                            CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC, CommandClass.COMMAND_CLASS_MULTI_CMD,
+                            CommandClass.COMMAND_CLASS_VERSION };
                 case SATELLITE_RECEIVER:
-                    return new CommandClass[] { CommandClass.SIMPLE_AV_CONTROL, CommandClass.MANUFACTURER_SPECIFIC,
-                            CommandClass.VERSION };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_SIMPLE_AV_CONTROL,
+                            CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC, CommandClass.COMMAND_CLASS_VERSION };
                 case SIMPLE_METER:
-                    return new CommandClass[] { CommandClass.METER, CommandClass.MANUFACTURER_SPECIFIC,
-                            CommandClass.VERSION };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_METER,
+                            CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC, CommandClass.COMMAND_CLASS_VERSION };
                 case ADVANCED_ENERGY_CONTROL:
-                    return new CommandClass[] { CommandClass.METER_TBL_CONFIG, CommandClass.METER_TBL_MONITOR,
-                            CommandClass.MANUFACTURER_SPECIFIC, CommandClass.VERSION };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_METER_TBL_CONFIG,
+                            CommandClass.COMMAND_CLASS_METER_TBL_MONITOR,
+                            CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC, CommandClass.COMMAND_CLASS_VERSION };
 
                 case ALARM_SENSOR_ROUTING_BASIC:
                 case SMOKE_SENSOR_ROUTING_BASIC:
-                    return new CommandClass[] { CommandClass.SENSOR_ALARM, CommandClass.MANUFACTURER_SPECIFIC,
-                            CommandClass.ASSOCIATION, CommandClass.VERSION };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_SENSOR_ALARM,
+                            CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC, CommandClass.COMMAND_CLASS_ASSOCIATION,
+                            CommandClass.COMMAND_CLASS_VERSION };
                 case ALARM_SENSOR_ROUTING:
                 case ALARM_SENSOR_ZENSOR_ADVANCED:
                 case SMOKE_SENSOR_ROUTING:
                 case SMOKE_SENSOR_ZENSOR_ADVANCED:
-                    return new CommandClass[] { CommandClass.SENSOR_ALARM, CommandClass.MANUFACTURER_SPECIFIC,
-                            CommandClass.BATTERY, CommandClass.ASSOCIATION, CommandClass.VERSION };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_SENSOR_ALARM,
+                            CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC, CommandClass.COMMAND_CLASS_BATTERY,
+                            CommandClass.COMMAND_CLASS_ASSOCIATION, CommandClass.COMMAND_CLASS_VERSION };
                 case ALARM_SENSOR_ZENSOR_BASIC:
                 case SMOKE_SENSOR_ZENSOR_BASIC:
-                    return new CommandClass[] { CommandClass.SENSOR_ALARM, CommandClass.MANUFACTURER_SPECIFIC,
-                            CommandClass.VERSION };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_SENSOR_ALARM,
+                            CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC, CommandClass.COMMAND_CLASS_VERSION };
                 case ALARM_SENSOR_ZENSOR:
                 case SMOKE_SENSOR_ZENSOR:
-                    return new CommandClass[] { CommandClass.SENSOR_ALARM, CommandClass.MANUFACTURER_SPECIFIC,
-                            CommandClass.BATTERY, CommandClass.VERSION };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_SENSOR_ALARM,
+                            CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC, CommandClass.COMMAND_CLASS_BATTERY,
+                            CommandClass.COMMAND_CLASS_VERSION };
 
                 case SECURE_KEYPAD_DOOR_LOCK:
-                    return new CommandClass[] { CommandClass.SECURITY, CommandClass.MANUFACTURER_SPECIFIC,
-                            CommandClass.DOOR_LOCK, CommandClass.USER_CODE, CommandClass.VERSION };
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_SECURITY,
+                            CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC, CommandClass.COMMAND_CLASS_DOOR_LOCK,
+                            CommandClass.COMMAND_CLASS_USER_CODE, CommandClass.COMMAND_CLASS_VERSION };
 
                 default:
                     return new CommandClass[0];

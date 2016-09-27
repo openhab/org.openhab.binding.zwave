@@ -92,7 +92,7 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
                 // If we're finished initialisation, then we can treat this like a HAIL
                 if (node.getNodeInitStage() == ZWaveNodeInitStage.DONE) {
                     // If this node supports associations, then assume this should be handled through that mechanism
-                    if (node.getCommandClass(CommandClass.ASSOCIATION) == null) {
+                    if (node.getCommandClass(CommandClass.COMMAND_CLASS_ASSOCIATION) == null) {
                         // If we receive an Application Update Request and the node is already
                         // fully initialised we assume this is a request to the controller to
                         // re-get the current node values
@@ -115,7 +115,7 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
                         }
 
                         // Check if this is the control marker
-                        if (commandClass == CommandClass.MARK) {
+                        if (commandClass == CommandClass.COMMAND_CLASS_MARK) {
                             // TODO: Implement control command classes
                             break;
                         }
@@ -140,7 +140,7 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
 
                 // Treat the node information frame as a wakeup
                 ZWaveWakeUpCommandClass wakeUp = (ZWaveWakeUpCommandClass) node
-                        .getCommandClass(ZWaveCommandClass.CommandClass.WAKE_UP);
+                        .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP);
                 if (wakeUp != null) {
                     wakeUp.setAwake(true);
                 }

@@ -29,7 +29,7 @@ public class ZWaveThermostatSetpointCommandClassTest extends ZWaveCommandClassTe
     @Test
     public void getValueMessage() {
         ZWaveThermostatSetpointCommandClass cls = (ZWaveThermostatSetpointCommandClass) getCommandClass(
-                CommandClass.THERMOSTAT_SETPOINT);
+                CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 67, 4, 0, 0, -61 };
@@ -42,7 +42,7 @@ public class ZWaveThermostatSetpointCommandClassTest extends ZWaveCommandClassTe
     @Test
     public void setMessage() {
         ZWaveThermostatSetpointCommandClass cls = (ZWaveThermostatSetpointCommandClass) getCommandClass(
-                CommandClass.THERMOSTAT_SETPOINT);
+                CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT);
         SerialMessage msg;
 
         byte[] expectedResponse = { 1, 13, 0, 19, 99, 6, 67, 1, 2, 34, 0, -31, 0, 0, 7 };
@@ -56,7 +56,7 @@ public class ZWaveThermostatSetpointCommandClassTest extends ZWaveCommandClassTe
     @Test
     public void getSupportedMessage() {
         ZWaveThermostatSetpointCommandClass cls = (ZWaveThermostatSetpointCommandClass) getCommandClass(
-                CommandClass.THERMOSTAT_SETPOINT);
+                CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 67, 4, 0, 0, -61 };

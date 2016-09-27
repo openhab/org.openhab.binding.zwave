@@ -12,10 +12,10 @@ import java.nio.ByteBuffer;
 import java.util.Arrays;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,7 +28,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  * @author Hans Vanbellingen
  */
-@XStreamAlias("crc16EncapsulationCommandClass")
+@XStreamAlias("COMMAND_CLASS_CRC_16_ENCAP")
 public class ZWaveCRC16EncapsulationCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
@@ -55,12 +55,12 @@ public class ZWaveCRC16EncapsulationCommandClass extends ZWaveCommandClass {
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.CRC_16_ENCAP;
+        return CommandClass.COMMAND_CLASS_CRC_16_ENCAP;
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @throws ZWaveSerialMessageException
      */
     @Override
@@ -86,8 +86,6 @@ public class ZWaveCRC16EncapsulationCommandClass extends ZWaveCommandClass {
      * @throws ZWaveSerialMessageException
      */
     private void handleCRC16EncapResponse(SerialMessage serialMessage, int offset) throws ZWaveSerialMessageException {
-        logger.trace("Process CRC16 Encapsulation");
-
         // calculate CRC
         byte[] payload = serialMessage.getMessagePayload();
         byte[] messageCrc = Arrays.copyOfRange(payload, payload.length - 2, payload.length);

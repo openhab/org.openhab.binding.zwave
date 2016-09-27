@@ -50,14 +50,14 @@ public class ZWaveAlarmSensorConverter extends ZWaveCommandClassConverter {
     @Override
     public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveAlarmSensorCommandClass commandClass = (ZWaveAlarmSensorCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.SENSOR_ALARM, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_SENSOR_ALARM, channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
 
         String alarmType = channel.getArguments().get("alarmType");
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}, alarm {}", node.getNodeId(),
-                commandClass.getCommandClass().getLabel(), channel.getEndpoint(), alarmType);
+                commandClass.getCommandClass(), channel.getEndpoint(), alarmType);
 
         ZWaveTransaction transaction;
         if (alarmType != null) {

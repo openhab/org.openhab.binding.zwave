@@ -13,10 +13,10 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveDelayedPollEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,11 +30,11 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  * @author Dan Cunningham
  */
-@XStreamAlias("ZWaveApplicationStatusClass")
-public class ZWaveApplicationStatusClass extends ZWaveCommandClass {
+@XStreamAlias("COMMAND_CLASS_APPLICATION_STATUS")
+public class ZWaveApplicationStatusCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveApplicationStatusClass.class);
+    private static final Logger logger = LoggerFactory.getLogger(ZWaveApplicationStatusCommandClass.class);
 
     @XStreamOmitField
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
@@ -55,7 +55,7 @@ public class ZWaveApplicationStatusClass extends ZWaveCommandClass {
      * @param controller the controller to use
      * @param endpoint the endpoint this Command class belongs to
      */
-    public ZWaveApplicationStatusClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
+    public ZWaveApplicationStatusCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
     }
 
@@ -64,17 +64,16 @@ public class ZWaveApplicationStatusClass extends ZWaveCommandClass {
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.APPLICATION_STATUS;
+        return CommandClass.COMMAND_CLASS_APPLICATION_STATUS;
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @throws ZWaveSerialMessageException
      */
     @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
+    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint) {
         logger.debug("NODE {}: Application Status message", getNode());
         int status = serialMessage.getMessagePayloadByte(offset++);
         switch (status) {

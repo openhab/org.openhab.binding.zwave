@@ -14,11 +14,11 @@ import java.util.Map;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
@@ -35,7 +35,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  * @author Pedro Paixao
  */
-@XStreamAlias(value = "switchAllCommandClass")
+@XStreamAlias(value = "COMMAND_CLASS_SWITCH_ALL")
 public class ZWaveSwitchAllCommandClass extends ZWaveCommandClass implements ZWaveCommandClassInitialization {
 
     @XStreamOmitField
@@ -115,37 +115,12 @@ public class ZWaveSwitchAllCommandClass extends ZWaveCommandClass implements ZWa
      */
     @Override
     public ZWaveCommandClass.CommandClass getCommandClass() {
-        return ZWaveCommandClass.CommandClass.SWITCH_ALL;
+        return ZWaveCommandClass.CommandClass.COMMAND_CLASS_SWITCH_ALL;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received SWITCH_ALL command V{}", getNode().getNodeId());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case SWITCH_ALL_SET:
-                logger.debug("Switch All Set sent to the controller will be processed as Switch All Report");
-                processSwitchAllReport(serialMessage, offset, endpoint);
-                break;
-            case SWITCH_ALL_REPORT:
-                processSwitchAllReport(serialMessage, offset, endpoint);
-                initialiseDone = true;
-                break;
-            default:
-                logger.warn(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
-                        getCommandClass().getLabel(), getCommandClass().getKey()));
-        }
-    }
-
-    protected void processSwitchAllReport(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        int m = serialMessage.getMessagePayloadByte(offset + 1);
+    @ZWaveResponseHandler(id = SWITCH_ALL_REPORT, name = "SWITCH_ALL_REPORT")
+    public void handleSwitchAllReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int m = payload.getPayloadByte(2);
         mode = SwitchAllMode.fromInteger(m);
 
         if (mode != null) {
@@ -156,7 +131,7 @@ public class ZWaveSwitchAllCommandClass extends ZWaveCommandClass implements ZWa
         }
 
         ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
-                CommandClass.SWITCH_ALL, new Integer(m));
+                getCommandClass(), new Integer(m));
         getController().notifyEventListeners(zEvent);
     }
 

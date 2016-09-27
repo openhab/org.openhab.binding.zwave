@@ -37,7 +37,7 @@ public class ZWaveNodeNamingCommandClassTest extends ZWaveCommandClassTest {
 
         ZWaveCommandClassValueEvent event = (ZWaveCommandClassValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.NODE_NAMING);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_NODE_NAMING);
         // assertEquals(event.getNodeId(), 44);
         assertEquals(event.getEndpoint(), 0);
         assertEquals(event.getType(), ZWaveNodeNamingCommandClass.Type.NODENAME_NAME);
@@ -53,7 +53,7 @@ public class ZWaveNodeNamingCommandClassTest extends ZWaveCommandClassTest {
 
         ZWaveCommandClassValueEvent event = (ZWaveCommandClassValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.NODE_NAMING);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_NODE_NAMING);
         // assertEquals(event.getNodeId(), 44);
         assertEquals(event.getEndpoint(), 0);
         assertEquals(event.getType(), ZWaveNodeNamingCommandClass.Type.NODENAME_NAME);
@@ -71,7 +71,7 @@ public class ZWaveNodeNamingCommandClassTest extends ZWaveCommandClassTest {
 
         ZWaveCommandClassValueEvent event = (ZWaveCommandClassValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.NODE_NAMING);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_NODE_NAMING);
         // assertEquals(event.getNodeId(), 44);
         assertEquals(event.getEndpoint(), 0);
         assertEquals(event.getType(), ZWaveNodeNamingCommandClass.Type.NODENAME_NAME);
@@ -87,7 +87,7 @@ public class ZWaveNodeNamingCommandClassTest extends ZWaveCommandClassTest {
 
         ZWaveCommandClassValueEvent event = (ZWaveCommandClassValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.NODE_NAMING);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_NODE_NAMING);
         // assertEquals(event.getNodeId(), 44);
         assertEquals(event.getEndpoint(), 0);
         assertEquals(event.getType(), ZWaveNodeNamingCommandClass.Type.NODENAME_LOCATION);
@@ -96,7 +96,8 @@ public class ZWaveNodeNamingCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void setName() {
-        ZWaveNodeNamingCommandClass cls = (ZWaveNodeNamingCommandClass) getCommandClass(CommandClass.NODE_NAMING);
+        ZWaveNodeNamingCommandClass cls = (ZWaveNodeNamingCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_NODE_NAMING);
 
         SerialMessage msg;
 
@@ -118,7 +119,8 @@ public class ZWaveNodeNamingCommandClassTest extends ZWaveCommandClassTest {
     public void setLocation() {
         // Note that most of the functionality is common between NAME and LOCATION SET.
         // We so just do a quick test here to make sure the command format is correct
-        ZWaveNodeNamingCommandClass cls = (ZWaveNodeNamingCommandClass) getCommandClass(CommandClass.NODE_NAMING);
+        ZWaveNodeNamingCommandClass cls = (ZWaveNodeNamingCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_NODE_NAMING);
 
         SerialMessage msg;
 

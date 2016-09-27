@@ -47,7 +47,7 @@ public class ZWaveAlarmConverterTest {
         if (event != null) {
             args.put("event", event);
         }
-        return new ZWaveThingChannel(null, uid, dataType, CommandClass.ALARM.toString(), 0, args);
+        return new ZWaveThingChannel(null, uid, dataType, CommandClass.COMMAND_CLASS_ALARM.toString(), 0, args);
     }
 
     private ZWaveCommandClassValueEvent createEvent(AlarmType type, ReportType reportType, Integer event,

@@ -54,13 +54,14 @@ public class ZWaveThermostatSetpointConverter extends ZWaveCommandClassConverter
     @Override
     public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveThermostatSetpointCommandClass commandClass = (ZWaveThermostatSetpointCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.THERMOSTAT_SETPOINT, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT,
+                        channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
 
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
-                commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                commandClass.getCommandClass(), channel.getEndpoint());
 
         String setpointType = channel.getArguments().get("type");
 
@@ -116,7 +117,8 @@ public class ZWaveThermostatSetpointConverter extends ZWaveCommandClassConverter
         logger.debug("NODE {}: Thermostat command received for {}", node.getNodeId(), command.toString());
 
         ZWaveThermostatSetpointCommandClass commandClass = (ZWaveThermostatSetpointCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.THERMOSTAT_SETPOINT, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT,
+                        channel.getEndpoint());
 
         ZWaveTransaction serialMessage;
 
@@ -131,7 +133,7 @@ public class ZWaveThermostatSetpointConverter extends ZWaveCommandClassConverter
 
         if (serialMessage == null) {
             logger.warn("NODE {}: Generating message failed for command class = {}, endpoint = {}", node.getNodeId(),
-                    commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                    commandClass.getCommandClass(), channel.getEndpoint());
             return null;
         }
 

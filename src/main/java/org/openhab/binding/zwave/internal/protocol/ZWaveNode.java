@@ -401,7 +401,7 @@ public class ZWaveNode {
      */
     public String getApplicationVersion() {
         ZWaveVersionCommandClass versionCmdClass = (ZWaveVersionCommandClass) this
-                .getCommandClass(CommandClass.VERSION);
+                .getCommandClass(CommandClass.COMMAND_CLASS_VERSION);
         if (versionCmdClass == null) {
             return "0.0";
         }
@@ -518,7 +518,7 @@ public class ZWaveNode {
 
         if (!supportedCommandClasses.containsKey(key)) {
             logger.debug("NODE {}: Adding command class {} to the list of supported command classes.", nodeId,
-                    commandClass.getCommandClass().getLabel());
+                    commandClass.getCommandClass());
             supportedCommandClasses.put(key, commandClass);
 
             if (commandClass instanceof ZWaveEventListener) {
@@ -561,7 +561,7 @@ public class ZWaveNode {
         }
 
         ZWaveMultiInstanceCommandClass multiInstanceCommandClass = (ZWaveMultiInstanceCommandClass) supportedCommandClasses
-                .get(CommandClass.MULTI_INSTANCE);
+                .get(CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
         if (multiInstanceCommandClass == null) {
             return null;
         } else if (multiInstanceCommandClass.getVersion() == 2) {
@@ -623,7 +623,8 @@ public class ZWaveNode {
 
         SerialMessage serialMessage = transaction.getSerialMessage();
 
-        multiInstanceCommandClass = (ZWaveMultiInstanceCommandClass) getCommandClass(CommandClass.MULTI_INSTANCE);
+        multiInstanceCommandClass = (ZWaveMultiInstanceCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
 
         if (multiInstanceCommandClass == null) {
             logger.warn("NODE {}: Encapsulating message, instance / endpoint {} failed, will discard message.",
@@ -701,7 +702,8 @@ public class ZWaveNode {
         }
 
         // Add the wakeup destination node to the list for battery devices
-        ZWaveWakeUpCommandClass wakeupCmdClass = (ZWaveWakeUpCommandClass) getCommandClass(CommandClass.WAKE_UP);
+        ZWaveWakeUpCommandClass wakeupCmdClass = (ZWaveWakeUpCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_WAKE_UP);
         if (wakeupCmdClass != null) {
             Integer wakeupNodeId = wakeupCmdClass.getTargetNodeId();
             routedNodes.add(wakeupNodeId);
@@ -876,7 +878,7 @@ public class ZWaveNode {
             } else {
                 // Sometimes security will be transmitted as a secure class, but it
                 // can't be set that way since it's the one doing the encryption work So ignore that.
-                if (commandClass == CommandClass.SECURITY) {
+                if (commandClass == CommandClass.COMMAND_CLASS_SECURITY) {
                     continue;
                 } else if (afterMark) {
                     // Nothing to do, we don't track devices that control other devices
@@ -886,7 +888,7 @@ public class ZWaveNode {
                     if (!this.supportsCommandClass(commandClass)) {
                         logger.info(
                                 "NODE {}: Adding secured command class to supported that wasn't in original list {}",
-                                this.getNodeId(), commandClass.getLabel());
+                                this.getNodeId(), commandClass);
                         final ZWaveCommandClass classInstance = ZWaveCommandClass.getInstance((aByte & 0xFF), this,
                                 controller);
                         if (classInstance != null) {
@@ -894,7 +896,7 @@ public class ZWaveNode {
                         }
                     }
                     securedCommandClasses.add(commandClass);
-                    logger.info("NODE {}: (Secured) {}", this.getNodeId(), commandClass.getLabel());
+                    logger.info("NODE {}: (Secured) {}", this.getNodeId(), commandClass);
                 }
             }
         }
@@ -915,7 +917,7 @@ public class ZWaveNode {
         boolean result = false;
         if (serialMessage.getMessageClass() != SerialMessageClass.SendData) {
             result = false;
-        } else if (!supportedCommandClasses.containsKey(CommandClass.SECURITY)) {
+        } else if (!supportedCommandClasses.containsKey(CommandClass.COMMAND_CLASS_SECURITY)) {
             // Does this node support security at all?
             result = false;
         } else {
@@ -933,7 +935,7 @@ public class ZWaveNode {
                 logger.warn(String.format("NODE %d: CommandClass not found for 0x%02X so treating as INSECURE %s",
                         getNodeId(), commandClassCode, serialMessage));
                 result = false;
-            } else if (CommandClass.SECURITY == commandClassOfMessage) {
+            } else if (CommandClass.COMMAND_CLASS_SECURITY == commandClassOfMessage) {
                 // CommandClass.SECURITY is a special case because only some commands get encrypted
                 try {
                     final Byte messageCode = Byte.valueOf((byte) (serialMessage.getMessagePayloadByte(3) & 0xFF));
@@ -943,7 +945,7 @@ public class ZWaveNode {
                             e.getMessage());
                     return false;
                 }
-            } else if (commandClassOfMessage == CommandClass.NO_OPERATION) { // TODO: DB
+            } else if (commandClassOfMessage == CommandClass.COMMAND_CLASS_NO_OPERATION) { // TODO: DB
                 // On controller startup, PING seems to fail whenever it's encrypted, so don't
                 // TODO: DB try again
                 result = false;
@@ -951,8 +953,8 @@ public class ZWaveNode {
                 result = securedCommandClasses.contains(commandClassOfMessage);
                 if (!result) {
                     // Certain messages must always be sent securely per the Z-Wave spec
-                    if (commandClassOfMessage == CommandClass.DOOR_LOCK
-                            || commandClassOfMessage == CommandClass.USER_CODE) { // TODO: DB what else?
+                    if (commandClassOfMessage == CommandClass.COMMAND_CLASS_DOOR_LOCK
+                            || commandClassOfMessage == CommandClass.COMMAND_CLASS_USER_CODE) { // TODO: DB what else?
                         logger.warn("NODE {}: CommandClass {} is not marked as secure but should be, forcing secure",
                                 getNodeId(), commandClassOfMessage);
                         result = true;
@@ -996,13 +998,13 @@ public class ZWaveNode {
 
     public ZWaveTransaction getAssociation(int group) {
         ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
-                CommandClass.MULTI_INSTANCE_ASSOCIATION);
+                CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
         if (multiAssociationCommandClass != null) {
             return multiAssociationCommandClass.getAssociationMessage(group);
         }
 
         ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(
-                CommandClass.ASSOCIATION);
+                CommandClass.COMMAND_CLASS_ASSOCIATION);
         if (associationCommandClass != null) {
             return associationCommandClass.getAssociationMessage(group);
         }
@@ -1027,13 +1029,13 @@ public class ZWaveNode {
      */
     public ZWaveTransaction setAssociation(ZWaveEndpoint endpoint, int groupId, int nodeId, int endpointId) {
         ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
-                CommandClass.MULTI_INSTANCE_ASSOCIATION);
+                CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
         if (endpoint == null && endpointId != 0 && multiAssociationCommandClass != null) {
             return multiAssociationCommandClass.setAssociationMessage(groupId, nodeId, endpointId);
         }
 
         ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(
-                CommandClass.ASSOCIATION);
+                CommandClass.COMMAND_CLASS_ASSOCIATION);
         if (associationCommandClass != null) {
             return associationCommandClass.setAssociationMessage(groupId, nodeId);
         }
@@ -1043,13 +1045,13 @@ public class ZWaveNode {
 
     public ZWaveTransaction removeAssociation(Integer groupId, int nodeId, int endpointId) {
         ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
-                CommandClass.MULTI_INSTANCE_ASSOCIATION);
+                CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
         if (multiAssociationCommandClass != null) {
             return multiAssociationCommandClass.removeAssociationMessage(groupId, nodeId, endpointId);
         }
 
         ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(
-                CommandClass.ASSOCIATION);
+                CommandClass.COMMAND_CLASS_ASSOCIATION);
         if (associationCommandClass != null) {
             return associationCommandClass.removeAssociationMessage(groupId, nodeId);
         }
@@ -1059,13 +1061,13 @@ public class ZWaveNode {
 
     public ZWaveTransaction clearAssociation(Integer groupId) {
         ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
-                CommandClass.MULTI_INSTANCE_ASSOCIATION);
+                CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
         if (multiAssociationCommandClass != null) {
             return multiAssociationCommandClass.clearAssociationMessage(groupId);
         }
 
         ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(
-                CommandClass.ASSOCIATION);
+                CommandClass.COMMAND_CLASS_ASSOCIATION);
         if (associationCommandClass != null) {
             return associationCommandClass.clearAssociationMessage(groupId);
         }

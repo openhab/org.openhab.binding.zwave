@@ -50,13 +50,13 @@ public class ZWaveThermostatModeConverter extends ZWaveCommandClassConverter {
     @Override
     public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveThermostatModeCommandClass commandClass = (ZWaveThermostatModeCommandClass) node
-                .getCommandClass(ZWaveCommandClass.CommandClass.THERMOSTAT_MODE);
+                .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_THERMOSTAT_MODE);
         if (commandClass == null) {
             return null;
         }
 
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
-                commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                commandClass.getCommandClass(), channel.getEndpoint());
         ZWaveTransaction transaction = node.encapsulate(commandClass.getValueMessage(), commandClass,
                 channel.getEndpoint());
         List<ZWaveTransaction> response = new ArrayList<ZWaveTransaction>(1);
@@ -69,8 +69,8 @@ public class ZWaveThermostatModeConverter extends ZWaveCommandClassConverter {
      */
     @Override
     public List<ZWaveTransaction> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
-        ZWaveThermostatModeCommandClass commandClass = (ZWaveThermostatModeCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.THERMOSTAT_MODE, channel.getEndpoint());
+        ZWaveThermostatModeCommandClass commandClass = (ZWaveThermostatModeCommandClass) node.resolveCommandClass(
+                ZWaveCommandClass.CommandClass.COMMAND_CLASS_THERMOSTAT_MODE, channel.getEndpoint());
 
         int value = ((DecimalType) command).intValue();
         if (command instanceof OnOffType) {
@@ -81,7 +81,7 @@ public class ZWaveThermostatModeConverter extends ZWaveCommandClassConverter {
 
         if (serialMessage == null) {
             logger.warn("NODE {}: Generating message failed for command class = {}, endpoint = {}", node.getNodeId(),
-                    commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                    commandClass.getCommandClass(), channel.getEndpoint());
             return null;
         }
 

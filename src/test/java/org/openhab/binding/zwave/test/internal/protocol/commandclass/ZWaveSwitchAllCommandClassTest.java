@@ -27,7 +27,8 @@ public class ZWaveSwitchAllCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void getValueMessage() {
-        ZWaveSwitchAllCommandClass cls = (ZWaveSwitchAllCommandClass) getCommandClass(CommandClass.SWITCH_ALL);
+        ZWaveSwitchAllCommandClass cls = (ZWaveSwitchAllCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_SWITCH_ALL);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 39, 2, 0, 0, -95 };
@@ -39,7 +40,8 @@ public class ZWaveSwitchAllCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void setValueMessage() {
-        ZWaveSwitchAllCommandClass cls = (ZWaveSwitchAllCommandClass) getCommandClass(CommandClass.SWITCH_ALL);
+        ZWaveSwitchAllCommandClass cls = (ZWaveSwitchAllCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_SWITCH_ALL);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 39, 1, 2, 0, 0, -94 };
@@ -51,7 +53,8 @@ public class ZWaveSwitchAllCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void allOnMessage() {
-        ZWaveSwitchAllCommandClass cls = (ZWaveSwitchAllCommandClass) getCommandClass(CommandClass.SWITCH_ALL);
+        ZWaveSwitchAllCommandClass cls = (ZWaveSwitchAllCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_SWITCH_ALL);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 39, 4, 0, 0, -89 };
@@ -63,7 +66,8 @@ public class ZWaveSwitchAllCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void allOffMessage() {
-        ZWaveSwitchAllCommandClass cls = (ZWaveSwitchAllCommandClass) getCommandClass(CommandClass.SWITCH_ALL);
+        ZWaveSwitchAllCommandClass cls = (ZWaveSwitchAllCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_SWITCH_ALL);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 39, 5, 0, 0, -90 };

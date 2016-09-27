@@ -26,7 +26,8 @@ public class ZWaveNoOperationCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void getNoOperationMessage() {
-        ZWaveNoOperationCommandClass cls = (ZWaveNoOperationCommandClass) getCommandClass(CommandClass.NO_OPERATION);
+        ZWaveNoOperationCommandClass cls = (ZWaveNoOperationCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_NO_OPERATION);
 
         SerialMessage msg;
 

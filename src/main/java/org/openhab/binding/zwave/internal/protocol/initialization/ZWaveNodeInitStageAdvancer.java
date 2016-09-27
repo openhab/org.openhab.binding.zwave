@@ -405,7 +405,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
 
                     // If the device supports the wakeup class, then see if we're awake
                     ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) node
-                            .getCommandClass(CommandClass.WAKE_UP);
+                            .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
                     if (wakeUpCommandClass != null && wakeUpCommandClass.isAwake() == true) {
                         logger.debug("NODE {}: Node advancer: WAIT - Node is awake", node.getNodeId());
                         break;
@@ -427,7 +427,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                     }
 
                     ZWaveNoOperationCommandClass noOpCommandClass = (ZWaveNoOperationCommandClass) node
-                            .getCommandClass(CommandClass.NO_OPERATION);
+                            .getCommandClass(CommandClass.COMMAND_CLASS_NO_OPERATION);
                     if (noOpCommandClass == null) {
                         break;
                     }
@@ -479,7 +479,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
 
                     if (doSecureInclusion == false) {
                         // Remove the security command class
-                        node.removeCommandClass(CommandClass.SECURITY);
+                        node.removeCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
                         break;
                     }
 
@@ -493,9 +493,9 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                     // by the ZWaveInputThread which needs to return from this call to receive more messages
                     // 3. It will sometimes return an empty message list, but this just means it's
                     // waiting for another response to come back
-                    if (node.supportsCommandClass(CommandClass.SECURITY)) {
+                    if (node.supportsCommandClass(CommandClass.COMMAND_CLASS_SECURITY)) {
                         ZWaveSecurityCommandClassWithInitialization securityCommandClass = (ZWaveSecurityCommandClassWithInitialization) node
-                                .getCommandClass(CommandClass.SECURITY);
+                                .getCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
                         // For a node restored from a config file, this may or may not return a message
                         Collection<ZWaveTransaction> messageList = securityCommandClass.initialize(stageAdvanced);
 
@@ -517,7 +517,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                                     // Stop the retry timer
                                     resetIdleTimer();
                                     // Remove the security command class since without a key, it's unusable
-                                    node.removeCommandClass(CommandClass.SECURITY);
+                                    node.removeCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
 
                                     // Drop through and do non-secure inclusion
                                 }
@@ -566,7 +566,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
 
                     // try and get the manufacturerSpecific command class.
                     ZWaveManufacturerSpecificCommandClass manufacturerSpecific = (ZWaveManufacturerSpecificCommandClass) node
-                            .getCommandClass(CommandClass.MANUFACTURER_SPECIFIC);
+                            .getCommandClass(CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC);
 
                     if (manufacturerSpecific != null) {
                         // If this node implements the Manufacturer Specific command
@@ -579,7 +579,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
 
                 case APP_VERSION:
                     ZWaveVersionCommandClass versionCommandClass = (ZWaveVersionCommandClass) node
-                            .getCommandClass(CommandClass.VERSION);
+                            .getCommandClass(CommandClass.COMMAND_CLASS_VERSION);
 
                     if (versionCommandClass == null) {
                         logger.debug("NODE {}: Node advancer: APP_VERSION - VERSION not supported", node.getNodeId());
@@ -599,7 +599,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                 case VERSION:
                     // Try and get the version command class.
                     ZWaveVersionCommandClass version = (ZWaveVersionCommandClass) node
-                            .getCommandClass(CommandClass.VERSION);
+                            .getCommandClass(CommandClass.COMMAND_CLASS_VERSION);
 
                     thingType = ZWaveConfigProvider.getThingType(node);
                     if (thingType == null) {
@@ -610,7 +610,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                     // using the Version command class
                     for (ZWaveCommandClass zwaveVersionClass : node.getCommandClasses()) {
                         logger.debug("NODE {}: Node advancer: VERSION - checking {}, version is {}", node.getNodeId(),
-                                zwaveVersionClass.getCommandClass().getLabel(), zwaveVersionClass.getVersion());
+                                zwaveVersionClass.getCommandClass(), zwaveVersionClass.getVersion());
 
                         // See if we want to force the version of this command class
                         if (thingType != null) {
@@ -626,10 +626,9 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                                 String args[] = value.split("=");
 
                                 if ("setVersion".equals(args[0])) {
-                                    if (zwaveVersionClass.getCommandClass().getLabel().equals(cmds[1])) {
+                                    if (zwaveVersionClass.getCommandClass().equals(cmds[1])) {
                                         logger.debug("NODE {}: Node advancer: VERSION - Set {} to Version {}",
-                                                node.getNodeId(), CommandClass.getCommandClass(cmds[1]).getLabel(),
-                                                args[1]);
+                                                node.getNodeId(), CommandClass.getCommandClass(cmds[1]), args[1]);
 
                                         // TODO: This ignores endpoint
                                         try {
@@ -645,7 +644,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
 
                         if (version != null && zwaveVersionClass.getVersion() == 0) {
                             logger.debug("NODE {}: Node advancer: VERSION - queued   {}", node.getNodeId(),
-                                    zwaveVersionClass.getCommandClass().getLabel());
+                                    zwaveVersionClass.getCommandClass());
                             addToQueue(version.checkVersion(zwaveVersionClass));
                         } else if (zwaveVersionClass.getVersion() == 0) {
                             logger.debug("NODE {}: Node advancer: VERSION - VERSION default to 1", node.getNodeId());
@@ -659,7 +658,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                 case ENDPOINTS:
                     // Try and get the multi instance / channel command class.
                     ZWaveMultiInstanceCommandClass multiInstance = (ZWaveMultiInstanceCommandClass) node
-                            .getCommandClass(CommandClass.MULTI_INSTANCE);
+                            .getCommandClass(CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
 
                     if (multiInstance != null) {
                         logger.debug("NODE {}: Node advancer: ENDPOINTS - MultiInstance is supported",
@@ -717,7 +716,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                             // TODO: Do we need to search into multi_instance?
                             node.removeCommandClass(CommandClass.getCommandClass(cmds[1]));
                             logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - removing {}", node.getNodeId(),
-                                    CommandClass.getCommandClass(optionMap.get("ccRemove")).getLabel());
+                                    CommandClass.getCommandClass(optionMap.get("ccRemove")));
                             continue;
                         }
 
@@ -739,7 +738,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                                     CommandClass.getCommandClass(optionMap.get("ccAdd")).getKey(), node, controller);
                             if (commandClass != null) {
                                 logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - adding {}", node.getNodeId(),
-                                        CommandClass.getCommandClass(optionMap.get("ccAdd")).getLabel());
+                                        CommandClass.getCommandClass(optionMap.get("ccAdd")));
                                 node.addCommandClass(commandClass);
                             }
                         }
@@ -750,10 +749,10 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                     // Loop through all classes looking for static initialisation
                     for (ZWaveCommandClass zwaveStaticClass : node.getCommandClasses()) {
                         logger.debug("NODE {}: Node advancer: STATIC_VALUES - checking {}", node.getNodeId(),
-                                zwaveStaticClass.getCommandClass().getLabel());
+                                zwaveStaticClass.getCommandClass());
                         if (zwaveStaticClass instanceof ZWaveCommandClassInitialization) {
                             logger.debug("NODE {}: Node advancer: STATIC_VALUES - found    {}", node.getNodeId(),
-                                    zwaveStaticClass.getCommandClass().getLabel());
+                                    zwaveStaticClass.getCommandClass());
                             ZWaveCommandClassInitialization zcci = (ZWaveCommandClassInitialization) zwaveStaticClass;
                             int instances = zwaveStaticClass.getInstances();
                             logger.debug("NODE {}: Found {} instances of {}", node.getNodeId(), instances,
@@ -770,11 +769,11 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                             for (ZWaveEndpoint endpoint : multiInstanceCommandClass.getEndpoints()) {
                                 for (ZWaveCommandClass endpointCommandClass : endpoint.getCommandClasses()) {
                                     logger.debug("NODE {}: Node advancer: STATIC_VALUES - checking {} for endpoint {}",
-                                            node.getNodeId(), endpointCommandClass.getCommandClass().getLabel(),
+                                            node.getNodeId(), endpointCommandClass.getCommandClass(),
                                             endpoint.getEndpointId());
                                     if (endpointCommandClass instanceof ZWaveCommandClassInitialization) {
                                         logger.debug("NODE {}: Node advancer: STATIC_VALUES - found    {}",
-                                                node.getNodeId(), endpointCommandClass.getCommandClass().getLabel());
+                                                node.getNodeId(), endpointCommandClass.getCommandClass());
                                         ZWaveCommandClassInitialization zcci2 = (ZWaveCommandClassInitialization) endpointCommandClass;
                                         addToQueue(zcci2.initialize(stageAdvanced), endpointCommandClass,
                                                 endpoint.getEndpointId());
@@ -790,9 +789,9 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                 case ASSOCIATIONS:
                     // Do we support associations
                     ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) node
-                            .getCommandClass(CommandClass.MULTI_INSTANCE_ASSOCIATION);
+                            .getCommandClass(CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
                     ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) node
-                            .getCommandClass(CommandClass.ASSOCIATION);
+                            .getCommandClass(CommandClass.COMMAND_CLASS_ASSOCIATION);
                     if (multiAssociationCommandClass == null && associationCommandClass == null) {
                         break;
                     }
@@ -833,7 +832,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                     }
 
                     ZWaveWakeUpCommandClass wakeupCommandClass = (ZWaveWakeUpCommandClass) node
-                            .getCommandClass(CommandClass.WAKE_UP);
+                            .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
 
                     if (wakeupCommandClass == null) {
                         logger.debug("NODE {}: Node advancer: SET_WAKEUP - Wakeup command class not supported",
@@ -871,7 +870,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                     // TODO: This should support MULTI_ASSOCIATION - when required
 
                     ZWaveAssociationCommandClass associationCls = (ZWaveAssociationCommandClass) node
-                            .getCommandClass(CommandClass.ASSOCIATION);
+                            .getCommandClass(CommandClass.COMMAND_CLASS_ASSOCIATION);
                     if (associationCls == null) {
                         logger.debug("NODE {}: Node advancer: SET_ASSOCIATION - ASSOCIATION class not supported",
                                 node.getNodeId());
@@ -948,7 +947,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
 
                 case GET_CONFIGURATION:
                     ZWaveConfigurationCommandClass configurationCommandClass = (ZWaveConfigurationCommandClass) node
-                            .getCommandClass(CommandClass.CONFIGURATION);
+                            .getCommandClass(CommandClass.COMMAND_CLASS_CONFIGURATION);
 
                     // If the node doesn't support configuration class, then we better let people know!
                     if (configurationCommandClass == null) {
@@ -1011,10 +1010,10 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                     // Update all dynamic information from command classes
                     for (ZWaveCommandClass zwaveDynamicClass : node.getCommandClasses()) {
                         logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - checking {}", node.getNodeId(),
-                                zwaveDynamicClass.getCommandClass().getLabel());
+                                zwaveDynamicClass.getCommandClass());
                         if (zwaveDynamicClass instanceof ZWaveCommandClassDynamicState) {
                             logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - found    {}", node.getNodeId(),
-                                    zwaveDynamicClass.getCommandClass().getLabel());
+                                    zwaveDynamicClass.getCommandClass());
                             ZWaveCommandClassDynamicState zdds = (ZWaveCommandClassDynamicState) zwaveDynamicClass;
                             int instances = zwaveDynamicClass.getInstances();
                             logger.debug("NODE {}: Found {} instances of {}", node.getNodeId(), instances,
@@ -1031,11 +1030,11 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                             for (ZWaveEndpoint endpoint : multiInstanceCommandClass.getEndpoints()) {
                                 for (ZWaveCommandClass endpointCommandClass : endpoint.getCommandClasses()) {
                                     logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - checking {} for endpoint {}",
-                                            node.getNodeId(), endpointCommandClass.getCommandClass().getLabel(),
+                                            node.getNodeId(), endpointCommandClass.getCommandClass(),
                                             endpoint.getEndpointId());
                                     if (endpointCommandClass instanceof ZWaveCommandClassDynamicState) {
                                         logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - found    {}",
-                                                node.getNodeId(), endpointCommandClass.getCommandClass().getLabel());
+                                                node.getNodeId(), endpointCommandClass.getCommandClass());
                                         ZWaveCommandClassDynamicState zdds2 = (ZWaveCommandClassDynamicState) endpointCommandClass;
                                         addToQueue(zdds2.getDynamicValues(stageAdvanced), endpointCommandClass,
                                                 endpoint.getEndpointId());

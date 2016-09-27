@@ -20,12 +20,12 @@ import java.util.concurrent.ArrayBlockingQueue;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEventListener;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
@@ -43,7 +43,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  * @author Jan-Willem Spuij
  */
-@XStreamAlias("WakeUpCommandClass")
+@XStreamAlias("COMMAND_CLASS_WAKE_UP")
 public class ZWaveWakeUpCommandClass extends ZWaveCommandClass
         implements ZWaveCommandClassInitialization, ZWaveEventListener {
 
@@ -125,80 +125,62 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.WAKE_UP;
+        return CommandClass.COMMAND_CLASS_WAKE_UP;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received Wake Up Request", this.getNode().getNodeId());
-        int command = serialMessage.getMessagePayloadByte(offset);
+    @ZWaveResponseHandler(id = WAKE_UP_INTERVAL_REPORT, name = "WAKE_UP_INTERVAL_REPORT")
+    public void handleWakeupIntervalReport(ZWaveCommandClassPayload payload, int endpoint) {
+        initReportDone = true;
 
-        switch (command) {
-            case WAKE_UP_INTERVAL_REPORT:
-                initReportDone = true;
-
-                // According to open-zwave: it seems that some devices send incorrect interval report messages.
-                if (serialMessage.getMessagePayload().length < offset + 4) {
-                    logger.error("NODE {}: Unusual response: WAKE_UP_INTERVAL_REPORT with length = {}. Ignored.",
-                            this.getNode().getNodeId(), serialMessage.getMessagePayload().length);
-                    return;
-                }
-
-                targetNodeId = serialMessage.getMessagePayloadByte(offset + 4);
-                int receivedInterval = ((serialMessage.getMessagePayloadByte(offset + 1)) << 16)
-                        | ((serialMessage.getMessagePayloadByte(offset + 2)) << 8)
-                        | (serialMessage.getMessagePayloadByte(offset + 3));
-                logger.debug("NODE {}: Wake up interval report, value = {} seconds, targetNodeId = {}",
-                        this.getNode().getNodeId(), receivedInterval, targetNodeId);
-
-                this.interval = receivedInterval;
-
-                ZWaveWakeUpEvent event = new ZWaveWakeUpEvent(getNode().getNodeId(), WAKE_UP_INTERVAL_REPORT);
-                this.getController().notifyEventListeners(event);
-                break;
-            case WAKE_UP_INTERVAL_CAPABILITIES_REPORT:
-                initCapabilitiesDone = true;
-
-                this.minInterval = ((serialMessage.getMessagePayloadByte(offset + 1)) << 16)
-                        | ((serialMessage.getMessagePayloadByte(offset + 2)) << 8)
-                        | (serialMessage.getMessagePayloadByte(offset + 3));
-                this.maxInterval = ((serialMessage.getMessagePayloadByte(offset + 4)) << 16)
-                        | ((serialMessage.getMessagePayloadByte(offset + 5)) << 8)
-                        | (serialMessage.getMessagePayloadByte(offset + 6));
-                this.defaultInterval = ((serialMessage.getMessagePayloadByte(offset + 7)) << 16)
-                        | ((serialMessage.getMessagePayloadByte(offset + 8)) << 8)
-                        | (serialMessage.getMessagePayloadByte(offset + 9));
-                this.intervalStep = ((serialMessage.getMessagePayloadByte(offset + 10)) << 16)
-                        | ((serialMessage.getMessagePayloadByte(offset + 11)) << 8)
-                        | (serialMessage.getMessagePayloadByte(offset + 12));
-
-                logger.debug("NODE {}: Wake up interval capabilities report", this.getNode().getNodeId());
-                logger.debug("NODE {}: Minimum interval = {}", this.getNode().getNodeId(), this.minInterval);
-                logger.debug("NODE {}: Maximum interval = {}", this.getNode().getNodeId(), this.maxInterval);
-                logger.debug("NODE {}: Default interval = {}", this.getNode().getNodeId(), this.defaultInterval);
-                logger.debug("NODE {}: Interval step    = {}", this.getNode().getNodeId(), this.intervalStep);
-
-                ZWaveWakeUpEvent capabilitiesEvent = new ZWaveWakeUpEvent(getNode().getNodeId(),
-                        WAKE_UP_INTERVAL_CAPABILITIES_REPORT);
-                getController().notifyEventListeners(capabilitiesEvent);
-                break;
-            case WAKE_UP_NOTIFICATION:
-                logger.debug("NODE {}: Received WAKE_UP_NOTIFICATION", this.getNode().getNodeId());
-                serialMessage.setTransactionCanceled();
-
-                // Set the awake flag. This will also empty the queue
-                setAwake(true);
-                break;
-            default:
-                logger.warn(String.format("NODE %d: Unsupported Command 0x%02X for command class %s (0x%02X).",
-                        getNode().getNodeId(), command, this.getCommandClass().getLabel(), getCommandClass().getKey()));
+        // According to open-zwave: it seems that some devices send incorrect interval report messages.
+        if (payload.getPayloadLength() < 5) {
+            logger.error("NODE {}: Unusual response: WAKE_UP_INTERVAL_REPORT with length = {}. Ignored.",
+                    getNode().getNodeId(), payload.getPayloadLength());
+            return;
         }
+
+        targetNodeId = payload.getPayloadByte(5);
+        int receivedInterval = ((payload.getPayloadByte(2)) << 16) | ((payload.getPayloadByte(3)) << 8)
+                | (payload.getPayloadByte(4));
+        logger.debug("NODE {}: Wake up interval report, value = {} seconds, targetNodeId = {}",
+                this.getNode().getNodeId(), receivedInterval, targetNodeId);
+
+        interval = receivedInterval;
+
+        ZWaveWakeUpEvent event = new ZWaveWakeUpEvent(getNode().getNodeId(), WAKE_UP_INTERVAL_REPORT);
+        getController().notifyEventListeners(event);
+    }
+
+    @ZWaveResponseHandler(id = WAKE_UP_INTERVAL_CAPABILITIES_REPORT, name = "WAKE_UP_INTERVAL_CAPABILITIES_REPORT")
+    public void handleWakeupIntervalCapabilitiesReport(ZWaveCommandClassPayload payload, int endpoint) {
+        initCapabilitiesDone = true;
+
+        this.minInterval = ((payload.getPayloadByte(2)) << 16) | ((payload.getPayloadByte(3)) << 8)
+                | (payload.getPayloadByte(4));
+        this.maxInterval = ((payload.getPayloadByte(5)) << 16) | ((payload.getPayloadByte(6)) << 8)
+                | (payload.getPayloadByte(7));
+        this.defaultInterval = ((payload.getPayloadByte(8)) << 16) | ((payload.getPayloadByte(9)) << 8)
+                | (payload.getPayloadByte(20));
+        this.intervalStep = ((payload.getPayloadByte(11)) << 16) | ((payload.getPayloadByte(12)) << 8)
+                | (payload.getPayloadByte(13));
+
+        logger.debug("NODE {}: Wake up interval capabilities report", this.getNode().getNodeId());
+        logger.debug("NODE {}: Minimum interval = {}", this.getNode().getNodeId(), this.minInterval);
+        logger.debug("NODE {}: Maximum interval = {}", this.getNode().getNodeId(), this.maxInterval);
+        logger.debug("NODE {}: Default interval = {}", this.getNode().getNodeId(), this.defaultInterval);
+        logger.debug("NODE {}: Interval step    = {}", this.getNode().getNodeId(), this.intervalStep);
+
+        ZWaveWakeUpEvent capabilitiesEvent = new ZWaveWakeUpEvent(getNode().getNodeId(),
+                WAKE_UP_INTERVAL_CAPABILITIES_REPORT);
+        getController().notifyEventListeners(capabilitiesEvent);
+    }
+
+    @ZWaveResponseHandler(id = WAKE_UP_NOTIFICATION, name = "WAKE_UP_NOTIFICATION")
+    public void handleWakeupNotification(ZWaveCommandClassPayload payload, int endpoint) {
+        // serialMessage.setTransactionCanceled();
+
+        // Set the awake flag. This will also empty the queue
+        setAwake(true);
     }
 
     /**

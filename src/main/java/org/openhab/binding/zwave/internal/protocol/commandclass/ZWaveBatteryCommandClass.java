@@ -14,11 +14,11 @@ import java.util.Map;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
@@ -37,7 +37,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  * @author Jan-Willem Spuij
  */
-@XStreamAlias("batteryCommandClass")
+@XStreamAlias("COMMAND_CLASS_BATTERY")
 public class ZWaveBatteryCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveCommandClassDynamicState {
 
@@ -71,56 +71,34 @@ public class ZWaveBatteryCommandClass extends ZWaveCommandClass
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.BATTERY;
+        return CommandClass.COMMAND_CLASS_BATTERY;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received Battery Request", this.getNode().getNodeId());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case BATTERY_REPORT:
-                logger.trace("Process Battery Report");
+    @ZWaveResponseHandler(id = BATTERY_REPORT, name = "BATTERY_REPORT")
+    public void handleBatteryReport(ZWaveCommandClassPayload payload, int endpoint) {
+        batteryLevel = payload.getPayloadByte(2);
+        logger.debug("NODE {}: Battery report value = {}", getNode().getNodeId(), batteryLevel);
 
-                if (serialMessage.getMessagePayload().length < offset + 1) {
-                    logger.error("NODE {}: Battery report length too short");
-                    return;
-                }
-
-                batteryLevel = serialMessage.getMessagePayloadByte(offset + 1);
-                logger.debug("NODE {}: Battery report value = {}", this.getNode().getNodeId(), batteryLevel);
-
-                // A Battery level of 255 means battery low.
-                // Set battery level to 0
-                if (batteryLevel == 255) {
-                    batteryLevel = 0;
-                    batteryLow = true;
-                    logger.warn("NODE {}: BATTERY LOW!", this.getNode().getNodeId());
-                } else {
-                    batteryLow = false;
-                }
-
-                // If the battery level is outside bounds, then we don't know what's up!
-                if (batteryLevel < 0 || batteryLevel > 100) {
-                    logger.warn("NODE {}: Battery state unknown ({})!", this.getNode().getNodeId(), batteryLevel);
-                    batteryLevel = null;
-                }
-                ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(this.getNode().getNodeId(),
-                        endpoint, this.getCommandClass(), batteryLevel);
-                this.getController().notifyEventListeners(zEvent);
-
-                dynamicDone = true;
-                break;
-            default:
-                logger.warn(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
-                        this.getCommandClass().getLabel(), this.getCommandClass().getKey()));
+        // A Battery level of 255 means battery low.
+        // Set battery level to 0
+        if (batteryLevel == 255) {
+            batteryLevel = 0;
+            batteryLow = true;
+            logger.debug("NODE {}: BATTERY LOW!", getNode().getNodeId());
+        } else {
+            batteryLow = false;
         }
+
+        // If the battery level is outside bounds, then we don't know what's up!
+        if (batteryLevel < 0 || batteryLevel > 100) {
+            logger.warn("NODE {}: Battery state unknown ({})!", getNode().getNodeId(), batteryLevel);
+            batteryLevel = null;
+        }
+        ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
+                getCommandClass(), batteryLevel);
+        getController().notifyEventListeners(zEvent);
+
+        dynamicDone = true;
     }
 
     /**

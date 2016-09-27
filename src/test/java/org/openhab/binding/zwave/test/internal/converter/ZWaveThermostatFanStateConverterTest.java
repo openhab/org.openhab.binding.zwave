@@ -40,8 +40,8 @@ public class ZWaveThermostatFanStateConverterTest {
 
     private ZWaveThingChannel createChannel() {
         Map<String, String> args = new HashMap<String, String>();
-        return new ZWaveThingChannel(null, uid, DataType.DecimalType, CommandClass.THERMOSTAT_FAN_STATE.toString(), 0,
-                args);
+        return new ZWaveThingChannel(null, uid, DataType.DecimalType,
+                CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_STATE.toString(), 0, args);
     }
 
     @Test
@@ -50,8 +50,8 @@ public class ZWaveThermostatFanStateConverterTest {
         ZWaveThingChannel channel = createChannel();
         Integer value = new Integer(3);
 
-        ZWaveCommandClassValueEvent event = new ZWaveCommandClassValueEvent(0, 0, CommandClass.THERMOSTAT_FAN_STATE,
-                value);
+        ZWaveCommandClassValueEvent event = new ZWaveCommandClassValueEvent(0, 0,
+                CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_STATE, value);
         State state = converter.handleEvent(channel, event);
 
         assertEquals(state.getClass(), DecimalType.class);
@@ -65,9 +65,9 @@ public class ZWaveThermostatFanStateConverterTest {
         ZWaveThingChannel channel = createChannel();
         ZWaveNode node = Mockito.mock(ZWaveNode.class);
         ZWaveThermostatFanStateCommandClass cls = mock(ZWaveThermostatFanStateCommandClass.class);
-        when(node.resolveCommandClass(Matchers.eq(CommandClass.THERMOSTAT_FAN_STATE), Matchers.anyInt()))
+        when(node.resolveCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_STATE), Matchers.anyInt()))
                 .thenReturn(cls);
-        when(cls.getCommandClass()).thenReturn(CommandClass.THERMOSTAT_FAN_STATE);
+        when(cls.getCommandClass()).thenReturn(CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_STATE);
 
         // the actual call
         List<ZWaveTransaction> result = converter.executeRefresh(channel, node);

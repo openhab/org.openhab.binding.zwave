@@ -50,13 +50,13 @@ public class ZWaveBinarySwitchConverter extends ZWaveCommandClassConverter {
     @Override
     public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveBinarySwitchCommandClass commandClass = (ZWaveBinarySwitchCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.SWITCH_BINARY, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_SWITCH_BINARY, channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
 
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
-                commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                commandClass.getCommandClass(), channel.getEndpoint());
         ZWaveTransaction serialMessage = node.encapsulate(commandClass.getValueMessage(), commandClass,
                 channel.getEndpoint());
         List<ZWaveTransaction> response = new ArrayList<ZWaveTransaction>(1);
@@ -78,7 +78,7 @@ public class ZWaveBinarySwitchConverter extends ZWaveCommandClassConverter {
     @Override
     public List<ZWaveTransaction> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
         ZWaveBinarySwitchCommandClass commandClass = (ZWaveBinarySwitchCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.SWITCH_BINARY, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_SWITCH_BINARY, channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
@@ -92,7 +92,7 @@ public class ZWaveBinarySwitchConverter extends ZWaveCommandClassConverter {
                 channel.getEndpoint());
         if (transaction == null) {
             logger.warn("NODE {}: Generating message failed for command class = {}, endpoint = {}", node.getNodeId(),
-                    commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                    commandClass.getCommandClass(), channel.getEndpoint());
             return null;
         }
         messages.add(transaction);
@@ -100,7 +100,7 @@ public class ZWaveBinarySwitchConverter extends ZWaveCommandClassConverter {
         transaction = node.encapsulate(commandClass.getValueMessage(), commandClass, channel.getEndpoint());
         if (transaction == null) {
             logger.warn("NODE {}: Generating message failed for command class = {}, endpoint = {}", node.getNodeId(),
-                    commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                    commandClass.getCommandClass(), channel.getEndpoint());
             return null;
         }
 

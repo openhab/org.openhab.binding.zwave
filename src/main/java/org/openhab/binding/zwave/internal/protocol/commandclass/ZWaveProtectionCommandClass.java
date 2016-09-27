@@ -15,11 +15,11 @@ import java.util.List;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
@@ -36,7 +36,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  * @author Jorg de Jong
  */
-@XStreamAlias("protectionCommandClass")
+@XStreamAlias("COMMAND_CLASS_PROTECTION")
 public class ZWaveProtectionCommandClass extends ZWaveCommandClass
         implements ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState, ZWaveGetCommands {
 
@@ -92,79 +92,62 @@ public class ZWaveProtectionCommandClass extends ZWaveCommandClass
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.PROTECTION;
+        return CommandClass.COMMAND_CLASS_PROTECTION;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received PROTECTION command V{}", getNode().getNodeId(), getVersion());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case PROTECTION_REPORT:
-                int localMode = serialMessage.getMessagePayloadByte(offset + 1) & 0x0f;
+    @ZWaveResponseHandler(id = PROTECTION_REPORT, name = "PROTECTION_REPORT")
+    public void handleProtectionReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int localMode = payload.getPayloadByte(2) & 0x0f;
 
-                if (localMode < LocalProtectionType.values().length) {
-                    currentLocalMode = LocalProtectionType.values()[localMode];
-                    ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(),
-                            endpoint, getCommandClass(), currentLocalMode, Type.PROTECTION_LOCAL);
-                    getController().notifyEventListeners(zEvent);
-                }
-                if (getVersion() > 1) {
-                    int rfMode = serialMessage.getMessagePayloadByte(offset + 2) & 0x0f;
-                    if (rfMode < RfProtectionType.values().length) {
-                        ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(),
-                                endpoint, getCommandClass(), RfProtectionType.values()[rfMode], Type.PROTECTION_RF);
-                        getController().notifyEventListeners(zEvent);
-                    }
-                    logger.debug("NODE {}: Received protection report local:{} rf:{}", getNode().getNodeId(),
-                            LocalProtectionType.values()[localMode], RfProtectionType.values()[rfMode]);
-                } else {
-                    logger.debug("NODE {}: Received protection report local:{}", getNode().getNodeId(),
-                            LocalProtectionType.values()[localMode]);
-                }
-
-                dynamicDone = true;
-                break;
-            case PROTECTION_SUPPORTED_REPORT:
-                boolean exclusive = ((serialMessage.getMessagePayloadByte(offset + 1)
-                        & EXCLUSIVE_CONTROL_BITMASK) != 0);
-                boolean timeout = ((serialMessage.getMessagePayloadByte(offset + 1) & TIMEOUT_BITMASK) != 0);
-
-                int localStateMask = (serialMessage.getMessagePayloadByte(offset + 2)
-                        | serialMessage.getMessagePayloadByte(offset + 3) << 8);
-                int rfStateMask = (serialMessage.getMessagePayloadByte(offset + 4)
-                        | serialMessage.getMessagePayloadByte(offset + 5) << 8);
-
-                LocalProtectionType localTypes[] = LocalProtectionType.values();
-                for (int i = 0; i < localTypes.length; i++) {
-                    if ((localStateMask >> i & 0x01) > 0) {
-                        localModes.add(localTypes[i]);
-                    }
-                }
-                RfProtectionType rfTypes[] = RfProtectionType.values();
-                for (int i = 0; i < rfTypes.length; i++) {
-                    if ((rfStateMask >> i & 0x01) > 0) {
-                        rfModes.add(rfTypes[i]);
-                    }
-                }
-
-                logger.debug(
-                        "NODE {}: Received protection supported report Exclusive({}), Timeout({}},  Local states={}, RF states={}",
-                        getNode().getNodeId(), exclusive ? "supported" : "Not supported",
-                        timeout ? "supported" : "Not supported", localModes, rfModes);
-                supportedInitialised = true;
-                break;
-
-            default:
-                logger.warn(String.format("NODE %d: Unsupported Command %d for command class %s (0x%02X).",
-                        getNode().getNodeId(), command, getCommandClass().getLabel(), getCommandClass().getKey()));
+        if (localMode < LocalProtectionType.values().length) {
+            currentLocalMode = LocalProtectionType.values()[localMode];
+            ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
+                    getCommandClass(), currentLocalMode, Type.PROTECTION_LOCAL);
+            getController().notifyEventListeners(zEvent);
         }
+        if (getVersion() > 1) {
+            int rfMode = payload.getPayloadByte(3) & 0x0f;
+            if (rfMode < RfProtectionType.values().length) {
+                ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
+                        getCommandClass(), RfProtectionType.values()[rfMode], Type.PROTECTION_RF);
+                getController().notifyEventListeners(zEvent);
+            }
+            logger.debug("NODE {}: Received protection report local:{} rf:{}", getNode().getNodeId(),
+                    LocalProtectionType.values()[localMode], RfProtectionType.values()[rfMode]);
+        } else {
+            logger.debug("NODE {}: Received protection report local:{}", getNode().getNodeId(),
+                    LocalProtectionType.values()[localMode]);
+        }
+
+        dynamicDone = true;
+    }
+
+    @ZWaveResponseHandler(id = PROTECTION_SUPPORTED_REPORT, name = "PROTECTION_SUPPORTED_REPORT")
+    public void handleProtectionSupportedReport(ZWaveCommandClassPayload payload, int endpoint) {
+        boolean exclusive = ((payload.getPayloadByte(2) & EXCLUSIVE_CONTROL_BITMASK) != 0);
+        boolean timeout = ((payload.getPayloadByte(2) & TIMEOUT_BITMASK) != 0);
+
+        int localStateMask = (payload.getPayloadByte(3) | payload.getPayloadByte(4) << 8);
+        int rfStateMask = (payload.getPayloadByte(5) | payload.getPayloadByte(6) << 8);
+
+        LocalProtectionType localTypes[] = LocalProtectionType.values();
+        for (int i = 0; i < localTypes.length; i++) {
+            if ((localStateMask >> i & 0x01) > 0) {
+                localModes.add(localTypes[i]);
+            }
+        }
+        RfProtectionType rfTypes[] = RfProtectionType.values();
+        for (int i = 0; i < rfTypes.length; i++) {
+            if ((rfStateMask >> i & 0x01) > 0) {
+                rfModes.add(rfTypes[i]);
+            }
+        }
+
+        logger.debug(
+                "NODE {}: Received protection supported report Exclusive({}), Timeout({}},  Local states={}, RF states={}",
+                getNode().getNodeId(), exclusive ? "supported" : "Not supported",
+                timeout ? "supported" : "Not supported", localModes, rfModes);
+        supportedInitialised = true;
     }
 
     /**

@@ -28,7 +28,7 @@ public class ZWaveConfigurationCommandClassTest extends ZWaveCommandClassTest {
     @Test
     public void getValueMessage() {
         ZWaveConfigurationCommandClass cls = (ZWaveConfigurationCommandClass) getCommandClass(
-                CommandClass.CONFIGURATION);
+                CommandClass.COMMAND_CLASS_CONFIGURATION);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 112, 5, 12, 0, 0, -1 };
@@ -41,7 +41,7 @@ public class ZWaveConfigurationCommandClassTest extends ZWaveCommandClassTest {
     @Test
     public void getValueMessage_WriteOnly() {
         ZWaveConfigurationCommandClass cls = (ZWaveConfigurationCommandClass) getCommandClass(
-                CommandClass.CONFIGURATION);
+                CommandClass.COMMAND_CLASS_CONFIGURATION);
         cls.setVersion(1);
 
         // Make sure we can't read
@@ -56,7 +56,7 @@ public class ZWaveConfigurationCommandClassTest extends ZWaveCommandClassTest {
     @Test
     public void getValueMessage_ReadOnly() {
         ZWaveConfigurationCommandClass cls = (ZWaveConfigurationCommandClass) getCommandClass(
-                CommandClass.CONFIGURATION);
+                CommandClass.COMMAND_CLASS_CONFIGURATION);
         cls.setVersion(1);
 
         // Make sure we can read
@@ -71,7 +71,7 @@ public class ZWaveConfigurationCommandClassTest extends ZWaveCommandClassTest {
     @Test
     public void setValueMessage() {
         ZWaveConfigurationCommandClass cls = (ZWaveConfigurationCommandClass) getCommandClass(
-                CommandClass.CONFIGURATION);
+                CommandClass.COMMAND_CLASS_CONFIGURATION);
         SerialMessage msg;
 
         ZWaveConfigurationParameter parameter = new ZWaveConfigurationParameter(12, 34, 4);

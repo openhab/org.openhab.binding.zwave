@@ -14,6 +14,7 @@ import java.util.Map;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -34,7 +35,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  *
  * @author Chris Jackson
  */
-@XStreamAlias("binaryToggleSwitchCommandClass")
+@XStreamAlias("COMMAND_CLASS_SWITCH_TOGGLE_BINARY")
 public class ZWaveBinaryToggleSwitchCommandClass extends ZWaveCommandClass
         implements ZWaveBasicCommands, ZWaveCommandClassDynamicState {
 
@@ -66,31 +67,7 @@ public class ZWaveBinaryToggleSwitchCommandClass extends ZWaveCommandClass
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.SWITCH_TOGGLE_BINARY;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received binary toggle switch command (v{})", this.getNode().getNodeId(),
-                this.getVersion());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case SWITCH_TOGGLE_REPORT:
-                processSwitchBinaryToggleReport(serialMessage, offset, endpoint);
-
-                dynamicDone = true;
-                break;
-            default:
-                logger.warn(String.format("NODE %d: Unsupported Command %d for command class %s (0x%02X).",
-                        this.getNode().getNodeId(), command, this.getCommandClass().getLabel(),
-                        this.getCommandClass().getKey()));
-        }
+        return CommandClass.COMMAND_CLASS_SWITCH_TOGGLE_BINARY;
     }
 
     /**
@@ -101,25 +78,24 @@ public class ZWaveBinaryToggleSwitchCommandClass extends ZWaveCommandClass
      * @param endpoint the endpoint or instance number this message is meant for.
      * @throws ZWaveSerialMessageException
      */
-    protected void processSwitchBinaryToggleReport(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        int value = serialMessage.getMessagePayloadByte(offset + 1);
-        logger.debug(String.format("NODE %d: Switch binary toggle report, value = 0x%02X", this.getNode().getNodeId(),
-                value));
+    @ZWaveResponseHandler(id = SWITCH_TOGGLE_REPORT, name = "SWITCH_TOGGLE_REPORT")
+    public void handleSwitchToggleReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int value = payload.getPayloadByte(2);
+        logger.debug(
+                String.format("NODE %d: Switch binary toggle report, value = 0x%02X", getNode().getNodeId(), value));
         ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(this.getNode().getNodeId(), endpoint,
-                this.getCommandClass(), value);
-        this.getController().notifyEventListeners(zEvent);
+                getCommandClass(), value);
+        getController().notifyEventListeners(zEvent);
     }
 
     @Override
     public ZWaveTransaction getValueMessage() {
         if (isGetSupported == false) {
-            logger.debug("NODE {}: Node doesn't support get requests", this.getNode().getNodeId());
+            logger.debug("NODE {}: Node doesn't support get requests", getNode().getNodeId());
             return null;
         }
 
-        logger.debug("NODE {}: Creating new message for application command SWITCH_TOGGLE_GET",
-                this.getNode().getNodeId());
+        logger.debug("NODE {}: Creating new message for application command SWITCH_TOGGLE_GET", getNode().getNodeId());
 
         SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
                 .withCommandClass(getCommandClass(), SWITCH_TOGGLE_GET).withNodeId(getNode().getNodeId()).build();
@@ -132,8 +108,7 @@ public class ZWaveBinaryToggleSwitchCommandClass extends ZWaveCommandClass
 
     @Override
     public ZWaveTransaction setValueMessage(int value) {
-        logger.debug("NODE {}: Creating new message for application command SWITCH_TOGGLE_SET",
-                this.getNode().getNodeId());
+        logger.debug("NODE {}: Creating new message for application command SWITCH_TOGGLE_SET", getNode().getNodeId());
         // TODO: Value isn't used!!!
         SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
                 .withCommandClass(getCommandClass(), SWITCH_TOGGLE_SET).withNodeId(getNode().getNodeId()).build();

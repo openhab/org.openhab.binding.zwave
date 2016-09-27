@@ -54,12 +54,13 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
         ZWaveNode node = mock(ZWaveNode.class);
         when(node.getAssociationGroup(1)).thenReturn(group);
 
-        ZWaveCommandClass reset = ZWaveCommandClass.getInstance(CommandClass.DEVICE_RESET_LOCALLY.getKey(), node, null);
-        when(node.getCommandClass(Matchers.eq(CommandClass.DEVICE_RESET_LOCALLY))).thenReturn(reset);
+        ZWaveCommandClass reset = ZWaveCommandClass
+                .getInstance(CommandClass.COMMAND_CLASS_DEVICE_RESET_LOCALLY.getKey(), node, null);
+        when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_DEVICE_RESET_LOCALLY))).thenReturn(reset);
 
         // Our test subject
         ZWaveAssociationGroupInfoCommandClass cls = (ZWaveAssociationGroupInfoCommandClass) ZWaveCommandClass
-                .getInstance(CommandClass.ASSOCIATION_GROUP_INFO.getKey(), node, null);
+                .getInstance(CommandClass.COMMAND_CLASS_ASSOCIATION_GRP_INFO.getKey(), node, null);
 
         // Let our CC process the messages
         processCommandClassMessages(cls, Arrays.asList(new SerialMessage(groupName), new SerialMessage(groupProfile),
@@ -69,7 +70,8 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
         assertEquals("Lifeline", group.getName());
         assertEquals(Integer.valueOf(1), group.getProfile());
         assertEquals(false, group.getCommandClasses().isEmpty());
-        assertEquals(false, group.getCommandClasses().contains(CommandClass.DEVICE_RESET_LOCALLY.getKey()));
+        assertEquals(false,
+                group.getCommandClasses().contains(CommandClass.COMMAND_CLASS_DEVICE_RESET_LOCALLY.getKey()));
         assertEquals(true, cls.getAutoSubscribeGroups().contains(1));
     }
 
@@ -97,7 +99,7 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
     @Test
     public void getGroupNameMessage() {
         ZWaveAssociationGroupInfoCommandClass cls = (ZWaveAssociationGroupInfoCommandClass) getCommandClass(
-                CommandClass.ASSOCIATION_GROUP_INFO);
+                CommandClass.COMMAND_CLASS_ASSOCIATION_GRP_INFO);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 89, 1, 1, 0, 0, -33 };
@@ -110,7 +112,7 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
     @Test
     public void getCommandListMessage() {
         ZWaveAssociationGroupInfoCommandClass cls = (ZWaveAssociationGroupInfoCommandClass) getCommandClass(
-                CommandClass.ASSOCIATION_GROUP_INFO);
+                CommandClass.COMMAND_CLASS_ASSOCIATION_GRP_INFO);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, 89, 5, 0, 1, 0, 0, -35 };
@@ -123,7 +125,7 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
     @Test
     public void getInfoMessage() {
         ZWaveAssociationGroupInfoCommandClass cls = (ZWaveAssociationGroupInfoCommandClass) getCommandClass(
-                CommandClass.ASSOCIATION_GROUP_INFO);
+                CommandClass.COMMAND_CLASS_ASSOCIATION_GRP_INFO);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, 89, 3, 0, 1, 0, 0, -37 };

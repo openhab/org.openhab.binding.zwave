@@ -52,14 +52,13 @@ public class ZWaveMeterTblMonitorCommandClassTest {
 
         ZWaveMeterTblMonitorValueEvent event = (ZWaveMeterTblMonitorValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.METER_TBL_MONITOR);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_METER_TBL_MONITOR);
         assertEquals(event.getMeterScale(), ZWaveMeterTblMonitorCommandClass.MeterTblMonitorScale.G_Cubic_Meters);
         assertEquals(event.getMeterType(), ZWaveMeterTblMonitorCommandClass.MeterTblMonitorType.GAS);
         assertEquals(event.getValue(), new BigDecimal("0.620"));
     }
 
     protected List<ZWaveEvent> processCommandClassMessages(List<SerialMessage> msgs) {
-
         // Mock the controller so we can get any events
         ZWaveController controller = Mockito.mock(ZWaveController.class);
         ArgumentCaptor<ZWaveEvent> argument = ArgumentCaptor.forClass(ZWaveEvent.class);

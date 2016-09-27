@@ -152,7 +152,7 @@ public class ZWaveTransactionManager {
             // If the device isn't listening, queue the message if it supports the wakeup class
             if (!node.isListening() && !node.isFrequentlyListening()) {
                 ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) node
-                        .getCommandClass(CommandClass.WAKE_UP);
+                        .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
 
                 // If it's a battery operated device, check if it's awake or
                 // place in wake-up queue.

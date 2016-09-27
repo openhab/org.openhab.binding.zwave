@@ -47,7 +47,8 @@ public class ZWaveConfigurationConverterTest extends ZWaveCommandClassConverterT
     private ZWaveThingChannel createChannel(String parameter) {
         Map<String, String> args = new HashMap<String, String>();
         args.put("parameter", parameter);
-        return new ZWaveThingChannel(null, uid, DataType.DecimalType, CommandClass.CONFIGURATION.toString(), 0, args);
+        return new ZWaveThingChannel(null, uid, DataType.DecimalType,
+                CommandClass.COMMAND_CLASS_CONFIGURATION.toString(), 0, args);
     }
 
     private ZWaveCommandClassValueEvent createEvent(int nodeId, int id, int value, int size) {
@@ -98,7 +99,7 @@ public class ZWaveConfigurationConverterTest extends ZWaveCommandClassConverterT
         ZWaveNode node = CreateMockedNode(1, null);
 
         ZWaveConfigurationCommandClass configCommandClass = (ZWaveConfigurationCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.CONFIGURATION, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_CONFIGURATION, channel.getEndpoint());
 
         SerialMessage report = new SerialMessage();
         report.setMessagePayload(new byte[] { 6, 2, 4, 0, 0, 0, 0 });

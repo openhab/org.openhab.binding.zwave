@@ -81,25 +81,25 @@ public class ZWaveSecureInclusionStateTracker {
      * Since these operations are security sensitive we must ensure they are
      * executing in the proper sequence
      *
-     * @param newStep the state we are about to enter
+     * @param i the state we are about to enter
      * @return true if the new command was in an acceptable order, false
      *         if it was not. if false is returned, the response should <b>not</b>
      *         be sent.
      */
-    public synchronized boolean verifyAndAdvanceState(Byte newStep) {
+    public synchronized boolean verifyAndAdvanceState(int i) {
         logger.debug("NODE {}: ZWaveSecurityCommandClass in verifyAndAdvanceState with newstep={}, currentstep={}",
-                node.getNodeId(), ZWaveSecurityCommandClass.commandToString(newStep),
+                node.getNodeId(), ZWaveSecurityCommandClass.commandToString(i),
                 ZWaveSecurityCommandClass.commandToString(currentStep));
-        if (!INIT_COMMAND_ORDER_LIST.contains(newStep)) {
+        if (!INIT_COMMAND_ORDER_LIST.contains(i)) {
             // Commands absent from EXPECTED_COMMAND_ORDER_LIST are always ok
             return true;
         }
 
         // Going back to the first step (zero index) is always OK // TODO: DB is it really?
-        if (INIT_COMMAND_ORDER_LIST.indexOf(newStep) > 0) {
+        if (INIT_COMMAND_ORDER_LIST.indexOf(i) > 0) {
             // We have to verify where we are at
             int currentIndex = INIT_COMMAND_ORDER_LIST.indexOf(currentStep);
-            int newIndex = INIT_COMMAND_ORDER_LIST.indexOf(newStep);
+            int newIndex = INIT_COMMAND_ORDER_LIST.indexOf(i);
 
             // Accept one message back or the same message(device resending last reply) in addition to the normal one
             // message ahead
@@ -107,17 +107,17 @@ public class ZWaveSecureInclusionStateTracker {
                 if (HALT_ON_IMPROPER_ORDER) {
                     setErrorState(String.format("NODE %d: Commands received out of order, aborting current=%s, new=%s",
                             node.getNodeId(), ZWaveSecurityCommandClass.commandToString(currentStep),
-                            ZWaveSecurityCommandClass.commandToString(newStep)));
+                            ZWaveSecurityCommandClass.commandToString(i)));
                     return false;
                 } else {
                     logger.warn("NODE {}: Commands received out of order (warning only, continuing) current={}, new={}",
                             node.getNodeId(), ZWaveSecurityCommandClass.commandToString(currentStep),
-                            ZWaveSecurityCommandClass.commandToString(newStep));
+                            ZWaveSecurityCommandClass.commandToString(i));
                     // fall through below
                 }
             }
         }
-        currentStep = newStep;
+        currentStep = (byte) i;
         return true;
     }
 

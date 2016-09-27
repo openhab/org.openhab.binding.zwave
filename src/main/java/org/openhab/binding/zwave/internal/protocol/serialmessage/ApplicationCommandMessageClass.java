@@ -96,7 +96,7 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
                         // Messages that are not required to be are allowed to be, just not the other way around
                         logger.debug(
                                 "NODE {}: After decrypt, found Command Class {}, passing to handleApplicationCommandRequest",
-                                nodeId, zwaveCommandClass.getCommandClass().getLabel());
+                                nodeId, zwaveCommandClass.getCommandClass());
                         // zwaveCommandClass.handleApplicationCommandRequest(decryptedMessage, 2, 0);
                     }
                     if (isEncapNonceGet) {
@@ -113,12 +113,11 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
                     // Should have been security encapsulation but wasn't!
                     logger.error(
                             "NODE {}: Command Class {} {} was required to be security encapsulation but it wasn't!  Dropping message.",
-                            nodeId, zwaveCommandClass.getCommandClass().getKey(),
-                            zwaveCommandClass.getCommandClass().getLabel());
+                            nodeId, zwaveCommandClass.getCommandClass().getKey(), zwaveCommandClass.getCommandClass());
                     // do not call zwaveCommandClass.handleApplicationCommandRequest();
                 } else {
                     logger.trace("NODE {}: Found Command Class {}, passing to handleApplicationCommandRequest", nodeId,
-                            zwaveCommandClass.getCommandClass().getLabel());
+                            zwaveCommandClass.getCommandClass());
                     zwaveCommandClass.handleApplicationCommandRequest(incomingMessage, 4, 0);
                 }
             }
@@ -145,24 +144,23 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
             return null;
         }
 
-        logger.debug("NODE {}: Incoming command class {}", node.getNodeId(), commandClass.getLabel(),
-                commandClass.getKey());
+        logger.debug("NODE {}: Incoming command class {}", node.getNodeId(), commandClass, commandClass.getKey());
         ZWaveCommandClass zwaveCommandClass = node.getCommandClass(commandClass);
 
         // Apparently, this node supports a command class that we did not get (yet) during initialization.
         // Let's add it now then to support handling this message.
         if (zwaveCommandClass == null) {
-            logger.debug("NODE {}: Command class {} not found, trying to add it.", node.getNodeId(),
-                    commandClass.getLabel(), commandClass.getKey());
+            logger.debug("NODE {}: Command class {} not found, trying to add it.", node.getNodeId(), commandClass,
+                    commandClass.getKey());
 
             zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), node, zController);
 
             if (zwaveCommandClass == null) {
                 // We got an unsupported command class, leave zwaveCommandClass as null
                 logger.error(String.format("NODE %d: Unsupported zwave command class %s (0x%02x)", node.getNodeId(),
-                        commandClass.getLabel(), commandClassCode));
+                        commandClass, commandClassCode));
             } else {
-                logger.debug("NODE {}: Adding command class {}", node.getNodeId(), commandClass.getLabel());
+                logger.debug("NODE {}: Adding command class {}", node.getNodeId(), commandClass);
                 node.addCommandClass(zwaveCommandClass);
             }
         }

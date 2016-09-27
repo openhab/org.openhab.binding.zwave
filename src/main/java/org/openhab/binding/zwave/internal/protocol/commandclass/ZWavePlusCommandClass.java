@@ -15,12 +15,12 @@ import java.util.Map;
 import org.openhab.binding.zwave.internal.HexToIntegerConverter;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWavePlusDeviceClass.ZWavePlusDeviceType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
@@ -36,7 +36,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  *
  * @author Chris Jackson
  */
-@XStreamAlias("zwavePlusCommandClass")
+@XStreamAlias("COMMAND_CLASS_ZWAVEPLUS_INFO")
 public class ZWavePlusCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveCommandClassInitialization {
 
@@ -80,45 +80,16 @@ public class ZWavePlusCommandClass extends ZWaveCommandClass
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.ZWAVE_PLUS_INFO;
+        return CommandClass.COMMAND_CLASS_ZWAVEPLUS_INFO;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpointId)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received ZWave Plus Request", this.getNode().getNodeId());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case ZWAVE_PLUS_REPORT:
-                handleZWavePlusReport(serialMessage, offset + 1);
-                break;
-        }
-    }
-
-    /**
-     * Handle the crc16 encapsulated message. This processes the received frame, checks the crc and forwards to the real
-     * command class.
-     *
-     * @param serialMessage
-     *            The received message
-     * @param offset
-     *            The starting offset into the payload
-     * @throws ZWaveSerialMessageException
-     */
-    private void handleZWavePlusReport(SerialMessage serialMessage, int offset) throws ZWaveSerialMessageException {
-
-        zwPlusVersion = serialMessage.getMessagePayloadByte(offset + 0);
-        zwPlusRole = serialMessage.getMessagePayloadByte(offset + 1);
-        zwPlusNodeType = serialMessage.getMessagePayloadByte(offset + 2);
-        zwPlusInstallerIcon = (serialMessage.getMessagePayloadByte(offset + 3) << 8)
-                | serialMessage.getMessagePayloadByte(offset + 4);
-        zwPlusDeviceType = (serialMessage.getMessagePayloadByte(offset + 5) << 8)
-                | serialMessage.getMessagePayloadByte(offset + 6);
+    @ZWaveResponseHandler(id = ZWAVE_PLUS_REPORT, name = "ZWAVE_PLUS_REPORT")
+    public void handleZwavePlusReport(ZWaveCommandClassPayload payload, int endpoint) {
+        zwPlusVersion = payload.getPayloadByte(1);
+        zwPlusRole = payload.getPayloadByte(2);
+        zwPlusNodeType = payload.getPayloadByte(3);
+        zwPlusInstallerIcon = (payload.getPayloadByte(4) << 8) | payload.getPayloadByte(5);
+        zwPlusDeviceType = (payload.getPayloadByte(6) << 8) | payload.getPayloadByte(7);
 
         ZWavePlusDeviceType deviceType = ZWavePlusDeviceType.getZWavePlusDeviceType(zwPlusDeviceType);
         if (deviceType != null) {
@@ -135,7 +106,7 @@ public class ZWavePlusCommandClass extends ZWaveCommandClass
                             getController());
                     if (zwaveCommandClass != null) {
                         logger.debug(String.format("NODE %d: Adding command class %s (0x%02x)", getNode().getNodeId(),
-                                commandClass.getLabel(), commandClass.getKey()));
+                                commandClass, commandClass.getKey()));
                         getNode().addCommandClass(zwaveCommandClass);
                     }
                 }

@@ -49,14 +49,14 @@ public class ZWaveThermostatFanModeConverter extends ZWaveCommandClassConverter 
      */
     @Override
     public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
-        ZWaveThermostatFanModeCommandClass commandClass = (ZWaveThermostatFanModeCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.THERMOSTAT_FAN_MODE, channel.getEndpoint());
+        ZWaveThermostatFanModeCommandClass commandClass = (ZWaveThermostatFanModeCommandClass) node.resolveCommandClass(
+                ZWaveCommandClass.CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_MODE, channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
 
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
-                commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                commandClass.getCommandClass(), channel.getEndpoint());
         ZWaveTransaction transaction = node.encapsulate(commandClass.getValueMessage(), commandClass,
                 channel.getEndpoint());
         List<ZWaveTransaction> response = new ArrayList<ZWaveTransaction>(1);
@@ -78,8 +78,8 @@ public class ZWaveThermostatFanModeConverter extends ZWaveCommandClassConverter 
     @Override
     public List<ZWaveTransaction> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
 
-        ZWaveThermostatFanModeCommandClass commandClass = (ZWaveThermostatFanModeCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.THERMOSTAT_FAN_MODE, channel.getEndpoint());
+        ZWaveThermostatFanModeCommandClass commandClass = (ZWaveThermostatFanModeCommandClass) node.resolveCommandClass(
+                ZWaveCommandClass.CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_MODE, channel.getEndpoint());
 
         int value = ((DecimalType) command).intValue();
 
@@ -88,7 +88,7 @@ public class ZWaveThermostatFanModeConverter extends ZWaveCommandClassConverter 
         logger.debug("NODE {}: receiveCommand sending message {} ", node.getNodeId(), serialMessage);
         if (serialMessage == null) {
             logger.warn("NODE {}: Generating message failed for command class = {}, endpoint = {}", node.getNodeId(),
-                    commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                    commandClass.getCommandClass(), channel.getEndpoint());
             return null;
         }
 

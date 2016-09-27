@@ -62,7 +62,7 @@ public class ZWaveProtectionConverter extends ZWaveCommandClassConverter {
         String type = channel.getArguments().get("type");
 
         ZWaveProtectionCommandClass commandClass = (ZWaveProtectionCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.PROTECTION, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_PROTECTION, channel.getEndpoint());
 
         if (commandClass == null) {
             return null;
@@ -96,7 +96,7 @@ public class ZWaveProtectionConverter extends ZWaveCommandClassConverter {
 
         if (serialMessage == null) {
             logger.warn("NODE {}: Generating message failed for command class = {}, endpoint = {}", node.getNodeId(),
-                    commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                    commandClass.getCommandClass(), channel.getEndpoint());
             return null;
         }
 

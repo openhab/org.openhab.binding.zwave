@@ -28,7 +28,7 @@ public class ZWaveThermostatFanModeCommandClassTest extends ZWaveCommandClassTes
     @Test
     public void getValueMessage() {
         ZWaveThermostatFanModeCommandClass cls = (ZWaveThermostatFanModeCommandClass) getCommandClass(
-                CommandClass.THERMOSTAT_FAN_MODE);
+                CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_MODE);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 68, 2, 0, 0, -62 };
@@ -41,7 +41,7 @@ public class ZWaveThermostatFanModeCommandClassTest extends ZWaveCommandClassTes
     @Test
     public void setValueMessage() {
         ZWaveThermostatFanModeCommandClass cls = (ZWaveThermostatFanModeCommandClass) getCommandClass(
-                CommandClass.THERMOSTAT_FAN_MODE);
+                CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_MODE);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 68, 4, 0, 0, -60 };
@@ -54,7 +54,7 @@ public class ZWaveThermostatFanModeCommandClassTest extends ZWaveCommandClassTes
     @Test
     public void getSupportedMessage() {
         ZWaveThermostatFanModeCommandClass cls = (ZWaveThermostatFanModeCommandClass) getCommandClass(
-                CommandClass.THERMOSTAT_FAN_MODE);
+                CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_MODE);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 68, 4, 0, 0, -60 };

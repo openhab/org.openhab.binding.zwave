@@ -16,11 +16,11 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
@@ -37,7 +37,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Dave Badia
  * @author Chris Jackson
  */
-@XStreamAlias("doorLockCommandClass")
+@XStreamAlias("COMMAND_CLASS_DOOR_LOCK")
 public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveSetCommands, ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
     public enum Type {
@@ -94,70 +94,53 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.DOOR_LOCK;
+        return CommandClass.COMMAND_CLASS_DOOR_LOCK;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received DOORLOCK command V{}", getNode().getNodeId(), getVersion());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case DOOR_LOCK_CONFIG_REPORT:
-                initialisationDone = true;
-                lockTimeoutSet = serialMessage.getMessagePayloadByte(offset + 1) == 2 ? true : false;
-                insideHandleMode = serialMessage.getMessagePayloadByte(offset + 2) & 0x0f;
-                outsideHandleMode = (serialMessage.getMessagePayloadByte(offset + 2) & 0xf0) >> 4;
-                lockTimeoutMinutes = serialMessage.getMessagePayloadByte(offset + 3);
-                lockTimeoutSeconds = serialMessage.getMessagePayloadByte(offset + 4);
+    @ZWaveResponseHandler(id = DOOR_LOCK_CONFIG_REPORT, name = "DOOR_LOCK_CONFIG_REPORT")
+    public void handleDoorLockConfigReport(ZWaveCommandClassPayload payload, int endpoint) {
+        initialisationDone = true;
+        lockTimeoutSet = payload.getPayloadByte(2) == 2 ? true : false;
+        insideHandleMode = payload.getPayloadByte(3) & 0x0f;
+        outsideHandleMode = (payload.getPayloadByte(3) & 0xf0) >> 4;
+        lockTimeoutMinutes = payload.getPayloadByte(4);
+        lockTimeoutSeconds = payload.getPayloadByte(5);
 
-                lockTimeout = 0;
-                if (lockTimeoutSet == true) {
-                    if (lockTimeoutSeconds != 0xfe) {
-                        lockTimeout = lockTimeoutSeconds;
-                    }
-                    if (lockTimeoutMinutes != 0xfe) {
-                        lockTimeout += lockTimeoutMinutes * 60;
-                    }
-                }
-                logger.info(
-                        "NODE {}: Door-Lock config report - timeoutEnabled={} timeoutMinutes={}, "
-                                + "timeoutSeconds={}",
-                        getNode().getNodeId(), lockTimeoutSet, lockTimeoutMinutes, lockTimeoutSeconds);
-                ZWaveCommandClassValueEvent configEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(),
-                        endpoint, CommandClass.DOOR_LOCK, lockTimeout, Type.DOOR_LOCK_TIMEOUT);
-                getController().notifyEventListeners(configEvent);
-                return;
-            case DOOR_LOCK_REPORT:
-                dynamicDone = true;
-
-                int lockState = serialMessage.getMessagePayloadByte(offset + 1);
-                int handlesMode = serialMessage.getMessagePayloadByte(offset + 2);
-                int doorCondition = serialMessage.getMessagePayloadByte(offset + 3);
-                int statusTimeoutMinutes = serialMessage.getMessagePayloadByte(offset + 4);
-                int statusTimeoutSeconds = serialMessage.getMessagePayloadByte(offset + 5);
-
-                DoorLockStateType doorLockState = DoorLockStateType.getDoorLockStateType(lockState);
-                logger.debug(String.format(
-                        "NODE %d: Door-Lock state report - lockState=%s, "
-                                + "handlesMode=0x%02x, doorCondition=0x%02x, timeoutMinutes=0x%02x, "
-                                + "timeoutSeconds=0x%02x",
-                        getNode().getNodeId(), doorLockState.label, handlesMode, doorCondition, statusTimeoutMinutes,
-                        statusTimeoutSeconds));
-                ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
-                        CommandClass.DOOR_LOCK, lockState, Type.DOOR_LOCK_STATE);
-                getController().notifyEventListeners(zEvent);
-                break;
-            default:
-                logger.warn(String.format("NODE %d: Unsupported Command 0x%02X for command class %s (0x%02X).",
-                        getNode().getNodeId(), command, getCommandClass().getLabel(), getCommandClass().getKey()));
-                break;
+        lockTimeout = 0;
+        if (lockTimeoutSet == true) {
+            if (lockTimeoutSeconds != 0xfe) {
+                lockTimeout = lockTimeoutSeconds;
+            }
+            if (lockTimeoutMinutes != 0xfe) {
+                lockTimeout += lockTimeoutMinutes * 60;
+            }
         }
+        logger.info("NODE {}: Door-Lock config report - timeoutEnabled={} timeoutMinutes={}, " + "timeoutSeconds={}",
+                getNode().getNodeId(), lockTimeoutSet, lockTimeoutMinutes, lockTimeoutSeconds);
+        ZWaveCommandClassValueEvent configEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
+                CommandClass.COMMAND_CLASS_DOOR_LOCK, lockTimeout, Type.DOOR_LOCK_TIMEOUT);
+        getController().notifyEventListeners(configEvent);
+    }
+
+    @ZWaveResponseHandler(id = DOOR_LOCK_REPORT, name = "DOOR_LOCK_REPORT")
+    public void handleDoorLockReport(ZWaveCommandClassPayload payload, int endpoint) {
+        dynamicDone = true;
+
+        int lockState = payload.getPayloadByte(2);
+        int handlesMode = payload.getPayloadByte(3);
+        int doorCondition = payload.getPayloadByte(4);
+        int statusTimeoutMinutes = payload.getPayloadByte(5);
+        int statusTimeoutSeconds = payload.getPayloadByte(6);
+
+        DoorLockStateType doorLockState = DoorLockStateType.getDoorLockStateType(lockState);
+        logger.debug(String.format(
+                "NODE %d: Door-Lock state report - lockState=%s, "
+                        + "handlesMode=0x%02x, doorCondition=0x%02x, timeoutMinutes=0x%02x, " + "timeoutSeconds=0x%02x",
+                getNode().getNodeId(), doorLockState.label, handlesMode, doorCondition, statusTimeoutMinutes,
+                statusTimeoutSeconds));
+        ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
+                CommandClass.COMMAND_CLASS_DOOR_LOCK, lockState, Type.DOOR_LOCK_STATE);
+        getController().notifyEventListeners(zEvent);
     }
 
     /**

@@ -51,14 +51,14 @@ public class ZWaveMeterTblMonitorConverter extends ZWaveCommandClassConverter {
      */
     @Override
     public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
-        ZWaveMeterTblMonitorCommandClass commandClass = (ZWaveMeterTblMonitorCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.METER_TBL_MONITOR, channel.getEndpoint());
+        ZWaveMeterTblMonitorCommandClass commandClass = (ZWaveMeterTblMonitorCommandClass) node.resolveCommandClass(
+                ZWaveCommandClass.CommandClass.COMMAND_CLASS_METER_TBL_MONITOR, channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
 
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
-                commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                commandClass.getCommandClass(), channel.getEndpoint());
 
         List<ZWaveTransaction> response = new ArrayList<ZWaveTransaction>();
         for (ZWaveTransaction msg : commandClass.getDynamicValues(true)) {

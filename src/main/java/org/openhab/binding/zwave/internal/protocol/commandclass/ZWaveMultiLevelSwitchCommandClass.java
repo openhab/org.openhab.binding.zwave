@@ -15,11 +15,11 @@ import java.util.Map;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
@@ -84,45 +84,30 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.SWITCH_MULTILEVEL;
+        return CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received SWITCH_MULTILEVEL Command V{}", getNode().getNodeId(), getVersion());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case SWITCH_MULTILEVEL_SET:
-                logger.debug("NODE {}: Switch Multi Level SET", getNode().getNodeId());
-            case SWITCH_MULTILEVEL_REPORT:
-                int value = serialMessage.getMessagePayloadByte(offset + 1);
-                logger.debug("NODE {}: Switch Multi Level report, value = {}", getNode().getNodeId(), value);
-                ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
-                        getCommandClass(), value);
+    @ZWaveResponseHandler(id = SWITCH_MULTILEVEL_REPORT, name = "SWITCH_MULTILEVEL_REPORT")
+    public void handleSwitchMultilevelReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int value = payload.getPayloadByte(2);
+        logger.debug("NODE {}: Switch Multi Level report, value = {}", getNode().getNodeId(), value);
+        ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
+                getCommandClass(), value);
 
-                getController().notifyEventListeners(zEvent);
+        getController().notifyEventListeners(zEvent);
 
-                dynamicDone = true;
-                break;
-            case SWITCH_MULTILEVEL_SUPPORTED_REPORT:
-                int primary = serialMessage.getMessagePayloadByte(offset + 1) & 0x1f;
-                int secondary = serialMessage.getMessagePayloadByte(offset + 1) & 0x1f;
+        dynamicDone = true;
+    }
 
-                switchTypePrimary = SwitchType.getSwitchType(primary);
-                switchTypeSecondary = SwitchType.getSwitchType(secondary);
+    @ZWaveResponseHandler(id = SWITCH_MULTILEVEL_SUPPORTED_REPORT, name = "SWITCH_MULTILEVEL_SUPPORTED_REPORT")
+    public void handleSwitchMultilevelSupportedReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int primary = payload.getPayloadByte(2) & 0x1f;
+        int secondary = payload.getPayloadByte(3) & 0x1f;
 
-                initialiseDone = true;
-                break;
-            default:
-                logger.warn(String.format("Unsupported Command %d for command class %s (0x%02X).", command,
-                        getCommandClass().getLabel(), getCommandClass().getKey()));
-        }
+        switchTypePrimary = SwitchType.getSwitchType(primary);
+        switchTypeSecondary = SwitchType.getSwitchType(secondary);
+
+        initialiseDone = true;
     }
 
     /**
