@@ -8,7 +8,7 @@
   <thing-type id="shenzhen_motionsensor_00_000" listed="false">
     <label>Motion Sensor PIR Motion Sensor</label>
     <description><![CDATA[
-PIR Motion Sensor<br /><h2>Inclusion Information</h2><p>1) Disassemble the PIR main body and insert the battery into the contact sensor. Make</p> <p>sure the device is located within the direct range of the controller.</p> <p>2) Set the controller into the learning mode (see mail controller’s operating manual).</p> <p>3) Quickly, triple click the code button, LED light will flash red for 5 times.</p> <p>4) PIT will be detected and included in the Z-Wave network.</p> <p>5) Wait for the main controller to configure the PIR.</p> <br /><h2>Exclusion Information</h2><p>1) Make sure the sensor is connected to power source.</p> <p>2) Set the main controller into the learning mode (see main controller’s operating</p> <p>manual).</p> <p>3) Quickly, triple click the code button, LED light will flash red for 5 times.</p> <p>4) Wait for the main controller to delete the sensor.</p> <br /><h2>Wakeup Information</h2><p>The minimum wakeup interval is 300s</p> <p>The maximum wakeup interval is 16,777,200s (about 194 days)</p> <p>Allowable interval among each wakeup interval is 60 second, such as 360, 420, 480…</p> <p>Note: The default value is 12 hours. This value is longer, the battery life is greater.</p>
+PIR Motion Sensor<br /><h2>Inclusion Information</h2><p>1. Remove the sensor cover.</p> <p>2. Make sure the sensor is powered.</p> <p>3. Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or</p> <p>gateway operating manual)</p> <p>4. Press the button three times within 1.5 second, the device will enter inclusion mode. And the</p> <p>LED will flash on and off alternately five times..</p> <br /><h2>Exclusion Information</h2><p>1. Remove the device cover.</p> <p>2. Make sure the sensor is powered.</p> <p>3. Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or</p> <p>gateway operating manual)</p> <p>4. Press the button three times within 1.5 second, the device will enter exclusion mode.</p> <br /><h2>Wakeup Information</h2><p>You can press the button once to wake up the device and send wakeup notification to controller.</p> <p>If press successfully, the LED will blink one time.</p> <p>The minimum wakeup interval is 300s</p> <p>The maximum wakeup interval is 16,777,200s (about 194 days)</p> <p>Allowable interval among each wakeup interval is 60 second, such as 360, 420, 480…</p> <p>Note: The default value is 12 hours. This value is longer, the battery life is greater.</p>
     ]]></description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -58,10 +58,10 @@ PIR Motion Sensor<br /><h2>Inclusion Information</h2><p>1) Disassemble the PIR m
       </parameter-group>
 
       <parameter name="config_1_1" type="integer" groupName="configuration"
-                 min="1" max="4">
+                 min="8" max="255">
         <label>1: Sensitivity Level Setting</label>
-        <description>This parameter defines the sensitivity of PIR detector. 1 means high sensitivity and 4 means lowest sensitivity</description>
-        <default>2</default>
+        <description>This parameter defines the sensitivity of PIR detector. 8 means high sensitivity and 255 means lowest sensitivity</description>
+        <default>12</default>
       </parameter>
 
       <parameter name="config_2_2" type="integer" groupName="configuration"
@@ -70,16 +70,16 @@ PIR Motion Sensor<br /><h2>Inclusion Information</h2><p>1) Disassemble the PIR m
         <description><![CDATA[
 Determined how long the associated devices should stay ON status. This Parameter value must be large than Parameter 6#.<br /><h1>Overview</h1><p>For instance, this parameter is set to 30(second), the PIR detector will send a</p> <p>BASIC SET Command to an associated device with value basic set level if PIR</p> <p>detector is triggered and the associated device will be turned on 30(second) before it</p> <p>is turned off.</p>
         ]]></description>
-        <default>0</default>
+        <default>30</default>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>3: Basic Set Level</label>
         <description><![CDATA[
-Basic Set Command will be sent when the door/window is opened or closed, the receiver will take it for consideration; for instance, if a lamp module received the BSC of which value is decisive as to how bright of dim level of lamp module shall be.<br /><h1>Overview</h1><p>Available Settings:</p> <p> 0 - Off, Alarm cancelling or turning a device OFF</p> <p>1 - 99 or 255 – ON (Binary Switch Device)</p> <p>                      Dim Level (Multilevel Switch Device)</p>
+Basic Set Command will be sent when the door/window is opened or closed, the receiver will take it for consideration; for instance, if a lamp module received the BSC of which value is decisive as to how bright of dim level of lamp module shall be.<br /><h1>Overview</h1><p>Available Settings:</p> <p> 0 - Off, Alarm cancelling or turning a device OFF</p> <p>1~99 or 255 – ON (Binary Switch Device)</p> <p>                      Dim Level (Multilevel Switch Device)</p>
         ]]></description>
-        <default>99</default>
+        <default>255</default>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
@@ -101,24 +101,46 @@ Set a lux level value which determines when the light sensor is activated.<br />
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
-                 min="5" max="120">
+                 min="1" max="8">
         <label>6: Re-trigger Interval</label>
         <description>Adjust the interval of being re-triggered after the PIR detector has been triggered. No report will be sent during this interval if a movement is presented. This Parameter value must be less than Parameter 2#.</description>
-        <default>10</default>
+        <default>8</default>
       </parameter>
 
       <parameter name="config_7_2" type="integer" groupName="configuration"
                  min="60" max="36000">
         <label>7: Light Sensor Polling Interval</label>
         <description>The Intervall after which the Light Sensor Measure is polled.</description>
-        <default>600</default>
+        <default>180</default>
+      </parameter>
+
+      <parameter name="config_8_1" type="integer" groupName="configuration">
+        <label>8: Lux Level Function Enable</label>
+        <description><![CDATA[
+0 = Off, 1 =On and Lux Level must be less than #5 -&gt; then send Basic Set(Parameter #3)<br /><h1>Overview</h1><p>If this parameter is set to ‘1’, and when Lux level less than the value define by parameter #5, PIR</p> <p>detector will send a BASIC_SET command frame(i.e. BASIC_SET (value = parameter 3) to an</p> <p>associated device and activate it. If Lux Level greater than the value define by parameter #5, PIR</p> <p>detector will not send a BASIC_SET command frame.</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Disable Lux Level Function</option>
+          <option value="1">Enable Lux Level Function</option>
+        </options>
       </parameter>
 
       <parameter name="config_9_2" type="integer" groupName="configuration"
-                 min="0" max="1000">
+                 min="0" max="255">
         <label>9: Lux Level Changed Report</label>
         <description>How much the Lux Level must change, in lux, to be reported to the main controller.</description>
         <default>100</default>
+      </parameter>
+
+      <parameter name="config_10_1" type="integer" groupName="configuration">
+        <label>10: LED Blink Enable</label>
+        <description>Defines whether the LED blinking is on / off. 1 = enable -&gt; blink once when motion sensor detect movement, 0= disbale</description>
+        <default>1</default>
+        <options>
+          <option value="0">Disable LED blinking</option>
+          <option value="1">Enable LED blinking</option>
+        </options>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

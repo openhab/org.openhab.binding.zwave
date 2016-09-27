@@ -8,7 +8,7 @@
   <thing-type id="shenzhen_powerplug_00_000" listed="false">
     <label>Power Plug Metered Wall Plug Switch</label>
     <description><![CDATA[
-Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltage, current load, power consumption and energy</p> <p>consumption measuring. </p> <p><strong>Voltage</strong> – The Supply Power Voltage For Plug.</p> <p><strong>Current</strong> – The Current for the Electric Device Connect to Plug Consumption.</p> <p><strong>Power</strong> – Power Consumed by an Electric Device in an instant, unit: Watt (W).</p> <p><strong>Energy</strong> – Energy Consumed by an Electric Device through a Time Period. Most</p> <p>commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One</p> <p>Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh.</p> <br /><h2>Inclusion Information</h2><p>1) Plug the power plug in the socket. Make sure the device is located within the direct</p> <p>range of the main controller.</p> <p>2) Set the main controller to the learning mode</p> <p>3) Quickly, triple click the code button, the device will enter inclusion mode, and the</p> <p>LED light will flash red and yellow five times .</p> <p>4) Power plug will be detected and added to the Z-Wave network.</p> <p>5) Wait for the main controller to configure the sensor.</p> <br /><h2>Exclusion Information</h2><p>1) Make sure the sensor is connected to power source.</p> <p>2) Set the main controller to the learning mode</p> <p>3) Quickly, triple click the code button, LED light will flash red and yellow five</p> <p>times.</p> <p>4) Wait for the main controller to delete the sensor</p>
+Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltage, current load, power consumption and energy</p> <p>consumption measuring. </p> <p><strong>Voltage</strong> – The Supply Power Voltage For Plug.</p> <p><strong>Current</strong> – The Current for the Electric Device Connect to Plug Consumption.</p> <p><strong>Power</strong> – Power Consumed by an Electric Device in an instant, unit: Watt (W).</p> <p><strong>Energy</strong> – Energy Consumed by an Electric Device through a Time Period. Most</p> <p>commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One</p> <p>Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh.</p> <br /><h2>Inclusion Information</h2><p>1. Make sure the sensor is powered.</p> <p>2. Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or</p> <p>gateway operating manual)</p> <p>3. Press the button three times within 1.5 second, the device will enter inclusion mode. And the</p> <p>LED will flash on and off with green alternately five times within 2 seconds.</p> <br /><h2>Exclusion Information</h2><p>1. Make sure the sensor is powered.</p> <p>2. Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or</p> <p>gateway operating manual)</p> <p>3. Press the button three times within 1.5 second, the device will enter exclusion mode. And</p> <p>the LED will flash on and off with yellow alternately five times within 2 seconds.</p>
     ]]></description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -90,7 +90,9 @@ Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltag
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="1" max="16">
         <label>3: Maxium over-load current</label>
-        <description>This parameter defines maximum current the plug can provide to load that be connected to plug. If the current consumed by load greater than maximum current, the plug will cut off power.</description>
+        <description><![CDATA[
+This parameter defines maximum current the plug can provide to load that be connected to plug. If the current consumed by load greater than maximum current, the plug will cut off power and send alarm.<br /><h1>Overview</h1><p>send Alarm NOTIFICATION_EVENT_POWER_MANAGEMENT_OVER_LOAD_DETECTED to associated</p> <p>devices in lifeline. Red Led will blink every seconds until current is normal (less than Parameter</p> <p>#3). You must remove the loader and turn on the Plug (press the button once) to enable current</p> <p>monitor and clear NOTIFICATION ALARM.</p> <p>This parameter value must be great than #4. If user set this parameter to default by Configure CC,</p> <p>the parameter #4 will be set to default value.</p>
+        ]]></description>
         <default>13</default>
       </parameter>
 
@@ -115,14 +117,17 @@ Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltag
                  min="1" max="100">
         <label>6: Power Report Threshold</label>
         <description>How much the power consumed must change to be reported. If the rate of power consumed change ratio is greater than this parameter, the plug will report the results, voltage, current, power and energy.</description>
-        <default>30</default>
+        <default>5</default>
       </parameter>
 
-      <parameter name="config_7_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+      <parameter name="config_7_1" type="integer" groupName="configuration">
         <label>7: Remember Relay ON/OFF status after power failure.</label>
         <description>Define how will the Plug react after the power supply is back on. 0 = will be off after the power supply is reconnected. Others = remember relay status</description>
-        <default>255</default>
+        <default>1</default>
+        <options>
+          <option value="0">Don’t Remember, the relay will keep OFF when Plug Supply Power.</option>
+          <option value="1">Remember the Relay Status.</option>
+        </options>
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration">
@@ -140,6 +145,16 @@ Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltag
         <label>9: Time switch Period</label>
         <description>This parameter defines the time after the plug is switched off. If Parameter 9# is set to ‘1’, and relay is turn ON, the relay will be turn OFF after delay this parameter.</description>
         <default>150</default>
+      </parameter>
+
+      <parameter name="config_10_1" type="integer" groupName="configuration">
+        <label>10: Button On/Off Enable</label>
+        <description>If this parameter is set to ‘1’, users can turn on and off the wall plug by pressing the button on the top of the wall plug.If this parameter is set to ‘0’, the wall plug cannot be turned on and off by pressing the button.</description>
+        <default>1</default>
+        <options>
+          <option value="0">Disable Button</option>
+          <option value="1">Enable Button</option>
+        </options>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
