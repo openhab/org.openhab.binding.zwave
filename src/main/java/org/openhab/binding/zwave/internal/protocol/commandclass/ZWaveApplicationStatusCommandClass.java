@@ -12,11 +12,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveDelayedPollEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,8 +38,8 @@ public class ZWaveApplicationStatusCommandClass extends ZWaveCommandClass {
     @XStreamOmitField
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
-    private static final int ApplicationStatusBusy = 0x1;
-    private static final int ApplicationStatusRejected = 0x2;
+    private static final int APPLICATION_BUSY = 1;
+    private static final int APPLICATION_REJECTED_REQUEST = 2;
 
     private static final int StatusBusyTryAgainLater = 0x0;
     private static final int StatusBusyTryAgainLaterInSeconds = 0x1;
@@ -67,44 +66,31 @@ public class ZWaveApplicationStatusCommandClass extends ZWaveCommandClass {
         return CommandClass.COMMAND_CLASS_APPLICATION_STATUS;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint) {
-        logger.debug("NODE {}: Application Status message", getNode());
-        int status = serialMessage.getMessagePayloadByte(offset++);
-        switch (status) {
-            case ApplicationStatusBusy:
-                logger.trace("NODE {}: Process Application Status Busy status", getNode());
-                int busyStatus = serialMessage.getMessagePayloadByte(offset++);
-                int retry = DEFAULT_RETRY_SECONDS;
-                switch (busyStatus) {
-                    case StatusBusyTryAgainLaterInSeconds:
-                        retry = serialMessage.getMessagePayloadByte(offset++);
-                        logger.debug("NODE {}: is busy and wants us to try again in {} seconds", getNode(), retry);
-                    case StatusBusyTryAgainLater:
-                        logger.debug("NODE {}: is busy and will be polled in {} seconds", getNode(), retry);
-                        ZWaveDelayedPollEvent event = new ZWaveDelayedPollEvent(getNode().getNodeId(), retry,
-                                TimeUnit.SECONDS);
-                        this.getController().notifyEventListeners(event);
-                        break;
-                    case StatusBusyQueued:
-                        logger.warn("NODE {}: is busy and has queued the request", getNode());
-                        break;
-                    default:
-                        logger.warn("NODE {}: unknown busy status {} ", getNode(), busyStatus);
-                        break;
-                }
+    @ZWaveResponseHandler(id = APPLICATION_BUSY, name = "APPLICATION_BUSY")
+    public void handleApplicationBusy(ZWaveCommandClassPayload payload, int endpoint) {
+        int busyStatus = payload.getPayloadByte(2);
+        int retrySeconds = DEFAULT_RETRY_SECONDS;
+        switch (busyStatus) {
+            case StatusBusyTryAgainLaterInSeconds:
+                retrySeconds = payload.getPayloadByte(3);
+                logger.debug("NODE {}: is busy and wants us to try again in {} seconds", getNode(), retrySeconds);
+            case StatusBusyTryAgainLater:
+                logger.debug("NODE {}: is busy and will be polled in {} seconds", getNode(), retrySeconds);
+                ZWaveDelayedPollEvent event = new ZWaveDelayedPollEvent(getNode().getNodeId(), retrySeconds,
+                        TimeUnit.SECONDS);
+                this.getController().notifyEventListeners(event);
                 break;
-            case ApplicationStatusRejected:
-                logger.warn("NODE {}: has rejected the request", getNode());
+            case StatusBusyQueued:
+                logger.debug("NODE {}: is busy and has queued the request", getNode());
                 break;
             default:
-                logger.warn(String.format("Unsupported status 0x%02X for command class %s (0x%02X).", status,
-                        this.getCommandClass().getLabel(), this.getCommandClass().getKey()));
+                logger.debug("NODE {}: unknown busy status {} ", getNode(), busyStatus);
+                break;
         }
+    }
+
+    @ZWaveResponseHandler(id = APPLICATION_REJECTED_REQUEST, name = "APPLICATION_REJECTED_REQUEST")
+    public void handleApplicationRejectedRequest(ZWaveCommandClassPayload payload, int endpoint) {
+        // TODO: Should we reject or retry the transaction??
     }
 }

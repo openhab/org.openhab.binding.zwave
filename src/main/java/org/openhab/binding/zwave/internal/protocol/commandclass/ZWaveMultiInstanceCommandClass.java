@@ -47,7 +47,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Jan-Willem Spuij
  * @author Michiel Leegwater
  */
-@XStreamAlias("multiInstanceCommandClass")
+@XStreamAlias("COMMAND_CLASS_MULTI_CHANNEL")
 public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
@@ -78,9 +78,10 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
     // This is used to reduce the number of requests during initialisation.
     // Only add a class to this list if you are sure it doesn't support multiple instances!
     @XStreamOmitField
-    private static final List<CommandClass> singleInstanceClasses = Arrays.asList(CommandClass.NO_OPERATION,
-            CommandClass.CONFIGURATION, CommandClass.TIME, CommandClass.TIME_PARAMETERS, CommandClass.CLOCK,
-            CommandClass.WAKE_UP, CommandClass.BATTERY);
+    private static final List<CommandClass> singleInstanceClasses = Arrays.asList(
+            CommandClass.COMMAND_CLASS_NO_OPERATION, CommandClass.COMMAND_CLASS_CONFIGURATION,
+            CommandClass.COMMAND_CLASS_TIME, CommandClass.COMMAND_CLASS_TIME_PARAMETERS,
+            CommandClass.COMMAND_CLASS_CLOCK, CommandClass.COMMAND_CLASS_WAKE_UP, CommandClass.COMMAND_CLASS_BATTERY);
 
     /**
      * Creates a new instance of the ZWaveMultiInstanceCommandClass class.
@@ -99,7 +100,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.MULTI_INSTANCE;
+        return CommandClass.COMMAND_CLASS_MULTI_CHANNEL;
     }
 
     /**

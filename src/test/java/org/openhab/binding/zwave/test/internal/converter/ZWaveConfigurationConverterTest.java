@@ -24,12 +24,11 @@ import org.mockito.Mockito;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.converter.ZWaveConfigurationConverter;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveConfigurationParameter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
@@ -101,13 +100,8 @@ public class ZWaveConfigurationConverterTest extends ZWaveCommandClassConverterT
         ZWaveConfigurationCommandClass configCommandClass = (ZWaveConfigurationCommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_CONFIGURATION, channel.getEndpoint());
 
-        SerialMessage report = new SerialMessage();
-        report.setMessagePayload(new byte[] { 6, 2, 4, 0, 0, 0, 0 });
-        try {
-            configCommandClass.handleApplicationCommandRequest(report, 0, 0);
-        } catch (ZWaveSerialMessageException e) {
-            e.printStackTrace();
-        }
+        ZWaveCommandClassPayload payload = new ZWaveCommandClassPayload(new byte[] { 6, 2, 4, 0, 0, 0, 0 });
+        configCommandClass.handleConfigurationReport(payload, 0);
 
         DecimalType command = new DecimalType(44);
 

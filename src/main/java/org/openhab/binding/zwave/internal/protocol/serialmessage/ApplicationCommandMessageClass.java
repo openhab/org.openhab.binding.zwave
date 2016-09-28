@@ -9,6 +9,7 @@
 package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNodeState;
@@ -118,7 +119,7 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
                 } else {
                     logger.trace("NODE {}: Found Command Class {}, passing to handleApplicationCommandRequest", nodeId,
                             zwaveCommandClass.getCommandClass());
-                    zwaveCommandClass.handleApplicationCommandRequest(incomingMessage, 4, 0);
+                    zwaveCommandClass.handleApplicationCommandRequest(new ZWaveCommandClassPayload(incomingMessage), 0);
                 }
             }
 

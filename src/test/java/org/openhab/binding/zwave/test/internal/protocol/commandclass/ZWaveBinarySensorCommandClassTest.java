@@ -14,6 +14,7 @@ import java.util.Arrays;
 
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBinarySensorCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBinarySensorCommandClass.SensorType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
@@ -73,7 +74,7 @@ public class ZWaveBinarySensorCommandClassTest extends ZWaveCommandClassTest {
         ZWaveBinarySensorCommandClass cls = (ZWaveBinarySensorCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_SENSOR_BINARY);
         cls.setVersion(2);
-        cls.handleApplicationCommandRequest(msg, 4, 0);
+        cls.handleApplicationCommandRequest(new ZWaveCommandClassPayload(msg), 0);
         assertEquals(3, cls.getSupportedTypes().size());
         assertTrue(cls.getSupportedTypes().contains(SensorType.DOORWINDOW));
         assertTrue(cls.getSupportedTypes().contains(SensorType.TAMPER));

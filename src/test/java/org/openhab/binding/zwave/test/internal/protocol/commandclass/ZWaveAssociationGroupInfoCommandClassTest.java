@@ -20,6 +20,7 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationGroupInfoCommandClass;
@@ -89,7 +90,7 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
                 // ensure our message is for the correct command class
                 assertEquals(cls.getCommandClass().getKey(), msg.getMessagePayloadByte(3));
 
-                cls.handleApplicationCommandRequest(msg, 4, 0);
+                cls.handleApplicationCommandRequest(new ZWaveCommandClassPayload(msg), 0);
             } catch (ZWaveSerialMessageException e) {
                 fail("Out of bounds exception processing data");
             }

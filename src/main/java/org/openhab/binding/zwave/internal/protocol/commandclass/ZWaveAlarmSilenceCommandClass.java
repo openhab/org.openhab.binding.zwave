@@ -23,7 +23,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  *
  */
-@XStreamAlias("COMMAND_CLASS_SENSOR_ALARM")
+@XStreamAlias("COMMAND_CLASS_SILENCE_ALARM")
 public class ZWaveAlarmSilenceCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField

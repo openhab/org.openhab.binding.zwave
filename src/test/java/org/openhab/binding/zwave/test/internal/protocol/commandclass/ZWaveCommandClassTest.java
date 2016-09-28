@@ -10,7 +10,6 @@ package org.openhab.binding.zwave.test.internal.protocol.commandclass;
 
 import static org.junit.Assert.*;
 
-import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 import org.mockito.ArgumentCaptor;
@@ -67,19 +66,12 @@ public class ZWaveCommandClassTest {
         ZWaveEndpoint endpoint = Mockito.mock(ZWaveEndpoint.class);
 
         try {
-            ByteArrayOutputStream payloadData = new ByteArrayOutputStream();
-            for (int index = 3; index < msg.getMessagePayload().length; index++) {
-                payloadData.write((byte) msg.getMessagePayloadByte(index));
-            }
-
-            ZWaveCommandClassPayload payload = new ZWaveCommandClassPayload(payloadData.toByteArray());
-
             // Get the command class and process the response
             ZWaveCommandClass cls = ZWaveCommandClass.getInstance(msg.getMessagePayloadByte(3), node, controller);
             cls.setEndpoint(endpoint);
             assertNotNull(cls);
             cls.setVersion(version);
-            cls.handleApplicationCommandRequest(payload, 0);
+            cls.handleApplicationCommandRequest(new ZWaveCommandClassPayload(msg), 0);
 
             // cls.handleApplicationCommandRequest(msg, 4, 0);
         } catch (ZWaveSerialMessageException e) {
