@@ -102,7 +102,7 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
                     }
                     if (isEncapNonceGet) {
                         // the device also needs another nonce; send it regardless of the success/failure of decryption
-                        zwaveSecurityCommandClass.sendNonceReport();
+                        // TODO: zwaveSecurityCommandClass.sendNonceReport();
                     }
                     if (failed) {
                         return false;

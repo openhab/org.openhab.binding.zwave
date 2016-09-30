@@ -1,6 +1,7 @@
 package org.openhab.binding.zwave.internal.protocol;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Arrays;
 
 /**
  * The {@link ZWaveCommandClassPayload} implements an encapsulated command class payload.
@@ -15,7 +16,15 @@ public class ZWaveCommandClassPayload {
         this.payload = payload;
     }
 
-    public ZWaveCommandClassPayload(SerialMessage incomingMessage) throws ZWaveSerialMessageException {
+    public ZWaveCommandClassPayload(final ZWaveCommandClassPayload initialPayload, final int start) {
+        payload = Arrays.copyOfRange(initialPayload.getPayloadBuffer(), start, initialPayload.getPayloadLength());
+    }
+
+    public ZWaveCommandClassPayload(final ZWaveCommandClassPayload initialPayload, final int start, final int end) {
+        payload = Arrays.copyOfRange(initialPayload.getPayloadBuffer(), start, end);
+    }
+
+    public ZWaveCommandClassPayload(final SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         ByteArrayOutputStream payloadData = new ByteArrayOutputStream();
         for (int index = 3; index < incomingMessage.getMessagePayload().length; index++) {
             payloadData.write((byte) incomingMessage.getMessagePayloadByte(index));
