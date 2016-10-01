@@ -39,7 +39,7 @@ public class ZWaveCommandClassPayloadTest {
         try {
             payload4 = new ZWaveCommandClassPayload(serialMsg);
             assertEquals(6, payload4.getPayloadLength());
-            assertEquals(-127, payload4.getCommandClassId());
+            assertEquals(129, payload4.getCommandClassId());
             assertEquals(6, payload4.getCommandClassCommand());
             assertEquals(4, payload4.getPayloadByte(3));
             assertTrue(Arrays.equals(payload4.getPayloadBuffer(), new byte[] { -127, 6, -127, 4, 127, 0 }));

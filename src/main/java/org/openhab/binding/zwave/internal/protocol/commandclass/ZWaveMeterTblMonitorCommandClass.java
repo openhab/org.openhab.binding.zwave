@@ -114,10 +114,10 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
             name = "unsupported";
         }
         tableName = name;
-        logger.debug("NODE {}: table name: {}", getNode().getNodeId(), name);
+        logger.debug("NODE {}: Table name: {}", getNode().getNodeId(), name);
     }
 
-    @ZWaveResponseHandler(id = METER_TBL_CURRENT_DATA_REPORT, name = "METER_TBL_CURRENT_DATA_REPORT")
+    @ZWaveResponseHandler(id = METER_TBL_REPORT, name = "METER_TBL_REPORT")
     public void handleTableCurrentDataReport(ZWaveCommandClassPayload payload, int endpoint) {
         int meterType = payload.getPayloadByte(2) & 0x3F;
         int rateType = (payload.getPayloadByte(2) & 0xC0) >> 6;
@@ -141,7 +141,7 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
         initialiseDone = true;
     }
 
-    @ZWaveResponseHandler(id = METER_TBL_REPORT, name = "METER_TBL_REPORT")
+    @ZWaveResponseHandler(id = METER_TBL_CURRENT_DATA_REPORT, name = "METER_TBL_CURRENT_DATA_REPORT")
     public void handleTableDataReport(ZWaveCommandClassPayload payload, int endpoint) {
         int numReports = payload.getPayloadByte(2);
         int rateType = payload.getPayloadByte(3) & 0x03;
@@ -156,7 +156,7 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
         int seconds = payload.getPayloadByte(13);
 
         int scaleIndex = payload.getPayloadByte(14) & 0x1F;
-        int presision = (payload.getPayloadByte(14) & 0xE0) >> 5;
+        int precision = (payload.getPayloadByte(14) & 0xE0) >> 5;
 
         int valueRaw = extractValue(payload.getPayloadBuffer(), 15, 4);
 
@@ -168,7 +168,7 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
                 year, month, day, hour, minutes, seconds));
 
         logger.trace("NODE {}: scale     :{}", getNode().getNodeId(), scaleIndex);
-        logger.trace("NODE {}: presision :{}", getNode().getNodeId(), presision);
+        logger.trace("NODE {}: presision :{}", getNode().getNodeId(), precision);
         logger.trace("NODE {}: value     :{}", getNode().getNodeId(), valueRaw);
 
         MeterTblMonitorScale scale = MeterTblMonitorScale.getMeterScale(meterType, scaleIndex);
@@ -178,7 +178,7 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
         }
 
         try {
-            BigDecimal value = new BigDecimal(valueRaw / Math.pow(10, presision)).setScale(presision,
+            BigDecimal value = new BigDecimal(valueRaw / Math.pow(10, precision)).setScale(precision,
                     BigDecimal.ROUND_HALF_UP);
             logger.debug("NODE {}: Meter Tbl Monitor: Type={}, Scale={}({}), Value={}, Dataset={}",
                     getNode().getNodeId(), meterType.getLabel(), scale.getUnit(), scale.getScale(), value, dataset);

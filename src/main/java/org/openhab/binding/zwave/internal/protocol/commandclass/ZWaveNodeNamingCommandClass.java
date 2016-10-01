@@ -122,7 +122,10 @@ public class ZWaveNodeNamingCommandClass extends ZWaveCommandClass implements ZW
      * @throws ZWaveSerialMessageException
      */
     protected String getString(ZWaveCommandClassPayload payload) {
-        int charPresentation = payload.getPayloadByte(1);
+        if (payload.getPayloadLength() <= 2) {
+            return "";
+        }
+        int charPresentation = payload.getPayloadByte(2);
 
         // First 5 bits are reserved so 0 them
         charPresentation = 0x07 & charPresentation;
@@ -144,7 +147,7 @@ public class ZWaveNodeNamingCommandClass extends ZWaveCommandClass implements ZW
                 return null;
         }
 
-        int numBytes = payload.getPayloadLength() - 2;
+        int numBytes = payload.getPayloadLength() - 3;
 
         if (numBytes < 0) {
             logger.error("NODE {} : Node Name report error in message length ({})", getNode().getNodeId(),
@@ -222,7 +225,7 @@ public class ZWaveNodeNamingCommandClass extends ZWaveCommandClass implements ZW
         this.name = name;
         logger.debug("NODE {}: Node name: {}", getNode().getNodeId(), name);
         ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
-                this.getCommandClass(), name, Type.NODENAME_NAME);
+                getCommandClass(), name, Type.NODENAME_NAME);
         getController().notifyEventListeners(zEvent);
     }
 

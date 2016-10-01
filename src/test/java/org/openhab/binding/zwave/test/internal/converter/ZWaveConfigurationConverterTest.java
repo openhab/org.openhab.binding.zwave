@@ -102,7 +102,8 @@ public class ZWaveConfigurationConverterTest extends ZWaveCommandClassConverterT
 
         // This report is required to add the parameter to the command class
         // Without it the converter will fail
-        ZWaveCommandClassPayload payload = new ZWaveCommandClassPayload(new byte[] { 6, 2, 4, 0, 0, 0, 0 });
+        ZWaveCommandClassPayload payload = new ZWaveCommandClassPayload(
+                new byte[] { (byte) CommandClass.COMMAND_CLASS_CONFIGURATION.getKey(), 6, 2, 4, 0, 0, 0, 0 });
         configCommandClass.handleConfigurationReport(payload, 0);
 
         DecimalType command = new DecimalType(44);

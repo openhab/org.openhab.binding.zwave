@@ -86,9 +86,11 @@ public class ZWaveCRC16EncapsulationCommandClass extends ZWaveCommandClass {
         }
 
         // Execute underlying command
+        ZWaveCommandClassPayload encapPayload = new ZWaveCommandClassPayload(payload, 2,
+                payload.getPayloadLength() - 2);
         CommandClass commandClass;
         ZWaveCommandClass zwaveCommandClass;
-        int commandClassCode = payload.getCommandClassId();
+        int commandClassCode = encapPayload.getCommandClassId();
         commandClass = CommandClass.getCommandClass(commandClassCode);
         if (commandClass == null) {
             logger.error(String.format("NODE %d: Unsupported command class 0x%02x", getNode().getNodeId(),
@@ -117,7 +119,7 @@ public class ZWaveCRC16EncapsulationCommandClass extends ZWaveCommandClass {
                         commandClass, commandClassCode));
             } else {
                 logger.debug("NODE {}: Calling handleApplicationCommandRequest.", getNode().getNodeId());
-                zwaveCommandClass.handleApplicationCommandRequest(new ZWaveCommandClassPayload(payload, 2), endpoint);
+                zwaveCommandClass.handleApplicationCommandRequest(encapPayload, endpoint);
             }
         }
     }
