@@ -100,6 +100,8 @@ public class ZWaveConfigurationConverterTest extends ZWaveCommandClassConverterT
         ZWaveConfigurationCommandClass configCommandClass = (ZWaveConfigurationCommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_CONFIGURATION, channel.getEndpoint());
 
+        // This report is required to add the parameter to the command class
+        // Without it the converter will fail
         ZWaveCommandClassPayload payload = new ZWaveCommandClassPayload(new byte[] { 6, 2, 4, 0, 0, 0, 0 });
         configCommandClass.handleConfigurationReport(payload, 0);
 

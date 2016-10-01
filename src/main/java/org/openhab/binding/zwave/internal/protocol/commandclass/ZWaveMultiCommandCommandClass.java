@@ -60,14 +60,19 @@ public class ZWaveMultiCommandCommandClass extends ZWaveCommandClass {
      * @throws ZWaveSerialMessageException
      */
     @ZWaveResponseHandler(id = MULTI_COMMMAND_ENCAP, name = "MULTI_COMMMAND_ENCAP")
-    public void handleMultiCommandEncap(ZWaveCommandClassPayload payload, int endpoint) {
+    public void handleMultiCommandEncap(ZWaveCommandClassPayload payload, int endpoint)
+            throws ZWaveSerialMessageException {
         int classCnt = payload.getPayloadByte(2);
 
+        int offset = 3;
         // Iterate over all commands
         for (int c = 0; c < classCnt; c++) {
+            ZWaveCommandClassPayload commandClassPayload = new ZWaveCommandClassPayload(payload, offset + 1,
+                    offset + payload.getPayloadByte(offset) + 1);
+
             CommandClass commandClass;
             ZWaveCommandClass zwaveCommandClass;
-            int commandClassCode = payload.getMessagePayloadByte(offset + 1);
+            int commandClassCode = commandClassPayload.getCommandClassId();
             commandClass = CommandClass.getCommandClass(commandClassCode);
             if (commandClass == null) {
                 logger.error(String.format("NODE %d: Unknown command class 0x%02x", getNode().getNodeId(),
@@ -83,7 +88,7 @@ public class ZWaveMultiCommandCommandClass extends ZWaveCommandClass {
                             commandClass, commandClass.getKey());
 
                     zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), getNode(),
-                            this.getController());
+                            getController());
 
                     if (zwaveCommandClass != null) {
                         logger.debug("NODE {}: Adding command class %s", getNode().getNodeId(), commandClass);
@@ -92,15 +97,15 @@ public class ZWaveMultiCommandCommandClass extends ZWaveCommandClass {
                 }
 
                 if (zwaveCommandClass == null) {
-                    logger.error("NODE {}: CommandClass %s not implemented.", this.getNode().getNodeId(), commandClass);
+                    logger.error("NODE {}: CommandClass %s not implemented.", getNode().getNodeId(), commandClass);
                 } else {
-                    logger.debug("NODE {}: Calling handleApplicationCommandRequest.", this.getNode().getNodeId());
-                    zwaveCommandClass.handleApplicationCommandRequest(serialMessage, offset + 2, 0);
+                    logger.debug("NODE {}: Calling handleApplicationCommandRequest.", getNode().getNodeId());
+                    zwaveCommandClass.handleApplicationCommandRequest(commandClassPayload, endpoint);
                 }
             }
 
             // Step over this class
-            offset += serialMessage.getMessagePayloadByte(offset) + 1;
+            offset += payload.getPayloadByte(offset) + 1;
         }
     }
 }

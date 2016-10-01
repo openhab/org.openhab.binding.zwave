@@ -23,6 +23,7 @@ import org.mockito.stubbing.Answer;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -105,7 +106,7 @@ public class ZWaveMultiInstanceCommandClassTest extends ZWaveCommandClassTest {
                 e.printStackTrace();
             }
 
-            cls.handleApplicationCommandRequest(msg, 4, 0);
+            cls.handleApplicationCommandRequest(new ZWaveCommandClassPayload(msg), 4);
         } catch (ZWaveSerialMessageException e) {
             fail("Out of bounds exception processing data");
         }

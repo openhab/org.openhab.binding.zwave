@@ -70,18 +70,17 @@ public class ZWaveCRC16EncapsulationCommandClass extends ZWaveCommandClass {
      * @throws ZWaveSerialMessageException
      */
     @ZWaveResponseHandler(id = CRC_ENCAPSULATION_ENCAP, name = "CRC_ENCAPSULATION_ENCAP")
-    public void handleCrcEncap(ZWaveCommandClassPayload payload, int endpoint) {
+    public void handleCrcEncap(ZWaveCommandClassPayload payload, int endpoint) throws ZWaveSerialMessageException {
         // calculate CRC
-        byte[] payload = serialMessage.getMessagePayload();
-        byte[] messageCrc = Arrays.copyOfRange(payload, payload.length - 2, payload.length);
-        byte[] tocheck = Arrays.copyOfRange(payload, 0, payload.length - 2);
+        byte[] messageCrc = payload.getPayloadBuffer(payload.getPayloadLength() - 2, payload.getPayloadLength());
+        byte[] tocheck = payload.getPayloadBuffer(0, payload.getPayloadLength() - 2);
 
         short calculatedCrc = crc_ccit(tocheck);
         // check if messageCrc = calculatedCrc
         ByteBuffer byteBuffer = ByteBuffer.allocate(2);
         byteBuffer.putShort(calculatedCrc);
         if (!Arrays.equals(messageCrc, byteBuffer.array())) {
-            logger.error("NODE {}: CRC check failed message contains {} but should be {}", this.getNode().getNodeId(),
+            logger.error("NODE {}: CRC check failed message contains {} but should be {}", getNode().getNodeId(),
                     SerialMessage.bb2hex(messageCrc), SerialMessage.bb2hex(byteBuffer.array()));
             return;
         }
@@ -89,13 +88,13 @@ public class ZWaveCRC16EncapsulationCommandClass extends ZWaveCommandClass {
         // Execute underlying command
         CommandClass commandClass;
         ZWaveCommandClass zwaveCommandClass;
-        int commandClassCode = serialMessage.getMessagePayloadByte(offset);
+        int commandClassCode = payload.getCommandClassId();
         commandClass = CommandClass.getCommandClass(commandClassCode);
         if (commandClass == null) {
-            logger.error(String.format("NODE %d: Unsupported command class 0x%02x", this.getNode().getNodeId(),
+            logger.error(String.format("NODE %d: Unsupported command class 0x%02x", getNode().getNodeId(),
                     commandClassCode));
         } else {
-            zwaveCommandClass = this.getNode().getCommandClass(commandClass);
+            zwaveCommandClass = getNode().getCommandClass(commandClass);
 
             // Apparently, this node supports a command class that we did not
             // get (yet) during initialization.
@@ -114,11 +113,11 @@ public class ZWaveCRC16EncapsulationCommandClass extends ZWaveCommandClass {
             }
 
             if (zwaveCommandClass == null) {
-                logger.error(String.format("NODE %d: CommandClass %s (0x%02x) not implemented.",
-                        this.getNode().getNodeId(), commandClass, commandClassCode));
+                logger.error(String.format("NODE %d: CommandClass %s (0x%02x) not implemented.", getNode().getNodeId(),
+                        commandClass, commandClassCode));
             } else {
-                logger.debug("NODE {}: Calling handleApplicationCommandRequest.", this.getNode().getNodeId());
-                zwaveCommandClass.handleApplicationCommandRequest(new ZWaveCommandClassPayload(payload, 2);
+                logger.debug("NODE {}: Calling handleApplicationCommandRequest.", getNode().getNodeId());
+                zwaveCommandClass.handleApplicationCommandRequest(new ZWaveCommandClassPayload(payload, 2), endpoint);
             }
         }
     }

@@ -34,11 +34,11 @@ public class ZWaveCommandClassPayload {
     }
 
     public int getCommandClassId() {
-        return payload[0];
+        return payload[0] & 0xFF;
     }
 
     public int getCommandClassCommand() {
-        return payload[1];
+        return payload[1] & 0xFF;
     }
 
     public int getPayloadByte(int offset) {
@@ -51,6 +51,10 @@ public class ZWaveCommandClassPayload {
 
     public byte[] getPayloadBuffer() {
         return payload;
+    }
+
+    public byte[] getPayloadBuffer(int start, int end) {
+        return Arrays.copyOfRange(payload, start, end);
     }
 
     // @Override
