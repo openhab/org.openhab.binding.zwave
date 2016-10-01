@@ -13,6 +13,12 @@ Accessory Switch<br /><h1>Overview</h1><p>Aspire RF Accessory Switch Compatible 
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+        </properties>
+      </channel>
       <channel id="scene_number" typeId="scene_number">
         <label>Scene Number</label>
         <properties>
