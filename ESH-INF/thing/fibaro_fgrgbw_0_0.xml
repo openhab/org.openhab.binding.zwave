@@ -50,6 +50,12 @@
           <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=HEATING</property>
         </properties>
       </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Start animation</label>
+        <properties>
+          <property name="binding:*:DecimalType">CONFIGURATION;parameter=72</property>
+        </properties>
+      </channel>
       <channel id="switch_dimmer2" typeId="switch_dimmer">
         <label>Green</label>
         <properties>
