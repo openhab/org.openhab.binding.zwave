@@ -138,9 +138,9 @@ Configure the state of the LED<br /><h1>Overview</h1><p>Configure the state of L
 
       <parameter name="config_83_3_000000FF" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>83: Red night light color value</label>
+        <label>83: Blue night light color value</label>
         <description><![CDATA[
-Configure the RGB value when it is in Night light mode<br /><h1>Overview</h1><p>Configure the RGB value when it is in Night light mode.<br />Value1: Red color value<br />Value2: Green color value<br />Value3: Blue color value</p> <p>defaults:</p> <p>Value1=0xDD<br />Value2=0xA0<br />Value3=0xDD</p>
+Blue night light color value<br /><h1>Overview</h1><p>Value for parameter 83, night light blue color</p>
         ]]></description>
         <default>221</default>
       </parameter>
@@ -156,9 +156,9 @@ Green night light color value<br /><h1>Overview</h1><p>Green color value for par
 
       <parameter name="config_83_3_00FF0000" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>83: Blue night light color value</label>
+        <label>83: Red night light color value</label>
         <description><![CDATA[
-Blue night light color value<br /><h1>Overview</h1><p>Value for parameter 83, night light blue color</p>
+Configure the RGB value when it is in Night light mode<br /><h1>Overview</h1><p>Configure the RGB value when it is in Night light mode.<br />Value1: Red color value<br />Value2: Green color value<br />Value3: Blue color value</p> <p>defaults:</p> <p>Value1=0xDD<br />Value2=0xA0<br />Value3=0xDD</p>
         ]]></description>
         <default>221</default>
       </parameter>
