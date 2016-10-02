@@ -129,7 +129,7 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
     }
 
     /**
-     * This is called once the noe is fully discovered. At this point we know most of the information about
+     * This is called once the node is fully discovered. At this point we know most of the information about
      * the device including manufacturer information.
      *
      * @param node the node to be added
