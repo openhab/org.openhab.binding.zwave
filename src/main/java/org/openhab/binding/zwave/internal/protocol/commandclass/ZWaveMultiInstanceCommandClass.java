@@ -269,10 +269,11 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
     public void handleMultiChannelCapabilityReport(ZWaveCommandClassPayload payload, int endpoint)
             throws ZWaveSerialMessageException {
         logger.debug("NODE {}: Process Multi-channel capability Report", getNode().getNodeId());
-        int receivedEndpointId = payload.getPayloadByte(1) & 0x7F;
-        boolean dynamic = ((payload.getPayloadByte(1) & 0x80) != 0);
-        int genericDeviceClass = payload.getPayloadByte(2);
-        int specificDeviceClass = payload.getPayloadByte(3);
+
+        int receivedEndpointId = payload.getPayloadByte(2) & 0x7F;
+        boolean dynamic = ((payload.getPayloadByte(2) & 0x80) != 0);
+        int genericDeviceClass = payload.getPayloadByte(3);
+        int specificDeviceClass = payload.getPayloadByte(4);
 
         logger.debug("NODE {}: Endpoints are the same device class = {}", getNode().getNodeId(),
                 endpointsAreTheSameDeviceClass ? "true" : false);
@@ -335,14 +336,14 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
         if (generic == null) {
             logger.error(
                     String.format("NODE %d: Endpoint %d has invalid device class. generic = 0x%02x, specific = 0x%02x.",
-                            getNode().getNodeId(), endpoint, genericDeviceClass, specificDeviceClass));
+                            getNode().getNodeId(), endpoint.getEndpointId(), genericDeviceClass, specificDeviceClass));
             return false;
         }
         Specific specific = Specific.getSpecific(generic, specificDeviceClass);
         if (specific == null) {
             logger.error(
                     String.format("NODE %d: Endpoint %d has invalid device class. generic = 0x%02x, specific = 0x%02x.",
-                            getNode().getNodeId(), endpoint, genericDeviceClass, specificDeviceClass));
+                            getNode().getNodeId(), endpoint.getEndpointId(), genericDeviceClass, specificDeviceClass));
             return false;
         }
 

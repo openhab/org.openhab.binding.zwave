@@ -52,6 +52,11 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
     // private boolean initFactoryDefault = false;
     private boolean initSerialNumber = false;
 
+    private int deviceManufacturer = Integer.MAX_VALUE;
+    private int deviceType = Integer.MAX_VALUE;
+    private int deviceId = Integer.MAX_VALUE;
+    private String deviceSerialNumber = null;
+
     /**
      * Creates a new instance of the ZwaveManufacturerSpecificCommandClass class.
      *
@@ -73,13 +78,13 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
 
     @ZWaveResponseHandler(id = MANUFACTURER_SPECIFIC_REPORT, name = "MANUFACTURER_SPECIFIC_REPORT")
     public void handleManufacturerSpecificReport(ZWaveCommandClassPayload payload, int endpoint) {
-        int tempMan = ((payload.getPayloadByte(2)) << 8) | (payload.getPayloadByte(3));
-        int tempDeviceType = ((payload.getPayloadByte(4)) << 8) | (payload.getPayloadByte(5));
-        int tempDeviceId = ((payload.getPayloadByte(6)) << 8) | (payload.getPayloadByte(7));
+        deviceManufacturer = ((payload.getPayloadByte(2)) << 8) | (payload.getPayloadByte(3));
+        deviceType = ((payload.getPayloadByte(4)) << 8) | (payload.getPayloadByte(5));
+        deviceId = ((payload.getPayloadByte(6)) << 8) | (payload.getPayloadByte(7));
 
-        getNode().setManufacturer(tempMan);
-        getNode().setDeviceType(tempDeviceType);
-        getNode().setDeviceId(tempDeviceId);
+        getNode().setManufacturer(deviceManufacturer);
+        getNode().setDeviceType(deviceType);
+        getNode().setDeviceId(deviceId);
 
         logger.debug(
                 String.format("NODE %d: Manufacturer ID = 0x%04x", getNode().getNodeId(), getNode().getManufacturer()));
@@ -112,11 +117,11 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
         // logger.debug("NODE {}: Factory Number = {}", getNode().getNodeId(), getNode().getFactoryId());
         // }
         if (dataType == MANUFACTURER_TYPE_SERIALNUMBER) {
+            deviceSerialNumber = data;
             initSerialNumber = true;
             getNode().setSerialNumber(data);
             logger.debug("NODE {}: Serial Number   = {}", getNode().getNodeId(), getNode().getSerialNumber());
         }
-
     }
 
     /**
@@ -178,4 +183,19 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
         return result;
     }
 
+    public int getDeviceManufacturer() {
+        return deviceManufacturer;
+    }
+
+    public int getDeviceType() {
+        return deviceType;
+    }
+
+    public int getDeviceId() {
+        return deviceId;
+    }
+
+    public String getDeviceSerialNumber() {
+        return deviceSerialNumber;
+    }
 }
