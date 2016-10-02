@@ -133,6 +133,8 @@ public class ZWaveSwitchAllCommandClass extends ZWaveCommandClass implements ZWa
         ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
                 getCommandClass(), new Integer(m));
         getController().notifyEventListeners(zEvent);
+
+        initialiseDone = true;
     }
 
     public ZWaveTransaction getValueMessage() {

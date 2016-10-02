@@ -92,7 +92,7 @@ public class ZWaveSwitchAllCommandClassTest extends ZWaveCommandClassTest {
 
         // assertEquals(event.getNodeId(), 40);
         assertEquals(event.getEndpoint(), 0);
-        assertEquals(event.getCommandClass(), CommandClass.SWITCH_ALL);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_SWITCH_ALL);
         assertEquals(event.getValue(), 0xff);
     }
 }
