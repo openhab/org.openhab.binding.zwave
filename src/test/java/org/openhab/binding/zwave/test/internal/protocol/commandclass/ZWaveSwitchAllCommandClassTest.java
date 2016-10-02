@@ -8,15 +8,18 @@
  */
 package org.openhab.binding.zwave.test.internal.protocol.commandclass;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSwitchAllCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSwitchAllCommandClass.SwitchAllMode;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 
 /**
  * Test cases for {@link ZWaveSwitchAllCommandClass}.
@@ -67,5 +70,21 @@ public class ZWaveSwitchAllCommandClassTest extends ZWaveCommandClassTest {
         cls.setVersion(1);
         msg = cls.allOffMessage();
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+    }
+
+    @Test
+    public void processSwitchAllReport() {
+        byte[] packetData = { 0x01, 0x0B, 0x00, 0x04, 0x00, 0x02, 0x05, 0x27, 0x03, (byte) 0xFF, 0x07, 0x00, 0x2B };
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData, 3);
+
+        assertEquals(events.size(), 1);
+
+        ZWaveCommandClassValueEvent event = (ZWaveCommandClassValueEvent) events.get(0);
+
+        // assertEquals(event.getNodeId(), 40);
+        assertEquals(event.getEndpoint(), 0);
+        assertEquals(event.getCommandClass(), CommandClass.SWITCH_ALL);
+        assertEquals(event.getValue(), 0xff);
     }
 }
