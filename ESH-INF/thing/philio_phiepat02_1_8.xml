@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="philio_phiepat02_1_8" listed="false">
+    <label>PHIEPAT02-A Slim Multi-Sensor (Humidity/Temperature/Water)</label>
+    <description>Slim Multi-Sensor (Humidity/Temperature/Water)</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="sensor_binary" typeId="sensor_binary">
+        <label>Binary Sensor</label>
+        <properties>
+          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature" typeId="sensor_temperature">
+        <label>Sensor (temperature)</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="alarm_general" typeId="alarm_general">
+        <label>Alarm (general)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=GENERAL</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">BATTERY</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Philio Technology Corporation</property>
+      <property name="modelId">PHIEPAT02-A</property>
+      <property name="manufacturerId">013C</property>
+      <property name="manufacturerRef">0002:001F</property>
+      <property name="dbReference"></property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      
+
+      <parameter name="config_10_1" type="integer" groupName="configuration"
+                 min="0" max="127">
+        <label>10: Auto Report Battery Time</label>
+        <description><![CDATA[
+The interval time for auto reporting the battery level.<br /><ul><li>0 = Turn off auto report battery.</li> <li>1-127 = Number of ticks. The default value is 12. The tick time can be set by configuration No. 20.</li></ul>
+        ]]></description>
+        <default>12</default>
+      </parameter>
+
+      <parameter name="config_13_1" type="integer" groupName="configuration"
+                 min="1" max="127">
+        <label>13: Auto Report Temperature Time</label>
+        <description><![CDATA[
+The interval time for auto reporting the temperature state.<br /><ul><li>0 = Turn off auto report temperature.</li> <li>1-127 = Number of ticks. The default value is 12. The tick time can be set by configuration No. 20.</li></ul>
+        ]]></description>
+        <default>12</default>
+      </parameter>
+
+      <parameter name="config_20_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>20: Auto Report Tick Interval</label>
+        <description><![CDATA[
+The interval time for each auto report tick. Setting this configuration will effect configuration No.10, No.11, No.12 and No.13.<br /><ul><li>0 = Turn off all auto report functions.</li> <li>1-255 = Interval time for each tick. Default is 30.</li></ul>
+        ]]></description>
+        <default>30</default>
+      </parameter>
+
+      <parameter name="config_21_1" type="integer" groupName="configuration"
+                 min="0" max="127">
+        <label>21: Temperature Differential Report</label>
+        <description>The temperature differential to report. The unit is Fahrenheit. When enabled, the device will measure the temperature every minute and when the temperature is over 140 degree Fahrenheit, it will continuesly report. Enabling this functionality will cause s</description>
+        <default>1</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Reports</label>
+        <multipleLimit>8</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Light Control</label>
+        <multipleLimit>8</multipleLimit>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>
