@@ -217,7 +217,8 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
     @ZWaveResponseHandler(id = MULTI_ASSOCIATIONCMD_GROUPINGS_REPORT, name = "MULTI_ASSOCIATIONCMD_GROUPINGS_REPORT")
     public void handleMultiAssociationGroupingsReport(ZWaveCommandClassPayload payload, int endpoint) {
         maxGroups = payload.getPayloadByte(2);
-        logger.debug("NODE {} processGroupingsReport number of groups {}", getNode(), maxGroups);
+        logger.debug("NODE {}: processGroupingsReport number of groups {}", getNode().getNodeId(), maxGroups);
+
         // Start the process to query these nodes
         updateAssociationsNode = 1;
 
@@ -225,6 +226,8 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
         if (transaction != null) {
             getController().sendData(transaction);
         }
+
+        initialiseDone = true;
     }
 
     /**
