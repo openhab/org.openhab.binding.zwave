@@ -15,10 +15,10 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,6 +50,11 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
     // private boolean initFactoryDefault = false;
     private boolean initSerialNumber = false;
 
+    private int deviceManufacturer = Integer.MAX_VALUE;
+    private int deviceType = Integer.MAX_VALUE;
+    private int deviceId = Integer.MAX_VALUE;
+    private String deviceSerialNumber = null;
+
     /**
      * Creates a new instance of the ZwaveManufacturerSpecificCommandClass class.
      *
@@ -71,7 +76,7 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @throws ZWaveSerialMessageException
      */
     @Override
@@ -82,16 +87,16 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
         int command = serialMessage.getMessagePayloadByte(offset);
         switch (command) {
             case MANUFACTURER_SPECIFIC_REPORT:
-                int tempMan = ((serialMessage.getMessagePayloadByte(offset + 1)) << 8)
+                deviceManufacturer = ((serialMessage.getMessagePayloadByte(offset + 1)) << 8)
                         | (serialMessage.getMessagePayloadByte(offset + 2));
-                int tempDeviceType = ((serialMessage.getMessagePayloadByte(offset + 3)) << 8)
+                deviceType = ((serialMessage.getMessagePayloadByte(offset + 3)) << 8)
                         | (serialMessage.getMessagePayloadByte(offset + 4));
-                int tempDeviceId = ((serialMessage.getMessagePayloadByte(offset + 5)) << 8)
+                deviceId = ((serialMessage.getMessagePayloadByte(offset + 5)) << 8)
                         | (serialMessage.getMessagePayloadByte(offset + 6));
 
-                getNode().setManufacturer(tempMan);
-                getNode().setDeviceType(tempDeviceType);
-                getNode().setDeviceId(tempDeviceId);
+                getNode().setManufacturer(deviceManufacturer);
+                getNode().setDeviceType(deviceType);
+                getNode().setDeviceId(deviceId);
 
                 logger.debug(String.format("NODE %d: Manufacturer ID = 0x%04x", getNode().getNodeId(),
                         getNode().getManufacturer()));
@@ -124,6 +129,7 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
                 // logger.debug("NODE {}: Factory Number = {}", getNode().getNodeId(), getNode().getFactoryId());
                 // }
                 if (dataType == MANUFACTURER_TYPE_SERIALNUMBER) {
+                    deviceSerialNumber = data;
                     initSerialNumber = true;
                     getNode().setSerialNumber(data);
                     logger.debug("NODE {}: Serial Number   = {}", getNode().getNodeId(), getNode().getSerialNumber());
@@ -189,4 +195,19 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
         return result;
     }
 
+    public int getDeviceManufacturer() {
+        return deviceManufacturer;
+    }
+
+    public int getDeviceType() {
+        return deviceType;
+    }
+
+    public int getDeviceId() {
+        return deviceId;
+    }
+
+    public String getDeviceSerialNumber() {
+        return deviceSerialNumber;
+    }
 }

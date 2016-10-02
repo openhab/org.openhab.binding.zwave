@@ -18,6 +18,10 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
+import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Generic;
+import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
@@ -99,11 +103,14 @@ public class ZWaveCommandClassTest {
     }
 
     ZWaveCommandClass getCommandClass(CommandClass cls) {
+        ZWaveDeviceClass deviceClass = new ZWaveDeviceClass(Basic.NOT_KNOWN, Generic.NOT_KNOWN, Specific.NOT_USED);
+
         // Mock the controller so we can get any events
         ZWaveController mockedController = Mockito.mock(ZWaveController.class);
         ZWaveNode node = Mockito.mock(ZWaveNode.class);
         ZWaveEndpoint endpoint = Mockito.mock(ZWaveEndpoint.class);
         Mockito.when(node.getNodeId()).thenReturn(99);
+        Mockito.when(node.getDeviceClass()).thenReturn(deviceClass);
 
         // Get the command class and process the response
         ZWaveCommandClass cmdCls = ZWaveCommandClass.getInstance(cls.getKey(), node, mockedController);

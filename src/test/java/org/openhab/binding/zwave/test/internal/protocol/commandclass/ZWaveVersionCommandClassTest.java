@@ -8,12 +8,13 @@
  */
 package org.openhab.binding.zwave.test.internal.protocol.commandclass;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
 
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveVersionCommandClass;
 
@@ -44,5 +45,19 @@ public class ZWaveVersionCommandClassTest extends ZWaveCommandClassTest {
         cls.setVersion(1);
         msg = cls.getCommandClassVersionMessage(CommandClass.ALARM);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+    }
+
+    @Test
+    public void processApplicationVersionReport() {
+        byte[] packetData = { 0x01, 0x0D, 0x00, 0x04, 0x00, 0x08, 0x07, (byte) 0x86, 0x12, 0x03, 0x03, 0x14, 0x01, 0x04,
+                (byte) 0x7C };
+
+        ZWaveVersionCommandClass cls = (ZWaveVersionCommandClass) getCommandClass(CommandClass.VERSION);
+        SerialMessage msg = new SerialMessage(packetData);
+        try {
+            cls.handleApplicationCommandRequest(msg, 4, 0);
+            assertEquals("1.4", cls.getApplicationVersion());
+        } catch (ZWaveSerialMessageException e) {
+        }
     }
 }

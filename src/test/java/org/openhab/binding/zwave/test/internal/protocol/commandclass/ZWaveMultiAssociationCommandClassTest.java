@@ -81,7 +81,6 @@ public class ZWaveMultiAssociationCommandClassTest extends ZWaveCommandClassTest
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, -114, 4, 1, 0, 0, 13 };
         cls.setVersion(1);
         msg = cls.clearAssociationMessage(1);
-        byte[] x = msg.getMessageBuffer();
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
