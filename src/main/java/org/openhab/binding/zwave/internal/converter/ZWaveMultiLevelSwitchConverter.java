@@ -19,8 +19,8 @@ import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBatteryCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSwitchCommandClass;
@@ -51,7 +51,7 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
      * {@inheritDoc}
      */
     @Override
-    public List<SerialMessage> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
+    public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveMultiLevelSwitchCommandClass commandClass = (ZWaveMultiLevelSwitchCommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.SWITCH_MULTILEVEL, channel.getEndpoint());
         if (commandClass == null) {
@@ -60,10 +60,10 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
 
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
                 commandClass.getCommandClass().getLabel(), channel.getEndpoint());
-        SerialMessage serialMessage = node.encapsulate(commandClass.getValueMessage(), commandClass,
+        ZWaveTransaction transaction = node.encapsulate(commandClass.getValueMessage(), commandClass,
                 channel.getEndpoint());
-        List<SerialMessage> response = new ArrayList<SerialMessage>(1);
-        response.add(serialMessage);
+        List<ZWaveTransaction> response = new ArrayList<ZWaveTransaction>(1);
+        response.add(transaction);
         return response;
     }
 
@@ -131,7 +131,7 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
      * {@inheritDoc}
      */
     @Override
-    public List<SerialMessage> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
+    public List<ZWaveTransaction> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
         ZWaveMultiLevelSwitchCommandClass commandClass = (ZWaveMultiLevelSwitchCommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.SWITCH_MULTILEVEL, channel.getEndpoint());
         if (commandClass == null) {
@@ -140,7 +140,7 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
             return null;
         }
 
-        SerialMessage serialMessage = null;
+        ZWaveTransaction transaction = null;
         // boolean restoreLastValue = "true".equalsIgnoreCase(channel.getArguments().get("restoreLastValue"));
 
         boolean configInvertControl = "true".equalsIgnoreCase(channel.getArguments().get("config_invert_control"));
@@ -148,19 +148,19 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
 
         if (command instanceof StopMoveType && command == StopMoveType.STOP) {
             // Special handling for the STOP command
-            serialMessage = commandClass.stopLevelChangeMessage();
+            transaction = commandClass.stopLevelChangeMessage();
         } else if (command instanceof UpDownType) {
             if (configInvertControl == false) {
                 if (command == UpDownType.UP) {
-                    serialMessage = commandClass.startLevelChangeMessage(true, 0xff);
+                    transaction = commandClass.startLevelChangeMessage(true, 0xff);
                 } else {
-                    serialMessage = commandClass.startLevelChangeMessage(false, 0xff);
+                    transaction = commandClass.startLevelChangeMessage(false, 0xff);
                 }
             } else {
                 if (command == UpDownType.UP) {
-                    serialMessage = commandClass.startLevelChangeMessage(false, 0xff);
+                    transaction = commandClass.startLevelChangeMessage(false, 0xff);
                 } else {
-                    serialMessage = commandClass.startLevelChangeMessage(true, 0xff);
+                    transaction = commandClass.startLevelChangeMessage(true, 0xff);
                 }
             }
         } else if (command instanceof PercentType) {
@@ -178,7 +178,7 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
             logger.trace("NODE {}: Converted command '{}' to value {} for channel = {}, endpoint = {}.",
                     node.getNodeId(), command.toString(), value, channel.getUID(), channel.getEndpoint());
 
-            serialMessage = commandClass.setValueMessage(value);
+            transaction = commandClass.setValueMessage(value);
         } else if (command instanceof OnOffType) {
             int value;
             if (configInvertControl) {
@@ -190,21 +190,21 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
             logger.trace("NODE {}: Converted command '{}' to value {} for channel = {}, endpoint = {}.",
                     node.getNodeId(), command.toString(), value, channel.getUID(), channel.getEndpoint());
 
-            serialMessage = commandClass.setValueMessage(value);
+            transaction = commandClass.setValueMessage(value);
         }
 
         // encapsulate the message in case this is a multi-instance node
-        serialMessage = node.encapsulate(serialMessage, commandClass, channel.getEndpoint());
+        transaction = node.encapsulate(transaction, commandClass, channel.getEndpoint());
 
-        if (serialMessage == null) {
+        if (transaction == null) {
             logger.warn("Generating message failed for command class = {}, node = {}, endpoint = {}",
                     commandClass.getCommandClass().getLabel(), node.getNodeId(), channel.getEndpoint());
             return null;
         }
 
         // Queue the command
-        List<SerialMessage> messages = new ArrayList<SerialMessage>(2);
-        messages.add(serialMessage);
+        List<ZWaveTransaction> messages = new ArrayList<ZWaveTransaction>(2);
+        messages.add(transaction);
 
         // Poll an update once we've sent the command if this is a STOP
         // Don't poll immediately since some devices return the original value, and some the new value.

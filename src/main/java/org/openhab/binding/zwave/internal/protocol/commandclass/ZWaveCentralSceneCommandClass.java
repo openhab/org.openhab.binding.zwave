@@ -13,12 +13,14 @@ import java.util.Collection;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -103,19 +105,21 @@ public class ZWaveCentralSceneCommandClass extends ZWaveCommandClass
     }
 
     @Override
-    public SerialMessage getValueMessage() {
+    public ZWaveTransaction getValueMessage() {
         logger.debug("NODE {}: Creating new message for application command SCENE_GET", this.getNode().getNodeId());
-        SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        byte[] newPayload = { (byte) this.getNode().getNodeId(), 2, (byte) getCommandClass().getKey(),
-                (byte) SCENE_GET };
-        result.setMessagePayload(newPayload);
-        return result;
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), SCENE_GET)
+                .withNodeId(getNode().getNodeId()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), SCENE_REPORT).withPriority(TransactionPriority.Get)
+                .build();
     }
 
     @Override
-    public Collection<SerialMessage> initialize(boolean refresh) {
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+    public Collection<ZWaveTransaction> initialize(boolean refresh) {
+        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
 
         if (initialiseDone == false) {
             result.add(getValueMessage());

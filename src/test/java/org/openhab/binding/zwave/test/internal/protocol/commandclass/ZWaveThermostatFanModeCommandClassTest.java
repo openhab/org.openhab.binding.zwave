@@ -33,8 +33,8 @@ public class ZWaveThermostatFanModeCommandClassTest extends ZWaveCommandClassTes
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 68, 2, 0, 0, -62 };
         cls.setVersion(1);
-        msg = cls.getValueMessage();
-        byte[] x = msg.getMessageBuffer();
+        msg = cls.getValueMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -46,7 +46,7 @@ public class ZWaveThermostatFanModeCommandClassTest extends ZWaveCommandClassTes
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 68, 4, 0, 0, -60 };
         cls.setVersion(1);
-        msg = cls.setValueMessage(34);
+        msg = cls.setValueMessage(34).getSerialMessage();
         // byte[] x = msg.getMessageBuffer();
         // assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
@@ -59,8 +59,8 @@ public class ZWaveThermostatFanModeCommandClassTest extends ZWaveCommandClassTes
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 68, 4, 0, 0, -60 };
         cls.setVersion(1);
-        msg = cls.getSupportedMessage();
-        byte[] x = msg.getMessageBuffer();
+        msg = cls.getSupportedMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 }

@@ -13,12 +13,14 @@ import java.util.Collection;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -71,7 +73,7 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @throws ZWaveSerialMessageException
      */
     @Override
@@ -141,14 +143,17 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    public SerialMessage getManufacturerSpecificMessage() {
+    public ZWaveTransaction getManufacturerSpecificMessage() {
         logger.debug("NODE {}: Creating new message for command MANUFACTURER_SPECIFIC_GET", getNode().getNodeId());
-        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Config);
-        byte[] newPayload = { (byte) getNode().getNodeId(), 2, (byte) getCommandClass().getKey(),
-                (byte) MANUFACTURER_SPECIFIC_GET };
-        result.setMessagePayload(newPayload);
-        return result;
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), MANUFACTURER_SPECIFIC_GET).withNodeId(getNode().getNodeId())
+                .build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), MANUFACTURER_SPECIFIC_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -156,19 +161,22 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    public SerialMessage getManufacturerSpecificDeviceMessage(int type) {
-        logger.debug("NODE {}: Creating new message for command MANUFACTURER_SPECIFIC_DEVICE_GET",
-                getNode().getNodeId());
-        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Config);
-        byte[] newPayload = { (byte) getNode().getNodeId(), 3, (byte) getCommandClass().getKey(),
-                (byte) MANUFACTURER_SPECIFIC_DEVICE_GET, (byte) type };
-        result.setMessagePayload(newPayload);
-        return result;
+    public ZWaveTransaction getManufacturerSpecificDeviceMessage(int type) {
+        logger.debug("NODE {}: Creating new message for command MANUFACTURER_SPECIFIC_DEVICE_GET({})",
+                getNode().getNodeId(), type);
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), MANUFACTURER_SPECIFIC_DEVICE_GET).withNodeId(getNode().getNodeId())
+                .withPayload(type).build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), MANUFACTURER_SPECIFIC_DEVICE_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     @Override
-    public Collection<SerialMessage> initialize(boolean refresh) {
+    public Collection<ZWaveTransaction> initialize(boolean refresh) {
         if (getVersion() == 1) {
             return null;
         }
@@ -178,7 +186,7 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
             initSerialNumber = false;
         }
 
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
         // if (initFactoryDefault == false) {
         // result.add(getManufacturerSpecificDeviceMessage(MANUFACTURER_TYPE_FACTORYDEFAULT));
         // }

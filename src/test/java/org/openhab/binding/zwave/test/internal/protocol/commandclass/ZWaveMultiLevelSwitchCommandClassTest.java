@@ -15,6 +15,7 @@ import java.util.Collection;
 
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSwitchCommandClass;
 
@@ -32,7 +33,8 @@ public class ZWaveMultiLevelSwitchCommandClassTest extends ZWaveCommandClassTest
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 38, 2, 0, 0, -96 };
         cls.setVersion(1);
-        msg = cls.getValueMessage();
+        msg = cls.getValueMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -44,7 +46,8 @@ public class ZWaveMultiLevelSwitchCommandClassTest extends ZWaveCommandClassTest
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 38, 1, 56, 0, 0, -103 };
         cls.setVersion(1);
-        msg = cls.setValueMessage(56);
+        msg = cls.setValueMessage(56).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -56,7 +59,8 @@ public class ZWaveMultiLevelSwitchCommandClassTest extends ZWaveCommandClassTest
 
         byte[] expectedResponseV1 = { 1, 12, 0, 19, 99, 5, 38, 4, 32, 0, 43, 0, 0, -81 };
         cls.setVersion(1);
-        msg = cls.startLevelChangeMessage(true, 43);
+        msg = cls.startLevelChangeMessage(true, 43).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -68,7 +72,8 @@ public class ZWaveMultiLevelSwitchCommandClassTest extends ZWaveCommandClassTest
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 38, 5, 0, 0, -89 };
         cls.setVersion(1);
-        msg = cls.stopLevelChangeMessage();
+        msg = cls.stopLevelChangeMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -80,7 +85,8 @@ public class ZWaveMultiLevelSwitchCommandClassTest extends ZWaveCommandClassTest
 
         byte[] expectedResponseV3 = { 1, 9, 0, 19, 99, 2, 38, 6, 0, 0, -92 };
         cls.setVersion(3);
-        msg = cls.getSupportedMessage();
+        msg = cls.getSupportedMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV3));
     }
 
@@ -88,7 +94,7 @@ public class ZWaveMultiLevelSwitchCommandClassTest extends ZWaveCommandClassTest
     public void initialize() {
         ZWaveMultiLevelSwitchCommandClass cls = (ZWaveMultiLevelSwitchCommandClass) getCommandClass(
                 CommandClass.SWITCH_MULTILEVEL);
-        Collection<SerialMessage> msgs;
+        Collection<ZWaveTransaction> msgs;
 
         cls.setVersion(1);
         msgs = cls.initialize(true);

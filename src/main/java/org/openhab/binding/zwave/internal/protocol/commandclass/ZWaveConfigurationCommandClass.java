@@ -8,19 +8,22 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveConfigurationParameter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -146,7 +149,7 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
      *
      * @return the serial message
      */
-    public SerialMessage getConfigMessage(int parameter) {
+    public ZWaveTransaction getConfigMessage(int parameter) {
         // Check if the parameter exists in our list
         ZWaveConfigurationParameter configurationParameter = configParameters.get(parameter);
         if (configurationParameter != null && configurationParameter.getWriteOnly() == true) {
@@ -156,13 +159,16 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
         }
 
         logger.debug("NODE {}: Creating new message for application command CONFIGURATIONCMD_GET",
-                getNode().getNodeId());
-        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Config);
-        byte[] newPayload = { (byte) getNode().getNodeId(), 3, (byte) getCommandClass().getKey(),
-                (byte) CONFIGURATIONCMD_GET, (byte) (parameter & 0xff) };
-        result.setMessagePayload(newPayload);
-        return result;
+                this.getNode().getNodeId());
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), CONFIGURATIONCMD_GET).withNodeId(getNode().getNodeId())
+                .withPayload(parameter).build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), CONFIGURATIONCMD_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -171,7 +177,7 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
      * @param parameter the parameter to set.
      * @return the serial message
      */
-    public SerialMessage setConfigMessage(ZWaveConfigurationParameter parameter) {
+    public ZWaveTransaction setConfigMessage(ZWaveConfigurationParameter parameter) {
         if (parameter != null && parameter.getReadOnly() == true) {
             logger.debug("NODE {}: CONFIGURATIONCMD_SET ignored for parameter {} - parameter is read only",
                     getNode().getNodeId(), parameter);
@@ -179,23 +185,21 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
         }
 
         logger.debug("NODE {}: Creating new message for application command CONFIGURATIONCMD_SET",
-                getNode().getNodeId());
-        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Config);
-        byte[] newPayload = new byte[parameter.getSize() + 6];
-        newPayload[0] = (byte) getNode().getNodeId();
-        newPayload[1] = (byte) (4 + parameter.getSize());
-        newPayload[2] = (byte) getCommandClass().getKey();
-        newPayload[3] = (byte) CONFIGURATIONCMD_SET;
-        newPayload[4] = (byte) (parameter.getIndex() & 0xFF);
-        newPayload[5] = (byte) (parameter.getSize() & 0xFF);
+                this.getNode().getNodeId());
+
+        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
+        outputData.write(parameter.getIndex());
+        outputData.write(parameter.getSize());
 
         for (int i = 0; i < parameter.getSize(); i++) {
-            newPayload[6 + i] = (byte) (parameter.getValue() >> ((parameter.getSize() - i - 1) * 8) & 0xFF);
+            outputData.write(parameter.getValue() >> ((parameter.getSize() - i - 1) * 8));
         }
 
-        result.setMessagePayload(newPayload);
-        return result;
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), CONFIGURATIONCMD_SET).withNodeId(getNode().getNodeId())
+                .withPayload(outputData.toByteArray()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Config).build();
     }
 
     /**

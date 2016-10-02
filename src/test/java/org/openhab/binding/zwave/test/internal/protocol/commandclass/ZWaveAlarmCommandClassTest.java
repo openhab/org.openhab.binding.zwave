@@ -115,12 +115,12 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
         SerialMessage msg;
 
         cls.setVersion(1);
-        msg = cls.getSupportedMessage();
-        assertNull(msg);
+        assertNull(cls.getSupportedMessage());
 
         byte[] expectedResponseV2 = { 1, 9, 0, 19, 99, 2, 113, 7, 0, 0, -14 };
         cls.setVersion(2);
-        msg = cls.getSupportedMessage();
+        msg = cls.getSupportedMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV2));
     }
 
@@ -130,12 +130,12 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
         SerialMessage msg;
 
         cls.setVersion(1);
-        msg = cls.getSupportedEventMessage(1);
-        assertNull(msg);
+        assertNull(cls.getSupportedEventMessage(1));
 
         byte[] expectedResponseV3 = { 1, 10, 0, 19, 99, 3, 113, 1, 1, 0, 0, -9 };
         cls.setVersion(3);
-        msg = cls.getSupportedEventMessage(1);
+        msg = cls.getSupportedEventMessage(1).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV3));
     }
 
@@ -146,18 +146,20 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 113, 4, 6, 0, 0, -11 };
         cls.setVersion(1);
-        msg = cls.getMessage(AlarmType.ACCESS_CONTROL);
+        msg = cls.getMessage(AlarmType.ACCESS_CONTROL).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
 
         byte[] expectedResponseV2 = { 1, 11, 0, 19, 99, 4, 113, 4, 0, 6, 0, 0, -13 };
         cls.setVersion(2);
-        msg = cls.getMessage(AlarmType.ACCESS_CONTROL);
+        msg = cls.getMessage(AlarmType.ACCESS_CONTROL).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV2));
 
         byte[] expectedResponseV3 = { 1, 12, 0, 19, 99, 5, 113, 4, 0, 6, 1, 0, 0, -12 };
         cls.setVersion(3);
-        msg = cls.getMessage(AlarmType.ACCESS_CONTROL);
-        byte[] b = msg.getMessageBuffer();
+        msg = cls.getMessage(AlarmType.ACCESS_CONTROL).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV3));
     }
 

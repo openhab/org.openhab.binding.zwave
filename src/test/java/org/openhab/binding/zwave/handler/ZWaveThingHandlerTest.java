@@ -34,6 +34,7 @@ import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 
@@ -45,7 +46,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpComma
  */
 public class ZWaveThingHandlerTest {
 
-    private List<SerialMessage> doConfigurationUpdate(String param, Object value) {
+    private List<ZWaveTransaction> doConfigurationUpdate(String param, Object value) {
         ThingType thingType = new ThingType(new ThingTypeUID("bindingId", "thingTypeId"), null, "label", null, null,
                 null, null, null);
         Thing thing = ThingFactory.createThing(thingType, new ThingUID(thingType.getUID(), "thingId"),
@@ -57,8 +58,8 @@ public class ZWaveThingHandlerTest {
         ThingHandlerCallback thingCallback = Mockito.mock(ThingHandlerCallback.class);
         ZWaveThingHandler thingHandler = new ZWaveThingHandler(thing);
         thingHandler.setCallback(thingCallback);
-        ArgumentCaptor<SerialMessage> argument;
-        argument = ArgumentCaptor.forClass(SerialMessage.class);
+        ArgumentCaptor<ZWaveTransaction> argument;
+        argument = ArgumentCaptor.forClass(ZWaveTransaction.class);
         Field fieldControllerHandler;
         try {
             ZWaveWakeUpCommandClass wakeupClass = new ZWaveWakeUpCommandClass(node, controller, null);
@@ -99,13 +100,17 @@ public class ZWaveThingHandlerTest {
 
     @Test
     public void TestConfigurationWakeup() {
-        List<SerialMessage> response = doConfigurationUpdate(ZWaveBindingConstants.CONFIGURATION_WAKEUPINTERVAL,
+        SerialMessage msg;
+        List<ZWaveTransaction> response = doConfigurationUpdate(ZWaveBindingConstants.CONFIGURATION_WAKEUPINTERVAL,
                 new BigDecimal(600));
 
         assertEquals(2, response.size());
-        assertTrue(Arrays.equals(response.get(0).getMessageBuffer(),
+        msg = response.get(0).getSerialMessage();
+        msg.setCallbackId(0);
+        assertTrue(Arrays.equals(msg.getMessageBuffer(),
                 new byte[] { 1, 13, 0, 19, 1, 6, -124, 4, 0, 2, 88, 1, 0, 0, 61 }));
-        assertTrue(Arrays.equals(response.get(1).getMessageBuffer(),
-                new byte[] { 1, 9, 0, 19, 1, 2, -124, 5, 0, 0, 103 }));
+        msg = response.get(1).getSerialMessage();
+        msg.setCallbackId(0);
+        assertTrue(Arrays.equals(msg.getMessageBuffer(), new byte[] { 1, 9, 0, 19, 1, 2, -124, 5, 0, 0, 103 }));
     }
 }

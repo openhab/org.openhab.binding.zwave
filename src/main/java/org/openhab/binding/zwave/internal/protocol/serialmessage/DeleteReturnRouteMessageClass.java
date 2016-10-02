@@ -8,14 +8,14 @@
  */
 package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
-import java.io.ByteArrayOutputStream;
-
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,29 +28,24 @@ import org.slf4j.LoggerFactory;
 public class DeleteReturnRouteMessageClass extends ZWaveCommandProcessor {
     private static final Logger logger = LoggerFactory.getLogger(DeleteReturnRouteMessageClass.class);
 
-    public SerialMessage doRequest(int nodeId) {
+    public ZWaveTransaction doRequest(int nodeId) {
         logger.debug("NODE {}: Deleting return routes", nodeId);
 
-        // Queue the request
-        SerialMessage newMessage = new SerialMessage(SerialMessageClass.DeleteReturnRoute, SerialMessageType.Request,
-                SerialMessageClass.DeleteReturnRoute, SerialMessagePriority.High);
+        // Create the request
+        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.DeleteReturnRoute).withPayload(nodeId)
+                .build();
 
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write(nodeId);
-        outputData.write(0x01); // callback id
-        newMessage.setMessagePayload(outputData.toByteArray());
-
-        return newMessage;
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
-        int nodeId = lastSentMessage.getMessagePayloadByte(0);
+        int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: Got DeleteReturnRoute response.", nodeId);
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
-            lastSentMessage.setAckRecieved();
+            // lastSentMessage.setAckRecieved();
             logger.debug("NODE {}: DeleteReturnRoute command in progress.", nodeId);
         } else {
             logger.error("NODE {}: DeleteReturnRoute command failed.", nodeId);
@@ -62,9 +57,9 @@ public class DeleteReturnRouteMessageClass extends ZWaveCommandProcessor {
     }
 
     @Override
-    public boolean handleRequest(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
-        int nodeId = lastSentMessage.getMessagePayloadByte(0);
+        int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: Got DeleteReturnRoute request.", nodeId);
         if (incomingMessage.getMessagePayloadByte(1) != 0x00) {
@@ -76,7 +71,7 @@ public class DeleteReturnRouteMessageClass extends ZWaveCommandProcessor {
                     ZWaveNetworkEvent.State.Success));
         }
 
-        checkTransactionComplete(lastSentMessage, incomingMessage);
+        checkTransactionComplete(transaction, incomingMessage);
 
         return true;
     }

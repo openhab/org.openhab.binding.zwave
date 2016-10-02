@@ -8,14 +8,14 @@
  */
 package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
-import java.io.ByteArrayOutputStream;
-
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,29 +28,24 @@ import org.slf4j.LoggerFactory;
 public class DeleteSucReturnRouteMessageClass extends ZWaveCommandProcessor {
     private static final Logger logger = LoggerFactory.getLogger(DeleteSucReturnRouteMessageClass.class);
 
-    public SerialMessage doRequest(int nodeId) {
+    public ZWaveTransaction doRequest(int nodeId) {
         logger.debug("NODE {}: Deleting SUC return routes", nodeId);
 
-        // Queue the request
-        SerialMessage newMessage = new SerialMessage(SerialMessageClass.DeleteSUCReturnRoute, SerialMessageType.Request,
-                SerialMessageClass.DeleteSUCReturnRoute, SerialMessagePriority.High);
+        // Create the request
+        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.DeleteSUCReturnRoute)
+                .withPayload(nodeId).build();
 
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write(nodeId);
-        outputData.write(0x01); // callback id
-        newMessage.setMessagePayload(outputData.toByteArray());
-
-        return newMessage;
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
-        int nodeId = lastSentMessage.getMessagePayloadByte(0);
+        int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: Got DeleteSUCReturnRoute response.", nodeId);
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
-            lastSentMessage.setAckRecieved();
+            // lastSentMessage.setAckRecieved();
             logger.debug("NODE {}: DeleteSUCReturnRoute command in progress.", nodeId);
         } else {
             logger.error("NODE {}: DeleteSUCReturnRoute command failed.", nodeId);
@@ -62,9 +57,9 @@ public class DeleteSucReturnRouteMessageClass extends ZWaveCommandProcessor {
     }
 
     @Override
-    public boolean handleRequest(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
-        int nodeId = lastSentMessage.getMessagePayloadByte(0);
+        int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: Got DeleteSUCReturnRoute request.", nodeId);
         if (incomingMessage.getMessagePayloadByte(1) != 0x00) {
@@ -76,7 +71,7 @@ public class DeleteSucReturnRouteMessageClass extends ZWaveCommandProcessor {
                     ZWaveNetworkEvent.State.Success));
         }
 
-        checkTransactionComplete(lastSentMessage, incomingMessage);
+        checkTransactionComplete(transaction, incomingMessage);
 
         return true;
     }

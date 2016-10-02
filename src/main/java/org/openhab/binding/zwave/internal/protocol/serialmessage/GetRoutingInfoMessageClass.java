@@ -9,9 +9,14 @@
 package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,25 +31,25 @@ public class GetRoutingInfoMessageClass extends ZWaveCommandProcessor {
 
     private static final int NODE_BYTES = 29; // 29 bytes = 232 bits, one for each supported node by Z-Wave;
 
-    public SerialMessage doRequest(int nodeId) {
+    public ZWaveTransaction doRequest(int nodeId) {
         logger.debug("NODE {}: Request routing info", nodeId);
 
-        // Queue the request
-        SerialMessage newMessage = new SerialMessage(SerialMessage.SerialMessageClass.GetRoutingInfo,
-                SerialMessage.SerialMessageType.Request, SerialMessage.SerialMessageClass.GetRoutingInfo,
-                SerialMessage.SerialMessagePriority.High);
-        byte[] newPayload = { (byte) nodeId, (byte) 0, // Don't remove bad nodes
+        byte[] payload = { (byte) nodeId, (byte) 0, // Don't remove bad nodes
                 (byte) 0, // Don't remove non-repeaters
                 (byte) 3 // Function ID
         };
-        newMessage.setMessagePayload(newPayload);
-        return newMessage;
+
+        // Create the request
+        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.GetRoutingInfo).withPayload(payload)
+                .build();
+
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
-        int nodeId = lastSentMessage.getMessagePayloadByte(0);
+        int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: Got NodeRoutingInfo request.", nodeId);
 
@@ -82,7 +87,7 @@ public class GetRoutingInfoMessageClass extends ZWaveCommandProcessor {
         zController.notifyEventListeners(
                 new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.NodeRoutingInfo, nodeId, ZWaveNetworkEvent.State.Success));
 
-        checkTransactionComplete(lastSentMessage, incomingMessage);
+        checkTransactionComplete(transaction, incomingMessage);
         return true;
     }
 }

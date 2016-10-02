@@ -20,8 +20,8 @@ import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.proprietary.FibaroFGRM222CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
@@ -59,17 +59,18 @@ public class FibaroFGRM222Converter extends ZWaveCommandClassConverter {
     }
 
     @Override
-    public List<SerialMessage> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
+    public List<ZWaveTransaction> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
         FibaroFGRM222CommandClass commandClass = (FibaroFGRM222CommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.FIBARO_FGRM_222, channel.getEndpoint());
 
         logger.debug("NODE {}: receiveCommand()", node.getNodeId());
         Command internalCommand = command;
-        SerialMessage serialMessage = null;
+        ZWaveTransaction serialMessage = null;
 
         if (internalCommand instanceof StopMoveType && (StopMoveType) internalCommand == StopMoveType.STOP) {
             // Special handling for the STOP command
-            serialMessage = commandClass.stopLevelChangeMessage(channel.getArguments().get("type"));
+            // TODO: This method should call the correct command class
+            // serialMessage = commandClass.stopLevelChangeMessage(channel.getArguments().get("type"));
         } else {
             int value;
 
@@ -113,7 +114,7 @@ public class FibaroFGRM222Converter extends ZWaveCommandClassConverter {
             return null;
         }
 
-        List<SerialMessage> messages = new ArrayList<SerialMessage>();
+        List<ZWaveTransaction> messages = new ArrayList<ZWaveTransaction>();
         messages.add(serialMessage);
         return messages;
     }

@@ -10,10 +10,12 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,16 +27,16 @@ import org.slf4j.LoggerFactory;
 public class RequestNodeInfoMessageClass extends ZWaveCommandProcessor {
     private static final Logger logger = LoggerFactory.getLogger(RequestNodeInfoMessageClass.class);
 
-    public SerialMessage doRequest(int nodeId) {
-        SerialMessage newMessage = new SerialMessage(SerialMessageClass.RequestNodeInfo, SerialMessageType.Request,
-                SerialMessageClass.ApplicationUpdate, SerialMessagePriority.High);
-        byte[] newPayload = { (byte) nodeId };
-        newMessage.setMessagePayload(newPayload);
-        return newMessage;
+    public ZWaveTransaction doRequest(int nodeId) {
+        // Create the request
+        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.RequestNodeInfo).withPayload(nodeId)
+                .build();
+
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.trace("Handle RequestNodeInfo Response");
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
@@ -43,7 +45,7 @@ public class RequestNodeInfoMessageClass extends ZWaveCommandProcessor {
             logger.error("Request node info not placed on stack due to error.");
         }
 
-        checkTransactionComplete(lastSentMessage, incomingMessage);
+        checkTransactionComplete(transaction, incomingMessage);
 
         return true;
     }

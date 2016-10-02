@@ -10,11 +10,13 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceType;
+import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,14 +40,17 @@ public class GetControllerCapabilitiesMessageClass extends ZWaveCommandProcessor
     private boolean isRealPrimary = false;
     private boolean isSUC = false;
 
-    public SerialMessage doRequest() {
+    public ZWaveTransaction doRequest() {
         logger.debug("Creating GET_CONTROLLER_CAPABILITIES message");
-        return new SerialMessage(SerialMessageClass.GetControllerCapabilities, SerialMessageType.Request,
-                SerialMessageClass.GetControllerCapabilities, SerialMessagePriority.High);
+
+        // Create the request
+        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.GetControllerCapabilities).build();
+
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.trace("Handle Message Get Controller Capabilities - Length {}",
                 incomingMessage.getMessagePayload().length);
@@ -64,7 +69,7 @@ public class GetControllerCapabilitiesMessageClass extends ZWaveCommandProcessor
         logger.debug("Controller is real primary = {}", isRealPrimary);
         logger.debug("Controller is SUC = {}", isSUC);
 
-        checkTransactionComplete(lastSentMessage, incomingMessage);
+        checkTransactionComplete(transaction, incomingMessage);
 
         return true;
     }

@@ -76,7 +76,8 @@ public class ZWaveMeterCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 50, 1, 0, 0, -73 };
         cls.setVersion(1);
-        msg = cls.getValueMessage();
+        msg = cls.getValueMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -90,7 +91,8 @@ public class ZWaveMeterCommandClassTest extends ZWaveCommandClassTest {
         Map<String, String> options = new HashMap<String, String>();
         options.put("meterCanReset", "true");
         cls.setOptions(options);
-        msg = cls.getResetMessage();
+        msg = cls.getResetMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -101,7 +103,8 @@ public class ZWaveMeterCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 50, 3, 0, 0, -75 };
         cls.setVersion(1);
-        msg = cls.getSupportedMessage();
+        msg = cls.getSupportedMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -112,7 +115,8 @@ public class ZWaveMeterCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 50, 1, 0, 0, 0, -75 };
         cls.setVersion(1);
-        msg = cls.getMessage(MeterScale.E_KWh);
+        msg = cls.getMessage(MeterScale.E_KWh).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 

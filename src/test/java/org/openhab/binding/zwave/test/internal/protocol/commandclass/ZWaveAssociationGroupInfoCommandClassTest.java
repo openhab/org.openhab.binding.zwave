@@ -102,7 +102,8 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 89, 1, 1, 0, 0, -33 };
         cls.setVersion(1);
-        msg = cls.getGroupNameMessage(1);
+        msg = cls.getGroupNameMessage(1).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -114,7 +115,8 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
 
         byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, 89, 5, 0, 1, 0, 0, -35 };
         cls.setVersion(1);
-        msg = cls.getCommandListMessage(1);
+        msg = cls.getCommandListMessage(1).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -126,7 +128,8 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
 
         byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, 89, 3, 0, 1, 0, 0, -37 };
         cls.setVersion(1);
-        msg = cls.getInfoMessage(1);
+        msg = cls.getInfoMessage(1).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 }

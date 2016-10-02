@@ -35,7 +35,8 @@ public class ZWaveColorCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 51, 1, 0, 0, -74 };
         cls.setVersion(1);
-        msg = cls.getCapabilityMessage();
+        msg = cls.getCapabilityMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -46,7 +47,8 @@ public class ZWaveColorCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 51, 3, 1, 0, 0, -73 };
         cls.setVersion(1);
-        msg = cls.getValueMessage(1);
+        msg = cls.getValueMessage(1).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -55,9 +57,10 @@ public class ZWaveColorCommandClassTest extends ZWaveCommandClassTest {
         ZWaveColorCommandClass cls = (ZWaveColorCommandClass) getCommandClass(CommandClass.COLOR);
         SerialMessage msg;
 
-        byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, 51, 5, 3, 80, 0, 0, -27 };
+        byte[] expectedResponseV1 = { 1, 12, 0, 19, 99, 5, 51, 5, 1, 3, 80, 0, 0, -30 };
         cls.setVersion(1);
-        msg = cls.setValueMessage(1, 80);
+        msg = cls.setValueMessage(3, 80).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 

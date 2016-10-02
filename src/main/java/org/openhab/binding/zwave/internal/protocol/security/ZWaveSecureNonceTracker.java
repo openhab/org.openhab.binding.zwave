@@ -8,9 +8,7 @@
  */
 package org.openhab.binding.zwave.internal.protocol.security;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.SecureRandom;
 import java.text.DateFormat;
@@ -26,11 +24,12 @@ import java.util.concurrent.TimeUnit;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEventListener;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -134,32 +133,44 @@ public class ZWaveSecureNonceTracker {
         }
     }
 
-    public synchronized SerialMessage buildNonceGetIfNeeded() {
+    public synchronized ZWaveTransaction buildNonceGetIfNeeded() {
         if (hasNonceBeenRequested()) {
             logger.debug("NODE {}: already waiting for nonce", node.getNodeId());
             return null;
         }
         logger.debug("NODE {}: requesting nonce", node.getNodeId());
-        SerialMessage message = new SerialMessage(node.getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler,
-                ZWaveSecurityCommandClass.SECURITY_MESSAGE_PRIORITY);
-        byte[] payload = { (byte) node.getNodeId(), 2,
-                (byte) ZWaveSecurityCommandClass.getSecurityCommandClass().getKey(),
-                ZWaveSecurityCommandClass.SECURITY_NONCE_GET, };
-        if (ZWaveSecurityCommandClass.OVERRIDE_DEFAULT_TRANSMIT_OPTIONS) {
-            logger.trace("NODE {}: Using custom transmit options", node.getNodeId());
-            message.setTransmitOptions(
-                    ZWaveController.TRANSMIT_OPTION_ACK | ZWaveController.TRANSMIT_OPTION_AUTO_ROUTE);
-        }
+        // SerialMessage message = new SerialMessage(node.getNodeId(), SerialMessageClass.SendData,
+        // SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler,
+        // ZWaveSecurityCommandClass.SECURITY_MESSAGE_PRIORITY);
+        // byte[] payload = { (byte) node.getNodeId(), 2,
+        // (byte) ZWaveSecurityCommandClass.getSecurityCommandClass().getKey(),
+        // ZWaveSecurityCommandClass.SECURITY_NONCE_GET, };
+        // if (ZWaveSecurityCommandClass.OVERRIDE_DEFAULT_TRANSMIT_OPTIONS) {
+        // logger.trace("NODE {}: Using custom transmit options", node.getNodeId());
+        // message.setTransmitOptions(
+        // ZWaveController.TRANSMIT_OPTION_ACK | ZWaveController.TRANSMIT_OPTION_AUTO_ROUTE);
+        // }
+
         // We only try once as strange things happen with NONCE_GET requests TODO: DB add more detail as to what we are
         // trying to fix here
-        message.setMessagePayload(payload);
+        // message.setMessagePayload(payload);
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(ZWaveSecurityCommandClass.getSecurityCommandClass(),
+                        ZWaveSecurityCommandClass.SECURITY_NONCE_GET)
+                .withNodeId(node.getNodeId()).build();
+
+        requestNonceTimer = new NonceTimer(NonceTimerType.REQUESTED, node);
+        requestNonceMessage = serialMessage;
         if (requestNonceTimer != null) {
             logger.warn("NODE {}: requestNonceTimer != null but generating a new request", node.getNodeId());
         }
-        requestNonceTimer = new NonceTimer(NonceTimerType.REQUESTED, node);
-        requestNonceMessage = message;
-        return message;
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(ZWaveSecurityCommandClass.getSecurityCommandClass(),
+                        ZWaveSecurityCommandClass.SECURITY_NONCE_REPORT)
+                .withPriority(TransactionPriority.Immediate).build();
     }
 
     /**
@@ -167,31 +178,29 @@ public class ZWaveSecureNonceTracker {
      *
      * TODO: Move the generation of the message to the command class - just deal with the nonce in this class!
      */
-    public SerialMessage generateAndBuildNonceReport() {
+    public ZWaveTransaction generateAndBuildNonceReport() {
         Nonce nonce = ourNonceTable.generateNewUniqueNonceForDevice();
 
-        // SECURITY_NONCE_REPORT gets immediate priority
-        SerialMessage message = new SerialMessage(node.getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler,
-                SerialMessagePriority.Immediate);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        baos.write((byte) node.getNodeId());
-        baos.write((byte) 10);
-        baos.write((byte) ZWaveSecurityCommandClass.getSecurityCommandClass().getKey());
-        baos.write(ZWaveSecurityCommandClass.SECURITY_NONCE_REPORT);
-        try {
-            baos.write(nonce.getNonceBytes());
-            message.setMessagePayload(baos.toByteArray());
-            if (ZWaveSecurityCommandClass.OVERRIDE_DEFAULT_TRANSMIT_OPTIONS) {
-                logger.trace("NODE {}: Using custom transmit options", node.getNodeId());
-                message.setTransmitOptions(
-                        ZWaveController.TRANSMIT_OPTION_ACK | ZWaveController.TRANSMIT_OPTION_AUTO_ROUTE);
-            }
-        } catch (IOException e) {
-            logger.error("NODE {}: Error during Security sendNonceReport.", node.getNodeId(), e);
-            return null;
-        }
-        return message;
+        // ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        // try {
+        // baos.write(nonce.getNonceBytes());
+        // message.setMessagePayload(baos.toByteArray());
+        // if (ZWaveSecurityCommandClass.OVERRIDE_DEFAULT_TRANSMIT_OPTIONS) {
+        // logger.trace("NODE {}: Using custom transmit options", node.getNodeId());
+        // message.setTransmitOptions(
+        // ZWaveController.TRANSMIT_OPTION_ACK | ZWaveController.TRANSMIT_OPTION_AUTO_ROUTE);
+        // }
+        // } catch (IOException e) {
+        // logger.error("NODE {}: Error during Security sendNonceReport.", node.getNodeId(), e);
+        // return null;
+        // }
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(ZWaveSecurityCommandClass.getSecurityCommandClass(),
+                        ZWaveSecurityCommandClass.SECURITY_NONCE_REPORT)
+                .withPayload(nonce.getNonceBytes()).withNodeId(node.getNodeId()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Immediate).build();
     }
 
     /**
@@ -508,7 +517,7 @@ public class ZWaveSecureNonceTracker {
                 logger.error("NODE {}: SECURITY_ERROR Device message contained nonce that was previously used, id={}.",
                         node.getNodeId(), id);
             } else {
-                logger.error("NODE {}: SECURITY_ERROR Device message contained nonce that is unknown to us, id={}.",
+                logger.error("NODE {}: SECURITY_ERROR Device message contained nonce that is unknown, id={}.",
                         node.getNodeId(), id);
                 logger.debug("NODE {}: Nonce id={} table={}, expiredList={}, usedList={}", node.getNodeId(), id, table,
                         expiredNonceIdList, usedNonceIdList);

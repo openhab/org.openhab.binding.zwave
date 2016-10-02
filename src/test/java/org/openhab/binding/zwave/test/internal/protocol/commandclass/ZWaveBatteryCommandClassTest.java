@@ -31,8 +31,8 @@ public class ZWaveBatteryCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, -128, 2, 0, 0, 6 };
         cls.setVersion(1);
-        msg = cls.getValueMessage();
-        byte[] x = msg.getMessageBuffer();
+        msg = cls.getValueMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 }

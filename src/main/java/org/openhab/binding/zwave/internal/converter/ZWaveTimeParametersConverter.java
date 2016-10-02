@@ -18,8 +18,8 @@ import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveTimeParametersCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
@@ -49,7 +49,7 @@ public class ZWaveTimeParametersConverter extends ZWaveCommandClassConverter {
      * {@inheritDoc}
      */
     @Override
-    public List<SerialMessage> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
+    public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveTimeParametersCommandClass commandClass = (ZWaveTimeParametersCommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.TIME_PARAMETERS, channel.getEndpoint());
         if (commandClass == null) {
@@ -58,10 +58,10 @@ public class ZWaveTimeParametersConverter extends ZWaveCommandClassConverter {
 
         logger.debug("NODE {}: Generating poll message for {} endpoint {}", node.getNodeId(),
                 commandClass.getCommandClass().getLabel(), channel.getEndpoint());
-        SerialMessage serialMessage = node.encapsulate(commandClass.getValueMessage(), commandClass,
+        ZWaveTransaction transaction = node.encapsulate(commandClass.getValueMessage(), commandClass,
                 channel.getEndpoint());
-        List<SerialMessage> response = new ArrayList<SerialMessage>(1);
-        response.add(serialMessage);
+        List<ZWaveTransaction> response = new ArrayList<ZWaveTransaction>(1);
+        response.add(transaction);
         return response;
     }
 
@@ -92,8 +92,8 @@ public class ZWaveTimeParametersConverter extends ZWaveCommandClassConverter {
                     ZWaveTimeParametersCommandClass commandClass = (ZWaveTimeParametersCommandClass) node
                             .resolveCommandClass(ZWaveCommandClass.CommandClass.TIME_PARAMETERS, channel.getEndpoint());
 
-                    SerialMessage serialMessage = node.encapsulate(commandClass.getSetMessage(Calendar.getInstance()),
-                            commandClass, channel.getEndpoint());
+                    ZWaveTransaction serialMessage = node.encapsulate(
+                            commandClass.getSetMessage(Calendar.getInstance()), commandClass, channel.getEndpoint());
                     if (serialMessage == null) {
                         logger.warn("Generating message failed for command class = {}, node = {}, endpoint = {}",
                                 commandClass.getCommandClass().getLabel(), node.getNodeId(), channel.getEndpoint());
@@ -132,19 +132,19 @@ public class ZWaveTimeParametersConverter extends ZWaveCommandClassConverter {
      * {@inheritDoc}
      */
     @Override
-    public List<SerialMessage> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
+    public List<ZWaveTransaction> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
         ZWaveTimeParametersCommandClass commandClass = (ZWaveTimeParametersCommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.TIME_PARAMETERS, channel.getEndpoint());
 
-        SerialMessage serialMessage = node.encapsulate(commandClass.getSetMessage(Calendar.getInstance()), commandClass,
-                channel.getEndpoint());
+        ZWaveTransaction serialMessage = node.encapsulate(commandClass.getSetMessage(Calendar.getInstance()),
+                commandClass, channel.getEndpoint());
         if (serialMessage == null) {
             logger.warn("Generating message failed for command class = {}, node = {}, endpoint = {}",
                     commandClass.getCommandClass().getLabel(), node.getNodeId(), channel.getEndpoint());
             return null;
         }
 
-        List<SerialMessage> messages = new ArrayList<SerialMessage>();
+        List<ZWaveTransaction> messages = new ArrayList<ZWaveTransaction>();
         messages.add(serialMessage);
         return messages;
     }

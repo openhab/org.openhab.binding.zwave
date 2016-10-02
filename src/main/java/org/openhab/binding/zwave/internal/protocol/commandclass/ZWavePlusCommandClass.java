@@ -15,13 +15,15 @@ import java.util.Map;
 import org.openhab.binding.zwave.internal.HexToIntegerConverter;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWavePlusDeviceClass.ZWavePlusDeviceType;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -146,8 +148,8 @@ public class ZWavePlusCommandClass extends ZWaveCommandClass
     }
 
     @Override
-    public Collection<SerialMessage> initialize(boolean refresh) {
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+    public Collection<ZWaveTransaction> initialize(boolean refresh) {
+        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
         // If we're already initialized, then don't do it again unless we're refreshing
         if (refresh == true || initialiseDone == false) {
             result.add(this.getValueMessage());
@@ -156,7 +158,7 @@ public class ZWavePlusCommandClass extends ZWaveCommandClass
     }
 
     @Override
-    public SerialMessage getValueMessage() {
+    public ZWaveTransaction getValueMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", this.getNode().getNodeId());
             return null;
@@ -164,11 +166,14 @@ public class ZWavePlusCommandClass extends ZWaveCommandClass
 
         logger.debug("NODE {}: Creating new message for application command ZWAVE_PLUS_GET",
                 this.getNode().getNodeId());
-        SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        byte[] newPayload = { (byte) this.getNode().getNodeId(), 2, (byte) getCommandClass().getKey(), ZWAVE_PLUS_GET };
-        result.setMessagePayload(newPayload);
-        return result;
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), ZWAVE_PLUS_GET).withNodeId(getNode().getNodeId()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), ZWAVE_PLUS_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     @Override
@@ -182,7 +187,7 @@ public class ZWavePlusCommandClass extends ZWaveCommandClass
 
     /**
      * Return the ZWave Plus Device Type
-     * 
+     *
      * @return {@link ZWavePlusDeviceType}
      */
     public ZWavePlusDeviceType getZWavePlusDeviceType() {

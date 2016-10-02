@@ -34,15 +34,15 @@ public class EnableSUCMessageClassTest {
         SerialMessage msg;
         EnableSucMessageClass handler = new EnableSucMessageClass();
 
-        msg = handler.doRequest(SUCType.NONE);
+        msg = handler.doRequest(SUCType.NONE).getSerialMessage();
         msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseNone));
 
-        msg = handler.doRequest(SUCType.BASIC);
+        msg = handler.doRequest(SUCType.BASIC).getSerialMessage();
         msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseBasic));
 
-        msg = handler.doRequest(SUCType.SERVER);
+        msg = handler.doRequest(SUCType.SERVER).getSerialMessage();
         msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseServer));
     }

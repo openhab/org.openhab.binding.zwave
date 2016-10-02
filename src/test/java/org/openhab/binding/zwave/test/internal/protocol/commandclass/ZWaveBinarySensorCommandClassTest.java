@@ -33,7 +33,8 @@ public class ZWaveBinarySensorCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 48, 2, 0, 0, -74 };
         cls.setVersion(1);
-        msg = cls.getValueMessage();
+        msg = cls.getValueMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -44,7 +45,8 @@ public class ZWaveBinarySensorCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 48, 2, 10, 0, 0, -66 };
         cls.setVersion(2);
-        msg = cls.getValueMessage(SensorType.DOORWINDOW);
+        msg = cls.getValueMessage(SensorType.DOORWINDOW).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -55,7 +57,8 @@ public class ZWaveBinarySensorCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV2 = { 1, 9, 0, 19, 99, 2, 48, 1, 0, 0, -75 };
         cls.setVersion(2);
-        msg = cls.getSupportedMessage();
+        msg = cls.getSupportedMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV2));
     }
 

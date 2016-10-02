@@ -33,10 +33,12 @@ public class SetSucNodeMessageClassTest {
         SerialMessage msg;
         SetSucNodeMessageClass handler = new SetSucNodeMessageClass();
 
-        msg = handler.doRequest(12, SUCType.BASIC);
+        msg = handler.doRequest(12, SUCType.BASIC).getSerialMessage();
+        msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseNone));
 
-        msg = handler.doRequest(12, SUCType.NONE);
+        msg = handler.doRequest(12, SUCType.NONE).getSerialMessage();
+        msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseBasic));
     }
 }

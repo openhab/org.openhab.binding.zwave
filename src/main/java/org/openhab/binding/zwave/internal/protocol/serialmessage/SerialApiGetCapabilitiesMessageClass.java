@@ -13,10 +13,12 @@ import java.util.Set;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,13 +39,15 @@ public class SerialApiGetCapabilitiesMessageClass extends ZWaveCommandProcessor 
 
     private Set<SerialMessage.SerialMessageClass> apiCapabilities = new HashSet<>();
 
-    public SerialMessage doRequest() {
-        return new SerialMessage(SerialMessageClass.SerialApiGetCapabilities, SerialMessageType.Request,
-                SerialMessageClass.SerialApiGetCapabilities, SerialMessagePriority.High);
+    public ZWaveTransaction doRequest() {
+        // Create the request
+        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.SerialApiGetCapabilities).build();
+
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.trace("Handle Message Serial API Get Capabilities - Length {}",
                 incomingMessage.getMessagePayload().length);
@@ -76,7 +80,7 @@ public class SerialApiGetCapabilitiesMessageClass extends ZWaveCommandProcessor 
             }
         }
 
-        checkTransactionComplete(lastSentMessage, incomingMessage);
+        checkTransactionComplete(transaction, incomingMessage);
 
         return true;
     }

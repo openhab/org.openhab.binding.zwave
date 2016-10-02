@@ -32,7 +32,8 @@ public class ZWaveBarrierOperatorCommandClassTest extends ZWaveCommandClassTest 
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 102, 2, 0, 0, -32 };
         cls.setVersion(1);
-        msg = cls.getValueMessage();
+        msg = cls.getValueMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -44,7 +45,8 @@ public class ZWaveBarrierOperatorCommandClassTest extends ZWaveCommandClassTest 
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 102, 1, -1, 0, 0, 30 };
         cls.setVersion(1);
-        msg = cls.setValueMessage(77);
+        msg = cls.setValueMessage(77).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 

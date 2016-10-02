@@ -41,6 +41,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEventListener;
 import org.openhab.binding.zwave.internal.protocol.ZWaveIoHandler;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
@@ -626,11 +627,11 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         return controller.getNodes();
     }
 
-    public void sendData(SerialMessage message) {
+    public void sendData(ZWaveTransaction zWaveTransaction) {
         if (controller == null) {
             return;
         }
-        controller.sendData(message);
+        controller.sendData(zWaveTransaction);
     }
 
     public boolean addEventListener(ZWaveThingHandler zWaveThingHandler) {

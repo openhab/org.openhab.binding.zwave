@@ -30,6 +30,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurationCommandClass;
@@ -80,11 +81,11 @@ public class ZWaveConfigurationConverterTest extends ZWaveCommandClassConverterT
         ZWaveThingChannel channel = createChannel("2");
         ZWaveNode node = CreateMockedNode(1, null);
 
-        List<SerialMessage> msgs = converter.executeRefresh(channel, node);
+        List<ZWaveTransaction> msgs = converter.executeRefresh(channel, node);
 
         assertEquals(1, msgs.size());
-        msgs.get(0).setCallbackId(0);
-        assertTrue(Arrays.equals(msgs.get(0).getMessageBuffer(), expectedResponse));
+        msgs.get(0).getSerialMessage().setCallbackId(0);
+        assertTrue(Arrays.equals(msgs.get(0).getSerialMessage().getMessageBuffer(), expectedResponse));
     }
 
     @Test
@@ -109,12 +110,12 @@ public class ZWaveConfigurationConverterTest extends ZWaveCommandClassConverterT
 
         DecimalType command = new DecimalType(44);
 
-        List<SerialMessage> msgs = converter.receiveCommand(channel, node, command);
+        List<ZWaveTransaction> msgs = converter.receiveCommand(channel, node, command);
 
         assertEquals(2, msgs.size());
-        msgs.get(0).setCallbackId(0);
-        assertTrue(Arrays.equals(msgs.get(0).getMessageBuffer(), expectedResponse0));
-        msgs.get(1).setCallbackId(0);
-        assertTrue(Arrays.equals(msgs.get(1).getMessageBuffer(), expectedResponse1));
+        msgs.get(0).getSerialMessage().setCallbackId(0);
+        assertTrue(Arrays.equals(msgs.get(0).getSerialMessage().getMessageBuffer(), expectedResponse0));
+        msgs.get(1).getSerialMessage().setCallbackId(0);
+        assertTrue(Arrays.equals(msgs.get(1).getSerialMessage().getMessageBuffer(), expectedResponse1));
     }
 }

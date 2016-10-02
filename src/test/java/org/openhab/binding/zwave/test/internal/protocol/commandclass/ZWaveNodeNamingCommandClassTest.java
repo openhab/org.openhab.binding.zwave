@@ -101,16 +101,16 @@ public class ZWaveNodeNamingCommandClassTest extends ZWaveCommandClassTest {
         SerialMessage msg;
 
         byte[] expectedResponse1 = { 99, 10, 119, 1, 0, 84, 101, 115, 116, 105, 110, 103 };
-        msg = cls.setNameMessage("Testing");
+        msg = cls.setNameMessage("Testing").getSerialMessage();
         assertTrue(Arrays.equals(msg.getMessagePayload(), expectedResponse1));
 
         byte[] expectedResponse2 = { 99, 19, 119, 1, 0, 84, 101, 115, 116, 105, 110, 103, 32, 77, 111, 114, 101, 32, 84,
                 104, 97 };
-        msg = cls.setNameMessage("Testing More Than 16 Bytes");
+        msg = cls.setNameMessage("Testing More Than 16 Bytes").getSerialMessage();
         assertTrue(Arrays.equals(msg.getMessagePayload(), expectedResponse2));
 
         byte[] expectedResponse3 = { 99, 15, 119, 1, 2, -2, -1, 0, 65, 0, -22, 0, -15, 0, -4, 0, 67 };
-        msg = cls.setNameMessage(new String("A" + "\u00ea" + "\u00f1" + "\u00fc" + "C"));
+        msg = cls.setNameMessage(new String("A" + "\u00ea" + "\u00f1" + "\u00fc" + "C")).getSerialMessage();
         assertTrue(Arrays.equals(msg.getMessagePayload(), expectedResponse3));
     }
 
@@ -123,7 +123,7 @@ public class ZWaveNodeNamingCommandClassTest extends ZWaveCommandClassTest {
         SerialMessage msg;
 
         byte[] expectedResponse1 = { 99, 10, 119, 4, 0, 84, 101, 115, 116, 105, 110, 103 };
-        msg = cls.setLocationMessage("Testing");
+        msg = cls.setLocationMessage("Testing").getSerialMessage();
         assertTrue(Arrays.equals(msg.getMessagePayload(), expectedResponse1));
     }
 }

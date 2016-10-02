@@ -16,12 +16,14 @@ import java.util.Map;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -80,7 +82,7 @@ public class ZWaveThermostatOperatingStateCommandClass extends ZWaveCommandClass
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @throws ZWaveSerialMessageException
      */
     @Override
@@ -138,8 +140,8 @@ public class ZWaveThermostatOperatingStateCommandClass extends ZWaveCommandClass
      * {@inheritDoc}
      */
     @Override
-    public Collection<SerialMessage> getDynamicValues(boolean refresh) {
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+    public Collection<ZWaveTransaction> getDynamicValues(boolean refresh) {
+        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
         if (refresh == true || dynamicDone == false) {
             result.add(getValueMessage());
         }
@@ -150,7 +152,7 @@ public class ZWaveThermostatOperatingStateCommandClass extends ZWaveCommandClass
      * {@inheritDoc}
      */
     @Override
-    public SerialMessage getValueMessage() {
+    public ZWaveTransaction getValueMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", this.getNode().getNodeId());
             return null;
@@ -158,12 +160,15 @@ public class ZWaveThermostatOperatingStateCommandClass extends ZWaveCommandClass
 
         logger.debug("NODE {}: Creating new message for application command THERMOSTAT_OPERATING_STATE_GET",
                 this.getNode().getNodeId());
-        SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        byte[] payload = { (byte) this.getNode().getNodeId(), 2, (byte) getCommandClass().getKey(),
-                THERMOSTAT_OPERATING_STATE_GET };
-        result.setMessagePayload(payload);
-        return result;
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), THERMOSTAT_OPERATING_STATE_GET).withNodeId(getNode().getNodeId())
+                .build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), THERMOSTAT_OPERATING_STATE_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     @Override

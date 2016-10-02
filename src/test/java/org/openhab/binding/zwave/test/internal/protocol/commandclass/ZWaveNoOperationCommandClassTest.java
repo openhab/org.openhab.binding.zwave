@@ -31,7 +31,7 @@ public class ZWaveNoOperationCommandClassTest extends ZWaveCommandClassTest {
         SerialMessage msg;
 
         byte[] expectedResponse1 = { 1, 8, 0, 19, 99, 1, 0, 0, 0, -122 };
-        msg = cls.getNoOperationMessage();
+        msg = cls.getNoOperationMessage().getSerialMessage();
         msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse1));
     }

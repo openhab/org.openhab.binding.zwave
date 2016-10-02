@@ -34,6 +34,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEventListener;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
@@ -128,7 +129,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
     private boolean restoredFromConfigfile = false;
 
     private static final int MAX_BUFFFER_LEN = 256;
-    private ArrayBlockingQueue<SerialMessage> msgQueue;
+    private ArrayBlockingQueue<ZWaveTransaction> msgQueue;
     private boolean freeToSend = true;
     private boolean stageAdvanced = true;
 
@@ -151,7 +152,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
     /**
      * Used only by {@link ZWaveNodeInitStage#SECURITY_REPORT}
      */
-    private SerialMessage securityLastSentMessage;
+    private ZWaveTransaction securityLastSentMessage;
 
     /**
      * Constructor. Creates a new instance of the ZWaveNodeStageAdvancer class.
@@ -169,7 +170,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
         timer = new Timer();
 
         // Initialise the message queue
-        msgQueue = new ArrayBlockingQueue<SerialMessage>(MAX_BUFFFER_LEN, true);
+        msgQueue = new ArrayBlockingQueue<ZWaveTransaction>(MAX_BUFFFER_LEN, true);
     }
 
     /**
@@ -185,10 +186,14 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
      * @param startStage
      */
     public void startInitialisation(ZWaveNodeInitStage startStage) {
-        logger.debug("NODE {}: Starting initialisation from {}", node.getNodeId(), startStage);
-
         // Reset the state variables
         currentStage = startStage;
+
+        if (startStage == ZWaveNodeInitStage.DONE) {
+            return;
+        }
+        logger.debug("NODE {}: Starting initialisation from {}", node.getNodeId(), startStage);
+
         queryStageTimeStamp = Calendar.getInstance().getTime();
         retryTimer = BACKOFF_TIMER_START;
 
@@ -207,7 +212,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
      *
      * @throws ZWaveSerialMessageException
      */
-    private void handleNodeQueue(SerialMessage incomingMessage) {
+    private void handleNodeQueue(ZWaveTransaction transaction) {
         // If initialisation is complete, then just return.
         // This probably shouldn't be necessary since we remove the event
         // handler when we're done, but just to be sure...
@@ -219,19 +224,19 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                 msgQueue.size());
 
         // If this message is in the queue, then remove it
-        if (msgQueue.contains(incomingMessage)) {
-            msgQueue.remove(incomingMessage);
+        if (msgQueue.contains(transaction)) {
+            msgQueue.remove(transaction);
             logger.debug("NODE {}: Node advancer - message removed from queue. Queue size {}.", node.getNodeId(),
                     msgQueue.size());
 
             freeToSend = true;
 
             // We've sent a frame, let's process the stage...
-            advanceNodeStage(incomingMessage.getMessageClass());
+            advanceNodeStage(transaction.getSerialMessageClass());
         } else if (msgQueue.isEmpty() && currentStage == ZWaveNodeInitStage.SECURITY_REPORT) {
             logger.debug("NODE {}: Node advancer - In Security stage, going to advanceNodeStage to get next request.",
                     node.getNodeId());
-            advanceNodeStage(incomingMessage.getMessageClass());
+            advanceNodeStage(transaction.getSerialMessageClass());
         }
     }
 
@@ -247,17 +252,17 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
 
         // Check to see if we need to send a frame
         if (freeToSend == true) {
-            SerialMessage msg = msgQueue.peek();
-            if (msg != null) {
+            ZWaveTransaction transaction = msgQueue.peek();
+            if (transaction != null) {
                 freeToSend = false;
 
                 logger.debug("NODE {}: Node advancer - queued packet. Queue length is {}", node.getNodeId(),
                         msgQueue.size());
 
-                if (msg.getMessageClass() == SerialMessageClass.SendData) {
-                    controller.sendData(msg);
+                if (transaction.getSerialMessage().getMessageClass() == SerialMessageClass.SendData) {
+                    controller.sendData(transaction);
                 } else {
-                    controller.enqueue(msg);
+                    controller.enqueue(transaction);
                 }
             }
         }
@@ -341,8 +346,8 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                 }
             }
 
-            logger.debug("NODE {}: Node advancer: loop - {} try {}: stageAdvanced({})", node.getNodeId(), currentStage,
-                    retryCount, stageAdvanced);
+            logger.debug("NODE {}: Node advancer: loop - {} try {}: stageAdvanced({}) with {}", node.getNodeId(),
+                    currentStage, retryCount, stageAdvanced, eventClass);
 
             switch (currentStage) {
                 case EMPTYNODE:
@@ -428,7 +433,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                     }
 
                     logger.debug("NODE {}: Node advancer: PING - send NoOperation", node.getNodeId());
-                    SerialMessage msg = noOpCommandClass.getNoOperationMessage();
+                    ZWaveTransaction msg = noOpCommandClass.getNoOperationMessage();
                     if (msg != null) {
                         // We only send out a single PING - no retries at controller
                         // level! This is to try and reduce network congestion during
@@ -437,7 +442,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                         // seconds and if there are retries, it will be 15 seconds!
                         // This will block the network for a considerable time if there
                         // are a lot of battery devices (eg. 2 minutes for 8 battery devices!).
-                        msg.attempts = 1;
+                        msg.setAttemptsRemaining(1);
                         addToQueue(msg);
                     }
                     break;
@@ -492,7 +497,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                         ZWaveSecurityCommandClassWithInitialization securityCommandClass = (ZWaveSecurityCommandClassWithInitialization) node
                                 .getCommandClass(CommandClass.SECURITY);
                         // For a node restored from a config file, this may or may not return a message
-                        Collection<SerialMessage> messageList = securityCommandClass.initialize(stageAdvanced);
+                        Collection<ZWaveTransaction> messageList = securityCommandClass.initialize(stageAdvanced);
 
                         // Speed up retry timer as we use this to fetch outgoing messages instead of just retries
                         retryTimer = 400;
@@ -521,7 +526,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                             return; // Let ZWaveInputThread go back and wait for an incoming message
                         } else { // Add one or more messages to the queue
                             addToQueue(messageList);
-                            SerialMessage nextSecurityMessageToSend = messageList.iterator().next();
+                            ZWaveTransaction nextSecurityMessageToSend = messageList.iterator().next();
                             if (!nextSecurityMessageToSend.equals(securityLastSentMessage)) {
                                 // Reset our retry count since this is a different message
                                 retryCount = 0;
@@ -936,8 +941,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                     if (node.getNodeId() != controller.getOwnNodeId() && controller.getSucId() != 0) {
                         // Update the route to the controller
                         logger.debug("NODE {}: Node advancer is setting SUC route.", node.getNodeId());
-                        addToQueue(new AssignSucReturnRouteMessageClass().doRequest(node.getNodeId(),
-                                controller.getCallbackId()));
+                        addToQueue(new AssignSucReturnRouteMessageClass().doRequest(node.getNodeId()));
                         break;
                     }
                     break;
@@ -1067,8 +1071,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                     for (Integer route : node.getRoutingList()) {
                         // Loop through all the nodes and set the return route
                         logger.debug("NODE {}: Adding return route to {}", node.getNodeId(), route);
-                        addToQueue(new AssignReturnRouteMessageClass().doRequest(node.getNodeId(), route,
-                                controller.getCallbackId()));
+                        addToQueue(new AssignReturnRouteMessageClass().doRequest(node.getNodeId(), route));
                     }
                     break;
 
@@ -1148,7 +1151,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
      * @param msgs
      *            the message collection
      */
-    private void addToQueue(SerialMessage serialMessage) {
+    private void addToQueue(ZWaveTransaction serialMessage) {
         if (serialMessage == null) {
             return;
         }
@@ -1164,11 +1167,11 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
      * @param msgs
      *            the message collection
      */
-    private void addToQueue(Collection<SerialMessage> msgs) {
+    private void addToQueue(Collection<ZWaveTransaction> msgs) {
         if (msgs == null) {
             return;
         }
-        for (SerialMessage serialMessage : msgs) {
+        for (ZWaveTransaction serialMessage : msgs) {
             addToQueue(serialMessage);
         }
     }
@@ -1183,12 +1186,14 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
      * @param endpointId
      *            the endpoint number
      */
-    private void addToQueue(Collection<SerialMessage> msgs, ZWaveCommandClass commandClass, int endpointId) {
-        if (msgs == null) {
+    private void addToQueue(Collection<ZWaveTransaction> transactions, ZWaveCommandClass commandClass, int endpointId) {
+        if (transactions == null) {
             return;
         }
-        for (SerialMessage serialMessage : msgs) {
-            addToQueue(node.encapsulate(serialMessage, commandClass, endpointId));
+        for (ZWaveTransaction transaction : transactions) {
+            SerialMessage serialMessage = transaction.getSerialMessage();
+            // addToQueue(
+            // transactionnode.encapsulate(serialMessage, commandClass, endpointId));
         }
     }
 
@@ -1257,11 +1262,12 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
         if (event instanceof ZWaveTransactionCompletedEvent) {
             ZWaveTransactionCompletedEvent completeEvent = (ZWaveTransactionCompletedEvent) event;
 
-            SerialMessage serialMessage = completeEvent.getCompletedMessage();
-            byte[] payload = serialMessage.getMessagePayload();
-
+            ZWaveTransaction transaction = completeEvent.getCompletedTransaction();
             // Make sure this is addressed to us
+            SerialMessage serialMessage = transaction.getSerialMessage();
+            byte[] payload = serialMessage.getMessagePayload();
             if (payload.length == 0 || node.getNodeId() != (payload[0] & 0xFF)) {
+                // if (transaction.getMessageNode() != node.getNodeId()) {
                 // This is a corrupt frame, OR, it's not addressed to us
                 // We use this as a trigger to kick things off again if they've stalled
                 // by checking to see if the transmit queue is now empty.
@@ -1291,7 +1297,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
 
                     // If this frame was successfully sent, then handle the stage advancer
                     if (((ZWaveTransactionCompletedEvent) event).getState() == true) {
-                        handleNodeQueue(serialMessage);
+                        handleNodeQueue(transaction);
                     }
                     break;
                 default:

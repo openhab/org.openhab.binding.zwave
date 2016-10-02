@@ -8,20 +8,21 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEventListener;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveTransactionCompletedEvent;
 import org.openhab.binding.zwave.internal.protocol.initialization.ZWaveNodeInitStageAdvancer;
@@ -65,7 +66,7 @@ public class ZWaveSecurityCommandClassWithInitialization extends ZWaveSecurityCo
      * in cases where we need to resend the last message (transmission failure, etc)
      */
     @XStreamOmitField
-    private SerialMessage lastRequestSecurePairMessage = null;
+    private ZWaveTransaction lastRequestSecurePairTransaction = null;
 
     private static final String SECURE_INCLUSION_FAILED_MESSAGE = "SECURITY_INCLUSION_FAILED";
 
@@ -103,7 +104,8 @@ public class ZWaveSecurityCommandClassWithInitialization extends ZWaveSecurityCo
      * 2) during normal (non-inclusion) mode, give the message to {@link ZWaveController} (handled by the superclass)
      */
     @Override
-    protected void transmitMessage(SerialMessage message) {
+    protected void transmitMessage(ZWaveTransaction transaction) {
+        SerialMessage message = transaction.getSerialMessage();
         if (isSecureInclusionInProgress() && message instanceof SecurityEncapsulatedSerialMessage
                 && ((SecurityEncapsulatedSerialMessage) message).getSecurityPayload() != null) {
             ZWaveSecurityPayloadFrame securityPayload = ((SecurityEncapsulatedSerialMessage) message)
@@ -113,15 +115,15 @@ public class ZWaveSecurityCommandClassWithInitialization extends ZWaveSecurityCo
             if (bytesAreEqual(securityPayload.getMessageBytes()[0], ZWaveCommandClass.CommandClass.SECURITY.getKey())
                     && bytesAreEqual(securityPayload.getMessageBytes()[1], SECURITY_NETWORK_KEY_SET)) {
                 logger.info("NODE {}: Setting Network Key to real key after SECURITY_NETWORK_KEY_SET",
-                        this.getNode().getNodeId());
+                        getNode().getNodeId());
                 setupNetworkKey(false);
             }
             // We are in inclusion mode, so give the message to the tracker so it will be picked
             // up when ZWaveNodeStageAdvancer calls our initialize method
-            inclusionStateTracker.setNextRequest(message);
+            inclusionStateTracker.setNextRequest(transaction);
         } else {
             // Normal (non-inclusion mode) so give the message to the controller to be transmitted
-            super.transmitMessage(message);
+            super.transmitMessage(transaction);
         }
     }
 
@@ -175,38 +177,34 @@ public class ZWaveSecurityCommandClassWithInitialization extends ZWaveSecurityCo
                 if (schemes == SECURITY_SCHEME_ZERO) {
                     // Since we've agreed on a scheme for which to exchange our key
                     // we now send our NetworkKey to the device
-                    logger.debug("NODE {}: Security scheme agreed.", this.getNode().getNodeId());
+                    logger.debug("NODE {}: Security scheme agreed.", getNode().getNodeId());
 
-                    // create the NetworkKey Packet
-                    SerialMessage networkKeyMessage = new SerialMessage(this.getNode().getNodeId(),
-                            SerialMessageClass.SendData, SerialMessageType.Request,
-                            SerialMessageClass.ApplicationCommandHandler, SECURITY_MESSAGE_PRIORITY);
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    baos.write((byte) this.getNode().getNodeId());
-                    baos.write(18);
-                    baos.write((byte) getCommandClass().getKey());
-                    baos.write(SECURITY_NETWORK_KEY_SET);
-                    try {
-                        baos.write(realNetworkKey.getEncoded());
-                        networkKeyMessage.setMessagePayload(baos.toByteArray());
-                        // We can't set SECURITY_NETWORK_KEY_SET in inclusionStateTracker because we need to do a
-                        // NONCE_GET before sending. So put this in our encrypt send queue
-                        // and give inclusionStateTracker/ZWaveNodeStageAdvancer the NONCE_GET
-                        queueMessageForEncapsulationAndTransmission(networkKeyMessage);
-                        if (!inclusionStateTracker.verifyAndAdvanceState(SECURITY_NETWORK_KEY_SET)) {
-                            return;
-                        }
-                        SerialMessage message = nonceGeneration.buildNonceGetIfNeeded();
-                        // Since we are in init mode, message should always != null
-                        if (message != null) {
-                            // TODO: DB is this true?: logger.error("NODE {}: "+SECURE_INCLUSION_FAILED_MESSAGE+" In
-                            // inclusion mode but buildNonceGetIfNeeded returned null, this may result in a deadlock");
-                            inclusionStateTracker.setNextRequest(message); // Let ZWaveNodeStageAdvancer come get the
-                                                                           // NONCE_GET
-                        }
-                    } catch (IOException e) {
-                        logger.error("NODE {}: IOException trying to write SECURITY_NETWORK_KEY_SET, aborted", e);
+                    SerialMessage networkKeyMessage = new ZWaveSendDataMessageBuilder()
+                            .withCommandClass(getCommandClass(), SECURITY_NETWORK_KEY_SET)
+                            .withPayload(realNetworkKey.getEncoded()).withNodeId(getNode().getNodeId()).build();
+
+                    ZWaveTransaction networkKeyTransaction = new ZWaveTransactionBuilder(networkKeyMessage)
+                            .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                            .withExpectedResponseCommandClass(getCommandClass(), SECURITY_NETWORK_KEY_VERIFY)
+                            .withPriority(TransactionPriority.Config).build();
+
+                    // We can't set SECURITY_NETWORK_KEY_SET in inclusionStateTracker because we need to do a
+                    // NONCE_GET before sending. So put this in our encrypt send queue
+                    // and give inclusionStateTracker/ZWaveNodeStageAdvancer the NONCE_GET
+                    queueMessageForEncapsulationAndTransmission(networkKeyTransaction);
+                    if (!inclusionStateTracker.verifyAndAdvanceState(SECURITY_NETWORK_KEY_SET)) {
+                        return;
                     }
+
+                    ZWaveTransaction message = nonceGeneration.buildNonceGetIfNeeded();
+                    // Since we are in init mode, message should always != null
+                    if (message != null) {
+                        // TODO: DB is this true?: logger.error("NODE {}: "+SECURE_INCLUSION_FAILED_MESSAGE+" In
+                        // inclusion mode but buildNonceGetIfNeeded returned null, this may result in a deadlock");
+                        // Let ZWaveNodeStageAdvancer come get the NONCE_GET
+                        inclusionStateTracker.setNextRequest(message);
+                    }
+
                 } else {
                     // No common security scheme. This really shouldn't happen
                     inclusionStateTracker.setErrorState("TODO: Security scheme " + schemes + " is not supported");
@@ -232,14 +230,18 @@ public class ZWaveSecurityCommandClassWithInitialization extends ZWaveSecurityCo
                 if (SEND_SECURITY_COMMANDS_SUPPORTED_GET_ON_STARTUP) {
                     securePairingComplete = true;
                 }
-                SerialMessage supportedGetMessage = new SerialMessage(this.getNode().getNodeId(),
-                        SerialMessageClass.SendData, SerialMessageType.Request,
-                        SerialMessageClass.ApplicationCommandHandler, SECURITY_MESSAGE_PRIORITY);
-                byte[] payload = { (byte) this.getNode().getNodeId(), 2, (byte) getCommandClass().getKey(),
-                        SECURITY_COMMANDS_SUPPORTED_GET, };
-                supportedGetMessage.setMessagePayload(payload);
+
+                SerialMessage supportedGetMessage = new ZWaveSendDataMessageBuilder()
+                        .withCommandClass(getCommandClass(), SECURITY_COMMANDS_SUPPORTED_GET)
+                        .withNodeId(getNode().getNodeId()).build();
+
+                ZWaveTransaction supportedGetTransaction = new ZWaveTransactionBuilder(supportedGetMessage)
+                        .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                        .withExpectedResponseCommandClass(getCommandClass(), SECURITY_COMMANDS_SUPPORTED_REPORT)
+                        .withPriority(TransactionPriority.Config).build();
+
                 inclusionStateTracker.verifyAndAdvanceState(SECURITY_COMMANDS_SUPPORTED_GET);
-                SerialMessage nonceGetMessage = nonceGeneration.buildNonceGetIfNeeded();
+                ZWaveTransaction nonceGetMessage = nonceGeneration.buildNonceGetIfNeeded();
                 // Since we are in init mode, message should always != null
                 if (nonceGetMessage == null) {
                     inclusionStateTracker.setErrorState(SECURE_INCLUSION_FAILED_MESSAGE
@@ -252,7 +254,7 @@ public class ZWaveSecurityCommandClassWithInitialization extends ZWaveSecurityCo
                 // We can't set SECURITY_COMMANDS_SUPPORTED_GET in inclusionStateTracker because we need to do a
                 // NONCE_GET before sending. So put this in our encrypt send queue
                 // and give inclusionStateTracker/ZWaveNodeStageAdvancer the NONCE_GET
-                queueMessageForEncapsulationAndTransmission(supportedGetMessage);
+                queueMessageForEncapsulationAndTransmission(supportedGetTransaction);
                 return;
 
             case SECURITY_COMMANDS_SUPPORTED_REPORT:
@@ -324,7 +326,7 @@ public class ZWaveSecurityCommandClassWithInitialization extends ZWaveSecurityCo
      * @see {@link ZWaveNodeInitStageAdvancer}
      */
     @Override
-    public Collection<SerialMessage> initialize(boolean firstIteration) {
+    public Collection<ZWaveTransaction> initialize(boolean firstIteration) {
         // ZWaveNodeStageAdvancer calls us for one of the following reasons:
         // 1. It's checking for the next message to be sent
         // 2. the ZWaveNodeStageAdvancer retry timer was triggered
@@ -338,47 +340,53 @@ public class ZWaveSecurityCommandClassWithInitialization extends ZWaveSecurityCo
                 (System.currentTimeMillis() - lastSentMessageTimestamp));
 
         if (wasThisNodeJustIncluded) {
-            List<SerialMessage> inclusionMessageReturnList = null;
+            List<ZWaveTransaction> inclusionMessageReturnList = null;
             if (firstIteration && !securePairingComplete) {
                 inclusionStartedAt = System.currentTimeMillis();
                 // if we are adding this node, then send SECURITY_SCHEME_GET which will start the Network Key Exchange
                 setupNetworkKey(true);
                 inclusionStateTracker = new ZWaveSecureInclusionStateTracker(getNode());
                 inclusionStateTracker.resetWaitForReplyTimeout();
+
                 // Need to start things off by sending SECURITY_SCHEME_GET
-                SerialMessage message = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                        SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler,
-                        SECURITY_MESSAGE_PRIORITY);
-                byte[] payload = { (byte) this.getNode().getNodeId(), 3, (byte) getCommandClass().getKey(),
-                        SECURITY_SCHEME_GET, 0 };
-                message.attempts = 1; // retry only once
-                message.setMessagePayload(payload);
+                SerialMessage message = new ZWaveSendDataMessageBuilder()
+                        .withCommandClass(getCommandClass(), SECURITY_SCHEME_GET).withPayload(0)
+                        .withNodeId(getNode().getNodeId()).build();
+
+                ZWaveTransaction transaction = new ZWaveTransactionBuilder(message)
+                        .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                        .withExpectedResponseCommandClass(getCommandClass(), SECURITY_SCHEME_REPORT)
+                        .withPriority(TransactionPriority.Config).build();
+
+                // retry only once
+                transaction.setAttemptsRemaining(1);
+
                 // SchemeGet is unencrypted, hand it back or set it on inclusionStateTracker
                 if (USE_DELAY_FOR_SCHEME_GET) {
-                    inclusionStateTracker.setNextRequest(message);
+                    inclusionStateTracker.setNextRequest(transaction);
                     inclusionMessageReturnList = Collections.emptyList();
                 } else {
-                    inclusionMessageReturnList = Collections.singletonList(message);
+                    inclusionMessageReturnList = Collections.singletonList(transaction);
                 }
             } else if (receivedSecurityCommandsSupportedReport) { // We're done!
                 securePairingComplete = true;
                 inclusionMessageReturnList = null; // Tell ZWaveNodeStageAdvancer to advance to the next stage
             } else { // Normal inclusion flow, get the next message or wait for a response to the current one
-                SerialMessage nextMessage = null;
+                ZWaveTransaction nextTransaction = null;
                 if (USE_DELAY_FOR_SCHEME_GET) {
                     boolean timerUp = System.currentTimeMillis() > (inclusionStartedAt + 5000);
                     logger.debug("NODE {}: USE_DELAY_FOR_SCHEME_GET active,  timerUp={}", getNode().getNodeId(),
                             timerUp);
                     if (timerUp) {
-                        nextMessage = inclusionStateTracker.getNextRequest();
+                        nextTransaction = inclusionStateTracker.getNextRequest();
                     }
                 } else {
-                    nextMessage = inclusionStateTracker.getNextRequest();
+                    nextTransaction = inclusionStateTracker.getNextRequest();
                 }
                 logger.debug(
                         "NODE {}: Security.initialize, inclusion flow, get the next message or wait for a response to the current one, nextMessage={}",
-                        getNode().getNodeId(), nextMessage);
-                if (nextMessage == null) { // There is an outstanding request or a timeout error occurred
+                        getNode().getNodeId(), nextTransaction);
+                if (nextTransaction == null) { // There is an outstanding request or a timeout error occurred
                     if (securePairingComplete) {
                         inclusionStateTracker = null;
                         return null; // all done
@@ -388,7 +396,9 @@ public class ZWaveSecurityCommandClassWithInitialization extends ZWaveSecurityCo
                                     getNode().getNodeId(), commandToString(inclusionStateTracker.getCurrentStep()),
                                     inclusionStateTracker.getErrorState());
                             inclusionStateTracker = null;
-                            return null; // We're done but are in a failure state
+
+                            // We're done but are in a failure state
+                            return null;
                         } else {
                             // Keep waiting for a response
                             inclusionMessageReturnList = Collections.emptyList();
@@ -397,18 +407,19 @@ public class ZWaveSecurityCommandClassWithInitialization extends ZWaveSecurityCo
                 } else { // nextMessage != null: There is no outstanding request and we have another message to send
                     // Send the next request and reset our timer
                     inclusionStateTracker.resetWaitForReplyTimeout();
-                    inclusionMessageReturnList = Collections.singletonList(nextMessage);
+                    inclusionMessageReturnList = Collections.singletonList(nextTransaction);
                 } // END There is an outstanding request
             } // END else Normal inclusion flow, get the next message or wait for a response to the current one
+
             if (inclusionMessageReturnList != null && inclusionMessageReturnList.size() > 0) {
-                lastRequestSecurePairMessage = inclusionMessageReturnList.get(0);
+                lastRequestSecurePairTransaction = inclusionMessageReturnList.get(0);
             }
             logger.debug("NODE {}: Security.initialize, just included, handing back message={}", getNode().getNodeId(),
                     inclusionMessageReturnList == null ? "null" : inclusionMessageReturnList);
             return inclusionMessageReturnList;
             // END wasThisNodeJustIncluded
         } else { // Our node was NOT just included
-            List<SerialMessage> returnMessageList = null;
+            List<ZWaveTransaction> returnMessageList = null;
             if (!securePairingComplete) {
                 logger.error(
                         "NODE {}: SECURITY_ERROR Invalid state! Secure inclusion has not completed and we are not in inclusion mode. Aborting",
@@ -420,18 +431,21 @@ public class ZWaveSecurityCommandClassWithInitialization extends ZWaveSecurityCo
                 if (!SEND_SECURITY_COMMANDS_SUPPORTED_GET_ON_STARTUP) {
                     return null; // nothing to do
                 }
-                SerialMessage message = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                        SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler,
-                        SECURITY_MESSAGE_PRIORITY);
-                byte[] payload = { (byte) this.getNode().getNodeId(), 2, (byte) getCommandClass().getKey(),
-                        SECURITY_COMMANDS_SUPPORTED_GET, };
-                message.setMessagePayload(payload);
 
-                SerialMessage nonceGetMessage = nonceGeneration.buildNonceGetIfNeeded();
+                SerialMessage message = new ZWaveSendDataMessageBuilder()
+                        .withCommandClass(getCommandClass(), SECURITY_COMMANDS_SUPPORTED_GET)
+                        .withNodeId(getNode().getNodeId()).build();
+
+                ZWaveTransaction transaction = new ZWaveTransactionBuilder(message)
+                        .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                        .withExpectedResponseCommandClass(getCommandClass(), SECURITY_COMMANDS_SUPPORTED_REPORT)
+                        .withPriority(TransactionPriority.Config).build();
+
+                ZWaveTransaction nonceGetMessage = nonceGeneration.buildNonceGetIfNeeded();
                 // We can't return SECURITY_COMMANDS_SUPPORTED_GET because we need to do a
                 // NONCE_GET before sending. So put this in our encrypt send queue
                 // and give ZWaveNodeStageAdvancer the NONCE_GET
-                queueMessageForEncapsulationAndTransmission(message);
+                queueMessageForEncapsulationAndTransmission(transaction);
                 returnMessageList = Collections.singletonList(nonceGetMessage);
             } else if (receivedSecurityCommandsSupportedReport) {
                 // Normal flow, nothing else to do, tell ZWaveNodeStageAdvancer to advance to the next stage
@@ -449,7 +463,7 @@ public class ZWaveSecurityCommandClassWithInitialization extends ZWaveSecurityCo
             logger.debug("NODE {}: Security.initialize, from xml, handing back message={}", getNode().getNodeId(),
                     returnMessageList);
             if (returnMessageList != null && returnMessageList.size() > 0) {
-                lastRequestSecurePairMessage = returnMessageList.get(0);
+                lastRequestSecurePairTransaction = returnMessageList.get(0);
             }
             return returnMessageList;
         } // end if wasThisNodeJustIncluded

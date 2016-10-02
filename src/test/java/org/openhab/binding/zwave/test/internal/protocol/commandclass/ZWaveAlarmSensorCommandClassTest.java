@@ -32,7 +32,8 @@ public class ZWaveAlarmSensorCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, -100, 3, 0, 0, 27 };
         cls.setVersion(1);
-        msg = cls.getSupportedMessage();
+        msg = cls.getSupportedMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -43,7 +44,8 @@ public class ZWaveAlarmSensorCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, -100, 1, 6, 0, 0, 29 };
         cls.setVersion(1);
-        msg = cls.getMessage(AlarmType.ACCESS_CONTROL);
+        msg = cls.getMessage(AlarmType.ACCESS_CONTROL).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 }

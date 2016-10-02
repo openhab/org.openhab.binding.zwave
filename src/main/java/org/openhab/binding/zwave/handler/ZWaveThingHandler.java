@@ -45,13 +45,13 @@ import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
 import org.openhab.binding.zwave.internal.ZWaveProduct;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociation;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveConfigurationParameter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEventListener;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNodeState;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurationCommandClass.ZWaveConfigurationParameterEvent;
@@ -363,14 +363,14 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         return;
                     }
 
-                    List<SerialMessage> messages = new ArrayList<SerialMessage>();
+                    List<ZWaveTransaction> messages = new ArrayList<ZWaveTransaction>();
                     for (ZWaveThingChannel channel : thingChannelsPoll) {
                         logger.debug("NODE {}: Polling {}", nodeId, channel.getUID());
                         if (channel.converter == null) {
                             logger.debug("NODE {}: Polling aborted as no converter found for {}", nodeId,
                                     channel.getUID());
                         } else {
-                            List<SerialMessage> poll = channel.converter.executeRefresh(channel, node);
+                            List<ZWaveTransaction> poll = channel.converter.executeRefresh(channel, node);
                             if (poll != null) {
                                 messages.addAll(poll);
                             }
@@ -389,7 +389,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     }
 
                     // Send all the messages
-                    for (SerialMessage message : messages) {
+                    for (ZWaveTransaction message : messages) {
                         controllerHandler.sendData(message);
                     }
                 } catch (Exception e) {
@@ -900,7 +900,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             return;
         }
 
-        List<SerialMessage> messages = null;
+        List<ZWaveTransaction> messages = null;
         messages = cmdChannel.converter.receiveCommand(cmdChannel, node, command);
 
         if (messages == null) {
@@ -909,7 +909,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
 
         // Send all the messages
-        for (SerialMessage message : messages) {
+        for (ZWaveTransaction message : messages) {
             controllerHandler.sendData(message);
         }
     }

@@ -29,8 +29,8 @@ public class RequestNodeNeighborUpdateMessageClassTest {
         byte[] expectedResponse = { 1, 5, 0, 72, 12, 1, -65 };
 
         RequestNodeNeighborUpdateMessageClass handler = new RequestNodeNeighborUpdateMessageClass();
-        SerialMessage msg = handler.doRequest(12);
-
+        SerialMessage msg = handler.doRequest(12).getSerialMessage();
+        msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
     }
 }

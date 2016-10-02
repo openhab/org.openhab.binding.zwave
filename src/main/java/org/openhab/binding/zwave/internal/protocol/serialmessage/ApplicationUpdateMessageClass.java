@@ -15,11 +15,11 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNodeState;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
@@ -38,7 +38,23 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
     private static final Logger logger = LoggerFactory.getLogger(ApplicationUpdateMessageClass.class);
 
     @Override
-    public boolean handleRequest(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean correlateTransactionResponse(ZWaveTransaction transaction, SerialMessage incomingMessage) {
+        // if (transaction.getExpectedReplyClass() != incomingMessage.getMessageClass()) {
+        // return false;
+        // }
+
+        // If this is a response, check the callbackId
+        // if (transaction.getCallbackId() != incomingMessage.getCallbackId()) {
+        // logger.debug("NO callback match!");
+        // return false;
+        // }
+
+        // logger.debug("Callback match!");
+        return true;
+    }
+
+    @Override
+    public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         int nodeId;
         boolean result = true;
@@ -131,24 +147,25 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
                 break;
             case NODE_INFO_REQ_FAILED:
                 // Make sure we can correlate the request before we use the nodeId
-                if (lastSentMessage.getMessageClass() != SerialMessageClass.RequestNodeInfo) {
-                    logger.warn("Got ApplicationUpdateMessage without request, ignoring. Last message was {}.",
-                            lastSentMessage.getMessageClass());
-                    return false;
-                }
+                // TODO: Check - this shouldn't be needed as we already correlate before calling
+                // if (transaction.getMessageClass() != SerialMessageClass.RequestNodeInfo) {
+                // logger.warn("Got ApplicationUpdateMessage without request, ignoring. Last message was {}.",
+                // transaction.getMessageClass());
+                // return false;
+                // }
 
                 // The failed message doesn't contain the node number, so use the info from the request.
-                nodeId = lastSentMessage.getMessageNode();
+                nodeId = transaction.getMessageNode();
                 logger.debug("NODE {}: Application update request. Node Info Request Failed.", nodeId);
 
                 // Handle retries
-                if (--lastSentMessage.attempts >= 0) {
-                    logger.error("NODE {}: Got Node Info Request Failed. Requeueing", nodeId);
-                    zController.enqueue(lastSentMessage);
-                } else {
-                    logger.warn("NODE {}: Node Info Request Failed 3x. Discarding message: {}", nodeId,
-                            lastSentMessage.toString());
-                }
+                // if (--lastSentMessage.attempts >= 0) {
+                // logger.error("NODE {}: Got Node Info Request Failed. Requeueing", nodeId);
+                // zController.enqueue(lastSentMessage);
+                // } else {
+                // logger.warn("NODE {}: Node Info Request Failed 3x. Discarding message: {}", nodeId,
+                // lastSentMessage.toString());
+                // }
 
                 // Transaction is not successful
                 incomingMessage.setTransactionCanceled();
@@ -160,7 +177,7 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
         }
 
         // Check if this completes the transaction
-        checkTransactionComplete(lastSentMessage, incomingMessage);
+        checkTransactionComplete(transaction, incomingMessage);
 
         return result;
     }

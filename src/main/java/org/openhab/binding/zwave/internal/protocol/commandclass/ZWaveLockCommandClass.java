@@ -10,12 +10,14 @@ package org.openhab.binding.zwave.internal.protocol.commandclass;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -94,25 +96,25 @@ public class ZWaveLockCommandClass extends ZWaveCommandClass implements ZWaveGet
      * @return the serial message
      */
     @Override
-    public SerialMessage getValueMessage() {
+    public ZWaveTransaction getValueMessage() {
         logger.debug("NODE {}: Creating new message for application command LOCK_GET", this.getNode().getNodeId());
-        SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        byte[] newPayload = { (byte) this.getNode().getNodeId(), 2, (byte) getCommandClass().getKey(),
-                (byte) LOCK_GET, };
-        result.setMessagePayload(newPayload);
-        return result;
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), LOCK_GET)
+                .withNodeId(getNode().getNodeId()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), LOCK_REPORT).withPriority(TransactionPriority.Get)
+                .build();
     }
 
     @Override
-    public SerialMessage setValueMessage(int value) {
+    public ZWaveTransaction setValueMessage(int value) {
         logger.debug("NODE {}: Creating new message for application command LOCK_SET", this.getNode().getNodeId());
 
-        SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Set);
-        byte[] newPayload = { (byte) this.getNode().getNodeId(), 3, (byte) getCommandClass().getKey(), (byte) LOCK_SET,
-                (byte) value };
-        result.setMessagePayload(newPayload);
-        return result;
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), LOCK_SET)
+                .withNodeId(getNode().getNodeId()).withPayload(value).build();
+
+        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Set).build();
     }
 }

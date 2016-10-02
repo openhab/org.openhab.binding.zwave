@@ -15,6 +15,8 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveCommandProcessor;
 
 public class ZWaveCommandProcessorTest {
@@ -29,10 +31,28 @@ public class ZWaveCommandProcessorTest {
         // argument = ArgumentCaptor.forClass(ZWaveEvent.class);
         // Mockito.doNothing().when(controller).notifyEventListeners(argument.capture());
 
-        // ZWaveTransaction transaction = new ZWaveTransactionBuilder(msg).build();
+        ZWaveTransaction transaction = new ZWaveTransactionBuilder(msg).build();
 
         try {
-            handler.handleResponse(controller, msg, msg);
+            handler.handleResponse(controller, transaction, msg);
+        } catch (ZWaveSerialMessageException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    void ProcessRequest(ZWaveCommandProcessor handler, ZWaveTransaction transaction, byte[] packetData) {
+        SerialMessage msg = new SerialMessage(packetData);
+        assertEquals(true, msg.isValid);
+        assertEquals(SerialMessageType.Request, msg.getMessageType());
+
+        // Mock the controller so we can get any events
+        ZWaveController controller = Mockito.mock(ZWaveController.class);
+        // argument = ArgumentCaptor.forClass(ZWaveEvent.class);
+        // Mockito.doNothing().when(controller).notifyEventListeners(argument.capture());
+
+        try {
+            handler.handleRequest(controller, transaction, msg);
         } catch (ZWaveSerialMessageException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

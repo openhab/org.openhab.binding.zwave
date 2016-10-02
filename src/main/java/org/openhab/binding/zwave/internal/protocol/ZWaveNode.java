@@ -126,7 +126,7 @@ public class ZWaveNode {
      * @param controller the wave controller instance
      */
     public ZWaveNode(int homeId, int nodeId, ZWaveController controller) {
-        nodeState = ZWaveNodeState.INITIALIZING;
+        nodeState = ZWaveNodeState.ALIVE; // TODO: ??? INITIALIZING;
         this.homeId = homeId;
         this.nodeId = nodeId;
         this.controller = controller;
@@ -143,7 +143,7 @@ public class ZWaveNode {
      * @param controller the wave controller instance
      */
     public void setRestoredFromConfigfile(ZWaveController controller) {
-        nodeState = ZWaveNodeState.INITIALIZING;
+        nodeState = ZWaveNodeState.ALIVE; // TODO: ??? INITIALIZING;
 
         this.controller = controller;
 
@@ -456,15 +456,15 @@ public class ZWaveNode {
     }
 
     /**
-     * Resets the resend counter and possibly resets the
-     * node stage to DONE when previous initialization was
-     * complete.
+     * Resets the resend counter and possibly resets the node stage to DONE when previous initialization was complete.
      * Note that if the node is DEAD, then the nodeStage stays DEAD
      */
     public void resetResendCount() {
         resendCount = 0;
-        if (nodeInitStageAdvancer.isInitializationComplete() && isDead() == false) {
-            nodeInitStageAdvancer.startInitialisation(ZWaveNodeInitStage.DONE);
+        if (nodeInitStageAdvancer.isInitializationComplete() == true && isDead() == false) {
+            logger.debug("NODE {}: resetResendCount initComplete={} isDead={}", nodeId,
+                    nodeInitStageAdvancer.isInitializationComplete(), isDead());
+            // nodeInitStageAdvancer.startInitialisation(ZWaveNodeInitStage.DONE);
         }
     }
 
@@ -608,44 +608,48 @@ public class ZWaveNode {
      * @param node the destination node.
      * @return SerialMessage on success, null on failure.
      */
-    public SerialMessage encapsulate(SerialMessage serialMessage, ZWaveCommandClass commandClass, int endpointId) {
+    // public SerialMessage encapsulate(SerialMessage serialMessage, ZWaveCommandClass commandClass, int endpointId) {
+    public ZWaveTransaction encapsulate(ZWaveTransaction transaction, ZWaveCommandClass commandClass, int endpointId) {
         ZWaveMultiInstanceCommandClass multiInstanceCommandClass;
 
-        if (serialMessage == null) {
-            return null;
+        if (transaction == null) {
+            return transaction;
         }
 
-        // no encapsulation necessary.
+        // No encapsulation necessary.
         if (endpointId == 0) {
-            return serialMessage;
+            return transaction;
         }
 
-        multiInstanceCommandClass = (ZWaveMultiInstanceCommandClass) this.getCommandClass(CommandClass.MULTI_INSTANCE);
+        SerialMessage serialMessage = transaction.getSerialMessage();
 
-        if (multiInstanceCommandClass != null) {
-            logger.debug("NODE {}: Encapsulating message, instance / endpoint {}", this.getNodeId(), endpointId);
-            switch (multiInstanceCommandClass.getVersion()) {
-                case 2:
-                    if (commandClass.getEndpoint() != null) {
-                        serialMessage = multiInstanceCommandClass.getMultiChannelEncapMessage(serialMessage,
-                                commandClass.getEndpoint());
-                        return serialMessage;
-                    }
-                    break;
-                case 1:
-                default:
-                    if (commandClass.getInstances() >= endpointId) {
-                        serialMessage = multiInstanceCommandClass.getMultiInstanceEncapMessage(serialMessage,
-                                endpointId);
-                        return serialMessage;
-                    }
-                    break;
-            }
+        multiInstanceCommandClass = (ZWaveMultiInstanceCommandClass) getCommandClass(CommandClass.MULTI_INSTANCE);
+
+        if (multiInstanceCommandClass == null) {
+            logger.warn("NODE {}: Encapsulating message, instance / endpoint {} failed, will discard message.",
+                    getNodeId(), endpointId);
+            return transaction;
         }
 
-        logger.warn("NODE {}: Encapsulating message, instance / endpoint {} failed, will discard message.",
-                this.getNodeId(), endpointId);
-        return null;
+        logger.debug("NODE {}: Encapsulating message, instance / endpoint {}", getNodeId(), endpointId);
+        switch (multiInstanceCommandClass.getVersion()) {
+            case 2:
+                if (commandClass.getEndpoint() != null) {
+                    serialMessage = multiInstanceCommandClass.getMultiChannelEncapMessage(serialMessage,
+                            commandClass.getEndpoint());
+                }
+                break;
+            case 1:
+            default:
+                if (commandClass.getInstances() >= endpointId) {
+                    serialMessage = multiInstanceCommandClass.getMultiInstanceEncapMessage(serialMessage, endpointId);
+                }
+                break;
+        }
+
+        transaction.setSerialMessage(serialMessage);
+
+        return transaction;
     }
 
     /**
@@ -990,7 +994,7 @@ public class ZWaveNode {
         return associationGroups;
     }
 
-    public SerialMessage getAssociation(int group) {
+    public ZWaveTransaction getAssociation(int group) {
         ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
                 CommandClass.MULTI_INSTANCE_ASSOCIATION);
         if (multiAssociationCommandClass != null) {
@@ -1015,13 +1019,13 @@ public class ZWaveNode {
      * if the device endpoint is the root node, and the receive endpoint is 0, we use the
      * single instance command class, otherwise we use the multi instance class if it exists.
      *
-     * @param endpoint the endpoint required to semd the reports
+     * @param endpoint the {@link ZWaveEndpoint} required to send the reports
      * @param groupId the group to be set
      * @param nodeId the node to be set to report to (receive)
      * @param endpointId the endpoint to be set to report to (receive)
-     * @return
+     * @return {@link ZWaveTransaction}
      */
-    public SerialMessage setAssociation(ZWaveEndpoint endpoint, int groupId, int nodeId, int endpointId) {
+    public ZWaveTransaction setAssociation(ZWaveEndpoint endpoint, int groupId, int nodeId, int endpointId) {
         ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
                 CommandClass.MULTI_INSTANCE_ASSOCIATION);
         if (endpoint == null && endpointId != 0 && multiAssociationCommandClass != null) {
@@ -1037,7 +1041,7 @@ public class ZWaveNode {
         return null;
     }
 
-    public SerialMessage removeAssociation(Integer groupId, int nodeId, int endpointId) {
+    public ZWaveTransaction removeAssociation(Integer groupId, int nodeId, int endpointId) {
         ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
                 CommandClass.MULTI_INSTANCE_ASSOCIATION);
         if (multiAssociationCommandClass != null) {
@@ -1053,7 +1057,7 @@ public class ZWaveNode {
         return null;
     }
 
-    public SerialMessage clearAssociation(Integer groupId) {
+    public ZWaveTransaction clearAssociation(Integer groupId) {
         ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
                 CommandClass.MULTI_INSTANCE_ASSOCIATION);
         if (multiAssociationCommandClass != null) {

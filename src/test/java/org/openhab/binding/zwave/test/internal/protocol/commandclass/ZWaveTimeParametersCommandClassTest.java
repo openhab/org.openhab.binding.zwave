@@ -59,7 +59,7 @@ public class ZWaveTimeParametersCommandClassTest extends ZWaveCommandClassTest {
         Calendar utc = Calendar.getInstance();
         utc.setTimeZone(TimeZone.getTimeZone("UTC"));
         utc.setTime(new Date(0));
-        SerialMessage msg = cls.getSetMessage(utc);
+        SerialMessage msg = cls.getSetMessage(utc).getSerialMessage();
 
         assertTrue(Arrays.equals(msg.getMessagePayload(), expectedResponse));
     }

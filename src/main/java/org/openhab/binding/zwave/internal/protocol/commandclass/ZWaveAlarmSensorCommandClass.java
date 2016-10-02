@@ -15,12 +15,14 @@ import java.util.Map;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -182,14 +184,14 @@ public class ZWaveAlarmSensorCommandClass extends ZWaveCommandClass
      * @return the serial message
      */
     @Override
-    public SerialMessage getValueMessage() {
+    public ZWaveTransaction getValueMessage() {
         // TODO: Why does this return!!!???!!!
         for (Map.Entry<AlarmType, Alarm> entry : this.alarms.entrySet()) {
             return getMessage(entry.getValue().getAlarmType());
         }
 
         // in case there are no supported alarms, get them.
-        return this.getSupportedMessage();
+        return getSupportedMessage();
     }
 
     /**
@@ -197,7 +199,7 @@ public class ZWaveAlarmSensorCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    public SerialMessage getMessage(AlarmType alarmType) {
+    public ZWaveTransaction getMessage(AlarmType alarmType) {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", getNode().getNodeId());
             return null;
@@ -205,12 +207,15 @@ public class ZWaveAlarmSensorCommandClass extends ZWaveCommandClass
 
         logger.debug("NODE {}: Creating new message for command SENSOR_ALARM_GET, type {}", getNode().getNodeId(),
                 alarmType.getLabel());
-        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        byte[] newPayload = { (byte) this.getNode().getNodeId(), 3, (byte) getCommandClass().getKey(),
-                (byte) SENSOR_ALARM_GET, (byte) alarmType.getKey() };
-        result.setMessagePayload(newPayload);
-        return result;
+
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), SENSOR_ALARM_GET).withPayload(alarmType.getKey())
+                .withNodeId(getNode().getNodeId()).build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), SENSOR_ALARM_REPORT)
+                .withPriority(TransactionPriority.Get).build();
     }
 
     @Override
@@ -230,7 +235,7 @@ public class ZWaveAlarmSensorCommandClass extends ZWaveCommandClass
      *
      * @return the serial message, or null if the supported command is not supported.
      */
-    public SerialMessage getSupportedMessage() {
+    public ZWaveTransaction getSupportedMessage() {
         if (isSupportedGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support supported get requests", getNode().getNodeId());
             return null;
@@ -239,20 +244,22 @@ public class ZWaveAlarmSensorCommandClass extends ZWaveCommandClass
         logger.debug("NODE {}: Creating new message for command SENSOR_ALARM_SUPPORTED_GET",
                 this.getNode().getNodeId());
 
-        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.High);
-        byte[] newPayload = { (byte) getNode().getNodeId(), 2, (byte) getCommandClass().getKey(),
-                (byte) SENSOR_ALARM_SUPPORTED_GET };
-        result.setMessagePayload(newPayload);
-        return result;
+        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+                .withCommandClass(getCommandClass(), SENSOR_ALARM_SUPPORTED_GET).withNodeId(getNode().getNodeId())
+                .build();
+
+        return new ZWaveTransactionBuilder(serialMessage)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+                .withExpectedResponseCommandClass(getCommandClass(), SENSOR_ALARM_SUPPORTED_REPORT)
+                .withPriority(TransactionPriority.Get).build();
     }
 
     /**
      * Initializes the alarm sensor command class. Requests the supported alarm types.
      */
     @Override
-    public Collection<SerialMessage> initialize(boolean refresh) {
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+    public Collection<ZWaveTransaction> initialize(boolean refresh) {
+        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
         // If we're already initialized, then don't do it again unless we're refreshing
         if (refresh == true || initialiseDone == false) {
             result.add(this.getSupportedMessage());
@@ -264,8 +271,8 @@ public class ZWaveAlarmSensorCommandClass extends ZWaveCommandClass
      * {@inheritDoc}
      */
     @Override
-    public Collection<SerialMessage> getDynamicValues(boolean refresh) {
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+    public Collection<ZWaveTransaction> getDynamicValues(boolean refresh) {
+        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
 
         // If we want to refresh, then reset the init flag on all sensors
         if (refresh == true) {

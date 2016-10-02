@@ -29,7 +29,8 @@ public class AssignReturnRouteMessageClassTest {
         byte[] expectedResponse = { 1, 6, 0, 70, 12, 44, 1, -98 };
 
         AssignReturnRouteMessageClass handler = new AssignReturnRouteMessageClass();
-        SerialMessage msg = handler.doRequest(12, 44, 1);
+        SerialMessage msg = handler.doRequest(12, 44).getSerialMessage();
+        msg.setCallbackId(1);
 
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
     }

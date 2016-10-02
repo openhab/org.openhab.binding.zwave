@@ -32,7 +32,8 @@ public class ZWaveAssociationCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, -123, 2, 1, 0, 0, 0 };
         cls.setVersion(1);
-        msg = cls.getAssociationMessage(1);
+        msg = cls.getAssociationMessage(1).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -43,7 +44,8 @@ public class ZWaveAssociationCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, -123, 5, 0, 0, 4 };
         cls.setVersion(1);
-        msg = cls.getGroupingsMessage();
+        msg = cls.getGroupingsMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -54,7 +56,8 @@ public class ZWaveAssociationCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, -123, 4, 1, 1, 0, 0, 1 };
         cls.setVersion(1);
-        msg = cls.removeAssociationMessage(1, 1);
+        msg = cls.removeAssociationMessage(1, 1).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -65,7 +68,8 @@ public class ZWaveAssociationCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, -123, 4, 1, 0, 0, 6 };
         cls.setVersion(1);
-        msg = cls.clearAssociationMessage(1);
+        msg = cls.clearAssociationMessage(1).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -76,7 +80,8 @@ public class ZWaveAssociationCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, -123, 1, 1, 1, 0, 0, 4 };
         cls.setVersion(1);
-        msg = cls.setAssociationMessage(1, 1);
+        msg = cls.setAssociationMessage(1, 1).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 }

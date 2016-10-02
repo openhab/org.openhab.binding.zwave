@@ -31,18 +31,20 @@ public class ZWaveVersionCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, -122, 17, 0, 0, 19 };
         cls.setVersion(1);
-        msg = cls.getVersionMessage();
+        msg = cls.getVersionMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
     @Test
-    public void setValueMessage() {
+    public void getCommandClassVersionMessage() {
         ZWaveVersionCommandClass cls = (ZWaveVersionCommandClass) getCommandClass(CommandClass.VERSION);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, -122, 19, 113, 0, 0, 98 };
         cls.setVersion(1);
-        msg = cls.getCommandClassVersionMessage(CommandClass.ALARM);
+        msg = cls.getCommandClassVersionMessage(CommandClass.ALARM).getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 }

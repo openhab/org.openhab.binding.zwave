@@ -13,6 +13,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNodeState;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
@@ -28,7 +29,7 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
     private static final Logger logger = LoggerFactory.getLogger(ApplicationCommandMessageClass.class);
 
     @Override
-    public boolean handleRequest(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) {
         try {
             logger.trace("Handle Message Application Command Request");
@@ -79,10 +80,11 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
                     // call handleApplicationCommandRequest with the decrypted message. Note that we do NOT set
                     // incomingMessage as that needs to be processed below with the original security encapsulated
                     // message
-                    final SerialMessage decryptedMessage = new SerialMessage(incomingMessage.getMessageClass(),
-                            incomingMessage.getMessageType(), incomingMessage.getExpectedReply(),
-                            incomingMessage.getPriority());
-                    decryptedMessage.setMessagePayload(decryptedBytes);
+                    // TODO: Fix security!
+                    // final SerialMessage decryptedMessage = new SerialMessage(incomingMessage.getMessageClass(),
+                    // incomingMessage.getMessageType(), incomingMessage.getExpectedReply(),
+                    // incomingMessage.getPriority());
+                    // decryptedMessage.setMessagePayload(decryptedBytes);
                     // Get the new command class with the decrypted contents
                     zwaveCommandClass = resolveZWaveCommandClass(node, decryptedBytes[1], zController);
                     boolean failed = false; // Use a flag bc we need to handle isEncapNonceGet either way
@@ -95,7 +97,7 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
                         logger.debug(
                                 "NODE {}: After decrypt, found Command Class {}, passing to handleApplicationCommandRequest",
                                 nodeId, zwaveCommandClass.getCommandClass().getLabel());
-                        zwaveCommandClass.handleApplicationCommandRequest(decryptedMessage, 2, 0);
+                        // zwaveCommandClass.handleApplicationCommandRequest(decryptedMessage, 2, 0);
                     }
                     if (isEncapNonceGet) {
                         // the device also needs another nonce; send it regardless of the success/failure of decryption
@@ -106,6 +108,7 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
                     }
                 }
             } else { // Message does not require decryption
+
                 if (node.doesMessageRequireSecurityEncapsulation(incomingMessage)) {
                     // Should have been security encapsulation but wasn't!
                     logger.error(
@@ -120,13 +123,7 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
                 }
             }
 
-            if (node.getNodeId() == lastSentMessage.getMessageNode()) {
-                checkTransactionComplete(lastSentMessage, incomingMessage);
-            } else {
-                logger.debug("NODE {}: Transaction not completed: node address inconsistent.  lastSent={}, incoming={}",
-                        lastSentMessage.getMessageNode(), lastSentMessage.getMessageNode(),
-                        incomingMessage.getMessageNode());
-            }
+            checkTransactionComplete(transaction, incomingMessage);
         } catch (ZWaveSerialMessageException e) {
             logger.error("Error processing frame: {} >> {}", incomingMessage.toString(), e.getMessage());
         }
@@ -140,7 +137,6 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
      * @return the zwave command class for this node or null if it is not possible
      *
      */
-
     private ZWaveCommandClass resolveZWaveCommandClass(ZWaveNode node, int commandClassCode,
             ZWaveController zController) {
         CommandClass commandClass = CommandClass.getCommandClass(commandClassCode);
@@ -171,5 +167,32 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
             }
         }
         return zwaveCommandClass;
+    }
+
+    @Override
+    public boolean correlateTransactionResponse(ZWaveTransaction transaction, SerialMessage incomingMessage) {
+        if (transaction.getExpectedReplyClass() != incomingMessage.getMessageClass()) {
+            return false;
+        }
+
+        // If this is a response, check the callbackId
+        try {
+            // If the expected command class is defined, then check it
+            if (transaction.getExpectedCommandClass() == null
+                    || transaction.getExpectedCommandClass().getKey() != incomingMessage.getMessagePayloadByte(3)) {
+                return false;
+            }
+
+            // If the expected command class command is defined, then check it
+            if (transaction.getExpectedCommandClassCommand() == null
+                    || transaction.getExpectedCommandClassCommand() != incomingMessage.getMessagePayloadByte(4)) {
+                return false;
+            }
+
+            return true;
+        } catch (ZWaveSerialMessageException e) {
+        }
+
+        return false;
     }
 }

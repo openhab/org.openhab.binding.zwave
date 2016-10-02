@@ -17,9 +17,9 @@ import org.eclipse.smarthome.core.library.types.OpenClosedType;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.AlarmType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.ZWaveAlarmValueEvent;
@@ -51,7 +51,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
      * {@inheritDoc}
      */
     @Override
-    public List<SerialMessage> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
+    public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveAlarmCommandClass commandClass = (ZWaveAlarmCommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.ALARM, channel.getEndpoint());
         if (commandClass == null) {
@@ -62,20 +62,21 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}, alarm {}", node.getNodeId(),
                 commandClass.getCommandClass().getLabel(), channel.getEndpoint(), alarmType);
 
-        SerialMessage serialMessage;
+        ZWaveTransaction transaction;
         if (alarmType != null) {
-            serialMessage = node.encapsulate(commandClass.getMessage(AlarmType.valueOf(alarmType)), commandClass,
-                    channel.getEndpoint());
+            transaction = commandClass.getMessage(AlarmType.valueOf(alarmType));
         } else {
-            serialMessage = node.encapsulate(commandClass.getValueMessage(), commandClass, channel.getEndpoint());
+            transaction = commandClass.getValueMessage();
         }
 
-        if (serialMessage == null) {
+        if (transaction == null) {
             return null;
         }
 
-        List<SerialMessage> response = new ArrayList<SerialMessage>();
-        response.add(serialMessage);
+        transaction = node.encapsulate(transaction, commandClass, channel.getEndpoint());
+
+        List<ZWaveTransaction> response = new ArrayList<ZWaveTransaction>();
+        response.add(transaction);
         return response;
     }
 

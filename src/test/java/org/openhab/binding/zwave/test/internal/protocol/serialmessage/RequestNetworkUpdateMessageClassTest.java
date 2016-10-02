@@ -14,8 +14,10 @@ public class RequestNetworkUpdateMessageClassTest {
         byte[] expectedResponse = { 0x01, 0x04, 0x00, 0x53, 0x01, (byte) 0xA9 };
 
         RequestNetworkUpdateMessageClass handler = new RequestNetworkUpdateMessageClass();
-        SerialMessage msg = handler.doRequest();
+        SerialMessage msg = handler.doRequest().getSerialMessage();
         msg.setCallbackId(1);
+
+        byte[] x = msg.getMessageBuffer();
 
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
     }

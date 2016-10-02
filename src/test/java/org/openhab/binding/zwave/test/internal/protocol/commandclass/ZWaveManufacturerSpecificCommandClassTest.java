@@ -25,14 +25,15 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveManufacture
 public class ZWaveManufacturerSpecificCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
-    public void getManufacturerSpecificMessage() {
+    public void getValueMessage() {
         ZWaveManufacturerSpecificCommandClass cls = (ZWaveManufacturerSpecificCommandClass) getCommandClass(
                 CommandClass.MANUFACTURER_SPECIFIC);
         SerialMessage msg;
 
         byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 114, 4, 0, 0, -14 };
         cls.setVersion(1);
-        msg = cls.getManufacturerSpecificMessage();
+        msg = cls.getManufacturerSpecificMessage().getSerialMessage();
+        msg.setCallbackId(0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 
@@ -44,7 +45,9 @@ public class ZWaveManufacturerSpecificCommandClassTest extends ZWaveCommandClass
 
         byte[] expectedResponseSerialNumber = { 1, 10, 0, 19, 99, 3, 114, 6, 1, 0, 0, -13 };
         cls.setVersion(1);
-        msg = cls.getManufacturerSpecificDeviceMessage(1);
+        msg = cls.getManufacturerSpecificDeviceMessage(1).getSerialMessage();
+        msg.setCallbackId(0);
+
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseSerialNumber));
     }
 
