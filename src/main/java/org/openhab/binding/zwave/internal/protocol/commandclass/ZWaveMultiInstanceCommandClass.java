@@ -363,14 +363,14 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
         if (generic == null) {
             logger.error(
                     String.format("NODE %d: Endpoint %d has invalid device class. generic = 0x%02x, specific = 0x%02x.",
-                            getNode().getNodeId(), endpoint, genericDeviceClass, specificDeviceClass));
+                            getNode().getNodeId(), endpoint.getEndpointId(), genericDeviceClass, specificDeviceClass));
             return false;
         }
         Specific specific = Specific.getSpecific(generic, specificDeviceClass);
         if (specific == null) {
             logger.error(
                     String.format("NODE %d: Endpoint %d has invalid device class. generic = 0x%02x, specific = 0x%02x.",
-                            getNode().getNodeId(), endpoint, genericDeviceClass, specificDeviceClass));
+                            getNode().getNodeId(), endpoint.getEndpointId(), genericDeviceClass, specificDeviceClass));
             return false;
         }
 
