@@ -5,9 +5,9 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="mcohome_mhs412_00_000" listed="false">
-    <label>MH-S412 Touch Panel Switch (Dual)</label>
-    <description>Touch Panel Switch (Dual)</description>
+  <thing-type id="mcohome_mcotps412_00_000" listed="false">
+    <label>MCO_TPS412 Touch Panel Switch 2 Channel</label>
+    <description>Touch Panel Switch 2 Channel</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -34,10 +34,10 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">MCO Home</property>
-      <property name="modelId">MH-S412</property>
+      <property name="modelId">MCO_TPS412</property>
       <property name="manufacturerId">015F</property>
-      <property name="manufacturerRef">4102:0202</property>
-      <property name="dbReference">272</property>
+      <property name="manufacturerRef">4121:1302</property>
+      <property name="dbReference">429</property>
       <property name="defaultAssociations">3</property>
     </properties>
 
@@ -61,7 +61,7 @@
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association">
-        <label>3: Status Reports</label>
+        <label>3: All Status Reports</label>
       </parameter>
 
     </config-description>
