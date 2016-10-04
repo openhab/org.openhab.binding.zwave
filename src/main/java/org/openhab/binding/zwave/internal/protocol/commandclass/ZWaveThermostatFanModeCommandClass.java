@@ -232,6 +232,11 @@ public class ZWaveThermostatFanModeCommandClass extends ZWaveCommandClass
      * @return the serial message, or null if the supported command is not supported.
      */
     public SerialMessage getSupportedMessage() {
+        if (isGetSupported == false) {
+            initialiseDone = true;
+            return null;
+        }
+
         logger.debug("NODE {}: Creating new message for application command THERMOSTAT_FAN_MODE_SUPPORTED_GET",
                 this.getNode().getNodeId());
 
@@ -252,7 +257,7 @@ public class ZWaveThermostatFanModeCommandClass extends ZWaveCommandClass
         if (fanModeTypes.isEmpty()) {
             logger.warn("NODE {}: requesting fan mode types, set request ignored (try again later)",
                     this.getNode().getNodeId());
-            return this.getSupportedMessage();
+            return getSupportedMessage();
         }
 
         if (!fanModeTypes.contains(FanModeType.getFanModeType(value))) {
