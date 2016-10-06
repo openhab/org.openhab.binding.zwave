@@ -17,6 +17,12 @@
           <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
         </properties>
       </channel>
+      <channel id="notification_send" typeId="notification_send">
+        <label>Start sound</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;event1=SMOKE:1,event2=ACCESS_CONTROL:22,event3=BURGLAR:1,event4=EMERGENCY:1,event5=EMERGENCY:2,event6=EMERGENCY:3</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
@@ -65,4 +71,5 @@ Disable the alarm function. 1: Disable Alarm, 0: Enable Alarm. Caution: After th
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

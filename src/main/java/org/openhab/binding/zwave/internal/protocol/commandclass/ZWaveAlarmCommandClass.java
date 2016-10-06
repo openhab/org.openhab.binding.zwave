@@ -283,6 +283,29 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
     }
 
     /**
+     * Send a notification event
+     *
+     * @param notificationType
+     * @param event
+     * @return
+     */
+    public SerialMessage getNotificationReportMessage(AlarmType notificationType, int event) {
+        if (getVersion() == 1) {
+            logger.debug("NODE {}: NOTIFICATION_REPORT not supported for V1", getNode().getNodeId());
+            return null;
+        }
+
+        logger.debug("NODE {}: Creating new message for command NOTIFICATION_REPORT", getNode().getNodeId());
+
+        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
+                SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.High);
+        byte[] newPayload = { (byte) getNode().getNodeId(), 8, (byte) getCommandClass().getKey(),
+                (byte) NOTIFICATION_REPORT, 0, 0, 0, 0, (byte) notificationType.getKey(), (byte) event };
+        result.setMessagePayload(newPayload);
+        return result;
+    }
+
+    /**
      * Gets a SerialMessage with the ALARM_GET command
      *
      * @return the serial message
