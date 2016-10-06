@@ -726,6 +726,14 @@
         </state>
     </channel-type>
     
+    <!-- Channel to send a notification -->
+    <channel-type id="notification_send" advanced="true">
+        <item-type>Number</item-type>
+        <label>Send Notification</label>
+        <description>Sends a notification
+        </description>
+    </channel-type>
+
     <!-- Local Protection Channel -->
     <channel-type id="protection_local" advanced="true">
         <item-type>Number</item-type>

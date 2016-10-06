@@ -14,6 +14,7 @@ import java.util.List;
 import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.library.types.OnOffType;
 import org.eclipse.smarthome.core.library.types.OpenClosedType;
+import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
@@ -162,5 +163,46 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                 break;
         }
         return state;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<SerialMessage> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
+        ZWaveAlarmCommandClass commandClass = (ZWaveAlarmCommandClass) node
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.ALARM, channel.getEndpoint());
+        if (commandClass == null) {
+            return null;
+        }
+
+        String eventString = channel.getArguments().get("event" + command.toString());
+        if (eventString == null) {
+            logger.debug("NODE {}: No event found with name 'event{}'", node.getNodeId(), command.toString());
+            return null;
+        }
+        String splits[] = eventString.split(":");
+        if (splits.length != 2) {
+            logger.debug("NODE {}: Incorrectly formatted event found with name 'event{}' = {}", node.getNodeId(),
+                    command.toString(), eventString);
+            return null;
+        }
+
+        AlarmType notificationType = AlarmType.valueOf(splits[0]);
+        int event = Integer.valueOf(splits[1]);
+
+        SerialMessage serialMessage = node.encapsulate(
+                commandClass.getNotificationReportMessage(notificationType, event), commandClass,
+                channel.getEndpoint());
+
+        if (serialMessage == null) {
+            logger.warn("NODE {}: Generating message failed for command class = {}, endpoint = {}", node.getNodeId(),
+                    commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+            return null;
+        }
+
+        List<SerialMessage> messages = new ArrayList<SerialMessage>();
+        messages.add(serialMessage);
+        return messages;
     }
 }
