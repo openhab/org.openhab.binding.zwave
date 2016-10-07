@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -32,8 +33,10 @@ import org.mockito.Matchers;
 import org.mockito.Mockito;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 
@@ -62,6 +65,9 @@ public class ZWaveThingHandlerTest {
         Field fieldControllerHandler;
         try {
             ZWaveWakeUpCommandClass wakeupClass = new ZWaveWakeUpCommandClass(node, controller, null);
+
+            ZWaveAssociationCommandClass associationClass = new ZWaveAssociationCommandClass(node, controller, null);
+
             ZWaveControllerHandler controllerHandler = Mockito.mock(ZWaveControllerHandler.class);
             Mockito.doNothing().when(controllerHandler).sendData(argument.capture());
             Mockito.doNothing().when(thingCallback).thingUpdated(Matchers.any(Thing.class));
@@ -73,7 +79,9 @@ public class ZWaveThingHandlerTest {
             Mockito.when(controller.getOwnNodeId()).thenReturn(1);
             Mockito.when(controllerHandler.getNode(Matchers.anyInt())).thenReturn(node);
             Mockito.when(node.getNodeId()).thenReturn(1);
+            Mockito.when(node.getAssociationGroup(Matchers.anyInt())).thenReturn(new ZWaveAssociationGroup(1));
             Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.WAKE_UP))).thenReturn(wakeupClass);
+            Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.ASSOCIATION))).thenReturn(associationClass);
         } catch (NoSuchFieldException | SecurityException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -107,5 +115,16 @@ public class ZWaveThingHandlerTest {
                 new byte[] { 1, 13, 0, 19, 1, 6, -124, 4, 0, 2, 88, 1, 0, 0, 61 }));
         assertTrue(Arrays.equals(response.get(1).getMessageBuffer(),
                 new byte[] { 1, 9, 0, 19, 1, 2, -124, 5, 0, 0, 103 }));
+    }
+
+    @Test
+    public void TestConfigurationAssociation() {
+        List<String> nodeList = new ArrayList<String>();
+        nodeList.add("node_1_0");
+        List<SerialMessage> response = doConfigurationUpdate("group_1", nodeList);
+
+        // Check that there are only 2 requests - the SET and GET
+        // Note that these are currently null due to mocking
+        assertEquals(2, response.size());
     }
 }
