@@ -25,7 +25,7 @@
       <property name="vendor">Dragon Tech Industrial, Ltd.</property>
       <property name="modelId">WD-100</property>
       <property name="manufacturerId">0184</property>
-      <property name="manufacturerRef">4447:3034</property>
+      <property name="manufacturerRef">4447:3034,4744:3032</property>
       <property name="dbReference">243</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -77,4 +77,5 @@
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

@@ -12,7 +12,7 @@
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
+        <label>Boost mode</label>
         <properties>
           <property name="binding:*:OnOffType">SWITCH_BINARY</property>
         </properties>
@@ -24,7 +24,7 @@
         </properties>
       </channel>
       <channel id="thermostat_fanmode" typeId="systemair_29990_00_000_thermostat_fanmode">
-        <label>Thermostat fan mode</label>
+        <label>Fan speed setting</label>
         <properties>
           <property name="binding:*:DecimalType">THERMOSTAT_FAN_MODE</property>
         </properties>

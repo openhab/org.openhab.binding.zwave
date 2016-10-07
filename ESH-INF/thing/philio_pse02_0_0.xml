@@ -32,6 +32,7 @@
       <property name="manufacturerId">013C</property>
       <property name="manufacturerRef">0004:000A</property>
       <property name="dbReference">320</property>
+      <property name="commandClass:ALARM">ccAdd</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
