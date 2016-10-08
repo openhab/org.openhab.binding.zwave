@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
@@ -151,7 +152,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         AlarmType alarmType;
         ReportType eventType;
 
-        if (getVersion() == 1) {
+        if (getVersion() == 1 || serialMessage.getMessagePayload().length < (offset + 4)) {
             eventType = ReportType.ALARM;
             alarmType = AlarmType.getAlarmType(v1AlarmTypeCode);
 
@@ -426,6 +427,15 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         }
 
         return result;
+    }
+
+    /**
+     * Returns a {@link Set} of {@link AlarmType}s supported by this device
+     *
+     * @return {@link Set} of {@link AlarmType}s
+     */
+    public Set<AlarmType> getSupportedAlarms() {
+        return alarms.keySet();
     }
 
     @Override
