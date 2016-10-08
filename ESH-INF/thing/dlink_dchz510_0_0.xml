@@ -19,6 +19,12 @@ Siren<br /><h2>Inclusion Information</h2><ol><li>Have Z-Wave Controller enter in
           <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
         </properties>
       </channel>
+      <channel id="notification_send" typeId="notification_send">
+        <label>Start sound</label>
+        <properties>
+          <property name="binding:*:DecimalType">ALARM;event1=SMOKE:1,event2=ACCESS_CONTROL:22,event3=BURGLAR:1,event4=EMERGENCY:1,event5=EMERGENCY:2,event6=EMERGENCY:3</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
@@ -29,6 +35,7 @@ Siren<br /><h2>Inclusion Information</h2><ol><li>Have Z-Wave Controller enter in
       <property name="manufacturerRef">0004:000A</property>
       <property name="dbReference">330</property>
       <property name="commandClass:CONFIGURATION">ccAdd</property>
+      <property name="commandClass:ALARM">ccAdd</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -81,4 +88,5 @@ Siren<br /><h2>Inclusion Information</h2><ol><li>Have Z-Wave Controller enter in
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

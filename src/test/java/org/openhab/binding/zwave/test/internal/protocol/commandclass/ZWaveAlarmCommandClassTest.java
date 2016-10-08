@@ -161,6 +161,22 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
     }
 
     @Test
+    public void getNotificationReportMessage() {
+        ZWaveAlarmCommandClass cls = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.ALARM);
+        SerialMessage msg;
+
+        cls.setVersion(1);
+        msg = cls.getNotificationReportMessage(AlarmType.BURGLAR, 1);
+        assertNull(msg);
+
+        byte[] expectedResponseV2 = { 1, 15, 0, 19, 99, 8, 113, 5, 0, 0, 0, 0, 7, 1, 0, 0, -6 };
+        cls.setVersion(2);
+        msg = cls.getNotificationReportMessage(AlarmType.BURGLAR, 1);
+
+        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV2));
+    }
+
+    @Test
     public void handleSupportedReport() {
         byte[] packetData = { 0x01, 0x10, 0x00, 0x04, 0x00, 0x0E, 0x0A, 0x71, 0x05, 0x00, 0x00, 0x00, (byte) 0xFF, 0x08,
                 0x01, 0x00, 0x00, 0x6D };
@@ -179,5 +195,4 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
         assertEquals(event.getAlarmEvent(), 1);
         assertEquals(event.getAlarmStatus(), 0xFF);
     }
-
 }
