@@ -26,7 +26,7 @@
       <channel id="notification_send" typeId="notification_send">
         <label>Incoming Alarm Notification</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;event1=SMOKE:1,event3=BURGLAR:1</property>
+          <property name="binding:*:DecimalType">ALARM;event1=SMOKE:1,event3=BURGLAR:1</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
