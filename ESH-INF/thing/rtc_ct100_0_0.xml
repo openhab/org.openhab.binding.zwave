@@ -83,7 +83,7 @@
       <property name="vendor">Radio Thermostat Company of America</property>
       <property name="modelId">CT100</property>
       <property name="manufacturerId">0098</property>
-      <property name="manufacturerRef">6401:0015,6401:0106,6401:0107,6401:01FD</property>
+      <property name="manufacturerRef">6401:0015,6401:0105,6401:0106,6401:0107,6401:01FD</property>
       <property name="dbReference">96</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -106,44 +106,45 @@
     </config-description>
 
   </thing-type>
-    <channel-type id="rtc_ct100_00_000_thermostat_mode">
-      <item-type>Number</item-type>
-      <label>Thermostat Mode</label>
-      <description>Sets the thermostat mode</description>
-      <category>Temperature</category>
-      <state pattern="%s">
-        <options>
-          <option value="3">Auto</option>
-          <option value="1">Heat</option>
-          <option value="0">Off</option>
-          <option value="2">Cool</option>
-        </options>
-      </state>
-    </channel-type>
 
-    <channel-type id="rtc_ct100_00_000_thermostat_fanmode">
-      <item-type>Number</item-type>
-      <label>Thermostat Fan Mode</label>
-      <description>Sets the thermostat fan mode</description>
-      <category>Temperature</category>
-      <state pattern="%s">
-        <options>
-          <option value="1">On (Low)</option>
-          <option value="0">Auto (Low)</option>
-        </options>
-      </state>
-    </channel-type>
+  <channel-type id="rtc_ct100_00_000_thermostat_mode">
+    <item-type>Number</item-type>
+    <label>Thermostat Mode</label>
+    <description>Sets the thermostat mode</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+        <option value="3">Auto</option>
+        <option value="1">Heat</option>
+        <option value="0">Off</option>
+        <option value="2">Cool</option>
+      </options>
+    </state>
+  </channel-type>
 
-    <channel-type id="rtc_ct100_00_000_thermostat_fanstate">
-      <item-type>Number</item-type>
-      <label>Thermostat Fan State</label>
-      <description>Sets the thermostat fan state</description>
-      <category>Temperature</category>
-      <state pattern="%s">
-        <options>
-          <option value="1">Running</option>
-        </options>
-      </state>
-    </channel-type>
+  <channel-type id="rtc_ct100_00_000_thermostat_fanmode">
+    <item-type>Number</item-type>
+    <label>Thermostat Fan Mode</label>
+    <description>Sets the thermostat fan mode</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+        <option value="1">On (Low)</option>
+        <option value="0">Auto (Low)</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="rtc_ct100_00_000_thermostat_fanstate">
+    <item-type>Number</item-type>
+    <label>Thermostat Fan State</label>
+    <description>Sets the thermostat fan state</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+        <option value="1">Running</option>
+      </options>
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>
