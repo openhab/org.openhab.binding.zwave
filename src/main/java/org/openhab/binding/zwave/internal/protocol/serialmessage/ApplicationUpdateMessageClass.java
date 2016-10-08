@@ -22,7 +22,6 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveNodeState;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveDelayedPollEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
 import org.openhab.binding.zwave.internal.protocol.initialization.ZWaveNodeInitStage;
@@ -123,11 +122,11 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
                 }
 
                 // Treat the node information frame as a wakeup
-                ZWaveWakeUpCommandClass wakeUp = (ZWaveWakeUpCommandClass) node
-                        .getCommandClass(ZWaveCommandClass.CommandClass.WAKE_UP);
-                if (wakeUp != null) {
-                    wakeUp.setAwake(true);
-                }
+                // ZWaveWakeUpCommandClass wakeUp = (ZWaveWakeUpCommandClass) node
+                // .getCommandClass(ZWaveCommandClass.CommandClass.WAKE_UP);
+                // if (wakeUp != null) {
+                // wakeUp.setAwake(true);
+                // }
                 break;
             case NODE_INFO_REQ_FAILED:
                 // Make sure we can correlate the request before we use the nodeId
