@@ -53,6 +53,12 @@
           <property name="binding:*:DecimalType">CONFIGURATION;parameter=62</property>
         </properties>
       </channel>
+      <channel id="notification_send" typeId="notification_send">
+        <label>Start Alarm LED Illumination</label>
+        <properties>
+          <property name="binding:*:DecimalType">ALARM;event1=SMOKE:1,event3=BURGLAR:1</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
