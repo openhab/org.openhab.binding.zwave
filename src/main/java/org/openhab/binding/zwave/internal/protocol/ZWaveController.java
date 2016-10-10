@@ -523,6 +523,10 @@ public class ZWaveController {
          */
     }
 
+    public ZWaveTransactionResponse SendTransaction(ZWaveTransaction transaction) {
+        return transactionManager.SendTransaction(transaction);
+    }
+
     /**
      * Returns the size of the send queue.
      */

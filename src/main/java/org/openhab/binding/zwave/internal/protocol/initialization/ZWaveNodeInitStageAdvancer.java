@@ -35,6 +35,8 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveEventListener;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse.State;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
@@ -117,9 +119,8 @@ import org.slf4j.LoggerFactory;
  * we reduce the retry timer by a factor of 2 until BACKOFF_TIMER_MAX is reached.
  *
  * @author Chris Jackson
- * @author Jan-Willem Spuij
  */
-public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
+public class ZWaveNodeInitStageAdvancer {
 
     private static final ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
     private static final Logger logger = LoggerFactory.getLogger(ZWaveNodeInitStageAdvancer.class);
@@ -198,485 +199,198 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
         retryTimer = BACKOFF_TIMER_START;
 
         wakeupCount = 0;
-
-        // Set an event callback so we get notification of events
-        controller.addEventListener(this);
-
-        advanceNodeStage(null);
     }
 
-    /**
-     * Handles the removal of frames from the send queue. This gets called after we have an ACK for our packet, but
-     * before we get the response. The actual sending of frames, and the advancing is carried out in the
-     * advanceNodeStage method.
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    private void handleNodeQueue(ZWaveTransaction transaction) {
-        // If initialisation is complete, then just return.
-        // This probably shouldn't be necessary since we remove the event
-        // handler when we're done, but just to be sure...
-        if (currentStage == ZWaveNodeInitStage.DONE) {
-            return;
-        }
+    void doInitialisation() {
+        doInitialStages();
 
-        logger.debug("NODE {}: Node advancer - checking initialisation queue. Queue size {}.", node.getNodeId(),
-                msgQueue.size());
-
-        // If this message is in the queue, then remove it
-        if (msgQueue.contains(transaction)) {
-            msgQueue.remove(transaction);
-            logger.debug("NODE {}: Node advancer - message removed from queue. Queue size {}.", node.getNodeId(),
-                    msgQueue.size());
-
-            freeToSend = true;
-
-            // We've sent a frame, let's process the stage...
-            advanceNodeStage(transaction.getSerialMessageClass());
-        } else if (msgQueue.isEmpty() && currentStage == ZWaveNodeInitStage.SECURITY_REPORT) {
-            logger.debug("NODE {}: Node advancer - In Security stage, going to advanceNodeStage to get next request.",
+        // If restored from a config file, jump to the dynamic node stage.
+        if (isRestoredFromConfigfile()) {
+            logger.debug("NODE {}: Node advancer: Restored from file - skipping static initialisation",
                     node.getNodeId());
-            advanceNodeStage(transaction.getSerialMessageClass());
+            currentStage = ZWaveNodeInitStage.SESSION_START;
+        } else {
+            doStaticStages();
         }
+
     }
 
-    /**
-     * Sends a message if there is one queued
-     *
-     * @return true if a message was sent. false otherwise.
-     */
-    private boolean sendMessage() {
-        if (msgQueue.isEmpty() == true) {
-            return false;
-        }
+    private void doInitialStages() {
+        ZWaveTransactionResponse response;
 
-        // Check to see if we need to send a frame
-        if (freeToSend == true) {
-            ZWaveTransaction transaction = msgQueue.peek();
-            if (transaction != null) {
-                freeToSend = false;
+        // case IDENTIFY_NODE
+        logger.debug("NODE {}: Node advancer: Initialisation starting", node.getNodeId());
 
-                logger.debug("NODE {}: Node advancer - queued packet. Queue length is {}", node.getNodeId(),
-                        msgQueue.size());
-
-                if (transaction.getSerialMessage().getMessageClass() == SerialMessageClass.SendData) {
-                    controller.sendData(transaction);
-                } else {
-                    controller.enqueue(transaction);
-                }
-            }
-        }
-
-        return true;
-    }
-
-    /**
-     * Advances the initialization stage for this node. This method is called after a response is received. We don't
-     * necessarily know if the response is to the frame we requested though, so to be sure the initialisation gets all
-     * the information it needs, the command class itself gets queried.
-     * <p>
-     * This method also handles the sending of frames. Since the initialisation phase is a busy one we try and only have
-     * one outstanding request. Again though, we can't be sure that a response is aligned with the node advancer request
-     * so it is possible that more than one packet can be released at once, but it will constrain things.
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    public void advanceNodeStage(SerialMessageClass eventClass) {
-        // If initialisation is complete, then just return.
-        // This probably shouldn't be necessary since we remove the event handler when we're done, but just to be
-        // sure...
-        if (currentStage == ZWaveNodeInitStage.DONE) {
-            return;
-        }
-
-        logger.debug("NODE {}: Node advancer - {}: queue length({}), free to send({})", node.getNodeId(), currentStage,
-                msgQueue.size(), freeToSend);
-
-        // If this is a battery node, and we exceed the wakeup count without advancing the stage, then reset.
-        if (wakeupCount >= 3) {
-            msgQueue.clear();
-            wakeupCount = 0;
-        }
-
-        // Start the retry timer
-        startIdleTimer();
-
-        // If event class is null, then this call isn't the result of an incoming frame.
-        // It could be a wakeup, or the node is now alive. Get things moving again.
-        if (eventClass == null) {
-            freeToSend = true;
-        }
-
-        // If the queue is not empty, then we can't advance any further.
-        if (sendMessage() == true) {
-            // We're still sending messages, so we're not ready to proceed.
-            return;
-        }
-
-        // The stageAdvanced flag is used to tell command classes that this is the first iteration.
-        // During the first iteration all messages are queued. After this, only outstanding requests are returned.
-        // This continues until there are no requests required.
-        stageAdvanced = false;
-
-        // We run through all stages until one queues a message.
-        // Then we will wait for the response before continuing
+        // Get the device information from the controller
         do {
-            // Ensure we don't get stuck in an endless loop trying to initialise
-            // something that is broken, or not responding to a particular request
-            if (stageAdvanced == true) {
-                retryCount = 0;
-            } else {
-                retryCount++;
-                if (retryCount > MAX_RETRIES) {
-                    retryCount = 0;
-                    logger.error("NODE {}: Node advancer: Retries exceeded at {}", node.getNodeId(), currentStage);
-                    if (currentStage.isStageMandatory() == false) {
-                        // If the current stage is not mandatory, then we skip forward to the next
-                        // stage.
-                        logger.debug("NODE {}: Retry timout: Advancing", node.getNodeId());
-                        setCurrentStage(currentStage.getNextStage());
-                    } else {
-                        // For static stages, we MUST complete all steps otherwise we end
-                        // up with incomplete information about the device.
-                        // During the static stages, we use the back off timer to pace things
-                        // and retry until the stage is complete
-                        logger.debug("NODE {}: Retry timout: Can't advance", node.getNodeId());
-                        break;
-                    }
-                }
+            response = controller.SendTransaction(new IdentifyNodeMessageClass().doRequest(node.getNodeId()));
+        } while (response == null || response.getState() != State.COMPLETE);
+
+        // case INIT_NEIGHBORS
+
+        logger.debug("NODE {}: Node advancer: INIT_NEIGHBORS - send RoutingInfo", node.getNodeId());
+
+        do {
+            response = controller.SendTransaction(new GetRoutingInfoMessageClass().doRequest(node.getNodeId()));
+        } while (response == null || response.getState() != State.COMPLETE);
+
+        // case FAILED_CHECK:
+        // It seems that PC_CONTROLLERs don't respond to a lot of requests, so let's
+        // just assume their OK!
+        // If this is a controller, we're done
+        if (node.getDeviceClass().getSpecificDeviceClass() == Specific.PC_CONTROLLER) {
+            logger.debug("NODE {}: Node advancer: FAILED_CHECK - Controller - terminating initialisation",
+                    node.getNodeId());
+            currentStage = ZWaveNodeInitStage.DONE;
+            return;
+        }
+
+        do {
+            response = controller.SendTransaction(new IsFailedNodeMessageClass().doRequest(node.getNodeId()));
+        } while (response == null || response.getState() != State.COMPLETE);
+
+        // case PING:
+
+        ZWaveNoOperationCommandClass noOpCommandClass = (ZWaveNoOperationCommandClass) node
+                .getCommandClass(CommandClass.COMMAND_CLASS_NO_OPERATION);
+        if (noOpCommandClass == null) {
+            return;
+        }
+
+        do {
+            ZWaveTransaction msg = noOpCommandClass.getNoOperationMessage();
+            if (msg == null) {
+                break;
+            }
+            // We only send out a single PING - no retries at controller
+            // level! This is to try and reduce network congestion during
+            // initialisation.
+            // For battery devices, the PING will time-out. This takes 5
+            // seconds and if there are retries, it will be 15 seconds!
+            // This will block the network for a considerable time if there
+            // are a lot of battery devices (eg. 2 minutes for 8 battery devices!).
+            msg.setAttemptsRemaining(1);
+            response = controller.SendTransaction(msg);
+        } while (response == null || response.getState() != State.COMPLETE);
+
+    }
+
+    private void doStaticStages() {
+        ZWaveTransactionResponse response;
+
+        // case IDENTIFY_NODE:
+        do {
+            response = controller.SendTransaction(new IdentifyNodeMessageClass().doRequest(node.getNodeId()));
+        } while (response == null || response.getState() != State.COMPLETE);
+
+        // case DETAILS:
+        do {
+            response = controller.SendTransaction(new RequestNodeInfoMessageClass().doRequest(node.getNodeId()));
+        } while (response == null || response.getState() != State.COMPLETE);
+
+        // case MANUFACTURER:
+        // try and get the manufacturerSpecific command class.
+        ZWaveManufacturerSpecificCommandClass manufacturerSpecific = (ZWaveManufacturerSpecificCommandClass) node
+                .getCommandClass(CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC);
+
+        if (manufacturerSpecific != null) {
+            // If this node implements the Manufacturer Specific command
+            // class, we use it to get manufacturer info.
+            logger.debug("NODE {}: Node advancer: MANUFACTURER - send ManufacturerSpecific", node.getNodeId());
+            do {
+                response = controller.SendTransaction(manufacturerSpecific.getManufacturerSpecificMessage());
+            } while (response == null || response.getState() != State.COMPLETE);
+        }
+
+        // case APP_VERSION:
+        ZWaveVersionCommandClass versionCommandClass = (ZWaveVersionCommandClass) node
+                .getCommandClass(CommandClass.COMMAND_CLASS_VERSION);
+
+        if (versionCommandClass == null) {
+            logger.debug("NODE {}: Node advancer: APP_VERSION - VERSION not supported", node.getNodeId());
+        } else {
+            // Request the version report for this node
+            logger.debug("NODE {}: Node advancer: APP_VERSION - send VersionMessage", node.getNodeId());
+            do {
+                response = controller.SendTransaction(versionCommandClass.getVersionMessage());
+            } while (response == null || response.getState() != State.COMPLETE);
+
+            // case VERSION:
+            thingType = ZWaveConfigProvider.getThingType(node);
+            if (thingType == null) {
+                logger.debug("NODE {}: Node advancer: VERSION - thing is null!", node.getNodeId());
             }
 
-            logger.debug("NODE {}: Node advancer: loop - {} try {}: stageAdvanced({}) with {}", node.getNodeId(),
-                    currentStage, retryCount, stageAdvanced, eventClass);
+            // Loop through all command classes, requesting their version
+            // using the Version command class
+            for (ZWaveCommandClass zwaveVersionClass : node.getCommandClasses()) {
+                logger.debug("NODE {}: Node advancer: VERSION - checking {}, version is {}", node.getNodeId(),
+                        zwaveVersionClass.getCommandClass(), zwaveVersionClass.getVersion());
 
-            switch (currentStage) {
-                case EMPTYNODE:
-                    logger.debug("NODE {}: Node advancer: Initialisation starting", node.getNodeId());
-                    break;
+                // See if we want to force the version of this command class
+                if (thingType != null) {
+                    Map<String, String> properties = thingType.getProperties();
+                    for (Map.Entry<String, String> entry : properties.entrySet()) {
+                        String key = entry.getKey();
+                        String value = entry.getValue();
 
-                case PROTOINFO:
-                    // If the incoming frame is the IdentifyNode, then we continue
-                    if (eventClass == SerialMessageClass.IdentifyNode) {
-                        break;
-                    }
-
-                    logger.debug("NODE {}: Node advancer: PROTOINFO - send IdentifyNode", node.getNodeId());
-                    addToQueue(new IdentifyNodeMessageClass().doRequest(node.getNodeId()));
-                    break;
-
-                case INIT_NEIGHBORS:
-                    // If the incoming frame is the GetRoutingInfo, then we continue
-                    if (eventClass == SerialMessageClass.GetRoutingInfo) {
-                        break;
-                    }
-
-                    logger.debug("NODE {}: Node advancer: INIT_NEIGHBORS - send RoutingInfo", node.getNodeId());
-                    addToQueue(new GetRoutingInfoMessageClass().doRequest(node.getNodeId()));
-                    break;
-
-                case FAILED_CHECK:
-                    // It seems that PC_CONTROLLERs don't respond to a lot of requests, so let's
-                    // just assume their OK!
-                    // If this is a controller, we're done
-                    if (node.getDeviceClass().getSpecificDeviceClass() == Specific.PC_CONTROLLER) {
-                        logger.debug("NODE {}: Node advancer: FAILED_CHECK - Controller - terminating initialisation",
-                                node.getNodeId());
-                        currentStage = ZWaveNodeInitStage.DONE;
-                        break;
-                    }
-
-                    // If the incoming frame is the IsFailedNodeID, then we continue
-                    if (eventClass == SerialMessageClass.IsFailedNodeID) {
-                        break;
-                    }
-
-                    addToQueue(new IsFailedNodeMessageClass().doRequest(node.getNodeId()));
-                    break;
-
-                case WAIT:
-                    logger.debug("NODE {}: Node advancer: WAIT - Listening={}, FrequentlyListening={}",
-                            node.getNodeId(), node.isListening(), node.isFrequentlyListening());
-
-                    // If the node is listening, or frequently listening, then we progress.
-                    if (node.isListening() == true || node.isFrequentlyListening() == true) {
-                        logger.debug("NODE {}: Node advancer: WAIT - Advancing", node.getNodeId());
-                        break;
-                    }
-
-                    // If the device supports the wakeup class, then see if we're awake
-                    ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) node
-                            .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
-                    if (wakeUpCommandClass != null && wakeUpCommandClass.isAwake() == true) {
-                        logger.debug("NODE {}: Node advancer: WAIT - Node is awake", node.getNodeId());
-                        break;
-                    }
-
-                    // If it's not listening, and not awake,
-                    // then wait a while before progressing with initialisation.
-                    logger.debug("NODE {}: Node advancer: WAIT - Still waiting!", node.getNodeId());
-                    return;
-
-                case PING:
-                    // Completion of this stage is reception of a SendData frame.
-                    // The purpose of this stage is to ensure that the node is awake
-                    // before requesting further information.
-                    // It's not 100% guaranteed that this was our NoOp frame, but
-                    // who cares!
-                    if (eventClass == SerialMessageClass.SendData) {
-                        break;
-                    }
-
-                    ZWaveNoOperationCommandClass noOpCommandClass = (ZWaveNoOperationCommandClass) node
-                            .getCommandClass(CommandClass.COMMAND_CLASS_NO_OPERATION);
-                    if (noOpCommandClass == null) {
-                        break;
-                    }
-
-                    logger.debug("NODE {}: Node advancer: PING - send NoOperation", node.getNodeId());
-                    ZWaveTransaction msg = noOpCommandClass.getNoOperationMessage();
-                    if (msg != null) {
-                        // We only send out a single PING - no retries at controller
-                        // level! This is to try and reduce network congestion during
-                        // initialisation.
-                        // For battery devices, the PING will time-out. This takes 5
-                        // seconds and if there are retries, it will be 15 seconds!
-                        // This will block the network for a considerable time if there
-                        // are a lot of battery devices (eg. 2 minutes for 8 battery devices!).
-                        msg.setAttemptsRemaining(1);
-                        addToQueue(msg);
-                    }
-                    break;
-
-                case IDENTIFY_NODE:
-                    // If the incoming frame is the IdentifyNode, then we continue
-                    if (eventClass == SerialMessageClass.IdentifyNode) {
-                        break;
-                    }
-
-                    logger.debug("NODE {}: Node advancer: PROTOINFO - send IdentifyNode", node.getNodeId());
-                    addToQueue(new IdentifyNodeMessageClass().doRequest(node.getNodeId()));
-                    break;
-
-                case SECURITY_REPORT:
-                    // Check if we want to perform a secure inclusion...
-                    boolean doSecureInclusion = false;
-                    switch (controller.getSecureInclusionMode()) {
-                        default:
-                        case 0:
-                            // Only ENTRY_CONTROL
-                            if (node.getDeviceClass().getGenericDeviceClass() == Generic.ENTRY_CONTROL) {
-                                doSecureInclusion = true;
-                            }
-                            break;
-                        case 1:
-                            // All devices
-                            doSecureInclusion = true;
-                            break;
-                        case 2:
-                            // No secure inclusion
-                            break;
-                    }
-
-                    if (doSecureInclusion == false) {
-                        // Remove the security command class
-                        node.removeCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
-                        break;
-                    }
-
-                    // For devices that use security. When invoked during secure inclusion, this
-                    // method will go through all steps to give the device our zwave:networkKey from
-                    // the config. This requires multiple steps as defined in
-                    // ZWaveSecurityCommandClassWithInitialization.
-                    // SECURITY_REPORT has different semantics than the other stages such that:
-                    // 1. It cannot generate all of the request messages during the first pass
-                    // 2. It handles stage advancement manually, as this code path is most typically called
-                    // by the ZWaveInputThread which needs to return from this call to receive more messages
-                    // 3. It will sometimes return an empty message list, but this just means it's
-                    // waiting for another response to come back
-                    if (node.supportsCommandClass(CommandClass.COMMAND_CLASS_SECURITY)) {
-                        ZWaveSecurityCommandClassWithInitialization securityCommandClass = (ZWaveSecurityCommandClassWithInitialization) node
-                                .getCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
-                        // For a node restored from a config file, this may or may not return a message
-                        Collection<ZWaveTransaction> messageList = securityCommandClass.initialize(stageAdvanced);
-
-                        // Speed up retry timer as we use this to fetch outgoing messages instead of just retries
-                        retryTimer = 400;
-                        if (messageList == null) { // This means we're waiting for a reply or we are done
-                            if (isRestoredFromConfigfile() == false) {
-                                // This node was just included, check for success or failure
-                                if (securityCommandClass.wasSecureInclusionSuccessful()) {
-                                    logger.debug("NODE {}: Secure inclusion complete, continuing with inclusion",
-                                            node.getNodeId());
-                                    securityCommandClass.startSecurityEncapsulationThread();
-                                    break;
-                                } else {
-                                    // securityCommandClass output a message about the failure
-                                    logger.debug(
-                                            "NODE {}: Since secure inclusion failed, the node must be manually excluded via habmin",
-                                            node.getNodeId());
-                                    // Stop the retry timer
-                                    resetIdleTimer();
-                                    // Remove the security command class since without a key, it's unusable
-                                    node.removeCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
-
-                                    // Drop through and do non-secure inclusion
-                                }
-                            }
-                        } else if (messageList.isEmpty()) {
-                            return; // Let ZWaveInputThread go back and wait for an incoming message
-                        } else { // Add one or more messages to the queue
-                            addToQueue(messageList);
-                            ZWaveTransaction nextSecurityMessageToSend = messageList.iterator().next();
-                            if (!nextSecurityMessageToSend.equals(securityLastSentMessage)) {
-                                // Reset our retry count since this is a different message
-                                retryCount = 0;
-                                securityLastSentMessage = nextSecurityMessageToSend;
-                            }
+                        String cmds[] = key.split(":");
+                        if ("commandClass".equals(cmds[0]) == false) {
+                            continue;
                         }
-                    } else {
-                        logger.debug("NODE {}: SECURITY not supported, proceeding to next stage.", node.getNodeId());
-                    }
-                    break;
+                        String args[] = value.split("=");
 
-                case DETAILS:
-                    // If restored from a config file, jump to the dynamic node stage.
-                    if (isRestoredFromConfigfile()) {
-                        logger.debug("NODE {}: Node advancer: Restored from file - skipping static initialisation",
-                                node.getNodeId());
-                        currentStage = ZWaveNodeInitStage.SESSION_START;
-                        break;
-                    }
+                        if ("setVersion".equals(args[0])) {
+                            if (zwaveVersionClass.getCommandClass().equals(cmds[1])) {
+                                logger.debug("NODE {}: Node advancer: VERSION - Set {} to Version {}", node.getNodeId(),
+                                        CommandClass.getCommandClass(cmds[1]), args[1]);
 
-                    // If the incoming frame is the IdentifyNode, then we continue
-                    if (node.getApplicationUpdateReceived() == true) {
-                        logger.debug("NODE {}: Node advancer: received RequestNodeInfo", node.getNodeId());
-                        break;
-                    }
-
-                    logger.debug("NODE {}: Node advancer: DETAILS - send RequestNodeInfo", node.getNodeId());
-                    addToQueue(new RequestNodeInfoMessageClass().doRequest(node.getNodeId()));
-                    break;
-
-                case MANUFACTURER:
-                    // If we already know the device information, then continue
-                    if (node.getManufacturer() != Integer.MAX_VALUE && node.getDeviceType() != Integer.MAX_VALUE
-                            && node.getDeviceId() != Integer.MAX_VALUE) {
-                        break;
-                    }
-
-                    // try and get the manufacturerSpecific command class.
-                    ZWaveManufacturerSpecificCommandClass manufacturerSpecific = (ZWaveManufacturerSpecificCommandClass) node
-                            .getCommandClass(CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC);
-
-                    if (manufacturerSpecific != null) {
-                        // If this node implements the Manufacturer Specific command
-                        // class, we use it to get manufacturer info.
-                        logger.debug("NODE {}: Node advancer: MANUFACTURER - send ManufacturerSpecific",
-                                node.getNodeId());
-                        addToQueue(manufacturerSpecific.getManufacturerSpecificMessage());
-                    }
-                    break;
-
-                case APP_VERSION:
-                    ZWaveVersionCommandClass versionCommandClass = (ZWaveVersionCommandClass) node
-                            .getCommandClass(CommandClass.COMMAND_CLASS_VERSION);
-
-                    if (versionCommandClass == null) {
-                        logger.debug("NODE {}: Node advancer: APP_VERSION - VERSION not supported", node.getNodeId());
-                        break;
-                    }
-
-                    // If we know the library type, then we've got the app version
-                    if (versionCommandClass.getLibraryType() != LibraryType.LIB_UNKNOWN) {
-                        break;
-                    }
-
-                    // Request the version report for this node
-                    logger.debug("NODE {}: Node advancer: APP_VERSION - send VersionMessage", node.getNodeId());
-                    addToQueue(versionCommandClass.getVersionMessage());
-                    break;
-
-                case VERSION:
-                    // Try and get the version command class.
-                    ZWaveVersionCommandClass version = (ZWaveVersionCommandClass) node
-                            .getCommandClass(CommandClass.COMMAND_CLASS_VERSION);
-
-                    thingType = ZWaveConfigProvider.getThingType(node);
-                    if (thingType == null) {
-                        logger.debug("NODE {}: Node advancer: VERSION - thing is null!", node.getNodeId());
-                    }
-
-                    // Loop through all command classes, requesting their version
-                    // using the Version command class
-                    for (ZWaveCommandClass zwaveVersionClass : node.getCommandClasses()) {
-                        logger.debug("NODE {}: Node advancer: VERSION - checking {}, version is {}", node.getNodeId(),
-                                zwaveVersionClass.getCommandClass(), zwaveVersionClass.getVersion());
-
-                        // See if we want to force the version of this command class
-                        if (thingType != null) {
-                            Map<String, String> properties = thingType.getProperties();
-                            for (Map.Entry<String, String> entry : properties.entrySet()) {
-                                String key = entry.getKey();
-                                String value = entry.getValue();
-
-                                String cmds[] = key.split(":");
-                                if ("commandClass".equals(cmds[0]) == false) {
-                                    continue;
-                                }
-                                String args[] = value.split("=");
-
-                                if ("setVersion".equals(args[0])) {
-                                    if (zwaveVersionClass.getCommandClass().equals(cmds[1])) {
-                                        logger.debug("NODE {}: Node advancer: VERSION - Set {} to Version {}",
-                                                node.getNodeId(), CommandClass.getCommandClass(cmds[1]), args[1]);
-
-                                        // TODO: This ignores endpoint
-                                        try {
-                                            zwaveVersionClass.setVersion(Integer.parseInt(args[1]));
-                                        } catch (NumberFormatException e) {
-                                            logger.error("NODE {}: Node advancer: VERSION - number format exception {}",
-                                                    args[1]);
-                                        }
-                                    }
+                                // TODO: This ignores endpoint
+                                try {
+                                    zwaveVersionClass.setVersion(Integer.parseInt(args[1]));
+                                } catch (NumberFormatException e) {
+                                    logger.error("NODE {}: Node advancer: VERSION - number format exception {}",
+                                            args[1]);
                                 }
                             }
                         }
-
-                        if (version != null && zwaveVersionClass.getVersion() == 0) {
-                            logger.debug("NODE {}: Node advancer: VERSION - queued   {}", node.getNodeId(),
-                                    zwaveVersionClass.getCommandClass());
-                            addToQueue(version.checkVersion(zwaveVersionClass));
-                        } else if (zwaveVersionClass.getVersion() == 0) {
-                            logger.debug("NODE {}: Node advancer: VERSION - VERSION default to 1", node.getNodeId());
-                            zwaveVersionClass.setVersion(1);
-                        }
                     }
-                    logger.debug("NODE {}: Node advancer: VERSION - queued {} frames", node.getNodeId(),
-                            msgQueue.size());
-                    break;
+                }
 
-                case ENDPOINTS:
-                    // Try and get the multi instance / channel command class.
-                    ZWaveMultiInstanceCommandClass multiInstance = (ZWaveMultiInstanceCommandClass) node
-                            .getCommandClass(CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
+                if (versionCommandClass != null && zwaveVersionClass.getVersion() == 0) {
+                    logger.debug("NODE {}: Node advancer: VERSION - queued   {}", node.getNodeId(),
+                            zwaveVersionClass.getCommandClass());
+                    do {
+                        response = controller.SendTransaction(versionCommandClass.checkVersion(zwaveVersionClass));
+                    } while (response == null || response.getState() != State.COMPLETE);
+                } else if (zwaveVersionClass.getVersion() == 0) {
+                    logger.debug("NODE {}: Node advancer: VERSION - VERSION default to 1", node.getNodeId());
+                    zwaveVersionClass.setVersion(1);
+                }
+            }
+        }
 
-                    if (multiInstance != null) {
-                        logger.debug("NODE {}: Node advancer: ENDPOINTS - MultiInstance is supported",
-                                node.getNodeId());
-                        addToQueue(multiInstance.initEndpoints(stageAdvanced));
-                        logger.debug("NODE {}: Node advancer: ENDPOINTS - queued {} frames", node.getNodeId(),
-                                msgQueue.size());
-                    } else {
-                        logger.debug("NODE {}: Node advancer: ENDPOINTS - MultiInstance not supported.",
-                                node.getNodeId());
-                        // Set all classes to 1 instance.
-                        for (ZWaveCommandClass commandClass : node.getCommandClasses()) {
-                            commandClass.setInstances(1);
-                        }
-                    }
-                    break;
+        // case ENDPOINTS:
+        // Try and get the multi instance / channel command class.
+        ZWaveMultiInstanceCommandClass multiInstance = (ZWaveMultiInstanceCommandClass) node
+                .getCommandClass(CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
 
-                case UPDATE_DATABASE:
+        if (multiInstance != null) {
+            logger.debug("NODE {}: Node advancer: ENDPOINTS - MultiInstance is supported", node.getNodeId());
+            do {
+                response = controller.SendTransaction(multiInstance.initEndpoints(true));
+            } while (response == null || response.getState() != State.COMPLETE);
+        } else {
+            logger.debug("NODE {}: Node advancer: ENDPOINTS - MultiInstance not supported.", node.getNodeId());
+            // Set all classes to 1 instance.
+            for (ZWaveCommandClass commandClass : node.getCommandClasses()) {
+                commandClass.setInstances(1);
+            }
+        }
+    }
+
+    void doUpdateDatabase() {
+//                case UPDATE_DATABASE:
                     // This stage reads information from the database to allow us to modify the configuration
                     logger.debug("NODE {}: Node advancer: UPDATE_DATABASE", node.getNodeId());
 
@@ -1123,11 +837,13 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                     break;
             }
 
-            // If there are messages queued, send one.
-            // If there are none, then it means we're happy that we have all the data for this stage.
-            // If we have all the data, set stageAdvanced to true to tell the system that we're starting again, then
-            // loop around again.
-            if (currentStage != ZWaveNodeInitStage.DONE && sendMessage() == false) {
+    // If there are messages queued, send one.
+    // If there are none, then it means we're happy that we have all the data for this stage.
+    // If we have all the data, set stageAdvanced to true to tell the system that we're starting again, then
+    // loop around again.
+    if(currentStage!=ZWaveNodeInitStage.DONE&&
+
+    sendMessage() == false) {
                 // Move on to the next stage
                 setCurrentStage(currentStage.getNextStage());
                 stageAdvanced = true;
@@ -1141,59 +857,8 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                 ZWaveEvent zEvent = new ZWaveInitializationStateEvent(node.getNodeId(), currentStage);
                 controller.notifyEventListeners(zEvent);
             }
-        } while (msgQueue.isEmpty());
-    }
+        }while(msgQueue.isEmpty());
 
-    /**
-     * Move the messages to the queue
-     *
-     * @param msgs
-     *            the message collection
-     */
-    private void addToQueue(ZWaveTransaction serialMessage) {
-        if (serialMessage == null) {
-            return;
-        }
-        if (!msgQueue.contains(serialMessage) && msgQueue.remainingCapacity() > 1) {
-            msgQueue.add(serialMessage);
-        }
-        sendMessage();
-    }
-
-    /**
-     * Move all the messages in a collection to the queue
-     *
-     * @param msgs
-     *            the message collection
-     */
-    private void addToQueue(Collection<ZWaveTransaction> msgs) {
-        if (msgs == null) {
-            return;
-        }
-        for (ZWaveTransaction serialMessage : msgs) {
-            addToQueue(serialMessage);
-        }
-    }
-
-    /**
-     * Move all the messages in a collection to the queue and encapsulates them
-     *
-     * @param msgs
-     *            the message collection
-     * @param the
-     *            command class to encapsulate
-     * @param endpointId
-     *            the endpoint number
-     */
-    private void addToQueue(Collection<ZWaveTransaction> transactions, ZWaveCommandClass commandClass, int endpointId) {
-        if (transactions == null) {
-            return;
-        }
-        for (ZWaveTransaction transaction : transactions) {
-            SerialMessage serialMessage = transaction.getSerialMessage();
-            // addToQueue(
-            // transactionnode.encapsulate(serialMessage, commandClass, endpointId));
-        }
     }
 
     /**
@@ -1248,122 +913,6 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
      */
     public void setRestoredFromConfigfile() {
         restoredFromConfigfile = true;
-    }
-
-    @Override
-    public void ZWaveIncomingEvent(ZWaveEvent event) {
-        // If we've already completed initialisation, then we're done!
-        if (currentStage == ZWaveNodeInitStage.DONE) {
-            return;
-        }
-
-        // Process transaction complete events
-        if (event instanceof ZWaveTransactionCompletedEvent) {
-            ZWaveTransactionCompletedEvent completeEvent = (ZWaveTransactionCompletedEvent) event;
-
-            ZWaveTransaction transaction = completeEvent.getCompletedTransaction();
-            // Make sure this is addressed to us
-            SerialMessage serialMessage = transaction.getSerialMessage();
-            byte[] payload = serialMessage.getMessagePayload();
-            if (payload.length == 0 || node.getNodeId() != (payload[0] & 0xFF)) {
-                // if (transaction.getMessageNode() != node.getNodeId()) {
-                // This is a corrupt frame, OR, it's not addressed to us
-                // We use this as a trigger to kick things off again if they've stalled
-                // by checking to see if the transmit queue is now empty.
-                // This will allow battery devices stuck in WAIT state to get moving.
-                if (controller.getSendQueueLength() < 10 && currentStage == ZWaveNodeInitStage.WAIT) {
-                    logger.debug("NODE {}: Node advancer - WAIT: The WAIT is over!", node.getNodeId());
-
-                    currentStage = currentStage.getNextStage();
-                    handleNodeQueue(null);
-                }
-                return;
-            }
-
-            switch (serialMessage.getMessageClass()) {
-                case SendData:
-                case IdentifyNode:
-                case RequestNodeInfo:
-                case GetRoutingInfo:
-                case AssignReturnRoute:
-                case DeleteReturnRoute:
-                case AssignSucReturnRoute:
-                case DeleteSUCReturnRoute:
-                case IsFailedNodeID:
-                    logger.debug("NODE {}: Node advancer - {}: Transaction complete ({}:{}) success({})",
-                            node.getNodeId(), currentStage, serialMessage.getMessageClass(),
-                            serialMessage.getMessageType(), completeEvent.getState());
-
-                    // If this frame was successfully sent, then handle the stage advancer
-                    if (((ZWaveTransactionCompletedEvent) event).getState() == true) {
-                        handleNodeQueue(transaction);
-                    }
-                    break;
-                default:
-                    break;
-            }
-        } else if (event instanceof ZWaveWakeUpCommandClass.ZWaveWakeUpEvent) {
-            // WAKEUP EVENT - only act if this is a wakeup notification
-            if (((ZWaveWakeUpCommandClass.ZWaveWakeUpEvent) event)
-                    .getEvent() != ZWaveWakeUpCommandClass.WAKE_UP_NOTIFICATION) {
-                return;
-            }
-
-            // A wakeup event is received. Make sure it's for this node
-            if (node.getNodeId() != event.getNodeId()) {
-                return;
-            }
-
-            logger.debug("NODE {}: Wakeup during initialisation.", node.getNodeId());
-
-            wakeupCount++;
-            advanceNodeStage(null);
-        } else if (event instanceof ZWaveNodeStatusEvent) {
-            ZWaveNodeStatusEvent statusEvent = (ZWaveNodeStatusEvent) event;
-            // A network status event is received. Make sure it's for this node.
-            if (node.getNodeId() != event.getNodeId()) {
-                return;
-            }
-
-            logger.debug("NODE {}: Node Status event during initialisation - Node is {}", statusEvent.getNodeId(),
-                    statusEvent.getState());
-
-            switch (statusEvent.getState()) {
-                case ALIVE:
-                    advanceNodeStage(null);
-                    break;
-                default:
-                    break;
-            }
-            logger.trace("NODE {}: Node Status event during initialisation processed", statusEvent.getNodeId());
-        } else if (event instanceof ZWaveCommandClassValueEvent) {
-            // This code is used to detect an event during the IDLE stage.
-            // This is used to kick start the initialisation for battery nodes that do not support
-            // the WAKE_UP class and don't send the ApplicationUpdateMessage when they are initialised.
-            // logger.debug("NODE {}: CC event during initialisation stage {}", event.getNodeId(), currentStage);
-
-            // A command class event is received. Make sure it's for this node.
-            if (node.getNodeId() != event.getNodeId() || currentStage != ZWaveNodeInitStage.PING) {
-                return;
-            }
-            logger.debug("NODE {}: CC event during initialisation stage IDLE", event.getNodeId());
-            setCurrentStage(currentStage.getNextStage());
-        } else if (event instanceof ZWaveInclusionEvent) {
-            ZWaveInclusionEvent incEvent = (ZWaveInclusionEvent) event;
-            if (node.getNodeId() != event.getNodeId() || incEvent.getEvent() != ZWaveInclusionEvent.Type.ExcludeDone) {
-                return;
-            }
-
-            logger.debug("NODE {}: Device excluded during initialisation!", event.getNodeId());
-
-            // Stop the retry timer
-            resetIdleTimer();
-
-            // Remove the event listener
-            controller.removeEventListener(this);
-            return;
-
-        }
     }
 
     /**
