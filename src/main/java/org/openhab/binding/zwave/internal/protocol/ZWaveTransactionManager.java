@@ -8,10 +8,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.PriorityBlockingQueue;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionState;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse.State;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveCommandProcessor;
@@ -130,6 +137,9 @@ public class ZWaveTransactionManager {
      */
     private final Map<Integer, PriorityBlockingQueue<ZWaveTransaction>> sendQueue = new HashMap<Integer, PriorityBlockingQueue<ZWaveTransaction>>();
 
+    ExecutorService executor = Executors.newCachedThreadPool();
+    final List<TransactionListener> transactionListeners = new ArrayList<TransactionListener>();
+
     private final List<ZWaveTransaction> outstandingTransactions = new ArrayList<ZWaveTransaction>();
 
     private ZWaveTransaction lastTransaction = null;
@@ -138,6 +148,28 @@ public class ZWaveTransactionManager {
 
     public ZWaveTransactionManager(ZWaveController controller) {
         this.controller = controller;
+    }
+
+    private synchronized void AddTransactionListener(TransactionListener listener) {
+        if (transactionListeners.contains(listener)) {
+            return;
+        }
+
+        transactionListeners.add(listener);
+    }
+
+    private synchronized void RemoveTransactionListener(TransactionListener listener) {
+        if (transactionListeners.contains(listener)) {
+            return;
+        }
+
+        transactionListeners.add(listener);
+    }
+
+    private synchronized void NotifyTransactionListener(ZWaveTransaction transaction) {
+        for (TransactionListener listener : transactionListeners) {
+            listener.TransactionEvent(transaction);
+        }
     }
 
     /**
@@ -409,6 +441,9 @@ public class ZWaveTransactionManager {
 
                 outstandingTransactions.remove(currentTransaction);
             }
+
+            // Notify the async threads
+            NotifyTransactionListener(currentTransaction);
         } else {
             System.out.println("Transaction " + currentTransaction.getCallbackId() + " NOT completed");
             logger.debug("NODE {}: **** Transaction not completed", currentTransaction.getMessageNode());
@@ -557,6 +592,7 @@ public class ZWaveTransactionManager {
                         if (transaction.decrementAttemptsRemaining() == 0) {
                             transaction.setTransactionCanceled();
                             controller.handleTransactionComplete(transaction, null);
+                            NotifyTransactionListener(transaction);
                             System.out.println("handleTransactionComplete CANCELLED x " + transaction.getCallbackId());
                         } else {
                             // Resend
@@ -576,5 +612,98 @@ public class ZWaveTransactionManager {
                 startTransactionTimer();
             }
         }
+    }
+
+    public Future<ZWaveTransactionResponse> SendTransactionAsync(final ZWaveTransaction transaction) {
+
+        class TransactionWaiter implements Callable<ZWaveTransactionResponse>, TransactionListener {
+            ZWaveTransactionResponse response = null;
+
+            @Override
+            public ZWaveTransactionResponse call() throws Exception {
+                // Register a listener
+                AddTransactionListener(this);
+
+                // Send the transaction
+                queueTransactionForSend(transaction);
+
+                // Wait for the transaction to complete
+                synchronized (this) {
+                    while (response == null) {
+                        System.out.println("-- Wait started");
+                        wait();
+                        System.out.println("-- Wait done");
+                    }
+                }
+
+                // Register a listener
+                RemoveTransactionListener(this);
+
+                System.out.println("------------- Response Complete");
+
+                return response;
+            }
+
+            @Override
+            public void TransactionEvent(ZWaveTransaction transactionEvent) {
+                System.out.println("********* Transaction listener " + transaction.getTransactionId() + " -- "
+                        + transactionEvent.getTransactionId());
+                // Check if this transaction is ours
+                if (transaction.getTransactionId() != transactionEvent.getTransactionId()) {
+                    return;
+                }
+
+                // Return the response
+                ZWaveTransactionResponse.State state = State.COMPLETE;
+                if (transaction.getTransactionState() != TransactionState.DONE) {
+                    switch (transaction.getTransactionCancelledState()) {
+                        case CANCELLED:
+                            break;
+                        case DONE:
+                            break;
+                        case UNINTIALIZED:
+                            break;
+                        case WAIT_DATA:
+                            state = State.TIMEOUT_WAITING_FOR_DATA;
+                            break;
+                        case WAIT_REQUEST:
+                            state = State.TIMEOUT_WAITING_FOR_CONTROLLER;
+                            break;
+                        case WAIT_RESPONSE:
+                            state = State.TIMEOUT_WAITING_FOR_RESPONSE;
+                            break;
+                    }
+                }
+                response = new ZWaveTransactionResponse(state);
+
+                System.out.println("-- To notify");
+                synchronized (this) {
+                    notify();
+                    System.out.println("-- Notified");
+                }
+            }
+        }
+
+        Callable<ZWaveTransactionResponse> worker = new TransactionWaiter();
+        return executor.submit(worker);
+    }
+
+    public ZWaveTransactionResponse SendTransaction(ZWaveTransaction transaction) {
+        Future<ZWaveTransactionResponse> futureResponse = SendTransactionAsync(transaction);
+        try {
+            return futureResponse.get();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    interface TransactionListener {
+        void TransactionEvent(ZWaveTransaction transaction);
     }
 }

@@ -1,7 +1,7 @@
 package org.openhab.binding.zwave.internal.protocol;
 
-import java.util.Comparator;
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicLong;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
@@ -17,6 +17,9 @@ import org.slf4j.LoggerFactory;
  */
 public class ZWaveTransaction {
     private static final Logger logger = LoggerFactory.getLogger(ZWaveTransaction.class);
+
+    private final static AtomicLong sequence = new AtomicLong();
+    private final long transactionId = sequence.getAndIncrement();
 
     // Timers
 
@@ -85,6 +88,7 @@ public class ZWaveTransaction {
     private CommandClass expectedReplyCommandClass;
     private Integer expectedReplyCommandClassCommand;
 
+    private TransactionState transactionStateCancelled = TransactionState.UNINTIALIZED;
     private TransactionState transactionStateTracker = TransactionState.UNINTIALIZED;
 
     private int attemptsRemaining;
@@ -159,6 +163,10 @@ public class ZWaveTransaction {
         return transactionStateTracker;
     }
 
+    public TransactionState getTransactionCancelledState() {
+        return transactionStateCancelled;
+    }
+
     public void setPriority(TransactionPriority priority) {
         this.priority = priority;
     }
@@ -184,6 +192,7 @@ public class ZWaveTransaction {
     }
 
     public void setTransactionCanceled() {
+        transactionStateCancelled = transactionStateTracker;
         transactionStateTracker = TransactionState.CANCELLED;
     }
 
@@ -294,28 +303,8 @@ public class ZWaveTransaction {
         return transactionStateTracker + ": callback: " + serialMessage.getCallbackId();
     }
 
-    /**
-     * Comparator Class. Compares two serial messages with each other based on node status (awake / sleep), priority and
-     * sequence number.
-     */
-    public static class TransactionComparator implements Comparator<ZWaveTransaction> {
-        /**
-         * Compares a serial message to another serial message.
-         * Used by the priority queue to order messages.
-         *
-         * @param arg0 the first serial message to compare the other to.
-         * @param arg1 the other serial message to compare the first one to.
-         */
-        @Override
-        public int compare(ZWaveTransaction arg0, ZWaveTransaction arg1) {
-            // int res = arg0.priority.compareTo(arg1.priority);
-
-            // if (res == 0 && arg0 != arg1) {
-            // res = (arg0.sequenceNumber < arg1.sequenceNumber ? -1 : 1);
-            // }
-
-            return 0;
-        }
+    public long getTransactionId() {
+        return transactionId;
     }
 
     @Override

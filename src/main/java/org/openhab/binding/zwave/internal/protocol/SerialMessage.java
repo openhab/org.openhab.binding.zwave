@@ -44,7 +44,7 @@ public class SerialMessage {
     private final static AtomicLong sequence = new AtomicLong();
     private final static AtomicLong callbackSequence = new AtomicLong(1);
 
-    private long sequenceNumber = sequence.getAndIncrement();
+    private final long sequenceNumber = sequence.getAndIncrement();
     private byte[] messagePayload;
     private int messageLength = 0;
     private SerialMessageType messageType;
@@ -111,7 +111,6 @@ public class SerialMessage {
     public SerialMessage(int nodeId, SerialMessageClass messageClass, SerialMessageType messageType) {
         logger.trace(String.format("NODE %d: Creating empty message of class = %s (0x%02X), type = %s (0x%02X)", nodeId,
                 messageClass, messageClass.key, messageType, messageType.ordinal()));
-        this.sequenceNumber = sequence.getAndIncrement();
         this.messageClassKey = messageClass.getKey();
         this.messageType = messageType;
         this.messagePayload = new byte[] {};
