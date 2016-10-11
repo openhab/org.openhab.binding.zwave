@@ -80,4 +80,5 @@ Group to send trigger value to<br /><h1>Overview</h1><p>Will send values of 0-99
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

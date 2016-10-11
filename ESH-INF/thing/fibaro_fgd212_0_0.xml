@@ -95,6 +95,7 @@
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0102:1000,0102:3000,0102:2000</property>
       <property name="dbReference">133</property>
+      <property name="commandClass:ASSOCIATION_GROUP_INFO">ccRemove</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -615,4 +616,5 @@
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>
