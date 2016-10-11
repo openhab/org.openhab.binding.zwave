@@ -828,7 +828,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                     // Delete the saved XML
                     ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
-                    nodeSerializer.DeleteNode(nodeId);
+                    nodeSerializer.DeleteNode(node.getHomeId(), nodeId);
 
                     controllerHandler.reinitialiseNode(nodeId);
                 }

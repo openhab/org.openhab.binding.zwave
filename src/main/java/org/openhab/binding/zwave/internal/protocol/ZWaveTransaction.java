@@ -143,6 +143,10 @@ public class ZWaveTransaction {
         return serialMessageClass;
     }
 
+    public int getTransmitNode() {
+        return serialMessage.getMessageNode();
+    }
+
     public int getMessageNode() {
         return nodeId;
     }

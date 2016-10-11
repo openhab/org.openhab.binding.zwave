@@ -48,6 +48,7 @@ public abstract class ZWaveCommandClass {
         }
     };
 
+    @XStreamOmitField
     final Map<Integer, ZWaveResponseHandlerMethod> commands = new HashMap<Integer, ZWaveResponseHandlerMethod>();
 
     @XStreamOmitField
@@ -95,7 +96,7 @@ public abstract class ZWaveCommandClass {
             }
         }
 
-        logger.debug("{} annotation scanning took: {}ms", getCommandClass(), start - System.currentTimeMillis());
+        logger.debug("{} annotation scanning took: {}ms", getCommandClass(), System.currentTimeMillis() - start);
 
         this.node = node;
         this.controller = controller;

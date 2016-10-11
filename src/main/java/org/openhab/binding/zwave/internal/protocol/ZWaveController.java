@@ -365,6 +365,10 @@ public class ZWaveController {
         ZWaveEvent zEvent = new ZWaveInitializationStateEvent(nodeId, ZWaveNodeInitStage.EMPTYNODE);
         notifyEventListeners(zEvent);
 
+        // if (nodeId != 2) {
+        // return;
+        // }
+
         ioHandler.deviceDiscovered(nodeId);
         new ZWaveInitNodeThread(this, nodeId).start();
     }
@@ -392,7 +396,7 @@ public class ZWaveController {
             ZWaveNode node = null;
             try {
                 ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
-                node = nodeSerializer.DeserializeNode(nodeId);
+                node = nodeSerializer.DeserializeNode(homeId, nodeId);
             } catch (Exception e) {
                 logger.error("NODE {}: Restore from config: Error deserialising XML file. {}", nodeId, e.toString());
                 node = null;
@@ -655,7 +659,7 @@ public class ZWaveController {
 
                     // Remove the XML file
                     ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
-                    nodeSerializer.DeleteNode(event.getNodeId());
+                    nodeSerializer.DeleteNode(homeId, event.getNodeId());
                     break;
                 default:
                     break;
@@ -672,7 +676,7 @@ public class ZWaveController {
 
                     // Remove the XML file
                     ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
-                    nodeSerializer.DeleteNode(event.getNodeId());
+                    nodeSerializer.DeleteNode(homeId, event.getNodeId());
                     break;
                 default:
                     break;

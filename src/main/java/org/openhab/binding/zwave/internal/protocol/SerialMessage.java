@@ -160,7 +160,7 @@ public class SerialMessage {
         messagePayload = ArrayUtils.subarray(buffer, 4, messageLength + 1);
         messageNode = nodeId;
 
-        // TODO: This check isn't 100% correct - at least not for ApplicationUpdate
+        // TODO: This check isn't 100% correct - at least not for ApplicationUpdate as it has no callback id
         // TODO: Check if messageClass expects a response?
         if (messageType == SerialMessageType.Request) {
             callbackId = buffer[4] & 0xFF;

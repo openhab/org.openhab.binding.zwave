@@ -40,7 +40,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  * @author Jan-Willem Spuij
  */
-@XStreamAlias("multiLevelSwitchCommandClass")
+@XStreamAlias("COMMAND_CLASS_SWITCH_MULTILEVEL")
 public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
         implements ZWaveBasicCommands, ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
 
