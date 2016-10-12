@@ -712,7 +712,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                             // TODO: Do we need to search into multi_instance?
                             node.removeCommandClass(CommandClass.getCommandClass(cmds[1]));
                             logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - removing {}", node.getNodeId(),
-                                    CommandClass.getCommandClass(optionMap.get("ccRemove")).getLabel());
+                                    CommandClass.getCommandClass(optionMap.get(cmds[1])).getLabel());
                             continue;
                         }
 
@@ -731,10 +731,10 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                         // TODO: Does this need to account for multiple endpoints!?!
                         if (optionMap.containsKey("ccAdd")) {
                             ZWaveCommandClass commandClass = ZWaveCommandClass.getInstance(
-                                    CommandClass.getCommandClass(optionMap.get("ccAdd")).getKey(), node, controller);
+                                    CommandClass.getCommandClass(optionMap.get(cmds[1])).getKey(), node, controller);
                             if (commandClass != null) {
                                 logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - adding {}", node.getNodeId(),
-                                        CommandClass.getCommandClass(optionMap.get("ccAdd")).getLabel());
+                                        CommandClass.getCommandClass(optionMap.get(cmds[1])).getLabel());
                                 node.addCommandClass(commandClass);
                             }
                         }
