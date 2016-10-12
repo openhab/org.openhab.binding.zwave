@@ -49,7 +49,6 @@ public class IsFailedNodeMessageClass extends ZWaveCommandProcessor {
         ZWaveNode node = zController.getNode(nodeId);
         if (node == null) {
             logger.error("NODE {}: Failed node message for unknown node", nodeId);
-            incomingMessage.setTransactionCanceled();
             return false;
         }
 

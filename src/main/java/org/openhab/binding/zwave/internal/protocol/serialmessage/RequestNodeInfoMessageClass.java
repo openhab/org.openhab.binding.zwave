@@ -33,7 +33,9 @@ public class RequestNodeInfoMessageClass extends ZWaveCommandProcessor {
                 .build();
 
         return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationUpdate).withNodeId(nodeId).build();
+                .withExpectedResponseClass(SerialMessageClass.ApplicationUpdate).withNodeId(nodeId)
+                // .withRequiresData(true)
+                .build();
     }
 
     @Override

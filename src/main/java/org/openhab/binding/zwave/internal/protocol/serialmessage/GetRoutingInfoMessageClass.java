@@ -57,7 +57,6 @@ public class GetRoutingInfoMessageClass extends ZWaveCommandProcessor {
         ZWaveNode node = zController.getNode(nodeId);
         if (node == null) {
             logger.error("NODE {}: Routing information for unknown node", nodeId);
-            incomingMessage.setTransactionCanceled();
             return false;
         }
 

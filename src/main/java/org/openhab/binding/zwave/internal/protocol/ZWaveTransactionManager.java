@@ -150,24 +150,31 @@ public class ZWaveTransactionManager {
         this.controller = controller;
     }
 
-    private synchronized void AddTransactionListener(TransactionListener listener) {
-        if (transactionListeners.contains(listener)) {
-            return;
+    private void AddTransactionListener(TransactionListener listener) {
+        synchronized (transactionListeners) {
+            if (transactionListeners.contains(listener)) {
+                return;
+            }
+
+            transactionListeners.add(listener);
         }
-
-        transactionListeners.add(listener);
     }
 
-    private synchronized void RemoveTransactionListener(TransactionListener listener) {
-        transactionListeners.remove(listener);
+    private void RemoveTransactionListener(TransactionListener listener) {
+        synchronized (transactionListeners) {
+            transactionListeners.remove(listener);
+        }
     }
 
-    private synchronized void NotifyTransactionListener(final ZWaveTransaction transaction) {
+    private void NotifyTransactionListener(final ZWaveTransaction transaction) {
         new Thread() {
             @Override
             public void run() {
-                for (TransactionListener listener : transactionListeners) {
-                    listener.TransactionEvent(transaction);
+                synchronized (transactionListeners) {
+
+                    for (TransactionListener listener : transactionListeners) {
+                        listener.TransactionEvent(transaction);
+                    }
                 }
             }
         }.start();
@@ -390,7 +397,8 @@ public class ZWaveTransactionManager {
         switch (currentTransaction.getTransactionState()) {
             case WAIT_DATA:
                 // No need to track this transaction now
-                if (currentTransaction == lastTransaction) {
+                if (currentTransaction == lastTransaction
+                        && currentTransaction.requiresDataBeforeNextRelease() == false) {
                     lastTransaction = null;
                 }
                 break;
@@ -499,7 +507,7 @@ public class ZWaveTransactionManager {
         // don't start another right now.
         synchronized (transactionSync) {
             if (lastTransaction != null || outstandingTransactions.size() >= MAX_OUTSTANDING_TRANSACTIONS) {
-                logger.debug("Transaction SendNextMessage too many");
+                logger.debug("Transaction SendNextMessage too many outstanding");
                 return;
             }
 

@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import org.eclipse.smarthome.config.core.ConfigDescription;
 import org.eclipse.smarthome.config.core.ConfigDescriptionParameter;
@@ -165,6 +166,9 @@ public class ZWaveNodeInitStageAdvancer {
             @Override
             public void run() {
                 doInitialStages();
+                if (currentStage == ZWaveNodeInitStage.DONE) {
+                    return;
+                }
 
                 // If restored from a config file, jump to the dynamic node stage.
                 if (isRestoredFromConfigfile()) {
@@ -187,10 +191,26 @@ public class ZWaveNodeInitStageAdvancer {
             return;
         }
 
+        Random rn = new Random();
+        int backoff = 50;
         ZWaveTransactionResponse response;
         do {
             response = controller.SendTransaction(transaction);
-        } while (response != null && response.getState() != State.COMPLETE);
+
+            // Increase the backoff up to 1800 seconds (approx!)
+            if (backoff < 900000) {
+                backoff += backoff + rn.nextInt(1000);
+            }
+
+            try {
+                Thread.sleep(backoff);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        } while (response == null || response.getState() != State.COMPLETE);
+
+        logger.debug("NODE {}: Node Init transaction completed with response {}", response.getState());
     }
 
     /**
@@ -199,12 +219,12 @@ public class ZWaveNodeInitStageAdvancer {
      * @param msgs
      *            the message collection
      */
-    private void processTransactions(Collection<ZWaveTransaction> msgs) {
-        if (msgs == null) {
+    private void processTransactions(Collection<ZWaveTransaction> transactions) {
+        if (transactions == null) {
             return;
         }
-        for (ZWaveTransaction serialMessage : msgs) {
-            processTransactions(serialMessage);
+        for (ZWaveTransaction transaction : transactions) {
+            processTransactions(transaction);
         }
     }
 
@@ -218,13 +238,13 @@ public class ZWaveNodeInitStageAdvancer {
      * @param endpointId
      *            the endpoint number
      */
-    private void processTransactions(Collection<ZWaveTransaction> msgs, ZWaveCommandClass commandClass,
+    private void processTransactions(Collection<ZWaveTransaction> transactions, ZWaveCommandClass commandClass,
             int endpointId) {
-        if (msgs == null) {
+        if (transactions == null) {
             return;
         }
-        for (ZWaveTransaction serialMessage : msgs) {
-            processTransactions(node.encapsulate(serialMessage, commandClass, endpointId));
+        for (ZWaveTransaction transaction : transactions) {
+            processTransactions(node.encapsulate(transaction, commandClass, endpointId));
         }
     }
 
@@ -248,7 +268,7 @@ public class ZWaveNodeInitStageAdvancer {
         if (node.getDeviceClass().getSpecificDeviceClass() == Specific.PC_CONTROLLER) {
             logger.debug("NODE {}: Node advancer: FAILED_CHECK - Controller - terminating initialisation",
                     node.getNodeId());
-            currentStage = ZWaveNodeInitStage.DONE;
+            setCurrentStage(ZWaveNodeInitStage.DONE);
             return;
         }
 

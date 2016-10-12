@@ -30,7 +30,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * This class processes a Node Information Frame (NIF) message from the zwave controller
+ * The Z-Wave protocol in a controller calls ApplicationControllerUpdate when a new node has been added or deleted from
+ * the controller through the network management features. The Z-Wave protocol calls ApplicationControllerUpdate as a
+ * result of using the API call ZW_RequestNodeInfo. The application can use this functionality to add/delete the node
+ * information from any structures used in the Application layer. The Z-Wave protocol also calls
+ * ApplicationControllerUpdate when a node information frame has been received and the protocol is not in a state where
+ * it needs the node information.
+ *
+ * ApplicationControllerUpdate is called on the SUC each time a node is added/deleted by the primary controller.
+ * ApplicationControllerUpdate is called on the SIS each time a node is added/deleted by the inclusion controller. When
+ * a node request ZW_RequestNetWorkUpdate from the SUC/SIS then the ApplicationControllerUpdate is called for each node
+ * change (add/delete) on the requesting node. ApplicationControllerUpdate is not called on a primary or inclusion
+ * controller when a node is added/deleted. *
  *
  * @author Chris Jackson
  */
@@ -131,11 +142,13 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
                 break;
             case NODE_INFO_REQ_FAILED:
                 // The failed message doesn't contain the node number, so use the info from the request.
-                nodeId = transaction.getMessageNode();
-                logger.debug("NODE {}: Application update request. Node Info Request Failed.", nodeId);
+                if (transaction != null) {
+                    nodeId = transaction.getMessageNode();
+                    logger.debug("NODE {}: Application update request. Node Info Request Failed.", nodeId);
+                } else {
+                    logger.debug("Application update request. Node Info Request Failed (Unknown Node).");
+                }
 
-                // Transaction is not successful
-                incomingMessage.setTransactionCanceled();
                 result = false;
                 break;
             default:

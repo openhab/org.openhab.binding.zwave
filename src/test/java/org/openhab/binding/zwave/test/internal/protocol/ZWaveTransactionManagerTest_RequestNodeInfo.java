@@ -31,9 +31,11 @@ public class ZWaveTransactionManagerTest_RequestNodeInfo extends ZWaveTransactio
         final ZWaveTransactionManager manager = getTransactionManager();
 
         manager.queueTransactionForSend(new RequestNodeInfoMessageClass().doRequest(2));
+        manager.queueTransactionForSend(new RequestNodeInfoMessageClass().doRequest(13));
+
         // Check that this frame was sent
-        assertEquals(1, txQueueCapture.getAllValues().size());
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
+        assertEquals(1, txQueueCapture.getAllValues().size());
 
         // Provide the response and make sure the transaction didn't complete
         message = new SerialMessage(new byte[] { 0x01, 0x04, 0x01, 0x60, 0x01, (byte) 0x9B });
@@ -54,6 +56,7 @@ public class ZWaveTransactionManagerTest_RequestNodeInfo extends ZWaveTransactio
                 0x25, 0x20, 0x27, 0x72, (byte) 0x86, 0x32, (byte) 0x85, 0x70, 0x21 });
         manager.processReceiveMessage(message);
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
+        assertEquals(1, txQueueCapture.getAllValues().size());
 
         System.out.println("About to REAL NIF data for 22222 ----------");
 
@@ -62,6 +65,7 @@ public class ZWaveTransactionManagerTest_RequestNodeInfo extends ZWaveTransactio
                 0x72, (byte) 0x86, 0x70, (byte) 0x85, (byte) 0x8E, 0x26, 0x27, 0x73, (byte) 0xEF, 0x20, 0x26, 0x2A });
         manager.processReceiveMessage(message);
         assertEquals(1, transactionCompleteCapture.getAllValues().size());
+        assertEquals(2, txQueueCapture.getAllValues().size());
     }
 
 }

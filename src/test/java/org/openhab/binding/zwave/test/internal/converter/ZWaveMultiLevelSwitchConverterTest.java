@@ -217,7 +217,7 @@ public class ZWaveMultiLevelSwitchConverterTest {
         when(node.resolveCommandClass(CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL, channel.getEndpoint()))
                 .thenReturn(commandClass);
         when(node.encapsulate(any(ZWaveTransaction.class), any(ZWaveMultiLevelSwitchCommandClass.class), anyInt()))
-                .thenReturn(new ZWaveTransaction(0, new SerialMessage(), null, null, 0, null, 0));
+                .thenReturn(new ZWaveTransaction(0, new SerialMessage(), null, null, 0, null, 0, false));
     }
 
 }

@@ -87,6 +87,7 @@ public class ZWaveTransaction {
     private SerialMessageClass expectedReplyClass;
     private CommandClass expectedReplyCommandClass;
     private Integer expectedReplyCommandClassCommand;
+    private boolean requiresData;
 
     private TransactionState transactionStateCancelled = TransactionState.UNINTIALIZED;
     private TransactionState transactionStateTracker = TransactionState.UNINTIALIZED;
@@ -98,7 +99,7 @@ public class ZWaveTransaction {
 
     public ZWaveTransaction(int nodeId, SerialMessage serialMessage, SerialMessageClass expectedReplyClass,
             CommandClass expectedReplyCommandClass, int expectedReplyCommandClassCommand, TransactionPriority priority,
-            int attempts) {
+            int attempts, boolean requiresData) {
         this.nodeId = nodeId;
         this.serialMessage = serialMessage;
         this.serialMessageClass = serialMessage.getMessageClass();
@@ -107,6 +108,7 @@ public class ZWaveTransaction {
         this.expectedReplyCommandClassCommand = expectedReplyCommandClassCommand;
         this.priority = priority;
         this.attemptsRemaining = 3;
+        this.requiresData = requiresData;
     }
 
     public void resetTransaction() {
@@ -332,6 +334,10 @@ public class ZWaveTransaction {
         }
 
         return false;
+    }
+
+    public boolean requiresDataBeforeNextRelease() {
+        return requiresData;
     }
 
 }

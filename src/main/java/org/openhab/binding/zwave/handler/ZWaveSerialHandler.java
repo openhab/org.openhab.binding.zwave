@@ -321,7 +321,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
 
                 }
             } catch (Exception e) {
-                logger.error("Exception during ZWave thread: Receive {}", e.getMessage());
+                logger.error("Exception during ZWave thread. ", e);
             }
             logger.debug("Stopped ZWave thread: Receive");
 
