@@ -292,4 +292,5 @@ This parameter defines how commands are sent in specified association groups: as
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

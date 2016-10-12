@@ -173,4 +173,5 @@ Binary Switch Report, Notification Report, Device Reset Locally Notification, Me
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

@@ -285,4 +285,5 @@ Defines whether commands are sent as secure or non-secure<br /><h1>Overview</h1>
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

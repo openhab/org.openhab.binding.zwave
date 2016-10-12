@@ -108,4 +108,5 @@ what type of notification to send to Group 1<br /><h1>Overview</h1><p>Enable to 
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

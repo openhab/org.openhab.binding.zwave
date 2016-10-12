@@ -150,4 +150,5 @@ Max load 3500 W.<br /><h1>Overview</h1><ul><li>0 -&gt; Disabled</li> <li>1 - 350
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

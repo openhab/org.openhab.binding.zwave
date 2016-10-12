@@ -215,4 +215,5 @@ default value is 300 (power report in Watts is sent each 300s)<br /><ul><li>0 = 
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

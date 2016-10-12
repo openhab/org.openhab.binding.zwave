@@ -116,4 +116,5 @@ see overview (parameter 3)<br /><h1>Overview</h1><p>set to 0 for no report</p> <
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

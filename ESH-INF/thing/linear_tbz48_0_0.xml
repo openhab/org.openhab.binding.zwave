@@ -108,45 +108,46 @@
     </config-description>
 
   </thing-type>
-    <channel-type id="linear_tbz48_00_000_thermostat_mode">
-      <item-type>Number</item-type>
-      <label>Thermostat Mode</label>
-      <description>Sets the thermostat mode</description>
-      <category>Temperature</category>
-      <state pattern="%s">
-        <options>
-          <option value="0">Off</option>
-          <option value="4">Aux Heat</option>
-          <option value="3">Auto</option>
-          <option value="1">Heat</option>
-          <option value="2">Cool</option>
-        </options>
-      </state>
-    </channel-type>
 
-    <channel-type id="linear_tbz48_00_000_thermostat_fanmode">
-      <item-type>Number</item-type>
-      <label>Thermostat Fan Mode</label>
-      <description>Sets the thermostat fan mode</description>
-      <category>Temperature</category>
-      <state pattern="%s">
-        <options>
-          <option value="1">On (Low)</option>
-          <option value="0">Auto (Low)</option>
-        </options>
-      </state>
-    </channel-type>
+  <channel-type id="linear_tbz48_00_000_thermostat_mode">
+    <item-type>Number</item-type>
+    <label>Thermostat Mode</label>
+    <description>Sets the thermostat mode</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+        <option value="0">Off</option>
+        <option value="4">Aux Heat</option>
+        <option value="3">Auto</option>
+        <option value="1">Heat</option>
+        <option value="2">Cool</option>
+      </options>
+    </state>
+  </channel-type>
 
-    <channel-type id="linear_tbz48_00_000_thermostat_fanstate">
-      <item-type>Number</item-type>
-      <label>Thermostat Fan State</label>
-      <description>Sets the thermostat fan state</description>
-      <category>Temperature</category>
-      <state pattern="%s">
-        <options>
-          <option value="1">Running</option>
-        </options>
-      </state>
-    </channel-type>
+  <channel-type id="linear_tbz48_00_000_thermostat_fanmode">
+    <item-type>Number</item-type>
+    <label>Thermostat Fan Mode</label>
+    <description>Sets the thermostat fan mode</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+        <option value="1">On (Low)</option>
+        <option value="0">Auto (Low)</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="linear_tbz48_00_000_thermostat_fanstate">
+    <item-type>Number</item-type>
+    <label>Thermostat Fan State</label>
+    <description>Sets the thermostat fan state</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+        <option value="1">Running</option>
+      </options>
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>

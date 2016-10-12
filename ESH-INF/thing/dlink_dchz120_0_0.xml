@@ -264,4 +264,5 @@ The illumination differential to report. The unit is percentage. When enabled, t
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

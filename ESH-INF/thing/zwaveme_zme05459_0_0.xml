@@ -278,4 +278,5 @@ Defines how to interpret button Down press. Depends on 'Switch by buttons' param
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

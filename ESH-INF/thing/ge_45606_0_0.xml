@@ -124,4 +124,5 @@ Sets the dim rate for the all on/off command<br /><h1>Overview</h1><p>This value
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

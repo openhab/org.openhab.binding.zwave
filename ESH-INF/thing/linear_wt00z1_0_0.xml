@@ -250,4 +250,5 @@ Activate/Deactivate polling of first node in Group 1<br /><h1>Overview</h1><p>Th
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

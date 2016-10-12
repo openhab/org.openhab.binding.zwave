@@ -124,4 +124,5 @@ This value indicates in 10 millisecond resolution, <br /> how often the dim leve
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

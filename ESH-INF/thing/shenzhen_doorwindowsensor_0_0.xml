@@ -113,4 +113,5 @@ Send Notification to associated devices.<br /><h1>Overview</h1><p>SENSOR_BINARY_
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

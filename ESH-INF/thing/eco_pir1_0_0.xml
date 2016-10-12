@@ -82,4 +82,5 @@ Toggle sending clear message to group 2<br /><h1>Overview</h1><p>Set to 0 to dis
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

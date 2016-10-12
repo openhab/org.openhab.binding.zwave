@@ -127,4 +127,5 @@ Alarm reports are sent out to all devices in the association group<br /><h1>Over
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

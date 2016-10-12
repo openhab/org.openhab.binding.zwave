@@ -401,4 +401,5 @@ A binary field to choose channels to report power<br /><h1>Overview</h1><p>Choos
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

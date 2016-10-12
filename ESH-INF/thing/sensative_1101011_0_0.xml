@@ -17,12 +17,6 @@
           <property name="binding:*:OnOffType">SENSOR_BINARY</property>
         </properties>
       </channel>
-      <channel id="sensor_luminance" typeId="sensor_luminance">
-        <label>Sensor (luminance)</label>
-        <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=LUMINANCE</property>
-        </properties>
-      </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
         <properties>
@@ -89,4 +83,5 @@
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

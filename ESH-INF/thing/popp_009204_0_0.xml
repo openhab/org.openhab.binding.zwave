@@ -217,4 +217,5 @@ This parameter defines the command to be sent to devices of control group D<br /
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

@@ -50,7 +50,7 @@
           <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=HEATING</property>
         </properties>
       </channel>
-      <channel id="scene_number" typeId="scene_number">
+      <channel id="scene_number_param72" typeId="scene_number">
         <label>Start animation</label>
         <properties>
           <property name="binding:*:DecimalType">CONFIGURATION;parameter=72</property>
@@ -337,4 +337,5 @@ Defines the required change in power to generate an unsolicited power report.<br
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

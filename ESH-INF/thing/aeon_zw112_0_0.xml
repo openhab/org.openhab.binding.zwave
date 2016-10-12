@@ -124,4 +124,5 @@ Sends sensor report as configured in parameter 121 when the sensor is triggered<
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

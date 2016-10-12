@@ -124,17 +124,18 @@ Battery Powered Wall Thermostat<br /><h1>Overview</h1><p><strong>Note</strong>: 
     </config-description>
 
   </thing-type>
-    <channel-type id="horstmann_hrt4zw_00_000_thermostat_mode">
-      <item-type>Number</item-type>
-      <label>Thermostat Mode</label>
-      <description>Sets the thermostat mode</description>
-      <category>Temperature</category>
-      <state pattern="%s">
-        <options>
-          <option value="1">Heat</option>
-          <option value="0">Off</option>
-        </options>
-      </state>
-    </channel-type>
+
+  <channel-type id="horstmann_hrt4zw_00_000_thermostat_mode">
+    <item-type>Number</item-type>
+    <label>Thermostat Mode</label>
+    <description>Sets the thermostat mode</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+        <option value="1">Heat</option>
+        <option value="0">Off</option>
+      </options>
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>

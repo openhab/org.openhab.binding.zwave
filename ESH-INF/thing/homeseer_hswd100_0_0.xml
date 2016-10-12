@@ -106,4 +106,5 @@ Time interval (in tens of ms) of brightness change when controlled locally<br />
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

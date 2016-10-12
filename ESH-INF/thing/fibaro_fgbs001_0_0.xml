@@ -253,4 +253,5 @@ Transmitting the alarm or control frame in 'broadcast' mode (i.e. to all devices
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

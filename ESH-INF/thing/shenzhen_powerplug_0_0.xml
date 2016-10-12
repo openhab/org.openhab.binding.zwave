@@ -189,4 +189,5 @@ Send Notification to associated devices.<br /><h1>Overview</h1><p>NOTIFICATION_R
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

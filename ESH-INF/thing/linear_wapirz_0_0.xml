@@ -78,4 +78,5 @@ Re-trigger Wait Time<br /><h1>Overview</h1><p>By default, to conserve battery li
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

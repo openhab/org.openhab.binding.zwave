@@ -126,4 +126,5 @@ This value indicates in 10 millisecond resolution. <br /> This sets how often th
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

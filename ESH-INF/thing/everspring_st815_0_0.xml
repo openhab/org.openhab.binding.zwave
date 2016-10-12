@@ -104,4 +104,5 @@ Auto Report Lux Interval<br /><h1>Overview</h1><p>Lux interval step size to auto
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

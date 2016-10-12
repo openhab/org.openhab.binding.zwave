@@ -103,4 +103,5 @@ This sets how often the dim level will change.<br /><h1>Overview</h1><p>The timi
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

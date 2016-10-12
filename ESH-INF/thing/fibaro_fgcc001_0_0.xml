@@ -405,4 +405,5 @@ Value containing sequence of gestures.<br /><h1>Overview</h1><p>User can create 
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

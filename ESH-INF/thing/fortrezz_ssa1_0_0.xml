@@ -58,4 +58,5 @@ Delay, from the time the siren-strobe turns on, before the Basic Set Off command
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

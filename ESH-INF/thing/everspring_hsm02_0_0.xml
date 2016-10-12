@@ -101,4 +101,5 @@ Support ALARM_REPORT, SENSOR_BINARY_SUPPORT<br /><h1>Overview</h1><h1>Power Appl
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

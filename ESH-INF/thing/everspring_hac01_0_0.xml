@@ -72,4 +72,5 @@ Target nodes that receive Basic Set command when the switch input changed.<br />
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

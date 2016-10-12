@@ -53,20 +53,21 @@
     </properties>
 
   </thing-type>
-    <channel-type id="intermatic_ca8900_00_000_thermostat_mode">
-      <item-type>Number</item-type>
-      <label>Thermostat Mode</label>
-      <description>Sets the thermostat mode</description>
-      <category>Temperature</category>
-      <state pattern="%s">
-        <options>
-          <option value="11">Economy Heat</option>
-          <option value="2">Cool</option>
-          <option value="0">Off</option>
-          <option value="1">Heat</option>
-          <option value="12">Economy Cool</option>
-        </options>
-      </state>
-    </channel-type>
+
+  <channel-type id="intermatic_ca8900_00_000_thermostat_mode">
+    <item-type>Number</item-type>
+    <label>Thermostat Mode</label>
+    <description>Sets the thermostat mode</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+        <option value="11">Economy Heat</option>
+        <option value="2">Cool</option>
+        <option value="0">Off</option>
+        <option value="1">Heat</option>
+        <option value="12">Economy Cool</option>
+      </options>
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>

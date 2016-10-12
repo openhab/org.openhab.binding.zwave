@@ -65,4 +65,5 @@ Change the top of the switch to OFF and <br /> the bottom of the switch to ON. <
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>
