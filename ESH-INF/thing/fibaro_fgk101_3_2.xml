@@ -23,6 +23,12 @@
           <property name="binding:*:OnOffType">SENSOR_BINARY</property>
         </properties>
       </channel>
+      <channel id="sensor_temperature" typeId="sensor_temperature">
+        <label>Sensor (Temperature)</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+        </properties>
+      </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
         <properties>
