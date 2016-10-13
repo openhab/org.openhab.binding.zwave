@@ -131,4 +131,5 @@ An offset for the temperature.<br /><h1>Overview</h1><p>Param1,2: A signed integ
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

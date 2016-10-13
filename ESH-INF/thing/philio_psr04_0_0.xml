@@ -110,4 +110,5 @@ The interval time for auto reporting the Battery level.<br /><h1>Overview</h1><p
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

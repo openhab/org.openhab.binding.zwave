@@ -5,7 +5,7 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="everspring135_st812_00_000" listed="false">
+  <thing-type id="zyxel_st812_00_000" listed="false">
     <label>ST812 Flood sensor</label>
     <description>Flood sensor</description>
 
@@ -26,7 +26,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Everspring (135)</property>
+      <property name="vendor">ZyXEL</property>
       <property name="modelId">ST812</property>
       <property name="manufacturerId">0135</property>
       <property name="manufacturerRef">000B:0001</property>
@@ -80,4 +80,5 @@ Group to send trigger value to<br /><h1>Overview</h1><p>Will send values of 0-99
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

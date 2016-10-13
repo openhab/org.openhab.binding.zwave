@@ -210,4 +210,5 @@ Minimum change in wattage % to trigger event<br /><h1>Overview</h1><p>The value 
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

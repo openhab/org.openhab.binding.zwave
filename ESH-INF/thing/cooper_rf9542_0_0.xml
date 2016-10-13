@@ -131,4 +131,5 @@ time in seconds to ramp to desired level<br /><h1>Overview</h1><p>The amount of 
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

@@ -261,4 +261,5 @@ Time interval in which low battery alarm, if detected, is repeated using visual 
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

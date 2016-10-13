@@ -127,4 +127,5 @@ This group is used to directly turn lights on or off when motion is detected.<br
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

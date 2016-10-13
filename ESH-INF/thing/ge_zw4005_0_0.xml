@@ -67,4 +67,5 @@ Invert the ON/OFF Switch State. <br /> Setting this parameter to Yes will change
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

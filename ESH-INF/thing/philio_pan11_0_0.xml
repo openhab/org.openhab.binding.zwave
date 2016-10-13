@@ -175,4 +175,5 @@ If threshold of kWh is reached, a Meter Report will be generated<br /><h1>Overvi
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

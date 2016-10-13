@@ -142,4 +142,5 @@ The interval time for auto reporting each tick.<br /><ul><li>0 = Turn off all au
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

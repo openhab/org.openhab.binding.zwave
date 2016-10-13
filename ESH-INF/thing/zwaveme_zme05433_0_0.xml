@@ -166,4 +166,5 @@ Send Reports on blind state change<br /><h1>Overview</h1><p>Send Reports on blin
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

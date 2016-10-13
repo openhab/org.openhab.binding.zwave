@@ -539,4 +539,5 @@ Dimmer (S2) is assigned to switch connected to the S2 terminal (uses Switch Mult
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

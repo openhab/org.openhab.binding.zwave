@@ -120,4 +120,5 @@ On Value is the value sent by the Z-Wave BASIC_SET command when motion is detect
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

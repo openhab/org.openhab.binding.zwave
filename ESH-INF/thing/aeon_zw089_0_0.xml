@@ -14,6 +14,12 @@ Recessed Door Sensor Gen5<br /><h1>Overview</h1><p>Aeon Labs Recessed Door Senso
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="sensor_door" typeId="sensor_door">
+        <label>Basic Door Status</label>
+        <properties>
+          <property name="binding:*:OnOffType">BASIC</property>
+        </properties>
+      </channel>
+      <channel id="sensor_door" typeId="sensor_door">
         <label>Door Status</label>
         <properties>
           <property name="binding:*:OpenClosedType">SENSOR_BINARY</property>
@@ -98,7 +104,7 @@ Configuration Value 4(LSB) SENSOR BINARY<br /><h1>Overview</h1><p>set to 16 for 
         <default>0</default>
         <options>
           <option value="0">disable SENSOR BINARY (factory)</option>
-          <option value="16">enable SENSOR BINARY (recommended)</option>
+          <option value="16">enable SENSOR BINARY</option>
         </options>
       </parameter>
 
@@ -156,4 +162,5 @@ Set BASIC SET reporting<br /><h1>Overview</h1><p>Set to 1 for BASIC SET report (
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

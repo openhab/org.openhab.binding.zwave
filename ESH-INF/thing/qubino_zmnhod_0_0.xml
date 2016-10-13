@@ -271,4 +271,5 @@ If digital temperature sensor is connected, module reports measured temperature 
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

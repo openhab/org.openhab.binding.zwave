@@ -67,4 +67,5 @@ P1-dongle<br /><h1>Overview</h1><p>The P1-dongle sends smart meter data wireless
     </properties>
 
   </thing-type>
+
 </thing:thing-descriptions>

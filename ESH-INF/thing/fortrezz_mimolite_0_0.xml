@@ -210,4 +210,5 @@ Momentary Relay1 output enable/disable (100msec).<br /><h1>Overview</h1><p>Momen
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

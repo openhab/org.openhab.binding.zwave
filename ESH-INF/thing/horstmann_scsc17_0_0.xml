@@ -83,4 +83,5 @@ Defines the temperature steps of the heating control value is 0.1 °С.<br />1 0
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

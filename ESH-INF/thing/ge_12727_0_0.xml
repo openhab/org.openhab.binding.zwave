@@ -51,7 +51,7 @@ Invert switch<br /><h1>Overview</h1><p>If the switch is accidentally installed u
         </options>
       </parameter>
 
-      <parameter name="config_29_0" type="integer" groupName="configuration"
+      <parameter name="config_29_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>29: Load Sensing</label>
         <description><![CDATA[
@@ -63,4 +63,5 @@ Invert switch<br /><h1>Overview</h1><p>If the switch is accidentally installed u
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

@@ -190,4 +190,5 @@ Enable to send notifications to associated devices (Group1) when the state of Si
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

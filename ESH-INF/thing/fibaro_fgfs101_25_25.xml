@@ -257,4 +257,5 @@ Parameter determines a time period after which an alarm frame will be retransmit
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

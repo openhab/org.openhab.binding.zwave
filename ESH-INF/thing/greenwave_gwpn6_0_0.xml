@@ -251,4 +251,5 @@ Duration (min) the device flashes after a communication error.<br /><h1>Overview
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

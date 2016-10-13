@@ -59,4 +59,5 @@ Turn load sense on with 1, off with 0<br /><h1>Overview</h1><p>Set parameter to 
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

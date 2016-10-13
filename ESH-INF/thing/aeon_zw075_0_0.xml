@@ -251,4 +251,5 @@ Defines the time interval when the defined report of Reporting Group 1 is sent o
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

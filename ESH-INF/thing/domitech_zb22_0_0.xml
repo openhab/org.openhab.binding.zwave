@@ -79,4 +79,5 @@ Full brightness: The brightness level will be resume to full brightness when the
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

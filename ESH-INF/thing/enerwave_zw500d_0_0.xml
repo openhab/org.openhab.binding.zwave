@@ -77,4 +77,5 @@ Control if switch up is on or off<br /><h1>Overview</h1><p>0 = normal install, u
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

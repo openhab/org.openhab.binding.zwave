@@ -130,4 +130,5 @@ Defines which command should be sent on button double press or press-hold.<br />
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

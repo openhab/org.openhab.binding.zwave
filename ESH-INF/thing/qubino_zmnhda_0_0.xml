@@ -210,4 +210,5 @@ Time of moving the Dimmer between min. and max dimming values by continues hold 
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

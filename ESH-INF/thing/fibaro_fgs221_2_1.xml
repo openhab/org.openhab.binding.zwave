@@ -276,4 +276,5 @@ Fibaro Switch returns to the last position saved before a power failure<br /><h1
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>
