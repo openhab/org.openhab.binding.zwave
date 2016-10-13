@@ -34,8 +34,7 @@ public class RequestNodeInfoMessageClass extends ZWaveCommandProcessor {
 
         return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High)
                 .withExpectedResponseClass(SerialMessageClass.ApplicationUpdate).withNodeId(nodeId)
-                // .withRequiresData(true)
-                .build();
+                .withDataTimeout(12000).withRequiresData(true).build();
     }
 
     @Override
@@ -46,9 +45,8 @@ public class RequestNodeInfoMessageClass extends ZWaveCommandProcessor {
             logger.debug("Request node info successfully placed on stack.");
         } else {
             logger.error("Request node info not placed on stack due to error.");
+            transaction.setTransactionCanceled();
         }
-
-        checkTransactionComplete(transaction, incomingMessage);
 
         return true;
     }

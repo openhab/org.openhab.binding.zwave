@@ -120,13 +120,19 @@ public class ZWaveTransactionManager {
 
     // private static final int ZWAVE_RESPONSE_TIMEOUT = 5000;
     private static final int INITIAL_TX_QUEUE_SIZE = 128;
-    private static final int MAX_OUTSTANDING_TRANSACTIONS = 2;
+    private static final int MAX_OUTSTANDING_TRANSACTIONS = 4;
 
     private ZWaveController controller;
 
+    /**
+     * Timeout in which we expect the initial response from the controller
+     */
     private final long timer1 = 500;
+
+    /**
+     * Timeout in which we expect the request from the controller
+     */
     private final long timer2 = 2500;
-    private final long timer3 = 2500;
 
     private final Timer timer = new Timer();
     private TimerTask timerTask = null;
@@ -400,6 +406,7 @@ public class ZWaveTransactionManager {
                 if (currentTransaction == lastTransaction
                         && currentTransaction.requiresDataBeforeNextRelease() == false) {
                     lastTransaction = null;
+                    System.out.println("lastTransaction COMPLETED - at DATA - " + currentTransaction.getCallbackId());
                 }
                 break;
 
@@ -490,7 +497,7 @@ public class ZWaveTransactionManager {
                 break;
             case WAIT_DATA:
                 System.out.println("Timer type WAIT_DATA");
-                nextTimer = System.currentTimeMillis() + timer3;
+                nextTimer = System.currentTimeMillis() + transaction.getDataTimeout();
                 break;
         }
 

@@ -19,6 +19,7 @@ public class ZWaveTransactionBuilder {
     private int expectedResponseCommandClassCommand;
     private int attempts;
     private boolean requiresData = false;
+    private int dataTimeout = 3000;
 
     public ZWaveTransactionBuilder(SerialMessage serialMessage) {
         this.serialMessage = serialMessage;
@@ -44,6 +45,11 @@ public class ZWaveTransactionBuilder {
         return this;
     }
 
+    public ZWaveTransactionBuilder withDataTimeout(final int dataTimeout) {
+        this.dataTimeout = dataTimeout;
+        return this;
+    }
+
     public ZWaveTransactionBuilder withExpectedResponseClass(SerialMessageClass expectedResponseClass) {
         this.expectedResponseClass = expectedResponseClass;
         return this;
@@ -62,6 +68,6 @@ public class ZWaveTransactionBuilder {
         }
 
         return new ZWaveTransaction(nodeId, serialMessage, expectedResponseClass, expectedResponseCommandClass,
-                expectedResponseCommandClassCommand, priority, attempts, requiresData);
+                expectedResponseCommandClassCommand, priority, attempts, requiresData, dataTimeout);
     }
 }

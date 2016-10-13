@@ -31,7 +31,7 @@ public class ZWaveTransactionManagerTest_RequestNodeInfo extends ZWaveTransactio
         final ZWaveTransactionManager manager = getTransactionManager();
 
         manager.queueTransactionForSend(new RequestNodeInfoMessageClass().doRequest(2));
-        manager.queueTransactionForSend(new RequestNodeInfoMessageClass().doRequest(13));
+        manager.queueTransactionForSend(transaction);
 
         // Check that this frame was sent
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
