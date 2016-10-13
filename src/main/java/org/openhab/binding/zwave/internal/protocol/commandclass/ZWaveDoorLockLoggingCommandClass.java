@@ -13,16 +13,13 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -95,38 +92,29 @@ public class ZWaveDoorLockLoggingCommandClass extends ZWaveCommandClass implemen
         logger.debug("NODE {}: Received door lock log report {}", getNode().getNodeId(), eventType);
     }
 
-    public ZWaveTransaction getSupported() {
+    public ZWaveCommandClassTransactionPayload getSupported() {
         logger.debug("NODE {}: Creating new message for application command LOGGING_SUPPORTED_GET",
-                this.getNode().getNodeId());
+                getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), LOGGING_SUPPORTED_GET).withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), DOOR_LOCK_LOGGING_RECORDS_SUPPORTED_REPORT)
-                .withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), LOGGING_SUPPORTED_GET)
+                .withPriority(TransactionPriority.Config)
+                .withExpectedResponseCommand(DOOR_LOCK_LOGGING_RECORDS_SUPPORTED_REPORT).build();
     }
 
-    public ZWaveTransaction getEntry(int id) {
+    public ZWaveCommandClassTransactionPayload getEntry(int id) {
         logger.debug("NODE {}: Creating new message for application command LOGGING_RECORD_GET", getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), LOGGING_RECORD_GET).withNodeId(getNode().getNodeId())
-                .withPayload(id).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), DOOR_LOCK_LOGGING_RECORD_REPORT)
-                .withPriority(TransactionPriority.Get).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), LOGGING_RECORD_GET)
+                .withPayload(id).withPriority(TransactionPriority.Config)
+                .withExpectedResponseCommand(DOOR_LOCK_LOGGING_RECORD_REPORT).build();
     }
 
     @Override
-    public Collection<ZWaveTransaction> initialize(boolean refresh) {
+    public Collection<ZWaveCommandClassTransactionPayload> initialize(boolean refresh) {
         if (refresh == false && supportedMessages != -1) {
             return null;
         }
-        Collection<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
+        Collection<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
         result.add(getSupported());
         return result;
     }

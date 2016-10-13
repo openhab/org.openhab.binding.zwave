@@ -18,17 +18,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -197,7 +194,7 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
      * @return the serial message
      */
     @Override
-    public ZWaveTransaction getValueMessage() {
+    public ZWaveCommandClassTransactionPayload getValueMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", getNode().getNodeId());
             return null;
@@ -205,13 +202,8 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
 
         logger.debug("NODE {}: Creating new message for application command METER_GET", getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), METER_GET)
-                .withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), METER_REPORT).withPriority(TransactionPriority.Get)
-                .build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), METER_GET)
+                .withPriority(TransactionPriority.Get).withExpectedResponseCommand(METER_REPORT).build();
     }
 
     @Override
@@ -251,16 +243,12 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    public ZWaveTransaction getMessage(MeterScale meterScale) {
+    public ZWaveCommandClassTransactionPayload getMessage(MeterScale meterScale) {
         logger.debug("NODE {}: Creating new message for application command METER_GET", getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), METER_GET)
-                .withNodeId(getNode().getNodeId()).withPayload(meterScale.getScale() << 3).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), METER_REPORT).withPriority(TransactionPriority.Get)
-                .build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), METER_GET)
+                .withPayload(meterScale.getScale() << 3).withPriority(TransactionPriority.Get)
+                .withExpectedResponseCommand(METER_REPORT).build();
     }
 
     /**
@@ -269,17 +257,12 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
      * @return the serial message, or null if the supported command is not
      *         supported.
      */
-    public ZWaveTransaction getSupportedMessage() {
+    public ZWaveCommandClassTransactionPayload getSupportedMessage() {
         logger.debug("NODE {}: Creating new message for application command METER_SUPPORTED_GET",
                 getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), METER_SUPPORTED_GET).withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), METER_SUPPORTED_REPORT)
-                .withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), METER_SUPPORTED_GET)
+                .withPriority(TransactionPriority.Config).withExpectedResponseCommand(METER_SUPPORTED_REPORT).build();
     }
 
     /**
@@ -287,7 +270,7 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    public ZWaveTransaction getResetMessage() {
+    public ZWaveCommandClassTransactionPayload getResetMessage() {
         // ignore the reset if the version is less than one or meter is not resetable
         if (getVersion() == 1 || !canReset) {
             return null;
@@ -295,18 +278,16 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
 
         logger.debug("NODE {}: Creating new message for application command METER_RESET", getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), METER_RESET)
-                .withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), METER_RESET)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**
      * Initializes the meter command class. Requests the supported meter types.
      */
     @Override
-    public Collection<ZWaveTransaction> initialize(boolean refresh) {
-        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
+    public Collection<ZWaveCommandClassTransactionPayload> initialize(boolean refresh) {
+        ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
         // If we're already initialized, then don't do it again unless we're refreshing
         if (isSupportRequestSupported == true && (refresh == true || initialiseDone == false) && getVersion() > 1) {
             result.add(getSupportedMessage());
@@ -318,8 +299,8 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
      * {@inheritDoc}
      */
     @Override
-    public Collection<ZWaveTransaction> getDynamicValues(boolean refresh) {
-        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
+    public Collection<ZWaveCommandClassTransactionPayload> getDynamicValues(boolean refresh) {
+        ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
 
         if (refresh == true || dynamicDone == false) {
             switch (getVersion()) {

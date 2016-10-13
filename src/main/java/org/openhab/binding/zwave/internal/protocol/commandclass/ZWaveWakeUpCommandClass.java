@@ -26,11 +26,13 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEventListener;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveTransactionCompletedEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -188,15 +190,12 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    public ZWaveTransaction getNoMoreInformationMessage() {
+    public ZWaveCommandClassTransactionPayload getNoMoreInformationMessage() {
         logger.debug("NODE {}: Creating new message for application command WAKE_UP_NO_MORE_INFORMATION",
                 this.getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), WAKE_UP_NO_MORE_INFORMATION).withNodeId(getNode().getNodeId())
-                .build();
-
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Immediate).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                WAKE_UP_NO_MORE_INFORMATION).withPriority(TransactionPriority.Immediate).build();
     }
 
     /**
@@ -251,7 +250,7 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    public ZWaveTransaction getIntervalMessage() {
+    public ZWaveCommandClassTransactionPayload getIntervalMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", getNode().getNodeId());
             return null;
@@ -260,13 +259,8 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass
         logger.debug("NODE {}: Creating new message for application command WAKE_UP_INTERVAL_GET",
                 getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), WAKE_UP_INTERVAL_GET).withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), WAKE_UP_INTERVAL_REPORT)
-                .withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), WAKE_UP_INTERVAL_GET)
+                .withPriority(TransactionPriority.Config).withExpectedResponseCommand(WAKE_UP_INTERVAL_REPORT).build();
     }
 
     /**
@@ -274,23 +268,18 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    public ZWaveTransaction getIntervalCapabilitiesMessage() {
+    public ZWaveCommandClassTransactionPayload getIntervalCapabilitiesMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", getNode().getNodeId());
             return null;
         }
 
         logger.debug("NODE {}: Creating new message for application command WAKE_UP_INTERVAL_CAPABILITIES_GET",
-                this.getNode().getNodeId());
+                getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), WAKE_UP_INTERVAL_CAPABILITIES_GET)
-                .withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), WAKE_UP_INTERVAL_CAPABILITIES_REPORT)
-                .withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                WAKE_UP_INTERVAL_CAPABILITIES_GET).withPriority(TransactionPriority.Config)
+                        .withExpectedResponseCommand(WAKE_UP_INTERVAL_CAPABILITIES_REPORT).build();
     }
 
     /**
@@ -342,8 +331,8 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass
      * {@inheritDoc}
      */
     @Override
-    public Collection<ZWaveTransaction> initialize(boolean refresh) {
-        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>(2);
+    public Collection<ZWaveCommandClassTransactionPayload> initialize(boolean refresh) {
+        ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>(2);
         if (refresh == true) {
             initReportDone = false;
             initCapabilitiesDone = false;

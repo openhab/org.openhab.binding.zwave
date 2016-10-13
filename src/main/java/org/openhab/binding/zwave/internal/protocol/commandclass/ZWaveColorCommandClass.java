@@ -24,10 +24,12 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -188,18 +190,13 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
      *
      * @return the serial message
      */
-    public ZWaveTransaction getCapabilityMessage() {
-        logger.debug("NODE {}: Creating new message for application command COLOR_CAPABILITY_GET",
+    public ZWaveCommandClassTransactionPayload getCapabilityMessage() {
+        logger.debug("NODE {}: Creating new message for application command SWITCH_COLOR_SUPPORTED_GET",
                 this.getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), SWITCH_COLOR_SUPPORTED_GET).withNodeId(getNode().getNodeId())
-                .build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), SWITCH_COLOR_SUPPORTED_REPORT)
-                .withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                SWITCH_COLOR_SUPPORTED_GET).withExpectedResponseCommand(SWITCH_COLOR_SUPPORTED_REPORT)
+                        .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -209,19 +206,16 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
      * @param level the level to set.
      * @return the serial message
      */
-    public ZWaveTransaction setValueMessage(int channel, int level) {
+    public ZWaveCommandClassTransactionPayload setValueMessage(int channel, int level) {
         logger.debug("NODE {}: Creating new message for application command COLOR_SET", this.getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), SWITCH_COLOR_SET).withNodeId(getNode().getNodeId())
-                .withPayload(1, channel, level).build();
-
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Set).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), SWITCH_COLOR_SET)
+                .withPayload(1, channel, level).withPriority(TransactionPriority.Set).build();
     }
 
     @Override
-    public Collection<ZWaveTransaction> initialize(boolean refresh) {
-        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
+    public Collection<ZWaveCommandClassTransactionPayload> initialize(boolean refresh) {
+        ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
         // If we're already initialized, then don't do it again unless we're refreshing
         if (refresh == true || initialiseDone == false) {
             result.add(getCapabilityMessage());

@@ -17,17 +17,14 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -223,18 +220,14 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    public ZWaveTransaction getGroupNameMessage(int groupidx) {
+    public ZWaveCommandClassTransactionPayload getGroupNameMessage(int groupidx) {
         logger.debug("NODE {}: Creating new message for application command GROUP_NAME_GET for group {}",
                 getNode().getNodeId(), groupidx);
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), ASSOCIATION_GROUP_INFO_NAME_GET).withPayload(groupidx)
-                .withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), ASSOCIATION_GROUP_INFO_NAME_REPORT)
-                .withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                ASSOCIATION_GROUP_INFO_NAME_GET).withPayload(groupidx)
+                        .withExpectedResponseCommand(ASSOCIATION_GROUP_INFO_NAME_REPORT)
+                        .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -242,7 +235,7 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    public ZWaveTransaction getInfoMessage(int groupidx) {
+    public ZWaveCommandClassTransactionPayload getInfoMessage(int groupidx) {
         logger.debug("NODE {}: Creating new message for application command INFO_GET for group {}",
                 getNode().getNodeId(), groupidx);
 
@@ -252,14 +245,10 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
             listMode = GET_LISTMODE_MASK;
         }
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), ASSOCIATION_GROUP_INFO_GET).withPayload(listMode, groupidx)
-                .withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), ASSOCIATION_GROUP_INFO_REPORT)
-                .withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                ASSOCIATION_GROUP_INFO_GET).withPayload(listMode, groupidx)
+                        .withExpectedResponseCommand(ASSOCIATION_GROUP_INFO_REPORT)
+                        .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -267,20 +256,16 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    public ZWaveTransaction getCommandListMessage(int groupidx) {
+    public ZWaveCommandClassTransactionPayload getCommandListMessage(int groupidx) {
         logger.debug("NODE {}: Creating new message for application command COMMAND_LIST_GET for group {}",
                 getNode().getNodeId(), groupidx);
 
         byte allowCache = 0;
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), ASSOCIATION_GROUP_INFO_LIST_GET).withPayload(allowCache, groupidx)
-                .withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), ASSOCIATION_GROUP_INFO_LIST_REPORT)
-                .withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                ASSOCIATION_GROUP_INFO_LIST_GET).withPayload(allowCache, groupidx)
+                        .withExpectedResponseCommand(ASSOCIATION_GROUP_INFO_LIST_REPORT)
+                        .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -293,8 +278,8 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
     }
 
     @Override
-    public Collection<ZWaveTransaction> initialize(boolean refresh) {
-        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
+    public Collection<ZWaveCommandClassTransactionPayload> initialize(boolean refresh) {
+        ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
 
         // We need the number of groups as discovered by the AssociationCommandClass
         if (getNode().getAssociationGroups().size() == 0) {

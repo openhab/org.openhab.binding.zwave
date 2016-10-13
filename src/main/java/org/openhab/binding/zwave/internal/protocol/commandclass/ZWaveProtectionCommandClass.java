@@ -13,17 +13,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -155,7 +152,7 @@ public class ZWaveProtectionCommandClass extends ZWaveCommandClass
      *
      * @return the serial message, or null if the supported command is not supported.
      */
-    public ZWaveTransaction getSupportedMessage() {
+    public ZWaveCommandClassTransactionPayload getSupportedMessage() {
         if (getVersion() == 1) {
             logger.debug("NODE {}: PROTECTION_SUPPORTED_GET not supported for V1", getNode().getNodeId());
             return null;
@@ -163,14 +160,9 @@ public class ZWaveProtectionCommandClass extends ZWaveCommandClass
 
         logger.debug("NODE {}: Creating new message for command PROTECTION_SUPPORTED_GET", getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), PROTECTION_SUPPORTED_GET).withNodeId(getNode().getNodeId())
-                .build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), PROTECTION_SUPPORTED_REPORT)
-                .withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                PROTECTION_SUPPORTED_GET).withPriority(TransactionPriority.Config)
+                        .withExpectedResponseCommand(PROTECTION_SUPPORTED_REPORT).build();
     }
 
     /**
@@ -179,17 +171,11 @@ public class ZWaveProtectionCommandClass extends ZWaveCommandClass
      * @return the serial message, or null if the supported command is not supported.
      */
     @Override
-    public ZWaveTransaction getValueMessage() {
+    public ZWaveCommandClassTransactionPayload getValueMessage() {
         logger.debug("NODE {}: Creating new message for command PROTECTION_GET", getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), PROTECTION_GET).withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), PROTECTION_REPORT)
-                .withPriority(TransactionPriority.Get).build();
-
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), PROTECTION_GET)
+                .withPriority(TransactionPriority.Get).withExpectedResponseCommand(PROTECTION_REPORT).build();
     }
 
     /**
@@ -197,7 +183,7 @@ public class ZWaveProtectionCommandClass extends ZWaveCommandClass
      *
      * @return the serial message, or null if the supported command is not supported.
      */
-    public ZWaveTransaction setValueMessage(LocalProtectionType localMode, RfProtectionType rfMode) {
+    public ZWaveCommandClassTransactionPayload setValueMessage(LocalProtectionType localMode, RfProtectionType rfMode) {
         logger.debug("NODE {}: Creating new message for command PROTECTION_SET", getNode().getNodeId());
 
         LocalProtectionType newLocalMode = localMode != null ? localMode : currentLocalMode;
@@ -210,16 +196,13 @@ public class ZWaveProtectionCommandClass extends ZWaveCommandClass
             outputData.write(rfMode.ordinal());
         }
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), PROTECTION_SET).withNodeId(getNode().getNodeId())
-                .withPayload(outputData.toByteArray()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Set).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), PROTECTION_SET)
+                .withPayload(outputData.toByteArray()).withPriority(TransactionPriority.Set).build();
     }
 
     @Override
-    public Collection<ZWaveTransaction> initialize(boolean refresh) {
-        List<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
+    public Collection<ZWaveCommandClassTransactionPayload> initialize(boolean refresh) {
+        List<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
         if (getVersion() < 2) {
             return result;
         }
@@ -231,8 +214,8 @@ public class ZWaveProtectionCommandClass extends ZWaveCommandClass
     }
 
     @Override
-    public Collection<ZWaveTransaction> getDynamicValues(boolean refresh) {
-        List<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
+    public Collection<ZWaveCommandClassTransactionPayload> getDynamicValues(boolean refresh) {
+        List<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
         if (refresh == true || dynamicDone == false) {
             result.add(getValueMessage());
         }

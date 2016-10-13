@@ -8,7 +8,7 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Interface to implement for all command classes that implement the SET commands like SET value.
@@ -23,5 +23,5 @@ public interface ZWaveSetCommands {
      * @param value the value to set.
      * @return the serial message
      */
-    public ZWaveTransaction setValueMessage(int value);
+    public ZWaveCommandClassTransactionPayload setValueMessage(int value);
 }

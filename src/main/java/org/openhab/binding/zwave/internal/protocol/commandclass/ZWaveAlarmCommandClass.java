@@ -15,18 +15,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -121,7 +119,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         AlarmType alarmType;
         ReportType eventType;
 
-        if (getVersion() == 1) {
+        if (getVersion() == 1 || payload.getPayloadLength() < 5) {
             eventType = ReportType.ALARM;
             alarmType = AlarmType.getAlarmType(v1AlarmTypeCode);
 
@@ -236,13 +234,33 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
     }
 
     /**
-     * Gets a SerialMessage with the ALARM_GET command
+     * Send a notification event
+     *
+     * @param notificationType
+     * @param event
+     * @return
+     */
+    public ZWaveCommandClassTransactionPayload getNotificationReportMessage(AlarmType notificationType, int event) {
+        if (getVersion() == 1) {
+            logger.debug("NODE {}: NOTIFICATION_REPORT not supported for V1", getNode().getNodeId());
+            return null;
+        }
+
+        logger.debug("NODE {}: Creating new message for command NOTIFICATION_REPORT", getNode().getNodeId());
+
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), NOTIFICATION_REPORT)
+                .withPayload(0, 0, 0, 0, notificationType.getKey(), event).withPriority(TransactionPriority.High)
+                .build();
+    }
+
+    /**
+     * Gets a SerialMessage with the ALARM_GET command.
+     * This just gets the first alarm!
      *
      * @return the serial message
      */
     @Override
-    public ZWaveTransaction getValueMessage() {
-        // TODO: Why does this return!!!???!!!
+    public ZWaveCommandClassTransactionPayload getValueMessage() {
         // TODO Is this used
         for (Map.Entry<AlarmType, Alarm> entry : alarms.entrySet()) {
             return getMessage(entry.getValue().getAlarmType());
@@ -256,7 +274,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
      *
      * @return the serial message, or null if the supported command is not supported.
      */
-    public ZWaveTransaction getSupportedMessage() {
+    public ZWaveCommandClassTransactionPayload getSupportedMessage() {
         if (getVersion() == 1) {
             logger.debug("NODE {}: NOTIFICATION_SUPPORTED_GET not supported for V1", getNode().getNodeId());
             return null;
@@ -264,14 +282,9 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
 
         logger.debug("NODE {}: Creating new message for command NOTIFICATION_SUPPORTED_GET", getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), NOTIFICATION_SUPPORTED_GET).withNodeId(getNode().getNodeId())
-                .build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), NOTIFICATION_SUPPORTED_REPORT)
-                .withPriority(TransactionPriority.Get).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                NOTIFICATION_SUPPORTED_GET).withExpectedResponseCommand(NOTIFICATION_SUPPORTED_REPORT)
+                        .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -279,7 +292,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
      *
      * @return the serial message, or null if the supported command is not supported.
      */
-    public ZWaveTransaction getSupportedEventMessage(int index) {
+    public ZWaveCommandClassTransactionPayload getSupportedEventMessage(int index) {
         if (getVersion() < 2) {
             logger.debug("NODE {}: EVENT_SUPPORTED_GET not supported for V1-2", getNode().getNodeId());
             return null;
@@ -287,14 +300,9 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
 
         logger.debug("NODE {}: Creating new message for command EVENT_SUPPORTED_GET", getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), EVENT_SUPPORTED_GET).withNodeId(getNode().getNodeId())
-                .withPayload(new byte[] { (byte) index }).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), EVENT_SUPPORTED_REPORT)
-                .withPriority(TransactionPriority.Get).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), EVENT_SUPPORTED_GET)
+                .withPayload(new byte[] { (byte) index }).withExpectedResponseCommand(EVENT_SUPPORTED_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -302,7 +310,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    public ZWaveTransaction getMessage(AlarmType alarmType) {
+    public ZWaveCommandClassTransactionPayload getMessage(AlarmType alarmType) {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", getNode().getNodeId());
             return null;
@@ -328,19 +336,13 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
                 break;
         }
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), NOTIFICATION_GET).withNodeId(getNode().getNodeId())
-                .withPayload(outputData.toByteArray()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), NOTIFICATION_REPORT)
-                .withPriority(TransactionPriority.Get).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), NOTIFICATION_GET)
+                .withExpectedResponseCommand(NOTIFICATION_REPORT).withPriority(TransactionPriority.Config).build();
     }
 
     @Override
-    public Collection<ZWaveTransaction> initialize(boolean refresh) {
-        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
+    public Collection<ZWaveCommandClassTransactionPayload> initialize(boolean refresh) {
+        ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
 
         if (refresh == true) {
             supportedInitialised = false;
@@ -362,9 +364,18 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         return result;
     }
 
+    /**
+     * Returns a {@link Set} of {@link AlarmType}s supported by this device
+     *
+     * @return {@link Set} of {@link AlarmType}s
+     */
+    public Set<AlarmType> getSupportedAlarms() {
+        return alarms.keySet();
+    }
+
     @Override
-    public Collection<ZWaveTransaction> getDynamicValues(boolean refresh) {
-        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
+    public Collection<ZWaveCommandClassTransactionPayload> getDynamicValues(boolean refresh) {
+        ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
 
         for (Map.Entry<AlarmType, Alarm> entry : alarms.entrySet()) {
             if (refresh == true || entry.getValue().getInitialised() == false) {

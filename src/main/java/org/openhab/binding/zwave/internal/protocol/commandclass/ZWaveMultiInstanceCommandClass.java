@@ -8,6 +8,8 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -27,9 +29,10 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -497,25 +500,30 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
      * @param instance the number of the instance to encapsulate the message for.
      * @return the encapsulated serial message.
      */
-    public SerialMessage getMultiInstanceEncapMessage(SerialMessage serialMessage, int instance) {
+    public ZWaveCommandClassTransactionPayload getMultiInstanceEncapMessage(
+            ZWaveCommandClassTransactionPayload transactionPayload, int instance) {
         logger.debug("NODE {}: Creating new message for command MULTI_INSTANCE_ENCAP instance {}",
-                this.getNode().getNodeId(), instance);
+                getNode().getNodeId(), instance);
 
-        byte[] payload = serialMessage.getMessagePayload();
-        byte[] newPayload = new byte[payload.length + 3];
-        System.arraycopy(payload, 0, newPayload, 0, 2);
-        System.arraycopy(payload, 0, newPayload, 3, payload.length);
-        newPayload[1] += 3;
-        newPayload[2] = (byte) getCommandClass().getKey();
-        newPayload[3] = MULTI_INSTANCE_ENCAP;
-        newPayload[4] = (byte) (instance);
+        ByteArrayOutputStream newPayload = new ByteArrayOutputStream();
+        newPayload.write(getCommandClass().getKey());
+        newPayload.write(MULTI_INSTANCE_ENCAP);
+        newPayload.write(instance);
+        try {
+            newPayload.write(transactionPayload.getPayloadBuffer());
+            return new ZWaveCommandClassTransactionPayload(transactionPayload.getNodeId(), newPayload.toByteArray(),
+                    transactionPayload.getPriority(), transactionPayload.getExpectedResponseCommandClass(),
+                    transactionPayload.getExpectedResponseCommandClassCommand());
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
-        serialMessage.setMessagePayload(newPayload);
-        return serialMessage;
+        return null;
     }
 
     /**
-     * Gets a SerialMessage with the MULTI CHANNEL ENDPOINT GET command.
+     * Gets a SerialMessage with the MULTI_CHANNEL_ENDPOINT_GET command.
      * Returns the endpoints for this node.
      *
      * @return the serial message.
@@ -563,22 +571,27 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
      * @param endpoint the endpoint to encapsulate the message for.
      * @return the encapsulated serial message.
      */
-    public SerialMessage getMultiChannelEncapMessage(SerialMessage serialMessage, ZWaveEndpoint endpoint) {
+    public ZWaveCommandClassTransactionPayload getMultiChannelEncapMessage(
+            ZWaveCommandClassTransactionPayload transactionPayload, int endpoint) {
         logger.debug("NODE {}: Creating new message for command MULTI_CHANNEL_ENCAP endpoint {}", getNode().getNodeId(),
-                endpoint.getEndpointId());
+                endpoint);
 
-        byte[] payload = serialMessage.getMessagePayload();
-        byte[] newPayload = new byte[payload.length + 4];
-        System.arraycopy(payload, 0, newPayload, 0, 2);
-        System.arraycopy(payload, 0, newPayload, 4, payload.length);
-        newPayload[1] += 4;
-        newPayload[2] = (byte) getCommandClass().getKey();
-        newPayload[3] = MULTI_CHANNEL_ENCAP;
-        newPayload[4] = 0x01;
-        newPayload[5] = (byte) endpoint.getEndpointId();
+        ByteArrayOutputStream newPayload = new ByteArrayOutputStream();
+        newPayload.write(getCommandClass().getKey());
+        newPayload.write(MULTI_CHANNEL_ENCAP);
+        newPayload.write(1); // TODO: Make this a parameter to allow multiple source endpoints
+        newPayload.write(endpoint);
+        try {
+            newPayload.write(transactionPayload.getPayloadBuffer());
+            return new ZWaveCommandClassTransactionPayload(transactionPayload.getNodeId(), newPayload.toByteArray(),
+                    transactionPayload.getPriority(), transactionPayload.getExpectedResponseCommandClass(),
+                    transactionPayload.getExpectedResponseCommandClassCommand());
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
-        serialMessage.setMessagePayload(newPayload);
-        return serialMessage;
+        return null;
     }
 
     /**

@@ -12,18 +12,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -101,7 +98,7 @@ public class ZWaveBinarySwitchCommandClass extends ZWaveCommandClass
      * @return the serial message
      */
     @Override
-    public ZWaveTransaction getValueMessage() {
+    public ZWaveCommandClassTransactionPayload getValueMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", this.getNode().getNodeId());
             return null;
@@ -110,13 +107,8 @@ public class ZWaveBinarySwitchCommandClass extends ZWaveCommandClass
         logger.debug("NODE {}: Creating new message for application command SWITCH_BINARY_GET",
                 this.getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), SWITCH_BINARY_GET).withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), SWITCH_BINARY_REPORT)
-                .withPriority(TransactionPriority.Get).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), SWITCH_BINARY_GET)
+                .withExpectedResponseCommand(SWITCH_BINARY_REPORT).withPriority(TransactionPriority.Get).build();
     }
 
     /**
@@ -126,15 +118,11 @@ public class ZWaveBinarySwitchCommandClass extends ZWaveCommandClass
      * @return the serial message
      */
     @Override
-    public ZWaveTransaction setValueMessage(int level) {
-        logger.debug("NODE {}: Creating new message for application command SWITCH_BINARY_SET",
-                this.getNode().getNodeId());
+    public ZWaveCommandClassTransactionPayload setValueMessage(int level) {
+        logger.debug("NODE {}: Creating new message for application command SWITCH_BINARY_SET", getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), SWITCH_BINARY_SET).withNodeId(getNode().getNodeId())
-                .withPayload((level > 0 ? 0xFF : 0x00)).build();
-
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Set).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), SWITCH_BINARY_SET)
+                .withPayload((level > 0 ? 0xFF : 0x00)).withPriority(TransactionPriority.Set).build();
     }
 
     @Override
@@ -150,8 +138,8 @@ public class ZWaveBinarySwitchCommandClass extends ZWaveCommandClass
      * {@inheritDoc}
      */
     @Override
-    public Collection<ZWaveTransaction> getDynamicValues(boolean refresh) {
-        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
+    public Collection<ZWaveCommandClassTransactionPayload> getDynamicValues(boolean refresh) {
+        ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
 
         if (refresh == true || dynamicDone == false) {
             result.add(getValueMessage());

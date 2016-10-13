@@ -10,7 +10,7 @@ package org.openhab.binding.zwave.internal.protocol.commandclass;
 
 import java.util.Collection;
 
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Interface that command classes can implement to implement initialization.
@@ -28,5 +28,5 @@ public interface ZWaveCommandClassInitialization {
      * @param refresh if true will request all initialised even if the class is already initialised
      * @return the messages with the queries for initialization.
      */
-    public Collection<ZWaveTransaction> initialize(boolean refresh);
+    public Collection<ZWaveCommandClassTransactionPayload> initialize(boolean refresh);
 }

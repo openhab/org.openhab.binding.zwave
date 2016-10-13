@@ -14,17 +14,14 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -73,16 +70,11 @@ public class ZWaveTimeParametersCommandClass extends ZWaveCommandClass
      * @return the serial message.
      */
     @Override
-    public ZWaveTransaction getValueMessage() {
+    public ZWaveCommandClassTransactionPayload getValueMessage() {
         logger.debug("NODE {}: Creating new message for command TIME_GET", getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), TIME_GET)
-                .withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), TIME_REPORT)
-                .withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), TIME_GET)
+                .withPriority(TransactionPriority.Get).withExpectedResponseCommand(TIME_REPORT).build();
     }
 
     /**
@@ -90,7 +82,7 @@ public class ZWaveTimeParametersCommandClass extends ZWaveCommandClass
      *
      * @return the serial message.
      */
-    public ZWaveTransaction getSetMessage(Calendar cal) {
+    public ZWaveCommandClassTransactionPayload getSetMessage(Calendar cal) {
         logger.debug("NODE {}: Creating new message for command TIME_SET", getNode().getNodeId());
 
         ByteArrayOutputStream outputData = new ByteArrayOutputStream();
@@ -102,10 +94,8 @@ public class ZWaveTimeParametersCommandClass extends ZWaveCommandClass
         outputData.write(cal.get(Calendar.MINUTE));
         outputData.write(cal.get(Calendar.SECOND));
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), TIME_SET)
-                .withNodeId(getNode().getNodeId()).withPayload(outputData.toByteArray()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.RealTime).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), TIME_SET)
+                .withPayload(outputData.toByteArray()).withPriority(TransactionPriority.RealTime).build();
     }
 
     @ZWaveResponseHandler(id = TIME_REPORT, name = "TIME_REPORT")
@@ -129,8 +119,8 @@ public class ZWaveTimeParametersCommandClass extends ZWaveCommandClass
     }
 
     @Override
-    public Collection<ZWaveTransaction> getDynamicValues(boolean refresh) {
-        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
+    public Collection<ZWaveCommandClassTransactionPayload> getDynamicValues(boolean refresh) {
+        ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
         if (refresh == true && getEndpoint() == null) {
             result.add(getValueMessage());
         }

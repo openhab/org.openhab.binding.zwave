@@ -14,17 +14,14 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -149,43 +146,30 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
      * @return the serial message
      */
     @Override
-    public ZWaveTransaction getValueMessage() {
+    public ZWaveCommandClassTransactionPayload getValueMessage() {
         logger.debug("NODE {}: Creating new message for application command DOORLOCK_GET", getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), DOOR_LOCK_GET).withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), DOOR_LOCK_REPORT)
-                .withPriority(TransactionPriority.Get).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), DOOR_LOCK_GET)
+                .withPriority(TransactionPriority.Get).withExpectedResponseCommand(DOOR_LOCK_REPORT).build();
     }
 
     @Override
-    public ZWaveTransaction setValueMessage(int value) {
+    public ZWaveCommandClassTransactionPayload setValueMessage(int value) {
         logger.debug("NODE {}: Creating new message for application command DOORLOCK_SET", getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), DOOR_LOCK_SET).withNodeId(getNode().getNodeId()).withPayload(value)
-                .build();
-
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), DOOR_LOCK_SET)
+                .withPriority(TransactionPriority.Get).build();
     }
 
-    public ZWaveTransaction getConfigMessage() {
+    public ZWaveCommandClassTransactionPayload getConfigMessage() {
         logger.debug("NODE {}: Creating new message for application command DOORLOCK_CONFIG_GET",
                 getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), DOOR_LOCK_CONFIG_GET).withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), DOOR_LOCK_CONFIG_REPORT)
-                .withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), DOOR_LOCK_CONFIG_GET)
+                .withExpectedResponseCommand(DOOR_LOCK_CONFIG_REPORT).withPriority(TransactionPriority.Config).build();
     }
 
-    public ZWaveTransaction setConfigMessage(boolean timeoutEnabled, int timeoutValue) {
+    public ZWaveCommandClassTransactionPayload setConfigMessage(boolean timeoutEnabled, int timeoutValue) {
         lockTimeout = timeoutValue;
         lockTimeoutSet = timeoutEnabled;
         if (lockTimeoutSet == true) {
@@ -212,15 +196,12 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
         outputData.write((byte) lockTimeoutMinutes);
         outputData.write((byte) lockTimeoutSeconds);
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), DOOR_LOCK_CONFIG_SET).withNodeId(getNode().getNodeId())
-                .withPayload(outputData.toByteArray()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), DOOR_LOCK_CONFIG_SET)
+                .withPayload(outputData.toByteArray()).withPriority(TransactionPriority.Config).build();
     }
 
     @Override
-    public Collection<ZWaveTransaction> initialize(boolean refresh) {
+    public Collection<ZWaveCommandClassTransactionPayload> initialize(boolean refresh) {
         if (refresh) {
             initialisationDone = false;
         }
@@ -229,7 +210,7 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
             return null;
         }
 
-        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
+        ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
         result.add(getConfigMessage());
         return result;
     }
@@ -238,7 +219,7 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
      * {@inheritDoc}
      */
     @Override
-    public Collection<ZWaveTransaction> getDynamicValues(boolean refresh) {
+    public Collection<ZWaveCommandClassTransactionPayload> getDynamicValues(boolean refresh) {
         if (refresh) {
             dynamicDone = false;
         }
@@ -247,7 +228,7 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
             return null;
         }
 
-        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
+        ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
         result.add(getConfigMessage());
         result.add(getValueMessage());
         return result;

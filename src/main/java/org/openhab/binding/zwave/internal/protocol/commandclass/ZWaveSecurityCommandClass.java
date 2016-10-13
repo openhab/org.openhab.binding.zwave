@@ -34,7 +34,6 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent.Type;
 import org.openhab.binding.zwave.internal.protocol.initialization.ZWaveNodeSerializer;
@@ -43,6 +42,7 @@ import org.openhab.binding.zwave.internal.protocol.security.ZWaveSecureNonceTrac
 import org.openhab.binding.zwave.internal.protocol.security.ZWaveSecureNonceTracker.Nonce;
 import org.openhab.binding.zwave.internal.protocol.security.ZWaveSecurityPayloadFrame;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ApplicationCommandMessageClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

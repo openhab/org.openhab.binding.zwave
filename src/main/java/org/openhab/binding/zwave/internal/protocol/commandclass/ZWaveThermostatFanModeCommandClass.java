@@ -15,17 +15,14 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -149,10 +146,10 @@ public class ZWaveThermostatFanModeCommandClass extends ZWaveCommandClass
      * {@inheritDoc}
      */
     @Override
-    public Collection<ZWaveTransaction> initialize(boolean refresh) {
-        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
+    public Collection<ZWaveCommandClassTransactionPayload> initialize(boolean refresh) {
+        ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
         if (refresh == true || initialiseDone == false) {
-            result.add(this.getSupportedMessage());
+            result.add(getSupportedMessage());
         }
         return result;
     }
@@ -161,9 +158,9 @@ public class ZWaveThermostatFanModeCommandClass extends ZWaveCommandClass
      * {@inheritDoc}
      */
     @Override
-    public Collection<ZWaveTransaction> getDynamicValues(boolean refresh) {
+    public Collection<ZWaveCommandClassTransactionPayload> getDynamicValues(boolean refresh) {
         // TODO (or question for Dan from Chris) - shouldn't this iterate through all fan types?
-        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
+        ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
         if (refresh == true || dynamicDone == false) {
             result.add(getValueMessage());
         }
@@ -174,7 +171,7 @@ public class ZWaveThermostatFanModeCommandClass extends ZWaveCommandClass
      * {@inheritDoc}
      */
     @Override
-    public ZWaveTransaction getValueMessage() {
+    public ZWaveCommandClassTransactionPayload getValueMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", this.getNode().getNodeId());
             return null;
@@ -183,13 +180,9 @@ public class ZWaveThermostatFanModeCommandClass extends ZWaveCommandClass
         logger.debug("NODE {}: Creating new message for application command THERMOSTAT_FAN_MODE_GET",
                 this.getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), THERMOSTAT_FAN_MODE_GET).withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), THERMOSTAT_FAN_MODE_REPORT)
-                .withPriority(TransactionPriority.Get).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                THERMOSTAT_FAN_MODE_GET).withPriority(TransactionPriority.Get)
+                        .withExpectedResponseCommand(THERMOSTAT_FAN_MODE_REPORT).build();
     }
 
     @Override
@@ -206,45 +199,43 @@ public class ZWaveThermostatFanModeCommandClass extends ZWaveCommandClass
      *
      * @return the serial message, or null if the supported command is not supported.
      */
-    public ZWaveTransaction getSupportedMessage() {
+    public ZWaveCommandClassTransactionPayload getSupportedMessage() {
+        if (isGetSupported == false) {
+            initialiseDone = true;
+            return null;
+        }
+
         logger.debug("NODE {}: Creating new message for application command THERMOSTAT_FAN_MODE_SUPPORTED_GET",
-                this.getNode().getNodeId());
+                getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), THERMOSTAT_FAN_MODE_SUPPORTED_GET)
-                .withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), THERMOSTAT_FAN_MODE_SUPPORTED_REPORT)
-                .withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                THERMOSTAT_FAN_MODE_SUPPORTED_GET).withPriority(TransactionPriority.Config)
+                        .withExpectedResponseCommand(THERMOSTAT_FAN_MODE_SUPPORTED_REPORT).build();
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public ZWaveTransaction setValueMessage(int value) {
+    public ZWaveCommandClassTransactionPayload setValueMessage(int value) {
 
         if (fanModeTypes.isEmpty()) {
             logger.warn("NODE {}: requesting fan mode types, set request ignored (try again later)",
-                    this.getNode().getNodeId());
-            return this.getSupportedMessage();
+                    getNode().getNodeId());
+            return getSupportedMessage();
         }
 
         if (!fanModeTypes.contains(FanModeType.getFanModeType(value))) {
-            logger.error("NODE {}: Unsupported fanMode type {}", value, this.getNode().getNodeId());
+            logger.error("NODE {}: Unsupported fanMode type {}", value, getNode().getNodeId());
 
             return null;
         }
 
         logger.debug("NODE {}: Creating new message for application command THERMOSTAT_FAN_MODE_SET",
-                this.getNode().getNodeId());
+                getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), THERMOSTAT_FAN_MODE_SET).withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Set).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                THERMOSTAT_FAN_MODE_SET).withPayload(value).withPriority(TransactionPriority.Set).build();
     }
 
     /**

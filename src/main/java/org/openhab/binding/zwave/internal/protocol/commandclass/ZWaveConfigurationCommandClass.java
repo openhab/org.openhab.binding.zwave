@@ -13,19 +13,16 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveConfigurationParameter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,9 +40,9 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveConfigurationCommandClass.class);
 
-    private static final int CONFIGURATIONCMD_SET = 0x04;
-    private static final int CONFIGURATIONCMD_GET = 0x05;
-    private static final int CONFIGURATIONCMD_REPORT = 0x06;
+    private static final int CONFIGURATION_SET = 0x04;
+    private static final int CONFIGURATION_GET = 0x05;
+    private static final int CONFIGURATION_REPORT = 0x06;
 
     // Stores the list of configuration parameters. These are used for persistence of values and restore.
     private Map<Integer, ZWaveConfigurationParameter> configParameters = new HashMap<Integer, ZWaveConfigurationParameter>();
@@ -83,7 +80,7 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
      *            the endpoint or instance number this message is meant for.
      * @throws ZWaveSerialMessageException
      */
-    @ZWaveResponseHandler(id = CONFIGURATIONCMD_REPORT, name = "CONFIGURATIONCMD_REPORT")
+    @ZWaveResponseHandler(id = CONFIGURATION_REPORT, name = "CONFIGURATIONCMD_REPORT")
     public void handleConfigurationReport(ZWaveCommandClassPayload payload, int endpoint) {
         // Extract the parameter index and value
         int parameter = payload.getPayloadByte(2);
@@ -127,26 +124,20 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
      *
      * @return the serial message
      */
-    public ZWaveTransaction getConfigMessage(int parameter) {
+    public ZWaveCommandClassTransactionPayload getConfigMessage(int parameter) {
         // Check if the parameter exists in our list
         ZWaveConfigurationParameter configurationParameter = configParameters.get(parameter);
         if (configurationParameter != null && configurationParameter.getWriteOnly() == true) {
-            logger.debug("NODE {}: CONFIGURATIONCMD_GET ignored for parameter {} - parameter is write only",
+            logger.debug("NODE {}: CONFIGURATION_GET ignored for parameter {} - parameter is write only",
                     getNode().getNodeId(), parameter);
             return null;
         }
 
         logger.debug("NODE {}: Creating new message for application command CONFIGURATIONCMD_GET",
-                this.getNode().getNodeId());
+                getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), CONFIGURATIONCMD_GET).withNodeId(getNode().getNodeId())
-                .withPayload(parameter).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), CONFIGURATIONCMD_REPORT)
-                .withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), CONFIGURATION_GET)
+                .withExpectedResponseCommand(CONFIGURATION_REPORT).withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -155,14 +146,14 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
      * @param parameter the parameter to set.
      * @return the serial message
      */
-    public ZWaveTransaction setConfigMessage(ZWaveConfigurationParameter parameter) {
+    public ZWaveCommandClassTransactionPayload setConfigMessage(ZWaveConfigurationParameter parameter) {
         if (parameter != null && parameter.getReadOnly() == true) {
-            logger.debug("NODE {}: CONFIGURATIONCMD_SET ignored for parameter {} - parameter is read only",
+            logger.debug("NODE {}: CONFIGURATION_SET ignored for parameter {} - parameter is read only",
                     getNode().getNodeId(), parameter);
             return null;
         }
 
-        logger.debug("NODE {}: Creating new message for application command CONFIGURATIONCMD_SET",
+        logger.debug("NODE {}: Creating new message for application command CONFIGURATION_SET",
                 this.getNode().getNodeId());
 
         ByteArrayOutputStream outputData = new ByteArrayOutputStream();
@@ -173,11 +164,8 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
             outputData.write(parameter.getValue() >> ((parameter.getSize() - i - 1) * 8));
         }
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), CONFIGURATIONCMD_SET).withNodeId(getNode().getNodeId())
-                .withPayload(outputData.toByteArray()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), CONFIGURATION_SET)
+                .withPayload(outputData.toByteArray()).withPriority(TransactionPriority.Config).build();
     }
 
     /**

@@ -10,7 +10,7 @@ package org.openhab.binding.zwave.internal.protocol.commandclass;
 
 import java.util.Collection;
 
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Interface that command classes can implement to implement retrieval of dynamic state information.
@@ -28,5 +28,5 @@ public interface ZWaveCommandClassDynamicState {
      * @param refresh if true will request all dynamic states even if they are already initialised
      * @return the messages with the queries for dynamic values.
      */
-    public Collection<ZWaveTransaction> getDynamicValues(boolean refresh);
+    public Collection<ZWaveCommandClassTransactionPayload> getDynamicValues(boolean refresh);
 }

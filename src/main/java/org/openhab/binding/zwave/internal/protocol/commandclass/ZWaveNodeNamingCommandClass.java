@@ -15,18 +15,15 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -248,16 +245,11 @@ public class ZWaveNodeNamingCommandClass extends ZWaveCommandClass implements ZW
      *
      * @return the serial message
      */
-    public ZWaveTransaction getNameMessage() {
+    public ZWaveCommandClassTransactionPayload getNameMessage() {
         logger.debug("NODE {}: Creating new message for application command NAME_GET", this.getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), NAME_GET)
-                .withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), NAME_REPORT)
-                .withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), NAME_GET)
+                .withExpectedResponseCommand(NAME_REPORT).withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -265,16 +257,11 @@ public class ZWaveNodeNamingCommandClass extends ZWaveCommandClass implements ZW
      *
      * @return the serial message
      */
-    public ZWaveTransaction getLocationMessage() {
+    public ZWaveCommandClassTransactionPayload getLocationMessage() {
         logger.debug("NODE {}: Creating new message for application command LOCATION_GET", this.getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), LOCATION_GET).withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), LOCATION_REPORT)
-                .withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), LOCATION_GET)
+                .withExpectedResponseCommand(LOCATION_REPORT).withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -283,7 +270,7 @@ public class ZWaveNodeNamingCommandClass extends ZWaveCommandClass implements ZW
      * @param the level to set.
      * @return the serial message
      */
-    private ZWaveTransaction setValueMessage(String str, int command) {
+    private ZWaveCommandClassTransactionPayload setValueMessage(String str, int command) {
         logger.debug("NODE {}: Creating new message for application command NAME_SET to {}", this.getNode().getNodeId(),
                 str);
 
@@ -308,23 +295,21 @@ public class ZWaveNodeNamingCommandClass extends ZWaveCommandClass implements ZW
         payload[0] = encoding;
         System.arraycopy(nameBuffer, 0, payload, 1, len);
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), command)
-                .withNodeId(getNode().getNodeId()).withPayload(payload).build();
-
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), command)
+                .withPriority(TransactionPriority.Config).build();
     }
 
-    public ZWaveTransaction setNameMessage(String name) {
+    public ZWaveCommandClassTransactionPayload setNameMessage(String name) {
         return setValueMessage(name, NAME_SET);
     }
 
-    public ZWaveTransaction setLocationMessage(String location) {
+    public ZWaveCommandClassTransactionPayload setLocationMessage(String location) {
         return setValueMessage(location, LOCATION_SET);
     }
 
     @Override
-    public Collection<ZWaveTransaction> getDynamicValues(boolean refresh) {
-        ArrayList<ZWaveTransaction> result = new ArrayList<ZWaveTransaction>();
+    public Collection<ZWaveCommandClassTransactionPayload> getDynamicValues(boolean refresh) {
+        ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
 
         if (refresh == true) {
             initialiseName = false;
