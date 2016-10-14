@@ -147,6 +147,9 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
             .asList(new Byte[] { SECURITY_NETWORK_KEY_SET, SECURITY_NETWORK_KEY_VERIFY, SECURITY_SCHEME_INHERIT,
                     SECURITY_COMMANDS_SUPPORTED_GET, SECURITY_COMMANDS_SUPPORTED_REPORT });
 
+    private static final List<CommandClass> mandatoryCommandClasses = Arrays
+            .asList(new CommandClass[] { CommandClass.COMMAND_CLASS_DOOR_LOCK });
+
     /**
      * Should be set to true to ensure all incoming security encapsulated messages adhere to
      * zwave security mac standards
@@ -365,8 +368,18 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
      * The Security command class is unique in that only some commands require encryption
      * (for all others, the security encapsulation requirement applies to the entire command class.)
      */
-    public static boolean doesCommandRequireSecurityEncapsulation(Byte commandByte) {
-        return REQUIRED_ENCAPSULATION_LIST.contains(commandByte);
+    public static boolean doesCommandRequireSecurityEncapsulation(int cmd) {
+        return REQUIRED_ENCAPSULATION_LIST.contains(cmd);
+    }
+
+    /**
+     * Check if a command class must be encapsulated
+     *
+     * @param cmdClass
+     * @return
+     */
+    public static boolean doesCommandClassRequireSecurityEncapsulation(CommandClass cmdClass) {
+        return mandatoryCommandClasses.contains(cmdClass);
     }
 
     @ZWaveResponseHandler(id = SECURITY_NONCE_REPORT, name = "SECURITY_NONCE_REPORT")
