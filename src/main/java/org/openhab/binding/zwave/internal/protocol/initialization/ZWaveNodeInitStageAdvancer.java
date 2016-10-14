@@ -730,8 +730,8 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                         // Command class isn't found! Do we want to add it?
                         // TODO: Does this need to account for multiple endpoints!?!
                         if (optionMap.containsKey("ccAdd")) {
-                            ZWaveCommandClass commandClass = ZWaveCommandClass.getInstance(
-                                    CommandClass.getCommandClass(optionMap.get(cmds[1])).getKey(), node, controller);
+                            ZWaveCommandClass commandClass = ZWaveCommandClass
+                                    .getInstance(CommandClass.getCommandClass(cmds[1]).getKey(), node, controller);
                             if (commandClass != null) {
                                 logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - adding {}", node.getNodeId(),
                                         cmds[1]);
