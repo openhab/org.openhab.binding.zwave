@@ -301,7 +301,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
                 SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.High);
         byte[] newPayload = { (byte) getNode().getNodeId(), 8, (byte) getCommandClass().getKey(),
-                (byte) NOTIFICATION_REPORT, 0, 0, 0, 0, (byte) notificationType.getKey(), (byte) event };
+                (byte) NOTIFICATION_REPORT, 0, 0, 0, (byte) 0xff, (byte) notificationType.getKey(), (byte) event };
         result.setMessagePayload(newPayload);
         return result;
     }
