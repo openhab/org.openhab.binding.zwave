@@ -132,7 +132,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         }
 
         // Handle event 0 as 'clear the event'
-        int event = eventAlarm.getAlarmEvent() == 0 ? 0 : eventAlarm.getAlarmStatus();
+        int event = eventAlarm.getAlarmEvent();// == 0 ? 0 : eventAlarm.getAlarmStatus();
 
         // TODO: Handle these event to state specific conversions in a table.
         State state = null;
@@ -145,10 +145,10 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                 if (eventAlarm.getAlarmType() == AlarmType.ACCESS_CONTROL) {
                     switch (event) {
                         case 22: // Window/Door is open
-                            state = eventAlarm.getValue() == 0 ? OpenClosedType.CLOSED : OpenClosedType.OPEN;
+                            state = OpenClosedType.OPEN;
                             break;
                         case 23: // Window/Door is closed
-                            state = eventAlarm.getValue() == 0 ? OpenClosedType.OPEN : OpenClosedType.CLOSED;
+                            state = OpenClosedType.CLOSED;
                             break;
                         default:
                             break;

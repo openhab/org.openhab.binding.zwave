@@ -17,6 +17,7 @@ import java.util.Map;
 
 import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.library.types.OnOffType;
+import org.eclipse.smarthome.core.library.types.OpenClosedType;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.types.State;
 import org.junit.Test;
@@ -106,6 +107,23 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
     }
 
     @Test
+    public void Notification_Door() {
+        ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
+        ZWaveThingChannel channel = createChannel(DataType.OpenClosedType, null, null);
+
+        ZWaveCommandClassValueEvent event = createEvent(ZWaveAlarmCommandClass.AlarmType.ACCESS_CONTROL,
+                ReportType.NOTIFICATION, 22, 0xff);
+        State state = converter.handleEvent(channel, event);
+        assertEquals(state.getClass(), OpenClosedType.class);
+        assertEquals(state, OpenClosedType.OPEN);
+
+        event = createEvent(ZWaveAlarmCommandClass.AlarmType.ACCESS_CONTROL, ReportType.NOTIFICATION, 23, 0xff);
+        state = converter.handleEvent(channel, event);
+        assertEquals(state.getClass(), OpenClosedType.class);
+        assertEquals(state, OpenClosedType.CLOSED);
+    }
+
+    @Test
     public void Notification_PowerManagement_PowerApplied() {
         // Simulates the Nexia doorbell
         ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
@@ -156,7 +174,6 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         msgs = converter.receiveCommand(channel, node, command);
         assertEquals(1, msgs.size());
         msgs.get(0).setCallbackId(0);
-        byte[] x = msgs.get(0).getMessageBuffer();
         assertTrue(Arrays.equals(msgs.get(0).getMessageBuffer(), expectedResponse2));
     }
 }
