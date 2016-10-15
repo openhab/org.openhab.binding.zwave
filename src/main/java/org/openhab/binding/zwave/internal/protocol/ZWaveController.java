@@ -21,7 +21,6 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionState;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
@@ -63,6 +62,7 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.SerialApiSetTim
 import org.openhab.binding.zwave.internal.protocol.serialmessage.SerialApiSoftResetMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.SetSucNodeMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveCommandProcessor;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -485,16 +485,16 @@ public class ZWaveController {
     /**
      * Queues a message for sending on the send queue.
      *
-     * @param transaction
+     * @param zWaveCommandClassTransactionPayload
      *            the serial message to enqueue.
      */
-    public void enqueue(ZWaveTransaction transaction) {
+    public void enqueue(ZWaveMessagePayload payload) {
         // Sanity check!
-        if (transaction == null) {
+        if (payload == null) {
             return;
         }
 
-        transactionManager.queueTransactionForSend(transaction);
+        transactionManager.queueTransactionForSend(payload);
 
         return;
 
@@ -1019,36 +1019,37 @@ public class ZWaveController {
     /**
      * Transmits the SerialMessage to a single ZWave Node. Sets the transmission options as well.
      *
-     * @param transaction
+     * @param zWaveCommandClassTransactionPayload
      *            the Serial message to send.
      */
-    public void sendData(ZWaveTransaction transaction) {
-        if (transaction == null) {
+    public void sendData(ZWaveCommandClassTransactionPayload zWaveCommandClassTransactionPayload) {
+        if (zWaveCommandClassTransactionPayload == null) {
             return;
         }
-        if (transaction.getSerialMessage().getMessageClass() != SerialMessageClass.SendData) {
-            logger.error(String.format("Invalid message class %s (0x%02X) for sendData",
-                    transaction.getSerialMessage().getMessageClass().getLabel(),
-                    transaction.getSerialMessage().getMessageClass().getKey()));
-            return;
-        }
-        if (transaction.getSerialMessage().getMessageType() != SerialMessageType.Request) {
-            logger.error("Only request messages can be sent");
-            return;
-        }
+        // if (zWaveCommandClassTransactionPayload.getSerialMessage().getMessageClass() != SerialMessageClass.SendData)
+        // {
+        // logger.error(String.format("Invalid message class %s (0x%02X) for sendData",
+        // zWaveCommandClassTransactionPayload.getSerialMessage().getMessageClass().getLabel(),
+        // zWaveCommandClassTransactionPayload.getSerialMessage().getMessageClass().getKey()));
+        // return;
+        // }
+        // if (zWaveCommandClassTransactionPayload.getSerialMessage().getMessageType() != SerialMessageType.Request) {
+        // logger.error("Only request messages can be sent");
+        // return;
+        // }
 
         // We need to wait on the ACK from the controller before completing the transaction.
         // This is required in case the Application Message is received from the SendData ACK
         // serialMessage.setAckRequired();
 
         // ZWaveSecurityCommandClass needs to set it's own transmit options. Only set them here if not already done
-        if (!transaction.getSerialMessage().areTransmitOptionsSet()) {
-            transaction.getSerialMessage()
-                    .setTransmitOptions(TRANSMIT_OPTION_ACK | TRANSMIT_OPTION_AUTO_ROUTE | TRANSMIT_OPTION_EXPLORE);
-        }
+        // if (!zWaveCommandClassTransactionPayload.getSerialMessage().areTransmitOptionsSet()) {
+        // zWaveCommandClassTransactionPayload.getSerialMessage()
+        // .setTransmitOptions(TRANSMIT_OPTION_ACK | TRANSMIT_OPTION_AUTO_ROUTE | TRANSMIT_OPTION_EXPLORE);
+        // }
 
         // serialMessage.setCallbackId(getCallbackId());
-        enqueue(transaction);
+        enqueue(zWaveCommandClassTransactionPayload);
     }
 
     /**
