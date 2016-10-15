@@ -11,12 +11,11 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
-import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,16 +31,12 @@ public class RequestNodeNeighborUpdateMessageClass extends ZWaveCommandProcessor
     final int REQUEST_NEIGHBOR_UPDATE_DONE = 0x22;
     final int REQUEST_NEIGHBOR_UPDATE_FAILED = 0x23;
 
-    public ZWaveTransaction doRequest(int nodeId) {
+    public ZWaveSerialPayload doRequest(int nodeId) {
         logger.debug("NODE {}: Request neighbor update", nodeId);
 
         // Create the request
-        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.RequestNodeNeighborUpdate)
-                .withPayload(nodeId).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.RequestNodeNeighborUpdate)
-                .withPriority(TransactionPriority.High).build();
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.RequestNodeNeighborUpdate).withPayload(nodeId)
+                .build();
     }
 
     @Override

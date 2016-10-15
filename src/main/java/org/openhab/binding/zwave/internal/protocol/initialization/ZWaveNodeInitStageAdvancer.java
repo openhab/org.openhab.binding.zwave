@@ -27,7 +27,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWavePayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveMessagePayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse.State;
@@ -188,7 +188,7 @@ public class ZWaveNodeInitStageAdvancer {
         thread.start();
     }
 
-    private void processTransactions(ZWavePayload zWaveCommandClassTransactionPayload) {
+    private void processTransactions(ZWaveMessagePayload zWaveCommandClassTransactionPayload) {
         if (zWaveCommandClassTransactionPayload == null) {
             return;
         }

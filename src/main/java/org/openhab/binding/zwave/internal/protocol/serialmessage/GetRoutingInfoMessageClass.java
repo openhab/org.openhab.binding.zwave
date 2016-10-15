@@ -11,13 +11,12 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
-import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +30,7 @@ public class GetRoutingInfoMessageClass extends ZWaveCommandProcessor {
 
     private static final int NODE_BYTES = 29; // 29 bytes = 232 bits, one for each supported node by Z-Wave;
 
-    public ZWaveTransaction doRequest(int nodeId) {
+    public ZWaveSerialPayload doRequest(int nodeId) {
         logger.debug("NODE {}: Request routing info", nodeId);
 
         byte[] payload = { (byte) nodeId, (byte) 0, // Don't remove bad nodes
@@ -40,10 +39,7 @@ public class GetRoutingInfoMessageClass extends ZWaveCommandProcessor {
         };
 
         // Create the request
-        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.GetRoutingInfo).withPayload(payload)
-                .build();
-
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.GetRoutingInfo).withPayload(payload).build();
     }
 
     @Override

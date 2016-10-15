@@ -11,11 +11,10 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
-import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,12 +26,10 @@ import org.slf4j.LoggerFactory;
 public class SerialApiSetTimeoutsMessageClass extends ZWaveCommandProcessor {
     private static final Logger logger = LoggerFactory.getLogger(SerialApiSetTimeoutsMessageClass.class);
 
-    public ZWaveTransaction doRequest(int ackTimeout, int byteTimeout) {
+    public ZWaveSerialPayload doRequest(int ackTimeout, int byteTimeout) {
         // Create the request
-        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.SerialApiSetTimeouts)
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.SerialApiSetTimeouts)
                 .withPayload(ackTimeout, byteTimeout).build();
-
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
     }
 
     @Override

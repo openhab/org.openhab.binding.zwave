@@ -13,10 +13,12 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageCl
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,14 +42,12 @@ public class RemoveNodeMessageClass extends ZWaveCommandProcessor {
     private final int REMOVE_NODE_STATUS_DONE = 6;
     private final int REMOVE_NODE_STATUS_FAILED = 7;
 
-    public ZWaveTransaction doRequestStart() {
+    public ZWaveSerialPayload doRequestStart() {
         logger.debug("Setting controller into EXCLUSION mode.");
 
         // Create the request
-        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.RemoveNodeFromNetwork)
-                .withPayload(REMOVE_NODE_ANY).build();
-
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.RemoveNodeFromNetwork).withPayload(REMOVE_NODE_ANY)
+                .build();
     }
 
     public ZWaveTransaction doRequestStop() {

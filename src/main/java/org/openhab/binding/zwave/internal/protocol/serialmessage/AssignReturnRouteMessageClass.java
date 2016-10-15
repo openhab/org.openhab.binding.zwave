@@ -11,12 +11,11 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
-import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,14 +27,12 @@ import org.slf4j.LoggerFactory;
 public class AssignReturnRouteMessageClass extends ZWaveCommandProcessor {
     private static final Logger logger = LoggerFactory.getLogger(AssignReturnRouteMessageClass.class);
 
-    public ZWaveTransaction doRequest(int nodeId, int destinationId) {
+    public ZWaveSerialPayload doRequest(int nodeId, int destinationId) {
         logger.debug("NODE {}: Assigning return route to node {}", nodeId, destinationId);
 
         // Create the request
-        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.AssignReturnRoute)
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.AssignReturnRoute)
                 .withPayload(nodeId, destinationId).build();
-
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
     }
 
     @Override

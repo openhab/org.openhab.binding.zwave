@@ -11,11 +11,10 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
-import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +26,7 @@ import org.slf4j.LoggerFactory;
 public class EnableSucMessageClass extends ZWaveCommandProcessor {
     private static final Logger logger = LoggerFactory.getLogger(EnableSucMessageClass.class);
 
-    public ZWaveTransaction doRequest(SUCType type) {
+    public ZWaveSerialPayload doRequest(SUCType type) {
         logger.debug("Assigning Controller SUC functionality to {}", type.toString());
 
         byte[] payload = new byte[2];
@@ -47,10 +46,7 @@ public class EnableSucMessageClass extends ZWaveCommandProcessor {
         }
 
         // Create the request
-        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.EnableSuc).withPayload(payload)
-                .build();
-
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.EnableSuc).withPayload(payload).build();
     }
 
     @Override

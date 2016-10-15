@@ -716,7 +716,7 @@ public class ZWaveTransactionManager {
         return executor.submit(worker);
     }
 
-    public ZWaveTransactionResponse SendTransaction(ZWavePayload zWaveCommandClassTransactionPayload) {
+    public ZWaveTransactionResponse SendTransaction(ZWaveMessagePayload zWaveCommandClassTransactionPayload) {
         Future<ZWaveTransactionResponse> futureResponse = SendTransactionAsync(zWaveCommandClassTransactionPayload);
         try {
             ZWaveTransactionResponse response = futureResponse.get();

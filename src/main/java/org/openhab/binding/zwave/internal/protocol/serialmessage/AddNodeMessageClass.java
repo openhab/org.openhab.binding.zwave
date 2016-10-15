@@ -19,11 +19,13 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Generic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
 import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -53,7 +55,7 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
     private final int OPTION_HIGH_POWER = 0x80;
     private final int OPTION_NETWORK_WIDE = 0x40;
 
-    public ZWaveTransaction doRequestStart(boolean highPower, boolean networkWide) {
+    public ZWaveSerialPayload doRequestStart(boolean highPower, boolean networkWide) {
         logger.debug("Setting controller into INCLUSION mode, highPower:{} networkWide:{}.", highPower, networkWide);
 
         byte command = ADD_NODE_ANY;
@@ -64,10 +66,7 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
             command |= OPTION_NETWORK_WIDE;
         }
 
-        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.AddNodeToNetwork).withPayload(command)
-                .build();
-
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.AddNodeToNetwork).withPayload(command).build();
     }
 
     public ZWaveTransaction doRequestStop() {

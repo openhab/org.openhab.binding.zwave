@@ -11,12 +11,11 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
-import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,12 +33,10 @@ public class RequestNetworkUpdateMessageClass extends ZWaveCommandProcessor {
     private final int ZW_SUC_UPDATE_DISABLED = 0x03;
     private final int ZW_SUC_UPDATE_OVERFLOW = 0x04;
 
-    public ZWaveTransaction doRequest() {
+    public ZWaveSerialPayload doRequest() {
         logger.debug("Request network update.");
 
-        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.RequestNetworkUpdate).build();
-
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.High).build();
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.RequestNetworkUpdate).build();
     }
 
     @Override
