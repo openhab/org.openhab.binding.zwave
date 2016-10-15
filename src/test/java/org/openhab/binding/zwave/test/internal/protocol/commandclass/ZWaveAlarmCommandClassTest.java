@@ -188,7 +188,7 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
         msg = cls.getNotificationReportMessage(AlarmType.BURGLAR, 1);
         assertNull(msg);
 
-        byte[] expectedResponseV2 = { 1, 15, 0, 19, 99, 8, 113, 5, 0, 0, 0, 0, 7, 1, 0, 0, -6 };
+        byte[] expectedResponseV2 = { 1, 15, 0, 19, 99, 8, 113, 5, 0, 0, 0, -1, 7, 1, 0, 0, 5 };
         cls.setVersion(2);
         msg = cls.getNotificationReportMessage(AlarmType.BURGLAR, 1);
 
