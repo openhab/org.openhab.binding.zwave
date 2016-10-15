@@ -88,6 +88,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         String alarmType = channel.getArguments().get("type");
 
         ZWaveAlarmValueEvent eventAlarm = (ZWaveAlarmValueEvent) event;
+        logger.debug("Alarm converter processing {}", eventAlarm.getReportType());
         switch (eventAlarm.getReportType()) {
             case ALARM:
                 return handleAlarmReport(channel, eventAlarm, alarmType);
@@ -133,6 +134,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
 
         // Handle event 0 as 'clear the event'
         int event = eventAlarm.getAlarmEvent();// == 0 ? 0 : eventAlarm.getAlarmStatus();
+        logger.debug("Alarm converter NOTIFICATION event is {}, type {}", event, channel.getDataType());
 
         // TODO: Handle these event to state specific conversions in a table.
         State state = null;
@@ -141,14 +143,17 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                 state = event == 0 ? OnOffType.OFF : OnOffType.ON;
                 break;
             case OpenClosedType:
+                logger.debug("Alarm converter NOTIFICATION 1");
                 state = eventAlarm.getValue() == 0 ? OpenClosedType.CLOSED : OpenClosedType.OPEN;
                 if (eventAlarm.getAlarmType() == AlarmType.ACCESS_CONTROL) {
+                    logger.debug("Alarm converter NOTIFICATION 2");
                     switch (event) {
                         case 22: // Window/Door is open
                             state = OpenClosedType.OPEN;
                             break;
                         case 23: // Window/Door is closed
                             state = OpenClosedType.CLOSED;
+                            logger.debug("Alarm converter NOTIFICATION 3");
                             break;
                         default:
                             break;
