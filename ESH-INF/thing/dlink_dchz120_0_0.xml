@@ -82,7 +82,8 @@ Basic Set Level<br /><h1>Overview</h1><ul><li>0: Turn off the light.</li> <li>1 
         <default>255</default>
       </parameter>
 
-      <parameter name="config_3_1" type="integer" groupName="configuration">
+      <parameter name="config_3_1" type="integer" groupName="configuration"
+                 min="0" max="99">
         <label>3: PIR Sensitivity</label>
         <description><![CDATA[
 Set the sensitivity for the PIR (Passive Infrared Sensor).<br /><h1>Overview</h1><ul><li>0 = Disable the PIR motion detection.</li> <li>1 - 99 = 1 means the lowest sensitivity, 99 means the highest sensitivity</li> </ul><p>High sensitivity means de</p>
@@ -91,6 +92,7 @@ Set the sensitivity for the PIR (Passive Infrared Sensor).<br /><h1>Overview</h1
         <options>
           <option value="0">Disable</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
