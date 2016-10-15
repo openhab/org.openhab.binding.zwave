@@ -145,17 +145,18 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         ZWaveNode node = CreateMockedNode(3, options);
 
         command = new DecimalType(1);
-        byte[] expectedResponse1 = { 1, 15, 0, 19, 0, 8, 113, 5, 0, 0, 0, 0, 1, 1, 0, 0, -97 };
+        byte[] expectedResponse1 = { 1, 15, 0, 19, 0, 8, 113, 5, 0, 0, 0, -1, 1, 1, 0, 0, 96 };
         msgs = converter.receiveCommand(channel, node, command);
         assertEquals(1, msgs.size());
         msgs.get(0).setCallbackId(0);
         assertTrue(Arrays.equals(msgs.get(0).getMessageBuffer(), expectedResponse1));
 
         command = new DecimalType(2);
-        byte[] expectedResponse2 = { 1, 15, 0, 19, 0, 8, 113, 5, 0, 0, 0, 0, 6, 22, 0, 0, -113 };
+        byte[] expectedResponse2 = { 1, 15, 0, 19, 0, 8, 113, 5, 0, 0, 0, -1, 6, 22, 0, 0, 112 };
         msgs = converter.receiveCommand(channel, node, command);
         assertEquals(1, msgs.size());
         msgs.get(0).setCallbackId(0);
+        byte[] x = msgs.get(0).getMessageBuffer();
         assertTrue(Arrays.equals(msgs.get(0).getMessageBuffer(), expectedResponse2));
     }
 }
