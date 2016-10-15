@@ -705,19 +705,29 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                             }
                         }
 
+                        int endpoint = cmds.length == 2 ? 0 : Integer.parseInt(cmds[2]);
+
                         if (optionMap.containsKey("ccRemove")) {
                             // If we want to remove the class, then remove it!
+                            logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - removing {}:{}", node.getNodeId(),
+                                    cmds[1], endpoint);
 
-                            // TODO: This will only remove the root nodes and ignores endpoint
-                            // TODO: Do we need to search into multi_instance?
-                            node.removeCommandClass(CommandClass.getCommandClass(cmds[1]));
-                            logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - removing {}", node.getNodeId(),
-                                    cmds[1]);
+                            if (endpoint == 0) {
+                                node.removeCommandClass(CommandClass.getCommandClass(cmds[1]));
+                            } else {
+                                ZWaveMultiInstanceCommandClass multiInstanceCmdClass = (ZWaveMultiInstanceCommandClass) node
+                                        .getCommandClass(CommandClass.MULTI_INSTANCE);
+                                if (multiInstanceCmdClass != null) {
+                                    ZWaveEndpoint ep = multiInstanceCmdClass.getEndpoint(endpoint);
+                                    if (ep != null) {
+                                        ep.removeCommandClass(CommandClass.getCommandClass(cmds[1]));
+                                    }
+                                }
+                            }
                             continue;
                         }
 
                         // Get the command class
-                        int endpoint = cmds.length == 2 ? 0 : Integer.parseInt(cmds[2]);
                         ZWaveCommandClass zwaveClass = node.resolveCommandClass(CommandClass.getCommandClass(cmds[1]),
                                 endpoint);
 
