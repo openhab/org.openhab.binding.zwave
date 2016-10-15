@@ -527,8 +527,8 @@ public class ZWaveController {
          */
     }
 
-    public ZWaveTransactionResponse SendTransaction(ZWaveTransaction transaction) {
-        return transactionManager.SendTransaction(transaction);
+    public ZWaveTransactionResponse SendTransaction(ZWavePayload zWaveCommandClassTransactionPayload) {
+        return transactionManager.SendTransaction(zWaveCommandClassTransactionPayload);
     }
 
     /**

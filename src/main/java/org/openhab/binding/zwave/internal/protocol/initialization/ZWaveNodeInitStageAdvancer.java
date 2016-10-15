@@ -27,6 +27,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWavePayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse.State;
@@ -52,6 +53,7 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.GetRoutingInfoM
 import org.openhab.binding.zwave.internal.protocol.serialmessage.IdentifyNodeMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.IsFailedNodeMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeInfoMessageClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -186,8 +188,8 @@ public class ZWaveNodeInitStageAdvancer {
         thread.start();
     }
 
-    private void processTransactions(ZWaveTransaction transaction) {
-        if (transaction == null) {
+    private void processTransactions(ZWavePayload zWaveCommandClassTransactionPayload) {
+        if (zWaveCommandClassTransactionPayload == null) {
             return;
         }
 
@@ -195,7 +197,7 @@ public class ZWaveNodeInitStageAdvancer {
         int backoff = 50;
         ZWaveTransactionResponse response;
         do {
-            response = controller.SendTransaction(transaction);
+            response = controller.SendTransaction(zWaveCommandClassTransactionPayload);
 
             // Increase the backoff up to 1800 seconds (approx!)
             if (backoff < 900000) {
@@ -219,11 +221,11 @@ public class ZWaveNodeInitStageAdvancer {
      * @param msgs
      *            the message collection
      */
-    private void processTransactions(Collection<ZWaveTransaction> transactions) {
+    private void processTransactions(Collection<ZWaveCommandClassTransactionPayload> transactions) {
         if (transactions == null) {
             return;
         }
-        for (ZWaveTransaction transaction : transactions) {
+        for (ZWaveCommandClassTransactionPayload transaction : transactions) {
             processTransactions(transaction);
         }
     }
@@ -238,12 +240,12 @@ public class ZWaveNodeInitStageAdvancer {
      * @param endpointId
      *            the endpoint number
      */
-    private void processTransactions(Collection<ZWaveTransaction> transactions, ZWaveCommandClass commandClass,
-            int endpointId) {
+    private void processTransactions(Collection<ZWaveCommandClassTransactionPayload> transactions,
+            ZWaveCommandClass commandClass, int endpointId) {
         if (transactions == null) {
             return;
         }
-        for (ZWaveTransaction transaction : transactions) {
+        for (ZWaveCommandClassTransactionPayload transaction : transactions) {
             processTransactions(node.encapsulate(transaction, commandClass, endpointId));
         }
     }

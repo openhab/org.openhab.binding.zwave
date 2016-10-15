@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @author Chris Jackson - Initial implementation
  *
  */
-public class ZWaveCommandClassPayload {
+public class ZWaveCommandClassPayload implements ZWavePayload {
     private final byte[] payload;
 
     public ZWaveCommandClassPayload(final byte[] payload) {
@@ -49,6 +49,7 @@ public class ZWaveCommandClassPayload {
         return payload.length;
     }
 
+    @Override
     public byte[] getPayloadBuffer() {
         return payload;
     }
