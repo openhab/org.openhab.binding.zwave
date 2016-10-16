@@ -15,11 +15,13 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson - Initial Contribution
  *
  */
-public abstract class ZWaveTransaction {
+public class ZWaveTransaction {
     private static final Logger logger = LoggerFactory.getLogger(ZWaveTransaction.class);
 
     private final static AtomicLong sequence = new AtomicLong();
     private final long transactionId = sequence.getAndIncrement();
+
+    private final ZWaveMessagePayloadTransaction payload;
 
     // Timers
 
@@ -80,8 +82,12 @@ public abstract class ZWaveTransaction {
         CANCELLED
     }
 
-    private int nodeId;
-    private SerialMessage serialMessage;
+    // private int nodeId;
+
+    private SerialMessage serialMessageDebug; // Delete - just here for debugging right now
+
+    private int callbackId = 0;
+
     private TransactionPriority priority;
     private SerialMessageClass serialMessageClass;
     private SerialMessageClass expectedReplyClass;
@@ -98,23 +104,23 @@ public abstract class ZWaveTransaction {
     private long startTime;
     private Date timeout;
 
-    public ZWaveTransaction(int nodeId, SerialMessage serialMessage, SerialMessageClass expectedReplyClass,
-            CommandClass expectedReplyCommandClass, int expectedReplyCommandClassCommand, TransactionPriority priority,
-            int attempts, boolean requiresData, int dataTimeout) {
-        this.nodeId = nodeId;
-        this.serialMessage = serialMessage;
-        this.serialMessageClass = serialMessage.getMessageClass();
-        this.expectedReplyClass = expectedReplyClass;
-        this.expectedReplyCommandClass = expectedReplyCommandClass;
-        this.expectedReplyCommandClassCommand = expectedReplyCommandClassCommand;
-        this.priority = priority;
-        this.attemptsRemaining = 3;
-        this.requiresData = requiresData;
-        this.dataTimeout = dataTimeout;
-    }
+    // public ZWaveTransaction(int nodeId, SerialMessage serialMessage, SerialMessageClass expectedReplyClass,
+    // CommandClass expectedReplyCommandClass, int expectedReplyCommandClassCommand, TransactionPriority priority,
+    // int attempts, boolean requiresData, int dataTimeout) {
+    // this.nodeId = nodeId;
+    // this.serialMessage = serialMessage;
+    // this.serialMessageClass = serialMessage.getMessageClass();
+    // this.expectedReplyClass = expectedReplyClass;
+    // this.expectedReplyCommandClass = expectedReplyCommandClass;
+    // this.expectedReplyCommandClassCommand = expectedReplyCommandClassCommand;
+    // this.priority = priority;
+    // this.attemptsRemaining = 3;
+    // this.requiresData = requiresData;
+    // this.dataTimeout = dataTimeout;
+    // }
 
-    public ZWaveTransaction(ZWaveMessagePayload payload) {
-        // TODO Auto-generated constructor stub
+    public ZWaveTransaction(final ZWaveMessagePayloadTransaction payload) {
+        this.payload = payload;
     }
 
     public void resetTransaction() {
@@ -139,24 +145,35 @@ public abstract class ZWaveTransaction {
         transactionStateTracker = TransactionState.DONE;
     }
 
-    public void setSerialMessage(SerialMessage serialMessage) {
-        this.serialMessage = serialMessage;
-    }
-
-    abstract public SerialMessage getSerialMessage();// {
-    // return serialMessage;
+    // public void setSerialMessage(SerialMessage serialMessage) {
+    // this.serialMessage = serialMessage;
     // }
+
+    public SerialMessage getSerialMessage() {
+        SerialMessage serialMessage = payload.getSerialMessage();
+
+        // Debug
+        serialMessageDebug = serialMessage;
+
+        // We need to remember the callback Id
+        callbackId = serialMessage.getCallbackId();
+
+        return serialMessage;
+    }
 
     public SerialMessageClass getSerialMessageClass() {
         return serialMessageClass;
     }
 
-    public int getTransmitNode() {
-        return serialMessage.getMessageNode();
+    public int getNodeId() {
+        return payload.getDestinationNode();
     }
 
-    public int getMessageNode() {
-        return nodeId;
+    public int getQueueId() {
+        if (serialMessageClass == SerialMessageClass.SendData) {
+            return 255;
+        }
+        return payload.getDestinationNode();
     }
 
     public SerialMessageClass getExpectedReplyClass() {
@@ -188,7 +205,7 @@ public abstract class ZWaveTransaction {
     }
 
     public int getCallbackId() {
-        return serialMessage.getCallbackId();
+        return callbackId;
     }
 
     public long getElapsedTime() {
@@ -230,12 +247,12 @@ public abstract class ZWaveTransaction {
 
     public boolean transactionAdvance(SerialMessage incomingMessage) {
         logger.debug("TransactionAdvance ST: {}", transactionStateTracker);
-        logger.debug("TransactionAdvance TX: {}", serialMessage);
+        logger.debug("TransactionAdvance TX: {}", serialMessageDebug);
         logger.debug("TransactionAdvance WT: {}", expectedReplyClass);
         logger.debug("TransactionAdvance RX: {}", incomingMessage);
 
         System.out.println("TransactionAdvance ST: " + transactionStateTracker);
-        System.out.println("TransactionAdvance TX: " + serialMessage);
+        System.out.println("TransactionAdvance TX: " + serialMessageDebug);
         System.out.println("TransactionAdvance WT: " + expectedReplyClass);
         System.out.println("TransactionAdvance RX: " + incomingMessage);
 
@@ -295,9 +312,8 @@ public abstract class ZWaveTransaction {
                 }
 
                 // Check if the nodeId is correct
-                if (incomingMessage.getMessageType() == SerialMessageType.Request
-                        && serialMessage.getMessageNode() != 255
-                        && serialMessage.getMessageNode() != incomingMessage.getMessageNode()) {
+                if (incomingMessage.getMessageType() == SerialMessageType.Request && payload.getDestinationNode() != 255
+                        && payload.getDestinationNode() != incomingMessage.getMessageNode()) {
                     System.out.println("WAIT_DATA -- 3");
                     break;
                 }
@@ -320,7 +336,7 @@ public abstract class ZWaveTransaction {
 
     @Override
     public String toString() {
-        return transactionStateTracker + ": callback: " + serialMessage.getCallbackId();
+        return transactionStateTracker + ": callback: " + callbackId;
     }
 
     public long getTransactionId() {

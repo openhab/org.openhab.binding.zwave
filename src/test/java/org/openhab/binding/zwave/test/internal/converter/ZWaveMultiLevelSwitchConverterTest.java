@@ -24,12 +24,11 @@ import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.converter.ZWaveMultiLevelSwitchConverter;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSwitchCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  *
@@ -216,8 +215,9 @@ public class ZWaveMultiLevelSwitchConverterTest {
         when(channel.getEndpoint()).thenReturn(1);
         when(node.resolveCommandClass(CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL, channel.getEndpoint()))
                 .thenReturn(commandClass);
-        when(node.encapsulate(any(ZWaveTransaction.class), any(ZWaveMultiLevelSwitchCommandClass.class), anyInt()))
-                .thenReturn(new ZWaveTransaction(0, new SerialMessage(), null, null, 0, null, 0, false, 2500));
+        when(node.encapsulate(any(ZWaveCommandClassTransactionPayload.class),
+                any(ZWaveMultiLevelSwitchCommandClass.class), anyInt()))
+                        .thenReturn(new ZWaveCommandClassTransactionPayload(0, null, null, null, 0));
     }
 
 }

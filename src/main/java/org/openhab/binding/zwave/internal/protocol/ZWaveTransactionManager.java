@@ -220,29 +220,31 @@ public class ZWaveTransactionManager {
     }
 
     void addTransactionToQueue(ZWaveTransaction transaction) {
+
         synchronized (sendQueue) {
             // The queue is a map containing a queue for each node
             // Check if this node is in the queue
-            if (sendQueue.containsKey(transaction.getMessageNode())) {
+            if (sendQueue.containsKey(transaction.getQueueId())) {
                 // Now check if this transaction is already in the queue
-                if (sendQueue.get(transaction.getMessageNode()).contains(transaction)) {
+                if (sendQueue.get(transaction.getQueueId()).contains(transaction)) {
                     // if (sendQueue.contains(transaction)) {
                     logger.debug("NODE {}: Transaction already on the send queue. Removing original.",
-                            transaction.getMessageNode());
-                    sendQueue.get(transaction.getMessageNode()).remove(transaction);
+                            transaction.getNodeId());
+                    sendQueue.get(transaction.getQueueId()).remove(transaction);
                 }
             } else {
-                logger.debug("NODE {}: Transaction {} added to queue.", transaction.getMessageNode(),
+                logger.debug("NODE {}: Transaction {} added to queue.", transaction.getNodeId(),
                         transaction.getTransactionId());
+
                 // There's no queue for this node, so add it
-                sendQueue.put(transaction.getMessageNode(), new PriorityBlockingQueue<ZWaveTransaction>(
+                sendQueue.put(transaction.getQueueId(), new PriorityBlockingQueue<ZWaveTransaction>(
                         INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator()));
             }
 
             // Add the message to the queue
             // We always add the most recent version, even though they are supposedly the same,
             // in case things like priority have changed
-            sendQueue.get(transaction.getMessageNode()).add(transaction);
+            sendQueue.get(transaction.getQueueId()).add(transaction);
         }
 
         sendNextMessage();
@@ -292,7 +294,7 @@ public class ZWaveTransactionManager {
                 // Make sure there's no outstanding transaction for this node
                 boolean outstanding = false;
                 for (ZWaveTransaction outstandingTransaction : outstandingTransactions) {
-                    if (outstandingTransaction.getTransmitNode() == node) {
+                    if (outstandingTransaction.getQueueId() == node) {
                         outstanding = true;
                         break;
                     }
@@ -314,9 +316,9 @@ public class ZWaveTransactionManager {
             }
 
             if (transaction != null) {
-                sendQueue.get(transaction.getTransmitNode()).remove(transaction);
-                if (sendQueue.get(transaction.getTransmitNode()).isEmpty()) {
-                    sendQueue.remove(transaction.getTransmitNode());
+                sendQueue.get(transaction.getQueueId()).remove(transaction);
+                if (sendQueue.get(transaction.getQueueId()).isEmpty()) {
+                    sendQueue.remove(transaction.getQueueId());
                 }
             }
         }
@@ -324,7 +326,7 @@ public class ZWaveTransactionManager {
         if (transaction == null) {
             logger.debug("No transaction to send");
         } else {
-            logger.debug("NODE {}: Transaction {} to be sent.", transaction.getTransmitNode(),
+            logger.debug("NODE {}: Transaction {} to be sent.", transaction.getNodeId(),
                     transaction.getTransactionId());
         }
         return transaction;
@@ -429,7 +431,7 @@ public class ZWaveTransactionManager {
                 // Handle retries
                 if (currentTransaction.decrementAttemptsRemaining() >= 0) {
                     logger.error("NODE {}: Timeout while sending message. Requeueing - {} attempts left!",
-                            currentTransaction.getTransmitNode(), currentTransaction.getAttemptsRemaining());
+                            currentTransaction.getNodeId(), currentTransaction.getAttemptsRemaining());
                     // if (lastSentMessage.getMessageClass() == SerialMessageClass.SendData) {
                     // handleFailedSendDataRequest(lastSentMessage);
                     // } else {
@@ -442,8 +444,8 @@ public class ZWaveTransactionManager {
                     // enqueue(currentTransaction); TODO: Handle retries...
                     // }
                 } else {
-                    logger.warn("NODE {}: Retry count exceeded. Discarding message: {}",
-                            currentTransaction.getTransmitNode(), currentTransaction.toString());
+                    logger.warn("NODE {}: Retry count exceeded. Discarding message: {}", currentTransaction.getNodeId(),
+                            currentTransaction.toString());
                     transactionCompleted = true;
                 }
                 break;
@@ -455,7 +457,7 @@ public class ZWaveTransactionManager {
                 // if (responseTime > longestResponseTime) {
                 // longestResponseTime = responseTime;
                 // }
-                logger.debug("NODE {}: Response processed after {}ms", currentTransaction.getTransmitNode(),
+                logger.debug("NODE {}: Response processed after {}ms", currentTransaction.getNodeId(),
                         currentTransaction.getElapsedTime());
 
                 transactionCompleted = true;
@@ -468,7 +470,7 @@ public class ZWaveTransactionManager {
 
         if (transactionCompleted == true) {
             System.out.println("Transaction " + currentTransaction.getCallbackId() + " completed");
-            logger.debug("NODE {}: **** Transaction completed", currentTransaction.getTransmitNode());
+            logger.debug("NODE {}: **** Transaction completed", currentTransaction.getNodeId());
 
             // Remove the transaction from the
             synchronized (transactionSync) {
@@ -483,7 +485,7 @@ public class ZWaveTransactionManager {
             NotifyTransactionListener(currentTransaction);
         } else {
             System.out.println("Transaction " + currentTransaction.getCallbackId() + " NOT completed");
-            logger.debug("NODE {}: **** Transaction not completed", currentTransaction.getTransmitNode());
+            logger.debug("NODE {}: **** Transaction not completed", currentTransaction.getNodeId());
         }
 
         // See if we need to send another message
@@ -615,9 +617,8 @@ public class ZWaveTransactionManager {
                     Date timer = transaction.getTimeout();
                     if (timer != null && timer.after(now) == false) {
                         // Timeout
-                        logger.debug("NODE {}: Timeout at state {}. {} retries remaining.",
-                                transaction.getTransmitNode(), transaction.getTransactionState(),
-                                transaction.getAttemptsRemaining());
+                        logger.debug("NODE {}: Timeout at state {}. {} retries remaining.", transaction.getNodeId(),
+                                transaction.getTransactionState(), transaction.getAttemptsRemaining());
 
                         // If this is the current transaction, then reset it.
                         if (lastTransaction == transaction) {

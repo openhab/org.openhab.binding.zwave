@@ -29,11 +29,11 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveConfigurationParameter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  *
@@ -81,7 +81,7 @@ public class ZWaveConfigurationConverterTest extends ZWaveCommandClassConverterT
         ZWaveThingChannel channel = createChannel("2");
         ZWaveNode node = CreateMockedNode(1, null);
 
-        List<ZWaveTransaction> msgs = converter.executeRefresh(channel, node);
+        List<ZWaveCommandClassTransactionPayload> msgs = converter.executeRefresh(channel, node);
 
         assertEquals(1, msgs.size());
         msgs.get(0).getSerialMessage().setCallbackId(0);
@@ -108,7 +108,7 @@ public class ZWaveConfigurationConverterTest extends ZWaveCommandClassConverterT
 
         DecimalType command = new DecimalType(44);
 
-        List<ZWaveTransaction> msgs = converter.receiveCommand(channel, node, command);
+        List<ZWaveCommandClassTransactionPayload> msgs = converter.receiveCommand(channel, node, command);
 
         assertEquals(2, msgs.size());
         msgs.get(0).getSerialMessage().setCallbackId(0);

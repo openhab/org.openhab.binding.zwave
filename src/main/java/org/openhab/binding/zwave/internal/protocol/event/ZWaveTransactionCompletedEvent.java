@@ -33,7 +33,7 @@ public class ZWaveTransactionCompletedEvent extends ZWaveEvent {
      * @param state a flag indicating success / failure of the transaction processing
      */
     public ZWaveTransactionCompletedEvent(ZWaveTransaction transaction, SerialMessage responseMessage, boolean state) {
-        super(transaction.getMessageNode());
+        super(transaction.getNodeId());
 
         this.transaction = transaction;
         this.responseMessage = responseMessage;
@@ -51,7 +51,7 @@ public class ZWaveTransactionCompletedEvent extends ZWaveEvent {
 
     /**
      * Gets the message used to complete the transaction
-     * 
+     *
      * @return
      */
     public SerialMessage getResponseMessage() {

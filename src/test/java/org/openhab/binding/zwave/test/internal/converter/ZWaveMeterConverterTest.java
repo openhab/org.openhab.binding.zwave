@@ -29,12 +29,12 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterCommandClass.MeterScale;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterCommandClass.MeterType;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  *
@@ -87,7 +87,7 @@ public class ZWaveMeterConverterTest extends ZWaveCommandClassConverterTest {
         ZWaveNode node = CreateMockedNode(2, options);
 
         // Refresh won't return anything for meter channel
-        List<ZWaveTransaction> msgs = converter.executeRefresh(channel, node);
+        List<ZWaveCommandClassTransactionPayload> msgs = converter.executeRefresh(channel, node);
         assertNull(msgs);
 
         ZWaveCommandClassValueEvent event = createEvent(ZWaveMeterCommandClass.MeterType.ELECTRIC,

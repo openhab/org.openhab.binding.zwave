@@ -10,7 +10,7 @@ import java.util.Arrays;
  *
  */
 public class ZWaveCommandClassPayload implements ZWaveMessagePayload {
-    private final byte[] payload;
+    protected final byte[] payload;
 
     public ZWaveCommandClassPayload(final byte[] payload) {
         this.payload = payload;

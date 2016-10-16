@@ -25,10 +25,10 @@ import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.converter.ZWaveThermostatFanStateConverter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveThermostatFanStateCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  *
@@ -70,12 +70,12 @@ public class ZWaveThermostatFanStateConverterTest {
         when(cls.getCommandClass()).thenReturn(CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_STATE);
 
         // the actual call
-        List<ZWaveTransaction> result = converter.executeRefresh(channel, node);
+        List<ZWaveCommandClassTransactionPayload> result = converter.executeRefresh(channel, node);
 
         // verify the results
         assertNotNull(result);
         assertEquals(result.size(), 1);
-        verify(node, times(1)).encapsulate(Matchers.any(ZWaveTransaction.class),
+        verify(node, times(1)).encapsulate(Matchers.any(ZWaveCommandClassTransactionPayload.class),
                 Matchers.any(ZWaveThermostatFanStateCommandClass.class), Matchers.anyInt());
         verify(cls, times(1)).getValueMessage();
     }

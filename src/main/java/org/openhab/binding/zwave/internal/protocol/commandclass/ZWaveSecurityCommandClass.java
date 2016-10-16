@@ -671,7 +671,7 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
         SerialMessage serialMessage = transaction.getSerialMessage();
         if (serialMessage.getMessageBuffer().length < 7) {
             logger.error("NODE {}: SECURITY_ERROR Message too short for encapsulation, dropping message {}",
-                    this.getController().getNode(transaction.getMessageNode()).getNodeId(), transaction);
+                    transaction.getNodeId(), transaction);
             return;
         }
 

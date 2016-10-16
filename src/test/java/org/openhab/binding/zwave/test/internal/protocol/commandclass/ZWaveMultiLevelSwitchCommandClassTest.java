@@ -15,9 +15,9 @@ import java.util.Collection;
 
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSwitchCommandClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveMultiLevelSwitchCommandClass}.
@@ -94,7 +94,7 @@ public class ZWaveMultiLevelSwitchCommandClassTest extends ZWaveCommandClassTest
     public void initialize() {
         ZWaveMultiLevelSwitchCommandClass cls = (ZWaveMultiLevelSwitchCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL);
-        Collection<ZWaveTransaction> msgs;
+        Collection<ZWaveCommandClassTransactionPayload> msgs;
 
         cls.setVersion(1);
         msgs = cls.initialize(true);

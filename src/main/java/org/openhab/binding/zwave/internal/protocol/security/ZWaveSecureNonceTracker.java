@@ -23,13 +23,9 @@ import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.TimeUnit;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEventListener;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -155,22 +151,23 @@ public class ZWaveSecureNonceTracker {
         // trying to fix here
         // message.setMessagePayload(payload);
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(ZWaveSecurityCommandClass.getSecurityCommandClass(),
-                        ZWaveSecurityCommandClass.SECURITY_NONCE_GET)
-                .withNodeId(node.getNodeId()).build();
+        // SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+        // .withCommandClass(ZWaveSecurityCommandClass.getSecurityCommandClass(),
+        // ZWaveSecurityCommandClass.SECURITY_NONCE_GET)
+        // .withNodeId(node.getNodeId()).build();
 
         requestNonceTimer = new NonceTimer(NonceTimerType.REQUESTED, node);
-        requestNonceMessage = serialMessage;
+        // requestNonceMessage = serialMessage;
         if (requestNonceTimer != null) {
             logger.warn("NODE {}: requestNonceTimer != null but generating a new request", node.getNodeId());
         }
 
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(ZWaveSecurityCommandClass.getSecurityCommandClass(),
-                        ZWaveSecurityCommandClass.SECURITY_NONCE_REPORT)
-                .withPriority(TransactionPriority.Immediate).build();
+        return null;
+        // return new ZWaveTransactionBuilder(serialMessage)
+        // .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
+        // .withExpectedResponseCommandClass(ZWaveSecurityCommandClass.getSecurityCommandClass(),
+        // ZWaveSecurityCommandClass.SECURITY_NONCE_REPORT)
+        // .withPriority(TransactionPriority.Immediate).build();
     }
 
     /**
@@ -195,12 +192,14 @@ public class ZWaveSecureNonceTracker {
         // return null;
         // }
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(ZWaveSecurityCommandClass.getSecurityCommandClass(),
-                        ZWaveSecurityCommandClass.SECURITY_NONCE_REPORT)
-                .withPayload(nonce.getNonceBytes()).withNodeId(node.getNodeId()).build();
+        return null;
 
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Immediate).build();
+        // SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
+        // .withCommandClass(ZWaveSecurityCommandClass.getSecurityCommandClass(),
+        // ZWaveSecurityCommandClass.SECURITY_NONCE_REPORT)
+        // .withPayload(nonce.getNonceBytes()).withNodeId(node.getNodeId()).build();
+
+        // return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Immediate).build();
     }
 
     /**

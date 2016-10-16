@@ -34,9 +34,9 @@ import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test of the ZWaveThingHandler
@@ -46,7 +46,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpComma
  */
 public class ZWaveThingHandlerTest {
 
-    private List<ZWaveTransaction> doConfigurationUpdate(String param, Object value) {
+    private List<ZWaveCommandClassTransactionPayload> doConfigurationUpdate(String param, Object value) {
         ThingType thingType = new ThingType(new ThingTypeUID("bindingId", "thingTypeId"), null, "label", null, null,
                 null, null, null);
         Thing thing = ThingFactory.createThing(thingType, new ThingUID(thingType.getUID(), "thingId"),
@@ -58,13 +58,13 @@ public class ZWaveThingHandlerTest {
         ThingHandlerCallback thingCallback = Mockito.mock(ThingHandlerCallback.class);
         ZWaveThingHandler thingHandler = new ZWaveThingHandler(thing);
         thingHandler.setCallback(thingCallback);
-        ArgumentCaptor<ZWaveTransaction> argument;
-        argument = ArgumentCaptor.forClass(ZWaveTransaction.class);
+        ArgumentCaptor<ZWaveCommandClassTransactionPayload> payloadCaptor;
+        payloadCaptor = ArgumentCaptor.forClass(ZWaveCommandClassTransactionPayload.class);
         Field fieldControllerHandler;
         try {
             ZWaveWakeUpCommandClass wakeupClass = new ZWaveWakeUpCommandClass(node, controller, null);
             ZWaveControllerHandler controllerHandler = Mockito.mock(ZWaveControllerHandler.class);
-            Mockito.doNothing().when(controllerHandler).sendData(argument.capture());
+            Mockito.doNothing().when(controllerHandler).sendData(payloadCaptor.capture());
             Mockito.doNothing().when(thingCallback).thingUpdated(Matchers.any(Thing.class));
 
             fieldControllerHandler = thingHandler.getClass().getDeclaredField("controllerHandler");
@@ -95,14 +95,14 @@ public class ZWaveThingHandlerTest {
         assertEquals(1, status.size());
         assertEquals(status.iterator().next().parameterName, param);
 
-        return argument.getAllValues();
+        return payloadCaptor.getAllValues();
     }
 
     @Test
     public void TestConfigurationWakeup() {
         SerialMessage msg;
-        List<ZWaveTransaction> response = doConfigurationUpdate(ZWaveBindingConstants.CONFIGURATION_WAKEUPINTERVAL,
-                new BigDecimal(600));
+        List<ZWaveCommandClassTransactionPayload> response = doConfigurationUpdate(
+                ZWaveBindingConstants.CONFIGURATION_WAKEUPINTERVAL, new BigDecimal(600));
 
         assertEquals(2, response.size());
         msg = response.get(0).getSerialMessage();

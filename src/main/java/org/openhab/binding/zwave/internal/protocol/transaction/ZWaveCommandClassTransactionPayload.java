@@ -1,5 +1,8 @@
 package org.openhab.binding.zwave.internal.protocol.transaction;
 
+import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveMessagePayloadTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
@@ -53,6 +56,28 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
     @Override
     public int getDestinationNode() {
         return nodeId;
+    }
+
+    @Override
+    public SerialMessage getSerialMessage() {
+        SerialMessage serialMessage = new SerialMessage(nodeId, SerialMessageClass.SendData, SerialMessageType.Request);
+
+        byte[] output;
+        if (payload == null) {
+            output = new byte[2];
+        } else {
+            output = new byte[2 + payload.length];
+        }
+
+        output[0] = (byte) nodeId;
+        output[1] = (byte) (output.length - 2);
+
+        for (int i = 2; i < output.length; ++i) {
+            output[i] = payload[i - 2];
+        }
+
+        serialMessage.setMessagePayload(output);
+        return serialMessage;
     }
 
 }

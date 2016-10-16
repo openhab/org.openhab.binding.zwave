@@ -3,6 +3,7 @@ package org.openhab.binding.zwave.internal.protocol;
 import java.util.Arrays;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 
 /**
  * The {@link ZWaveSerialPayload} implements an encapsulated serial payload.
@@ -49,5 +50,13 @@ public class ZWaveSerialPayload implements ZWaveMessagePayloadTransaction {
     @Override
     public int getMaxAttempts() {
         return maxAttempts;
+    }
+
+    @Override
+    public SerialMessage getSerialMessage() {
+        SerialMessage msg = new SerialMessage(messageClass, SerialMessageType.Request);
+        msg.setMessagePayload(payload);
+
+        return msg;
     }
 }

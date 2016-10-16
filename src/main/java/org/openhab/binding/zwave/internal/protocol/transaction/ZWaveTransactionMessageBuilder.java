@@ -23,7 +23,7 @@ public class ZWaveTransactionMessageBuilder {
         this.messageClass = messageClass;
     }
 
-    public ZWaveTransactionMessageBuilder withNodeId(final int nodeId) {
+    public ZWaveTransactionMessageBuilder withResponseNodeId(final int nodeId) {
         this.nodeId = nodeId;
         return this;
     }

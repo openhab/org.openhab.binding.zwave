@@ -29,7 +29,7 @@ public class RequestNodeInfoMessageClass extends ZWaveCommandProcessor {
     public ZWaveSerialPayload doRequest(int nodeId) {
         // Create the request
         return new ZWaveTransactionMessageBuilder(SerialMessageClass.RequestNodeInfo).withPayload(nodeId)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationUpdate).withNodeId(nodeId).withTimeout(12000)
+                .withExpectedResponseClass(SerialMessageClass.ApplicationUpdate).withResponseNodeId(nodeId).withTimeout(12000)
                 .withRequiresData(true).build();
     }
 

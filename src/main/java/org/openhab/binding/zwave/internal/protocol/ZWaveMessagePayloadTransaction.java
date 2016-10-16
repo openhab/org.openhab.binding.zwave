@@ -4,4 +4,6 @@ public interface ZWaveMessagePayloadTransaction extends ZWaveMessagePayload {
     public int getMaxAttempts();
 
     public int getDestinationNode();
+
+    public SerialMessage getSerialMessage();
 }
