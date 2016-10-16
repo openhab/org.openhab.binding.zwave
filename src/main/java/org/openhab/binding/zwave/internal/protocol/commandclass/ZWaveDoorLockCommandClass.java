@@ -18,10 +18,10 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
-import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -165,8 +165,9 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
         logger.debug("NODE {}: Creating new message for application command DOORLOCK_CONFIG_GET",
                 getNode().getNodeId());
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), DOOR_LOCK_CONFIG_GET)
-                .withExpectedResponseCommand(DOOR_LOCK_CONFIG_REPORT).withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                DOOR_LOCK_CONFIG_GET).withExpectedResponseCommand(DOOR_LOCK_CONFIG_REPORT)
+                        .withPriority(TransactionPriority.Config).build();
     }
 
     public ZWaveCommandClassTransactionPayload setConfigMessage(boolean timeoutEnabled, int timeoutValue) {
@@ -196,8 +197,9 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
         outputData.write((byte) lockTimeoutMinutes);
         outputData.write((byte) lockTimeoutSeconds);
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), DOOR_LOCK_CONFIG_SET)
-                .withPayload(outputData.toByteArray()).withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                DOOR_LOCK_CONFIG_SET).withPayload(outputData.toByteArray()).withPriority(TransactionPriority.Config)
+                        .build();
     }
 
     @Override

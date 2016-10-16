@@ -20,10 +20,10 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
-import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -184,8 +184,9 @@ public class ZWaveThermostatModeCommandClass extends ZWaveCommandClass
         logger.debug("NODE {}: Creating new message for application command THERMOSTAT_MODE_GET",
                 this.getNode().getNodeId());
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), THERMOSTAT_MODE_GET)
-                .withPriority(TransactionPriority.Get).withExpectedResponseCommand(THERMOSTAT_MODE_REPORT).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                THERMOSTAT_MODE_GET).withPriority(TransactionPriority.Get)
+                        .withExpectedResponseCommand(THERMOSTAT_MODE_REPORT).build();
     }
 
     @Override
@@ -233,8 +234,8 @@ public class ZWaveThermostatModeCommandClass extends ZWaveCommandClass
         logger.debug("NODE {}: Creating new message for application command THERMOSTAT_MODE_SET",
                 getNode().getNodeId());
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), THERMOSTAT_MODE_SET)
-                .withPayload(value).withPriority(TransactionPriority.Set).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                THERMOSTAT_MODE_SET).withPayload(value).withPriority(TransactionPriority.Set).build();
     }
 
     /**

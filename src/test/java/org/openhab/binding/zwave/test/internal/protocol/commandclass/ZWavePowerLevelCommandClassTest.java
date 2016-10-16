@@ -48,6 +48,7 @@ public class ZWavePowerLevelCommandClassTest extends ZWaveCommandClassTest {
         cls.setVersion(1);
         msg = cls.setValueMessage(1, 1).getSerialMessage();
         msg.setCallbackId(0);
+
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
 }

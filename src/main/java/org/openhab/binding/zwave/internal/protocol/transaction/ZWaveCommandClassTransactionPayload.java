@@ -5,6 +5,7 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageCl
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveMessagePayloadTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 
 public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayload
@@ -28,6 +29,7 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
         return nodeId;
     }
 
+    @Override
     public TransactionPriority getPriority() {
         return priority;
     }
@@ -78,6 +80,26 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
 
         serialMessage.setMessagePayload(output);
         return serialMessage;
+    }
+
+    @Override
+    public int getTimeout() {
+        return 2550;
+    }
+
+    @Override
+    public SerialMessageClass getSerialMessageClass() {
+        return SerialMessageClass.SendData;
+    }
+
+    @Override
+    public SerialMessageClass getExpectedResponseSerialMessageClass() {
+        return SerialMessageClass.SendData;
+    }
+
+    @Override
+    public boolean requiresData() {
+        return false;
     }
 
 }

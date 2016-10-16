@@ -49,7 +49,6 @@ public class ZWaveThermostatSetpointCommandClassTest extends ZWaveCommandClassTe
         cls.setVersion(1);
         msg = cls.setMessage(0, SetpointType.COOLING, new BigDecimal(22.5)).getSerialMessage();
         msg.setCallbackId(0);
-        byte[] x = msg.getMessageBuffer();
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
     }
 

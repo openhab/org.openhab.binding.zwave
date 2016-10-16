@@ -65,6 +65,7 @@ public class ZWaveMultiAssociationCommandClassTest extends ZWaveCommandClassTest
         cls.setVersion(1);
         msg = cls.removeAssociationMessage(1, 2, 0).getSerialMessage();
         msg.setCallbackId(4);
+        byte[] x = msg.getMessageBuffer();
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse1));
 
         msg = cls.removeAssociationMessage(1, 2, 3).getSerialMessage();

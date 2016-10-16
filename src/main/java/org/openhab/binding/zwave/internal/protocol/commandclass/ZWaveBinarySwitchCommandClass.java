@@ -17,10 +17,10 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
-import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -107,8 +107,9 @@ public class ZWaveBinarySwitchCommandClass extends ZWaveCommandClass
         logger.debug("NODE {}: Creating new message for application command SWITCH_BINARY_GET",
                 this.getNode().getNodeId());
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), SWITCH_BINARY_GET)
-                .withExpectedResponseCommand(SWITCH_BINARY_REPORT).withPriority(TransactionPriority.Get).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                SWITCH_BINARY_GET).withExpectedResponseCommand(SWITCH_BINARY_REPORT)
+                        .withPriority(TransactionPriority.Get).build();
     }
 
     /**
@@ -121,8 +122,8 @@ public class ZWaveBinarySwitchCommandClass extends ZWaveCommandClass
     public ZWaveCommandClassTransactionPayload setValueMessage(int level) {
         logger.debug("NODE {}: Creating new message for application command SWITCH_BINARY_SET", getNode().getNodeId());
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), SWITCH_BINARY_SET)
-                .withPayload((level > 0 ? 0xFF : 0x00)).withPriority(TransactionPriority.Set).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                SWITCH_BINARY_SET).withPayload((level > 0 ? 0xFF : 0x00)).withPriority(TransactionPriority.Set).build();
     }
 
     @Override

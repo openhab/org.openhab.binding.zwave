@@ -20,10 +20,10 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
-import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -305,8 +305,7 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
             }
 
             return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
-                    THERMOSTAT_SETPOINT_SUPPORTED_GET).withPayload(outputData.toByteArray())
-                            .withPriority(TransactionPriority.Set).withExpectedResponseCommand(THERMOSTAT_SETPOINT_SET)
+                    THERMOSTAT_SETPOINT_SET).withPayload(outputData.toByteArray()).withPriority(TransactionPriority.Set)
                             .build();
         } catch (ArithmeticException e) {
             logger.error(

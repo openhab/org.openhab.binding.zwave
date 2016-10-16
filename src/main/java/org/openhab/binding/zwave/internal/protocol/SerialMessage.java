@@ -425,62 +425,6 @@ public class SerialMessage {
     }
 
     /**
-     * EXPERIMENTAL TRANSACTION TRACKER METHODS
-     * TODO: Move to separate class(es)
-     *
-     * Transaction state tracking is handled by working through the different stages of
-     * a transaction and handling the transaction stages and completion checking.
-     *
-     * Transaction states are as follows -:
-     * UNINITIALIZED: The transaction has not yet started.
-     * SENT: The message has been sent, but no acknowledgements are received.
-     * RECEIVED_ACK_CONTROLLER: An ACK has been received from the controller.
-     * RECEIVED_ACK_NODE: An ACK has been received from the node. This indicates that the node has received the message.
-     * RECEIVED_DATA: The final data has been received.
-     * CANCELLED: The transaction is cancelled due to a response error
-     *
-     * A transaction requires at least the first ACK from the controller. For transactions requiring additional
-     * responses, once the ACK from the controller is received, additional transactions may be started if desired.
-     *
-     */
-
-    public enum TransactionState {
-        UNINTIALIZED,
-        WAIT_RESPONSE,
-        WAIT_REQUEST,
-        WAIT_DATA,
-        DONE,
-        CANCELLED
-    }
-
-    private CommandClass expectedCommandClass = null;
-    private Integer expectedCommandClassCommand = null;
-
-    // TransactionState transactionStateTracker = TransactionState.UNINTIALIZED;
-    private long startTime;
-
-    public void setExpectedCommandClass(CommandClass expectedCommandClass) {
-        this.expectedCommandClass = expectedCommandClass;
-    }
-
-    public void setExpectedCommandClassCommand(CommandClass expectedCommandClass) {
-        this.expectedCommandClass = expectedCommandClass;
-    }
-
-    public long getElapsedTime() {
-        return System.currentTimeMillis() - startTime;
-    }
-
-    // public TransactionState getTransactionState() {
-    // return transactionStateTracker;
-    // }
-
-    public void resetTransaction() {
-        logger.debug("Transaction RESET: {}", this);
-        // transactionStateTracker = TransactionState.UNINTIALIZED;
-    }
-
-    /**
      * Serial message type enumeration. Indicates whether the message is a request or a response.
      *
      */

@@ -2,7 +2,6 @@ package org.openhab.binding.zwave.internal.protocol.transaction;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 
 /**
  * Builder class for serial message
@@ -11,13 +10,12 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionP
  *
  */
 public class ZWaveTransactionMessageBuilder {
-    protected SerialMessageClass messageClass;
-    protected SerialMessageClass expectedResponseClass;
-    protected int nodeId = 255;
-    protected byte[] payload;
-    protected int timeout;
-    protected boolean requiresData = false;
-    protected TransactionPriority priority = TransactionPriority.High;
+    private SerialMessageClass messageClass;
+    private SerialMessageClass expectedResponseClass;
+    private int nodeId = 255;
+    private byte[] payload;
+    private int timeout;
+    private boolean requiresData = false;
 
     public ZWaveTransactionMessageBuilder(final SerialMessageClass messageClass) {
         this.messageClass = messageClass;
@@ -42,14 +40,9 @@ public class ZWaveTransactionMessageBuilder {
         return this;
     }
 
-    public ZWaveTransactionMessageBuilder withPriority(TransactionPriority priority) {
-        this.priority = priority;
-        return this;
-    }
-
     public ZWaveTransactionMessageBuilder withExpectedResponseClass(SerialMessageClass expectedResponseClass) {
         this.expectedResponseClass = expectedResponseClass;
-        return null;
+        return this;
     }
 
     public ZWaveTransactionMessageBuilder withTimeout(int timeout) {
@@ -63,6 +56,6 @@ public class ZWaveTransactionMessageBuilder {
     }
 
     public ZWaveSerialPayload build() {
-        return new ZWaveSerialPayload(messageClass, payload);
+        return new ZWaveSerialPayload(nodeId, messageClass, payload, expectedResponseClass, requiresData, timeout);
     }
 }

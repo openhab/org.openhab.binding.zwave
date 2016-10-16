@@ -19,10 +19,10 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
-import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -148,8 +148,9 @@ public class ZWaveBinarySensorCommandClass extends ZWaveCommandClass
 
         logger.debug("NODE {}: Creating new message for application command SENSOR_BINARY_GET", getNode().getNodeId());
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), SENSOR_BINARY_GET)
-                .withPriority(TransactionPriority.Get).withExpectedResponseCommand(SENSOR_BINARY_REPORT).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                SENSOR_BINARY_GET).withPriority(TransactionPriority.Get)
+                        .withExpectedResponseCommand(SENSOR_BINARY_REPORT).build();
     }
 
     public ZWaveCommandClassTransactionPayload getValueMessage(SensorType type) {
@@ -161,9 +162,9 @@ public class ZWaveBinarySensorCommandClass extends ZWaveCommandClass
         logger.debug("NODE {}: Creating new message for application command SENSOR_BINARY_GET for {}",
                 getNode().getNodeId(), type);
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), SENSOR_BINARY_GET)
-                .withPayload(type.getKey()).withPriority(TransactionPriority.Get)
-                .withExpectedResponseCommand(SENSOR_BINARY_REPORT).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                SENSOR_BINARY_GET).withPayload(type.getKey()).withPriority(TransactionPriority.Get)
+                        .withExpectedResponseCommand(SENSOR_BINARY_REPORT).build();
     }
 
     @Override

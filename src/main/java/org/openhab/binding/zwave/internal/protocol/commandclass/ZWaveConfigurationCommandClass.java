@@ -19,10 +19,10 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
-import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -136,8 +136,9 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
         logger.debug("NODE {}: Creating new message for application command CONFIGURATIONCMD_GET",
                 getNode().getNodeId());
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), CONFIGURATION_GET)
-                .withExpectedResponseCommand(CONFIGURATION_REPORT).withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                CONFIGURATION_GET).withPayload(parameter).withExpectedResponseCommand(CONFIGURATION_REPORT)
+                        .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -164,8 +165,9 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
             outputData.write(parameter.getValue() >> ((parameter.getSize() - i - 1) * 8));
         }
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), CONFIGURATION_SET)
-                .withPayload(outputData.toByteArray()).withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                CONFIGURATION_SET).withPayload(outputData.toByteArray()).withPriority(TransactionPriority.Config)
+                        .build();
     }
 
     /**

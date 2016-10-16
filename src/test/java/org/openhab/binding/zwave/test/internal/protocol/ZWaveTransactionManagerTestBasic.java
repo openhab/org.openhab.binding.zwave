@@ -11,14 +11,10 @@ import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionState;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionManager;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
@@ -30,6 +26,8 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.MemoryGetIdMess
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeNeighborUpdateMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.SerialApiGetCapabilitiesMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.SerialApiSetTimeoutsMessageClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 
 public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTest {
 
@@ -37,38 +35,30 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
     public void TestSendQueue() {
         ZWaveTransactionManager manager = getTransactionManager();
 
-        byte[] packetData = { 0x01, 0x14, 0x00, 0x04, 0x00, 0x2C, 0x0E, 0x32, 0x02, 0x21, 0x34, 0x00, 0x00, 0x01,
-                (byte) 0xB8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x51 };
-        byte[] packetData1 = { 0x01, 0x14, 0x00, 0x04, 0x00, (byte) 0xef };
-        byte[] packetData2 = { 0x01, 0x14, 0x00, 0x04, 0x01, (byte) 0xee };
-        byte[] packetData3 = { 0x01, 0x14, 0x00, 0x04, 0x02, (byte) 0xed };
-        byte[] packetData4 = { 0x01, 0x14, 0x00, 0x04, 0x03, (byte) 0xec };
-
-        ZWaveTransaction transaction;
-        SerialMessage serialMessage;
-
         // We add a transaction which gets sent immediately so the rest are queued
         // Note that this needs to be a different node id to the rest since this will go into the
         // outstandingTransaction list and will block any other messages to this node being returned
         // in the getTransactionToSend method.
-        serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1)
-                .withNodeId(5).withPayload(5, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1).build();
-        transaction = new ZWaveTransactionBuilder(serialMessage).build();
-        manager.queueTransactionForSend(transaction);
+        ZWaveCommandClassTransactionPayload payload = new ZWaveCommandClassTransactionPayloadBuilder(1,
+                CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1)
+                        .withPayload(1, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1).build();
+        manager.queueTransactionForSend(payload);
 
         // Queue must start empty or we're doomed from the start!
         assertEquals(0, manager.getSendQueueLength());
 
         // Add a frame and make sure the queue is 1 transaction
-        serialMessage = new SerialMessage(packetData);
-        transaction = new ZWaveTransactionBuilder(serialMessage).build();
-        manager.queueTransactionForSend(transaction);
+        ZWaveCommandClassTransactionPayload payload1 = new ZWaveCommandClassTransactionPayloadBuilder(2,
+                CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1)
+                        .withPayload(2, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1).build();
+        manager.queueTransactionForSend(payload1);
         assertEquals(1, manager.getSendQueueLength());
 
         // Add it again and make sure it is not duplicated
-        serialMessage = new SerialMessage(packetData);
-        transaction = new ZWaveTransactionBuilder(serialMessage).build();
-        manager.queueTransactionForSend(transaction);
+        ZWaveCommandClassTransactionPayload payload2 = new ZWaveCommandClassTransactionPayloadBuilder(2,
+                CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1)
+                        .withPayload(2, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1).build();
+        manager.queueTransactionForSend(payload2);
         assertEquals(1, manager.getSendQueueLength());
 
         // Clear the queue
@@ -76,24 +66,32 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(0, manager.getSendQueueLength());
 
         // Add some messages with different priorities and check they are returned in the correct order
-        serialMessage = new SerialMessage(packetData1);
-        transaction = new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Poll).build();
-        manager.queueTransactionForSend(transaction);
+        ZWaveCommandClassTransactionPayload priorityPoll = new ZWaveCommandClassTransactionPayloadBuilder(3,
+                CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1)
+                        .withPayload(2, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1)
+                        .withPriority(TransactionPriority.Poll).build();
+        manager.queueTransactionForSend(priorityPoll);
         assertEquals(1, manager.getSendQueueLength());
 
-        serialMessage = new SerialMessage(packetData2);
-        transaction = new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Get).build();
-        manager.queueTransactionForSend(transaction);
+        ZWaveCommandClassTransactionPayload priorityGet = new ZWaveCommandClassTransactionPayloadBuilder(3,
+                CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1)
+                        .withPayload(3, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1)
+                        .withPriority(TransactionPriority.Get).build();
+        manager.queueTransactionForSend(priorityGet);
         assertEquals(2, manager.getSendQueueLength());
 
-        serialMessage = new SerialMessage(packetData3);
-        transaction = new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Immediate).build();
-        manager.queueTransactionForSend(transaction);
+        ZWaveCommandClassTransactionPayload priorityImmediate = new ZWaveCommandClassTransactionPayloadBuilder(3,
+                CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1)
+                        .withPayload(4, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1)
+                        .withPriority(TransactionPriority.Immediate).build();
+        manager.queueTransactionForSend(priorityImmediate);
         assertEquals(3, manager.getSendQueueLength());
 
-        serialMessage = new SerialMessage(packetData4);
-        transaction = new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Set).build();
-        manager.queueTransactionForSend(transaction);
+        ZWaveCommandClassTransactionPayload prioritySet = new ZWaveCommandClassTransactionPayloadBuilder(3,
+                CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1)
+                        .withPayload(5, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1)
+                        .withPriority(TransactionPriority.Set).build();
+        manager.queueTransactionForSend(prioritySet);
         assertEquals(4, manager.getSendQueueLength());
 
         // Check that the messages are queued in the correct order
@@ -108,8 +106,8 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         ZWaveTransactionManager manager = getTransactionManagerForTimeout();
 
         // Test transaction requiring a RESponse - uses SerialApiSetTimeouts
-        ZWaveTransaction transaction = new SerialApiSetTimeoutsMessageClass().doRequest(150, 15);
-        transaction.setAttemptsRemaining(1);
+        ZWaveSerialPayload transaction = new SerialApiSetTimeoutsMessageClass().doRequest(150, 15);
+        // transaction.setAttemptsRemaining(1);
 
         long start = System.currentTimeMillis();
         manager.queueTransactionForSend(transaction);
@@ -139,8 +137,8 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         ZWaveTransactionManager manager = getTransactionManagerForTimeout();
 
         // Test transaction requiring a RESponse - uses SerialApiSetTimeouts
-        ZWaveTransaction transaction = new SerialApiSetTimeoutsMessageClass().doRequest(150, 15);
-        transaction.setAttemptsRemaining(3);
+        ZWaveSerialPayload transaction = new SerialApiSetTimeoutsMessageClass().doRequest(150, 15);
+        // transaction.setAttemptsRemaining(3);
 
         long start = System.currentTimeMillis();
         manager.queueTransactionForSend(transaction);
@@ -170,8 +168,8 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         ZWaveTransactionManager manager = getTransactionManagerForTimeout();
 
         // Test transaction requiring a RESponse - uses SerialApiSetTimeouts
-        ZWaveTransaction transaction = new SerialApiSetTimeoutsMessageClass().doRequest(150, 15);
-        transaction.setAttemptsRemaining(3);
+        ZWaveSerialPayload transaction = new SerialApiSetTimeoutsMessageClass().doRequest(150, 15);
+        // transaction.setAttemptsRemaining(3);
 
         long start = System.currentTimeMillis();
         manager.queueTransactionForSend(transaction);
@@ -206,8 +204,8 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         ZWaveTransactionManager manager = getTransactionManagerForTimeout();
 
         // Test transaction requiring a REQuest
-        ZWaveTransaction transaction = new AddNodeMessageClass().doRequestStart(true, true);
-        transaction.setAttemptsRemaining(1);
+        ZWaveSerialPayload transaction = new AddNodeMessageClass().doRequestStart(true, true);
+        // transaction.setAttemptsRemaining(1);
 
         long start = System.currentTimeMillis();
         manager.queueTransactionForSend(transaction);
@@ -237,23 +235,21 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         ZWaveTransactionManager manager = getTransactionManagerForTimeout();
 
         // Test transaction
-        SerialMessage message = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1).withNodeId(5)
-                .withPayload(5, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1).build();
+        ZWaveCommandClassTransactionPayload payload = new ZWaveCommandClassTransactionPayloadBuilder(5,
+                CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1)
+                        .withPayload(5, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1)
+                        .withExpectedResponseCommand(2).build();
 
-        ZWaveTransaction transaction = new ZWaveTransactionBuilder(message)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(CommandClass.COMMAND_CLASS_SENSOR_ALARM, 2).build();
-        transaction.setAttemptsRemaining(1);
-        transaction.getSerialMessage().setCallbackId(83);
+        // payload.setAttemptsRemaining(1);
+        // transaction.getSerialMessage().setCallbackId(83);
 
-        manager.queueTransactionForSend(transaction);
+        manager.queueTransactionForSend(payload);
 
         // Check that this frame was sent
         assertEquals(1, txQueueCapture.getAllValues().size());
 
         // Provide the response and make sure the transaction didn't complete
-        message = new SerialMessage(responsePacket1);
+        SerialMessage message = new SerialMessage(responsePacket1);
         manager.processReceiveMessage(message);
 
         long start = System.currentTimeMillis();
@@ -282,7 +278,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         byte[] responsePacket1 = { 0x01, 0x05, 0x01, 0x06, (byte) 0x96, 0x0F, 0x64 };
 
         // Test transaction with just a RESponse - uses SerialApiSetTimeouts
-        ZWaveTransaction transaction = new SerialApiSetTimeoutsMessageClass().doRequest(150, 15);
+        ZWaveSerialPayload transaction = new SerialApiSetTimeoutsMessageClass().doRequest(150, 15);
 
         ZWaveTransactionManager manager = getTransactionManager();
         manager.queueTransactionForSend(transaction);
@@ -307,7 +303,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         byte[] responsePacket = { 0x01, 0x05, 0x01, 0x06, (byte) 0x96, 0x0F, 0x64 };
 
         // Test transaction with just a RESponse - uses SerialApiSetTimeouts
-        ZWaveTransaction transaction = new SerialApiSetTimeoutsMessageClass().doRequest(150, 15);
+        ZWaveSerialPayload transaction = new SerialApiSetTimeoutsMessageClass().doRequest(150, 15);
 
         ZWaveTransactionManager manager = getTransactionManager();
         manager.queueTransactionForSend(transaction);
@@ -337,7 +333,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         byte[] responsePacket1 = { 0x01, 0x07, 0x00, 0x4A, 0x01, 0x01, 0x00, 0x00, (byte) 0xB2 };
 
         // Test transaction with just a REQuest - uses AddNodeMessage
-        ZWaveTransaction transaction = new AddNodeMessageClass().doRequestStart(true, true);
+        ZWaveSerialPayload transaction = new AddNodeMessageClass().doRequestStart(true, true);
         transaction.getSerialMessage().setCallbackId(1);
 
         ZWaveTransactionManager manager = getTransactionManager();
@@ -364,7 +360,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
                 0x6D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, (byte) 0x87 };
 
         // Test transaction with just a REQuest - uses RequestNodeNeighborUpdate
-        ZWaveTransaction transaction = new RequestNodeNeighborUpdateMessageClass().doRequest(12);
+        ZWaveSerialPayload transaction = new RequestNodeNeighborUpdateMessageClass().doRequest(12);
         transaction.getSerialMessage().setCallbackId(82);
 
         ZWaveTransactionManager manager = getTransactionManager();
@@ -407,7 +403,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         byte[] responsePacket2 = { 0x01, 0x05, 0x00, 0x46, 0x01, 0x56, 0x00, (byte) 0xEB };
 
         // Test transaction with just a REQuest - uses RemoveNodeMessage
-        ZWaveTransaction transaction = new AssignReturnRouteMessageClass().doRequest(5, 1);
+        ZWaveSerialPayload transaction = new AssignReturnRouteMessageClass().doRequest(5, 1);
         transaction.getSerialMessage().setCallbackId(1);
 
         ZWaveTransactionManager manager = getTransactionManager();
@@ -447,17 +443,14 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
                 0x6D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, (byte) 0x87 };
 
         // Test transaction
-        SerialMessage message = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1).withNodeId(5)
-                .withPayload(5, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1).build();
-
-        ZWaveTransaction transaction = new ZWaveTransactionBuilder(message)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(CommandClass.COMMAND_CLASS_SENSOR_ALARM, 2).build();
-        transaction.getSerialMessage().setCallbackId(83);
+        ZWaveCommandClassTransactionPayload payload = new ZWaveCommandClassTransactionPayloadBuilder(5,
+                CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1)
+                        .withPayload(5, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1)
+                        .withExpectedResponseCommand(2).build();
+        // transaction.getSerialMessage().setCallbackId(83);
 
         ZWaveTransactionManager manager = getTransactionManager();
-        manager.queueTransactionForSend(transaction);
+        manager.queueTransactionForSend(payload);
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
 
         // Check that this frame was sent
@@ -465,7 +458,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
 
         // Provide the response and make sure the transaction didn't complete
-        message = new SerialMessage(responsePacket1);
+        SerialMessage message = new SerialMessage(responsePacket1);
         manager.processReceiveMessage(message);
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
 
@@ -515,26 +508,23 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         System.out.println("------------------------------------------------------------------------");
 
         // Start transaction 1
-        SerialMessage message = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1).withNodeId(5)
-                .withPayload(5, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1).build();
-        ZWaveTransaction transaction1 = new ZWaveTransactionBuilder(message)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(CommandClass.COMMAND_CLASS_SENSOR_ALARM, 2).build();
-        transaction1.getSerialMessage().setCallbackId(83);
+        ZWaveCommandClassTransactionPayload payload1 = new ZWaveCommandClassTransactionPayloadBuilder(5,
+                CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1)
+                        .withPayload(5, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1)
+                        .withExpectedResponseCommand(2).build();
+        // transaction1.getSerialMessage().setCallbackId(83);
 
-        manager.queueTransactionForSend(transaction1);
+        manager.queueTransactionForSend(payload1);
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
 
         // Start transaction 2
-        message = new ZWaveSendDataMessageBuilder().withCommandClass(CommandClass.COMMAND_CLASS_METER, 1).withNodeId(2)
-                .withPayload(0x10).build();
-        ZWaveTransaction transaction2 = new ZWaveTransactionBuilder(message)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(CommandClass.COMMAND_CLASS_METER, 2).build();
-        transaction2.getSerialMessage().setCallbackId(8);
+        ZWaveCommandClassTransactionPayload payload2 = new ZWaveCommandClassTransactionPayloadBuilder(6,
+                CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1)
+                        .withPayload(5, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1)
+                        .withExpectedResponseCommand(2).build();
+        // transaction2.getSerialMessage().setCallbackId(8);
 
-        manager.queueTransactionForSend(transaction2);
+        manager.queueTransactionForSend(payload2);
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
 
         // Check that the first frame has been sent
@@ -542,7 +532,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
 
         // Provide the response and make sure the transaction didn't complete
-        message = new SerialMessage(t1ResponsePacket1);
+        SerialMessage message = new SerialMessage(t1ResponsePacket1);
         manager.processReceiveMessage(message);
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
 
@@ -610,26 +600,17 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         System.out.println("------------------------------------------------------------------------");
 
         // Start transaction 1
-        SerialMessage message = new ZWaveMessageBuilder(SerialMessageClass.RequestNodeNeighborUpdate).withPayload(2)
-                .build();
+        ZWaveSerialPayload payload1 = new RequestNodeNeighborUpdateMessageClass().doRequest(2);
+        // transaction1.getSerialMessage().setCallbackId(72);
 
-        ZWaveTransaction transaction1 = new ZWaveTransactionBuilder(message)
-                .withExpectedResponseClass(SerialMessageClass.RequestNodeNeighborUpdate)
-                .withPriority(TransactionPriority.High).build();
-        transaction1.getSerialMessage().setCallbackId(72);
-
-        manager.queueTransactionForSend(transaction1);
+        manager.queueTransactionForSend(payload1);
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
 
         // Start transaction 2
-        message = new ZWaveMessageBuilder(SerialMessageClass.RequestNodeNeighborUpdate).withPayload(5).build();
+        ZWaveSerialPayload payload2 = new RequestNodeNeighborUpdateMessageClass().doRequest(5);
+        // transaction2.getSerialMessage().setCallbackId(86);
 
-        ZWaveTransaction transaction2 = new ZWaveTransactionBuilder(message)
-                .withExpectedResponseClass(SerialMessageClass.RequestNodeNeighborUpdate)
-                .withPriority(TransactionPriority.High).build();
-        transaction2.getSerialMessage().setCallbackId(86);
-
-        manager.queueTransactionForSend(transaction2);
+        manager.queueTransactionForSend(payload2);
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
 
         // Check that the first frame has been sent
@@ -637,7 +618,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
 
         // Provide the response
-        message = new SerialMessage(t1ResponsePacket1);
+        SerialMessage message = new SerialMessage(t1ResponsePacket1);
         manager.processReceiveMessage(message);
 
         // Check that only the first frame has been sent and make sure the transaction didn't complete
@@ -700,7 +681,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
             threads.add(new Thread() {
                 @Override
                 public void run() {
-                    ZWaveTransaction transaction = new SerialApiSetTimeoutsMessageClass().doRequest(c, 1);
+                    ZWaveSerialPayload transaction = new SerialApiSetTimeoutsMessageClass().doRequest(c, 1);
                     manager.queueTransactionForSend(transaction);
                 }
             });
@@ -778,27 +759,24 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         System.out.println("TestPingFailure ------------------------------------------------------------------------");
 
         // Queue transaction 1 (METER)
-        SerialMessage message = new ZWaveSendDataMessageBuilder().withCommandClass(CommandClass.COMMAND_CLASS_METER, 1)
-                .withNodeId(13).withPayload(0x00).build();
-        ZWaveTransaction transaction1 = new ZWaveTransactionBuilder(message)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(CommandClass.COMMAND_CLASS_METER, 2).build();
-        transaction1.getSerialMessage().setCallbackId(10);
+        ZWaveCommandClassTransactionPayload payload1 = new ZWaveCommandClassTransactionPayloadBuilder(13,
+                CommandClass.COMMAND_CLASS_METER, 1).withPayload(0).withExpectedResponseCommand(2).build();
+        // transaction1.getSerialMessage().setCallbackId(10);
 
         // Queue transaction 2 (PING)
-        message = new ZWaveSendDataMessageBuilder().withCommandClass(CommandClass.COMMAND_CLASS_NO_OPERATION, 1)
-                .withNodeId(4).build();
-        ZWaveTransaction transaction2 = new ZWaveTransactionBuilder(message).build();
-        transaction2.getSerialMessage().setCallbackId(8);
+        ZWaveCommandClassTransactionPayload payload2 = new ZWaveCommandClassTransactionPayload(4,
+                new byte[] { (byte) CommandClass.COMMAND_CLASS_NO_OPERATION.getKey() }, TransactionPriority.Poll, null,
+                0);
+        // transaction2.getSerialMessage().setCallbackId(8);
 
-        manager.queueTransactionForSend(transaction1);
-        manager.queueTransactionForSend(transaction2);
+        manager.queueTransactionForSend(payload1);
+        manager.queueTransactionForSend(payload2);
 
         assertEquals(1, txQueueCapture.getAllValues().size());
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
 
         // Send the response to the METER
-        message = new SerialMessage(responsePacket1);
+        SerialMessage message = new SerialMessage(responsePacket1);
         manager.processReceiveMessage(message);
 
         // Send the request to the METER
@@ -851,8 +829,8 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         ZWaveTransactionManager manager = getTransactionManagerForTimeout();
 
         // Test transaction requiring a RESponse - uses SerialApiSetTimeouts
-        ZWaveTransaction transaction = new SerialApiSetTimeoutsMessageClass().doRequest(150, 15);
-        transaction.setAttemptsRemaining(3);
+        ZWaveSerialPayload transaction = new SerialApiSetTimeoutsMessageClass().doRequest(150, 15);
+        // transaction.setAttemptsRemaining(3);
 
         long start = System.currentTimeMillis();
         manager.queueTransactionForSend(transaction);
@@ -895,28 +873,25 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         System.out.println("------------------------------------------------------------------------");
 
         // Start transaction 1
-        SerialMessage message = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1).withNodeId(5)
-                .withPayload(5, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1).build();
-        ZWaveTransaction transaction1 = new ZWaveTransactionBuilder(message)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(CommandClass.COMMAND_CLASS_SENSOR_ALARM, 2).build();
-        transaction1.getSerialMessage().setCallbackId(83);
-        transaction1.setAttemptsRemaining(3);
+        ZWaveCommandClassTransactionPayload payload1 = new ZWaveCommandClassTransactionPayloadBuilder(5,
+                CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1)
+                        .withPayload(5, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1)
+                        .withExpectedResponseCommand(2).build();
+        // transaction1.getSerialMessage().setCallbackId(83);
+        // transaction1.setAttemptsRemaining(3);
 
-        manager.queueTransactionForSend(transaction1);
+        manager.queueTransactionForSend(payload1);
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
 
         // Start transaction 2
-        message = new ZWaveSendDataMessageBuilder().withCommandClass(CommandClass.COMMAND_CLASS_METER, 1).withNodeId(2)
-                .withPayload(0x10).build();
-        ZWaveTransaction transaction2 = new ZWaveTransactionBuilder(message)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(CommandClass.COMMAND_CLASS_METER, 2).build();
-        transaction2.getSerialMessage().setCallbackId(8);
-        transaction2.setAttemptsRemaining(3);
+        ZWaveCommandClassTransactionPayload payload2 = new ZWaveCommandClassTransactionPayloadBuilder(5,
+                CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1)
+                        .withPayload(5, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1)
+                        .withExpectedResponseCommand(2).build();
+        // transaction2.getSerialMessage().setCallbackId(8);
+        // transaction2.setAttemptsRemaining(3);
 
-        manager.queueTransactionForSend(transaction2);
+        manager.queueTransactionForSend(payload2);
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
 
         // Check that the first frame has been sent
@@ -924,7 +899,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
 
         // Provide the response and make sure the transaction didn't complete
-        message = new SerialMessage(t1ResponsePacket1);
+        SerialMessage message = new SerialMessage(t1ResponsePacket1);
         manager.processReceiveMessage(message);
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
 
@@ -995,14 +970,11 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
     @Test
     public void TestTransactionType4Wakeup() {
         // Test transaction
-        SerialMessage message = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1).withNodeId(5)
-                .withPayload(5, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1).build();
-
-        ZWaveTransaction transaction = new ZWaveTransactionBuilder(message)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(CommandClass.COMMAND_CLASS_SENSOR_ALARM, 2).build();
-        transaction.getSerialMessage().setCallbackId(83);
+        ZWaveCommandClassTransactionPayload payload = new ZWaveCommandClassTransactionPayloadBuilder(5,
+                CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1)
+                        .withPayload(5, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1)
+                        .withExpectedResponseCommand(2).build();
+        // transaction.getSerialMessage().setCallbackId(83);
 
         final ZWaveTransactionManager manager = getTransactionManager();
 
@@ -1016,12 +988,12 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         Mockito.doAnswer((new Answer<Void>() {
             @Override
             public Void answer(InvocationOnMock invocation) {
-                manager.queueTransactionForSend((ZWaveTransaction) invocation.getArguments()[0]);
+                manager.queueTransactionForSend((ZWaveCommandClassTransactionPayload) invocation.getArguments()[0]);
                 return null;
             }
-        })).when(controller).enqueue(Matchers.any(ZWaveTransaction.class));
+        })).when(controller).enqueue(Matchers.any(ZWaveCommandClassTransactionPayload.class));
 
-        manager.queueTransactionForSend(transaction);
+        manager.queueTransactionForSend(payload);
 
         // Check that this frame was not sent
         assertEquals(0, txQueueCapture.getAllValues().size());

@@ -19,10 +19,10 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
-import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -181,8 +181,9 @@ public class ZWaveMultiLevelSensorCommandClass extends ZWaveCommandClass
 
         logger.debug("NODE {}: Creating new message for command SENSOR_MULTI_LEVEL_GET", this.getNode().getNodeId());
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), SENSOR_MULTILEVEL_GET)
-                .withPriority(TransactionPriority.Get).withExpectedResponseCommand(SENSOR_MULTILEVEL_REPORT).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                SENSOR_MULTILEVEL_GET).withPriority(TransactionPriority.Get)
+                        .withExpectedResponseCommand(SENSOR_MULTILEVEL_REPORT).build();
     }
 
     /**
@@ -241,9 +242,9 @@ public class ZWaveMultiLevelSensorCommandClass extends ZWaveCommandClass
             outputData.write(0); // first scale
         }
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), SENSOR_MULTILEVEL_GET)
-                .withPayload(outputData.toByteArray()).withPriority(TransactionPriority.Get)
-                .withExpectedResponseCommand(SENSOR_MULTILEVEL_REPORT).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                SENSOR_MULTILEVEL_GET).withPayload(outputData.toByteArray()).withPriority(TransactionPriority.Get)
+                        .withExpectedResponseCommand(SENSOR_MULTILEVEL_REPORT).build();
     }
 
     @Override

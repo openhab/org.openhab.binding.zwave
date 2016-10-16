@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionManager;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeInfoMessageClass;
@@ -22,9 +21,6 @@ public class ZWaveTransactionManagerTest_RequestNodeInfo extends ZWaveTransactio
                 CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1)
                         .withPayload(5, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1)
                         .withExpectedResponseCommand(2).build();
-
-        final ZWaveTransaction transaction = new ZWaveTransaction(payload);
-        transaction.getSerialMessage().setCallbackId(83);
 
         final ZWaveTransactionManager manager = getTransactionManager();
 

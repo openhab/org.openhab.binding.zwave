@@ -24,6 +24,7 @@ import org.mockito.Mockito;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.converter.ZWaveConfigurationConverter;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveConfigurationParameter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
@@ -84,8 +85,9 @@ public class ZWaveConfigurationConverterTest extends ZWaveCommandClassConverterT
         List<ZWaveCommandClassTransactionPayload> msgs = converter.executeRefresh(channel, node);
 
         assertEquals(1, msgs.size());
-        msgs.get(0).getSerialMessage().setCallbackId(0);
-        assertTrue(Arrays.equals(msgs.get(0).getSerialMessage().getMessageBuffer(), expectedResponse));
+        SerialMessage msg = msgs.get(0).getSerialMessage();
+        msg.setCallbackId(0);
+        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
     }
 
     @Test
@@ -111,9 +113,11 @@ public class ZWaveConfigurationConverterTest extends ZWaveCommandClassConverterT
         List<ZWaveCommandClassTransactionPayload> msgs = converter.receiveCommand(channel, node, command);
 
         assertEquals(2, msgs.size());
-        msgs.get(0).getSerialMessage().setCallbackId(0);
-        assertTrue(Arrays.equals(msgs.get(0).getSerialMessage().getMessageBuffer(), expectedResponse0));
-        msgs.get(1).getSerialMessage().setCallbackId(0);
-        assertTrue(Arrays.equals(msgs.get(1).getSerialMessage().getMessageBuffer(), expectedResponse1));
+        SerialMessage msg = msgs.get(0).getSerialMessage();
+        msg.setCallbackId(0);
+        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse0));
+        msg = msgs.get(1).getSerialMessage();
+        msg.setCallbackId(0);
+        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse1));
     }
 }

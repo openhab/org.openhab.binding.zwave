@@ -1,5 +1,6 @@
 package org.openhab.binding.zwave.internal.protocol.transaction;
 
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 
 /**
@@ -17,7 +18,8 @@ public class ZWaveCommandClassTransactionPayloadBuilder {
     private CommandClass expectedResponseCommandClass;
     private int expectedResponseCommandClassCommand;
 
-    public ZWaveCommandClassTransactionPayloadBuilder(final int nodeId, final CommandClass commandClass, final int command) {
+    public ZWaveCommandClassTransactionPayloadBuilder(final int nodeId, final CommandClass commandClass,
+            final int command) {
         this.commandClass = commandClass;
         this.command = command;
         this.nodeId = nodeId;
@@ -42,7 +44,8 @@ public class ZWaveCommandClassTransactionPayloadBuilder {
         return this;
     }
 
-    public ZWaveCommandClassTransactionPayloadBuilder withExpectedResponseCommand(int expectedResponseCommandClassCommand) {
+    public ZWaveCommandClassTransactionPayloadBuilder withExpectedResponseCommand(
+            int expectedResponseCommandClassCommand) {
         this.expectedResponseCommandClass = commandClass;
         this.expectedResponseCommandClassCommand = expectedResponseCommandClassCommand;
         return this;

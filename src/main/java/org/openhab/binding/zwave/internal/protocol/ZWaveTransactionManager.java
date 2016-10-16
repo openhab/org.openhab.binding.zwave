@@ -119,7 +119,6 @@ import org.slf4j.LoggerFactory;
 public class ZWaveTransactionManager {
     private Logger logger = LoggerFactory.getLogger(ZWaveTransactionManager.class);
 
-    // private static final int ZWAVE_RESPONSE_TIMEOUT = 5000;
     private static final int INITIAL_TX_QUEUE_SIZE = 128;
     private static final int MAX_OUTSTANDING_TRANSACTIONS = 4;
 
@@ -215,6 +214,10 @@ public class ZWaveTransactionManager {
         if (payload.getMaxAttempts() != 0) {
             transaction.setAttemptsRemaining(payload.getMaxAttempts());
         }
+        transaction.getSerialMessageClass();
+
+        // Add the transaction to the queue
+        addTransactionToQueue(transaction);
 
         return transaction.getTransactionId();
     }
@@ -419,7 +422,8 @@ public class ZWaveTransactionManager {
                 if (currentTransaction == lastTransaction
                         && currentTransaction.requiresDataBeforeNextRelease() == false) {
                     lastTransaction = null;
-                    System.out.println("lastTransaction COMPLETED - at DATA - " + currentTransaction.getCallbackId());
+                    System.out.println("XXXXXXXXXXXXXXXXX lastTransaction COMPLETED - at DATA - "
+                            + currentTransaction.getCallbackId());
                 }
                 break;
 
@@ -509,7 +513,7 @@ public class ZWaveTransactionManager {
                 nextTimer = System.currentTimeMillis() + timer2;
                 break;
             case WAIT_DATA:
-                System.out.println("Timer type WAIT_DATA");
+                System.out.println("Timer type WAIT_DATA [" + transaction.getDataTimeout() + "]");
                 nextTimer = System.currentTimeMillis() + transaction.getDataTimeout();
                 break;
         }

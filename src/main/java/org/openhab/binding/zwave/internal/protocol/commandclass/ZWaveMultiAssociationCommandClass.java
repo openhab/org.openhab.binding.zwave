@@ -18,9 +18,9 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveAssociationEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
-import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
@@ -272,7 +272,8 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
         logger.debug("NODE {}: Creating new message for command MULTI_ASSOCIATIONCMD_REMOVE", getNode().getNodeId());
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
-                MULTI_ASSOCIATIONCMD_REMOVE).withPayload(group, 0, node).withPriority(TransactionPriority.Get).build();
+                MULTI_ASSOCIATIONCMD_REMOVE).withPayload(group, 0, node, endpoint).withPriority(TransactionPriority.Get)
+                        .build();
     }
 
     /**

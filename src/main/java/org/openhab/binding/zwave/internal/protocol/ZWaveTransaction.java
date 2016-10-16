@@ -21,6 +21,8 @@ public class ZWaveTransaction {
     private final static AtomicLong sequence = new AtomicLong();
     private final long transactionId = sequence.getAndIncrement();
 
+    private int DEFAULT_TIMEOUT = 2500;
+
     private final ZWaveMessagePayloadTransaction payload;
 
     // Timers
@@ -89,22 +91,21 @@ public class ZWaveTransaction {
     private int callbackId = 0;
 
     private TransactionPriority priority;
-    private SerialMessageClass serialMessageClass;
-    private SerialMessageClass expectedReplyClass;
+    // private SerialMessageClass serialMessageClass;
+    // private SerialMessageClass expectedReplyClass;
     private CommandClass expectedReplyCommandClass;
     private Integer expectedReplyCommandClassCommand;
-    private boolean requiresData;
-    private int dataTimeout;
+    private long dataTimeout;
 
     private TransactionState transactionStateCancelled = TransactionState.UNINTIALIZED;
     private TransactionState transactionStateTracker = TransactionState.UNINTIALIZED;
 
-    private int attemptsRemaining;
+    private int attemptsRemaining = 3;
 
     private long startTime;
     private Date timeout;
 
-    // public ZWaveTransaction(int nodeId, SerialMessage serialMessage, SerialMessageClass expectedReplyClass,
+    // public ZWaveTransaction(int nodeId, SerialMessageClass serialMessage, SerialMessageClass expectedReplyClass,
     // CommandClass expectedReplyCommandClass, int expectedReplyCommandClassCommand, TransactionPriority priority,
     // int attempts, boolean requiresData, int dataTimeout) {
     // this.nodeId = nodeId;
@@ -120,6 +121,17 @@ public class ZWaveTransaction {
     // }
 
     public ZWaveTransaction(final ZWaveMessagePayloadTransaction payload) {
+        // this.serialMessageClass = payload.getSerialMessageClass();
+        // this.expectedReplyClass = payload.getExpectedResponseSerialMessageClass();
+        this.priority = payload.getPriority();
+        this.dataTimeout = payload.getTimeout();
+        if (this.dataTimeout < 250) {
+            this.dataTimeout = DEFAULT_TIMEOUT;
+        }
+        this.attemptsRemaining = payload.getMaxAttempts();
+        if (this.attemptsRemaining == 0) {
+            this.attemptsRemaining = 3;
+        }
         this.payload = payload;
     }
 
@@ -132,11 +144,11 @@ public class ZWaveTransaction {
         startTime = System.currentTimeMillis();
 
         // We must have just sent the message
-        if (serialMessageClass.requiresResponse()) {
+        if (payload.getSerialMessageClass().requiresResponse()) {
             transactionStateTracker = TransactionState.WAIT_RESPONSE;
             return;
         }
-        if (serialMessageClass.requiresRequest()) {
+        if (payload.getSerialMessageClass().requiresRequest()) {
             transactionStateTracker = TransactionState.WAIT_REQUEST;
             return;
         }
@@ -162,7 +174,7 @@ public class ZWaveTransaction {
     }
 
     public SerialMessageClass getSerialMessageClass() {
-        return serialMessageClass;
+        return payload.getSerialMessageClass();
     }
 
     public int getNodeId() {
@@ -170,14 +182,14 @@ public class ZWaveTransaction {
     }
 
     public int getQueueId() {
-        if (serialMessageClass == SerialMessageClass.SendData) {
+        if (payload.getSerialMessageClass() == SerialMessageClass.SendData) {
             return 255;
         }
         return payload.getDestinationNode();
     }
 
     public SerialMessageClass getExpectedReplyClass() {
-        return expectedReplyClass;
+        return payload.getExpectedResponseSerialMessageClass();
     }
 
     public CommandClass getExpectedCommandClass() {
@@ -238,7 +250,7 @@ public class ZWaveTransaction {
     }
 
     public boolean requiresDataBeforeNextRelease() {
-        return requiresData;
+        return payload.requiresData();
     }
 
     public long getDataTimeout() {
@@ -248,12 +260,12 @@ public class ZWaveTransaction {
     public boolean transactionAdvance(SerialMessage incomingMessage) {
         logger.debug("TransactionAdvance ST: {}", transactionStateTracker);
         logger.debug("TransactionAdvance TX: {}", serialMessageDebug);
-        logger.debug("TransactionAdvance WT: {}", expectedReplyClass);
+        logger.debug("TransactionAdvance WT: {}", payload.getExpectedResponseSerialMessageClass());
         logger.debug("TransactionAdvance RX: {}", incomingMessage);
 
         System.out.println("TransactionAdvance ST: " + transactionStateTracker);
         System.out.println("TransactionAdvance TX: " + serialMessageDebug);
-        System.out.println("TransactionAdvance WT: " + expectedReplyClass);
+        System.out.println("TransactionAdvance WT: " + payload.getExpectedResponseSerialMessageClass());
         System.out.println("TransactionAdvance RX: " + incomingMessage);
 
         TransactionState stateTrackerStart = transactionStateTracker;
@@ -262,19 +274,20 @@ public class ZWaveTransaction {
                 break;
 
             case WAIT_RESPONSE:
-                if (incomingMessage.getMessageClass() != serialMessageClass
+                if (incomingMessage.getMessageClass() != payload.getSerialMessageClass()
                         || incomingMessage.getMessageType() != SerialMessageType.Response) {
                     break;
                 }
 
                 // We've received our response - advance
-                if (serialMessageClass.requiresRequest()) {
+                if (payload.getSerialMessageClass().requiresRequest()) {
                     transactionStateTracker = TransactionState.WAIT_REQUEST;
                     break;
                 }
 
                 // TODO: Ultimately, getExpectedReply should return null if we're not waiting for data
-                if (expectedReplyClass != null && expectedReplyClass != incomingMessage.getMessageClass()) {
+                if (payload.getExpectedResponseSerialMessageClass() != null
+                        && payload.getExpectedResponseSerialMessageClass() != incomingMessage.getMessageClass()) {
                     transactionStateTracker = TransactionState.WAIT_DATA;
                     break;
                 }
@@ -284,7 +297,7 @@ public class ZWaveTransaction {
                 break;
 
             case WAIT_REQUEST:
-                if (incomingMessage.getMessageClass() != serialMessageClass
+                if (incomingMessage.getMessageClass() != payload.getSerialMessageClass()
                         || incomingMessage.getMessageType() != SerialMessageType.Request) {
                     break;
                 }
@@ -295,7 +308,8 @@ public class ZWaveTransaction {
 
                 // We've received our request - advance
                 // TODO: Ultimately, getExpectedReply should return null if we're not waiting for data
-                if (expectedReplyClass != null) { // && expectedReplyClass != incomingMessage.getMessageClass()) {
+                if (payload.getExpectedResponseSerialMessageClass() != null) { // && expectedReplyClass !=
+                                                                               // incomingMessage.getMessageClass()) {
                     transactionStateTracker = TransactionState.WAIT_DATA;
                     break;
                 }
@@ -305,7 +319,7 @@ public class ZWaveTransaction {
             case WAIT_DATA:
                 System.out.println("WAIT_DATA -- 1");
 
-                if (incomingMessage.getMessageClass() != expectedReplyClass
+                if (incomingMessage.getMessageClass() != payload.getExpectedResponseSerialMessageClass()
                         || incomingMessage.getMessageType() != SerialMessageType.Request) {
                     System.out.println("WAIT_DATA -- 2");
                     break;

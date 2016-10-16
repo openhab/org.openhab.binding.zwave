@@ -17,11 +17,11 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveAssociationEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
-import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -206,8 +206,9 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
     public ZWaveCommandClassTransactionPayload setAssociationMessage(int group, int node) {
         logger.debug("NODE {}: Creating new message for application command ASSOCIATIONCMD_SET", getNode().getNodeId());
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), ASSOCIATIONCMD_SET)
-                .withPayload((group & 0xff), (node & 0xff)).withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                ASSOCIATIONCMD_SET).withPayload((group & 0xff), (node & 0xff)).withPriority(TransactionPriority.Config)
+                        .build();
     }
 
     /**
@@ -223,8 +224,9 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
         logger.debug("NODE {}: Creating new message for application command ASSOCIATIONCMD_REMOVE",
                 this.getNode().getNodeId());
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), ASSOCIATIONCMD_REMOVE)
-                .withPayload((group & 0xff), (node & 0xff)).withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                ASSOCIATIONCMD_REMOVE).withPayload((group & 0xff), (node & 0xff))
+                        .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -240,8 +242,8 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
         logger.debug("NODE {}: Creating new message for application command ASSOCIATIONCMD_REMOVE group={}, node=all",
                 getNode().getNodeId(), group);
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), ASSOCIATIONCMD_REMOVE)
-                .withPayload((group & 0xff)).withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                ASSOCIATIONCMD_REMOVE).withPayload((group & 0xff)).withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -255,9 +257,9 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
         logger.debug("NODE {}: Creating new message for application command ASSOCIATIONCMD_GET group {}",
                 getNode().getNodeId(), group);
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), ASSOCIATIONCMD_GET)
-                .withExpectedResponseCommand(ASSOCIATIONCMD_REPORT).withPayload(group)
-                .withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                ASSOCIATIONCMD_GET).withExpectedResponseCommand(ASSOCIATIONCMD_REPORT).withPayload(group)
+                        .withPriority(TransactionPriority.Config).build();
     }
 
     /**
