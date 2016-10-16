@@ -11,16 +11,13 @@ package org.openhab.binding.zwave.internal.protocol.commandclass;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -162,16 +159,11 @@ public class ZWaveVersionCommandClass extends ZWaveCommandClass {
      *
      * @return the serial message
      */
-    public ZWaveTransaction getVersionMessage() {
+    public ZWaveCommandClassTransactionPayload getVersionMessage() {
         logger.debug("NODE {}: Creating new message for command VERSION_GET", getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder().withCommandClass(getCommandClass(), VERSION_GET)
-                .withNodeId(getNode().getNodeId()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), VERSION_REPORT)
-                .withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), VERSION_GET)
+                .withPriority(TransactionPriority.Config).withExpectedResponseCommand(VERSION_REPORT).build();
     }
 
     /**
@@ -182,18 +174,13 @@ public class ZWaveVersionCommandClass extends ZWaveCommandClass {
      * @param commandClass The command class to get the version for.
      * @return the serial message
      */
-    public ZWaveTransaction getCommandClassVersionMessage(CommandClass commandClass) {
+    public ZWaveCommandClassTransactionPayload getCommandClassVersionMessage(CommandClass commandClass) {
         logger.debug("NODE {}: Creating new message for application command VERSION_COMMAND_CLASS_GET command class {}",
                 this.getNode().getNodeId(), commandClass);
 
-        SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                .withCommandClass(getCommandClass(), VERSION_COMMAND_CLASS_GET).withNodeId(getNode().getNodeId())
-                .withPayload(commandClass.getKey()).build();
-
-        return new ZWaveTransactionBuilder(serialMessage)
-                .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-                .withExpectedResponseCommandClass(getCommandClass(), VERSION_COMMAND_CLASS_REPORT)
-                .withPriority(TransactionPriority.Config).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                VERSION_COMMAND_CLASS_GET).withPayload(commandClass.getKey()).withPriority(TransactionPriority.Config)
+                        .withExpectedResponseCommand(VERSION_COMMAND_CLASS_REPORT).build();
     }
 
     /**
@@ -202,7 +189,7 @@ public class ZWaveVersionCommandClass extends ZWaveCommandClass {
      * @param commandClass the command class to check the version for.
      * @return serial message to be sent
      */
-    public ZWaveTransaction checkVersion(ZWaveCommandClass commandClass) {
+    public ZWaveCommandClassTransactionPayload checkVersion(ZWaveCommandClass commandClass) {
         ZWaveVersionCommandClass versionCommandClass = (ZWaveVersionCommandClass) this.getNode()
                 .getCommandClass(CommandClass.COMMAND_CLASS_VERSION);
 

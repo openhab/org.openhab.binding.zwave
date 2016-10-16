@@ -23,10 +23,10 @@ import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;;
 
@@ -94,8 +94,8 @@ public abstract class ZWaveCommandClassConverter {
      * @param node the {@link ZWaveNode} that is bound to the item.
      * @param endpointId the endpoint id to send the message.
      */
-    public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
-        return new ArrayList<ZWaveTransaction>();
+    public List<ZWaveCommandClassTransactionPayload> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
+        return new ArrayList<ZWaveCommandClassTransactionPayload>();
     }
 
     /**
@@ -117,8 +117,9 @@ public abstract class ZWaveCommandClassConverter {
      * @param commandClass the {@link ZWaveCommandClass} to send the command to.
      * @param endpointId the endpoint ID to send the command to.
      */
-    public List<ZWaveTransaction> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
-        return new ArrayList<ZWaveTransaction>();
+    public List<ZWaveCommandClassTransactionPayload> receiveCommand(ZWaveThingChannel channel, ZWaveNode node,
+            Command command) {
+        return new ArrayList<ZWaveCommandClassTransactionPayload>();
     }
 
     public int getRefreshInterval() {

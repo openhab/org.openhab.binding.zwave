@@ -18,11 +18,11 @@ import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.internal.protocol.ZWaveConfigurationParameter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurationCommandClass.ZWaveConfigurationParameterEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,7 +47,7 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
      * {@inheritDoc}
      */
     @Override
-    public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
+    public List<ZWaveCommandClassTransactionPayload> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveConfigurationCommandClass commandClass = (ZWaveConfigurationCommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_CONFIGURATION, channel.getEndpoint());
         if (commandClass == null) {
@@ -67,9 +67,9 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
             return null;
         }
 
-        ZWaveTransaction transaction = node.encapsulate(commandClass.getConfigMessage(parmValue), commandClass,
-                channel.getEndpoint());
-        List<ZWaveTransaction> response = new ArrayList<ZWaveTransaction>(1);
+        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(commandClass.getConfigMessage(parmValue),
+                commandClass, channel.getEndpoint());
+        List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>(1);
         response.add(transaction);
         return response;
     }
@@ -107,7 +107,8 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
      * {@inheritDoc}
      */
     @Override
-    public List<ZWaveTransaction> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
+    public List<ZWaveCommandClassTransactionPayload> receiveCommand(ZWaveThingChannel channel, ZWaveNode node,
+            Command command) {
 
         String parmNumber = channel.getArguments().get("parameter");
         if (parmNumber == null) {
@@ -168,14 +169,14 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
         }
 
         // Set the parameter
-        ZWaveTransaction transaction = commandClass.setConfigMessage(configParameter);
+        ZWaveCommandClassTransactionPayload transaction = commandClass.setConfigMessage(configParameter);
         if (transaction == null) {
             logger.warn("NODE {}: Generating message failed for command class = {}", node.getNodeId(),
                     commandClass.getCommandClass());
             return null;
         }
 
-        List<ZWaveTransaction> transactions = new ArrayList<ZWaveTransaction>();
+        List<ZWaveCommandClassTransactionPayload> transactions = new ArrayList<ZWaveCommandClassTransactionPayload>();
         transactions.add(transaction);
 
         // And request a read-back

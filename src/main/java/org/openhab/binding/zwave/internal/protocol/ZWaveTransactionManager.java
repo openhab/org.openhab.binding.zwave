@@ -22,6 +22,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse.Stat
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveCommandProcessor;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -187,50 +188,61 @@ public class ZWaveTransactionManager {
     }
 
     /**
-     * Add a transaction to the send queue
+     * This method takes a {@link ZWaveMessagePayload} and creates a {@link ZWaveTransaction} for a SendData message.
      *
      * @param payload
+     * @return
      */
-    public void queueTransactionForSend(ZWaveMessagePayload payload) {
+    public long queueTransactionForSend(ZWaveMessagePayloadTransaction payload) {
         // Handle sleeping devices
         ZWaveNode node = controller.getNode(payload.getDestinationNode());
-        if (node != null) {
+        if (node != null && payload instanceof ZWaveCommandClassTransactionPayload) {
             // If the device isn't listening, queue the message if it supports the wakeup class
             if (!node.isListening() && !node.isFrequentlyListening()) {
                 ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) node
                         .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
 
-                // If it's a battery operated device, check if it's awake or
-                // place in wake-up queue.
-                if (wakeUpCommandClass != null && !wakeUpCommandClass.processOutgoingWakeupMessage(payload)) {
-                    return;
+                // If it's a battery operated device, check if it's awake, or place in wake-up queue.
+                if (wakeUpCommandClass != null && !wakeUpCommandClass
+                        .processOutgoingWakeupMessage((ZWaveCommandClassTransactionPayload) payload)) {
+                    return 0;
                 }
             }
         }
 
+        // Create a transaction from our payload data
+        ZWaveTransaction transaction = new ZWaveTransaction(payload);
+        if (payload.getMaxAttempts() != 0) {
+            transaction.setAttemptsRemaining(payload.getMaxAttempts());
+        }
+
+        return transaction.getTransactionId();
+    }
+
+    void addTransactionToQueue(ZWaveTransaction transaction) {
         synchronized (sendQueue) {
             // The queue is a map containing a queue for each node
             // Check if this node is in the queue
-            if (sendQueue.containsKey(payload.getDestinationNode())) {
+            if (sendQueue.containsKey(transaction.getMessageNode())) {
                 // Now check if this transaction is already in the queue
-                if (sendQueue.get(payload.getDestinationNode()).contains(payload)) {
+                if (sendQueue.get(transaction.getMessageNode()).contains(transaction)) {
                     // if (sendQueue.contains(transaction)) {
                     logger.debug("NODE {}: Transaction already on the send queue. Removing original.",
-                            payload.getDestinationNode());
-                    sendQueue.get(payload.getDestinationNode()).remove(payload);
+                            transaction.getMessageNode());
+                    sendQueue.get(transaction.getMessageNode()).remove(transaction);
                 }
             } else {
-                logger.debug("NODE {}: Transaction {} added to queue.", payload.getDestinationNode(),
-                        payload.getTransactionId());
+                logger.debug("NODE {}: Transaction {} added to queue.", transaction.getMessageNode(),
+                        transaction.getTransactionId());
                 // There's no queue for this node, so add it
-                sendQueue.put(payload.getDestinationNode(), new PriorityBlockingQueue<ZWaveTransaction>(
+                sendQueue.put(transaction.getMessageNode(), new PriorityBlockingQueue<ZWaveTransaction>(
                         INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator()));
             }
 
             // Add the message to the queue
             // We always add the most recent version, even though they are supposedly the same,
             // in case things like priority have changed
-            sendQueue.get(payload.getDestinationNode()).add(payload);
+            sendQueue.get(transaction.getMessageNode()).add(transaction);
         }
 
         sendNextMessage();
@@ -509,6 +521,7 @@ public class ZWaveTransactionManager {
 
     private void sendNextMessage() {
         logger.debug("Transaction SendNextMessage");
+
         // If we're currently processing the core of a transaction, or there are too many outstanding transactions, then
         // don't start another right now.
         synchronized (transactionSync) {
@@ -595,6 +608,7 @@ public class ZWaveTransactionManager {
                 Date now = new Date();
                 List<ZWaveTransaction> retries = new ArrayList<ZWaveTransaction>();
 
+                // Loop through all outstanding transactions to see if any have timed out
                 Iterator<ZWaveTransaction> iterator = outstandingTransactions.iterator();
                 while (iterator.hasNext()) {
                     ZWaveTransaction transaction = iterator.next();
@@ -630,7 +644,7 @@ public class ZWaveTransactionManager {
                 // If there's no outstanding transaction, try and send one
                 for (ZWaveTransaction transaction : retries) {
                     System.out.println("Resending... " + transaction.getSerialMessage().getCallbackId());
-                    queueTransactionForSend(transaction);
+                    addTransactionToQueue(transaction);
                 }
 
                 sendNextMessage();
@@ -639,10 +653,10 @@ public class ZWaveTransactionManager {
         }
     }
 
-    public Future<ZWaveTransactionResponse> SendTransactionAsync(
-            final ZWaveMessagePayload zWaveCommandClassTransactionPayload) {
+    public Future<ZWaveTransactionResponse> SendTransactionAsync(final ZWaveMessagePayloadTransaction payload) {
         class TransactionWaiter implements Callable<ZWaveTransactionResponse>, TransactionListener {
             ZWaveTransactionResponse response = null;
+            long transactionId = 0;
 
             @Override
             public ZWaveTransactionResponse call() throws Exception {
@@ -650,7 +664,14 @@ public class ZWaveTransactionManager {
                 AddTransactionListener(this);
 
                 // Send the transaction
-                queueTransactionForSend(zWaveCommandClassTransactionPayload);
+                transactionId = queueTransactionForSend(payload);
+                if (transactionId == 0) {
+                    // The transaction failed!
+                    // Remove the listener
+                    RemoveTransactionListener(this);
+
+                    return response;
+                }
 
                 // Wait for the transaction to complete
                 synchronized (this) {
@@ -671,20 +692,20 @@ public class ZWaveTransactionManager {
 
             @Override
             public void TransactionEvent(ZWaveTransaction transactionEvent) {
-                logger.debug("********* Transaction listener " + zWaveCommandClassTransactionPayload.getTransactionId()
-                        + " -- " + transactionEvent.getTransactionId());
-                System.out.println(
-                        "********* Transaction listener " + zWaveCommandClassTransactionPayload.getTransactionId()
-                                + " -- " + transactionEvent.getTransactionId());
+                logger.debug("********* Transaction listener " + transactionEvent.getTransactionId() + " -- "
+                        + transactionEvent.getTransactionId());
+                System.out.println("********* Transaction listener " + transactionEvent.getTransactionId() + " -- "
+                        + transactionEvent.getTransactionId());
+
                 // Check if this transaction is ours
-                if (zWaveCommandClassTransactionPayload.getTransactionId() != transactionEvent.getTransactionId()) {
+                if (transactionEvent.getTransactionId() != transactionId) {
                     return;
                 }
 
                 // Return the response
                 ZWaveTransactionResponse.State state = State.COMPLETE;
-                if (zWaveCommandClassTransactionPayload.getTransactionState() != TransactionState.DONE) {
-                    switch (zWaveCommandClassTransactionPayload.getTransactionCancelledState()) {
+                if (transactionEvent.getTransactionState() != TransactionState.DONE) {
+                    switch (transactionEvent.getTransactionCancelledState()) {
                         case CANCELLED:
                             break;
                         case DONE:
@@ -716,11 +737,10 @@ public class ZWaveTransactionManager {
         return executor.submit(worker);
     }
 
-    public ZWaveTransactionResponse SendTransaction(ZWaveMessagePayload commandClassPayload) {
+    public ZWaveTransactionResponse SendTransaction(ZWaveMessagePayloadTransaction commandClassPayload) {
         Future<ZWaveTransactionResponse> futureResponse = SendTransactionAsync(commandClassPayload);
         try {
             ZWaveTransactionResponse response = futureResponse.get();
-            logger.debug("Sync transaction {} completed", commandClassPayload.getTransactionId());
             return response;
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block

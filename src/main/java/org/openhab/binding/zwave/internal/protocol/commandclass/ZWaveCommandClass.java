@@ -567,7 +567,7 @@ public abstract class ZWaveCommandClass {
         COMMAND_CLASS_AV_CONTENT_DIRECTORY_MD(0x95, null),
         COMMAND_CLASS_AV_RENDERER_STATUS(0x96, null),
         COMMAND_CLASS_AV_CONTENT_SEARCH_MD(0x97, null),
-        COMMAND_CLASS_SECURITY(0x98, ZWaveSecurityCommandClassWithInitialization.class),
+        COMMAND_CLASS_SECURITY(0x98, ZWaveSecurityCommandClass.class),
         COMMAND_CLASS_AV_TAGGING_MD(0x99, null),
         COMMAND_CLASS_IP_CONFIGURATION(0x9A, null),
         COMMAND_CLASS_ASSOCIATION_COMMAND_CONFIGURATION(0x9B, null),

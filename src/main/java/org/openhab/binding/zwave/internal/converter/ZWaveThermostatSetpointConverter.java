@@ -18,12 +18,12 @@ import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveThermostatSetpointCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveThermostatSetpointCommandClass.SetpointType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveThermostatSetpointCommandClass.ZWaveThermostatSetpointValueEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,7 +52,7 @@ public class ZWaveThermostatSetpointConverter extends ZWaveCommandClassConverter
      * {@inheritDoc}
      */
     @Override
-    public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
+    public List<ZWaveCommandClassTransactionPayload> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveThermostatSetpointCommandClass commandClass = (ZWaveThermostatSetpointCommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT,
                         channel.getEndpoint());
@@ -65,7 +65,7 @@ public class ZWaveThermostatSetpointConverter extends ZWaveCommandClassConverter
 
         String setpointType = channel.getArguments().get("type");
 
-        ZWaveTransaction transaction;
+        ZWaveCommandClassTransactionPayload transaction;
         if (setpointType != null) {
             transaction = node.encapsulate(commandClass.getMessage(SetpointType.getSetpointType(setpointType)),
                     commandClass, channel.getEndpoint());
@@ -73,7 +73,7 @@ public class ZWaveThermostatSetpointConverter extends ZWaveCommandClassConverter
             transaction = node.encapsulate(commandClass.getValueMessage(), commandClass, channel.getEndpoint());
         }
 
-        List<ZWaveTransaction> response = new ArrayList<ZWaveTransaction>(1);
+        List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>(1);
         response.add(transaction);
         return response;
     }
@@ -105,7 +105,8 @@ public class ZWaveThermostatSetpointConverter extends ZWaveCommandClassConverter
      * {@inheritDoc}
      */
     @Override
-    public List<ZWaveTransaction> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
+    public List<ZWaveCommandClassTransactionPayload> receiveCommand(ZWaveThingChannel channel, ZWaveNode node,
+            Command command) {
         String scaleString = channel.getArguments().get("config_scale");
         String setpointType = channel.getArguments().get("type");
 
@@ -120,7 +121,7 @@ public class ZWaveThermostatSetpointConverter extends ZWaveCommandClassConverter
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT,
                         channel.getEndpoint());
 
-        ZWaveTransaction serialMessage;
+        ZWaveCommandClassTransactionPayload serialMessage;
 
         BigDecimal value = ((DecimalType) command).toBigDecimal();
         if (setpointType != null) {
@@ -138,7 +139,7 @@ public class ZWaveThermostatSetpointConverter extends ZWaveCommandClassConverter
         }
 
         logger.debug("NODE {}: Sending Message: {}", node.getNodeId(), serialMessage);
-        List<ZWaveTransaction> messages = new ArrayList<ZWaveTransaction>();
+        List<ZWaveCommandClassTransactionPayload> messages = new ArrayList<ZWaveCommandClassTransactionPayload>();
         messages.add(serialMessage);
 
         // Request an update so that OH knows when the setpoint has changed.

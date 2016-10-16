@@ -8,15 +8,11 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
-import org.openhab.binding.zwave.internal.protocol.ZWaveMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -64,13 +60,10 @@ public class ZWaveNoOperationCommandClass extends ZWaveCommandClass {
      *
      * @return the serial message
      */
-    public ZWaveTransaction getNoOperationMessage() {
+    public ZWaveCommandClassTransactionPayload getNoOperationMessage() {
         logger.debug("NODE {}: Creating new message for command NO_OPERATION_PING", getNode().getNodeId());
 
-        SerialMessage serialMessage = new ZWaveMessageBuilder(SerialMessageClass.SendData)
-                .withPayload(getNode().getNodeId(), 1, getCommandClass().getKey()).withNodeId(getNode().getNodeId())
-                .build();
-
-        return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Poll).build();
+        return new ZWaveCommandClassTransactionPayload(getNode().getNodeId(),
+                new byte[] { (byte) getCommandClass().getKey() }, TransactionPriority.Poll, null, 0);
     }
 }

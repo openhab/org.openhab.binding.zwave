@@ -57,9 +57,4 @@ public class ZWaveCommandClassPayload implements ZWaveMessagePayload {
     public byte[] getPayloadBuffer(int start, int end) {
         return Arrays.copyOfRange(payload, start, end);
     }
-
-    // @Override
-    // String toString() {
-    // return String.format("Class:%02X, Cmd:%d" payload[0])
-    // }
 }

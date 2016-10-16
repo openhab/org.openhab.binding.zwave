@@ -26,8 +26,8 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveAssociation;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
+import org.openhab.binding.zwave.internal.protocol.ZWaveMessagePayloadTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveMessagePayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse.State;
@@ -188,8 +188,8 @@ public class ZWaveNodeInitStageAdvancer {
         thread.start();
     }
 
-    private void processTransactions(ZWaveMessagePayload zWaveCommandClassTransactionPayload) {
-        if (zWaveCommandClassTransactionPayload == null) {
+    private void processTransactions(ZWaveMessagePayloadTransaction payload) {
+        if (payload == null) {
             return;
         }
 
@@ -197,7 +197,7 @@ public class ZWaveNodeInitStageAdvancer {
         int backoff = 50;
         ZWaveTransactionResponse response;
         do {
-            response = controller.SendTransaction(zWaveCommandClassTransactionPayload);
+            response = controller.SendTransaction(payload);
 
             // Increase the backoff up to 1800 seconds (approx!)
             if (backoff < 900000) {
@@ -283,7 +283,7 @@ public class ZWaveNodeInitStageAdvancer {
             return;
         }
 
-        ZWaveTransaction msg = noOpCommandClass.getNoOperationMessage();
+        ZWaveCommandClassTransactionPayload msg = noOpCommandClass.getNoOperationMessage();
         if (msg == null) {
             return;
         }
@@ -294,8 +294,12 @@ public class ZWaveNodeInitStageAdvancer {
         // seconds and if there are retries, it will be 15 seconds!
         // This will block the network for a considerable time if there
         // are a lot of battery devices (eg. 2 minutes for 8 battery devices!).
-        msg.setAttemptsRemaining(1);
+        msg.setMaxAttempts(1);
         processTransactions(msg);
+    }
+
+    private void doSecureInclusion() {
+
     }
 
     private void doStaticStages() {

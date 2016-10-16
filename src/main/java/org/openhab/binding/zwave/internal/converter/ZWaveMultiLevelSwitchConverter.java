@@ -20,11 +20,11 @@ import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBatteryCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSwitchCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,7 +51,7 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
      * {@inheritDoc}
      */
     @Override
-    public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
+    public List<ZWaveCommandClassTransactionPayload> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveMultiLevelSwitchCommandClass commandClass = (ZWaveMultiLevelSwitchCommandClass) node.resolveCommandClass(
                 ZWaveCommandClass.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL, channel.getEndpoint());
         if (commandClass == null) {
@@ -60,9 +60,9 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
 
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
                 commandClass.getCommandClass(), channel.getEndpoint());
-        ZWaveTransaction transaction = node.encapsulate(commandClass.getValueMessage(), commandClass,
+        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(commandClass.getValueMessage(), commandClass,
                 channel.getEndpoint());
-        List<ZWaveTransaction> response = new ArrayList<ZWaveTransaction>(1);
+        List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>(1);
         response.add(transaction);
         return response;
     }
@@ -131,7 +131,8 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
      * {@inheritDoc}
      */
     @Override
-    public List<ZWaveTransaction> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
+    public List<ZWaveCommandClassTransactionPayload> receiveCommand(ZWaveThingChannel channel, ZWaveNode node,
+            Command command) {
         ZWaveMultiLevelSwitchCommandClass commandClass = (ZWaveMultiLevelSwitchCommandClass) node.resolveCommandClass(
                 ZWaveCommandClass.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL, channel.getEndpoint());
         if (commandClass == null) {
@@ -140,7 +141,7 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
             return null;
         }
 
-        ZWaveTransaction transaction = null;
+        ZWaveCommandClassTransactionPayload transaction = null;
         // boolean restoreLastValue = "true".equalsIgnoreCase(channel.getArguments().get("restoreLastValue"));
 
         boolean configInvertControl = "true".equalsIgnoreCase(channel.getArguments().get("config_invert_control"));
@@ -203,7 +204,7 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
         }
 
         // Queue the command
-        List<ZWaveTransaction> messages = new ArrayList<ZWaveTransaction>(2);
+        List<ZWaveCommandClassTransactionPayload> messages = new ArrayList<ZWaveCommandClassTransactionPayload>(2);
         messages.add(transaction);
 
         // Poll an update once we've sent the command if this is a STOP

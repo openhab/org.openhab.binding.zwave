@@ -3,5 +3,5 @@ package org.openhab.binding.zwave.internal.protocol;
 public interface ZWaveMessagePayload {
     public byte[] getPayloadBuffer();
 
-    public int getDestinationNode();
+    // public int getDestinationNode();
 }

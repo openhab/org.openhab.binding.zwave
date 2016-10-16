@@ -10,9 +10,10 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageCl
  * @author Chris Jackson - Initial implementation
  *
  */
-public class ZWaveSerialPayload implements ZWaveMessagePayload {
+public class ZWaveSerialPayload implements ZWaveMessagePayloadTransaction {
     private final byte[] payload;
-    SerialMessageClass messageClass;
+    private SerialMessageClass messageClass;
+    private int maxAttempts = 0;
 
     public ZWaveSerialPayload(final byte[] payload) {
         this.payload = payload;
@@ -40,8 +41,13 @@ public class ZWaveSerialPayload implements ZWaveMessagePayload {
         return Arrays.copyOfRange(payload, start, end);
     }
 
-    // @Override
-    // String toString() {
-    // return String.format("Class:%02X, Cmd:%d" payload[0])
-    // }
+    @Override
+    public int getDestinationNode() {
+        return 0;
+    }
+
+    @Override
+    public int getMaxAttempts() {
+        return maxAttempts;
+    }
 }

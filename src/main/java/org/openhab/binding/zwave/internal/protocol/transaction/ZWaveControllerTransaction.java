@@ -2,6 +2,7 @@ package org.openhab.binding.zwave.internal.protocol.transaction;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 
 public class ZWaveControllerTransaction extends ZWaveTransaction {
     private SerialMessage serialMessage;
@@ -13,10 +14,12 @@ public class ZWaveControllerTransaction extends ZWaveTransaction {
         this.serialMessage = serialMessage;
     }
 
+    @Override
     public void setSerialMessage(SerialMessage serialMessage) {
         this.serialMessage = serialMessage;
     }
 
+    @Override
     public SerialMessage getSerialMessage() {
         return serialMessage;
     }
@@ -26,6 +29,7 @@ public class ZWaveControllerTransaction extends ZWaveTransaction {
         return serialMessage.getMessageType();
     }
 
+    @Override
     public int getMessageNode() {
         return nodeId;
     }

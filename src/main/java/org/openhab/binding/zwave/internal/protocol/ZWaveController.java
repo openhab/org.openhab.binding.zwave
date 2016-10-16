@@ -488,15 +488,13 @@ public class ZWaveController {
      * @param zWaveCommandClassTransactionPayload
      *            the serial message to enqueue.
      */
-    public void enqueue(ZWaveMessagePayload payload) {
+    public void enqueue(ZWaveMessagePayloadTransaction payload) {
         // Sanity check!
         if (payload == null) {
             return;
         }
 
         transactionManager.queueTransactionForSend(payload);
-
-        return;
 
         /*
          *
@@ -527,8 +525,8 @@ public class ZWaveController {
          */
     }
 
-    public ZWaveTransactionResponse SendTransaction(ZWaveMessagePayload zWaveCommandClassTransactionPayload) {
-        return transactionManager.SendTransaction(zWaveCommandClassTransactionPayload);
+    public ZWaveTransactionResponse SendTransaction(ZWaveMessagePayloadTransaction payload) {
+        return transactionManager.SendTransaction(payload);
     }
 
     /**
@@ -922,7 +920,7 @@ public class ZWaveController {
      *
      */
     public void requestSoftReset() {
-        ZWaveTransaction msg = new SerialApiSoftResetMessageClass().doRequest();
+        ZWaveSerialPayload msg = new SerialApiSoftResetMessageClass().doRequest();
         // msg.attempts = 1;
         enqueue(msg);
         logger.debug("ZWave controller soft reset");
@@ -942,7 +940,7 @@ public class ZWaveController {
         // TODO: Clear RX queue as well?
         transactionManager.clearSendQueue();
 
-        ZWaveTransaction msg = new ControllerSetDefaultMessageClass().doRequest();
+        ZWaveSerialPayload msg = new ControllerSetDefaultMessageClass().doRequest();
         // msg.attempts = 1;
         enqueue(msg);
 
@@ -1022,10 +1020,11 @@ public class ZWaveController {
      * @param zWaveCommandClassTransactionPayload
      *            the Serial message to send.
      */
-    public void sendData(ZWaveCommandClassTransactionPayload zWaveCommandClassTransactionPayload) {
-        if (zWaveCommandClassTransactionPayload == null) {
+    public void sendData(ZWaveCommandClassTransactionPayload payload) {
+        if (payload == null) {
             return;
         }
+
         // if (zWaveCommandClassTransactionPayload.getSerialMessage().getMessageClass() != SerialMessageClass.SendData)
         // {
         // logger.error(String.format("Invalid message class %s (0x%02X) for sendData",
@@ -1049,7 +1048,8 @@ public class ZWaveController {
         // }
 
         // serialMessage.setCallbackId(getCallbackId());
-        enqueue(zWaveCommandClassTransactionPayload);
+
+        enqueue(payload);
     }
 
     /**

@@ -18,10 +18,10 @@ import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveThermostatModeCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -48,7 +48,7 @@ public class ZWaveThermostatModeConverter extends ZWaveCommandClassConverter {
      * {@inheritDoc}
      */
     @Override
-    public List<ZWaveTransaction> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
+    public List<ZWaveCommandClassTransactionPayload> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveThermostatModeCommandClass commandClass = (ZWaveThermostatModeCommandClass) node
                 .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_THERMOSTAT_MODE);
         if (commandClass == null) {
@@ -57,9 +57,9 @@ public class ZWaveThermostatModeConverter extends ZWaveCommandClassConverter {
 
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
                 commandClass.getCommandClass(), channel.getEndpoint());
-        ZWaveTransaction transaction = node.encapsulate(commandClass.getValueMessage(), commandClass,
+        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(commandClass.getValueMessage(), commandClass,
                 channel.getEndpoint());
-        List<ZWaveTransaction> response = new ArrayList<ZWaveTransaction>(1);
+        List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>(1);
         response.add(transaction);
         return response;
     }
@@ -68,7 +68,8 @@ public class ZWaveThermostatModeConverter extends ZWaveCommandClassConverter {
      * {@inheritDoc}
      */
     @Override
-    public List<ZWaveTransaction> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
+    public List<ZWaveCommandClassTransactionPayload> receiveCommand(ZWaveThingChannel channel, ZWaveNode node,
+            Command command) {
         ZWaveThermostatModeCommandClass commandClass = (ZWaveThermostatModeCommandClass) node.resolveCommandClass(
                 ZWaveCommandClass.CommandClass.COMMAND_CLASS_THERMOSTAT_MODE, channel.getEndpoint());
 
@@ -76,8 +77,8 @@ public class ZWaveThermostatModeConverter extends ZWaveCommandClassConverter {
         if (command instanceof OnOffType) {
             value = command == OnOffType.ON ? 0xff : 0x00;
         }
-        ZWaveTransaction serialMessage = node.encapsulate(commandClass.setValueMessage(value), commandClass,
-                channel.getEndpoint());
+        ZWaveCommandClassTransactionPayload serialMessage = node.encapsulate(commandClass.setValueMessage(value),
+                commandClass, channel.getEndpoint());
 
         if (serialMessage == null) {
             logger.warn("NODE {}: Generating message failed for command class = {}, endpoint = {}", node.getNodeId(),
@@ -85,7 +86,7 @@ public class ZWaveThermostatModeConverter extends ZWaveCommandClassConverter {
             return null;
         }
 
-        List<ZWaveTransaction> messages = new ArrayList<ZWaveTransaction>();
+        List<ZWaveCommandClassTransactionPayload> messages = new ArrayList<ZWaveCommandClassTransactionPayload>();
         messages.add(serialMessage);
         return messages;
     }

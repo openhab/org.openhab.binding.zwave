@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson - Initial Contribution
  *
  */
-public class ZWaveTransaction {
+public abstract class ZWaveTransaction {
     private static final Logger logger = LoggerFactory.getLogger(ZWaveTransaction.class);
 
     private final static AtomicLong sequence = new AtomicLong();
@@ -113,6 +113,10 @@ public class ZWaveTransaction {
         this.dataTimeout = dataTimeout;
     }
 
+    public ZWaveTransaction(ZWaveMessagePayload payload) {
+        // TODO Auto-generated constructor stub
+    }
+
     public void resetTransaction() {
         logger.debug("Transaction RESET with {} retries remaining.", attemptsRemaining);
         transactionStateTracker = TransactionState.UNINTIALIZED;
@@ -139,9 +143,9 @@ public class ZWaveTransaction {
         this.serialMessage = serialMessage;
     }
 
-    public SerialMessage getSerialMessage() {
-        return serialMessage;
-    }
+    abstract public SerialMessage getSerialMessage();// {
+    // return serialMessage;
+    // }
 
     public SerialMessageClass getSerialMessageClass() {
         return serialMessageClass;

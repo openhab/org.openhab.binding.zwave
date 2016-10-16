@@ -17,18 +17,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSendDataMessageBuilder;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
-import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -139,7 +135,7 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
                 .build();
     }
 
-    public ZWaveTransaction setUserCode(int id, String code) {
+    public ZWaveCommandClassTransactionPayload setUserCode(int id, String code) {
         boolean codeIsZeros = true;
 
         // Zeros means delete the code
@@ -172,10 +168,9 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
                 }
             }
 
-            SerialMessage serialMessage = new ZWaveSendDataMessageBuilder()
-                    .withCommandClass(getCommandClass(), USER_CODE_SET).withNodeId(getNode().getNodeId()).build();
-
-            return new ZWaveTransactionBuilder(serialMessage).withPriority(TransactionPriority.Set).build();
+            return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                    USER_CODE_SET).withPayload(outputData.toByteArray()).withPriority(TransactionPriority.Config)
+                            .build();
         }
 
         return null;
