@@ -6,6 +6,8 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionP
 public interface ZWaveMessagePayloadTransaction extends ZWaveMessagePayload {
     public int getMaxAttempts();
 
+    public void setMaxAttempts(int maxAttempts);
+
     public int getDestinationNode();
 
     public int getTimeout();

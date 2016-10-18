@@ -69,7 +69,7 @@ public abstract class ZWaveCommandProcessor {
 
         // If this is a response, check the callbackId
         if (transaction.getCallbackId() != incomingMessage.getCallbackId()) {
-            logger.debug("NO callback match!");
+            logger.debug("NO callback match! ({} <> {})", transaction.getCallbackId(), incomingMessage.getCallbackId());
             return false;
         }
 

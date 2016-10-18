@@ -39,7 +39,7 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
             logger.debug("NODE {}: Application Command Request ({}:{})", nodeId, node.getNodeState().toString(),
                     node.getNodeInitStage().toString());
 
-            node.processCommand(new ZWaveCommandClassPayload(transaction.getSerialMessage()));
+            node.processCommand(new ZWaveCommandClassPayload(incomingMessage));
 
             checkTransactionComplete(transaction, incomingMessage);
         } catch (ZWaveSerialMessageException e) {

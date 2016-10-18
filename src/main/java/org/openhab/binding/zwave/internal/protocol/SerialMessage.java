@@ -41,16 +41,12 @@ import org.slf4j.LoggerFactory;
 public class SerialMessage {
 
     private static final Logger logger = LoggerFactory.getLogger(SerialMessage.class);
-    private final static AtomicLong sequence = new AtomicLong();
     private final static AtomicLong callbackSequence = new AtomicLong(1);
 
-    private final long sequenceNumber = sequence.getAndIncrement();
     private byte[] messagePayload;
     private int messageLength = 0;
     private SerialMessageType messageType;
     private int messageClassKey;
-    // private SerialMessagePriority priority;
-    // private SerialMessageClass expectedReply;
 
     protected int messageNode = 255;
 
@@ -58,18 +54,10 @@ public class SerialMessage {
     private int transmitOptions = TRANSMIT_OPTIONS_NOT_SET;
     private int callbackId = 0;
 
-    // private boolean transactionCanceled = false;
-    // protected boolean ackPending = false;
-
     /**
      * Indicates whether the serial message is valid.
      */
     public boolean isValid = false;
-
-    /**
-     * Indicates the number of retry attempts left
-     */
-    // public int attempts = 3;
 
     /**
      * Constructor. Creates a new instance of the SerialMessage class.
@@ -217,8 +205,8 @@ public class SerialMessage {
      */
     @Override
     public String toString() {
-        return String.format("Message[%d]: class=%s[0x%02X], type=%s[0x%02X], dest=%d, callback=%d, payload=%s",
-                sequenceNumber, SerialMessageClass.getMessageClass(messageClassKey), messageClassKey, messageType,
+        return String.format("Message: class=%s[0x%02X], type=%s[0x%02X], dest=%d, callback=%d, payload=%s",
+                SerialMessageClass.getMessageClass(messageClassKey), messageClassKey, messageType,
                 messageType.ordinal(), messageNode, callbackId, SerialMessage.bb2hex(messagePayload));
     };
 
@@ -422,6 +410,7 @@ public class SerialMessage {
      */
     public void setCallbackId(int callbackId) {
         this.callbackId = callbackId;
+        callbackSequence.set(callbackId);
     }
 
     /**

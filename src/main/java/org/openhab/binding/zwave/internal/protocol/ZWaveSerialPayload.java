@@ -95,4 +95,9 @@ public class ZWaveSerialPayload implements ZWaveMessagePayloadTransaction {
     public boolean requiresData() {
         return requiresData;
     }
+
+    @Override
+    public void setMaxAttempts(int maxAttempts) {
+        this.maxAttempts = maxAttempts;
+    }
 }
