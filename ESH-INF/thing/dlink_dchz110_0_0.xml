@@ -104,10 +104,12 @@ Set the illumination threshold to turn on the light. <br /><h1>Overview</h1><p>W
       <parameter name="config_5_1" type="integer" groupName="configuration"
                  min="0" max="127">
         <label>5: Operation Mode</label>
-        <description><![CDATA[
-Parameter to set the Operation Mode.<br /><ul><li>Bit 0: Reserved.</li> <li>Bit 1: 1 means enable test mode; 0 means normal mode. Notice: Ignored if DIP Switch is not set to Customer Mode.</li> <li>Bit 2: Disable the door/window function. 1</li></ul>
-        ]]></description>
+        <description>Parameter to set the Operation Mode. Bit 0: Reserved. Bit 1: 1 means enable test mode; 0 means normal mode. Notice: Ignored if DIP Switch is not set to Customer Mode. Bit 2: Disable the door/window function. 1</description>
         <default>0</default>
+        <options>
+          <option value="10">Preset: Celsius and LED on = Bits: 00001010 = 10</option>
+        </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
@@ -123,10 +125,14 @@ Parameter to set the sensor functions.<br /><ul><li>Bit 0: Disable magnetic inte
                  min="0" max="127">
         <label>7: Customer Function</label>
         <description><![CDATA[
-Parameter to set the Customer Function.<br /><h1>Overview</h1><p><strong>Parameter 7 Customer Function. </strong></p> <strong>Available_Bits_for_Z110_Model</strong> <strong>Default </strong> <strong>Recommended</strong> Bit0: unused for Z110 Model 0 0 Bit1: unused for Z110 Model 0 0 Bit2: unused for Z110 Model 1 1 Bit3: Disable send out BASIC OFF after door closed. (1:Disable, 0:Enable) 0 0 Bit4: Notification Type, 0: Using Notification Report. 1: Using Sensor Binary Report.  0 1 Bit5: Disable Multi CC in auto report. (1:Disable, 0:Enable). 0 0 Bit6: Disable to report battery state when the device triggered. (1:Disable, 10 0:Enable). 0 0 Bit7: unused for Z110 Model 0 0 <p>Comments / Tips for this device from the community:</p> <ul><li>Setting this Parameter to <strong>20</strong> is from user side wanted as this enables Binary Sensor to report OPEN / CLOSE status by changing Bit 4</li> </ul> <p>The calculation from the recommended column is:  Bit7 to Bit0 = 00010100 Binary which is euqal to 20 decimal</p>
+Parameter to set the Customer Function.<br /><h1>Overview</h1><p>l</p>
         ]]></description>
         <default>4</default>
+        <options>
+          <option value="20">Preset: PIR Super Sensitivity and Binary Report = Bits: 00010100 = 20</option>
+        </options>
         <advanced>true</advanced>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_7_1_00000008" type="integer" groupName="configuration">
