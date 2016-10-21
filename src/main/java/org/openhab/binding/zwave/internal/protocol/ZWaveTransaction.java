@@ -1,5 +1,6 @@
 package org.openhab.binding.zwave.internal.protocol;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -166,11 +167,17 @@ public class ZWaveTransaction {
         // We need to remember the callback Id
         callbackId = serialMessage.getCallbackId();
 
+        logger.debug("Transaction has saved callbackId as {}", callbackId);
+
         return serialMessage;
     }
 
     public SerialMessageClass getSerialMessageClass() {
         return payload.getSerialMessageClass();
+    }
+
+    private byte[] getPayloadBuffer() {
+        return payload.getPayloadBuffer();
     }
 
     public int getNodeId() {
@@ -369,8 +376,16 @@ public class ZWaveTransaction {
             return false;
         }
 
-        if (getSerialMessage().equals(other.getSerialMessage())) {
+        if (getNodeId() != other.getNodeId()) {
+            logger.debug(">>>>> transaction node Id is different");
+            return false;
+        }
+
+        if (Arrays.equals(payload.getPayloadBuffer(), other.getPayloadBuffer())) {
+            logger.debug(">>>>> transaction payload is the same");
             return true;
+        } else {
+            logger.debug(">>>>> transaction payload is NOT the same");
         }
 
         return false;

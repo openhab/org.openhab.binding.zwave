@@ -223,11 +223,12 @@ public class ZWaveTransactionManager {
     }
 
     void addTransactionToQueue(ZWaveTransaction transaction) {
-
+        logger.debug("addTransactionToQueue 1");
         synchronized (sendQueue) {
             // The queue is a map containing a queue for each node
             // Check if this node is in the queue
             if (sendQueue.containsKey(transaction.getQueueId())) {
+                logger.debug("addTransactionToQueue 2");
                 // Now check if this transaction is already in the queue
                 if (sendQueue.get(transaction.getQueueId()).contains(transaction)) {
                     // if (sendQueue.contains(transaction)) {
@@ -236,6 +237,7 @@ public class ZWaveTransactionManager {
                     sendQueue.get(transaction.getQueueId()).remove(transaction);
                 }
             } else {
+                logger.debug("addTransactionToQueue 3");
                 logger.debug("NODE {}: Transaction {} added to queue.", transaction.getNodeId(),
                         transaction.getTransactionId());
 
@@ -249,6 +251,7 @@ public class ZWaveTransactionManager {
             // in case things like priority have changed
             sendQueue.get(transaction.getQueueId()).add(transaction);
         }
+        logger.debug("addTransactionToQueue 4 ({})", getSendQueueLength());
 
         sendNextMessage();
         startTransactionTimer();
@@ -290,6 +293,8 @@ public class ZWaveTransactionManager {
     public ZWaveTransaction getTransactionToSend() {
         ZWaveTransaction transaction = null;
 
+        logger.debug("getTransactionToSend 1");
+
         // Look through all nodes in the queue and get the first entry.
         // This will be the highest priority entry for each node
         synchronized (sendQueue) {
@@ -298,6 +303,7 @@ public class ZWaveTransactionManager {
                 boolean outstanding = false;
                 for (ZWaveTransaction outstandingTransaction : outstandingTransactions) {
                     if (outstandingTransaction.getQueueId() == node) {
+                        logger.debug("getTransactionToSend 2");
                         outstanding = true;
                         break;
                     }
@@ -306,12 +312,15 @@ public class ZWaveTransactionManager {
                 // Outstanding transaction found?
                 // TODO: Allow security NONCE requests
                 if (outstanding == true) {
+                    logger.debug("getTransactionToSend 3");
                     continue;
                 }
 
                 if (transaction == null) {
+                    logger.debug("getTransactionToSend 4");
                     transaction = sendQueue.get(node).peek();
                 } else {
+                    logger.debug("getTransactionToSend 5");
                     if (sendQueue.get(node).peek().getPriority().ordinal() < transaction.getPriority().ordinal()) {
                         transaction = sendQueue.get(node).peek();
                     }
@@ -319,8 +328,10 @@ public class ZWaveTransactionManager {
             }
 
             if (transaction != null) {
+                logger.debug("getTransactionToSend 6");
                 sendQueue.get(transaction.getQueueId()).remove(transaction);
                 if (sendQueue.get(transaction.getQueueId()).isEmpty()) {
+                    logger.debug("getTransactionToSend 7");
                     sendQueue.remove(transaction.getQueueId());
                 }
             }
