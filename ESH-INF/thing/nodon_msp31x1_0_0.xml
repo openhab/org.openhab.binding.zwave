@@ -282,7 +282,7 @@ Send status if local button is used to associated devices.<br /><h1>Overview</h1
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Follow Complementary State</label>
+        <label>3: Follow Comp State</label>
         <description><![CDATA[
 Send status if local button is used to associated devices.<br /><h1>Overview</h1><p>When the Micro Smart Plug is switched ON (respectively OFF) using the local button, it will send OFF (respectively ON) command to the associated devices. No command is sent if the Micro Smart Plug is switched ON or OFF wirelessly.</p> <p>This group is configurable through the parameter 3.</p>
         ]]></description>
@@ -290,7 +290,7 @@ Send status if local button is used to associated devices.<br /><h1>Overview</h1
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Metering - High Threshold - Set On/Off</label>
+        <label>4: Metering High Threshold</label>
         <description><![CDATA[
 Send ON/OFF command to associated devices if threshold reached<br /><h1>Overview</h1><p>When the Micro Smart Plug reaches over the high threshold of power defined by the configuration parameter, it will send OFF or ON command to the associated devices.</p> <p>This group is configurable through the parameter 25 and 27.</p>
         ]]></description>
@@ -298,7 +298,7 @@ Send ON/OFF command to associated devices if threshold reached<br /><h1>Overview
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Metering - Low Threshold - Set On/Off</label>
+        <label>5: Metering Low Threshold</label>
         <description><![CDATA[
 Send ON/OFF command to associated devices if threshold reached<br /><h1>Overview</h1><p>When the Micro Smart Plug reaches below the low threshold of power defined by the configuration parameter, it will send OFF or ON command to the associated devices.</p> <p>This group is configurable through the parameters 26 and 27.</p>
         ]]></description>
