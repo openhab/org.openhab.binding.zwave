@@ -99,6 +99,17 @@ Parameter to set the sensor functions.<br /><h1>Overview</h1><p>Parameter to set
         <default>0</default>
       </parameter>
 
+      <parameter name="config_7_1" type="integer" groupName="configuration"
+                 min="0" max="127">
+        <label>7: Customer Function</label>
+        <description>Parameter to set the Customer Function. Bit 0: Reserved. Bit 1: Enable sending motion OFF report. 0: Disable, 1: Enable. Note: Depends on the Bit4, 0: Report Notification CC, Type: 0x07, Event: 0xFE 1: Sensor Binary Report,</description>
+        <default>0</default>
+        <options>
+          <option value="16">Preset: Notification Type = Binary</option>
+        </options>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="0" max="127">
         <label>10: Auto Report Battery Time</label>
