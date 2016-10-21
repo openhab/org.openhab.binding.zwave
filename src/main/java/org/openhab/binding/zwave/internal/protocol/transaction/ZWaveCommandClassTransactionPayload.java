@@ -42,6 +42,7 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
         return expectedResponseCommandClassCommand;
     }
 
+    @Override
     public void setMaxAttempts(int maxAttempts) {
         this.maxAttempts = maxAttempts;
     }
@@ -94,6 +95,9 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
 
     @Override
     public SerialMessageClass getExpectedResponseSerialMessageClass() {
+        if (expectedResponseCommandClass == null) {
+            return null;
+        }
         return SerialMessageClass.SendData;
     }
 

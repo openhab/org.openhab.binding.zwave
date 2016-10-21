@@ -104,9 +104,9 @@ public class SerialMessage {
         this.messagePayload = new byte[] {};
         this.messageNode = nodeId;
 
-        if (messageClass.requiresRequest()) {
+        if (messageClass.requiresRequest() && callbackId == 0) {
             callbackId = (int) callbackSequence.getAndIncrement();
-            if (callbackId == 255) {
+            if (callbackId == 254) {
                 callbackSequence.set(1);
             }
         }
@@ -409,8 +409,8 @@ public class SerialMessage {
      * @param callbackId the callbackId to set
      */
     public void setCallbackId(int callbackId) {
-        this.callbackId = callbackId;
-        callbackSequence.set(callbackId);
+        // this.callbackId = callbackId;
+        // callbackSequence.set(callbackId);
     }
 
     /**

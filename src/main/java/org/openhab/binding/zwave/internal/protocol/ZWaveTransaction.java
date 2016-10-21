@@ -167,7 +167,7 @@ public class ZWaveTransaction {
         // We need to remember the callback Id
         callbackId = serialMessage.getCallbackId();
 
-        logger.debug("Transaction has saved callbackId as {}", callbackId);
+        logger.debug("Transaction has saved callbackId as TID{}", callbackId);
 
         return serialMessage;
     }
@@ -381,8 +381,13 @@ public class ZWaveTransaction {
             return false;
         }
 
+        if (payload.getSerialMessageClass() != other.getSerialMessageClass()) {
+            return false;
+        }
+
         if (Arrays.equals(payload.getPayloadBuffer(), other.getPayloadBuffer())) {
-            logger.debug(">>>>> transaction payload is the same");
+            logger.debug(">>>>> transaction payload is the same [{}] == [{}]", payload.getPayloadBuffer(),
+                    other.getPayloadBuffer());
             return true;
         } else {
             logger.debug(">>>>> transaction payload is NOT the same");

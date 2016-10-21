@@ -363,6 +363,9 @@ public class ZWaveTransactionManager {
         }
 
         synchronized (transactionSync) {
+            logger.debug("Checking outstanding transactions: " + outstandingTransactions.size());
+            logger.debug("Last transaction: " + lastTransaction);
+
             System.out.println("Checking outstanding transactions: " + outstandingTransactions.size());
             System.out.println("Last transaction: " + lastTransaction);
 
@@ -389,6 +392,8 @@ public class ZWaveTransactionManager {
             } else {
                 // Try and correlate this incoming REQuest with a transaction
                 for (ZWaveTransaction transaction : outstandingTransactions) {
+                    logger.debug("checking transaction " + transaction.getCallbackId() + " (Callback "
+                            + transaction.getCallbackId() + ") ......");
                     System.out.println("checking transaction " + transaction.getCallbackId() + "......");
 
                     // If we are waiting for the RESponse, then check for this first
@@ -559,7 +564,7 @@ public class ZWaveTransactionManager {
             controller.sendPacket(transaction.getSerialMessage());
             transaction.transactionStart();
             outstandingTransactions.add(transaction);
-            System.out.println("-----> Sending message " + transaction.getSerialMessage().toString());
+            // System.out.println("-----> Sending message " + transaction.getSerialMessage().toString());
             System.out.println("Transactions outstanding: " + outstandingTransactions.size());
             logger.debug("Transaction SendNextMessage Transactions outstanding: {}", outstandingTransactions.size());
             transaction.setTimeout(getNextTimer(transaction));
