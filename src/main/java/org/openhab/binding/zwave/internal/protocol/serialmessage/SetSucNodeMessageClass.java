@@ -61,7 +61,7 @@ public class SetSucNodeMessageClass extends ZWaveCommandProcessor {
             logger.debug("NODE {}: SetSucNodeID command OK.", nodeId);
         } else {
             logger.error("NODE {}: SetSucNodeID command failed.", nodeId);
-            checkTransactionComplete(transaction, incomingMessage);
+            transaction.setTransactionCanceled();
         }
 
         return true;
@@ -76,9 +76,7 @@ public class SetSucNodeMessageClass extends ZWaveCommandProcessor {
 
         checkTransactionComplete(transaction, incomingMessage);
         if (incomingMessage.getMessagePayloadByte(1) != 0x00) {
-            logger.error("NODE {}: SetSucNodeID failed with error 0x{}.", nodeId,
-                    Integer.toHexString(incomingMessage.getMessagePayloadByte(1)));
-
+            logger.error("NODE {}: SetSucNodeID command failed.", nodeId);
             return false;
         } else {
             return true;

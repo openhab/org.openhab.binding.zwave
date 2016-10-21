@@ -105,8 +105,8 @@ public class SerialMessage {
         this.messageNode = nodeId;
 
         if (messageClass.requiresRequest()) {
-            this.callbackId = (int) callbackSequence.getAndIncrement();
-            if (this.callbackId == 255) {
+            callbackId = (int) callbackSequence.getAndIncrement();
+            if (callbackId == 255) {
                 callbackSequence.set(1);
             }
         }
