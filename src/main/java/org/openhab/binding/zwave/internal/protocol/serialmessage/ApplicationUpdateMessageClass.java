@@ -157,7 +157,6 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
         }
 
         // Check if this completes the transaction
-        checkTransactionComplete(transaction, incomingMessage);
 
         return result;
     }
@@ -230,6 +229,8 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
     @Override
     public boolean correlateTransactionResponse(ZWaveTransaction transaction, SerialMessage incomingMessage) {
         if (transaction.getExpectedReplyClass() != incomingMessage.getMessageClass()) {
+            logger.debug(">>>>>!!!!! Not expected reply class {} <<>> {}", transaction.getExpectedReplyClass(),
+                    incomingMessage.getMessageClass());
             return false;
         }
 

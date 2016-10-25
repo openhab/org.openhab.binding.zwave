@@ -398,13 +398,15 @@ public class ZWaveTransactionManager {
 
                     // If we are waiting for the RESponse, then check for this first
                     // There can only be a single outstanding RESponse
-                    if (incomingMessage.getMessageType() == SerialMessageType.Response) {
-                        continue;
-                    }
+                    // if (incomingMessage.getMessageType() == SerialMessageType.Response) {
+                    // continue;
+                    // }
 
                     ZWaveCommandProcessor msgClass = ZWaveCommandProcessor
                             .getMessageDispatcher(incomingMessage.getMessageClass());
+                    logger.debug(">>>>> msgClass {}", msgClass);
                     if (msgClass != null && msgClass.correlateTransactionResponse(transaction, incomingMessage)) {
+                        logger.debug("Correlated to transaction " + transaction.getCallbackId() + "......");
                         System.out.println("Correlated to transaction " + transaction.getCallbackId() + "......");
                         currentTransaction = transaction;
                         break;
@@ -439,6 +441,8 @@ public class ZWaveTransactionManager {
                         && currentTransaction.requiresDataBeforeNextRelease() == false) {
                     lastTransaction = null;
                     System.out.println("XXXXXXXXXXXXXXXXX lastTransaction COMPLETED - at DATA - "
+                            + currentTransaction.getCallbackId());
+                    logger.debug("XXXXXXXXXXXXXXXXX lastTransaction COMPLETED - at DATA - "
                             + currentTransaction.getCallbackId());
                 }
                 break;
@@ -548,7 +552,8 @@ public class ZWaveTransactionManager {
         // don't start another right now.
         synchronized (transactionSync) {
             if (lastTransaction != null || outstandingTransactions.size() >= MAX_OUTSTANDING_TRANSACTIONS) {
-                logger.debug("Transaction SendNextMessage too many outstanding");
+                logger.debug("Transaction SendNextMessage too many outstanding {}, {}", outstandingTransactions.size(),
+                        lastTransaction);
                 return;
             }
 
@@ -643,6 +648,7 @@ public class ZWaveTransactionManager {
                         // If this is the current transaction, then reset it.
                         if (lastTransaction == transaction) {
                             lastTransaction = null;
+                            logger.debug("Transaction is current transaction, so clearing!!!!!");
                         }
 
                         // Remove this transaction from the outstanding transactions list
@@ -655,19 +661,21 @@ public class ZWaveTransactionManager {
                             NotifyTransactionListener(transaction);
                             System.out.println("handleTransactionComplete CANCELLED x " + transaction.getCallbackId());
                         } else {
-                            // Resend
+                            // Resend - add to a separate list so as not to impact iterator
                             transaction.resetTransaction();
                             retries.add(transaction);
                         }
                     }
                 }
 
-                // If there's no outstanding transaction, try and send one
+                // Add retries to the queue
                 for (ZWaveTransaction transaction : retries) {
-                    System.out.println("Resending... " + transaction.getSerialMessage().getCallbackId());
+                    logger.debug("Resending... Transaction " + transaction.getTransactionId());
+                    System.out.println("Resending... Transaction " + transaction.getTransactionId());
                     addTransactionToQueue(transaction);
                 }
 
+                // If there's no outstanding transaction, try and send one
                 sendNextMessage();
                 startTransactionTimer();
             }

@@ -67,8 +67,6 @@ public class DeleteSucReturnRouteMessageClass extends ZWaveCommandProcessor {
                     ZWaveNetworkEvent.State.Success));
         }
 
-        checkTransactionComplete(transaction, incomingMessage);
-
         return true;
     }
 }

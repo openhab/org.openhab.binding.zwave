@@ -90,7 +90,7 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
 
     @Override
     public SerialMessageClass getSerialMessageClass() {
-        return SerialMessageClass.SendData;
+        return SerialMessageClass.ApplicationCommandHandler;
     }
 
     @Override

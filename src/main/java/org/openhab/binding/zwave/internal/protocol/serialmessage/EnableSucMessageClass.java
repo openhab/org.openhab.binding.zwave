@@ -60,7 +60,6 @@ public class EnableSucMessageClass extends ZWaveCommandProcessor {
             logger.error("Unable to disable a running SUC!");
         }
 
-        checkTransactionComplete(transaction, incomingMessage);
         return true;
     }
 

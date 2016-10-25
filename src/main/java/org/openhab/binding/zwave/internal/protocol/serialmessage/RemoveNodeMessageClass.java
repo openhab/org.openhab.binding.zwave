@@ -89,7 +89,6 @@ public class RemoveNodeMessageClass extends ZWaveCommandProcessor {
                 logger.debug("Remove Node: Unknown request ({}).", incomingMessage.getMessagePayloadByte(1));
                 break;
         }
-        checkTransactionComplete(transaction, incomingMessage);
 
         return true;
     }

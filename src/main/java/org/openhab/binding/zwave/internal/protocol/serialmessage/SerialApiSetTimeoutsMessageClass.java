@@ -38,8 +38,6 @@ public class SerialApiSetTimeoutsMessageClass extends ZWaveCommandProcessor {
         logger.debug("Got SerialApiSetTimeouts response. ACK={}, BYTE={}", incomingMessage.getMessagePayloadByte(0),
                 incomingMessage.getMessagePayloadByte(1));
 
-        checkTransactionComplete(transaction, incomingMessage);
-
         return true;
     }
 }

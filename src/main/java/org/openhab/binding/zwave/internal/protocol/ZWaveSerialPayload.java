@@ -20,19 +20,22 @@ public class ZWaveSerialPayload implements ZWaveMessagePayloadTransaction {
     private int maxAttempts = 0;
     private boolean requiresData = false;
     private int timeout;
+    private TransactionPriority priority;
 
     public ZWaveSerialPayload(final byte[] payload) {
         this.payload = payload;
     }
 
     public ZWaveSerialPayload(final int nodeId, final SerialMessageClass messageClass, final byte[] payload,
-            final SerialMessageClass responseClass, final boolean requiresData, final int timeout) {
+            final SerialMessageClass responseClass, final boolean requiresData, final int timeout,
+            TransactionPriority priority) {
         this.nodeId = nodeId;
         this.messageClass = messageClass;
         this.payload = payload;
         this.responseClass = responseClass;
         this.requiresData = requiresData;
         this.timeout = timeout;
+        this.priority = priority;
     }
 
     public int getPayloadByte(int offset) {
@@ -88,7 +91,7 @@ public class ZWaveSerialPayload implements ZWaveMessagePayloadTransaction {
     @Override
     public TransactionPriority getPriority() {
         // Serial commands to the controller are high priority
-        return TransactionPriority.High;
+        return priority;
     }
 
     @Override

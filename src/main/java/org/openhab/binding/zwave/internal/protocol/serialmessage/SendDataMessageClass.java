@@ -99,7 +99,6 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
                 } else {
                     node.resetResendCount();
                 }
-                checkTransactionComplete(transaction, incomingMessage);
                 return true;
             case COMPLETE_NO_ACK:
                 // Handle WAKE_UP_NO_MORE_INFORMATION differently
@@ -109,7 +108,6 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
                 if (payload.length >= 4
                         && (payload[2] & 0xFF) == ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP.getKey()
                         && (payload[3] & 0xFF) == ZWaveWakeUpCommandClass.WAKE_UP_NO_MORE_INFORMATION) {
-                    checkTransactionComplete(transaction, incomingMessage);
 
                     logger.debug("NODE {}: WAKE_UP_NO_MORE_INFORMATION. Treated as ACK.", node.getNodeId());
                     return true;

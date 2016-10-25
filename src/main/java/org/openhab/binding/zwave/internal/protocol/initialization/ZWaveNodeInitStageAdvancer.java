@@ -212,7 +212,8 @@ public class ZWaveNodeInitStageAdvancer {
             }
         } while (response == null || response.getState() != State.COMPLETE);
 
-        logger.debug("NODE {}: Node Init transaction completed with response {}", response.getState());
+        logger.debug("NODE {}: Node Init transaction completed with response {}", node.getNodeId(),
+                response.getState());
     }
 
     /**

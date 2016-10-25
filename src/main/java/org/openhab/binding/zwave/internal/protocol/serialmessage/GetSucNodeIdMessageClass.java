@@ -47,7 +47,6 @@ public class GetSucNodeIdMessageClass extends ZWaveCommandProcessor {
             logger.debug("No SUC Node is set");
         }
 
-        checkTransactionComplete(transaction, incomingMessage);
         return true;
     }
 

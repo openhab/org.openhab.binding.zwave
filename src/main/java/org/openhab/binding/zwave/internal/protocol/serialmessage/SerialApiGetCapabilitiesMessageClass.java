@@ -77,8 +77,6 @@ public class SerialApiGetCapabilitiesMessageClass extends ZWaveCommandProcessor 
             }
         }
 
-        checkTransactionComplete(transaction, incomingMessage);
-
         return true;
     }
 

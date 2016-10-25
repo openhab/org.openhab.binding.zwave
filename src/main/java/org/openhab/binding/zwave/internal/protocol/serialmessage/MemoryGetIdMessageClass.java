@@ -43,8 +43,6 @@ public class MemoryGetIdMessageClass extends ZWaveCommandProcessor {
         logger.debug(String.format("Got MessageMemoryGetId response. Home id = 0x%08X, Controller Node id = %d", homeId,
                 ownNodeId));
 
-        checkTransactionComplete(transaction, incomingMessage);
-
         return true;
     }
 

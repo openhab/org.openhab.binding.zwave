@@ -78,59 +78,6 @@ public abstract class ZWaveCommandProcessor {
     }
 
     /**
-     * Perform a check to see if this is the expected reply and we can complete the transaction
-     *
-     * @param lastSentMessage The original message we sent to the controller
-     * @param incomingMessage The response from the controller
-     */
-    protected void checkTransactionComplete(ZWaveTransaction transaction, SerialMessage latestIncomingMessage) {
-        // if (transaction == null) {
-        // return;
-        // }
-
-        // Put the message in our table so it will be processed now or later
-        // incomingMessageTable.put(System.currentTimeMillis(), latestIncomingMessage);
-
-        // First, check if we're waiting for an ACK from the controller
-        // This is used for multi-stage transactions to ensure we get all parts of the
-        // transaction before completing.
-        // if (lastSentMessage == null || lastSentMessage.isAckPending()) {
-        // logger.debug("Checking transaction complete: Message has Ack Pending: {}", lastSentMessage);
-        // Return until we get the ack, then come back and compare. This is necessary since, per ZWaveSendThread,
-        // we sometimes get the response before the ack. See ZWaveSendThreadcomment starting with "A transaction
-        // consists of (up to) 4 parts"
-        // return;
-        // }
-
-        // logger.debug("Checking transaction complete: Sent {}", transaction.toString());
-        // final Iterator<Map.Entry<Long, SerialMessage>> iter = incomingMessageTable.entrySet().iterator();
-        // final long expired = System.currentTimeMillis() - 10000; // Discard responses from 10 seconds ago or longer
-        // while (iter.hasNext()) {
-        // final Map.Entry<Long, SerialMessage> entry = iter.next();
-        // Check if it's expired
-        // if (entry.getKey() < expired) {
-        // iter.remove();
-        // continue;
-        // }
-        // final SerialMessage incomingMessage = entry.getValue();
-        // logger.debug("Checking transaction complete: Recv {}", incomingMessage.toString());
-        // final boolean ignoreTransmissionCompleteMismatch = false; // TODO: change
-        // if (incomingMessage.getMessageClass() == lastSentMessage.getExpectedReply()
-        // && !incomingMessage.isTransactionCanceled()
-        // ) {
-        // logger.debug(
-        // "Checking transaction complete: class={}, callback id={}, expected={}, cancelled={} transaction
-        // complete!",
-        // incomingMessage.getMessageClass(), lastSentMessage.getCallbackId()//,
-        // lastSentMessage.getExpectedReply(), incomingMessage.isTransactionCanceled()
-        // );
-        // transactionComplete = true;
-        // return;
-        // }
-        // }
-    }
-
-    /**
      * Method for handling the response from the controller
      *
      * @param zController the ZWave controller

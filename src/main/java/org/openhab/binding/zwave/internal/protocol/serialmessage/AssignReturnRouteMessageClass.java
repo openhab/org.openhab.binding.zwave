@@ -69,8 +69,6 @@ public class AssignReturnRouteMessageClass extends ZWaveCommandProcessor {
                     ZWaveNetworkEvent.State.Success));
         }
 
-        checkTransactionComplete(transaction, incomingMessage);
-
         return true;
     }
 }

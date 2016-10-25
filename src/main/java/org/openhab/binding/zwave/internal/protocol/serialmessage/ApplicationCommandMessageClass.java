@@ -40,8 +40,6 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
                     node.getNodeInitStage().toString());
 
             node.processCommand(new ZWaveCommandClassPayload(incomingMessage));
-
-            checkTransactionComplete(transaction, incomingMessage);
         } catch (ZWaveSerialMessageException e) {
             logger.error("Error processing frame: {} >> {}", incomingMessage.toString(), e.getMessage());
         }
@@ -51,6 +49,8 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
     @Override
     public boolean correlateTransactionResponse(ZWaveTransaction transaction, SerialMessage incomingMessage) {
         if (transaction.getExpectedReplyClass() != incomingMessage.getMessageClass()) {
+            logger.debug("NO EXPECTED REPLY CLASS match! ({} <> {})", transaction.getExpectedReplyClass(),
+                    incomingMessage.getMessageClass());
             return false;
         }
 
@@ -59,17 +59,24 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
             // If the expected command class is defined, then check it
             if (transaction.getExpectedCommandClass() == null
                     || transaction.getExpectedCommandClass().getKey() != incomingMessage.getMessagePayloadByte(3)) {
+                logger.debug("NO EXPECTED COMMAND CLASS match! ({} <> {})",
+                        transaction.getExpectedCommandClass().getKey(), incomingMessage.getMessagePayloadByte(3));
+
                 return false;
             }
 
             // If the expected command class command is defined, then check it
             if (transaction.getExpectedCommandClassCommand() == null
                     || transaction.getExpectedCommandClassCommand() != incomingMessage.getMessagePayloadByte(4)) {
+                logger.debug("NO EXPECTED COMMAND CLASS COMMAND match! ({} <> {})",
+                        transaction.getExpectedCommandClassCommand(), incomingMessage.getMessagePayloadByte(4));
+
                 return false;
             }
 
             return true;
         } catch (ZWaveSerialMessageException e) {
+            logger.debug("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EXCEPTION");
         }
 
         return false;

@@ -150,7 +150,6 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        checkTransactionComplete(transaction, incomingMessage);
 
         return true;
     }

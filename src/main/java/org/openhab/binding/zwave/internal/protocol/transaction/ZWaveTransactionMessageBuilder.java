@@ -2,6 +2,7 @@ package org.openhab.binding.zwave.internal.protocol.transaction;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 
 /**
  * Builder class for serial message
@@ -16,6 +17,7 @@ public class ZWaveTransactionMessageBuilder {
     private byte[] payload;
     private int timeout;
     private boolean requiresData = false;
+    private TransactionPriority priority = TransactionPriority.Controller;
 
     public ZWaveTransactionMessageBuilder(final SerialMessageClass messageClass) {
         this.messageClass = messageClass;
@@ -56,6 +58,7 @@ public class ZWaveTransactionMessageBuilder {
     }
 
     public ZWaveSerialPayload build() {
-        return new ZWaveSerialPayload(nodeId, messageClass, payload, expectedResponseClass, requiresData, timeout);
+        return new ZWaveSerialPayload(nodeId, messageClass, payload, expectedResponseClass, requiresData, timeout,
+                priority);
     }
 }

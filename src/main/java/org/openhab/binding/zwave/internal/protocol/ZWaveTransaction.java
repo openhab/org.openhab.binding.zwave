@@ -54,6 +54,7 @@ public class ZWaveTransaction {
         Immediate,
         High,
         Set,
+        Controller,
         Get,
         Config,
         Poll
