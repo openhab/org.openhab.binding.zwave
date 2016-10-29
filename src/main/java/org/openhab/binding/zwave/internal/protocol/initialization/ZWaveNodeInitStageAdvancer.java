@@ -745,6 +745,8 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                             if (commandClass != null) {
                                 logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - adding {}", node.getNodeId(),
                                         cmds[1]);
+                                commandClass.setVersion(1);
+                                commandClass.setInstances(1);
                                 node.addCommandClass(commandClass);
                             }
                         }
