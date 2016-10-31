@@ -131,7 +131,7 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 MANUFACTURER_SPECIFIC_GET).withExpectedResponseCommand(MANUFACTURER_SPECIFIC_REPORT)
-                        .withPriority(TransactionPriority.High).build();
+                        .withPriority(TransactionPriority.Config).build();
     }
 
     /**

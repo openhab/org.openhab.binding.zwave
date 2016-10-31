@@ -250,7 +250,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                                     NAKCount++;
                                     updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_NAK),
                                             new DecimalType(NAKCount));
-                                    logger.debug("Protocol error (NAK), discarding");
+                                    logger.debug("Protocol error (NAK)");
 
                                     // TODO: Add NAK processing
                                     break;
@@ -260,7 +260,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                                     CANCount++;
                                     updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_CAN),
                                             new DecimalType(CANCount));
-                                    logger.debug("Protocol error (CAN), resending");
+                                    logger.debug("Protocol error (CAN)");
 
                                     // TODO: Add CAN processing (Resend?)
                                     break;

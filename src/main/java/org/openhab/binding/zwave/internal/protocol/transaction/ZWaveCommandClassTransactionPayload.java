@@ -90,15 +90,16 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
 
     @Override
     public SerialMessageClass getSerialMessageClass() {
-        return SerialMessageClass.ApplicationCommandHandler;
+        return SerialMessageClass.SendData;
     }
 
     @Override
     public SerialMessageClass getExpectedResponseSerialMessageClass() {
+        // If we're not waiting for a response, then return null
         if (expectedResponseCommandClass == null) {
             return null;
         }
-        return SerialMessageClass.SendData;
+        return SerialMessageClass.ApplicationCommandHandler;
     }
 
     @Override

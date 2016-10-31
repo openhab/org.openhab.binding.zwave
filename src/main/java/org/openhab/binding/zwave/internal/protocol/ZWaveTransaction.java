@@ -7,6 +7,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -90,13 +91,13 @@ public class ZWaveTransaction {
 
     private SerialMessage serialMessageDebug; // Delete - just here for debugging right now
 
-    private int callbackId = 0;
+    private SerialMessage serialMessage = null;
 
     private TransactionPriority priority;
     // private SerialMessageClass serialMessageClass;
     // private SerialMessageClass expectedReplyClass;
-    private CommandClass expectedReplyCommandClass;
-    private Integer expectedReplyCommandClassCommand;
+    // private CommandClass expectedReplyCommandClass;
+    // private Integer expectedReplyCommandClassCommand;
     private long dataTimeout;
 
     private TransactionState transactionStateCancelled = TransactionState.UNINTIALIZED;
@@ -140,10 +141,13 @@ public class ZWaveTransaction {
     public void resetTransaction() {
         logger.debug("Transaction RESET with {} retries remaining.", attemptsRemaining);
         transactionStateTracker = TransactionState.UNINTIALIZED;
+        serialMessage = null;
     }
 
     public void transactionStart() {
         startTime = System.currentTimeMillis();
+
+        logger.debug("transactionStart type {} ", payload.getSerialMessageClass());
 
         // We must have just sent the message
         if (payload.getSerialMessageClass().requiresResponse()) {
@@ -160,15 +164,11 @@ public class ZWaveTransaction {
     }
 
     public SerialMessage getSerialMessage() {
-        SerialMessage serialMessage = payload.getSerialMessage();
+        if (serialMessage == null) {
+            serialMessage = payload.getSerialMessage();
+        }
 
-        // Debug
-        serialMessageDebug = serialMessage;
-
-        // We need to remember the callback Id
-        callbackId = serialMessage.getCallbackId();
-
-        logger.debug("Transaction has saved callbackId as TID{}", callbackId);
+        logger.debug("Transaction has saved callbackId as ID{}", serialMessage.getCallbackId());
 
         return serialMessage;
     }
@@ -197,11 +197,17 @@ public class ZWaveTransaction {
     }
 
     public CommandClass getExpectedCommandClass() {
-        return expectedReplyCommandClass;
+        if (payload instanceof ZWaveCommandClassTransactionPayload) {
+            ((ZWaveCommandClassTransactionPayload) payload).getExpectedResponseCommandClass();
+        }
+        return null;
     }
 
     public Integer getExpectedCommandClassCommand() {
-        return expectedReplyCommandClassCommand;
+        if (payload instanceof ZWaveCommandClassTransactionPayload) {
+            ((ZWaveCommandClassTransactionPayload) payload).getCommandClassCommand();
+        }
+        return null;
     }
 
     public TransactionState getTransactionState() {
@@ -221,7 +227,10 @@ public class ZWaveTransaction {
     }
 
     public int getCallbackId() {
-        return callbackId;
+        if (serialMessage == null) {
+            return -1;
+        }
+        return serialMessage.getCallbackId();
     }
 
     public long getElapsedTime() {
@@ -354,7 +363,8 @@ public class ZWaveTransaction {
 
     @Override
     public String toString() {
-        return transactionStateTracker + ": callback: " + callbackId;
+        return transactionStateTracker + ": callback: "
+                + (serialMessage == null ? "--" : serialMessage.getCallbackId());
     }
 
     public long getTransactionId() {

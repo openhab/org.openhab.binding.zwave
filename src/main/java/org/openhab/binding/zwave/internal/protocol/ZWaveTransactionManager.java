@@ -23,6 +23,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClas
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveCommandProcessor;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -119,8 +120,12 @@ import org.slf4j.LoggerFactory;
 public class ZWaveTransactionManager {
     private Logger logger = LoggerFactory.getLogger(ZWaveTransactionManager.class);
 
-    private static final int INITIAL_TX_QUEUE_SIZE = 128;
-    private static final int MAX_OUTSTANDING_TRANSACTIONS = 4;
+    private final int INITIAL_TX_QUEUE_SIZE = 128;
+    private final int MAX_OUTSTANDING_TRANSACTIONS = 1;
+
+    public final int TRANSMIT_OPTION_ACK = 0x01;
+    public final int TRANSMIT_OPTION_AUTO_ROUTE = 0x04;
+    private final int TRANSMIT_OPTION_EXPLORE = 0x20;
 
     private ZWaveController controller;
 
@@ -354,6 +359,7 @@ public class ZWaveTransactionManager {
      */
     public void processReceiveMessage(SerialMessage incomingMessage) {
         ZWaveTransaction currentTransaction = null;
+        logger.debug("Received msg " + incomingMessage.toString());
         System.out.println("Received msg " + incomingMessage.toString());
         System.out.println("lastTransaction = " + lastTransaction);
 
@@ -452,9 +458,13 @@ public class ZWaveTransactionManager {
                 controller.handleTransactionComplete(currentTransaction, incomingMessage);
                 System.out.println("handleTransactionComplete CANCELLED " + currentTransaction.getCallbackId());
 
+                if (currentTransaction == lastTransaction) {
+                    lastTransaction = null;
+                }
+
                 // Handle retries
                 if (currentTransaction.decrementAttemptsRemaining() >= 0) {
-                    logger.error("NODE {}: Timeout while sending message. Requeueing - {} attempts left!",
+                    logger.error("NODE {}: CANCEL while sending message. Requeueing - {} attempts left!",
                             currentTransaction.getNodeId(), currentTransaction.getAttemptsRemaining());
                     // if (lastSentMessage.getMessageClass() == SerialMessageClass.SendData) {
                     // handleFailedSendDataRequest(lastSentMessage);
@@ -546,7 +556,7 @@ public class ZWaveTransactionManager {
     }
 
     private void sendNextMessage() {
-        logger.debug("Transaction SendNextMessage");
+        logger.debug("Transaction SendNextMessage {} out at start", outstandingTransactions.size());
 
         // If we're currently processing the core of a transaction, or there are too many outstanding transactions, then
         // don't start another right now.
@@ -566,15 +576,33 @@ public class ZWaveTransactionManager {
 
             // Add this message to the outstandingTransactions list
 
-            controller.sendPacket(transaction.getSerialMessage());
+            SerialMessage serialMessage = transaction.getSerialMessage();
+            serialMessage
+                    .setTransmitOptions(TRANSMIT_OPTION_ACK | TRANSMIT_OPTION_AUTO_ROUTE | TRANSMIT_OPTION_EXPLORE);
+            controller.sendPacket(serialMessage);
+
+            logger.debug("Transaction SendNextMessage start: expected cmd class: {}",
+                    transaction.getExpectedCommandClass());
+            logger.debug("Transaction SendNextMessage start: expected cmd: {}",
+                    transaction.getExpectedCommandClassCommand());
+
+            logger.debug("Transaction SendNextMessage about to start: {}", transaction);
             transaction.transactionStart();
+            logger.debug("Transaction SendNextMessage started: {}", transaction);
+
+            logger.debug("Transaction SendNextMessage started: expected cmd class: {}",
+                    transaction.getExpectedCommandClass());
+            logger.debug("Transaction SendNextMessage started: expected cmd: {}",
+                    transaction.getExpectedCommandClassCommand());
+
             outstandingTransactions.add(transaction);
             // System.out.println("-----> Sending message " + transaction.getSerialMessage().toString());
             System.out.println("Transactions outstanding: " + outstandingTransactions.size());
             logger.debug("Transaction SendNextMessage Transactions outstanding: {}", outstandingTransactions.size());
             transaction.setTimeout(getNextTimer(transaction));
-            // startTransactionTimer();
+            startTransactionTimer();
             lastTransaction = transaction;
+            logger.debug("Transaction SendNextMessage lastTransaction: {}", lastTransaction);
         }
     }
 
@@ -631,7 +659,7 @@ public class ZWaveTransactionManager {
 
             System.out.println("Timer run..... " + System.currentTimeMillis());
             synchronized (transactionSync) {
-                logger.debug("Timeout.......... {} outstanding transactions", outstandingTransactions.size());
+                logger.debug("XXXXXXXXX Timeout.......... {} outstanding transactions", outstandingTransactions.size());
                 Date now = new Date();
                 List<ZWaveTransaction> retries = new ArrayList<ZWaveTransaction>();
 
@@ -642,17 +670,32 @@ public class ZWaveTransactionManager {
                     Date timer = transaction.getTimeout();
                     if (timer != null && timer.after(now) == false) {
                         // Timeout
-                        logger.debug("NODE {}: Timeout at state {}. {} retries remaining.", transaction.getNodeId(),
-                                transaction.getTransactionState(), transaction.getAttemptsRemaining());
-
-                        // If this is the current transaction, then reset it.
-                        if (lastTransaction == transaction) {
-                            lastTransaction = null;
-                            logger.debug("Transaction is current transaction, so clearing!!!!!");
-                        }
+                        logger.debug("NODE {}: XXXXXXX Timeout at state {}. {} retries remaining.",
+                                transaction.getNodeId(), transaction.getTransactionState(),
+                                transaction.getAttemptsRemaining());
 
                         // Remove this transaction from the outstanding transactions list
                         iterator.remove();
+
+                        // If this is a SendData message, and we're not waiting for DATA
+                        // Then we need to cancel this request.
+                        // TODO: Maybe this should be generalised to allow for other commands?
+                        if (transaction.getSerialMessageClass() == SerialMessageClass.SendData
+                                && transaction.getTransactionState() != TransactionState.WAIT_DATA) {
+                            // SendData requests need to be aborted.
+                            // Once aborted we will get the completion of the transaction
+                            // TODO: We should really have an extra timer in case we don't get the response from the
+                            // controller.
+                            logger.debug("Sending Transaction ABORT!");
+
+                            controller.sendPacket(new ZWaveTransactionMessageBuilder(SerialMessageClass.SendDataAbort)
+                                    .build().getSerialMessage());
+                        } else if (lastTransaction == transaction) {
+                            // If this is the current transaction, then reset it.
+
+                            lastTransaction = null;
+                            logger.debug("Transaction is current transaction, so clearing!!!!!");
+                        }
 
                         // Resend if there are still attempts remaining
                         if (transaction.decrementAttemptsRemaining() <= 0) {
@@ -715,6 +758,7 @@ public class ZWaveTransactionManager {
                 RemoveTransactionListener(this);
 
                 System.out.println("------------- Response Complete");
+                logger.debug("********* Transaction Response Complete " + transactionId + " -- ");
 
                 return response;
             }

@@ -48,6 +48,20 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
 
     @Override
     public boolean correlateTransactionResponse(ZWaveTransaction transaction, SerialMessage incomingMessage) {
+        if (transaction == null) {
+            return false;
+        }
+
+        logger.debug("ApplicationCommandClass correlateTransactionResponse: transaction: {}", transaction);
+        logger.debug("ApplicationCommandClass correlateTransactionResponse: reply class: {}",
+                transaction.getExpectedReplyClass());
+        logger.debug("ApplicationCommandClass correlateTransactionResponse: expected cmd class: {}",
+                transaction.getExpectedCommandClass());
+        logger.debug("ApplicationCommandClass correlateTransactionResponse: expected cmd: {}",
+                transaction.getExpectedCommandClassCommand());
+        logger.debug("ApplicationCommandClass correlateTransactionResponse: incoming class: {}",
+                incomingMessage.getMessageClass());
+
         if (transaction.getExpectedReplyClass() != incomingMessage.getMessageClass()) {
             logger.debug("NO EXPECTED REPLY CLASS match! ({} <> {})", transaction.getExpectedReplyClass(),
                     incomingMessage.getMessageClass());
@@ -59,8 +73,8 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
             // If the expected command class is defined, then check it
             if (transaction.getExpectedCommandClass() == null
                     || transaction.getExpectedCommandClass().getKey() != incomingMessage.getMessagePayloadByte(3)) {
-                logger.debug("NO EXPECTED COMMAND CLASS match! ({} <> {})",
-                        transaction.getExpectedCommandClass().getKey(), incomingMessage.getMessagePayloadByte(3));
+                logger.debug("NO EXPECTED COMMAND CLASS match! ({} <> {})", transaction.getExpectedCommandClass(),
+                        incomingMessage.getMessagePayloadByte(3));
 
                 return false;
             }

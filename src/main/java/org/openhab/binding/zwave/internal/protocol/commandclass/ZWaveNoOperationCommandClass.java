@@ -13,7 +13,6 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
-import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -64,10 +63,10 @@ public class ZWaveNoOperationCommandClass extends ZWaveCommandClass {
     public ZWaveCommandClassTransactionPayload getNoOperationMessage() {
         logger.debug("NODE {}: Creating new message for command NO_OPERATION_PING", getNode().getNodeId());
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), 0)
-                .withPriority(TransactionPriority.Poll).build();
+        // return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass())
+        // .withPriority(TransactionPriority.Poll).build();
 
-        // return new ZWaveCommandClassTransactionPayload(getNode().getNodeId(),
-        // new byte[] { (byte) getCommandClass().getKey() }, TransactionPriority.Poll, getCommandClass(), 0);
+        return new ZWaveCommandClassTransactionPayload(getNode().getNodeId(),
+                new byte[] { (byte) getCommandClass().getKey() }, TransactionPriority.Poll, getCommandClass(), 0);
     }
 }

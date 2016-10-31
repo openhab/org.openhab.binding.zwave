@@ -38,7 +38,10 @@ public class ZWaveCommandClassPayload implements ZWaveMessagePayload {
     }
 
     public int getCommandClassCommand() {
-        return payload[1] & 0xFF;
+        if (payload.length >= 2) {
+            return payload[1] & 0xFF;
+        }
+        return -1;
     }
 
     public int getPayloadByte(int offset) {
