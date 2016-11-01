@@ -674,15 +674,12 @@ public class ZWaveTransactionManager {
                                 transaction.getNodeId(), transaction.getTransactionState(),
                                 transaction.getAttemptsRemaining());
 
-                        // Remove this transaction from the outstanding transactions list
-                        iterator.remove();
-
                         // If this is a SendData message, and we're not waiting for DATA
                         // Then we need to cancel this request.
                         // TODO: Maybe this should be generalised to allow for other commands?
                         if (transaction.getSerialMessageClass() == SerialMessageClass.SendData
                                 && transaction.getTransactionState() != TransactionState.WAIT_DATA) {
-                            // SendData requests need to be aborted.
+                            // SendData requests need to be aborted - so we don't cancel the transaction.
                             // Once aborted we will get the completion of the transaction
                             // TODO: We should really have an extra timer in case we don't get the response from the
                             // controller.
@@ -690,23 +687,29 @@ public class ZWaveTransactionManager {
 
                             controller.sendPacket(new ZWaveTransactionMessageBuilder(SerialMessageClass.SendDataAbort)
                                     .build().getSerialMessage());
-                        } else if (lastTransaction == transaction) {
-                            // If this is the current transaction, then reset it.
-
-                            lastTransaction = null;
-                            logger.debug("Transaction is current transaction, so clearing!!!!!");
-                        }
-
-                        // Resend if there are still attempts remaining
-                        if (transaction.decrementAttemptsRemaining() <= 0) {
-                            transaction.setTransactionCanceled();
-                            controller.handleTransactionComplete(transaction, null);
-                            NotifyTransactionListener(transaction);
-                            System.out.println("handleTransactionComplete CANCELLED x " + transaction.getCallbackId());
                         } else {
-                            // Resend - add to a separate list so as not to impact iterator
-                            transaction.resetTransaction();
-                            retries.add(transaction);
+                            // Remove this transaction from the outstanding transactions list
+                            iterator.remove();
+
+                            if (lastTransaction == transaction) {
+                                // If this is the current transaction, then reset it.
+
+                                lastTransaction = null;
+                                logger.debug("Transaction is current transaction, so clearing!!!!!");
+                            }
+
+                            // Resend if there are still attempts remaining
+                            if (transaction.decrementAttemptsRemaining() <= 0) {
+                                transaction.setTransactionCanceled();
+                                controller.handleTransactionComplete(transaction, null);
+                                NotifyTransactionListener(transaction);
+                                System.out.println(
+                                        "handleTransactionComplete CANCELLED x " + transaction.getCallbackId());
+                            } else {
+                                // Resend - add to a separate list so as not to impact iterator
+                                transaction.resetTransaction();
+                                retries.add(transaction);
+                            }
                         }
                     }
                 }
