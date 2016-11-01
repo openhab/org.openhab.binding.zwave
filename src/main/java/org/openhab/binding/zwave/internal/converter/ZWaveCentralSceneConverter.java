@@ -8,6 +8,8 @@
  */
 package org.openhab.binding.zwave.internal.converter;
 
+import java.math.BigDecimal;
+
 import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
@@ -35,6 +37,6 @@ public class ZWaveCentralSceneConverter extends ZWaveCommandClassConverter {
 
     @Override
     public State handleEvent(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
-        return new DecimalType((Integer) event.getValue());
+        return new DecimalType((BigDecimal) event.getValue());
     }
 }
