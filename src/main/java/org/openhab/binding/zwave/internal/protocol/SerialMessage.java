@@ -131,6 +131,16 @@ public class SerialMessage {
      */
     public SerialMessage(int nodeId, byte[] buffer) {
         logger.trace("NODE {}: Creating new SerialMessage from buffer = {}", nodeId, SerialMessage.bb2hex(buffer));
+        // Handle signalling frames (ie ACK, CAN, NAK)
+        if (buffer.length == 1) {
+            if (buffer[0] == 0x15) {
+                messageType = SerialMessageType.NAK;
+            }
+            if (buffer[0] == 0x18) {
+                messageType = SerialMessageType.CAN;
+            }
+            return;
+        }
         messageLength = buffer.length - 2; // buffer[1]; TODO: Why is this commented out?!?
         byte messageCheckSumm = calculateChecksum(buffer);
         byte messageCheckSummReceived = buffer[messageLength + 1];
@@ -419,7 +429,9 @@ public class SerialMessage {
      */
     public enum SerialMessageType {
         Request, // 0x00
-        Response // 0x01
+        Response, // 0x01
+        NAK,
+        CAN
     }
 
     /**

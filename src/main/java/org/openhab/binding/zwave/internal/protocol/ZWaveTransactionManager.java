@@ -132,12 +132,17 @@ public class ZWaveTransactionManager {
     /**
      * Timeout in which we expect the initial response from the controller
      */
-    private final long timer1 = 500;
+    private final long timer1 = 2000;
 
     /**
      * Timeout in which we expect the request from the controller
      */
     private final long timer2 = 2500;
+
+    /**
+     * Timeout waiting to cancel a transaction once we've aborted it
+     */
+    private final long timerAbort = 12000;
 
     private final Timer timer = new Timer();
     private TimerTask timerTask = null;
@@ -363,6 +368,19 @@ public class ZWaveTransactionManager {
         System.out.println("Received msg " + incomingMessage.toString());
         System.out.println("lastTransaction = " + lastTransaction);
 
+        // Check for NAK/CAN
+        switch (incomingMessage.getMessageType()) {
+            case CAN:
+                // CAN means out of flow message was received by the controller
+                // It probably means we sent a message while the controller was processing the previous message.
+                return;
+            case NAK:
+                // NAK means the controller didn't receive the message - probably because of a Checksum error
+                return;
+            default:
+                break;
+        }
+
         if (incomingMessage.getMessageClass() == SerialMessageClass.SendData
                 && incomingMessage.getMessageType() == SerialMessageType.Request) {
             System.out.println("Message is SendData");
@@ -453,13 +471,40 @@ public class ZWaveTransactionManager {
                 }
                 break;
 
+            case DONE:
+                System.out.println("handleTransactionComplete DONE " + currentTransaction.getCallbackId());
+
+                // Remove the transaction from the outstanding transaction list
+                synchronized (transactionSync) {
+                    if (currentTransaction == lastTransaction) {
+                        lastTransaction = null;
+                    }
+
+                    outstandingTransactions.remove(currentTransaction);
+                }
+
+                // if (responseTime > longestResponseTime) {
+                // longestResponseTime = responseTime;
+                // }
+                logger.debug("NODE {}: Response processed after {}ms", currentTransaction.getNodeId(),
+                        currentTransaction.getElapsedTime());
+
+                // Notify our users...
+                transactionCompleted = true;
+                break;
+
             case CANCELLED:
                 // Transaction was cancelled
                 controller.handleTransactionComplete(currentTransaction, incomingMessage);
                 System.out.println("handleTransactionComplete CANCELLED " + currentTransaction.getCallbackId());
 
-                if (currentTransaction == lastTransaction) {
-                    lastTransaction = null;
+                // Remove the transaction from the outstanding transaction list
+                synchronized (transactionSync) {
+                    if (currentTransaction == lastTransaction) {
+                        lastTransaction = null;
+                    }
+
+                    outstandingTransactions.remove(currentTransaction);
                 }
 
                 // Handle retries
@@ -480,21 +525,9 @@ public class ZWaveTransactionManager {
                 } else {
                     logger.warn("NODE {}: Retry count exceeded. Discarding message: {}", currentTransaction.getNodeId(),
                             currentTransaction.toString());
+                    // Notify our users...
                     transactionCompleted = true;
                 }
-                break;
-
-            case DONE:
-                controller.handleTransactionComplete(currentTransaction, incomingMessage);
-                System.out.println("handleTransactionComplete DONE " + currentTransaction.getCallbackId());
-
-                // if (responseTime > longestResponseTime) {
-                // longestResponseTime = responseTime;
-                // }
-                logger.debug("NODE {}: Response processed after {}ms", currentTransaction.getNodeId(),
-                        currentTransaction.getElapsedTime());
-
-                transactionCompleted = true;
                 break;
 
             default:
@@ -502,21 +535,18 @@ public class ZWaveTransactionManager {
                 break;
         }
 
+        // If the transaction is complete, then notify the higher layer
+        // Note that if retries are still outstanding, then a transaction is not considered complete
+        // if it has been CANCELLED or ABORTED.
         if (transactionCompleted == true) {
             System.out.println("Transaction " + currentTransaction.getCallbackId() + " completed");
             logger.debug("NODE {}: **** Transaction completed", currentTransaction.getNodeId());
 
-            // Remove the transaction from the
-            synchronized (transactionSync) {
-                if (currentTransaction == lastTransaction) {
-                    lastTransaction = null;
-                }
-
-                outstandingTransactions.remove(currentTransaction);
-            }
-
             // Notify the async threads
             NotifyTransactionListener(currentTransaction);
+
+            // Notify the controller
+            controller.handleTransactionComplete(currentTransaction, incomingMessage);
         } else {
             System.out.println("Transaction " + currentTransaction.getCallbackId() + " NOT completed");
             logger.debug("NODE {}: **** Transaction not completed", currentTransaction.getNodeId());
@@ -545,6 +575,10 @@ public class ZWaveTransactionManager {
             case WAIT_DATA:
                 System.out.println("Timer type WAIT_DATA [" + transaction.getDataTimeout() + "]");
                 nextTimer = System.currentTimeMillis() + transaction.getDataTimeout();
+                break;
+            case ABORTED:
+                System.out.println("Timer type ABORTED");
+                nextTimer = System.currentTimeMillis() + timerAbort;
                 break;
         }
 
@@ -580,11 +614,6 @@ public class ZWaveTransactionManager {
             serialMessage
                     .setTransmitOptions(TRANSMIT_OPTION_ACK | TRANSMIT_OPTION_AUTO_ROUTE | TRANSMIT_OPTION_EXPLORE);
             controller.sendPacket(serialMessage);
-
-            logger.debug("Transaction SendNextMessage start: expected cmd class: {}",
-                    transaction.getExpectedCommandClass());
-            logger.debug("Transaction SendNextMessage start: expected cmd: {}",
-                    transaction.getExpectedCommandClassCommand());
 
             logger.debug("Transaction SendNextMessage about to start: {}", transaction);
             transaction.transactionStart();
@@ -678,12 +707,14 @@ public class ZWaveTransactionManager {
                         // Then we need to cancel this request.
                         // TODO: Maybe this should be generalised to allow for other commands?
                         if (transaction.getSerialMessageClass() == SerialMessageClass.SendData
-                                && transaction.getTransactionState() != TransactionState.WAIT_DATA) {
+                                && (transaction.getTransactionState() == TransactionState.WAIT_REQUEST
+                                        || transaction.getTransactionState() == TransactionState.WAIT_RESPONSE)) {
                             // SendData requests need to be aborted - so we don't cancel the transaction.
-                            // Once aborted we will get the completion of the transaction
-                            // TODO: We should really have an extra timer in case we don't get the response from the
-                            // controller.
-                            logger.debug("Sending Transaction ABORT!");
+                            // Once aborted we will get the completion of the transaction which will cancel the
+                            // transaction.
+                            logger.debug("Aborting Transaction!");
+                            transaction.setTransactionAborted();
+                            transaction.setTimeout(getNextTimer(transaction));
 
                             controller.sendPacket(new ZWaveTransactionMessageBuilder(SerialMessageClass.SendDataAbort)
                                     .build().getSerialMessage());

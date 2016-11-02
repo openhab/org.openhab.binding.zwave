@@ -7,6 +7,8 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveMessagePayloadTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayload
         implements ZWaveMessagePayloadTransaction {
@@ -16,6 +18,8 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
     private TransactionPriority priority;
     private int maxAttempts = 0;
 
+    private static final Logger logger = LoggerFactory.getLogger(ZWaveCommandClassTransactionPayload.class);
+
     public ZWaveCommandClassTransactionPayload(int nodeId, byte[] payload, TransactionPriority priority,
             CommandClass expectedResponseCommandClass, int expectedResponseCommandClassCommand) {
         super(payload);
@@ -23,6 +27,9 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
         this.priority = priority;
         this.expectedResponseCommandClass = expectedResponseCommandClass;
         this.expectedResponseCommandClassCommand = expectedResponseCommandClassCommand;
+
+        logger.debug("At ZWaveCommandClassTransactionPayload {}::", this.expectedResponseCommandClass,
+                this.expectedResponseCommandClassCommand);
     }
 
     public int getNodeId() {
@@ -35,6 +42,10 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
     }
 
     public CommandClass getExpectedResponseCommandClass() {
+        logger.debug("At getExpectedResponseCommandClass {}", expectedResponseCommandClass);
+        if (expectedResponseCommandClass != null) {
+            return expectedResponseCommandClass;
+        }
         return expectedResponseCommandClass;
     }
 

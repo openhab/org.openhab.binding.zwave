@@ -84,6 +84,7 @@ public class ZWaveTransaction {
         WAIT_REQUEST,
         WAIT_DATA,
         DONE,
+        ABORTED,
         CANCELLED
     }
 
@@ -197,15 +198,18 @@ public class ZWaveTransaction {
     }
 
     public CommandClass getExpectedCommandClass() {
+        logger.debug("Transaction type is {}", payload.getClass().getSimpleName());
         if (payload instanceof ZWaveCommandClassTransactionPayload) {
-            ((ZWaveCommandClassTransactionPayload) payload).getExpectedResponseCommandClass();
+            logger.debug("Transaction expected response is {}",
+                    ((ZWaveCommandClassTransactionPayload) payload).getExpectedResponseCommandClass());
+            return ((ZWaveCommandClassTransactionPayload) payload).getExpectedResponseCommandClass();
         }
         return null;
     }
 
     public Integer getExpectedCommandClassCommand() {
         if (payload instanceof ZWaveCommandClassTransactionPayload) {
-            ((ZWaveCommandClassTransactionPayload) payload).getCommandClassCommand();
+            return ((ZWaveCommandClassTransactionPayload) payload).getExpectedResponseCommandClassCommand();
         }
         return null;
     }
@@ -248,6 +252,10 @@ public class ZWaveTransaction {
     public void setTransactionCanceled() {
         transactionStateCancelled = transactionStateTracker;
         transactionStateTracker = TransactionState.CANCELLED;
+    }
+
+    public void setTransactionAborted() {
+        transactionStateTracker = TransactionState.ABORTED;
     }
 
     public void setAttemptsRemaining(int attemptsRemaining) {
@@ -347,6 +355,9 @@ public class ZWaveTransaction {
 
                 // We've received the data we wanted - we're done
                 transactionStateTracker = TransactionState.DONE;
+                break;
+
+            case ABORTED:
                 break;
 
             case CANCELLED:

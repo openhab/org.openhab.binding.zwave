@@ -1444,8 +1444,6 @@ public class ZWaveController {
     /**
      * WatchDogTimerTask class. Acts as a watch dog and checks the serial
      * threads to see whether they are still running.
-     *
-     * @author Jan-Willem Spuij
      */
     /*
      * private class WatchDogTimerTask extends TimerTask {

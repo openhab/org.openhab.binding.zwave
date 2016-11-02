@@ -67,6 +67,6 @@ public class ZWaveNoOperationCommandClass extends ZWaveCommandClass {
         // .withPriority(TransactionPriority.Poll).build();
 
         return new ZWaveCommandClassTransactionPayload(getNode().getNodeId(),
-                new byte[] { (byte) getCommandClass().getKey() }, TransactionPriority.Poll, getCommandClass(), 0);
+                new byte[] { (byte) getCommandClass().getKey() }, TransactionPriority.Poll, null, 0);
     }
 }

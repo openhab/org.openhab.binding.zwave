@@ -145,6 +145,7 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
                 if (transaction != null) {
                     nodeId = transaction.getNodeId();
                     logger.debug("NODE {}: Application update request. Node Info Request Failed.", nodeId);
+                    transaction.setTransactionCanceled();
                 } else {
                     logger.debug("Application update request. Node Info Request Failed (Unknown Node).");
                 }

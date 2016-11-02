@@ -187,7 +187,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                 synchronized (serialPort.getOutputStream()) {
                     serialPort.getOutputStream().write(response);
                     serialPort.getOutputStream().flush();
-                    logger.trace("Response SENT");
+                    logger.debug("Response SENT {}", response);
                 }
             } catch (IOException e) {
                 logger.error(e.getMessage());
@@ -209,6 +209,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
 
                     try {
                         nextByte = serialPort.getInputStream().read();
+                        logger.debug("SERIAL:: STATE {}, nextByte {}, count {} ", rxState, nextByte, rxLength);
 
                         // If byte value is -1, this is a timeout
                         if (nextByte == -1) {
@@ -242,7 +243,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                                     ACKCount++;
                                     updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_ACK),
                                             new DecimalType(ACKCount));
-                                    logger.trace("Received ACK");
+                                    logger.debug("Received ACK");
                                     break;
 
                                 case NAK:
@@ -250,9 +251,9 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                                     NAKCount++;
                                     updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_NAK),
                                             new DecimalType(NAKCount));
-                                    logger.debug("Protocol error (NAK)");
-
-                                    // TODO: Add NAK processing
+                                    logger.debug("Receive Message = 15");
+                                    SerialMessage nakMessage = new SerialMessage(rxBuffer);
+                                    incomingMessage(nakMessage);
                                     break;
 
                                 case CAN:
@@ -260,9 +261,10 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                                     CANCount++;
                                     updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_CAN),
                                             new DecimalType(CANCount));
-                                    logger.debug("Protocol error (CAN)");
-
-                                    // TODO: Add CAN processing (Resend?)
+                                    // logger.debug("Protocol error (CAN)");
+                                    logger.debug("Receive Message = 18");
+                                    SerialMessage canMessage = new SerialMessage(rxBuffer);
+                                    incomingMessage(canMessage);
                                     break;
 
                                 default:
@@ -345,7 +347,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             synchronized (serialPort.getOutputStream()) {
                 serialPort.getOutputStream().write(buffer);
                 serialPort.getOutputStream().flush();
-                logger.trace("Message SENT");
+                logger.debug("Message SENT");
             }
         } catch (IOException e) {
             logger.error("Got I/O exception {} during sending. exiting thread.", e.getLocalizedMessage());

@@ -26,6 +26,13 @@ import org.slf4j.LoggerFactory;
 public class SerialApiSetTimeoutsMessageClass extends ZWaveCommandProcessor {
     private static final Logger logger = LoggerFactory.getLogger(SerialApiSetTimeoutsMessageClass.class);
 
+    /**
+     * Sets the serial API timeouts. Timeouts are in 10ms ticks.
+     *
+     * @param ackTimeout timeout from sending a frame to receiving the ACK
+     * @param byteTimeout timeout between receiving each subsequent byte
+     * @return {@line ZWaveSerialPayload} the message to send
+     */
     public ZWaveSerialPayload doRequest(int ackTimeout, int byteTimeout) {
         // Create the request
         return new ZWaveTransactionMessageBuilder(SerialMessageClass.SerialApiSetTimeouts)
