@@ -209,7 +209,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
 
                     try {
                         nextByte = serialPort.getInputStream().read();
-                        logger.debug("SERIAL:: STATE {}, nextByte {}, count {} ", rxState, nextByte, rxLength);
+                        // logger.debug("SERIAL:: STATE {}, nextByte {}, count {} ", rxState, nextByte, rxLength);
 
                         // If byte value is -1, this is a timeout
                         if (nextByte == -1) {

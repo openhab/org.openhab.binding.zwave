@@ -624,6 +624,7 @@ public abstract class ZWaveCommandClass {
             labelToCommandClassMapping = new HashMap<String, CommandClass>();
             for (CommandClass s : values()) {
                 codeToCommandClassMapping.put(s.key, s);
+                labelToCommandClassMapping.put(s.name(), s);
             }
         }
 
@@ -665,7 +666,7 @@ public abstract class ZWaveCommandClass {
                 initMapping();
             }
 
-            return labelToCommandClassMapping.get(label.toLowerCase());
+            return labelToCommandClassMapping.get(label.toUpperCase());
         }
 
         /**

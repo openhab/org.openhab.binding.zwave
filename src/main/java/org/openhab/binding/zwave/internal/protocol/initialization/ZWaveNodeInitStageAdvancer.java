@@ -342,6 +342,8 @@ public class ZWaveNodeInitStageAdvancer {
 
             // Loop through all command classes, requesting their version
             // using the Version command class
+
+            // TODO: Protect if no classes known!
             for (ZWaveCommandClass zwaveVersionClass : node.getCommandClasses()) {
                 logger.debug("NODE {}: Node advancer: VERSION - checking {}, version is {}", node.getNodeId(),
                         zwaveVersionClass.getCommandClass(), zwaveVersionClass.getVersion());
