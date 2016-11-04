@@ -48,6 +48,7 @@ public abstract class ZWaveCommandClass {
         }
     };
 
+    @XStreamOmitField
     final Map<Integer, ZWaveResponseHandlerMethod> commands = new HashMap<Integer, ZWaveResponseHandlerMethod>();
 
     @XStreamOmitField

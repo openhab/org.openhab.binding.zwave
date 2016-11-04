@@ -53,14 +53,14 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
         }
 
         logger.debug("ApplicationCommandClass correlateTransactionResponse: transaction: {}", transaction);
-        logger.debug("ApplicationCommandClass correlateTransactionResponse: reply class: {}",
-                transaction.getExpectedReplyClass());
+        // logger.debug("ApplicationCommandClass correlateTransactionResponse: reply class: {}",
+        // transaction.getExpectedReplyClass());
         logger.debug("ApplicationCommandClass correlateTransactionResponse: expected cmd class: {}",
                 transaction.getExpectedCommandClass());
         logger.debug("ApplicationCommandClass correlateTransactionResponse: expected cmd: {}",
                 transaction.getExpectedCommandClassCommand());
-        logger.debug("ApplicationCommandClass correlateTransactionResponse: incoming class: {}",
-                incomingMessage.getMessageClass());
+        // logger.debug("ApplicationCommandClass correlateTransactionResponse: incoming class: {}",
+        // incomingMessage.getMessageClass());
 
         if (transaction.getExpectedReplyClass() != incomingMessage.getMessageClass()) {
             logger.debug("NO EXPECTED REPLY CLASS match! ({} <> {})", transaction.getExpectedReplyClass(),

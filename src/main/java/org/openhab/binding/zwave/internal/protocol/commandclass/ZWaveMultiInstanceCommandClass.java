@@ -231,9 +231,9 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
      */
     @ZWaveResponseHandler(id = MULTI_CHANNEL_ENDPOINT_REPORT, name = "MULTI_CHANNEL_ENDPOINT_REPORT")
     public void handleMultiChannelEndpointReport(ZWaveCommandClassPayload payload, int endpoint) {
-        boolean changingNumberOfEndpoints = (payload.getPayloadByte(1) & 0x80) != 0;
-        endpointsAreTheSameDeviceClass = (payload.getPayloadByte(1) & 0x40) != 0;
-        int endpointsSupported = payload.getPayloadByte(2) & 0x7F;
+        boolean changingNumberOfEndpoints = (payload.getPayloadByte(2) & 0x80) != 0;
+        endpointsAreTheSameDeviceClass = (payload.getPayloadByte(2) & 0x40) != 0;
+        int endpointsSupported = payload.getPayloadByte(3) & 0x7F;
 
         logger.debug("NODE {}: Changing number of endpoints = {}", getNode().getNodeId(),
                 changingNumberOfEndpoints ? "true" : false);

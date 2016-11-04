@@ -394,10 +394,18 @@ public class ZWaveNodeInitStageAdvancer {
         // Try and get the multi instance / channel command class.
         ZWaveMultiInstanceCommandClass multiInstance = (ZWaveMultiInstanceCommandClass) node
                 .getCommandClass(CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
-
         if (multiInstance != null) {
             logger.debug("NODE {}: Node advancer: ENDPOINTS - MultiInstance is supported", node.getNodeId());
-            processTransactions(multiInstance.initEndpoints(true));
+            boolean first = true;
+            do {
+                ArrayList<ZWaveCommandClassTransactionPayload> multiInstanceMessages = multiInstance
+                        .initEndpoints(first);
+                if (multiInstanceMessages.isEmpty()) {
+                    break;
+                }
+                processTransactions(multiInstanceMessages);
+                first = false;
+            } while (true);
         } else {
             logger.debug("NODE {}: Node advancer: ENDPOINTS - MultiInstance not supported.", node.getNodeId());
             // Set all classes to 1 instance.
@@ -405,6 +413,7 @@ public class ZWaveNodeInitStageAdvancer {
                 commandClass.setInstances(1);
             }
         }
+
         setCurrentStage(ZWaveNodeInitStage.UPDATE_DATABASE);
         // This stage reads information from the database to allow us to modify the configuration
         logger.debug("NODE {}: Node advancer: UPDATE_DATABASE", node.getNodeId());

@@ -28,8 +28,8 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
         this.expectedResponseCommandClass = expectedResponseCommandClass;
         this.expectedResponseCommandClassCommand = expectedResponseCommandClassCommand;
 
-        logger.debug("At ZWaveCommandClassTransactionPayload {}::", this.expectedResponseCommandClass,
-                this.expectedResponseCommandClassCommand);
+        // logger.debug("At ZWaveCommandClassTransactionPayload {}::{}", this.expectedResponseCommandClass,
+        // this.expectedResponseCommandClassCommand);
     }
 
     public int getNodeId() {
@@ -42,7 +42,7 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
     }
 
     public CommandClass getExpectedResponseCommandClass() {
-        logger.debug("At getExpectedResponseCommandClass {}", expectedResponseCommandClass);
+        // logger.debug("At getExpectedResponseCommandClass {}", expectedResponseCommandClass);
         if (expectedResponseCommandClass != null) {
             return expectedResponseCommandClass;
         }

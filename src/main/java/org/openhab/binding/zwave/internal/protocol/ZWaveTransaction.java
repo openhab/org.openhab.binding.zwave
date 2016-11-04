@@ -169,7 +169,7 @@ public class ZWaveTransaction {
             serialMessage = payload.getSerialMessage();
         }
 
-        logger.debug("Transaction has saved callbackId as ID{}", serialMessage.getCallbackId());
+        // logger.debug("Transaction has saved callbackId as ID{}", serialMessage.getCallbackId());
 
         return serialMessage;
     }
@@ -198,10 +198,10 @@ public class ZWaveTransaction {
     }
 
     public CommandClass getExpectedCommandClass() {
-        logger.debug("Transaction type is {}", payload.getClass().getSimpleName());
+        // logger.debug("Transaction type is {}", payload.getClass().getSimpleName());
         if (payload instanceof ZWaveCommandClassTransactionPayload) {
-            logger.debug("Transaction expected response is {}",
-                    ((ZWaveCommandClassTransactionPayload) payload).getExpectedResponseCommandClass());
+            // logger.debug("Transaction expected response is {}",
+            // ((ZWaveCommandClassTransactionPayload) payload).getExpectedResponseCommandClass());
             return ((ZWaveCommandClassTransactionPayload) payload).getExpectedResponseCommandClass();
         }
         return null;
