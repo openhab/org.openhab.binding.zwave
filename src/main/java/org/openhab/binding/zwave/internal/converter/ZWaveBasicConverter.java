@@ -14,7 +14,6 @@ import java.util.List;
 import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.library.types.OnOffType;
 import org.eclipse.smarthome.core.library.types.OpenClosedType;
-import org.eclipse.smarthome.core.library.types.PercentType;
 import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
@@ -79,11 +78,11 @@ public class ZWaveBasicConverter extends ZWaveCommandClassConverter {
                 state = new DecimalType(value);
                 break;
             case PercentType:
-                if ("true".equalsIgnoreCase(channel.getArguments().get("invertPercent"))) {
-                    state = new PercentType(100 - value);
-                } else {
-                    state = new PercentType(value);
+                // Special handling for 255
+                if (value == 255) {
+                    value = 100;
                 }
+                state = convertPercent(value, "true".equalsIgnoreCase(channel.getArguments().get("invertPercent")));
                 break;
             case OnOffType:
                 state = (Integer) event.getValue() == 0 ? OnOffType.OFF : OnOffType.ON;
