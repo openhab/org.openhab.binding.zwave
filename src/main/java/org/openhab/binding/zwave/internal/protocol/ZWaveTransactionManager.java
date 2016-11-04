@@ -428,7 +428,7 @@ public class ZWaveTransactionManager {
 
                     ZWaveCommandProcessor msgClass = ZWaveCommandProcessor
                             .getMessageDispatcher(incomingMessage.getMessageClass());
-                    logger.debug(">>>>> msgClass {}", msgClass);
+                    // logger.debug(">>>>> msgClass {}", msgClass);
                     if (msgClass != null && msgClass.correlateTransactionResponse(transaction, incomingMessage)) {
                         logger.debug("Correlated to transaction " + transaction.getCallbackId() + "......");
                         System.out.println("Correlated to transaction " + transaction.getCallbackId() + "......");
