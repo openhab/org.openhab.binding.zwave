@@ -797,6 +797,16 @@
         </state>
     </channel-type>
 
+    <!-- CO2 Channel -->
+    <channel-type id="sensor_co2">
+        <item-type>Number</item-type>
+        <label>Dewpoint</label>
+        <description>Indicates the CO2 level</description>
+        <category>Temperature</category>
+        <state pattern="%.1f" readOnly="true">
+        </state>
+    </channel-type>
+
     <!-- Dewpoint Channel -->
     <channel-type id="sensor_dewpoint">
         <item-type>Number</item-type>
