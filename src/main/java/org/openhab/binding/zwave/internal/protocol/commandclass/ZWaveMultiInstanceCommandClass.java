@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -69,7 +68,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
     private static final int MULTI_CHANNEL_ENDPOINT_FIND_REPORT = 12;
     private static final int MULTI_CHANNEL_ENCAP = 13;
 
-    private final Map<Integer, ZWaveEndpoint> endpoints = new HashMap<Integer, ZWaveEndpoint>();
+    // private final Map<Integer, ZWaveEndpoint> endpoints = new HashMap<Integer, ZWaveEndpoint>();
 
     private boolean useDestEndpointAsSource = false;
     private boolean endpointsAreTheSameDeviceClass;

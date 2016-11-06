@@ -97,6 +97,9 @@ public class ZWaveNode {
     // Stores the list of association groups
     private Map<Integer, ZWaveAssociationGroup> associationGroups = new HashMap<Integer, ZWaveAssociationGroup>();
 
+    // Endpoint
+    private final Map<Integer, ZWaveEndpoint> endpoints = new HashMap<Integer, ZWaveEndpoint>();
+
     private List<Integer> nodeNeighbors = new ArrayList<Integer>();
     private Date lastSent = null;
     private Date lastReceived = null;
@@ -1128,7 +1131,6 @@ public class ZWaveNode {
 
         } else if (commandClassCode == CommandClass.COMMAND_CLASS_CRC_16_ENCAP.getKey()) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_CRC_16_ENCAP", getNodeId());
-
         }
 
         if (commandClassCode == CommandClass.COMMAND_CLASS_MULTI_CHANNEL.getKey()) {
