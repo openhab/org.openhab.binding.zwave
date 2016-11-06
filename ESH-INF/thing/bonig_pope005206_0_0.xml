@@ -74,7 +74,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Bönig und Kallenbach</property>
+      <property name="vendor">Bönig und Kallenbach oHG</property>
       <property name="modelId">POPE005206</property>
       <property name="manufacturerId">0169</property>
       <property name="manufacturerRef">0001:0001</property>

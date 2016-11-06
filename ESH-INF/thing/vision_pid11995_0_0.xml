@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="vision_pid11995_00_000" listed="false">
+    <label>PID11995 Monoprice ZWave On/Off Plugin</label>
+    <description>Monoprice ZWave On/Off Plugin</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Vision Security</property>
+      <property name="modelId">PID11995</property>
+      <property name="manufacturerId">0109</property>
+      <property name="manufacturerRef">2007:0703</property>
+      <property name="dbReference">454</property>
+    </properties>
+
+  </thing-type>
+
+</thing:thing-descriptions>

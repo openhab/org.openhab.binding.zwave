@@ -36,10 +36,10 @@
           <property name="binding:*:DecimalType">THERMOSTAT_MODE</property>
         </properties>
       </channel>
-      <channel id="thermostat_setpoint_furnace" typeId="thermostat_setpoint">
+      <channel id="thermostat_setpoint_heating_econ" typeId="thermostat_setpoint">
         <label>Setpoint (furnace)</label>
         <properties>
-          <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=FURNACE</property>
+          <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=HEATING_ECON</property>
         </properties>
       </channel>
       <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
@@ -57,7 +57,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">EUROtronic Technology</property>
+      <property name="vendor">Eurotronics</property>
       <property name="modelId">StellaZ</property>
       <property name="manufacturerId">0148</property>
       <property name="manufacturerRef">0001:0001</property>
