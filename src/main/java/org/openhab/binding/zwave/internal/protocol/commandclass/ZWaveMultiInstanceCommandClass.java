@@ -12,7 +12,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -110,18 +109,18 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
      * @return Endpoint object
      * @throws IllegalArgumentException thrown when the endpoint is not found.
      */
-    public ZWaveEndpoint getEndpoint(int endpointId) {
-        return endpoints.get(endpointId);
-    }
+    // public ZWaveEndpoint getEndpoint(int endpointId) {
+    // return endpoints.get(endpointId);
+    // }
 
     /**
      * Gets the collection of endpoints attached to this node.
      *
      * @return the collection of endpoints.
      */
-    public Collection<ZWaveEndpoint> getEndpoints() {
-        return endpoints.values();
-    }
+    // public Collection<ZWaveEndpoint> getEndpoints() {
+    // return endpoints.values();
+    // }
 
     /**
      * Handles Multi Instance Report message. Handles Report on
@@ -193,7 +192,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
 
         // first get command class from endpoint, if supported
         if (getVersion() >= 2) {
-            ZWaveEndpoint nodeEndpoint = endpoints.get(instance);
+            ZWaveEndpoint nodeEndpoint = getNode().getEndpoint(instance);
             if (nodeEndpoint != null) {
                 zwaveCommandClass = nodeEndpoint.getCommandClass(commandClass);
                 if (zwaveCommandClass == null) {
@@ -249,8 +248,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
 
         // Add all the endpoints
         for (int i = 1; i <= endpointsSupported; i++) {
-            ZWaveEndpoint nodeEndpoint = new ZWaveEndpoint(i);
-            endpoints.put(i, nodeEndpoint);
+            getNode().addEndpoint(i);
         }
     }
 
@@ -279,13 +277,13 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
         // Loop over all endpoints, or just set command classes on one, depending on whether
         // all endpoints have the same device class.
         int startId = endpointsAreTheSameDeviceClass ? 1 : receivedEndpointId;
-        int endId = endpointsAreTheSameDeviceClass ? endpoints.size() : receivedEndpointId;
+        int endId = endpointsAreTheSameDeviceClass ? getNode().getEndpointCount() : receivedEndpointId;
 
         boolean supportsBasicCommandClass = getNode().supportsCommandClass(CommandClass.COMMAND_CLASS_BASIC);
 
         for (int endpointId = startId; endpointId <= endId; endpointId++) {
             // Create a new endpoint
-            ZWaveEndpoint nodeEndpoint = endpoints.get(endpointId);
+            ZWaveEndpoint nodeEndpoint = getNode().getEndpoint(endpointId);
             if (nodeEndpoint == null) {
                 logger.error("NODE {}: Endpoint {} not found. Cannot set command classes.", getNode().getNodeId(),
                         endpointId);
@@ -306,15 +304,6 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
 
             // Add all the command classes supported by this endpoint
             addSupportedCommandClasses(payload, nodeEndpoint);
-        }
-
-        if (!endpointsAreTheSameDeviceClass) {
-            for (ZWaveEndpoint ep : endpoints.values()) {
-                // only advance node stage when all endpoints are known.
-                if (ep.getDeviceClass().getBasicDeviceClass() == Basic.NOT_KNOWN) {
-                    return;
-                }
-            }
         }
     }
 
@@ -438,7 +427,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
 
         logger.debug(String.format("NODE %d: Requested Command Class = %s (0x%02x)", getNode().getNodeId(),
                 commandClass, commandClassCode));
-        ZWaveEndpoint nodeEndpoint = endpoints.get(originatingEndpointId);
+        ZWaveEndpoint nodeEndpoint = getNode().getEndpoint(originatingEndpointId);
 
         if (nodeEndpoint == null) {
             logger.error("NODE {}: Endpoint {} not found. Cannot set command classes.", getNode().getNodeId(),
@@ -535,13 +524,12 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
      * @param the number of the endpoint to get the
      * @return the serial message.
      */
-    public ZWaveCommandClassTransactionPayload getMultiChannelCapabilityGetMessage(ZWaveEndpoint endpoint) {
+    public ZWaveCommandClassTransactionPayload getMultiChannelCapabilityGetMessage(int endpoint) {
         logger.debug("NODE {}: Creating new message for command MULTI_CHANNEL_CAPABILITY_GET endpoint {}",
-                this.getNode().getNodeId(), endpoint.getEndpointId());
+                this.getNode().getNodeId(), endpoint);
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
-                MULTI_CHANNEL_CAPABILITY_GET).withPayload(endpoint.getEndpointId())
-                        .withPriority(TransactionPriority.Config)
+                MULTI_CHANNEL_CAPABILITY_GET).withPayload(endpoint).withPriority(TransactionPriority.Config)
                         .withExpectedResponseCommand(MULTI_CHANNEL_CAPABILITY_REPORT).build();
     }
 
@@ -577,8 +565,8 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
     }
 
     /**
-     * Initializes the Multi instance / endpoint command class by setting the number of instances or getting the
-     * endpoints.
+     * Initializes the Multi instance / endpoint command class by setting the number of instances
+     * or getting the endpoints.
      *
      * @return SerialMessage message to send
      */
@@ -589,7 +577,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
         switch (getVersion()) {
             case 1:
                 // Get number of instances for all command classes on this node.
-                for (ZWaveCommandClass commandClass : getNode().getCommandClasses()) {
+                for (ZWaveCommandClass commandClass : getNode().getCommandClasses(0)) {
                     logger.debug("NODE {}: ENDPOINTS - checking {}, Instances {}", getNode().getNodeId(),
                             commandClass.getCommandClass().toString(), commandClass.getInstances());
 
@@ -612,17 +600,18 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
                 break;
             case 2:
                 // Set all classes to a single instance
-                for (ZWaveCommandClass commandClass : getNode().getCommandClasses()) {
+                for (ZWaveCommandClass commandClass : getNode().getCommandClasses(0)) {
                     commandClass.setInstances(1);
                 }
 
                 // Request the number of endpoints
-                if (refresh == true || endpoints.size() == 0) {
+                if (refresh == true || getNode().getEndpointCount() == 1) {
                     result.add(getMultiChannelEndpointGetMessage());
                 } else {
-                    for (Map.Entry<Integer, ZWaveEndpoint> entry : endpoints.entrySet()) {
-                        if (refresh == true || entry.getValue().getCommandClasses().size() == 0) {
-                            result.add(getMultiChannelCapabilityGetMessage(entry.getValue()));
+                    // We know the number of endpoints, so request the capabilites of each
+                    for (int endpoint = 1; endpoint < getNode().getEndpointCount(); endpoint++) {
+                        if (refresh == true || getNode().getCommandClasses(endpoint).size() == 0) {
+                            result.add(getMultiChannelCapabilityGetMessage(endpoint));
                         }
                     }
                 }

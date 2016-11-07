@@ -344,7 +344,7 @@ public class ZWaveNodeInitStageAdvancer {
             // using the Version command class
 
             // TODO: Protect if no classes known!
-            for (ZWaveCommandClass zwaveVersionClass : node.getCommandClasses()) {
+            for (ZWaveCommandClass zwaveVersionClass : node.getCommandClasses(0)) {
                 logger.debug("NODE {}: Node advancer: VERSION - checking {}, version is {}", node.getNodeId(),
                         zwaveVersionClass.getCommandClass(), zwaveVersionClass.getVersion());
 
@@ -398,8 +398,10 @@ public class ZWaveNodeInitStageAdvancer {
             logger.debug("NODE {}: Node advancer: ENDPOINTS - MultiInstance is supported", node.getNodeId());
             boolean first = true;
             do {
+                logger.debug("NODE {}: MultiInstance init first={}", node.getNodeId(), first);
                 ArrayList<ZWaveCommandClassTransactionPayload> multiInstanceMessages = multiInstance
                         .initEndpoints(first);
+                logger.debug("NODE {}: MultiInstance init returned {}", node.getNodeId(), multiInstanceMessages.size());
                 if (multiInstanceMessages.isEmpty()) {
                     break;
                 }
@@ -409,7 +411,7 @@ public class ZWaveNodeInitStageAdvancer {
         } else {
             logger.debug("NODE {}: Node advancer: ENDPOINTS - MultiInstance not supported.", node.getNodeId());
             // Set all classes to 1 instance.
-            for (ZWaveCommandClass commandClass : node.getCommandClasses()) {
+            for (ZWaveCommandClass commandClass : node.getCommandClasses(0)) {
                 commandClass.setInstances(1);
             }
         }
@@ -484,7 +486,7 @@ public class ZWaveNodeInitStageAdvancer {
 
         setCurrentStage(ZWaveNodeInitStage.STATIC_VALUES);
         // Loop through all classes looking for static initialisation
-        for (ZWaveCommandClass zwaveStaticClass : node.getCommandClasses()) {
+        for (ZWaveCommandClass zwaveStaticClass : node.getCommandClasses(0)) {
             logger.debug("NODE {}: Node advancer: STATIC_VALUES - checking {}", node.getNodeId(),
                     zwaveStaticClass.getCommandClass());
             if (zwaveStaticClass instanceof ZWaveCommandClassInitialization) {
@@ -502,8 +504,8 @@ public class ZWaveNodeInitStageAdvancer {
                     }
                 }
             } else if (zwaveStaticClass instanceof ZWaveMultiInstanceCommandClass) {
-                ZWaveMultiInstanceCommandClass multiInstanceCommandClass = (ZWaveMultiInstanceCommandClass) zwaveStaticClass;
-                for (ZWaveEndpoint endpoint : multiInstanceCommandClass.getEndpoints()) {
+                for (int endpointNumber = 1; endpointNumber < node.getEndpointCount(); endpointNumber++) {
+                    ZWaveEndpoint endpoint = node.getEndpoint(endpointNumber);
                     for (ZWaveCommandClass endpointCommandClass : endpoint.getCommandClasses()) {
                         logger.debug("NODE {}: Node advancer: STATIC_VALUES - checking {} for endpoint {}",
                                 node.getNodeId(), endpointCommandClass.getCommandClass(), endpoint.getEndpointId());
@@ -704,7 +706,7 @@ public class ZWaveNodeInitStageAdvancer {
     void doDynamicStages() {
         setCurrentStage(ZWaveNodeInitStage.DYNAMIC_VALUES);
         // Update all dynamic information from command classes
-        for (ZWaveCommandClass zwaveDynamicClass : node.getCommandClasses()) {
+        for (ZWaveCommandClass zwaveDynamicClass : node.getCommandClasses(0)) {
             logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - checking {}", node.getNodeId(),
                     zwaveDynamicClass.getCommandClass());
             if (zwaveDynamicClass instanceof ZWaveCommandClassDynamicState) {
@@ -722,8 +724,8 @@ public class ZWaveNodeInitStageAdvancer {
                     }
                 }
             } else if (zwaveDynamicClass instanceof ZWaveMultiInstanceCommandClass) {
-                ZWaveMultiInstanceCommandClass multiInstanceCommandClass = (ZWaveMultiInstanceCommandClass) zwaveDynamicClass;
-                for (ZWaveEndpoint endpoint : multiInstanceCommandClass.getEndpoints()) {
+                for (int endpointNumber = 1; endpointNumber < node.getEndpointCount(); endpointNumber++) {
+                    ZWaveEndpoint endpoint = node.getEndpoint(endpointNumber);
                     for (ZWaveCommandClass endpointCommandClass : endpoint.getCommandClasses()) {
                         logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - checking {} for endpoint {}",
                                 node.getNodeId(), endpointCommandClass.getCommandClass(), endpoint.getEndpointId());

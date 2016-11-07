@@ -22,7 +22,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 /**
  * ZWaveEndpoint class. Represents an endpoint in case of a Multi-channel node.
- * 
+ *
  * @author Chris Jackson
  * @author Jan-Willem Spuij
  */
@@ -36,21 +36,20 @@ public class ZWaveEndpoint {
 
     /**
      * Constructor. Creates a new instance of the ZWaveEndpoint class.
-     * 
+     *
      * @param node the parent node of this endpoint.
      * @param endpointId the endpoint ID.
      */
     public ZWaveEndpoint(int endpointId) {
-        if (endpointId == 0) {
-            throw new IllegalArgumentException("Endpoint number cannot be 0");
-        }
+        // if (endpointId == 0) {
+        // throw new IllegalArgumentException("Endpoint number cannot be 0");
         this.endpointId = endpointId;
         this.deviceClass = new ZWaveDeviceClass(Basic.NOT_KNOWN, Generic.NOT_KNOWN, Specific.NOT_USED);
     }
 
     /**
      * Gets the endpoint ID
-     * 
+     *
      * @return endpointId the endpointId
      */
     public int getEndpointId() {
@@ -59,7 +58,7 @@ public class ZWaveEndpoint {
 
     /**
      * Gets the Command classes this endpoint implements.
-     * 
+     *
      * @return the command classes.
      */
     public Collection<ZWaveCommandClass> getCommandClasses() {
@@ -69,7 +68,7 @@ public class ZWaveEndpoint {
     /**
      * Gets a commandClass object this endpoint implements. Returns null if this endpoint does not support this command
      * class.
-     * 
+     *
      * @param commandClass
      *            The command class to get.
      * @return the command class.
@@ -81,19 +80,20 @@ public class ZWaveEndpoint {
     /**
      * Adds a command class to the list of supported command classes by this endpoint. Does nothing if command class is
      * already added.
-     * 
+     *
      * @param commandClass the command class instance to add.
      */
     public void addCommandClass(ZWaveCommandClass commandClass) {
         CommandClass key = commandClass.getCommandClass();
 
-        if (!supportedCommandClasses.containsKey(key))
+        if (!supportedCommandClasses.containsKey(key)) {
             supportedCommandClasses.put(key, commandClass);
+        }
     }
 
     /**
      * Returns the device class for this endpoint.
-     * 
+     *
      * @return the deviceClass
      */
     public ZWaveDeviceClass getDeviceClass() {

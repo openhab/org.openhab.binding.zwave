@@ -20,9 +20,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.openhab.binding.zwave.internal.HexToIntegerConverter;
-import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
-import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Generic;
-import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
@@ -55,7 +52,7 @@ public class ZWaveNode {
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveNode.class);
 
-    private final ZWaveDeviceClass deviceClass;
+    // private final ZWaveDeviceClass deviceClass;
     @XStreamOmitField
     private ZWaveController controller;
     @XStreamOmitField
@@ -91,7 +88,8 @@ public class ZWaveNode {
     @SuppressWarnings("unused")
     private List<CommandClass> nodeInformationFrame = null;
 
-    private Map<CommandClass, ZWaveCommandClass> supportedCommandClasses = new HashMap<CommandClass, ZWaveCommandClass>();
+    // private Map<CommandClass, ZWaveCommandClass> supportedCommandClasses = new HashMap<CommandClass,
+    // ZWaveCommandClass>();
     private final Set<CommandClass> securedCommandClasses = new HashSet<CommandClass>();
 
     // Stores the list of association groups
@@ -134,7 +132,9 @@ public class ZWaveNode {
         this.nodeId = nodeId;
         this.controller = controller;
         this.nodeInitStageAdvancer = new ZWaveNodeInitStageAdvancer(this, controller);
-        this.deviceClass = new ZWaveDeviceClass(Basic.NOT_KNOWN, Generic.NOT_KNOWN, Specific.NOT_USED);
+
+        ZWaveEndpoint endpoint0 = new ZWaveEndpoint(0);
+        endpoints.put(0, endpoint0);
     }
 
     /**
@@ -471,13 +471,34 @@ public class ZWaveNode {
         }
     }
 
+    public ZWaveEndpoint getEndpoint(int endpoint) {
+        return endpoints.get(endpoint);
+    }
+
+    public ZWaveEndpoint addEndpoint(int endpointNumber) {
+        if (endpoints.containsKey(endpointNumber)) {
+            logger.debug("NODE {}: Endpoint {} already exists", nodeId, endpointNumber);
+            return endpoints.get(endpointNumber);
+        }
+        ZWaveEndpoint endpoint = new ZWaveEndpoint(endpointNumber);
+        endpoints.put(endpointNumber, endpoint);
+
+        logger.debug("NODE {}: Endpoint {} added", nodeId, endpointNumber);
+
+        return endpoint;
+    }
+
+    public int getEndpointCount() {
+        return endpoints.size();
+    }
+
     /**
      * Returns the device class of the node.
      *
      * @return the deviceClass
      */
     public ZWaveDeviceClass getDeviceClass() {
-        return deviceClass;
+        return endpoints.get(0).getDeviceClass();
     }
 
     /**
@@ -485,8 +506,8 @@ public class ZWaveNode {
      *
      * @return the command classes.
      */
-    public Collection<ZWaveCommandClass> getCommandClasses() {
-        return supportedCommandClasses.values();
+    public Collection<ZWaveCommandClass> getCommandClasses(int endpoint) {
+        return endpoints.get(endpoint).getCommandClasses();
     }
 
     /**
@@ -497,7 +518,7 @@ public class ZWaveNode {
      * @return the command class.
      */
     public ZWaveCommandClass getCommandClass(CommandClass commandClass) {
-        return supportedCommandClasses.get(commandClass);
+        return endpoints.get(0).getCommandClass(commandClass);
     }
 
     /**
@@ -507,7 +528,7 @@ public class ZWaveNode {
      * @return true if the command class is supported, false otherwise.
      */
     public boolean supportsCommandClass(CommandClass commandClass) {
-        return supportedCommandClasses.containsKey(commandClass);
+        return endpoints.get(0).getCommandClasses().contains(commandClass);
     }
 
     /**
@@ -519,13 +540,14 @@ public class ZWaveNode {
     public void addCommandClass(ZWaveCommandClass commandClass) {
         CommandClass key = commandClass.getCommandClass();
 
-        if (!supportedCommandClasses.containsKey(key)) {
+        if (!endpoints.get(0).getCommandClasses().contains(commandClass)) {
             logger.debug("NODE {}: Adding command class {} to the list of supported command classes.", nodeId,
                     commandClass.getCommandClass());
-            supportedCommandClasses.put(key, commandClass);
+            endpoints.get(0).addCommandClass(commandClass);
 
+            // Register and event listener for this class if it is listening for them
             if (commandClass instanceof ZWaveEventListener) {
-                this.controller.addEventListener((ZWaveEventListener) commandClass);
+                controller.addEventListener((ZWaveEventListener) commandClass);
             }
         }
     }
@@ -538,7 +560,7 @@ public class ZWaveNode {
      * @param commandClass The command class key
      */
     public void removeCommandClass(CommandClass commandClass) {
-        supportedCommandClasses.remove(commandClass);
+        // endpoints.get(0).supportedCommandClasses.remove(commandClass);
     }
 
     /**
@@ -563,12 +585,14 @@ public class ZWaveNode {
             return getCommandClass(commandClass);
         }
 
-        ZWaveMultiInstanceCommandClass multiInstanceCommandClass = (ZWaveMultiInstanceCommandClass) supportedCommandClasses
-                .get(CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
+        ZWaveMultiInstanceCommandClass multiInstanceCommandClass = (ZWaveMultiInstanceCommandClass) endpoints.get(0)
+                .getCommandClass(CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
         if (multiInstanceCommandClass == null) {
             return null;
-        } else if (multiInstanceCommandClass.getVersion() == 2) {
-            ZWaveEndpoint endpoint = multiInstanceCommandClass.getEndpoint(endpointId);
+        }
+
+        if (multiInstanceCommandClass.getVersion() == 2) {
+            ZWaveEndpoint endpoint = endpoints.get(endpointId);
 
             if (endpoint != null) {
                 ZWaveCommandClass result = endpoint.getCommandClass(commandClass);
@@ -847,11 +871,12 @@ public class ZWaveNode {
                 }
             }
         }
+
         if (logger.isInfoEnabled()) {
-            // show which classes are still insecure after the update
+            // Show which classes are still insecure after the update
             final StringBuilder buf = new StringBuilder(
                     "NODE " + this.getNodeId() + ": After update, INSECURE command classes are: ");
-            for (final ZWaveCommandClass zwCommandClass : this.getCommandClasses()) {
+            for (final ZWaveCommandClass zwCommandClass : getCommandClasses(0)) {
                 if (!securedCommandClasses.contains(zwCommandClass.getCommandClass())) {
                     buf.append(zwCommandClass.getCommandClass() + ", ");
                 }
@@ -861,7 +886,7 @@ public class ZWaveNode {
     }
 
     public boolean doesMessageRequireSecurityEncapsulation(ZWaveCommandClassPayload payload) {
-        if (!supportedCommandClasses.containsKey(CommandClass.COMMAND_CLASS_SECURITY)) {
+        if (endpoints.get(0).getCommandClass(CommandClass.COMMAND_CLASS_SECURITY) == null) {
             // Does this node support security at all?
             return false;
         }
@@ -1147,6 +1172,8 @@ public class ZWaveNode {
         }
 
         List<ZWaveCommandClassPayload> commands = new ArrayList<ZWaveCommandClassPayload>();
+
+        commands.add(payload);
 
         for (ZWaveCommandClassPayload command : commands) {
             CommandClass commandClass = CommandClass.getCommandClass(command.getCommandClassId());

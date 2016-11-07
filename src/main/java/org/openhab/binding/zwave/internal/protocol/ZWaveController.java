@@ -417,7 +417,7 @@ public class ZWaveController {
                     node.setRestoredFromConfigfile(controller);
 
                     // Set the controller and node references for all command classes
-                    for (ZWaveCommandClass commandClass : node.getCommandClasses()) {
+                    for (ZWaveCommandClass commandClass : node.getCommandClasses(0)) {
                         commandClass.setController(controller);
                         commandClass.setNode(node);
 
@@ -428,8 +428,8 @@ public class ZWaveController {
 
                         // If this is the multi-instance class, add all command classes for the endpoints
                         if (commandClass instanceof ZWaveMultiInstanceCommandClass) {
-                            for (ZWaveEndpoint endPoint : ((ZWaveMultiInstanceCommandClass) commandClass)
-                                    .getEndpoints()) {
+                            for (int endpointNumber = 1; endpointNumber < node.getEndpointCount(); endpointNumber++) {
+                                ZWaveEndpoint endPoint = node.getEndpoint(endpointNumber);
                                 for (ZWaveCommandClass endpointCommandClass : endPoint.getCommandClasses()) {
                                     endpointCommandClass.setController(controller);
                                     endpointCommandClass.setNode(node);
