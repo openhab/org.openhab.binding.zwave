@@ -151,7 +151,7 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
 
     @Override
     public Collection<ZWaveCommandClassTransactionPayload> initialize(boolean refresh) {
-        if (getVersion() == 1) {
+        if (getVersion() <= 1) {
             return null;
         }
 

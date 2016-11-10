@@ -19,14 +19,29 @@ public class ZWaveCommandClassTransactionPayloadBuilder {
     private TransactionPriority priority = TransactionPriority.Get;
     private CommandClass expectedResponseCommandClass;
     private int expectedResponseCommandClassCommand;
+    private final boolean payloadBuilt;
 
     private static final Logger logger = LoggerFactory.getLogger(ZWaveCommandClassTransactionPayloadBuilder.class);
 
     public ZWaveCommandClassTransactionPayloadBuilder(final int nodeId, final CommandClass commandClass,
             final int command) {
+        this.nodeId = nodeId;
         this.commandClass = commandClass;
         this.command = command;
+        this.payloadBuilt = false;
+    }
+
+    public ZWaveCommandClassTransactionPayloadBuilder(final int nodeId, byte[] payload) {
         this.nodeId = nodeId;
+        this.commandClass = CommandClass.getCommandClass(payload[0]);
+        this.command = payload[1];
+        this.payload = payload;
+        this.payloadBuilt = true;
+    }
+
+    public ZWaveCommandClassTransactionPayloadBuilder withPayloadBuffer(byte[] payload) {
+        this.payload = payload;
+        return this;
     }
 
     public ZWaveCommandClassTransactionPayloadBuilder withPayload(int... payload) {
@@ -57,16 +72,20 @@ public class ZWaveCommandClassTransactionPayloadBuilder {
 
     public ZWaveCommandClassTransactionPayload build() {
         byte[] output;
-        if (payload == null) {
-            output = new byte[2];
+        if (payloadBuilt == true) {
+            output = payload;
         } else {
-            output = new byte[2 + payload.length];
-        }
+            if (payload == null) {
+                output = new byte[2];
+            } else {
+                output = new byte[2 + payload.length];
+            }
 
-        output[0] = (byte) commandClass.getKey();
-        output[1] = (byte) command;
-        for (int i = 2; i < output.length; ++i) {
-            output[i] = payload[i - 2];
+            output[0] = (byte) commandClass.getKey();
+            output[1] = (byte) command;
+            for (int i = 2; i < output.length; ++i) {
+                output[i] = payload[i - 2];
+            }
         }
 
         logger.debug("At build {}", expectedResponseCommandClass);

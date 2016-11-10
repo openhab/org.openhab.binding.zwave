@@ -182,14 +182,28 @@ public class ZWaveTransactionManager {
         }
     }
 
-    private void NotifyTransactionListener(final ZWaveTransaction transaction) {
+    private void notifyTransactionResponse(final ZWaveCommandClassPayload payload) {
         new Thread() {
             @Override
             public void run() {
                 synchronized (transactionListeners) {
 
                     for (TransactionListener listener : transactionListeners) {
-                        listener.TransactionEvent(transaction);
+                        listener.transactionPayload(payload);
+                    }
+                }
+            }
+        }.start();
+    }
+
+    private void notifyTransactionComplete(final ZWaveTransaction transaction) {
+        new Thread() {
+            @Override
+            public void run() {
+                synchronized (transactionListeners) {
+
+                    for (TransactionListener listener : transactionListeners) {
+                        listener.transactionEvent(transaction);
                     }
                 }
             }
@@ -420,12 +434,6 @@ public class ZWaveTransactionManager {
                             + transaction.getCallbackId() + ") ......");
                     System.out.println("checking transaction " + transaction.getCallbackId() + "......");
 
-                    // If we are waiting for the RESponse, then check for this first
-                    // There can only be a single outstanding RESponse
-                    // if (incomingMessage.getMessageType() == SerialMessageType.Response) {
-                    // continue;
-                    // }
-
                     ZWaveCommandProcessor msgClass = ZWaveCommandProcessor
                             .getMessageDispatcher(incomingMessage.getMessageClass());
                     // logger.debug(">>>>> msgClass {}", msgClass);
@@ -439,7 +447,29 @@ public class ZWaveTransactionManager {
             }
         }
 
-        controller.handleIncomingMessage(currentTransaction, incomingMessage);
+        // Manage incoming command class messages separately so we can manage transaction responses
+        if (incomingMessage.getMessageClass() == SerialMessageClass.ApplicationCommandHandler) {
+            try {
+                int nodeId = incomingMessage.getMessagePayloadByte(1);
+                ZWaveNode node = controller.getNode(nodeId);
+
+                if (node == null) {
+                    logger.warn("NODE {}: Not initialized yet (ie node unknown), ignoring message.", nodeId);
+                } else {
+                    logger.debug("NODE {}: Application Command Request ({}:{})", nodeId, node.getNodeState().toString(),
+                            node.getNodeInitStage().toString());
+
+                    for (ZWaveCommandClassPayload command : node
+                            .processCommand(new ZWaveCommandClassPayload(incomingMessage))) {
+                        notifyTransactionResponse(command);
+                    }
+                }
+            } catch (ZWaveSerialMessageException e) {
+                logger.error("Error processing frame: {} >> {}", incomingMessage.toString(), e.getMessage());
+            }
+        } else {
+            controller.handleIncomingMessage(currentTransaction, incomingMessage);
+        }
 
         // Handle transaction processing
         if (currentTransaction == null) {
@@ -543,7 +573,8 @@ public class ZWaveTransactionManager {
             logger.debug("NODE {}: **** Transaction completed", currentTransaction.getNodeId());
 
             // Notify the async threads
-            NotifyTransactionListener(currentTransaction);
+            // Note that this is really here to complete transactions that don't return a command class
+            notifyTransactionComplete(currentTransaction);
 
             // Notify the controller
             controller.handleTransactionComplete(currentTransaction, incomingMessage);
@@ -733,7 +764,7 @@ public class ZWaveTransactionManager {
                             if (transaction.decrementAttemptsRemaining() <= 0) {
                                 transaction.setTransactionCanceled();
                                 controller.handleTransactionComplete(transaction, null);
-                                NotifyTransactionListener(transaction);
+                                notifyTransactionComplete(transaction);
                                 System.out.println(
                                         "handleTransactionComplete CANCELLED x " + transaction.getCallbackId());
                             } else {
@@ -759,10 +790,12 @@ public class ZWaveTransactionManager {
         }
     }
 
-    public Future<ZWaveTransactionResponse> SendTransactionAsync(final ZWaveMessagePayloadTransaction payload) {
+    public Future<ZWaveTransactionResponse> SendTransactionAsync(final ZWaveCommandClassTransactionPayload payload) {
         class TransactionWaiter implements Callable<ZWaveTransactionResponse>, TransactionListener {
             ZWaveTransactionResponse response = null;
-            long transactionId = 0;
+            long transactionId;
+            int responseClass;
+            int responseCommand;
 
             @Override
             public ZWaveTransactionResponse call() throws Exception {
@@ -778,6 +811,9 @@ public class ZWaveTransactionManager {
 
                     return response;
                 }
+
+                responseClass = payload.getCommandClassId();
+                responseCommand = payload.getCommandClassCommand();
 
                 // Wait for the transaction to complete
                 synchronized (this) {
@@ -798,11 +834,34 @@ public class ZWaveTransactionManager {
             }
 
             @Override
-            public void TransactionEvent(ZWaveTransaction transactionEvent) {
-                logger.debug("********* Transaction listener " + transactionEvent.getTransactionId() + " -- "
+            public void transactionPayload(ZWaveCommandClassPayload payload) {
+                logger.debug("********* Transaction payload listener " + payload.getCommandClassId() + ":"
+                        + payload.getCommandClassCommand());
+                System.out.println("********* Transaction payload listener " + payload.getCommandClassId() + ":"
+                        + payload.getCommandClassCommand());
+
+                if (payload.getCommandClassId() != responseClass
+                        || payload.getCommandClassCommand() != responseCommand) {
+                    return;
+                }
+
+                // Return the response
+                ZWaveTransactionResponse.State state = State.COMPLETE;
+                response = new ZWaveTransactionResponse(state);
+
+                System.out.println("-- To notify");
+                synchronized (this) {
+                    notify();
+                    System.out.println("-- Notified");
+                }
+            }
+
+            @Override
+            public void transactionEvent(ZWaveTransaction transactionEvent) {
+                logger.debug("********* Transaction event listener " + transactionEvent.getTransactionId() + " -- "
                         + transactionEvent.getTransactionId());
-                System.out.println("********* Transaction listener " + transactionEvent.getTransactionId() + " -- "
-                        + transactionEvent.getTransactionId());
+                System.out.println("********* Transaction event listener " + transactionEvent.getTransactionId()
+                        + " -- " + transactionEvent.getTransactionId());
 
                 // Check if this transaction is ours
                 if (transactionEvent.getTransactionId() != transactionId) {
@@ -828,6 +887,8 @@ public class ZWaveTransactionManager {
                         case WAIT_RESPONSE:
                             state = State.TIMEOUT_WAITING_FOR_RESPONSE;
                             break;
+                        default:
+                            break;
                     }
                 }
                 response = new ZWaveTransactionResponse(state);
@@ -844,7 +905,7 @@ public class ZWaveTransactionManager {
         return executor.submit(worker);
     }
 
-    public ZWaveTransactionResponse SendTransaction(ZWaveMessagePayloadTransaction commandClassPayload) {
+    public ZWaveTransactionResponse SendTransaction(ZWaveCommandClassTransactionPayload commandClassPayload) {
         Future<ZWaveTransactionResponse> futureResponse = SendTransactionAsync(commandClassPayload);
         try {
             ZWaveTransactionResponse response = futureResponse.get();
@@ -861,6 +922,8 @@ public class ZWaveTransactionManager {
     }
 
     interface TransactionListener {
-        void TransactionEvent(ZWaveTransaction transaction);
+        void transactionEvent(ZWaveTransaction transaction);
+
+        void transactionPayload(ZWaveCommandClassPayload payload);
     }
 }

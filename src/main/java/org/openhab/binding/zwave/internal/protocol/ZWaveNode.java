@@ -560,7 +560,7 @@ public class ZWaveNode {
      * @param commandClass The command class key
      */
     public void removeCommandClass(CommandClass commandClass) {
-        // endpoints.get(0).supportedCommandClasses.remove(commandClass);
+        endpoints.get(0).removeCommandClass(commandClass);
     }
 
     /**
@@ -581,36 +581,44 @@ public class ZWaveNode {
             return null;
         }
 
-        if (endpointId == 0) {
-            return getCommandClass(commandClass);
-        }
-
-        ZWaveMultiInstanceCommandClass multiInstanceCommandClass = (ZWaveMultiInstanceCommandClass) endpoints.get(0)
-                .getCommandClass(CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
-        if (multiInstanceCommandClass == null) {
+        if (endpoints.get(endpointId) == null) {
             return null;
         }
+        // TODO: Note that this doesn't support multi-instance - only multi-channel!
+        return endpoints.get(endpointId).getCommandClass(commandClass);
 
-        if (multiInstanceCommandClass.getVersion() == 2) {
-            ZWaveEndpoint endpoint = endpoints.get(endpointId);
-
-            if (endpoint != null) {
-                ZWaveCommandClass result = endpoint.getCommandClass(commandClass);
-                if (result != null) {
-                    return result;
-                }
-            }
-        } else if (multiInstanceCommandClass.getVersion() == 1) {
-            ZWaveCommandClass result = getCommandClass(commandClass);
-            if (result != null && endpointId <= result.getInstances()) {
-                return result;
-            }
-        } else {
-            logger.warn("NODE {}: Unsupported multi instance command version: {}.", nodeId,
-                    multiInstanceCommandClass.getVersion());
-        }
-
-        return null;
+        /*
+         * if (endpointId == 0) {
+         * return getCommandClass(commandClass);
+         * }
+         *
+         * ZWaveMultiInstanceCommandClass multiInstanceCommandClass = (ZWaveMultiInstanceCommandClass) endpoints.get(0)
+         * .getCommandClass(CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
+         * if (multiInstanceCommandClass == null) {
+         * return null;
+         * }
+         *
+         * if (multiInstanceCommandClass.getVersion() == 2) {
+         * ZWaveEndpoint endpoint = endpoints.get(endpointId);
+         *
+         * if (endpoint != null) {
+         * ZWaveCommandClass result = endpoint.getCommandClass(commandClass);
+         * if (result != null) {
+         * return result;
+         * }
+         * }
+         * } else if (multiInstanceCommandClass.getVersion() == 1) {
+         * ZWaveCommandClass result = getCommandClass(commandClass);
+         * if (result != null && endpointId <= result.getInstances()) {
+         * return result;
+         * }
+         * } else {
+         * logger.warn("NODE {}: Unsupported multi instance command version: {}.", nodeId,
+         * multiInstanceCommandClass.getVersion());
+         * }
+         *
+         * return null;
+         */
     }
 
     /**
@@ -1139,7 +1147,7 @@ public class ZWaveNode {
      * @param endpointId the instance / endpoint to encapsulate the message for
      * @return SerialMessage on success, null on failure.
      */
-    public void processCommand(ZWaveCommandClassPayload payload) {
+    public List<ZWaveCommandClassPayload> processCommand(ZWaveCommandClassPayload payload) {
         // We've just received a message from a node, therefore it's ALIVE!
         setNodeState(ZWaveNodeState.ALIVE);
 
@@ -1210,7 +1218,7 @@ public class ZWaveNode {
                         nodeId, zwaveCommandClass.getCommandClass().getKey(), zwaveCommandClass.getCommandClass());
                 // do not call zwaveCommandClass.handleApplicationCommandRequest();
 
-                return;
+                return Collections.emptyList();
             }
 
             logger.trace("NODE {}: Found Command Class {}, passing to handleApplicationCommandRequest", nodeId,
@@ -1222,5 +1230,8 @@ public class ZWaveNode {
                 e.printStackTrace();
             }
         }
+
+        // Return the list of commands we've processed
+        return commands;
     }
 }

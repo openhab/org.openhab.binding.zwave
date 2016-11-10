@@ -92,6 +92,17 @@ public class ZWaveEndpoint {
     }
 
     /**
+     * Removes a command class from the node.
+     * This is used to remove classes that a node may report it supports
+     * but it doesn't respond to.
+     *
+     * @param commandClass The command class key
+     */
+    public void removeCommandClass(CommandClass commandClass) {
+        supportedCommandClasses.remove(commandClass);
+    }
+
+    /**
      * Returns the device class for this endpoint.
      *
      * @return the deviceClass

@@ -26,7 +26,6 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveAssociation;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
-import org.openhab.binding.zwave.internal.protocol.ZWaveMessagePayloadTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse;
@@ -45,14 +44,6 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveVersionComm
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInitializationStateEvent;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.AssignReturnRouteMessageClass;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.AssignSucReturnRouteMessageClass;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.DeleteReturnRouteMessageClass;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.DeleteSucReturnRouteMessageClass;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.GetRoutingInfoMessageClass;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.IdentifyNodeMessageClass;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.IsFailedNodeMessageClass;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeInfoMessageClass;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -188,7 +179,7 @@ public class ZWaveNodeInitStageAdvancer {
         thread.start();
     }
 
-    private void processTransactions(ZWaveMessagePayloadTransaction payload) {
+    private void processTransactions(ZWaveCommandClassTransactionPayload payload) {
         if (payload == null) {
             return;
         }
@@ -256,13 +247,13 @@ public class ZWaveNodeInitStageAdvancer {
         logger.debug("NODE {}: Node advancer: Initialisation starting", node.getNodeId());
 
         // Get the device information from the controller
-        processTransactions(new IdentifyNodeMessageClass().doRequest(node.getNodeId()));
+        processTransactions(controller.requestNodeInfo(node.getNodeId()));
 
         setCurrentStage(ZWaveNodeInitStage.INIT_NEIGHBORS);
 
         logger.debug("NODE {}: Node advancer: INIT_NEIGHBORS - send RoutingInfo", node.getNodeId());
 
-        processTransactions(new GetRoutingInfoMessageClass().doRequest(node.getNodeId()));
+        // processTransactions(new GetRoutingInfoMessageClass().doRequest(node.getNodeId()));
 
         setCurrentStage(ZWaveNodeInitStage.FAILED_CHECK);
         // It seems that PC_CONTROLLERs don't respond to a lot of requests, so let's
@@ -275,7 +266,7 @@ public class ZWaveNodeInitStageAdvancer {
             return;
         }
 
-        processTransactions(new IsFailedNodeMessageClass().doRequest(node.getNodeId()));
+        // processTransactions(new IsFailedNodeMessageClass().doRequest(node.getNodeId()));
 
         setCurrentStage(ZWaveNodeInitStage.PING);
         ZWaveNoOperationCommandClass noOpCommandClass = (ZWaveNoOperationCommandClass) node
@@ -305,10 +296,10 @@ public class ZWaveNodeInitStageAdvancer {
 
     private void doStaticStages() {
         setCurrentStage(ZWaveNodeInitStage.IDENTIFY_NODE);
-        processTransactions(new IdentifyNodeMessageClass().doRequest(node.getNodeId()));
+        // processTransactions(new IdentifyNodeMessageClass().doRequest(node.getNodeId()));
 
         setCurrentStage(ZWaveNodeInitStage.DETAILS);
-        processTransactions(new RequestNodeInfoMessageClass().doRequest(node.getNodeId()));
+        // processTransactions(new RequestNodeInfoMessageClass().doRequest(node.getNodeId()));
 
         setCurrentStage(ZWaveNodeInitStage.MANUFACTURER);
         // Try and get the manufacturerSpecific command class.
@@ -424,7 +415,6 @@ public class ZWaveNodeInitStageAdvancer {
         if (thingType == null) {
             logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - thing is null!", node.getNodeId());
         } else {
-
             // We now should know all the command classes, so run through the database and set any options
             Map<String, String> properties = thingType.getProperties();
             for (Map.Entry<String, String> entry : properties.entrySet()) {
@@ -450,9 +440,6 @@ public class ZWaveNodeInitStageAdvancer {
 
                 if (optionMap.containsKey("ccRemove")) {
                     // If we want to remove the class, then remove it!
-
-                    // TODO: This will only remove the root nodes and ignores endpoint
-                    // TODO: Do we need to search into multi_instance?
                     node.removeCommandClass(CommandClass.getCommandClass(cmds[1]));
                     logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - removing {}", node.getNodeId(),
                             CommandClass.getCommandClass(optionMap.get("ccRemove")));
@@ -461,13 +448,15 @@ public class ZWaveNodeInitStageAdvancer {
 
                 // Get the command class
                 int endpoint = cmds.length == 2 ? 0 : Integer.parseInt(cmds[2]);
-                ZWaveCommandClass zwaveClass = node.resolveCommandClass(CommandClass.getCommandClass(cmds[1]),
-                        endpoint);
+                if (node.getEndpoint(endpoint) != null) {
+                    ZWaveCommandClass zwaveClass = node.getEndpoint(endpoint)
+                            .getCommandClass(CommandClass.getCommandClass(cmds[1]));
 
-                // If we found the command class, then set its options
-                if (zwaveClass != null) {
-                    zwaveClass.setOptions(optionMap);
-                    continue;
+                    // If we found the command class, then set its options
+                    if (zwaveClass != null) {
+                        zwaveClass.setOptions(optionMap);
+                        continue;
+                    }
                 }
 
                 // Command class isn't found! Do we want to add it?
@@ -634,7 +623,7 @@ public class ZWaveNodeInitStageAdvancer {
         if (node.getNodeId() != controller.getOwnNodeId() && controller.getSucId() != 0) {
             // Update the route to the controller
             logger.debug("NODE {}: Node advancer is deleting SUC return route.", node.getNodeId());
-            processTransactions(new DeleteSucReturnRouteMessageClass().doRequest(node.getNodeId()));
+            // processTransactions(new DeleteSucReturnRouteMessageClass().doRequest(node.getNodeId()));
         }
 
         setCurrentStage(ZWaveNodeInitStage.SUC_ROUTE);
@@ -642,7 +631,7 @@ public class ZWaveNodeInitStageAdvancer {
         if (node.getNodeId() != controller.getOwnNodeId() && controller.getSucId() != 0) {
             // Update the route to the controller
             logger.debug("NODE {}: Node advancer is setting SUC route.", node.getNodeId());
-            processTransactions(new AssignSucReturnRouteMessageClass().doRequest(node.getNodeId()));
+            // processTransactions(new AssignSucReturnRouteMessageClass().doRequest(node.getNodeId()));
         }
 
         setCurrentStage(ZWaveNodeInitStage.GET_CONFIGURATION);
@@ -706,12 +695,19 @@ public class ZWaveNodeInitStageAdvancer {
     void doDynamicStages() {
         setCurrentStage(ZWaveNodeInitStage.DYNAMIC_VALUES);
         // Update all dynamic information from command classes
-        for (ZWaveCommandClass zwaveDynamicClass : node.getCommandClasses(0)) {
-            logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - checking {}", node.getNodeId(),
-                    zwaveDynamicClass.getCommandClass());
-            if (zwaveDynamicClass instanceof ZWaveCommandClassDynamicState) {
-                logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - found    {}", node.getNodeId(),
-                        zwaveDynamicClass.getCommandClass());
+        for (int endpointId = 0; endpointId < node.getEndpointCount(); endpointId++) {
+            for (ZWaveCommandClass zwaveDynamicClass : node.getCommandClasses(endpointId)) {
+                if (endpointId == 0) {
+                    logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - checking {}", node.getNodeId(),
+                            zwaveDynamicClass.getCommandClass());
+                } else {
+                    logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - checking {} for endpoint {}",
+                            node.getNodeId(), zwaveDynamicClass.getCommandClass(), endpointId);
+                }
+                if (!(zwaveDynamicClass instanceof ZWaveCommandClassDynamicState)) {
+                    continue;
+                }
+
                 ZWaveCommandClassDynamicState zdds = (ZWaveCommandClassDynamicState) zwaveDynamicClass;
                 int instances = zwaveDynamicClass.getInstances();
                 logger.debug("NODE {}: Found {} instances of {}", node.getNodeId(), instances,
@@ -723,41 +719,61 @@ public class ZWaveNodeInitStageAdvancer {
                         processTransactions(zdds.getDynamicValues(true), zwaveDynamicClass, i);
                     }
                 }
-            } else if (zwaveDynamicClass instanceof ZWaveMultiInstanceCommandClass) {
-                for (int endpointNumber = 1; endpointNumber < node.getEndpointCount(); endpointNumber++) {
-                    ZWaveEndpoint endpoint = node.getEndpoint(endpointNumber);
-                    for (ZWaveCommandClass endpointCommandClass : endpoint.getCommandClasses()) {
-                        logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - checking {} for endpoint {}",
-                                node.getNodeId(), endpointCommandClass.getCommandClass(), endpoint.getEndpointId());
-                        if (endpointCommandClass instanceof ZWaveCommandClassDynamicState) {
-                            logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - found    {}", node.getNodeId(),
-                                    endpointCommandClass.getCommandClass());
-                            ZWaveCommandClassDynamicState zdds2 = (ZWaveCommandClassDynamicState) endpointCommandClass;
-                            processTransactions(zdds2.getDynamicValues(true), endpointCommandClass,
-                                    endpoint.getEndpointId());
-                        }
-                    }
-                }
             }
         }
-
+        /*
+         * for (ZWaveCommandClass zwaveDynamicClass : node.getCommandClasses(0)) {
+         * logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - checking {}", node.getNodeId(),
+         * zwaveDynamicClass.getCommandClass());
+         * if (zwaveDynamicClass instanceof ZWaveCommandClassDynamicState) {
+         * logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - found    {}", node.getNodeId(),
+         * zwaveDynamicClass.getCommandClass());
+         * ZWaveCommandClassDynamicState zdds = (ZWaveCommandClassDynamicState) zwaveDynamicClass;
+         * int instances = zwaveDynamicClass.getInstances();
+         * logger.debug("NODE {}: Found {} instances of {}", node.getNodeId(), instances,
+         * zwaveDynamicClass.getCommandClass());
+         * if (instances == 1) {
+         * processTransactions(zdds.getDynamicValues(true));
+         * } else {
+         * for (int i = 1; i <= instances; i++) {
+         * processTransactions(zdds.getDynamicValues(true), zwaveDynamicClass, i);
+         * }
+         * }
+         * } else if (zwaveDynamicClass instanceof ZWaveMultiInstanceCommandClass) {
+         * for (int endpointNumber = 1; endpointNumber < node.getEndpointCount(); endpointNumber++) {
+         * ZWaveEndpoint endpoint = node.getEndpoint(endpointNumber);
+         * for (ZWaveCommandClass endpointCommandClass : endpoint.getCommandClasses()) {
+         * logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - checking {} for endpoint {}",
+         * node.getNodeId(), endpointCommandClass.getCommandClass(), endpoint.getEndpointId());
+         * if (endpointCommandClass instanceof ZWaveCommandClassDynamicState) {
+         * logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - found    {}", node.getNodeId(),
+         * endpointCommandClass.getCommandClass());
+         * ZWaveCommandClassDynamicState zdds2 = (ZWaveCommandClassDynamicState) endpointCommandClass;
+         * processTransactions(zdds2.getDynamicValues(true), endpointCommandClass,
+         * endpoint.getEndpointId());
+         * }
+         * }
+         * }
+         * }
+         * }
+         */
         setCurrentStage(ZWaveNodeInitStage.DELETE_ROUTES);
         if (node.getRoutingList().size() != 0) {
             // Delete all the return routes for the node
             logger.debug("NODE {}: Node advancer is deleting return routes.", node.getNodeId());
-            processTransactions(new DeleteReturnRouteMessageClass().doRequest(node.getNodeId()));
+            // processTransactions(new DeleteReturnRouteMessageClass().doRequest(node.getNodeId()));
         }
 
         setCurrentStage(ZWaveNodeInitStage.RETURN_ROUTES);
         for (Integer route : node.getRoutingList()) {
             // Loop through all the nodes and set the return route
             logger.debug("NODE {}: Adding return route to {}", node.getNodeId(), route);
-            processTransactions(new AssignReturnRouteMessageClass().doRequest(node.getNodeId(), route));
+            // processTransactions(new AssignReturnRouteMessageClass().doRequest(node.getNodeId(), route));
         }
 
         setCurrentStage(ZWaveNodeInitStage.NEIGHBORS);
         logger.debug("NODE {}: Node advancer: NEIGHBORS - get RoutingInfo", node.getNodeId());
-        processTransactions(new GetRoutingInfoMessageClass().doRequest(node.getNodeId()));
+        // processTransactions(new GetRoutingInfoMessageClass().doRequest(node.getNodeId()));
 
         logger.debug("NODE {}: Node advancer: Initialisation complete!", node.getNodeId());
 

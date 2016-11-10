@@ -25,6 +25,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionState;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClassNetworkManagementProxy;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
@@ -53,7 +54,6 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.RemoveFailedNod
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RemoveNodeMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ReplaceFailedNodeMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNetworkUpdateMessageClass;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeInfoMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeNeighborUpdateMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.SendDataMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.SerialApiGetCapabilitiesMessageClass;
@@ -365,7 +365,7 @@ public class ZWaveController {
         ZWaveEvent zEvent = new ZWaveInitializationStateEvent(nodeId, ZWaveNodeInitStage.EMPTYNODE);
         notifyEventListeners(zEvent);
 
-        // if (nodeId != 2) {
+        // if (nodeId != 1) {
         // return;
         // }
 
@@ -458,6 +458,11 @@ public class ZWaveController {
                 node.setDeviceId(controller.getDeviceId());
                 node.setDeviceType(controller.getDeviceType());
                 node.setManufacturer(controller.getManufactureId());
+
+                // Add the network management command classes
+                // TODO: There's probably a better way to do this?!?
+                node.addCommandClass(ZWaveCommandClass
+                        .getInstance(CommandClass.COMMAND_CLASS_NETWORK_MANAGEMENT_PROXY.getKey(), node, controller));
             }
 
             // Place nodes in the local ZWave Controller
@@ -526,7 +531,7 @@ public class ZWaveController {
          */
     }
 
-    public ZWaveTransactionResponse SendTransaction(ZWaveMessagePayloadTransaction payload) {
+    public ZWaveTransactionResponse SendTransaction(ZWaveCommandClassTransactionPayload payload) {
         return transactionManager.SendTransaction(payload);
     }
 
@@ -731,10 +736,14 @@ public class ZWaveController {
      *
      * @param nodeId
      *            the nodeId of the node to identify
+     * @return the {@link ZWaveCommandClassTransactionPayload} to send
      *
      */
-    public void requestNodeInfo(int nodeId) {
-        enqueue(new RequestNodeInfoMessageClass().doRequest(nodeId));
+    public ZWaveCommandClassTransactionPayload requestNodeInfo(int nodeId) {
+        ZWaveCommandClassNetworkManagementProxy proxy = (ZWaveCommandClassNetworkManagementProxy) getNode(ownNodeId)
+                .getCommandClass(CommandClass.COMMAND_CLASS_NETWORK_MANAGEMENT_PROXY);
+
+        return proxy.getNodeInfoCachedGet(1, 0, nodeId);
     }
 
     /**
@@ -745,7 +754,7 @@ public class ZWaveController {
      *
      */
     public void requestNodeRoutingInfo(int nodeId) {
-        this.enqueue(new GetRoutingInfoMessageClass().doRequest(nodeId));
+        enqueue(new GetRoutingInfoMessageClass().doRequest(nodeId));
     }
 
     /**
