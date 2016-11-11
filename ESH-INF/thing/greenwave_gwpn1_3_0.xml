@@ -47,7 +47,7 @@ Single-socket PowerNode<br /><h1>Overview</h1><p>This Configuration is for the 1
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">GreenWave</property>
+      <property name="vendor">GreenWave Reality Inc.</property>
       <property name="modelId">GWPN1</property>
       <property name="manufacturerId">0099</property>
       <property name="manufacturerRef">0002:0002</property>

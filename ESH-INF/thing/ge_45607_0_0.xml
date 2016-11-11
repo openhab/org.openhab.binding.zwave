@@ -22,7 +22,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">GE</property>
+      <property name="vendor">Jasco Products</property>
       <property name="modelId">45607</property>
       <property name="manufacturerId">0063</property>
       <property name="manufacturerRef">4457:3033</property>

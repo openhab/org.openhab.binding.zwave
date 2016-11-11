@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="qubino_zmnhod_00_000" listed="false">
-    <label>ZMNHOD Flush Shutter</label>
-    <description>Flush Shutter</description>
+    <label>ZMNHOD Flush Shutter DC</label>
+    <description>Flush Shutter DC</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -85,7 +85,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Qubino</property>
+      <property name="vendor">Goap</property>
       <property name="modelId">ZMNHOD</property>
       <property name="manufacturerId">0159</property>
       <property name="manufacturerRef">0003:0053</property>

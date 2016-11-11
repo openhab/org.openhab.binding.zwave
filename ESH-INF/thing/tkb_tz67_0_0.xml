@@ -22,7 +22,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Wenzhou TKB Control System</property>
+      <property name="vendor">TKB Home</property>
       <property name="modelId">TZ67</property>
       <property name="manufacturerId">0118</property>
       <property name="manufacturerRef">0003:0008,0202:0611</property>

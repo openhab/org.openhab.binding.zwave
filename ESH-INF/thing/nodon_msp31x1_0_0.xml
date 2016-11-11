@@ -45,7 +45,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Nodon</property>
+      <property name="vendor">ID-RF</property>
       <property name="modelId">MSP-3-1-X1</property>
       <property name="manufacturerId">0165</property>
       <property name="manufacturerRef">0001:0003</property>

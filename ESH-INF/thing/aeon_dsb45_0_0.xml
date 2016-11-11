@@ -34,7 +34,7 @@ Water Sensor<br /><h2>Wakeup Information</h2><p>To wake up the sensor, <em>don't
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Aeon Labs</property>
+      <property name="vendor">AEON Labs</property>
       <property name="modelId">DSB45</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0002:002D</property>

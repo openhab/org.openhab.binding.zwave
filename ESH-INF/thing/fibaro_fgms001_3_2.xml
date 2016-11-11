@@ -56,7 +56,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Fibaro System</property>
+      <property name="vendor">Fibargroup</property>
       <property name="modelId">FGMS001</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0801:1001,0801:2001,0801:3001,8800:3001</property>
@@ -83,15 +83,13 @@ The lower the value, the more sensitive the PIR sensor.<br /><h1>Overview</h1><p
         <default>15</default>
       </parameter>
 
-      <parameter name="config_2_1" type="integer" groupName="configuration">
+      <parameter name="config_2_1" type="integer" groupName="configuration"
+                 min="0" max="15">
         <label>2: Motion detection - blind time</label>
         <description><![CDATA[
 Period of time through which the PIR sensor is “blind”.<br /><h1>Overview</h1><p>Period of time through which the PIR sensor is “blind” (insensitive) to motion. After this time period the PIR sensor will be again able to detect motion. The longer the insensitivity period, the longer the battery life. If the sensor is required to detect motion quickly, the time period may be shortened. The time of insensitivity should be shorter that the time period set in parameter 6.<br />Available settings: 0 - 15<br />Formula to calculate the time: time [s] = 0.5 x (value + 1)<br />Default setting: 3 (1.5 seconds)<br />Parameter size: 1 [byte]</p>
         ]]></description>
         <default>3</default>
-        <options>
-          <option value="0">DELETE_ME</option>
-        </options>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">

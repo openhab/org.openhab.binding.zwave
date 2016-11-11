@@ -51,7 +51,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">WiDOM</property>
+      <property name="vendor">wiDom</property>
       <property name="modelId">WDS</property>
       <property name="manufacturerId">0149</property>
       <property name="manufacturerRef">1214:0504</property>

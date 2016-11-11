@@ -52,7 +52,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Qubino</property>
+      <property name="vendor">Goap</property>
       <property name="modelId">ZMNHJA</property>
       <property name="manufacturerId">0159</property>
       <property name="manufacturerRef">0004:0001</property>

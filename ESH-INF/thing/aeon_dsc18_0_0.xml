@@ -51,7 +51,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Aeon Labs</property>
+      <property name="vendor">AEON Labs</property>
       <property name="modelId">DSC18</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:0012</property>

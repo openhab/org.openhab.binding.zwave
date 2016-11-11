@@ -21,7 +21,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">WiDOM</property>
+      <property name="vendor">wiDom</property>
       <property name="modelId">WiDom Universal Relay Switch</property>
       <property name="manufacturerId">0149</property>
       <property name="manufacturerRef">0012:0104</property>

@@ -53,7 +53,7 @@ Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltag
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Shenzhen Neo Electronics</property>
+      <property name="vendor">Shenzhen Neo Electronics Co., Ltd</property>
       <property name="modelId">Power Plug</property>
       <property name="manufacturerId">0258</property>
       <property name="manufacturerRef">0003:1087</property>

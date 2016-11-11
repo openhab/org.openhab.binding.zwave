@@ -169,7 +169,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Radio Thermostat Company of America</property>
+      <property name="vendor">Radio Thermostat Company of America (RTC)</property>
       <property name="modelId">CT32</property>
       <property name="manufacturerId">0098</property>
       <property name="manufacturerRef">2002:0100</property>

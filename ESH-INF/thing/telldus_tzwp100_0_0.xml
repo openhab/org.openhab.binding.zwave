@@ -21,7 +21,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Telldus</property>
+      <property name="vendor">Telldus Technologies AB</property>
       <property name="modelId">TZWP-100</property>
       <property name="manufacturerId">0176</property>
       <property name="manufacturerRef">0003:0001</property>

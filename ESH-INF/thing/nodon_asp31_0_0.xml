@@ -35,7 +35,7 @@ Smart Plug<br /><h1>Overview</h1><h1>"Learning Mode"</h1> <p>Press on the Smart 
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Nodon</property>
+      <property name="vendor">ID-RF</property>
       <property name="modelId">ASP-3-1</property>
       <property name="manufacturerId">0165</property>
       <property name="manufacturerRef">0001:0001</property>
