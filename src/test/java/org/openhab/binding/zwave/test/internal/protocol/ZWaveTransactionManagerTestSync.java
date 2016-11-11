@@ -51,7 +51,7 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
             @Override
             public void run() {
                 // Send the transaction and wait for the response
-                setResponse1(manager.SendTransaction(payload));
+                setResponse1(manager.sendTransaction(payload));
                 System.out.println("Done....................................");
             }
         };
@@ -137,7 +137,7 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
             @Override
             public void run() {
                 // Send the transaction and wait for the response
-                setResponse1(manager.SendTransaction(payload));
+                setResponse1(manager.sendTransaction(payload));
                 System.out.println("Thread 1 Done....................................");
             }
         };
@@ -204,7 +204,7 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
             @Override
             public void run() {
                 // Send the transaction and wait for the response
-                setResponse1(manager.SendTransaction(new RequestNodeInfoMessageClass().doRequest(2)));
+                setResponse1(manager.sendTransaction(new RequestNodeInfoMessageClass().doRequest(2)));
                 System.out.println("Done 1....................................");
             }
         };
@@ -214,7 +214,7 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
             @Override
             public void run() {
                 // Send the transaction and wait for the response
-                setResponse2(manager.SendTransaction(new RequestNodeInfoMessageClass().doRequest(13)));
+                setResponse2(manager.sendTransaction(new RequestNodeInfoMessageClass().doRequest(13)));
                 System.out.println("Done 2....................................");
             }
         };

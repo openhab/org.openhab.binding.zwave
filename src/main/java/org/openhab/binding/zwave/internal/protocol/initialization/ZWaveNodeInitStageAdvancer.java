@@ -26,6 +26,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveAssociation;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
+import org.openhab.binding.zwave.internal.protocol.ZWaveMessagePayloadTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse;
@@ -44,6 +45,13 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveVersionComm
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInitializationStateEvent;
+import org.openhab.binding.zwave.internal.protocol.serialmessage.AssignReturnRouteMessageClass;
+import org.openhab.binding.zwave.internal.protocol.serialmessage.AssignSucReturnRouteMessageClass;
+import org.openhab.binding.zwave.internal.protocol.serialmessage.DeleteSucReturnRouteMessageClass;
+import org.openhab.binding.zwave.internal.protocol.serialmessage.GetRoutingInfoMessageClass;
+import org.openhab.binding.zwave.internal.protocol.serialmessage.IdentifyNodeMessageClass;
+import org.openhab.binding.zwave.internal.protocol.serialmessage.IsFailedNodeMessageClass;
+import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeInfoMessageClass;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -179,8 +187,8 @@ public class ZWaveNodeInitStageAdvancer {
         thread.start();
     }
 
-    private void processTransactions(ZWaveCommandClassTransactionPayload payload) {
-        if (payload == null) {
+    private void processTransactions(ZWaveMessagePayloadTransaction transaction) {
+        if (transaction == null) {
             return;
         }
 
@@ -188,7 +196,8 @@ public class ZWaveNodeInitStageAdvancer {
         int backoff = 50;
         ZWaveTransactionResponse response;
         do {
-            response = controller.SendTransaction(payload);
+            response = controller.SendTransaction(transaction);
+            logger.debug("NODE {}: Node Init response {}", node.getNodeId(), response.getState());
 
             // Increase the backoff up to 1800 seconds (approx!)
             if (backoff < 900000) {
@@ -247,17 +256,16 @@ public class ZWaveNodeInitStageAdvancer {
         logger.debug("NODE {}: Node advancer: Initialisation starting", node.getNodeId());
 
         // Get the device information from the controller
-        processTransactions(controller.requestNodeInfo(node.getNodeId()));
+        processTransactions(new IdentifyNodeMessageClass().doRequest(node.getNodeId()));
 
         setCurrentStage(ZWaveNodeInitStage.INIT_NEIGHBORS);
 
         logger.debug("NODE {}: Node advancer: INIT_NEIGHBORS - send RoutingInfo", node.getNodeId());
 
-        // processTransactions(new GetRoutingInfoMessageClass().doRequest(node.getNodeId()));
+        processTransactions(new GetRoutingInfoMessageClass().doRequest(node.getNodeId()));
 
         setCurrentStage(ZWaveNodeInitStage.FAILED_CHECK);
-        // It seems that PC_CONTROLLERs don't respond to a lot of requests, so let's
-        // just assume their OK!
+        // Controllers aren't designed to allow communication with their node.
         // If this is a controller, we're done
         if (node.getDeviceClass().getSpecificDeviceClass() == Specific.PC_CONTROLLER) {
             logger.debug("NODE {}: Node advancer: FAILED_CHECK - Controller - terminating initialisation",
@@ -266,7 +274,7 @@ public class ZWaveNodeInitStageAdvancer {
             return;
         }
 
-        // processTransactions(new IsFailedNodeMessageClass().doRequest(node.getNodeId()));
+        processTransactions(new IsFailedNodeMessageClass().doRequest(node.getNodeId()));
 
         setCurrentStage(ZWaveNodeInitStage.PING);
         ZWaveNoOperationCommandClass noOpCommandClass = (ZWaveNoOperationCommandClass) node
@@ -296,10 +304,10 @@ public class ZWaveNodeInitStageAdvancer {
 
     private void doStaticStages() {
         setCurrentStage(ZWaveNodeInitStage.IDENTIFY_NODE);
-        // processTransactions(new IdentifyNodeMessageClass().doRequest(node.getNodeId()));
+        processTransactions(new IdentifyNodeMessageClass().doRequest(node.getNodeId()));
 
         setCurrentStage(ZWaveNodeInitStage.DETAILS);
-        // processTransactions(new RequestNodeInfoMessageClass().doRequest(node.getNodeId()));
+        processTransactions(new RequestNodeInfoMessageClass().doRequest(node.getNodeId()));
 
         setCurrentStage(ZWaveNodeInitStage.MANUFACTURER);
         // Try and get the manufacturerSpecific command class.
@@ -623,7 +631,7 @@ public class ZWaveNodeInitStageAdvancer {
         if (node.getNodeId() != controller.getOwnNodeId() && controller.getSucId() != 0) {
             // Update the route to the controller
             logger.debug("NODE {}: Node advancer is deleting SUC return route.", node.getNodeId());
-            // processTransactions(new DeleteSucReturnRouteMessageClass().doRequest(node.getNodeId()));
+            processTransactions(new DeleteSucReturnRouteMessageClass().doRequest(node.getNodeId()));
         }
 
         setCurrentStage(ZWaveNodeInitStage.SUC_ROUTE);
@@ -631,7 +639,7 @@ public class ZWaveNodeInitStageAdvancer {
         if (node.getNodeId() != controller.getOwnNodeId() && controller.getSucId() != 0) {
             // Update the route to the controller
             logger.debug("NODE {}: Node advancer is setting SUC route.", node.getNodeId());
-            // processTransactions(new AssignSucReturnRouteMessageClass().doRequest(node.getNodeId()));
+            processTransactions(new AssignSucReturnRouteMessageClass().doRequest(node.getNodeId()));
         }
 
         setCurrentStage(ZWaveNodeInitStage.GET_CONFIGURATION);
@@ -768,12 +776,12 @@ public class ZWaveNodeInitStageAdvancer {
         for (Integer route : node.getRoutingList()) {
             // Loop through all the nodes and set the return route
             logger.debug("NODE {}: Adding return route to {}", node.getNodeId(), route);
-            // processTransactions(new AssignReturnRouteMessageClass().doRequest(node.getNodeId(), route));
+            processTransactions(new AssignReturnRouteMessageClass().doRequest(node.getNodeId(), route));
         }
 
         setCurrentStage(ZWaveNodeInitStage.NEIGHBORS);
         logger.debug("NODE {}: Node advancer: NEIGHBORS - get RoutingInfo", node.getNodeId());
-        // processTransactions(new GetRoutingInfoMessageClass().doRequest(node.getNodeId()));
+        processTransactions(new GetRoutingInfoMessageClass().doRequest(node.getNodeId()));
 
         logger.debug("NODE {}: Node advancer: Initialisation complete!", node.getNodeId());
 

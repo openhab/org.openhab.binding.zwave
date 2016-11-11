@@ -25,7 +25,6 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionState;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClassNetworkManagementProxy;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
@@ -365,7 +364,7 @@ public class ZWaveController {
         ZWaveEvent zEvent = new ZWaveInitializationStateEvent(nodeId, ZWaveNodeInitStage.EMPTYNODE);
         notifyEventListeners(zEvent);
 
-        // if (nodeId != 1) {
+        // if (nodeId != 2) {
         // return;
         // }
 
@@ -531,8 +530,8 @@ public class ZWaveController {
          */
     }
 
-    public ZWaveTransactionResponse SendTransaction(ZWaveCommandClassTransactionPayload payload) {
-        return transactionManager.SendTransaction(payload);
+    public ZWaveTransactionResponse SendTransaction(ZWaveMessagePayloadTransaction transaction) {
+        return transactionManager.sendTransaction(transaction);
     }
 
     /**
@@ -540,7 +539,7 @@ public class ZWaveController {
      */
     public int getSendQueueLength() {
         // TODO: Point to the transaction manager if this is required?
-        return 0;// this.sendQueue.size();
+        return transactionManager.getSendQueueLength();
     }
 
     /**
@@ -739,12 +738,12 @@ public class ZWaveController {
      * @return the {@link ZWaveCommandClassTransactionPayload} to send
      *
      */
-    public ZWaveCommandClassTransactionPayload requestNodeInfo(int nodeId) {
-        ZWaveCommandClassNetworkManagementProxy proxy = (ZWaveCommandClassNetworkManagementProxy) getNode(ownNodeId)
-                .getCommandClass(CommandClass.COMMAND_CLASS_NETWORK_MANAGEMENT_PROXY);
+    // public ZWaveCommandClassTransactionPayload requestNodeInfo(int nodeId) {
+    // ZWaveCommandClassNetworkManagementProxy proxy = (ZWaveCommandClassNetworkManagementProxy) getNode(ownNodeId)
+    // .getCommandClass(CommandClass.COMMAND_CLASS_NETWORK_MANAGEMENT_PROXY);
 
-        return proxy.getNodeInfoCachedGet(1, 0, nodeId);
-    }
+    // return proxy.getNodeInfoCachedGet(1, 0, nodeId);
+    // }
 
     /**
      * Request the node routing information.

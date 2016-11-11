@@ -501,7 +501,7 @@ public abstract class ZWaveCommandClass {
         COMMAND_CLASS_ZIP_6LOWPAN(0x4F, null),
         COMMAND_CLASS_BASIC_WINDOW_COVERING(0x50, ZWaveBasicWindowCoveringCommandClass.class),
         COMMAND_CLASS_MTP_WINDOW_COVERING(0x51, ZWaveMtpWindowCoveringCommandClass.class),
-        COMMAND_CLASS_NETWORK_MANAGEMENT_PROXY(0x52, ZWaveCommandClassNetworkManagementProxy.class),
+        COMMAND_CLASS_NETWORK_MANAGEMENT_PROXY(0x52, null),
         COMMAND_CLASS_SCHEDULE(0x53, ZWaveScheduleCommandClass.class),
         COMMAND_CLASS_NETWORK_MANAGEMENT_PRIMARY(0x54, null),
         COMMAND_CLASS_TRANSPORT_SERVICE(0x55, null),

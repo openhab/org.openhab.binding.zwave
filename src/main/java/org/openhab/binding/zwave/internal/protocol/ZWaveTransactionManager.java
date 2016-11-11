@@ -183,6 +183,7 @@ public class ZWaveTransactionManager {
     }
 
     private void notifyTransactionResponse(final ZWaveCommandClassPayload payload) {
+        logger.debug("notifyTransactionResponse {}", payload.toString());
         new Thread() {
             @Override
             public void run() {
@@ -197,6 +198,7 @@ public class ZWaveTransactionManager {
     }
 
     private void notifyTransactionComplete(final ZWaveTransaction transaction) {
+        logger.debug("notifyTransactionResponse {}", transaction.getTransactionId());
         new Thread() {
             @Override
             public void run() {
@@ -395,11 +397,6 @@ public class ZWaveTransactionManager {
                 break;
         }
 
-        if (incomingMessage.getMessageClass() == SerialMessageClass.SendData
-                && incomingMessage.getMessageType() == SerialMessageType.Request) {
-            System.out.println("Message is SendData");
-        }
-
         synchronized (transactionSync) {
             logger.debug("Checking outstanding transactions: " + outstandingTransactions.size());
             logger.debug("Last transaction: " + lastTransaction);
@@ -447,6 +444,13 @@ public class ZWaveTransactionManager {
             }
         }
 
+        // Handle transaction processing
+        if (currentTransaction == null) {
+            System.out.println("Not correlated with transaction");
+            logger.debug("****************** Transaction not correlated");
+            return;
+        }
+
         // Manage incoming command class messages separately so we can manage transaction responses
         if (incomingMessage.getMessageClass() == SerialMessageClass.ApplicationCommandHandler) {
             try {
@@ -469,13 +473,6 @@ public class ZWaveTransactionManager {
             }
         } else {
             controller.handleIncomingMessage(currentTransaction, incomingMessage);
-        }
-
-        // Handle transaction processing
-        if (currentTransaction == null) {
-            System.out.println("Not correlated with transaction");
-            logger.debug("****************** Transaction not correlated");
-            return;
         }
 
         // Handle the transaction state machine
@@ -790,7 +787,7 @@ public class ZWaveTransactionManager {
         }
     }
 
-    public Future<ZWaveTransactionResponse> SendTransactionAsync(final ZWaveCommandClassTransactionPayload payload) {
+    public Future<ZWaveTransactionResponse> sendTransactionAsync(final ZWaveMessagePayloadTransaction transaction) {
         class TransactionWaiter implements Callable<ZWaveTransactionResponse>, TransactionListener {
             ZWaveTransactionResponse response = null;
             long transactionId;
@@ -803,7 +800,7 @@ public class ZWaveTransactionManager {
                 AddTransactionListener(this);
 
                 // Send the transaction
-                transactionId = queueTransactionForSend(payload);
+                transactionId = queueTransactionForSend(transaction);
                 if (transactionId == 0) {
                     // The transaction failed!
                     // Remove the listener
@@ -812,8 +809,13 @@ public class ZWaveTransactionManager {
                     return response;
                 }
 
-                responseClass = payload.getCommandClassId();
-                responseCommand = payload.getCommandClassCommand();
+                if (transaction instanceof ZWaveCommandClassTransactionPayload) {
+                    ZWaveCommandClassTransactionPayload commandClassTransaction = (ZWaveCommandClassTransactionPayload) transaction;
+                    responseClass = commandClassTransaction.getCommandClassId();
+                    responseCommand = commandClassTransaction.getCommandClassCommand();
+                } else {
+                    responseClass = Integer.MAX_VALUE;
+                }
 
                 // Wait for the transaction to complete
                 synchronized (this) {
@@ -858,15 +860,16 @@ public class ZWaveTransactionManager {
 
             @Override
             public void transactionEvent(ZWaveTransaction transactionEvent) {
-                logger.debug("********* Transaction event listener " + transactionEvent.getTransactionId() + " -- "
+                logger.debug("********* Transaction event listener " + transactionId + " -- "
                         + transactionEvent.getTransactionId());
-                System.out.println("********* Transaction event listener " + transactionEvent.getTransactionId()
-                        + " -- " + transactionEvent.getTransactionId());
+                System.out.println("********* Transaction event listener " + transactionId + " -- "
+                        + transactionEvent.getTransactionId());
 
                 // Check if this transaction is ours
                 if (transactionEvent.getTransactionId() != transactionId) {
                     return;
                 }
+                logger.debug("********* Transaction event listener " + transactionId + " -- DONE", transactionId);
 
                 // Return the response
                 ZWaveTransactionResponse.State state = State.COMPLETE;
@@ -905,16 +908,14 @@ public class ZWaveTransactionManager {
         return executor.submit(worker);
     }
 
-    public ZWaveTransactionResponse SendTransaction(ZWaveCommandClassTransactionPayload commandClassPayload) {
-        Future<ZWaveTransactionResponse> futureResponse = SendTransactionAsync(commandClassPayload);
+    public ZWaveTransactionResponse sendTransaction(ZWaveMessagePayloadTransaction transaction) {
+        Future<ZWaveTransactionResponse> futureResponse = sendTransactionAsync(transaction);
         try {
             ZWaveTransactionResponse response = futureResponse.get();
             return response;
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (ExecutionException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
