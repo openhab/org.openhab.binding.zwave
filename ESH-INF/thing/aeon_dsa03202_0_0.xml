@@ -21,7 +21,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Aeon Labs</property>
+      <property name="vendor">AEON Labs</property>
       <property name="modelId">DSA03202</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0001:0003,0006:0002</property>

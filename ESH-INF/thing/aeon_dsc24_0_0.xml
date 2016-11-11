@@ -51,7 +51,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Aeon Labs</property>
+      <property name="vendor">AEON Labs</property>
       <property name="modelId">DSC24</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:0018,0103:004B</property>

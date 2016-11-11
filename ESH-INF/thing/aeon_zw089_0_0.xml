@@ -40,7 +40,7 @@ Recessed Door Sensor Gen5<br /><h1>Overview</h1><p>Aeon Labs Recessed Door Senso
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Aeon Labs</property>
+      <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW089</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0002:0059,0102:0059,0202:0059</property>

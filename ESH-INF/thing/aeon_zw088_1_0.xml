@@ -28,7 +28,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Aeon Labs</property>
+      <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW088</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0001:0058,0101:0058,0201:0058</property>

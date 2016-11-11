@@ -63,7 +63,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Fibaro System</property>
+      <property name="vendor">Fibargroup</property>
       <property name="modelId">FGWP101</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0600:1000</property>

@@ -33,7 +33,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">MCO Home</property>
+      <property name="vendor">McoHome Technology Co., Ltd</property>
       <property name="modelId">MH-S412</property>
       <property name="manufacturerId">015F</property>
       <property name="manufacturerRef">4102:0202</property>

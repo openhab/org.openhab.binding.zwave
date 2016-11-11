@@ -24,22 +24,22 @@ LED Bulb<br /><h2>Inclusion Information</h2><p>Non-secure inclusion:<br />1. Pow
         <label>Color Control</label>
         <properties>
           <property name="binding:*:HSBType">COLOR;colorMode=RGB</property>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC;</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL;</property>
         </properties>
       </channel>
       <channel id="color_temperature" typeId="color_temperature">
         <label>Color Temperature</label>
         <properties>
-          <property name="binding:*:PercentType">COLOR;colorMode=DIFF_WHITE</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">COLOR;;colorMode=DIFF_WHITE</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL;</property>
         </properties>
       </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Aeon Labs</property>
+      <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW098</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:0062,0103:0062,0203:0062</property>

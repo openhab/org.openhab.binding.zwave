@@ -51,7 +51,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Thermo-Floor</property>
+      <property name="vendor">ThermoFloor</property>
       <property name="modelId">TF016</property>
       <property name="manufacturerId">019B</property>
       <property name="manufacturerRef">0001:0001</property>

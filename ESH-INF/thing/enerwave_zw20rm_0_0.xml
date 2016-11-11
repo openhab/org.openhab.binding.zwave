@@ -40,7 +40,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Enerwave</property>
+      <property name="vendor">Wenzhou MTLC Electric Appliances Co.,Ltd.</property>
       <property name="modelId">ZW20RM</property>
       <property name="manufacturerId">011A</property>
       <property name="manufacturerRef">0111:0101</property>

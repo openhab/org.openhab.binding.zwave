@@ -5,8 +5,8 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="innovus_00110001_00_000" listed="false">
-    <label>00110001 RAone SmartDimmer</label>
+  <thing-type id="innovus_00110001_01_000" listed="false">
+    <label>SmartDimmer RAone SmartDimmer</label>
     <description>RAone SmartDimmer</description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -41,9 +41,10 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">INNOVUS</property>
-      <property name="modelId">00110001</property>
+      <property name="modelId">SmartDimmer</property>
       <property name="manufacturerId">0077</property>
       <property name="manufacturerRef">0011:0001</property>
+      <property name="versionMin">1.0</property>
       <property name="dbReference">62</property>
       <property name="defaultAssociations">1</property>
     </properties>

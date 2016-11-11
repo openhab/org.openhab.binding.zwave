@@ -43,6 +43,7 @@
       <property name="manufacturerId">008A</property>
       <property name="manufacturerRef">0007:0101</property>
       <property name="dbReference">444</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

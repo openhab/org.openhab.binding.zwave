@@ -24,7 +24,7 @@ HomePro ZDP200 Wall Dimmer<br /><h2>Inclusion Information</h2><p>Use the button 
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">ACT</property>
+      <property name="vendor">ACT - Advanced Control Technologies</property>
       <property name="modelId">ZDP200</property>
       <property name="manufacturerId">0001</property>
       <property name="manufacturerRef">4450:3030</property>

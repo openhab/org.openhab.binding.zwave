@@ -63,7 +63,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Residential Control Systems</property>
+      <property name="vendor">Residential Control Systems, Inc. (RCS)</property>
       <property name="modelId">TZ43</property>
       <property name="manufacturerId">0010</property>
       <property name="manufacturerRef">0001:0002</property>

@@ -28,7 +28,7 @@ Z-Wave Battery Wall Controller<br /><h1>Overview</h1><p>Note that this device in
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Sigma Designs</property>
+      <property name="vendor">Sigma Designs (Former Zensys)</property>
       <property name="modelId">K8</property>
       <property name="manufacturerId">0000</property>
       <property name="manufacturerRef">0003:0003</property>

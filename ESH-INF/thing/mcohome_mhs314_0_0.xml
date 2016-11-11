@@ -47,7 +47,7 @@ Four Way Switch<br /><h1>Overview</h1><p>Touch Panel Switch is a wall switch wit
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">MCO Home</property>
+      <property name="vendor">McoHome Technology Co., Ltd</property>
       <property name="modelId">MH-S314</property>
       <property name="manufacturerId">015F</property>
       <property name="manufacturerRef">3102:0204</property>

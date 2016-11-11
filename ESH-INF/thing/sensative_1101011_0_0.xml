@@ -32,7 +32,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Sensative</property>
+      <property name="vendor">Sensative AB</property>
       <property name="modelId">11-01-011</property>
       <property name="manufacturerId">019A</property>
       <property name="manufacturerRef">0003:0003</property>
