@@ -33,7 +33,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">POPP</property>
+      <property name="vendor">Popp & Co</property>
       <property name="modelId">05438</property>
       <property name="manufacturerId">0154</property>
       <property name="manufacturerRef">0003:0001</property>
@@ -150,4 +150,5 @@ Max load 3500 W.<br /><h1>Overview</h1><ul><li>0 -&gt; Disabled</li> <li>1 - 350
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

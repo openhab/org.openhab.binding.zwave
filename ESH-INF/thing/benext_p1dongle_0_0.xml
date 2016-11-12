@@ -66,5 +66,26 @@ P1-dongle<br /><h1>Overview</h1><p>The P1-dongle sends smart meter data wireless
       <property name="dbReference">340</property>
     </properties>
 
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_4_2" type="integer" groupName="configuration"
+                 min="0" max="40000">
+        <label>4: Baud Rate</label>
+        <description><![CDATA[
+Baud rate: the rate the device sends data between the smart meter and z-wave<br /><h1>Overview</h1><p>Set BAUD rate value * 100.</p>
+        ]]></description>
+        <default>1152</default>
+      </parameter>
+
+    </config-description>
+
   </thing-type>
+
 </thing:thing-descriptions>

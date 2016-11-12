@@ -32,7 +32,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Chromagic Technologies</property>
+      <property name="vendor">Chromagic Technologies Corporation</property>
       <property name="modelId">SM103</property>
       <property name="manufacturerId">0116</property>
       <property name="manufacturerRef">0001:0001</property>
@@ -82,4 +82,5 @@
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

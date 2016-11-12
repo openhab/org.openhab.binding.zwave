@@ -39,7 +39,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Aeon Labs</property>
+      <property name="vendor">AEON Labs</property>
       <property name="modelId">DSC06</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:0006</property>
@@ -210,4 +210,5 @@ Minimum change in wattage % to trigger event<br /><h1>Overview</h1><p>The value 
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

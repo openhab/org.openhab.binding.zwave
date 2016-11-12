@@ -26,7 +26,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Nexia</property>
+      <property name="vendor">Nexia Home Intelligence</property>
       <property name="modelId">DB100Z</property>
       <property name="manufacturerId">0178</property>
       <property name="manufacturerRef">4442:3130</property>
@@ -67,4 +67,5 @@
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

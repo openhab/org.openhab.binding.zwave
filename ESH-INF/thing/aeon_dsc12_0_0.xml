@@ -39,7 +39,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Aeon Labs</property>
+      <property name="vendor">AEON Labs</property>
       <property name="modelId">DSC12</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:000C</property>
@@ -167,4 +167,5 @@
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

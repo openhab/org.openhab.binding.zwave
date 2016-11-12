@@ -5,7 +5,7 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="popp_pope005206_00_000" listed="false">
+  <thing-type id="bonig_pope005206_00_000" listed="false">
     <label>POPE005206 Z Weather</label>
     <description>Z Weather</description>
 
@@ -74,7 +74,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">POPP_NEW</property>
+      <property name="vendor">Bönig und Kallenbach oHG</property>
       <property name="modelId">POPE005206</property>
       <property name="manufacturerId">0169</property>
       <property name="manufacturerRef">0001:0001</property>
@@ -133,4 +133,5 @@
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

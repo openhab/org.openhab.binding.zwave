@@ -32,7 +32,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Telldus</property>
+      <property name="vendor">Telldus Technologies AB</property>
       <property name="modelId">TZDW-100</property>
       <property name="manufacturerId">0176</property>
       <property name="manufacturerRef">0005:0001</property>
@@ -161,4 +161,5 @@
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

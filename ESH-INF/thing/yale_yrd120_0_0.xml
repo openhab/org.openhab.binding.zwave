@@ -34,7 +34,7 @@ Touchscreen deadbolt without key<br /><h2>Inclusion Information</h2><p>The lock 
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Yale Locks</property>
+      <property name="vendor">ASSA ABLOY</property>
       <property name="modelId">YRD120</property>
       <property name="manufacturerId">0129</property>
       <property name="manufacturerRef">0002:0800</property>
@@ -127,4 +127,5 @@ Alarm reports are sent out to all devices in the association group<br /><h1>Over
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

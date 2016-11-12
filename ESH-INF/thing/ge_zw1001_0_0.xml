@@ -21,7 +21,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">GE</property>
+      <property name="vendor">Jasco Products</property>
       <property name="modelId">ZW1001</property>
       <property name="manufacturerId">0063</property>
       <property name="manufacturerRef">4952:3031</property>
@@ -53,4 +53,5 @@ Defines the behavior of the blue LED. <br /> Default is LED on when switch is of
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

@@ -22,7 +22,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Enerwave</property>
+      <property name="vendor">Wenzhou MTLC Electric Appliances Co.,Ltd.</property>
       <property name="modelId">ZW500D</property>
       <property name="manufacturerId">011A</property>
       <property name="manufacturerRef">0102:0201</property>
@@ -77,4 +77,5 @@ Control if switch up is on or off<br /><h1>Overview</h1><p>0 = normal install, u
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

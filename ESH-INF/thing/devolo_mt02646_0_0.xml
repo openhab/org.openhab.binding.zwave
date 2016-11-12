@@ -192,4 +192,5 @@ load caution threshold<br /><h1>Overview</h1><p>Enable automatic warning when th
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

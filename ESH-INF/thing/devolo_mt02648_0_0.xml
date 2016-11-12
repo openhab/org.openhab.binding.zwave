@@ -100,6 +100,10 @@ Setting the illumination threshold to turn on the light<br /><h1>Overview</h1><p
 Parameter to set the Operation Mode<br /><h1>Overview</h1><p>Bit0: Reserve.</p> <p>Bit1: 1 means enable test mode, 0 means disable normal mode. (Notice: This bit only effect by the DIP Switch setting to program mode.) </p> <p>Bit2: Disable the door/window function.</p> <p>Bit3: Setting the temperature scale. 0: Fahrenheit, 1:Celsius</p> <p>Bit4: Disable the illumination report after event triggered.</p> <p>Bit5: Disable the temperature report after event triggered.</p> <p>Bit6: Reserve.</p> <p>Bit7: Disable the back key release into test mode.</p>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="10">Preset: Celsius and LED on = Bits: 00001010 = 10</option>
+        </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
@@ -118,6 +122,10 @@ Parameter to set the sensor functions<br /><h1>Overview</h1><p>Bit0: Disable mag
 Parameter to set the Customer Function<br /><h1>Overview</h1><p>Bit0: Reserve.</p> <p>Bit1: Enable sending motion OFF report.</p> <p>Note: Depends on the Bit4, 0: Report Notification CC, Type: 0x07, Event: 0xFE 1: Sensor Binary Report, Type: 0x0C, Value: 0x00</p> <p>Bit2: Enable PIR super sensitivity mode.</p> <p>Bit3: Enable don't send out BASIC OFF after door closed.</p> <p>Bit4: Notification Type, 0: Using Notification Report. 1: Using Sensor Binary Report.</p> <p>Bit5: Disable Multi CC in auto report.</p> <p>Bit6: Disable to report battery state when the device triggered.</p> <p>Bit7: Reserve.</p>
         ]]></description>
         <default>4</default>
+        <options>
+          <option value="20">Preset: PIR Super Sensitivity and Binary Report = Bits: 00010100 = 20</option>
+        </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
@@ -220,4 +228,5 @@ The illumination differential to report<br /><h1>Overview</h1><p>The illuminatio
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

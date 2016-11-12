@@ -75,7 +75,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Qubino</property>
+      <property name="vendor">Goap</property>
       <property name="modelId">ZMNHBA</property>
       <property name="manufacturerId">0159</property>
       <property name="manufacturerRef">0002:0001</property>
@@ -215,4 +215,5 @@ default value is 300 (power report in Watts is sent each 300s)<br /><ul><li>0 = 
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

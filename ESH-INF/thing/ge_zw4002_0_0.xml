@@ -24,7 +24,7 @@ In-Wall Smart Fan Control<br /><h1>Overview</h1><p><strong>Basic Operation</stro
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">GE</property>
+      <property name="vendor">Jasco Products</property>
       <property name="modelId">ZW4002</property>
       <property name="manufacturerId">0063</property>
       <property name="manufacturerRef">4944:3034</property>
@@ -68,4 +68,5 @@ Invert the ON/OFF Switch State<br /><h1>Overview</h1><p>Setting this parameter t
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

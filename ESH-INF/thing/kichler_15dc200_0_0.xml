@@ -57,7 +57,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Kichler Lighting</property>
+      <property name="vendor">Kichler</property>
       <property name="modelId">15DC200</property>
       <property name="manufacturerId">0114</property>
       <property name="manufacturerRef">B005:3B60</property>
@@ -65,4 +65,5 @@
     </properties>
 
   </thing-type>
+
 </thing:thing-descriptions>

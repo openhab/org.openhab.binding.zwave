@@ -17,11 +17,17 @@
           <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
         </properties>
       </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">SCENE_ACTIVATION</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">ZWave.me</property>
+      <property name="vendor">Z-Wave.Me</property>
       <property name="modelId">ZME_05431</property>
       <property name="manufacturerId">0115</property>
       <property name="manufacturerRef">1000:0001</property>
@@ -188,4 +194,5 @@ Typical time used to differentiate click, hold, double and triple clicks<br />De
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

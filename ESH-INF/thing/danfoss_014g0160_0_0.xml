@@ -151,4 +151,5 @@ Range is from 0.1 to 10°C 1=0.1°C 100=10°C<br /><h1>Overview</h1><p>Default v
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

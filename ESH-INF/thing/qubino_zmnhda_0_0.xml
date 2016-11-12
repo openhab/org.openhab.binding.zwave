@@ -58,7 +58,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Qubino</property>
+      <property name="vendor">Goap</property>
       <property name="modelId">ZMNHDA</property>
       <property name="manufacturerId">0159</property>
       <property name="manufacturerRef">0001:0001</property>
@@ -210,4 +210,5 @@ Time of moving the Dimmer between min. and max dimming values by continues hold 
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

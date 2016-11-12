@@ -97,4 +97,5 @@ Output mode setting: Dimming, On/Off <br /><h1>Overview</h1><p>0 = Dimming</p> <
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

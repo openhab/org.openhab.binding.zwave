@@ -26,7 +26,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Fibaro System</property>
+      <property name="vendor">Fibargroup</property>
       <property name="modelId">FGGC001</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0D01:1000</property>
@@ -405,4 +405,5 @@ Value containing sequence of gestures.<br /><h1>Overview</h1><p>User can create 
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

@@ -384,6 +384,7 @@ public class ZWaveDeviceClass {
         SET_TOP_BOX_CONTROLLER(4, Generic.STATIC_CONTROLLER, "Set-Top Box Controller"),
         SUB_SYSTEM_CONTROLLER(4, Generic.STATIC_CONTROLLER, "Sub-System Controller"),
         TV_CONTROLLER(6, Generic.STATIC_CONTROLLER, "TV Controller"),
+        SPECIFIC_TYPE_GATEWAY(7, Generic.STATIC_CONTROLLER, "Gateway"),
 
         SATELLITE_RECEIVER(4, Generic.AV_CONTROL_POINT, "Satellite Receiver"),
         SATELLITE_RECEIVER_V2(17, Generic.AV_CONTROL_POINT, "Satellite Receiver V2"),
@@ -629,6 +630,9 @@ public class ZWaveDeviceClass {
                             CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC, CommandClass.COMMAND_CLASS_DOOR_LOCK,
                             CommandClass.COMMAND_CLASS_USER_CODE, CommandClass.COMMAND_CLASS_VERSION };
 
+                case SPECIFIC_TYPE_GATEWAY:
+                    return new CommandClass[] { CommandClass.COMMAND_CLASS_VERSION,
+                            CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC, CommandClass.COMMAND_CLASS_SECURITY };
                 default:
                     return new CommandClass[0];
             }

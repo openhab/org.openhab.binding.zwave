@@ -44,6 +44,8 @@ public class ZWaveCentralSceneCommandClass extends ZWaveCommandClass
     private static final int CENTRAL_SCENE_CONFIGURATION_GET = 5;
     private static final int CENTRAL_SCENE_CONFIGURATION_REPORT = 6;
 
+    private static final int MAX_SUPPORTED_VERSION = 3;
+
     @XStreamOmitField
     private boolean initialiseDone = false;
 
@@ -58,6 +60,7 @@ public class ZWaveCentralSceneCommandClass extends ZWaveCommandClass
      */
     public ZWaveCentralSceneCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
+        versionMax = MAX_SUPPORTED_VERSION;
     }
 
     /**

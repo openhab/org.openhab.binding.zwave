@@ -21,7 +21,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Aeon Labs</property>
+      <property name="vendor">AEON Labs</property>
       <property name="modelId">DSC10</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:000A</property>
@@ -142,4 +142,5 @@ See overview<br /><h1>Overview</h1><p>Load will be closed when the Current more 
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

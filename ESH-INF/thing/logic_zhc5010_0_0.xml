@@ -116,6 +116,7 @@ FUGA Wall 4-way Switch + Relay<br /><h1>Overview</h1><p>ZHC5010 is a wall switch
       <property name="modelId">ZHC5010</property>
       <property name="manufacturerId">0234</property>
       <property name="manufacturerRef">0003:010A</property>
+      <property name="versionMax">1.3</property>
       <property name="dbReference">386</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -131,9 +132,7 @@ FUGA Wall 4-way Switch + Relay<br /><h1>Overview</h1><p>ZHC5010 is a wall switch
 
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Upper paddle buttons mode</label>
-        <description><![CDATA[
-Configuration of Pair Mode for the upper two buttons (button #1 and #2).<br /><h1>Overview</h1><p>.</p>
-        ]]></description>
+        <description>Configuration of Pair Mode for the upper two buttons (button #1 and #2).</description>
         <default>0</default>
         <options>
           <option value="0">Separate mode (toggle mode).</option>
@@ -264,4 +263,5 @@ How built-in relay is controlled<br /><h1>Overview</h1><p>This parameter configu
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

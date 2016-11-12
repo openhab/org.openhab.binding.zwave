@@ -42,6 +42,12 @@
           <property name="binding:*:DecimalType">METER;type=E_W</property>
         </properties>
       </channel>
+      <channel id="meter_reset" typeId="meter_reset">
+        <label>Reset the total power consumption</label>
+        <properties>
+          <property name="binding:*:OnOffType">METER</property>
+        </properties>
+      </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
         <properties>
@@ -90,11 +96,14 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Fibaro System</property>
+      <property name="vendor">Fibargroup</property>
       <property name="modelId">FGD212</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0102:1000,0102:3000,0102:2000</property>
       <property name="dbReference">133</property>
+      <property name="commandClass:ASSOCIATION_GROUP_INFO">ccRemove</property>
+      <property name="commandClass:ASSOCIATION_GROUP_INFO:1">ccRemove</property>
+      <property name="commandClass:ASSOCIATION_GROUP_INFO:2">ccRemove</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -615,4 +624,5 @@
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

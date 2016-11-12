@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.smarthome.core.library.types.PercentType;
 import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
@@ -173,4 +174,33 @@ public abstract class ZWaveCommandClassConverter {
         return valConverted;
     }
 
+    /**
+     * Convert an integer value into a PercentType state.
+     * This handles inversion, and setting value to 100% when ZWave returns the maximum value of 99%
+     *
+     * @param value the integer value (range 0 to 100)
+     * @param invert true to invert the state
+     * @return {@link PercentType} state
+     */
+    protected PercentType convertPercent(int value, boolean invert) {
+        // Don't allow values out of range
+        if (value < 0 || value > 100) {
+            return null;
+        }
+
+        PercentType state = null;
+        if (invert) {
+            state = new PercentType(100 - value);
+        } else {
+            state = new PercentType(value);
+        }
+
+        // If we read greater than 99%, then change it to 100%
+        // This just appears better in OH otherwise you can't get 100%!
+        if (state.intValue() >= 99) {
+            state = new PercentType(100);
+        }
+
+        return state;
+    }
 }

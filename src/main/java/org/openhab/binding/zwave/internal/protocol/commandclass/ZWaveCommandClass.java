@@ -269,13 +269,10 @@ public abstract class ZWaveCommandClass {
         try {
             commands.get(payload.getCommandClassCommand()).method.invoke(this, parms);
         } catch (IllegalAccessException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IllegalArgumentException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (InvocationTargetException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     };

@@ -32,7 +32,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Yale Locks</property>
+      <property name="vendor">ASSA ABLOY</property>
       <property name="modelId">YKFCON</property>
       <property name="manufacturerId">0129</property>
       <property name="manufacturerRef">0006:0000</property>
@@ -136,4 +136,5 @@ Sets if the unit operates normal, or disables keypad and Z-Wave lock/unlock<br /
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

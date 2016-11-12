@@ -26,7 +26,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">POPP</property>
+      <property name="vendor">Popp & Co</property>
       <property name="modelId">009204</property>
       <property name="manufacturerId">0154</property>
       <property name="manufacturerRef">0100:0103</property>
@@ -217,4 +217,5 @@ This parameter defines the command to be sent to devices of control group D<br /
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

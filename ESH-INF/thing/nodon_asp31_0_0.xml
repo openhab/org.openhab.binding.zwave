@@ -7,7 +7,9 @@
 
   <thing-type id="nodon_asp31_00_000" listed="false">
     <label>ASP-3-1 Smart Plug</label>
-    <description>Smart Plug</description>
+    <description><![CDATA[
+Smart Plug<br /><h1>Overview</h1><h1>"Learning Mode"</h1> <p>Press on the Smart Plug button during 2 seconds until the LED becomes red. Release the button, the LED will then glow in red. The Smart Plug is in “Learning mode”. To add or to remove the Smart Plug from a Z-Wave® network, follow “INCLUSION” or “EXCLUSION” procedures below.</p> <p>If the Smart Plug is not added or removed from a network within 30 seconds (or if the button is pushed during learning mode), the Smart Plug will automatically exit learning mode.</p> <h1>“Factory Reset”</h1> <p>To perform a factory reset, press on the Smart Plug button during 5 seconds until the LED becomes orange. Release the button, the LED will blink red/green. Factory Reset clears the Smart Plug’s memory and set parameters to default value.</p> <p>Please use this procedure only when the primary controller is missing or otherwise inoperable. Resetting the Smart Plug does not mean it has been removed from Z-Wave network controller’s memory. Use the primary controller to remove the Smart Plug from its Z-Wave network (follow “EXCLUSION” procedures below), before doing a Factory Reset.</p> <br /><h2>Inclusion Information</h2><p>To add the Smart Plug into a Z-Wave network:</p> <ol><li>Plug the Smart Plug.</li> <li>Put the Smart Plug in “Learning mode”.</li> <li>Within 30 seconds put the Z-Wave Controller in “Learning mode” (See the Controller user guide for its own Inclusion procedure).</li> <li>The Smart Plug will confirm the Inclusion procedure by blinking its LED in Green.</li> </ol><br /><h2>Exclusion Information</h2><p>To remove the Smart Plug from a Z-Wave network:</p> <ol><li>Make sure the Smart Plug is plugged.</li> <li>Put the Smart Plug in “Learning mode”.</li> <li>Within 30 seconds put the Z-Wave Controller in “Learning mode” (See the Controller user guide for its own Exclusion procedure).</li> <li>The Smart Plug will confirm the Exclusion procedure by blinking its LED in Red.</li> </ol>
+    ]]></description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -33,7 +35,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Nodon</property>
+      <property name="vendor">ID-RF</property>
       <property name="modelId">ASP-3-1</property>
       <property name="manufacturerId">0165</property>
       <property name="manufacturerRef">0001:0001</property>
@@ -50,7 +52,8 @@
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter name="config_1_1" type="integer" groupName="configuration">
+      <parameter name="config_1_1" type="integer" groupName="configuration"
+                 min="0" max="63">
         <label>1: Default State</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p>Status of the Smart Plug after a Power Failure or after being plugged</p>
@@ -60,14 +63,12 @@
           <option value="0">OFF</option>
           <option value="1">ON</option>
           <option value="2">Status before Power Failure</option>
-          <option value="4">Enable group 5</option>
-          <option value="8">Enable group 6</option>
-          <option value="16">Enable group 7</option>
-          <option value="32">Enable group 8</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_2_1" type="integer" groupName="configuration">
+      <parameter name="config_2_1" type="integer" groupName="configuration"
+                 min="0" max="63">
         <label>2: Power Failure</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p>This parameter is to set-up the Power Failure / Recover notification and the associated group (Groups 4, 5, 6, 7, 8).</p> <p>The value may be a sum of available values. For example, if you want to activate Power Failure and enable group 4 &amp; 5, the parameter value should be 1+2+4=7.</p>
@@ -77,14 +78,19 @@
           <option value="0">Power Failure detection disable</option>
           <option value="1">Power Failure enable (report to Lifeline only)</option>
           <option value="2">Enable group 4</option>
+          <option value="4">Enable group 5</option>
+          <option value="8">Enable group 6</option>
+          <option value="16">Enable group 7</option>
+          <option value="32">Enable group 8</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Follow State</label>
         <default>3</default>
         <options>
-          <option value="0">Disable for group 2 &amp; 3</option>
+          <option value="0">Disable group 2 &amp; 3</option>
           <option value="1">Enable group 2</option>
           <option value="2">Enable group 3</option>
           <option value="3">Enable group 2 &amp; 3</option>
@@ -173,4 +179,5 @@
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

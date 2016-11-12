@@ -34,7 +34,7 @@ Touchpad Electronic Deadbolt<br /><h2>Inclusion Information</h2><p> Press butto
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Kwikset</property>
+      <property name="vendor">Black & Decker</property>
       <property name="modelId">914TRL</property>
       <property name="manufacturerId">0090</property>
       <property name="manufacturerRef">0001:0001</property>
@@ -121,4 +121,5 @@ Reset to factory default settings.<br /><h1>Overview</h1><p>Reset factory defaul
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

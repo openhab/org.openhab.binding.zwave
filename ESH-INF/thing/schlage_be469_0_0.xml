@@ -21,7 +21,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Schlage</property>
+      <property name="vendor">Allegion</property>
       <property name="modelId">BE469</property>
       <property name="manufacturerId">003B</property>
       <property name="manufacturerRef">6341:5044</property>
@@ -156,4 +156,5 @@
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

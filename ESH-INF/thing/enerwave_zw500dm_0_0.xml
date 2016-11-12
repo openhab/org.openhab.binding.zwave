@@ -39,7 +39,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Enerwave</property>
+      <property name="vendor">Wenzhou MTLC Electric Appliances Co.,Ltd.</property>
       <property name="modelId">ZW500DM</property>
       <property name="manufacturerId">011A</property>
       <property name="manufacturerRef">0111:0201</property>
@@ -136,4 +136,5 @@ Minimum change in wattage report<br /><h1>Overview</h1><p>0-255: 0.0-25.5W</p>
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

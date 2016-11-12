@@ -45,7 +45,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Aeon Labs</property>
+      <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW078</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:004E,0103:004E,0203:004E</property>
@@ -205,4 +205,5 @@ see overview<br /><h1>Overview</h1><p>The value is a combination number made up 
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

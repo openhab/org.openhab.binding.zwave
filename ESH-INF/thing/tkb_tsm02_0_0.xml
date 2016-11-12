@@ -50,7 +50,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Wenzhou TKB Control System</property>
+      <property name="vendor">TKB Home</property>
       <property name="modelId">TSM02</property>
       <property name="manufacturerId">0118</property>
       <property name="manufacturerRef">0002:0002</property>
@@ -162,4 +162,5 @@
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

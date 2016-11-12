@@ -11,22 +11,10 @@
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Binary Sensor</label>
-        <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
-        </properties>
-      </channel>
       <channel id="sensor_binary1" typeId="sensor_binary">
         <label>Binary Sensor 1</label>
         <properties>
           <property name="binding:*:OnOffType">SENSOR_BINARY:1</property>
-        </properties>
-      </channel>
-      <channel id="alarm_general1" typeId="alarm_general">
-        <label>Alarm 1</label>
-        <properties>
-          <property name="binding:*:OnOffType">SENSOR_ALARM:1,BASIC:1</property>
         </properties>
       </channel>
       <channel id="sensor_binary2" typeId="sensor_binary">
@@ -47,12 +35,6 @@
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:3;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="sensor_temperature4" typeId="sensor_temperature">
-        <label>Sensor (temperature 2)</label>
-        <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:4;type=TEMPERATURE</property>
-        </properties>
-      </channel>
       <channel id="sensor_temperature5" typeId="sensor_temperature">
         <label>Sensor (temperature 3)</label>
         <properties>
@@ -69,14 +51,12 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Fibaro System</property>
+      <property name="vendor">Fibargroup</property>
       <property name="modelId">FGBS001</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0501:0102,0501:1002,0501:3002</property>
       <property name="dbReference">126</property>
-      <property name="commandClass:SENSOR_ALARM:1">supportedGetSupported=false</property>
       <property name="commandClass:SENSOR_ALARM:2">supportedGetSupported=false</property>
-      <property name="defaultAssociations">3</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -246,11 +226,8 @@ Transmitting the alarm or control frame in 'broadcast' mode (i.e. to all devices
         <multipleLimit>5</multipleLimit>
       </parameter>
 
-      <parameter name="group_3" type="text" groupName="association">
-        <label>3: Controller Updates</label>
-      </parameter>
-
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

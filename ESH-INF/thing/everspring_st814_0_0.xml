@@ -187,4 +187,5 @@ Sets the humidity change causing a sensor report.<br /><h1>Overview</h1><p>0 = D
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

@@ -45,7 +45,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Qubino</property>
+      <property name="vendor">Goap</property>
       <property name="modelId">ZMNHLA</property>
       <property name="manufacturerId">0159</property>
       <property name="manufacturerRef">0005:0003</property>
@@ -356,17 +356,18 @@ Respond to ALL ON/ALL OFF<br /><h1>Overview</h1><p>Flush PWM thermostat module r
     </config-description>
 
   </thing-type>
-    <channel-type id="qubino_zmnhla_00_000_thermostat_mode">
-      <item-type>Number</item-type>
-      <label>Thermostat Mode</label>
-      <description>Sets the thermostat mode</description>
-      <category>Temperature</category>
-      <state pattern="%s">
-        <options>
-          <option value="3">Auto</option>
-          <option value="0">Off</option>
-        </options>
-      </state>
-    </channel-type>
+
+  <channel-type id="qubino_zmnhla_00_000_thermostat_mode">
+    <item-type>Number</item-type>
+    <label>Thermostat Mode</label>
+    <description>Sets the thermostat mode</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+        <option value="3">Auto</option>
+        <option value="0">Off</option>
+      </options>
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>

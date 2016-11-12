@@ -26,7 +26,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">ZWave.me</property>
+      <property name="vendor">Z-Wave.Me</property>
       <property name="modelId">ZME_RC2</property>
       <property name="manufacturerId">0115</property>
       <property name="manufacturerRef">1000:0300</property>
@@ -277,4 +277,5 @@
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

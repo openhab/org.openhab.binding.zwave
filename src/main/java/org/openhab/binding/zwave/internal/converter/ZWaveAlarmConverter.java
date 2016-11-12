@@ -14,6 +14,7 @@ import java.util.List;
 import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.library.types.OnOffType;
 import org.eclipse.smarthome.core.library.types.OpenClosedType;
+import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
@@ -88,6 +89,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         String alarmType = channel.getArguments().get("type");
 
         ZWaveAlarmValueEvent eventAlarm = (ZWaveAlarmValueEvent) event;
+        logger.debug("Alarm converter processing {}", eventAlarm.getReportType());
         switch (eventAlarm.getReportType()) {
             case ALARM:
                 return handleAlarmReport(channel, eventAlarm, alarmType);
@@ -132,7 +134,8 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         }
 
         // Handle event 0 as 'clear the event'
-        int event = eventAlarm.getAlarmEvent() == 0 ? 0 : eventAlarm.getAlarmStatus();
+        int event = eventAlarm.getAlarmEvent();// == 0 ? 0 : eventAlarm.getAlarmStatus();
+        logger.debug("Alarm converter NOTIFICATION event is {}, type {}", event, channel.getDataType());
 
         // TODO: Handle these event to state specific conversions in a table.
         State state = null;
@@ -141,14 +144,17 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                 state = event == 0 ? OnOffType.OFF : OnOffType.ON;
                 break;
             case OpenClosedType:
+                logger.debug("Alarm converter NOTIFICATION 1");
                 state = eventAlarm.getValue() == 0 ? OpenClosedType.CLOSED : OpenClosedType.OPEN;
                 if (eventAlarm.getAlarmType() == AlarmType.ACCESS_CONTROL) {
+                    logger.debug("Alarm converter NOTIFICATION 2");
                     switch (event) {
                         case 22: // Window/Door is open
-                            state = eventAlarm.getValue() == 0 ? OpenClosedType.CLOSED : OpenClosedType.OPEN;
+                            state = OpenClosedType.OPEN;
                             break;
                         case 23: // Window/Door is closed
-                            state = eventAlarm.getValue() == 0 ? OpenClosedType.OPEN : OpenClosedType.CLOSED;
+                            state = OpenClosedType.CLOSED;
+                            logger.debug("Alarm converter NOTIFICATION 3");
                             break;
                         default:
                             break;
@@ -163,5 +169,41 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                 break;
         }
         return state;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<ZWaveCommandClassTransactionPayload> receiveCommand(ZWaveThingChannel channel, ZWaveNode node,
+            Command command) {
+        ZWaveAlarmCommandClass commandClass = (ZWaveAlarmCommandClass) node
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_ALARM, channel.getEndpoint());
+        if (commandClass == null) {
+            return null;
+        }
+
+        String eventString = channel.getArguments().get("event" + command.toString());
+        if (eventString == null) {
+            logger.debug("NODE {}: No event found with name 'event{}'", node.getNodeId(), command.toString());
+            return null;
+        }
+        String splits[] = eventString.split(":");
+        if (splits.length != 2) {
+            logger.debug("NODE {}: Incorrectly formatted event found with name 'event{}' = {}", node.getNodeId(),
+                    command.toString(), eventString);
+            return null;
+        }
+
+        AlarmType notificationType = AlarmType.valueOf(splits[0]);
+        int event = Integer.valueOf(splits[1]);
+
+        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(
+                commandClass.getNotificationReportMessage(notificationType, event), commandClass,
+                channel.getEndpoint());
+
+        List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>();
+        response.add(transaction);
+        return response;
     }
 }

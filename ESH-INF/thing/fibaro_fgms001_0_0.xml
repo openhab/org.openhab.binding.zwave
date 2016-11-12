@@ -44,7 +44,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Fibaro System</property>
+      <property name="vendor">Fibargroup</property>
       <property name="modelId">FGMS001</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0800:1001,0800:2001,0800:3001,0801:1001,0801:2001</property>
@@ -130,7 +130,7 @@ The parameter defines the difference between night and day.<br /><h1>Overview</h
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration">
-        <label>12: BASIC COMMAND CLASS FRAMES CONFIGURATION</label>
+        <label>12: BASIC command class configuration</label>
         <description><![CDATA[
 Determines the command frames sent in 1-st association group.<br /><h1>Overview</h1><p>The parameter determines the command frames sent in 1-st association group, assigned to PIR sensor.<br />0 - BASIC ON and BASIC OFF command frames sent in Basic Command Class.<br />1 - only the BASIC ON command frame sent in Basic Command Class.<br />2 - only the BASIC OFF command frame sent in Basic CommandClass.<br />Values of BASIC ON and BASIC OFF command frames may be modified by dedicated parameters.<br />Default setting: 0 Parameter size: 1 [byte] </p>
         ]]></description>
@@ -171,7 +171,7 @@ The parameter determines the changes in forces.<br /><h1>Overview</h1><p>The par
 
       <parameter name="config_22_2" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>22: TAMPER ALARM CANCELLATION DELAY</label>
+        <label>22: Tamper - alarm cancellation delay</label>
         <description><![CDATA[
 Time period after which a tamper alarm will be cancelled.<br /><h1>Overview</h1><p>Time period after which a tamper alarm will be cancelled. Another tampering detected durig the countdown to cancellation will not extend the delay.<br />Available settings: 1 - 65535<br />Default setting: 30 (seconds)<br />Parameter size: 2 [bytes] </p>
         ]]></description>
@@ -376,4 +376,5 @@ Indicating mode resembles a police car (white, red and blue).<br /><h1>Overview<
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

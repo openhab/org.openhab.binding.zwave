@@ -21,7 +21,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">GE</property>
+      <property name="vendor">Jasco Products</property>
       <property name="modelId">45609</property>
       <property name="manufacturerId">0063</property>
       <property name="manufacturerRef">5257:3533</property>
@@ -36,6 +36,12 @@
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
+
+      <parameter name="config_0_0" type="integer" groupName="configuration"
+                 min="0" max="4294967295">
+        <label>0: </label>
+        <default>0</default>
+      </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Night Light</label>
@@ -65,4 +71,5 @@ Change the top of the switch to OFF and the bottom of the switch to ON.<br /><h1
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

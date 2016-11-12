@@ -131,7 +131,7 @@ Multi-socket PowerNode (5-plug)<br /><h1>Overview</h1><p>This Configuration is f
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">GreenWave</property>
+      <property name="vendor">GreenWave Reality Inc.</property>
       <property name="modelId">GWPN5</property>
       <property name="manufacturerId">0099</property>
       <property name="manufacturerRef">0003:0003</property>
@@ -229,4 +229,5 @@ Minimum variation in load current before a message is sent.<br /><h1>Overview</h
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

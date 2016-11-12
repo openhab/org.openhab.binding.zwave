@@ -21,7 +21,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Linear</property>
+      <property name="vendor">Linear Corp</property>
       <property name="modelId">NGD00Z-4</property>
       <property name="manufacturerId">014F</property>
       <property name="manufacturerRef">4744:3030,4744:3530</property>
@@ -45,4 +45,5 @@
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

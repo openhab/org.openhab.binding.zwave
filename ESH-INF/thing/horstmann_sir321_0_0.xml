@@ -23,10 +23,10 @@ RF Countdown Timer<br /><h1>Overview</h1><p>Wirelessly controllable 3 KW wall sw
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Horstmann Controls</property>
+      <property name="vendor">Horstmann Controls Limited</property>
       <property name="modelId">SIR-321</property>
       <property name="manufacturerId">0059</property>
-      <property name="manufacturerRef">0010:0001</property>
+      <property name="manufacturerRef">0010:0001,0010:0002</property>
       <property name="dbReference">313</property>
       <property name="defaultAssociations">1,2</property>
     </properties>
@@ -96,4 +96,5 @@ RF Countdown Timer<br /><h1>Overview</h1><p>Wirelessly controllable 3 KW wall sw
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

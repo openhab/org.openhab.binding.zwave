@@ -38,7 +38,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Homeseer</property>
+      <property name="vendor">Express Controls</property>
       <property name="modelId">EZMotion Express</property>
       <property name="manufacturerId">001E</property>
       <property name="manufacturerRef">0002:0002,0002:0001</property>
@@ -120,4 +120,5 @@ On Value is the value sent by the Z-Wave BASIC_SET command when motion is detect
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

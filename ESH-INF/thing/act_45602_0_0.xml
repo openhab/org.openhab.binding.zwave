@@ -22,7 +22,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">ACT</property>
+      <property name="vendor">ACT - Advanced Control Technologies</property>
       <property name="modelId">45602</property>
       <property name="manufacturerId">0001</property>
       <property name="manufacturerRef">4450:3030</property>
@@ -119,4 +119,5 @@ Sense when existing switch is used to turn on the lamp<br /><h1>Overview</h1><p>
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

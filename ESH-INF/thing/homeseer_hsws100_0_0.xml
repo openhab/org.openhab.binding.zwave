@@ -88,4 +88,5 @@ Defines the behavior of the indicator LED.<br /><h1>Overview</h1><p>Defines the 
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

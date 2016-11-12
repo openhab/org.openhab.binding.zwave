@@ -44,7 +44,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Aeon Labs</property>
+      <property name="vendor">AEON Labs</property>
       <property name="modelId">DSB05</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0002:0005</property>
@@ -172,4 +172,5 @@ Group 3 automatic report list<br /><h1>Overview</h1><p>The value is a combinatio
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

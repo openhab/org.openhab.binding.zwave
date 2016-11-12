@@ -21,7 +21,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Enerwave</property>
+      <property name="vendor">Wenzhou MTLC Electric Appliances Co.,Ltd.</property>
       <property name="modelId">ZWN-SC7</property>
       <property name="manufacturerId">011A</property>
       <property name="manufacturerRef">0801:0B03</property>

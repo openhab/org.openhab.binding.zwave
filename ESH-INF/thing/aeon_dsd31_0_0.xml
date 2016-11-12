@@ -21,7 +21,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Aeon Labs</property>
+      <property name="vendor">AEON Labs</property>
       <property name="modelId">DSD31</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0004:0050</property>
@@ -106,4 +106,5 @@ send notifications to associated devices<br /><h1>Overview</h1><p>Enable to send
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

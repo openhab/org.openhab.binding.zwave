@@ -56,7 +56,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Aeon Labs</property>
+      <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW075</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:004B,0203:004B</property>
@@ -251,4 +251,5 @@ Defines the time interval when the defined report of Reporting Group 1 is sent o
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

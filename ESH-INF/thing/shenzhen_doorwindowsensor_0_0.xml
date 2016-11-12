@@ -34,7 +34,7 @@ Door/Window Sensor<br /><h2>Inclusion Information</h2><p>1. Remove the sensor co
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Shenzhen Neo Electronics</property>
+      <property name="vendor">Shenzhen Neo Electronics Co., Ltd</property>
       <property name="modelId">Door/Window Sensor</property>
       <property name="manufacturerId">0258</property>
       <property name="manufacturerRef">0003:1082</property>
@@ -51,16 +51,10 @@ Door/Window Sensor<br /><h2>Inclusion Information</h2><p>1. Remove the sensor co
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter name="config_0_0" type="integer" groupName="configuration"
-                 min="0" max="4294967295">
-        <label>0: </label>
-        <default>0</default>
-      </parameter>
-
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>1: ON/OFF Delay</label>
-        <description>Adjust the amount of delay before the OFF command is transmitted. 0 means send OFF command immediately.</description>
+        <description>Adjust the delay before the OFF command is transmitted. 0 means send OFF command immediately.</description>
         <default>0</default>
       </parameter>
 
@@ -82,7 +76,7 @@ Basic Set Command will be sent when the door/window is opened or closed, the rec
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Group 1</label>
         <description><![CDATA[
-Is assigned to the device status - OPEN/CLOSED. It enables the sensor to send reports and readings to Z-Wave Controller or Z-Wave Gateway whenever the sensor is triggered.<br /><h1>Overview</h1><p>NOTIFICATION_REPORT</p> <p>BATTERY_REPORT</p> <p>SENSOR_BINARY_REPORT</p> <p>DEVICE_RESET_LOCALLY_NOTIFICATION</p>
+Is assigned to the device status - OPEN/CLOSED.<br /><h1>Overview</h1><p>It enables the sensor to send reports and readings to Z-Wave Controller or Z-Wave Gateway whenever the sensor is triggered.</p> <p>NOTIFICATION_REPORT</p> <p>BATTERY_REPORT</p> <p>SENSOR_BINARY_REPORT</p> <p>DEVICE_RESET_LOCALLY_NOTIFICATION</p>
         ]]></description>
       </parameter>
 
@@ -113,4 +107,5 @@ Send Notification to associated devices.<br /><h1>Overview</h1><p>SENSOR_BINARY_
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

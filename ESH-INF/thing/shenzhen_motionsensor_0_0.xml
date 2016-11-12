@@ -40,7 +40,7 @@ PIR Motion Sensor<br /><h2>Inclusion Information</h2><p>1. Remove the sensor cov
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Shenzhen Neo Electronics</property>
+      <property name="vendor">Shenzhen Neo Electronics Co., Ltd</property>
       <property name="modelId">Motion Sensor</property>
       <property name="manufacturerId">0258</property>
       <property name="manufacturerRef">0003:1083</property>
@@ -183,4 +183,5 @@ Send Notification to associated devices.<br /><h1>Overview</h1><p>SENSOR_BINARY_
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

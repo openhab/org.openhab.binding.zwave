@@ -23,6 +23,12 @@
           <property name="binding:*:OnOffType">SENSOR_BINARY</property>
         </properties>
       </channel>
+      <channel id="sensor_temperature" typeId="sensor_temperature">
+        <label>Sensor (Temperature)</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+        </properties>
+      </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
         <properties>
@@ -44,7 +50,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Fibaro System</property>
+      <property name="vendor">Fibargroup</property>
       <property name="modelId">FGK101</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0701:1001</property>
@@ -292,4 +298,5 @@ This parameter defines how commands are sent in specified association groups: as
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

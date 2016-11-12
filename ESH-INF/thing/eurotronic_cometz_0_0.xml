@@ -12,14 +12,14 @@
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_dimmer" typeId="switch_dimmer">
-        <label>Dimmer</label>
+        <label>Openness Of The Valve</label>
         <properties>
           <property name="binding:*:PercentType">SWITCH_MULTILEVEL</property>
           <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">
-        <label>Sensor (temperature)</label>
+        <label>Temperature measured by the device</label>
         <properties>
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
@@ -37,7 +37,7 @@
         </properties>
       </channel>
       <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
-        <label>Setpoint (heating)</label>
+        <label>Temperature for Mode Heat (Comfort)</label>
         <properties>
           <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=HEATING</property>
         </properties>
@@ -51,7 +51,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">EUROtronic Technology</property>
+      <property name="vendor">Eurotronics</property>
       <property name="modelId">CometZ</property>
       <property name="manufacturerId">0148</property>
       <property name="manufacturerRef">0002:0001</property>
@@ -59,19 +59,20 @@
     </properties>
 
   </thing-type>
-    <channel-type id="eurotronic_cometz_00_000_thermostat_mode">
-      <item-type>Number</item-type>
-      <label>Thermostat Mode</label>
-      <description>Sets the thermostat mode</description>
-      <category>Temperature</category>
-      <state pattern="%s">
-        <options>
-          <option value="0">Off</option>
-          <option value="31">Manual</option>
-          <option value="1">Heat</option>
-          <option value="11">Economy Heat</option>
-        </options>
-      </state>
-    </channel-type>
+
+  <channel-type id="eurotronic_cometz_00_000_thermostat_mode">
+    <item-type>Number</item-type>
+    <label>Thermostat Mode</label>
+    <description>Sets the thermostat mode</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+        <option value="0">Off (Frost Protect)</option>
+        <option value="31">Manual (Valve Openness)</option>
+        <option value="1">Heat (Comfort)</option>
+        <option value="11">Heat (Eco)</option>
+      </options>
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>

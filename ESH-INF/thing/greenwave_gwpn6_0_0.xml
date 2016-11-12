@@ -149,7 +149,7 @@ Multi-socket PowerNode (6-plug)<br /><h1>Overview</h1><p>This Configuration is f
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">GreenWave</property>
+      <property name="vendor">GreenWave Reality Inc.</property>
       <property name="modelId">GWPN6</property>
       <property name="manufacturerId">0099</property>
       <property name="manufacturerRef">0003:0004</property>
@@ -251,4 +251,5 @@ Duration (min) the device flashes after a communication error.<br /><h1>Overview
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

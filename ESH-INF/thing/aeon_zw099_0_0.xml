@@ -36,7 +36,7 @@ Smart Dimmer 6<br /><h1>Overview</h1><p>Turn the primary controller of Z-Wave ne
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Aeon Labs</property>
+      <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW099</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:0063,0103:0063,0203:0063,1D03:0063</property>
@@ -311,4 +311,5 @@ Retransmit<br /><h1>Overview</h1><p>Forward the Basic Set, Switch Multilevel Sta
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

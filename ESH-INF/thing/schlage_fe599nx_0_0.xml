@@ -32,7 +32,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Schlage</property>
+      <property name="vendor">Allegion</property>
       <property name="modelId">FE599NX</property>
       <property name="manufacturerId">003B</property>
       <property name="manufacturerRef">634B:504C</property>
@@ -40,4 +40,5 @@
     </properties>
 
   </thing-type>
+
 </thing:thing-descriptions>

@@ -143,7 +143,7 @@ Smart Strip<br /><h1>Overview</h1><p>Update command classes -:<br />METER:5 :: A
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Aeon Labs</property>
+      <property name="vendor">AEON Labs</property>
       <property name="modelId">DSC11</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:000B</property>
@@ -401,4 +401,5 @@ A binary field to choose channels to report power<br /><h1>Overview</h1><p>Choos
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

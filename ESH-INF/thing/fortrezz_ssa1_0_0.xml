@@ -30,10 +30,10 @@ Siren and Strobe Alarm<br /><h1>Overview</h1><h1>Description</h1> <p>The SSA1/SS
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">FortrezZ</property>
+      <property name="vendor">FortrezZ LLC</property>
       <property name="modelId">SSA1/SSA2</property>
       <property name="manufacturerId">0084</property>
-      <property name="manufacturerRef">0313:0108,0313:010B</property>
+      <property name="manufacturerRef">0311:010B,0313:0108,0313:010B</property>
       <property name="dbReference">220</property>
     </properties>
 
@@ -58,4 +58,5 @@ Delay, from the time the siren-strobe turns on, before the Basic Set Off command
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

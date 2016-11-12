@@ -26,7 +26,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Nodon</property>
+      <property name="vendor">ID-RF</property>
       <property name="modelId">CWS-3101</property>
       <property name="manufacturerId">0165</property>
       <property name="manufacturerRef">0002:0003</property>
@@ -174,4 +174,5 @@
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

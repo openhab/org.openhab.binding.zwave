@@ -28,7 +28,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Linear</property>
+      <property name="vendor">Linear Corp</property>
       <property name="modelId">PD300Z-2</property>
       <property name="manufacturerId">014F</property>
       <property name="manufacturerRef">4450:3030</property>
@@ -59,4 +59,5 @@ Turn load sense on with 1, off with 0<br /><h1>Overview</h1><p>Set parameter to 
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

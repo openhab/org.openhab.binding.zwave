@@ -15,7 +15,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Linear</property>
+      <property name="vendor">Linear Corp</property>
       <property name="modelId">WT00Z-1</property>
       <property name="manufacturerId">014F</property>
       <property name="manufacturerRef">5457:3033</property>
@@ -250,4 +250,5 @@ Activate/Deactivate polling of first node in Group 1<br /><h1>Overview</h1><p>Th
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

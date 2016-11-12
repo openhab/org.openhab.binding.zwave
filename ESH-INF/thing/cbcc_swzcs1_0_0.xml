@@ -5,7 +5,7 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="swiid_swzcs1_00_000" listed="false">
+  <thing-type id="cbcc_swzcs1_00_000" listed="false">
     <label>SW-ZCS-1 Cord Switch</label>
     <description>Cord Switch</description>
 
@@ -21,7 +21,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Swiid</property>
+      <property name="vendor">CBCC Domotique SAS</property>
       <property name="modelId">SW-ZCS-1</property>
       <property name="manufacturerId">0166</property>
       <property name="manufacturerRef">0100:0100</property>
@@ -68,4 +68,5 @@
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

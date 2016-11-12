@@ -22,7 +22,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Wenzhou TKB Control System</property>
+      <property name="vendor">TKB Home</property>
       <property name="modelId">TZ65D</property>
       <property name="manufacturerId">0118</property>
       <property name="manufacturerRef">0808:0808</property>
@@ -156,4 +156,5 @@
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

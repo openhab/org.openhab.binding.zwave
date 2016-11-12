@@ -47,7 +47,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Fibaro System</property>
+      <property name="vendor">Fibargroup</property>
       <property name="modelId">FGRM222</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0301:1001,0301:3001,0302:1000</property>
@@ -281,4 +281,5 @@
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

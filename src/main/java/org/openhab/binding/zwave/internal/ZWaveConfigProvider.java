@@ -151,14 +151,24 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         groups.add(new ConfigDescriptionParameterGroup("actions", "", false, "Actions", null));
         groups.add(new ConfigDescriptionParameterGroup("thingcfg", "home", false, "Device Configuration", null));
 
+        List<ParameterOption> options = new ArrayList<ParameterOption>();
+        options.add(new ParameterOption("600", "10 Minutes"));
+        options.add(new ParameterOption("1800", "30 Minutes"));
+        options.add(new ParameterOption("3600", "1 Hour"));
+        options.add(new ParameterOption("7200", "2 Hours"));
+        options.add(new ParameterOption("10800", "3 Hours"));
+        options.add(new ParameterOption("21600", "6 Hours"));
+        options.add(new ParameterOption("43200", "12 Hours"));
+        options.add(new ParameterOption("86400", "1 Day"));
+
         parameters.add(ConfigDescriptionParameterBuilder
                 .create(ZWaveBindingConstants.CONFIGURATION_POLLPERIOD, Type.INTEGER)
                 .withLabel(
                         ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.CONFIG_BINDING_POLLINGPERIOD_LABEL))
                 .withDescription(
                         ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.CONFIG_BINDING_POLLINGPERIOD_DESC))
-                .withDefault("1800").withMinimum(new BigDecimal(15)).withMaximum(new BigDecimal(7200))
-                .withGroupName("thingcfg").build());
+                .withDefault("1800").withMinimum(new BigDecimal(15)).withMaximum(new BigDecimal(86400))
+                .withOptions(options).withLimitToOptions(false).withGroupName("thingcfg").build());
 
         // If we support the wakeup class, then add the configuration
         if (node.getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP) != null) {
@@ -196,7 +206,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
 
         // If we support the switch_all class, then add the configuration
         if (node.getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_SWITCH_ALL) != null) {
-            List<ParameterOption> options = new ArrayList<ParameterOption>();
+            options = new ArrayList<ParameterOption>();
             options.add(new ParameterOption("0", "Exclude from All On and All Off groups"));
             options.add(new ParameterOption("1", "Include in All On group"));
             options.add(new ParameterOption("2", "Include in All Off group"));
@@ -209,7 +219,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
 
         // If we support the powerlevel class, then add the configuration
         if (node.getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_POWERLEVEL) != null) {
-            List<ParameterOption> options = new ArrayList<ParameterOption>();
+            options = new ArrayList<ParameterOption>();
             options.add(new ParameterOption("0", "Normal"));
             options.add(new ParameterOption("1", "Minus 1dB"));
             options.add(new ParameterOption("2", "Minus 2dB"));
@@ -255,7 +265,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
             }
         }
 
-        List<ParameterOption> options = new ArrayList<ParameterOption>();
+        options = new ArrayList<ParameterOption>();
         options.add(new ParameterOption(ZWaveBindingConstants.ACTION_CHECK_VALUE.toString(), "Do"));
 
         // If we're FAILED, allow removing from the controller

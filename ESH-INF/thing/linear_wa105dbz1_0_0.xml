@@ -21,7 +21,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Linear</property>
+      <property name="vendor">Linear Corp</property>
       <property name="modelId">WA105DBZ-1</property>
       <property name="manufacturerId">014F</property>
       <property name="manufacturerRef">2009:0903</property>
@@ -60,4 +60,5 @@
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

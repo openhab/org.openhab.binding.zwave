@@ -15,7 +15,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">MCO Home</property>
+      <property name="vendor">McoHome Technology Co., Ltd</property>
       <property name="modelId">MH3700-HP</property>
       <property name="manufacturerId">015F</property>
       <property name="manufacturerRef">0000:0000</property>
@@ -23,4 +23,5 @@
     </properties>
 
   </thing-type>
+
 </thing:thing-descriptions>

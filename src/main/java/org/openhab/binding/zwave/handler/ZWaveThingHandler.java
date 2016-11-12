@@ -98,7 +98,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
     private ScheduledFuture<?> pollingJob = null;
     private final long POLLING_PERIOD_MIN = 15;
-    private final long POLLING_PERIOD_MAX = 7200;
+    private final long POLLING_PERIOD_MAX = 86400;
     private final long POLLING_PERIOD_DEFAULT = 1800;
     private final long DELAYED_POLLING_PERIOD_MAX = 10;
     private final long REFRESH_POLL_DELAY = 50;
@@ -620,6 +620,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 ZWaveAssociationGroup currentMembers = node.getAssociationGroup(groupIndex);
                 ZWaveAssociationGroup newMembers = new ZWaveAssociationGroup(groupIndex);
 
+                int totalMembers = currentMembers.getAssociationCnt();
+
                 // Loop over all the parameters
                 for (String paramValue : paramValues) {
                     String[] groupCfg = paramValue.split("_");
@@ -634,6 +636,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     int associationEndpointId = Integer.parseInt(groupCfg[2]);
 
                     newMembers.addAssociation(associationNodeId, associationEndpointId);
+                    totalMembers++;
                 }
 
                 // Loop through the current members and remove anything that's not in the new members list
@@ -643,6 +646,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         // No - so it needs to be removed
                         controllerHandler
                                 .sendData(node.removeAssociation(groupIndex, member.getNode(), member.getEndpoint()));
+                        totalMembers--;
                     }
                 }
 
@@ -654,12 +658,13 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         // TODO: This needs to handle the sending endpoint not being root.
                         controllerHandler.sendData(
                                 node.setAssociation(null, groupIndex, member.getNode(), member.getEndpoint()));
+                        totalMembers++;
                     }
                 }
 
                 // If there are no known associations in the group, then let's clear the group completely
                 // This ensures we don't end up with strange ghost associations
-                if (node.getAssociationGroup(groupIndex).getAssociationCnt() == 0) {
+                if (totalMembers == 0) {
                     controllerHandler.sendData(node.clearAssociation(groupIndex));
                 }
 

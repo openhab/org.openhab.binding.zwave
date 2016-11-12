@@ -23,7 +23,7 @@ GE 12727 Z-Wave Wireless Lighting Control Smart Toggle Switch<br /><h2>Inclusion
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">GE</property>
+      <property name="vendor">Jasco Products</property>
       <property name="modelId">12727</property>
       <property name="manufacturerId">0063</property>
       <property name="manufacturerRef">4952:3033</property>
@@ -51,7 +51,7 @@ Invert switch<br /><h1>Overview</h1><p>If the switch is accidentally installed u
         </options>
       </parameter>
 
-      <parameter name="config_29_0" type="integer" groupName="configuration"
+      <parameter name="config_29_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>29: Load Sensing</label>
         <description><![CDATA[
@@ -63,4 +63,5 @@ Invert switch<br /><h1>Overview</h1><p>If the switch is accidentally installed u
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>

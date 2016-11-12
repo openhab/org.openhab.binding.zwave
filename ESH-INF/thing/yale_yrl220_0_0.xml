@@ -34,7 +34,7 @@ Yale Real Living Touchscreen Lever Lock<br /><h2>Inclusion Information</h2><p>To
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Yale Locks</property>
+      <property name="vendor">ASSA ABLOY</property>
       <property name="modelId">YRL220</property>
       <property name="manufacturerId">0129</property>
       <property name="manufacturerRef">0001:0409</property>
@@ -138,4 +138,5 @@ Sets if the unit operates normal, or disables keypad and Z-Wave lock/unlock<br /
     </config-description>
 
   </thing-type>
+
 </thing:thing-descriptions>
