@@ -469,7 +469,7 @@ public class ZWaveSecureNonceTracker {
         private Map<Byte, Nonce> table = new ConcurrentHashMap<Byte, Nonce>();
 
         /**
-         * Once a nonce is used (that is, we get a {@link ZWaveSecurityCommandClass#SECURITY_MESSAGE_ENCAP}
+         * Once a nonce is used (that is, we get a {@link ZWaveSecurityCommandClass#SECURITY_MESSAGE_ENCAPSULATION}
          * with the nonce id of a nonce) it is removed from {@link #table}. But the nonce's ID (1st byte)
          * is stored here
          */

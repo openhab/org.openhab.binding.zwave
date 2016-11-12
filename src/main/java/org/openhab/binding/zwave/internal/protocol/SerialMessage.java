@@ -18,7 +18,6 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -654,13 +653,13 @@ public class SerialMessage {
         @Override
         public int compare(SerialMessage arg0, SerialMessage arg1) {
             // ZWaveSecurityCommandClass.SECURITY_NONCE_REPORT trumps all
-            final boolean arg0NonceReport = ZWaveSecurityCommandClass.isSecurityNonceReportMessage(arg0);
-            final boolean arg1NonceReport = ZWaveSecurityCommandClass.isSecurityNonceReportMessage(arg1);
-            if (arg0NonceReport && !arg1NonceReport) {
-                return -1;
-            } else if (arg1NonceReport && !arg0NonceReport) {
-                return 1;
-            } // they both are or both aren't, continue to logic below
+            // final boolean arg0NonceReport = ZWaveSecurityCommandClass.isSecurityNonceReportMessage(arg0);
+            // final boolean arg1NonceReport = ZWaveSecurityCommandClass.isSecurityNonceReportMessage(arg1);
+            // if (arg0NonceReport && !arg1NonceReport) {
+            // return -1;
+            // } else if (arg1NonceReport && !arg0NonceReport) {
+            // return 1;
+            // } // they both are or both aren't, continue to logic below
 
             boolean arg0Awake = false;
             boolean arg0Listening = true;

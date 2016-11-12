@@ -101,7 +101,7 @@ public class ZWaveController {
     private final Semaphore sendAllowed = new Semaphore(1);
     private final Semaphore transactionCompleted = new Semaphore(1);
     private volatile SerialMessage currentTransaction = null;
-    private int zWaveResponseTimeout = ZWAVE_RESPONSE_TIMEOUT;
+    private int zWaveResponseTimeout = ZWAVE_RESPONSE_TIMEOUT; // TODO: Not currently used
     private Timer watchdog;
 
     private String zWaveVersion = "Unknown";
@@ -119,6 +119,7 @@ public class ZWaveController {
     private boolean softReset = false;
     private boolean masterController = true;
     private int secureInclusionMode = 0;
+    private String networkSecurityKey;
     private Set<SerialMessageClass> apiCapabilities = new HashSet<>();
 
     private int defaultWakeupPeriod = 0;
@@ -128,11 +129,6 @@ public class ZWaveController {
     private AtomicInteger timeOutCount = new AtomicInteger(0);
 
     private ZWaveIoHandler ioHandler;
-
-    /**
-     * This is required for secure pairing. see {@link ZWaveSecurityCommandClass}
-     */
-    private ZWaveInclusionEvent lastIncludeSlaveFoundEvent;
 
     // Constructors
     public ZWaveController(ZWaveIoHandler handler) {
@@ -154,6 +150,8 @@ public class ZWaveController {
         secureInclusionMode = config.containsKey("secureInclusion") ? Integer.parseInt(config.get("secureInclusion"))
                 : 0;
         final Integer timeout = config.containsKey("timeout") ? Integer.parseInt(config.get("timeout")) : 0;
+
+        networkSecurityKey = config.get("secureKey");
 
         defaultWakeupPeriod = config.containsKey("wakeupDefaultPeriod")
                 ? Integer.parseInt(config.get("wakeupDefaultPeriod")) : 0;
@@ -564,10 +562,6 @@ public class ZWaveController {
                         break;
                     }
 
-                    // TODO: This can be removed once the key is added to the security class directly
-                    // TODO: a few lines below.
-                    lastIncludeSlaveFoundEvent = incEvent;
-
                     // Create a new node
                     ZWaveNode newNode = new ZWaveNode(homeId, incEvent.getNodeId(), this);
 
@@ -585,9 +579,9 @@ public class ZWaveController {
                         if (zwaveCommandClass != null) {
                             logger.debug("NODE {}: Inclusion is adding command class {}.", incEvent.getNodeId(),
                                     commandClass);
-                            // TODO: Add the network key to the security class
+                            // Add the network key to the security class
                             if (commandClass == CommandClass.COMMAND_CLASS_SECURITY) {
-                                // ((ZWaveSecurityCommandClass)zwaveCommandClass).setRealNetworkKey(hexString);
+                                ((ZWaveSecurityCommandClass) zwaveCommandClass).setNetworkKey(networkSecurityKey);
                             }
                             newNode.addCommandClass(zwaveCommandClass);
                         }
@@ -1195,7 +1189,7 @@ public class ZWaveController {
      * @return node object
      */
     public ZWaveNode getNode(int nodeId) {
-        return this.zwaveNodes.get(nodeId);
+        return zwaveNodes.get(nodeId);
     }
 
     /**
@@ -1204,7 +1198,7 @@ public class ZWaveController {
      * @return
      */
     public Collection<ZWaveNode> getNodes() {
-        return this.zwaveNodes.values();
+        return zwaveNodes.values();
     }
 
     /**
@@ -1218,286 +1212,9 @@ public class ZWaveController {
 
     // Nested classes and enumerations
 
-    /**
-     * Input thread. This processes incoming messages - it decouples the receive thread, which responds to messages from
-     * the controller, and the actual processing of messages to ensure we respond to the controller in a timely manner
-     *
-     * @author Chris Jackson
-     */
-    /*
-     * private class ZWaveInputThread extends Thread {
-     * ZWaveInputThread() {
-     * super("ZWaveInputThread");
-     * }
-     **
-     *
-     * Run method. Runs the actual receiving process.
-     *
-     * @Override
-     * public void run() {
-     * logger.debug("Starting ZWave thread: Input");
-     *
-     * SerialMessage recvMessage;
-     * while (!interrupted()) {
-     * try {
-     * if (recvQueue.size() == 0) {
-     * sendAllowed.release();
-     * }
-     * recvMessage = recvQueue.take();
-     * logger.debug("Receive queue TAKE: Length={}", recvQueue.size());
-     * logger.debug("Process Message = {}", SerialMessage.bb2hex(recvMessage.getMessageBuffer()));
-     *
-     * // logger.debug("Receive ---- do receive");
-     * handleIncomingMessage(recvMessage);
-     * // logger.debug("Receive ---- try acquire");
-     * sendAllowed.tryAcquire();
-     * // logger.debug("Receive ---- acquired");
-     * } catch (InterruptedException e) {
-     * logger.error("Exception during ZWave thread: Input 1.", e);
-     * break;
-     * } catch (Exception e) {
-     * logger.error("Exception during ZWave thread: Input 2.", e);
-     * }
-     * }
-     *
-     * logger.debug("Stopped ZWave thread: Input");
-     * }
-     * }
-     */
-
-    /**
-     * ZWave controller Send Thread. Takes care of sending all messages. It uses a semaphore to synchronize
-     * communication with the receiving thread.
-     *
-     * @author Jan-Willem Spuij
-     * @author Chris Jackson
-     */
-    /*
-     * private class ZWaveSendThread extends Thread {
-     *
-     * private final Logger logger = LoggerFactory.getLogger(ZWaveSendThread.class);
-     *
-     * ZWaveSendThread() {
-     * super("ZWaveSendThread");
-     * }
-     **
-     *
-     * Run method. Runs the actual sending process.
-     *
-     * @Override
-     * public void run() {
-     * logger.debug("Starting ZWave thread: Send");
-     *
-     * SerialMessage lastSentMessage;
-     *
-     * try {
-     * while (!interrupted()) {
-     * // To avoid sending lots of frames when we still have input frames to process, we wait here until
-     * // we've processed all receive frames
-     * if (!sendAllowed.tryAcquire(1, zWaveResponseTimeout, TimeUnit.MILLISECONDS)) {
-     * sendAllowed.release();
-     * logger.warn("Receive queue TIMEOUT:", recvQueue.size());
-     * continue;
-     * }
-     * sendAllowed.release();
-     *
-     * // Take the next message from the send queue
-     * try {
-     * lastSentMessage = sendQueue.take();
-     * logger.debug("Took message from queue for sending. Queue length = {}: {}", sendQueue.size(),
-     * lastSentMessage);
-     * } catch (InterruptedException e) {
-     * logger.error("Send thread aborted!!!!!!!! {}", e);
-     * break;
-     * }
-     *
-     * // Check we got a message
-     * if (lastSentMessage == null) {
-     * continue;
-     * }
-     *
-     * // Reset the transaction
-     * lastSentMessage.resetTransaction();
-     *
-     * // Get the node for this message
-     * ZWaveNode node = getNode(lastSentMessage.getMessageNode());
-     *
-     * // If it's a battery device, it needs to be awake, or we queue the frame until it is.
-     * // TODO: Is 'isFrequentlyListening' needed here?
-     * if (node != null && !node.isListening() && !node.isFrequentlyListening()) {
-     * ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) node
-     * .getCommandClass(CommandClass.WAKE_UP);
-     *
-     * // If it's a battery operated device, check if it's awake or place in wake-up queue.
-     * if (wakeUpCommandClass != null
-     * && !wakeUpCommandClass.processOutgoingWakeupMessage(lastSentMessage)) {
-     * continue;
-     * }
-     * }
-     *
-     * // A transaction consists of (up to) 4 parts -:
-     * // 1) We send a REQUEST to the controller.
-     * // 2) The controller sends a RESPONSE almost immediately. This RESPONSE typically tells us that the
-     * // message was, or wasn't, added to the sticks queue.
-     * // 3) The controller sends a REQUEST once it's received the response from the device. We need to be
-     * // aware that there is no synchronization of messages between steps 2 and 3 so we can get other
-     * // messages received at step 3 that are not related to our original request.
-     * // 4) We ultimately receive the requested message from the device if we're requesting such a
-     * // message. Again, other messages can come in during this time.
-     * //
-     * // A transaction is generally completed at the completion of step 4.
-     * // However, for some messages, there may not be a further REQUEST so the transaction is terminated
-     * // at step 2. This is handled by the serial message class processor by setting transactionCompleted.
-     * //
-     * // It seems that some of these steps may occur out of order.
-     * // For example, the requested message at step 4 may be received before the REQUEST at step 3. This
-     * // can (I guess) occur if the message to the device is received by the device, but the ACK back to
-     * // the controller is lost. The device then sends the requested data, and then finally the ACK is
-     * // received. We cover this by setting an 'AckPending' flag in the sent message.
-     * // This needs to be cleared before the transaction is completed.
-     *
-     * // Clear the semaphore used to acknowledge the completed transaction.
-     * transactionCompleted.drainPermits();
-     *
-     * // Send the REQUEST message TO the controller
-     * lastSentMessage.transactionStart();
-     * ioHandler.sendPacket(lastSentMessage);
-     *
-     * // Record this as our current transaction
-     * // TODO: This needs to be managed in a list
-     * currentTransaction = lastSentMessage;
-     *
-     * if (lastSentMessage instanceof SecurityEncapsulatedSerialMessage) {
-     * logger.debug("Updating secure message: {}", lastSentMessage);
-     * // Now that we've sent the encapsulated version, replace lastSentMessage with the original.
-     * // This is required because a resend requires a new nonce to be requested and a new
-     * // security encapsulated message to be built
-     * ((SecurityEncapsulatedSerialMessage) lastSentMessage).setTransmittedAt();
-     * // Take the callbackId from the encapsulated version and copy it to the original message
-     * int callbackId = lastSentMessage.getCallbackId();
-     * lastSentMessage = ((SecurityEncapsulatedSerialMessage) lastSentMessage)
-     * .getMessageBeingEncapsulated();
-     * lastSentMessage.setCallbackId(callbackId);
-     * }
-     *
-     * // If we're expecting a RESPONSE, this should be received next packet
-     *
-     * // Now wait for the RESPONSE, or REQUEST message FROM the controller
-     * // This will terminate when the transactionCompleted flag gets set
-     * // So, this might complete on a RESPONSE if there's an error (or no further REQUEST expected) or it
-     * // might complete on a subsequent REQUEST.
-     * try {
-     * if (!transactionCompleted.tryAcquire(1, zWaveResponseTimeout, TimeUnit.MILLISECONDS)) {
-     * timeOutCount.incrementAndGet();
-     * // If this is a SendData message, then we need to abort
-     * // This should only be sent if we didn't get the initial ACK!!!
-     * // So we need to check the ACK flag and only abort if it's not set
-     * // TODO: This should handle other message types other than SendData
-     * if (lastSentMessage.getMessageClass() == SerialMessageClass.SendData
-     * && lastSentMessage.getTransactionState() == TransactionState.WAIT_REQUEST) {
-     * handleFailedSendDataRequest(lastSentMessage);
-     * // SerialMessage serialMessage = new SerialMessage(SerialMessageClass.SendDataAbort,
-     * // SerialMessageType.Request, SerialMessageClass.SendData,
-     * // SerialMessagePriority.Immediate);
-     * // logger.debug("NODE {}: Sending ABORT Message = {}", lastSentMessage.getMessageNode(),
-     * // SerialMessage.bb2hex(serialMessage.getMessageBuffer()));
-     * // ioHandler.sendPacket(serialMessage);
-     * }
-     *
-     * // Check if we've exceeded the number of retries.
-     * // Requeue if we're ok, otherwise discard the message
-     * if (--lastSentMessage.attempts >= 0) {
-     * logger.error("NODE {}: Timeout while sending message. Requeueing - {} attempts left!",
-     * lastSentMessage.getMessageNode(), lastSentMessage.attempts);
-     * // if (lastSentMessage.getMessageClass() == SerialMessageClass.SendData) {
-     * // handleFailedSendDataRequest(lastSentMessage);
-     * // } else {
-     *
-     * // Reset the transaction
-     * lastSentMessage.resetTransaction();
-     *
-     * // Lower the priority since it's a retry!
-     * // lastSentMessage.setPriority(p);
-     * enqueue(lastSentMessage);
-     * // }
-     * } else {
-     * logger.warn("NODE {}: Too many retries. Discarding message: {}",
-     * lastSentMessage.getMessageNode(), lastSentMessage.toString());
-     * }
-     * continue;
-     * }
-     * logger.trace("Acquired. Transaction completed permit count -> {}",
-     * transactionCompleted.availablePermits());
-     * } catch (InterruptedException e) {
-     * logger.error("Send thread aborted!!!!!!!! {}", e);
-     * break;
-     * }
-     * }
-     * } catch (Exception e) {
-     * logger.error("Exception during ZWave thread: Send", e);
-     * }
-     * logger.debug("Stopped ZWave thread: Send");
-     * }
-     * }
-     */
-
-    /**
-     * WatchDogTimerTask class. Acts as a watch dog and checks the serial
-     * threads to see whether they are still running.
-     */
-    /*
-     * private class WatchDogTimerTask extends TimerTask {
-     *
-     * private final Logger logger = LoggerFactory.getLogger(WatchDogTimerTask.class);
-     **
-     *
-     * Creates a new instance of the WatchDogTimerTask class.
-     *
-     * @param serialPortName
-     * the serial port name to reconnect to in case the serial
-     * threads have died.
-     *
-     * public WatchDogTimerTask() {
-     * }
-     **
-     *
-     * {@inheritDoc}
-     *
-     * @Override
-     * public void run() {
-     * logger.debug("Watchdog: Checking Serial threads");
-     * if (
-     * // (receiveThread != null && !receiveThread.isAlive()) ||
-     * (sendThread != null && !sendThread.isAlive()) || (inputThread != null && !inputThread.isAlive())) {
-     * logger.warn("Threads not alive, respawning. SEND({}) INPUT({}).",
-     * (sendThread != null && !sendThread.isAlive()), (inputThread != null && !inputThread.isAlive()));
-     * // disconnect();
-     * // try {
-     * // connect(serialPortName);
-     * // } catch (SerialInterfaceException e) {
-     * // logger.error("Unable to restart Serial threads: {}", e.getLocalizedMessage());
-     * // }
-     * }
-     * }
-     * }
-     */
-
     public void incomingPacket(SerialMessage packet) {
         // Add the packet to the receive queue
         transactionManager.processReceiveMessage(packet);
-        // recvQueue.add(packet);
-    }
-
-    /**
-     * This is required by {@link ZWaveSecurityCommandClass} for the secure pairing process.
-     * {@link ZWaveSecurityCommandClass} can't use the event handling because the
-     * object won't exist when this occurs, so we hold it here so {@link ZWaveSecurityCommandClass}
-     * can access it
-     *
-     * @return
-     */
-    public ZWaveInclusionEvent getLastIncludeSlaveFoundEvent() {
-        return lastIncludeSlaveFoundEvent;
     }
 
     /**

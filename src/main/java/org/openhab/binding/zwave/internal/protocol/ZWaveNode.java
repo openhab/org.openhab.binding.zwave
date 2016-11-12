@@ -830,21 +830,20 @@ public class ZWaveNode {
      * @param data the class id for each class which must be encrypted in transmission
      */
     public void setSecuredClasses(byte[] data) {
-        logger.debug("NODE {}:  Setting secured command classes for node with {}", this.getNodeId(),
+        logger.debug("NODE {}:  Setting secured command classes for node with {}", getNodeId(),
                 SerialMessage.bb2hex(data));
         boolean afterMark = false;
-        securedCommandClasses.clear(); // reset the existing list
+        securedCommandClasses.clear();
         for (final byte aByte : data) {
-            // TODO: DB support extended commandClass format by checking for 0xF1 - 0xFF
-            if (ZWaveSecurityCommandClass.bytesAreEqual(aByte, ZWaveSecurityCommandClass.COMMAND_CLASS_MARK)) {
-                /**
-                 * Marks the end of the list of supported command classes. The remaining classes are those
-                 * that can be controlled by the device. These classes are created without values.
-                 * Messages received cause notification events instead.
-                 */
-                afterMark = true;
-                continue;
-            }
+            // if (ZWaveSecurityCommandClass.bytesAreEqual(aByte, CommandClass.COMMAND_CLASS_MARK.getKey())) {
+            /**
+             * Marks the end of the list of supported command classes. The remaining classes are those
+             * that can be controlled by the device. These classes are created without values.
+             * Messages received cause notification events instead.
+             */
+            // afterMark = true;
+            // continue;
+            // }
 
             // Check if this is a commandClass that is already registered with the node
             final CommandClass commandClass = CommandClass.getCommandClass((aByte & 0xFF));
@@ -853,7 +852,7 @@ public class ZWaveNode {
                 logger.error(
                         "NODE {}: setSecuredClasses requested secure "
                                 + "class NOT supported by OpenHab: {}   afterMark={}",
-                        this.getNodeId(), commandClass, afterMark);
+                        getNodeId(), commandClass, afterMark);
             } else {
                 // Sometimes security will be transmitted as a secure class, but it
                 // can't be set that way since it's the one doing the encryption work So ignore that.
@@ -861,13 +860,13 @@ public class ZWaveNode {
                     continue;
                 } else if (afterMark) {
                     // Nothing to do, we don't track devices that control other devices
-                    logger.info("NODE {}: is after mark for commandClass {}", this.getNodeId(), commandClass);
+                    logger.info("NODE {}: is after mark for commandClass {}", getNodeId(), commandClass);
                     break;
                 } else {
                     if (!this.supportsCommandClass(commandClass)) {
                         logger.info(
                                 "NODE {}: Adding secured command class to supported that wasn't in original list {}",
-                                this.getNodeId(), commandClass);
+                                getNodeId(), commandClass);
                         final ZWaveCommandClass classInstance = ZWaveCommandClass.getInstance((aByte & 0xFF), this,
                                 controller);
                         if (classInstance != null) {
@@ -875,7 +874,7 @@ public class ZWaveNode {
                         }
                     }
                     securedCommandClasses.add(commandClass);
-                    logger.info("NODE {}: (Secured) {}", this.getNodeId(), commandClass);
+                    logger.info("NODE {}: (Secured) {}", getNodeId(), commandClass);
                 }
             }
         }
@@ -883,7 +882,7 @@ public class ZWaveNode {
         if (logger.isInfoEnabled()) {
             // Show which classes are still insecure after the update
             final StringBuilder buf = new StringBuilder(
-                    "NODE " + this.getNodeId() + ": After update, INSECURE command classes are: ");
+                    "NODE " + getNodeId() + ": After update, INSECURE command classes are: ");
             for (final ZWaveCommandClass zwCommandClass : getCommandClasses(0)) {
                 if (!securedCommandClasses.contains(zwCommandClass.getCommandClass())) {
                     buf.append(zwCommandClass.getCommandClass() + ", ");
@@ -909,17 +908,18 @@ public class ZWaveNode {
 
         if (CommandClass.COMMAND_CLASS_SECURITY == commandClassOfMessage) {
             // CommandClass.SECURITY is a special case because only some commands get encrypted
-            return ZWaveSecurityCommandClass.doesCommandRequireSecurityEncapsulation(payload.getCommandClassCommand());
+            // return
+            // ZWaveSecurityCommandClass.doesCommandRequireSecurityEncapsulation(payload.getCommandClassCommand());
         }
 
         if (commandClassOfMessage == CommandClass.COMMAND_CLASS_NO_OPERATION) {
-            // On controller startup, PING seems to fail whenever it's encrypted, so don't
+            // PING should not be encrypted
             return false;
         }
 
-        if (ZWaveSecurityCommandClass.doesCommandClassRequireSecurityEncapsulation(commandClassOfMessage)) {
-            return true;
-        }
+        /// if (ZWaveSecurityCommandClass.doesCommandClassRequireSecurityEncapsulation(commandClassOfMessage)) {
+        // return true;
+        // }
 
         return securedCommandClasses.contains(commandClassOfMessage);
     }
@@ -1052,17 +1052,24 @@ public class ZWaveNode {
      * Encapsulates a serial message for sending to a multi-instance instance/ multi-channel endpoint on a node.
      *
      * A number of Z-Wave encapsulation Command Classes exist, they MUST be applied in the following order:
-     * 1. Any one of the following combinations:
-     * -- a. Transport Service followed by Security
-     * -- b. Transport Service
-     * -- c. Security
-     * -- d. CRC16
-     * 2. Multi Channel
-     * 3. Supervision
-     * 4. Multi Command
-     * 5. Schedule
-     * 6. Encapsulated Command Class (payload), e.g. Basic Get
+     * <ol>
+     * <li>Any one of the following combinations:
+     * <ol>
+     * <li>Transport Service followed by Security
+     * <li>Transport Service
+     * <li>Security
+     * <li>CRC16
+     * </ol>
+     * <li>Multi Channel
+     * <li>Supervision
+     * <li>Multi Command
+     * <li>Schedule
+     * <li>Command Class (payload), e.g. Basic Get
+     * </ol>
      * Note: The Transport Service and CRC16 Command Classes are mutually exclusive as well as Security and CRC16.
+     *
+     * Security encapsulation is performed in the transaction manager since it needs to manage the NONCE and
+     * encapsulation needs to be done at the time the message is sent.
      *
      * @param serialMessage the serial message to encapsulate
      * @param commandClass the command class used to generate the message.
@@ -1087,8 +1094,6 @@ public class ZWaveNode {
         // Encapsulation the COMMAND_CLASS_MULTI_CMD class
 
         // Encapsulation the COMMAND_CLASS_SUPERVISION class
-
-        // SerialMessage serialMessage = transaction.getSerialMessage();
 
         // Encapsulation the COMMAND_CLASS_MULTI_CHANNEL class
 

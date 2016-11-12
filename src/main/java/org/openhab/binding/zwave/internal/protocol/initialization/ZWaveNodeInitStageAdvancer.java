@@ -24,6 +24,7 @@ import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociation;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Generic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveMessagePayloadTransaction;
@@ -41,6 +42,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveManufacture
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveNoOperationCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveVersionCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
@@ -194,6 +196,7 @@ public class ZWaveNodeInitStageAdvancer {
             return;
         }
 
+        // Use a random backoff so all nodes aren't synced.
         Random rn = new Random();
         int backoff = 50;
         ZWaveTransactionResponse response;
@@ -301,7 +304,63 @@ public class ZWaveNodeInitStageAdvancer {
     }
 
     private void doSecureInclusion() {
+        // Does this node support security
+        ZWaveSecurityCommandClass securityCommandClass = (ZWaveSecurityCommandClass) node
+                .getCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
+        if (securityCommandClass == null) {
+            return;
+        }
 
+        // Check if we want to perform a secure inclusion...
+        boolean doSecureInclusion = false;
+        switch (controller.getSecureInclusionMode()) {
+            default:
+            case 0:
+                // Only ENTRY_CONTROL
+                if (node.getDeviceClass().getGenericDeviceClass() == Generic.ENTRY_CONTROL) {
+                    doSecureInclusion = true;
+                }
+                break;
+            case 1:
+                // All devices
+                doSecureInclusion = true;
+                break;
+            case 2:
+                // No secure inclusion
+                break;
+        }
+
+        if (doSecureInclusion == false) {
+            // Remove the security command class
+            node.removeCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
+            return;
+        }
+
+        // Check if this node was just included (within the last 10 seconds)
+
+        // Let's start...
+
+        // Get the scheme used for the remote
+        logger.debug("NODE {}: SECURITY_INCLUSION State=GET_SCHEME", node.getNodeId());
+        processTransactions(securityCommandClass.getSecuritySchemeGetMessage());
+
+        // Set the key
+        logger.debug("NODE {}: SECURITY_INCLUSION State=SET_KEY", node.getNodeId());
+        processTransactions(securityCommandClass.getSetSecurityKeyMessage());
+
+        // Get the secure classes
+        logger.debug("NODE {}: SECURITY_INCLUSION State=GET_SECURE_SUPPORTED", node.getNodeId());
+        processTransactions(securityCommandClass.getSecurityCommandsSupportedMessage());
+
+        // Get the non-secure classes - note that this can change now that we're in secure mode
+        logger.debug("NODE {}: SECURITY_INCLUSION State=GET_NONSECURE_SUPPORTED", node.getNodeId());
+
+        // Check if inclusion completed
+        if (securityCommandClass.isSecurelyIncluded()) {
+            logger.error("NODE {}: SECURITY_INCLUSION State=COMPLETE", node.getNodeId());
+        } else {
+            logger.error("NODE {}: SECURITY_INCLUSION State=FAILED", node.getNodeId());
+        }
     }
 
     private void doStaticStages() {

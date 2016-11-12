@@ -41,7 +41,6 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEventListener;
 import org.openhab.binding.zwave.internal.protocol.ZWaveIoHandler;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInitializationStateEvent;
@@ -174,9 +173,9 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         // The security class uses a static member to set the key so for now
         // lets do the same, but it needs to be moved into the network initialisation
         // so different networks can have different keys
-        if (networkKey.length() > 0) {
-            ZWaveSecurityCommandClass.setRealNetworkKey(networkKey);
-        }
+        // if (networkKey.length() > 0) {
+        // ZWaveSecurityCommandClass.setNetworkKey(networkKey);
+        // }
 
         // TODO: Handle soft reset better!
         controller = new ZWaveController(this, config);
@@ -297,7 +296,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                         builder.append(hexString.substring(j));
                         value = builder.toString();
 
-                        ZWaveSecurityCommandClass.setRealNetworkKey((String) value);
+                        // ZWaveSecurityCommandClass.setNetworkKey((String) value);
                     }
                 }
             }

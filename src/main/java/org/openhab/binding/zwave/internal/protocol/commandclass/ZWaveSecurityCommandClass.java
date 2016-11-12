@@ -8,42 +8,18 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.security.GeneralSecurityException;
-import java.util.Arrays;
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.TimeUnit;
 
-import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
-import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
-import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent.Type;
-import org.openhab.binding.zwave.internal.protocol.initialization.ZWaveNodeSerializer;
-import org.openhab.binding.zwave.internal.protocol.security.SecurityEncapsulatedSerialMessage;
-import org.openhab.binding.zwave.internal.protocol.security.ZWaveSecureNonceTracker;
-import org.openhab.binding.zwave.internal.protocol.security.ZWaveSecureNonceTracker.Nonce;
-import org.openhab.binding.zwave.internal.protocol.security.ZWaveSecurityPayloadFrame;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.ApplicationCommandMessageClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.impl.CommandClassSecurityV1;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
@@ -53,283 +29,21 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 /**
- * For code readability and maintainability, the logic for the secure command class is split into 2 classes: this one
- * and {@link ZWaveSecurityCommandClassWithInitialization}. {@link ZWaveSecurityCommandClassWithInitialization}
- * will always be created, as this class is abstract
+ * ZWave security command class 1
  *
- * @see {@link ZWaveSecurityCommandClassWithInitialization}
- * @author Dave Badia
  * @author Chris Jackson
  */
 @XStreamAlias("COMMAND_CLASS_SECURITY")
 public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
     private static final Logger logger = LoggerFactory.getLogger(ZWaveSecurityCommandClass.class);
 
-    /**
-     * Per the z-wave spec, this is the AES key used to derive {@link #encryptKey} from {@link #networkKey}
-     */
-    private static final byte[] DERIVE_ENCRYPT_KEY = { (byte) 0xAA, (byte) 0xAA, (byte) 0xAA, (byte) 0xAA, (byte) 0xAA,
-            (byte) 0xAA, (byte) 0xAA, (byte) 0xAA, (byte) 0xAA, (byte) 0xAA, (byte) 0xAA, (byte) 0xAA, (byte) 0xAA,
-            (byte) 0xAA, (byte) 0xAA, (byte) 0xAA };
-    /**
-     * Per the z-wave spec, this is the AES key used to derive {@link #authKey} from {@link #networkKey}
-     */
-    private static final byte[] DERIVE_AUTH_KEY = { 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55,
-            0x55, 0x55, 0x55, 0x55, 0x55 };
-    private static final String AES = "AES";
-    private static final int MAC_LENGTH = 8;
-    private static final int IV_LENGTH = 16;
-    static final int HALF_OF_IV = IV_LENGTH / 2;
-    /**
-     * Marks the end of the list of supported command classes. The remaining classes are those that can be controlled by
-     * the device. These classes are created without values. Messages received cause notification events instead.
-     */
-    public static final byte COMMAND_CLASS_MARK = (byte) 0xef;
-
-    /**
-     * Request which commands the device supports using
-     * security encapsulation (encryption)
-     */
-    public static final byte SECURITY_COMMANDS_SUPPORTED_GET = 0x02;
-    /**
-     * Response from the device which indicates which commands
-     * the device supports using security encapsulation (encryption)
-     */
-    public static final byte SECURITY_COMMANDS_SUPPORTED_REPORT = 0x03;
-    /**
-     * Request which security initialization schemes the
-     * device supports
-     */
-    public static final byte SECURITY_SCHEME_GET = 0x04;
-    /**
-     * Response from the device of which security initialization
-     * schemes the device supports
-     */
-    public static final byte SECURITY_SCHEME_REPORT = 0x05;
-    /**
-     * The controller is sending the device the network key to
-     * be used for all secure transmissions
-     */
-    public static final byte SECURITY_NETWORK_KEY_SET = 0x06;
-    /**
-     * Response from the device after getting SECURITY_NETWORK_KEY_SET
-     * that was encapsulated using the new key
-     */
-    public static final byte SECURITY_NETWORK_KEY_VERIFY = 0x07;
-    /**
-     * Not supported since we are always the master
-     */
-    private static final byte SECURITY_SCHEME_INHERIT = 0x08;
-    /**
-     * Request to generate a nonce to be used in message encapsulation
-     */
-    public static final byte SECURITY_NONCE_GET = 0x40;
-    /**
-     * Response with the generated nonce to be used in message encapsulation
-     */
-    public static final byte SECURITY_NONCE_REPORT = (byte) 0x80;
-    /**
-     * Indicates this message has been encapsulated and must be decrypted
-     * to reveal the actual message
-     * public so {@link ApplicationCommandMessageClass} can check for this and invoke
-     * {@link #decryptMessage(byte[], int)} as needed
-     */
-    public static final byte SECURITY_MESSAGE_ENCAP = (byte) 0x81;
-    /**
-     * Indicates this message has been encapsulated and must be decrypted
-     * to reveal the actual message and that there are more messages to
-     * send so another nonce is needed.
-     * public so {@link ApplicationCommandMessageClass} can check for this and invoke
-     * {@link #decryptMessage(byte[], int)} as needed
-     */
-    public static final byte SECURITY_MESSAGE_ENCAP_NONCE_GET = (byte) 0xc1;
-
-    private static final Map<Byte, String> COMMAND_LOOKUP_TABLE = new ConcurrentHashMap<Byte, String>();
-
-    private static final List<Byte> REQUIRED_ENCAPSULATION_LIST = Arrays
-            .asList(new Byte[] { SECURITY_NETWORK_KEY_SET, SECURITY_NETWORK_KEY_VERIFY, SECURITY_SCHEME_INHERIT,
-                    SECURITY_COMMANDS_SUPPORTED_GET, SECURITY_COMMANDS_SUPPORTED_REPORT });
-
-    private static final List<CommandClass> mandatoryCommandClasses = Arrays
-            .asList(new CommandClass[] { CommandClass.COMMAND_CLASS_DOOR_LOCK });
-
-    /**
-     * Should be set to true to ensure all incoming security encapsulated messages adhere to
-     * zwave security mac standards
-     *
-     * TODO: Package-protected visible for test case use
-     */
-    public static boolean DROP_PACKETS_ON_MAC_FAILURE = true;
-
-    /**
-     * Should be set to true unless we find a good reason not to since we
-     * also have {@link #disableEncapNonceGet} which will disable the
-     * use of {@link #SECURITY_MESSAGE_ENCAP_NONCE_GET} on a per device basis
-     * if it's not working
-     *
-     * OZW code comments say that {@link #SECURITY_MESSAGE_ENCAP_NONCE_GET}
-     * doesn't work so keep a flag to enable/disable.
-     *
-     * Package-protected visible for test case use
-     *
-     * @see {@link #disableEncapNonceGet}
-     *      TODO: DB NONE, NORMAL, AGGRESSIVE, VERY_AGRESSIVE
-     */
-    private static final boolean USE_SECURITY_MESSAGE_ENCAP_NONCE_GET = true;
-
-    /**
-     * OZW code sets different transmit option flags for some security
-     * messages.
-     *
-     * Package-protected visible for test case use
-     */
-    public static final boolean OVERRIDE_DEFAULT_TRANSMIT_OPTIONS = true;
-
-    /**
-     * Should be set to false as sending outside of the inclusion flow has been know to cause issues
-     * with the lock becoming unresponsive per OZW team
-     *
-     * When false, SECURITY_COMMANDS_SUPPORTED_GET is only sent during secure inclusion.
-     * When true, SECURITY_COMMANDS_SUPPORTED_GET is sent every time OpenHAB starts up.
-     *
-     * Package-protected visible for test case use
-     */
-    protected static final boolean SEND_SECURITY_COMMANDS_SUPPORTED_GET_ON_STARTUP = false;
-
-    /**
-     * Security messages are time sensitive so mark them as high priority
-     */
-    public static final SerialMessagePriority SECURITY_MESSAGE_PRIORITY = SerialMessagePriority.Immediate;
-
-    /**
-     * Header is made up of 10 bytes:
-     * command class byte
-     * message type byte
-     * 8 bytes for the device's nonce
-     */
-    private static final int ENCAPSULATED_HEADER_LENGTH = 10;
-
-    /**
-     * Footer consists of the nonce ID (1 byte) and the MAC (8 bytes)
-     */
-    private static final int ENCAPSULATED_FOOTER_LENGTH = 9;
-
-    /**
-     * Queue of {@link ZWaveSecurityPayloadFrame} that are waiting for nonces
-     * so they can be encapsulated and set.
-     *
-     * Note the reference is ConcurrentLinkedQueue and not Queue. This is done
-     * as a safety check we have to instantiate this in multiple places. This
-     * will ensure we always create it as the correct type.
-     */
     @XStreamOmitField
-    private ConcurrentLinkedQueue<ZWaveSecurityPayloadFrame> payloadEncapsulationQueue = new ConcurrentLinkedQueue<ZWaveSecurityPayloadFrame>();
+    protected SecretKey networkKey;
+
+    private boolean securelyIncluded = false;
 
     /**
-     * The network key as configured in the openhab.cfg -> zwave:networkey
-     */
-    @XStreamOmitField
-    protected static SecretKey realNetworkKey;
-
-    /**
-     * The network key currently in use. My be {@link #realNetworkKey} or a scheme network key
-     */
-    @XStreamOmitField
-    private SecretKey networkKey;
-
-    /**
-     * The encryption key currently in use which is derived from {@link #networkKey}
-     */
-    @XStreamOmitField
-    private SecretKey encryptKey;
-
-    /**
-     * The auth key currently in use which is derived from {@link #networkKey}
-     */
-    @XStreamOmitField
-    private SecretKey authKey;
-
-    /**
-     * The error that occurred when trying to load the encryption key from openhab.cfg -> zwave:networkey
-     * Will be null if the load succeeded
-     */
-    @XStreamOmitField
-    protected static Exception keyException;
-
-    /**
-     * Flag so we understand that we received the {@link #SECURITY_COMMANDS_SUPPORTED_REPORT} reply
-     * This occurs during inclusion and optionally during normal startup depending on the
-     * {@value #SEND_SECURITY_COMMANDS_SUPPORTED_GET_ON_STARTUP} flag
-     */
-    @XStreamOmitField
-    protected boolean receivedSecurityCommandsSupportedReport = false;
-
-    /**
-     * The last time we sent a security message to the node
-     */
-    @XStreamOmitField
-    protected long lastSentMessageTimestamp = 0;
-
-    /**
-     * The last time we received any security message from the node
-     */
-    @XStreamOmitField
-    protected long lastReceivedMessageTimestamp = 0;
-
-    /**
-     * The last time we received a {@link #SECURITY_NONCE_GET} message from the node
-     */
-    @XStreamOmitField
-    private long lastNonceGetReceivedAt = 0L;
-
-    @XStreamOmitField
-    private volatile SecurityEncapsulatedSerialMessage lastEncapsulatedRequstMessage = null;
-
-    @XStreamOmitField
-    protected ZWaveSecureNonceTracker nonceGeneration = new ZWaveSecureNonceTracker(getNode());
-
-    @XStreamOmitField
-    private Object threadLock = new Object();
-
-    @XStreamOmitField
-    private ZWaveSecurityEncapsulationThread encapsulationThread;
-
-    @XStreamOmitField
-    private long lastDeviceNonceReceivedAt = 0L;
-
-    // TODO: DB serialize
-    /**
-     * Flag to disable the use of {@link #SECURITY_MESSAGE_ENCAP_NONCE_GET}
-     * on a per device basis if it's not working
-     */
-    private boolean disableEncapNonceGet = false;
-
-    static {
-        // Initialize the COMMAND_LOOKUP_TABLE
-        COMMAND_LOOKUP_TABLE.put(Byte.valueOf(SECURITY_COMMANDS_SUPPORTED_GET), "SECURITY_COMMANDS_SUPPORTED_GET");
-        COMMAND_LOOKUP_TABLE.put(Byte.valueOf(SECURITY_COMMANDS_SUPPORTED_REPORT),
-                "SECURITY_COMMANDS_SUPPORTED_REPORT");
-        COMMAND_LOOKUP_TABLE.put(Byte.valueOf(SECURITY_SCHEME_GET), "SECURITY_SCHEME_GET");
-        COMMAND_LOOKUP_TABLE.put(Byte.valueOf(SECURITY_SCHEME_REPORT), "SECURITY_SCHEME_REPORT");
-        COMMAND_LOOKUP_TABLE.put(Byte.valueOf(SECURITY_NETWORK_KEY_SET), "SECURITY_NETWORK_KEY_SET");
-        COMMAND_LOOKUP_TABLE.put(Byte.valueOf(SECURITY_NETWORK_KEY_VERIFY), "SECURITY_NETWORK_KEY_VERIFY");
-        COMMAND_LOOKUP_TABLE.put(Byte.valueOf(SECURITY_SCHEME_INHERIT), "SECURITY_SCHEME_INHERIT");
-        COMMAND_LOOKUP_TABLE.put(Byte.valueOf(SECURITY_NONCE_GET), "SECURITY_NONCE_GET");
-        COMMAND_LOOKUP_TABLE.put(Byte.valueOf(SECURITY_NONCE_REPORT), "SECURITY_NONCE_REPORT");
-        COMMAND_LOOKUP_TABLE.put(Byte.valueOf(SECURITY_MESSAGE_ENCAP), "SECURITY_MESSAGE_ENCAP");
-        COMMAND_LOOKUP_TABLE.put(Byte.valueOf(SECURITY_MESSAGE_ENCAP_NONCE_GET), "SECURITY_MESSAGE_ENCAP_NONCE_GET");
-    }
-
-    abstract boolean checkRealNetworkKeyLoaded();
-
-    protected void transmitMessage(ZWaveTransaction nonceReportMessage) {
-        // Normal (non-inclusion mode) so give the message to the controller to be transmitted
-        // getController().sendData(serialMessage);
-    }
-
-    /**
-     * Creates a new instance of the ZWaveSecurityCommandClass class. This is package
-     * protected as {@link ZWaveSecurityCommandClassWithInitialization} will typically be invoked
+     * Creates a new instance of the ZWaveSecurityCommandClass class.
      *
      * @param node
      *            the node this command class belongs to
@@ -338,13 +52,8 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
      * @param endpoint
      *            the endpoint this Command class belongs to
      */
-    protected ZWaveSecurityCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
+    public ZWaveSecurityCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
-        if (!checkRealNetworkKeyLoaded()) {
-            throw new IllegalStateException(
-                    "NODE " + getNode().getNodeId() + ": node wants to use security but key is not set");
-        }
-        setupNetworkKey(false);
     }
 
     /**
@@ -352,958 +61,146 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
      */
     @Override
     public CommandClass getCommandClass() {
-        return getSecurityCommandClass();
-    }
-
-    public static CommandClass getSecurityCommandClass() {
         return CommandClass.COMMAND_CLASS_SECURITY;
     }
 
     /**
-     * {@inheritDoc}
-     */
-    @Override
-    public int getMaxVersion() {
-        return 1;
-    }
-
-    /**
-     * The Security command class is unique in that only some commands require encryption
-     * (for all others, the security encapsulation requirement applies to the entire command class.)
-     */
-    public static boolean doesCommandRequireSecurityEncapsulation(int cmd) {
-        return REQUIRED_ENCAPSULATION_LIST.contains(cmd);
-    }
-
-    /**
-     * Check if a command class must be encapsulated
+     * A controlling device MUST send Security Scheme Get Command immediately after the successful inclusion of a node
+     * that supports the Security Command class.<br>
      *
-     * @param cmdClass
-     * @return
+     * A node is considered newly included if it has been included for less than 10 seconds.<br>
+     *
+     * A newly included node MUST return the Security Scheme Report Command in response to this command.<br>
+     *
+     * Whether a node has been included securely or non-securely, the node MUST NOT respond to the Security Scheme Get
+     * command if it is not newly included.
+     *
+     * @return {@link ZWaveCommandClassTransactionPayload} to send
      */
-    public static boolean doesCommandClassRequireSecurityEncapsulation(CommandClass cmdClass) {
-        return mandatoryCommandClasses.contains(cmdClass);
-    }
-
-    @ZWaveResponseHandler(id = SECURITY_NONCE_REPORT, name = "SECURITY_NONCE_REPORT")
-    protected void handleSecurityNonceReport(ZWaveCommandClassPayload payload, int endpoint) {
-        lastDeviceNonceReceivedAt = System.currentTimeMillis();
-
-        // we received a NONCE from a device in response to our SECURITY_NONCE_GET or
-        // SECURITY_MESSAGE_ENCAP_NONCE_GET
-        // Nonce is messageBuf without the first offset +1 bytesmessageBuf.length - startAt;
-        byte[] nonceBytes = new byte[payload.getPayloadLength() - 2];
-        System.arraycopy(payload.getPayloadBuffer(), 2, nonceBytes, 0, payload.getPayloadLength() - 2);
-        debugHex("Received SECURITY_NONCE_REPORT", nonceBytes);
-        nonceGeneration.receivedNonceFromDevice(nonceBytes);
-
-        // Notify the ZWaveSecurityEncapsulationThread since we received a nonce
-        notifyEncapsulationThread();
-    }
-
-    @ZWaveResponseHandler(id = SECURITY_COMMANDS_SUPPORTED_REPORT, name = "SECURITY_COMMANDS_SUPPORTED_REPORT")
-    protected void handleSecurityCommandsSupportedReport(ZWaveCommandClassPayload payload, int endpoint) {
-        // This can be received during device inclusion or outside of it depending on
-        // SEND_SECURITY_COMMANDS_SUPPORTED_GET_ON_STARTUP
-        byte[] secureClassBytes = new byte[payload.getPayloadLength() - 2];
-        System.arraycopy(payload.getPayloadBuffer(), 2, secureClassBytes, 0, payload.getPayloadLength() - 2);
-        // traceHex("Supported Security Classes", secureClassBytes);
-        getNode().setSecuredClasses(secureClassBytes);
-        receivedSecurityCommandsSupportedReport = true;
-
-        logger.debug("NODE {}: Supported Security Classes {}", SerialMessage.bb2hex(secureClassBytes));
-    }
-
-    @ZWaveResponseHandler(id = SECURITY_NONCE_GET, name = "SECURITY_NONCE_GET")
-    protected void handleSecurityNonceGet(ZWaveCommandClassPayload payload, int endpoint) {
-        ZWaveTransaction nonceReportMessage = nonceGeneration.generateAndBuildNonceReport();
-        if (nonceReportMessage == null) {
-            logger.error("NODE {}: SECURITY_ERROR generateAndBuildNonceReport returned null");
-        } else {
-            transmitMessage(nonceReportMessage);
-        }
-    }
-
-    @ZWaveResponseHandler(id = SECURITY_SCHEME_REPORT, name = "SECURITY_SCHEME_REPORT")
-    protected void handleSecuritySchemeReport(ZWaveCommandClassPayload payload, int endpoint) {
-        logger.debug("NODE {}: Received SECURITY command V{}", getNode().getNodeId(), getVersion());
-        traceHex("payload bytes for incoming security message", payload.getPayloadBuffer());
-        lastReceivedMessageTimestamp = System.currentTimeMillis();
-        // if (inclusionStateTracker != null && !inclusionStateTracker.verifyAndAdvanceState(payload.getPayloadByte(1)))
-        // {
-        // bad order, abort
-        // return;
-        // }
-        // Should be received during inclusion only
-        // if (!wasThisNodeJustIncluded() || inclusionStateTracker == null) {
-        // logger.error("NODE {}: SECURITY_ERROR Received SECURITY_SCHEME_REPORT but we are not in inclusion mode! {}",
-        // payload);
-        // return;
-        // }
-
-        // int schemes = payload.getPayloadByte(2);
-        // logger.debug("NODE {}: Received Security Scheme Report: ", getNode().getNodeId(), schemes);
-        // if (schemes == SECURITY_SCHEME_ZERO) {
-        // Since we've agreed on a scheme for which to exchange our key
-        // we now send our NetworkKey to the device
-        // logger.debug("NODE {}: Security scheme agreed.", getNode().getNodeId());
-
-        // SerialMessage networkKeyMessage = new ZWaveSendDataMessageBuilder()
-        // .withCommandClass(getCommandClass(), SECURITY_NETWORK_KEY_SET)
-        // .withPayload(realNetworkKey.getEncoded()).withNodeId(getNode().getNodeId()).build();
-
-        // ZWaveTransaction networkKeyTransaction = new ZWaveTransactionBuilder(networkKeyMessage)
-        // .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-        // .withExpectedResponseCommandClass(getCommandClass(), SECURITY_NETWORK_KEY_VERIFY)
-        // .withPriority(TransactionPriority.Config).build();
-
-        // We can't set SECURITY_NETWORK_KEY_SET in inclusionStateTracker because we need to do a
-        // NONCE_GET before sending. So put this in our encrypt send queue
-        // and give inclusionStateTracker/ZWaveNodeStageAdvancer the NONCE_GET
-        // queueMessageForEncapsulationAndTransmission(networkKeyTransaction);
-        // if (!inclusionStateTracker.verifyAndAdvanceState(SECURITY_NETWORK_KEY_SET)) {
-        // return;
-        // }
-
-        ZWaveTransaction message = nonceGeneration.buildNonceGetIfNeeded();
-        // Since we are in init mode, message should always != null
-        if (message != null) {
-            // TODO: DB is this true?: logger.error("NODE {}: "+SECURE_INCLUSION_FAILED_MESSAGE+" In
-            // inclusion mode but buildNonceGetIfNeeded returned null, this may result in a deadlock");
-            // Let ZWaveNodeStageAdvancer come get the NONCE_GET
-            // inclusionStateTracker.setNextRequest(message);
-        }
-
-        // } else {
-        // No common security scheme. This really shouldn't happen
-        // inclusionStateTracker.setErrorState("TODO: Security scheme " + schemes + " is not supported");
-        // logger.error("NODE {}: " + SECURE_INCLUSION_FAILED_MESSAGE
-        // + " No common security scheme. Scheme requested was {}", getNode().getNodeId(), schemes);
-        // }
-    }
-
-    @ZWaveResponseHandler(id = SECURITY_NETWORK_KEY_VERIFY, name = "SECURITY_NETWORK_KEY_VERIFY")
-    protected void handleSecurityNetworkKeyVerify(ZWaveCommandClassPayload payload, int endpoint) {
-        // Should be received during inclusion only
-        // if (!wasThisNodeJustIncluded() || inclusionStateTracker == null) {
-        // logger.error(
-        // "NODE {}: SECURITY_ERROR Received SECURITY_NETWORK_KEY_VERIFY but we are not in inclusion mode! {}",
-        // payload);
-        // return;
-        // }
-
-        // Since we got here, it means we decrypted a packet using the key we sent in
-        // the SECURITY_NETWORK_KEY_SET message and the new key is in use by both sides.
-        // Next step is to send SECURITY_COMMANDS_SUPPORTED_GET
-        if (SEND_SECURITY_COMMANDS_SUPPORTED_GET_ON_STARTUP) {
-            // securePairingComplete = true;
-        }
-
-        // SerialMessage supportedGetMessage = new ZWaveSendDataMessageBuilder()
-        // .withCommandClass(getCommandClass(), SECURITY_COMMANDS_SUPPORTED_GET).withNodeId(getNode().getNodeId())
-        // .build();
-
-        // ZWaveTransaction supportedGetTransaction = new ZWaveTransactionBuilder(supportedGetMessage)
-        // .withExpectedResponseClass(SerialMessageClass.ApplicationCommandHandler)
-        // .withExpectedResponseCommandClass(getCommandClass(), SECURITY_COMMANDS_SUPPORTED_REPORT)
-        // .withPriority(TransactionPriority.Config).build();
-
-        // inclusionStateTracker.verifyAndAdvanceState(SECURITY_COMMANDS_SUPPORTED_GET);
-        ZWaveTransaction nonceGetMessage = nonceGeneration.buildNonceGetIfNeeded();
-        // Since we are in init mode, message should always != null
-        if (nonceGetMessage == null) {
-            // inclusionStateTracker.setErrorState(SECURE_INCLUSION_FAILED_MESSAGE
-            // + " In inclusion mode but buildNonceGetIfNeeded returned null," + " this may result in a deadlock");
-            return;
-        }
-        // inclusionStateTracker.setNextRequest(nonceGetMessage); // Let ZWaveNodeStageAdvancer come get it
-
-        // We can't set SECURITY_COMMANDS_SUPPORTED_GET in inclusionStateTracker because we need to do a
-        // NONCE_GET before sending. So put this in our encrypt send queue
-        // and give inclusionStateTracker/ZWaveNodeStageAdvancer the NONCE_GET
-        // queueMessageForEncapsulationAndTransmission(supportedGetTransaction);
-    }
-
-    @ZWaveResponseHandler(id = SECURITY_COMMANDS_SUPPORTED_REPORT, name = "SECURITY_COMMANDS_SUPPORTED_REPORT")
-    protected void handleSecurityCommandsReportedReport(ZWaveCommandClassPayload payload, int endpoint) {
-        // processSecurityCommandsSupportedReport(payload);
-        // This can be received during device inclusion or outside of it
-        // if (inclusionStateTracker != null) {
-        // We're done with all of our NodeStage#SECURITY_REPORT stuff, set inclusionStateTracker to null
-        // inclusionStateTracker = null;
-
-    }
-
-    ZWaveCommandClassTransactionPayload getSecuritySchemeGetMessage() {
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
-                SECURITY_SCHEME_GET).withExpectedResponseCommand(SECURITY_SCHEME_REPORT)
-                        .withPriority(TransactionPriority.High).build();
-
-    }
-
-    ZWaveCommandClassTransactionPayload getSecurityCommandsSupportedMessage() {
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
-                SECURITY_COMMANDS_SUPPORTED_GET).withExpectedResponseCommand(SECURITY_COMMANDS_SUPPORTED_REPORT)
+    public ZWaveCommandClassTransactionPayload getSecuritySchemeGetMessage() {
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
+                CommandClassSecurityV1.getSecuritySchemeGet(0))
+                        .withExpectedResponseCommand(CommandClassSecurityV1.SECURITY_SCHEME_REPORT)
                         .withPriority(TransactionPriority.High).build();
     }
 
-    ZWaveCommandClassTransactionPayload getSetSecurityKeyMessage() {
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
-                SECURITY_NETWORK_KEY_SET).withPayload(realNetworkKey.getEncoded())
-                        .withExpectedResponseCommand(SECURITY_NETWORK_KEY_VERIFY).withPriority(TransactionPriority.High)
-                        .build();
-    }
-
     /**
-     * Decrypts a security encapsulated message from the Z-Wave network. Ideally this would return
-     * a {@link SerialMessage} but we don't have enough data to do so. So we just return the
-     * decrypted payload bytes
+     * This command is used to advertise security scheme 0 support by the node being included. Upon reception, the
+     * including controller MUST send the network key immediately without waiting for input, by using 16 times 0x00 as
+     * the temporary key. The including controller MUST NOT perform any validation of the Supported Security Schemes
+     * byte.
      *
-     * @param offset the offset at which the command byte exists
+     * @param payload
      * @param endpoint
-     * @param messagePayload
-     * @return the decrypted payload bytes. 0=command class, 1=command, 2+=payload
      */
-    public byte[] decryptMessage(byte[] data, int offset) {
-        if (!checkRealNetworkKeyLoaded()) {
-            return null;
-        }
-        traceHex("in decryptMessage starting at offset, buffer is", data, offset);
-        ByteArrayInputStream bais = new ByteArrayInputStream(data);
-        // check for minimum size here so we can ignore the return value of bais.read() below
-        int minimumSize = offset + ENCAPSULATED_HEADER_LENGTH + ENCAPSULATED_FOOTER_LENGTH;
-        if (data.length < minimumSize) {
-            logger.error(
-                    "NODE {}: SECURITY_ERROR Dropping security encapsulated packet which is too small: min={}, actual={}",
-                    this.getNode().getNodeId(), minimumSize, data.length);
-            return null;
-        }
-        try {
-            // advance to the command byte
-            bais.read(new byte[offset]);
-            byte command = (byte) bais.read();
-            byte[] initializationVector = new byte[IV_LENGTH];
-
-            // The next 8 bytes of packet are the nonce generated by the device for the IV
-            bais.read(initializationVector, 0, HALF_OF_IV);
-            traceHex("device nonce", initializationVector, 0, HALF_OF_IV);
-            int ciphertextSize = data.length - offset - ENCAPSULATED_HEADER_LENGTH - ENCAPSULATED_FOOTER_LENGTH + 1;
-
-            // Next are the ciphertext bytes
-            byte[] ciphertextBytes = new byte[ciphertextSize];
-            bais.read(ciphertextBytes);
-            logger.trace("NODE {}: Encrypted Packet Sizes: total={}, encrypted={}", getNode().getNodeId(), data.length,
-                    ciphertextSize);
-            traceHex("ciphertextBytes", ciphertextBytes);
-
-            // We stored the nonce that we sent to the device, retrieve it by the id so we can use it in the IV
-            byte nonceId = (byte) bais.read();
-            Nonce nonceWeSentToDevice = nonceGeneration.getNonceWeGeneratedById(nonceId);
-            if (nonceWeSentToDevice == null) { // probably expired
-                // Error message logged in ZWaveSecureNonceTracker, just return
-                return null;
-            }
-            System.arraycopy(nonceWeSentToDevice.getNonceBytes(), 0, initializationVector, HALF_OF_IV, HALF_OF_IV);
-            traceHex("IV", initializationVector);
-
-            byte[] macFromPacket = new byte[MAC_LENGTH];
-            bais.read(macFromPacket);
-            Cipher cipher = Cipher.getInstance("AES/OFB/NoPadding");
-            cipher.init(Cipher.DECRYPT_MODE, encryptKey, new IvParameterSpec(initializationVector));
-            byte[] plaintextBytes = cipher.doFinal(ciphertextBytes);
-            traceHex("plaintextBytes", plaintextBytes);
-
-            byte driverNodeId = (byte) this.getController().getOwnNodeId();
-            byte[] mac = generateMAC(command, ciphertextBytes, (byte) getNode().getNodeId(), driverNodeId,
-                    initializationVector);
-            if (Arrays.equals(mac, macFromPacket)) {
-                logger.trace("NODE {}: MAC Authentication of packet verified OK", getNode().getNodeId());
-            } else {
-                logger.error("NODE {}: SECURITY_ERROR MAC Authentication of packet failed. Dropping.",
-                        getNode().getNodeId());
-                traceHex("full packet", data);
-                traceHex("package mac", macFromPacket);
-                traceHex("our mac", mac);
-                if (DROP_PACKETS_ON_MAC_FAILURE) {
-                    return null;
-                } else {
-                    logger.error("NODE {}: Just kidding, ignored failed MAC Authentication of packet",
-                            getNode().getNodeId());
-                }
-            }
-
-            byte sequenceDataByte = plaintextBytes[0];
-            if (sequenceDataByte != ZWaveSecurityPayloadFrame.SEQUENCE_BYTE_FOR_SINGLE_FRAME_MESSAGE) {
-                // This is a multi frame message which is not yet supported
-                logger.error("NODE {}: SECURITY_ERROR Received multi frame message which is not supported.",
-                        getNode().getNodeId());
-                return null;
-            }
-
-            // So we know if we got something that's not supported
-            logger.debug("NODE {}: SECURITY_RECEIVED {}", getNode().getNodeId(), SerialMessage.bb2hex(plaintextBytes));
-
-            if (lastEncapsulatedRequstMessage != null) {
-                lastEncapsulatedRequstMessage.securityReponseReceived(plaintextBytes);
-            }
-            notifyEncapsulationThread();
-            return plaintextBytes;
-        } catch (Exception e) {
-            logger.error("NODE {}: Error decrypting packet", getNode().getNodeId(), e);
-            return null;
-        }
+    @ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_SCHEME_REPORT, name = "SECURITY_SCHEME_REPORT")
+    public void handleSecuritySchemeReport(ZWaveCommandClassPayload payload, int endpoint) {
     }
 
     /**
-     * Queues the given message for security encapsulation and transmission.
+     * The Device can use the Network Key Set Command to set the network key in a Z-Wave node. Transmission of the
+     * Network Key Set command requires existence of a common agreed security scheme. The device uses the agreed
+     * temporary key to encapsulate the Network Key Set command.
      *
-     * Note that, per the Z-Wave spec, we don't just encrypt the message and send it. We need to first request a nonce
-     * from the node, wait for that response, then encrypt and send. Therefore this message will be split into one or
-     * more security frames, placed into a queue until the next nonce is received. Only then will it be encrypted and
-     * sent.
-     *
-     * @param message
-     *            the unencrypted message to be transmitted
-     * @throws ZWaveSerialMessageException
+     * @return {@link ZWaveCommandClassTransactionPayload} to send
      */
-    public void queueMessageForEncapsulationAndTransmission(ZWaveTransaction transaction) {
-        checkInit();
-        SerialMessage serialMessage = transaction.getSerialMessage();
-        if (serialMessage.getMessageBuffer().length < 7) {
-            logger.error("NODE {}: SECURITY_ERROR Message too short for encapsulation, dropping message {}",
-                    transaction.getNodeId(), transaction);
-            return;
+    public ZWaveCommandClassTransactionPayload getSetSecurityKeyMessage() {
+        List<Integer> keyList = new ArrayList<Integer>();
+        for (int val : networkKey.getEncoded()) {
+            keyList.add(val);
         }
 
-        if (serialMessage.getMessageClass() != SerialMessageClass.SendData) {
-            logger.error("NODE {}: SECURITY_ERROR Invalid message class {} for SendData for message {}",
-                    getNode().getNodeId(), serialMessage.getMessageClass().getLabel(),
-                    serialMessage.getMessageClass().getKey(), transaction.toString());
-        }
-
-        List<ZWaveSecurityPayloadFrame> securityPayloadFrameList = ZWaveSecurityPayloadFrame
-                .convertToSecurityPayload(getNode(), serialMessage);
-        logger.debug("NODE {}: Converted serial message {} to securityPayload(): {}", getNode().getNodeId(),
-                transaction, securityPayloadFrameList);
-
-        if (!payloadEncapsulationQueue.isEmpty()) {
-            // Clean up expired items and check for duplicate requests. This is necessary as
-            // bombarding a device with messages will typically cause issues and it may stop
-            // responding (seen during testing with Kwikset locks)
-            Iterator<ZWaveSecurityPayloadFrame> iter = payloadEncapsulationQueue.iterator();
-            while (iter.hasNext()) {
-                ZWaveSecurityPayloadFrame aFrameFromQueue = iter.next();
-                boolean shouldRemove = false;
-                byte[] newMessageTwoBytes = new byte[2];
-                System.arraycopy(securityPayloadFrameList.get(0).getMessageBytes(), 0, newMessageTwoBytes, 0, 2);
-                // Expired frame check
-                if (System.currentTimeMillis() > aFrameFromQueue.getExpirationTime()) {
-                    shouldRemove = true;
-                    logger.debug("NODE {}: Expired from payloadEncapsulationQueue: {}", getNode().getNodeId(),
-                            aFrameFromQueue);
-                } else {
-                    // Duplicate message check - if the queue already contains a message like this one, replace it
-                    // Compare the first 2 bytes (command class and operation) to do so
-                    byte[] aFrameFromQueueTwoBytes = new byte[2];
-                    System.arraycopy(aFrameFromQueue.getMessageBytes(), 0, aFrameFromQueueTwoBytes, 0, 2);
-                    shouldRemove = Arrays.equals(newMessageTwoBytes, aFrameFromQueueTwoBytes);
-                    logger.debug("NODE {}: payloadEncapsulationQueue similar frame check, shouldRemove={}: {} vs {}",
-                            getNode().getNodeId(), shouldRemove,
-                            SerialMessage.bb2hex(aFrameFromQueue.getMessageBytes()),
-                            SerialMessage.bb2hex(securityPayloadFrameList.get(0).getMessageBytes()));
-                }
-                if (shouldRemove) {
-                    removeFromEncapsulationQueue(aFrameFromQueue, iter, "Newer request received");
-                }
-            }
-        }
-
-        // Finally, since we've cleanup duplicates and removed old entries, we can add the new frame(s) to our queue
-        payloadEncapsulationQueue.addAll(securityPayloadFrameList);
-
-        // Wake up the {@link ZWaveSecurityEncapsulationThread} so it can do what it needs to
-        notifyEncapsulationThread();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
+                CommandClassSecurityV1.getNetworkKeySet(keyList))
+                        .withExpectedResponseCommand(CommandClassSecurityV1.NETWORK_KEY_VERIFY)
+                        .withPriority(TransactionPriority.High).build();
     }
 
     /**
-     * Deletes the given frame using iter.remove(). Will automatically delete subsequent frames as needed
-     * for multi-part messages
+     * When the included node has received a Network Key Set that is has successfully decrypted, verified by the MAC, it
+     * MUST send a Network Key Verify Command to the including controller. If the controller is capable of decrypting
+     * the Network Key Verify command it would indicate that the included node has successfully entered the secure
+     * network. Since there is no timeout for the Network Key Verify, the controller can send a Security Commands
+     * Supported Get command, and if no response is received, it SHOULD be concluded that the node has not been included
+     * properly.
      *
-     * @param frameToRemove the frame to remove, this is used only to check for multiple parts
-     * @param iter the iterator which <b>must</b> point to frameToRemove
-     * @param reason the reason it is being removed, will be put in the logs
+     * @param payload
+     * @param endpoint
      */
-    private void removeFromEncapsulationQueue(ZWaveSecurityPayloadFrame frameToRemove,
-            Iterator<ZWaveSecurityPayloadFrame> iter, String reason) {
-        logger.debug("NODE {}: {} removing from payloadEncapsulationQueue: {}", getNode().getNodeId(), reason,
-                frameToRemove);
-        boolean hasMultipleParts = frameToRemove.getTotalParts() > 1; // TODO: CDJ changed this from 0!!!
-        iter.remove();
+    @ZWaveResponseHandler(id = CommandClassSecurityV1.NETWORK_KEY_VERIFY, name = "NETWORK_KEY_VERIFY")
+    public void handleSecurityNetworkKeyVerify(ZWaveCommandClassPayload payload, int endpoint) {
+    }
 
-        if (hasMultipleParts) {
-            if (!iter.hasNext()) {
-                logger.debug("NODE {}: Security payload frame was marked as having 2 parts, "
-                        + "but only found 1 in queue: {}", getNode().getNodeId(), frameToRemove);
-            } else {
-                ZWaveSecurityPayloadFrame secondFrame = iter.next(); // Go to the 2nd part
-                logger.debug("NODE {}: Removing 2nd part from payloadEncapsulationQueue: {}", getNode().getNodeId(),
-                        secondFrame);
-                iter.remove();
-            }
-        }
+    public ZWaveCommandClassTransactionPayload getSecurityCommandsSupportedMessage() {
+        return null;
+        // return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+        //// SECURITY_COMMANDS_SUPPORTED_GET).withExpectedResponseCommand(SECURITY_COMMANDS_SUPPORTED_REPORT)
+        // .withPriority(TransactionPriority.High).build();
     }
 
     /**
-     * Gets the next message from {@link #payloadEncapsulationQueue}, encapsulates (encrypts and MACs) it, then
-     * transmits
-     * Invoked by {@link ZWaveSecurityEncapsulationThread}. This method must only be called by
-     * {@link ZWaveSecurityEncapsulationThread}
+     * This command advertises which command classes are supported using security encapsulation.<br>
      *
-     * @throws ZWaveSerialMessageException
+     * All non-securely supported command classes MAY be explicitly advertised in the Security Commands Supported
+     * Report.<br>
+     *
+     * All securely supported command classes MUST be explicitly advertised in the Security Commands Supported Report if
+     * they are only supported securely.<br>
+     *
+     * Secure communication MUST be used when transmitting this command.<br>
+     *
+     * @param payload
+     * @param endpoint
      */
-    protected void sendNextMessageUsingDeviceNonce() {
-        checkInit();
-        if (!checkRealNetworkKeyLoaded()) {
-            return;
-        }
-        if (encryptKey == null) {
-            // When loaded from xml, encrypt key will be null so we load it here
-            setupNetworkKey(false);
-        }
+    @ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_COMMANDS_SUPPORTED_REPORT, name = "SECURITY_COMMANDS_SUPPORTED_REPORT")
+    public void handleSecurityCommandsSupportedReport(ZWaveCommandClassPayload payload, int endpoint) {
+    }
 
-        if (payloadEncapsulationQueue.isEmpty()) {
-            logger.warn("NODE {}: payloadQueue was empty, returning!", getNode().getNodeId());
-            return;
-        }
+    @ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_NONCE_REPORT, name = "SECURITY_NONCE_REPORT")
+    public void handleSecurityNonceReport(ZWaveCommandClassPayload payload, int endpoint) {
+    }
 
-        Nonce deviceNonce = nonceGeneration.getUseableDeviceNonce();
-        if (deviceNonce == null) {
-            ZWaveTransaction nonceGetMessage = nonceGeneration.buildNonceGetIfNeeded();
-            if (nonceGetMessage == null) {
-                // Nothing to do, we are already waiting for a nonce from the device
-            } else {
-                transmitMessage(nonceGetMessage);
-            }
-            return;
-        }
-
-        // Fetch the next payload from the queue and encapsulate it
-        ZWaveSecurityPayloadFrame securityPayload = payloadEncapsulationQueue.poll();
-        if (securityPayload == null) {
-            logger.warn("NODE {}: payloadQueue was empty, returning!", getNode().getNodeId());
-            return;
-        }
-
-        // Encapsulate the message fragment
-        // debugHex("SecurityPayloadBytes", securityPayload.getMessageBytes());
-
-        logger.debug("NODE {}: SECURITY_SENT {}", getNode().getNodeId(),
-                SerialMessage.bb2hex(securityPayload.getMessageBytes()));
-
-        // Note that we set the expected reply to that of the original message, as it can vary
-        SecurityEncapsulatedSerialMessage message = new SecurityEncapsulatedSerialMessage(SerialMessageClass.SendData,
-                SerialMessageType.Request, securityPayload.getOriginalMessage());
-        message.setDeviceNonceId(deviceNonce.getNonceBytes()[0]);
-
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write((byte) getNode().getNodeId());
-        outputData.write(securityPayload.getLength() + 20);
-        outputData.write(this.getCommandClass().getKey());
-        byte commandByte = SECURITY_MESSAGE_ENCAP;
-        if (USE_SECURITY_MESSAGE_ENCAP_NONCE_GET && !disableEncapNonceGet) {
-            boolean useNonceGetMessage = false;
-            if (payloadEncapsulationQueue.size() > 0) {
-                useNonceGetMessage = true;
-                logger.debug("NODE {}: using SECURITY_MESSAGE_ENCAP_NONCE_GET with queue size of {}",
-                        getNode().getNodeId(), payloadEncapsulationQueue.size());
-            } else if (false) { // Check for messages that we know will have a follow-up request that is secure TODO: DB
-                                // change flag to AGGRESSIVE, etc? or just remove..
-                useNonceGetMessage = bytesAreEqual(securityPayload.getMessageBytes()[0],
-                        ZWaveCommandClass.CommandClass.COMMAND_CLASS_DOOR_LOCK.getKey())
-                        && bytesAreEqual(securityPayload.getMessageBytes()[1], ZWaveDoorLockCommandClass.DOOR_LOCK_SET);
-                if (useNonceGetMessage) {
-                    logger.debug(
-                            "NODE {}: using SECURITY_MESSAGE_ENCAP_NONCE_GET since there will be a followup command",
-                            getNode().getNodeId());
-                }
-            }
-            if (useNonceGetMessage) {
-                commandByte = SECURITY_MESSAGE_ENCAP_NONCE_GET;
-                nonceGeneration.sendingEncapNonceGet(message);
-            }
-        }
-        logger.trace("NODE {}: Used nonce to form {} ({}).", getNode().getNodeId(), commandToString(commandByte),
-                securityPayload.getLogMessage());
-        outputData.write(commandByte);
-
-        // create the iv
-        byte[] initializationVector = new byte[16];
-
-        // Generate a new nonce and fill the first half of the IV buffer with it
-        byte[] nonceBytes = nonceGeneration.generateNonceForEncapsulationMessage();
-        System.arraycopy(nonceBytes, 0, initializationVector, 0, HALF_OF_IV);
-
-        // the 2nd half of the IV is the nonce provided by the device
-        System.arraycopy(deviceNonce.getNonceBytes(), 0, initializationVector, HALF_OF_IV, HALF_OF_IV);
-
-        try {
-            // Append the first 8 bytes of the IV (our nonce) to the message
-            outputData.write(initializationVector, 0, HALF_OF_IV);
-
-            int totalParts = securityPayload.getTotalParts();
-            if (totalParts != 1) {
-                // We don't support multi-packet encapsulation at the moment...
-                logger.error("NODE {}: SECURITY_ERROR SecurityPayload had invalid number of parts: {} Send aborted.",
-                        getNode().getNodeId(), totalParts);
-                return;
-            }
-            // at most, the payload will be securityPayload length + 1 byte for the sequence byte
-            byte[] plaintextMessageBytes = new byte[1 + securityPayload.getLength()];
-            plaintextMessageBytes[0] = securityPayload.getSequenceByte();
-            System.arraycopy(securityPayload.getMessageBytes(), 0, plaintextMessageBytes, 1,
-                    securityPayload.getLength());
-            // Append the message payload after encrypting it with AES-OFB
-            traceHex("Input frame for encryption:", plaintextMessageBytes);
-            traceHex("IV:", initializationVector);
-
-            // This will use hardware AES acceleration when possible (default in JDK 8)
-            Cipher encryptCipher = Cipher.getInstance("AES/OFB/NoPadding");
-            encryptCipher.init(Cipher.ENCRYPT_MODE, encryptKey, new IvParameterSpec(initializationVector));
-            byte[] ciphertextBytes = encryptCipher.doFinal(plaintextMessageBytes);
-            traceHex("Encrypted Output", ciphertextBytes);
-            outputData.write(ciphertextBytes);
-
-            // Append the nonce identifier which is the first byte of the device nonce
-            outputData.write(deviceNonce.getNonceBytes()[0]);
-            int commandClassByteOffset = 2;
-            int toMacLength = outputData.toByteArray().length - commandClassByteOffset; // Start at command class byte
-            byte[] toMac = new byte[toMacLength];
-            System.arraycopy(outputData.toByteArray(), commandClassByteOffset, toMac, 0, toMacLength);
-
-            // Generate the MAC
-            byte sendingNode = (byte) this.getController().getOwnNodeId();
-            byte[] mac = generateMAC(commandByte, ciphertextBytes, sendingNode, (byte) getNode().getNodeId(),
-                    initializationVector);
-            traceHex("Auth mac", mac);
-            outputData.write(mac);
-            byte[] payload = outputData.toByteArray();
-            debugHex(
-                    String.format("Outgoing encrypted message (device nonce=%02X): ", initializationVector[HALF_OF_IV]),
-                    payload);
-            message.setMessagePayload(payload);
-            message.setSecurityPayload(securityPayload);
-            lastEncapsulatedRequstMessage = message;
-            // TODO!!!
-            // transmitMessage(message);
-        } catch (GeneralSecurityException | IOException e) {
-            logger.error("NODE {}: Error in sendNextMessageWithNonce, message not sent", e);
-        }
+    @ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_NONCE_GET, name = "SECURITY_NONCE_GET")
+    public void handleSecurityNonceGet(ZWaveCommandClassPayload payload, int endpoint) {
     }
 
     /**
-     * Checks the fields which are marked with XStreamOmitField as they will be null
-     * upon deserialization from a file
+     * Sets the network key. The key is provided as a string of hexadecimal values. Values can be space or comma
+     * delimitered, or can have no separation between values. Values can be prefixed with 0x or not.
      *
-     * TODO: Can't we find a better way to do this than calling it each time through the loop?
+     * @param value {@link String} containing the new network key
      */
-    protected synchronized void checkInit() {
-        if (nonceGeneration == null) {
-            nonceGeneration = new ZWaveSecureNonceTracker(getNode());
-        }
-        if (threadLock == null) {
-            threadLock = new Object();
-        }
-        if (payloadEncapsulationQueue == null) {
-            payloadEncapsulationQueue = new ConcurrentLinkedQueue<ZWaveSecurityPayloadFrame>();
-        }
-    }
-
-    public void startSecurityEncapsulationThread() {
-        if (encapsulationThread == null) {
-            encapsulationThread = new ZWaveSecurityEncapsulationThread();
-            encapsulationThread.start();
-        }
-    }
-
-    // package visible for junit
-    void setupNetworkKey(boolean useSchemeZero) {
-        logger.info("NODE {}: setupNetworkKey useSchemeZero={}", getNode().getNodeId(), useSchemeZero);
-        if (useSchemeZero) {
-            logger.info("NODE {}: Using Scheme0 Network Key for Key Exchange since we are in inclusion mode.",
-                    getNode().getNodeId());
-            // Scheme0 network key is a key of all zeros
-            networkKey = new SecretKeySpec(new byte[16], AES);
-        } else {
-            if (!checkRealNetworkKeyLoaded()) {
-                return; // Nothing we can do
-            }
-            // Use the real key
-            logger.trace("NODE {}: Using Real Network Key.", getNode().getNodeId());
-            networkKey = realNetworkKey;
+    public void setNetworkKey(String value) {
+        if (value == null) {
+            throw new IllegalArgumentException("Network key must not be null");
         }
 
-        try {
-            // Derived the message encryption key from the network key
-            Cipher cipher = Cipher.getInstance("AES/ECB/NoPadding");
-            cipher.init(Cipher.ENCRYPT_MODE, networkKey);
-            encryptKey = new SecretKeySpec(cipher.doFinal(DERIVE_ENCRYPT_KEY), AES);
-
-            // Derived the message auth key from the network key
-            cipher.init(Cipher.ENCRYPT_MODE, networkKey);
-            authKey = new SecretKeySpec(cipher.doFinal(DERIVE_AUTH_KEY), AES);
-        } catch (GeneralSecurityException e) {
-            logger.error("NODE {}: Error building derived keys {}", getNode().getNodeId(), e);
-            keyException = e;
-        }
-    }
-
-    /**
-     * @return true if we are in the process of adding this node, ie the controller
-     *         and device are performing a secure pair
-     */
-    protected boolean wasThisNodeJustIncluded() {
-        ZWaveInclusionEvent lastInclusionEvent = getController().getLastIncludeSlaveFoundEvent();
-        boolean result = false;
-        if (lastInclusionEvent != null && lastInclusionEvent.getEvent() == Type.IncludeSlaveFound
-                && getNode().getNodeId() == lastInclusionEvent.getNodeId()) {
-            // Check that this node was included very recently
-            long twoMinutesAgoMs = System.currentTimeMillis() - TimeUnit.MINUTES.toMillis(2);
-            result = lastInclusionEvent.getIncludedAt().getTime() > twoMinutesAgoMs;
-        }
-        logger.trace("NODE {}: lastInclusionEvent={} returning={}", getNode().getNodeId(), lastInclusionEvent, result);
-        return result;
-    }
-
-    /**
-     * Generate the MAC (message authentication code) from a security-encrypted message
-     * TODO: Public for testing - look to remove
-     *
-     * @throws GeneralSecurityException
-     */
-    public byte[] generateMAC(byte commandClass, byte[] ciphertext, byte sendingNode, byte receivingNode, byte[] iv)
-            throws GeneralSecurityException {
-        traceHex("generateMAC ciphertext", ciphertext);
-        traceHex("generateMAC iv", iv);
-        // Build a buffer containing a 4-byte header and the encrypted message data, padded with zeros to a 16-byte
-        // boundary.
-        int bufferSize = ciphertext.length + 4; // +4 to account for the header
-        byte[] buffer = new byte[bufferSize];
-        byte[] tempAuth = new byte[16];
-
-        buffer[0] = commandClass;
-        buffer[1] = sendingNode;
-        buffer[2] = receivingNode;
-        buffer[3] = (byte) ciphertext.length;
-        System.arraycopy(ciphertext, 0, buffer, 4, ciphertext.length);
-        traceHex("generateMAC NetworkKey", networkKey.getEncoded());
-        traceHex("generateMAC Raw Auth (minus IV)", buffer);
-
-        // Encrypt the IV with ECB
-        Cipher encryptCipher = Cipher.getInstance("AES/ECB/NoPadding");
-        encryptCipher.init(Cipher.ENCRYPT_MODE, authKey);
-        tempAuth = encryptCipher.doFinal(iv);
-        traceHex("generateMAC tmp1", tempAuth);
-        // our temporary holding
-        byte[] encpck = new byte[16];
-        int block = 0;
-
-        // now xor the buffer with our encrypted IV
-        for (int i = 0; i < bufferSize; i++) {
-            encpck[block] = buffer[i];
-            block++;
-            // if we hit a blocksize, then xor and encrypt
-            if (block == 16) {
-                for (int j = 0; j < 16; j++) {
-                    // here we do our xor
-                    tempAuth[j] = (byte) (encpck[j] ^ tempAuth[j]);
-                    encpck[j] = 0;
-                }
-                // reset encpck for good measure
-                Arrays.fill(encpck, (byte) 0);
-                // reset our block counter back to 0
-                block = 0;
-
-                encryptCipher.init(Cipher.ENCRYPT_MODE, authKey);
-                tempAuth = encryptCipher.doFinal(tempAuth);
-            }
-        }
-
-        // any left over data that isn't a full block size
-        if (block > 0) {
-            for (int i = 0; i < 16; i++) {
-                // encpck from block to 16 is already guaranteed to be 0 so its safe to xor it with out tempAuth
-                tempAuth[i] = (byte) (encpck[i] ^ tempAuth[i]);
-            }
-
-            encryptCipher.init(Cipher.ENCRYPT_MODE, authKey);
-            tempAuth = encryptCipher.doFinal(tempAuth);
-        }
-        // we only care about the first 8 bytes of tempAuth as the mac
-        traceHex("generateMAC Computed Auth", tempAuth);
-        byte[] mac = new byte[8];
-        System.arraycopy(tempAuth, 0, mac, 0, 8);
-        return mac;
-    }
-
-    /**
-     * Utility method to do unsigned byte comparison. This is necessary since in java all primitives are signed but
-     * zwave we often represent values in hex (which is unsigned).
-     *
-     * @param aByte
-     *            a byte
-     * @param anotherByte
-     *            an int
-     * @return true if they are equal
-     */
-    public static boolean bytesAreEqual(byte aByte, int anotherByte) {
-        return aByte == ((byte) (anotherByte & 0xff));
-    }
-
-    /**
-     * Used to set the security key from the config file
-     *
-     * @param hexString a comma separated hex string, for example: (please DO NOT use this as your key!)
-     *            0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10
-     */
-    public static void setRealNetworkKey(String hexString) {
-        try {
-            byte[] keyBytes = hexStringToByteArray(hexString);
-            ZWaveSecurityCommandClass.realNetworkKey = new SecretKeySpec(keyBytes, "AES");
-            logger.info("Update networkKey");
-            ZWaveSecurityCommandClass.keyException = null; // we have a valid key
-        } catch (IllegalArgumentException e) {
-            logger.error("Error parsing zwave:networkKey", e);
-            ZWaveSecurityCommandClass.keyException = e;
-        }
-    }
-
-    protected void notifyEncapsulationThread() {
-        long start = System.currentTimeMillis();
-        synchronized (threadLock) {
-            threadLock.notify();
-        }
-        long elapsed = System.currentTimeMillis() - start;
-        if (elapsed > 500) {
-            logger.warn("NODE {}: Took {}ms to get threadLock for notify", getNode().getNodeId(), elapsed);
-        }
-    }
-
-    public static String commandToString(int command) {
-        Byte theByte = Byte.valueOf((byte) (command & 0xff));
-        String result = COMMAND_LOOKUP_TABLE.get(theByte);
-        if (result == null) {
-            return "unknown";
-        }
-        return result;
-    }
-
-    /**
-     * Utility method to dump a byte array as hex. Will only print the data if debug
-     * mode is debug logging is actually enabled. We don't use {@link SerialMessage#bb2hex(byte[])}
-     * because we need our debug format to match that of OZW
-     *
-     * @param description
-     *            a human readable description of the data being logged
-     * @param bytes
-     *            the bytes to convert to hex and log
-     * @param offset
-     *            where to start from; zero means log the full byte array
-     */
-    private void traceHex(String description, byte[] bytesParam, int offset, int length) {
-        if (!logger.isTraceEnabled()) {
-            return;
-        }
-        byte[] bytes = bytesParam;
-        if (length < bytes.length) {
-            bytes = new byte[length];
-            System.arraycopy(bytesParam, offset, bytes, 0, length);
-        }
-        logger.trace("NODE {}: {}={}", getNode().getNodeId(), description, SerialMessage.bb2hex(bytes));
-    }
-
-    private void traceHex(String description, byte[] bytes, int offset) {
-        traceHex(description, bytes, offset, bytes.length - offset);
-    }
-
-    private void debugHex(String description, byte[] bytes, int offset, int length) {
-        if (!logger.isDebugEnabled()) {
-            return;
-        }
-        StringBuilder buf = new StringBuilder();
-        for (int i = offset; i < offset + length; i++) {
-            buf.append(String.format("%02x ", (bytes[i] & 0xff)));
-        }
-        String byteString = buf.toString().toUpperCase();
-        logger.debug("NODE {}: {} = {}", getNode().getNodeId(), description, byteString);
-    }
-
-    private void debugHex(String description, byte[] bytes) {
-        int offset = 0;
-        debugHex(description, bytes, offset, bytes.length - offset);
-    }
-
-    /**
-     * Utility method to dump a byte array as hex. Will only print the data if debug mode is debug logging is actually
-     * enabled
-     *
-     * @param description
-     *            a human readable description of the data being logged
-     * @param bytes
-     *            the bytes to convert to hex and log
-     */
-    protected void traceHex(String description, byte[] messagePayload) {
-        traceHex(description, messagePayload, 0, messagePayload.length);
-    }
-
-    public static byte[] hexStringToByteArray(String hexStringParam) {
-        if (hexStringParam == null) {
-            return new byte[0];
-        }
-        String hexString = hexStringParam.replace("0x", "");
+        String hexString = value.replace("0x", "");
         hexString = hexString.replace(",", "");
         hexString = hexString.replace(" ", "");
-        // from https://stackoverflow.com/questions/23354999/hex-string-to-byte-array-conversion
+
         if ((hexString.length() % 2) != 0) {
-            throw new IllegalArgumentException("Input string must contain an even number of characters");
+            throw new IllegalArgumentException("Network key must contain an even number of characters");
         }
 
-        byte result[] = new byte[hexString.length() / 2];
+        byte keyBytes[] = new byte[hexString.length() / 2];
         char enc[] = hexString.toCharArray();
         for (int i = 0; i < enc.length; i += 2) {
             StringBuilder curr = new StringBuilder(2);
             curr.append(enc[i]).append(enc[i + 1]);
-            result[i / 2] = (byte) Integer.parseInt(curr.toString(), 16);
+            keyBytes[i / 2] = (byte) Integer.parseInt(curr.toString(), 16);
         }
-        return result;
-    }
 
-    public static boolean isSecurityNonceReportMessage(SerialMessage serialMessage) {
-        if (serialMessage == null) {
-            return false;
-        }
-        if (serialMessage.getMessagePayload() == null || serialMessage.getMessagePayload().length < 3) {
-            return false;
-        }
-        byte[] payloadBytes = serialMessage.getMessagePayload();
-        boolean result = (payloadBytes[2] == ((byte) CommandClass.COMMAND_CLASS_SECURITY.getKey())
-                && payloadBytes[3] == SECURITY_NONCE_REPORT);
-        if (result) {
-            logger.trace("NODE {}: found Security NonceReportMessage={} payloadBytes={}",
-                    serialMessage.getMessageNode(), result, SerialMessage.bb2hex(payloadBytes));
-        }
-        return result;
+        networkKey = new SecretKeySpec(keyBytes, "AES");
+        logger.debug("NODE {}: Updated networkKey", getNode().getNodeId());
     }
 
     /**
-     * Security encapsulation thread. This waits for 1) a device nonce to arrive
-     * and 2) the last transaction to be completed. It will then use the device
-     * nonce to security encapsulate the next message in {@link ZWaveSecurityCommandClass#payloadEncapsulationQueue}
-     * and give it to the controller for sending
+     * Checks if the device has completed secure inclusion
      *
+     * @return true if secure inclusion was completed
      */
-    private class ZWaveSecurityEncapsulationThread extends Thread {
-        /**
-         * The default time we will wait to receive a response (or if no response will be sent at all)
-         */
-        private static final long DEFAULT_WAIT_FOR_RESPONSE = 10000;
-        /**
-         * If we get a {@link ZWaveSecurityCommandClass#SECURITY_NONCE_GET}, then we know the node
-         * is going to send us a security encapsulated response message. Wait additional time to receive that
-         */
-        private static final long NONCE_GET_ADDON = 20000;
-
-        private ZWaveSecurityEncapsulationThread() {
-            super("ZWaveSecurityEncapsulationThreadForNode" + getNode().getNodeId());
-        }
-
-        @Override
-        public void run() {
-            logger.debug("NODE {}: Starting Z-Wave thread: security encapsulation", getNode().getNodeId());
-            while (true) {
-                try {
-                    if (lastEncapsulatedRequstMessage != null
-                            && lastEncapsulatedRequstMessage.isSecurityTransactionComplete()) {
-                        // Look ahead in the queue for duplicate messages, if found, ignore them since this was
-                        // successful. This is required because security encapsulated messages incur a lot of overhead
-                        // on the controller and the device. The user (or other logic in the code) could fire off
-                        // many duplicates (such as BATTERY_GET on startup) which just holds up other operations.
-                        Iterator<ZWaveSecurityPayloadFrame> iter = payloadEncapsulationQueue.iterator();
-                        SerialMessage successfulMessage = lastEncapsulatedRequstMessage.getSecurityPayload()
-                                .getOriginalMessage();
-                        while (iter.hasNext()) {
-                            ZWaveSecurityPayloadFrame securityPayloadToBeSent = iter.next();
-                            SerialMessage messageToBeSent = securityPayloadToBeSent.getOriginalMessage();
-                            boolean shouldRemove = Arrays.equals(messageToBeSent.getMessagePayload(),
-                                    successfulMessage.getMessagePayload());
-                            logger.debug(
-                                    "NODE {}: success look ahead check: shouldRemove={} messageToBeSent={} successfulMessage={}",
-                                    getNode().getNodeId(), shouldRemove,
-                                    SerialMessage.bb2hex(messageToBeSent.getMessagePayload()),
-                                    SerialMessage.bb2hex(successfulMessage.getMessagePayload()));
-                            if (shouldRemove) {
-                                removeFromEncapsulationQueue(securityPayloadToBeSent, iter,
-                                        "look ahead found identical message");
-                            }
-                        }
-                        lastEncapsulatedRequstMessage = null; // We're done with it
-                    }
-
-                    boolean transmitNext = lastEncapsulatedRequstMessage == null;
-                    if (!transmitNext && lastEncapsulatedRequstMessage.hasBeenTransmitted()) {
-                        // Recompute the timeout each time
-                        long timeOutAt = lastEncapsulatedRequstMessage.getTransmittedAt() + DEFAULT_WAIT_FOR_RESPONSE;
-                        boolean expectingResponseMessage = lastNonceGetReceivedAt > lastEncapsulatedRequstMessage
-                                .getTransmittedAt();
-                        if (expectingResponseMessage) {
-                            timeOutAt += NONCE_GET_ADDON;
-                        }
-                        // See if we have reached the timeout yet
-                        if (System.currentTimeMillis() > timeOutAt) {
-                            if (expectingResponseMessage) {
-                                logger.error("NODE {}: Timed out waiting on response for encapsulated message {}",
-                                        getNode().getNodeId(), lastEncapsulatedRequstMessage);
-                            } else {
-                                logger.debug("NODE {}: no response expected for security transaction {}",
-                                        getNode().getNodeId(), lastEncapsulatedRequstMessage);
-                            }
-                            // SECURITY_MESSAGE_ENCAP_NONCE_GET doesn't always work. If it's not working with a device,
-                            // we disable it. Check here to see if it's working
-                            logger.debug("NODE {}: TODO: remove checking for SECURITY_MESSAGE_ENCAP_NONCE_GET",
-                                    getNode().getNodeId());
-                            if (bytesAreEqual(lastEncapsulatedRequstMessage.getMessagePayload()[3],
-                                    SECURITY_MESSAGE_ENCAP_NONCE_GET)) {
-                                logger.debug("NODE {}: SECURITY_MESSAGE_ENCAP_NONCE_GET are equal",
-                                        getNode().getNodeId());
-                                if (lastDeviceNonceReceivedAt < lastEncapsulatedRequstMessage.getTransmittedAt()) {
-                                    // The last NONCE_REPORT was received before we sent
-                                    // SECURITY_MESSAGE_ENCAP_NONCE_GET
-                                    // so SECURITY_MESSAGE_ENCAP_NONCE_GET isn't working, disable it
-                                    disableEncapNonceGet = true;
-                                    logger.error("NODE {}: SECURITY_MESSAGE_ENCAP_NONCE_GET disabled",
-                                            getNode().getNodeId());
-                                    // Save the setting so we remember
-                                    new ZWaveNodeSerializer().SerializeNode(getNode());
-                                }
-                            }
-                            lastEncapsulatedRequstMessage = null;
-                            transmitNext = true;
-                        }
-                    }
-
-                    if (transmitNext && !payloadEncapsulationQueue.isEmpty()) {
-                        sendNextMessageUsingDeviceNonce();
-                    }
-
-                    synchronized (threadLock) {
-                        threadLock.wait(1000);
-                    }
-                } catch (InterruptedException e) {
-                    continue;
-                } catch (Exception e) {
-                    logger.error("NODE {}: Exception during Z-Wave thread: security encapsulation",
-                            getNode().getNodeId(), e);
-                }
-            }
-        }
+    public boolean isSecurelyIncluded() {
+        return securelyIncluded;
     }
 }
