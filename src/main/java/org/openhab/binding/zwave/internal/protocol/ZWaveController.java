@@ -364,7 +364,7 @@ public class ZWaveController {
         ZWaveEvent zEvent = new ZWaveInitializationStateEvent(nodeId, ZWaveNodeInitStage.EMPTYNODE);
         notifyEventListeners(zEvent);
 
-        // if (nodeId != 2) {
+        // if (nodeId != 6) {
         // return;
         // }
 
@@ -417,8 +417,7 @@ public class ZWaveController {
 
                     // Set the controller and node references for all command classes
                     for (ZWaveCommandClass commandClass : node.getCommandClasses(0)) {
-                        commandClass.setController(controller);
-                        commandClass.setNode(node);
+                        commandClass.initialise(node, controller, null);
 
                         // Handle event handlers
                         if (commandClass instanceof ZWaveEventListener) {
@@ -430,9 +429,7 @@ public class ZWaveController {
                             for (int endpointNumber = 1; endpointNumber < node.getEndpointCount(); endpointNumber++) {
                                 ZWaveEndpoint endPoint = node.getEndpoint(endpointNumber);
                                 for (ZWaveCommandClass endpointCommandClass : endPoint.getCommandClasses()) {
-                                    endpointCommandClass.setController(controller);
-                                    endpointCommandClass.setNode(node);
-                                    endpointCommandClass.setEndpoint(endPoint);
+                                    endpointCommandClass.initialise(node, controller, endPoint);
 
                                     // Handle event handlers
                                     if (endpointCommandClass instanceof ZWaveEventListener) {
@@ -457,11 +454,6 @@ public class ZWaveController {
                 node.setDeviceId(controller.getDeviceId());
                 node.setDeviceType(controller.getDeviceType());
                 node.setManufacturer(controller.getManufactureId());
-
-                // Add the network management command classes
-                // TODO: There's probably a better way to do this?!?
-                node.addCommandClass(ZWaveCommandClass
-                        .getInstance(CommandClass.COMMAND_CLASS_NETWORK_MANAGEMENT_PROXY.getKey(), node, controller));
             }
 
             // Place nodes in the local ZWave Controller

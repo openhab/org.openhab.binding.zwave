@@ -129,7 +129,7 @@ public class ZWaveNodeSerializer {
      *            the number of the node to deserialize
      * @return returns the Node or null in case Serialization failed.
      */
-    public ZWaveNode DeserializeNode(long homeId, int nodeId) {
+    public ZWaveNode DeserializeNode(int homeId, int nodeId) {
         synchronized (stream) {
             File file = new File(this.folderName, String.format("network_%08x__node_%d.xml", homeId, nodeId));
             BufferedReader reader = null;

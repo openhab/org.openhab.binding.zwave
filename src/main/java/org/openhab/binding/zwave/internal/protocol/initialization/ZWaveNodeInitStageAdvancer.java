@@ -52,6 +52,7 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.GetRoutingInfoM
 import org.openhab.binding.zwave.internal.protocol.serialmessage.IdentifyNodeMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.IsFailedNodeMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeInfoMessageClass;
+import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeNeighborUpdateMessageClass;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -181,6 +182,7 @@ public class ZWaveNodeInitStageAdvancer {
                 }
 
                 doDynamicStages();
+                doHealStages();
             }
         };
 
@@ -342,8 +344,9 @@ public class ZWaveNodeInitStageAdvancer {
             // Loop through all command classes, requesting their version
             // using the Version command class
 
-            // TODO: Protect if no classes known!
-            for (ZWaveCommandClass zwaveVersionClass : node.getCommandClasses(0)) {
+            // We use a new list here so since command classes can be removed in the VERSION class
+            Collection<ZWaveCommandClass> classes = new ArrayList<ZWaveCommandClass>(node.getCommandClasses(0));
+            for (ZWaveCommandClass zwaveVersionClass : classes) {
                 logger.debug("NODE {}: Node advancer: VERSION - checking {}, version is {}", node.getNodeId(),
                         zwaveVersionClass.getCommandClass(), zwaveVersionClass.getVersion());
 
@@ -625,23 +628,6 @@ public class ZWaveNodeInitStageAdvancer {
             }
         }
 
-        setCurrentStage(ZWaveNodeInitStage.DELETE_SUC_ROUTES);
-
-        // Only delete the route if this is not the controller and there is an SUC in the network
-        if (node.getNodeId() != controller.getOwnNodeId() && controller.getSucId() != 0) {
-            // Update the route to the controller
-            logger.debug("NODE {}: Node advancer is deleting SUC return route.", node.getNodeId());
-            processTransactions(new DeleteSucReturnRouteMessageClass().doRequest(node.getNodeId()));
-        }
-
-        setCurrentStage(ZWaveNodeInitStage.SUC_ROUTE);
-        // Only set the route if this is not the controller and there is an SUC in the network
-        if (node.getNodeId() != controller.getOwnNodeId() && controller.getSucId() != 0) {
-            // Update the route to the controller
-            logger.debug("NODE {}: Node advancer is setting SUC route.", node.getNodeId());
-            processTransactions(new AssignSucReturnRouteMessageClass().doRequest(node.getNodeId()));
-        }
-
         setCurrentStage(ZWaveNodeInitStage.GET_CONFIGURATION);
         ZWaveConfigurationCommandClass configurationCommandClass = (ZWaveConfigurationCommandClass) node
                 .getCommandClass(CommandClass.COMMAND_CLASS_CONFIGURATION);
@@ -729,42 +715,34 @@ public class ZWaveNodeInitStageAdvancer {
                 }
             }
         }
-        /*
-         * for (ZWaveCommandClass zwaveDynamicClass : node.getCommandClasses(0)) {
-         * logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - checking {}", node.getNodeId(),
-         * zwaveDynamicClass.getCommandClass());
-         * if (zwaveDynamicClass instanceof ZWaveCommandClassDynamicState) {
-         * logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - found    {}", node.getNodeId(),
-         * zwaveDynamicClass.getCommandClass());
-         * ZWaveCommandClassDynamicState zdds = (ZWaveCommandClassDynamicState) zwaveDynamicClass;
-         * int instances = zwaveDynamicClass.getInstances();
-         * logger.debug("NODE {}: Found {} instances of {}", node.getNodeId(), instances,
-         * zwaveDynamicClass.getCommandClass());
-         * if (instances == 1) {
-         * processTransactions(zdds.getDynamicValues(true));
-         * } else {
-         * for (int i = 1; i <= instances; i++) {
-         * processTransactions(zdds.getDynamicValues(true), zwaveDynamicClass, i);
-         * }
-         * }
-         * } else if (zwaveDynamicClass instanceof ZWaveMultiInstanceCommandClass) {
-         * for (int endpointNumber = 1; endpointNumber < node.getEndpointCount(); endpointNumber++) {
-         * ZWaveEndpoint endpoint = node.getEndpoint(endpointNumber);
-         * for (ZWaveCommandClass endpointCommandClass : endpoint.getCommandClasses()) {
-         * logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - checking {} for endpoint {}",
-         * node.getNodeId(), endpointCommandClass.getCommandClass(), endpoint.getEndpointId());
-         * if (endpointCommandClass instanceof ZWaveCommandClassDynamicState) {
-         * logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - found    {}", node.getNodeId(),
-         * endpointCommandClass.getCommandClass());
-         * ZWaveCommandClassDynamicState zdds2 = (ZWaveCommandClassDynamicState) endpointCommandClass;
-         * processTransactions(zdds2.getDynamicValues(true), endpointCommandClass,
-         * endpoint.getEndpointId());
-         * }
-         * }
-         * }
-         * }
-         * }
-         */
+    }
+
+    void doHealStages() {
+        setCurrentStage(ZWaveNodeInitStage.UPDATE_NEIGHBORS);
+        logger.debug("NODE {}: Node advancer: UPDATE_NEIGHBORS - updating neighbor list", node.getNodeId());
+        processTransactions(new RequestNodeNeighborUpdateMessageClass().doRequest(node.getNodeId()));
+
+        setCurrentStage(ZWaveNodeInitStage.GET_NEIGHBORS);
+        logger.debug("NODE {}: Node advancer: GET_NEIGHBORS - get RoutingInfo", node.getNodeId());
+        processTransactions(new GetRoutingInfoMessageClass().doRequest(node.getNodeId()));
+
+        setCurrentStage(ZWaveNodeInitStage.DELETE_SUC_ROUTES);
+
+        // Only delete the route if this is not the controller and there is an SUC in the network
+        if (node.getNodeId() != controller.getOwnNodeId() && controller.getSucId() != 0) {
+            // Update the route to the controller
+            logger.debug("NODE {}: Node advancer is deleting SUC return route.", node.getNodeId());
+            processTransactions(new DeleteSucReturnRouteMessageClass().doRequest(node.getNodeId()));
+        }
+
+        setCurrentStage(ZWaveNodeInitStage.SUC_ROUTE);
+        // Only set the route if this is not the controller and there is an SUC in the network
+        if (node.getNodeId() != controller.getOwnNodeId() && controller.getSucId() != 0) {
+            // Update the route to the controller
+            logger.debug("NODE {}: Node advancer is setting SUC route.", node.getNodeId());
+            processTransactions(new AssignSucReturnRouteMessageClass().doRequest(node.getNodeId()));
+        }
+
         setCurrentStage(ZWaveNodeInitStage.DELETE_ROUTES);
         if (node.getRoutingList().size() != 0) {
             // Delete all the return routes for the node
@@ -778,10 +756,6 @@ public class ZWaveNodeInitStageAdvancer {
             logger.debug("NODE {}: Adding return route to {}", node.getNodeId(), route);
             processTransactions(new AssignReturnRouteMessageClass().doRequest(node.getNodeId(), route));
         }
-
-        setCurrentStage(ZWaveNodeInitStage.NEIGHBORS);
-        logger.debug("NODE {}: Node advancer: NEIGHBORS - get RoutingInfo", node.getNodeId());
-        processTransactions(new GetRoutingInfoMessageClass().doRequest(node.getNodeId()));
 
         logger.debug("NODE {}: Node advancer: Initialisation complete!", node.getNodeId());
 

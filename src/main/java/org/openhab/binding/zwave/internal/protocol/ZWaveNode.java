@@ -1211,7 +1211,7 @@ public class ZWaveNode {
                 }
             }
 
-            if (doesMessageRequireSecurityEncapsulation(payload)) {
+            if (doesMessageRequireSecurityEncapsulation(command)) {
                 // Should have been security encapsulation but wasn't!
                 logger.error(
                         "NODE {}: Command Class {} {} was required to be security encapsulation but it wasn't!  Dropping message.",
@@ -1224,9 +1224,8 @@ public class ZWaveNode {
             logger.trace("NODE {}: Found Command Class {}, passing to handleApplicationCommandRequest", nodeId,
                     zwaveCommandClass.getCommandClass());
             try {
-                zwaveCommandClass.handleApplicationCommandRequest(payload, 0);
+                zwaveCommandClass.handleApplicationCommandRequest(command, 0);
             } catch (ZWaveSerialMessageException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }

@@ -49,7 +49,7 @@ public abstract class ZWaveCommandClass {
     };
 
     @XStreamOmitField
-    final Map<Integer, ZWaveResponseHandlerMethod> commands = new HashMap<Integer, ZWaveResponseHandlerMethod>();
+    Map<Integer, ZWaveResponseHandlerMethod> commands;
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveCommandClass.class);
@@ -84,8 +84,13 @@ public abstract class ZWaveCommandClass {
      * @param endpoint the endpoint this Command class belongs to.
      */
     protected ZWaveCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
+        initialise(node, controller, endpoint);
+    }
+
+    public void initialise(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         final long start = System.currentTimeMillis();
 
+        commands = new HashMap<Integer, ZWaveResponseHandlerMethod>();
         Method[] methods = this.getClass().getMethods();
         for (Method method : methods) {
             ZWaveResponseHandler handler = method.getAnnotation(ZWaveResponseHandler.class);
@@ -119,9 +124,9 @@ public abstract class ZWaveCommandClass {
      *
      * @param node the node to set
      */
-    public void setNode(ZWaveNode node) {
-        this.node = node;
-    }
+    // public void setNode(ZWaveNode node) {
+    // this.node = node;
+    // }
 
     /**
      * Returns the controller to send messages to.
@@ -137,9 +142,9 @@ public abstract class ZWaveCommandClass {
      *
      * @param controller the controller to set
      */
-    public void setController(ZWaveController controller) {
-        this.controller = controller;
-    }
+    // public void setController(ZWaveController controller) {
+    // this.controller = controller;
+    // }
 
     /**
      * Returns the endpoint this command class belongs to.
@@ -155,9 +160,9 @@ public abstract class ZWaveCommandClass {
      *
      * @param endpoint the endpoint to set
      */
-    public void setEndpoint(ZWaveEndpoint endpoint) {
-        this.endpoint = endpoint;
-    }
+    // public void setEndpoint(ZWaveEndpoint endpoint) {
+    // this.endpoint = endpoint;
+    // }
 
     /**
      * Returns the version of the command class.
@@ -169,7 +174,7 @@ public abstract class ZWaveCommandClass {
     }
 
     /**
-     * Sets the version number for this command class.
+     * Sets the version number for this command class that is supported by the device.
      *
      * @param version. The version number to set.
      */
@@ -245,6 +250,11 @@ public abstract class ZWaveCommandClass {
      */
     public void handleApplicationCommandRequest(ZWaveCommandClassPayload payload, int endpoint)
             throws ZWaveSerialMessageException {
+
+        if (commands == null) {
+            logger.debug("NODE {}: Received {} V{} but class has no handlers.", getNode().getNodeId(),
+                    getCommandClass(), getVersion());
+        }
 
         if (commands.get(payload.getCommandClassCommand()) == null) {
             logger.debug("NODE {}: Received {} V{} unknown command {}", getNode().getNodeId(), getCommandClass(),

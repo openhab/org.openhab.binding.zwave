@@ -27,10 +27,10 @@ public class RequestNodeInfoMessageClass extends ZWaveCommandProcessor {
     private static final Logger logger = LoggerFactory.getLogger(RequestNodeInfoMessageClass.class);
 
     public ZWaveSerialPayload doRequest(int nodeId) {
-        // Create the request
+        // Create the request - note the long timeout
         return new ZWaveTransactionMessageBuilder(SerialMessageClass.RequestNodeInfo).withPayload(nodeId)
                 .withExpectedResponseClass(SerialMessageClass.ApplicationUpdate).withResponseNodeId(nodeId)
-                .withTimeout(12000).withRequiresData(true).build();
+                .withTimeout(25000).withRequiresData(true).build();
     }
 
     @Override
