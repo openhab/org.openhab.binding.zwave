@@ -26,7 +26,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Popp & Co</property>
+      <property name="vendor">Popp &amp; Co</property>
       <property name="modelId">009204</property>
       <property name="manufacturerId">0154</property>
       <property name="manufacturerRef">0100:0103</property>
