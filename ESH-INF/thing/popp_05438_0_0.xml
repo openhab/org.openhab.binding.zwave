@@ -33,7 +33,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Popp & Co</property>
+      <property name="vendor">Popp &amp; Co</property>
       <property name="modelId">05438</property>
       <property name="manufacturerId">0154</property>
       <property name="manufacturerRef">0003:0001</property>
