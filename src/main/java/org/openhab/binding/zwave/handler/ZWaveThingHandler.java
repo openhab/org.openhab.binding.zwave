@@ -1311,10 +1311,12 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     cmdClassZWavePlus.getZWavePlusDeviceType().toString());
         }
 
+        // Must loop over the new properties since we might have added data
         boolean update = false;
         Map<String, String> originalProperties = editProperties();
-        for (String property : originalProperties.keySet()) {
-            if (properties.get(property).equals(originalProperties.get(property)) == false) {
+        for (String property : properties.keySet()) {
+            if ((originalProperties.get(property) == null
+                    || originalProperties.get(property).equals(properties.get(property)) == false)) {
                 update = true;
                 break;
             }
