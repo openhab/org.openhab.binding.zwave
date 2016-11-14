@@ -477,6 +477,12 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         logger.debug("Handler disposed. Unregistering listener.");
         if (nodeId != 0) {
             if (controllerHandler != null) {
+                // Save the XML so that any changes to configuration is saved
+                ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
+                ZWaveNode node = controllerHandler.getNode(nodeId);
+                nodeSerializer.SerializeNode(node);
+
+                // Remove the event listener
                 controllerHandler.removeEventListener(this);
             }
             nodeId = 0;
