@@ -103,7 +103,7 @@ public class SecurityEncapsulatedSerialMessage extends SerialMessage {
         // SerialMessageClass.ApplicationCommandHandler.getKey());
         boolean result = payloadBytes[1] == transactionCompleteCommandClass;
         if (result && transactionCompleteCommand != UNSET) {
-            result = ZWaveSecurityCommandClass.bytesAreEqual(transactionCompleteCommand, payloadBytes[3]);
+            // result = ZWaveSecurityCommandClass.bytesAreEqual(transactionCompleteCommand, payloadBytes[3]);
         }
         logger.debug("NODE {}: securityReponseReceived={} for {}. Class: want={},got={}; Command: want={},got={}",
                 getMessageNode(), result, SerialMessage.bb2hex(payloadBytes),

@@ -42,7 +42,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  */
 @XStreamAlias("COMMAND_CLASS_METER")
 public class ZWaveMeterCommandClass extends ZWaveCommandClass
-        implements ZWaveGetCommands, ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
+        implements ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveMeterCommandClass.class);
@@ -193,7 +193,6 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    @Override
     public ZWaveCommandClassTransactionPayload getValueMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", getNode().getNodeId());

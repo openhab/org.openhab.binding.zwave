@@ -28,7 +28,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  * @author Dave Badia
  */
 @XStreamAlias("COMMAND_CLASS_LOCK")
-public class ZWaveLockCommandClass extends ZWaveCommandClass implements ZWaveGetCommands, ZWaveSetCommands {
+public class ZWaveLockCommandClass extends ZWaveCommandClass {
 
     private static final Logger logger = LoggerFactory.getLogger(ZWaveLockCommandClass.class);
 
@@ -76,7 +76,6 @@ public class ZWaveLockCommandClass extends ZWaveCommandClass implements ZWaveGet
      *
      * @return the serial message
      */
-    @Override
     public ZWaveCommandClassTransactionPayload getValueMessage() {
         logger.debug("NODE {}: Creating new message for application command LOCK_GET", this.getNode().getNodeId());
 
@@ -84,7 +83,6 @@ public class ZWaveLockCommandClass extends ZWaveCommandClass implements ZWaveGet
                 .withExpectedResponseCommand(LOCK_REPORT).withPriority(TransactionPriority.Get).build();
     }
 
-    @Override
     public ZWaveCommandClassTransactionPayload setValueMessage(int value) {
         logger.debug("NODE {}: Creating new message for application command LOCK_SET", this.getNode().getNodeId());
 

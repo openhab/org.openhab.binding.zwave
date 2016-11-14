@@ -35,7 +35,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  */
 
 @XStreamAlias("COMMAND_CLASS_BASIC")
-public class ZWaveBasicCommandClass extends ZWaveCommandClass implements ZWaveBasicCommands {
+public class ZWaveBasicCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveBasicCommandClass.class);
@@ -92,7 +92,6 @@ public class ZWaveBasicCommandClass extends ZWaveCommandClass implements ZWaveBa
      *
      * @return the serial message
      */
-    @Override
     public ZWaveCommandClassTransactionPayload getValueMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", this.getNode().getNodeId());
@@ -118,7 +117,6 @@ public class ZWaveBasicCommandClass extends ZWaveCommandClass implements ZWaveBa
      * @param the level to set.
      * @return the serial message
      */
-    @Override
     public ZWaveCommandClassTransactionPayload setValueMessage(int level) {
         logger.debug("NODE {}: Creating new message for application command BASIC_SET", this.getNode().getNodeId());
 

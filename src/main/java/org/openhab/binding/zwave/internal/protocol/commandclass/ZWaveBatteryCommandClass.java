@@ -35,8 +35,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Jan-Willem Spuij
  */
 @XStreamAlias("COMMAND_CLASS_BATTERY")
-public class ZWaveBatteryCommandClass extends ZWaveCommandClass
-        implements ZWaveGetCommands, ZWaveCommandClassDynamicState {
+public class ZWaveBatteryCommandClass extends ZWaveCommandClass implements ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveBatteryCommandClass.class);
@@ -103,7 +102,6 @@ public class ZWaveBatteryCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    @Override
     public ZWaveCommandClassTransactionPayload getValueMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", this.getNode().getNodeId());

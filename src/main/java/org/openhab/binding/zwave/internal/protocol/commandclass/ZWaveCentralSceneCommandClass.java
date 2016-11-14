@@ -31,8 +31,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  */
 @XStreamAlias("COMMAND_CLASS_CENTRAL_SCENE")
-public class ZWaveCentralSceneCommandClass extends ZWaveCommandClass
-        implements ZWaveGetCommands, ZWaveCommandClassInitialization {
+public class ZWaveCentralSceneCommandClass extends ZWaveCommandClass implements ZWaveCommandClassInitialization {
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveCentralSceneCommandClass.class);
@@ -93,7 +92,6 @@ public class ZWaveCentralSceneCommandClass extends ZWaveCommandClass
         initialiseDone = true;
     }
 
-    @Override
     public ZWaveCommandClassTransactionPayload getValueMessage() {
         logger.debug("NODE {}: Creating new message for application command SCENE_GET", this.getNode().getNodeId());
 

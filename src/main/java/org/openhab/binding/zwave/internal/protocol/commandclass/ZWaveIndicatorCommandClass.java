@@ -38,8 +38,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Pedro Paixao
  */
 @XStreamAlias("COMMAND_CLASS_INDICATOR")
-public class ZWaveIndicatorCommandClass extends ZWaveCommandClass
-        implements ZWaveGetCommands, ZWaveSetCommands, ZWaveCommandClassDynamicState {
+public class ZWaveIndicatorCommandClass extends ZWaveCommandClass implements ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveIndicatorCommandClass.class);
@@ -101,7 +100,6 @@ public class ZWaveIndicatorCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    @Override
     public ZWaveCommandClassTransactionPayload getValueMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", this.getNode().getNodeId());
@@ -129,7 +127,6 @@ public class ZWaveIndicatorCommandClass extends ZWaveCommandClass
      * @param the level to set.
      * @return the serial message
      */
-    @Override
     public ZWaveCommandClassTransactionPayload setValueMessage(int newIndicator) {
         logger.debug("NODE {}: Creating new message for application command INDICATOR_SET", this.getNode().getNodeId());
 

@@ -36,7 +36,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  */
 @XStreamAlias("COMMAND_CLASS_DOOR_LOCK")
 public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
-        implements ZWaveGetCommands, ZWaveSetCommands, ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
+        implements ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
     public enum Type {
         DOOR_LOCK_STATE,
         DOOR_LOCK_TIMEOUT
@@ -145,7 +145,6 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    @Override
     public ZWaveCommandClassTransactionPayload getValueMessage() {
         logger.debug("NODE {}: Creating new message for application command DOORLOCK_GET", getNode().getNodeId());
 
@@ -153,7 +152,6 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
                 .withPriority(TransactionPriority.Get).withExpectedResponseCommand(DOOR_LOCK_REPORT).build();
     }
 
-    @Override
     public ZWaveCommandClassTransactionPayload setValueMessage(int value) {
         logger.debug("NODE {}: Creating new message for application command DOORLOCK_SET", getNode().getNodeId());
 

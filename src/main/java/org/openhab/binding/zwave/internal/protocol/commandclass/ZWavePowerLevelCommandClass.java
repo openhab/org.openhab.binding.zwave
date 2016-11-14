@@ -31,8 +31,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  */
 @XStreamAlias("COMMAND_CLASS_POWERLEVEL")
-public class ZWavePowerLevelCommandClass extends ZWaveCommandClass
-        implements ZWaveGetCommands, ZWaveCommandClassDynamicState {
+public class ZWavePowerLevelCommandClass extends ZWaveCommandClass implements ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWavePowerLevelCommandClass.class);
@@ -99,7 +98,6 @@ public class ZWavePowerLevelCommandClass extends ZWaveCommandClass
                 .withPayload(level, timeout).withPriority(TransactionPriority.Config).build();
     }
 
-    @Override
     public ZWaveCommandClassTransactionPayload getValueMessage() {
         logger.debug("NODE {}: Creating new message for application command POWERLEVEL_GET", getNode().getNodeId());
 

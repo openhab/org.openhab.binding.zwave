@@ -39,7 +39,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  */
 @XStreamAlias("multiLevelSwitchCommandClass")
 public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
-        implements ZWaveBasicCommands, ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
+        implements ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveMultiLevelSwitchCommandClass.class);
@@ -112,7 +112,6 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    @Override
     public ZWaveCommandClassTransactionPayload getValueMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", getNode().getNodeId());
@@ -141,7 +140,6 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
      * @param the level to set. 0 is mapped to off, > 0 is mapped to on.
      * @return the serial message
      */
-    @Override
     public ZWaveCommandClassTransactionPayload setValueMessage(int level) {
         logger.debug("NODE {}: Creating new message for command SWITCH_MULTILEVEL_SET", this.getNode().getNodeId());
 

@@ -36,8 +36,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  *
  */
 @XStreamAlias("COMMAND_CLASS_CLOCK")
-public class ZWaveClockCommandClass extends ZWaveCommandClass
-        implements ZWaveGetCommands, ZWaveCommandClassDynamicState {
+public class ZWaveClockCommandClass extends ZWaveCommandClass implements ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveClockCommandClass.class);
@@ -91,7 +90,6 @@ public class ZWaveClockCommandClass extends ZWaveCommandClass
      *
      * @return the serial message.
      */
-    @Override
     public ZWaveCommandClassTransactionPayload getValueMessage() {
         logger.debug("NODE {}: Creating new message for command CLOCK_GET", getNode().getNodeId());
 

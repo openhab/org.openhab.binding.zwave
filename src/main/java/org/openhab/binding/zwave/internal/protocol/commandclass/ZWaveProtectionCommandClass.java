@@ -35,7 +35,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  */
 @XStreamAlias("COMMAND_CLASS_PROTECTION")
 public class ZWaveProtectionCommandClass extends ZWaveCommandClass
-        implements ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState, ZWaveGetCommands {
+        implements ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveProtectionCommandClass.class);
@@ -170,7 +170,6 @@ public class ZWaveProtectionCommandClass extends ZWaveCommandClass
      *
      * @return the serial message, or null if the supported command is not supported.
      */
-    @Override
     public ZWaveCommandClassTransactionPayload getValueMessage() {
         logger.debug("NODE {}: Creating new message for command PROTECTION_GET", getNode().getNodeId());
 

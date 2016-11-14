@@ -28,7 +28,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  */
 @XStreamAlias("COMMAND_CLASS_METER_PULSE")
-public class ZWaveMeterPulseCommandClass extends ZWaveCommandClass implements ZWaveGetCommands {
+public class ZWaveMeterPulseCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveMeterPulseCommandClass.class);
@@ -65,7 +65,6 @@ public class ZWaveMeterPulseCommandClass extends ZWaveCommandClass implements ZW
         getController().notifyEventListeners(zEvent);
     }
 
-    @Override
     public ZWaveCommandClassTransactionPayload getValueMessage() {
         logger.debug("NODE {}: Creating new message for application command METER_PULSE_GET", getNode().getNodeId());
 

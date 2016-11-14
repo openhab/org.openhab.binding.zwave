@@ -50,7 +50,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  */
 @XStreamAlias("COMMAND_CLASS_ALARM")
 public class ZWaveAlarmCommandClass extends ZWaveCommandClass
-        implements ZWaveGetCommands, ZWaveCommandClassDynamicState, ZWaveCommandClassInitialization {
+        implements ZWaveCommandClassDynamicState, ZWaveCommandClassInitialization {
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveAlarmCommandClass.class);
@@ -259,7 +259,6 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    @Override
     public ZWaveCommandClassTransactionPayload getValueMessage() {
         // TODO Is this used
         for (Map.Entry<AlarmType, Alarm> entry : alarms.entrySet()) {

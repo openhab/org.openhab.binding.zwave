@@ -33,8 +33,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  */
 @XStreamAlias("COMMAND_CLASS_SWITCH_TOGGLE_BINARY")
-public class ZWaveBinaryToggleSwitchCommandClass extends ZWaveCommandClass
-        implements ZWaveBasicCommands, ZWaveCommandClassDynamicState {
+public class ZWaveBinaryToggleSwitchCommandClass extends ZWaveCommandClass implements ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveBinaryToggleSwitchCommandClass.class);
@@ -85,7 +84,6 @@ public class ZWaveBinaryToggleSwitchCommandClass extends ZWaveCommandClass
         getController().notifyEventListeners(zEvent);
     }
 
-    @Override
     public ZWaveCommandClassTransactionPayload getValueMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", getNode().getNodeId());
@@ -99,7 +97,6 @@ public class ZWaveBinaryToggleSwitchCommandClass extends ZWaveCommandClass
                         .withPriority(TransactionPriority.Get).build();
     }
 
-    @Override
     public ZWaveCommandClassTransactionPayload setValueMessage(int value) {
         logger.debug("NODE {}: Creating new message for application command SWITCH_TOGGLE_SET", getNode().getNodeId());
 

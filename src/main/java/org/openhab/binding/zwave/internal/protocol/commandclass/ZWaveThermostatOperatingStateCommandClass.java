@@ -37,7 +37,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  */
 @XStreamAlias("COMMAND_CLASS_THERMOSTAT_OPERATING_STATE")
 public class ZWaveThermostatOperatingStateCommandClass extends ZWaveCommandClass
-        implements ZWaveGetCommands, ZWaveCommandClassDynamicState {
+        implements ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveThermostatOperatingStateCommandClass.class);
@@ -123,10 +123,6 @@ public class ZWaveThermostatOperatingStateCommandClass extends ZWaveCommandClass
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public ZWaveCommandClassTransactionPayload getValueMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", this.getNode().getNodeId());

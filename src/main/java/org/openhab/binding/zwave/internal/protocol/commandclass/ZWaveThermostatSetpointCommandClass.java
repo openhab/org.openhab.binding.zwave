@@ -40,7 +40,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  */
 @XStreamAlias("COMMAND_CLASS_THERMOSTAT_SETPOINT")
 public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
-        implements ZWaveBasicCommands, ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
+        implements ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveThermostatSetpointCommandClass.class);
@@ -201,10 +201,6 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public ZWaveCommandClassTransactionPayload getValueMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", getNode().getNodeId());
@@ -261,10 +257,6 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
                         .withExpectedResponseCommand(THERMOSTAT_SETPOINT_SUPPORTED_REPORT).build();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public ZWaveCommandClassTransactionPayload setValueMessage(int value) {
         return setMessage(0, new BigDecimal(value));
     }

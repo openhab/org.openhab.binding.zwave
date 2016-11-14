@@ -36,8 +36,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Jan-Willem Spuij
  */
 @XStreamAlias("COMMAND_CLASS_SWITCH_BINARY")
-public class ZWaveBinarySwitchCommandClass extends ZWaveCommandClass
-        implements ZWaveBasicCommands, ZWaveCommandClassDynamicState {
+public class ZWaveBinarySwitchCommandClass extends ZWaveCommandClass implements ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveBinarySwitchCommandClass.class);
@@ -97,7 +96,6 @@ public class ZWaveBinarySwitchCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    @Override
     public ZWaveCommandClassTransactionPayload getValueMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", this.getNode().getNodeId());
@@ -118,7 +116,6 @@ public class ZWaveBinarySwitchCommandClass extends ZWaveCommandClass
      * @param the level to set. 0 is mapped to off, > 0 is mapped to on.
      * @return the serial message
      */
-    @Override
     public ZWaveCommandClassTransactionPayload setValueMessage(int level) {
         logger.debug("NODE {}: Creating new message for application command SWITCH_BINARY_SET", getNode().getNodeId());
 

@@ -35,8 +35,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  *
  */
 @XStreamAlias("COMMAND_CLASS_BARRIER_OPERATOR")
-public class ZWaveBarrierOperatorCommandClass extends ZWaveCommandClass
-        implements ZWaveGetCommands, ZWaveSetCommands, ZWaveCommandClassDynamicState {
+public class ZWaveBarrierOperatorCommandClass extends ZWaveCommandClass implements ZWaveCommandClassDynamicState {
 
     private static final Logger logger = LoggerFactory.getLogger(ZWaveBarrierOperatorCommandClass.class);
 
@@ -73,7 +72,6 @@ public class ZWaveBarrierOperatorCommandClass extends ZWaveCommandClass
         getController().notifyEventListeners(zEvent);
     }
 
-    @Override
     public ZWaveCommandClassTransactionPayload setValueMessage(int value) {
         logger.debug("NODE {}: Creating new message for application command BARRIER_OPERATOR_SET",
                 getNode().getNodeId());
@@ -83,7 +81,6 @@ public class ZWaveBarrierOperatorCommandClass extends ZWaveCommandClass
                         .build();
     }
 
-    @Override
     public ZWaveCommandClassTransactionPayload getValueMessage() {
         logger.debug("NODE {}: Creating new message for command BARRIER_OPERATOR_GET", this.getNode().getNodeId());
 

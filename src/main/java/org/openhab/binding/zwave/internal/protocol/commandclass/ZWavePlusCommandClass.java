@@ -34,8 +34,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  */
 @XStreamAlias("COMMAND_CLASS_ZWAVEPLUS_INFO")
-public class ZWavePlusCommandClass extends ZWaveCommandClass
-        implements ZWaveGetCommands, ZWaveCommandClassInitialization {
+public class ZWavePlusCommandClass extends ZWaveCommandClass implements ZWaveCommandClassInitialization {
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWavePlusCommandClass.class);
@@ -125,7 +124,6 @@ public class ZWavePlusCommandClass extends ZWaveCommandClass
         return result;
     }
 
-    @Override
     public ZWaveCommandClassTransactionPayload getValueMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", this.getNode().getNodeId());
