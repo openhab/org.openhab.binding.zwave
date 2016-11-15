@@ -31,15 +31,19 @@ public class ZWaveCommandClassTransactionPayloadBuilder {
         this.payloadBuilt = false;
     }
 
-    public ZWaveCommandClassTransactionPayloadBuilder(final int nodeId, byte[] payload) {
+    public ZWaveCommandClassTransactionPayloadBuilder(final int nodeId, final byte[] payload) {
         this.nodeId = nodeId;
-        this.commandClass = CommandClass.getCommandClass(payload[0]);
+        if (payload[0] < 0) {
+            this.commandClass = CommandClass.getCommandClass(payload[0] + 256);
+        } else {
+            this.commandClass = CommandClass.getCommandClass(payload[0]);
+        }
         this.command = payload[1];
         this.payload = payload;
         this.payloadBuilt = true;
     }
 
-    public ZWaveCommandClassTransactionPayloadBuilder withPayloadBuffer(byte[] payload) {
+    public ZWaveCommandClassTransactionPayloadBuilder withPayloadBuffer(final byte[] payload) {
         this.payload = payload;
         return this;
     }
@@ -53,7 +57,7 @@ public class ZWaveCommandClassTransactionPayloadBuilder {
         return this;
     }
 
-    public ZWaveCommandClassTransactionPayloadBuilder withPayload(byte[] payload) {
+    public ZWaveCommandClassTransactionPayloadBuilder withPayload(final byte[] payload) {
         this.payload = payload;
         return this;
     }

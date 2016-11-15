@@ -151,7 +151,7 @@ public class ZWaveController {
                 : 0;
         final Integer timeout = config.containsKey("timeout") ? Integer.parseInt(config.get("timeout")) : 0;
 
-        networkSecurityKey = config.get("secureKey");
+        networkSecurityKey = config.get("networkKey");
 
         defaultWakeupPeriod = config.containsKey("wakeupDefaultPeriod")
                 ? Integer.parseInt(config.get("wakeupDefaultPeriod")) : 0;
@@ -490,34 +490,6 @@ public class ZWaveController {
         }
 
         transactionManager.queueTransactionForSend(payload);
-
-        /*
-         *
-         * // First try and get the node
-         * // If we're sending to a node, then this obviously isn't to the controller, and we should
-         * // queue anything to a battery node (ie a node supporting the WAKEUP class)!
-         * ZWaveNode node = getNode(transaction.getMessageNode());
-         * if (node != null) {
-         * // Keep track of the number of packets sent to this device
-         * node.incrementSendCount();
-         *
-         * // Does this message need to be security encapsulated?
-         * if (node.doesMessageRequireSecurityEncapsulation(transaction.getSerialMessage())) {
-         * ZWaveSecurityCommandClass securityCommandClass = (ZWaveSecurityCommandClass) node
-         * .getCommandClass(CommandClass.SECURITY);
-         * securityCommandClass.queueMessageForEncapsulationAndTransmission(transaction);
-         * // The above call will call enqueue again with the encapsulated message,
-         * // so we discard this one without putting it on the queue
-         * return;
-         * }
-         *
-         * }
-         *
-         * // Add the message to the queue
-         * sendQueue.add(transaction);
-         * logger.debug("Message queued. Queue length = {}. {}", sendQueue.size(), transaction);
-         *
-         */
     }
 
     public ZWaveTransactionResponse SendTransaction(ZWaveMessagePayloadTransaction transaction) {
@@ -599,6 +571,9 @@ public class ZWaveController {
                         break;
                     }
 
+                    // End inclusion
+                    stopInclusionTimer();
+
                     // Kick off the initialisation.
                     // Since the node is awake, we jump straight into the initialisation sequence
                     // without some of the initial stages like PING that are designed to detect if
@@ -639,6 +614,9 @@ public class ZWaveController {
                     if (incEvent.getNodeId() == 0) {
                         break;
                     }
+
+                    // End exclusion
+                    stopInclusionTimer();
 
                     logger.debug("NODE {}: Excluding node.", incEvent.getNodeId());
                     // Remove the node from the controller
@@ -1021,31 +999,6 @@ public class ZWaveController {
         if (payload == null) {
             return;
         }
-
-        // if (zWaveCommandClassTransactionPayload.getSerialMessage().getMessageClass() != SerialMessageClass.SendData)
-        // {
-        // logger.error(String.format("Invalid message class %s (0x%02X) for sendData",
-        // zWaveCommandClassTransactionPayload.getSerialMessage().getMessageClass().getLabel(),
-        // zWaveCommandClassTransactionPayload.getSerialMessage().getMessageClass().getKey()));
-        // return;
-        // }
-        // if (zWaveCommandClassTransactionPayload.getSerialMessage().getMessageType() != SerialMessageType.Request) {
-        // logger.error("Only request messages can be sent");
-        // return;
-        // }
-
-        // We need to wait on the ACK from the controller before completing the transaction.
-        // This is required in case the Application Message is received from the SendData ACK
-        // serialMessage.setAckRequired();
-
-        // ZWaveSecurityCommandClass needs to set it's own transmit options. Only set them here if not already done
-        // if (!zWaveCommandClassTransactionPayload.getSerialMessage().areTransmitOptionsSet()) {
-        // zWaveCommandClassTransactionPayload.getSerialMessage()
-        // .setTransmitOptions(TRANSMIT_OPTION_ACK | TRANSMIT_OPTION_AUTO_ROUTE | TRANSMIT_OPTION_EXPLORE);
-        // }
-
-        // serialMessage.setCallbackId(getCallbackId());
-
         enqueue(payload);
     }
 

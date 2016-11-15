@@ -445,13 +445,6 @@ public class ZWaveTransactionManager {
             }
         }
 
-        // Handle transaction processing
-        if (currentTransaction == null) {
-            System.out.println("Not correlated with transaction");
-            logger.debug("****************** Transaction not correlated");
-            return;
-        }
-
         // Manage incoming command class messages separately so we can manage transaction responses
         if (incomingMessage.getMessageClass() == SerialMessageClass.ApplicationCommandHandler) {
             try {
@@ -474,6 +467,13 @@ public class ZWaveTransactionManager {
             }
         } else {
             controller.handleIncomingMessage(currentTransaction, incomingMessage);
+        }
+
+        // Handle transaction processing
+        if (currentTransaction == null) {
+            System.out.println("Not correlated with transaction");
+            logger.debug("****************** Transaction not correlated");
+            return;
         }
 
         // Handle the transaction state machine

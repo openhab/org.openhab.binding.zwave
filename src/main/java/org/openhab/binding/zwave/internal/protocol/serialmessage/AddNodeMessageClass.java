@@ -128,7 +128,9 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
                     break;
 
                 case ADD_NODE_STATUS_PROTOCOL_DONE:
-                    logger.debug("Add Node: Protocol done.");
+                    logger.debug("NODE {}: Add Node: Protocol done.", incomingMessage.getMessagePayloadByte(2));
+                    zController.notifyEventListeners(new ZWaveInclusionEvent(
+                            ZWaveInclusionEvent.Type.IncludeProtocolDone, incomingMessage.getMessagePayloadByte(2)));
                     break;
 
                 case ADD_NODE_STATUS_DONE:

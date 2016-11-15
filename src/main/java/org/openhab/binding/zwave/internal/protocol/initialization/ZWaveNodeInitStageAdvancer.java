@@ -157,7 +157,7 @@ public class ZWaveNodeInitStageAdvancer {
      *
      * @param startStage
      */
-    public void startInitialisation(ZWaveNodeInitStage startStage) {
+    public void startInitialisation(final ZWaveNodeInitStage startStage) {
         // Reset the state variables
         currentStage = startStage;
 
@@ -181,11 +181,16 @@ public class ZWaveNodeInitStageAdvancer {
                     logger.debug("NODE {}: Node advancer: Restored from file - skipping static initialisation",
                             node.getNodeId());
                     currentStage = ZWaveNodeInitStage.SESSION_START;
-                } else {
+                }
+                if (startStage.ordinal() <= ZWaveNodeInitStage.INCLUSION_START.ordinal()) {
+                    doSecureInclusion();
+                }
+                if (startStage.ordinal() <= ZWaveNodeInitStage.STATIC_VALUES.ordinal()) {
                     doStaticStages();
                 }
-                doSecureInclusion();
-                doDynamicStages();
+                if (startStage.ordinal() <= ZWaveNodeInitStage.DYNAMIC_VALUES.ordinal()) {
+                    doDynamicStages();
+                }
                 doHealStages();
             }
         };
@@ -313,6 +318,7 @@ public class ZWaveNodeInitStageAdvancer {
         ZWaveSecurityCommandClass securityCommandClass = (ZWaveSecurityCommandClass) node
                 .getCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
         if (securityCommandClass == null) {
+            logger.debug("NODE {}: SECURE command class not supported");
             return;
         }
 

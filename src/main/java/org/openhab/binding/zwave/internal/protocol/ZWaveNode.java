@@ -88,8 +88,6 @@ public class ZWaveNode {
     @SuppressWarnings("unused")
     private List<CommandClass> nodeInformationFrame = null;
 
-    private final Set<CommandClass> securedCommandClasses = new HashSet<CommandClass>();
-
     // Stores the list of association groups
     private Map<Integer, ZWaveAssociationGroup> associationGroups = new HashMap<Integer, ZWaveAssociationGroup>();
 
@@ -822,75 +820,6 @@ public class ZWaveNode {
 
     public void setMaxBaud(int maxBaudRate) {
         this.maxBaudRate = maxBaudRate;
-    }
-
-    /**
-     * Invoked by {@link ZWaveSecurityCommandClass} when a
-     * {@link ZWaveSecurityCommandClass#SECURITY_SUPPORTED_REPORT} is received.
-     *
-     * @param data the class id for each class which must be encrypted in transmission
-     */
-    public void setSecuredClasses(byte[] data) {
-        logger.debug("NODE {}:  Setting secured command classes for node with {}", getNodeId(),
-                SerialMessage.bb2hex(data));
-        boolean afterMark = false;
-        securedCommandClasses.clear();
-        for (final byte aByte : data) {
-            // if (ZWaveSecurityCommandClass.bytesAreEqual(aByte, CommandClass.COMMAND_CLASS_MARK.getKey())) {
-            /**
-             * Marks the end of the list of supported command classes. The remaining classes are those
-             * that can be controlled by the device. These classes are created without values.
-             * Messages received cause notification events instead.
-             */
-            // afterMark = true;
-            // continue;
-            // }
-
-            // Check if this is a commandClass that is already registered with the node
-            final CommandClass commandClass = CommandClass.getCommandClass((aByte & 0xFF));
-            if (commandClass == null) {
-                // Not supported by OpenHab
-                logger.error(
-                        "NODE {}: setSecuredClasses requested secure "
-                                + "class NOT supported by OpenHab: {}   afterMark={}",
-                        getNodeId(), commandClass, afterMark);
-            } else {
-                // Sometimes security will be transmitted as a secure class, but it
-                // can't be set that way since it's the one doing the encryption work So ignore that.
-                if (commandClass == CommandClass.COMMAND_CLASS_SECURITY) {
-                    continue;
-                } else if (afterMark) {
-                    // Nothing to do, we don't track devices that control other devices
-                    logger.info("NODE {}: is after mark for commandClass {}", getNodeId(), commandClass);
-                    break;
-                } else {
-                    if (!this.supportsCommandClass(commandClass)) {
-                        logger.info(
-                                "NODE {}: Adding secured command class to supported that wasn't in original list {}",
-                                getNodeId(), commandClass);
-                        final ZWaveCommandClass classInstance = ZWaveCommandClass.getInstance((aByte & 0xFF), this,
-                                controller);
-                        if (classInstance != null) {
-                            addCommandClass(classInstance);
-                        }
-                    }
-                    securedCommandClasses.add(commandClass);
-                    logger.info("NODE {}: (Secured) {}", getNodeId(), commandClass);
-                }
-            }
-        }
-
-        if (logger.isInfoEnabled()) {
-            // Show which classes are still insecure after the update
-            final StringBuilder buf = new StringBuilder(
-                    "NODE " + getNodeId() + ": After update, INSECURE command classes are: ");
-            for (final ZWaveCommandClass zwCommandClass : getCommandClasses(0)) {
-                if (!securedCommandClasses.contains(zwCommandClass.getCommandClass())) {
-                    buf.append(zwCommandClass.getCommandClass() + ", ");
-                }
-            }
-            logger.info(buf.toString().substring(0, buf.toString().length() - 1));
-        }
     }
 
     public boolean doesMessageRequireSecurityEncapsulation(int endpoint, ZWaveCommandClassPayload payload) {

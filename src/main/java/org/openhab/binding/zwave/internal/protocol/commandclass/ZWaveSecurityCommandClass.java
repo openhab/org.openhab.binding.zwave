@@ -36,7 +36,8 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  */
 @XStreamAlias("COMMAND_CLASS_SECURITY")
-public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
+public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
+    @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveSecurityCommandClass.class);
 
     @XStreamOmitField
@@ -199,7 +200,8 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
      */
     public void setNetworkKey(String value) {
         if (value == null) {
-            throw new IllegalArgumentException("Network key must not be null");
+            logger.debug("Network key must not be null");
+            return;
         }
 
         String hexString = value.replace("0x", "");
@@ -207,7 +209,8 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
         hexString = hexString.replace(" ", "");
 
         if ((hexString.length() % 2) != 0) {
-            throw new IllegalArgumentException("Network key must contain an even number of characters");
+            logger.debug("Network key must contain an even number of characters");
+            return;
         }
 
         byte keyBytes[] = new byte[hexString.length() / 2];

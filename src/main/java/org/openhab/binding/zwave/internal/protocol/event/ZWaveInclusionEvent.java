@@ -87,12 +87,13 @@ public class ZWaveInclusionEvent extends ZWaveEvent {
         IncludeStart,
         IncludeSlaveFound,
         IncludeControllerFound,
+        IncludeProtocolDone,
         IncludeFail,
         IncludeDone,
         ExcludeStart,
         ExcludeSlaveFound,
         ExcludeControllerFound,
         ExcludeFail,
-        ExcludeDone,
+        ExcludeDone
     }
 }
