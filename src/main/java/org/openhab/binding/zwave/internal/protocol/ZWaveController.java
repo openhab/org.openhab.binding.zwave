@@ -587,6 +587,8 @@ public class ZWaveController {
                         }
                     }
 
+                    newNode.setInclusionTimer();
+
                     // Place nodes in the local ZWave Controller
                     zwaveNodes.putIfAbsent(incEvent.getNodeId(), newNode);
                     break;
@@ -616,7 +618,7 @@ public class ZWaveController {
                     }
 
                     // If this node is already initialising, then do nothing.
-                    // This might happen if a node is re-added even when we are aware of it
+                    // This might happen if a node is re-added even when we are already aware of it
                     if (node.getNodeInitStage() != ZWaveNodeInitStage.EMPTYNODE) {
                         logger.debug("NODE {}: Newly included node already initialising at {}", incEvent.getNodeId(),
                                 node.getNodeInitStage());

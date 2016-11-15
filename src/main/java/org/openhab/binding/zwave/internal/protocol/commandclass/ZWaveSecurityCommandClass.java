@@ -8,8 +8,9 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -20,6 +21,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.commandclass.impl.CommandClassSecurityV1;
+import org.openhab.binding.zwave.internal.protocol.security.ZWaveNonce;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
@@ -38,9 +40,21 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
     private static final Logger logger = LoggerFactory.getLogger(ZWaveSecurityCommandClass.class);
 
     @XStreamOmitField
-    protected SecretKey networkKey;
+    private SecretKey networkKey;
+
+    // Our last nonce we sent to the remove
+    private ZWaveNonce ourNonce = null;
+    // The last nonce we received from the remote
+    private ZWaveNonce theirNonce = null;
+
+    private static final String AES = "AES";
 
     private boolean securelyIncluded = false;
+
+    private static final List<Byte> securityRequired = Arrays.asList(new Byte[] {
+            CommandClassSecurityV1.NETWORK_KEY_SET, CommandClassSecurityV1.NETWORK_KEY_VERIFY,
+            CommandClassSecurityV1.SECURITY_SCHEME_INHERIT, CommandClassSecurityV1.SECURITY_COMMANDS_SUPPORTED_GET,
+            CommandClassSecurityV1.SECURITY_COMMANDS_SUPPORTED_REPORT });
 
     /**
      * Creates a new instance of the ZWaveSecurityCommandClass class.
@@ -105,13 +119,8 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
      * @return {@link ZWaveCommandClassTransactionPayload} to send
      */
     public ZWaveCommandClassTransactionPayload getSetSecurityKeyMessage() {
-        List<Integer> keyList = new ArrayList<Integer>();
-        for (int val : networkKey.getEncoded()) {
-            keyList.add(val);
-        }
-
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
-                CommandClassSecurityV1.getNetworkKeySet(keyList))
+                CommandClassSecurityV1.getNetworkKeySet(networkKey.getEncoded()))
                         .withExpectedResponseCommand(CommandClassSecurityV1.NETWORK_KEY_VERIFY)
                         .withPriority(TransactionPriority.High).build();
     }
@@ -156,12 +165,30 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
     public void handleSecurityCommandsSupportedReport(ZWaveCommandClassPayload payload, int endpoint) {
     }
 
+    public ZWaveCommandClassTransactionPayload getSecurityNonceGet() {
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
+                CommandClassSecurityV1.getSecurityNonceGet())
+                        .withExpectedResponseCommand(CommandClassSecurityV1.SECURITY_NONCE_REPORT)
+                        .withPriority(TransactionPriority.High).build();
+    }
+
     @ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_NONCE_REPORT, name = "SECURITY_NONCE_REPORT")
     public void handleSecurityNonceReport(ZWaveCommandClassPayload payload, int endpoint) {
+        // theirNonce;
+        Map<String, Object> response = CommandClassSecurityV1.handleSecurityNonceReport(payload.getPayloadBuffer());
+        theirNonce = new ZWaveNonce((byte[]) response.get("NONCE_BYTE"));
     }
 
     @ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_NONCE_GET, name = "SECURITY_NONCE_GET")
     public void handleSecurityNonceGet(ZWaveCommandClassPayload payload, int endpoint) {
+    }
+
+    @ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_MESSAGE_ENCAPSULATION, name = "SECURITY_MESSAGE_ENCAPSULATION")
+    public void handleSecurityMessageEncapsulation(ZWaveCommandClassPayload payload, int endpoint) {
+    }
+
+    @ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_MESSAGE_ENCAPSULATION_NONCE_GET, name = "SECURITY_MESSAGE_ENCAPSULATION_NONCE_GET")
+    public void handleSecurityMessageEncapsulationNonceGet(ZWaveCommandClassPayload payload, int endpoint) {
     }
 
     /**
@@ -191,7 +218,7 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
             keyBytes[i / 2] = (byte) Integer.parseInt(curr.toString(), 16);
         }
 
-        networkKey = new SecretKeySpec(keyBytes, "AES");
+        networkKey = new SecretKeySpec(keyBytes, AES);
         logger.debug("NODE {}: Updated networkKey", getNode().getNodeId());
     }
 
@@ -202,5 +229,16 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
      */
     public boolean isSecurelyIncluded() {
         return securelyIncluded;
+    }
+
+    public static boolean doesCommandRequireSecurityEncapsulation(int commandKey) {
+        return securityRequired.contains(commandKey);
+    }
+
+    public boolean isNonceAvailable() {
+        if (theirNonce == null) {
+            return false;
+        }
+        return theirNonce.isValid();
     }
 }

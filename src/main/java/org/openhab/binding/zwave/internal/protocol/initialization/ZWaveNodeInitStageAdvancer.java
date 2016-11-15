@@ -120,6 +120,8 @@ public class ZWaveNodeInitStageAdvancer {
     private ZWaveController controller;
     private boolean restoredFromConfigfile = false;
 
+    private final long INCLUSION_TIMER = 10000000000L;
+
     ThingType thingType = null;
 
     private Date queryStageTimeStamp;
@@ -182,7 +184,7 @@ public class ZWaveNodeInitStageAdvancer {
                 } else {
                     doStaticStages();
                 }
-
+                doSecureInclusion();
                 doDynamicStages();
                 doHealStages();
             }
@@ -203,6 +205,9 @@ public class ZWaveNodeInitStageAdvancer {
         do {
             response = controller.SendTransaction(transaction);
             logger.debug("NODE {}: Node Init response {}", node.getNodeId(), response.getState());
+            if (response != null && response.getState() == State.COMPLETE) {
+                break;
+            }
 
             // Increase the backoff up to 1800 seconds (approx!)
             if (backoff < 900000) {
@@ -212,10 +217,10 @@ public class ZWaveNodeInitStageAdvancer {
             try {
                 Thread.sleep(backoff);
             } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
+                break;
             }
-        } while (response == null || response.getState() != State.COMPLETE);
+        } while (true);
 
         logger.debug("NODE {}: Node Init transaction completed with response {}", node.getNodeId(),
                 response.getState());
@@ -331,14 +336,18 @@ public class ZWaveNodeInitStageAdvancer {
         }
 
         if (doSecureInclusion == false) {
+            logger.debug("NODE {}: Skipping secure inclusion");
+
             // Remove the security command class
             node.removeCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
             return;
         }
 
         // Check if this node was just included (within the last 10 seconds)
-
-        // Let's start...
+        if (node.getInclusionTimer() > INCLUSION_TIMER) {
+            logger.debug("NODE {}: Skipping secure inclusion - timer is {}", node.getInclusionTimer());
+            return;
+        }
 
         // Get the scheme used for the remote
         logger.debug("NODE {}: SECURITY_INCLUSION State=GET_SCHEME", node.getNodeId());

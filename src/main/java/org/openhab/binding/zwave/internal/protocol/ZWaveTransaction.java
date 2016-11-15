@@ -77,7 +77,6 @@ public class ZWaveTransaction {
      * responses, once the ACK from the controller is received, additional transactions may be started if desired.
      *
      */
-
     public enum TransactionState {
         UNINTIALIZED,
         WAIT_RESPONSE,
@@ -106,27 +105,12 @@ public class ZWaveTransaction {
 
     private int attemptsRemaining = 3;
 
+    private boolean requiresSecurity = false;
+
     private long startTime;
     private Date timeout;
 
-    // public ZWaveTransaction(int nodeId, SerialMessageClass serialMessage, SerialMessageClass expectedReplyClass,
-    // CommandClass expectedReplyCommandClass, int expectedReplyCommandClassCommand, TransactionPriority priority,
-    // int attempts, boolean requiresData, int dataTimeout) {
-    // this.nodeId = nodeId;
-    // this.serialMessage = serialMessage;
-    // this.serialMessageClass = serialMessage.getMessageClass();
-    // this.expectedReplyClass = expectedReplyClass;
-    // this.expectedReplyCommandClass = expectedReplyCommandClass;
-    // this.expectedReplyCommandClassCommand = expectedReplyCommandClassCommand;
-    // this.priority = priority;
-    // this.attemptsRemaining = 3;
-    // this.requiresData = requiresData;
-    // this.dataTimeout = dataTimeout;
-    // }
-
     public ZWaveTransaction(final ZWaveMessagePayloadTransaction payload) {
-        // this.serialMessageClass = payload.getSerialMessageClass();
-        // this.expectedReplyClass = payload.getExpectedResponseSerialMessageClass();
         this.priority = payload.getPriority();
         this.dataTimeout = payload.getTimeout();
         if (this.dataTimeout < 250) {
@@ -135,6 +119,9 @@ public class ZWaveTransaction {
         this.attemptsRemaining = payload.getMaxAttempts();
         if (this.attemptsRemaining == 0) {
             this.attemptsRemaining = 3;
+        }
+        if (payload instanceof ZWaveCommandClassTransactionPayload) {
+            this.requiresSecurity = ((ZWaveCommandClassTransactionPayload) payload).getRequiresSecurity();
         }
         this.payload = payload;
     }
@@ -168,8 +155,6 @@ public class ZWaveTransaction {
         if (serialMessage == null) {
             serialMessage = payload.getSerialMessage();
         }
-
-        // logger.debug("Transaction has saved callbackId as ID{}", serialMessage.getCallbackId());
 
         return serialMessage;
     }
@@ -370,6 +355,10 @@ public class ZWaveTransaction {
         }
         logger.debug("TransactionAdvance TO: {}", transactionStateTracker);
         return transactionStateTracker != stateTrackerStart;
+    }
+
+    public boolean getRequiresSecurity() {
+        return requiresSecurity;
     }
 
     @Override

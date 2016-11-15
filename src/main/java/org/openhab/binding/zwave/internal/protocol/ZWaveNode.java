@@ -88,8 +88,6 @@ public class ZWaveNode {
     @SuppressWarnings("unused")
     private List<CommandClass> nodeInformationFrame = null;
 
-    // private Map<CommandClass, ZWaveCommandClass> supportedCommandClasses = new HashMap<CommandClass,
-    // ZWaveCommandClass>();
     private final Set<CommandClass> securedCommandClasses = new HashSet<CommandClass>();
 
     // Stores the list of association groups
@@ -118,6 +116,9 @@ public class ZWaveNode {
     private Date deadTime;
     @XStreamOmitField
     private int retryCount = 0;
+
+    @XStreamOmitField
+    Long inclusionTimer = null;
 
     /**
      * Constructor. Creates a new instance of the ZWaveNode class.
@@ -892,36 +893,30 @@ public class ZWaveNode {
         }
     }
 
-    public boolean doesMessageRequireSecurityEncapsulation(ZWaveCommandClassPayload payload) {
+    public boolean doesMessageRequireSecurityEncapsulation(int endpoint, ZWaveCommandClassPayload payload) {
+        // Does this node support security at all?
         if (endpoints.get(0).getCommandClass(CommandClass.COMMAND_CLASS_SECURITY) == null) {
-            // Does this node support security at all?
             return false;
         }
 
-        final CommandClass commandClassOfMessage = CommandClass.getCommandClass(payload.getCommandClassId());
-        if (commandClassOfMessage == null) {
-            // Not sure how we would ever get here
-            logger.warn("NODE {}: CommandClass {} not found. Treating as INSECURE: {}", getNodeId(),
-                    String.format("%02X", payload.getCommandClassId()), payload);
-            return false;
-        }
+        final CommandClass commandClass = CommandClass.getCommandClass(payload.getCommandClassId());
 
-        if (CommandClass.COMMAND_CLASS_SECURITY == commandClassOfMessage) {
+        if (CommandClass.COMMAND_CLASS_SECURITY == commandClass) {
             // CommandClass.SECURITY is a special case because only some commands get encrypted
-            // return
-            // ZWaveSecurityCommandClass.doesCommandRequireSecurityEncapsulation(payload.getCommandClassCommand());
+            return ZWaveSecurityCommandClass.doesCommandRequireSecurityEncapsulation(payload.getCommandClassCommand());
         }
 
-        if (commandClassOfMessage == CommandClass.COMMAND_CLASS_NO_OPERATION) {
-            // PING should not be encrypted
+        // PING should not be encrypted
+        if (commandClass == CommandClass.COMMAND_CLASS_NO_OPERATION) {
             return false;
         }
 
-        /// if (ZWaveSecurityCommandClass.doesCommandClassRequireSecurityEncapsulation(commandClassOfMessage)) {
-        // return true;
-        // }
+        // Does this endpoint support this class secure
+        if (endpoints.get(endpoint).getSecureCommandClass(commandClass) != null) {
+            return true;
+        }
 
-        return securedCommandClasses.contains(commandClassOfMessage);
+        return false;
     }
 
     /**
@@ -1122,7 +1117,14 @@ public class ZWaveNode {
                 break;
         }
 
-        // Encapsulation the COMMAND_CLASS_CRC16 class if we don't utilise security
+        // Check if we need to secure this message
+        if (doesMessageRequireSecurityEncapsulation(0, transaction)) {
+            logger.debug("NODE {}: Command Class {} is required to be secured", nodeId, commandClass.getCommandClass());
+
+            transaction.setRequiresSecurity();
+        } else {
+            // Encapsulation the COMMAND_CLASS_CRC16 class if we don't utilise security
+        }
 
         return transaction;
     }
@@ -1216,18 +1218,15 @@ public class ZWaveNode {
                 }
             }
 
-            if (doesMessageRequireSecurityEncapsulation(command)) {
+            if (doesMessageRequireSecurityEncapsulation(0, command)) {
                 // Should have been security encapsulation but wasn't!
-                logger.error(
-                        "NODE {}: Command Class {} {} was required to be security encapsulation but it wasn't!  Dropping message.",
-                        nodeId, zwaveCommandClass.getCommandClass().getKey(), zwaveCommandClass.getCommandClass());
-                // do not call zwaveCommandClass.handleApplicationCommandRequest();
+                logger.debug(
+                        "NODE {}: Command Class {} was required to be security encapsulation but it wasn't! Dropping message.",
+                        nodeId, zwaveCommandClass.getCommandClass());
 
                 return Collections.emptyList();
             }
 
-            logger.trace("NODE {}: Found Command Class {}, passing to handleApplicationCommandRequest", nodeId,
-                    zwaveCommandClass.getCommandClass());
             try {
                 zwaveCommandClass.handleApplicationCommandRequest(command, 0);
             } catch (ZWaveSerialMessageException e) {
@@ -1237,5 +1236,17 @@ public class ZWaveNode {
 
         // Return the list of commands we've processed
         return commands;
+    }
+
+    public long getInclusionTimer() {
+        if (inclusionTimer == null) {
+            return Long.MAX_VALUE;
+        }
+
+        return System.nanoTime() - inclusionTimer;
+    }
+
+    public void setInclusionTimer() {
+        inclusionTimer = System.nanoTime();
     }
 }

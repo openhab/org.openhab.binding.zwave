@@ -18,6 +18,8 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
     private TransactionPriority priority;
     private int maxAttempts = 0;
 
+    private boolean requiresSecurity = false;
+
     private static final Logger logger = LoggerFactory.getLogger(ZWaveCommandClassTransactionPayload.class);
 
     public ZWaveCommandClassTransactionPayload(int nodeId, byte[] payload, TransactionPriority priority,
@@ -116,6 +118,14 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
     @Override
     public boolean requiresData() {
         return false;
+    }
+
+    public void setRequiresSecurity() {
+        requiresSecurity = true;
+    }
+
+    public boolean getRequiresSecurity() {
+        return requiresSecurity;
     }
 
 }

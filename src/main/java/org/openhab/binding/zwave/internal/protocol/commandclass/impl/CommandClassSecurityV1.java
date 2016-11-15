@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -87,10 +88,10 @@ public class CommandClassSecurityV1 {
      * Network Key Set<br>
      *
      *
-     * @param networkKeyByte {@link List<Integer>}
+     * @param networkKeyByte {@link byte[]}
      * @return the {@link byte[]} array with the command to send
      */
-    static public byte[] getNetworkKeySet(List<Integer> networkKeyByte) {
+    static public byte[] getNetworkKeySet(byte[] networkKeyByte) {
         logger.debug("Creating command message NETWORK_KEY_SET version 1");
 
         ByteArrayOutputStream outputData = new ByteArrayOutputStream();
@@ -111,7 +112,7 @@ public class CommandClassSecurityV1 {
      * The output data has the following structure<br>
      *
      * <ul>
-     * <li>NETWORK_KEY_BYTE {@link List}<{@link Integer}>
+     * <li>NETWORK_KEY_BYTE {@link byte[]}
      * </ul>
      *
      * @param payload the {@link byte[]} payload data to process
@@ -125,12 +126,12 @@ public class CommandClassSecurityV1 {
         int msgOffset = 2;
 
         // Process 'Network Key byte'
-        List<Integer> valNetworkKeyByte = new ArrayList<Integer>();
+        ByteArrayOutputStream valNetworkKeyByte = new ByteArrayOutputStream();
         while (msgOffset < payload.length) {
-            valNetworkKeyByte.add((int) payload[msgOffset]);
+            valNetworkKeyByte.write(payload[msgOffset]);
             msgOffset++;
         }
-        response.put("NETWORK_KEY_BYTE", valNetworkKeyByte);
+        response.put("NETWORK_KEY_BYTE", valNetworkKeyByte.toByteArray());
 
         // Return the map of processed response data;
         return response;
@@ -299,15 +300,18 @@ public class CommandClassSecurityV1 {
      * Security Message Encapsulation<br>
      *
      *
+     * @param initializationVectorByte {@link byte[]}
      * @param sequenceCounter {@link Integer}
      * @param sequenced {@link Boolean}
      * @param secondFrame {@link Boolean}
-     * @param commandByte {@link List<Integer>}
+     * @param commandByte {@link byte[]}
      * @param receiversNonceIdentifier {@link Integer}
+     * @param messageAuthenticationCodeByte {@link byte[]}
      * @return the {@link byte[]} array with the command to send
      */
-    static public byte[] getSecurityMessageEncapsulation(Integer sequenceCounter, Boolean sequenced, Boolean secondFrame,
-            List<Integer> commandByte, Integer receiversNonceIdentifier) {
+    static public byte[] getSecurityMessageEncapsulation(byte[] initializationVectorByte, Integer sequenceCounter,
+            Boolean sequenced, Boolean secondFrame, byte[] commandByte, Integer receiversNonceIdentifier,
+            byte[] messageAuthenticationCodeByte) {
         logger.debug("Creating command message SECURITY_MESSAGE_ENCAPSULATION version 1");
 
         ByteArrayOutputStream outputData = new ByteArrayOutputStream();
@@ -342,11 +346,13 @@ public class CommandClassSecurityV1 {
      * The output data has the following structure<br>
      *
      * <ul>
+     * <li>INITIALIZATION_VECTOR_BYTE {@link byte[]}
      * <li>SEQUENCE_COUNTER {@link Integer}
      * <li>SEQUENCED {@link Boolean}
      * <li>SECOND_FRAME {@link Boolean}
-     * <li>COMMAND_BYTE {@link List}<{@link Integer}>
+     * <li>COMMAND_BYTE {@link byte[]}
      * <li>RECEIVERS_NONCE_IDENTIFIER {@link Integer}
+     * <li>MESSAGE_AUTHENTICATION_CODE_BYTE {@link byte[]}
      * </ul>
      *
      * @param payload the {@link byte[]} payload data to process
@@ -360,7 +366,12 @@ public class CommandClassSecurityV1 {
         int msgOffset = 2;
 
         // Process 'Initialization Vector byte'
-        msgOffset += 1;
+        byte[] valInitializationVectorByte = new byte[8];
+        for (int cntInitializationVectorByte = 0; cntInitializationVectorByte < 8; cntInitializationVectorByte++) {
+            valInitializationVectorByte[cntInitializationVectorByte] = payload[msgOffset + cntInitializationVectorByte];
+        }
+        response.put("INITIALIZATION_VECTOR_BYTE", valInitializationVectorByte);
+        msgOffset += 8;
 
         // Process 'Properties1'
         response.put("SEQUENCE_COUNTER", new Integer(payload[msgOffset] & 0x0F));
@@ -369,19 +380,25 @@ public class CommandClassSecurityV1 {
         msgOffset += 1;
 
         // Process 'Command byte'
-        List<Integer> valCommandByte = new ArrayList<Integer>();
-        while (msgOffset < payload.length) {
-            valCommandByte.add((int) payload[msgOffset]);
+        ByteArrayOutputStream valCommandByte = new ByteArrayOutputStream();
+        while (msgOffset < payload.length - 9) {
+            valCommandByte.write(payload[msgOffset]);
             msgOffset++;
         }
-        response.put("COMMAND_BYTE", valCommandByte);
+        response.put("COMMAND_BYTE", valCommandByte.toByteArray());
 
         // Process 'Receivers nonce Identifier'
         response.put("RECEIVERS_NONCE_IDENTIFIER", new Integer(payload[msgOffset]));
         msgOffset += 1;
 
         // Process 'Message Authentication Code byte'
-        msgOffset += 1;
+        byte[] valMessageAuthenticationCodeByte = new byte[8];
+        for (int cntMessageAuthenticationCodeByte = 0; cntMessageAuthenticationCodeByte < 8; cntMessageAuthenticationCodeByte++) {
+            valMessageAuthenticationCodeByte[cntMessageAuthenticationCodeByte] = payload[msgOffset
+                    + cntMessageAuthenticationCodeByte];
+        }
+        response.put("MESSAGE_AUTHENTICATION_CODE_BYTE", valMessageAuthenticationCodeByte);
+        msgOffset += 8;
 
         // Return the map of processed response data;
         return response;
@@ -393,15 +410,18 @@ public class CommandClassSecurityV1 {
      * Security Message Encapsulation Nonce Get<br>
      *
      *
+     * @param initializationVectorByte {@link byte[]}
      * @param sequenceCounter {@link Integer}
      * @param sequenced {@link Boolean}
      * @param secondFrame {@link Boolean}
-     * @param commandByte {@link List<Integer>}
+     * @param commandByte {@link byte[]}
      * @param receiversNonceIdentifier {@link Integer}
+     * @param messageAuthenticationCodeByte {@link byte[]}
      * @return the {@link byte[]} array with the command to send
      */
-    static public byte[] getSecurityMessageEncapsulationNonceGet(Integer sequenceCounter, Boolean sequenced,
-            Boolean secondFrame, List<Integer> commandByte, Integer receiversNonceIdentifier) {
+    static public byte[] getSecurityMessageEncapsulationNonceGet(byte[] initializationVectorByte,
+            Integer sequenceCounter, Boolean sequenced, Boolean secondFrame, byte[] commandByte,
+            Integer receiversNonceIdentifier, byte[] messageAuthenticationCodeByte) {
         logger.debug("Creating command message SECURITY_MESSAGE_ENCAPSULATION_NONCE_GET version 1");
 
         ByteArrayOutputStream outputData = new ByteArrayOutputStream();
@@ -436,11 +456,13 @@ public class CommandClassSecurityV1 {
      * The output data has the following structure<br>
      *
      * <ul>
+     * <li>INITIALIZATION_VECTOR_BYTE {@link byte[]}
      * <li>SEQUENCE_COUNTER {@link Integer}
      * <li>SEQUENCED {@link Boolean}
      * <li>SECOND_FRAME {@link Boolean}
-     * <li>COMMAND_BYTE {@link List}<{@link Integer}>
+     * <li>COMMAND_BYTE {@link byte[]}
      * <li>RECEIVERS_NONCE_IDENTIFIER {@link Integer}
+     * <li>MESSAGE_AUTHENTICATION_CODE_BYTE {@link byte[]}
      * </ul>
      *
      * @param payload the {@link byte[]} payload data to process
@@ -454,7 +476,12 @@ public class CommandClassSecurityV1 {
         int msgOffset = 2;
 
         // Process 'Initialization Vector byte'
-        msgOffset += 1;
+        byte[] valInitializationVectorByte = new byte[8];
+        for (int cntInitializationVectorByte = 0; cntInitializationVectorByte < 8; cntInitializationVectorByte++) {
+            valInitializationVectorByte[cntInitializationVectorByte] = payload[msgOffset + cntInitializationVectorByte];
+        }
+        response.put("INITIALIZATION_VECTOR_BYTE", valInitializationVectorByte);
+        msgOffset += 8;
 
         // Process 'Properties1'
         response.put("SEQUENCE_COUNTER", new Integer(payload[msgOffset] & 0x0F));
@@ -463,19 +490,25 @@ public class CommandClassSecurityV1 {
         msgOffset += 1;
 
         // Process 'Command byte'
-        List<Integer> valCommandByte = new ArrayList<Integer>();
-        while (msgOffset < payload.length) {
-            valCommandByte.add((int) payload[msgOffset]);
+        ByteArrayOutputStream valCommandByte = new ByteArrayOutputStream();
+        while (msgOffset < payload.length - 9) {
+            valCommandByte.write(payload[msgOffset]);
             msgOffset++;
         }
-        response.put("COMMAND_BYTE", valCommandByte);
+        response.put("COMMAND_BYTE", valCommandByte.toByteArray());
 
         // Process 'Receivers nonce Identifier'
         response.put("RECEIVERS_NONCE_IDENTIFIER", new Integer(payload[msgOffset]));
         msgOffset += 1;
 
         // Process 'Message Authentication Code byte'
-        msgOffset += 1;
+        byte[] valMessageAuthenticationCodeByte = new byte[8];
+        for (int cntMessageAuthenticationCodeByte = 0; cntMessageAuthenticationCodeByte < 8; cntMessageAuthenticationCodeByte++) {
+            valMessageAuthenticationCodeByte[cntMessageAuthenticationCodeByte] = payload[msgOffset
+                    + cntMessageAuthenticationCodeByte];
+        }
+        response.put("MESSAGE_AUTHENTICATION_CODE_BYTE", valMessageAuthenticationCodeByte);
+        msgOffset += 8;
 
         // Return the map of processed response data;
         return response;
@@ -522,9 +555,10 @@ public class CommandClassSecurityV1 {
      * Security Nonce Report<br>
      *
      *
+     * @param nonceByte {@link byte[]}
      * @return the {@link byte[]} array with the command to send
      */
-    static public byte[] getSecurityNonceReport() {
+    static public byte[] getSecurityNonceReport(byte[] nonceByte) {
         logger.debug("Creating command message SECURITY_NONCE_REPORT version 1");
 
         ByteArrayOutputStream outputData = new ByteArrayOutputStream();
@@ -542,6 +576,12 @@ public class CommandClassSecurityV1 {
      * Security Nonce Report<br>
      *
      *
+     * The output data has the following structure<br>
+     *
+     * <ul>
+     * <li>NONCE_BYTE {@link byte[]}
+     * </ul>
+     *
      * @param payload the {@link byte[]} payload data to process
      * @return a {@link Map} of processed response data
      */
@@ -550,6 +590,11 @@ public class CommandClassSecurityV1 {
         Map<String, Object> response = new HashMap<String, Object>();
 
         // Process 'Nonce byte'
+        byte[] valNonceByte = new byte[8];
+        for (int cntNonceByte = 0; cntNonceByte < 8; cntNonceByte++) {
+            valNonceByte[cntNonceByte] = payload[4 + cntNonceByte];
+        }
+        response.put("NONCE_BYTE", valNonceByte);
 
         // Return the map of processed response data;
         return response;

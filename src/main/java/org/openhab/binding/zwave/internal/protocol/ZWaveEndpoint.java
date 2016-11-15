@@ -32,6 +32,7 @@ public class ZWaveEndpoint {
     private final ZWaveDeviceClass deviceClass;
     private final int endpointId;
 
+    private Map<CommandClass, ZWaveCommandClass> secureCommandClasses = new HashMap<CommandClass, ZWaveCommandClass>();
     private Map<CommandClass, ZWaveCommandClass> supportedCommandClasses = new HashMap<CommandClass, ZWaveCommandClass>();
 
     /**
@@ -41,8 +42,6 @@ public class ZWaveEndpoint {
      * @param endpointId the endpoint ID.
      */
     public ZWaveEndpoint(int endpointId) {
-        // if (endpointId == 0) {
-        // throw new IllegalArgumentException("Endpoint number cannot be 0");
         this.endpointId = endpointId;
         this.deviceClass = new ZWaveDeviceClass(Basic.NOT_KNOWN, Generic.NOT_KNOWN, Specific.NOT_USED);
     }
@@ -75,6 +74,18 @@ public class ZWaveEndpoint {
      */
     public ZWaveCommandClass getCommandClass(CommandClass commandClass) {
         return supportedCommandClasses.get(commandClass);
+    }
+
+    /**
+     * Gets a commandClass object this endpoint implements. Returns null if this endpoint does not support this command
+     * class.
+     *
+     * @param commandClass
+     *            The command class to get.
+     * @return the command class.
+     */
+    public ZWaveCommandClass getSecureCommandClass(CommandClass commandClass) {
+        return secureCommandClasses.get(commandClass);
     }
 
     /**
