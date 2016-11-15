@@ -539,6 +539,15 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                     break;
                 case ExcludeControllerFound:
                 case ExcludeSlaveFound:
+                    // Ignore node 0 - this just indicates exclusion finished
+                    if (incEvent.getNodeId() == 0) {
+                        break;
+                    }
+
+                    eventKey = ZWaveBindingConstants.EVENT_EXCLUSION_NODEREMOVED;
+                    eventState = BindingEventType.SUCCESS;
+                    eventArgs = new Integer(incEvent.getNodeId());
+                    break;
                 case IncludeControllerFound:
                 case IncludeSlaveFound:
                     break;

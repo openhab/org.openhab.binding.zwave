@@ -120,6 +120,8 @@ public class ZWaveBindingConstants {
             "Z-Wave network exclusion completed");
     public final static I18nConstant EVENT_EXCLUSION_FAILED = new I18nConstant("zwave.event.exclusion_failed",
             "Z-Wave network exclusion failed");
+    public final static I18nConstant EVENT_EXCLUSION_NODEREMOVED = new I18nConstant("zwave.event.exclusion_failed",
+            "Z-Wave network excluded node {0}");
 
     public final static I18nConstant EVENT_NETWORKUPDATE_DONE = new I18nConstant("zwave.event.networkupdate_done",
             "Z-Wave network update completed");
