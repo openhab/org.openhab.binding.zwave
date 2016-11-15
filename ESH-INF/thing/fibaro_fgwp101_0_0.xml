@@ -299,16 +299,25 @@ This function allows for turning off the controlled device in case of exceeding 
 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
-        <multipleLimit>16</multipleLimit>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Is assigned to the device status – sending command frames to the associated devices whenever the Wall Plug is turned ON or OFF via B-button.</p> <p>Fibaro Association Group Info</p> <p>Allows to control 5 regular and 5 multichannel devices per an association group.</p>
+        ]]></description>
+        <multipleLimit>10</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Group 2</label>
-        <multipleLimit>16</multipleLimit>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Is assigned to the measured active power – sending command frames to the associated devices depending on the measured load (configured via advanced parameters 50, 51 and 52).</p> <p>Fibaro Association Group Info</p> <p>Allows to control 5 regular and 5 multichannel devices per an association group.</p>
+        ]]></description>
+        <multipleLimit>10</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association">
         <label>3: Controller Updates</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Reports the device status and allows to assign single device only (the main controller by default).</p> <p>Fibaro Association Group Info</p> <p>3rd group is reserved solely for the controller and hence only 1 node can be assigned.</p>
+        ]]></description>
       </parameter>
 
     </config-description>
