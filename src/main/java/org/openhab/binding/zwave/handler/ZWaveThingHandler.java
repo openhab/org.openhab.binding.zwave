@@ -410,13 +410,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     }
 
     @Override
-    public void bridgeHandlerInitialized(ThingHandler thingHandler, Bridge bridge) {
-        logger.debug("NODE {}: Controller initialised.", nodeId);
-
-        bridgeStatusChanged(bridge.getStatusInfo());
-    }
-
-    @Override
     public void bridgeStatusChanged(ThingStatusInfo bridgeStatusInfo) {
         logger.debug("NODE {}: Controller status changed to {}.", nodeId, bridgeStatusInfo.getStatus());
 
