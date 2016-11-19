@@ -9,6 +9,7 @@
 package org.openhab.binding.zwave.internal.protocol.commandclass.impl;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -99,6 +100,10 @@ public class CommandClassSecurityV1 {
         outputData.write(NETWORK_KEY_SET);
 
         // Process 'Network Key byte'
+        try {
+            outputData.write(networkKeyByte);
+        } catch (IOException e) {
+        }
 
         return outputData.toByteArray();
     }
@@ -230,10 +235,16 @@ public class CommandClassSecurityV1 {
         outputData.write(reportsToFollow);
 
         // Process 'Command Class support'
+        for (Integer valCommandClassSupport : commandClassSupport) {
+            outputData.write(valCommandClassSupport);
+        }
 
         // Process 'COMMAND_CLASS_MARK'
 
         // Process 'Command Class control'
+        for (Integer valCommandClassControl : commandClassControl) {
+            outputData.write(valCommandClassControl);
+        }
 
         return outputData.toByteArray();
     }
@@ -319,6 +330,10 @@ public class CommandClassSecurityV1 {
         outputData.write(SECURITY_MESSAGE_ENCAPSULATION);
 
         // Process 'Initialization Vector byte'
+        try {
+            outputData.write(initializationVectorByte);
+        } catch (IOException e) {
+        }
 
         // Process 'Properties1'
         int valProperties1 = 0;
@@ -328,11 +343,19 @@ public class CommandClassSecurityV1 {
         outputData.write(valProperties1);
 
         // Process 'Command byte'
+        try {
+            outputData.write(commandByte);
+        } catch (IOException e) {
+        }
 
         // Process 'Receivers nonce Identifier'
         outputData.write(receiversNonceIdentifier);
 
         // Process 'Message Authentication Code byte'
+        try {
+            outputData.write(messageAuthenticationCodeByte);
+        } catch (IOException e) {
+        }
 
         return outputData.toByteArray();
     }
@@ -429,6 +452,10 @@ public class CommandClassSecurityV1 {
         outputData.write(SECURITY_MESSAGE_ENCAPSULATION_NONCE_GET);
 
         // Process 'Initialization Vector byte'
+        try {
+            outputData.write(initializationVectorByte);
+        } catch (IOException e) {
+        }
 
         // Process 'Properties1'
         int valProperties1 = 0;
@@ -438,11 +465,19 @@ public class CommandClassSecurityV1 {
         outputData.write(valProperties1);
 
         // Process 'Command byte'
+        try {
+            outputData.write(commandByte);
+        } catch (IOException e) {
+        }
 
         // Process 'Receivers nonce Identifier'
         outputData.write(receiversNonceIdentifier);
 
         // Process 'Message Authentication Code byte'
+        try {
+            outputData.write(messageAuthenticationCodeByte);
+        } catch (IOException e) {
+        }
 
         return outputData.toByteArray();
     }
@@ -566,6 +601,10 @@ public class CommandClassSecurityV1 {
         outputData.write(SECURITY_NONCE_REPORT);
 
         // Process 'Nonce byte'
+        try {
+            outputData.write(nonceByte);
+        } catch (IOException e) {
+        }
 
         return outputData.toByteArray();
     }
@@ -592,7 +631,7 @@ public class CommandClassSecurityV1 {
         // Process 'Nonce byte'
         byte[] valNonceByte = new byte[8];
         for (int cntNonceByte = 0; cntNonceByte < 8; cntNonceByte++) {
-            valNonceByte[cntNonceByte] = payload[4 + cntNonceByte];
+            valNonceByte[cntNonceByte] = payload[2 + cntNonceByte];
         }
         response.put("NONCE_BYTE", valNonceByte);
 
@@ -642,7 +681,7 @@ public class CommandClassSecurityV1 {
         Map<String, Object> response = new HashMap<String, Object>();
 
         // Process 'Supported Security Schemes'
-        response.put("SUPPORTED_SECURITY_SCHEMES", new Integer(payload[4]));
+        response.put("SUPPORTED_SECURITY_SCHEMES", new Integer(payload[2]));
 
         // Return the map of processed response data;
         return response;
@@ -690,7 +729,7 @@ public class CommandClassSecurityV1 {
         Map<String, Object> response = new HashMap<String, Object>();
 
         // Process 'Supported Security Schemes'
-        response.put("SUPPORTED_SECURITY_SCHEMES", new Integer(payload[4]));
+        response.put("SUPPORTED_SECURITY_SCHEMES", new Integer(payload[2]));
 
         // Return the map of processed response data;
         return response;
@@ -738,7 +777,7 @@ public class CommandClassSecurityV1 {
         Map<String, Object> response = new HashMap<String, Object>();
 
         // Process 'Supported Security Schemes'
-        response.put("SUPPORTED_SECURITY_SCHEMES", new Integer(payload[4]));
+        response.put("SUPPORTED_SECURITY_SCHEMES", new Integer(payload[2]));
 
         // Return the map of processed response data;
         return response;

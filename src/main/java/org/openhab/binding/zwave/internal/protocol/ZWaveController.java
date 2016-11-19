@@ -624,11 +624,7 @@ public class ZWaveController {
                         logger.debug("NODE {}: Excluding node that doesn't exist.", incEvent.getNodeId());
                         break;
                     }
-                    zwaveNodes.remove(incEvent.getNodeId());
-
-                    // Remove the XML file
-                    ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
-                    nodeSerializer.DeleteNode(homeId, event.getNodeId());
+                    removeNode(incEvent.getNodeId());
                     break;
                 default:
                     break;
@@ -1136,8 +1132,7 @@ public class ZWaveController {
     }
 
     /**
-     * Gets the node object using it's node ID as key. Returns null if the node
-     * is not found
+     * Gets the node object using it's node ID as key. Returns null if the node is not found
      *
      * @param nodeId
      *            the Node ID of the node to get.
@@ -1145,6 +1140,25 @@ public class ZWaveController {
      */
     public ZWaveNode getNode(int nodeId) {
         return zwaveNodes.get(nodeId);
+    }
+
+    /**
+     * Removes the node object using it's node ID as key.
+     *
+     * @param nodeId
+     *            the Node ID of the node to get.
+     * @return node object
+     */
+    public void removeNode(int nodeId) {
+        ZWaveNode node = getNode(nodeId);
+        if (node != null) {
+            node.close();
+            zwaveNodes.remove(nodeId);
+        }
+
+        // Remove the XML file
+        ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
+        nodeSerializer.DeleteNode(homeId, nodeId);
     }
 
     /**

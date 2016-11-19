@@ -8,11 +8,20 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
+import java.security.GeneralSecurityException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
+import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
@@ -40,11 +49,24 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveSecurityCommandClass.class);
 
+    private static final byte[] DERIVE_ENCRYPT_KEY = { (byte) 0xAA, (byte) 0xAA, (byte) 0xAA, (byte) 0xAA, (byte) 0xAA,
+            (byte) 0xAA, (byte) 0xAA, (byte) 0xAA, (byte) 0xAA, (byte) 0xAA, (byte) 0xAA, (byte) 0xAA, (byte) 0xAA,
+            (byte) 0xAA, (byte) 0xAA, (byte) 0xAA };
+    private static final byte[] DERIVE_AUTH_KEY = { 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55,
+            0x55, 0x55, 0x55, 0x55, 0x55 };
+
     @XStreamOmitField
     private SecretKey networkKey;
 
+    @XStreamOmitField
+    private SecretKey encryptionKey;
+
+    @XStreamOmitField
+    private SecretKey authenticationKey;
+
     // Our last nonce we sent to the remove
     private ZWaveNonce ourNonce = null;
+
     // The last nonce we received from the remote
     private ZWaveNonce theirNonce = null;
 
@@ -120,10 +142,12 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
      * @return {@link ZWaveCommandClassTransactionPayload} to send
      */
     public ZWaveCommandClassTransactionPayload getSetSecurityKeyMessage() {
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
-                CommandClassSecurityV1.getNetworkKeySet(networkKey.getEncoded()))
+        ZWaveCommandClassTransactionPayload payload = new ZWaveCommandClassTransactionPayloadBuilder(
+                getNode().getNodeId(), CommandClassSecurityV1.getNetworkKeySet(networkKey.getEncoded()))
                         .withExpectedResponseCommand(CommandClassSecurityV1.NETWORK_KEY_VERIFY)
                         .withPriority(TransactionPriority.High).build();
+        payload.setRequiresSecurity();
+        return payload;
     }
 
     /**
@@ -175,22 +199,130 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 
     @ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_NONCE_REPORT, name = "SECURITY_NONCE_REPORT")
     public void handleSecurityNonceReport(ZWaveCommandClassPayload payload, int endpoint) {
+        logger.debug("NODE {}: NONCE Received start...", getNode().getNodeId());
+        if (theirNonce == null) {
+            logger.debug("NODE {}: NONCE Received start null", getNode().getNodeId());
+        } else {
+            logger.debug("NODE {}: NONCE Received start {}", getNode().getNodeId(), theirNonce.toString());
+        }
         // theirNonce;
         Map<String, Object> response = CommandClassSecurityV1.handleSecurityNonceReport(payload.getPayloadBuffer());
         theirNonce = new ZWaveNonce((byte[]) response.get("NONCE_BYTE"));
+        logger.debug("NODE {}: NONCE Received {}", getNode().getNodeId(), theirNonce.toString());
     }
 
     @ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_NONCE_GET, name = "SECURITY_NONCE_GET")
     public void handleSecurityNonceGet(ZWaveCommandClassPayload payload, int endpoint) {
+        ourNonce = new ZWaveNonce();
+        getController().enqueue(new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
+                CommandClassSecurityV1.getSecurityNonceReport(ourNonce.getNonceBytes()))
+                        .withPriority(TransactionPriority.High).build());
     }
 
-    @ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_MESSAGE_ENCAPSULATION, name = "SECURITY_MESSAGE_ENCAPSULATION")
-    public void handleSecurityMessageEncapsulation(ZWaveCommandClassPayload payload, int endpoint) {
+    public byte[] getSecurityMessageDecapsulation(byte[] ciphertextBytes) {
+        Map<String, Object> response = CommandClassSecurityV1.handleSecurityMessageEncapsulation(ciphertextBytes);
+
+        // Get the IV
+        byte[] initializationVector = new byte[16];
+        System.arraycopy(response.get("INITIALIZATION_VECTOR_BYTE"), 0, initializationVector, 0, 8);
+        System.arraycopy(ourNonce.getNonceBytes(), 0, initializationVector, 8, 8);
+
+        byte[] cyphertextMac = new byte[8];
+        System.arraycopy(response.get("MESSAGE_AUTHENTICATION_CODE_BYTE"), 0, cyphertextMac, 0, 8);
+
+        if ((Integer) response.get("RECEIVERS_NONCE_IDENTIFIER") != ourNonce.getId()) {
+            logger.debug("NODE {}: SECURITY_ERROR NONCE ID invalid!", getNode().getNodeId());
+            return null;
+        }
+
+        Cipher cipher;
+        try {
+            cipher = Cipher.getInstance("AES/OFB/NoPadding");
+            cipher.init(Cipher.DECRYPT_MODE, encryptionKey, new IvParameterSpec(initializationVector));
+            byte[] plaintextBytes = cipher.doFinal((byte[]) response.get("COMMAND_BYTE"));
+
+            byte[] messageAuthenticationCode = generateMAC((byte[]) response.get("COMMAND_BYTE"),
+                    (byte) getNode().getNodeId(), (byte) getController().getOwnNodeId(), initializationVector);
+
+            if (!Arrays.equals(messageAuthenticationCode, (byte[]) response.get("MESSAGE_AUTHENTICATION_CODE_BYTE"))) {
+                logger.debug("NODE {}: SECURITY_ERROR Failed authentication!", getNode().getNodeId());
+                return null;
+            }
+
+            return plaintextBytes;
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
+            e.printStackTrace();
+        } catch (InvalidKeyException e) {
+            e.printStackTrace();
+        } catch (InvalidAlgorithmParameterException e) {
+            e.printStackTrace();
+        } catch (GeneralSecurityException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
-    @ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_MESSAGE_ENCAPSULATION_NONCE_GET, name = "SECURITY_MESSAGE_ENCAPSULATION_NONCE_GET")
-    public void handleSecurityMessageEncapsulationNonceGet(ZWaveCommandClassPayload payload, int endpoint) {
+    public byte[] getSecurityMessageEncapsulation(byte[] payload) {
+
+        /// tmpNonce.setNonceBytes(new byte[] { 0, 0, 0, 0, 0, 0, 0, 0 });
+        // theirNonce.setNonceBytes(new byte[] { 1, 1, 1, 1, 1, 1, 1, 1 });
+
+        // Create the initialisation vector which is an 8 byte random number followed by their nonce
+        ZWaveNonce tmpNonce = new ZWaveNonce();
+        byte[] initializationVector = new byte[16];
+        System.arraycopy(tmpNonce.getNonceBytes(), 0, initializationVector, 0, 8);
+        System.arraycopy(theirNonce.getNonceBytes(), 0, initializationVector, 8, 8);
+
+        try {
+            // Create the message payload with a fake MAC
+            // This puts all the elements in the correct part of the packet for encryption
+            byte[] messageAuthenticationCode = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+            byte[] securePayload = CommandClassSecurityV1.getSecurityMessageEncapsulation(tmpNonce.getNonceBytes(), 0,
+                    false, false, payload, (int) theirNonce.getId(), messageAuthenticationCode);
+
+            // Now encrypt the secure part of the securePayload
+            Cipher encryptCipher = Cipher.getInstance("AES/OFB/NoPadding");
+            encryptCipher.init(Cipher.ENCRYPT_MODE, encryptionKey, new IvParameterSpec(initializationVector));
+            byte[] ciphertextBytes = encryptCipher.doFinal(securePayload, 10, securePayload.length - 19);
+            System.arraycopy(ciphertextBytes, 0, securePayload, 10, securePayload.length - 19);
+
+            // Now generate the MAC
+            messageAuthenticationCode = generateMAC(securePayload, (byte) getController().getOwnNodeId(),
+                    (byte) getNode().getNodeId(), initializationVector);
+
+            // And copy the MAC to the end of securePayload
+            System.arraycopy(messageAuthenticationCode, 0, securePayload, securePayload.length - 8, 8);
+
+            return securePayload;
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (NoSuchPaddingException e) {
+            e.printStackTrace();
+        } catch (InvalidKeyException e) {
+            e.printStackTrace();
+        } catch (InvalidAlgorithmParameterException e) {
+            e.printStackTrace();
+        } catch (IllegalBlockSizeException e) {
+            e.printStackTrace();
+        } catch (BadPaddingException e) {
+            e.printStackTrace();
+        } catch (GeneralSecurityException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
+
+    // @ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_MESSAGE_ENCAPSULATION, name =
+    // "SECURITY_MESSAGE_ENCAPSULATION")
+    // public void handleSecurityMessageEncapsulation(ZWaveCommandClassPayload payload, int endpoint) {
+    // CommandClassSecurityV1.handleSecurityMessageEncapsulation(payload);
+    // }
+
+    // @ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_MESSAGE_ENCAPSULATION_NONCE_GET, name =
+    // "SECURITY_MESSAGE_ENCAPSULATION_NONCE_GET")
+    // public void handleSecurityMessageEncapsulationNonceGet(ZWaveCommandClassPayload payload, int endpoint) {
+    // }
 
     /**
      * Sets the network key. The key is provided as a string of hexadecimal values. Values can be space or comma
@@ -223,6 +355,36 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 
         networkKey = new SecretKeySpec(keyBytes, AES);
         logger.debug("NODE {}: Updated networkKey", getNode().getNodeId());
+
+        setupNetworkKey(true);
+    }
+
+    public void setupNetworkKey(boolean useSchemeZero) {
+        logger.info("NODE {}: setupNetworkKey useSchemeZero={}", getNode().getNodeId(), useSchemeZero);
+        SecretKey key;
+        if (useSchemeZero) {
+            logger.info("NODE {}: Using Scheme0 Network Key for Key Exchange since we are in inclusion mode.",
+                    getNode().getNodeId());
+            // Scheme0 network key is a key of all zeros
+            key = new SecretKeySpec(new byte[16], AES);
+        } else {
+            // Use the real key
+            logger.trace("NODE {}: Using Real Network Key.", getNode().getNodeId());
+            key = networkKey;
+        }
+
+        try {
+            // Derived the message encryption key from the network key
+            Cipher cipher = Cipher.getInstance("AES/ECB/NoPadding");
+            cipher.init(Cipher.ENCRYPT_MODE, key);
+            encryptionKey = new SecretKeySpec(cipher.doFinal(DERIVE_ENCRYPT_KEY), AES);
+
+            // Derived the message auth key from the network key
+            cipher.init(Cipher.ENCRYPT_MODE, key);
+            authenticationKey = new SecretKeySpec(cipher.doFinal(DERIVE_AUTH_KEY), AES);
+        } catch (GeneralSecurityException e) {
+            logger.error("NODE {}: Error building derived keys {}", getNode().getNodeId(), e);
+        }
     }
 
     /**
@@ -240,8 +402,84 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 
     public boolean isNonceAvailable() {
         if (theirNonce == null) {
+            logger.debug("NODE {}: isNonceAvailable = null", getNode().getNodeId());
             return false;
         }
         return theirNonce.isValid();
+    }
+
+    /**
+     * Generate the MAC (Message Authentication Code) for an encrypted message
+     *
+     * @param commandByte the security command we're sending
+     * @param ciphertext
+     * @param sendingNode
+     * @param receivingNode
+     * @param iv
+     * @return
+     * @throws GeneralSecurityException
+     */
+    public byte[] generateMAC(byte[] payload, byte sendingNode, byte receivingNode, byte[] iv)
+            throws GeneralSecurityException {
+        // Build a buffer containing a 4-byte header and the encrypted message data
+        // padded with zeros to a 16-byte boundary.
+        byte[] tempAuth = new byte[16];
+
+        int bufferSize = payload.length - 19 + 4; // -19 for packet overhead, +4 to account for the header
+        byte[] buffer = new byte[bufferSize];
+        buffer[0] = payload[1]; // Command byte
+        buffer[1] = sendingNode;
+        buffer[2] = receivingNode;
+        buffer[3] = (byte) (payload.length - 19);
+
+        System.arraycopy(payload, 10, buffer, 4, payload.length - 19);
+
+        // Encrypt the IV with ECB
+        Cipher encryptCipher = Cipher.getInstance("AES/ECB/NoPadding");
+        encryptCipher.init(Cipher.ENCRYPT_MODE, authenticationKey);
+        tempAuth = encryptCipher.doFinal(iv);
+
+        // Working buffer
+        byte[] encpck = new byte[16];
+        int block = 0;
+
+        // Now XOR the buffer with our encrypted IV
+        for (int i = 0; i < bufferSize; i++) {
+            encpck[block] = buffer[i];
+            block++;
+
+            // If we hit a block boundary, then XOR and encrypt
+            if (block == 16) {
+                for (int j = 0; j < 16; j++) {
+                    // here we do our xor
+                    tempAuth[j] = (byte) (encpck[j] ^ tempAuth[j]);
+                    encpck[j] = 0;
+                }
+                // Reset encpck for good measure
+                Arrays.fill(encpck, (byte) 0);
+
+                // Reset our block counter back to 0
+                block = 0;
+
+                encryptCipher.init(Cipher.ENCRYPT_MODE, authenticationKey);
+                tempAuth = encryptCipher.doFinal(tempAuth);
+            }
+        }
+
+        // Add any left over data that isn't a full block size
+        if (block > 0) {
+            for (int i = 0; i < 16; i++) {
+                // encpck from block to 16 is already guaranteed to be 0 so its safe to XOR it with out tempAuth
+                tempAuth[i] = (byte) (encpck[i] ^ tempAuth[i]);
+            }
+
+            encryptCipher.init(Cipher.ENCRYPT_MODE, authenticationKey);
+            tempAuth = encryptCipher.doFinal(tempAuth);
+        }
+
+        // We only care about the first 8 bytes of tempAuth as the MAC
+        byte[] mac = new byte[8];
+        System.arraycopy(tempAuth, 0, mac, 0, 8);
+        return mac;
     }
 }

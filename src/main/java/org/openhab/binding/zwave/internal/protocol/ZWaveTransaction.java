@@ -163,7 +163,7 @@ public class ZWaveTransaction {
         return payload.getSerialMessageClass();
     }
 
-    private byte[] getPayloadBuffer() {
+    public byte[] getPayloadBuffer() {
         return payload.getPayloadBuffer();
     }
 

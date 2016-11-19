@@ -137,6 +137,14 @@ public class ZWaveNode {
     }
 
     /**
+     * Closes the node and stops any running processes
+     */
+    public void close() {
+        nodeInitStageAdvancer.stopInitialisation();
+        nodeInitStageAdvancer = null;
+    }
+
+    /**
      * Configures the node after it's been restored from file.
      * NOTE: XStream doesn't run any default constructor. So, any initialisation
      * made in a constructor, or statically, won't be performed!!!
@@ -825,26 +833,31 @@ public class ZWaveNode {
     public boolean doesMessageRequireSecurityEncapsulation(int endpoint, ZWaveCommandClassPayload payload) {
         // Does this node support security at all?
         if (endpoints.get(0).getCommandClass(CommandClass.COMMAND_CLASS_SECURITY) == null) {
+            logger.debug("NODE {}: SECURITY not supported", nodeId);
             return false;
         }
 
         final CommandClass commandClass = CommandClass.getCommandClass(payload.getCommandClassId());
 
         if (CommandClass.COMMAND_CLASS_SECURITY == commandClass) {
+            logger.debug("NODE {}: SECURITY check internal", nodeId);
             // CommandClass.SECURITY is a special case because only some commands get encrypted
             return ZWaveSecurityCommandClass.doesCommandRequireSecurityEncapsulation(payload.getCommandClassCommand());
         }
 
         // PING should not be encrypted
         if (commandClass == CommandClass.COMMAND_CLASS_NO_OPERATION) {
+            logger.debug("NODE {}: SECURITY doesn't encrypt PING", nodeId);
             return false;
         }
 
         // Does this endpoint support this class secure
         if (endpoints.get(endpoint).getSecureCommandClass(commandClass) != null) {
+            logger.debug("NODE {}: SECURITY required on {}", nodeId, commandClass);
             return true;
         }
 
+        logger.debug("NODE {}: SECURITY NOT required on {}", nodeId, commandClass);
         return false;
     }
 
@@ -995,22 +1008,21 @@ public class ZWaveNode {
      * Security encapsulation is performed in the transaction manager since it needs to manage the NONCE and
      * encapsulation needs to be done at the time the message is sent.
      *
-     * @param serialMessage the serial message to encapsulate
+     * @param transaction the {@link ZWaveCommandClassTransactionPayload} to encapsulate
      * @param commandClass the command class used to generate the message.
      * @param endpointId the instance / endpoint to encapsulate the message for
      * @return SerialMessage on success, null on failure.
      */
+    // public ZWaveCommandClassTransactionPayload encapsulate(int endpointId,
+    // ZWaveCommandClassTransactionPayload transaction) {
+    // ZWaveCommandClass commandClass, ) {
     public ZWaveCommandClassTransactionPayload encapsulate(ZWaveCommandClassTransactionPayload transaction,
             ZWaveCommandClass commandClass, int endpointId) {
         ZWaveMultiInstanceCommandClass multiInstanceCommandClass;
+        logger.warn("NODE {}: Encapsulating message, endpoint {}", getNodeId(), endpointId);
 
         if (transaction == null) {
             return null;
-        }
-
-        // No encapsulation necessary.
-        if (endpointId == 0) {
-            return transaction;
         }
 
         // Encapsulation the COMMAND_CLASS_SCHEDULE class
@@ -1020,38 +1032,37 @@ public class ZWaveNode {
         // Encapsulation the COMMAND_CLASS_SUPERVISION class
 
         // Encapsulation the COMMAND_CLASS_MULTI_CHANNEL class
+        if (endpointId != 0) {
+            multiInstanceCommandClass = (ZWaveMultiInstanceCommandClass) getCommandClass(
+                    CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
 
-        multiInstanceCommandClass = (ZWaveMultiInstanceCommandClass) getCommandClass(
-                CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
+            if (multiInstanceCommandClass == null) {
+                logger.warn("NODE {}: Encapsulating message, instance / endpoint {} failed, will discard message.",
+                        getNodeId(), endpointId);
+                return null;
+            }
 
-        if (multiInstanceCommandClass == null) {
-            logger.warn("NODE {}: Encapsulating message, instance / endpoint {} failed, will discard message.",
-                    getNodeId(), endpointId);
-            return null;
-        }
-
-        logger.debug("NODE {}: Encapsulating message, instance / endpoint {}", getNodeId(), endpointId);
-        switch (multiInstanceCommandClass.getVersion()) {
-            case 2:
-                if (commandClass.getEndpoint() != null) {
-                    transaction = multiInstanceCommandClass.getMultiChannelEncapMessage(transaction,
-                            commandClass.getEndpoint().getEndpointId());
-                }
-                break;
-            case 1:
-            default:
-                if (commandClass.getInstances() >= endpointId) {
+            logger.debug("NODE {}: Encapsulating message, instance / endpoint {}", getNodeId(), endpointId);
+            switch (multiInstanceCommandClass.getVersion()) {
+                case 1:
                     transaction = multiInstanceCommandClass.getMultiInstanceEncapMessage(transaction, endpointId);
-                }
-                break;
+                    break;
+                default:
+                case 2:
+                    transaction = multiInstanceCommandClass.getMultiChannelEncapMessage(transaction, endpointId);
+                    break;
+            }
         }
 
         // Check if we need to secure this message
         if (doesMessageRequireSecurityEncapsulation(0, transaction)) {
-            logger.debug("NODE {}: Command Class {} is required to be secured", nodeId, commandClass.getCommandClass());
+            logger.debug("NODE {}: Command Class {} is required to be secured", nodeId,
+                    CommandClass.getCommandClass(transaction.getCommandClassId()));
 
             transaction.setRequiresSecurity();
         } else {
+            logger.debug("NODE {}: Command Class {} is NOT required to be secured", nodeId,
+                    CommandClass.getCommandClass(transaction.getCommandClassId()));
             // Encapsulation the COMMAND_CLASS_CRC16 class if we don't utilise security
         }
 

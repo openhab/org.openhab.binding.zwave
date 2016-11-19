@@ -22,6 +22,14 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
 
     private static final Logger logger = LoggerFactory.getLogger(ZWaveCommandClassTransactionPayload.class);
 
+    /**
+     *
+     * @param nodeId
+     * @param payload
+     * @param priority
+     * @param expectedResponseCommandClass
+     * @param expectedResponseCommandClassCommand
+     */
     public ZWaveCommandClassTransactionPayload(int nodeId, byte[] payload, TransactionPriority priority,
             CommandClass expectedResponseCommandClass, int expectedResponseCommandClassCommand) {
         super(payload);

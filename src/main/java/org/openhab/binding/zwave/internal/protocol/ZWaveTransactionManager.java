@@ -17,6 +17,7 @@ import java.util.concurrent.PriorityBlockingQueue;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionState;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse.State;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
@@ -355,11 +356,42 @@ public class ZWaveTransactionManager {
             }
 
             if (transaction != null) {
-                logger.debug("getTransactionToSend 6");
-                sendQueue.get(transaction.getQueueId()).remove(transaction);
-                if (sendQueue.get(transaction.getQueueId()).isEmpty()) {
-                    logger.debug("getTransactionToSend 7");
-                    sendQueue.remove(transaction.getQueueId());
+                // If this requires security, then check if we have a NONCE
+                if (transaction.getRequiresSecurity()) {
+                    logger.debug("NODE {}: Transaction requires security", transaction.getNodeId());
+                    ZWaveNode node = controller.getNode(transaction.getNodeId());
+                    ZWaveSecurityCommandClass securityCommandClass = (ZWaveSecurityCommandClass) node
+                            .getCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
+                    if (securityCommandClass == null) {
+                        logger.debug("NODE {}: COMMAND_CLASS_SECURITY not found.", transaction.getNodeId());
+                    } else if (securityCommandClass.isNonceAvailable()) {
+                        // We have a NONCE, so encapsulate and send
+                        logger.debug("NODE {}: NONCE available so encap and send.", transaction.getNodeId());
+
+                        sendQueue.get(transaction.getQueueId()).remove(transaction);
+                        if (sendQueue.get(transaction.getQueueId()).isEmpty()) {
+                            logger.debug("getTransactionToSend 7");
+                            sendQueue.remove(transaction.getQueueId());
+                        }
+
+                        transaction = new ZWaveTransaction(
+                                new ZWaveCommandClassTransactionPayload(transaction.getNodeId(),
+                                        securityCommandClass
+                                                .getSecurityMessageEncapsulation(transaction.getPayloadBuffer()),
+                                        TransactionPriority.RealTime, transaction.getExpectedCommandClass(),
+                                        transaction.getExpectedCommandClassCommand()));
+                    } else {
+                        // Request a nonce...
+                        // Create a temporary transaction
+                        transaction = new ZWaveTransaction(securityCommandClass.getSecurityNonceGet());
+                    }
+                } else {
+                    logger.debug("getTransactionToSend 6");
+                    sendQueue.get(transaction.getQueueId()).remove(transaction);
+                    if (sendQueue.get(transaction.getQueueId()).isEmpty()) {
+                        logger.debug("getTransactionToSend 7");
+                        sendQueue.remove(transaction.getQueueId());
+                    }
                 }
             }
         }
@@ -635,24 +667,6 @@ public class ZWaveTransactionManager {
                 // Nothing to send!
                 logger.debug("Transaction SendNextMessage nothing");
                 return;
-            }
-
-            // If this requires security, then check if we have a NONCE
-            if (transaction.getRequiresSecurity()) {
-                logger.debug("NODE {}: Transaction requires security", transaction.getNodeId());
-                ZWaveNode node = controller.getNode(transaction.getNodeId());
-                ZWaveSecurityCommandClass securityCommandClass = (ZWaveSecurityCommandClass) node
-                        .getCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
-                if (securityCommandClass == null) {
-                    logger.debug("NODE {}: COMMAND_CLASS_SECURITY not found.", transaction.getNodeId());
-                } else if (securityCommandClass.isNonceAvailable()) {
-                    // We have a NONCE, so encapsulate and send
-                    logger.debug("NODE {}: NONCE available so encap and send.", transaction.getNodeId());
-                } else {
-                    // Request a nonce...
-                    // Create a temporary transaction
-                    transaction = new ZWaveTransaction(securityCommandClass.getSecurityNonceGet());
-                }
             }
 
             // Add this message to the outstandingTransactions list

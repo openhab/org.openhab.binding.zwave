@@ -42,7 +42,7 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
 
         // assertEquals(event.getNodeId(), 40);
         assertEquals(event.getEndpoint(), 0);
-        assertEquals(event.getCommandClass(), CommandClass.ALARM);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_ALARM);
         assertEquals(event.getReportType(), ReportType.ALARM);
         assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.GENERAL);
         assertEquals(event.getAlarmStatus(), 0x00);
@@ -184,7 +184,7 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void getNotificationReportMessage() {
-        ZWaveAlarmCommandClass cls = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.ALARM);
+        ZWaveAlarmCommandClass cls = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_ALARM);
         SerialMessage msg;
 
         cls.setVersion(1);
@@ -202,7 +202,8 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
     public void handleSupportedReport() {
         byte[] packetData = { 0x01, 0x0A, 0x00, 0x04, 0x00, 0x49, 0x04, 0x71, 0x08, 0x01, (byte) 0x80, 0x44 };
 
-        ZWaveAlarmCommandClass alarmCommandClass = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.ALARM);
+        ZWaveAlarmCommandClass alarmCommandClass = (ZWaveAlarmCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_ALARM);
         SerialMessage serialMessage = new SerialMessage(packetData);
         try {
             alarmCommandClass.handleApplicationCommandRequest(serialMessage, 4, 0);
