@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="merten_507001_00_000" listed="false">
+    <label>507001 Switch Wall Insert 1 Gang</label>
+    <description>Switch Wall Insert 1 Gang</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Merten</property>
+      <property name="modelId">507001</property>
+      <property name="manufacturerId">007A</property>
+      <property name="manufacturerRef">8001:8001</property>
+      <property name="dbReference">462</property>
+    </properties>
+
+  </thing-type>
+
+</thing:thing-descriptions>

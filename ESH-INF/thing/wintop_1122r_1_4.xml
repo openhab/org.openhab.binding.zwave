@@ -14,7 +14,7 @@
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
