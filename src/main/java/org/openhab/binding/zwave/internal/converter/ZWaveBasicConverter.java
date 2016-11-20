@@ -107,9 +107,17 @@ public class ZWaveBasicConverter extends ZWaveCommandClassConverter {
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.BASIC, channel.getEndpoint());
 
         Integer value = null;
-        if (command instanceof DecimalType) {
+        if (command instanceof OnOffType) {
+            value = command == OnOffType.ON ? 0xff : 0x00;
+        } else if (command instanceof DecimalType) {
             value = (int) ((DecimalType) command).longValue();
         }
+
+        if (value == null) {
+            logger.debug("NODE {}: Unknown conversion {}", node.getNodeId(), command.getClass().getSimpleName());
+            return null;
+        }
+
         SerialMessage serialMessage = node.encapsulate(commandClass.setValueMessage(value), commandClass,
                 channel.getEndpoint());
 
