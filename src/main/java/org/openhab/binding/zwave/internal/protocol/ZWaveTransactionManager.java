@@ -327,6 +327,19 @@ public class ZWaveTransactionManager {
         // This will be the highest priority entry for each node
         synchronized (sendQueue) {
             for (int node : sendQueue.keySet()) {
+                // If the outstanding transaction is a NONCE_REPORT, then just send it ASAP
+                if (sendQueue.get(node).peek().getPriority() == TransactionPriority.NonceResponse) {
+                    logger.debug("getTransactionToSend 666");
+                    transaction = sendQueue.get(node).peek();
+                    sendQueue.get(node).remove(transaction);
+                    if (sendQueue.get(node).isEmpty()) {
+                        logger.debug("getTransactionToSend 777");
+                        sendQueue.remove(node);
+                    }
+
+                    return transaction;
+                }
+
                 // Make sure there's no outstanding transaction for this node
                 boolean outstanding = false;
                 for (ZWaveTransaction outstandingTransaction : outstandingTransactions) {
@@ -656,17 +669,96 @@ public class ZWaveTransactionManager {
         // If we're currently processing the core of a transaction, or there are too many outstanding transactions, then
         // don't start another right now.
         synchronized (transactionSync) {
-            if (lastTransaction != null || outstandingTransactions.size() >= MAX_OUTSTANDING_TRANSACTIONS) {
-                logger.debug("Transaction SendNextMessage too many outstanding {}, {}", outstandingTransactions.size(),
+            if (lastTransaction != null) {
+                logger.debug("Transaction lastTransaction outstanding", outstandingTransactions.size(),
                         lastTransaction);
                 return;
             }
 
-            ZWaveTransaction transaction = getTransactionToSend();
+            ZWaveTransaction transaction = null;
+            for (int node : sendQueue.keySet()) {
+                // If the outstanding transaction is a NONCE_REPORT, then just send it ASAP
+                if (sendQueue.get(node).peek().getPriority() == TransactionPriority.NonceResponse) {
+                    transaction = sendQueue.get(node).peek();
+                    break;
+                }
+
+                // Make sure there's no outstanding transaction for this node
+                boolean outstanding = false;
+                for (ZWaveTransaction outstandingTransaction : outstandingTransactions) {
+                    if (outstandingTransaction.getQueueId() == node) {
+                        logger.debug("getTransactionToSend 2");
+                        outstanding = true;
+                        break;
+                    }
+                }
+
+                // Outstanding transaction found?
+                if (outstanding == true) {
+                    logger.debug("getTransactionToSend 3");
+                    continue;
+                }
+
+                if (transaction == null) {
+                    logger.debug("getTransactionToSend 4");
+                    transaction = sendQueue.get(node).peek();
+                } else {
+                    logger.debug("getTransactionToSend 5");
+                    if (sendQueue.get(node).peek().getPriority().ordinal() < transaction.getPriority().ordinal()) {
+                        transaction = sendQueue.get(node).peek();
+                    }
+                }
+            }
+
+            if (transaction != null) {
+                // If this requires security, then check if we have a NONCE
+                if (transaction.getRequiresSecurity()) {
+                    logger.debug("NODE {}: Transaction requires security", transaction.getNodeId());
+                    ZWaveNode node = controller.getNode(transaction.getNodeId());
+                    ZWaveSecurityCommandClass securityCommandClass = (ZWaveSecurityCommandClass) node
+                            .getCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
+                    if (securityCommandClass == null) {
+                        logger.debug("NODE {}: COMMAND_CLASS_SECURITY not found.", transaction.getNodeId());
+                    } else if (securityCommandClass.isNonceAvailable()) {
+                        // We have a NONCE, so encapsulate and send
+                        logger.debug("NODE {}: NONCE available so encap and send.", transaction.getNodeId());
+
+                        sendQueue.get(transaction.getQueueId()).remove(transaction);
+                        if (sendQueue.get(transaction.getQueueId()).isEmpty()) {
+                            logger.debug("getTransactionToSend 7");
+                            sendQueue.remove(transaction.getQueueId());
+                        }
+
+                        transaction = new ZWaveTransaction(
+                                new ZWaveCommandClassTransactionPayload(transaction.getNodeId(),
+                                        securityCommandClass
+                                                .getSecurityMessageEncapsulation(transaction.getPayloadBuffer()),
+                                        TransactionPriority.RealTime, transaction.getExpectedCommandClass(),
+                                        transaction.getExpectedCommandClassCommand()));
+                    } else {
+                        // Request a nonce...
+                        // Create a temporary transaction
+                        transaction = new ZWaveTransaction(securityCommandClass.getSecurityNonceGet());
+                    }
+                } else {
+                    logger.debug("getTransactionToSend 6");
+                    sendQueue.get(transaction.getQueueId()).remove(transaction);
+                    if (sendQueue.get(transaction.getQueueId()).isEmpty()) {
+                        logger.debug("getTransactionToSend 7");
+                        sendQueue.remove(transaction.getQueueId());
+                    }
+                }
+            }
+
+            // ZWaveTransaction transaction = getTransactionToSend();
             if (transaction == null) {
                 // Nothing to send!
                 logger.debug("Transaction SendNextMessage nothing");
                 return;
+            }
+
+            if (outstandingTransactions.size() >= MAX_OUTSTANDING_TRANSACTIONS) {
+
             }
 
             // Add this message to the outstandingTransactions list

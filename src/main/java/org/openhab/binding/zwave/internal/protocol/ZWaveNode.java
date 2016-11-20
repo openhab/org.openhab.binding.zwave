@@ -1101,6 +1101,8 @@ public class ZWaveNode {
         resetResendCount();
         incrementReceiveCount();
 
+        boolean securityDecapOk = false;
+
         // Get the first command class
         int commandClassCode = payload.getCommandClassId();
         if (commandClassCode == CommandClass.COMMAND_CLASS_TRANSPORT_SERVICE.getKey()) {
@@ -1109,6 +1111,17 @@ public class ZWaveNode {
         } else if (commandClassCode == CommandClass.COMMAND_CLASS_SECURITY.getKey()) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_SECURITY", getNodeId());
 
+            ZWaveSecurityCommandClass securityCommandClass = (ZWaveSecurityCommandClass) endpoints.get(0)
+                    .getCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
+            if (securityCommandClass == null) {
+                logger.debug("NODE {}: COMMAND_CLASS_SECURITY not found in endpoint 0", getNodeId());
+                return null;
+            }
+
+            payload = new ZWaveCommandClassPayload(
+                    securityCommandClass.getSecurityMessageDecapsulation(payload.getPayloadBuffer()));
+
+            securityDecapOk = true;
         } else if (commandClassCode == CommandClass.COMMAND_CLASS_CRC_16_ENCAP.getKey()) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_CRC_16_ENCAP", getNodeId());
         }
@@ -1158,7 +1171,7 @@ public class ZWaveNode {
                 }
             }
 
-            if (doesMessageRequireSecurityEncapsulation(0, command)) {
+            if (securityDecapOk == false && doesMessageRequireSecurityEncapsulation(0, command)) {
                 // Should have been security encapsulation but wasn't!
                 logger.debug(
                         "NODE {}: Command Class {} was required to be security encapsulation but it wasn't! Dropping message.",

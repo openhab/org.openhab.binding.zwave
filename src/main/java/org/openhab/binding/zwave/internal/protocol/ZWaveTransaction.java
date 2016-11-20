@@ -51,6 +51,7 @@ public class ZWaveTransaction {
      *
      */
     public enum TransactionPriority {
+        NonceResponse,
         RealTime,
         Immediate,
         High,

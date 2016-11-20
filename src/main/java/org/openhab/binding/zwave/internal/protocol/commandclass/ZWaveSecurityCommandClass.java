@@ -216,40 +216,42 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
         ourNonce = new ZWaveNonce();
         getController().enqueue(new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
                 CommandClassSecurityV1.getSecurityNonceReport(ourNonce.getNonceBytes()))
-                        .withPriority(TransactionPriority.High).build());
+                        .withPriority(TransactionPriority.NonceResponse).build());
     }
 
     public byte[] getSecurityMessageDecapsulation(byte[] ciphertextBytes) {
-        Map<String, Object> response = CommandClassSecurityV1.handleSecurityMessageEncapsulation(ciphertextBytes);
 
         // Get the IV
         byte[] initializationVector = new byte[16];
-        System.arraycopy(response.get("INITIALIZATION_VECTOR_BYTE"), 0, initializationVector, 0, 8);
+        System.arraycopy(ciphertextBytes, 2, initializationVector, 0, 8);
         System.arraycopy(ourNonce.getNonceBytes(), 0, initializationVector, 8, 8);
-
-        byte[] cyphertextMac = new byte[8];
-        System.arraycopy(response.get("MESSAGE_AUTHENTICATION_CODE_BYTE"), 0, cyphertextMac, 0, 8);
-
-        if ((Integer) response.get("RECEIVERS_NONCE_IDENTIFIER") != ourNonce.getId()) {
-            logger.debug("NODE {}: SECURITY_ERROR NONCE ID invalid!", getNode().getNodeId());
-            return null;
-        }
 
         Cipher cipher;
         try {
+            byte nodeid = (byte) getNode().getNodeId();
+            byte ourid = (byte) getController().getOwnNodeId();
+            byte[] messageAuthenticationCode = generateMAC(ciphertextBytes, nodeid, ourid, initializationVector);
+
+            byte[] securePayload = new byte[ciphertextBytes.length - 19];
+            System.arraycopy(ciphertextBytes, 10, securePayload, 0, ciphertextBytes.length - 19);
             cipher = Cipher.getInstance("AES/OFB/NoPadding");
             cipher.init(Cipher.DECRYPT_MODE, encryptionKey, new IvParameterSpec(initializationVector));
-            byte[] plaintextBytes = cipher.doFinal((byte[]) response.get("COMMAND_BYTE"));
+            byte[] plaintextBytes = cipher.doFinal(securePayload);
+            System.arraycopy(plaintextBytes, 0, ciphertextBytes, 10, plaintextBytes.length);
 
-            byte[] messageAuthenticationCode = generateMAC((byte[]) response.get("COMMAND_BYTE"),
-                    (byte) getNode().getNodeId(), (byte) getController().getOwnNodeId(), initializationVector);
+            Map<String, Object> response = CommandClassSecurityV1.handleSecurityMessageEncapsulation(ciphertextBytes);
 
             if (!Arrays.equals(messageAuthenticationCode, (byte[]) response.get("MESSAGE_AUTHENTICATION_CODE_BYTE"))) {
                 logger.debug("NODE {}: SECURITY_ERROR Failed authentication!", getNode().getNodeId());
                 return null;
             }
 
-            return plaintextBytes;
+            if ((Integer) response.get("RECEIVERS_NONCE_IDENTIFIER") != ourNonce.getId()) {
+                logger.debug("NODE {}: SECURITY_ERROR NONCE ID invalid!", getNode().getNodeId());
+                return null;
+            }
+
+            return (byte[]) response.get("COMMAND_BYTE");
         } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
             e.printStackTrace();
         } catch (InvalidKeyException e) {
@@ -312,17 +314,6 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
         }
         return null;
     }
-
-    // @ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_MESSAGE_ENCAPSULATION, name =
-    // "SECURITY_MESSAGE_ENCAPSULATION")
-    // public void handleSecurityMessageEncapsulation(ZWaveCommandClassPayload payload, int endpoint) {
-    // CommandClassSecurityV1.handleSecurityMessageEncapsulation(payload);
-    // }
-
-    // @ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_MESSAGE_ENCAPSULATION_NONCE_GET, name =
-    // "SECURITY_MESSAGE_ENCAPSULATION_NONCE_GET")
-    // public void handleSecurityMessageEncapsulationNonceGet(ZWaveCommandClassPayload payload, int endpoint) {
-    // }
 
     /**
      * Sets the network key. The key is provided as a string of hexadecimal values. Values can be space or comma
