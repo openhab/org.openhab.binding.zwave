@@ -1118,8 +1118,12 @@ public class ZWaveNode {
                 return null;
             }
 
-            payload = new ZWaveCommandClassPayload(
-                    securityCommandClass.getSecurityMessageDecapsulation(payload.getPayloadBuffer()));
+            byte[] cleartextData = securityCommandClass.getSecurityMessageDecapsulation(payload.getPayloadBuffer());
+            if (cleartextData == null) {
+                return null;
+            }
+
+            payload = new ZWaveCommandClassPayload(cleartextData);
 
             securityDecapOk = true;
         } else if (commandClassCode == CommandClass.COMMAND_CLASS_CRC_16_ENCAP.getKey()) {

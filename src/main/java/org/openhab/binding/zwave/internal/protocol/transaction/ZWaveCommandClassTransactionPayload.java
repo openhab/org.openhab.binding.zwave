@@ -14,7 +14,7 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
         implements ZWaveMessagePayloadTransaction {
     private final int nodeId;
     private final CommandClass expectedResponseCommandClass;
-    private final int expectedResponseCommandClassCommand;
+    private final Integer expectedResponseCommandClassCommand;
     private TransactionPriority priority;
     private int maxAttempts = 0;
 
@@ -31,7 +31,7 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
      * @param expectedResponseCommandClassCommand
      */
     public ZWaveCommandClassTransactionPayload(int nodeId, byte[] payload, TransactionPriority priority,
-            CommandClass expectedResponseCommandClass, int expectedResponseCommandClassCommand) {
+            CommandClass expectedResponseCommandClass, Integer expectedResponseCommandClassCommand) {
         super(payload);
         this.nodeId = nodeId;
         this.priority = priority;
@@ -59,7 +59,7 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
         return expectedResponseCommandClass;
     }
 
-    public int getExpectedResponseCommandClassCommand() {
+    public Integer getExpectedResponseCommandClassCommand() {
         return expectedResponseCommandClassCommand;
     }
 

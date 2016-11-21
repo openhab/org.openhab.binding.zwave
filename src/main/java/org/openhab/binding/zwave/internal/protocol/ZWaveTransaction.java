@@ -25,7 +25,7 @@ public class ZWaveTransaction {
 
     private int DEFAULT_TIMEOUT = 2500;
 
-    private final ZWaveMessagePayloadTransaction payload;
+    private ZWaveMessagePayloadTransaction payload;
 
     // Timers
 
@@ -88,17 +88,11 @@ public class ZWaveTransaction {
         CANCELLED
     }
 
-    // private int nodeId;
-
     private SerialMessage serialMessageDebug; // Delete - just here for debugging right now
 
     private SerialMessage serialMessage = null;
 
     private TransactionPriority priority;
-    // private SerialMessageClass serialMessageClass;
-    // private SerialMessageClass expectedReplyClass;
-    // private CommandClass expectedReplyCommandClass;
-    // private Integer expectedReplyCommandClassCommand;
     private long dataTimeout;
 
     private TransactionState transactionStateCancelled = TransactionState.UNINTIALIZED;
@@ -124,6 +118,10 @@ public class ZWaveTransaction {
         if (payload instanceof ZWaveCommandClassTransactionPayload) {
             this.requiresSecurity = ((ZWaveCommandClassTransactionPayload) payload).getRequiresSecurity();
         }
+        this.payload = payload;
+    }
+
+    public void setPayload(ZWaveMessagePayloadTransaction payload) {
         this.payload = payload;
     }
 

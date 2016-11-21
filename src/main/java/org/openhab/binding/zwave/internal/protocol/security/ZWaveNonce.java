@@ -2,12 +2,11 @@ package org.openhab.binding.zwave.internal.protocol.security;
 
 import java.security.GeneralSecurityException;
 import java.security.SecureRandom;
-import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class ZWaveNonce {
     private final long RESEED_INTERVAL = TimeUnit.HOURS.toMillis(6);
-    private final long timeout = 10000000000L;
+    private final long timeout = 12000000000L;
     private byte[] nonceBytes;
     private long timer;
 
@@ -29,13 +28,17 @@ public class ZWaveNonce {
         }
         nonceBytes = new byte[8];
         secureRandom.nextBytes(nonceBytes);
+
+        // Start the timer
+        this.timer = System.nanoTime();
     }
 
     public ZWaveNonce(byte[] nonceBytes) {
-        // Start the timer
-        this.timer = System.nanoTime();
         // Save the nonce
         this.nonceBytes = nonceBytes;
+
+        // Start the timer
+        this.timer = System.nanoTime();
     }
 
     public byte[] getNonceBytes() {
@@ -50,13 +53,25 @@ public class ZWaveNonce {
         return nonceBytes[0];
     }
 
-    @Override
-    public String toString() {
-        return "ZWaveNonce [nonceBytes=" + Arrays.toString(nonceBytes) + ", timer=" + (System.nanoTime() - timer)
-                + ", valid=" + isValid() + "]";
-    }
-
     public void setNonceBytes(byte[] nonceBytes) {
         this.nonceBytes = nonceBytes;
     }
+
+    private String bb2hex(byte[] bb) {
+        if (bb == null) {
+            return "not set";
+        }
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < bb.length; i++) {
+            result.append(String.format("%02X ", bb[i]));
+        }
+        return result.toString();
+    }
+
+    @Override
+    public String toString() {
+        return "ZWaveNonce [nonceBytes=(" + bb2hex(nonceBytes) + "), timer=" + (System.nanoTime() - timer) + ", valid="
+                + isValid() + "]";
+    }
+
 }

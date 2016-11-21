@@ -379,34 +379,34 @@ public class ZWaveNodeInitStageAdvancer {
         }
 
         // Get the scheme used for the remote
-        logger.debug("NODE {}: SECURITY_INCLUSION State=GET_SCHEME", node.getNodeId());
+        logger.debug("NODE {}: SECURITY_INC State=GET_SCHEME", node.getNodeId());
         processTransactions(securityCommandClass.getSecuritySchemeGetMessage());
         if (initRunning == false) {
             return;
         }
 
         // Set the key
-        logger.debug("NODE {}: SECURITY_INCLUSION State=SET_KEY", node.getNodeId());
+        logger.debug("NODE {}: SECURITY_INC State=SET_KEY", node.getNodeId());
         processTransactions(securityCommandClass.getSetSecurityKeyMessage());
         if (initRunning == false) {
             return;
         }
 
         // Get the secure classes
-        logger.debug("NODE {}: SECURITY_INCLUSION State=GET_SECURE_SUPPORTED", node.getNodeId());
+        logger.debug("NODE {}: SECURITY_INC State=GET_SECURE_SUPPORTED", node.getNodeId());
         processTransactions(securityCommandClass.getSecurityCommandsSupportedMessage());
         if (initRunning == false) {
             return;
         }
 
         // Get the non-secure classes - note that this can change now that we're in secure mode
-        logger.debug("NODE {}: SECURITY_INCLUSION State=GET_NONSECURE_SUPPORTED", node.getNodeId());
+        logger.debug("NODE {}: SECURITY_INC State=GET_NONSECURE_SUPPORTED", node.getNodeId());
 
         // Check if inclusion completed
         if (securityCommandClass.isSecurelyIncluded()) {
-            logger.error("NODE {}: SECURITY_INCLUSION State=COMPLETE", node.getNodeId());
+            logger.error("NODE {}: SECURITY_INC State=COMPLETE", node.getNodeId());
         } else {
-            logger.error("NODE {}: SECURITY_INCLUSION State=FAILED", node.getNodeId());
+            logger.error("NODE {}: SECURITY_INC State=FAILED", node.getNodeId());
         }
     }
 

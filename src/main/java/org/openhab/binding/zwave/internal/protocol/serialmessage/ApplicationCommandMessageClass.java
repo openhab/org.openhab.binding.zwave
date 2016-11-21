@@ -73,8 +73,8 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
             // If the expected command class is defined, then check it
             if (transaction.getExpectedCommandClass() == null
                     || transaction.getExpectedCommandClass().getKey() != incomingMessage.getMessagePayloadByte(3)) {
-                logger.debug("NO EXPECTED COMMAND CLASS match! ({} <> {})", transaction.getExpectedCommandClass(),
-                        incomingMessage.getMessagePayloadByte(3));
+                logger.debug("NO EXPECTED COMMAND CLASS match! ({} <> {}) - {}", transaction.getExpectedCommandClass(),
+                        incomingMessage.getMessagePayloadByte(3), SerialMessage.bb2hex(transaction.getPayloadBuffer()));
 
                 return false;
             }
@@ -82,8 +82,9 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
             // If the expected command class command is defined, then check it
             if (transaction.getExpectedCommandClassCommand() == null
                     || transaction.getExpectedCommandClassCommand() != incomingMessage.getMessagePayloadByte(4)) {
-                logger.debug("NO EXPECTED COMMAND CLASS COMMAND match! ({} <> {})",
-                        transaction.getExpectedCommandClassCommand(), incomingMessage.getMessagePayloadByte(4));
+                logger.debug("NO EXPECTED COMMAND CLASS COMMAND match! ({} <> {}) - {}",
+                        transaction.getExpectedCommandClassCommand(), incomingMessage.getMessagePayloadByte(4),
+                        SerialMessage.bb2hex(transaction.getPayloadBuffer()));
 
                 return false;
             }
