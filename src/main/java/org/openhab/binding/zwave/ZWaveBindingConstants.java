@@ -114,6 +114,11 @@ public class ZWaveBindingConstants {
             "Z-Wave network inclusion completed");
     public final static I18nConstant EVENT_INCLUSION_FAILED = new I18nConstant("zwave.event.inclusion_failed",
             "Z-Wave network inclusion failed");
+    public final static I18nConstant EVENT_INCLUSION_SECURECOMPLETED = new I18nConstant(
+            "zwave.event.inclusion_securecompleted", "Z-Wave Node {0} secure inclusion complete");
+    public final static I18nConstant EVENT_INCLUSION_SECUREFAILED = new I18nConstant(
+            "zwave.event.inclusion_securefailed", "Z-Wave Node {0} secure inclusion failed");
+
     public final static I18nConstant EVENT_EXCLUSION_STARTED = new I18nConstant("zwave.event.exclusion_started",
             "Z-Wave network exclusion started");
     public final static I18nConstant EVENT_EXCLUSION_COMPLETED = new I18nConstant("zwave.event.exclusion_completed",

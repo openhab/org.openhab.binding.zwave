@@ -94,6 +94,8 @@ public class ZWaveInclusionEvent extends ZWaveEvent {
         ExcludeSlaveFound,
         ExcludeControllerFound,
         ExcludeFail,
-        ExcludeDone
+        ExcludeDone,
+        IncludeSecureComplete,
+        IncludeSecureFailed
     }
 }

@@ -490,6 +490,7 @@ public class ZWaveTransactionManager {
                                         if (transaction == lastTransaction) {
                                             lastTransaction = null;
                                         }
+                                        completed.add(transaction);
                                     }
                                 }
 
@@ -501,6 +502,7 @@ public class ZWaveTransactionManager {
             } catch (ZWaveSerialMessageException e) {
                 logger.error("Error processing frame: {} >> {}", incomingMessage.toString(), e.getMessage());
             }
+
             // See if we need to send another message
             sendNextMessage();
             startTransactionTimer();

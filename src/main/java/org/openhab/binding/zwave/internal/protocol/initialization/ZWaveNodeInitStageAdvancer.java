@@ -46,6 +46,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCom
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveVersionCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInitializationStateEvent;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.AssignReturnRouteMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.AssignSucReturnRouteMessageClass;
@@ -219,6 +220,12 @@ public class ZWaveNodeInitStageAdvancer {
         int backoff = 50;
         ZWaveTransactionResponse response;
         do {
+            // Call node.encapsulate so that we perform all encapsulation (eg security)
+            if (transaction instanceof ZWaveCommandClassTransactionPayload) {
+                logger.debug("NODE {}: ZWaveCommandClassTransactionPayload - calling encapsulation", node.getNodeId());
+                transaction = node.encapsulate((ZWaveCommandClassTransactionPayload) transaction, null, 0);
+            }
+
             response = controller.SendTransaction(transaction);
             logger.debug("NODE {}: Node Init response {}", node.getNodeId(), response.getState());
             if (response != null && response.getState() == State.COMPLETE) {
@@ -404,8 +411,12 @@ public class ZWaveNodeInitStageAdvancer {
 
         // Check if inclusion completed
         if (securityCommandClass.isSecurelyIncluded()) {
+            ZWaveInclusionEvent event = new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.IncludeDone, node.getNodeId());
+            controller.notifyEventListeners(event);
             logger.error("NODE {}: SECURITY_INC State=COMPLETE", node.getNodeId());
         } else {
+            ZWaveInclusionEvent event = new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.IncludeDone, node.getNodeId());
+            controller.notifyEventListeners(event);
             logger.error("NODE {}: SECURITY_INC State=FAILED", node.getNodeId());
         }
     }

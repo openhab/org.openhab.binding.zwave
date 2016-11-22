@@ -259,6 +259,7 @@ public class ZWaveNode {
                 deadTime = Calendar.getInstance().getTime();
                 logger.debug("NODE {}: Node is DEAD.", nodeId);
                 break;
+
             case INITIALIZING:
                 break;
         }

@@ -519,11 +519,24 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                     break;
                 case IncludeDone:
                     // Ignore node 0 - this just indicates inclusion is finished
-                    if (incEvent.getNodeId() != 0) {
-                        discoveryService.deviceDiscovered(event.getNodeId());
+                    if (incEvent.getNodeId() == 0) {
+                        break;
                     }
+                    discoveryService.deviceDiscovered(event.getNodeId());
                     eventKey = ZWaveBindingConstants.EVENT_INCLUSION_COMPLETED;
                     eventState = BindingEventType.SUCCESS;
+                    break;
+                case IncludeSecureComplete:
+                    discoveryService.deviceDiscovered(event.getNodeId());
+                    eventKey = ZWaveBindingConstants.EVENT_INCLUSION_SECURECOMPLETED;
+                    eventState = BindingEventType.SUCCESS;
+                    eventArgs = new Integer(incEvent.getNodeId());
+                    break;
+                case IncludeSecureFailed:
+                    discoveryService.deviceDiscovered(event.getNodeId());
+                    eventKey = ZWaveBindingConstants.EVENT_INCLUSION_SECUREFAILED;
+                    eventState = BindingEventType.ERROR;
+                    eventArgs = new Integer(incEvent.getNodeId());
                     break;
                 case ExcludeStart:
                     eventKey = ZWaveBindingConstants.EVENT_EXCLUSION_STARTED;
