@@ -284,7 +284,7 @@ public class CommandClassSecurityV1 {
             if (payload[msgOffset] == 0xEF) {
                 break;
             }
-            valCommandClassSupport.add((int) payload[msgOffset]);
+            valCommandClassSupport.add(payload[msgOffset] & 0xFF);
             msgOffset++;
         }
         response.put("COMMAND_CLASS_SUPPORT", valCommandClassSupport);
@@ -296,7 +296,7 @@ public class CommandClassSecurityV1 {
         // Process 'Command Class control'
         List<Integer> valCommandClassControl = new ArrayList<Integer>();
         while (msgOffset < payload.length) {
-            valCommandClassControl.add((int) payload[msgOffset]);
+            valCommandClassControl.add(payload[msgOffset] & 0xFF);
             msgOffset++;
         }
         response.put("COMMAND_CLASS_CONTROL", valCommandClassControl);

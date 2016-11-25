@@ -574,7 +574,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     // and send the SET command.
                     // Only send the request if there's not already a request outstanding
                     if (requestUpdate == true) {
-                        controllerHandler.sendData(configurationCommandClass.getConfigMessage(parameterIndex));
+                        node.sendMessage(configurationCommandClass.getConfigMessage(parameterIndex));
                     }
                 } else {
                     ZWaveConfigurationParameter cfgParameter = configurationCommandClass.getParameter(parameterIndex);
@@ -585,9 +585,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     }
 
                     // Set the parameter and request a read-back if it's not a write only parameter
-                    controllerHandler.sendData(configurationCommandClass.setConfigMessage(cfgParameter));
+                    node.sendMessage(configurationCommandClass.setConfigMessage(cfgParameter));
                     if (writeOnly == false) {
-                        controllerHandler.sendData(configurationCommandClass.getConfigMessage(parameterIndex));
+                        node.sendMessage(configurationCommandClass.getConfigMessage(parameterIndex));
                     }
                 }
 
@@ -637,8 +637,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     // Is the current association still in the newMembers list?
                     if (newMembers.isAssociated(member.getNode(), member.getEndpoint()) == false) {
                         // No - so it needs to be removed
-                        controllerHandler
-                                .sendData(node.removeAssociation(groupIndex, member.getNode(), member.getEndpoint()));
+                        node.sendMessage(node.removeAssociation(groupIndex, member.getNode(), member.getEndpoint()));
                         totalMembers--;
                     }
                 }
@@ -649,8 +648,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     if (currentMembers.isAssociated(member.getNode(), member.getEndpoint()) == false) {
                         // No - so it needs to be added
                         // TODO: This needs to handle the sending endpoint not being root.
-                        controllerHandler.sendData(
-                                node.setAssociation(null, groupIndex, member.getNode(), member.getEndpoint()));
+                        node.sendMessage(node.setAssociation(null, groupIndex, member.getNode(), member.getEndpoint()));
                         totalMembers++;
                     }
                 }
@@ -658,11 +656,11 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 // If there are no known associations in the group, then let's clear the group completely
                 // This ensures we don't end up with strange ghost associations
                 if (totalMembers == 0) {
-                    controllerHandler.sendData(node.clearAssociation(groupIndex));
+                    node.sendMessage(node.clearAssociation(groupIndex));
                 }
 
                 // Request an update to the association group
-                controllerHandler.sendData(node.getAssociation(groupIndex));
+                node.sendMessage(node.getAssociation(groupIndex));
                 pendingCfg.put(configurationParameter.getKey(), valueObject);
             } else if ("wakeup".equals(cfg[0])) {
                 ZWaveWakeUpCommandClass wakeupCommandClass = (ZWaveWakeUpCommandClass) node
@@ -684,9 +682,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 logger.debug("NODE {}: Set wakeup interval to '{}'", nodeId, value);
 
                 // Set the wake-up interval
-                controllerHandler.sendData(wakeupCommandClass.setInterval(value));
+                node.sendMessage(wakeupCommandClass.setInterval(value));
                 // And request a read-back
-                controllerHandler.sendData(wakeupCommandClass.getIntervalMessage());
+                node.sendMessage(wakeupCommandClass.getIntervalMessage());
                 pendingCfg.put(configurationParameter.getKey(), valueObject);
             } else if ("nodename".equals(cfg[0])) {
                 ZWaveNodeNamingCommandClass nameCommandClass = (ZWaveNodeNamingCommandClass) node
@@ -980,8 +978,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                         logger.debug("NODE {}: Setting parameter {} to {}", nodeId, cfgParameter.getIndex(),
                                 cfgParameter.getValue());
-                        controllerHandler.sendData(configurationCommandClass.setConfigMessage(cfgParameter));
-                        controllerHandler.sendData(configurationCommandClass.getConfigMessage(parameter.getIndex()));
+                        node.sendMessage(configurationCommandClass.setConfigMessage(cfgParameter));
+                        node.sendMessage(configurationCommandClass.getConfigMessage(parameter.getIndex()));
 
                         // Don't process the data - it hasn't been updated yet!
                         break;
@@ -1296,6 +1294,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         properties.put(ZWaveBindingConstants.PROPERTY_FREQUENT, Boolean.toString(node.isFrequentlyListening()));
         properties.put(ZWaveBindingConstants.PROPERTY_BEAMING, Boolean.toString(node.isBeaming()));
         properties.put(ZWaveBindingConstants.PROPERTY_ROUTING, Boolean.toString(node.isRouting()));
+        properties.put(ZWaveBindingConstants.PROPERTY_USINGSECURITY, Boolean.toString(node.isSecure()));
 
         // If this is a Z-Wave Plus device, then also add its class
         ZWavePlusCommandClass cmdClassZWavePlus = (ZWavePlusCommandClass) node

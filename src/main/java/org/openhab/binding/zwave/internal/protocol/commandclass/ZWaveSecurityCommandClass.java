@@ -209,8 +209,37 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
     public void handleSecurityCommandsSupportedReport(ZWaveCommandClassPayload payload, int endpoint) {
         Map<String, Object> response = CommandClassSecurityV1
                 .handleSecurityCommandsSupportedReport(payload.getPayloadBuffer());
-        logger.debug("NODE {}: COMMAND_CLASS_SUPPORT {}", getNode().getNodeId(), response.get("COMMAND_CLASS_SUPPORT"));
-        logger.debug("NODE {}: COMMAND_CLASS_CONTROL {}", getNode().getNodeId(), response.get("COMMAND_CLASS_CONTROL"));
+
+        if (((List<Integer>) response.get("COMMAND_CLASS_SUPPORT")).isEmpty()) {
+            logger.debug("NODE {}: No secure command classes returned", getNode().getNodeId());
+            return;
+        }
+
+        for (Integer secureClassKey : (List<Integer>) response.get("COMMAND_CLASS_SUPPORT")) {
+            CommandClass commandClass = CommandClass.getCommandClass(secureClassKey);
+            if (commandClass == null) {
+                logger.debug("NODE {}: Command class 0x%02X is not known.", getNode().getNodeId(),
+                        String.format("%02X", secureClassKey));
+                continue;
+            }
+
+            // Check if this is the control marker
+            if (commandClass == CommandClass.COMMAND_CLASS_MARK) {
+                // TODO: Implement control command classes
+                break;
+            }
+
+            // Add the new class if it doesn't exist
+            getNode().getEndpoint(0).addSecureCommandClass(commandClass);
+            if (getNode().getEndpoint(0).getCommandClass(commandClass) == null) {
+                ZWaveCommandClass zwaveCommandClass = ZWaveCommandClass.getInstance(secureClassKey, getNode(),
+                        getController());
+                if (zwaveCommandClass != null) {
+                    logger.debug("NODE {}: Adding SECURE command class {}.", getNode().getNodeId(), commandClass);
+                    getNode().getEndpoint(0).addCommandClass(zwaveCommandClass);
+                }
+            }
+        }
     }
 
     public ZWaveCommandClassTransactionPayload getSecurityNonceGet() {
@@ -282,12 +311,9 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 
             Map<String, Object> response = CommandClassSecurityV1.handleSecurityMessageEncapsulation(ciphertextBytes);
 
-            logger.debug("NODE {}: SECURITY_RXD {}", getNode().getNodeId(),
-                    SerialMessage.bb2hex((byte[]) response.get("COMMAND_BYTE")));
-
             if ((Integer) response.get("RECEIVERS_NONCE_IDENTIFIER") != ourNonce.getId()) {
                 logger.debug("NODE {}: SECURITY_ERR NONCE ID invalid! {}<>{}", getNode().getNodeId(),
-                        response.get("RECEIVERS_NONCE_IDENTIFIER"), ourNonce.getId());
+                        (int) response.get("RECEIVERS_NONCE_IDENTIFIER") & 0xff, ourNonce.getId());
                 return null;
             }
 
@@ -300,6 +326,9 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 
             // Our nonce has been used - forget it
             ourNonce = null;
+
+            logger.debug("NODE {}: SECURITY_RXD {}", getNode().getNodeId(),
+                    SerialMessage.bb2hex((byte[]) response.get("COMMAND_BYTE")));
 
             return (byte[]) response.get("COMMAND_BYTE");
         } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
@@ -401,7 +430,7 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
         networkKey = new SecretKeySpec(keyBytes, AES);
         logger.debug("NODE {}: Updated networkKey", getNode().getNodeId());
 
-        setupNetworkKey(true);
+        setupNetworkKey(false);
     }
 
     private void setupNetworkKey(boolean useSchemeZero) {
@@ -444,15 +473,6 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
         } catch (GeneralSecurityException e) {
             logger.error("NODE {}: Error building derived keys {}", getNode().getNodeId(), e);
         }
-    }
-
-    /**
-     * Checks if the device has completed secure inclusion
-     *
-     * @return true if secure inclusion was completed
-     */
-    public boolean isSecurelyIncluded() {
-        return securelyIncluded;
     }
 
     public static boolean doesCommandRequireSecurityEncapsulation(int commandKey) {

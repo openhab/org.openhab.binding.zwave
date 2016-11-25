@@ -188,7 +188,7 @@ public class ZWaveNodeInitStageAdvancer {
                     currentStage = ZWaveNodeInitStage.SESSION_START;
                 }
                 if (startStage.ordinal() <= ZWaveNodeInitStage.INCLUSION_START.ordinal()) {
-                    doSecureInclusion();
+                    doSecureStages();
                 }
                 if (startStage.ordinal() <= ZWaveNodeInitStage.STATIC_VALUES.ordinal()) {
                     doStaticStages();
@@ -341,16 +341,31 @@ public class ZWaveNodeInitStageAdvancer {
         // are a lot of battery devices (eg. 2 minutes for 8 battery devices!).
         msg.setMaxAttempts(1);
         processTransactions(msg);
+
+        setCurrentStage(ZWaveNodeInitStage.IDENTIFY_NODE);
+        processTransactions(new IdentifyNodeMessageClass().doRequest(node.getNodeId()));
+        if (initRunning == false) {
+            return;
+        }
+
+        setCurrentStage(ZWaveNodeInitStage.DETAILS);
+        processTransactions(new RequestNodeInfoMessageClass().doRequest(node.getNodeId()));
+        if (initRunning == false) {
+            return;
+        }
     }
 
-    private void doSecureInclusion() {
+    private void doSecureStages() {
         // Does this node support security
         ZWaveSecurityCommandClass securityCommandClass = (ZWaveSecurityCommandClass) node
                 .getCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
         if (securityCommandClass == null) {
-            logger.debug("NODE {}: SECURE command class not supported");
+            logger.debug("NODE {}: SECURE command class not supported", node.getNodeId());
             return;
         }
+
+        // Add the network key to the security class
+        securityCommandClass.setNetworkKey(controller.getSecurityKey());
 
         // Check if we want to perform a secure inclusion...
         boolean doSecureInclusion = false;
@@ -372,68 +387,55 @@ public class ZWaveNodeInitStageAdvancer {
         }
 
         if (doSecureInclusion == false) {
-            logger.debug("NODE {}: Skipping secure inclusion");
+            logger.debug("NODE {}: Skipping secure inclusion", node.getNodeId());
 
             // Remove the security command class
-            node.removeCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
+            // node.removeCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
             return;
         }
 
         // Check if this node was just included (within the last 10 seconds)
-        if (node.getInclusionTimer() > INCLUSION_TIMER) {
-            logger.debug("NODE {}: Skipping secure inclusion - timer is {}", node.getInclusionTimer());
-            return;
-        }
+        if (node.getInclusionTimer() < INCLUSION_TIMER) {
+            logger.debug("NODE {}: Performing secure inclusion.", node.getNodeId());
 
-        // Get the scheme used for the remote
-        logger.debug("NODE {}: SECURITY_INC State=GET_SCHEME", node.getNodeId());
-        processTransactions(securityCommandClass.getSecuritySchemeGetMessage());
-        if (initRunning == false) {
-            return;
-        }
+            // Get the scheme used for the remote
+            logger.debug("NODE {}: SECURITY_INC State=GET_SCHEME", node.getNodeId());
+            processTransactions(securityCommandClass.getSecuritySchemeGetMessage());
+            if (initRunning == false) {
+                return;
+            }
 
-        // Set the key
-        logger.debug("NODE {}: SECURITY_INC State=SET_KEY", node.getNodeId());
-        processTransactions(securityCommandClass.getSetSecurityKeyMessage());
-        if (initRunning == false) {
-            return;
+            // Set the key
+            logger.debug("NODE {}: SECURITY_INC State=SET_KEY", node.getNodeId());
+            processTransactions(securityCommandClass.getSetSecurityKeyMessage());
+            if (initRunning == false) {
+                return;
+            }
+
+            // Notify that secure inclusion completed ok
+            // TODO: How to detect if it really was ok?
+            ZWaveInclusionEvent event;
+            // if (securityCommandClass.isSecurelyIncluded()) {
+            event = new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.SecureIncludeComplete, node.getNodeId());
+            logger.error("NODE {}: SECURITY_INC State=COMPLETE", node.getNodeId());
+            // } else {
+            // event = new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.SecureIncludeFailed, node.getNodeId());
+            // logger.error("NODE {}: SECURITY_INC State=FAILED", node.getNodeId());
+            // }
+            controller.notifyEventListeners(event);
         }
 
         // Get the secure classes
+        // Even if we didn't just complete secure inclusion, request the secure supported
+        // If we have lost the XML, and have previously securely included, then this will allow the device to be used
         logger.debug("NODE {}: SECURITY_INC State=GET_SECURE_SUPPORTED", node.getNodeId());
         processTransactions(securityCommandClass.getSecurityCommandsSupportedMessage());
         if (initRunning == false) {
             return;
         }
-
-        // Get the non-secure classes - note that this can change now that we're in secure mode
-        logger.debug("NODE {}: SECURITY_INC State=GET_NONSECURE_SUPPORTED", node.getNodeId());
-
-        // Check if inclusion completed
-        if (securityCommandClass.isSecurelyIncluded()) {
-            ZWaveInclusionEvent event = new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.IncludeDone, node.getNodeId());
-            controller.notifyEventListeners(event);
-            logger.error("NODE {}: SECURITY_INC State=COMPLETE", node.getNodeId());
-        } else {
-            ZWaveInclusionEvent event = new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.IncludeDone, node.getNodeId());
-            controller.notifyEventListeners(event);
-            logger.error("NODE {}: SECURITY_INC State=FAILED", node.getNodeId());
-        }
     }
 
     private void doStaticStages() {
-        setCurrentStage(ZWaveNodeInitStage.IDENTIFY_NODE);
-        processTransactions(new IdentifyNodeMessageClass().doRequest(node.getNodeId()));
-        if (initRunning == false) {
-            return;
-        }
-
-        setCurrentStage(ZWaveNodeInitStage.DETAILS);
-        processTransactions(new RequestNodeInfoMessageClass().doRequest(node.getNodeId()));
-        if (initRunning == false) {
-            return;
-        }
-
         setCurrentStage(ZWaveNodeInitStage.MANUFACTURER);
         // Try and get the manufacturerSpecific command class.
         ZWaveManufacturerSpecificCommandClass manufacturerSpecific = (ZWaveManufacturerSpecificCommandClass) node

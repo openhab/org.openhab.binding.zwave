@@ -169,28 +169,9 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         config.put("networkKey", networkKey);
         config.put("wakeupDefaultPeriod", wakeupDefaultPeriod.toString());
 
-        // MAJOR BODGE
-        // The security class uses a static member to set the key so for now
-        // lets do the same, but it needs to be moved into the network initialisation
-        // so different networks can have different keys
-        // if (networkKey.length() > 0) {
-        // ZWaveSecurityCommandClass.setNetworkKey(networkKey);
-        // }
-
         // TODO: Handle soft reset better!
         controller = new ZWaveController(this, config);
         controller.addEventListener(this);
-
-        // if (aliveCheckPeriod != null) {
-        // networkMonitor.setPollPeriod(aliveCheckPeriod);
-        // }
-        // if (softReset != false) {
-        // this.networkMonitor.resetOnError(softReset);
-        // }
-
-        // The config service needs to know the controller and the network monitor...
-        // this.zConfigurationService = new ZWaveConfiguration(this.zController, this.networkMonitor);
-        // zController.addEventListener(this.zConfigurationService);
 
         // Start the discovery service
         discoveryService = new ZWaveDiscoveryService(this, searchTime);
@@ -526,14 +507,12 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                     eventKey = ZWaveBindingConstants.EVENT_INCLUSION_COMPLETED;
                     eventState = BindingEventType.SUCCESS;
                     break;
-                case IncludeSecureComplete:
-                    discoveryService.deviceDiscovered(event.getNodeId());
+                case SecureIncludeComplete:
                     eventKey = ZWaveBindingConstants.EVENT_INCLUSION_SECURECOMPLETED;
                     eventState = BindingEventType.SUCCESS;
                     eventArgs = new Integer(incEvent.getNodeId());
                     break;
-                case IncludeSecureFailed:
-                    discoveryService.deviceDiscovered(event.getNodeId());
+                case SecureIncludeFailed:
                     eventKey = ZWaveBindingConstants.EVENT_INCLUSION_SECUREFAILED;
                     eventState = BindingEventType.ERROR;
                     eventArgs = new Integer(incEvent.getNodeId());

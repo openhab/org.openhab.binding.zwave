@@ -10,7 +10,9 @@ package org.openhab.binding.zwave.internal.protocol;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Generic;
@@ -32,7 +34,7 @@ public class ZWaveEndpoint {
     private final ZWaveDeviceClass deviceClass;
     private final int endpointId;
 
-    private Map<CommandClass, ZWaveCommandClass> secureCommandClasses = new HashMap<CommandClass, ZWaveCommandClass>();
+    private Set<CommandClass> secureCommandClasses = new HashSet<CommandClass>();
     private Map<CommandClass, ZWaveCommandClass> supportedCommandClasses = new HashMap<CommandClass, ZWaveCommandClass>();
 
     /**
@@ -77,18 +79,6 @@ public class ZWaveEndpoint {
     }
 
     /**
-     * Gets a commandClass object this endpoint implements. Returns null if this endpoint does not support this command
-     * class.
-     *
-     * @param commandClass
-     *            The command class to get.
-     * @return the command class.
-     */
-    public ZWaveCommandClass getSecureCommandClass(CommandClass commandClass) {
-        return secureCommandClasses.get(commandClass);
-    }
-
-    /**
      * Adds a command class to the list of supported command classes by this endpoint. Does nothing if command class is
      * already added.
      *
@@ -100,6 +90,27 @@ public class ZWaveEndpoint {
         if (!supportedCommandClasses.containsKey(key)) {
             supportedCommandClasses.put(key, commandClass);
         }
+    }
+
+    /**
+     * Adds a secure command class to the list of supported command classes by this endpoint. Does nothing if command
+     * class is already added.
+     *
+     * @param commandClass the command class instance to add.
+     */
+    public void addSecureCommandClass(CommandClass commandClass) {
+        secureCommandClasses.add(commandClass);
+    }
+
+    /**
+     * Checks if a commandClass is supported in secure mode by this endpoint.
+     *
+     * @param commandClass
+     *            The command class to get.
+     * @return true if the command class is supported in secure mode.
+     */
+    public boolean supportsSecureCommandClass(CommandClass commandClass) {
+        return secureCommandClasses.contains(commandClass);
     }
 
     /**
@@ -120,5 +131,9 @@ public class ZWaveEndpoint {
      */
     public ZWaveDeviceClass getDeviceClass() {
         return deviceClass;
+    }
+
+    public Set<CommandClass> getSecureCommandClasses() {
+        return secureCommandClasses;
     }
 }

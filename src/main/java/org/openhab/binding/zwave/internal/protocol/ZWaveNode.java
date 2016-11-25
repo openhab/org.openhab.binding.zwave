@@ -809,6 +809,10 @@ public class ZWaveNode {
         this.security = security;
     }
 
+    public boolean isSecure() {
+        return endpoints.get(0).getSecureCommandClasses().size() == 0;
+    }
+
     /**
      * Gets whether the node supports beaming
      *
@@ -853,7 +857,7 @@ public class ZWaveNode {
         }
 
         // Does this endpoint support this class secure
-        if (endpoints.get(endpoint).getSecureCommandClass(commandClass) != null) {
+        if (endpoints.get(endpoint).supportsSecureCommandClass(commandClass)) {
             logger.debug("NODE {}: SECURITY required on {}", nodeId, commandClass);
             return true;
         }
@@ -1194,6 +1198,14 @@ public class ZWaveNode {
 
         // Return the list of commands we've processed
         return commands;
+    }
+
+    public void sendMessage(ZWaveCommandClassTransactionPayload payload) {
+        controller.sendData(encapsulate(payload, null, 0));
+    }
+
+    public void sendMessage(ZWaveCommandClassTransactionPayload payload, int endpoint) {
+        controller.sendData(encapsulate(payload, null, endpoint));
     }
 
     public long getInclusionTimer() {

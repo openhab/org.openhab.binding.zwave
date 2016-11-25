@@ -17,14 +17,12 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionState;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
@@ -88,21 +86,8 @@ public class ZWaveController {
 
     private final ConcurrentHashMap<Integer, ZWaveNode> zwaveNodes = new ConcurrentHashMap<Integer, ZWaveNode>();
     private final ArrayList<ZWaveEventListener> zwaveEventListeners = new ArrayList<ZWaveEventListener>();
-    // private final PriorityBlockingQueue<SerialMessage> sendQueue = new PriorityBlockingQueue<SerialMessage>(
-    // INITIAL_TX_QUEUE_SIZE, new SerialMessage.SerialMessageComparator(this));
-    // private final PriorityBlockingQueue<SerialMessage> recvQueue = new PriorityBlockingQueue<SerialMessage>(
-    // INITIAL_RX_QUEUE_SIZE, new SerialMessage.SerialMessageComparator(this));
 
-    // private Map<Integer, SerialMessage> nodeTransactions = new HashMap<Integer, SerialMessage>();
-
-    // private ZWaveSendThread sendThread;
-    // private ZWaveInputThread inputThread;
-
-    private final Semaphore sendAllowed = new Semaphore(1);
-    private final Semaphore transactionCompleted = new Semaphore(1);
-    private volatile SerialMessage currentTransaction = null;
     private int zWaveResponseTimeout = ZWAVE_RESPONSE_TIMEOUT; // TODO: Not currently used
-    private Timer watchdog;
 
     private String zWaveVersion = "Unknown";
     private String serialAPIVersion = "Unknown";
@@ -162,8 +147,6 @@ public class ZWaveController {
             zWaveResponseTimeout = timeout;
         }
         logger.info("ZWave timeout is set to {}ms. Soft reset is {}.", zWaveResponseTimeout, softReset);
-        // this.watchdog = new Timer(true);
-        // this.watchdog.schedule(new WatchDogTimerTask(), WATCHDOG_TIMER_PERIOD, WATCHDOG_TIMER_PERIOD);
 
         ioHandler = handler;
 
@@ -171,11 +154,6 @@ public class ZWaveController {
         // received before sending the init sequence. This avoids protocol errors (CAN errors).
         Timer initTimer = new Timer();
         initTimer.schedule(new InitializeDelayTask(), 3000);
-
-        // sendThread = new ZWaveSendThread();
-        // sendThread.start();
-        // inputThread = new ZWaveInputThread();
-        // inputThread.start();
     }
 
     private class InitializeDelayTask extends TimerTask {
@@ -348,7 +326,7 @@ public class ZWaveController {
      * @param nodeId
      */
     public void reinitialiseNode(int nodeId) {
-        this.zwaveNodes.remove(nodeId);
+        zwaveNodes.remove(nodeId);
         addNode(nodeId);
     }
 
@@ -435,6 +413,11 @@ public class ZWaveController {
                                     }
                                 }
                             }
+                        }
+
+                        // If this is the security command class, set the key
+                        if (commandClass instanceof ZWaveSecurityCommandClass) {
+                            ((ZWaveSecurityCommandClass) commandClass).setNetworkKey(networkSecurityKey);
                         }
                     }
                 }
@@ -537,27 +520,33 @@ public class ZWaveController {
                     // Create a new node
                     ZWaveNode newNode = new ZWaveNode(homeId, incEvent.getNodeId(), this);
 
-                    // Add the device class
-                    ZWaveDeviceClass deviceClass = newNode.getDeviceClass();
-                    deviceClass.setBasicDeviceClass(incEvent.getBasic());
-                    deviceClass.setGenericDeviceClass(incEvent.getGeneric());
-                    deviceClass.setSpecificDeviceClass(incEvent.getSpecific());
-
-                    // If we have the NIF as part of the inclusion, use it
-                    // TODO: This code now appears in multiple places - consolidate into the node
-                    for (CommandClass commandClass : incEvent.getCommandClasses()) {
-                        ZWaveCommandClass zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(),
-                                newNode, this);
-                        if (zwaveCommandClass != null) {
-                            logger.debug("NODE {}: Inclusion is adding command class {}.", incEvent.getNodeId(),
-                                    commandClass);
-                            // Add the network key to the security class
-                            if (commandClass == CommandClass.COMMAND_CLASS_SECURITY) {
-                                ((ZWaveSecurityCommandClass) zwaveCommandClass).setNetworkKey(networkSecurityKey);
-                            }
-                            newNode.addCommandClass(zwaveCommandClass);
-                        }
-                    }
+                    /*
+                     * // Add the device class
+                     * ZWaveDeviceClass deviceClass = newNode.getDeviceClass();
+                     * deviceClass.setBasicDeviceClass(incEvent.getBasic());
+                     * deviceClass.setGenericDeviceClass(incEvent.getGeneric());
+                     * deviceClass.setSpecificDeviceClass(incEvent.getSpecific());
+                     *
+                     * // If we have the NIF as part of the inclusion, use it
+                     * for (CommandClass commandClass : incEvent.getCommandClasses()) {
+                     * // We're only interested in the security command class!
+                     * // We don't add other classes since the list of non-secure classes can change after inclusion
+                     * // so we need to request the NIF after inclusion is complete.
+                     * if (commandClass != CommandClass.COMMAND_CLASS_SECURITY) {
+                     * continue;
+                     * }
+                     * ZWaveCommandClass zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(),
+                     * newNode, this);
+                     * if (zwaveCommandClass != null) {
+                     * logger.debug("NODE {}: Inclusion is adding command class {}.", incEvent.getNodeId(),
+                     * commandClass);
+                     *
+                     * // Add the network key to the security class
+                     * ((ZWaveSecurityCommandClass) zwaveCommandClass).setNetworkKey(networkSecurityKey);
+                     * newNode.addCommandClass(zwaveCommandClass);
+                     * }
+                     * }
+                     */
 
                     newNode.setInclusionTimer();
 
@@ -691,21 +680,6 @@ public class ZWaveController {
     public void identifyNode(int nodeId) {
         enqueue(new IdentifyNodeMessageClass().doRequest(nodeId));
     }
-
-    /**
-     * Send Request Node info message to the controller.
-     *
-     * @param nodeId
-     *            the nodeId of the node to identify
-     * @return the {@link ZWaveCommandClassTransactionPayload} to send
-     *
-     */
-    // public ZWaveCommandClassTransactionPayload requestNodeInfo(int nodeId) {
-    // ZWaveCommandClassNetworkManagementProxy proxy = (ZWaveCommandClassNetworkManagementProxy) getNode(ownNodeId)
-    // .getCommandClass(CommandClass.COMMAND_CLASS_NETWORK_MANAGEMENT_PROXY);
-
-    // return proxy.getNodeInfoCachedGet(1, 0, nodeId);
-    // }
 
     /**
      * Request the node routing information.
@@ -1193,5 +1167,9 @@ public class ZWaveController {
      */
     public int getSystemDefaultWakeupPeriod() {
         return defaultWakeupPeriod;
+    }
+
+    public String getSecurityKey() {
+        return networkSecurityKey;
     }
 }
