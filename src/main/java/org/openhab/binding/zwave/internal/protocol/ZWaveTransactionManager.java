@@ -162,7 +162,7 @@ public class ZWaveTransactionManager {
 
     private ZWaveTransaction lastTransaction = null;
 
-    private final Object transactionSync = new Object();
+    // private final Object transactionSync = new Object();
 
     public ZWaveTransactionManager(ZWaveController controller) {
         this.controller = controller;
@@ -211,12 +211,14 @@ public class ZWaveTransactionManager {
         if (node != null && payload instanceof ZWaveCommandClassTransactionPayload) {
             // If the device isn't listening, queue the message if it supports the wakeup class
             if (!node.isListening() && !node.isFrequentlyListening()) {
+                logger.debug("NODE {}: Not listening.......", node.getNodeId());
                 ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) node
                         .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
 
                 // If it's a battery operated device, check if it's awake, or place in wake-up queue.
                 if (wakeUpCommandClass != null && !wakeUpCommandClass
                         .processOutgoingWakeupMessage((ZWaveCommandClassTransactionPayload) payload)) {
+                    logger.debug("NODE {}: Into wakeup queue.......", node.getNodeId());
                     return 0;
                 }
             }
@@ -461,7 +463,7 @@ public class ZWaveTransactionManager {
                             // Correlate transactions
                             List<ZWaveTransaction> completed = new ArrayList<ZWaveTransaction>();
 
-                            synchronized (transactionSync) {
+                            synchronized (sendQueue) {
                                 for (ZWaveTransaction transaction : outstandingTransactions) {
                                     logger.warn("NODE {}: Checking transaction {}  {}.", nodeId,
                                             transaction.getTransactionId(), transaction.getExpectedReplyClass());
@@ -509,7 +511,7 @@ public class ZWaveTransactionManager {
             return;
         }
 
-        synchronized (transactionSync) {
+        synchronized (sendQueue) {
             logger.debug("Checking outstanding transactions: " + outstandingTransactions.size());
             logger.debug("Last transaction: " + lastTransaction);
 
@@ -592,7 +594,7 @@ public class ZWaveTransactionManager {
                 System.out.println("handleTransactionComplete DONE " + currentTransaction.getCallbackId());
 
                 // Remove the transaction from the outstanding transaction list
-                synchronized (transactionSync) {
+                synchronized (sendQueue) {
                     if (currentTransaction == lastTransaction) {
                         lastTransaction = null;
                     }
@@ -616,7 +618,7 @@ public class ZWaveTransactionManager {
                 System.out.println("handleTransactionComplete CANCELLED " + currentTransaction.getCallbackId());
 
                 // Remove the transaction from the outstanding transaction list
-                synchronized (transactionSync) {
+                synchronized (sendQueue) {
                     if (currentTransaction == lastTransaction) {
                         lastTransaction = null;
                     }
@@ -625,12 +627,9 @@ public class ZWaveTransactionManager {
                 }
 
                 // Handle retries
-                if (currentTransaction.decrementAttemptsRemaining() >= 0) {
+                if (currentTransaction.decrementAttemptsRemaining() > 0) {
                     logger.error("NODE {}: CANCEL while sending message. Requeueing - {} attempts left!",
                             currentTransaction.getNodeId(), currentTransaction.getAttemptsRemaining());
-                    // if (lastSentMessage.getMessageClass() == SerialMessageClass.SendData) {
-                    // handleFailedSendDataRequest(lastSentMessage);
-                    // } else {
 
                     // Reset the transaction
                     currentTransaction.resetTransaction();
@@ -712,7 +711,7 @@ public class ZWaveTransactionManager {
 
         // If we're currently processing the core of a transaction, or there are too many outstanding transactions, then
         // don't start another right now.
-        synchronized (transactionSync) {
+        synchronized (sendQueue) {
             if (lastTransaction != null) {
                 logger.debug("Transaction lastTransaction outstanding", outstandingTransactions.size(),
                         lastTransaction);
@@ -890,7 +889,7 @@ public class ZWaveTransactionManager {
             // }
 
             System.out.println("Timer run..... " + System.currentTimeMillis());
-            synchronized (transactionSync) {
+            synchronized (sendQueue) {
                 logger.debug("XXXXXXXXX Timeout.......... {} outstanding transactions", outstandingTransactions.size());
                 Date now = new Date();
                 List<ZWaveTransaction> retries = new ArrayList<ZWaveTransaction>();
