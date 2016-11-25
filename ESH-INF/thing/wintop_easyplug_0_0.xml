@@ -44,6 +44,7 @@
       <property name="manufacturerId">0097</property>
       <property name="manufacturerRef">6943:4501</property>
       <property name="dbReference">218</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
