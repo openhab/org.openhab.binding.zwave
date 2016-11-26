@@ -160,7 +160,7 @@ public class ZWaveNode {
         // Create the initialisation advancer and tell it we've loaded from file
         nodeInitStageAdvancer = new ZWaveNodeInitStageAdvancer(this, controller);
         nodeInitStageAdvancer.setRestoredFromConfigfile();
-        nodeInitStageAdvancer.startInitialisation(ZWaveNodeInitStage.EMPTYNODE);
+        // nodeInitStageAdvancer.startInitialisation(ZWaveNodeInitStage.DYNAMIC_VALUES);
     }
 
     /**
