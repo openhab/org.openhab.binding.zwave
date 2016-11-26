@@ -1440,7 +1440,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
             // Get the bitmask
             int bitmask = 0xffffffff;
-            if (cfg.length >= 4) {
+            if (cfg.length >= 4 && cfg[3].length() == 8) {
                 logger.debug("NODE {}: Processing {} - bitmask = '{}'", nodeId, key, cfg[3]);
                 try {
                     bitmask = Integer.parseInt(cfg[3], 16);
