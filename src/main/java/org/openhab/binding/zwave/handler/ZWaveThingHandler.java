@@ -471,6 +471,12 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         logger.debug("Handler disposed. Unregistering listener.");
         if (nodeId != 0) {
             if (controllerHandler != null) {
+                // Save the XML so that any changes to configuration is saved
+                ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
+                ZWaveNode node = controllerHandler.getNode(nodeId);
+                nodeSerializer.SerializeNode(node);
+
+                // Remove the event listener
                 controllerHandler.removeEventListener(this);
             }
             nodeId = 0;
@@ -1304,10 +1310,12 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     cmdClassZWavePlus.getZWavePlusDeviceType().toString());
         }
 
+        // Must loop over the new properties since we might have added data
         boolean update = false;
         Map<String, String> originalProperties = editProperties();
-        for (String property : originalProperties.keySet()) {
-            if (properties.get(property).equals(originalProperties.get(property)) == false) {
+        for (String property : properties.keySet()) {
+            if ((originalProperties.get(property) == null
+                    || originalProperties.get(property).equals(properties.get(property)) == false)) {
                 update = true;
                 break;
             }
@@ -1432,7 +1440,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
             // Get the bitmask
             int bitmask = 0xffffffff;
-            if (cfg.length >= 4) {
+            if (cfg.length >= 4 && cfg[3].length() == 8) {
                 logger.debug("NODE {}: Processing {} - bitmask = '{}'", nodeId, key, cfg[3]);
                 try {
                     bitmask = Integer.parseInt(cfg[3], 16);

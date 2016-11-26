@@ -40,6 +40,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -171,12 +172,15 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
                 .withOptions(options).withLimitToOptions(false).withGroupName("thingcfg").build());
 
         // If we support the wakeup class, then add the configuration
-        if (node.getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP) != null) {
+        ZWaveWakeUpCommandClass wakeupCmdClass = (ZWaveWakeUpCommandClass) node
+                .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP);
+        if (wakeupCmdClass != null) {
             groups.add(new ConfigDescriptionParameterGroup("wakeup", "sleep", false, "Wakeup Configuration", null));
 
             parameters.add(ConfigDescriptionParameterBuilder
                     .create(ZWaveBindingConstants.CONFIGURATION_WAKEUPINTERVAL, Type.INTEGER)
-                    .withLabel("Wakeup Interval")
+                    .withLabel("Wakeup Interval").withMinimum(new BigDecimal(wakeupCmdClass.getMinInterval()))
+                    .withMaximum(new BigDecimal(wakeupCmdClass.getMaxInterval()))
                     .withDescription("Sets the number of seconds that the device will wakeup<BR/>"
                             + "Setting a shorter time will allow openHAB to configure the device more regularly, but may use more battery power.<BR>"
                             + "<B>Note:</B> This setting does not impact device notifications such as alarms.")
@@ -184,7 +188,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
 
             parameters.add(ConfigDescriptionParameterBuilder
                     .create(ZWaveBindingConstants.CONFIGURATION_WAKEUPNODE, Type.INTEGER).withLabel("Wakeup Node")
-                    .withAdvanced(true)
+                    .withAdvanced(true).withMinimum(new BigDecimal(1)).withMaximum(new BigDecimal(232))
                     .withDescription("Sets the wakeup node to which the device will send notifications.<BR/>"
                             + "This should normally be set to the openHAB controller - "
                             + "if it isn't, openHAB will not receive notifications when the device wakes up, "

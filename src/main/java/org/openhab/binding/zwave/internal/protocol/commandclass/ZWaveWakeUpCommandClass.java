@@ -73,7 +73,7 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass
     @XStreamOmitField
     private boolean initCapabilitiesDone = false;
     private int minInterval = 0;
-    private int maxInterval = 0;
+    private int maxInterval = Integer.MAX_VALUE;
     private int defaultInterval = 0;
     private int intervalStep = 0;
 

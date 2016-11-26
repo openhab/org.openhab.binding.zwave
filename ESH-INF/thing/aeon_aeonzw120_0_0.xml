@@ -35,7 +35,7 @@
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW120</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0102:0078</property>
+      <property name="manufacturerRef">0002:0078,0102:0078</property>
       <property name="dbReference">405</property>
       <property name="defaultAssociations">1</property>
     </properties>

@@ -5,8 +5,8 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="zwaveme_zme05433_00_000" listed="false">
-    <label>ZME_05433 Zwave.Me Dimmer Set Everlux</label>
+  <thing-type id="reitz_zme05433ex_00_000" listed="false">
+    <label>POPP/ZWave.Me 05433-EX Zwave.Me Dimmer Set Everlux</label>
     <description>Zwave.Me Dimmer Set Everlux</description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -24,15 +24,27 @@
           <property name="binding:*:DecimalType">SCENE_ACTIVATION</property>
         </properties>
       </channel>
+      <channel id="meter_kwh" typeId="meter_kwh">
+        <label>Electric meter (kWh)</label>
+        <properties>
+          <property name="binding:*:DecimalType">METER;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts" typeId="meter_watts">
+        <label>Electric meter (watts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">METER;type=E_W</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Z-Wave.Me</property>
-      <property name="modelId">ZME_05433</property>
-      <property name="manufacturerId">0115</property>
-      <property name="manufacturerRef">1000:0002,1000:0009</property>
-      <property name="dbReference">343</property>
+      <property name="vendor">Reitz-Group.de</property>
+      <property name="modelId">POPP/ZWave.Me 05433-EX</property>
+      <property name="manufacturerId">0064</property>
+      <property name="manufacturerRef">1000:0009</property>
+      <property name="dbReference">461</property>
       <property name="defaultAssociations">3</property>
     </properties>
 

@@ -5,8 +5,8 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="fibaro_fgwp101_00_000" listed="false">
-    <label>FGWP101 Metered Wall Plug Switch</label>
+  <thing-type id="fibaro_fgwp102_00_000" listed="false">
+    <label>FGWP102 Metered Wall Plug Switch</label>
     <description>Metered Wall Plug Switch</description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -35,28 +35,10 @@
           <property name="binding:*:DecimalType">METER;type=E_W</property>
         </properties>
       </channel>
-      <channel id="meter_reset" typeId="meter_reset">
-        <label>Reset the total power consumption</label>
+      <channel id="alarm_general" typeId="alarm_general">
+        <label>Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">METER</property>
-        </properties>
-      </channel>
-      <channel id="config_decimal_param61" typeId="fibaro_fgwp101_00_000_config_decimal_param61">
-        <label>LED color when device is on</label>
-        <properties>
-          <property name="binding:*:DecimalType">CONFIGURATION;parameter=61</property>
-        </properties>
-      </channel>
-      <channel id="config_decimal_param62" typeId="fibaro_fgwp101_00_000_config_decimal_param62">
-        <label>LED color when device is off</label>
-        <properties>
-          <property name="binding:*:DecimalType">CONFIGURATION;parameter=62</property>
-        </properties>
-      </channel>
-      <channel id="notification_send" typeId="notification_send">
-        <label>Start Alarm LED Illumination</label>
-        <properties>
-          <property name="binding:*:DecimalType">ALARM;event1=SMOKE:1,event3=BURGLAR:1</property>
+          <property name="binding:*:OnOffType">ALARM</property>
         </properties>
       </channel>
     </channels>
@@ -64,11 +46,10 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Fibargroup</property>
-      <property name="modelId">FGWP101</property>
+      <property name="modelId">FGWP102</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0600:1000</property>
-      <property name="dbReference">130</property>
-      <property name="commandClass:ALARM">ccAdd</property>
+      <property name="manufacturerRef">0602:1001</property>
+      <property name="dbReference">464</property>
       <property name="defaultAssociations">3</property>
     </properties>
 
@@ -323,42 +304,5 @@ This function allows for turning off the controlled device in case of exceeding 
     </config-description>
 
   </thing-type>
-
-  <channel-type id="fibaro_fgwp101_00_000_config_decimal_param61">
-    <item-type>Number</item-type>
-    <label>LED color when device is on</label>
-    <state pattern="%s">
-      <options>
-        <option value="0">LED will use predefined steps depending on power</option>
-        <option value="1">LED will use continuous color depending on power</option>
-        <option value="2">White illumination</option>
-        <option value="3">Red illumination</option>
-        <option value="4">Green illumination</option>
-        <option value="5">Blue illumination</option>
-        <option value="6">Yellow illumination</option>
-        <option value="7">Cyan illumination</option>
-        <option value="8">Magenta illumination</option>
-        <option value="9">NO illumination</option>
-      </options>
-    </state>
-  </channel-type>
-
-  <channel-type id="fibaro_fgwp101_00_000_config_decimal_param62">
-    <item-type>Number</item-type>
-    <label>LED color when device is off</label>
-    <state pattern="%s">
-      <options>
-        <option value="0">LED will use predefined steps depending on the last power when on</option>
-        <option value="1">White illumination</option>
-        <option value="2">Red illumination</option>
-        <option value="3">Green illumination</option>
-        <option value="4">Blue illumination</option>
-        <option value="5">Yellow illumination</option>
-        <option value="6">Cyan illumination</option>
-        <option value="7">Magenta illumination</option>
-        <option value="8">NO illumination</option>
-      </options>
-    </state>
-  </channel-type>
 
 </thing:thing-descriptions>
