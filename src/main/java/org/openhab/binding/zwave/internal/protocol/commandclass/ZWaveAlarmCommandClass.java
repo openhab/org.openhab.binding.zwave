@@ -249,7 +249,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         logger.debug("NODE {}: Creating new message for command NOTIFICATION_REPORT", getNode().getNodeId());
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
-                NOTIFICATION_REPORT).withPayload(0, 0, 0, 0, notificationType.getKey(), event)
+                NOTIFICATION_REPORT).withPayload(0, 0, 0, 0xff, notificationType.getKey(), event)
                         .withPriority(TransactionPriority.High).build();
     }
 

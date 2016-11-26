@@ -8,12 +8,13 @@
  */
 package org.openhab.binding.zwave.test.internal.protocol.serialmessage;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.AddNodeMessageClass;
 
 /**
@@ -26,28 +27,28 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.AddNodeMessageC
 public class AddNodeMessageClassTest {
     @Test
     public void doRequest() {
-        byte[] expectedResponseStartLocal = { 1, 5, 0, 74, 1, 1, -80 };
-        byte[] expectedResponseStartHigh = { 1, 5, 0, 74, -127, 1, 48 };
-        byte[] expectedResponseStartNetwork = { 1, 5, 0, 74, -63, 1, 112 };
-        byte[] expectedResponseStop = { 1, 5, 0, 74, 5, 1, -76 };
+        byte[] expectedResponseStartLocal = { 1 };
+        byte[] expectedResponseStartHigh = { -127 };
+        byte[] expectedResponseStartNetwork = { -63 };
+        byte[] expectedResponseStop = { 5 };
 
-        SerialMessage msg;
+        ZWaveSerialPayload msg;
         AddNodeMessageClass handler = new AddNodeMessageClass();
 
-        msg = handler.doRequestStart(false, false).getSerialMessage();
-        msg.setCallbackId(1);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseStartLocal));
+        msg = handler.doRequestStart(false, false);
+        assertEquals(msg.getSerialMessageClass(), SerialMessageClass.AddNodeToNetwork);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseStartLocal));
 
-        msg = handler.doRequestStart(true, false).getSerialMessage();
-        msg.setCallbackId(1);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseStartHigh));
+        msg = handler.doRequestStart(true, false);
+        assertEquals(msg.getSerialMessageClass(), SerialMessageClass.AddNodeToNetwork);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseStartHigh));
 
-        msg = handler.doRequestStart(true, true).getSerialMessage();
-        msg.setCallbackId(1);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseStartNetwork));
+        msg = handler.doRequestStart(true, true);
+        assertEquals(msg.getSerialMessageClass(), SerialMessageClass.AddNodeToNetwork);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseStartNetwork));
 
-        msg = handler.doRequestStop().getSerialMessage();
-        msg.setCallbackId(1);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseStop));
+        msg = handler.doRequestStop();
+        assertEquals(msg.getSerialMessageClass(), SerialMessageClass.AddNodeToNetwork);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseStop));
     }
 }

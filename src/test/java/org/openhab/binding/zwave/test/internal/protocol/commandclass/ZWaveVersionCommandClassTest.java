@@ -18,6 +18,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveVersionCommandClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveVersionCommandClass}.
@@ -29,25 +30,23 @@ public class ZWaveVersionCommandClassTest extends ZWaveCommandClassTest {
     @Test
     public void getVersionMessage() {
         ZWaveVersionCommandClass cls = (ZWaveVersionCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_VERSION);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, -122, 17, 0, 0, 19 };
+        byte[] expectedResponseV1 = { -122, 17 };
         cls.setVersion(1);
-        msg = cls.getVersionMessage().getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getVersionMessage();
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getCommandClassVersionMessage() {
         ZWaveVersionCommandClass cls = (ZWaveVersionCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_VERSION);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, -122, 19, 113, 0, 0, 98 };
+        byte[] expectedResponseV1 = { -122, 19, 113 };
         cls.setVersion(1);
-        msg = cls.getCommandClassVersionMessage(CommandClass.COMMAND_CLASS_ALARM).getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getCommandClassVersionMessage(CommandClass.COMMAND_CLASS_ALARM);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test

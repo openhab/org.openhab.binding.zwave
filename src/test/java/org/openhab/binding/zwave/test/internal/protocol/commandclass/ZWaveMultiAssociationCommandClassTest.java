@@ -14,11 +14,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveAssociationEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveMultiAssociationCommandClass}.
@@ -31,94 +31,85 @@ public class ZWaveMultiAssociationCommandClassTest extends ZWaveCommandClassTest
     public void getAssociationMessage() {
         ZWaveMultiAssociationCommandClass cls = (ZWaveMultiAssociationCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, -114, 2, 1, 0, 4, 15 };
+        byte[] expectedResponseV1 = { -114, 2, 1 };
         cls.setVersion(1);
-        msg = cls.getAssociationMessage(1).getSerialMessage();
-        msg.setCallbackId(4);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getAssociationMessage(1);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getGroupingsMessage() {
         ZWaveMultiAssociationCommandClass cls = (ZWaveMultiAssociationCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, -114, 5, 0, 4, 11 };
+        byte[] expectedResponseV1 = { -114, 5 };
         cls.setVersion(1);
-        msg = cls.getGroupingsMessage().getSerialMessage();
-        msg.setCallbackId(4);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getGroupingsMessage();
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void removeAssociationMessage() {
         ZWaveMultiAssociationCommandClass cls = (ZWaveMultiAssociationCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponse1 = { 1, 13, 0, 19, 99, 6, -114, 4, 1, 0, 2, 0, 0, 4, 9 };
-        byte[] expectedResponse2 = { 1, 13, 0, 19, 99, 6, -114, 4, 1, 0, 2, 3, 0, 4, 10 };
+        byte[] expectedResponse1 = { -114, 4, 1, 0, 2, 0 };
+        byte[] expectedResponse2 = { -114, 4, 1, 0, 2, 3 };
 
         cls.setVersion(1);
-        msg = cls.removeAssociationMessage(1, 2, 0).getSerialMessage();
-        msg.setCallbackId(4);
-        byte[] x = msg.getMessageBuffer();
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse1));
+        msg = cls.removeAssociationMessage(1, 2, 0);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse1));
 
-        msg = cls.removeAssociationMessage(1, 2, 3).getSerialMessage();
-        msg.setCallbackId(4);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse2));
+        msg = cls.removeAssociationMessage(1, 2, 3);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse2));
     }
 
     @Test
     public void clearAssociationMessage() {
         ZWaveMultiAssociationCommandClass cls = (ZWaveMultiAssociationCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, -114, 4, 1, 0, 0, 13 };
+        byte[] expectedResponseV1 = { -114, 4, 1 };
         cls.setVersion(1);
-        msg = cls.clearAssociationMessage(1).getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.clearAssociationMessage(1);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void setAssociationMessageV2() {
         ZWaveMultiAssociationCommandClass cls = (ZWaveMultiAssociationCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
         // Version 2 doesn't allow endpoint 0 to be set
-        byte[] expectedResponse2 = { 1, 11, 0, 19, 99, 4, -114, 1, 1, 2, 0, 4, 8 };
+        byte[] expectedResponse2 = { -114, 1, 1, 2 };
 
         cls.setVersion(1);
-        msg = cls.setAssociationMessage(1, 2, 0).getSerialMessage();
-        msg.setCallbackId(4);
+        msg = cls.setAssociationMessage(1, 2, 0);
 
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse2));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse2));
     }
 
     @Test
     public void setAssociationMessageV3() {
         ZWaveMultiAssociationCommandClass cls = (ZWaveMultiAssociationCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponse1 = { 1, 11, 0, 19, 99, 4, -114, 1, 1, 2, 0, 4, 8 };
-        byte[] expectedResponse2 = { 1, 13, 0, 19, 99, 6, -114, 1, 1, 0, 2, 3, 0, 4, 15 };
+        byte[] expectedResponse1 = { -114, 1, 1, 2 };
+        byte[] expectedResponse2 = { -114, 1, 1, 0, 2, 3 };
 
         cls.setVersion(1);
-        msg = cls.setAssociationMessage(1, 2, 0).getSerialMessage();
-        msg.setCallbackId(4);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse1));
+        msg = cls.setAssociationMessage(1, 2, 0);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse1));
 
-        msg = cls.setAssociationMessage(1, 2, 3).getSerialMessage();
-        msg.setCallbackId(4);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse2));
+        msg = cls.setAssociationMessage(1, 2, 3);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse2));
     }
 
     @Test

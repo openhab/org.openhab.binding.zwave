@@ -8,6 +8,7 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -73,15 +74,45 @@ public class ZWaveCentralSceneCommandClass extends ZWaveCommandClass implements 
     @ZWaveResponseHandler(id = CENTRAL_SCENE_NOTIFICATION, name = "CENTRAL_SCENE_NOTIFICATION")
     public void handleCentralSceneNotification(ZWaveCommandClassPayload payload, int endpoint) {
         // offset+1 is an incrementing number
+
+        int key = payload.getPayloadByte(3) & 0x07;
         int sceneId = payload.getPayloadByte(4);
-        int time = payload.getPayloadByte(4);
-        if (time > 127) {
-            // Values of 128 and above are in minutes (128 = 1 minute)
-            time = (time - 127) * 60;
+
+        if (getVersion() >= 3) {
+            // Slow refresh bit
         }
-        logger.debug("NODE {}: Received scene {} at time {}", getNode().getNodeId(), sceneId, time);
+
+        String keyMeaning;
+        switch (key) {
+            case 0:
+                keyMeaning = "Single Press";
+                break;
+            case 1:
+                keyMeaning = "Key Released";
+                break;
+            case 2:
+                keyMeaning = "Key Held Down";
+                break;
+            case 3:
+                keyMeaning = "Single Press 2 times";
+                break;
+            case 4:
+                keyMeaning = "Single Press 3 times";
+                break;
+            case 5:
+                keyMeaning = "Single Press 4 times";
+                break;
+            case 6:
+                keyMeaning = "Single Press 5 times";
+                break;
+            default:
+                keyMeaning = "Unknown";
+                break;
+        }
+
+        logger.debug("NODE {}: Received scene {} at key {} [{}]", getNode().getNodeId(), sceneId, key, keyMeaning);
         ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
-                getCommandClass(), sceneId);
+                getCommandClass(), new BigDecimal(String.format("%d.%d", sceneId, key)));
         getController().notifyEventListeners(zEvent);
     }
 

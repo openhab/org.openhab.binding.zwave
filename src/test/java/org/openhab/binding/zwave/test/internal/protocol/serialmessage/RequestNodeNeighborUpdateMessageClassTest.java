@@ -8,12 +8,13 @@
  */
 package org.openhab.binding.zwave.test.internal.protocol.serialmessage;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeNeighborUpdateMessageClass;
 
 /**
@@ -26,11 +27,11 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeNeig
 public class RequestNodeNeighborUpdateMessageClassTest {
     @Test
     public void doRequest() {
-        byte[] expectedResponse = { 1, 5, 0, 72, 12, 1, -65 };
+        byte[] expectedResponse = { 12 };
 
         RequestNodeNeighborUpdateMessageClass handler = new RequestNodeNeighborUpdateMessageClass();
-        SerialMessage msg = handler.doRequest(12).getSerialMessage();
-        msg.setCallbackId(1);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
+        ZWaveSerialPayload msg = handler.doRequest(12);
+        assertEquals(msg.getSerialMessageClass(), SerialMessageClass.RequestNodeNeighborUpdate);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse));
     }
 }

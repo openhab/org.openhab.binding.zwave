@@ -13,10 +13,10 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmSensorCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmSensorCommandClass.AlarmType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveAlarmSensorCommandClass}.
@@ -29,25 +29,23 @@ public class ZWaveAlarmSensorCommandClassTest extends ZWaveCommandClassTest {
     public void getSupportedMessage() {
         ZWaveAlarmSensorCommandClass cls = (ZWaveAlarmSensorCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_SENSOR_ALARM);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, -100, 3, 0, 0, 27 };
+        byte[] expectedResponseV1 = { -100, 3 };
         cls.setVersion(1);
-        msg = cls.getSupportedMessage().getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getSupportedMessage();
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getMessage() {
         ZWaveAlarmSensorCommandClass cls = (ZWaveAlarmSensorCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_SENSOR_ALARM);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, -100, 1, 6, 0, 0, 29 };
+        byte[] expectedResponseV1 = { -100, 1, 6 };
         cls.setVersion(1);
-        msg = cls.getMessage(AlarmType.ACCESS_CONTROL).getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getMessage(AlarmType.ACCESS_CONTROL);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 }

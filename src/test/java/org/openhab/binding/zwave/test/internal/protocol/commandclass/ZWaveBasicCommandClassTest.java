@@ -13,9 +13,9 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBasicCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveBasicCommandClass}.
@@ -27,24 +27,22 @@ public class ZWaveBasicCommandClassTest extends ZWaveCommandClassTest {
     @Test
     public void getValueMessage() {
         ZWaveBasicCommandClass cls = (ZWaveBasicCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_BASIC);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 32, 2, 0, 0, -90 };
+        byte[] expectedResponseV1 = { 32, 2 };
         cls.setVersion(1);
-        msg = cls.getValueMessage().getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getValueMessage();
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void setValueMessage() {
         ZWaveBasicCommandClass cls = (ZWaveBasicCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_BASIC);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 32, 1, 34, 0, 0, -123 };
+        byte[] expectedResponseV1 = { 32, 1, 34 };
         cls.setVersion(1);
-        msg = cls.setValueMessage(34).getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.setValueMessage(34);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 }

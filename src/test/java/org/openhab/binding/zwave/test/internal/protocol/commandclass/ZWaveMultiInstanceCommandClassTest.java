@@ -11,9 +11,7 @@ package org.openhab.binding.zwave.test.internal.protocol.commandclass;
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -38,6 +36,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClas
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveMultiInstanceCommandClassTest}.
@@ -71,7 +70,6 @@ public class ZWaveMultiInstanceCommandClassTest extends ZWaveCommandClassTest {
             argument = ArgumentCaptor.forClass(ZWaveEvent.class);
             Mockito.doNothing().when(mockedController).notifyEventListeners(argument.capture());
             final ZWaveNode node = Mockito.mock(ZWaveNode.class);
-            // ZWaveEndpoint endpoint = Mockito.mock(ZWaveEndpoint.class);
 
             // Get the command class and process the response
             ZWaveMultiInstanceCommandClass cls = (ZWaveMultiInstanceCommandClass) ZWaveCommandClass
@@ -81,6 +79,7 @@ public class ZWaveMultiInstanceCommandClassTest extends ZWaveCommandClassTest {
             // Create an endpoint to capture the requests so we can return the command classes
             ZWaveEndpoint endpoint = Mockito.mock(ZWaveEndpoint.class);
 
+            Mockito.when(node.getEndpoint(Matchers.anyInt())).thenReturn(endpoint);
             Mockito.when(endpoint.getCommandClass(Matchers.any(CommandClass.class)))
                     .thenAnswer(new Answer<ZWaveCommandClass>() {
                         @Override
@@ -89,27 +88,6 @@ public class ZWaveMultiInstanceCommandClassTest extends ZWaveCommandClassTest {
                                     node, mockedController);
                         }
                     });
-
-            // Create a map of our mocked endpoints
-            Map<Integer, ZWaveEndpoint> endpoints = new HashMap<Integer, ZWaveEndpoint>();
-            endpoints.put(1, endpoint);
-            endpoints.put(2, endpoint);
-            endpoints.put(3, endpoint);
-            endpoints.put(4, endpoint);
-            endpoints.put(5, endpoint);
-            endpoints.put(6, endpoint);
-
-            // Now use reflection to set our fake endpoint list
-            try {
-                Class<?> clazz = cls.getClass();
-                java.lang.reflect.Field field;
-                field = clazz.getDeclaredField("endpoints");
-                field.setAccessible(true);
-                field.set(cls, endpoints);
-            } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
 
             cls.handleApplicationCommandRequest(new ZWaveCommandClassPayload(msg), 4);
         } catch (ZWaveSerialMessageException e) {
@@ -143,74 +121,42 @@ public class ZWaveMultiInstanceCommandClassTest extends ZWaveCommandClassTest {
     public void getMultiChannelCapabilityGetMessage() {
         ZWaveMultiInstanceCommandClass cls = (ZWaveMultiInstanceCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 96, 9, 1, 0, 0, -18 };
+        byte[] expectedResponseV1 = { 96, 9, 1 };
         cls.setVersion(1);
 
-        // Create an endpoint to capture the requests so we can return the command classes
-        ZWaveEndpoint endpoint = Mockito.mock(ZWaveEndpoint.class);
-        Mockito.when(endpoint.getEndpointId()).thenReturn(1);
-
-        msg = cls.getMultiChannelCapabilityGetMessage(endpoint).getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getMultiChannelCapabilityGetMessage(1);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getMultiChannelEndpointGetMessage() {
         ZWaveMultiInstanceCommandClass cls = (ZWaveMultiInstanceCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 96, 7, 0, 0, -29 };
+        byte[] expectedResponseV1 = { 96, 7 };
         cls.setVersion(1);
 
-        msg = cls.getMultiChannelEndpointGetMessage().getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getMultiChannelEndpointGetMessage();
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void handleMultiChannelCapabilityReport() {
-        byte[] packetData = { 0x01, 0x0C, 0x00, 0x04, 0x00, 0x08, 0x06, 0x60, 0x0A, 0x01, 0x10, 0x01, 0x25,
-                (byte) 0xA6 };
+        byte[] packetData = { 0x60, 0x0A, 0x01, 0x10, 0x01, 0x25 };
 
         ZWaveMultiInstanceCommandClass cls = (ZWaveMultiInstanceCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
 
-        // Create an endpoint to capture the requests so we can return the command classes
-        ZWaveEndpoint endpoint = Mockito.mock(ZWaveEndpoint.class);
-
-        ZWaveDeviceClass endpointDeviceClass = new ZWaveDeviceClass(Basic.NOT_KNOWN, Generic.NOT_KNOWN,
-                Specific.NOT_USED);
-        Mockito.when(endpoint.getDeviceClass()).thenReturn(endpointDeviceClass);
-
-        // Create a map of our mocked endpoints
-        Map<Integer, ZWaveEndpoint> endpoints = new HashMap<Integer, ZWaveEndpoint>();
-        ArgumentCaptor<ZWaveCommandClass> commandClsCaptor = ArgumentCaptor.forClass(ZWaveCommandClass.class);
-        Mockito.doNothing().when(endpoint).addCommandClass(commandClsCaptor.capture());
-        endpoints.put(1, endpoint);
-
-        // Now use reflection to set our fake endpoint list
+        ZWaveCommandClassPayload payload = new ZWaveCommandClassPayload(packetData);
         try {
-            Class<?> clazz = cls.getClass();
-            java.lang.reflect.Field field;
-            field = clazz.getDeclaredField("endpoints");
-            field.setAccessible(true);
-            field.set(cls, endpoints);
-        } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        SerialMessage msg = new SerialMessage(packetData);
-        try {
-            ZWaveCommandClassPayload payload = new ZWaveCommandClassPayload(msg);
             cls.handleApplicationCommandRequest(payload, 0);
         } catch (ZWaveSerialMessageException e) {
         }
 
+        ZWaveDeviceClass endpointDeviceClass = mockedNode.getEndpoint(2).getDeviceClass();
         assertEquals(Basic.NOT_KNOWN, endpointDeviceClass.getBasicDeviceClass());
         assertEquals(Generic.BINARY_SWITCH, endpointDeviceClass.getGenericDeviceClass());
         assertEquals(Specific.POWER_SWITCH_BINARY, endpointDeviceClass.getSpecificDeviceClass());

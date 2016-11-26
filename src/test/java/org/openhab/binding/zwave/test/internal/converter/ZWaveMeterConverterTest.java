@@ -25,7 +25,6 @@ import org.mockito.Mockito;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.converter.ZWaveMeterConverter;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -101,9 +100,8 @@ public class ZWaveMeterConverterTest extends ZWaveCommandClassConverterTest {
         assertNotNull(msgs);
         assertEquals(1, msgs.size());
 
-        byte[] expectedResponse = { 1, 9, 0, 19, 0, 2, 50, 5, 0, 0, -48 };
-        SerialMessage msg = msgs.get(0).getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
+        byte[] expectedResponse = { 50, 5 };
+        ZWaveCommandClassTransactionPayload msg = msgs.get(0);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse));
     }
 }

@@ -26,6 +26,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationGroupInfoCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveAssociationGroupInfoCommandClass}.
@@ -101,38 +102,35 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
     public void getGroupNameMessage() {
         ZWaveAssociationGroupInfoCommandClass cls = (ZWaveAssociationGroupInfoCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_ASSOCIATION_GRP_INFO);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 89, 1, 1, 0, 0, -33 };
+        byte[] expectedResponseV1 = { 89, 1, 1 };
         cls.setVersion(1);
-        msg = cls.getGroupNameMessage(1).getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getGroupNameMessage(1);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getCommandListMessage() {
         ZWaveAssociationGroupInfoCommandClass cls = (ZWaveAssociationGroupInfoCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_ASSOCIATION_GRP_INFO);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, 89, 5, 0, 1, 0, 0, -35 };
+        byte[] expectedResponseV1 = { 89, 5, 0, 1 };
         cls.setVersion(1);
-        msg = cls.getCommandListMessage(1).getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getCommandListMessage(1);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getInfoMessage() {
         ZWaveAssociationGroupInfoCommandClass cls = (ZWaveAssociationGroupInfoCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_ASSOCIATION_GRP_INFO);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, 89, 3, 0, 1, 0, 0, -37 };
+        byte[] expectedResponseV1 = { 89, 3, 0, 1 };
         cls.setVersion(1);
-        msg = cls.getInfoMessage(1).getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getInfoMessage(1);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 }

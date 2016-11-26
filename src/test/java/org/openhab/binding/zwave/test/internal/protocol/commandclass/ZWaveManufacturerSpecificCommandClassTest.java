@@ -18,6 +18,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveManufacturerSpecificCommandClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveManufacturerSpecificCommandClass}.
@@ -30,27 +31,24 @@ public class ZWaveManufacturerSpecificCommandClassTest extends ZWaveCommandClass
     public void getValueMessage() {
         ZWaveManufacturerSpecificCommandClass cls = (ZWaveManufacturerSpecificCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 114, 4, 0, 0, -14 };
+        byte[] expectedResponseV1 = { 114, 4 };
         cls.setVersion(1);
-        msg = cls.getManufacturerSpecificMessage().getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getManufacturerSpecificMessage();
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getManufacturerSpecificDeviceMessage() {
         ZWaveManufacturerSpecificCommandClass cls = (ZWaveManufacturerSpecificCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseSerialNumber = { 1, 10, 0, 19, 99, 3, 114, 6, 1, 0, 0, -13 };
+        byte[] expectedResponseSerialNumber = { 114, 6, 1 };
         cls.setVersion(1);
-        msg = cls.getManufacturerSpecificDeviceMessage(1).getSerialMessage();
-        msg.setCallbackId(0);
-
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseSerialNumber));
+        msg = cls.getManufacturerSpecificDeviceMessage(1);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseSerialNumber));
     }
 
     @Test

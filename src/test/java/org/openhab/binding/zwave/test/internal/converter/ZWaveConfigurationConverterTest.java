@@ -24,7 +24,6 @@ import org.mockito.Mockito;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.converter.ZWaveConfigurationConverter;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveConfigurationParameter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
@@ -76,7 +75,7 @@ public class ZWaveConfigurationConverterTest extends ZWaveCommandClassConverterT
 
     @Test
     public void executeRefresh() {
-        byte[] expectedResponse = { 1, 10, 0, 19, 0, 3, 112, 5, 2, 0, 0, -110 };
+        byte[] expectedResponse = { 112, 5, 2 };
 
         ZWaveConfigurationConverter converter = new ZWaveConfigurationConverter(null);
         ZWaveThingChannel channel = createChannel("2");
@@ -85,15 +84,14 @@ public class ZWaveConfigurationConverterTest extends ZWaveCommandClassConverterT
         List<ZWaveCommandClassTransactionPayload> msgs = converter.executeRefresh(channel, node);
 
         assertEquals(1, msgs.size());
-        SerialMessage msg = msgs.get(0).getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
+        ZWaveCommandClassTransactionPayload msg = msgs.get(0);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse));
     }
 
     @Test
     public void receiveCommand_Decimal() {
-        byte[] expectedResponse0 = { 1, 15, 0, 19, 0, 8, 112, 4, 2, 4, 0, 0, 0, 44, 0, 0, -75 };
-        byte[] expectedResponse1 = { 1, 10, 0, 19, 0, 3, 112, 5, 2, 0, 0, -110 };
+        byte[] expectedResponse0 = { 112, 4, 2, 4, 0, 0, 0, 44 };
+        byte[] expectedResponse1 = { 112, 5, 2 };
 
         ZWaveConfigurationConverter converter = new ZWaveConfigurationConverter(null);
         ZWaveThingChannel channel = createChannel("2");
@@ -113,11 +111,9 @@ public class ZWaveConfigurationConverterTest extends ZWaveCommandClassConverterT
         List<ZWaveCommandClassTransactionPayload> msgs = converter.receiveCommand(channel, node, command);
 
         assertEquals(2, msgs.size());
-        SerialMessage msg = msgs.get(0).getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse0));
-        msg = msgs.get(1).getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse1));
+        ZWaveCommandClassTransactionPayload msg = msgs.get(0);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse0));
+        msg = msgs.get(1);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse1));
     }
 }

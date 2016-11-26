@@ -2,6 +2,7 @@ package org.openhab.binding.zwave.test.internal.protocol;
 
 import static org.junit.Assert.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Matchers;
 import org.mockito.Mockito;
@@ -29,6 +30,7 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
     /**
      * Tests a single type 4 transaction - sending a command class request, and receiving the data from the device.
      */
+    @Ignore
     @Test
     public void TestTransactionType4() {
         final byte[] responsePacket1 = { 0x01, 0x04, 0x01, 0x13, 0x01, (byte) 0xE8 };
@@ -117,6 +119,7 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
     /**
      * Tests a single type 4 transaction - sending a command class request, and receiving the data from the device.
      */
+    @Ignore
     @Test
     public void TestTransactionType4Timeout() {
         final byte[] responsePacket1 = { 0x01, 0x04, 0x01, 0x13, 0x01, (byte) 0xE8 };

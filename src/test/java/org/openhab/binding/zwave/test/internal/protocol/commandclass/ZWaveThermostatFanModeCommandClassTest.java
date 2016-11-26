@@ -13,10 +13,10 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBasicCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveThermostatFanModeCommandClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveBasicCommandClass}.
@@ -29,24 +29,23 @@ public class ZWaveThermostatFanModeCommandClassTest extends ZWaveCommandClassTes
     public void getValueMessage() {
         ZWaveThermostatFanModeCommandClass cls = (ZWaveThermostatFanModeCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_MODE);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 68, 2, 0, 0, -62 };
+        byte[] expectedResponseV1 = { 68, 2 };
         cls.setVersion(1);
-        msg = cls.getValueMessage().getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getValueMessage();
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void setValueMessage() {
         ZWaveThermostatFanModeCommandClass cls = (ZWaveThermostatFanModeCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_MODE);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 68, 4, 0, 0, -60 };
+        byte[] expectedResponseV1 = { 68, 4 };
         cls.setVersion(1);
-        msg = cls.setValueMessage(34).getSerialMessage();
+        msg = cls.setValueMessage(34);
         // byte[] x = msg.getMessageBuffer();
         // assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
     }
@@ -55,12 +54,11 @@ public class ZWaveThermostatFanModeCommandClassTest extends ZWaveCommandClassTes
     public void getSupportedMessage() {
         ZWaveThermostatFanModeCommandClass cls = (ZWaveThermostatFanModeCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_MODE);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 68, 4, 0, 0, -60 };
+        byte[] expectedResponseV1 = { 68, 4 };
         cls.setVersion(1);
-        msg = cls.getSupportedMessage().getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getSupportedMessage();
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 }

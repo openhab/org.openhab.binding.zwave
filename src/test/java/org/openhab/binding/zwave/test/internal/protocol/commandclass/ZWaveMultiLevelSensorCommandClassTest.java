@@ -15,12 +15,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSensorCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSensorCommandClass.SensorType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSensorCommandClass.ZWaveMultiLevelSensorValueEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveMultiLevelSensorCommandClass}.
@@ -90,73 +90,66 @@ public class ZWaveMultiLevelSensorCommandClassTest extends ZWaveCommandClassTest
     public void getMessageDirectionV5() {
         ZWaveMultiLevelSensorCommandClass cls = (ZWaveMultiLevelSensorCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, 49, 4, 7, 0, 0, 16, -94 };
+        byte[] expectedResponseV1 = { 49, 4, 7, 0 };
         cls.setVersion(5);
-        msg = cls.getMessage(ZWaveMultiLevelSensorCommandClass.SensorType.DIRECTION).getSerialMessage();
-        msg.setCallbackId(16);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getMessage(ZWaveMultiLevelSensorCommandClass.SensorType.DIRECTION);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getMessageTemperatureV1() {
         ZWaveMultiLevelSensorCommandClass cls = (ZWaveMultiLevelSensorCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 49, 4, 0, 1, -80 };
+        byte[] expectedResponseV1 = { 49, 4 };
         cls.setVersion(1);
-        msg = cls.getMessage(ZWaveMultiLevelSensorCommandClass.SensorType.TEMPERATURE).getSerialMessage();
-        msg.setCallbackId(1);
-        byte[] x = msg.getMessageBuffer();
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getMessage(ZWaveMultiLevelSensorCommandClass.SensorType.TEMPERATURE);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getMessageTemperatureV5() {
         ZWaveMultiLevelSensorCommandClass cls = (ZWaveMultiLevelSensorCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, 49, 4, 1, 0, 0, 1, -75 };
+        byte[] expectedResponseV1 = { 49, 4, 1, 0 };
         cls.setVersion(5);
-        msg = cls.getMessage(ZWaveMultiLevelSensorCommandClass.SensorType.TEMPERATURE).getSerialMessage();
-        msg.setCallbackId(1);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getMessage(ZWaveMultiLevelSensorCommandClass.SensorType.TEMPERATURE);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getSupportedSensorMessage() {
         ZWaveMultiLevelSensorCommandClass cls = (ZWaveMultiLevelSensorCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
         cls.setVersion(1);
         assertNull(cls.getSupportedSensorMessage());
 
-        byte[] expectedResponseV5 = { 1, 9, 0, 19, 99, 2, 49, 1, 0, 0, -76 };
+        byte[] expectedResponseV5 = { 49, 1 };
         cls.setVersion(5);
-        msg = cls.getSupportedSensorMessage().getSerialMessage();
-        msg.setCallbackId(0);
-        byte[] x = msg.getMessageBuffer();
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV5));
+        msg = cls.getSupportedSensorMessage();
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV5));
     }
 
     @Test
     public void getSupportedScaleMessage() {
         ZWaveMultiLevelSensorCommandClass cls = (ZWaveMultiLevelSensorCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
         cls.setVersion(1);
         assertNull(cls.getSupportedScaleMessage(SensorType.TEMPERATURE));
 
-        byte[] expectedResponseV5 = { 1, 10, 0, 19, 99, 3, 49, 3, 1, 0, 0, -75 };
+        byte[] expectedResponseV5 = { 49, 3, 1 };
         cls.setVersion(5);
-        msg = cls.getSupportedScaleMessage(SensorType.TEMPERATURE).getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV5));
+        msg = cls.getSupportedScaleMessage(SensorType.TEMPERATURE);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV5));
     }
 
 }

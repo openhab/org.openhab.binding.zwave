@@ -18,6 +18,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBinarySensorCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBinarySensorCommandClass.SensorType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveBinarySensorCommandClass}.
@@ -31,39 +32,36 @@ public class ZWaveBinarySensorCommandClassTest extends ZWaveCommandClassTest {
     public void getValueMessage() {
         ZWaveBinarySensorCommandClass cls = (ZWaveBinarySensorCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_SENSOR_BINARY);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 48, 2, 0, 0, -74 };
+        byte[] expectedResponseV1 = { 48, 2 };
         cls.setVersion(1);
-        msg = cls.getValueMessage().getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getValueMessage();
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getValueMessageType() {
         ZWaveBinarySensorCommandClass cls = (ZWaveBinarySensorCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_SENSOR_BINARY);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 48, 2, 10, 0, 0, -66 };
+        byte[] expectedResponseV1 = { 48, 2, 10 };
         cls.setVersion(2);
-        msg = cls.getValueMessage(SensorType.DOORWINDOW).getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getValueMessage(SensorType.DOORWINDOW);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getSupportedMessage() {
         ZWaveBinarySensorCommandClass cls = (ZWaveBinarySensorCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_SENSOR_BINARY);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV2 = { 1, 9, 0, 19, 99, 2, 48, 1, 0, 0, -75 };
+        byte[] expectedResponseV2 = { 48, 1 };
         cls.setVersion(2);
-        msg = cls.getSupportedMessage().getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV2));
+        msg = cls.getSupportedMessage();
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV2));
     }
 
     @Test

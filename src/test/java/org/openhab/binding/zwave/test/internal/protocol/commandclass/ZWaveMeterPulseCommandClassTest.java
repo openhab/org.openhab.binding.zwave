@@ -14,11 +14,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterPulseCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveMeterPulseCommandClass}.
@@ -46,12 +46,11 @@ public class ZWaveMeterPulseCommandClassTest extends ZWaveCommandClassTest {
     public void getValueMessage() {
         ZWaveMeterPulseCommandClass cls = (ZWaveMeterPulseCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_METER_PULSE);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 53, 4, 0, 0, -75 };
+        byte[] expectedResponseV1 = { 53, 4 };
         cls.setVersion(1);
-        msg = cls.getValueMessage().getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getValueMessage();
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 }

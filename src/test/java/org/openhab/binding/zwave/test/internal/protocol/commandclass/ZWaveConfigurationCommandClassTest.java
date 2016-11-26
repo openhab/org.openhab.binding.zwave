@@ -13,10 +13,10 @@ import static org.junit.Assert.*;
 import java.util.Arrays;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveConfigurationParameter;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurationCommandClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveConfigurationCommandClass}.
@@ -29,13 +29,12 @@ public class ZWaveConfigurationCommandClassTest extends ZWaveCommandClassTest {
     public void getValueMessage() {
         ZWaveConfigurationCommandClass cls = (ZWaveConfigurationCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_CONFIGURATION);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 112, 5, 12, 0, 0, -1 };
+        byte[] expectedResponseV1 = { 112, 5, 12 };
         cls.setVersion(1);
-        msg = cls.getConfigMessage(12).getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getConfigMessage(12);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
@@ -72,14 +71,13 @@ public class ZWaveConfigurationCommandClassTest extends ZWaveCommandClassTest {
     public void setValueMessage() {
         ZWaveConfigurationCommandClass cls = (ZWaveConfigurationCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_CONFIGURATION);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
         ZWaveConfigurationParameter parameter = new ZWaveConfigurationParameter(12, 34, 4);
 
-        byte[] expectedResponseV1 = { 1, 15, 0, 19, 99, 8, 112, 4, 12, 4, 0, 0, 0, 34, 0, 0, -42 };
+        byte[] expectedResponseV1 = { 112, 4, 12, 4, 0, 0, 0, 34 };
         cls.setVersion(1);
-        msg = cls.setConfigMessage(parameter).getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.setConfigMessage(parameter);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 }

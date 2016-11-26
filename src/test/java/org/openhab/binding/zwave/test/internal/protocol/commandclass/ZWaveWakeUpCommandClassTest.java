@@ -13,9 +13,9 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveWakeUpCommandClass}.
@@ -27,48 +27,44 @@ public class ZWaveWakeUpCommandClassTest extends ZWaveCommandClassTest {
     @Test
     public void getNoMoreInformationMessage() {
         ZWaveWakeUpCommandClass cls = (ZWaveWakeUpCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, -124, 8, 0, 0, 8 };
+        byte[] expectedResponseV1 = { -124, 8 };
         cls.setVersion(1);
-        msg = cls.getNoMoreInformationMessage().getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getNoMoreInformationMessage();
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getIntervalMessage() {
         ZWaveWakeUpCommandClass cls = (ZWaveWakeUpCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, -124, 5, 0, 0, 5 };
+        byte[] expectedResponseV1 = { -124, 5 };
         cls.setVersion(1);
-        msg = cls.getIntervalMessage().getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getIntervalMessage();
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void setInterval() {
         ZWaveWakeUpCommandClass cls = (ZWaveWakeUpCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 13, 0, 19, 99, 6, -124, 4, 0, 38, -108, 0, 0, 0, -74 };
+        byte[] expectedResponseV1 = { -124, 4, 0, 38, -108, 0 };
         cls.setVersion(1);
-        msg = cls.setInterval(9876).getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.setInterval(9876);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getIntervalCapabilitiesMessage() {
         ZWaveWakeUpCommandClass cls = (ZWaveWakeUpCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, -124, 9, 0, 0, 9 };
+        byte[] expectedResponseV1 = { -124, 9 };
         cls.setVersion(1);
-        msg = cls.getIntervalCapabilitiesMessage().getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getIntervalCapabilitiesMessage();
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 }

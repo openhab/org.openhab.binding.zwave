@@ -14,12 +14,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSwitchAllCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSwitchAllCommandClass.SwitchAllMode;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveSwitchAllCommandClass}.
@@ -32,52 +32,48 @@ public class ZWaveSwitchAllCommandClassTest extends ZWaveCommandClassTest {
     public void getValueMessage() {
         ZWaveSwitchAllCommandClass cls = (ZWaveSwitchAllCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_SWITCH_ALL);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 39, 2, 0, 0, -95 };
+        byte[] expectedResponseV1 = { 39, 2 };
         cls.setVersion(1);
-        msg = cls.getValueMessage().getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getValueMessage();
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void setValueMessage() {
         ZWaveSwitchAllCommandClass cls = (ZWaveSwitchAllCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_SWITCH_ALL);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 39, 1, 2, 0, 0, -94 };
+        byte[] expectedResponseV1 = { 39, 1, 2 };
         cls.setVersion(1);
-        msg = cls.setValueMessage(SwitchAllMode.SWITCH_ALL_INCLUDE_OFF_ONLY.ordinal()).getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.setValueMessage(SwitchAllMode.SWITCH_ALL_INCLUDE_OFF_ONLY.ordinal());
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void allOnMessage() {
         ZWaveSwitchAllCommandClass cls = (ZWaveSwitchAllCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_SWITCH_ALL);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 39, 4, 0, 0, -89 };
+        byte[] expectedResponseV1 = { 39, 4 };
         cls.setVersion(1);
-        msg = cls.allOnMessage().getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.allOnMessage();
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void allOffMessage() {
         ZWaveSwitchAllCommandClass cls = (ZWaveSwitchAllCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_SWITCH_ALL);
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 39, 5, 0, 0, -90 };
+        byte[] expectedResponseV1 = { 39, 5 };
         cls.setVersion(1);
-        msg = cls.allOffMessage().getSerialMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.allOffMessage();
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
