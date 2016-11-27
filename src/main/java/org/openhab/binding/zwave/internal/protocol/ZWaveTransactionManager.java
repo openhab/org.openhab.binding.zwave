@@ -205,24 +205,6 @@ public class ZWaveTransactionManager {
      * @return
      */
     public long queueTransactionForSend(ZWaveMessagePayloadTransaction payload) {
-        // Handle sleeping devices
-        // ZWaveNode node = controller.getNode(payload.getDestinationNode());
-        // if (node != null && payload instanceof ZWaveCommandClassTransactionPayload) {
-        // If the device isn't listening, queue the message if it supports the wakeup class
-        // if (!node.isListening() && !node.isFrequentlyListening()) {
-        // logger.debug("NODE {}: Not listening.......", node.getNodeId());
-        // ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) node
-        // .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
-
-        // If it's a battery operated device, check if it's awake, or place in wake-up queue.
-        // if (wakeUpCommandClass != null && !wakeUpCommandClass
-        // .processOutgoingWakeupMessage((ZWaveCommandClassTransactionPayload) payload)) {
-        // logger.debug("NODE {}: Into wakeup queue.......", node.getNodeId());
-        // return 0;
-        // }
-        // }
-        // }
-
         // Create a transaction from our payload data
         ZWaveTransaction transaction = new ZWaveTransaction(payload);
         if (payload.getMaxAttempts() != 0) {
@@ -312,141 +294,6 @@ public class ZWaveTransactionManager {
             sendQueue.clear();
         }
     }
-
-    /**
-     * Gets the next transaction to be sent.
-     *
-     * This returns the transaction being sent. All processing of the transaction, including retries etc
-     * is handled within the transaction handler.
-     *
-     * @return the next {@link ZWaveTransaction} to send
-     *
-     *         private ZWaveTransaction getTransactionToSend() {
-     *         ZWaveTransaction transaction = null;
-     *
-     *         logger.debug("getTransactionToSend 1");
-     *
-     *         // Look through all nodes in the queue and get the first entry.
-     *         // This will be the highest priority entry for each node
-     *         synchronized (sendQueue) {
-     *         for (int nodeId : sendQueue.keySet()) {
-     *         logger.debug("NODE {}: Checking transactions to send.......", nodeId);
-     *
-     *         // Get the node
-     *         ZWaveNode node = controller.getNode(nodeId);
-     *         if (node == null) {
-     *         logger.debug("NODE {}: Node not found - how can this happen!", nodeId);
-     *         continue;
-     *         }
-     *
-     *         // Check if the node is awake
-     *         if (node.isAwake() == false) {
-     *         logger.debug("NODE {}: Node not awake!", nodeId);
-     *         continue;
-     *         }
-     *
-     *         // If the outstanding transaction is a NONCE_REPORT, then just send it ASAP
-     *         if (sendQueue.get(nodeId).peek().getPriority() == TransactionPriority.NonceResponse) {
-     *         logger.debug("getTransactionToSend 666");
-     *         transaction = sendQueue.get(nodeId).peek();
-     *         sendQueue.get(nodeId).remove(transaction);
-     *         if (sendQueue.get(nodeId).isEmpty()) {
-     *         logger.debug("getTransactionToSend 777");
-     *         sendQueue.remove(nodeId);
-     *         }
-     *
-     *         return transaction;
-     *         }
-     *
-     *         // Make sure there's no outstanding transaction for this node
-     *         boolean outstanding = false;
-     *         for (ZWaveTransaction outstandingTransaction : outstandingTransactions) {
-     *         if (outstandingTransaction.getQueueId() == nodeId) {
-     *         logger.debug("getTransactionToSend 2");
-     *         outstanding = true;
-     *         break;
-     *         }
-     *         }
-     *
-     *         // Outstanding transaction found?
-     *         if (outstanding == true) {
-     *         logger.debug("getTransactionToSend 3");
-     *         continue;
-     *         }
-     *
-     *         if (transaction == null) {
-     *         logger.debug("getTransactionToSend 4");
-     *         transaction = sendQueue.get(nodeId).peek();
-     *         } else {
-     *         logger.debug("getTransactionToSend 5");
-     *         if (sendQueue.get(nodeId).peek().getPriority().ordinal() < transaction.getPriority().ordinal()) {
-     *         transaction = sendQueue.get(nodeId).peek();
-     *         }
-     *         }
-     *         }
-     *
-     *         if (transaction != null) {
-     *         // If this requires security, then check if we have a NONCE
-     *         if (transaction.getRequiresSecurity()) {
-     *         logger.debug("NODE {}: Transaction requires security", transaction.getNodeId());
-     *         ZWaveNode node = controller.getNode(transaction.getNodeId());
-     *         ZWaveSecurityCommandClass securityCommandClass = (ZWaveSecurityCommandClass) node
-     *         .getCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
-     *         if (securityCommandClass == null) {
-     *         logger.debug("NODE {}: SECURITY_ERR COMMAND_CLASS_SECURITY not found.",
-     *         transaction.getNodeId());
-     *         } else if (securityCommandClass.isNonceAvailable()) {
-     *         // We have a NONCE, so encapsulate and send
-     *         logger.debug("NODE {}: NONCE available so encap and send.", transaction.getNodeId());
-     *
-     *         // Remove the transaction from the queue
-     *         sendQueue.get(transaction.getQueueId()).remove(transaction);
-     *         if (sendQueue.get(transaction.getQueueId()).isEmpty()) {
-     *         logger.debug("getTransactionToSend 7");
-     *         sendQueue.remove(transaction.getQueueId());
-     *         }
-     *
-     *         // We replace the transaction with the new one
-     *         logger.debug("waiting for command {}:: TID {}", transaction.getExpectedCommandClassCommand(),
-     *         transaction.getTransactionId());
-     *         ZWaveCommandClassTransactionPayload newPayload = new ZWaveCommandClassTransactionPayload(
-     *         transaction.getNodeId(),
-     *         securityCommandClass.getSecurityMessageEncapsulation(transaction.getPayloadBuffer()),
-     *         TransactionPriority.RealTime, CommandClass.COMMAND_CLASS_SECURITY, 129);
-     *         transaction.setPayload(newPayload);
-     *         logger.debug("waiting for command {}:: TID {}", transaction.getExpectedCommandClassCommand(),
-     *         transaction.getTransactionId());
-     *
-     *         // transaction = new ZWaveTransaction(
-     *         // new ZWaveCommandClassTransactionPayload(transaction.getNodeId(),
-     *         // securityCommandClass
-     *         // .getSecurityMessageEncapsulation(transaction.getPayloadBuffer()),
-     *         // TransactionPriority.RealTime, CommandClass.COMMAND_CLASS_SECURITY, null));
-     *         } else {
-     *         // Request a nonce...
-     *         // Create a temporary transaction
-     *         transaction = new ZWaveTransaction(securityCommandClass.getSecurityNonceGet());
-     *         }
-     *         } else {
-     *         logger.debug("getTransactionToSend 6");
-     *         sendQueue.get(transaction.getQueueId()).remove(transaction);
-     *         if (sendQueue.get(transaction.getQueueId()).isEmpty()) {
-     *         logger.debug("getTransactionToSend 7");
-     *         sendQueue.remove(transaction.getQueueId());
-     *         }
-     *         }
-     *         }
-     *         }
-     *
-     *         if (transaction == null) {
-     *         logger.debug("No transaction to send");
-     *         } else {
-     *         logger.debug("NODE {}: Transaction {} to be sent.", transaction.getNodeId(),
-     *         transaction.getTransactionId());
-     *         }
-     *         return transaction;
-     *         }
-     */
 
     /**
      * Processes an incoming {@link SerialMessage}
@@ -598,11 +445,12 @@ public class ZWaveTransactionManager {
             logger.debug("****************** Transaction not correlated");
         }
 
+        // Process low level messages
+        // TODO: Maybe this should be moved?
         controller.handleIncomingMessage(currentTransaction, incomingMessage);
 
         // Handle transaction processing
         if (currentTransaction != null) {
-
             // Handle the transaction state machine
             boolean transactionCompleted = false;
             if (currentTransaction.transactionAdvance(incomingMessage) == true) {

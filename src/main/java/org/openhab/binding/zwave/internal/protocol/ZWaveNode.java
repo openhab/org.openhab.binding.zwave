@@ -165,7 +165,6 @@ public class ZWaveNode {
         // Create the initialisation advancer and tell it we've loaded from file
         nodeInitStageAdvancer = new ZWaveNodeInitStageAdvancer(this, controller);
         nodeInitStageAdvancer.setRestoredFromConfigfile();
-        // nodeInitStageAdvancer.startInitialisation(ZWaveNodeInitStage.DYNAMIC_VALUES);
     }
 
     /**
@@ -480,7 +479,6 @@ public class ZWaveNode {
         if (nodeInitStageAdvancer.isInitializationComplete() == true && isDead() == false) {
             logger.debug("NODE {}: resetResendCount initComplete={} isDead={}", nodeId,
                     nodeInitStageAdvancer.isInitializationComplete(), isDead());
-            // nodeInitStageAdvancer.startInitialisation(ZWaveNodeInitStage.DONE);
         }
     }
 
@@ -551,8 +549,6 @@ public class ZWaveNode {
      * @param commandClass the command class instance to add.
      */
     public void addCommandClass(ZWaveCommandClass commandClass) {
-        CommandClass key = commandClass.getCommandClass();
-
         if (!endpoints.get(0).getCommandClasses().contains(commandClass)) {
             logger.debug("NODE {}: Adding command class {} to the list of supported command classes.", nodeId,
                     commandClass.getCommandClass());
@@ -599,39 +595,6 @@ public class ZWaveNode {
         }
         // TODO: Note that this doesn't support multi-instance - only multi-channel!
         return endpoints.get(endpointId).getCommandClass(commandClass);
-
-        /*
-         * if (endpointId == 0) {
-         * return getCommandClass(commandClass);
-         * }
-         *
-         * ZWaveMultiInstanceCommandClass multiInstanceCommandClass = (ZWaveMultiInstanceCommandClass) endpoints.get(0)
-         * .getCommandClass(CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
-         * if (multiInstanceCommandClass == null) {
-         * return null;
-         * }
-         *
-         * if (multiInstanceCommandClass.getVersion() == 2) {
-         * ZWaveEndpoint endpoint = endpoints.get(endpointId);
-         *
-         * if (endpoint != null) {
-         * ZWaveCommandClass result = endpoint.getCommandClass(commandClass);
-         * if (result != null) {
-         * return result;
-         * }
-         * }
-         * } else if (multiInstanceCommandClass.getVersion() == 1) {
-         * ZWaveCommandClass result = getCommandClass(commandClass);
-         * if (result != null && endpointId <= result.getInstances()) {
-         * return result;
-         * }
-         * } else {
-         * logger.warn("NODE {}: Unsupported multi instance command version: {}.", nodeId,
-         * multiInstanceCommandClass.getVersion());
-         * }
-         *
-         * return null;
-         */
     }
 
     /**

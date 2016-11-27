@@ -42,8 +42,7 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
         } else {
             // This is an error. This means that the transaction is complete!
             // Set the flag, and return false.
-            logger.error("NODE {}: Sent Data was not placed on stack due to error {}.", transaction.getNodeId(),
-                    incomingMessage.getMessagePayloadByte(0));
+            logger.error("NODE {}: Sent Data was not placed on stack.", transaction.getNodeId());
 
             // We ought to cancel the transaction
             transaction.setTransactionCanceled();
