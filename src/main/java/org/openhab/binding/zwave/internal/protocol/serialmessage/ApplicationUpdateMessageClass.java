@@ -134,13 +134,6 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
 
                 // Treat the node information frame as a wakeup
                 node.setAwake(true);
-
-                // Treat the node information frame as a wakeup
-                // ZWaveWakeUpCommandClass wakeUp = (ZWaveWakeUpCommandClass) node
-                // .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP);
-                // if (wakeUp != null) {
-                // wakeUp.setAwake(true);
-                // }
                 break;
             case NODE_INFO_REQ_FAILED:
                 // The failed message doesn't contain the node number, so use the info from the request.
@@ -158,8 +151,6 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
                 logger.warn("TODO: Implement Application Update Request Handling of {} ({}).", updateState.getLabel(),
                         updateState.getKey());
         }
-
-        // Check if this completes the transaction
 
         return result;
     }
@@ -231,6 +222,8 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
 
     @Override
     public boolean correlateTransactionResponse(ZWaveTransaction transaction, SerialMessage incomingMessage) {
+        logger.debug("XXXXXXXX Correlating ApplicationUpdateMessageClass {} {}", transaction.getExpectedReplyClass(),
+                incomingMessage.getMessageClass());
         if (transaction.getExpectedReplyClass() != incomingMessage.getMessageClass()) {
             logger.debug(">>>>>!!!!! Not expected reply class {} <<>> {}", transaction.getExpectedReplyClass(),
                     incomingMessage.getMessageClass());
@@ -238,7 +231,8 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
         }
 
         // If the expected command class is defined, then check it
-        if (transaction.getNodeId() != incomingMessage.getMessageNode()) {
+        // If the incoming node is 0, we will also correlate as this is an error to our last request
+        if (incomingMessage.getMessageNode() != 0 && transaction.getNodeId() != incomingMessage.getMessageNode()) {
             return false;
         }
 

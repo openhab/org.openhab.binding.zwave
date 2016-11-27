@@ -42,6 +42,11 @@ public class RequestNodeNeighborUpdateMessageClass extends ZWaveCommandProcessor
     @Override
     public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
+        // This should only be received as part of a transaction
+        if (transaction == null) {
+            return false;
+        }
+
         int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: Got NodeNeighborUpdate request.", nodeId);

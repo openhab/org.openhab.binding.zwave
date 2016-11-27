@@ -350,6 +350,7 @@ public class ZWaveNodeInitStageAdvancer {
         if (msg == null) {
             return;
         }
+
         // We only send out a single PING - no retries at controller
         // level! This is to try and reduce network congestion during
         // initialisation.
@@ -695,7 +696,6 @@ public class ZWaveNodeInitStageAdvancer {
             if (thingType == null) {
                 logger.debug("NODE {}: Node advancer: ASSOCIATIONS - thing is null!", node.getNodeId());
             } else {
-
                 ConfigDescription config = ZWaveConfigProvider.getThingTypeConfig(thingType);
                 if (config == null) {
                     logger.debug("NODE {}: Node advancer: ASSOCIATIONS - no configuration!", node.getNodeId());

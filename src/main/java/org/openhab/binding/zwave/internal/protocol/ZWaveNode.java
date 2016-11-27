@@ -1260,6 +1260,8 @@ public class ZWaveNode {
     }
 
     public boolean isAwake() {
+        logger.debug("NODE {}: listening == {}, frequentlyListening == {}, awake == {}", getNodeId(), listening,
+                frequentlyListening, awake);
         return (listening == true || frequentlyListening == true || awake == true);
     }
 
@@ -1294,7 +1296,8 @@ public class ZWaveNode {
             }
 
             if (controller.getSendQueueLength(getNodeId()) != 0) {
-                logger.debug("NODE {}: WakeupTimerTask Messages waiting", getNodeId());
+                logger.debug("NODE {}: WakeupTimerTask {} Messages waiting", getNodeId(),
+                        controller.getSendQueueLength(getNodeId()));
                 triggered = false;
                 return;
             }

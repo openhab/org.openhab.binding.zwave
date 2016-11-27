@@ -81,12 +81,6 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
         logger.debug("NODE {}: SendData Request. CallBack ID = {}, Status = {}({})", node.getNodeId(),
                 incomingMessage.getCallbackId(), status.getLabel(), status.getKey());
 
-        if (transaction == null || transaction.getCallbackId() != incomingMessage.getCallbackId()) {
-            logger.warn("NODE {}: Already processed another send data request for this callback Id, ignoring.",
-                    node.getNodeId());
-            return false;
-        }
-
         switch (status) {
             case COMPLETE_OK:
                 // Consider this as a received frame since the controller did receive an ACK from the device.
@@ -136,24 +130,24 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
      * logger.error("Unknown node in handleFailedSendDataRequest");
      * return false;
      * }
-     * 
+     *
      * logger.debug("NODE {}: Handling failed message.", node.getNodeId());
-     * 
+     *
      * // Increment the resend count.
      * // This will set the node to DEAD if we've exceeded the retries.
      * node.incrementResendCount();
-     * 
+     *
      * // No retries if the node is DEAD or FAILED
      * if (node.isDead()) {
      * logger.error("NODE {}: Node is DEAD. Dropping message.", node.getNodeId());
      * return false;
      * }
-     * 
+     *
      * // If this device isn't listening, queue the message in the wakeup class
      * if (!node.isListening() && !node.isFrequentlyListening()) {
      * ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) node
      * .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
-     * 
+     *
      * if (wakeUpCommandClass != null) {
      * // It's a battery operated device, place in wake-up queue.
      * // As this message failed, we assume the device is asleep
@@ -162,7 +156,7 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
      * return false;
      * }
      * }
-     * 
+     *
      * logger.error("NODE {}: Got an error while sending data. Resending message.", node.getNodeId());
      * // zController.sendData(originalMessage);
      * return true;

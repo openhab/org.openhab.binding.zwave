@@ -171,9 +171,9 @@ public class ZWaveTransaction {
     }
 
     public int getQueueId() {
-        if (payload.getSerialMessageClass() == SerialMessageClass.SendData) {
-            return 255;
-        }
+        // if (payload.getSerialMessageClass() == SerialMessageClass.SendData) {
+        // return 255;
+        // }
         return payload.getDestinationNode();
     }
 
