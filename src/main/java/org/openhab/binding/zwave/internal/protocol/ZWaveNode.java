@@ -18,6 +18,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.openhab.binding.zwave.internal.HexToIntegerConverter;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationCommandClass;
@@ -1218,5 +1220,78 @@ public class ZWaveNode {
 
     public void setInclusionTimer() {
         inclusionTimer = System.nanoTime();
+    }
+
+    @XStreamOmitField
+    private Timer timer = null;
+    @XStreamOmitField
+    private TimerTask timerTask = null;
+    @XStreamOmitField
+    private boolean awake = false;
+
+    public void setAwake(boolean b) {
+        // Don't do anything if this node is listening
+        if (listening == true || frequentlyListening == true) {
+            return;
+        }
+
+        // Create the timer if this is our first call
+        if (timer == null) {
+            timer = new Timer();
+        }
+
+        // We're awake
+        awake = true;
+
+        // Start the timer
+
+    }
+
+    public boolean isAwake() {
+        return (listening == true || frequentlyListening == true || awake == true);
+    }
+
+    /**
+     * The following timer implements a re-triggerable timer. The timer is triggered when there are no more messages to
+     * be sent in the wake-up queue. When the timer times out it will send the 'Go To Sleep' message to the node.
+     * The timer just provides some time for anything further to be sent as a result of any processing.
+     */
+    private class WakeupTimerTask extends TimerTask {
+        @Override
+        public void run() {
+            if (isAwake()) {
+                logger.debug("NODE {}: Already asleep", getNodeId());
+                return;
+            }
+
+            ZWaveWakeUpCommandClass wakeUp = (ZWaveWakeUpCommandClass) getEndpoint(0)
+                    .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP);
+            if (wakeUp == null) {
+                setAwake(false);
+            }
+
+            // Tell the device to back to sleep.
+            logger.debug("NODE {}: No more messages, go back to sleep", getNodeId());
+            controller.sendData(wakeUp.getNoMoreInformationMessage());
+        }
+    }
+
+    public synchronized void setSleepTimer() {
+        // Stop any existing timer
+        resetSleepTimer();
+
+        // Create the timer task
+        timerTask = new WakeupTimerTask();
+
+        // Start the timer
+        timer.schedule(timerTask, 1000);
+    }
+
+    public synchronized void resetSleepTimer() {
+        // Stop any existing timer
+        if (timerTask != null) {
+            timerTask.cancel();
+        }
+        timerTask = null;
     }
 }

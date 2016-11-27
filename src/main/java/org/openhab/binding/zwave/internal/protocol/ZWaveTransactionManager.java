@@ -22,7 +22,6 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionS
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse.State;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveCommandProcessor;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
@@ -207,22 +206,22 @@ public class ZWaveTransactionManager {
      */
     public long queueTransactionForSend(ZWaveMessagePayloadTransaction payload) {
         // Handle sleeping devices
-        ZWaveNode node = controller.getNode(payload.getDestinationNode());
-        if (node != null && payload instanceof ZWaveCommandClassTransactionPayload) {
-            // If the device isn't listening, queue the message if it supports the wakeup class
-            if (!node.isListening() && !node.isFrequentlyListening()) {
-                logger.debug("NODE {}: Not listening.......", node.getNodeId());
-                ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) node
-                        .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
+        // ZWaveNode node = controller.getNode(payload.getDestinationNode());
+        // if (node != null && payload instanceof ZWaveCommandClassTransactionPayload) {
+        // If the device isn't listening, queue the message if it supports the wakeup class
+        // if (!node.isListening() && !node.isFrequentlyListening()) {
+        // logger.debug("NODE {}: Not listening.......", node.getNodeId());
+        // ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) node
+        // .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
 
-                // If it's a battery operated device, check if it's awake, or place in wake-up queue.
-                if (wakeUpCommandClass != null && !wakeUpCommandClass
-                        .processOutgoingWakeupMessage((ZWaveCommandClassTransactionPayload) payload)) {
-                    logger.debug("NODE {}: Into wakeup queue.......", node.getNodeId());
-                    return 0;
-                }
-            }
-        }
+        // If it's a battery operated device, check if it's awake, or place in wake-up queue.
+        // if (wakeUpCommandClass != null && !wakeUpCommandClass
+        // .processOutgoingWakeupMessage((ZWaveCommandClassTransactionPayload) payload)) {
+        // logger.debug("NODE {}: Into wakeup queue.......", node.getNodeId());
+        // return 0;
+        // }
+        // }
+        // }
 
         // Create a transaction from our payload data
         ZWaveTransaction transaction = new ZWaveTransaction(payload);
@@ -313,15 +312,28 @@ public class ZWaveTransactionManager {
         // Look through all nodes in the queue and get the first entry.
         // This will be the highest priority entry for each node
         synchronized (sendQueue) {
-            for (int node : sendQueue.keySet()) {
+            for (int nodeId : sendQueue.keySet()) {
+                // Get the node
+                ZWaveNode node = controller.getNode(nodeId);
+                if (node == null) {
+                    logger.debug("NODE {}: Node not found - how can this happen!", nodeId);
+                    continue;
+                }
+
+                // Check if the node is awake
+                if (!node.isAwake()) {
+                    logger.debug("NODE {}: Node not awake!", nodeId);
+                    continue;
+                }
+
                 // If the outstanding transaction is a NONCE_REPORT, then just send it ASAP
-                if (sendQueue.get(node).peek().getPriority() == TransactionPriority.NonceResponse) {
+                if (sendQueue.get(nodeId).peek().getPriority() == TransactionPriority.NonceResponse) {
                     logger.debug("getTransactionToSend 666");
-                    transaction = sendQueue.get(node).peek();
-                    sendQueue.get(node).remove(transaction);
-                    if (sendQueue.get(node).isEmpty()) {
+                    transaction = sendQueue.get(nodeId).peek();
+                    sendQueue.get(nodeId).remove(transaction);
+                    if (sendQueue.get(nodeId).isEmpty()) {
                         logger.debug("getTransactionToSend 777");
-                        sendQueue.remove(node);
+                        sendQueue.remove(nodeId);
                     }
 
                     return transaction;
@@ -330,7 +342,7 @@ public class ZWaveTransactionManager {
                 // Make sure there's no outstanding transaction for this node
                 boolean outstanding = false;
                 for (ZWaveTransaction outstandingTransaction : outstandingTransactions) {
-                    if (outstandingTransaction.getQueueId() == node) {
+                    if (outstandingTransaction.getQueueId() == nodeId) {
                         logger.debug("getTransactionToSend 2");
                         outstanding = true;
                         break;
@@ -345,11 +357,11 @@ public class ZWaveTransactionManager {
 
                 if (transaction == null) {
                     logger.debug("getTransactionToSend 4");
-                    transaction = sendQueue.get(node).peek();
+                    transaction = sendQueue.get(nodeId).peek();
                 } else {
                     logger.debug("getTransactionToSend 5");
-                    if (sendQueue.get(node).peek().getPriority().ordinal() < transaction.getPriority().ordinal()) {
-                        transaction = sendQueue.get(node).peek();
+                    if (sendQueue.get(nodeId).peek().getPriority().ordinal() < transaction.getPriority().ordinal()) {
+                        transaction = sendQueue.get(nodeId).peek();
                     }
                 }
             }

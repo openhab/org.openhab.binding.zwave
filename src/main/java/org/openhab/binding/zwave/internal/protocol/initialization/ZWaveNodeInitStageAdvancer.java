@@ -211,15 +211,28 @@ public class ZWaveNodeInitStageAdvancer {
     }
 
     private void processTransactions(ZWaveMessagePayloadTransaction transaction) {
+        processTransactions(transaction, 0, 10);
+    }
+
+    private void processTransactions(ZWaveMessagePayloadTransaction transaction, long timeout, int retries) {
         if (transaction == null) {
             return;
         }
 
+        // Remember the start time
+        long timerStart = System.nanoTime();
+
         // Use a random backoff so all nodes aren't synced.
-        Random rn = new Random();
+        Random rand = new Random();
         int backoff = 50;
-        ZWaveTransactionResponse response;
+        ZWaveTransactionResponse response = null;
         do {
+            if (timeout > 0 && System.nanoTime() - timerStart > timeout) {
+                logger.debug("NODE {}: timed out after {} / {}", node.getNodeId(), System.nanoTime() - timerStart,
+                        timeout);
+                break;
+            }
+
             // Call node.encapsulate so that we perform all encapsulation (eg security)
             if (transaction instanceof ZWaveCommandClassTransactionPayload) {
                 logger.debug("NODE {}: ZWaveCommandClassTransactionPayload - calling encapsulation", node.getNodeId());
@@ -234,7 +247,7 @@ public class ZWaveNodeInitStageAdvancer {
 
             // Increase the backoff up to 1800 seconds (approx!)
             if (backoff < 900000) {
-                backoff += backoff + rn.nextInt(1000);
+                backoff += backoff + rand.nextInt(1000);
             }
 
             try {
@@ -244,6 +257,10 @@ public class ZWaveNodeInitStageAdvancer {
                 break;
             }
         } while (initRunning);
+
+        if (response == null) {
+            return;
+        }
 
         logger.debug("NODE {}: Node Init transaction completed with response {}", node.getNodeId(),
                 response.getState());
@@ -356,6 +373,8 @@ public class ZWaveNodeInitStageAdvancer {
     }
 
     private void doSecureStages() {
+        setCurrentStage(ZWaveNodeInitStage.SECURITY_REPORT);
+
         // Does this node support security
         ZWaveSecurityCommandClass securityCommandClass = (ZWaveSecurityCommandClass) node
                 .getCommandClass(CommandClass.COMMAND_CLASS_SECURITY);

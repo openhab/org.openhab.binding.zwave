@@ -52,7 +52,6 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.RemoveNodeMessa
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ReplaceFailedNodeMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNetworkUpdateMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeNeighborUpdateMessageClass;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.SendDataMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.SerialApiGetCapabilitiesMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.SerialApiGetInitDataMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.SerialApiSetTimeoutsMessageClass;
@@ -239,9 +238,9 @@ public class ZWaveController {
      * @param originalMessage
      *            the original message that was sent
      */
-    private void handleFailedSendDataRequest(SerialMessage originalMessage) {
-        new SendDataMessageClass().handleFailedSendDataRequest(this, originalMessage);
-    }
+    // private void handleFailedSendDataRequest(SerialMessage originalMessage) {
+    // new SendDataMessageClass().handleFailedSendDataRequest(this, originalMessage);
+    // }
 
     /**
      * Handles an incoming response message. An incoming response message is a
