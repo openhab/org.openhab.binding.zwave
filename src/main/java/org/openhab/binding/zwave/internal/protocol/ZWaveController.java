@@ -474,7 +474,7 @@ public class ZWaveController {
         transactionManager.queueTransactionForSend(payload);
     }
 
-    public ZWaveTransactionResponse SendTransaction(ZWaveMessagePayloadTransaction transaction) {
+    public ZWaveTransactionResponse sendTransaction(ZWaveMessagePayloadTransaction transaction) {
         return transactionManager.sendTransaction(transaction);
     }
 
@@ -482,8 +482,14 @@ public class ZWaveController {
      * Returns the size of the send queue.
      */
     public int getSendQueueLength() {
-        // TODO: Point to the transaction manager if this is required?
         return transactionManager.getSendQueueLength();
+    }
+
+    /**
+     * Returns the size of the send queue for a specific node.
+     */
+    public int getSendQueueLength(int nodeId) {
+        return transactionManager.getSendQueueLength(nodeId);
     }
 
     /**

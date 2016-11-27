@@ -237,12 +237,13 @@ public class ZWaveTransactionManager {
     }
 
     void addTransactionToQueue(ZWaveTransaction transaction) {
-        logger.debug("addTransactionToQueue 1");
+        logger.debug("NODE {}: addTransactionToQueue 1 -- {}", transaction.getNodeId(), transaction.getQueueId());
         synchronized (sendQueue) {
             // The queue is a map containing a queue for each node
             // Check if this node is in the queue
             if (sendQueue.containsKey(transaction.getQueueId())) {
-                logger.debug("addTransactionToQueue 2");
+                logger.debug("NODE {}: addTransactionToQueue 2 -- {}", transaction.getNodeId(),
+                        sendQueue.get(transaction.getQueueId()).size());
                 // Now check if this transaction is already in the queue
                 if (sendQueue.get(transaction.getQueueId()).contains(transaction)) {
                     // if (sendQueue.contains(transaction)) {
@@ -251,7 +252,7 @@ public class ZWaveTransactionManager {
                     sendQueue.get(transaction.getQueueId()).remove(transaction);
                 }
             } else {
-                logger.debug("addTransactionToQueue 3");
+                logger.debug("NODE {}: addTransactionToQueue 3", transaction.getNodeId());
                 logger.debug("NODE {}: Transaction {} added to queue.", transaction.getNodeId(),
                         transaction.getTransactionId());
 
@@ -263,9 +264,11 @@ public class ZWaveTransactionManager {
             // Add the message to the queue
             // We always add the most recent version, even though they are supposedly the same,
             // in case things like priority have changed
-            sendQueue.get(transaction.getQueueId()).add(transaction);
+            logger.debug("NODE {}: addTransactionToQueue 23 {}", transaction.getNodeId(),
+                    sendQueue.get(transaction.getQueueId()).add(transaction));
         }
-        logger.debug("addTransactionToQueue 4 ({})", getSendQueueLength());
+        logger.debug("NODE {}: addTransactionToQueue 4 ({}/{})", transaction.getNodeId(),
+                getSendQueueLength(transaction.getNodeId()), getSendQueueLength());
 
         sendNextMessage();
         startTransactionTimer();
@@ -274,7 +277,7 @@ public class ZWaveTransactionManager {
     /**
      * Gets the number of messages currently in the transmit queue
      *
-     * @return
+     * @return number of messages in queue
      */
     public int getSendQueueLength() {
         int total = 0;
@@ -285,6 +288,20 @@ public class ZWaveTransactionManager {
         }
 
         return total;
+    }
+
+    /**
+     * Gets the number of messages currently in the transmit queue for a specific node
+     *
+     * @return number of messages in queue
+     */
+    public int getSendQueueLength(int nodeId) {
+        synchronized (sendQueue) {
+            if (sendQueue.containsKey(nodeId)) {
+                return sendQueue.get(nodeId).size();
+            }
+            return 0;
+        }
     }
 
     /**

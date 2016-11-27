@@ -191,9 +191,9 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
         // List the CommandClasses and commands that will be send to the associated nodes in this group.
         // For now just log it, later this could be used auto associate to the group
         // ie always associate when we find a battery command class
-        int groupid = payload.getPayloadByte(2);
+        int groupId = payload.getPayloadByte(2);
         int size = payload.getPayloadByte(3);
-        logger.debug("NODE {}: Supported Command classes and commands for group:{} ->", getNode().getNodeId(), groupid);
+        logger.debug("NODE {}: Supported Command classes and commands for group:{} ->", getNode().getNodeId(), groupId);
         Set<CommandClass> commands = new HashSet<>();
         for (int i = 0; i < size; i += 2) {
             // Check if this node actually supports this Command Class
@@ -205,14 +205,17 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
                         payload.getPayloadByte(i + 5));
                 commands.add(cc.getCommandClass());
                 if (autoCCs.contains(cc.getCommandClass())) {
-                    autoSubscribeGroups.add(groupid);
+                    autoSubscribeGroups.add(groupId);
                 }
             } else {
                 logger.debug("NODE {}:   unsupported {} command:{}", getNode().getNodeId(),
                         payload.getPayloadByte(4 + i), payload.getPayloadByte(5 + i));
             }
         }
-        getNode().getAssociationGroup(groupid).setCommandClasses(commands);
+        if (getNode().getAssociationGroup(groupId) == null) {
+            getNode().setAssociationGroup(new ZWaveAssociationGroup(groupId));
+        }
+        getNode().getAssociationGroup(groupId).setCommandClasses(commands);
     }
 
     /**

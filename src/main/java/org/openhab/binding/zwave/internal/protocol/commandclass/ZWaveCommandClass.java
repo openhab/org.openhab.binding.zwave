@@ -88,8 +88,7 @@ public abstract class ZWaveCommandClass {
     }
 
     public void initialise(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
-        final long start = System.currentTimeMillis();
-
+        // Create the map of response command handlers
         commands = new HashMap<Integer, ZWaveResponseHandlerMethod>();
         Method[] methods = this.getClass().getMethods();
         for (Method method : methods) {
@@ -100,8 +99,6 @@ public abstract class ZWaveCommandClass {
                 commands.put(handler.id(), handlerMethod);
             }
         }
-
-        logger.debug("{} annotation scanning took: {}ms", getCommandClass(), start - System.currentTimeMillis());
 
         this.node = node;
         this.controller = controller;

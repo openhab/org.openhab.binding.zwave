@@ -86,6 +86,9 @@ public class ZWaveNode {
     @SuppressWarnings("unused")
     private int maxBaudRate;
 
+    // The period to wait before telling a sleeping node to sleep again
+    private int sleepDelay = 1000;
+
     // Keep the NIF - just used for information and debug in the XML
     @SuppressWarnings("unused")
     private List<CommandClass> nodeInformationFrame = null;
@@ -1102,6 +1105,11 @@ public class ZWaveNode {
      * @return SerialMessage on success, null on failure.
      */
     public List<ZWaveCommandClassPayload> processCommand(ZWaveCommandClassPayload payload) {
+        // Sanity check incoming message
+        if (payload == null || payload.getPayloadLength() == 0) {
+            return null;
+        }
+
         // We've just received a message from a node, therefore it's ALIVE!
         setNodeState(ZWaveNodeState.ALIVE);
 
@@ -1206,8 +1214,8 @@ public class ZWaveNode {
         controller.sendData(encapsulate(payload, null, 0));
     }
 
-    public void sendMessage(ZWaveCommandClassTransactionPayload payload, int endpoint) {
-        controller.sendData(encapsulate(payload, null, endpoint));
+    public ZWaveTransactionResponse sendTransaction(ZWaveCommandClassTransactionPayload payload, int endpoint) {
+        return controller.sendTransaction(encapsulate(payload, null, endpoint));
     }
 
     public long getInclusionTimer() {
@@ -1232,19 +1240,23 @@ public class ZWaveNode {
     public void setAwake(boolean b) {
         // Don't do anything if this node is listening
         if (listening == true || frequentlyListening == true) {
+            logger.debug("NODE {}: Node is listening - ignore wakeup", getNodeId());
             return;
         }
 
         // Create the timer if this is our first call
         if (timer == null) {
+            logger.debug("NODE {}: Creating wakeup timer", getNodeId());
             timer = new Timer();
         }
 
         // We're awake
         awake = true;
+        logger.debug("NODE {}: Node is awake with {} messages in the queue", getNodeId(),
+                controller.getSendQueueLength(getNodeId()));
 
         // Start the timer
-
+        setSleepTimer();
     }
 
     public boolean isAwake() {
@@ -1257,26 +1269,56 @@ public class ZWaveNode {
      * The timer just provides some time for anything further to be sent as a result of any processing.
      */
     private class WakeupTimerTask extends TimerTask {
+        // Two cycles through the loop are required to send a device to sleep
+        private boolean triggered;
+        private ZWaveWakeUpCommandClass wakeUpCommandClass;
+
+        WakeupTimerTask() {
+            logger.debug("NODE {}: Creating WakeupTimerTask", getNodeId());
+            wakeUpCommandClass = (ZWaveWakeUpCommandClass) getEndpoint(0)
+                    .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP);
+            if (wakeUpCommandClass == null) {
+                logger.debug("NODE {}: COMMAND_CLASS_WAKE_UP not found", getNodeId());
+                setAwake(true);
+            }
+
+            logger.debug("NODE {}: Creating WakeupTimerTask", getNodeId());
+            triggered = false;
+        }
+
         @Override
         public void run() {
-            if (isAwake()) {
-                logger.debug("NODE {}: Already asleep", getNodeId());
+            if (isAwake() == false) {
+                logger.debug("NODE {}: WakeupTimerTask Already asleep", getNodeId());
                 return;
             }
 
-            ZWaveWakeUpCommandClass wakeUp = (ZWaveWakeUpCommandClass) getEndpoint(0)
-                    .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP);
-            if (wakeUp == null) {
-                setAwake(false);
+            if (controller.getSendQueueLength(getNodeId()) != 0) {
+                logger.debug("NODE {}: WakeupTimerTask Messages waiting", getNodeId());
+                triggered = false;
+                return;
             }
 
-            // Tell the device to back to sleep.
+            if (triggered == false) {
+                logger.debug("NODE {}: WakeupTimerTask First iteration", getNodeId());
+                triggered = true;
+                return;
+            }
+
+            // Tell the device to go back to sleep.
             logger.debug("NODE {}: No more messages, go back to sleep", getNodeId());
-            controller.sendData(wakeUp.getNoMoreInformationMessage());
+            ZWaveTransactionResponse response = sendTransaction(wakeUpCommandClass.getNoMoreInformationMessage(), 0);
+            logger.debug("NODE {}: WAKEUP response {}", getNodeId(), response.getState());
+
+            // When this transaction completes, assume we're asleep
+            setAwake(false);
+
+            // Stop the timer
+            resetSleepTimer();
         }
     }
 
-    public synchronized void setSleepTimer() {
+    private synchronized void setSleepTimer() {
         // Stop any existing timer
         resetSleepTimer();
 
@@ -1284,10 +1326,10 @@ public class ZWaveNode {
         timerTask = new WakeupTimerTask();
 
         // Start the timer
-        timer.schedule(timerTask, 1000);
+        timer.schedule(timerTask, sleepDelay / 2, sleepDelay / 2);
     }
 
-    public synchronized void resetSleepTimer() {
+    private synchronized void resetSleepTimer() {
         // Stop any existing timer
         if (timerTask != null) {
             timerTask.cancel();
