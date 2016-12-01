@@ -182,19 +182,13 @@ The value of 0 allows to turn OFF a device.<br /><h1>Overview</h1><p>The command
         <default>0</default>
       </parameter>
 
-      <parameter name="config_18_1" type="integer" groupName="configuration">
+      <parameter name="config_18_1" type="integer" groupName="configuration"
+                 min="0" max="15">
         <label>18: Associations in Z-Wave network Security Mode</label>
         <description><![CDATA[
 This parameter defines how commands are sent in specified association groups<br /><h1>Overview</h1><p>This parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is Active only in Z-Wave network security mode. It doesn’t apply to 1st Lifeline group.</p> <p>Available settings: 0 - 15<br />0 - all groups sent as non-secure<br />1 - 2nd group sent as secure<br />2 - 3rd group sent as secure<br />4 - 4th group sent as secure<br />8 - 5th group sent as secure</p> <p>Parameter values may be combined, e.g. 1+2=3 means that 2nd &amp;<br />3rd group are sent as secure.</p> <p>Default setting: 15 (all groups sent as secure)<br />Parameter size: 1 [byte]</p>
         ]]></description>
         <default>15</default>
-        <options>
-          <option value="0">DELETE_ME</option>
-          <option value="0"></option>
-          <option value="0"></option>
-          <option value="0"></option>
-          <option value="0"></option>
-        </options>
       </parameter>
 
       <parameter name="config_20_1" type="integer" groupName="configuration"

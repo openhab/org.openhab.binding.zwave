@@ -37,7 +37,7 @@ Shock Sensor<br /><h1>Overview</h1><p>ZS5101 detects the vibrations made by an i
       <property name="vendor">Vision Security</property>
       <property name="modelId">ZS5101</property>
       <property name="manufacturerId">0109</property>
-      <property name="manufacturerRef">2003:0306</property>
+      <property name="manufacturerRef">2003:0306,2003:0307</property>
       <property name="dbReference">442</property>
     </properties>
 
