@@ -128,7 +128,7 @@ public class ZWaveCentralSceneCommandClass extends ZWaveCommandClass implements 
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 CENTRAL_SCENE_SUPPORTED_GET).withPriority(TransactionPriority.Config)
-                        .withExpectedResponseCommand(CENTRAL_SCENE_NOTIFICATION).build();
+                        .withExpectedResponseCommand(CENTRAL_SCENE_SUPPORTED_REPORT).build();
     }
 
     @Override
