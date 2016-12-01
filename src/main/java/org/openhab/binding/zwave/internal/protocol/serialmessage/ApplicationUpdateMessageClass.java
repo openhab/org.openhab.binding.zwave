@@ -61,7 +61,7 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
                 logger.debug("NODE {}: Application update request. Node information received.", nodeId);
 
                 int length = incomingMessage.getMessagePayloadByte(2);
-                ZWaveNode node = zController.getNode(nodeId);
+                final ZWaveNode node = zController.getNode(nodeId);
                 if (node == null) {
                     logger.debug("NODE {}: Application update request. Node not known!", nodeId);
 
@@ -133,7 +133,21 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
                 }
 
                 // Treat the node information frame as a wakeup
-                node.setAwake(true);
+                // We have a delay here as in a number of devices the NIF isn't used as a wakeup, and the wakeup
+                // notification is sent shortly after the NIF.
+                // For these devices, if we treat the NIF as a wakeup, and start transmitting messages before the real
+                // wakeup, then these messages will time out.
+                new Thread() {
+                    @Override
+                    public void run() {
+                        try {
+                            sleep(250);
+                        } catch (InterruptedException e) {
+                            return;
+                        }
+                        node.setAwake(true);
+                    }
+                }.start();
                 break;
             case NODE_INFO_REQ_FAILED:
                 // The failed message doesn't contain the node number, so use the info from the request.
