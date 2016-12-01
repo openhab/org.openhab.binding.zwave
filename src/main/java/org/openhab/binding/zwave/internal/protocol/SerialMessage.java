@@ -132,6 +132,9 @@ public class SerialMessage {
         logger.trace("NODE {}: Creating new SerialMessage from buffer = {}", nodeId, SerialMessage.bb2hex(buffer));
         // Handle signalling frames (ie ACK, CAN, NAK)
         if (buffer.length == 1) {
+            if (buffer[0] == 0x06) {
+                messageType = SerialMessageType.ACK;
+            }
             if (buffer[0] == 0x15) {
                 messageType = SerialMessageType.NAK;
             }
@@ -429,6 +432,7 @@ public class SerialMessage {
     public enum SerialMessageType {
         Request, // 0x00
         Response, // 0x01
+        ACK,
         NAK,
         CAN
     }

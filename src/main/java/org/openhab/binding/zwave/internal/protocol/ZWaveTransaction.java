@@ -150,6 +150,10 @@ public class ZWaveTransaction {
         transactionStateTracker = TransactionState.DONE;
     }
 
+    public void setSerialMessage(SerialMessage serialMessage) {
+        this.serialMessage = serialMessage;
+    }
+
     public SerialMessage getSerialMessage() {
         if (serialMessage == null) {
             serialMessage = payload.getSerialMessage();

@@ -304,19 +304,29 @@ public class ZWaveTransactionManager {
     public void processReceiveMessage(SerialMessage incomingMessage) {
         ZWaveTransaction currentTransaction = null;
         logger.debug("Received msg " + incomingMessage.toString());
+        logger.debug("lastTransaction " + lastTransaction);
         System.out.println("Received msg " + incomingMessage.toString());
         System.out.println("lastTransaction = " + lastTransaction);
 
         // Check for NAK/CAN
         switch (incomingMessage.getMessageType()) {
-            case CAN:
-                // CAN means out of flow message was received by the controller
-                // It probably means we sent a message while the controller was processing the previous message.
-                logger.debug("Received msg: CAN");
+            case ACK:
+                logger.debug("Received msg: ACK");
                 return;
             case NAK:
                 // NAK means the controller didn't receive the message - probably because of a Checksum error
-                logger.debug("Received msg: NAK");
+            case CAN:
+                // CAN means out of flow message was received by the controller
+                // It probably means we sent a message while the controller was processing the previous message.
+                logger.debug("Resetting last transaction");
+
+                // Reset the transaction
+                outstandingTransactions.remove(lastTransaction);
+                lastTransaction = null;
+
+                // See if we need to send another message
+                sendNextMessage();
+                startTransactionTimer();
                 return;
             default:
                 break;
@@ -454,6 +464,8 @@ public class ZWaveTransactionManager {
             // Handle the transaction state machine
             boolean transactionCompleted = false;
             if (currentTransaction.transactionAdvance(incomingMessage) == true) {
+                logger.debug("Transaction " + currentTransaction.getCallbackId() + " advanced to "
+                        + currentTransaction.getTransactionState());
                 System.out.println("Transaction " + currentTransaction.getCallbackId() + " advanced to "
                         + currentTransaction.getTransactionState());
                 // Transaction has advanced - update the timer.
@@ -655,58 +667,71 @@ public class ZWaveTransactionManager {
                 }
             }
 
-            if (transaction != null) {
-                // If this requires security, then check if we have a NONCE
-                if (transaction.getRequiresSecurity()) {
-                    logger.debug("NODE {}: Transaction requires security", transaction.getNodeId());
-                    ZWaveNode node = controller.getNode(transaction.getNodeId());
-                    ZWaveSecurityCommandClass securityCommandClass = (ZWaveSecurityCommandClass) node
-                            .getCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
-                    if (securityCommandClass == null) {
-                        logger.debug("NODE {}: COMMAND_CLASS_SECURITY not found.", transaction.getNodeId());
-                    } else if (securityCommandClass.isNonceAvailable()) {
-                        // We have a NONCE, so encapsulate and send
-                        logger.debug("NODE {}: NONCE available so encap and send.", transaction.getNodeId());
+            if (transaction == null) {
+                // Nothing to send
+                logger.debug("Transaction SendNextMessage nothing");
+                return;
+            }
 
-                        sendQueue.get(transaction.getQueueId()).remove(transaction);
-                        if (sendQueue.get(transaction.getQueueId()).isEmpty()) {
-                            logger.debug("getTransactionToSend 7");
-                            sendQueue.remove(transaction.getQueueId());
-                        }
+            SerialMessage serialMessage;
+            // If this requires security, then check if we have a NONCE
+            if (transaction.getRequiresSecurity()) {
+                logger.debug("NODE {}: Transaction requires security", transaction.getNodeId());
+                ZWaveNode node = controller.getNode(transaction.getNodeId());
+                ZWaveSecurityCommandClass securityCommandClass = (ZWaveSecurityCommandClass) node
+                        .getCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
+                if (securityCommandClass == null) {
+                    logger.debug("NODE {}: COMMAND_CLASS_SECURITY not found.", transaction.getNodeId());
+                    return;
+                }
 
-                        ZWaveCommandClassTransactionPayload newPayload = new ZWaveCommandClassTransactionPayload(
-                                transaction.getNodeId(),
-                                securityCommandClass.getSecurityMessageEncapsulation(transaction.getPayloadBuffer()),
-                                TransactionPriority.RealTime, transaction.getExpectedCommandClass(),
-                                transaction.getExpectedCommandClassCommand());
-                        transaction.setPayload(newPayload);
+                if (securityCommandClass.isNonceAvailable()) {
+                    // We have a NONCE, so encapsulate and send
+                    logger.debug("NODE {}: NONCE available so encap and send.", transaction.getNodeId());
 
-                        // transaction = new ZWaveTransaction(
-                        // new ZWaveCommandClassTransactionPayload(transaction.getNodeId(),
-                        // securityCommandClass
-                        // .getSecurityMessageEncapsulation(transaction.getPayloadBuffer()),
-                        // TransactionPriority.RealTime, transaction.getExpectedCommandClass(),
-                        // transaction.getExpectedCommandClassCommand()));
-                    } else {
-                        // Request a nonce...
-                        // Create a temporary transaction
-                        transaction = new ZWaveTransaction(securityCommandClass.getSecurityNonceGet());
-                    }
-                } else {
-                    logger.debug("getTransactionToSend 6");
                     sendQueue.get(transaction.getQueueId()).remove(transaction);
                     if (sendQueue.get(transaction.getQueueId()).isEmpty()) {
                         logger.debug("getTransactionToSend 7");
                         sendQueue.remove(transaction.getQueueId());
                     }
-                }
-            }
 
-            // ZWaveTransaction transaction = getTransactionToSend();
-            if (transaction == null) {
-                // Nothing to send!
-                logger.debug("Transaction SendNextMessage nothing");
-                return;
+                    ZWaveCommandClassTransactionPayload securePayload = new ZWaveCommandClassTransactionPayload(
+                            transaction.getNodeId(),
+                            securityCommandClass.getSecurityMessageEncapsulation(transaction.getPayloadBuffer()),
+                            TransactionPriority.RealTime, transaction.getExpectedCommandClass(),
+                            transaction.getExpectedCommandClassCommand());
+                    // transaction.setPayload(newPayload);
+
+                    // TODO: This is bodgy but we need to make sure that the transaction has the same callback as our
+                    // message!
+                    serialMessage = securePayload.getSerialMessage();
+                    transaction.setSerialMessage(serialMessage);
+                    // serialMessage.setCallbackId(callbackId);
+                    int callbackId = transaction.getSerialMessage().getCallbackId();
+
+                    logger.debug("NODE {}: CallbackID = {}...{}.", transaction.getNodeId(), callbackId,
+                            serialMessage.getCallbackId());
+
+                    // transaction = new ZWaveTransaction(
+                    // new ZWaveCommandClassTransactionPayload(transaction.getNodeId(),
+                    // securityCommandClass
+                    // .getSecurityMessageEncapsulation(transaction.getPayloadBuffer()),
+                    // TransactionPriority.RealTime, transaction.getExpectedCommandClass(),
+                    // transaction.getExpectedCommandClassCommand()));
+                } else {
+                    // Request a nonce...
+                    // Create a temporary transaction
+                    transaction = new ZWaveTransaction(securityCommandClass.getSecurityNonceGet());
+                    serialMessage = transaction.getSerialMessage();
+                }
+            } else {
+                logger.debug("getTransactionToSend 6");
+                sendQueue.get(transaction.getQueueId()).remove(transaction);
+                if (sendQueue.get(transaction.getQueueId()).isEmpty()) {
+                    logger.debug("getTransactionToSend 7");
+                    sendQueue.remove(transaction.getQueueId());
+                }
+                serialMessage = transaction.getSerialMessage();
             }
 
             if (outstandingTransactions.size() >= MAX_OUTSTANDING_TRANSACTIONS) {
@@ -714,7 +739,7 @@ public class ZWaveTransactionManager {
             }
 
             // Add this message to the outstandingTransactions list
-            SerialMessage serialMessage = transaction.getSerialMessage();
+            // SerialMessage serialMessage = transaction.getSerialMessage();
             serialMessage
                     .setTransmitOptions(TRANSMIT_OPTION_ACK | TRANSMIT_OPTION_AUTO_ROUTE | TRANSMIT_OPTION_EXPLORE);
             controller.sendPacket(serialMessage);
@@ -828,7 +853,6 @@ public class ZWaveTransactionManager {
 
                             if (lastTransaction == transaction) {
                                 // If this is the current transaction, then reset it.
-
                                 lastTransaction = null;
                                 logger.debug("Transaction is current transaction, so clearing!!!!!");
                             }

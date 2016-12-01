@@ -243,7 +243,9 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                                     ACKCount++;
                                     updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_ACK),
                                             new DecimalType(ACKCount));
-                                    logger.debug("Received ACK");
+                                    logger.debug("Receive Message = 06");
+                                    SerialMessage ackMessage = new SerialMessage(new byte[] { ACK });
+                                    incomingMessage(ackMessage);
                                     break;
 
                                 case NAK:
@@ -252,7 +254,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                                     updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_NAK),
                                             new DecimalType(NAKCount));
                                     logger.debug("Receive Message = 15");
-                                    SerialMessage nakMessage = new SerialMessage(rxBuffer);
+                                    SerialMessage nakMessage = new SerialMessage(new byte[] { NAK });
                                     incomingMessage(nakMessage);
                                     break;
 
@@ -263,7 +265,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                                             new DecimalType(CANCount));
                                     // logger.debug("Protocol error (CAN)");
                                     logger.debug("Receive Message = 18");
-                                    SerialMessage canMessage = new SerialMessage(rxBuffer);
+                                    SerialMessage canMessage = new SerialMessage(new byte[] { CAN });
                                     incomingMessage(canMessage);
                                     break;
 
