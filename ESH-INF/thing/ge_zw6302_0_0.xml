@@ -49,16 +49,6 @@
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter name="config_6_1" type="integer" groupName="configuration">
-        <label>6: Enable &amp; Disable the PIR Sensor</label>
-        <description>Enable &amp; Disable the PIR Sensor</description>
-        <default>1</default>
-        <options>
-          <option value="0">Disable</option>
-          <option value="1">Enable (Default)</option>
-        </options>
-      </parameter>
-
       <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Motion Sensor</label>
         <description><![CDATA[
