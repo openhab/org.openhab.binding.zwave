@@ -195,6 +195,7 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
         assertEquals(ZWaveTransactionResponse.State.TIMEOUT_WAITING_FOR_RESPONSE, response1.getState());
     }
 
+    @Ignore
     @Test
     public void TestMultipleNIFRequests() {
         final byte[] unrelatedPacket = { 0x01, 0x14, 0x00, 0x04, 0x00, 0x2C, 0x0E, 0x32, 0x02, 0x21, 0x34, 0x00, 0x00,

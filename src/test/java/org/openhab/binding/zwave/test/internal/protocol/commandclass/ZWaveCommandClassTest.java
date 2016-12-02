@@ -135,7 +135,8 @@ public class ZWaveCommandClassTest {
     }
 
     ZWaveCommandClass getCommandClass(CommandClass cls) {
-        ZWaveDeviceClass deviceClass = new ZWaveDeviceClass(Basic.NOT_KNOWN, Generic.NOT_KNOWN, Specific.NOT_USED);
+        ZWaveDeviceClass deviceClass = new ZWaveDeviceClass(Basic.BASIC_TYPE_UNKNOWN, Generic.GENERIC_TYPE_NOT_USED,
+                Specific.SPECIFIC_TYPE_NOT_USED);
 
         // Mock the controller so we can get any events
         mockedController = Mockito.mock(ZWaveController.class);
@@ -144,8 +145,8 @@ public class ZWaveCommandClassTest {
         Mockito.when(mockedNode.getNodeId()).thenReturn(99);
         Mockito.when(mockedNode.getDeviceClass()).thenReturn(deviceClass);
         Mockito.when(mockedNode.getEndpoint(Matchers.anyInt())).thenReturn(endpoint);
-        ZWaveDeviceClass endpointDeviceClass = new ZWaveDeviceClass(Basic.NOT_KNOWN, Generic.NOT_KNOWN,
-                Specific.NOT_USED);
+        ZWaveDeviceClass endpointDeviceClass = new ZWaveDeviceClass(Basic.BASIC_TYPE_UNKNOWN,
+                Generic.GENERIC_TYPE_NOT_USED, Specific.SPECIFIC_TYPE_NOT_USED);
         Mockito.when(endpoint.getDeviceClass()).thenReturn(endpointDeviceClass);
 
         commandClsCaptor = ArgumentCaptor.forClass(ZWaveCommandClass.class);

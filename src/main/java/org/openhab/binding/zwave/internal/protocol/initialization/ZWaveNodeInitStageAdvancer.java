@@ -327,7 +327,7 @@ public class ZWaveNodeInitStageAdvancer {
         setCurrentStage(ZWaveNodeInitStage.FAILED_CHECK);
         // Controllers aren't designed to allow communication with their node.
         // If this is a controller, we're done
-        if (node.getDeviceClass().getSpecificDeviceClass() == Specific.PC_CONTROLLER) {
+        if (node.getDeviceClass().getSpecificDeviceClass() == Specific.SPECIFIC_TYPE_PC_CONTROLLER) {
             logger.debug("NODE {}: Node advancer: FAILED_CHECK - Controller - terminating initialisation",
                     node.getNodeId());
             setCurrentStage(ZWaveNodeInitStage.DONE);
@@ -394,7 +394,7 @@ public class ZWaveNodeInitStageAdvancer {
             default:
             case 0:
                 // Only ENTRY_CONTROL
-                if (node.getDeviceClass().getGenericDeviceClass() == Generic.ENTRY_CONTROL) {
+                if (node.getDeviceClass().getGenericDeviceClass() == Generic.GENERIC_TYPE_ENTRY_CONTROL) {
                     doSecureInclusion = true;
                 }
                 break;

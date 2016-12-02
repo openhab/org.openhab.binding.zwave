@@ -157,9 +157,9 @@ public class ZWaveMultiInstanceCommandClassTest extends ZWaveCommandClassTest {
         }
 
         ZWaveDeviceClass endpointDeviceClass = mockedNode.getEndpoint(2).getDeviceClass();
-        assertEquals(Basic.NOT_KNOWN, endpointDeviceClass.getBasicDeviceClass());
-        assertEquals(Generic.BINARY_SWITCH, endpointDeviceClass.getGenericDeviceClass());
-        assertEquals(Specific.POWER_SWITCH_BINARY, endpointDeviceClass.getSpecificDeviceClass());
+        assertEquals(Basic.BASIC_TYPE_UNKNOWN, endpointDeviceClass.getBasicDeviceClass());
+        assertEquals(Generic.GENERIC_TYPE_SWITCH_BINARY, endpointDeviceClass.getGenericDeviceClass());
+        assertEquals(Specific.SPECIFIC_TYPE_POWER_SWITCH_BINARY, endpointDeviceClass.getSpecificDeviceClass());
         assertNotNull(commandClsCaptor.getValue());
         assertEquals(CommandClass.COMMAND_CLASS_SWITCH_BINARY, commandClsCaptor.getValue().getCommandClass());
     }

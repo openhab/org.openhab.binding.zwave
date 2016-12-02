@@ -23,13 +23,9 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.ReportType;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.ZWaveAlarmValueEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationGroupInfoCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
-import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
@@ -143,17 +139,11 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
         byte[] packetData = { 0x01, 0x12, 0x00, 0x04, 0x00, 0x03, 0x0C, 0x59, 0x06, 0x03, 0x04, 0x26, 0x04, 0x26, 0x05,
                 0x00, 0x00, 0x00, 0x00, (byte) 0xBF };
 
-        List<ZWaveEvent> events = processCommandClassMessage(packetData, 3);
+        processCommandClassMessage(packetData, 3);
 
-        assertEquals(events.size(), 1);
+        ZWaveAssociationGroup group = mockedNode.getAssociationGroup(3);
+        assertNotNull(group);
 
-        ZWaveAlarmValueEvent event = (ZWaveAlarmValueEvent) events.get(0);
-
-        // assertEquals(event.getNodeId(), 40);
-        assertEquals(event.getEndpoint(), 0);
-        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_ALARM);
-        assertEquals(event.getReportType(), ReportType.ALARM);
-        assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.GENERAL);
-        assertEquals(event.getAlarmStatus(), 0x00);
+        assertEquals(1, group.getCommandClasses().size());
     }
 }

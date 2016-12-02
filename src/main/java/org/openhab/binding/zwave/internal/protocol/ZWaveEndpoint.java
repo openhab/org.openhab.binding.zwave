@@ -45,7 +45,8 @@ public class ZWaveEndpoint {
      */
     public ZWaveEndpoint(int endpointId) {
         this.endpointId = endpointId;
-        this.deviceClass = new ZWaveDeviceClass(Basic.NOT_KNOWN, Generic.NOT_KNOWN, Specific.NOT_USED);
+        this.deviceClass = new ZWaveDeviceClass(Basic.BASIC_TYPE_UNKNOWN, Generic.GENERIC_TYPE_NOT_USED,
+                Specific.SPECIFIC_TYPE_NOT_USED);
     }
 
     /**

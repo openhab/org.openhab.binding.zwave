@@ -119,9 +119,9 @@ public class IdentifyNodeMessageClassTest {
         assertEquals(security.getValue(), false);
         assertEquals(beaming.getValue(), true);
         assertEquals(maxBaud.getValue(), new Integer(40000));
-        assertEquals(basicClass.getValue(), Basic.STATIC_CONTROLLER);
-        assertEquals(genericClass.getValue(), Generic.STATIC_CONTROLLER);
-        assertEquals(specificClass.getValue(), Specific.PC_CONTROLLER);
+        assertEquals(basicClass.getValue(), Basic.BASIC_TYPE_STATIC_CONTROLLER);
+        assertEquals(genericClass.getValue(), Generic.GENERIC_TYPE_STATIC_CONTROLLER);
+        assertEquals(specificClass.getValue(), Specific.SPECIFIC_TYPE_PC_CONTROLLER);
     }
 
     @Test
@@ -136,9 +136,9 @@ public class IdentifyNodeMessageClassTest {
         assertEquals(security.getValue(), false);
         assertEquals(beaming.getValue(), true);
         assertEquals(maxBaud.getValue(), new Integer(40000));
-        assertEquals(basicClass.getValue(), Basic.CONTROLLER);
-        assertEquals(genericClass.getValue(), Generic.REMOTE_CONTROLLER);
-        assertEquals(specificClass.getValue(), Specific.SIMPLE_REMOTE_CONTROLLER);
+        assertEquals(basicClass.getValue(), Basic.BASIC_TYPE_CONTROLLER);
+        assertEquals(genericClass.getValue(), Generic.GENERIC_TYPE_GENERIC_CONTROLLER);
+        assertEquals(specificClass.getValue(), Specific.SPECIFIC_TYPE_REMOTE_CONTROL_SIMPLE);
     }
 
 }

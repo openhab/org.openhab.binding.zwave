@@ -597,7 +597,7 @@ public class ZWaveController {
 
                     // Start initialisation...
                     // If we just included this through the IncludeSlaveFound, then we'll already know the device class
-                    if (node.getDeviceClass().getBasicDeviceClass() != Basic.NOT_KNOWN) {
+                    if (node.getDeviceClass().getBasicDeviceClass() != Basic.BASIC_TYPE_UNKNOWN) {
                         node.initialiseNode(ZWaveNodeInitStage.INCLUSION_START);
                     } else {
                         node.initialiseNode(ZWaveNodeInitStage.EMPTYNODE);

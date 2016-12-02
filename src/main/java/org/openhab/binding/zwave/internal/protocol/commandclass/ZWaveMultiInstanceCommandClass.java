@@ -337,10 +337,10 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
         logger.debug("NODE {}: Endpoint Id = {}", getNode().getNodeId(), endpoint.getEndpointId());
         logger.debug("NODE {}: Endpoints is dynamic = {}", getNode().getNodeId(), dynamic ? "true" : false);
         logger.debug(
-                String.format("NODE %d: Basic = %s 0x%02x", getNode().getNodeId(), basic.getLabel(), basic.getKey()));
-        logger.debug(String.format("NODE %d: Generic = %s 0x%02x", getNode().getNodeId(), generic.getLabel(),
+                String.format("NODE %d: Basic = %s 0x%02x", getNode().getNodeId(), basic.toString(), basic.getKey()));
+        logger.debug(String.format("NODE %d: Generic = %s 0x%02x", getNode().getNodeId(), generic.toString(),
                 generic.getKey()));
-        logger.debug(String.format("NODE %d: Specific = %s 0x%02x", getNode().getNodeId(), specific.getLabel(),
+        logger.debug(String.format("NODE %d: Specific = %s 0x%02x", getNode().getNodeId(), specific.toString(),
                 specific.getKey()));
 
         ZWaveDeviceClass deviceClass = endpoint.getDeviceClass();
