@@ -489,6 +489,7 @@ public class ZWaveController {
      * Returns the size of the send queue for a specific node.
      */
     public int getSendQueueLength(int nodeId) {
+        // TODO: Should this also account for outstanding transactions???
         return transactionManager.getSendQueueLength(nodeId);
     }
 

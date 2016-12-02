@@ -74,7 +74,7 @@ public class ZWaveNode {
     @XStreamConverter(HexToIntegerConverter.class)
     private int deviceType = Integer.MAX_VALUE;
 
-    private String deviceFactoryId;
+    // private String deviceFactoryId;
     private String deviceSerialId;
 
     private boolean listening; // i.e. sleeping
@@ -85,6 +85,13 @@ public class ZWaveNode {
     private boolean beaming;
     @SuppressWarnings("unused")
     private int maxBaudRate;
+
+    @XStreamOmitField
+    private Timer timer = null;
+    @XStreamOmitField
+    private TimerTask timerTask = null;
+    @XStreamOmitField
+    private boolean awake = false;
 
     // The period to wait before telling a sleeping node to sleep again
     private int sleepDelay = 1000;
@@ -1122,7 +1129,6 @@ public class ZWaveNode {
         }
 
         List<ZWaveCommandClassPayload> commands = new ArrayList<ZWaveCommandClassPayload>();
-
         commands.add(payload);
 
         for (ZWaveCommandClassPayload command : commands) {
@@ -1147,10 +1153,12 @@ public class ZWaveNode {
                     // We got an unsupported command class, leave zwaveCommandClass as null
                     logger.error(String.format("NODE %d: Unsupported zwave command class %s (0x%02x)", getNodeId(),
                             commandClass, commandClassCode));
-                } else {
-                    logger.debug("NODE {}: Adding command class {}", getNodeId(), commandClass);
-                    addCommandClass(zwaveCommandClass);
+
+                    continue;
                 }
+
+                logger.debug("NODE {}: Adding command class {}", getNodeId(), commandClass);
+                addCommandClass(zwaveCommandClass);
             }
 
             if (securityDecapOk == false && doesMessageRequireSecurityEncapsulation(0, command)) {
@@ -1193,14 +1201,12 @@ public class ZWaveNode {
         inclusionTimer = System.nanoTime();
     }
 
-    @XStreamOmitField
-    private Timer timer = null;
-    @XStreamOmitField
-    private TimerTask timerTask = null;
-    @XStreamOmitField
-    private boolean awake = false;
-
-    public void setAwake(boolean b) {
+    /**
+     * Sets the device as awake if the device is normally not listening.
+     *
+     * @param awake boolean true if the device is currently awake
+     */
+    public void setAwake(boolean awake) {
         // Don't do anything if this node is listening
         if (listening == true || frequentlyListening == true) {
             logger.debug("NODE {}: Node is listening - ignore wakeup", getNodeId());
@@ -1214,14 +1220,25 @@ public class ZWaveNode {
         }
 
         // We're awake
-        awake = true;
+        this.awake = true;
         logger.debug("NODE {}: Node is awake with {} messages in the queue", getNodeId(),
                 controller.getSendQueueLength(getNodeId()));
 
         // Start the timer
-        setSleepTimer();
+        if (awake == true) {
+            setSleepTimer();
+        } else {
+            resetSleepTimer();
+        }
     }
 
+    /**
+     * Checks if the device is able to receive messages
+     * If this device is always listening, then it will always return true, otherwise it will return true if the device
+     * is awake.
+     *
+     * @return true if the node can receive a message
+     */
     public boolean isAwake() {
         logger.debug("NODE {}: listening == {}, frequentlyListening == {}, awake == {}", getNodeId(), listening,
                 frequentlyListening, awake);
