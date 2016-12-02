@@ -14,25 +14,25 @@
       <channel id="switch_binary" typeId="switch_binary">
         <label>Boost mode</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
         </properties>
       </channel>
       <channel id="thermostat_mode" typeId="systemair_29990_00_000_thermostat_mode">
         <label>Thermostat mode</label>
         <properties>
-          <property name="binding:*:DecimalType">THERMOSTAT_MODE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_MODE</property>
         </properties>
       </channel>
       <channel id="thermostat_fanmode" typeId="systemair_29990_00_000_thermostat_fanmode">
         <label>Fan speed setting</label>
         <properties>
-          <property name="binding:*:DecimalType">THERMOSTAT_FAN_MODE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_FAN_MODE</property>
         </properties>
       </channel>
       <channel id="alarm_system" typeId="alarm_system">
         <label>Alarm (system)</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=SYSTEM</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=SYSTEM</property>
         </properties>
       </channel>
     </channels>

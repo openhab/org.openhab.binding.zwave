@@ -16,43 +16,43 @@ Eneco Meter Adapter<br /><h1>Overview</h1><p>The meter adapter measures gas and 
       <channel id="time_offset" typeId="time_offset">
         <label>Clock Time Offset</label>
         <properties>
-          <property name="binding:*:DecimalType">TIME_PARAMETERS</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_TIME_PARAMETERS</property>
         </properties>
       </channel>
       <channel id="meter_gas_cubic_meters1" typeId="meter_gas_cubic_meters">
         <label>Gas meter (cubic meters)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER_TBL_MONITOR:1;type=G_Cubic_Meters</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER_TBL_MONITOR:1;type=G_Cubic_Meters</property>
         </properties>
       </channel>
       <channel id="meter_kwh2" typeId="meter_kwh">
         <label>Electric meter (kWh)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER_TBL_MONITOR:2;type=E_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER_TBL_MONITOR:2;type=E_KWh</property>
         </properties>
       </channel>
       <channel id="meter_kwh3" typeId="meter_kwh">
         <label>Electric meter (kWh)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER_TBL_MONITOR:3;type=TE_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER_TBL_MONITOR:3;type=TE_KWh</property>
         </properties>
       </channel>
       <channel id="meter_kwh4" typeId="meter_kwh">
         <label>Electric meter (kWh)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER_TBL_MONITOR:4;type=TE_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER_TBL_MONITOR:4;type=TE_KWh</property>
         </properties>
       </channel>
       <channel id="meter_kwh5" typeId="meter_kwh">
         <label>Electric meter (kWh)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER_TBL_MONITOR:5;type=TE_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER_TBL_MONITOR:5;type=TE_KWh</property>
         </properties>
       </channel>
       <channel id="meter_kwh6" typeId="meter_kwh">
         <label>Electric meter (kWh)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER_TBL_MONITOR:6;type=TE_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER_TBL_MONITOR:6;type=TE_KWh</property>
         </properties>
       </channel>
     </channels>

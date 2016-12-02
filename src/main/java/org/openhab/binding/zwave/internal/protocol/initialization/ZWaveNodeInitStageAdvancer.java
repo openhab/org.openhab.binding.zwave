@@ -235,7 +235,7 @@ public class ZWaveNodeInitStageAdvancer {
 
             // Call node.encapsulate so that we perform all encapsulation (eg security)
             if (transaction instanceof ZWaveCommandClassTransactionPayload) {
-                logger.debug("NODE {}: ZWaveCommandClassTransactionPayload - calling encapsulation", node.getNodeId());
+                logger.debug("NODE {}: ZWaveCommandClassTransactionPayload - send to node", node.getNodeId());
                 response = node.sendTransaction((ZWaveCommandClassTransactionPayload) transaction, 0);
             } else {
                 response = controller.sendTransaction(transaction);
@@ -260,6 +260,7 @@ public class ZWaveNodeInitStageAdvancer {
         } while (initRunning);
 
         if (response == null) {
+            logger.debug("NODE {}: Node Init transaction completed with response null", node.getNodeId());
             return;
         }
 

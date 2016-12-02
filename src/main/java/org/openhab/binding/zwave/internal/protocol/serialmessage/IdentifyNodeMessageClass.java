@@ -19,6 +19,8 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,12 +73,12 @@ public class IdentifyNodeMessageClass extends ZWaveCommandProcessor {
         }
 
         logger.debug("NODE {}: Listening = {}", nodeId, listening);
-        logger.debug("NODE {}: Routing = {}", nodeId, routing);
-        logger.debug("NODE {}: Beaming = {}", nodeId, beaming);
-        logger.debug("NODE {}: Version = {}", nodeId, version);
-        logger.debug("NODE {}: FLIRS = {}", nodeId, frequentlyListening);
-        logger.debug("NODE {}: Security = {}", nodeId, security);
-        logger.debug("NODE {}: Max Baud = {}", nodeId, maxBaudRate);
+        logger.debug("NODE {}: Routing   = {}", nodeId, routing);
+        logger.debug("NODE {}: Beaming   = {}", nodeId, beaming);
+        logger.debug("NODE {}: Version   = {}", nodeId, version);
+        logger.debug("NODE {}: FLIRS     = {}", nodeId, frequentlyListening);
+        logger.debug("NODE {}: Security  = {}", nodeId, security);
+        logger.debug("NODE {}: Max Baud  = {}", nodeId, maxBaudRate);
 
         node.setListening(listening);
         node.setRouting(routing);
@@ -114,9 +116,13 @@ public class IdentifyNodeMessageClass extends ZWaveCommandProcessor {
         deviceClass.setGenericDeviceClass(generic);
         deviceClass.setSpecificDeviceClass(specific);
 
-        // Add all the command classes.
+        // Add the mandatory command classes.
         // If restored the node from configuration file then
         // the classes will already exist and this will be ignored
+        node.addCommandClass(
+                ZWaveCommandClass.getInstance(CommandClass.COMMAND_CLASS_NO_OPERATION.getKey(), node, zController));
+        node.addCommandClass(
+                ZWaveCommandClass.getInstance(CommandClass.COMMAND_CLASS_BASIC.getKey(), node, zController));
 
         // Add mandatory command classes as specified by it's generic device class.
         // for (CommandClass commandClass : generic.getMandatoryCommandClasses()) {

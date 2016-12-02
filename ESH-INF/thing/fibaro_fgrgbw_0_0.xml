@@ -44,12 +44,6 @@
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL;</property>
         </properties>
       </channel>
-      <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
-        <label>Setpoint (heating)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING</property>
-        </properties>
-      </channel>
       <channel id="scene_number_param72" typeId="scene_number">
         <label>Start animation</label>
         <properties>
@@ -93,11 +87,11 @@
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0900:1000,0900:2000,0900:3000,0900:4000</property>
       <property name="dbReference">131</property>
-      <property name="commandClass:COMMAND_CLASS_SWITCH_MULTILEVEL:1">getSupported=false</property>
-      <property name="commandClass:COMMAND_CLASS_SWITCH_MULTILEVEL:2">getSupported=false</property>
-      <property name="commandClass:COMMAND_CLASS_SWITCH_MULTILEVEL:3">getSupported=false</property>
-      <property name="commandClass:COMMAND_CLASS_SWITCH_MULTILEVEL:4">getSupported=false</property>
-      <property name="commandClass:COMMAND_CLASS_SWITCH_MULTILEVEL:5">getSupported=false</property>
+      <property name="commandClass:SWITCH_MULTILEVEL:1">getSupported=false</property>
+      <property name="commandClass:SWITCH_MULTILEVEL:2">getSupported=false</property>
+      <property name="commandClass:SWITCH_MULTILEVEL:3">getSupported=false</property>
+      <property name="commandClass:SWITCH_MULTILEVEL:4">getSupported=false</property>
+      <property name="commandClass:SWITCH_MULTILEVEL:5">getSupported=false</property>
       <property name="defaultAssociations">5</property>
     </properties>
 
@@ -339,4 +333,3 @@ Defines the required change in power to generate an unsolicited power report.<br
   </thing-type>
 
 </thing:thing-descriptions>
- 

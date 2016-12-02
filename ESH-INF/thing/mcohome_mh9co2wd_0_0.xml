@@ -16,31 +16,31 @@ CO2 Monitor Air quality detector<br /><h1>Overview</h1><p>MCOHome CO2 Monitor is
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="sensor_relhumidity" typeId="sensor_relhumidity">
         <label>Sensor (relative humidity)</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=RELATIVE_HUMIDITY</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=RELATIVE_HUMIDITY</property>
         </properties>
       </channel>
       <channel id="sensor_co2" typeId="sensor_co2">
         <label>Sensor (CO2)</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=CO2</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=CO2</property>
         </properties>
       </channel>
       <channel id="alarm_co2" typeId="alarm_co2">
         <label>Alarm (CO2)</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=CARBON_DIOXIDE</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=CARBON_DIOXIDE</property>
         </properties>
       </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm (general)</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=GENERAL</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=GENERAL</property>
         </properties>
       </channel>
     </channels>

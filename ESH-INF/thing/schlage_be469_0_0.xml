@@ -14,7 +14,7 @@
       <channel id="lock_door" typeId="lock_door">
         <label>Door Lock</label>
         <properties>
-          <property name="binding:*:OnOffType">DOOR_LOCK</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_DOOR_LOCK</property>
         </properties>
       </channel>
     </channels>

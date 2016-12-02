@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.DeleteSucReturnRouteMessageClass;
 
 /**
@@ -26,12 +26,10 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.DeleteSucReturn
 public class DeleteSucReturnRouteMessageClassTest {
     @Test
     public void doRequest() {
-        byte[] expectedResponse = { 1, 5, 0, 85, 12, 1, -94 };
+        byte[] expectedResponse = { 12 };
 
         DeleteSucReturnRouteMessageClass handler = new DeleteSucReturnRouteMessageClass();
-        SerialMessage msg = handler.doRequest(12).getSerialMessage();
-        msg.setCallbackId(1);
-
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
+        ZWaveSerialPayload msg = handler.doRequest(12);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse));
     }
 }

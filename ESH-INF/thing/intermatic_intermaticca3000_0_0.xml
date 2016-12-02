@@ -5,16 +5,16 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="intermatic_ha04c_00_000" listed="false">
-    <label>HA-04C Outdoor Module</label>
-    <description>Outdoor Module</description>
+  <thing-type id="intermatic_intermaticca3000_00_000" listed="false">
+    <label>CA3000 Wall Switch</label>
+    <description>Wall Switch</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
     </channels>
@@ -22,10 +22,10 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Intermatic</property>
-      <property name="modelId">HA-04C</property>
+      <property name="modelId">CA3000</property>
       <property name="manufacturerId">0005</property>
-      <property name="manufacturerRef">0004:0003</property>
-      <property name="dbReference">297</property>
+      <property name="manufacturerRef">4341:3000</property>
+      <property name="dbReference">468</property>
     </properties>
 
   </thing-type>

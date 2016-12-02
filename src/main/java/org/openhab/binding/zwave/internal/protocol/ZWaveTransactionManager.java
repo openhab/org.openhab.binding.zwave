@@ -858,17 +858,16 @@ public class ZWaveTransactionManager {
                             }
 
                             // Resend if there are still attempts remaining
-                            if (transaction.decrementAttemptsRemaining() <= 0) {
-                                transaction.setTransactionCanceled();
-                                controller.handleTransactionComplete(transaction, null);
-                                notifyTransactionComplete(transaction);
-                                System.out.println(
-                                        "handleTransactionComplete CANCELLED x " + transaction.getCallbackId());
-                            } else {
-                                // Resend - add to a separate list so as not to impact iterator
-                                transaction.resetTransaction();
-                                retries.add(transaction);
-                            }
+                            // if (transaction.decrementAttemptsRemaining() <= 0) {
+                            transaction.setTransactionCanceled();
+                            controller.handleTransactionComplete(transaction, null);
+                            notifyTransactionComplete(transaction);
+                            System.out.println("handleTransactionComplete CANCELLED x " + transaction.getCallbackId());
+                            // } else {
+                            // Resend - add to a separate list so as not to impact iterator
+                            // transaction.resetTransaction();
+                            // retries.add(transaction);
+                            // }
                         }
                     }
                 }
@@ -967,7 +966,7 @@ public class ZWaveTransactionManager {
                 }
                 response = new ZWaveTransactionResponse(state);
 
-                System.out.println("-- To notify");
+                logger.debug("NODE {}: -- To notify", transaction.getDestinationNode());
                 synchronized (this) {
                     notify();
                     System.out.println("-- Notified");
@@ -980,6 +979,8 @@ public class ZWaveTransactionManager {
     }
 
     public ZWaveTransactionResponse sendTransaction(ZWaveMessagePayloadTransaction transaction) {
+        logger.debug("NODE {}: sendTransaction {}", transaction.getDestinationNode(), transaction);
+
         Future<ZWaveTransactionResponse> futureResponse = sendTransactionAsync(transaction);
         try {
             ZWaveTransactionResponse response = futureResponse.get();

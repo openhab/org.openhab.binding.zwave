@@ -14,18 +14,18 @@
       <channel id="sensor_binary" typeId="sensor_binary">
         <label>Binary Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
         </properties>
       </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
         <properties>
-          <property name="binding:*:PercentType">BATTERY</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
       </channel>
     </channels>
@@ -48,16 +48,6 @@
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
-
-      <parameter name="config_6_1" type="integer" groupName="configuration">
-        <label>6: Enable &amp; Disable the PIR Sensor</label>
-        <description>Enable &amp; Disable the PIR Sensor</description>
-        <default>1</default>
-        <options>
-          <option value="0">Disable</option>
-          <option value="1">Enable (Default)</option>
-        </options>
-      </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Motion Sensor</label>

@@ -14,49 +14,49 @@
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="sensor_power" typeId="sensor_power">
         <label>Sensor (power)</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=POWER</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=POWER</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
         <label>Electric meter (kWh)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER;type=E_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
         </properties>
       </channel>
       <channel id="meter_watts" typeId="meter_watts">
         <label>Electric meter (watts)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER;type=E_W</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
         </properties>
       </channel>
       <channel id="meter_reset" typeId="meter_reset">
         <label>Reset the total power consumption</label>
         <properties>
-          <property name="binding:*:OnOffType">METER</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_METER</property>
         </properties>
       </channel>
       <channel id="config_decimal_param61" typeId="fibaro_fgwp101_00_000_config_decimal_param61">
         <label>LED color when device is on</label>
         <properties>
-          <property name="binding:*:DecimalType">CONFIGURATION;parameter=61</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=61</property>
         </properties>
       </channel>
       <channel id="config_decimal_param62" typeId="fibaro_fgwp101_00_000_config_decimal_param62">
         <label>LED color when device is off</label>
         <properties>
-          <property name="binding:*:DecimalType">CONFIGURATION;parameter=62</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=62</property>
         </properties>
       </channel>
       <channel id="notification_send" typeId="notification_send">
         <label>Start Alarm LED Illumination</label>
         <properties>
-          <property name="binding:*:DecimalType">ALARM;event1=SMOKE:1,event3=BURGLAR:1</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_ALARM;event1=SMOKE:1,event3=BURGLAR:1</property>
         </properties>
       </channel>
     </channels>
@@ -96,7 +96,7 @@ Once activated, Wall Plug will keep a connected device constantly ON, will stop 
       <parameter name="config_16_1" type="integer" groupName="configuration">
         <label>16: Remember device status after power failure</label>
         <description><![CDATA[
-Define how will the Plug react after the power supply is back on.<br /> Default setting: 1<br /> Available settings:<br /> 0 - Wall Plug does not memorize its state after a power failure. Connected device will be off after the power supply is reconnected.
+Define how will the Plug react after the power supply is back on.<br /><h1>Overview</h1><p>Default setting: 1</p> <p>Available settings:</p> <ul><li>0 - Wall Plug does not memorize its state after a power failure.</li> <li>1 - Connected device will be off after the power supply is reconnected.</li> </ul>
         ]]></description>
         <default>1</default>
         <options>
@@ -109,7 +109,7 @@ Define how will the Plug react after the power supply is back on.<br /> Default 
                  min="0" max="63">
         <label>34: Reaction to alarms</label>
         <description><![CDATA[
-Define Z-Wave network alarms to which the Wall Plug will respond.<br /> Default setting: 63<br /> Available settings: 0 - 63.<br /> 1 - general alarm<br /> 2 - smoke alarm<br /> 4 - CO alarm<br /> 8 - CO2 alarm<br /> 16 - high temperature alarm<br /> 32 -
+Define Z-Wave network alarms to which the Wall Plug will respond.<br /><h1>Overview</h1><p>Default setting: 63</p> <p>Available settings: 0 - 63.</p> <ul><li>1 - general alarm</li> <li>2 - smoke alarm4 - CO alarm</li> <li>8 - CO2 alarm</li> <li>16 - high temperature alarm</li> <li>32 - flood alarm</li> </ul>
         ]]></description>
         <default>63</default>
       </parameter>
@@ -298,7 +298,7 @@ This function allows for turning off the controlled device in case of exceeding 
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Group 1</label>
+        <label>1: Group 1 (on/off controlled devices)</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p>Is assigned to the device status – sending command frames to the associated devices whenever the Wall Plug is turned ON or OFF via B-button.</p> <p>Fibaro Association Group Info</p> <p>Allows to control 5 regular and 5 multichannel devices per an association group.</p>
         ]]></description>
@@ -306,7 +306,7 @@ This function allows for turning off the controlled device in case of exceeding 
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Group 2</label>
+        <label>2: Group 2 (measured load controlled devices)</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p>Is assigned to the measured active power – sending command frames to the associated devices depending on the measured load (configured via advanced parameters 50, 51 and 52).</p> <p>Fibaro Association Group Info</p> <p>Allows to control 5 regular and 5 multichannel devices per an association group.</p>
         ]]></description>
