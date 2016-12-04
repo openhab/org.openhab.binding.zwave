@@ -91,10 +91,12 @@
       <parameter name="config_11_2" type="integer" groupName="configuration"
                  min="0" max="32536">
         <label>11: Automatic turning off output after set time</label>
-        <description><![CDATA[
-<ul><li>0 - Auto OFF disabled</li> <li>1 – 32536 = 1 second – 32536 seconds Auto OFF enabled with defined time, step is 1 second.</li></ul>
-        ]]></description>
+        <description>0 - Auto OFF disabled 1 – 32536 = 1 second – 32536 seconds Auto OFF enabled with defined time, step is 1 second.</description>
         <default>0</default>
+        <options>
+          <option value="0">Auto off DISABLED</option>
+        </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
@@ -173,7 +175,7 @@ Set value means time of moving the Dimmer between min. and max. dimming values b
                  min="1" max="255">
         <label>66: Dimming time when key pressed</label>
         <description><![CDATA[
-Time of moving the Dimmer between min. and max dimming values by continuous hold of push button I1 or associated device. <ul><li>default value 3 = 3s</li> <li>1- 255 = 1 second – 255 seconds.</li></ul>
+Time to moving the Dimmer between min. and max values (in seconds).<br /><h1>Overview</h1><ul><li>default value 3 = 3s</li> <li>1- 255 = 1 second – 255 seconds.</li> </ul>
         ]]></description>
         <default>3</default>
       </parameter>

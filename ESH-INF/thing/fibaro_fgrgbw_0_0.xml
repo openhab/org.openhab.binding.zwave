@@ -106,7 +106,9 @@
 
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: ALL ON / ALL OFF function activation</label>
-        <description>Activation/deactivation of ALL ON/ALL OFF functions. By default, ALL ON active ALL OFF active. Default setting: ALL ON active ALL OFF active</description>
+        <description><![CDATA[
+Activation/deactivation of ALL ON/ALL OFF functions. <br /><h1>Overview</h1><p>By default, ALL ON active ALL OFF active.</p>
+        ]]></description>
         <default>255</default>
         <options>
           <option value="-1">ALL ON active ALL OFF active</option>
