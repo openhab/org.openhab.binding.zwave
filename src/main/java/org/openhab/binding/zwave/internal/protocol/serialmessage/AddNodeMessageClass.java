@@ -89,6 +89,10 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
                     break;
 
                 case ADD_NODE_STATUS_ADDING_SLAVE:
+                    if (incomingMessage.getMessagePayloadByte(2) < 1
+                            || incomingMessage.getMessagePayloadByte(2) > 232) {
+                        break;
+                    }
                     logger.debug("NODE {}: Adding slave.", incomingMessage.getMessagePayloadByte(2));
 
                     int length = incomingMessage.getMessagePayloadByte(3);
@@ -122,6 +126,10 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
                     break;
 
                 case ADD_NODE_STATUS_ADDING_CONTROLLER:
+                    if (incomingMessage.getMessagePayloadByte(2) < 1
+                            || incomingMessage.getMessagePayloadByte(2) > 232) {
+                        break;
+                    }
                     logger.debug("NODE {}: Adding controller.", incomingMessage.getMessagePayloadByte(2));
                     zController.notifyEventListeners(new ZWaveInclusionEvent(
                             ZWaveInclusionEvent.Type.IncludeControllerFound, incomingMessage.getMessagePayloadByte(2)));

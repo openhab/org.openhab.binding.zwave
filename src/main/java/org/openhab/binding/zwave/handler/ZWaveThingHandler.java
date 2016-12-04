@@ -302,7 +302,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             deviceType = Integer.parseInt(parmDeviceType);
             deviceId = Integer.parseInt(parmDeviceId);
         } catch (final NumberFormatException ex) {
-            logger.debug("NODE {}: Unable to parse device data", nodeId);
+            logger.debug("NODE {}: Error parsing device parameters", nodeId);
             return;
         }
 
@@ -311,7 +311,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             if (product == null) {
                 continue;
             }
-            // logger.debug("Checking {}", product.getThingTypeUID());
+            logger.debug("Checking {}", product.getThingTypeUID());
             if (product.match(deviceManufacturer, deviceType, deviceId, parmVersion) == true) {
                 foundProduct = product;
                 break;
@@ -320,6 +320,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         // Did we find the thing type?
         if (foundProduct == null) {
+            logger.debug("NODE {}: Unable to find thing type ({}:{}:{}:{})", nodeId,
+                    String.format("%04X", deviceManufacturer), String.format("%04X", deviceType),
+                    String.format("%04X", deviceId), parmVersion);
             return;
         }
 
@@ -966,6 +969,10 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         subParameters.remove(parameter.getIndex());
 
                         ZWaveNode node = controllerHandler.getNode(nodeId);
+                        if (node == null) {
+                            logger.error("NODE {}: Error getting node for config update", nodeId);
+                            return;
+                        }
                         ZWaveConfigurationCommandClass configurationCommandClass = (ZWaveConfigurationCommandClass) node
                                 .getCommandClass(CommandClass.COMMAND_CLASS_CONFIGURATION);
                         if (configurationCommandClass == null) {

@@ -67,16 +67,25 @@ public class RemoveNodeMessageClass extends ZWaveCommandProcessor {
                 logger.debug("Remove Node: Node found for removal.");
                 break;
             case REMOVE_NODE_STATUS_REMOVING_SLAVE:
+                if (incomingMessage.getMessagePayloadByte(2) < 1 || incomingMessage.getMessagePayloadByte(2) > 232) {
+                    break;
+                }
                 logger.debug("NODE {}: Removing slave.", incomingMessage.getMessagePayloadByte(2));
                 zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.ExcludeSlaveFound,
                         incomingMessage.getMessagePayloadByte(2)));
                 break;
             case REMOVE_NODE_STATUS_REMOVING_CONTROLLER:
+                if (incomingMessage.getMessagePayloadByte(2) < 1 || incomingMessage.getMessagePayloadByte(2) > 232) {
+                    break;
+                }
                 logger.debug("NODE {}: Removing controller.", incomingMessage.getMessagePayloadByte(2));
                 zController.notifyEventListeners(new ZWaveInclusionEvent(
                         ZWaveInclusionEvent.Type.ExcludeControllerFound, incomingMessage.getMessagePayloadByte(2)));
                 break;
             case REMOVE_NODE_STATUS_DONE:
+                if (incomingMessage.getMessagePayloadByte(2) < 1 || incomingMessage.getMessagePayloadByte(2) > 232) {
+                    break;
+                }
                 logger.debug("Remove Node: Done.");
                 zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.ExcludeDone,
                         incomingMessage.getMessagePayloadByte(2)));

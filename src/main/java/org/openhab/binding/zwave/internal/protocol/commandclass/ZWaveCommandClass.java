@@ -104,7 +104,7 @@ public abstract class ZWaveCommandClass {
         this.controller = controller;
         this.endpoint = endpoint;
         logger.debug("NODE {}: Command class {}, endpoint {} created", node.getNodeId(), getCommandClass().toString(),
-                endpoint);
+                endpoint == null ? 0 : endpoint.getEndpointId());
     }
 
     /**

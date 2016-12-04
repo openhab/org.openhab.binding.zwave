@@ -23,6 +23,7 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageCl
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionState;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
@@ -526,33 +527,39 @@ public class ZWaveController {
                     // Create a new node
                     ZWaveNode newNode = new ZWaveNode(homeId, incEvent.getNodeId(), this);
 
-                    /*
-                     * // Add the device class
-                     * ZWaveDeviceClass deviceClass = newNode.getDeviceClass();
-                     * deviceClass.setBasicDeviceClass(incEvent.getBasic());
-                     * deviceClass.setGenericDeviceClass(incEvent.getGeneric());
-                     * deviceClass.setSpecificDeviceClass(incEvent.getSpecific());
-                     *
-                     * // If we have the NIF as part of the inclusion, use it
-                     * for (CommandClass commandClass : incEvent.getCommandClasses()) {
-                     * // We're only interested in the security command class!
-                     * // We don't add other classes since the list of non-secure classes can change after inclusion
-                     * // so we need to request the NIF after inclusion is complete.
-                     * if (commandClass != CommandClass.COMMAND_CLASS_SECURITY) {
-                     * continue;
-                     * }
-                     * ZWaveCommandClass zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(),
-                     * newNode, this);
-                     * if (zwaveCommandClass != null) {
-                     * logger.debug("NODE {}: Inclusion is adding command class {}.", incEvent.getNodeId(),
-                     * commandClass);
-                     *
-                     * // Add the network key to the security class
-                     * ((ZWaveSecurityCommandClass) zwaveCommandClass).setNetworkKey(networkSecurityKey);
-                     * newNode.addCommandClass(zwaveCommandClass);
-                     * }
-                     * }
-                     */
+                    // Add the device class
+                    ZWaveDeviceClass deviceClass = newNode.getDeviceClass();
+                    deviceClass.setBasicDeviceClass(incEvent.getBasic());
+                    deviceClass.setGenericDeviceClass(incEvent.getGeneric());
+                    deviceClass.setSpecificDeviceClass(incEvent.getSpecific());
+
+                    // Add mandatory classes
+                    newNode.addCommandClass(ZWaveCommandClass
+                            .getInstance(CommandClass.COMMAND_CLASS_NO_OPERATION.getKey(), newNode, this));
+                    newNode.addCommandClass(
+                            ZWaveCommandClass.getInstance(CommandClass.COMMAND_CLASS_BASIC.getKey(), newNode, this));
+
+                    // If we have the NIF as part of the inclusion, use it
+                    for (CommandClass commandClass : incEvent.getCommandClasses()) {
+                        // We're only interested in the security command class!
+                        // We don't add other classes since the list of non-secure classes can change after inclusion
+                        // so we need to request the NIF after inclusion is complete.
+                        // if (commandClass != CommandClass.COMMAND_CLASS_SECURITY) {
+                        // continue;
+                        // }
+                        ZWaveCommandClass zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(),
+                                newNode, this);
+                        if (zwaveCommandClass != null) {
+                            logger.debug("NODE {}: Inclusion is adding command class {}.", incEvent.getNodeId(),
+                                    commandClass);
+
+                            // Add the network key to the security class
+                            if (commandClass == CommandClass.COMMAND_CLASS_SECURITY) {
+                                ((ZWaveSecurityCommandClass) zwaveCommandClass).setNetworkKey(networkSecurityKey);
+                            }
+                            newNode.addCommandClass(zwaveCommandClass);
+                        }
+                    }
 
                     newNode.setInclusionTimer();
 

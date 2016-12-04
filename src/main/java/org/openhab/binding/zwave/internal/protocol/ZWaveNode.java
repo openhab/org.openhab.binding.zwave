@@ -556,12 +556,17 @@ public class ZWaveNode {
      * @param commandClass the command class instance to add.
      */
     public void addCommandClass(ZWaveCommandClass commandClass) {
+        if (commandClass == null) {
+            logger.debug("NODE {}: Attempt to add NULL command class", nodeId);
+            return;
+        }
+
         if (!endpoints.get(0).getCommandClasses().contains(commandClass)) {
             logger.debug("NODE {}: Adding command class {} to the list of supported command classes.", nodeId,
                     commandClass.getCommandClass());
             endpoints.get(0).addCommandClass(commandClass);
 
-            // Register and event listener for this class if it is listening for them
+            // Register an event listener for this class if it is listening for them
             if (commandClass instanceof ZWaveEventListener) {
                 controller.addEventListener((ZWaveEventListener) commandClass);
             }
@@ -785,7 +790,7 @@ public class ZWaveNode {
     }
 
     public boolean isSecure() {
-        return endpoints.get(0).getSecureCommandClasses().size() == 0;
+        return endpoints.get(0).getSecureCommandClasses().size() != 0;
     }
 
     /**
@@ -1275,9 +1280,9 @@ public class ZWaveNode {
                 return;
             }
 
+            logger.debug("NODE {}: WakeupTimerTask {} Messages waiting", getNodeId(),
+                    controller.getSendQueueLength(getNodeId()));
             if (controller.getSendQueueLength(getNodeId()) != 0) {
-                logger.debug("NODE {}: WakeupTimerTask {} Messages waiting", getNodeId(),
-                        controller.getSendQueueLength(getNodeId()));
                 triggered = false;
                 return;
             }
@@ -1291,10 +1296,11 @@ public class ZWaveNode {
             // Tell the device to go back to sleep.
             logger.debug("NODE {}: No more messages, go back to sleep", getNodeId());
             ZWaveTransactionResponse response = sendTransaction(wakeUpCommandClass.getNoMoreInformationMessage(), 0);
-            logger.debug("NODE {}: WAKEUP response {}", getNodeId(), response.getState());
 
             // When this transaction completes, assume we're asleep
             setAwake(false);
+
+            logger.debug("NODE {}: WAKEUP response {}", getNodeId(), response.getState());
 
             // Stop the timer
             resetSleepTimer();

@@ -35,8 +35,8 @@ public class IdentifyNodeMessageClass extends ZWaveCommandProcessor {
 
     public ZWaveSerialPayload doRequest(int nodeId) {
         // Create the request
-        return new ZWaveTransactionMessageBuilder(SerialMessageClass.IdentifyNode).withPayload(nodeId)
-                .withResponseNodeId(nodeId).build();
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.IdentifyNode).withPayload(nodeId).build();
+        // .withResponseNodeId(nodeId).build();
     }
 
     @Override

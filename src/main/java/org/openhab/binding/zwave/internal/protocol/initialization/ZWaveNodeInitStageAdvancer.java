@@ -29,7 +29,6 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveMessagePayloadTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse.State;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationCommandClass;
@@ -133,11 +132,6 @@ public class ZWaveNodeInitStageAdvancer {
     private ZWaveNodeInitStage currentStage = ZWaveNodeInitStage.EMPTYNODE;
 
     /**
-     * Used only by {@link ZWaveNodeInitStage#SECURITY_REPORT}
-     */
-    private ZWaveTransaction securityLastSentMessage;
-
-    /**
      * Constructor. Creates a new instance of the ZWaveNodeStageAdvancer class.
      *
      * @param node
@@ -176,7 +170,14 @@ public class ZWaveNodeInitStageAdvancer {
         initialisationThread = new Thread() {
             @Override
             public void run() {
-                doInitialStages();
+                if (node.getInclusionTimer() < INCLUSION_TIMER) {
+                    logger.debug("NODE {}: Node advancer: Node just included ({})", node.getNodeId(),
+                            node.getInclusionTimer());
+                    doInitialInclusionStages();
+                } else {
+                    doInitialStages();
+                }
+
                 if (currentStage == ZWaveNodeInitStage.DONE) {
                     return;
                 }
@@ -210,13 +211,13 @@ public class ZWaveNodeInitStageAdvancer {
         initRunning = false;
     }
 
-    private void processTransactions(ZWaveMessagePayloadTransaction transaction) {
-        processTransactions(transaction, 0, 10);
+    private boolean processTransaction(ZWaveMessagePayloadTransaction transaction) {
+        return processTransaction(transaction, 0, 10);
     }
 
-    private void processTransactions(ZWaveMessagePayloadTransaction transaction, long timeout, int retries) {
+    private boolean processTransaction(ZWaveMessagePayloadTransaction transaction, long timeout, int retries) {
         if (transaction == null) {
-            return;
+            return false;
         }
 
         // Remember the start time
@@ -224,16 +225,16 @@ public class ZWaveNodeInitStageAdvancer {
 
         // Use a random backoff so all nodes aren't synced.
         Random rand = new Random();
-        int backoff = 50;
+        int backoff = 250;
+        int retryCount = 0;
         ZWaveTransactionResponse response = null;
         do {
             if (timeout > 0 && System.nanoTime() - timerStart > timeout) {
                 logger.debug("NODE {}: timed out after {} / {}", node.getNodeId(), System.nanoTime() - timerStart,
                         timeout);
-                break;
+                return false;
             }
 
-            // Call node.encapsulate so that we perform all encapsulation (eg security)
             if (transaction instanceof ZWaveCommandClassTransactionPayload) {
                 logger.debug("NODE {}: ZWaveCommandClassTransactionPayload - send to node", node.getNodeId());
                 response = node.sendTransaction((ZWaveCommandClassTransactionPayload) transaction, 0);
@@ -241,31 +242,47 @@ public class ZWaveNodeInitStageAdvancer {
                 response = controller.sendTransaction(transaction);
             }
 
-            logger.debug("NODE {}: Node Init response {}", node.getNodeId(), response.getState());
+            logger.debug("NODE {}: Node Init response ({}) {}", node.getNodeId(), retryCount, response.getState());
             if (response != null && response.getState() == State.COMPLETE) {
                 break;
             }
 
-            // Increase the backoff up to 1800 seconds (approx!)
-            if (backoff < 900000) {
-                backoff += backoff + rand.nextInt(1000);
+            if (response != null && response.getState() == State.TIMEOUT_WAITING_FOR_DATA) {
+                logger.debug("NODE {}: No data from device, but it was ACK'd. Possibly not supported? (Try {})",
+                        node.getNodeId(), retryCount);
+                retryCount++;
+
+                if (retries != 0 && retryCount >= retries) {
+                    logger.debug("NODE {}: Node Init transaction retries exceeded", node.getNodeId());
+                    return false;
+                }
             }
 
-            try {
-                Thread.sleep(backoff);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                break;
+            // If we specify a timeout, then don't sleep!
+            if (timeout != 0) {
+                // Increase the backoff up to 1800 seconds (approx!)
+                if (backoff < 900000) {
+                    backoff += backoff + rand.nextInt(1000);
+                }
+
+                try {
+                    Thread.sleep(backoff);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    break;
+                }
             }
         } while (initRunning);
 
         if (response == null) {
             logger.debug("NODE {}: Node Init transaction completed with response null", node.getNodeId());
-            return;
+            return false;
         }
 
         logger.debug("NODE {}: Node Init transaction completed with response {}", node.getNodeId(),
                 response.getState());
+
+        return true;
     }
 
     /**
@@ -279,7 +296,7 @@ public class ZWaveNodeInitStageAdvancer {
             return;
         }
         for (ZWaveCommandClassTransactionPayload transaction : transactions) {
-            processTransactions(transaction);
+            processTransaction(transaction);
             if (initRunning == false) {
                 return;
             }
@@ -302,7 +319,7 @@ public class ZWaveNodeInitStageAdvancer {
             return;
         }
         for (ZWaveCommandClassTransactionPayload transaction : transactions) {
-            processTransactions(node.encapsulate(transaction, commandClass, endpointId));
+            processTransaction(node.encapsulate(transaction, commandClass, endpointId));
         }
     }
 
@@ -311,7 +328,7 @@ public class ZWaveNodeInitStageAdvancer {
         logger.debug("NODE {}: Node advancer: Initialisation starting", node.getNodeId());
 
         // Get the device information from the controller
-        processTransactions(new IdentifyNodeMessageClass().doRequest(node.getNodeId()));
+        processTransaction(new IdentifyNodeMessageClass().doRequest(node.getNodeId()));
         if (initRunning == false) {
             return;
         }
@@ -320,7 +337,7 @@ public class ZWaveNodeInitStageAdvancer {
 
         logger.debug("NODE {}: Node advancer: INIT_NEIGHBORS - send RoutingInfo", node.getNodeId());
 
-        processTransactions(new GetRoutingInfoMessageClass().doRequest(node.getNodeId()));
+        processTransaction(new GetRoutingInfoMessageClass().doRequest(node.getNodeId()));
         if (initRunning == false) {
             return;
         }
@@ -335,7 +352,7 @@ public class ZWaveNodeInitStageAdvancer {
             return;
         }
 
-        processTransactions(new IsFailedNodeMessageClass().doRequest(node.getNodeId()));
+        processTransaction(new IsFailedNodeMessageClass().doRequest(node.getNodeId()));
         if (initRunning == false) {
             return;
         }
@@ -343,33 +360,35 @@ public class ZWaveNodeInitStageAdvancer {
         setCurrentStage(ZWaveNodeInitStage.PING);
         ZWaveNoOperationCommandClass noOpCommandClass = (ZWaveNoOperationCommandClass) node
                 .getCommandClass(CommandClass.COMMAND_CLASS_NO_OPERATION);
-        if (noOpCommandClass == null) {
-            return;
-        }
+        if (noOpCommandClass != null) {
+            ZWaveCommandClassTransactionPayload msg = noOpCommandClass.getNoOperationMessage();
+            if (msg == null) {
+                return;
+            }
 
-        ZWaveCommandClassTransactionPayload msg = noOpCommandClass.getNoOperationMessage();
-        if (msg == null) {
-            return;
-        }
-
-        // We only send out a single PING - no retries at controller
-        // level! This is to try and reduce network congestion during
-        // initialisation.
-        // For battery devices, the PING will time-out. This takes 5
-        // seconds and if there are retries, it will be 15 seconds!
-        // This will block the network for a considerable time if there
-        // are a lot of battery devices (eg. 2 minutes for 8 battery devices!).
-        msg.setMaxAttempts(1);
-        processTransactions(msg);
-
-        setCurrentStage(ZWaveNodeInitStage.IDENTIFY_NODE);
-        processTransactions(new IdentifyNodeMessageClass().doRequest(node.getNodeId()));
-        if (initRunning == false) {
-            return;
+            // We only send out a single PING - no retries at controller level!
+            // This is to try and reduce network congestion during initialisation.
+            // For battery devices, the PING will time-out. This takes up to 5 seconds and if there are retries,
+            // it will be 15 seconds!
+            // This will block the network for a considerable time if there are a lot of battery devices
+            // (eg. 2 minutes for 8 battery devices!).
+            msg.setMaxAttempts(1);
+            processTransaction(msg);
         }
 
         setCurrentStage(ZWaveNodeInitStage.DETAILS);
-        processTransactions(new RequestNodeInfoMessageClass().doRequest(node.getNodeId()));
+        processTransaction(new RequestNodeInfoMessageClass().doRequest(node.getNodeId()));
+        if (initRunning == false) {
+            return;
+        }
+    }
+
+    private void doInitialInclusionStages() {
+        setCurrentStage(ZWaveNodeInitStage.IDENTIFY_NODE);
+        logger.debug("NODE {}: Node advancer: Initialisation starting from inclusion", node.getNodeId());
+
+        // Get the device information from the controller
+        processTransaction(new IdentifyNodeMessageClass().doRequest(node.getNodeId()));
         if (initRunning == false) {
             return;
         }
@@ -416,42 +435,61 @@ public class ZWaveNodeInitStageAdvancer {
             return;
         }
 
-        // Check if this node was just included (within the last 10 seconds)
+        // Check if this node was just included (within the last 10 seconds or so)
         if (node.getInclusionTimer() < INCLUSION_TIMER) {
             logger.debug("NODE {}: Performing secure inclusion.", node.getNodeId());
 
             // Get the scheme used for the remote
             logger.debug("NODE {}: SECURITY_INC State=GET_SCHEME", node.getNodeId());
-            processTransactions(securityCommandClass.getSecuritySchemeGetMessage());
+            if (processTransaction(securityCommandClass.getSecuritySchemeGetMessage(), INCLUSION_TIMER, 3) == false) {
+                // Notify that secure inclusion failed
+                controller.notifyEventListeners(
+                        new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.SecureIncludeFailed, node.getNodeId()));
+                logger.error("NODE {}: SECURITY_INC State=FAILED", node.getNodeId());
+
+                return;
+            }
             if (initRunning == false) {
                 return;
             }
 
             // Set the key
             logger.debug("NODE {}: SECURITY_INC State=SET_KEY", node.getNodeId());
-            processTransactions(securityCommandClass.getSetSecurityKeyMessage());
+            if (processTransaction(securityCommandClass.getSetSecurityKeyMessage(), INCLUSION_TIMER, 3) == true) {
+                // Notify that secure inclusion completed ok
+                controller.notifyEventListeners(
+                        new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.SecureIncludeComplete, node.getNodeId()));
+                logger.error("NODE {}: SECURITY_INC State=COMPLETE", node.getNodeId());
+            } else {
+                // Notify that secure inclusion failed
+                controller.notifyEventListeners(
+                        new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.SecureIncludeFailed, node.getNodeId()));
+                logger.error("NODE {}: SECURITY_INC State=FAILED", node.getNodeId());
+
+                return;
+            }
             if (initRunning == false) {
                 return;
             }
+        }
 
-            // Notify that secure inclusion completed ok
-            // TODO: How to detect if it really was ok?
-            ZWaveInclusionEvent event;
-            // if (securityCommandClass.isSecurelyIncluded()) {
-            event = new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.SecureIncludeComplete, node.getNodeId());
-            logger.error("NODE {}: SECURITY_INC State=COMPLETE", node.getNodeId());
-            // } else {
-            // event = new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.SecureIncludeFailed, node.getNodeId());
-            // logger.error("NODE {}: SECURITY_INC State=FAILED", node.getNodeId());
-            // }
-            controller.notifyEventListeners(event);
+        // Do a NONCE request to see if the node responds.
+        // We do three tries - if it doesn't respond, and we get the ACK from the device, then we assume the node wasn't
+        // securely included
+        logger.debug("NODE {}: SECURITY_INC State=SECURE_PING", node.getNodeId());
+        if (processTransaction(securityCommandClass.getSecurityNonceGet(), 0, 3) == false) {
+            return;
+        }
+
+        if (initRunning == false) {
+            return;
         }
 
         // Get the secure classes
         // Even if we didn't just complete secure inclusion, request the secure supported
         // If we have lost the XML, and have previously securely included, then this will allow the device to be used
         logger.debug("NODE {}: SECURITY_INC State=GET_SECURE_SUPPORTED", node.getNodeId());
-        processTransactions(securityCommandClass.getSecurityCommandsSupportedMessage());
+        processTransaction(securityCommandClass.getSecurityCommandsSupportedMessage());
         if (initRunning == false) {
             return;
         }
@@ -467,7 +505,7 @@ public class ZWaveNodeInitStageAdvancer {
             // If this node implements the Manufacturer Specific command
             // class, we use it to get manufacturer info.
             logger.debug("NODE {}: Node advancer: MANUFACTURER - send ManufacturerSpecific", node.getNodeId());
-            processTransactions(manufacturerSpecific.getManufacturerSpecificMessage());
+            processTransaction(manufacturerSpecific.getManufacturerSpecificMessage());
             if (initRunning == false) {
                 return;
             }
@@ -483,7 +521,7 @@ public class ZWaveNodeInitStageAdvancer {
             // Request the version report for this node
             logger.debug("NODE {}: Node advancer: APP_VERSION - send VersionMessage", node.getNodeId());
 
-            processTransactions(versionCommandClass.getVersionMessage());
+            processTransaction(versionCommandClass.getVersionMessage());
             if (initRunning == false) {
                 return;
             }
@@ -537,7 +575,7 @@ public class ZWaveNodeInitStageAdvancer {
                     logger.debug("NODE {}: Node advancer: VERSION - queued   {}", node.getNodeId(),
                             zwaveVersionClass.getCommandClass());
 
-                    processTransactions(versionCommandClass.checkVersion(zwaveVersionClass));
+                    processTransaction(versionCommandClass.checkVersion(zwaveVersionClass));
                     if (initRunning == false) {
                         return;
                     }
@@ -707,7 +745,7 @@ public class ZWaveNodeInitStageAdvancer {
                             int group = Integer.parseInt(cfg[1]);
                             logger.debug("NODE {}: Node advancer: ASSOCIATIONS request group {}", node.getNodeId(),
                                     group);
-                            processTransactions(node.getAssociation(group));
+                            processTransaction(node.getAssociation(group));
                             if (initRunning == false) {
                                 return;
                             }
@@ -741,11 +779,11 @@ public class ZWaveNodeInitStageAdvancer {
                         node.getNodeId(), controller.getOwnNodeId(), value);
 
                 // Set the wake-up interval, and request an update
-                processTransactions(wakeupCommandClass.setInterval(value));
+                processTransaction(wakeupCommandClass.setInterval(value));
                 if (initRunning == false) {
                     return;
                 }
-                processTransactions(wakeupCommandClass.getIntervalMessage());
+                processTransaction(wakeupCommandClass.getIntervalMessage());
                 if (initRunning == false) {
                     return;
                 }
@@ -792,11 +830,11 @@ public class ZWaveNodeInitStageAdvancer {
                                 logger.debug("NODE {}: Node advancer: SET_ASSOCIATION - Adding ASSOCIATION to group {}",
                                         node.getNodeId(), groupId);
                                 // Set the association, and request the update so we confirm if it's set
-                                processTransactions(node.setAssociation(null, groupId, controller.getOwnNodeId(), 0));
+                                processTransaction(node.setAssociation(null, groupId, controller.getOwnNodeId(), 0));
                                 if (initRunning == false) {
                                     return;
                                 }
-                                processTransactions(node.getAssociation(groupId));
+                                processTransaction(node.getAssociation(groupId));
                                 if (initRunning == false) {
                                     return;
                                 }
@@ -856,7 +894,7 @@ public class ZWaveNodeInitStageAdvancer {
                                     node.getNodeId(), parm.getName(), index);
 
                             if (configurationCommandClass.getParameter(index) == null) {
-                                processTransactions(configurationCommandClass.getConfigMessage(index));
+                                processTransaction(configurationCommandClass.getConfigMessage(index));
                                 if (initRunning == false) {
                                     return;
                                 }
@@ -905,14 +943,14 @@ public class ZWaveNodeInitStageAdvancer {
     void doHealStages() {
         setCurrentStage(ZWaveNodeInitStage.UPDATE_NEIGHBORS);
         logger.debug("NODE {}: Node advancer: UPDATE_NEIGHBORS - updating neighbor list", node.getNodeId());
-        processTransactions(new RequestNodeNeighborUpdateMessageClass().doRequest(node.getNodeId()));
+        processTransaction(new RequestNodeNeighborUpdateMessageClass().doRequest(node.getNodeId()));
         if (initRunning == false) {
             return;
         }
 
         setCurrentStage(ZWaveNodeInitStage.GET_NEIGHBORS);
         logger.debug("NODE {}: Node advancer: GET_NEIGHBORS - get RoutingInfo", node.getNodeId());
-        processTransactions(new GetRoutingInfoMessageClass().doRequest(node.getNodeId()));
+        processTransaction(new GetRoutingInfoMessageClass().doRequest(node.getNodeId()));
         if (initRunning == false) {
             return;
         }
@@ -923,7 +961,7 @@ public class ZWaveNodeInitStageAdvancer {
         if (node.getNodeId() != controller.getOwnNodeId() && controller.getSucId() != 0) {
             // Update the route to the controller
             logger.debug("NODE {}: Node advancer is deleting SUC return route.", node.getNodeId());
-            processTransactions(new DeleteSucReturnRouteMessageClass().doRequest(node.getNodeId()));
+            processTransaction(new DeleteSucReturnRouteMessageClass().doRequest(node.getNodeId()));
             if (initRunning == false) {
                 return;
             }
@@ -934,7 +972,7 @@ public class ZWaveNodeInitStageAdvancer {
         if (node.getNodeId() != controller.getOwnNodeId() && controller.getSucId() != 0) {
             // Update the route to the controller
             logger.debug("NODE {}: Node advancer is setting SUC route.", node.getNodeId());
-            processTransactions(new AssignSucReturnRouteMessageClass().doRequest(node.getNodeId()));
+            processTransaction(new AssignSucReturnRouteMessageClass().doRequest(node.getNodeId()));
         }
 
         setCurrentStage(ZWaveNodeInitStage.DELETE_ROUTES);
@@ -951,7 +989,7 @@ public class ZWaveNodeInitStageAdvancer {
         for (Integer route : node.getRoutingList()) {
             // Loop through all the nodes and set the return route
             logger.debug("NODE {}: Adding return route to {}", node.getNodeId(), route);
-            processTransactions(new AssignReturnRouteMessageClass().doRequest(node.getNodeId(), route));
+            processTransaction(new AssignReturnRouteMessageClass().doRequest(node.getNodeId(), route));
             if (initRunning == false) {
                 return;
             }
