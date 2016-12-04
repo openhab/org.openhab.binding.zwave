@@ -14,8 +14,8 @@
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL,BASIC</property>
         </properties>
       </channel>
       <channel id="color_color" typeId="color_color">
@@ -58,14 +58,14 @@
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="1" max="100">
         <label>1: Color temperature</label>
-        <description>Configuration option 1 is used to adjust color temperature. Values range from 0 to 100 where 0 means full cold white and 100 means full warm white.</description>
+        <description>Adjust color temperature. Values range from 0 to 100 where 0 is cold white and 100 is warm white.</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="0" max="31">
         <label>2: Shock sensor sensitivity</label>
-        <description>Configuration option 2 is used to adjust shock sensor sensitivity. Values range from 0 to 31 where 0 means minimum sensitivity and 31 means maximum sensitivity.</description>
+        <description>Adjust shock sensor sensitivity. Range from 0 to 31 where 0 is minimum sensitivity and 31 is maximum sensitivity.</description>
         <default>16</default>
       </parameter>
 
