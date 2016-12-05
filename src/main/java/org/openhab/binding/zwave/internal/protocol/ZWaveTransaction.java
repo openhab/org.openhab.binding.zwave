@@ -27,6 +27,8 @@ public class ZWaveTransaction {
 
     private ZWaveMessagePayloadTransaction payload;
 
+    private ZWaveTransaction linkedTransaction;
+
     // Timers
 
     /**
@@ -408,5 +410,13 @@ public class ZWaveTransaction {
         }
 
         return false;
+    }
+
+    public void setLinkedTransaction(ZWaveTransaction transaction) {
+        linkedTransaction = transaction;
+    }
+
+    public ZWaveTransaction getLinkedTransaction() {
+        return linkedTransaction;
     }
 }

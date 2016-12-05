@@ -195,6 +195,24 @@ public class ZWaveTransactionManager {
         }
         // }
         // }.start();
+
+        // If this transaction isn't complete, check if there's a linked transaction
+        // This could be a none request where we want to also abort the original transaction
+        if (transaction.getTransactionState() != TransactionState.DONE && transaction.getLinkedTransaction() != null) {
+            logger.debug("NODE {}: processing linked transaction -- {}", transaction.getNodeId(),
+                    transaction.getLinkedTransaction().getTransactionId());
+
+            synchronized (transactionListeners) {
+                for (TransactionListener listener : transactionListeners) {
+                    listener.transactionEvent(transaction.getLinkedTransaction());
+                }
+            }
+
+            synchronized (sendQueue) {
+                sendQueue.get(transaction.getLinkedTransaction().getQueueId())
+                        .remove(transaction.getLinkedTransaction());
+            }
+        }
     }
 
     /**
@@ -629,7 +647,7 @@ public class ZWaveTransactionManager {
                 if (nodeId != 255) {
                     ZWaveNode node = controller.getNode(nodeId);
                     if (node == null) {
-                        logger.debug("NODE {}: Node not found - how can this happen!", nodeId);
+                        logger.debug("NODE {}: Node not found - has this node been removed?!?", nodeId);
                         continue;
                     }
 
@@ -706,29 +724,19 @@ public class ZWaveTransactionManager {
                             securityCommandClass.getSecurityMessageEncapsulation(transaction.getPayloadBuffer()),
                             TransactionPriority.RealTime, transaction.getExpectedCommandClass(),
                             transaction.getExpectedCommandClassCommand());
-                    // transaction.setPayload(newPayload);
 
-                    // TODO: This is bodgy but we need to make sure that the transaction has the same callback as our
-                    // message!
+                    // Get the serial message for the secure message and add it to our transaction so it correlates
+                    // properly
                     serialMessage = securePayload.getSerialMessage();
                     transaction.setSerialMessage(serialMessage);
-                    // serialMessage.setCallbackId(callbackId);
-                    int callbackId = transaction.getSerialMessage().getCallbackId();
-
-                    logger.debug("NODE {}: CallbackID = {}...{}.", transaction.getNodeId(), callbackId,
-                            serialMessage.getCallbackId());
-
-                    // transaction = new ZWaveTransaction(
-                    // new ZWaveCommandClassTransactionPayload(transaction.getNodeId(),
-                    // securityCommandClass
-                    // .getSecurityMessageEncapsulation(transaction.getPayloadBuffer()),
-                    // TransactionPriority.RealTime, transaction.getExpectedCommandClass(),
-                    // transaction.getExpectedCommandClassCommand()));
                 } else {
-                    // Request a nonce...
-                    // Create a temporary transaction
-                    transaction = new ZWaveTransaction(securityCommandClass.getSecurityNonceGet());
-                    serialMessage = transaction.getSerialMessage();
+                    // Request a nonce - create a temporary transaction
+                    // We keep a reference to the original transaction so that if the nonce transaction fails, then we
+                    // fail the real transaction and let the application deal with retries.
+                    ZWaveTransaction nonceTransaction = new ZWaveTransaction(
+                            securityCommandClass.getSecurityNonceGet());
+                    nonceTransaction.setLinkedTransaction(transaction);
+                    serialMessage = nonceTransaction.getSerialMessage();
                 }
             } else {
                 logger.debug("getTransactionToSend 6");
@@ -825,7 +833,7 @@ public class ZWaveTransactionManager {
             synchronized (sendQueue) {
                 logger.debug("XXXXXXXXX Timeout.......... {} outstanding transactions", outstandingTransactions.size());
                 Date now = new Date();
-                List<ZWaveTransaction> retries = new ArrayList<ZWaveTransaction>();
+                // List<ZWaveTransaction> retries = new ArrayList<ZWaveTransaction>();
 
                 // Loop through all outstanding transactions to see if any have timed out
                 Iterator<ZWaveTransaction> iterator = outstandingTransactions.iterator();
@@ -879,11 +887,11 @@ public class ZWaveTransactionManager {
                 }
 
                 // Add retries to the queue
-                for (ZWaveTransaction transaction : retries) {
-                    logger.debug("Resending... Transaction " + transaction.getTransactionId());
-                    System.out.println("Resending... Transaction " + transaction.getTransactionId());
-                    addTransactionToQueue(transaction);
-                }
+                // for (ZWaveTransaction transaction : retries) {
+                // logger.debug("Resending... Transaction " + transaction.getTransactionId());
+                // System.out.println("Resending... Transaction " + transaction.getTransactionId());
+                // addTransactionToQueue(transaction);
+                // }
 
                 // If there's no outstanding transaction, try and send one
                 sendNextMessage();
