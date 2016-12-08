@@ -2,10 +2,8 @@ package org.openhab.binding.zwave.internal.protocol;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.Callable;
@@ -148,11 +146,12 @@ public class ZWaveTransactionManager {
     private final Timer timer = new Timer();
     private TimerTask timerTask = null;
 
-    /**
-     * The send queue is a map of queues - one queue per node. This allows us to be node specific when sending
-     * data - we can allow multiple transactions to be outstanding, but only a single transaction per node.
-     */
-    private final Map<Integer, PriorityBlockingQueue<ZWaveTransaction>> sendQueue = new HashMap<Integer, PriorityBlockingQueue<ZWaveTransaction>>();
+    private final PriorityBlockingQueue<ZWaveTransaction> sendQueue = new PriorityBlockingQueue<ZWaveTransaction>(
+            INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator());
+    private final PriorityBlockingQueue<ZWaveTransaction> secureQueue = new PriorityBlockingQueue<ZWaveTransaction>(
+            INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator());
+    private final PriorityBlockingQueue<ZWaveTransaction> controllerQueue = new PriorityBlockingQueue<ZWaveTransaction>(
+            INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator());
 
     ExecutorService executor = Executors.newCachedThreadPool();
     final List<TransactionListener> transactionListeners = new ArrayList<TransactionListener>();
@@ -209,8 +208,7 @@ public class ZWaveTransactionManager {
             }
 
             synchronized (sendQueue) {
-                sendQueue.get(transaction.getLinkedTransaction().getQueueId())
-                        .remove(transaction.getLinkedTransaction());
+                sendQueue.remove(transaction.getLinkedTransaction());
             }
         }
     }
@@ -240,34 +238,18 @@ public class ZWaveTransactionManager {
         synchronized (sendQueue) {
             // The queue is a map containing a queue for each node
             // Check if this node is in the queue
-            if (sendQueue.containsKey(transaction.getQueueId())) {
-                logger.debug("NODE {}: addTransactionToQueue 2 -- {}", transaction.getNodeId(),
-                        sendQueue.get(transaction.getQueueId()).size());
-                // Now check if this transaction is already in the queue
-                if (sendQueue.get(transaction.getQueueId()).contains(transaction)) {
-                    // if (sendQueue.contains(transaction)) {
-                    logger.debug("NODE {}: Transaction already on the send queue. Removing original.",
-                            transaction.getNodeId());
-                    sendQueue.get(transaction.getQueueId()).remove(transaction);
-                }
+            if (transaction.getRequiresSecurity()) {
+                secureQueue.add(transaction);
+                logger.debug("NODE {}: Added to secure queue - size {}", transaction.getNodeId(), secureQueue.size());
+            } else if (transaction.getNodeId() == 255) {
+                controllerQueue.add(transaction);
+                logger.debug("NODE {}: Added to controller queue - size {}", transaction.getNodeId(),
+                        controllerQueue.size());
             } else {
-                logger.debug("NODE {}: addTransactionToQueue 3", transaction.getNodeId());
-                logger.debug("NODE {}: Transaction {} added to queue.", transaction.getNodeId(),
-                        transaction.getTransactionId());
-
-                // There's no queue for this node, so add it
-                sendQueue.put(transaction.getQueueId(), new PriorityBlockingQueue<ZWaveTransaction>(
-                        INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator()));
+                sendQueue.add(transaction);
+                logger.debug("NODE {}: Added to main queue - size {}", transaction.getNodeId(), sendQueue.size());
             }
-
-            // Add the message to the queue
-            // We always add the most recent version, even though they are supposedly the same,
-            // in case things like priority have changed
-            logger.debug("NODE {}: addTransactionToQueue 23 {}", transaction.getNodeId(),
-                    sendQueue.get(transaction.getQueueId()).add(transaction));
         }
-        logger.debug("NODE {}: addTransactionToQueue 4 ({}/{})", transaction.getNodeId(),
-                getSendQueueLength(transaction.getNodeId()), getSendQueueLength());
 
         sendNextMessage();
         startTransactionTimer();
@@ -278,16 +260,16 @@ public class ZWaveTransactionManager {
      *
      * @return number of messages in queue
      */
-    public int getSendQueueLength() {
-        int total = 0;
-        synchronized (sendQueue) {
-            for (PriorityBlockingQueue<ZWaveTransaction> queue : sendQueue.values()) {
-                total += queue.size();
-            }
-        }
-
-        return total;
-    }
+    // public int getSendQueueLength() {
+    // int total = 0;
+    // synchronized (sendQueue) {
+    // for (PriorityBlockingQueue<ZWaveTransaction> queue : sendQueue.values()) {
+    // total += queue.size();
+    // }
+    // }
+    //
+    // return total;
+    // }
 
     /**
      * Gets the number of messages currently in the transmit queue for a specific node. This includes transactions that
@@ -296,16 +278,28 @@ public class ZWaveTransactionManager {
      * @return number of messages in queue
      */
     public int getSendQueueLength(int nodeId) {
+        if (nodeId == 255) {
+            return controllerQueue.size();
+        }
+
         synchronized (sendQueue) {
             int outstandingCount = 0;
+            for (ZWaveTransaction transaction : secureQueue) {
+                if (transaction.getNodeId() == nodeId) {
+                    outstandingCount++;
+                }
+            }
+            for (ZWaveTransaction transaction : sendQueue) {
+                if (transaction.getNodeId() == nodeId) {
+                    outstandingCount++;
+                }
+            }
             for (ZWaveTransaction transaction : outstandingTransactions) {
                 if (transaction.getNodeId() == nodeId) {
                     outstandingCount++;
                 }
             }
-            if (sendQueue.containsKey(nodeId)) {
-                return sendQueue.get(nodeId).size() + outstandingCount;
-            }
+
             return outstandingCount;
         }
     }
@@ -316,6 +310,8 @@ public class ZWaveTransactionManager {
     public void clearSendQueue() {
         synchronized (sendQueue) {
             sendQueue.clear();
+            secureQueue.clear();
+            controllerQueue.clear();
         }
     }
 
@@ -627,6 +623,28 @@ public class ZWaveTransactionManager {
         return new Date(nextTimer);
     }
 
+    private ZWaveTransaction getMessageFromQueue(PriorityBlockingQueue<ZWaveTransaction> queue) {
+        for (ZWaveTransaction tmp : queue) {
+            ZWaveNode node = controller.getNode(tmp.getNodeId());
+            if (node == null) {
+                logger.debug("NODE {}: Node not found - has this node been removed?!?", tmp.getNodeId());
+                continue;
+            }
+
+            // Check if the node is awake
+            if (node.isAwake() == false) {
+                logger.debug("NODE {}: Node not awake!", node.getNodeId());
+                continue;
+            }
+
+            // Node is awake - remove this transaction and return it
+            queue.remove(tmp);
+            return tmp;
+        }
+
+        return null;
+    }
+
     private void sendNextMessage() {
         logger.debug("Transaction SendNextMessage {} out at start", outstandingTransactions.size());
 
@@ -639,56 +657,12 @@ public class ZWaveTransactionManager {
                 return;
             }
 
-            ZWaveTransaction transaction = null;
-            for (int nodeId : sendQueue.keySet()) {
-                logger.debug("NODE {}: Checking transactions to send.......", nodeId);
-
-                // Get the node if this isn't the controller, and check if the device is awake
-                if (nodeId != 255) {
-                    ZWaveNode node = controller.getNode(nodeId);
-                    if (node == null) {
-                        logger.debug("NODE {}: Node not found - has this node been removed?!?", nodeId);
-                        continue;
-                    }
-
-                    // Check if the node is awake
-                    if (node.isAwake() == false) {
-                        logger.debug("NODE {}: Node not awake!", nodeId);
-                        continue;
-                    }
-                }
-
-                // If the outstanding transaction is a NONCE_REPORT, then just send it ASAP
-                if (sendQueue.get(nodeId).peek().getPriority() == TransactionPriority.NonceResponse) {
-                    transaction = sendQueue.get(nodeId).peek();
-                    break;
-                }
-
-                // Make sure there's no outstanding transaction for this node
-                boolean outstanding = false;
-                for (ZWaveTransaction outstandingTransaction : outstandingTransactions) {
-                    if (outstandingTransaction.getQueueId() == nodeId) {
-                        logger.debug("getTransactionToSend 2");
-                        outstanding = true;
-                        break;
-                    }
-                }
-
-                // Outstanding transaction found?
-                if (outstanding == true) {
-                    logger.debug("getTransactionToSend 3");
-                    continue;
-                }
-
-                if (transaction == null) {
-                    logger.debug("getTransactionToSend 4");
-                    transaction = sendQueue.get(nodeId).peek();
-                } else {
-                    logger.debug("getTransactionToSend 5");
-                    if (sendQueue.get(nodeId).peek().getPriority().ordinal() < transaction.getPriority().ordinal()) {
-                        transaction = sendQueue.get(nodeId).peek();
-                    }
-                }
+            ZWaveTransaction transaction = getMessageFromQueue(secureQueue);
+            if (transaction == null) {
+                transaction = getMessageFromQueue(sendQueue);
+            }
+            if (transaction == null) {
+                transaction = controllerQueue.poll();
             }
 
             if (transaction == null) {
@@ -713,11 +687,11 @@ public class ZWaveTransactionManager {
                     // We have a NONCE, so encapsulate and send
                     logger.debug("NODE {}: NONCE available so encap and send.", transaction.getNodeId());
 
-                    sendQueue.get(transaction.getQueueId()).remove(transaction);
-                    if (sendQueue.get(transaction.getQueueId()).isEmpty()) {
-                        logger.debug("getTransactionToSend 7");
-                        sendQueue.remove(transaction.getQueueId());
-                    }
+                    // sendQueue.get(transaction.getQueueId()).remove(transaction);
+                    // if (sendQueue.get(transaction.getQueueId()).isEmpty()) {
+                    // logger.debug("getTransactionToSend 7");
+                    // sendQueue.remove(transaction.getQueueId());
+                    // }
 
                     ZWaveCommandClassTransactionPayload securePayload = new ZWaveCommandClassTransactionPayload(
                             transaction.getNodeId(),
@@ -740,11 +714,11 @@ public class ZWaveTransactionManager {
                 }
             } else {
                 logger.debug("getTransactionToSend 6");
-                sendQueue.get(transaction.getQueueId()).remove(transaction);
-                if (sendQueue.get(transaction.getQueueId()).isEmpty()) {
-                    logger.debug("getTransactionToSend 7");
-                    sendQueue.remove(transaction.getQueueId());
-                }
+                // sendQueue.get(transaction.getQueueId()).remove(transaction);
+                // if (sendQueue.get(transaction.getQueueId()).isEmpty()) {
+                // logger.debug("getTransactionToSend 7");
+                // sendQueue.remove(transaction.getQueueId());
+                // }
                 serialMessage = transaction.getSerialMessage();
             }
 

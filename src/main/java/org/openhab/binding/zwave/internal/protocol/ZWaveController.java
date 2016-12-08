@@ -482,9 +482,9 @@ public class ZWaveController {
     /**
      * Returns the size of the send queue.
      */
-    public int getSendQueueLength() {
-        return transactionManager.getSendQueueLength();
-    }
+    // public int getSendQueueLength() {
+    // return transactionManager.getSendQueueLength();
+    // }
 
     /**
      * Returns the size of the send queue for a specific node.

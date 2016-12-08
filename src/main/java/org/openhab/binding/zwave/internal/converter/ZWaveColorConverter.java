@@ -142,9 +142,13 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
             scaling = 100 / color.getBrightness().doubleValue() * 255 / 100;
 
             // Queue the command
-            rawMessages = commandClass.setColor((int) (color.getRed().doubleValue() * scaling),
-                    (int) (color.getGreen().doubleValue() * scaling), (int) (color.getBlue().doubleValue() * scaling),
-                    0, 0);
+            if (color.getSaturation().equals(PercentType.ZERO)) {
+                rawMessages = commandClass.setColor(0, 0, 0, 255, 0);
+            } else {
+                rawMessages = commandClass.setColor((int) (color.getRed().doubleValue() * scaling),
+                        (int) (color.getGreen().doubleValue() * scaling),
+                        (int) (color.getBlue().doubleValue() * scaling), 0, 0);
+            }
         } else if ("COLD_WHITE".equals(channel.getArguments().get("colorMode"))) {
             PercentType color = (PercentType) command;
             logger.debug("NODE {}: Converted command '{}' to value {} for channel = {}, endpoint = {}.",
@@ -165,7 +169,8 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
                     node.getNodeId(), command.toString(), color.intValue(), channel.getUID(), channel.getEndpoint());
 
             // Queue the command
-            rawMessages = commandClass.setColor(0, 0, 0, 100 - color.intValue(), color.intValue());
+            int value = (int) (color.intValue() * 2.55);
+            rawMessages = commandClass.setColor(0, 0, 0, 255 - value, value);
         }
 
         if (rawMessages == null) {

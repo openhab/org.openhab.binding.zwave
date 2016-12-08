@@ -176,8 +176,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             Map<String, String> properties = channel.getProperties();
             Configuration configuration = channel.getConfiguration();
 
-            logger.debug("NODE {}: Initialising channel {}", nodeId, channel.getUID());
-
+            if (nodeId == 6) {
+                logger.debug("NODE {}: Initialising channel {}", nodeId, channel.getUID());
+            }
             for (String key : properties.keySet()) {
                 String[] bindingType = key.split(":");
                 if (bindingType.length != 3) {
