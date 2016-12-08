@@ -29,7 +29,7 @@
       <channel id="color_temperature" typeId="color_temperature">
         <label>Color Temperature</label>
         <properties>
-          <property name="binding:*:PercentType">COLOR;;colorMode=DIFF_WHITE</property>
+          <property name="binding:*:PercentType">COLOR;colorMode=DIFF_WHITE</property>
           <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL;</property>
         </properties>
       </channel>
