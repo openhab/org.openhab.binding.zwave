@@ -12,15 +12,39 @@
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="sensor_temperature" typeId="sensor_temperature">
-        <label>Sensor (temperature)</label>
+        <label>Temperature Sensor</label>
         <properties>
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm</label>
+      <channel id="alarm_smoke" typeId="alarm_smoke">
+        <label>Smoke Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM</property>
+          <property name="binding:*:OnOffType">ALARM;type=SMOKE</property>
+        </properties>
+      </channel>
+      <channel id="alarm_tamper" typeId="alarm_tamper">
+        <label>Tamper Alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=BURGLAR</property>
+        </properties>
+      </channel>
+      <channel id="alarm_battery" typeId="alarm_battery">
+        <label>Low Battery Alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="alarm_system" typeId="alarm_system">
+        <label>Hardware Failure Alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=SYSTEM</property>
+        </properties>
+      </channel>
+      <channel id="alarm_heat" typeId="alarm_heat">
+        <label>Heat Alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=HEAT</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -32,24 +56,6 @@
         <label>Clock Time Offset</label>
         <properties>
           <property name="binding:*:DecimalType">TIME_PARAMETERS</property>
-        </properties>
-      </channel>
-      <channel id="alarm_smoke" typeId="alarm_smoke">
-        <label>Alarm (smoke)</label>
-        <properties>
-          <property name="binding:*:OnOffType">SENSOR_ALARM;type=SMOKE</property>
-        </properties>
-      </channel>
-      <channel id="alarm_heat" typeId="alarm_heat">
-        <label>Alarm (heat)</label>
-        <properties>
-          <property name="binding:*:OnOffType">SENSOR_ALARM;type=HEAT</property>
-        </properties>
-      </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm (general)</label>
-        <properties>
-          <property name="binding:*:OnOffType">SENSOR_ALARM;type=GENERAL</property>
         </properties>
       </channel>
     </channels>
