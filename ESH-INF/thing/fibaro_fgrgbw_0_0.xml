@@ -51,14 +51,14 @@
         </properties>
       </channel>
       <channel id="switch_dimmer2" typeId="switch_dimmer">
-        <label>Green</label>
+        <label>Red</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:2,COMMAND_CLASS_BASIC:2</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:2,COMMAND_CLASS_BASIC:2</property>
         </properties>
       </channel>
       <channel id="switch_dimmer3" typeId="switch_dimmer">
-        <label>Red</label>
+        <label>Green</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:3,COMMAND_CLASS_BASIC:3</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:3,COMMAND_CLASS_BASIC:3</property>
@@ -106,7 +106,9 @@
 
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: ALL ON / ALL OFF function activation</label>
-        <description>Activation/deactivation of ALL ON/ALL OFF functions. By default, ALL ON active ALL OFF active. Default setting: ALL ON active ALL OFF active</description>
+        <description><![CDATA[
+Activation/deactivation of ALL ON/ALL OFF functions. <br /><h1>Overview</h1><p>By default, ALL ON active ALL OFF active.</p>
+        ]]></description>
         <default>255</default>
         <options>
           <option value="-1">ALL ON active ALL OFF active</option>

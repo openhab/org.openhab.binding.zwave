@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="tkb_tz69_00_000" listed="false">
+    <label>TZ69 Smart meter switch</label>
+    <description>Smart meter switch</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh" typeId="meter_kwh">
+        <label>Electric meter (kWh)</label>
+        <properties>
+          <property name="binding:*:DecimalType">METER;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_current" typeId="meter_current">
+        <label>Electric meter (amps)</label>
+        <properties>
+          <property name="binding:*:DecimalType">METER;type=E_A</property>
+        </properties>
+      </channel>
+      <channel id="meter_powerfactor" typeId="meter_powerfactor">
+        <label>Electric meter (power factor)</label>
+        <properties>
+          <property name="binding:*:DecimalType">METER;type=E_Power_Factor</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts" typeId="meter_watts">
+        <label>Electric meter (watts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">METER;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="meter_voltage" typeId="meter_voltage">
+        <label>Electric meter (volts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">METER;type=E_V</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">TKB Home</property>
+      <property name="modelId">TZ69</property>
+      <property name="manufacturerId">0118</property>
+      <property name="manufacturerRef">0004:0002</property>
+      <property name="dbReference">474</property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: LED Indicator Mode</label>
+        <description>Sets whether LED should indicate device is on (1) or off (0)</description>
+        <default>1</default>
+        <options>
+          <option value="0">Switch off = LED off</option>
+          <option value="1">Switch off = LED on</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration">
+        <label>2: Memory Function</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Manual states: TZ69 by default value is 1, when the value is 0, TZ69 memory funciton not open; when the value is 1, open TZ69 memory function. </p> <p>Not sure what that means - maybe if value is 0, TZ69 wont remeber the last kWH reading when turned off?</p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">Memory function off</option>
+          <option value="1">Memory function on</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_3_2" type="integer" groupName="configuration"
+                 min="1" max="32767">
+        <label>3: Watt Meter Report Period</label>
+        <description>5s x 720 (default) = 3600s = 1 hour</description>
+        <default>720</default>
+      </parameter>
+
+      <parameter name="config_4_2" type="integer" groupName="configuration"
+                 min="0" max="32767">
+        <label>4: kWH Meter Report Period</label>
+        <description>10m * 6 (default) = 60m = 1 hour</description>
+        <default>6</default>
+      </parameter>
+
+      <parameter name="config_5_2" type="integer" groupName="configuration"
+                 min="10" max="3000">
+        <label>5: Threshold of Watt for Load Caution</label>
+        <description><![CDATA[
+Above this level, switch enters overload mode<br /><h1>Overview</h1><p>Overload mode means the switch is disabled and the LED flashes at 0.5 second intervals. Unplug unit to clear mode.</p>
+        ]]></description>
+        <default>3000</default>
+      </parameter>
+
+      <parameter name="config_6_2" type="integer" groupName="configuration"
+                 min="1" max="10000">
+        <label>6: Threshold of kWH for Load Caution</label>
+        <description><![CDATA[
+Over this level, unit with go into overload mode<br /><h1>Overview</h1><p>Overload mode means the switch is disabled and the LED flashes at 0.5 second intervals. Unplug unit to clear mode.</p>
+        ]]></description>
+        <default>10000</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>
