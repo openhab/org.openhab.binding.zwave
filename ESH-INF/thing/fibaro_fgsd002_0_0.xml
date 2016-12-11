@@ -81,7 +81,9 @@
 
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Smoke Sensor sensitivity</label>
-        <description>There are 3 levels of sensitivity to smoke presence. Level 1 means the highest sensitivity. Rising the parameter value lowers the sensitivity to smoke presence.</description>
+        <description><![CDATA[
+There are 3 levels of sensitivity to smoke presence. <br /><h1>Overview</h1><p>Level 1 means the highest sensitivity. Rising the parameter value lowers the sensitivity to smoke presence.</p>
+        ]]></description>
         <default>2</default>
         <options>
           <option value="1">HIGH Sensitivity</option>
@@ -92,51 +94,59 @@
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Z-Wave notifications status</label>
-        <description>This parameter allows to activate excess temperature and/or enclosure opening notifications sent to the main controller</description>
+        <description><![CDATA[
+This parameter allows to activate excess temperature ...<br /><h1>Overview</h1><p>...  and/or enclosure opening notifications sent to the main controller</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">All notifications disabled</option>
           <option value="1">Enclosure opening notification enabled</option>
-          <option value="2">Temperature threshold notification enabled</option>
+          <option value="2">Exceeding temperature threshold notification enabled</option>
           <option value="3">All notifications enabled</option>
         </options>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Visual indicator notifications status</label>
-        <description>This parameter allows to activate visual indications but does not apply to major alarms, such as FIRE, TROUBLE and LOW BATTERY ALARM.</description>
+        <description><![CDATA[
+This parameter allows to activate visual indications<br /><h1>Overview</h1><p> but does not apply to major alarms, such as FIRE, TROUBLE and LOW BATTERY ALARM.</p> <p>Available settings: 0 - 7 </p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">All notifications disabled</option>
           <option value="1">Enclosure opening notification enabled</option>
-          <option value="2">Temperature threshold notification enabled</option>
-          <option value="3">enclosure opening notification enabled + exceeding temperature thresho</option>
-          <option value="4">lack of Z-Wave range notification</option>
-          <option value="5">enclosure opening notification enabled + lack of Z-Wave range notifica</option>
-          <option value="6">exceeding temperature threshold notification enabled + lack of Z-Wave</option>
-          <option value="7">enclosure opening notification enabled + exceeding temperature thresho</option>
+          <option value="2">Exceeding temperature threshold notification enabled</option>
+          <option value="3">Enclosure opening notification enabled +</option>
+          <option value="4">Lack of Z-Wave range notification</option>
+          <option value="5">Enclosure opening notification enabled +</option>
+          <option value="6">Exceeding temperature threshold notification enabled +</option>
+          <option value="7">Enclosure opening notification enabled +</option>
         </options>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Sound notifications status</label>
-        <description>This parameter allows to activate sound signals but does not apply to major alarms, such as FIRE, TROUBLE and LOW BATTERY ALARM.</description>
+        <description><![CDATA[
+This parameter allows to activate sound signals...<br /><h1>Overview</h1><p> but does not apply to major alarms, such as FIRE, TROUBLE and LOW BATTERY ALARM.</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">All notifications disabled</option>
-          <option value="1">enclosure opening notification enabled</option>
-          <option value="2">exceeding temperature threshold notification enabled</option>
-          <option value="3">enclosure opening notification enabled + exceeding temperature thresho</option>
-          <option value="4">lack of Z-Wave range notification</option>
-          <option value="5">enclosure opening notification enabled + lack of Z-Wave range notifica</option>
-          <option value="6">exceeding temperature threshold notification enabled + lack of Z-Wave</option>
-          <option value="7">enclosure opening notification enabled + exceeding temperature thresho</option>
+          <option value="1">Enclosure opening notification enabled</option>
+          <option value="2">Exceeding temperature threshold notification enabled</option>
+          <option value="3">Enclosure opening notification enabled +</option>
+          <option value="4">Lack of Z-Wave range notification</option>
+          <option value="5">Enclosure opening notification enabled +</option>
+          <option value="6">Exceeding temperature threshold notification enabled +</option>
+          <option value="7">Enclosure opening notification enabled +</option>
         </options>
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration">
         <label>10: Configuration of control frames in BASIC command class</label>
-        <description>This parameter defines which frames will be sent in the 2-nd Association Group (FIRE ALARM). The values of BASIC ON and BASIC OFF frames may be defined as described in further parameters.</description>
+        <description><![CDATA[
+This parameter defines which frames will be sent ...<br /><h1>Overview</h1><p>in the 2-nd Association Group (FIRE ALARM). The values of BASIC ON and BASIC OFF frames may be defined as described in further parameters.</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">BASIC ON and BASIC OFF enabled</option>
@@ -148,61 +158,77 @@
       <parameter name="config_11_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>11: BASIC ON frame value</label>
-        <description>BASIC ON frame is sent in case of smoke presence detection and FIRE ALARM triggering. Its value is defined by the parameter. Available settings: 0-99, 255. 0 - turn off the device. 1-99 - set the device to 1-99%. 255 - set the last status</description>
+        <description><![CDATA[
+BASIC ON frame is sent in case of smoke presence detection ...<br /><h1>Overview</h1><p>and FIRE ALARM triggering. Its value is defined by the parameter. Available settings: 0-99, 255. 0 - turn off the device. 1-99 - set the device to 1-99%. 255 - set the last status</p>
+        ]]></description>
         <default>255</default>
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>12: BASIC OFF frame value</label>
-        <description>BASIC OFF frame is sent in case of FIRE ALARM cancellation. Its value is defined by the parameter. Available settings: 0-99, 255. 0 - turn off the device. 1-99 - set the device to 1-99%. 255 - set the last status</description>
+        <description><![CDATA[
+BASIC OFF frame is sent in case of FIRE ALARM cancellation.<br /><h1>Overview</h1><p>Its value is defined by the parameter. Available settings: 0-99, 255. 0 - turn off the device. 1-99 - set the device to 1-99%. 255 - set the last status</p>
+        ]]></description>
         <default>255</default>
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Alarm broadcast</label>
-        <description>A value other than 0 means that alarms are being sent in broadcast mode, i.e. to all devices within a Fibaro Smoke Sensor’s range</description>
+        <description><![CDATA[
+A value other than 0 means that alarms are being sent in ...<br /><h1>Overview</h1><p>broadcast mode, i.e. to all devices within a Fibaro Smoke Sensor’s range</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">broadcast inactive</option>
-          <option value="1">FIRE ALARM broadcast (2-nd and 4-th Association Group) active; enclosu</option>
-          <option value="2">FIRE ALARM broadcast (2-nd and 4-th Association Group) inactive; enclo</option>
-          <option value="3">FIRE ALARM broadcast (2-nd and 4-th Association Group) active; enclosu</option>
+          <option value="1">FIRE ALARM broadcast (2-nd and 4-th Association Group) ...</option>
+          <option value="2">FIRE ALARM broadcast (2-nd and 4-th Association Group) ...</option>
+          <option value="3">FIRE ALARM broadcast (2-nd and 4-th Association Group) ...</option>
         </options>
       </parameter>
 
       <parameter name="config_20_2" type="integer" groupName="configuration"
                  min="0" max="8640">
         <label>20: Temperature report interval</label>
-        <description>Time interval between consecutive temperature reports. Report is sent when new temperature value is different from the one previously reported - according to the set hysteresis (parameter 21). Temperature reports can be also sent as a result of polling. A</description>
+        <description><![CDATA[
+Time interval between consecutive temperature reports.<br /><h1>Overview</h1><p>Report is sent when new temperature value is different from the one previously reported - according to the set hysteresis (parameter 21). Temperature reports can be also sent as a result of polling.<br /></p> <p>Available settings: 0, 1-8640 (multiply by 10 seconds) [10s-24h]<br /></p> <p>0 – reports inactive<br />1-8640 - [10s-24h]<br /></p> <p>Default setting: 1 (10 seconds)<br />Parameter size: 2 [bytes] </p>
+        ]]></description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_21_1" type="integer" groupName="configuration"
                  min="1" max="100">
         <label>21: Temperature report hysteresis</label>
-        <description>The temperature report will only be sent if there is a difference in temperature value from the previous value reported, defined in this parameter (hysteresis). Temperature reports can be also sent as a result of polling. Available settings: 1 – 100 (in 0</description>
+        <description><![CDATA[
+The temperature report will only be sent if there is a difference ...<br /><h1>Overview</h1><p>in temperature value from the previous value reported, defined in this parameter (hysteresis). Temperature reports can be also sent as a result of polling.<br /></p> <p>Available settings: 1 – 100 (in 0,1oC steps)<br />1-100 - (multiply by 0,1) [0,1oC - 10oC]<br /></p> <p>Default setting: 10 (1oC)<br />Parameter size: 1 [byte] </p>
+        ]]></description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_30_1" type="integer" groupName="configuration"
                  min="1" max="100">
         <label>30: Temperature threshold</label>
-        <description>Temperature value measured by the built-in temperature sensor above which the excess temperature notification is sent (visual indication/sound/Z-Wave report). Available settings: 1 - 100 (1oC - 100oC)</description>
+        <description><![CDATA[
+Temperature value measured by the built-in temperature ...<br /><h1>Overview</h1><p>sensor above which the excess temperature notification is sent (visual indication/sound/Z-Wave report). </p>
+        ]]></description>
         <default>55</default>
       </parameter>
 
       <parameter name="config_31_2" type="integer" groupName="configuration"
                  min="1" max="8640">
         <label>31: Excess temperature signaling interval</label>
-        <description>Time interval of signaling (visual indication/sound) excess temperature level.Available settings: 1-8640 (multiply by 10 seconds) [10s-24h] 1-8640 - [10s-24h]</description>
+        <description><![CDATA[
+Time interval of signaling (visual indication/sound) excess ...<br /><h1>Overview</h1><p> temperature level</p> <p><br />Available settings: 1-8640 (multiply by 10 seconds) [10s-24h]<br />1-8640 - [10s-24h]<br /></p> <p>Default setting: 1 (10 seconds)<br />Parameter size: 2 [bytes] </p>
+        ]]></description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_32_2" type="integer" groupName="configuration"
                  min="1" max="8640">
         <label>32: Lack of Z-Wave range indication interval</label>
-        <description>Time interval of signaling (visual indication/sound) lack of Z-Wave range. Available settings: 1-8640 (multiply by 10 seconds) [10s-24h]. 1-8640 - [10s-24h]</description>
+        <description><![CDATA[
+Time interval of signaling (visual indication/sound) lack of ...<br /><h1>Overview</h1><p>Z-Wave range.</p> <p><br />Available settings: 1-8640 (multiply by 10 seconds) [10s-24h]<br />1-8640 - [10s-24h]<br /></p> <p>Default setting: 180 (30min)<br />Parameter size: 2 [bytes] </p>
+        ]]></description>
         <default>180</default>
       </parameter>
 
