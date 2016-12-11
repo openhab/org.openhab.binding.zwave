@@ -16,7 +16,7 @@ Mini Plug Switch with Metering (Gen5)<br /><h1>Overview</h1><p>The Metering Plug
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
@@ -64,7 +64,7 @@ Mini Plug Switch with Metering (Gen5)<br /><h1>Overview</h1><p>The Metering Plug
       <property name="manufacturerId">0060</property>
       <property name="manufacturerRef">0004:0006</property>
       <property name="dbReference">306</property>
-      <property name="defaultAssociations">1,2</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
