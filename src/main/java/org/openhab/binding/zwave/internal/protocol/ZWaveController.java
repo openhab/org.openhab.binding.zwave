@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Timer;
@@ -306,12 +307,28 @@ public class ZWaveController {
                 break;
             case SerialApiGetInitData:
                 // this.isConnected = true;
+                List<Thread> initList = new ArrayList<Thread>();
                 for (Integer nodeId : ((SerialApiGetInitDataMessageClass) processor).getNodes()) {
-                    addNode(nodeId);
+                    initList.add(addNode(nodeId));
                 }
 
                 // Notify the system that we're up and running
-                notifyEventListeners(new ZWaveNetworkStateEvent(true));
+                new Thread() {
+                    @Override
+                    public void run() {
+                        for (Thread thread : initList) {
+                            try {
+                                logger.debug("Waiting for init thread {}", thread.getName());
+                                thread.join();
+                                logger.debug("Init thread {} complete", thread.getName());
+                            } catch (InterruptedException e) {
+                            }
+                        }
+                        logger.debug("All init threads complete");
+                        notifyEventListeners(new ZWaveNetworkStateEvent(true));
+                    }
+                }.start();
+
                 break;
             default:
                 break;
@@ -336,7 +353,7 @@ public class ZWaveController {
      * @param nodeId
      *            the node number to add
      */
-    private void addNode(int nodeId) {
+    private ZWaveInitNodeThread addNode(int nodeId) {
         ZWaveEvent zEvent = new ZWaveInitializationStateEvent(nodeId, ZWaveNodeInitStage.EMPTYNODE);
         notifyEventListeners(zEvent);
 
@@ -345,7 +362,11 @@ public class ZWaveController {
         // }
 
         ioHandler.deviceDiscovered(nodeId);
-        new ZWaveInitNodeThread(this, nodeId).start();
+        ZWaveInitNodeThread thread = new ZWaveInitNodeThread(this, nodeId);
+        thread.setName("Node_" + nodeId + "_init");
+        thread.start();
+
+        return thread;
     }
 
     private class ZWaveInitNodeThread extends Thread {
