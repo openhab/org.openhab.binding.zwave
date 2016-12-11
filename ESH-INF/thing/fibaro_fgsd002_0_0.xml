@@ -95,10 +95,10 @@
         <description>This parameter allows to activate excess temperature and/or enclosure opening notifications sent to the main controller</description>
         <default>0</default>
         <options>
-          <option value="0">all notifications disabled</option>
-          <option value="1">enclosure opening notification enabled</option>
-          <option value="2">exceeding temperature threshold notification enabled</option>
-          <option value="3">enclosure opening notification enabled + exceeding temperature thresho</option>
+          <option value="0">All notifications disabled</option>
+          <option value="1">Enclosure opening notification enabled</option>
+          <option value="2">Temperature threshold notification enabled</option>
+          <option value="3">All notifications enabled</option>
         </options>
       </parameter>
 
@@ -107,9 +107,9 @@
         <description>This parameter allows to activate visual indications but does not apply to major alarms, such as FIRE, TROUBLE and LOW BATTERY ALARM.</description>
         <default>0</default>
         <options>
-          <option value="0">all notifications disabled</option>
-          <option value="1">enclosure opening notification enabled</option>
-          <option value="2">exceeding temperature threshold notification enabled</option>
+          <option value="0">All notifications disabled</option>
+          <option value="1">Enclosure opening notification enabled</option>
+          <option value="2">Temperature threshold notification enabled</option>
           <option value="3">enclosure opening notification enabled + exceeding temperature thresho</option>
           <option value="4">lack of Z-Wave range notification</option>
           <option value="5">enclosure opening notification enabled + lack of Z-Wave range notifica</option>
@@ -123,7 +123,7 @@
         <description>This parameter allows to activate sound signals but does not apply to major alarms, such as FIRE, TROUBLE and LOW BATTERY ALARM.</description>
         <default>0</default>
         <options>
-          <option value="0">all notifications disabled</option>
+          <option value="0">All notifications disabled</option>
           <option value="1">enclosure opening notification enabled</option>
           <option value="2">exceeding temperature threshold notification enabled</option>
           <option value="3">enclosure opening notification enabled + exceeding temperature thresho</option>
