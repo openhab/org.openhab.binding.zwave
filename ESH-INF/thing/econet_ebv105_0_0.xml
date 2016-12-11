@@ -5,10 +5,10 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="ufairy_gr105_00_000" listed="false">
-    <label>GR-105 Water Shutoff Valve</label>
+  <thing-type id="econet_ebv105_00_000" listed="false">
+    <label>EBV-105 Wireless Water Shutoff Valve</label>
     <description><![CDATA[
-Water Shutoff Valve<br /><h1>Overview</h1><p>This valve clamps onto your existing valve, allowing you to open/close the valve via Z-Wave as soon as you notice a problem.</p> <br /><h2>Inclusion Information</h2><p>With controller in inclusion mode, triple-press valve button within 1 second to include.</p> <br /><h2>Exclusion Information</h2><p>With controller in exclusion mode, triple-press valve button within 1 second to exclude.</p> <p>Holding the valve button for more than 10 seconds resets to factory default settings.</p>
+Wireless Water Shutoff Valve<br /><h1>Overview</h1><p>The EBV105 water shutoff controller is easy to install and configure. No special tools or plumbing required. The included clamp supports installation </p>
     ]]></description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -19,22 +19,15 @@ Water Shutoff Valve<br /><h1>Overview</h1><p>This valve clamps onto your existin
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
-      <channel id="switch_dimmer" typeId="switch_dimmer">
-        <label>Dimmer</label>
-        <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-        </properties>
-      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">UFairy G.R. Tech</property>
-      <property name="modelId">GR-105</property>
-      <property name="manufacturerId">0152</property>
+      <property name="vendor">EcoNet Controls</property>
+      <property name="modelId">EBV-105</property>
+      <property name="manufacturerId">0157</property>
       <property name="manufacturerRef">0003:0512</property>
-      <property name="dbReference">438</property>
+      <property name="dbReference">271</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
