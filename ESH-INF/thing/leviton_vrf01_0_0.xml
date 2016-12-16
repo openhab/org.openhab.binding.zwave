@@ -5,16 +5,23 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="leviton_vrs15_00_000" listed="false">
-    <label>VRS15 Scene Capable Push On/Off</label>
-    <description>Scene Capable Push On/Off</description>
+  <thing-type id="leviton_vrf01_00_000" listed="false">
+    <label>VRF01 Scene Capable Quiet Fan Speed Control</label>
+    <description>Scene Capable Quiet Fan Speed Control</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL,BASIC</property>
+        </properties>
+      </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">SCENE_ACTIVATION</property>
         </properties>
       </channel>
     </channels>
@@ -22,13 +29,13 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Leviton</property>
-      <property name="modelId">VRS15</property>
+      <property name="modelId">VRF01</property>
       <property name="manufacturerId">001D</property>
-      <property name="manufacturerRef">0301:0209,0301:0334</property>
-      <property name="dbReference">193</property>
+      <property name="manufacturerRef">1001:0209,1001:0334</property>
+      <property name="dbReference">485</property>
       <property name="commandClass:NO_OPERATION">setVersion=1</property>
       <property name="commandClass:BASIC">setVersion=1</property>
-      <property name="commandClass:SWITCH_BINARY">setVersion=1</property>
+      <property name="commandClass:SWITCH_MULTILEVEL">setVersion=1</property>
       <property name="commandClass:SWITCH_ALL">setVersion=1</property>
       <property name="commandClass:SCENE_ACTIVATION">setVersion=1</property>
       <property name="commandClass:SCENE_ACTUATOR_CONF">setVersion=1</property>
@@ -38,24 +45,7 @@
       <property name="commandClass:ASSOCIATION">setVersion=1</property>
       <property name="commandClass:VERSION">setVersion=1</property>
       <property name="commandClass:MANUFACTURER_PROPRIETARY">setVersion=0</property>
-      <property name="defaultAssociations">1</property>
     </properties>
-
-    <!-- CONFIGURATION DESCRIPTIONS -->
-    <config-description>
-
-      <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
-      <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Group 1</label>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-    </config-description>
 
   </thing-type>
 
