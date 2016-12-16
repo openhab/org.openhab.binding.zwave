@@ -42,19 +42,25 @@
         </properties>
       </channel>
       <channel id="sensor_temperature3" typeId="sensor_temperature">
-        <label>Sensor (temperature 1)</label>
+        <label>Temperature 1</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:3;type=TEMPERATURE</property>
         </properties>
       </channel>
+      <channel id="sensor_temperature4" typeId="sensor_temperature">
+        <label>Temperature 2</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:4,COMMAND_CLASS_BASIC:4</property>
+        </properties>
+      </channel>
       <channel id="sensor_temperature5" typeId="sensor_temperature">
-        <label>Sensor (temperature 3)</label>
+        <label>Temperature 3</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:5;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="sensor_temperature6" typeId="sensor_temperature">
-        <label>Sensor (temperature 4)</label>
+        <label>Temperature 4</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:6;type=TEMPERATURE</property>
         </properties>

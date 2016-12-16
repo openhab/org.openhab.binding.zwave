@@ -91,12 +91,6 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_ALARM:1;event1=SMOKE:1,event2=ACCESS_CONTROL:22,event3=BURGLAR:1,event4=EMERGENCY:1,event5=EMERGENCY:2,event6=EMERGENCY:3</property>
         </properties>
       </channel>
-      <channel id="notification_send1" typeId="notification_send">
-        <label>Send notification</label>
-        <properties>
-          <property name="binding:*:DecimalType">ALARM:1;event1=SMOKE:1,event2=ACCESS_CONTROL:22,event3=BURGLAR:1,event4=EMERGENCY:1,event5=EMERGENCY:2,event6=EMERGENCY:3</property>
-        </properties>
-      </channel>
       <channel id="switch_dimmer2" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
