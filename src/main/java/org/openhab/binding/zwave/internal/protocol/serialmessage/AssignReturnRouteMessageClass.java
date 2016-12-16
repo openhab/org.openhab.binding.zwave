@@ -48,13 +48,12 @@ public class AssignReturnRouteMessageClass extends ZWaveCommandProcessor {
 
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
             logger.debug("NODE {}: AssignReturnRoute command in progress.", nodeId);
-            // lastSentMessage.setAckRecieved();
         } else {
             logger.error("NODE {}: AssignReturnRoute command failed.", nodeId);
             zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.AssignReturnRoute, nodeId,
                     ZWaveNetworkEvent.State.Failure));
+            transaction.setTransactionCanceled();
         }
-
         return true;
     }
 
@@ -77,6 +76,7 @@ public class AssignReturnRouteMessageClass extends ZWaveCommandProcessor {
                     ZWaveNetworkEvent.State.Success));
         }
 
+        transaction.setTransactionComplete();
         return true;
     }
 }

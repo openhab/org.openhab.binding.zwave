@@ -47,6 +47,7 @@ public class DeleteReturnRouteMessageClass extends ZWaveCommandProcessor {
             logger.error("NODE {}: DeleteReturnRoute command failed.", nodeId);
             zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.DeleteReturnRoute, nodeId,
                     ZWaveNetworkEvent.State.Failure));
+            transaction.setTransactionCanceled();
         }
 
         return true;
@@ -67,6 +68,7 @@ public class DeleteReturnRouteMessageClass extends ZWaveCommandProcessor {
                     ZWaveNetworkEvent.State.Success));
         }
 
+        transaction.setTransactionComplete();
         return true;
     }
 }

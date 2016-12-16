@@ -62,6 +62,7 @@ public class RemoveNodeMessageClass extends ZWaveCommandProcessor {
             case REMOVE_NODE_STATUS_LEARN_READY:
                 logger.debug("Remove Node: Learn ready.");
                 zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.ExcludeStart));
+                transaction.setTransactionComplete();
                 break;
             case REMOVE_NODE_STATUS_NODE_FOUND:
                 logger.debug("Remove Node: Node found for removal.");

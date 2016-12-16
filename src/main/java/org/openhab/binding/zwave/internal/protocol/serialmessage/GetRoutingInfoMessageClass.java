@@ -82,6 +82,7 @@ public class GetRoutingInfoMessageClass extends ZWaveCommandProcessor {
         zController.notifyEventListeners(
                 new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.NodeRoutingInfo, nodeId, ZWaveNetworkEvent.State.Success));
 
+        transaction.setTransactionComplete();
         return true;
     }
 }

@@ -82,6 +82,7 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
                 case ADD_NODE_STATUS_LEARN_READY:
                     logger.debug("Add Node: Learn ready.");
                     zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.IncludeStart));
+                    transaction.setTransactionComplete();
                     break;
 
                 case ADD_NODE_STATUS_NODE_FOUND:
@@ -150,6 +151,7 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
                 case ADD_NODE_STATUS_FAILED:
                     logger.debug("Add Node: Failed.");
                     zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.IncludeFail));
+                    transaction.setTransactionCanceled();
                     break;
 
                 default:

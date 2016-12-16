@@ -73,6 +73,7 @@ public class SetSucNodeMessageClass extends ZWaveCommandProcessor {
         int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: SetSucNodeID node request.", nodeId);
+        transaction.setTransactionComplete();
         if (incomingMessage.getMessagePayloadByte(1) != 0x00) {
             logger.error("NODE {}: SetSucNodeID command failed.", nodeId);
             return false;

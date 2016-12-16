@@ -47,6 +47,8 @@ public class RequestNodeNeighborUpdateMessageClass extends ZWaveCommandProcessor
             return false;
         }
 
+        transaction.transactionAdvance(incomingMessage);
+
         int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: Got NodeNeighborUpdate request.", nodeId);
@@ -60,12 +62,14 @@ public class RequestNodeNeighborUpdateMessageClass extends ZWaveCommandProcessor
 
                 zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.NodeNeighborUpdate,
                         nodeId, ZWaveNetworkEvent.State.Success));
+                transaction.setTransactionComplete();
                 break;
             case REQUEST_NEIGHBOR_UPDATE_FAILED:
                 logger.error("NODE {}: NodeNeighborUpdate FAILED", nodeId);
 
                 zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.NodeNeighborUpdate,
                         nodeId, ZWaveNetworkEvent.State.Failure));
+                transaction.setTransactionComplete();
                 break;
         }
         return true;

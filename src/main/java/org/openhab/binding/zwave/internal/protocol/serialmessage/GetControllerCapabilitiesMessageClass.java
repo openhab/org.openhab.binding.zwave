@@ -66,6 +66,7 @@ public class GetControllerCapabilitiesMessageClass extends ZWaveCommandProcessor
         logger.debug("Controller is real primary = {}", isRealPrimary);
         logger.debug("Controller is SUC = {}", isSUC);
 
+        transaction.setTransactionComplete();
         return true;
     }
 

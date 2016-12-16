@@ -43,6 +43,7 @@ public class GetVersionMessageClass extends ZWaveCommandProcessor {
         logger.debug(String.format("Got MessageGetVersion response. Version = %s, Library Type = 0x%02X", zWaveVersion,
                 ZWaveLibraryType));
 
+        transaction.setTransactionComplete();
         return true;
     }
 

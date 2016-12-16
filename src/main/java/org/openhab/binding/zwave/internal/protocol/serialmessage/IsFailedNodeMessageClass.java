@@ -55,6 +55,7 @@ public class IsFailedNodeMessageClass extends ZWaveCommandProcessor {
             logger.debug("NODE {}: Is currently marked as healthy by the controller", nodeId);
         }
 
+        transaction.setTransactionComplete();
         return true;
     }
 }

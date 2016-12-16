@@ -90,14 +90,14 @@ public class ZWaveController {
 
     private int zWaveResponseTimeout = ZWAVE_RESPONSE_TIMEOUT; // TODO: Not currently used
 
-    private String zWaveVersion = "Unknown";
+    private String zwaveVersion = "Unknown";
     private String serialAPIVersion = "Unknown";
     private int homeId = 0;
     private int ownNodeId = 0;
     private int manufactureId = 0;
     private int deviceType = 0;
     private int deviceId = 0;
-    private int ZWaveLibraryType = 0;
+    private int zwaveLibraryType = 0;
     private int sentDataPointer = 1;
     private boolean setSUC = false;
     private ZWaveDeviceType controllerType = ZWaveDeviceType.UNKNOWN;
@@ -269,8 +269,8 @@ public class ZWaveController {
 
         switch (incomingMessage.getMessageClass()) {
             case GetVersion:
-                zWaveVersion = ((GetVersionMessageClass) processor).getVersion();
-                ZWaveLibraryType = ((GetVersionMessageClass) processor).getLibraryType();
+                zwaveVersion = ((GetVersionMessageClass) processor).getVersion();
+                zwaveLibraryType = ((GetVersionMessageClass) processor).getLibraryType();
                 break;
             case MemoryGetId:
                 ownNodeId = ((MemoryGetIdMessageClass) processor).getNodeId();
@@ -1050,7 +1050,7 @@ public class ZWaveController {
      * @return the zWaveVersion
      */
     public String getZWaveVersion() {
-        return zWaveVersion;
+        return zwaveVersion;
     }
 
     /**

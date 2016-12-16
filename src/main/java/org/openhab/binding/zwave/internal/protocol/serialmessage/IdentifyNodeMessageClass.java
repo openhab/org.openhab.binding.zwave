@@ -144,6 +144,7 @@ public class IdentifyNodeMessageClass extends ZWaveCommandProcessor {
 
         // checkTransactionComplete(transaction, incomingMessage);
 
+        transaction.setTransactionComplete();
         return true;
     }
 }

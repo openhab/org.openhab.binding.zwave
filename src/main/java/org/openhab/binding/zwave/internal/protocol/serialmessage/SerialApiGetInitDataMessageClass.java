@@ -74,6 +74,7 @@ public class SerialApiGetInitDataMessageClass extends ZWaveCommandProcessor {
         logger.info(String.format("# Nodes = %d", zwaveNodes.size()));
         logger.info("----------------------------------------------------------------------------");
 
+        transaction.setTransactionComplete();
         return true;
     }
 

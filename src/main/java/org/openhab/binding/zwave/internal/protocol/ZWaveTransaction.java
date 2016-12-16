@@ -248,6 +248,10 @@ public class ZWaveTransaction {
         transactionStateTracker = TransactionState.ABORTED;
     }
 
+    public void setTransactionComplete() {
+        transactionStateTracker = TransactionState.DONE;
+    }
+
     public void setAttemptsRemaining(int attemptsRemaining) {
         this.attemptsRemaining = attemptsRemaining;
     }
@@ -296,7 +300,7 @@ public class ZWaveTransaction {
                     break;
                 }
 
-                // TODO: Ultimately, getExpectedReply should return null if we're not waiting for data
+                // getExpectedReply returns null if we're not waiting for data
                 if (payload.getExpectedResponseSerialMessageClass() != null
                         && payload.getExpectedResponseSerialMessageClass() != incomingMessage.getMessageClass()) {
                     transactionStateTracker = TransactionState.WAIT_DATA;
@@ -318,9 +322,8 @@ public class ZWaveTransaction {
                 }
 
                 // We've received our request - advance
-                // TODO: Ultimately, getExpectedReply should return null if we're not waiting for data
-                if (payload.getExpectedResponseSerialMessageClass() != null) { // && expectedReplyClass !=
-                                                                               // incomingMessage.getMessageClass()) {
+                // getExpectedReply returns null if we're not waiting for data
+                if (payload.getExpectedResponseSerialMessageClass() != null) {
                     transactionStateTracker = TransactionState.WAIT_DATA;
                     break;
                 }
@@ -354,6 +357,9 @@ public class ZWaveTransaction {
                 // Transaction has been aborted - just return this to the application
                 break;
 
+            case DONE:
+                break;
+
             default:
                 logger.error("Unhandled transaction state {}", transactionStateTracker);
                 break;
@@ -368,7 +374,7 @@ public class ZWaveTransaction {
 
     @Override
     public String toString() {
-        return transactionStateTracker + ": callback: "
+        return "TID:" + transactionId + " [" + transactionStateTracker + "] callback: "
                 + (serialMessage == null ? "--" : serialMessage.getCallbackId());
     }
 
