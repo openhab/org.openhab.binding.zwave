@@ -1266,7 +1266,7 @@ public class ZWaveNode {
                     .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP);
             if (wakeUpCommandClass == null) {
                 logger.debug("NODE {}: COMMAND_CLASS_WAKE_UP not found", getNodeId());
-                setAwake(true);
+                awake = true;
             }
 
             logger.debug("NODE {}: Creating WakeupTimerTask", getNodeId());
