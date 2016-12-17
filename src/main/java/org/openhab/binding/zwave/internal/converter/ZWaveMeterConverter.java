@@ -19,7 +19,6 @@ import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
@@ -28,6 +27,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterComman
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterCommandClass.ZWaveMeterValueEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSensorCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,16 +55,16 @@ public class ZWaveMeterConverter extends ZWaveCommandClassConverter {
      * {@inheritDoc}
      */
     @Override
-    public List<SerialMessage> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
+    public List<ZWaveCommandClassTransactionPayload> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveMeterCommandClass commandClass = (ZWaveMeterCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.METER, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_METER, channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
 
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
-                commandClass.getCommandClass().getLabel(), channel.getEndpoint());
-        SerialMessage serialMessage;
+                commandClass.getCommandClass(), channel.getEndpoint());
+        ZWaveCommandClassTransactionPayload serialMessage;
 
         // Don't refresh channels that are the reset button
         if (channel.getDataType() == DataType.OnOffType) {
@@ -73,7 +73,7 @@ public class ZWaveMeterConverter extends ZWaveCommandClassConverter {
 
         String meterScale = channel.getArguments().get("type");
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
-                commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                commandClass.getCommandClass(), channel.getEndpoint());
 
         if (meterScale != null) {
             serialMessage = node.encapsulate(commandClass.getMessage(MeterScale.getMeterScale(meterScale)),
@@ -82,7 +82,7 @@ public class ZWaveMeterConverter extends ZWaveCommandClassConverter {
             serialMessage = node.encapsulate(commandClass.getValueMessage(), commandClass, channel.getEndpoint());
         }
 
-        List<SerialMessage> response = new ArrayList<SerialMessage>(1);
+        List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>(1);
         response.add(serialMessage);
         return response;
     }
@@ -125,7 +125,8 @@ public class ZWaveMeterConverter extends ZWaveCommandClassConverter {
      * {@inheritDoc}
      */
     @Override
-    public List<SerialMessage> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
+    public List<ZWaveCommandClassTransactionPayload> receiveCommand(ZWaveThingChannel channel, ZWaveNode node,
+            Command command) {
         // Is this channel a reset button - if not, just return
         if (channel.getDataType() != DataType.OnOffType) {
             return null;
@@ -137,22 +138,22 @@ public class ZWaveMeterConverter extends ZWaveCommandClassConverter {
         }
 
         ZWaveMeterCommandClass commandClass = (ZWaveMeterCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.METER, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_METER, channel.getEndpoint());
 
         // Get the reset message - will return null if not supported
-        SerialMessage serialMessage = node.encapsulate(commandClass.getResetMessage(), commandClass,
+        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(commandClass.getResetMessage(), commandClass,
                 channel.getEndpoint());
 
-        if (serialMessage == null) {
+        if (transaction == null) {
             return null;
         }
 
         // Queue reset message
-        List<SerialMessage> messages = new ArrayList<SerialMessage>();
-        messages.add(serialMessage);
+        List<ZWaveCommandClassTransactionPayload> messages = new ArrayList<ZWaveCommandClassTransactionPayload>();
+        messages.add(transaction);
 
         // And poll the device
-        for (SerialMessage serialGetMessage : commandClass.getDynamicValues(true)) {
+        for (ZWaveCommandClassTransactionPayload serialGetMessage : commandClass.getDynamicValues(true)) {
             messages.add(node.encapsulate(serialGetMessage, commandClass, channel.getEndpoint()));
         }
         return messages;

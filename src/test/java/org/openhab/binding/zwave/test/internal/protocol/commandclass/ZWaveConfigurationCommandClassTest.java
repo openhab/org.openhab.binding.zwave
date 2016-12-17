@@ -13,10 +13,10 @@ import static org.junit.Assert.*;
 import java.util.Arrays;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveConfigurationParameter;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurationCommandClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveConfigurationCommandClass}.
@@ -28,19 +28,19 @@ public class ZWaveConfigurationCommandClassTest extends ZWaveCommandClassTest {
     @Test
     public void getValueMessage() {
         ZWaveConfigurationCommandClass cls = (ZWaveConfigurationCommandClass) getCommandClass(
-                CommandClass.CONFIGURATION);
-        SerialMessage msg;
+                CommandClass.COMMAND_CLASS_CONFIGURATION);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 112, 5, 12, 0, 0, -1 };
+        byte[] expectedResponseV1 = { 112, 5, 12 };
         cls.setVersion(1);
         msg = cls.getConfigMessage(12);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getValueMessage_WriteOnly() {
         ZWaveConfigurationCommandClass cls = (ZWaveConfigurationCommandClass) getCommandClass(
-                CommandClass.CONFIGURATION);
+                CommandClass.COMMAND_CLASS_CONFIGURATION);
         cls.setVersion(1);
 
         // Make sure we can't read
@@ -55,7 +55,7 @@ public class ZWaveConfigurationCommandClassTest extends ZWaveCommandClassTest {
     @Test
     public void getValueMessage_ReadOnly() {
         ZWaveConfigurationCommandClass cls = (ZWaveConfigurationCommandClass) getCommandClass(
-                CommandClass.CONFIGURATION);
+                CommandClass.COMMAND_CLASS_CONFIGURATION);
         cls.setVersion(1);
 
         // Make sure we can read
@@ -70,14 +70,14 @@ public class ZWaveConfigurationCommandClassTest extends ZWaveCommandClassTest {
     @Test
     public void setValueMessage() {
         ZWaveConfigurationCommandClass cls = (ZWaveConfigurationCommandClass) getCommandClass(
-                CommandClass.CONFIGURATION);
-        SerialMessage msg;
+                CommandClass.COMMAND_CLASS_CONFIGURATION);
+        ZWaveCommandClassTransactionPayload msg;
 
         ZWaveConfigurationParameter parameter = new ZWaveConfigurationParameter(12, 34, 4);
 
-        byte[] expectedResponseV1 = { 1, 15, 0, 19, 99, 8, 112, 4, 12, 4, 0, 0, 0, 34, 0, 0, -42 };
+        byte[] expectedResponseV1 = { 112, 4, 12, 4, 0, 0, 0, 34 };
         cls.setVersion(1);
         msg = cls.setConfigMessage(parameter);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 }

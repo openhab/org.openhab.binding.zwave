@@ -10,11 +10,12 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceType;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,14 +39,15 @@ public class GetControllerCapabilitiesMessageClass extends ZWaveCommandProcessor
     private boolean isRealPrimary = false;
     private boolean isSUC = false;
 
-    public SerialMessage doRequest() {
+    public ZWaveSerialPayload doRequest() {
         logger.debug("Creating GET_CONTROLLER_CAPABILITIES message");
-        return new SerialMessage(SerialMessageClass.GetControllerCapabilities, SerialMessageType.Request,
-                SerialMessageClass.GetControllerCapabilities, SerialMessagePriority.High);
+
+        // Create the request
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.GetControllerCapabilities).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.trace("Handle Message Get Controller Capabilities - Length {}",
                 incomingMessage.getMessagePayload().length);
@@ -63,8 +65,6 @@ public class GetControllerCapabilitiesMessageClass extends ZWaveCommandProcessor
         logger.debug("Node ID Server is present = {}", isServerPresent);
         logger.debug("Controller is real primary = {}", isRealPrimary);
         logger.debug("Controller is SUC = {}", isSUC);
-
-        checkTransactionComplete(lastSentMessage, incomingMessage);
 
         return true;
     }

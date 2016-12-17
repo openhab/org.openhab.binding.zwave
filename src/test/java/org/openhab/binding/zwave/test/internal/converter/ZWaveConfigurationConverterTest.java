@@ -24,16 +24,16 @@ import org.mockito.Mockito;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.converter.ZWaveConfigurationConverter;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveConfigurationParameter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  *
@@ -46,7 +46,8 @@ public class ZWaveConfigurationConverterTest extends ZWaveCommandClassConverterT
     private ZWaveThingChannel createChannel(String parameter) {
         Map<String, String> args = new HashMap<String, String>();
         args.put("parameter", parameter);
-        return new ZWaveThingChannel(null, uid, DataType.DecimalType, CommandClass.CONFIGURATION.toString(), 0, args);
+        return new ZWaveThingChannel(null, uid, DataType.DecimalType,
+                CommandClass.COMMAND_CLASS_CONFIGURATION.toString(), 0, args);
     }
 
     private ZWaveCommandClassValueEvent createEvent(int nodeId, int id, int value, int size) {
@@ -74,47 +75,45 @@ public class ZWaveConfigurationConverterTest extends ZWaveCommandClassConverterT
 
     @Test
     public void executeRefresh() {
-        byte[] expectedResponse = { 1, 10, 0, 19, 0, 3, 112, 5, 2, 0, 0, -110 };
+        byte[] expectedResponse = { 112, 5, 2 };
 
         ZWaveConfigurationConverter converter = new ZWaveConfigurationConverter(null);
         ZWaveThingChannel channel = createChannel("2");
         ZWaveNode node = CreateMockedNode(1, null);
 
-        List<SerialMessage> msgs = converter.executeRefresh(channel, node);
+        List<ZWaveCommandClassTransactionPayload> msgs = converter.executeRefresh(channel, node);
 
         assertEquals(1, msgs.size());
-        msgs.get(0).setCallbackId(0);
-        assertTrue(Arrays.equals(msgs.get(0).getMessageBuffer(), expectedResponse));
+        ZWaveCommandClassTransactionPayload msg = msgs.get(0);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse));
     }
 
     @Test
     public void receiveCommand_Decimal() {
-        byte[] expectedResponse0 = { 1, 15, 0, 19, 0, 8, 112, 4, 2, 4, 0, 0, 0, 44, 0, 0, -75 };
-        byte[] expectedResponse1 = { 1, 10, 0, 19, 0, 3, 112, 5, 2, 0, 0, -110 };
+        byte[] expectedResponse0 = { 112, 4, 2, 4, 0, 0, 0, 44 };
+        byte[] expectedResponse1 = { 112, 5, 2 };
 
         ZWaveConfigurationConverter converter = new ZWaveConfigurationConverter(null);
         ZWaveThingChannel channel = createChannel("2");
         ZWaveNode node = CreateMockedNode(1, null);
 
         ZWaveConfigurationCommandClass configCommandClass = (ZWaveConfigurationCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.CONFIGURATION, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_CONFIGURATION, channel.getEndpoint());
 
-        SerialMessage report = new SerialMessage();
-        report.setMessagePayload(new byte[] { 6, 2, 4, 0, 0, 0, 0 });
-        try {
-            configCommandClass.handleApplicationCommandRequest(report, 0, 0);
-        } catch (ZWaveSerialMessageException e) {
-            e.printStackTrace();
-        }
+        // This report is required to add the parameter to the command class
+        // Without it the converter will fail
+        ZWaveCommandClassPayload payload = new ZWaveCommandClassPayload(
+                new byte[] { (byte) CommandClass.COMMAND_CLASS_CONFIGURATION.getKey(), 6, 2, 4, 0, 0, 0, 0 });
+        configCommandClass.handleConfigurationReport(payload, 0);
 
         DecimalType command = new DecimalType(44);
 
-        List<SerialMessage> msgs = converter.receiveCommand(channel, node, command);
+        List<ZWaveCommandClassTransactionPayload> msgs = converter.receiveCommand(channel, node, command);
 
         assertEquals(2, msgs.size());
-        msgs.get(0).setCallbackId(0);
-        assertTrue(Arrays.equals(msgs.get(0).getMessageBuffer(), expectedResponse0));
-        msgs.get(1).setCallbackId(0);
-        assertTrue(Arrays.equals(msgs.get(1).getMessageBuffer(), expectedResponse1));
+        ZWaveCommandClassTransactionPayload msg = msgs.get(0);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse0));
+        msg = msgs.get(1);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse1));
     }
 }

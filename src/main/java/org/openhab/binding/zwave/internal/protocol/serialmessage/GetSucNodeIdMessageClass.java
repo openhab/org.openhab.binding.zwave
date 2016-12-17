@@ -10,10 +10,11 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,18 +28,15 @@ public class GetSucNodeIdMessageClass extends ZWaveCommandProcessor {
 
     int sucNode = 0;
 
-    public SerialMessage doRequest() {
+    public ZWaveSerialPayload doRequest() {
         logger.debug("Get SUC NodeID");
 
-        // Queue the request
-        SerialMessage newMessage = new SerialMessage(SerialMessageClass.GetSucNodeId, SerialMessageType.Request,
-                SerialMessageClass.GetSucNodeId, SerialMessagePriority.High);
-
-        return newMessage;
+        // Create the request
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.GetSucNodeId).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.debug("Got SUC NodeID response.");
 
@@ -49,7 +47,6 @@ public class GetSucNodeIdMessageClass extends ZWaveCommandProcessor {
             logger.debug("No SUC Node is set");
         }
 
-        checkTransactionComplete(lastSentMessage, incomingMessage);
         return true;
     }
 

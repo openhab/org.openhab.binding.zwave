@@ -41,7 +41,7 @@ public class ZWaveTimeParametersCommandClassTest extends ZWaveCommandClassTest {
 
         ZWaveCommandClassValueEvent event = (ZWaveCommandClassValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.TIME_PARAMETERS);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_TIME_PARAMETERS);
         assertEquals(event.getEndpoint(), 0);
         Date date = (Date) event.getValue();
         assertNotNull(date);
@@ -52,14 +52,14 @@ public class ZWaveTimeParametersCommandClassTest extends ZWaveCommandClassTest {
     @Test
     public void setTime() {
         ZWaveTimeParametersCommandClass cls = (ZWaveTimeParametersCommandClass) getCommandClass(
-                CommandClass.TIME_PARAMETERS);
+                CommandClass.COMMAND_CLASS_TIME_PARAMETERS);
 
         byte[] expectedResponse = { 99, 9, -117, 1, 7, -78, 1, 1, 0, 0, 0 };
 
         Calendar utc = Calendar.getInstance();
         utc.setTimeZone(TimeZone.getTimeZone("UTC"));
         utc.setTime(new Date(0));
-        SerialMessage msg = cls.getSetMessage(utc);
+        SerialMessage msg = cls.getSetMessage(utc).getSerialMessage();
 
         assertTrue(Arrays.equals(msg.getMessagePayload(), expectedResponse));
     }

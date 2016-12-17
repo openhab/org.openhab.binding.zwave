@@ -26,14 +26,14 @@ public class ZWaveMultiCommandCommandClassTest extends ZWaveCommandClassTest {
         List<ZWaveEvent> events = processCommandClassMessage(packetData);
         assertEquals(events.size(), 2);
         ZWaveCommandClassValueEvent event1 = (ZWaveCommandClassValueEvent) events.get(0);
-        assertEquals(event1.getCommandClass(), CommandClass.CONFIGURATION);
+        assertEquals(event1.getCommandClass(), CommandClass.COMMAND_CLASS_CONFIGURATION);
         assertEquals(event1.getEndpoint(), 0);
         ZWaveConfigurationParameter parameter1 = (ZWaveConfigurationParameter) event1.getValue();
         assertEquals(1, (int) parameter1.getIndex());
         assertEquals(1, (int) parameter1.getSize());
         assertEquals(1, (int) parameter1.getValue());
         ZWaveCommandClassValueEvent event2 = (ZWaveCommandClassValueEvent) events.get(1);
-        assertEquals(event2.getCommandClass(), CommandClass.CONFIGURATION);
+        assertEquals(event2.getCommandClass(), CommandClass.COMMAND_CLASS_CONFIGURATION);
         assertEquals(event2.getEndpoint(), 0);
         ZWaveConfigurationParameter parameter2 = (ZWaveConfigurationParameter) event2.getValue();
         assertEquals(2, (int) parameter2.getIndex());

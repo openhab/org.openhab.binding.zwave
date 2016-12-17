@@ -34,22 +34,22 @@ public class ZWaveBasicConverterTest extends ZWaveCommandClassConverterTest {
     public void Event_Percent() {
         ZWaveBasicConverter converter = new ZWaveBasicConverter(null);
         ZWaveThingChannel channel = new ZWaveThingChannel(null, uid, DataType.PercentType,
-                CommandClass.BASIC.toString(), 0, new HashMap<String, String>());
+                CommandClass.COMMAND_CLASS_BASIC.toString(), 0, new HashMap<String, String>());
 
         State state;
         ZWaveCommandClassValueEvent event;
 
-        event = new ZWaveCommandClassValueEvent(1, 0, CommandClass.BASIC, 100);
+        event = new ZWaveCommandClassValueEvent(1, 0, CommandClass.COMMAND_CLASS_BASIC, 100);
         state = converter.handleEvent(channel, event);
         assertEquals(state.getClass(), PercentType.class);
         assertEquals(state, new PercentType(100));
 
-        event = new ZWaveCommandClassValueEvent(1, 0, CommandClass.BASIC, 255);
+        event = new ZWaveCommandClassValueEvent(1, 0, CommandClass.COMMAND_CLASS_BASIC, 255);
         state = converter.handleEvent(channel, event);
         assertEquals(state.getClass(), PercentType.class);
         assertEquals(state, new PercentType(100));
 
-        event = new ZWaveCommandClassValueEvent(1, 0, CommandClass.BASIC, 101);
+        event = new ZWaveCommandClassValueEvent(1, 0, CommandClass.COMMAND_CLASS_BASIC, 101);
         state = converter.handleEvent(channel, event);
         assertNull(state);
     }

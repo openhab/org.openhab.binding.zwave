@@ -41,7 +41,6 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEventListener;
 import org.openhab.binding.zwave.internal.protocol.ZWaveIoHandler;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInitializationStateEvent;
@@ -49,6 +48,7 @@ import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkStateEvent;
 import org.openhab.binding.zwave.internal.protocol.initialization.ZWaveNodeInitStage;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RemoveFailedNodeMessageClass.Report;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.osgi.framework.ServiceRegistration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -169,28 +169,9 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         config.put("networkKey", networkKey);
         config.put("wakeupDefaultPeriod", wakeupDefaultPeriod.toString());
 
-        // MAJOR BODGE
-        // The security class uses a static member to set the key so for now
-        // lets do the same, but it needs to be moved into the network initialisation
-        // so different networks can have different keys
-        if (networkKey.length() > 0) {
-            ZWaveSecurityCommandClass.setRealNetworkKey(networkKey);
-        }
-
         // TODO: Handle soft reset better!
         controller = new ZWaveController(this, config);
         controller.addEventListener(this);
-
-        // if (aliveCheckPeriod != null) {
-        // networkMonitor.setPollPeriod(aliveCheckPeriod);
-        // }
-        // if (softReset != false) {
-        // this.networkMonitor.resetOnError(softReset);
-        // }
-
-        // The config service needs to know the controller and the network monitor...
-        // this.zConfigurationService = new ZWaveConfiguration(this.zController, this.networkMonitor);
-        // zController.addEventListener(this.zConfigurationService);
 
         // Start the discovery service
         discoveryService = new ZWaveDiscoveryService(this, searchTime);
@@ -296,7 +277,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                         builder.append(hexString.substring(j));
                         value = builder.toString();
 
-                        ZWaveSecurityCommandClass.setRealNetworkKey((String) value);
+                        // ZWaveSecurityCommandClass.setNetworkKey((String) value);
                     }
                 }
             }
@@ -519,11 +500,22 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                     break;
                 case IncludeDone:
                     // Ignore node 0 - this just indicates inclusion is finished
-                    if (incEvent.getNodeId() != 0) {
-                        discoveryService.deviceDiscovered(event.getNodeId());
+                    if (incEvent.getNodeId() == 0) {
+                        break;
                     }
+                    discoveryService.deviceDiscovered(event.getNodeId());
                     eventKey = ZWaveBindingConstants.EVENT_INCLUSION_COMPLETED;
                     eventState = BindingEventType.SUCCESS;
+                    break;
+                case SecureIncludeComplete:
+                    eventKey = ZWaveBindingConstants.EVENT_INCLUSION_SECURECOMPLETED;
+                    eventState = BindingEventType.SUCCESS;
+                    eventArgs = new Integer(incEvent.getNodeId());
+                    break;
+                case SecureIncludeFailed:
+                    eventKey = ZWaveBindingConstants.EVENT_INCLUSION_SECUREFAILED;
+                    eventState = BindingEventType.ERROR;
+                    eventArgs = new Integer(incEvent.getNodeId());
                     break;
                 case ExcludeStart:
                     eventKey = ZWaveBindingConstants.EVENT_EXCLUSION_STARTED;
@@ -539,6 +531,15 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                     break;
                 case ExcludeControllerFound:
                 case ExcludeSlaveFound:
+                    // Ignore node 0 - this just indicates exclusion finished
+                    if (incEvent.getNodeId() == 0) {
+                        break;
+                    }
+
+                    eventKey = ZWaveBindingConstants.EVENT_EXCLUSION_NODEREMOVED;
+                    eventState = BindingEventType.SUCCESS;
+                    eventArgs = new Integer(incEvent.getNodeId());
+                    break;
                 case IncludeControllerFound:
                 case IncludeSlaveFound:
                     break;
@@ -626,11 +627,11 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         return controller.getNodes();
     }
 
-    public void sendData(SerialMessage message) {
+    public void sendData(ZWaveCommandClassTransactionPayload zWaveCommandClassTransactionPayload) {
         if (controller == null) {
             return;
         }
-        controller.sendData(message);
+        controller.sendData(zWaveCommandClassTransactionPayload);
     }
 
     public boolean addEventListener(ZWaveThingHandler zWaveThingHandler) {

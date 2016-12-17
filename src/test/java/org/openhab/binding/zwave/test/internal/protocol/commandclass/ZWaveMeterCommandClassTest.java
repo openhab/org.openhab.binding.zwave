@@ -17,12 +17,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterCommandClass.MeterScale;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterCommandClass.ZWaveMeterValueEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveMeterCommandClass}.
@@ -42,7 +42,7 @@ public class ZWaveMeterCommandClassTest extends ZWaveCommandClassTest {
 
         ZWaveMeterValueEvent event = (ZWaveMeterValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.METER);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_METER);
         // assertEquals(event.getNodeId(), 44);
         assertEquals(event.getEndpoint(), 0);
         assertEquals(event.getMeterScale(), ZWaveMeterCommandClass.MeterScale.E_W);
@@ -61,7 +61,7 @@ public class ZWaveMeterCommandClassTest extends ZWaveCommandClassTest {
 
         ZWaveMeterValueEvent event = (ZWaveMeterValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.METER);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_METER);
         // assertEquals(event.getNodeId(), 27);
         assertEquals(event.getEndpoint(), 0);
         assertEquals(event.getMeterScale(), ZWaveMeterCommandClass.MeterScale.E_W);
@@ -71,54 +71,54 @@ public class ZWaveMeterCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void setValueMessage() {
-        ZWaveMeterCommandClass cls = (ZWaveMeterCommandClass) getCommandClass(CommandClass.METER);
-        SerialMessage msg;
+        ZWaveMeterCommandClass cls = (ZWaveMeterCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_METER);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 50, 1, 0, 0, -73 };
+        byte[] expectedResponseV1 = { 50, 1 };
         cls.setVersion(1);
         msg = cls.getValueMessage();
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getResetMessage() {
-        ZWaveMeterCommandClass cls = (ZWaveMeterCommandClass) getCommandClass(CommandClass.METER);
-        SerialMessage msg;
+        ZWaveMeterCommandClass cls = (ZWaveMeterCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_METER);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 50, 5, 0, 0, -77 };
+        byte[] expectedResponseV1 = { 50, 5 };
         cls.setVersion(2);
         Map<String, String> options = new HashMap<String, String>();
         options.put("meterCanReset", "true");
         cls.setOptions(options);
         msg = cls.getResetMessage();
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getSupportedMessage() {
-        ZWaveMeterCommandClass cls = (ZWaveMeterCommandClass) getCommandClass(CommandClass.METER);
-        SerialMessage msg;
+        ZWaveMeterCommandClass cls = (ZWaveMeterCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_METER);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 50, 3, 0, 0, -75 };
+        byte[] expectedResponseV1 = { 50, 3 };
         cls.setVersion(1);
         msg = cls.getSupportedMessage();
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getMessage() {
-        ZWaveMeterCommandClass cls = (ZWaveMeterCommandClass) getCommandClass(CommandClass.METER);
-        SerialMessage msg;
+        ZWaveMeterCommandClass cls = (ZWaveMeterCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_METER);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 50, 1, 0, 0, 0, -75 };
+        byte[] expectedResponseV1 = { 50, 1, 0 };
         cls.setVersion(1);
         msg = cls.getMessage(MeterScale.E_KWh);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void setOptions() {
-        ZWaveMeterCommandClass cls = (ZWaveMeterCommandClass) getCommandClass(CommandClass.METER);
+        ZWaveMeterCommandClass cls = (ZWaveMeterCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_METER);
 
         // Not supported in V1
         assertEquals(0, cls.initialize(true).size());

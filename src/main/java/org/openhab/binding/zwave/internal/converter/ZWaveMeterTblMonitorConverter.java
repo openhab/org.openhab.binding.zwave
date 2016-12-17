@@ -16,7 +16,6 @@ import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
@@ -24,6 +23,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterTblMon
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterTblMonitorCommandClass.MeterTblMonitorScale;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterTblMonitorCommandClass.ZWaveMeterTblMonitorValueEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,19 +50,18 @@ public class ZWaveMeterTblMonitorConverter extends ZWaveCommandClassConverter {
      * {@inheritDoc}
      */
     @Override
-    public List<SerialMessage> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
-        ZWaveMeterTblMonitorCommandClass commandClass = (ZWaveMeterTblMonitorCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.METER_TBL_MONITOR, channel.getEndpoint());
+    public List<ZWaveCommandClassTransactionPayload> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
+        ZWaveMeterTblMonitorCommandClass commandClass = (ZWaveMeterTblMonitorCommandClass) node.resolveCommandClass(
+                ZWaveCommandClass.CommandClass.COMMAND_CLASS_METER_TBL_MONITOR, channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
 
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
-                commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                commandClass.getCommandClass(), channel.getEndpoint());
 
-        List<SerialMessage> response = new ArrayList<SerialMessage>();
-
-        for (SerialMessage msg : commandClass.getDynamicValues(true)) {
+        List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>();
+        for (ZWaveCommandClassTransactionPayload msg : commandClass.getDynamicValues(true)) {
             response.add(node.encapsulate(msg, commandClass, channel.getEndpoint()));
         }
         return response;

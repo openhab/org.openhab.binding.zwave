@@ -20,11 +20,13 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationGroupInfoCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveAssociationGroupInfoCommandClass}.
@@ -54,12 +56,13 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
         ZWaveNode node = mock(ZWaveNode.class);
         when(node.getAssociationGroup(1)).thenReturn(group);
 
-        ZWaveCommandClass reset = ZWaveCommandClass.getInstance(CommandClass.DEVICE_RESET_LOCALLY.getKey(), node, null);
-        when(node.getCommandClass(Matchers.eq(CommandClass.DEVICE_RESET_LOCALLY))).thenReturn(reset);
+        ZWaveCommandClass reset = ZWaveCommandClass
+                .getInstance(CommandClass.COMMAND_CLASS_DEVICE_RESET_LOCALLY.getKey(), node, null);
+        when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_DEVICE_RESET_LOCALLY))).thenReturn(reset);
 
         // Our test subject
         ZWaveAssociationGroupInfoCommandClass cls = (ZWaveAssociationGroupInfoCommandClass) ZWaveCommandClass
-                .getInstance(CommandClass.ASSOCIATION_GROUP_INFO.getKey(), node, null);
+                .getInstance(CommandClass.COMMAND_CLASS_ASSOCIATION_GRP_INFO.getKey(), node, null);
 
         // Let our CC process the messages
         processCommandClassMessages(cls, Arrays.asList(new SerialMessage(groupName), new SerialMessage(groupProfile),
@@ -69,7 +72,8 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
         assertEquals("Lifeline", group.getName());
         assertEquals(Integer.valueOf(1), group.getProfile());
         assertEquals(false, group.getCommandClasses().isEmpty());
-        assertEquals(false, group.getCommandClasses().contains(CommandClass.DEVICE_RESET_LOCALLY.getKey()));
+        assertEquals(false,
+                group.getCommandClasses().contains(CommandClass.COMMAND_CLASS_DEVICE_RESET_LOCALLY.getKey()));
         assertEquals(true, cls.getAutoSubscribeGroups().contains(1));
     }
 
@@ -87,7 +91,7 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
                 // ensure our message is for the correct command class
                 assertEquals(cls.getCommandClass().getKey(), msg.getMessagePayloadByte(3));
 
-                cls.handleApplicationCommandRequest(msg, 4, 0);
+                cls.handleApplicationCommandRequest(new ZWaveCommandClassPayload(msg), 0);
             } catch (ZWaveSerialMessageException e) {
                 fail("Out of bounds exception processing data");
             }
@@ -97,36 +101,49 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
     @Test
     public void getGroupNameMessage() {
         ZWaveAssociationGroupInfoCommandClass cls = (ZWaveAssociationGroupInfoCommandClass) getCommandClass(
-                CommandClass.ASSOCIATION_GROUP_INFO);
-        SerialMessage msg;
+                CommandClass.COMMAND_CLASS_ASSOCIATION_GRP_INFO);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 89, 1, 1, 0, 0, -33 };
+        byte[] expectedResponseV1 = { 89, 1, 1 };
         cls.setVersion(1);
         msg = cls.getGroupNameMessage(1);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getCommandListMessage() {
         ZWaveAssociationGroupInfoCommandClass cls = (ZWaveAssociationGroupInfoCommandClass) getCommandClass(
-                CommandClass.ASSOCIATION_GROUP_INFO);
-        SerialMessage msg;
+                CommandClass.COMMAND_CLASS_ASSOCIATION_GRP_INFO);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, 89, 5, 0, 1, 0, 0, -35 };
+        byte[] expectedResponseV1 = { 89, 5, 0, 1 };
         cls.setVersion(1);
         msg = cls.getCommandListMessage(1);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getInfoMessage() {
         ZWaveAssociationGroupInfoCommandClass cls = (ZWaveAssociationGroupInfoCommandClass) getCommandClass(
-                CommandClass.ASSOCIATION_GROUP_INFO);
-        SerialMessage msg;
+                CommandClass.COMMAND_CLASS_ASSOCIATION_GRP_INFO);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, 89, 3, 0, 1, 0, 0, -37 };
+        byte[] expectedResponseV1 = { 89, 3, 0, 1 };
         cls.setVersion(1);
         msg = cls.getInfoMessage(1);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
+    }
+
+    @Test
+    public void handleAssociationGroupInfoListReport() {
+        byte[] packetData = { 0x01, 0x12, 0x00, 0x04, 0x00, 0x03, 0x0C, 0x59, 0x06, 0x03, 0x04, 0x26, 0x04, 0x26, 0x05,
+                0x00, 0x00, 0x00, 0x00, (byte) 0xBF };
+
+        processCommandClassMessage(packetData, 3);
+
+        ZWaveAssociationGroup group = mockedNode.getAssociationGroup(3);
+        assertNotNull(group);
+
+        assertEquals(1, group.getCommandClasses().size());
     }
 }

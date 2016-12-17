@@ -25,7 +25,6 @@ import org.mockito.Mockito;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.converter.ZWaveAlarmConverter;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -34,6 +33,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmComman
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.ReportType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  *
@@ -51,7 +51,7 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         if (event != null) {
             args.put("event", event);
         }
-        return new ZWaveThingChannel(null, uid, dataType, CommandClass.ALARM.toString(), 0, args);
+        return new ZWaveThingChannel(null, uid, dataType, CommandClass.COMMAND_CLASS_ALARM.toString(), 0, args);
     }
 
     private ZWaveCommandClassValueEvent createEvent(AlarmType type, ReportType reportType, Integer event,
@@ -145,7 +145,7 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
 
     @Test
     public void sendNotification() {
-        List<SerialMessage> msgs;
+        List<ZWaveCommandClassTransactionPayload> msgs;
         DecimalType command;
         Map<String, String> args = new HashMap<String, String>();
         args.put("event1", AlarmType.SMOKE.toString() + ":1");
@@ -154,8 +154,8 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         args.put("event4", AlarmType.EMERGENCY.toString() + ":1");
         args.put("event5", AlarmType.EMERGENCY.toString() + ":2");
         args.put("event6", AlarmType.EMERGENCY.toString() + ":3");
-        ZWaveThingChannel channel = new ZWaveThingChannel(null, uid, DataType.OnOffType, CommandClass.ALARM.toString(),
-                0, args);
+        ZWaveThingChannel channel = new ZWaveThingChannel(null, uid, DataType.OnOffType,
+                CommandClass.COMMAND_CLASS_ALARM.toString(), 0, args);
 
         ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
 
@@ -163,17 +163,15 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         ZWaveNode node = CreateMockedNode(3, options);
 
         command = new DecimalType(1);
-        byte[] expectedResponse1 = { 1, 15, 0, 19, 0, 8, 113, 5, 0, 0, 0, -1, 1, 1, 0, 0, 96 };
+        byte[] expectedResponse1 = { 113, 5, 0, 0, 0, -1, 1, 1 };
         msgs = converter.receiveCommand(channel, node, command);
         assertEquals(1, msgs.size());
-        msgs.get(0).setCallbackId(0);
-        assertTrue(Arrays.equals(msgs.get(0).getMessageBuffer(), expectedResponse1));
+        assertTrue(Arrays.equals(msgs.get(0).getPayloadBuffer(), expectedResponse1));
 
         command = new DecimalType(2);
-        byte[] expectedResponse2 = { 1, 15, 0, 19, 0, 8, 113, 5, 0, 0, 0, -1, 6, 22, 0, 0, 112 };
+        byte[] expectedResponse2 = { 113, 5, 0, 0, 0, -1, 6, 22 };
         msgs = converter.receiveCommand(channel, node, command);
         assertEquals(1, msgs.size());
-        msgs.get(0).setCallbackId(0);
-        assertTrue(Arrays.equals(msgs.get(0).getMessageBuffer(), expectedResponse2));
+        assertTrue(Arrays.equals(msgs.get(0).getPayloadBuffer(), expectedResponse2));
     }
 }

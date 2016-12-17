@@ -12,10 +12,11 @@ import java.util.ArrayList;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,13 +32,13 @@ public class SerialApiGetInitDataMessageClass extends ZWaveCommandProcessor {
 
     private static final int NODE_BYTES = 29; // 29 bytes = 232 bits, one for each supported node by Z-Wave;
 
-    public SerialMessage doRequest() {
-        return new SerialMessage(SerialMessageClass.SerialApiGetInitData, SerialMessageType.Request,
-                SerialMessageClass.SerialApiGetInitData, SerialMessagePriority.High);
+    public ZWaveSerialPayload doRequest() {
+        // Create the request
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.SerialApiGetInitData).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.debug("Got MessageSerialApiGetInitData response.");
         int nodeBytes = incomingMessage.getMessagePayloadByte(2);
@@ -72,8 +73,6 @@ public class SerialApiGetInitDataMessageClass extends ZWaveCommandProcessor {
         logger.info("------------Number of Nodes Found Registered to ZWave Controller------------");
         logger.info(String.format("# Nodes = %d", zwaveNodes.size()));
         logger.info("----------------------------------------------------------------------------");
-
-        checkTransactionComplete(lastSentMessage, incomingMessage);
 
         return true;
     }

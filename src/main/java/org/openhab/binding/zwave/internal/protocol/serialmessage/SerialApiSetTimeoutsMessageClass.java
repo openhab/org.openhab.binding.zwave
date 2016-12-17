@@ -10,10 +10,11 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,24 +26,24 @@ import org.slf4j.LoggerFactory;
 public class SerialApiSetTimeoutsMessageClass extends ZWaveCommandProcessor {
     private static final Logger logger = LoggerFactory.getLogger(SerialApiSetTimeoutsMessageClass.class);
 
-    public SerialMessage doRequest(int ackTimeout, int byteTimeout) {
-        // Queue the request
-        SerialMessage newMessage = new SerialMessage(SerialMessageClass.SerialApiSetTimeouts, SerialMessageType.Request,
-                SerialMessageClass.SerialApiSetTimeouts, SerialMessagePriority.High);
-
-        byte[] newPayload = { (byte) ackTimeout, (byte) byteTimeout };
-
-        newMessage.setMessagePayload(newPayload);
-        return newMessage;
+    /**
+     * Sets the serial API timeouts. Timeouts are in 10ms ticks.
+     *
+     * @param ackTimeout timeout from sending a frame to receiving the ACK
+     * @param byteTimeout timeout between receiving each subsequent byte
+     * @return {@line ZWaveSerialPayload} the message to send
+     */
+    public ZWaveSerialPayload doRequest(int ackTimeout, int byteTimeout) {
+        // Create the request
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.SerialApiSetTimeouts)
+                .withPayload(ackTimeout, byteTimeout).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.debug("Got SerialApiSetTimeouts response. ACK={}, BYTE={}", incomingMessage.getMessagePayloadByte(0),
                 incomingMessage.getMessagePayloadByte(1));
-
-        checkTransactionComplete(lastSentMessage, incomingMessage);
 
         return true;
     }

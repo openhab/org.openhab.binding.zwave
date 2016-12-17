@@ -26,9 +26,9 @@ public class ZWaveInclusionEvent extends ZWaveEvent {
     private Type type;
     private final Date includedAt;
     List<CommandClass> commandClasses = new ArrayList<CommandClass>();
-    Basic basic = Basic.NOT_KNOWN;
-    Generic generic = Generic.NOT_KNOWN;
-    Specific specific = Specific.NOT_USED;
+    Basic basic = Basic.BASIC_TYPE_UNKNOWN;
+    Generic generic = Generic.GENERIC_TYPE_NOT_USED;
+    Specific specific = Specific.SPECIFIC_TYPE_NOT_USED;
 
     /**
      * Constructor. Creates a new instance of the ZWaveInclusionEvent
@@ -87,6 +87,7 @@ public class ZWaveInclusionEvent extends ZWaveEvent {
         IncludeStart,
         IncludeSlaveFound,
         IncludeControllerFound,
+        IncludeProtocolDone,
         IncludeFail,
         IncludeDone,
         ExcludeStart,
@@ -94,5 +95,7 @@ public class ZWaveInclusionEvent extends ZWaveEvent {
         ExcludeControllerFound,
         ExcludeFail,
         ExcludeDone,
+        SecureIncludeComplete,
+        SecureIncludeFailed
     }
 }

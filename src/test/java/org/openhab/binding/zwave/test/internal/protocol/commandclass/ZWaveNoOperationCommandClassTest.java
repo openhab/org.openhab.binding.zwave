@@ -13,9 +13,9 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveNoOperationCommandClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveNoOperationCommandClassTest}.
@@ -26,13 +26,13 @@ public class ZWaveNoOperationCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void getNoOperationMessage() {
-        ZWaveNoOperationCommandClass cls = (ZWaveNoOperationCommandClass) getCommandClass(CommandClass.NO_OPERATION);
+        ZWaveNoOperationCommandClass cls = (ZWaveNoOperationCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_NO_OPERATION);
 
-        SerialMessage msg;
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponse1 = { 1, 8, 0, 19, 99, 1, 0, 0, 0, -122 };
+        byte[] expectedResponse1 = { 0 };
         msg = cls.getNoOperationMessage();
-        msg.setCallbackId(0);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse1));
     }
 }

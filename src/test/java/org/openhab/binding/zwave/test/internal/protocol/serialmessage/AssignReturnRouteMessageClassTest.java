@@ -8,12 +8,13 @@
  */
 package org.openhab.binding.zwave.test.internal.protocol.serialmessage;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.AssignReturnRouteMessageClass;
 
 /**
@@ -26,11 +27,11 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.AssignReturnRou
 public class AssignReturnRouteMessageClassTest {
     @Test
     public void doRequest() {
-        byte[] expectedResponse = { 1, 6, 0, 70, 12, 44, 1, -98 };
+        byte[] expectedResponse = { 12, 44 };
 
         AssignReturnRouteMessageClass handler = new AssignReturnRouteMessageClass();
-        SerialMessage msg = handler.doRequest(12, 44, 1);
-
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
+        ZWaveSerialPayload msg = handler.doRequest(12, 44);
+        assertEquals(msg.getSerialMessageClass(), SerialMessageClass.AssignReturnRoute);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse));
     }
 }

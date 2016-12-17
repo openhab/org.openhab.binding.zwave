@@ -45,7 +45,6 @@ import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
 import org.openhab.binding.zwave.internal.ZWaveProduct;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociation;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveConfigurationParameter;
@@ -74,6 +73,7 @@ import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNodeStatusEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveTransactionCompletedEvent;
 import org.openhab.binding.zwave.internal.protocol.initialization.ZWaveNodeSerializer;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -363,14 +363,15 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         return;
                     }
 
-                    List<SerialMessage> messages = new ArrayList<SerialMessage>();
+                    List<ZWaveCommandClassTransactionPayload> messages = new ArrayList<ZWaveCommandClassTransactionPayload>();
                     for (ZWaveThingChannel channel : thingChannelsPoll) {
                         logger.debug("NODE {}: Polling {}", nodeId, channel.getUID());
                         if (channel.converter == null) {
                             logger.debug("NODE {}: Polling aborted as no converter found for {}", nodeId,
                                     channel.getUID());
                         } else {
-                            List<SerialMessage> poll = channel.converter.executeRefresh(channel, node);
+                            List<ZWaveCommandClassTransactionPayload> poll = channel.converter.executeRefresh(channel,
+                                    node);
                             if (poll != null) {
                                 messages.addAll(poll);
                             }
@@ -380,7 +381,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     // If this is a battery device, then we want to check if it stops responding
                     // If no message received in twice the wakeup period, then we're DEAD
                     ZWaveWakeUpCommandClass wakeupCommandClass = (ZWaveWakeUpCommandClass) node
-                            .getCommandClass(CommandClass.WAKE_UP);
+                            .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
                     if (wakeupCommandClass != null && wakeupCommandClass.getInterval() != 0) {
                         if (node.getLastReceived()
                                 .getTime() < (System.currentTimeMillis() - (wakeupCommandClass.getInterval() * 2000))) {
@@ -389,7 +390,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     }
 
                     // Send all the messages
-                    for (SerialMessage message : messages) {
+                    for (ZWaveCommandClassTransactionPayload message : messages) {
                         controllerHandler.sendData(message);
                     }
                 } catch (Exception e) {
@@ -518,7 +519,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 }
 
                 ZWaveConfigurationCommandClass configurationCommandClass = (ZWaveConfigurationCommandClass) node
-                        .getCommandClass(CommandClass.CONFIGURATION);
+                        .getCommandClass(CommandClass.COMMAND_CLASS_CONFIGURATION);
                 if (configurationCommandClass == null) {
                     logger.error("NODE {}: Error getting configurationCommandClass", nodeId);
                     continue;
@@ -579,7 +580,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     // and send the SET command.
                     // Only send the request if there's not already a request outstanding
                     if (requestUpdate == true) {
-                        controllerHandler.sendData(configurationCommandClass.getConfigMessage(parameterIndex));
+                        node.sendMessage(configurationCommandClass.getConfigMessage(parameterIndex));
                     }
                 } else {
                     ZWaveConfigurationParameter cfgParameter = configurationCommandClass.getParameter(parameterIndex);
@@ -590,9 +591,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     }
 
                     // Set the parameter and request a read-back if it's not a write only parameter
-                    controllerHandler.sendData(configurationCommandClass.setConfigMessage(cfgParameter));
+                    node.sendMessage(configurationCommandClass.setConfigMessage(cfgParameter));
                     if (writeOnly == false) {
-                        controllerHandler.sendData(configurationCommandClass.getConfigMessage(parameterIndex));
+                        node.sendMessage(configurationCommandClass.getConfigMessage(parameterIndex));
                     }
                 }
 
@@ -642,8 +643,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     // Is the current association still in the newMembers list?
                     if (newMembers.isAssociated(member.getNode(), member.getEndpoint()) == false) {
                         // No - so it needs to be removed
-                        controllerHandler
-                                .sendData(node.removeAssociation(groupIndex, member.getNode(), member.getEndpoint()));
+                        node.sendMessage(node.removeAssociation(groupIndex, member.getNode(), member.getEndpoint()));
                         totalMembers--;
                     }
                 }
@@ -654,8 +654,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     if (currentMembers.isAssociated(member.getNode(), member.getEndpoint()) == false) {
                         // No - so it needs to be added
                         // TODO: This needs to handle the sending endpoint not being root.
-                        controllerHandler.sendData(
-                                node.setAssociation(null, groupIndex, member.getNode(), member.getEndpoint()));
+                        node.sendMessage(node.setAssociation(null, groupIndex, member.getNode(), member.getEndpoint()));
                         totalMembers++;
                     }
                 }
@@ -663,15 +662,15 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 // If there are no known associations in the group, then let's clear the group completely
                 // This ensures we don't end up with strange ghost associations
                 if (totalMembers == 0) {
-                    controllerHandler.sendData(node.clearAssociation(groupIndex));
+                    node.sendMessage(node.clearAssociation(groupIndex));
                 }
 
                 // Request an update to the association group
-                controllerHandler.sendData(node.getAssociation(groupIndex));
+                node.sendMessage(node.getAssociation(groupIndex));
                 pendingCfg.put(configurationParameter.getKey(), valueObject);
             } else if ("wakeup".equals(cfg[0])) {
                 ZWaveWakeUpCommandClass wakeupCommandClass = (ZWaveWakeUpCommandClass) node
-                        .getCommandClass(CommandClass.WAKE_UP);
+                        .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
                 if (wakeupCommandClass == null) {
                     logger.error("NODE {}: Error getting wakeupCommandClass", nodeId);
                     continue;
@@ -689,13 +688,13 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 logger.debug("NODE {}: Set wakeup interval to '{}'", nodeId, value);
 
                 // Set the wake-up interval
-                controllerHandler.sendData(wakeupCommandClass.setInterval(value));
+                node.sendMessage(wakeupCommandClass.setInterval(value));
                 // And request a read-back
-                controllerHandler.sendData(wakeupCommandClass.getIntervalMessage());
+                node.sendMessage(wakeupCommandClass.getIntervalMessage());
                 pendingCfg.put(configurationParameter.getKey(), valueObject);
             } else if ("nodename".equals(cfg[0])) {
                 ZWaveNodeNamingCommandClass nameCommandClass = (ZWaveNodeNamingCommandClass) node
-                        .getCommandClass(CommandClass.NODE_NAMING);
+                        .getCommandClass(CommandClass.COMMAND_CLASS_NODE_NAMING);
                 if (nameCommandClass == null) {
                     logger.error("NODE {}: Error getting NodeNamingCommandClass", nodeId);
                     continue;
@@ -712,7 +711,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 pendingCfg.put(configurationParameter.getKey(), valueObject);
             } else if ("switchall".equals(cfg[0])) {
                 ZWaveSwitchAllCommandClass switchallCommandClass = (ZWaveSwitchAllCommandClass) node
-                        .getCommandClass(CommandClass.SWITCH_ALL);
+                        .getCommandClass(CommandClass.COMMAND_CLASS_SWITCH_ALL);
                 if (switchallCommandClass == null) {
                     logger.error("NODE {}: Error getting SwitchAllCommandClass", nodeId);
                     continue;
@@ -725,7 +724,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 pendingCfg.put(configurationParameter.getKey(), valueObject);
             } else if ("powerlevel".equals(cfg[0])) {
                 ZWavePowerLevelCommandClass powerlevelCommandClass = (ZWavePowerLevelCommandClass) node
-                        .getCommandClass(CommandClass.POWERLEVEL);
+                        .getCommandClass(CommandClass.COMMAND_CLASS_POWERLEVEL);
                 if (powerlevelCommandClass == null) {
                     logger.error("NODE {}: Error getting PowerLevelCommandClass", nodeId);
                     continue;
@@ -753,7 +752,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 pendingCfg.put(configurationParameter.getKey(), valueObject);
             } else if ("doorlock".equals(cfg[0])) {
                 ZWaveDoorLockCommandClass commandClass = (ZWaveDoorLockCommandClass) node
-                        .getCommandClass(CommandClass.DOOR_LOCK);
+                        .getCommandClass(CommandClass.COMMAND_CLASS_DOOR_LOCK);
                 if (commandClass == null) {
                     logger.error("NODE {}: Error getting ZWaveDoorLockCommandClass", nodeId);
                     continue;
@@ -778,7 +777,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 }
             } else if ("usercode".equals(cfg[0])) {
                 ZWaveUserCodeCommandClass commandClass = (ZWaveUserCodeCommandClass) node
-                        .getCommandClass(CommandClass.USER_CODE);
+                        .getCommandClass(CommandClass.COMMAND_CLASS_USER_CODE);
                 if (commandClass == null) {
                     logger.error("NODE {}: Error getting ZWaveUserCodeCommandClass", nodeId);
                     continue;
@@ -832,7 +831,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                     // Delete the saved XML
                     ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
-                    nodeSerializer.DeleteNode(nodeId);
+                    nodeSerializer.DeleteNode(node.getHomeId(), nodeId);
 
                     controllerHandler.reinitialiseNode(nodeId);
                 }
@@ -904,7 +903,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             return;
         }
 
-        List<SerialMessage> messages = null;
+        List<ZWaveCommandClassTransactionPayload> messages = null;
         messages = cmdChannel.converter.receiveCommand(cmdChannel, node, command);
 
         if (messages == null) {
@@ -913,7 +912,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
 
         // Send all the messages
-        for (SerialMessage message : messages) {
+        for (ZWaveCommandClassTransactionPayload message : messages) {
             controllerHandler.sendData(message);
         }
     }
@@ -932,7 +931,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             // Cast to a command class event
             ZWaveCommandClassValueEvent event = (ZWaveCommandClassValueEvent) incomingEvent;
 
-            String commandClass = event.getCommandClass().getLabel();
+            String commandClass = event.getCommandClass().toString();
 
             logger.debug(
                     "NODE {}: Got a value event from Z-Wave network, endpoint = {}, command class = {}, value = {}",
@@ -942,7 +941,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             Configuration configuration = editConfiguration();
             boolean cfgUpdated = false;
             switch (event.getCommandClass()) {
-                case CONFIGURATION:
+                case COMMAND_CLASS_CONFIGURATION:
                     ZWaveConfigurationParameter parameter = ((ZWaveConfigurationParameterEvent) event).getParameter();
                     if (parameter == null) {
                         return;
@@ -968,7 +967,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                         ZWaveNode node = controllerHandler.getNode(nodeId);
                         ZWaveConfigurationCommandClass configurationCommandClass = (ZWaveConfigurationCommandClass) node
-                                .getCommandClass(CommandClass.CONFIGURATION);
+                                .getCommandClass(CommandClass.COMMAND_CLASS_CONFIGURATION);
                         if (configurationCommandClass == null) {
                             logger.error("NODE {}: Error getting configurationCommandClass", nodeId);
                             return;
@@ -985,8 +984,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                         logger.debug("NODE {}: Setting parameter {} to {}", nodeId, cfgParameter.getIndex(),
                                 cfgParameter.getValue());
-                        controllerHandler.sendData(configurationCommandClass.setConfigMessage(cfgParameter));
-                        controllerHandler.sendData(configurationCommandClass.getConfigMessage(parameter.getIndex()));
+                        node.sendMessage(configurationCommandClass.setConfigMessage(cfgParameter));
+                        node.sendMessage(configurationCommandClass.getConfigMessage(parameter.getIndex()));
 
                         // Don't process the data - it hasn't been updated yet!
                         break;
@@ -996,7 +995,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                             parameter.getValue());
                     break;
 
-                case ASSOCIATION:
+                case COMMAND_CLASS_ASSOCIATION:
                     int groupId = ((ZWaveAssociationEvent) event).getGroupId();
                     List<ZWaveAssociation> groupMembers = ((ZWaveAssociationEvent) event).getGroupMembers();
                     if (groupMembers != null) {
@@ -1018,13 +1017,13 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     }
                     break;
 
-                case SWITCH_ALL:
+                case COMMAND_CLASS_SWITCH_ALL:
                     cfgUpdated = true;
                     configuration.put(ZWaveBindingConstants.CONFIGURATION_SWITCHALLMODE, event.getValue());
                     pendingCfg.remove(ZWaveBindingConstants.CONFIGURATION_SWITCHALLMODE);
                     break;
 
-                case NODE_NAMING:
+                case COMMAND_CLASS_NODE_NAMING:
                     switch ((ZWaveNodeNamingCommandClass.Type) event.getType()) {
                         case NODENAME_LOCATION:
                             cfgUpdated = true;
@@ -1039,7 +1038,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     }
                     break;
 
-                case DOOR_LOCK:
+                case COMMAND_CLASS_DOOR_LOCK:
                     switch ((ZWaveDoorLockCommandClass.Type) event.getType()) {
                         case DOOR_LOCK_TIMEOUT:
                             cfgUpdated = true;
@@ -1051,7 +1050,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     }
                     break;
 
-                case POWERLEVEL:
+                case COMMAND_CLASS_POWERLEVEL:
                     ZWavePowerLevelCommandClassChangeEvent powerEvent = (ZWavePowerLevelCommandClassChangeEvent) event;
                     cfgUpdated = true;
                     configuration.put(ZWaveBindingConstants.CONFIGURATION_POWERLEVEL_LEVEL, powerEvent.getLevel());
@@ -1125,7 +1124,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     break;
                 case ZWaveWakeUpCommandClass.WAKE_UP_INTERVAL_REPORT:
                     ZWaveWakeUpCommandClass commandClass = (ZWaveWakeUpCommandClass) node
-                            .getCommandClass(CommandClass.WAKE_UP);
+                            .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
                     Configuration configuration = editConfiguration();
                     configuration.put(ZWaveBindingConstants.CONFIGURATION_WAKEUPINTERVAL, commandClass.getInterval());
                     pendingCfg.remove(ZWaveBindingConstants.CONFIGURATION_WAKEUPINTERVAL);
@@ -1301,10 +1300,11 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         properties.put(ZWaveBindingConstants.PROPERTY_FREQUENT, Boolean.toString(node.isFrequentlyListening()));
         properties.put(ZWaveBindingConstants.PROPERTY_BEAMING, Boolean.toString(node.isBeaming()));
         properties.put(ZWaveBindingConstants.PROPERTY_ROUTING, Boolean.toString(node.isRouting()));
+        properties.put(ZWaveBindingConstants.PROPERTY_USINGSECURITY, Boolean.toString(node.isSecure()));
 
         // If this is a Z-Wave Plus device, then also add its class
         ZWavePlusCommandClass cmdClassZWavePlus = (ZWavePlusCommandClass) node
-                .getCommandClass(CommandClass.ZWAVE_PLUS_INFO);
+                .getCommandClass(CommandClass.COMMAND_CLASS_ZWAVEPLUS_INFO);
         if (cmdClassZWavePlus != null) {
             properties.put(ZWaveBindingConstants.PROPERTY_ZWPLUS_DEVICETYPE,
                     cmdClassZWavePlus.getZWavePlusDeviceType().toString());
@@ -1333,7 +1333,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         // Process CONFIGURATION
         ZWaveConfigurationCommandClass configurationCommandClass = (ZWaveConfigurationCommandClass) node
-                .getCommandClass(CommandClass.CONFIGURATION);
+                .getCommandClass(CommandClass.COMMAND_CLASS_CONFIGURATION);
         if (configurationCommandClass != null) {
             // Iterate over all parameters and process
             for (int paramId : configurationCommandClass.getParameters().keySet()) {
@@ -1358,7 +1358,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         // Process WAKE_UP
         ZWaveWakeUpCommandClass wakeupCommandClass = (ZWaveWakeUpCommandClass) node
-                .getCommandClass(CommandClass.WAKE_UP);
+                .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
         if (wakeupCommandClass != null) {
             config.put(ZWaveBindingConstants.CONFIGURATION_WAKEUPINTERVAL, wakeupCommandClass.getInterval());
             config.put(ZWaveBindingConstants.CONFIGURATION_WAKEUPNODE, wakeupCommandClass.getTargetNodeId());
@@ -1366,7 +1366,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         // Process SWITCH_ALL
         ZWaveSwitchAllCommandClass switchallCommandClass = (ZWaveSwitchAllCommandClass) node
-                .getCommandClass(CommandClass.SWITCH_ALL);
+                .getCommandClass(CommandClass.COMMAND_CLASS_SWITCH_ALL);
         if (switchallCommandClass != null) {
             if (switchallCommandClass.getMode() != null) {
                 config.put(ZWaveBindingConstants.CONFIGURATION_SWITCHALLMODE, switchallCommandClass.getMode());
@@ -1375,7 +1375,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         // Process NODE_NAMING
         ZWaveNodeNamingCommandClass nodenamingCommandClass = (ZWaveNodeNamingCommandClass) node
-                .getCommandClass(CommandClass.NODE_NAMING);
+                .getCommandClass(CommandClass.COMMAND_CLASS_NODE_NAMING);
         if (nodenamingCommandClass != null) {
             if (nodenamingCommandClass.getLocation() != null) {
                 config.put(ZWaveBindingConstants.CONFIGURATION_NODELOCATION, nodenamingCommandClass.getLocation());

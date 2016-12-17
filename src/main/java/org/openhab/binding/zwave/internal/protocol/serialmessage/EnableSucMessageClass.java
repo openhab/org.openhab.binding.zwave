@@ -10,10 +10,11 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,34 +26,31 @@ import org.slf4j.LoggerFactory;
 public class EnableSucMessageClass extends ZWaveCommandProcessor {
     private static final Logger logger = LoggerFactory.getLogger(EnableSucMessageClass.class);
 
-    public SerialMessage doRequest(SUCType type) {
+    public ZWaveSerialPayload doRequest(SUCType type) {
         logger.debug("Assigning Controller SUC functionality to {}", type.toString());
 
-        // Queue the request
-        SerialMessage newMessage = new SerialMessage(SerialMessageClass.EnableSuc, SerialMessageType.Request,
-                SerialMessageClass.EnableSuc, SerialMessagePriority.High);
-
-        byte[] newPayload = new byte[2];
+        byte[] payload = new byte[2];
         switch (type) {
             case NONE:
-                newPayload[0] = 0;
-                newPayload[1] = 0;
+                payload[0] = 0;
+                payload[1] = 0;
                 break;
             case BASIC:
-                newPayload[0] = 1;
-                newPayload[1] = 0;
+                payload[0] = 1;
+                payload[1] = 0;
                 break;
             case SERVER:
-                newPayload[0] = 1;
-                newPayload[1] = 1;
+                payload[0] = 1;
+                payload[1] = 1;
                 break;
         }
-        newMessage.setMessagePayload(newPayload);
-        return newMessage;
+
+        // Create the request
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.EnableSuc).withPayload(payload).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.debug("Got EnableSUC response.");
 
@@ -62,7 +60,6 @@ public class EnableSucMessageClass extends ZWaveCommandProcessor {
             logger.error("Unable to disable a running SUC!");
         }
 
-        checkTransactionComplete(lastSentMessage, incomingMessage);
         return true;
     }
 

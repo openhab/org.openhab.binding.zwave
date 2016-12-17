@@ -16,7 +16,6 @@ import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveProtectionCommandClass;
@@ -24,6 +23,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveProtectionC
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveProtectionCommandClass.RfProtectionType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveProtectionCommandClass.Type;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,17 +58,18 @@ public class ZWaveProtectionConverter extends ZWaveCommandClassConverter {
     }
 
     @Override
-    public List<SerialMessage> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
+    public List<ZWaveCommandClassTransactionPayload> receiveCommand(ZWaveThingChannel channel, ZWaveNode node,
+            Command command) {
         String type = channel.getArguments().get("type");
 
         ZWaveProtectionCommandClass commandClass = (ZWaveProtectionCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.PROTECTION, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_PROTECTION, channel.getEndpoint());
 
         if (commandClass == null) {
             return null;
         }
 
-        SerialMessage serialMessage = null;
+        ZWaveCommandClassTransactionPayload serialMessage = null;
 
         if (type != null) {
             if (Type.PROTECTION_LOCAL.name().equals(type)) {
@@ -96,12 +97,12 @@ public class ZWaveProtectionConverter extends ZWaveCommandClassConverter {
 
         if (serialMessage == null) {
             logger.warn("NODE {}: Generating message failed for command class = {}, endpoint = {}", node.getNodeId(),
-                    commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                    commandClass.getCommandClass(), channel.getEndpoint());
             return null;
         }
 
         logger.debug("NODE {}: Sending Message: {}", node.getNodeId(), serialMessage);
-        List<SerialMessage> messages = new ArrayList<SerialMessage>();
+        List<ZWaveCommandClassTransactionPayload> messages = new ArrayList<ZWaveCommandClassTransactionPayload>();
         messages.add(serialMessage);
 
         // Request an update so that OH knows when the protection settings has changed.

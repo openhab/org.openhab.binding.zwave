@@ -8,15 +8,14 @@
  */
 package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
-import java.io.ByteArrayOutputStream;
-
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,46 +27,45 @@ import org.slf4j.LoggerFactory;
 public class AssignReturnRouteMessageClass extends ZWaveCommandProcessor {
     private static final Logger logger = LoggerFactory.getLogger(AssignReturnRouteMessageClass.class);
 
-    public SerialMessage doRequest(int nodeId, int destinationId, int callbackId) {
+    public ZWaveSerialPayload doRequest(int nodeId, int destinationId) {
         logger.debug("NODE {}: Assigning return route to node {}", nodeId, destinationId);
 
-        // Queue the request
-        SerialMessage newMessage = new SerialMessage(SerialMessageClass.AssignReturnRoute, SerialMessageType.Request,
-                SerialMessageClass.AssignReturnRoute, SerialMessagePriority.High);
-
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write(nodeId);
-        outputData.write(destinationId);
-        outputData.write(callbackId);
-        newMessage.setMessagePayload(outputData.toByteArray());
-
-        return newMessage;
+        // Create the request
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.AssignReturnRoute)
+                .withPayload(nodeId, destinationId).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
-        int nodeId = lastSentMessage.getMessagePayloadByte(0);
+        if (transaction == null) {
+            return false;
+        }
+
+        int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: Got AssignReturnRoute response.", nodeId);
 
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
             logger.debug("NODE {}: AssignReturnRoute command in progress.", nodeId);
-            lastSentMessage.setAckRecieved();
+            // lastSentMessage.setAckRecieved();
         } else {
             logger.error("NODE {}: AssignReturnRoute command failed.", nodeId);
             zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.AssignReturnRoute, nodeId,
                     ZWaveNetworkEvent.State.Failure));
-            incomingMessage.setTransactionCanceled();
         }
 
         return true;
     }
 
     @Override
-    public boolean handleRequest(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
-        int nodeId = lastSentMessage.getMessagePayloadByte(0);
+        if (transaction == null) {
+            return false;
+        }
+
+        int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: Got AssignReturnRoute request.", nodeId);
         if (incomingMessage.getMessagePayloadByte(1) != 0x00) {
@@ -78,8 +76,6 @@ public class AssignReturnRouteMessageClass extends ZWaveCommandProcessor {
             zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.AssignReturnRoute, nodeId,
                     ZWaveNetworkEvent.State.Success));
         }
-
-        checkTransactionComplete(lastSentMessage, incomingMessage);
 
         return true;
     }

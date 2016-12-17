@@ -10,10 +10,11 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,21 +29,19 @@ public class MemoryGetIdMessageClass extends ZWaveCommandProcessor {
     private int homeId = 0;
     private int ownNodeId = 0;
 
-    public SerialMessage doRequest() {
-        return new SerialMessage(SerialMessageClass.MemoryGetId, SerialMessageType.Request,
-                SerialMessageClass.MemoryGetId, SerialMessagePriority.High);
+    public ZWaveSerialPayload doRequest() {
+        // Create the request
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.MemoryGetId).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         homeId = ((incomingMessage.getMessagePayloadByte(0)) << 24) | ((incomingMessage.getMessagePayloadByte(1)) << 16)
                 | ((incomingMessage.getMessagePayloadByte(2)) << 8) | (incomingMessage.getMessagePayloadByte(3));
         ownNodeId = incomingMessage.getMessagePayloadByte(4);
         logger.debug(String.format("Got MessageMemoryGetId response. Home id = 0x%08X, Controller Node id = %d", homeId,
                 ownNodeId));
-
-        checkTransactionComplete(lastSentMessage, incomingMessage);
 
         return true;
     }

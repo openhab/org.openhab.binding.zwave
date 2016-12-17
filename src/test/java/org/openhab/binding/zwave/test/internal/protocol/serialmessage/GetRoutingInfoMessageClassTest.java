@@ -31,7 +31,7 @@ public class GetRoutingInfoMessageClassTest {
         SerialMessage msg;
         GetRoutingInfoMessageClass handler = new GetRoutingInfoMessageClass();
 
-        msg = handler.doRequest(1);
+        msg = handler.doRequest(1).getSerialMessage();
         msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
     }

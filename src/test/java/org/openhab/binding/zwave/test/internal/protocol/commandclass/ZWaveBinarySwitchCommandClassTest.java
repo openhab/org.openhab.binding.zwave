@@ -13,9 +13,9 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBinarySwitchCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveBinarySwitchCommandClass}.
@@ -26,25 +26,25 @@ public class ZWaveBinarySwitchCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void getValueMessage() {
-        ZWaveBinarySwitchCommandClass cls = (ZWaveBinarySwitchCommandClass) getCommandClass(CommandClass.SWITCH_BINARY);
-        SerialMessage msg;
+        ZWaveBinarySwitchCommandClass cls = (ZWaveBinarySwitchCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_SWITCH_BINARY);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 37, 2, 0, 0, -93 };
+        byte[] expectedResponseV1 = { 37, 2 };
         cls.setVersion(1);
         msg = cls.getValueMessage();
-        byte[] x = msg.getMessageBuffer();
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void setValueMessage() {
-        ZWaveBinarySwitchCommandClass cls = (ZWaveBinarySwitchCommandClass) getCommandClass(CommandClass.SWITCH_BINARY);
-        SerialMessage msg;
+        ZWaveBinarySwitchCommandClass cls = (ZWaveBinarySwitchCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_SWITCH_BINARY);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 37, 1, -1, 0, 0, 93 };
+        byte[] expectedResponseV1 = { 37, 1, -1 };
         cls.setVersion(1);
         msg = cls.setValueMessage(33);
-        byte[] x = msg.getMessageBuffer();
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 }

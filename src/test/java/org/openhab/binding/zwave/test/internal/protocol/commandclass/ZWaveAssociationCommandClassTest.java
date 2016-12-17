@@ -13,10 +13,10 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmSensorCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveAlarmSensorCommandClass}.
@@ -27,56 +27,61 @@ public class ZWaveAssociationCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void getAssociationMessage() {
-        ZWaveAssociationCommandClass cls = (ZWaveAssociationCommandClass) getCommandClass(CommandClass.ASSOCIATION);
-        SerialMessage msg;
+        ZWaveAssociationCommandClass cls = (ZWaveAssociationCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_ASSOCIATION);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, -123, 2, 1, 0, 0, 0 };
+        byte[] expectedResponseV1 = { -123, 2, 1 };
         cls.setVersion(1);
         msg = cls.getAssociationMessage(1);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getGroupingsMessage() {
-        ZWaveAssociationCommandClass cls = (ZWaveAssociationCommandClass) getCommandClass(CommandClass.ASSOCIATION);
-        SerialMessage msg;
+        ZWaveAssociationCommandClass cls = (ZWaveAssociationCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_ASSOCIATION);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, -123, 5, 0, 0, 4 };
+        byte[] expectedResponseV1 = { -123, 5 };
         cls.setVersion(1);
         msg = cls.getGroupingsMessage();
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void removeAssociationMessage() {
-        ZWaveAssociationCommandClass cls = (ZWaveAssociationCommandClass) getCommandClass(CommandClass.ASSOCIATION);
-        SerialMessage msg;
+        ZWaveAssociationCommandClass cls = (ZWaveAssociationCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_ASSOCIATION);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, -123, 4, 1, 1, 0, 0, 1 };
+        byte[] expectedResponseV1 = { -123, 4, 1, 1 };
         cls.setVersion(1);
         msg = cls.removeAssociationMessage(1, 1);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void clearAssociationMessage() {
-        ZWaveAssociationCommandClass cls = (ZWaveAssociationCommandClass) getCommandClass(CommandClass.ASSOCIATION);
-        SerialMessage msg;
+        ZWaveAssociationCommandClass cls = (ZWaveAssociationCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_ASSOCIATION);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, -123, 4, 1, 0, 0, 6 };
+        byte[] expectedResponseV1 = { -123, 4, 1 };
         cls.setVersion(1);
         msg = cls.clearAssociationMessage(1);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void setAssociationMessage() {
-        ZWaveAssociationCommandClass cls = (ZWaveAssociationCommandClass) getCommandClass(CommandClass.ASSOCIATION);
-        SerialMessage msg;
+        ZWaveAssociationCommandClass cls = (ZWaveAssociationCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_ASSOCIATION);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, -123, 1, 1, 1, 0, 0, 4 };
+        byte[] expectedResponseV1 = { -123, 1, 1, 1 };
         cls.setVersion(1);
         msg = cls.setAssociationMessage(1, 1);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 }

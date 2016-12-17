@@ -31,7 +31,7 @@ public class IsFailedNodeMessageClassTest {
         SerialMessage msg;
         IsFailedNodeMessageClass handler = new IsFailedNodeMessageClass();
 
-        msg = handler.doRequest(23);
+        msg = handler.doRequest(23).getSerialMessage();
         msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
     }

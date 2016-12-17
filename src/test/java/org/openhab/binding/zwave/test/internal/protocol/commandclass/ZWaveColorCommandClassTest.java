@@ -14,12 +14,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorCommandClass.ZWaveColorType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorCommandClass.ZWaveColorValueEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveColorCommandClass}.
@@ -30,35 +30,35 @@ public class ZWaveColorCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void getCapabilityMessage() {
-        ZWaveColorCommandClass cls = (ZWaveColorCommandClass) getCommandClass(CommandClass.COLOR);
-        SerialMessage msg;
+        ZWaveColorCommandClass cls = (ZWaveColorCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_SWITCH_COLOR);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 51, 1, 0, 0, -74 };
+        byte[] expectedResponseV1 = { 51, 1 };
         cls.setVersion(1);
         msg = cls.getCapabilityMessage();
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getValueMessage() {
-        ZWaveColorCommandClass cls = (ZWaveColorCommandClass) getCommandClass(CommandClass.COLOR);
-        SerialMessage msg;
+        ZWaveColorCommandClass cls = (ZWaveColorCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_SWITCH_COLOR);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 51, 3, 1, 0, 0, -73 };
+        byte[] expectedResponseV1 = { 51, 3, 1 };
         cls.setVersion(1);
         msg = cls.getValueMessage(1);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void setValueMessage() {
-        ZWaveColorCommandClass cls = (ZWaveColorCommandClass) getCommandClass(CommandClass.COLOR);
-        SerialMessage msg;
+        ZWaveColorCommandClass cls = (ZWaveColorCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_SWITCH_COLOR);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 11, 0, 19, 99, 4, 51, 5, 3, 80, 0, 0, -27 };
+        byte[] expectedResponseV1 = { 51, 5, 1, 3, 80 };
         cls.setVersion(1);
-        msg = cls.setValueMessage(1, 80);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.setValueMessage(3, 80);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
@@ -70,7 +70,7 @@ public class ZWaveColorCommandClassTest extends ZWaveCommandClassTest {
         assertEquals(events.size(), 1);
         ZWaveColorValueEvent event = (ZWaveColorValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.COLOR);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_SWITCH_COLOR);
         assertTrue(event.getColorMap().containsKey(ZWaveColorType.RED));
         assertTrue(event.getColorMap().containsKey(ZWaveColorType.GREEN));
         assertTrue(event.getColorMap().containsKey(ZWaveColorType.BLUE));

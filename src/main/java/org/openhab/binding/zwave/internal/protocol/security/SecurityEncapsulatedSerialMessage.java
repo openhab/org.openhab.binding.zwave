@@ -62,8 +62,10 @@ public class SecurityEncapsulatedSerialMessage extends SerialMessage {
     public SecurityEncapsulatedSerialMessage(SerialMessageClass messageClass, SerialMessageType messageType,
             SerialMessage messageBeingEncapsulated) {
         // Inherit most fields
-        super(messageBeingEncapsulated.getMessageNode(), messageClass, messageType,
-                messageBeingEncapsulated.getExpectedReply(), ZWaveSecurityCommandClass.SECURITY_MESSAGE_PRIORITY);
+        // super(messageBeingEncapsulated.getMessageNode(), messageClass, messageType, null,
+        // ZWaveSecurityCommandClass.SECURITY_MESSAGE_PRIORITY);
+        // super(messageBeingEncapsulated.getMessageNode(), messageClass, messageType,
+        // messageBeingEncapsulated.getExpectedReply(), ZWaveSecurityCommandClass.SECURITY_MESSAGE_PRIORITY);
         this.messageBeingEncapsulated = messageBeingEncapsulated;
         // Inherit attempts from messageBeingEncapsulated since each retry requires a new
         // SecurityEncapsulatedSerialMessage object
@@ -79,11 +81,12 @@ public class SecurityEncapsulatedSerialMessage extends SerialMessage {
             // ZWaveCommandClass.CommandClass.DOOR_LOCK.getKey())
             // && bytesAreEqual(securityPayload.getMessageBytes()[1], ZWaveDoorLockCommandClass.DOORLOCK_SET);
         }
-        logger.debug(
-                "NODE {}: securityTransactionComplete={}, payload=({}), transmitted={}, msSinceTransmitted={}, ackWaiting={}",
-                messageNode, result, SerialMessage.bb2hex(messageBeingEncapsulated.getMessagePayload()),
-                hasBeenTransmitted(), hasBeenTransmitted() ? (System.currentTimeMillis() - getTransmittedAt()) : "",
-                ackPending);
+        // logger.debug(
+        // "NODE {}: securityTransactionComplete={}, payload=({}), transmitted={}, msSinceTransmitted={},
+        // ackWaiting={}",
+        // messageNode, result, SerialMessage.bb2hex(messageBeingEncapsulated.getMessagePayload()),
+        // hasBeenTransmitted(), hasBeenTransmitted() ? (System.currentTimeMillis() - getTransmittedAt()) : "",
+        // ackPending);
         return result;
     }
 
@@ -100,7 +103,7 @@ public class SecurityEncapsulatedSerialMessage extends SerialMessage {
         // SerialMessageClass.ApplicationCommandHandler.getKey());
         boolean result = payloadBytes[1] == transactionCompleteCommandClass;
         if (result && transactionCompleteCommand != UNSET) {
-            result = ZWaveSecurityCommandClass.bytesAreEqual(transactionCompleteCommand, payloadBytes[3]);
+            // result = ZWaveSecurityCommandClass.bytesAreEqual(transactionCompleteCommand, payloadBytes[3]);
         }
         logger.debug("NODE {}: securityReponseReceived={} for {}. Class: want={},got={}; Command: want={},got={}",
                 getMessageNode(), result, SerialMessage.bb2hex(payloadBytes),

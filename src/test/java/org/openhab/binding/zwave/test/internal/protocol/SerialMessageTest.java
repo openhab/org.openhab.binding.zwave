@@ -55,4 +55,20 @@ public class SerialMessageTest {
         msg = new SerialMessage(packetDataFaulty);
         assertEquals(msg.isValid, false);
     }
+
+    @Test
+    public void TestNAK() {
+        byte[] packetData = { 0x15 };
+        SerialMessage msg = new SerialMessage(packetData);
+
+        assertEquals(SerialMessageType.NAK, msg.getMessageType());
+    }
+
+    @Test
+    public void TestCAN() {
+        byte[] packetData = { 0x18 };
+        SerialMessage msg = new SerialMessage(packetData);
+
+        assertEquals(SerialMessageType.CAN, msg.getMessageType());
+    }
 }

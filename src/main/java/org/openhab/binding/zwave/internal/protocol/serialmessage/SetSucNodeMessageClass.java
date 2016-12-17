@@ -10,10 +10,11 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,39 +26,34 @@ import org.slf4j.LoggerFactory;
 public class SetSucNodeMessageClass extends ZWaveCommandProcessor {
     private static final Logger logger = LoggerFactory.getLogger(SetSucNodeMessageClass.class);
 
-    public SerialMessage doRequest(int nodeId, SUCType type) {
+    public ZWaveSerialPayload doRequest(int nodeId, SUCType type) {
         logger.debug("NODE {}: SetSucNodeID node as {}", nodeId, type.toString());
 
-        // Queue the request
-        SerialMessage newMessage = new SerialMessage(SerialMessageClass.SetSucNodeID, SerialMessageType.Request,
-                SerialMessageClass.SetSucNodeID, SerialMessagePriority.High);
-        byte[] newPayload = new byte[5];
-        newPayload[0] = (byte) nodeId;
+        byte[] payload = new byte[4];
+        payload[0] = (byte) nodeId;
         switch (type) {
             case NONE:
-                newPayload[1] = 0;
-                newPayload[3] = 0;
+                payload[1] = 0;
+                payload[3] = 0;
                 break;
             case BASIC:
-                newPayload[1] = 1;
-                newPayload[3] = 0;
+                payload[1] = 1;
+                payload[3] = 0;
                 break;
             case SERVER:
-                newPayload[1] = 1;
-                newPayload[3] = 1;
+                payload[1] = 1;
+                payload[3] = 1;
                 break;
         }
 
-        newPayload[2] = 0; // Low power option = false
-        newPayload[4] = 1; // Callback!!!
-        newMessage.setMessagePayload(newPayload);
-        return newMessage;
+        // Create the request
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.SetSucNodeID).withPayload(payload).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
-        int nodeId = lastSentMessage.getMessagePayloadByte(0);
+        int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: SetSucNodeID node response.", nodeId);
 
@@ -65,24 +61,20 @@ public class SetSucNodeMessageClass extends ZWaveCommandProcessor {
             logger.debug("NODE {}: SetSucNodeID command OK.", nodeId);
         } else {
             logger.error("NODE {}: SetSucNodeID command failed.", nodeId);
-            checkTransactionComplete(lastSentMessage, incomingMessage);
+            transaction.setTransactionCanceled();
         }
 
         return true;
     }
 
     @Override
-    public boolean handleRequest(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
-        int nodeId = lastSentMessage.getMessagePayloadByte(0);
+        int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: SetSucNodeID node request.", nodeId);
-
-        checkTransactionComplete(lastSentMessage, incomingMessage);
         if (incomingMessage.getMessagePayloadByte(1) != 0x00) {
-            logger.error("NODE {}: SetSucNodeID failed with error 0x{}.", nodeId,
-                    Integer.toHexString(incomingMessage.getMessagePayloadByte(1)));
-
+            logger.error("NODE {}: SetSucNodeID command failed.", nodeId);
             return false;
         } else {
             return true;

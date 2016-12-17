@@ -8,12 +8,13 @@
  */
 package org.openhab.binding.zwave.test.internal.protocol.serialmessage;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RemoveNodeMessageClass;
 
 /**
@@ -26,16 +27,18 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.RemoveNodeMessa
 public class RemoveNodeMessageClassTest {
     @Test
     public void doRequest() {
-        byte[] expectedResponseStart = { 1, 5, 0, 75, 1, 1, -79 };
-        byte[] expectedResponseStop = { 1, 5, 0, 75, 5, -2, 74 };
+        byte[] expectedResponseStart = { 1 };
+        byte[] expectedResponseStop = { 5 };
 
         RemoveNodeMessageClass handler = new RemoveNodeMessageClass();
-        SerialMessage msg;
+        ZWaveSerialPayload msg;
 
         msg = handler.doRequestStart();
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseStart));
+        assertEquals(msg.getSerialMessageClass(), SerialMessageClass.RemoveNodeFromNetwork);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseStart));
 
         msg = handler.doRequestStop();
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseStop));
+        assertEquals(msg.getSerialMessageClass(), SerialMessageClass.RemoveNodeFromNetwork);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseStop));
     }
 }
