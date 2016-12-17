@@ -58,7 +58,8 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
             case NODE_INFO_RECEIVED:
                 // We've received a NIF, and this contains the node ID.
                 nodeId = incomingMessage.getMessagePayloadByte(1);
-                logger.debug("NODE {}: Application update request. Node information received.", nodeId);
+                logger.debug("NODE {}: Application update request. Node information received. Transaction {}", nodeId,
+                        transaction);
 
                 int length = incomingMessage.getMessagePayloadByte(2);
                 final ZWaveNode node = zController.getNode(nodeId);
@@ -132,6 +133,14 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
                     node.updateNifClasses(nifClasses);
                 }
 
+                // If we have a transaction, then it's been correlated with the expected response.
+                // We can therefore complete it
+                if (transaction != null) {
+                    transaction.setTransactionComplete();
+                } else {
+                    logger.debug("NODE {}: Application update - no transaction.", nodeId);
+                }
+
                 // Treat the node information frame as a wakeup
                 // We have a delay here as in a number of devices the NIF isn't used as a wakeup, and the wakeup
                 // notification is sent shortly after the NIF.
@@ -148,6 +157,7 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
                         node.setAwake(true);
                     }
                 }.start();
+
                 break;
             case NODE_INFO_REQ_FAILED:
                 // The failed message doesn't contain the node number, so use the info from the request.
@@ -164,6 +174,7 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
             default:
                 logger.warn("TODO: Implement Application Update Request Handling of {} ({}).", updateState.getLabel(),
                         updateState.getKey());
+                break;
         }
 
         return result;

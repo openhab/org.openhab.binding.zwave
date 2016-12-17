@@ -91,6 +91,9 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
                 } else {
                     node.resetResendCount();
                 }
+                // Mark the transaction as DONE.
+                // If the transaction needs data, then it will continue to wait for this data
+                transaction.setTransactionComplete();
                 return true;
             case COMPLETE_NO_ACK:
                 // Handle WAKE_UP_NO_MORE_INFORMATION differently

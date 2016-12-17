@@ -54,7 +54,6 @@ public class ZWaveNode {
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveNode.class);
 
-    // private final ZWaveDeviceClass deviceClass;
     @XStreamOmitField
     private ZWaveController controller;
     @XStreamOmitField

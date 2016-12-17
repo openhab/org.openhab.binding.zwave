@@ -40,6 +40,12 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
                     node.getNodeInitStage().toString());
 
             node.processCommand(new ZWaveCommandClassPayload(incomingMessage));
+
+            // If we have a transaction, then it's been correlated with the expected response.
+            // We can therefore complete it
+            if (transaction != null) {
+                transaction.setTransactionComplete();
+            }
         } catch (ZWaveSerialMessageException e) {
             logger.error("Error processing frame: {} >> {}", incomingMessage.toString(), e.getMessage());
         }

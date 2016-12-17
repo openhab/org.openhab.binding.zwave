@@ -23,11 +23,9 @@ public class ZWaveTransaction {
     private final static AtomicLong sequence = new AtomicLong();
     private final long transactionId = sequence.getAndIncrement();
 
-    private int DEFAULT_TIMEOUT = 2500;
+    private int DEFAULT_TIMEOUT = 5000;
 
     private ZWaveMessagePayloadTransaction payload;
-
-    private ZWaveTransaction linkedTransaction;
 
     // Timers
 
@@ -240,15 +238,23 @@ public class ZWaveTransaction {
     }
 
     public void setTransactionCanceled() {
+        logger.debug("Transaction {} CANCELLED", transactionId);
         transactionStateCancelled = transactionStateTracker;
         transactionStateTracker = TransactionState.CANCELLED;
     }
 
     public void setTransactionAborted() {
+        logger.debug("Transaction {} ABORTED", transactionId);
         transactionStateTracker = TransactionState.ABORTED;
     }
 
     public void setTransactionComplete() {
+        // If we're waiting for data, then don't complete the transaction
+        if (payload.getExpectedResponseSerialMessageClass() != null) {
+            return;
+        }
+
+        logger.debug("Transaction {} COMPLETED", transactionId);
         transactionStateTracker = TransactionState.DONE;
     }
 
@@ -327,7 +333,7 @@ public class ZWaveTransaction {
                     transactionStateTracker = TransactionState.WAIT_DATA;
                     break;
                 }
-                transactionStateTracker = TransactionState.DONE;
+                // transactionStateTracker = TransactionState.DONE;
                 break;
 
             case WAIT_DATA:
@@ -416,13 +422,5 @@ public class ZWaveTransaction {
         }
 
         return false;
-    }
-
-    public void setLinkedTransaction(ZWaveTransaction transaction) {
-        linkedTransaction = transaction;
-    }
-
-    public ZWaveTransaction getLinkedTransaction() {
-        return linkedTransaction;
     }
 }

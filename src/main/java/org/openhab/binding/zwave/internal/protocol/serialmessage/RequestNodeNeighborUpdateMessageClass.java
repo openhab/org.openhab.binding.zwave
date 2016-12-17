@@ -44,10 +44,9 @@ public class RequestNodeNeighborUpdateMessageClass extends ZWaveCommandProcessor
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         // This should only be received as part of a transaction
         if (transaction == null) {
+            logger.debug("NodeNeighborUpdate request without transaction");
             return false;
         }
-
-        transaction.transactionAdvance(incomingMessage);
 
         int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
@@ -55,7 +54,6 @@ public class RequestNodeNeighborUpdateMessageClass extends ZWaveCommandProcessor
         switch (incomingMessage.getMessagePayloadByte(1)) {
             case REQUEST_NEIGHBOR_UPDATE_STARTED:
                 logger.debug("NODE {}: NodeNeighborUpdate STARTED", nodeId);
-                // We're done
                 break;
             case REQUEST_NEIGHBOR_UPDATE_DONE:
                 logger.debug("NODE {}: NodeNeighborUpdate DONE", nodeId);

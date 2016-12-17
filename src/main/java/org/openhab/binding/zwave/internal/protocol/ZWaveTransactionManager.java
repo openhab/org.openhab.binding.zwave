@@ -12,7 +12,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.PriorityBlockingQueue;
-import java.util.concurrent.TimeUnit;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageComparator;
@@ -122,7 +121,7 @@ public class ZWaveTransactionManager {
     private Logger logger = LoggerFactory.getLogger(ZWaveTransactionManager.class);
 
     private final int INITIAL_TX_QUEUE_SIZE = 128;
-    private final int MAX_OUTSTANDING_TRANSACTIONS = 1;
+    private final int MAX_OUTSTANDING_TRANSACTIONS = 3;
 
     public final int TRANSMIT_OPTION_ACK = 0x01;
     public final int TRANSMIT_OPTION_AUTO_ROUTE = 0x04;
@@ -138,7 +137,7 @@ public class ZWaveTransactionManager {
     /**
      * Timeout in which we expect the request from the controller
      */
-    private final long timer2 = 2500;
+    private final long timer2 = 5000;
 
     /**
      * Timeout waiting to cancel a transaction once we've aborted it
@@ -205,20 +204,22 @@ public class ZWaveTransactionManager {
             }
         }.start();
 
-        // If this transaction isn't complete, check if there's a linked transaction
-        // This could be a none request where we want to also abort the original transaction
-        if (transaction.getTransactionState() != TransactionState.DONE && transaction.getLinkedTransaction() != null) {
-            logger.debug("NODE {}: processing linked transaction -- {}", transaction.getNodeId(),
-                    transaction.getLinkedTransaction().getTransactionId());
+        // If this transaction isn't complete, check if it's a secure transaction as we need to
+        // abort the original request.
+        if (transaction.getTransactionState() != TransactionState.DONE
+                && transaction instanceof ZWaveSecureTransaction) {
+            ZWaveSecureTransaction secureTransaction = (ZWaveSecureTransaction) transaction;
+            logger.debug("NODE {}: processing secure transaction -- {}", transaction.getNodeId(),
+                    secureTransaction.getLinkedTransaction().getTransactionId());
 
             synchronized (transactionListeners) {
                 for (TransactionListener listener : transactionListeners) {
-                    listener.transactionEvent(transaction.getLinkedTransaction());
+                    listener.transactionEvent(secureTransaction.getLinkedTransaction());
                 }
             }
 
             synchronized (sendQueue) {
-                sendQueue.remove(transaction.getLinkedTransaction());
+                sendQueue.remove(secureTransaction.getLinkedTransaction());
             }
         }
     }
@@ -264,22 +265,6 @@ public class ZWaveTransactionManager {
         sendNextMessage();
         startTransactionTimer();
     }
-
-    /**
-     * Gets the number of messages currently in the transmit queue
-     *
-     * @return number of messages in queue
-     */
-    // public int getSendQueueLength() {
-    // int total = 0;
-    // synchronized (sendQueue) {
-    // for (PriorityBlockingQueue<ZWaveTransaction> queue : sendQueue.values()) {
-    // total += queue.size();
-    // }
-    // }
-    //
-    // return total;
-    // }
 
     /**
      * Gets the number of messages currently in the transmit queue for a specific node. This includes transactions that
@@ -338,182 +323,23 @@ public class ZWaveTransactionManager {
         }
     }
 
-    private SerialMessage takeReceiveQueue(int timeout) {
-        boolean wait = true;
-        SerialMessage incomingMessage = null;
-        while (wait) {
-            try {
-                incomingMessage = recvQueue.poll(timeout, TimeUnit.MILLISECONDS);
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-                return null;
-            }
-
-            // check for timeout
-            if (incomingMessage == null) {
-                return null;
-            }
-
-            // Manage incoming command class messages separately so we can manage transaction responses
-            if (incomingMessage.getMessageClass() == SerialMessageClass.ApplicationCommandHandler) {
-                try {
-                    int nodeId = incomingMessage.getMessagePayloadByte(1);
-                    ZWaveNode node = controller.getNode(nodeId);
-
-                    if (node == null) {
-                        logger.warn("NODE {}: Not initialized yet (ie node unknown), ignoring message.", nodeId);
-                        continue;
-                    }
-                    logger.debug("NODE {}: Application Command Request ({}:{})", nodeId, node.getNodeState().toString(),
-                            node.getNodeInitStage().toString());
-
-                    List<ZWaveCommandClassPayload> commands = node
-                            .processCommand(new ZWaveCommandClassPayload(incomingMessage));
-                    if (commands != null) {
-                        logger.warn("NODE {}: Commands processed {}.", nodeId, commands.size());
-
-                        for (ZWaveCommandClassPayload command : commands) {
-                            logger.warn("NODE {}: Checking command {}.", nodeId, command);
-                            // Correlate transactions
-                            List<ZWaveTransaction> completed = new ArrayList<ZWaveTransaction>();
-
-                            synchronized (sendQueue) {
-                                for (ZWaveTransaction transaction : outstandingTransactions) {
-                                    logger.warn("NODE {}: Checking transaction {}  {}.", nodeId,
-                                            transaction.getTransactionId(), transaction.getExpectedReplyClass());
-                                    logger.warn("NODE {}: Checking transaction >> {} == {}.", nodeId,
-                                            command.getCommandClassId(), transaction.getExpectedCommandClass() == null
-                                                    ? null : transaction.getExpectedCommandClass().getKey());
-                                    logger.warn("NODE {}: Checking transaction >> {} == {}.", nodeId,
-                                            command.getCommandClassCommand(),
-                                            transaction.getExpectedCommandClassCommand());
-
-                                    if (transaction.getTransactionState() != TransactionState.WAIT_DATA) {
-                                        logger.warn("NODE {}: Ignoring transaction since not waiting for data.",
-                                                nodeId);
-                                        continue;
-                                    }
-
-                                    if (transaction
-                                            .getExpectedReplyClass() == SerialMessageClass.ApplicationCommandHandler
-                                            && transaction.getExpectedCommandClass() != null
-                                            && command.getCommandClassId() == transaction.getExpectedCommandClass()
-                                                    .getKey()
-                                            && command.getCommandClassCommand() == transaction
-                                                    .getExpectedCommandClassCommand()) {
-                                        logger.warn("NODE {}: Command verified {}.", nodeId, command);
-                                        // Notify the sender
-                                        notifyTransactionComplete(transaction);
-
-                                        // Notify the controller
-                                        controller.handleTransactionComplete(transaction, incomingMessage);
-
-                                        // Remove the transaction from the outstanding transaction list
-                                        if (transaction == lastTransaction) {
-                                            lastTransaction = null;
-                                        }
-                                        completed.add(transaction);
-                                    }
-                                }
-
-                                outstandingTransactions.removeAll(completed);
-                            }
-                        }
-                    }
-
-                } catch (ZWaveSerialMessageException e) {
-                    logger.error("Error processing frame: {} >> {}", incomingMessage.toString(), e.getMessage());
-                }
-            }
-        }
-        return incomingMessage;
-    }
-
-    void doLowLevelTransaction(ZWaveTransaction transaction) {
-        // Send the transaction
-        controller.sendPacket(transaction.getSerialMessage());
-
-        SerialMessage rxMsg;
-
-        // Wait for ACK
-        if ((rxMsg = takeReceiveQueue(500)) == null) {
-            logger.debug("Timeout waiting for ACK");
-            return;
-        }
-
-        switch (rxMsg.getMessageType()) {
-            case ACK:
-                logger.debug("Received msg: ACK");
-                break;
-            case NAK:
-                logger.debug("Received msg: NAK");
-                return;
-            case CAN:
-                logger.debug("Received msg: CAN");
-                return;
-            default:
-                break;
-        }
-
-        // Does this transaction require a RESponse?
-        if (transaction.getSerialMessageClass().requiresResponse()) {
-            if ((rxMsg = takeReceiveQueue(500)) == null) {
-                logger.debug("Timeout waiting for RESponse");
-                return;
-            }
-
-            ZWaveCommandProcessor processor = ZWaveCommandProcessor.getMessageDispatcher(rxMsg.getMessageClass());
-            if (processor != null) {
-                try {
-                    processor.handleResponse(controller, transaction, rxMsg);
-                } catch (ZWaveSerialMessageException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        // Does this transaction require a REQuest?
-        if (transaction.getSerialMessageClass().requiresRequest()) {
-            if ((rxMsg = takeReceiveQueue(500)) == null) {
-                logger.debug("Timeout waiting for REQuest");
-                return;
-            }
-
-            // TODO: This should loop to see if there's more requests needed.
-
-            ZWaveCommandProcessor processor = ZWaveCommandProcessor.getMessageDispatcher(rxMsg.getMessageClass());
-            if (processor != null) {
-                try {
-                    processor.handleRequest(controller, transaction, rxMsg);
-                } catch (ZWaveSerialMessageException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        }
-
-    }
-
     private class ZWaveReceiveThread extends Thread {
         @Override
         public void run() {
             SerialMessage incomingMessage;
             while (!interrupted()) {
-
-                // synchronized (recvQueue) {
                 if (recvQueue.isEmpty()) {
-
+                    // See if we need to send another message
+                    sendNextMessage();
+                    startTransactionTimer();
                 }
+
                 try {
                     incomingMessage = recvQueue.take();
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                     continue;
                 }
-                // }
 
                 ZWaveTransaction currentTransaction = null;
                 logger.debug("Received msg " + incomingMessage.toString());
@@ -538,10 +364,6 @@ public class ZWaveTransactionManager {
                         // Reset the transaction
                         outstandingTransactions.remove(lastTransaction);
                         lastTransaction = null;
-
-                        // See if we need to send another message
-                        sendNextMessage();
-                        startTransactionTimer();
                         continue;
                     default:
                         break;
@@ -574,11 +396,13 @@ public class ZWaveTransactionManager {
                                             logger.warn("NODE {}: Checking transaction {}  {}.", nodeId,
                                                     transaction.getTransactionId(),
                                                     transaction.getExpectedReplyClass());
-                                            logger.warn("NODE {}: Checking transaction >> {} == {}.", nodeId,
+                                            logger.warn("NODE {}: Checking transaction : state >> {}", nodeId,
+                                                    transaction.getTransactionState());
+                                            logger.warn("NODE {}: Checking transaction : class >> {} == {}.", nodeId,
                                                     command.getCommandClassId(),
                                                     transaction.getExpectedCommandClass() == null ? null
                                                             : transaction.getExpectedCommandClass().getKey());
-                                            logger.warn("NODE {}: Checking transaction >> {} == {}.", nodeId,
+                                            logger.warn("NODE {}: Checking transaction : commd >> {} == {}.", nodeId,
                                                     command.getCommandClassCommand(),
                                                     transaction.getExpectedCommandClassCommand());
 
@@ -610,6 +434,14 @@ public class ZWaveTransactionManager {
                                                     lastTransaction = null;
                                                 }
                                                 completed.add(transaction);
+
+                                                // Handle secure transactions
+                                                if (transaction instanceof ZWaveSecureTransaction) {
+                                                    secureQueue.add(((ZWaveSecureTransaction) transaction)
+                                                            .getLinkedTransaction());
+                                                }
+                                            } else {
+                                                logger.warn("NODE {}: Command NOT verified {}.", nodeId, command);
                                             }
                                         }
 
@@ -625,10 +457,6 @@ public class ZWaveTransactionManager {
                     } catch (ZWaveSerialMessageException e) {
                         logger.error("Error processing frame: {} >> {}", incomingMessage.toString(), e.getMessage());
                     }
-
-                    // See if we need to send another message
-                    sendNextMessage();
-                    startTransactionTimer();
                     continue;
                 }
 
@@ -657,9 +485,6 @@ public class ZWaveTransactionManager {
 
                         System.out
                                 .println("Transaction " + currentTransaction.getCallbackId() + " is last transaction");
-
-                        // No need to track this transaction now
-                        // lastTransaction = null;
                     } else {
                         // Try and correlate this incoming REQuest with a transaction
                         for (ZWaveTransaction transaction : outstandingTransactions) {
@@ -669,7 +494,6 @@ public class ZWaveTransactionManager {
 
                             ZWaveCommandProcessor msgClass = ZWaveCommandProcessor
                                     .getMessageDispatcher(incomingMessage.getMessageClass());
-                            // logger.debug(">>>>> msgClass {}", msgClass);
                             if (msgClass != null
                                     && msgClass.correlateTransactionResponse(transaction, incomingMessage)) {
                                 logger.debug("Correlated to transaction " + transaction.getCallbackId() + "......");
@@ -799,10 +623,6 @@ public class ZWaveTransactionManager {
                         logger.debug("NODE {}: **** Transaction not completed", currentTransaction.getNodeId());
                     }
                 }
-
-                // See if we need to send another message
-                sendNextMessage();
-                startTransactionTimer();
             }
             logger.debug("Exit RX");
         }
@@ -865,15 +685,17 @@ public class ZWaveTransactionManager {
     private void sendNextMessage() {
         logger.debug("Transaction SendNextMessage {} out at start", outstandingTransactions.size());
 
-        // If we're currently processing the core of a transaction, or there are too many outstanding transactions, then
-        // don't start another right now.
         synchronized (sendQueue) {
-            if (lastTransaction != null) {
-                logger.debug("Transaction lastTransaction outstanding", outstandingTransactions.size(),
+            // If we're currently processing the core of a transaction, or there are too many
+            // outstanding transactions, then don't start another right now.
+            if (lastTransaction != null || outstandingTransactions.size() >= MAX_OUTSTANDING_TRANSACTIONS) {
+                logger.debug("Transaction lastTransaction outstanding {}, {}", outstandingTransactions.size(),
                         lastTransaction);
                 return;
             }
 
+            // Get a message from the different queues
+            // Security first, then standard messages, then controller messages
             ZWaveTransaction transaction = getMessageFromQueue(secureQueue);
             if (transaction == null) {
                 transaction = getMessageFromQueue(sendQueue);
@@ -910,12 +732,6 @@ public class ZWaveTransactionManager {
                     // We have a NONCE, so encapsulate and send
                     logger.debug("NODE {}: NONCE available so encap and send.", transaction.getNodeId());
 
-                    // sendQueue.get(transaction.getQueueId()).remove(transaction);
-                    // if (sendQueue.get(transaction.getQueueId()).isEmpty()) {
-                    // logger.debug("getTransactionToSend 7");
-                    // sendQueue.remove(transaction.getQueueId());
-                    // }
-
                     ZWaveCommandClassTransactionPayload securePayload = new ZWaveCommandClassTransactionPayload(
                             transaction.getNodeId(),
                             securityCommandClass.getSecurityMessageEncapsulation(transaction.getPayloadBuffer()),
@@ -930,23 +746,12 @@ public class ZWaveTransactionManager {
                     // Request a nonce - create a temporary transaction
                     // We keep a reference to the original transaction so that if the nonce transaction fails, then we
                     // fail the real transaction and let the application deal with retries.
-                    ZWaveTransaction nonceTransaction = new ZWaveTransaction(
-                            securityCommandClass.getSecurityNonceGet());
-                    nonceTransaction.setLinkedTransaction(transaction);
-                    serialMessage = nonceTransaction.getSerialMessage();
+                    transaction = new ZWaveSecureTransaction(transaction, securityCommandClass.getSecurityNonceGet());
+                    serialMessage = transaction.getSerialMessage();
                 }
             } else {
                 logger.debug("getTransactionToSend 6");
-                // sendQueue.get(transaction.getQueueId()).remove(transaction);
-                // if (sendQueue.get(transaction.getQueueId()).isEmpty()) {
-                // logger.debug("getTransactionToSend 7");
-                // sendQueue.remove(transaction.getQueueId());
-                // }
                 serialMessage = transaction.getSerialMessage();
-            }
-
-            if (outstandingTransactions.size() >= MAX_OUTSTANDING_TRANSACTIONS) {
-
             }
 
             // Add this message to the outstandingTransactions list
@@ -955,7 +760,6 @@ public class ZWaveTransactionManager {
                     .setTransmitOptions(TRANSMIT_OPTION_ACK | TRANSMIT_OPTION_AUTO_ROUTE | TRANSMIT_OPTION_EXPLORE);
             controller.sendPacket(serialMessage);
 
-            logger.debug("Transaction SendNextMessage about to start: {}", transaction);
             transaction.transactionStart();
             logger.debug("Transaction SendNextMessage started: {}", transaction);
 
@@ -965,7 +769,6 @@ public class ZWaveTransactionManager {
                     transaction.getExpectedCommandClassCommand());
 
             outstandingTransactions.add(transaction);
-            // System.out.println("-----> Sending message " + transaction.getSerialMessage().toString());
             System.out.println("Transactions outstanding: " + outstandingTransactions.size());
             logger.debug("Transaction SendNextMessage Transactions outstanding: {}", outstandingTransactions.size());
             transaction.setTimeout(getNextTimer(transaction));

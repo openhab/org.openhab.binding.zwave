@@ -478,6 +478,7 @@ public class ZWaveNodeInitStageAdvancer {
         // securely included
         logger.debug("NODE {}: SECURITY_INC State=SECURE_PING", node.getNodeId());
         if (processTransaction(securityCommandClass.getSecurityNonceGet(), 0, 3) == false) {
+            logger.error("NODE {}: SECURITY_INC State=FAILED", node.getNodeId());
             return;
         }
 
