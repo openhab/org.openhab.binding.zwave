@@ -274,6 +274,7 @@ public class ZWaveNode {
                 break;
         }
 
+        // Notify the listeners
         ZWaveEvent zEvent = new ZWaveNodeStatusEvent(this.getNodeId(), state);
         controller.notifyEventListeners(zEvent);
 

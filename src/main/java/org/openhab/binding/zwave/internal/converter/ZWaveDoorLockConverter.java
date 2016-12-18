@@ -92,7 +92,7 @@ public class ZWaveDoorLockConverter extends ZWaveCommandClassConverter {
 
         Integer value = null;
         if (command instanceof OnOffType) {
-            value = ((OnOffType) command) == OnOffType.ON ? 0xff : 0x00;
+            value = ((OnOffType) command) == OnOffType.ON ? 0x00 : 0xff;
         }
         if (value == null) {
             return null;

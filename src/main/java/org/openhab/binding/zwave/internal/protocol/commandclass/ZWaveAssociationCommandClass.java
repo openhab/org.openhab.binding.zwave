@@ -125,7 +125,7 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
 
         if (payload.getPayloadLength() > 4) {
             logger.debug("NODE {}: association group {} includes the following nodes:", getNode().getNodeId(), group);
-            int numAssociations = payload.getPayloadLength() - (4);
+            int numAssociations = payload.getPayloadLength() - (5);
             for (int cnt = 0; cnt < numAssociations; cnt++) {
                 int node = payload.getPayloadByte(5 + cnt);
                 logger.debug("Node {}", node);

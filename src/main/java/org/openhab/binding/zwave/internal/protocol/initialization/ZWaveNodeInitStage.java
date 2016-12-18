@@ -21,7 +21,7 @@ public enum ZWaveNodeInitStage {
     FAILED_CHECK(true),
     WAIT(true),
     PING(true),
-    DETAILS(true),
+    REQUEST_NIF(true),
 
     // States below form the main part of the initialisation
     // For newly included devices, we start here

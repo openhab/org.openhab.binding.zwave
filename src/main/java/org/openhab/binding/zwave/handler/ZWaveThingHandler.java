@@ -237,19 +237,21 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     // First time round, and this is a command - then add the command
                     if (first && ("*".equals(bindingType[1]) || "Command".equals(bindingType[1]))) {
                         thingChannelsCmd.add(chan);
-                        logger.debug("NODE {}: Initialising cmd channel {}", nodeId, channel.getUID());
+                        logger.debug("NODE {}: Initialising cmd channel {} for {}", nodeId, channel.getUID(), dataType);
                     }
 
                     // First time round, then add the polling class
                     // TODO: Probably should check for duplicates
                     if (first) {
                         thingChannelsPoll.add(chan);
-                        logger.debug("NODE {}: Initialising poll channel {}", nodeId, channel.getUID());
+                        logger.debug("NODE {}: Initialising poll channel {} for {}", nodeId, channel.getUID(),
+                                dataType);
                     }
 
                     // Add the state and polling handlers
                     if ("*".equals(bindingType[1]) || "State".equals(bindingType[1])) {
-                        logger.debug("NODE {}: Initialising state channel {}", nodeId, channel.getUID());
+                        logger.debug("NODE {}: Initialising state channel {} for {}", nodeId, channel.getUID(),
+                                dataType);
                         thingChannelsState.add(chan);
                     }
 
@@ -903,7 +905,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
 
         if (cmdChannel.converter == null) {
-            logger.warn("NODE {}: No converter set for command {} type {}", nodeId, channelUID, dataType);
+            logger.warn("NODE {}: No command converter set for command {} type {}", nodeId, channelUID, dataType);
             return;
         }
 
@@ -1094,7 +1096,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 }
 
                 if (channel.converter == null) {
-                    logger.warn("NODE {}: No converter set for channel {}", nodeId, channel.getUID());
+                    logger.warn("NODE {}: No state converter set for channel {}", nodeId, channel.getUID());
                     return;
                 }
 

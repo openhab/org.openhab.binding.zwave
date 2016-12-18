@@ -144,7 +144,7 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass implements ZWaveC
         this.maxInterval = ((payload.getPayloadByte(5)) << 16) | ((payload.getPayloadByte(6)) << 8)
                 | (payload.getPayloadByte(7));
         this.defaultInterval = ((payload.getPayloadByte(8)) << 16) | ((payload.getPayloadByte(9)) << 8)
-                | (payload.getPayloadByte(20));
+                | (payload.getPayloadByte(10));
         this.intervalStep = ((payload.getPayloadByte(11)) << 16) | ((payload.getPayloadByte(12)) << 8)
                 | (payload.getPayloadByte(13));
 

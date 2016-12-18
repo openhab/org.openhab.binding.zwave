@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.Arrays;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
@@ -35,6 +36,7 @@ public class ZWaveSecurityCommandClassTest {
         // assertTrue(Arrays.equals(expectedBytes, actualBytes));
     }
 
+    @Ignore
     @Test
     public void testEncapsulatePayload() throws Exception {
         byte nodeId = 0x01;
