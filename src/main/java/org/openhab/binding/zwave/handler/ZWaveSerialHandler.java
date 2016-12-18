@@ -201,6 +201,14 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
         public void run() {
             logger.debug("Starting ZWave thread: Receive");
             try {
+                // Initialise all the statistics channels
+                updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_SOF), new DecimalType(SOFCount));
+                updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_ACK), new DecimalType(ACKCount));
+                updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_NAK), new DecimalType(NAKCount));
+                updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_CAN), new DecimalType(CANCount));
+                updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_OOF), new DecimalType(OOFCount));
+                updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_CSE), new DecimalType(CSECount));
+
                 // Send a NAK to resynchronise communications
                 sendResponse(NAK);
 

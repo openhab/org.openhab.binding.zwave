@@ -266,7 +266,7 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
     @ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_NONCE_GET, name = "SECURITY_NONCE_GET")
     public void handleSecurityNonceGet(ZWaveCommandClassPayload payload, int endpoint) {
         ourNonce = new ZWaveNonce();
-        getController().enqueue(new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
+        getController().enqueueNonce(new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
                 CommandClassSecurityV1.getSecurityNonceReport(ourNonce.getNonceBytes()))
                         .withPriority(TransactionPriority.NonceResponse).build());
     }

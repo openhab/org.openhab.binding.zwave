@@ -230,6 +230,21 @@ public class ZWaveTransactionManager {
      * @param payload
      * @return
      */
+    public long queueNonceReportForSend(ZWaveMessagePayloadTransaction payload) {
+        // Create a transaction from our payload data
+        ZWaveTransaction transaction = new ZWaveTransaction(payload);
+        if (payload.getMaxAttempts() != 0) {
+            transaction.setAttemptsRemaining(payload.getMaxAttempts());
+        }
+        transaction.getSerialMessageClass();
+
+        // Add the transaction to the queue
+        secureQueue.add(transaction);
+        logger.debug("NODE {}: Added to secure queue - size {}", transaction.getNodeId(), secureQueue.size());
+
+        return transaction.getTransactionId();
+    }
+
     public long queueTransactionForSend(ZWaveMessagePayloadTransaction payload) {
         // Create a transaction from our payload data
         ZWaveTransaction transaction = new ZWaveTransaction(payload);
@@ -245,14 +260,13 @@ public class ZWaveTransactionManager {
     }
 
     void addTransactionToQueue(ZWaveTransaction transaction) {
-        logger.debug("NODE {}: addTransactionToQueue 1 -- {}", transaction.getNodeId(), transaction.getQueueId());
+        logger.debug("NODE {}: addTransactionToQueue 1 -- QueueID={}", transaction.getNodeId(),
+                transaction.getQueueId());
         synchronized (sendQueue) {
             // The queue is a map containing a queue for each node
             // Check if this node is in the queue
-            if (transaction.getRequiresSecurity()) {
-                secureQueue.add(transaction);
-                logger.debug("NODE {}: Added to secure queue - size {}", transaction.getNodeId(), secureQueue.size());
-            } else if (transaction.getNodeId() == 255) {
+            // if (transaction.getRequiresSecurity()) {
+            if (transaction.getNodeId() == 255) {
                 controllerQueue.add(transaction);
                 logger.debug("NODE {}: Added to controller queue - size {}", transaction.getNodeId(),
                         controllerQueue.size());
@@ -686,28 +700,34 @@ public class ZWaveTransactionManager {
         logger.debug("Transaction SendNextMessage {} out at start", outstandingTransactions.size());
 
         synchronized (sendQueue) {
+            ZWaveTransaction transaction = getMessageFromQueue(secureQueue);
+
             // If we're currently processing the core of a transaction, or there are too many
             // outstanding transactions, then don't start another right now.
-            if (lastTransaction != null || outstandingTransactions.size() >= MAX_OUTSTANDING_TRANSACTIONS) {
-                logger.debug("Transaction lastTransaction outstanding {}, {}", outstandingTransactions.size(),
-                        lastTransaction);
+            if (lastTransaction != null) {
+                logger.debug("Transaction lastTransaction outstanding...", outstandingTransactions.size());
                 return;
             }
 
-            // Get a message from the different queues
-            // Security first, then standard messages, then controller messages
-            ZWaveTransaction transaction = getMessageFromQueue(secureQueue);
-            if (transaction == null) {
-                transaction = getMessageFromQueue(sendQueue);
-                if (transaction != null) {
-                    logger.debug("Transaction from sendQueue");
+            if (outstandingTransactions.size() == 0) {
+                // logger.debug("Transaction lastTransaction outstanding {}, {}", outstandingTransactions.size(),
+                // lastTransaction);
+
+                // } else {
+                // Get a message from the different queues
+                // Security first, then standard messages, then controller messages
+                if (transaction == null) {
+                    transaction = getMessageFromQueue(sendQueue);
+                    if (transaction != null) {
+                        logger.debug("Transaction from sendQueue");
+                    }
+                } else {
+                    logger.debug("Transaction from secureQueue");
                 }
-            } else {
-                logger.debug("Transaction from secureQueue");
-            }
-            if (transaction == null) {
-                transaction = controllerQueue.poll();
-                logger.debug("Transaction from controllerQueue");
+                if (transaction == null) {
+                    transaction = controllerQueue.poll();
+                    logger.debug("Transaction from controllerQueue");
+                }
             }
 
             if (transaction == null) {

@@ -496,6 +496,16 @@ public class ZWaveController {
         transactionManager.queueTransactionForSend(payload);
     }
 
+    public void enqueueNonce(ZWaveMessagePayloadTransaction payload) {
+        // Sanity check!
+        if (payload == null) {
+            logger.debug("Attempt to queue null message");
+            return;
+        }
+
+        transactionManager.queueNonceReportForSend(payload);
+    }
+
     public ZWaveTransactionResponse sendTransaction(ZWaveMessagePayloadTransaction transaction) {
         return transactionManager.sendTransaction(transaction);
     }
