@@ -444,6 +444,7 @@ public class ZWaveDeviceClass {
         ADVANCED_DOOR_LOCK(2, Generic.ENTRY_CONTROL, "Advanced Door Lock"),
         SECURE_KEYPAD_DOOR_LOCK(3, Generic.ENTRY_CONTROL, "Secure Keypad Door Lock"),
         SECURE_BARRIER(7, Generic.ENTRY_CONTROL, "Secure Barrier Add-on"),
+        SPECIFIC_TYPE_SECURE_LOCKBOX(10, Generic.ENTRY_CONTROL, "SPECIFIC_TYPE_SECURE_LOCKBOX"),
 
         ENERGY_PRODUCTION(1, Generic.SEMI_INTEROPERABLE, "Energy Production"),
 
@@ -617,7 +618,7 @@ public class ZWaveDeviceClass {
 
                 case SPECIFIC_TYPE_GATEWAY:
                     return new CommandClass[] { CommandClass.VERSION, CommandClass.MANUFACTURER_SPECIFIC,
-                                                CommandClass.SECURITY };
+                            CommandClass.SECURITY };
                 default:
                     return new CommandClass[0];
             }
