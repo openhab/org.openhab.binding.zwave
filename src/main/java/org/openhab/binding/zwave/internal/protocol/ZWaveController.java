@@ -312,23 +312,8 @@ public class ZWaveController {
                     initList.add(addNode(nodeId));
                 }
 
-                // Notify the system that we're up and running
-                new Thread() {
-                    @Override
-                    public void run() {
-                        for (Thread thread : initList) {
-                            try {
-                                logger.debug("Waiting for init thread {}", thread.getName());
-                                thread.join();
-                                logger.debug("Init thread {} complete", thread.getName());
-                            } catch (InterruptedException e) {
-                            }
-                        }
-                        logger.debug("All init threads complete");
-                        notifyEventListeners(new ZWaveNetworkStateEvent(true));
-                    }
-                }.start();
-
+                // Wait for all threads to complete starting initialisation before we advise the system
+                new ZWaveInitWaitThread(initList).start();
                 break;
             default:
                 break;
@@ -367,6 +352,34 @@ public class ZWaveController {
         thread.start();
 
         return thread;
+    }
+
+    /**
+     * Thread to wait for all nodes to complete the init thread before notifying the system that we're alive.
+     * This ensures that all nodes exist in the system before application layers come online.
+     *
+     */
+    private class ZWaveInitWaitThread extends Thread {
+        List<Thread> initList;
+
+        ZWaveInitWaitThread(List<Thread> initList) {
+            this.initList = initList;
+        }
+
+        @Override
+        public void run() {
+            logger.debug("Starting waiting for init threads");
+            for (Thread thread : initList) {
+                try {
+                    logger.debug("Waiting for init thread {}", thread.getName());
+                    thread.join();
+                    logger.debug("Init thread {} complete", thread.getName());
+                } catch (InterruptedException e) {
+                }
+            }
+            logger.debug("All init threads complete");
+            notifyEventListeners(new ZWaveNetworkStateEvent(true));
+        }
     }
 
     private class ZWaveInitNodeThread extends Thread {

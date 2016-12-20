@@ -89,6 +89,10 @@ public class ZWaveDoorLockConverter extends ZWaveCommandClassConverter {
             Command command) {
         ZWaveDoorLockCommandClass commandClass = (ZWaveDoorLockCommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_DOOR_LOCK, channel.getEndpoint());
+        if (commandClass == null) {
+            logger.warn("NODE {}: Command class COMMAND_CLASS_DOOR_LOCK not found", node.getNodeId());
+            return null;
+        }
 
         Integer value = null;
         if (command instanceof OnOffType) {
@@ -104,8 +108,8 @@ public class ZWaveDoorLockConverter extends ZWaveCommandClassConverter {
                 commandClass, channel.getEndpoint());
 
         if (transaction == null) {
-            logger.warn("Generating message failed for command class = {}, node = {}, endpoint = {}",
-                    commandClass.getCommandClass(), node.getNodeId(), channel.getEndpoint());
+            logger.warn("NODE {}: Generating message failed for command class = {}, endpoint = {}", node.getNodeId(),
+                    commandClass.getCommandClass(), channel.getEndpoint());
             return null;
         }
 

@@ -72,14 +72,14 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
     private SecretKey rxAuthenticationKey;
 
     // Our last nonce we sent to the remove
+    @XStreamOmitField
     private ZWaveNonce ourNonce = null;
 
     // The last nonce we received from the remote
+    @XStreamOmitField
     private ZWaveNonce theirNonce = null;
 
     private static final String AES = "AES";
-
-    private boolean securelyIncluded = false;
 
     private static final List<Byte> securityRequired = Arrays.asList(new Byte[] {
             CommandClassSecurityV1.NETWORK_KEY_SET, CommandClassSecurityV1.NETWORK_KEY_VERIFY,

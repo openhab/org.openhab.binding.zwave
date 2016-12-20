@@ -153,7 +153,8 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
     }
 
     public ZWaveCommandClassTransactionPayload setValueMessage(int value) {
-        logger.debug("NODE {}: Creating new message for application command DOORLOCK_SET", getNode().getNodeId());
+        logger.debug("NODE {}: Creating new message for application command DOORLOCK_SET, value {}",
+                getNode().getNodeId(), value);
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), DOOR_LOCK_SET)
                 .withPayload(value).withPriority(TransactionPriority.Get).build();
