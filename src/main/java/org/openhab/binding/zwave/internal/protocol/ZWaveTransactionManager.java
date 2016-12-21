@@ -700,14 +700,16 @@ public class ZWaveTransactionManager {
         logger.debug("Transaction SendNextMessage {} out at start", outstandingTransactions.size());
 
         synchronized (sendQueue) {
-            ZWaveTransaction transaction = getMessageFromQueue(secureQueue);
-
             // If we're currently processing the core of a transaction, or there are too many
             // outstanding transactions, then don't start another right now.
             if (lastTransaction != null) {
                 logger.debug("Transaction lastTransaction outstanding...", outstandingTransactions.size());
                 return;
             }
+
+            // If we're sending a NONCE then we want to ignore the sleeping state of the device.
+            // We assume that if the device just sent us a NONCE_REQUEST then it must be awake
+            ZWaveTransaction transaction = secureQueue.poll();
 
             if (outstandingTransactions.size() == 0) {
                 // logger.debug("Transaction lastTransaction outstanding {}, {}", outstandingTransactions.size(),

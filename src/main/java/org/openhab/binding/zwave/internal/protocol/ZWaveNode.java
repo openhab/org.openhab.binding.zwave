@@ -1019,9 +1019,6 @@ public class ZWaveNode {
      * @param endpointId the instance / endpoint to encapsulate the message for
      * @return SerialMessage on success, null on failure.
      */
-    // public ZWaveCommandClassTransactionPayload encapsulate(int endpointId,
-    // ZWaveCommandClassTransactionPayload transaction) {
-    // ZWaveCommandClass commandClass, ) {
     public ZWaveCommandClassTransactionPayload encapsulate(ZWaveCommandClassTransactionPayload transaction,
             ZWaveCommandClass commandClass, int endpointId) {
         ZWaveMultiInstanceCommandClass multiInstanceCommandClass;
@@ -1131,6 +1128,7 @@ public class ZWaveNode {
                         .getInstance(CommandClass.COMMAND_CLASS_SECURITY.getKey(), this, controller);
                 if (securityCommandClass != null) {
                     logger.debug("NODE {}: Adding COMMAND_CLASS_SECURITY", nodeId);
+                    securityCommandClass.setNetworkKey(controller.getSecurityKey());
                     addCommandClass(securityCommandClass);
                 } else {
                     logger.debug("NODE {}: Unable to instantiate COMMAND_CLASS_SECURITY", nodeId);
@@ -1255,20 +1253,21 @@ public class ZWaveNode {
         }
 
         // We're awake
-        this.awake = true;
-        logger.debug("NODE {}: Node is awake with {} messages in the queue", getNodeId(),
-                controller.getSendQueueLength(getNodeId()));
+        this.awake = awake;
 
         // Start the timer
         if (awake == true) {
+            logger.debug("NODE {}: Node is awake with {} messages in the queue", getNodeId(),
+                    controller.getSendQueueLength(getNodeId()));
+
             setSleepTimer();
+
+            // Notify application
+            ZWaveEvent event = new ZWaveNodeStatusEvent(getNodeId(), ZWaveNodeState.AWAKE);
+            controller.notifyEventListeners(event);
         } else {
             resetSleepTimer();
         }
-
-        // Notify application
-        ZWaveEvent event = new ZWaveNodeStatusEvent(getNodeId(), ZWaveNodeState.AWAKE);
-        controller.notifyEventListeners(event);
     }
 
     /**
