@@ -1133,11 +1133,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             }
 
             switch (((ZWaveWakeUpEvent) incomingEvent).getEvent()) {
-                case ZWaveWakeUpCommandClass.WAKE_UP_NOTIFICATION:
-                    Map<String, String> properties = editProperties();
-                    properties.put(ZWaveBindingConstants.PROPERTY_WAKEUP_TIME, getISO8601StringForCurrentDate());
-                    updateProperties(properties);
-                    break;
                 case ZWaveWakeUpCommandClass.WAKE_UP_INTERVAL_REPORT:
                     ZWaveWakeUpCommandClass commandClass = (ZWaveWakeUpCommandClass) node
                             .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
@@ -1158,6 +1153,13 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             ZWaveNodeStatusEvent event = (ZWaveNodeStatusEvent) incomingEvent;
 
             switch (event.getState()) {
+                case AWAKE:
+                    Map<String, String> properties = editProperties();
+                    properties.put(ZWaveBindingConstants.PROPERTY_LASTWAKEUP, getISO8601StringForCurrentDate());
+                    updateProperties(properties);
+                    break;
+                case ASLEEP:
+                    break;
                 case INITIALIZING:
                 case ALIVE:
                     logger.debug("NODE {}: Setting ONLINE", nodeId);

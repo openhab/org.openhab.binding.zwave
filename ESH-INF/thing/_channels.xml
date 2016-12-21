@@ -175,7 +175,7 @@
         <label>Smoke alarm</label>
         <description>Indicates if a smoke is triggered
         </description>
-        <category>Door</category>
+        <category>Smoke</category>
         <state readOnly="true">
             <options>
                 <option value="OFF">Ok</option>
@@ -470,6 +470,7 @@
         <item-type>Number</item-type>
         <label>Smoke Alarm</label>
         <description>Smoke Alarm</description>
+        <category>Smoke</category>
         <state readOnly="true">
             <options>
                 <option value="0">Previous Events cleared</option>

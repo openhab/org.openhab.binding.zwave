@@ -131,6 +131,7 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass implements ZWaveC
 
         interval = receivedInterval;
 
+        // TODO Change this to send a value notification
         ZWaveWakeUpEvent event = new ZWaveWakeUpEvent(getNode().getNodeId(), WAKE_UP_INTERVAL_REPORT);
         getController().notifyEventListeners(event);
     }

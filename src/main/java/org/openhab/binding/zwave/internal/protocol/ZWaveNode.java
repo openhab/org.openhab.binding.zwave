@@ -166,7 +166,7 @@ public class ZWaveNode {
      * @param controller the wave controller instance
      */
     public void setRestoredFromConfigfile(ZWaveController controller) {
-        nodeState = ZWaveNodeState.ALIVE; // TODO: ??? INITIALIZING;
+        nodeState = ZWaveNodeState.ALIVE;
 
         this.controller = controller;
 
@@ -252,7 +252,19 @@ public class ZWaveNode {
             return;
         }
 
+        // Notify the listeners
+        ZWaveEvent zEvent = new ZWaveNodeStatusEvent(getNodeId(), state);
+        controller.notifyEventListeners(zEvent);
+
         switch (state) {
+            case AWAKE:
+                state = ZWaveNodeState.ALIVE;
+                break;
+
+            case ASLEEP:
+                state = ZWaveNodeState.ALIVE;
+                break;
+
             case ALIVE:
                 logger.debug("NODE {}: Node is ALIVE. Init stage is {}.", nodeId, getNodeInitStage().toString());
 
@@ -275,10 +287,6 @@ public class ZWaveNode {
             case INITIALIZING:
                 break;
         }
-
-        // Notify the listeners
-        ZWaveEvent zEvent = new ZWaveNodeStatusEvent(this.getNodeId(), state);
-        controller.notifyEventListeners(zEvent);
 
         nodeState = state;
     }
@@ -1248,6 +1256,10 @@ public class ZWaveNode {
         } else {
             resetSleepTimer();
         }
+
+        // Notify application
+        ZWaveEvent event = new ZWaveNodeStatusEvent(getNodeId(), ZWaveNodeState.AWAKE);
+        controller.notifyEventListeners(event);
     }
 
     /**

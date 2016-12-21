@@ -17,5 +17,7 @@ public enum ZWaveNodeState {
     INITIALIZING,
     ALIVE,
     DEAD,
-    FAILED;
+    FAILED,
+    AWAKE,
+    ASLEEP;
 }

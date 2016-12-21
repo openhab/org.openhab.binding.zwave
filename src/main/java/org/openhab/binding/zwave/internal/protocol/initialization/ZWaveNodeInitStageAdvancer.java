@@ -188,15 +188,17 @@ public class ZWaveNodeInitStageAdvancer {
                             node.getNodeId());
                     currentStage = ZWaveNodeInitStage.SESSION_START;
                 }
-                if (startStage.ordinal() <= ZWaveNodeInitStage.INCLUSION_START.ordinal()) {
+                if (currentStage.ordinal() <= ZWaveNodeInitStage.INCLUSION_START.ordinal()) {
                     doSecureStages();
                 }
-                if (startStage.ordinal() <= ZWaveNodeInitStage.STATIC_VALUES.ordinal()) {
+                if (currentStage.ordinal() <= ZWaveNodeInitStage.STATIC_VALUES.ordinal()) {
                     doStaticStages();
                 }
-                if (startStage.ordinal() <= ZWaveNodeInitStage.DYNAMIC_VALUES.ordinal()) {
+                setCurrentStage(ZWaveNodeInitStage.STATIC_END);
+                if (currentStage.ordinal() <= ZWaveNodeInitStage.DYNAMIC_VALUES.ordinal()) {
                     doDynamicStages();
                 }
+                setCurrentStage(ZWaveNodeInitStage.DYNAMIC_END);
                 doHealStages();
             }
         };
@@ -915,8 +917,6 @@ public class ZWaveNodeInitStageAdvancer {
                 }
             }
         }
-
-        setCurrentStage(ZWaveNodeInitStage.STATIC_END);
     }
 
     void doDynamicStages() {
@@ -953,9 +953,6 @@ public class ZWaveNodeInitStageAdvancer {
         }
 
         logger.debug("NODE {}: Node advancer: Initialisation complete!", node.getNodeId());
-
-        // Notify everyone that we've completed initialisation!
-        setCurrentStage(ZWaveNodeInitStage.DYNAMIC_END);
     }
 
     void doHealStages() {
