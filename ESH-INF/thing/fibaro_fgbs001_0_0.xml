@@ -53,12 +53,6 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:4,COMMAND_CLASS_BASIC:4</property>
         </properties>
       </channel>
-      <channel id="sensor_temperature4" typeId="sensor_temperature">
-        <label>Temperature 2</label>
-        <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:4,BASIC:4</property>
-        </properties>
-      </channel>
       <channel id="sensor_temperature5" typeId="sensor_temperature">
         <label>Temperature 3</label>
         <properties>

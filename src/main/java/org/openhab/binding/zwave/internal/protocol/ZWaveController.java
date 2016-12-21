@@ -233,18 +233,6 @@ public class ZWaveController {
     }
 
     /**
-     * Handles a failed SendData request. This can either be because of the
-     * stick actively reporting it or because of a time-out of the transaction
-     * in the send thread.
-     *
-     * @param originalMessage
-     *            the original message that was sent
-     */
-    // private void handleFailedSendDataRequest(SerialMessage originalMessage) {
-    // new SendDataMessageClass().handleFailedSendDataRequest(this, originalMessage);
-    // }
-
-    /**
      * Handles an incoming response message. An incoming response message is a
      * response, based one of our own requests.
      *
@@ -306,7 +294,6 @@ public class ZWaveController {
                 enqueue(new SerialApiGetInitDataMessageClass().doRequest());
                 break;
             case SerialApiGetInitData:
-                // this.isConnected = true;
                 List<Thread> initList = new ArrayList<Thread>();
                 for (Integer nodeId : ((SerialApiGetInitDataMessageClass) processor).getNodes()) {
                     initList.add(addNode(nodeId));

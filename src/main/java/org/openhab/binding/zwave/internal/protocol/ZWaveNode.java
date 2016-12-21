@@ -151,8 +151,10 @@ public class ZWaveNode {
      * Closes the node and stops any running processes
      */
     public void close() {
-        nodeInitStageAdvancer.stopInitialisation();
-        nodeInitStageAdvancer = null;
+        if (nodeInitStageAdvancer != null) {
+            nodeInitStageAdvancer.stopInitialisation();
+            nodeInitStageAdvancer = null;
+        }
     }
 
     /**
@@ -618,6 +620,17 @@ public class ZWaveNode {
 
     public void initialiseNode(ZWaveNodeInitStage startStage) {
         nodeInitStageAdvancer.startInitialisation(startStage);
+    }
+
+    /**
+     * Heal the node
+     */
+    public void healNode() {
+        if (nodeInitStageAdvancer.isInitializationComplete() == false) {
+            return;
+        }
+
+        nodeInitStageAdvancer.startInitialisation(ZWaveNodeInitStage.HEAL_START);
     }
 
     /**

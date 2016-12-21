@@ -83,6 +83,7 @@ public class ZWaveBindingConstants {
     public final static String PROPERTY_ZWPLUS_DEVICETYPE = "zwave_plus_devicetype";
     public final static String PROPERTY_WAKEUP_TIME = "zwave_wakeup_time";
     public final static String PROPERTY_USINGSECURITY = "zwave_secure";
+    public final static String PROPERTY_LASTHEAL = "zwave_lastheal";
 
     public final static String CHANNEL_SERIAL_SOF = "serial_sof";
     public final static String CHANNEL_SERIAL_ACK = "serial_ack";
@@ -158,6 +159,11 @@ public class ZWaveBindingConstants {
             "Remove node {0} failed - the controller is busy");
     public final static I18nConstant EVENT_REMOVEFAILED_UNKNOWN = new I18nConstant("zwave.event.removenode_unknown",
             "Remove node {0} failed with unknown error");
+
+    public final static I18nConstant EVENT_HEAL_START = new I18nConstant("zwave.event.heal_start",
+            "Node {0} starting network mesh update");
+    public final static I18nConstant EVENT_HEAL_DONE = new I18nConstant("zwave.event.heal_done",
+            "Node {0} network mesh update complete");
 
     public final static I18nConstant CONFIG_BINDING_POLLINGPERIOD_LABEL = new I18nConstant(
             "zwave.config.binding_pollingperiod_label", "Polling Period");

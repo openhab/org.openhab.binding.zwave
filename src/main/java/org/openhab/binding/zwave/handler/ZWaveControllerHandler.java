@@ -11,11 +11,14 @@ package org.openhab.binding.zwave.handler;
 import static org.openhab.binding.zwave.ZWaveBindingConstants.*;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.smarthome.config.core.Configuration;
 import org.eclipse.smarthome.config.core.validation.ConfigValidationException;
@@ -78,6 +81,8 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     private final int SEARCHTIME_DEFAULT = 30;
     private int searchTime;
 
+    private ScheduledFuture<?> pollingJob = null;
+
     public ZWaveControllerHandler(Bridge bridge) {
         super(bridge);
     }
@@ -126,7 +131,6 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         if (param instanceof String && param != null) {
             networkKey = (String) param;
         }
-
         if (networkKey.length() == 0) {
             // Create random network key
             networkKey = "";
@@ -146,6 +150,28 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             } catch (IllegalStateException e) {
                 // Eat it for now...
             }
+        }
+
+        param = getConfig().get(CONFIGURATION_HEALTIME);
+        if (param instanceof BigDecimal && param != null) {
+            healTime = ((BigDecimal) param).intValue();
+        } else {
+            healTime = -1;
+        }
+
+        if (healTime == -1) {
+            Calendar cal = Calendar.getInstance();
+            Runnable pollingRunnable = new Runnable() {
+                @Override
+                public void run() {
+
+                }
+            };
+            int hours = healTime - cal.get(Calendar.HOUR);
+            if (hours < 0) {
+                hours += 24;
+            }
+            pollingJob = scheduler.scheduleAtFixedRate(pollingRunnable, hours, 24, TimeUnit.HOURS);
         }
 
         // We must set the state
@@ -184,6 +210,11 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
     @Override
     public void dispose() {
+        if (pollingJob != null) {
+            pollingJob.cancel(true);
+            pollingJob = null;
+        }
+
         // Remove the discovery service
         if (discoveryService != null) {
             discoveryService.deactivate();
@@ -192,10 +223,6 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         if (discoveryRegistration != null) {
             discoveryRegistration.unregister();
         }
-
-        // if (this.converterHandler != null) {
-        // this.converterHandler = null;
-        // }
 
         ZWaveController controller = this.controller;
         if (controller != null) {

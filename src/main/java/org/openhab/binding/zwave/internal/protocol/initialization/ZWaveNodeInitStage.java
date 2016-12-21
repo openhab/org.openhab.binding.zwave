@@ -48,14 +48,15 @@ public enum ZWaveNodeInitStage {
     DYNAMIC_VALUES(false),
     DYNAMIC_END(false),
 
+    DONE(false),
+
     // States below are performed during initialisation, but also during heal
     HEAL_START(false),
     UPDATE_NEIGHBORS(false),
     GET_NEIGHBORS(false),
     DELETE_ROUTES(false),
     RETURN_ROUTES(false),
-
-    DONE(false);
+    HEAL_END(false);
 
     private boolean mandatory;
 

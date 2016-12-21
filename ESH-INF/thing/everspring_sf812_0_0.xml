@@ -16,7 +16,7 @@ Smoke Sensor<br /><h1>Overview</h1><p>The photoelectric Smoke Detector is a Z-Wa
       <channel id="alarm_tamper" typeId="alarm_tamper">
         <label>Alarm (tamper)</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=SMOKE</property>
         </properties>
       </channel>
       <channel id="alarm_battery" typeId="alarm_battery">

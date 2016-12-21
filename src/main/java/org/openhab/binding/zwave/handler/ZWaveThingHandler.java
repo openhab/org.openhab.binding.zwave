@@ -28,6 +28,8 @@ import java.util.concurrent.TimeUnit;
 import org.eclipse.smarthome.config.core.Configuration;
 import org.eclipse.smarthome.config.core.status.ConfigStatusMessage;
 import org.eclipse.smarthome.config.core.validation.ConfigValidationException;
+import org.eclipse.smarthome.core.events.Event;
+import org.eclipse.smarthome.core.events.EventPublisher;
 import org.eclipse.smarthome.core.thing.Bridge;
 import org.eclipse.smarthome.core.thing.Channel;
 import org.eclipse.smarthome.core.thing.ChannelUID;
@@ -42,8 +44,12 @@ import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.RefreshType;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
+import org.openhab.binding.zwave.event.BindingEventDTO;
+import org.openhab.binding.zwave.event.BindingEventFactory;
+import org.openhab.binding.zwave.event.BindingEventType;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
+import org.openhab.binding.zwave.internal.ZWaveEventPublisher;
 import org.openhab.binding.zwave.internal.ZWaveProduct;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociation;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
@@ -1171,9 +1177,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         if (incomingEvent instanceof ZWaveInitializationStateEvent) {
             ZWaveInitializationStateEvent initEvent = (ZWaveInitializationStateEvent) incomingEvent;
             switch (initEvent.getStage()) {
-                case DONE:
+                case STATIC_END:
                     // Update some properties first...
-                    updateNodeNeighbours();
                     updateNodeProperties();
 
                     // Do we need to change type?
@@ -1186,9 +1191,48 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         logger.debug("NODE {}: Setting ONLINE", nodeId);
                         updateStatus(ThingStatus.ONLINE);
 
-                        // Now that this node is completely initialised, we want to re-process all channels
+                        // Now that this node is initialised, we want to re-process all channels
                         initialiseNode();
                     }
+                    break;
+                case HEAL_START:
+                    EventPublisher epHealStart = ZWaveEventPublisher.getEventPublisher();
+                    if (epHealStart != null) {
+                        BindingEventDTO dto = new BindingEventDTO(BindingEventType.INFO, ZWaveBindingConstants
+                                .getI18nConstant(ZWaveBindingConstants.EVENT_HEAL_START, new Integer(nodeId)));
+                        Event notification = BindingEventFactory.createBindingEvent(ZWaveBindingConstants.BINDING_ID,
+                                "network", "", dto);
+                        epHealStart.post(notification);
+                    }
+                    break;
+                case HEAL_END:
+                    updateNodeNeighbours();
+                    EventPublisher epHealDone = ZWaveEventPublisher.getEventPublisher();
+                    if (epHealDone != null) {
+                        BindingEventDTO dto = new BindingEventDTO(BindingEventType.INFO, ZWaveBindingConstants
+                                .getI18nConstant(ZWaveBindingConstants.EVENT_HEAL_DONE, new Integer(nodeId)));
+                        Event notification = BindingEventFactory.createBindingEvent(ZWaveBindingConstants.BINDING_ID,
+                                "network", "", dto);
+                        epHealDone.post(notification);
+                    }
+
+                    Map<String, String> properties = editProperties();
+                    properties.put(ZWaveBindingConstants.PROPERTY_LASTHEAL, getISO8601StringForCurrentDate());
+                    updateProperties(properties);
+                    break;
+
+                // Don't update the thing state for dynamic updates - this is just polling
+                case DYNAMIC_VALUES:
+                case DYNAMIC_END:
+                    break;
+                // Don't update the thing state when doing a heal
+                case UPDATE_NEIGHBORS:
+                case GET_NEIGHBORS:
+                case DELETE_SUC_ROUTES:
+                case SUC_ROUTE:
+                case DELETE_ROUTES:
+                case RETURN_ROUTES:
+                case DONE:
                     break;
                 default:
                     if (finalTypeSet) {
@@ -1256,6 +1300,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         ZWaveNode node = controllerHandler.getNode(nodeId);
         if (node == null) {
+            logger.debug("NODE {}: Updating node neighbours. Node not found.", nodeId);
             return;
         }
 
@@ -1330,6 +1375,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 break;
             }
         }
+
+        properties.remove("zwave_lastheat");
+        update = true;
 
         if (update == true) {
             logger.debug("NODE {}: Properties synchronised", nodeId);
@@ -1544,7 +1592,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
      *
      * @return String with format "yyyy-MM-dd'T'HH:mm:ss'Z'"
      */
-    public static String getISO8601StringForCurrentDate() {
+    private static String getISO8601StringForCurrentDate() {
         Date now = new Date();
         return getISO8601StringForDate(now);
     }

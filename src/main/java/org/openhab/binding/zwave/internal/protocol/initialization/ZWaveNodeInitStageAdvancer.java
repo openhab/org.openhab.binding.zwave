@@ -48,6 +48,7 @@ import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInitializationStateEvent;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.AssignReturnRouteMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.AssignSucReturnRouteMessageClass;
+import org.openhab.binding.zwave.internal.protocol.serialmessage.DeleteReturnRouteMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.DeleteSucReturnRouteMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.GetRoutingInfoMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.IdentifyNodeMessageClass;
@@ -441,9 +442,6 @@ public class ZWaveNodeInitStageAdvancer {
 
         if (doSecureInclusion == false) {
             logger.debug("NODE {}: Skipping secure inclusion", node.getNodeId());
-
-            // Remove the security command class
-            // node.removeCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
             return;
         }
 
@@ -498,7 +496,7 @@ public class ZWaveNodeInitStageAdvancer {
             return;
         }
 
-        // Get the secure classes
+        // Get the secure classes.
         // Even if we didn't just complete secure inclusion, request the secure supported
         // If we have lost the XML, and have previously securely included, then this will allow the device to be used
         logger.debug("NODE {}: SECURITY_INC State=GET_SECURE_SUPPORTED", node.getNodeId());
@@ -917,6 +915,8 @@ public class ZWaveNodeInitStageAdvancer {
                 }
             }
         }
+
+        setCurrentStage(ZWaveNodeInitStage.STATIC_END);
     }
 
     void doDynamicStages() {
@@ -951,9 +951,15 @@ public class ZWaveNodeInitStageAdvancer {
                 }
             }
         }
+
+        logger.debug("NODE {}: Node advancer: Initialisation complete!", node.getNodeId());
+
+        // Notify everyone that we've completed initialisation!
+        setCurrentStage(ZWaveNodeInitStage.DYNAMIC_END);
     }
 
     void doHealStages() {
+        setCurrentStage(ZWaveNodeInitStage.HEAL_START);
         setCurrentStage(ZWaveNodeInitStage.UPDATE_NEIGHBORS);
         logger.debug("NODE {}: Node advancer: UPDATE_NEIGHBORS - updating neighbor list", node.getNodeId());
         processTransaction(new RequestNodeNeighborUpdateMessageClass().doRequest(node.getNodeId()));
@@ -969,7 +975,6 @@ public class ZWaveNodeInitStageAdvancer {
         }
 
         setCurrentStage(ZWaveNodeInitStage.DELETE_SUC_ROUTES);
-
         // Only delete the route if this is not the controller and there is an SUC in the network
         if (node.getNodeId() != controller.getOwnNodeId() && controller.getSucId() != 0) {
             // Update the route to the controller
@@ -992,7 +997,7 @@ public class ZWaveNodeInitStageAdvancer {
         if (node.getRoutingList().size() != 0) {
             // Delete all the return routes for the node
             logger.debug("NODE {}: Node advancer is deleting return routes.", node.getNodeId());
-            // processTransactions(new DeleteReturnRouteMessageClass().doRequest(node.getNodeId()));
+            processTransaction(new DeleteReturnRouteMessageClass().doRequest(node.getNodeId()));
             if (initRunning == false) {
                 return;
             }
@@ -1007,10 +1012,7 @@ public class ZWaveNodeInitStageAdvancer {
                 return;
             }
         }
-
-        logger.debug("NODE {}: Node advancer: Initialisation complete!", node.getNodeId());
-
-        // Notify everyone!
+        setCurrentStage(ZWaveNodeInitStage.HEAL_END);
         setCurrentStage(ZWaveNodeInitStage.DONE);
     }
 
@@ -1041,6 +1043,7 @@ public class ZWaveNodeInitStageAdvancer {
             case DISCOVERY_COMPLETE:
             case STATIC_END:
             case DYNAMIC_END:
+            case HEAL_END:
             case DONE:
                 nodeSerializer.SerializeNode(node);
                 break;
