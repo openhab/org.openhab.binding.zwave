@@ -124,15 +124,21 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             return;
         }
 
-        try {
-            nodeId = Integer.parseInt(nodeParm);
-        } catch (final NumberFormatException ex) {
-            logger.error("NodeID ({}) cannot be parsed in {}", nodeParm, this.getThing().getUID());
-            return;
-        }
+        // try {
+        BigDecimal cfgNodeId = new BigDecimal(nodeParm);
+        // } catch (final NumberFormatException ex) {
+        // logger.error("NodeID ({}) cannot be parsed in {}", nodeParm, this.getThing().getUID());
+        // }
 
-        if (nodeId == 0) {
-            logger.error("NodeID ({}) cannot be 0", nodeParm, this.getThing().getUID());
+        // final BigDecimal cfgNodeId = (BigDecimal) getConfig().get(ZWaveBindingConstants.CONFIGURATION_NODEID);
+        // if (cfgNodeId == null) {
+        // logger.error("NodeID is not set in {}", getThing().getUID());
+        // return;
+        // }
+
+        nodeId = cfgNodeId.intValue();
+        if (nodeId < 1 || nodeId > 232) {
+            logger.error("NodeID ({}) out of range for {}", cfgNodeId, getThing().getUID());
             return;
         }
 
@@ -486,7 +492,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 // Save the XML so that any changes to configuration is saved
                 ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
                 ZWaveNode node = controllerHandler.getNode(nodeId);
-                nodeSerializer.SerializeNode(node);
+                if (node != null) {
+                    nodeSerializer.SerializeNode(node);
+                }
 
                 // Remove the event listener
                 controllerHandler.removeEventListener(this);

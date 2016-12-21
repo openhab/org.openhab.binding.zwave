@@ -17,6 +17,7 @@ package org.openhab.binding.zwave.internal.protocol.initialization;
 public enum ZWaveNodeInitStage {
     EMPTYNODE(true),
     PROTOINFO(true),
+    IDENTIFY_NODE(true),
     INIT_NEIGHBORS(true),
     FAILED_CHECK(true),
     WAIT(true),
@@ -26,7 +27,6 @@ public enum ZWaveNodeInitStage {
     // States below form the main part of the initialisation
     // For newly included devices, we start here
     INCLUSION_START(true),
-    IDENTIFY_NODE(true),
     MANUFACTURER(true),
     SECURITY_REPORT(true),
     APP_VERSION(true),

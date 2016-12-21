@@ -23,4 +23,13 @@
 		]]></description>
 	</thing-type>
 
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232">
+        <label>Node ID</label>
+      </parameter>
+    </config-description>
+
 </thing:thing-descriptions>

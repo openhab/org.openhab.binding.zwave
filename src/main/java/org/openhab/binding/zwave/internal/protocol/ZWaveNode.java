@@ -1126,7 +1126,16 @@ public class ZWaveNode {
                     .getCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
             if (securityCommandClass == null) {
                 logger.debug("NODE {}: COMMAND_CLASS_SECURITY not found in endpoint 0", getNodeId());
-                return null;
+
+                securityCommandClass = (ZWaveSecurityCommandClass) ZWaveCommandClass
+                        .getInstance(CommandClass.COMMAND_CLASS_SECURITY.getKey(), this, controller);
+                if (securityCommandClass != null) {
+                    logger.debug("NODE {}: Adding COMMAND_CLASS_SECURITY", nodeId);
+                    addCommandClass(securityCommandClass);
+                } else {
+                    logger.debug("NODE {}: Unable to instantiate COMMAND_CLASS_SECURITY", nodeId);
+                    return null;
+                }
             }
 
             byte[] cleartextData = securityCommandClass.getSecurityMessageDecapsulation(payload.getPayloadBuffer());

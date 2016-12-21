@@ -152,6 +152,14 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         groups.add(new ConfigDescriptionParameterGroup("actions", "", false, "Actions", null));
         groups.add(new ConfigDescriptionParameterGroup("thingcfg", "home", false, "Device Configuration", null));
 
+        parameters.add(ConfigDescriptionParameterBuilder
+                .create(ZWaveBindingConstants.CONFIGURATION_NODEID, Type.INTEGER).withLabel("Node ID")
+                .withMinimum(new BigDecimal("1")).withAdvanced(true).withReadOnly(true)
+                .withMaximum(new BigDecimal("232"))
+                .withDescription(
+                        "Sets the node ID<BR/>" + "The node ID is assigned by the controller and can not be changed.")
+                .withDefault("").withGroupName("thingcfg").build());
+
         List<ParameterOption> options = new ArrayList<ParameterOption>();
         options.add(new ParameterOption("600", "10 Minutes"));
         options.add(new ParameterOption("1800", "30 Minutes"));
@@ -294,7 +302,6 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
                 .withGroupName("actions").build());
 
         return new ConfigDescription(uri, parameters, groups);
-
     }
 
     private static void initialiseZWaveThings() {
