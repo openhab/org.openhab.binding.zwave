@@ -90,7 +90,7 @@
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW095</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0102:005F</property>
+      <property name="manufacturerRef">0002:005F,0102:005F</property>
       <property name="dbReference">375</property>
     </properties>
 
