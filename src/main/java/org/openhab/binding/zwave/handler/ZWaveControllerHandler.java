@@ -81,7 +81,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     private final int SEARCHTIME_DEFAULT = 30;
     private int searchTime;
 
-    private ScheduledFuture<?> pollingJob = null;
+    private ScheduledFuture<?> healJob = null;
 
     public ZWaveControllerHandler(Bridge bridge) {
         super(bridge);
@@ -89,7 +89,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
     @Override
     public void initialize() {
-        logger.debug("Initializing ZWave Controller.");
+        logger.debug("Initializing ZWave Controller {}.", getThing().getUID());
 
         Object param;
         param = getConfig().get(CONFIGURATION_MASTER);
@@ -158,21 +158,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         } else {
             healTime = -1;
         }
-
-        if (healTime == -1) {
-            Calendar cal = Calendar.getInstance();
-            Runnable pollingRunnable = new Runnable() {
-                @Override
-                public void run() {
-
-                }
-            };
-            int hours = healTime - cal.get(Calendar.HOUR);
-            if (hours < 0) {
-                hours += 24;
-            }
-            pollingJob = scheduler.scheduleAtFixedRate(pollingRunnable, hours, 24, TimeUnit.HOURS);
-        }
+        initializeHeal();
 
         // We must set the state
         updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE,
@@ -208,11 +194,40 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                 new Hashtable<String, Object>());
     }
 
+    private void initializeHeal() {
+        if (healJob != null) {
+            healJob.cancel(true);
+            healJob = null;
+        }
+
+        if (healTime >= 0 && healTime <= 23) {
+            Runnable healRunnable = new Runnable() {
+                @Override
+                public void run() {
+                    if (controller == null) {
+                        return;
+                    }
+                    logger.debug("Starting network mesh heal for {}.", getThing().getUID());
+                    for (ZWaveNode node : controller.getNodes()) {
+                        node.healNode();
+                    }
+                }
+            };
+
+            Calendar cal = Calendar.getInstance();
+            int hours = healTime - cal.get(Calendar.HOUR_OF_DAY);
+            if (hours < 0) {
+                hours += 24;
+            }
+            healJob = scheduler.scheduleAtFixedRate(healRunnable, hours, 24, TimeUnit.HOURS);
+        }
+    }
+
     @Override
     public void dispose() {
-        if (pollingJob != null) {
-            pollingJob.cancel(true);
-            pollingJob = null;
+        if (healJob != null) {
+            healJob.cancel(true);
+            healJob = null;
         }
 
         // Remove the discovery service
@@ -304,13 +319,18 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                         builder.append(hexString.substring(j));
                         value = builder.toString();
 
-                        // ZWaveSecurityCommandClass.setNetworkKey((String) value);
+                        reinitialise = true;
                     }
                 }
             }
 
             if ("port".equals(cfg[0])) {
                 reinitialise = true;
+            }
+
+            if ("heal".equals(cfg[0])) {
+                healTime = ((BigDecimal) value).intValue();
+                initializeHeal();
             }
 
             configuration.put(configurationParameter.getKey(), value);

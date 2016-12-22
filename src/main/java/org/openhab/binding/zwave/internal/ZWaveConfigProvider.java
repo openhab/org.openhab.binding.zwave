@@ -110,10 +110,10 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         }
 
         ThingUID thingUID = new ThingUID(uri.getSchemeSpecificPart());
-        ThingType thingType = thingTypeRegistry.getThingType(thingUID.getThingTypeUID());
-        if (thingType == null) {
-            return null;
-        }
+        // ThingType thingType = thingTypeRegistry.getThingType(thingUID.getThingTypeUID());
+        // if (thingType == null) {
+        // return null;
+        // }
 
         // Is this a zwave thing?
         if (!thingUID.getBindingId().equals(ZWaveBindingConstants.BINDING_ID)) {
@@ -154,8 +154,8 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
 
         parameters.add(ConfigDescriptionParameterBuilder
                 .create(ZWaveBindingConstants.CONFIGURATION_NODEID, Type.INTEGER).withLabel("Node ID")
-                .withMinimum(new BigDecimal("1")).withAdvanced(true).withReadOnly(true)
-                .withMaximum(new BigDecimal("232"))
+                .withMinimum(new BigDecimal("1")).withMaximum(new BigDecimal("232")).withAdvanced(true)
+                .withReadOnly(true).withRequired(true)
                 .withDescription(
                         "Sets the node ID<BR/>" + "The node ID is assigned by the controller and can not be changed.")
                 .withDefault("").withGroupName("thingcfg").build());

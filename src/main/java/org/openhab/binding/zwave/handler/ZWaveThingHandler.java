@@ -116,25 +116,13 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
     @Override
     public void initialize() {
-        logger.debug("Initializing ZWave thing handler.");
+        logger.debug("Initializing ZWave thing handler {}.", getThing().getUID());
 
-        String nodeParm = this.getThing().getProperties().get(ZWaveBindingConstants.PROPERTY_NODEID);
-        if (nodeParm == null) {
-            logger.error("NodeID is not set in {}", this.getThing().getUID());
+        final BigDecimal cfgNodeId = (BigDecimal) getConfig().get(ZWaveBindingConstants.CONFIGURATION_NODEID);
+        if (cfgNodeId == null) {
+            logger.error("NodeID is not set in {}", getThing().getUID());
             return;
         }
-
-        // try {
-        BigDecimal cfgNodeId = new BigDecimal(nodeParm);
-        // } catch (final NumberFormatException ex) {
-        // logger.error("NodeID ({}) cannot be parsed in {}", nodeParm, this.getThing().getUID());
-        // }
-
-        // final BigDecimal cfgNodeId = (BigDecimal) getConfig().get(ZWaveBindingConstants.CONFIGURATION_NODEID);
-        // if (cfgNodeId == null) {
-        // logger.error("NodeID is not set in {}", getThing().getUID());
-        // return;
-        // }
 
         nodeId = cfgNodeId.intValue();
         if (nodeId < 1 || nodeId > 232) {
@@ -1421,7 +1409,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 members.add("node_" + groupMember.getNode() + "_" + groupMember.getEndpoint());
             }
 
-            config.put("group_" + group, members);
+            config.put("group_" + group.getIndex(), members);
         }
 
         // Process WAKE_UP
