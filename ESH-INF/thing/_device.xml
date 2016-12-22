@@ -26,7 +26,7 @@
         <config-description>
 
             <!-- PARAMETER DEFINITIONS -->
-            <parameter name="node_id" type="integer" min="1" max="232" advanced="true" readOnly="true" required="true">
+            <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
                 <label>Node ID</label>
             </parameter>
         </config-description>
