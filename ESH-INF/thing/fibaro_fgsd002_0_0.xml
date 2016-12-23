@@ -155,7 +155,7 @@ This parameter defines which frames will be sent ...<br /><h1>Overview</h1><p>in
         </options>
       </parameter>
 
-      <parameter name="config_11_1" type="integer" groupName="configuration"
+      <parameter name="config_11_2" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>11: BASIC ON frame value</label>
         <description><![CDATA[
@@ -164,7 +164,7 @@ BASIC ON frame is sent in case of smoke presence detection ...<br /><h1>Overview
         <default>255</default>
       </parameter>
 
-      <parameter name="config_12_1" type="integer" groupName="configuration"
+      <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>12: BASIC OFF frame value</label>
         <description><![CDATA[
