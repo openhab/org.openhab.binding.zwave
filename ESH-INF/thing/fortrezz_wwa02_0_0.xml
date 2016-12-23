@@ -17,8 +17,8 @@
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm (general)</label>
+      <channel id="alarm_flood" typeId="alarm_flood">
+        <label>Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">ALARM;type=GENERAL</property>
         </properties>
@@ -37,6 +37,7 @@
       <property name="manufacturerId">0084</property>
       <property name="manufacturerRef">0061:010C,0063:010C</property>
       <property name="dbReference">222</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
