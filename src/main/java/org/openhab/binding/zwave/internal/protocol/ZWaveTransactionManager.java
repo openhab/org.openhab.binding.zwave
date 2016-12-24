@@ -331,7 +331,10 @@ public class ZWaveTransactionManager {
      * @param incomingMessage
      */
     public void processReceiveMessage(SerialMessage incomingMessage) {
+        logger.debug("processReceiveMessage input" + incomingMessage.toString());
+
         synchronized (recvQueue) {
+            logger.debug("processReceiveMessage past lock" + incomingMessage.toString());
             recvQueue.add(incomingMessage);
             recvQueue.notify();
         }
@@ -343,6 +346,8 @@ public class ZWaveTransactionManager {
             SerialMessage incomingMessage;
             while (!interrupted()) {
                 if (recvQueue.isEmpty()) {
+                    logger.debug("ZWaveReceiveThread queue empty");
+
                     // See if we need to send another message
                     sendNextMessage();
                     startTransactionTimer();
@@ -638,7 +643,7 @@ public class ZWaveTransactionManager {
                     }
                 }
             }
-            logger.debug("Exit RX");
+            logger.debug("**************************** Exiting Receive Thread");
         }
     }
 
