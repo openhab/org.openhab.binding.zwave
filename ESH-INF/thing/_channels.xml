@@ -811,12 +811,22 @@
         </state>
     </channel-type>
 
+    <!-- CO Channel -->
+    <channel-type id="sensor_co">
+        <item-type>Number</item-type>
+        <label>Carbon Monoxide Sensor</label>
+        <description>Indicates the CO level</description>
+        <category></category>
+        <state pattern="%.1f" readOnly="true">
+        </state>
+    </channel-type>
+
     <!-- CO2 Channel -->
     <channel-type id="sensor_co2">
         <item-type>Number</item-type>
-        <label>Dewpoint</label>
+        <label>Carbon Dioxide Sensor</label>
         <description>Indicates the CO2 level</description>
-        <category>Temperature</category>
+        <category></category>
         <state pattern="%.1f" readOnly="true">
         </state>
     </channel-type>
@@ -836,7 +846,7 @@
         <item-type>Number</item-type>
         <label>Direction</label>
         <description>Indicates the direction</description>
-        <category>Temperature</category>
+        <category></category>
         <state pattern="%.1f" readOnly="true">
         </state>
     </channel-type>
@@ -966,7 +976,7 @@
         <item-type>Number</item-type>
         <label>Velocity</label>
         <description>Indicates the current velocity</description>
-        <category>Temperature</category>
+        <category></category>
         <state pattern="%.1f" readOnly="true">
         </state>
     </channel-type>
