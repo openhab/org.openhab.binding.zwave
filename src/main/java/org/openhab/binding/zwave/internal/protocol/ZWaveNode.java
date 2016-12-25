@@ -1257,7 +1257,7 @@ public class ZWaveNode {
 
         // Start the timer
         if (awake == true) {
-            logger.debug("NODE {}: Node is awake with {} messages in the queue", getNodeId(),
+            logger.debug("NODE {}: Is awake with {} messages in the queue", getNodeId(),
                     controller.getSendQueueLength(getNodeId()));
 
             setSleepTimer();
@@ -1333,7 +1333,7 @@ public class ZWaveNode {
             // When this transaction completes, assume we're asleep
             setAwake(false);
 
-            logger.debug("NODE {}: WAKEUP response {}", getNodeId(), response.getState());
+            logger.debug("NODE {}: Went to sleep {}", getNodeId(), response.getState());
 
             // Stop the timer
             resetSleepTimer();

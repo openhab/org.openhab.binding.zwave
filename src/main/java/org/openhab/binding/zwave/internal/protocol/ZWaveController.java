@@ -218,7 +218,7 @@ public class ZWaveController {
         ZWaveCommandProcessor processor = ZWaveCommandProcessor.getMessageDispatcher(incomingMessage.getMessageClass());
         if (processor == null) {
             logger.warn(String.format("TODO: Implement processing of Request Message = %s (0x%02X)",
-                    incomingMessage.getMessageClass() == null ? "--" : incomingMessage.getMessageClass().getLabel(),
+                    incomingMessage.getMessageClass() == null ? "--" : incomingMessage.getMessageClass(),
                     incomingMessage.getMessageClassKey()));
 
             return;
@@ -248,7 +248,7 @@ public class ZWaveController {
         ZWaveCommandProcessor processor = ZWaveCommandProcessor.getMessageDispatcher(incomingMessage.getMessageClass());
         if (processor == null) {
             logger.warn(String.format("TODO: Implement processing of Response Message = %s (0x%02X)",
-                    incomingMessage.getMessageClass().getLabel(), incomingMessage.getMessageClass().getKey()));
+                    incomingMessage.getMessageClass(), incomingMessage.getMessageClass().getKey()));
 
             return;
         }

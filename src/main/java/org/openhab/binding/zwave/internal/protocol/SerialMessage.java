@@ -473,90 +473,95 @@ public class SerialMessage {
      *
      */
     public enum SerialMessageClass {
-        SerialApiGetInitData(0x02, "SerialApiGetInitData", true, false), // Request initial information about devices in
-                                                                         // network
-        SerialApiApplicationNodeInfo(0x03, "SerialApiApplicationNodeInfo"), // Set controller node information (ie NIF)
-        ApplicationCommandHandler(0x04, "ApplicationCommandHandler"), // Handle application command
-        GetControllerCapabilities(0x05, "GetControllerCapabilities", true, false), // Request controller capabilities
-                                                                                   // (primary role,
+        SerialApiGetInitData(0x02, true, false, false), // Request initial information about
+                                                        // devices in network
+        SerialApiApplicationNodeInfo(0x03), // Set controller node information (ie NIF)
+        ApplicationCommandHandler(0x04), // Handle application command
+        GetControllerCapabilities(0x05, true, false, false), // Request controller
+                                                             // capabilities
+        // (primary role,
         // SUC/SIS availability)
-        SerialApiSetTimeouts(0x06, "SerialApiSetTimeouts", true, false), // Set Serial API timeouts
-        SerialApiGetCapabilities(0x07, "SerialApiGetCapabilities", true, false), // Request Serial API capabilities
-        SerialApiSoftReset(0x08, "SerialApiSoftReset", false, false), // Soft reset. Restarts Z-Wave chip
-        RfReceiveMode(0x10, "RfReceiveMode"), // Power down the RF section of the stick
-        SetSleepMode(0x11, "SetSleepMode"), // Set the CPU into sleep mode
-        SendNodeInfo(0x12, "SendNodeInfo"), // Send Node Information Frame of the stick
-        SendData(0x13, "SendData", true, true), // Send data.
-        SendDataMulti(0x14, "SendDataMulti", true, true),
-        GetVersion(0x15, "GetVersion", true, false), // Request controller hardware version
-        SendDataAbort(0x16, "SendDataAbort", false, false), // Abort Send data.
-        RfPowerLevelSet(0x17, "RfPowerLevelSet"), // Set RF Power level
-        SendDataMeta(0x18, "SendDataMeta"),
-        GetRandom(0x1c, "GetRandom"), // Returns a random number
-        MemoryGetId(0x20, "MemoryGetId", true, false), // ???
-        MemoryGetByte(0x21, "MemoryGetByte"), // Get a byte of memory.
-        MemoryPutByte(0x22, "MemoryPutByte"),
-        ReadMemory(0x23, "ReadMemory"), // Read memory.
-        WriteMemory(0x24, "WriteMemory"),
-        SetLearnNodeState(0x40, "SetLearnNodeState"), // ???
-        IdentifyNode(0x41, "IdentifyNode", true, false), // Get protocol info (baud rate, listening, etc.) for a given
-                                                         // node
-        SetDefault(0x42, "SetDefault", false, true), // Reset controller and node info to default (original) values
-        NewController(0x43, "NewController"), // ???
-        ReplicationCommandComplete(0x44, "ReplicationCommandComplete"), // Replication send data complete
-        ReplicationSendData(0x45, "ReplicationSendData"), // Replication send data
-        AssignReturnRoute(0x46, "AssignReturnRoute", true, true), // Assign a return route from the specified node to
-                                                                  // the controller
-        DeleteReturnRoute(0x47, "DeleteReturnRoute", true, true), // Delete all return routes from the specified node
-        RequestNodeNeighborUpdate(0x48, "RequestNodeNeighborUpdate", false, true), // Ask the specified node to update
-                                                                                   // its neighbors
-        // (then read them from the controller)
-        ApplicationUpdate(0x49, "ApplicationUpdate"), // Get a list of supported (and controller) command classes
-        AddNodeToNetwork(0x4a, "AddNodeToNetwork", false, true), // Control the addnode (or addcontroller)
-                                                                 // process...start, stop,
-        // etc.
-        RemoveNodeFromNetwork(0x4b, "RemoveNodeFromNetwork", false, true), // Control the removenode (or
-                                                                           // removecontroller)
-        // process...start, stop, etc.
-        CreateNewPrimary(0x4c, "CreateNewPrimary"), // Control the createnewprimary process...start, stop, etc.
-        ControllerChange(0x4d, "ControllerChange"), // Control the transferprimary process...start, stop, etc.
-        SetLearnMode(0x50, "SetLearnMode"), // Put a controller into learn mode for replication/ receipt of
-                                            // configuration info
-        AssignSucReturnRoute(0x51, "AssignSucReturnRoute", true, true), // Assign a return route to the SUC
-        EnableSuc(0x52, "EnableSuc", true, false), // Make a controller a Static Update Controller
-        RequestNetworkUpdate(0x53, "RequestNetworkUpdate", true, true), // Network update for a SUC(?)
-        SetSucNodeID(0x54, "SetSucNodeID", true, true), // Identify a Static Update Controller node id
-        DeleteSUCReturnRoute(0x55, "DeleteSUCReturnRoute", true, true), // Remove return routes to the SUC
-        GetSucNodeId(0x56, "GetSucNodeId", true, false), // Try to retrieve a Static Update Controller node id (zero if
-                                                         // no SUC present)
-        SendSucId(0x57, "SendSucId"),
-        RequestNodeNeighborUpdateOptions(0x5a, "RequestNodeNeighborUpdateOptions"), // Allow options for request node
-                                                                                    // neighbor update
-        ExploreRequestInclusion(0x5e, "ExploreRequestInclusion"), // Initiate a Network-Wide Inclusion process
-        RequestNodeInfo(0x60, "RequestNodeInfo", true, false), // Get info (supported command classes) for the specified
-                                                               // node
-        RemoveFailedNodeID(0x61, "RemoveFailedNodeID", true, true), // Mark a specified node id as failed
-        IsFailedNodeID(0x62, "IsFailedNodeID", true, false), // Check to see if a specified node has failed
-        ReplaceFailedNode(0x63, "ReplaceFailedNode", true, true), // Remove a failed node from the controller's list (?)
-        GetRoutingInfo(0x80, "GetRoutingInfo", true, false), // Get a specified node's neighbor information from the
-                                                             // controller
-        LockRoute(0x90, "LockRoute"),
-        SerialApiSlaveNodeInfo(0xA0, "SerialApiSlaveNodeInfo"), // Set application virtual slave node information
-        ApplicationSlaveCommandHandler(0xA1, "ApplicationSlaveCommandHandler"), // Slave command handler
-        SendSlaveNodeInfo(0xA2, "ApplicationSlaveCommandHandler"), // Send a slave node information frame
-        SendSlaveData(0xA3, "SendSlaveData"), // Send data from slave
-        SetSlaveLearnMode(0xA4, "SetSlaveLearnMode"), // Enter slave learn mode
-        GetVirtualNodes(0xA5, "GetVirtualNodes"), // Return all virtual nodes
-        IsVirtualNode(0xA6, "IsVirtualNode"), // Virtual node test
-        WatchDogEnable(0xB6, "WatchDogEnable"),
-        WatchDogDisable(0xB7, "WatchDogDisable"),
-        WatchDogKick(0xB6, "WatchDogKick"),
-        RfPowerLevelGet(0xBA, "RfPowerLevelSet"), // Get RF Power level
-        GetLibraryType(0xBD, "GetLibraryType"), // Gets the type of ZWave library on the stick
-        SendTestFrame(0xBE, "SendTestFrame"), // Send a test frame to a node
-        GetProtocolStatus(0xBF, "GetProtocolStatus"),
-        SetPromiscuousMode(0xD0, "SetPromiscuousMode"), // Set controller into promiscuous mode to listen to all frames
-        PromiscuousApplicationCommandHandler(0xD1, "PromiscuousApplicationCommandHandler");
+        SerialApiSetTimeouts(0x06, true, false, false), // Set Serial API timeouts
+        SerialApiGetCapabilities(0x07, true, false, false), // Request Serial API
+                                                            // capabilities
+        SerialApiSoftReset(0x08, false, false, false), // Soft reset. Restarts Z-Wave chip
+        RfReceiveMode(0x10), // Power down the RF section of the stick
+        SetSleepMode(0x11), // Set the CPU into sleep mode
+        SendNodeInfo(0x12), // Send Node Information Frame of the stick
+        SendData(0x13, true, true, true), // Send data.
+        SendDataMulti(0x14, true, true, true),
+        GetVersion(0x15, true, false, false), // Request controller hardware version
+        SendDataAbort(0x16, false, false, false), // Abort Send data.
+        RfPowerLevelSet(0x17), // Set RF Power level
+        SendDataMeta(0x18),
+        GetRandom(0x1c), // Returns a random number
+        MemoryGetId(0x20, true, false, false), // ???
+        MemoryGetByte(0x21), // Get a byte of memory.
+        MemoryPutByte(0x22),
+        ReadMemory(0x23), // Read memory.
+        WriteMemory(0x24),
+        SetLearnNodeState(0x40), // ???
+        IdentifyNode(0x41, true, false, false), // Get protocol info (baud rate, listening, etc.) for a
+                                                // given node
+        SetDefault(0x42, false, true, false), // Reset controller and node info to default (original)
+                                              // values
+        NewController(0x43), // ???
+        ReplicationCommandComplete(0x44), // Replication send data complete
+        ReplicationSendData(0x45), // Replication send data
+        AssignReturnRoute(0x46, true, true, true), // Assign a return route from the specified node
+                                                   // to the controller
+        DeleteReturnRoute(0x47, true, true, true), // Delete all return routes from the specified
+                                                   // node
+        RequestNodeNeighborUpdate(0x48, false, true, true), // Ask the specified node to
+                                                            // update its neighbors (then
+                                                            // read them from the
+                                                            // controller)
+        ApplicationUpdate(0x49), // Get a list of supported (and controller) command classes
+        AddNodeToNetwork(0x4a, false, true, false), // Control the addnode (or addcontroller)
+                                                    // process...start, stop, etc.
+        RemoveNodeFromNetwork(0x4b, false, true, false), // Control the removenode (or
+                                                         // removecontroller) process...start,
+                                                         // stop, etc.
+        CreateNewPrimary(0x4c), // Control the createnewprimary process...start, stop, etc.
+        ControllerChange(0x4d), // Control the transferprimary process...start, stop, etc.
+        SetLearnMode(0x50), // Put a controller into learn mode for replication/ receipt of
+                            // configuration info
+        AssignSucReturnRoute(0x51, true, true, true), // Assign a return route to the SUC
+        EnableSuc(0x52, true, false, false), // Make a controller a Static Update Controller
+        RequestNetworkUpdate(0x53, true, true, false), // Network update for a SUC(?)
+        SetSucNodeID(0x54, true, true, false), // Identify a Static Update Controller node id
+        DeleteSUCReturnRoute(0x55, true, true, true), // Remove return routes to the SUC
+        GetSucNodeId(0x56, true, false, false), // Try to retrieve a Static Update Controller node id
+                                                // (zero if no SUC present)
+        SendSucId(0x57),
+        RequestNodeNeighborUpdateOptions(0x5a), // Allow options for request node
+                                                // neighbor update
+        ExploreRequestInclusion(0x5e), // Initiate a Network-Wide Inclusion process
+        RequestNodeInfo(0x60, true, false, true), // Get info (supported command classes) for the
+                                                  // specified node
+        RemoveFailedNodeID(0x61, true, true, false), // Mark a specified node id as failed
+        IsFailedNodeID(0x62, true, false, false), // Check to see if a specified node has failed
+        ReplaceFailedNode(0x63, true, true, false), // Remove a failed node from the controller's
+                                                    // list (?)
+        GetRoutingInfo(0x80, true, false, true), // Get a specified node's neighbor information from
+                                                 // the controller
+        LockRoute(0x90),
+        SerialApiSlaveNodeInfo(0xA0), // Set application virtual slave node information
+        ApplicationSlaveCommandHandler(0xA1), // Slave command handler
+        SendSlaveNodeInfo(0xA2), // Send a slave node information frame
+        SendSlaveData(0xA3), // Send data from slave
+        SetSlaveLearnMode(0xA4), // Enter slave learn mode
+        GetVirtualNodes(0xA5), // Return all virtual nodes
+        IsVirtualNode(0xA6), // Virtual node test
+        WatchDogEnable(0xB6),
+        WatchDogDisable(0xB7),
+        WatchDogKick(0xB6),
+        RfPowerLevelGet(0xBA), // Get RF Power level
+        GetLibraryType(0xBD), // Gets the type of ZWave library on the stick
+        SendTestFrame(0xBE), // Send a test frame to a node
+        GetProtocolStatus(0xBF),
+        SetPromiscuousMode(0xD0), // Set controller into promiscuous mode to listen to all frames
+        PromiscuousApplicationCommandHandler(0xD1);
 
         /**
          * A mapping between the integer code and its corresponding ZWaveMessage
@@ -565,22 +570,21 @@ public class SerialMessage {
         private static Map<Integer, SerialMessageClass> codeToMessageClassMapping;
 
         private int key;
-        private String label;
         private boolean response;
         private boolean request;
+        private boolean node;
 
-        private SerialMessageClass(int key, String label) {
+        private SerialMessageClass(int key) {
             this.key = key;
-            this.label = label;
             this.response = false;
             this.request = false;
         }
 
-        private SerialMessageClass(int key, String label, boolean response, boolean request) {
+        private SerialMessageClass(int key, boolean response, boolean request, boolean node) {
             this.key = key;
-            this.label = label;
             this.response = response;
             this.request = request;
+            this.node = node;
         }
 
         private static void initMapping() {
@@ -613,20 +617,32 @@ public class SerialMessage {
         }
 
         /**
-         * Returns the enumeration label.
+         * Returns true if the transaction requires a Response frame
          *
-         * @return the label
+         * @return true if the transaction requires a response frame
          */
-        public String getLabel() {
-            return label;
-        }
-
         public boolean requiresResponse() {
             return response;
         }
 
+        /**
+         * Returns true if the transaction requires at least one Request frame
+         *
+         * @return true if the transaction requires a request frame
+         */
         public boolean requiresRequest() {
             return request;
+        }
+
+        /**
+         * Returns true if the node is contacted during the transaction.
+         * This is used to ensure the node is awake before sending the transaction.
+         * Transactions that only communicate with the controller therefore don't interact with the node.
+         *
+         * @return true if the node is required for the transaction
+         */
+        public boolean requiresNode() {
+            return node;
         }
     }
 

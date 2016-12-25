@@ -10,8 +10,6 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
@@ -38,23 +36,9 @@ public abstract class ZWaveCommandProcessor {
     private static final Logger logger = LoggerFactory.getLogger(ZWaveCommandProcessor.class);
 
     private static HashMap<SerialMessage.SerialMessageClass, Class<? extends ZWaveCommandProcessor>> messageMap = null;
-    // protected boolean transactionComplete = false;
-    /**
-     * Map of Long (received time) and {@link SerialMessage}. Use TreeMap so it's sorted from oldest to newest
-     */
-    private final Map<Long, SerialMessage> incomingMessageTable = new TreeMap<Long, SerialMessage>();
 
     public ZWaveCommandProcessor() {
     }
-
-    /**
-     * Checks if the processor marked the transaction as complete
-     *
-     * @return true is the transaction was completed.
-     */
-    // public boolean isTransactionComplete() {
-    // return transactionComplete;
-    // }
 
     /**
      * Checks if the incomingMessage is related to the transaction
@@ -63,10 +47,6 @@ public abstract class ZWaveCommandProcessor {
      * @return true if the incomingMessage is linked to the transaction
      */
     public boolean correlateTransactionResponse(ZWaveTransaction transaction, SerialMessage incomingMessage) {
-        // if (transaction.getExpectedReplyClass() != incomingMessage.getMessageClass()) {
-        // return false;
-        // }
-
         // If this is a response, check the callbackId
         if (transaction.getCallbackId() != incomingMessage.getCallbackId()) {
             logger.debug("NO callback match! ({} <> {})", transaction.getCallbackId(), incomingMessage.getCallbackId());
@@ -88,7 +68,7 @@ public abstract class ZWaveCommandProcessor {
      */
     public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
-        logger.warn("TODO: {} unsupported RESPONSE.", incomingMessage.getMessageClass().getLabel());
+        logger.warn("TODO: {} unsupported RESPONSE.", incomingMessage.getMessageClass());
         return false;
     }
 
@@ -103,7 +83,7 @@ public abstract class ZWaveCommandProcessor {
      */
     public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
-        logger.warn("TODO: {} unsupported REQUEST.", incomingMessage.getMessageClass().getLabel());
+        logger.warn("TODO: {} unsupported REQUEST.", incomingMessage.getMessageClass());
         return false;
     }
 
@@ -158,7 +138,7 @@ public abstract class ZWaveCommandProcessor {
         Constructor<? extends ZWaveCommandProcessor> constructor;
         try {
             if (messageMap.get(serialMessage) == null) {
-                logger.warn("SerialMessage class {} is not implemented!", serialMessage.getLabel());
+                logger.warn("SerialMessage class {} is not implemented!", serialMessage);
                 return null;
             }
             constructor = messageMap.get(serialMessage).getConstructor();

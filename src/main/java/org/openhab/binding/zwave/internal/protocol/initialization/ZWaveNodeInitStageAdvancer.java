@@ -261,7 +261,7 @@ public class ZWaveNodeInitStageAdvancer {
             }
 
             // If we specify a timeout, then don't sleep!
-            if (timeout != 0) {
+            if (timeout == 0) {
                 // Increase the backoff up to 1800 seconds (approx!)
                 if (backoff < 900000) {
                     backoff += backoff + rand.nextInt(1000);
@@ -353,8 +353,8 @@ public class ZWaveNodeInitStageAdvancer {
             return;
         }
 
+        setCurrentStage(ZWaveNodeInitStage.FAILED_CHECK);
         do {
-            setCurrentStage(ZWaveNodeInitStage.FAILED_CHECK);
             processTransaction(new IsFailedNodeMessageClass().doRequest(node.getNodeId()));
             if (initRunning == false) {
                 return;

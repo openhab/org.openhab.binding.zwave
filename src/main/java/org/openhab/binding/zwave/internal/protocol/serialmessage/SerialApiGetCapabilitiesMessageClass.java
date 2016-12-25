@@ -70,7 +70,7 @@ public class SerialApiGetCapabilitiesMessageClass extends ZWaveCommandProcessor 
                     if (msgClass == null) {
                         logger.debug(String.format("Supports: Unknown Class 0x%02x", ((by - 8) << 3) + bi + 1));
                     } else {
-                        logger.debug("Supports: {}", msgClass.getLabel());
+                        logger.debug("Supports: {}", msgClass);
                         apiCapabilities.add(msgClass);
                     }
                 }

@@ -265,14 +265,17 @@ public class ZWaveTransactionManager {
         synchronized (sendQueue) {
             // The queue is a map containing a queue for each node
             // Check if this node is in the queue
-            // if (transaction.getRequiresSecurity()) {
-            if (transaction.getNodeId() == 255) {
+            if (transaction.getSerialMessageClass().requiresNode()) {
+                if (sendQueue.contains(transaction)) {
+                    logger.debug("NODE {}: Transaction already in queue - removing original", transaction.getNodeId());
+                    sendQueue.remove(transaction);
+                }
+                sendQueue.add(transaction);
+                logger.debug("NODE {}: Added to main queue - size {}", transaction.getNodeId(), sendQueue.size());
+            } else {
                 controllerQueue.add(transaction);
                 logger.debug("NODE {}: Added to controller queue - size {}", transaction.getNodeId(),
                         controllerQueue.size());
-            } else {
-                sendQueue.add(transaction);
-                logger.debug("NODE {}: Added to main queue - size {}", transaction.getNodeId(), sendQueue.size());
             }
         }
 
@@ -454,7 +457,9 @@ public class ZWaveTransactionManager {
                                                 }
                                                 completed.add(transaction);
 
-                                                // Handle secure transactions
+                                                // Handle secure transactions - these are ones where we have
+                                                // requested a NONCE which we've just received, and we now need
+                                                // to encrypt and send the original message
                                                 if (transaction instanceof ZWaveSecureTransaction) {
                                                     secureQueue.add(((ZWaveSecureTransaction) transaction)
                                                             .getLinkedTransaction());
@@ -612,8 +617,8 @@ public class ZWaveTransactionManager {
                             // enqueue(currentTransaction); TODO: Handle retries...
                             // }
                             // } else {
-                            logger.warn("NODE {}: Retry count exceeded. Discarding message: {}",
-                                    currentTransaction.getNodeId(), currentTransaction.toString());
+                            // logger.warn("NODE {}: Retry count exceeded. Discarding message: {}",
+                            // currentTransaction.getNodeId(), currentTransaction.toString());
                             // Notify our users...
                             transactionCompleted = true;
                             // }
