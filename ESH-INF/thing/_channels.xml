@@ -996,7 +996,18 @@
         <description>The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
         </description>
-        <category>DimmableLight</category>
+        <category>DimmableLight</category>`
+         <config-description>
+            <parameter name="config_restoreLastValue" type="boolean">>
+                <label>Restore Last Value</label>
+                <description>Restore Last Dimming level on ON.</description>
+                <default>true</default>
+                <options>
+                    <option value="true">Restore Last Value</option>
+                    <option value="false">Restore Full Brightness</option>
+                </options>
+            </parameter>
+        </config-description>
     </channel-type>
 
     <!-- Heating Setpoint Channel -->
