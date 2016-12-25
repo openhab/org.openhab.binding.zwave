@@ -19,7 +19,7 @@ CO Detector<br /><h1>Overview</h1><p>This product combines a certified carbon mo
           <property name="binding:*:OnOffType">SENSOR_BINARY,BASIC</property>
         </properties>
       </channel>
-      <channel id="alarm_co" typeId="alarm_co">
+      <channel id="sensor_co" typeId="sensor_co">
         <label>Sensor (CARBON_MONOXIDE)</label>
         <properties>
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=CARBON_MONOXIDE</property>
