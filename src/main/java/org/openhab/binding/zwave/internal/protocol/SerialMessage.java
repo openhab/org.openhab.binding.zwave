@@ -543,8 +543,8 @@ public class SerialMessage {
         IsFailedNodeID(0x62, true, false, false), // Check to see if a specified node has failed
         ReplaceFailedNode(0x63, true, true, false), // Remove a failed node from the controller's
                                                     // list (?)
-        GetRoutingInfo(0x80, true, false, true), // Get a specified node's neighbor information from
-                                                 // the controller
+        GetRoutingInfo(0x80, true, false, false), // Get a specified node's neighbor information from
+                                                  // the controller
         LockRoute(0x90),
         SerialApiSlaveNodeInfo(0xA0), // Set application virtual slave node information
         ApplicationSlaveCommandHandler(0xA1), // Slave command handler

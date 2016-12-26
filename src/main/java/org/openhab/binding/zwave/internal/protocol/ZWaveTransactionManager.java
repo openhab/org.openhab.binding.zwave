@@ -260,23 +260,26 @@ public class ZWaveTransactionManager {
     }
 
     void addTransactionToQueue(ZWaveTransaction transaction) {
-        logger.debug("NODE {}: addTransactionToQueue 1 -- QueueID={}", transaction.getNodeId(),
-                transaction.getQueueId());
         synchronized (sendQueue) {
-            // The queue is a map containing a queue for each node
-            // Check if this node is in the queue
+            PriorityBlockingQueue<ZWaveTransaction> queue;
+
+            // Either put this into the controller queue, or the device queue
+            // The controller queue is used for commands solely handled by the controller
+            // and we do not check if nodes are awake.
             if (transaction.getSerialMessageClass().requiresNode()) {
-                if (sendQueue.contains(transaction)) {
-                    logger.debug("NODE {}: Transaction already in queue - removing original", transaction.getNodeId());
-                    sendQueue.remove(transaction);
-                }
-                sendQueue.add(transaction);
-                logger.debug("NODE {}: Added to main queue - size {}", transaction.getNodeId(), sendQueue.size());
+                queue = sendQueue;
+                logger.debug("NODE {}: Adding to device queue", transaction.getNodeId());
             } else {
-                controllerQueue.add(transaction);
-                logger.debug("NODE {}: Added to controller queue - size {}", transaction.getNodeId(),
-                        controllerQueue.size());
+                queue = controllerQueue;
+                logger.debug("NODE {}: Adding to controller queue", transaction.getNodeId());
             }
+
+            if (queue.contains(transaction)) {
+                logger.debug("NODE {}: Transaction already in queue - removing original", transaction.getNodeId());
+                queue.remove(transaction);
+            }
+            queue.add(transaction);
+            logger.debug("NODE {}: Added to queue - size {}", transaction.getNodeId(), controllerQueue.size());
         }
 
         sendNextMessage();

@@ -635,9 +635,12 @@ public class ZWaveNode {
      */
     public void healNode() {
         if (nodeInitStageAdvancer.isInitializationComplete() == false) {
+            logger.debug("NODE {}: Can not start heal as initialisation is not complete ({}).", getNodeId(),
+                    nodeInitStageAdvancer.getCurrentStage());
             return;
         }
 
+        logger.debug("NODE {}: Starting network mesh heal.", getNodeId());
         nodeInitStageAdvancer.startInitialisation(ZWaveNodeInitStage.HEAL_START);
     }
 

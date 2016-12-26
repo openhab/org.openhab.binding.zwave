@@ -49,7 +49,6 @@ import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInitializationStateEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkStateEvent;
-import org.openhab.binding.zwave.internal.protocol.initialization.ZWaveNodeInitStage;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RemoveFailedNodeMessageClass.Report;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.osgi.framework.ServiceRegistration;
@@ -207,8 +206,9 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                     if (controller == null) {
                         return;
                     }
-                    logger.debug("Starting network mesh heal for {}.", getThing().getUID());
+                    logger.debug("Starting network mesh heal for controller {}.", getThing().getUID());
                     for (ZWaveNode node : controller.getNodes()) {
+                        logger.debug("Starting network mesh heal for controller {}.", getThing().getUID());
                         node.healNode();
                     }
                 }
@@ -219,6 +219,9 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             if (hours < 0) {
                 hours += 24;
             }
+
+            logger.debug("Scheduling network mesh heal for {} hours time.", hours);
+
             healJob = scheduler.scheduleAtFixedRate(healRunnable, hours, 24, TimeUnit.HOURS);
         }
     }
@@ -260,6 +263,10 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         for (Entry<String, Object> configurationParameter : configurationParameters.entrySet()) {
             Object value = configurationParameter.getValue();
             logger.debug("Controller Configuration update {} to {}", configurationParameter.getKey(), value);
+            if (value == null) {
+                continue;
+            }
+
             String[] cfg = configurationParameter.getKey().split("_");
             if ("controller".equals(cfg[0])) {
                 if (controller == null) {
@@ -739,13 +746,8 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             return false;
         }
 
-        // Only set the HEAL stage if the node is in DONE state
-        if (node.getNodeInitStage() != ZWaveNodeInitStage.DONE) {
-            logger.debug("NODE {}: Can't start heal when device initialisation is not complete", nodeId);
-            return false;
-        }
+        node.healNode();
 
-        node.setNodeStage(ZWaveNodeInitStage.HEAL_START);
         return true;
     }
 

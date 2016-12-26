@@ -174,6 +174,10 @@ public class ZWaveNodeInitStageAdvancer {
                     logger.debug("NODE {}: Node advancer: Node just included ({})", node.getNodeId(),
                             node.getInclusionTimer());
                     doInitialInclusionStages();
+                } else if (currentStage == ZWaveNodeInitStage.HEAL_START) {
+                    doHealStages();
+                    setCurrentStage(ZWaveNodeInitStage.DONE);
+                    return;
                 } else {
                     doInitialStages();
                 }
@@ -199,7 +203,10 @@ public class ZWaveNodeInitStageAdvancer {
                     doDynamicStages();
                 }
                 setCurrentStage(ZWaveNodeInitStage.DYNAMIC_END);
+
                 doHealStages();
+
+                setCurrentStage(ZWaveNodeInitStage.DONE);
             }
         };
 
@@ -1010,7 +1017,6 @@ public class ZWaveNodeInitStageAdvancer {
             }
         }
         setCurrentStage(ZWaveNodeInitStage.HEAL_END);
-        setCurrentStage(ZWaveNodeInitStage.DONE);
     }
 
     /**
