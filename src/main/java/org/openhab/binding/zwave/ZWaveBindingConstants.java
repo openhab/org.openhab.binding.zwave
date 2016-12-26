@@ -83,6 +83,7 @@ public class ZWaveBindingConstants {
     public final static String PROPERTY_CLASS_GENERIC = "zwave_class_generic";
     public final static String PROPERTY_CLASS_SPECIFIC = "zwave_class_specific";
     public final static String PROPERTY_ZWPLUS_DEVICETYPE = "zwave_plus_devicetype";
+    public final static String PROPERTY_ZWPLUS_ROLETYPE = "zwave_plus_roletype";
     public final static String PROPERTY_LASTWAKEUP = "zwave_lastwakeup";
     public final static String PROPERTY_USINGSECURITY = "zwave_secure";
     public final static String PROPERTY_LASTHEAL = "zwave_lastheal";

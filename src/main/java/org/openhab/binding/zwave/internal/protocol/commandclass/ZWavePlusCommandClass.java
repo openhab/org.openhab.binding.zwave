@@ -12,20 +12,19 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
-import org.openhab.binding.zwave.internal.HexToIntegerConverter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWavePlusDeviceClass.ZWavePlusDeviceType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.commandclass.impl.CommandClassZwaveplusInfoV1;
+import org.openhab.binding.zwave.internal.protocol.commandclass.impl.CommandClassZwaveplusInfoV2;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 /**
@@ -39,19 +38,14 @@ public class ZWavePlusCommandClass extends ZWaveCommandClass implements ZWaveCom
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWavePlusCommandClass.class);
 
-    private static final byte ZWAVE_PLUS_GET = 0x01;
-    private static final byte ZWAVE_PLUS_REPORT = 0x02;
-
     @SuppressWarnings("unused")
     private int zwPlusVersion = 0;
+    private String zwPlusRole;
+    private String zwPlusNodeType;
     @SuppressWarnings("unused")
-    private int zwPlusRole = 0;
+    private String zwPlusUserIcon;
     @SuppressWarnings("unused")
-    private int zwPlusNodeType = 0;
-    @XStreamConverter(HexToIntegerConverter.class)
-    private int zwPlusDeviceType = 0;
-    @XStreamConverter(HexToIntegerConverter.class)
-    private int zwPlusInstallerIcon = 0;
+    private String zwPlusInstallerIcon;
 
     @XStreamOmitField
     private boolean initialiseDone = false;
@@ -79,37 +73,27 @@ public class ZWavePlusCommandClass extends ZWaveCommandClass implements ZWaveCom
         return CommandClass.COMMAND_CLASS_ZWAVEPLUS_INFO;
     }
 
-    @ZWaveResponseHandler(id = ZWAVE_PLUS_REPORT, name = "ZWAVE_PLUS_REPORT")
+    @ZWaveResponseHandler(id = CommandClassZwaveplusInfoV1.ZWAVEPLUS_INFO_REPORT, name = "ZWAVEPLUS_INFO_REPORT")
     public void handleZwavePlusReport(ZWaveCommandClassPayload payload, int endpoint) {
-        zwPlusVersion = payload.getPayloadByte(1);
-        zwPlusRole = payload.getPayloadByte(2);
-        zwPlusNodeType = payload.getPayloadByte(3);
-        zwPlusInstallerIcon = (payload.getPayloadByte(4) << 8) | payload.getPayloadByte(5);
-        zwPlusDeviceType = (payload.getPayloadByte(6) << 8) | payload.getPayloadByte(7);
+        Map<String, Object> response;
 
-        ZWavePlusDeviceType deviceType = ZWavePlusDeviceType.getZWavePlusDeviceType(zwPlusDeviceType);
-        if (deviceType != null) {
-            logger.debug("NODE {}: Adding mandatory command classes for ZWavePlus device type {}",
-                    getNode().getNodeId(), deviceType);
-
-            // Add all missing mandatory plus command classes
-            for (CommandClass commandClass : deviceType.getMandatoryCommandClasses()) {
-                ZWaveCommandClass zwaveCommandClass = this.getNode().getCommandClass(commandClass);
-
-                // Add the mandatory class missing, ie not set via NIF
-                if (zwaveCommandClass == null) {
-                    zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), getNode(),
-                            getController());
-                    if (zwaveCommandClass != null) {
-                        logger.debug(String.format("NODE %d: Adding command class %s (0x%02x)", getNode().getNodeId(),
-                                commandClass, commandClass.getKey()));
-                        getNode().addCommandClass(zwaveCommandClass);
-                    }
-                }
-            }
-        } else {
-            logger.info("NODE {}: unknown ZWavePlus device type: {}", getNode().getNodeId(), zwPlusDeviceType);
+        switch (getVersion()) {
+            default:
+            case 1:
+                response = CommandClassZwaveplusInfoV1.handleZwaveplusInfoReport(payload.getPayloadBuffer());
+                break;
+            case 2:
+                response = CommandClassZwaveplusInfoV2.handleZwaveplusInfoReport(payload.getPayloadBuffer());
+                break;
         }
+
+        zwPlusVersion = (Integer) response.get("Z_WAVE_PLUS_VERSION");
+        zwPlusRole = (String) response.get("ROLE_TYPE");
+        zwPlusNodeType = (String) response.get("NODE_TYPE");
+
+        // These are only available in V2 so will be null
+        zwPlusInstallerIcon = (String) response.get("INSTALLER_ICON_TYPE");
+        zwPlusUserIcon = (String) response.get("USER_ICON_TYPE");
 
         initialiseDone = true;
     }
@@ -119,7 +103,7 @@ public class ZWavePlusCommandClass extends ZWaveCommandClass implements ZWaveCom
         ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
         // If we're already initialized, then don't do it again unless we're refreshing
         if (refresh == true || initialiseDone == false) {
-            result.add(this.getValueMessage());
+            result.add(getValueMessage());
         }
         return result;
     }
@@ -130,11 +114,20 @@ public class ZWavePlusCommandClass extends ZWaveCommandClass implements ZWaveCom
             return null;
         }
 
-        logger.debug("NODE {}: Creating new message for application command ZWAVE_PLUS_GET",
-                this.getNode().getNodeId());
+        byte[] payload;
+        switch (this.getVersion()) {
+            default:
+            case 1:
+                payload = CommandClassZwaveplusInfoV1.getZwaveplusInfoGet();
+                break;
+            case 2:
+                payload = CommandClassZwaveplusInfoV2.getZwaveplusInfoGet();
+                break;
+        }
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), ZWAVE_PLUS_GET)
-                .withPriority(TransactionPriority.Config).withExpectedResponseCommand(ZWAVE_PLUS_REPORT).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), payload)
+                .withExpectedResponseCommand(CommandClassZwaveplusInfoV1.ZWAVEPLUS_INFO_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     @Override
@@ -149,14 +142,13 @@ public class ZWavePlusCommandClass extends ZWaveCommandClass implements ZWaveCom
     /**
      * Return the ZWave Plus Device Type
      *
-     * @return {@link ZWavePlusDeviceType}
+     * @return
      */
-    public ZWavePlusDeviceType getZWavePlusDeviceType() {
-        ZWavePlusDeviceType deviceType = ZWavePlusDeviceType.getZWavePlusDeviceType(zwPlusDeviceType);
-        if (deviceType == null) {
-            deviceType = ZWavePlusDeviceType.UNKNOWN_TYPE;
-        }
+    public String getRoleType() {
+        return zwPlusRole;
+    }
 
-        return deviceType;
+    public String getNodeType() {
+        return zwPlusNodeType;
     }
 }
