@@ -31,7 +31,8 @@ public class DeleteReturnRouteMessageClass extends ZWaveCommandProcessor {
         logger.debug("NODE {}: Deleting return routes", nodeId);
 
         // Create the request
-        return new ZWaveTransactionMessageBuilder(SerialMessageClass.DeleteReturnRoute).withPayload(nodeId).build();
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.DeleteReturnRoute).withResponseNodeId(nodeId)
+                .withPayload(nodeId).build();
     }
 
     @Override

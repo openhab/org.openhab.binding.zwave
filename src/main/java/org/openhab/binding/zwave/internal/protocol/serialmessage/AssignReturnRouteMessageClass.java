@@ -31,7 +31,7 @@ public class AssignReturnRouteMessageClass extends ZWaveCommandProcessor {
         logger.debug("NODE {}: Assigning return route to node {}", nodeId, destinationId);
 
         // Create the request
-        return new ZWaveTransactionMessageBuilder(SerialMessageClass.AssignReturnRoute)
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.AssignReturnRoute).withResponseNodeId(nodeId)
                 .withPayload(nodeId, destinationId).build();
     }
 

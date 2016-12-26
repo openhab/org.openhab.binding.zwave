@@ -251,7 +251,7 @@ public class ZWaveTransactionManager {
         if (payload.getMaxAttempts() != 0) {
             transaction.setAttemptsRemaining(payload.getMaxAttempts());
         }
-        transaction.getSerialMessageClass();
+        // transaction.getSerialMessageClass();
 
         // Add the transaction to the queue
         addTransactionToQueue(transaction);

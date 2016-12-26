@@ -4,6 +4,13 @@ import java.security.GeneralSecurityException;
 import java.security.SecureRandom;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Class to represent a one-use token.
+ * This class holds the number, and timeout for the NONCE.
+ * 
+ * @author Chris Jackson - Initial contribution
+ *
+ */
 public class ZWaveNonce {
     private final long RESEED_INTERVAL = TimeUnit.HOURS.toMillis(6);
     private final long timeout = 12000000000L;

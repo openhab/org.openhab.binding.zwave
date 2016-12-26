@@ -31,7 +31,8 @@ public class AssignSucReturnRouteMessageClass extends ZWaveCommandProcessor {
         logger.debug("NODE {}: Assigning SUC return route", nodeId);
 
         // Create the request
-        return new ZWaveTransactionMessageBuilder(SerialMessageClass.AssignSucReturnRoute).withPayload(nodeId).build();
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.AssignSucReturnRoute).withResponseNodeId(nodeId)
+                .withPayload(nodeId).build();
     }
 
     @Override

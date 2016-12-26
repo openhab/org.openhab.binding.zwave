@@ -257,11 +257,16 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
 
         // If the expected command class is defined, then check it
         // If the incoming node is 0, we will also correlate as this is an error to our last request
-        if (incomingMessage.getMessageNode() != 0 && transaction.getNodeId() != incomingMessage.getMessageNode()) {
+        try {
+            if (transaction.getNodeId() != incomingMessage.getMessagePayloadByte(1)) {
+                return false;
+            }
+        } catch (ZWaveSerialMessageException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
             return false;
         }
 
         return true;
-
     }
 }

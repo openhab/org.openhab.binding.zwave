@@ -31,7 +31,8 @@ public class DeleteSucReturnRouteMessageClass extends ZWaveCommandProcessor {
         logger.debug("NODE {}: Deleting SUC return routes", nodeId);
 
         // Create the request
-        return new ZWaveTransactionMessageBuilder(SerialMessageClass.DeleteSUCReturnRoute).withPayload(nodeId).build();
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.DeleteSUCReturnRoute).withResponseNodeId(nodeId)
+                .withPayload(nodeId).build();
     }
 
     @Override
