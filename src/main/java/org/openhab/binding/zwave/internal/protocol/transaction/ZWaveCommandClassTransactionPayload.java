@@ -106,7 +106,7 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
 
     @Override
     public int getTimeout() {
-        return 2550;
+        return 5000;
     }
 
     @Override

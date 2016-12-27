@@ -994,7 +994,7 @@
     <channel-type id="thermostat_setpoint">
         <item-type>Number</item-type>
         <label>Heating Setpoint</label>
-        <description>Sets the thermostate setpoint</description>
+        <description>Sets the thermostat setpoint</description>
         <category>Temperature</category>
         <config-description>
             <parameter name="config_scale" type="text">
