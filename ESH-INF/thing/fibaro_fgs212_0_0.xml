@@ -75,24 +75,30 @@
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>4: Relay 1: OFF-delay time (10ms steps)</label>
-        <description>Automatic turning off relay 1 after set time, in 10ms increments (default: 200ms)</description>
+        <description><![CDATA[
+Automatic turning off relay 1 after set time ...<br /><h1>Overview</h1><p>in 10ms increments (default: 200ms)</p>
+        ]]></description>
         <default>20</default>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
         <label>6: Separation of association sending (key 1)</label>
-        <description>Activate/Deactivate association sending for group 1 - Also see param #16</description>
+        <description><![CDATA[
+Sending commands to control devices assigned ...<br /><h1>Overview</h1><p>to 1-st association group (key no. 1)</p> <p>- Also see param #15</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Map status to all devices in group 1</option>
-          <option value="1">Map OFF status to all devices in group 1, Double click on key 1 will s</option>
-          <option value="2">Map OFF status to all devices in group 1, Double click on key 1 will s</option>
+          <option value="1">Map OFF status to all devices in group 1 ...</option>
+          <option value="2">Map OFF status to all devices in group 1 ...</option>
         </options>
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Inputs behaviour</label>
-        <description>In case of bi-stable switches, define their behaviour (toggle or follow)</description>
+        <description><![CDATA[
+Assigns bistable key status to the device status.<br /><h1>Overview</h1><p>Available configuration parameters:<br />0 - [On / Off] device changes status on key status change.<br />1 - Device status depends on key status: ON when the key is ON, OFF when the key is OFF </p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Toggle</option>
@@ -112,7 +118,9 @@
 
       <parameter name="config_15_1" type="integer" groupName="configuration">
         <label>15: Dimmer/Roller shutter control</label>
-        <description>Enable/Disable operation of dimmer or roller shutter devices associated to group 1. Available only when using mono-stable inputs (buttons) - Hold button 1 or double-tap for operation</description>
+        <description><![CDATA[
+Enable/Disable operation of dimmer or roller shutter devices ...<br /><h1>Overview</h1><p>enabling this option allows the user to dim lighting/shut roller by associating Dimmer/Roller Shutter Controller and holding or double press of double switch (only mono-stable switch). </p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Disable Dimmer/Roller shutter control</option>
@@ -125,8 +133,8 @@
         <description>Saving state before power failure</description>
         <default>1</default>
         <options>
-          <option value="0">State NOT saved at power failure, all outputs are set to OFF upon powe</option>
-          <option value="1">State saved at power failure, all outputs are set to previous state up</option>
+          <option value="0">State NOT saved at power failure, all outputs are set ...</option>
+          <option value="1">State saved at power failure, all outputs are set to ...</option>
         </options>
       </parameter>
 
@@ -135,9 +143,9 @@
         <default>3</default>
         <options>
           <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt of alarm frame</option>
-          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt of alarm frame</option>
-          <option value="3">ALARM FLASHING - relay will turn ON and OFF periodically (see param.39</option>
+          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt ...</option>
+          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt ...</option>
+          <option value="3">ALARM FLASHING - relay will turn ON and OFF ...</option>
         </options>
       </parameter>
 
@@ -146,9 +154,9 @@
         <default>2</default>
         <options>
           <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt of alarm frame</option>
-          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt of alarm frame</option>
-          <option value="3">ALARM FLASHING - relay will turn ON and OFF periodically (see param.39</option>
+          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt ...</option>
+          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt ...</option>
+          <option value="3">ALARM FLASHING - relay will turn ON and OFF ...</option>
         </options>
       </parameter>
 
@@ -157,9 +165,9 @@
         <default>3</default>
         <options>
           <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt of alarm frame</option>
-          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt of alarm frame</option>
-          <option value="3">ALARM FLASHING - relay will turn ON and OFF periodically (see param.39</option>
+          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt ...</option>
+          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt ...</option>
+          <option value="3">ALARM FLASHING - relay will turn ON and OFF ...</option>
         </options>
       </parameter>
 
@@ -168,9 +176,9 @@
         <default>1</default>
         <options>
           <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt of alarm frame</option>
-          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt of alarm frame</option>
-          <option value="3">ALARM FLASHING - relay will turn ON and OFF periodically (see param.39</option>
+          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt ...</option>
+          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt ...</option>
+          <option value="3">ALARM FLASHING - relay will turn ON and OFF ...</option>
         </options>
       </parameter>
 
