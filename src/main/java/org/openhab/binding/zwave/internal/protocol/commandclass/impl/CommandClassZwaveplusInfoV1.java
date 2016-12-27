@@ -160,7 +160,7 @@ public class CommandClassZwaveplusInfoV1 {
      * Z-Wave+ Info Report<br>
      *
      *
-     * The output data has the following structure<br>
+     * The output data {@link Map} has the following properties<br>
      *
      * <ul>
      * <li>Z_WAVE_PLUS_VERSION {@link Integer}

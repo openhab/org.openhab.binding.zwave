@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -161,7 +160,7 @@ public class CommandClassSecurityV1 {
      * Security Commands Supported Report<br>
      *
      *
-     * The output data has the following structure<br>
+     * The output data {@link Map} has the following properties<br>
      *
      * <ul>
      * <li>REPORTS_TO_FOLLOW {@link Integer}
@@ -239,7 +238,7 @@ public class CommandClassSecurityV1 {
      * Security Scheme Get<br>
      *
      *
-     * The output data has the following structure<br>
+     * The output data {@link Map} has the following properties<br>
      *
      * <ul>
      * <li>SUPPORTED_SECURITY_SCHEMES {@link Integer}
@@ -287,7 +286,7 @@ public class CommandClassSecurityV1 {
      * Security Scheme Report<br>
      *
      *
-     * The output data has the following structure<br>
+     * The output data {@link Map} has the following properties<br>
      *
      * <ul>
      * <li>SUPPORTED_SECURITY_SCHEMES {@link Integer}
@@ -338,7 +337,7 @@ public class CommandClassSecurityV1 {
      * Network Key Set<br>
      *
      *
-     * The output data has the following structure<br>
+     * The output data {@link Map} has the following properties<br>
      *
      * <ul>
      * <li>NETWORK_KEY_BYTE {@link byte[]}
@@ -429,7 +428,7 @@ public class CommandClassSecurityV1 {
      * Security Scheme Inherit<br>
      *
      *
-     * The output data has the following structure<br>
+     * The output data {@link Map} has the following properties<br>
      *
      * <ul>
      * <li>SUPPORTED_SECURITY_SCHEMES {@link Integer}
@@ -515,7 +514,7 @@ public class CommandClassSecurityV1 {
      * Security Nonce Report<br>
      *
      *
-     * The output data has the following structure<br>
+     * The output data {@link Map} has the following properties<br>
      *
      * <ul>
      * <li>NONCE_BYTE {@link byte[]}
@@ -600,7 +599,7 @@ public class CommandClassSecurityV1 {
      * Security Message Encapsulation<br>
      *
      *
-     * The output data has the following structure<br>
+     * The output data {@link Map} has the following properties<br>
      *
      * <ul>
      * <li>INITIALIZATION_VECTOR_BYTE {@link byte[]}
@@ -722,7 +721,7 @@ public class CommandClassSecurityV1 {
      * Security Message Encapsulation Nonce Get<br>
      *
      *
-     * The output data has the following structure<br>
+     * The output data {@link Map} has the following properties<br>
      *
      * <ul>
      * <li>INITIALIZATION_VECTOR_BYTE {@link byte[]}
