@@ -62,6 +62,7 @@
       <property name="manufacturerRef">0002:0064,0102:0064,0202:0064</property>
       <property name="versionMax">1.6</property>
       <property name="dbReference">73</property>
+      <property name="commandClass:ALARM">supportedGetSupported=false</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

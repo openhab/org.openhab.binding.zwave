@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="shenzhen_floodsensor_00_000" listed="false">
+    <label>Flood sensor Flood/water sensor</label>
+    <description><![CDATA[
+Flood/water sensor<br /><h2>Inclusion Information</h2><p>1. Remove the sensor cover.</p> <p>2. Make sure the sensor is powered.</p> <p>3. Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)</p> <p>4. Press the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off alternately five times..</p> <br /><h2>Exclusion Information</h2><p>1. Remove the device cover.</p> <p>2. Make sure the sensor is powered.</p> <p>3. Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)</p> <p>4. Press the button three times within 1.5 second, the device will enter exclusion mode.</p> <br /><h2>Wakeup Information</h2><p>You can press the button once to wake up the device and send wakeup notification to controller.</p> <p>If press successfully, the LED will blink one time.</p> <p>The minimum wakeup interval is 300s</p> <p>The maximum wakeup interval is 16,777,200s (about 194 days)</p> <p>Allowable interval among each wakeup interval is 60 second, such as 360, 420, 480…</p> <p>Note: The default value is 12 hours. This value is longer, the battery life is greater.</p>
+    ]]></description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="sensor_binary" typeId="sensor_binary">
+        <label>Binary Sensor</label>
+        <properties>
+          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="alarm_general" typeId="alarm_general">
+        <label>Alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">BATTERY</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Shenzhen Neo Electronics Co., Ltd</property>
+      <property name="modelId">Flood sensor</property>
+      <property name="manufacturerId">0258</property>
+      <property name="manufacturerRef">0003:1085</property>
+      <property name="dbReference">493</property>
+      <property name="defaultAssociations">2</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: Basic setting command</label>
+        <description><![CDATA[
+Basic setting command to be transmitted<br /><h1>Overview</h1><p>When the water sensor trigger alarm, it will send basic setting with these parameters. The receiver will execute this parameters. For example when the lamp receive the basic setting command, the parameters decide the brightness of the lamp.</p>
+        ]]></description>
+        <default>99</default>
+        <options>
+          <option value="0">OFF</option>
+          <option value="1">Dim level (lower bound) (multilevel switch)</option>
+          <option value="99">Dim level (upper bound) (multilevel switch)</option>
+          <option value="255">ON (Binary switch)</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_2_2" type="integer" groupName="configuration"
+                 min="1" max="65535">
+        <label>2: OFF delay</label>
+        <description><![CDATA[
+The amount of delay before the OFF command is transmitted<br /><h1>Overview</h1><p>Adjust the amount of delay before the OFF command is transmitted</p>
+        ]]></description>
+        <default>30</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Device status</label>
+        <description><![CDATA[
+Sends the BASIC SET control frame when the probe detects water<br /><h1>Overview</h1><p>Association group 1 is assigned the status of the device - it sends the BASIC SET control frame to the associated devices when the probe has detected water.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association">
+        <label>2: Controller updates</label>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>
