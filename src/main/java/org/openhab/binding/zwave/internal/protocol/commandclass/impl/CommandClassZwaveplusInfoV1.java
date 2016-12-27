@@ -180,28 +180,28 @@ public class CommandClassZwaveplusInfoV1 {
 
         // Process 'Role Type'
         switch (payload[3]) {
-            case 0x00:
+            case (byte) 0x00:
                 response.put("ROLE_TYPE", "ROLE_TYPE_CONTROLLER_CENTRAL_STATIC");
                 break;
-            case 0x01:
+            case (byte) 0x01:
                 response.put("ROLE_TYPE", "ROLE_TYPE_CONTROLLER_SUB_STATIC");
                 break;
-            case 0x02:
+            case (byte) 0x02:
                 response.put("ROLE_TYPE", "ROLE_TYPE_CONTROLLER_PORTABLE");
                 break;
-            case 0x03:
+            case (byte) 0x03:
                 response.put("ROLE_TYPE", "ROLE_TYPE_CONTROLLER_PORTABLE_REPORTING");
                 break;
-            case 0x04:
+            case (byte) 0x04:
                 response.put("ROLE_TYPE", "ROLE_TYPE_SLAVE_PORTABLE");
                 break;
-            case 0x05:
+            case (byte) 0x05:
                 response.put("ROLE_TYPE", "ROLE_TYPE_SLAVE_ALWAYS_ON");
                 break;
-            case 0x06:
+            case (byte) 0x06:
                 response.put("ROLE_TYPE", "ROLE_TYPE_SLAVE_SLEEPING_REPORTING");
                 break;
-            case 0x07:
+            case (byte) 0x07:
                 response.put("ROLE_TYPE", "ROLE_TYPE_SLAVE_SLEEPING_LISTENING");
                 break;
             default:
@@ -212,19 +212,19 @@ public class CommandClassZwaveplusInfoV1 {
 
         // Process 'Node Type'
         switch (payload[4]) {
-            case 0x00:
+            case (byte) 0x00:
                 response.put("NODE_TYPE", "NODE_TYPE_ZWAVEPLUS_NODE");
                 break;
-            case 0x01:
+            case (byte) 0x01:
                 response.put("NODE_TYPE", "NODE_TYPE_ZWAVEPLUS_FOR_IP_ROUTER");
                 break;
-            case 0x02:
+            case (byte) 0x02:
                 response.put("NODE_TYPE", "NODE_TYPE_ZWAVEPLUS_FOR_IP_GATEWAY");
                 break;
-            case 0x03:
+            case (byte) 0x03:
                 response.put("NODE_TYPE", "NODE_TYPE_ZWAVEPLUS_FOR_IP_CLIENT_IP_NODE");
                 break;
-            case 0x04:
+            case (byte) 0x04:
                 response.put("NODE_TYPE", "NODE_TYPE_ZWAVEPLUS_FOR_IP_CLIENT_ZWAVE_NODE");
                 break;
             default:
