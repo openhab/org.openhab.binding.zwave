@@ -192,7 +192,8 @@ Associations in Z-Wave network security mode<br /><h1>Overview</h1><p>This param
         </options>
       </parameter>
 
-      <parameter name="config_28_1" type="integer" groupName="configuration">
+      <parameter name="config_28_1" type="integer" groupName="configuration"
+                 min="0" max="15">
         <label>28: S1 switch - scenes sent</label>
         <description><![CDATA[
 S1 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which actions result in sending scene IDs assigned to them</p>
@@ -205,6 +206,7 @@ S1 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which
           <option value="4">Key pressed 3 times</option>
           <option value="8">Key Hold Down and Key Released</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_29_1" type="integer" groupName="configuration">
