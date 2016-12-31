@@ -52,9 +52,9 @@
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:1,BASIC:1;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level1" typeId="system.battery-level">
         <properties>
-          <property name="binding:*:PercentType">BATTERY</property>
+          <property name="binding:*:PercentType">BATTERY:1</property>
         </properties>
       </channel>
       <channel id="sensor_direction2" typeId="sensor_direction">
@@ -63,9 +63,9 @@
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:2,BASIC:2;type=DIRECTION</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level2" typeId="system.battery-level">
         <properties>
-          <property name="binding:*:PercentType">BATTERY</property>
+          <property name="binding:*:PercentType">BATTERY:2</property>
         </properties>
       </channel>
       <channel id="sensor_velocity3" typeId="sensor_velocity">
@@ -74,9 +74,9 @@
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:3,BASIC:3;type=VELOCITY</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level3" typeId="system.battery-level">
         <properties>
-          <property name="binding:*:PercentType">BATTERY</property>
+          <property name="binding:*:PercentType">BATTERY:3</property>
         </properties>
       </channel>
       <channel id="sensor_velocity4" typeId="sensor_velocity">
@@ -85,9 +85,9 @@
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:4,BASIC:4;type=VELOCITY</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level4" typeId="system.battery-level">
         <properties>
-          <property name="binding:*:PercentType">BATTERY</property>
+          <property name="binding:*:PercentType">BATTERY:4</property>
         </properties>
       </channel>
       <channel id="sensor_temperature5" typeId="sensor_temperature">
@@ -96,9 +96,9 @@
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:5,BASIC:5;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level5" typeId="system.battery-level">
         <properties>
-          <property name="binding:*:PercentType">BATTERY</property>
+          <property name="binding:*:PercentType">BATTERY:5</property>
         </properties>
       </channel>
       <channel id="sensor_temperature6" typeId="sensor_temperature">
@@ -107,9 +107,9 @@
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:6,BASIC:6;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level6" typeId="system.battery-level">
         <properties>
-          <property name="binding:*:PercentType">BATTERY</property>
+          <property name="binding:*:PercentType">BATTERY:6</property>
         </properties>
       </channel>
       <channel id="sensor_rainrate7" typeId="sensor_rainrate">
@@ -118,9 +118,9 @@
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:7,BASIC:7;type=RAIN_RATE</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level7" typeId="system.battery-level">
         <properties>
-          <property name="binding:*:PercentType">BATTERY</property>
+          <property name="binding:*:PercentType">BATTERY:7</property>
         </properties>
       </channel>
       <channel id="sensor_relhumidity8" typeId="sensor_relhumidity">
@@ -129,9 +129,9 @@
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:8,BASIC:8;type=RELATIVE_HUMIDITY</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level8" typeId="system.battery-level">
         <properties>
-          <property name="binding:*:PercentType">BATTERY</property>
+          <property name="binding:*:PercentType">BATTERY:8</property>
         </properties>
       </channel>
       <channel id="sensor_temperature9" typeId="sensor_temperature">
@@ -140,9 +140,9 @@
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:9,BASIC:9;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level9" typeId="system.battery-level">
         <properties>
-          <property name="binding:*:PercentType">BATTERY</property>
+          <property name="binding:*:PercentType">BATTERY:9</property>
         </properties>
       </channel>
       <channel id="sensor_relhumidity10" typeId="sensor_relhumidity">
@@ -151,9 +151,9 @@
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:10,BASIC:10;type=RELATIVE_HUMIDITY</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level10" typeId="system.battery-level">
         <properties>
-          <property name="binding:*:PercentType">BATTERY</property>
+          <property name="binding:*:PercentType">BATTERY:10</property>
         </properties>
       </channel>
     </channels>
