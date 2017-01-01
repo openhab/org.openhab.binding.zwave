@@ -109,7 +109,7 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
                         .getDoorLockStateType(serialMessage.getMessagePayloadByte(offset + 2));
                 logger.debug("NODE {}: USER_CODE_REPORT {} is {}", getNode().getNodeId(), id, status);
                 String code = "";
-                int size = serialMessage.getMessagePayload().length - 5;
+                int size = serialMessage.getMessagePayload().length - 7;
                 if (size > USER_CODE_MAX_LENGTH) {
                     logger.debug("NODE {}: UserCode({}) length is too long ({} bytes)", getNode().getNodeId(), id,
                             size);
