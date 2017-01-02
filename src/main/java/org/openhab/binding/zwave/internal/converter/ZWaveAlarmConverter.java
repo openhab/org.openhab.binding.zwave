@@ -86,6 +86,8 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
     @Override
     public State handleEvent(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
         String alarmType = channel.getArguments().get("type");
+        Integer alarmEvent = channel.getArguments().get("event") == null ? null
+                : Integer.parseInt(channel.getArguments().get("event"));
 
         ZWaveAlarmValueEvent eventAlarm = (ZWaveAlarmValueEvent) event;
         logger.debug("Alarm converter processing {}", eventAlarm.getReportType());
@@ -93,7 +95,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
             case ALARM:
                 return handleAlarmReport(channel, eventAlarm, alarmType);
             case NOTIFICATION:
-                return handleNotificationReport(channel, eventAlarm, alarmType);
+                return handleNotificationReport(channel, eventAlarm, alarmType, alarmEvent);
         }
 
         return null;
@@ -124,8 +126,8 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         return state;
     }
 
-    private State handleNotificationReport(ZWaveThingChannel channel, ZWaveAlarmValueEvent eventAlarm,
-            String alarmType) {
+    private State handleNotificationReport(ZWaveThingChannel channel, ZWaveAlarmValueEvent eventAlarm, String alarmType,
+            Integer alarmEvent) {
 
         // Don't trigger event if this item is bound to another event type
         if (alarmType != null && AlarmType.valueOf(alarmType) != eventAlarm.getAlarmType()) {
@@ -136,6 +138,11 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         int event = eventAlarm.getAlarmEvent();// == 0 ? 0 : eventAlarm.getAlarmStatus();
         logger.debug("Alarm converter NOTIFICATION event is {}, type {}", event, channel.getDataType());
 
+        // Don't trigger event if there is no event match. Note that 0 is always acceptable
+        if (alarmEvent != null && event != 0 && alarmEvent != event) {
+            return null;
+        }
+
         // TODO: Handle these event to state specific conversions in a table.
         State state = null;
         switch (channel.getDataType()) {
@@ -143,21 +150,23 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                 state = event == 0 ? OnOffType.OFF : OnOffType.ON;
                 break;
             case OpenClosedType:
-                logger.debug("Alarm converter NOTIFICATION 1");
                 state = eventAlarm.getValue() == 0 ? OpenClosedType.CLOSED : OpenClosedType.OPEN;
-                if (eventAlarm.getAlarmType() == AlarmType.ACCESS_CONTROL) {
-                    logger.debug("Alarm converter NOTIFICATION 2");
-                    switch (event) {
-                        case 22: // Window/Door is open
-                            state = OpenClosedType.OPEN;
-                            break;
-                        case 23: // Window/Door is closed
-                            state = OpenClosedType.CLOSED;
-                            logger.debug("Alarm converter NOTIFICATION 3");
-                            break;
-                        default:
-                            break;
-                    }
+                switch (eventAlarm.getAlarmType()) {
+                    case ACCESS_CONTROL:
+                        switch (event) {
+                            case 22: // Window/Door is open
+                                state = OpenClosedType.OPEN;
+                                break;
+                            case 23: // Window/Door is closed
+                                state = OpenClosedType.CLOSED;
+                                logger.debug("Alarm converter NOTIFICATION 3");
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
                 }
                 break;
             case DecimalType:
