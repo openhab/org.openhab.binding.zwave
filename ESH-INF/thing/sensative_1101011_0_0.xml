@@ -19,10 +19,16 @@ Strips-MaZw<br /><h2>Inclusion Information</h2><ul><li>Set your controller in in
           <property name="binding:*:OnOffType">SENSOR_BINARY</property>
         </properties>
       </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm</label>
+      <channel id="sensor_door" typeId="sensor_door">
+        <label>Door Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM</property>
+          <property name="binding:*:OpenClosedType">ALARM;type=ACCESS_CONTROL</property>
+        </properties>
+      </channel>
+      <channel id="alarm_tamper" typeId="alarm_tamper">
+        <label>Tamper Alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=BURGLAR</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -39,6 +45,7 @@ Strips-MaZw<br /><h2>Inclusion Information</h2><ul><li>Set your controller in in
       <property name="manufacturerId">019A</property>
       <property name="manufacturerRef">0003:0003</property>
       <property name="dbReference">251</property>
+      <property name="commandClass:SENSOR_BINARY">getSupported=false</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

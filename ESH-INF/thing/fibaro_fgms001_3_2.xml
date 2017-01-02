@@ -93,7 +93,7 @@ The lower the value, the more sensitive the PIR sensor.<br /><h1>Overview</h1><p
                  min="0" max="15">
         <label>2: Motion detection - blind time</label>
         <description><![CDATA[
-Period of time through which the PIR sensor is “blind”.<br /><h1>Overview</h1><p>Period of time through which the PIR sensor is “blind” (insensitive) to motion. After this time period the PIR sensor will be again able to detect motion. The longer the insensitivity period, the longer the battery life. If the sensor is required to detect motion quickly, the time period may be shortened. The time of insensitivity should be shorter that the time period set in parameter 6.<br />Available settings: 0 - 15<br />Formula to calculate the time: time [s] = 0.5 x (value + 1)<br />Default setting: 3 (1.5 seconds)<br />Parameter size: 1 [byte]</p>
+Period of time through which the PIR sensor is “blind”.<br /><h1>Overview</h1><p>Period of time through which the PIR sensor is “blind” (insensitive) to motion. After this time period the PIR sensor will be again able to detect motion. The longer the insensitivity period, the longer the battery life. If the sensor is required to detect motion quickly, the time period may be shortened. The time of insensitivity should be shorter that the time period set in parameter 6.<br />Available settings: 0 - 15<br />Formula to calculate the time: time [s] = 0.5 x (value + 1)<br />Default setting: 3 (1.5 seconds)<br />Parameter size: 1 [byte]</p>
         ]]></description>
         <default>3</default>
       </parameter>
@@ -138,7 +138,7 @@ Period of time after wich Motion alarm will be cancelled.<br /><h1>Overview</h1>
       <parameter name="config_8_1" type="integer" groupName="configuration">
         <label>8: Motion detection - operating mode</label>
         <description><![CDATA[
-The parameter determines the part of day in which the PIR sensor will be active.<br /><h1>Overview</h1><p>The parameter determines the part of day in which the PIR sensor will be active. This parameter influences only the motion reports and associations. Tamper, light intensity and temperature measurements will be still active, regardless of this parameter settings. 0 - PIR sensor always active 1 - PIR sensor active during the day only 2 - PIR sensor active during the night only. Default setting: 0 Parameter size: 1 [byte] </p>
+The parameter determines the part of day in which the PIR sensor will be active.<br /><h1>Overview</h1><p>The parameter determines the part of day in which the PIR sensor will be active. This parameter influences only the motion reports and associations. Tamper, light intensity and temperature measurements will be still active, regardless of this parameter settings. 0 - PIR sensor always active 1 - PIR sensor active during the day only 2 - PIR sensor active during the night only. Default setting: 0 Parameter size: 1 [byte] </p>
         ]]></description>
         <default>0</default>
         <options>
@@ -160,7 +160,7 @@ The parameter defines the difference between night and day.<br /><h1>Overview</h
       <parameter name="config_12_1" type="integer" groupName="configuration">
         <label>12: BASIC command class configuration</label>
         <description><![CDATA[
-Determines the command frames sent in 1-st association group.<br /><h1>Overview</h1><p>The parameter determines the command frames sent in 1-st association group, assigned to PIR sensor.<br />0 - BASIC ON and BASIC OFF command frames sent in Basic Command Class.<br />1 - only the BASIC ON command frame sent in Basic Command Class.<br />2 - only the BASIC OFF command frame sent in Basic CommandClass.<br />Values of BASIC ON and BASIC OFF command frames may be modified by dedicated parameters.<br />Default setting: 0 Parameter size: 1 [byte] </p>
+Determines the command frames sent in 1-st association group.<br /><h1>Overview</h1><p>The parameter determines the command frames sent in 1-st association group, assigned to PIR sensor.<br />0 - BASIC ON and BASIC OFF command frames sent in Basic Command Class.<br />1 - only the BASIC ON command frame sent in Basic Command Class.<br />2 - only the BASIC OFF command frame sent in Basic CommandClass.<br />Values of BASIC ON and BASIC OFF command frames may be modified by dedicated parameters.<br />Default setting: 0 Parameter size: 1 [byte] </p>
         ]]></description>
         <default>0</default>
         <options>
@@ -174,7 +174,7 @@ Determines the command frames sent in 1-st association group.<br /><h1>Overview<
                  min="0" max="255">
         <label>14: BASIC ON command frame value</label>
         <description><![CDATA[
-The value of 255 allows to turn ON a device.<br /><h1>Overview</h1><p>The value of 255 allows to turn ON a device. In case of the Dimmer, the value of 255 means turning ON at the last memorized state, e.g. the Dimmer turned ON at 30% and turned OFF using the value of 255, and then turned OFF, will be turned ON at 30%, i.e. the last memorized state.<br />Available settings: 0 - 255<br />Default setting: 255<br />Parameter size: 2 [byte]</p>
+The value of 255 allows to turn ON a device.<br /><h1>Overview</h1><p>The value of 255 allows to turn ON a device. In case of the Dimmer, the value of 255 means turning ON at the last memorized state, e.g. the Dimmer turned ON at 30% and turned OFF using the value of 255, and then turned OFF, will be turned ON at 30%, i.e. the last memorized state.<br />Available settings: 0 - 255<br />Default setting: 255<br />Parameter size: 2 [byte]</p>
         ]]></description>
         <default>255</default>
       </parameter>
@@ -183,7 +183,7 @@ The value of 255 allows to turn ON a device.<br /><h1>Overview</h1><p>The value 
                  min="0" max="255">
         <label>16: BASIC OFF command frame value</label>
         <description><![CDATA[
-The value of 0 allows to turn OFF a device.<br /><h1>Overview</h1><p>The command frame sent at the moment of motion alarm cancellation, after the cancellation delay time, specified in parameter 6, has passed. The value of 0 allows to turn a device OFF while the value of 255 allows to turn ON a device. In case of the Dimmer, the value of 255 means turning ON at the last memorized state, e.g. the Dimmer turned ON at 30% and turned OFF using the value of 255, and then turned OFF, will be turned ON at 30%, i.e. the last memorized state.<br />Available settings: 0 - 255<br />Default setting: 0<br />Parameter size: 2 [byte]</p>
+The value of 0 allows to turn OFF a device.<br /><h1>Overview</h1><p>The command frame sent at the moment of motion alarm cancellation, after the cancellation delay time, specified in parameter 6, has passed. The value of 0 allows to turn a device OFF while the value of 255 allows to turn ON a device. In case of the Dimmer, the value of 255 means turning ON at the last memorized state, e.g. the Dimmer turned ON at 30% and turned OFF using the value of 255, and then turned OFF, will be turned ON at 30%, i.e. the last memorized state.<br />Available settings: 0 - 255<br />Default setting: 0<br />Parameter size: 2 [byte]</p>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -201,7 +201,7 @@ This parameter defines how commands are sent in specified association groups<br 
                  min="0" max="121">
         <label>20: Tamper - sensitivity</label>
         <description><![CDATA[
-Change in force that will result in tamper alarm<br /><h1>Overview</h1><p>This parameter determines the change in force acting on the device, that will result in reporting tamper alarm - g-force acceleration.</p> <p>Available settigs: 0 - 121 (0.08 - 2g; multiply by 0.016g; 0 = tamper inactive)<br />Default setting: 15 (0.320g)<br />Parameter size: 1 [byte] </p>
+Change in force that will result in tamper alarm<br /><h1>Overview</h1><p>This parameter determines the change in force acting on the device, that will result in reporting tamper alarm - g-force acceleration.</p> <p>Available settigs: 0 - 121 (0.08 - 2g; multiply by 0.016g; 0 = tamper inactive)<br />Default setting: 15 (0.320g)<br />Parameter size: 1 [byte] </p>
         ]]></description>
         <default>20</default>
       </parameter>
@@ -210,7 +210,7 @@ Change in force that will result in tamper alarm<br /><h1>Overview</h1><p>This p
                  min="1" max="32767">
         <label>22: Tamper - alarm cancellation delay</label>
         <description><![CDATA[
-Time period after which a tamper alarm will be cancelled.<br /><h1>Overview</h1><p>Time period after which a tamper alarm will be cancelled in the main controller and associated devices.</p> <p>Available settings: 1 - 32767<br />Default setting: 30 (seconds)<br />Parameter size: 2 [bytes] </p>
+Time period after which a tamper alarm will be cancelled.<br /><h1>Overview</h1><p>Time period after which a tamper alarm will be cancelled in the main controller and associated devices.</p> <p>Available settings: 1 - 32767<br />Default setting: 30 (seconds)<br />Parameter size: 2 [bytes] </p>
         ]]></description>
         <default>30</default>
       </parameter>
@@ -218,7 +218,7 @@ Time period after which a tamper alarm will be cancelled.<br /><h1>Overview</h1>
       <parameter name="config_24_1" type="integer" groupName="configuration">
         <label>24: Tamper - operating modes</label>
         <description><![CDATA[
-This parameter determines function of the tamper and sent reports<br /><h1>Overview</h1><p>This parameter determines function of the tamper and sent reports. It is an advanced feature serving much more functions than just detection of tampering.</p> <p>0 – Only tamper (default)<br />1 – Tamper and earthquake detector. Function may be used as a simple seismograph. Two reports including the strength of shock are<br />always sent. First, right after the detection and second (value=0) after tamper alarm cancellation delay time.<br />2 – Tamper and orientation in space. Three reports are sent right after tamper alarm cancellation delay time.</p>
+This parameter determines function of the tamper and sent reports<br /><h1>Overview</h1><p>This parameter determines function of the tamper and sent reports. It is an advanced feature serving much more functions than just detection of tampering.</p> <p>0 – Only tamper (default)<br />1 – Tamper and earthquake detector. Function may be used as a simple seismograph. Two reports including the strength of shock are<br />always sent. First, right after the detection and second (value=0) after tamper alarm cancellation delay time.<br />2 – Tamper and orientation in space. Three reports are sent right after tamper alarm cancellation delay time.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -286,7 +286,7 @@ Time interval between consecutive illumination reports<br /><h1>Overview</h1><p>
                  min="0" max="255">
         <label>60: Temperature report - threshold</label>
         <description><![CDATA[
-The change in temperature resulting in temperature report<br /><h1>Overview</h1><p>The parameter determines the change in level of temperature resulting in temperature report being sent to the main controller.<br />Available settings: 0 - 255 (0.1 - 25.5oC; 0 = reports are not sent)<br />Default setting: 10 (1oC) Parameter size: 2 [byte]</p>
+The change in temperature resulting in temperature report<br /><h1>Overview</h1><p>The parameter determines the change in level of temperature resulting in temperature report being sent to the main controller.<br />Available settings: 0 - 255 (0.1 - 25.5oC; 0 = reports are not sent)<br />Default setting: 10 (1oC) Parameter size: 2 [byte]</p>
         ]]></description>
         <default>20</default>
       </parameter>
@@ -304,7 +304,7 @@ How often the temperature will be measured<br /><h1>Overview</h1><p>The paramete
                  min="0" max="32767">
         <label>64: Temperature report - interval</label>
         <description><![CDATA[
-How often the temperature reports will be sent<br /><h1>Overview</h1><p>The parameter determines how often the temperature reports will be sent to the main controller.<br />Available settings: 0 - 32767 (1 - 32767 seconds; 0 = no reports)<br />Default setting: 0 Parameter size: 2 [byte] </p>
+How often the temperature reports will be sent<br /><h1>Overview</h1><p>The parameter determines how often the temperature reports will be sent to the main controller.<br />Available settings: 0 - 32767 (1 - 32767 seconds; 0 = no reports)<br />Default setting: 0 Parameter size: 2 [byte] </p>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -386,7 +386,7 @@ Light intensity level above which brightness of visual indicator is set to 100%.
                  min="0" max="255">
         <label>86: LED - temperature for blue colour</label>
         <description><![CDATA[
-Minimum temperature resulting in blue LED illumination<br /><h1>Overview</h1><p>This parameter is relevant only when parameter 80 has been properly configured.<br />Available settings: 0 to parameter 87 value (degrees celsius)<br />Default setting: 18 (18oC)<br />Parameter size: 2 [byte]</p>
+Minimum temperature resulting in blue LED illumination<br /><h1>Overview</h1><p>This parameter is relevant only when parameter 80 has been properly configured.<br />Available settings: 0 to parameter 87 value (degrees celsius)<br />Default setting: 18 (18oC)<br />Parameter size: 2 [byte]</p>
         ]]></description>
         <default>18</default>
       </parameter>
@@ -395,7 +395,7 @@ Minimum temperature resulting in blue LED illumination<br /><h1>Overview</h1><p>
                  min="0" max="255">
         <label>87: LED - temperature for red colour</label>
         <description><![CDATA[
-Minimum temperature resulting in red LED illumination<br /><h1>Overview</h1><p>This parameter is relevant only when parameter 80 has been properly configured.<br />Available settings: parameter 86 value to 255 (degrees celsius)<br />Default setting: 28 (28oC)<br />Parameter size: 2 [byte]</p>
+Minimum temperature resulting in red LED illumination<br /><h1>Overview</h1><p>This parameter is relevant only when parameter 80 has been properly configured.<br />Available settings: parameter 86 value to 255 (degrees celsius)<br />Default setting: 28 (28oC)<br />Parameter size: 2 [byte]</p>
         ]]></description>
         <default>28</default>
       </parameter>
