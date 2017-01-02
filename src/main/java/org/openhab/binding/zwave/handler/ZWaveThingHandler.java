@@ -201,7 +201,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     String[] arguments = bindingProperties[1].split(",");
                     for (String arg : arguments) {
                         String[] prop = arg.split("=");
-                        argumentMap.put(prop[0], prop[1]);
+                        argumentMap.put(prop[0].trim(), (prop[1] != null) ? prop[1].trim() : null);
                         // logger.debug("Adding Argument {}=={}", prop[0], prop[1]);
                     }
                 }
