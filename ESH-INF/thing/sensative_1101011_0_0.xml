@@ -13,12 +13,6 @@ Strips-MaZw<br /><h2>Inclusion Information</h2><ul><li>Set your controller in in
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Binary Sensor</label>
-        <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
-        </properties>
-      </channel>
       <channel id="sensor_door" typeId="sensor_door">
         <label>Door Sensor</label>
         <properties>

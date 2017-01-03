@@ -202,10 +202,10 @@
     <!-- Tamper Alarm Channel -->
     <channel-type id="alarm_tamper">
         <item-type>Switch</item-type>
-        <label>Burglar alarm</label>
+        <label>Tamper</label>
         <description>Indicates if the tamper alarm is triggered
         </description>
-        <category>Door</category>
+        <category></category>
         <state readOnly="true">
             <options>
                 <option value="OFF">Ok</option>
