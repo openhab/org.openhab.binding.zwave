@@ -316,10 +316,10 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         // TODO: Why does this return!!!???!!!
         // TODO Is this used
         for (Map.Entry<AlarmType, Alarm> entry : alarms.entrySet()) {
-            return getMessage(entry.getValue().getAlarmType());
+            return getMessage(entry.getValue().getAlarmType(), 0);
         }
 
-        return getMessage(AlarmType.GENERAL);
+        return getMessage(AlarmType.GENERAL, 0);
     }
 
     /**
@@ -370,7 +370,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    public SerialMessage getMessage(AlarmType alarmType) {
+    public SerialMessage getMessage(AlarmType alarmType, int event) {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", getNode().getNodeId());
             return null;
@@ -384,7 +384,6 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         byte[] newPayload = null;
         switch (getVersion()) {
             case 1:
-            default:
                 newPayload = new byte[] { (byte) getNode().getNodeId(), 3, (byte) getCommandClass().getKey(),
                         (byte) NOTIFICATION_GET, (byte) alarmType.getKey() };
                 result.setMessagePayload(newPayload);
@@ -393,9 +392,10 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
                 newPayload = new byte[] { (byte) getNode().getNodeId(), 4, (byte) getCommandClass().getKey(),
                         (byte) NOTIFICATION_GET, 0, (byte) alarmType.getKey() };
                 break;
+            default:
             case 3:
                 newPayload = new byte[] { (byte) getNode().getNodeId(), 5, (byte) getCommandClass().getKey(),
-                        (byte) NOTIFICATION_GET, 0, (byte) alarmType.getKey(), 1 };
+                        (byte) NOTIFICATION_GET, 0, (byte) alarmType.getKey(), (byte) event };
                 break;
         }
 
@@ -444,7 +444,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
 
         for (Map.Entry<AlarmType, Alarm> entry : alarms.entrySet()) {
             if (refresh == true || entry.getValue().getInitialised() == false) {
-                result.add(getMessage(entry.getValue().getAlarmType()));
+                result.add(getMessage(entry.getValue().getAlarmType(), 0));
             }
         }
 

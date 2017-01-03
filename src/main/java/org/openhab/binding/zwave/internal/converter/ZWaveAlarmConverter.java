@@ -60,13 +60,17 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         }
 
         String alarmType = channel.getArguments().get("type");
-        logger.debug("NODE {}: Generating poll message for {}, endpoint {}, alarm {}", node.getNodeId(),
-                commandClass.getCommandClass().getLabel(), channel.getEndpoint(), alarmType);
+        Integer alarmEvent = channel.getArguments().get("event") == null ? null
+                : Integer.parseInt(channel.getArguments().get("event"));
+
+        logger.debug("NODE {}: Generating poll message for {}, endpoint {}, alarm {}, event {}", node.getNodeId(),
+                commandClass.getCommandClass().getLabel(), channel.getEndpoint(), alarmType, alarmEvent);
 
         SerialMessage serialMessage;
         if (alarmType != null) {
-            serialMessage = node.encapsulate(commandClass.getMessage(AlarmType.valueOf(alarmType)), commandClass,
-                    channel.getEndpoint());
+            serialMessage = node.encapsulate(
+                    commandClass.getMessage(AlarmType.valueOf(alarmType), alarmEvent == null ? 0 : alarmEvent),
+                    commandClass, channel.getEndpoint());
         } else {
             serialMessage = node.encapsulate(commandClass.getValueMessage(), commandClass, channel.getEndpoint());
         }
