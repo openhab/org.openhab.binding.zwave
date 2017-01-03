@@ -174,7 +174,6 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
             if (value >= 100) {
                 value = 99;
             }
-
             logger.trace("NODE {}: Converted command '{}' to value {} for channel = {}, endpoint = {}.",
                     node.getNodeId(), command.toString(), value, channel.getUID(), channel.getEndpoint());
 

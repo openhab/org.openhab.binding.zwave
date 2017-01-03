@@ -54,7 +54,6 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
             public void run() {
                 // Send the transaction and wait for the response
                 setResponse1(manager.sendTransaction(payload));
-                System.out.println("Done....................................");
             }
         };
 
@@ -141,7 +140,6 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
             public void run() {
                 // Send the transaction and wait for the response
                 setResponse1(manager.sendTransaction(payload));
-                System.out.println("Thread 1 Done....................................");
             }
         };
 
@@ -209,7 +207,6 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
             public void run() {
                 // Send the transaction and wait for the response
                 setResponse1(manager.sendTransaction(new RequestNodeInfoMessageClass().doRequest(2)));
-                System.out.println("Done 1....................................");
             }
         };
 
@@ -219,7 +216,6 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
             public void run() {
                 // Send the transaction and wait for the response
                 setResponse2(manager.sendTransaction(new RequestNodeInfoMessageClass().doRequest(13)));
-                System.out.println("Done 2....................................");
             }
         };
 
@@ -244,8 +240,6 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
         assertEquals(1, txQueueCapture.getAllValues().size());
 
-        System.out.println("About to send data for 11111 ----------");
-
         // And the NIF and make sure the transaction completed
         message = new SerialMessage(new byte[] { 0x01, 0x14, 0x00, 0x49, (byte) 0x84, 0x02, 0x0E, 0x04, 0x11, 0x01,
                 0x72, (byte) 0x86, 0x70, (byte) 0x85, (byte) 0x8E, 0x26, 0x27, 0x73, (byte) 0xEF, 0x20, 0x26, 0x2A });
@@ -265,15 +259,11 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
         manager.processReceiveMessage(message);
         assertEquals(1, transactionCompleteCapture.getAllValues().size());
 
-        System.out.println("About to fake NIF data for 22222 ----------");
-
         // And the a NIF for the wrong node
         message = new SerialMessage(new byte[] { 0x01, 0x14, 0x00, 0x49, (byte) 0x84, 0x02, 0x0E, 0x04, 0x11, 0x01,
                 0x72, (byte) 0x86, 0x70, (byte) 0x85, (byte) 0x8E, 0x26, 0x27, 0x73, (byte) 0xEF, 0x20, 0x26, 0x2A });
         manager.processReceiveMessage(message);
         assertEquals(1, transactionCompleteCapture.getAllValues().size());
-
-        System.out.println("About to REAL NIF data for 22222 ----------");
 
         // And the request and make sure the transaction completed
         message = new SerialMessage(new byte[] { 0x01, 0x11, 0x00, 0x49, (byte) 0x84, 0x0D, 0x0B, 0x04, 0x10, 0x01,

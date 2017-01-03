@@ -513,7 +513,6 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
                 0x6D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, (byte) 0x87 };
 
         ZWaveTransactionManager manager = getTransactionManager();
-        System.out.println("------------------------------------------------------------------------");
 
         // Start transaction 1
         ZWaveCommandClassTransactionPayload payload1 = new ZWaveCommandClassTransactionPayloadBuilder(5,
@@ -580,12 +579,9 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         manager.processReceiveMessage(message);
         assertEquals(1, transactionCompleteCapture.getAllValues().size());
 
-        System.out.println("     CHECK------------------------------------------------------------------------");
-
         message = new SerialMessage(t2ResponsePacket3);
         manager.processReceiveMessage(message);
 
-        System.out.println("------------------------------------------------------------------------");
         assertEquals(2, transactionCompleteCapture.getAllValues().size());
     }
 
@@ -606,7 +602,6 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
                 0x6D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, (byte) 0x87 };
 
         ZWaveTransactionManager manager = getTransactionManager();
-        System.out.println("------------------------------------------------------------------------");
 
         // Start transaction 1
         ZWaveSerialPayload payload1 = new RequestNodeNeighborUpdateMessageClass().doRequest(2);
@@ -721,7 +716,6 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
 
         SerialMessage message;
         ZWaveTransactionManager manager = getTransactionManager();
-        System.out.println("------------------------------------------------------------------------");
 
         manager.queueTransactionForSend(new GetVersionMessageClass().doRequest());
         manager.queueTransactionForSend(new MemoryGetIdMessageClass().doRequest());
@@ -766,7 +760,6 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         byte[] responsePacket5 = { 0x01, 0x07, 0x00, 0x13, 0x08, 0x00, 0x00, 0x04, (byte) 0xE7 };
 
         ZWaveTransactionManager manager = getTransactionManager();
-        System.out.println("TestPingFailure ------------------------------------------------------------------------");
 
         // Queue transaction 1 (METER)
         ZWaveCommandClassTransactionPayload payload1 = new ZWaveCommandClassTransactionPayloadBuilder(13,
@@ -880,7 +873,6 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
                 0x6D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, (byte) 0x87 };
 
         ZWaveTransactionManager manager = getTransactionManagerForTimeout();
-        System.out.println("------------------------------------------------------------------------");
 
         // Start transaction 1
         ZWaveCommandClassTransactionPayload payload1 = new ZWaveCommandClassTransactionPayloadBuilder(5,
@@ -950,14 +942,9 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         // serialMessageComplete = ArgumentCaptor.forClass(SerialMessage.class);
         // transactionCompleteCapture = ArgumentCaptor.forClass(ZWaveTransaction.class);
 
-        System.out.println("------------------------------------------------------------------------");
-
         // Wait for the timeout - this should be 3xTimer1 (1500ms total)
         Mockito.verify(controller, Mockito.timeout(15000).times(2))
                 .handleTransactionComplete(transactionCompleteCapture.capture(), serialMessageComplete.capture());
-
-        System.out.println("------------------------------------------------------------------------");
-        System.out.println("callbackid=" + transactionCompleteCapture.getValue().getCallbackId());
 
         long duration = System.currentTimeMillis() - start;
 

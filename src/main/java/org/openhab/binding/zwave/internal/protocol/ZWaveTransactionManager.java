@@ -369,8 +369,6 @@ public class ZWaveTransactionManager {
                 ZWaveTransaction currentTransaction = null;
                 logger.debug("Received msg " + incomingMessage.toString());
                 logger.debug("lastTransaction " + lastTransaction);
-                System.out.println("Received msg " + incomingMessage.toString());
-                System.out.println("lastTransaction = " + lastTransaction);
 
                 // Check for NAK/CAN
                 switch (incomingMessage.getMessageType()) {
@@ -491,41 +489,28 @@ public class ZWaveTransactionManager {
                     logger.debug("Checking outstanding transactions: " + outstandingTransactions.size());
                     logger.debug("Last transaction: " + lastTransaction);
 
-                    System.out.println("Checking outstanding transactions: " + outstandingTransactions.size());
-                    System.out.println("Last transaction: " + lastTransaction);
-
                     // If we are waiting for the RESponse, then check for this first
                     // There can only be a single outstanding RESponse
                     if (incomingMessage.getMessageType() == SerialMessageType.Response) {
                         if (lastTransaction == null) {
-                            System.out.println("RESponse received when we weren't expecting one!");
                             continue;
                         }
 
-                        System.out.println("Message is RESponse " + incomingMessage.getMessageClass() + "   "
-                                + lastTransaction.getSerialMessageClass());
                         if (incomingMessage.getMessageClass() != lastTransaction.getSerialMessageClass()) {
-                            System.out.println("Message class RESponse error");
                             continue;
                         }
                         currentTransaction = lastTransaction;
-
-                        System.out
-                                .println("Transaction " + currentTransaction.getCallbackId() + " is last transaction");
                     } else {
                         // Try and correlate this incoming REQuest with a transaction
                         for (ZWaveTransaction transaction : outstandingTransactions) {
                             logger.debug("checking transaction " + transaction.getCallbackId() + " (Callback "
                                     + transaction.getCallbackId() + ") ......");
-                            System.out.println("checking transaction " + transaction.getCallbackId() + "......");
 
                             ZWaveCommandProcessor msgClass = ZWaveCommandProcessor
                                     .getMessageDispatcher(incomingMessage.getMessageClass());
                             if (msgClass != null
                                     && msgClass.correlateTransactionResponse(transaction, incomingMessage)) {
                                 logger.debug("Correlated to transaction " + transaction.getCallbackId() + "......");
-                                System.out
-                                        .println("Correlated to transaction " + transaction.getCallbackId() + "......");
                                 currentTransaction = transaction;
                                 break;
                             }
@@ -535,7 +520,6 @@ public class ZWaveTransactionManager {
 
                 // Just for debug.....
                 if (currentTransaction == null) {
-                    System.out.println("Not correlated with transaction");
                     logger.debug("****************** Transaction not correlated");
                 }
 
@@ -550,8 +534,6 @@ public class ZWaveTransactionManager {
                     if (currentTransaction.transactionAdvance(incomingMessage) == true) {
                         logger.debug("Transaction " + currentTransaction.getCallbackId() + " advanced to "
                                 + currentTransaction.getTransactionState());
-                        System.out.println("Transaction " + currentTransaction.getCallbackId() + " advanced to "
-                                + currentTransaction.getTransactionState());
                         // Transaction has advanced - update the timer.
                         currentTransaction.setTimeout(getNextTimer(currentTransaction));
                         // startTransactionTimer();
@@ -563,16 +545,12 @@ public class ZWaveTransactionManager {
                             if (currentTransaction == lastTransaction
                                     && currentTransaction.requiresDataBeforeNextRelease() == false) {
                                 lastTransaction = null;
-                                System.out.println("XXXXXXXXXXXXXXXXX lastTransaction COMPLETED - at DATA - "
-                                        + currentTransaction.getCallbackId());
                                 logger.debug("XXXXXXXXXXXXXXXXX lastTransaction COMPLETED - at DATA - "
                                         + currentTransaction.getCallbackId());
                             }
                             break;
 
                         case DONE:
-                            System.out.println("handleTransactionComplete DONE " + currentTransaction.getCallbackId());
-
                             // Remove the transaction from the outstanding transaction list
                             synchronized (sendQueue) {
                                 if (currentTransaction == lastTransaction) {
@@ -595,8 +573,6 @@ public class ZWaveTransactionManager {
                         case CANCELLED:
                             // Transaction was cancelled
                             controller.handleTransactionComplete(currentTransaction, incomingMessage);
-                            System.out.println(
-                                    "handleTransactionComplete CANCELLED " + currentTransaction.getCallbackId());
 
                             // Remove the transaction from the outstanding transaction list
                             synchronized (sendQueue) {
@@ -636,7 +612,6 @@ public class ZWaveTransactionManager {
                     // Note that if retries are still outstanding, then a transaction is not considered complete
                     // if it has been CANCELLED or ABORTED.
                     if (transactionCompleted == true) {
-                        System.out.println("Transaction " + currentTransaction.getCallbackId() + " completed");
                         logger.debug("NODE {}: **** Transaction completed", currentTransaction.getNodeId());
 
                         // Notify the async threads
@@ -646,7 +621,6 @@ public class ZWaveTransactionManager {
                         // Notify the controller
                         controller.handleTransactionComplete(currentTransaction, incomingMessage);
                     } else {
-                        System.out.println("Transaction " + currentTransaction.getCallbackId() + " NOT completed");
                         logger.debug("NODE {}: **** Transaction not completed", currentTransaction.getNodeId());
                     }
                 }
@@ -663,19 +637,15 @@ public class ZWaveTransactionManager {
             case UNINTIALIZED:
                 break;
             case WAIT_RESPONSE:
-                System.out.println("Timer type WAIT_RESPONSE");
                 nextTimer = System.currentTimeMillis() + timer1;
                 break;
             case WAIT_REQUEST:
-                System.out.println("Timer type WAIT_REQUEST");
                 nextTimer = System.currentTimeMillis() + timer2;
                 break;
             case WAIT_DATA:
-                System.out.println("Timer type WAIT_DATA [" + transaction.getDataTimeout() + "]");
                 nextTimer = System.currentTimeMillis() + transaction.getDataTimeout();
                 break;
             case ABORTED:
-                System.out.println("Timer type ABORTED");
                 nextTimer = System.currentTimeMillis() + timerAbort;
                 break;
         }
@@ -804,7 +774,6 @@ public class ZWaveTransactionManager {
                     transaction.getExpectedCommandClassCommand());
 
             outstandingTransactions.add(transaction);
-            System.out.println("Transactions outstanding: " + outstandingTransactions.size());
             logger.debug("Transaction SendNextMessage Transactions outstanding: {}", outstandingTransactions.size());
             transaction.setTimeout(getNextTimer(transaction));
             startTransactionTimer();
@@ -838,8 +807,6 @@ public class ZWaveTransactionManager {
 
             logger.debug("Start transaction timer to {} - {}ms", nextTimer,
                     (nextTimer.getTime() - System.currentTimeMillis()));
-            System.out.println("Start transaction timer to " + (nextTimer.getTime() - System.currentTimeMillis())
-                    + "     " + nextTimer.getTime());
             timer.schedule(timerTask, nextTimer);
         }
     }
@@ -847,7 +814,6 @@ public class ZWaveTransactionManager {
     private synchronized void resetTransactionTimer() {
         // Stop any existing timer
         if (timerTask != null) {
-            System.out.println("STOP transaction timer");
             logger.debug("STOP transaction timer");
 
             timerTask.cancel();
@@ -864,7 +830,6 @@ public class ZWaveTransactionManager {
             // return;
             // }
 
-            System.out.println("Timer run..... " + System.currentTimeMillis());
             synchronized (sendQueue) {
                 logger.debug("XXXXXXXXX Timeout.......... {} outstanding transactions", outstandingTransactions.size());
                 Date now = new Date();
@@ -911,7 +876,6 @@ public class ZWaveTransactionManager {
                             transaction.setTransactionCanceled();
                             controller.handleTransactionComplete(transaction, null);
                             notifyTransactionComplete(transaction);
-                            System.out.println("handleTransactionComplete CANCELLED x " + transaction.getCallbackId());
                             // } else {
                             // Resend - add to a separate list so as not to impact iterator
                             // transaction.resetTransaction();
@@ -924,7 +888,6 @@ public class ZWaveTransactionManager {
                 // Add retries to the queue
                 // for (ZWaveTransaction transaction : retries) {
                 // logger.debug("Resending... Transaction " + transaction.getTransactionId());
-                // System.out.println("Resending... Transaction " + transaction.getTransactionId());
                 // addTransactionToQueue(transaction);
                 // }
 
@@ -960,16 +923,13 @@ public class ZWaveTransactionManager {
                 // Wait for the transaction to complete
                 synchronized (this) {
                     while (response == null) {
-                        System.out.println("-- Wait started");
                         wait();
-                        System.out.println("-- Wait done");
                     }
                 }
 
                 // Remove the listener
                 RemoveTransactionListener(this);
 
-                System.out.println("------------- Response Complete");
                 logger.debug("********* Transaction Response Complete " + transactionId + " -- ");
 
                 return response;
@@ -978,8 +938,6 @@ public class ZWaveTransactionManager {
             @Override
             public void transactionEvent(ZWaveTransaction transactionEvent) {
                 logger.debug("********* Transaction event listener " + transactionId + " -- "
-                        + transactionEvent.getTransactionId());
-                System.out.println("********* Transaction event listener " + transactionId + " -- "
                         + transactionEvent.getTransactionId());
 
                 // Check if this transaction is ours
@@ -1020,7 +978,6 @@ public class ZWaveTransactionManager {
                 logger.debug("NODE {}: -- To notify -- {}", transaction.getDestinationNode(), state);
                 synchronized (this) {
                     notify();
-                    System.out.println("-- Notified");
                 }
             }
         }

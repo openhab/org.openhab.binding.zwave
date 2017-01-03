@@ -284,11 +284,6 @@ public class ZWaveTransaction {
         logger.debug("TransactionAdvance WT: {}", payload.getExpectedResponseSerialMessageClass());
         logger.debug("TransactionAdvance RX: {}", incomingMessage);
 
-        System.out.println("TransactionAdvance ST: " + transactionStateTracker);
-        System.out.println("TransactionAdvance TX: " + serialMessageDebug);
-        System.out.println("TransactionAdvance WT: " + payload.getExpectedResponseSerialMessageClass());
-        System.out.println("TransactionAdvance RX: " + incomingMessage);
-
         TransactionState stateTrackerStart = transactionStateTracker;
         switch (transactionStateTracker) {
             case UNINTIALIZED:
@@ -337,18 +332,14 @@ public class ZWaveTransaction {
                 break;
 
             case WAIT_DATA:
-                System.out.println("WAIT_DATA -- 1");
-
                 if (incomingMessage.getMessageClass() != payload.getExpectedResponseSerialMessageClass()
                         || incomingMessage.getMessageType() != SerialMessageType.Request) {
-                    System.out.println("WAIT_DATA -- 2");
                     break;
                 }
 
                 // Check if the nodeId is correct
                 if (incomingMessage.getMessageType() == SerialMessageType.Request && payload.getDestinationNode() != 255
                         && payload.getDestinationNode() != incomingMessage.getMessageNode()) {
-                    System.out.println("WAIT_DATA -- 3");
                     break;
                 }
 

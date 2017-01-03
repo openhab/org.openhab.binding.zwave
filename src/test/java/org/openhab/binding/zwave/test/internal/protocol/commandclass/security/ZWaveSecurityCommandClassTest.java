@@ -81,8 +81,6 @@ public class ZWaveSecurityCommandClassTest {
         // Now encapsulate our message
         byte[] request = securityTx.getSecurityMessageEncapsulation(payload);
 
-        System.out.println("Encap: " + Arrays.toString(request));
-
         byte[] response = securityRx.getSecurityMessageDecapsulation(request);
 
         assertTrue(Arrays.equals(payload, response));
