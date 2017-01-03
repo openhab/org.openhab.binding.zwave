@@ -86,7 +86,7 @@ Double Switch 2<br /><h1>Overview</h1><p>FIBARO Switch 2 is designed to be insta
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGS223</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0203:1000</property>
+      <property name="manufacturerRef">0203:1000,0203:3000</property>
       <property name="dbReference">416</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -243,7 +243,8 @@ Associations in Z-Wave network security mode<br /><h1>Overview</h1><p>This param
         </options>
       </parameter>
 
-      <parameter name="config_28_1" type="integer" groupName="configuration">
+      <parameter name="config_28_1" type="integer" groupName="configuration"
+                 min="0" max="15">
         <label>28: S1 switch - scenes sent</label>
         <description><![CDATA[
 S1 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which actions result in sending scene IDs assigned to them</p>
@@ -256,9 +257,11 @@ S1 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which
           <option value="4">Key pressed 3 times</option>
           <option value="8">Key Hold Down and Key Released</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_29_1" type="integer" groupName="configuration">
+      <parameter name="config_29_1" type="integer" groupName="configuration"
+                 min="0" max="15">
         <label>29: S2 switch - scenes sent</label>
         <description><![CDATA[
 S2 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which actions result in sending scene IDs assigned to them.</p>
@@ -271,9 +274,11 @@ S2 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which
           <option value="4">Key pressed 3 times</option>
           <option value="8">Key Hold Down and Key Released</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_30_1" type="integer" groupName="configuration">
+      <parameter name="config_30_1" type="integer" groupName="configuration"
+                 min="0" max="15">
         <label>30: S1 assocs. sent to 2nd and 3rd group</label>
         <description><![CDATA[
 S1 switch - associations sent to 2nd and 3rd association groups<br /><h1>Overview</h1><p>This parameter determines which actions are ignored when sending commands to devices associated in 2nd and 3rd association group. All actions are active by default.</p>
@@ -286,6 +291,7 @@ S1 switch - associations sent to 2nd and 3rd association groups<br /><h1>Overvie
           <option value="4">ignore holding and releasing the switch</option>
           <option value="8">ignore double click of the switch</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_31_2" type="integer" groupName="configuration"
@@ -313,7 +319,8 @@ S1 switch - Double Click value sent to 2nd and 3rd association groups<br /><h1>O
         <default>99</default>
       </parameter>
 
-      <parameter name="config_35_1" type="integer" groupName="configuration">
+      <parameter name="config_35_1" type="integer" groupName="configuration"
+                 min="0" max="15">
         <label>35: S2 assocs. sent to 4th and 5th group</label>
         <description><![CDATA[
 S2 switch - associations sent to 4th and 5th association groups<br /><h1>Overview</h1><p>This parameter determines which actions result in sending commands to devices associated in 4th and 5th association group. All actions are active by default.</p>
@@ -326,6 +333,7 @@ S2 switch - associations sent to 4th and 5th association groups<br /><h1>Overvie
           <option value="4">ignore holding and releasing the switch</option>
           <option value="8">ignore double click of the switch</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_36_2" type="integer" groupName="configuration"
@@ -333,6 +341,14 @@ S2 switch - associations sent to 4th and 5th association groups<br /><h1>Overvie
         <label>36: S2 ON val sent to 4th and 5th groups</label>
         <description>S2 switch - Switch ON value sent to 4th and 5th association groups</description>
         <default>255</default>
+      </parameter>
+
+      <parameter name="config_36_2" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>36: S2 ON val sent to 4th and 5th groups</label>
+        <description>S2 switch - Switch ON value sent to 4th and 5th association groups</description>
+        <default>255</default>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_37_2" type="integer" groupName="configuration"

@@ -142,8 +142,7 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
         }
 
         ZWaveCommandClassTransactionPayload transaction = null;
-        // boolean restoreLastValue = "true".equalsIgnoreCase(channel.getArguments().get("restoreLastValue"));
-
+        boolean restoreLastValue = "true".equalsIgnoreCase(channel.getArguments().get("config_restorelastvalue"));
         boolean configInvertControl = "true".equalsIgnoreCase(channel.getArguments().get("config_invert_control"));
         boolean configInvertPercent = "true".equalsIgnoreCase(channel.getArguments().get("config_invert_percent"));
 
@@ -182,10 +181,12 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
             transaction = commandClass.setValueMessage(value);
         } else if (command instanceof OnOffType) {
             int value;
+            int onValue = restoreLastValue ? 0xFF : 99;
+
             if (configInvertControl) {
-                value = command == OnOffType.ON ? 0 : 99;
+                value = command == OnOffType.ON ? 0 : onValue;
             } else {
-                value = command == OnOffType.ON ? 99 : 0;
+                value = command == OnOffType.ON ? onValue : 0;
             }
 
             logger.trace("NODE {}: Converted command '{}' to value {} for channel = {}, endpoint = {}.",

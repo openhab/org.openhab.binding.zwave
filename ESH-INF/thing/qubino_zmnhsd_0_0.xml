@@ -108,6 +108,10 @@
 <br /><h1>Overview</h1><ul><li>0 - Auto ON disabled</li> <li>1 – 32536 = 1 second – 32536 seconds Auto ON enabled with defined time, step is 1 second.</li> </ul>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Auto on DISABLED</option>
+        </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_21_1" type="integer" groupName="configuration">

@@ -63,6 +63,26 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_2" type="integer" groupName="configuration">
+        <label>1: Operation mode</label>
+        <description><![CDATA[
+Defines Operation Mode of thermostat<br /><h1>Overview</h1><p>0....OFF(0x00)</p> <p>1.....HEAT (0x01)</p> <p>2.....COOL (0x02)</p> <p>11....ENERGY SAVE HEAT (0x0B)</p> <p>Default value 1</p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">OFF</option>
+          <option value="1">Heat</option>
+          <option value="2">Cool</option>
+          <option value="11">ENERGY SAVE HEAT</option>
+        </options>
+      </parameter>
+
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter-group name="association">
         <context>link</context>

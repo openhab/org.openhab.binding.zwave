@@ -262,10 +262,10 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
     public ZWaveCommandClassTransactionPayload getValueMessage() {
         // TODO Is this used
         for (Map.Entry<AlarmType, Alarm> entry : alarms.entrySet()) {
-            return getMessage(entry.getValue().getAlarmType());
+            return getMessage(entry.getValue().getAlarmType(), 0);
         }
 
-        return getMessage(AlarmType.GENERAL);
+        return getMessage(AlarmType.GENERAL, 0);
     }
 
     /**
@@ -310,7 +310,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    public ZWaveCommandClassTransactionPayload getMessage(AlarmType alarmType) {
+    public ZWaveCommandClassTransactionPayload getMessage(AlarmType alarmType, Integer alarmEvent) {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", getNode().getNodeId());
             return null;
@@ -322,7 +322,6 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         ByteArrayOutputStream outputData = new ByteArrayOutputStream();
         switch (getVersion()) {
             case 1:
-            default:
                 outputData.write(alarmType.getKey());
                 break;
             case 2:
@@ -330,9 +329,10 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
                 outputData.write(alarmType.getKey());
                 break;
             case 3:
+            default:
                 outputData.write(0);
                 outputData.write(alarmType.getKey());
-                outputData.write(1);
+                outputData.write((alarmEvent == null) ? 0 : alarmEvent);
                 break;
         }
 
@@ -380,7 +380,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
 
         for (Map.Entry<AlarmType, Alarm> entry : alarms.entrySet()) {
             if (refresh == true || entry.getValue().getInitialised() == false) {
-                result.add(getMessage(entry.getValue().getAlarmType()));
+                result.add(getMessage(entry.getValue().getAlarmType(), 0));
             }
         }
 

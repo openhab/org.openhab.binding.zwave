@@ -205,7 +205,7 @@
         <label>Tamper alarm</label>
         <description>Indicates if the tamper alarm is triggered
         </description>
-        <category>Door</category>
+        <category></category>
         <state readOnly="true">
             <options>
                 <option value="OFF">Ok</option>
@@ -812,12 +812,22 @@
         </state>
     </channel-type>
 
+    <!-- CO Channel -->
+    <channel-type id="sensor_co">
+        <item-type>Number</item-type>
+        <label>Carbon Monoxide Sensor</label>
+        <description>Indicates the CO level</description>
+        <category></category>
+        <state pattern="%.1f" readOnly="true">
+        </state>
+    </channel-type>
+
     <!-- CO2 Channel -->
     <channel-type id="sensor_co2">
         <item-type>Number</item-type>
-        <label>Dewpoint</label>
+        <label>Carbon Dioxide Sensor</label>
         <description>Indicates the CO2 level</description>
-        <category>Temperature</category>
+        <category></category>
         <state pattern="%.1f" readOnly="true">
         </state>
     </channel-type>
@@ -837,7 +847,7 @@
         <item-type>Number</item-type>
         <label>Direction</label>
         <description>Indicates the direction</description>
-        <category>Temperature</category>
+        <category></category>
         <state pattern="%.1f" readOnly="true">
         </state>
     </channel-type>
@@ -967,7 +977,7 @@
         <item-type>Number</item-type>
         <label>Velocity</label>
         <description>Indicates the current velocity</description>
-        <category>Temperature</category>
+        <category></category>
         <state pattern="%.1f" readOnly="true">
         </state>
     </channel-type>
@@ -988,6 +998,17 @@
             It is also possible to switch the light on and off.
         </description>
         <category>DimmableLight</category>
+         <config-description>
+            <parameter name="config_restorelastvalue" type="boolean">
+                <label>Restore Last Value</label>
+                <description>Restore Last Dimming level on ON.</description>
+                <default>true</default>
+                <options>
+                    <option value="true">Restore Last Value</option>
+                    <option value="false">Restore Full Brightness</option>
+                </options>
+            </parameter>
+        </config-description>
     </channel-type>
 
     <!-- Heating Setpoint Channel -->

@@ -7,20 +7,22 @@
 
   <thing-type id="sensative_1101011_00_000" listed="false">
     <label>11-01-011 Strips-MaZw</label>
-    <description>Strips-MaZw</description>
+    <description><![CDATA[
+Strips-MaZw<br /><h2>Inclusion Information</h2><ul><li>Set your controller in inclusion mode (see your controller’s manual).</li> <li>Follow the instruction for Wake up.</li> <li>A long LED blink indicates that the inclusion was successful.</li> </ul><br /><h2>Exclusion Information</h2><ul><li>Set your controller in exclusion mode (see your controller’s manual).</li> <li>Follow the instruction for Wake up.</li> <li>A long LED blink indicates that the exclusion was successful.</li> </ul><br /><h2>Wakeup Information</h2><p>Wake up Strips manually for Z-Wave communication.</p> <ul><li>Place the round magnet at the rounded edge.</li> <li>When the LED blinks, move the magnet away.</li> <li>Repeat 3 times in total within 10 seconds.</li> </ul><p>It may be necessary to repeat this process several times to make changes take affect.</p> <p>Note that wakeup period can only be set to a minimum period of 30 minutes.</p>
+    ]]></description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Binary Sensor</label>
+      <channel id="sensor_door" typeId="sensor_door">
+        <label>Door Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
+          <property name="binding:*:OpenClosedType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
         </properties>
       </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm</label>
+      <channel id="alarm_tamper" typeId="alarm_tamper">
+        <label>Tamper Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -37,6 +39,7 @@
       <property name="manufacturerId">019A</property>
       <property name="manufacturerRef">0003:0003</property>
       <property name="dbReference">251</property>
+      <property name="commandClass:SENSOR_BINARY">getSupported=false</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

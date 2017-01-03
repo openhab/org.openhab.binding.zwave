@@ -60,12 +60,14 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         }
 
         String alarmType = channel.getArguments().get("type");
-        logger.debug("NODE {}: Generating poll message for {}, endpoint {}, alarm {}", node.getNodeId(),
-                commandClass.getCommandClass(), channel.getEndpoint(), alarmType);
+        Integer alarmEvent = (channel.getArguments().get("event") == null) ? null
+                : Integer.parseInt(channel.getArguments().get("event"));
+        logger.debug("NODE {}: Generating poll message for {}, endpoint {}, alarm {}, event {}", node.getNodeId(),
+                commandClass.getCommandClass(), channel.getEndpoint(), alarmType, alarmEvent);
 
         ZWaveCommandClassTransactionPayload transaction;
         if (alarmType != null) {
-            transaction = commandClass.getMessage(AlarmType.valueOf(alarmType));
+            transaction = commandClass.getMessage(AlarmType.valueOf(alarmType), alarmEvent);
         } else {
             transaction = commandClass.getValueMessage();
         }

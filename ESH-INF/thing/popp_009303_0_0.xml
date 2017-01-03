@@ -7,7 +7,9 @@
 
   <thing-type id="popp_009303_00_000" listed="false">
     <label>009303 Wall Controller</label>
-    <description>Wall Controller</description>
+    <description><![CDATA[
+Wall Controller<br /><h2>Inclusion Information</h2><p>see attached file "Popp 009303 Battery Wall Controller Manual" (section Reference Documents)</p> <br /><h2>Exclusion Information</h2><p>see attached file "Popp 009303 Battery Wall Controller Manual" (section Reference Documents)</p> <br /><h2>Wakeup Information</h2><p>see attached file "Popp 009303 Battery Wall Controller Manual" (section Reference Documents)</p>
+    ]]></description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

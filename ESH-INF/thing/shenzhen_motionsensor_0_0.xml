@@ -60,7 +60,7 @@ PIR Motion Sensor<br /><h2>Inclusion Information</h2><p>1. Remove the sensor cov
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="8" max="255">
         <label>1: Sensitivity Level Setting</label>
-        <description>This parameter defines the sensitivity of PIR detector. 8 means high sensitivity and 255 means lowest sensitivity</description>
+        <description>This parameter defines the sensitivity of PIR sensor. Where 8 = highest &amp; 255 = lowest sensitivity</description>
         <default>12</default>
       </parameter>
 
