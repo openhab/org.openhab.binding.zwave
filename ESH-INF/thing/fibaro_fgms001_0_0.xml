@@ -12,9 +12,9 @@
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Binary Sensor</label>
+        <label>Binary Sensor (Unknown)</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
+          <property name="binding:*:OnOffType">SENSOR_BINARY;type=UNKNOWN</property>
         </properties>
       </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">
