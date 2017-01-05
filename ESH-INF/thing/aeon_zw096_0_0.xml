@@ -241,6 +241,15 @@ Which reports need to send in Report group 2<br /><h1>Overview</h1><p>Add the va
         <default>8</default>
       </parameter>
 
+      <parameter name="config_103_4_000000FF" type="integer" groupName="configuration"
+                 min="0" max="15">
+        <label>103: Values to send to group 3</label>
+        <description><![CDATA[
+Which reports need to send in Report group 3<br /><h1>Overview</h1><p>Add the values below together to arrive at the desired combination:</p> <p>0  nothing</p> <p>1  Auto send Meter REPORT for voltage at the group time interval</p> <p>2  Auto send Meter REPORT for current at the group time interval</p> <p>4  Auto send Meter REPORT for wattage at the group time interval</p> <p>8  Auto send Meter REPORT for kWh at the group time interval</p> <p>eg.  To send all report set this value to 15.  Default is 0</p>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
       <parameter name="config_111_4" type="integer" groupName="configuration"
                  min="1" max="2147483647">
         <label>111: Time interval for sending to group 1</label>
@@ -257,6 +266,16 @@ Group 1 automatic update interval<br /><h1>Overview</h1><p>The time interval of 
 Group 2 automatic update interval<br /><h1>Overview</h1><p>The time interval of sending Report group 1 (Valid values 0x01-0xFFFFFFFF).</p> <p>Default value is 600</p> <p>Note: Only up to 0x7fffffff is currently supported</p>
         ]]></description>
         <default>600</default>
+      </parameter>
+
+      <parameter name="config_113_4" type="integer" groupName="configuration"
+                 min="600" max="1">
+        <label>113: Time interval for sending to group 3</label>
+        <description><![CDATA[
+Group 3 automatic update interval<br /><h1>Overview</h1><p>The time interval of sending Report group 1 (Valid values 0x01-0xFFFFFFFF).</p> <p>Default value is 600</p> <p>Note: Only up to 0x7fffffff is currently supported</p>
+        ]]></description>
+        <default>2147483647</default>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_252_1" type="integer" groupName="configuration">
@@ -280,6 +299,16 @@ Enable/disable Configuration Locked (0 =disable, 1 = enable). <br /><h1>Overview
       <parameter name="config_100_1_wo" type="integer" groupName="configuration">
         <label>100: Set 101‐103 to default.</label>
         <description>Set 101‐103 to default.</description>
+        <default>0</default>
+        <options>
+          <option value="0">False</option>
+          <option value="1">True</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_110_1_wo" type="integer" groupName="configuration">
+        <label>110: Set 111‐113 to default.</label>
+        <description>Set 111‐113 to default.</description>
         <default>0</default>
       </parameter>
 
