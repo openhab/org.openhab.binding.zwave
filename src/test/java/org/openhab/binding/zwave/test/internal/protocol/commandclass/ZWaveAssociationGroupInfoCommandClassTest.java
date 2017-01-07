@@ -67,7 +67,7 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
 
         // See if we got the expected results
         assertEquals("Lifeline", group.getName());
-        assertEquals(Integer.valueOf(1), group.getProfile());
+        assertEquals(Integer.valueOf(1), group.getProfile2());
         assertEquals(false, group.getCommandClasses().isEmpty());
         assertEquals(false, group.getCommandClasses().contains(CommandClass.DEVICE_RESET_LOCALLY.getKey()));
         assertEquals(true, cls.getAutoSubscribeGroups().contains(1));
