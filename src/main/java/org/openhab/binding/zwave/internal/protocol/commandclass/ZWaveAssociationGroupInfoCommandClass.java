@@ -196,16 +196,17 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
             int mode = serialMessage.getMessagePayloadByte(offset + 3 + i * 7);
             int profile_msb = serialMessage.getMessagePayloadByte(offset + 4 + i * 7);
             int profile_lsb = serialMessage.getMessagePayloadByte(offset + 5 + i * 7);
-            int profile = (profile_msb << 8 | profile_lsb);
 
-            logger.debug("NODE {}:    Group={}, Profile={}, mode:{}", getNode().getNodeId(), groupIdx, profile, mode);
+            logger.debug("NODE {}:    Group={}, Profile={} {}, mode:{}", getNode().getNodeId(), groupIdx,
+                    String.format("%02X", profile_msb), String.format("%02X", profile_lsb), mode);
 
             ZWaveAssociationGroup group = getNode().getAssociationGroup(groupIdx);
             if (group == null) {
                 group = new ZWaveAssociationGroup(groupIdx);
                 getNode().setAssociationGroup(group);
             }
-            getNode().getAssociationGroup(groupIdx).setProfile(profile);
+            getNode().getAssociationGroup(groupIdx).setProfile1(profile_msb);
+            getNode().getAssociationGroup(groupIdx).setProfile2(profile_lsb);
 
             if ((profile_msb == PROFILE_GENERAL) && (profile_lsb == PROFILE_LIFELINE)) {
                 autoSubscribeGroups.add(groupIdx);
@@ -347,7 +348,7 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
             if (refresh == true || group.getName() == null) {
                 result.add(getGroupNameMessage(group.getIndex()));
             }
-            if (refresh == true || group.getProfile() == null) {
+            if (refresh == true || group.getProfile1() == null) {
                 result.add(getInfoMessage(group.getIndex()));
             }
             if (refresh == true || group.getCommandClasses() == null) {
