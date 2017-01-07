@@ -142,6 +142,11 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         int event = eventAlarm.getAlarmEvent();// == 0 ? 0 : eventAlarm.getAlarmStatus();
         logger.debug("Alarm converter NOTIFICATION event is {}, type {}", event, channel.getDataType());
 
+        // We ignore event 0xFE as that indicates "no further events"
+        if (event == 0xFE) {
+            return null;
+        }
+
         // Don't trigger event if there is no event match. Note that 0 is always acceptable
         if (alarmEvent != null && event != 0 && alarmEvent != event) {
             return null;
