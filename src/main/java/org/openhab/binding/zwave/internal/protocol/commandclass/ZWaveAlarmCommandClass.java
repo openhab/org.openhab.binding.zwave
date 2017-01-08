@@ -444,7 +444,19 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
 
         for (Map.Entry<AlarmType, Alarm> entry : alarms.entrySet()) {
             if (refresh == true || entry.getValue().getInitialised() == false) {
-                result.add(getMessage(entry.getValue().getAlarmType(), 0));
+                if (getVersion() < 3) {
+                    result.add(getMessage(entry.getValue().getAlarmType(), 0));
+                } else {
+                    // If we don't have any events, then don't initialise
+                    if (entry.getValue().getReportedEvents().isEmpty()) {
+                        entry.getValue().setInitialised();
+                    }
+
+                    // For the NOTIFICATION class, only request for events that are supported
+                    for (int event : entry.getValue().getReportedEvents()) {
+                        result.add(getMessage(entry.getValue().getAlarmType(), event));
+                    }
+                }
             }
         }
 
