@@ -21,7 +21,6 @@ import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBarrierOperatorCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBarrierOperatorCommandClass.BarrierOperatorStateType;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBasicCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
@@ -97,7 +96,7 @@ public class ZWaveBarrierOperatorConverter extends ZWaveCommandClassConverter {
     @Override
     public List<ZWaveCommandClassTransactionPayload> receiveCommand(ZWaveThingChannel channel, ZWaveNode node,
             Command command) {
-        ZWaveBasicCommandClass commandClass = (ZWaveBasicCommandClass) node.resolveCommandClass(
+        ZWaveBarrierOperatorCommandClass commandClass = (ZWaveBarrierOperatorCommandClass) node.resolveCommandClass(
                 ZWaveCommandClass.CommandClass.COMMAND_CLASS_BARRIER_OPERATOR, channel.getEndpoint());
 
         Integer value = null;
