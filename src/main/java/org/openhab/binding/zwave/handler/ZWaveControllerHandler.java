@@ -112,7 +112,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             searchTime = SEARCHTIME_DEFAULT;
         }
 
-        param = getConfig().get(CONFIGURATION_INCLUSIONTIMEOUT);
+        param = getConfig().get(CONFIGURATION_DEFAULTWAKEUPPERIOD);
         if (param instanceof BigDecimal && param != null) {
             wakeupDefaultPeriod = ((BigDecimal) param).intValue();
         } else {

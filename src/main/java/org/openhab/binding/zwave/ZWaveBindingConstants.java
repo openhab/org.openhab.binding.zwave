@@ -38,6 +38,7 @@ public class ZWaveBindingConstants {
     public final static String CONFIGURATION_HEALTIME = "heal_time";
     public final static String CONFIGURATION_INCLUSION_MODE = "inclusion_mode";
     public final static String CONFIGURATION_INCLUSIONTIMEOUT = "controller_inclusiontimeout";
+    public final static String CONFIGURATION_DEFAULTWAKEUPPERIOD = "controller_wakeupperiod";
 
     public final static String CONFIGURATION_NODEID = "node_id";
 
