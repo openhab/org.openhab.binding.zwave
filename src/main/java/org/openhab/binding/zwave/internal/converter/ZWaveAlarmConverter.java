@@ -159,7 +159,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                 state = event == 0 ? OnOffType.OFF : OnOffType.ON;
                 break;
             case OpenClosedType:
-                state = eventAlarm.getValue() == 0 ? OpenClosedType.CLOSED : OpenClosedType.OPEN;
+                state = event == 0 ? OpenClosedType.CLOSED : OpenClosedType.OPEN;
                 switch (eventAlarm.getAlarmType()) {
                     case ACCESS_CONTROL:
                         switch (event) {
