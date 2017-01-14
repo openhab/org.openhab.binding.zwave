@@ -11,6 +11,23 @@
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
+      <channel id="meter_gas_cubic_meters" typeId="meter_gas_cubic_meters">
+        <label>Gas meter (cubic meters)</label>
+        <properties>
+          <property name="binding:*:DecimalType">METER,BASIC;type=G_Cubic_Meters</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">BATTERY</property>
+        </properties>
+      </channel>
+      <channel id="time_offset" typeId="time_offset">
+        <label>Clock Time Offset</label>
+        <properties>
+          <property name="binding:*:DecimalType">TIME_PARAMETERS</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
@@ -32,14 +49,15 @@
       </parameter-group>
 
       <parameter name="config_1_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="1000000">
         <label>1: Pulse factor</label>
-        <description>How many pulses * 10 per kWh</description>
-        <default>10000</default>
+        <description>Impulse or Rotation factor (see NorthQ docs for Gas meters)</description>
+        <default>1000</default>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Sensor type</label>
+        <description>Defines the type of sensor</description>
         <default>2</default>
         <options>
           <option value="1">magnetic contact</option>
@@ -47,60 +65,23 @@
         </options>
       </parameter>
 
-      <parameter name="config_3_1" type="integer" groupName="configuration"
-                 min="0" max="127">
-        <label>3: IR Listen period</label>
-        <description>Additional time for feedback measurement. Should always be 0.</description>
-        <default>0</default>
-      </parameter>
-
-      <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="0" max="127">
-        <label>4: IR Pulse Width</label>
-        <description>Adjusts transmit signal so received signal will in average be equal to this values.</description>
-        <default>50</default>
-      </parameter>
-
-      <parameter name="config_5_1" type="integer" groupName="configuration"
-                 min="1" max="50">
-        <label>5: Poll / Wake up frequency</label>
-        <description>Wake device up this many times per second. This value also controls number of measurements per second on mechanical meters</description>
-        <default>20</default>
-      </parameter>
-
-      <parameter name="config_6_1" type="integer" groupName="configuration"
-                 min="0" max="128">
-        <label>6: Pulse Threshold Low</label>
-        <description>Low detection threshold for wheel meters</description>
-        <default>0</default>
-      </parameter>
-
-      <parameter name="config_7_1" type="integer" groupName="configuration"
-                 min="0" max="128">
-        <label>7: Pulse Threshold High</label>
-        <description>High detection threshold for wheel meters</description>
-        <default>5</default>
-      </parameter>
-
-      <parameter name="config_8_1" type="integer" groupName="configuration"
-                 min="0" max="255">
-        <label>8: Wakeup Interval</label>
-        <description>like WAKEUP command class</description>
-        <default>0</default>
-      </parameter>
 
       <parameter name="config_9_4" type="integer" groupName="configuration"
-                 min="1" max="50">
+                 min="0" max="2147483647">
         <label>9: Pulse count</label>
-        <description>Current pulse count in device (pulse count / pulse factor = kWh)</description>
-        <default>20</default>
+        <description>This register holds the
+          Total number of pulses. Use this register to set the total meter
+          consumption. In order for the Power/Gas Reader to report the proper
+          total meter consumption, the value for this registered has to be
+          initialized with meter value * impulse factor.</description>
+        <default>0</default>
       </parameter>
 
       <parameter name="config_10_2" type="integer" groupName="configuration"
                  min="0" max="32767">
         <label>10: Keep alive period</label>
         <description>How many ticks before going back to sleep in normal wakeup mode.</description>
-        <default>60</default>
+        <default>5</default>
       </parameter>
 
       <parameter name="config_11_2" type="integer" groupName="configuration"
@@ -110,10 +91,17 @@
         <default>0</default>
       </parameter>
 
-      <parameter name="config_13_1" type="integer" groupName="configuration"
-                 min="0" max="1">
-        <label>13: Off</label>
-        <description>LED blinks at pulse counting</description>
+      <parameter name="config_12_4" type="integer" groupName="configuration"
+                 min="0" max="-1">
+        <label>12: Serial number</label>
+        <description>Read-only serial number in decimal</description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_15_4" type="integer" groupName="configuration"
+                 min="0" max="65535">
+        <label>15: Calibration status</label>
+        <description>Only applies to gas readers with firmware version 3.30 or higher configured for SILVER SPOT!</description>
         <default>0</default>
       </parameter>
 
