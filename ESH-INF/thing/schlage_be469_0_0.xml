@@ -82,9 +82,9 @@
         <options>
           <option value="0">Not Supported</option>
           <option value="1">Most Sensitive</option>
-          <option value="2"></option>
+          <option value="2">More Sensitive</option>
           <option value="3">Medium Sensitivity</option>
-          <option value="4"></option>
+          <option value="4">Less Sensitive</option>
           <option value="5">Least Sensitive</option>
         </options>
       </parameter>
@@ -95,9 +95,9 @@
         <options>
           <option value="0">Not Supported</option>
           <option value="1">Most Sensitive</option>
-          <option value="2"></option>
+          <option value="2">More Sensitive</option>
           <option value="3">Medium Sensitivity</option>
-          <option value="4"></option>
+          <option value="4">Less Sensitive</option>
           <option value="5">Least Sensitive</option>
         </options>
       </parameter>
@@ -109,9 +109,9 @@
         <options>
           <option value="0">Not Supported</option>
           <option value="1">Most Sensitive</option>
-          <option value="2"></option>
+          <option value="2">More Sensitive</option>
           <option value="3">Medium Sensitivity</option>
-          <option value="4"></option>
+          <option value="4">Less Sensitive</option>
           <option value="5">Least Sensitive</option>
         </options>
       </parameter>
@@ -139,11 +139,11 @@
         <description>User Code PIN length, a value between 4 and 8 (default 4)</description>
         <default>4</default>
         <options>
-          <option value="4"></option>
-          <option value="5"></option>
-          <option value="6"></option>
-          <option value="7"></option>
-          <option value="8"></option>
+          <option value="4">Four Digits</option>
+          <option value="5">Five Digits</option>
+          <option value="6">Six Digits</option>
+          <option value="7">Seven Digits</option>
+          <option value="8">Eight Digits</option>
         </options>
       </parameter>
 

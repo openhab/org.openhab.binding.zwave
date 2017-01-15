@@ -14,7 +14,7 @@
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
         </properties>
       </channel>
       <channel id="sensor_power" typeId="sensor_power">
@@ -44,6 +44,7 @@
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:0006</property>
       <property name="dbReference">75</property>
+      <property name="commandClass:METER">getSupported=false</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
