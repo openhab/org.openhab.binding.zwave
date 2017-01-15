@@ -96,7 +96,7 @@
         <default>0</default>
         <options>
           <option value="0">Will work in indicator mode.</option>
-          <option value="1">Will work in indicator mode.</option>
+          <option value="1">Will work in indicator mode for 5 seconds, when the load changed.</option>
         </options>
       </parameter>
 
@@ -175,3 +175,4 @@
   </thing-type>
 
 </thing:thing-descriptions>
+ 
