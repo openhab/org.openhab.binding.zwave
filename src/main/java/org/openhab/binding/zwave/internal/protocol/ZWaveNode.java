@@ -1029,7 +1029,7 @@ public class ZWaveNode {
             // Associations to endpoint 0 are only allowed if version is greater than 3
             // Here we check that this is a lifeline group
             if ((endpointId == 0 && multiAssociationCommandClass.getVersion() >= 3 && group != null
-                    && group.getProfile2() == 1) || endpointId != 0) {
+                    && group.getProfile2() != null && group.getProfile2() == 1) || endpointId != 0) {
                 return multiAssociationCommandClass.setAssociationMessage(groupId, nodeId, endpointId);
             }
         }
