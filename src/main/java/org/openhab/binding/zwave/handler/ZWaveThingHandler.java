@@ -135,7 +135,10 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE));
 
         // Make sure the thingType is set correctly from the database
-        updateThingType();
+        if (updateThingType() == true) {
+            // The thing will have been disposed of so let's exit!
+            return;
+        }
 
         // TODO: Shouldn't the framework do this for us???
         Bridge bridge = getBridge();
@@ -264,33 +267,33 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     /**
      * Check the thing type and change it if it's wrong
      */
-    private void updateThingType() {
+    private boolean updateThingType() {
         // If the thing type is still the default, then see if we can change
         if (getThing().getThingTypeUID().equals(ZWaveBindingConstants.ZWAVE_THING_UID) == false) {
             finalTypeSet = true;
-            return;
+            return false;
         }
 
         // Get the properties for the comparison
         String parmManufacturer = this.getThing().getProperties().get(ZWaveBindingConstants.PROPERTY_MANUFACTURER);
         if (parmManufacturer == null) {
             logger.debug("NODE {}: MANUFACTURER not set", nodeId);
-            return;
+            return false;
         }
         String parmDeviceType = this.getThing().getProperties().get(ZWaveBindingConstants.PROPERTY_DEVICETYPE);
         if (parmDeviceType == null) {
             logger.debug("NODE {}: TYPE not set", nodeId);
-            return;
+            return false;
         }
         String parmDeviceId = this.getThing().getProperties().get(ZWaveBindingConstants.PROPERTY_DEVICEID);
         if (parmDeviceId == null) {
             logger.debug("NODE {}: ID not set", nodeId);
-            return;
+            return false;
         }
         String parmVersion = this.getThing().getProperties().get(ZWaveBindingConstants.PROPERTY_VERSION);
         if (parmVersion == null) {
             logger.debug("NODE {}: VERSION not set {}", nodeId);
-            return;
+            return false;
         }
 
         int deviceType;
@@ -303,7 +306,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             deviceId = Integer.parseInt(parmDeviceId);
         } catch (final NumberFormatException ex) {
             logger.debug("NODE {}: Unable to parse device data", nodeId);
-            return;
+            return false;
         }
 
         ZWaveProduct foundProduct = null;
@@ -320,12 +323,13 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         // Did we find the thing type?
         if (foundProduct == null) {
-            return;
+            return false;
         }
 
         // We need a change...
         changeThingType(foundProduct.getThingTypeUID(), getConfig());
-        finalTypeSet = true;
+
+        return true;
     }
 
     /**
@@ -402,7 +406,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 TimeUnit.MILLISECONDS);
         logger.debug("NODE {}: Polling intialised at {} seconds - start in {} milliseconds.", nodeId, pollingPeriod,
                 initialPeriod);
-
     }
 
     private void startPolling() {
@@ -1169,7 +1172,11 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                     // Do we need to change type?
                     if (finalTypeSet == false) {
-                        updateThingType();
+                        if (updateThingType() == true) {
+                            // We updated the type.
+                            // The thing will have already been disposed of so let's get the hell out of here!
+                            return;
+                        }
                     }
 
                     // Set ourselves online if we have the final thing type set
