@@ -12,10 +12,10 @@ import java.nio.ByteBuffer;
 import java.util.Arrays;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,7 +60,7 @@ public class ZWaveCRC16EncapsulationCommandClass extends ZWaveCommandClass {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @throws ZWaveSerialMessageException
      */
     @Override
@@ -90,9 +90,9 @@ public class ZWaveCRC16EncapsulationCommandClass extends ZWaveCommandClass {
 
         // calculate CRC
         byte[] payload = serialMessage.getMessagePayload();
-        byte[] messageCrc = Arrays.copyOfRange(payload, payload.length - 2, payload.length);
-        byte[] tocheck = Arrays.copyOfRange(payload, offset - 2, payload.length - 2);
-
+        int length = payload[2];
+        byte[] messageCrc = Arrays.copyOfRange(payload, length + 1, length + 3);
+        byte[] tocheck = Arrays.copyOfRange(payload, offset - 2, offset + length - 4);
         short calculatedCrc = crc_ccit(tocheck);
         // check if messageCrc = calculatedCrc
         ByteBuffer byteBuffer = ByteBuffer.allocate(2);
