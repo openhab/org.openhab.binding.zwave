@@ -453,10 +453,34 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
         int originatingEndpointId = serialMessage.getMessagePayloadByte(offset);
         int destinationEndpointId = serialMessage.getMessagePayloadByte(offset + 1);
 
-        if (useDestEndpointAsSource) {
-            // Not a full swap. Do not use destinationEndpointId after this line
-            // and leave scope intact.
-            originatingEndpointId = destinationEndpointId;
+        // if a specific endpoint on the controller is addressed.
+        if (destinationEndpointId > 1) {
+            // swap specified in node options and condition satisfied:
+            if (useDestEndpointAsSource && originatingEndpointId <= 1) {
+                // swap originating and destination.
+                int temp = originatingEndpointId;
+                originatingEndpointId = destinationEndpointId;
+                destinationEndpointId = temp;
+            } else {
+                // received an encapsulation for an endpoint on the controller.
+                logger.info(
+                        "NODE {}: Received a multi instance encapsulation with a destination endpoint = {}. "
+                                + "The controller in our binding does not have endpoints.",
+                        getNode().getNodeId(), destinationEndpointId);
+                if (originatingEndpointId <= 1) {
+                    // and it originates from either a root command class or a command class on the first endpoint.
+                    // high probability of a firmware bug.
+                    logger.warn(
+                            "NODE {}: The originating endpoint is {}. There is a high probability "
+                                    + "that the node of this firmware contains a bug where the originating and "
+                                    + "destination endpoints are swapped in certain encapsulation messages. "
+                                    + "To reverse the originating and destination endpoints, set the 'useDestEndpointAsSource' "
+                                    + "option to 'true' on the multi channel command class for this node. "
+                                    + "Please edit the ZWave device database at: http://www.cd-jackson.com/index.php/zwave/ "
+                                    + "or contact the author of the binding.",
+                            getNode().getNodeId(), originatingEndpointId);
+                }
+            }
         }
 
         int commandClassCode = serialMessage.getMessagePayloadByte(offset + 2);
@@ -470,21 +494,34 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
 
         logger.debug(String.format("NODE %d: Requested Command Class = %s (0x%02x)", getNode().getNodeId(),
                 commandClass.getLabel(), commandClassCode));
-        ZWaveEndpoint endpoint = endpoints.get(originatingEndpointId);
 
-        if (endpoint == null) {
-            logger.error("NODE {}: Endpoint {} not found. Cannot set command classes.", getNode().getNodeId(),
-                    originatingEndpointId);
-            return;
-        }
-
-        zwaveCommandClass = endpoint.getCommandClass(commandClass);
-
-        if (zwaveCommandClass == null) {
+        if (originatingEndpointId == 0) {
+            // originating endpoint == 0, get the command class from the root node.
+            // encapsulation was useless.
             logger.warn(String.format(
-                    "NODE %d: CommandClass %s (0x%02x) not implemented by endpoint %d, fallback to main node.",
-                    getNode().getNodeId(), commandClass.getLabel(), commandClassCode, originatingEndpointId));
-            zwaveCommandClass = getNode().getCommandClass(commandClass);
+                    "NODE %d: Originating Command Class %s (0x%02x) was on the root node."
+                            + "encapsulation to endpoint %d the controller was useless.",
+                    getNode().getNodeId(), commandClass.getLabel(), commandClassCode, destinationEndpointId));
+            zwaveCommandClass = this.getNode().getCommandClass(commandClass);
+        } else {
+            ZWaveEndpoint endpoint = endpoints.get(originatingEndpointId);
+
+            if (endpoint == null) {
+                logger.error("NODE {}: Endpoint {} not found. Cannot set command classes.", getNode().getNodeId(),
+                        originatingEndpointId);
+                return;
+            }
+
+            zwaveCommandClass = endpoint.getCommandClass(commandClass);
+
+            if (zwaveCommandClass == null) {
+                logger.warn(String.format(
+                        "NODE %d: CommandClass %s (0x%02x) not implemented by endpoint %d, fallback to main node.",
+                        getNode().getNodeId(), commandClass.getLabel(), commandClassCode, originatingEndpointId));
+                // this is a different case: we found the endpoint, but did not find the command class.
+                // Hence the fallback.
+                zwaveCommandClass = getNode().getCommandClass(commandClass);
+            }
         }
 
         if (zwaveCommandClass == null) {
