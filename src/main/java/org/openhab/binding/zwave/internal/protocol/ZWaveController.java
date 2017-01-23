@@ -335,7 +335,7 @@ public class ZWaveController {
                 break;
             case SerialApiGetInitData:
                 // this.isConnected = true;
-                List<Thread> initList = new ArrayList<Thread>();
+                final List<Thread> initList = new ArrayList<Thread>();
                 for (Integer nodeId : ((SerialApiGetInitDataMessageClass) processor).getNodes()) {
                     initList.add(addNode(nodeId));
                 }

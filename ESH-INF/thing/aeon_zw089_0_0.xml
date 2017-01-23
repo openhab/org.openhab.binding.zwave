@@ -130,9 +130,11 @@ Set BASIC SET reporting<br /><h1>Overview</h1><p>Set to 1 for BASIC SET report (
         <label>Actions</label>
       </parameter-group>
 
-      <parameter name="config_255_2_wo" type="integer" groupName="configuration">
+      <parameter name="config_255_1_wo" type="integer" groupName="configuration">
         <label>255: Reset to default</label>
-        <description>Reset to the default configuration</description>
+        <description><![CDATA[
+Reset to the default configuration<br /><h1>Overview</h1><p>Reset all configuration parameters (except the parameter 254) to default settings</p>
+        ]]></description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
