@@ -19,6 +19,12 @@ Single Switch 2<br /><h1>Overview</h1><p>FIBARO Switch 2 is designed to be insta
           <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
         </properties>
       </channel>
+      <channel id="sensor_power" typeId="sensor_power">
+        <label>Sensor (power)</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=POWER</property>
+        </properties>
+      </channel>
       <channel id="meter_watts" typeId="meter_watts">
         <label>Electric meter (watts)</label>
         <properties>
@@ -29,6 +35,12 @@ Single Switch 2<br /><h1>Overview</h1><p>FIBARO Switch 2 is designed to be insta
         <label>Electric meter (kWh)</label>
         <properties>
           <property name="binding:*:DecimalType">METER;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_reset" typeId="meter_reset">
+        <label>Reset the total power consumption</label>
+        <properties>
+          <property name="binding:*:OnOffType">METER</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
