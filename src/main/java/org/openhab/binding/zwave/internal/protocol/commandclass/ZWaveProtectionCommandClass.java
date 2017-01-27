@@ -139,12 +139,15 @@ public class ZWaveProtectionCommandClass extends ZWaveCommandClass
                 int rfStateMask = (serialMessage.getMessagePayloadByte(offset + 4)
                         | serialMessage.getMessagePayloadByte(offset + 5) << 8);
 
+                localModes.clear();
                 LocalProtectionType localTypes[] = LocalProtectionType.values();
                 for (int i = 0; i < localTypes.length; i++) {
                     if ((localStateMask >> i & 0x01) > 0) {
                         localModes.add(localTypes[i]);
                     }
                 }
+
+                rfModes.clear();
                 RfProtectionType rfTypes[] = RfProtectionType.values();
                 for (int i = 0; i < rfTypes.length; i++) {
                     if ((rfStateMask >> i & 0x01) > 0) {
