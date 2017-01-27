@@ -143,10 +143,10 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
 
                 // Handle retries
                 if (--lastSentMessage.attempts >= 0) {
-                    logger.error("NODE {}: Got Node Info Request Failed. Requeueing", nodeId);
+                    logger.debug("NODE {}: Got Node Info Request Failed. Requeueing", nodeId);
                     zController.enqueue(lastSentMessage);
                 } else {
-                    logger.warn("NODE {}: Node Info Request Failed 3x. Discarding message: {}", nodeId,
+                    logger.debug("NODE {}: Node Info Request Failed 3x. Discarding message: {}", nodeId,
                             lastSentMessage.toString());
                 }
 

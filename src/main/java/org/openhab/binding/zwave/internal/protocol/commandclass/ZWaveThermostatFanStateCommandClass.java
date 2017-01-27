@@ -19,10 +19,10 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -82,7 +82,7 @@ public class ZWaveThermostatFanStateCommandClass extends ZWaveCommandClass
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @throws ZWaveSerialMessageException
      */
     @Override
@@ -119,7 +119,7 @@ public class ZWaveThermostatFanStateCommandClass extends ZWaveCommandClass
         FanStateType fanStateType = FanStateType.getFanStateType(value);
 
         if (fanStateType == null) {
-            logger.error("NODE {}: Unknown fan state Type = {}, ignoring report.", this.getNode().getNodeId(), value);
+            logger.debug("NODE {}: Unknown fan state Type = {}, ignoring report.", this.getNode().getNodeId(), value);
             return;
         }
 

@@ -215,7 +215,7 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
                     endpointId, meterType, scale, value);
             this.getController().notifyEventListeners(zEvent);
         } catch (NumberFormatException e) {
-            logger.error("NODE {}: Meter Tbl Monitor Value Error {}", getNode().getNodeId(), e);
+            logger.debug("NODE {}: Meter Tbl Monitor Value Error {}", getNode().getNodeId(), e);
             return;
         }
 

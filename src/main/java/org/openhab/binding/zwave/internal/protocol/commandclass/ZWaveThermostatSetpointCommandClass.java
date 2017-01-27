@@ -166,7 +166,7 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
             SetpointType setpointType = SetpointType.getSetpointType(setpointTypeCode);
 
             if (setpointType == null) {
-                logger.error("NODE {}: Unknown Setpoint Type = {}, ignoring report.", this.getNode().getNodeId(),
+                logger.debug("NODE {}: Unknown Setpoint Type = {}, ignoring report.", this.getNode().getNodeId(),
                         setpointTypeCode);
                 return;
             }

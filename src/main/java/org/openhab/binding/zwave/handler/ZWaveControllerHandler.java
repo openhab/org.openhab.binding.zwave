@@ -240,7 +240,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             String[] cfg = configurationParameter.getKey().split("_");
             if ("controller".equals(cfg[0])) {
                 if (controller == null) {
-                    logger.warn("Trying to send controller command, but controller is not initialised");
+                    logger.debug("Trying to send controller command, but controller is not initialised");
                     continue;
                 }
 
@@ -687,7 +687,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         }
         ZWaveNode node = controller.getNode(nodeId);
         if (node == null) {
-            logger.error("NODE {}: Can't be found!", nodeId);
+            logger.debug("NODE {}: Can't be found!", nodeId);
             return false;
         }
 

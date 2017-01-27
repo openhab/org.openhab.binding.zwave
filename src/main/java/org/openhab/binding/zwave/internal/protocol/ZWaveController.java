@@ -703,7 +703,7 @@ public class ZWaveController {
             // Get the node
             ZWaveNode node = getNode(event.getNodeId());
             if (node == null) {
-                logger.error("NODE {}: Node is unknown!", statusEvent.getNodeId());
+                logger.debug("NODE {}: Node is unknown!", statusEvent.getNodeId());
                 return;
             }
 
@@ -965,7 +965,7 @@ public class ZWaveController {
         } else if (exclusion) {
             requestRemoveNodesStop();
         } else {
-            logger.error("Neither inclusion nor exclusion was active!");
+            logger.debug("Neither inclusion nor exclusion was active!");
         }
 
         inclusion = false;
@@ -1105,12 +1105,12 @@ public class ZWaveController {
             return;
         }
         if (serialMessage.getMessageClass() != SerialMessageClass.SendData) {
-            logger.error(String.format("Invalid message class %s (0x%02X) for sendData",
+            logger.debug(String.format("Invalid message class %s (0x%02X) for sendData",
                     serialMessage.getMessageClass().getLabel(), serialMessage.getMessageClass().getKey()));
             return;
         }
         if (serialMessage.getMessageType() != SerialMessageType.Request) {
-            logger.error("Only request messages can be sent");
+            logger.debug("Only request messages can be sent");
             return;
         }
 
@@ -1462,7 +1462,7 @@ public class ZWaveController {
                             // Check if we've exceeded the number of retries.
                             // Requeue if we're ok, otherwise discard the message
                             if (--lastSentMessage.attempts >= 0) {
-                                logger.error("NODE {}: Timeout while sending message. Requeueing - {} attempts left!",
+                                logger.debug("NODE {}: Timeout while sending message. Requeueing - {} attempts left!",
                                         lastSentMessage.getMessageNode(), lastSentMessage.attempts);
                                 if (lastSentMessage.getMessageClass() == SerialMessageClass.SendData) {
                                     handleFailedSendDataRequest(lastSentMessage);
@@ -1470,7 +1470,7 @@ public class ZWaveController {
                                     enqueue(lastSentMessage);
                                 }
                             } else {
-                                logger.warn("NODE {}: Too many retries. Discarding message: {}",
+                                logger.debug("NODE {}: Too many retries. Discarding message: {}",
                                         lastSentMessage.getMessageNode(), lastSentMessage.toString());
                             }
                             continue;

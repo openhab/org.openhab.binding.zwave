@@ -14,8 +14,8 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,7 +43,7 @@ public class SerialApiGetInitDataMessageClass extends ZWaveCommandProcessor {
         int nodeBytes = incomingMessage.getMessagePayloadByte(2);
 
         if (nodeBytes != NODE_BYTES) {
-            logger.error("Invalid number of node bytes = {}", nodeBytes);
+            logger.debug("Invalid number of node bytes = {}", nodeBytes);
             return false;
         }
 

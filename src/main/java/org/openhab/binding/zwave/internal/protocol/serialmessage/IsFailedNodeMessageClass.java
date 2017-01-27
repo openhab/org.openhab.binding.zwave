@@ -12,10 +12,10 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNodeState;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,7 +45,7 @@ public class IsFailedNodeMessageClass extends ZWaveCommandProcessor {
 
         ZWaveNode node = zController.getNode(nodeId);
         if (node == null) {
-            logger.error("NODE {}: Failed node message for unknown node", nodeId);
+            logger.debug("NODE {}: Failed node message for unknown node", nodeId);
             incomingMessage.setTransactionCanceled();
             return false;
         }

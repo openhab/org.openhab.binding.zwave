@@ -164,7 +164,7 @@ public class ZWaveSecurityCommandClassWithInitialization extends ZWaveSecurityCo
             case SECURITY_SCHEME_REPORT:
                 // Should be received during inclusion only
                 if (!wasThisNodeJustIncluded() || inclusionStateTracker == null) {
-                    logger.error(
+                    logger.debug(
                             "NODE {}: SECURITY_ERROR Received SECURITY_SCHEME_REPORT but we are not in inclusion mode! {}",
                             serialMessage);
                     return;

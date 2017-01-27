@@ -109,7 +109,7 @@ public class ZWaveVersionCommandClass extends ZWaveCommandClass {
 
                 CommandClass commandClass = CommandClass.getCommandClass(commandClassCode);
                 if (commandClass == null) {
-                    logger.error(String.format("NODE %d: Unsupported command class 0x%02x", getNode().getNodeId(),
+                    logger.debug(String.format("NODE %d: Unsupported command class 0x%02x", getNode().getNodeId(),
                             commandClassCode));
                     return;
                 }
@@ -123,7 +123,7 @@ public class ZWaveVersionCommandClass extends ZWaveCommandClass {
                 // command class version is queried on the node.
                 ZWaveCommandClass zwaveCommandClass = getNode().getCommandClass(commandClass);
                 if (zwaveCommandClass == null) {
-                    logger.error(String.format("NODE %d: Unsupported command class %s (0x%02x)", getNode().getNodeId(),
+                    logger.debug(String.format("NODE %d: Unsupported command class %s (0x%02x)", getNode().getNodeId(),
                             commandClass.getLabel(), commandClassCode));
                     return;
                 }

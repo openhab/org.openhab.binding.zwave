@@ -12,8 +12,8 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,7 +40,7 @@ public class RequestNodeInfoMessageClass extends ZWaveCommandProcessor {
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
             logger.debug("Request node info successfully placed on stack.");
         } else {
-            logger.error("Request node info not placed on stack due to error.");
+            logger.debug("Request node info not placed on stack due to error.");
         }
 
         checkTransactionComplete(lastSentMessage, incomingMessage);

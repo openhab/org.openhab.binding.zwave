@@ -12,8 +12,8 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -59,7 +59,7 @@ public class EnableSucMessageClass extends ZWaveCommandProcessor {
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
             logger.debug("EnableSUC was successful");
         } else {
-            logger.error("Unable to disable a running SUC!");
+            logger.debug("Unable to disable a running SUC!");
         }
 
         checkTransactionComplete(lastSentMessage, incomingMessage);

@@ -145,7 +145,7 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
             ZWaveController zController) {
         CommandClass commandClass = CommandClass.getCommandClass(commandClassCode);
         if (commandClass == null) {
-            logger.error(String.format("NODE %d: Unknown command class 0x%02x", node.getNodeId(), commandClassCode));
+            logger.debug(String.format("NODE %d: Unknown command class 0x%02x", node.getNodeId(), commandClassCode));
             return null;
         }
 
@@ -163,7 +163,7 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
 
             if (zwaveCommandClass == null) {
                 // We got an unsupported command class, leave zwaveCommandClass as null
-                logger.error(String.format("NODE %d: Unsupported zwave command class %s (0x%02x)", node.getNodeId(),
+                logger.debug(String.format("NODE %d: Unsupported zwave command class %s (0x%02x)", node.getNodeId(),
                         commandClass.getLabel(), commandClassCode));
             } else {
                 logger.debug("NODE {}: Adding command class {}", node.getNodeId(), commandClass.getLabel());

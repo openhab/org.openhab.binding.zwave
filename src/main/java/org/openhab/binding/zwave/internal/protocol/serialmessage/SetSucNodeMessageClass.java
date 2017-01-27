@@ -12,8 +12,8 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -64,7 +64,7 @@ public class SetSucNodeMessageClass extends ZWaveCommandProcessor {
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
             logger.debug("NODE {}: SetSucNodeID command OK.", nodeId);
         } else {
-            logger.error("NODE {}: SetSucNodeID command failed.", nodeId);
+            logger.debug("NODE {}: SetSucNodeID command failed.", nodeId);
             checkTransactionComplete(lastSentMessage, incomingMessage);
         }
 
@@ -80,7 +80,7 @@ public class SetSucNodeMessageClass extends ZWaveCommandProcessor {
 
         checkTransactionComplete(lastSentMessage, incomingMessage);
         if (incomingMessage.getMessagePayloadByte(1) != 0x00) {
-            logger.error("NODE {}: SetSucNodeID failed with error 0x{}.", nodeId,
+            logger.debug("NODE {}: SetSucNodeID failed with error 0x{}.", nodeId,
                     Integer.toHexString(incomingMessage.getMessagePayloadByte(1)));
 
             return false;

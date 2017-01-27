@@ -154,7 +154,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     }
 
     void initialiseNode() {
-        logger.warn("NODE {}: Initialising Thing Node...", nodeId);
+        logger.debug("NODE {}: Initialising Thing Node...", nodeId);
 
         // Note that for dynamic channels, it seems that defaults can either be not set, or set with the incorrect
         // type. So, we read back as an Object to avoid casting problems.
@@ -460,7 +460,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         // Add the listener for ZWave events.
         // This ensures we get called whenever there's an event we might be interested in
         if (bridgeHandler.addEventListener(this) == false) {
-            logger.warn("NODE {}: Controller failed to register event handler.", nodeId);
+            logger.debug("NODE {}: Controller failed to register event handler.", nodeId);
             return;
         }
 
@@ -523,14 +523,14 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 ZWaveConfigurationCommandClass configurationCommandClass = (ZWaveConfigurationCommandClass) node
                         .getCommandClass(CommandClass.CONFIGURATION);
                 if (configurationCommandClass == null) {
-                    logger.error("NODE {}: Error getting configurationCommandClass", nodeId);
+                    logger.debug("NODE {}: Error getting configurationCommandClass", nodeId);
                     continue;
                 }
 
                 // Get the size
                 int size = Integer.parseInt(cfg[2]);
                 if (size == 0 || size > 4) {
-                    logger.error("NODE {}: Size error ({}) from {}", nodeId, size, configurationParameter.getKey());
+                    logger.debug("NODE {}: Size error ({}) from {}", nodeId, size, configurationParameter.getKey());
                     continue;
                 }
 
@@ -541,7 +541,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 } else if (configurationParameter.getValue() instanceof String) {
                     value = Integer.parseInt((String) configurationParameter.getValue());
                 } else {
-                    logger.error("NODE {}: Error converting config value from {}", nodeId,
+                    logger.debug("NODE {}: Error converting config value from {}", nodeId,
                             configurationParameter.getValue().getClass());
                     continue;
                 }
@@ -559,7 +559,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     try {
                         bitmask = Integer.parseInt(cfg[3], 16);
                     } catch (NumberFormatException e) {
-                        logger.error("NODE {}: Error parsing bitmask for {}", nodeId, configurationParameter.getKey());
+                        logger.debug("NODE {}: Error parsing bitmask for {}", nodeId, configurationParameter.getKey());
                     }
 
                     boolean requestUpdate = false;
@@ -602,7 +602,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 pendingCfg.put(configurationParameter.getKey(), valueObject);
             } else if ("group".equals(cfg[0])) {
                 if (cfg.length < 2) {
-                    logger.warn("NODE{}: Association invalid {}", nodeId, configurationParameter.getKey());
+                    logger.debug("NODE{}: Association invalid {}", nodeId, configurationParameter.getKey());
                     continue;
                 }
 
@@ -676,7 +676,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 ZWaveWakeUpCommandClass wakeupCommandClass = (ZWaveWakeUpCommandClass) node
                         .getCommandClass(CommandClass.WAKE_UP);
                 if (wakeupCommandClass == null) {
-                    logger.error("NODE {}: Error getting wakeupCommandClass", nodeId);
+                    logger.debug("NODE {}: Error getting wakeupCommandClass", nodeId);
                     continue;
                 }
 
@@ -684,7 +684,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 try {
                     value = ((BigDecimal) configurationParameter.getValue()).intValue();
                 } catch (NumberFormatException e) {
-                    logger.error("NODE {}: Error converting wakeup value from {}", nodeId,
+                    logger.debug("NODE {}: Error converting wakeup value from {}", nodeId,
                             configurationParameter.getValue());
                     continue;
                 }
@@ -700,7 +700,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 ZWaveNodeNamingCommandClass nameCommandClass = (ZWaveNodeNamingCommandClass) node
                         .getCommandClass(CommandClass.NODE_NAMING);
                 if (nameCommandClass == null) {
-                    logger.error("NODE {}: Error getting NodeNamingCommandClass", nodeId);
+                    logger.debug("NODE {}: Error getting NodeNamingCommandClass", nodeId);
                     continue;
                 }
 
@@ -717,7 +717,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 ZWaveSwitchAllCommandClass switchallCommandClass = (ZWaveSwitchAllCommandClass) node
                         .getCommandClass(CommandClass.SWITCH_ALL);
                 if (switchallCommandClass == null) {
-                    logger.error("NODE {}: Error getting SwitchAllCommandClass", nodeId);
+                    logger.debug("NODE {}: Error getting SwitchAllCommandClass", nodeId);
                     continue;
                 }
 
@@ -730,7 +730,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 ZWavePowerLevelCommandClass powerlevelCommandClass = (ZWavePowerLevelCommandClass) node
                         .getCommandClass(CommandClass.POWERLEVEL);
                 if (powerlevelCommandClass == null) {
-                    logger.error("NODE {}: Error getting PowerLevelCommandClass", nodeId);
+                    logger.debug("NODE {}: Error getting PowerLevelCommandClass", nodeId);
                     continue;
                 }
 
@@ -758,7 +758,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 ZWaveDoorLockCommandClass commandClass = (ZWaveDoorLockCommandClass) node
                         .getCommandClass(CommandClass.DOOR_LOCK);
                 if (commandClass == null) {
-                    logger.error("NODE {}: Error getting ZWaveDoorLockCommandClass", nodeId);
+                    logger.debug("NODE {}: Error getting ZWaveDoorLockCommandClass", nodeId);
                     continue;
                 }
 
@@ -776,21 +776,21 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         controllerHandler.sendData(commandClass.getConfigMessage());
                         pendingCfg.put(ZWaveBindingConstants.CONFIGURATION_DOORLOCKTIMEOUT, valueObject);
                     } catch (NumberFormatException e) {
-                        logger.error("Number format exception parsing doorlock_timeout '{}'", valueObject);
+                        logger.debug("Number format exception parsing doorlock_timeout '{}'", valueObject);
                     }
                 }
             } else if ("usercode".equals(cfg[0])) {
                 ZWaveUserCodeCommandClass commandClass = (ZWaveUserCodeCommandClass) node
                         .getCommandClass(CommandClass.USER_CODE);
                 if (commandClass == null) {
-                    logger.error("NODE {}: Error getting ZWaveUserCodeCommandClass", nodeId);
+                    logger.debug("NODE {}: Error getting ZWaveUserCodeCommandClass", nodeId);
                     continue;
                 }
 
                 try {
                     int code = Integer.parseInt(cfg[1]);
                     if (code == 0 || code > commandClass.getNumberOfSupportedCodes()) {
-                        logger.error("NODE {}: Attempt to set code ID outside of range", nodeId);
+                        logger.debug("NODE {}: Attempt to set code ID outside of range", nodeId);
                         continue;
                     }
                     controllerHandler.sendData(commandClass.setUserCode(code, (String) valueObject));
@@ -805,7 +805,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     try {
                         pollingPeriod = ((BigDecimal) configurationParameter.getValue()).intValue();
                     } catch (final NumberFormatException ex) {
-                        logger.warn("NODE {}: pollingPeriod ({}) cannot be set - using default", nodeId,
+                        logger.debug("NODE {}: pollingPeriod ({}) cannot be set - using default", nodeId,
                                 configurationParameter.getValue().toString());
                     }
                     if (pollingPeriod < POLLING_PERIOD_MIN) {
@@ -850,7 +850,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 // Don't save the value
                 valueObject = "";
             } else {
-                logger.warn("NODE{}: Configuration invalid {}", nodeId, configurationParameter.getKey());
+                logger.debug("NODE{}: Configuration invalid {}", nodeId, configurationParameter.getKey());
             }
 
             configuration.put(configurationParameter.getKey(), valueObject);
@@ -864,7 +864,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     public void handleCommand(ChannelUID channelUID, Command command) {
         logger.debug("NODE {}: Command received {} --> {}", nodeId, channelUID, command);
         if (controllerHandler == null) {
-            logger.warn("Controller handler not found. Cannot handle command without ZWave controller.");
+            logger.debug("Controller handler not found. Cannot handle command without ZWave controller.");
             return;
         }
 
@@ -877,7 +877,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         try {
             dataType = DataType.valueOf(command.getClass().getSimpleName());
         } catch (IllegalArgumentException e) {
-            logger.warn("NODE {}: Command received with no implementation ({}).", nodeId,
+            logger.error("NODE {}: Command received with no implementation ({}).", nodeId,
                     command.getClass().getSimpleName());
             return;
         }
@@ -892,18 +892,18 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
 
         if (cmdChannel == null) {
-            logger.warn("NODE {}: Command for unknown channel {} with {}", nodeId, channelUID, dataType);
+            logger.debug("NODE {}: Command for unknown channel {} with {}", nodeId, channelUID, dataType);
             return;
         }
 
         ZWaveNode node = controllerHandler.getNode(nodeId);
         if (node == null) {
-            logger.warn("NODE {}: Node is not found for {}", nodeId, channelUID);
+            logger.debug("NODE {}: Node is not found for {}", nodeId, channelUID);
             return;
         }
 
         if (cmdChannel.converter == null) {
-            logger.warn("NODE {}: No converter set for command {} type {}", nodeId, channelUID, dataType);
+            logger.debug("NODE {}: No converter set for command {} type {}", nodeId, channelUID, dataType);
             return;
         }
 
@@ -911,7 +911,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         messages = cmdChannel.converter.receiveCommand(cmdChannel, node, command);
 
         if (messages == null) {
-            logger.warn("NODE {}: No messages returned from converter", nodeId);
+            logger.debug("NODE {}: No messages returned from converter", nodeId);
             return;
         }
 
@@ -973,7 +973,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         ZWaveConfigurationCommandClass configurationCommandClass = (ZWaveConfigurationCommandClass) node
                                 .getCommandClass(CommandClass.CONFIGURATION);
                         if (configurationCommandClass == null) {
-                            logger.error("NODE {}: Error getting configurationCommandClass", nodeId);
+                            logger.debug("NODE {}: Error getting configurationCommandClass", nodeId);
                             return;
                         }
 
@@ -1072,7 +1072,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             }
 
             if (thingChannelsState == null) {
-                logger.error("NODE {}: No state handlers!", nodeId);
+                logger.debug("NODE {}: No state handlers!", nodeId);
                 return;
             }
 
@@ -1090,7 +1090,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 }
 
                 if (channel.converter == null) {
-                    logger.warn("NODE {}: No converter set for channel {}", nodeId, channel.getUID());
+                    logger.debug("NODE {}: No converter set for channel {}", nodeId, channel.getUID());
                     return;
                 }
 
@@ -1425,7 +1425,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             logger.debug("NODE {}: Processing {} len={}", nodeId, key, cfg.length);
 
             if (cfg.length < 3) {
-                logger.warn("NODE {}: Configuration invalid {}", nodeId, key);
+                logger.debug("NODE {}: Configuration invalid {}", nodeId, key);
                 continue;
             }
 
@@ -1441,7 +1441,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             // Get the size
             int size = Integer.parseInt(cfg[2]);
             if (size != paramSize) {
-                logger.error("NODE {}: Size error {}<>{} from {}", nodeId, size, paramSize, key);
+                logger.debug("NODE {}: Size error {}<>{} from {}", nodeId, size, paramSize, key);
                 continue;
             }
 
