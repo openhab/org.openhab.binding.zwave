@@ -58,12 +58,12 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
                 commandClass.getCommandClass(), channel.getEndpoint());
         String parmNumber = channel.getArguments().get("parameter");
         if (parmNumber == null) {
-            logger.error("NODE {}: 'parameter' option must be specified.", node.getNodeId());
+            logger.debug("NODE {}: 'parameter' option must be specified.", node.getNodeId());
             return null;
         }
         int parmValue = Integer.parseInt(parmNumber);
         if (parmValue < 0 || parmValue > 255) {
-            logger.error("NODE {}: 'parameter' option must be between 0 and 255.", node.getNodeId());
+            logger.debug("NODE {}: 'parameter' option must be between 0 and 255.", node.getNodeId());
             return null;
         }
 
@@ -112,26 +112,26 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
 
         String parmNumber = channel.getArguments().get("parameter");
         if (parmNumber == null) {
-            logger.error("NODE {}: 'parameter' option must be specified.", node.getNodeId());
+            logger.debug("NODE {}: 'parameter' option must be specified.", node.getNodeId());
             return null;
         }
 
         int paramIndex = Integer.parseInt(parmNumber);
         if (paramIndex < 0 || paramIndex > 255) {
-            logger.error("NODE {}: 'parameter' option must be between 0 and 255.", node.getNodeId());
+            logger.debug("NODE {}: 'parameter' option must be between 0 and 255.", node.getNodeId());
             return null;
         }
         /*
          * ZWaveProductDatabase database = new ZWaveProductDatabase();
          * if (database.FindProduct(node.getManufacturer(), node.getDeviceType(), node.getDeviceId(),
          * node.getApplicationVersion()) == false) {
-         * logger.error("NODE {}: database can't find product.", node.getNodeId());
+         * logger.debug("NODE {}: database can't find product.", node.getNodeId());
          * return;
          * }
          *
          * List<ZWaveDbConfigurationParameter> configList = database.getProductConfigParameters();
          * if (configList == null) {
-         * logger.error("NODE {}: Device has no configuration.", node.getNodeId());
+         * logger.debug("NODE {}: Device has no configuration.", node.getNodeId());
          * return;
          * }
          *
@@ -143,7 +143,7 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
          * }
          * }
          * if (dbParameter == null) {
-         * logger.error("NODE {}: Device has no parameter {}.", node.getNodeId(), paramIndex);
+         * logger.debug("NODE {}: Device has no parameter {}.", node.getNodeId(), paramIndex);
          * return;
          * }
          */

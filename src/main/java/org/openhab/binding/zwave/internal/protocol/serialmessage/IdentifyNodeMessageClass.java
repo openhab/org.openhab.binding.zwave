@@ -90,14 +90,14 @@ public class IdentifyNodeMessageClass extends ZWaveCommandProcessor {
 
         Basic basic = Basic.getBasic(incomingMessage.getMessagePayloadByte(3));
         if (basic == null) {
-            logger.error("NODE {}: Basic device class {} not found", nodeId, incomingMessage.getMessagePayloadByte(3));
+            logger.debug("NODE {}: Basic device class {} not found", nodeId, incomingMessage.getMessagePayloadByte(3));
             return false;
         }
         logger.debug("NODE {}: Basic    = {}", nodeId, basic.toString());
 
         Generic generic = Generic.getGeneric(incomingMessage.getMessagePayloadByte(4));
         if (generic == null) {
-            logger.error("NODE {}: Generic device class {} not found", nodeId,
+            logger.debug("NODE {}: Generic device class {} not found", nodeId,
                     incomingMessage.getMessagePayloadByte(4));
             return false;
         }
@@ -105,7 +105,7 @@ public class IdentifyNodeMessageClass extends ZWaveCommandProcessor {
 
         Specific specific = Specific.getSpecific(generic, incomingMessage.getMessagePayloadByte(5));
         if (specific == null) {
-            logger.error("NODE {}: Specific device class {} not found", nodeId,
+            logger.debug("NODE {}: Specific device class {} not found", nodeId,
                     incomingMessage.getMessagePayloadByte(5));
             return false;
         }

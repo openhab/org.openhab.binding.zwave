@@ -43,6 +43,8 @@
       <property name="manufacturerId">001E</property>
       <property name="manufacturerRef">0002:0002,0002:0001</property>
       <property name="dbReference">140</property>
+      <property name="commandClass:WAKE_UP:1">ccRemove</property>
+      <property name="commandClass:WAKE_UP:2">ccRemove</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -122,3 +124,4 @@ On Value is the value sent by the Z-Wave BASIC_SET command when motion is detect
   </thing-type>
 
 </thing:thing-descriptions>
+ 

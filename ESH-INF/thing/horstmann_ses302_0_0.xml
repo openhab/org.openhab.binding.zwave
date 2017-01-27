@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="horstmann_ses302_00_000" listed="false">
+    <label>SES 302 Temperature sensor</label>
+    <description>Temperature sensor</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="sensor_temperature" typeId="sensor_temperature">
+        <label>Sensor (temperature)</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">BATTERY</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature1" typeId="sensor_temperature">
+        <label>Sensor (temperature) 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:1;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="battery-level1" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">BATTERY:1</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature2" typeId="sensor_temperature">
+        <label>Sensor (temperature) 2</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:2;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature3" typeId="sensor_temperature">
+        <label>Sensor (temperature) 3</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:3;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Horstmann Controls Limited</property>
+      <property name="modelId">SES 302</property>
+      <property name="manufacturerId">0059</property>
+      <property name="manufacturerRef">000D:0002</property>
+      <property name="dbReference">505</property>
+    </properties>
+
+  </thing-type>
+
+</thing:thing-descriptions>

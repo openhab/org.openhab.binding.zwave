@@ -179,14 +179,14 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
     public boolean userCodeIsValid(String userCode) {
         // Check length of userCode.code
         if (userCode.length() < USER_CODE_MIN_LENGTH || userCode.length() > USER_CODE_MAX_LENGTH) {
-            logger.error("NODE {}: Ignoring user code {}: was {} digits but must be between {} and {}",
+            logger.debug("NODE {}: Ignoring user code {}: was {} digits but must be between {} and {}",
                     getNode().getNodeId(), userCode, userCode.length(), USER_CODE_MIN_LENGTH, USER_CODE_MAX_LENGTH);
             return false;
         }
         // Check that userCode.code is numeric
         for (char c : userCode.toCharArray()) {
             if (!Character.isDigit(c)) {
-                logger.error("NODE {}: Ignoring user code {}: found non-digit of '{}' in code", getNode().getNodeId(),
+                logger.debug("NODE {}: Ignoring user code {}: found non-digit of '{}' in code", getNode().getNodeId(),
                         userCode, c);
                 return false;
             }

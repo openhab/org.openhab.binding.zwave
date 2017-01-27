@@ -87,6 +87,42 @@ public class ZWaveMultiLevelSensorCommandClassTest extends ZWaveCommandClassTest
     }
 
     @Test
+    public void Sensor_AccelerationY() {
+        byte[] packetData = { 0x01, 0x0B, 0x00, 0x04, 0x00, 0x09, 0x05, 0x31, 0x05, 0x35, 0x21, (byte) 0xE0, 0x3C };
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData);
+
+        assertEquals(events.size(), 1);
+
+        ZWaveMultiLevelSensorValueEvent event = (ZWaveMultiLevelSensorValueEvent) events.get(0);
+
+        assertEquals(event.getCommandClass(), CommandClass.SENSOR_MULTILEVEL);
+        // assertEquals(event.getNodeId(), 2);
+        assertEquals(event.getEndpoint(), 0);
+        assertEquals(event.getSensorType(), ZWaveMultiLevelSensorCommandClass.SensorType.ACCELERATION_Y);
+        assertEquals(event.getValue(), new BigDecimal("-3.2"));
+        assertEquals(event.getSensorScale(), 0);
+    }
+
+    @Test
+    public void Sensor_AccelerationZ() {
+        byte[] packetData = { 0x01, 0x0B, 0x00, 0x04, 0x00, 0x09, 0x05, 0x31, 0x05, 0x36, 0x21, 0x5E, (byte) 0x81 };
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData);
+
+        assertEquals(events.size(), 1);
+
+        ZWaveMultiLevelSensorValueEvent event = (ZWaveMultiLevelSensorValueEvent) events.get(0);
+
+        assertEquals(event.getCommandClass(), CommandClass.SENSOR_MULTILEVEL);
+        // assertEquals(event.getNodeId(), 2);
+        assertEquals(event.getEndpoint(), 0);
+        assertEquals(event.getSensorType(), ZWaveMultiLevelSensorCommandClass.SensorType.ACCELERATION_Z);
+        assertEquals(event.getValue(), new BigDecimal("9.4"));
+        assertEquals(event.getSensorScale(), 0);
+    }
+
+    @Test
     public void getMessageDirectionV5() {
         ZWaveMultiLevelSensorCommandClass cls = (ZWaveMultiLevelSensorCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL);

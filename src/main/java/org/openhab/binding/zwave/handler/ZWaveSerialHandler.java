@@ -281,7 +281,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                                     OOFCount++;
                                     updateState(new ChannelUID(getThing().getUID(), CHANNEL_SERIAL_OOF),
                                             new DecimalType(OOFCount));
-                                    logger.warn(String.format("Protocol error (OOF). Got 0x%02X.", nextByte));
+                                    logger.debug(String.format("Protocol error (OOF). Got 0x%02X.", nextByte));
                                     // Let the timeout deal with sending the NAK
                                     break;
                             }

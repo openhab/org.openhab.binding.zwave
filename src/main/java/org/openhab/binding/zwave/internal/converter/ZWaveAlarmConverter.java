@@ -123,7 +123,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                 state = value == 0 ? OpenClosedType.CLOSED : OpenClosedType.OPEN;
                 break;
             default:
-                logger.warn("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());
+                logger.debug("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());
                 break;
         }
         return state;
@@ -140,6 +140,12 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         // Handle event 0 as 'clear the event'
         int event = eventAlarm.getAlarmEvent();// == 0 ? 0 : eventAlarm.getAlarmStatus();
         logger.debug("Alarm converter NOTIFICATION event is {}, type {}", event, channel.getDataType());
+
+        // We ignore event 0xFE as that indicates "no further events",
+        // and event 0xFF which indicates that unsolicited events are enabled
+        if (event == 0xFE || event == 0xFF) {
+            return null;
+        }
 
         // Don't trigger event if there is no event match. Note that 0 is always acceptable
         if (alarmEvent != null && event != 0 && alarmEvent != event) {
@@ -174,7 +180,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                 state = new DecimalType(eventAlarm.getAlarmEvent());
                 break;
             default:
-                logger.warn("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());
+                logger.debug("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());
                 break;
         }
         return state;

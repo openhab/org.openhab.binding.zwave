@@ -686,7 +686,7 @@ public class ZWaveController {
             // Get the node
             ZWaveNode node = getNode(event.getNodeId());
             if (node == null) {
-                logger.error("NODE {}: Node is unknown!", statusEvent.getNodeId());
+                logger.debug("NODE {}: Node is unknown!", statusEvent.getNodeId());
                 return;
             }
 
@@ -885,7 +885,7 @@ public class ZWaveController {
         } else if (exclusion) {
             requestRemoveNodesStop();
         } else {
-            logger.error("Neither inclusion nor exclusion was active!");
+            logger.debug("Neither inclusion nor exclusion was active!");
         }
 
         inclusion = false;

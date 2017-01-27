@@ -141,7 +141,7 @@ public class ZWaveAlarmSensorCommandClass extends ZWaveCommandClass
     private Alarm getAlarm(int alarmTypeCode) {
         AlarmType alarmType = AlarmType.getAlarmType(alarmTypeCode);
         if (alarmType == null) {
-            logger.error("NODE {}: Unknown Alarm Type = {}, ignoring report.", this.getNode().getNodeId(),
+            logger.debug("NODE {}: Unknown Alarm Type = {}, ignoring report.", this.getNode().getNodeId(),
                     alarmTypeCode);
             return null;
         }

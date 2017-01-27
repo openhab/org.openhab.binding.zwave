@@ -323,7 +323,7 @@ public abstract class ZWaveCommandClass {
             return constructor.newInstance(new Object[] { node, controller, endpoint });
         } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
                 | NoSuchMethodException | SecurityException e) {
-            logger.error(String.format("NODE %d: Error instantiating command class 0x%02x", node.getNodeId(), classId));
+            logger.debug(String.format("NODE %d: Error instantiating command class 0x%02x", node.getNodeId(), classId));
             e.printStackTrace();
             return null;
         }

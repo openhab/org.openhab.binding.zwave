@@ -161,12 +161,25 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
                 break;
             case NODE_INFO_REQ_FAILED:
                 // The failed message doesn't contain the node number, so use the info from the request.
+<<<<<<< HEAD
                 if (transaction != null) {
                     nodeId = transaction.getNodeId();
                     logger.debug("NODE {}: Application update request. Node Info Request Failed.", nodeId);
                     transaction.setTransactionCanceled();
                 } else {
                     logger.debug("Application update request. Node Info Request Failed (Unknown Node).");
+=======
+                nodeId = lastSentMessage.getMessageNode();
+                logger.debug("NODE {}: Application update request. Node Info Request Failed.", nodeId);
+
+                // Handle retries
+                if (--lastSentMessage.attempts >= 0) {
+                    logger.debug("NODE {}: Got Node Info Request Failed. Requeueing", nodeId);
+                    zController.enqueue(lastSentMessage);
+                } else {
+                    logger.debug("NODE {}: Node Info Request Failed 3x. Discarding message: {}", nodeId,
+                            lastSentMessage.toString());
+>>>>>>> master
                 }
 
                 result = false;

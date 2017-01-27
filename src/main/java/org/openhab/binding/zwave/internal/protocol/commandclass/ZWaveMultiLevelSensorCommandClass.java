@@ -143,7 +143,7 @@ public class ZWaveMultiLevelSensorCommandClass extends ZWaveCommandClass
     private Sensor getSensor(int sensorTypeCode) {
         SensorType sensorType = SensorType.getSensorType(sensorTypeCode);
         if (sensorType == null) {
-            logger.error("NODE {}: Unknown Sensor Type = {}, ignoring report.", getNode().getNodeId(), sensorTypeCode);
+            logger.debug("NODE {}: Unknown Sensor Type = {}, ignoring report.", getNode().getNodeId(), sensorTypeCode);
             return null;
         }
 
@@ -358,7 +358,16 @@ public class ZWaveMultiLevelSensorCommandClass extends ZWaveCommandClass
         TOTAL_BODY_WATER(49, "Total Body Water"),
         BASIC_METABOLIC_RATE(50, "Basic Metabolic Rate"),
         BODY_MASS_INDEX(51, "Body Mass Index"),
-        MAX_TYPE(52, "MaxType");
+        ACCELERATION_X(52, "Accelleration X-Axis"),
+        ACCELERATION_Y(53, "Accelleration Y-Axis"),
+        ACCELERATION_Z(54, "Accelleration Z-Axis"),
+        SMOKE_DENSITY(55, "Smoke Density"),
+        WATER_FLOW(56, "Water Flow"),
+        WATER_PRESURE(57, "Water Pressure"),
+        RF_SIGNAL_STRENGTH(58, "RF Signal Strength"),
+        PARTICULATE(59, "Particulate Matter"),
+        RESPIRATORY_RATE(60, "Respiratory Rate"),
+        MAX_TYPE(61, "MaxType");
 
         /**
          * A mapping between the integer code and its corresponding Sensor type to facilitate lookup by code.
