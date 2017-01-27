@@ -135,7 +135,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
                 break;
 
             default:
-                logger.warn(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
+                logger.debug(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
                         getCommandClass().getLabel(), getCommandClass().getKey()));
                 break;
         }
@@ -175,7 +175,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         }
 
         if (alarmType == null) {
-            logger.error("NODE {}: Unknown Alarm Type = {}, ignoring report.", getNode().getNodeId(), v1AlarmTypeCode);
+            logger.debug("NODE {}: Unknown Alarm Type = {}, ignoring report.", getNode().getNodeId(), v1AlarmTypeCode);
             return;
         }
 
@@ -267,7 +267,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
     private Alarm getAlarm(int alarmTypeCode) {
         AlarmType alarmType = AlarmType.getAlarmType(alarmTypeCode);
         if (alarmType == null) {
-            logger.error("NODE {}: Unknown Alarm Type = {}, ignoring report.", getNode().getNodeId(), alarmTypeCode);
+            logger.debug("NODE {}: Unknown Alarm Type = {}, ignoring report.", getNode().getNodeId(), alarmTypeCode);
             return null;
         }
 

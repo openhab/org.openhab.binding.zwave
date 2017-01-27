@@ -162,7 +162,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
         int level = serialMessage.getMessagePayloadByte(offset + 2);
         ZWaveColorType colorType = ZWaveColorType.getColorType(color);
         if (colorType == null) {
-            logger.error("NODE {}: Color report for unknown color {} ({})", getNode().getNodeId(), color, level);
+            logger.debug("NODE {}: Color report for unknown color {} ({})", getNode().getNodeId(), color, level);
             return;
         }
 

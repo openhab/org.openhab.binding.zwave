@@ -55,7 +55,7 @@ public class AssignReturnRouteMessageClass extends ZWaveCommandProcessor {
             logger.debug("NODE {}: AssignReturnRoute command in progress.", nodeId);
             lastSentMessage.setAckRecieved();
         } else {
-            logger.error("NODE {}: AssignReturnRoute command failed.", nodeId);
+            logger.debug("NODE {}: AssignReturnRoute command failed.", nodeId);
             zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.AssignReturnRoute, nodeId,
                     ZWaveNetworkEvent.State.Failure));
             incomingMessage.setTransactionCanceled();
@@ -71,7 +71,7 @@ public class AssignReturnRouteMessageClass extends ZWaveCommandProcessor {
 
         logger.debug("NODE {}: Got AssignReturnRoute request.", nodeId);
         if (incomingMessage.getMessagePayloadByte(1) != 0x00) {
-            logger.error("NODE {}: Assign return routes failed.", nodeId);
+            logger.debug("NODE {}: Assign return routes failed.", nodeId);
             zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.AssignReturnRoute, nodeId,
                     ZWaveNetworkEvent.State.Failure));
         } else {

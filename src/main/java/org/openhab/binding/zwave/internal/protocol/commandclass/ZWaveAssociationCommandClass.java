@@ -105,7 +105,7 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
                 processGroupingsReport(serialMessage, offset);
                 return;
             default:
-                logger.warn(String.format("NODE %d: Unsupported Command 0x%02X for command class %s (0x%02X).",
+                logger.debug(String.format("NODE %d: Unsupported Command 0x%02X for command class %s (0x%02X).",
                         getNode().getNodeId(), command, getCommandClass().getLabel(), getCommandClass().getKey()));
         }
     }

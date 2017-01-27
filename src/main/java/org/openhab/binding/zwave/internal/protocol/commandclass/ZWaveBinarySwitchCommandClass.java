@@ -89,7 +89,7 @@ public class ZWaveBinarySwitchCommandClass extends ZWaveCommandClass
                 dynamicDone = true;
                 break;
             default:
-                logger.warn(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
+                logger.debug(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
                         this.getCommandClass().getLabel(), this.getCommandClass().getKey()));
         }
     }

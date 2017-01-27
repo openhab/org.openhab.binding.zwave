@@ -233,7 +233,7 @@ public class SerialMessage {
         try {
             resultByteBuffer.write(messagePayload);
         } catch (IOException e) {
-            logger.error("Error getting message buffer: ", e);
+            logger.debug("Error getting message buffer: ", e);
         }
 
         // Callback ID and transmit options for a Send Data message.

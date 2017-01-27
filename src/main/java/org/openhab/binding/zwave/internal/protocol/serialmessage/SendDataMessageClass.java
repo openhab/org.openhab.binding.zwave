@@ -42,7 +42,7 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
         } else {
             // This is an error. This means that the transaction is complete!
             // Set the flag, and return false.
-            logger.error("NODE {}: Sent Data was not placed on stack due to error {}.",
+            logger.debug("NODE {}: Sent Data was not placed on stack due to error {}.",
                     lastSentMessage.getMessageNode(), incomingMessage.getMessagePayloadByte(0));
 
             // We ought to cancel the transaction
@@ -129,7 +129,7 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
 
         ZWaveNode node = zController.getNode(originalMessage.getMessageNode());
         if (node == null) {
-            logger.error("Unknown node in handleFailedSendDataRequest");
+            logger.debug("Unknown node in handleFailedSendDataRequest");
             return false;
         }
 
@@ -141,7 +141,7 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
 
         // No retries if the node is DEAD or FAILED
         if (node.isDead()) {
-            logger.error("NODE {}: Node is DEAD. Dropping message.", node.getNodeId());
+            logger.debug("NODE {}: Node is DEAD. Dropping message.", node.getNodeId());
             return false;
         }
 
@@ -159,7 +159,7 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
             }
         }
 
-        logger.error("NODE {}: Got an error while sending data. Resending message.", node.getNodeId());
+        logger.debug("NODE {}: Got an error while sending data. Resending message.", node.getNodeId());
         zController.sendData(originalMessage);
         return true;
     }

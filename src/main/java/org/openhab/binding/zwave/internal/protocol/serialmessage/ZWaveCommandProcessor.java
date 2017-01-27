@@ -202,7 +202,7 @@ public abstract class ZWaveCommandProcessor {
             constructor = messageMap.get(serialMessage).getConstructor();
             return constructor.newInstance();
         } catch (Exception e) {
-            logger.error("Command processor error");
+            logger.debug("Command processor error");
         }
 
         return null;

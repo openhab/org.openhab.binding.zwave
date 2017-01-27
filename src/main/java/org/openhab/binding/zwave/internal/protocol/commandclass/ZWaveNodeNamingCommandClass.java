@@ -169,7 +169,7 @@ public class ZWaveNodeNamingCommandClass extends ZWaveCommandClass implements ZW
                 logger.debug("NODE {} : Node Name is encoded with Unicode UTF-16", getNode().getNodeId());
                 break;
             default:
-                logger.error("NODE {} : Node Name encoding is unsupported. Encoding code {}", getNode().getNodeId(),
+                logger.debug("NODE {} : Node Name encoding is unsupported. Encoding code {}", getNode().getNodeId(),
                         charPresentation);
                 return null;
         }

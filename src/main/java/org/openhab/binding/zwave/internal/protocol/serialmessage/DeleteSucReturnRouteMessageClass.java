@@ -53,7 +53,7 @@ public class DeleteSucReturnRouteMessageClass extends ZWaveCommandProcessor {
             lastSentMessage.setAckRecieved();
             logger.debug("NODE {}: DeleteSUCReturnRoute command in progress.", nodeId);
         } else {
-            logger.error("NODE {}: DeleteSUCReturnRoute command failed.", nodeId);
+            logger.debug("NODE {}: DeleteSUCReturnRoute command failed.", nodeId);
             zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.DeleteSucReturnRoute, nodeId,
                     ZWaveNetworkEvent.State.Failure));
         }
@@ -68,7 +68,7 @@ public class DeleteSucReturnRouteMessageClass extends ZWaveCommandProcessor {
 
         logger.debug("NODE {}: Got DeleteSUCReturnRoute request.", nodeId);
         if (incomingMessage.getMessagePayloadByte(1) != 0x00) {
-            logger.error("NODE {}: Delete SUC return routes failed.", nodeId);
+            logger.debug("NODE {}: Delete SUC return routes failed.", nodeId);
             zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.DeleteSucReturnRoute, nodeId,
                     ZWaveNetworkEvent.State.Failure));
         } else {

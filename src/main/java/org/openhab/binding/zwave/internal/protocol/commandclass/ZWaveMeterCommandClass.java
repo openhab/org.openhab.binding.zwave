@@ -111,7 +111,7 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
             case METER_REPORT:
                 // Sanity check
                 if (serialMessage.getMessagePayload().length < offset + 3) {
-                    logger.error("NODE {}: Meter Report: Buffer too short: length={}, required={}",
+                    logger.debug("NODE {}: Meter Report: Buffer too short: length={}, required={}",
                             getNode().getNodeId(), serialMessage.getMessagePayload().length, offset + 3);
                     return;
                 }
@@ -153,7 +153,7 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
                             scale, value);
                     getController().notifyEventListeners(event);
                 } catch (NumberFormatException e) {
-                    logger.error("NODE {}: Meter Value Error {}", getNode().getNodeId(), e);
+                    logger.debug("NODE {}: Meter Value Error {}", getNode().getNodeId(), e);
                     return;
                 }
 

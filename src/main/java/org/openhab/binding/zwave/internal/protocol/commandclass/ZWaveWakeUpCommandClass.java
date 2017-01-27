@@ -142,7 +142,7 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass
 
                 // According to open-zwave: it seems that some devices send incorrect interval report messages.
                 if (serialMessage.getMessagePayload().length < offset + 4) {
-                    logger.error("NODE {}: Unusual response: WAKE_UP_INTERVAL_REPORT with length = {}. Ignored.",
+                    logger.debug("NODE {}: Unusual response: WAKE_UP_INTERVAL_REPORT with length = {}. Ignored.",
                             this.getNode().getNodeId(), serialMessage.getMessagePayload().length);
                     return;
                 }

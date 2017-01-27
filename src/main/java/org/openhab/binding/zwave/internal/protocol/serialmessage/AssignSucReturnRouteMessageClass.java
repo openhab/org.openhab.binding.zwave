@@ -12,15 +12,15 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * This class processes a serial message from the zwave controller
- * 
+ *
  * @author Chris Jackson
  */
 public class AssignSucReturnRouteMessageClass extends ZWaveCommandProcessor {
@@ -47,7 +47,7 @@ public class AssignSucReturnRouteMessageClass extends ZWaveCommandProcessor {
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
             logger.debug("NODE {}: AssignSucReturnRoute operation started.", nodeId);
         } else {
-            logger.error("NODE {}: AssignSucReturnRoute command failed.", nodeId);
+            logger.debug("NODE {}: AssignSucReturnRoute command failed.", nodeId);
             zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.AssignSucReturnRoute, nodeId,
                     ZWaveNetworkEvent.State.Failure));
         }
@@ -64,7 +64,7 @@ public class AssignSucReturnRouteMessageClass extends ZWaveCommandProcessor {
         logger.debug("NODE {}: Got AssignSucReturnRoute request.", nodeId);
 
         if (incomingMessage.getMessagePayloadByte(1) != 0x00) {
-            logger.error("NODE {}: Assign SUC return routes failed with error 0x{}.", nodeId,
+            logger.debug("NODE {}: Assign SUC return routes failed with error 0x{}.", nodeId,
                     Integer.toHexString(incomingMessage.getMessagePayloadByte(1)));
             zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.AssignSucReturnRoute, nodeId,
                     ZWaveNetworkEvent.State.Failure));

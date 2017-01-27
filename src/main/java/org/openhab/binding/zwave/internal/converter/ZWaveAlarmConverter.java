@@ -124,7 +124,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                 state = value == 0 ? OpenClosedType.CLOSED : OpenClosedType.OPEN;
                 break;
             default:
-                logger.warn("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());
+                logger.debug("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());
                 break;
         }
         return state;
@@ -183,7 +183,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                 state = new DecimalType(eventAlarm.getAlarmEvent());
                 break;
             default:
-                logger.warn("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());
+                logger.debug("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());
                 break;
         }
         return state;
@@ -220,7 +220,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                 channel.getEndpoint());
 
         if (serialMessage == null) {
-            logger.warn("NODE {}: Generating message failed for command class = {}, endpoint = {}", node.getNodeId(),
+            logger.debug("NODE {}: Generating message failed for command class = {}, endpoint = {}", node.getNodeId(),
                     commandClass.getCommandClass().getLabel(), channel.getEndpoint());
             return null;
         }

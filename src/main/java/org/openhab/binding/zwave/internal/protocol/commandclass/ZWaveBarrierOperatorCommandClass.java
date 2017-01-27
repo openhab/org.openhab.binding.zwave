@@ -80,7 +80,7 @@ public class ZWaveBarrierOperatorCommandClass extends ZWaveCommandClass
                 getController().notifyEventListeners(zEvent);
                 break;
             default:
-                logger.warn(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
+                logger.debug(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
                         getCommandClass().getLabel(), getCommandClass().getKey()));
         }
     }

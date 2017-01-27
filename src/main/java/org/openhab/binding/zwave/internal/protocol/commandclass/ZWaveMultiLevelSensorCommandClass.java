@@ -162,7 +162,7 @@ public class ZWaveMultiLevelSensorCommandClass extends ZWaveCommandClass
     private Sensor getSensor(int sensorTypeCode) {
         SensorType sensorType = SensorType.getSensorType(sensorTypeCode);
         if (sensorType == null) {
-            logger.error("NODE {}: Unknown Sensor Type = {}, ignoring report.", getNode().getNodeId(), sensorTypeCode);
+            logger.debug("NODE {}: Unknown Sensor Type = {}, ignoring report.", getNode().getNodeId(), sensorTypeCode);
             return null;
         }
 

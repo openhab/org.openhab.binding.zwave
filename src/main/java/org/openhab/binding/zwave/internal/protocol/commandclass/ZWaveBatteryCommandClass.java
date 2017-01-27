@@ -87,7 +87,7 @@ public class ZWaveBatteryCommandClass extends ZWaveCommandClass
                 logger.trace("Process Battery Report");
 
                 if (serialMessage.getMessagePayload().length < offset + 1) {
-                    logger.error("NODE {}: Battery report length too short");
+                    logger.debug("NODE {}: Battery report length too short");
                     return;
                 }
 
@@ -116,7 +116,7 @@ public class ZWaveBatteryCommandClass extends ZWaveCommandClass
                 dynamicDone = true;
                 break;
             default:
-                logger.warn(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
+                logger.debug(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
                         this.getCommandClass().getLabel(), this.getCommandClass().getKey()));
         }
     }

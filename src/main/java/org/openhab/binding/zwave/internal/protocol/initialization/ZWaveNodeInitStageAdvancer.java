@@ -324,7 +324,7 @@ public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
                 retryCount++;
                 if (retryCount > MAX_RETRIES) {
                     retryCount = 0;
-                    logger.error("NODE {}: Node advancer: Retries exceeded at {}", node.getNodeId(), currentStage);
+                    logger.debug("NODE {}: Node advancer: Retries exceeded at {}", node.getNodeId(), currentStage);
                     if (currentStage.isStageMandatory() == false) {
                         // If the current stage is not mandatory, then we skip forward to the next
                         // stage.

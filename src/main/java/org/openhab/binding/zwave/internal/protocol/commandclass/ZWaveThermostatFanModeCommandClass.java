@@ -155,7 +155,7 @@ public class ZWaveThermostatFanModeCommandClass extends ZWaveCommandClass
         FanModeType fanModeType = FanModeType.getFanModeType(value);
 
         if (fanModeType == null) {
-            logger.error("NODE {}: Unknown Fan Mode Type = {}, ignoring report.", this.getNode().getNodeId(), value);
+            logger.debug("NODE {}: Unknown Fan Mode Type = {}, ignoring report.", this.getNode().getNodeId(), value);
             return;
         }
 
@@ -261,7 +261,7 @@ public class ZWaveThermostatFanModeCommandClass extends ZWaveCommandClass
         }
 
         if (!fanModeTypes.contains(FanModeType.getFanModeType(value))) {
-            logger.error("NODE {}: Unsupported fanMode type {}", value, this.getNode().getNodeId());
+            logger.debug("NODE {}: Unsupported fanMode type {}", value, this.getNode().getNodeId());
 
             return null;
         }

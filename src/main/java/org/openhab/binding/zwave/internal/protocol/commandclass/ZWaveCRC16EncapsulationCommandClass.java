@@ -98,7 +98,7 @@ public class ZWaveCRC16EncapsulationCommandClass extends ZWaveCommandClass {
         ByteBuffer byteBuffer = ByteBuffer.allocate(2);
         byteBuffer.putShort(calculatedCrc);
         if (!Arrays.equals(messageCrc, byteBuffer.array())) {
-            logger.error("NODE {}: CRC check failed message contains {} but should be {}", this.getNode().getNodeId(),
+            logger.debug("NODE {}: CRC check failed message contains {} but should be {}", this.getNode().getNodeId(),
                     SerialMessage.bb2hex(messageCrc), SerialMessage.bb2hex(byteBuffer.array()));
             return;
         }
@@ -109,7 +109,7 @@ public class ZWaveCRC16EncapsulationCommandClass extends ZWaveCommandClass {
         int commandClassCode = serialMessage.getMessagePayloadByte(offset);
         commandClass = CommandClass.getCommandClass(commandClassCode);
         if (commandClass == null) {
-            logger.error(String.format("NODE %d: Unsupported command class 0x%02x", this.getNode().getNodeId(),
+            logger.debug(String.format("NODE %d: Unsupported command class 0x%02x", this.getNode().getNodeId(),
                     commandClassCode));
         } else {
             zwaveCommandClass = this.getNode().getCommandClass(commandClass);
@@ -131,7 +131,7 @@ public class ZWaveCRC16EncapsulationCommandClass extends ZWaveCommandClass {
             }
 
             if (zwaveCommandClass == null) {
-                logger.error(String.format("NODE %d: CommandClass %s (0x%02x) not implemented.",
+                logger.debug(String.format("NODE %d: CommandClass %s (0x%02x) not implemented.",
                         this.getNode().getNodeId(), commandClass.getLabel(), commandClassCode));
             } else {
                 logger.debug("NODE {}: Calling handleApplicationCommandRequest.", this.getNode().getNodeId());

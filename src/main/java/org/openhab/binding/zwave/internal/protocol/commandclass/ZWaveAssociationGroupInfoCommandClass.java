@@ -134,7 +134,7 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
         int numBytes = serialMessage.getMessagePayloadByte(offset + 2);
 
         if (numBytes < 0) {
-            logger.error("NODE {}: Group Name report error in message length ({})", getNode().getNodeId(),
+            logger.debug("NODE {}: Group Name report error in message length ({})", getNode().getNodeId(),
                     serialMessage.getMessagePayload().length);
         }
 

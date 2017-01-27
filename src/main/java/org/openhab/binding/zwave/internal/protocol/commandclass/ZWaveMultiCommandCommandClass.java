@@ -9,10 +9,10 @@
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -53,7 +53,7 @@ public class ZWaveMultiCommandCommandClass extends ZWaveCommandClass {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @throws ZWaveSerialMessageException
      */
     @Override
@@ -89,7 +89,7 @@ public class ZWaveMultiCommandCommandClass extends ZWaveCommandClass {
             int commandClassCode = serialMessage.getMessagePayloadByte(offset + 1);
             commandClass = CommandClass.getCommandClass(commandClassCode);
             if (commandClass == null) {
-                logger.error(String.format("NODE %d: Unknown command class 0x%02x", getNode().getNodeId(),
+                logger.debug(String.format("NODE %d: Unknown command class 0x%02x", getNode().getNodeId(),
                         commandClassCode));
             } else {
                 logger.debug("NODE {}: Incoming command class {}", getNode().getNodeId(), commandClass.getLabel());
@@ -112,7 +112,7 @@ public class ZWaveMultiCommandCommandClass extends ZWaveCommandClass {
                 }
 
                 if (zwaveCommandClass == null) {
-                    logger.error("NODE {}: CommandClass %s not implemented.", this.getNode().getNodeId(),
+                    logger.debug("NODE {}: CommandClass %s not implemented.", this.getNode().getNodeId(),
                             commandClass.getLabel());
                 } else {
                     logger.debug("NODE {}: Calling handleApplicationCommandRequest.", this.getNode().getNodeId());

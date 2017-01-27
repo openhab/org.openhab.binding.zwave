@@ -170,7 +170,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
 
         CommandClass commandClass = CommandClass.getCommandClass(commandClassCode);
         if (commandClass == null) {
-            logger.error(String.format("NODE %d: Unsupported command class 0x%02x", getNode().getNodeId(),
+            logger.debug(String.format("NODE %d: Unsupported command class 0x%02x", getNode().getNodeId(),
                     commandClassCode));
             return;
         }
@@ -179,7 +179,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
 
         ZWaveCommandClass zwaveCommandClass = getNode().getCommandClass(commandClass);
         if (zwaveCommandClass == null) {
-            logger.error(String.format("NODE %d: Unsupported command class %s (0x%02x)", getNode().getNodeId(),
+            logger.debug(String.format("NODE %d: Unsupported command class %s (0x%02x)", getNode().getNodeId(),
                     commandClass.getLabel(), commandClassCode));
             return;
         }
@@ -210,7 +210,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
         CommandClass commandClass = CommandClass.getCommandClass(commandClassCode);
 
         if (commandClass == null) {
-            logger.error(String.format("NODE %d: Unsupported command class 0x%02x", getNode().getNodeId(),
+            logger.debug(String.format("NODE %d: Unsupported command class 0x%02x", getNode().getNodeId(),
                     commandClassCode));
             return;
         }
@@ -238,7 +238,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
         }
 
         if (zwaveCommandClass == null) {
-            logger.error(String.format("NODE %d: Unsupported command class %s (0x%02x)", getNode().getNodeId(),
+            logger.debug(String.format("NODE %d: Unsupported command class %s (0x%02x)", getNode().getNodeId(),
                     commandClass.getLabel(), commandClassCode));
             return;
         }
@@ -316,7 +316,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
             // Create a new endpoint
             ZWaveEndpoint endpoint = endpoints.get(endpointId);
             if (endpoint == null) {
-                logger.error("NODE {}: Endpoint {} not found. Cannot set command classes.", getNode().getNodeId(),
+                logger.debug("NODE {}: Endpoint {} not found. Cannot set command classes.", getNode().getNodeId(),
                         endpointId);
                 continue;
             }
@@ -361,14 +361,14 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
         Basic basic = getNode().getDeviceClass().getBasicDeviceClass();
         Generic generic = Generic.getGeneric(genericDeviceClass);
         if (generic == null) {
-            logger.error(
+            logger.debug(
                     String.format("NODE %d: Endpoint %d has invalid device class. generic = 0x%02x, specific = 0x%02x.",
                             getNode().getNodeId(), endpoint.getEndpointId(), genericDeviceClass, specificDeviceClass));
             return false;
         }
         Specific specific = Specific.getSpecific(generic, specificDeviceClass);
         if (specific == null) {
-            logger.error(
+            logger.debug(
                     String.format("NODE %d: Endpoint %d has invalid device class. generic = 0x%02x, specific = 0x%02x.",
                             getNode().getNodeId(), endpoint.getEndpointId(), genericDeviceClass, specificDeviceClass));
             return false;
@@ -444,7 +444,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
         logger.trace("Process Multi-channel Encapsulation");
 
         if (serialMessage.getMessagePayload().length < offset + 2) {
-            logger.error("NODE {}: Invalid data length", getNode().getNodeId());
+            logger.debug("NODE {}: Invalid data length", getNode().getNodeId());
             return;
         }
 
@@ -478,7 +478,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
         commandClass = CommandClass.getCommandClass(commandClassCode);
 
         if (commandClass == null) {
-            logger.error(String.format("NODE %d: Unsupported command class 0x%02x", getNode().getNodeId(),
+            logger.debug(String.format("NODE %d: Unsupported command class 0x%02x", getNode().getNodeId(),
                     commandClassCode));
             return;
         }
@@ -496,7 +496,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
             ZWaveEndpoint endpoint = endpoints.get(originatingEndpointId);
 
             if (endpoint == null) {
-                logger.error("NODE {}: Endpoint {} not found. Cannot set command classes.", getNode().getNodeId(),
+                logger.debug("NODE {}: Endpoint {} not found. Cannot set command classes.", getNode().getNodeId(),
                         originatingEndpointId);
                 return;
             }
@@ -514,7 +514,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
         }
 
         if (zwaveCommandClass == null) {
-            logger.error(String.format("NODE %d: CommandClass %s (0x%02x) not implemented.", getNode().getNodeId(),
+            logger.debug(String.format("NODE %d: CommandClass %s (0x%02x) not implemented.", getNode().getNodeId(),
                     commandClass.getLabel(), commandClassCode));
             return;
         }

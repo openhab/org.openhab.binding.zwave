@@ -431,7 +431,7 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
     public void sendNonceReport() throws ZWaveSerialMessageException {
         SerialMessage nonceReportMessage = nonceGeneration.generateAndBuildNonceReport();
         if (nonceReportMessage == null) {
-            logger.error("NODE {}: SECURITY_ERROR generateAndBuildNonceReport returned null");
+            logger.debug("NODE {}: SECURITY_ERROR generateAndBuildNonceReport returned null");
         } else {
             transmitMessage(nonceReportMessage);
         }
@@ -456,7 +456,7 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
         // check for minimum size here so we can ignore the return value of bais.read() below
         int minimumSize = offset + ENCAPSULATED_HEADER_LENGTH + ENCAPSULATED_FOOTER_LENGTH;
         if (data.length < minimumSize) {
-            logger.error(
+            logger.debug(
                     "NODE {}: SECURITY_ERROR Dropping security encapsulated packet which is too small: min={}, actual={}",
                     this.getNode().getNodeId(), minimumSize, data.length);
             return null;
@@ -502,7 +502,7 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
             if (Arrays.equals(mac, macFromPacket)) {
                 logger.trace("NODE {}: MAC Authentication of packet verified OK", getNode().getNodeId());
             } else {
-                logger.error("NODE {}: SECURITY_ERROR MAC Authentication of packet failed. Dropping.",
+                logger.debug("NODE {}: SECURITY_ERROR MAC Authentication of packet failed. Dropping.",
                         getNode().getNodeId());
                 traceHex("full packet", data);
                 traceHex("package mac", macFromPacket);
@@ -510,7 +510,7 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
                 if (DROP_PACKETS_ON_MAC_FAILURE) {
                     return null;
                 } else {
-                    logger.error("NODE {}: Just kidding, ignored failed MAC Authentication of packet",
+                    logger.debug("NODE {}: Just kidding, ignored failed MAC Authentication of packet",
                             getNode().getNodeId());
                 }
             }
@@ -518,7 +518,7 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
             byte sequenceDataByte = plaintextBytes[0];
             if (sequenceDataByte != ZWaveSecurityPayloadFrame.SEQUENCE_BYTE_FOR_SINGLE_FRAME_MESSAGE) {
                 // This is a multi frame message which is not yet supported
-                logger.error("NODE {}: SECURITY_ERROR Received multi frame message which is not supported.",
+                logger.debug("NODE {}: SECURITY_ERROR Received multi frame message which is not supported.",
                         getNode().getNodeId());
                 return null;
             }
@@ -532,7 +532,7 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
             notifyEncapsulationThread();
             return plaintextBytes;
         } catch (Exception e) {
-            logger.error("NODE {}: Error decrypting packet", getNode().getNodeId(), e);
+            logger.debug("NODE {}: Error decrypting packet", getNode().getNodeId(), e);
             return null;
         }
     }
@@ -552,13 +552,13 @@ public abstract class ZWaveSecurityCommandClass extends ZWaveCommandClass {
     public void queueMessageForEncapsulationAndTransmission(SerialMessage serialMessage) {
         checkInit();
         if (serialMessage.getMessageBuffer().length < 7) {
-            logger.error("NODE {}: SECURITY_ERROR Message too short for encapsulation, dropping message {}",
+            logger.debug("NODE {}: SECURITY_ERROR Message too short for encapsulation, dropping message {}",
                     this.getController().getNode(serialMessage.getMessageNode()).getNodeId(), serialMessage);
             return;
         }
 
         if (serialMessage.getMessageClass() != SerialMessageClass.SendData) {
-            logger.error("NODE {}: SECURITY_ERROR Invalid message class {} for SendData for message {}",
+            logger.debug("NODE {}: SECURITY_ERROR Invalid message class {} for SendData for message {}",
                     getNode().getNodeId(), serialMessage.getMessageClass().getLabel(),
                     serialMessage.getMessageClass().getKey(), serialMessage.toString());
         }
