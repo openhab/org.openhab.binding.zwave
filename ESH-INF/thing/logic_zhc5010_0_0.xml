@@ -29,14 +29,14 @@ FUGA Wall 4-way Switch + Relay<br /><h1>Overview</h1><p>ZHC5010 is a wall switch
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
         <label>Scene Number</label>
         <properties>
-          <property name="binding:*:DecimalType">CENTRAL_SCENE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -61,8 +61,8 @@ FUGA Wall 4-way Switch + Relay<br /><h1>Overview</h1><p>ZHC5010 is a wall switch
       <channel id="switch_dimmer1" typeId="switch_dimmer">
         <label>Dimmer 1</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:1</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:1</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
         </properties>
       </channel>
       <channel id="scene_number1" typeId="scene_number">
@@ -87,8 +87,8 @@ FUGA Wall 4-way Switch + Relay<br /><h1>Overview</h1><p>ZHC5010 is a wall switch
       <channel id="switch_dimmer2" typeId="switch_dimmer">
         <label>Dimmer 2</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:2</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:2</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:2</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:2</property>
         </properties>
       </channel>
       <channel id="scene_number2" typeId="scene_number">
@@ -113,8 +113,8 @@ FUGA Wall 4-way Switch + Relay<br /><h1>Overview</h1><p>ZHC5010 is a wall switch
       <channel id="switch_dimmer3" typeId="switch_dimmer">
         <label>Dimmer 3</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:3</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:3</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:3</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:3</property>
         </properties>
       </channel>
       <channel id="scene_number3" typeId="scene_number">
@@ -139,8 +139,8 @@ FUGA Wall 4-way Switch + Relay<br /><h1>Overview</h1><p>ZHC5010 is a wall switch
       <channel id="switch_dimmer4" typeId="switch_dimmer">
         <label>Dimmer 4</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:4</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:4</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:4</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:4</property>
         </properties>
       </channel>
       <channel id="scene_number4" typeId="scene_number">

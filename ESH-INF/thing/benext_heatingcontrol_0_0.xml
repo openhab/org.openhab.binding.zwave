@@ -14,12 +14,6 @@ Thermostat for controlling the opentherm protocol<br /><h1>Overview</h1><p>The H
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="sensor_temperature" typeId="sensor_temperature">
-        <label>Delete!</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL</property>
-        </properties>
-      </channel>
-      <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Room temperature</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=1</property>
@@ -47,12 +41,6 @@ Thermostat for controlling the opentherm protocol<br /><h1>Overview</h1><p>The H
         <label>Energy save setpoint</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=11</property>
-        </properties>
-      </channel>
-      <channel id="thermostat_setpoint" typeId="thermostat_setpoint">
-        <label>Delete!</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT</property>
         </properties>
       </channel>
     </channels>

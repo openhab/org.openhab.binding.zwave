@@ -20,13 +20,13 @@
       <channel id="alarm_smoke" typeId="alarm_smoke">
         <label>Smoke Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=SMOKE</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=SMOKE, event=1</property>
         </properties>
       </channel>
       <channel id="alarm_tamper" typeId="alarm_tamper">
         <label>Tamper Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR, event=3</property>
         </properties>
       </channel>
       <channel id="alarm_battery" typeId="alarm_battery">

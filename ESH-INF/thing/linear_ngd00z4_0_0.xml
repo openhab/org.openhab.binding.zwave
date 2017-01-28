@@ -17,18 +17,6 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_BARRIER_OPERATOR</property>
         </properties>
       </channel>
-      <channel id="alarm_burglar" typeId="alarm_burglar">
-        <label>Alarm (burglar)</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
-        </properties>
-      </channel>
-      <channel id="alarm_access" typeId="alarm_access">
-        <label>Alarm (access)</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
-        </properties>
-      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
@@ -59,4 +47,3 @@
   </thing-type>
 
 </thing:thing-descriptions>
- 

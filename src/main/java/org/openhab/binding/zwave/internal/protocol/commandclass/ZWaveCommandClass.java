@@ -87,7 +87,7 @@ public abstract class ZWaveCommandClass {
         initialise(node, controller, endpoint);
     }
 
-    private void initialise(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
+    public void initialise(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         // Create the map of response command handlers
         commands = new HashMap<Integer, ZWaveResponseHandlerMethod>();
         Method[] methods = getClass().getMethods();

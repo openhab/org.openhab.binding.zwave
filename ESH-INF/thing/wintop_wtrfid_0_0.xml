@@ -23,7 +23,7 @@
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
         </properties>
       </channel>
-      <channel id="alarm_access" typeId="alarm_access">
+      <channel id="notification_access_control" typeId="notification_access_control">
         <label>Alarm (access)</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
@@ -66,7 +66,7 @@
                  min="1" max="255">
         <label>2: Audible feedback config</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>The Mini Keypad RFiD/Z-Wave supports 3 types of notification sound configurations:</p> <p>1 | Notification sound disabled (configuration parameter 2 set to zero)</p> <p>2 | Notification sound enabled (default, configuration parameter 2 set to auto-stop time).</p>
+To configure the time the beep is automatically turned off in seconds.<br /><h1>Overview</h1><p>The Mini Keypad RFiD/Z-Wave supports 3 types of notification sound configurations:</p> <p>1 | Notification sound disabled (configuration parameter 2 set to zero)</p> <p>2 | Notification sound enabled (default, configuration parameter 2 set to auto-stop time).</p>
         ]]></description>
         <default>15</default>
       </parameter>
