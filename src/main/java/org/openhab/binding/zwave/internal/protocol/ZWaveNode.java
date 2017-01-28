@@ -1153,7 +1153,6 @@ public class ZWaveNode {
 
         if (commandClassCode == CommandClass.COMMAND_CLASS_MULTI_CHANNEL.getKey()) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_MULTI_CHANNEL", getNodeId());
-
         }
         if (commandClassCode == CommandClass.COMMAND_CLASS_SUPERVISION.getKey()) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_SUPERVISION", getNodeId());
@@ -1161,7 +1160,6 @@ public class ZWaveNode {
         }
         if (commandClassCode == CommandClass.COMMAND_CLASS_MULTI_CMD.getKey()) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_MULTI_CMD", getNodeId());
-
         }
 
         List<ZWaveCommandClassPayload> commands = new ArrayList<ZWaveCommandClassPayload>();
@@ -1170,7 +1168,7 @@ public class ZWaveNode {
         for (ZWaveCommandClassPayload command : commands) {
             CommandClass commandClass = CommandClass.getCommandClass(command.getCommandClassId());
             if (commandClass == null) {
-                logger.error(String.format("NODE %d: Unknown command class 0x%02x", getNodeId(), commandClassCode));
+                logger.debug(String.format("NODE %d: Unknown command class 0x%02x", getNodeId(), commandClassCode));
                 continue;
             }
 
@@ -1187,9 +1185,8 @@ public class ZWaveNode {
 
                 if (zwaveCommandClass == null) {
                     // We got an unsupported command class, leave zwaveCommandClass as null
-                    logger.error(String.format("NODE %d: Unsupported zwave command class %s (0x%02x)", getNodeId(),
+                    logger.debug(String.format("NODE %d: Unsupported zwave command class %s (0x%02x)", getNodeId(),
                             commandClass, commandClassCode));
-
                     continue;
                 }
 

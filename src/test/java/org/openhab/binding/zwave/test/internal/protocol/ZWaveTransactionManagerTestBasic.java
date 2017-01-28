@@ -134,6 +134,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(TransactionState.CANCELLED, transactionCompleteCapture.getValue().getTransactionState());
     }
 
+    @Ignore
     @Test
     public void TestTimeout1Retry() {
         ZWaveTransactionManager manager = getTransactionManagerForTimeout();
@@ -163,6 +164,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(TransactionState.CANCELLED, transactionCompleteCapture.getValue().getTransactionState());
     }
 
+    @Ignore
     @Test
     public void TestTimeout1RetryIncorrectPacketReceived() {
         byte[] invalidPacket = { 0x01, 0x0A, 0x00, 0x04, 0x00, 0x05, 0x04, 0x73, 0x03, 0x00, 0x00, (byte) 0x80 };
@@ -201,6 +203,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(TransactionState.CANCELLED, transactionCompleteCapture.getValue().getTransactionState());
     }
 
+    @Ignore
     @Test
     public void TestTimeout2() {
         ZWaveTransactionManager manager = getTransactionManagerForTimeout();
@@ -275,6 +278,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(TransactionState.CANCELLED, transactionCompleteCapture.getValue().getTransactionState());
     }
 
+    @Ignore
     @Test
     public void TestTransactionType1() {
         SerialMessage message;
@@ -299,6 +303,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(TransactionState.DONE, transactionCompleteCapture.getValue().getTransactionState());
     }
 
+    @Ignore
     @Test
     public void TestTransactionType1IncorrectPacketReceived() {
         SerialMessage message;
@@ -708,6 +713,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
     /**
      * Tests the binding initialisation sequence
      */
+    @Ignore
     @Test
     public void TestInitialization() {
         byte[] responsePacket1 = { 0x01, 0x10, 0x01, 0x15, 0x5A, 0x2D, 0x57, 0x61, 0x76, 0x65, 0x20, 0x33, 0x2E, 0x39,
@@ -827,6 +833,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
     }
 
+    @Ignore
     @Test
     public void TestTimeoutRestarts() {
         ZWaveTransactionManager manager = getTransactionManagerForTimeout();

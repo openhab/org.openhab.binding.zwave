@@ -33,7 +33,7 @@ public class ZWaveClockCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void reportTime() {
-        byte[] packetData = { 0x01, 0x0F, 0x00, 0x04, 0x00, 0x07, 0x07, (byte) 0x81, 0x06, -127, 4, 127, 0, -119 };
+        byte[] packetData = { 0x01, 0x0F, 0x00, 0x04, 0x00, 0x07, 0x06, (byte) 0x81, 0x06, -127, 4, 127, 0, -120 };
 
         List<ZWaveEvent> events = processCommandClassMessage(packetData);
 

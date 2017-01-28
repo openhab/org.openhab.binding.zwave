@@ -49,7 +49,7 @@ public class ZWaveCrc16EncapsulationCommandClassTest extends ZWaveCommandClassTe
         List<ZWaveEvent> events = processCommandClassMessage(packetData);
         assertEquals(events.size(), 1);
         ZWaveCommandClassValueEvent event = (ZWaveCommandClassValueEvent) events.get(0);
-        assertEquals(event.getCommandClass(), CommandClass.SENSOR_MULTILEVEL);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL);
         assertEquals(event.getEndpoint(), 0);
         assertEquals(event.getValue(), new BigDecimal("0.8"));
     }

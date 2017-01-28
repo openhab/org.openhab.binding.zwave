@@ -309,7 +309,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             deviceId = Integer.parseInt(parmDeviceId);
         } catch (final NumberFormatException ex) {
             logger.debug("NODE {}: Error parsing device parameters", nodeId);
-            return;
+            return false;
         }
 
         ZWaveProduct foundProduct = null;
@@ -329,7 +329,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             logger.debug("NODE {}: Unable to find thing type ({}:{}:{}:{})", nodeId,
                     String.format("%04X", deviceManufacturer), String.format("%04X", deviceType),
                     String.format("%04X", deviceId), parmVersion);
-            return;
+            return false;
         }
 
         // We need a change...

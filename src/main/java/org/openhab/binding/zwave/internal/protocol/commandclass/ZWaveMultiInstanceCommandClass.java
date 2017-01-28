@@ -409,9 +409,25 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
         int destinationEndpointId = payload.getPayloadByte(3);
 
         if (useDestEndpointAsSource) {
-            // Not a full swap. Do not use destinationEndpointId after this line
-            // and leave scope intact.
-            originatingEndpointId = destinationEndpointId;
+            if (destinationEndpointId > 1) {
+                // swap specified in node options and condition satisfied:
+                if (originatingEndpointId <= 1) {
+                    // swap originating and destination.
+                    int temp = originatingEndpointId;
+                    originatingEndpointId = destinationEndpointId;
+                    destinationEndpointId = temp;
+                } else {
+                    // received an encapsulation for an endpoint on the controller.
+                    logger.info("NODE {}: Received a multi instance encapsulation with a destination endpoint = {}. ",
+                            getNode().getNodeId(), destinationEndpointId);
+                    if (originatingEndpointId <= 1) {
+                        // and it originates from either a root command class or a command class on the first endpoint.
+                        // high probability of a firmware bug.
+                        logger.warn("NODE {}: The originating endpoint is {}. Please notify author.",
+                                getNode().getNodeId(), originatingEndpointId);
+                    }
+                }
+            }
         }
 
         ZWaveCommandClassPayload encapPayload = new ZWaveCommandClassPayload(payload, 4);
@@ -430,7 +446,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
         ZWaveEndpoint nodeEndpoint = getNode().getEndpoint(originatingEndpointId);
 
         if (nodeEndpoint == null) {
-            logger.error("NODE {}: Endpoint {} not found. Cannot set command classes.", getNode().getNodeId(),
+            logger.debug("NODE {}: Endpoint {} not found. Cannot set command classes.", getNode().getNodeId(),
                     originatingEndpointId);
             return;
         }
@@ -438,14 +454,14 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
         zwaveCommandClass = nodeEndpoint.getCommandClass(commandClass);
 
         if (zwaveCommandClass == null) {
-            logger.warn(String.format(
+            logger.debug(String.format(
                     "NODE %d: CommandClass %s (0x%02x) not implemented by endpoint %d, fallback to main node.",
                     getNode().getNodeId(), commandClass, commandClassCode, originatingEndpointId));
             zwaveCommandClass = getNode().getCommandClass(commandClass);
         }
 
         if (zwaveCommandClass == null) {
-            logger.error(String.format("NODE %d: CommandClass %s (0x%02x) not implemented.", getNode().getNodeId(),
+            logger.debug(String.format("NODE %d: CommandClass %s (0x%02x) not implemented.", getNode().getNodeId(),
                     commandClass, commandClassCode));
             return;
         }

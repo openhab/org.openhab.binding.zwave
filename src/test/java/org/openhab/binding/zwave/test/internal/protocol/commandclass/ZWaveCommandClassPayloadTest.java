@@ -33,7 +33,7 @@ public class ZWaveCommandClassPayloadTest {
         assertEquals(5, payload3.getPayloadByte(2));
         assertTrue(Arrays.equals(payload3.getPayloadBuffer(), new byte[] { 3, 4, 5, 6, 7, 8 }));
 
-        byte[] packetData = { 0x01, 0x0F, 0x00, 0x04, 0x00, 0x07, 0x07, (byte) 0x81, 0x06, -127, 4, 127, 0, -119 };
+        byte[] packetData = { 0x01, 0x0F, 0x00, 0x04, 0x00, 0x07, 0x06, (byte) 0x81, 0x06, -127, 4, 127, 0, -120 };
         SerialMessage serialMsg = new SerialMessage(packetData);
         ZWaveCommandClassPayload payload4;
         try {

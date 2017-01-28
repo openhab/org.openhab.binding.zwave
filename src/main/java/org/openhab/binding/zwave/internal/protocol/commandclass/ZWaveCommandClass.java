@@ -87,10 +87,10 @@ public abstract class ZWaveCommandClass {
         initialise(node, controller, endpoint);
     }
 
-    public void initialise(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
+    private void initialise(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         // Create the map of response command handlers
         commands = new HashMap<Integer, ZWaveResponseHandlerMethod>();
-        Method[] methods = this.getClass().getMethods();
+        Method[] methods = getClass().getMethods();
         for (Method method : methods) {
             ZWaveResponseHandler handler = method.getAnnotation(ZWaveResponseHandler.class);
             if (handler != null) {
@@ -117,15 +117,6 @@ public abstract class ZWaveCommandClass {
     }
 
     /**
-     * Sets the node this command class belongs to.
-     *
-     * @param node the node to set
-     */
-    // public void setNode(ZWaveNode node) {
-    // this.node = node;
-    // }
-
-    /**
      * Returns the controller to send messages to.
      *
      * @return controller
@@ -135,15 +126,6 @@ public abstract class ZWaveCommandClass {
     }
 
     /**
-     * Sets the controller to send messages to.
-     *
-     * @param controller the controller to set
-     */
-    // public void setController(ZWaveController controller) {
-    // this.controller = controller;
-    // }
-
-    /**
      * Returns the endpoint this command class belongs to.
      *
      * @return the endpoint this command class belongs to.
@@ -151,15 +133,6 @@ public abstract class ZWaveCommandClass {
     public ZWaveEndpoint getEndpoint() {
         return endpoint;
     }
-
-    /**
-     * Sets the endpoint this command class belongs to.
-     *
-     * @param endpoint the endpoint to set
-     */
-    // public void setEndpoint(ZWaveEndpoint endpoint) {
-    // this.endpoint = endpoint;
-    // }
 
     /**
      * Returns the version of the command class.
@@ -253,10 +226,15 @@ public abstract class ZWaveCommandClass {
                     getCommandClass(), getVersion());
         }
 
-        if (commands.get(payload.getCommandClassCommand()) == null) {
-            logger.debug("NODE {}: Received {} V{} unknown command {}", getNode().getNodeId(), getCommandClass(),
-                    getVersion(), payload.getCommandClassCommand());
-            return;
+        ZWaveResponseHandlerMethod commandMethod = commands.get(payload.getCommandClassCommand());
+        if (commandMethod == null) {
+            // Check if there's a default handler
+            commandMethod = commands.get(0);
+            if (commandMethod == null) {
+                logger.debug("NODE {}: Received {} V{} unknown command {}", getNode().getNodeId(), getCommandClass(),
+                        getVersion(), payload.getCommandClassCommand());
+                return;
+            }
         }
 
         logger.debug("NODE {}: Received {} V{} {}", getNode().getNodeId(), getCommandClass(), getVersion(),
@@ -305,13 +283,13 @@ public abstract class ZWaveCommandClass {
                 commandClass = CommandClass.getCommandClass(node.getManufacturer(), node.getDeviceType());
             }
             if (commandClass == null) {
-                logger.warn(String.format("NODE %d: Unknown command class 0x%02x", node.getNodeId(), classId));
+                logger.debug(String.format("NODE %d: Unknown command class 0x%02x", node.getNodeId(), classId));
                 return null;
             }
             Class<? extends ZWaveCommandClass> commandClassClass = commandClass.getCommandClassClass();
 
             if (commandClassClass == null) {
-                logger.warn("NODE {}: Unsupported command class {}", node.getNodeId(), commandClass.toString(),
+                logger.debug("NODE {}: Unsupported command class {}", node.getNodeId(), commandClass.toString(),
                         classId);
                 return null;
             }
