@@ -18,12 +18,19 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 /**
- * ZWave Manufacturer Proprietary command class
+ * <p>
+ * ZWave Manufacturer Proprietary command class.
+ * </p>
+ * <p>
+ * This class delegates to separate implementation classes for each manufacturer proprietary implementation.
+ * </p>
  *
  * @author Chris Jackson
  */
 @XStreamAlias("COMMAND_CLASS_MANUFACTURER_PROPRIETARY")
 public class ZWaveManufacturerProprietaryCommandClass extends ZWaveCommandClass {
+    private ManufacturerProprietaryClass classType;
+
     /**
      * Creates a new instance of the ZWaveManufacturerProprietaryCommandClass class.
      *
@@ -46,14 +53,29 @@ public class ZWaveManufacturerProprietaryCommandClass extends ZWaveCommandClass 
 
     @ZWaveResponseHandler(id = 0, name = "DEFAULT_HANDLER")
     public void handleManufacturerSpecificReport(ZWaveCommandClassPayload payload, int endpoint) {
-
+        // If we don't have an implementation specified then just return
+        if (classType == null) {
+            return;
+        }
     }
 
     @Override
     public boolean setOptions(Map<String, String> options) {
-        if ("false".equals(options.get("getSupported"))) {
+        try {
+            classType = ManufacturerProprietaryClass.valueOf(options.get("className"));
+        } catch (IllegalArgumentException e) {
+            return false;
         }
-
         return true;
     }
+
+    /**
+     * Enumeration of manufacturer proprietary command class names.
+     * Format is manufacturer, device, version.
+     *
+     */
+    private enum ManufacturerProprietaryClass {
+        FIBARO_FGRM222_V1
+    }
+
 }
