@@ -8,7 +8,7 @@
   <thing-type id="aeon_zw056_00_000" listed="false">
     <label>ZW056 Doorbell</label>
     <description><![CDATA[
-Doorbell<br /><h1>Overview</h1><p>Aeon Labs Doorbell is a switch binary device based on Z-wave enhanced slave library V6.51.06.</p> <p>The Doorbell supports playing MP3 music files with a press of this doorbell. It has a 16MB flash memory that can store up to 100 ringtones. The volume can be adjusted manually via short press on the Volume Button, also you can switch the doorbell sound to the next via long press on the Volume Button. You may change/update your doorbell ringtone at any point in time you want by connecting your Doorbell to your PC to update the sound track on your Doorbell’s flash memory. </p> <br /><h2>Inclusion Information</h2><p>1. Install Doorbell, and plug it into the socket of AC Power.<br />2. Let the primary controller into inclusion mode (If you don’t know how to do this, please refer to its manual).<br />3. Press the Action Button.<br />4. If the inclusion is failed, please repeat the process from step 2. </p> <br /><h2>Exclusion Information</h2><p>1. Install Doorbell, and plug it into the socket of AC Power.<br />2. Let the primary controller into exclusion mode (If you don’t know how to do this, refer to its manual).<br />3. Press the Action Button.<br />4. If the remove is failed, please repeat the process from step 2.</p> <p>Note: If Doorbell is removed from Z-wave network, it will be reset to factory default. </p>
+Doorbell<br /><h1>Overview</h1><p>Aeon Labs Doorbell is a switch binary device based on Z-wave enhanced slave library V6.51.06.</p> <p>The Doorbell supports playing MP3 music files with a press of this doorbell. It has a 16MB flash memory that can store up to 100 ringtones. The volume can be adjusted manually via short press on the Volume Button, also you can switch the doorbell sound to the next via long press on the Volume Button. You may change/update your doorbell ringtone at any point in time you want by connecting your Doorbell to your PC to update the sound track on your Doorbell’s flash memory. </p> <br /><h2>Inclusion Information</h2><p>1. Install Doorbell, and plug it into the socket of AC Power.<br />2. Let the primary controller into inclusion mode (If you don’t know how to do this, please refer to its manual).<br />3. Press the Action Button.<br />4. If the inclusion is failed, please repeat the process from step 2. </p> <br /><h2>Exclusion Information</h2><p>1. Install Doorbell, and plug it into the socket of AC Power.<br />2. Let the primary controller into exclusion mode (If you don’t know how to do this, refer to its manual).<br />3. Press the Action Button.<br />4. If the remove is failed, please repeat the process from step 2.</p> <p>Note: If Doorbell is removed from Z-wave network, it will be reset to factory default. </p>
     ]]></description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -44,7 +44,7 @@ Doorbell<br /><h1>Overview</h1><p>Aeon Labs Doorbell is a switch binary device b
                  min="0" max="100">
         <label>2: Repetitions of ringtone</label>
         <description><![CDATA[
-Set the repetitions for playing doorbell ringtone. <br /><h1>Overview</h1><p>Value=1 to 255, the range of repetition is 1 to 100.   Value =0, ignore. Note: If the time of playing doorbell ringtone is more than 20s, the volume of ringtone will reduce to silence no matter how many repetitions of doorbell ringtone are set. </p>
+Set the repetitions for playing doorbell ringtone. <br /><h1>Overview</h1><p>Value=1 to 255, the range of repetition is 1 to 100.   Value =0, ignore. Note: If the time of playing doorbell ringtone is more than 20s, the volume of ringtone will reduce to silence no matter how many repetitions of doorbell ringtone are set. </p>
         ]]></description>
         <default>2</default>
       </parameter>
@@ -66,12 +66,12 @@ Set the repetitions for playing doorbell ringtone. <br /><h1>Overview</h1><p>Val
       <parameter name="config_10_1" type="integer" groupName="configuration">
         <label>10: Define button- and button+ action</label>
         <description><![CDATA[
-Define functions of “Button ‐”  and “Button+”.<br /><h1>Overview</h1><p>0:  button- is previous, button+ is next</p> <p>1:  button- is next, button+ is previous</p>
+Define functions of “Button ‐”  and “Button+”.<br /><h1>Overview</h1><p>0:  button- is previous, button+ is next</p> <p>1:  button- is next, button+ is previous</p>
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">“Button ‐” is previous, “Button+” is next</option>
-          <option value="1">“Button ‐” is next, “Button+” is previous</option>
+          <option value="0">“Button ‐” is previous, “Button+” is next</option>
+          <option value="1">“Button ‐” is next, “Button+” is previous</option>
         </options>
       </parameter>
 
@@ -90,7 +90,7 @@ Define short/long button presses<br /><h1>Overview</h1><p>0: short pressing chan
       <parameter name="config_42_1" type="integer" groupName="configuration">
         <label>42: Get wireless button battery status</label>
         <description><![CDATA[
-Alert for low battery<br /><h1>Overview</h1><p>0x00:  normal battery level</p> <p>0xff:  low battery level</p> <p>set 0x00:  cancel low battery alert</p>
+Alert for low battery<br /><h1>Overview</h1><p>0x00:  normal battery level</p> <p>0xff:  low battery level</p> <p>set 0x00:  cancel low battery alert</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -138,7 +138,7 @@ Starts wireless button pairing mode<br /><h1>Overview</h1><p>Pair the Wireless B
                  min="0" max="1">
         <label>252: Lock configuration</label>
         <description><![CDATA[
-Lock configuration<br /><h1>Overview</h1><p>0:  config not locked</p> <p>1:  config locked</p>
+Lock configuration<br /><h1>Overview</h1><p>0:  config not locked</p> <p>1:  config locked</p>
         ]]></description>
         <default>0</default>
       </parameter>

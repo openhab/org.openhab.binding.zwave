@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="merten_506119_00_000" listed="false">
+    <label>506119 Battery Powered Wall Controller</label>
+    <description>Battery Powered Wall Controller</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Merten</property>
+      <property name="modelId">506119</property>
+      <property name="manufacturerId">007A</property>
+      <property name="manufacturerRef">0001:0002</property>
+      <property name="dbReference">60</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_0_1" type="integer" groupName="configuration"
+                 min="0" max="127">
+        <label>0: Switching/dimming/shutters</label>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_4_1" type="integer" groupName="configuration"
+                 min="0" max="127">
+        <label>4: Switching single-surface</label>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_44_1" type="integer" groupName="configuration"
+                 min="0" max="127">
+        <label>44: Doorbell function</label>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_52_1" type="integer" groupName="configuration"
+                 min="0" max="127">
+        <label>52: LOWER shutter as long as button is pressed</label>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_54_1" type="integer" groupName="configuration"
+                 min="0" max="127">
+        <label>54: Move shutter single-surface</label>
+        <description>Direction of movement changes after each switching process</description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_55_1" type="integer" groupName="configuration"
+                 min="0" max="127">
+        <label>55: RAISE shutter as long as button is pressed</label>
+        <default>0</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Button upper part</label>
+        <multipleLimit>12</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Button lower part</label>
+        <multipleLimit>12</multipleLimit>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>

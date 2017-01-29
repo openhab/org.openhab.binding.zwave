@@ -58,7 +58,7 @@ NotificationReport/BinaryReport<br /><h1>Overview</h1><p>Customer function switc
                  min="0" max="4294967295">
         <label>29: Disable Alarm</label>
         <description><![CDATA[
-Disable the alarm function. 1: Disable Alarm, 0: Enable Alarm. Caution: After the power up, this configuration is always 0.<br /><h1>Overview</h1><p>Disable the alarm  function. 1: Disable  Alarm, 0: Enable Alarm.  Caution: After the power  up, this configuration is  always 0.</p>
+Disable the alarm function.<br /><h1>Overview</h1><p>Disable the alarm  function. 1: Disable  Alarm, 0: Enable Alarm.  Caution: After the power  up, this configuration is  always 0.</p>
         ]]></description>
         <default>0</default>
       </parameter>
