@@ -143,7 +143,7 @@ This parameter defines maximum current the plug can provide to load that be conn
       <parameter name="config_9_2" type="integer" groupName="configuration"
                  min="1" max="65535">
         <label>9: Time switch Period</label>
-        <description>This parameter defines the time after the plug is switched off. If Parameter 9# is set to ‘1’, and relay is turn ON, the relay will be turn OFF after delay this parameter.</description>
+        <description>This parameter defines the time after the plug is switched off. If Parameter 8# is set to ‘1’, and relay is turn ON, the relay will be turn OFF after delay this parameter.</description>
         <default>150</default>
       </parameter>
 
