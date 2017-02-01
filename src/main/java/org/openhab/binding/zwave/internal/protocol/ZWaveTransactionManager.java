@@ -407,30 +407,31 @@ public class ZWaveTransactionManager {
                             List<ZWaveCommandClassPayload> commands = node
                                     .processCommand(new ZWaveCommandClassPayload(incomingMessage));
                             if (commands != null) {
-                                logger.warn("NODE {}: Commands processed {}.", nodeId, commands.size());
+                                logger.debug("NODE {}: Commands processed {}.", nodeId, commands.size());
 
                                 for (ZWaveCommandClassPayload command : commands) {
-                                    logger.warn("NODE {}: Checking command {}.", nodeId, command);
+                                    logger.debug("NODE {}: Checking command {}.", nodeId, command);
                                     // Correlate transactions
                                     List<ZWaveTransaction> completed = new ArrayList<ZWaveTransaction>();
 
                                     synchronized (sendQueue) {
                                         for (ZWaveTransaction transaction : outstandingTransactions) {
-                                            logger.warn("NODE {}: Checking transaction {}  {}.", nodeId,
+                                            logger.debug("NODE {}: Checking transaction {}  {}.", nodeId,
                                                     transaction.getTransactionId(),
                                                     transaction.getExpectedReplyClass());
-                                            logger.warn("NODE {}: Checking transaction : state >> {}", nodeId,
+                                            logger.debug("NODE {}: Checking transaction : state >> {}", nodeId,
                                                     transaction.getTransactionState());
-                                            logger.warn("NODE {}: Checking transaction : class >> {} == {}.", nodeId,
+                                            logger.debug("NODE {}: Checking transaction : class >> {} == {}.", nodeId,
                                                     command.getCommandClassId(),
                                                     transaction.getExpectedCommandClass() == null ? null
                                                             : transaction.getExpectedCommandClass().getKey());
-                                            logger.warn("NODE {}: Checking transaction : commd >> {} == {}.", nodeId,
+                                            logger.debug("NODE {}: Checking transaction : commd >> {} == {}.", nodeId,
                                                     command.getCommandClassCommand(),
                                                     transaction.getExpectedCommandClassCommand());
 
                                             if (transaction.getTransactionState() != TransactionState.WAIT_DATA) {
-                                                logger.warn("NODE {}: Ignoring transaction since not waiting for data.",
+                                                logger.debug(
+                                                        "NODE {}: Ignoring transaction since not waiting for data.",
                                                         nodeId);
                                                 continue;
                                             }
@@ -442,7 +443,7 @@ public class ZWaveTransactionManager {
                                                             .getExpectedCommandClass().getKey()
                                                     && command.getCommandClassCommand() == transaction
                                                             .getExpectedCommandClassCommand()) {
-                                                logger.warn("NODE {}: Command verified {}.", nodeId, command);
+                                                logger.debug("NODE {}: Command verified {}.", nodeId, command);
 
                                                 transaction.transactionAdvance(incomingMessage);
 
@@ -466,14 +467,14 @@ public class ZWaveTransactionManager {
                                                             .getLinkedTransaction());
                                                 }
                                             } else {
-                                                logger.warn("NODE {}: Command NOT verified {}.", nodeId, command);
+                                                logger.debug("NODE {}: Command NOT verified {}.", nodeId, command);
                                             }
                                         }
 
-                                        logger.warn("Transaction completed - outstandingTransactions {}",
+                                        logger.debug("Transaction completed - outstandingTransactions {}",
                                                 outstandingTransactions.size());
                                         outstandingTransactions.removeAll(completed);
-                                        logger.warn("Transaction completed - outstandingTransactions {}",
+                                        logger.debug("Transaction completed - outstandingTransactions {}",
                                                 outstandingTransactions.size());
                                     }
                                 }
@@ -596,7 +597,7 @@ public class ZWaveTransactionManager {
                             // enqueue(currentTransaction); TODO: Handle retries...
                             // }
                             // } else {
-                            // logger.warn("NODE {}: Retry count exceeded. Discarding message: {}",
+                            // logger.debug("NODE {}: Retry count exceeded. Discarding message: {}",
                             // currentTransaction.getNodeId(), currentTransaction.toString());
                             // Notify our users...
                             transactionCompleted = true;

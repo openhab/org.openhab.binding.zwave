@@ -23,7 +23,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  *
  */
-@XStreamAlias("COMMAND_CLASS_THERMOSTAT_SETPOINT")
+@XStreamAlias("COMMAND_CLASS_THERMOSTAT_SETBACK")
 public class ZWaveThermostatSetbackCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
@@ -45,6 +45,6 @@ public class ZWaveThermostatSetbackCommandClass extends ZWaveCommandClass {
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT;
+        return CommandClass.COMMAND_CLASS_THERMOSTAT_SETBACK;
     }
 }
