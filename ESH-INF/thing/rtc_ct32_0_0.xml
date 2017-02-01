@@ -172,7 +172,7 @@
       <property name="vendor">Radio Thermostat Company of America (RTC)</property>
       <property name="modelId">CT32</property>
       <property name="manufacturerId">0098</property>
-      <property name="manufacturerRef">2002:0100</property>
+      <property name="manufacturerRef">2002:0100,2002:0102</property>
       <property name="dbReference">99</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -228,9 +228,9 @@ Enables or Disables the Aux / Emergency Heat.<br /><h1>Overview</h1><p>The Auxil
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
-        <label>7: Sets the swing threshold before turning on / off HVAC.</label>
+        <label>7: Swing Temperature</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>The Thermostat Swing Temperature configuration command sets swing temperature on the thermostat. The swing temperature is applied to the setpoint to determine when the thermostat will turn on the HVAC system.</p>
+Sets the swing threshold before turning on / off HVAC.<br /><h1>Overview</h1><p>The Thermostat Swing Temperature configuration command sets swing temperature on the thermostat. The swing temperature is applied to the setpoint to determine when the thermostat will turn on the HVAC system.</p>
         ]]></description>
         <default>2</default>
         <options>
