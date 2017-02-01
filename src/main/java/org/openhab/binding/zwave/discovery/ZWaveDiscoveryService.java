@@ -8,6 +8,7 @@
  */
 package org.openhab.binding.zwave.discovery;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -189,7 +190,7 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
         }
 
         // Add some device properties that might be useful for the system to know
-        properties.put(ZWaveBindingConstants.PROPERTY_NODEID, Integer.toString(node.getNodeId()));
+        properties.put(ZWaveBindingConstants.CONFIGURATION_NODEID, new BigDecimal(node.getNodeId()));
 
         // Don't add the device information if we don't know it yet
         // This should also prevent it from being overwritten if it was added previously

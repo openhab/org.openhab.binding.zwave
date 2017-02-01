@@ -8,11 +8,9 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +22,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  *
  * @author Chris Jackson
  */
-@XStreamAlias("climateControlScheduleCommandClass")
+@XStreamAlias("COMMAND_CLASS_CLIMATE_CONTROL_SCHEDULE")
 public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
@@ -46,25 +44,6 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.CLIMATE_CONTROL_SCHEDULE;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received CLIMATE_CONTROL_SCHEDULE command V{}", this.getNode().getNodeId(),
-                this.getVersion());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            default:
-                logger.warn(String.format("NODE %d: Unsupported Command %d for command class %s (0x%02X).",
-                        this.getNode().getNodeId(), command, this.getCommandClass().getLabel(),
-                        this.getCommandClass().getKey()));
-        }
+        return CommandClass.COMMAND_CLASS_CLIMATE_CONTROL_SCHEDULE;
     }
 }

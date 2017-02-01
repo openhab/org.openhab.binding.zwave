@@ -14,43 +14,43 @@
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
         </properties>
       </channel>
       <channel id="time_offset" typeId="time_offset">
         <label>Clock Time Offset</label>
         <properties>
-          <property name="binding:*:DecimalType">TIME_PARAMETERS</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_TIME_PARAMETERS</property>
         </properties>
       </channel>
       <channel id="switch_binary1" typeId="switch_binary">
         <label>Switch 1</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY:1,BASIC:1</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1,COMMAND_CLASS_BASIC:1</property>
         </properties>
       </channel>
       <channel id="switch_binary2" typeId="switch_binary">
         <label>Switch 2</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY:2,BASIC:2</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:2,COMMAND_CLASS_BASIC:2</property>
         </properties>
       </channel>
       <channel id="switch_binary3" typeId="switch_binary">
         <label>Switch 3</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY:3,BASIC:3</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:3,COMMAND_CLASS_BASIC:3</property>
         </properties>
       </channel>
       <channel id="switch_binary4" typeId="switch_binary">
         <label>Switch 4</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY:4,BASIC:4</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:4,COMMAND_CLASS_BASIC:4</property>
         </properties>
       </channel>
       <channel id="switch_binary5" typeId="switch_binary">
         <label>Switch 5</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY:5,BASIC:5</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:5,COMMAND_CLASS_BASIC:5</property>
         </properties>
       </channel>
     </channels>

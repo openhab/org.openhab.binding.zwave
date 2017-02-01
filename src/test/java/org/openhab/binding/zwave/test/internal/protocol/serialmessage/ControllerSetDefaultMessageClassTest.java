@@ -8,12 +8,11 @@
  */
 package org.openhab.binding.zwave.test.internal.protocol.serialmessage;
 
-import static org.junit.Assert.assertTrue;
-
-import java.util.Arrays;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ControllerSetDefaultMessageClass;
 
 /**
@@ -26,13 +25,11 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.ControllerSetDe
 public class ControllerSetDefaultMessageClassTest {
     @Test
     public void doRequest() {
-        byte[] expectedResponse = { 1, 3, 0, 66, -66 };
-
-        SerialMessage msg;
+        ZWaveSerialPayload msg;
         ControllerSetDefaultMessageClass handler = new ControllerSetDefaultMessageClass();
 
         msg = handler.doRequest();
-        msg.setCallbackId(1);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
+        assertEquals(msg.getSerialMessageClass(), SerialMessageClass.SetDefault);
+        assertNull(msg.getPayloadBuffer());
     }
 }

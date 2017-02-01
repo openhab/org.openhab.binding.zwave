@@ -11,10 +11,10 @@
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Sensor</label>
+      <channel id="barrier_position" typeId="barrier_position">
+        <label>Barrier Position</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY,BASIC</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_BARRIER_OPERATOR</property>
         </properties>
       </channel>
     </channels>

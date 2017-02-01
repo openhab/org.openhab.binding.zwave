@@ -31,7 +31,7 @@ public class GetSucNodeIdMessageClassTest {
         SerialMessage msg;
         GetSucNodeIdMessageClass handler = new GetSucNodeIdMessageClass();
 
-        msg = handler.doRequest();
+        msg = handler.doRequest().getSerialMessage();
         msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
     }

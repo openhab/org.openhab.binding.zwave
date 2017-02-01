@@ -10,37 +10,35 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * This class processes a serial message from the zwave controller
- * 
+ *
  * @author Chris Jackson
  */
 public class AssignSucReturnRouteMessageClass extends ZWaveCommandProcessor {
     private static final Logger logger = LoggerFactory.getLogger(AssignSucReturnRouteMessageClass.class);
 
-    public SerialMessage doRequest(int nodeId, int callbackId) {
+    public ZWaveSerialPayload doRequest(int nodeId) {
         logger.debug("NODE {}: Assigning SUC return route", nodeId);
 
-        // Queue the request
-        SerialMessage newMessage = new SerialMessage(SerialMessageClass.AssignSucReturnRoute, SerialMessageType.Request,
-                SerialMessageClass.AssignSucReturnRoute, SerialMessagePriority.High);
-        byte[] newPayload = { (byte) nodeId, (byte) callbackId };
-        newMessage.setMessagePayload(newPayload);
-        return newMessage;
+        // Create the request
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.AssignSucReturnRoute).withResponseNodeId(nodeId)
+                .withPayload(nodeId).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
-        int nodeId = lastSentMessage.getMessagePayloadByte(0);
+        int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: Got AssignSucReturnRoute response.", nodeId);
 
@@ -50,22 +48,23 @@ public class AssignSucReturnRouteMessageClass extends ZWaveCommandProcessor {
             logger.error("NODE {}: AssignSucReturnRoute command failed.", nodeId);
             zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.AssignSucReturnRoute, nodeId,
                     ZWaveNetworkEvent.State.Failure));
+            transaction.setTransactionCanceled();
         }
 
-        checkTransactionComplete(lastSentMessage, incomingMessage);
         return true;
     }
 
     @Override
-    public boolean handleRequest(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
-        int nodeId = lastSentMessage.getMessagePayloadByte(0);
+        int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: Got AssignSucReturnRoute request.", nodeId);
 
+        transaction.setTransactionComplete();
+
         if (incomingMessage.getMessagePayloadByte(1) != 0x00) {
-            logger.error("NODE {}: Assign SUC return routes failed with error 0x{}.", nodeId,
-                    Integer.toHexString(incomingMessage.getMessagePayloadByte(1)));
+            logger.error("NODE {}: Assign SUC return routes failed.", nodeId);
             zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.AssignSucReturnRoute, nodeId,
                     ZWaveNetworkEvent.State.Failure));
 

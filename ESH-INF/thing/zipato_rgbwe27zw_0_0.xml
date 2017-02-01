@@ -14,23 +14,23 @@
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL,BASIC</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="color_color" typeId="color_color">
         <label>Color Control</label>
         <properties>
-          <property name="binding:*:HSBType">COLOR;colorMode=RGB</property>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC;</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL;</property>
+          <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR;colorMode=RGB</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC;</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL;</property>
         </properties>
       </channel>
       <channel id="color_temperature" typeId="color_temperature">
         <label>Color Temperature</label>
         <properties>
-          <property name="binding:*:PercentType">COLOR;colorMode=DIFF_WHITE</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL;</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_COLOR;;colorMode=DIFF_WHITE</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL;</property>
         </properties>
       </channel>
     </channels>

@@ -16,14 +16,14 @@ Water Shutoff Valve<br /><h1>Overview</h1><p>This valve clamps onto your existin
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
     </channels>

@@ -16,67 +16,67 @@ Double Switch 2<br /><h1>Overview</h1><p>FIBARO Switch 2 is designed to be insta
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
         <label>Electric meter (kWh)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER;type=E_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
         </properties>
       </channel>
       <channel id="meter_watts" typeId="meter_watts">
         <label>Electric meter (watts)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER;type=E_W</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
         <label>Scene Number</label>
         <properties>
-          <property name="binding:*:DecimalType">CENTRAL_SCENE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
         </properties>
       </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
         </properties>
       </channel>
       <channel id="switch_binary1" typeId="switch_binary">
         <label>Switch 1</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY:1,BASIC:1</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1,COMMAND_CLASS_BASIC:1</property>
         </properties>
       </channel>
       <channel id="meter_kwh1" typeId="meter_kwh">
         <label>Electric meter (kWh) 1</label>
         <properties>
-          <property name="binding:*:DecimalType">METER:1;type=E_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_KWh</property>
         </properties>
       </channel>
       <channel id="meter_watts1" typeId="meter_watts">
         <label>Electric meter (watts) 1</label>
         <properties>
-          <property name="binding:*:DecimalType">METER:1;type=E_W</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_W</property>
         </properties>
       </channel>
       <channel id="switch_binary2" typeId="switch_binary">
         <label>Switch 2</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY:2,BASIC:2</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:2,COMMAND_CLASS_BASIC:2</property>
         </properties>
       </channel>
       <channel id="meter_kwh2" typeId="meter_kwh">
         <label>Electric meter (kWh) 2</label>
         <properties>
-          <property name="binding:*:DecimalType">METER:2;type=E_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_KWh</property>
         </properties>
       </channel>
       <channel id="meter_watts2" typeId="meter_watts">
         <label>Electric meter (watts) 2</label>
         <properties>
-          <property name="binding:*:DecimalType">METER:2;type=E_W</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_W</property>
         </properties>
       </channel>
     </channels>
@@ -86,7 +86,7 @@ Double Switch 2<br /><h1>Overview</h1><p>FIBARO Switch 2 is designed to be insta
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGS223</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0203:1000</property>
+      <property name="manufacturerRef">0203:1000,0203:3000</property>
       <property name="dbReference">416</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -243,7 +243,8 @@ Associations in Z-Wave network security mode<br /><h1>Overview</h1><p>This param
         </options>
       </parameter>
 
-      <parameter name="config_28_1" type="integer" groupName="configuration">
+      <parameter name="config_28_1" type="integer" groupName="configuration"
+                 min="0" max="15">
         <label>28: S1 switch - scenes sent</label>
         <description><![CDATA[
 S1 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which actions result in sending scene IDs assigned to them</p>
@@ -256,9 +257,11 @@ S1 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which
           <option value="4">Key pressed 3 times</option>
           <option value="8">Key Hold Down and Key Released</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_29_1" type="integer" groupName="configuration">
+      <parameter name="config_29_1" type="integer" groupName="configuration"
+                 min="0" max="15">
         <label>29: S2 switch - scenes sent</label>
         <description><![CDATA[
 S2 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which actions result in sending scene IDs assigned to them.</p>
@@ -271,9 +274,11 @@ S2 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which
           <option value="4">Key pressed 3 times</option>
           <option value="8">Key Hold Down and Key Released</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_30_1" type="integer" groupName="configuration">
+      <parameter name="config_30_1" type="integer" groupName="configuration"
+                 min="0" max="15">
         <label>30: S1 assocs. sent to 2nd and 3rd group</label>
         <description><![CDATA[
 S1 switch - associations sent to 2nd and 3rd association groups<br /><h1>Overview</h1><p>This parameter determines which actions are ignored when sending commands to devices associated in 2nd and 3rd association group. All actions are active by default.</p>
@@ -286,6 +291,7 @@ S1 switch - associations sent to 2nd and 3rd association groups<br /><h1>Overvie
           <option value="4">ignore holding and releasing the switch</option>
           <option value="8">ignore double click of the switch</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_31_2" type="integer" groupName="configuration"
@@ -313,7 +319,8 @@ S1 switch - Double Click value sent to 2nd and 3rd association groups<br /><h1>O
         <default>99</default>
       </parameter>
 
-      <parameter name="config_35_1" type="integer" groupName="configuration">
+      <parameter name="config_35_1" type="integer" groupName="configuration"
+                 min="0" max="15">
         <label>35: S2 assocs. sent to 4th and 5th group</label>
         <description><![CDATA[
 S2 switch - associations sent to 4th and 5th association groups<br /><h1>Overview</h1><p>This parameter determines which actions result in sending commands to devices associated in 4th and 5th association group. All actions are active by default.</p>
@@ -326,6 +333,7 @@ S2 switch - associations sent to 4th and 5th association groups<br /><h1>Overvie
           <option value="4">ignore holding and releasing the switch</option>
           <option value="8">ignore double click of the switch</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_36_2" type="integer" groupName="configuration"
@@ -333,6 +341,14 @@ S2 switch - associations sent to 4th and 5th association groups<br /><h1>Overvie
         <label>36: S2 ON val sent to 4th and 5th groups</label>
         <description>S2 switch - Switch ON value sent to 4th and 5th association groups</description>
         <default>255</default>
+      </parameter>
+
+      <parameter name="config_36_2" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>36: S2 ON val sent to 4th and 5th groups</label>
+        <description>S2 switch - Switch ON value sent to 4th and 5th association groups</description>
+        <default>255</default>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_37_2" type="integer" groupName="configuration"

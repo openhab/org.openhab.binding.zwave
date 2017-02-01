@@ -18,7 +18,6 @@ import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass;
@@ -26,6 +25,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmComman
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.ZWaveAlarmValueEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,31 +52,34 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
      * {@inheritDoc}
      */
     @Override
-    public List<SerialMessage> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
+    public List<ZWaveCommandClassTransactionPayload> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveAlarmCommandClass commandClass = (ZWaveAlarmCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.ALARM, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_ALARM, channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
 
         String alarmType = channel.getArguments().get("type");
-        logger.debug("NODE {}: Generating poll message for {}, endpoint {}, alarm {}", node.getNodeId(),
-                commandClass.getCommandClass().getLabel(), channel.getEndpoint(), alarmType);
+        Integer alarmEvent = (channel.getArguments().get("event") == null) ? null
+                : Integer.parseInt(channel.getArguments().get("event"));
+        logger.debug("NODE {}: Generating poll message for {}, endpoint {}, alarm {}, event {}", node.getNodeId(),
+                commandClass.getCommandClass(), channel.getEndpoint(), alarmType, alarmEvent);
 
-        SerialMessage serialMessage;
+        ZWaveCommandClassTransactionPayload transaction;
         if (alarmType != null) {
-            serialMessage = node.encapsulate(commandClass.getMessage(AlarmType.valueOf(alarmType)), commandClass,
-                    channel.getEndpoint());
+            transaction = commandClass.getMessage(AlarmType.valueOf(alarmType), alarmEvent);
         } else {
-            serialMessage = node.encapsulate(commandClass.getValueMessage(), commandClass, channel.getEndpoint());
+            transaction = commandClass.getValueMessage();
         }
 
-        if (serialMessage == null) {
+        if (transaction == null) {
             return null;
         }
 
-        List<SerialMessage> response = new ArrayList<SerialMessage>();
-        response.add(serialMessage);
+        transaction = node.encapsulate(transaction, commandClass, channel.getEndpoint());
+
+        List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>();
+        response.add(transaction);
         return response;
     }
 
@@ -86,6 +89,8 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
     @Override
     public State handleEvent(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
         String alarmType = channel.getArguments().get("type");
+        Integer alarmEvent = (channel.getArguments().get("event") == null) ? null
+                : Integer.parseInt(channel.getArguments().get("event"));
 
         ZWaveAlarmValueEvent eventAlarm = (ZWaveAlarmValueEvent) event;
         logger.debug("Alarm converter processing {}", eventAlarm.getReportType());
@@ -93,7 +98,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
             case ALARM:
                 return handleAlarmReport(channel, eventAlarm, alarmType);
             case NOTIFICATION:
-                return handleNotificationReport(channel, eventAlarm, alarmType);
+                return handleNotificationReport(channel, eventAlarm, alarmType, alarmEvent);
         }
 
         return null;
@@ -118,14 +123,14 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                 state = value == 0 ? OpenClosedType.CLOSED : OpenClosedType.OPEN;
                 break;
             default:
-                logger.warn("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());
+                logger.debug("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());
                 break;
         }
         return state;
     }
 
-    private State handleNotificationReport(ZWaveThingChannel channel, ZWaveAlarmValueEvent eventAlarm,
-            String alarmType) {
+    private State handleNotificationReport(ZWaveThingChannel channel, ZWaveAlarmValueEvent eventAlarm, String alarmType,
+            Integer alarmEvent) {
 
         // Don't trigger event if this item is bound to another event type
         if (alarmType != null && AlarmType.valueOf(alarmType) != eventAlarm.getAlarmType()) {
@@ -135,6 +140,17 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         // Handle event 0 as 'clear the event'
         int event = eventAlarm.getAlarmEvent();// == 0 ? 0 : eventAlarm.getAlarmStatus();
         logger.debug("Alarm converter NOTIFICATION event is {}, type {}", event, channel.getDataType());
+
+        // We ignore event 0xFE as that indicates "no further events",
+        // and event 0xFF which indicates that unsolicited events are enabled
+        if (event == 0xFE || event == 0xFF) {
+            return null;
+        }
+
+        // Don't trigger event if there is no event match. Note that 0 is always acceptable
+        if (alarmEvent != null && event != 0 && alarmEvent != event) {
+            return null;
+        }
 
         // TODO: Handle these event to state specific conversions in a table.
         State state = null;
@@ -164,7 +180,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                 state = new DecimalType(eventAlarm.getAlarmEvent());
                 break;
             default:
-                logger.warn("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());
+                logger.debug("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());
                 break;
         }
         return state;
@@ -174,9 +190,10 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
      * {@inheritDoc}
      */
     @Override
-    public List<SerialMessage> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
+    public List<ZWaveCommandClassTransactionPayload> receiveCommand(ZWaveThingChannel channel, ZWaveNode node,
+            Command command) {
         ZWaveAlarmCommandClass commandClass = (ZWaveAlarmCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.ALARM, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_ALARM, channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
@@ -196,18 +213,12 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         AlarmType notificationType = AlarmType.valueOf(splits[0]);
         int event = Integer.valueOf(splits[1]);
 
-        SerialMessage serialMessage = node.encapsulate(
+        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(
                 commandClass.getNotificationReportMessage(notificationType, event), commandClass,
                 channel.getEndpoint());
 
-        if (serialMessage == null) {
-            logger.warn("NODE {}: Generating message failed for command class = {}, endpoint = {}", node.getNodeId(),
-                    commandClass.getCommandClass().getLabel(), channel.getEndpoint());
-            return null;
-        }
-
-        List<SerialMessage> messages = new ArrayList<SerialMessage>();
-        messages.add(serialMessage);
-        return messages;
+        List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>();
+        response.add(transaction);
+        return response;
     }
 }

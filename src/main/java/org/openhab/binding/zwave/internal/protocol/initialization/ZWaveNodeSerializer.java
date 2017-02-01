@@ -99,7 +99,8 @@ public class ZWaveNodeSerializer {
                 return;
             }
 
-            File file = new File(this.folderName, String.format("node%d.xml", node.getNodeId()));
+            File file = new File(this.folderName,
+                    String.format("network_%08x__node_%d.xml", node.getHomeId(), node.getNodeId()));
             BufferedWriter writer = null;
 
             logger.debug("NODE {}: Serializing to file {}", node.getNodeId(), file.getPath());
@@ -128,9 +129,9 @@ public class ZWaveNodeSerializer {
      *            the number of the node to deserialize
      * @return returns the Node or null in case Serialization failed.
      */
-    public ZWaveNode DeserializeNode(int nodeId) {
+    public ZWaveNode DeserializeNode(int homeId, int nodeId) {
         synchronized (stream) {
-            File file = new File(this.folderName, String.format("node%d.xml", nodeId));
+            File file = new File(folderName, String.format("network_%08x__node_%d.xml", homeId, nodeId));
             BufferedReader reader = null;
 
             logger.debug("NODE {}: Serializing from file {}", nodeId, file.getPath());
@@ -163,9 +164,9 @@ public class ZWaveNodeSerializer {
      * @param nodeId The node ID to remove
      * @return true if the file was deleted
      */
-    public boolean DeleteNode(int nodeId) {
+    public boolean DeleteNode(int homeId, int nodeId) {
         synchronized (stream) {
-            File file = new File(this.folderName, String.format("node%d.xml", nodeId));
+            File file = new File(folderName, String.format("network_%08x__node_%d.xml", homeId, nodeId));
 
             return file.delete();
         }

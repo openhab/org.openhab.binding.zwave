@@ -33,7 +33,7 @@ public class ZWaveClockCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void reportTime() {
-        byte[] packetData = { 0x01, 0x0F, 0x00, 0x04, 0x00, 0x07, 0x07, (byte) 0x81, 0x06, -127, 4, 127, 0, -119 };
+        byte[] packetData = { 0x01, 0x0F, 0x00, 0x04, 0x00, 0x07, 0x06, (byte) 0x81, 0x06, -127, 4, 127, 0, -120 };
 
         List<ZWaveEvent> events = processCommandClassMessage(packetData);
 
@@ -41,7 +41,7 @@ public class ZWaveClockCommandClassTest extends ZWaveCommandClassTest {
 
         ZWaveCommandClassValueEvent event = (ZWaveCommandClassValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.CLOCK);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_CLOCK);
         assertEquals(event.getEndpoint(), 0);
         Date date = (Date) event.getValue();
         assertNotNull(date);
@@ -56,14 +56,14 @@ public class ZWaveClockCommandClassTest extends ZWaveCommandClassTest {
     @Test
     // @Ignore
     public void setTime() {
-        ZWaveClockCommandClass cls = (ZWaveClockCommandClass) getCommandClass(CommandClass.CLOCK);
+        ZWaveClockCommandClass cls = (ZWaveClockCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_CLOCK);
 
         byte[] expectedResponse = { 99, 4, -127, 4, -128, 0 };
 
         Calendar utc = Calendar.getInstance();
         utc.setTimeZone(TimeZone.getTimeZone("UTC"));
         utc.setTime(new Date(0));
-        SerialMessage msg = cls.getSetMessage(utc);
+        SerialMessage msg = cls.getSetMessage(utc).getSerialMessage();
 
         assertTrue(Arrays.equals(msg.getMessagePayload(), expectedResponse));
 

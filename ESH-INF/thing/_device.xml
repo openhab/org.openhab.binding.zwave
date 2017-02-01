@@ -21,6 +21,16 @@
 		  times to allow the discovery phase to complete. This must be performed with the device close to the controller.  
 		  </ul> 
 		]]></description>
+
+        <!-- CONFIGURATION DESCRIPTIONS -->
+        <config-description>
+
+            <!-- PARAMETER DEFINITIONS -->
+            <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+                <label>Node ID</label>
+            </parameter>
+        </config-description>
+
 	</thing-type>
 
 </thing:thing-descriptions>

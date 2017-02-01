@@ -36,7 +36,9 @@ public class ZWaveAssociationGroup {
     private String name;
 
     @XStreamConverter(HexToIntegerConverter.class)
-    private Integer profile;
+    private Integer profile1;
+    @XStreamConverter(HexToIntegerConverter.class)
+    private Integer profile2;
     private Set<CommandClass> commands;
 
     List<ZWaveAssociation> associations = new ArrayList<ZWaveAssociation>();
@@ -47,7 +49,7 @@ public class ZWaveAssociationGroup {
 
     /**
      * Return the group index
-     * 
+     *
      * @return group index
      */
     public int getIndex() {
@@ -56,7 +58,7 @@ public class ZWaveAssociationGroup {
 
     /**
      * Set the group index
-     * 
+     *
      * @param newIndex the group index
      */
     public void setIndex(int newIndex) {
@@ -65,7 +67,7 @@ public class ZWaveAssociationGroup {
 
     /**
      * Adds an association node
-     * 
+     *
      * @param node
      */
     public void addAssociation(int node) {
@@ -74,7 +76,7 @@ public class ZWaveAssociationGroup {
 
     /**
      * Adds an association node and endpoint
-     * 
+     *
      * @param node
      * @param endpoint
      */
@@ -91,7 +93,7 @@ public class ZWaveAssociationGroup {
 
     /**
      * Removes an association node
-     * 
+     *
      * @param node
      * @return
      */
@@ -101,7 +103,7 @@ public class ZWaveAssociationGroup {
 
     /**
      * Removes an association node and endpoint
-     * 
+     *
      * @param node
      * @param endpoint
      * @return
@@ -121,7 +123,7 @@ public class ZWaveAssociationGroup {
 
     /**
      * Tests if a node is associated to this group
-     * 
+     *
      * @param node
      * @return
      */
@@ -131,7 +133,7 @@ public class ZWaveAssociationGroup {
 
     /**
      * Tests if a node and endpoint are associated to this group
-     * 
+     *
      * @param node
      * @param endpoint
      * @return
@@ -150,7 +152,7 @@ public class ZWaveAssociationGroup {
 
     /**
      * Returns the list of association group members
-     * 
+     *
      * @return
      */
     public List<ZWaveAssociation> getAssociations() {
@@ -159,7 +161,7 @@ public class ZWaveAssociationGroup {
 
     /**
      * Sets the list of association group members
-     * 
+     *
      * @param associations
      */
     public void setAssociations(List<ZWaveAssociation> associations) {
@@ -168,7 +170,7 @@ public class ZWaveAssociationGroup {
 
     /**
      * Returns the number of members in the group
-     * 
+     *
      * @return
      */
     public int getAssociationCnt() {
@@ -183,12 +185,20 @@ public class ZWaveAssociationGroup {
         this.commands = commands;
     }
 
-    public Integer getProfile() {
-        return profile;
+    public Integer getProfile1() {
+        return profile1;
     }
 
-    public void setProfile(Integer profile) {
-        this.profile = profile;
+    public Integer getProfile2() {
+        return profile2;
+    }
+
+    public void setProfile1(Integer profile1) {
+        this.profile1 = profile1;
+    }
+
+    public void setProfile2(Integer profile2) {
+        this.profile2 = profile2;
     }
 
     public String getName() {

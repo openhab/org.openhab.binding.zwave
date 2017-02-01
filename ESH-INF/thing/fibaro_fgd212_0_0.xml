@@ -14,88 +14,88 @@
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL,BASIC</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
         <label>Scene Number</label>
         <properties>
-          <property name="binding:*:DecimalType">SCENE_ACTIVATION</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SCENE_ACTIVATION</property>
         </properties>
       </channel>
       <channel id="sensor_power" typeId="sensor_power">
         <label>Sensor (power)</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=POWER</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=POWER</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
         <label>Electric meter (kWh)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER;type=E_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
         </properties>
       </channel>
       <channel id="meter_watts" typeId="meter_watts">
         <label>Electric meter (watts)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER;type=E_W</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
         </properties>
       </channel>
       <channel id="meter_reset" typeId="meter_reset">
         <label>Reset the total power consumption</label>
         <properties>
-          <property name="binding:*:OnOffType">METER</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_METER</property>
         </properties>
       </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
         </properties>
       </channel>
       <channel id="switch_dimmer1" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:1,BASIC:1</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:1,BASIC:1</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
         </properties>
       </channel>
       <channel id="sensor_power1" typeId="sensor_power">
         <label>Sensor (power) 1</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:1;type=POWER</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:1;type=POWER</property>
         </properties>
       </channel>
       <channel id="meter_kwh1" typeId="meter_kwh">
         <label>Electric meter (kWh) 1</label>
         <properties>
-          <property name="binding:*:DecimalType">METER:1;type=E_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_KWh</property>
         </properties>
       </channel>
       <channel id="meter_watts1" typeId="meter_watts">
         <label>Electric meter (watts) 1</label>
         <properties>
-          <property name="binding:*:DecimalType">METER:1;type=E_W</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_W</property>
         </properties>
       </channel>
       <channel id="alarm_general1" typeId="alarm_general">
         <label>Alarm 1</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM:1</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:1</property>
         </properties>
       </channel>
       <channel id="notification_send1" typeId="notification_send">
         <label>Send notification</label>
         <properties>
-          <property name="binding:*:DecimalType">ALARM:1;event1=SMOKE:1,event2=ACCESS_CONTROL:22,event3=BURGLAR:1,event4=EMERGENCY:1,event5=EMERGENCY:2,event6=EMERGENCY:3</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_ALARM:1;event1=SMOKE:1,event2=ACCESS_CONTROL:22,event3=BURGLAR:1,event4=EMERGENCY:1,event5=EMERGENCY:2,event6=EMERGENCY:3</property>
         </properties>
       </channel>
       <channel id="switch_dimmer2" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:2,BASIC:2</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:2,BASIC:2</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:2,COMMAND_CLASS_BASIC:2</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:2,COMMAND_CLASS_BASIC:2</property>
         </properties>
       </channel>
     </channels>

@@ -14,19 +14,19 @@
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
         <label>Electric meter (kWh)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER;type=E_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
         </properties>
       </channel>
       <channel id="meter_watts" typeId="meter_watts">
         <label>Electric meter (watts)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER;type=E_W</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
         </properties>
       </channel>
     </channels>
@@ -65,7 +65,7 @@
                  min="0" max="255">
         <label>2: Automatically switch off after x seconds.</label>
         <description><![CDATA[
-If not zero, automatically switch device off after a user defined time.<br /> 0 -&gt; Disabled<br /> 1-65535 -&gt; Enabled, seconds
+If not zero, automatically switch device off after a user defined time<br /><h1>Overview</h1><p>If not zero, automatically switch device off after a user defined time.</p> <ul><li>0 -&gt; Disabled</li> <li>1 - 65535 -&gt; Enabled, automatically switch off after x seconds.</li> </ul>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -73,7 +73,7 @@ If not zero, automatically switch device off after a user defined time.<br /> 0 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: What to do on RF off command.</label>
         <description><![CDATA[
-Defines how to interpret RF Off command.<br /> Can be used in conjunction with Auto Off function:<br /> Ignore - to switch on the light by motion detectors and switch it off after some amount of time:<br /> in case of multiple motion detectors ea
+Defines how to interpret RF Off-Command.<br /><h1>Overview</h1><p>Can be used in conjunction with Auto Off function:</p> <ul><li>Ignore – to switch on the light by motion detectors and switch it off after some amount of time: in case of multiple motion detectors each would try to switch the light off that would break logics;</li> <li>Switch on – to switch on the light on both ON and OFF paddle press on the remote and switch it off after some amount of time.</li> <li>Button OFF click will still work (if button operations are not disabled).</li> </ul>
         ]]></description>
         <default>0</default>
         <options>
@@ -87,7 +87,7 @@ Defines how to interpret RF Off command.<br /> Can be used in conjunction with A
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Restore switch state after power cycle.</label>
         <description><![CDATA[
-Defines if the switch should restore switch state to the last state prior<br /> to device power off (power cycle).
+Defines if the switch should restore switch state.<br /><h1>Overview</h1><p>Defines if the switch should restore switch state to the last state prior to device power off (power cycle).</p>
         ]]></description>
         <default>1</default>
         <options>
@@ -98,9 +98,9 @@ Defines if the switch should restore switch state to the last state prior<br /> 
 
       <parameter name="config_20_2" type="integer" groupName="configuration"
                  min="0" max="3500">
-        <label>20: Specify the consumption of the load in watts, for the calculation of power consumption.</label>
+        <label>20: Specify the consumption of the load in watts</label>
         <description><![CDATA[
-Max load 3500 W.<br /><h1>Overview</h1><ul><li>0 -&gt; Disabled</li> <li>1 - 3500 -&gt; Watts</li> </ul>
+Maximum load 3500 Watts<br /><h1>Overview</h1><p>Specify the consumption of the load in watts, for the calculation of power consumption:</p> <ul><li>0 -&gt; Disabled</li> <li>1 - 3500 -&gt; Watts</li> </ul>
         ]]></description>
         <default>0</default>
       </parameter>

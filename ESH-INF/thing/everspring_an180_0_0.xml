@@ -14,19 +14,19 @@
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm (general)</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=GENERAL</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=GENERAL</property>
         </properties>
       </channel>
       <channel id="alarm_power" typeId="alarm_power">
         <label>Alarm (power)</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=POWER_MANAGEMENT</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
         </properties>
       </channel>
     </channels>

@@ -16,24 +16,24 @@ Living Connect Z Thermostat<br /><h1>Overview</h1><p>Radiator Thermostat</p> <br
       <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
         <label>Setpoint (heating)</label>
         <properties>
-          <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=HEATING</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
         <properties>
-          <property name="binding:*:PercentType">BATTERY</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
       </channel>
       <channel id="time_offset" typeId="time_offset">
         <label>Clock Time Offset</label>
         <properties>
-          <property name="binding:*:DecimalType">CLOCK</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CLOCK</property>
         </properties>
       </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm (general)</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_ALARM;type=GENERAL</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_ALARM;type=GENERAL</property>
         </properties>
       </channel>
     </channels>

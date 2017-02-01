@@ -8,12 +8,13 @@
  */
 package org.openhab.binding.zwave.test.internal.protocol.serialmessage;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.SetSucNodeMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.SetSucNodeMessageClass.SUCType;
 
@@ -27,16 +28,18 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.SetSucNodeMessa
 public class SetSucNodeMessageClassTest {
     @Test
     public void doRequest() {
-        byte[] expectedResponseNone = { 1, 8, 0, 84, 12, 1, 0, 0, 1, -81 };
-        byte[] expectedResponseBasic = { 1, 8, 0, 84, 12, 0, 0, 0, 1, -82 };
+        byte[] expectedResponseNone = { 12, 1, 0, 0 };
+        byte[] expectedResponseBasic = { 12, 0, 0, 0 };
 
-        SerialMessage msg;
+        ZWaveSerialPayload msg;
         SetSucNodeMessageClass handler = new SetSucNodeMessageClass();
 
         msg = handler.doRequest(12, SUCType.BASIC);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseNone));
+        assertEquals(msg.getSerialMessageClass(), SerialMessageClass.SetSucNodeID);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseNone));
 
         msg = handler.doRequest(12, SUCType.NONE);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseBasic));
+        assertEquals(msg.getSerialMessageClass(), SerialMessageClass.SetSucNodeID);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseBasic));
     }
 }

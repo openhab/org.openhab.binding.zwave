@@ -15,12 +15,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBatteryCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCentralSceneCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveBatteryCommandClass}.
@@ -31,13 +31,14 @@ public class ZWaveCentralSceneCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void getValueMessage() {
-        ZWaveCentralSceneCommandClass cls = (ZWaveCentralSceneCommandClass) getCommandClass(CommandClass.CENTRAL_SCENE);
-        SerialMessage msg;
+        ZWaveCentralSceneCommandClass cls = (ZWaveCentralSceneCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_CENTRAL_SCENE);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 91, 1, 0, 0, -34 };
+        byte[] expectedResponseV1 = { 91, 1 };
         cls.setVersion(1);
         msg = cls.getValueMessage();
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
@@ -49,7 +50,7 @@ public class ZWaveCentralSceneCommandClassTest extends ZWaveCommandClassTest {
         assertEquals(events.size(), 1);
         ZWaveCommandClassValueEvent event = (ZWaveCommandClassValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.CENTRAL_SCENE);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_CENTRAL_SCENE);
         assertEquals(event.getValue(), new BigDecimal("1.3"));
     }
 
@@ -62,7 +63,7 @@ public class ZWaveCentralSceneCommandClassTest extends ZWaveCommandClassTest {
         assertEquals(events.size(), 1);
         ZWaveCommandClassValueEvent event = (ZWaveCommandClassValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.CENTRAL_SCENE);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_CENTRAL_SCENE);
         assertEquals(event.getValue(), new BigDecimal("1.5"));
     }
 }

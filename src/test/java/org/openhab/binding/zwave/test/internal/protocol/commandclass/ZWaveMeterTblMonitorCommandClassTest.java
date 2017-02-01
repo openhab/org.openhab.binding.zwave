@@ -20,6 +20,7 @@ import org.mockito.Mockito;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
@@ -34,7 +35,7 @@ import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
  *
  * @author Jorg de Jong - Initial version
  */
-public class ZWaveMeterTblMonitorCommandClassTest {
+public class ZWaveMeterTblMonitorCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void Gas_Cubic_Meters() {
@@ -52,14 +53,13 @@ public class ZWaveMeterTblMonitorCommandClassTest {
 
         ZWaveMeterTblMonitorValueEvent event = (ZWaveMeterTblMonitorValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.METER_TBL_MONITOR);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_METER_TBL_MONITOR);
         assertEquals(event.getMeterScale(), ZWaveMeterTblMonitorCommandClass.MeterTblMonitorScale.G_Cubic_Meters);
         assertEquals(event.getMeterType(), ZWaveMeterTblMonitorCommandClass.MeterTblMonitorType.GAS);
         assertEquals(event.getValue(), new BigDecimal("0.620"));
     }
 
     protected List<ZWaveEvent> processCommandClassMessages(List<SerialMessage> msgs) {
-
         // Mock the controller so we can get any events
         ZWaveController controller = Mockito.mock(ZWaveController.class);
         ArgumentCaptor<ZWaveEvent> argument = ArgumentCaptor.forClass(ZWaveEvent.class);
@@ -83,7 +83,7 @@ public class ZWaveMeterTblMonitorCommandClassTest {
                     // ensure a 2nd msg uses the same command class
                     assertEquals(cls.getCommandClass().getKey(), msg.getMessagePayloadByte(3));
                 }
-                cls.handleApplicationCommandRequest(msg, 4, 0);
+                cls.handleApplicationCommandRequest(new ZWaveCommandClassPayload(msg), 0);
             } catch (ZWaveSerialMessageException e) {
                 fail("Out of bounds exception processing data");
             }

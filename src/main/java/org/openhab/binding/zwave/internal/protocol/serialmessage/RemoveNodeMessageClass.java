@@ -8,12 +8,14 @@
  */
 package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
-import java.io.ByteArrayOutputStream;
-
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,60 +39,54 @@ public class RemoveNodeMessageClass extends ZWaveCommandProcessor {
     private final int REMOVE_NODE_STATUS_DONE = 6;
     private final int REMOVE_NODE_STATUS_FAILED = 7;
 
-    public SerialMessage doRequestStart() {
+    public ZWaveSerialPayload doRequestStart() {
         logger.debug("Setting controller into EXCLUSION mode.");
 
-        // Queue the request
-        SerialMessage newMessage = new SerialMessage(SerialMessage.SerialMessageClass.RemoveNodeFromNetwork,
-                SerialMessage.SerialMessageType.Request, SerialMessage.SerialMessageClass.RemoveNodeFromNetwork,
-                SerialMessage.SerialMessagePriority.High);
-
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write(REMOVE_NODE_ANY);
-        outputData.write(0x01); // TODO: This should use the callbackId
-        newMessage.setMessagePayload(outputData.toByteArray());
-
-        return newMessage;
+        // Create the request
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.RemoveNodeFromNetwork).withPayload(REMOVE_NODE_ANY)
+                .build();
     }
 
-    public SerialMessage doRequestStop() {
+    public ZWaveSerialPayload doRequestStop() {
         logger.debug("Ending EXCLUSION mode.");
 
-        // Queue the request
-        SerialMessage newMessage = new SerialMessage(SerialMessage.SerialMessageClass.RemoveNodeFromNetwork,
-                SerialMessage.SerialMessageType.Request, SerialMessage.SerialMessageClass.RemoveNodeFromNetwork,
-                SerialMessage.SerialMessagePriority.High);
-
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write(REMOVE_NODE_STOP);
-        outputData.write(254); // TODO: This should use the callbackId
-        newMessage.setMessagePayload(outputData.toByteArray());
-
-        return newMessage;
+        // Create the request
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.RemoveNodeFromNetwork)
+                .withPayload(REMOVE_NODE_STOP).build();
     }
 
     @Override
-    public boolean handleRequest(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         switch (incomingMessage.getMessagePayloadByte(1)) {
             case REMOVE_NODE_STATUS_LEARN_READY:
                 logger.debug("Remove Node: Learn ready.");
                 zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.ExcludeStart));
+                transaction.setTransactionComplete();
                 break;
             case REMOVE_NODE_STATUS_NODE_FOUND:
                 logger.debug("Remove Node: Node found for removal.");
                 break;
             case REMOVE_NODE_STATUS_REMOVING_SLAVE:
+                if (incomingMessage.getMessagePayloadByte(2) < 1 || incomingMessage.getMessagePayloadByte(2) > 232) {
+                    break;
+                }
                 logger.debug("NODE {}: Removing slave.", incomingMessage.getMessagePayloadByte(2));
                 zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.ExcludeSlaveFound,
                         incomingMessage.getMessagePayloadByte(2)));
                 break;
             case REMOVE_NODE_STATUS_REMOVING_CONTROLLER:
+                if (incomingMessage.getMessagePayloadByte(2) < 1 || incomingMessage.getMessagePayloadByte(2) > 232) {
+                    break;
+                }
                 logger.debug("NODE {}: Removing controller.", incomingMessage.getMessagePayloadByte(2));
                 zController.notifyEventListeners(new ZWaveInclusionEvent(
                         ZWaveInclusionEvent.Type.ExcludeControllerFound, incomingMessage.getMessagePayloadByte(2)));
                 break;
             case REMOVE_NODE_STATUS_DONE:
+                if (incomingMessage.getMessagePayloadByte(2) < 1 || incomingMessage.getMessagePayloadByte(2) > 232) {
+                    break;
+                }
                 logger.debug("Remove Node: Done.");
                 zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.ExcludeDone,
                         incomingMessage.getMessagePayloadByte(2)));
@@ -103,8 +99,7 @@ public class RemoveNodeMessageClass extends ZWaveCommandProcessor {
                 logger.debug("Remove Node: Unknown request ({}).", incomingMessage.getMessagePayloadByte(1));
                 break;
         }
-        checkTransactionComplete(lastSentMessage, incomingMessage);
 
-        return transactionComplete;
+        return true;
     }
 }

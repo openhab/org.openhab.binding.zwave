@@ -16,13 +16,13 @@ import org.eclipse.smarthome.core.library.types.OpenClosedType;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBinarySensorCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBinarySensorCommandClass.SensorType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBinarySensorCommandClass.ZWaveBinarySensorValueEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -49,28 +49,28 @@ public class ZWaveBinarySensorConverter extends ZWaveCommandClassConverter {
      * {@inheritDoc}
      */
     @Override
-    public List<SerialMessage> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
+    public List<ZWaveCommandClassTransactionPayload> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveBinarySensorCommandClass commandClass = (ZWaveBinarySensorCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.SENSOR_BINARY, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_SENSOR_BINARY, channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
 
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
-                commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                commandClass.getCommandClass(), channel.getEndpoint());
 
         String sensorType = channel.getArguments().get("type");
 
-        SerialMessage serialMessage;
+        ZWaveCommandClassTransactionPayload transaction;
         if (sensorType != null && commandClass.getVersion() > 1) {
-            serialMessage = node.encapsulate(commandClass.getValueMessage(SensorType.valueOf(sensorType)), commandClass,
+            transaction = node.encapsulate(commandClass.getValueMessage(SensorType.valueOf(sensorType)), commandClass,
                     channel.getEndpoint());
         } else {
-            serialMessage = node.encapsulate(commandClass.getValueMessage(), commandClass, channel.getEndpoint());
+            transaction = node.encapsulate(commandClass.getValueMessage(), commandClass, channel.getEndpoint());
         }
 
-        List<SerialMessage> response = new ArrayList<SerialMessage>(1);
-        response.add(serialMessage);
+        List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>(1);
+        response.add(transaction);
         return response;
     }
 

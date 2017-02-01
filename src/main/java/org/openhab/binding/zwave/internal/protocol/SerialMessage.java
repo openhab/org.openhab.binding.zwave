@@ -18,7 +18,6 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,15 +40,12 @@ import org.slf4j.LoggerFactory;
 public class SerialMessage {
 
     private static final Logger logger = LoggerFactory.getLogger(SerialMessage.class);
-    private final static AtomicLong sequence = new AtomicLong();
+    private final static AtomicLong callbackSequence = new AtomicLong(1);
 
-    private long sequenceNumber;
     private byte[] messagePayload;
     private int messageLength = 0;
     private SerialMessageType messageType;
     private int messageClassKey;
-    private SerialMessagePriority priority;
-    private SerialMessageClass expectedReply;
 
     protected int messageNode = 255;
 
@@ -57,18 +53,10 @@ public class SerialMessage {
     private int transmitOptions = TRANSMIT_OPTIONS_NOT_SET;
     private int callbackId = 0;
 
-    private boolean transactionCanceled = false;
-    protected boolean ackPending = false;
-
     /**
      * Indicates whether the serial message is valid.
      */
     public boolean isValid = false;
-
-    /**
-     * Indicates the number of retry attempts left
-     */
-    public int attempts = 3;
 
     /**
      * Constructor. Creates a new instance of the SerialMessage class.
@@ -90,9 +78,8 @@ public class SerialMessage {
      * @param expectedReply the expected Reply for this messaage
      * @param priority the message priority
      */
-    public SerialMessage(SerialMessageClass messageClass, SerialMessageType messageType,
-            SerialMessageClass expectedReply, SerialMessagePriority priority) {
-        this(255, messageClass, messageType, expectedReply, priority);
+    public SerialMessage(SerialMessageClass messageClass, SerialMessageType messageType) {
+        this(255, messageClass, messageType);
     }
 
     /**
@@ -108,17 +95,20 @@ public class SerialMessage {
      * @param expectedReply the expected Reply for this messaage
      * @param priority the message priority
      */
-    public SerialMessage(int nodeId, SerialMessageClass messageClass, SerialMessageType messageType,
-            SerialMessageClass expectedReply, SerialMessagePriority priority) {
-        logger.trace(String.format("NODE %d: Creating empty message of class = %s (0x%02X), type = %s (0x%02X)",
-                new Object[] { nodeId, messageClass, messageClass.key, messageType, messageType.ordinal() }));
-        this.sequenceNumber = sequence.getAndIncrement();
+    public SerialMessage(int nodeId, SerialMessageClass messageClass, SerialMessageType messageType) {
+        logger.trace(String.format("NODE %d: Creating empty message of class = %s (0x%02X), type = %s (0x%02X)", nodeId,
+                messageClass, messageClass.key, messageType, messageType.ordinal()));
         this.messageClassKey = messageClass.getKey();
         this.messageType = messageType;
         this.messagePayload = new byte[] {};
         this.messageNode = nodeId;
-        this.expectedReply = expectedReply;
-        this.priority = priority;
+
+        if (messageClass.requiresRequest() && callbackId == 0) {
+            callbackId = (int) callbackSequence.getAndIncrement();
+            if (callbackId == 254) {
+                callbackSequence.set(1);
+            }
+        }
     }
 
     /**
@@ -140,6 +130,19 @@ public class SerialMessage {
      */
     public SerialMessage(int nodeId, byte[] buffer) {
         logger.trace("NODE {}: Creating new SerialMessage from buffer = {}", nodeId, SerialMessage.bb2hex(buffer));
+        // Handle signalling frames (ie ACK, CAN, NAK)
+        if (buffer.length == 1) {
+            if (buffer[0] == 0x06) {
+                messageType = SerialMessageType.ACK;
+            }
+            if (buffer[0] == 0x15) {
+                messageType = SerialMessageType.NAK;
+            }
+            if (buffer[0] == 0x18) {
+                messageType = SerialMessageType.CAN;
+            }
+            return;
+        }
         messageLength = buffer.length - 2; // buffer[1]; TODO: Why is this commented out?!?
         byte messageCheckSumm = calculateChecksum(buffer);
         byte messageCheckSummReceived = buffer[messageLength + 1];
@@ -152,11 +155,17 @@ public class SerialMessage {
             isValid = false;
             return;
         }
-        this.priority = SerialMessagePriority.High;
-        this.messageType = buffer[2] == 0x00 ? SerialMessageType.Request : SerialMessageType.Response;
-        this.messageClassKey = buffer[3] & 0xFF;
-        this.messagePayload = ArrayUtils.subarray(buffer, 4, messageLength + 1);
-        this.messageNode = nodeId;
+        messageType = buffer[2] == 0x00 ? SerialMessageType.Request : SerialMessageType.Response;
+        messageClassKey = buffer[3] & 0xFF;
+        messagePayload = ArrayUtils.subarray(buffer, 4, messageLength + 1);
+        messageNode = nodeId;
+
+        // TODO: This check isn't 100% correct - at least not for ApplicationUpdate as it has no callback id
+        // TODO: Check if messageClass expects a response?
+        if (messageType == SerialMessageType.Request) {
+            callbackId = buffer[4] & 0xFF;
+            messageNode = buffer[5] & 0xFF;
+        }
         logger.trace("NODE {}: Message payload = {}", getMessageNode(), SerialMessage.bb2hex(messagePayload));
     }
 
@@ -167,6 +176,9 @@ public class SerialMessage {
      * @return string the string representation
      */
     static public String bb2hex(byte[] bb) {
+        if (bb == null) {
+            return "";
+        }
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < bb.length; i++) {
             result.append(String.format("%02X ", bb[i]));
@@ -205,11 +217,9 @@ public class SerialMessage {
      */
     @Override
     public String toString() {
-        return String.format(
-                "Message: class=%s[0x%02X], type=%s[0x%02X], priority=%s, dest=%d, callback=%d, payload=%s",
-                new Object[] { SerialMessageClass.getMessageClass(messageClassKey), messageClassKey, messageType,
-                        messageType.ordinal(), priority, messageNode, getCallbackId(),
-                        SerialMessage.bb2hex(this.getMessagePayload()) });
+        return String.format("Message: class=%s[0x%02X], type=%s[0x%02X], dest=%d, callback=%d, payload=%s",
+                SerialMessageClass.getMessageClass(messageClassKey), messageClassKey, messageType,
+                messageType.ordinal(), messageNode, callbackId, SerialMessage.bb2hex(messagePayload));
     };
 
     /**
@@ -219,26 +229,35 @@ public class SerialMessage {
      */
     public byte[] getMessageBuffer() {
         ByteArrayOutputStream resultByteBuffer = new ByteArrayOutputStream();
-        byte[] result;
         resultByteBuffer.write((byte) 0x01);
         final SerialMessageClass messageClass = SerialMessageClass.getMessageClass(messageClassKey);
-        int messageLength = messagePayload.length
-                + (messageClass == SerialMessageClass.SendData && this.messageType == SerialMessageType.Request ? 5
-                        : 3); // calculate and set length
+
+        // Calculate and set length
+        int messageLength = 3;
+        if (messagePayload != null) {
+            messageLength += messagePayload.length;
+        }
+        messageLength += (messageClass.requiresRequest() == true && messageType == SerialMessageType.Request ? 1 : 0)
+                + (messageClass == SerialMessageClass.SendData && messageType == SerialMessageType.Request ? 1 : 0);
 
         resultByteBuffer.write((byte) messageLength);
         resultByteBuffer.write((byte) messageType.ordinal());
         resultByteBuffer.write((byte) messageClassKey);
 
         try {
-            resultByteBuffer.write(messagePayload);
+            if (messagePayload != null) {
+                resultByteBuffer.write(messagePayload);
+            }
         } catch (IOException e) {
-            logger.error("Error getting message buffer: ", e);
+            logger.error("Error getting message payload buffer: ", e);
         }
 
         // Callback ID and transmit options for a Send Data message.
-        if (messageClass == SerialMessageClass.SendData && this.messageType == SerialMessageType.Request) {
+        if (messageClass == SerialMessageClass.SendData && messageType == SerialMessageType.Request) {
             resultByteBuffer.write(transmitOptions);
+        }
+
+        if (messageType == SerialMessageType.Request && messageClass.requiresRequest()) {
             resultByteBuffer.write(callbackId);
         }
 
@@ -246,7 +265,7 @@ public class SerialMessage {
         resultByteBuffer.write((byte) 0x00);
 
         // Convert to a byte array
-        result = resultByteBuffer.toByteArray();
+        byte[] result = resultByteBuffer.toByteArray();
 
         // Calculate the checksum
         result[result.length - 1] = 0x01;
@@ -273,21 +292,17 @@ public class SerialMessage {
             return false;
         }
 
-        if (!obj.getClass().equals(this.getClass())) {
+        if (!obj.getClass().equals(getClass())) {
             return false;
         }
 
         SerialMessage other = (SerialMessage) obj;
 
-        if (other.messageClassKey != this.messageClassKey) {
+        if (other.messageClassKey != messageClassKey) {
             return false;
         }
 
-        if (other.messageType != this.messageType) {
-            return false;
-        }
-
-        if (other.expectedReply != this.expectedReply) {
+        if (other.messageType != messageType) {
             return false;
         }
 
@@ -406,86 +421,8 @@ public class SerialMessage {
      * @param callbackId the callbackId to set
      */
     public void setCallbackId(int callbackId) {
-        this.callbackId = callbackId;
-    }
-
-    /**
-     * Gets the expected reply for this message.
-     *
-     * @return the expectedReply
-     */
-    public SerialMessageClass getExpectedReply() {
-        return expectedReply;
-    }
-
-    /**
-     * Returns the priority of this Serial message.
-     *
-     * @return the priority
-     */
-    public SerialMessagePriority getPriority() {
-        return priority;
-    }
-
-    /**
-     * Sets the priority of this Serial message.
-     *
-     * @param p the new priority
-     */
-    public void setPriority(SerialMessagePriority p) {
-        priority = p;
-    }
-
-    /**
-     * Indicates that the transaction for the incoming message is canceled by a command class
-     */
-    public void setTransactionCanceled() {
-        transactionCanceled = true;
-    }
-
-    /**
-     * Indicates that the transaction for the incoming message is canceled by a command class
-     *
-     * @return the transactionCanceled
-     */
-    public boolean isTransactionCanceled() {
-        return transactionCanceled;
-    }
-
-    /**
-     * Sets the ACK as received.
-     */
-    public void setAckRecieved() {
-        logger.trace("Ack Pending cleared");
-        this.ackPending = false;
-    }
-
-    /**
-     * If we require an ACK from the controller, then set true
-     */
-    public void setAckRequired() {
-        this.ackPending = true;
-    }
-
-    /**
-     * Returns true is there is an ack pending from the controller
-     *
-     * @return true if still waiting on the ack
-     */
-    public boolean isAckPending() {
-        return this.ackPending;
-    }
-
-    /**
-     * Sets the flag to say the ack has been received from the controller.
-     * This ensures that we don't complete a transaction if we receive the final response from the device before the
-     * controller acks our request.
-     * This seems to be possible from some devices, or possibly if the device happens to send the data we're about to
-     * request at the same time we request it (since the data received from a device as part of a transaction is NOT
-     * linked in any way to the transaction).
-     */
-    public void setTransactionAcked() {
-        this.ackPending = false;
+        // this.callbackId = callbackId;
+        // callbackSequence.set(callbackId);
     }
 
     /**
@@ -494,7 +431,10 @@ public class SerialMessage {
      */
     public enum SerialMessageType {
         Request, // 0x00
-        Response // 0x01
+        Response, // 0x01
+        ACK,
+        NAK,
+        CAN
     }
 
     /**
@@ -533,81 +473,95 @@ public class SerialMessage {
      *
      */
     public enum SerialMessageClass {
-        SerialApiGetInitData(0x02, "SerialApiGetInitData"), // Request initial information about devices in network
-        SerialApiApplicationNodeInfo(0x03, "SerialApiApplicationNodeInfo"), // Set controller node information
-        ApplicationCommandHandler(0x04, "ApplicationCommandHandler"), // Handle application command
-        GetControllerCapabilities(0x05, "GetControllerCapabilities"), // Request controller capabilities (primary role,
-                                                                      // SUC/SIS availability)
-        SerialApiSetTimeouts(0x06, "SerialApiSetTimeouts"), // Set Serial API timeouts
-        SerialApiGetCapabilities(0x07, "SerialApiGetCapabilities"), // Request Serial API capabilities
-        SerialApiSoftReset(0x08, "SerialApiSoftReset"), // Soft reset. Restarts Z-Wave chip
-        RfReceiveMode(0x10, "RfReceiveMode"), // Power down the RF section of the stick
-        SetSleepMode(0x11, "SetSleepMode"), // Set the CPU into sleep mode
-        SendNodeInfo(0x12, "SendNodeInfo"), // Send Node Information Frame of the stick
-        SendData(0x13, "SendData"), // Send data.
-        SendDataMulti(0x14, "SendDataMulti"),
-        GetVersion(0x15, "GetVersion"), // Request controller hardware version
-        SendDataAbort(0x16, "SendDataAbort"), // Abort Send data.
-        RfPowerLevelSet(0x17, "RfPowerLevelSet"), // Set RF Power level
-        SendDataMeta(0x18, "SendDataMeta"),
-        GetRandom(0x1c, "GetRandom"), // Returns a random number
-        MemoryGetId(0x20, "MemoryGetId"), // ???
-        MemoryGetByte(0x21, "MemoryGetByte"), // Get a byte of memory.
-        MemoryPutByte(0x22, "MemoryPutByte"),
-        ReadMemory(0x23, "ReadMemory"), // Read memory.
-        WriteMemory(0x24, "WriteMemory"),
-        SetLearnNodeState(0x40, "SetLearnNodeState"), // ???
-        IdentifyNode(0x41, "IdentifyNode"), // Get protocol info (baud rate, listening, etc.) for a given node
-        SetDefault(0x42, "SetDefault"), // Reset controller and node info to default (original) values
-        NewController(0x43, "NewController"), // ???
-        ReplicationCommandComplete(0x44, "ReplicationCommandComplete"), // Replication send data complete
-        ReplicationSendData(0x45, "ReplicationSendData"), // Replication send data
-        AssignReturnRoute(0x46, "AssignReturnRoute"), // Assign a return route from the specified node to the controller
-        DeleteReturnRoute(0x47, "DeleteReturnRoute"), // Delete all return routes from the specified node
-        RequestNodeNeighborUpdate(0x48, "RequestNodeNeighborUpdate"), // Ask the specified node to update its neighbors
-                                                                      // (then read them from the controller)
-        ApplicationUpdate(0x49, "ApplicationUpdate"), // Get a list of supported (and controller) command classes
-        AddNodeToNetwork(0x4a, "AddNodeToNetwork"), // Control the addnode (or addcontroller) process...start, stop,
-                                                    // etc.
-        RemoveNodeFromNetwork(0x4b, "RemoveNodeFromNetwork"), // Control the removenode (or removecontroller)
-                                                              // process...start, stop, etc.
-        CreateNewPrimary(0x4c, "CreateNewPrimary"), // Control the createnewprimary process...start, stop, etc.
-        ControllerChange(0x4d, "ControllerChange"), // Control the transferprimary process...start, stop, etc.
-        SetLearnMode(0x50, "SetLearnMode"), // Put a controller into learn mode for replication/ receipt of
-                                            // configuration info
-        AssignSucReturnRoute(0x51, "AssignSucReturnRoute"), // Assign a return route to the SUC
-        EnableSuc(0x52, "EnableSuc"), // Make a controller a Static Update Controller
-        RequestNetworkUpdate(0x53, "RequestNetworkUpdate"), // Network update for a SUC(?)
-        SetSucNodeID(0x54, "SetSucNodeID"), // Identify a Static Update Controller node id
-        DeleteSUCReturnRoute(0x55, "DeleteSUCReturnRoute"), // Remove return routes to the SUC
-        GetSucNodeId(0x56, "GetSucNodeId"), // Try to retrieve a Static Update Controller node id (zero if no SUC
-                                            // present)
-        SendSucId(0x57, "SendSucId"),
-        RequestNodeNeighborUpdateOptions(0x5a, "RequestNodeNeighborUpdateOptions"), // Allow options for request node
-                                                                                    // neighbor update
-        ExploreRequestInclusion(0x5e, "ExploreRequestInclusion"), // Initiate a Network-Wide Inclusion process
-        RequestNodeInfo(0x60, "RequestNodeInfo"), // Get info (supported command classes) for the specified node
-        RemoveFailedNodeID(0x61, "RemoveFailedNodeID"), // Mark a specified node id as failed
-        IsFailedNodeID(0x62, "IsFailedNodeID"), // Check to see if a specified node has failed
-        ReplaceFailedNode(0x63, "ReplaceFailedNode"), // Remove a failed node from the controller's list (?)
-        GetRoutingInfo(0x80, "GetRoutingInfo"), // Get a specified node's neighbor information from the controller
-        LockRoute(0x90, "LockRoute"),
-        SerialApiSlaveNodeInfo(0xA0, "SerialApiSlaveNodeInfo"), // Set application virtual slave node information
-        ApplicationSlaveCommandHandler(0xA1, "ApplicationSlaveCommandHandler"), // Slave command handler
-        SendSlaveNodeInfo(0xA2, "ApplicationSlaveCommandHandler"), // Send a slave node information frame
-        SendSlaveData(0xA3, "SendSlaveData"), // Send data from slave
-        SetSlaveLearnMode(0xA4, "SetSlaveLearnMode"), // Enter slave learn mode
-        GetVirtualNodes(0xA5, "GetVirtualNodes"), // Return all virtual nodes
-        IsVirtualNode(0xA6, "IsVirtualNode"), // Virtual node test
-        WatchDogEnable(0xB6, "WatchDogEnable"),
-        WatchDogDisable(0xB7, "WatchDogDisable"),
-        WatchDogKick(0xB6, "WatchDogKick"),
-        RfPowerLevelGet(0xBA, "RfPowerLevelSet"), // Get RF Power level
-        GetLibraryType(0xBD, "GetLibraryType"), // Gets the type of ZWave library on the stick
-        SendTestFrame(0xBE, "SendTestFrame"), // Send a test frame to a node
-        GetProtocolStatus(0xBF, "GetProtocolStatus"),
-        SetPromiscuousMode(0xD0, "SetPromiscuousMode"), // Set controller into promiscuous mode to listen to all frames
-        PromiscuousApplicationCommandHandler(0xD1, "PromiscuousApplicationCommandHandler");
+        SerialApiGetInitData(0x02, true, false, false), // Request initial information about
+                                                        // devices in network
+        SerialApiApplicationNodeInfo(0x03), // Set controller node information (ie NIF)
+        ApplicationCommandHandler(0x04), // Handle application command
+        GetControllerCapabilities(0x05, true, false, false), // Request controller
+                                                             // capabilities
+        // (primary role,
+        // SUC/SIS availability)
+        SerialApiSetTimeouts(0x06, true, false, false), // Set Serial API timeouts
+        SerialApiGetCapabilities(0x07, true, false, false), // Request Serial API
+                                                            // capabilities
+        SerialApiSoftReset(0x08, false, false, false), // Soft reset. Restarts Z-Wave chip
+        RfReceiveMode(0x10), // Power down the RF section of the stick
+        SetSleepMode(0x11), // Set the CPU into sleep mode
+        SendNodeInfo(0x12), // Send Node Information Frame of the stick
+        SendData(0x13, true, true, true), // Send data.
+        SendDataMulti(0x14, true, true, true),
+        GetVersion(0x15, true, false, false), // Request controller hardware version
+        SendDataAbort(0x16, false, false, false), // Abort Send data.
+        RfPowerLevelSet(0x17), // Set RF Power level
+        SendDataMeta(0x18),
+        GetRandom(0x1c), // Returns a random number
+        MemoryGetId(0x20, true, false, false), // ???
+        MemoryGetByte(0x21), // Get a byte of memory.
+        MemoryPutByte(0x22),
+        ReadMemory(0x23), // Read memory.
+        WriteMemory(0x24),
+        SetLearnNodeState(0x40), // ???
+        IdentifyNode(0x41, true, false, false), // Get protocol info (baud rate, listening, etc.) for a
+                                                // given node
+        SetDefault(0x42, false, true, false), // Reset controller and node info to default (original)
+                                              // values
+        NewController(0x43), // ???
+        ReplicationCommandComplete(0x44), // Replication send data complete
+        ReplicationSendData(0x45), // Replication send data
+        AssignReturnRoute(0x46, true, true, true), // Assign a return route from the specified node
+                                                   // to the controller
+        DeleteReturnRoute(0x47, true, true, true), // Delete all return routes from the specified
+                                                   // node
+        RequestNodeNeighborUpdate(0x48, false, true, true), // Ask the specified node to
+                                                            // update its neighbors (then
+                                                            // read them from the
+                                                            // controller)
+        ApplicationUpdate(0x49), // Get a list of supported (and controller) command classes
+        AddNodeToNetwork(0x4a, false, true, false), // Control the addnode (or addcontroller)
+                                                    // process...start, stop, etc.
+        RemoveNodeFromNetwork(0x4b, false, true, false), // Control the removenode (or
+                                                         // removecontroller) process...start,
+                                                         // stop, etc.
+        CreateNewPrimary(0x4c), // Control the createnewprimary process...start, stop, etc.
+        ControllerChange(0x4d), // Control the transferprimary process...start, stop, etc.
+        SetLearnMode(0x50), // Put a controller into learn mode for replication/ receipt of
+                            // configuration info
+        AssignSucReturnRoute(0x51, true, true, true), // Assign a return route to the SUC
+        EnableSuc(0x52, true, false, false), // Make a controller a Static Update Controller
+        RequestNetworkUpdate(0x53, true, true, false), // Network update for a SUC(?)
+        SetSucNodeID(0x54, true, true, false), // Identify a Static Update Controller node id
+        DeleteSUCReturnRoute(0x55, true, true, true), // Remove return routes to the SUC
+        GetSucNodeId(0x56, true, false, false), // Try to retrieve a Static Update Controller node id
+                                                // (zero if no SUC present)
+        SendSucId(0x57),
+        RequestNodeNeighborUpdateOptions(0x5a), // Allow options for request node
+                                                // neighbor update
+        ExploreRequestInclusion(0x5e), // Initiate a Network-Wide Inclusion process
+        RequestNodeInfo(0x60, true, false, true), // Get info (supported command classes) for the
+                                                  // specified node
+        RemoveFailedNodeID(0x61, true, true, false), // Mark a specified node id as failed
+        IsFailedNodeID(0x62, true, false, false), // Check to see if a specified node has failed
+        ReplaceFailedNode(0x63, true, true, false), // Remove a failed node from the controller's
+                                                    // list (?)
+        GetRoutingInfo(0x80, true, false, false), // Get a specified node's neighbor information from
+                                                  // the controller
+        LockRoute(0x90),
+        SerialApiSlaveNodeInfo(0xA0), // Set application virtual slave node information
+        ApplicationSlaveCommandHandler(0xA1), // Slave command handler
+        SendSlaveNodeInfo(0xA2), // Send a slave node information frame
+        SendSlaveData(0xA3), // Send data from slave
+        SetSlaveLearnMode(0xA4), // Enter slave learn mode
+        GetVirtualNodes(0xA5), // Return all virtual nodes
+        IsVirtualNode(0xA6), // Virtual node test
+        WatchDogEnable(0xB6),
+        WatchDogDisable(0xB7),
+        WatchDogKick(0xB6),
+        RfPowerLevelGet(0xBA), // Get RF Power level
+        GetLibraryType(0xBD), // Gets the type of ZWave library on the stick
+        SendTestFrame(0xBE), // Send a test frame to a node
+        GetProtocolStatus(0xBF),
+        SetPromiscuousMode(0xD0), // Set controller into promiscuous mode to listen to all frames
+        PromiscuousApplicationCommandHandler(0xD1);
 
         /**
          * A mapping between the integer code and its corresponding ZWaveMessage
@@ -616,11 +570,21 @@ public class SerialMessage {
         private static Map<Integer, SerialMessageClass> codeToMessageClassMapping;
 
         private int key;
-        private String label;
+        private boolean response;
+        private boolean request;
+        private boolean node;
 
-        private SerialMessageClass(int key, String label) {
+        private SerialMessageClass(int key) {
             this.key = key;
-            this.label = label;
+            this.response = false;
+            this.request = false;
+        }
+
+        private SerialMessageClass(int key, boolean response, boolean request, boolean node) {
+            this.key = key;
+            this.response = response;
+            this.request = request;
+            this.node = node;
         }
 
         private static void initMapping() {
@@ -653,12 +617,32 @@ public class SerialMessage {
         }
 
         /**
-         * Returns the enumeration label.
+         * Returns true if the transaction requires a Response frame
          *
-         * @return the label
+         * @return true if the transaction requires a response frame
          */
-        public String getLabel() {
-            return label;
+        public boolean requiresResponse() {
+            return response;
+        }
+
+        /**
+         * Returns true if the transaction requires at least one Request frame
+         *
+         * @return true if the transaction requires a request frame
+         */
+        public boolean requiresRequest() {
+            return request;
+        }
+
+        /**
+         * Returns true if the node is contacted during the transaction.
+         * This is used to ensure the node is awake before sending the transaction.
+         * Transactions that only communicate with the controller therefore don't interact with the node.
+         *
+         * @return true if the node is required for the transaction
+         */
+        public boolean requiresNode() {
+            return node;
         }
     }
 
@@ -689,13 +673,13 @@ public class SerialMessage {
         @Override
         public int compare(SerialMessage arg0, SerialMessage arg1) {
             // ZWaveSecurityCommandClass.SECURITY_NONCE_REPORT trumps all
-            final boolean arg0NonceReport = ZWaveSecurityCommandClass.isSecurityNonceReportMessage(arg0);
-            final boolean arg1NonceReport = ZWaveSecurityCommandClass.isSecurityNonceReportMessage(arg1);
-            if (arg0NonceReport && !arg1NonceReport) {
-                return -1;
-            } else if (arg1NonceReport && !arg0NonceReport) {
-                return 1;
-            } // they both are or both aren't, continue to logic below
+            // final boolean arg0NonceReport = ZWaveSecurityCommandClass.isSecurityNonceReportMessage(arg0);
+            // final boolean arg1NonceReport = ZWaveSecurityCommandClass.isSecurityNonceReportMessage(arg1);
+            // if (arg0NonceReport && !arg1NonceReport) {
+            // return -1;
+            // } else if (arg1NonceReport && !arg0NonceReport) {
+            // return 1;
+            // } // they both are or both aren't, continue to logic below
 
             boolean arg0Awake = false;
             boolean arg0Listening = true;
@@ -704,12 +688,12 @@ public class SerialMessage {
 
             if ((arg0.getMessageClass() == SerialMessageClass.RequestNodeInfo
                     || arg0.getMessageClass() == SerialMessageClass.SendData)) {
-                ZWaveNode node = this.controller.getNode(arg0.getMessageNode());
+                ZWaveNode node = controller.getNode(arg0.getMessageNode());
 
                 if (node != null && !node.isListening() && !node.isFrequentlyListening()) {
                     arg0Listening = false;
                     ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) node
-                            .getCommandClass(CommandClass.WAKE_UP);
+                            .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
 
                     if (wakeUpCommandClass != null && wakeUpCommandClass.isAwake()) {
                         arg0Awake = true;
@@ -724,7 +708,7 @@ public class SerialMessage {
                 if (node != null && !node.isListening() && !node.isFrequentlyListening()) {
                     arg1Listening = false;
                     ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) node
-                            .getCommandClass(CommandClass.WAKE_UP);
+                            .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
 
                     if (wakeUpCommandClass != null && wakeUpCommandClass.isAwake()) {
                         arg1Awake = true;
@@ -748,13 +732,14 @@ public class SerialMessage {
                 return 1;
             }
 
-            int res = arg0.priority.compareTo(arg1.priority);
+            // int res = arg0.priority.compareTo(arg1.priority);
 
-            if (res == 0 && arg0 != arg1) {
-                res = (arg0.sequenceNumber < arg1.sequenceNumber ? -1 : 1);
-            }
+            // if (res == 0 && arg0 != arg1) {
+            // res = (arg0.sequenceNumber < arg1.sequenceNumber ? -1 : 1);
+            // }
 
-            return res;
+            return 0;
         }
     }
+
 }

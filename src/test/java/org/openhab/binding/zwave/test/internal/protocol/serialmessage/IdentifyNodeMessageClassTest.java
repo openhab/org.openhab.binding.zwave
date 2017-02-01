@@ -23,6 +23,8 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Generic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.IdentifyNodeMessageClass;
 
 /**
@@ -45,9 +47,12 @@ public class IdentifyNodeMessageClassTest {
     ArgumentCaptor<Specific> specificClass;
 
     ZWaveNode runIdentifyNodeTest(byte[] packetData) {
-        byte[] outgoing = { 0x01, 0x04, 0x00, 0x41, 0x01, (byte) 0xBB };
-        SerialMessage outgoingMsg = new SerialMessage(outgoing);
+        // byte[] outgoing = { 0x01, 0x04, 0x00, 0x41, 0x01, (byte) 0xBB };
+        // SerialMessage outgoingMsg = new SerialMessage(outgoing);
         SerialMessage incomingMsg = new SerialMessage(packetData);
+        ZWaveSerialPayload request = new IdentifyNodeMessageClass().doRequest(1);
+
+        ZWaveTransaction transaction = new ZWaveTransaction(request);
 
         // Check the packet is not corrupted and is a command class request
         assertEquals(true, incomingMsg.isValid);
@@ -94,7 +99,7 @@ public class IdentifyNodeMessageClassTest {
 
         IdentifyNodeMessageClass handler = new IdentifyNodeMessageClass();
         try {
-            handler.handleResponse(controller, outgoingMsg, incomingMsg);
+            handler.handleResponse(controller, transaction, incomingMsg);
         } catch (ZWaveSerialMessageException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -114,9 +119,9 @@ public class IdentifyNodeMessageClassTest {
         assertEquals(security.getValue(), false);
         assertEquals(beaming.getValue(), true);
         assertEquals(maxBaud.getValue(), new Integer(40000));
-        assertEquals(basicClass.getValue(), Basic.STATIC_CONTROLLER);
-        assertEquals(genericClass.getValue(), Generic.STATIC_CONTROLLER);
-        assertEquals(specificClass.getValue(), Specific.PC_CONTROLLER);
+        assertEquals(basicClass.getValue(), Basic.BASIC_TYPE_STATIC_CONTROLLER);
+        assertEquals(genericClass.getValue(), Generic.GENERIC_TYPE_STATIC_CONTROLLER);
+        assertEquals(specificClass.getValue(), Specific.SPECIFIC_TYPE_PC_CONTROLLER);
     }
 
     @Test
@@ -131,9 +136,9 @@ public class IdentifyNodeMessageClassTest {
         assertEquals(security.getValue(), false);
         assertEquals(beaming.getValue(), true);
         assertEquals(maxBaud.getValue(), new Integer(40000));
-        assertEquals(basicClass.getValue(), Basic.CONTROLLER);
-        assertEquals(genericClass.getValue(), Generic.REMOTE_CONTROLLER);
-        assertEquals(specificClass.getValue(), Specific.SIMPLE_REMOTE_CONTROLLER);
+        assertEquals(basicClass.getValue(), Basic.BASIC_TYPE_CONTROLLER);
+        assertEquals(genericClass.getValue(), Generic.GENERIC_TYPE_GENERIC_CONTROLLER);
+        assertEquals(specificClass.getValue(), Specific.SPECIFIC_TYPE_REMOTE_CONTROL_SIMPLE);
     }
 
 }

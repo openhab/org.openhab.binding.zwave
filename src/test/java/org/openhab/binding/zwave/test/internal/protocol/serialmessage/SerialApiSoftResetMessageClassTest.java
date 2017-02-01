@@ -31,7 +31,7 @@ public class SerialApiSoftResetMessageClassTest {
         SerialMessage msg;
         SerialApiSoftResetMessageClass handler = new SerialApiSoftResetMessageClass();
 
-        msg = handler.doRequest();
+        msg = handler.doRequest().getSerialMessage();
         msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
     }

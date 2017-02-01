@@ -48,11 +48,11 @@ public class ZWaveThingChannel {
         // Get the converter
         CommandClass commandClass = ZWaveCommandClass.CommandClass.getCommandClass(commandClassName);
         if (commandClass == null) {
-            // logger.warn("NODE {}: Error finding command class {} on channel {}", nodeId, uid, commandClassName);
+            // logger.debug("NODE {}: Error finding command class {} on channel {}", nodeId, uid, commandClassName);
         } else {
             this.converter = ZWaveCommandClassConverter.getConverter(controller, commandClass);
             if (this.converter == null) {
-                // logger.warn("NODE {}: No converter found for {}, class {}", nodeId, uid, commandClassName);
+                // logger.debug("NODE {}: No converter found for {}, class {}", nodeId, uid, commandClassName);
             }
         }
     }

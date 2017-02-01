@@ -8,8 +8,6 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -24,7 +22,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  *
  * @author Chris Jackson
  */
-@XStreamAlias("multiLevelToggleSwitchCommandClass")
+@XStreamAlias("COMMAND_CLASS_SWITCH_TOGGLE_MULTILEVEL")
 public class ZWaveMultiLevelToggleSwitchCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
@@ -50,25 +48,6 @@ public class ZWaveMultiLevelToggleSwitchCommandClass extends ZWaveCommandClass {
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.SWITCH_TOGGLE_MULTILEVEL;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received multi level toggle switch command (v{})", this.getNode().getNodeId(),
-                this.getVersion());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            default:
-                logger.warn(String.format("NODE %d: Unsupported Command %d for command class %s (0x%02X).",
-                        this.getNode().getNodeId(), command, this.getCommandClass().getLabel(),
-                        this.getCommandClass().getKey()));
-        }
+        return CommandClass.COMMAND_CLASS_SWITCH_TOGGLE_MULTILEVEL;
     }
 }

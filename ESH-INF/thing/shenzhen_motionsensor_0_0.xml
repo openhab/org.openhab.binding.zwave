@@ -16,24 +16,24 @@ PIR Motion Sensor<br /><h2>Inclusion Information</h2><p>1. Remove the sensor cov
       <channel id="sensor_binary" typeId="sensor_binary">
         <label>Binary Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
         </properties>
       </channel>
       <channel id="sensor_luminance" typeId="sensor_luminance">
         <label>Sensor (luminance)</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=LUMINANCE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=LUMINANCE</property>
         </properties>
       </channel>
       <channel id="alarm_burglar" typeId="alarm_burglar">
         <label>Alarm (burglar)</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=BURGLAR</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
         <properties>
-          <property name="binding:*:PercentType">BATTERY</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
       </channel>
     </channels>
@@ -60,7 +60,7 @@ PIR Motion Sensor<br /><h2>Inclusion Information</h2><p>1. Remove the sensor cov
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="8" max="255">
         <label>1: Sensitivity Level Setting</label>
-        <description>This parameter defines the sensitivity of PIR detector. 8 means high sensitivity and 255 means lowest sensitivity</description>
+        <description>This parameter defines the sensitivity of PIR sensor. Where 8 = highest &amp; 255 = lowest sensitivity</description>
         <default>12</default>
       </parameter>
 

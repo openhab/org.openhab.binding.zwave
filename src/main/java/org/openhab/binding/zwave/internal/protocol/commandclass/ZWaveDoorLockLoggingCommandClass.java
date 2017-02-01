@@ -8,20 +8,18 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,16 +31,16 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  *
  * @author Chris Jackson
  */
-@XStreamAlias("doorLockLoggingCommandClass")
+@XStreamAlias("COMMAND_CLASS_DOOR_LOCK_LOGGING")
 public class ZWaveDoorLockLoggingCommandClass extends ZWaveCommandClass implements ZWaveCommandClassInitialization {
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveDoorLockLoggingCommandClass.class);
 
     private static final int LOGGING_SUPPORTED_GET = 1;
-    private static final int LOGGING_SUPPORTED_REPORT = 2;
+    private static final int DOOR_LOCK_LOGGING_RECORDS_SUPPORTED_REPORT = 2;
     private static final int LOGGING_RECORD_GET = 3;
-    private static final int LOGGING_RECORD_REPORT = 4;
+    private static final int DOOR_LOCK_LOGGING_RECORD_REPORT = 4;
 
     private int supportedMessages = -1;
 
@@ -62,88 +60,61 @@ public class ZWaveDoorLockLoggingCommandClass extends ZWaveCommandClass implemen
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.DOOR_LOCK_LOGGING;
+        return CommandClass.COMMAND_CLASS_DOOR_LOCK_LOGGING;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received door lock logging command (v{})", this.getNode().getNodeId(),
-                this.getVersion());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case LOGGING_SUPPORTED_REPORT:
-                supportedMessages = serialMessage.getMessagePayloadByte(offset + 1);
-                logger.debug("NODE {}: LOGGING_SUPPORTED_REPORT supports {} entries", this.getNode().getNodeId(),
-                        supportedMessages);
-                break;
-            case LOGGING_RECORD_REPORT:
-                LogType eventType = LogType.getLogType(serialMessage.getMessagePayloadByte(offset + 1));
-                int eventOffset = serialMessage.getMessagePayloadByte(offset + 9);
-                if (eventOffset > supportedMessages) {
-                    eventOffset = supportedMessages;
-                }
-                int year = serialMessage.getMessagePayloadByte(offset + 2) << 8
-                        + serialMessage.getMessagePayloadByte(offset + 3);
-                int month = serialMessage.getMessagePayloadByte(offset + 4) & 0x0f;
-                int day = serialMessage.getMessagePayloadByte(offset + 5) & 0x1f;
-                int hour = serialMessage.getMessagePayloadByte(offset + 6) & 0x1f;
-                int minute = serialMessage.getMessagePayloadByte(offset + 7) & 0x3f;
-                int second = serialMessage.getMessagePayloadByte(offset + 8) & 0x3f;
-                boolean valid = ((serialMessage.getMessagePayloadByte(offset + 6) & 0xe0) > 0) ? true : false;
+    @ZWaveResponseHandler(id = DOOR_LOCK_LOGGING_RECORDS_SUPPORTED_REPORT, name = "DOOR_LOCK_LOGGING_RECORDS_SUPPORTED_REPORT")
+    public void handleDoorLockLoggingRecordsSupportedReport(ZWaveCommandClassPayload payload, int endpoint) {
+        supportedMessages = payload.getPayloadByte(2);
+        logger.debug("NODE {}: DOOR_LOCK_LOGGING_RECORDS_SUPPORTED_REPORT supports {} entries", getNode().getNodeId(),
+                supportedMessages);
+    }
 
-                int userCode = serialMessage.getMessagePayloadByte(offset + 10);
-                int userCodeLength = serialMessage.getMessagePayloadByte(offset + 11);
+    @ZWaveResponseHandler(id = DOOR_LOCK_LOGGING_RECORD_REPORT, name = "DOOR_LOCK_LOGGING_RECORD_REPORT")
+    public void handleDoorLockConfigReport(ZWaveCommandClassPayload payload, int endpoint) {
 
-                logger.debug("NODE {}: Received door lock log report {}", this.getNode().getNodeId(), eventType);
-                break;
-            default:
-                logger.warn(String.format("NODE %d: Unsupported Command %d for command class %s (0x%02X).",
-                        this.getNode().getNodeId(), command, this.getCommandClass().getLabel(),
-                        this.getCommandClass().getKey()));
+        LogType eventType = LogType.getLogType(payload.getPayloadByte(2));
+        int eventOffset = payload.getPayloadByte(10);
+        if (eventOffset > supportedMessages) {
+            eventOffset = supportedMessages;
         }
+        int year = payload.getPayloadByte(3) << 8 + payload.getPayloadByte(4);
+        int month = payload.getPayloadByte(5) & 0x0f;
+        int day = payload.getPayloadByte(6) & 0x1f;
+        int hour = payload.getPayloadByte(7) & 0x1f;
+        int minute = payload.getPayloadByte(8) & 0x3f;
+        int second = payload.getPayloadByte(9) & 0x3f;
+        boolean valid = ((payload.getPayloadByte(7) & 0xe0) > 0) ? true : false;
+
+        int userCode = payload.getPayloadByte(11);
+        int userCodeLength = payload.getPayloadByte(12);
+
+        logger.debug("NODE {}: Received door lock log report {}", getNode().getNodeId(), eventType);
     }
 
-    public SerialMessage getSupported() {
+    public ZWaveCommandClassTransactionPayload getSupported() {
         logger.debug("NODE {}: Creating new message for application command LOGGING_SUPPORTED_GET",
-                this.getNode().getNodeId());
-        SerialMessage message = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write((byte) this.getNode().getNodeId());
-        outputData.write(2);
-        outputData.write((byte) getCommandClass().getKey());
-        outputData.write((byte) LOGGING_SUPPORTED_GET);
-        message.setMessagePayload(outputData.toByteArray());
-        return message;
+                getNode().getNodeId());
+
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                LOGGING_SUPPORTED_GET).withPriority(TransactionPriority.Config)
+                        .withExpectedResponseCommand(DOOR_LOCK_LOGGING_RECORDS_SUPPORTED_REPORT).build();
     }
 
-    public SerialMessage getEntry(int id) {
-        logger.debug("NODE {}: Creating new message for application command LOGGING_RECORD_GET",
-                this.getNode().getNodeId());
-        SerialMessage message = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write((byte) this.getNode().getNodeId());
-        outputData.write(3);
-        outputData.write((byte) getCommandClass().getKey());
-        outputData.write((byte) LOGGING_RECORD_GET);
-        outputData.write((byte) id);
-        message.setMessagePayload(outputData.toByteArray());
-        return message;
+    public ZWaveCommandClassTransactionPayload getEntry(int id) {
+        logger.debug("NODE {}: Creating new message for application command LOGGING_RECORD_GET", getNode().getNodeId());
+
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                LOGGING_RECORD_GET).withPayload(id).withPriority(TransactionPriority.Config)
+                        .withExpectedResponseCommand(DOOR_LOCK_LOGGING_RECORD_REPORT).build();
     }
 
     @Override
-    public Collection<SerialMessage> initialize(boolean refresh) {
+    public Collection<ZWaveCommandClassTransactionPayload> initialize(boolean refresh) {
         if (refresh == false && supportedMessages != -1) {
             return null;
         }
-        Collection<SerialMessage> result = new ArrayList<SerialMessage>();
+        Collection<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
         result.add(getSupported());
         return result;
     }

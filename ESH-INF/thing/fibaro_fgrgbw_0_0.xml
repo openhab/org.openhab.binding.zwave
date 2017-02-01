@@ -14,68 +14,68 @@
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL,BASIC</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="sensor_power" typeId="sensor_power">
         <label>Sensor (power)</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=POWER</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=POWER</property>
         </properties>
       </channel>
       <channel id="meter_watts" typeId="meter_watts">
         <label>Electric meter (watts)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER;type=E_W</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
         <label>Electric meter (kWh)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER;type=E_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
         </properties>
       </channel>
       <channel id="color_color" typeId="color_color">
         <label>Color</label>
         <properties>
-          <property name="binding:*:HSBType">COLOR;colorMode=RGB</property>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC;</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL;</property>
+          <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR;colorMode=RGB</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC;</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL;</property>
         </properties>
       </channel>
       <channel id="scene_number_param72" typeId="scene_number">
         <label>Start animation</label>
         <properties>
-          <property name="binding:*:DecimalType">CONFIGURATION;parameter=72</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=72</property>
         </properties>
       </channel>
       <channel id="switch_dimmer2" typeId="switch_dimmer">
         <label>Red</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:2,BASIC:2</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:2,BASIC:2</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:2,COMMAND_CLASS_BASIC:2</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:2,COMMAND_CLASS_BASIC:2</property>
         </properties>
       </channel>
       <channel id="switch_dimmer3" typeId="switch_dimmer">
         <label>Green</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:3,BASIC:3</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:3,BASIC:3</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:3,COMMAND_CLASS_BASIC:3</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:3,COMMAND_CLASS_BASIC:3</property>
         </properties>
       </channel>
       <channel id="switch_dimmer4" typeId="switch_dimmer">
         <label>Blue</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:4,BASIC:4</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:4,BASIC:4</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:4,COMMAND_CLASS_BASIC:4</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:4,COMMAND_CLASS_BASIC:4</property>
         </properties>
       </channel>
       <channel id="switch_dimmer5" typeId="switch_dimmer">
         <label>White</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:5,BASIC:5</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:5,BASIC:5</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:5,COMMAND_CLASS_BASIC:5</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:5,COMMAND_CLASS_BASIC:5</property>
         </properties>
       </channel>
     </channels>

@@ -8,8 +8,6 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -24,7 +22,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  *
  * @author Chris Jackson
  */
-@XStreamAlias("deviceResetLocallyCommandClass")
+@XStreamAlias("COMMAND_CLASS_DEVICE_RESET_LOCALLY")
 public class ZWaveDeviceResetLocallyCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
@@ -51,23 +49,6 @@ public class ZWaveDeviceResetLocallyCommandClass extends ZWaveCommandClass {
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.DEVICE_RESET_LOCALLY;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpointId)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received Device Reset Locally Request", this.getNode().getNodeId());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case DEVICE_RESET_REPORT:
-                // TODO: Send event notification
-                break;
-        }
+        return CommandClass.COMMAND_CLASS_DEVICE_RESET_LOCALLY;
     }
 }

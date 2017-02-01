@@ -14,42 +14,42 @@
       <channel id="scene_number" typeId="scene_number">
         <label>Scene Number</label>
         <properties>
-          <property name="binding:*:DecimalType">SCENE_ACTIVATION</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SCENE_ACTIVATION</property>
         </properties>
       </channel>
       <channel id="sensor_binary" typeId="sensor_binary">
         <label>Binary Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
         </properties>
       </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (Temperature)</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="sensor_door" typeId="sensor_door">
         <label>Door Sensor</label>
         <properties>
-          <property name="binding:*:OpenClosedType">ALARM;type=ACCESS_CONTROL</property>
+          <property name="binding:*:OpenClosedType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
         </properties>
       </channel>
       <channel id="alarm_tamper" typeId="alarm_tamper">
         <label>Tamper Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=BURGLAR</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
         <properties>
-          <property name="binding:*:PercentType">BATTERY</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
       </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm (general)</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_ALARM;type=GENERAL</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_ALARM;type=GENERAL</property>
         </properties>
       </channel>
     </channels>
@@ -59,7 +59,7 @@
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGK101</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0701:1001</property>
+      <property name="manufacturerRef">0701:1001,0701:3001</property>
       <property name="versionMin">3.2</property>
       <property name="dbReference">381</property>
       <property name="defaultAssociations">1</property>

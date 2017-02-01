@@ -14,12 +14,12 @@
       <channel id="notification_power_management" typeId="notification_power_management">
         <label>Power Management Notification</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM,BASIC;type=POWER_MANAGEMENT</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM,COMMAND_CLASS_BASIC;type=POWER_MANAGEMENT</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
         <properties>
-          <property name="binding:*:PercentType">BATTERY</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
       </channel>
     </channels>

@@ -14,73 +14,73 @@
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
         </properties>
       </channel>
       <channel id="sensor_binary" typeId="sensor_binary">
         <label>Binary Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
         </properties>
       </channel>
       <channel id="meter_watts" typeId="meter_watts">
         <label>Electric meter (watts)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER;type=E_W</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
         <label>Electric meter (kWh)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER;type=E_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
         </properties>
       </channel>
       <channel id="alarm_power" typeId="alarm_power">
         <label>Alarm (power)</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=POWER_MANAGEMENT</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
         </properties>
       </channel>
       <channel id="switch_binary1" typeId="switch_binary">
         <label>Switch 1</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY:1</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1</property>
         </properties>
       </channel>
       <channel id="meter_watts1" typeId="meter_watts">
         <label>Electric meter (watts) 1</label>
         <properties>
-          <property name="binding:*:DecimalType">METER:1;type=E_W</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_W</property>
         </properties>
       </channel>
       <channel id="meter_kwh1" typeId="meter_kwh">
         <label>Electric meter (kWh) 1</label>
         <properties>
-          <property name="binding:*:DecimalType">METER:1;type=E_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_KWh</property>
         </properties>
       </channel>
       <channel id="sensor_binary2" typeId="sensor_binary">
         <label>Binary Sensor 2</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY:2</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY:2</property>
         </properties>
       </channel>
       <channel id="alarm_power2" typeId="alarm_power">
         <label>Alarm (power) 2</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM:2;type=POWER_MANAGEMENT</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:2;type=POWER_MANAGEMENT</property>
         </properties>
       </channel>
       <channel id="sensor_binary3" typeId="sensor_binary">
         <label>Binary Sensor 3</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY:3</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY:3</property>
         </properties>
       </channel>
       <channel id="alarm_power3" typeId="alarm_power">
         <label>Alarm (power) 3</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM:3;type=POWER_MANAGEMENT</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:3;type=POWER_MANAGEMENT</property>
         </properties>
       </channel>
     </channels>

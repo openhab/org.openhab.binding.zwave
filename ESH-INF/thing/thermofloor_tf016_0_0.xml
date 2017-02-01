@@ -14,37 +14,37 @@
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
         <label>Electric meter (kWh)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER;type=E_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
         </properties>
       </channel>
       <channel id="thermostat_mode" typeId="thermofloor_tf016_00_000_thermostat_mode">
         <label>Thermostat mode</label>
         <properties>
-          <property name="binding:*:DecimalType">THERMOSTAT_MODE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_MODE</property>
         </properties>
       </channel>
       <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
         <label>Setpoint (heating)</label>
         <properties>
-          <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=HEATING</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING</property>
         </properties>
       </channel>
       <channel id="thermostat_setpoint_furnace" typeId="thermostat_setpoint">
         <label>Setpoint (furnace)</label>
         <properties>
-          <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=FURNACE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=FURNACE</property>
         </properties>
       </channel>
       <channel id="thermostat_setpoint_heating_econ" typeId="thermostat_setpoint">
         <label>Setpoint (economy)</label>
         <properties>
-          <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=HEATING_ECON</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING_ECON</property>
         </properties>
       </channel>
     </channels>
@@ -62,6 +62,26 @@
 
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_2" type="integer" groupName="configuration">
+        <label>1: Operation mode</label>
+        <description><![CDATA[
+Defines Operation Mode of thermostat<br /><h1>Overview</h1><p>0....OFF(0x00)</p> <p>1.....HEAT (0x01)</p> <p>2.....COOL (0x02)</p> <p>11....ENERGY SAVE HEAT (0x0B)</p> <p>Default value 1</p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">OFF</option>
+          <option value="1">Heat</option>
+          <option value="2">Cool</option>
+          <option value="11">ENERGY SAVE HEAT</option>
+        </options>
+      </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter-group name="association">

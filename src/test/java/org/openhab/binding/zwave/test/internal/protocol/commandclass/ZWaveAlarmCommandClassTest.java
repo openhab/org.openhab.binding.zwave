@@ -14,14 +14,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.AlarmType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.ReportType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.ZWaveAlarmValueEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveAlarmCommandClass}.
@@ -42,7 +42,7 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
 
         // assertEquals(event.getNodeId(), 40);
         assertEquals(event.getEndpoint(), 0);
-        assertEquals(event.getCommandClass(), CommandClass.ALARM);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_ALARM);
         assertEquals(event.getReportType(), ReportType.ALARM);
         assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.GENERAL);
         assertEquals(event.getAlarmStatus(), 0x00);
@@ -50,8 +50,8 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void Alarm_Smoke() {
-        byte[] packetData = { 0x01, 0x10, 0x00, 0x04, 0x10, 0x28, 0x0A, 0x71, 0x05, 0x00, 0x00, 0x00, (byte) 0xFF, 0x01,
-                0x00, 0x01, 0x03, 0x51 };
+        byte[] packetData = { 0x01, 0x10, 0x00, 0x04, 0x10, 0x28, 0x09, 0x71, 0x05, 0x00, 0x00, 0x00, (byte) 0xFF, 0x01,
+                0x00, 0x01, 0x03, 0x52 };
 
         List<ZWaveEvent> events = processCommandClassMessage(packetData, 3);
 
@@ -61,7 +61,7 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
 
         // assertEquals(event.getNodeId(), 40);
         assertEquals(event.getEndpoint(), 0);
-        assertEquals(event.getCommandClass(), CommandClass.ALARM);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_ALARM);
         assertEquals(event.getReportType(), ReportType.NOTIFICATION);
         assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.SMOKE);
         assertEquals(event.getAlarmStatus(), 0xFF);
@@ -70,8 +70,8 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void Notification_Burglar_Motion() {
-        byte[] packetData = { 0x01, 0x10, 0x00, 0x04, 0x10, 0x28, 0x0A, 0x71, 0x05, 0x00, 0x00, 0x00, (byte) 0xFF, 0x07,
-                0x08, 0x00, 0x05, 0x58 };
+        byte[] packetData = { 0x01, 0x10, 0x00, 0x04, 0x10, 0x28, 0x09, 0x71, 0x05, 0x00, 0x00, 0x00, (byte) 0xFF, 0x07,
+                0x08, 0x00, 0x05, 0x5B };
 
         List<ZWaveEvent> events = processCommandClassMessage(packetData, 3);
 
@@ -81,7 +81,7 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
 
         // assertEquals(event.getNodeId(), 40);
         assertEquals(event.getEndpoint(), 0);
-        assertEquals(event.getCommandClass(), CommandClass.ALARM);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_ALARM);
         assertEquals(event.getReportType(), ReportType.NOTIFICATION);
         assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.BURGLAR);
         assertEquals(event.getAlarmEvent(), 8);
@@ -90,8 +90,8 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void Notification_AccessControl_Door() {
-        byte[] packetData = { 0x01, 0x10, 0x00, 0x04, 0x10, 0x28, 0x0A, 0x71, 0x05, 0x00, 0x00, 0x00, (byte) 0xFF, 0x06,
-                0x16, 0x00, 0x05, 0x47 };
+        byte[] packetData = { 0x01, 0x10, 0x00, 0x04, 0x10, 0x28, 0x09, 0x71, 0x05, 0x00, 0x00, 0x00, (byte) 0xFF, 0x06,
+                0x16, 0x00, 0x05, 0x44 };
 
         List<ZWaveEvent> events = processCommandClassMessage(packetData, 3);
 
@@ -101,7 +101,7 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
 
         // assertEquals(event.getNodeId(), 40);
         assertEquals(event.getEndpoint(), 0);
-        assertEquals(event.getCommandClass(), CommandClass.ALARM);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_ALARM);
         assertEquals(event.getReportType(), ReportType.NOTIFICATION);
         assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.ACCESS_CONTROL);
         assertEquals(event.getAlarmEvent(), 22);
@@ -110,8 +110,8 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void Notification_PowerManagement_PowerApplied() {
-        byte[] packetData = { 0x01, 0x10, 0x00, 0x04, 0x00, 0x0E, 0x0A, 0x71, 0x05, 0x00, 0x00, 0x00, (byte) 0xFF, 0x08,
-                0x01, 0x00, 0x00, 0x6D };
+        byte[] packetData = { 0x01, 0x10, 0x00, 0x04, 0x00, 0x0E, 0x09, 0x71, 0x05, 0x00, 0x00, 0x00, (byte) 0xFF, 0x08,
+                0x01, 0x00, 0x00, 0x6E };
 
         List<ZWaveEvent> events = processCommandClassMessage(packetData, 3);
 
@@ -121,7 +121,7 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
 
         // assertEquals(event.getNodeId(), 40);
         assertEquals(event.getEndpoint(), 0);
-        assertEquals(event.getCommandClass(), CommandClass.ALARM);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_ALARM);
         assertEquals(event.getReportType(), ReportType.NOTIFICATION);
         assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.POWER_MANAGEMENT);
         assertEquals(event.getAlarmEvent(), 1);
@@ -130,85 +130,79 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void getSupportedMessage() {
-        ZWaveAlarmCommandClass cls = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.ALARM);
-        SerialMessage msg;
+        ZWaveAlarmCommandClass cls = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_ALARM);
+        ZWaveCommandClassTransactionPayload msg;
 
         cls.setVersion(1);
-        msg = cls.getSupportedMessage();
-        assertNull(msg);
+        assertNull(cls.getSupportedMessage());
 
-        byte[] expectedResponseV2 = { 1, 9, 0, 19, 99, 2, 113, 7, 0, 0, -14 };
+        byte[] expectedResponseV2 = { 113, 7 };
         cls.setVersion(2);
         msg = cls.getSupportedMessage();
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV2));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV2));
     }
 
     @Test
     public void getSupportedEventMessage() {
-        ZWaveAlarmCommandClass cls = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.ALARM);
-        SerialMessage msg;
+        ZWaveAlarmCommandClass cls = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_ALARM);
+        ZWaveCommandClassTransactionPayload msg;
 
         cls.setVersion(1);
-        msg = cls.getSupportedEventMessage(1);
-        assertNull(msg);
+        assertNull(cls.getSupportedEventMessage(1));
 
-        byte[] expectedResponseV3 = { 1, 10, 0, 19, 99, 3, 113, 1, 1, 0, 0, -9 };
+        byte[] expectedResponseV3 = { 113, 1, 1 };
         cls.setVersion(3);
         msg = cls.getSupportedEventMessage(1);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV3));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV3));
     }
 
     @Test
     public void getMessage() {
-        ZWaveAlarmCommandClass cls = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.ALARM);
-        SerialMessage msg;
+        ZWaveAlarmCommandClass cls = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_ALARM);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 10, 0, 19, 99, 3, 113, 4, 6, 0, 0, -11 };
+        byte[] expectedResponseV1 = { 113, 4, 6 };
         cls.setVersion(1);
-        msg = cls.getMessage(AlarmType.ACCESS_CONTROL);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        msg = cls.getMessage(AlarmType.ACCESS_CONTROL, 0);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
 
-        byte[] expectedResponseV2 = { 1, 11, 0, 19, 99, 4, 113, 4, 0, 6, 0, 0, -13 };
+        byte[] expectedResponseV2 = { 113, 4, 0, 6 };
         cls.setVersion(2);
-        msg = cls.getMessage(AlarmType.ACCESS_CONTROL);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV2));
+        msg = cls.getMessage(AlarmType.ACCESS_CONTROL, 0);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV2));
 
-        byte[] expectedResponseV3 = { 1, 12, 0, 19, 99, 5, 113, 4, 0, 6, 1, 0, 0, -12 };
+        byte[] expectedResponseV3 = { 113, 4, 0, 6, 1 };
         cls.setVersion(3);
-        msg = cls.getMessage(AlarmType.ACCESS_CONTROL);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV3));
+        msg = cls.getMessage(AlarmType.ACCESS_CONTROL, 1);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV3));
     }
 
     @Test
     public void getNotificationReportMessage() {
-        ZWaveAlarmCommandClass cls = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.ALARM);
-        SerialMessage msg;
+        ZWaveAlarmCommandClass cls = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_ALARM);
+        ZWaveCommandClassTransactionPayload msg;
 
         cls.setVersion(1);
         msg = cls.getNotificationReportMessage(AlarmType.BURGLAR, 1);
         assertNull(msg);
 
-        byte[] expectedResponseV2 = { 1, 15, 0, 19, 99, 8, 113, 5, 0, 0, 0, -1, 7, 1, 0, 0, 5 };
+        byte[] expectedResponseV2 = { 113, 5, 0, 0, 0, -1, 7, 1 };
         cls.setVersion(2);
         msg = cls.getNotificationReportMessage(AlarmType.BURGLAR, 1);
 
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV2));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV2));
     }
 
     @Test
     public void handleSupportedReport() {
-        byte[] packetData = { 0x01, 0x0A, 0x00, 0x04, 0x00, 0x49, 0x04, 0x71, 0x08, 0x01, (byte) 0x80, 0x44 };
+        byte[] packetData = { 0x71, 0x08, 0x01, (byte) 0x80 };
 
-        ZWaveAlarmCommandClass alarmCommandClass = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.ALARM);
-        SerialMessage serialMessage = new SerialMessage(packetData);
-        try {
-            alarmCommandClass.handleApplicationCommandRequest(serialMessage, 4, 0);
+        ZWaveAlarmCommandClass alarmCommandClass = (ZWaveAlarmCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_ALARM);
+        ZWaveCommandClassPayload serialMessage = new ZWaveCommandClassPayload(packetData);
+        alarmCommandClass.handleNotificationSupportedReport(serialMessage, 0);
 
-            assertEquals(1, alarmCommandClass.getSupportedAlarms().size());
-            assertEquals(AlarmType.BURGLAR, alarmCommandClass.getSupportedAlarms().iterator().next());
-        } catch (ZWaveSerialMessageException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        assertEquals(1, alarmCommandClass.getSupportedAlarms().size());
+        assertEquals(AlarmType.BURGLAR, alarmCommandClass.getSupportedAlarms().iterator().next());
     }
 }

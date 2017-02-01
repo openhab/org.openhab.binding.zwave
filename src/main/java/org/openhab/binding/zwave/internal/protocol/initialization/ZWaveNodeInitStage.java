@@ -17,16 +17,16 @@ package org.openhab.binding.zwave.internal.protocol.initialization;
 public enum ZWaveNodeInitStage {
     EMPTYNODE(true),
     PROTOINFO(true),
+    IDENTIFY_NODE(true),
     INIT_NEIGHBORS(true),
     FAILED_CHECK(true),
     WAIT(true),
     PING(true),
-    DETAILS(true),
+    REQUEST_NIF(true),
 
     // States below form the main part of the initialisation
     // For newly included devices, we start here
     INCLUSION_START(true),
-    IDENTIFY_NODE(true),
     MANUFACTURER(true),
     SECURITY_REPORT(true),
     APP_VERSION(true),
@@ -48,13 +48,15 @@ public enum ZWaveNodeInitStage {
     DYNAMIC_VALUES(false),
     DYNAMIC_END(false),
 
+    DONE(false),
+
     // States below are performed during initialisation, but also during heal
     HEAL_START(false),
+    UPDATE_NEIGHBORS(false),
+    GET_NEIGHBORS(false),
     DELETE_ROUTES(false),
     RETURN_ROUTES(false),
-    NEIGHBORS(false),
-
-    DONE(false);
+    HEAL_END(false);
 
     private boolean mandatory;
 

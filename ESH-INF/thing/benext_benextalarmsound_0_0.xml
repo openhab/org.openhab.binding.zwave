@@ -14,13 +14,13 @@
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
         </properties>
       </channel>
     </channels>

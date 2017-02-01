@@ -14,9 +14,11 @@ import java.util.Arrays;
 
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveManufacturerSpecificCommandClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveManufacturerSpecificCommandClass}.
@@ -26,27 +28,27 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveManufacture
 public class ZWaveManufacturerSpecificCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
-    public void getManufacturerSpecificMessage() {
+    public void getValueMessage() {
         ZWaveManufacturerSpecificCommandClass cls = (ZWaveManufacturerSpecificCommandClass) getCommandClass(
-                CommandClass.MANUFACTURER_SPECIFIC);
-        SerialMessage msg;
+                CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 114, 4, 0, 0, -14 };
+        byte[] expectedResponseV1 = { 114, 4 };
         cls.setVersion(1);
         msg = cls.getManufacturerSpecificMessage();
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
     @Test
     public void getManufacturerSpecificDeviceMessage() {
         ZWaveManufacturerSpecificCommandClass cls = (ZWaveManufacturerSpecificCommandClass) getCommandClass(
-                CommandClass.MANUFACTURER_SPECIFIC);
-        SerialMessage msg;
+                CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseSerialNumber = { 1, 10, 0, 19, 99, 3, 114, 6, 1, 0, 0, -13 };
+        byte[] expectedResponseSerialNumber = { 114, 6, 1 };
         cls.setVersion(1);
         msg = cls.getManufacturerSpecificDeviceMessage(1);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseSerialNumber));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseSerialNumber));
     }
 
     @Test
@@ -55,10 +57,11 @@ public class ZWaveManufacturerSpecificCommandClassTest extends ZWaveCommandClass
                 (byte) 0x8B };
 
         ZWaveManufacturerSpecificCommandClass cls = (ZWaveManufacturerSpecificCommandClass) getCommandClass(
-                CommandClass.MANUFACTURER_SPECIFIC);
+                CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC);
         SerialMessage msg = new SerialMessage(packetData);
         try {
-            cls.handleApplicationCommandRequest(msg, 4, 0);
+            ZWaveCommandClassPayload payload = new ZWaveCommandClassPayload(msg);
+            cls.handleApplicationCommandRequest(payload, 0);
             assertEquals(0x010f, cls.getDeviceManufacturer());
             assertEquals(0x0200, cls.getDeviceType());
             assertEquals(0x0104, cls.getDeviceId());

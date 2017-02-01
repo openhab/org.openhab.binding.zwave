@@ -14,6 +14,7 @@
             <channel id="serial_nak" typeId="serial_nak" />
             <channel id="serial_can" typeId="serial_can" />
             <channel id="serial_oof" typeId="serial_oof" />
+            <channel id="serial_cse" typeId="serial_cse" />
         </channels>
 
         <config-description>
@@ -220,15 +221,15 @@ In this mode, only <i>Entry Control Devices</i> such as locks will be securely i
         <item-type>Number</item-type>
         <label>Start Frames</label>
         <description>Counter tracking the number of SOF bytes received</description>
-        <category>Temperature</category>
+        <category></category>
         <state pattern="%d" readOnly="true"></state>
     </channel-type>
 
     <channel-type id="serial_ack">
         <item-type>Number</item-type>
         <label>Frames Acknowledged</label>
-        <description>Counter tracking the number of frames acknowldeged by the controller</description>
-        <category>Temperature</category>
+        <description>Counter tracking the number of frames acknowledged by the controller</description>
+        <category></category>
         <state pattern="%d" readOnly="true"></state>
     </channel-type>
 
@@ -236,7 +237,7 @@ In this mode, only <i>Entry Control Devices</i> such as locks will be securely i
         <item-type>Number</item-type>
         <label>Frames Rejected</label>
         <description>Counter tracking the number of frames rejected by the controller</description>
-        <category>Temperature</category>
+        <category></category>
         <state pattern="%d" readOnly="true"></state>
     </channel-type>
 
@@ -244,7 +245,7 @@ In this mode, only <i>Entry Control Devices</i> such as locks will be securely i
         <item-type>Number</item-type>
         <label>Frames Cancelled</label>
         <description>Counter tracking the number of frames cancelled by the controller</description>
-        <category>Temperature</category>
+        <category></category>
         <state pattern="%d" readOnly="true"></state>
     </channel-type>
 
@@ -252,7 +253,15 @@ In this mode, only <i>Entry Control Devices</i> such as locks will be securely i
         <item-type>Number</item-type>
         <label>OOF Bytes Received</label>
         <description>Counter tracking the number of out of flow bytes received</description>
-        <category>Temperature</category>
+        <category></category>
+        <state pattern="%d" readOnly="true"></state>
+    </channel-type>
+
+    <channel-type id="serial_cse">
+        <item-type>Number</item-type>
+        <label>Received Checksum Errors</label>
+        <description>Counter tracking the number of frames received with checksum errors</description>
+        <category></category>
         <state pattern="%d" readOnly="true"></state>
     </channel-type>
 

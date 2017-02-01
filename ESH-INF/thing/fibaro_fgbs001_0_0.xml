@@ -14,55 +14,55 @@
       <channel id="scene_number" typeId="scene_number">
         <label>Scene Number</label>
         <properties>
-          <property name="binding:*:DecimalType">SCENE_ACTIVATION</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SCENE_ACTIVATION</property>
         </properties>
       </channel>
       <channel id="sensor_binary1" typeId="sensor_binary">
         <label>Binary Sensor 1</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY:1,BASIC:1</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY:1,COMMAND_CLASS_BASIC:1</property>
         </properties>
       </channel>
       <channel id="alarm_general1" typeId="alarm_general">
         <label>Alarm 1</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_ALARM:1</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_ALARM:1</property>
         </properties>
       </channel>
       <channel id="sensor_binary2" typeId="sensor_binary">
         <label>Binary Sensor 2</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY:2,BASIC:2</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY:2,COMMAND_CLASS_BASIC:2</property>
         </properties>
       </channel>
       <channel id="alarm_general2" typeId="alarm_general">
         <label>Alarm 2</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_ALARM:2</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_ALARM:2</property>
         </properties>
       </channel>
       <channel id="sensor_temperature3" typeId="sensor_temperature">
         <label>Temperature 1</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:3;type=TEMPERATURE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:3;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="sensor_temperature4" typeId="sensor_temperature">
         <label>Temperature 2</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:4,BASIC:4</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:4;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="sensor_temperature5" typeId="sensor_temperature">
         <label>Temperature 3</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:5;type=TEMPERATURE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:5;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="sensor_temperature6" typeId="sensor_temperature">
         <label>Temperature 4</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:6;type=TEMPERATURE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:6;type=TEMPERATURE</property>
         </properties>
       </channel>
     </channels>

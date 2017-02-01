@@ -8,6 +8,7 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -15,15 +16,15 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,7 +37,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  */
 
-@XStreamAlias("colorCommandClass")
+@XStreamAlias("COMMAND_CLASS_SWITCH_COLOR")
 public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCommandClassInitialization {
 
     @XStreamOmitField
@@ -77,37 +78,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.COLOR;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received COMMAND_CLASS_SWITCH_COLOR V{}", getNode().getNodeId(), getVersion());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case SWITCH_COLOR_SUPPORTED_REPORT:
-                logger.debug("NODE {}: Process SWITCH_COLOR_SUPPORTED_REPORT", getNode().getNodeId());
-                processColorSupportedReport(serialMessage, offset, endpoint);
-                break;
-            case SWITCH_COLOR_SET:
-                logger.debug("NODE {}: Process Color SWITCH_COLOR_SET", getNode().getNodeId());
-                processColorReport(serialMessage, offset, endpoint);
-                break;
-            case SWITCH_COLOR_REPORT:
-                logger.debug("NODE {}: Process Color SWITCH_COLOR_REPORT", getNode().getNodeId());
-                processColorReport(serialMessage, offset, endpoint);
-                break;
-            default:
-                logger.warn(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
-                        getCommandClass().getLabel(), getCommandClass().getKey()));
-                break;
-        }
+        return CommandClass.COMMAND_CLASS_SWITCH_COLOR;
     }
 
     /**
@@ -118,10 +89,9 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
      * @param endpoint the endpoint or instance number this message is meant for.
      * @throws ZWaveSerialMessageException
      */
-    protected void processColorSupportedReport(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        int deviceColors = serialMessage.getMessagePayloadByte(offset + 1)
-                + serialMessage.getMessagePayloadByte(offset + 2) * 256;
+    @ZWaveResponseHandler(id = SWITCH_COLOR_SUPPORTED_REPORT, name = "SWITCH_COLOR_SUPPORTED_REPORT")
+    public void handleSwitchColorSupportedReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int deviceColors = payload.getPayloadByte(2) + payload.getPayloadByte(3) * 256;
         for (int i = 0; i < 16; ++i) {
             if ((deviceColors & (1 << i)) == (1 << i)) {
                 ZWaveColorType color = ZWaveColorType.getColorType(i);
@@ -156,13 +126,13 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
      * @param endpoint the endpoint or instance number this message is meant for.
      * @throws ZWaveSerialMessageException
      */
-    protected void processColorReport(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        int color = serialMessage.getMessagePayloadByte(offset + 1);
-        int level = serialMessage.getMessagePayloadByte(offset + 2);
+    @ZWaveResponseHandler(id = SWITCH_COLOR_REPORT, name = "SWITCH_COLOR_REPORT")
+    public void handleSwitchColorReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int color = payload.getPayloadByte(2);
+        int level = payload.getPayloadByte(3);
         ZWaveColorType colorType = ZWaveColorType.getColorType(color);
         if (colorType == null) {
-            logger.error("NODE {}: Color report for unknown color {} ({})", getNode().getNodeId(), color, level);
+            logger.debug("NODE {}: Color report for unknown color {} ({})", getNode().getNodeId(), color, level);
             return;
         }
 
@@ -182,12 +152,17 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
         }
     }
 
+    @ZWaveResponseHandler(id = SWITCH_COLOR_SET, name = "SWITCH_COLOR_SET")
+    public void handleSwitchColorSet(ZWaveCommandClassPayload payload, int endpoint) {
+        handleSwitchColorReport(payload, endpoint);
+    }
+
     /**
      * Gets a SerialMessage with the SWITCH_COLOR_GET command
      *
      * @return the serial message
      */
-    public SerialMessage getValueMessage(int color) {
+    public ZWaveCommandClassTransactionPayload getValueMessage(int color) {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", getNode().getNodeId());
             return null;
@@ -195,12 +170,10 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
 
         logger.debug("NODE {}: Creating new message for application command SWITCH_COLOR_GET {}", getNode().getNodeId(),
                 color);
-        SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        byte[] newPayload = { (byte) this.getNode().getNodeId(), 3, (byte) getCommandClass().getKey(),
-                (byte) SWITCH_COLOR_GET, (byte) color };
-        result.setMessagePayload(newPayload);
-        return result;
+
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                SWITCH_COLOR_GET).withExpectedResponseCommand(SWITCH_COLOR_REPORT).withPayload(color)
+                        .withPriority(TransactionPriority.Get).build();
     }
 
     /**
@@ -208,15 +181,13 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
      *
      * @return the serial message
      */
-    public SerialMessage getCapabilityMessage() {
+    public ZWaveCommandClassTransactionPayload getCapabilityMessage() {
         logger.debug("NODE {}: Creating new message for application command SWITCH_COLOR_SUPPORTED_GET",
-                getNode().getNodeId());
-        SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        byte[] newPayload = { (byte) this.getNode().getNodeId(), 2, (byte) getCommandClass().getKey(),
-                (byte) SWITCH_COLOR_SUPPORTED_GET };
-        result.setMessagePayload(newPayload);
-        return result;
+                this.getNode().getNodeId());
+
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                SWITCH_COLOR_SUPPORTED_GET).withExpectedResponseCommand(SWITCH_COLOR_SUPPORTED_REPORT)
+                        .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -226,19 +197,16 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
      * @param level the level to set.
      * @return the serial message
      */
-    public SerialMessage setValueMessage(int channel, int level) {
-        logger.debug("NODE {}: Creating new message for application command SWITCH_COLOR_SET", getNode().getNodeId());
-        SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Set);
-        byte[] newPayload = { (byte) this.getNode().getNodeId(), 4, (byte) getCommandClass().getKey(),
-                (byte) SWITCH_COLOR_SET, (byte) 3, (byte) level };
-        result.setMessagePayload(newPayload);
-        return result;
+    public ZWaveCommandClassTransactionPayload setValueMessage(int channel, int level) {
+        logger.debug("NODE {}: Creating new message for application command COLOR_SET", this.getNode().getNodeId());
+
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                SWITCH_COLOR_SET).withPayload(1, channel, level).withPriority(TransactionPriority.Set).build();
     }
 
     @Override
-    public Collection<SerialMessage> initialize(boolean refresh) {
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+    public Collection<ZWaveCommandClassTransactionPayload> initialize(boolean refresh) {
+        ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
         // If we're already initialized, then don't do it again unless we're refreshing
         if (refresh == true || initialiseDone == false) {
             result.add(getCapabilityMessage());
@@ -251,8 +219,8 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
      *
      * @return collection of requests
      */
-    public Collection<SerialMessage> getColor() {
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+    public Collection<ZWaveCommandClassTransactionPayload> getColor() {
+        ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
         if (refreshList.isEmpty() == false) {
             logger.debug("NODE {}: Color refresh is already in progress", getNode());
             return result;
@@ -275,8 +243,9 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
      *
      * @return collection of requests
      */
-    public Collection<SerialMessage> setColor(int red, int green, int blue, int coldWhite, int warmWhite) {
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+    public Collection<ZWaveCommandClassTransactionPayload> setColor(int red, int green, int blue, int coldWhite,
+            int warmWhite) {
+        ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
 
         if (red > 255) {
             red = 255;
@@ -294,37 +263,26 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
             coldWhite = 255;
         }
 
-        int len;
-        if (getVersion() > 1) {
-            len = 14;
-        } else {
-            len = 13;
-        }
+        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
+        outputData.write(5);
+        outputData.write((byte) ZWaveColorType.RED.getKey());
+        outputData.write((byte) red);
+        outputData.write((byte) ZWaveColorType.GREEN.getKey());
+        outputData.write((byte) green);
+        outputData.write((byte) ZWaveColorType.BLUE.getKey());
+        outputData.write((byte) blue);
+        outputData.write((byte) ZWaveColorType.WARM_WHITE.getKey());
+        outputData.write((byte) warmWhite);
+        outputData.write((byte) ZWaveColorType.COLD_WHITE.getKey());
+        outputData.write((byte) coldWhite);
 
-        SerialMessage msg = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Set);
-        byte[] newPayload = new byte[len + 2];
-        newPayload[0] = (byte) this.getNode().getNodeId();
-        newPayload[1] = (byte) len;
-        newPayload[2] = (byte) getCommandClass().getKey();
-        newPayload[3] = (byte) SWITCH_COLOR_SET;
-        newPayload[4] = 5;
-        newPayload[5] = (byte) ZWaveColorType.RED.getKey();
-        newPayload[6] = (byte) red;
-        newPayload[7] = (byte) ZWaveColorType.GREEN.getKey();
-        newPayload[8] = (byte) green;
-        newPayload[9] = (byte) ZWaveColorType.BLUE.getKey();
-        newPayload[10] = (byte) blue;
-        newPayload[11] = (byte) ZWaveColorType.WARM_WHITE.getKey();
-        newPayload[12] = (byte) warmWhite;
-        newPayload[13] = (byte) ZWaveColorType.COLD_WHITE.getKey();
-        newPayload[14] = (byte) coldWhite;
         if (getVersion() > 1) {
             // Add the transition duration
-            newPayload[15] = (byte) 255;
+            outputData.write((byte) 255);
         }
-        msg.setMessagePayload(newPayload);
-        result.add(msg);
+
+        result.add(new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                SWITCH_COLOR_SET).withPayload(outputData.toByteArray()).withPriority(TransactionPriority.Set).build());
 
         return result;
     }
@@ -423,7 +381,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
          * @param value the value for the event.
          */
         public ZWaveColorValueEvent(int nodeId, int endpoint, Map<ZWaveColorType, Integer> colorMap) {
-            super(nodeId, endpoint, CommandClass.COLOR, 0);
+            super(nodeId, endpoint, CommandClass.COMMAND_CLASS_SWITCH_COLOR, 0);
             this.colorMap = colorMap;
         }
 

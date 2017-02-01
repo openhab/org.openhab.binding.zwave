@@ -14,37 +14,37 @@
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
         <label>Electric meter (kWh)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER;type=E_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
         </properties>
       </channel>
       <channel id="thermostat_mode" typeId="thermofloor_tf016_01_008_thermostat_mode">
         <label>Thermostat mode</label>
         <properties>
-          <property name="binding:*:DecimalType">THERMOSTAT_MODE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_MODE</property>
         </properties>
       </channel>
       <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
         <label>Setpoint (heating)</label>
         <properties>
-          <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=HEATING</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING</property>
         </properties>
       </channel>
       <channel id="thermostat_setpoint_heating_econ" typeId="thermostat_setpoint">
         <label>Setpoint (heating economy)</label>
         <properties>
-          <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=HEATING_ECON</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING_ECON</property>
         </properties>
       </channel>
       <channel id="thermostat_setpoint_furnace" typeId="thermostat_setpoint">
         <label>Setpoint (furnace)</label>
         <properties>
-          <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=FURNACE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=FURNACE</property>
         </properties>
       </channel>
     </channels>

@@ -38,6 +38,9 @@ public class ZWaveBindingConstants {
     public final static String CONFIGURATION_HEALTIME = "heal_time";
     public final static String CONFIGURATION_INCLUSION_MODE = "inclusion_mode";
     public final static String CONFIGURATION_INCLUSIONTIMEOUT = "controller_inclusiontimeout";
+    public final static String CONFIGURATION_DEFAULTWAKEUPPERIOD = "controller_wakeupperiod";
+
+    public final static String CONFIGURATION_NODEID = "node_id";
 
     public final static String CONFIGURATION_SWITCHALLMODE = "switchall_mode";
     public final static String CONFIGURATION_WAKEUPNODE = "wakeup_node";
@@ -81,7 +84,10 @@ public class ZWaveBindingConstants {
     public final static String PROPERTY_CLASS_GENERIC = "zwave_class_generic";
     public final static String PROPERTY_CLASS_SPECIFIC = "zwave_class_specific";
     public final static String PROPERTY_ZWPLUS_DEVICETYPE = "zwave_plus_devicetype";
-    public final static String PROPERTY_WAKEUP_TIME = "zwave_wakeup_time";
+    public final static String PROPERTY_ZWPLUS_ROLETYPE = "zwave_plus_roletype";
+    public final static String PROPERTY_LASTWAKEUP = "zwave_lastwakeup";
+    public final static String PROPERTY_USINGSECURITY = "zwave_secure";
+    public final static String PROPERTY_LASTHEAL = "zwave_lastheal";
 
     public final static String CHANNEL_SERIAL_SOF = "serial_sof";
     public final static String CHANNEL_SERIAL_ACK = "serial_ack";
@@ -114,12 +120,19 @@ public class ZWaveBindingConstants {
             "Z-Wave network inclusion completed");
     public final static I18nConstant EVENT_INCLUSION_FAILED = new I18nConstant("zwave.event.inclusion_failed",
             "Z-Wave network inclusion failed");
+    public final static I18nConstant EVENT_INCLUSION_SECURECOMPLETED = new I18nConstant(
+            "zwave.event.inclusion_securecompleted", "Z-Wave Node {0} secure inclusion complete");
+    public final static I18nConstant EVENT_INCLUSION_SECUREFAILED = new I18nConstant(
+            "zwave.event.inclusion_securefailed", "Z-Wave Node {0} secure inclusion failed");
+
     public final static I18nConstant EVENT_EXCLUSION_STARTED = new I18nConstant("zwave.event.exclusion_started",
             "Z-Wave network exclusion started");
     public final static I18nConstant EVENT_EXCLUSION_COMPLETED = new I18nConstant("zwave.event.exclusion_completed",
             "Z-Wave network exclusion completed");
     public final static I18nConstant EVENT_EXCLUSION_FAILED = new I18nConstant("zwave.event.exclusion_failed",
             "Z-Wave network exclusion failed");
+    public final static I18nConstant EVENT_EXCLUSION_NODEREMOVED = new I18nConstant("zwave.event.exclusion_failed",
+            "Z-Wave network excluded node {0}");
 
     public final static I18nConstant EVENT_NETWORKUPDATE_DONE = new I18nConstant("zwave.event.networkupdate_done",
             "Z-Wave network update completed");
@@ -150,6 +163,11 @@ public class ZWaveBindingConstants {
             "Remove node {0} failed - the controller is busy");
     public final static I18nConstant EVENT_REMOVEFAILED_UNKNOWN = new I18nConstant("zwave.event.removenode_unknown",
             "Remove node {0} failed with unknown error");
+
+    public final static I18nConstant EVENT_HEAL_START = new I18nConstant("zwave.event.heal_start",
+            "Node {0} starting network mesh update");
+    public final static I18nConstant EVENT_HEAL_DONE = new I18nConstant("zwave.event.heal_done",
+            "Node {0} network mesh update complete");
 
     public final static I18nConstant CONFIG_BINDING_POLLINGPERIOD_LABEL = new I18nConstant(
             "zwave.config.binding_pollingperiod_label", "Polling Period");

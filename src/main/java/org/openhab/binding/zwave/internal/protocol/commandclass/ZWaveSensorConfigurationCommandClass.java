@@ -8,11 +8,9 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +23,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  *
  */
-@XStreamAlias("sensorConfigurationCommandClass")
+@XStreamAlias("COMMAND_CLASS_SENSOR_CONFIGURATION")
 public class ZWaveSensorConfigurationCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
@@ -47,24 +45,6 @@ public class ZWaveSensorConfigurationCommandClass extends ZWaveCommandClass {
      */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.SENSOR_CONFIGURATION;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received SENSOR_CONFIGURATION command V{}", getNode().getNodeId(), getVersion());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            default:
-                logger.warn(String.format("NODE %d: Unsupported Command %d for command class %s (0x%02X).",
-                        getNode().getNodeId(), command, getCommandClass().getLabel(), getCommandClass().getKey()));
-                break;
-        }
+        return CommandClass.COMMAND_CLASS_SENSOR_CONFIGURATION;
     }
 }

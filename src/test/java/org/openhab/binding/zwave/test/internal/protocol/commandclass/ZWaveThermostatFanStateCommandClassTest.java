@@ -13,9 +13,9 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveThermostatFanStateCommandClass;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  * Test cases for {@link ZWaveThermostatFanStateCommandClass}.
@@ -27,12 +27,12 @@ public class ZWaveThermostatFanStateCommandClassTest extends ZWaveCommandClassTe
     @Test
     public void getValueMessage() {
         ZWaveThermostatFanStateCommandClass cls = (ZWaveThermostatFanStateCommandClass) getCommandClass(
-                CommandClass.THERMOSTAT_FAN_STATE);
-        SerialMessage msg;
+                CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_STATE);
+        ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 1, 9, 0, 19, 99, 2, 69, 2, 0, 0, -61 };
+        byte[] expectedResponseV1 = { 69, 2 };
         cls.setVersion(1);
         msg = cls.getValueMessage();
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 }

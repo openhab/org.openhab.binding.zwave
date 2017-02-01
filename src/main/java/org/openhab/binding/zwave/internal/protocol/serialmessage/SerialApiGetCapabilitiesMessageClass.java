@@ -13,10 +13,11 @@ import java.util.Set;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,13 +38,13 @@ public class SerialApiGetCapabilitiesMessageClass extends ZWaveCommandProcessor 
 
     private Set<SerialMessage.SerialMessageClass> apiCapabilities = new HashSet<>();
 
-    public SerialMessage doRequest() {
-        return new SerialMessage(SerialMessageClass.SerialApiGetCapabilities, SerialMessageType.Request,
-                SerialMessageClass.SerialApiGetCapabilities, SerialMessagePriority.High);
+    public ZWaveSerialPayload doRequest() {
+        // Create the request
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.SerialApiGetCapabilities).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.trace("Handle Message Serial API Get Capabilities - Length {}",
                 incomingMessage.getMessagePayload().length);
@@ -69,15 +70,14 @@ public class SerialApiGetCapabilitiesMessageClass extends ZWaveCommandProcessor 
                     if (msgClass == null) {
                         logger.debug(String.format("Supports: Unknown Class 0x%02x", ((by - 8) << 3) + bi + 1));
                     } else {
-                        logger.debug("Supports: {}", msgClass.getLabel());
+                        logger.debug("Supports: {}", msgClass);
                         apiCapabilities.add(msgClass);
                     }
                 }
             }
         }
 
-        checkTransactionComplete(lastSentMessage, incomingMessage);
-
+        transaction.setTransactionComplete();
         return true;
     }
 

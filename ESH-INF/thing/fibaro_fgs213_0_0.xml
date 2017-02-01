@@ -16,61 +16,73 @@ Single Switch 2<br /><h1>Overview</h1><p>FIBARO Switch 2 is designed to be insta
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
+        </properties>
+      </channel>
+      <channel id="sensor_power" typeId="sensor_power">
+        <label>Sensor (power)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=POWER</property>
         </properties>
       </channel>
       <channel id="meter_watts" typeId="meter_watts">
         <label>Electric meter (watts)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER;type=E_W</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
         <label>Electric meter (kWh)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER;type=E_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_reset" typeId="meter_reset">
+        <label>Reset the total power consumption</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_METER</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
         <label>Scene Number</label>
         <properties>
-          <property name="binding:*:DecimalType">CENTRAL_SCENE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
         </properties>
       </channel>
       <channel id="alarm_heat" typeId="alarm_heat">
         <label>Alarm (heat)</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=HEAT</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=HEAT</property>
         </properties>
       </channel>
       <channel id="alarm_power" typeId="alarm_power">
         <label>Alarm (power)</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=POWER_MANAGEMENT</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
         </properties>
       </channel>
       <channel id="switch_binary1" typeId="switch_binary">
         <label>Switch 1</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY:1,BASIC:1</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1,COMMAND_CLASS_BASIC:1</property>
         </properties>
       </channel>
       <channel id="meter_watts1" typeId="meter_watts">
         <label>Electric meter (watts) 1</label>
         <properties>
-          <property name="binding:*:DecimalType">METER:1;type=E_W</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_W</property>
         </properties>
       </channel>
       <channel id="meter_kwh1" typeId="meter_kwh">
         <label>Electric meter (kWh) 1</label>
         <properties>
-          <property name="binding:*:DecimalType">METER:1;type=E_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_KWh</property>
         </properties>
       </channel>
       <channel id="switch_binary2" typeId="switch_binary">
         <label>Switch 2</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY:2,BASIC:2</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:2,COMMAND_CLASS_BASIC:2</property>
         </properties>
       </channel>
     </channels>
@@ -192,7 +204,8 @@ Associations in Z-Wave network security mode<br /><h1>Overview</h1><p>This param
         </options>
       </parameter>
 
-      <parameter name="config_28_1" type="integer" groupName="configuration">
+      <parameter name="config_28_1" type="integer" groupName="configuration"
+                 min="0" max="15">
         <label>28: S1 switch - scenes sent</label>
         <description><![CDATA[
 S1 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which actions result in sending scene IDs assigned to them</p>
@@ -205,9 +218,11 @@ S1 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which
           <option value="4">Key pressed 3 times</option>
           <option value="8">Key Hold Down and Key Released</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_29_1" type="integer" groupName="configuration">
+      <parameter name="config_29_1" type="integer" groupName="configuration"
+                 min="0" max="15">
         <label>29: S2 switch - scenes sent</label>
         <description><![CDATA[
 S2 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which actions result in sending scene IDs assigned to them</p>
@@ -220,9 +235,11 @@ S2 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which
           <option value="4">Key pressed 3 times</option>
           <option value="8">Key Hold Down and Key Released</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_30_1" type="integer" groupName="configuration">
+      <parameter name="config_30_1" type="integer" groupName="configuration"
+                 min="0" max="15">
         <label>30: S1 assocs. sent to 2nd and 3rd group</label>
         <description><![CDATA[
 S1 switch - associations sent to 2nd and 3rd association groups<br /><h1>Overview</h1><p>This parameter determines which actions are ignored when sending commands to devices associated in 2nd and 3rd association group. All actions are active by default.</p>
@@ -235,6 +252,7 @@ S1 switch - associations sent to 2nd and 3rd association groups<br /><h1>Overvie
           <option value="4">ignore holding and releasing the switch</option>
           <option value="8">ignore double click of the switch</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_31_2" type="integer" groupName="configuration"
@@ -258,6 +276,65 @@ S1 switch - Switch ON value sent to 2nd and 3rd association groups<br /><h1>Over
         <label>33: S1 DblClick val sent to 2nd and 3rd groups</label>
         <description>S1 switch - Double Click value sent to 2nd and 3rd association groups</description>
         <default>99</default>
+      </parameter>
+
+      <parameter name="config_35_1" type="integer" groupName="configuration"
+                 min="0" max="15">
+        <label>35: S2 assocs. sent to 4th and 5th group</label>
+        <description><![CDATA[
+S2 switch - associations sent to 4th and 5th association groups<br /><h1>Overview</h1><p>This parameter determines which actions result in sending commands to devices associated in 4th and 5th association group. All actions are active by default.</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">All actions are active by default</option>
+          <option value="1">ignore turning on with 1 click of the switch</option>
+          <option value="2">ignore turning off with 1 click of the switch</option>
+          <option value="4">ignore holding and releasing the switch</option>
+          <option value="8">ignore double click of the switch</option>
+        </options>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_50_1" type="integer" groupName="configuration"
+                 min="0" max="100">
+        <label>50: Active power reports</label>
+        <description>The parameter defines the power level change that will result in a new power report being sent. The value is a percentage of the previous report. 0 disables the function.</description>
+        <default>20</default>
+      </parameter>
+
+      <parameter name="config_51_1" type="integer" groupName="configuration"
+                 min="0" max="120">
+        <label>51: Minimal time between power report</label>
+        <description>This parameter determines minimum time that has to elapse before sending new power report to the main controller. 0 disables the function. 1-120s - report interval in seconds</description>
+        <default>10</default>
+      </parameter>
+
+      <parameter name="config_53_2" type="integer" groupName="configuration"
+                 min="0" max="32000">
+        <label>53: Energy reports</label>
+        <description>Energy level change which will result in sending a new energy report. Available settings: 1-32000 (0.01 - 320 kWh). 0 disables the function.</description>
+        <default>100</default>
+      </parameter>
+
+      <parameter name="config_58_2" type="integer" groupName="configuration"
+                 min="0" max="32000">
+        <label>58: Periodic power reports</label>
+        <description>This parameter determines in what time interval the periodic power reports are sent to the main controller. 0 - periodic reports are disabled, 1-32000 (1-32000s) - report interval</description>
+        <default>3600</default>
+      </parameter>
+
+      <parameter name="config_59_2" type="integer" groupName="configuration"
+                 min="0" max="32000">
+        <label>59: Periodic energy reports</label>
+        <description>This parameter determines in what time interval the periodic energy reports are sent to the main controller. 0 - periodic reports are disabled 1-32000 (1-32000s) - report interval</description>
+        <default>3600</default>
+      </parameter>
+
+      <parameter name="config_60_1" type="integer" groupName="configuration"
+                 min="0" max="1">
+        <label>60: Measuring energy consumed by the device itself</label>
+        <description>This parameter determines whether energy metering should include the amount of energy consumed by the device itself. Results are be - ing added to energy reports for first endpoint. 0: Function deactivated 1: Function activated</description>
+        <default>0</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

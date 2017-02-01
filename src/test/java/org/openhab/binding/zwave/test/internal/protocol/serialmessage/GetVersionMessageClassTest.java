@@ -31,7 +31,7 @@ public class GetVersionMessageClassTest {
         SerialMessage msg;
         GetVersionMessageClass handler = new GetVersionMessageClass();
 
-        msg = handler.doRequest();
+        msg = handler.doRequest().getSerialMessage();
         msg.setCallbackId(1);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponse));
     }

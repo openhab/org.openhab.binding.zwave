@@ -14,7 +14,7 @@
       <channel id="sensor_co2" typeId="sensor_co2">
         <label>Sensor (CO2)</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=CO2</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=CO2</property>
         </properties>
       </channel>
     </channels>

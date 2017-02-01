@@ -16,31 +16,31 @@ Single-socket PowerNode<br /><h1>Overview</h1><p>This Configuration is for the 1
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="meter_watts" typeId="meter_watts">
         <label>Electric meter (watts)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER;type=E_W</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
         <label>Electric meter (kWh)</label>
         <properties>
-          <property name="binding:*:DecimalType">METER;type=E_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
         </properties>
       </channel>
       <channel id="meter_reset" typeId="meter_reset">
         <label>Reset total power consumption</label>
         <properties>
-          <property name="binding:*:OnOffType">METER</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_METER</property>
         </properties>
       </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
         </properties>
       </channel>
     </channels>
