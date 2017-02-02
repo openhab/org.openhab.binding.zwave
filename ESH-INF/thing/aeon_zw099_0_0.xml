@@ -27,9 +27,21 @@ Smart Dimmer 6<br /><h1>Overview</h1><p>Turn the primary controller of Z-Wave ne
         </properties>
       </channel>
       <channel id="meter_watts" typeId="meter_watts">
-        <label>Energy Consumption (watts)</label>
+        <label>Power Consumption (W)</label>
         <properties>
           <property name="binding:*:DecimalType">METER;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="meter_current" typeId="meter_current">
+        <label>Electric meter (A)</label>
+        <properties>
+          <property name="binding:*:DecimalType">METER;type=E_A</property>
+        </properties>
+      </channel>
+      <channel id="meter_voltage" typeId="meter_voltage">
+        <label>Electric meter (V)</label>
+        <properties>
+          <property name="binding:*:DecimalType">METER;type=E_V</property>
         </properties>
       </channel>
     </channels>
