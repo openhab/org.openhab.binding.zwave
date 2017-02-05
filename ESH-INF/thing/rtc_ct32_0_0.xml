@@ -172,7 +172,11 @@
       <property name="vendor">Radio Thermostat Company of America (RTC)</property>
       <property name="modelId">CT32</property>
       <property name="manufacturerId">0098</property>
+<<<<<<< HEAD
       <property name="manufacturerRef">2002:0100,2002:0102,0002:0100</property>
+=======
+      <property name="manufacturerRef">2002:0100,2002:0102</property>
+>>>>>>> master
       <property name="dbReference">99</property>
       <property name="defaultAssociations">1</property>
     </properties>
