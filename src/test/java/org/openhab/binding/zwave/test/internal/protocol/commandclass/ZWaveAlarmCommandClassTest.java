@@ -173,10 +173,9 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
         msg = cls.getMessage(AlarmType.ACCESS_CONTROL, 0);
         assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV2));
 
-        byte[] expectedResponseV3 = { 1, 12, 0, 19, 99, 5, 113, 4, 0, 6, 1, 0, 0, -12 };
         cls.setVersion(3);
         msg = cls.getMessage(AlarmType.ACCESS_CONTROL, 1);
-        assertTrue(Arrays.equals(msg.getMessageBuffer(), expectedResponseV3));
+        assertNull(msg);
     }
 
     @Test
