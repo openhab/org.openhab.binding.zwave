@@ -74,7 +74,7 @@
       <property name="vendor">Philio Technology Corp</property>
       <property name="modelId">PAN08</property>
       <property name="manufacturerId">013C</property>
-      <property name="manufacturerRef">0001:0006</property>
+      <property name="manufacturerRef">0001:0006,0001:0015</property>
       <property name="dbReference">175</property>
     </properties>
 
