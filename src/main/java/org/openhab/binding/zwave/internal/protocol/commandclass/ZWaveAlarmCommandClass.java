@@ -330,10 +330,10 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
                 break;
             case 3:
             default:
-                outputData.write(0);
-                outputData.write(alarmType.getKey());
-                outputData.write((alarmEvent == null) ? 0 : alarmEvent);
-                break;
+                // Notifications can't be polled for their state
+                // This will return an event that allows us to know if the event is configured for pull or push
+                // and not the actual state of the event.
+                return null;
         }
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
@@ -383,15 +383,9 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
                 if (getVersion() < 3) {
                     result.add(getMessage(entry.getValue().getAlarmType(), 0));
                 } else {
-                    // If we don't have any events, then don't initialise
-                    if (entry.getValue().getReportedEvents().isEmpty()) {
-                        entry.getValue().setInitialised();
-                    }
-
-                    // For the NOTIFICATION class, only request for events that are supported
-                    for (int event : entry.getValue().getReportedEvents()) {
-                        result.add(getMessage(entry.getValue().getAlarmType(), event));
-                    }
+                    // Notifications can't be polled for their state
+                    // This will return an event that allows us to know if the event is configured for pull or push
+                    // and not the actual state of the event.
                 }
             }
         }

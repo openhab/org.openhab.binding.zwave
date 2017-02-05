@@ -59,6 +59,13 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
             return null;
         }
 
+        // Notifications can't be polled for their state
+        // This will return an event that allows us to know if the event is configured for pull or push
+        // and not the actual state of the event.
+        if (commandClass.getVersion() >= 3) {
+            return null;
+        }
+
         String alarmType = channel.getArguments().get("type");
         Integer alarmEvent = (channel.getArguments().get("event") == null) ? null
                 : Integer.parseInt(channel.getArguments().get("event"));
