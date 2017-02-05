@@ -4,6 +4,11 @@ import java.util.Comparator;
 
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 
+/**
+ *
+ * @author Chris Jackson - Initial Contribution
+ *
+ */
 public class ZWaveCommandClassTransactionPayloadComparator implements Comparator<ZWaveCommandClassTransactionPayload> {
 
     /**

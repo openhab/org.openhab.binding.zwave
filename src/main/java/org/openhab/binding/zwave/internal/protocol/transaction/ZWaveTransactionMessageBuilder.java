@@ -5,7 +5,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 
 /**
- * Builder class for serial message
+ * Builder class for transaction
  *
  * @author Chris Jackson - Initial Implementation
  *

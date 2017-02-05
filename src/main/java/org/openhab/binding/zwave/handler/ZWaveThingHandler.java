@@ -97,7 +97,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     private int nodeId;
     private List<ZWaveThingChannel> thingChannelsCmd = Collections.emptyList();
     private List<ZWaveThingChannel> thingChannelsState = Collections.emptyList();
-    private List<ZWaveThingChannel> thingChannelsPoll = Collections.emptyList();
+
+    private List<ChannelUID> thingChannelsPoll = Collections.emptyList();
 
     private Map<Integer, ZWaveConfigSubParameter> subParameters = new HashMap<Integer, ZWaveConfigSubParameter>();
     private Map<String, Object> pendingCfg = new HashMap<String, Object>();
@@ -171,8 +172,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         // Create the channels list to simplify processing incoming events
         // synchronized (thingChannelsState) {
+        thingChannelsPoll = new ArrayList<ChannelUID>();
         thingChannelsCmd = new ArrayList<ZWaveThingChannel>();
-        thingChannelsPoll = new ArrayList<ZWaveThingChannel>();
         thingChannelsState = new ArrayList<ZWaveThingChannel>();
         for (Channel channel : getThing().getChannels()) {
             // Process the channel properties and configuration
@@ -245,11 +246,11 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                     // First time round, then add the polling class
                     // TODO: Probably should check for duplicates
-                    if (first) {
-                        thingChannelsPoll.add(chan);
-                        logger.debug("NODE {}: Initialising poll channel {} for {}", nodeId, channel.getUID(),
-                                dataType);
-                    }
+                    // if (first) {
+                    // thingChannelsPoll.add(chan);
+                    // logger.debug("NODE {}: Initialising poll channel {} for {}", nodeId, channel.getUID(),
+                    // dataType);
+                    // }
 
                     // Add the state and polling handlers
                     if ("*".equals(bindingType[1]) || "State".equals(bindingType[1])) {
@@ -374,7 +375,12 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     }
 
                     List<ZWaveCommandClassTransactionPayload> messages = new ArrayList<ZWaveCommandClassTransactionPayload>();
-                    for (ZWaveThingChannel channel : thingChannelsPoll) {
+                    for (ZWaveThingChannel channel : thingChannelsState) {
+                        if (!thingChannelsPoll.contains(channel.getUID())) {
+                            // Don't poll if this channel isn't linked
+                            continue;
+                        }
+
                         logger.debug("NODE {}: Polling {}", nodeId, channel.getUID());
                         if (channel.converter == null) {
                             logger.debug("NODE {}: Polling aborted as no converter found for {}", nodeId,
@@ -417,6 +423,20 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
     private void startPolling() {
         startPolling(pollingPeriod * 1000);
+    }
+
+    @Override
+    public void channelLinked(ChannelUID channelUID) {
+        // We keep track of what channels are used and only poll channels that the framework is using
+        if (!thingChannelsPoll.contains(channelUID)) {
+            thingChannelsPoll.add(channelUID);
+        }
+    }
+
+    @Override
+    public void channelUnlinked(ChannelUID channelUID) {
+        // We keep track of what channels are used and only poll channels that the framework is using
+        thingChannelsPoll.remove(channelUID);
     }
 
     @Override

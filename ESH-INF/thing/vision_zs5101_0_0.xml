@@ -19,10 +19,16 @@ Shock Sensor<br /><h1>Overview</h1><p>ZS5101 detects the vibrations made by an i
           <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
         </properties>
       </channel>
-      <channel id="alarm_burglar" typeId="alarm_burglar">
-        <label>Alarm (burglar)</label>
+      <channel id="alarm_access" typeId="alarm_access">
+        <label>Shock Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR, event=2</property>
+        </properties>
+      </channel>
+      <channel id="alarm_tamper" typeId="alarm_tamper">
+        <label>Tamper Alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR, event=3</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -39,7 +45,23 @@ Shock Sensor<br /><h1>Overview</h1><p>ZS5101 detects the vibrations made by an i
       <property name="manufacturerId">0109</property>
       <property name="manufacturerRef">2003:0306,2003:0307</property>
       <property name="dbReference">442</property>
+      <property name="defaultAssociations">1</property>
     </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Lifeline</label>
+      </parameter>
+
+    </config-description>
 
   </thing-type>
 

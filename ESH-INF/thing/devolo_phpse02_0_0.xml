@@ -19,11 +19,9 @@ Multisound indoor siren (Zipato/Devolo)<br /><h1>Overview</h1><p><strong>### NOT
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
-      <channel id="switch_dimmer" typeId="switch_dimmer">
+      <channel id="notification_send" typeId="notification_send">
         <label>Sounds</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="sensor_binary" typeId="sensor_binary">
@@ -42,6 +40,12 @@ Multisound indoor siren (Zipato/Devolo)<br /><h1>Overview</h1><p><strong>### NOT
         <label>Alarm (general)</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=GENERAL</property>
+        </properties>
+      </channel>
+      <channel id="notification_send" typeId="notification_send">
+        <label>Start Sound</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_ALARM;event1=SMOKE:1,event2=ACCESS_CONTROL:22,event3=BURGLAR:1,event4=EMERGENCY:1,event5=EMERGENCY:2,event6=EMERGENCY:3,event7=ACCESS_CONTROL:3,event8=ACCESS_CONTROL:4,event9=EMERGENCY:254</property>
         </properties>
       </channel>
     </channels>
