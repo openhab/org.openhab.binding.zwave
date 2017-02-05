@@ -2,6 +2,11 @@ package org.openhab.binding.zwave.internal.protocol;
 
 import java.util.Comparator;
 
+/**
+ *
+ * @author Chris Jackson - Initial Contribution
+ *
+ */
 public class ZWaveTransactionComparator implements Comparator<ZWaveTransaction> {
 
     // private final ZWaveController controller;

@@ -121,7 +121,7 @@ public class ZWaveTransactionManager {
     private Logger logger = LoggerFactory.getLogger(ZWaveTransactionManager.class);
 
     private final int INITIAL_TX_QUEUE_SIZE = 128;
-    private final int MAX_OUTSTANDING_TRANSACTIONS = 3;
+    // private final int MAX_OUTSTANDING_TRANSACTIONS = 3;
 
     public final int TRANSMIT_OPTION_ACK = 0x01;
     public final int TRANSMIT_OPTION_AUTO_ROUTE = 0x04;
@@ -246,6 +246,7 @@ public class ZWaveTransactionManager {
     }
 
     public long queueTransactionForSend(ZWaveMessagePayloadTransaction payload) {
+
         // Create a transaction from our payload data
         ZWaveTransaction transaction = new ZWaveTransaction(payload);
         if (payload.getMaxAttempts() != 0) {
@@ -399,7 +400,7 @@ public class ZWaveTransactionManager {
                         ZWaveNode node = controller.getNode(nodeId);
 
                         if (node == null) {
-                            logger.warn("NODE {}: Not initialized yet (ie node unknown), ignoring message.", nodeId);
+                            logger.warn("NODE {}: Not initialized (ie node unknown), ignoring message.", nodeId);
                         } else {
                             logger.debug("NODE {}: Application Command Request ({}:{})", nodeId,
                                     node.getNodeState().toString(), node.getNodeInitStage().toString());
@@ -421,6 +422,8 @@ public class ZWaveTransactionManager {
                                                     transaction.getExpectedReplyClass());
                                             logger.debug("NODE {}: Checking transaction : state >> {}", nodeId,
                                                     transaction.getTransactionState());
+                                            logger.debug("NODE {}: Checking transaction : node  >> {}", nodeId,
+                                                    transaction.getNodeId());
                                             logger.debug("NODE {}: Checking transaction : class >> {} == {}.", nodeId,
                                                     command.getCommandClassId(),
                                                     transaction.getExpectedCommandClass() == null ? null
@@ -441,6 +444,7 @@ public class ZWaveTransactionManager {
                                                     && transaction.getExpectedCommandClass() != null
                                                     && command.getCommandClassId() == transaction
                                                             .getExpectedCommandClass().getKey()
+                                                    && nodeId == transaction.getNodeId()
                                                     && command.getCommandClassCommand() == transaction
                                                             .getExpectedCommandClassCommand()) {
                                                 logger.debug("NODE {}: Command verified {}.", nodeId, command);
@@ -548,6 +552,8 @@ public class ZWaveTransactionManager {
                                 lastTransaction = null;
                                 logger.debug("XXXXXXXXXXXXXXXXX lastTransaction COMPLETED - at DATA - "
                                         + currentTransaction.getCallbackId());
+                            } else if (currentTransaction.getWaitForResponse()) {
+
                             }
                             break;
 

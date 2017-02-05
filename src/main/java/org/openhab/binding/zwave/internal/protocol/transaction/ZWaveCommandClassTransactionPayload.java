@@ -7,9 +7,12 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveMessagePayloadTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+/**
+ *
+ * @author Chris Jackson - Initial Contribution
+ *
+ */
 public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayload
         implements ZWaveMessagePayloadTransaction {
     private final int nodeId;
@@ -19,8 +22,7 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
     private int maxAttempts = 0;
 
     private boolean requiresSecurity = false;
-
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveCommandClassTransactionPayload.class);
+    private boolean requiresResponse = true;
 
     /**
      *
@@ -136,4 +138,11 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
         return requiresSecurity;
     }
 
+    public void setRequiresResponse(boolean requiresResponse) {
+        this.requiresResponse = requiresResponse;
+    }
+
+    public boolean getRequiresResponse() {
+        return requiresResponse;
+    }
 }

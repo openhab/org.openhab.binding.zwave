@@ -41,7 +41,7 @@
       <property name="vendor">BeNext</property>
       <property name="modelId">doorSensor</property>
       <property name="manufacturerId">008A</property>
-      <property name="manufacturerRef">0004:0100</property>
+      <property name="manufacturerRef">0004:0100,0004:0101</property>
       <property name="dbReference">223</property>
       <property name="defaultAssociations">1</property>
     </properties>

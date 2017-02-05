@@ -482,46 +482,57 @@ public class ZWaveController {
 
     /**
      * Queues a message for sending on the send queue.
+     * This does not wait for a response.
      *
-     * @param zWaveCommandClassTransactionPayload
-     *            the serial message to enqueue.
+     * @param transaction
+     *            the {@link ZWaveMessagePayloadTransaction} message to enqueue.
      */
-    public void enqueue(ZWaveMessagePayloadTransaction payload) {
+    public void enqueue(ZWaveMessagePayloadTransaction transaction) {
         // Sanity check!
-        if (payload == null) {
+        if (transaction == null) {
             logger.debug("Attempt to queue null message");
             return;
         }
 
-        transactionManager.queueTransactionForSend(payload);
+        // Since this method doesn't wait for a response, we tell the transaction handler not to wait for DATA
+        if (transaction instanceof ZWaveCommandClassTransactionPayload) {
+            ((ZWaveCommandClassTransactionPayload) transaction).setRequiresResponse(false);
+        }
+
+        transactionManager.queueTransactionForSend(transaction);
     }
 
-    public void enqueueNonce(ZWaveMessagePayloadTransaction payload) {
+    /**
+     * Queues a message for sending on the nonce send queue.
+     * This does not wait for a response.
+     *
+     * @param transaction
+     *            the {@link ZWaveMessagePayloadTransaction} message to enqueue.
+     */
+    public void enqueueNonce(ZWaveMessagePayloadTransaction transaction) {
         // Sanity check!
-        if (payload == null) {
+        if (transaction == null) {
             logger.debug("Attempt to queue null message");
             return;
         }
 
-        transactionManager.queueNonceReportForSend(payload);
+        transactionManager.queueNonceReportForSend(transaction);
     }
 
+    /**
+     * Queues a message for sending and returns the response once received.
+     *
+     * @param transaction
+     *            the {@link ZWaveMessagePayloadTransaction} message to enqueue.
+     */
     public ZWaveTransactionResponse sendTransaction(ZWaveMessagePayloadTransaction transaction) {
         return transactionManager.sendTransaction(transaction);
     }
 
     /**
-     * Returns the size of the send queue.
-     */
-    // public int getSendQueueLength() {
-    // return transactionManager.getSendQueueLength();
-    // }
-
-    /**
      * Returns the size of the send queue for a specific node.
      */
     public int getSendQueueLength(int nodeId) {
-        // TODO: Should this also account for outstanding transactions???
         return transactionManager.getSendQueueLength(nodeId);
     }
 
@@ -1004,16 +1015,16 @@ public class ZWaveController {
     }
 
     /**
-     * Transmits the SerialMessage to a single ZWave Node. Sets the transmission options as well.
+     * Transmits the {@link ZWaveCommandClassTransactionPayload} to a single ZWave Node.
      *
-     * @param zWaveCommandClassTransactionPayload
-     *            the Serial message to send.
+     * @param payload
+     *            the {@link ZWaveCommandClassTransactionPayload} message to send.
      */
-    public void sendData(ZWaveCommandClassTransactionPayload payload) {
-        if (payload == null) {
+    public void sendData(ZWaveCommandClassTransactionPayload transaction) {
+        if (transaction == null) {
             return;
         }
-        enqueue(payload);
+        enqueue(transaction);
     }
 
     /**

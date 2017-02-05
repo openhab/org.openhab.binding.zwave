@@ -1,5 +1,10 @@
 package org.openhab.binding.zwave.internal.protocol;
 
+/**
+ *
+ * @author Chris Jackson - Initial Contribution
+ *
+ */
 public class ZWaveTransactionResponse {
     public enum State {
         CANCELLED,

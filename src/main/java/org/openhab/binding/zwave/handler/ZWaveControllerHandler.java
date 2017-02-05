@@ -681,11 +681,18 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         return controller.getNodes();
     }
 
-    public void sendData(ZWaveCommandClassTransactionPayload zWaveCommandClassTransactionPayload) {
+    /**
+     * Transmits the {@link ZWaveCommandClassTransactionPayload} to a Node.
+     * This will not wait for the transaction response.
+     *
+     * @param transaction
+     *            the {@link ZWaveCommandClassTransactionPayload} message to send.
+     */
+    public void sendData(ZWaveCommandClassTransactionPayload transaction) {
         if (controller == null) {
             return;
         }
-        controller.sendData(zWaveCommandClassTransactionPayload);
+        controller.sendData(transaction);
     }
 
     public boolean addEventListener(ZWaveThingHandler zWaveThingHandler) {

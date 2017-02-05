@@ -22,6 +22,7 @@ public class ZWaveTransaction {
 
     private final static AtomicLong sequence = new AtomicLong();
     private final long transactionId = sequence.getAndIncrement();
+    private boolean waitForResponse = true;
 
     private int DEFAULT_TIMEOUT = 5000;
 
@@ -101,6 +102,7 @@ public class ZWaveTransaction {
     private int attemptsRemaining = 3;
 
     private boolean requiresSecurity = false;
+    private boolean requiresResponse = true;
 
     private long startTime;
     private Date timeout;
@@ -117,6 +119,7 @@ public class ZWaveTransaction {
         }
         if (payload instanceof ZWaveCommandClassTransactionPayload) {
             this.requiresSecurity = ((ZWaveCommandClassTransactionPayload) payload).getRequiresSecurity();
+            this.requiresResponse = ((ZWaveCommandClassTransactionPayload) payload).getRequiresResponse();
         }
         this.payload = payload;
     }
@@ -313,22 +316,24 @@ public class ZWaveTransaction {
                 break;
 
             case WAIT_REQUEST:
+                // Check that this message is a request, and for the message class we sent
                 if (incomingMessage.getMessageClass() != payload.getSerialMessageClass()
                         || incomingMessage.getMessageType() != SerialMessageType.Request) {
                     break;
                 }
 
+                // Check the callback ID is consistent
                 if (incomingMessage.getCallbackId() != getCallbackId()) {
                     break;
                 }
 
                 // We've received our request - advance
                 // getExpectedReply returns null if we're not waiting for data
-                if (payload.getExpectedResponseSerialMessageClass() != null) {
+                if (requiresResponse == true && payload.getExpectedResponseSerialMessageClass() != null) {
                     transactionStateTracker = TransactionState.WAIT_DATA;
                     break;
                 }
-                // transactionStateTracker = TransactionState.DONE;
+                transactionStateTracker = TransactionState.DONE;
                 break;
 
             case WAIT_DATA:
@@ -369,14 +374,20 @@ public class ZWaveTransaction {
         return requiresSecurity;
     }
 
-    @Override
-    public String toString() {
-        return "TID:" + transactionId + " [" + transactionStateTracker + "] callback: "
-                + (serialMessage == null ? "--" : serialMessage.getCallbackId());
+    public boolean getRequiresResponse() {
+        return requiresResponse;
     }
 
     public long getTransactionId() {
         return transactionId;
+    }
+
+    public void setWaitForResponse(boolean waitForResponse) {
+        this.waitForResponse = false;
+    }
+
+    public boolean getWaitForResponse() {
+        return waitForResponse;
     }
 
     @Override
@@ -413,5 +424,11 @@ public class ZWaveTransaction {
         }
 
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "TID:" + transactionId + " [" + transactionStateTracker + "] callback: "
+                + (serialMessage == null ? "--" : serialMessage.getCallbackId());
     }
 }

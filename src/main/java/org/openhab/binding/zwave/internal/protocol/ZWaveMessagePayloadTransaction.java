@@ -3,6 +3,11 @@ package org.openhab.binding.zwave.internal.protocol;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 
+/**
+ *
+ * @author Chris Jackson - Initial Contribution
+ *
+ */
 public interface ZWaveMessagePayloadTransaction extends ZWaveMessagePayload {
     public int getMaxAttempts();
 
