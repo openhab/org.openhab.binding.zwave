@@ -41,6 +41,12 @@
           <property name="binding:*:DecimalType">METER;type=E_KWh</property>
         </properties>
       </channel>
+      <channel id="meter_reset" typeId="meter_reset">
+        <label>Reset the total power consumption</label>
+        <properties>
+          <property name="binding:*:OnOffType">METER</property>
+        </properties>
+      </channel>
       <channel id="battery-level" typeId="system.battery-level">
         <properties>
           <property name="binding:*:PercentType">BATTERY</property>
