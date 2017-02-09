@@ -20,11 +20,11 @@ public class ZWaveProduct {
     Version versionMin;
     Version versionMax;
 
-    ZWaveProduct(ThingTypeUID thingTypeUID, Integer manufacturer, Integer type, Integer id) {
+    public ZWaveProduct(ThingTypeUID thingTypeUID, Integer manufacturer, Integer type, Integer id) {
         this(thingTypeUID, manufacturer, type, id, null, null);
     }
 
-    ZWaveProduct(ThingTypeUID thingTypeUID, Integer manufacturer, Integer type, Integer id, String versionMin,
+    public ZWaveProduct(ThingTypeUID thingTypeUID, Integer manufacturer, Integer type, Integer id, String versionMin,
             String versionMax) {
         this.thingTypeUID = thingTypeUID;
         this.manufacturer = manufacturer;
@@ -76,14 +76,14 @@ public class ZWaveProduct {
 
         // If the node version is less than the database version, then no match
         if (versionMin != null) {
-            if (vIn.compareTo(versionMin) <= 0) {
+            if (vIn.compareTo(versionMin) < 0) {
                 return false;
             }
         }
 
         // If the node version is greater than the database version, then no match
         if (versionMax != null) {
-            if (vIn.compareTo(versionMax) >= 0) {
+            if (vIn.compareTo(versionMax) > 0) {
                 return false;
             }
         }
