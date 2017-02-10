@@ -224,7 +224,8 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
             options.add(new ParameterOption("2", "Include in All Off group"));
             options.add(new ParameterOption("255", "Include in All On and All Off groups"));
             parameters.add(ConfigDescriptionParameterBuilder
-                    .create(ZWaveBindingConstants.CONFIGURATION_SWITCHALLMODE, Type.TEXT).withLabel("Switch All Mode")
+                    .create(ZWaveBindingConstants.CONFIGURATION_SWITCHALLMODE, Type.INTEGER)
+                    .withLabel("Switch All Mode")
                     .withDescription("Set the mode for the switch when receiving SWITCH ALL commands.").withDefault("0")
                     .withGroupName("thingcfg").withOptions(options).withLimitToOptions(true).build());
         }
