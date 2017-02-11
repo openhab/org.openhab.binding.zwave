@@ -19,6 +19,7 @@
         </state>
     </channel-type>
     
+    <!-- Battery Alarm Channel -->
     <channel-type id="alarm_battery">
         <item-type>Switch</item-type>
         <label>Low battery alarm</label>
@@ -68,6 +69,36 @@
         <item-type>Switch</item-type>
         <label>Carbon-dioxide alarm</label>
         <description>Indicates if the carbon dioxide alarm is triggered
+        </description>
+        <category>Door</category>
+        <state readOnly="true">
+            <options>
+                <option value="OFF">Ok</option>
+                <option value="ON">Alarm</option>
+            </options>
+        </state>
+    </channel-type>
+
+    <!-- Clock Alarm Channel -->
+    <channel-type id="alarm_clock">
+        <item-type>Switch</item-type>
+        <label>Clock alarm</label>
+        <description>Indicates if the clock alarm is triggered
+        </description>
+        <category>Door</category>
+        <state readOnly="true">
+            <options>
+                <option value="OFF">Ok</option>
+                <option value="ON">Alarm</option>
+            </options>
+        </state>
+    </channel-type>
+
+    <!-- Emergency Alarm Channel -->
+    <channel-type id="alarm_emergency">
+        <item-type>Switch</item-type>
+        <label>Emergency alarm</label>
+        <description>Indicates if the emergency alarm is triggered
         </description>
         <category>Door</category>
         <state readOnly="true">
