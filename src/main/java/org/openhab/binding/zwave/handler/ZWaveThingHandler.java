@@ -1376,7 +1376,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 .getCommandClass(CommandClass.SWITCH_ALL);
         if (switchallCommandClass != null) {
             if (switchallCommandClass.getMode() != null) {
-                config.put(ZWaveBindingConstants.CONFIGURATION_SWITCHALLMODE, switchallCommandClass.getMode());
+                config.put(ZWaveBindingConstants.CONFIGURATION_SWITCHALLMODE,
+                        switchallCommandClass.getMode().getMode());
             }
         }
 
