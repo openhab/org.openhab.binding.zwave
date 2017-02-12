@@ -27,6 +27,12 @@ Flush Shutter<br /><h1>Overview</h1><p>To enable endpoint 2, follow the followin
           <property name="binding:Command:UpDownType">SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
+      <channel id="sensor_temperature" typeId="sensor_temperature">
+        <label>Sensor (temperature)</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+        </properties>
+      </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
         <label>Electric meter (kWh)</label>
         <properties>
