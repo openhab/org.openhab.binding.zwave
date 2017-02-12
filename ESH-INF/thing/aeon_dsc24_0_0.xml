@@ -56,7 +56,7 @@
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:0018,0103:004B</property>
       <property name="dbReference">76</property>
-      <property name="defaultAssociations">1</property>
+      <property name="defaultAssociations">1,2</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -205,6 +205,12 @@
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Status Reports</label>
         <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Send Reports on blind state change</label>
+        <description>Send Reports on blind state change</description>
+        <multipleLimit>10</multipleLimit>
       </parameter>
 
     </config-description>
