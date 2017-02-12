@@ -49,6 +49,7 @@
       <property name="manufacturerId">0154</property>
       <property name="manufacturerRef">0004:0002</property>
       <property name="versionMin">1.3</property>
+      <property name="versionMax">1.13</property>
       <property name="dbReference">367</property>
       <property name="defaultAssociations">1</property>
     </properties>

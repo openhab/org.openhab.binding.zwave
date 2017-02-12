@@ -17,10 +17,70 @@
           <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm</label>
+      <channel id="alarm_smoke" typeId="alarm_smoke">
+        <label>Alarm (smoke)</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=SMOKE</property>
+        </properties>
+      </channel>
+      <channel id="alarm_co" typeId="alarm_co">
+        <label>Alarm (CO)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=CARBON_MONOXIDE</property>
+        </properties>
+      </channel>
+      <channel id="alarm_co2" typeId="alarm_co2">
+        <label>Alarm (CO2)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=CARBON_DIOXIDE</property>
+        </properties>
+      </channel>
+      <channel id="alarm_heat" typeId="alarm_heat">
+        <label>Alarm (heat)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=HEAT</property>
+        </properties>
+      </channel>
+      <channel id="alarm_flood" typeId="alarm_flood">
+        <label>Alarm (water)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=FLOOD</property>
+        </properties>
+      </channel>
+      <channel id="alarm_access" typeId="alarm_access">
+        <label>Alarm (access control)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
+        </properties>
+      </channel>
+      <channel id="alarm_burglar" typeId="alarm_burglar">
+        <label>Alarm (burglar)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
+        </properties>
+      </channel>
+      <channel id="alarm_power" typeId="alarm_power">
+        <label>Alarm (power)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="alarm_system" typeId="alarm_system">
+        <label>Alarm (system)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=SYSTEM</property>
+        </properties>
+      </channel>
+      <channel id="alarm_general" typeId="alarm_general">
+        <label>Alarm (emergency)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=EMERGENCY</property>
+        </properties>
+      </channel>
+      <channel id="alarm_clock" typeId="alarm_clock">
+        <label>Alarm (clock)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=CLOCK</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -103,7 +163,13 @@ Value is specified in number of seconds.<br /><h1>Overview</h1><p>Values greater
         <default>1</default>
       </parameter>
 
-      <parameter name="config_122_1" type="integer" groupName="configuration">
+      <!-- ACTION DEFINITIONS -->
+      <parameter-group name="actions">
+        <context>setup</context>
+        <label>Actions</label>
+      </parameter-group>
+
+      <parameter name="config_122_1_wo" type="integer" groupName="configuration">
         <label>122: Notification type to send</label>
         <default>6</default>
         <options>
