@@ -36,4 +36,13 @@ public class ZWaveProductTest {
         assertFalse(product.match(2, 2, 3, "1.1"));
         assertFalse(product.match(2, 2, 3, "1.11"));
     }
+
+    @Test
+    public void testNoVersion() {
+        ZWaveProduct product = new ZWaveProduct(new ThingTypeUID("xx:yy"), 1, 2, 3, null, null);
+
+        assertTrue(product.match(1, 2, 3, "0.0"));
+        assertTrue(product.match(1, 2, 3, "99.5"));
+        assertTrue(product.match(1, 2, 3, "255.255"));
+    }
 }
