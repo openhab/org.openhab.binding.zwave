@@ -6,9 +6,9 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="zwaveme_zuno_01_000" listed="false">
-    <label>ZUNO-1S1D1AI1DI ZUNO-1S1D1AI1DI</label>
+    <label>ZUNO1S1D1AI1DI ZUNO1S1D1AI1DI</label>
     <description><![CDATA[
-ZUNO-1S1D1AI1DI<br /><h1>Overview</h1><p>Zuno with following Configuration</p> <p>1.) Binary Switch</p> <p>2.) Dimmer</p> <p>3.) Temperatur</p> <p>4.) Door open/close Contact</p>
+ZUNO1S1D1AI1DI<br /><h1>Overview</h1><p>Zuno with following Configuration</p> <p>1.) Binary Switch</p> <p>2.) Dimmer</p> <p>3.) Temperatur</p> <p>4.) Door open/close Contact</p>
     ]]></description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -30,7 +30,7 @@ ZUNO-1S1D1AI1DI<br /><h1>Overview</h1><p>Zuno with following Configuration</p> <
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Z-Wave.Me</property>
-      <property name="modelId">ZUNO-1S1D1AI1DI</property>
+      <property name="modelId">ZUNO1S1D1AI1DI</property>
       <property name="manufacturerId">0115</property>
       <property name="manufacturerRef">0110:0001</property>
       <property name="versionMin">1.0</property>

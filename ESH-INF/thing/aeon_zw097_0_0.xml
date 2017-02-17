@@ -71,7 +71,7 @@
           <property name="binding:*:OnOffType">ALARM;type=SYSTEM</property>
         </properties>
       </channel>
-      <channel id="alarm_general" typeId="alarm_general">
+      <channel id="alarm_emergency" typeId="alarm_emergency">
         <label>Alarm (emergency)</label>
         <properties>
           <property name="binding:*:OnOffType">ALARM;type=EMERGENCY</property>

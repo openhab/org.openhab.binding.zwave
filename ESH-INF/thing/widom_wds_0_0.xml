@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="widom_wds_00_000" listed="false">
-    <label>WDS Double Relay</label>
-    <description>Double Relay</description>
+    <label>WDS Universal Double Switch</label>
+    <description>Universal Double Switch</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -57,6 +57,76 @@
       <property name="manufacturerRef">1214:0504</property>
       <property name="dbReference">432</property>
     </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: Outputs status upon receipt of 1 click on its command</label>
+        <description>Defines the status of the output O1/O2 when the switch connected to I1/I2 receives 1 Click</description>
+        <default>1</default>
+        <options>
+          <option value="0">IN_OUT</option>
+          <option value="1">TOGGLE</option>
+          <option value="2">ON</option>
+          <option value="3">OFF</option>
+          <option value="4">IGNORE</option>
+        </options>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: LifeLine Group</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Devices to receive notifications on: status changes; instantaneous power level; device local reset </p>
+        ]]></description>
+        <multipleLimit>8</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: On/Off control (Switch 1)</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Devices controlled by switch 1</p>
+        ]]></description>
+        <multipleLimit>8</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Dimming control (Switch 1)</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Devices controlled by switch 1</p>
+        ]]></description>
+        <multipleLimit>8</multipleLimit>
+      </parameter>
+
+      <parameter name="group_4" type="text" groupName="association" multiple="true">
+        <label>4: On/Off control (Switch 2)</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Devices controlled by switch 2</p>
+        ]]></description>
+        <multipleLimit>8</multipleLimit>
+      </parameter>
+
+      <parameter name="group_5" type="text" groupName="association" multiple="true">
+        <label>5: Dimming control (Switch 2)</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Devices controlled by switch 2</p>
+        ]]></description>
+        <multipleLimit>8</multipleLimit>
+      </parameter>
+
+    </config-description>
 
   </thing-type>
 
