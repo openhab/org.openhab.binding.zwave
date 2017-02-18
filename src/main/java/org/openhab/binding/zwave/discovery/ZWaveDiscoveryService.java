@@ -122,6 +122,7 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
 
         Map<String, Object> properties = new HashMap<>(1);
         properties.put(ZWaveBindingConstants.PROPERTY_NODEID, Integer.toString(nodeId));
+        properties.put(ZWaveBindingConstants.CONFIGURATION_NODEID, new BigDecimal(nodeId));
 
         DiscoveryResult discoveryResult = DiscoveryResultBuilder.create(thingUID).withBridge(bridgeUID)
                 .withProperties(properties).withLabel(String.format("Node %d", nodeId)).build();
