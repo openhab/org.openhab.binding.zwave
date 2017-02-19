@@ -158,6 +158,7 @@ Parameter defines how commands are sent in specified association groups: as secu
           <option value="8">5th group "Flick RIGHT” sent as secure</option>
           <option value="16">6th group "Circular AirWheel” sent as secure</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration">
@@ -172,6 +173,7 @@ Parameter allows to choose control mode for 2nd-5th groups and scenes.<br /><h1>
           <option value="4">Toggle Mode enabled for 4th association group</option>
           <option value="8">Toggle Mode enabled for 5th association group</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_13_2" type="integer" groupName="configuration"
