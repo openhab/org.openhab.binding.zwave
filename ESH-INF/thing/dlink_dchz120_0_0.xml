@@ -29,10 +29,10 @@
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm (general)</label>
+      <channel id="alarm_motion" typeId="alarm_motion">
+        <label>Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=GENERAL</property>
+          <property name="binding:*:OnOffType">ALARM;type=BURGLAR</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">

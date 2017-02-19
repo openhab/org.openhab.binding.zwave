@@ -35,7 +35,7 @@
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGPB101</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0F01:1000,0F01:2000,FB10:1014</property>
+      <property name="manufacturerRef">0F01:1000,0F01:2000,0F01:3000,FB10:1014</property>
       <property name="dbReference">436</property>
       <property name="defaultAssociations">1</property>
     </properties>

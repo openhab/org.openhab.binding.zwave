@@ -12,9 +12,15 @@
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm</label>
+        <label>Heartbeat</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM,BASIC</property>
+          <property name="binding:*:OnOffType">ALARM,BASIC;type=HOME_HEALTH</property>
+        </properties>
+      </channel>
+      <channel id="alarm_smoke" typeId="alarm_smoke">
+        <label>Smoke</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM,BASIC;type=APPLIANCE</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">

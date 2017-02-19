@@ -16,8 +16,8 @@ LED Bulb<br /><h2>Inclusion Information</h2><p>Non-secure inclusion:<br />1. Pow
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL,BASIC</property>
         </properties>
       </channel>
       <channel id="color_color" typeId="color_color">
