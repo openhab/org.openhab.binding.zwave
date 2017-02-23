@@ -6,7 +6,7 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="philio_pat02b_00_000" listed="false">
-    <label>PAT02-1B Z-Wave room sensor</label>
+    <label>PAT02-B Z-Wave room sensor</label>
     <description>Z-Wave room sensor</description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -14,7 +14,7 @@
       <channel id="sensor_binary" typeId="sensor_binary">
         <label>Binary Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
+          <property name="binding:*:OnOffType">SENSOR_BINARY,BASIC</property>
         </properties>
       </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">
@@ -45,7 +45,7 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Philio Technology Corp</property>
-      <property name="modelId">PAT02-1B</property>
+      <property name="modelId">PAT02-B</property>
       <property name="manufacturerId">013C</property>
       <property name="manufacturerRef">0002:0020</property>
       <property name="dbReference">533</property>
@@ -74,9 +74,10 @@ set Operation Mode using bit to control<br /><h1>Overview</h1><p>set Operation M
                  min="0" max="255">
         <label>7: Customer Function</label>
         <description><![CDATA[
-Customer Function switch using bit control<br /><h1>Overview</h1><p>Customer Function switch using bit control</p> <ul><li>Bit 0: Reserve</li> <li>Bit 1: Reserve</li> <li>Bit 2: Reserve</li> <li>Bit 3: Disable send out BASI OFF after flood event cleared <ul><li>0: Enable</li> <li>1: Disable</li> </ul></li> <li>Bit 4: Notification Type <ul><li>0: Using Notification Report</li> <li>1: Using Sensor Binary Report</li> </ul></li> <li>Bit 5: Disable Multi CC in auto report <ul><li>0: Enable</li> <li>1: Disable</li> </ul></li> <li>Bit 6: Disable to report Battery state when the device triggered <ul><li>0: Enable</li> <li>1: Disable</li> </ul></li> <li>Bit 7: Reserve</li> </ul>
+Customer Function switch using bit control<br /><h1>Overview</h1><p>Customer Function switch using bit control</p> <ul><li>Bit 0: Reserve</li> <li>Bit 1: Reserve</li> <li>Bit 2: Reserve</li> <li>Bit 3: not applicable for this device variant, set to 0</li> <li>Bit 4: Notification Type <ul><li>0: Using Notification Report</li> <li>1: Using Sensor Binary Report</li> </ul></li> <li>Bit 5: Disable Multi CC in auto report <ul><li>0: Enable</li> <li>1: Disable</li> </ul></li> <li>Bit 6: not applicable for this device variant, set to 0</li> <li>Bit 7: Reserve</li> </ul>
         ]]></description>
         <default>0</default>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
