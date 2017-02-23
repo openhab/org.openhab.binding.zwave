@@ -133,8 +133,8 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
      */
     @ZWaveResponseHandler(id = MULTI_INSTANCE_REPORT, name = "MULTI_INSTANCE_REPORT")
     public void handleMultiInstanceReportResponse(ZWaveCommandClassPayload payload, int endpoint) {
-        int commandClassCode = payload.getPayloadByte(1);
-        int instances = payload.getPayloadByte(2);
+        int commandClassCode = payload.getPayloadByte(2);
+        int instances = payload.getPayloadByte(3);
 
         CommandClass commandClass = CommandClass.getCommandClass(commandClassCode);
         if (commandClass == null) {
