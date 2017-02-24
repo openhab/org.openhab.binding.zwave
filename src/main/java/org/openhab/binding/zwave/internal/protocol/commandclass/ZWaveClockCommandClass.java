@@ -113,6 +113,27 @@ public class ZWaveClockCommandClass extends ZWaveCommandClass
         return result;
     }
 
+    public SerialMessage getReportMessage(Calendar cal) {
+        logger.debug("NODE {}: Creating new message for command CLOCK_REPORT", getNode().getNodeId());
+
+        int day = cal.get(Calendar.DAY_OF_WEEK) == 1 ? 7 : cal.get(Calendar.DAY_OF_WEEK) - 1;
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        int minute = cal.get(Calendar.MINUTE);
+
+        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
+                SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.RealTime);
+
+        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
+        outputData.write(getNode().getNodeId());
+        outputData.write(4);
+        outputData.write(getCommandClass().getKey());
+        outputData.write(CLOCK_REPORT);
+        outputData.write((day << 5) | hour);
+        outputData.write(minute);
+        result.setMessagePayload(outputData.toByteArray());
+        return result;
+    }
+
     /**
      * {@inheritDoc}
      *
@@ -141,6 +162,11 @@ public class ZWaveClockCommandClass extends ZWaveCommandClass
                 ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
                         getCommandClass(), nodeTime);
                 getController().notifyEventListeners(zEvent);
+                break;
+            case CLOCK_GET:
+                Calendar calendar = Calendar.getInstance();
+                logger.debug("Answering with {}", calendar);
+                getController().enqueue(getReportMessage(calendar));
                 break;
             default:
                 logger.warn(String.format("NODE %d: Unsupported Command %d for command class %s (0x%02X).",
