@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="kaipule_im20_00_000" listed="false">
+    <label>IM-20 Door Sensor</label>
+    <description>Door Sensor from Kaipule IM-2.0</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="sensor_door" typeId="sensor_door">
+        <label>Door Sensor</label>
+        <properties>
+           <property name="binding:*:OpenClosedType">SENSOR_BINARY,BASIC</property>
+        </properties>
+      </channel>
+      <channel id="alarm_general" typeId="alarm_general">
+        <label>Tamper Alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">BATTERY</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Kaipule Technology Co., Ltd.</property>
+      <property name="modelId">IM-20</property>
+      <property name="manufacturerId">0214</property>
+      <property name="manufacturerRef">0002:0001</property>
+      <property name="dbReference">254</property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_1" type="integer" groupName="configuration"
+                 min="1" max="255">
+        <label>1: Basic Set configuration</label>
+        <description><![CDATA[
+If there is any device under Association Group2, the door sensor will send “Basic Set = value” command to control that device when the door sensor is opened. “Value” configuration rule is as below<br />Value=1 to 100, Dimmer level<br  />Value 255, For ON/OFF Light Only</p>
+        ]]></description>
+        <default>255</default>
+        <options>
+          <option value="1-100">Dimmer level</option>
+          <option value="255">ON/OFF Light Only</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration"
+                 min="1" max="120">
+        <label>2: Light Turn Off Light Time Configuration</label>
+        <default>20</default>
+        <description><![CDATA[
+If there is any device under Association Group2, the door sensor will send “Basic Set = value” command to Group2, and send “Basic Set = 0x00” command to turn-off light after “t” seconds, Set value = “t”, means to send Basic Set command after “t” seconds.
+        ]]></description>
+      </parameter>
+
+
+      <parameter name="config_3_1" type="integer" groupName="configuration"
+                 min="0" max="24">
+        <label>3: Door Sensor Status Report</label>
+        <description><![CDATA[
+Under normal working status (without trigger), the door sensor will automatically send report to the Gateway about its current tamper & open/close status. Set value = t, means “t” hours, (“t”=0, means no status report)
+        ]]></description>
+        <default>12</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="false">
+        <label>1: Group 1</label>
+        <description><![CDATA[
+1.It will send “NOTIFICATION_REPORT”to the device in Group 1 when the door sensor is opened / closed, tamper switch is triggered / recovered.<br />2.When in low battery status, door sensor will send “BATTERY_REPORT” to Group 1 device periodically.<br />3.The door sensor will send “DEVICE_RESET_LOCALLY_NOTIFICATION” to Group1 device when the device recovers to factory settings.
+        ]]></description>
+        <multipleLimit>1</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Group 2</label>
+        <description><![CDATA[
+When the door sensor is opened, it will send “BASIC SET” command to control these devices in Group2.
+        ]]></description>
+        <multipleLimit>2</multipleLimit>
+      </parameter>
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>
