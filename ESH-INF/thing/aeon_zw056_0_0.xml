@@ -19,6 +19,36 @@ Doorbell<br /><h1>Overview</h1><p>Aeon Labs Doorbell is a switch binary device b
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
+      <channel id="config_decimal_param8" typeId="config_decimal">
+        <label>Volume</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=8</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param2" typeId="config_decimal">
+        <label>Repititions</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=2</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param6" typeId="aeon_zw056_00_000_config_decimal_param6">
+        <label>Play Chime Now</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=6</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param80" typeId="aeon_zw056_00_000_config_decimal_param80">
+        <label>Doorbell Notifications</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=80</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param42" typeId="aeon_zw056_00_000_config_decimal_param42">
+        <label>Button Battery Status</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=42</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
@@ -94,8 +124,8 @@ Alert for low battery<br /><h1>Overview</h1><p>0x00:  normal battery level</p> 
         ]]></description>
         <default>0</default>
         <options>
-          <option value="-1">Unknown Battery Level</option>
           <option value="0">Battery Level Good</option>
+          <option value="0">DELETE ME</option>
           <option value="255">Low Battery</option>
         </options>
       </parameter>
@@ -214,5 +244,12 @@ Control current output<br /><h1>Overview</h1><p>Control items: Value=1, play Val
     </config-description>
 
   </thing-type>
+
+  <channel-type id="aeon_zw056_00_000_config_decimal_param8">
+    <item-type>Number</item-type>
+    <label>Ringtone volume</label>
+    <state pattern="%s">
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>
