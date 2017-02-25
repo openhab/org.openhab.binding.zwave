@@ -35,7 +35,7 @@ public class ZWaveCRC16EncapsulationCommandClass extends ZWaveCommandClass {
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveCRC16EncapsulationCommandClass.class);
 
-    private static final byte CRC_ENCAPSULATION_ENCAP = 1;
+    // private static final byte CRC_ENCAPSULATION_ENCAP = 1;
 
     /**
      * Creates a new instance of the ZWaveMultiCommandCommandClass class.
@@ -67,10 +67,11 @@ public class ZWaveCRC16EncapsulationCommandClass extends ZWaveCommandClass {
      *            The received message
      * @param offset
      *            The starting offset into the payload
+     * @return
      * @throws ZWaveSerialMessageException
      */
-    @ZWaveResponseHandler(id = CRC_ENCAPSULATION_ENCAP, name = "CRC_ENCAPSULATION_ENCAP")
-    public void handleCrcEncap(ZWaveCommandClassPayload payload, int endpoint) throws ZWaveSerialMessageException {
+    // @ZWaveResponseHandler(id = CRC_ENCAPSULATION_ENCAP, name = "CRC_ENCAPSULATION_ENCAP")
+    public ZWaveCommandClassPayload handleCrcEncap(ZWaveCommandClassPayload payload) {
         // calculate CRC
         byte[] messageCrc = payload.getPayloadBuffer(payload.getPayloadLength() - 2, payload.getPayloadLength());
         byte[] tocheck = payload.getPayloadBuffer(0, payload.getPayloadLength() - 2);
@@ -80,48 +81,52 @@ public class ZWaveCRC16EncapsulationCommandClass extends ZWaveCommandClass {
         ByteBuffer byteBuffer = ByteBuffer.allocate(2);
         byteBuffer.putShort(calculatedCrc);
         if (!Arrays.equals(messageCrc, byteBuffer.array())) {
-            logger.error("NODE {}: CRC check failed message contains {} but should be {}", getNode().getNodeId(),
+            logger.info("NODE {}: CRC check failed message contains {} but should be {}", getNode().getNodeId(),
                     SerialMessage.bb2hex(messageCrc), SerialMessage.bb2hex(byteBuffer.array()));
-            return;
+            return null;
         }
 
-        // Execute underlying command
-        ZWaveCommandClassPayload encapPayload = new ZWaveCommandClassPayload(payload, 2,
-                payload.getPayloadLength() - 2);
-        CommandClass commandClass;
-        ZWaveCommandClass zwaveCommandClass;
-        int commandClassCode = encapPayload.getCommandClassId();
-        commandClass = CommandClass.getCommandClass(commandClassCode);
-        if (commandClass == null) {
-            logger.error(String.format("NODE %d: Unsupported command class 0x%02x", getNode().getNodeId(),
-                    commandClassCode));
-        } else {
-            zwaveCommandClass = getNode().getCommandClass(commandClass);
+        return new ZWaveCommandClassPayload(payload, 2, payload.getPayloadLength() - 2);
 
-            // Apparently, this node supports a command class that we did not
-            // get (yet) during initialization.
-            // Let's add it now then to support handling this message.
-            if (zwaveCommandClass == null) {
-                logger.debug(String.format("NODE %d: Command class %s (0x%02x) not found, trying to add it.",
-                        getNode().getNodeId(), commandClass, commandClass.getKey()));
-
-                zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), getNode(), getController());
-
-                if (zwaveCommandClass != null) {
-                    logger.debug(String.format("NODE %d: Adding command class %s (0x%02x)", getNode().getNodeId(),
-                            commandClass, commandClass.getKey()));
-                    getNode().addCommandClass(zwaveCommandClass);
-                }
-            }
-
-            if (zwaveCommandClass == null) {
-                logger.error(String.format("NODE %d: CommandClass %s (0x%02x) not implemented.", getNode().getNodeId(),
-                        commandClass, commandClassCode));
-            } else {
-                logger.debug("NODE {}: Calling handleApplicationCommandRequest.", getNode().getNodeId());
-                zwaveCommandClass.handleApplicationCommandRequest(encapPayload, endpoint);
-            }
-        }
+        /**
+         * // Execute underlying command
+         * ZWaveCommandClassPayload encapPayload = new ZWaveCommandClassPayload(payload, 2,
+         * payload.getPayloadLength() - 2);
+         * CommandClass commandClass;
+         * ZWaveCommandClass zwaveCommandClass;
+         * int commandClassCode = encapPayload.getCommandClassId();
+         * commandClass = CommandClass.getCommandClass(commandClassCode);
+         * if (commandClass == null) {
+         * logger.error(String.format("NODE %d: Unsupported command class 0x%02x", getNode().getNodeId(),
+         * commandClassCode));
+         * } else {
+         * zwaveCommandClass = getNode().getCommandClass(commandClass);
+         *
+         * // Apparently, this node supports a command class that we did not
+         * // get (yet) during initialization.
+         * // Let's add it now then to support handling this message.
+         * if (zwaveCommandClass == null) {
+         * logger.debug(String.format("NODE %d: Command class %s (0x%02x) not found, trying to add it.",
+         * getNode().getNodeId(), commandClass, commandClass.getKey()));
+         *
+         * zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), getNode(), getController());
+         *
+         * if (zwaveCommandClass != null) {
+         * logger.debug(String.format("NODE %d: Adding command class %s (0x%02x)", getNode().getNodeId(),
+         * commandClass, commandClass.getKey()));
+         * getNode().addCommandClass(zwaveCommandClass);
+         * }
+         * }
+         *
+         * if (zwaveCommandClass == null) {
+         * logger.error(String.format("NODE %d: CommandClass %s (0x%02x) not implemented.", getNode().getNodeId(),
+         * commandClass, commandClassCode));
+         * } else {
+         * logger.debug("NODE {}: Calling handleApplicationCommandRequest.", getNode().getNodeId());
+         * zwaveCommandClass.handleApplicationCommandRequest(encapPayload, endpoint);
+         * }
+         * }
+         */
     }
 
     private short crc_ccit(final byte[] args) {

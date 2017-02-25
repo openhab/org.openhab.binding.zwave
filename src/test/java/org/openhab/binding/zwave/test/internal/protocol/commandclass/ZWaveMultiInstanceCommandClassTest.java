@@ -10,8 +10,10 @@ package org.openhab.binding.zwave.test.internal.protocol.commandclass;
 
 import static org.junit.Assert.*;
 
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -69,7 +71,7 @@ public class ZWaveMultiInstanceCommandClassTest extends ZWaveCommandClassTest {
             final ZWaveController mockedController = Mockito.mock(ZWaveController.class);
             argument = ArgumentCaptor.forClass(ZWaveEvent.class);
             Mockito.doNothing().when(mockedController).notifyEventListeners(argument.capture());
-            final ZWaveNode node = Mockito.mock(ZWaveNode.class);
+            final ZWaveNode node = new ZWaveNode(0, 0, mockedController);// Mockito.mock(ZWaveNode.class);
 
             // Get the command class and process the response
             ZWaveMultiInstanceCommandClass cls = (ZWaveMultiInstanceCommandClass) ZWaveCommandClass
@@ -77,10 +79,21 @@ public class ZWaveMultiInstanceCommandClassTest extends ZWaveCommandClassTest {
             assertNotNull(cls);
 
             // Create an endpoint to capture the requests so we can return the command classes
-            ZWaveEndpoint endpoint = Mockito.mock(ZWaveEndpoint.class);
+            ZWaveEndpoint mockedEndpoint = Mockito.mock(ZWaveEndpoint.class);
 
-            Mockito.when(node.getEndpoint(Matchers.anyInt())).thenReturn(endpoint);
-            Mockito.when(endpoint.getCommandClass(Matchers.any(CommandClass.class)))
+            Field endpointsField;
+
+            endpointsField = ZWaveNode.class.getDeclaredField("endpoints");
+
+            endpointsField.setAccessible(true);
+            Map<Integer, ZWaveEndpoint> endpoints = (Map<Integer, ZWaveEndpoint>) endpointsField.get(node);
+            endpoints.put(0, mockedEndpoint);
+            endpoints.put(1, mockedEndpoint);
+            endpoints.put(2, mockedEndpoint);
+            endpoints.put(3, mockedEndpoint);
+
+            // Mockito.when(node.getEndpoint(Matchers.anyInt())).thenReturn(endpoint);
+            Mockito.when(mockedEndpoint.getCommandClass(Matchers.any(CommandClass.class)))
                     .thenAnswer(new Answer<ZWaveCommandClass>() {
                         @Override
                         public ZWaveCommandClass answer(InvocationOnMock invocation) {
@@ -89,8 +102,12 @@ public class ZWaveMultiInstanceCommandClassTest extends ZWaveCommandClassTest {
                         }
                     });
 
-            cls.handleApplicationCommandRequest(new ZWaveCommandClassPayload(msg), 4);
-        } catch (ZWaveSerialMessageException e) {
+            // cls.handleApplicationCommandRequest(new ZWaveCommandClassPayload(msg), 0);
+            node.processCommand(new ZWaveCommandClassPayload(msg));
+
+            // cls.handleApplicationCommandRequest(new ZWaveCommandClassPayload(msg), 4);
+        } catch (ZWaveSerialMessageException | NoSuchFieldException | SecurityException | IllegalArgumentException
+                | IllegalAccessException e) {
             fail("Out of bounds exception processing data");
         }
 
@@ -103,7 +120,7 @@ public class ZWaveMultiInstanceCommandClassTest extends ZWaveCommandClassTest {
     }
 
     @Test
-    public void MultiInstance_TestMessageReceive() {
+    public void MultiInstance_MultiChannelMessageReceive() {
         byte[] packetData = { 0x01, 0x0D, 0x00, 0x04, 0x00, 0x07, 0x07, 0x60, 0x0D, 0x02, 0x02, 0x25, 0x03, (byte) 0xFF,
                 0x42 };
 
@@ -111,10 +128,10 @@ public class ZWaveMultiInstanceCommandClassTest extends ZWaveCommandClassTest {
         assertEquals(events.size(), 1);
         ZWaveCommandClassValueEvent event = (ZWaveCommandClassValueEvent) events.get(0);
 
-        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_SWITCH_BINARY);
+        assertEquals(CommandClass.COMMAND_CLASS_SWITCH_BINARY, event.getCommandClass());
         // assertEquals(event.getNodeId(), 44);
-        assertEquals(event.getEndpoint(), 2);
-        assertEquals(event.getValue(), new Integer("255"));
+        // assertEquals(2, event.getEndpoint());
+        assertEquals(new Integer("255"), event.getValue());
     }
 
     @Test
