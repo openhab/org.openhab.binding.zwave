@@ -108,7 +108,7 @@ WallMote Quad<br /><h1>Overview</h1><p>Aeotec WallMote Quad is an intelligent Z-
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Notification report</label>
         <description><![CDATA[
-Which notification to be sent to the associated devices.<br /><h1>Overview</h1><p>To set which notification would be sent to the associated devices (Group 1) when pressing the buttons.</p>
+Which notification to be sent to the associated devices.<br /><h1>Overview</h1><p>To set which notification would be sent to the associated devices (Group 1) when pressing the buttons. When the parameter is set to 3, slide functionality on the buttons is activated.</p>
         ]]></description>
         <default>1</default>
         <options>
