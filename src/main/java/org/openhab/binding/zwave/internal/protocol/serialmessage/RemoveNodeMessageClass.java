@@ -58,6 +58,11 @@ public class RemoveNodeMessageClass extends ZWaveCommandProcessor {
     @Override
     public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
+        if (transaction == null) {
+            logger.debug("NODE {}: transaction not correlated for RemoveNodeMessageClass");
+            return false;
+        }
+
         switch (incomingMessage.getMessagePayloadByte(1)) {
             case REMOVE_NODE_STATUS_LEARN_READY:
                 logger.debug("Remove Node: Learn ready.");

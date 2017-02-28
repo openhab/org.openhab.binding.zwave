@@ -5,38 +5,34 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="schlage_fe599nx_00_000" listed="false">
-    <label>FE599NX Connected Keypad with Lever</label>
-    <description>Connected Keypad with Lever</description>
+  <thing-type id="leviton_vre06_00_000" listed="false">
+    <label>VRE06 Electronic Low Voltage Scene Capable Dimmer</label>
+    <description>Electronic Low Voltage Scene Capable Dimmer</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="lock_door" typeId="lock_door">
-        <label>Door Lock</label>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_DOOR_LOCK</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm</label>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
-        </properties>
-      </channel>
-      <channel id="battery-level" typeId="system.battery-level">
-        <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SCENE_ACTIVATION</property>
         </properties>
       </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Allegion</property>
-      <property name="modelId">FE599NX</property>
-      <property name="manufacturerId">003B</property>
-      <property name="manufacturerRef">634B:504C</property>
-      <property name="dbReference">403</property>
+      <property name="vendor">Leviton</property>
+      <property name="modelId">VRE06</property>
+      <property name="manufacturerId">001D</property>
+      <property name="manufacturerRef">0E01:0334</property>
+      <property name="dbReference">192</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -50,7 +46,7 @@
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Alarm Reports</label>
+        <label>1: Group 1</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

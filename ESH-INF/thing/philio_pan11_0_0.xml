@@ -86,7 +86,9 @@
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="0" max="32767">
         <label>1: W meter report period</label>
-        <description>Default 1 hour (value = 720) Enable automatic interval in seconds reporting with an interval of 5s * the value. Set to 0 will disable the autoreporting function.</description>
+        <description><![CDATA[
+Set automatic W meter reporting interval<br /><h1>Overview</h1><p>If the setting is configured for 1hour (set value =720), the PAN11 will report its instant power consumption every 1 hour to Group1 node. The maximum interval to report its instant power consumption is 45 hours (5s*32767/3600=45hr).</p>
+        ]]></description>
         <default>720</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -94,16 +96,21 @@
       <parameter name="config_2_2" type="integer" groupName="configuration"
                  min="0" max="32767">
         <label>2: kWh meter report period</label>
-        <description>Default 1 hour (value = 6) - Enable automatic interval in minutes reporting with an interval of 10min * the value. Set to 0 will disable the autoreporting function.</description>
+        <description><![CDATA[
+Set automatic kWh meter reporting interval.<br /><h1>Overview</h1><p>If the setting is configured for 1hour (set value =6), the PAN11 will report its Accumulated Power Consumption (KW/h) every 1 hour to Group1 node. The maximum interval to report its Accumulated Power Consumption (KW/h) is 227.55 days (10min*32767/1440=227.55 days).</p>
+        ]]></description>
         <default>6</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_3_2" type="integer" groupName="configuration"
                  min="10" max="1300">
-        <label>3: Threshold of Watt for Load Caution</label>
-        <description>If threshold of wattage is reached, a meter report will be generated. 1300*0.01A = 13A</description>
+        <label>3: Threshold of Watt for load caution</label>
+        <description><![CDATA[
+Set threshold of wattage meter value for load caution .<br /><h1>Overview</h1><p>This is a warning when the current of load over the preset threshold value, if the setting value is 1300, when the load current of Relay1 over this value, PAN11 will send current meter report to warn the Group1 node, the Range of the setting value is from 10 to 1300,and the default value is 1300. </p>
+        ]]></description>
         <default>1300</default>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_4_2" type="integer" groupName="configuration"

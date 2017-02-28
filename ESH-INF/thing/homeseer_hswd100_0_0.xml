@@ -82,7 +82,7 @@ Number of levels (1-99) to change dimming each step when controlled locally<br /
         <default>1</default>
       </parameter>
 
-      <parameter name="config_10_1" type="integer" groupName="configuration"
+      <parameter name="config_10_2" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>10: Local Dimming Step Duration</label>
         <description><![CDATA[

@@ -117,14 +117,14 @@
         </options>
       </parameter>
 
-      <parameter name="config_6_1" type="integer" groupName="configuration"
+      <parameter name="config_6_2" type="integer" groupName="configuration"
                  min="37" max="99">
         <label>6: Upper Limit of Setpoint A</label>
         <description>Determines Upper Limit of set point A. Unit in celsius A=(B+2)min (37.0 C)max, Unit in Fahrenheit A=(B+4)min (99.0 F)max</description>
         <default>99</default>
       </parameter>
 
-      <parameter name="config_7_1" type="integer" groupName="configuration"
+      <parameter name="config_7_2" type="integer" groupName="configuration"
                  min="5" max="95">
         <label>7: Lower Limit of Setpoint B</label>
         <description>Determines Lower Limit of set point B. Unit in celsius (5.0 C to 35.0 C) Unit in Fahrenheit (41.0 F to 95.0 F)</description>

@@ -31,7 +31,7 @@
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGD211</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0100:0107,0100:0109,0100:300A,0100:100A,0100:0104,0100:0106</property>
+      <property name="manufacturerRef">0100:0104,0100:0106,0100:0107,0100:0109,0100:100A,0100:300A</property>
       <property name="versionMin">2.1</property>
       <property name="dbReference">119</property>
       <property name="defaultAssociations">3</property>
@@ -60,18 +60,22 @@
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
         <label>6: Separation of association sending (key 1)</label>
-        <description>Activate/Deactivate association sending for group 1 - Also see param #16</description>
+        <description><![CDATA[
+Activate/Deactivate association sending for group 1 - Also see param #16<br /><h1>Overview</h1><p>Sending commands to control devices assigned to 1-st association group (key no. 1).</p> <p>NOTE: Parameter 15 value must be set to 1 to work properly. This activates the double-click functionality - dimmer/roller shutter control.</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Map status to all devices in group 1</option>
-          <option value="1">Map OFF status to all devices in group 1, Double click on key 1 will s</option>
-          <option value="2">Map OFF status to all devices in group 1, Double click on key 1 will s</option>
+          <option value="1">Map OFF status to all devices in group 1 - last state</option>
+          <option value="2">Map OFF status to all devices in group 1 - 100% state</option>
         </options>
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
         <label>7: Control key #2 behaviour</label>
-        <description>Key no.2 is not represented by any physical device - only devices in the association list. This functionality prevents of lack of reaction on pressing key no.2 through polling devices from association list one by one and checking their</description>
+        <description><![CDATA[
+Checking the device status before sending a control frame from the key no. 2.<br /><h1>Overview</h1><p>Info: Key no. 2 is not represented by any physical device expect of devices on association list. This functionality prevents of lack of reaction on pressing key no. 2 through polling devices from list one by one and checking thier actual states.</p> <p>It is not possible to check the device status before sending a control frame from the key no. 2 if roller blind switch is chosen in parameter 14 (value 2)</p> <p>If devices state is checked before sending asociation then parameter 19 should be set to value 0.</p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">Device status is not checked</option>
@@ -95,8 +99,11 @@
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>10: Time of AUTOMATIC moving between the extreme dimming values</label>
-        <description>Options for changing parameter 1-255 (10ms - 2,5s) - 0: this value disables the smooth change in light intensity. NOTE: value 0 is required for inductive and capacitive devices unsuitable for dimming (e.g. fluorescent lamps, motors, etc...)</description>
+        <description><![CDATA[
+Time of Automatic moving the Dimmer between the extreme dimming values<br /><h1>Overview</h1><p>Options for changing parameter 0-255 (0ms – 2.5s)</p> <p>0 - this value disables the smooth change in light intensity</p> <p>NOTE value 0 is required for inductive and capacitive devices unsuitable for dimming, (e.g. fluorescent lamps , motors etc.)</p>
+        ]]></description>
         <default>1</default>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
@@ -146,14 +153,16 @@
         <description>Saving state before power failure</description>
         <default>1</default>
         <options>
-          <option value="0">State NOT saved at power failure, all outputs are set to OFF upon powe</option>
-          <option value="1">State saved at power failure, all outputs are set to previous state up</option>
+          <option value="0">State NOT saved at power failure</option>
+          <option value="1">State saved at power failure.</option>
         </options>
       </parameter>
 
       <parameter name="config_17_1" type="integer" groupName="configuration">
         <label>17: 3-way switch</label>
-        <description>The function of 3-way switch provides the option to double key no. 1. The dimmer may control two bi-stable push-buttons or an infinite number of mono-stable push-buttons. (default value 0)</description>
+        <description><![CDATA[
+3-way switch function<br /><h1>Overview</h1><p>The function of 3 - way switch, provides the option to double key no. 1.<br />The Dimmer may control two toggle push-buttons or an infinite number of momentary push-buttons.  </p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Disable</option>
@@ -173,29 +182,37 @@
 
       <parameter name="config_19_1" type="integer" groupName="configuration">
         <label>19: Change [On-Off] bi-stable keys</label>
-        <description>This function allow user to change [On-Off] bi-stable keys (parameter no. 14) (default value 0)</description>
+        <description><![CDATA[
+Assigns bistable key status to the device status.<br /><h1>Overview</h1><p>Info: Remote control from Fibaro System Is Still Possible. This function is useful When you want display status of external devices, e.g. Motion Sensor, in Fibaro System.  </p>
+        ]]></description>
         <default>0</default>
         <options>
-          <option value="0">Device changes status on key status change</option>
-          <option value="1">Device status depends on key status; ON when the key is ON, OFF when t</option>
+          <option value="0">[On / Off] Device changes status on key status change</option>
+          <option value="1">Device status depends on key status.</option>
         </options>
       </parameter>
 
       <parameter name="config_20_1" type="integer" groupName="configuration"
                  min="100" max="170">
-        <label>20: Parm 20</label>
-        <description>This function will enable decreasing the minimum level of the Dimmer by extending the control impulse.[100 - 170] By changing the minimem level, the user may completely dim LED bulbs. Not all LED bulbs available on the market have the dimmm</description>
+        <label>20: Minimum level of the Dimmer</label>
+        <description><![CDATA[
+Enable decreasing the minimum level of the Dimmer<br /><h1>Overview</h1><p>This function will enable decreasing the minimum level of the Dimmer by extending the control impulse. [100 - 170]      </p> <p>By changing the minimem level, the user may completely dim LED bulbs.</p> <p>Not all LED bulbs available on the market have the dimmm</p>
+        ]]></description>
         <default>110</default>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_30_1" type="integer" groupName="configuration">
         <label>30: Relay 1: Response to General Alarm</label>
+        <description><![CDATA[
+Resonse to alarm of any type<br /><h1>Overview</h1><p>Alarm of any type (general alarm, water flooding alarm, smoke alarm: CO, CO2, temperature alarm).  </p>
+        ]]></description>
         <default>3</default>
         <options>
-          <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt of alarm frame</option>
-          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt of alarm frame</option>
-          <option value="3">ALARM FLASHING - relay will turn ON and OFF periodically (see param.39</option>
+          <option value="0">Deactivation</option>
+          <option value="1">Alarm Dimmer ON</option>
+          <option value="2">Alarm Dimmer OFF</option>
+          <option value="3">Alarm Flashing</option>
         </options>
       </parameter>
 
@@ -209,13 +226,18 @@
       <parameter name="config_40_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>40: Updating the dimming level without switch.</label>
-        <description>Available settings: from 1 to 99. Parameter’s value changes depending on the dimming level.</description>
+        <description><![CDATA[
+Available settings: from 1 to 99.<br /><h1>Overview</h1><p>Parameter’s value changes depending on the dimming level.  </p>
+        ]]></description>
         <default>99</default>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_41_1" type="integer" groupName="configuration">
         <label>41: Scene activation functionality</label>
-        <description>The device offers the possibility of sending commands compatible with Command class scene activation. Information is sent to devices assigned to association group no. 3. Controllers such as Home Center 2 are able to interpret such commands and based on th</description>
+        <description><![CDATA[
+Sending commands with command class scene activation<br /><h1>Overview</h1><p>The device offers the possibility of sending commands compatible with Command class scene activation. Information is sent to devices assigned to association group no. 3. Controllers such as Home Center 2 are able to interpret such commands and based on these commands they activate scenes, to which specific scene IDs have been assigned. The user may expand the functionality of the button connected to inputs S1 and S2 by distinguishing the actions of keys connected to those inputs. For example: double click would activate the scene "goodnight" and triple click would activate the scene "morning"</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Scene functionality deactivated</option>

@@ -379,6 +379,10 @@ public class ZWaveTransactionManager {
                     case NAK:
                         // NAK means the controller didn't receive the message - probably because of a Checksum error
                     case CAN:
+                        if (lastTransaction == null) {
+                            continue;
+                        }
+
                         // CAN means out of flow message was received by the controller
                         // It probably means we sent a message while the controller was processing the previous message.
                         logger.debug("Resetting last transaction {}", lastTransaction.getTransactionId());

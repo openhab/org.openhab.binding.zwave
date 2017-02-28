@@ -1128,6 +1128,11 @@ public class ZWaveNode {
                         || commandCode == CommandClassSecurityV1.SECURITY_MESSAGE_ENCAPSULATION_NONCE_GET)) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_SECURITY", getNodeId());
 
+            if (endpoints.get(0) == null) {
+                logger.debug("NODE {}: No endpoint 0!", getNodeId());
+                return null;
+            }
+
             ZWaveSecurityCommandClass securityCommandClass = (ZWaveSecurityCommandClass) endpoints.get(0)
                     .getCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
             if (securityCommandClass == null) {
@@ -1156,6 +1161,10 @@ public class ZWaveNode {
         } else if (commandClassCode == CommandClass.COMMAND_CLASS_CRC_16_ENCAP.getKey() && commandCode == 1) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_CRC_16_ENCAP", getNodeId());
 
+            if (endpoints.get(0) == null) {
+                logger.debug("NODE {}: No endpoint 0!", getNodeId());
+                return null;
+            }
             ZWaveCRC16EncapsulationCommandClass crcCommandClass = (ZWaveCRC16EncapsulationCommandClass) endpoints.get(0)
                     .getCommandClass(CommandClass.COMMAND_CLASS_CRC_16_ENCAP);
             if (crcCommandClass == null) {
@@ -1173,6 +1182,10 @@ public class ZWaveNode {
                 && (commandCode == 6 || commandCode == 13)) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_MULTI_CHANNEL", getNodeId());
 
+            if (endpoints.get(0) == null) {
+                logger.debug("NODE {}: No endpoint 0!", getNodeId());
+                return null;
+            }
             ZWaveMultiInstanceCommandClass multichannelCommandClass = (ZWaveMultiInstanceCommandClass) endpoints.get(0)
                     .getCommandClass(CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
             if (multichannelCommandClass == null) {
@@ -1201,6 +1214,10 @@ public class ZWaveNode {
         if (commandClassCode == CommandClass.COMMAND_CLASS_MULTI_CMD.getKey()) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_MULTI_CMD", getNodeId());
 
+            if (endpoints.get(0) == null) {
+                logger.debug("NODE {}: No endpoint 0!", getNodeId());
+                return null;
+            }
             ZWaveMultiCommandCommandClass multicommandCommandClass = (ZWaveMultiCommandCommandClass) endpoints.get(0)
                     .getCommandClass(CommandClass.COMMAND_CLASS_MULTI_CMD);
             if (multicommandCommandClass == null) {
@@ -1214,6 +1231,10 @@ public class ZWaveNode {
         }
 
         ZWaveEndpoint endpoint = getEndpoint(endpointNumber);
+        if (endpoint == null) {
+            logger.debug("NODE {}: No endpoint {}!", getNodeId(), endpointNumber);
+            return null;
+        }
         for (ZWaveCommandClassPayload command : commands) {
             CommandClass commandClass = CommandClass.getCommandClass(command.getCommandClassId());
             if (commandClass == null) {

@@ -38,6 +38,10 @@ public class DeleteReturnRouteMessageClass extends ZWaveCommandProcessor {
     @Override
     public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
+        if (transaction == null) {
+            logger.debug("NODE {}: transaction not correlated for DeleteReturnRouteMessageClass");
+            return false;
+        }
         int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: Got DeleteReturnRoute response.", nodeId);
@@ -57,6 +61,10 @@ public class DeleteReturnRouteMessageClass extends ZWaveCommandProcessor {
     @Override
     public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
+        if (transaction == null) {
+            logger.debug("NODE {}: transaction not correlated for DeleteReturnRouteMessageClass");
+            return false;
+        }
         int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: Got DeleteReturnRoute request.", nodeId);
