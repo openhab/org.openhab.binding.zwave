@@ -61,7 +61,7 @@
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0B00:1001,0B01:1002,0B01:2002</property>
       <property name="versionMin">3.2</property>
-      <property name="versionMax">25.0</property>
+      <property name="versionMax">23.0</property>
       <property name="dbReference">392</property>
       <property name="defaultAssociations">1</property>
     </properties>
