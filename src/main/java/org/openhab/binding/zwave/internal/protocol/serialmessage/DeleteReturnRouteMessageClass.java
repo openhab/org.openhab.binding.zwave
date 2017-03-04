@@ -47,7 +47,7 @@ public class DeleteReturnRouteMessageClass extends ZWaveCommandProcessor {
         logger.debug("NODE {}: Got DeleteReturnRoute response.", nodeId);
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
             // lastSentMessage.setAckRecieved();
-            logger.debug("NODE {}: DeleteReturnRoute command in progress.", nodeId);
+            logger.debug("NODE {}: DeleteReturnRoute command started.", nodeId);
         } else {
             logger.debug("NODE {}: DeleteReturnRoute command failed.", nodeId);
             zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.DeleteReturnRoute, nodeId,

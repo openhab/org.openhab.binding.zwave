@@ -1243,7 +1243,7 @@ public class ZWaveNode {
             }
 
             logger.debug("NODE {}: Incoming command class {}, endpoint {}", getNodeId(), commandClass,
-                    commandClass.getKey(), endpoint.getEndpointId());
+                    endpoint.getEndpointId());
             ZWaveCommandClass zwaveCommandClass = endpoint.getCommandClass(commandClass);
 
             // Apparently, this endpoint supports a command class that we did not learn about during initialization.

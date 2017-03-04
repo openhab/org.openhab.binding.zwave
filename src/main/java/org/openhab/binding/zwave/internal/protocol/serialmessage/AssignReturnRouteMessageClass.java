@@ -47,7 +47,7 @@ public class AssignReturnRouteMessageClass extends ZWaveCommandProcessor {
         logger.debug("NODE {}: Got AssignReturnRoute response.", nodeId);
 
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
-            logger.debug("NODE {}: AssignReturnRoute command in progress.", nodeId);
+            logger.debug("NODE {}: AssignReturnRoute command started.", nodeId);
         } else {
             logger.debug("NODE {}: AssignReturnRoute command failed.", nodeId);
             zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.AssignReturnRoute, nodeId,
