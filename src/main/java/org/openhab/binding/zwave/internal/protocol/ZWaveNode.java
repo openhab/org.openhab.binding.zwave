@@ -559,7 +559,7 @@ public class ZWaveNode {
      * @return true if the command class is supported, false otherwise.
      */
     public boolean supportsCommandClass(CommandClass commandClass) {
-        return endpoints.get(0).getCommandClasses().contains(commandClass);
+        return endpoints.get(0).supportsCommandClass(commandClass);
     }
 
     /**
@@ -799,7 +799,7 @@ public class ZWaveNode {
 
     @Override
     public String toString() {
-        return String.format("Node %d. Manufacturer %04X, Type %04X, Id %04X", nodeId, manufacturer, deviceType,
+        return String.format("Node %d: Manufacturer=%04X, Type=%04X, Id=%04X", nodeId, manufacturer, deviceType,
                 deviceId);
     }
 

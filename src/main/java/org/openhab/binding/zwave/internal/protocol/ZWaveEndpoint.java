@@ -104,10 +104,21 @@ public class ZWaveEndpoint {
     }
 
     /**
+     * Checks if a commandClass is supported by this endpoint.
+     *
+     * @param commandClass
+     *            The command class to test.
+     * @return true if the command class is supported.
+     */
+    public boolean supportsCommandClass(CommandClass commandClass) {
+        return supportedCommandClasses.containsKey(commandClass);
+    }
+
+    /**
      * Checks if a commandClass is supported in secure mode by this endpoint.
      *
      * @param commandClass
-     *            The command class to get.
+     *            The command class to test.
      * @return true if the command class is supported in secure mode.
      */
     public boolean supportsSecureCommandClass(CommandClass commandClass) {
@@ -136,5 +147,10 @@ public class ZWaveEndpoint {
 
     public Set<CommandClass> getSecureCommandClasses() {
         return secureCommandClasses;
+    }
+
+    @Override
+    public String toString() {
+        return Integer.toString(endpointId);
     }
 }
