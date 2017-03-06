@@ -7,14 +7,16 @@
 
   <thing-type id="act_zrw230_00_000" listed="false">
     <label>ZRW230 Wall Mounted 3-Way Switch</label>
-    <description>Wall Mounted 3-Way Switch</description>
+    <description><![CDATA[
+Wall Mounted 3-Way Switch<br /><h1>Overview</h1><p><b>ZRW230 WALL MOUNTED SWITCH</b></p> <p>The ZRW230 Wall Mounted 3-Way Switch is a component of the HomePro lighting control system.</p> <p>This Wall Mounted Switch is designed to work with other Z-Wave enabled devices. Z-Wave nodes of other types can be added to the system and will also act as repeaters if they support this function of repeating the signal received to other modules in the system. </p> <p>As part of a Z-Wave network, the ZRW230 will also act as a wireless repeater to insure that commands intended for another device in the network are received. This is useful when the device would otherwise be out of the radio range of the wireless controller.</p> <p>There are no field repairable assemblies on this unit.. If service is needed, the unit must be returned where purchased.</p> <br /><h2>Inclusion Information</h2><p><b>Including to the Network (Must be installed in its permanent location, not on test bench)</b></p> <p>1. Setup the controller you are using to include a device into network.</p> <p>2. Tap either the top or bottom of the switch once</p> <br /><h2>Exclusion Information</h2><p><b>Excluding from the Network</b></p> <p>1. Setup the controller you are using to exclude a device from the network.</p> <p>2. Tap either the top or the bottom of the switch once.</p>
+    ]]></description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
         </properties>
       </channel>
     </channels>
@@ -27,6 +29,41 @@
       <property name="manufacturerRef">5257:3330</property>
       <property name="dbReference">546</property>
     </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: Set Ignore Start Level Bit</label>
+        <description><![CDATA[
+Set Ignore Start Level Bit When Transmitting Dim Commands<br /><h1>Overview</h1><p>The ZRW230 can send Dim commands to Z-Wave enabled dimmers. The Dim command has a start level embedded in it. A dimmer receiving this command will start dimming from that start level. However, the command also has a bit that indicates whether the dimmer should ignore the start level. If the bit is set to 1, the dimmer will ignore the start level and instead start dimming from its current level. If this bit is set to 0, the dimmer will not ignore the start level.</p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">Dimmer will not ignore the start level</option>
+          <option value="1">Dimmer will ignore the start level</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration">
+        <label>2: Suspend Group 4</label>
+        <description><![CDATA[
+Stop transmitting to devices that are “associated” into Group 4<br /><h1>Overview</h1><p>You may wish to disable transmitting commands to Z-Wave devices that are in Group 4 without “disassociating” those devices from the group. Setting parameter 2 to the value of 1 will stop the ZRW230 from transmitting to devices that are “associated” into Group 4.</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Enable transmitting to devices “associated” into Group 4</option>
+          <option value="1">Stop transmitting to devices “associated” into Group 4</option>
+        </options>
+      </parameter>
+
+    </config-description>
 
   </thing-type>
 
