@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="heiman_hs2skz_00_000" listed="false">
+    <label>HS2SK-Z In-Wall Switch Module</label>
+    <description><![CDATA[
+In-Wall Switch Module<br /><h1>Overview</h1><p>Smart metering outlet. Same hardware as DOMUX DX2SK-Z</p> <br /><h2>Inclusion Information</h2><p>Press power on/off button for 3 times in 1.5 sec then blue LED will flash quickly.</p> <br /><h2>Exclusion Information</h2><p>Press power on/off button for 3 times in 1.5 sec then blue LED will flash slowly.</p>
+    ]]></description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts" typeId="meter_watts">
+        <label>Electric meter (watts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">METER;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh" typeId="meter_kwh">
+        <label>Electric meter (kWh)</label>
+        <properties>
+          <property name="binding:*:DecimalType">METER;type=E_KWh</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Heiman Technology Co. Ltd</property>
+      <property name="modelId">HS2SK-Z</property>
+      <property name="manufacturerId">0260</property>
+      <property name="manufacturerRef">8006:1000</property>
+      <property name="dbReference">549</property>
+    </properties>
+
+  </thing-type>
+
+</thing:thing-descriptions>
