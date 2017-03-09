@@ -89,7 +89,8 @@ determines how the Wall Plug will react in the event of power supply failure<br 
         </options>
       </parameter>
 
-      <parameter name="config_3_2" type="integer" groupName="configuration">
+      <parameter name="config_3_2" type="integer" groupName="configuration"
+                 min="10" max="30000">
         <label>3: Overload safety switch</label>
         <description><![CDATA[
 allows to turn off the controlled device in case of exceeding the defined power.<br /><h1>Overview</h1><p>This function allows to turn off the controlled device in case of exceeding the defined power. Controlled device will be turned off even if “Always On” function is active (parameter 1).</p> <p>Controlled device can be turned back on via B-button or sending a control frame. By default this function is inactive.</p> <p>10-30000 (1.0-3000.0W, step 0.1W) - power threshold</p>
@@ -98,6 +99,7 @@ allows to turn off the controlled device in case of exceeding the defined power.
         <options>
           <option value="0">function inactive</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
@@ -127,7 +129,8 @@ defines the time interval of sending at most 5 standard power reports<br /><h1>O
         <default>30</default>
       </parameter>
 
-      <parameter name="config_13_2" type="integer" groupName="configuration">
+      <parameter name="config_13_2" type="integer" groupName="configuration"
+                 min="0" max="500">
         <label>13: Energy reporting threshold</label>
         <description><![CDATA[
 specifies the minimum change in energy consumption<br /><h1>Overview</h1><p>This parameter specifies the minimum change in energy consumption (in relation to the previously reported), that will result in sending a new report.</p> <p>0 - energy reports inactive<br />1-500 (0.01-5kWh, step 0.01kWh) - threshold</p> <p>Default: 10 (0.1kWh)</p>
@@ -136,9 +139,11 @@ specifies the minimum change in energy consumption<br /><h1>Overview</h1><p>This
         <options>
           <option value="0">energy reports inactive</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_14_2" type="integer" groupName="configuration">
+      <parameter name="config_14_2" type="integer" groupName="configuration"
+                 min="5" max="32400">
         <label>14: Power and energy periodic reports</label>
         <description><![CDATA[
 defines time period between independent reports sent<br /><h1>Overview</h1><p>This parameter defines time period between independent reports sent when changes in power load have not been recorded or if changes are insignificant. By default reports are sent every hour.</p> <p>Default: 3600 second (1h)</p>
@@ -147,6 +152,7 @@ defines time period between independent reports sent<br /><h1>Overview</h1><p>Th
         <options>
           <option value="0">periodic reports inactive</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_15_1" type="integer" groupName="configuration">
@@ -235,7 +241,8 @@ Define Z-Wave network alarms to which the Wall Plug will respond<br /><h1>Overvi
         </options>
       </parameter>
 
-      <parameter name="config_31_1" type="integer" groupName="configuration">
+      <parameter name="config_31_1" type="integer" groupName="configuration"
+                 min="5" max="50">
         <label>31: Response to alarm frames</label>
         <description><![CDATA[
 defines how the Wall Plug will respond to alarms<br /><h1>Overview</h1><p>This parameter defines how the Wall Plug will respond to alarms (device’s status change).</p> <p>In case of values 1 or 2 the Wall Plug is operating normally and LED ring signals an alarm through time defined in parameter 32 or until the alarm is cancelled.</p> <p>In case of values 5 to 50 the Wall Plug does not report status change, power changes, ignores BASIC SET command frames. After time defined in parameter 32 or after the alarm cancellation, connected device is set to the previous state.</p> <p>Available settings: 0 - no reaction,</p> <ul><li>1 - turn connected device on</li> <li>2 - turn connected device off</li> <li>5-50 (0.5-5.0s, step 0.1s) - cyclically change device state with set period</li> </ul>
@@ -246,6 +253,7 @@ defines how the Wall Plug will respond to alarms<br /><h1>Overview</h1><p>This p
           <option value="1">turn connected device on</option>
           <option value="2">turn connected device off</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_32_2" type="integer" groupName="configuration"
