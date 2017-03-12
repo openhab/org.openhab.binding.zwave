@@ -643,11 +643,14 @@ public class ZWaveNodeInitStageAdvancer {
         if (thingType == null) {
             logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - thing is null!", node.getNodeId());
         } else {
+            logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - check properties", node.getNodeId());
             // We now should know all the command classes, so run through the database and set any options
             Map<String, String> properties = thingType.getProperties();
             for (Map.Entry<String, String> entry : properties.entrySet()) {
                 String key = entry.getKey();
                 String value = entry.getValue();
+                logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - property {} == {}", node.getNodeId(), key,
+                        value);
 
                 String cmds[] = key.split(":");
                 if ("commandClass".equals(cmds[0]) == false) {
@@ -665,6 +668,8 @@ public class ZWaveNodeInitStageAdvancer {
                         optionMap.put(args[0], "");
                     }
                 }
+
+                logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - optionmap {}", node.getNodeId(), optionMap);
 
                 if (optionMap.containsKey("ccRemove")) {
                     // If we want to remove the class, then remove it!
