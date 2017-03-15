@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * <p>
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.ByteArrayOutputStream;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -44,9 +46,9 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
     /**
      * Creates a new instance of the ZWaveClimateControlCommandClass class.
      *
-     * @param node the node this command class belongs to
+     * @param node       the node this command class belongs to
      * @param controller the controller to use
-     * @param endpoint the endpoint this Command class belongs to
+     * @param endpoint   the endpoint this Command class belongs to
      */
     public ZWaveClimateControlScheduleCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
@@ -73,12 +75,12 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
         int command = serialMessage.getMessagePayloadByte(offset);
         switch (command) {
             case SCHEDULE_CHANGED_GET:
-                logger.debug("Answering with noop SCHEDULE_CHANGED_REPORT");
+                logger.debug("NODE {}: Answering with noop SCHEDULE_CHANGED_REPORT", this.getNode().getNodeId());
                 getController().enqueue(getScheduleChangedReportMessage(SCHEDULE_CHANGE_TEMPORARILY_DISABLED));
                 break;
             case SCHEDULE_OVERRIDE_REPORT:
-                OverrideType overrideType = getOverrideTypeFor(serialMessage.getMessagePayloadByte(offset + 1) & 0x03);
-                ScheduleState scheduleState = getScheduleStateFor((byte) serialMessage.getMessagePayloadByte(offset + 2));
+                OverrideType overrideType = OverrideType.getOverrideTypeFor((byte) (serialMessage.getMessagePayloadByte(offset + 1) & 0x03));
+                ScheduleState scheduleState = ScheduleState.getScheduleStateFor((byte) serialMessage.getMessagePayloadByte(offset + 2));
                 logger.info("NODE {} reported: Override type: {}, ScheduleState: {}", this.getNode().getNodeId(), overrideType, scheduleState);
                 break;
             default:
@@ -88,24 +90,7 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
         }
     }
 
-    public ScheduleState getScheduleStateFor(byte messagePayloadByte) {
-        if (messagePayloadByte == 0x79) return new ScheduleState(ScheduleStateState.FROST_PROTECTION,0);
-        if (messagePayloadByte == 0x7A) return new ScheduleState(ScheduleStateState.ENERGY_SAVING, 0);
-        if (messagePayloadByte >= 0x7B && messagePayloadByte <= 0x7E) return new ScheduleState(ScheduleStateState.RESERVED, 0);
-        if (messagePayloadByte == 0x7F) return new ScheduleState(ScheduleStateState.UNUSED, 0);
-        return new ScheduleState(ScheduleStateState.SETBACK, messagePayloadByte);
-    }
-
-    public OverrideType getOverrideTypeFor(int i) {
-        switch (i) {
-            case 0b00: return OverrideType.NO_OVERRIDE;
-            case 0b01: return OverrideType.TEMPORARY_OVERRIDE;
-            case 0b10: return OverrideType.PERMANENT_OVERRIDE;
-            case 0b11: return OverrideType.RESERVED;
-            default: return OverrideType.RESERVED;
-        }
-    }
-
+    // Visible for Testing
     public SerialMessage getScheduleChangedReportMessage(byte scheduleChangeCounter) {
         logger.debug("NODE {}: Creating new message for command SCHEDULE_CHANGED_REPORT", getNode().getNodeId());
 
@@ -122,17 +107,97 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
         return result;
     }
 
-    public enum OverrideType { NO_OVERRIDE, TEMPORARY_OVERRIDE, PERMANENT_OVERRIDE, RESERVED }
+    // Visible for Testing
+    public enum OverrideType {
+        NO_OVERRIDE((byte) 0b00),
+        TEMPORARY_OVERRIDE((byte) 0b01),
+        PERMANENT_OVERRIDE((byte) 0b10),
+        RESERVED((byte) 0b11);
 
-    public enum ScheduleStateState { SETBACK, FROST_PROTECTION, ENERGY_SAVING, RESERVED, UNUSED }
+        private final byte value;
+        private static final Map<Byte, OverrideType> codeToOverrideType;
 
+        OverrideType(byte value) {
+            this.value = value;
+        }
+
+        public static OverrideType getOverrideTypeFor(byte i) {
+            return codeToOverrideType.get(i);
+        }
+
+        static {
+            codeToOverrideType = new HashMap<>();
+            for (OverrideType o : values()) {
+                codeToOverrideType.put(o.value, o);
+            }
+        }
+    }
+
+    // Visible for Testing
+    public enum ScheduleStateState {
+        SETBACK((byte) 0),
+        FROST_PROTECTION((byte) 0x79),
+        ENERGY_SAVING((byte) 0x7A),
+        RESERVED1((byte) 0x7B),
+        RESERVED2((byte) 0x7C),
+        RESERVED3((byte) 0x7D),
+        RESERVED4((byte) 0x7E),
+        UNUSED((byte) 0x7F);
+
+        private final byte value;
+        private static final Map<Byte, ScheduleStateState> codeToScheduledStateState;
+
+        ScheduleStateState(byte value) {
+            this.value = value;
+        }
+
+        public static ScheduleStateState getScheduledStateFor(byte value) {
+            if (codeToScheduledStateState.containsKey(value)) {
+                return codeToScheduledStateState.get(value);
+            } else {
+                return SETBACK;
+            }
+        }
+
+        static {
+            codeToScheduledStateState = new HashMap<>();
+            for (ScheduleStateState s : values()) {
+                codeToScheduledStateState.put(s.value, s);
+            }
+        }
+
+    }
+
+    // Visible for Testing
     public static class ScheduleState {
         public ScheduleStateState state;
         public int setBack;
 
-        public ScheduleState(ScheduleStateState _state, int _setBack) { this.state = _state; this.setBack = _setBack; }
+        // Visible for Testing
+        public ScheduleState(ScheduleStateState _state, int _setBack) {
+            this.state = _state;
+            this.setBack = _setBack;
+        }
 
-        @Override public String toString() { return "[" + state + " " + setBack/10.0 + "]"; }
+        public static ScheduleState getScheduleStateFor(byte messagePayloadByte) {
+            ScheduleStateState stateState = ScheduleStateState.getScheduledStateFor(messagePayloadByte);
+            if (stateState.equals(ScheduleStateState.SETBACK)) {
+                return new ScheduleState(ScheduleStateState.SETBACK, messagePayloadByte);
+            } else {
+                return new ScheduleState(stateState, 0);
+            }
+        }
+
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder("[");
+            sb.append(state);
+            if (state.equals(ScheduleStateState.SETBACK)) {
+                sb.append(' ').append(setBack / 10.0);
+            }
+            sb.append(']');
+            return sb.toString();
+        }
 
         @Override
         public boolean equals(Object o) {
