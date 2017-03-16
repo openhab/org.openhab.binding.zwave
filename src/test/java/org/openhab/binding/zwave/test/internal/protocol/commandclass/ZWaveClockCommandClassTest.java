@@ -65,14 +65,7 @@ public class ZWaveClockCommandClassTest extends ZWaveCommandClassTest {
         utc.setTime(new Date(0));
         SerialMessage msg = cls.getSetMessage(utc);
 
-        assertTrue(Arrays.equals(msg.getMessagePayload(), expectedResponse));
-
-        assertEquals(msg.getMessagePayload()[0], expectedResponse[0]);
-        assertEquals(msg.getMessagePayload()[1], expectedResponse[1]);
-        assertEquals(msg.getMessagePayload()[2], expectedResponse[2]);
-        assertEquals(msg.getMessagePayload()[3], expectedResponse[3]);
-        assertEquals(msg.getMessagePayload()[4], expectedResponse[4]);
-        assertEquals(msg.getMessagePayload()[5], expectedResponse[5]);
+        assertArrayEquals(expectedResponse, msg.getMessagePayload());
     }
 
     @Test
@@ -86,13 +79,6 @@ public class ZWaveClockCommandClassTest extends ZWaveCommandClassTest {
         utc.setTime(new Date(0));
         SerialMessage msg = cls.getReportMessage(utc);
 
-        assertTrue(Arrays.equals(msg.getMessagePayload(), expectedResponse));
-
-        assertEquals(msg.getMessagePayload()[0], expectedResponse[0]);
-        assertEquals(msg.getMessagePayload()[1], expectedResponse[1]);
-        assertEquals(msg.getMessagePayload()[2], expectedResponse[2]);
-        assertEquals(msg.getMessagePayload()[3], expectedResponse[3]);
-        assertEquals(msg.getMessagePayload()[4], expectedResponse[4]);
-        assertEquals(msg.getMessagePayload()[5], expectedResponse[5]);
+        assertArrayEquals(expectedResponse, msg.getMessagePayload());
     }
 }
