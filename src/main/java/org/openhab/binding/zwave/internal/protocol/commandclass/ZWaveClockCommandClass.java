@@ -7,12 +7,8 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import java.text.DateFormatSymbols;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
-
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
@@ -24,8 +20,11 @@ import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClass
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import java.text.DateFormatSymbols;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Date;
 
 /**
  * Handles the clock command class.
@@ -80,6 +79,13 @@ public class ZWaveClockCommandClass extends ZWaveCommandClass implements ZWaveCo
 
     }
 
+    @ZWaveResponseHandler(id = CLOCK_GET, name = "CLOCK_GET")
+    public void handleClockGetRequest(ZWaveCommandClassPayload payload, int endpoint) {
+        Calendar calendar = Calendar.getInstance();
+        logger.debug("NODE {}: Answering with {}", getNode().getNodeId(), calendar);
+        getController().enqueue(getReportMessage(calendar));
+    }
+
     /**
      * Gets a SerialMessage with the CLOCK_GET command
      *
@@ -92,6 +98,14 @@ public class ZWaveClockCommandClass extends ZWaveCommandClass implements ZWaveCo
                 .withPriority(TransactionPriority.Get).withExpectedResponseCommand(CLOCK_REPORT).build();
     }
 
+    private int[] timePayload(Calendar cal) {
+        int day = cal.get(Calendar.DAY_OF_WEEK) == 1 ? 7 : cal.get(Calendar.DAY_OF_WEEK) - 1;
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        int minute = cal.get(Calendar.MINUTE);
+
+        return new int[] { (day << 5) | hour, minute };
+    }
+
     /**
      * Gets a SerialMessage with the CLOCK_SET command
      *
@@ -100,13 +114,17 @@ public class ZWaveClockCommandClass extends ZWaveCommandClass implements ZWaveCo
     public ZWaveCommandClassTransactionPayload getSetMessage(Calendar cal) {
         logger.debug("NODE {}: Creating new message for command CLOCK_SET", getNode().getNodeId());
 
-        int day = cal.get(Calendar.DAY_OF_WEEK) == 1 ? 7 : cal.get(Calendar.DAY_OF_WEEK) - 1;
-        int hour = cal.get(Calendar.HOUR_OF_DAY);
-        int minute = cal.get(Calendar.MINUTE);
-
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), CLOCK_SET)
-                .withPayload((day << 5) | hour, minute).withPriority(TransactionPriority.RealTime)
+                .withPayload(timePayload(cal)).withPriority(TransactionPriority.RealTime)
                 .withExpectedResponseCommand(CLOCK_REPORT).build();
+    }
+
+    public ZWaveCommandClassTransactionPayload getReportMessage(Calendar cal) {
+        logger.debug("NODE {}: Creating new message for command CLOCK_REPORT", getNode().getNodeId());
+
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), CLOCK_REPORT)
+                .withPayload(timePayload(cal)).withPriority(TransactionPriority.RealTime)
+                .build();
     }
 
     @Override
