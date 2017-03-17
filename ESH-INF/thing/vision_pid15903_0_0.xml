@@ -14,7 +14,7 @@
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
@@ -63,6 +63,31 @@
       <property name="manufacturerRef">201A:1AA4</property>
       <property name="dbReference">552</property>
     </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_1" type="integer" groupName="configuration"
+                 min="60" max="255">
+        <label>1: Auto Report Timing</label>
+        <description>Reports kWh/kVAh</description>
+        <default>60</default>
+      </parameter>
+
+      <parameter name="config_2_2" type="integer" groupName="configuration"
+                 min="5" max="3600">
+        <label>2: Report When Wattage Changes</label>
+        <description>Reports V/A/W</description>
+        <default>50</default>
+      </parameter>
+
+    </config-description>
 
   </thing-type>
 
