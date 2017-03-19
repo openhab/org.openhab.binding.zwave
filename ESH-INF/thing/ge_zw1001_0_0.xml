@@ -40,7 +40,7 @@
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: LED light</label>
         <description><![CDATA[
-Defines the behavior of the blue LED. <br /> Default is LED on when switch is off.
+Defines the behavior of the blue LED.<br /><h1>Overview</h1><p>Default is LED on when switch is off.</p>
         ]]></description>
         <default>0</default>
         <options>
