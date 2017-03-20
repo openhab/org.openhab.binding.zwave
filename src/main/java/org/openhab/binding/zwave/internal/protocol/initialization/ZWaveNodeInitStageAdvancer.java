@@ -679,9 +679,14 @@ public class ZWaveNodeInitStageAdvancer {
                     continue;
                 }
 
+                logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - len {}", node.getNodeId(), cmds.length);
+
                 // Get the command class
                 int endpoint = cmds.length == 2 ? 0 : Integer.parseInt(cmds[2]);
+                logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - endpoint {}", node.getNodeId(), endpoint);
                 if (node.getEndpoint(endpoint) != null) {
+                    logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - endpoint found {}", node.getNodeId(),
+                            endpoint);
                     ZWaveCommandClass zwaveClass = node.getEndpoint(endpoint)
                             .getCommandClass(CommandClass.getCommandClass(cmds[1]));
 
@@ -695,6 +700,7 @@ public class ZWaveNodeInitStageAdvancer {
                 // Command class isn't found! Do we want to add it?
                 // TODO: Does this need to account for multiple endpoints!?!
                 if (optionMap.containsKey("ccAdd")) {
+                    logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - add", node.getNodeId());
                     ZWaveCommandClass commandClass = ZWaveCommandClass.getInstance(
                             CommandClass.getCommandClass(optionMap.get("ccAdd")).getKey(), node, controller);
                     if (commandClass != null) {

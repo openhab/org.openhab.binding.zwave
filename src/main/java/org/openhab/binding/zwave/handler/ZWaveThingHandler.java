@@ -1392,8 +1392,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         ZWavePlusCommandClass cmdClassZWavePlus = (ZWavePlusCommandClass) node
                 .getCommandClass(CommandClass.COMMAND_CLASS_ZWAVEPLUS_INFO);
         if (cmdClassZWavePlus != null) {
-            properties.put(ZWaveBindingConstants.PROPERTY_ZWPLUS_DEVICETYPE,
-                    cmdClassZWavePlus.getNodeType().toString());
+            properties.put(ZWaveBindingConstants.PROPERTY_ZWPLUS_DEVICETYPE, cmdClassZWavePlus.getNodeType());
             properties.put(ZWaveBindingConstants.PROPERTY_ZWPLUS_ROLETYPE, cmdClassZWavePlus.getRoleType().toString());
         }
 
