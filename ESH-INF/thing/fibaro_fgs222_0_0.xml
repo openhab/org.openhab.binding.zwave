@@ -75,17 +75,17 @@
       </parameter>
 
       <parameter name="config_4_2" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="0" max="65535">
         <label>4: Relay 1: OFF-delay time (100ms steps)</label>
-        <description>Automatic turning off relay 1 after set time, in 10ms increments (default: 200ms)</description>
-        <default>20</default>
+        <description>Auto off relay 1 after set time, in 100ms increments (default: 0 - off)</description>
+        <default>0</default>
       </parameter>
 
       <parameter name="config_5_2" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="0" max="65535">
         <label>5: Relay 2: OFF-delay time (100ms steps)</label>
-        <description>Automatic turning off relay 2 after set time, in 10ms increments (default: 200ms)</description>
-        <default>20</default>
+        <description>Auto off relay 2 after set time, in 100ms increments (default: 0 - off)</description>
+        <default>0</default>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
@@ -93,8 +93,8 @@
         <description>Activate/Deactivate association sending for group 1 - Also see param #16</description>
         <default>0</default>
         <options>
-          <option value="0">Map status to all devices in group 1</option>
-          <option value="1">Map OFF status to all devices in group 1, Double click on key 1 will s</option>
+          <option value="0">Commands are sent when device is turned on and off.</option>
+          <option value="1">Commands sent when turned off, double-click sends 'turn on', dimmers a</option>
           <option value="2">Map OFF status to all devices in group 1, Double click on key 1 will s</option>
         </options>
       </parameter>
@@ -105,7 +105,7 @@
         <default>1</default>
         <options>
           <option value="0">Commands are sent when device is turned on and off.</option>
-          <option value="1">Commands sent when turned off, double-click sends 'turn on', dimmers m</option>
+          <option value="1">Commands sent when turned off, double-click sends 'turn on', dimmers a</option>
           <option value="2">Commands are sent when device is turned off, double-click sends 'turn</option>
         </options>
       </parameter>
