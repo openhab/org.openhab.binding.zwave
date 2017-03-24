@@ -17,6 +17,12 @@
           <property name="binding:*:OnOffType">SWITCH_BINARY</property>
         </properties>
       </channel>
+      <channel id="thermostat_setpoint" typeId="systemair_29990_00_000_thermostat_setpoint">
+        <label>Thermostat setpoint</label>
+        <properties>
+          <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT</property>
+        </properties>
+      </channel>
       <channel id="thermostat_mode" typeId="systemair_29990_00_000_thermostat_mode">
         <label>Thermostat mode</label>
         <properties>
