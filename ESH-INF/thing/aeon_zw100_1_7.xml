@@ -43,10 +43,16 @@ MultiSensor 6<br /><h1>Overview</h1><p>Technical Specifications: Operating dista
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=LUMINANCE</property>
         </properties>
       </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm</label>
+      <channel id="alarm_motion" typeId="alarm_motion">
+        <label>Motion Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM</property>
+          <property name="binding:*:OnOffType">ALARM;type=BURGLAR, event=8</property>
+        </properties>
+      </channel>
+      <channel id="alarm_tamper" typeId="alarm_tamper">
+        <label>Tamper Alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=BURGLAR, event=3</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
