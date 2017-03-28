@@ -16,7 +16,7 @@ Door/Window Contact<br /><h1>Overview</h1><p>Door/Window Contact.</p> <p>Same ha
       <channel id="sensor_binary" typeId="sensor_binary">
         <label>Binary Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
+          <property name="binding:*:OnOffType">SENSOR_BINARY,BASIC</property>
         </properties>
       </channel>
       <channel id="alarm_burglar" typeId="alarm_burglar">
