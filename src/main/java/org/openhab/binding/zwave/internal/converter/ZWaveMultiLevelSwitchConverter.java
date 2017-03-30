@@ -194,7 +194,7 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
             serialMessage = commandClass.setValueMessage(value);
         }
 
-        // encapsulate the message in case this is a multi-instance node
+        // Encapsulate the message in case this is a multi-instance node
         serialMessage = node.encapsulate(serialMessage, commandClass, channel.getEndpoint());
 
         if (serialMessage == null) {
@@ -207,12 +207,10 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
         List<SerialMessage> messages = new ArrayList<SerialMessage>(2);
         messages.add(serialMessage);
 
-        // Poll an update once we've sent the command if this is a STOP
+        // Poll an update once we've sent the command
         // Don't poll immediately since some devices return the original value, and some the new value.
         // This conflicts with OH that will move the slider immediately.
-        if (command instanceof StopMoveType && command == StopMoveType.STOP) {
-            messages.add(node.encapsulate(commandClass.getValueMessage(), commandClass, channel.getEndpoint()));
-        }
+        messages.add(node.encapsulate(commandClass.getValueMessage(), commandClass, channel.getEndpoint()));
         return messages;
     }
 }
