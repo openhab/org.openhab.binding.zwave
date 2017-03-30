@@ -23,10 +23,10 @@
           <property name="binding:*:OnOffType">ALARM;type=BURGLAR</property>
         </properties>
       </channel>
-      <channel id="alarm_access" typeId="alarm_access">
+      <channel id="notification_access_control" typeId="notification_access_control">
         <label>Alarm (access)</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=ACCESS_CONTROL</property>
+          <property name="binding:*:DecimalType">ALARM;type=ACCESS_CONTROL</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
