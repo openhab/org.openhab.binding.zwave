@@ -59,7 +59,7 @@
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Night light</label>
         <description><![CDATA[
-Configure LED to reflect load's status<br /><h1>Overview</h1><p>The LED on the switch will by default, turn ON when the load attached is turn OFF. To make the LED turn ON when the load attached is turn ON instead, setparameter 1 to a value of 1. </p>
+Configure LED to reflect load's status<br /><h1>Overview</h1><p>The LED on the switch will by default turn ON when the load attached is turned OFF. To make the LED turn ON when the load attached is turned ON, alter this configuration parameter.</p>
         ]]></description>
         <default>1</default>
         <options>
@@ -84,7 +84,7 @@ Toggles the Switch's memory function <br /><h1>Overview</h1><p>This will turn th
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Invert switch</label>
         <description><![CDATA[
-Inverts switch's top/bottom <br /><h1>Overview</h1><p><strong>if you invert the switches and also install the product upside down, remember the load will now be controlled by the right, not the left switch. </strong></p>
+Inverts switch's top/bottom <br /><h1>Overview</h1><p><strong>If you invert the switches and also install the product upside down, remember the load will now be controlled by the right, not the left switch. </strong></p>
         ]]></description>
         <default>0</default>
         <options>
@@ -97,7 +97,7 @@ Inverts switch's top/bottom <br /><h1>Overview</h1><p><strong>if you invert the 
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: LED transmission indication</label>
         <description><![CDATA[
-LED flickers when transmitting data to any group<br /><h1>Overview</h1><p>The switch will flicker its LED when it is transmitting to any of its 4 groups </p>
+LED flickers when transmitting data to any group<br /><h1>Overview</h1><p>Determines whether the switch's LED will flicker when it is transmitting to any of its 4 groups </p>
         ]]></description>
         <default>1</default>
         <options>
