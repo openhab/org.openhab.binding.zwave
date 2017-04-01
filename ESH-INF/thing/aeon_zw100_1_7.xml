@@ -16,7 +16,7 @@ MultiSensor 6<br /><h1>Overview</h1><p>Technical Specifications: Operating dista
       <channel id="sensor_binary" typeId="sensor_binary">
         <label>Binary Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
+          <property name="binding:*:OnOffType">SENSOR_BINARY,BASIC</property>
         </properties>
       </channel>
       <channel id="sensor_relhumidity" typeId="sensor_relhumidity">
