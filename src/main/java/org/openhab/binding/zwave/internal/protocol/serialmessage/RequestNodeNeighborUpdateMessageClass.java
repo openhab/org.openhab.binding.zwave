@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class RequestNodeNeighborUpdateMessageClass extends ZWaveCommandProcessor {
-    private static final Logger logger = LoggerFactory.getLogger(RequestNodeNeighborUpdateMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(RequestNodeNeighborUpdateMessageClass.class);
 
     final int REQUEST_NEIGHBOR_UPDATE_STARTED = 0x21;
     final int REQUEST_NEIGHBOR_UPDATE_DONE = 0x22;

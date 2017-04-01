@@ -31,7 +31,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("lockCommandClass")
 public class ZWaveLockCommandClass extends ZWaveCommandClass implements ZWaveGetCommands, ZWaveSetCommands {
 
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveLockCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveLockCommandClass.class);
 
     private static final int LOCK_SET = 0x01;
     /**

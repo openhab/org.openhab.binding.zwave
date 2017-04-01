@@ -13,10 +13,10 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveDelayedPollEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +34,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveApplicationStatusClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveApplicationStatusClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveApplicationStatusClass.class);
 
     @XStreamOmitField
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
@@ -69,7 +69,7 @@ public class ZWaveApplicationStatusClass extends ZWaveCommandClass {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @throws ZWaveSerialMessageException
      */
     @Override

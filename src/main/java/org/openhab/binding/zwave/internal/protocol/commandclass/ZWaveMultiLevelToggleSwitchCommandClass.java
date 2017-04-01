@@ -9,10 +9,10 @@
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,7 +28,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveMultiLevelToggleSwitchCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveMultiLevelToggleSwitchCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveMultiLevelToggleSwitchCommandClass.class);
 
     private static final int SWITCH_TOGGLE_SET = 1;
     private static final int SWITCH_TOGGLE_GET = 2;
@@ -55,7 +55,7 @@ public class ZWaveMultiLevelToggleSwitchCommandClass extends ZWaveCommandClass {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @throws ZWaveSerialMessageException
      */
     @Override

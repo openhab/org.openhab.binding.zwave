@@ -37,7 +37,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveVersionCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveVersionCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveVersionCommandClass.class);
     private static final int MAX_SUPPORTED_VERSION = 2;
 
     public static final int VERSION_GET = 0x11;

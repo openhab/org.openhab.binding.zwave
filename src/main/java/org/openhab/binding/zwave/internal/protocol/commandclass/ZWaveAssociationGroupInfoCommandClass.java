@@ -45,7 +45,7 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
         implements ZWaveCommandClassInitialization {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveAssociationGroupInfoCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveAssociationGroupInfoCommandClass.class);
 
     private static final byte ASSOCIATION_GROUP_INFO_NAME_GET = 1;
     private static final byte ASSOCIATION_GROUP_INFO_NAME_REPORT = 2;

@@ -34,7 +34,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveSwitchAllCommandClass extends ZWaveCommandClass implements ZWaveCommandClassInitialization {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveSwitchAllCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveSwitchAllCommandClass.class);
 
     private static final int SWITCH_ALL_SET = 1;
     private static final int SWITCH_ALL_GET = 2;
