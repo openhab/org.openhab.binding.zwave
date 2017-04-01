@@ -66,7 +66,9 @@
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Auto off relay after specified time</label>
-        <description>Auto off relay after specified time, with the possibility of manual override - immediate Off after button push</description>
+        <description><![CDATA[
+Auto off relay after specified time<br /><h1>Overview</h1><p>Auto off relay after specified time, with the possibility of manual override - immediate Off after button push.</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Manual override disabled</option>
@@ -89,27 +91,27 @@
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
-        <label>6: Sending commands to control devices assigned to 1-st association group (key no. 1)</label>
+        <label>6: Sending commands to group 1 devices</label>
         <description><![CDATA[
-Sending commands to control devices assigned to 1-st association group (key no. 1)<br /><h1>Overview</h1><p>NOTE: Parameter 15 value must be set to 1 to work properly. This activates the double-click functionality - dimmer/roller shutter control</p>
+Sending commands to group 1 devices<br /><h1>Overview</h1><p>Sending commands to control devices assigned to 1-st association group (key no. 1)<br />NOTE: Parameter 15 value must be set to 1 to work properly. This activates the double-click functionality - dimmer/roller shutter control</p>
         ]]></description>
         <default>0</default>
         <options>
           <option value="0">Commands are sent when device is turned on and off</option>
-          <option value="1">Commands are sent when device is turned off</option>
+          <option value="1">Commands sent when device off with memorized state</option>
           <option value="2">Commands are sent when device is turned off</option>
         </options>
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
-        <label>7: Sending commands to control devices assigned to 2-nd association group (key no. 2)</label>
+        <label>7: Sending commands to group 2 devices</label>
         <description><![CDATA[
-Sending commands to control devices assigned to 2-nd association group (key no. 2)<br /><h1>Overview</h1><p>Info: Parameter 15 must be set to 1 to make this parameter work properly. This activates the double-click functionality - dimmer/roller shutter control.</p>
+Sending commands to group 2 devices<br /><h1>Overview</h1><p>Sending commands to control devices assigned to 2-nd association group (key no. 2).  </p> <p>Info: Parameter 15 must be set to 1 to make this parameter work properly. This activates the double-click functionality - dimmer/roller shutter control.</p>
         ]]></description>
         <default>0</default>
         <options>
           <option value="0">Commands are sent when device is turned on and off</option>
-          <option value="1">Commands are sent when device is turned off</option>
+          <option value="1">Commands sent when device off with memorized state</option>
           <option value="2">Commands are sent when device is turned off</option>
         </options>
       </parameter>
@@ -138,7 +140,9 @@ Assigns bistable key status to the device status<br /><h1>Overview</h1><p>Info: 
 
       <parameter name="config_15_1" type="integer" groupName="configuration">
         <label>15: Operation of the Dimmer and Roller Shutter Controller</label>
-        <description>Enabling this option allows the user to dim lighting/shut roller by associating Dimmer/Roller Shutter Controller and holding or double press of double switch (only momentary switch)</description>
+        <description><![CDATA[
+Operation of the Dimmer and Roller Shutter Controller<br /><h1>Overview</h1><p>Operation of the Dimmer and Roller Shutter Controller - enabling this option allows the user to dim lighting/shut roller by associating dimmer/Roller Shutter Controller and holding or double press of double switch (only mono-stable switch).  </p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Dimmer/Roller Shutter Controller control is not active</option>
@@ -162,10 +166,10 @@ Fibaro Switch returns to the last position saved before a power failure<br /><h1
         <label>30: Relay 1: Response to General Alarm</label>
         <default>3</default>
         <options>
-          <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt of alarm frame</option>
-          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt of alarm frame</option>
-          <option value="3">ALARM FLASHING - relay will turn ON and OFF periodically (see param.39</option>
+          <option value="0">Alarm deactivation relay 1</option>
+          <option value="1">Alarm relay 1 on</option>
+          <option value="2">Alarm Relay 1 off</option>
+          <option value="3">Alarm relay 1 flashing</option>
         </options>
       </parameter>
 
@@ -173,10 +177,10 @@ Fibaro Switch returns to the last position saved before a power failure<br /><h1
         <label>31: Relay 1: Response to Water Flood Alarm</label>
         <default>2</default>
         <options>
-          <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt of alarm frame</option>
-          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt of alarm frame</option>
-          <option value="3">ALARM FLASHING - relay will turn ON and OFF periodically (see param.39</option>
+          <option value="0">Alarm deactivation relay 1</option>
+          <option value="1">Alarm relay 1 on</option>
+          <option value="2">Alarm relay 1 off</option>
+          <option value="3">Alarm relay 1 flashing</option>
         </options>
       </parameter>
 
@@ -184,10 +188,10 @@ Fibaro Switch returns to the last position saved before a power failure<br /><h1
         <label>32: Relay 1: Response to Smoke, CO, CO2 Alarm</label>
         <default>3</default>
         <options>
-          <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt of alarm frame</option>
-          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt of alarm frame</option>
-          <option value="3">ALARM FLASHING - relay will turn ON and OFF periodically (see param.39</option>
+          <option value="0">Alarm deactivation relay 1</option>
+          <option value="1">Alarm relay 1 on</option>
+          <option value="2">Alarm relay 1 off</option>
+          <option value="3">Alarm relay 1 flashing</option>
         </options>
       </parameter>
 
@@ -195,10 +199,10 @@ Fibaro Switch returns to the last position saved before a power failure<br /><h1
         <label>33: Relay 1: Response to Temperature Alarm</label>
         <default>1</default>
         <options>
-          <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt of alarm frame</option>
-          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt of alarm frame</option>
-          <option value="3">ALARM FLASHING - relay will turn ON and OFF periodically (see param.39</option>
+          <option value="0">Alarm deactivation relay 1</option>
+          <option value="1">Alarm relay 1 on</option>
+          <option value="2">Alarm relay 1 off</option>
+          <option value="3">Alarm relay 1 flashing</option>
         </options>
       </parameter>
 
@@ -213,10 +217,10 @@ Fibaro Switch returns to the last position saved before a power failure<br /><h1
         <label>40: Relay 2: Response to General Alarm</label>
         <default>3</default>
         <options>
-          <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt of alarm frame</option>
-          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt of alarm frame</option>
-          <option value="3">ALARM FLASHING - relay will turn ON and OFF periodically (see param.39</option>
+          <option value="0">Alarm deactivation relay 2</option>
+          <option value="1">Alarm relay 2 on</option>
+          <option value="2">Alarm relay 2 off</option>
+          <option value="3">Alarm relay 2 flashing</option>
         </options>
       </parameter>
 
@@ -224,10 +228,10 @@ Fibaro Switch returns to the last position saved before a power failure<br /><h1
         <label>41: Relay 2: Response to Water Flood Alarm</label>
         <default>2</default>
         <options>
-          <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt of alarm frame</option>
-          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt of alarm frame</option>
-          <option value="3">ALARM FLASHING - relay will turn ON and OFF periodically (see param.39</option>
+          <option value="0">Alarm deactivation relay 2</option>
+          <option value="1">Alarm relay 2 on</option>
+          <option value="2">Alarm relay 2 off</option>
+          <option value="3">Alarm relay 2 flashing</option>
         </options>
       </parameter>
 
@@ -235,10 +239,10 @@ Fibaro Switch returns to the last position saved before a power failure<br /><h1
         <label>42: Relay 2: Response to Smoke, CO, CO2 Alarm</label>
         <default>3</default>
         <options>
-          <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt of alarm frame</option>
-          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt of alarm frame</option>
-          <option value="3">ALARM FLASHING - relay will turn ON and OFF periodically (see param.39</option>
+          <option value="0">Alarm deactivation relay 2</option>
+          <option value="1">Alarm relay 2 on</option>
+          <option value="2">Alarm relay 2 off</option>
+          <option value="3">Alarm relay 2 flashing</option>
         </options>
       </parameter>
 
@@ -246,10 +250,10 @@ Fibaro Switch returns to the last position saved before a power failure<br /><h1
         <label>43: Relay 2: Response to Temperature Alarm</label>
         <default>1</default>
         <options>
-          <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt of alarm frame</option>
-          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt of alarm frame</option>
-          <option value="3">ALARM FLASHING - relay will turn ON and OFF periodically (see param.39</option>
+          <option value="0">Alarm deactivation relay 2</option>
+          <option value="1">Alarm relay 2 on</option>
+          <option value="2">Alarm relay 2 off</option>
+          <option value="3">Alarm relay 2 flashing</option>
         </options>
       </parameter>
 

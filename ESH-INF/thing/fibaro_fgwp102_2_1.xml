@@ -5,7 +5,7 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="fibaro_fgwp102_00_000" listed="false">
+  <thing-type id="fibaro_fgwp102_02_001" listed="false">
     <label>FGWP102 Metered Wall Plug Switch</label>
     <description>Metered Wall Plug Switch</description>
 
@@ -49,6 +49,8 @@
       <property name="modelId">FGWP102</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0602:1001</property>
+      <property name="versionMin">2.1</property>
+      <property name="versionMax">2.5</property>
       <property name="dbReference">464</property>
       <property name="defaultAssociations">3</property>
     </properties>

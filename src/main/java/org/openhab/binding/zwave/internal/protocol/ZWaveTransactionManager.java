@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -14,7 +15,6 @@ import java.util.concurrent.Future;
 import java.util.concurrent.PriorityBlockingQueue;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageComparator;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionState;
@@ -147,7 +147,7 @@ public class ZWaveTransactionManager {
     private final Timer timer = new Timer();
     private TimerTask timerTask = null;
 
-    private final PriorityBlockingQueue<SerialMessage> recvQueue;
+    private final ArrayBlockingQueue<SerialMessage> recvQueue;
 
     private final PriorityBlockingQueue<ZWaveTransaction> sendQueue = new PriorityBlockingQueue<ZWaveTransaction>(
             INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator());
@@ -168,8 +168,7 @@ public class ZWaveTransactionManager {
     public ZWaveTransactionManager(ZWaveController controller) {
         this.controller = controller;
 
-        recvQueue = new PriorityBlockingQueue<SerialMessage>(INITIAL_TX_QUEUE_SIZE,
-                new SerialMessageComparator(controller));
+        recvQueue = new ArrayBlockingQueue<SerialMessage>(INITIAL_TX_QUEUE_SIZE);
 
         receiveThread = new ZWaveReceiveThread();
         receiveThread.start();
@@ -379,6 +378,10 @@ public class ZWaveTransactionManager {
                     case NAK:
                         // NAK means the controller didn't receive the message - probably because of a Checksum error
                     case CAN:
+                        if (lastTransaction == null) {
+                            continue;
+                        }
+
                         // CAN means out of flow message was received by the controller
                         // It probably means we sent a message while the controller was processing the previous message.
                         logger.debug("Resetting last transaction {}", lastTransaction.getTransactionId());

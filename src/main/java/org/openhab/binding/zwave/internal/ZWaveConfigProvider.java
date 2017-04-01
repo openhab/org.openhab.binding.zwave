@@ -36,6 +36,7 @@ import org.eclipse.smarthome.core.thing.type.ThingType;
 import org.eclipse.smarthome.core.thing.type.ThingTypeRegistry;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
+import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
@@ -224,7 +225,8 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
             options.add(new ParameterOption("2", "Include in All Off group"));
             options.add(new ParameterOption("255", "Include in All On and All Off groups"));
             parameters.add(ConfigDescriptionParameterBuilder
-                    .create(ZWaveBindingConstants.CONFIGURATION_SWITCHALLMODE, Type.TEXT).withLabel("Switch All Mode")
+                    .create(ZWaveBindingConstants.CONFIGURATION_SWITCHALLMODE, Type.INTEGER)
+                    .withLabel("Switch All Mode")
                     .withDescription("Set the mode for the switch when receiving SWITCH ALL commands.").withDefault("0")
                     .withGroupName("thingcfg").withOptions(options).withLimitToOptions(true).build());
         }
@@ -429,6 +431,22 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         return false;
     }
 
+    /**
+     * Check if this node supports a controllable command class
+     *
+     * @param node the {@link ZWaveNode)
+     * @return true if a controllable class is supported
+     */
+    private boolean supportsControllableClass(ZWaveEndpoint endpoint) {
+        for (CommandClass commandClass : controllableClasses) {
+            if (endpoint.supportsCommandClass(commandClass) == true) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     @Override
     public Collection<ParameterOption> getParameterOptions(URI uri, String param, Locale locale) {
         // We need to update the options of all requests for association groups...
@@ -509,9 +527,13 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
                     && node.getCommandClass(CommandClass.COMMAND_CLASS_MULTI_CHANNEL) != null) {
                 // Loop through all the endpoints for this device and add any that are controllable
 
-                // for(node.get)
-                // options.add(new ParameterOption("node" + node.getNodeId() + "." + endpointId, "Node " +
-                // node.getNodeId()));
+                for (int endpointId = 0; endpointId < node.getEndpointCount(); endpointId++) {
+                    if (supportsControllableClass(node.getEndpoint(endpointId))) {
+                        // TODO: Use the node name
+                        options.add(new ParameterOption("node_" + node.getNodeId() + "_" + endpointId,
+                                "Node " + node.getNodeId() + " Endpoint " + endpointId));
+                    }
+                }
             }
         }
 

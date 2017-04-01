@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -85,6 +86,12 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Sets;
 
+/**
+ * Thing Handler for ZWave devices
+ *
+ * @author Chris Jackson - Initial contribution
+ *
+ */
 public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWaveEventListener {
     public final static Set<ThingTypeUID> SUPPORTED_THING_TYPES = Sets.newHashSet();
 
@@ -98,7 +105,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     private List<ZWaveThingChannel> thingChannelsCmd = Collections.emptyList();
     private List<ZWaveThingChannel> thingChannelsState = Collections.emptyList();
 
-    private List<ChannelUID> thingChannelsPoll = Collections.emptyList();
+    private final Set<ChannelUID> thingChannelsPoll = new HashSet<ChannelUID>();
 
     private Map<Integer, ZWaveConfigSubParameter> subParameters = new HashMap<Integer, ZWaveConfigSubParameter>();
     private Map<String, Object> pendingCfg = new HashMap<String, Object>();
@@ -172,7 +179,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         // Create the channels list to simplify processing incoming events
         // synchronized (thingChannelsState) {
-        thingChannelsPoll = new ArrayList<ChannelUID>();
         thingChannelsCmd = new ArrayList<ZWaveThingChannel>();
         thingChannelsState = new ArrayList<ZWaveThingChannel>();
         for (Channel channel : getThing().getChannels()) {
@@ -428,9 +434,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     @Override
     public void channelLinked(ChannelUID channelUID) {
         // We keep track of what channels are used and only poll channels that the framework is using
-        if (!thingChannelsPoll.contains(channelUID)) {
-            thingChannelsPoll.add(channelUID);
-        }
+        thingChannelsPoll.add(channelUID);
     }
 
     @Override
@@ -1356,6 +1360,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         // Update property information about this device
         Map<String, String> properties = editProperties();
 
+        updateProperty(ZWaveBindingConstants.PROPERTY_NODEID, Integer.toString(nodeId));
+
         logger.debug("NODE {}: Updating node properties. MAN={}", nodeId, node.getManufacturer());
         if (node.getManufacturer() != Integer.MAX_VALUE) {
             logger.debug("NODE {}: Updating node properties. MAN={}. SET. Was {}", nodeId, node.getManufacturer(),
@@ -1386,8 +1392,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         ZWavePlusCommandClass cmdClassZWavePlus = (ZWavePlusCommandClass) node
                 .getCommandClass(CommandClass.COMMAND_CLASS_ZWAVEPLUS_INFO);
         if (cmdClassZWavePlus != null) {
-            properties.put(ZWaveBindingConstants.PROPERTY_ZWPLUS_DEVICETYPE,
-                    cmdClassZWavePlus.getNodeType().toString());
+            properties.put(ZWaveBindingConstants.PROPERTY_ZWPLUS_DEVICETYPE, cmdClassZWavePlus.getNodeType());
             properties.put(ZWaveBindingConstants.PROPERTY_ZWPLUS_ROLETYPE, cmdClassZWavePlus.getRoleType().toString());
         }
 
@@ -1453,7 +1458,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 .getCommandClass(CommandClass.COMMAND_CLASS_SWITCH_ALL);
         if (switchallCommandClass != null) {
             if (switchallCommandClass.getMode() != null) {
-                config.put(ZWaveBindingConstants.CONFIGURATION_SWITCHALLMODE, switchallCommandClass.getMode());
+                config.put(ZWaveBindingConstants.CONFIGURATION_SWITCHALLMODE,
+                        switchallCommandClass.getMode().getMode());
             }
         }
 

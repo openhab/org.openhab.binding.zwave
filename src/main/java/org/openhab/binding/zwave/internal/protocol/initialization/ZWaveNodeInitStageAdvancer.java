@@ -643,11 +643,14 @@ public class ZWaveNodeInitStageAdvancer {
         if (thingType == null) {
             logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - thing is null!", node.getNodeId());
         } else {
+            logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - check properties", node.getNodeId());
             // We now should know all the command classes, so run through the database and set any options
             Map<String, String> properties = thingType.getProperties();
             for (Map.Entry<String, String> entry : properties.entrySet()) {
                 String key = entry.getKey();
                 String value = entry.getValue();
+                logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - property {} == {}", node.getNodeId(), key,
+                        value);
 
                 String cmds[] = key.split(":");
                 if ("commandClass".equals(cmds[0]) == false) {
@@ -666,6 +669,8 @@ public class ZWaveNodeInitStageAdvancer {
                     }
                 }
 
+                logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - optionmap {}", node.getNodeId(), optionMap);
+
                 if (optionMap.containsKey("ccRemove")) {
                     // If we want to remove the class, then remove it!
                     node.removeCommandClass(CommandClass.getCommandClass(cmds[1]));
@@ -674,9 +679,14 @@ public class ZWaveNodeInitStageAdvancer {
                     continue;
                 }
 
+                logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - len {}", node.getNodeId(), cmds.length);
+
                 // Get the command class
                 int endpoint = cmds.length == 2 ? 0 : Integer.parseInt(cmds[2]);
+                logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - endpoint {}", node.getNodeId(), endpoint);
                 if (node.getEndpoint(endpoint) != null) {
+                    logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - endpoint found {}", node.getNodeId(),
+                            endpoint);
                     ZWaveCommandClass zwaveClass = node.getEndpoint(endpoint)
                             .getCommandClass(CommandClass.getCommandClass(cmds[1]));
 
@@ -690,6 +700,7 @@ public class ZWaveNodeInitStageAdvancer {
                 // Command class isn't found! Do we want to add it?
                 // TODO: Does this need to account for multiple endpoints!?!
                 if (optionMap.containsKey("ccAdd")) {
+                    logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - add", node.getNodeId());
                     ZWaveCommandClass commandClass = ZWaveCommandClass.getInstance(
                             CommandClass.getCommandClass(optionMap.get("ccAdd")).getKey(), node, controller);
                     if (commandClass != null) {

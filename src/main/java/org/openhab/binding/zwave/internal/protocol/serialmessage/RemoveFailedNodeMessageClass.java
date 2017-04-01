@@ -65,6 +65,10 @@ public class RemoveFailedNodeMessageClass extends ZWaveCommandProcessor {
     public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.debug("Got RemoveFailedNode response.");
+        if (transaction == null) {
+            logger.debug("NODE {}: transaction not correlated for RemoveFailedNodeMessageClass");
+            return false;
+        }
         int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         Report report = null;
@@ -116,6 +120,10 @@ public class RemoveFailedNodeMessageClass extends ZWaveCommandProcessor {
     @Override
     public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
+        if (transaction == null) {
+            logger.debug("NODE {}: transaction not correlated for RemoveFailedNodeMessageClass");
+            return false;
+        }
         int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: Got RemoveFailedNode request.", nodeId);

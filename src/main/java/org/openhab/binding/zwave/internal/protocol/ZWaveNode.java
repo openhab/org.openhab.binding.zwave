@@ -23,13 +23,16 @@ import java.util.TimerTask;
 
 import org.openhab.binding.zwave.internal.HexToIntegerConverter;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCRC16EncapsulationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiAssociationCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiCommandCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveVersionCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.impl.CommandClassSecurityV1;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNodeStatusEvent;
 import org.openhab.binding.zwave.internal.protocol.initialization.ZWaveNodeInitStage;
@@ -556,7 +559,7 @@ public class ZWaveNode {
      * @return true if the command class is supported, false otherwise.
      */
     public boolean supportsCommandClass(CommandClass commandClass) {
-        return endpoints.get(0).getCommandClasses().contains(commandClass);
+        return endpoints.get(0).supportsCommandClass(commandClass);
     }
 
     /**
@@ -796,7 +799,7 @@ public class ZWaveNode {
 
     @Override
     public String toString() {
-        return String.format("Node %d. Manufacturer %04X, Type %04X, Id %04X", nodeId, manufacturer, deviceType,
+        return String.format("Node %d: Manufacturer=%04X, Type=%04X, Id=%04X", nodeId, manufacturer, deviceType,
                 deviceId);
     }
 
@@ -1116,11 +1119,19 @@ public class ZWaveNode {
 
         // Get the first command class
         int commandClassCode = payload.getCommandClassId();
+        int commandCode = payload.getCommandClassCommand();
         if (commandClassCode == CommandClass.COMMAND_CLASS_TRANSPORT_SERVICE.getKey()) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_TRANSPORT_SERVICE", getNodeId());
 
-        } else if (commandClassCode == CommandClass.COMMAND_CLASS_SECURITY.getKey()) {
+        } else if (commandClassCode == CommandClass.COMMAND_CLASS_SECURITY.getKey()
+                && (commandCode == CommandClassSecurityV1.SECURITY_MESSAGE_ENCAPSULATION
+                        || commandCode == CommandClassSecurityV1.SECURITY_MESSAGE_ENCAPSULATION_NONCE_GET)) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_SECURITY", getNodeId());
+
+            if (endpoints.get(0) == null) {
+                logger.debug("NODE {}: No endpoint 0!", getNodeId());
+                return null;
+            }
 
             ZWaveSecurityCommandClass securityCommandClass = (ZWaveSecurityCommandClass) endpoints.get(0)
                     .getCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
@@ -1147,24 +1158,83 @@ public class ZWaveNode {
             payload = new ZWaveCommandClassPayload(cleartextData);
 
             securityDecapOk = true;
-        } else if (commandClassCode == CommandClass.COMMAND_CLASS_CRC_16_ENCAP.getKey()) {
+        } else if (commandClassCode == CommandClass.COMMAND_CLASS_CRC_16_ENCAP.getKey() && commandCode == 1) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_CRC_16_ENCAP", getNodeId());
+
+            if (endpoints.get(0) == null) {
+                logger.debug("NODE {}: No endpoint 0!", getNodeId());
+                return null;
+            }
+            ZWaveCRC16EncapsulationCommandClass crcCommandClass = (ZWaveCRC16EncapsulationCommandClass) endpoints.get(0)
+                    .getCommandClass(CommandClass.COMMAND_CLASS_CRC_16_ENCAP);
+            if (crcCommandClass == null) {
+                logger.debug("NODE {}: COMMAND_CLASS_CRC_16_ENCAP not found", getNodeId());
+                return null;
+            }
+
+            payload = crcCommandClass.handleCrcEncap(payload);
         }
 
-        if (commandClassCode == CommandClass.COMMAND_CLASS_MULTI_CHANNEL.getKey()) {
+        int endpointNumber = 0;
+        int instanceNumber = 0;
+
+        if (commandClassCode == CommandClass.COMMAND_CLASS_MULTI_CHANNEL.getKey()
+                && (commandCode == 6 || commandCode == 13)) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_MULTI_CHANNEL", getNodeId());
+
+            if (endpoints.get(0) == null) {
+                logger.debug("NODE {}: No endpoint 0!", getNodeId());
+                return null;
+            }
+            ZWaveMultiInstanceCommandClass multichannelCommandClass = (ZWaveMultiInstanceCommandClass) endpoints.get(0)
+                    .getCommandClass(CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
+            if (multichannelCommandClass == null) {
+                logger.debug("NODE {}: COMMAND_CLASS_MULTI_CHANNEL not found", getNodeId());
+                return null;
+            }
+
+            if (commandCode == 6) {
+                // MULTI_INSTANCE_ENCAP
+                instanceNumber = payload.getPayloadByte(1);
+
+                payload = new ZWaveCommandClassPayload(payload, 3);
+            } else if (commandCode == 13) {
+                // MULTI_CHANNEL_ENCAP
+                endpointNumber = multichannelCommandClass.getSourceEndpoint(payload);
+                payload = new ZWaveCommandClassPayload(payload, 4);
+            }
         }
+
         if (commandClassCode == CommandClass.COMMAND_CLASS_SUPERVISION.getKey()) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_SUPERVISION", getNodeId());
-
-        }
-        if (commandClassCode == CommandClass.COMMAND_CLASS_MULTI_CMD.getKey()) {
-            logger.debug("NODE {}: Decapsulating COMMAND_CLASS_MULTI_CMD", getNodeId());
         }
 
         List<ZWaveCommandClassPayload> commands = new ArrayList<ZWaveCommandClassPayload>();
-        commands.add(payload);
 
+        if (commandClassCode == CommandClass.COMMAND_CLASS_MULTI_CMD.getKey()) {
+            logger.debug("NODE {}: Decapsulating COMMAND_CLASS_MULTI_CMD", getNodeId());
+
+            if (endpoints.get(0) == null) {
+                logger.debug("NODE {}: No endpoint 0!", getNodeId());
+                return null;
+            }
+            ZWaveMultiCommandCommandClass multicommandCommandClass = (ZWaveMultiCommandCommandClass) endpoints.get(0)
+                    .getCommandClass(CommandClass.COMMAND_CLASS_MULTI_CMD);
+            if (multicommandCommandClass == null) {
+                logger.debug("NODE {}: COMMAND_CLASS_MULTI_CMD not found", getNodeId());
+                return null;
+            }
+
+            commands.addAll(multicommandCommandClass.handleMultiCommandEncap(payload));
+        } else {
+            commands.add(payload);
+        }
+
+        ZWaveEndpoint endpoint = getEndpoint(endpointNumber);
+        if (endpoint == null) {
+            logger.debug("NODE {}: No endpoint {}!", getNodeId(), endpointNumber);
+            return null;
+        }
         for (ZWaveCommandClassPayload command : commands) {
             CommandClass commandClass = CommandClass.getCommandClass(command.getCommandClassId());
             if (commandClass == null) {
@@ -1172,10 +1242,11 @@ public class ZWaveNode {
                 continue;
             }
 
-            logger.debug("NODE {}: Incoming command class {}", getNodeId(), commandClass, commandClass.getKey());
-            ZWaveCommandClass zwaveCommandClass = getCommandClass(commandClass);
+            logger.debug("NODE {}: Incoming command class {}, endpoint {}", getNodeId(), commandClass,
+                    endpoint.getEndpointId());
+            ZWaveCommandClass zwaveCommandClass = endpoint.getCommandClass(commandClass);
 
-            // Apparently, this node supports a command class that we did not learn about during initialization.
+            // Apparently, this endpoint supports a command class that we did not learn about during initialization.
             // Let's add it now then to support handling this message.
             if (zwaveCommandClass == null) {
                 logger.debug("NODE {}: Command class {} not found, trying to add it.", getNodeId(), commandClass,
@@ -1190,21 +1261,23 @@ public class ZWaveNode {
                     continue;
                 }
 
-                logger.debug("NODE {}: Adding command class {}", getNodeId(), commandClass);
+                logger.debug("NODE {}: Adding command class {} to endpoint {}", getNodeId(), commandClass,
+                        endpoint.getEndpointId());
                 addCommandClass(zwaveCommandClass);
             }
 
-            if (securityDecapOk == false && doesMessageRequireSecurityEncapsulation(0, command)) {
+            if (securityDecapOk == false
+                    && doesMessageRequireSecurityEncapsulation(endpoint.getEndpointId(), command)) {
                 // Should have been security encapsulation but wasn't!
                 logger.debug(
-                        "NODE {}: Command Class {} was required to be security encapsulation but it wasn't! Dropping message.",
+                        "NODE {}: Command Class {} was required to be security encapsulation but it wasn't! Message dropped.",
                         nodeId, zwaveCommandClass.getCommandClass());
 
                 return Collections.emptyList();
             }
 
             try {
-                zwaveCommandClass.handleApplicationCommandRequest(command, 0);
+                zwaveCommandClass.handleApplicationCommandRequest(command, endpoint.getEndpointId());
             } catch (ZWaveSerialMessageException e) {
                 e.printStackTrace();
             }

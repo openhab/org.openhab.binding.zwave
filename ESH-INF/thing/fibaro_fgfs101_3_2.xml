@@ -61,7 +61,7 @@
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0B00:1001,0B01:1002,0B01:2002</property>
       <property name="versionMin">3.2</property>
-      <property name="versionMax">25.0</property>
+      <property name="versionMax">23.0</property>
       <property name="dbReference">392</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -89,11 +89,11 @@ Time in seconds that the flood state is retained after flooding event<br /><h1>O
         <description><![CDATA[
 This parameter allows for deactivation visual and acoustic alarm.<br /><h1>Overview</h1><p>This parameter allows for deactivation visual and acoustic alarm.</p> <p>Available settings:</p> <p>0 – acoustic and visual alarms inactive</p> <p>1 – acoustic alarm inactive, visual alarm active</p> <p>2 – acoustic alarm active, visual alarm inactive</p> <p>3 – acoustic and visual alarms active</p> <p>Parameter allows for increasing a battery life. Setting changes will not affect the sensor’s communication with the main controller – commands to association groups, alarms and reports will still be sent.</p>
         ]]></description>
-        <default>0</default>
+        <default>3</default>
         <options>
           <option value="0">Acoustic and visual alarms inactive</option>
           <option value="1">Acoustic alarm inactive, visual alarm active</option>
-          <option value="3">Acoustic alarm active, visual alarm inactive</option>
+          <option value="2">Acoustic alarm active, visual alarm inactive</option>
           <option value="3">Acoustic and visual alarms active</option>
         </options>
       </parameter>
@@ -204,7 +204,7 @@ Movement/tamper alarm sent to 1st &amp; 4th assoc. group<br /><h1>Overview</h1><
         <options>
           <option value="0">Tamper alarm inactive</option>
           <option value="1">Button tamper alarm active</option>
-          <option value="3">Movement tamper alarm active</option>
+          <option value="2">Movement tamper alarm active</option>
           <option value="3">Button and movement tampers alarm active</option>
         </options>
       </parameter>
@@ -239,12 +239,12 @@ Allows the internal flood sensor to be turned off.<br /><h1>Overview</h1><p>Allo
         </options>
       </parameter>
 
-      <parameter name="config_78_0" type="integer" groupName="configuration">
+      <parameter name="config_78_1" type="integer" groupName="configuration">
         <label>78: Associations in Z-Wave network security mode</label>
         <description><![CDATA[
 Defines whether commands are sent as secure or non-secure<br /><h1>Overview</h1><p>This parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. It does not apply to 1st “Lifeline “group.</p> <p>Available settings:<br /><strong>0</strong> – none of the groups sent as secure<br /><strong>1</strong> – 2nd group ”Control” sent as secure<br /><strong>2</strong> – 3rd group ”Alarm” sent as secure<br /><strong>4</strong> – 4th group „Tamper” sent as secure<br />Default setting: <strong>7</strong><br />Parameter size: <strong>1 [byte]</strong></p>
         ]]></description>
-        <default>0</default>
+        <default>7</default>
         <options>
           <option value="0">None of the groups are sent as secure</option>
           <option value="1">2nd group ”Control” sent as secure</option>

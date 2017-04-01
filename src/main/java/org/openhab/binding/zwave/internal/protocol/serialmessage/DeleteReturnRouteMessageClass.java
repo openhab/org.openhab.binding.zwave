@@ -38,12 +38,16 @@ public class DeleteReturnRouteMessageClass extends ZWaveCommandProcessor {
     @Override
     public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
+        if (transaction == null) {
+            logger.debug("NODE {}: transaction not correlated for DeleteReturnRouteMessageClass");
+            return false;
+        }
         int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: Got DeleteReturnRoute response.", nodeId);
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
             // lastSentMessage.setAckRecieved();
-            logger.debug("NODE {}: DeleteReturnRoute command in progress.", nodeId);
+            logger.debug("NODE {}: DeleteReturnRoute command started.", nodeId);
         } else {
             logger.debug("NODE {}: DeleteReturnRoute command failed.", nodeId);
             zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.DeleteReturnRoute, nodeId,
@@ -57,6 +61,10 @@ public class DeleteReturnRouteMessageClass extends ZWaveCommandProcessor {
     @Override
     public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
+        if (transaction == null) {
+            logger.debug("NODE {}: transaction not correlated for DeleteReturnRouteMessageClass");
+            return false;
+        }
         int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: Got DeleteReturnRoute request.", nodeId);

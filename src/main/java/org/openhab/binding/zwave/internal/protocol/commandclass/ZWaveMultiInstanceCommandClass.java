@@ -35,8 +35,10 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 /**
  * Handles the Multi Instance / Multi Channel command class. The Multi Instance command class is used to control
- * multiple instances of the same device class on the node. Multi Channel support (version 2) of the command class can
- * also handle multiple instances of different command classes. The instances are called endpoints in this version.
+ * multiple instances of the same device class on the node.
+ * <p>
+ * Multi Channel support (version 2) of the command class can also handle multiple instances of different command
+ * classes. The instances are called endpoints in this version.
  *
  * Useful references -:
  * https://groups.google.com/d/msg/openzwave/FeFNBI8GAKk/dyXAO54BiqgJ
@@ -102,27 +104,6 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
     }
 
     /**
-     * Gets the endpoint object using it's endpoint ID as key.
-     * Returns null if the endpoint is not found.
-     *
-     * @param endpointId the endpoint ID of the endpoint to get.
-     * @return Endpoint object
-     * @throws IllegalArgumentException thrown when the endpoint is not found.
-     */
-    // public ZWaveEndpoint getEndpoint(int endpointId) {
-    // return endpoints.get(endpointId);
-    // }
-
-    /**
-     * Gets the collection of endpoints attached to this node.
-     *
-     * @return the collection of endpoints.
-     */
-    // public Collection<ZWaveEndpoint> getEndpoints() {
-    // return endpoints.values();
-    // }
-
-    /**
      * Handles Multi Instance Report message. Handles Report on
      * the number of instances for the command class.
      * This is for Version 1 of the command class.
@@ -133,8 +114,8 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
      */
     @ZWaveResponseHandler(id = MULTI_INSTANCE_REPORT, name = "MULTI_INSTANCE_REPORT")
     public void handleMultiInstanceReportResponse(ZWaveCommandClassPayload payload, int endpoint) {
-        int commandClassCode = payload.getPayloadByte(1);
-        int instances = payload.getPayloadByte(2);
+        int commandClassCode = payload.getPayloadByte(2);
+        int instances = payload.getPayloadByte(3);
 
         CommandClass commandClass = CommandClass.getCommandClass(commandClassCode);
         if (commandClass == null) {
@@ -169,54 +150,58 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
      * @param offset the offset at which to start procesing.
      * @throws ZWaveSerialMessageException
      */
-    @ZWaveResponseHandler(id = MULTI_INSTANCE_ENCAP, name = "MULTI_INSTANCE_ENCAP")
-    public void handleMultiInstanceEncap(ZWaveCommandClassPayload payload, int endpoint)
-            throws ZWaveSerialMessageException {
-        int instance = payload.getPayloadByte(1);
-
-        ZWaveCommandClassPayload encapPayload = new ZWaveCommandClassPayload(payload, 3);
-
-        int commandClassCode = encapPayload.getPayloadByte(0);
-        CommandClass commandClass = CommandClass.getCommandClass(commandClassCode);
-
-        if (commandClass == null) {
-            logger.error(String.format("NODE %d: Unsupported command class 0x%02x", getNode().getNodeId(),
-                    commandClassCode));
-            return;
-        }
-
-        logger.debug(String.format("NODE %d: Requested Command Class = %s (0x%02x)", getNode().getNodeId(),
-                commandClass, commandClassCode));
-
-        ZWaveCommandClass zwaveCommandClass = null;
-
-        // first get command class from endpoint, if supported
-        if (getVersion() >= 2) {
-            ZWaveEndpoint nodeEndpoint = getNode().getEndpoint(instance);
-            if (nodeEndpoint != null) {
-                zwaveCommandClass = nodeEndpoint.getCommandClass(commandClass);
-                if (zwaveCommandClass == null) {
-                    logger.warn(String.format(
-                            "NODE %d: CommandClass %s (0x%02x) not implemented by endpoint %d, fallback to main node.",
-                            getNode().getNodeId(), commandClass, commandClassCode, instance));
-                }
-            }
-        }
-
-        if (zwaveCommandClass == null) {
-            zwaveCommandClass = getNode().getCommandClass(commandClass);
-        }
-
-        if (zwaveCommandClass == null) {
-            logger.error(String.format("NODE %d: Unsupported command class %s (0x%02x)", getNode().getNodeId(),
-                    commandClass, commandClassCode));
-            return;
-        }
-
-        logger.debug("NODE {}: Instance = {}, calling handleApplicationCommandRequest.", getNode().getNodeId(),
-                instance);
-        zwaveCommandClass.handleApplicationCommandRequest(encapPayload, instance);
-    }
+    // @ZWaveResponseHandler(id = MULTI_INSTANCE_ENCAP, name = "MULTI_INSTANCE_ENCAP")
+    /*
+     * public ZWaveCommandClassPayload handleMultiInstanceEncap(ZWaveCommandClassPayload payload)
+     * throws ZWaveSerialMessageException {
+     * int instance = payload.getPayloadByte(1);
+     *
+     * ZWaveCommandClassPayload encapPayload = new ZWaveCommandClassPayload(payload, 3);
+     *
+     *
+     * int commandClassCode = encapPayload.getPayloadByte(0);
+     * CommandClass commandClass = CommandClass.getCommandClass(commandClassCode);
+     *
+     * if (commandClass == null) {
+     * logger.info(String.format("NODE %d: Unsupported command class 0x%02x", getNode().getNodeId(),
+     * commandClassCode));
+     * return null;
+     * }
+     *
+     * logger.debug(String.format("NODE %d: Requested Command Class = %s (0x%02x)", getNode().getNodeId(),
+     * commandClass, commandClassCode));
+     *
+     * ZWaveCommandClass zwaveCommandClass = null;
+     *
+     * // first get command class from endpoint, if supported
+     * if (getVersion() >= 2) {
+     * ZWaveEndpoint nodeEndpoint = getNode().getEndpoint(instance);
+     * if (nodeEndpoint != null) {
+     * zwaveCommandClass = nodeEndpoint.getCommandClass(commandClass);
+     * if (zwaveCommandClass == null) {
+     * logger.warn(String.format(
+     * "NODE %d: CommandClass %s (0x%02x) not implemented by endpoint %d, fallback to main node.",
+     * getNode().getNodeId(), commandClass, commandClassCode, instance));
+     * }
+     * }
+     * }
+     *
+     * if (zwaveCommandClass == null) {
+     * zwaveCommandClass = getNode().getCommandClass(commandClass);
+     * }
+     *
+     * if (zwaveCommandClass == null) {
+     * logger.error(String.format("NODE %d: Unsupported command class %s (0x%02x)", getNode().getNodeId(),
+     * commandClass, commandClassCode));
+     * return;
+     * }
+     *
+     * logger.debug("NODE {}: Instance = {}, calling handleApplicationCommandRequest.", getNode().getNodeId(),
+     * instance);
+     * zwaveCommandClass.handleApplicationCommandRequest(encapPayload, instance);
+     *
+     * }
+     */
 
     /**
      * Handles Multi Channel Endpoint Report message. Handles Report on the number of endpoints and whether they are
@@ -391,20 +376,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
         }
     }
 
-    /**
-     * Handles Multi Channel Encapsulation message. Decapsulates an Application Command message and handles it using the
-     * right endpoint.
-     *
-     * @param serialMessage the serial message to process.
-     * @param offset the offset at which to start processing.
-     * @throws ZWaveSerialMessageException
-     */
-    @ZWaveResponseHandler(id = MULTI_CHANNEL_ENCAP, name = "MULTI_CHANNEL_ENCAP")
-    public void handleMultiChannelEncap(ZWaveCommandClassPayload payload, int endpoint)
-            throws ZWaveSerialMessageException {
-
-        CommandClass commandClass;
-        ZWaveCommandClass zwaveCommandClass;
+    public int getSourceEndpoint(ZWaveCommandClassPayload payload) {
         int originatingEndpointId = payload.getPayloadByte(2);
         int destinationEndpointId = payload.getPayloadByte(3);
 
@@ -430,46 +402,92 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
             }
         }
 
-        ZWaveCommandClassPayload encapPayload = new ZWaveCommandClassPayload(payload, 4);
-
-        int commandClassCode = encapPayload.getPayloadByte(0);
-        commandClass = CommandClass.getCommandClass(commandClassCode);
-
-        if (commandClass == null) {
-            logger.error(String.format("NODE %d: Unsupported command class 0x%02x", getNode().getNodeId(),
-                    commandClassCode));
-            return;
-        }
-
-        logger.debug(String.format("NODE %d: Requested Command Class = %s (0x%02x)", getNode().getNodeId(),
-                commandClass, commandClassCode));
-        ZWaveEndpoint nodeEndpoint = getNode().getEndpoint(originatingEndpointId);
-
-        if (nodeEndpoint == null) {
-            logger.debug("NODE {}: Endpoint {} not found. Cannot set command classes.", getNode().getNodeId(),
-                    originatingEndpointId);
-            return;
-        }
-
-        zwaveCommandClass = nodeEndpoint.getCommandClass(commandClass);
-
-        if (zwaveCommandClass == null) {
-            logger.debug(String.format(
-                    "NODE %d: CommandClass %s (0x%02x) not implemented by endpoint %d, fallback to main node.",
-                    getNode().getNodeId(), commandClass, commandClassCode, originatingEndpointId));
-            zwaveCommandClass = getNode().getCommandClass(commandClass);
-        }
-
-        if (zwaveCommandClass == null) {
-            logger.debug(String.format("NODE %d: CommandClass %s (0x%02x) not implemented.", getNode().getNodeId(),
-                    commandClass, commandClassCode));
-            return;
-        }
-
-        logger.debug("NODE {}: Endpoint = {}, calling handleApplicationCommandRequest.", getNode().getNodeId(),
-                originatingEndpointId);
-        zwaveCommandClass.handleApplicationCommandRequest(encapPayload, originatingEndpointId);
+        return originatingEndpointId;
     }
+
+    /**
+     * Handles Multi Channel Encapsulation message. Decapsulates an Application Command message and handles it using the
+     * right endpoint.
+     *
+     * @param serialMessage the serial message to process.
+     * @param offset the offset at which to start processing.
+     * @throws ZWaveSerialMessageException
+     */
+    /*
+     * @ZWaveResponseHandler(id = MULTI_CHANNEL_ENCAP, name = "MULTI_CHANNEL_ENCAP")
+     * public void handleMultiChannelEncap(ZWaveCommandClassPayload payload, int endpoint)
+     * throws ZWaveSerialMessageException {
+     * 
+     * CommandClass commandClass;
+     * ZWaveCommandClass zwaveCommandClass;
+     * int originatingEndpointId = payload.getPayloadByte(2);
+     * int destinationEndpointId = payload.getPayloadByte(3);
+     * 
+     * if (useDestEndpointAsSource) {
+     * if (destinationEndpointId > 1) {
+     * // swap specified in node options and condition satisfied:
+     * if (originatingEndpointId <= 1) {
+     * // swap originating and destination.
+     * int temp = originatingEndpointId;
+     * originatingEndpointId = destinationEndpointId;
+     * destinationEndpointId = temp;
+     * } else {
+     * // received an encapsulation for an endpoint on the controller.
+     * logger.info("NODE {}: Received a multi instance encapsulation with a destination endpoint = {}. ",
+     * getNode().getNodeId(), destinationEndpointId);
+     * if (originatingEndpointId <= 1) {
+     * // and it originates from either a root command class or a command class on the first endpoint.
+     * // high probability of a firmware bug.
+     * logger.warn("NODE {}: The originating endpoint is {}. Please notify author.",
+     * getNode().getNodeId(), originatingEndpointId);
+     * }
+     * }
+     * }
+     * }
+     * 
+     * ZWaveCommandClassPayload encapPayload = new ZWaveCommandClassPayload(payload, 4);
+     * 
+     * 
+     * int commandClassCode = encapPayload.getPayloadByte(0);
+     * commandClass = CommandClass.getCommandClass(commandClassCode);
+     * 
+     * if (commandClass == null) {
+     * logger.error(String.format("NODE %d: Unsupported command class 0x%02x", getNode().getNodeId(),
+     * commandClassCode));
+     * return;
+     * }
+     * 
+     * logger.debug(String.format("NODE %d: Requested Command Class = %s (0x%02x)", getNode().getNodeId(),
+     * commandClass, commandClassCode));
+     * ZWaveEndpoint nodeEndpoint = getNode().getEndpoint(originatingEndpointId);
+     * 
+     * if (nodeEndpoint == null) {
+     * logger.debug("NODE {}: Endpoint {} not found. Cannot set command classes.", getNode().getNodeId(),
+     * originatingEndpointId);
+     * return;
+     * }
+     * 
+     * zwaveCommandClass = nodeEndpoint.getCommandClass(commandClass);
+     * 
+     * if (zwaveCommandClass == null) {
+     * logger.debug(String.format(
+     * "NODE %d: CommandClass %s (0x%02x) not implemented by endpoint %d, fallback to main node.",
+     * getNode().getNodeId(), commandClass, commandClassCode, originatingEndpointId));
+     * zwaveCommandClass = getNode().getCommandClass(commandClass);
+     * }
+     * 
+     * if (zwaveCommandClass == null) {
+     * logger.debug(String.format("NODE %d: CommandClass %s (0x%02x) not implemented.", getNode().getNodeId(),
+     * commandClass, commandClassCode));
+     * return;
+     * }
+     * 
+     * logger.debug("NODE {}: Endpoint = {}, calling handleApplicationCommandRequest.", getNode().getNodeId(),
+     * originatingEndpointId);
+     * zwaveCommandClass.handleApplicationCommandRequest(encapPayload, originatingEndpointId);
+     * 
+     * }
+     */
 
     /**
      * Gets a SerialMessage with the MULTI_INSTANCE_GET command.

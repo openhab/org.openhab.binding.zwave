@@ -10,6 +10,7 @@ package org.openhab.binding.zwave.test.internal.protocol.commandclass;
 
 import static org.junit.Assert.*;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -65,53 +66,116 @@ public class ZWaveCommandClassTest {
      * @return List of ZWaveEvent(s)
      */
     protected List<ZWaveEvent> processCommandClassMessage(byte[] packetData, int version) {
-        SerialMessage msg = new SerialMessage(packetData);
-
-        // Check the packet is not corrupted and is a command class request
-        assertEquals(true, msg.isValid);
-        assertEquals(SerialMessageType.Request, msg.getMessageType());
-        assertEquals(SerialMessageClass.ApplicationCommandHandler, msg.getMessageClass());
-
-        // Mock the controller so we can get any events
-        mockedController = Mockito.mock(ZWaveController.class);
-        argument = ArgumentCaptor.forClass(ZWaveEvent.class);
-        Mockito.doNothing().when(mockedController).notifyEventListeners(argument.capture());
-        mockedNode = Mockito.mock(ZWaveNode.class);
-        ZWaveEndpoint endpoint = Mockito.mock(ZWaveEndpoint.class);
-
-        associationList = new HashMap<Integer, ZWaveAssociationGroup>();
-        for (int c = 1; c <= 10; c++) {
-            associationList.put(c, new ZWaveAssociationGroup(c));
-        }
-
-        Mockito.when(mockedNode.getAssociationGroup(Matchers.any(Integer.class)))
-                .thenAnswer(new Answer<ZWaveAssociationGroup>() {
-                    @Override
-                    public ZWaveAssociationGroup answer(InvocationOnMock invocation) {
-                        return associationList.get(invocation.getArguments()[0]);
-                    }
-                });
-
-        commandClsCaptor = ArgumentCaptor.forClass(ZWaveCommandClass.class);
-        Mockito.doNothing().when(endpoint).addCommandClass(commandClsCaptor.capture());
-
-        Mockito.when(mockedNode.getCommandClass(Matchers.any(CommandClass.class)))
-                .thenAnswer(new Answer<ZWaveCommandClass>() {
-                    @Override
-                    public ZWaveCommandClass answer(InvocationOnMock invocation) {
-                        return ZWaveCommandClass.getInstance(((CommandClass) invocation.getArguments()[0]).getKey(),
-                                mockedNode, mockedController);
-                    }
-                });
-
         try {
+
+            SerialMessage msg = new SerialMessage(packetData);
+
+            // Check the packet is not corrupted and is a command class request
+            assertEquals(true, msg.isValid);
+            assertEquals(SerialMessageType.Request, msg.getMessageType());
+            assertEquals(SerialMessageClass.ApplicationCommandHandler, msg.getMessageClass());
+
+            // Mock the controller so we can get any events
+            mockedController = Mockito.mock(ZWaveController.class);
+            argument = ArgumentCaptor.forClass(ZWaveEvent.class);
+            Mockito.doNothing().when(mockedController).notifyEventListeners(argument.capture());
+            mockedNode = new ZWaveNode(0, 0, mockedController);
+            ZWaveEndpoint mockedEndpoint0 = Mockito.mock(ZWaveEndpoint.class);
+            ZWaveEndpoint mockedEndpoint1 = Mockito.mock(ZWaveEndpoint.class);
+            ZWaveEndpoint mockedEndpoint2 = Mockito.mock(ZWaveEndpoint.class);
+            ZWaveEndpoint mockedEndpoint3 = Mockito.mock(ZWaveEndpoint.class);
+
+            associationList = new HashMap<Integer, ZWaveAssociationGroup>();
+            for (int c = 1; c <= 10; c++) {
+                mockedNode.setAssociationGroup(new ZWaveAssociationGroup(c));
+            }
+
+            Field endpointsField = ZWaveNode.class.getDeclaredField("endpoints");
+            endpointsField.setAccessible(true);
+            Map<Integer, ZWaveEndpoint> endpoints = (Map<Integer, ZWaveEndpoint>) endpointsField.get(mockedNode);
+            endpoints.put(0, mockedEndpoint0);
+            endpoints.put(1, mockedEndpoint1);
+            endpoints.put(2, mockedEndpoint2);
+            endpoints.put(3, mockedEndpoint3);
+
+            Mockito.when(mockedEndpoint0.getEndpointId()).thenReturn(0);
+            Mockito.when(mockedEndpoint1.getEndpointId()).thenReturn(1);
+            Mockito.when(mockedEndpoint2.getEndpointId()).thenReturn(2);
+            Mockito.when(mockedEndpoint3.getEndpointId()).thenReturn(3);
+
+            // Mockito.when(mockedNode.getAssociationGroup(Matchers.any(Integer.class)))
+            // .thenAnswer(new Answer<ZWaveAssociationGroup>() {
+            // @Override
+            // public ZWaveAssociationGroup answer(InvocationOnMock invocation) {
+            // return associationList.get(invocation.getArguments()[0]);
+            // }
+            // });
+
+            commandClsCaptor = ArgumentCaptor.forClass(ZWaveCommandClass.class);
+            Mockito.doNothing().when(mockedEndpoint0).addCommandClass(commandClsCaptor.capture());
+            Mockito.doNothing().when(mockedEndpoint1).addCommandClass(commandClsCaptor.capture());
+            Mockito.doNothing().when(mockedEndpoint2).addCommandClass(commandClsCaptor.capture());
+            Mockito.doNothing().when(mockedEndpoint3).addCommandClass(commandClsCaptor.capture());
+
             // Get the command class and process the response
-            ZWaveCommandClass cls = ZWaveCommandClass.getInstance(msg.getMessagePayloadByte(3), mockedNode,
+            final ZWaveCommandClass cls = ZWaveCommandClass.getInstance(msg.getMessagePayloadByte(3), mockedNode,
                     mockedController);
             assertNotNull(cls);
             cls.setVersion(version);
-            cls.handleApplicationCommandRequest(new ZWaveCommandClassPayload(msg), 0);
-        } catch (ZWaveSerialMessageException e) {
+
+            Mockito.when(mockedEndpoint0.getCommandClass(Matchers.any(CommandClass.class)))
+                    .thenAnswer(new Answer<ZWaveCommandClass>() {
+                        @Override
+                        public ZWaveCommandClass answer(InvocationOnMock invocation) {
+                            if (((CommandClass) invocation.getArguments()[0]).getKey() == cls.getCommandClass()
+                                    .getKey()) {
+                                return cls;
+                            }
+                            return ZWaveCommandClass.getInstance(((CommandClass) invocation.getArguments()[0]).getKey(),
+                                    mockedNode, mockedController);
+                        }
+                    });
+            Mockito.when(mockedEndpoint1.getCommandClass(Matchers.any(CommandClass.class)))
+                    .thenAnswer(new Answer<ZWaveCommandClass>() {
+                        @Override
+                        public ZWaveCommandClass answer(InvocationOnMock invocation) {
+                            if (((CommandClass) invocation.getArguments()[0]).getKey() == cls.getCommandClass()
+                                    .getKey()) {
+                                return cls;
+                            }
+                            return ZWaveCommandClass.getInstance(((CommandClass) invocation.getArguments()[0]).getKey(),
+                                    mockedNode, mockedController);
+                        }
+                    });
+            Mockito.when(mockedEndpoint2.getCommandClass(Matchers.any(CommandClass.class)))
+                    .thenAnswer(new Answer<ZWaveCommandClass>() {
+                        @Override
+                        public ZWaveCommandClass answer(InvocationOnMock invocation) {
+                            if (((CommandClass) invocation.getArguments()[0]).getKey() == cls.getCommandClass()
+                                    .getKey()) {
+                                return cls;
+                            }
+                            return ZWaveCommandClass.getInstance(((CommandClass) invocation.getArguments()[0]).getKey(),
+                                    mockedNode, mockedController);
+                        }
+                    });
+            Mockito.when(mockedEndpoint3.getCommandClass(Matchers.any(CommandClass.class)))
+                    .thenAnswer(new Answer<ZWaveCommandClass>() {
+                        @Override
+                        public ZWaveCommandClass answer(InvocationOnMock invocation) {
+                            if (((CommandClass) invocation.getArguments()[0]).getKey() == cls.getCommandClass()
+                                    .getKey()) {
+                                return cls;
+                            }
+                            return ZWaveCommandClass.getInstance(((CommandClass) invocation.getArguments()[0]).getKey(),
+                                    mockedNode, mockedController);
+                        }
+                    });
+
+            // cls.handleApplicationCommandRequest(new ZWaveCommandClassPayload(msg), 0);
+            mockedNode.processCommand(new ZWaveCommandClassPayload(msg));
+        } catch (ZWaveSerialMessageException | IllegalArgumentException | IllegalAccessException | NoSuchFieldException
+                | SecurityException e) {
             fail("Out of bounds exception processing data");
         }
 

@@ -703,7 +703,7 @@ public class SerialMessage {
 
             if ((arg1.getMessageClass() == SerialMessageClass.RequestNodeInfo
                     || arg1.getMessageClass() == SerialMessageClass.SendData)) {
-                ZWaveNode node = this.controller.getNode(arg1.getMessageNode());
+                ZWaveNode node = controller.getNode(arg1.getMessageNode());
 
                 if (node != null && !node.isListening() && !node.isFrequentlyListening()) {
                     arg1Listening = false;

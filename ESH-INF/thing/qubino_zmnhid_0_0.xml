@@ -35,6 +35,12 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_MODE</property>
         </properties>
       </channel>
+      <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
+        <label>Setpoint (heating)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
@@ -120,7 +126,7 @@
                  min="0" max="65535">
         <label>11: Set point set by I2</label>
         <description><![CDATA[
-65535 – input I2 does not influence on the set point<br /> From 0 to 990 set point from 0.0 °C to 99.0 °C<br /> From 1001 to 1150 – set point from -0.1 °C to -15.0 °C
+Set point set by I2<br /><h1>Overview</h1><p>When I2 is pressed set point will be set according to the value of this parameter. Available config. parameters</p> <p>Default Value 65535</p> <p>65535 - input I2 does not influence on the set point.</p> <p>From 0 to 990 - set point from 0.0 °C to 99.0 °C</p> <p>From 1001 to 1150 - set point from -0.1 °C to -15.0 °C</p>
         ]]></description>
         <default>0</default>
       </parameter>

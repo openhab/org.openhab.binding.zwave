@@ -41,7 +41,7 @@
       <property name="vendor">Vision Security</property>
       <property name="modelId">ZM1601</property>
       <property name="manufacturerId">0109</property>
-      <property name="manufacturerRef">2005:0508</property>
+      <property name="manufacturerRef">2005:0503,2005:0508</property>
       <property name="dbReference">113</property>
       <property name="defaultAssociations">1</property>
     </properties>

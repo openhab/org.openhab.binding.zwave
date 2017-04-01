@@ -84,6 +84,16 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
         return CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL;
     }
 
+    @ZWaveResponseHandler(id = SWITCH_MULTILEVEL_SET, name = "SWITCH_MULTILEVEL_SET")
+    public void handleSwitchMultilevelSet(ZWaveCommandClassPayload payload, int endpoint) {
+        int value = payload.getPayloadByte(2);
+        logger.debug("NODE {}: Switch Multi Level set, value = {}", getNode().getNodeId(), value);
+        ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
+                getCommandClass(), value);
+
+        getController().notifyEventListeners(zEvent);
+    }
+
     @ZWaveResponseHandler(id = SWITCH_MULTILEVEL_REPORT, name = "SWITCH_MULTILEVEL_REPORT")
     public void handleSwitchMultilevelReport(ZWaveCommandClassPayload payload, int endpoint) {
         int value = payload.getPayloadByte(2);

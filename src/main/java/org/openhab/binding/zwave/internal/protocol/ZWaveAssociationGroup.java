@@ -21,10 +21,10 @@ import com.thoughtworks.xstream.annotations.XStreamConverter;
 /**
  * This class provides a storage class for zwave association groups
  * within the node class. This is then serialised to XML.
- *
+ * <p>
  * The class consolidates information from the different association classes -
  * ASSOCIATION, MULTI_INSTANCE_ASSOCIATION, and ASSOCIATION_GROUP_INFO.
- *
+ * <p>
  * This is necessary since ASSOCIATION, MULTI_INSTANCE_ASSOCIATION provide the same
  * information and overlap in their responses
  *

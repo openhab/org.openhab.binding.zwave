@@ -47,7 +47,7 @@
         </properties>
       </channel>
       <channel id="sensor_temperature1" typeId="sensor_temperature">
-        <label>Sensor (temperature) 1</label>
+        <label>Thermo/ Hygro Sensor Ch1 – Temperature</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:1,COMMAND_CLASS_BASIC:1;type=TEMPERATURE</property>
         </properties>
@@ -58,7 +58,7 @@
         </properties>
       </channel>
       <channel id="sensor_direction2" typeId="sensor_direction">
-        <label>Sensor (direction) 2</label>
+        <label>Wind Gauge – Direction</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:2,COMMAND_CLASS_BASIC:2;type=DIRECTION</property>
         </properties>
@@ -69,7 +69,7 @@
         </properties>
       </channel>
       <channel id="sensor_velocity3" typeId="sensor_velocity">
-        <label>Sensor (velocity) 3</label>
+        <label>Wind Gauge – Velocity</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:3,COMMAND_CLASS_BASIC:3;type=VELOCITY</property>
         </properties>
@@ -80,7 +80,7 @@
         </properties>
       </channel>
       <channel id="sensor_velocity4" typeId="sensor_velocity">
-        <label>Sensor (velocity) 4</label>
+        <label>Wind Gauge – Wind gust</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:4,COMMAND_CLASS_BASIC:4;type=VELOCITY</property>
         </properties>
@@ -91,7 +91,7 @@
         </properties>
       </channel>
       <channel id="sensor_temperature5" typeId="sensor_temperature">
-        <label>Sensor (temperature) 5</label>
+        <label>Wind Gauge – Temperature</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:5,COMMAND_CLASS_BASIC:5;type=TEMPERATURE</property>
         </properties>
@@ -102,7 +102,7 @@
         </properties>
       </channel>
       <channel id="sensor_temperature6" typeId="sensor_temperature">
-        <label>Sensor (temperature) 6</label>
+        <label>Wind Gauge – Wind Chill</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:6,COMMAND_CLASS_BASIC:6;type=TEMPERATURE</property>
         </properties>
@@ -113,7 +113,7 @@
         </properties>
       </channel>
       <channel id="sensor_rainrate7" typeId="sensor_rainrate">
-        <label>Sensor (rain rate) 7</label>
+        <label>Rain Sensor</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:7,COMMAND_CLASS_BASIC:7;type=RAIN_RATE</property>
         </properties>
@@ -124,7 +124,7 @@
         </properties>
       </channel>
       <channel id="sensor_relhumidity8" typeId="sensor_relhumidity">
-        <label>Sensor (relative humidity) 8</label>
+        <label>Thermo/ Hygro Sensor Ch1 – Humidity</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:8,COMMAND_CLASS_BASIC:8;type=RELATIVE_HUMIDITY</property>
         </properties>
@@ -135,7 +135,7 @@
         </properties>
       </channel>
       <channel id="sensor_temperature9" typeId="sensor_temperature">
-        <label>Sensor (temperature) 9</label>
+        <label>Thermo/ Hygro Sensor Ch2 – Temperature</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:9,COMMAND_CLASS_BASIC:9;type=TEMPERATURE</property>
         </properties>
@@ -146,7 +146,7 @@
         </properties>
       </channel>
       <channel id="sensor_relhumidity10" typeId="sensor_relhumidity">
-        <label>Sensor (relative humidity) 10</label>
+        <label>Thermo/ Hygro Sensor Ch2 – Humidity</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:10,COMMAND_CLASS_BASIC:10;type=RELATIVE_HUMIDITY</property>
         </properties>
