@@ -37,7 +37,7 @@ public class ZWaveCentralSceneCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveCommandClassInitialization {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveCentralSceneCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveCentralSceneCommandClass.class);
 
     private static final int SCENE_GET = 1;
     private static final int CENTRAL_SCENE_SUPPORTED_REPORT = 2;

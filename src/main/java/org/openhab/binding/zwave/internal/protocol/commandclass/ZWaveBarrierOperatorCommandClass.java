@@ -40,7 +40,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveBarrierOperatorCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveSetCommands, ZWaveCommandClassDynamicState {
 
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveBarrierOperatorCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveBarrierOperatorCommandClass.class);
 
     public static final int BARRIER_OPERATOR_SET = 1;
     public static final int BARRIER_OPERATOR_GET = 2;

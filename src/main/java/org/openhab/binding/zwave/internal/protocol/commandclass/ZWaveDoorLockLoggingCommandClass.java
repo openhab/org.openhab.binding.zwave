@@ -37,7 +37,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveDoorLockLoggingCommandClass extends ZWaveCommandClass implements ZWaveCommandClassInitialization {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveDoorLockLoggingCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveDoorLockLoggingCommandClass.class);
 
     private static final int LOGGING_SUPPORTED_GET = 1;
     private static final int LOGGING_SUPPORTED_REPORT = 2;

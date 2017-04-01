@@ -35,7 +35,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ZWaveBinarySensorConverter extends ZWaveCommandClassConverter {
 
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveBinarySensorConverter.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveBinarySensorConverter.class);
 
     /**
      * Constructor. Creates a new instance of the {@link ZWaveBinarySensorConverter} class.

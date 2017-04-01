@@ -37,7 +37,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
 
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveMultiLevelSwitchConverter.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveMultiLevelSwitchConverter.class);
 
     /**
      * Constructor. Creates a new instance of the {@link ZWaveMultiLevelSwitchConverter} class.

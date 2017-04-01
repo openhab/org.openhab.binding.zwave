@@ -13,8 +13,8 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class GetVersionMessageClass extends ZWaveCommandProcessor {
-    private static final Logger logger = LoggerFactory.getLogger(GetVersionMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(GetVersionMessageClass.class);
 
     private String zWaveVersion = "Unknown";
     private int ZWaveLibraryType = 0;

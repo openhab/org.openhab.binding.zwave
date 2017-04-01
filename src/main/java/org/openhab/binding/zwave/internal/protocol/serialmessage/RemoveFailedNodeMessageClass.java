@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class RemoveFailedNodeMessageClass extends ZWaveCommandProcessor {
-    private static final Logger logger = LoggerFactory.getLogger(RemoveFailedNodeMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(RemoveFailedNodeMessageClass.class);
 
     private final int FAILED_NODE_REMOVE_STARTED = 0x00;
     private final int FAILED_NODE_NOT_PRIMARY_CONTROLLER = 0x02;

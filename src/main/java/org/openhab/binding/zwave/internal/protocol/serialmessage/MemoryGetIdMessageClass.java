@@ -12,8 +12,8 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class MemoryGetIdMessageClass extends ZWaveCommandProcessor {
-    private static final Logger logger = LoggerFactory.getLogger(MemoryGetIdMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(MemoryGetIdMessageClass.class);
 
     private int homeId = 0;
     private int ownNodeId = 0;

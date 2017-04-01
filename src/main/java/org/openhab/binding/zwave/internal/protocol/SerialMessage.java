@@ -40,7 +40,7 @@ import org.slf4j.LoggerFactory;
  */
 public class SerialMessage {
 
-    private static final Logger logger = LoggerFactory.getLogger(SerialMessage.class);
+    private final static Logger logger = LoggerFactory.getLogger(SerialMessage.class);
     private final static AtomicLong sequence = new AtomicLong();
 
     private long sequenceNumber;

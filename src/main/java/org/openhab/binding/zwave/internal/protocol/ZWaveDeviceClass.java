@@ -26,7 +26,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("deviceClass")
 public class ZWaveDeviceClass {
 
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveDeviceClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveDeviceClass.class);
 
     private Basic basicDeviceClass;
     private Generic genericDeviceClass;

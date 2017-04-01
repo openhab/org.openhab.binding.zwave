@@ -29,7 +29,7 @@ import java.util.Objects;
 public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveClimateControlScheduleCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveClimateControlScheduleCommandClass.class);
 
     private static final int SCHEDULE_CHANGED_GET = 0x04;
     private static final int SCHEDULE_CHANGED_REPORT = 0x05;

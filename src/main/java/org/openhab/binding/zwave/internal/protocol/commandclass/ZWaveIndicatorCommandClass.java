@@ -43,7 +43,7 @@ public class ZWaveIndicatorCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveSetCommands, ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveIndicatorCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveIndicatorCommandClass.class);
 
     private static final int INDICATOR_SET = 0x01;
     private static final int INDICATOR_GET = 0x02;

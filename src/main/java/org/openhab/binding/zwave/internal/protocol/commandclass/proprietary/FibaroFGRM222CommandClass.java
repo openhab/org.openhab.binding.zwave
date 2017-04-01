@@ -9,10 +9,10 @@
 package org.openhab.binding.zwave.internal.protocol.commandclass.proprietary;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.slf4j.Logger;
@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
  */
 public class FibaroFGRM222CommandClass extends ZWaveCommandClass {
 
-    private static final Logger logger = LoggerFactory.getLogger(FibaroFGRM222CommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(FibaroFGRM222CommandClass.class);
     private static final int blindOffset = 5;
     private static final int lamellaTiltOffset = 6;
 

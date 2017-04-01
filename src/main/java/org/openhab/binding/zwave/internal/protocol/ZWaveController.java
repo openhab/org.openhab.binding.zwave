@@ -81,7 +81,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ZWaveController {
 
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveController.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveController.class);
 
     private static final int ZWAVE_RESPONSE_TIMEOUT = 5000;
     private static final int INITIAL_TX_QUEUE_SIZE = 128;
