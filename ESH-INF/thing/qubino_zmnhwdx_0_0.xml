@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="qubino_zmnhwdx_00_000" listed="false">
+    <label>ZMNHWD Qubino Flush RGBW Dimmer</label>
+    <description><![CDATA[
+Qubino Flush RGBW Dimmer<br /><h1>Overview</h1><p>Qubino Flush RGBW module controls RGB/RGBW strips and LED strips or bulbs and has 5 special scene effects. It can also control halogen lights and fans. Its extremely small size allows for easy installation behind wall sockets and switches. Controlled devices may be powered by 12 or 24 VDC.</p> <p>Supported control types:</p> <ul><li>Push button (monostable switch)</li> <li>Bistable switch</li> </ul><p>This should hopefully work with models ZMNHWD1-ZMNHWD8 (which work on different frequencies).</p> <br /><h2>Inclusion Information</h2><p>To include the device, press the service button 3 times within 2 seconds. The LED will turn green if the device was properly included.</p> <p>The device supports auto inclusion: Install the device and connect the power. The auto inclusion function will be active for about 2 minutes.</p> <br /><h2>Exclusion Information</h2><p>To exclude the device, press the service button 3 times within 2 seconds. The green LED will blink if the device was properly included and the device will be reset to factory defaults.</p>
+    ]]></description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer</label>
+        <properties>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL</property>
+        </properties>
+      </channel>
+      <channel id="color_color" typeId="color_color">
+        <label>Color Control</label>
+        <properties>
+          <property name="binding:*:HSBType">COLOR;</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC;</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL;</property>
+        </properties>
+      </channel>
+      <channel id="color_temperature" typeId="color_temperature">
+        <label>Color Temperature</label>
+        <properties>
+          <property name="binding:*:PercentType">COLOR;colorMode=DIFF_WHITE</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL;</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Goap</property>
+      <property name="modelId">ZMNHWD</property>
+      <property name="manufacturerId">0159</property>
+      <property name="manufacturerRef">0001:0054</property>
+      <property name="dbReference">567</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: Input switch type</label>
+        <description><![CDATA[
+Change the type of switch (bistable/monostable)<br /><h1>Overview</h1><p>NOTE: Please power cycle the device when parameter is changed.</p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="1">bistable switch type</option>
+          <option value="2">monostable (push button) switch type</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration">
+        <label>2: Switch mode</label>
+        <description>Choose RGBW Dimmer operation mode.</description>
+        <default>1</default>
+        <options>
+          <option value="1">Normal Mode</option>
+          <option value="2">Brightness Mode</option>
+          <option value="3">Rainbow Mode</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration">
+        <label>3: Auto scene mode set</label>
+        <description>Activation of the programmed scene changing color shades.</description>
+        <default>0</default>
+        <options>
+          <option value="1">Ocean</option>
+          <option value="2">Lightning</option>
+          <option value="3">Rainbow</option>
+          <option value="4">Snow</option>
+          <option value="5">Sun</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_4_1" type="integer" groupName="configuration"
+                 min="-128" max="127">
+        <label>4: Auto scene duration</label>
+        <description><![CDATA[
+Change auto scene mode duration.<br /><h1>Overview</h1><ul><li>1 - 127 delay duration is from 1s to 127s</li> <li>-128 ~ -1 delay duration is from 1min. to 127min.</li> </ul>
+        ]]></description>
+        <default>3</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Send basic report to this group</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>The Module can be set 1 auto-report ID in Group 1.</p> <p>The Module will send BASIC_REPORT to device associated in Group 1 when correspond Device is activated.</p>
+        ]]></description>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>
