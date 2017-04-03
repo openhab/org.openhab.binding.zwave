@@ -61,7 +61,7 @@ WallMote Quad<br /><h1>Overview</h1><p>Aeotec WallMote Quad is an intelligent Z-
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW130</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0002:0082,0102:0082</property>
+      <property name="manufacturerRef">0002:0082,0102:0082,0202:0082</property>
       <property name="dbReference">535</property>
       <property name="defaultAssociations">1</property>
     </properties>

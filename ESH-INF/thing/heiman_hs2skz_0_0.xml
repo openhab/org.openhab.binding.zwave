@@ -40,7 +40,23 @@ In-Wall Switch Module<br /><h1>Overview</h1><p>Smart metering outlet. Same hardw
       <property name="manufacturerId">0260</property>
       <property name="manufacturerRef">8006:1000</property>
       <property name="dbReference">549</property>
+      <property name="defaultAssociations">1</property>
     </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Lifeline</label>
+      </parameter>
+
+    </config-description>
 
   </thing-type>
 

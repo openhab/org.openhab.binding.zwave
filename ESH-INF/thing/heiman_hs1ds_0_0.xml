@@ -45,7 +45,24 @@ Door/Window Contact<br /><h1>Overview</h1><p>Door/Window Contact.</p> <p>Same ha
       <property name="manufacturerId">0260</property>
       <property name="manufacturerRef">0168:0168</property>
       <property name="dbReference">551</property>
+      <property name="defaultAssociations">1</property>
     </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Controller Updates</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+    </config-description>
 
   </thing-type>
 
