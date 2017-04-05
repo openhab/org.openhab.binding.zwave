@@ -35,6 +35,12 @@
           <property name="binding:*:DecimalType">METER;type=E_KWh</property>
         </properties>
       </channel>
+      <channel id="meter_reset" typeId="meter_reset">
+        <label>Reset the total power consumption</label>
+        <properties>
+          <property name="binding:*:OnOffType">METER</property>
+        </properties>
+      </channel>
       <channel id="alarm_power" typeId="alarm_power">
         <label>Alarm (power)</label>
         <properties>
@@ -57,6 +63,12 @@
         <label>Electric meter (kWh) 1</label>
         <properties>
           <property name="binding:*:DecimalType">METER:1;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_reset1" typeId="meter_reset">
+        <label>Reset the total power consumption</label>
+        <properties>
+          <property name="binding:*:OnOffType">METER:1</property>
         </properties>
       </channel>
       <channel id="sensor_binary2" typeId="sensor_binary">
