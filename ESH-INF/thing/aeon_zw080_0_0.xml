@@ -16,7 +16,13 @@ Siren Gen5<br /><h1>Overview</h1><p>Update command classes -:<br />METER:5 :: AD
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param37" typeId="aeon_zw080_00_000_config_decimal_param37">
+        <label>Sound and Volume</label>
+        <properties>
+          <property name="binding:*:DecimalType">CONFIGURATION;parameter=37</property>
         </properties>
       </channel>
     </channels>
@@ -108,5 +114,18 @@ what type of notification to send to Group 1<br /><h1>Overview</h1><p>Enable to 
     </config-description>
 
   </thing-type>
+
+  <channel-type id="aeon_zw080_00_000_config_decimal_param37">
+    <item-type>Number</item-type>
+    <label>Siren Volume</label>
+    <state pattern="%s">
+      <options>
+        <option value="0">Do not change the current volume</option>
+        <option value="1">Set the volume to 88 dB</option>
+        <option value="2">Set the volume to 100 dB</option>
+        <option value="3">Set the volume to 105 dB</option>
+      </options>
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>
