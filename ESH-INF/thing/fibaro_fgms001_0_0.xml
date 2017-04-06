@@ -34,10 +34,16 @@
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
       </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm (general)</label>
+      <channel id="alarm_motion" typeId="alarm_motion">
+        <label>Motion Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_ALARM,COMMAND_CLASS_BASIC;type=GENERAL</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_ALARM,COMMAND_CLASS_BASIC;type=BURGLAR, event=8</property>
+        </properties>
+      </channel>
+      <channel id="alarm_tamper" typeId="alarm_tamper">
+        <label>Tamper Alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_ALARM,COMMAND_CLASS_BASIC;type=BURGLAR, event=3</property>
         </properties>
       </channel>
     </channels>

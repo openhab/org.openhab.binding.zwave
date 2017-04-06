@@ -62,7 +62,31 @@
       <property name="manufacturerId">007A</property>
       <property name="manufacturerRef">4005:0001</property>
       <property name="dbReference">537</property>
+      <property name="defaultAssociations">1,2</property>
     </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Master (Light Control)</label>
+        <description>Master</description>
+        <multipleLimit>4</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Report (Status Report)</label>
+        <description>Report</description>
+        <multipleLimit>4</multipleLimit>
+      </parameter>
+
+    </config-description>
 
   </thing-type>
 

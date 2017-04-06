@@ -23,6 +23,12 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_MODE</property>
         </properties>
       </channel>
+      <channel id="thermostat_setpoint" typeId="thermostat_setpoint">
+        <label>Thermostat Setpoint</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT</property>
+        </properties>
+      </channel>
       <channel id="thermostat_fanmode" typeId="systemair_29990_00_000_thermostat_fanmode">
         <label>Fan speed setting</label>
         <properties>
