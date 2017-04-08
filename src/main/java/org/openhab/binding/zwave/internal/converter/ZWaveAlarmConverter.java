@@ -118,7 +118,6 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         }
 
         // Default to using the value.
-        // If this is V3 then we'll use the event status instead
         int value = eventAlarm.getValue();
 
         State state = null;
