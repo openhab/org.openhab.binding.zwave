@@ -5,7 +5,7 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="popp_005107_01_003" listed="false">
+  <thing-type id="popp_005107_01_001" listed="false">
     <label>005107 Solar Powered Outdoor Siren</label>
     <description>Solar Powered Outdoor Siren</description>
 
@@ -48,7 +48,7 @@
       <property name="modelId">005107</property>
       <property name="manufacturerId">0154</property>
       <property name="manufacturerRef">0004:0002</property>
-      <property name="versionMin">1.3</property>
+      <property name="versionMin">1.1</property>
       <property name="versionMax">1.13</property>
       <property name="dbReference">367</property>
       <property name="defaultAssociations">1</property>

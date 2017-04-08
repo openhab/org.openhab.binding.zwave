@@ -103,7 +103,7 @@ Things configured manually require the following minimum configuration to be set
 
 | Configuration      | Description                                                                                                   |
 |--------------------|---------------------------------------------------------------------------------------------------------------|
-| zwave_nodeid       | Sets the node id of the node within the network.                                                              |
+| node_id       | Sets the node id of the node within the network.                                                              |
 | zwave_manufacturer | Sets the manufacturer ID for this device (as decimal). This is used to get the thing type from the database.  |
 | zwave_deviceid     | Specifies the device ID for this device (as decimal). This is used to get the thing type from the database.   |
 | zwave_devicetype   | Specifies the device type for this device (as decimal). This is used to get the thing type from the database. |

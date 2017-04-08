@@ -5,16 +5,22 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="vision_zg8101_00_000" listed="false">
-    <label>ZG8101 Garage Door Tilt Sensor</label>
-    <description>Garage Door Tilt Sensor</description>
+  <thing-type id="kaipule_es61_00_000" listed="false">
+    <label>ES61 Smoke Sensor</label>
+    <description>Smoke Sensor</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="sensor_door" typeId="sensor_door">
+      <channel id="sensor_binary" typeId="sensor_binary">
         <label>Binary Sensor</label>
         <properties>
-          <property name="binding:*:OpenClosedType">COMMAND_CLASS_SENSOR_BINARY,COMMAND_CLASS_BASIC</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="alarm_smoke" typeId="alarm_smoke">
+        <label>Alarm (smoke)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=SMOKE</property>
         </properties>
       </channel>
       <channel id="alarm_burglar" typeId="alarm_burglar">
@@ -32,29 +38,12 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Vision Security</property>
-      <property name="modelId">ZG8101</property>
-      <property name="manufacturerId">0109</property>
-      <property name="manufacturerRef">200A:0A02</property>
-      <property name="dbReference">103</property>
-      <property name="defaultAssociations">1</property>
+      <property name="vendor">Kaipule Technology Co., Ltd.</property>
+      <property name="modelId">ES61</property>
+      <property name="manufacturerId">0214</property>
+      <property name="manufacturerRef">0002:0002</property>
+      <property name="dbReference">559</property>
     </properties>
-
-    <!-- CONFIGURATION DESCRIPTIONS -->
-    <config-description>
-
-      <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
-      <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Control Command</label>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-    </config-description>
 
   </thing-type>
 

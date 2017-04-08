@@ -5,7 +5,7 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="reitz_06436_00_000" listed="false">
+  <thing-type id="zwaveme_06436_00_000" listed="false">
     <label>06436 Insert blind control</label>
     <description>Insert blind control</description>
 
@@ -29,10 +29,10 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Reitz-Group.de</property>
+      <property name="vendor">Z-Wave.Me</property>
       <property name="modelId">06436</property>
-      <property name="manufacturerId">0064</property>
-      <property name="manufacturerRef">4001:0000</property>
+      <property name="manufacturerId">0115</property>
+      <property name="manufacturerRef">1000:0003</property>
       <property name="dbReference">50</property>
       <property name="defaultAssociations">3</property>
     </properties>
