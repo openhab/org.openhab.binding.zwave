@@ -174,4 +174,18 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         assertEquals(1, msgs.size());
         assertTrue(Arrays.equals(msgs.get(0).getPayloadBuffer(), expectedResponse2));
     }
+
+    @Test
+    public void Alarm_AlarmNumber() {
+        ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
+        Map<String, String> args = new HashMap<String, String>();
+
+        ZWaveThingChannel channel = new ZWaveThingChannel(null, new ChannelUID("zwave:node:bridge:alarm_number"),
+                DataType.DecimalType, CommandClass.COMMAND_CLASS_ALARM.toString(), 0, args);
+
+        ZWaveCommandClassValueEvent event = createEvent(ZWaveAlarmCommandClass.AlarmType.SMOKE, ReportType.ALARM, 0,
+                0xff);
+        DecimalType state = (DecimalType) converter.handleEvent(channel, event);
+        assertEquals(1, state.intValue());
+    }
 }

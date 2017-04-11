@@ -154,6 +154,16 @@
         </state>
     </channel-type>
 
+    <!-- Motion Alarm Channel -->
+    <channel-type id="alarm_number">
+        <item-type>Number</item-type>
+        <label>Alarm type</label>
+        <description>Provides the raw alarm value</description>
+        <category></category>
+        <state readOnly="true">
+        </state>
+    </channel-type>
+
     <!-- Power Alarm Channel -->
     <channel-type id="alarm_power">
         <item-type>Switch</item-type>
