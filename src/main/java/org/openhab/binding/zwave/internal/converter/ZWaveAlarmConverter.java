@@ -117,12 +117,19 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
             return null;
         }
 
+        // Processing for special channel types
+        if (channel.getUID().getId().equals("alarm_number")) {
+            return new DecimalType(eventAlarm.getAlarmType().getKey());
+        }
+
         // Default to using the value.
-        // If this is V3 then we'll use the event status instead
         int value = eventAlarm.getValue();
 
         State state = null;
         switch (channel.getDataType()) {
+            case DecimalType:
+                state = new DecimalType(value);
+                break;
             case OnOffType:
                 state = value == 0 ? OnOffType.OFF : OnOffType.ON;
                 break;
