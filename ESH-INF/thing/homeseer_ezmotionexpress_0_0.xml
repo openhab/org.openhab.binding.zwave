@@ -34,6 +34,21 @@
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
       </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
@@ -43,8 +58,30 @@
       <property name="manufacturerId">001E</property>
       <property name="manufacturerRef">0002:0002,0002:0001</property>
       <property name="dbReference">140</property>
-      <property name="commandClass:WAKE_UP:1">ccRemove</property>
-      <property name="commandClass:WAKE_UP:2">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_MULTI_CHANNEL:1">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_CONFIGURATION:1">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_MANUFACTURER_SPECIFIC:1">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_NODE_NAMING:1">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_BATTERY:1">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_WAKE_UP:1">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_ASSOCIATION:1">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_VERSION:1">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_MULTI_CHANNEL:2">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_CONFIGURATION:2">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_MANUFACTURER_SPECIFIC:2">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_NODE_NAMING:2">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_BATTERY:2">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_WAKE_UP:2">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_ASSOCIATION:2">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_VERSION:2">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_MULTI_CHANNEL:3">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_CONFIGURATION:3">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_MANUFACTURER_SPECIFIC:3">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_NODE_NAMING:3">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_BATTERY:3">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_WAKE_UP:3">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_ASSOCIATION:3">ccRemove</property>
+      <property name="commandClass:COMMAND_CLASS_VERSION:3">ccRemove</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

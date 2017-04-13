@@ -987,8 +987,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                     // Check for any sub parameter processing...
                     // If we have requested the current state of a parameter and t's waiting to be updated, then we
-                    // check
-                    // this here, update the value and send the request...
+                    // check this here, update the value and send the request...
                     // Do this first so we only process the data if we're not waiting to send
                     ZWaveConfigSubParameter subParameter = subParameters.get(parameter.getIndex());
 

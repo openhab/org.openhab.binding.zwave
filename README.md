@@ -99,17 +99,25 @@ This sets the network security key used in your network for securing communicati
 
 There are a huge number of things supported by the Z-Wave binding, so configuration can not be covered here and you should refer to the device manual.
 
-Things configured manually require the following minimum configuration to be set. -:
+### Manual Thing Configuration
 
-| Configuration      | Description                                                                                                   |
-|--------------------|---------------------------------------------------------------------------------------------------------------|
-| node_id       | Sets the node id of the node within the network.                                                              |
-| zwave_manufacturer | Sets the manufacturer ID for this device (as decimal). This is used to get the thing type from the database.  |
-| zwave_deviceid     | Specifies the device ID for this device (as decimal). This is used to get the thing type from the database.   |
-| zwave_devicetype   | Specifies the device type for this device (as decimal). This is used to get the thing type from the database. |
-| zwave_version      | Specifies the application version for this device. This is used to get the thing type from the database.      |
+When things are configured through the REST interface using a UI, the binding uses information it gathers from the device to decide the device type to ascertain the thing type. If you are manually configuring your things in a text file, then you are responsible for ensuring the correct configuration, and resolving the thing type.
 
+Specifically, you must derive the thing-type, and the node ID in order define the thing, and from there you will need to establish the channels that the thing supports in order to define the items and the channel links.
 
+The thing-type can be found in the Z-Wave database - find your device, and from the top of the XML file you will find the thing type definition.
+
+Below is an example of the definition of a Z-Wave controller and a switch.
+
+```
+Bridge zwave:serial_zstick:controller "ZWave Controller" [ port="/dev/tty.usbmodem1421", controller_softreset="false", controller_master="true", heal_enable="true", security_networkkey="11 22 33 44 55 66 77 88 99 AA BB CC DD EE FF 00" ]
+Thing zwave:tkb_tz88_00_000:controller:node2 "ZWave Node 3: TZ88" (zwave:serial_zstick:controller) [ node_id=3 ]
+```
+
+Below is an example of linking an item to the switch in node 3.
+```
+Switch Switch_ZWave_Node3 "TZ88 Switch" { channel = "zwave:tkb_tz88_00_000:controller:node3:switch_binary" } 
+```
 
 ## Channels
 

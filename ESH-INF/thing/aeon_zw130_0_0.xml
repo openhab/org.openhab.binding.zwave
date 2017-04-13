@@ -124,7 +124,13 @@ Which notification to be sent to the associated devices.<br /><h1>Overview</h1><
         <default>5</default>
       </parameter>
 
-      <parameter name="config_255_4" type="integer" groupName="configuration">
+      <!-- ACTION DEFINITIONS -->
+      <parameter-group name="actions">
+        <context>setup</context>
+        <label>Actions</label>
+      </parameter-group>
+
+      <parameter name="config_255_4_wo" type="integer" groupName="configuration">
         <label>255: Reset the WallMote Quad</label>
         <description>Reset the WallMote Quad to factory default.</description>
         <default>0</default>
