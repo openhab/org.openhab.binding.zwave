@@ -1173,6 +1173,10 @@ public class ZWaveNode {
             }
 
             payload = crcCommandClass.handleCrcEncap(payload);
+            if (payload == null) {
+                // CRC Failed
+                return null;
+            }
         }
 
         int endpointNumber = 0;
