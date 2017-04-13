@@ -207,23 +207,23 @@
       </parameter>
 
       <parameter name="config_101_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="1061109568">
         <label>101: Which reports need to send automatically for group 1</label>
-        <description>1 -&gt; Battery Report 2 -&gt; MultiSensor Report for the whole device 4 -&gt; Meter Report for Watt for the whole device 8 -&gt; Meter Report for kWh for the whole device 256 -&gt; Meter Report for Watt for clamp 1 512 -&gt; Meter Report for W</description>
+        <description>1 -&gt; Battery Report2 -&gt; MultiSensor Report for the whole device4 -&gt; Meter Report for Watt for the whole device8 -&gt; Meter Report for kWh for the whole device256 -&gt; Meter Report for Watt for clamp 1512 -&gt; Meter Report for W</description>
         <default>8</default>
       </parameter>
 
       <parameter name="config_102_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="1061109568">
         <label>102: Which reports need to send automatically for group 2</label>
-        <description>1 -&gt; Battery Report 2 -&gt; MultiSensor Report for the whole device 4 -&gt; Meter Report for Watt for the whole device 8 -&gt; Meter Report for kWh for the whole device 256 -&gt; Meter Report for Watt for clamp 1 512 -&gt; Meter Report for W</description>
+        <description>1 -&gt; Battery Report2 -&gt; MultiSensor Report for the whole device4 -&gt; Meter Report for Watt for the whole device8 -&gt; Meter Report for kWh for the whole device256 -&gt; Meter Report for Watt for clamp 1512 -&gt; Meter Report for W</description>
         <default>8</default>
       </parameter>
 
       <parameter name="config_103_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="1061109568">
         <label>103: Which reports need to send automatically for group 3</label>
-        <description>1 -&gt; Battery Report 2 -&gt; MultiSensor Report for the whole device 4 -&gt; Meter Report for Watt for the whole device 8 -&gt; Meter Report for kWh for the whole device 256 -&gt; Meter Report for Watt for clamp 1 512 -&gt; Meter Report for W</description>
+        <description>1 -&gt; Battery Report2 -&gt; MultiSensor Report for the whole device4 -&gt; Meter Report for Watt for the whole device8 -&gt; Meter Report for kWh for the whole device256 -&gt; Meter Report for Watt for clamp 1512 -&gt; Meter Report for W</description>
         <default>8</default>
       </parameter>
 

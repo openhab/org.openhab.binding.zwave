@@ -103,7 +103,7 @@ allows to turn off the controlled device in case of exceeding the defined power.
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
-                 min="1" max="10">
+                 min="1" max="100">
         <label>10: High priority power report</label>
         <description><![CDATA[
 minimum percentage change in active power<br /><h1>Overview</h1><p>This parameter determines the minimum percentage change in active power that will result in sending power report to the main controller with the highest priority in the Z-Wave network.</p> <p>By default, the Wall Plug immediately sends the power report if the power load changes by 80%.</p> <p>1-99 - power change in percent</p> <p>100 - reports are disabled</p>

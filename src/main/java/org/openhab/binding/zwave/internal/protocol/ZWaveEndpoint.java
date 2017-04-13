@@ -151,6 +151,28 @@ public class ZWaveEndpoint {
 
     @Override
     public String toString() {
-        return Integer.toString(endpointId);
+        StringBuilder builder = new StringBuilder();
+        builder.append("Endpoint ");
+        builder.append(endpointId);
+        builder.append(": Supported Classes[");
+        boolean first = true;
+        for (CommandClass cmdClass : supportedCommandClasses.keySet()) {
+            if (!first) {
+                builder.append(" ");
+            }
+            first = false;
+            builder.append(cmdClass);
+        }
+        builder.append("] Secure Classes[");
+        first = true;
+        for (CommandClass cmdClass : secureCommandClasses) {
+            if (!first) {
+                builder.append(" ");
+            }
+            first = false;
+            builder.append(cmdClass);
+        }
+        builder.append("]");
+        return builder.toString();
     }
 }

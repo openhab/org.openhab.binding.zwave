@@ -191,7 +191,8 @@ public class ZWaveTransactionManager {
     }
 
     private void notifyTransactionComplete(final ZWaveTransaction transaction) {
-        logger.debug("NODE {}: notifyTransactionResponse {}", transaction.getNodeId(), transaction.getTransactionId());
+        logger.debug("NODE {}: notifyTransactionResponse {} {}", transaction.getNodeId(),
+                transaction.getTransactionId(), transaction.getTransactionState());
         new Thread() {
             @Override
             public void run() {
@@ -968,6 +969,8 @@ public class ZWaveTransactionManager {
                         case DONE:
                             break;
                         case UNINTIALIZED:
+                            // This might happen if a transaction is reset due to a CAN
+                            state = State.CANCELLED;
                             logger.debug("Completing UNINTIALIZED transaction {}!!! How?!?", transactionId);
                             break;
                         case WAIT_DATA:
