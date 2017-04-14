@@ -58,7 +58,7 @@ public class ZWaveClockConverter extends ZWaveCommandClassConverter {
 
         logger.debug("NODE {}: Generating poll message for {} endpoint {}", node.getNodeId(),
                 commandClass.getCommandClass(), channel.getEndpoint());
-        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(commandClass.getValueMessage(), commandClass,
+        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(commandClass.getValueMessage(),
                 channel.getEndpoint());
         List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>(1);
         response.add(transaction);
@@ -93,8 +93,8 @@ public class ZWaveClockConverter extends ZWaveCommandClassConverter {
                     ZWaveClockCommandClass commandClass = (ZWaveClockCommandClass) node.resolveCommandClass(
                             ZWaveCommandClass.CommandClass.COMMAND_CLASS_CLOCK, channel.getEndpoint());
 
-                    ZWaveCommandClassTransactionPayload transaction = node.encapsulate(
-                            commandClass.getSetMessage(Calendar.getInstance()), commandClass, channel.getEndpoint());
+                    ZWaveCommandClassTransactionPayload transaction = node
+                            .encapsulate(commandClass.getSetMessage(Calendar.getInstance()), channel.getEndpoint());
                     if (transaction == null) {
                         logger.warn("Generating message failed for command class = {}, node = {}, endpoint = {}",
                                 commandClass.getCommandClass(), node.getNodeId(), channel.getEndpoint());
@@ -108,7 +108,7 @@ public class ZWaveClockConverter extends ZWaveCommandClassConverter {
                     lastClockUpdate = Calendar.getInstance();
 
                     // And request a read-back
-                    transaction = node.encapsulate(commandClass.getValueMessage(), commandClass, channel.getEndpoint());
+                    transaction = node.encapsulate(commandClass.getValueMessage(), channel.getEndpoint());
                     if (transaction == null) {
                         logger.warn("Generating message failed for command class = {}, node = {}, endpoint = {}",
                                 commandClass.getCommandClass(), node.getNodeId(), channel.getEndpoint());
@@ -138,7 +138,7 @@ public class ZWaveClockConverter extends ZWaveCommandClassConverter {
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_CLOCK, channel.getEndpoint());
 
         ZWaveCommandClassTransactionPayload transaction = node
-                .encapsulate(commandClass.getSetMessage(Calendar.getInstance()), commandClass, channel.getEndpoint());
+                .encapsulate(commandClass.getSetMessage(Calendar.getInstance()), channel.getEndpoint());
         if (transaction == null) {
             logger.warn("Generating message failed for command class = {}, node = {}, endpoint = {}",
                     commandClass.getCommandClass(), node.getNodeId(), channel.getEndpoint());

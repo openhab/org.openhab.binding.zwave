@@ -68,7 +68,7 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
         }
 
         ZWaveCommandClassTransactionPayload transaction = node.encapsulate(commandClass.getConfigMessage(parmValue),
-                commandClass, channel.getEndpoint());
+                channel.getEndpoint());
         List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>(1);
         response.add(transaction);
         return response;

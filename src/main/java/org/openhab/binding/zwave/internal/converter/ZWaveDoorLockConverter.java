@@ -53,7 +53,7 @@ public class ZWaveDoorLockConverter extends ZWaveCommandClassConverter {
         logger.debug("NODE {}: Generating poll message for {} endpoint {}", node.getNodeId(),
                 commandClass.getCommandClass(), channel.getEndpoint());
         ZWaveCommandClassTransactionPayload serialMessage = node.encapsulate(commandClass.getValueMessage(),
-                commandClass, channel.getEndpoint());
+                channel.getEndpoint());
         List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>(1);
         response.add(serialMessage);
         return response;
@@ -105,7 +105,7 @@ public class ZWaveDoorLockConverter extends ZWaveCommandClassConverter {
             value = 0xff;
         }
         ZWaveCommandClassTransactionPayload transaction = node.encapsulate(commandClass.setValueMessage(value),
-                commandClass, channel.getEndpoint());
+                channel.getEndpoint());
 
         if (transaction == null) {
             logger.warn("NODE {}: Generating message failed for command class = {}, endpoint = {}", node.getNodeId(),

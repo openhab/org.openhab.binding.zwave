@@ -83,7 +83,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
             return null;
         }
 
-        transaction = node.encapsulate(transaction, commandClass, channel.getEndpoint());
+        transaction = node.encapsulate(transaction, channel.getEndpoint());
 
         List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>();
         response.add(transaction);
@@ -227,9 +227,8 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         AlarmType notificationType = AlarmType.valueOf(splits[0]);
         int event = Integer.valueOf(splits[1]);
 
-        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(
-                commandClass.getNotificationReportMessage(notificationType, event), commandClass,
-                channel.getEndpoint());
+        ZWaveCommandClassTransactionPayload transaction = node
+                .encapsulate(commandClass.getNotificationReportMessage(notificationType, event), channel.getEndpoint());
 
         List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>();
         response.add(transaction);

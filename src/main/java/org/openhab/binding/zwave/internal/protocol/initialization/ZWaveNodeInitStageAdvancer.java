@@ -26,7 +26,6 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveAssociation;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Generic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
-import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveMessagePayloadTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse;
@@ -126,7 +125,7 @@ public class ZWaveNodeInitStageAdvancer {
 
     private boolean initRunning = true;
 
-    ThingType thingType = null;
+    private ThingType thingType = null;
 
     private Date queryStageTimeStamp;
     private ZWaveNodeInitStage currentStage = ZWaveNodeInitStage.EMPTYNODE;
@@ -297,7 +296,7 @@ public class ZWaveNodeInitStageAdvancer {
     /**
      * Move all the messages in a collection to the queue
      *
-     * @param msgs
+     * @param transactions
      *            the message collection
      */
     private void processTransactions(Collection<ZWaveCommandClassTransactionPayload> transactions) {
@@ -315,20 +314,17 @@ public class ZWaveNodeInitStageAdvancer {
     /**
      * Move all the messages in a collection to the queue and encapsulates them
      *
-     * @param msgs
+     * @param transactions
      *            the message collection
-     * @param the
-     *            command class to encapsulate
      * @param endpointId
      *            the endpoint number
      */
-    private void processTransactions(Collection<ZWaveCommandClassTransactionPayload> transactions,
-            ZWaveCommandClass commandClass, int endpointId) {
+    private void processTransactions(Collection<ZWaveCommandClassTransactionPayload> transactions, int endpointId) {
         if (transactions == null) {
             return;
         }
         for (ZWaveCommandClassTransactionPayload transaction : transactions) {
-            processTransaction(node.encapsulate(transaction, commandClass, endpointId));
+            processTransaction(node.encapsulate(transaction, endpointId));
         }
     }
 
@@ -537,6 +533,9 @@ public class ZWaveNodeInitStageAdvancer {
 
         if (versionCommandClass == null) {
             logger.debug("NODE {}: Node advancer: APP_VERSION - VERSION not supported", node.getNodeId());
+
+            // Notify the higher layers that we know this device now.
+            setCurrentStage(ZWaveNodeInitStage.DISCOVERY_COMPLETE);
         } else {
             // Request the version report for this node
             logger.debug("NODE {}: Node advancer: APP_VERSION - send VersionMessage", node.getNodeId());
@@ -545,6 +544,9 @@ public class ZWaveNodeInitStageAdvancer {
             if (initRunning == false) {
                 return;
             }
+
+            // Notify the higher layers that we know this device now.
+            setCurrentStage(ZWaveNodeInitStage.DISCOVERY_COMPLETE);
 
             setCurrentStage(ZWaveNodeInitStage.VERSION);
             thingType = ZWaveConfigProvider.getThingType(node);
@@ -713,41 +715,31 @@ public class ZWaveNodeInitStageAdvancer {
         }
 
         setCurrentStage(ZWaveNodeInitStage.STATIC_VALUES);
-        // Loop through all classes looking for static initialisation
-        for (ZWaveCommandClass zwaveStaticClass : node.getCommandClasses(0)) {
-            logger.debug("NODE {}: Node advancer: STATIC_VALUES - checking {}", node.getNodeId(),
-                    zwaveStaticClass.getCommandClass());
-            if (zwaveStaticClass instanceof ZWaveCommandClassInitialization) {
-                logger.debug("NODE {}: Node advancer: STATIC_VALUES - found    {}", node.getNodeId(),
-                        zwaveStaticClass.getCommandClass());
-                ZWaveCommandClassInitialization zcci = (ZWaveCommandClassInitialization) zwaveStaticClass;
+        // Update all dynamic information from command classes
+        for (int endpointId = 0; endpointId < node.getEndpointCount(); endpointId++) {
+            for (ZWaveCommandClass zwaveStaticClass : node.getCommandClasses(endpointId)) {
+                if (endpointId == 0) {
+                    logger.debug("NODE {}: Node advancer: STATIC_VALUES - checking {}", node.getNodeId(),
+                            zwaveStaticClass.getCommandClass());
+                } else {
+                    logger.debug("NODE {}: Node advancer: STATIC_VALUES - checking {} for endpoint {}",
+                            node.getNodeId(), zwaveStaticClass.getCommandClass(), endpointId);
+                }
+                if (!(zwaveStaticClass instanceof ZWaveCommandClassInitialization)) {
+                    continue;
+                }
+
+                ZWaveCommandClassInitialization zdds = (ZWaveCommandClassInitialization) zwaveStaticClass;
                 int instances = zwaveStaticClass.getInstances();
-                logger.debug("NODE {}: Found {} instances of {}", node.getNodeId(), instances,
-                        zwaveStaticClass.getCommandClass());
+                logger.debug("NODE {}: Found {} instances of {} for endpoint {}", node.getNodeId(), instances,
+                        zwaveStaticClass.getCommandClass(), endpointId);
                 if (instances == 1) {
-                    processTransactions(zcci.initialize(true));
+                    processTransactions(zdds.initialize(true), endpointId);
                 } else {
                     for (int i = 1; i <= instances; i++) {
-                        processTransactions(zcci.initialize(true), zwaveStaticClass, i);
+                        processTransactions(zdds.initialize(true), i);
                         if (initRunning == false) {
                             return;
-                        }
-                    }
-                }
-            } else if (zwaveStaticClass instanceof ZWaveMultiInstanceCommandClass) {
-                for (int endpointNumber = 1; endpointNumber < node.getEndpointCount(); endpointNumber++) {
-                    ZWaveEndpoint endpoint = node.getEndpoint(endpointNumber);
-                    for (ZWaveCommandClass endpointCommandClass : endpoint.getCommandClasses()) {
-                        logger.debug("NODE {}: Node advancer: STATIC_VALUES - checking {} for endpoint {}",
-                                node.getNodeId(), endpointCommandClass.getCommandClass(), endpoint.getEndpointId());
-                        if (endpointCommandClass instanceof ZWaveCommandClassInitialization) {
-                            logger.debug("NODE {}: Node advancer: STATIC_VALUES - found    {}", node.getNodeId(),
-                                    endpointCommandClass.getCommandClass());
-                            ZWaveCommandClassInitialization zcci2 = (ZWaveCommandClassInitialization) endpointCommandClass;
-                            processTransactions(zcci2.initialize(true), endpointCommandClass, endpoint.getEndpointId());
-                            if (initRunning == false) {
-                                return;
-                            }
                         }
                     }
                 }
@@ -937,7 +929,7 @@ public class ZWaveNodeInitStageAdvancer {
         }
     }
 
-    void doDynamicStages() {
+    private void doDynamicStages() {
         setCurrentStage(ZWaveNodeInitStage.DYNAMIC_VALUES);
         // Update all dynamic information from command classes
         for (int endpointId = 0; endpointId < node.getEndpointCount(); endpointId++) {
@@ -955,13 +947,13 @@ public class ZWaveNodeInitStageAdvancer {
 
                 ZWaveCommandClassDynamicState zdds = (ZWaveCommandClassDynamicState) zwaveDynamicClass;
                 int instances = zwaveDynamicClass.getInstances();
-                logger.debug("NODE {}: Found {} instances of {}", node.getNodeId(), instances,
-                        zwaveDynamicClass.getCommandClass());
+                logger.debug("NODE {}: Found {} instances of {} for endpoint {}", node.getNodeId(), instances,
+                        zwaveDynamicClass.getCommandClass(), endpointId);
                 if (instances == 1) {
-                    processTransactions(zdds.getDynamicValues(true));
+                    processTransactions(zdds.getDynamicValues(true), endpointId);
                 } else {
                     for (int i = 1; i <= instances; i++) {
-                        processTransactions(zdds.getDynamicValues(true), zwaveDynamicClass, i);
+                        processTransactions(zdds.getDynamicValues(true), i);
                         if (initRunning == false) {
                             return;
                         }
@@ -973,7 +965,7 @@ public class ZWaveNodeInitStageAdvancer {
         logger.debug("NODE {}: Node advancer: Initialisation complete!", node.getNodeId());
     }
 
-    void doHealStages() {
+    private void doHealStages() {
         setCurrentStage(ZWaveNodeInitStage.HEAL_START);
         setCurrentStage(ZWaveNodeInitStage.UPDATE_NEIGHBORS);
         logger.debug("NODE {}: Node advancer: UPDATE_NEIGHBORS - updating neighbor list", node.getNodeId());

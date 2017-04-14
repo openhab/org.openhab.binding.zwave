@@ -62,7 +62,7 @@ public class ZWaveMeterTblMonitorConverter extends ZWaveCommandClassConverter {
 
         List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>();
         for (ZWaveCommandClassTransactionPayload msg : commandClass.getDynamicValues(true)) {
-            response.add(node.encapsulate(msg, commandClass, channel.getEndpoint()));
+            response.add(node.encapsulate(msg, channel.getEndpoint()));
         }
         return response;
     }

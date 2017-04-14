@@ -68,9 +68,9 @@ public class ZWaveThermostatSetpointConverter extends ZWaveCommandClassConverter
         ZWaveCommandClassTransactionPayload transaction;
         if (setpointType != null) {
             transaction = node.encapsulate(commandClass.getMessage(SetpointType.getSetpointType(setpointType)),
-                    commandClass, channel.getEndpoint());
+                    channel.getEndpoint());
         } else {
-            transaction = node.encapsulate(commandClass.getValueMessage(), commandClass, channel.getEndpoint());
+            transaction = node.encapsulate(commandClass.getValueMessage(), channel.getEndpoint());
         }
 
         List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>(1);
@@ -126,10 +126,9 @@ public class ZWaveThermostatSetpointConverter extends ZWaveCommandClassConverter
         BigDecimal value = ((DecimalType) command).toBigDecimal();
         if (setpointType != null) {
             serialMessage = node.encapsulate(commandClass.setMessage(scale, SetpointType.valueOf(setpointType), value),
-                    commandClass, channel.getEndpoint());
-        } else {
-            serialMessage = node.encapsulate(commandClass.setMessage(scale, value), commandClass,
                     channel.getEndpoint());
+        } else {
+            serialMessage = node.encapsulate(commandClass.setMessage(scale, value), channel.getEndpoint());
         }
 
         if (serialMessage == null) {
@@ -144,10 +143,10 @@ public class ZWaveThermostatSetpointConverter extends ZWaveCommandClassConverter
 
         // Request an update so that OH knows when the setpoint has changed.
         if (setpointType != null) {
-            serialMessage = node.encapsulate(commandClass.getMessage(SetpointType.valueOf(setpointType)), commandClass,
+            serialMessage = node.encapsulate(commandClass.getMessage(SetpointType.valueOf(setpointType)),
                     channel.getEndpoint());
         } else {
-            serialMessage = node.encapsulate(commandClass.getValueMessage(), commandClass, channel.getEndpoint());
+            serialMessage = node.encapsulate(commandClass.getValueMessage(), channel.getEndpoint());
         }
 
         if (serialMessage != null) {
