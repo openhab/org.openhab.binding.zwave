@@ -52,7 +52,7 @@ Remotely Controlled Ventilation<br /><h1>Overview</h1><p>NB, theese are excerpts
       <property name="manufacturerId">0276</property>
       <property name="manufacturerRef">0139:0001</property>
       <property name="dbReference">430</property>
-      <property name="commandClass:THERMOSTAT_FAN_MODE">getSupported=false</property>
+      <property name="commandClass:COMMAND_CLASS_THERMOSTAT_FAN_MODE">getSupported=false</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

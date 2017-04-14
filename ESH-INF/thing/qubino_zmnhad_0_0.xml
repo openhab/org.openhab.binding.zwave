@@ -71,22 +71,10 @@
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:2;type=POWER_MANAGEMENT</property>
         </properties>
       </channel>
-      <channel id="sensor_binary3" typeId="sensor_binary">
-        <label>Binary Sensor 3</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY:3</property>
-        </properties>
-      </channel>
       <channel id="sensor_temperature3" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:3,COMMAND_CLASS_BASIC:3;type=TEMPERATURE</property>
-        </properties>
-      </channel>
-      <channel id="alarm_power3" typeId="alarm_power">
-        <label>Alarm (power) 3</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:3;type=POWER_MANAGEMENT</property>
         </properties>
       </channel>
     </channels>

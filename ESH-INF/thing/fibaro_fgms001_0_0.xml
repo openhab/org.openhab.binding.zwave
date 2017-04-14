@@ -11,10 +11,10 @@
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Binary Sensor (Unknown)</label>
+      <channel id="alarm_tamper" typeId="alarm_tamper">
+        <label>Tamper Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY;type=UNKNOWN</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
         </properties>
       </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">
@@ -38,12 +38,6 @@
         <label>Motion Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_ALARM,COMMAND_CLASS_BASIC;type=BURGLAR, event=8</property>
-        </properties>
-      </channel>
-      <channel id="alarm_tamper" typeId="alarm_tamper">
-        <label>Tamper Alarm</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_ALARM,COMMAND_CLASS_BASIC;type=BURGLAR, event=3</property>
         </properties>
       </channel>
     </channels>

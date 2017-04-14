@@ -68,7 +68,7 @@
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0600:1000</property>
       <property name="dbReference">130</property>
-      <property name="commandClass:ALARM">ccAdd</property>
+      <property name="commandClass:COMMAND_CLASS_ALARM">ccAdd</property>
       <property name="defaultAssociations">3</property>
     </properties>
 

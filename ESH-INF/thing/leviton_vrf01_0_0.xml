@@ -33,18 +33,18 @@
       <property name="manufacturerId">001D</property>
       <property name="manufacturerRef">1001:0209,1001:0334</property>
       <property name="dbReference">485</property>
-      <property name="commandClass:NO_OPERATION">setVersion=1</property>
-      <property name="commandClass:BASIC">setVersion=1</property>
-      <property name="commandClass:SWITCH_MULTILEVEL">setVersion=1</property>
-      <property name="commandClass:SWITCH_ALL">setVersion=1</property>
-      <property name="commandClass:SCENE_ACTIVATION">setVersion=1</property>
-      <property name="commandClass:SCENE_ACTUATOR_CONF">setVersion=1</property>
-      <property name="commandClass:MANUFACTURER_SPECIFIC">setVersion=1</property>
-      <property name="commandClass:POWERLEVEL">setVersion=1</property>
-      <property name="commandClass:NODE_NAMING">setVersion=1</property>
-      <property name="commandClass:ASSOCIATION">setVersion=1</property>
-      <property name="commandClass:VERSION">setVersion=1</property>
-      <property name="commandClass:MANUFACTURER_PROPRIETARY">setVersion=0</property>
+      <property name="commandClass:COMMAND_CLASS_NO_OPERATION">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_BASIC">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_SWITCH_MULTILEVEL">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_SWITCH_ALL">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_SCENE_ACTIVATION">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_SCENE_ACTUATOR_CONF">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_MANUFACTURER_SPECIFIC">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_POWERLEVEL">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_NODE_NAMING">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_ASSOCIATION">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_VERSION">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_MANUFACTURER_PROPRIETARY">setVersion=0</property>
     </properties>
 
   </thing-type>

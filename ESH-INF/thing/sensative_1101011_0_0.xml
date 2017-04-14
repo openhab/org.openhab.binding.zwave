@@ -39,7 +39,7 @@ Strips-MaZw<br /><h2>Inclusion Information</h2><ul><li>Set your controller in in
       <property name="manufacturerId">019A</property>
       <property name="manufacturerRef">0003:0003</property>
       <property name="dbReference">251</property>
-      <property name="commandClass:SENSOR_BINARY">getSupported=false</property>
+      <property name="commandClass:COMMAND_CLASS_SENSOR_BINARY">getSupported=false</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
