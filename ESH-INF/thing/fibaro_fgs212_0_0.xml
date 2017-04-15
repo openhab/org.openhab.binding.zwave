@@ -63,22 +63,24 @@
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
-        <label>3: Enable/Disable OFF-delay</label>
-        <description>Activate/Deactivate Automatic turning off relay after set time</description>
+        <label>3: Override OFF-delay</label>
+        <description><![CDATA[
+Forced auto off period<br /><h1>Overview</h1><p>If Parameter 4 states an auto off period, this parameter enable the possibility to turn off the relay with a button push. Default value 0 disallow turn off with a button push during the auto off interval.</p>
+        ]]></description>
         <default>0</default>
         <options>
-          <option value="0">Auto OFF disabled for both relays</option>
-          <option value="1">Auto OFF active only for relay 1</option>
+          <option value="0">Turn off with push button disabled in auto off interval</option>
+          <option value="1">Turn off with push button enabled in auto off interval</option>
         </options>
       </parameter>
 
-      <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="0" max="255">
-        <label>4: Relay 1: OFF-delay time (10ms steps)</label>
+      <parameter name="config_4_2" type="integer" groupName="configuration"
+                 min="0" max="65535">
+        <label>4: Relay 1: OFF-delay time (100ms steps)</label>
         <description><![CDATA[
-Automatic turning off relay 1 after set time ...<br /><h1>Overview</h1><p>in 10ms increments (default: 200ms)</p>
+Automatic turning off relay 1 after set time ...<br /><h1>Overview</h1><p>Default: 0 (Auto off disabled). In 100ms increments.</p>
         ]]></description>
-        <default>20</default>
+        <default>0</default>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
