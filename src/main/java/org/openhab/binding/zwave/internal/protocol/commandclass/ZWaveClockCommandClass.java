@@ -8,27 +8,22 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.openhab.binding.zwave.internal.protocol.*;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.ByteArrayOutputStream;
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
-
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveController;
-import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
-import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
-import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 /**
  * Handles the clock command class.
@@ -42,7 +37,7 @@ public class ZWaveClockCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveClockCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveClockCommandClass.class);
 
     private static final int CLOCK_SET = 4;
     private static final int CLOCK_GET = 5;
@@ -113,6 +108,27 @@ public class ZWaveClockCommandClass extends ZWaveCommandClass
         return result;
     }
 
+    public SerialMessage getReportMessage(Calendar cal) {
+        logger.debug("NODE {}: Creating new message for command CLOCK_REPORT", getNode().getNodeId());
+
+        int day = cal.get(Calendar.DAY_OF_WEEK) == 1 ? 7 : cal.get(Calendar.DAY_OF_WEEK) - 1;
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        int minute = cal.get(Calendar.MINUTE);
+
+        SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
+                SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.RealTime);
+
+        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
+        outputData.write(getNode().getNodeId());
+        outputData.write(4);
+        outputData.write(getCommandClass().getKey());
+        outputData.write(CLOCK_REPORT);
+        outputData.write((day << 5) | hour);
+        outputData.write(minute);
+        result.setMessagePayload(outputData.toByteArray());
+        return result;
+    }
+
     /**
      * {@inheritDoc}
      *
@@ -141,6 +157,11 @@ public class ZWaveClockCommandClass extends ZWaveCommandClass
                 ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
                         getCommandClass(), nodeTime);
                 getController().notifyEventListeners(zEvent);
+                break;
+            case CLOCK_GET:
+                Calendar calendar = Calendar.getInstance();
+                logger.debug("NODE {}: Answering with {}", getNode().getNodeId(), calendar);
+                getController().enqueue(getReportMessage(calendar));
                 break;
             default:
                 logger.warn(String.format("NODE %d: Unsupported Command %d for command class %s (0x%02X).",

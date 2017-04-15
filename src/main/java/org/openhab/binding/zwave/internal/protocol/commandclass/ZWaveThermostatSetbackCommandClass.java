@@ -29,7 +29,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveThermostatSetbackCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveThermostatSetbackCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveThermostatSetbackCommandClass.class);
 
     /**
      * Creates a new instance of the ZWaveThermostatSetbackCommandClass class.

@@ -29,7 +29,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class AddNodeMessageClass extends ZWaveCommandProcessor {
-    private static final Logger logger = LoggerFactory.getLogger(AddNodeMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(AddNodeMessageClass.class);
 
     private final int ADD_NODE_ANY = 1;
     private final int ADD_NODE_CONTROLLER = 2;

@@ -29,7 +29,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveBasicWindowCoveringCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveBasicWindowCoveringCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveBasicWindowCoveringCommandClass.class);
 
     /**
      * Creates a new instance of the ZWaveBasicWindowCoveringCommandClass class.

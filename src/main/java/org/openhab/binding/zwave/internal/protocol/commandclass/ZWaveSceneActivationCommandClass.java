@@ -9,10 +9,10 @@
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +30,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveSceneActivationCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveBasicCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveBasicCommandClass.class);
 
     private static final int SCENEACTIVATION_SET = 0x01;
 
@@ -55,7 +55,7 @@ public class ZWaveSceneActivationCommandClass extends ZWaveCommandClass {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @throws ZWaveSerialMessageException
      */
     @Override

@@ -43,7 +43,7 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
         DOOR_LOCK_TIMEOUT
     }
 
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveDoorLockCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveDoorLockCommandClass.class);
 
     static final int DOOR_LOCK_SET = 1;
     /**
@@ -141,10 +141,8 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
                 int statusTimeoutSeconds = serialMessage.getMessagePayloadByte(offset + 5);
 
                 DoorLockStateType doorLockState = DoorLockStateType.getDoorLockStateType(lockState);
-                logger.info(String.format(
-                        "NODE %d: Door-Lock state report - lockState=%s, "
-                                + "handlesMode=0x%02x, doorCondition=0x%02x, timeoutMinutes=0x%02x, "
-                                + "timeoutSeconds=0x%02x",
+                logger.info(String.format("NODE %d: Door-Lock state report - lockState=%s, "
+                        + "handlesMode=0x%02x, doorCondition=0x%02x, timeoutMinutes=0x%02x, " + "timeoutSeconds=0x%02x",
                         getNode().getNodeId(), doorLockState.label, handlesMode, doorCondition, statusTimeoutMinutes,
                         statusTimeoutSeconds));
                 ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,

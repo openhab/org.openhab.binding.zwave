@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class GetRoutingInfoMessageClass extends ZWaveCommandProcessor {
-    private static final Logger logger = LoggerFactory.getLogger(GetRoutingInfoMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(GetRoutingInfoMessageClass.class);
 
     private static final int NODE_BYTES = 29; // 29 bytes = 232 bits, one for each supported node by Z-Wave;
 

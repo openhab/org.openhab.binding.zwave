@@ -1398,6 +1398,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         update = false;
         for (String property : config.getProperties().keySet()) {
+            logger.debug("NODE {}: Property to update: {}, {}, {}", nodeId, property, config.get(property),
+                    originalConfig.get(property));
             if (config.get(property).equals(originalConfig.get(property)) == false) {
                 update = true;
                 break;
@@ -1405,7 +1407,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
 
         if (update == true) {
-            logger.debug("NODE {}: Configuration synchronised", nodeId);
+            logger.debug("NODE {}: Properties synchronised", nodeId);
             updateConfiguration(config);
         }
     }

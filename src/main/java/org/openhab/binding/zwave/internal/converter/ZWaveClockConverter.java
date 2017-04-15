@@ -33,7 +33,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ZWaveClockConverter extends ZWaveCommandClassConverter {
 
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveClockConverter.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveClockConverter.class);
 
     private Calendar lastClockUpdate = Calendar.getInstance();
 
@@ -85,7 +85,7 @@ public class ZWaveClockConverter extends ZWaveCommandClassConverter {
 
                 // If the clock is outside the offset, then update
                 if (clockOffset > offsetAllowed
-                		&& lastClockUpdate.getTimeInMillis() < (Calendar.getInstance().getTimeInMillis() - 30000)) {
+                        && lastClockUpdate.getTimeInMillis() < (Calendar.getInstance().getTimeInMillis() - 30000)) {
                     logger.debug("NODE {}: Clock was {} seconds off. Time will be updated.", event.getNodeId(),
                             clockOffset);
 
@@ -94,7 +94,7 @@ public class ZWaveClockConverter extends ZWaveCommandClassConverter {
                             .resolveCommandClass(ZWaveCommandClass.CommandClass.CLOCK, channel.getEndpoint());
 
                     SerialMessage serialMessage = node.encapsulate(commandClass.getSetMessage(Calendar.getInstance()),
-                    		commandClass, channel.getEndpoint());
+                            commandClass, channel.getEndpoint());
                     if (serialMessage == null) {
                         logger.warn("Generating message failed for command class = {}, node = {}, endpoint = {}",
                                 commandClass.getCommandClass().getLabel(), node.getNodeId(), channel.getEndpoint());

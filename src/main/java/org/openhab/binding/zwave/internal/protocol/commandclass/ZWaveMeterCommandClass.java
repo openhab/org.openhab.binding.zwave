@@ -46,7 +46,7 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveMeterCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveMeterCommandClass.class);
     private static final int MAX_SUPPORTED_VERSION = 3;
 
     // Version 1
