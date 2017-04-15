@@ -77,9 +77,9 @@ public class ZWaveMeterConverter extends ZWaveCommandClassConverter {
 
         if (meterScale != null) {
             serialMessage = node.encapsulate(commandClass.getMessage(MeterScale.getMeterScale(meterScale)),
-                    commandClass, channel.getEndpoint());
+                    channel.getEndpoint());
         } else {
-            serialMessage = node.encapsulate(commandClass.getValueMessage(), commandClass, channel.getEndpoint());
+            serialMessage = node.encapsulate(commandClass.getValueMessage(), channel.getEndpoint());
         }
 
         List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>(1);
@@ -141,7 +141,7 @@ public class ZWaveMeterConverter extends ZWaveCommandClassConverter {
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_METER, channel.getEndpoint());
 
         // Get the reset message - will return null if not supported
-        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(commandClass.getResetMessage(), commandClass,
+        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(commandClass.getResetMessage(),
                 channel.getEndpoint());
 
         if (transaction == null) {
@@ -154,7 +154,7 @@ public class ZWaveMeterConverter extends ZWaveCommandClassConverter {
 
         // And poll the device
         for (ZWaveCommandClassTransactionPayload serialGetMessage : commandClass.getDynamicValues(true)) {
-            messages.add(node.encapsulate(serialGetMessage, commandClass, channel.getEndpoint()));
+            messages.add(node.encapsulate(serialGetMessage, channel.getEndpoint()));
         }
         return messages;
     }

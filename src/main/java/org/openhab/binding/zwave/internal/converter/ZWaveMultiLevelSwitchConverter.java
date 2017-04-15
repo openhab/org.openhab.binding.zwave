@@ -60,7 +60,7 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
 
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
                 commandClass.getCommandClass(), channel.getEndpoint());
-        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(commandClass.getValueMessage(), commandClass,
+        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(commandClass.getValueMessage(),
                 channel.getEndpoint());
         List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>(1);
         response.add(transaction);
@@ -195,7 +195,7 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
         }
 
         // encapsulate the message in case this is a multi-instance node
-        transaction = node.encapsulate(transaction, commandClass, channel.getEndpoint());
+        transaction = node.encapsulate(transaction, channel.getEndpoint());
 
         if (transaction == null) {
             logger.warn("Generating message failed for command class = {}, node = {}, endpoint = {}",
@@ -211,7 +211,7 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
         // Don't poll immediately since some devices return the original value, and some the new value.
         // This conflicts with OH that will move the slider immediately.
         if (command instanceof StopMoveType && command == StopMoveType.STOP) {
-            messages.add(node.encapsulate(commandClass.getValueMessage(), commandClass, channel.getEndpoint()));
+            messages.add(node.encapsulate(commandClass.getValueMessage(), channel.getEndpoint()));
         }
         return messages;
     }

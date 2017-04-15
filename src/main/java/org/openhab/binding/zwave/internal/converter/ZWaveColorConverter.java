@@ -66,7 +66,7 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
         List<ZWaveCommandClassTransactionPayload> messages = new ArrayList<ZWaveCommandClassTransactionPayload>();
         Collection<ZWaveCommandClassTransactionPayload> transactions = commandClass.getColor();
         for (ZWaveCommandClassTransactionPayload msg : transactions) {
-            messages.add(node.encapsulate(msg, commandClass, channel.getEndpoint()));
+            messages.add(node.encapsulate(msg, channel.getEndpoint()));
         }
         return messages;
     }
@@ -179,13 +179,13 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
 
         List<ZWaveCommandClassTransactionPayload> messages = new ArrayList<ZWaveCommandClassTransactionPayload>();
         for (ZWaveCommandClassTransactionPayload msg : rawMessages) {
-            messages.add(node.encapsulate(msg, commandClass, channel.getEndpoint()));
+            messages.add(node.encapsulate(msg, channel.getEndpoint()));
         }
 
         // Add a poll to update the color
         rawMessages = commandClass.getColor();
         for (ZWaveCommandClassTransactionPayload msg : rawMessages) {
-            messages.add(node.encapsulate(msg, commandClass, channel.getEndpoint()));
+            messages.add(node.encapsulate(msg, channel.getEndpoint()));
         }
         return messages;
     }

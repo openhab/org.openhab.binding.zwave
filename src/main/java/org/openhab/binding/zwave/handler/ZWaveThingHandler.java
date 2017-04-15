@@ -534,10 +534,13 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         validateConfigurationParameters(configurationParameters);
 
         if (controllerHandler == null) {
+            logger.debug("NODE {}: Configuration update not processed as no controller found", nodeId);
             return;
         }
+
         ZWaveNode node = controllerHandler.getNode(nodeId);
         if (node == null) {
+            logger.debug("NODE {}: Configuration update not processed as nonode not found", nodeId);
             return;
         }
 

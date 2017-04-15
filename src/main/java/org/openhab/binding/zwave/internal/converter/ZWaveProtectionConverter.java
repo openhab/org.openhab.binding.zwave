@@ -78,7 +78,7 @@ public class ZWaveProtectionConverter extends ZWaveCommandClassConverter {
                 int value = ((DecimalType) command).intValue();
                 if (value >= 0 && value < LocalProtectionType.values().length) {
                     serialMessage = node.encapsulate(
-                            commandClass.setValueMessage(LocalProtectionType.values()[value], null), commandClass,
+                            commandClass.setValueMessage(LocalProtectionType.values()[value], null),
                             channel.getEndpoint());
                 }
 
@@ -89,7 +89,7 @@ public class ZWaveProtectionConverter extends ZWaveCommandClassConverter {
                 int value = ((DecimalType) command).intValue();
                 if (value >= 0 && value < RfProtectionType.values().length) {
                     serialMessage = node.encapsulate(
-                            commandClass.setValueMessage(null, RfProtectionType.values()[value]), commandClass,
+                            commandClass.setValueMessage(null, RfProtectionType.values()[value]),
                             channel.getEndpoint());
                 }
             }
@@ -106,7 +106,7 @@ public class ZWaveProtectionConverter extends ZWaveCommandClassConverter {
         messages.add(serialMessage);
 
         // Request an update so that OH knows when the protection settings has changed.
-        serialMessage = node.encapsulate(commandClass.getValueMessage(), commandClass, channel.getEndpoint());
+        serialMessage = node.encapsulate(commandClass.getValueMessage(), channel.getEndpoint());
 
         if (serialMessage != null) {
             messages.add(serialMessage);

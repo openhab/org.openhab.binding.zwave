@@ -146,6 +146,7 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
                 // notification is sent shortly after the NIF.
                 // For these devices, if we treat the NIF as a wakeup, and start transmitting messages before the real
                 // wakeup, then these messages will time out.
+                // TODO: Prevent this running multiple times
                 new Thread() {
                     @Override
                     public void run() {

@@ -58,7 +58,7 @@ public class ZWaveTimeParametersConverter extends ZWaveCommandClassConverter {
 
         logger.debug("NODE {}: Generating poll message for {} endpoint {}", node.getNodeId(),
                 commandClass.getCommandClass(), channel.getEndpoint());
-        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(commandClass.getValueMessage(), commandClass,
+        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(commandClass.getValueMessage(),
                 channel.getEndpoint());
         List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>(1);
         response.add(transaction);
@@ -93,8 +93,8 @@ public class ZWaveTimeParametersConverter extends ZWaveCommandClassConverter {
                             .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_TIME_PARAMETERS,
                                     channel.getEndpoint());
 
-                    ZWaveCommandClassTransactionPayload serialMessage = node.encapsulate(
-                            commandClass.getSetMessage(Calendar.getInstance()), commandClass, channel.getEndpoint());
+                    ZWaveCommandClassTransactionPayload serialMessage = node
+                            .encapsulate(commandClass.getSetMessage(Calendar.getInstance()), channel.getEndpoint());
                     if (serialMessage == null) {
                         logger.warn("Generating message failed for command class = {}, node = {}, endpoint = {}",
                                 commandClass.getCommandClass(), node.getNodeId(), channel.getEndpoint());
@@ -108,8 +108,7 @@ public class ZWaveTimeParametersConverter extends ZWaveCommandClassConverter {
                     lastClockUpdate = new Date();
 
                     // And request a read-back
-                    serialMessage = node.encapsulate(commandClass.getValueMessage(), commandClass,
-                            channel.getEndpoint());
+                    serialMessage = node.encapsulate(commandClass.getValueMessage(), channel.getEndpoint());
                     if (serialMessage == null) {
                         logger.warn("Generating message failed for command class = {}, node = {}, endpoint = {}",
                                 commandClass.getCommandClass(), node.getNodeId(), channel.getEndpoint());
@@ -139,7 +138,7 @@ public class ZWaveTimeParametersConverter extends ZWaveCommandClassConverter {
                 ZWaveCommandClass.CommandClass.COMMAND_CLASS_TIME_PARAMETERS, channel.getEndpoint());
 
         ZWaveCommandClassTransactionPayload serialMessage = node
-                .encapsulate(commandClass.getSetMessage(Calendar.getInstance()), commandClass, channel.getEndpoint());
+                .encapsulate(commandClass.getSetMessage(Calendar.getInstance()), channel.getEndpoint());
         if (serialMessage == null) {
             logger.warn("Generating message failed for command class = {}, node = {}, endpoint = {}",
                     commandClass.getCommandClass(), node.getNodeId(), channel.getEndpoint());

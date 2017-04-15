@@ -1026,7 +1026,7 @@ public class ZWaveNode {
      * @return SerialMessage on success, null on failure.
      */
     public ZWaveCommandClassTransactionPayload encapsulate(ZWaveCommandClassTransactionPayload transaction,
-            ZWaveCommandClass commandClass, int endpointId) {
+            int endpointId) {
         ZWaveMultiInstanceCommandClass multiInstanceCommandClass;
         logger.debug("NODE {}: Encapsulating message, endpoint {}", getNodeId(), endpointId);
 
@@ -1292,11 +1292,11 @@ public class ZWaveNode {
     }
 
     public void sendMessage(ZWaveCommandClassTransactionPayload payload) {
-        controller.sendData(encapsulate(payload, null, 0));
+        controller.sendData(encapsulate(payload, 0));
     }
 
     public ZWaveTransactionResponse sendTransaction(ZWaveCommandClassTransactionPayload payload, int endpoint) {
-        return controller.sendTransaction(encapsulate(payload, null, endpoint));
+        return controller.sendTransaction(encapsulate(payload, endpoint));
     }
 
     public long getInclusionTimer() {
@@ -1329,11 +1329,9 @@ public class ZWaveNode {
             timer = new Timer();
         }
 
-        // We're awake
-        this.awake = awake;
-
         // Start the timer
-        if (awake == true) {
+        if (!this.awake) {
+            // We're awake
             logger.debug("NODE {}: Is awake with {} messages in the queue", getNodeId(),
                     controller.getSendQueueLength(getNodeId()));
 
@@ -1342,9 +1340,10 @@ public class ZWaveNode {
             // Notify application
             ZWaveEvent event = new ZWaveNodeStatusEvent(getNodeId(), ZWaveNodeState.AWAKE);
             controller.notifyEventListeners(event);
-        } else {
+        } else if (!awake) {
             resetSleepTimer();
         }
+        this.awake = awake;
     }
 
     /**
@@ -1390,9 +1389,9 @@ public class ZWaveNode {
                 return;
             }
 
-            logger.debug("NODE {}: WakeupTimerTask {} Messages waiting", getNodeId(),
-                    controller.getSendQueueLength(getNodeId()));
-            if (controller.getSendQueueLength(getNodeId()) != 0) {
+            logger.debug("NODE {}: WakeupTimerTask {} Messages waiting, state {}", getNodeId(),
+                    controller.getSendQueueLength(getNodeId()), getNodeInitStage());
+            if (!isInitializationComplete() || controller.getSendQueueLength(getNodeId()) != 0) {
                 triggered = false;
                 return;
             }

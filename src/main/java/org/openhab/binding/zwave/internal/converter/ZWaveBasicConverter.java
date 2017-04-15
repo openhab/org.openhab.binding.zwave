@@ -59,7 +59,7 @@ public class ZWaveBasicConverter extends ZWaveCommandClassConverter {
 
         logger.debug("NODE {}: Generating poll message for {} endpoint {}", node.getNodeId(),
                 commandClass.getCommandClass(), channel.getEndpoint());
-        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(commandClass.getValueMessage(), commandClass,
+        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(commandClass.getValueMessage(),
                 channel.getEndpoint());
         List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>(1);
         response.add(transaction);
@@ -119,7 +119,7 @@ public class ZWaveBasicConverter extends ZWaveCommandClassConverter {
             return null;
         }
 
-        ZWaveCommandClassTransactionPayload serialMessage = node.encapsulate(commandClass.setValueMessage(value), commandClass,
+        ZWaveCommandClassTransactionPayload serialMessage = node.encapsulate(commandClass.setValueMessage(value),
                 channel.getEndpoint());
 
         if (serialMessage == null) {

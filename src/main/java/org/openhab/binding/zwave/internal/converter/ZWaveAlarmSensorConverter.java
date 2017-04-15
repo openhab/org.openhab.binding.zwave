@@ -70,7 +70,7 @@ public class ZWaveAlarmSensorConverter extends ZWaveCommandClassConverter {
             return null;
         }
 
-        node.encapsulate(transaction, commandClass, channel.getEndpoint());
+        node.encapsulate(transaction, channel.getEndpoint());
 
         List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>();
         response.add(transaction);

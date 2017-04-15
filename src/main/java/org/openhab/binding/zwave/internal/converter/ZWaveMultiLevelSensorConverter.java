@@ -63,10 +63,10 @@ public class ZWaveMultiLevelSensorConverter extends ZWaveCommandClassConverter {
 
         ZWaveCommandClassTransactionPayload transaction;
         if (sensorType != null) {
-            transaction = node.encapsulate(commandClass.getMessage(SensorType.valueOf(sensorType)), commandClass,
+            transaction = node.encapsulate(commandClass.getMessage(SensorType.valueOf(sensorType)),
                     channel.getEndpoint());
         } else {
-            transaction = node.encapsulate(commandClass.getValueMessage(), commandClass, channel.getEndpoint());
+            transaction = node.encapsulate(commandClass.getValueMessage(), channel.getEndpoint());
         }
 
         List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>(1);

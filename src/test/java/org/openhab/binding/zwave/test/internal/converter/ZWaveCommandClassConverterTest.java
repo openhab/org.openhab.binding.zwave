@@ -26,8 +26,8 @@ public class ZWaveCommandClassConverterTest {
         final Map<Integer, ZWaveCommandClass> classes = new HashMap<Integer, ZWaveCommandClass>();
         final ZWaveNode node = Mockito.mock(ZWaveNode.class);
         final ZWaveController controller = Mockito.mock(ZWaveController.class);
-        Mockito.when(node.encapsulate(Matchers.any(ZWaveCommandClassTransactionPayload.class),
-                Matchers.any(ZWaveCommandClass.class), Matchers.anyInt())).then(AdditionalAnswers.returnsFirstArg());
+        Mockito.when(node.encapsulate(Matchers.any(ZWaveCommandClassTransactionPayload.class), Matchers.anyInt()))
+                .then(AdditionalAnswers.returnsFirstArg());
 
         Mockito.when(node.resolveCommandClass(Matchers.any(CommandClass.class), Matchers.anyInt()))
                 .thenAnswer(new Answer<ZWaveCommandClass>() {

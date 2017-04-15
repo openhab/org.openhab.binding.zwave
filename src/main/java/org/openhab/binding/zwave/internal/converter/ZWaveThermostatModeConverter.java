@@ -57,7 +57,7 @@ public class ZWaveThermostatModeConverter extends ZWaveCommandClassConverter {
 
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
                 commandClass.getCommandClass(), channel.getEndpoint());
-        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(commandClass.getValueMessage(), commandClass,
+        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(commandClass.getValueMessage(),
                 channel.getEndpoint());
         List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>(1);
         response.add(transaction);
@@ -78,7 +78,7 @@ public class ZWaveThermostatModeConverter extends ZWaveCommandClassConverter {
             value = command == OnOffType.ON ? 0xff : 0x00;
         }
         ZWaveCommandClassTransactionPayload serialMessage = node.encapsulate(commandClass.setValueMessage(value),
-                commandClass, channel.getEndpoint());
+                channel.getEndpoint());
 
         if (serialMessage == null) {
             logger.warn("NODE {}: Generating message failed for command class = {}, endpoint = {}", node.getNodeId(),
