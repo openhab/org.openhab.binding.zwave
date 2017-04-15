@@ -8,7 +8,7 @@
   <thing-type id="ge_zw4002_00_000" listed="false">
     <label>ZW4002 In-Wall Smart Fan Control</label>
     <description><![CDATA[
-In-Wall Smart Fan Control<br /><h1>Overview</h1><p><strong>Basic Operation</strong></p> <p>Note: Before starting, fan must be set to ‘HIGH’ position using pull chain. The connected fan can then be turned ON/OFF and adjust speed levels in two ways:</p> <ol><li>Manually from the front panel rocker of the In-wall Fan Control</li> <li>Remotely with a Z-Wave controller</li> </ol><p><strong>Manual Control</strong></p> <p>To turn the connected fan ON: Press and release the top of the rocker. Note: Fan will return to last speed setting of Fan Control. Default setting – HIGH.</p> <p>To turn the fan OFF: Press and release the bottom of the rocker.</p> <p><strong>Adjust fan speed</strong></p> <p>To decrease fan speed: Press and hold lower rocker.</p> <p>To increase fan speed: Press and hold upper rocker.</p> <p>The LED indicator confirms fan speed settings by flashing patterns</p> <ul><li>LOW – LED will blink every 2 seconds for 10 seconds</li> <li>MEDIUM – LED will blink every second for 10 seconds</li> <li>HIGH – LED will blink every half second for 10 seconds</li> </ul><br /><h2>Inclusion Information</h2><p>Once the controller is ready to include your device, press and release the top or bottom of the smart fan control switch (rocker) to include it in the network.</p>
+In-Wall Smart Fan Control<br /><h1>Overview</h1><p><strong>Basic Operation</strong></p> <p>Note: Before starting, fan must be set to ‘HIGH’ position using pull chain. The connected fan can then be turned ON/OFF and adjust speed levels in two ways:</p> <ol><li>Manually from the front panel rocker of the In-wall Fan Control</li> <li>Remotely with a Z-Wave controller</li> </ol><p><strong>Manual Control</strong></p> <p>To turn the connected fan ON: Press and release the top of the rocker. Note: Fan will return to last speed setting of Fan Control. Default setting – HIGH.</p> <p>To turn the fan OFF: Press and release the bottom of the rocker.</p> <p><strong>Adjust fan speed</strong></p> <p>To decrease fan speed: Press and hold lower rocker.</p> <p>To increase fan speed: Press and hold upper rocker.</p> <p>The LED indicator confirms fan speed settings by flashing patterns</p> <ul><li>LOW – LED will blink every 2 seconds for 10 seconds</li> <li>MEDIUM – LED will blink every second for 10 seconds</li> <li>HIGH – LED will blink every half second for 10 seconds</li> </ul><br /><h2>Inclusion Information</h2><p>Once the controller is ready to include your device, press and release the top or bottom of the smart fan control switch (rocker) to include it in the network.</p> <br /><h2>Exclusion Information</h2><p>Tap up or down</p> <br /><h2>Wakeup Information</h2><p>Tap up or down</p>
     ]]></description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -27,8 +27,9 @@ In-Wall Smart Fan Control<br /><h1>Overview</h1><p><strong>Basic Operation</stro
       <property name="vendor">Jasco Products</property>
       <property name="modelId">ZW4002</property>
       <property name="manufacturerId">0063</property>
-      <property name="manufacturerRef">4944:3034</property>
+      <property name="manufacturerRef">4944:3034,4944:3131</property>
       <property name="dbReference">281</property>
+      <property name="defaultAssociations">1,2,3</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -63,6 +64,30 @@ Invert the ON/OFF Switch State<br /><h1>Overview</h1><p>Setting this parameter t
           <option value="0">No</option>
           <option value="1">Yes</option>
         </options>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <description>Z-Wave Plus Lifeline</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Controlled with local load</label>
+        <description>Supports Basic Set and is controlled with the local load</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Double Tap</label>
+        <description>Supports Basic Set and is controlled by double pressing the On or Off button</description>
+        <multipleLimit>5</multipleLimit>
       </parameter>
 
     </config-description>

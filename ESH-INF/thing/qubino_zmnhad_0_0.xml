@@ -14,7 +14,7 @@
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
         </properties>
       </channel>
       <channel id="sensor_binary" typeId="sensor_binary">
@@ -44,7 +44,7 @@
       <channel id="switch_binary1" typeId="switch_binary">
         <label>Switch 1</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY:1</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY:1,BASIC:1</property>
         </properties>
       </channel>
       <channel id="meter_watts1" typeId="meter_watts">
@@ -71,16 +71,10 @@
           <property name="binding:*:OnOffType">ALARM:2;type=POWER_MANAGEMENT</property>
         </properties>
       </channel>
-      <channel id="sensor_binary3" typeId="sensor_binary">
-        <label>Binary Sensor 3</label>
+      <channel id="sensor_temperature3" typeId="sensor_temperature">
+        <label>Sensor (temperature)</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY:3</property>
-        </properties>
-      </channel>
-      <channel id="alarm_power3" typeId="alarm_power">
-        <label>Alarm (power) 3</label>
-        <properties>
-          <property name="binding:*:OnOffType">ALARM:3;type=POWER_MANAGEMENT</property>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:3,BASIC:3;type=TEMPERATURE</property>
         </properties>
       </channel>
     </channels>

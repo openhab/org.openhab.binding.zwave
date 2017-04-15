@@ -32,6 +32,14 @@ Smart Dimmer 6<br /><h1>Overview</h1><p>Turn the primary controller of Z-Wave ne
           <property name="binding:*:DecimalType">METER;type=E_W</property>
         </properties>
       </channel>
+      <channel id="color_color" typeId="color_color">
+        <label>Night mode color</label>
+        <properties>
+          <property name="binding:*:HSBType">COLOR;</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC;</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL;</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->

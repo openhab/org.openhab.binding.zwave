@@ -11,27 +11,42 @@
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Binary Sensor</label>
+      <channel id="alarm_motion" typeId="alarm_motion">
+        <label>Motion Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY,BASIC</property>
-        </properties>
-      </channel>
-      <channel id="sensor_temperature" typeId="sensor_temperature">
-        <label>Sensor (temperature)</label>
-        <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
-        </properties>
-      </channel>
-      <channel id="sensor_luminance" typeId="sensor_luminance">
-        <label>Sensor (luminance)</label>
-        <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=LUMINANCE</property>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL,BASIC</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
         <properties>
           <property name="binding:*:PercentType">BATTERY</property>
+        </properties>
+      </channel>
+      <channel id="battery-level1" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">BATTERY:1</property>
+        </properties>
+      </channel>
+      <channel id="sensor_luminance2" typeId="sensor_luminance">
+        <label>Illumination Sensor</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:2</property>
+        </properties>
+      </channel>
+      <channel id="battery-level2" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">BATTERY:2</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature3" typeId="sensor_temperature">
+        <label>Temperature Sensor</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:3</property>
+        </properties>
+      </channel>
+      <channel id="battery-level3" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">BATTERY:3</property>
         </properties>
       </channel>
     </channels>
@@ -43,8 +58,30 @@
       <property name="manufacturerId">001E</property>
       <property name="manufacturerRef">0002:0002,0002:0001</property>
       <property name="dbReference">140</property>
+      <property name="commandClass:MULTI_INSTANCE:1">ccRemove</property>
+      <property name="commandClass:CONFIGURATION:1">ccRemove</property>
+      <property name="commandClass:MANUFACTURER_SPECIFIC:1">ccRemove</property>
+      <property name="commandClass:NODE_NAMING:1">ccRemove</property>
+      <property name="commandClass:BATTERY:1">ccRemove</property>
       <property name="commandClass:WAKE_UP:1">ccRemove</property>
+      <property name="commandClass:ASSOCIATION:1">ccRemove</property>
+      <property name="commandClass:VERSION:1">ccRemove</property>
+      <property name="commandClass:MULTI_INSTANCE:2">ccRemove</property>
+      <property name="commandClass:CONFIGURATION:2">ccRemove</property>
+      <property name="commandClass:MANUFACTURER_SPECIFIC:2">ccRemove</property>
+      <property name="commandClass:NODE_NAMING:2">ccRemove</property>
+      <property name="commandClass:BATTERY:2">ccRemove</property>
       <property name="commandClass:WAKE_UP:2">ccRemove</property>
+      <property name="commandClass:ASSOCIATION:2">ccRemove</property>
+      <property name="commandClass:VERSION:2">ccRemove</property>
+      <property name="commandClass:MULTI_INSTANCE:3">ccRemove</property>
+      <property name="commandClass:CONFIGURATION:3">ccRemove</property>
+      <property name="commandClass:MANUFACTURER_SPECIFIC:3">ccRemove</property>
+      <property name="commandClass:NODE_NAMING:3">ccRemove</property>
+      <property name="commandClass:BATTERY:3">ccRemove</property>
+      <property name="commandClass:WAKE_UP:3">ccRemove</property>
+      <property name="commandClass:ASSOCIATION:3">ccRemove</property>
+      <property name="commandClass:VERSION:3">ccRemove</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

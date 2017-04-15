@@ -40,12 +40,6 @@
           <property name="binding:*:PercentType">BATTERY</property>
         </properties>
       </channel>
-      <channel id="alarm_flood" typeId="alarm_flood">
-        <label>Alarm (flood)</label>
-        <properties>
-          <property name="binding:*:OnOffType">SENSOR_ALARM;type=FLOOD</property>
-        </properties>
-      </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm (general)</label>
         <properties>
