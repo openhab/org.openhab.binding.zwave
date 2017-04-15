@@ -1391,7 +1391,7 @@ public class ZWaveNode {
 
             logger.debug("NODE {}: WakeupTimerTask {} Messages waiting, state {}", getNodeId(),
                     controller.getSendQueueLength(getNodeId()), getNodeInitStage());
-            if (!isInitializationComplete() || controller.getSendQueueLength(getNodeId()) != 0) {
+            if (controller.getSendQueueLength(getNodeId()) != 0) {
                 triggered = false;
                 return;
             }
@@ -1423,8 +1423,18 @@ public class ZWaveNode {
         // Create the timer task
         timerTask = new WakeupTimerTask();
 
+        int timerDelay;
+
         // Start the timer
-        timer.schedule(timerTask, sleepDelay / 2, sleepDelay / 2);
+        // If the initialisation is complete, then use a short delay,
+        // Otherwise use a longer delay...
+        if (isInitializationComplete()) {
+            timerDelay = sleepDelay;
+        } else {
+            timerDelay = 20000;
+        }
+
+        timer.schedule(timerTask, timerDelay / 2, timerDelay / 2);
     }
 
     private synchronized void resetSleepTimer() {
