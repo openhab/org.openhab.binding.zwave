@@ -61,7 +61,16 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         ZWaveEndpoint endpoint = Mockito.mock(ZWaveEndpoint.class);
         ZWaveAlarmCommandClass cls = new ZWaveAlarmCommandClass(node, controller, endpoint);
 
-        return cls.new ZWaveAlarmValueEvent(1, 0, reportType, type, event, status);
+        return cls.new ZWaveAlarmValueEvent(1, 0, reportType, type, 0, event, status);
+    }
+
+    private ZWaveCommandClassValueEvent createEvent(Integer v1Code, Integer value) {
+        ZWaveController controller = Mockito.mock(ZWaveController.class);
+        ZWaveNode node = Mockito.mock(ZWaveNode.class);
+        ZWaveEndpoint endpoint = Mockito.mock(ZWaveEndpoint.class);
+        ZWaveAlarmCommandClass cls = new ZWaveAlarmCommandClass(node, controller, endpoint);
+
+        return cls.new ZWaveAlarmValueEvent(1, 0, ReportType.ALARM, null, v1Code, 0, value);
     }
 
     @Test
@@ -183,9 +192,12 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         ZWaveThingChannel channel = new ZWaveThingChannel(null, new ChannelUID("zwave:node:bridge:alarm_number"),
                 DataType.DecimalType, CommandClass.COMMAND_CLASS_ALARM.toString(), 0, args);
 
-        ZWaveCommandClassValueEvent event = createEvent(ZWaveAlarmCommandClass.AlarmType.SMOKE, ReportType.ALARM, 0,
-                0xff);
+        ZWaveCommandClassValueEvent event = createEvent(1, 0xff);
         DecimalType state = (DecimalType) converter.handleEvent(channel, event);
         assertEquals(1, state.intValue());
+
+        event = createEvent(18, 0xff);
+        state = (DecimalType) converter.handleEvent(channel, event);
+        assertEquals(18, state.intValue());
     }
 }

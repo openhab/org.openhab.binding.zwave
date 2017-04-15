@@ -129,6 +129,27 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
     }
 
     @Test
+    public void Notification_Lock_UnsupportedV1() {
+        // This test simulates receiving a lock alarm that is not a standard supported alarm type.
+        // We should get the alarm number supported with null type
+        byte[] packetData = { 0x01, 0x10, 0x00, 0x04, 0x00, 0x0E, 0x04, 0x71, 0x05, 0x12, 0x00, (byte) 0x87 };
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData, 3);
+
+        assertEquals(events.size(), 1);
+
+        ZWaveAlarmValueEvent event = (ZWaveAlarmValueEvent) events.get(0);
+
+        // assertEquals(event.getNodeId(), 40);
+        assertEquals(event.getEndpoint(), 0);
+        assertEquals(CommandClass.COMMAND_CLASS_ALARM, event.getCommandClass());
+        assertEquals(ReportType.ALARM, event.getReportType());
+        assertEquals(null, event.getAlarmType());
+        assertEquals(18, event.getV1AlarmCode());
+        assertEquals(0x00, event.getAlarmStatus());
+    }
+
+    @Test
     public void getSupportedMessage() {
         ZWaveAlarmCommandClass cls = (ZWaveAlarmCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_ALARM);
         ZWaveCommandClassTransactionPayload msg;
