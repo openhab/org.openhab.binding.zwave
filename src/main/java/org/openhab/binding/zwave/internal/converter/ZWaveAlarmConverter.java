@@ -119,7 +119,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
 
         // Processing for special channel types
         if (channel.getUID().getId().equals("alarm_number")) {
-            return new DecimalType(eventAlarm.getAlarmType().getKey());
+            return new DecimalType(eventAlarm.getV1AlarmCode());
         }
 
         // Default to using the value.

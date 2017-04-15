@@ -141,23 +141,20 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
                     v1AlarmTypeCode, v1AlarmLevel, notificationEvent, notificationStatus);
         }
 
-        if (alarmType == null) {
-            logger.debug("NODE {}: Unknown Alarm Type = {}, ignoring report.", getNode().getNodeId(), v1AlarmTypeCode);
-            return;
+        if (alarmType != null) {
+            // Alarm type seems to be supported, add it to the list.
+            Alarm alarm = alarms.get(alarmType);
+            if (alarm == null) {
+                alarm = new Alarm(alarmType);
+                alarms.put(alarmType, alarm);
+            }
+            alarm.setInitialised();
         }
 
-        // Alarm type seems to be supported, add it to the list.
-        Alarm alarm = alarms.get(alarmType);
-        if (alarm == null) {
-            alarm = new Alarm(alarmType);
-            alarms.put(alarmType, alarm);
-        }
-        alarm.setInitialised();
-
-        logger.debug("NODE {}: Alarm Type = {} ({})", getNode().getNodeId(), alarmType.toString(), v1AlarmTypeCode);
+        logger.debug("NODE {}: Alarm Type = {} ({})", getNode().getNodeId(), alarmType, v1AlarmTypeCode);
 
         ZWaveAlarmValueEvent zEvent = new ZWaveAlarmValueEvent(getNode().getNodeId(), endpoint, eventType, alarmType,
-                notificationEvent, notificationStatus);
+                v1AlarmTypeCode, notificationEvent, notificationStatus);
         getController().notifyEventListeners(zEvent);
 
         dynamicDone = true;
@@ -497,6 +494,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         private AlarmType alarmType;
         private int alarmEvent;
         private int alarmStatus;
+        private int v1AlarmCode;
 
         /**
          * Constructor. Creates a instance of the ZWaveAlarmValueEvent class.
@@ -505,15 +503,18 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
          * @param endpoint the endpoint of the event.
          * @param eventType
          * @param alarmType the alarm type that triggered the event;
-         * @param value the value for the event.
+         * @param v1AlarmCode
+         * @param alarmEvent
+         * @param alarmStatus
          */
-        public ZWaveAlarmValueEvent(int nodeId, int endpoint, ReportType eventType, AlarmType alarmType, int alarmEvent,
-                int alarmStatus) {
+        public ZWaveAlarmValueEvent(int nodeId, int endpoint, ReportType eventType, AlarmType alarmType,
+                int v1AlarmCode, int alarmEvent, int alarmStatus) {
             super(nodeId, endpoint, CommandClass.COMMAND_CLASS_ALARM, alarmStatus);
             this.eventType = eventType;
             this.alarmType = alarmType;
             this.alarmEvent = alarmEvent;
             this.alarmStatus = alarmStatus;
+            this.v1AlarmCode = v1AlarmCode;
         }
 
         /**
@@ -542,6 +543,10 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
          */
         public int getAlarmStatus() {
             return alarmStatus;
+        }
+
+        public int getV1AlarmCode() {
+            return v1AlarmCode;
         }
 
         @Override
