@@ -37,6 +37,12 @@ Z-Wave Lock<br /><h1>Overview</h1><p>http://idlock.no/</p> <br /><h2>Inclusion I
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=EMERGENCY</property>
         </properties>
       </channel>
+      <channel id="alarm_number" typeId="alarm_number">
+        <label>Alarm (number)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
+        </properties>
+      </channel>
       <channel id="battery-level" typeId="system.battery-level">
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>

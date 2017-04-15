@@ -34,7 +34,7 @@
       <property name="manufacturerRef">0001:0058,0101:0058,0201:0058</property>
       <property name="versionMin">1.0</property>
       <property name="dbReference">87</property>
-      <property name="commandClass:SCENE_ACTIVATION">ccAdd</property>
+      <property name="commandClass:COMMAND_CLASS_SCENE_ACTIVATION">ccAdd</property>
       <property name="defaultAssociations">1,2,3,4</property>
     </properties>
 
