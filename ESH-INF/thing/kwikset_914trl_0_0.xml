@@ -19,7 +19,7 @@ Touchpad Electronic Deadbolt<br /><h2>Inclusion Information</h2><p> Press butto
           <property name="binding:*:OnOffType">DOOR_LOCK</property>
         </properties>
       </channel>
-      <channel id="alarm_general" typeId="alarm_general">
+      <channel id="alarm_number" typeId="alarm_number">
         <label>Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">ALARM</property>
