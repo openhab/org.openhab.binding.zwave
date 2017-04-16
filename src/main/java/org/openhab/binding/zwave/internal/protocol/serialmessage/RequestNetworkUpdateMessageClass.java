@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class RequestNetworkUpdateMessageClass extends ZWaveCommandProcessor {
-    private static final Logger logger = LoggerFactory.getLogger(RequestNetworkUpdateMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(RequestNetworkUpdateMessageClass.class);
 
     private final int ZW_SUC_UPDATE_DONE = 0x00;
     private final int ZW_SUC_UPDATE_ABORT = 0x01;

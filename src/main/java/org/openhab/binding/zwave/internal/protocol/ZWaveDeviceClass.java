@@ -26,7 +26,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("deviceClass")
 public class ZWaveDeviceClass {
 
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveDeviceClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveDeviceClass.class);
 
     private Basic basicDeviceClass;
     private Generic genericDeviceClass;
@@ -401,6 +401,7 @@ public class ZWaveDeviceClass {
         POWER_SWITCH_BINARY(1, Generic.BINARY_SWITCH, "Binary Power Switch"),
         SCENE_SWITCH_BINARY_DISCONTINUED(2, Generic.BINARY_SWITCH, "Binary Scene Switch (Discontinued)"),
         SCENE_SWITCH_BINARY(3, Generic.BINARY_SWITCH, "Binary Scene Switch"),
+        POWER_STRIP(4, Generic.BINARY_SWITCH, "Power Strip Device"),
         SIREN_SWITCH_BINARY(5, Generic.BINARY_SWITCH, "Siren Switch"),
         VALVE_SWITCH_BINARY(6, Generic.BINARY_SWITCH, "Valve Switch"),
 

@@ -49,7 +49,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveMultiInstanceCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveMultiInstanceCommandClass.class);
 
     private static final int MAX_SUPPORTED_VERSION = 2;
 

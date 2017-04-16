@@ -28,7 +28,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveMultiCommandCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveMultiCommandCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveMultiCommandCommandClass.class);
 
     private static final int MULTI_COMMMAND_ENCAP = 0x01;
 

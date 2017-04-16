@@ -46,7 +46,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 @XStreamAlias("securityCommandClassWithInit")
 public class ZWaveSecurityCommandClassWithInitialization extends ZWaveSecurityCommandClass
         implements ZWaveCommandClassInitialization, ZWaveEventListener {
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveSecurityCommandClassWithInitialization.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveSecurityCommandClassWithInitialization.class);
 
     /**
      * the scheme that is used prior to any keys being negotiated
