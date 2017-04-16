@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 /**
  * Z-Wave device class. A Z-Wave device class groups devices with the same functionality together in a class.
@@ -25,7 +26,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  */
 @XStreamAlias("deviceClass")
 public class ZWaveDeviceClass {
-
+    @XStreamOmitField
     private final Logger logger = LoggerFactory.getLogger(ZWaveDeviceClass.class);
 
     private Basic basicDeviceClass;
