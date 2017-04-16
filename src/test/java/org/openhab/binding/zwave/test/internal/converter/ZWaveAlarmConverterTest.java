@@ -41,9 +41,9 @@ import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClass
  *
  */
 public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
-    final ChannelUID uid = new ChannelUID("zwave:node:bridge:channel");
+    private ZWaveThingChannel createChannel(String channelType, DataType dataType, String type, String event) {
+        ChannelUID uid = new ChannelUID("zwave:node:bridge:" + channelType);
 
-    private ZWaveThingChannel createChannel(DataType dataType, String type, String event) {
         Map<String, String> args = new HashMap<String, String>();
         if (type != null) {
             args.put("type", type);
@@ -76,7 +76,7 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
     @Test
     public void Alarm_Smoke() {
         ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
-        ZWaveThingChannel channel = createChannel(DataType.OnOffType, AlarmType.SMOKE.toString(), "0");
+        ZWaveThingChannel channel = createChannel("alarm_smoke", DataType.OnOffType, AlarmType.SMOKE.toString(), "0");
 
         ZWaveCommandClassValueEvent event = createEvent(ZWaveAlarmCommandClass.AlarmType.SMOKE, ReportType.ALARM, 0,
                 0xff);
@@ -90,7 +90,7 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
     @Test
     public void Notification_Smoke_OnOff() {
         ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
-        ZWaveThingChannel channel = createChannel(DataType.OnOffType, AlarmType.SMOKE.toString(), "0");
+        ZWaveThingChannel channel = createChannel("alarm_smoke", DataType.OnOffType, AlarmType.SMOKE.toString(), "0");
 
         ZWaveCommandClassValueEvent event = createEvent(ZWaveAlarmCommandClass.AlarmType.SMOKE, ReportType.NOTIFICATION,
                 0, 0xff);
@@ -104,7 +104,8 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
     @Test
     public void Notification_Smoke_Decimal() {
         ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
-        ZWaveThingChannel channel = createChannel(DataType.DecimalType, AlarmType.SMOKE.toString(), null);
+        // Note the different data type than is returned (which is a decimal)
+        ZWaveThingChannel channel = createChannel("alarm_number", DataType.OnOffType, AlarmType.SMOKE.toString(), null);
 
         ZWaveCommandClassValueEvent event = createEvent(ZWaveAlarmCommandClass.AlarmType.SMOKE, ReportType.NOTIFICATION,
                 3, 0xff);
@@ -118,42 +119,51 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
     @Test
     public void Notification_Door() {
         ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
-        ZWaveThingChannel channel = createChannel(DataType.OpenClosedType, null, null);
+        ZWaveThingChannel channel = createChannel("sensor_door", DataType.OpenClosedType, null, null);
 
         ZWaveCommandClassValueEvent event = createEvent(ZWaveAlarmCommandClass.AlarmType.ACCESS_CONTROL,
                 ReportType.NOTIFICATION, 22, 0xff);
         State state = converter.handleEvent(channel, event);
-        assertEquals(state.getClass(), OpenClosedType.class);
-        assertEquals(state, OpenClosedType.OPEN);
+        assertEquals(OpenClosedType.class, state.getClass());
+        assertEquals(OpenClosedType.OPEN, state);
 
         event = createEvent(ZWaveAlarmCommandClass.AlarmType.ACCESS_CONTROL, ReportType.NOTIFICATION, 23, 0xff);
         state = converter.handleEvent(channel, event);
-        assertEquals(state.getClass(), OpenClosedType.class);
-        assertEquals(state, OpenClosedType.CLOSED);
+        assertEquals(OpenClosedType.class, state.getClass());
+        assertEquals(OpenClosedType.CLOSED, state);
     }
 
     @Test
     public void Notification_PowerManagement_PowerApplied() {
         // Simulates the Nexia doorbell
         ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
-        ZWaveThingChannel channel = createChannel(DataType.OnOffType, AlarmType.POWER_MANAGEMENT.toString(), null);
+        ZWaveThingChannel channel = createChannel("alarm_power", DataType.OnOffType,
+                AlarmType.POWER_MANAGEMENT.toString(), null);
 
         // Power has been applied
         ZWaveCommandClassValueEvent event = createEvent(ZWaveAlarmCommandClass.AlarmType.POWER_MANAGEMENT,
                 ReportType.NOTIFICATION, 1, 0xff);
         State state = converter.handleEvent(channel, event);
-        assertEquals(state.getClass(), OnOffType.class);
-        assertEquals(state, OnOffType.ON);
+        assertEquals(OnOffType.class, state.getClass());
+        assertEquals(OnOffType.OFF, state);
+
+        // Power has been removed
+        event = createEvent(ZWaveAlarmCommandClass.AlarmType.POWER_MANAGEMENT, ReportType.NOTIFICATION, 2, 0xff);
+        state = converter.handleEvent(channel, event);
+        assertEquals(OnOffType.class, state.getClass());
+        assertEquals(OnOffType.ON, state);
 
         // Events cleared
         event = createEvent(ZWaveAlarmCommandClass.AlarmType.POWER_MANAGEMENT, ReportType.NOTIFICATION, 0, 0xff);
         state = converter.handleEvent(channel, event);
-        assertEquals(state.getClass(), OnOffType.class);
-        assertEquals(state, OnOffType.OFF);
+        assertEquals(OnOffType.class, state.getClass());
+        assertEquals(OnOffType.OFF, state);
     }
 
     @Test
     public void sendNotification() {
+        ChannelUID uid = new ChannelUID("zwave:node:bridge:channel");
+
         List<ZWaveCommandClassTransactionPayload> msgs;
         DecimalType command;
         Map<String, String> args = new HashMap<String, String>();
@@ -189,8 +199,9 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
         Map<String, String> args = new HashMap<String, String>();
 
+        // Note test here that data type is ignored
         ZWaveThingChannel channel = new ZWaveThingChannel(null, new ChannelUID("zwave:node:bridge:alarm_number"),
-                DataType.DecimalType, CommandClass.COMMAND_CLASS_ALARM.toString(), 0, args);
+                DataType.OnOffType, CommandClass.COMMAND_CLASS_ALARM.toString(), 0, args);
 
         ZWaveCommandClassValueEvent event = createEvent(1, 0xff);
         DecimalType state = (DecimalType) converter.handleEvent(channel, event);
