@@ -62,12 +62,13 @@
                 <advanced>true</advanced>
             </parameter>
 
-            <parameter name="controller_suc" type="boolean" groupName="network">
-                <label>Controller is SUC</label>
-                <description>Controller is SUC and will receive updates from other controllers in the network</description>
+            <parameter name="controller_type" type="boolean" groupName="network">
+                <label>Controller type</label>
+                <description>Controller is SUC or SIS and will receive updates from other controllers in the network</description>
                 <options>
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
+                    <option value="0">Primary Controller</option>
+                    <option value="1">Static Update Controller</option>
+                    <option value="2">Static Inclusion Server</option>
                 </options>
                 <default>false</default>
                 <advanced>true</advanced>
