@@ -68,6 +68,8 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWavePowerLevelC
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWavePowerLevelCommandClass.ZWavePowerLevelCommandClassChangeEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSwitchAllCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCommandClass.UserIdStatusType;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCommandClass.ZWaveUserCodeValueEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass.ZWaveWakeUpEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveAssociationEvent;
@@ -743,8 +745,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                             .sendData(nameCommandClass.setNameMessage(configurationParameter.getValue().toString()));
                 }
                 if ("location".equals(cfg[1])) {
-                    controllerHandler.sendData(
-                            nameCommandClass.setLocationMessage(configurationParameter.getValue().toString()));
+                    controllerHandler.sendData(node.encapsulate(
+                            nameCommandClass.setLocationMessage(configurationParameter.getValue().toString()), 0));
                 }
                 pendingCfg.put(configurationParameter.getKey(), valueObject);
             } else if ("switchall".equals(cfg[0])) {
@@ -756,8 +758,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 }
 
                 if ("mode".equals(cfg[1])) {
-                    controllerHandler.sendData(switchallCommandClass
-                            .setValueMessage(Integer.parseInt(configurationParameter.getValue().toString())));
+                    controllerHandler.sendData(node.encapsulate(switchallCommandClass
+                            .setValueMessage(Integer.parseInt(configurationParameter.getValue().toString())), 0));
                 }
                 pendingCfg.put(configurationParameter.getKey(), valueObject);
             } else if ("powerlevel".equals(cfg[0])) {
@@ -775,18 +777,21 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     if (timeout == null) {
                         timeout = powerlevelCommandClass.getTimeout();
                     }
-                    controllerHandler.sendData(powerlevelCommandClass.setValueMessage(
-                            (Integer.parseInt(configurationParameter.getValue().toString())), timeout));
+                    controllerHandler
+                            .sendData(node.encapsulate(
+                                    powerlevelCommandClass.setValueMessage(
+                                            (Integer.parseInt(configurationParameter.getValue().toString())), timeout),
+                                    0));
                 }
                 if ("timeout".equals(cfg[1])) {
                     Integer level = (Integer) pendingCfg.get(ZWaveBindingConstants.CONFIGURATION_POWERLEVEL_LEVEL);
                     if (level == null) {
                         level = powerlevelCommandClass.getLevel();
                     }
-                    controllerHandler.sendData(powerlevelCommandClass.setValueMessage(level,
-                            (Integer.parseInt(configurationParameter.getValue().toString()))));
+                    controllerHandler.sendData(node.encapsulate(powerlevelCommandClass.setValueMessage(level,
+                            (Integer.parseInt(configurationParameter.getValue().toString()))), 0));
                 }
-                controllerHandler.sendData(powerlevelCommandClass.getValueMessage());
+                controllerHandler.sendData(node.encapsulate(powerlevelCommandClass.getValueMessage(), 0));
                 pendingCfg.put(configurationParameter.getKey(), valueObject);
             } else if ("doorlock".equals(cfg[0])) {
                 ZWaveDoorLockCommandClass commandClass = (ZWaveDoorLockCommandClass) node
@@ -806,8 +811,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         } else {
                             timeoutEnabled = true;
                         }
-                        controllerHandler.sendData(commandClass.setConfigMessage(timeoutEnabled, value));
-                        controllerHandler.sendData(commandClass.getConfigMessage());
+                        controllerHandler
+                                .sendData(node.encapsulate(commandClass.setConfigMessage(timeoutEnabled, value), 0));
+                        controllerHandler.sendData(node.encapsulate(commandClass.getConfigMessage(), 0));
                         pendingCfg.put(ZWaveBindingConstants.CONFIGURATION_DOORLOCKTIMEOUT, valueObject);
                     } catch (NumberFormatException e) {
                         logger.debug("Number format exception parsing doorlock_timeout '{}'", valueObject);
@@ -827,8 +833,12 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         logger.debug("NODE {}: Attempt to set code ID outside of range", nodeId);
                         continue;
                     }
-                    controllerHandler.sendData(commandClass.setUserCode(code, (String) valueObject));
-                    controllerHandler.sendData(commandClass.getUserCode(code));
+
+                    logger.debug("NODE {}: ENCAP VERSION!!!!", nodeId);
+
+                    controllerHandler
+                            .sendData(node.encapsulate(commandClass.setUserCode(code, (String) valueObject), 0));
+                    controllerHandler.sendData(node.encapsulate(commandClass.getUserCode(code), 0));
                     pendingCfg.put(configurationParameter.getKey(), valueObject);
                 } catch (NumberFormatException e) {
                     logger.error("Number format exception parsing user code ID '{}'", configurationParameter.getKey());
@@ -1098,6 +1108,18 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     pendingCfg.remove(ZWaveBindingConstants.CONFIGURATION_POWERLEVEL_LEVEL);
                     configuration.put(ZWaveBindingConstants.CONFIGURATION_POWERLEVEL_TIMEOUT, powerEvent.getTimeout());
                     pendingCfg.remove(ZWaveBindingConstants.CONFIGURATION_POWERLEVEL_TIMEOUT);
+                    break;
+
+                case COMMAND_CLASS_USER_CODE:
+                    ZWaveUserCodeValueEvent codeEvent = (ZWaveUserCodeValueEvent) event;
+                    cfgUpdated = true;
+                    String codeParameterName = "usercode_" + codeEvent.getId();
+                    if (codeEvent.getStatus() == UserIdStatusType.OCCUPIED) {
+                        configuration.put(codeParameterName, codeEvent.getCode());
+                    } else {
+                        configuration.put(codeParameterName, null);
+                    }
+                    pendingCfg.remove(codeParameterName);
                     break;
 
                 default:

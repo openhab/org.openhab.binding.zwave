@@ -41,6 +41,8 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCommandClass.UserCode;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCommandClass.UserIdStatusType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -272,10 +274,12 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
             groups.add(new ConfigDescriptionParameterGroup("usercode", "lock", false, "User Code", null));
 
             for (int code = 1; code <= userCodeClass.getNumberOfSupportedCodes(); code++) {
+                UserCode userCode = userCodeClass.getCachedUserCode(code);
                 parameters.add(ConfigDescriptionParameterBuilder
                         .create(ZWaveBindingConstants.CONFIGURATION_USERCODE + code, Type.TEXT)
                         .withLabel("Code " + code).withDescription("Set the user code (4 to 10 numbers)")
-                        .withDefault("").withGroupName("usercode").build());
+                        .withReadOnly(userCode.getState() == UserIdStatusType.RESERVED_BY_ADMINISTRATOR).withDefault("")
+                        .withGroupName("usercode").build());
             }
         }
 

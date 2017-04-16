@@ -114,8 +114,7 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
             logger.debug("NODE {}: USER_CODE_REPORT {} is {} [{}]", getNode().getNodeId(), id, status, code);
         }
         userCodeList.put(id, new UserCode(status, code));
-        ZWaveUserCodeValueEvent zEvent = new ZWaveUserCodeValueEvent(this.getNode().getNodeId(), endpoint, id, code,
-                status);
+        ZWaveUserCodeValueEvent zEvent = new ZWaveUserCodeValueEvent(getNode().getNodeId(), endpoint, id, code, status);
         getController().notifyEventListeners(zEvent);
     }
 
@@ -127,8 +126,8 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
     }
 
     public ZWaveCommandClassTransactionPayload getUserCode(int id) {
-        logger.debug("NODE {}: Creating new message for application command USER_CODE_GET({})",
-                this.getNode().getNodeId(), id);
+        logger.debug("NODE {}: Creating new message for application command USER_CODE_GET({})", getNode().getNodeId(),
+                id);
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), USER_CODE_GET)
                 .withPayload(id).withPriority(TransactionPriority.Config).withExpectedResponseCommand(USER_CODE_REPORT)
@@ -234,6 +233,16 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
     }
 
     /**
+     * Gets a user code from the cache
+     *
+     * @param code the code to return;
+     * @return {@link UserCode} or null if code not known
+     */
+    public UserCode getCachedUserCode(int code) {
+        return userCodeList.get(code);
+    }
+
+    /**
      * Z-Wave UserIDStatus enumeration. The user ID status type indicates
      * the state of the user ID.
      *
@@ -241,7 +250,7 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
      * @see {@link ZWaveUserCodeCommandClass#USER_CODE_SET}
      */
     @XStreamAlias("userIdStatusType")
-    static enum UserIdStatusType {
+    public static enum UserIdStatusType {
         AVAILABLE(0x00, "Available (not set)"),
         OCCUPIED(0x01, "Occupied"),
         RESERVED_BY_ADMINISTRATOR(0x02, "Reserved by administrator"),
@@ -306,11 +315,11 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
             this.code = code;
         }
 
-        String getCode() {
+        public String getCode() {
             return code;
         }
 
-        UserIdStatusType getState() {
+        public UserIdStatusType getState() {
             return state;
         }
     }
@@ -323,6 +332,7 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
         private ZWaveUserCodeValueEvent(int nodeId, int endpoint, int id, String code, UserIdStatusType status) {
             super(nodeId, endpoint, CommandClass.COMMAND_CLASS_USER_CODE, code);
             this.id = id;
+            this.code = code;
             this.status = status;
         }
 
