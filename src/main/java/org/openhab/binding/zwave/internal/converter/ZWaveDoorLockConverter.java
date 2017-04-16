@@ -71,7 +71,7 @@ public class ZWaveDoorLockConverter extends ZWaveCommandClassConverter {
         State state = null;
         switch (channel.getDataType()) {
             case OnOffType:
-                state = (Integer) event.getValue() == 0xff ? OnOffType.OFF : OnOffType.ON;
+                state = (Integer) event.getValue() == 0x00 ? OnOffType.OFF : OnOffType.ON;
                 break;
             default:
                 logger.warn("No conversion in {} to {}", this.getClass().getSimpleName(), channel.getDataType());
@@ -96,7 +96,7 @@ public class ZWaveDoorLockConverter extends ZWaveCommandClassConverter {
 
         Integer value = null;
         if (command instanceof OnOffType) {
-            value = ((OnOffType) command) == OnOffType.ON ? 0x00 : 0xff;
+            value = ((OnOffType) command) == OnOffType.ON ? 0xff : 0x00;
         }
         if (value == null) {
             return null;
