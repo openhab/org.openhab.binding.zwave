@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class IdentifyNodeMessageClass extends ZWaveCommandProcessor {
-    private static final Logger logger = LoggerFactory.getLogger(IdentifyNodeMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(IdentifyNodeMessageClass.class);
 
     public SerialMessage doRequest(int nodeId) {
         SerialMessage newMessage = new SerialMessage(SerialMessageClass.IdentifyNode, SerialMessageType.Request,

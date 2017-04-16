@@ -36,7 +36,7 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
         implements ZWaveCommandClassInitialization {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveManufacturerSpecificCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveManufacturerSpecificCommandClass.class);
 
     private static final int MANUFACTURER_SPECIFIC_GET = 0x04;
     private static final int MANUFACTURER_SPECIFIC_REPORT = 0x05;

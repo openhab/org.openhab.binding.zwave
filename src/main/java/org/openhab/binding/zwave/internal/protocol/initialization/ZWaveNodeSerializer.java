@@ -38,7 +38,7 @@ import com.thoughtworks.xstream.io.xml.StaxDriver;
  * @author Jan-Willem Spuij
  */
 public class ZWaveNodeSerializer {
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveNodeSerializer.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveNodeSerializer.class);
     private final XStream stream = new XStream(new StaxDriver());
     private final String folderName;
 

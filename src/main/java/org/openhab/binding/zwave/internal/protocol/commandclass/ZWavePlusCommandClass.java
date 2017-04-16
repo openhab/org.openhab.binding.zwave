@@ -39,7 +39,7 @@ public class ZWavePlusCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveCommandClassInitialization {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWavePlusCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWavePlusCommandClass.class);
 
     private static final byte ZWAVE_PLUS_GET = 0x01;
     private static final byte ZWAVE_PLUS_REPORT = 0x02;
@@ -182,7 +182,7 @@ public class ZWavePlusCommandClass extends ZWaveCommandClass
 
     /**
      * Return the ZWave Plus Device Type
-     * 
+     *
      * @return {@link ZWavePlusDeviceType}
      */
     public ZWavePlusDeviceType getZWavePlusDeviceType() {

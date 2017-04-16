@@ -30,7 +30,7 @@
       <channel id="sensor_luminance2" typeId="sensor_luminance">
         <label>Illumination Sensor</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:2</property>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:2;type=LUMINANCE</property>
         </properties>
       </channel>
       <channel id="battery-level2" typeId="system.battery-level">
@@ -41,7 +41,7 @@
       <channel id="sensor_temperature3" typeId="sensor_temperature">
         <label>Temperature Sensor</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:3</property>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:3;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="battery-level3" typeId="system.battery-level">

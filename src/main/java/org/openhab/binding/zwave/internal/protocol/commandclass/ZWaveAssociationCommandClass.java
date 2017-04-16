@@ -38,7 +38,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements ZWaveCommandClassInitialization {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveAssociationCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveAssociationCommandClass.class);
 
     private static final int MAX_SUPPORTED_VERSION = 2;
 

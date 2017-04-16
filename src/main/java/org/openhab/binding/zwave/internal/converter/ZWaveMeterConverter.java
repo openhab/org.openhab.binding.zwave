@@ -40,7 +40,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ZWaveMeterConverter extends ZWaveCommandClassConverter {
 
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveMeterConverter.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveMeterConverter.class);
 
     /**
      * Constructor. Creates a new instance of the {@link ZWaveMeterConverter} class.

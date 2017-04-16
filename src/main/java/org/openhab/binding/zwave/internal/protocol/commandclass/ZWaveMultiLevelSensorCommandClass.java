@@ -43,7 +43,7 @@ public class ZWaveMultiLevelSensorCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveCommandClassDynamicState, ZWaveCommandClassInitialization {
 
     @XStreamOmitField
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveMultiLevelSensorCommandClass.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveMultiLevelSensorCommandClass.class);
     private static final int MAX_SUPPORTED_VERSION = 10;
 
     private static final int SENSOR_MULTILEVEL_GET = 0x04;
