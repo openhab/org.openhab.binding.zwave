@@ -38,6 +38,7 @@ import org.slf4j.LoggerFactory;;
  * @author Chris Jackson
  */
 public abstract class ZWaveCommandClassConverter {
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveCommandClassConverter.class);
 
     protected final ZWaveControllerHandler controller;
 
@@ -73,8 +74,6 @@ public abstract class ZWaveCommandClassConverter {
 
         converterMap = Collections.unmodifiableMap(temp);
     }
-
-    private static Logger logger = LoggerFactory.getLogger(ZWaveCommandClassConverter.class);
 
     private static BigDecimal ONE_POINT_EIGHT = new BigDecimal("1.8");
     private static BigDecimal THIRTY_TWO = new BigDecimal("32");

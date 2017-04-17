@@ -40,7 +40,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ZWaveMeterConverter extends ZWaveCommandClassConverter {
 
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveMeterConverter.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveMeterConverter.class);
 
     /**
      * Constructor. Creates a new instance of the {@link ZWaveMeterConverter} class.
@@ -101,11 +101,9 @@ public class ZWaveMeterConverter extends ZWaveCommandClassConverter {
         String meterScale = channel.getArguments().get("type");
         String meterZero = channel.getArguments().get("zero"); // needs to be a config setting - not arg
         ZWaveMeterValueEvent meterEvent = (ZWaveMeterValueEvent) event;
-        // logger.debug("Meter converter: scale {} <> {}", meterScale, meterEvent.getMeterScale());
 
         // Don't trigger event if this item is bound to another sensor type
         if (meterScale != null && MeterScale.getMeterScale(meterScale) != meterEvent.getMeterScale()) {
-            logger.debug("Not the right scale {} <> {}", meterScale, meterEvent.getMeterScale());
             return null;
         }
 

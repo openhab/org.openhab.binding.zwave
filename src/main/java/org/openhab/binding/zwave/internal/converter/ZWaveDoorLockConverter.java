@@ -29,7 +29,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ZWaveDoorLockConverter extends ZWaveCommandClassConverter {
 
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveDoorLockConverter.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveDoorLockConverter.class);
 
     /**
      * Constructor. Creates a new instance of the {@link ZWaveDoorLockConverter} class.

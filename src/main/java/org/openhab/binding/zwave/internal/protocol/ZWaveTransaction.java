@@ -89,8 +89,6 @@ public class ZWaveTransaction {
         CANCELLED
     }
 
-    private SerialMessage serialMessageDebug; // Delete - just here for debugging right now
-
     private SerialMessage serialMessage = null;
 
     private TransactionPriority priority;
@@ -129,7 +127,7 @@ public class ZWaveTransaction {
     }
 
     public void resetTransaction() {
-        logger.debug("Transaction RESET with {} retries remaining.", attemptsRemaining);
+        logger.debug("TID {}: Transaction RESET with {} retries remaining.", transactionId, attemptsRemaining);
         transactionStateTracker = TransactionState.UNINTIALIZED;
         serialMessage = null;
     }
@@ -137,7 +135,7 @@ public class ZWaveTransaction {
     public void transactionStart() {
         startTime = System.currentTimeMillis();
 
-        logger.debug("transactionStart type {} ", payload.getSerialMessageClass());
+        logger.debug("TID {}: Transaction Start type {} ", transactionId, payload.getSerialMessageClass());
 
         // We must have just sent the message
         if (payload.getSerialMessageClass().requiresResponse()) {
@@ -241,13 +239,13 @@ public class ZWaveTransaction {
     }
 
     public void setTransactionCanceled() {
-        logger.debug("Transaction {} CANCELLED", transactionId);
+        logger.debug("TID {}: Transaction CANCELLED", transactionId);
         transactionStateCancelled = transactionStateTracker;
         transactionStateTracker = TransactionState.CANCELLED;
     }
 
     public void setTransactionAborted() {
-        logger.debug("Transaction {} ABORTED", transactionId);
+        logger.debug("TID {}: Transaction ABORTED", transactionId);
         transactionStateTracker = TransactionState.ABORTED;
     }
 
@@ -257,7 +255,7 @@ public class ZWaveTransaction {
             return;
         }
 
-        logger.debug("Transaction {} COMPLETED", transactionId);
+        logger.debug("TID {}: Transaction COMPLETED", transactionId);
         transactionStateTracker = TransactionState.DONE;
     }
 
@@ -282,10 +280,10 @@ public class ZWaveTransaction {
     }
 
     public boolean transactionAdvance(SerialMessage incomingMessage) {
-        logger.debug("TransactionAdvance ST: {}", transactionStateTracker);
-        logger.debug("TransactionAdvance TX: {}", serialMessageDebug);
-        logger.debug("TransactionAdvance WT: {}", payload.getExpectedResponseSerialMessageClass());
-        logger.debug("TransactionAdvance RX: {}", incomingMessage);
+        logger.debug("TID {}: TransactionAdvance ST: {}", transactionId, transactionStateTracker);
+        logger.debug("TID {}: TransactionAdvance WT: {} {}", transactionId,
+                payload.getExpectedResponseSerialMessageClass());
+        logger.debug("TID {}: TransactionAdvance RX: {}", transactionId, incomingMessage);
 
         TransactionState stateTrackerStart = transactionStateTracker;
         switch (transactionStateTracker) {
@@ -327,6 +325,9 @@ public class ZWaveTransaction {
                     break;
                 }
 
+                logger.debug("TID {}: TransactionAdvance RQ: RREQ={}, RCLS={}", transactionId, requiresResponse,
+                        payload.getExpectedResponseSerialMessageClass());
+
                 // We've received our request - advance
                 // getExpectedReply returns null if we're not waiting for data
                 if (requiresResponse == true && payload.getExpectedResponseSerialMessageClass() != null) {
@@ -363,10 +364,10 @@ public class ZWaveTransaction {
                 break;
 
             default:
-                logger.error("Unhandled transaction state {}", transactionStateTracker);
+                logger.error("TID {}: Unhandled transaction state {}", transactionId, transactionStateTracker);
                 break;
         }
-        logger.debug("TransactionAdvance TO: {}", transactionStateTracker);
+        logger.debug("TID {}: TransactionAdvance TO: {}", transactionId, transactionStateTracker);
         return transactionStateTracker != stateTrackerStart;
     }
 
@@ -407,7 +408,6 @@ public class ZWaveTransaction {
         }
 
         if (getNodeId() != other.getNodeId()) {
-            logger.debug(">>>>> transaction node Id is different");
             return false;
         }
 
@@ -415,20 +415,12 @@ public class ZWaveTransaction {
             return false;
         }
 
-        if (Arrays.equals(payload.getPayloadBuffer(), other.getPayloadBuffer())) {
-            logger.debug(">>>>> transaction payload is the same [{}] == [{}]", payload.getPayloadBuffer(),
-                    other.getPayloadBuffer());
-            return true;
-        } else {
-            logger.debug(">>>>> transaction payload is NOT the same");
-        }
-
-        return false;
+        return Arrays.equals(payload.getPayloadBuffer(), other.getPayloadBuffer());
     }
 
     @Override
     public String toString() {
-        return "TID:" + transactionId + " [" + transactionStateTracker + "] callback: "
-                + (serialMessage == null ? "--" : serialMessage.getCallbackId());
+        return "TID " + transactionId + ": [" + transactionStateTracker + "] requiresResponse=" + requiresResponse
+                + " callback: " + (serialMessage == null ? "--" : serialMessage.getCallbackId());
     }
 }

@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class AssignSucReturnRouteMessageClass extends ZWaveCommandProcessor {
-    private static final Logger logger = LoggerFactory.getLogger(AssignSucReturnRouteMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(AssignSucReturnRouteMessageClass.class);
 
     public ZWaveSerialPayload doRequest(int nodeId) {
         logger.debug("NODE {}: Assigning SUC return route", nodeId);

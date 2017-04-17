@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class SerialApiSetTimeoutsMessageClass extends ZWaveCommandProcessor {
-    private static final Logger logger = LoggerFactory.getLogger(SerialApiSetTimeoutsMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(SerialApiSetTimeoutsMessageClass.class);
 
     /**
      * Sets the serial API timeouts. Timeouts are in 10ms ticks.

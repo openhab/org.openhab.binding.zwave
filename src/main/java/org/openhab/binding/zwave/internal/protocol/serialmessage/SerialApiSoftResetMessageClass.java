@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class SerialApiSoftResetMessageClass extends ZWaveCommandProcessor {
-    private static final Logger logger = LoggerFactory.getLogger(SerialApiSoftResetMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(SerialApiSoftResetMessageClass.class);
 
     public ZWaveSerialPayload doRequest() {
 

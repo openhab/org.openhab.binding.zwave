@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class RequestNodeInfoMessageClass extends ZWaveCommandProcessor {
-    private static final Logger logger = LoggerFactory.getLogger(RequestNodeInfoMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(RequestNodeInfoMessageClass.class);
 
     public ZWaveSerialPayload doRequest(int nodeId) {
         // Create the request - note the long timeout

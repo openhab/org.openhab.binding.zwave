@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class RemoveNodeMessageClass extends ZWaveCommandProcessor {
-    private static final Logger logger = LoggerFactory.getLogger(RemoveNodeMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(RemoveNodeMessageClass.class);
 
     private final int REMOVE_NODE_ANY = 1;
     private final int REMOVE_NODE_CONTROLLER = 2;
