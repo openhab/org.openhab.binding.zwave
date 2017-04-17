@@ -276,7 +276,11 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
             for (int code = 1; code <= userCodeClass.getNumberOfSupportedCodes(); code++) {
                 UserCode userCode = userCodeClass.getCachedUserCode(code);
                 parameters.add(ConfigDescriptionParameterBuilder
-                        .create(ZWaveBindingConstants.CONFIGURATION_USERCODE + code, Type.TEXT)
+                        .create(ZWaveBindingConstants.CONFIGURATION_USERCODE_LABEL + code, Type.TEXT)
+                        .withLabel("Code " + code + " Label").withDescription("Name for user code " + code)
+                        .withDefault("").withGroupName("usercode").build());
+                parameters.add(ConfigDescriptionParameterBuilder
+                        .create(ZWaveBindingConstants.CONFIGURATION_USERCODE_CODE + code, Type.TEXT)
                         .withLabel("Code " + code).withDescription("Set the user code (4 to 10 numbers)")
                         .withReadOnly(userCode.getState() == UserIdStatusType.RESERVED_BY_ADMINISTRATOR).withDefault("")
                         .withGroupName("usercode").build());

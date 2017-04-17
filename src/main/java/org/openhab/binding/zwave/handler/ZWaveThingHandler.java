@@ -188,9 +188,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             Map<String, String> properties = channel.getProperties();
             Configuration configuration = channel.getConfiguration();
 
-            if (nodeId == 6) {
-                logger.debug("NODE {}: Initialising channel {}", nodeId, channel.getUID());
-            }
             for (String key : properties.keySet()) {
                 String[] bindingType = key.split(":");
                 if (bindingType.length != 3) {
@@ -215,7 +212,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     for (String arg : arguments) {
                         String[] prop = arg.split("=");
                         argumentMap.put(prop[0].trim(), prop[1] == null ? null : prop[1].trim());
-                        // logger.debug("Adding Argument {}=={}", prop[0], prop[1]);
                     }
                 }
 
@@ -242,7 +238,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         logger.warn("NODE {}: Invalid item type defined ({}). Assuming DecimalType", nodeId, dataType);
                     }
 
-                    // logger.debug("Creating - arg map is {} long", argumentMap.size());
                     ZWaveThingChannel chan = new ZWaveThingChannel(controllerHandler, channel.getUID(), dataType,
                             ccSplit[0], endpoint, argumentMap);
 
@@ -552,349 +547,372 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             logger.debug("NODE {}: Configuration update {} to {}", nodeId, configurationParameter.getKey(),
                     valueObject);
             String[] cfg = configurationParameter.getKey().split("_");
-            if ("config".equals(cfg[0])) {
-                if (cfg.length < 3) {
-                    logger.warn("NODE {}: Configuration invalid {}", nodeId, configurationParameter.getKey());
-                    continue;
-                }
-
-                ZWaveConfigurationCommandClass configurationCommandClass = (ZWaveConfigurationCommandClass) node
-                        .getCommandClass(CommandClass.COMMAND_CLASS_CONFIGURATION);
-                if (configurationCommandClass == null) {
-                    logger.debug("NODE {}: Error getting configurationCommandClass", nodeId);
-                    continue;
-                }
-
-                // Get the size
-                int size = Integer.parseInt(cfg[2]);
-                if (size == 0 || size > 4) {
-                    logger.debug("NODE {}: Size error ({}) from {}", nodeId, size, configurationParameter.getKey());
-                    continue;
-                }
-
-                // Convert to integer
-                Integer value;
-                if (configurationParameter.getValue() instanceof BigDecimal) {
-                    value = ((BigDecimal) configurationParameter.getValue()).intValue();
-                } else if (configurationParameter.getValue() instanceof String) {
-                    value = Integer.parseInt((String) configurationParameter.getValue());
-                } else {
-                    logger.debug("NODE {}: Error converting config value from {}", nodeId,
-                            configurationParameter.getValue().getClass());
-                    continue;
-                }
-
-                Integer parameterIndex = Integer.valueOf(cfg[1]);
-
-                boolean writeOnly = false;
-                if (Arrays.asList(cfg).contains("wo")) {
-                    writeOnly = true;
-                }
-
-                // If we have specified a bitmask, then we need to process this and save for later
-                if (cfg.length >= 4 && cfg[3].length() == 8) {
-                    int bitmask = 0xffffffff;
-                    try {
-                        bitmask = Integer.parseInt(cfg[3], 16);
-                    } catch (NumberFormatException e) {
-                        logger.debug("NODE {}: Error parsing bitmask for {}", nodeId, configurationParameter.getKey());
-                    }
-
-                    boolean requestUpdate = false;
-                    ZWaveConfigSubParameter subParameter = subParameters.get(parameterIndex);
-                    if (subParameter == null) {
-                        subParameter = new ZWaveConfigSubParameter();
-                        requestUpdate = true;
-                    }
-
-                    logger.debug("NODE {}: Set sub-parameter {} from {} / {}", nodeId, parameterIndex, value,
-                            String.format("%08X", bitmask));
-
-                    logger.debug("NODE {}: Parameter {} set value {} mask {}", nodeId, parameterIndex,
-                            String.format("%08X", value), String.format("%08X", bitmask));
-
-                    subParameter.addBitmask(bitmask, value);
-                    subParameters.put(parameterIndex, subParameter);
-
-                    // Request the value. When this is received, we'll update the relevant bits
-                    // and send the SET command.
-                    // Only send the request if there's not already a request outstanding
-                    if (requestUpdate == true) {
-                        node.sendMessage(configurationCommandClass.getConfigMessage(parameterIndex));
-                    }
-                } else {
-                    ZWaveConfigurationParameter cfgParameter = configurationCommandClass.getParameter(parameterIndex);
-                    if (cfgParameter == null) {
-                        cfgParameter = new ZWaveConfigurationParameter(parameterIndex, value, size);
-                    } else {
-                        cfgParameter.setValue(value);
-                    }
-
-                    // Set the parameter and request a read-back if it's not a write only parameter
-                    node.sendMessage(configurationCommandClass.setConfigMessage(cfgParameter));
-                    if (writeOnly == false) {
-                        node.sendMessage(configurationCommandClass.getConfigMessage(parameterIndex));
-                    }
-                }
-
-                pendingCfg.put(configurationParameter.getKey(), valueObject);
-            } else if ("group".equals(cfg[0])) {
-                if (cfg.length < 2) {
-                    logger.debug("NODE{}: Association invalid {}", nodeId, configurationParameter.getKey());
-                    continue;
-                }
-
-                Integer groupIndex = Integer.valueOf(cfg[1]);
-
-                // Get the configuration information.
-                // This should be an array of nodes, and/or nodes and endpoints
-                ArrayList<String> paramValues = new ArrayList<String>();
-                Object parameter = configurationParameter.getValue();
-                if (parameter instanceof List) {
-                    paramValues.addAll((List) configurationParameter.getValue());
-                } else if (parameter instanceof String) {
-                    paramValues.add((String) parameter);
-                }
-
-                ZWaveAssociationGroup currentMembers = node.getAssociationGroup(groupIndex);
-                ZWaveAssociationGroup newMembers = new ZWaveAssociationGroup(groupIndex);
-
-                int totalMembers = currentMembers.getAssociationCnt();
-
-                // Loop over all the parameters
-                for (String paramValue : paramValues) {
-                    String[] groupCfg = paramValue.split("_");
-
-                    // Make sure this is a correctly formatted option
-                    if (!"node".equals(groupCfg[0])) {
+            switch (cfg[0]) {
+                case "config":
+                    if (cfg.length < 3) {
+                        logger.warn("NODE {}: Configuration invalid {}", nodeId, configurationParameter.getKey());
                         continue;
                     }
 
-                    // Get the node Id and endpoint Id
-                    int associationNodeId = Integer.parseInt(groupCfg[1]);
-                    int associationEndpointId = Integer.parseInt(groupCfg[2]);
-
-                    newMembers.addAssociation(associationNodeId, associationEndpointId);
-                    totalMembers++;
-                }
-
-                // Loop through the current members and remove anything that's not in the new members list
-                for (ZWaveAssociation member : currentMembers.getAssociations()) {
-                    // Is the current association still in the newMembers list?
-                    if (newMembers.isAssociated(member.getNode(), member.getEndpoint()) == false) {
-                        // No - so it needs to be removed
-                        node.sendMessage(node.removeAssociation(groupIndex, member.getNode(), member.getEndpoint()));
-                        totalMembers--;
+                    ZWaveConfigurationCommandClass configurationCommandClass = (ZWaveConfigurationCommandClass) node
+                            .getCommandClass(CommandClass.COMMAND_CLASS_CONFIGURATION);
+                    if (configurationCommandClass == null) {
+                        logger.debug("NODE {}: Error getting configurationCommandClass", nodeId);
+                        continue;
                     }
-                }
 
-                // Now loop through the new members and add anything not in the current members list
-                for (ZWaveAssociation member : newMembers.getAssociations()) {
-                    // Is the new association still in the currentMembers list?
-                    if (currentMembers.isAssociated(member.getNode(), member.getEndpoint()) == false) {
-                        // No - so it needs to be added
-                        // TODO: This needs to handle the sending endpoint not being root.
-                        node.sendMessage(node.setAssociation(null, groupIndex, member.getNode(), member.getEndpoint()));
+                    // Get the size
+                    int size = Integer.parseInt(cfg[2]);
+                    if (size == 0 || size > 4) {
+                        logger.debug("NODE {}: Size error ({}) from {}", nodeId, size, configurationParameter.getKey());
+                        continue;
+                    }
+
+                    // Convert to integer
+                    Integer value;
+                    if (configurationParameter.getValue() instanceof BigDecimal) {
+                        value = ((BigDecimal) configurationParameter.getValue()).intValue();
+                    } else if (configurationParameter.getValue() instanceof String) {
+                        value = Integer.parseInt((String) configurationParameter.getValue());
+                    } else {
+                        logger.debug("NODE {}: Error converting config value from {}", nodeId,
+                                configurationParameter.getValue().getClass());
+                        continue;
+                    }
+
+                    Integer parameterIndex = Integer.valueOf(cfg[1]);
+
+                    boolean writeOnly = false;
+                    if (Arrays.asList(cfg).contains("wo")) {
+                        writeOnly = true;
+                    }
+
+                    // If we have specified a bitmask, then we need to process this and save for later
+                    if (cfg.length >= 4 && cfg[3].length() == 8) {
+                        int bitmask = 0xffffffff;
+                        try {
+                            bitmask = Integer.parseInt(cfg[3], 16);
+                        } catch (NumberFormatException e) {
+                            logger.debug("NODE {}: Error parsing bitmask for {}", nodeId,
+                                    configurationParameter.getKey());
+                        }
+
+                        boolean requestUpdate = false;
+                        ZWaveConfigSubParameter subParameter = subParameters.get(parameterIndex);
+                        if (subParameter == null) {
+                            subParameter = new ZWaveConfigSubParameter();
+                            requestUpdate = true;
+                        }
+
+                        logger.debug("NODE {}: Set sub-parameter {} from {} / {}", nodeId, parameterIndex, value,
+                                String.format("%08X", bitmask));
+
+                        logger.debug("NODE {}: Parameter {} set value {} mask {}", nodeId, parameterIndex,
+                                String.format("%08X", value), String.format("%08X", bitmask));
+
+                        subParameter.addBitmask(bitmask, value);
+                        subParameters.put(parameterIndex, subParameter);
+
+                        // Request the value. When this is received, we'll update the relevant bits
+                        // and send the SET command.
+                        // Only send the request if there's not already a request outstanding
+                        if (requestUpdate == true) {
+                            node.sendMessage(configurationCommandClass.getConfigMessage(parameterIndex));
+                        }
+                    } else {
+                        ZWaveConfigurationParameter cfgParameter = configurationCommandClass
+                                .getParameter(parameterIndex);
+                        if (cfgParameter == null) {
+                            cfgParameter = new ZWaveConfigurationParameter(parameterIndex, value, size);
+                        } else {
+                            cfgParameter.setValue(value);
+                        }
+
+                        // Set the parameter and request a read-back if it's not a write only parameter
+                        node.sendMessage(configurationCommandClass.setConfigMessage(cfgParameter));
+                        if (writeOnly == false) {
+                            node.sendMessage(configurationCommandClass.getConfigMessage(parameterIndex));
+                        }
+                    }
+
+                    pendingCfg.put(configurationParameter.getKey(), valueObject);
+                    break;
+
+                case "group":
+                    if (cfg.length < 2) {
+                        logger.debug("NODE{}: Association invalid {}", nodeId, configurationParameter.getKey());
+                        continue;
+                    }
+
+                    Integer groupIndex = Integer.valueOf(cfg[1]);
+
+                    // Get the configuration information.
+                    // This should be an array of nodes, and/or nodes and endpoints
+                    ArrayList<String> paramValues = new ArrayList<String>();
+                    Object parameter = configurationParameter.getValue();
+                    if (parameter instanceof List) {
+                        paramValues.addAll((List) configurationParameter.getValue());
+                    } else if (parameter instanceof String) {
+                        paramValues.add((String) parameter);
+                    }
+
+                    ZWaveAssociationGroup currentMembers = node.getAssociationGroup(groupIndex);
+                    ZWaveAssociationGroup newMembers = new ZWaveAssociationGroup(groupIndex);
+
+                    int totalMembers = currentMembers.getAssociationCnt();
+
+                    // Loop over all the parameters
+                    for (String paramValue : paramValues) {
+                        String[] groupCfg = paramValue.split("_");
+
+                        // Make sure this is a correctly formatted option
+                        if (!"node".equals(groupCfg[0])) {
+                            continue;
+                        }
+
+                        // Get the node Id and endpoint Id
+                        int associationNodeId = Integer.parseInt(groupCfg[1]);
+                        int associationEndpointId = Integer.parseInt(groupCfg[2]);
+
+                        newMembers.addAssociation(associationNodeId, associationEndpointId);
                         totalMembers++;
                     }
-                }
 
-                // If there are no known associations in the group, then let's clear the group completely
-                // This ensures we don't end up with strange ghost associations
-                if (totalMembers == 0) {
-                    node.sendMessage(node.clearAssociation(groupIndex));
-                }
-
-                // Request an update to the association group
-                node.sendMessage(node.getAssociation(groupIndex));
-                pendingCfg.put(configurationParameter.getKey(), valueObject);
-            } else if ("wakeup".equals(cfg[0])) {
-                ZWaveWakeUpCommandClass wakeupCommandClass = (ZWaveWakeUpCommandClass) node
-                        .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
-                if (wakeupCommandClass == null) {
-                    logger.debug("NODE {}: Error getting wakeupCommandClass", nodeId);
-                    continue;
-                }
-
-                Integer value;
-                try {
-                    value = ((BigDecimal) configurationParameter.getValue()).intValue();
-                } catch (NumberFormatException e) {
-                    logger.debug("NODE {}: Error converting wakeup value from {}", nodeId,
-                            configurationParameter.getValue());
-                    continue;
-                }
-
-                logger.debug("NODE {}: Set wakeup interval to '{}'", nodeId, value);
-
-                // Set the wake-up interval
-                node.sendMessage(wakeupCommandClass.setInterval(value));
-                // And request a read-back
-                node.sendMessage(wakeupCommandClass.getIntervalMessage());
-                pendingCfg.put(configurationParameter.getKey(), valueObject);
-            } else if ("nodename".equals(cfg[0])) {
-                ZWaveNodeNamingCommandClass nameCommandClass = (ZWaveNodeNamingCommandClass) node
-                        .getCommandClass(CommandClass.COMMAND_CLASS_NODE_NAMING);
-                if (nameCommandClass == null) {
-                    logger.debug("NODE {}: Error getting NodeNamingCommandClass", nodeId);
-                    continue;
-                }
-
-                if ("name".equals(cfg[1])) {
-                    controllerHandler
-                            .sendData(nameCommandClass.setNameMessage(configurationParameter.getValue().toString()));
-                }
-                if ("location".equals(cfg[1])) {
-                    controllerHandler.sendData(node.encapsulate(
-                            nameCommandClass.setLocationMessage(configurationParameter.getValue().toString()), 0));
-                }
-                pendingCfg.put(configurationParameter.getKey(), valueObject);
-            } else if ("switchall".equals(cfg[0])) {
-                ZWaveSwitchAllCommandClass switchallCommandClass = (ZWaveSwitchAllCommandClass) node
-                        .getCommandClass(CommandClass.COMMAND_CLASS_SWITCH_ALL);
-                if (switchallCommandClass == null) {
-                    logger.debug("NODE {}: Error getting SwitchAllCommandClass", nodeId);
-                    continue;
-                }
-
-                if ("mode".equals(cfg[1])) {
-                    controllerHandler.sendData(node.encapsulate(switchallCommandClass
-                            .setValueMessage(Integer.parseInt(configurationParameter.getValue().toString())), 0));
-                }
-                pendingCfg.put(configurationParameter.getKey(), valueObject);
-            } else if ("powerlevel".equals(cfg[0])) {
-                ZWavePowerLevelCommandClass powerlevelCommandClass = (ZWavePowerLevelCommandClass) node
-                        .getCommandClass(CommandClass.COMMAND_CLASS_POWERLEVEL);
-                if (powerlevelCommandClass == null) {
-                    logger.debug("NODE {}: Error getting PowerLevelCommandClass", nodeId);
-                    continue;
-                }
-
-                // Since both level and timeout are set in a single command, we first check if the value exists in the
-                // pending list, and if not, use the value already stored in the command class
-                if ("level".equals(cfg[1])) {
-                    Integer timeout = (Integer) pendingCfg.get(ZWaveBindingConstants.CONFIGURATION_POWERLEVEL_TIMEOUT);
-                    if (timeout == null) {
-                        timeout = powerlevelCommandClass.getTimeout();
-                    }
-                    controllerHandler
-                            .sendData(node.encapsulate(
-                                    powerlevelCommandClass.setValueMessage(
-                                            (Integer.parseInt(configurationParameter.getValue().toString())), timeout),
-                                    0));
-                }
-                if ("timeout".equals(cfg[1])) {
-                    Integer level = (Integer) pendingCfg.get(ZWaveBindingConstants.CONFIGURATION_POWERLEVEL_LEVEL);
-                    if (level == null) {
-                        level = powerlevelCommandClass.getLevel();
-                    }
-                    controllerHandler.sendData(node.encapsulate(powerlevelCommandClass.setValueMessage(level,
-                            (Integer.parseInt(configurationParameter.getValue().toString()))), 0));
-                }
-                controllerHandler.sendData(node.encapsulate(powerlevelCommandClass.getValueMessage(), 0));
-                pendingCfg.put(configurationParameter.getKey(), valueObject);
-            } else if ("doorlock".equals(cfg[0])) {
-                ZWaveDoorLockCommandClass commandClass = (ZWaveDoorLockCommandClass) node
-                        .getCommandClass(CommandClass.COMMAND_CLASS_DOOR_LOCK);
-                if (commandClass == null) {
-                    logger.debug("NODE {}: Error getting ZWaveDoorLockCommandClass", nodeId);
-                    continue;
-                }
-
-                if ("timeout".equals(cfg[1])) {
-                    boolean timeoutEnabled;
-
-                    try {
-                        int value = ((BigDecimal) valueObject).intValue();
-                        if (value == 0) {
-                            timeoutEnabled = false;
-                        } else {
-                            timeoutEnabled = true;
+                    // Loop through the current members and remove anything that's not in the new members list
+                    for (ZWaveAssociation member : currentMembers.getAssociations()) {
+                        // Is the current association still in the newMembers list?
+                        if (newMembers.isAssociated(member.getNode(), member.getEndpoint()) == false) {
+                            // No - so it needs to be removed
+                            node.sendMessage(
+                                    node.removeAssociation(groupIndex, member.getNode(), member.getEndpoint()));
+                            totalMembers--;
                         }
-                        controllerHandler
-                                .sendData(node.encapsulate(commandClass.setConfigMessage(timeoutEnabled, value), 0));
-                        controllerHandler.sendData(node.encapsulate(commandClass.getConfigMessage(), 0));
-                        pendingCfg.put(ZWaveBindingConstants.CONFIGURATION_DOORLOCKTIMEOUT, valueObject);
-                    } catch (NumberFormatException e) {
-                        logger.debug("Number format exception parsing doorlock_timeout '{}'", valueObject);
                     }
-                }
-            } else if ("usercode".equals(cfg[0])) {
-                ZWaveUserCodeCommandClass commandClass = (ZWaveUserCodeCommandClass) node
-                        .getCommandClass(CommandClass.COMMAND_CLASS_USER_CODE);
-                if (commandClass == null) {
-                    logger.debug("NODE {}: Error getting ZWaveUserCodeCommandClass", nodeId);
-                    continue;
-                }
 
-                try {
-                    int code = Integer.parseInt(cfg[1]);
-                    if (code == 0 || code > commandClass.getNumberOfSupportedCodes()) {
-                        logger.debug("NODE {}: Attempt to set code ID outside of range", nodeId);
+                    // Now loop through the new members and add anything not in the current members list
+                    for (ZWaveAssociation member : newMembers.getAssociations()) {
+                        // Is the new association still in the currentMembers list?
+                        if (currentMembers.isAssociated(member.getNode(), member.getEndpoint()) == false) {
+                            // No - so it needs to be added
+                            // TODO: This needs to handle the sending endpoint not being root.
+                            node.sendMessage(
+                                    node.setAssociation(null, groupIndex, member.getNode(), member.getEndpoint()));
+                            totalMembers++;
+                        }
+                    }
+
+                    // If there are no known associations in the group, then let's clear the group completely
+                    // This ensures we don't end up with strange ghost associations
+                    if (totalMembers == 0) {
+                        node.sendMessage(node.clearAssociation(groupIndex));
+                    }
+
+                    // Request an update to the association group
+                    node.sendMessage(node.getAssociation(groupIndex));
+                    pendingCfg.put(configurationParameter.getKey(), valueObject);
+                    break;
+
+                case "wakeup":
+                    ZWaveWakeUpCommandClass wakeupCommandClass = (ZWaveWakeUpCommandClass) node
+                            .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
+                    if (wakeupCommandClass == null) {
+                        logger.debug("NODE {}: Error getting wakeupCommandClass", nodeId);
                         continue;
                     }
 
-                    logger.debug("NODE {}: ENCAP VERSION!!!!", nodeId);
-
-                    controllerHandler
-                            .sendData(node.encapsulate(commandClass.setUserCode(code, (String) valueObject), 0));
-                    controllerHandler.sendData(node.encapsulate(commandClass.getUserCode(code), 0));
-                    pendingCfg.put(configurationParameter.getKey(), valueObject);
-                } catch (NumberFormatException e) {
-                    logger.error("Number format exception parsing user code ID '{}'", configurationParameter.getKey());
-                }
-            } else if ("binding".equals(cfg[0])) {
-                if ("pollperiod".equals(cfg[1])) {
-                    pollingPeriod = POLLING_PERIOD_DEFAULT;
+                    Integer wakeupValue;
                     try {
-                        pollingPeriod = ((BigDecimal) configurationParameter.getValue()).intValue();
-                    } catch (final NumberFormatException ex) {
-                        logger.debug("NODE {}: pollingPeriod ({}) cannot be set - using default", nodeId,
-                                configurationParameter.getValue().toString());
+                        wakeupValue = ((BigDecimal) configurationParameter.getValue()).intValue();
+                    } catch (NumberFormatException e) {
+                        logger.debug("NODE {}: Error converting wakeup value from {}", nodeId,
+                                configurationParameter.getValue());
+                        continue;
                     }
-                    if (pollingPeriod < POLLING_PERIOD_MIN) {
-                        pollingPeriod = POLLING_PERIOD_MIN;
+
+                    logger.debug("NODE {}: Set wakeup interval to '{}'", nodeId, wakeupValue);
+
+                    // Set the wake-up interval
+                    node.sendMessage(wakeupCommandClass.setInterval(wakeupValue));
+                    // And request a read-back
+                    node.sendMessage(wakeupCommandClass.getIntervalMessage());
+                    pendingCfg.put(configurationParameter.getKey(), valueObject);
+                    break;
+
+                case "nodename":
+                    ZWaveNodeNamingCommandClass nameCommandClass = (ZWaveNodeNamingCommandClass) node
+                            .getCommandClass(CommandClass.COMMAND_CLASS_NODE_NAMING);
+                    if (nameCommandClass == null) {
+                        logger.debug("NODE {}: Error getting NodeNamingCommandClass", nodeId);
+                        continue;
                     }
-                    if (pollingPeriod > POLLING_PERIOD_MAX) {
-                        pollingPeriod = POLLING_PERIOD_MAX;
+
+                    if ("name".equals(cfg[1])) {
+                        controllerHandler.sendData(node.encapsulate(
+                                nameCommandClass.setNameMessage(configurationParameter.getValue().toString()), 0));
                     }
-                    valueObject = new BigDecimal(pollingPeriod);
+                    if ("location".equals(cfg[1])) {
+                        controllerHandler.sendData(node.encapsulate(
+                                nameCommandClass.setLocationMessage(configurationParameter.getValue().toString()), 0));
+                    }
+                    pendingCfg.put(configurationParameter.getKey(), valueObject);
+                    break;
+                case "switchall":
+                    ZWaveSwitchAllCommandClass switchallCommandClass = (ZWaveSwitchAllCommandClass) node
+                            .getCommandClass(CommandClass.COMMAND_CLASS_SWITCH_ALL);
+                    if (switchallCommandClass == null) {
+                        logger.debug("NODE {}: Error getting SwitchAllCommandClass", nodeId);
+                        continue;
+                    }
 
-                    // Restart polling so we use the new value
-                    startPolling();
-                }
-            } else if ("action".equals(cfg[0])) {
-                if ("failed".equals(cfg[1]) && valueObject instanceof BigDecimal
-                        && ((BigDecimal) valueObject).intValue() == ZWaveBindingConstants.ACTION_CHECK_VALUE) {
-                    controllerHandler.replaceFailedNode(nodeId);
-                }
-                if ("remove".equals(cfg[1]) && valueObject instanceof BigDecimal
-                        && ((BigDecimal) valueObject).intValue() == ZWaveBindingConstants.ACTION_CHECK_VALUE) {
-                    controllerHandler.removeFailedNode(nodeId);
-                    controllerHandler.checkNodeFailed(nodeId);
-                }
-                if ("reinit".equals(cfg[1]) && valueObject instanceof BigDecimal
-                        && ((BigDecimal) valueObject).intValue() == ZWaveBindingConstants.ACTION_CHECK_VALUE) {
-                    logger.debug("NODE {}: Re-initialising node!", nodeId);
+                    if ("mode".equals(cfg[1])) {
+                        controllerHandler.sendData(node.encapsulate(switchallCommandClass
+                                .setValueMessage(Integer.parseInt(configurationParameter.getValue().toString())), 0));
+                    }
+                    pendingCfg.put(configurationParameter.getKey(), valueObject);
+                    break;
 
-                    // Delete the saved XML
-                    ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
-                    nodeSerializer.DeleteNode(node.getHomeId(), nodeId);
+                case "powerlevel":
+                    ZWavePowerLevelCommandClass powerlevelCommandClass = (ZWavePowerLevelCommandClass) node
+                            .getCommandClass(CommandClass.COMMAND_CLASS_POWERLEVEL);
+                    if (powerlevelCommandClass == null) {
+                        logger.debug("NODE {}: Error getting PowerLevelCommandClass", nodeId);
+                        continue;
+                    }
 
-                    controllerHandler.reinitialiseNode(nodeId);
-                }
+                    // Since both level and timeout are set in a single command, we first check if the value exists in
+                    // the
+                    // pending list, and if not, use the value already stored in the command class
+                    if ("level".equals(cfg[1])) {
+                        Integer timeout = (Integer) pendingCfg
+                                .get(ZWaveBindingConstants.CONFIGURATION_POWERLEVEL_TIMEOUT);
+                        if (timeout == null) {
+                            timeout = powerlevelCommandClass.getTimeout();
+                        }
+                        controllerHandler.sendData(node.encapsulate(powerlevelCommandClass.setValueMessage(
+                                (Integer.parseInt(configurationParameter.getValue().toString())), timeout), 0));
+                    }
+                    if ("timeout".equals(cfg[1])) {
+                        Integer level = (Integer) pendingCfg.get(ZWaveBindingConstants.CONFIGURATION_POWERLEVEL_LEVEL);
+                        if (level == null) {
+                            level = powerlevelCommandClass.getLevel();
+                        }
+                        controllerHandler
+                                .sendData(
+                                        node.encapsulate(
+                                                powerlevelCommandClass
+                                                        .setValueMessage(level,
+                                                                (Integer.parseInt(
+                                                                        configurationParameter.getValue().toString()))),
+                                                0));
+                    }
+                    controllerHandler.sendData(node.encapsulate(powerlevelCommandClass.getValueMessage(), 0));
+                    pendingCfg.put(configurationParameter.getKey(), valueObject);
+                case "doorlock":
+                    ZWaveDoorLockCommandClass commandClass = (ZWaveDoorLockCommandClass) node
+                            .getCommandClass(CommandClass.COMMAND_CLASS_DOOR_LOCK);
+                    if (commandClass == null) {
+                        logger.debug("NODE {}: Error getting ZWaveDoorLockCommandClass", nodeId);
+                        continue;
+                    }
 
-                if ("heal".equals(cfg[1]) && valueObject instanceof BigDecimal
-                        && ((BigDecimal) valueObject).intValue() == ZWaveBindingConstants.ACTION_CHECK_VALUE) {
-                    logger.debug("NODE {}: Starting heal on node!", nodeId);
+                    if ("timeout".equals(cfg[1])) {
+                        boolean timeoutEnabled;
 
-                    controllerHandler.healNode(nodeId);
-                }
+                        try {
+                            int doorlockValue = ((BigDecimal) valueObject).intValue();
+                            if (doorlockValue == 0) {
+                                timeoutEnabled = false;
+                            } else {
+                                timeoutEnabled = true;
+                            }
+                            controllerHandler.sendData(
+                                    node.encapsulate(commandClass.setConfigMessage(timeoutEnabled, doorlockValue), 0));
+                            controllerHandler.sendData(node.encapsulate(commandClass.getConfigMessage(), 0));
+                            pendingCfg.put(ZWaveBindingConstants.CONFIGURATION_DOORLOCKTIMEOUT, valueObject);
+                        } catch (NumberFormatException e) {
+                            logger.debug("Number format exception parsing doorlock_timeout '{}'", valueObject);
+                        }
+                    }
+                    break;
+                case "usercode":
+                    ZWaveUserCodeCommandClass userCodeCommandClass = (ZWaveUserCodeCommandClass) node
+                            .getCommandClass(CommandClass.COMMAND_CLASS_USER_CODE);
+                    if (userCodeCommandClass == null) {
+                        logger.debug("NODE {}: Error getting ZWaveUserCodeCommandClass", nodeId);
+                        continue;
+                    }
 
-                // Don't save the value
-                valueObject = "";
-            } else {
-                logger.debug("NODE{}: Configuration invalid {}", nodeId, configurationParameter.getKey());
+                    try {
+                        int code = Integer.parseInt(cfg[1]);
+                        if (code == 0 || code > userCodeCommandClass.getNumberOfSupportedCodes()) {
+                            logger.debug("NODE {}: Attempt to set code ID outside of range", nodeId);
+                            continue;
+                        }
+                        controllerHandler.sendData(
+                                node.encapsulate(userCodeCommandClass.setUserCode(code, (String) valueObject), 0));
+                        controllerHandler.sendData(node.encapsulate(userCodeCommandClass.getUserCode(code), 0));
+                        pendingCfg.put(configurationParameter.getKey(), valueObject);
+                    } catch (NumberFormatException e) {
+                        logger.error("Number format exception parsing user code ID '{}'",
+                                configurationParameter.getKey());
+                    }
+                    break;
+                case "binding":
+                    if ("pollperiod".equals(cfg[1])) {
+                        pollingPeriod = POLLING_PERIOD_DEFAULT;
+                        try {
+                            pollingPeriod = ((BigDecimal) configurationParameter.getValue()).intValue();
+                        } catch (final NumberFormatException ex) {
+                            logger.debug("NODE {}: pollingPeriod ({}) cannot be set - using default", nodeId,
+                                    configurationParameter.getValue().toString());
+                        }
+                        if (pollingPeriod < POLLING_PERIOD_MIN) {
+                            pollingPeriod = POLLING_PERIOD_MIN;
+                        }
+                        if (pollingPeriod > POLLING_PERIOD_MAX) {
+                            pollingPeriod = POLLING_PERIOD_MAX;
+                        }
+                        valueObject = new BigDecimal(pollingPeriod);
+
+                        // Restart polling so we use the new value
+                        startPolling();
+                    }
+                    break;
+
+                case "action":
+                    if ("failed".equals(cfg[1]) && valueObject instanceof BigDecimal
+                            && ((BigDecimal) valueObject).intValue() == ZWaveBindingConstants.ACTION_CHECK_VALUE) {
+                        controllerHandler.replaceFailedNode(nodeId);
+                    }
+                    if ("remove".equals(cfg[1]) && valueObject instanceof BigDecimal
+                            && ((BigDecimal) valueObject).intValue() == ZWaveBindingConstants.ACTION_CHECK_VALUE) {
+                        controllerHandler.removeFailedNode(nodeId);
+                        controllerHandler.checkNodeFailed(nodeId);
+                    }
+                    if ("reinit".equals(cfg[1]) && valueObject instanceof BigDecimal
+                            && ((BigDecimal) valueObject).intValue() == ZWaveBindingConstants.ACTION_CHECK_VALUE) {
+                        logger.debug("NODE {}: Re-initialising node!", nodeId);
+
+                        // Delete the saved XML
+                        ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
+                        nodeSerializer.DeleteNode(node.getHomeId(), nodeId);
+
+                        controllerHandler.reinitialiseNode(nodeId);
+                    }
+
+                    if ("heal".equals(cfg[1]) && valueObject instanceof BigDecimal
+                            && ((BigDecimal) valueObject).intValue() == ZWaveBindingConstants.ACTION_CHECK_VALUE) {
+                        logger.debug("NODE {}: Starting heal on node!", nodeId);
+
+                        controllerHandler.healNode(nodeId);
+                    }
+
+                    // Don't save the value
+                    valueObject = "";
+                    break;
+
+                default:
+                    logger.debug("NODE{}: Configuration invalid {}", nodeId, configurationParameter.getKey());
             }
 
             configuration.put(configurationParameter.getKey(), valueObject);
@@ -1113,7 +1131,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 case COMMAND_CLASS_USER_CODE:
                     ZWaveUserCodeValueEvent codeEvent = (ZWaveUserCodeValueEvent) event;
                     cfgUpdated = true;
-                    String codeParameterName = "usercode_" + codeEvent.getId();
+                    String codeParameterName = ZWaveBindingConstants.CONFIGURATION_USERCODE_CODE + codeEvent.getId();
                     if (codeEvent.getStatus() == UserIdStatusType.OCCUPIED) {
                         configuration.put(codeParameterName, codeEvent.getCode());
                     } else {
