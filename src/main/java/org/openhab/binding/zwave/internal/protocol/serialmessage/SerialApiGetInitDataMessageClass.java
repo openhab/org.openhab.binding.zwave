@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class SerialApiGetInitDataMessageClass extends ZWaveCommandProcessor {
-    private final Logger logger = LoggerFactory.getLogger(SerialApiGetInitDataMessageClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(SerialApiGetInitDataMessageClass.class);
 
     private final ArrayList<Integer> zwaveNodes = new ArrayList<Integer>();
 

@@ -42,7 +42,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
         implements ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
 
-    private final Logger logger = LoggerFactory.getLogger(ZWaveUserCodeCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveUserCodeCommandClass.class);
     public static final int USER_CODE_MIN_LENGTH = 4;
     public static final int USER_CODE_MAX_LENGTH = 10;
 

@@ -29,7 +29,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveGroupingNameCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveGroupingNameCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveGroupingNameCommandClass.class);
 
     /**
      * Creates a new instance of the ZWaveGroupingNameCommandClass class.

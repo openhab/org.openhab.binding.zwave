@@ -28,7 +28,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveDeviceResetLocallyCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveDeviceResetLocallyCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveDeviceResetLocallyCommandClass.class);
 
     private static final byte DEVICE_RESET_REPORT = 0x01;
 

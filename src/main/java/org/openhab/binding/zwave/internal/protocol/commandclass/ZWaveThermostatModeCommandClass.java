@@ -41,7 +41,7 @@ public class ZWaveThermostatModeCommandClass extends ZWaveCommandClass
         implements ZWaveBasicCommands, ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveThermostatModeCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveThermostatModeCommandClass.class);
 
     private static final byte THERMOSTAT_MODE_SET = 0x1;
     private static final byte THERMOSTAT_MODE_GET = 0x2;

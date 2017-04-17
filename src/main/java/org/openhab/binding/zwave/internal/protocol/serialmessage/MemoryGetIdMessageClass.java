@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class MemoryGetIdMessageClass extends ZWaveCommandProcessor {
-    private final Logger logger = LoggerFactory.getLogger(MemoryGetIdMessageClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(MemoryGetIdMessageClass.class);
 
     private int homeId = 0;
     private int ownNodeId = 0;

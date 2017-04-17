@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class AssignReturnRouteMessageClass extends ZWaveCommandProcessor {
-    private final Logger logger = LoggerFactory.getLogger(AssignReturnRouteMessageClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(AssignReturnRouteMessageClass.class);
 
     public SerialMessage doRequest(int nodeId, int destinationId, int callbackId) {
         logger.debug("NODE {}: Assigning return route to node {}", nodeId, destinationId);

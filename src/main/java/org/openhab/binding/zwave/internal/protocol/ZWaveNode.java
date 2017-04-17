@@ -53,7 +53,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveNode {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveNode.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveNode.class);
 
     private final ZWaveDeviceClass deviceClass;
     @XStreamOmitField

@@ -37,7 +37,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveConfigurationCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveConfigurationCommandClass.class);
 
     private static final int CONFIGURATIONCMD_SET = 0x04;
     private static final int CONFIGURATIONCMD_GET = 0x05;

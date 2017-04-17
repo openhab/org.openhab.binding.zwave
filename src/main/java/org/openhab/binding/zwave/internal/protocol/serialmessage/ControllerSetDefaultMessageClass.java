@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class ControllerSetDefaultMessageClass extends ZWaveCommandProcessor {
-    private final Logger logger = LoggerFactory.getLogger(ControllerSetDefaultMessageClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ControllerSetDefaultMessageClass.class);
 
     public SerialMessage doRequest() {
         return new SerialMessage(SerialMessageClass.SetDefault, SerialMessageType.Request,

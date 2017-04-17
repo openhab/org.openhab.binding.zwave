@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
  * @author Jorg de Jong
  */
 public class DeleteSucReturnRouteMessageClass extends ZWaveCommandProcessor {
-    private final Logger logger = LoggerFactory.getLogger(DeleteSucReturnRouteMessageClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(DeleteSucReturnRouteMessageClass.class);
 
     public SerialMessage doRequest(int nodeId) {
         logger.debug("NODE {}: Deleting SUC return routes", nodeId);

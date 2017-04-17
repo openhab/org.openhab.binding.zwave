@@ -28,7 +28,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveMultiLevelToggleSwitchCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveMultiLevelToggleSwitchCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveMultiLevelToggleSwitchCommandClass.class);
 
     private static final int SWITCH_TOGGLE_SET = 1;
     private static final int SWITCH_TOGGLE_GET = 2;

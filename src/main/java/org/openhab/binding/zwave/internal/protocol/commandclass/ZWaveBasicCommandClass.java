@@ -38,7 +38,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveBasicCommandClass extends ZWaveCommandClass implements ZWaveBasicCommands {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveBasicCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveBasicCommandClass.class);
 
     private static final int BASIC_SET = 0x01;
     private static final int BASIC_GET = 0x02;

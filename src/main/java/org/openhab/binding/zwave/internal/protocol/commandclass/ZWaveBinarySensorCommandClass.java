@@ -45,7 +45,7 @@ public class ZWaveBinarySensorCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveCommandClassDynamicState, ZWaveCommandClassInitialization {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveBinarySensorCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveBinarySensorCommandClass.class);
 
     private static final int MAX_SUPPORTED_VERSION = 2;
 

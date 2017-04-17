@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
  */
 public class FibaroFGRM222CommandClass extends ZWaveCommandClass {
 
-    private final Logger logger = LoggerFactory.getLogger(FibaroFGRM222CommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(FibaroFGRM222CommandClass.class);
     private static final int blindOffset = 5;
     private static final int lamellaTiltOffset = 6;
 

@@ -34,7 +34,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveApplicationStatusClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveApplicationStatusClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveApplicationStatusClass.class);
 
     @XStreamOmitField
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);

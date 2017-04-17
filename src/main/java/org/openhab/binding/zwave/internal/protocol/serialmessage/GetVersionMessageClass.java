@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class GetVersionMessageClass extends ZWaveCommandProcessor {
-    private final Logger logger = LoggerFactory.getLogger(GetVersionMessageClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(GetVersionMessageClass.class);
 
     private String zWaveVersion = "Unknown";
     private int ZWaveLibraryType = 0;

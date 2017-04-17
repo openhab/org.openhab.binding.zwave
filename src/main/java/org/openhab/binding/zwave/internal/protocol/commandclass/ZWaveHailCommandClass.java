@@ -34,7 +34,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveHailCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveHailCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveHailCommandClass.class);
 
     private static final int HAIL = 1;
 
