@@ -52,7 +52,8 @@ public class ZWaveBindingConstants {
     public final static String CONFIGURATION_POWERLEVEL_LEVEL = "powerlevel_level";
     public final static String CONFIGURATION_POWERLEVEL_TIMEOUT = "powerlevel_timeout";
 
-    public final static String CONFIGURATION_USERCODE = "usercode_";
+    public final static String CONFIGURATION_USERCODE_LABEL = "usercode_label_";
+    public final static String CONFIGURATION_USERCODE_CODE = "usercode_code_";
 
     public final static String CONFIGURATION_DOORLOCKTIMEOUT = "doorlock_timeout";
 
