@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class GetSucNodeIdMessageClass extends ZWaveCommandProcessor {
-    private static final Logger logger = LoggerFactory.getLogger(GetSucNodeIdMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(GetSucNodeIdMessageClass.class);
 
     int sucNode = 0;
 

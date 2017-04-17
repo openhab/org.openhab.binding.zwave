@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class ZWaveActivator implements BundleActivator {
 
-    private static Logger logger = LoggerFactory.getLogger(ZWaveActivator.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveActivator.class);
 
     private static BundleContext context;
 

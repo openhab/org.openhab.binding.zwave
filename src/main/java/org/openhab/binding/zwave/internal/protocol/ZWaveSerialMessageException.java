@@ -8,6 +8,11 @@
  */
 package org.openhab.binding.zwave.internal.protocol;
 
+/**
+ *
+ * @author Chris Jackson
+ *
+ */
 public class ZWaveSerialMessageException extends Exception {
 
     /**

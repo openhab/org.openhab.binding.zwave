@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class SendDataMessageClass extends ZWaveCommandProcessor {
-    private static final Logger logger = LoggerFactory.getLogger(SendDataMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(SendDataMessageClass.class);
 
     @Override
     public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,

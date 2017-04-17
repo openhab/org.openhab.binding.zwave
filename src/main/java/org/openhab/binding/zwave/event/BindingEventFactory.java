@@ -7,6 +7,11 @@ import org.eclipse.smarthome.core.events.Event;
 
 import com.google.common.collect.Sets;
 
+/**
+ *
+ * @author Chris Jackson
+ *
+ */
 public class BindingEventFactory extends AbstractEventFactory {
     private static final String BINDING_EVENT_TOPIC = "smarthome/binding/{binding}/{entity}/{event}";
 

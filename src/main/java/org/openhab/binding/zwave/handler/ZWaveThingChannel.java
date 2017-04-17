@@ -15,6 +15,11 @@ import org.openhab.binding.zwave.internal.converter.ZWaveCommandClassConverter;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 
+/**
+ *
+ * @author Chris Jackson
+ *
+ */
 public class ZWaveThingChannel {
     public enum DataType {
         DecimalType,

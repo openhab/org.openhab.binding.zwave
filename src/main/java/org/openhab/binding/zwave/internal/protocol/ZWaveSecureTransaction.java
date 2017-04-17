@@ -1,5 +1,10 @@
 package org.openhab.binding.zwave.internal.protocol;
 
+/**
+ *
+ * @author Chris Jackson
+ *
+ */
 public class ZWaveSecureTransaction extends ZWaveTransaction {
     private ZWaveTransaction linkedTransaction;
 

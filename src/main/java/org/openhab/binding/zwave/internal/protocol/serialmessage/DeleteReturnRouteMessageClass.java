@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class DeleteReturnRouteMessageClass extends ZWaveCommandProcessor {
-    private static final Logger logger = LoggerFactory.getLogger(DeleteReturnRouteMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(DeleteReturnRouteMessageClass.class);
 
     public ZWaveSerialPayload doRequest(int nodeId) {
         logger.debug("NODE {}: Deleting return routes", nodeId);

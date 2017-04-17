@@ -191,7 +191,7 @@ public class ZWaveTransactionManager {
     }
 
     private void notifyTransactionComplete(final ZWaveTransaction transaction) {
-        logger.debug("NODE {}: notifyTransactionResponse {} {}", transaction.getNodeId(),
+        logger.debug("NODE {}: notifyTransactionResponse TID:{} {}", transaction.getNodeId(),
                 transaction.getTransactionId(), transaction.getTransactionState());
         new Thread() {
             @Override
@@ -209,7 +209,7 @@ public class ZWaveTransactionManager {
         if (transaction.getTransactionState() != TransactionState.DONE
                 && transaction instanceof ZWaveSecureTransaction) {
             ZWaveSecureTransaction secureTransaction = (ZWaveSecureTransaction) transaction;
-            logger.debug("NODE {}: processing secure transaction -- {}", transaction.getNodeId(),
+            logger.debug("NODE {}: processing secure transaction -- TID:{}", transaction.getNodeId(),
                     secureTransaction.getLinkedTransaction().getTransactionId());
 
             synchronized (transactionListeners) {
@@ -385,7 +385,7 @@ public class ZWaveTransactionManager {
 
                         // CAN means out of flow message was received by the controller
                         // It probably means we sent a message while the controller was processing the previous message.
-                        logger.debug("Resetting last transaction {}", lastTransaction.getTransactionId());
+                        logger.debug("TID {}: Resetting transaction", lastTransaction.getTransactionId());
 
                         notifyTransactionComplete(lastTransaction);
 
@@ -512,14 +512,15 @@ public class ZWaveTransactionManager {
                     } else {
                         // Try and correlate this incoming REQuest with a transaction
                         for (ZWaveTransaction transaction : outstandingTransactions) {
-                            logger.debug("checking transaction " + transaction.getCallbackId() + " (Callback "
-                                    + transaction.getCallbackId() + ") ......");
+                            logger.debug("Checking TID {}: (Callback {})", transaction.getTransactionId(),
+                                    transaction.getCallbackId());
 
                             ZWaveCommandProcessor msgClass = ZWaveCommandProcessor
                                     .getMessageDispatcher(incomingMessage.getMessageClass());
                             if (msgClass != null
                                     && msgClass.correlateTransactionResponse(transaction, incomingMessage)) {
-                                logger.debug("Correlated to transaction " + transaction.getCallbackId() + "......");
+                                logger.debug("Correlated to TID {}: callback {}", transaction.getTransactionId(),
+                                        transaction.getCallbackId());
                                 currentTransaction = transaction;
                                 break;
                             }
@@ -541,8 +542,8 @@ public class ZWaveTransactionManager {
                     // Handle the transaction state machine
                     boolean transactionCompleted = false;
                     if (currentTransaction.transactionAdvance(incomingMessage) == true) {
-                        logger.debug("Transaction " + currentTransaction.getCallbackId() + " advanced to "
-                                + currentTransaction.getTransactionState());
+                        logger.debug("TID {}: Advanced to {}", currentTransaction.getTransactionId(),
+                                currentTransaction.getTransactionState());
                         // Transaction has advanced - update the timer.
                         currentTransaction.setTimeout(getNextTimer(currentTransaction));
                         // startTransactionTimer();
@@ -623,7 +624,8 @@ public class ZWaveTransactionManager {
                     // Note that if retries are still outstanding, then a transaction is not considered complete
                     // if it has been CANCELLED or ABORTED.
                     if (transactionCompleted == true) {
-                        logger.debug("NODE {}: **** Transaction completed", currentTransaction.getNodeId());
+                        logger.debug("NODE {}: TID {}: Transaction completed", currentTransaction.getNodeId(),
+                                currentTransaction.getTransactionId());
 
                         // Notify the async threads
                         // Note that this is really here to complete transactions that don't return a command class
@@ -632,7 +634,8 @@ public class ZWaveTransactionManager {
                         // Notify the controller
                         controller.handleTransactionComplete(currentTransaction, incomingMessage);
                     } else {
-                        logger.debug("NODE {}: **** Transaction not completed", currentTransaction.getNodeId());
+                        logger.debug("NODE {}: TID {}: Transaction not completed", currentTransaction.getNodeId(),
+                                currentTransaction.getTransactionId());
                     }
                 }
             }
@@ -853,9 +856,9 @@ public class ZWaveTransactionManager {
                     Date timer = transaction.getTimeout();
                     if (timer != null && timer.after(now) == false) {
                         // Timeout
-                        logger.debug("NODE {}: XXXXXXX Timeout at state {}. {} retries remaining.",
-                                transaction.getNodeId(), transaction.getTransactionState(),
-                                transaction.getAttemptsRemaining());
+                        logger.debug("NODE {}: TID {}: Timeout at state {}. {} retries remaining.",
+                                transaction.getNodeId(), transaction.getTransactionId(),
+                                transaction.getTransactionState(), transaction.getAttemptsRemaining());
 
                         // If this is a SendData message, and we're not waiting for DATA
                         // Then we need to cancel this request.
@@ -879,7 +882,8 @@ public class ZWaveTransactionManager {
                             if (lastTransaction == transaction) {
                                 // If this is the current transaction, then reset it.
                                 lastTransaction = null;
-                                logger.debug("Transaction is current transaction, so clearing!!!!!");
+                                logger.debug("TID {}: Transaction is current transaction, so clearing!!!!!",
+                                        transaction.getTransactionId());
                             }
 
                             // Resend if there are still attempts remaining
@@ -948,16 +952,12 @@ public class ZWaveTransactionManager {
 
             @Override
             public void transactionEvent(ZWaveTransaction transactionEvent) {
-                logger.debug("********* Transaction event listener " + transactionId + " -- "
-                        + transactionEvent.getTransactionId());
-
                 // Check if this transaction is ours
                 if (transactionEvent.getTransactionId() != transactionId) {
                     return;
                 }
-                logger.debug("********* Transaction event listener " + transactionId + " -- DONE -- "
-                        + transactionEvent.getTransactionState() + " "
-                        + transactionEvent.getTransactionCancelledState());
+                logger.debug("TID {}: Transaction event listener: DONE: {} -> ", transactionId,
+                        transactionEvent.getTransactionState(), transactionEvent.getTransactionCancelledState());
 
                 // Return the response
                 ZWaveTransactionResponse.State state = State.COMPLETE;
