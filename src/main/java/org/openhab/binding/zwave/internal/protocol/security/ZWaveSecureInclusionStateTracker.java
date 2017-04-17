@@ -33,7 +33,7 @@ import org.slf4j.LoggerFactory;
  * @author Dave Badia
  */
 public class ZWaveSecureInclusionStateTracker {
-    private final Logger logger = LoggerFactory.getLogger(ZWaveSecureInclusionStateTracker.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveSecureInclusionStateTracker.class);
 
     /**
      * During node inclusion <b>only</b>, this is the order in which commands should be sent and received.

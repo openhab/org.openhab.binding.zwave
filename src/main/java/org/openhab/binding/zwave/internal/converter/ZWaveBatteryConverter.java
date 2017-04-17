@@ -32,7 +32,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ZWaveBatteryConverter extends ZWaveCommandClassConverter {
 
-    private final Logger logger = LoggerFactory.getLogger(ZWaveBatteryConverter.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveBatteryConverter.class);
     private static final int REFRESH_INTERVAL = 3600; // refresh interval in seconds for the battery level;
 
     /**

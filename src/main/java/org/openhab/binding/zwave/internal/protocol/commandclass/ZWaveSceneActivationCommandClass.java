@@ -30,7 +30,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveSceneActivationCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveBasicCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveBasicCommandClass.class);
 
     private static final int SCENEACTIVATION_SET = 0x01;
 

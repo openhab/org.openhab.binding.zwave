@@ -35,7 +35,7 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class ZWaveDiscoveryService extends AbstractDiscoveryService implements ExtendedDiscoveryService {
-    private final Logger logger = LoggerFactory.getLogger(ZWaveDiscoveryService.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveDiscoveryService.class);
 
     private ZWaveControllerHandler controllerHandler;
     private DiscoveryServiceCallback discoveryServiceCallback;

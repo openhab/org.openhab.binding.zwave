@@ -81,7 +81,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ZWaveController {
 
-    private final Logger logger = LoggerFactory.getLogger(ZWaveController.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveController.class);
 
     private static final int ZWAVE_RESPONSE_TIMEOUT = 5000;
     private static final int INITIAL_TX_QUEUE_SIZE = 128;
@@ -1492,47 +1492,6 @@ public class ZWaveController {
                 logger.error("Exception during ZWave thread: Send", e);
             }
             logger.debug("Stopped ZWave thread: Send");
-        }
-    }
-
-    /**
-     * WatchDogTimerTask class. Acts as a watch dog and checks the serial
-     * threads to see whether they are still running.
-     *
-     * @author Jan-Willem Spuij
-     */
-    private class WatchDogTimerTask extends TimerTask {
-
-        private final Logger logger = LoggerFactory.getLogger(WatchDogTimerTask.class);
-
-        /**
-         * Creates a new instance of the WatchDogTimerTask class.
-         *
-         * @param serialPortName
-         *            the serial port name to reconnect to in case the serial
-         *            threads have died.
-         */
-        public WatchDogTimerTask() {
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public void run() {
-            logger.debug("Watchdog: Checking Serial threads");
-            if (
-            // (receiveThread != null && !receiveThread.isAlive()) ||
-            (sendThread != null && !sendThread.isAlive()) || (inputThread != null && !inputThread.isAlive())) {
-                logger.warn("Threads not alive, respawning. SEND({}) INPUT({}).",
-                        (sendThread != null && !sendThread.isAlive()), (inputThread != null && !inputThread.isAlive()));
-                // disconnect();
-                // try {
-                // connect(serialPortName);
-                // } catch (SerialInterfaceException e) {
-                // logger.error("Unable to restart Serial threads: {}", e.getLocalizedMessage());
-                // }
-            }
         }
     }
 

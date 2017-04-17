@@ -8,16 +8,21 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
-import org.openhab.binding.zwave.internal.protocol.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
+import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
+import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 /**
  * Handles the climate control schedule command class.
@@ -29,7 +34,7 @@ import java.util.Objects;
 public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveClimateControlScheduleCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveClimateControlScheduleCommandClass.class);
 
     private static final int SCHEDULE_CHANGED_GET = 0x04;
     private static final int SCHEDULE_CHANGED_REPORT = 0x05;
@@ -42,13 +47,12 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
 
     private static final byte SCHEDULE_CHANGE_TEMPORARILY_DISABLED = 0;
 
-
     /**
      * Creates a new instance of the ZWaveClimateControlCommandClass class.
      *
-     * @param node       the node this command class belongs to
+     * @param node the node this command class belongs to
      * @param controller the controller to use
-     * @param endpoint   the endpoint this Command class belongs to
+     * @param endpoint the endpoint this Command class belongs to
      */
     public ZWaveClimateControlScheduleCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
@@ -79,9 +83,12 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
                 getController().enqueue(getScheduleChangedReportMessage(SCHEDULE_CHANGE_TEMPORARILY_DISABLED));
                 break;
             case SCHEDULE_OVERRIDE_REPORT:
-                OverrideType overrideType = OverrideType.getOverrideTypeFor((byte) (serialMessage.getMessagePayloadByte(offset + 1) & 0x03));
-                ScheduleState scheduleState = ScheduleState.getScheduleStateFor((byte) serialMessage.getMessagePayloadByte(offset + 2));
-                logger.info("NODE {} reported: Override type: {}, ScheduleState: {}", this.getNode().getNodeId(), overrideType, scheduleState);
+                OverrideType overrideType = OverrideType
+                        .getOverrideTypeFor((byte) (serialMessage.getMessagePayloadByte(offset + 1) & 0x03));
+                ScheduleState scheduleState = ScheduleState
+                        .getScheduleStateFor((byte) serialMessage.getMessagePayloadByte(offset + 2));
+                logger.info("NODE {} reported: Override type: {}, ScheduleState: {}", this.getNode().getNodeId(),
+                        overrideType, scheduleState);
                 break;
             default:
                 logger.warn(String.format("NODE %d: Unsupported Command %d for command class %s (0x%02X).",
@@ -95,7 +102,8 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
         logger.debug("NODE {}: Creating new message for command SCHEDULE_CHANGED_REPORT", getNode().getNodeId());
 
         SerialMessage result = new SerialMessage(getNode().getNodeId(), SerialMessage.SerialMessageClass.SendData,
-                SerialMessage.SerialMessageType.Request, SerialMessage.SerialMessageClass.SendData, SerialMessage.SerialMessagePriority.RealTime);
+                SerialMessage.SerialMessageType.Request, SerialMessage.SerialMessageClass.SendData,
+                SerialMessage.SerialMessagePriority.RealTime);
 
         ByteArrayOutputStream outputData = new ByteArrayOutputStream();
         outputData.write(getNode().getNodeId());
@@ -201,11 +209,14 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
             ScheduleState that = (ScheduleState) o;
-            return setBack == that.setBack &&
-                    state == that.state;
+            return setBack == that.setBack && state == that.state;
         }
 
         @Override

@@ -40,7 +40,7 @@ public class ZWaveBinarySwitchCommandClass extends ZWaveCommandClass
         implements ZWaveBasicCommands, ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveBinarySwitchCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveBinarySwitchCommandClass.class);
 
     private static final int SWITCH_BINARY_SET = 0x01;
     private static final int SWITCH_BINARY_GET = 0x02;

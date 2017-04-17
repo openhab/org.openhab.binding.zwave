@@ -37,7 +37,7 @@ public class ZWavePowerLevelCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWavePowerLevelCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWavePowerLevelCommandClass.class);
 
     private static final int POWERLEVEL_SET = 1;
     private static final int POWERLEVEL_GET = 2;

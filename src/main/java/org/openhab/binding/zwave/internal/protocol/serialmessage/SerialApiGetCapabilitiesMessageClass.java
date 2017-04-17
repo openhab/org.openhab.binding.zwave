@@ -28,7 +28,7 @@ import com.google.common.collect.ImmutableSet;
  * @author Chris Jackson
  */
 public class SerialApiGetCapabilitiesMessageClass extends ZWaveCommandProcessor {
-    private final Logger logger = LoggerFactory.getLogger(SerialApiGetCapabilitiesMessageClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(SerialApiGetCapabilitiesMessageClass.class);
 
     private String serialAPIVersion = "Unknown";
     private int manufactureId = 0;

@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class GetControllerCapabilitiesMessageClass extends ZWaveCommandProcessor {
-    private final Logger logger = LoggerFactory.getLogger(GetControllerCapabilitiesMessageClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(GetControllerCapabilitiesMessageClass.class);
 
     private final byte CONTROLLER_IS_SECONDARY = 0x01;
     private final byte CONTROLLER_ON_OTHER_NETWORK = 0x02;

@@ -40,7 +40,7 @@ public class ZWaveBatteryCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveBatteryCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveBatteryCommandClass.class);
 
     private static final int BATTERY_GET = 0x02;
     private static final int BATTERY_REPORT = 0x03;

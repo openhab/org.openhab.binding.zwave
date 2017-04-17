@@ -34,7 +34,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ZWaveThermostatModeConverter extends ZWaveCommandClassConverter {
 
-    private final Logger logger = LoggerFactory.getLogger(ZWaveThermostatModeConverter.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveThermostatModeConverter.class);
 
     /**
      * Constructor. Creates a new instance of the {@link ZWaveThermostatModeConverter} class.

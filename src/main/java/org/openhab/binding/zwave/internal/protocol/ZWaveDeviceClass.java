@@ -27,7 +27,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 @XStreamAlias("deviceClass")
 public class ZWaveDeviceClass {
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveDeviceClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveDeviceClass.class);
 
     private Basic basicDeviceClass;
     private Generic genericDeviceClass;

@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class EnableSucMessageClass extends ZWaveCommandProcessor {
-    private final Logger logger = LoggerFactory.getLogger(EnableSucMessageClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(EnableSucMessageClass.class);
 
     public SerialMessage doRequest(SUCType type) {
         logger.debug("Assigning Controller SUC functionality to {}", type.toString());

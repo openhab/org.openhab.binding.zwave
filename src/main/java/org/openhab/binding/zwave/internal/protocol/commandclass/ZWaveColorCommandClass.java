@@ -40,7 +40,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCommandClassInitialization {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveColorCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveColorCommandClass.class);
     private static final int MAX_SUPPORTED_VERSION = 3;
 
     private static final int SWITCH_COLOR_SUPPORTED_GET = 1;

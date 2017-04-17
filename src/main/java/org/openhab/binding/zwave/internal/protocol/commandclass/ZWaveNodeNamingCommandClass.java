@@ -53,7 +53,7 @@ public class ZWaveNodeNamingCommandClass extends ZWaveCommandClass implements ZW
     }
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveNodeNamingCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveNodeNamingCommandClass.class);
 
     private static final int NAME_SET = 0x01;
     private static final int NAME_GET = 0x02;

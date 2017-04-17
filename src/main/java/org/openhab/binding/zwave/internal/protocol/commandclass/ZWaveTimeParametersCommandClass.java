@@ -40,7 +40,7 @@ public class ZWaveTimeParametersCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveTimeParametersCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveTimeParametersCommandClass.class);
 
     private static final int TIME_SET = 1;
     private static final int TIME_GET = 2;
