@@ -8,10 +8,8 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,6 +20,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.commandclass.impl.CommandClassUserCodeV1;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
@@ -45,15 +44,9 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
     public static final int USER_CODE_MIN_LENGTH = 4;
     public static final int USER_CODE_MAX_LENGTH = 10;
 
-    private static final int USER_CODE_SET = 0x01;
-    private static final int USER_CODE_GET = 0x02;
-    private static final int USER_CODE_REPORT = 0x03;
-
     /**
      * Request the number of user codes that can be stored
      */
-    private static final int USER_NUMBER_GET = 0x04;
-    private static final int USER_NUMBER_REPORT = 0x05;
 
     private static final int UNKNOWN = -1;
 
@@ -86,93 +79,124 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
         return CommandClass.COMMAND_CLASS_USER_CODE;
     }
 
-    @ZWaveResponseHandler(id = USER_NUMBER_REPORT, name = "USER_NUMBER_REPORT")
+    @ZWaveResponseHandler(id = CommandClassUserCodeV1.USERS_NUMBER_REPORT, name = "USERS_NUMBER_REPORT")
     public void handleUserNumberReportReport(ZWaveCommandClassPayload payload, int endpoint) {
-        numberOfUsersSupported = payload.getPayloadByte(2);
+        Map<String, Object> response = CommandClassUserCodeV1.handleUsersNumberReport(payload.getPayloadBuffer());
+        numberOfUsersSupported = (int) response.get("SUPPORTED_USERS");
         logger.debug("NODE {}: UserCode numberOfUsersSupported={}", getNode().getNodeId(), numberOfUsersSupported);
     }
 
-    @ZWaveResponseHandler(id = USER_CODE_REPORT, name = "USER_CODE_REPORT")
+    @ZWaveResponseHandler(id = CommandClassUserCodeV1.USER_CODE_REPORT, name = "USER_CODE_REPORT")
     public void handleUserCodeReportReport(ZWaveCommandClassPayload payload, int endpoint) {
-        int id = payload.getPayloadByte(2);
-        UserIdStatusType status = UserIdStatusType.getDoorLockStateType(payload.getPayloadByte(3));
+        Map<String, Object> response = CommandClassUserCodeV1.handleUserCodeReport(payload.getPayloadBuffer());
+        int id = (int) response.get("USER_IDENTIFIER");
+        UserIdStatusType status = UserIdStatusType.valueOf((String) response.get("USER_ID_STATUS"));
         logger.debug("NODE {}: USER_CODE_REPORT {} is {}", getNode().getNodeId(), id, status);
-        String code = "";
-        int size = payload.getPayloadLength() - 4;
-        if (size > USER_CODE_MAX_LENGTH) {
-            logger.debug("NODE {}: UserCode({}) length is too long ({} bytes)", getNode().getNodeId(), id, size);
-            size = USER_CODE_MAX_LENGTH;
-        }
-        if (status == UserIdStatusType.OCCUPIED) {
-            byte[] strBuffer = Arrays.copyOfRange(payload.getPayloadBuffer(), 4, size + 4);
-            try {
-                code = new String(strBuffer, "ASCII");
-            } catch (UnsupportedEncodingException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+
+        byte[] code = (byte[]) response.get("USER_CODE");
+
+        // Check if this code only contains ASCII numbers - as per the current standard
+        boolean isAscii = true;
+        for (byte b : code) {
+            if (b < '0' || b > '9') {
+                isAscii = false;
+                break;
             }
-            logger.debug("NODE {}: USER_CODE_REPORT {} is {} [{}]", getNode().getNodeId(), id, status, code);
         }
-        userCodeList.put(id, new UserCode(status, code));
-        ZWaveUserCodeValueEvent zEvent = new ZWaveUserCodeValueEvent(getNode().getNodeId(), endpoint, id, code, status);
+
+        String asciiCode;
+        if (isAscii) {
+            try {
+                asciiCode = new String(code, "ASCII");
+            } catch (UnsupportedEncodingException e) {
+                logger.debug("Encoding unsupported reading user code");
+                asciiCode = "";
+            }
+        } else {
+            StringBuilder builder = new StringBuilder();
+            boolean first = true;
+            for (byte b : code) {
+                if (!first) {
+                    builder.append(" ");
+                }
+                first = false;
+                builder.append(String.format("%02X", b));
+            }
+
+            asciiCode = builder.toString();
+        }
+
+        userCodeList.put(id, new UserCode(status, asciiCode));
+        ZWaveUserCodeValueEvent zEvent = new ZWaveUserCodeValueEvent(getNode().getNodeId(), endpoint, id, asciiCode,
+                status);
         getController().notifyEventListeners(zEvent);
     }
 
     public ZWaveCommandClassTransactionPayload getSupported() {
-        logger.debug("NODE {}: Creating new message for application command USER_NUMBER_GET", getNode().getNodeId());
-
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), USER_NUMBER_GET)
-                .withPriority(TransactionPriority.Get).withExpectedResponseCommand(USER_NUMBER_REPORT).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
+                CommandClassUserCodeV1.getUsersNumberGet())
+                        .withExpectedResponseCommand(CommandClassUserCodeV1.USERS_NUMBER_REPORT)
+                        .withPriority(TransactionPriority.Get).build();
     }
 
     public ZWaveCommandClassTransactionPayload getUserCode(int id) {
-        logger.debug("NODE {}: Creating new message for application command USER_CODE_GET({})", getNode().getNodeId(),
-                id);
-
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), USER_CODE_GET)
-                .withPayload(id).withPriority(TransactionPriority.Config).withExpectedResponseCommand(USER_CODE_REPORT)
-                .build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
+                CommandClassUserCodeV1.getUserCodeGet(id))
+                        .withExpectedResponseCommand(CommandClassUserCodeV1.USER_CODE_REPORT)
+                        .withPriority(TransactionPriority.Config).build();
     }
 
-    public ZWaveCommandClassTransactionPayload setUserCode(int id, String code) {
-        boolean codeIsZeros = true;
+    /**
+     *
+     * @param id
+     * @param asciiCode
+     * @return
+     */
+    public ZWaveCommandClassTransactionPayload setUserCode(int id, String asciiCode) {
+        byte[] code;
+        UserIdStatusType status;
 
-        // Zeros means delete the code
-        try {
-            codeIsZeros = Integer.parseInt(code) == 0;
-        } catch (NumberFormatException e) {
-            logger.debug("NODE {}: Error parsing user code. Code will be removed");
-        }
+        // Check if this is an ASCII code, or a Hex code
+        String tmpCode = asciiCode.trim();
 
-        if (codeIsZeros) {
-            code = ""; // send no code since we will set UserIdStatusType.AVAILBLE
-        }
+        if (tmpCode == null || tmpCode.length() == 0) {
+            status = UserIdStatusType.AVAILABLE;
+            code = new byte[0];
+        } else {
+            status = UserIdStatusType.OCCUPIED;
 
-        if (codeIsZeros || userCodeIsValid(code)) {
-            logger.debug("NODE {}: {} user code for {}", this.getNode().getNodeId(),
-                    codeIsZeros ? "Removing" : "Setting", id);
+            String[] codeElements = tmpCode.split(" ");
+            if (codeElements.length > 1) {
+                // HEX
+                code = new byte[codeElements.length];
 
-            ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-            outputData.write(id); // identifier, must be 1 or higher
-            if (codeIsZeros) {
-                outputData.write(UserIdStatusType.AVAILABLE.key); // status
-            } else {
-                outputData.write(UserIdStatusType.OCCUPIED.key); // status
                 try {
-                    for (Byte aCodeDigit : code.getBytes("UTF-8")) {
-                        outputData.write(aCodeDigit);
+                    int cnt = 0;
+                    for (String element : codeElements) {
+                        code[cnt++] = (byte) Integer.parseInt(element, 16);
+                    }
+                } catch (NumberFormatException e) {
+                    logger.error("NumberFormatException converting user code: {}", asciiCode);
+                    return null;
+                }
+            } else {
+                // ASCII
+                code = new byte[asciiCode.length()];
+
+                try {
+                    int cnt = 0;
+                    for (Byte aCodeDigit : asciiCode.getBytes("UTF-8")) {
+                        code[cnt++] = aCodeDigit;
                     }
                 } catch (UnsupportedEncodingException e) {
-                    logger.error("Got UnsupportedEncodingException", e);
+                    logger.error("UnsupportedEncodingException converting user code: {}", asciiCode);
                 }
             }
-
-            return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
-                    USER_CODE_SET).withPayload(outputData.toByteArray()).withPriority(TransactionPriority.Config)
-                            .build();
         }
 
-        return null;
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
+                CommandClassUserCodeV1.getUserCodeSet(id, status.toString(), code))
+                        .withPriority(TransactionPriority.Config).build();
     }
 
     public boolean userCodeIsValid(String userCode) {
@@ -329,10 +353,10 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
         private String code;
         private UserIdStatusType status;
 
-        private ZWaveUserCodeValueEvent(int nodeId, int endpoint, int id, String code, UserIdStatusType status) {
-            super(nodeId, endpoint, CommandClass.COMMAND_CLASS_USER_CODE, code);
+        private ZWaveUserCodeValueEvent(int nodeId, int endpoint, int id, String bs, UserIdStatusType status) {
+            super(nodeId, endpoint, CommandClass.COMMAND_CLASS_USER_CODE, bs);
             this.id = id;
-            this.code = code;
+            this.code = bs;
             this.status = status;
         }
 
