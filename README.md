@@ -44,9 +44,9 @@ Many functions in Z-Wave only allow a single node to be set, and this is normall
 For most systems, this should be set to *true* - the only time when it should be *false* is if you normally control your Z-Wave network through a different system.
 
 
-#### Controller Is SUC [controller_suc]
+#### Controller SIS Node [controller_sisnode]
 
-Sets the controller as a Static Update Controller within the network
+Sets the node of the Static Include Server within the network. If no SIS is set, openHAB controller will be set as the SIS.
 
 
 #### Heal Time [heal_time]
@@ -202,7 +202,7 @@ There are different types of controllers in a Z-Wave network. This section provi
 
 
 #### Primary Controller
-There is a single *Primary* controller in the network. This controller provides the network routing table
+There is a single *Primary* controller in the network. This controller provides the network routing table to secondary controllers in the network.
 
 
 #### Static Update Controller (SUC)
@@ -285,8 +285,6 @@ The binding provides a number of facilities for maintaining the network.
 Sometimes the Z-Wave mesh can get messed up and nodes can become 'lost'. In theory, the Z-Wave controller should automatically resolve these issues, and any device that finds itself orphaned from the network should send a *Explorer Frames* to request a routing update.
 
 In order to manually repair the mesh, the binding implements a *mesh heal* function. This will systematically work through the network nodes, starting with the controller and working outwards. For each node, the controller will request an update to the nodes neighbors - this can take up to a minute to complete foe each node, although it is normally much less. The neighbor update will only be performed on nodes that are *listening* - this means battery devices will not be updated through this process but they should be updated by the controller.
-
-While the neighbor update is running, all nodes in the system will be taken offline to avoid network traffic that may adversely impact the update.
 
 Once the neighbor update is complete, the system will perform a routing update on all nodes. Z-Wave is a "source routed mesh network" which means that the controller needs to tell the end nodes information about its routes. Specifically, the controller will provide each node a list of routes required to talk to the controller, the SUC (if it exists in the network), and other nodes to which the controller needs to talk to (eg for associated devices). The binding simply instructs the stick to configure a route between two nodes - the route itself if derived by the stick and the binding has no visibility of the actual routes being used.
 

@@ -62,15 +62,9 @@
                 <advanced>true</advanced>
             </parameter>
 
-            <parameter name="controller_type" type="boolean" groupName="network">
-                <label>Controller type</label>
+            <parameter name="controller_sucnode" type="integer" groupName="network" min="1" max="232">
+                <label>SIS Node</label>
                 <description>Controller is SUC or SIS and will receive updates from other controllers in the network</description>
-                <options>
-                    <option value="0">Primary Controller</option>
-                    <option value="1">Static Update Controller</option>
-                    <option value="2">Static Inclusion Server</option>
-                </options>
-                <default>false</default>
                 <advanced>true</advanced>
             </parameter>
             

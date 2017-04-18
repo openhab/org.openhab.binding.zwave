@@ -72,7 +72,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     private volatile ZWaveController controller;
 
     private Boolean isMaster;
-    private Boolean isSUC;
+    private Integer sucNode;
     private String networkKey;
     private Integer secureInclusionMode;
     private Integer healTime;
@@ -106,42 +106,42 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
         Object param;
         param = getConfig().get(CONFIGURATION_MASTER);
-        if (param instanceof Boolean && param != null) {
+        if (param instanceof Boolean) {
             isMaster = (Boolean) param;
         } else {
             isMaster = true;
         }
 
         param = getConfig().get(CONFIGURATION_SECUREINCLUSION);
-        if (param instanceof BigDecimal && param != null) {
+        if (param instanceof BigDecimal) {
             secureInclusionMode = ((BigDecimal) param).intValue();
         } else {
             secureInclusionMode = 0;
         }
 
         param = getConfig().get(CONFIGURATION_INCLUSIONTIMEOUT);
-        if (param instanceof BigDecimal && param != null) {
+        if (param instanceof BigDecimal) {
             searchTime = ((BigDecimal) param).intValue();
         } else {
             searchTime = SEARCHTIME_DEFAULT;
         }
 
         param = getConfig().get(CONFIGURATION_DEFAULTWAKEUPPERIOD);
-        if (param instanceof BigDecimal && param != null) {
+        if (param instanceof BigDecimal) {
             wakeupDefaultPeriod = ((BigDecimal) param).intValue();
         } else {
             wakeupDefaultPeriod = 0;
         }
 
-        param = getConfig().get(CONFIGURATION_SUC);
-        if (param instanceof Boolean && param != null) {
-            isSUC = (Boolean) param;
+        param = getConfig().get(CONFIGURATION_SISNODE);
+        if (param instanceof BigDecimal) {
+            sucNode = ((BigDecimal) param).intValue();
         } else {
-            isSUC = false;
+            sucNode = 0;
         }
 
         param = getConfig().get(CONFIGURATION_NETWORKKEY);
-        if (param instanceof String && param != null) {
+        if (param instanceof String) {
             networkKey = (String) param;
         }
         if (networkKey.length() == 0) {
@@ -168,7 +168,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         }
 
         param = getConfig().get(CONFIGURATION_HEALTIME);
-        if (param instanceof BigDecimal && param != null) {
+        if (param instanceof BigDecimal) {
             healTime = ((BigDecimal) param).intValue();
         } else {
             healTime = -1;
@@ -191,7 +191,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         // Create config parameters
         Map<String, String> config = new HashMap<String, String>();
         config.put("masterController", isMaster.toString());
-        config.put("isSUC", isSUC ? "true" : "false");
+        config.put("sucNode", sucNode.toString());
         config.put("secureInclusion", secureInclusionMode.toString());
         config.put("networkKey", networkKey);
         config.put("wakeupDefaultPeriod", wakeupDefaultPeriod.toString());
@@ -311,31 +311,29 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             if ("security".equals(cfg[0])) {
                 if (cfg[1].equals("networkkey")) {
                     // Format the key here so it's presented nicely and consistently to the user!
-                    if (value != null) {
-                        String hexString = (String) value;
-                        hexString = hexString.replace("0x", "");
-                        hexString = hexString.replace(",", "");
-                        hexString = hexString.replace(" ", "");
-                        hexString = hexString.toUpperCase();
-                        if ((hexString.length() % 2) != 0) {
-                            hexString += "0";
-                        }
-
-                        int arrayLength = (int) Math.ceil(((hexString.length() / 2)));
-                        String[] result = new String[arrayLength];
-
-                        int j = 0;
-                        StringBuilder builder = new StringBuilder();
-                        int lastIndex = result.length - 1;
-                        for (int i = 0; i < lastIndex; i++) {
-                            builder.append(hexString.substring(j, j + 2) + " ");
-                            j += 2;
-                        }
-                        builder.append(hexString.substring(j));
-                        value = builder.toString();
-
-                        reinitialise = true;
+                    String hexString = (String) value;
+                    hexString = hexString.replace("0x", "");
+                    hexString = hexString.replace(",", "");
+                    hexString = hexString.replace(" ", "");
+                    hexString = hexString.toUpperCase();
+                    if ((hexString.length() % 2) != 0) {
+                        hexString += "0";
                     }
+
+                    int arrayLength = (int) Math.ceil(((hexString.length() / 2)));
+                    String[] result = new String[arrayLength];
+
+                    int j = 0;
+                    StringBuilder builder = new StringBuilder();
+                    int lastIndex = result.length - 1;
+                    for (int i = 0; i < lastIndex; i++) {
+                        builder.append(hexString.substring(j, j + 2) + " ");
+                        j += 2;
+                    }
+                    builder.append(hexString.substring(j));
+                    value = builder.toString();
+
+                    reinitialise = true;
                 }
             }
 
@@ -374,7 +372,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
         int inclusionMode = 2;
         Object param = getConfig().get(CONFIGURATION_INCLUSION_MODE);
-        if (param instanceof BigDecimal && param != null) {
+        if (param instanceof BigDecimal) {
             inclusionMode = ((BigDecimal) param).intValue();
         }
 

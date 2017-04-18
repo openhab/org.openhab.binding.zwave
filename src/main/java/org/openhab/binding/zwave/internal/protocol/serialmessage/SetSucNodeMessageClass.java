@@ -25,25 +25,14 @@ import org.slf4j.LoggerFactory;
 public class SetSucNodeMessageClass extends ZWaveCommandProcessor {
     private final Logger logger = LoggerFactory.getLogger(SetSucNodeMessageClass.class);
 
-    public ZWaveSerialPayload doRequest(int nodeId, SUCType type) {
-        logger.debug("NODE {}: SetSucNodeID node as {}", nodeId, type.toString());
+    public ZWaveSerialPayload doRequest(int nodeId, boolean enable) {
+        logger.debug("NODE {}: SetSucNodeID node {}", nodeId, enable);
 
         byte[] payload = new byte[4];
         payload[0] = (byte) nodeId;
-        switch (type) {
-            case NONE:
-                payload[1] = 0;
-                payload[3] = 0;
-                break;
-            case BASIC:
-                payload[1] = 1;
-                payload[3] = 0;
-                break;
-            case SERVER:
-                payload[1] = 1;
-                payload[3] = 1;
-                break;
-        }
+        payload[1] = (byte) (enable ? 1 : 0);
+        payload[2] = 0;
+        payload[3] = (byte) (enable ? 1 : 0);
 
         // Create the request
         return new ZWaveTransactionMessageBuilder(SerialMessageClass.SetSucNodeID).withPayload(payload).build();
@@ -80,11 +69,4 @@ public class SetSucNodeMessageClass extends ZWaveCommandProcessor {
             return true;
         }
     }
-
-    public enum SUCType {
-        NONE,
-        BASIC,
-        SERVER
-    }
-
 }
