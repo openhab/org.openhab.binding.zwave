@@ -12,6 +12,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,12 +52,10 @@ public class CommandClassUserCodeV1 {
      * Users Number Get Command Constant
      */
     public final static int USERS_NUMBER_GET = 0x04;
-    
     /**
      * Users Number Report Command Constant
      */
     public final static int USERS_NUMBER_REPORT = 0x05;
-
 
     /**
      * Map holding constants for User ID Status
@@ -111,6 +110,9 @@ public class CommandClassUserCodeV1 {
 
         // Process 'USER_CODE'
         if (userCode != null) {
+            if (userCode.length > 10) {
+                throw new IllegalArgumentException("Length of array userCode exceeds maximum length of 10 bytes");
+            }
             try {
                 outputData.write(userCode);
             } catch (IOException e) {
@@ -147,8 +149,9 @@ public class CommandClassUserCodeV1 {
         response.put("USER_ID_STATUS", constantUserIdStatus.get(payload[3] & 0xff));
 
         // Process 'USER_CODE'
-        byte[] valUserCode = new byte[10];
-        for (int cntUserCode = 0; cntUserCode < 10; cntUserCode++) {
+        int lenUserCode = Math.min(10, payload.length - 4);
+        byte[] valUserCode = new byte[lenUserCode];
+        for (int cntUserCode = 0; cntUserCode < lenUserCode; cntUserCode++) {
             valUserCode[cntUserCode] = payload[4 + cntUserCode];
         }
         response.put("USER_CODE", valUserCode);
@@ -156,7 +159,6 @@ public class CommandClassUserCodeV1 {
         // Return the map of processed response data;
         return response;
     }
-
 
     /**
      * Creates a new message with the USER_CODE_GET command.
@@ -204,7 +206,6 @@ public class CommandClassUserCodeV1 {
         return response;
     }
 
-
     /**
      * Creates a new message with the USER_CODE_REPORT command.
      * <p>
@@ -246,6 +247,9 @@ public class CommandClassUserCodeV1 {
 
         // Process 'USER_CODE'
         if (userCode != null) {
+            if (userCode.length > 10) {
+                throw new IllegalArgumentException("Length of array userCode exceeds maximum length of 10 bytes");
+            }
             try {
                 outputData.write(userCode);
             } catch (IOException e) {
@@ -282,8 +286,9 @@ public class CommandClassUserCodeV1 {
         response.put("USER_ID_STATUS", constantUserIdStatus.get(payload[3] & 0xff));
 
         // Process 'USER_CODE'
-        byte[] valUserCode = new byte[10];
-        for (int cntUserCode = 0; cntUserCode < 10; cntUserCode++) {
+        int lenUserCode = Math.min(10, payload.length - 4);
+        byte[] valUserCode = new byte[lenUserCode];
+        for (int cntUserCode = 0; cntUserCode < lenUserCode; cntUserCode++) {
             valUserCode[cntUserCode] = payload[4 + cntUserCode];
         }
         response.put("USER_CODE", valUserCode);
@@ -291,7 +296,6 @@ public class CommandClassUserCodeV1 {
         // Return the map of processed response data;
         return response;
     }
-
 
     /**
      * Creates a new message with the USERS_NUMBER_GET command.
@@ -325,7 +329,6 @@ public class CommandClassUserCodeV1 {
         // Return the map of processed response data;
         return response;
     }
-
 
     /**
      * Creates a new message with the USERS_NUMBER_REPORT command.

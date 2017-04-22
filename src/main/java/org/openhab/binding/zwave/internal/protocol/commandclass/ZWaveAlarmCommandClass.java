@@ -134,11 +134,11 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
             notificationEvent = payload.getPayloadByte(7);
             alarmType = AlarmType.getAlarmType(notificationTypeCode);
 
-            int parameterLength = payload.getPayloadByte(6) & 0x1f;
-            boolean containsSequence = (payload.getPayloadByte(6) & 0x80) != 0;
+            int parameterLength = payload.getPayloadByte(8) & 0x1f;
+            boolean containsSequence = (payload.getPayloadByte(8) & 0x80) != 0;
 
-            logger.debug("NODE {}: NOTIFICATION report - {} = {}, event={}, status={}", getNode().getNodeId(),
-                    v1AlarmTypeCode, v1AlarmLevel, notificationEvent, notificationStatus);
+            logger.debug("NODE {}: NOTIFICATION report - {} = {}, event={}, status={}, plen={}", getNode().getNodeId(),
+                    v1AlarmTypeCode, v1AlarmLevel, notificationEvent, notificationStatus, parameterLength);
         }
 
         if (alarmType != null) {

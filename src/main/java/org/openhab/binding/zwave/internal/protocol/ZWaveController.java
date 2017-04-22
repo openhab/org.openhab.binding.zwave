@@ -1041,6 +1041,7 @@ public class ZWaveController {
                 return;
             }
             zwaveEventListeners.add(eventListener);
+            logger.debug("Event listener added.");
         }
     }
 

@@ -51,7 +51,7 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
     private static final int UNKNOWN = -1;
 
     /**
-     * The total number of users that the device supports as determined by {@link #USER_NUMBER_REPORT}
+     * The total number of users that the device supports
      */
     private int numberOfUsersSupported = UNKNOWN;
 
