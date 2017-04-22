@@ -84,7 +84,8 @@ Defines how to interpret RF Off command.<br /><h1>Overview</h1><p>Defines how to
         </options>
       </parameter>
 
-      <parameter name="config_4_1" type="integer" groupName="configuration">
+      <parameter name="config_4_1" type="integer" groupName="configuration"
+                 min="0" max="255">
         <label>4: Full close time</label>
         <description><![CDATA[
 Time in seconds to go from opened to closed state.<br /><h1>Overview</h1><p>Time to go from opened to closed state. Used to estimate the current level. Note that in Permanent motion mode the reported value would a be Closed or Opened, while all Basic and Multilevel Set values (1-99, 255) would Open except 0 value that would Close.</p>
@@ -93,9 +94,11 @@ Time in seconds to go from opened to closed state.<br /><h1>Overview</h1><p>Time
         <options>
           <option value="0">Keep in permanent motion</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_5_1" type="integer" groupName="configuration">
+      <parameter name="config_5_1" type="integer" groupName="configuration"
+                 min="0" max="255">
         <label>5: Full open time</label>
         <description><![CDATA[
 Time in seconds to go from closed to open state.<br /><h1>Overview</h1><p>Time to go from closed to open state. This value may differ from Full close time for some blinds due to gravity. Used to estimate the current level. Note that in Permanent motion mode the reported value would a be Closed or Opened, while all Basic and Multilevel Set values (1-99, 255) would Open except 0 value that would Close.</p>
@@ -104,6 +107,7 @@ Time in seconds to go from closed to open state.<br /><h1>Overview</h1><p>Time t
         <options>
           <option value="0">Keep in permanent motion</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration">

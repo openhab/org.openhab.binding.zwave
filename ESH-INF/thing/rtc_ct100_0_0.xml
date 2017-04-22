@@ -73,7 +73,7 @@
       <channel id="sensor_relhumidity2" typeId="sensor_relhumidity">
         <label>Relative Humidity</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:2,BASIC:2;type=RELATIVE_HUMIDITY</property>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:2;type=RELATIVE_HUMIDITY</property>
         </properties>
       </channel>
     </channels>

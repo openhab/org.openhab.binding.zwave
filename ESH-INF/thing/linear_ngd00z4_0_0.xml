@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="linear_ngd00z4_00_000" listed="false">
+    <label>NGD00Z-4 Garage Door Controller</label>
+    <description>Garage Door Controller</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="barrier_state" typeId="barrier_state">
+        <label>Barrier State</label>
+        <properties>
+          <property name="binding:*:DecimalType">BARRIER_OPERATOR</property>
+        </properties>
+      </channel>
+      <channel id="alarm_system" typeId="alarm_system">
+        <label>Device Initializing Alert</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=0x06, event=64</property>
+        </properties>
+      </channel>
+      <channel id="alarm_system" typeId="alarm_system">
+        <label>Motor Force Exceeded Alert</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=0x06, event=65</property>
+        </properties>
+      </channel>
+      <channel id="alarm_system" typeId="alarm_system">
+        <label>Motor Time Exceeded Alert</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=0x06, event=66</property>
+        </properties>
+      </channel>
+      <channel id="alarm_system" typeId="alarm_system">
+        <label>Physical/Mechanical Limit Exceeded Alert</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=0x06, event=67</property>
+        </properties>
+      </channel>
+      <channel id="alarm_access" typeId="alarm_access">
+        <label>Door Unable to Move Alert</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=0x06, event=68</property>
+        </properties>
+      </channel>
+      <channel id="alarm_access" typeId="alarm_access">
+        <label>Remote Operation Suspended Alert</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=0x06, event=69</property>
+        </properties>
+      </channel>
+      <channel id="alarm_access" typeId="alarm_access">
+        <label>Device Malfunction Alert</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=0x06, event=70</property>
+        </properties>
+      </channel>
+      <channel id="alarm_access" typeId="alarm_access">
+        <label>Vacation Mode Enabled Alert</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=0x06, event=71</property>
+        </properties>
+      </channel>
+      <channel id="alarm_access" typeId="alarm_access">
+        <label>Safety Beam Obstacle Alert</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=0x06, event=72</property>
+        </properties>
+      </channel>
+      <channel id="alarm_system" typeId="alarm_system">
+        <label>Door Sensor Not Detected Alert</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=0x06, event=73</property>
+        </properties>
+      </channel>
+      <channel id="alarm_battery" typeId="alarm_battery">
+        <label>Low Battery Alert</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=0x06, event=74</property>
+        </properties>
+      </channel>
+      <channel id="alarm_system" typeId="alarm_system">
+        <label>Wallwire Short Detected Alert</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=0x06, event=75</property>
+        </properties>
+      </channel>
+      <channel id="alarm_tamper" typeId="alarm_tamper">
+        <label>Tamper Cover Removed Alert</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=0x07, event=3</property>
+        </properties>
+      </channel>
+      <channel id="alarm_system" typeId="alarm_system">
+        <label>Tamper Invalid Code Alert</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=0x07, event=4</property>
+        </properties>
+      </channel>
+      <channel id="alarm_general" typeId="alarm_general">
+        <label>AccessControl Alert (UnMatched Code)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=0x06</property>
+        </properties>
+      </channel>
+      <channel id="alarm_general" typeId="alarm_general">
+        <label>Burglar Alert (UnMatched Code)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=0x07</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Linear Corp</property>
+      <property name="modelId">NGD00Z-4</property>
+      <property name="manufacturerId">014F</property>
+      <property name="manufacturerRef">4744:3030,4744:3530</property>
+      <property name="dbReference">11</property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Group 1</label>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>
