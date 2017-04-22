@@ -258,6 +258,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         String channelType = channel.getUID().getId();
         switch (channelType) {
             case "alarm_number":
+            case "notification_access_control":
                 return new DecimalType(eventAlarm.getAlarmEvent());
             default:
                 Map<NotificationEvent, State> events = notifications.get(channelType);
