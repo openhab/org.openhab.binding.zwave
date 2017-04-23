@@ -697,6 +697,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
     public boolean addEventListener(ZWaveThingHandler zWaveThingHandler) {
         if (controller == null) {
+            logger.debug("Attempting to add listener when controller is null");
             return false;
         }
         controller.addEventListener(zWaveThingHandler);

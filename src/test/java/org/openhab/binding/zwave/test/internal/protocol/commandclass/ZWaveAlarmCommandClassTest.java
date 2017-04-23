@@ -69,6 +69,24 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
     }
 
     @Test
+    public void Alarm_Burglar_Event8() {
+        byte[] packetData = { 0x01, 0x0F, 0x00, 0x04, 0x00, 0x74, 0x09, 0x71, 0x05, 0x00, 0x00, 0x00, (byte) 0xFF, 0x07,
+                0x08, 0x00, 0x0D };
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData, 3);
+
+        assertEquals(events.size(), 1);
+
+        ZWaveAlarmValueEvent event = (ZWaveAlarmValueEvent) events.get(0);
+
+        assertEquals(event.getEndpoint(), 0);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_ALARM);
+        assertEquals(event.getReportType(), ReportType.NOTIFICATION);
+        assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.BURGLAR);
+        assertEquals(event.getAlarmEvent(), 8);
+    }
+
+    @Test
     public void Notification_Burglar_Motion() {
         byte[] packetData = { 0x01, 0x10, 0x00, 0x04, 0x10, 0x28, 0x09, 0x71, 0x05, 0x00, 0x00, 0x00, (byte) 0xFF, 0x07,
                 0x08, 0x00, 0x05, 0x5B };
