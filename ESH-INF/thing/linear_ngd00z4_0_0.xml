@@ -101,14 +101,14 @@
           <property name="binding:*:OnOffType">ALARM;type=0x07, event=4</property>
         </properties>
       </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>AccessControl Alert (UnMatched Code)</label>
+      <channel id="notification_access_control" typeId="notification_access_control">
+        <label>AccessControl Alert</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=0x06</property>
+          <property name="binding:*:DecimalType">ALARM;type=0x06</property>
         </properties>
       </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Burglar Alert (UnMatched Code)</label>
+      <channel id="notification_home_security" typeId="notification_home_security">
+        <label>Burglar Alert</label>
         <properties>
           <property name="binding:*:OnOffType">ALARM;type=0x07</property>
         </properties>
