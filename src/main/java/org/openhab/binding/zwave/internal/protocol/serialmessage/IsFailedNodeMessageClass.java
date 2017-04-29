@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
  * @author Wez Hunter
  */
 public class IsFailedNodeMessageClass extends ZWaveCommandProcessor {
-    private final Logger logger = LoggerFactory.getLogger(IsFailedNodeMessageClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(IsFailedNodeMessageClass.class);
 
     public SerialMessage doRequest(int nodeId) {
         logger.debug("NODE {}: Requesting IsFailedNode status from controller.", nodeId);

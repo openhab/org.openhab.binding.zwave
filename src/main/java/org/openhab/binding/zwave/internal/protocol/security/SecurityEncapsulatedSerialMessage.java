@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
  * @see ZWaveSecurityCommandClass
  */
 public class SecurityEncapsulatedSerialMessage extends SerialMessage {
-    private final Logger logger = LoggerFactory.getLogger(SecurityEncapsulatedSerialMessage.class);
+    private final static Logger logger = LoggerFactory.getLogger(SecurityEncapsulatedSerialMessage.class);
 
     private static final byte UNSET = -1;
 

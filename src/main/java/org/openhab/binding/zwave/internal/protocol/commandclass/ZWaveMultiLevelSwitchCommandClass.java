@@ -43,7 +43,7 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
         implements ZWaveBasicCommands, ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveMultiLevelSwitchCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveMultiLevelSwitchCommandClass.class);
     private static final int MAX_SUPPORTED_VERSION = 3;
 
     private static final int SWITCH_MULTILEVEL_SET = 0x01;

@@ -121,7 +121,7 @@ import org.slf4j.LoggerFactory;
 public class ZWaveNodeInitStageAdvancer implements ZWaveEventListener {
 
     private static final ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
-    private final Logger logger = LoggerFactory.getLogger(ZWaveNodeInitStageAdvancer.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveNodeInitStageAdvancer.class);
 
     private ZWaveNode node;
     private ZWaveController controller;

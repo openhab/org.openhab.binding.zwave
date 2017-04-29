@@ -32,7 +32,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveCRC16EncapsulationCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveCRC16EncapsulationCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveCRC16EncapsulationCommandClass.class);
 
     private static final byte CRC_ENCAPSULATION_ENCAP = 0x01;
 

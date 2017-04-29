@@ -33,7 +33,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ZWaveClockConverter extends ZWaveCommandClassConverter {
 
-    private final Logger logger = LoggerFactory.getLogger(ZWaveClockConverter.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveClockConverter.class);
 
     private Calendar lastClockUpdate = Calendar.getInstance();
 

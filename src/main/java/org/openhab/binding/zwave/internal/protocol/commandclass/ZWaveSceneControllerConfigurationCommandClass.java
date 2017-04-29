@@ -29,7 +29,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveSceneControllerConfigurationCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveSceneControllerConfigurationCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveSceneControllerConfigurationCommandClass.class);
 
     /**
      * Creates a new instance of the ZWaveSceneControllerConfigurationCommandClass class.

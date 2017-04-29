@@ -34,7 +34,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveMeterPulseCommandClass extends ZWaveCommandClass implements ZWaveGetCommands {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveMeterPulseCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveMeterPulseCommandClass.class);
 
     private static final int METER_PULSE_GET = 4;
     private static final int METER_PULSE_REPORT = 5;

@@ -8,22 +8,27 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
-import org.openhab.binding.zwave.internal.protocol.*;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.ByteArrayOutputStream;
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
+
+import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
+import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
+import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 /**
  * Handles the clock command class.
@@ -37,7 +42,7 @@ public class ZWaveClockCommandClass extends ZWaveCommandClass
         implements ZWaveGetCommands, ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveClockCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveClockCommandClass.class);
 
     private static final int CLOCK_SET = 4;
     private static final int CLOCK_GET = 5;

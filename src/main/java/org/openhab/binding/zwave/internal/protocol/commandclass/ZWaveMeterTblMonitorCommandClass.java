@@ -41,7 +41,7 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
         implements ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveMeterTblMonitorCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveMeterTblMonitorCommandClass.class);
 
     private static final byte METER_TBL_TABLE_ID_GET = 3;
     private static final byte METER_TBL_TABLE_ID_REPORT = 4;

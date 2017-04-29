@@ -34,7 +34,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ZWaveBarrierOperatorConverter extends ZWaveCommandClassConverter {
 
-    private final Logger logger = LoggerFactory.getLogger(ZWaveBarrierOperatorConverter.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveBarrierOperatorConverter.class);
 
     /**
      * Constructor. Creates a new instance of the {@link ZWaveBarrierOperatorConverter} class.

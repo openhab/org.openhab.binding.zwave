@@ -29,7 +29,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveAlarmSilenceCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private final Logger logger = LoggerFactory.getLogger(ZWaveAlarmSilenceCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveAlarmSilenceCommandClass.class);
 
     /**
      * Creates a new instance of the ZWaveAlarmSilenceCommandClass class.

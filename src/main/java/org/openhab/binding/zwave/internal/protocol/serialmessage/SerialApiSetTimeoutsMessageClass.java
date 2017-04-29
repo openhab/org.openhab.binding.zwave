@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class SerialApiSetTimeoutsMessageClass extends ZWaveCommandProcessor {
-    private final Logger logger = LoggerFactory.getLogger(SerialApiSetTimeoutsMessageClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(SerialApiSetTimeoutsMessageClass.class);
 
     public SerialMessage doRequest(int ackTimeout, int byteTimeout) {
         // Queue the request

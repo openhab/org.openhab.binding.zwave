@@ -43,7 +43,7 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
         DOOR_LOCK_TIMEOUT
     }
 
-    private final Logger logger = LoggerFactory.getLogger(ZWaveDoorLockCommandClass.class);
+    private final static Logger logger = LoggerFactory.getLogger(ZWaveDoorLockCommandClass.class);
 
     static final int DOOR_LOCK_SET = 1;
     /**
