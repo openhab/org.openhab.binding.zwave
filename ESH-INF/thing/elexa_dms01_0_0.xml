@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="elexa_dms01_00_000" listed="false">
+    <label>DMS01 Dome Wireless Siren</label>
+    <description>Dome Wireless Siren</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="alarm_general" typeId="alarm_general">
+        <label>Alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">BATTERY</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Elexa Consumer Products Inc.</property>
+      <property name="modelId">DMS01</property>
+      <property name="manufacturerId">021F</property>
+      <property name="manufacturerRef">0003:0088</property>
+      <property name="dbReference">589</property>
+    </properties>
+
+  </thing-type>
+
+</thing:thing-descriptions>

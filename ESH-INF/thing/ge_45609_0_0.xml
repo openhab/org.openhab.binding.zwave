@@ -24,7 +24,7 @@
       <property name="vendor">Jasco Products</property>
       <property name="modelId">45609</property>
       <property name="manufacturerId">0063</property>
-      <property name="manufacturerRef">5257:3533</property>
+      <property name="manufacturerRef">5257:3533,6363:3533</property>
       <property name="dbReference">40</property>
     </properties>
 
