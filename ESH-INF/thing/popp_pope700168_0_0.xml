@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="popp_pope700168_00_000" listed="false">
+    <label>POPE700168 POPP Rain-Sensor</label>
+    <description>POPP Rain-Sensor</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="sensor_general" typeId="sensor_general">
+        <label>Sensor (general)</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=GENERAL</property>
+        </properties>
+      </channel>
+      <channel id="sensor_rainrate" typeId="sensor_rainrate">
+        <label>Sensor (rain rate)</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=RAIN_RATE</property>
+        </properties>
+      </channel>
+      <channel id="meter_water_cubic_meters" typeId="meter_water_cubic_meters">
+        <label>Water meter (amps)</label>
+        <properties>
+          <property name="binding:*:DecimalType">METER;type=W_Cubic_Meters</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">BATTERY</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Popp &amp; Co</property>
+      <property name="modelId">POPE700168</property>
+      <property name="manufacturerId">0154</property>
+      <property name="manufacturerRef">0004:0011</property>
+      <property name="dbReference">588</property>
+    </properties>
+
+  </thing-type>
+
+</thing:thing-descriptions>
