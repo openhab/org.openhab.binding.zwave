@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="connecthome_ch201_00_000" listed="false">
+    <label>CH-201 CH-201 Thermostat</label>
+    <description>CH-201 Thermostat</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="sensor_temperature" typeId="sensor_temperature">
+        <label>Sensor (temperature)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_mode" typeId="connecthome_ch201_00_000_thermostat_mode">
+        <label>Thermostat mode</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_MODE</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_state" typeId="thermostat_state">
+        <label>Thermostat Operating State</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_OPERATING_STATE</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
+        <label>Setpoint (heating)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature1" typeId="sensor_temperature">
+        <label>Sensor (temperature) 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:1;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_mode1" typeId="connecthome_ch201_00_000_thermostat_mode">
+        <label>Thermostat mode 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_MODE:1</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_state1" typeId="thermostat_state">
+        <label>Thermostat Operating State 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_OPERATING_STATE:1</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_setpoint_heating1" typeId="thermostat_setpoint">
+        <label>Setpoint (heating) 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT:1;type=HEATING</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature2" typeId="sensor_temperature">
+        <label>Sensor (temperature) 2</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:2,COMMAND_CLASS_BASIC:2;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">ConnectHome</property>
+      <property name="modelId">CH-201</property>
+      <property name="manufacturerId">0179</property>
+      <property name="manufacturerRef">0013:0021</property>
+      <property name="dbReference">582</property>
+    </properties>
+
+  </thing-type>
+
+  <channel-type id="connecthome_ch201_00_000_thermostat_mode">
+    <item-type>Number</item-type>
+    <label>Thermostat Mode</label>
+    <description>Sets the thermostat mode</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+        <option value="0">Off</option>
+        <option value="1">Heat</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="connecthome_ch201_00_000_thermostat_mode">
+    <item-type>Number</item-type>
+    <label>Thermostat Mode</label>
+    <description>Sets the thermostat mode</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+        <option value="0">Off</option>
+        <option value="1">Heat</option>
+      </options>
+    </state>
+  </channel-type>
+
+</thing:thing-descriptions>
