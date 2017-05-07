@@ -79,6 +79,18 @@ public class ZWaveMultiLevelSwitchConverterTest {
     }
 
     @Test
+    public void handleEvent_PercentType99invertPercentTrue_returnPercentType0() {
+        ZWaveMultiLevelSwitchConverter sut = new ZWaveMultiLevelSwitchConverter(controller);
+        Map<String, String> configMap = new HashMap<>();
+        configMap.put("config_invert_percent", "true");
+        when(channel.getArguments()).thenReturn(configMap);
+        when(event.getValue()).thenReturn(99);
+        when(channel.getDataType()).thenReturn(DataType.PercentType);
+        State state = sut.handleEvent(channel, event);
+        assertEquals(new PercentType(0), state);
+    }
+
+    @Test
     public void handleEvent_PercentType0invertPercentTrue_returnPercentType100() throws Exception {
         ZWaveMultiLevelSwitchConverter sut = new ZWaveMultiLevelSwitchConverter(controller);
         Map<String, String> configMap = new HashMap<>();
@@ -91,7 +103,7 @@ public class ZWaveMultiLevelSwitchConverterTest {
     }
 
     @Test
-    public void handleEvent_PercentType1invertPercentTrue_returnPercentType100() {
+    public void handleEvent_PercentType1invertPercentTrue_returnPercentType99() {
         ZWaveMultiLevelSwitchConverter sut = new ZWaveMultiLevelSwitchConverter(controller);
         Map<String, String> configMap = new HashMap<>();
         configMap.put("config_invert_percent", "true");
@@ -99,7 +111,7 @@ public class ZWaveMultiLevelSwitchConverterTest {
         when(event.getValue()).thenReturn(1);
         when(channel.getDataType()).thenReturn(DataType.PercentType);
         State state = sut.handleEvent(channel, event);
-        assertEquals(new PercentType(100), state);
+        assertEquals(new PercentType(99), state);
     }
 
     @Test
