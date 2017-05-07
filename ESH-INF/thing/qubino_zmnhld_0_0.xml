@@ -14,9 +14,9 @@ Flush PWM Thermostat<br /><h1>Overview</h1><p>This Z-Wave module is used to regu
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="sensor_temperature1" typeId="sensor_temperature">
-        <label>Sensor (temperature)</label>
+        <label>Temperature Sensor</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:1;type=TEMPERATURE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:1</property>
         </properties>
       </channel>
     </channels>

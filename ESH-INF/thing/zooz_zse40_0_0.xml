@@ -12,6 +12,12 @@
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="sensor_binary" typeId="sensor_binary">
+        <label>Motion</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_BASIC</property>
+        </properties>
+      </channel>
+      <channel id="sensor_binary" typeId="sensor_binary">
         <label>Binary Sensor</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
@@ -80,28 +86,37 @@
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="0" max="50">
         <label>2: Temperature offset</label>
+        <description><![CDATA[
+temperature change to be reported<br /><h1>Overview</h1><p>Use it to set temperature change to be reported by the sensor. Values: 1 - 50 (where 1 stands for 0.1 degree and 50 stands for 5 degrees). Default set to 1 degree (value 10). The sensor will report new temperature value to the controller whenever temperature goes 1 degree up or down. </p>
+        ]]></description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="1" max="50">
         <label>3: Humidity</label>
-        <description>Configure Relative Humidity</description>
+        <description><![CDATA[
+Configure Relative Humidity<br /><h1>Overview</h1><p>Use it to set humidity percentage change to be reported by the sensor. Values: 1 - 50 where 1 stands for 1% and 50 stands for 50%. Default set to 10%.</p>
+        ]]></description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="1" max="50">
         <label>4: Light Sensor</label>
-        <description>Configure Light Sensor</description>
+        <description><![CDATA[
+Configure Light Sensor<br /><h1>Overview</h1><p>Reports light level in percentage (1-100). Use it to choose light percentage change to be reported by the sensor. Values: 5 - 50 where 5 stands for 5% and 50 stands for 50%. Default set to 10%. </p>
+        ]]></description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>5: Trigger Interval</label>
-        <description>Set the trigger interval for motion sensor re-activation.</description>
-        <default>180</default>
+        <description><![CDATA[
+Set the trigger interval for motion sensor re-activation.<br /><h1>Overview</h1><p>Use it to set trigger interval - the time when motion is reported again after initial trigger. Values: 1 - 255 where 1 stands for 1 minute and 255 stands for 255 minutes. Default set to 3 minutes. Size: 1 byte dec. NOTE: Small interval will increase activity and decrease battery life. </p>
+        ]]></description>
+        <default>3</default>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
@@ -121,12 +136,15 @@
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
         <label>7: LED indicator mode</label>
-        <description>Select the LED indicator mode</description>
+        <description><![CDATA[
+Select the LED indicator mode<br /><h1>Overview</h1><p>LED indicator will flash every 3 minutes or whenever you press the Z-Wave button to indicate temperature level.</p> <p>Green = under 60°F</p> <p>Blue = 60°-75°F</p> <p>Yellow = 75°-83°F</p> <p>Purple = 83°-97°F</p> <p>Red = over 97°F / motion detected / tamper switch triggered </p>
+        ]]></description>
         <default>3</default>
         <options>
           <option value="1">Off</option>
           <option value="2">Pulsing Temperature, Flashing Motion</option>
           <option value="3">Flashing Temperature and Motion</option>
+          <option value="4">No Temperature, Flashing Motion</option>
         </options>
       </parameter>
 
