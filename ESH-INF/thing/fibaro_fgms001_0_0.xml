@@ -11,8 +11,8 @@
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="alarm_tamper" typeId="alarm_tamper">
-        <label>Tamper Alarm</label>
+      <channel id="alarm_motion" typeId="alarm_motion">
+        <label>Motion Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">SENSOR_BINARY</property>
         </properties>
@@ -34,10 +34,10 @@
           <property name="binding:*:PercentType">BATTERY</property>
         </properties>
       </channel>
-      <channel id="alarm_motion" typeId="alarm_motion">
-        <label>Motion Alarm</label>
+      <channel id="alarm_tamper" typeId="alarm_tamper">
+        <label>Tamper Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_ALARM,BASIC;type=BURGLAR, event=8</property>
+          <property name="binding:*:OnOffType">SENSOR_ALARM,BASIC;type=BURGLAR</property>
         </properties>
       </channel>
     </channels>
