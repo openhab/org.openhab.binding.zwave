@@ -130,7 +130,10 @@ Input 2 (0 - 255)<br /><h1>Overview</h1><p>Lowering time<br />(256 * Input 1 + i
 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Other device to be switched</label>
-        <multipleLimit>4</multipleLimit>
+        <description><![CDATA[
+<br /><h1>Overview</h1>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
       </parameter>
 
     </config-description>

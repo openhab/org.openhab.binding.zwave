@@ -43,7 +43,90 @@
       <property name="manufacturerId">0154</property>
       <property name="manufacturerRef">0004:0011</property>
       <property name="dbReference">588</property>
+      <property name="defaultAssociations">1</property>
     </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_2" type="integer" groupName="configuration"
+                 min="0" max="32000">
+        <label>1: Rain Counter</label>
+        <description>Ths values shows the total count of rain from the moment of inclusion in mm waterlevel. By writing this value this counter can be reset. Size: 2 Byte, Default Value: 0</description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration"
+                 min="0" max="99">
+        <label>2: Rain Start Command</label>
+        <description>This BASIC Set Command value is sent out into Association Group 2 when the device detects start of rain Size: 1 Byte, Default Value: 99</description>
+        <default>99</default>
+      </parameter>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration"
+                 min="0" max="99">
+        <label>3: Rain Stop Command</label>
+        <description>This BASIC Set Command value is sent out into Association Group 2 when the device detects stop of rain Size: 1 Byte, Default Value: 0</description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_4_2" type="integer" groupName="configuration"
+                 min="1" max="1000">
+        <label>4: Meter Multiplier</label>
+        <description>This multiplier allows to adapt the display to certain controllers not being able to handle very low numbers. Size: 2 Byte, Default Value: 1 only 1/10/100/1000</description>
+        <default>1</default>
+      </parameter>
+
+      <parameter name="config_5_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>5: Heavy Rain</label>
+        <description>This threshold defines when a heavy rain condition is hit. In most countries this is defined as &gt; 15 mm rain per hour. The default value however is to turn this function off. Size: 1 Byte, Default Value: 255</description>
+        <default>255</default>
+      </parameter>
+
+      <parameter name="config_6_1" type="integer" groupName="configuration"
+                 min="0" max="99">
+        <label>6: Heavy Rain Start Command</label>
+        <description>This BASIC Set Command value is sent out into Association Group 3 when the device detects start of heavy rain Size: 1 Byte, Default Value: 99</description>
+        <default>99</default>
+      </parameter>
+
+      <parameter name="config_7_1" type="integer" groupName="configuration"
+                 min="0" max="99">
+        <label>7: Heavy Rain Stop Command</label>
+        <description>This BASIC Set Command value is sent out into Association Group 3 when the device detects stop of heavy rain Size: 1 Byte, Default Value: 0</description>
+        <default>0</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Switching Command when Rain (&gt; 0 mm/h)</label>
+        <description>Switching Command when Rain (&gt; 0 mm/h). Basic Set Comand is sent.</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Heavy Rain detected. Basic Set Comand is sent.</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+    </config-description>
 
   </thing-type>
 
