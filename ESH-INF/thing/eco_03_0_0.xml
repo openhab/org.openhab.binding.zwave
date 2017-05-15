@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="eco_03_00_000" listed="false">
+    <label>Z-Wave Garage Door Tilt Sensor</label>
+    <description><![CDATA[
+<br /><h1>Overview</h1><p>This tilt sensor acts as a binary switch that will open and close based on it's orientation to the ground.  It's design is meant to be placed on a garage door, so as the door opens, the switch will trigger.</p> <br /><h2>Inclusion Information</h2><p>Step One:  Start by placing the controller into inclusion mode.</p> <p>Step Two: Activate inclusion mode for the sensor by inserting the battery.  When the inclusion process is complete the red led will turn on for approximately 10 seconds and then it will go out.  If the LED continues to flash, repeat the inclusion process.</p> <p>Step Three: Test the garage door sensor before mounting it.  Hold the sensor in your hand.  Flip the sensor upside-down and watch the LED while doing so.  The LED will flash each time the position of the sensor is changed.  If your Z-Wave network has a software interface you may verify that the messages from the sensor are being received each time the sensor is flipped.</p> <br /><h2>Exclusion Information</h2><p>Exclusion mode on the sensor is initiated following the same exact procedure as inclusion.</p> <br /><h2>Wakeup Information</h2><p>By default, a sensor is configured to send Wake Up Notification frames every three hours. A controller may change the duration between Wake Up Notification frames to be between one hour and one week in increments of two hundred seconds with the Wake Up Interval Set command. The sensor will send Wake Up Notification frames to the Node ID specified in the Wake Up Set Interval command or 255 if no valid nodes have been set.</p> <p>(As a side note: the Z-Wave PC controller software program does not seem to send the Wake Up Set Interval command correctly unless the user specifies three bytes of interval and one byte of node ID. So one hour would be “00 0E 10”.) </p>
+    ]]></description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Ecolink</property>
+      <property name="modelId">Z-Wave Garage Door Tilt Sensor</property>
+      <property name="manufacturerId">014A</property>
+      <property name="manufacturerRef">014A:0000</property>
+      <property name="versionMax">4.54</property>
+      <property name="dbReference">593</property>
+    </properties>
+
+  </thing-type>
+
+</thing:thing-descriptions>
