@@ -50,6 +50,7 @@
       <property name="manufacturerId">013C</property>
       <property name="manufacturerRef">0001:0004,0001:0013</property>
       <property name="dbReference">173</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
