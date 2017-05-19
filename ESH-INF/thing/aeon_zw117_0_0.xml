@@ -110,7 +110,6 @@
         <description>Reset to factory default settings and removed from the z-wave network</description>
         <default>1</default>
         <options>
-          <option value="0">DELETE ME</option>
           <option value="1431655765">Reset to factory default</option>
         </options>
       </parameter>
