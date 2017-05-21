@@ -51,6 +51,90 @@
       <property name="dbReference">594</property>
     </properties>
 
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: Volume</label>
+        <description>Volume of voice and beeps</description>
+        <default>1</default>
+        <options>
+          <option value="1">Loud</option>
+          <option value="2">Quiet</option>
+          <option value="3">Silent</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration">
+        <label>2: Auto relock</label>
+        <description>Automatic relocking</description>
+        <default>0</default>
+        <options>
+          <option value="0">No auto-relock</option>
+          <option value="255">Auto relock</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration"
+                 min="5" max="255">
+        <label>3: Auto relock time</label>
+        <description><![CDATA[
+Time for auto relock<br /><h1>Overview</h1><p>Number of seconds after the door is unlocked that it will attempt to automatically re-lock itself, if enabled.</p>
+        ]]></description>
+        <default>30</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_4_1" type="integer" groupName="configuration"
+                 min="1" max="7">
+        <label>4: Incorrect PIN limit</label>
+        <description><![CDATA[
+Number of incorrect PINs before lockout<br /><h1>Overview</h1><p>Number of incorrect PINs that can be attempted before lock goes into temporary keypad lockout.</p>
+        ]]></description>
+        <default>5</default>
+      </parameter>
+
+      <parameter name="config_6_1" type="integer" groupName="configuration">
+        <label>6: Radio event reporting</label>
+        <default>255</default>
+        <options>
+          <option value="0">Don't report events?</option>
+          <option value="255">Do report events?</option>
+        </options>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_7_1" type="integer" groupName="configuration"
+                 min="1" max="255">
+        <label>7: Keypad lockout time</label>
+        <description><![CDATA[
+Incorrect PINs lockout time<br /><h1>Overview</h1><p>Amount of time to lock-out the keypad once the number of incorrect PINs has been reached on the keypad.  (Zwave is still active during lockout.)</p>
+        ]]></description>
+        <default>60</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_8_1" type="integer" groupName="configuration">
+        <label>8: Operation Mode</label>
+        <description>Operation Mode</description>
+        <default>0</default>
+        <options>
+          <option value="0">Normal</option>
+          <option value="1">Vacation</option>
+          <option value="2">Privacy</option>
+          <option value="3">Disable Zwave</option>
+        </options>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
+
   </thing-type>
 
 </thing:thing-descriptions>
