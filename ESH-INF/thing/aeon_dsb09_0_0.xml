@@ -118,21 +118,26 @@
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="0" max="32000">
         <label>1: Voltage</label>
-        <description>Voltage to calculate wattage from amperage. Values represent voltage.</description>
+        <description>Voltage to calculate wattage from amperage.</description>
         <default>240</default>
       </parameter>
 
-      <parameter name="config_3_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Selective Reporting</label>
-        <description>Enable selective reporting only when power change reaches a certain threshold or percentage set in 4-11 below. This is used to reduce network traffic. (0 == disable, 1 == enable)</description>
+        <description><![CDATA[
+Enable selective reporting <br /><h1>Overview</h1><p>Enable selective reporting only when power change reaches a certain threshold or percentage set in 4-11 below. This is used to reduce network traffic.</p>
+        ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Disable selective reporting</option>
+          <option value="1">Enable selective reporting</option>
+        </options>
       </parameter>
 
       <parameter name="config_4_2" type="integer" groupName="configuration"
                  min="0" max="60000">
         <label>4: Current Threshold - Whole HEM</label>
-        <description>Threshold change in wattage to induce an automatic report (Whole HEM). (Valid values 0-60000)</description>
+        <description>Threshold change in wattage to induce an automatic report (Whole HEM).</description>
         <default>50</default>
       </parameter>
 
@@ -186,7 +191,7 @@
       </parameter>
 
       <parameter name="config_101_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="16383">
         <label>101: Which reports need to send automatically for group 1</label>
         <description><![CDATA[
 Sum values of all wanted reports (see Overview)<br /><h1>Overview</h1><p>1        -&gt;   Battery Report</p> <p>2        -&gt;   MultiSensor Report for Watt (whole device)</p> <p>4        -&gt;   Meter Report for Watt (whole device)</p> <p>8        -&gt;   Meter Report for kWh (whole device)</p> <p>256     -&gt;   Meter Report for Watt (clamp 1)</p> <p>512     -&gt;   Meter Report for Watt (clamp 2)</p> <p>1024   -&gt;   Meter Report for Watt (clamp 3)</p> <p>2048   -&gt;   Meter Report for kWh (clamp 1)</p> <p>4096   -&gt;   Meter Report for kWh (clamp 2)</p> <p>8192   -&gt;   Meter Report for kWh (clamp 3)</p> <p>NOTE: If a report is included in more then one Report Group, it will only be sent in the Report Group with the most recently updated configuration parameter.</p>
@@ -195,7 +200,7 @@ Sum values of all wanted reports (see Overview)<br /><h1>Overview</h1><p>1    
       </parameter>
 
       <parameter name="config_102_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="16383">
         <label>102: Which reports need to send automatically for group 2</label>
         <description><![CDATA[
 Sum values of all wanted reports (see Overview)<br /><h1>Overview</h1><p>1        -&gt;   Battery Report</p> <p>2        -&gt;   MultiSensor Report for Watt (whole device)</p> <p>4        -&gt;   Meter Report for Watt (whole device)</p> <p>8        -&gt;   Meter Report for kWh (whole device)</p> <p>256     -&gt;   Meter Report for Watt (clamp 1)</p> <p>512     -&gt;   Meter Report for Watt (clamp 2)</p> <p>1024   -&gt;   Meter Report for Watt (clamp 3)</p> <p>2048   -&gt;   Meter Report for kWh (clamp 1)</p> <p>4096   -&gt;   Meter Report for kWh (clamp 2)</p> <p>8192   -&gt;   Meter Report for kWh (clamp 3)</p> <p>NOTE: If a report is included in more then one Report Group, it will only be sent in the Report Group with the most recently updated configuration parameter.</p>
@@ -204,7 +209,7 @@ Sum values of all wanted reports (see Overview)<br /><h1>Overview</h1><p>1    
       </parameter>
 
       <parameter name="config_103_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="16383">
         <label>103: Which reports need to send automatically for group 3</label>
         <description><![CDATA[
 Sum values of all wanted reports (see Overview)<br /><h1>Overview</h1><p>1        -&gt;   Battery Report</p> <p>2        -&gt;   MultiSensor Report for Watt (whole device)</p> <p>4        -&gt;   Meter Report for Watt (whole device)</p> <p>8        -&gt;   Meter Report for kWh (whole device)</p> <p>256     -&gt;   Meter Report for Watt (clamp 1)</p> <p>512     -&gt;   Meter Report for Watt (clamp 2)</p> <p>1024   -&gt;   Meter Report for Watt (clamp 3)</p> <p>2048   -&gt;   Meter Report for kWh (clamp 1)</p> <p>4096   -&gt;   Meter Report for kWh (clamp 2)</p> <p>8192   -&gt;   Meter Report for kWh (clamp 3)</p> <p>NOTE: If a report is included in more then one Report Group, it will only be sent in the Report Group with the most recently updated configuration parameter.</p>
@@ -228,6 +233,25 @@ Sum values of all wanted reports (see Overview)<br /><h1>Overview</h1><p>1    
                  min="1" max="2678400">
         <label>113: Interval to send out reports of group 3</label>
         <default>720</default>
+      </parameter>
+
+      <!-- ACTION DEFINITIONS -->
+      <parameter-group name="actions">
+        <context>setup</context>
+        <label>Actions</label>
+      </parameter-group>
+
+      <parameter name="config_255_4_wo" type="integer" groupName="configuration">
+        <label>255: Reset to Factory</label>
+        <description><![CDATA[
+Reset all settings to factory defaults<br /><h1>Overview</h1><p>Reset all settings in unit to factory settings.  If you're getting crazy voltage readings in a unit after upgrading firmware, use this then reconfigure the unit.</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Do nothing</option>
+          <option value="1">RESET TO FACTORY DEFAULTS</option>
+        </options>
+        <advanced>true</advanced>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
