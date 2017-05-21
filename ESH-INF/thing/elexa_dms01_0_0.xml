@@ -39,6 +39,26 @@
       <property name="dbReference">589</property>
     </properties>
 
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_5_2" type="integer" groupName="configuration"
+                 min="1" max="10">
+        <label>5: Primary Notification Sound</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>The siren offers ten different sounds to use as the Siren (primary) notification. This parameter sets the Siren (primary) notification sound.</p>
+        ]]></description>
+        <default>9</default>
+      </parameter>
+
+    </config-description>
+
   </thing-type>
 
 </thing:thing-descriptions>
