@@ -48,13 +48,93 @@
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter name="config_5_2" type="integer" groupName="configuration"
-                 min="1" max="10">
+      <parameter name="config_1_2" type="integer" groupName="configuration">
+        <label>1: Primary Notification Volume Level</label>
+        <default>2</default>
+        <options>
+          <option value="1">Low Volume</option>
+          <option value="2">Medium Volume</option>
+          <option value="3">High Volume</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_2_2" type="integer" groupName="configuration">
+        <label>2: Primary Notification Length</label>
+        <default>2</default>
+        <options>
+          <option value="1">30 Seconds</option>
+          <option value="2">1 Minute</option>
+          <option value="3">5 Minutes</option>
+          <option value="255">Plays Until Battery Is Depleted</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_3_2" type="integer" groupName="configuration">
+        <label>3: Secondary Notification Length</label>
+        <default>1</default>
+        <options>
+          <option value="0">Does Not Stop</option>
+          <option value="1">1 Minute</option>
+          <option value="5">5 Minutes</option>
+          <option value="255">Chime Will Not Play</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_4_2" type="integer" groupName="configuration">
+        <label>4: Secondary Notification Volume Level</label>
+        <default>2</default>
+        <options>
+          <option value="1">Low Volume</option>
+          <option value="2">Medium Volume</option>
+          <option value="3">High Volume</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_5_2" type="integer" groupName="configuration">
         <label>5: Primary Notification Sound</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p>The siren offers ten different sounds to use as the Siren (primary) notification. This parameter sets the Siren (primary) notification sound.</p>
         ]]></description>
         <default>9</default>
+        <options>
+          <option value="1">Door bell</option>
+          <option value="2">Classical tune</option>
+          <option value="3">Slow 4 note tune</option>
+          <option value="4">Two chimes with pause in-between</option>
+          <option value="5">Complex upbeat tune</option>
+          <option value="6">Another upbeat classical tune</option>
+          <option value="7">Loud emergency siren</option>
+          <option value="8">Loud emergency horn</option>
+          <option value="9">Medium-pitch fast beeping (Default)</option>
+          <option value="10">Medium pitch slow beeping</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_6_2" type="integer" groupName="configuration">
+        <label>6: Secondary Notification Sound</label>
+        <default>9</default>
+        <options>
+          <option value="1">Door bell</option>
+          <option value="2">Classical tune</option>
+          <option value="3">Slow 4 note tune</option>
+          <option value="4">Two chimes with pause in-between</option>
+          <option value="5">Complex upbeat tune</option>
+          <option value="6">Another upbeat classical tune</option>
+          <option value="7">Loud emergency siren</option>
+          <option value="8">Loud emergency horn</option>
+          <option value="9">Medium-pitch fast beeping</option>
+          <option value="10">Medium pitch slow beeping (Default)</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_7_2" type="integer" groupName="configuration">
+        <label>7: Toggle secondary chime</label>
+        <description>Toggles between primary and secondary chime for binary switch</description>
+        <default>1</default>
+        <options>
+          <option value="1">Primary notification will play</option>
+          <option value="2">Secondary notification will play</option>
+        </options>
       </parameter>
 
     </config-description>

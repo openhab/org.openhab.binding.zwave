@@ -24,6 +24,12 @@
           <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
+      <channel id="sensor_general" typeId="sensor_general">
+        <label>Sensor (general)</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=GENERAL</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
