@@ -134,6 +134,18 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
     }
 
     @Test
+    public void Notification_Appliance() {
+        ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
+        ZWaveThingChannel channel = createChannel("alarm_smoke", DataType.OnOffType, null, null);
+
+        ZWaveCommandClassValueEvent event = createEvent(ZWaveAlarmCommandClass.AlarmType.APPLIANCE, ReportType.ALARM, 0,
+                0xff);
+        State state = converter.handleEvent(channel, event);
+        assertEquals(OnOffType.class, state.getClass());
+        assertEquals(OnOffType.ON, state);
+    }
+
+    @Test
     public void Notification_PowerManagement_PowerApplied() {
         // Simulates the Nexia doorbell
         ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);

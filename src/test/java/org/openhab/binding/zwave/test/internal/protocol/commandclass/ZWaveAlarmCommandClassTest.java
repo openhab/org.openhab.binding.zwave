@@ -243,4 +243,23 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
         assertEquals(1, alarmCommandClass.getSupportedAlarms().size());
         assertEquals(AlarmType.BURGLAR, alarmCommandClass.getSupportedAlarms().iterator().next());
     }
+
+    @Test
+    public void Alarm_Appliance() {
+        byte[] packetData = { 0x01, 0x0A, 0x00, 0x04, 0x00, 0x2D, 0x04, 0x71, 0x05, 0x0C, (byte) 0xFF, 0x5F };
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData, 3);
+
+        assertEquals(events.size(), 1);
+
+        ZWaveAlarmValueEvent event = (ZWaveAlarmValueEvent) events.get(0);
+
+        // assertEquals(event.getNodeId(), 40);
+        assertEquals(event.getEndpoint(), 0);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_ALARM);
+        assertEquals(event.getReportType(), ReportType.ALARM);
+        assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.APPLIANCE);
+        assertEquals(event.getAlarmStatus(), 0xFF);
+    }
+
 }
