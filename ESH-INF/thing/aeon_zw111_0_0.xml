@@ -81,7 +81,7 @@ Nano Dimmer<br /><h1>Overview</h1><p>Aeotec Nano Dimmer is a Z-Wave Smart Dimmer
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW111</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0103:006F,0203:006F</property>
+      <property name="manufacturerRef">0003:006F,0103:006F,0203:006F</property>
       <property name="dbReference">576</property>
       <property name="defaultAssociations">1</property>
     </properties>
