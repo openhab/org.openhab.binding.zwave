@@ -84,10 +84,10 @@
         <default>0</default>
         <options>
           <option value="0">Disabled</option>
-          <option value="1">0.5 �F</option>
-          <option value="2">1.0 �F</option>
-          <option value="3">1.5 �F</option>
-          <option value="4">2.0 �F</option>
+          <option value="1">0.5°</option>
+          <option value="2">1.0°</option>
+          <option value="3">1.5°</option>
+          <option value="4">2.0°</option>
         </options>
       </parameter>
 

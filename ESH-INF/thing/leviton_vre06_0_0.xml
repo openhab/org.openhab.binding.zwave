@@ -31,7 +31,7 @@
       <property name="vendor">Leviton</property>
       <property name="modelId">VRE06</property>
       <property name="manufacturerId">001D</property>
-      <property name="manufacturerRef">0E01:0334</property>
+      <property name="manufacturerRef">0E01:0209,0E01:0334</property>
       <property name="dbReference">192</property>
       <property name="defaultAssociations">1</property>
     </properties>
