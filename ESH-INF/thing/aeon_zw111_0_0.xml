@@ -81,7 +81,7 @@ Nano Dimmer<br /><h1>Overview</h1><p>Aeotec Nano Dimmer is a Z-Wave Smart Dimmer
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW111</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0103:006F,0203:006F</property>
+      <property name="manufacturerRef">0003:006F,0103:006F,0203:006F</property>
       <property name="dbReference">576</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -211,6 +211,15 @@ Threshold change in wattage (in terms of percentage)<br /><h1>Overview</h1><p>Th
         ]]></description>
         <default>5</default>
         <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_101_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>101: Set group 1 reports</label>
+        <description><![CDATA[
+To set which reports need to be sent in Report group 1<br /><h1>Overview</h1><p>1     Send Meter Report of voltage (V)<br />2     Send Meter Report of current (A)<br />4     Send Meter Report of wattage (W)<br />8     Send Meter Report of energy (kWh)</p>
+        ]]></description>
+        <default>0</default>
       </parameter>
 
       <parameter name="config_102_1" type="integer" groupName="configuration"

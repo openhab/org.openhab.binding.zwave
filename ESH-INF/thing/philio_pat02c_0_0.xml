@@ -79,12 +79,12 @@ Setting the BASIC command value<br /><h1>Overview</h1><ul><li>Setting the BASIC 
                  min="0" max="255">
         <label>5: Operation Mode</label>
         <description><![CDATA[
-Operation mode. Using bit to control.<br /><h1>Overview</h1><p>Operation mode. Using bit to control.</p> <ul><li>Bit0: Disable the Flood function.</li> <li>Bit1: Reserve.</li> <li>Bit2: Reserve.</li> <li>Bit3: not applicable for this device variant, set to 0</li> <li>Bit4: Reserve.</li> <li>Bit5: not applicable for this device variant, set to 0</li> <li>Bit6: Reserve.</li> <li>Bit7: Reserve.</li> </ul>
+Operation mode. Using bit to control.<br /><h1>Overview</h1><p>Operation mode. Using bit to control.</p> <ul><li>Bit0: Disable the Flood function.</li> <li>Bit1: Reserve.</li> <li>Bit2: Reserve.</li> <li>Bit3: not applicable for this device variant, set to 0</li> <li>Bit4: Reserve.</li> <li>Bit5: not applicable for this device variant, set to 1</li> <li>Bit6: Reserve.</li> <li>Bit7: Reserve.</li> </ul>
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">Flood function is enabled</option>
-          <option value="1">Flood function is disabled</option>
+          <option value="32">Flood function is enabled</option>
+          <option value="33">Flood function is disabled</option>
         </options>
         <limitToOptions>false</limitToOptions>
       </parameter>
