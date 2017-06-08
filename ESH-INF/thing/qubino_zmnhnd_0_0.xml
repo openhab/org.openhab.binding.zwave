@@ -35,10 +35,22 @@
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1,COMMAND_CLASS_BASIC:1</property>
         </properties>
       </channel>
+      <channel id="sensor_binary2" typeId="sensor_binary">
+        <label>Sensor Binary</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY:2</property>
+        </properties>
+      </channel>
       <channel id="sensor_temperature2" typeId="sensor_temperature">
         <label>Sensor (temperature) 2</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:2,COMMAND_CLASS_BASIC:2;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="alarm_burglar2" typeId="alarm_burglar">
+        <label>Burglar</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:2;type=BURGLAR</property>
         </properties>
       </channel>
     </channels>

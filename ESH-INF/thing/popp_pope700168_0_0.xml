@@ -11,6 +11,12 @@
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
+      <channel id="basic_number" typeId="basic_number">
+        <label>Basic value</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_BASIC</property>
+        </properties>
+      </channel>
       <channel id="sensor_general" typeId="sensor_general">
         <label>Sensor (general)</label>
         <properties>
