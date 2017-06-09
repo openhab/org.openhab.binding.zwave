@@ -62,7 +62,7 @@ Mini Plug Switch with Metering (Gen5)<br /><h1>Overview</h1><p>The Metering Plug
       <property name="vendor">Everspring</property>
       <property name="modelId">AN181</property>
       <property name="manufacturerId">0060</property>
-      <property name="manufacturerRef">0004:0006,0004:0007</property>
+      <property name="manufacturerRef">0004:0006</property>
       <property name="dbReference">306</property>
       <property name="defaultAssociations">1</property>
     </properties>
