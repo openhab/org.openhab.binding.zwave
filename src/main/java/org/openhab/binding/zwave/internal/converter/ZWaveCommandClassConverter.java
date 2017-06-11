@@ -56,6 +56,7 @@ public abstract class ZWaveCommandClassConverter {
         temp.put(CommandClass.COMMAND_CLASS_SWITCH_COLOR, ZWaveColorConverter.class);
         temp.put(CommandClass.COMMAND_CLASS_CONFIGURATION, ZWaveConfigurationConverter.class);
         temp.put(CommandClass.COMMAND_CLASS_DOOR_LOCK, ZWaveDoorLockConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_MANUFACTURER_PROPRIETARY, ZWaveManufacturerProprietaryConverter.class);
         temp.put(CommandClass.COMMAND_CLASS_METER, ZWaveMeterConverter.class);
         temp.put(CommandClass.COMMAND_CLASS_METER_TBL_MONITOR, ZWaveMeterTblMonitorConverter.class);
         temp.put(CommandClass.COMMAND_CLASS_PROTECTION, ZWaveProtectionConverter.class);
