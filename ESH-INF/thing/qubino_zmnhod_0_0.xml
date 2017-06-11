@@ -90,7 +90,7 @@
       <property name="manufacturerId">0159</property>
       <property name="manufacturerRef">0003:0053</property>
       <property name="dbReference">214</property>
-      <property name="defaultAssociations">1</property>
+      <property name="defaultAssociations">1,5</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -245,26 +245,60 @@ If digital temperature sensor is connected, module reports measured temperature 
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association">
-        <label>1: Group 1</label>
+        <label>1: Default reporting group</label>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Group 2</label>
+        <label>2: Basic on/off</label>
+        <description>Triggered at change of the input I1 state and reflecting its state</description>
         <multipleLimit>16</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Group 3</label>
+        <label>3: Basic on/off</label>
+        <description>Triggered at change of the input I2 state and reflecting its state</description>
         <multipleLimit>16</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Group 4</label>
+        <label>4: Basic on/off</label>
+        <description><![CDATA[
+Triggered at sensing moving direction of roller<br /><h1>Overview</h1><p>up=FF, down=0</p>
+        ]]></description>
         <multipleLimit>16</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Group 5</label>
+        <label>5: Basic on/off</label>
+        <description><![CDATA[
+Triggered at reaching roller position<br /><h1>Overview</h1><p>bottom=FF, top=0</p>
+        ]]></description>
+        <multipleLimit>16</multipleLimit>
+      </parameter>
+
+      <parameter name="group_6" type="text" groupName="association" multiple="true">
+        <label>6: Basic on/off</label>
+        <description><![CDATA[
+Triggered at reaching roller position<br /><h1>Overview</h1><p>bottom=FF, not bottom=0</p>
+        ]]></description>
+        <multipleLimit>16</multipleLimit>
+      </parameter>
+
+      <parameter name="group_7" type="text" groupName="association" multiple="true">
+        <label>7: Multilevel set</label>
+        <description>triggered at changes of value of the Flush Shutter DC position</description>
+        <multipleLimit>16</multipleLimit>
+      </parameter>
+
+      <parameter name="group_8" type="text" groupName="association" multiple="true">
+        <label>8: Multilevel set</label>
+        <description>Triggered at changes of value of slats tilting position</description>
+        <multipleLimit>16</multipleLimit>
+      </parameter>
+
+      <parameter name="group_9" type="text" groupName="association" multiple="true">
+        <label>9: Multilevel sensor report</label>
+        <description>Triggered at change of temperature sensor</description>
         <multipleLimit>16</multipleLimit>
       </parameter>
 

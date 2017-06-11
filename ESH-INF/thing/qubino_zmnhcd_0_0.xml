@@ -8,7 +8,7 @@
   <thing-type id="qubino_zmnhcd_00_000" listed="false">
     <label>ZMNHCD Flush Shutter</label>
     <description><![CDATA[
-Flush Shutter<br /><h1>Overview</h1><p>To enable endpoint 2 (lamella tilt for venetian blinds), follow the procedure:</p> <ol><li>set Param 71 to 0 -&gt; save ( make sure it has been set really )</li> <li>set Param 71 to 1 -&gt; save ( make sure it has been set really )</li> <li>exclude device from network and delete Node xml, stop openHAB</li> <li>switch off the power supply of the device ( according to the support team this is an alternative to wait 30s )</li> <li>switch on the power supply again and start openHAB</li> <li>include device to the network</li> <li>add the Thing to openhab via HABmin</li> <li>Be patient until the binding until processed all your nodes again</li> </ol>
+Flush Shutter<br /><h1>Overview</h1><p>ZMNHCD version S1</p> <p>To enable endpoint 2 (lamella tilt for venetian blinds), follow the procedure:</p> <ol><li>set Param 71 to 0 -&gt; save ( make sure it has been set really )</li> <li>set Param 71 to 1 -&gt; save ( make sure it has been set really )</li> <li>exclude device from network and delete Node xml, stop openHAB</li> <li>switch off the power supply of the device ( according to the support team this is an alternative to wait 30s )</li> <li>switch on the power supply again and start openHAB</li> <li>include device to the network</li> <li>add the Thing to openhab via HABmin</li> <li>Be patient until the binding until processed all your nodes again</li> </ol>
     ]]></description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -22,21 +22,15 @@ Flush Shutter<br /><h1>Overview</h1><p>To enable endpoint 2 (lamella tilt for ve
       <channel id="blinds_control" typeId="blinds_control">
         <label>Blinds Control</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
-          <property name="binding:Command:StopMoveType">SWITCH_MULTILEVEL,BASIC</property>
-          <property name="binding:Command:UpDownType">SWITCH_MULTILEVEL,BASIC</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:StopMoveType">SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:UpDownType">SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
-        </properties>
-      </channel>
-      <channel id="meter_kwh" typeId="meter_kwh">
-        <label>Electric meter (kWh)</label>
-        <properties>
-          <property name="binding:*:DecimalType">METER;type=E_KWh</property>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="meter_watts" typeId="meter_watts">
@@ -45,44 +39,10 @@ Flush Shutter<br /><h1>Overview</h1><p>To enable endpoint 2 (lamella tilt for ve
           <property name="binding:*:DecimalType">METER;type=E_W</property>
         </properties>
       </channel>
-      <channel id="switch_binary1" typeId="switch_binary">
-        <label>Switch 1</label>
+      <channel id="meter_kwh" typeId="meter_kwh">
+        <label>Electric meter (kWh)</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY:1</property>
-        </properties>
-      </channel>
-      <channel id="blinds_control1" typeId="blinds_control">
-        <label>Blinds control 1</label>
-        <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:1,BASIC:1</property>
-          <property name="binding:Command:StopMoveType">SWITCH_MULTILEVEL:1,BASIC:1</property>
-          <property name="binding:Command:UpDownType">SWITCH_MULTILEVEL:1,BASIC:1</property>
-        </properties>
-      </channel>
-      <channel id="meter_kwh1" typeId="meter_kwh">
-        <label>Electric meter (kWh) 1</label>
-        <properties>
-          <property name="binding:*:DecimalType">METER:1;type=E_KWh</property>
-        </properties>
-      </channel>
-      <channel id="meter_watts1" typeId="meter_watts">
-        <label>Electric meter (watts) 1</label>
-        <properties>
-          <property name="binding:*:DecimalType">METER:1;type=E_W</property>
-        </properties>
-      </channel>
-      <channel id="switch_binary2" typeId="switch_binary">
-        <label>Switch 2</label>
-        <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY:2</property>
-        </properties>
-      </channel>
-      <channel id="blinds_control2" typeId="blinds_control">
-        <label>Blinds control 2</label>
-        <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:2,BASIC:2</property>
-          <property name="binding:Command:StopMoveType">SWITCH_MULTILEVEL:2,BASIC:2</property>
-          <property name="binding:Command:UpDownType">SWITCH_MULTILEVEL:2,BASIC:2</property>
+          <property name="binding:*:DecimalType">METER;type=E_KWh</property>
         </properties>
       </channel>
     </channels>
@@ -92,8 +52,9 @@ Flush Shutter<br /><h1>Overview</h1><p>To enable endpoint 2 (lamella tilt for ve
       <property name="vendor">Goap</property>
       <property name="modelId">ZMNHCD</property>
       <property name="manufacturerId">0159</property>
-      <property name="manufacturerRef">0003:0002,0003:0052</property>
-      <property name="dbReference">213</property>
+      <property name="manufacturerRef">0003:0052</property>
+      <property name="versionMax">4.0</property>
+      <property name="dbReference">614</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -218,16 +179,7 @@ Defines if reporting regarding power level, etc is reported to controller.<br />
                  min="0" max="50">
         <label>85: Power consumption max delay time</label>
         <description><![CDATA[
-Time delay for detecting motor errors<br /><h1>Overview</h1><p>This parameter defines the max time before motor power consumption is read after one of the relays is switched ON. If there is no power consumption during this max time (motor not connected, damaged or requires higher time to start, motor in end position,...) the relay will switch OFF. Time is defined by entering it manually. Available configuration parameters (data type is 1 Byte DEC):</p> <ul><li> default value 8 = 800ms</li> <li> 3 - 50 = 0,3seconds - 5seconds (100ms resolution)</li> </ul>
-        ]]></description>
-        <default>8</default>
-      </parameter>
-
-      <parameter name="config_86_1" type="integer" groupName="configuration"
-                 min="3" max="50">
-        <label>86: Power consumption at limit switch delay time</label>
-        <description><![CDATA[
-Sets the time delay for detecting limit switches<br /><h1>Overview</h1><p>This parameter defines the max time at limit switch, when power consumption is below power threshold. If the power consumption during this time is below power threshold (par. 76), the active output will switch off, means that limit switch is reached. Available configuration parameters (data type is 1 Byte DEC):</p> <ul><li> default value 8 = 800ms</li> <li> 3 - 50 = 0,3seconds - 5seconds (100ms resolution)</li> </ul>
+Time delay for detecting motor errors<br /><h1>Overview</h1><p>This parameter defines the max time before motor power consumption is read after one of the relays is switched ON. If there is no power consumption during this max time (motor not connected, damaged or requires higher time to start, motor in end position,...) the relay will switch OFF. Time is defined by entering it manually. Available configuration parameters (data type is 1 Byte DEC):</p> <ul><li> default value 8 = 800ms</li> <li> 3 - 50 = 0,3seconds - 5seconds (100ms resolution)</li> <li> 0 = time is set automatically</li> </ul>
         ]]></description>
         <default>8</default>
       </parameter>
@@ -270,12 +222,12 @@ Threshold for sending temperature change reports<br /><h1>Overview</h1><p>If dig
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: On/Off Triggered by I2</label>
+        <label>2: On/Off Triggered by I1</label>
         <multipleLimit>16</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: On/Off Triggered by I3</label>
+        <label>3: On/Off Triggered by I2</label>
         <multipleLimit>16</multipleLimit>
       </parameter>
 
