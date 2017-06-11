@@ -66,23 +66,26 @@
         <default>0</default>
         <options>
           <option value="0">RGB BULB memorizes its state after a power failure</option>
-          <option value="1">Connected device will be on after the power supply is reconnected</option>
-          <option value="2">Connected device will be off after the power supply is reconnected</option>
+          <option value="1">Device will be on after power supply is reconnected</option>
+          <option value="2">Device will be off after power supply is reconnected</option>
         </options>
       </parameter>
 
       <parameter name="config_24_1" type="integer" groupName="configuration">
         <label>24: Notification when Load status change</label>
-        <description>RGB BULB can send notifications to associated device (Group Lifeline) when the status of the RGB BULB is changed.</description>
+        <description><![CDATA[
+RGB BULB can send notifications to associated device <br /><h1>Overview</h1><p>RGB BULB can send notifications to associated device (Group Lifeline) when the status of the RGB BULB is changed.</p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="1">Send BASIC REPORT</option>
-          <option value="2">Send BASIC REPORT only when the status of the RGB BULB is not changed</option>
+          <option value="2">Send BASIC REPORT only without status change</option>
         </options>
       </parameter>
 
       <parameter name="config_51_1" type="integer" groupName="configuration">
-        <label>51: Enable/disable the function of using wall switch to turn on/off RGB BULB</label>
+        <label>51: Enable/disable the function of using wall switch</label>
+        <description>Enable/disable the function of using wall switch to turn on/off RGB BULB</description>
         <default>0</default>
         <options>
           <option value="0">Disable</option>
@@ -92,7 +95,9 @@
 
       <parameter name="config_61_4" type="integer" groupName="configuration">
         <label>61: Advance mode</label>
-        <description>RGB BULB can blink or cyclic/random change color automatically at set intervals. It will stop blink or change color when receiving any control command like Basic Set</description>
+        <description><![CDATA[
+RGB BULB can blink or cyclic/random change color automatically at set intervals.<br /><h1>Overview</h1><p>RGB BULB can blink or cyclic/random change color automatically at set intervals. It will stop blink or change color when receiving any control command like Basic Set</p>
+        ]]></description>
         <default>3072</default>
         <options>
           <option value="3072">Stop changing</option>
