@@ -18,12 +18,9 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 /**
- * <p>
  * ZWave Manufacturer Proprietary command class.
- * </p>
  * <p>
  * This class delegates to separate implementation classes for each manufacturer proprietary implementation.
- * </p>
  *
  * @author Chris Jackson
  */

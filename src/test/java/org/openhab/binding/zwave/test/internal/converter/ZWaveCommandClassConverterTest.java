@@ -22,6 +22,10 @@ import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClass
  *
  */
 public class ZWaveCommandClassConverterTest {
+    ZWaveNode CreateMockedNode(final int version) {
+        return CreateMockedNode(version, new HashMap<String, String>());
+    }
+
     ZWaveNode CreateMockedNode(final int version, final Map<String, String> options) {
         final Map<Integer, ZWaveCommandClass> classes = new HashMap<Integer, ZWaveCommandClass>();
         final ZWaveNode node = Mockito.mock(ZWaveNode.class);
