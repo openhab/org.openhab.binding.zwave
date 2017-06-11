@@ -409,8 +409,14 @@ public class ZWaveTransactionManager {
                             logger.debug("NODE {}: Application Command Request ({}:{})", nodeId,
                                     node.getNodeState().toString(), node.getNodeInitStage().toString());
 
-                            List<ZWaveCommandClassPayload> commands = node
-                                    .processCommand(new ZWaveCommandClassPayload(incomingMessage));
+                            List<ZWaveCommandClassPayload> commands;
+                            try {
+                                commands = node.processCommand(new ZWaveCommandClassPayload(incomingMessage));
+                            } catch (Exception e) {
+                                commands = null;
+                                logger.error("Exception processing frame: {}", incomingMessage);
+                                logger.error("Exception processing frame: ", e);
+                            }
                             if (commands != null) {
                                 logger.debug("NODE {}: Commands processed {}.", nodeId, commands.size());
 
