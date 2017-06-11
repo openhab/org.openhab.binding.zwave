@@ -31,10 +31,16 @@ Multisensor 4in1<br /><h1>Overview</h1><p>Contact/temperature/humidity/luminance
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=RELATIVE_HUMIDITY</property>
         </properties>
       </channel>
-      <channel id="alarm_access" typeId="alarm_access">
-        <label>Alarm (access)</label>
+      <channel id="sensor_door" typeId="sensor_door">
+        <label>Door sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
+          <property name="binding:*:OpenClosedType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
+        </properties>
+      </channel>
+      <channel id="alarm_tamper" typeId="alarm_tamper">
+        <label>Tamper Alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -51,7 +57,66 @@ Multisensor 4in1<br /><h1>Overview</h1><p>Contact/temperature/humidity/luminance
       <property name="manufacturerId">0109</property>
       <property name="manufacturerRef">201F:1F10</property>
       <property name="dbReference">450</property>
+      <property name="defaultAssociations">1</property>
     </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: Temperature unit</label>
+        <default>0</default>
+        <options>
+          <option value="0">Celsius (default)</option>
+          <option value="1">Fahrenheit</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration"
+                 min="1" max="50">
+        <label>2: Temperature Reporting Threshold</label>
+        <description><![CDATA[
+Set up from 0.1C to 5C<br /><h1>Overview</h1><p>Threshold change in temperature to induce an automatic report. 1 to 50 ( Set up from 0.1C to 5C)</p>
+        ]]></description>
+        <default>1</default>
+      </parameter>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration"
+                 min="1" max="50">
+        <label>3: Humidity Reporting Threshold</label>
+        <description><![CDATA[
+Set up from 1%-50%<br /><h1>Overview</h1><p>Threshold change in humidity to induce an automatic report. 1 to 50 ( Set up from 1%-50%)</p>
+        ]]></description>
+        <default>10</default>
+      </parameter>
+
+      <parameter name="config_4_1" type="integer" groupName="configuration"
+                 min="0" max="50">
+        <label>4: </label>
+        <description><![CDATA[
+Set up from 5%-50%<br /><h1>Overview</h1><p>Threshold change in luminance to induce an automatic report. 0 is disabled. 5 to 50 ( Set up from 5%-50%)</p>
+        ]]></description>
+        <default>10</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+    </config-description>
 
   </thing-type>
 

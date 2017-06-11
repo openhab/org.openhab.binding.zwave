@@ -73,8 +73,6 @@ Switch on LED indicator.<br /><h1>Overview</h1><p>This parameter defines the rel
         <options>
           <option value="0">Do not change LED state when on</option>
           <option value="1">Pink LED state when on</option>
-          <option value="2">2 - Endpoint 2 is mapped to root device</option>
-          <option value="3">3 - Endpoint 1 and 2 are mapped to root device</option>
         </options>
       </parameter>
 
@@ -96,6 +94,8 @@ Endpoint device mapping setting for associated devices.<br /><h1>Overview</h1><p
         <options>
           <option value="0">0 - No endpoint is mapped to root device</option>
           <option value="1">1 - Endpoint 1 is mapped to root device</option>
+          <option value="2">2 - Endpoint 2 is mapped to root device</option>
+          <option value="3">3 - Endpoint 1 and 2 are mapped to root device</option>
         </options>
       </parameter>
 
