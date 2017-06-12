@@ -119,6 +119,7 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
                 }
                 break;
             case IncreaseDecreaseType:
+                // state = IncreaseDecreaseType.INCREASE;
                 break;
             default:
                 logger.warn("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());

@@ -543,7 +543,7 @@ public abstract class ZWaveCommandClass {
         // Note that MANUFACTURER_PROPRIETARY shouldn't be instantiated directly
         // The getInstance method will catch this and translate to the correct
         // class for the device.
-        COMMAND_CLASS_MANUFACTURER_PROPRIETARY(0x91, null),
+        COMMAND_CLASS_MANUFACTURER_PROPRIETARY(0x91, ZWaveManufacturerProprietaryCommandClass.class),
         COMMAND_CLASS_SCREEN_MD(0x92, null),
         COMMAND_CLASS_SCREEN_ATTRIBUTES(0x93, null),
         COMMAND_CLASS_SIMPLE_AV_CONTROL(0x94, null),

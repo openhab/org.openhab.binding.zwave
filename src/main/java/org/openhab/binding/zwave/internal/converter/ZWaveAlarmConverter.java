@@ -47,6 +47,12 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
     static {
         Map<NotificationEvent, State> events = new HashMap<NotificationEvent, State>();
 
+        // Alarm Burglar
+        events = new HashMap<NotificationEvent, State>();
+        events.put(NotificationEvent.BURGLAR__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.BURGLAR__INTRUSION, OnOffType.ON);
+        notifications.put("alarm_burglar", events);
+
         // Smoke Alarms
         events = new HashMap<NotificationEvent, State>();
         events.put(NotificationEvent.SMOKE__NONE, OnOffType.OFF);
@@ -239,7 +245,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
 
         // Handle event 0 as 'clear the event'
         int event = eventAlarm.getAlarmEvent();// == 0 ? 0 : eventAlarm.getAlarmStatus();
-        logger.debug("Alarm converter NOTIFICATION event is {} - {}, type {}", event, channel.getDataType());
+        logger.debug("Alarm converter NOTIFICATION event is {}, type {}", event, channel.getDataType());
         if (notification == null) {
             return null;
         }
