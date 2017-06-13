@@ -293,6 +293,20 @@
         </config-description>
     </channel-type>
 
+    <channel-type id="blinds_lamella">
+        <item-type>Dimmer</item-type>
+        <label>Blinds Lamella Position</label>
+        <description>Sets the blinds lamella position</description>
+        <category>Blinds</category>
+    </channel-type>
+
+    <channel-type id="blinds_shutter">
+        <item-type>Dimmer</item-type>
+        <label>Blinds Shutter Position</label>
+        <description>Sets the blinds shutter position</description>
+        <category>Blinds</category>
+    </channel-type>
+
     <!-- Color Setting Channel -->
     <channel-type id="color_color">
         <item-type>Color</item-type>
@@ -875,20 +889,6 @@
                 <option value="CLOSED">Closed</option>
             </options>
         </state>
-        
-        <config-description>
-            <parameter name="config_offset" type="integer" min="10" max="600">
-                <label>Automatic Update Offset</label>
-                <description><![CDATA[The number of seconds difference in the time before it is reset<br/>
-                Setting this will automatically update the devices clock when the time difference between
-                the device, and the computer exceeds this number of seconds.]]></description>
-                <default>60</default>
-                <options>
-                    <option value="0">Disable Auto Update</option>
-                </options>
-                <limitToOptions>false</limitToOptions>
-            </parameter>
-        </config-description>
         
     </channel-type>
 
