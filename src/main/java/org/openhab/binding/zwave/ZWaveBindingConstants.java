@@ -11,7 +11,7 @@ package org.openhab.binding.zwave;
 import java.text.MessageFormat;
 import java.util.Set;
 
-import org.eclipse.smarthome.core.i18n.I18nProvider;
+import org.eclipse.smarthome.core.i18n.TranslationProvider;
 import org.eclipse.smarthome.core.thing.ThingTypeUID;
 import org.openhab.binding.zwave.internal.ZWaveActivator;
 
@@ -163,32 +163,32 @@ public class ZWaveBindingConstants {
 
     public final static Set<ThingTypeUID> SUPPORTED_BRIDGE_TYPES_UIDS = ImmutableSet.of(CONTROLLER_SERIAL);
 
-    private static I18nProvider i18nProvider;
+    private static TranslationProvider translationProvider;
 
-    protected void setI18nProvider(I18nProvider i18nProvider) {
-        ZWaveBindingConstants.i18nProvider = i18nProvider;
+    protected void setI18nProvider(TranslationProvider translationProvider) {
+        ZWaveBindingConstants.translationProvider = translationProvider;
     }
 
-    protected void unsetI18nProvider(I18nProvider i18nProvider) {
-        ZWaveBindingConstants.i18nProvider = null;
+    protected void unsetI18nProvider(TranslationProvider i18nProvider) {
+        ZWaveBindingConstants.translationProvider = null;
     }
 
     public static String getI18nConstant(I18nConstant constant) {
-        I18nProvider i18nProviderLocal = i18nProvider;
-        if (i18nProviderLocal == null) {
+        TranslationProvider translationProviderLocal = translationProvider;
+        if (translationProviderLocal == null) {
             return MessageFormat.format(constant.defaultText, (Object[]) null);
         }
-        return i18nProviderLocal.getText(ZWaveActivator.getContext().getBundle(), constant.defaultText,
+        return translationProviderLocal.getText(ZWaveActivator.getContext().getBundle(), constant.defaultText,
                 constant.defaultText, null, (Object[]) null);
     }
 
     public static String getI18nConstant(I18nConstant constant, Object... arguments) {
-        I18nProvider i18nProviderLocal = i18nProvider;
-        if (i18nProviderLocal == null) {
+        TranslationProvider translationProviderLocal = translationProvider;
+        if (translationProviderLocal == null) {
             return MessageFormat.format(constant.key, arguments);
         }
-        return i18nProviderLocal.getText(ZWaveActivator.getContext().getBundle(), constant.key, constant.defaultText,
-                null, arguments);
+        return translationProviderLocal.getText(ZWaveActivator.getContext().getBundle(), constant.key,
+                constant.defaultText, null, arguments);
     }
 
     public static class I18nConstant {
