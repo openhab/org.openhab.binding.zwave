@@ -60,7 +60,7 @@ public class ZWaveThingHandlerTest {
         ZWaveController controller = Mockito.mock(ZWaveController.class);
 
         ThingHandlerCallback thingCallback = Mockito.mock(ThingHandlerCallback.class);
-        ZWaveThingHandler thingHandler = new ZWaveThingHandler(thing);
+        ZWaveThingHandler thingHandler = new ZWaveThingHandler(thing, null);
         thingHandler.setCallback(thingCallback);
         ArgumentCaptor<ZWaveCommandClassTransactionPayload> payloadCaptor;
         payloadCaptor = ArgumentCaptor.forClass(ZWaveCommandClassTransactionPayload.class);

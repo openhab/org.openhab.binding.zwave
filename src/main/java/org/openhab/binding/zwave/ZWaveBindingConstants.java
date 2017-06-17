@@ -8,12 +8,9 @@
  */
 package org.openhab.binding.zwave;
 
-import java.text.MessageFormat;
 import java.util.Set;
 
-import org.eclipse.smarthome.core.i18n.I18nProvider;
 import org.eclipse.smarthome.core.thing.ThingTypeUID;
-import org.openhab.binding.zwave.internal.ZWaveActivator;
 
 import com.google.common.collect.ImmutableSet;
 
@@ -100,115 +97,50 @@ public class ZWaveBindingConstants {
     public final static String CHANNEL_CFG_BINDING = "binding";
     public final static String CHANNEL_CFG_COMMANDCLASS = "commandClass";
 
-    public final static I18nConstant OFFLINE_CTLR_OFFLINE = new I18nConstant("zwave.thingstate.controller_offline",
-            "Controller is offline");
-    public final static I18nConstant OFFLINE_NODE_DEAD = new I18nConstant("zwave.thingstate.node_dead",
-            "Node is not communicating with controller");
-    public final static I18nConstant OFFLINE_NODE_NOTFOUND = new I18nConstant("zwave.thingstate.node_notfound",
-            "Node not found in Z-Wave network");
-    public final static I18nConstant OFFLINE_SERIAL_EXISTS = new I18nConstant("zwave.thingstate.serial_notfound",
-            "Serial Error: Port {0} does not exist");
-    public final static I18nConstant OFFLINE_SERIAL_INUSE = new I18nConstant("zwave.thingstate.serial_inuse",
-            "Serial Error: Port {0} is in use");
-    public final static I18nConstant OFFLINE_SERIAL_UNSUPPORTED = new I18nConstant(
-            "zwave.thingstate.serial_unsupported", "Serial Error: Unsupported operation on port {0}");
-    public final static I18nConstant OFFLINE_SERIAL_LISTENERS = new I18nConstant("zwave.thingstate.serial_listeners",
-            "Serial Error: Too many listeners on port {0}");
+    public final static String OFFLINE_CTLR_OFFLINE = "zwave.thingstate.controller_offline";
+    public final static String OFFLINE_NODE_DEAD = "zwave.thingstate.node_dead";
+    public final static String OFFLINE_NODE_NOTFOUND = "zwave.thingstate.node_notfound";
+    public final static String OFFLINE_SERIAL_EXISTS = "zwave.thingstate.serial_notfound";
+    public final static String OFFLINE_SERIAL_INUSE = "zwave.thingstate.serial_inuse";
+    public final static String OFFLINE_SERIAL_UNSUPPORTED = "zwave.thingstate.serial_unsupported";
+    public final static String OFFLINE_SERIAL_LISTENERS = "zwave.thingstate.serial_listeners";
 
-    public final static I18nConstant EVENT_INCLUSION_STARTED = new I18nConstant("zwave.event.inclusion_started",
-            "Z-Wave network inclusion started");
-    public final static I18nConstant EVENT_INCLUSION_COMPLETED = new I18nConstant("zwave.event.inclusion_completed",
-            "Z-Wave network inclusion completed");
-    public final static I18nConstant EVENT_INCLUSION_FAILED = new I18nConstant("zwave.event.inclusion_failed",
-            "Z-Wave network inclusion failed");
-    public final static I18nConstant EVENT_INCLUSION_SECURECOMPLETED = new I18nConstant(
-            "zwave.event.inclusion_securecompleted", "Z-Wave Node {0} secure inclusion complete");
-    public final static I18nConstant EVENT_INCLUSION_SECUREFAILED = new I18nConstant(
-            "zwave.event.inclusion_securefailed", "Z-Wave Node {0} secure inclusion failed");
+    public final static String EVENT_INCLUSION_STARTED = "zwave.event.inclusion_started";
+    public final static String EVENT_INCLUSION_COMPLETED = "zwave.event.inclusion_completed";
+    public final static String EVENT_INCLUSION_FAILED = "zwave.event.inclusion_failed";
+    public final static String EVENT_INCLUSION_SECURECOMPLETED = "zwave.event.inclusion_securecompleted";
+    public final static String EVENT_INCLUSION_SECUREFAILED = "zwave.event.inclusion_securefailed";
 
-    public final static I18nConstant EVENT_EXCLUSION_STARTED = new I18nConstant("zwave.event.exclusion_started",
-            "Z-Wave network exclusion started");
-    public final static I18nConstant EVENT_EXCLUSION_COMPLETED = new I18nConstant("zwave.event.exclusion_completed",
-            "Z-Wave network exclusion completed");
-    public final static I18nConstant EVENT_EXCLUSION_FAILED = new I18nConstant("zwave.event.exclusion_failed",
-            "Z-Wave network exclusion failed");
-    public final static I18nConstant EVENT_EXCLUSION_NODEREMOVED = new I18nConstant("zwave.event.exclusion_failed",
-            "Z-Wave network excluded node {0}");
+    public final static String EVENT_EXCLUSION_STARTED = "zwave.event.exclusion_started";
+    public final static String EVENT_EXCLUSION_COMPLETED = "zwave.event.exclusion_completed";
+    public final static String EVENT_EXCLUSION_FAILED = "zwave.event.exclusion_failed";
+    public final static String EVENT_EXCLUSION_NODEREMOVED = "zwave.event.exclusion_failed";
 
-    public final static I18nConstant EVENT_NETWORKUPDATE_DONE = new I18nConstant("zwave.event.networkupdate_done",
-            "Z-Wave network update completed");
-    public final static I18nConstant EVENT_NETWORKUPDATE_ABORT = new I18nConstant("zwave.event.networkupdate_abort",
-            "Z-Wave network update aborted");
-    public final static I18nConstant EVENT_NETWORKUPDATE_WAIT = new I18nConstant("zwave.event.networkupdate_wait",
-            "Z-Wave network update failed as SUC is busy");
-    public final static I18nConstant EVENT_NETWORKUPDATE_DISABLED = new I18nConstant(
-            "zwave.event.networkupdate_disabled", "Z-Wave network update failed as no SUC is available");
-    public final static I18nConstant EVENT_NETWORKUPDATE_OVERFLOW = new I18nConstant(
-            "zwave.event.networkupdate_overflow", "Z-Wave network update failed as more than 64 updates are required");
+    public final static String EVENT_NETWORKUPDATE_DONE = "zwave.event.networkupdate_done";
+    public final static String EVENT_NETWORKUPDATE_ABORT = "zwave.event.networkupdate_abort";
+    public final static String EVENT_NETWORKUPDATE_WAIT = "zwave.event.networkupdate_wait";
+    public final static String EVENT_NETWORKUPDATE_DISABLED = "zwave.event.networkupdate_disabled";
+    public final static String EVENT_NETWORKUPDATE_OVERFLOW = "zwave.event.networkupdate_overflow";
 
-    public final static I18nConstant EVENT_REMOVEFAILED_NOTFOUND = new I18nConstant("zwave.event.removenode_notfound",
-            "Remove node {0} failed as node was not found");
-    public final static I18nConstant EVENT_REMOVEFAILED_NOTCTLR = new I18nConstant(
-            "zwave.event.removenode_nocontroller", "Remove node {0} failed - this is not the Primary controller");
-    public final static I18nConstant EVENT_REMOVEFAILED_NOTREMOVED = new I18nConstant(
-            "zwave.event.removenode_notremoved", "Unable to remove node {0} from the network");
-    public final static I18nConstant EVENT_REMOVEFAILED_NOCALLBACK = new I18nConstant(
-            "zwave.event.removenode_nocallback", "Remove node {0} failed - no callback function was provided");
-    public final static I18nConstant EVENT_REMOVEFAILED_NODEOK = new I18nConstant("zwave.event.removenode_nodeok",
-            "Remove node {0} failed - the node is operating");
-    public final static I18nConstant EVENT_REMOVEFAILED_REMOVED = new I18nConstant("zwave.event.removenode_removed",
-            "Node {0} successfully removed from the network");
-    public final static I18nConstant EVENT_REMOVEFAILED_FAILED = new I18nConstant("zwave.event.removenode_failed",
-            "Remove node {0} from the network failed");
-    public final static I18nConstant EVENT_REMOVEFAILED_BUSY = new I18nConstant("zwave.event.removenode_busy",
-            "Remove node {0} failed - the controller is busy");
-    public final static I18nConstant EVENT_REMOVEFAILED_UNKNOWN = new I18nConstant("zwave.event.removenode_unknown",
-            "Remove node {0} failed with unknown error");
+    public final static String EVENT_REMOVEFAILED_NOTFOUND = "zwave.event.removenode_notfound";
+    public final static String EVENT_REMOVEFAILED_NOTCTLR = "zwave.event.removenode_nocontroller";
+    public final static String EVENT_REMOVEFAILED_NOTREMOVED = "zwave.event.removenode_notremoved";
+    public final static String EVENT_REMOVEFAILED_NOCALLBACK = "zwave.event.removenode_nocallback";
+    public final static String EVENT_REMOVEFAILED_NODEOK = "zwave.event.removenode_nodeok";
+    public final static String EVENT_REMOVEFAILED_REMOVED = "zwave.event.removenode_removed";
+    public final static String EVENT_REMOVEFAILED_FAILED = "zwave.event.removenode_failed";
+    public final static String EVENT_REMOVEFAILED_BUSY = "zwave.event.removenode_busy";
+    public final static String EVENT_REMOVEFAILED_UNKNOWN = "zwave.event.removenode_unknown";
 
-    public final static I18nConstant EVENT_HEAL_START = new I18nConstant("zwave.event.heal_start",
-            "Node {0} starting network mesh update");
-    public final static I18nConstant EVENT_HEAL_DONE = new I18nConstant("zwave.event.heal_done",
-            "Node {0} network mesh update complete");
+    public final static String EVENT_HEAL_START = "zwave.event.heal_start";
+    public final static String EVENT_HEAL_DONE = "zwave.event.heal_done";
 
-    public final static I18nConstant CONFIG_BINDING_POLLINGPERIOD_LABEL = new I18nConstant(
-            "zwave.config.binding_pollingperiod_label", "Polling Period");
-    public final static I18nConstant CONFIG_BINDING_POLLINGPERIOD_DESC = new I18nConstant(
-            "zwave.config.binding_pollingperiod_desc",
-            "Set the minimum polling period for this device<BR/>"
-                    + "Note that the polling period may be longer than set since the binding treats "
-                    + "polls as the lowest priority data within the network.");
+    public final static String CONFIG_BINDING_POLLINGPERIOD_LABEL = "@text/zwave.config.binding_pollingperiod_label";
+    public final static String CONFIG_BINDING_POLLINGPERIOD_DESC = "@text/zwave.config.binding_pollingperiod_desc";
 
     public final static Integer ACTION_CHECK_VALUE = new Integer(-232323);
 
     public final static Set<ThingTypeUID> SUPPORTED_BRIDGE_TYPES_UIDS = ImmutableSet.of(CONTROLLER_SERIAL);
-
-    private static I18nProvider i18nProvider;
-
-    protected void setI18nProvider(I18nProvider i18nProvider) {
-        ZWaveBindingConstants.i18nProvider = i18nProvider;
-    }
-
-    protected void unsetI18nProvider(I18nProvider i18nProvider) {
-        ZWaveBindingConstants.i18nProvider = null;
-    }
-
-    public static String getI18nConstant(I18nConstant constant) {
-        I18nProvider i18nProviderLocal = i18nProvider;
-        if (i18nProviderLocal == null) {
-            return MessageFormat.format(constant.defaultText, (Object[]) null);
-        }
-        return i18nProviderLocal.getText(ZWaveActivator.getContext().getBundle(), constant.defaultText,
-                constant.defaultText, null, (Object[]) null);
-    }
-
-    public static String getI18nConstant(I18nConstant constant, Object... arguments) {
-        I18nProvider i18nProviderLocal = i18nProvider;
-        if (i18nProviderLocal == null) {
-            return MessageFormat.format(constant.key, arguments);
-        }
-        return i18nProviderLocal.getText(ZWaveActivator.getContext().getBundle(), constant.key, constant.defaultText,
-                null, arguments);
-    }
 
     public static class I18nConstant {
         public String key;

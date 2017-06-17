@@ -10,6 +10,7 @@ package org.openhab.binding.zwave.internal;
 
 import static org.openhab.binding.zwave.ZWaveBindingConstants.CONTROLLER_SERIAL;
 
+import org.eclipse.smarthome.core.i18n.TranslationProvider;
 import org.eclipse.smarthome.core.thing.Bridge;
 import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.thing.ThingTypeUID;
@@ -30,6 +31,16 @@ import org.slf4j.LoggerFactory;
 public class ZWaveHandlerFactory extends BaseThingHandlerFactory {
     private Logger logger = LoggerFactory.getLogger(BaseThingHandlerFactory.class);
 
+    private TranslationProvider translationProvider;
+
+    protected void setTranslationProvider(TranslationProvider i18nProvider) {
+        translationProvider = i18nProvider;
+    }
+
+    protected void removeTranslationProvider(TranslationProvider i18nProvider) {
+        translationProvider = null;
+    }
+
     @Override
     public boolean supportsThingType(ThingTypeUID thingTypeUID) {
         if (thingTypeUID.equals(ZWaveBindingConstants.ZWAVE_THING_UID)) {
@@ -47,10 +58,10 @@ public class ZWaveHandlerFactory extends BaseThingHandlerFactory {
 
         // Handle controllers here
         if (thingTypeUID.equals(CONTROLLER_SERIAL)) {
-            return new ZWaveSerialHandler((Bridge) thing);
+            return new ZWaveSerialHandler((Bridge) thing, translationProvider);
         }
 
         // Everything else gets handled in a single handler
-        return new ZWaveThingHandler(thing);
+        return new ZWaveThingHandler(thing, translationProvider);
     }
 }
