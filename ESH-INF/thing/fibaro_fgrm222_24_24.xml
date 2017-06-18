@@ -51,6 +51,18 @@ Roller Shutter<br /><h1>Overview</h1><p>The device allows for controlling motors
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
         </properties>
       </channel>
+      <channel id="blinds_shutter" typeId="blinds_shutter">
+        <label>Shutter position</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_MANUFACTURER_PROPRIETARY</property>
+        </properties>
+      </channel>
+      <channel id="blinds_lamella" typeId="blinds_lamella">
+        <label>Lamella position</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_MANUFACTURER_PROPRIETARY</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
@@ -61,6 +73,7 @@ Roller Shutter<br /><h1>Overview</h1><p>The device allows for controlling motors
       <property name="manufacturerRef">0301:1001,0302:1000,0302:3000</property>
       <property name="versionMin">24.24</property>
       <property name="dbReference">413</property>
+      <property name="commandClass:COMMAND_CLASS_SWITCH_MULTILEVEL">ccAdd</property>
       <property name="defaultAssociations">3</property>
     </properties>
 
