@@ -173,14 +173,12 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         options.add(new ParameterOption("43200", "12 Hours"));
         options.add(new ParameterOption("86400", "1 Day"));
 
-        parameters.add(ConfigDescriptionParameterBuilder
-                .create(ZWaveBindingConstants.CONFIGURATION_POLLPERIOD, Type.INTEGER)
-                .withLabel(
-                        ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.CONFIG_BINDING_POLLINGPERIOD_LABEL))
-                .withDescription(
-                        ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.CONFIG_BINDING_POLLINGPERIOD_DESC))
-                .withDefault("1800").withMinimum(new BigDecimal(15)).withMaximum(new BigDecimal(86400))
-                .withOptions(options).withLimitToOptions(false).withGroupName("thingcfg").build());
+        parameters.add(
+                ConfigDescriptionParameterBuilder.create(ZWaveBindingConstants.CONFIGURATION_POLLPERIOD, Type.INTEGER)
+                        .withLabel(ZWaveBindingConstants.CONFIG_BINDING_POLLINGPERIOD_LABEL)
+                        .withDescription(ZWaveBindingConstants.CONFIG_BINDING_POLLINGPERIOD_DESC).withDefault("1800")
+                        .withMinimum(new BigDecimal(15)).withMaximum(new BigDecimal(86400)).withOptions(options)
+                        .withLimitToOptions(false).withGroupName("thingcfg").build());
 
         // If we support the wakeup class, then add the configuration
         ZWaveWakeUpCommandClass wakeupCmdClass = (ZWaveWakeUpCommandClass) node

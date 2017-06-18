@@ -11,6 +11,7 @@ package org.openhab.binding.zwave.handler;
 import static org.openhab.binding.zwave.ZWaveBindingConstants.*;
 
 import java.math.BigDecimal;
+import java.text.MessageFormat;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
@@ -25,6 +26,7 @@ import org.eclipse.smarthome.config.core.validation.ConfigValidationException;
 import org.eclipse.smarthome.config.discovery.DiscoveryService;
 import org.eclipse.smarthome.core.events.Event;
 import org.eclipse.smarthome.core.events.EventPublisher;
+import org.eclipse.smarthome.core.i18n.TranslationProvider;
 import org.eclipse.smarthome.core.thing.Bridge;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.ThingStatus;
@@ -33,11 +35,11 @@ import org.eclipse.smarthome.core.thing.UID;
 import org.eclipse.smarthome.core.thing.binding.BaseBridgeHandler;
 import org.eclipse.smarthome.core.types.Command;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
-import org.openhab.binding.zwave.ZWaveBindingConstants.I18nConstant;
 import org.openhab.binding.zwave.discovery.ZWaveDiscoveryService;
 import org.openhab.binding.zwave.event.BindingEventDTO;
 import org.openhab.binding.zwave.event.BindingEventFactory;
 import org.openhab.binding.zwave.event.BindingEventType;
+import org.openhab.binding.zwave.internal.ZWaveActivator;
 import org.openhab.binding.zwave.internal.ZWaveEventPublisher;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
@@ -82,8 +84,21 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
     private ScheduledFuture<?> healJob = null;
 
-    public ZWaveControllerHandler(Bridge bridge) {
+    private final TranslationProvider translationProvider;
+
+    public ZWaveControllerHandler(Bridge bridge, TranslationProvider translationProvider) {
         super(bridge);
+
+        this.translationProvider = translationProvider;
+    }
+
+    public String getI18nConstant(String constant, Object... arguments) {
+        TranslationProvider translationProviderLocal = translationProvider;
+        if (translationProviderLocal == null) {
+            return MessageFormat.format(constant, arguments);
+        }
+        return translationProviderLocal.getText(ZWaveActivator.getContext().getBundle(), constant, constant, null,
+                arguments);
     }
 
     @Override
@@ -161,7 +176,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
         // We must set the state
         updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE,
-                ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE));
+                getI18nConstant(ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE));
     }
 
     /**
@@ -383,7 +398,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     @Override
     public void ZWaveIncomingEvent(ZWaveEvent event) {
         // If this event requires us to let the users know something, then we create a notification
-        I18nConstant eventKey = null;
+        String eventKey = null;
         BindingEventType eventState = null;
         String eventEntity = null;
         String eventId = null;
@@ -396,7 +411,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                 updateStatus(ThingStatus.ONLINE);
             } else {
                 updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE,
-                        ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE));
+                        getI18nConstant(ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE));
             }
         }
 
@@ -620,8 +635,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         if (eventKey != null) {
             EventPublisher ep = ZWaveEventPublisher.getEventPublisher();
             if (ep != null) {
-                BindingEventDTO dto = new BindingEventDTO(eventState,
-                        ZWaveBindingConstants.getI18nConstant(eventKey, eventArgs));
+                BindingEventDTO dto = new BindingEventDTO(eventState, getI18nConstant(eventKey, eventArgs));
                 Event notification = BindingEventFactory.createBindingEvent(ZWaveBindingConstants.BINDING_ID,
                         eventEntity, eventId, dto);
                 ep.post(notification);
