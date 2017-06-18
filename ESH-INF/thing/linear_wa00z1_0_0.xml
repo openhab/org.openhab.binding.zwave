@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="linear_wa00z1_00_000" listed="false">
+    <label>WA00Z-1 Wall Mounted Switch</label>
+    <description>Wall Mounted Switch</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Linear Corp</property>
+      <property name="modelId">WA00Z-1</property>
+      <property name="manufacturerId">014F</property>
+      <property name="manufacturerRef">5343:3132</property>
+      <property name="dbReference">610</property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_1" type="integer" groupName="configuration"
+                 min="0" max="99">
+        <label>1: Activation of Central Scene</label>
+        <description><![CDATA[
+Set top and bottom button scene numbers.<br /><h1>Overview</h1><p>Z-Wave Plus introduces a new process for scene activation – “Central Scene <br />Control”. Press and release the button, it will send a certain command to the <br />central controller via the lifeline association group 1. This allows the controller <br />to react to both a button press and a button release. This mode implements <br />communication pattern 6, and requires a gateway supporting Z-Wave Plus.</p>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration"
+                 min="0" max="2">
+        <label>2: Control Mode</label>
+        <description><![CDATA[
+Control other devices or issue various scene activation...<br /><h1>Overview</h1><p>...  commands to a central controller.</p>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_4_1" type="integer" groupName="configuration"
+                 min="0" max="1">
+        <label>4: Invert Switch</label>
+        <description><![CDATA[
+Invert top of switch ON/OFF buttons<br /><h1>Overview</h1><p>To change the top of the switch to OFF and the bottom of the switch ON, set Parameter 4 to a value of 1.</p>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Lifeline</label>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Group 2</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Group 3</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>
