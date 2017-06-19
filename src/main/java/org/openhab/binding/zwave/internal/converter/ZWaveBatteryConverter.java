@@ -68,6 +68,12 @@ public class ZWaveBatteryConverter extends ZWaveCommandClassConverter {
      */
     @Override
     public State handleEvent(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
+        Integer value = (Integer) event.getValue();
+        if (value < 0) {
+            value = 0;
+        } else if (value > 100) {
+            value = 100;
+        }
         return new DecimalType((Integer) event.getValue());
     }
 
