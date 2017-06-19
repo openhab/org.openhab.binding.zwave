@@ -104,11 +104,6 @@ public class ZWaveBatteryCommandClass extends ZWaveCommandClass
                     batteryLow = false;
                 }
 
-                // If the battery level is outside bounds, then we don't know what's up!
-                if (batteryLevel < 0 || batteryLevel > 100) {
-                    logger.warn("NODE {}: Battery state unknown ({})!", this.getNode().getNodeId(), batteryLevel);
-                    batteryLevel = null;
-                }
                 ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(this.getNode().getNodeId(),
                         endpoint, this.getCommandClass(), batteryLevel);
                 this.getController().notifyEventListeners(zEvent);
