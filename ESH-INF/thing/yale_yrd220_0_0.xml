@@ -28,7 +28,7 @@ Yale Real Living Touchscreen Deadbolt<br /><h2>Inclusion Information</h2><p>To i
       <channel id="alarm_number" typeId="alarm_number">
         <label>Alarm Number</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM</property>
+          <property name="binding:*:DecimalType">ALARM</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">

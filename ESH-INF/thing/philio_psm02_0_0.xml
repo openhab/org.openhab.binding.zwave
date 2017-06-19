@@ -14,19 +14,19 @@
       <channel id="alarm_motion" typeId="alarm_motion">
         <label>Motion Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY;type=MOTION</property>
+          <property name="binding:*:OnOffType">SENSOR_BINARY,BASIC;type=MOTION</property>
         </properties>
       </channel>
       <channel id="alarm_tamper" typeId="alarm_tamper">
         <label>Tamper Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY;type=TAMPER</property>
+          <property name="binding:*:OnOffType">SENSOR_BINARY,BASIC;type=TAMPER</property>
         </properties>
       </channel>
       <channel id="sensor_door" typeId="sensor_door">
         <label>Door/Window Sensor</label>
         <properties>
-          <property name="binding:*:OpenClosedType">SENSOR_BINARY;type=DOORWINDOW</property>
+          <property name="binding:*:OpenClosedType">SENSOR_BINARY,BASIC;type=DOORWINDOW</property>
         </properties>
       </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">
@@ -97,7 +97,9 @@
       <parameter name="config_6_1" type="integer" groupName="configuration"
                  min="0" max="127">
         <label>6: Multi-Sensor Function Switch</label>
-        <description>Bit 0: Disable magnetic integrate illumination. Bit 1: Disable PIR integrate Illumination. Bit 2: Disable magnetic integrate PIR (Default is Disable) Bit 3: When Bit2 is 0 (Enable), the device is install in the same room with the light? 0: In the same roo</description>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Bit 0: Disable magnetic integrate illumination.</p> <p>Bit 1: Disable PIR integrate Illumination.</p> <p>Bit 2: Disable magnetic integrate PIR (Default is Disable)</p> <p>Bit 3: When Bit2 is 0 (Enable), the device is install in the same room with the light? 0:</p>
+        ]]></description>
         <default>4</default>
       </parameter>
 
