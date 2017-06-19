@@ -32,7 +32,7 @@ public class ZWaveBatteryCommandClassTest extends ZWaveCommandClassTest {
         ZWaveBatteryCommandClass cls = (ZWaveBatteryCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_BATTERY);
         ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { -128, 2 };
+        byte[] expectedResponseV1 = { (byte) 0x80, 0x02 };
         cls.setVersion(1);
         msg = cls.getValueMessage();
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
@@ -40,7 +40,7 @@ public class ZWaveBatteryCommandClassTest extends ZWaveCommandClassTest {
 
     @Test
     public void handleReport() {
-        byte[] packetData = { 0x01, 0x0A, 0x00, 0x04, 0x00, 0x49, 0x04, 0x71, 0x05, 0x00, 0x00, (byte) 0xC8 };
+        byte[] packetData = { 0x01, 0x09, 0x00, 0x04, 0x00, 0x05, 0x03, (byte) 0x80, 0x03, 0x6C, 0x1B };
 
         List<ZWaveEvent> events = processCommandClassMessage(packetData, 3);
 
@@ -51,7 +51,7 @@ public class ZWaveBatteryCommandClassTest extends ZWaveCommandClassTest {
         // assertEquals(event.getNodeId(), 40);
         assertEquals(event.getEndpoint(), 0);
         assertEquals(CommandClass.COMMAND_CLASS_BATTERY, event.getCommandClass());
-        assertEquals(0x00, event.getValue());
+        assertEquals(108, event.getValue());
     }
 
 }
