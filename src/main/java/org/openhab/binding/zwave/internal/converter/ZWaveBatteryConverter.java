@@ -74,7 +74,7 @@ public class ZWaveBatteryConverter extends ZWaveCommandClassConverter {
         } else if (value > 100) {
             value = 100;
         }
-        return new DecimalType((Integer) event.getValue());
+        return new DecimalType(value);
     }
 
     /**
