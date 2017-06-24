@@ -185,8 +185,8 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
     @Override
     public State handleEvent(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
         String alarmType = channel.getArguments().get("type");
-        Integer alarmEvent = (channel.getArguments().get("event") == null) ? null
-                : Integer.parseInt(channel.getArguments().get("event"));
+        // Integer alarmEvent = (channel.getArguments().get("event") == null) ? null
+        // : Integer.parseInt(channel.getArguments().get("event"));
 
         ZWaveAlarmValueEvent eventAlarm = (ZWaveAlarmValueEvent) event;
         logger.debug("Alarm converter processing {}", eventAlarm.getReportType());
@@ -194,7 +194,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
             case ALARM:
                 return handleAlarmReport(channel, eventAlarm, alarmType);
             case NOTIFICATION:
-                return handleNotificationReport(channel, eventAlarm, alarmType, alarmEvent);
+                return handleNotificationReport(channel, eventAlarm);
         }
 
         return null;
@@ -232,13 +232,12 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         return state;
     }
 
-    private State handleNotificationReport(ZWaveThingChannel channel, ZWaveAlarmValueEvent eventAlarm, String alarmType,
-            Integer alarmEvent) {
+    private State handleNotificationReport(ZWaveThingChannel channel, ZWaveAlarmValueEvent eventAlarm) {
 
         // Don't trigger event if this item is bound to another event type
-        if (alarmType != null && AlarmType.valueOf(alarmType) != eventAlarm.getAlarmType()) {
-            return null;
-        }
+        // if (alarmType != null && AlarmType.valueOf(alarmType) != eventAlarm.getAlarmType()) {
+        // return null;
+        // }
 
         NotificationEvent notification = NotificationEvent.getEvent(eventAlarm.getAlarmType().toString(),
                 eventAlarm.getAlarmEvent());
@@ -257,9 +256,9 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         }
 
         // Don't trigger event if there is no event match. Note that 0 is always acceptable
-        if (alarmEvent != null && event != 0 && alarmEvent != event) {
-            return null;
-        }
+        // if (alarmEvent != null && event != 0 && alarmEvent != event) {
+        // return null;
+        // }
 
         String channelType = channel.getUID().getId();
         switch (channelType) {

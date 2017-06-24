@@ -94,11 +94,19 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
 
         ZWaveCommandClassValueEvent event = createEvent(ZWaveAlarmCommandClass.AlarmType.SMOKE, ReportType.NOTIFICATION,
                 0, 0xff);
-
         State state = converter.handleEvent(channel, event);
-
         assertEquals(state.getClass(), OnOffType.class);
         assertEquals(state, OnOffType.OFF);
+
+        event = createEvent(ZWaveAlarmCommandClass.AlarmType.SMOKE, ReportType.NOTIFICATION, 1, 0xff);
+        state = converter.handleEvent(channel, event);
+        assertEquals(state.getClass(), OnOffType.class);
+        assertEquals(state, OnOffType.ON);
+
+        event = createEvent(ZWaveAlarmCommandClass.AlarmType.SMOKE, ReportType.NOTIFICATION, 2, 0xff);
+        state = converter.handleEvent(channel, event);
+        assertEquals(state.getClass(), OnOffType.class);
+        assertEquals(state, OnOffType.ON);
     }
 
     @Test
