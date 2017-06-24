@@ -49,7 +49,7 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
     }
 
     @Test
-    public void Alarm_Smoke() {
+    public void Alarm_Smoke1() {
         byte[] packetData = { 0x01, 0x10, 0x00, 0x04, 0x10, 0x28, 0x09, 0x71, 0x05, 0x00, 0x00, 0x00, (byte) 0xFF, 0x01,
                 0x00, 0x01, 0x03, 0x52 };
 
@@ -66,6 +66,26 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
         assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.SMOKE);
         assertEquals(event.getAlarmStatus(), 0xFF);
         assertEquals(event.getAlarmEvent(), 0);
+    }
+
+    @Test
+    public void Alarm_Smoke2() {
+        byte[] packetData = { 0x01, 0x0F, 0x00, 0x04, 0x00, 0x18, 0x09, 0x71, 0x05, 0x00, 0x00, 0x00, (byte) 0xFF, 0x01,
+                0x02, 0x00, 0x6D };
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData, 3);
+
+        assertEquals(events.size(), 1);
+
+        ZWaveAlarmValueEvent event = (ZWaveAlarmValueEvent) events.get(0);
+
+        // assertEquals(event.getNodeId(), 40);
+        assertEquals(event.getEndpoint(), 0);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_ALARM);
+        assertEquals(event.getReportType(), ReportType.NOTIFICATION);
+        assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.SMOKE);
+        assertEquals(event.getAlarmStatus(), 0xFF);
+        assertEquals(event.getAlarmEvent(), 2);
     }
 
     @Test
