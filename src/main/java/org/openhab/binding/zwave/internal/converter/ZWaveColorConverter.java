@@ -171,6 +171,8 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
             // Queue the command
             int value = (int) (color.intValue() * 2.55);
             rawMessages = commandClass.setColor(0, 0, 0, 255 - value, value);
+        } else {
+            logger.debug("NODE {}: Unknown color mode {}.", node.getNodeId(), channel.getArguments().get("colorMode"));
         }
 
         if (rawMessages == null) {
