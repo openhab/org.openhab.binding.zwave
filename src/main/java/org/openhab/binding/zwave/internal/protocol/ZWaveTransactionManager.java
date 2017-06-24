@@ -390,7 +390,9 @@ public class ZWaveTransactionManager {
                         notifyTransactionComplete(lastTransaction);
 
                         // Reset the transaction
-                        outstandingTransactions.remove(lastTransaction);
+                        synchronized (sendQueue) {
+                            outstandingTransactions.remove(lastTransaction);
+                        }
                         lastTransaction = null;
                         continue;
                     default:
@@ -802,32 +804,34 @@ public class ZWaveTransactionManager {
         }
     }
 
-    private synchronized void startTransactionTimer() {
-        // Stop any existing timer
-        resetTransactionTimer();
+    private void startTransactionTimer() {
+        synchronized (sendQueue) {
+            // Stop any existing timer
+            resetTransactionTimer();
 
-        // Find the time till the next timer
-        Date nextTimer = null;
-        for (ZWaveTransaction transaction : outstandingTransactions) {
-            if (nextTimer == null) {
-                nextTimer = transaction.getTimeout();
-                continue;
+            // Find the time till the next timer
+            Date nextTimer = null;
+            for (ZWaveTransaction transaction : outstandingTransactions) {
+                if (nextTimer == null) {
+                    nextTimer = transaction.getTimeout();
+                    continue;
+                }
+
+                Date time = transaction.getTimeout();
+                if (time != null && time.before(nextTimer)) {
+                    nextTimer = time;
+                }
             }
 
-            Date time = transaction.getTimeout();
-            if (time != null && time.before(nextTimer)) {
-                nextTimer = time;
+            // Start the timer if required
+            if (nextTimer != null) {
+                // Create the timer task
+                timerTask = new ZWaveTransactionTimer();
+
+                logger.debug("Start transaction timer to {} - {}ms", nextTimer,
+                        (nextTimer.getTime() - System.currentTimeMillis()));
+                timer.schedule(timerTask, nextTimer);
             }
-        }
-
-        // Start the timer if required
-        if (nextTimer != null) {
-            // Create the timer task
-            timerTask = new ZWaveTransactionTimer();
-
-            logger.debug("Start transaction timer to {} - {}ms", nextTimer,
-                    (nextTimer.getTime() - System.currentTimeMillis()));
-            timer.schedule(timerTask, nextTimer);
         }
     }
 
