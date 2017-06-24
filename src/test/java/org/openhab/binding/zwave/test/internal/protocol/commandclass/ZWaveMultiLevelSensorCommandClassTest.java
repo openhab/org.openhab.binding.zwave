@@ -87,6 +87,13 @@ public class ZWaveMultiLevelSensorCommandClassTest extends ZWaveCommandClassTest
     }
 
     @Test
+    public void sensorReportShort() {
+        byte[] packetData = { 0x01, 0x09, 0x00, 0x04, 0x00, 0x3A, 0x03, 0x31, 0x05, 0x01, (byte) 0xFE };
+
+        assertEquals(0, processCommandClassMessage(packetData).size());
+    }
+
+    @Test
     public void Sensor_AccelerationY() {
         byte[] packetData = { 0x01, 0x0B, 0x00, 0x04, 0x00, 0x09, 0x05, 0x31, 0x05, 0x35, 0x21, (byte) 0xE0, 0x3C };
 
