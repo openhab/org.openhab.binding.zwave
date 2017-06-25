@@ -16,6 +16,7 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
@@ -243,11 +244,14 @@ public abstract class ZWaveCommandClass {
         Object[] parms = { payload, endpoint };
         try {
             commands.get(payload.getCommandClassCommand()).method.invoke(this, parms);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
         } catch (InvocationTargetException e) {
+            // Handle exceptions from the command class processing
+            if (e.getCause() instanceof ArrayIndexOutOfBoundsException) {
+                logger.debug("NODE {}: ArrayIndexOutOfBoundsException {} V{} {} {}", getNode().getNodeId(),
+                        getCommandClass(), getVersion(), commands.get(payload.getCommandClassCommand()).name,
+                        SerialMessage.bb2hex(payload.getPayloadBuffer()));
+            }
+        } catch (IllegalAccessException | IllegalArgumentException e) {
             e.printStackTrace();
         }
     };

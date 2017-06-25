@@ -112,10 +112,6 @@ public class ZWaveMultiLevelSensorCommandClass extends ZWaveCommandClass
 
     @ZWaveResponseHandler(id = SENSOR_MULTILEVEL_REPORT, name = "SENSOR_MULTILEVEL_REPORT")
     public void handleSensorMultilevelReport(ZWaveCommandClassPayload payload, int endpoint) {
-        if (payload.getPayloadLength() < 5) {
-            return;
-        }
-
         int sensorTypeCode = payload.getPayloadByte(2);
         int sensorScale = (payload.getPayloadByte(3) >> 3) & 0x03;
 
