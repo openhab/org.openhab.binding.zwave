@@ -22,7 +22,7 @@ Touchpad Electronic Deadbolt<br /><h1>Overview</h1><p>The following table provid
       <channel id="alarm_number" typeId="alarm_number">
         <label>Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM</property>
+          <property name="binding:*:DecimalType">ALARM</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
