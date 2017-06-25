@@ -8,15 +8,17 @@
  */
 package org.openhab.binding.zwave.test.internal.protocol.commandclass;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveThermostatSetpointCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveThermostatSetpointCommandClass.SetpointType;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
@@ -61,4 +63,14 @@ public class ZWaveThermostatSetpointCommandClassTest extends ZWaveCommandClassTe
         msg = cls.getSupportedMessage();
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
+
+    @Test
+    public void handleReportShort() {
+        byte[] packetData = { 0x01, 0x09, 0x00, 0x04, 0x00, 0x3A, 0x03, 0x43, 0x03, 0x01, (byte) 0x8A };
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData, 3);
+
+        assertEquals(0, events.size());
+    }
+
 }

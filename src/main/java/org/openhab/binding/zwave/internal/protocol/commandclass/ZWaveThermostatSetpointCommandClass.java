@@ -134,6 +134,10 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
     @ZWaveResponseHandler(id = THERMOSTAT_SETPOINT_REPORT, name = "THERMOSTAT_SETPOINT_REPORT")
     public void handleThermostatSetpointReport(ZWaveCommandClassPayload payload, int endpoint) {
 
+        if (payload.getPayloadLength() < 5) {
+            return;
+        }
+
         int setpointTypeCode = payload.getPayloadByte(2);
         int scale = (payload.getPayloadByte(3) >> 3) & 0x03;
 
