@@ -40,7 +40,7 @@ Z-Wave Lock<br /><h1>Overview</h1><p>http://idlock.no/</p> <br /><h2>Inclusion I
       <channel id="alarm_number" typeId="alarm_number">
         <label>Alarm (number)</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM</property>
+          <property name="binding:*:DecimalType">ALARM</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
