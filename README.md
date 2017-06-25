@@ -1,9 +1,3 @@
----
-layout: documentation
----
-
-{% include base.html %}
-
 # ZWave Binding
 The ZWave binding supports an interface to a wireless Z-Wave home automation network. 
 
@@ -142,7 +136,7 @@ The table below summarises the channels available in the controller. These provi
 
 This section provides a summary of the device attributes that are displayed in the user interface.
 
-####Using Security
+#### Using Security
 This indicates that the device is currently securely included in the network and that some classes are handled securely. This will only be true if secure inclusion has been successfully completed.
  
 #### Routing
