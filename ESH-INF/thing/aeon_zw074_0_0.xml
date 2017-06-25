@@ -89,6 +89,16 @@
         </options>
       </parameter>
 
+      <parameter name="config_5_1" type="integer" groupName="configuration">
+        <label>5: Command Class</label>
+        <description>Which command would be sent when the motion sensor triggered.</description>
+        <default>1</default>
+        <options>
+          <option value="1">Basic Set</option>
+          <option value="2">Sensor Binary Report</option>
+        </options>
+      </parameter>
+
       <parameter name="config_40_1" type="integer" groupName="configuration">
         <label>40: Enable/disable the selective reporting</label>
         <description><![CDATA[

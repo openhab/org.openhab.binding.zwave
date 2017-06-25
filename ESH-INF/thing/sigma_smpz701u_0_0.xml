@@ -5,9 +5,9 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="reitz_054375_00_000" listed="false">
-    <label>054375 Schuko Plug Switch</label>
-    <description>Schuko Plug Switch</description>
+  <thing-type id="sigma_smpz701u_00_000" listed="false">
+    <label>SM-PZ701U Z-Wave power plug</label>
+    <description>Z-Wave power plug</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -21,11 +21,11 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Reitz-Group.de</property>
-      <property name="modelId">054375</property>
-      <property name="manufacturerId">0064</property>
-      <property name="manufacturerRef">3001:0000,3002:0000</property>
-      <property name="dbReference">49</property>
+      <property name="vendor">Sigma Designs (Former Zensys)</property>
+      <property name="modelId">SM-PZ701U</property>
+      <property name="manufacturerId">0000</property>
+      <property name="manufacturerRef">0003:0002</property>
+      <property name="dbReference">602</property>
     </properties>
 
   </thing-type>
