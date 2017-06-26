@@ -42,10 +42,23 @@ Wall Plug<br /><h1>Overview</h1><p>The TKB TZ68 is a switch plug that can be pla
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: LED Behavior</label>
         <description>defines the behavior of the blue LED</description>
-        <default>0</default>
+        <default>1</default>
         <options>
-          <option value="0">blue indicates off (Default)</option>
-          <option value="1">blue indicates on</option>
+          <option value="0"></option>
+          <option value="0">blue indicates on</option>
+          <option value="1">blue indicates on (default)</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration">
+        <label>2: Memory function</label>
+        <description><![CDATA[
+Memory function behaviour control.<br /><h1>Overview</h1><p>Control whether or not the plug shall remember it's state after power has been taken away.</p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">do not remember</option>
+          <option value="1">do remember state (default)</option>
         </options>
       </parameter>
 

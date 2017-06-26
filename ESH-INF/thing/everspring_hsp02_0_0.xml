@@ -35,7 +35,7 @@
       <property name="vendor">Everspring</property>
       <property name="modelId">HSP02</property>
       <property name="manufacturerId">0060</property>
-      <property name="manufacturerRef">0001:0003</property>
+      <property name="manufacturerRef">0001:0003,0001:0001</property>
       <property name="dbReference">22</property>
       <property name="defaultAssociations">1</property>
     </properties>

@@ -26,7 +26,7 @@
       <channel id="notification_access_control" typeId="notification_access_control">
         <label>Alarm (access)</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
