@@ -287,26 +287,26 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
         ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
 
         // We need the number of groups as discovered by the AssociationCommandClass
-        if (getNode().getAssociationGroups().size() == 0) {
-            return result;
-        }
+        // if (getNode().getAssociationGroups().size() == 0) {
+        // return result;
+        // }
 
-        logger.debug("NODE {}: Initialising association group info - {} groups known", getNode().getNodeId(),
-                getNode().getAssociationGroups().size());
+        // logger.debug("NODE {}: Initialising association group info - {} groups known", getNode().getNodeId(),
+        // getNode().getAssociationGroups().size());
 
         // For each group request its name and other info
         // Only request it if we have not received an answer yet
-        for (ZWaveAssociationGroup group : getNode().getAssociationGroups().values()) {
-            if (refresh == true || group.getName() == null) {
-                result.add(getGroupNameMessage(group.getIndex()));
-            }
-            if (refresh == true || group.getProfile1() == null) {
-                result.add(getInfoMessage(group.getIndex()));
-            }
-            if (refresh == true || group.getCommandClasses() == null) {
-                result.add(getCommandListMessage(group.getIndex()));
-            }
-        }
+        // for (ZWaveAssociationGroup group : getNode().getAssociationGroups().values()) {
+        // if (refresh == true || group.getName() == null) {
+        // result.add(getGroupNameMessage(group.getIndex()));
+        // }
+        // if (refresh == true || group.getProfile1() == null) {
+        // result.add(getInfoMessage(group.getIndex()));
+        // }
+        // if (refresh == true || group.getCommandClasses() == null) {
+        // result.add(getCommandListMessage(group.getIndex()));
+        // }
+        // }
 
         return result;
     }
