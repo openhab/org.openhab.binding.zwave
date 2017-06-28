@@ -271,10 +271,11 @@ To set which reports need to be sent in Report group 3<br /><h1>Overview</h1><p>
         <description>Configure the external switch mode for S2</description>
         <default>0</default>
         <options>
-          <option value="0">(Default) Enter automatic identification mode</option>
-          <option value="1">Momentary push button mode</option>
+          <option value="0">(Default) Unknown mode</option>
+          <option value="1">2-state switch mode</option>
           <option value="2">3 way switch mode</option>
-          <option value="3">2-state switch mode</option>
+          <option value="3">Momentary push button mode</option>
+          <option value="4">Enter automatic identification mode</option>
         </options>
       </parameter>
 
@@ -430,10 +431,11 @@ To set which reports need to be sent in Report group 3<br /><h1>Overview</h1><p>
         <description>Configure the external switch mode for S1</description>
         <default>0</default>
         <options>
-          <option value="0">(Default) Enter automatic identification mode</option>
-          <option value="1">Momentary push button mode</option>
+          <option value="0">(Default) Unknown mode</option>
+          <option value="1">2-state switch mode</option>
           <option value="2">3 way switch mode</option>
-          <option value="3">2-state switch mode</option>
+          <option value="3">Momentary push button mode</option>
+          <option value="4">Enter automatic identification mode</option>
         </options>
       </parameter>
 
