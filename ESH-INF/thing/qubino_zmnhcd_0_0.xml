@@ -8,7 +8,7 @@
   <thing-type id="qubino_zmnhcd_00_000" listed="false">
     <label>ZMNHCD Flush Shutter</label>
     <description><![CDATA[
-Flush Shutter<br /><h1>Overview</h1><p>ZMNHCD version S1</p> <p>To enable endpoint 2 (lamella tilt for venetian blinds), follow the procedure:</p> <ol><li>set Param 71 to 0 -&gt; save ( make sure it has been set really )</li> <li>set Param 71 to 1 -&gt; save ( make sure it has been set really )</li> <li>exclude device from network and delete Node xml, stop openHAB</li> <li>switch off the power supply of the device ( according to the support team this is an alternative to wait 30s )</li> <li>switch on the power supply again and start openHAB</li> <li>include device to the network</li> <li>add the Thing to openhab via HABmin</li> <li>Be patient until the binding until processed all your nodes again</li> </ol>
+Flush Shutter<br /><h1>Overview</h1><p>ZMNHCD version S1 for version up to 4.0 </p> <p>To enable endpoint 2 (lamella tilt for venetian blinds), follow the procedure:</p> <ol><li>set Param 71 to 0 -&gt; save ( make sure it has been set really )</li> <li>set Param 71 to 1 -&gt; save ( make sure it has been set really )</li> <li>exclude device from network and delete Node xml, stop openHAB</li> <li>switch off the power supply of the device ( according to the support team this is an alternative to wait 30s )</li> <li>switch on the power supply again and start openHAB</li> <li>include device to the network</li> <li>add the Thing to openhab via HABmin</li> <li>Be patient until the binding until processed all your nodes again</li> </ol>
     ]]></description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -43,6 +43,34 @@ Flush Shutter<br /><h1>Overview</h1><p>ZMNHCD version S1</p> <p>To enable endpoi
         <label>Electric meter (kWh)</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary1" typeId="switch_binary">
+        <label>Switch 1</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1</property>
+        </properties>
+      </channel>
+      <channel id="blinds_control1" typeId="blinds_control">
+        <label>Blinds Control 1</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
+          <property name="binding:Command:StopMoveType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
+          <property name="binding:Command:UpDownType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary2" typeId="switch_binary">
+        <label>Switch 2</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:2</property>
+        </properties>
+      </channel>
+      <channel id="blinds_control2" typeId="blinds_control">
+        <label>Blinds Control 2</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:2</property>
+          <property name="binding:Command:StopMoveType">COMMAND_CLASS_SWITCH_MULTILEVEL:2</property>
+          <property name="binding:Command:UpDownType">COMMAND_CLASS_SWITCH_MULTILEVEL:2</property>
         </properties>
       </channel>
     </channels>
@@ -146,7 +174,7 @@ Shutter motor moving time of complete opening or complete closing<br /><h1>Overv
                  min="0" max="127">
         <label>76: Motor operation detection</label>
         <description><![CDATA[
-Power threshold to be interpreted when motor reach the limit switch<br /><h1>Overview</h1><p>Power threshold to be interpreted when motor reach the limit switch. Available configuration parameters (data type is 1 Byte DEC):</p> <ul><li> default value 6 = 0,6W</li> <li> 5 - 100 (0,5W - 10W), step is 0,1W.</li> </ul><p>NOTE: Motors with power consumption less than 0,5W could not be auto calibrated. In that case set time manually (par. 74).</p>
+Power threshold to be interpreted when motor reach the limit switch<br /><h1>Overview</h1><p>Power threshold to be interpreted when motor reach the limit switch. Available configuration parameters (data type is 1 Byte DEC):</p> <ul><li> default value 10 = 10W</li> <li> 0 - 127 = 1-127 W. The value 0 means reaching a limit switch will not be detected</li> </ul><p>NOTE: Motors with power consumption less than 0,5W could not be auto calibrated. In that case set time manually (par. 74).</p>
         ]]></description>
         <default>10</default>
       </parameter>

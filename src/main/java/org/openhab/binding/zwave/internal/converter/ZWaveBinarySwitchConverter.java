@@ -81,6 +81,8 @@ public class ZWaveBinarySwitchConverter extends ZWaveCommandClassConverter {
         ZWaveBinarySwitchCommandClass commandClass = (ZWaveBinarySwitchCommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_SWITCH_BINARY, channel.getEndpoint());
         if (commandClass == null) {
+            logger.debug("NODE {}: Command class class COMMAND_CLASS_SWITCH_BINARY for endpoint {} not found",
+                    node.getNodeId(), channel.getEndpoint());
             return null;
         }
 

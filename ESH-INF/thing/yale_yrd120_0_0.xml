@@ -25,6 +25,12 @@ Touchscreen deadbolt without key<br /><h2>Inclusion Information</h2><p>The lock 
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
         </properties>
       </channel>
+      <channel id="alarm_number" typeId="alarm_number">
+        <label>Alarm Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_ALARM</property>
+        </properties>
+      </channel>
       <channel id="battery-level" typeId="system.battery-level">
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
