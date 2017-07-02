@@ -131,7 +131,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         this.translationProvider = translationProvider;
     }
 
-    public String getI18nConstant(String constant, Object... arguments) {
+    private String getI18nConstant(String constant, Object... arguments) {
         TranslationProvider translationProviderLocal = translationProvider;
         if (translationProviderLocal == null) {
             return MessageFormat.format(constant, arguments);

@@ -5,16 +5,16 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="yale_yrd246_00_000" listed="false">
-    <label>YRD246 Touchscreen deadbolt without keyway</label>
-    <description>Touchscreen deadbolt without keyway</description>
+  <thing-type id="yale_yrd446_00_000" listed="false">
+    <label>YRD446 Yale Real Living Key Free Touchscreen Assure Lock with Z-Wave and Bluetooth</label>
+    <description>Yale Real Living Key Free Touchscreen Assure Lock with Z-Wave and Bluetooth</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="lock_door" typeId="lock_door">
         <label>Door Lock</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_DOOR_LOCK</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_DOOR_LOCK,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="alarm_access" typeId="alarm_access">
@@ -45,10 +45,11 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">ASSA ABLOY</property>
-      <property name="modelId">YRD246</property>
+      <property name="modelId">YRD446</property>
       <property name="manufacturerId">0129</property>
-      <property name="manufacturerRef">8002:0600</property>
-      <property name="dbReference">594</property>
+      <property name="manufacturerRef">8002:1000</property>
+      <property name="dbReference">624</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -73,7 +74,6 @@
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Auto relock</label>
-        <description>Automatic relocking</description>
         <default>0</default>
         <options>
           <option value="0">No auto-relock</option>
@@ -88,7 +88,6 @@
 Time for auto relock<br /><h1>Overview</h1><p>Number of seconds after the door is unlocked that it will attempt to automatically re-lock itself, if enabled.</p>
         ]]></description>
         <default>30</default>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
@@ -100,37 +99,66 @@ Number of incorrect PINs before lockout<br /><h1>Overview</h1><p>Number of incor
         <default>5</default>
       </parameter>
 
-      <parameter name="config_6_1" type="integer" groupName="configuration">
-        <label>6: Radio event reporting</label>
-        <default>255</default>
+      <parameter name="config_5_1" type="integer" groupName="configuration">
+        <label>5: Language</label>
+        <default>1</default>
         <options>
-          <option value="0">Don't report events?</option>
-          <option value="255">Do report events?</option>
+          <option value="1">English</option>
+          <option value="2">Spanish</option>
+          <option value="3">French</option>
         </options>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
-                 min="1" max="255">
-        <label>7: Keypad lockout time</label>
-        <description><![CDATA[
-Incorrect PINs lockout time<br /><h1>Overview</h1><p>Amount of time to lock-out the keypad once the number of incorrect PINs has been reached on the keypad.  (Zwave is still active during lockout.)</p>
-        ]]></description>
+                 min="10" max="127">
+        <label>7: Shutdown</label>
+        <description>Shutdown time after wrong code entries</description>
         <default>60</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration">
-        <label>8: Operation Mode</label>
-        <description>Operation Mode</description>
+        <label>8: Operating mode</label>
         <default>0</default>
         <options>
           <option value="0">Normal</option>
           <option value="1">Vacation</option>
           <option value="2">Privacy</option>
-          <option value="3">Disable Zwave</option>
         </options>
-        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_11_1" type="integer" groupName="configuration">
+        <label>11: One Touch Locking</label>
+        <default>255</default>
+        <options>
+          <option value="0">Off</option>
+          <option value="255">On</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_12_1" type="integer" groupName="configuration">
+        <label>12: Privacy Button</label>
+        <default>0</default>
+        <options>
+          <option value="0">Off</option>
+          <option value="255">On</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_13_1" type="integer" groupName="configuration">
+        <label>13: Lock Status LED</label>
+        <default>0</default>
+        <options>
+          <option value="0">Off</option>
+          <option value="255">On</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_15_1" type="integer" groupName="configuration">
+        <label>15: Reset To Factory Defaults</label>
+        <default>0</default>
+        <options>
+          <option value="1">Factory Reset</option>
+        </options>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
@@ -139,9 +167,8 @@ Incorrect PINs lockout time<br /><h1>Overview</h1><p>Amount of time to lock-out 
         <label>Association Groups</label>
       </parameter-group>
 
-      <parameter name="group_1" type="text" groupName="association" multiple="true">
+      <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
-        <multipleLimit>5</multipleLimit>
       </parameter>
 
     </config-description>

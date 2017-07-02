@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -147,7 +148,7 @@ public class ZWaveTransactionManager {
     private final Timer timer = new Timer();
     private TimerTask timerTask = null;
 
-    private final ArrayBlockingQueue<SerialMessage> recvQueue;
+    private final BlockingQueue<SerialMessage> recvQueue;
 
     private final PriorityBlockingQueue<ZWaveTransaction> sendQueue = new PriorityBlockingQueue<ZWaveTransaction>(
             INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator());
@@ -338,10 +339,11 @@ public class ZWaveTransactionManager {
      * @param incomingMessage
      */
     public void processReceiveMessage(SerialMessage incomingMessage) {
-        logger.debug("processReceiveMessage input" + incomingMessage.toString());
+        logger.debug("processReceiveMessage input {}<>{} : {}", recvQueue.size(), recvQueue.remainingCapacity(),
+                incomingMessage.toString());
 
         synchronized (recvQueue) {
-            logger.debug("processReceiveMessage past lock" + incomingMessage.toString());
+            logger.debug("processReceiveMessage past lock {}", incomingMessage.toString());
             recvQueue.add(incomingMessage);
             recvQueue.notify();
         }
@@ -368,8 +370,8 @@ public class ZWaveTransactionManager {
                 }
 
                 ZWaveTransaction currentTransaction = null;
-                logger.debug("Received msg " + incomingMessage.toString());
-                logger.debug("lastTransaction " + lastTransaction);
+                logger.debug("Received msg ({}): {}", recvQueue.size(), incomingMessage.toString());
+                logger.debug("lastTransaction {}", lastTransaction);
 
                 // Check for NAK/CAN
                 switch (incomingMessage.getMessageType()) {

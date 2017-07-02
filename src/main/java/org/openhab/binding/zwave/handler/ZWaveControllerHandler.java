@@ -92,7 +92,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         this.translationProvider = translationProvider;
     }
 
-    public String getI18nConstant(String constant, Object... arguments) {
+    protected String getI18nConstant(String constant, Object... arguments) {
         TranslationProvider translationProviderLocal = translationProvider;
         if (translationProviderLocal == null) {
             return MessageFormat.format(constant, arguments);
