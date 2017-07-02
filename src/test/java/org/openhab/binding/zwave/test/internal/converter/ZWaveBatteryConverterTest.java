@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
 
-import org.eclipse.smarthome.core.library.types.PercentType;
+import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.types.State;
 import org.junit.Test;
@@ -41,17 +41,17 @@ public class ZWaveBatteryConverterTest extends ZWaveCommandClassConverterTest {
 
         event = new ZWaveCommandClassValueEvent(1, 0, CommandClass.COMMAND_CLASS_BASIC, 100);
         state = converter.handleEvent(channel, event);
-        assertEquals(PercentType.class, state.getClass());
-        assertEquals(state, new PercentType(100));
+        assertEquals(DecimalType.class, state.getClass());
+        assertEquals(state, new DecimalType(100));
 
         event = new ZWaveCommandClassValueEvent(1, 0, CommandClass.COMMAND_CLASS_BASIC, 50);
         state = converter.handleEvent(channel, event);
-        assertEquals(PercentType.class, state.getClass());
-        assertEquals(state, new PercentType(50));
+        assertEquals(DecimalType.class, state.getClass());
+        assertEquals(state, new DecimalType(50));
 
         event = new ZWaveCommandClassValueEvent(1, 0, CommandClass.COMMAND_CLASS_BASIC, 101);
         state = converter.handleEvent(channel, event);
-        assertEquals(PercentType.class, state.getClass());
-        assertEquals(state, new PercentType(100));
+        assertEquals(DecimalType.class, state.getClass());
+        assertEquals(state, new DecimalType(100));
     }
 }
