@@ -391,10 +391,13 @@ public class ZWaveTransactionManager {
 
                         notifyTransactionComplete(lastTransaction);
 
-                        // Reset the transaction
+                        // Remove the transaction
                         synchronized (sendQueue) {
                             outstandingTransactions.remove(lastTransaction);
                         }
+
+                        // Requeue...
+                        addTransactionToQueue(lastTransaction);
                         lastTransaction = null;
                         continue;
                     default:
