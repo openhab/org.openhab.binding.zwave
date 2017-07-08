@@ -13,10 +13,34 @@ Flush PWM Thermostat<br /><h1>Overview</h1><p>This Z-Wave module is used to regu
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
+      <channel id="sensor_temperature" typeId="sensor_temperature">
+        <label>Sensor (temperature)</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_mode" typeId="qubino_zmnhld_00_000_thermostat_mode">
+        <label>Thermostat mode</label>
+        <properties>
+          <property name="binding:*:DecimalType">THERMOSTAT_MODE</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
+        <label>Thermostat setpoint</label>
+        <properties>
+          <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=HEATING</property>
+        </properties>
+      </channel>
       <channel id="sensor_temperature1" typeId="sensor_temperature">
         <label>Temperature Sensor</label>
         <properties>
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:1</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_mode1" typeId="qubino_zmnhld_00_000_thermostat_mode">
+        <label>Thermostat mode</label>
+        <properties>
+          <property name="binding:*:DecimalType">THERMOSTAT_MODE:1</property>
         </properties>
       </channel>
     </channels>
@@ -499,5 +523,27 @@ Node Id of external battery powered sensor<br /><h1>Overview</h1><p>0 - disabled
     </config-description>
 
   </thing-type>
+
+  <channel-type id="qubino_zmnhld_00_000_thermostat_mode">
+    <item-type>Number</item-type>
+    <label>Thermostat Mode</label>
+    <description>Sets the thermostat mode</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="qubino_zmnhld_00_000_thermostat_mode">
+    <item-type>Number</item-type>
+    <label>Thermostat Mode</label>
+    <description>Sets the thermostat mode</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+      </options>
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>

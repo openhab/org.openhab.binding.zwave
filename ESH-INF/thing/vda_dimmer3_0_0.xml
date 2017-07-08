@@ -62,7 +62,7 @@
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Dimmer Channel 1</label>
+        <label>1: Switch channel 1</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

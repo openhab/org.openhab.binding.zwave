@@ -39,7 +39,7 @@
       <property name="manufacturerId">001A</property>
       <property name="manufacturerRef">4449:0101</property>
       <property name="dbReference">16</property>
-      <property name="defaultAssociations">1</property>
+      <property name="defaultAssociations">1,255</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -152,6 +152,13 @@ Turn on or off rapid start feature<br /><h1>Overview</h1><p>Ensures that LED / C
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
         <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_255" type="text" groupName="association">
+        <label>255: Group 255</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Life line to the controller</p>
+        ]]></description>
       </parameter>
 
     </config-description>

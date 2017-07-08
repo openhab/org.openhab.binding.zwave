@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="kaipule_doorwindowsensor_00_000" listed="false">
+    <label>TP-802ZD Door/Window Sensor</label>
+    <description><![CDATA[
+Door/Window Sensor<br /><h1>Overview</h1><p>The sensor must be added to the Zwave network prior to use.</p> - This sensor can not work alone, need connect to Z-wave gateway - First time connect, the distance between sensor and gateway better less than 1.0 meter, after connected, then install the sensor where you need - When connect to gateway, choose add device in your gateway software, then quickly click the sensor's z-wave trigger 3 times to send signal to gateway, delet device similar operation - When install, the door sensor main part and magnetic stripe gap must less than 5mm - The work distance to gateway is 10 to 20 meters indoor, more wall or barrier will influence the distance <br /><h2>Inclusion Information</h2><p>To include the sensor in a networks start by placing the controller in inclusion mode. Then activate the inclusion mode at the sensor by pressing the tamper switch 3 times.</p> <br /><h2>Exclusion Information</h2><p>To exclude the sensor in a networks start by placing the controller in exclusion mode. Then activate the exclusion mode at the sensor by pressing the tamper switch 3 times.</p>
+    ]]></description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="sensor_binary" typeId="sensor_binary">
+        <label>Binary Sensor</label>
+        <properties>
+          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="alarm_burglar" typeId="alarm_burglar">
+        <label>Alarm (burglar)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=BURGLAR</property>
+        </properties>
+      </channel>
+      <channel id="alarm_access" typeId="alarm_access">
+        <label>Alarm (access)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=ACCESS_CONTROL</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">BATTERY</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Kaipule Technology Co., Ltd.</property>
+      <property name="modelId">TP-802ZD</property>
+      <property name="manufacturerId">0214</property>
+      <property name="manufacturerRef">0002:0001</property>
+      <property name="dbReference">633</property>
+    </properties>
+
+  </thing-type>
+
+</thing:thing-descriptions>
