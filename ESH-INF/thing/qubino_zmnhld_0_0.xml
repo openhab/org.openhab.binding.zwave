@@ -50,7 +50,7 @@ Flush PWM Thermostat<br /><h1>Overview</h1><p>This Z-Wave module is used to regu
       <property name="vendor">Goap</property>
       <property name="modelId">ZMNHLD</property>
       <property name="manufacturerId">0159</property>
-      <property name="manufacturerRef">0005:0053</property>
+      <property name="manufacturerRef">0005:0052,0005:0053</property>
       <property name="dbReference">498</property>
       <property name="defaultAssociations">1</property>
     </properties>
