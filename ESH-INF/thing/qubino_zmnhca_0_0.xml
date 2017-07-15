@@ -250,7 +250,7 @@ This parameter defines the time delay between output relay switching<br /><h1>Ov
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
         <label>5: default reporting group</label>
-        <multipleLimit>0</multipleLimit>
+        <multipleLimit>16</multipleLimit>
       </parameter>
 
     </config-description>
