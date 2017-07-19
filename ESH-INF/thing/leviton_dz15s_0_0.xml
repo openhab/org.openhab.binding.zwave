@@ -32,7 +32,41 @@
       <property name="manufacturerId">001D</property>
       <property name="manufacturerRef">3401:0001</property>
       <property name="dbReference">523</property>
+      <property name="defaultAssociations">1</property>
     </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_7_1" type="integer" groupName="configuration">
+        <label>7: Locator LED Status</label>
+        <default>255</default>
+        <options>
+          <option value="0">LED Off</option>
+          <option value="254">Status Mode</option>
+          <option value="255">Locator Mode</option>
+        </options>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <description>5</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+    </config-description>
 
   </thing-type>
 

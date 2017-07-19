@@ -65,7 +65,7 @@
       <property name="vendor">Radio Thermostat Company of America (RTC)</property>
       <property name="modelId">CT30</property>
       <property name="manufacturerId">0098</property>
-      <property name="manufacturerRef">0001:001E,1E10:0158,1E12:015E,3200:015E,1E12:015C,0000:0000</property>
+      <property name="manufacturerRef">0001:001E,1E10:0158,1E12:015E,3200:015E,1E12:015C,0000:0000,0001:00FF</property>
       <property name="dbReference">94</property>
     </properties>
 

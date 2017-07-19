@@ -117,7 +117,9 @@
 
       <parameter name="config_10_1" type="integer" groupName="configuration">
         <label>10: Activate / deactivate functions ALL ON/ALL OFF</label>
-        <description>Flush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.</description>
+        <description><![CDATA[
+Activate / deactivate functions ALL ON/ALL OFF<br /><h1>Overview</h1><p>Flush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.</p>
+        ]]></description>
         <default>255</default>
         <options>
           <option value="0">ALL ON is not active ALL OFF is not active</option>
@@ -131,7 +133,7 @@
                  min="0" max="65535">
         <label>11: Automatic turning off relay Q1 after set time</label>
         <description><![CDATA[
-Auto OFF enabled with define time, step is 10 mseconds<br /><ul><li>0 = Auto OFF disabled</li> <li>1–65535 = 0,01 second – 655,35 seconds</li></ul>
+Automatic turning off relay Q1 after set time<br /><h1>Overview</h1><p>Auto OFF enabled with define time, step is 10 mseconds</p> <ul><li>0 = Auto OFF disabled</li> <li>1–65535 = 0,01 second – 655,35 seconds</li> </ul>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -140,13 +142,13 @@ Auto OFF enabled with define time, step is 10 mseconds<br /><ul><li>0 = Auto OFF
                  min="0" max="65535">
         <label>12: Automatic turning off relay Q2 after set time</label>
         <description><![CDATA[
-Auto OFF enabled with define time, step is 10 mseconds<br /><ul><li>0 = Auto OFF disabled</li> <li>1–65535 = 0,01 second – 655,35 seconds</li></ul>
+Automatic turning off relay Q2 after set time<br /><h1>Overview</h1><p>Auto OFF enabled with define time, step is 10 mseconds</p> <ul><li>0 = Auto OFF disabled</li> <li>1–65535 = 0,01 second – 655,35 seconds</li> </ul>
         ]]></description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_30_1" type="integer" groupName="configuration">
-        <label>30: Saving the state of the relays Q1 and Q2 after a power failure</label>
+        <label>30: Saving Q1 and Q2 after a power failure</label>
         <description>Saving the state of the relays Q1 and Q2 after a power failure</description>
         <default>0</default>
         <options>
