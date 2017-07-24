@@ -74,7 +74,7 @@ Aeotec Nano Switch<br /><h1>Overview</h1><p>Aeotec Nano Switch is a Z-Wave Smart
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW116</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0203:0074</property>
+      <property name="manufacturerRef">0003:0074,0203:0074</property>
       <property name="dbReference">591</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -122,7 +122,7 @@ Aeotec Nano Switch<br /><h1>Overview</h1><p>Aeotec Nano Switch is a Z-Wave Smart
       <parameter name="config_80_1" type="integer" groupName="configuration">
         <label>80: Group 1 notifications</label>
         <description><![CDATA[
-Group 1 notifications when the state of Nano Dimmer’s load is changed<br /><h1>Overview</h1><p>To set which notification would be sent to the associated devices (Group 1) when the state of Nano Dimmer’s load is changed.</p>
+Group 1 notifications when the state of Nano Switch's load is changed<br /><h1>Overview</h1><p>To set which notification would be sent to the associated devices (Group 1) when the state of Nano Switch's load is changed.</p>
         ]]></description>
         <default>3</default>
         <options>
