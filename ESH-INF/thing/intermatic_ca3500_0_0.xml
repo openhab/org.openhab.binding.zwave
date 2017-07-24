@@ -11,11 +11,10 @@
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_dimmer" typeId="switch_dimmer">
-        <label>Dimmer</label>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL,BASIC</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
         </properties>
       </channel>
     </channels>
@@ -25,7 +24,7 @@
       <property name="vendor">Intermatic</property>
       <property name="modelId">CA3500</property>
       <property name="manufacturerId">0005</property>
-      <property name="manufacturerRef">4341:0600,4341:3500</property>
+      <property name="manufacturerRef">4341:3500</property>
       <property name="dbReference">417</property>
     </properties>
 
