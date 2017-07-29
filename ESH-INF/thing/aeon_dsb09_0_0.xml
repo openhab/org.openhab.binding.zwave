@@ -125,7 +125,7 @@
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Selective Reporting</label>
         <description><![CDATA[
-Enable selective reporting <br /><h1>Overview</h1><p>Enable selective reporting only when power change reaches a certain threshold or percentage set in 4-11 below. This is used to reduce network traffic.</p>
+Enable selective reporting <br /><h1>Overview</h1><p>Enable Selective Reporting to report only when power change reaches a certain threshold or percentage set in 4-11 below. This is used to reduce network traffic. Sum the following values for the source of the reports to be selectively reported:</p> <p>0        -&gt;   Disable Selective Reporting</p> <p>1        -&gt;   Whole HEM</p> <p>2        -&gt;   Clamp 1</p> <p>4        -&gt;   Clamp 2</p> <p>8        -&gt;   Clamp 3</p>
         ]]></description>
         <default>0</default>
         <options>

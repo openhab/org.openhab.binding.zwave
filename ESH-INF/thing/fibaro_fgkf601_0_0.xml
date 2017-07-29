@@ -29,7 +29,7 @@
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGKF601</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">1001:1000</property>
+      <property name="manufacturerRef">1001:1000,1001:3000</property>
       <property name="dbReference">542</property>
       <property name="defaultAssociations">1</property>
     </properties>

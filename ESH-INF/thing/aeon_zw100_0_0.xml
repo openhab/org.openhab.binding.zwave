@@ -88,7 +88,7 @@ Stay awake for 10 minutes at power on<br /><h1>Overview</h1><p>Enable/Disable wa
       </parameter>
 
       <parameter name="config_3_2" type="integer" groupName="configuration"
-                 min="5" max="3600">
+                 min="10" max="3600">
         <label>3: Motion Sensor reset timeout</label>
         <description><![CDATA[
 Motion Sensor reset timeout<br /><h1>Overview</h1><ol><li>The default PIR time is 4 minutes. The Multisensor will send BASIC SET CC (0x00) to the associated nodes if no motion is triggered again in 4 minutes.</li> <li>Range: 10~3600.</li> </ol><p><strong>Note</strong>:</p> <ol><li>The time unit is second if the value range is in 10 to 255.</li> <li>If the value range is in 256 to 3600, the time unit will be minute and its value should follow the below rules:<br />a), Interval time =Value/60, if the interval time can be divided by 60 and without remainder.<br />b), Interval time= (Value/60) +1, if the interval time can be divided by 60 and has remainder.</li> <li>Other values will be ignored.</li> </ol>

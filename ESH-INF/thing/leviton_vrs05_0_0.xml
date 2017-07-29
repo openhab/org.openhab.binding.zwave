@@ -30,7 +30,7 @@
       <property name="vendor">Leviton</property>
       <property name="modelId">VRS05</property>
       <property name="manufacturerId">001D</property>
-      <property name="manufacturerRef">0F01:0209</property>
+      <property name="manufacturerRef">0F01:0209,0F01:0334</property>
       <property name="dbReference">366</property>
       <property name="commandClass:COMMAND_CLASS_BASIC">setVersion=1</property>
       <property name="commandClass:COMMAND_CLASS_SWITCH_BINARY">setVersion=1</property>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="enerwave_zw15sm_00_000" listed="false">
+    <label>ZW15SM-PLUS Enerwave ZW15SM-PLUS Binary Switch + Meter</label>
+    <description><![CDATA[
+Enerwave ZW15SM-PLUS Binary Switch + Meter<br /><h2>Inclusion Information</h2><p>The process of "Inclusion/ Exclusion" is to Add or Remove the device from the Hub. All Z-Wave devices must be "Included" on the Controller (Hub) before it can be controlled from a smart device. The Hub should be brought physically closer to the device just for the "Inclusion" process (recommended within 10ft). When finished, the Hub and device can be moved back to final installation location. </p> <ol><li>Go to the "Add Device" page.</li> <li>Select "Include Device".</li> <li>When prompted, press the "ON" or "OFF" Button on the switch</li> </ol><br /><h2>Exclusion Information</h2><ol><li>From the Control Panel, go the the device Exclusion page.</li> <li>Select "Exclude Device".</li> <li>When prompted, press the "ON" or "OFF" Button on the switch.</li> </ol>
+    ]]></description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts" typeId="meter_watts">
+        <label>Electric meter (watts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh" typeId="meter_kwh">
+        <label>Electric meter (kWh)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Wenzhou MTLC Electric Appliances Co.,Ltd.</property>
+      <property name="modelId">ZW15SM-PLUS</property>
+      <property name="manufacturerId">011A</property>
+      <property name="manufacturerRef">0111:0102</property>
+      <property name="dbReference">640</property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: LED Toggle</label>
+        <description>Synchronization of load power and LED indicator</description>
+        <default>0</default>
+        <options>
+          <option value="0">Power on, LED off</option>
+          <option value="1">Power on, LED on</option>
+        </options>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Lifeline</label>
+        <description>Send device reset locally notification</description>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: StatusReport</label>
+        <description>Send basic report</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: PowerReport</label>
+        <description>Send meter power report</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_4" type="text" groupName="association" multiple="true">
+        <label>4: AssignGroupSet</label>
+        <description>Send Basic set command</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>

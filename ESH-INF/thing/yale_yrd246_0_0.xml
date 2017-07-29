@@ -49,6 +49,7 @@
       <property name="manufacturerId">0129</property>
       <property name="manufacturerRef">8002:0600</property>
       <property name="dbReference">594</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
