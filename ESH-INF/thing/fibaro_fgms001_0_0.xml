@@ -37,7 +37,7 @@
       <channel id="alarm_tamper" typeId="alarm_tamper">
         <label>Tamper Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_ALARM,BASIC;type=BURGLAR</property>
+          <property name="binding:*:OnOffType">SENSOR_ALARM,BASIC;type=GENERAL</property>
         </properties>
       </channel>
     </channels>
