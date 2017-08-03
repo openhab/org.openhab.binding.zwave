@@ -24,7 +24,7 @@
       <property name="vendor">Reitz-Group.de</property>
       <property name="modelId">Duwi Z-Wave Plugin Switch</property>
       <property name="manufacturerId">0064</property>
-      <property name="manufacturerRef">3001:0000,3002:0000</property>
+      <property name="manufacturerRef">3002:0000</property>
       <property name="dbReference">632</property>
       <property name="defaultAssociations">1</property>
     </properties>

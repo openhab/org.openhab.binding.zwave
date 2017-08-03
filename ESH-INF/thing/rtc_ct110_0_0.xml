@@ -5,9 +5,9 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="rtc_ct110thermostat_00_000" listed="false">
-    <label>CT110 Thermostat CT-110 Thermostat. RadioThermostat company.</label>
-    <description>CT-110 Thermostat. RadioThermostat company.</description>
+  <thing-type id="rtc_ct110_00_000" listed="false">
+    <label>CT110 Thermostat</label>
+    <description>Thermostat</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -23,7 +23,7 @@
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=RELATIVE_HUMIDITY</property>
         </properties>
       </channel>
-      <channel id="thermostat_mode" typeId="rtc_ct110thermostat_00_000_thermostat_mode">
+      <channel id="thermostat_mode" typeId="rtc_ct110_00_000_thermostat_mode">
         <label>Thermostat mode</label>
         <properties>
           <property name="binding:*:DecimalType">THERMOSTAT_MODE</property>
@@ -59,13 +59,13 @@
           <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=COOLING</property>
         </properties>
       </channel>
-      <channel id="thermostat_fanmode" typeId="rtc_ct110thermostat_00_000_thermostat_fanmode">
+      <channel id="thermostat_fanmode" typeId="rtc_ct110_00_000_thermostat_fanmode">
         <label>Thermostat fan mode</label>
         <properties>
           <property name="binding:*:DecimalType">THERMOSTAT_FAN_MODE</property>
         </properties>
       </channel>
-      <channel id="thermostat_fanstate" typeId="rtc_ct110thermostat_00_000_thermostat_fanstate">
+      <channel id="thermostat_fanstate" typeId="rtc_ct110_00_000_thermostat_fanstate">
         <label>Thermostat fan state</label>
         <properties>
           <property name="binding:*:DecimalType">THERMOSTAT_FAN_STATE</property>
@@ -94,7 +94,7 @@
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:1;type=RELATIVE_HUMIDITY</property>
         </properties>
       </channel>
-      <channel id="thermostat_mode1" typeId="rtc_ct110thermostat_00_000_thermostat_mode">
+      <channel id="thermostat_mode1" typeId="rtc_ct110_00_000_thermostat_mode">
         <label>Thermostat mode 1</label>
         <properties>
           <property name="binding:*:DecimalType">THERMOSTAT_MODE:1</property>
@@ -130,13 +130,13 @@
           <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT:1;type=COOLING</property>
         </properties>
       </channel>
-      <channel id="thermostat_fanmode1" typeId="rtc_ct110thermostat_00_000_thermostat_fanmode">
+      <channel id="thermostat_fanmode1" typeId="rtc_ct110_00_000_thermostat_fanmode">
         <label>Thermostat fan mode 1</label>
         <properties>
           <property name="binding:*:DecimalType">THERMOSTAT_FAN_MODE:1</property>
         </properties>
       </channel>
-      <channel id="thermostat_fanstate1" typeId="rtc_ct110thermostat_00_000_thermostat_fanstate">
+      <channel id="thermostat_fanstate1" typeId="rtc_ct110_00_000_thermostat_fanstate">
         <label>Thermostat fan state 1</label>
         <properties>
           <property name="binding:*:DecimalType">THERMOSTAT_FAN_STATE:1</property>
@@ -170,15 +170,15 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Radio Thermostat Company of America (RTC)</property>
-      <property name="modelId">CT110 Thermostat</property>
+      <property name="modelId">CT110</property>
       <property name="manufacturerId">0098</property>
-      <property name="manufacturerRef">6E02:0101</property>
+      <property name="manufacturerRef">6E01:0100,6E02:0101</property>
       <property name="dbReference">555</property>
     </properties>
 
   </thing-type>
 
-  <channel-type id="rtc_ct110thermostat_00_000_thermostat_mode">
+  <channel-type id="rtc_ct110_00_000_thermostat_mode">
     <item-type>Number</item-type>
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
@@ -196,7 +196,7 @@
     </state>
   </channel-type>
 
-  <channel-type id="rtc_ct110thermostat_00_000_thermostat_fanmode">
+  <channel-type id="rtc_ct110_00_000_thermostat_fanmode">
     <item-type>Number</item-type>
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
@@ -209,7 +209,7 @@
     </state>
   </channel-type>
 
-  <channel-type id="rtc_ct110thermostat_00_000_thermostat_fanstate">
+  <channel-type id="rtc_ct110_00_000_thermostat_fanstate">
     <item-type>Number</item-type>
     <label>Thermostat Fan State</label>
     <description>Sets the thermostat fan state</description>
@@ -222,7 +222,7 @@
     </state>
   </channel-type>
 
-  <channel-type id="rtc_ct110thermostat_00_000_thermostat_mode">
+  <channel-type id="rtc_ct110_00_000_thermostat_mode">
     <item-type>Number</item-type>
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
@@ -240,7 +240,7 @@
     </state>
   </channel-type>
 
-  <channel-type id="rtc_ct110thermostat_00_000_thermostat_fanmode">
+  <channel-type id="rtc_ct110_00_000_thermostat_fanmode">
     <item-type>Number</item-type>
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
@@ -253,7 +253,7 @@
     </state>
   </channel-type>
 
-  <channel-type id="rtc_ct110thermostat_00_000_thermostat_fanstate">
+  <channel-type id="rtc_ct110_00_000_thermostat_fanstate">
     <item-type>Number</item-type>
     <label>Thermostat Fan State</label>
     <description>Sets the thermostat fan state</description>

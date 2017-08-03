@@ -46,8 +46,8 @@
       <parameter name="config_0_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>0: Off time</label>
-        <description>Sets the time after triggering the sensor to send the OFF command.</description>
-        <default>0</default>
+        <description>Sets the number of minutes to wait to send the OFF command, after triggering the sensor.</description>
+        <default>1</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
