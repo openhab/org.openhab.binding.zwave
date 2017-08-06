@@ -410,6 +410,15 @@ public class ZWaveNodeInitStageAdvancer {
         if (initRunning == false) {
             return;
         }
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            // Eat me
+        }
+
+        // We just started inclusion so assume the device is awake
+        node.setAwake(true);
     }
 
     private void doSecureStages() {
