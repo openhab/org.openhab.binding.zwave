@@ -44,12 +44,12 @@ public class IsFailedNodeMessageClass extends ZWaveCommandProcessor {
 
         ZWaveNode node = zController.getNode(nodeId);
         if (node == null) {
-            logger.error("NODE {}: Failed node message for unknown node", nodeId);
+            logger.debug("NODE {}: Failed node message for unknown node", nodeId);
             return false;
         }
 
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
-            logger.warn("NODE {}: Is currently marked as failed by the controller!", nodeId);
+            logger.debug("NODE {}: Is currently marked as failed by the controller!", nodeId);
             node.setNodeState(ZWaveNodeState.FAILED);
         } else {
             logger.debug("NODE {}: Is currently marked as healthy by the controller", nodeId);
