@@ -1299,6 +1299,12 @@ public class ZWaveNode {
         return controller.sendTransaction(encapsulate(payload, endpoint));
     }
 
+    /**
+     * Returns the number of nanoseconds since the device was included, or Long.MAX_VALUE if the device has not recently
+     * been included.
+     * 
+     * @return number of nano seconds since inclusion completed
+     */
     public long getInclusionTimer() {
         if (inclusionTimer == null) {
             return Long.MAX_VALUE;

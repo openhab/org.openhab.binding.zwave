@@ -29,6 +29,12 @@
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
         </properties>
       </channel>
+      <channel id="alarm_number" typeId="alarm_number">
+        <label>Alarm (number)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_ALARM</property>
+        </properties>
+      </channel>
       <channel id="battery-level" typeId="system.battery-level">
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
