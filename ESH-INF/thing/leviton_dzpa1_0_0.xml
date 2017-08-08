@@ -37,25 +37,6 @@
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter name="config_0_0" type="integer" groupName="configuration"
-                 min="0" max="4294967295">
-        <label>0: </label>
-        <default>0</default>
-      </parameter>
-
-      <parameter name="config_3_1" type="integer" groupName="configuration">
-        <label>3: Night Light</label>
-        <description><![CDATA[
-Defines the behavior of the blue LED. <br /> Default is Night Light mode where LED is on when switch is off.
-        ]]></description>
-        <default>0</default>
-        <options>
-          <option value="0">LED on when switch is OFF</option>
-          <option value="1">LED on when switch is ON</option>
-          <option value="2">LED always off</option>
-        </options>
-      </parameter>
-
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Invert Switch</label>
         <description><![CDATA[
@@ -75,6 +56,17 @@ Invert the ON/OFF Switch State. <br /> Setting this parameter to Yes will change
         <options>
           <option value="0">No</option>
           <option value="1">Yes</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_7_1" type="integer" groupName="configuration">
+        <label>7: Night Light</label>
+        <description>Defines the behavior of the blue LED. Default is Night Light mode where LED is on when switch is off.</description>
+        <default>255</default>
+        <options>
+          <option value="0">LED always off</option>
+          <option value="254">LED on when switch is ON</option>
+          <option value="255">LED on when switch is OFF</option>
         </options>
       </parameter>
 
