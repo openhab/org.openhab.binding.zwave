@@ -71,9 +71,7 @@ Operation mode<br /><ul><li>0: Flood function is enabled</li> <li>1: Flood funct
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>7: Customer Function</label>
-        <description><![CDATA[
-Parameter to set the sensor functions<br /><ul><li>Bit 0: Reserve</li> <li>Bit 1: Reserve</li> <li>Bit 2: Reserve</li> <li>Bit 3: Disable send out BASIC OFF after the flood event cleared </li></ul>
-        ]]></description>
+        <description>Parameter to set the sensor functionsBit 0: ReserveBit 1: ReserveBit 2: ReserveBit 3: Disable send out BASIC OFF after the flood event clearedBit 4: Notification Type. 0:Using Notification Report, 1:Using Sensor Binary ReportBit 5: Disable Multi CC in aut</description>
         <default>0</default>
       </parameter>
 
