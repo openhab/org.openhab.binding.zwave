@@ -11,6 +11,14 @@
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
+      <channel id="blinds_control" typeId="blinds_control">
+       <label>Blinds Control</label>
+       <properties>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:StopMoveType">SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:UpDownType">SWITCH_MULTILEVEL</property>
+          </properties>
+      </channel>
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
@@ -41,39 +49,7 @@
         <properties>
           <property name="binding:*:DecimalType">METER;type=E_KWh</property>
         </properties>
-      </channel>
-      <channel id="switch_binary1" typeId="switch_binary">
-        <label>switch</label>
-        <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY:1</property>
-        </properties>
-      </channel>
-      <channel id="blinds_control1" typeId="blinds_control">
-        <label>Blinds Control</label>
-        <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:1</property>
-          <property name="binding:Command:StopMoveType">SWITCH_MULTILEVEL:1</property>
-          <property name="binding:Command:UpDownType">SWITCH_MULTILEVEL:1</property>
-        </properties>
-      </channel>
-      <channel id="sensor_temperature1" typeId="sensor_temperature">
-        <label>Temperatur Sensor</label>
-        <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:1;type=TEMPERATURE</property>
-        </properties>
-      </channel>
-      <channel id="meter_watts1" typeId="meter_watts">
-        <label>Electric meter (watts)</label>
-        <properties>
-          <property name="binding:*:DecimalType">METER:1;type=E_W</property>
-        </properties>
-      </channel>
-      <channel id="meter_kwh1" typeId="meter_kwh">
-        <label>Electric meter (kWh)</label>
-        <properties>
-          <property name="binding:*:DecimalType">METER:1;type=E_KWh</property>
-        </properties>
-      </channel>
+      </channel>                 
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
