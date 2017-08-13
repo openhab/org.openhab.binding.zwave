@@ -61,7 +61,8 @@
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter name="config_2_1" type="integer" groupName="configuration">
+      <parameter name="config_2_1" type="integer" groupName="configuration"
+                 min="0" max="100">
         <label>2: Basic Set Level</label>
         <description><![CDATA[
 Setting the BASIC command value to turn on the light.<br /><h1>Overview</h1><ul><li>0: Turn off the light.</li> <li>1 - 100: For dimmers 1 to 100 means the light level.</li> <li>255: Turns on the light. (Default) </li> </ul>
@@ -71,15 +72,7 @@ Setting the BASIC command value to turn on the light.<br /><h1>Overview</h1><ul>
           <option value="0">Off</option>
           <option value="255">On</option>
         </options>
-      </parameter>
-
-      <parameter name="config_2_1" type="integer" groupName="configuration"
-                 min="0" max="100">
-        <label>2: </label>
-        <description><![CDATA[
-Basic Set Level<br /><h1>Overview</h1><ul><li>0: Turn off the light.</li> <li>1 - 100: For dimmers 1 to 100 means the light level.</li> <li>255: Turns on the light. (Default) </li> </ul>
-        ]]></description>
-        <default>255</default>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
@@ -88,14 +81,15 @@ Basic Set Level<br /><h1>Overview</h1><ul><li>0: Turn off the light.</li> <li>1 
         <description><![CDATA[
 Set the sensitivity for the PIR (Passive Infrared Sensor).<br /><h1>Overview</h1><ul><li>0 = Disable the PIR motion detection.</li> <li>1 - 99 = 1 means the lowest sensitivity, 99 means the highest sensitivity</li> </ul><p>High sensitivity means de</p>
         ]]></description>
-        <default>70</default>
+        <default>80</default>
         <options>
           <option value="0">Disable</option>
         </options>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_4_1" type="integer" groupName="configuration">
+      <parameter name="config_4_1" type="integer" groupName="configuration"
+                 min="0" max="100">
         <label>4: Light Threshold</label>
         <description><![CDATA[
 Set the illumination threshold to turn on the light. <br /><h1>Overview</h1><p>When the event triggers and the environment illumination is lower than the threshold, the device will turn on the light.</p> <ul><li>0 = Turn off illumination detected function and never turn</li> </ul>
@@ -104,6 +98,7 @@ Set the illumination threshold to turn on the light. <br /><h1>Overview</h1><p>W
         <options>
           <option value="0">Disable</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"

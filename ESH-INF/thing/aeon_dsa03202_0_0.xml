@@ -158,7 +158,7 @@
 
       <parameter name="config_250_1_wo" type="integer" groupName="configuration">
         <label>250: Secondary Controller Mode</label>
-        <description>When in Group Mode, the minimote is paired directly to devices. When in Scene Mode, minimote button presses will send SCENE_ACTIVATION commands.</description>
+        <description>When in Group Mode, the Minimote is paired directly to devices. When in Scene Mode, Minimote button presses will send SCENE_ACTIVATION commands (NOTE: SCENE_ACTIVATION will only be received if the primary controller is NODE 1).</description>
         <default>0</default>
         <options>
           <option value="0">Group Mode</option>
