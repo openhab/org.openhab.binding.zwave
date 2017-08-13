@@ -18,6 +18,7 @@ import java.util.Map;
 import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.library.types.OnOffType;
 import org.eclipse.smarthome.core.library.types.OpenClosedType;
+import org.eclipse.smarthome.core.library.types.StringType;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.types.State;
 import org.junit.Test;
@@ -230,5 +231,20 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         event = createEvent(18, 0xff);
         state = (DecimalType) converter.handleEvent(channel, event);
         assertEquals(18, state.intValue());
+    }
+
+    @Test
+    public void Alarm_AlarmRaw() {
+        ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
+        Map<String, String> args = new HashMap<String, String>();
+
+        // Note test here that data type is ignored
+        ZWaveThingChannel channel = new ZWaveThingChannel(null, new ChannelUID("zwave:node:bridge:alarm_raw"),
+                DataType.StringType, CommandClass.COMMAND_CLASS_ALARM.toString(), 0, args);
+
+        ZWaveCommandClassValueEvent event = createEvent(AlarmType.ACCESS_CONTROL, ReportType.NOTIFICATION, 6, 255);
+        StringType state = (StringType) converter.handleEvent(channel, event);
+
+        assertEquals("{\"type\":\"ACCESS_CONTROL\",\"event\":\"6\",\"status\":\"255\"}", state.toString());
     }
 }

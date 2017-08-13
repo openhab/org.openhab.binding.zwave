@@ -203,4 +203,30 @@ public abstract class ZWaveCommandClassConverter {
 
         return state;
     }
+
+    /**
+     * Convert a map into a json encoded string
+     *
+     * @param object
+     * @return
+     */
+    protected static String propertiesToJson(Map<String, Object> object) {
+        StringBuilder jsonBuilder = new StringBuilder();
+        jsonBuilder.append("{");
+        boolean first = true;
+        for (String key : object.keySet()) {
+            if (!first) {
+                jsonBuilder.append(",");
+            }
+            first = false;
+
+            jsonBuilder.append("\"");
+            jsonBuilder.append(key);
+            jsonBuilder.append("\":\"");
+            jsonBuilder.append(object.get(key));
+            jsonBuilder.append("\"");
+        }
+        jsonBuilder.append("}");
+        return jsonBuilder.toString();
+    }
 }
