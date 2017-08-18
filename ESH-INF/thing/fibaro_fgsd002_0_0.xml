@@ -97,13 +97,22 @@ There are 3 levels of sensitivity to smoke presence. <br /><h1>Overview</h1><p>L
         <description><![CDATA[
 This parameter allows to activate excess temperature ...<br /><h1>Overview</h1><p>...  and/or enclosure opening notifications sent to the main controller</p>
         ]]></description>
-        <default>0</default>
+        <default>255</default>
         <options>
           <option value="0">All notifications disabled</option>
           <option value="1">Enclosure opening notification enabled</option>
           <option value="2">Exceeding temperature threshold notification enabled</option>
           <option value="3">All notifications enabled</option>
         </options>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>2: Z-Wave notifications status</label>
+        <description><![CDATA[
+This parameter allows to activate excess temperature ...<br /><h1>Overview</h1><p>...  and/or enclosure opening notifications sent to the main controller</p>
+        ]]></description>
+        <default>255</default>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
@@ -243,7 +252,10 @@ Time interval of signaling (visual indication/sound) lack of ...<br /><h1>Overvi
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Smoke Alarm</label>
+        <label>2: Battery capacity low</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>The Home Control Smoke Detector continuously checks the battery capacity. If the battery capacity falls below a defined value of approx. 2.7V +-0.1V, a low battery alarm will be sent via Z-Wave®. If the capacity continues falling, the visual and acoustic battery capacity warning will be activated additionally.</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
