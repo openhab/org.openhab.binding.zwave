@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="devolo_09813_00_000" listed="false">
+    <label>09813 Home Control Smoke Detector</label>
+    <description>Home Control Smoke Detector</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="sensor_binary" typeId="sensor_binary">
+        <label>Binary Sensor</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="alarm_smoke" typeId="alarm_smoke">
+        <label>Alarm (smoke)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=SMOKE</property>
+        </properties>
+      </channel>
+      <channel id="alarm_burglar" typeId="alarm_burglar">
+        <label>Alarm (burglar)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Devolo</property>
+      <property name="modelId">09813</property>
+      <property name="manufacturerId">0175</property>
+      <property name="manufacturerRef">2004:04A4</property>
+      <property name="dbReference">615</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_1" type="integer" groupName="configuration"
+                 min="1" max="255">
+        <label>1: Alarm mode</label>
+        <description><![CDATA[
+The value (255) activates the transmission of the alarm message <br /><h1>Overview</h1><p>....to the Z-Wave® controller. The value (0) disables the transmission of the alarm message.</p>
+        ]]></description>
+        <default>255</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Alarm</label>
+        <description><![CDATA[
+smoke is detected<br /><h1>Overview</h1><p>When smoke is detected, the Home Control Smoke Detector will send a message to the Z-Wave® controller.</p> <p><strong>Alarm version 1</strong></p> <p>Alarm type: 0x01</p> <p>Alarm level: 0x00 (normal) 0xFF (Alarm)</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Battery capacity low</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>The Home Control Smoke Detector continuously checks the battery capacity. If the battery capacity falls below a defined value of approx. 2.7V +-0.1V, a low battery alarm will be sent via Z-Wave®. If the capacity continues falling, the visual and acoustic battery capacity warning will be activated additionally.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>

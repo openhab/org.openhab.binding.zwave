@@ -54,7 +54,7 @@
       <property name="vendor">TKB Home</property>
       <property name="modelId">TZ69</property>
       <property name="manufacturerId">0118</property>
-      <property name="manufacturerRef">0004:0002</property>
+      <property name="manufacturerRef">0004:0002,0311:0103</property>
       <property name="dbReference">474</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -81,7 +81,7 @@
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Memory Function</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>Manual states: TZ69 by default value is 1, when the value is 0, TZ69 memory funciton not open; when the value is 1, open TZ69 memory function. </p> <p>Not sure what that means - maybe if value is 0, TZ69 wont remeber the last kWH reading when turned off?</p>
+determines if current state is memorized on power failure<br /><h1>Overview</h1><p>Manual states: TZ69 by default value is 1, when the value is 0, TZ69 memory function not used; when the value is 1, TZ69 memory function is used</p>
         ]]></description>
         <default>1</default>
         <options>

@@ -71,7 +71,9 @@ Aeotec LED Strip<br /><h1>Overview</h1><p>Aeotec LED Strip has been crafted to p
       <parameter name="config_37_4_0000001F" type="integer" groupName="configuration"
                  min="0" max="30">
         <label>37: Color Change Speed Level</label>
-        <description>Applies only when the Color Transition Style is set to Fade Out/In</description>
+        <description><![CDATA[
+Applies only when the Color Transition Style is set to Fade Out/In<br /><h1>Overview</h1><p>Value 0 means constant speed. Value 1-30 sets the speed to accelerate/decelerate. </p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0"></option>
@@ -122,6 +124,17 @@ Defines the mode for determining colors used in color transitions<br /><h1>Overv
           <option value="2">Multi color mode (colors cycle between selected colors)</option>
           <option value="3">Random mode</option>
           <option value="4">Single color mode</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_37_4_38000000" type="integer" groupName="configuration">
+        <label>37: Color Change Speed Option</label>
+        <description>Applies only when the Color Transition Style is set to Fade Out/In</description>
+        <default>0</default>
+        <options>
+          <option value="0">Fade in for 1/2 second and fade out for 1/2 second</option>
+          <option value="1">Fade in for 5ms and fade out for 5ms</option>
+          <option value="2">Fade in for 50ms and fade out for 50ms</option>
         </options>
       </parameter>
 
