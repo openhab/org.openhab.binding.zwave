@@ -1355,12 +1355,12 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
             // Build the configuration value
             for (ZWaveAssociation groupMember : group.getAssociations()) {
-                logger.debug("NODE {}: Update ASSOCIATION group_{}: Adding node_{}_{}", nodeId, group,
+                logger.debug("NODE {}: Update ASSOCIATION group_{}: Adding node_{}_{}", nodeId, group.getIndex(),
                         groupMember.getNode(), groupMember.getEndpoint());
                 members.add("node_" + groupMember.getNode() + "_" + groupMember.getEndpoint());
             }
 
-            config.put("group_" + group, members);
+            config.put("group_" + group.getIndex(), members);
         }
 
         // Process WAKE_UP
