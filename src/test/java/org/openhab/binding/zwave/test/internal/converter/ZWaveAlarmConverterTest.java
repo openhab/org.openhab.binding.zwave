@@ -142,6 +142,21 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
     }
 
     @Test
+    public void Notification_TamperNotResetDoor() {
+        ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
+        ZWaveThingChannel channel = createChannel("sensor_door", DataType.OpenClosedType, null, null);
+
+        ZWaveCommandClassValueEvent event = createEvent(ZWaveAlarmCommandClass.AlarmType.ACCESS_CONTROL,
+                ReportType.NOTIFICATION, 22, 0xff);
+        State state = converter.handleEvent(channel, event);
+        assertEquals(OpenClosedType.class, state.getClass());
+        assertEquals(OpenClosedType.OPEN, state);
+
+        event = createEvent(ZWaveAlarmCommandClass.AlarmType.BURGLAR, ReportType.NOTIFICATION, 0, 0xff);
+        assertNull(converter.handleEvent(channel, event));
+    }
+
+    @Test
     public void Notification_Appliance() {
         ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
         ZWaveThingChannel channel = createChannel("alarm_smoke", DataType.OnOffType, null, null);
