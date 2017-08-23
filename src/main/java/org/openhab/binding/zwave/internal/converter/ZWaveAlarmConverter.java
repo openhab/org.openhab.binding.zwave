@@ -211,6 +211,12 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         if (channel.getUID().getId().equals("alarm_number")) {
             return new DecimalType(eventAlarm.getV1AlarmCode());
         }
+        if (channel.getUID().getId().equals("alarm_raw")) {
+            Map<String, Object> object = new HashMap<String, Object>();
+            object.put("type", eventAlarm.getAlarmType());
+            object.put("value", eventAlarm.getValue());
+            return new StringType(propertiesToJson(object));
+        }
 
         // Default to using the value.
         int value = eventAlarm.getValue();
