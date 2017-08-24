@@ -17,6 +17,7 @@ import java.util.Objects;
 import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.library.types.OnOffType;
 import org.eclipse.smarthome.core.library.types.OpenClosedType;
+import org.eclipse.smarthome.core.library.types.StringType;
 import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
@@ -210,6 +211,12 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         if (channel.getUID().getId().equals("alarm_number")) {
             return new DecimalType(eventAlarm.getV1AlarmCode());
         }
+        if (channel.getUID().getId().equals("alarm_raw")) {
+            Map<String, Object> object = new HashMap<String, Object>();
+            object.put("type", eventAlarm.getAlarmType());
+            object.put("value", eventAlarm.getValue());
+            return new StringType(propertiesToJson(object));
+        }
 
         // Default to using the value.
         int value = eventAlarm.getValue();
@@ -262,6 +269,12 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
 
         String channelType = channel.getUID().getId();
         switch (channelType) {
+            case "alarm_raw":
+                Map<String, Object> object = new HashMap<String, Object>();
+                object.put("type", eventAlarm.getAlarmType());
+                object.put("event", eventAlarm.getAlarmEvent());
+                object.put("status", eventAlarm.getAlarmStatus());
+                return new StringType(propertiesToJson(object));
             case "alarm_number":
             case "notification_access_control":
                 return new DecimalType(eventAlarm.getAlarmEvent());
