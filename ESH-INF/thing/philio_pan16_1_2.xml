@@ -16,7 +16,7 @@ Smart Energy Plug In Switch<br /><h1>Overview</h1><p>This plug-in ON/OFF switch 
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
         </properties>
       </channel>
       <channel id="meter_voltage" typeId="meter_voltage">
@@ -65,7 +65,23 @@ Smart Energy Plug In Switch<br /><h1>Overview</h1><p>This plug-in ON/OFF switch 
       <property name="manufacturerRef">0001:0000,0001:0029</property>
       <property name="versionMin">1.2</property>
       <property name="dbReference">642</property>
+      <property name="defaultAssociations">1</property>
     </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Report</label>
+      </parameter>
+
+    </config-description>
 
   </thing-type>
 

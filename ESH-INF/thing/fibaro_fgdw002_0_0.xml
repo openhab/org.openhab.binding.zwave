@@ -11,34 +11,22 @@
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Door Sensor</label>
-        <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY,BASIC</property>
-        </properties>
-      </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="alarm_heat" typeId="alarm_heat">
-        <label>Alarm (heat)</label>
+      <channel id="alarm_tamper" typeId="alarm_tamper">
+        <label>Tamper alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=HEAT</property>
+          <property name="binding:*:OnOffType">ALARM;type=BURGLAR, event=3</property>
         </properties>
       </channel>
-      <channel id="alarm_access" typeId="alarm_access">
-        <label>Alarm (access)</label>
+      <channel id="sensor_door" typeId="sensor_door">
+        <label>Door sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=ACCESS_CONTROL</property>
-        </properties>
-      </channel>
-      <channel id="alarm_burglar" typeId="alarm_burglar">
-        <label>Alarm (burglar)</label>
-        <properties>
-          <property name="binding:*:OnOffType">ALARM;type=BURGLAR</property>
+          <property name="binding:*:OpenClosedType">ALARM;type=ACCESS_CONTROL</property>
         </properties>
       </channel>
       <channel id="alarm_power" typeId="alarm_power">
@@ -264,9 +252,9 @@ reports the device status and allows for assigning single device only (main cont
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: On/Of</label>
+        <label>2: On/Off</label>
         <description><![CDATA[
-is assigned to the device status - contact sensor (sends Basic Set command frames)<br /><h1>Overview</h1><p>is assigned to the device status - contact sensor (sends Basic Set command frames)</p>
+is assigned to the device status - Hall effect sensor (sends Basic Set command frames)<br /><h1>Overview</h1><p>is assigned to the device status - Hall effect sensor (sends Basic Set command frames).</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
