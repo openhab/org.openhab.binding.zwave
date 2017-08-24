@@ -55,6 +55,20 @@
         </options>
       </parameter>
 
+      <parameter name="config_7_1" type="integer" groupName="configuration"
+                 min="1" max="99">
+        <label>7: Remote dim level increment</label>
+        <description>Number of dim levels to change for each dim step when remotely commanded</description>
+        <default>1</default>
+      </parameter>
+
+      <parameter name="config_8_2" type="integer" groupName="configuration"
+                 min="1" max="255">
+        <label>8: Remote dim step duration</label>
+        <description>Interval between dimming steps when remotely commanded</description>
+        <default>3</default>
+      </parameter>
+
       <parameter name="config_9_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>9: Dim Level Increment</label>
@@ -62,7 +76,7 @@
         <default>1</default>
       </parameter>
 
-      <parameter name="config_10_1" type="integer" groupName="configuration"
+      <parameter name="config_10_2" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>10: Step Duration</label>
         <description>The number of tens of milliseconds (1-255) to delay on each dimming step.</description>
