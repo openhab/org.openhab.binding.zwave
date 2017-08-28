@@ -218,7 +218,7 @@ The temperature report will only be sent if there is a difference ...<br /><h1>O
                  min="1" max="100">
         <label>30: Temperature threshold</label>
         <description><![CDATA[
-Temperature value measured by the built-in temperature ...<br /><h1>Overview</h1><p>sensor above which the excess temperature notification is sent (visual indication/sound/Z-Wave report). </p>
+Temperature threshold for activating alarms<br /><h1>Overview</h1><p>This is the temperature threshold, measured by the internal sensor above which the excess temperature notification is sent (visual indication/sound/Z-Wave report).</p> <p>Note that the alarm will not be deactivated again until the temperature drops by at least 2 degrees below this threshold.</p>
         ]]></description>
         <default>55</default>
       </parameter>
