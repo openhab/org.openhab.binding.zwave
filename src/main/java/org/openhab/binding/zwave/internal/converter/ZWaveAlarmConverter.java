@@ -274,6 +274,20 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                 object.put("type", eventAlarm.getAlarmType());
                 object.put("event", eventAlarm.getAlarmEvent());
                 object.put("status", eventAlarm.getAlarmStatus());
+
+                NotificationEvent notificationEvent = NotificationEvent.getEvent(eventAlarm.getAlarmType().toString(),
+                        eventAlarm.getAlarmEvent());
+                if (eventAlarm.getParameters() != null) {
+                    switch (notificationEvent) {
+                        case ACCESS__KEYPAD_LOCK:
+                        case ACCESS__KEYPAD_UNLOCK:
+                            object.put("code", eventAlarm.getParameters()[0]);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
                 return new StringType(propertiesToJson(object));
             case "alarm_number":
             case "notification_access_control":
