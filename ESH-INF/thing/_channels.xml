@@ -179,6 +179,17 @@
         </state>
     </channel-type>
 
+    <!-- Raw Alarm Channel -->
+    <channel-type id="alarm_raw">
+        <item-type>String</item-type>
+        <label>Raw alarm (json)</label>
+        <description>Provides alarm parameters as json string
+        </description>
+        <category></category>
+        <state readOnly="true">
+        </state>
+    </channel-type>
+
     <!-- Smoke Alarm Channel -->
     <channel-type id="alarm_smoke">
         <item-type>Switch</item-type>
