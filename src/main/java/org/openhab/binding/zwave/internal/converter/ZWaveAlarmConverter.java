@@ -213,7 +213,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         }
         if (channel.getUID().getId().equals("alarm_raw")) {
             Map<String, Object> object = new HashMap<String, Object>();
-            object.put("type", eventAlarm.getAlarmType());
+            object.put("type", eventAlarm.getV1AlarmCode());
             object.put("value", eventAlarm.getValue());
             return new StringType(propertiesToJson(object));
         }
@@ -277,14 +277,17 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
 
                 NotificationEvent notificationEvent = NotificationEvent.getEvent(eventAlarm.getAlarmType().toString(),
                         eventAlarm.getAlarmEvent());
-                if (eventAlarm.getParameters() != null) {
-                    switch (notificationEvent) {
-                        case ACCESS__KEYPAD_LOCK:
-                        case ACCESS__KEYPAD_UNLOCK:
-                            object.put("code", eventAlarm.getParameters()[0]);
-                            break;
-                        default:
-                            break;
+                if (notificationEvent != null) {
+                    object.put("notification", notificationEvent.toString());
+                    if (eventAlarm.getParameters() != null) {
+                        switch (notificationEvent) {
+                            case ACCESS__KEYPAD_LOCK:
+                            case ACCESS__KEYPAD_UNLOCK:
+                                object.put("code", eventAlarm.getParameters()[0]);
+                                break;
+                            default:
+                                break;
+                        }
                     }
                 }
 
