@@ -50,8 +50,8 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
 
         // Alarm Burglar
         events = new HashMap<NotificationEvent, State>();
-        events.put(NotificationEvent.BURGLAR__NONE, OnOffType.OFF);
-        events.put(NotificationEvent.BURGLAR__INTRUSION, OnOffType.ON);
+        events.put(NotificationEvent.HOME_SECURITY__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.HOME_SECURITY__INTRUSION, OnOffType.ON);
         notifications.put("alarm_burglar", events);
 
         // Smoke Alarms
@@ -64,9 +64,9 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
 
         // Door alarms
         events = new HashMap<NotificationEvent, State>();
-        events.put(NotificationEvent.ACCESS__NONE, OpenClosedType.CLOSED);
-        events.put(NotificationEvent.ACCESS__DOOR_WINDOW_OPEN, OpenClosedType.OPEN);
-        events.put(NotificationEvent.ACCESS__DOOR_WINDOW_CLOSED, OpenClosedType.CLOSED);
+        events.put(NotificationEvent.ACCESS_CONTROL__NONE, OpenClosedType.CLOSED);
+        events.put(NotificationEvent.ACCESS_CONTROL__DOOR_WINDOW_OPEN, OpenClosedType.OPEN);
+        events.put(NotificationEvent.ACCESS_CONTROL__DOOR_WINDOW_CLOSED, OpenClosedType.CLOSED);
         notifications.put("sensor_door", events);
 
         // Heat alarms
@@ -78,9 +78,9 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
 
         // Motion alarms
         events = new HashMap<NotificationEvent, State>();
-        events.put(NotificationEvent.BURGLAR__NONE, OnOffType.OFF);
-        events.put(NotificationEvent.BURGLAR__MOTION, OnOffType.ON);
-        events.put(NotificationEvent.BURGLAR__MOTION_UNKNOWN, OnOffType.ON);
+        events.put(NotificationEvent.HOME_SECURITY__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.HOME_SECURITY__MOTION, OnOffType.ON);
+        events.put(NotificationEvent.HOME_SECURITY__MOTION_UNKNOWN, OnOffType.ON);
         notifications.put("alarm_motion", events);
 
         // Flood alarms
@@ -92,40 +92,40 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
 
         // Tamper alarms
         events = new HashMap<NotificationEvent, State>();
-        events.put(NotificationEvent.BURGLAR__NONE, OnOffType.OFF);
-        events.put(NotificationEvent.BURGLAR__TAMPER, OnOffType.ON);
-        events.put(NotificationEvent.BURGLAR__TAMPER_UNKNOWN, OnOffType.ON);
-        events.put(NotificationEvent.BURGLAR__TAMPER_INVALID_CODE, OnOffType.ON);
+        events.put(NotificationEvent.HOME_SECURITY__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.HOME_SECURITY__TAMPER, OnOffType.ON);
+        events.put(NotificationEvent.HOME_SECURITY__TAMPER_UNKNOWN, OnOffType.ON);
+        events.put(NotificationEvent.HOME_SECURITY__TAMPER_INVALID_CODE, OnOffType.ON);
         notifications.put("alarm_tamper", events);
 
         // Battery alarms
         events = new HashMap<NotificationEvent, State>();
-        events.put(NotificationEvent.POWER__NONE, OnOffType.OFF);
-        events.put(NotificationEvent.POWER__REPLACE_BATTERY_NOW, OnOffType.ON);
+        events.put(NotificationEvent.POWER_MANAGEMENT__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.POWER_MANAGEMENT__REPLACE_BATTERY_NOW, OnOffType.ON);
         notifications.put("alarm_battery", events);
 
         // Battery alarms
         events = new HashMap<NotificationEvent, State>();
-        events.put(NotificationEvent.POWER__NONE, OnOffType.OFF);
-        events.put(NotificationEvent.POWER__MAINS_DISCONNECTED, OnOffType.ON);
-        events.put(NotificationEvent.POWER__MAINS_APPLIED, OnOffType.OFF);
-        events.put(NotificationEvent.POWER__MAINS_RECONNECTED, OnOffType.OFF);
+        events.put(NotificationEvent.POWER_MANAGEMENT__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.POWER_MANAGEMENT__MAINS_DISCONNECTED, OnOffType.ON);
+        events.put(NotificationEvent.POWER_MANAGEMENT__MAINS_APPLIED, OnOffType.OFF);
+        events.put(NotificationEvent.POWER_MANAGEMENT__MAINS_RECONNECTED, OnOffType.OFF);
         notifications.put("alarm_power", events);
 
         // Carbon Monoxide alarms
         events = new HashMap<NotificationEvent, State>();
-        events.put(NotificationEvent.CARBON_MONOXIDE__NONE, OnOffType.OFF);
-        events.put(NotificationEvent.CARBON_MONOXIDE__CO_DETECTED, OnOffType.ON);
-        events.put(NotificationEvent.CARBON_MONOXIDE__CO_DETECTED_UNKNOWN, OnOffType.ON);
-        events.put(NotificationEvent.CARBON_MONOXIDE__CO_ALARM_TEST, OnOffType.ON);
+        events.put(NotificationEvent.CO__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.CO__CO_DETECTED, OnOffType.ON);
+        events.put(NotificationEvent.CO__CO_DETECTED_UNKNOWN, OnOffType.ON);
+        events.put(NotificationEvent.CO__CO_ALARM_TEST, OnOffType.ON);
         notifications.put("alarm_co", events);
 
         // Carbon Dioxide alarms
         events = new HashMap<NotificationEvent, State>();
-        events.put(NotificationEvent.CARBON_DIOXIDE__NONE, OnOffType.OFF);
-        events.put(NotificationEvent.CARBON_DIOXIDE__CO2_DETECTED, OnOffType.ON);
-        events.put(NotificationEvent.CARBON_DIOXIDE__CO2_DETECTED_UNKNOWN, OnOffType.ON);
-        events.put(NotificationEvent.CARBON_DIOXIDE__CO2_ALARM_TEST, OnOffType.ON);
+        events.put(NotificationEvent.CO2__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.CO2__CO2_DETECTED, OnOffType.ON);
+        events.put(NotificationEvent.CO2__CO2_DETECTED_UNKNOWN, OnOffType.ON);
+        events.put(NotificationEvent.CO2__CO2_ALARM_TEST, OnOffType.ON);
         notifications.put("alarm_co2", events);
     }
 
@@ -281,8 +281,8 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                     object.put("notification", notificationEvent.toString());
                     if (eventAlarm.getParameters() != null) {
                         switch (notificationEvent) {
-                            case ACCESS__KEYPAD_LOCK:
-                            case ACCESS__KEYPAD_UNLOCK:
+                            case ACCESS_CONTROL__KEYPAD_LOCK:
+                            case ACCESS_CONTROL__KEYPAD_UNLOCK:
                                 object.put("code", eventAlarm.getParameters()[0]);
                                 break;
                             default:
@@ -348,17 +348,17 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         SMOKE__SMOKE_ALARM_TEST("SMOKE", 3),
         SMOKE__REPLACE("SMOKE", 4),
 
-        CARBON_MONOXIDE__NONE("CARBON_MONOXIDE", 0),
-        CARBON_MONOXIDE__CO_DETECTED("CARBON_MONOXIDE", 1),
-        CARBON_MONOXIDE__CO_DETECTED_UNKNOWN("CARBON_MONOXIDE", 2),
-        CARBON_MONOXIDE__CO_ALARM_TEST("CARBON_MONOXIDE", 3),
-        CARBON_MONOXIDE__REPLACE("CARBON_MONOXIDE", 4),
+        CO__NONE("CARBON_MONOXIDE", 0),
+        CO__CO_DETECTED("CARBON_MONOXIDE", 1),
+        CO__CO_DETECTED_UNKNOWN("CARBON_MONOXIDE", 2),
+        CO__CO_ALARM_TEST("CARBON_MONOXIDE", 3),
+        CO__REPLACE("CARBON_MONOXIDE", 4),
 
-        CARBON_DIOXIDE__NONE("CARBON_DIOXIDE", 0),
-        CARBON_DIOXIDE__CO2_DETECTED("CARBON_DIOXIDE", 1),
-        CARBON_DIOXIDE__CO2_DETECTED_UNKNOWN("CARBON_DIOXIDE", 2),
-        CARBON_DIOXIDE__CO2_ALARM_TEST("CARBON_DIOXIDE", 3),
-        CARBON_DIOXIDE__REPLACE("CARBON_DIOXIDE", 4),
+        CO2__NONE("CARBON_DIOXIDE", 0),
+        CO2__CO2_DETECTED("CARBON_DIOXIDE", 1),
+        CO2__CO2_DETECTED_UNKNOWN("CARBON_DIOXIDE", 2),
+        CO2__CO2_ALARM_TEST("CARBON_DIOXIDE", 3),
+        CO2__REPLACE("CARBON_DIOXIDE", 4),
 
         HEAT__NONE("HEAT", 0),
         HEAT__HIGH_DETECTED("HEAT", 1),
@@ -375,70 +375,70 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         WATER__LOW_LEVEL_UNKNOWN("FLOOD", 4),
         WATER__REPLACE_FILTER("FLOOD", 5),
 
-        ACCESS__NONE("ACCESS_CONTROL", 0),
-        ACCESS__MANUAL_LOCK("ACCESS_CONTROL", 1),
-        ACCESS__MANUAL_UNLOCK("ACCESS_CONTROL", 2),
-        ACCESS__REMOTE_LOCK("ACCESS_CONTROL", 3),
-        ACCESS__REMOTE_UNLOCK("ACCESS_CONTROL", 4),
-        ACCESS__KEYPAD_LOCK("ACCESS_CONTROL", 5),
-        ACCESS__KEYPAD_UNLOCK("ACCESS_CONTROL", 6),
-        ACCESS__MANUAL_NOT_FULLY_LOCKED("ACCESS_CONTROL", 7),
-        ACCESS__REMOTE_NOT_FULLY_LOCKED("ACCESS_CONTROL", 8),
-        ACCESS__AUTO_LOCK("ACCESS_CONTROL", 9),
-        ACCESS__AUTO_NOT_FULLY_LOCKED("ACCESS_CONTROL", 10),
-        ACCESS__LOCK_JAMMED("ACCESS_CONTROL", 11),
-        ACCESS__ALL_USER_CODES_DELETED("ACCESS_CONTROL", 12),
-        ACCESS__USER_CODE_DELETED("ACCESS_CONTROL", 13),
-        ACCESS__USER_CODE_ADDED("ACCESS_CONTROL", 14),
-        ACCESS__USER_CODE_DUPLICATE("ACCESS_CONTROL", 15),
-        ACCESS__KEYPAD_TEMPORARILY_DISABLED("ACCESS_CONTROL", 16),
-        ACCESS__KEYPAD_BUSY("ACCESS_CONTROL", 17),
-        ACCESS__ADMIN_CODE_ADDED("ACCESS_CONTROL", 18),
-        ACCESS__MANUAL_CODE_TOO_LONG("ACCESS_CONTROL", 19),
-        ACCESS__REMOTE_UNLOCK_CODE_INVALID("ACCESS_CONTROL", 20),
-        ACCESS__REMOTE_LOCK_CODE_INVALID("ACCESS_CONTROL", 21),
-        ACCESS__DOOR_WINDOW_OPEN("ACCESS_CONTROL", 22),
-        ACCESS__DOOR_WINDOW_CLOSED("ACCESS_CONTROL", 23),
-        ACCESS__BARRIER_INITIALISING("ACCESS_CONTROL", 64),
-        ACCESS__BARRIER_FORCE_EXCEEDED("ACCESS_CONTROL", 65),
-        ACCESS__BARRIER_MOTOR_TIME_EXCEEDED("ACCESS_CONTROL", 66),
-        ACCESS__BARRIER_MECHANICAL_LIMIT("ACCESS_CONTROL", 67),
-        ACCESS__BARRIER_ERROR_UL_REQUIREMENT("ACCESS_CONTROL", 68),
-        ACCESS__BARRIER_DISABLED_UL_REQUIREMENT("ACCESS_CONTROL", 69),
-        ACCESS__BARRIER_MALFUNCTION("ACCESS_CONTROL", 70),
-        ACCESS__BARRIER_VACATION_MODE("ACCESS_CONTROL", 71),
-        ACCESS__BARRIER_SAFETY_OBSTICAL("ACCESS_CONTROL", 72),
-        ACCESS__BARRIER_SUPERVISORY_ERROR("ACCESS_CONTROL", 73),
-        ACCESS__BARRIER_SENSOR_BATTERY_LOW("ACCESS_CONTROL", 74),
-        ACCESS__BARRIER_SHORT_DETECTED("ACCESS_CONTROL", 75),
-        ACCESS__BARRIER_NON_ZWAVE("ACCESS_CONTROL", 76),
+        ACCESS_CONTROL__NONE("ACCESS_CONTROL", 0),
+        ACCESS_CONTROL__MANUAL_LOCK("ACCESS_CONTROL", 1),
+        ACCESS_CONTROL__MANUAL_UNLOCK("ACCESS_CONTROL", 2),
+        ACCESS_CONTROL__REMOTE_LOCK("ACCESS_CONTROL", 3),
+        ACCESS_CONTROL__REMOTE_UNLOCK("ACCESS_CONTROL", 4),
+        ACCESS_CONTROL__KEYPAD_LOCK("ACCESS_CONTROL", 5),
+        ACCESS_CONTROL__KEYPAD_UNLOCK("ACCESS_CONTROL", 6),
+        ACCESS_CONTROL__MANUAL_NOT_FULLY_LOCKED("ACCESS_CONTROL", 7),
+        ACCESS_CONTROL__REMOTE_NOT_FULLY_LOCKED("ACCESS_CONTROL", 8),
+        ACCESS_CONTROL__AUTO_LOCK("ACCESS_CONTROL", 9),
+        ACCESS_CONTROL__AUTO_NOT_FULLY_LOCKED("ACCESS_CONTROL", 10),
+        ACCESS_CONTROL__LOCK_JAMMED("ACCESS_CONTROL", 11),
+        ACCESS_CONTROL__ALL_USER_CODES_DELETED("ACCESS_CONTROL", 12),
+        ACCESS_CONTROL__USER_CODE_DELETED("ACCESS_CONTROL", 13),
+        ACCESS_CONTROL__USER_CODE_ADDED("ACCESS_CONTROL", 14),
+        ACCESS_CONTROL__USER_CODE_DUPLICATE("ACCESS_CONTROL", 15),
+        ACCESS_CONTROL__KEYPAD_TEMPORARILY_DISABLED("ACCESS_CONTROL", 16),
+        ACCESS_CONTROL__KEYPAD_BUSY("ACCESS_CONTROL", 17),
+        ACCESS_CONTROL__ADMIN_CODE_ADDED("ACCESS_CONTROL", 18),
+        ACCESS_CONTROL__MANUAL_CODE_TOO_LONG("ACCESS_CONTROL", 19),
+        ACCESS_CONTROL__REMOTE_UNLOCK_CODE_INVALID("ACCESS_CONTROL", 20),
+        ACCESS_CONTROL__REMOTE_LOCK_CODE_INVALID("ACCESS_CONTROL", 21),
+        ACCESS_CONTROL__DOOR_WINDOW_OPEN("ACCESS_CONTROL", 22),
+        ACCESS_CONTROL__DOOR_WINDOW_CLOSED("ACCESS_CONTROL", 23),
+        ACCESS_CONTROL__BARRIER_INITIALISING("ACCESS_CONTROL", 64),
+        ACCESS_CONTROL__BARRIER_FORCE_EXCEEDED("ACCESS_CONTROL", 65),
+        ACCESS_CONTROL__BARRIER_MOTOR_TIME_EXCEEDED("ACCESS_CONTROL", 66),
+        ACCESS_CONTROL__BARRIER_MECHANICAL_LIMIT("ACCESS_CONTROL", 67),
+        ACCESS_CONTROL__BARRIER_ERROR_UL_REQUIREMENT("ACCESS_CONTROL", 68),
+        ACCESS_CONTROL__BARRIER_DISABLED_UL_REQUIREMENT("ACCESS_CONTROL", 69),
+        ACCESS_CONTROL__BARRIER_MALFUNCTION("ACCESS_CONTROL", 70),
+        ACCESS_CONTROL__BARRIER_VACATION_MODE("ACCESS_CONTROL", 71),
+        ACCESS_CONTROL__BARRIER_SAFETY_OBSTICAL("ACCESS_CONTROL", 72),
+        ACCESS_CONTROL__BARRIER_SUPERVISORY_ERROR("ACCESS_CONTROL", 73),
+        ACCESS_CONTROL__BARRIER_SENSOR_BATTERY_LOW("ACCESS_CONTROL", 74),
+        ACCESS_CONTROL__BARRIER_SHORT_DETECTED("ACCESS_CONTROL", 75),
+        ACCESS_CONTROL__BARRIER_NON_ZWAVE("ACCESS_CONTROL", 76),
 
-        BURGLAR__NONE("BURGLAR", 0),
-        BURGLAR__INTRUSION("BURGLAR", 1),
-        BURGLAR__TAMPER_UNKNOWN("BURGLAR", 2),
-        BURGLAR__TAMPER("BURGLAR", 3),
-        BURGLAR__TAMPER_INVALID_CODE("BURGLAR", 4),
-        BURGLAR__GLASS_BREAK("BURGLAR", 5),
-        BURGLAR__GLASS_BREAK_UNKNOWN("BURGLAR", 6),
-        BURGLAR__MOTION("BURGLAR", 7),
-        BURGLAR__MOTION_UNKNOWN("BURGLAR", 8),
+        HOME_SECURITY__NONE("BURGLAR", 0),
+        HOME_SECURITY__INTRUSION("BURGLAR", 1),
+        HOME_SECURITY__TAMPER_UNKNOWN("BURGLAR", 2),
+        HOME_SECURITY__TAMPER("BURGLAR", 3),
+        HOME_SECURITY__TAMPER_INVALID_CODE("BURGLAR", 4),
+        HOME_SECURITY__GLASS_BREAK("BURGLAR", 5),
+        HOME_SECURITY__GLASS_BREAK_UNKNOWN("BURGLAR", 6),
+        HOME_SECURITY__MOTION("BURGLAR", 7),
+        HOME_SECURITY__MOTION_UNKNOWN("BURGLAR", 8),
 
-        POWER__NONE("POWER_MANAGEMENT", 0),
-        POWER__MAINS_APPLIED("POWER_MANAGEMENT", 1),
-        POWER__MAINS_DISCONNECTED("POWER_MANAGEMENT", 2),
-        POWER__MAINS_RECONNECTED("POWER_MANAGEMENT", 3),
-        POWER__SURGE_DETECTED("POWER_MANAGEMENT", 4),
-        POWER__VOLTAGE_DROP("POWER_MANAGEMENT", 5),
-        POWER__OVER_CURRENT("POWER_MANAGEMENT", 6),
-        POWER__OVER_VOLTAGE("POWER_MANAGEMENT", 7),
-        POWER__OVER_LOAD("POWER_MANAGEMENT", 8),
-        POWER__LOAD_ERROR("POWER_MANAGEMENT", 9),
-        POWER__REPLACE_BATTERY_SOON("POWER_MANAGEMENT", 10),
-        POWER__REPLACE_BATTERY_NOW("POWER_MANAGEMENT", 11),
-        POWER__BATTERY_CHARGING("POWER_MANAGEMENT", 12),
-        POWER__BATTERY_FULL("POWER_MANAGEMENT", 13),
-        POWER__CHARGE_BATTERY_SOON("POWER_MANAGEMENT", 14),
-        POWER__CHARGE_BATTERY_NOW("POWER_MANAGEMENT", 15),
+        POWER_MANAGEMENT__NONE("POWER_MANAGEMENT", 0),
+        POWER_MANAGEMENT__MAINS_APPLIED("POWER_MANAGEMENT", 1),
+        POWER_MANAGEMENT__MAINS_DISCONNECTED("POWER_MANAGEMENT", 2),
+        POWER_MANAGEMENT__MAINS_RECONNECTED("POWER_MANAGEMENT", 3),
+        POWER_MANAGEMENT__SURGE_DETECTED("POWER_MANAGEMENT", 4),
+        POWER_MANAGEMENT__VOLTAGE_DROP("POWER_MANAGEMENT", 5),
+        POWER_MANAGEMENT__OVER_CURRENT("POWER_MANAGEMENT", 6),
+        POWER_MANAGEMENT__OVER_VOLTAGE("POWER_MANAGEMENT", 7),
+        POWER_MANAGEMENT__OVER_LOAD("POWER_MANAGEMENT", 8),
+        POWER_MANAGEMENT__LOAD_ERROR("POWER_MANAGEMENT", 9),
+        POWER_MANAGEMENT__REPLACE_BATTERY_SOON("POWER_MANAGEMENT", 10),
+        POWER_MANAGEMENT__REPLACE_BATTERY_NOW("POWER_MANAGEMENT", 11),
+        POWER_MANAGEMENT__BATTERY_CHARGING("POWER_MANAGEMENT", 12),
+        POWER_MANAGEMENT__BATTERY_FULL("POWER_MANAGEMENT", 13),
+        POWER_MANAGEMENT__CHARGE_BATTERY_SOON("POWER_MANAGEMENT", 14),
+        POWER_MANAGEMENT__CHARGE_BATTERY_NOW("POWER_MANAGEMENT", 15),
 
         SYSTEM__NONE("SYSTEM", 0),
         SYSTEM__HARDWARE_FAILURE("SYSTEM", 1),

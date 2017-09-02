@@ -260,6 +260,8 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         ZWaveCommandClassValueEvent event = createEvent(AlarmType.ACCESS_CONTROL, ReportType.NOTIFICATION, 6, 255);
         StringType state = (StringType) converter.handleEvent(channel, event);
 
-        assertEquals("{\"type\":\"ACCESS_CONTROL\",\"event\":\"6\",\"status\":\"255\"}", state.toString());
+        assertEquals(
+                "{\"notification\":\"ACCESS_CONTROL__KEYPAD_UNLOCK\",\"type\":\"ACCESS_CONTROL\",\"event\":\"6\",\"status\":\"255\"}",
+                state.toString());
     }
 }
