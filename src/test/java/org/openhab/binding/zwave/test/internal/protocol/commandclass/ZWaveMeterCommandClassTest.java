@@ -135,4 +135,34 @@ public class ZWaveMeterCommandClassTest extends ZWaveCommandClassTest {
         // Don't request if we've set the type and scale
         assertEquals(0, cls.initialize(true).size());
     }
+
+    @Test
+    public void Meter_Electric_PAN04_KWh() {
+        byte[] packetData = { 0x01, 0x10, 0x00, 0x04, 0x10, 0x51, 0x0A, 0x32, 0x02, 0x21, 0x44, 0x00, 0x00, 0x01,
+                (byte) 0x93, 0x00, 0x00, 0x67 };
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData);
+
+        assertEquals(events.size(), 1);
+
+        ZWaveMeterValueEvent event = (ZWaveMeterValueEvent) events.get(0);
+
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_METER);
+        assertEquals(0, event.getEndpoint());
+        assertEquals(ZWaveMeterCommandClass.MeterScale.E_KWh, event.getMeterScale());
+        assertEquals(ZWaveMeterCommandClass.MeterType.ELECTRIC, event.getMeterType());
+        assertEquals(new BigDecimal("4.03"), event.getValue());
+    }
+
+    @Test
+    public void Meter_Electric_PAN04_Error() {
+        // Command has invalid length - only 3 bytes of data when says it has 4
+        byte[] packetData = { 0x01, 0x10, 0x00, 0x04, 0x10, 0x46, 0x07, 0x32, 0x02, 0x21, 0x44, 0x00, 0x00, 0x01,
+                (byte) 0xee };
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData);
+
+        assertEquals(events.size(), 0);
+    }
+
 }
