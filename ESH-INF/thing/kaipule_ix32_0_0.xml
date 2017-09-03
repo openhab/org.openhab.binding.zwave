@@ -37,7 +37,24 @@
       <property name="manufacturerId">0214</property>
       <property name="manufacturerRef">0003:0002</property>
       <property name="dbReference">667</property>
+      <property name="defaultAssociations">1</property>
     </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Lifeline</label>
+        <description>Send "notification_Report" to the device in Life line group</description>
+      </parameter>
+
+    </config-description>
 
   </thing-type>
 
