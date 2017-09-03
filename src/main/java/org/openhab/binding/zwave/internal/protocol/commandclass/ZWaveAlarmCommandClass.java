@@ -115,6 +115,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         int notificationEvent = 0;
         int notificationStatus = 0;
         int notificationTypeCode = 0;
+        int[] parameters = null;
 
         AlarmType alarmType;
         ReportType eventType;
@@ -137,6 +138,13 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
             int parameterLength = payload.getPayloadByte(8) & 0x1f;
             boolean containsSequence = (payload.getPayloadByte(8) & 0x80) != 0;
 
+            if (parameterLength != 0) {
+                parameters = new int[parameterLength];
+                for (int cnt = 0; cnt < parameterLength; cnt++) {
+                    parameters[cnt] = payload.getPayloadByte(9 + cnt);
+                }
+            }
+
             logger.debug("NODE {}: NOTIFICATION report - {} = {}, event={}, status={}, plen={}", getNode().getNodeId(),
                     v1AlarmTypeCode, v1AlarmLevel, notificationEvent, notificationStatus, parameterLength);
         }
@@ -153,9 +161,13 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
 
         logger.debug("NODE {}: Alarm Type = {} ({})", getNode().getNodeId(), alarmType, v1AlarmTypeCode);
 
-        ZWaveAlarmValueEvent zEvent = new ZWaveAlarmValueEvent(getNode().getNodeId(), endpoint, eventType, alarmType,
+        ZWaveAlarmValueEvent event = new ZWaveAlarmValueEvent(getNode().getNodeId(), endpoint, eventType, alarmType,
                 v1AlarmTypeCode, notificationEvent, notificationStatus);
-        getController().notifyEventListeners(zEvent);
+        if (parameters != null) {
+            event.setParameters(parameters);
+        }
+
+        getController().notifyEventListeners(event);
 
         dynamicDone = true;
     }
@@ -495,6 +507,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         private int alarmEvent;
         private int alarmStatus;
         private int v1AlarmCode;
+        private int[] parameters;
 
         /**
          * Constructor. Creates a instance of the ZWaveAlarmValueEvent class.
@@ -515,6 +528,14 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
             this.alarmEvent = alarmEvent;
             this.alarmStatus = alarmStatus;
             this.v1AlarmCode = v1AlarmCode;
+        }
+
+        public void setParameters(int[] parameters) {
+            this.parameters = parameters;
+        }
+
+        public int[] getParameters() {
+            return parameters;
         }
 
         /**
