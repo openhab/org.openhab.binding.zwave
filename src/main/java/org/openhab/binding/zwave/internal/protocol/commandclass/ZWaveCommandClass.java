@@ -247,9 +247,9 @@ public abstract class ZWaveCommandClass {
         } catch (InvocationTargetException e) {
             // Handle exceptions from the command class processing
             if (e.getCause() instanceof ArrayIndexOutOfBoundsException) {
-                logger.debug("NODE {}: ArrayIndexOutOfBoundsException {} V{} {} {}", getNode().getNodeId(),
+                logger.debug("NODE {}: ArrayIndexOutOfBoundsException {} V{} {} {}: {}", getNode().getNodeId(),
                         getCommandClass(), getVersion(), commands.get(payload.getCommandClassCommand()).name,
-                        SerialMessage.bb2hex(payload.getPayloadBuffer()));
+                        SerialMessage.bb2hex(payload.getPayloadBuffer()), e.getMessage());
             }
         } catch (IllegalAccessException | IllegalArgumentException e) {
             e.printStackTrace();
@@ -323,9 +323,8 @@ public abstract class ZWaveCommandClass {
         int precision = (payload.getPayloadByte(offset) & PRECISION_MASK) >> PRECISION_SHIFT;
 
         if ((size + offset) >= payload.getPayloadLength()) {
-            logger.error("Error extracting value - length={}, offset={}, size={}.", payload.getPayloadLength(), offset,
-                    size);
-            throw new NumberFormatException();
+            throw new NumberFormatException("Error extracting value - length=" + payload.getPayloadLength()
+                    + ", offset=" + offset + ", size=" + size + ".");
         }
 
         int value = 0;

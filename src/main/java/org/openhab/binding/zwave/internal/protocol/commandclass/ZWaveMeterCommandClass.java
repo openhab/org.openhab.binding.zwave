@@ -139,7 +139,7 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
                     value);
             getController().notifyEventListeners(event);
         } catch (NumberFormatException e) {
-            logger.error("NODE {}: Meter Value Error {}", getNode().getNodeId(), e);
+            logger.error("NODE {}: Meter Value Error. {}", getNode().getNodeId(), e.getMessage());
             return;
         }
 
