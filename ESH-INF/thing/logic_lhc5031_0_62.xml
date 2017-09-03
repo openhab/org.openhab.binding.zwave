@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="logic_lhc5031_00_062" listed="false">
+    <label>LHC5031 DIN Mount Multiple Actuator Controller for Floor Heating</label>
+    <description>DIN Mount Multiple Actuator Controller for Floor Heating</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary1" typeId="switch_binary">
+        <label>Switch 1</label>
+        <properties>
+          <property name="binding:*:OnOffType">SWITCH_BINARY:1</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary2" typeId="switch_binary">
+        <label>Switch 2</label>
+        <properties>
+          <property name="binding:*:OnOffType">SWITCH_BINARY:2</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary3" typeId="switch_binary">
+        <label>Switch 3</label>
+        <properties>
+          <property name="binding:*:OnOffType">SWITCH_BINARY:3</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary4" typeId="switch_binary">
+        <label>Switch 4</label>
+        <properties>
+          <property name="binding:*:OnOffType">SWITCH_BINARY:4</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary5" typeId="switch_binary">
+        <label>Switch 5</label>
+        <properties>
+          <property name="binding:*:OnOffType">SWITCH_BINARY:5</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary6" typeId="switch_binary">
+        <label>Switch 6</label>
+        <properties>
+          <property name="binding:*:OnOffType">SWITCH_BINARY:6</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary7" typeId="switch_binary">
+        <label>Switch 7</label>
+        <properties>
+          <property name="binding:*:OnOffType">SWITCH_BINARY:7</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary8" typeId="switch_binary">
+        <label>Switch 8</label>
+        <properties>
+          <property name="binding:*:OnOffType">SWITCH_BINARY:8</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary9" typeId="switch_binary">
+        <label>Switch 9</label>
+        <properties>
+          <property name="binding:*:OnOffType">SWITCH_BINARY:9</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary10" typeId="switch_binary">
+        <label>Switch 10</label>
+        <properties>
+          <property name="binding:*:OnOffType">SWITCH_BINARY:10</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature11" typeId="sensor_temperature">
+        <label>Sensor (temperature) 11</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:11;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature12" typeId="sensor_temperature">
+        <label>Sensor (temperature) 12</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:12;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature13" typeId="sensor_temperature">
+        <label>Sensor (temperature) 13</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:13;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature14" typeId="sensor_temperature">
+        <label>Sensor (temperature) 14</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:14;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Logic Home Control</property>
+      <property name="modelId">LHC5031</property>
+      <property name="manufacturerId">0234</property>
+      <property name="manufacturerRef">0003:0111</property>
+      <property name="versionMin">0.62</property>
+      <property name="dbReference">673</property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: Status LED</label>
+        <description><![CDATA[
+Configuration of the status LED<br /><h1>Overview</h1><p>0 = LED turned OFF, 1 = LED turned ON, 2 = LED flashing at 1 second intervals, 3 = LED flashing at 0.5 second intervals</p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">LED turned OFF</option>
+          <option value="1">LED turned ON</option>
+          <option value="2">LED flashing at 1 sec interval</option>
+          <option value="3">LED flashing at 1/2 sec interval</option>
+        </options>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration"
+                 min="0" max="100">
+        <label>2: Status LED brightness level</label>
+        <description>Configure the percentage of light in the status LED, when the LED is turned on.</description>
+        <default>50</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration">
+        <label>3: Thermistor type connected to input 1</label>
+        <description>This parameter decides which kind of thermistor is connected to the input</description>
+        <default>0</default>
+        <options>
+          <option value="0">No thermistor, input is disabled</option>
+          <option value="1">10K NTC (Part number: TT02-10KC3-93D-3000R-TPH)</option>
+        </options>
+        <advanced>true</advanced>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Group 1/1</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>
