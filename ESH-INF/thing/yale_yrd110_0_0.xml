@@ -17,6 +17,30 @@
           <property name="binding:*:OnOffType">COMMAND_CLASS_DOOR_LOCK</property>
         </properties>
       </channel>
+      <channel id="alarm_access" typeId="alarm_access">
+        <label>Alarm (access)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
+        </properties>
+      </channel>
+      <channel id="alarm_power" typeId="alarm_power">
+        <label>Alarm (power)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="alarm_number" typeId="alarm_number">
+        <label>Alarm (number)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_ALARM</property>
+        </properties>
+      </channel>
+      <channel id="time_offset" typeId="time_offset">
+        <label>Clock Time Offset</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_TIME_PARAMETERS</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->

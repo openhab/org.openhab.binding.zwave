@@ -16,7 +16,7 @@ Door and Window Sensor<br /><h1>Overview</h1><p>Unit is labeled with HKZW-DWS01
       <channel id="sensor_binary" typeId="sensor_binary">
         <label>Binary Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="alarm_access" typeId="alarm_access">
