@@ -24,6 +24,12 @@
           <property name="binding:*:OnOffType">ALARM;type=POWER_MANAGEMENT</property>
         </properties>
       </channel>
+      <channel id="config_decimal_param5" typeId="everspring_ad146_00_000_config_decimal_param5">
+        <label>Dimmer mode</label>
+        <properties>
+          <property name="binding:*:DecimalType">CONFIGURATION;parameter=5</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
@@ -107,5 +113,16 @@
     </config-description>
 
   </thing-type>
+
+  <channel-type id="everspring_ad146_00_000_config_decimal_param5">
+    <item-type>Number</item-type>
+    <label>Dimmer mode</label>
+    <state pattern="%s">
+      <options>
+        <option value="0">Dimming</option>
+	<option value="1">On/Off</option>
+      </options>
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>
