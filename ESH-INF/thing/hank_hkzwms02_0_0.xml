@@ -5,28 +5,14 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="hank_dws01_00_000" listed="false">
-    <label>DWS01 Door and Window Sensor</label>
-    <description><![CDATA[
-Door and Window Sensor<br /><h1>Overview</h1><p>Unit is labeled with HKZW-DWS01</p> <p>But, also sold as "MONOPRICE Door and Window Sensor P/N 24259"</p>
-    ]]></description>
+  <thing-type id="hank_hkzwms02_00_000" listed="false">
+    <label>HKZW_MS02 Hank Motion Sensor</label>
+    <description>Hank Motion Sensor</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Binary Sensor</label>
-        <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY,BASIC</property>
-        </properties>
-      </channel>
-      <channel id="sensor_door" typeId="sensor_door">
-        <label>Door sensor</label>
-        <properties>
-          <property name="binding:*:OpenClosedType">ALARM;type=ACCESS_CONTROL</property>
-        </properties>
-      </channel>
-      <channel id="alarm_tamper" typeId="alarm_tamper">
-        <label>Tamper alarm</label>
+      <channel id="alarm_burglar" typeId="alarm_burglar">
+        <label>Alarm (burglar)</label>
         <properties>
           <property name="binding:*:OnOffType">ALARM;type=BURGLAR</property>
         </properties>
@@ -41,11 +27,12 @@ Door and Window Sensor<br /><h1>Overview</h1><p>Unit is labeled with HKZW-DWS01
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Hank</property>
-      <property name="modelId">DWS01</property>
+      <property name="modelId">HKZW_MS02</property>
       <property name="manufacturerId">0208</property>
-      <property name="manufacturerRef">0201:0008</property>
-      <property name="dbReference">663</property>
-      <property name="defaultAssociations">1</property>
+      <property name="manufacturerRef">0201:0012</property>
+      <property name="dbReference">676</property>
+      <property name="commandClass:ASSOCIATION">14</property>
+      <property name="defaultAssociations">1,2</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -57,30 +44,50 @@ Door and Window Sensor<br /><h1>Overview</h1><p>Unit is labeled with HKZW-DWS01
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter name="config_12_1" type="integer" groupName="configuration">
+        <label>12: Motion Sensor`s Sensitivity</label>
+        <description>The higher the value,the more sensitive the PIR sensor</description>
+        <default>8</default>
+        <options>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </options>
+      </parameter>
+
       <parameter name="config_14_1" type="integer" groupName="configuration">
-        <label>14: Enable / disable BASIC SET</label>
-        <description>Enable basic set reporting to group 2</description>
+        <label>14: Enable/Disable Basic Set Command</label>
+        <description>The motion Sensor can reverse its value of BASIC SET when motion is triggered</description>
         <default>0</default>
         <options>
-          <option value="0">Disable BASIC SET</option>
-          <option value="1">Enable basic set</option>
+          <option value="0">Disable</option>
+          <option value="1">enable</option>
         </options>
       </parameter>
 
       <parameter name="config_15_1" type="integer" groupName="configuration">
-        <label>15: Value of BASIC SET</label>
-        <description>Value to send for BASIC SET</description>
+        <label>15: value of basic set command</label>
+        <description>assigned to send Basic Set Command</description>
         <default>0</default>
         <options>
-          <option value="0">Send 255 when open</option>
-          <option value="1">Send 0 when open</option>
+          <option value="0">send 255</option>
+          <option value="1">send 0</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_17_1" type="integer" groupName="configuration">
+        <label>17: enable/disable shock alarm</label>
+        <default>0</default>
+        <options>
+          <option value="0">Disable</option>
+          <option value="1">enable</option>
         </options>
       </parameter>
 
       <parameter name="config_32_1" type="integer" groupName="configuration"
                  min="10" max="50">
-        <label>32: Level for Low Battery Alarm</label>
-        <description>Adjust the percent of battery left before a low battery level alarm is sent</description>
+        <label>32: Level of low battery</label>
+        <description>Define a battery level ad the "low battery"</description>
         <default>20</default>
       </parameter>
 
@@ -91,18 +98,12 @@ Door and Window Sensor<br /><h1>Overview</h1><p>Unit is labeled with HKZW-DWS01
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Group 1</label>
-        <description><![CDATA[
-Association Group 1<br /><h1>Overview</h1> <ul><li> <p>Group 1 reports the status of the Door/Window Sensor, the battery level, and the tamper button status. </p> </li> </ul>
-        ]]></description>
+        <label>1: report the motion detection and battery level</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Group 2</label>
-        <description><![CDATA[
-Association Group 2<br /><h1>Overview</h1> <ul><li> <p>Group 2 is assigned to the Door/Window Sensor BASIC SET command. </p> </li> </ul>
-        ]]></description>
+        <label>2: assigned to send BASIC SET command</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
