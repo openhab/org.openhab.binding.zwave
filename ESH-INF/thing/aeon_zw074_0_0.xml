@@ -113,21 +113,22 @@
 
       <parameter name="config_41_2" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>41: Threshold change in temperature to induce an automatic report.</label>
+        <label>41: Threshold for changes in temperature to trigger a report.</label>
         <description>1. When the unit is Celsius, threshold=Value. 2. When the unit is Fahrenheit, threshold=Value*1.8. The accuracy is 0.1. 3. The high byte is the part of integer, the low byte is the fractional part.</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_42_2" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>42: Threshold change in humidity to induce an automatic report.</label>
+        <label>42: Threshold for change in humidity to trigger a report.</label>
         <description>The accuracy is 0.1. The high byte is the part of integer, the low byte is the fractional part.</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_43_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
-        <label>43: Threshold change in luminance to induce an automatic report.</label>
+                 min="0" max="1000">
+        <label>43: luminance report threshold</label>
+        <description>Threshold for changes in luminance to trigger a report. Note the sensor range is just 1-1000 lux !</description>
         <default>0</default>
       </parameter>
 

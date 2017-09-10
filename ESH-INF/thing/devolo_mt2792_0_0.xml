@@ -65,6 +65,12 @@
           <property name="binding:*:DecimalType">METER;type=E_Pulses</property>
         </properties>
       </channel>
+      <channel id="meter_reset" typeId="meter_reset">
+        <label>Reset Meter</label>
+        <properties>
+          <property name="binding:*:OnOffType">METER;reset=true</property>
+        </properties>
+      </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
         <properties>
