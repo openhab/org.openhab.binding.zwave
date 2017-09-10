@@ -50,7 +50,7 @@ CO2 Monitor Air quality detector<br /><h1>Overview</h1><p>MCOHome CO2 Monitor is
       <property name="vendor">McoHome Technology Co., Ltd</property>
       <property name="modelId">MH9-CO2-WD</property>
       <property name="manufacturerId">015F</property>
-      <property name="manufacturerRef">0905:0201</property>
+      <property name="manufacturerRef">0901:3102,0905:0201</property>
       <property name="dbReference">455</property>
       <property name="defaultAssociations">2</property>
     </properties>
