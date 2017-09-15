@@ -16,7 +16,7 @@ Smart Color Button<br /><h2>Wakeup Information</h2><p>By default, this device on
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_BASIC</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">

@@ -97,16 +97,16 @@
         ]]></description>
         <default>9</default>
         <options>
-          <option value="1">Door bell</option>
-          <option value="2">Classical tune</option>
-          <option value="3">Slow 4 note tune</option>
-          <option value="4">Two chimes with pause in-between</option>
-          <option value="5">Complex upbeat tune</option>
-          <option value="6">Another upbeat classical tune</option>
-          <option value="7">Loud emergency siren</option>
-          <option value="8">Loud emergency horn</option>
-          <option value="9">Medium-pitch fast beeping (Default)</option>
-          <option value="10">Medium pitch slow beeping</option>
+          <option value="1">Ding dong</option>
+          <option value="2">Fur Elise</option>
+          <option value="3">Westminster Chime</option>
+          <option value="4">Dingdongdingdongdingdong</option>
+          <option value="5">William Tell Overture</option>
+          <option value="6">Classical</option>
+          <option value="7">Weeooeeooeeooeeoo</option>
+          <option value="8">Err-err-err-err-err</option>
+          <option value="9">Beepbeepbeepbeep (Default)</option>
+          <option value="10">beeeep-beeeep-beeeep</option>
         </options>
       </parameter>
 
@@ -114,16 +114,16 @@
         <label>6: Secondary Notification Sound</label>
         <default>9</default>
         <options>
-          <option value="1">Door bell</option>
-          <option value="2">Classical tune</option>
-          <option value="3">Slow 4 note tune</option>
-          <option value="4">Two chimes with pause in-between</option>
-          <option value="5">Complex upbeat tune</option>
-          <option value="6">Another upbeat classical tune</option>
-          <option value="7">Loud emergency siren</option>
-          <option value="8">Loud emergency horn</option>
-          <option value="9">Medium-pitch fast beeping</option>
-          <option value="10">Medium pitch slow beeping (Default)</option>
+          <option value="1">Ding dong</option>
+          <option value="2">Fur Elise</option>
+          <option value="3">Westminster Chime</option>
+          <option value="4">Dingdongdingdongdingdong</option>
+          <option value="5">William Tell Overture</option>
+          <option value="6">Classical</option>
+          <option value="7">Weeooeeooeeooeeoo</option>
+          <option value="8">Err-err-err-err-err</option>
+          <option value="9">Beepbeepbeepbeep (Default)</option>
+          <option value="10">beeeep-beeeep-beeeep</option>
         </options>
       </parameter>
 

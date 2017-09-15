@@ -5,7 +5,7 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="fibaro_fgcc001_00_000" listed="false">
+  <thing-type id="fibaro_fggc001_00_000" listed="false">
     <label>FGGC001 Fibaro Swipe Scene Controller</label>
     <description>Fibaro Swipe Scene Controller</description>
 
@@ -29,7 +29,7 @@
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGGC001</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0D01:1000,0D01:3000</property>
+      <property name="manufacturerRef">0D01:1000,0D01:2000,0D01:3000</property>
       <property name="dbReference">349</property>
       <property name="defaultAssociations">1</property>
     </properties>

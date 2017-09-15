@@ -5,8 +5,8 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="benext_benextalarmsound_00_000" listed="false">
-    <label>BeNext Alarm Sound Alarm sound</label>
+  <thing-type id="benext_alarmsound_00_000" listed="false">
+    <label>Alarm Sound Alarm sound</label>
     <description>Alarm sound</description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -28,7 +28,7 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">BeNext</property>
-      <property name="modelId">BeNext Alarm Sound</property>
+      <property name="modelId">Alarm Sound</property>
       <property name="manufacturerId">008A</property>
       <property name="manufacturerRef">0005:0101</property>
       <property name="dbReference">443</property>
