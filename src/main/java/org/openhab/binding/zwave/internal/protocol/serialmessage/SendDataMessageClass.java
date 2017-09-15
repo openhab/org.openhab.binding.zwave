@@ -35,14 +35,14 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.trace("Handle Message Send Data Response");
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
-            logger.debug("NODE {}: Sent Data successfully placed on stack.", transaction.getNodeId());
+            logger.debug("NODE {}: sentData successfully placed on stack.", transaction.getNodeId());
 
             // This response is our controller ACK
             // lastSentMessage.setAckRecieved();
         } else {
-            // This is an error. This means that the transaction is complete!
+            // The packet was not accepted! It should be retried.
             // Set the flag, and return false.
-            logger.error("NODE {}: Sent Data was not placed on stack.", transaction.getNodeId());
+            logger.debug("NODE {}: sentData was not placed on stack.", transaction.getNodeId());
 
             // We ought to cancel the transaction
             transaction.setTransactionCanceled();
@@ -73,7 +73,7 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
 
         ZWaveNode node = zController.getNode(transaction.getNodeId());
         if (node == null) {
-            logger.warn("Node {} not found!", transaction.getNodeId());
+            logger.debug("Node {} not found!", transaction.getNodeId());
             return false;
         }
 

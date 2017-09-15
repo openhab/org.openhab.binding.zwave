@@ -1117,15 +1117,12 @@ public class ZWaveNode {
 
         boolean securityDecapOk = false;
 
-        // Get the first command class
-        int commandClassCode = payload.getCommandClassId();
-        int commandCode = payload.getCommandClassCommand();
-        if (commandClassCode == CommandClass.COMMAND_CLASS_TRANSPORT_SERVICE.getKey()) {
+        if (payload.getCommandClassId() == CommandClass.COMMAND_CLASS_TRANSPORT_SERVICE.getKey()) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_TRANSPORT_SERVICE", getNodeId());
 
-        } else if (commandClassCode == CommandClass.COMMAND_CLASS_SECURITY.getKey()
-                && (commandCode == CommandClassSecurityV1.SECURITY_MESSAGE_ENCAPSULATION
-                        || commandCode == CommandClassSecurityV1.SECURITY_MESSAGE_ENCAPSULATION_NONCE_GET)) {
+        } else if (payload.getCommandClassId() == CommandClass.COMMAND_CLASS_SECURITY.getKey()
+                && (payload.getCommandClassCommand() == CommandClassSecurityV1.SECURITY_MESSAGE_ENCAPSULATION || payload
+                        .getCommandClassCommand() == CommandClassSecurityV1.SECURITY_MESSAGE_ENCAPSULATION_NONCE_GET)) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_SECURITY", getNodeId());
 
             if (endpoints.get(0) == null) {
@@ -1158,7 +1155,8 @@ public class ZWaveNode {
             payload = new ZWaveCommandClassPayload(cleartextData);
 
             securityDecapOk = true;
-        } else if (commandClassCode == CommandClass.COMMAND_CLASS_CRC_16_ENCAP.getKey() && commandCode == 1) {
+        } else if (payload.getCommandClassId() == CommandClass.COMMAND_CLASS_CRC_16_ENCAP.getKey()
+                && payload.getCommandClassCommand() == 1) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_CRC_16_ENCAP", getNodeId());
 
             if (endpoints.get(0) == null) {
@@ -1182,8 +1180,8 @@ public class ZWaveNode {
         int endpointNumber = 0;
         int instanceNumber = 0;
 
-        if (commandClassCode == CommandClass.COMMAND_CLASS_MULTI_CHANNEL.getKey()
-                && (commandCode == 6 || commandCode == 13)) {
+        if (payload.getCommandClassId() == CommandClass.COMMAND_CLASS_MULTI_CHANNEL.getKey()
+                && (payload.getCommandClassCommand() == 6 || payload.getCommandClassCommand() == 13)) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_MULTI_CHANNEL", getNodeId());
 
             if (endpoints.get(0) == null) {
@@ -1197,25 +1195,25 @@ public class ZWaveNode {
                 return null;
             }
 
-            if (commandCode == 6) {
+            if (payload.getCommandClassCommand() == 6) {
                 // MULTI_INSTANCE_ENCAP
                 instanceNumber = payload.getPayloadByte(1);
 
                 payload = new ZWaveCommandClassPayload(payload, 3);
-            } else if (commandCode == 13) {
+            } else if (payload.getCommandClassCommand() == 13) {
                 // MULTI_CHANNEL_ENCAP
                 endpointNumber = multichannelCommandClass.getSourceEndpoint(payload);
                 payload = new ZWaveCommandClassPayload(payload, 4);
             }
         }
 
-        if (commandClassCode == CommandClass.COMMAND_CLASS_SUPERVISION.getKey()) {
+        if (payload.getCommandClassId() == CommandClass.COMMAND_CLASS_SUPERVISION.getKey()) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_SUPERVISION", getNodeId());
         }
 
         List<ZWaveCommandClassPayload> commands = new ArrayList<ZWaveCommandClassPayload>();
 
-        if (commandClassCode == CommandClass.COMMAND_CLASS_MULTI_CMD.getKey()) {
+        if (payload.getCommandClassId() == CommandClass.COMMAND_CLASS_MULTI_CMD.getKey()) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_MULTI_CMD", getNodeId());
 
             if (endpoints.get(0) == null) {
@@ -1242,7 +1240,8 @@ public class ZWaveNode {
         for (ZWaveCommandClassPayload command : commands) {
             CommandClass commandClass = CommandClass.getCommandClass(command.getCommandClassId());
             if (commandClass == null) {
-                logger.debug(String.format("NODE %d: Unknown command class 0x%02x", getNodeId(), commandClassCode));
+                logger.debug(String.format("NODE %d: Unknown command class 0x%02x", getNodeId(),
+                        payload.getCommandClassId()));
                 continue;
             }
 
@@ -1260,8 +1259,8 @@ public class ZWaveNode {
 
                 if (zwaveCommandClass == null) {
                     // We got an unsupported command class, leave zwaveCommandClass as null
-                    logger.debug(String.format("NODE %d: Unsupported zwave command class %s (0x%02x)", getNodeId(),
-                            commandClass, commandClassCode));
+                    logger.debug(String.format("NODE %d: Unsupported Z-Wave command class %s (0x%02x)", getNodeId(),
+                            commandClass, payload.getCommandClassId()));
                     continue;
                 }
 
@@ -1302,7 +1301,7 @@ public class ZWaveNode {
     /**
      * Returns the number of nanoseconds since the device was included, or Long.MAX_VALUE if the device has not recently
      * been included.
-     * 
+     *
      * @return number of nano seconds since inclusion completed
      */
     public long getInclusionTimer() {
