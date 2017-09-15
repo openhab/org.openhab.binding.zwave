@@ -196,7 +196,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
 
         // Create the channels list to simplify processing incoming events
-        // synchronized (thingChannelsState) {
         thingChannelsCmd = new ArrayList<ZWaveThingChannel>();
         thingChannelsState = new ArrayList<ZWaveThingChannel>();
         for (Channel channel : getThing().getChannels()) {
@@ -263,14 +262,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         logger.debug("NODE {}: Initialising cmd channel {} for {}", nodeId, channel.getUID(), dataType);
                     }
 
-                    // First time round, then add the polling class
-                    // TODO: Probably should check for duplicates
-                    // if (first) {
-                    // thingChannelsPoll.add(chan);
-                    // logger.debug("NODE {}: Initialising poll channel {} for {}", nodeId, channel.getUID(),
-                    // dataType);
-                    // }
-
                     // Add the state and polling handlers
                     if ("*".equals(bindingType[1]) || "State".equals(bindingType[1])) {
                         logger.debug("NODE {}: Initialising state channel {} for {}", nodeId, channel.getUID(),
@@ -281,7 +272,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     first = false;
                 }
             }
-            // }
         }
 
         startPolling();
@@ -364,28 +354,10 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
      * @param initialPeriod time to start in milliseconds
      */
     private void startPolling(long initialPeriod) {
-        if (pollingJob != null) {
-            pollingJob.cancel(true);
-            pollingJob = null;
-        }
-
-        if (pollingPeriod < POLLING_PERIOD_MIN) {
-            logger.debug("NODE {}: Polling period was set below minimum value. Using minimum.", nodeId);
-
-            pollingPeriod = POLLING_PERIOD_MIN;
-        }
-
-        if (pollingPeriod > POLLING_PERIOD_MAX) {
-            logger.debug("NODE {}: Polling period was set above maximum value. Using maximum.", nodeId);
-
-            pollingPeriod = POLLING_PERIOD_MAX;
-        }
-
         Runnable pollingRunnable = new Runnable() {
             @Override
             public void run() {
                 try {
-                    // TODO: If/when this code changes, we should only poll channels that are linked.
                     logger.debug("NODE {}: Polling...", nodeId);
                     ZWaveNode node = controllerHandler.getNode(nodeId);
                     if (node == null || node.isInitializationComplete() == false) {
@@ -434,10 +406,29 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             }
         };
 
-        pollingJob = scheduler.scheduleAtFixedRate(pollingRunnable, initialPeriod, pollingPeriod * 1000,
-                TimeUnit.MILLISECONDS);
-        logger.debug("NODE {}: Polling intialised at {} seconds - start in {} milliseconds.", nodeId, pollingPeriod,
-                initialPeriod);
+        synchronized (pollingJob) {
+            if (pollingJob != null) {
+                pollingJob.cancel(true);
+                pollingJob = null;
+            }
+
+            if (pollingPeriod < POLLING_PERIOD_MIN) {
+                logger.debug("NODE {}: Polling period was set below minimum value. Using minimum.", nodeId);
+
+                pollingPeriod = POLLING_PERIOD_MIN;
+            }
+
+            if (pollingPeriod > POLLING_PERIOD_MAX) {
+                logger.debug("NODE {}: Polling period was set above maximum value. Using maximum.", nodeId);
+
+                pollingPeriod = POLLING_PERIOD_MAX;
+            }
+
+            pollingJob = scheduler.scheduleAtFixedRate(pollingRunnable, initialPeriod, pollingPeriod * 1000,
+                    TimeUnit.MILLISECONDS);
+            logger.debug("NODE {}: Polling intialised at {} seconds - start in {} milliseconds.", nodeId, pollingPeriod,
+                    initialPeriod);
+        }
     }
 
     private void startPolling() {
@@ -532,9 +523,11 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             nodeId = 0;
         }
 
-        if (pollingJob != null) {
-            pollingJob.cancel(true);
-            pollingJob = null;
+        synchronized (pollingJob) {
+            if (pollingJob != null) {
+                pollingJob.cancel(true);
+                pollingJob = null;
+            }
         }
 
         controllerHandler = null;
@@ -1370,9 +1363,11 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     updateStatus(ThingStatus.REMOVED, ThingStatusDetail.NONE, "Node was excluded from the controller");
 
                     // Stop polling
-                    if (pollingJob != null) {
-                        pollingJob.cancel(true);
-                        pollingJob = null;
+                    synchronized (pollingJob) {
+                        if (pollingJob != null) {
+                            pollingJob.cancel(true);
+                            pollingJob = null;
+                        }
                     }
                     break;
                 default:
