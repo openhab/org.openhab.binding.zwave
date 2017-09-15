@@ -16,7 +16,7 @@ Door and Window Sensor<br /><h1>Overview</h1><p>Unit is labeled with HKZW-DWS01
       <channel id="sensor_binary" typeId="sensor_binary">
         <label>Binary Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY,BASIC</property>
+          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
         </properties>
       </channel>
       <channel id="sensor_door" typeId="sensor_door">

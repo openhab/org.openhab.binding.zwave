@@ -46,7 +46,7 @@
       <property name="vendor">Hank</property>
       <property name="modelId">RGB bulb</property>
       <property name="manufacturerId">0208</property>
-      <property name="manufacturerRef">0100:0004</property>
+      <property name="manufacturerRef">0100:0004,0101:0004</property>
       <property name="dbReference">598</property>
       <property name="defaultAssociations">1</property>
     </properties>

@@ -14,7 +14,7 @@
       <channel id="alarm_burglar" typeId="alarm_burglar">
         <label>Alarm (burglar)</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=BURGLAR</property>
+          <property name="binding:*:OnOffType">ALARM,BASIC;type=BURGLAR</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -70,8 +70,8 @@
         <description>assigned to send Basic Set Command</description>
         <default>0</default>
         <options>
-          <option value="0">send 255</option>
-          <option value="1">send 0</option>
+          <option value="0">Disable</option>
+          <option value="1">Enable</option>
         </options>
       </parameter>
 

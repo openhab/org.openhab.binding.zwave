@@ -118,8 +118,8 @@ Prevents setpoint changes at thermostat.<br /><h1>Overview</h1><p>If set to 0, t
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">Utility lock disable</option>
-          <option value="1">Utility lock enable</option>
+          <option value="0">Utility lock disabled</option>
+          <option value="1">Utility lock enabled</option>
         </options>
       </parameter>
 
