@@ -130,7 +130,7 @@ Configure the state of the LED<br /><h1>Overview</h1><p>Configure the state of L
       </parameter>
 
       <parameter name="config_83_3" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="0" max="16777215">
         <label>83: Color in night light mode</label>
         <default>0</default>
         <advanced>true</advanced>
@@ -164,7 +164,7 @@ Configure the RGB value when it is in Night light mode<br /><h1>Overview</h1><p>
       </parameter>
 
       <parameter name="config_84_3" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="0" max="16777215">
         <label>84: Color in energy mode</label>
         <default>0</default>
         <advanced>true</advanced>

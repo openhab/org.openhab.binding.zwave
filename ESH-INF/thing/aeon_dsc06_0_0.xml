@@ -144,21 +144,21 @@ Minimum change in wattage % to trigger event<br /><h1>Overview</h1><p>The value 
       </parameter>
 
       <parameter name="config_111_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="1" max="65535">
         <label>111: Interval Group 1</label>
         <description>The time interval (in seconds) for sending report to Group 1</description>
         <default>600</default>
       </parameter>
 
       <parameter name="config_112_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="1" max="65535">
         <label>112: Interval Group 2</label>
         <description>The time interval (in seconds) for sending report to Group 2</description>
         <default>600</default>
       </parameter>
 
       <parameter name="config_113_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="1" max="65535">
         <label>113: Interval Group 3</label>
         <description>The time interval (in seconds) for sending report to Group 3</description>
         <default>600</default>

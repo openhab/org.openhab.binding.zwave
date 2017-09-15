@@ -5,9 +5,9 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="fakro_zwmp_00_000" listed="false">
-    <label>ZWMP Weather Module</label>
-    <description>Weather Module</description>
+  <thing-type id="isurpass_dx1wl_00_000" listed="false">
+    <label>DX1WL-Z Domux Water Leakage Sensor</label>
+    <description>Domux Water Leakage Sensor</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -15,11 +15,11 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Fakro</property>
-      <property name="modelId">ZWMP</property>
-      <property name="manufacturerId">0085</property>
-      <property name="manufacturerRef">0007:0001</property>
-      <property name="dbReference">636</property>
+      <property name="vendor">Shenzhen iSurpass Technology Co. ,Ltd</property>
+      <property name="modelId">DX1WL-Z</property>
+      <property name="manufacturerId">021C</property>
+      <property name="manufacturerRef">8004:1000</property>
+      <property name="dbReference">659</property>
     </properties>
 
   </thing-type>
