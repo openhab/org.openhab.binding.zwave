@@ -6,9 +6,9 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="enerwave_zw15sm_00_000" listed="false">
-    <label>ZW15SM-PLUS Enerwave ZW15SM-PLUS Binary Switch + Meter</label>
+    <label>ZW15SM Binary Switch + Meter</label>
     <description><![CDATA[
-Enerwave ZW15SM-PLUS Binary Switch + Meter<br /><h2>Inclusion Information</h2><p>The process of "Inclusion/ Exclusion" is to Add or Remove the device from the Hub. All Z-Wave devices must be "Included" on the Controller (Hub) before it can be controlled from a smart device. The Hub should be brought physically closer to the device just for the "Inclusion" process (recommended within 10ft). When finished, the Hub and device can be moved back to final installation location. </p> <ol><li>Go to the "Add Device" page.</li> <li>Select "Include Device".</li> <li>When prompted, press the "ON" or "OFF" Button on the switch</li> </ol><br /><h2>Exclusion Information</h2><ol><li>From the Control Panel, go the the device Exclusion page.</li> <li>Select "Exclude Device".</li> <li>When prompted, press the "ON" or "OFF" Button on the switch.</li> </ol>
+Binary Switch + Meter<br /><h2>Inclusion Information</h2><p>The process of "Inclusion/ Exclusion" is to Add or Remove the device from the Hub. All Z-Wave devices must be "Included" on the Controller (Hub) before it can be controlled from a smart device. The Hub should be brought physically closer to the device just for the "Inclusion" process (recommended within 10ft). When finished, the Hub and device can be moved back to final installation location. </p> <ol><li>Go to the "Add Device" page.</li> <li>Select "Include Device".</li> <li>When prompted, press the "ON" or "OFF" Button on the switch</li> </ol><br /><h2>Exclusion Information</h2><ol><li>From the Control Panel, go the the device Exclusion page.</li> <li>Select "Exclude Device".</li> <li>When prompted, press the "ON" or "OFF" Button on the switch.</li> </ol>
     ]]></description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -36,7 +36,7 @@ Enerwave ZW15SM-PLUS Binary Switch + Meter<br /><h2>Inclusion Information</h2><p
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Wenzhou MTLC Electric Appliances Co.,Ltd.</property>
-      <property name="modelId">ZW15SM-PLUS</property>
+      <property name="modelId">ZW15SM</property>
       <property name="manufacturerId">011A</property>
       <property name="manufacturerRef">0111:0102</property>
       <property name="dbReference">640</property>
@@ -60,6 +60,58 @@ Enerwave ZW15SM-PLUS Binary Switch + Meter<br /><h2>Inclusion Information</h2><p
           <option value="0">Power on, LED off</option>
           <option value="1">Power on, LED on</option>
         </options>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration"
+                 min="0" max="1">
+        <label>2: Button Toggle</label>
+        <description>Configure button toggle</description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_8_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>8: Instant Energy Autosend Interval (METER_REPORT)</label>
+        <description><![CDATA[
+Instant Energy Autosend Interval (METER_REPORT)<br /><h1>Overview</h1><p>Send METER_REPORT at this interval</p> <p>0 means to not send</p>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_9_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>9: Instant Energy Autosend Interval (SENSOR_MULTILEVEL_REPORT)</label>
+        <description><![CDATA[
+Instant Energy Autosend Interval (SENSOR_MULTILEVEL_REPORT)<br /><h1>Overview</h1><p>Send SENSOR_MULTILEVEL_REPORT at this interval</p> <p>0 means to not send</p>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_10_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>10: Accumulated Energy Autosend Interval report (METER_REPORT)</label>
+        <description><![CDATA[
+Accumulated Energy Autosend Interval report (METER_REPORT)<br /><h1>Overview</h1><p>Send accumulated METER_REPORT at this interval</p> <p>0 means to not send</p>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_11_1" type="integer" groupName="configuration"
+                 min="0" max="3">
+        <label>11: Power change notification</label>
+        <description><![CDATA[
+Enable automatic notifications whenever there is a wattage change<br /><h1>Overview</h1><p>Enable automatic notifications to associated device whenever there is a wattage change</p> <p>0: No report</p> <p>1: Send METER_REPORT</p> <p>2: Send SENSOR_MULTILEVEL_REPORT</p> <p>3: Send both METER_REPORT and SENSOR_MULTILEVEL_REPORT</p>
+        ]]></description>
+        <default>1</default>
+      </parameter>
+
+      <parameter name="config_12_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>12: Power change notification threshold</label>
+        <description><![CDATA[
+Minimum change in wattage report<br /><h1>Overview</h1><p>When the power changes by this many watts, send an automatic power level notification</p> <p>0: 0.0W<br />....<br />255: 25.5W</p>
+        ]]></description>
+        <default>10</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

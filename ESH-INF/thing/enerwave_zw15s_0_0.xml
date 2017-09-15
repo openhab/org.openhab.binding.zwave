@@ -5,9 +5,9 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="leviton_vrcs2mrx_00_000" listed="false">
-    <label>VRCS2-MRX Vizia RF + 2-Button Scene Controller with Switches</label>
-    <description>Vizia RF + 2-Button Scene Controller with Switches</description>
+  <thing-type id="enerwave_zw15s_00_000" listed="false">
+    <label>ZW15S Binary Switch</label>
+    <description>Binary Switch</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -17,21 +17,15 @@
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
         </properties>
       </channel>
-      <channel id="scene_number" typeId="scene_number">
-        <label>Scene Number</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SCENE_ACTIVATION</property>
-        </properties>
-      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Leviton</property>
-      <property name="modelId">VRCS2-MRX</property>
-      <property name="manufacturerId">001D</property>
-      <property name="manufacturerRef">1102:0243</property>
-      <property name="dbReference">418</property>
+      <property name="vendor">Wenzhou MTLC Electric Appliances Co.,Ltd.</property>
+      <property name="modelId">ZW15S</property>
+      <property name="manufacturerId">011A</property>
+      <property name="manufacturerRef">0101:0102</property>
+      <property name="dbReference">507</property>
     </properties>
 
   </thing-type>

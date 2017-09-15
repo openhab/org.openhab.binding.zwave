@@ -17,6 +17,24 @@
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
         </properties>
       </channel>
+      <channel id="alarm_motion1" typeId="alarm_motion">
+        <label>motion alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_ALARM:1</property>
+        </properties>
+      </channel>
+      <channel id="alarm_general1" typeId="alarm_general">
+        <label>general alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_ALARM:1</property>
+        </properties>
+      </channel>
+      <channel id="sensor_luminance2" typeId="sensor_luminance">
+        <label>ambient light sensor (lux level)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:2</property>
+        </properties>
+      </channel>
       <channel id="switch_binary3" typeId="switch_binary">
         <label>Power Switch</label>
         <properties>
@@ -30,7 +48,7 @@
       <property name="vendor">Steinel</property>
       <property name="modelId">IS140-2</property>
       <property name="manufacturerId">0271</property>
-      <property name="manufacturerRef">6770:0000</property>
+      <property name="manufacturerRef">6770:0000,0002:1A72</property>
       <property name="dbReference">630</property>
       <property name="defaultAssociations">0,1,2,3,4</property>
     </properties>
