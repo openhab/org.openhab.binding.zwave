@@ -45,4 +45,14 @@ public class ZWaveAssociationGroupTest {
         association = new ZWaveAssociation(1, 1);
         assertTrue(group.isAssociated(association));
     }
+
+    @Test
+    public void testIsProfileKnown() {
+        ZWaveAssociationGroup group = new ZWaveAssociationGroup(1);
+        assertFalse(group.isProfileKnown());
+
+        group.setProfile1(0);
+        group.setProfile2(0);
+        assertTrue(group.isProfileKnown());
+    }
 }

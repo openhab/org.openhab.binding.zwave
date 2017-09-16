@@ -304,7 +304,7 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
             if (refresh == true || group.getName() == null) {
                 result.add(getGroupNameMessage(group.getIndex()));
             }
-            if (refresh == true || group.getProfile1() == null) {
+            if (refresh == true || group.isProfileKnown() == false) {
                 result.add(getInfoMessage(group.getIndex()));
             }
             if (refresh == true || group.getCommandClasses() == null) {

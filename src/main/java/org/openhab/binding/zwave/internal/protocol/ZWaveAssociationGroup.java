@@ -195,6 +195,10 @@ public class ZWaveAssociationGroup {
         this.commands = commands;
     }
 
+    public boolean isProfileKnown() {
+        return profile1 != null;
+    }
+
     public Integer getProfile1() {
         if (profile1 == null) {
             // Default profile to General:NA
