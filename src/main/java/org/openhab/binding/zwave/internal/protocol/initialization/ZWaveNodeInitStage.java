@@ -38,6 +38,7 @@ public enum ZWaveNodeInitStage {
     ASSOCIATIONS(false),
     SET_WAKEUP(false),
     SET_ASSOCIATION(false),
+    SET_LIFELINE(false),
     DELETE_SUC_ROUTES(false),
     SUC_ROUTE(false),
     STATIC_END(false),
