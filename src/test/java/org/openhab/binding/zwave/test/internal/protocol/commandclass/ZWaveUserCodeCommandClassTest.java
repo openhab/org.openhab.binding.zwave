@@ -103,4 +103,19 @@ public class ZWaveUserCodeCommandClassTest extends ZWaveCommandClassTest {
         byte msg[] = cls.setUserCode(1, "00 11 22 33 44 55 66").getPayloadBuffer();
         assertTrue(Arrays.equals(msg, expectedResponse));
     }
+
+    @Test
+    public void processUserCodeReportIdUnsigned() {
+        byte[] packetData = { 0x01, 0x14, 0x00, 0x04, 0x10, 0x1C, 0x0E, 0x63, 0x03, (byte) 0x8C, 0x01, (byte) 0x30,
+                (byte) 0x31, (byte) 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x01 };
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData);
+
+        assertEquals(1, events.size());
+        ZWaveUserCodeValueEvent event = (ZWaveUserCodeValueEvent) events.get(0);
+        assertEquals("0123456789", event.getCode());
+        assertEquals(140, event.getId());
+        assertEquals(UserIdStatusType.OCCUPIED, event.getStatus());
+    }
+
 }

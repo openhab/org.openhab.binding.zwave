@@ -280,7 +280,7 @@ public class CommandClassUserCodeV1 {
         Map<String, Object> response = new HashMap<String, Object>();
 
         // Process 'User Identifier'
-        response.put("USER_IDENTIFIER", Integer.valueOf(payload[2]));
+        response.put("USER_IDENTIFIER", Integer.valueOf(payload[2]) & 0xff);
 
         // Process 'User ID Status'
         response.put("USER_ID_STATUS", constantUserIdStatus.get(payload[3] & 0xff));
