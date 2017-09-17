@@ -356,26 +356,24 @@ public class ZWaveNodeInitStageAdvancer {
             return;
         }
 
-        /**
-         * setCurrentStage(ZWaveNodeInitStage.FAILED_CHECK);
-         * do {
-         * processTransaction(new IsFailedNodeMessageClass().doRequest(node.getNodeId()));
-         * if (initRunning == false) {
-         * return;
-         * }
-         *
-         * // If the node is dead, sleep for 30 seconds then try again
-         * if (node.isDead()) {
-         * try {
-         * Thread.sleep(30000);
-         * } catch (InterruptedException e) {
-         * break;
-         * }
-         * } else {
-         * break;
-         * }
-         * } while (true);
-         */
+        setCurrentStage(ZWaveNodeInitStage.FAILED_CHECK);
+        do {
+            processTransaction(new IsFailedNodeMessageClass().doRequest(node.getNodeId()));
+            if (initRunning == false) {
+                return;
+            }
+
+            // If the node is dead, sleep for 30 seconds then try again
+            if (node.isDead()) {
+                try {
+                    Thread.sleep(30000);
+                } catch (InterruptedException e) {
+                    break;
+                }
+            } else {
+                break;
+            }
+        } while (true);
 
         // setCurrentStage(ZWaveNodeInitStage.PING);
         // ZWaveNoOperationCommandClass noOpCommandClass = (ZWaveNoOperationCommandClass) node
