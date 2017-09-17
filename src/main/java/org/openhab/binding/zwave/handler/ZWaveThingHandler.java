@@ -115,6 +115,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     private Map<Integer, ZWaveConfigSubParameter> subParameters = new HashMap<Integer, ZWaveConfigSubParameter>();
     private Map<String, Object> pendingCfg = new HashMap<String, Object>();
 
+    private final Object pollingSync = new Object();
     private ScheduledFuture<?> pollingJob = null;
     private final long POLLING_PERIOD_MIN = 15;
     private final long POLLING_PERIOD_MAX = 86400;
@@ -406,7 +407,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             }
         };
 
-        synchronized (pollingJob) {
+        synchronized (pollingSync) {
             if (pollingJob != null) {
                 pollingJob.cancel(true);
                 pollingJob = null;
@@ -523,7 +524,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             nodeId = 0;
         }
 
-        synchronized (pollingJob) {
+        synchronized (pollingSync) {
             if (pollingJob != null) {
                 pollingJob.cancel(true);
                 pollingJob = null;
@@ -1364,7 +1365,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     updateStatus(ThingStatus.REMOVED, ThingStatusDetail.NONE, "Node was excluded from the controller");
 
                     // Stop polling
-                    synchronized (pollingJob) {
+                    synchronized (pollingSync) {
                         if (pollingJob != null) {
                             pollingJob.cancel(true);
                             pollingJob = null;
