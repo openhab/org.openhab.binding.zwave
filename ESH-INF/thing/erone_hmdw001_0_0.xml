@@ -5,8 +5,8 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="chromagic_sm103_00_000" listed="false">
-    <label>SM103 Door/Window Contact</label>
+  <thing-type id="erone_hmdw001_00_000" listed="false">
+    <label>HM-DW001 Door/Window Contact</label>
     <description>Door/Window Contact</description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -14,13 +14,7 @@
       <channel id="sensor_binary" typeId="sensor_binary">
         <label>Binary Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY,BASIC</property>
-        </properties>
-      </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm</label>
-        <properties>
-          <property name="binding:*:OnOffType">ALARM</property>
+          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -32,11 +26,11 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Chromagic Technologies Corporation</property>
-      <property name="modelId">SM103</property>
-      <property name="manufacturerId">0116</property>
-      <property name="manufacturerRef">0001:0001</property>
-      <property name="dbReference">428</property>
+      <property name="vendor">Erone</property>
+      <property name="modelId">HM-DW001</property>
+      <property name="manufacturerId">006F</property>
+      <property name="manufacturerRef">0102:0001</property>
+      <property name="dbReference">694</property>
       <property name="defaultAssociations">1,2</property>
     </properties>
 
