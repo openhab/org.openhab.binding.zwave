@@ -5,9 +5,11 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="zooz_zen23_00_000" listed="false">
-    <label>ZEN23 Z-Wave Plus On/Off Toggle Switch V1</label>
-    <description>Z-Wave Plus On/Off Toggle Switch V1</description>
+  <thing-type id="merten_508519_00_000" listed="false">
+    <label>508519 Switch Plug</label>
+    <description><![CDATA[
+Switch Plug<br /><h1>Overview</h1><p>Please find user manual of this device under the following link:</p> <p>https://www.merten.de/uploads/tx_seqdownload/V5085_581_01_web.pdf</p>
+    ]]></description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -21,12 +23,11 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Zooz</property>
-      <property name="modelId">ZEN23</property>
-      <property name="manufacturerId">027A</property>
-      <property name="manufacturerRef">1111:1E1C,B111:251C</property>
-      <property name="dbReference">649</property>
-      <property name="defaultAssociations">1</property>
+      <property name="vendor">Merten</property>
+      <property name="modelId">508519</property>
+      <property name="manufacturerId">007A</property>
+      <property name="manufacturerRef">8001:0001</property>
+      <property name="dbReference">58</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -39,7 +40,7 @@
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Group 1</label>
+        <label>1: Other device to be switched?</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
