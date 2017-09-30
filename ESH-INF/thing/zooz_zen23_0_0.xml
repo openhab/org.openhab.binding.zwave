@@ -24,7 +24,7 @@
       <property name="vendor">Zooz</property>
       <property name="modelId">ZEN23</property>
       <property name="manufacturerId">027A</property>
-      <property name="manufacturerRef">1111:1E1C</property>
+      <property name="manufacturerRef">1111:1E1C,B111:251C</property>
       <property name="dbReference">649</property>
       <property name="defaultAssociations">1</property>
     </properties>

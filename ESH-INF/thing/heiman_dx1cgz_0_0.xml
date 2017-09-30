@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="heiman_dx1cgz_00_000" listed="false">
+    <label>DX1CG-Z CH4 Gas Sensor</label>
+    <description>CH4 Gas Sensor</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="alarm_general" typeId="alarm_general">
+        <label>Alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM,COMMAND_CLASS_BASIC</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Heiman Technology Co. Ltd</property>
+      <property name="modelId">DX1CG-Z</property>
+      <property name="manufacturerId">0260</property>
+      <property name="manufacturerRef">8003:1000</property>
+      <property name="dbReference">682</property>
+    </properties>
+
+  </thing-type>
+
+</thing:thing-descriptions>
