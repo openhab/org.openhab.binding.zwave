@@ -18,14 +18,14 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("associationMember")
 public class ZWaveAssociation {
     private int node;
-    private int endpoint;
+    private Integer endpoint;
 
     public ZWaveAssociation(int node) {
         this.node = node;
-        this.endpoint = 0;
+        this.endpoint = null;
     }
 
-    public ZWaveAssociation(int node, int endpoint) {
+    public ZWaveAssociation(int node, Integer endpoint) {
         this.node = node;
         this.endpoint = endpoint;
     }
@@ -34,16 +34,53 @@ public class ZWaveAssociation {
         return node;
     }
 
-    public int getEndpoint() {
+    public Integer getEndpoint() {
         return endpoint;
     }
 
     @Override
-    public boolean equals(Object checker) {
-        ZWaveAssociation assoc = (ZWaveAssociation) checker;
-        if (this.node == assoc.node && this.endpoint == assoc.endpoint) {
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("node_");
+        builder.append(node);
+        if (endpoint != null) {
+            builder.append('_');
+            builder.append(endpoint);
+        }
+        return builder.toString();
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((endpoint == null) ? 0 : endpoint.hashCode());
+        result = prime * result + node;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
             return true;
         }
-        return false;
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        ZWaveAssociation other = (ZWaveAssociation) obj;
+        if (endpoint == null) {
+            if (other.endpoint != null) {
+                return false;
+            }
+        } else if (!endpoint.equals(other.endpoint)) {
+            return false;
+        }
+        if (node != other.node) {
+            return false;
+        }
+        return true;
     }
 }

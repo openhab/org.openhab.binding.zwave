@@ -71,7 +71,7 @@ public class ZWaveAssociationGroup {
      * @param node
      */
     public void addAssociation(int node) {
-        addAssociation(node, 0);
+        addAssociation(node, null);
     }
 
     /**
@@ -80,7 +80,7 @@ public class ZWaveAssociationGroup {
      * @param node
      * @param endpoint
      */
-    public void addAssociation(int node, int endpoint) {
+    public void addAssociation(int node, Integer endpoint) {
         // Check if we're already associated
         if (isAssociated(node, endpoint)) {
             return;
@@ -127,8 +127,18 @@ public class ZWaveAssociationGroup {
      * @param node
      * @return
      */
+    public boolean isAssociated(ZWaveAssociation association) {
+        return isAssociated(association.getNode(), association.getEndpoint());
+    }
+
+    /**
+     * Tests if a node is associated to this group
+     *
+     * @param node
+     * @return
+     */
     public boolean isAssociated(int node) {
-        return isAssociated(node, 0);
+        return isAssociated(node, null);
     }
 
     /**
@@ -138,7 +148,7 @@ public class ZWaveAssociationGroup {
      * @param endpoint
      * @return
      */
-    public boolean isAssociated(int node, int endpoint) {
+    public boolean isAssociated(int node, Integer endpoint) {
         int associationCnt = associations.size();
         for (int index = 0; index < associationCnt; index++) {
             ZWaveAssociation association = associations.get(index);
@@ -185,11 +195,23 @@ public class ZWaveAssociationGroup {
         this.commands = commands;
     }
 
+    public boolean isProfileKnown() {
+        return profile1 != null;
+    }
+
     public Integer getProfile1() {
+        if (profile1 == null) {
+            // Default profile to General:NA
+            return 0;
+        }
         return profile1;
     }
 
     public Integer getProfile2() {
+        if (profile2 == null) {
+            // Default profile to General:NA
+            return 0;
+        }
         return profile2;
     }
 

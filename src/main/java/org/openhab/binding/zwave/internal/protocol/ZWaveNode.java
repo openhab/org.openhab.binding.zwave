@@ -936,7 +936,7 @@ public class ZWaveNode {
             int endpointId) {
         ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
-        if (endpoint == null && endpointId != 0 && multiAssociationCommandClass != null) {
+        if (multiAssociationCommandClass != null) {
             return multiAssociationCommandClass.setAssociationMessage(groupId, nodeId, endpointId);
         }
 

@@ -129,6 +129,6 @@ public class ZWaveMultiAssociationCommandClassTest extends ZWaveCommandClassTest
         assertEquals(event.getGroupId(), 2);
         assertEquals(event.getGroupMembers().size(), 1);
         assertEquals(event.getGroupMembers().get(0).getNode(), 1);
-        assertEquals(event.getGroupMembers().get(0).getEndpoint(), 1);
+        assertEquals(event.getGroupMembers().get(0).getEndpoint(), Integer.valueOf(1));
     }
 }

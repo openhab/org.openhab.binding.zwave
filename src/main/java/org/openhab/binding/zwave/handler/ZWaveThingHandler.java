@@ -115,6 +115,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     private Map<Integer, ZWaveConfigSubParameter> subParameters = new HashMap<Integer, ZWaveConfigSubParameter>();
     private Map<String, Object> pendingCfg = new HashMap<String, Object>();
 
+    private final Object pollingSync = new Object();
     private ScheduledFuture<?> pollingJob = null;
     private final long POLLING_PERIOD_MIN = 15;
     private final long POLLING_PERIOD_MAX = 86400;
@@ -406,7 +407,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             }
         };
 
-        synchronized (pollingJob) {
+        synchronized (pollingSync) {
             if (pollingJob != null) {
                 pollingJob.cancel(true);
                 pollingJob = null;
@@ -523,7 +524,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             nodeId = 0;
         }
 
-        synchronized (pollingJob) {
+        synchronized (pollingSync) {
             if (pollingJob != null) {
                 pollingJob.cancel(true);
                 pollingJob = null;
@@ -1076,6 +1077,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     break;
 
                 case COMMAND_CLASS_ASSOCIATION:
+                case COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION:
                     int groupId = ((ZWaveAssociationEvent) event).getGroupId();
                     List<ZWaveAssociation> groupMembers = ((ZWaveAssociationEvent) event).getGroupMembers();
                     if (groupMembers != null) {
@@ -1087,7 +1089,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         for (ZWaveAssociation groupMember : groupMembers) {
                             logger.debug("NODE {}: Update ASSOCIATION group_{}: Adding node_{}_{}", nodeId, groupId,
                                     groupMember.getNode(), groupMember.getEndpoint());
-                            group.add("node_" + groupMember.getNode() + "_" + groupMember.getEndpoint());
+                            group.add(groupMember.toString());
                         }
                         logger.debug("NODE {}: Update ASSOCIATION group_{}: {} members", nodeId, groupId, group.size());
 
@@ -1363,7 +1365,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     updateStatus(ThingStatus.REMOVED, ThingStatusDetail.NONE, "Node was excluded from the controller");
 
                     // Stop polling
-                    synchronized (pollingJob) {
+                    synchronized (pollingSync) {
                         if (pollingJob != null) {
                             pollingJob.cancel(true);
                             pollingJob = null;
@@ -1494,7 +1496,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             for (ZWaveAssociation groupMember : group.getAssociations()) {
                 logger.debug("NODE {}: Update ASSOCIATION group_{}: Adding node_{}_{}", nodeId, group,
                         groupMember.getNode(), groupMember.getEndpoint());
-                members.add("node_" + groupMember.getNode() + "_" + groupMember.getEndpoint());
+                members.add(groupMember.toString());
             }
 
             config.put("group_" + group.getIndex(), members);

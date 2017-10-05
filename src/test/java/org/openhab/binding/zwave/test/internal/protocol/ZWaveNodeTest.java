@@ -30,8 +30,8 @@ public class ZWaveNodeTest {
         ZWaveCommandClassTransactionPayload msg;
         byte[] expectedResponse;
 
-        // Setting device endpoint null and receive endpoint 0 should use single instance
-        expectedResponse = new byte[] { -123, 1, 0, 5 };
+        // Setting device endpoint null and receive endpoint 0 should use multi instance
+        expectedResponse = new byte[] { -114, 1, 0, 5 };
         msg = node.setAssociation(null, 0, 5, 0);
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse));
 

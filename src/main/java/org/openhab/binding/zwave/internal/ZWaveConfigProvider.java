@@ -521,12 +521,6 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
             // TODO: Add this when thing names are supported!
             // Thing thingNode = getThing(thingUID);
 
-            // Add the node for the standard association class if it supports a controllable class
-            if (supportsControllableClass(node)) {
-                // TODO: Use the node name
-                options.add(new ParameterOption("node_" + node.getNodeId() + "_0", "Node " + node.getNodeId()));
-            }
-
             // If the device supports multi_instance_association class, then add all controllable endpoints as well...
             // If this node also supports multi_instance class
             if (supportsMultiInstanceAssociation == true
@@ -540,6 +534,10 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
                                 "Node " + node.getNodeId() + " Endpoint " + endpointId));
                     }
                 }
+            } else if (supportsControllableClass(node)) {
+                // Add the node for the standard association class if it supports a controllable class
+                // TODO: Use the node name
+                options.add(new ParameterOption("node_" + node.getNodeId(), "Node " + node.getNodeId()));
             }
         }
 

@@ -23,6 +23,7 @@ import org.eclipse.smarthome.core.thing.type.ThingType;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociation;
+import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Generic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
@@ -824,12 +825,7 @@ public class ZWaveNodeInitStageAdvancer {
 
         setCurrentStage(ZWaveNodeInitStage.SET_ASSOCIATION);
         if (controller.isMasterController() == true) {
-
-            // TODO: This should support MULTI_ASSOCIATION - when required
-
-            ZWaveAssociationCommandClass associationCls = (ZWaveAssociationCommandClass) node
-                    .getCommandClass(CommandClass.COMMAND_CLASS_ASSOCIATION);
-            if (associationCls == null) {
+            if (multiAssociationCommandClass == null && associationCommandClass == null) {
                 logger.debug("NODE {}: Node advancer: SET_ASSOCIATION - ASSOCIATION class not supported",
                         node.getNodeId());
             } else {
@@ -843,24 +839,39 @@ public class ZWaveNodeInitStageAdvancer {
                         logger.debug("NODE {}: Node advancer: SET_ASSOCIATION - no default associations",
                                 node.getNodeId());
                     } else {
+                        ZWaveAssociation association;
+                        if (multiAssociationCommandClass != null) {
+                            association = new ZWaveAssociation(controller.getOwnNodeId(), 0);
+                        } else {
+                            association = new ZWaveAssociation(controller.getOwnNodeId());
+                        }
+
                         String defaultGroups[] = associations.split(",");
                         for (int c = 0; c < defaultGroups.length; c++) {
                             int groupId = Integer.parseInt(defaultGroups[c]);
-                            ZWaveAssociation association = new ZWaveAssociation(controller.getOwnNodeId());
 
                             // We should know about all groups at this stage.
                             // If we don't know about the group, then assume it doesn't exist
-                            if (node.getAssociationGroup(groupId) == null) {
+                            ZWaveAssociationGroup associationGroup = node.getAssociationGroup(groupId);
+                            if (associationGroup == null) {
                                 continue;
                             }
 
                             // Check if we're already a member
-                            if (node.getAssociationGroup(groupId).getAssociations().contains(association)) {
-                                logger.debug("NODE {}: Node advancer: SET_ASSOCIATION - ASSOCIATION set for group {}",
-                                        node.getNodeId(), groupId);
+                            if (associationGroup.isAssociated(association)) {
+                                logger.debug(
+                                        "NODE {}: Node advancer: SET_ASSOCIATION - ASSOCIATION {} set for group {}",
+                                        node.getNodeId(), association, groupId);
                             } else {
-                                logger.debug("NODE {}: Node advancer: SET_ASSOCIATION - Adding ASSOCIATION to group {}",
-                                        node.getNodeId(), groupId);
+                                logger.debug(
+                                        "NODE {}: Node advancer: SET_ASSOCIATION - Adding ASSOCIATION {} to group {}",
+                                        node.getNodeId(), association, groupId);
+
+                                // If this is the lifeline
+                                if (associationGroup.getProfile1() == 0x00 && associationGroup.getProfile2() == 0x01) {
+
+                                }
+
                                 // Set the association, and request the update so we confirm if it's set
                                 processTransaction(node.setAssociation(null, groupId, controller.getOwnNodeId(), 0));
                                 if (initRunning == false) {
@@ -874,6 +885,64 @@ public class ZWaveNodeInitStageAdvancer {
                         }
                     }
                 }
+            }
+        }
+
+        setCurrentStage(ZWaveNodeInitStage.SET_LIFELINE);
+        if (controller.isMasterController() == true) {
+            if (multiAssociationCommandClass == null && associationCommandClass == null) {
+                logger.debug("NODE {}: Node advancer: SET_LIFELINE - ASSOCIATION class not supported",
+                        node.getNodeId());
+            } else {
+                ZWaveAssociation association;
+                if (multiAssociationCommandClass != null) {
+                    association = new ZWaveAssociation(controller.getOwnNodeId(), 0);
+                } else {
+                    association = new ZWaveAssociation(controller.getOwnNodeId());
+                }
+
+                Collection<ZWaveAssociationGroup> associations = node.getAssociationGroups().values();
+
+                for (ZWaveAssociationGroup associationGroup : associations) {
+                    // Check if this is the lifeline profile
+                    if (associationGroup.getProfile1() != 0x00 || associationGroup.getProfile2() != 0x01) {
+                        continue;
+                    }
+
+                    // Check if we're already a member
+                    if (associationGroup.isAssociated(association)) {
+                        logger.debug("NODE {}: Node advancer: SET_LIFELINE - ASSOCIATION {} set for group {}",
+                                node.getNodeId(), association, associationGroup.getIndex());
+                        break;
+                    }
+
+                    // Check if there's another node set
+                    if (associationGroup.getAssociationCnt() != 0) {
+                        logger.debug("NODE {}: Node advancer: SET_LIFELINE - ASSOCIATION clearing group {}",
+                                node.getNodeId(), association, associationGroup.getIndex());
+                        processTransaction(node.clearAssociation(associationGroup.getIndex()));
+                        if (initRunning == false) {
+                            return;
+                        }
+                    }
+
+                    logger.debug("NODE {}: Node advancer: SET_LIFELINE - Adding ASSOCIATION {} to group {}",
+                            node.getNodeId(), association, associationGroup.getIndex());
+
+                    // Set the association, and request the update so we confirm if it's set
+                    processTransaction(
+                            node.setAssociation(null, associationGroup.getIndex(), controller.getOwnNodeId(), 0));
+                    if (initRunning == false) {
+                        return;
+                    }
+                    processTransaction(node.getAssociation(associationGroup.getIndex()));
+                    if (initRunning == false) {
+                        return;
+                    }
+
+                    break;
+                }
+
             }
         }
 
