@@ -43,7 +43,7 @@
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW129</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0002:0081</property>
+      <property name="manufacturerRef">0002:0081,0102:0081,0202:0081</property>
       <property name="dbReference">390</property>
       <property name="defaultAssociations">1</property>
     </properties>

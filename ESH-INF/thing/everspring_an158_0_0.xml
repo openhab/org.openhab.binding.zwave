@@ -29,6 +29,12 @@
           <property name="binding:*:DecimalType">METER;type=E_W</property>
         </properties>
       </channel>
+      <channel id="meter_reset" typeId="meter_reset">
+        <label>Reset the meter</label>
+        <properties>
+          <property name="binding:*:OnOffType">METER</property>
+        </properties>
+      </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
         <properties>
