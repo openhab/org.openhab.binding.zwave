@@ -29,6 +29,7 @@ HomePro ZDP200 Wall Dimmer<br /><h2>Inclusion Information</h2><p>Use the button 
       <property name="manufacturerId">0001</property>
       <property name="manufacturerRef">4450:3030</property>
       <property name="dbReference">385</property>
+      <property name="commandClass:MANUFACTURER_SPECIFIC">ccAdd</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

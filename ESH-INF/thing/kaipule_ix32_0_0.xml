@@ -6,9 +6,9 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="kaipule_ix32_00_000" listed="false">
-    <label>IX-30 / IX-32 IX-30 Wall Mounted / IX-32 Ceiling Mounted PIR Sensor</label>
+    <label>DP-32 / IX-30 / IX-32 PIR Sensor</label>
     <description><![CDATA[
-IX-30 Wall Mounted / IX-32 Ceiling Mounted PIR Sensor<br /><h1>Overview</h1><p>The hardware board for the IX30 (wall) and IX32 (ceiling) is the same thing and reports the same Type and ID.</p>
+PIR Sensor<br /><h1>Overview</h1><p>The hardware board for the IX30 (wall) and IX32 (ceiling) is the same thing and reports the same Type and ID.</p>
     ]]></description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -35,9 +35,9 @@ IX-30 Wall Mounted / IX-32 Ceiling Mounted PIR Sensor<br /><h1>Overview</h1><p>T
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Kaipule Technology Co., Ltd.</property>
-      <property name="modelId">IX-30 / IX-32</property>
+      <property name="modelId">DP-32 / IX-30 / IX-32</property>
       <property name="manufacturerId">0214</property>
-      <property name="manufacturerRef">0003:0002</property>
+      <property name="manufacturerRef">0002:0002,0003:0002</property>
       <property name="dbReference">667</property>
       <property name="defaultAssociations">1</property>
     </properties>

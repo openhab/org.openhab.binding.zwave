@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="steinel_l810ledihf_00_000" listed="false">
+    <label>L 810 LED iHF Sensor-switched outdoor up and downlighting</label>
+    <description>Sensor-switched outdoor up and downlighting</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer</label>
+        <properties>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL</property>
+        </properties>
+      </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">SCENE_ACTIVATION</property>
+        </properties>
+      </channel>
+      <channel id="sensor_binary" typeId="sensor_binary">
+        <label>Binary Sensor</label>
+        <properties>
+          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="sensor_luminance" typeId="sensor_luminance">
+        <label>Sensor (luminance)</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=LUMINANCE</property>
+        </properties>
+      </channel>
+      <channel id="alarm_burglar" typeId="alarm_burglar">
+        <label>Alarm (burglar)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=BURGLAR</property>
+        </properties>
+      </channel>
+      <channel id="alarm_system" typeId="alarm_system">
+        <label>Alarm (system)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=SYSTEM</property>
+        </properties>
+      </channel>
+      <channel id="switch_dimmer1" typeId="switch_dimmer">
+        <label>Dimmer 1</label>
+        <properties>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:1</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:1</property>
+        </properties>
+      </channel>
+      <channel id="scene_number1" typeId="scene_number">
+        <label>Scene Number 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">SCENE_ACTIVATION:1</property>
+        </properties>
+      </channel>
+      <channel id="alarm_burglar2" typeId="alarm_burglar">
+        <label>Alarm (burglar) 2</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM:2,BASIC:2;type=BURGLAR</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Steinel</property>
+      <property name="modelId">L 810 LED iHF</property>
+      <property name="manufacturerId">0271</property>
+      <property name="manufacturerRef">0001:1A75</property>
+      <property name="dbReference">705</property>
+    </properties>
+
+  </thing-type>
+
+</thing:thing-descriptions>

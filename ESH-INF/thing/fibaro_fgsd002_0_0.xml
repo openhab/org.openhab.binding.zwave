@@ -174,7 +174,7 @@ BASIC ON frame is sent in case of smoke presence detection ...<br /><h1>Overview
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
-                 min="1" max="255">
+                 min="0" max="255">
         <label>12: BASIC OFF frame value</label>
         <description><![CDATA[
 BASIC OFF frame is sent in case of FIRE ALARM cancellation.<br /><h1>Overview</h1><p>Its value is defined by the parameter. Available settings: 0-99, 255. 0 - turn off the device. 1-99 - set the device to 1-99%. 255 - set the last status</p>

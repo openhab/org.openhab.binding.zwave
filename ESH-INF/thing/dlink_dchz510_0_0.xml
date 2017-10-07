@@ -19,10 +19,28 @@ Siren<br /><h2>Inclusion Information</h2><ol><li>Have Z-Wave Controller enter in
           <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
         </properties>
       </channel>
+      <channel id="sensor_binary" typeId="sensor_binary">
+        <label>Binary Sensor</label>
+        <properties>
+          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
+        </properties>
+      </channel>
       <channel id="notification_send" typeId="notification_send">
         <label>Start sound</label>
         <properties>
-          <property name="binding:*:DecimalType">ALARM;event1=SMOKE:1,event2=ACCESS_CONTROL:22,event3=BURGLAR:1,event4=EMERGENCY:1,event5=EMERGENCY:2,event6=EMERGENCY:3</property>
+          <property name="binding:*:DecimalType">ALARM;event1=SMOKE:1,event2=ACCESS_CONTROL:22,event3=BURGLAR:1,event4=EMERGENCY:1,event5=EMERGENCY:2,event6=EMERGENCY:3,event7=ACCESS_CONTROL:3,event8=ACCESS_CONTROL:4,event9=EMERGENCY:254</property>
+        </properties>
+      </channel>
+      <channel id="alarm_burglar" typeId="alarm_burglar">
+        <label>Alarm (burglar)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=BURGLAR</property>
+        </properties>
+      </channel>
+      <channel id="alarm_general" typeId="alarm_general">
+        <label>Alarm (general)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=GENERAL</property>
         </properties>
       </channel>
     </channels>
