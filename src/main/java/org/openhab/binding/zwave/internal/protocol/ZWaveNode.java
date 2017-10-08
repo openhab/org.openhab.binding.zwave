@@ -1101,7 +1101,7 @@ public class ZWaveNode {
      * @param transaction the {@link ZWaveCommandClassPayload} to process
      * @param commandClass the command class used to generate the message.
      * @param endpointId the instance / endpoint to encapsulate the message for
-     * @return SerialMessage on success, null on failure.
+     * @return list of raw commands that were processed on success, null on failure.
      */
     public List<ZWaveCommandClassPayload> processCommand(ZWaveCommandClassPayload payload) {
         // Sanity check incoming message
@@ -1195,15 +1195,20 @@ public class ZWaveNode {
                 return null;
             }
 
-            if (payload.getCommandClassCommand() == 6) {
+            // Check that the length is long enough for the encapsulated command to be included
+            if (payload.getCommandClassCommand() == 6 && payload.getPayloadLength() > 5) {
                 // MULTI_INSTANCE_ENCAP
                 instanceNumber = payload.getPayloadByte(1);
 
                 payload = new ZWaveCommandClassPayload(payload, 3);
-            } else if (payload.getCommandClassCommand() == 13) {
+            } else if (payload.getCommandClassCommand() == 13 && payload.getPayloadLength() > 6) {
                 // MULTI_CHANNEL_ENCAP
                 endpointNumber = multichannelCommandClass.getSourceEndpoint(payload);
                 payload = new ZWaveCommandClassPayload(payload, 4);
+            } else {
+                logger.debug("NODE {}: COMMAND_CLASS_MULTI_CHANNEL corrupted payload {}", getNodeId(),
+                        SerialMessage.bb2hex(payload.getPayloadBuffer()));
+                return null;
             }
         }
 

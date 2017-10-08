@@ -1,15 +1,18 @@
 package org.openhab.binding.zwave.test.internal.protocol;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Test;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiAssociationCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClass;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
@@ -39,5 +42,23 @@ public class ZWaveNodeTest {
         expectedResponse = new byte[] { -114, 1, 0, 0, 5, 1 };
         msg = node.setAssociation(null, 0, 5, 1);
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse));
+    }
+
+    private List<ZWaveCommandClassPayload> processCommand(byte[] data) {
+        ZWaveCommandClassPayload payload = new ZWaveCommandClassPayload(data);
+
+        ZWaveController controller = null;
+        ZWaveEndpoint endpoint = null;
+        ZWaveNode node = new ZWaveNode(1, 2, controller);
+        node.addCommandClass(new ZWaveMultiInstanceCommandClass(node, controller, endpoint));
+
+        return node.processCommand(payload);
+    }
+
+    @Test
+    public void testMultiChannelShortFrame() {
+        List<ZWaveCommandClassPayload> response = processCommand(new byte[] { 0x60, 0x0D, 0x01 });
+
+        assertNull(response);
     }
 }
