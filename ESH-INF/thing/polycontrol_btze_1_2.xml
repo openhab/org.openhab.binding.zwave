@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="polycontrol_btze_01_002" listed="false">
+    <label>Danalock V3-BTZE Z-Wave Controlled door lock with Bluetooth Smart</label>
+    <description><![CDATA[
+Z-Wave Controlled door lock with Bluetooth Smart<br /><h1>Overview</h1><p>Danalock supports: <br />- S0/S2 Z-Wave Security <br />- Bluetooth Smart <br />- Twist Assist <br />- Auto Lock <br />- Hold And Release <br />- Back To Back</p> <br /><h2>Inclusion Information</h2><p>To add or include the Danalock into a Z-Wave network</p> <ol><li> <p>Set the controller in inclusion mode</p> </li> <li> <p>Push the switch once.</p> </li> <li> <p>Wait 5 seconds. </p> </li> </ol><br /><h2>Exclusion Information</h2><p>To remove or exclude the Danalock into a Z-Wave network</p> <ol><li> <p>Set the controller in exclusion mode</p> </li> <li> <p>Push the switch once.</p> </li> <li> <p>Wait 5 seconds. </p> </li> </ol>
+    ]]></description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="lock_door" typeId="lock_door">
+        <label>Door Lock</label>
+        <properties>
+          <property name="binding:*:OnOffType">DOOR_LOCK</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">BATTERY</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Poly-control</property>
+      <property name="modelId">Danalock V3-BTZE</property>
+      <property name="manufacturerId">010E</property>
+      <property name="manufacturerRef">0001:0000,0009:0000</property>
+      <property name="versionMin">1.2</property>
+      <property name="dbReference">708</property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: Twin Assist</label>
+        <description><![CDATA[
+Helps you to lock and unlock your door lock.<br /><h1>Overview</h1><p>0 -&gt; disabled</p> <p>1 -&gt; enabled</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">disabled</option>
+          <option value="1">enabled</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_2_4" type="integer" groupName="configuration">
+        <label>2: Hold and Release</label>
+        <description><![CDATA[
+After a unlock operation the lock holds the lock, so the door can be opened<br /><h1>Overview</h1><p>0 -&gt; disabled</p> <p>1 to 2147483647 -&gt; enabled no. of seconds</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0"></option>
+        </options>
+      </parameter>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration">
+        <label>3: Block to block</label>
+        <description>The lock will run the motor until it hits resistance.</description>
+        <default>0</default>
+        <options>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_4_4" type="integer" groupName="configuration"
+                 min="0" max="2147483647">
+        <label>4: BLE Temporary Allowed</label>
+        <description><![CDATA[
+The BLE is enabled for a number of seconds.<br /><h1>Overview</h1><p>0 -&gt; Disabled</p> <p>1 to 2147483647 -&gt; enabled no. of seconds</p>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_5_1" type="integer" groupName="configuration">
+        <label>5: BLE Always Allowed</label>
+        <description><![CDATA[
+BLE Always Allowed<br /><h1>Overview</h1><p>0 -&gt; BLE Always disabled</p> <p>1 -&gt; BLE Always enabled</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">BLE Always disabled</option>
+          <option value="1">BLE Always enabled</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_6_4" type="integer" groupName="configuration"
+                 min="0" max="2147483647">
+        <label>6: Autolock</label>
+        <description><![CDATA[
+Lock after an unlock.Value is delay in sec before lock is locked again.<br /><h1>Overview</h1><p>0 -&gt; disabled</p> <p>1 to 2147483647 -&gt; enabled no. of seconds</p>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Lifeline</label>
+        <description><![CDATA[
+Z-Wave Plus Lifeline<br /><h1>Overview</h1><p>Z-Wave Plus Lifeline • Device Reset Locally: triggered upon reset. • Battery/notification: triggered upon low battery. • Door Lock operation report: triggered upon a change in door lock • Notification: triggered upon a change in door lock</p>
+        ]]></description>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>
