@@ -212,12 +212,6 @@ Interval time for auto reporting the battery level<br /><h1>Overview</h1><p>The 
         <default>12</default>
       </parameter>
 
-      <parameter name="config_11_1" type="integer" groupName="configuration"
-                 min="0" max="127">
-        <label>11: NOT USED</label>
-        <default>12</default>
-      </parameter>
-
       <parameter name="config_12_1" type="integer" groupName="configuration"
                  min="0" max="127">
         <label>12: Auto Report Illumination Time</label>
