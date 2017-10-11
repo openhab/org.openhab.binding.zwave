@@ -13,13 +13,13 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.openhab.binding.zwave.internal.HexToIntegerConverter;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationCommandClass;
@@ -103,10 +103,10 @@ public class ZWaveNode {
     private List<CommandClass> nodeInformationFrame = null;
 
     // Stores the list of association groups
-    private Map<Integer, ZWaveAssociationGroup> associationGroups = new HashMap<Integer, ZWaveAssociationGroup>();
+    private Map<Integer, ZWaveAssociationGroup> associationGroups = new ConcurrentHashMap<Integer, ZWaveAssociationGroup>();
 
     // Endpoint
-    private final Map<Integer, ZWaveEndpoint> endpoints = new HashMap<Integer, ZWaveEndpoint>();
+    private final Map<Integer, ZWaveEndpoint> endpoints = new ConcurrentHashMap<Integer, ZWaveEndpoint>();
 
     private List<Integer> nodeNeighbors = new ArrayList<Integer>();
     private Date lastSent = null;

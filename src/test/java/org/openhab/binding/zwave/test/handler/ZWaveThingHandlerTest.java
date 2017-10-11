@@ -122,10 +122,19 @@ public class ZWaveThingHandlerTest {
     }
 
     @Test
-    public void TestConfigurationAssociation() {
+    public void TestConfigurationAssociationList() {
         List<String> nodeList = new ArrayList<String>();
         nodeList.add("node_1_0");
         List<ZWaveCommandClassTransactionPayload> response = doConfigurationUpdate("group_1", nodeList);
+
+        // Check that there are only 2 requests - the SET and GET
+        // Note that these are currently null due to mocking
+        assertEquals(2, response.size());
+    }
+
+    @Test
+    public void TestConfigurationAssociation() {
+        List<ZWaveCommandClassTransactionPayload> response = doConfigurationUpdate("group_1", "node_1_0");
 
         // Check that there are only 2 requests - the SET and GET
         // Note that these are currently null due to mocking
