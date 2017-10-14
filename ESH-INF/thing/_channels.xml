@@ -1149,6 +1149,8 @@
                 <option value="11">Heat Economy</option>
                 <option value="12">Cool Economy</option>
                 <option value="13">Away</option>
+                <option value="15">Full Power</option>
+                <option value="31">Manufacturer Specific</option>
             </options>
         </state>
     </channel-type>
