@@ -35,7 +35,7 @@
       <property name="vendor">Shenzhen Neo Electronics Co., Ltd</property>
       <property name="modelId">Siren Alarm</property>
       <property name="manufacturerId">0258</property>
-      <property name="manufacturerRef">0003:1088</property>
+      <property name="manufacturerRef">0003:1088,0003:6088</property>
       <property name="dbReference">522</property>
       <property name="defaultAssociations">1,2,3</property>
     </properties>

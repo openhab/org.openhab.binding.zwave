@@ -19,10 +19,16 @@ Siren<br /><h2>Inclusion Information</h2><ol><li>Have Z-Wave Controller enter in
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
+      <channel id="sensor_binary" typeId="sensor_binary">
+        <label>Binary Sensor</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
+        </properties>
+      </channel>
       <channel id="notification_send" typeId="notification_send">
         <label>Start sound</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_ALARM;event1=SMOKE:1,event2=ACCESS_CONTROL:22,event3=BURGLAR:1,event4=EMERGENCY:1,event5=EMERGENCY:2,event6=EMERGENCY:3</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_ALARM;event1=BURGLAR:1,event2=EMERGENCY:1,event3=EMERGENCY:2,event4=EMERGENCY:3,event5=ACCESS_CONTROL:22,event6=SMOKE:1,event7=EMERGENCY:5,event8=EMERGENCY:254,event9=ACCESS_CONTROL:1,event10=ACCESS_CONTROL:2,event11=ACCESS_CONTROL:3,event12=ACCESS_CONTROL:4</property>
         </properties>
       </channel>
     </channels>

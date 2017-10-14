@@ -5,17 +5,16 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="leviton_dzmx11lz_00_000" listed="false">
-    <label>DZMX1-1LZ Scene Capable Push On/Off</label>
-    <description>Scene Capable Push On/Off</description>
+  <thing-type id="remotec_adt8020_00_000" listed="false">
+    <label>ZRM-80 Wall plug switch</label>
+    <description>Wall plug switch</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_dimmer" typeId="switch_dimmer">
-        <label>Dimmer</label>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -28,11 +27,11 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Leviton</property>
-      <property name="modelId">DZMX1-1LZ</property>
-      <property name="manufacturerId">001D</property>
-      <property name="manufacturerRef">1B03:0334</property>
-      <property name="dbReference">196</property>
+      <property name="vendor">Remotec</property>
+      <property name="modelId">ZRM-80</property>
+      <property name="manufacturerId">5254</property>
+      <property name="manufacturerRef">8001:8020</property>
+      <property name="dbReference">692</property>
     </properties>
 
   </thing-type>
