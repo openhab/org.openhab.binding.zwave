@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="merten_509519_00_000" listed="false">
-    <label>509519 Merten Radio Argus 220 Connect Movement Detector</label>
-    <description>Merten Radio Argus 220 Connect Movement Detector</description>
+    <label>509519 Argus 220 Connect Movement Detector</label>
+    <description>Argus 220 Connect Movement Detector</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
