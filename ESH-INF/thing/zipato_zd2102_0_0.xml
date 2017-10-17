@@ -5,22 +5,28 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="chromagic_sm103_00_000" listed="false">
-    <label>SM103 Door/Window Contact</label>
-    <description>Door/Window Contact</description>
+  <thing-type id="zipato_zd2102_00_000" listed="false">
+    <label>ZD2102 Door window sensor</label>
+    <description>Door window sensor</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="sensor_binary" typeId="sensor_binary">
         <label>Binary Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY,COMMAND_CLASS_BASIC</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
         </properties>
       </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm</label>
+      <channel id="alarm_access" typeId="alarm_access">
+        <label>Alarm (access)</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
+        </properties>
+      </channel>
+      <channel id="alarm_burglar" typeId="alarm_burglar">
+        <label>Alarm (burglar)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -32,12 +38,12 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Chromagic Technologies Corporation</property>
-      <property name="modelId">SM103</property>
-      <property name="manufacturerId">0116</property>
-      <property name="manufacturerRef">0001:0001</property>
-      <property name="dbReference">428</property>
-      <property name="defaultAssociations">1,2</property>
+      <property name="vendor">Zipato</property>
+      <property name="modelId">ZD2102</property>
+      <property name="manufacturerId">0131</property>
+      <property name="manufacturerRef">2001:0106</property>
+      <property name="dbReference">713</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -49,18 +55,14 @@
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter name="config_1_1" type="integer" groupName="configuration"
-                 min="0" max="99">
-        <label>1: Basic Set Level</label>
-        <description>Value to be sent with a BASIC SET command</description>
-        <default>99</default>
-      </parameter>
-
-      <parameter name="config_2_1" type="integer" groupName="configuration"
-                 min="0" max="127">
-        <label>2: Configuring the OFF Delay</label>
-        <description>OFF Delay in seconds</description>
-        <default>1</default>
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: External switch</label>
+        <description>Determines if external switch can be used.</description>
+        <default>0</default>
+        <options>
+          <option value="0">Disabled</option>
+          <option value="255">Enabled</option>
+        </options>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
@@ -70,12 +72,7 @@
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Tamper Event Report (Alarm Report)</label>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Control other Z-Wave Devices</label>
+        <label>1: Control Command</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
