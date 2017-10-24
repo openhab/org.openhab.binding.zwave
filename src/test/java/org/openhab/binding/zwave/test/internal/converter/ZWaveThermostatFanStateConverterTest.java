@@ -17,6 +17,7 @@ import java.util.Map;
 
 import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.thing.ChannelUID;
+import org.eclipse.smarthome.core.thing.type.ChannelTypeUID;
 import org.eclipse.smarthome.core.types.State;
 import org.junit.Test;
 import org.mockito.Matchers;
@@ -37,10 +38,11 @@ import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClass
  */
 public class ZWaveThermostatFanStateConverterTest {
     final ChannelUID uid = new ChannelUID("zwave:node:bridge:channel");
+    final ChannelTypeUID typeUid = new ChannelTypeUID("zwave:channel");
 
     private ZWaveThingChannel createChannel() {
         Map<String, String> args = new HashMap<String, String>();
-        return new ZWaveThingChannel(null, uid, DataType.DecimalType,
+        return new ZWaveThingChannel(null, typeUid, uid, DataType.DecimalType,
                 CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_STATE.toString(), 0, args);
     }
 
