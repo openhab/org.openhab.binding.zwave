@@ -56,7 +56,7 @@
       <channel id="notification_send" typeId="notification_send">
         <label>Start Alarm LED Illumination</label>
         <properties>
-          <property name="binding:*:DecimalType">ALARM;event1=SMOKE:1,event3=BURGLAR:1</property>
+          <property name="binding:*:DecimalType">ALARM;event1=FLOOD:0,event2=FLOOD:255</property>
         </properties>
       </channel>
     </channels>

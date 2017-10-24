@@ -45,6 +45,9 @@
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0002:0081,0102:0081,0202:0081</property>
       <property name="dbReference">390</property>
+      <property name="commandClass:CENTRAL_SCENE">scene_number</property>
+      <property name="commandClass:CENTRAL_SCENE:1">scene_number</property>
+      <property name="commandClass:CENTRAL_SCENE:2">scene_number</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

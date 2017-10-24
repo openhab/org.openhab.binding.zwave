@@ -18,7 +18,7 @@
       <property name="vendor">Wintop</property>
       <property name="modelId">iShutter</property>
       <property name="manufacturerId">0097</property>
-      <property name="manufacturerRef">0024:0045</property>
+      <property name="manufacturerRef">0024:0045,0024:0051</property>
       <property name="dbReference">329</property>
       <property name="commandClass:SWITCH_ALL:1">getSupported=false</property>
       <property name="commandClass:SWITCH_ALL:2">getSupported=false</property>
