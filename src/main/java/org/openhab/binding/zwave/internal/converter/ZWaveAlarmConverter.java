@@ -267,7 +267,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         // return null;
         // }
 
-        String channelType = channel.getUID().getId();
+        String channelType = channel.getChannelTypeUID().getId();
         switch (channelType) {
             case "alarm_raw":
                 Map<String, Object> object = new HashMap<String, Object>();

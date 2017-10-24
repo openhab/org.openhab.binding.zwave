@@ -254,8 +254,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         logger.warn("NODE {}: Invalid item type defined ({}). Assuming DecimalType", nodeId, dataType);
                     }
 
-                    ZWaveThingChannel chan = new ZWaveThingChannel(controllerHandler, channel.getUID(), dataType,
-                            ccSplit[0], endpoint, argumentMap);
+                    ZWaveThingChannel chan = new ZWaveThingChannel(controllerHandler, channel.getChannelTypeUID(),
+                            channel.getUID(), dataType, ccSplit[0], endpoint, argumentMap);
 
                     // First time round, and this is a command - then add the command
                     if (first && ("*".equals(bindingType[1]) || "Command".equals(bindingType[1]))) {
@@ -374,12 +374,12 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         }
 
                         logger.debug("NODE {}: Polling {}", nodeId, channel.getUID());
-                        if (channel.converter == null) {
+                        if (channel.getConverter() == null) {
                             logger.debug("NODE {}: Polling aborted as no converter found for {}", nodeId,
                                     channel.getUID());
                         } else {
-                            List<ZWaveCommandClassTransactionPayload> poll = channel.converter.executeRefresh(channel,
-                                    node);
+                            List<ZWaveCommandClassTransactionPayload> poll = channel.getConverter()
+                                    .executeRefresh(channel, node);
                             if (poll != null) {
                                 messages.addAll(poll);
                             }
@@ -1040,13 +1040,13 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             return;
         }
 
-        if (cmdChannel.converter == null) {
+        if (cmdChannel.getConverter() == null) {
             logger.warn("NODE {}: No command converter set for command {} type {}", nodeId, channelUID, dataType);
             return;
         }
 
         List<ZWaveCommandClassTransactionPayload> messages = null;
-        messages = cmdChannel.converter.receiveCommand(cmdChannel, node, command);
+        messages = cmdChannel.getConverter().receiveCommand(cmdChannel, node, command);
 
         if (messages == null) {
             logger.debug("NODE {}: No messages returned from converter", nodeId);
@@ -1243,14 +1243,14 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     continue;
                 }
 
-                if (channel.converter == null) {
+                if (channel.getConverter() == null) {
                     logger.warn("NODE {}: No state converter set for channel {}", nodeId, channel.getUID());
                     return;
                 }
 
                 // logger.debug("NODE {}: Processing event as channel {} {}", nodeId, channel.getUID(),
                 // channel.dataType);
-                State state = channel.converter.handleEvent(channel, event);
+                State state = channel.getConverter().handleEvent(channel, event);
                 if (state != null) {
                     logger.debug("NODE {}: Updating channel state {} to {} [{}]", nodeId, channel.getUID(), state,
                             state.getClass().getSimpleName());

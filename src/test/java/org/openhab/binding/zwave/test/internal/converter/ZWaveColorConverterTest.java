@@ -15,6 +15,7 @@ import java.util.Map;
 
 import org.eclipse.smarthome.core.library.types.HSBType;
 import org.eclipse.smarthome.core.thing.ChannelUID;
+import org.eclipse.smarthome.core.thing.type.ChannelTypeUID;
 import org.eclipse.smarthome.core.types.State;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -37,6 +38,7 @@ import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueE
  */
 public class ZWaveColorConverterTest extends ZWaveCommandClassConverterTest {
     final ChannelUID uid = new ChannelUID("zwave:node:bridge:channel");
+    final ChannelTypeUID typeUid = new ChannelTypeUID("zwave:channel");
 
     private ZWaveCommandClassValueEvent createEvent(Map<ZWaveColorType, Integer> colorMap) {
         ZWaveController controller = Mockito.mock(ZWaveController.class);
@@ -51,7 +53,7 @@ public class ZWaveColorConverterTest extends ZWaveCommandClassConverterTest {
     public void Event_ColorSupported_None() {
         // This simulates the initial color_supported message which returns colors with null
         ZWaveColorConverter converter = new ZWaveColorConverter(null);
-        ZWaveThingChannel channel = new ZWaveThingChannel(null, uid, DataType.HSBType,
+        ZWaveThingChannel channel = new ZWaveThingChannel(null, typeUid, uid, DataType.HSBType,
                 CommandClass.COMMAND_CLASS_SWITCH_COLOR.toString(), 0, new HashMap<String, String>());
 
         final Map<ZWaveColorType, Integer> colorMap = new HashMap<ZWaveColorType, Integer>();

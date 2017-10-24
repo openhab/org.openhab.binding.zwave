@@ -17,6 +17,7 @@ import java.util.Map;
 
 import org.eclipse.smarthome.core.library.types.PercentType;
 import org.eclipse.smarthome.core.thing.ChannelUID;
+import org.eclipse.smarthome.core.thing.type.ChannelTypeUID;
 import org.eclipse.smarthome.core.types.State;
 import org.junit.Test;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
@@ -34,13 +35,14 @@ import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClass
  */
 public class ZWaveManufacturerProprietaryFibaroFgrm222ConverterTest extends ZWaveCommandClassConverterTest {
     final ChannelUID shutterUid = new ChannelUID("zwave:node:bridge:blinds_shutter");
+    final ChannelTypeUID typeUid = new ChannelTypeUID("zwave:blinds_shutter");
 
     @Test
     public void Event_Fgrm222_Lamella() {
         ZWaveManufacturerProprietaryConverter converter = new ZWaveManufacturerProprietaryConverter(null);
 
         ChannelUID uid = new ChannelUID("zwave:node:bridge:blinds_lamella");
-        ZWaveThingChannel channel = new ZWaveThingChannel(null, uid, DataType.PercentType,
+        ZWaveThingChannel channel = new ZWaveThingChannel(null, typeUid, uid, DataType.PercentType,
                 CommandClass.COMMAND_CLASS_MANUFACTURER_PROPRIETARY.toString(), 0, new HashMap<String, String>());
 
         State state;
@@ -60,7 +62,7 @@ public class ZWaveManufacturerProprietaryFibaroFgrm222ConverterTest extends ZWav
         ZWaveManufacturerProprietaryConverter converter = new ZWaveManufacturerProprietaryConverter(null);
 
         ChannelUID uid = new ChannelUID("zwave:node:bridge:blinds_shutter");
-        ZWaveThingChannel channel = new ZWaveThingChannel(null, uid, DataType.PercentType,
+        ZWaveThingChannel channel = new ZWaveThingChannel(null, typeUid, uid, DataType.PercentType,
                 CommandClass.COMMAND_CLASS_MANUFACTURER_PROPRIETARY.toString(), 0, new HashMap<String, String>());
 
         State state;
@@ -80,7 +82,8 @@ public class ZWaveManufacturerProprietaryFibaroFgrm222ConverterTest extends ZWav
         ZWaveManufacturerProprietaryConverter converter = new ZWaveManufacturerProprietaryConverter(null);
 
         ChannelUID uid = new ChannelUID("zwave:node:bridge:blinds_lamella");
-        ZWaveThingChannel channel = new ZWaveThingChannel(null, uid, DataType.PercentType,
+        ChannelTypeUID typeUid = new ChannelTypeUID("zwave:blinds_lamella");
+        ZWaveThingChannel channel = new ZWaveThingChannel(null, typeUid, uid, DataType.PercentType,
                 CommandClass.COMMAND_CLASS_MANUFACTURER_PROPRIETARY.toString(), 0, new HashMap<String, String>());
 
         ZWaveNode node = CreateMockedNode(1);
@@ -101,7 +104,8 @@ public class ZWaveManufacturerProprietaryFibaroFgrm222ConverterTest extends ZWav
         ZWaveManufacturerProprietaryConverter converter = new ZWaveManufacturerProprietaryConverter(null);
 
         ChannelUID uid = new ChannelUID("zwave:node:bridge:blinds_shutter");
-        ZWaveThingChannel channel = new ZWaveThingChannel(null, uid, DataType.PercentType,
+        ChannelTypeUID typeUid = new ChannelTypeUID("zwave:blinds_shutter");
+        ZWaveThingChannel channel = new ZWaveThingChannel(null, typeUid, uid, DataType.PercentType,
                 CommandClass.COMMAND_CLASS_MANUFACTURER_PROPRIETARY.toString(), 0, new HashMap<String, String>());
 
         ZWaveNode node = CreateMockedNode(1);

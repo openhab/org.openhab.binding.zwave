@@ -20,6 +20,7 @@ import org.eclipse.smarthome.core.library.types.OnOffType;
 import org.eclipse.smarthome.core.library.types.OpenClosedType;
 import org.eclipse.smarthome.core.library.types.StringType;
 import org.eclipse.smarthome.core.thing.ChannelUID;
+import org.eclipse.smarthome.core.thing.type.ChannelTypeUID;
 import org.eclipse.smarthome.core.types.State;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -44,6 +45,7 @@ import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClass
 public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
     private ZWaveThingChannel createChannel(String channelType, DataType dataType, String type, String event) {
         ChannelUID uid = new ChannelUID("zwave:node:bridge:" + channelType);
+        ChannelTypeUID typeUid = new ChannelTypeUID("zwave:" + channelType);
 
         Map<String, String> args = new HashMap<String, String>();
         if (type != null) {
@@ -52,7 +54,8 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         if (event != null) {
             args.put("event", event);
         }
-        return new ZWaveThingChannel(null, uid, dataType, CommandClass.COMMAND_CLASS_ALARM.toString(), 0, args);
+        return new ZWaveThingChannel(null, typeUid, uid, dataType, CommandClass.COMMAND_CLASS_ALARM.toString(), 0,
+                args);
     }
 
     private ZWaveCommandClassValueEvent createEvent(AlarmType type, ReportType reportType, Integer event,
@@ -199,6 +202,7 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
     @Test
     public void sendNotification() {
         ChannelUID uid = new ChannelUID("zwave:node:bridge:channel");
+        ChannelTypeUID typeUid = new ChannelTypeUID("zwave:channel");
 
         List<ZWaveCommandClassTransactionPayload> msgs;
         DecimalType command;
@@ -209,7 +213,7 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         args.put("event4", AlarmType.EMERGENCY.toString() + ":1");
         args.put("event5", AlarmType.EMERGENCY.toString() + ":2");
         args.put("event6", AlarmType.EMERGENCY.toString() + ":3");
-        ZWaveThingChannel channel = new ZWaveThingChannel(null, uid, DataType.OnOffType,
+        ZWaveThingChannel channel = new ZWaveThingChannel(null, typeUid, uid, DataType.OnOffType,
                 CommandClass.COMMAND_CLASS_ALARM.toString(), 0, args);
 
         ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
@@ -236,8 +240,9 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         Map<String, String> args = new HashMap<String, String>();
 
         // Note test here that data type is ignored
-        ZWaveThingChannel channel = new ZWaveThingChannel(null, new ChannelUID("zwave:node:bridge:alarm_number"),
-                DataType.OnOffType, CommandClass.COMMAND_CLASS_ALARM.toString(), 0, args);
+        ZWaveThingChannel channel = new ZWaveThingChannel(null, new ChannelTypeUID("zwave:alarm_number"),
+                new ChannelUID("zwave:node:bridge:alarm_number"), DataType.OnOffType,
+                CommandClass.COMMAND_CLASS_ALARM.toString(), 0, args);
 
         ZWaveCommandClassValueEvent event = createEvent(1, 0xff);
         DecimalType state = (DecimalType) converter.handleEvent(channel, event);
@@ -254,8 +259,9 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         Map<String, String> args = new HashMap<String, String>();
 
         // Note test here that data type is ignored
-        ZWaveThingChannel channel = new ZWaveThingChannel(null, new ChannelUID("zwave:node:bridge:alarm_raw"),
-                DataType.StringType, CommandClass.COMMAND_CLASS_ALARM.toString(), 0, args);
+        ZWaveThingChannel channel = new ZWaveThingChannel(null, new ChannelTypeUID("zwave:alarm_raw"),
+                new ChannelUID("zwave:node:bridge:alarm_raw"), DataType.StringType,
+                CommandClass.COMMAND_CLASS_ALARM.toString(), 0, args);
 
         ZWaveCommandClassValueEvent event = createEvent(AlarmType.ACCESS_CONTROL, ReportType.NOTIFICATION, 6, 255);
         StringType state = (StringType) converter.handleEvent(channel, event);

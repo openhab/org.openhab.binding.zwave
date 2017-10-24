@@ -19,6 +19,7 @@ import java.util.Map;
 import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.library.types.OnOffType;
 import org.eclipse.smarthome.core.thing.ChannelUID;
+import org.eclipse.smarthome.core.thing.type.ChannelTypeUID;
 import org.eclipse.smarthome.core.types.State;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -42,12 +43,13 @@ import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClass
  */
 public class ZWaveMeterConverterTest extends ZWaveCommandClassConverterTest {
     final ChannelUID uid = new ChannelUID("zwave:node:bridge:channel");
+    final ChannelTypeUID typeUid = new ChannelTypeUID("zwave:channel");
 
     private ZWaveThingChannel createChannel(String type) {
         Map<String, String> args = new HashMap<String, String>();
         args.put("type", type);
-        return new ZWaveThingChannel(null, uid, DataType.DecimalType, CommandClass.COMMAND_CLASS_METER.toString(), 0,
-                args);
+        return new ZWaveThingChannel(null, typeUid, uid, DataType.DecimalType,
+                CommandClass.COMMAND_CLASS_METER.toString(), 0, args);
     }
 
     private ZWaveCommandClassValueEvent createEvent(MeterType type, MeterScale scale, BigDecimal value) {
@@ -77,7 +79,7 @@ public class ZWaveMeterConverterTest extends ZWaveCommandClassConverterTest {
     @Test
     public void Reset() {
         Map<String, String> args = new HashMap<String, String>();
-        ZWaveThingChannel channel = new ZWaveThingChannel(null, uid, DataType.OnOffType,
+        ZWaveThingChannel channel = new ZWaveThingChannel(null, typeUid, uid, DataType.OnOffType,
                 CommandClass.COMMAND_CLASS_METER.toString(), 0, args);
         ZWaveMeterConverter converter = new ZWaveMeterConverter(null);
 

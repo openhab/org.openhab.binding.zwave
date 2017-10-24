@@ -14,6 +14,7 @@ import java.util.HashMap;
 
 import org.eclipse.smarthome.core.library.types.PercentType;
 import org.eclipse.smarthome.core.thing.ChannelUID;
+import org.eclipse.smarthome.core.thing.type.ChannelTypeUID;
 import org.eclipse.smarthome.core.types.State;
 import org.junit.Test;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
@@ -29,11 +30,12 @@ import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueE
  */
 public class ZWaveBasicConverterTest extends ZWaveCommandClassConverterTest {
     final ChannelUID uid = new ChannelUID("zwave:node:bridge:channel");
+    final ChannelTypeUID typeUid = new ChannelTypeUID("zwave:channel");
 
     @Test
     public void Event_Percent() {
         ZWaveBasicConverter converter = new ZWaveBasicConverter(null);
-        ZWaveThingChannel channel = new ZWaveThingChannel(null, uid, DataType.PercentType,
+        ZWaveThingChannel channel = new ZWaveThingChannel(null, typeUid, uid, DataType.PercentType,
                 CommandClass.COMMAND_CLASS_BASIC.toString(), 0, new HashMap<String, String>());
 
         State state;

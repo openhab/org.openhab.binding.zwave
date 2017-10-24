@@ -11,6 +11,7 @@ package org.openhab.binding.zwave.handler;
 import java.util.Map;
 
 import org.eclipse.smarthome.core.thing.ChannelUID;
+import org.eclipse.smarthome.core.thing.type.ChannelTypeUID;
 import org.openhab.binding.zwave.internal.converter.ZWaveCommandClassConverter;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
@@ -35,20 +36,22 @@ public class ZWaveThingChannel {
     }
 
     // int nodeId;
-    int endpoint;
-    ChannelUID uid;
-    String commandClass;
-    ZWaveCommandClassConverter converter;
-    DataType dataType;
-    Map<String, String> arguments;
+    private int endpoint;
+    private ChannelUID uid;
+    private ChannelTypeUID channelTypeUID;
+    private String commandClass;
+    private ZWaveCommandClassConverter converter;
+    private DataType dataType;
+    private Map<String, String> arguments;
 
-    public ZWaveThingChannel(ZWaveControllerHandler controller, ChannelUID uid, DataType dataType,
-            String commandClassName, int endpoint, Map<String, String> arguments) {
+    public ZWaveThingChannel(ZWaveControllerHandler controller, ChannelTypeUID channelTypeUID, ChannelUID uid,
+            DataType dataType, String commandClassName, int endpoint, Map<String, String> arguments) {
         this.uid = uid;
         this.arguments = arguments;
         this.commandClass = commandClassName;
         this.endpoint = endpoint;
         this.dataType = dataType;
+        this.channelTypeUID = channelTypeUID;
 
         // Get the converter
         CommandClass commandClass = ZWaveCommandClass.CommandClass.getCommandClass(commandClassName);
@@ -66,6 +69,10 @@ public class ZWaveThingChannel {
         return uid;
     }
 
+    public ChannelTypeUID getChannelTypeUID() {
+        return channelTypeUID;
+    }
+
     public String getCommandClass() {
         return commandClass;
     }
@@ -80,5 +87,9 @@ public class ZWaveThingChannel {
 
     public Map<String, String> getArguments() {
         return arguments;
+    }
+
+    public ZWaveCommandClassConverter getConverter() {
+        return converter;
     }
 }
