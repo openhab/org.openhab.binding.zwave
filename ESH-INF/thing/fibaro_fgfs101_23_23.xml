@@ -50,6 +50,7 @@
       <property name="manufacturerRef">0B00:1001,0B00:2001</property>
       <property name="versionMin">23.23</property>
       <property name="dbReference">408</property>
+      <property name="commandClass:SENSOR_ALARM:2">add</property>
       <property name="defaultAssociations">3</property>
     </properties>
 

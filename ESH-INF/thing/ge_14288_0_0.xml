@@ -5,27 +5,33 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="vision_pid11995_00_000" listed="false">
-    <label>PID11995 Monoprice ZWave On/Off Plugin</label>
-    <description>Monoprice ZWave On/Off Plugin</description>
+  <thing-type id="ge_14288_00_000" listed="false">
+    <label>14288 In-Wall Outlet</label>
+    <description>In-Wall Outlet</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">SCENE_ACTIVATION</property>
         </properties>
       </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Vision Security</property>
-      <property name="modelId">PID11995</property>
-      <property name="manufacturerId">0109</property>
-      <property name="manufacturerRef">2007:0703,2008:0803</property>
-      <property name="dbReference">454</property>
+      <property name="vendor">Jasco Products</property>
+      <property name="modelId">14288</property>
+      <property name="manufacturerId">0063</property>
+      <property name="manufacturerRef">4952:3133</property>
+      <property name="dbReference">714</property>
     </properties>
 
   </thing-type>

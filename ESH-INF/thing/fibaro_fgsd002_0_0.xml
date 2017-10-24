@@ -20,7 +20,7 @@
       <channel id="alarm_smoke" typeId="alarm_smoke">
         <label>Smoke Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=SMOKE, event=3</property>
+          <property name="binding:*:OnOffType">ALARM;type=SMOKE</property>
         </properties>
       </channel>
       <channel id="alarm_tamper" typeId="alarm_tamper">
