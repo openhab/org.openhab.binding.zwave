@@ -24,7 +24,7 @@
       <property name="vendor">Vision Security</property>
       <property name="modelId">PID11995</property>
       <property name="manufacturerId">0109</property>
-      <property name="manufacturerRef">2007:0703</property>
+      <property name="manufacturerRef">2007:0703,2008:0803</property>
       <property name="dbReference">454</property>
     </properties>
 
