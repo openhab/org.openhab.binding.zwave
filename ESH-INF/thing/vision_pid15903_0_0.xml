@@ -62,6 +62,7 @@
       <property name="manufacturerId">0109</property>
       <property name="manufacturerRef">201A:1AA4</property>
       <property name="dbReference">552</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -85,6 +86,17 @@
         <label>2: Report When Wattage Changes</label>
         <description>Reports V/A/W</description>
         <default>50</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Z-Wave Plus Lifeline</label>
+        <multipleLimit>5</multipleLimit>
       </parameter>
 
     </config-description>
