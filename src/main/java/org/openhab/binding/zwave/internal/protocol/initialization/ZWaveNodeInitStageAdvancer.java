@@ -812,7 +812,7 @@ public class ZWaveNodeInitStageAdvancer {
                         node.getNodeId(), controller.getOwnNodeId(), value);
 
                 // Set the wake-up interval, and request an update
-                processTransaction(wakeupCommandClass.setInterval(value));
+                processTransaction(wakeupCommandClass.setInterval(controller.getOwnNodeId(), value));
                 if (initRunning == false) {
                     return;
                 }
@@ -867,11 +867,6 @@ public class ZWaveNodeInitStageAdvancer {
                                         "NODE {}: Node advancer: SET_ASSOCIATION - Adding ASSOCIATION {} to group {}",
                                         node.getNodeId(), association, groupId);
 
-                                // If this is the lifeline
-                                if (associationGroup.getProfile1() == 0x00 && associationGroup.getProfile2() == 0x01) {
-
-                                }
-
                                 // Set the association, and request the update so we confirm if it's set
                                 processTransaction(node.setAssociation(null, groupId, controller.getOwnNodeId(), 0));
                                 if (initRunning == false) {
@@ -904,6 +899,9 @@ public class ZWaveNodeInitStageAdvancer {
                 Collection<ZWaveAssociationGroup> associations = node.getAssociationGroups().values();
 
                 for (ZWaveAssociationGroup associationGroup : associations) {
+                    logger.debug("NODE {}: Node advancer: SET_LIFELINE - Checking group {}", node.getNodeId(),
+                            associationGroup.getIndex());
+
                     // Check if this is the lifeline profile
                     if (associationGroup.getProfile1() != 0x00 || associationGroup.getProfile2() != 0x01) {
                         continue;
@@ -911,7 +909,7 @@ public class ZWaveNodeInitStageAdvancer {
 
                     // Check if we're already a member
                     if (associationGroup.isAssociated(association)) {
-                        logger.debug("NODE {}: Node advancer: SET_LIFELINE - ASSOCIATION {} set for group {}",
+                        logger.debug("NODE {}: Node advancer: SET_LIFELINE - ASSOCIATION {} already set for group {}",
                                 node.getNodeId(), association, associationGroup.getIndex());
                         break;
                     }
@@ -942,8 +940,9 @@ public class ZWaveNodeInitStageAdvancer {
 
                     break;
                 }
-
             }
+        } else {
+            logger.debug("NODE {}: Node advancer: SET_LIFELINE - not configured as not master", node.getNodeId());
         }
 
         setCurrentStage(ZWaveNodeInitStage.GET_CONFIGURATION);

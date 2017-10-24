@@ -445,20 +445,19 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass implements ZWaveC
      */
 
     /**
-     * Sends a command to the device to set the wakeup interval.
-     * The wakeup node is set to the controller.
+     * Sends a command to the device to set the wakeup interval and target node.
      *
+     * @param nodeId the wakeup target node ID
      * @param interval the wakeup interval in seconds
-     * @return the serial message
+     * @return the {@link ZWaveCommandClassTransactionPayload}
      */
-    public ZWaveCommandClassTransactionPayload setInterval(int interval) {
-        logger.debug("NODE {}: Creating new message for application command WAKE_UP_INTERVAL_SET to {}",
-                getNode().getNodeId(), interval);
+    public ZWaveCommandClassTransactionPayload setInterval(int nodeId, int interval) {
+        logger.debug("NODE {}: Creating new message for command WAKE_UP_INTERVAL_SET to {}s, node {}",
+                getNode().getNodeId(), interval, nodeId);
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 WAKE_UP_INTERVAL_SET)
-                        .withPayload(((interval >> 16) & 0xff), ((interval >> 8) & 0xff), (interval & 0xff),
-                                getController().getOwnNodeId())
+                        .withPayload(((interval >> 16) & 0xff), ((interval >> 8) & 0xff), (interval & 0xff), nodeId)
                         .withPriority(TransactionPriority.Config).build();
     }
 
