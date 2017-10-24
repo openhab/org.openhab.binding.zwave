@@ -52,7 +52,7 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
     private static final byte ASSOCIATION_GROUP_INFO_LIST_GET = 5;
     private static final byte ASSOCIATION_GROUP_INFO_LIST_REPORT = 6;
 
-    private static final int MAX_STRING_LENGTH = 25;
+    private static final int MAX_STRING_LENGTH = 42;
 
     private static final int GET_LISTMODE_MASK = 0x40;
     // not used private static final int GET_REFRESHCACHE_MASK = 0x80;
@@ -287,6 +287,8 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
 
         // Only initialise the root endpoint
         if (getEndpoint() != null) {
+            logger.debug("NODE {}: Association group info ignoring endpoint {}", getNode().getNodeId(),
+                    getEndpoint().getEndpointId());
             return result;
         }
 

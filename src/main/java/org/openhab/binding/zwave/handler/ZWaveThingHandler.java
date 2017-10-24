@@ -553,6 +553,11 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             return;
         }
 
+        // Wakeup targets are not set immediately during the config as we need to correlate multiple settings
+        // Record them in these variables and set them at the end if one or both are configured
+        Integer wakeupNode = null;
+        Integer wakeupInterval = null;
+
         Configuration configuration = editConfiguration();
         for (Entry<String, Object> configurationParameter : configurationParameters.entrySet()) {
             Object valueObject = configurationParameter.getValue();
@@ -725,28 +730,29 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     break;
 
                 case "wakeup":
-                    ZWaveWakeUpCommandClass wakeupCommandClass = (ZWaveWakeUpCommandClass) node
-                            .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
-                    if (wakeupCommandClass == null) {
-                        logger.debug("NODE {}: Error getting wakeupCommandClass", nodeId);
-                        continue;
-                    }
-
-                    Integer wakeupValue;
+                    Integer wakeupValue = null;
                     try {
                         wakeupValue = ((BigDecimal) configurationParameter.getValue()).intValue();
                     } catch (NumberFormatException e) {
-                        logger.debug("NODE {}: Error converting wakeup value from {}", nodeId,
+                        logger.debug("NODE {}: Error converting wakeup value {} from {}", nodeId, cfg[1],
                                 configurationParameter.getValue());
                         continue;
                     }
 
-                    logger.debug("NODE {}: Set wakeup interval to '{}'", nodeId, wakeupValue);
+                    switch (cfg[1]) {
+                        case "node":
+                            wakeupNode = wakeupValue;
+                            logger.debug("NODE {}: Set wakeup node to '{}'", nodeId, wakeupNode);
+                            break;
+                        case "interval":
+                            wakeupInterval = wakeupValue;
+                            logger.debug("NODE {}: Set wakeup interval to '{}'", nodeId, wakeupInterval);
+                            break;
+                        default:
+                            logger.debug("NODE {}: Unknown wakeup command {}", nodeId, cfg[1]);
+                            break;
+                    }
 
-                    // Set the wake-up interval
-                    node.sendMessage(wakeupCommandClass.setInterval(wakeupValue));
-                    // And request a read-back
-                    node.sendMessage(wakeupCommandClass.getIntervalMessage());
                     pendingCfg.put(configurationParameter.getKey(), valueObject);
                     break;
 
@@ -932,6 +938,64 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         // Persist changes
         updateConfiguration(configuration);
+
+        // Wakeup interval and node need to be sent in the same command
+        // so handle it here once we've processed all configuration
+        if (wakeupInterval != null || wakeupNode != null) {
+            ZWaveWakeUpCommandClass wakeupCommandClass = (ZWaveWakeUpCommandClass) node
+                    .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
+            if (wakeupCommandClass == null) {
+                logger.debug("NODE {}: Error getting wakeupCommandClass", nodeId);
+            } else {
+                // Handle the situation where there is only part of the data defined in this update
+                if (wakeupInterval == null) {
+                    // First try using the current wakeup interval from the thing config
+                    final BigDecimal cfgInterval = (BigDecimal) getConfig()
+                            .get(ZWaveBindingConstants.CONFIGURATION_WAKEUPINTERVAL);
+                    if (cfgInterval != null) {
+                        wakeupInterval = cfgInterval.intValue();
+                    }
+                    // Then try the existing value from the command class
+                    if (wakeupInterval == null) {
+                        wakeupInterval = wakeupCommandClass.getInterval();
+                    }
+                    // Then try system default
+                    if (wakeupInterval == 0) {
+                        wakeupInterval = controllerHandler.getDefaultWakeupPeriod();
+                    }
+                    // Then try device default
+                    if (wakeupInterval == 0) {
+                        wakeupInterval = wakeupCommandClass.getDefaultInterval();
+                    }
+                    // If all else fails, use 1 hour!
+                    if (wakeupInterval == 0) {
+                        wakeupInterval = 3600;
+                    }
+                    logger.debug("NODE {}: Wakeup interval not specified, using {}", nodeId, wakeupInterval);
+                }
+                if (wakeupNode == null) {
+                    // First try using the current wakeup node from the thing config
+                    final BigDecimal cfgNode = (BigDecimal) getConfig()
+                            .get(ZWaveBindingConstants.CONFIGURATION_WAKEUPNODE);
+                    if (cfgNode != null) {
+                        wakeupNode = cfgNode.intValue();
+                    }
+                    // Then try the existing value from the command class
+                    if (wakeupNode == null) {
+                        wakeupNode = wakeupCommandClass.getTargetNodeId();
+                    }
+                    // Then just set it to our node ID
+                    if (wakeupNode == 0) {
+                        wakeupNode = controllerHandler.getOwnNodeId();
+                    }
+                    logger.debug("NODE {}: Wakeup node not specified, using {}", nodeId, wakeupNode);
+                }
+                // Set the wake-up interval
+                node.sendMessage(wakeupCommandClass.setInterval(wakeupNode, wakeupInterval));
+                // And request a read-back
+                node.sendMessage(wakeupCommandClass.getIntervalMessage());
+            }
+        }
     }
 
     @Override

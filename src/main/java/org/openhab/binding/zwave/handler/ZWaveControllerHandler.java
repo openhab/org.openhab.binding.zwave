@@ -726,6 +726,15 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         return true;
     }
 
+    /**
+     * Gets the default wakeup period configured for this network
+     * 
+     * @return the default wakeup, or null if not set
+     */
+    public Integer getDefaultWakeupPeriod() {
+        return wakeupDefaultPeriod;
+    }
+
     public UID getUID() {
         return thing.getUID();
     }

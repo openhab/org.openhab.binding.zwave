@@ -116,7 +116,7 @@ public class ZWaveThingHandlerTest {
 
         assertEquals(2, response.size());
         msg = response.get(0);
-        assertTrue(Arrays.equals(msg.getPayloadBuffer(), new byte[] { -124, 4, 0, 2, 88, 1 }));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), new byte[] { -124, 4, 0, 2, 88, 0 }));
         msg = response.get(1);
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), new byte[] { -124, 5 }));
     }

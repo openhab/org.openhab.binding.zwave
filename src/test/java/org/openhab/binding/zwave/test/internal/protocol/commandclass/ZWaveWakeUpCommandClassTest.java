@@ -53,7 +53,7 @@ public class ZWaveWakeUpCommandClassTest extends ZWaveCommandClassTest {
 
         byte[] expectedResponseV1 = { -124, 4, 0, 38, -108, 0 };
         cls.setVersion(1);
-        msg = cls.setInterval(9876);
+        msg = cls.setInterval(0, 9876);
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 
