@@ -43,7 +43,7 @@ Yale Real Living Touchscreen Deadbolt<br /><h2>Inclusion Information</h2><p>To i
       <property name="vendor">ASSA ABLOY</property>
       <property name="modelId">YRD220</property>
       <property name="manufacturerId">0129</property>
-      <property name="manufacturerRef">0002:0000,0002:0209,0002:AA00,0002:FFFF</property>
+      <property name="manufacturerRef">0002:0000,0002:0209,0002:AA00,0002:FFFF,2022:0209</property>
       <property name="dbReference">321</property>
       <property name="defaultAssociations">1</property>
     </properties>
