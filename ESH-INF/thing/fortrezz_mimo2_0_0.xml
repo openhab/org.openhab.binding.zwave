@@ -62,7 +62,7 @@ Dual Digital or Analog Voltage input and Dual Contact Relay<br /><h1>Overview</h
       <property name="vendor">FortrezZ LLC</property>
       <property name="modelId">MIMO2+</property>
       <property name="manufacturerId">0084</property>
-      <property name="manufacturerRef">0463:0207</property>
+      <property name="manufacturerRef">0463:0207,0463:0208</property>
       <property name="dbReference">700</property>
       <property name="defaultAssociations">1,2,3</property>
     </properties>
