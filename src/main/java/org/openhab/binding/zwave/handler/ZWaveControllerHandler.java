@@ -17,6 +17,7 @@ import java.util.Hashtable;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.eclipse.smarthome.config.core.ConfigDescription;
 import org.eclipse.smarthome.config.core.Configuration;
 import org.eclipse.smarthome.config.core.validation.ConfigValidationException;
 import org.eclipse.smarthome.config.discovery.DiscoveryService;
@@ -26,8 +27,10 @@ import org.eclipse.smarthome.core.thing.Bridge;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.ThingStatus;
 import org.eclipse.smarthome.core.thing.ThingStatusDetail;
+import org.eclipse.smarthome.core.thing.ThingTypeUID;
 import org.eclipse.smarthome.core.thing.UID;
 import org.eclipse.smarthome.core.thing.binding.BaseBridgeHandler;
+import org.eclipse.smarthome.core.thing.type.ThingType;
 import org.eclipse.smarthome.core.types.Command;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.ZWaveBindingConstants.I18nConstant;
@@ -35,6 +38,7 @@ import org.openhab.binding.zwave.discovery.ZWaveDiscoveryService;
 import org.openhab.binding.zwave.event.BindingEventDTO;
 import org.openhab.binding.zwave.event.BindingEventFactory;
 import org.openhab.binding.zwave.event.BindingEventType;
+import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
 import org.openhab.binding.zwave.internal.ZWaveEventPublisher;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
@@ -85,6 +89,10 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     @Override
     public void initialize() {
         logger.debug("Initializing ZWave Controller.");
+
+        // ThingType t = ZWaveConfigProvider.getThingType(new ThingTypeUID("zwave:linear_ps15emz51_00_000"));
+        ThingType t = ZWaveConfigProvider.getThingType(new ThingTypeUID("zwave:linear_ws15z_00_000"));
+        ConfigDescription cfgConfig = ZWaveConfigProvider.getThingTypeConfig(t);
 
         Object param;
         param = getConfig().get(CONFIGURATION_MASTER);
