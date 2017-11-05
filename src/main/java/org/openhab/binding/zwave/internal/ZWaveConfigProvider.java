@@ -387,13 +387,23 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         return null;
     }
 
+    /**
+     * Gets the configuration parameters for a ZWave Thing. If the thing contains no configuration, it will return null.
+     * 
+     * @param type the {@link ThingType} required to retrieve the configuration
+     * @return the {@link ConfigDescription}
+     */
     public static ConfigDescription getThingTypeConfig(ThingType type) {
         // Check that we know about the registry
         if (configDescriptionRegistry == null) {
             return null;
         }
 
-        return configDescriptionRegistry.getConfigDescription(type.getConfigDescriptionURI());
+        URI configUri = type.getConfigDescriptionURI();
+        if (configUri == null) {
+            return null;
+        }
+        return configDescriptionRegistry.getConfigDescription(configUri);
     }
 
     public static Thing getThing(ThingUID thingUID) {
