@@ -295,6 +295,7 @@ public class ZWaveThermostatModeCommandClass extends ZWaveCommandClass
         HEAT_ECON(11, "Heat Econ"),
         COOL_ECON(12, "Cool Econ"),
         AWAY(13, "Away"),
+        BOOST(15, "Boost"),
         MANUAL(31, "Manual");
 
         /**
