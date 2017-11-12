@@ -159,8 +159,6 @@ public class ZWaveBindingConstants {
                     + "Note that the polling period may be longer than set since the binding treats "
                     + "polls as the lowest priority data within the network.");
 
-    public final static Integer ACTION_CHECK_VALUE = new Integer(-232323);
-
     public final static Set<ThingTypeUID> SUPPORTED_BRIDGE_TYPES_UIDS = ImmutableSet.of(CONTROLLER_SERIAL);
 
     private static TranslationProvider translationProvider;
