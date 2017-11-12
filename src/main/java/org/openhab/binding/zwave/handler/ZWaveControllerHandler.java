@@ -254,19 +254,15 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
                 if (cfg[1].equals("softreset") && value instanceof Boolean && ((Boolean) value) == true) {
                     controller.requestSoftReset();
-
                     value = false;
                 } else if (cfg[1].equals("hardreset") && value instanceof Boolean && ((Boolean) value) == true) {
                     controller.requestHardReset();
-
                     value = false;
                 } else if (cfg[1].equals("exclude") && value instanceof Boolean && ((Boolean) value) == true) {
                     controller.requestRemoveNodesStart();
-
-                    value = new BigDecimal(0);
+                    value = false;
                 } else if (cfg[1].equals("sync") && value instanceof Boolean && ((Boolean) value) == true) {
                     controller.requestRequestNetworkUpdate();
-
                     value = false;
                 } else if (cfg[1].equals("suc") && value instanceof Boolean) {
                     // TODO: Do we need to set this immediately
