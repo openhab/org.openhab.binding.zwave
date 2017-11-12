@@ -31,13 +31,13 @@
         </properties>
       </channel>
       <channel id="thermostat_setpoint_furnace" typeId="thermostat_setpoint">
-        <label>Setpoint (furnace)</label>
+        <label>Temperature for Heat (Eco)</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=FURNACE</property>
         </properties>
       </channel>
       <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
-        <label>Temperature for Mode Heat (Comfort)</label>
+        <label>Temperature for Heat (Comfort)</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING</property>
         </properties>
@@ -54,7 +54,7 @@
       <property name="vendor">Eurotronics</property>
       <property name="modelId">CometZ</property>
       <property name="manufacturerId">0148</property>
-      <property name="manufacturerRef">0002:0001</property>
+      <property name="manufacturerRef">0002:0001,4672:BD41</property>
       <property name="dbReference">372</property>
     </properties>
 
