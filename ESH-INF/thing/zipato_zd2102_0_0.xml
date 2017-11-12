@@ -17,10 +17,10 @@
           <property name="binding:*:OnOffType">SENSOR_BINARY</property>
         </properties>
       </channel>
-      <channel id="alarm_access" typeId="alarm_access">
-        <label>Alarm (access)</label>
+      <channel id="sensor_door" typeId="sensor_door">
+        <label>Door sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=ACCESS_CONTROL</property>
+          <property name="binding:*:OpenClosedType">ALARM;type=ACCESS_CONTROL, event=23</property>
         </properties>
       </channel>
       <channel id="alarm_burglar" typeId="alarm_burglar">
