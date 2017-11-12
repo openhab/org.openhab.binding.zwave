@@ -289,26 +289,22 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                     continue;
                 }
 
-                if (cfg[1].equals("softreset") && value instanceof BigDecimal
-                        && ((BigDecimal) value).intValue() == ZWaveBindingConstants.ACTION_CHECK_VALUE) {
+                if (cfg[1].equals("softreset") && value instanceof Boolean && ((Boolean) value) == true) {
                     controller.requestSoftReset();
 
-                    value = new BigDecimal(0);
-                } else if (cfg[1].equals("hardreset") && value instanceof BigDecimal
-                        && ((BigDecimal) value).intValue() == ZWaveBindingConstants.ACTION_CHECK_VALUE) {
+                    value = false;
+                } else if (cfg[1].equals("hardreset") && value instanceof Boolean && ((Boolean) value) == true) {
                     controller.requestHardReset();
 
-                    value = new BigDecimal(0);
-                } else if (cfg[1].equals("exclude") && value instanceof BigDecimal
-                        && ((BigDecimal) value).intValue() == ZWaveBindingConstants.ACTION_CHECK_VALUE) {
+                    value = false;
+                } else if (cfg[1].equals("exclude") && value instanceof Boolean && ((Boolean) value) == true) {
                     controller.requestRemoveNodesStart();
 
                     value = new BigDecimal(0);
-                } else if (cfg[1].equals("sync") && value instanceof BigDecimal
-                        && ((BigDecimal) value).intValue() == ZWaveBindingConstants.ACTION_CHECK_VALUE) {
+                } else if (cfg[1].equals("sync") && value instanceof Boolean && ((Boolean) value) == true) {
                     controller.requestRequestNetworkUpdate();
 
-                    value = new BigDecimal(0);
+                    value = false;
                 } else if (cfg[1].equals("suc") && value instanceof Boolean) {
                     // TODO: Do we need to set this immediately
                 } else if (cfg[1].equals("inclusiontimeout") && value instanceof BigDecimal) {
