@@ -362,6 +362,12 @@ Set the OFF time of output load<br /><h1>Overview</h1><p>256 to 316 The hour val
         <default>0</default>
       </parameter>
 
+      <parameter name="config_100_1_wo" type="integer" groupName="configuration">
+        <label>100: Set parameter 101-103 to default value</label>
+        <description>Reset the parameter 101-103</description>
+        <default>0</default>
+      </parameter>
+
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter-group name="association">
         <context>link</context>

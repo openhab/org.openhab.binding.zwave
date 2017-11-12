@@ -40,7 +40,7 @@
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW117</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0004:0075,0204:0075</property>
+      <property name="manufacturerRef">0004:0075,0104:0075,0204:0075</property>
       <property name="dbReference">527</property>
     </properties>
 
