@@ -126,44 +126,32 @@
                 <description></description>
             </parameter-group>
            
-            <parameter name="controller_softreset" type="integer" groupName="actions">
+            <parameter name="controller_softreset" type="boolean" groupName="actions">
                 <label>Soft Reset Controller</label>
                 <description>Resets the Z-Wave stick - similar to removing the stick from the USB.</description>
                 <advanced>true</advanced>
-                <default>0</default>
-                <options>
-                    <option value="-232323">send</option>
-                </options>
+                <default>false</default>
             </parameter>
 
-            <parameter name="controller_hardreset" type="integer" groupName="actions">
+            <parameter name="controller_hardreset" type="boolean" groupName="actions">
                 <label>Hard Reset Controller</label>
                 <description>Hard resets the Z-Wave stick - this will erase all configuration from the controller!</description>
                 <advanced>true</advanced>
-                <default>0</default>
-                <options>
-                    <option value="-232323">send</option>
-                </options>
+                <default>false</default>
             </parameter>
 
-            <parameter name="controller_exclude" type="integer" groupName="actions">
+            <parameter name="controller_exclude" type="boolean" groupName="actions">
                 <label>Exclude Devices</label>
                 <description>Puts the controller into Exclusion mode.</description>
                 <advanced>true</advanced>
-                <default>0</default>
-                <options>
-                    <option value="-232323">send</option>
-                </options>
+                <default>false</default>
             </parameter>
 
-            <parameter name="controller_sync" type="integer" groupName="actions">
+            <parameter name="controller_sync" type="boolean" groupName="actions">
                 <label>Synchronize network</label>
                 <description>Download the network with the SUC</description>
                 <advanced>true</advanced>
-                <default>0</default>
-                <options>
-                    <option value="-232323">send</option>
-                </options>
+                <default>false</default>
             </parameter>
 
             <parameter name="inclusion_mode" type="integer" groupName="network">

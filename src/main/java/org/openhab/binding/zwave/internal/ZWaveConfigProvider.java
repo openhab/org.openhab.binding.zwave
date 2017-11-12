@@ -285,29 +285,26 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
             }
         }
 
-        options = new ArrayList<ParameterOption>();
-        options.add(new ParameterOption(ZWaveBindingConstants.ACTION_CHECK_VALUE.toString(), "Do"));
-
         // If we're FAILED, allow removing from the controller
         // if (node.getNodeState() == ZWaveNodeState.FAILED) {
-        parameters.add(ConfigDescriptionParameterBuilder.create("action_remove", Type.INTEGER)
-                .withLabel("Remove device from controller").withAdvanced(true).withOptions(options)
-                .withDefault("-232323").withGroupName("actions").build());
+        parameters.add(ConfigDescriptionParameterBuilder.create("action_remove", Type.BOOLEAN)
+                .withLabel("Remove device from controller").withAdvanced(true).withOptions(options).withDefault("false")
+                .withGroupName("actions").build());
         // } else {
         // Otherwise, allow us to put this on the failed list
-        parameters.add(ConfigDescriptionParameterBuilder.create("action_failed", Type.INTEGER)
-                .withLabel("Set device as FAILed").withAdvanced(true).withOptions(options).withDefault("-232323")
+        parameters.add(ConfigDescriptionParameterBuilder.create("action_failed", Type.BOOLEAN)
+                .withLabel("Set device as FAILed").withAdvanced(true).withOptions(options).withDefault("false")
                 .withGroupName("actions").build());
         // }
 
         if (node.isInitializationComplete() == true) {
-            parameters.add(ConfigDescriptionParameterBuilder.create("action_reinit", Type.INTEGER)
-                    .withLabel("Reinitialise the device").withAdvanced(true).withOptions(options).withDefault("-232323")
+            parameters.add(ConfigDescriptionParameterBuilder.create("action_reinit", Type.BOOLEAN)
+                    .withLabel("Reinitialise the device").withAdvanced(true).withOptions(options).withDefault("false")
                     .withGroupName("actions").build());
         }
-        parameters.add(ConfigDescriptionParameterBuilder.create("action_heal", Type.INTEGER)
-                .withLabel("Heal the device").withAdvanced(true).withOptions(options).withDefault("-232323")
-                .withGroupName("actions").build());
+        parameters
+                .add(ConfigDescriptionParameterBuilder.create("action_heal", Type.BOOLEAN).withLabel("Heal the device")
+                        .withAdvanced(true).withOptions(options).withDefault("false").withGroupName("actions").build());
 
         return new ConfigDescription(uri, parameters, groups);
     }
@@ -403,13 +400,23 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         return null;
     }
 
+    /**
+     * Gets the configuration parameters for a ZWave Thing. If the thing contains no configuration, it will return null.
+     * 
+     * @param type the {@link ThingType} required to retrieve the configuration
+     * @return the {@link ConfigDescription}
+     */
     public static ConfigDescription getThingTypeConfig(ThingType type) {
         // Check that we know about the registry
         if (configDescriptionRegistry == null) {
             return null;
         }
 
-        return configDescriptionRegistry.getConfigDescription(type.getConfigDescriptionURI());
+        URI configUri = type.getConfigDescriptionURI();
+        if (configUri == null) {
+            return null;
+        }
+        return configDescriptionRegistry.getConfigDescription(configUri);
     }
 
     public static Thing getThing(ThingUID thingUID) {

@@ -138,8 +138,6 @@ public class ZWaveBindingConstants {
     public final static String CONFIG_BINDING_POLLINGPERIOD_LABEL = "@text/zwave.config.binding_pollingperiod_label";
     public final static String CONFIG_BINDING_POLLINGPERIOD_DESC = "@text/zwave.config.binding_pollingperiod_desc";
 
-    public final static Integer ACTION_CHECK_VALUE = new Integer(-232323);
-
     public final static Set<ThingTypeUID> SUPPORTED_BRIDGE_TYPES_UIDS = ImmutableSet.of(CONTROLLER_SERIAL);
 
     public static class I18nConstant {
