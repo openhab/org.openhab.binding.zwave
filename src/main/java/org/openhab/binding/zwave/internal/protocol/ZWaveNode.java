@@ -1377,7 +1377,7 @@ public class ZWaveNode {
     private class WakeupTimerTask extends TimerTask {
         // Two cycles through the loop are required to send a device to sleep
         private boolean triggered;
-        private ZWaveWakeUpCommandClass wakeUpCommandClass;
+        private final ZWaveWakeUpCommandClass wakeUpCommandClass;
 
         WakeupTimerTask() {
             logger.debug("NODE {}: Creating WakeupTimerTask", getNodeId());
