@@ -138,6 +138,69 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: Temperature Reporting Threshold</label>
+        <description><![CDATA[
+Reporting threshold for changes in the ambient temperature.<br /><h1>Overview</h1><p>This value determines the reporting threshold when association reporting is enabled. Unsupported values will be ignored.</p>
+        ]]></description>
+        <default>2</default>
+        <options>
+          <option value="0">Disabled</option>
+          <option value="1">0.5°</option>
+          <option value="2">1.0°</option>
+          <option value="3">1.5°</option>
+          <option value="4">2.0°</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration">
+        <label>3: Utility Lock Enable/Disable</label>
+        <description><![CDATA[
+Prevents setpoint changes at thermostat.<br /><h1>Overview</h1><p>If set to 0, the utility lock is disabled, all other values, 1-255, will enable the utility lock.  This will prevent changes to the setpoint at the thermostat screen.</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Utility lock disabled</option>
+          <option value="1">Utility lock enabled</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_7_1" type="integer" groupName="configuration">
+        <label>7: Thermostat Swing Temperature</label>
+        <description><![CDATA[
+Variance allowed from setpoint <br /><h1>Overview</h1><p>The thermostat swing temperature is in units of 0.5 degrees Fahrenheit. A value of 0x01 is 0.05F and 0x02 is 1.0F. The supported values may vary from thermostat to thermostat but typically the allowed values are 0.5F (0x01) to 4.0F (0x08).</p> <p>The Thermostat Swing Temperature configuration command sets swing temperature on the thermostat setpoint.</p>
+        ]]></description>
+        <default>2</default>
+        <options>
+          <option value="1">0.5°</option>
+          <option value="2">1.0°</option>
+          <option value="3">1.5°</option>
+          <option value="4">2.0°</option>
+          <option value="5">2.5°</option>
+          <option value="6">3.0°</option>
+          <option value="7">3.5°</option>
+          <option value="8">4.0°</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_9_1" type="integer" groupName="configuration">
+        <label>9: Thermostat Recovery Mode</label>
+        <description><![CDATA[
+Fast or Economy recovery mode.<br /><h1>Overview</h1><p>The Thermostat Recovery Mode can be either fast (0x01) or economy (0x02).</p>
+        ]]></description>
+        <default>2</default>
+        <options>
+          <option value="1">Fast recovery Mode</option>
+          <option value="2">Economy recovery Mode</option>
+        </options>
+      </parameter>
+
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter-group name="association">
         <context>link</context>
