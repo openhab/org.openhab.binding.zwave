@@ -148,7 +148,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
                 handleMultiChannelEncapResponse(serialMessage, offset + 1);
                 break;
             default:
-                logger.warn(String.format("NODE %d: Unsupported Command %d for command class %s (0x%02X).",
+                logger.debug(String.format("NODE %d: Unsupported Command %d for command class %s (0x%02X).",
                         getNode().getNodeId(), command, getCommandClass().getLabel(), getCommandClass().getKey()));
         }
     }
@@ -226,7 +226,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
             if (endpoint != null) {
                 zwaveCommandClass = endpoint.getCommandClass(commandClass);
                 if (zwaveCommandClass == null) {
-                    logger.warn(String.format(
+                    logger.debug(String.format(
                             "NODE %d: CommandClass %s (0x%02x) not implemented by endpoint %d, fallback to main node.",
                             getNode().getNodeId(), commandClass.getLabel(), commandClassCode, instance));
                 }
@@ -273,7 +273,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
 
         // TODO: handle dynamically added endpoints. Have never seen such a device.
         if (changingNumberOfEndpoints) {
-            logger.warn(
+            logger.debug(
                     "NODE {}: Changing number of endpoints, expect some weird behavior during multi channel handling.",
                     getNode().getNodeId());
         }
@@ -468,8 +468,8 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
                 if (originatingEndpointId <= 1) {
                     // and it originates from either a root command class or a command class on the first endpoint.
                     // high probability of a firmware bug.
-                    logger.warn("NODE {}: The originating endpoint is {}. Please notify author.", getNode().getNodeId(),
-                            originatingEndpointId);
+                    logger.debug("NODE {}: The originating endpoint is {}. Please notify author.",
+                            getNode().getNodeId(), originatingEndpointId);
                 }
             }
         }
@@ -489,7 +489,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
         if (originatingEndpointId == 0) {
             // originating endpoint == 0, get the command class from the root node.
             // encapsulation was useless.
-            logger.warn(String.format("NODE %d: Originating Command Class %s (0x%02x) was on the root node.",
+            logger.debug(String.format("NODE %d: Originating Command Class %s (0x%02x) was on the root node.",
                     getNode().getNodeId(), commandClass.getLabel(), commandClassCode));
             zwaveCommandClass = this.getNode().getCommandClass(commandClass);
         } else {
@@ -504,7 +504,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
             zwaveCommandClass = endpoint.getCommandClass(commandClass);
 
             if (zwaveCommandClass == null) {
-                logger.warn(String.format(
+                logger.debug(String.format(
                         "NODE %d: CommandClass %s (0x%02x) not implemented by endpoint %d, fallback to main node.",
                         getNode().getNodeId(), commandClass.getLabel(), commandClassCode, originatingEndpointId));
                 // this is a different case: we found the endpoint, but did not find the command class.
@@ -679,7 +679,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
                 }
                 break;
             default:
-                logger.warn(String.format("NODE %d: Unknown version %d for command class %s (0x%02x)",
+                logger.debug(String.format("NODE %d: Unknown version %d for command class %s (0x%02x)",
                         getNode().getNodeId(), getVersion(), getCommandClass().toString(), getCommandClass().getKey()));
                 break;
         }
