@@ -934,10 +934,12 @@ public class ZWaveNode {
      */
     public ZWaveCommandClassTransactionPayload setAssociation(ZWaveEndpoint endpoint, int groupId, int nodeId,
             int endpointId) {
-        ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
-                CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
-        if (multiAssociationCommandClass != null) {
-            return multiAssociationCommandClass.setAssociationMessage(groupId, nodeId, endpointId);
+        if (endpoints.size() > 1) {
+            ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
+                    CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
+            if (multiAssociationCommandClass != null) {
+                return multiAssociationCommandClass.setAssociationMessage(groupId, nodeId, endpointId);
+            }
         }
 
         ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(
@@ -950,10 +952,12 @@ public class ZWaveNode {
     }
 
     public ZWaveCommandClassTransactionPayload removeAssociation(Integer groupId, int nodeId, int endpointId) {
-        ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
-                CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
-        if (multiAssociationCommandClass != null) {
-            return multiAssociationCommandClass.removeAssociationMessage(groupId, nodeId, endpointId);
+        if (endpoints.size() > 1) {
+            ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
+                    CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
+            if (multiAssociationCommandClass != null) {
+                return multiAssociationCommandClass.removeAssociationMessage(groupId, nodeId, endpointId);
+            }
         }
 
         ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(
@@ -966,10 +970,12 @@ public class ZWaveNode {
     }
 
     public ZWaveCommandClassTransactionPayload clearAssociation(Integer groupId) {
-        ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
-                CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
-        if (multiAssociationCommandClass != null) {
-            return multiAssociationCommandClass.clearAssociationMessage(groupId);
+        if (endpoints.size() > 1) {
+            ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
+                    CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
+            if (multiAssociationCommandClass != null) {
+                return multiAssociationCommandClass.clearAssociationMessage(groupId);
+            }
         }
 
         ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(

@@ -34,8 +34,8 @@ public class ZWaveEndpoint {
     private final ZWaveDeviceClass deviceClass;
     private final int endpointId;
 
-    private Set<CommandClass> secureCommandClasses = new HashSet<CommandClass>();
-    private Map<CommandClass, ZWaveCommandClass> supportedCommandClasses = new ConcurrentHashMap<CommandClass, ZWaveCommandClass>();
+    private final Set<CommandClass> secureCommandClasses = new HashSet<CommandClass>();
+    private final Map<CommandClass, ZWaveCommandClass> supportedCommandClasses = new ConcurrentHashMap<CommandClass, ZWaveCommandClass>();
 
     /**
      * Constructor. Creates a new instance of the ZWaveEndpoint class.

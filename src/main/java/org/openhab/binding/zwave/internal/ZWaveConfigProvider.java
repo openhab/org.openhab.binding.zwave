@@ -402,7 +402,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
 
     /**
      * Gets the configuration parameters for a ZWave Thing. If the thing contains no configuration, it will return null.
-     * 
+     *
      * @param type the {@link ThingType} required to retrieve the configuration
      * @return the {@link ConfigDescription}
      */
@@ -530,7 +530,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
 
             // If the device supports multi_instance_association class, then add all controllable endpoints as well...
             // If this node also supports multi_instance class
-            if (supportsMultiInstanceAssociation == true
+            if (supportsMultiInstanceAssociation == true && node.getEndpointCount() > 1
                     && node.getCommandClass(CommandClass.COMMAND_CLASS_MULTI_CHANNEL) != null) {
                 // Loop through all the endpoints for this device and add any that are controllable
 

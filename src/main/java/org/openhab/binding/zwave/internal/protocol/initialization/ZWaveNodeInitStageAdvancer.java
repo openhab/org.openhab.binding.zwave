@@ -841,7 +841,7 @@ public class ZWaveNodeInitStageAdvancer {
                     } else {
                         ZWaveAssociation association;
                         if (multiAssociationCommandClass != null) {
-                            association = new ZWaveAssociation(controller.getOwnNodeId(), 0);
+                            association = new ZWaveAssociation(controller.getOwnNodeId(), 1);
                         } else {
                             association = new ZWaveAssociation(controller.getOwnNodeId());
                         }
