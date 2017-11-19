@@ -138,8 +138,10 @@ Parameter to set the sensor functions.<br /><ul><li>Bit 0: Disable magnetic inte
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="0" max="127">
         <label>7: Customer Function</label>
-        <description>Parameter to set the Customer Function. Bit 0: Reserved. Bit 1: Enable sending motion OFF report. 0: Disable, 1: Enable. Note: Depends on the Bit4, 0: Report Notification CC, Type: 0x07, Event: 0xFE 1: Sensor Binary Report,</description>
-        <default>4</default>
+        <description><![CDATA[
+Parameter to set the Customer Function. Bit 0: Reserved. Bit 1: Enable sending motion OFF report. 0: Disable, 1: Enable. Note: Depends on the Bit4, 0: Report Notification CC, Type: 0x07, Event: 0xFE 1: Sensor Binary Report,<br /><h1>Overview</h1><p>The default value has to be 20. With 20 the contact sensor throws a correct value.</p>
+        ]]></description>
+        <default>20</default>
         <options>
           <option value="22">Preset: PIR Super Sensitivity and Binary Report and Motion Off Report</option>
         </options>

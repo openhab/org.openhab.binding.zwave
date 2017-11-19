@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="kaipule_im20_00_000" listed="false">
+    <label>IM-20 Door Sensor</label>
+    <description><![CDATA[
+Door Sensor<br /><h1>Overview</h1><p>Factory Setting<br />Press the tamper switch 6 times in 2s, it will recover to factory setting after a period of time<br />(Please use the reset procedure only when the primary controller is missing or inoperable)</p> <br /><h2>Inclusion Information</h2><p>Enter the Inclusion Mode of gateway, and press the tamper switch 3 times within 1.5s,<br />then the door sensor will stay in enrollment state until successfully enrolled into network or<br />enrollment time out after 30s.</p> <br /><h2>Exclusion Information</h2><p>Enter the Exclusion Mode of gateway, and press the tamper switch 3 times within<br />1.5s, then the door sensor will be removed after a period of time.</p> <br /><h2>Wakeup Information</h2><p>a) Manual Wake-up<br />Quickly press tamper switch once, the door sensor will automatically send wake-up<br />information, and there will be 10s after wake-up to receive gateway setting information.<br />b) Automatic Wake-up<br />Default time of automatic wake-up is 24 hours, and there will be 10s after wake-up to receive<br />gateway setting information, the max automatic report time = 24 hours, minimum=30min</p>
+    ]]></description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="sensor_binary" typeId="sensor_binary">
+        <label>Binary Sensor</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="alarm_burglar" typeId="alarm_burglar">
+        <label>Alarm (burglar)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
+        </properties>
+      </channel>
+      <channel id="alarm_access" typeId="alarm_access">
+        <label>Alarm (access)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Kaipule Technology Co., Ltd.</property>
+      <property name="modelId">IM-20</property>
+      <property name="manufacturerId">0214</property>
+      <property name="manufacturerRef">0002:0001,0003:0001</property>
+      <property name="dbReference">254</property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Group 1</label>
+        <multipleLimit>2</multipleLimit>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>
