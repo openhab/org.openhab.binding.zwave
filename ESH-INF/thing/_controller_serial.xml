@@ -38,6 +38,7 @@
             <parameter name="port" type="text" required="true"
                 groupName="port">
                 <label>Serial Port</label>
+                <context>serial-port</context>
                 <description>Set the serial port used to access the Z-Wave stick</description>
                 <default></default>
             </parameter>
