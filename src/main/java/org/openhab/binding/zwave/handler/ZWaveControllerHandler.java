@@ -146,6 +146,8 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             networkKey = (String) param;
         }
         if (networkKey.length() == 0) {
+            logger.debug("No network key set by user - using random value.");
+
             // Create random network key
             networkKey = "";
             for (int cnt = 0; cnt < 16; cnt++) {
