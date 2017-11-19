@@ -31,7 +31,7 @@ One-key Scene Controller<br /><h2>Wakeup Information</h2><p>There are no availab
       <property name="vendor">Hank</property>
       <property name="modelId">SCN01</property>
       <property name="manufacturerId">0208</property>
-      <property name="manufacturerRef">0200:0009</property>
+      <property name="manufacturerRef">0200:0009,0201:0009</property>
       <property name="dbReference">488</property>
       <property name="defaultAssociations">1</property>
     </properties>
