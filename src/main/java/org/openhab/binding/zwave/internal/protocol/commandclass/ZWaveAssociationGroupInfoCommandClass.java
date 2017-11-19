@@ -334,6 +334,13 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
     public Collection<SerialMessage> initialize(boolean refresh) {
         ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
 
+        // Only initialise the root endpoint
+        if (getEndpoint() != null) {
+            logger.debug("NODE {}: Association group info ignoring endpoint {}", getNode().getNodeId(),
+                    getEndpoint().getEndpointId());
+            return result;
+        }
+
         // We need the number of groups as discovered by the AssociationCommandClass
         if (getNode().getAssociationGroups().size() == 0) {
             return result;
@@ -358,4 +365,5 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
 
         return result;
     }
+
 }
