@@ -27,6 +27,7 @@
       <property name="manufacturerId">0118</property>
       <property name="manufacturerRef">0003:0008,0202:0611</property>
       <property name="dbReference">158</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -46,6 +47,20 @@
           <option value="0">blue indicates off</option>
           <option value="1">blue indicates on</option>
         </options>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Group 1</label>
+        <description><![CDATA[
+lifeline<br /><h1>Overview</h1><p>The group identifier is "Group 1".</p> <p>Association group info report command class</p> <p>Profile: General lifeline (Profile MSB:0, Profile LSB: 1)</p> <p>Association group name report command class</p> <p>Group 1: lifeline</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
       </parameter>
 
     </config-description>

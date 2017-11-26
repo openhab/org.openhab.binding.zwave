@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="zooz_zse09_00_000" listed="false">
-    <label>ZSE09 Zooz Z-Wave Motion and Light Mini Sensor</label>
-    <description>Zooz Z-Wave Motion and Light Mini Sensor</description>
+    <label>ZSE09 Motion and Light Mini Sensor</label>
+    <description>Motion and Light Mini Sensor</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -47,7 +47,7 @@
       <property name="vendor">Zooz</property>
       <property name="modelId">ZSE09</property>
       <property name="manufacturerId">027A</property>
-      <property name="manufacturerRef">0083:0003</property>
+      <property name="manufacturerRef">0003:0083</property>
       <property name="dbReference">584</property>
       <property name="defaultAssociations">1,2</property>
     </properties>

@@ -19,16 +19,16 @@ Homeseer Z-Wave Door/Window Sensor<br /><h1>Overview</h1><p>HS-DS100+ is a batte
           <property name="binding:*:OnOffType">SENSOR_BINARY</property>
         </properties>
       </channel>
-      <channel id="alarm_burglar" typeId="alarm_burglar">
-        <label>Alarm (burglar)</label>
+      <channel id="alarm_tamper" typeId="alarm_tamper">
+        <label>Tamper Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">ALARM;type=BURGLAR</property>
         </properties>
       </channel>
-      <channel id="alarm_access" typeId="alarm_access">
-        <label>Alarm (access)</label>
+      <channel id="sensor_door" typeId="sensor_door">
+        <label>Door Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=ACCESS_CONTROL</property>
+          <property name="binding:*:OpenClosedType">ALARM;type=ACCESS_CONTROL</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -45,7 +45,7 @@ Homeseer Z-Wave Door/Window Sensor<br /><h1>Overview</h1><p>HS-DS100+ is a batte
       <property name="manufacturerId">000C</property>
       <property name="manufacturerRef">0201:0008</property>
       <property name="dbReference">732</property>
-      <property name="defaultAssociations">0</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -92,16 +92,16 @@ Enable / Disable BASIC SET command<br /><h1>Overview</h1><p>A setting of “0”
         <label>Association Groups</label>
       </parameter-group>
 
-      <parameter name="group_0" type="text" groupName="association" multiple="true">
-        <label>0: Group 1</label>
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Group 1</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p>Group 1 reports the sensor’s condition, battery level and tamper state. </p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
-      <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Group 2</label>
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Group 2</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p>Group 2 sends the BASIC SET command.</p>
         ]]></description>

@@ -44,7 +44,7 @@ Nano Switch Gen5 (without meter)<br /><h1>Overview</h1><p>Once installed behind 
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW139</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0003:008B</property>
+      <property name="manufacturerRef">0003:008B,0103:008B,0203:008B</property>
       <property name="dbReference">648</property>
       <property name="defaultAssociations">1</property>
     </properties>
