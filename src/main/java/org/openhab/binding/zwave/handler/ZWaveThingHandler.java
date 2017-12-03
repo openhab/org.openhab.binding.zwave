@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TimeZone;
 import java.util.concurrent.ScheduledFuture;
@@ -1396,7 +1397,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         for (String property : config.getProperties().keySet()) {
             logger.debug("NODE {}: Property to update: {}, {}, {}", nodeId, property, config.get(property),
                     originalConfig.get(property));
-            if (config.get(property).equals(originalConfig.get(property)) == false) {
+            if (!Objects.equals(config.get(property), originalConfig.get(property))) {
                 update = true;
                 break;
             }
