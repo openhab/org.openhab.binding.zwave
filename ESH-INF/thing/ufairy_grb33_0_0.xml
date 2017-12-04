@@ -42,7 +42,7 @@
       <property name="vendor">UFairy G.R. Tech</property>
       <property name="modelId">GR-B3-3</property>
       <property name="manufacturerId">0152</property>
-      <property name="manufacturerRef">0A00:0004</property>
+      <property name="manufacturerRef">0500:0005,0A00:0004</property>
       <property name="dbReference">686</property>
     </properties>
 
