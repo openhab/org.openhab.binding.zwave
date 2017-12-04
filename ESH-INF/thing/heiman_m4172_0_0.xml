@@ -5,16 +5,28 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="fireangle_zst630_00_000" listed="false">
-    <label>ZST-630 Thermoptek Smoke Alarm/Smoke Detector</label>
-    <description>Thermoptek Smoke Alarm/Smoke Detector</description>
+  <thing-type id="heiman_m4172_00_000" listed="false">
+    <label>M417-2 Smart Water Leakage Sensor</label>
+    <description>Smart Water Leakage Sensor</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="alarm_smoke" typeId="alarm_smoke">
-        <label>Smoke Alarm</label>
+      <channel id="sensor_binary" typeId="sensor_binary">
+        <label>Binary Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM,COMMAND_CLASS_BASIC;type=SMOKE</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY,COMMAND_CLASS_BASIC</property>
+        </properties>
+      </channel>
+      <channel id="alarm_burglar" typeId="alarm_burglar">
+        <label>Alarm (burglar)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
+        </properties>
+      </channel>
+      <channel id="alarm_flood" typeId="alarm_flood">
+        <label>Alarm (flood)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=FLOOD</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -26,11 +38,11 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Fireangle</property>
-      <property name="modelId">ZST-630</property>
-      <property name="manufacturerId">026F</property>
-      <property name="manufacturerRef">0001:0001</property>
-      <property name="dbReference">733</property>
+      <property name="vendor">Heiman Technology Co. Ltd</property>
+      <property name="modelId">M417-2</property>
+      <property name="manufacturerId">0260</property>
+      <property name="manufacturerRef">8004:1000</property>
+      <property name="dbReference">738</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -45,17 +57,6 @@
 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
-        <description>Z-Wave Plus Lifeline</description>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Basic Report</label>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Notification Report</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

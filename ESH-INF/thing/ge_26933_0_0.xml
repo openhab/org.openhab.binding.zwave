@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="ge_26933_00_000" listed="false">
+    <label>26933/ZW3008 In-Wall Smart Motion Dimmer</label>
+    <description>In-Wall Smart Motion Dimmer</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+        </properties>
+      </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SCENE_ACTIVATION</property>
+        </properties>
+      </channel>
+      <channel id="alarm_burglar" typeId="alarm_burglar">
+        <label>Alarm (burglar)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
+        </properties>
+      </channel>
+      <channel id="switch_dimmer1" typeId="switch_dimmer">
+        <label>Switch 1</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
+        </properties>
+      </channel>
+      <channel id="alarm_burglar2" typeId="alarm_burglar">
+        <label>Alarm (burglar) 2</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:2,COMMAND_CLASS_BASIC:2</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Jasco Products</property>
+      <property name="modelId">26933/ZW3008</property>
+      <property name="manufacturerId">0063</property>
+      <property name="manufacturerRef">494D:3034</property>
+      <property name="dbReference">740</property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: Timeout Duration</label>
+        <description>Amount of time the light stays on after motion stops</description>
+        <default>5</default>
+        <options>
+          <option value="0">Test (5s)</option>
+          <option value="1">1 minute</option>
+          <option value="5">5 minutes</option>
+          <option value="15">15 minutes</option>
+          <option value="30">30 minutes</option>
+          <option value="255">Disable timeout</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>2: Dim Level</label>
+        <description><![CDATA[
+Change brightness of associated light bulb(s)<br /><h1>Overview</h1><p>Valid values are 0-99 or 255 for last dimming level</p>
+        ]]></description>
+        <default>255</default>
+      </parameter>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration">
+        <label>3: Operation Mode</label>
+        <description>Sets Manual, Vacancy (manual on, auto off), Occupancy (auto on, auto off)</description>
+        <default>3</default>
+        <options>
+          <option value="1">Manual</option>
+          <option value="2">Vacancy</option>
+          <option value="3">Occupancy</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_4_1" type="integer" groupName="configuration">
+        <label>4: Association Mode</label>
+        <description>Enable/Disable Association Mode</description>
+        <default>1</default>
+        <options>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_5_1" type="integer" groupName="configuration">
+        <label>5: Invert Switch</label>
+        <description>In a 3-way configuration, invert the connected Add-On Switch buttons</description>
+        <default>0</default>
+        <options>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_6_1" type="integer" groupName="configuration">
+        <label>6: Motion Sensor</label>
+        <description>Enable/Disable Motion Sensor</description>
+        <default>1</default>
+        <options>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_7_1" type="integer" groupName="configuration"
+                 min="1" max="99">
+        <label>7: Z-Wave Command Dim Step</label>
+        <description><![CDATA[
+Indicates how many levels the dimmer will change for each dimming step.<br /><h1>Overview</h1><p>1=Default<br />2-99=Steps/Levels</p>
+        ]]></description>
+        <default>1</default>
+      </parameter>
+
+      <parameter name="config_8_2" type="integer" groupName="configuration"
+                 min="1" max="255">
+        <label>8: Z-Wave Command Dim Rate</label>
+        <description><![CDATA[
+How often the dim level will change in 10 millisecond resolution.<br /><h1>Overview</h1><p>For example, if you set this parameter to 1, then every 10ms the dim level will change. If you set it to 255, then every 2.55 seconds the dim level will change. The default is 3 (30 ms).</p>
+        ]]></description>
+        <default>3</default>
+      </parameter>
+
+      <parameter name="config_9_1" type="integer" groupName="configuration"
+                 min="1" max="99">
+        <label>9: Local Control Dim Step</label>
+        <description><![CDATA[
+Indicates how many levels the dimmer will change for each dimming step.<br /><h1>Overview</h1><p>1=Default<br />2-99=Steps/Levels</p>
+        ]]></description>
+        <default>1</default>
+      </parameter>
+
+      <parameter name="config_10_2" type="integer" groupName="configuration"
+                 min="1" max="255">
+        <label>10: Local Control Dim Rate</label>
+        <description><![CDATA[
+How often the dim level will change in 10 millisecond resolution.<br /><h1>Overview</h1><p>For example, if you set this parameter to 1, then every 10ms the dim level will change. If you set it to 255, then every 2.55 seconds the dim level will change. The default is 3 (30 ms).</p>
+        ]]></description>
+        <default>3</default>
+      </parameter>
+
+      <parameter name="config_11_1" type="integer" groupName="configuration"
+                 min="1" max="99">
+        <label>11: ALL ON/ALL OFF Dim Step</label>
+        <description><![CDATA[
+Indicates how many levels the dimmer will change for each dimming step.<br /><h1>Overview</h1><p>1=Default<br />2=99=Steps/Levels</p>
+        ]]></description>
+        <default>1</default>
+      </parameter>
+
+      <parameter name="config_12_2" type="integer" groupName="configuration"
+                 min="1" max="255">
+        <label>12: ALL ON/ALL OFF Dim Rate</label>
+        <description><![CDATA[
+How often the dim level will change in 10 millisecond resolution.<br /><h1>Overview</h1><p>For example, if you set this parameter to 1, then every 10ms the dim level will change. If you set it to 255, then every 2.55 seconds the dim level will change. The default is 3 (30 ms).</p>
+        ]]></description>
+        <default>3</default>
+      </parameter>
+
+      <parameter name="config_13_1" type="integer" groupName="configuration">
+        <label>13: Motion Sensor Sensitivity</label>
+        <description>Amount of motion required to turn on the light</description>
+        <default>2</default>
+        <options>
+          <option value="1">High</option>
+          <option value="2">Medium</option>
+          <option value="3">Low</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_14_1" type="integer" groupName="configuration">
+        <label>14: Light Sensing</label>
+        <description><![CDATA[
+Enable/Disable whether motion sensor only turns light on if room is dark<br /><h1>Overview</h1><p>Light Sensing does not apply in Manual or Vacancy modes</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_15_2" type="integer" groupName="configuration"
+                 min="0" max="110">
+        <label>15: Reset Cycle</label>
+        <description><![CDATA[
+Reset Cycle<br /><h1>Overview</h1><p>0=disable<br />1=10 seconds<br />2=20 seconds<br />3=30 seconds<br />4=45 seconds<br />5 to 109 = 15 second intervals, starting at 60 seconds<br />110=27 minutes 15 seconds</p>
+        ]]></description>
+        <default>2</default>
+      </parameter>
+
+      <parameter name="config_16_1" type="integer" groupName="configuration">
+        <label>16: Switch Mode</label>
+        <default>0</default>
+        <options>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
+        </options>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_17_1" type="integer" groupName="configuration"
+                 min="0" max="99">
+        <label>17: Switch Level</label>
+        <description><![CDATA[
+Switch Level<br /><h1>Overview</h1><p>0=disabled (default)<br />1-99=Brightness Level</p>
+        ]]></description>
+        <default>0</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_18_1" type="integer" groupName="configuration">
+        <label>18: Dim Up Rate</label>
+        <default>0</default>
+        <options>
+          <option value="0">Dim up the light to the default level quickly (Default)</option>
+          <option value="1">Dim up the light to the default level slowly</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_19_1" type="integer" groupName="configuration">
+        <label>19: Exclusion mode</label>
+        <default>0</default>
+        <options>
+          <option value="0">Press and release any button on the switch (Default)</option>
+          <option value="1">Press and release “X” btn and repeat for “ON“ btn</option>
+        </options>
+        <advanced>true</advanced>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Z-Wave Plus Lifeline</label>
+        <description>Z-Wave Plus Lifeline, Multi-Level Report</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Basic Set Local Load</label>
+        <description>Supports Basic Set and is controlled with the local load</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Basic Set Buttons</label>
+        <description>Supports Basic Set and is controlled by pressing the On or Off buttons</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>

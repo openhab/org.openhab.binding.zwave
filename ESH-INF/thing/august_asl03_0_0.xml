@@ -5,16 +5,22 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="fireangle_zst630_00_000" listed="false">
-    <label>ZST-630 Thermoptek Smoke Alarm/Smoke Detector</label>
-    <description>Thermoptek Smoke Alarm/Smoke Detector</description>
+  <thing-type id="august_asl03_00_000" listed="false">
+    <label>ASL-03 August Smart Lock Pro 3rd Gen</label>
+    <description>August Smart Lock Pro 3rd Gen</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="alarm_smoke" typeId="alarm_smoke">
-        <label>Smoke Alarm</label>
+      <channel id="lock_door" typeId="lock_door">
+        <label>Door Lock</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM,COMMAND_CLASS_BASIC;type=SMOKE</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_DOOR_LOCK</property>
+        </properties>
+      </channel>
+      <channel id="alarm_entry" typeId="alarm_entry">
+        <label>Alarm (access)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -26,12 +32,11 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Fireangle</property>
-      <property name="modelId">ZST-630</property>
-      <property name="manufacturerId">026F</property>
+      <property name="vendor">August Smart Locks</property>
+      <property name="modelId">ASL-03</property>
+      <property name="manufacturerId">033F</property>
       <property name="manufacturerRef">0001:0001</property>
-      <property name="dbReference">733</property>
-      <property name="defaultAssociations">1</property>
+      <property name="dbReference">743</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -44,18 +49,18 @@
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Lifeline</label>
-        <description>Z-Wave Plus Lifeline</description>
+        <label>1: report1</label>
+        <description><![CDATA[
+battery status, door lock operation status, and device reset locally<br /><h1>Overview</h1><p>The Lifeline group on this lock is used to report battery status, door lock operation status, and device reset locally notifications to nodes on the group list.</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Basic Report</label>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Notification Report</label>
+        <label>2: report2</label>
+        <description><![CDATA[
+door lock operation status<br /><h1>Overview</h1><p>The Doorlock Op group on this lock is used to report door lock operation status to nodes on the group list.</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
