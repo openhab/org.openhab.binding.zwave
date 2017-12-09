@@ -11,10 +11,16 @@
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm (general)</label>
+      <channel id="alarm_smoke" typeId="alarm_smoke">
+        <label>Smoke Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM,BASIC;type=GENERAL</property>
+          <property name="binding:*:OnOffType">ALARM,BASIC;type=SMOKE</property>
+        </properties>
+      </channel>
+      <channel id="alarm_tamper" typeId="alarm_tamper">
+        <label>Tamper Alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM,BASIC;type=SYSTEM, event=6</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -46,6 +52,16 @@
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description>Z-Wave Plus Lifeline</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Basic Report</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Notification Report</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

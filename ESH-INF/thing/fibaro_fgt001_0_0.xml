@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="fibaro_fgt001_00_000" listed="false">
+    <label>FGT-001 Thermostatic Valve</label>
+    <description>Thermostatic Valve</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="sensor_binary" typeId="sensor_binary">
+        <label>Binary Sensor</label>
+        <properties>
+          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature" typeId="sensor_temperature">
+        <label>Sensor (temperature)</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_mode" typeId="fibaro_fgt001_00_000_thermostat_mode">
+        <label>Thermostat mode</label>
+        <properties>
+          <property name="binding:*:DecimalType">THERMOSTAT_MODE</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
+        <label>Setpoint (heating)</label>
+        <properties>
+          <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=HEATING</property>
+        </properties>
+      </channel>
+      <channel id="alarm_power" typeId="alarm_power">
+        <label>Alarm (power)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="alarm_system" typeId="alarm_system">
+        <label>Alarm (system)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=SYSTEM</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">BATTERY</property>
+        </properties>
+      </channel>
+      <channel id="time_offset" typeId="time_offset">
+        <label>Clock Time Offset</label>
+        <properties>
+          <property name="binding:*:DecimalType">CLOCK</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_mode1" typeId="fibaro_fgt001_00_000_thermostat_mode">
+        <label>Thermostat mode 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">THERMOSTAT_MODE:1</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_setpoint_heating1" typeId="thermostat_setpoint">
+        <label>Setpoint (heating) 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT:1;type=HEATING</property>
+        </properties>
+      </channel>
+      <channel id="alarm_power1" typeId="alarm_power">
+        <label>Alarm (power) 1</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM:1;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="alarm_system1" typeId="alarm_system">
+        <label>Alarm (system) 1</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM:1;type=SYSTEM</property>
+        </properties>
+      </channel>
+      <channel id="battery-level1" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">BATTERY:1</property>
+        </properties>
+      </channel>
+      <channel id="time_offset1" typeId="time_offset">
+        <label>Clock Time Offset 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">CLOCK:1</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature2" typeId="sensor_temperature">
+        <label>Sensor (temperature) 2</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:2;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="alarm_power2" typeId="alarm_power">
+        <label>Alarm (power) 2</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM:2;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="battery-level2" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">BATTERY:2</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Fibargroup</property>
+      <property name="modelId">FGT-001</property>
+      <property name="manufacturerId">010F</property>
+      <property name="manufacturerRef">1301:1000</property>
+      <property name="dbReference">749</property>
+    </properties>
+
+  </thing-type>
+
+  <channel-type id="fibaro_fgt001_00_000_thermostat_mode">
+    <item-type>Number</item-type>
+    <label>Thermostat Mode</label>
+    <description>Sets the thermostat mode</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+        <option value="1">Heat</option>
+        <option value="0">Off</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="fibaro_fgt001_00_000_thermostat_mode">
+    <item-type>Number</item-type>
+    <label>Thermostat Mode</label>
+    <description>Sets the thermostat mode</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+        <option value="1">Heat</option>
+        <option value="0">Off</option>
+      </options>
+    </state>
+  </channel-type>
+
+</thing:thing-descriptions>
