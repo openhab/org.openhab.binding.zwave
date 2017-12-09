@@ -13,7 +13,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.library.types.HSBType;
 import org.eclipse.smarthome.core.library.types.PercentType;
 import org.eclipse.smarthome.core.types.Command;
@@ -87,19 +86,10 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
         State state;
         switch (channel.getDataType()) {
             case HSBType:
-                float[] hsb = new float[3];
                 int red = colorMap.get(ZWaveColorType.RED) != null ? colorMap.get(ZWaveColorType.RED) : 0;
                 int green = colorMap.get(ZWaveColorType.GREEN) != null ? colorMap.get(ZWaveColorType.GREEN) : 0;
                 int blue = colorMap.get(ZWaveColorType.BLUE) != null ? colorMap.get(ZWaveColorType.BLUE) : 0;
-                RGBtoHSB(red, green, blue, hsb);
-                HSBType hsbState = new HSBType(new DecimalType(hsb[0]), new PercentType((int) hsb[1]),
-                        new PercentType((int) hsb[2]));
-
-                if ("RGB".equals(channel.getArguments().get("colorMode"))) {
-                    state = new HSBType(hsbState.getHue(), PercentType.HUNDRED, PercentType.HUNDRED);
-                } else {
-                    state = hsbState;
-                }
+                state = HSBType.fromRGB(red, green, blue);
                 break;
             case PercentType:
                 if ("COLD_WHITE".equals(channel.getArguments().get("colorMode"))) {
@@ -131,22 +121,19 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
 
         // Since we get an HSB, there is brightness information. However, we only deal with the color class here
         // so we need to scale the color and let the brightness be handled by the multi_level command class
-        double scaling;
         if ("RGB".equals(channel.getArguments().get("colorMode"))) {
             // Command must be color - convert to zwave format
             HSBType color = (HSBType) command;
             logger.debug("NODE {}: Converted command '{}' to value {} {} {} for channel = {}, endpoint = {}.",
                     node.getNodeId(), command.toString(), color.getRed().intValue(), color.getGreen().intValue(),
                     color.getBlue().intValue(), channel.getUID(), channel.getEndpoint());
-            scaling = 100 / color.getBrightness().doubleValue() * 255 / 100;
 
             // Queue the command
             if (color.getSaturation().equals(PercentType.ZERO)) {
                 rawMessages = commandClass.setColor(0, 0, 0, 255, 0);
             } else {
-                rawMessages = commandClass.setColor((int) (color.getRed().doubleValue() * scaling),
-                        (int) (color.getGreen().doubleValue() * scaling),
-                        (int) (color.getBlue().doubleValue() * scaling), 0, 0);
+                rawMessages = commandClass.setColor(color.getRed().intValue(), color.getGreen().intValue(),
+                        color.getBlue().intValue(), 0, 0);
             }
         } else if ("COLD_WHITE".equals(channel.getArguments().get("colorMode"))) {
             PercentType color = (PercentType) command;
@@ -187,41 +174,5 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
             messages.add(node.encapsulate(msg, commandClass, channel.getEndpoint()));
         }
         return messages;
-    }
-
-    public float[] RGBtoHSB(int r, int g, int b, float[] hsbvals) {
-        float hue, saturation, brightness;
-        int max = (r > g) ? r : g;
-        if (b > max) {
-            max = b;
-        }
-        int min = (r < g) ? r : g;
-        if (b < min) {
-            min = b;
-        }
-        brightness = max / 2.55f;
-        saturation = (max != 0 ? ((float) (max - min)) / ((float) max) : 0) * 100;
-        if (saturation == 0) {
-            hue = 0;
-        } else {
-            float red = ((float) (max - r)) / ((float) (max - min));
-            float green = ((float) (max - g)) / ((float) (max - min));
-            float blue = ((float) (max - b)) / ((float) (max - min));
-            if (r == max) {
-                hue = blue - green;
-            } else if (g == max) {
-                hue = 2.0f + red - blue;
-            } else {
-                hue = 4.0f + green - red;
-            }
-            hue = hue / 6.0f * 360;
-            if (hue < 0) {
-                hue = hue + 360.0f;
-            }
-        }
-        hsbvals[0] = hue;
-        hsbvals[1] = saturation;
-        hsbvals[2] = brightness;
-        return hsbvals;
     }
 }
