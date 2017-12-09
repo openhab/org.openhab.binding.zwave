@@ -178,11 +178,9 @@ Maximum Brightening level.<br /> Default setting: 255<br /> Available settings: 
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration"
-                 min="3" max="255">
+                 min="2" max="255">
         <label>13: Minimum dim level</label>
-        <description><![CDATA[
-Minimum dim level.<br /> Default setting: 2<br /> Available settings: 3 - 255.
-        ]]></description>
+        <description>Minimum dim level. Default setting: 2 Available settings: 3 - 255.</description>
         <default>2</default>
       </parameter>
 
