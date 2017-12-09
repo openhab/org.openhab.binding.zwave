@@ -8,6 +8,7 @@
 package org.openhab.binding.zwave.internal.converter;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -15,6 +16,7 @@ import java.util.Map;
 
 import javax.measure.quantity.Temperature;
 
+import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.library.types.QuantityType;
 import org.eclipse.smarthome.core.library.unit.ImperialUnits;
 import org.eclipse.smarthome.core.library.unit.SIUnits;
@@ -22,8 +24,10 @@ import org.eclipse.smarthome.core.library.unit.SmartHomeUnits;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.type.ChannelTypeUID;
 import org.eclipse.smarthome.core.types.State;
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
@@ -31,6 +35,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSensorCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSensorCommandClass.SensorType;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 
 /**
@@ -40,7 +45,25 @@ import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueE
  */
 public class ZWaveMultiLevelSensorConverterTest {
     final ChannelUID uid = new ChannelUID("zwave:node:bridge:channel");
-    final ChannelTypeUID typeUid = new ChannelTypeUID("zwave:channel");
+    final ChannelTypeUID typeUid = new ChannelTypeUID("zwave:sensor_report");
+
+    private ZWaveControllerHandler controller;
+    private ZWaveThingChannel channel;
+    private ZWaveCommandClassValueEvent event;
+    private ZWaveNode node;
+    private DecimalType decimalType;
+    private ZWaveMultiLevelSensorCommandClass commandClass;
+
+    @Before
+    public void setup() {
+        controller = mock(ZWaveControllerHandler.class);
+        channel = mock(ZWaveThingChannel.class);
+        event = mock(ZWaveCommandClassValueEvent.class);
+        node = mock(ZWaveNode.class);
+        decimalType = mock(DecimalType.class);
+        commandClass = mock(ZWaveMultiLevelSensorCommandClass.class);
+        when(node.resolveCommandClass(CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL, 0)).thenReturn(commandClass);
+    }
 
     private ZWaveThingChannel createChannel(String type) {
         Map<String, String> args = new HashMap<String, String>();
@@ -93,5 +116,19 @@ public class ZWaveMultiLevelSensorConverterTest {
         assertEquals(QuantityType.class, state.getClass());
         assertEquals(ImperialUnits.FAHRENHEIT, ((QuantityType) state).getUnit());
         assertEquals(21.3, ((QuantityType<Temperature>) state).doubleValue(), 0.01);
+    }
+
+    @Test
+    public void commandTemperature() {
+        ZWaveMultiLevelSensorConverter sut = new ZWaveMultiLevelSensorConverter(controller);
+        Map<String, String> configMap = new HashMap<>();
+        configMap.put("type", "TEMPERATURE");
+        configMap.put("config_scale", "0");
+        BigDecimal value = BigDecimal.valueOf(23.4);
+        when(channel.getArguments()).thenReturn(configMap);
+        when(decimalType.toBigDecimal()).thenReturn(value);
+        when(channel.getChannelTypeUID()).thenReturn(new ChannelTypeUID("zwave:sensor_report"));
+        sut.receiveCommand(channel, node, decimalType);
+        verify(commandClass).getReportMessage(SensorType.TEMPERATURE, 0, value);
     }
 }

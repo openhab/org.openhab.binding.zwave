@@ -19,28 +19,32 @@
 
         <config-description>
             <parameter-group name="port">
+                <context>communication</context>
                 <label>Port Configuration</label>
                 <description></description>
             </parameter-group>
 
             <parameter-group name="network">
+                <context>wireless</context>
                 <label>Z-Wave Network Settings</label>
                 <description></description>
             </parameter-group>
 
             <parameter-group name="heal">
+                <context>health</context>
                 <label>Z-Wave Network Heal</label>
                 <description></description>
             </parameter-group>
 
             <parameter-group name="actions">
+                <context></context>
                 <label>Actions</label>
                 <description></description>
             </parameter-group>
 
-            <parameter name="port" type="text" required="true" groupName="port">
+            <parameter name="port" type="text" required="true"
+                groupName="port">
                 <label>Serial Port</label>
-                <context>serial-port</context>
                 <description>Set the serial port used to access the Z-Wave stick</description>
                 <default></default>
             </parameter>
@@ -58,19 +62,24 @@
                 <advanced>true</advanced>
             </parameter>
 
-            <parameter name="controller_sisnode" type="integer" groupName="network" min="1" max="232">
-                <label>SIS Node</label>
-                <description>Set node for SIS that will receive updates from other controllers in the network. If there is no SIS in the network, the controller will be set as SIS.</description>
+            <parameter name="controller_suc" type="boolean" groupName="network">
+                <label>Controller is SUC</label>
+                <description>Controller is SUC and will receive updates from other controllers in the network</description>
+                <options>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </options>
+                <default>false</default>
                 <advanced>true</advanced>
             </parameter>
-
+            
             <parameter name="controller_inclusiontimeout" type="integer" groupName="network" min="20" max="300">
                 <label>Inclusion Mode Timeout</label>
                 <description>Sets the amount of time the controller will keep inclusion and exclusion mode enabled.</description>
                 <default>30</default>
                 <advanced>true</advanced>
             </parameter>
-
+            
             <parameter name="controller_wakeupperiod" type="integer" groupName="network" min="60" max="86400">
                 <label>Default Wakeup Period</label>
                 <description>Sets the system wide default wakeup period for battery devices (in seconds).</description>
@@ -116,7 +125,7 @@
                     <option value="0">Midnight</option>
                 </options>
             </parameter>
-           
+
             <parameter name="controller_softreset" type="boolean" groupName="actions">
                 <label>Soft Reset Controller</label>
                 <description>Resets the Z-Wave stick - similar to removing the stick from the USB.</description>
@@ -141,6 +150,13 @@
             <parameter name="controller_sync" type="boolean" groupName="actions">
                 <label>Synchronize network</label>
                 <description>Download the network with the SUC</description>
+                <advanced>true</advanced>
+                <default>false</default>
+            </parameter>
+
+            <parameter name="action_heal" type="boolean" groupName="actions">
+                <label>Heal network</label>
+                <description>Start a heal on all nodes</description>
                 <advanced>true</advanced>
                 <default>false</default>
             </parameter>
@@ -192,7 +208,7 @@ In this mode, only <i>Entry Control Devices</i> such as locks will be securely i
                 <advanced>true</advanced>
                 <default></default>
             </parameter>
-
+            
         </config-description>
     </bridge-type>
 

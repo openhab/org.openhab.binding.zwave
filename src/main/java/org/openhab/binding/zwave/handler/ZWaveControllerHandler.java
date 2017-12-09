@@ -49,6 +49,7 @@ import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInitializationStateEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkStateEvent;
+import org.openhab.binding.zwave.internal.protocol.initialization.ZWaveNodeInitStage;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RemoveFailedNodeMessageClass.Report;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.osgi.framework.ServiceRegistration;
@@ -344,6 +345,14 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             if ("heal".equals(cfg[0])) {
                 healTime = ((BigDecimal) value).intValue();
                 initializeHeal();
+            }
+
+            if ("action".equals(cfg[0])) {
+                if ("heal".equals(cfg[1]) && value instanceof Boolean && ((Boolean) value) == true) {
+                    for (ZWaveNode node : controller.getNodes()) {
+                        node.setNodeStage(ZWaveNodeInitStage.HEAL_START);
+                    }
+                }
             }
 
             configuration.put(configurationParameter.getKey(), value);
@@ -656,7 +665,6 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         if (discoveryService == null) {
             return;
         }
-        // discoveryService.deviceDiscovered(nodeId);
     }
 
     public void deviceAdded(ZWaveNode node) {
@@ -770,6 +778,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             return false;
         }
 
+        logger.debug("NODE {}: Starting heal on node!", nodeId);
         node.healNode();
 
         return true;

@@ -194,4 +194,17 @@ public class ZWaveMultiLevelSensorCommandClassTest extends ZWaveCommandClassTest
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV5));
     }
 
+    @Test
+    public void getReportMessage() {
+        ZWaveMultiLevelSensorCommandClass cls = (ZWaveMultiLevelSensorCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL);
+        ZWaveCommandClassTransactionPayload msg;
+
+        cls.setVersion(5);
+        msg = cls.getReportMessage(SensorType.TEMPERATURE, 0, BigDecimal.valueOf(23.4));
+
+        byte[] expectedResponseV5 = { 0x31, 0x05, 0x01, 0x22, 0x00, (byte) 0xEA };
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV5));
+    }
+
 }
