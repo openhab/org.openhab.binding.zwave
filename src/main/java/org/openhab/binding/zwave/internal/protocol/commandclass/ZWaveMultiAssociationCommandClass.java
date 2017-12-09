@@ -241,7 +241,7 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
 
         // We only use the multi-endpoint version here, even if endpoint is 0.
         // This is needed since at least in some devices using the multi-instance version
-        // configures the device to send mutli-instance responses.
+        // configures the device to send multi-instance responses.
         ByteArrayOutputStream outputData = new ByteArrayOutputStream();
         outputData.write(group);
 

@@ -1093,7 +1093,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     // check this here, update the value and send the request...
                     // Do this first so we only process the data if we're not waiting to send
                     ZWaveConfigSubParameter subParameter = subParameters.get(parameter.getIndex());
-
                     if (subParameter != null) {
                         // Get the new value based on the sub-parameter bitmask
                         int value = subParameter.getValue(parameter.getValue());
@@ -1147,8 +1146,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                         // Build the configuration value
                         for (ZWaveAssociation groupMember : groupMembers) {
-                            logger.debug("NODE {}: Update ASSOCIATION group_{}: Adding node_{}_{}", nodeId, groupId,
-                                    groupMember.getNode(), groupMember.getEndpoint());
+                            logger.debug("NODE {}: Update ASSOCIATION group_{}: Adding {}", nodeId, groupId,
+                                    groupMember);
                             group.add(groupMember.toString());
                         }
                         logger.debug("NODE {}: Update ASSOCIATION group_{}: {} members", nodeId, groupId, group.size());

@@ -158,6 +158,7 @@ Vivint Element Thermostat w/ other sensors<br /><h2>Inclusion Information</h2><p
       <property name="manufacturerId">0098</property>
       <property name="manufacturerRef">C801:001D</property>
       <property name="dbReference">742</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -178,13 +179,16 @@ Retrieves the HVAC Settings<br /><h1>Overview</h1><p>Byte 1 = HVAC Setup: Normal
         <default>0</default>
       </parameter>
 
-      <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: C-Wire/Battery Status</label>
         <description><![CDATA[
 Query power which source is in use<br /><h1>Overview</h1><p>If 0x01, the thermostat is powered by a C-wire.</p> <p>If 0x02, the thermostat is powered by batteries.</p>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="1">Powered by C-Wire</option>
+          <option value="2">Powered by battery</option>
+        </options>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
@@ -203,6 +207,7 @@ This value determines the reporting threshold<br /><h1>Overview</h1><p>This valu
 Auxiliary / Emergency Heat Pump Mode<br /><h1>Overview</h1><p>If set to 0, auxiliary / emergency heat is disabled.</p> <p>All other values (1-255) enable auxiliary / emergency heat.</p> <p>This can only be enabled when the thermostat is set to Heat Pump mode.</p>
         ]]></description>
         <default>0</default>
+        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
@@ -272,6 +277,7 @@ Toggle Multicast Mode<br /><h1>Overview</h1><p>If set to 0, Multicast is disable
           <option value="0">Disabled</option>
           <option value="1">Enabled</option>
         </options>
+        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
@@ -312,6 +318,7 @@ Activate Fan w/ auto shutoff timer<br /><h1>Overview</h1><p>This configuration i
 Temperature Calibration / Offset<br /><h1>Overview</h1><p>This configuration is used to set the temperature offset of the thermostat. The valid values are from -6 to 6. Note: although the thermostat UI can set calibrations in intervals of 0.5°F, this parameter can only accept whole numbers.</p>
         ]]></description>
         <default>0</default>
+        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_18_1" type="integer" groupName="configuration">
@@ -352,6 +359,18 @@ This value determines the reporting threshold<br /><h1>Overview</h1><p>This valu
 Enable or Disable the Utility Lock<br /><h1>Overview</h1><p>If set to 0, the utility lock is disabled. All other values (1-255) enable the utility lock.</p>
         ]]></description>
         <default>0</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Z-Wave Plus Lifeline</label>
+        <multipleLimit>2</multipleLimit>
       </parameter>
 
     </config-description>

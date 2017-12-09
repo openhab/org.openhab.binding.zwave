@@ -88,7 +88,7 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
 
         // ZWave plus devices seem to return 0 if we request a parameter that doesn't exist
         if (size == 0) {
-            logger.warn("NODE {}: Parameter {} response has 0 length", getNode().getNodeId(), parameter);
+            logger.debug("NODE {}: Parameter {} response has 0 length", getNode().getNodeId(), parameter);
             return;
         }
 

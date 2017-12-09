@@ -9,10 +9,10 @@
 package org.openhab.binding.zwave.internal.protocol;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Generic;
@@ -34,8 +34,8 @@ public class ZWaveEndpoint {
     private final ZWaveDeviceClass deviceClass;
     private final int endpointId;
 
-    private Set<CommandClass> secureCommandClasses = new HashSet<CommandClass>();
-    private Map<CommandClass, ZWaveCommandClass> supportedCommandClasses = new HashMap<CommandClass, ZWaveCommandClass>();
+    private final Set<CommandClass> secureCommandClasses = new HashSet<CommandClass>();
+    private final Map<CommandClass, ZWaveCommandClass> supportedCommandClasses = new ConcurrentHashMap<CommandClass, ZWaveCommandClass>();
 
     /**
      * Constructor. Creates a new instance of the ZWaveEndpoint class.

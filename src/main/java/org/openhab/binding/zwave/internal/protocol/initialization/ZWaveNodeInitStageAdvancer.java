@@ -841,7 +841,7 @@ public class ZWaveNodeInitStageAdvancer {
                     } else {
                         ZWaveAssociation association;
                         if (multiAssociationCommandClass != null) {
-                            association = new ZWaveAssociation(controller.getOwnNodeId(), 0);
+                            association = new ZWaveAssociation(controller.getOwnNodeId(), 1);
                         } else {
                             association = new ZWaveAssociation(controller.getOwnNodeId());
                         }
@@ -868,7 +868,7 @@ public class ZWaveNodeInitStageAdvancer {
                                         node.getNodeId(), association, groupId);
 
                                 // Set the association, and request the update so we confirm if it's set
-                                processTransaction(node.setAssociation(null, groupId, controller.getOwnNodeId(), 0));
+                                processTransaction(node.setAssociation(null, groupId, controller.getOwnNodeId(), 1));
                                 if (initRunning == false) {
                                     return;
                                 }
@@ -929,7 +929,7 @@ public class ZWaveNodeInitStageAdvancer {
 
                     // Set the association, and request the update so we confirm if it's set
                     processTransaction(
-                            node.setAssociation(null, associationGroup.getIndex(), controller.getOwnNodeId(), 0));
+                            node.setAssociation(null, associationGroup.getIndex(), controller.getOwnNodeId(), 1));
                     if (initRunning == false) {
                         return;
                     }

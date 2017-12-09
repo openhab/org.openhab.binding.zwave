@@ -103,7 +103,7 @@ public class ZWaveBatteryCommandClass extends ZWaveCommandClass implements ZWave
             return null;
         }
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), BATTERY_GET)
-                .withExpectedResponseCommand(BATTERY_REPORT).withPriority(TransactionPriority.High).build();
+                .withExpectedResponseCommand(BATTERY_REPORT).withPriority(TransactionPriority.Get).build();
     }
 
     @Override

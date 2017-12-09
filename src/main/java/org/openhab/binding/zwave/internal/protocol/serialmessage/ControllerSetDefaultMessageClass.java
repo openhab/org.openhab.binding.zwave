@@ -34,7 +34,6 @@ public class ControllerSetDefaultMessageClass extends ZWaveCommandProcessor {
     public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) {
         logger.debug(String.format("Received SetDefault request"));
-        transaction.setTransactionComplete();
 
         return true;
     }
