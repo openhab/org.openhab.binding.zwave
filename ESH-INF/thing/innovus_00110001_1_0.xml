@@ -43,7 +43,7 @@
       <property name="vendor">INNOVUS</property>
       <property name="modelId">SmartDimmer</property>
       <property name="manufacturerId">0077</property>
-      <property name="manufacturerRef">0011:0001</property>
+      <property name="manufacturerRef">0011:0001,0001:0001</property>
       <property name="versionMin">1.0</property>
       <property name="dbReference">62</property>
       <property name="defaultAssociations">1</property>

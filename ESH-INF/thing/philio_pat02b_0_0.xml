@@ -99,7 +99,7 @@ The interval time for auto reporting the temperature state.<br /><h1>Overview</h
       </parameter>
 
       <parameter name="config_14_1" type="integer" groupName="configuration"
-                 min="1" max="127">
+                 min="0" max="127">
         <label>14: Auto Report Humidity Time</label>
         <description><![CDATA[
 The interval time for auto reporting the humidity state.<br /><h1>Overview</h1><p>The interval time for auto reporting the humidity state.</p> <ul><li>0 = Turn off auto report.</li> <li>1-127 = Number of ticks. The default value is 12. The tick time can be set by configuration No. 20.</li> </ul>
@@ -117,7 +117,7 @@ The interval time for auto report each tick.<br /><h1>Overview</h1><p>The interv
       </parameter>
 
       <parameter name="config_21_1" type="integer" groupName="configuration"
-                 min="1" max="127">
+                 min="0" max="127">
         <label>21: Temperature Differential Report</label>
         <description><![CDATA[
 The temperature differential to report.<br /><h1>Overview</h1><p>The temperature differential to report.</p> <ul><li>The unit is Fahrenheit.</li> <li>Enable this function the device will detect every 10 seconds.</li> </ul>
@@ -126,12 +126,12 @@ The temperature differential to report.<br /><h1>Overview</h1><p>The temperature
       </parameter>
 
       <parameter name="config_23_1" type="integer" groupName="configuration"
-                 min="1" max="60">
+                 min="0" max="60">
         <label>23: Humidity Differential Report</label>
         <description><![CDATA[
 The humidity differential to report.<br /><h1>Overview</h1><p>The humidity differential to report.</p> <ul><li>The unit is percentage.</li> <li>Enable this function the device will detect every 10 seconds.</li> </ul>
         ]]></description>
-        <default>0</default>
+        <default>5</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

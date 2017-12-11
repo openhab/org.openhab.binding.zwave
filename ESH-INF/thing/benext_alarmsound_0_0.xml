@@ -53,7 +53,7 @@ Set all configuration values to default values (factory settings)<br /><h1>Overv
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration"
-                 min="0" max="25">
+                 min="0" max="255">
         <label>2: Destination routine on/off</label>
         <description><![CDATA[
 Test connection by sending a periodic test. if the device doesn't react the user will be notified by a sound.<br /><h1>Overview</h1><p>0 this is turned off. 1-255 turn it on.</p>
@@ -62,7 +62,7 @@ Test connection by sending a periodic test. if the device doesn't react the user
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="0" max="60">
         <label>3: Desitnation routine succes time</label>
         <description><![CDATA[
 Time it takes to send a new frame after the last frame has succesfully send<br /><h1>Overview</h1><p>t(s) = param1 * 6 *60</p>
@@ -71,7 +71,7 @@ Time it takes to send a new frame after the last frame has succesfully send<br /
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="0" max="240">
         <label>4: Destination routine failed time</label>
         <description><![CDATA[
 Time elapsed between failing to end a frame and sending a new frame.<br /><h1>Overview</h1><p>t(s) = param1 *60</p>

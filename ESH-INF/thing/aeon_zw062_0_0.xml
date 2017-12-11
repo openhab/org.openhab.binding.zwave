@@ -266,7 +266,7 @@ Configuration report for the battery state of Sensor<br /><h1>Overview</h1><p>Co
         <description><![CDATA[
 Start playing or Stop playing the ringtone<br /><h1>Overview</h1><p>Start playing or Stop playing the ringtone:<br />1, Value=255, stop playing ringtone.<br />2, Value=1 to 100, start playing the ringtone that you selected.</p>
         ]]></description>
-        <default>0</default>
+        <default>1</default>
       </parameter>
 
       <parameter name="config_44_1_wo" type="integer" groupName="configuration">
@@ -274,7 +274,7 @@ Start playing or Stop playing the ringtone<br /><h1>Overview</h1><p>Start playin
         <description><![CDATA[
 Set volume for test of ringtone<br /><h1>Overview</h1><p>Test the volume of the current ringtone.</p> <p>Value=1 to value=10, which map to the volume level 1 to level 10.</p>
         ]]></description>
-        <default>0</default>
+        <default>1</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

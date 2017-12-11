@@ -21,7 +21,13 @@ Thermostatic Valve<br /><h1>Overview</h1><h1>Intelligenter Energiesparregler fü
         </properties>
       </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">
-        <label>Sensor (temperature)</label>
+        <label>Current temperature</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="sensor_report" typeId="sensor_report">
+        <label>External temperature</label>
         <properties>
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>

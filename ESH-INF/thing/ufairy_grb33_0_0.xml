@@ -46,6 +46,29 @@
       <property name="dbReference">686</property>
     </properties>
 
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: K1</label>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association">
+        <label>2: K2</label>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association">
+        <label>3: K3</label>
+      </parameter>
+
+    </config-description>
+
   </thing-type>
 
 </thing:thing-descriptions>

@@ -352,10 +352,10 @@ A binary field to choose channels to report power<br /><h1>Overview</h1><p>Choos
       </parameter>
 
       <parameter name="config_102_4_000000FF" type="integer" groupName="configuration"
-                 min="255" max="0">
+                 min="0" max="255">
         <label>102: Item 2 (kWh)</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>Choose the channel or channels to auto-report kWh based on a time interval set in parameter 112.  This is the LSB</p> <p> 1 - report only a summary of all channels ( bit 1)</p> <p> 2 - report channel 1 wattage (bit 2)</p> <p> 3 - report a summary of all channels and channel 1 (bits 1 and 2)</p> <p> 4 - report channel 2 wattage</p> <p>&lt;...&gt;</p> <p>14 - channel 3, channel 2, and channel 1</p> <p> 15 - channel 3, channel 2, channel 1, and summary</p> <p> etc.</p> <p> 127 - in the end is reporting values for each individual channel (1-6) and the summary data.  In binary, bits 1 through 7 set to 1.</p> <p> The bit values are as follows:</p> <p> 1 - summary report</p> <p>2 - channel 1 report</p> <p>4 - channel 2 report</p> <p>8 - channel 3 report</p> <p>16 - channel 4 report</p> <p>32 - channel 5 report</p> <p>64 - channel 6 report</p>
+Channel(s) to auto-report kWh<br /><h1>Overview</h1><p>Choose the channel or channels to auto-report kWh based on a time interval set in parameter 112.  This is the LSB</p> <p> 1 - report only a summary of all channels ( bit 1)</p> <p> 2 - report channel 1 wattage (bit 2)</p> <p> 3 - report a summary of all channels and channel 1 (bits 1 and 2)</p> <p> 4 - report channel 2 wattage</p> <p>&lt;...&gt;</p> <p>14 - channel 3, channel 2, and channel 1</p> <p> 15 - channel 3, channel 2, channel 1, and summary</p> <p> etc.</p> <p> 127 - in the end is reporting values for each individual channel (1-6) and the summary data.  In binary, bits 1 through 7 set to 1.</p> <p> The bit values are as follows:</p> <p> 1 - summary report</p> <p>2 - channel 1 report</p> <p>4 - channel 2 report</p> <p>8 - channel 3 report</p> <p>16 - channel 4 report</p> <p>32 - channel 5 report</p> <p>64 - channel 6 report</p>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -364,7 +364,7 @@ A binary field to choose channels to report power<br /><h1>Overview</h1><p>Choos
                  min="0" max="255">
         <label>102: Item 2 (power)</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>Choose the channel or channels to auto-report wattage based on a time interval set in parameter 112. </p> <p><strong> examples:</strong></p> <p> 1 - report only a summary of all channels ( bit 1)</p> <p> 2 - report channel 1 wattage (bit 2)</p> <p> 3 - report a summary of all channels and channel 1 (bits 1 and 2)</p> <p> 4 - report channel 2 wattage</p> <p>&lt;...&gt;</p> <p>14 - channel 3, channel 2, and channel 1</p> <p> 15 - channel 3, channel 2, channel 1, and summary</p> <p> etc.</p> <p> 127 - in the end is reporting values for each individual channel (1-6) and the summary data.  In binary, bits 1 through 7 set to 1.</p> <p> The bit values are as follows:</p> <p> 1 - summary report</p> <p>2 - channel 1 report</p> <p>4 - channel 2 report</p> <p>8 - channel 3 report</p> <p>16 - channel 4 report</p> <p>32 - channel 5 report</p> <p>64 - channel 6 report</p>
+Channel(s) to auto-report wattage<br /><h1>Overview</h1><p>Choose the channel or channels to auto-report wattage based on a time interval set in parameter 112. </p> <p><strong> examples:</strong></p> <p> 1 - report only a summary of all channels ( bit 1)</p> <p> 2 - report channel 1 wattage (bit 2)</p> <p> 3 - report a summary of all channels and channel 1 (bits 1 and 2)</p> <p> 4 - report channel 2 wattage</p> <p>&lt;...&gt;</p> <p>14 - channel 3, channel 2, and channel 1</p> <p> 15 - channel 3, channel 2, channel 1, and summary</p> <p> etc.</p> <p> 127 - in the end is reporting values for each individual channel (1-6) and the summary data.  In binary, bits 1 through 7 set to 1.</p> <p> The bit values are as follows:</p> <p> 1 - summary report</p> <p>2 - channel 1 report</p> <p>4 - channel 2 report</p> <p>8 - channel 3 report</p> <p>16 - channel 4 report</p> <p>32 - channel 5 report</p> <p>64 - channel 6 report</p>
         ]]></description>
         <default>0</default>
       </parameter>

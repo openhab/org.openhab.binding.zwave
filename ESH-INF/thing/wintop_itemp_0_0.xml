@@ -85,7 +85,7 @@
       </parameter>
 
       <parameter name="config_6_2" type="integer" groupName="configuration"
-                 min="1" max="15300">
+                 min="0" max="15300">
         <label>6: Temperature Offset</label>
         <description>Can be used to calibrate the temperature sensors function. Calibrated as factory default.</description>
         <default>0</default>
