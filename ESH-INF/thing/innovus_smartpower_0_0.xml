@@ -36,7 +36,7 @@
       <property name="vendor">INNOVUS</property>
       <property name="modelId">SmartPower</property>
       <property name="manufacturerId">0077</property>
-      <property name="manufacturerRef">0010:0001</property>
+      <property name="manufacturerRef">0010:0001,0001:0002</property>
       <property name="dbReference">61</property>
       <property name="defaultAssociations">1</property>
     </properties>

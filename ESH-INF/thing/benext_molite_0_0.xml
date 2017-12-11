@@ -69,14 +69,14 @@
       </parameter>
 
       <parameter name="config_2_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="900">
         <label>2: Mode timeout</label>
         <description>The time used in mode 2 to turn the sensor off. This time will start running as soon as detection is seen.</description>
         <default>900</default>
       </parameter>
 
       <parameter name="config_3_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="2700">
         <label>3: Switch off time</label>
         <description>The switch off time will start running as soon as mode timeout is done. The Motion sensor is turned on and when movement is detected again. The mode timeout (cfg param 1) will start running all over again. When switch off time is done a basic off message</description>
         <default>2700</default>
@@ -108,70 +108,70 @@
       </parameter>
 
       <parameter name="config_7_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="17">
         <label>7: Light table 100 %</label>
         <description>If a LDR resistance measured lower then this value the returned light percentage is 100%. See chapter light table for more information.</description>
         <default>17</default>
       </parameter>
 
       <parameter name="config_8_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="38">
         <label>8: Light table 90 %</label>
         <description>If a LDR resistance measured lower then this value the returned light percentage is 90%. See chapter light table for more information.</description>
         <default>38</default>
       </parameter>
 
       <parameter name="config_9_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="85">
         <label>9: Light table 80 %</label>
         <description>If a LDR resistance measured lower then this value the returned light percentage is 80%. See chapter light table for more information.</description>
         <default>85</default>
       </parameter>
 
       <parameter name="config_10_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="186">
         <label>10: Light table 70 %</label>
         <description>If a LDR resistance measured lower then this value the returned light percentage is 70%. See chapter light table for more information.</description>
         <default>186</default>
       </parameter>
 
       <parameter name="config_11_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="407">
         <label>11: Light table 60 %</label>
         <description>If a LDR resistance measured lower then this value the returned light percentage is 60%. See chapter light table for more information.</description>
         <default>407</default>
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="891">
         <label>12: Light table 50 %</label>
         <description>If a LDR resistance measured lower then this value the returned light percentage is 50%. See chapter light table for more information.</description>
         <default>891</default>
       </parameter>
 
       <parameter name="config_13_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="1949">
         <label>13: Light table 40 %</label>
         <description>If a LDR resistance measured lower then this value the returned light percentage is 40%. See chapter light table for more information.</description>
         <default>1949</default>
       </parameter>
 
       <parameter name="config_14_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="4265">
         <label>14: Light table 30 %</label>
         <description>If a LDR resistance measured lower then this value the returned light percentage is 30%. See chapter light table for more information.</description>
         <default>4265</default>
       </parameter>
 
       <parameter name="config_15_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="9332">
         <label>15: Light table 20 %</label>
         <description>If a LDR resistance measured lower then this value the returned light percentage is 20%. See chapter light table for more information.</description>
         <default>9332</default>
       </parameter>
 
       <parameter name="config_16_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="20417">
         <label>16: Light table 10 %</label>
         <description>If a LDR resistance measured lower then this value the returned light percentage is 10%. See chapter light table for more information.</description>
         <default>20417</default>

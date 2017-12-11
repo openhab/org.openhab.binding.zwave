@@ -249,7 +249,7 @@ If temperature is lower than the set value, underheat ...<br /><h1>Overview</h1>
       </parameter>
 
       <parameter name="config_70_2" type="integer" groupName="configuration"
-                 min="1" max="2048">
+                 min="0" max="2048">
         <label>70: Scene activation functionality</label>
         <description><![CDATA[
 The device can trigger scenes using scene IDs assigned ...<br /><h1>Overview</h1><p>... to different events. To deactivate all scenes set the value to 0. To activate all scenes set the value to 3903.</p> <p>Available settings:</p> <p>1 - [ID 10] opening door/window (single click)<br />2 - [ID 11] closing door/window (single click)<br />4 - [ID 12] holding<br />8 - [ID 13] releasing<br />16 - [ID 14] double click<br />32 - [ID 15] triple click<br />256 - [ID 50] high temperature - door/window<br />opened<br />512 - [ID 50] high temperature - door/window<br />closed<br />1024 - [ID 51] low temperature - door/window<br />opened<br />2048 - [ID 51] low temperature - door/window<br />closed</p>

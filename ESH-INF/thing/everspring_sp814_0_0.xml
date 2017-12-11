@@ -49,7 +49,7 @@
         <description><![CDATA[
 Basic Set Level<br /><h1>Overview</h1><p>When Basic Set Command is sent where contains a value, the receiver will take it for consideration; for instance, if a lamp module is received the Basic Set command of which value is decisive as to how bright of dim level of lamp module shall be.</p> <p>Example: 0: OFF</p> <p>1-99: ON (Binary Switch Device)</p> <p>Dim Level (Multilevel Switch Device)</p> <p>Function: Basic Set level</p> <p>Parameter: 1</p> <p>Number Size: 1</p> <p>Range: 0-99</p> <p>Default: 99 </p>
         ]]></description>
-        <default>255</default>
+        <default>99</default>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration">

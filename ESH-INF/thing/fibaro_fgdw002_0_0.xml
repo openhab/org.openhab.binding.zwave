@@ -47,7 +47,7 @@
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGDW-002</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0702:1000</property>
+      <property name="manufacturerRef">0702:1000,0702:2000</property>
       <property name="dbReference">604</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -114,7 +114,7 @@ Associations in Z-Wave network Security Mode<br /><h1>Overview</h1><p>This param
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="255">
         <label>12: Association for opening - value sent</label>
         <description><![CDATA[
 Association for opening - value sent<br /><h1>Overview</h1><p>Value sent to devices in 2nd association group when opening is detected The value of 0 turns OFF the device, 255 turns it ON. In case of associating devices allowing smooth control, values 1-99 allow to set an associated device to a specified level.</p>
@@ -123,7 +123,7 @@ Association for opening - value sent<br /><h1>Overview</h1><p>Value sent to devi
       </parameter>
 
       <parameter name="config_13_2" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="255">
         <label>13: Association for closing - value sent</label>
         <description><![CDATA[
 Association for closing - value sent<br /><h1>Overview</h1><p>Value sent to devices in 2nd association group when closing is detected The value of 0 turns OFF the device, 255 turns it ON. In case of associating devices allowing smooth control, values 1-99 allow to set an associated device to a specified level.</p>

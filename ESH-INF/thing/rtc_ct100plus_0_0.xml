@@ -148,11 +148,6 @@
           <property name="binding:*:DecimalType">THERMOSTAT_FAN_STATE:1</property>
         </properties>
       </channel>
-      <channel id="battery-level1" typeId="system.battery-level">
-        <properties>
-          <property name="binding:*:PercentType">BATTERY:1</property>
-        </properties>
-      </channel>
       <channel id="time_offset1" typeId="time_offset">
         <label>Clock Time Offset 1</label>
         <properties>
@@ -199,7 +194,6 @@ Reporting threshold for changes in the ambient temperature<br /><h1>Overview</h1
         ]]></description>
         <default>2</default>
         <options>
-          <option value="0">Disabled</option>
           <option value="0">Disabled</option>
           <option value="1">0.5° F</option>
           <option value="2">1.0° F</option>

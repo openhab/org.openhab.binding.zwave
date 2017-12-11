@@ -163,7 +163,7 @@
       </parameter>
 
       <parameter name="config_68_1" type="integer" groupName="configuration"
-                 min="1" max="127">
+                 min="0" max="127">
         <label>68: Dimming duration</label>
         <default>0</default>
       </parameter>

@@ -42,6 +42,7 @@
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0004:0075,0104:0075,0204:0075</property>
       <property name="dbReference">527</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -56,7 +57,7 @@
       <parameter name="config_33_3_00000021" type="integer" groupName="configuration">
         <label>33: RGB value</label>
         <description>Set the RGB value of the LED for the quality test of the LED diode.</description>
-        <default>0</default>
+        <default>2</default>
         <options>
           <option value="1">Reserved</option>
           <option value="2">Red value</option>

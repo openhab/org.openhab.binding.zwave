@@ -6,7 +6,7 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="leviton_vrmx11lz_00_000" listed="false">
-    <label>VRMX1-1LZ Scene Capable Push On/Off Dimmer</label>
+    <label>VRMX1 Scene Capable Push On/Off Dimmer</label>
     <description>Scene Capable Push On/Off Dimmer</description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -35,7 +35,7 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Leviton</property>
-      <property name="modelId">VRMX1-1LZ</property>
+      <property name="modelId">VRMX1</property>
       <property name="manufacturerId">001D</property>
       <property name="manufacturerRef">0602:0334</property>
       <property name="dbReference">191</property>

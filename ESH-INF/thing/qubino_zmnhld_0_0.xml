@@ -147,7 +147,7 @@ Activate / deactivate ALL ON/ALL OFF<br /><h1>Overview</h1><p>Flush PWM thermost
       <parameter name="config_11_2" type="integer" groupName="configuration">
         <label>11: I1 Functionality selection</label>
         <description>I1 Functionality selection</description>
-        <default>0</default>
+        <default>1</default>
         <options>
           <option value="1">Input I1 changes the mode between Off and Heat/Cool</option>
           <option value="2">Input I1 influences the heating/cooling valves</option>
