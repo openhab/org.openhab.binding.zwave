@@ -5,16 +5,16 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="hank_hkzwso03_00_000" listed="false">
-    <label>HKZW_SO03 Smart Plug</label>
-    <description>Smart Plug</description>
+  <thing-type id="zooz_zen15_00_000" listed="false">
+    <label>ZEN15 Power Switch</label>
+    <description>Power Switch</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -23,22 +23,10 @@
           <property name="binding:*:DecimalType">SCENE_ACTIVATION</property>
         </properties>
       </channel>
-      <channel id="meter_kwh" typeId="meter_kwh">
-        <label>Electric meter (kWh)</label>
-        <properties>
-          <property name="binding:*:DecimalType">METER;type=E_KWh</property>
-        </properties>
-      </channel>
       <channel id="meter_voltage" typeId="meter_voltage">
         <label>Electric meter (volts)</label>
         <properties>
           <property name="binding:*:DecimalType">METER;type=E_V</property>
-        </properties>
-      </channel>
-      <channel id="meter_watts" typeId="meter_watts">
-        <label>Electric meter (watts)</label>
-        <properties>
-          <property name="binding:*:DecimalType">METER;type=E_W</property>
         </properties>
       </channel>
       <channel id="meter_current" typeId="meter_current">
@@ -47,15 +35,27 @@
           <property name="binding:*:DecimalType">METER;type=E_A</property>
         </properties>
       </channel>
+      <channel id="meter_kwh" typeId="meter_kwh">
+        <label>Electric meter (kWh)</label>
+        <properties>
+          <property name="binding:*:DecimalType">METER;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts" typeId="meter_watts">
+        <label>Electric meter (watts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">METER;type=E_W</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Hank</property>
-      <property name="modelId">HKZW_SO03</property>
-      <property name="manufacturerId">0208</property>
-      <property name="manufacturerRef">0101:000A</property>
-      <property name="dbReference">677</property>
+      <property name="vendor">Zooz</property>
+      <property name="modelId">ZEN15</property>
+      <property name="manufacturerId">027A</property>
+      <property name="manufacturerRef">0101:000D</property>
+      <property name="dbReference">758</property>
     </properties>
 
   </thing-type>

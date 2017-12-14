@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="danfoss_hrvccm_00_000" listed="false">
-    <label>HRVCCM Danfoss Air CCM</label>
-    <description>Danfoss Air CCM</description>
+    <label>HRVCCM Air CCM</label>
+    <description>Air CCM</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

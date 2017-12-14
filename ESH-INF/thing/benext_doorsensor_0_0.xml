@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="benext_doorsensor_00_000" listed="false">
-    <label>doorSensor BeNext Door Sensor</label>
-    <description>BeNext Door Sensor</description>
+    <label>doorSensor Door Sensor</label>
+    <description>Door Sensor</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

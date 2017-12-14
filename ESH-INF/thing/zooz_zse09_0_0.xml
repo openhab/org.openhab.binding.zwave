@@ -83,7 +83,7 @@ delay after motion before turning OFF <br /><h1>Overview</h1><p>Set the duration
                  min="0" max="255">
         <label>3: Trigger Action</label>
         <description><![CDATA[
-Brightness to turn on the associated device 1-99, 255=ON<br /><h1>Overview</h1><p>You can choose if your Mini Sensor turns an associated device on or off when sending the BASIC SET command. Use value 0 to turn the associated device OFF and value 255 to turn it ON. Adjust brightness level for a Z-Wave dimmer (Multilevel switch) by putting in any value between 1 and 99. </p>
+Brightness to turn on the associated device 1-99, 255=ON<br /><h1>Overview</h1><p>You can choose if your Mini Sensor turns an associated device on or off when sending the BASIC SET command. Use value 0 to turn the associated device OFF and value 255 to turn it ON. Adjust brightness level for a Z-Wave dimmer (Multilevel switch) by putting in any value between 1 and 99. </p>
         ]]></description>
         <default>255</default>
       </parameter>
@@ -99,7 +99,7 @@ Brightness to turn on the associated device 1-99, 255=ON<br /><h1>Overview</h1><
                  min="0" max="1000">
         <label>5: Light Trigger Level</label>
         <description><![CDATA[
-Max Light level which enables motion trigger<br /><h1>Overview</h1><p>Set your light sensor as a secondary trigger for associated devices. If light level in a room falls beyond the set point and motion is detected, the Mini Sensor will send BASIC_SET command to associated devices to turn ON. The number entered as the value corresponds to the number of LUX. By default, if motion has been detected by your Mini Sensor, the associated device will turn ON if light level last reported by the sensor is under 100 LUX. </p>
+Max Light level which enables motion trigger<br /><h1>Overview</h1><p>Set your light sensor as a secondary trigger for associated devices. If light level in a room falls beyond the set point and motion is detected, the Mini Sensor will send BASIC_SET command to associated devices to turn ON. The number entered as the value corresponds to the number of LUX. By default, if motion has been detected by your Mini Sensor, the associated device will turn ON if light level last reported by the sensor is under 100 LUX. </p>
         ]]></description>
         <default>100</default>
       </parameter>
@@ -114,7 +114,7 @@ Minimum time between motion triggers.<br /><h1>Overview</h1><p>Adjust the time (
       </parameter>
 
       <parameter name="config_7_2" type="integer" groupName="configuration"
-                 min="60" max="360000">
+                 min="60" max="36000">
         <label>7: Light Polling Interval</label>
         <description><![CDATA[
 Interval between light level reporting<br /><h1>Overview</h1><p>Decide how often (in seconds) you want the Mini Sensor to report light level to the controller and associated devices. By default, the Mini Sensor will report light level values every 3 minutes. The value set for this parameter can NOT be greater than the wake-up interval. NOTE: Small interval will increase activity and decrease battery life.</p>
@@ -166,7 +166,7 @@ Light level change to be reported.<br /><h1>Overview</h1><p>Choose light level (
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: BASIC</label>
         <description><![CDATA[
-BASIC_SET Trigger associated devices <br /><h1>Overview</h1><p>control command communication to associated Z-Wave devices in the network. Use parameters 2, 3, 5, and 8 to configure this group’s settings. Supported command classes: BASIC_SET </p>
+BASIC_SET Trigger associated devices <br /><h1>Overview</h1><p>control command communication to associated Z-Wave devices in the network. Use parameters 2, 3, 5, and 8 to configure this group’s settings. Supported command classes: BASIC_SET </p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
