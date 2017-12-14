@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="merten_507501_00_000" listed="false">
-    <label>507501 Merten Connect Flush-mounted switch</label>
-    <description>Merten Connect Flush-mounted switch</description>
+    <label>507501 Flush-mounted switch</label>
+    <description>Flush-mounted switch</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="northq_nq9021_00_000" listed="false">
-    <label>NQ-9021 NorthQ Electrical Meter</label>
-    <description>NorthQ Electrical Meter</description>
+    <label>NQ-9021 Electrical Meter</label>
+    <description>Electrical Meter</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

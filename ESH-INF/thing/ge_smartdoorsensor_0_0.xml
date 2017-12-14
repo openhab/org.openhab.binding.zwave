@@ -6,9 +6,9 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="ge_smartdoorsensor_00_000" listed="false">
-    <label>32563 Hinge Pin Smart Door Sensor</label>
+    <label>32563 Smart Door Sensor</label>
     <description><![CDATA[
-Hinge Pin Smart Door Sensor<br /><h2>Inclusion Information</h2><ol><li>Follow the instructions for your Z-Wave certified controller to include the device to the Z-Wave network.</li> <li>Once the controller is ready to include your Hinge Pin Smart Door Sensor press and release the manual/program button on the smart switch to include it in the network.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Follow the instructions for your Z-Wave certified controller to exclude a device from the Z-Wave network. </li> <li>Once the controller is ready to exclude your device, press and release the manual/program button on the Hinge Pin Smart Door Sensor to exclude it from the network.</li> </ol><p>You may wish to reset all of your Hinge Pin Smart Door Sensor's settings to their factory defaults. To do this, press the program button 10 times within 6 seconds. If your Door Sensor has been successfully reset, its LED light will blink for 3 seconds. This should only be used in the event your network’s primary controller is missing or otherwise inoperable.</p> <br /><h2>Wakeup Information</h2><ol><li>Press and hold the Z-wave Button for 6 seconds. It will be wake up and send “Wake Up Notification CC “ to HUB. </li> <li>It will sleep after timeout for 10 seconds, or sleep right away when received the “Wake Up No More Information CC”. </li> </ol>
+Smart Door Sensor<br /><h2>Inclusion Information</h2><ol><li>Follow the instructions for your Z-Wave certified controller to include the device to the Z-Wave network.</li> <li>Once the controller is ready to include your Hinge Pin Smart Door Sensor press and release the manual/program button on the smart switch to include it in the network.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Follow the instructions for your Z-Wave certified controller to exclude a device from the Z-Wave network. </li> <li>Once the controller is ready to exclude your device, press and release the manual/program button on the Hinge Pin Smart Door Sensor to exclude it from the network.</li> </ol><p>You may wish to reset all of your Hinge Pin Smart Door Sensor's settings to their factory defaults. To do this, press the program button 10 times within 6 seconds. If your Door Sensor has been successfully reset, its LED light will blink for 3 seconds. This should only be used in the event your network’s primary controller is missing or otherwise inoperable.</p> <br /><h2>Wakeup Information</h2><ol><li>Press and hold the Z-wave Button for 6 seconds. It will be wake up and send “Wake Up Notification CC “ to HUB. </li> <li>It will sleep after timeout for 10 seconds, or sleep right away when received the “Wake Up No More Information CC”. </li> </ol>
     ]]></description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -55,7 +55,7 @@ Hinge Pin Smart Door Sensor<br /><h2>Inclusion Information</h2><ol><li>Follow th
                  min="1" max="3">
         <label>20: Report Method</label>
         <description><![CDATA[
-Change Open/Close Report Method<br /><h1>Overview</h1><ol><li>Notification (Default)</li> <li>Basic Set</li> <li>Basic Report</li> </ol>
+Change Open/Close Report Method<br /><h1>Overview</h1><ol><li>Notification (Default)</li> <li>Basic Set</li> <li>Basic Report</li> </ol>
         ]]></description>
         <default>1</default>
       </parameter>

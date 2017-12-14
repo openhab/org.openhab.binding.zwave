@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="hank_hkzwms02_00_000" listed="false">
-    <label>HKZW_MS02 Hank Motion Sensor</label>
-    <description>Hank Motion Sensor</description>
+    <label>HKZW_MS02 Motion Sensor</label>
+    <description>Motion Sensor</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="hank_hkzwfld01_00_000" listed="false">
-    <label>HKZW_FLD01 Hank Flood Sensor FLD01</label>
-    <description>Hank Flood Sensor FLD01</description>
+    <label>HKZW_FLD01 Flood Sensor FLD01</label>
+    <description>Flood Sensor FLD01</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

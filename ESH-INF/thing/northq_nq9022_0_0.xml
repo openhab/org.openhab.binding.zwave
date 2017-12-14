@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="northq_nq9022_00_000" listed="false">
-    <label>NQ-9022 NorthQ Electrical Meter</label>
-    <description>NorthQ Electrical Meter</description>
+    <label>NQ-9022 Electrical Meter</label>
+    <description>Electrical Meter</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -148,7 +148,7 @@ Set this to enter real-time mode from remote. <br /><h1>Overview</h1><p>Contains
                  min="0" max="65535">
         <label>15: Calibration status</label>
         <description><![CDATA[
-The calibration progress is calculated <br /><h1>Overview</h1><p>The calibration progress is calculated as (value[1] - 65 + value[2] / value[3]) * 25.</p> <p>The calibration is finished successfully when value[0]  =  2 and value[2] = value[3].</p> <p>The calibration has failed if value[0] != 1 OR (value[0] = 2 AND value[2] != value[</p>
+The calibration progress is calculated <br /><h1>Overview</h1><p>The calibration progress is calculated as (value[1] - 65 + value[2] / value[3]) * 25.</p> <p>The calibration is finished successfully when value[0]  =  2 and value[2] = value[3].</p> <p>The calibration has failed if value[0] != 1 OR (value[0] = 2 AND value[2] != value[</p>
         ]]></description>
         <default>0</default>
       </parameter>

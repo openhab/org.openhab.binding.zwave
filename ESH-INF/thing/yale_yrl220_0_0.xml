@@ -8,7 +8,7 @@
   <thing-type id="yale_yrl220_00_000" listed="false">
     <label>YRL220 Yale Real Living Touchscreen Lever Lock</label>
     <description><![CDATA[
-Yale Real Living Touchscreen Lever Lock<br /><h2>Inclusion Information</h2><p>To include the lock in a Z-Wave Network (taken from the installation manual:</p> <ol><li>Touch the lock screen to activate</li> <li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 1, then #</li> </ol><p>The lock will now be in inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>To exclude the lock from a Z-Wave Network (taken from the installation manual:</p> <ol><li>Touch the lock screen to activate</li> <li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 3, then #</li> </ol><p>The lock will now be in exclusion mode.</p>
+Yale Real Living Touchscreen Lever Lock<br /><h2>Inclusion Information</h2><p>To include the lock in a Z-Wave Network (taken from the installation manual:</p> <ol><li>Touch the lock screen to activate</li> <li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 1, then #</li> </ol><p>The lock will now be in inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>To exclude the lock from a Z-Wave Network (taken from the installation manual:</p> <ol><li>Touch the lock screen to activate</li> <li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 3, then #</li> </ol><p>The lock will now be in exclusion mode.</p>
     ]]></description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -37,7 +37,7 @@ Yale Real Living Touchscreen Lever Lock<br /><h2>Inclusion Information</h2><p>To
       <property name="vendor">ASSA ABLOY</property>
       <property name="modelId">YRL220</property>
       <property name="manufacturerId">0129</property>
-      <property name="manufacturerRef">0001:0000,0001:0409,842A:3CAC</property>
+      <property name="manufacturerRef">0000:2132,0001:0000,0001:0409,842A:3CAC</property>
       <property name="dbReference">379</property>
       <property name="defaultAssociations">1</property>
     </properties>
