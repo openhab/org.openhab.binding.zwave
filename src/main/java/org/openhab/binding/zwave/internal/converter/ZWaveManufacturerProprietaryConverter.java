@@ -75,19 +75,31 @@ public class ZWaveManufacturerProprietaryConverter extends ZWaveCommandClassConv
      */
     @Override
     public State handleEvent(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
-        ZWaveValueEvent valueEvent = (ZWaveValueEvent) event;
-        State state = null;
+        boolean configInvertPercent = "true".equalsIgnoreCase(channel.getArguments().get("config_invert_percent"));
 
+        int value = -1;
+        ZWaveValueEvent valueEvent = (ZWaveValueEvent) event;
         switch (channel.getUID().getId()) {
             case "blinds_lamella":
-                state = new PercentType(Integer.parseInt(valueEvent.getValue("LAMELLA_POSITION")));
+                value = Integer.parseInt(valueEvent.getValue("LAMELLA_POSITION"));
                 break;
             case "blinds_shutter":
-                state = new PercentType(Integer.parseInt(valueEvent.getValue("SHUTTER_POSITION")));
+                value = Integer.parseInt(valueEvent.getValue("SHUTTER_POSITION"));
                 break;
         }
 
-        return state;
+        // If we read greater than 99%, then change it to 100%
+        // This just appears better in OH otherwise you can't get 100%!
+        if (value >= 99) {
+            value = 100;
+        } else if (value < 0) {
+            value = 0;
+        }
+
+        if (configInvertPercent) {
+            value = 100 - value;
+        }
+        return new PercentType(value);
     }
 
     /**
@@ -96,6 +108,23 @@ public class ZWaveManufacturerProprietaryConverter extends ZWaveCommandClassConv
     @Override
     public List<ZWaveCommandClassTransactionPayload> receiveCommand(ZWaveThingChannel channel, ZWaveNode node,
             Command command) {
+        boolean configInvertPercent = "true".equalsIgnoreCase(channel.getArguments().get("config_invert_percent"));
+
+        PercentType percentType = (PercentType) command;
+        int value = percentType.intValue();
+        if (configInvertPercent) {
+            value = 100 - value;
+        }
+
+        // zwave has a max value of 99 for percentages.
+        if (value >= 100) {
+            value = 99;
+        } else if (value < 0) {
+            value = 0;
+        }
+
+        logger.trace("NODE {}: Converted command '{}' to value {} for channel = {}, endpoint = {}.", node.getNodeId(),
+                command.toString(), value, channel.getUID(), channel.getEndpoint());
 
         List<ZWaveCommandClassTransactionPayload> messages = new ArrayList<ZWaveCommandClassTransactionPayload>();
 
@@ -103,14 +132,14 @@ public class ZWaveManufacturerProprietaryConverter extends ZWaveCommandClassConv
         switch (channel.getUID().getId()) {
             case "blinds_lamella":
                 byte[] lamellaPayload = CommandClassManufacturerProprietaryFibaroFgrm222V1
-                        .getFgrm222Set("LAMELLA_POSITION", 0, ((PercentType) command).intValue());
+                        .getFgrm222Set("LAMELLA_POSITION", 0, value);
 
                 transaction = new ZWaveCommandClassTransactionPayloadBuilder(node.getNodeId(), lamellaPayload)
                         .withPriority(TransactionPriority.Set).build();
                 break;
             case "blinds_shutter":
                 byte[] shutterPayload = CommandClassManufacturerProprietaryFibaroFgrm222V1
-                        .getFgrm222Set("SHUTTER_POSITION", ((PercentType) command).intValue(), 0);
+                        .getFgrm222Set("SHUTTER_POSITION", value, 0);
 
                 transaction = new ZWaveCommandClassTransactionPayloadBuilder(node.getNodeId(), shutterPayload)
                         .withPriority(TransactionPriority.Set).build();

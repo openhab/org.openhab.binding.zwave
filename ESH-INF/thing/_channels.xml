@@ -309,6 +309,18 @@
         <label>Blinds Lamella Position</label>
         <description>Sets the blinds lamella position</description>
         <category>Blinds</category>
+        <config-description>
+            <parameter name="config_invert_percent" type="boolean">
+                <label>Invert percentage value</label>
+                <description>Invert the lamella percentage value</description>
+                <default>false</default>
+                <options>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </options>
+                <limitToOptions>true</limitToOptions>
+            </parameter>
+        </config-description>
     </channel-type>
 
     <channel-type id="blinds_shutter">
@@ -316,6 +328,18 @@
         <label>Blinds Shutter Position</label>
         <description>Sets the blinds shutter position</description>
         <category>Blinds</category>
+        <config-description>
+            <parameter name="config_invert_percent" type="boolean">
+                <label>Invert percentage value</label>
+                <description>Invert the lamella percentage value</description>
+                <default>false</default>
+                <options>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </options>
+                <limitToOptions>true</limitToOptions>
+            </parameter>
+        </config-description>
     </channel-type>
 
     <!-- Color Setting Channel -->
