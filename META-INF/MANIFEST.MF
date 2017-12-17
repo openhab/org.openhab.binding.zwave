@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: ZWave Binding
 Bundle-SymbolicName: org.openhab.binding.zwave;singleton:=true
 Bundle-Vendor: openHAB
-Bundle-Version: 2.2.0.qualifier
+Bundle-Version: 2.2.0
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: .
 Bundle-Activator: org.openhab.binding.zwave.internal.ZWaveActivator
