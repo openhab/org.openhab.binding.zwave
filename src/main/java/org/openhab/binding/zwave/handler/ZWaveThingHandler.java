@@ -738,19 +738,19 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 // Since both level and timeout are set in a single command, we first check if the value exists in the
                 // pending list, and if not, use the value already stored in the command class
                 if ("level".equals(cfg[1])) {
-                    Integer timeout = (Integer) pendingCfg.get(ZWaveBindingConstants.CONFIGURATION_POWERLEVEL_TIMEOUT);
+                    Number timeout = (Number) pendingCfg.get(ZWaveBindingConstants.CONFIGURATION_POWERLEVEL_TIMEOUT);
                     if (timeout == null) {
                         timeout = powerlevelCommandClass.getTimeout();
                     }
                     controllerHandler.sendData(powerlevelCommandClass.setValueMessage(
-                            (Integer.parseInt(configurationParameter.getValue().toString())), timeout));
+                            (Integer.parseInt(configurationParameter.getValue().toString())), timeout.intValue()));
                 }
                 if ("timeout".equals(cfg[1])) {
-                    Integer level = (Integer) pendingCfg.get(ZWaveBindingConstants.CONFIGURATION_POWERLEVEL_LEVEL);
+                    Number level = (Number) pendingCfg.get(ZWaveBindingConstants.CONFIGURATION_POWERLEVEL_LEVEL);
                     if (level == null) {
                         level = powerlevelCommandClass.getLevel();
                     }
-                    controllerHandler.sendData(powerlevelCommandClass.setValueMessage(level,
+                    controllerHandler.sendData(powerlevelCommandClass.setValueMessage(level.intValue(),
                             (Integer.parseInt(configurationParameter.getValue().toString()))));
                 }
                 controllerHandler.sendData(powerlevelCommandClass.getValueMessage());
