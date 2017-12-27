@@ -80,7 +80,7 @@
       <property name="manufacturerId">0271</property>
       <property name="manufacturerRef">0001:1A73</property>
       <property name="dbReference">688</property>
-      <property name="defaultAssociations">0,1,2,3,4</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -228,11 +228,6 @@ Motion Off behaviour (timeout)<br /><h1>Overview</h1><p>Motion disable timeout a
         <context>link</context>
         <label>Association Groups</label>
       </parameter-group>
-
-      <parameter name="group_0" type="text" groupName="association">
-        <label>0: Root</label>
-        <description>Root</description>
-      </parameter>
 
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>

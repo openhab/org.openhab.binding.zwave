@@ -148,7 +148,7 @@ Set this to enter real-time mode from remote. <br /><h1>Overview</h1><p>Contains
                  min="0" max="65535">
         <label>15: Calibration status</label>
         <description><![CDATA[
-The calibration progress is calculated <br /><h1>Overview</h1><p>The calibration progress is calculated as (value[1] - 65 + value[2] / value[3]) * 25.</p> <p>The calibration is finished successfully when value[0]  =  2 and value[2] = value[3].</p> <p>The calibration has failed if value[0] != 1 OR (value[0] = 2 AND value[2] != value[</p>
+The calibration progress is calculated <br /><h1>Overview</h1><p>The calibration progress is calculated as (value[1] - 65 + value[2] / value[3]) * 25.</p> <p>The calibration is finished successfully when value[0]  =  2 and value[2] = value[3].</p> <p>The calibration has failed if value[0] != 1 OR (value[0] = 2 AND value[2] != value[</p>
         ]]></description>
         <default>0</default>
       </parameter>

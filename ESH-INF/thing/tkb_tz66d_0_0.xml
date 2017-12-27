@@ -50,7 +50,9 @@
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Suspend Group 4</label>
-        <description>Setting this parameter will disable transmitting commands to devices in association group 4</description>
+        <description><![CDATA[
+Disable transmitting commands to devices in association group 4<br /><h1>Overview</h1><p>Setting this parameter will disable transmitting commands to devices in association group 4</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Transmit to group 4</option>
@@ -60,7 +62,9 @@
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Blue LED light Behavior</label>
-        <description>Defines the behavior of the blue LED. Default is Night Light mode where LED is on when switch is off</description>
+        <description><![CDATA[
+Blue LED light Behavior. Default is Night Light (led on when switch off)<br /><h1>Overview</h1><p>Defines the behavior of the blue LED. Default is Night Light mode where LED is on when switch is off</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Led on when switch on</option>

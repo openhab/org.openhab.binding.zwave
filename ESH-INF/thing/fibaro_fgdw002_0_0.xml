@@ -6,8 +6,10 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgdw002_00_000" listed="false">
-    <label>FGDW-002 Fibaro Door Window Sensor 2</label>
-    <description>Fibaro Door Window Sensor 2</description>
+    <label>FGDW002 Fibaro Door Window Sensor 2</label>
+    <description><![CDATA[
+Fibaro Door Window Sensor 2<br /><h2>Wakeup Information</h2><p>Available settings: 0 or 3600-64800 (in seconds (1-18h), 3600s (1h)<br />step)<br />Default setting: 21600 (6h)</p> <p><br />The Door/Window Sensor will wake up after each defined time interval and always try to connect with the main controller. After a successful communication attempt, the sensor will update configuration parameters, associations and settings and will go into standby mode.</p> <p><br />After failed communication attempt (e.g. lack of Z-Wave range) the device will go into standby mode and retry to establish connection with the main controller after the next time interval.</p> <p><br />Setting wake up interval to 0 disables sending Wake Up Notification frame automatically.</p> <p>Wake up may be still performed manually by a clicking one of the TMP buttons (while the other button is pressed).</p> <p>Longer time interval means less frequent communication and thus a longer battery life.</p>
+    ]]></description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -45,7 +47,7 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Fibargroup</property>
-      <property name="modelId">FGDW-002</property>
+      <property name="modelId">FGDW002</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0702:1000,0702:2000</property>
       <property name="dbReference">604</property>
@@ -64,7 +66,7 @@
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Door/window state</label>
         <description><![CDATA[
-What state is door/window when the magnet is close to the sensor<br /><h1>Overview</h1><p>0 - closed when magnet near</p> <p>1 - opened when magnet near </p>
+What state is door/window when the magnet is close to the sensor<br /><h1>Overview</h1><p>0 - closed when magnet near</p> <p>1 - opened when magnet near</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -73,29 +75,52 @@ What state is door/window when the magnet is close to the sensor<br /><h1>Overvi
         </options>
       </parameter>
 
-      <parameter name="config_2_1" type="integer" groupName="configuration">
-        <label>2: Visual LED indications</label>
+      <parameter name="config_2_1_00000001" type="integer" groupName="configuration">
+        <label>2: Visual LED indications - Open/close</label>
         <description><![CDATA[
-Defines events indicated by the visual LED indicator. Disabling extends battery life<br /><h1>Overview</h1><p>This parameter defines events indicated by the visual LED indicator. Disabling events might extend battery life.</p>
+Visual LED indications - Open/close<br /><h1>Overview</h1><p>Set or reset the indication of opening/closing status change (input IN) by the visual LED indicator.<br />Disabling events might extend battery life.</p>
         ]]></description>
-        <default>6</default>
+        <default>0</default>
         <options>
-          <option value="1">indication of opening/closing status change</option>
-          <option value="2">indication of wake up (1 x click or periodical)</option>
-          <option value="4">indication of device tampering</option>
+          <option value="0">no indication</option>
+          <option value="1">open/close indication</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_2_1_00000002" type="integer" groupName="configuration">
+        <label>2: Visual LED indications - wake up</label>
+        <description><![CDATA[
+Visual LED indications - wake up<br /><h1>Overview</h1><p>Show indication of wake up events by the visual LED indicator.<br />Disabling events might extend battery life.</p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">no indication</option>
+          <option value="2">Enable wake up notification</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_2_1_00000004" type="integer" groupName="configuration">
+        <label>2: Visual LED indications - tampering</label>
+        <description><![CDATA[
+Visual LED indications - tampering<br /><h1>Overview</h1><p>Enable or disable device tampering events indicated by the visual LED indicator.<br />Disabling events might extend battery life.</p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">no indication</option>
+          <option value="4">Enable indication of device tampering</option>
         </options>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Associations in Z-Wave network Security Mode</label>
         <description><![CDATA[
-Associations in Z-Wave network Security Mode<br /><h1>Overview</h1><p>This parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network Security Mode. It does not apply to 1st group “Lifeline”.</p>
+Associations in Z-Wave network Security Mode<br /><h1>Overview</h1><p>This parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network Security Mode. It does not apply to 1st group "Lifeline".</p>
         ]]></description>
         <default>3</default>
         <options>
           <option value="0">none of the groups sent as secure</option>
-          <option value="1">2nd group ”On/Off” sent as secure</option>
-          <option value="2">3rd group ”Tamper” sent as secure</option>
+          <option value="1">2nd group "On/Off" sent as secure</option>
+          <option value="2">3rd group "Tamper" sent as secure</option>
           <option value="3">2nd and 3rd group sent as secure</option>
         </options>
       </parameter>
@@ -103,7 +128,7 @@ Associations in Z-Wave network Security Mode<br /><h1>Overview</h1><p>This param
       <parameter name="config_11_1" type="integer" groupName="configuration">
         <label>11: 2nd association group triggers</label>
         <description><![CDATA[
-2nd association group triggers<br /><h1>Overview</h1><p>Parameter defines events which result in sending on/off commands to devices added to the 2nd association group. These commands are sent alternately to switch the devices on and off. </p>
+2nd association group triggers<br /><h1>Overview</h1><p>Parameter defines events which result in sending on/off commands to devices added to the 2nd association group.</p> <p>These commands are sent alternately to switch the devices on and off.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -115,18 +140,18 @@ Associations in Z-Wave network Security Mode<br /><h1>Overview</h1><p>This param
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>12: Association for opening - value sent</label>
+        <label>12: Value of ON command frame sent to 2nd association group</label>
         <description><![CDATA[
-Association for opening - value sent<br /><h1>Overview</h1><p>Value sent to devices in 2nd association group when opening is detected The value of 0 turns OFF the device, 255 turns it ON. In case of associating devices allowing smooth control, values 1-99 allow to set an associated device to a specified level.</p>
+Value of ON command frame sent to 2nd association group<br /><h1>Overview</h1><p>Value sent to devices in 2nd association group when opening is detected The value of 0 turns OFF the device, 255 turns it ON. In case of associating devices allowing smooth control, values 1-99 allow to set an associated device to a specified level.</p>
         ]]></description>
         <default>255</default>
       </parameter>
 
       <parameter name="config_13_2" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>13: Association for closing - value sent</label>
+        <label>13: Value of OFF command frame sent to 2nd association group</label>
         <description><![CDATA[
-Association for closing - value sent<br /><h1>Overview</h1><p>Value sent to devices in 2nd association group when closing is detected The value of 0 turns OFF the device, 255 turns it ON. In case of associating devices allowing smooth control, values 1-99 allow to set an associated device to a specified level.</p>
+Value of OFF command frame sent to 2nd association group<br /><h1>Overview</h1><p>Value sent to devices in 2nd association group when closing is detected The value of 0 turns OFF the device, 255 turns it ON. In case of associating devices allowing smooth control, values 1-99 allow to set an associated device to a specified level.</p>
         ]]></description>
         <default>255</default>
       </parameter>
@@ -144,7 +169,7 @@ Association for opening - time delay<br /><h1>Overview</h1><p>Time that must ela
                  min="0" max="32400">
         <label>15: Association for closing - time delay</label>
         <description><![CDATA[
-Association for closing - time delay<br /><h1>Overview</h1><p>Time that must elapse from closing to send the command frame to devices in 2nd association group</p>
+Association for closing - time delay<br /><h1>Overview</h1><p>Time (in seconds) that must elapse from closing to send the command frame to devices in 2nd association group</p>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -183,7 +208,7 @@ Interval of temperature measurements<br /><h1>Overview</h1><p>This parameter def
                  min="0" max="300">
         <label>51: Temperature reports threshold</label>
         <description><![CDATA[
-Temperature reports threshold<br /><h1>Overview</h1><p>This parameter defines the change of temperature in comparison with last reported, resulting in temperature report being sent to the main controller. Available settings: 0 - temperature reports based on threshold disabled 1-300 - temperature threshold (0.1-30°C, 0.1°C step)</p>
+Temperature reports threshold<br /><h1>Overview</h1><p>This parameter defines the change of temperature in comparison with last reported, resulting in temperature report being sent to the main controller.</p> <p>Available settings:</p> <ul><li>0 - temperature reports based on threshold disabled</li> <li>1-300 - temperature threshold (0.1-30°C, 0.1°C step)</li> </ul>
         ]]></description>
         <default>10</default>
       </parameter>
@@ -192,7 +217,7 @@ Temperature reports threshold<br /><h1>Overview</h1><p>This parameter defines th
                  min="0" max="32400">
         <label>52: Interval of temperature reports</label>
         <description><![CDATA[
-Interval of temperature reports<br /><h1>Overview</h1><p>This parameter determines how often the temperature reports will be sent to the main controller (regardless of parameters 50 and 51). Available settings: 0 - periodic temperature reports disabled 300-32400 - time in seconds</p>
+Interval of temperature reports<br /><h1>Overview</h1><p>This parameter determines how often the temperature reports will be sent to the main controller (regardless of parameters 50 and 51).</p> <p>Available settings:</p> <ul><li>0 - periodic temperature reports disabled</li> <li>300-32400 - time in seconds</li> </ul>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -224,7 +249,7 @@ Temperature alarm reports<br /><h1>Overview</h1><p>Temperature alarms reported t
                  min="1" max="600">
         <label>55: High temperature alarm threshold</label>
         <description><![CDATA[
-High temperature alarm threshold<br /><h1>Overview</h1><p>If temperature is higher than set value, overheat notification will be sent and high temperature alarm will be triggered (if activated). Available settings: 1-600 (0.1-60°C, 0.1°C step)</p>
+High temperature alarm threshold<br /><h1>Overview</h1><p>If temperature is higher than set value, overheat notification will be sent and high temperature alarm will be triggered (if activated).</p> <p>Available settings:</p> <ul><li>1-600 (0.1-60°C, 0.1°C step)</li> </ul>
         ]]></description>
         <default>350</default>
       </parameter>
