@@ -78,7 +78,7 @@
                  min="0" max="3600">
         <label>2: Mode Timeout</label>
         <description><![CDATA[
-The time used in mode 2 to turn the sensor off . <br /><h1>Overview</h1><p>The time used in mode 2 to turn the sensor off . </p> <p>This Time will start running as soon as detection is seen.</p>
+The time used in mode 2 to turn the sensor off . <br /><h1>Overview</h1><p>The time used in mode 2 to turn the sensor off . </p> <p>This Time will start running as soon as detection is seen.</p>
         ]]></description>
         <default>900</default>
       </parameter>
