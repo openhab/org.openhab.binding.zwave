@@ -67,8 +67,6 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurati
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveDoorLockCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveNodeNamingCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWavePlusCommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWavePowerLevelCommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWavePowerLevelCommandClass.ZWavePowerLevelCommandClassChangeEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSwitchAllCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCommandClass.UserIdStatusType;
@@ -774,6 +772,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     }
                     pendingCfg.put(configurationParameter.getKey(), valueObject);
                     break;
+
                 case "switchall":
                     ZWaveSwitchAllCommandClass switchallCommandClass = (ZWaveSwitchAllCommandClass) node
                             .getCommandClass(CommandClass.COMMAND_CLASS_SWITCH_ALL);
@@ -789,42 +788,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     pendingCfg.put(configurationParameter.getKey(), valueObject);
                     break;
 
-                case "powerlevel":
-                    ZWavePowerLevelCommandClass powerlevelCommandClass = (ZWavePowerLevelCommandClass) node
-                            .getCommandClass(CommandClass.COMMAND_CLASS_POWERLEVEL);
-                    if (powerlevelCommandClass == null) {
-                        logger.debug("NODE {}: Error getting PowerLevelCommandClass", nodeId);
-                        continue;
-                    }
-
-                    // Since both level and timeout are set in a single command, we first check if the value exists in
-                    // the
-                    // pending list, and if not, use the value already stored in the command class
-                    if ("level".equals(cfg[1])) {
-                        Integer timeout = (Integer) pendingCfg
-                                .get(ZWaveBindingConstants.CONFIGURATION_POWERLEVEL_TIMEOUT);
-                        if (timeout == null) {
-                            timeout = powerlevelCommandClass.getTimeout();
-                        }
-                        controllerHandler.sendData(node.encapsulate(powerlevelCommandClass.setValueMessage(
-                                (Integer.parseInt(configurationParameter.getValue().toString())), timeout), 0));
-                    }
-                    if ("timeout".equals(cfg[1])) {
-                        Integer level = (Integer) pendingCfg.get(ZWaveBindingConstants.CONFIGURATION_POWERLEVEL_LEVEL);
-                        if (level == null) {
-                            level = powerlevelCommandClass.getLevel();
-                        }
-                        controllerHandler
-                                .sendData(
-                                        node.encapsulate(
-                                                powerlevelCommandClass
-                                                        .setValueMessage(level,
-                                                                (Integer.parseInt(
-                                                                        configurationParameter.getValue().toString()))),
-                                                0));
-                    }
-                    controllerHandler.sendData(node.encapsulate(powerlevelCommandClass.getValueMessage(), 0));
-                    pendingCfg.put(configurationParameter.getKey(), valueObject);
                 case "doorlock":
                     ZWaveDoorLockCommandClass commandClass = (ZWaveDoorLockCommandClass) node
                             .getCommandClass(CommandClass.COMMAND_CLASS_DOOR_LOCK);
@@ -852,6 +815,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         }
                     }
                     break;
+
                 case "usercode":
                     ZWaveUserCodeCommandClass userCodeCommandClass = (ZWaveUserCodeCommandClass) node
                             .getCommandClass(CommandClass.COMMAND_CLASS_USER_CODE);
@@ -875,6 +839,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                                 configurationParameter.getKey());
                     }
                     break;
+
                 case "binding":
                     if ("pollperiod".equals(cfg[1])) {
                         pollingPeriod = POLLING_PERIOD_DEFAULT;
@@ -1189,15 +1154,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         default:
                             break;
                     }
-                    break;
-
-                case COMMAND_CLASS_POWERLEVEL:
-                    ZWavePowerLevelCommandClassChangeEvent powerEvent = (ZWavePowerLevelCommandClassChangeEvent) event;
-                    cfgUpdated = true;
-                    configuration.put(ZWaveBindingConstants.CONFIGURATION_POWERLEVEL_LEVEL, powerEvent.getLevel());
-                    pendingCfg.remove(ZWaveBindingConstants.CONFIGURATION_POWERLEVEL_LEVEL);
-                    configuration.put(ZWaveBindingConstants.CONFIGURATION_POWERLEVEL_TIMEOUT, powerEvent.getTimeout());
-                    pendingCfg.remove(ZWaveBindingConstants.CONFIGURATION_POWERLEVEL_TIMEOUT);
                     break;
 
                 case COMMAND_CLASS_USER_CODE:
