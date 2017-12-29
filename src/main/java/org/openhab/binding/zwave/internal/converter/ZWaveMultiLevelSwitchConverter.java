@@ -198,7 +198,6 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
 
         // encapsulate the message in case this is a multi-instance node
         transaction = node.encapsulate(transaction, channel.getEndpoint());
-
         if (transaction == null) {
             logger.warn("Generating message failed for command class = {}, node = {}, endpoint = {}",
                     commandClass.getCommandClass(), node.getNodeId(), channel.getEndpoint());
