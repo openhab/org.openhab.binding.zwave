@@ -98,7 +98,7 @@ public class ZWaveAssociationGroup {
      * @return
      */
     public boolean removeAssociation(int node) {
-        return removeAssociation(node, 0);
+        return removeAssociation(node, null);
     }
 
     /**
@@ -108,7 +108,7 @@ public class ZWaveAssociationGroup {
      * @param endpoint
      * @return
      */
-    public boolean removeAssociation(int node, int endpoint) {
+    public boolean removeAssociation(int node, Integer endpoint) {
         int associationCnt = associations.size();
         for (int index = 0; index < associationCnt; index++) {
             ZWaveAssociation association = associations.get(index);

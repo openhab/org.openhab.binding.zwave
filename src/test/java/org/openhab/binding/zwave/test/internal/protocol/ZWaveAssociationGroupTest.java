@@ -19,11 +19,18 @@ public class ZWaveAssociationGroupTest {
         group.addAssociation(1);
         assertEquals(1, group.getAssociationCnt());
 
+        group.removeAssociation(1);
+        assertEquals(0, group.getAssociationCnt());
+        group.addAssociation(1);
+
         group.addAssociation(1, 0);
         assertEquals(2, group.getAssociationCnt());
 
         group.addAssociation(3, 2);
         assertEquals(3, group.getAssociationCnt());
+
+        group.removeAssociation(3, 2);
+        assertEquals(2, group.getAssociationCnt());
     }
 
     @Test
