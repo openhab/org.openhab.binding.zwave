@@ -101,13 +101,10 @@ public class ZWaveBinarySwitchConverter extends ZWaveCommandClassConverter {
         messages.add(transaction);
 
         transaction = node.encapsulate(commandClass.getValueMessage(), channel.getEndpoint());
-        if (transaction == null) {
-            logger.warn("NODE {}: Generating message failed for command class = {}, endpoint = {}", node.getNodeId(),
-                    commandClass.getCommandClass(), channel.getEndpoint());
-            return null;
+        if (transaction != null) {
+            messages.add(transaction);
         }
 
-        messages.add(transaction);
         return messages;
     }
 }
