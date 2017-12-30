@@ -27,7 +27,7 @@
       <channel id="color_color" typeId="color_color">
         <label>Color Control</label>
         <properties>
-          <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR;</property>
+          <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR;colorMode=RGB</property>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC;</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL;</property>
         </properties>
@@ -78,6 +78,7 @@ RGB BULB can send notifications to associated device <br /><h1>Overview</h1><p>R
         ]]></description>
         <default>1</default>
         <options>
+          <option value="0">Notifications Disabled</option>
           <option value="1">Send BASIC REPORT</option>
           <option value="2">Send BASIC REPORT only without status change</option>
         </options>

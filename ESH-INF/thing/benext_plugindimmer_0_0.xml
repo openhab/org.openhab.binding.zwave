@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="benext_plugindimmer_00_000" listed="false">
-    <label>plugInDimmer BeNext Plug-in Dimmer</label>
-    <description>BeNext Plug-in Dimmer</description>
+    <label>plugInDimmer Plug-in Dimmer</label>
+    <description>Plug-in Dimmer</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

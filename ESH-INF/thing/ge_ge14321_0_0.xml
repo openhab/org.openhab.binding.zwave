@@ -5,7 +5,7 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="ge_gejasco14321_00_000" listed="false">
+  <thing-type id="ge_ge14321_00_000" listed="false">
     <label>GE/Jasco 14321 In-Wall Dimmer</label>
     <description>In-Wall Dimmer</description>
 

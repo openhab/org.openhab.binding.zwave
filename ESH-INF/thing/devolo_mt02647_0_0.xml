@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="devolo_mt02647_00_000" listed="false">
-    <label>MT02647 Devolo Motion Sensor</label>
-    <description>Devolo Motion Sensor</description>
+    <label>MT02647 Motion Sensor</label>
+    <description>Motion Sensor</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

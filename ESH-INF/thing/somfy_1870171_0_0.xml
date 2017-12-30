@@ -5,9 +5,11 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="sigma_yrl240_00_000" listed="false">
-    <label>YRL240 Yale Real Living Touchscreen Lever Lock</label>
-    <description>Yale Real Living Touchscreen Lever Lock</description>
+  <thing-type id="somfy_1870171_00_000" listed="false">
+    <label>1870171 ILT Z-Wave Interfaces</label>
+    <description><![CDATA[
+ILT Z-Wave Interfaces<br /><h1>Overview</h1><p>Connect window coverings powered by LT motors to Z-Wave</p>
+    ]]></description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -24,27 +26,21 @@
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
-      <channel id="meter_watts" typeId="meter_watts">
-        <label>Electric meter (watts)</label>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
-        </properties>
-      </channel>
-      <channel id="meter_kwh" typeId="meter_kwh">
-        <label>Electric meter (kWh)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SCENE_ACTIVATION</property>
         </properties>
       </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Sigma Designs (Former Zensys)</property>
-      <property name="modelId">YRL240</property>
-      <property name="manufacturerId">0000</property>
-      <property name="manufacturerRef">0000:0000</property>
-      <property name="dbReference">390</property>
+      <property name="vendor">Somfy</property>
+      <property name="modelId">1870171</property>
+      <property name="manufacturerId">0047</property>
+      <property name="manufacturerRef">4C54:0001</property>
+      <property name="dbReference">767</property>
     </properties>
 
   </thing-type>

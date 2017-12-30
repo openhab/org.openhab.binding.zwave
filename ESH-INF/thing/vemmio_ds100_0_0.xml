@@ -188,14 +188,14 @@
       </parameter-group>
 
       <parameter name="config_0_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="1" max="32767">
         <label>0: Watt Meter Report Period</label>
         <description>720*5s=3600s=1hour</description>
         <default>720</default>
       </parameter>
 
       <parameter name="config_2_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="1" max="32767">
         <label>2: KWH Meter Report Period</label>
         <description>6*10 min = 1 hour</description>
         <default>6</default>
@@ -236,7 +236,7 @@
       </parameter>
 
       <parameter name="config_8_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="32767">
         <label>8: Auto off timer</label>
         <description>0: Disable auto off function, 1: 0x0-0x7FFF 1s-32767s</description>
         <default>0</default>

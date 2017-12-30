@@ -150,7 +150,7 @@ The interval of sending energy report to association device (Group Lifeline).<br
       </parameter>
 
       <parameter name="config_173_4" type="integer" groupName="configuration"
-                 min="5" max="2678400">
+                 min="0" max="2678400">
         <label>173: Voltage Report Frequency</label>
         <description><![CDATA[
 The interval of sending voltage report to association device (Group Lifeline)<br /><h1>Overview</h1><p>The interval of sending voltage report to association device (Group Lifeline)</p> <p>Available settings: 5- 2678400 (5 - 2678400 seconds)</p> <p>0 -The function is disabled.</p> <p>Default setting: 0 (disabled).</p>
@@ -159,7 +159,7 @@ The interval of sending voltage report to association device (Group Lifeline)<br
       </parameter>
 
       <parameter name="config_174_4" type="integer" groupName="configuration"
-                 min="5" max="2678400">
+                 min="0" max="2678400">
         <label>174: Electricity Report Frequency</label>
         <description><![CDATA[
 Interval for sending electricity report.<br /><h1>Overview</h1><p>The interval of sending electricity report to association device (Group Lifeline).</p> <p>Available settings: 5- 2678400 (5 - 2678400 seconds)</p> <p>0 -The function is disabled.</p> <p>Default setting: 0 (disabled).</p>

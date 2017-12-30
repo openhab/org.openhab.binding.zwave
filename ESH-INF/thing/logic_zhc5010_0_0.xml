@@ -92,6 +92,7 @@ FUGA Wall 4-way Switch with LED + Relay<br /><h1>Overview</h1><p>ZHC5010 is a wa
       <property name="modelId">ZHC5010</property>
       <property name="manufacturerId">0234</property>
       <property name="manufacturerRef">0002:010A,0003:010A</property>
+      <property name="versionMax">1.12</property>
       <property name="dbReference">503</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -108,7 +109,7 @@ FUGA Wall 4-way Switch with LED + Relay<br /><h1>Overview</h1><p>ZHC5010 is a wa
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Upper paddle buttons mode</label>
         <description><![CDATA[
-Pair Mode, upper two buttons<br /><h1>Overview</h1><p>Configuration of Pair Mode for the upper two buttons (button #1 and #2) </p>
+Configuration of Pair Mode for the upper two buttons (button #1 and #2)<br /><h1>Overview</h1><p>0: Separate mode (toggle mode)</p> <p>1: In pair mode, left side sends on/up commands, right side sends off/down commands</p>
         ]]></description>
         <default>0</default>
         <options>

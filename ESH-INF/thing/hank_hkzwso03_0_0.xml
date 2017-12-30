@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="hank_hkzwso03_00_000" listed="false">
-    <label>HKZW_SO03 Hank Smart Plug</label>
-    <description>Hank Smart Plug</description>
+    <label>HKZW_SO03 Smart Plug</label>
+    <description>Smart Plug</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

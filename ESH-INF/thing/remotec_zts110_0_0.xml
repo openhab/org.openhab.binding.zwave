@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="remotec_zts110_00_000" listed="false">
-    <label>ZTS-110 Remotec ZTS-110 Z Wave Thermostat</label>
-    <description>Remotec ZTS-110 Z Wave Thermostat</description>
+    <label>ZTS-110 ZTS-110 Z Wave Thermostat</label>
+    <description>ZTS-110 Z Wave Thermostat</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

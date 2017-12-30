@@ -284,12 +284,12 @@ Group 2 automatic update interval<br /><h1>Overview</h1><p>The time interval of 
       </parameter>
 
       <parameter name="config_113_4" type="integer" groupName="configuration"
-                 min="600" max="1">
+                 min="1" max="2147483647">
         <label>113: Time interval for sending to group 3</label>
         <description><![CDATA[
 Group 3 automatic update interval<br /><h1>Overview</h1><p>The time interval of sending Report group 1 (Valid values 0x01-0xFFFFFFFF).</p> <p>Default value is 600</p> <p>Note: Only up to 0x7fffffff is currently supported</p>
         ]]></description>
-        <default>2147483647</default>
+        <default>600</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 

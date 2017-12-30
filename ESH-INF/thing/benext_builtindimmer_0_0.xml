@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="benext_builtindimmer_00_000" listed="false">
-    <label>builtInDimmer BeNext Built-in Dimmer</label>
-    <description>BeNext Built-in Dimmer</description>
+    <label>builtInDimmer Built-in Dimmer</label>
+    <description>Built-in Dimmer</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

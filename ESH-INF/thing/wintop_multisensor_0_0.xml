@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="wintop_multisensor_00_000" listed="false">
-    <label>Multisensor Wintop Multi-sensor</label>
-    <description>Wintop Multi-sensor</description>
+    <label>Multisensor Multi-sensor</label>
+    <description>Multi-sensor</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

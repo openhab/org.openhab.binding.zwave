@@ -6,7 +6,7 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="eco_pir1_00_000" listed="false">
-    <label>Ecolink PIR Z-Wave PIR Motion Sensor</label>
+    <label>PIR Z-Wave PIR Motion Sensor</label>
     <description><![CDATA[
 Z-Wave PIR Motion Sensor<br /><h1>Overview</h1><p>The sensor has two Association groups available for up to five Z-Wave Node IDs each.<br />Association group one is intended for but not limited to controllers. All nodes whose Node ID<br />that have been set in Association group one will receive all unsolicited Alarm Report frames,<br />and Basic Report frames of 0x00 and 0xFF. Association group two is intended for any device</p> <p>that is controllable with a Basic Set of 0xFF such as lights, sirens, or chimes.<br />When a sensor such as a door or window sensor is opened/faulted, the sensor will send a Basic<br />Report to nodes in Association group one and a Basic Set of 0xFF to Association group two.<br />When the door or window is closed the sensor will send a Basic Report of 0x00 to only group<br />one. The Configuration command class can configure the sensor to send Basic Sets of 0x00 to<br />nodes in group two (turning devices off). See Configuration Command Class.</p> <br /><h2>Wakeup Information</h2><p>By default, a sensor is configured to send Wake Up Notification frames every three hours. A<br />controller may change the duration between Wake Up Notification frames to be between one<br />hour and one week in increments of two hundred seconds with the Wake Up Interval Set<br />command. The sensor will send Wake Up Notification frames to the Node ID specified in the<br />Wake Up Set Interval command or 255 if no valid nodes have been set.</p>
     ]]></description>
@@ -35,7 +35,7 @@ Z-Wave PIR Motion Sensor<br /><h1>Overview</h1><p>The sensor has two Association
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Ecolink</property>
-      <property name="modelId">Ecolink PIR</property>
+      <property name="modelId">PIR</property>
       <property name="manufacturerId">014A</property>
       <property name="manufacturerRef">0001:0001</property>
       <property name="dbReference">137</property>

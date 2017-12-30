@@ -67,7 +67,7 @@
       <property name="vendor">McoHome Technology Co., Ltd</property>
       <property name="modelId">MH-S521</property>
       <property name="manufacturerId">015F</property>
-      <property name="manufacturerRef">C521:5101</property>
+      <property name="manufacturerRef">C321:5102,C521:5101</property>
       <property name="dbReference">722</property>
       <property name="defaultAssociations">1</property>
     </properties>

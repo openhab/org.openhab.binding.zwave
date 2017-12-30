@@ -238,10 +238,10 @@
       </parameter>
 
       <parameter name="config_120_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="0" max="127">
         <label>120: Digital temperature sensor reporting</label>
-        <description>If digital temperature sensor is connected, module reports measured temperature on temperature change defined by this parameter. 0 – Reporting disabled 1- 127 = 0,1°C – 12,7°C, step is 0,1°C</description>
-        <default>32536</default>
+        <description>If digital temperature sensor is connected, module reports measured temperature on temperature change defined by this parameter.0 – Reporting disabled1- 127 = 0,1°C – 12,7°C, step is 0,1°C</description>
+        <default>5</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

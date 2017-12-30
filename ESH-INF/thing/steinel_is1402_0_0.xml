@@ -117,7 +117,7 @@ Off behaviour (timeout)<br /><h1>Overview</h1><p>Behaviour after BASIC OFF (and 
       </parameter>
 
       <parameter name="config_11_2" type="integer" groupName="configuration"
-                 min="0" max="209">
+                 min="0" max="255">
         <label>11: ON_BEHAVIOUR</label>
         <description><![CDATA[
 On behaviour (timeout)<br /><h1>Overview</h1><p>Behaviour after BASIC ON (and similar commands).<br />If a transition (even with zero change) with a non-default duration is to be<br />processed, the transition cannot be interrupted by any motion event in any<br />case.</p> <p>0 = Lamp/relay is switched on and remains so until any new motion<br />event (local or remote) is received. It then works normally via current<br />motion evaluation.<br />Notice – during the day, this mode cannot be ended remotely due<br />to motion events not being transmitted – only via local motion sen-<br />sor if enabled.</p> <p>1 - 209 = Lamp/relay is switched on and remains so until after a specified<br />timeout once a new motion event (local or remote) is received. It then<br />works normally via current motion evaluation.<br />Timeout:<br />1..100 – 1 second (1) to 100 seconds (100) in 1-second resolution<br />101..200 – 1 minute (101) to 100 minutes (200) in 1-minute resolution<br />201..209 – 1 hour (201) to 9 hours (209) in 1-hour resolution<br />Notice – during the day, this mode cannot be ended remotely due to<br />motion events not being transmitted – only via local motion sensor if<br />enabled.</p> <p>210 - 254 = Reserved</p> <p>255 = Lamp/relay is switched on for TIME (cfg 1). It does not wait for a<br />motion event and works normally via current motion evaluation.</p>

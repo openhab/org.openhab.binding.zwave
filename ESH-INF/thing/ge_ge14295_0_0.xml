@@ -61,42 +61,42 @@ In-Wall Dimmer Switch<br /><h2>Inclusion Information</h2><p>1. Follow the instru
                  min="1" max="99">
         <label>7: Dim Rate Adjustments</label>
         <description>Number of steps or levels</description>
-        <default>0</default>
+        <default>1</default>
       </parameter>
 
       <parameter name="config_8_2" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>8: Dim Rate Adjustments</label>
         <description>Timing of steps or levels</description>
-        <default>0</default>
+        <default>3</default>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>9: Dim Rate Adjustments</label>
         <description>Number of steps or levels</description>
-        <default>0</default>
+        <default>1</default>
       </parameter>
 
       <parameter name="config_10_2" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>10: Dim Rate Adjustments</label>
         <description>Timing of steps</description>
-        <default>0</default>
+        <default>3</default>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>11: Dim Rate Adjustments</label>
         <description>Number of steps or levels</description>
-        <default>0</default>
+        <default>1</default>
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>12: Dim Rate Adjustments</label>
         <description>Timing of steps or levels</description>
-        <default>0</default>
+        <default>3</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

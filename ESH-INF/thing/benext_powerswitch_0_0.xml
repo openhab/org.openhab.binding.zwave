@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="benext_powerswitch_00_000" listed="false">
-    <label>powerSwitch BeNext Power Switch EU</label>
-    <description>BeNext Power Switch EU</description>
+    <label>powerSwitch Power Switch EU</label>
+    <description>Power Switch EU</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
