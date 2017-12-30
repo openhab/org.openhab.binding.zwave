@@ -926,44 +926,52 @@ public class ZWaveNode {
      * if the device endpoint is the root node, and the receive endpoint is 0, we use the
      * single instance command class, otherwise we use the multi instance class if it exists.
      *
-     * @param endpoint the {@link ZWaveEndpoint} required to send the reports
      * @param groupId the group to be set
-     * @param nodeId the node to be set to report to (receive)
-     * @param endpointId the endpoint to be set to report to (receive)
+     * @param member the {@link ZWaveAssociation} to be set to report to (receive)
      * @return {@link ZWaveTransaction}
      */
-    public ZWaveCommandClassTransactionPayload setAssociation(ZWaveEndpoint endpoint, int groupId, int nodeId,
-            int endpointId) {
+    public ZWaveCommandClassTransactionPayload setAssociation(int groupId, ZWaveAssociation member) {
         if (endpoints.size() > 1) {
             ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
                     CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
             if (multiAssociationCommandClass != null) {
-                return multiAssociationCommandClass.setAssociationMessage(groupId, nodeId, endpointId);
+                return multiAssociationCommandClass.setAssociationMessage(groupId, member.getNode(),
+                        member.getEndpoint() == null ? 0 : member.getEndpoint());
             }
         }
 
         ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_ASSOCIATION);
         if (associationCommandClass != null) {
-            return associationCommandClass.setAssociationMessage(groupId, nodeId);
+            return associationCommandClass.setAssociationMessage(groupId, member.getNode());
         }
 
         return null;
     }
 
-    public ZWaveCommandClassTransactionPayload removeAssociation(Integer groupId, int nodeId, int endpointId) {
+    /**
+     * Removes an association.
+     * This method chooses the appropriate association command class to use for the device
+     * and the endpoint.
+     *
+     * @param groupId the group to be set
+     * @param member the {@link ZWaveAssociation} to be set to report to (receive)
+     * @return {@link ZWaveTransaction}
+     */
+    public ZWaveCommandClassTransactionPayload removeAssociation(Integer groupId, ZWaveAssociation member) {
         if (endpoints.size() > 1) {
             ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
                     CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
             if (multiAssociationCommandClass != null) {
-                return multiAssociationCommandClass.removeAssociationMessage(groupId, nodeId, endpointId);
+                return multiAssociationCommandClass.removeAssociationMessage(groupId, member.getNode(),
+                        member.getEndpoint() == null ? 0 : member.getEndpoint());
             }
         }
 
         ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_ASSOCIATION);
         if (associationCommandClass != null) {
-            return associationCommandClass.removeAssociationMessage(groupId, nodeId);
+            return associationCommandClass.removeAssociationMessage(groupId, member.getNode());
         }
 
         return null;

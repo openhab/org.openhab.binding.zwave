@@ -230,4 +230,10 @@ public class ZWaveAssociationGroup {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "ZWaveAssociationGroup [index=" + index + ", name=" + name + ", profile1=" + profile1 + ", profile2="
+                + profile2 + ", associations=" + associations + "]";
+    }
 }

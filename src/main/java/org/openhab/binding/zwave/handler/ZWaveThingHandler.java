@@ -436,12 +436,16 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
     @Override
     public void channelLinked(ChannelUID channelUID) {
+        logger.debug("NODE {}: Channel {} linked - polling started.", nodeId, channelUID);
+
         // We keep track of what channels are used and only poll channels that the framework is using
         thingChannelsPoll.add(channelUID);
     }
 
     @Override
     public void channelUnlinked(ChannelUID channelUID) {
+        logger.debug("NODE {}: Channel {} unlinked - polling stopped.", nodeId, channelUID);
+
         // We keep track of what channels are used and only poll channels that the framework is using
         thingChannelsPoll.remove(channelUID);
     }
@@ -672,6 +676,11 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     }
 
                     ZWaveAssociationGroup currentMembers = node.getAssociationGroup(groupIndex);
+                    if (currentMembers == null) {
+                        logger.debug("NODE{}: Unknown association group {}", nodeId, groupIndex);
+                        continue;
+                    }
+
                     ZWaveAssociationGroup newMembers = new ZWaveAssociationGroup(groupIndex);
 
                     int totalMembers = currentMembers.getAssociationCnt();
@@ -686,20 +695,21 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         }
 
                         // Get the node Id and endpoint Id
-                        int associationNodeId = Integer.parseInt(groupCfg[1]);
-                        int associationEndpointId = Integer.parseInt(groupCfg[2]);
+                        if (groupCfg.length == 2) {
+                            newMembers.addAssociation(Integer.parseInt(groupCfg[1]));
+                        } else {
+                            newMembers.addAssociation(Integer.parseInt(groupCfg[1]), Integer.parseInt(groupCfg[2]));
+                        }
 
-                        newMembers.addAssociation(associationNodeId, associationEndpointId);
                         totalMembers++;
                     }
 
                     // Loop through the current members and remove anything that's not in the new members list
                     for (ZWaveAssociation member : currentMembers.getAssociations()) {
                         // Is the current association still in the newMembers list?
-                        if (newMembers.isAssociated(member.getNode(), member.getEndpoint()) == false) {
+                        if (newMembers.isAssociated(member) == false) {
                             // No - so it needs to be removed
-                            node.sendMessage(
-                                    node.removeAssociation(groupIndex, member.getNode(), member.getEndpoint()));
+                            node.sendMessage(node.removeAssociation(groupIndex, member));
                             totalMembers--;
                         }
                     }
@@ -707,11 +717,10 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     // Now loop through the new members and add anything not in the current members list
                     for (ZWaveAssociation member : newMembers.getAssociations()) {
                         // Is the new association still in the currentMembers list?
-                        if (currentMembers.isAssociated(member.getNode(), member.getEndpoint()) == false) {
+                        if (currentMembers.isAssociated(member) == false) {
                             // No - so it needs to be added
                             // TODO: This needs to handle the sending endpoint not being root.
-                            node.sendMessage(
-                                    node.setAssociation(null, groupIndex, member.getNode(), member.getEndpoint()));
+                            node.sendMessage(node.setAssociation(groupIndex, member));
                             totalMembers++;
                         }
                     }

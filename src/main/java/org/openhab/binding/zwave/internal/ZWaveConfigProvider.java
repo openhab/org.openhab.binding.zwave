@@ -487,7 +487,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         List<ParameterOption> options = new ArrayList<ParameterOption>();
 
         // Add the controller (ie openHAB) to the top of the list
-        options.add(new ParameterOption("node_" + handler.getOwnNodeId() + "_0", "openHAB Controller"));
+        options.add(new ParameterOption("node_" + handler.getOwnNodeId() + "_1", "openHAB Controller"));
 
         // And iterate over all its nodes
         Collection<ZWaveNode> nodes = handler.getNodes();
@@ -496,6 +496,8 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
             if (node.getNodeId() == nodeId || node.getNodeId() == handler.getOwnNodeId()) {
                 continue;
             }
+
+            String nodeName = "Node " + node.getNodeId();
 
             // Get this nodes thing so we can find the name
             // TODO: Add this when thing names are supported!
@@ -507,17 +509,18 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
                     && node.getCommandClass(CommandClass.COMMAND_CLASS_MULTI_CHANNEL) != null) {
                 // Loop through all the endpoints for this device and add any that are controllable
 
-                for (int endpointId = 0; endpointId < node.getEndpointCount(); endpointId++) {
+                for (int endpointId = 1; endpointId < node.getEndpointCount(); endpointId++) {
                     if (supportsControllableClass(node.getEndpoint(endpointId))) {
-                        // TODO: Use the node name
-                        options.add(new ParameterOption("node_" + node.getNodeId() + "_" + endpointId,
-                                "Node " + node.getNodeId() + " Endpoint " + endpointId));
+                        String endpointName = nodeName;
+                        if (endpointId != 0) {
+                            endpointName += " (Endpoint " + endpointId + ")";
+                        }
+                        options.add(new ParameterOption("node_" + node.getNodeId() + "_" + endpointId, endpointName));
                     }
                 }
             } else if (supportsControllableClass(node)) {
                 // Add the node for the standard association class if it supports a controllable class
-                // TODO: Use the node name
-                options.add(new ParameterOption("node_" + node.getNodeId(), "Node " + node.getNodeId()));
+                options.add(new ParameterOption("node_" + node.getNodeId(), nodeName));
             }
         }
 
