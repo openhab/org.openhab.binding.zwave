@@ -114,7 +114,7 @@ Minimum time between motion triggers.<br /><h1>Overview</h1><p>Adjust the time (
       </parameter>
 
       <parameter name="config_7_2" type="integer" groupName="configuration"
-                 min="60" max="360000">
+                 min="60" max="36000">
         <label>7: Light Polling Interval</label>
         <description><![CDATA[
 Interval between light level reporting<br /><h1>Overview</h1><p>Decide how often (in seconds) you want the Mini Sensor to report light level to the controller and associated devices. By default, the Mini Sensor will report light level values every 3 minutes. The value set for this parameter can NOT be greater than the wake-up interval. NOTE: Small interval will increase activity and decrease battery life.</p>

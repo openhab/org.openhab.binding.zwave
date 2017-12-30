@@ -110,7 +110,7 @@ Set this to enter real-time mode from remote. Contains seconds * poll frequency 
       </parameter>
 
       <parameter name="config_12_4" type="integer" groupName="configuration"
-                 min="0" max="-1">
+                 min="0" max="65535">
         <label>12: 12: Serial number</label>
         <description><![CDATA[
 Read-only serial number in decimal<br /><h1>Overview</h1><p>Register 12 - serial number (4 bytes) - This register contains the serial number of the Power Reader. </p> <p>NOTE: The serial numbers written on the Power Reader are in HEX, not decimal.</p>

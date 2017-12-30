@@ -6,7 +6,7 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="leviton_dz1kd_00_000" listed="false">
-    <label>DZ1KD-1BZ 1000W Dimmer</label>
+    <label>DZ1KD 1000W Dimmer</label>
     <description>1000W Dimmer</description>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -29,7 +29,7 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Leviton</property>
-      <property name="modelId">DZ1KD-1BZ</property>
+      <property name="modelId">DZ1KD</property>
       <property name="manufacturerId">001D</property>
       <property name="manufacturerRef">3301:0001</property>
       <property name="dbReference">664</property>

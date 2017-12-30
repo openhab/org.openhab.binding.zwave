@@ -73,7 +73,7 @@ Remotely Controlled Ventilation<br /><h1>Overview</h1><p><strong>NB</strong>, th
       </parameter>
 
       <parameter name="config_2_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="12">
         <label>2: Filter - Period (read-only)</label>
         <description>In step of 30 days; 6=180days.</description>
         <default>12</default>

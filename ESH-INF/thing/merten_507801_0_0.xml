@@ -13,6 +13,27 @@ CONNECT radio flush-mounted receiver, Roller shutter<br /><h1>Overview</h1><p>ht
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+        </properties>
+      </channel>
+      <channel id="switch_dimmer1" typeId="switch_dimmer">
+        <label>Dimmer 1</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
+        </properties>
+      </channel>
+      <channel id="switch_dimmer2" typeId="switch_dimmer">
+        <label>Dimmer 2</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:2,COMMAND_CLASS_BASIC:2</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:2,COMMAND_CLASS_BASIC:2</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->

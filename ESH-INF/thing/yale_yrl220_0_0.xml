@@ -37,7 +37,7 @@ Yale Real Living Touchscreen Lever Lock<br /><h2>Inclusion Information</h2><p>To
       <property name="vendor">ASSA ABLOY</property>
       <property name="modelId">YRL220</property>
       <property name="manufacturerId">0129</property>
-      <property name="manufacturerRef">0001:0409,842A:3CAC</property>
+      <property name="manufacturerRef">0000:2132,0001:0000,0001:0409,842A:3CAC</property>
       <property name="dbReference">379</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -120,6 +120,42 @@ Sets if the unit operates normal, or disables keypad and Z-Wave lock/unlock<br /
           <option value="0">Normal</option>
           <option value="1">Vacation Mode</option>
           <option value="3">Privacy Mode</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_11_1" type="integer" groupName="configuration">
+        <label>11: One Touch Locking</label>
+        <default>255</default>
+        <options>
+          <option value="0">OFF</option>
+          <option value="255">ON</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_12_1" type="integer" groupName="configuration">
+        <label>12: Privacy Button</label>
+        <default>0</default>
+        <options>
+          <option value="0">OFF</option>
+          <option value="255">ON</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_13_1" type="integer" groupName="configuration">
+        <label>13: Lock Status LED</label>
+        <default>0</default>
+        <options>
+          <option value="0">OFF</option>
+          <option value="255">ON</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_15_1" type="integer" groupName="configuration">
+        <label>15: Reset to Factory Defaults</label>
+        <default>0</default>
+        <options>
+          <option value="1">Lock will execute Reset To Factory</option>
+          <option value="2">Reserved for future use</option>
         </options>
       </parameter>
 

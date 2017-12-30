@@ -221,11 +221,9 @@ This parameter defines the minimum time delay between next motor movemen.<br /> 
       </parameter>
 
       <parameter name="config_110_2" type="integer" groupName="configuration"
-                 min="1" max="30">
+                 min="1" max="32536">
         <label>110: Temperature sensor offset settings</label>
-        <description><![CDATA[
-Set value is added or subtracted to actual measured value by sensor. <ul><li>default value 32536</li> <li> 32536 – offset is 0.0C</li> <li>From 1 to 100 – value from 0.1 °C to 10.0 °C is added to actual measured temperature.</li> </ul>
-        ]]></description>
+        <description>Set value is added or subtracted to actual measured value by sensor. default value 32536 32536 – offset is 0.0C From 1 to 100 – value from 0.1 °C to 10.0 °C is added to actual measured temperature.</description>
         <default>32536</default>
       </parameter>
 

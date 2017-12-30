@@ -43,7 +43,7 @@ Door and Window Sensor<br /><h1>Overview</h1><p>Unit is labeled with HKZW-DWS01
       <property name="vendor">Hank</property>
       <property name="modelId">DWS01</property>
       <property name="manufacturerId">0208</property>
-      <property name="manufacturerRef">0201:0008</property>
+      <property name="manufacturerRef">0200:0008,0201:0008</property>
       <property name="dbReference">663</property>
       <property name="defaultAssociations">1</property>
     </properties>

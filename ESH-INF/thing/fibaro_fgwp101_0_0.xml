@@ -67,6 +67,7 @@
       <property name="modelId">FGWP101</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0600:1000</property>
+      <property name="versionMax">2.0</property>
       <property name="dbReference">130</property>
       <property name="commandClass:COMMAND_CLASS_ALARM">ccAdd</property>
       <property name="defaultAssociations">3</property>

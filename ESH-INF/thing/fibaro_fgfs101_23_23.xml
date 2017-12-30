@@ -91,10 +91,10 @@ LED indicator and acoustic alarm deactivation<br /><h1>Overview</h1><p>Parameter
         <description><![CDATA[
 Command frame sent by the Sensor in case flooding<br /><h1>Overview</h1><p>Parameter determines a type of command frame sent by the Sensor in case flooding has been detected or cancelled</p>
         ]]></description>
-        <default>-127</default>
+        <default>255</default>
         <options>
-          <option value="-127">BASIC_SET</option>
           <option value="0">ALARM WATER</option>
+          <option value="255">BASIC_SET</option>
         </options>
       </parameter>
 

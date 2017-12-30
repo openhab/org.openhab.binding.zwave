@@ -32,7 +32,59 @@
       <property name="manufacturerId">0063</property>
       <property name="manufacturerRef">4952:3133</property>
       <property name="dbReference">714</property>
+      <property name="defaultAssociations">1</property>
     </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration">
+        <label>3: </label>
+        <description><![CDATA[
+LED Light configuration<br /><h1>Overview</h1><p>0 - LED On when load is Off, Led Off when load is On</p> <p>1 - LED On when load is On, LED Off when laod is Off (Default)</p> <p>2 - LED always off</p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">LED On when load is Off, Led Off when load is On</option>
+          <option value="1">LED On when load is On, LED Off when laod is Off (Default)</option>
+          <option value="2">LED always off</option>
+        </options>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Basic Set via local load</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Supports Basic Set and is controlled with the local load</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Basic Set via Button</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Supports Basic Set and is controlled by pressing the On or Off button</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+    </config-description>
 
   </thing-type>
 

@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeon_dsc35_00_000" listed="false">
-    <label>DSC35 AEON Labs Micro Double Switch</label>
-    <description>AEON Labs Micro Double Switch</description>
+    <label>DSC35 Micro Double Switch</label>
+    <description>Micro Double Switch</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

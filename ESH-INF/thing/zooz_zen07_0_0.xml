@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="zooz_zen07_00_000" listed="false">
-    <label>ZEN07 Zooz Z-Wave Plus Mini Plug On / Off Module ZEN07</label>
-    <description>Zooz Z-Wave Plus Mini Plug On / Off Module ZEN07</description>
+    <label>ZEN07 Mini Plug On / Off Module ZEN07</label>
+    <description>Mini Plug On / Off Module ZEN07</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

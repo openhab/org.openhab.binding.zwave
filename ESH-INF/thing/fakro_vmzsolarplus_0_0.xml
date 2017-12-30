@@ -75,7 +75,7 @@ operating mode<br /><h1>Overview</h1><p>Operating mode. Available values:</p> <p
         <description><![CDATA[
 Summer/Winter mode<br /><h1>Overview</h1><p>summer mode: go down if sun shines and go up if it is cloudy</p> <p>winter mode: if temperature is below 0 deg C and sun shines then go up if it is cloudy go down. If temperature is above 0 deg C works as a summer mode</p>
         ]]></description>
-        <default>0</default>
+        <default>1</default>
         <options>
           <option value="1">summer mode only</option>
           <option value="2">winter mode</option>
@@ -83,7 +83,7 @@ Summer/Winter mode<br /><h1>Overview</h1><p>summer mode: go down if sun shines a
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
-                 min="1" max="30">
+                 min="0" max="30">
         <label>3: Delay time</label>
         <description><![CDATA[
 delay to auto shade<br /><h1>Overview</h1><p>Delay time in minutes after which the shade is open or closed in auto mode</p>
@@ -97,7 +97,7 @@ delay to auto shade<br /><h1>Overview</h1><p>Delay time in minutes after which t
         <description><![CDATA[
 Level of insolation to open/close the shades<br /><h1>Overview</h1><p>Level of insolation in mA to open/close the shades in the auto mode</p>
         ]]></description>
-        <default>0</default>
+        <default>3</default>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
@@ -124,7 +124,7 @@ Temperature<br /><h1>Overview</h1><p>T[<sup>o</sup>C] = x minus 50</p>
         <description><![CDATA[
 Restore last position<br /><h1>Overview</h1><p>Restore last position or always go down till the end.</p>
         ]]></description>
-        <default>0</default>
+        <default>1</default>
         <options>
           <option value="1">go down</option>
           <option value="2">restore last position</option>
@@ -155,7 +155,7 @@ Motor current<br /><h1>Overview</h1><p>Current used by motor: 10[mA] - 2,55[A]</
         <description><![CDATA[
 CLOSE current<br /><h1>Overview</h1><p>CLOSE current: 1[mA] - 255[mA]</p>
         ]]></description>
-        <default>0</default>
+        <default>1</default>
       </parameter>
 
       <parameter name="config_78_1" type="integer" groupName="configuration"
@@ -164,7 +164,7 @@ CLOSE current<br /><h1>Overview</h1><p>CLOSE current: 1[mA] - 255[mA]</p>
         <description><![CDATA[
 OPEN current<br /><h1>Overview</h1><p>OPEN current: 1[mA] - 255[mA]</p>
         ]]></description>
-        <default>0</default>
+        <default>1</default>
       </parameter>
 
       <parameter name="config_79_1" type="integer" groupName="configuration"
@@ -190,7 +190,7 @@ OPEN overload current<br /><h1>Overview</h1><p>OPEN overload current: 10[mA] - 2
         <description><![CDATA[
 Restore default config values<br /><h1>Overview</h1><p>Restore default config values.</p>
         ]]></description>
-        <default>0</default>
+        <default>2</default>
         <options>
           <option value="1">restore default config values</option>
           <option value="2">user values</option>
@@ -200,7 +200,7 @@ Restore default config values<br /><h1>Overview</h1><p>Restore default config va
       <parameter name="config_100_1" type="integer" groupName="configuration">
         <label>100: Autoexclude</label>
         <description>Autoexclude</description>
-        <default>0</default>
+        <default>1</default>
         <options>
           <option value="1">off</option>
           <option value="2">on</option>

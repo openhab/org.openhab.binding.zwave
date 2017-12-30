@@ -25,7 +25,7 @@
       <property name="vendor">Wenzhou MTLC Electric Appliances Co.,Ltd.</property>
       <property name="modelId">ZW500D</property>
       <property name="manufacturerId">011A</property>
-      <property name="manufacturerRef">0102:0201</property>
+      <property name="manufacturerRef">0102:0201,0102:0202</property>
       <property name="dbReference">299</property>
       <property name="defaultAssociations">1</property>
     </properties>

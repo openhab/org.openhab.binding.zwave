@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="wintop_ishutter_00_000" listed="false">
-    <label>iShutter Wintop iShutter</label>
-    <description>Wintop iShutter</description>
+    <label>iShutter iShutter</label>
+    <description>iShutter</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -89,7 +89,7 @@
       </parameter-group>
 
       <parameter name="config_0_1" type="integer" groupName="configuration"
-                 min="5" max="120">
+                 min="0" max="120">
         <label>0: Brighntes Meas Interval</label>
         <description><![CDATA[
 Brightness measuring interval [min]: (only SLAMP)<br /><h1>Overview</h1><p>Interval for measuring ambient light when lamp is on (lamp switches off briefly and measures). 0 = function is off.</p>

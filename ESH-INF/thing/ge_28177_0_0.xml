@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="ge_28177_00_000" listed="false">
+    <label>28177 GE Z-Wave Plus Wireless Smart Lighting Control Appliance Module</label>
+    <description>GE Z-Wave Plus Wireless Smart Lighting Control Appliance Module</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
+        </properties>
+      </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SCENE_ACTIVATION</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary1" typeId="switch_binary">
+        <label>Switch 1</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1,COMMAND_CLASS_BASIC:1</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary2" typeId="switch_binary">
+        <label>Switch 2</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:2,COMMAND_CLASS_BASIC:2</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Jasco Products</property>
+      <property name="modelId">28177</property>
+      <property name="manufacturerId">0063</property>
+      <property name="manufacturerRef">5052:3132</property>
+      <property name="dbReference">761</property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration">
+        <label>3: Night Light</label>
+        <description>Defines the behavior of the blue LED.</description>
+        <default>1</default>
+        <options>
+          <option value="1">LED on when switch is OFF</option>
+          <option value="2">LED Light Always ON</option>
+        </options>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Z-Wave Plus Lifeline</label>
+        <description>Z-Wave Plus Lifeline</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Single press</label>
+        <description>Group 2 supports Basic Set and is controlled with the local load</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Double press</label>
+        <description>Group 3 supports Basic Set and is controlled by double pressing the On or Off button</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>

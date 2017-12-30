@@ -310,10 +310,10 @@ How often the temperature reports will be sent<br /><h1>Overview</h1><p>The para
       </parameter>
 
       <parameter name="config_66_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="-1000" max="1000">
         <label>66: Temperature offset</label>
         <description><![CDATA[
-Value added to the actual temperature<br /><h1>Overview</h1><p>The value to be added to the actual temperature, measured by the sensor (temperature compensation).<br />Available settings: -1000 – 1000 (-100oC – 100oC)<br />Default setting: 0 Parameter size: 2 [bytes]</p>
+Value added to the actual temperature<br /><h1>Overview</h1><p>The value to be added to the actual temperature, measured by the sensor (temperature compensation).<br />Available settings: -1000 – 1000 (-1000-1000°C, 1°C step)<br />Default setting: 0 Parameter size: 2 [bytes]</p>
         ]]></description>
         <default>0</default>
       </parameter>
