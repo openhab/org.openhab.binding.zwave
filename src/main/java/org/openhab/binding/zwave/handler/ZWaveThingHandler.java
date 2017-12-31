@@ -431,7 +431,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     }
 
     private void startPolling() {
-        startPolling(pollingPeriod * 1000);
+        startPolling(pollingPeriod * (int) (1000 * Math.random()));
     }
 
     @Override
@@ -839,10 +839,14 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                             logger.debug("NODE {}: Attempt to set code ID outside of range", nodeId);
                             continue;
                         }
-                        controllerHandler.sendData(
-                                node.encapsulate(userCodeCommandClass.setUserCode(code, (String) valueObject), 0));
-                        controllerHandler.sendData(node.encapsulate(userCodeCommandClass.getUserCode(code), 0));
-                        pendingCfg.put(configurationParameter.getKey(), valueObject);
+                        if (valueObject instanceof String) {
+                            controllerHandler.sendData(
+                                    node.encapsulate(userCodeCommandClass.setUserCode(code, (String) valueObject), 0));
+                            controllerHandler.sendData(node.encapsulate(userCodeCommandClass.getUserCode(code), 0));
+                            pendingCfg.put(configurationParameter.getKey(), valueObject);
+                        } else {
+                            logger.error("Value format error processing user code {}", valueObject);
+                        }
                     } catch (NumberFormatException e) {
                         logger.error("Number format exception parsing user code ID '{}'",
                                 configurationParameter.getKey());
@@ -1359,7 +1363,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             }
 
             if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.DeleteNode) {
-                updateStatus(ThingStatus.REMOVED);
+                // updateStatus(ThingStatus.REMOVED);
             }
         }
 
@@ -1386,7 +1390,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             switch (incEvent.getEvent()) {
                 case ExcludeDone:
                     // Let our users know we're gone!
-                    updateStatus(ThingStatus.REMOVED, ThingStatusDetail.NONE, "Node was excluded from the controller");
+                    // updateStatus(ThingStatus.REMOVED, ThingStatusDetail.NONE, "Node was excluded from the
+                    // controller");
 
                     // Stop polling
                     synchronized (pollingSync) {
@@ -1518,8 +1523,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
             // Build the configuration value
             for (ZWaveAssociation groupMember : group.getAssociations()) {
-                logger.debug("NODE {}: Update ASSOCIATION group_{}: Adding node_{}_{}", nodeId, group,
-                        groupMember.getNode(), groupMember.getEndpoint());
+                logger.debug("NODE {}: Update ASSOCIATION group_{}: Adding {}", nodeId, group, groupMember);
                 members.add(groupMember.toString());
             }
 

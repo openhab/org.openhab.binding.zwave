@@ -70,9 +70,10 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
                     // This could happen if we add a new node using a different controller than OH.
                     // We handle this the same way as if included through an AddNode packet.
                     // This allows everyone to be notified.
+                    // TODO: Confirm this is really a good idea!
                     if (nodeId > 0 && nodeId <= 232) {
-                        zController.notifyEventListeners(
-                                new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.IncludeDone, nodeId));
+                        zController
+                                .notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionState.IncludeDone, nodeId));
                     }
                     break;
                 }
@@ -248,23 +249,33 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
 
     @Override
     public boolean correlateTransactionResponse(ZWaveTransaction transaction, SerialMessage incomingMessage) {
-        logger.debug("XXXXXXXX Correlating ApplicationUpdateMessageClass {} {}", transaction.getExpectedReplyClass(),
-                incomingMessage.getMessageClass());
         if (transaction.getExpectedReplyClass() != incomingMessage.getMessageClass()) {
-            logger.debug(">>>>>!!!!! Not expected reply class {} <<>> {}", transaction.getExpectedReplyClass(),
-                    incomingMessage.getMessageClass());
             return false;
         }
 
         // If the expected command class is defined, then check it
         // If the incoming node is 0, we will also correlate as this is an error to our last request
         try {
-            if (transaction.getNodeId() != incomingMessage.getMessagePayloadByte(1)) {
-                return false;
+            UpdateState updateState = UpdateState.getUpdateState(incomingMessage.getMessagePayloadByte(0));
+
+            switch (updateState) {
+                case DELETE_DONE:
+                case NEW_ID_ASSIGNED:
+                case NODE_INFO_REQ_DONE:
+                case NODE_INFO_RECEIVED:
+                case ROUTING_PENDING:
+                case SUC_ID:
+                    // Default implementation
+                    return transaction.getNodeId() == incomingMessage.getMessagePayloadByte(1);
+                case NODE_INFO_REQ_FAILED:
+                    // No node provided, so we correlate the transaction on the assumption that it is linked to our
+                    // request.
+                    return true;
+                default:
+                    break;
             }
         } catch (ZWaveSerialMessageException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            logger.error("Error processing ApplicationUpdate {} ", incomingMessage, e);
             return false;
         }
 

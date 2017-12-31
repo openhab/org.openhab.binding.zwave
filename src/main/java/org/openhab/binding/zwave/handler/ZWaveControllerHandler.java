@@ -79,7 +79,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     private Integer healTime;
     private Integer wakeupDefaultPeriod;
 
-    private final int SEARCHTIME_DEFAULT = 30;
+    private final int SEARCHTIME_DEFAULT = 120;
     private int searchTime;
 
     private ScheduledFuture<?> healJob = null;

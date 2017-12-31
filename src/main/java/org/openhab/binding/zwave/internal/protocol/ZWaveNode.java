@@ -390,6 +390,9 @@ public class ZWaveNode {
      * @return the nodeStage
      */
     public ZWaveNodeInitStage getNodeInitStage() {
+        if (nodeInitStageAdvancer == null) {
+            return ZWaveNodeInitStage.EMPTYNODE;
+        }
         return nodeInitStageAdvancer.getCurrentStage();
     }
 
@@ -399,6 +402,9 @@ public class ZWaveNode {
      * @return true if initialization has been completed
      */
     public boolean isInitializationComplete() {
+        if (nodeInitStageAdvancer == null) {
+            return false;
+        }
         return nodeInitStageAdvancer.isInitializationComplete();
     }
 

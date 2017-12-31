@@ -156,6 +156,8 @@ public class ZWaveTransactionManager {
             INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator());
     private final PriorityBlockingQueue<ZWaveTransaction> controllerQueue = new PriorityBlockingQueue<ZWaveTransaction>(
             INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator());
+    private final PriorityBlockingQueue<ZWaveTransaction> priorityControllerQueue = new PriorityBlockingQueue<ZWaveTransaction>(
+            INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator());
 
     private ZWaveReceiveThread receiveThread;
 
@@ -272,8 +274,16 @@ public class ZWaveTransactionManager {
                 queue = sendQueue;
                 logger.debug("NODE {}: Adding to device queue", transaction.getNodeId());
             } else {
-                queue = controllerQueue;
-                logger.debug("NODE {}: Adding to controller queue", transaction.getNodeId());
+                transaction.getSerialMessageClass();
+                if (transaction.getSerialMessageClass() == SerialMessageClass.AddNodeToNetwork
+                        || transaction.getSerialMessageClass() == SerialMessageClass.RemoveNodeFromNetwork
+                        || transaction.getSerialMessageClass() == SerialMessageClass.IdentifyNode) {
+                    queue = priorityControllerQueue;
+                    logger.debug("NODE {}: Adding to priority controller queue", transaction.getNodeId());
+                } else {
+                    queue = controllerQueue;
+                    logger.debug("NODE {}: Adding to controller queue", transaction.getNodeId());
+                }
             }
 
             if (queue.contains(transaction)) {
@@ -281,7 +291,7 @@ public class ZWaveTransactionManager {
                 queue.remove(transaction);
             }
             queue.add(transaction);
-            logger.debug("NODE {}: Added to queue - size {}", transaction.getNodeId(), controllerQueue.size());
+            logger.debug("NODE {}: Added to queue - size {}", transaction.getNodeId(), queue.size());
         }
 
         sendNextMessage();
@@ -329,6 +339,7 @@ public class ZWaveTransactionManager {
             sendQueue.clear();
             secureQueue.clear();
             controllerQueue.clear();
+            priorityControllerQueue.clear();
         }
     }
 
@@ -717,31 +728,26 @@ public class ZWaveTransactionManager {
                 return;
             }
 
-            // If we're sending a NONCE then we want to ignore the sleeping state of the device.
-            // We assume that if the device just sent us a NONCE_REQUEST then it must be awake
-            ZWaveTransaction transaction = secureQueue.poll();
-
-            if (outstandingTransactions.size() == 0) {
-                // logger.debug("Transaction lastTransaction outstanding {}, {}", outstandingTransactions.size(),
-                // lastTransaction);
-
-                // } else {
-                // Get a message from the different queues
-                // Security first, then standard messages, then controller messages
-                if (transaction == null) {
+            // Highest priority is the controller priority queue
+            // These should be very quick response messages that we really want to get to the controller quickly
+            ZWaveTransaction transaction = priorityControllerQueue.poll();
+            if (transaction == null) {
+                // If we're sending a NONCE then we want to ignore the sleeping state of the device.
+                // We assume that if the device just sent us a NONCE_REQUEST then it must be awake
+                transaction = secureQueue.poll();
+                if (transaction != null) {
+                    logger.debug("Transaction from secureQueue");
+                } else if (outstandingTransactions.size() == 0) {
                     transaction = getMessageFromQueue(sendQueue);
                     if (transaction != null) {
                         logger.debug("Transaction from sendQueue");
                     }
-                } else {
-                    logger.debug("Transaction from secureQueue");
-                }
-                if (transaction == null) {
-                    transaction = controllerQueue.poll();
-                    logger.debug("Transaction from controllerQueue");
+                    if (transaction == null) {
+                        transaction = controllerQueue.poll();
+                        logger.debug("Transaction from controllerQueue");
+                    }
                 }
             }
-
             if (transaction == null) {
                 // Nothing to send
                 logger.debug("Transaction SendNextMessage nothing");
