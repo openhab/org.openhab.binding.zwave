@@ -19,10 +19,10 @@ Water Sensor<br /><h2>Wakeup Information</h2><p>To wake up the sensor, <em>don't
           <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
         </properties>
       </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm</label>
+      <channel id="alarm_flood" typeId="alarm_flood">
+        <label>Flood Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=FLOOD,event=2</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
