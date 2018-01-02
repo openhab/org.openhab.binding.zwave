@@ -16,17 +16,32 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  */
 @XStreamAlias("associationMember")
 public class ZWaveAssociation {
-    private int node;
-    private Integer endpoint;
+    private final int node;
+    private final Integer endpoint;
 
+    /**
+     * Creates an association linked to a node
+     *
+     * @param node
+     */
     public ZWaveAssociation(int node) {
         this.node = node;
         this.endpoint = null;
     }
 
+    /**
+     * Creates an association linked to an endpoint
+     *
+     * @param node
+     * @param endpoint
+     */
     public ZWaveAssociation(int node, Integer endpoint) {
         this.node = node;
         this.endpoint = endpoint;
+    }
+
+    public boolean isController() {
+        return node == 0;
     }
 
     public int getNode() {

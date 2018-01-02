@@ -976,7 +976,7 @@ public class ZWaveNode {
      *
      * @param groupId the group to be set
      * @param member the {@link ZWaveAssociation} to be set to report to (receive)
-     * @return {@link ZWaveTransaction}
+     * @return {@link ZWaveCommandClassTransactionPayload}
      */
     public ZWaveCommandClassTransactionPayload removeAssociation(Integer groupId, ZWaveAssociation member) {
         if (endpoints.size() > 1) {

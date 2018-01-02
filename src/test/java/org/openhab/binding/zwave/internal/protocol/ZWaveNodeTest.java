@@ -13,11 +13,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.ZWaveAssociation;
-import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
-import org.openhab.binding.zwave.internal.protocol.ZWaveController;
-import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
-import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClass;
@@ -47,6 +42,13 @@ public class ZWaveNodeTest {
         msg = node.setAssociation(0, new ZWaveAssociation(5, 0));
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse));
 
+        // Setting device endpoint null and receive endpoint 0 should use single instance when only 1 endpoint in the
+        // node
+        expectedResponse = new byte[] { -123, 1, 0, 5 };
+        msg = node.setAssociation(0, new ZWaveAssociation(5, 1));
+        byte[] a = msg.getPayloadBuffer();
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse));
+
         // Setting device endpoint null and receive endpoint 0 should use multi instance when more than 1 endpoint
         expectedResponse = new byte[] { -114, 1, 0, 5 };
         node.addEndpoint(1);
@@ -56,6 +58,12 @@ public class ZWaveNodeTest {
         // Setting device endpoint null and receive endpoint 1 should use multi instance
         expectedResponse = new byte[] { -114, 1, 0, 0, 5, 1 };
         msg = node.setAssociation(0, new ZWaveAssociation(5, 1));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse));
+
+        // Setting device endpoint null and receive endpoint 0 should use single instance
+        expectedResponse = new byte[] { -114, 1, 0, 5 };
+        msg = node.setAssociation(0, new ZWaveAssociation(5));
+        byte[] x = msg.getPayloadBuffer();
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse));
     }
 

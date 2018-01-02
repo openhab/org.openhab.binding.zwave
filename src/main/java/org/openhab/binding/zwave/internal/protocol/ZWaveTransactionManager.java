@@ -717,7 +717,9 @@ public class ZWaveTransactionManager {
         for (ZWaveTransaction tmp : queue) {
             ZWaveNode node = controller.getNode(tmp.getNodeId());
             if (node == null) {
-                logger.debug("NODE {}: Node not found - has this node been removed?!?", tmp.getNodeId());
+                logger.debug("NODE {}: Node not found - has this node been removed?!? Dropping transaction {}.",
+                        tmp.getNodeId(), tmp);
+                queue.remove(tmp);
                 continue;
             }
 

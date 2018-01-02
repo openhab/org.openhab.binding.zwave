@@ -11,6 +11,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.openhab.binding.zwave.internal.protocol.ZWaveAssociation;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
@@ -136,7 +137,7 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
                 logger.debug("NODE {}: Associated with Node {} in group {}", getNode().getNodeId(), node, group);
 
                 // Add the node to the group
-                pendingAssociation.addAssociation(node);
+                pendingAssociation.addAssociation(new ZWaveAssociation(node));
             }
 
             // Process the multi instance associations
@@ -155,7 +156,7 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
                             endpointId, group);
 
                     // Add the node to the group
-                    pendingAssociation.addAssociation(node, endpointId);
+                    pendingAssociation.addAssociation(new ZWaveAssociation(node, endpointId));
                 }
             }
         }

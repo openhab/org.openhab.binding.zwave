@@ -47,6 +47,7 @@ import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClass
  */
 public class ZWaveThingHandlerTest {
     private ArgumentCaptor<ZWaveCommandClassTransactionPayload> payloadCaptor;
+    Configuration configResult;
 
     class ZWaveThingHandlerForTest extends ZWaveThingHandler {
 
@@ -67,6 +68,7 @@ public class ZWaveThingHandlerTest {
 
         ZWaveNode node = Mockito.mock(ZWaveNode.class);
         ZWaveController controller = Mockito.mock(ZWaveController.class);
+        ZWaveControllerHandler controllerHandler = Mockito.mock(ZWaveControllerHandler.class);
 
         ThingHandlerCallback thingCallback = Mockito.mock(ThingHandlerCallback.class);
         ZWaveThingHandler thingHandler = new ZWaveThingHandlerForTest(thing);
@@ -78,7 +80,6 @@ public class ZWaveThingHandlerTest {
 
             ZWaveAssociationCommandClass associationClass = new ZWaveAssociationCommandClass(node, controller, null);
 
-            ZWaveControllerHandler controllerHandler = Mockito.mock(ZWaveControllerHandler.class);
             Mockito.doNothing().when(node).sendMessage(payloadCaptor.capture());
             Mockito.doNothing().when(thingCallback).thingUpdated(Matchers.any(Thing.class));
 
@@ -87,6 +88,7 @@ public class ZWaveThingHandlerTest {
             fieldControllerHandler.set(thingHandler, controllerHandler);
 
             Mockito.when(controller.getOwnNodeId()).thenReturn(1);
+            Mockito.when(controllerHandler.getOwnNodeId()).thenReturn(1);
             Mockito.when(controllerHandler.getNode(Matchers.anyInt())).thenReturn(node);
             Mockito.when(node.getNodeId()).thenReturn(1);
             Mockito.when(node.getAssociationGroup(Matchers.anyInt())).thenReturn(new ZWaveAssociationGroup(1));
@@ -94,19 +96,18 @@ public class ZWaveThingHandlerTest {
             Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_ASSOCIATION)))
                     .thenReturn(associationClass);
         } catch (NoSuchFieldException | SecurityException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IllegalArgumentException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IllegalAccessException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
         Map<String, Object> config = new HashMap<String, Object>();
         config.put(param, value);
         thingHandler.handleConfigurationUpdate(config);
+
+        configResult = thingHandler.getThing().getConfiguration();
 
         return thingHandler;
     }
@@ -130,7 +131,7 @@ public class ZWaveThingHandlerTest {
 
         assertEquals(2, response.size());
         msg = response.get(0);
-        assertTrue(Arrays.equals(msg.getPayloadBuffer(), new byte[] { -124, 4, 0, 2, 88, 0 }));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), new byte[] { -124, 4, 0, 2, 88, 1 }));
         msg = response.get(1);
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), new byte[] { -124, 5 }));
     }
@@ -159,11 +160,35 @@ public class ZWaveThingHandlerTest {
         List<String> nodeList = new ArrayList<String>();
         nodeList.add("node_1");
         nodeList.add("node_2_1");
+        nodeList.add("node_2");
         List<ZWaveCommandClassTransactionPayload> response = doConfigurationUpdateCommands("group_1", nodeList);
+
+        List<String> associations = (List<String>) configResult.get("group_1");
+
+        assertTrue(associations.contains("controller"));
+        assertTrue(associations.contains("node_2"));
+        assertTrue(associations.contains("node_2_1"));
 
         // Check that there are only 3 requests - the SET and GET
         // Note that these are currently null due to mocking
-        assertEquals(3, response.size());
+        assertEquals(4, response.size());
+    }
+
+    @Test
+    public void TestConfigurationAssociationListController() {
+        List<String> nodeList = new ArrayList<String>();
+        nodeList.add("controller");
+        nodeList.add("node_2_1");
+        doConfigurationUpdate("group_1", nodeList);
+
+        List<String> associations = (List<String>) configResult.get("group_1");
+
+        assertTrue(associations.contains("controller"));
+        assertTrue(associations.contains("node_2_1"));
+
+        // Check that there are only 3 requests - the SET and GET
+        // Note that these are currently null due to mocking
+        assertEquals(3, payloadCaptor.getAllValues().size());
     }
 
     @Test

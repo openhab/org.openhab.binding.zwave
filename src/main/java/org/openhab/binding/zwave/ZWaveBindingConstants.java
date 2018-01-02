@@ -137,5 +137,7 @@ public class ZWaveBindingConstants {
     public final static String CONFIG_BINDING_CMDREPOLLPERIOD_LABEL = "Command Poll Period";
     public final static String CONFIG_BINDING_CMDREPOLLPERIOD_DESC = "Set the period to wait after a command is sent to a device before polling its state.";
 
+    public final static String GROUP_CONTROLLER = "controller";
+
     public final static Set<ThingTypeUID> SUPPORTED_BRIDGE_TYPES_UIDS = ImmutableSet.of(CONTROLLER_SERIAL);
 }
