@@ -63,104 +63,102 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
             command |= OPTION_NETWORK_WIDE;
         }
 
-        return new ZWaveTransactionMessageBuilder(SerialMessageClass.AddNodeToNetwork).withPayload(command).build();
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.AddNodeToNetwork).withPayload(command, 1)
+                .withRequiresData(false).build();
     }
 
-    public ZWaveSerialPayload doRequestStop() {
+    public ZWaveSerialPayload doRequestStop(boolean complete) {
         logger.debug("Ending INCLUSION mode.");
 
         // Create the request
-        return new ZWaveTransactionMessageBuilder(SerialMessageClass.AddNodeToNetwork).withPayload(ADD_NODE_STOP)
-                .build();
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.AddNodeToNetwork)
+                .withPayload(ADD_NODE_STOP, complete ? 0 : 1).withRequiresData(false).build();
     }
 
     @Override
     public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
-            SerialMessage incomingMessage) {
-        try {
-            switch (incomingMessage.getMessagePayloadByte(1)) {
-                case ADD_NODE_STATUS_LEARN_READY:
-                    logger.debug("Add Node: Learn ready.");
-                    zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.IncludeStart));
+            SerialMessage incomingMessage) throws ZWaveSerialMessageException {
+        switch (incomingMessage.getMessagePayloadByte(1)) {
+            case ADD_NODE_STATUS_LEARN_READY:
+                logger.debug("Add Node: Learn ready.");
+                zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionState.IncludeStart));
+                if (transaction != null) {
                     transaction.setTransactionComplete();
-                    break;
+                }
+                break;
 
-                case ADD_NODE_STATUS_NODE_FOUND:
-                    logger.debug("Add Node: New node found.");
-                    break;
+            case ADD_NODE_STATUS_NODE_FOUND:
+                logger.debug("Add Node: New node found.");
+                break;
 
-                case ADD_NODE_STATUS_ADDING_SLAVE:
-                    if (incomingMessage.getMessagePayloadByte(2) < 1
-                            || incomingMessage.getMessagePayloadByte(2) > 232) {
+            case ADD_NODE_STATUS_ADDING_SLAVE:
+                if (incomingMessage.getMessagePayloadByte(2) < 1 || incomingMessage.getMessagePayloadByte(2) > 232) {
+                    break;
+                }
+                logger.debug("NODE {}: Adding slave.", incomingMessage.getMessagePayloadByte(2));
+
+                int length = incomingMessage.getMessagePayloadByte(3);
+
+                Basic basic = Basic.getBasic(incomingMessage.getMessagePayloadByte(4));
+                Generic generic = Generic.getGeneric(incomingMessage.getMessagePayloadByte(5));
+                Specific specific = Specific.getSpecific(generic, incomingMessage.getMessagePayloadByte(6));
+
+                List<CommandClass> commandClasses = new ArrayList<CommandClass>();
+
+                for (int i = 7; i < length + 4; i++) {
+                    int data = incomingMessage.getMessagePayloadByte(i);
+
+                    CommandClass commandClass = CommandClass.getCommandClass(data);
+                    if (commandClass == null) {
+                        continue;
+                    }
+
+                    // Check if this is the control marker
+                    if (commandClass == CommandClass.COMMAND_CLASS_MARK) {
+                        // TODO: Implement control command classes
                         break;
                     }
-                    logger.debug("NODE {}: Adding slave.", incomingMessage.getMessagePayloadByte(2));
 
-                    int length = incomingMessage.getMessagePayloadByte(3);
+                    commandClasses.add(commandClass);
+                }
 
-                    Basic basic = Basic.getBasic(incomingMessage.getMessagePayloadByte(4));
-                    Generic generic = Generic.getGeneric(incomingMessage.getMessagePayloadByte(5));
-                    Specific specific = Specific.getSpecific(generic, incomingMessage.getMessagePayloadByte(6));
+                ZWaveInclusionEvent event = new ZWaveInclusionEvent(ZWaveInclusionState.IncludeSlaveFound,
+                        incomingMessage.getMessagePayloadByte(2), basic, generic, specific, commandClasses);
+                zController.notifyEventListeners(event);
+                break;
 
-                    List<CommandClass> commandClasses = new ArrayList<CommandClass>();
-
-                    for (int i = 7; i < length + 4; i++) {
-                        int data = incomingMessage.getMessagePayloadByte(i);
-
-                        CommandClass commandClass = CommandClass.getCommandClass(data);
-                        if (commandClass == null) {
-                            continue;
-                        }
-
-                        // Check if this is the control marker
-                        if (commandClass == CommandClass.COMMAND_CLASS_MARK) {
-                            // TODO: Implement control command classes
-                            break;
-                        }
-
-                        commandClasses.add(commandClass);
-                    }
-
-                    ZWaveInclusionEvent event = new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.IncludeSlaveFound,
-                            incomingMessage.getMessagePayloadByte(2), basic, generic, specific, commandClasses);
-                    zController.notifyEventListeners(event);
+            case ADD_NODE_STATUS_ADDING_CONTROLLER:
+                if (incomingMessage.getMessagePayloadByte(2) < 1 || incomingMessage.getMessagePayloadByte(2) > 232) {
                     break;
+                }
+                logger.debug("NODE {}: Adding controller.", incomingMessage.getMessagePayloadByte(2));
+                zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionState.IncludeControllerFound,
+                        incomingMessage.getMessagePayloadByte(2)));
+                break;
 
-                case ADD_NODE_STATUS_ADDING_CONTROLLER:
-                    if (incomingMessage.getMessagePayloadByte(2) < 1
-                            || incomingMessage.getMessagePayloadByte(2) > 232) {
-                        break;
-                    }
-                    logger.debug("NODE {}: Adding controller.", incomingMessage.getMessagePayloadByte(2));
-                    zController.notifyEventListeners(new ZWaveInclusionEvent(
-                            ZWaveInclusionEvent.Type.IncludeControllerFound, incomingMessage.getMessagePayloadByte(2)));
-                    break;
+            case ADD_NODE_STATUS_PROTOCOL_DONE:
+                logger.debug("NODE {}: Add Node: Protocol done.", incomingMessage.getMessagePayloadByte(2));
+                zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionState.IncludeProtocolDone,
+                        incomingMessage.getMessagePayloadByte(2)));
+                break;
 
-                case ADD_NODE_STATUS_PROTOCOL_DONE:
-                    logger.debug("NODE {}: Add Node: Protocol done.", incomingMessage.getMessagePayloadByte(2));
-                    zController.notifyEventListeners(new ZWaveInclusionEvent(
-                            ZWaveInclusionEvent.Type.IncludeProtocolDone, incomingMessage.getMessagePayloadByte(2)));
-                    break;
+            case ADD_NODE_STATUS_DONE:
+                logger.debug("Add Node: Done.");
+                zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionState.IncludeDone,
+                        incomingMessage.getMessagePayloadByte(2)));
+                break;
 
-                case ADD_NODE_STATUS_DONE:
-                    logger.debug("Add Node: Done.");
-                    zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.IncludeDone,
-                            incomingMessage.getMessagePayloadByte(2)));
-                    break;
-
-                case ADD_NODE_STATUS_FAILED:
-                    logger.debug("Add Node: Failed.");
-                    zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.IncludeFail));
+            case ADD_NODE_STATUS_FAILED:
+                logger.debug("Add Node: Failed.");
+                zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionState.IncludeFail));
+                if (transaction != null) {
                     transaction.setTransactionCanceled();
-                    break;
+                }
+                break;
 
-                default:
-                    logger.debug("Unknown request ({}).", incomingMessage.getMessagePayloadByte(1));
-                    break;
-            }
-        } catch (ZWaveSerialMessageException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            default:
+                logger.debug("Add Node: Unknown request ({}).", incomingMessage.getMessagePayloadByte(1));
+                break;
         }
 
         return true;

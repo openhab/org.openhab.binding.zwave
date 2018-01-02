@@ -43,16 +43,16 @@ public class RemoveNodeMessageClass extends ZWaveCommandProcessor {
         logger.debug("Setting controller into EXCLUSION mode.");
 
         // Create the request
-        return new ZWaveTransactionMessageBuilder(SerialMessageClass.RemoveNodeFromNetwork).withPayload(REMOVE_NODE_ANY)
-                .build();
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.RemoveNodeFromNetwork)
+                .withPayload(REMOVE_NODE_ANY, 1).withRequiresData(false).build();
     }
 
-    public ZWaveSerialPayload doRequestStop() {
+    public ZWaveSerialPayload doRequestStop(boolean complete) {
         logger.debug("Ending EXCLUSION mode.");
 
         // Create the request
         return new ZWaveTransactionMessageBuilder(SerialMessageClass.RemoveNodeFromNetwork)
-                .withPayload(REMOVE_NODE_STOP).build();
+                .withPayload(REMOVE_NODE_STOP, complete ? 0 : 1).withRequiresData(false).build();
     }
 
     @Override
@@ -62,41 +62,42 @@ public class RemoveNodeMessageClass extends ZWaveCommandProcessor {
         switch (incomingMessage.getMessagePayloadByte(1)) {
             case REMOVE_NODE_STATUS_LEARN_READY:
                 logger.debug("Remove Node: Learn ready.");
-                zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.ExcludeStart));
+                zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionState.ExcludeStart));
                 if (transaction != null) {
                     transaction.setTransactionComplete();
                 }
                 break;
             case REMOVE_NODE_STATUS_NODE_FOUND:
                 logger.debug("Remove Node: Node found for removal.");
+                zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionState.ExcludeNodeFound));
                 break;
             case REMOVE_NODE_STATUS_REMOVING_SLAVE:
-                if (incomingMessage.getMessagePayloadByte(2) < 1 || incomingMessage.getMessagePayloadByte(2) > 232) {
+                if (incomingMessage.getMessagePayloadByte(2) < 0 || incomingMessage.getMessagePayloadByte(2) > 232) {
                     break;
                 }
                 logger.debug("NODE {}: Removing slave.", incomingMessage.getMessagePayloadByte(2));
-                zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.ExcludeSlaveFound,
+                zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionState.ExcludeSlaveFound,
                         incomingMessage.getMessagePayloadByte(2)));
                 break;
             case REMOVE_NODE_STATUS_REMOVING_CONTROLLER:
-                if (incomingMessage.getMessagePayloadByte(2) < 1 || incomingMessage.getMessagePayloadByte(2) > 232) {
+                if (incomingMessage.getMessagePayloadByte(2) < 0 || incomingMessage.getMessagePayloadByte(2) > 232) {
                     break;
                 }
                 logger.debug("NODE {}: Removing controller.", incomingMessage.getMessagePayloadByte(2));
-                zController.notifyEventListeners(new ZWaveInclusionEvent(
-                        ZWaveInclusionEvent.Type.ExcludeControllerFound, incomingMessage.getMessagePayloadByte(2)));
+                zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionState.ExcludeControllerFound,
+                        incomingMessage.getMessagePayloadByte(2)));
                 break;
             case REMOVE_NODE_STATUS_DONE:
-                if (incomingMessage.getMessagePayloadByte(2) < 1 || incomingMessage.getMessagePayloadByte(2) > 232) {
+                if (incomingMessage.getMessagePayloadByte(2) < 0 || incomingMessage.getMessagePayloadByte(2) > 232) {
                     break;
                 }
                 logger.debug("Remove Node: Done.");
-                zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.ExcludeDone,
+                zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionState.ExcludeDone,
                         incomingMessage.getMessagePayloadByte(2)));
                 break;
             case REMOVE_NODE_STATUS_FAILED:
                 logger.debug("Remove Node: Failed.");
-                zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.ExcludeFail));
+                zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionState.ExcludeFail));
                 break;
             default:
                 logger.debug("Remove Node: Unknown request ({}).", incomingMessage.getMessagePayloadByte(1));

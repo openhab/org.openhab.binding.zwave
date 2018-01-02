@@ -172,11 +172,12 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         options.add(new ParameterOption("21600", "6 Hours"));
         options.add(new ParameterOption("43200", "12 Hours"));
         options.add(new ParameterOption("86400", "1 Day"));
+        options.add(new ParameterOption("172800", "2 Days"));
 
         parameters.add(
                 ConfigDescriptionParameterBuilder.create(ZWaveBindingConstants.CONFIGURATION_POLLPERIOD, Type.INTEGER)
                         .withLabel(ZWaveBindingConstants.CONFIG_BINDING_POLLINGPERIOD_LABEL)
-                        .withDescription(ZWaveBindingConstants.CONFIG_BINDING_POLLINGPERIOD_DESC).withDefault("1800")
+                        .withDescription(ZWaveBindingConstants.CONFIG_BINDING_POLLINGPERIOD_DESC).withDefault("86400")
                         .withMinimum(new BigDecimal(15)).withMaximum(new BigDecimal(86400)).withOptions(options)
                         .withLimitToOptions(false).withGroupName("thingcfg").build());
 
@@ -480,7 +481,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
             return null;
         }
 
-        if (myNode != null && myNode.getCommandClass(CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION) != null) {
+        if (myNode.getCommandClass(CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION) != null) {
             supportsMultiInstanceAssociation = true;
         }
 

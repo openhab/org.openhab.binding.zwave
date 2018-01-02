@@ -16,6 +16,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Generic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveInclusionState;
 
 /**
  * This event signals a node being included or excluded into the network.
@@ -23,7 +24,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClas
  * @author Chris Jackson
  */
 public class ZWaveInclusionEvent extends ZWaveEvent {
-    private Type type;
+    private ZWaveInclusionState type;
     private final Date includedAt;
     List<CommandClass> commandClasses = new ArrayList<CommandClass>();
     Basic basic = Basic.BASIC_TYPE_UNKNOWN;
@@ -36,19 +37,19 @@ public class ZWaveInclusionEvent extends ZWaveEvent {
      *
      * @param nodeId the nodeId of the event.
      */
-    public ZWaveInclusionEvent(Type type) {
+    public ZWaveInclusionEvent(ZWaveInclusionState type) {
         super(255);
         this.includedAt = new Date();
         this.type = type;
     }
 
-    public ZWaveInclusionEvent(Type type, int nodeId) {
+    public ZWaveInclusionEvent(ZWaveInclusionState type, int nodeId) {
         super(nodeId);
         this.includedAt = new Date();
         this.type = type;
     }
 
-    public ZWaveInclusionEvent(Type type, int nodeId, Basic basic, Generic generic, Specific specific,
+    public ZWaveInclusionEvent(ZWaveInclusionState type, int nodeId, Basic basic, Generic generic, Specific specific,
             List<CommandClass> commandClasses) {
         super(nodeId);
         this.includedAt = new Date();
@@ -63,7 +64,7 @@ public class ZWaveInclusionEvent extends ZWaveEvent {
         return includedAt;
     }
 
-    public Type getEvent() {
+    public ZWaveInclusionState getEvent() {
         return type;
     }
 
@@ -81,21 +82,5 @@ public class ZWaveInclusionEvent extends ZWaveEvent {
 
     public List<CommandClass> getCommandClasses() {
         return commandClasses;
-    }
-
-    public enum Type {
-        IncludeStart,
-        IncludeSlaveFound,
-        IncludeControllerFound,
-        IncludeProtocolDone,
-        IncludeFail,
-        IncludeDone,
-        ExcludeStart,
-        ExcludeSlaveFound,
-        ExcludeControllerFound,
-        ExcludeFail,
-        ExcludeDone,
-        SecureIncludeComplete,
-        SecureIncludeFailed
     }
 }

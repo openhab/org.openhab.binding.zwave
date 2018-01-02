@@ -55,6 +55,7 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.IdentifyNodeMes
 import org.openhab.binding.zwave.internal.protocol.serialmessage.IsFailedNodeMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeInfoMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeNeighborUpdateMessageClass;
+import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveInclusionState;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -122,7 +123,7 @@ public class ZWaveNodeInitStageAdvancer {
 
     private Thread initialisationThread;
 
-    private final long INCLUSION_TIMER = 10000000000L;
+    private final long INCLUSION_TIMER = 20000000000L;
 
     private boolean initRunning = true;
 
@@ -469,7 +470,7 @@ public class ZWaveNodeInitStageAdvancer {
             if (processTransaction(securityCommandClass.getSecuritySchemeGetMessage(), INCLUSION_TIMER, 3) == false) {
                 // Notify that secure inclusion failed
                 controller.notifyEventListeners(
-                        new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.SecureIncludeFailed, node.getNodeId()));
+                        new ZWaveInclusionEvent(ZWaveInclusionState.SecureIncludeFailed, node.getNodeId()));
                 logger.error("NODE {}: SECURITY_INC State=FAILED", node.getNodeId());
 
                 return;
@@ -483,12 +484,12 @@ public class ZWaveNodeInitStageAdvancer {
             if (processTransaction(securityCommandClass.getSetSecurityKeyMessage(), INCLUSION_TIMER, 3) == true) {
                 // Notify that secure inclusion completed ok
                 controller.notifyEventListeners(
-                        new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.SecureIncludeComplete, node.getNodeId()));
+                        new ZWaveInclusionEvent(ZWaveInclusionState.SecureIncludeComplete, node.getNodeId()));
                 logger.error("NODE {}: SECURITY_INC State=COMPLETE", node.getNodeId());
             } else {
                 // Notify that secure inclusion failed
                 controller.notifyEventListeners(
-                        new ZWaveInclusionEvent(ZWaveInclusionEvent.Type.SecureIncludeFailed, node.getNodeId()));
+                        new ZWaveInclusionEvent(ZWaveInclusionState.SecureIncludeFailed, node.getNodeId()));
                 logger.error("NODE {}: SECURITY_INC State=FAILED", node.getNodeId());
 
                 return;
@@ -496,6 +497,8 @@ public class ZWaveNodeInitStageAdvancer {
             if (initRunning == false) {
                 return;
             }
+        } else {
+            logger.debug("NODE {}: SECURITY_INC State=TOO_LONG", node.getNodeId());
         }
 
         // Do a NONCE request to see if the node responds.

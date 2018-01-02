@@ -58,7 +58,7 @@ public class RemoveFailedNodeMessageClass extends ZWaveCommandProcessor {
         logger.debug("NODE {}: Marking node as having failed.", nodeId);
 
         // Create the request
-        return new ZWaveTransactionMessageBuilder(SerialMessageClass.RemoveFailedNodeID).withPayload(nodeId).build();
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.RemoveFailedNodeID).withPayload(nodeId, 1).build();
     }
 
     @Override

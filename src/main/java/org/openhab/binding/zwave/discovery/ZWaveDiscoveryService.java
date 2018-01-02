@@ -38,6 +38,8 @@ import org.slf4j.LoggerFactory;
 public class ZWaveDiscoveryService extends AbstractDiscoveryService implements ExtendedDiscoveryService {
     private final Logger logger = LoggerFactory.getLogger(ZWaveDiscoveryService.class);
 
+    private final String ZWAVE_NODE_LABEL = "Z-Wave Node %03d";
+
     private ZWaveControllerHandler controllerHandler;
     private DiscoveryServiceCallback discoveryServiceCallback;
 
@@ -125,7 +127,7 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
         properties.put(ZWaveBindingConstants.CONFIGURATION_NODEID, new BigDecimal(nodeId));
 
         DiscoveryResult discoveryResult = DiscoveryResultBuilder.create(thingUID).withBridge(bridgeUID)
-                .withProperties(properties).withLabel(String.format("Node %d", nodeId)).build();
+                .withProperties(properties).withLabel(String.format(ZWAVE_NODE_LABEL, nodeId)).build();
 
         thingDiscovered(discoveryResult);
     }
@@ -171,7 +173,7 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
         }
 
         // If we didn't find the product, then add the unknown thing
-        String label = String.format("Z-Wave Node %d", node.getNodeId());
+        String label = String.format(ZWAVE_NODE_LABEL, node.getNodeId());
         if (foundProduct == null) {
             logger.warn("NODE {}: Device discovery could not resolve to a thingType! {}:{}:{}::{}", node.getNodeId(),
                     String.format("%04X", node.getManufacturer()), String.format("%04X", node.getDeviceType()),
