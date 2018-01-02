@@ -11,11 +11,17 @@
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
+      <channel id="basic_switch_dimmer" typeId="switch_dimmer">
+        <label>Paddle 1</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BASIC</property>
+        </properties>
+      </channel>
       <channel id="switch_dimmer" typeId="switch_dimmer">
-        <label>Dimmer</label>
+        <label>Paddle 2</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
