@@ -78,6 +78,9 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
     // The last nonce we received from the remote
     @XStreamOmitField
     private ZWaveNonce theirNonce = null;
+    
+    @XStreamOmitField
+	private byte lastTheirNonceId = (byte)0xFF;
 
     private static final String AES = "AES";
 
@@ -259,8 +262,14 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
         }
         // theirNonce;
         Map<String, Object> response = CommandClassSecurityV1.handleSecurityNonceReport(payload.getPayloadBuffer());
-        theirNonce = new ZWaveNonce((byte[]) response.get("NONCE_BYTE"));
-        logger.debug("NODE {}: NONCE Received {}", getNode().getNodeId(), theirNonce.toString());
+        byte[] nonceBytes = (byte[]) response.get("NONCE_BYTE");
+        if(lastTheirNonceId != nonceBytes[0]) {
+			theirNonce = new ZWaveNonce(nonceBytes);
+			lastTheirNonceId = nonceBytes[0];
+			logger.debug("NODE {}: NONCE Received {}", getNode().getNodeId(), theirNonce.toString());
+		} else {
+			logger.debug("NODE {}: NONCE Received and IGNORED, ID was same than the last one received", getNode().getNodeId());
+		}
     }
 
     @ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_NONCE_GET, name = "SECURITY_NONCE_GET")
