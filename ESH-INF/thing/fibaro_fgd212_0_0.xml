@@ -48,6 +48,12 @@
           <property name="binding:*:OnOffType">METER</property>
         </properties>
       </channel>
+      <channel id="config_decimal_param19" typeId="config_decimal">
+        <label>Max brightness</label>
+        <properties>
+          <property name="binding:*:DecimalType">CONFIGURATION;parameter=19</property>
+        </properties>
+      </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
         <properties>

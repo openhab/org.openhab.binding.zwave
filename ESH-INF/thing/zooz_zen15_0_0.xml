@@ -58,6 +58,53 @@
       <property name="dbReference">758</property>
     </properties>
 
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_20_1" type="integer" groupName="configuration">
+        <label>20: Overload Protection</label>
+        <description><![CDATA[
+Overload protection.<br /><h1>Overview</h1><p>Overload protection will turn the Power Switch relay off once power exceeds 16.5A for over 5 seconds when this setting is enabled.</p> <p>We DO NOT recommend changing this parameter’s value as it may result in device damage and malfunction.</p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_21_1" type="integer" groupName="configuration">
+        <label>21: On/Off Status Recovery After Power Failure</label>
+        <description>Choose the recovery state for your Power Switch if power outage occurs.</description>
+        <default>0</default>
+        <options>
+          <option value="0">Previous state</option>
+          <option value="1">ON</option>
+          <option value="2">OFF</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_24_1" type="integer" groupName="configuration">
+        <label>24: On/Off Status Change Notifications</label>
+        <description><![CDATA[
+Send On/Off Status Change Notifications<br /><h1>Overview</h1><p>Your Power Switch will automatically send a notification to the controller and other associated devices if its status changes from on to off or the other way round. Choose when you want it to send the report.</p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">Disabled</option>
+          <option value="1">Sends notification if status is changed manually or remotely</option>
+          <option value="2">Sends notification ONLY if status is changed manually</option>
+        </options>
+      </parameter>
+
+    </config-description>
+
   </thing-type>
 
 </thing:thing-descriptions>
