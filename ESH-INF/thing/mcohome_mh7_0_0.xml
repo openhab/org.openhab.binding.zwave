@@ -48,7 +48,7 @@
       <property name="vendor">McoHome Technology Co., Ltd</property>
       <property name="modelId">MH7</property>
       <property name="manufacturerId">015F</property>
-      <property name="manufacturerRef">0702:3102,0702:5102</property>
+      <property name="manufacturerRef">0702:3102</property>
       <property name="dbReference">439</property>
       <property name="defaultAssociations">1</property>
     </properties>

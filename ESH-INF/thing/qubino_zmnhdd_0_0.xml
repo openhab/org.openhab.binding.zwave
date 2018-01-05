@@ -14,16 +14,9 @@ Flush Dimmer Plus<br /><h1>Overview</h1><p>This Z-Wave module is used for dimmin
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
+        <label></label>
         <properties>
           <property name="binding:*:OnOffType">SWITCH_BINARY</property>
-        </properties>
-      </channel>
-      <channel id="switch_dimmer" typeId="switch_dimmer">
-        <label>Dimmer</label>
-        <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL,BASIC</property>
         </properties>
       </channel>
       <channel id="sensor_binary" typeId="sensor_binary">
@@ -63,7 +56,7 @@ Flush Dimmer Plus<br /><h1>Overview</h1><p>This Z-Wave module is used for dimmin
         </properties>
       </channel>
       <channel id="switch_binary1" typeId="switch_binary">
-        <label>Switch 1</label>
+        <label></label>
         <properties>
           <property name="binding:*:OnOffType">SWITCH_BINARY:1</property>
         </properties>
@@ -120,6 +113,7 @@ Flush Dimmer Plus<br /><h1>Overview</h1><p>This Z-Wave module is used for dimmin
       <property name="manufacturerId">0159</property>
       <property name="manufacturerRef">0001:0051</property>
       <property name="dbReference">210</property>
+      <property name="commandClass:MULTI_INSTANCE">ccAdd</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -209,6 +203,7 @@ Dimming is done by push button or switch connected to I1.<br /><h1>Overview</h1>
         <options>
           <option value="0">0 - single push button (connected to I1)</option>
           <option value="1">1 - 3-way switch (connected to I1 and I2)</option>
+          <option value="2">2 - Additional switch connected to I2</option>
         </options>
       </parameter>
 
