@@ -5,10 +5,10 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="aeon_zw100_01_008" listed="false">
-    <label>ZW100 MultiSensor 6</label>
+  <thing-type id="aeon_zw100_01_010" listed="false">
+    <label>ZW100 Multisensor 6</label>
     <description><![CDATA[
-MultiSensor 6<br /><h1>Overview</h1><p>RESET - Press and hold for 20 seconds</p> <ul><li>Reset MultiSensor to factory default:<br />1. Press and hold the Action Button for 20 seconds.<br />2. If holding time more than one second, the LED will blink faster and faster. If holding time more than<br />20 seconds, the LED will be on for 2 seconds, which indicates reset is success, otherwise please<br />repeat step 2.</li> <li>Note:<br />1, This procedure should only be used when the primary controller is inoperable.<br />2, Reset MultiSensor to factory default settings, it will:<br />a ), let the MultiSensor to be excluded in Z-Wave network;<br />b), delete the Association settings;<br />c), restore the Configuration settings to the default.  </li> </ul><br /><h2>Inclusion Information</h2><h1>Click one time</h1> <p>1. Send <strong>non-security</strong> Node Info frame  </p> <ul><li>Add MultiSensor into Z-Wave network(non-security inclusion):<br />1. Power on MultiSensor. The MultiSensor’s LED will blink slowly when you short press the Action<br />Button.<br />2. Let the primary controller into inclusion mode (If you don’t know how to do this, refer to its manual).<br />3. Press the Action Button.<br />4. If the inclusion is success, MultiSensor’s LED will be kept turning on for 8 seconds when you short<br />press the Action Button. If the LED is still in slow blink, in which you need to repeat the process from<br />step 2.</li> </ul><h1>Short press 2 times within 1 second</h1> <ul><li>1. Send <strong>Security</strong> Node Info frame.<br />2. Add MultiSensor into z-wave network(Security inclusion):<br />1. Power on MultiSensor. The MultiSensor’s LED will blink slowly when you short press the Action<br />Button.<br />2. Let the primary controller into inclusion mode (If you don’t know how to do this, refer to its manual).<br />3. Press the Action Button.<br />4. If the inclusion is success, MultiSensor’s LED will be kept turning on for 8 seconds when you short<br />press the Action Button. If the LED is still in slow blink, in which you need to repeat the process from<br />step 2. </li> </ul><br /><h2>Exclusion Information</h2><p>Remove MultiSensor from Z-wave network:<br />1. Power on MultiSensor. The MultiSensor’s LED will be kept turning on for 8 seconds when you short<br />press the Action Button.<br />2. Let the primary controller into exclusion mode (If you don’t know how to do this, refer to its manual).<br />3. Press the Action Button.<br />4. If the exclusion is success, MultiSensor’s LED will blink slowly when you short press the Action<br />Button. If MultiSensor’s LED still keeps on status, in which you need to repeat the process from step 2.  </p> <br /><h2>Wakeup Information</h2><h1>Press and hold for 3 seconds</h1> <p>Enable/disable wake up for 10 minutes.<br />(When it is enabled, the orange Led will fast blink) </p>
+Multisensor 6<br /><h1>Overview</h1><p>RESET - Press and hold for 20 seconds</p> <ul><li>Reset MultiSensor to factory default:<br />1. Press and hold the Action Button for 20 seconds.<br />2. If holding time more than one second, the LED will blink faster and faster. If holding time more than<br />20 seconds, the LED will be on for 2 seconds, which indicates reset is success, otherwise please<br />repeat step 2.</li> <li>Note:<br />1, This procedure should only be used when the primary controller is inoperable.<br />2, Reset MultiSensor to factory default settings, it will:<br />a ), let the MultiSensor to be excluded in Z-Wave network;<br />b), delete the Association settings;<br />c), restore the Configuration settings to the default.  </li> </ul><br /><h2>Inclusion Information</h2><h1>Click one time</h1> <p>1. Send non-security Node Info frame  </p> <ul><li>Add MultiSensor into Z-Wave network(non-security inclusion):<br />1. Power on MultiSensor. The MultiSensor’s LED will blink slowly when you short press the Action<br />Button.<br />2. Let the primary controller into inclusion mode (If you don’t know how to do this, refer to its manual).<br />3. Press the Action Button.<br />4. If the inclusion is success, MultiSensor’s LED will be kept turning on for 8 seconds when you short<br />press the Action Button. If the LED is still in slow blink, in which you need to repeat the process from<br />step 2.</li> </ul><h1>Short press 2 times within 1 second</h1> <ul><li>1. Send Security Node Info frame.<br />2. Add MultiSensor into z-wave network(Security inclusion):<br />1. Power on MultiSensor. The MultiSensor’s LED will blink slowly when you short press the Action<br />Button.<br />2. Let the primary controller into inclusion mode (If you don’t know how to do this, refer to its manual).<br />3. Press the Action Button.<br />4. If the inclusion is success, MultiSensor’s LED will be kept turning on for 8 seconds when you short<br />press the Action Button. If the LED is still in slow blink, in which you need to repeat the process from<br />step 2. </li> </ul><br /><h2>Exclusion Information</h2><p>Remove MultiSensor from Z-wave network:<br />1. Power on MultiSensor. The MultiSensor’s LED will be kept turning on for 8 seconds when you short<br />press the Action Button.<br />2. Let the primary controller into exclusion mode (If you don’t know how to do this, refer to its manual).<br />3. Press the Action Button.<br />4. If the exclusion is success, MultiSensor’s LED will blink slowly when you short press the Action<br />Button. If MultiSensor’s LED still keeps on status, in which you need to repeat the process from step 2.  </p> <br /><h2>Wakeup Information</h2><h1>Press and hold for 3 seconds</h1> <p>Enable/disable wake up for 10 minutes.<br />(When it is enabled, the orange Led will fast blink) </p>
     ]]></description>
     <category>Sensor<category>
 
@@ -17,13 +17,7 @@ MultiSensor 6<br /><h1>Overview</h1><p>RESET - Press and hold for 20 seconds</p>
       <channel id="sensor_binary" typeId="sensor_binary">
         <label>Binary Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY,BASIC</property>
-        </properties>
-      </channel>
-      <channel id="sensor_relhumidity" typeId="sensor_relhumidity">
-        <label>Sensor (relative humidity)</label>
-        <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=RELATIVE_HUMIDITY</property>
+          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
         </properties>
       </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">
@@ -32,28 +26,28 @@ MultiSensor 6<br /><h1>Overview</h1><p>RESET - Press and hold for 20 seconds</p>
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="sensor_luminance" typeId="sensor_luminance">
-        <label>Sensor (luminance)</label>
-        <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=LUMINANCE</property>
-        </properties>
-      </channel>
       <channel id="sensor_ultraviolet" typeId="sensor_ultraviolet">
         <label>Sensor (ultraviolet)</label>
         <properties>
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=ULTRAVIOLET</property>
         </properties>
       </channel>
-      <channel id="alarm_tamper" typeId="alarm_tamper">
-        <label>Tamper Alarm</label>
+      <channel id="sensor_luminance" typeId="sensor_luminance">
+        <label>Sensor (luminance)</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=BURGLAR, event=3</property>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=LUMINANCE</property>
         </properties>
       </channel>
-      <channel id="alarm_motion" typeId="alarm_motion">
-        <label>Motion Alarm</label>
+      <channel id="sensor_relhumidity" typeId="sensor_relhumidity">
+        <label>Sensor (relative humidity)</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=BURGLAR, event=8</property>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=RELATIVE_HUMIDITY</property>
+        </properties>
+      </channel>
+      <channel id="alarm_burglar" typeId="alarm_burglar">
+        <label>Alarm (burglar)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=BURGLAR</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -69,9 +63,8 @@ MultiSensor 6<br /><h1>Overview</h1><p>RESET - Press and hold for 20 seconds</p>
       <property name="modelId">ZW100</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0002:0064,0102:0064,0202:0064</property>
-      <property name="versionMin">1.8</property>
-      <property name="versionMax">1.9</property>
-      <property name="dbReference">387</property>
+      <property name="versionMin">1.10</property>
+      <property name="dbReference">778</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -231,13 +224,17 @@ Send an alarm report if temperature is less than -15 °C<br /><h1>Overview</h1><
         </options>
       </parameter>
 
-      <parameter name="config_81_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_81_1" type="integer" groupName="configuration">
         <label>81: LED function</label>
         <description><![CDATA[
-Disable/Enable LED function<br /><h1>Overview</h1><p>Disable/Enable LED function (0: enabled 1: disabled)</p>
+Disable/Enable LED function<br /><h1>Overview</h1><p>Enable/disable the LED blinking.<br />0 = Enable LED blinking.<br />1 = Disable LED blinking only when the PIR is triggered.<br />2 = Completely disable LED for motion, wakeup, and sensor report.  </p>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Enable LED blinking</option>
+          <option value="1">Disable PIR LED</option>
+          <option value="2">Disable ALL</option>
+        </options>
       </parameter>
 
       <parameter name="config_101_4" type="integer" groupName="configuration"

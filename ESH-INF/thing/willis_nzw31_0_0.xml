@@ -10,6 +10,7 @@
     <description><![CDATA[
 In-wall Dimming Switch<br /><h1>Overview</h1><p>Z-Wave Plus dimming switch with instant status reporting.</p>
     ]]></description>
+    <category>WallSwitch<category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -27,7 +28,7 @@ In-wall Dimming Switch<br /><h1>Overview</h1><p>Z-Wave Plus dimming switch with 
       <property name="vendor">Willis Electric Co., Ltd.</property>
       <property name="modelId">NZW31</property>
       <property name="manufacturerId">015D</property>
-      <property name="manufacturerRef">1F01:1F01</property>
+      <property name="manufacturerRef">1F00:1F00,1F01:1F01</property>
       <property name="dbReference">766</property>
       <property name="defaultAssociations">1</property>
     </properties>

@@ -8,6 +8,7 @@
   <thing-type id="thermofloor_tf016_00_000" listed="false">
     <label>TF016 ZWave Thermostat</label>
     <description>ZWave Thermostat</description>
+    <category>RadiatorControl<category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

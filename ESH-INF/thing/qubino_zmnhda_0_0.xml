@@ -8,6 +8,7 @@
   <thing-type id="qubino_zmnhda_00_000" listed="false">
     <label>ZMNHDA Flush dimmer</label>
     <description>Flush dimmer</description>
+    <category>WallSwitch<category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -20,8 +21,8 @@
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL,BASIC</property>
         </properties>
       </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">

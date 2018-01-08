@@ -8,6 +8,7 @@
   <thing-type id="fibaro_fgrm222_00_000" listed="false">
     <label>FGRM222 Roller Shutter</label>
     <description>Roller Shutter</description>
+    <category>Blinds<category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
