@@ -80,7 +80,7 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 	private ZWaveNonce theirNonce = null;
 
 	@XStreamOmitField
-	private byte lastTheirNonceId = (byte)0xFF;
+	private byte lastTheirNonceId = (byte) 0xFF;
 
 	private static final String AES = "AES";
 
@@ -112,30 +112,34 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 	}
 
 	/**
-	 * A controlling device MUST send Security Scheme Get Command immediately after the successful inclusion of a node
-	 * that supports the Security Command class.<br>
+	 * A controlling device MUST send Security Scheme Get Command immediately after
+	 * the successful inclusion of a node that supports the Security Command
+	 * class.<br>
 	 *
-	 * A node is considered newly included if it has been included for less than 10 seconds.<br>
+	 * A node is considered newly included if it has been included for less than 10
+	 * seconds.<br>
 	 *
-	 * A newly included node MUST return the Security Scheme Report Command in response to this command.<br>
+	 * A newly included node MUST return the Security Scheme Report Command in
+	 * response to this command.<br>
 	 *
-	 * Whether a node has been included securely or non-securely, the node MUST NOT respond to the Security Scheme Get
-	 * command if it is not newly included.
+	 * Whether a node has been included securely or non-securely, the node MUST NOT
+	 * respond to the Security Scheme Get command if it is not newly included.
 	 *
 	 * @return {@link ZWaveCommandClassTransactionPayload} to send
 	 */
 	public ZWaveCommandClassTransactionPayload getSecuritySchemeGetMessage() {
 		return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
 				CommandClassSecurityV1.getSecuritySchemeGet(0))
-				.withExpectedResponseCommand(CommandClassSecurityV1.SECURITY_SCHEME_REPORT)
-				.withPriority(TransactionPriority.Immediate).build();
+						.withExpectedResponseCommand(CommandClassSecurityV1.SECURITY_SCHEME_REPORT)
+						.withPriority(TransactionPriority.Immediate).build();
 	}
 
 	/**
-	 * This command is used to advertise security scheme 0 support by the node being included. Upon reception, the
-	 * including controller MUST send the network key immediately without waiting for input, by using 16 times 0x00 as
-	 * the temporary key. The including controller MUST NOT perform any validation of the Supported Security Schemes
-	 * byte.
+	 * This command is used to advertise security scheme 0 support by the node being
+	 * included. Upon reception, the including controller MUST send the network key
+	 * immediately without waiting for input, by using 16 times 0x00 as the
+	 * temporary key. The including controller MUST NOT perform any validation of
+	 * the Supported Security Schemes byte.
 	 *
 	 * @param payload
 	 * @param endpoint
@@ -149,29 +153,32 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 	}
 
 	/**
-	 * The Device can use the Network Key Set Command to set the network key in a Z-Wave node. Transmission of the
-	 * Network Key Set command requires existence of a common agreed security scheme. The device uses the agreed
-	 * temporary key to encapsulate the Network Key Set command.
+	 * The Device can use the Network Key Set Command to set the network key in a
+	 * Z-Wave node. Transmission of the Network Key Set command requires existence
+	 * of a common agreed security scheme. The device uses the agreed temporary key
+	 * to encapsulate the Network Key Set command.
 	 *
 	 * @return {@link ZWaveCommandClassTransactionPayload} to send
 	 */
 	public ZWaveCommandClassTransactionPayload getSetSecurityKeyMessage() {
 		ZWaveCommandClassTransactionPayload payload = new ZWaveCommandClassTransactionPayloadBuilder(
 				getNode().getNodeId(), CommandClassSecurityV1.getNetworkKeySet(networkKey.getEncoded()))
-				.withExpectedResponseCommand(CommandClassSecurityV1.NETWORK_KEY_VERIFY)
-				.withPriority(TransactionPriority.Immediate).build();
+						.withExpectedResponseCommand(CommandClassSecurityV1.NETWORK_KEY_VERIFY)
+						.withPriority(TransactionPriority.Immediate).build();
 		payload.setRequiresSecurity();
 
 		return payload;
 	}
 
 	/**
-	 * When the included node has received a Network Key Set that is has successfully decrypted, verified by the MAC, it
-	 * MUST send a Network Key Verify Command to the including controller. If the controller is capable of decrypting
-	 * the Network Key Verify command it would indicate that the included node has successfully entered the secure
-	 * network. Since there is no timeout for the Network Key Verify, the controller can send a Security Commands
-	 * Supported Get command, and if no response is received, it SHOULD be concluded that the node has not been included
-	 * properly.
+	 * When the included node has received a Network Key Set that is has
+	 * successfully decrypted, verified by the MAC, it MUST send a Network Key
+	 * Verify Command to the including controller. If the controller is capable of
+	 * decrypting the Network Key Verify command it would indicate that the included
+	 * node has successfully entered the secure network. Since there is no timeout
+	 * for the Network Key Verify, the controller can send a Security Commands
+	 * Supported Get command, and if no response is received, it SHOULD be concluded
+	 * that the node has not been included properly.
 	 *
 	 * @param payload
 	 * @param endpoint
@@ -180,28 +187,30 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 	public void handleSecurityNetworkKeyVerify(ZWaveCommandClassPayload payload, int endpoint) {
 		// Nothing to process
 
-		// We need to now change to the real key as the response to this transaction will be encrypted differently!
+		// We need to now change to the real key as the response to this transaction
+		// will be encrypted differently!
 		setupNetworkKey(false);
 	}
 
 	public ZWaveCommandClassTransactionPayload getSecurityCommandsSupportedMessage() {
 		ZWaveCommandClassTransactionPayload payload = new ZWaveCommandClassTransactionPayloadBuilder(
 				getNode().getNodeId(), CommandClassSecurityV1.getSecurityCommandsSupportedGet())
-				.withExpectedResponseCommand(CommandClassSecurityV1.SECURITY_COMMANDS_SUPPORTED_REPORT)
-				.withPriority(TransactionPriority.Immediate).build();
+						.withExpectedResponseCommand(CommandClassSecurityV1.SECURITY_COMMANDS_SUPPORTED_REPORT)
+						.withPriority(TransactionPriority.Immediate).build();
 		payload.setRequiresSecurity();
 
 		return payload;
 	}
 
 	/**
-	 * This command advertises which command classes are supported using security encapsulation.<br>
+	 * This command advertises which command classes are supported using security
+	 * encapsulation.<br>
 	 *
-	 * All non-securely supported command classes MAY be explicitly advertised in the Security Commands Supported
-	 * Report.<br>
+	 * All non-securely supported command classes MAY be explicitly advertised in
+	 * the Security Commands Supported Report.<br>
 	 *
-	 * All securely supported command classes MUST be explicitly advertised in the Security Commands Supported Report if
-	 * they are only supported securely.<br>
+	 * All securely supported command classes MUST be explicitly advertised in the
+	 * Security Commands Supported Report if they are only supported securely.<br>
 	 *
 	 * Secure communication MUST be used when transmitting this command.<br>
 	 *
@@ -248,8 +257,8 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 	public ZWaveCommandClassTransactionPayload getSecurityNonceGet() {
 		return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
 				CommandClassSecurityV1.getSecurityNonceGet())
-				.withExpectedResponseCommand(CommandClassSecurityV1.SECURITY_NONCE_REPORT)
-				.withPriority(TransactionPriority.High).build();
+						.withExpectedResponseCommand(CommandClassSecurityV1.SECURITY_NONCE_REPORT)
+						.withPriority(TransactionPriority.High).build();
 	}
 
 	@ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_NONCE_REPORT, name = "SECURITY_NONCE_REPORT")
@@ -263,12 +272,13 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 		// theirNonce;
 		Map<String, Object> response = CommandClassSecurityV1.handleSecurityNonceReport(payload.getPayloadBuffer());
 		byte[] nonceBytes = (byte[]) response.get("NONCE_BYTE");
-		if(lastTheirNonceId != nonceBytes[0]) {
+		if (lastTheirNonceId != nonceBytes[0]) {
 			theirNonce = new ZWaveNonce(nonceBytes);
 			lastTheirNonceId = nonceBytes[0];
 			logger.debug("NODE {}: NONCE Received {}", getNode().getNodeId(), theirNonce.toString());
 		} else {
-			logger.debug("NODE {}: NONCE Received and IGNORED, ID was same than the last one received", getNode().getNodeId());
+			logger.debug("NODE {}: NONCE Received and IGNORED, ID was same than the last one received",
+					getNode().getNodeId());
 		}
 	}
 
@@ -277,7 +287,7 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 		ourNonce = new ZWaveNonce();
 		getController().enqueueNonce(new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
 				CommandClassSecurityV1.getSecurityNonceReport(ourNonce.getNonceBytes()))
-				.withPriority(TransactionPriority.NonceResponse).build());
+						.withPriority(TransactionPriority.NonceResponse).build());
 	}
 
 	public byte[] getSecurityMessageDecapsulation(byte[] ciphertextBytes) { // Check if this is a decapsulation message
@@ -357,7 +367,8 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 		// tmpNonce.setNonceBytes(new byte[] { 0, 0, 0, 0, 0, 0, 0, 0 });
 		// theirNonce.setNonceBytes(new byte[] { 1, 1, 1, 1, 1, 1, 1, 1 });
 
-		// Create the initialisation vector which is an 8 byte random number followed by their nonce
+		// Create the initialisation vector which is an 8 byte random number followed by
+		// their nonce
 		ZWaveNonce tmpNonce = new ZWaveNonce();
 		byte[] initializationVector = new byte[16];
 		System.arraycopy(tmpNonce.getNonceBytes(), 0, initializationVector, 0, 8);
@@ -408,10 +419,12 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 	}
 
 	/**
-	 * Sets the network key. The key is provided as a string of hexadecimal values. Values can be space or comma
-	 * delimitered, or can have no separation between values. Values can be prefixed with 0x or not.
+	 * Sets the network key. The key is provided as a string of hexadecimal values.
+	 * Values can be space or comma delimitered, or can have no separation between
+	 * values. Values can be prefixed with 0x or not.
 	 *
-	 * @param value {@link String} containing the new network key
+	 * @param value
+	 *            {@link String} containing the new network key
 	 */
 	public void setNetworkKey(String value) {
 		if (value == null) {
@@ -499,7 +512,8 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 	/**
 	 * Generate the MAC (Message Authentication Code) for an encrypted message
 	 *
-	 * @param commandByte the security command we're sending
+	 * @param commandByte
+	 *            the security command we're sending
 	 * @param ciphertext
 	 * @param sendingNode
 	 * @param receivingNode
@@ -557,7 +571,8 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 		// Add any left over data that isn't a full block size
 		if (block > 0) {
 			for (int i = 0; i < 16; i++) {
-				// encpck from block to 16 is already guaranteed to be 0 so its safe to XOR it with out tempAuth
+				// encpck from block to 16 is already guaranteed to be 0 so its safe to XOR it
+				// with out tempAuth
 				tempAuth[i] = (byte) (encpck[i] ^ tempAuth[i]);
 			}
 
