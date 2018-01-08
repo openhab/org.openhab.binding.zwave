@@ -8,7 +8,7 @@
   <thing-type id="devolo_mt02646_00_000" listed="false">
     <label>MT02646 Home Control Metering Plug</label>
     <description>Home Control Metering Plug</description>
-    <category>PowerOutlet<category>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

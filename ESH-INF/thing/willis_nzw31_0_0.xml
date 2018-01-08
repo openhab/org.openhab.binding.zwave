@@ -10,7 +10,7 @@
     <description><![CDATA[
 In-wall Dimming Switch<br /><h1>Overview</h1><p>Z-Wave Plus dimming switch with instant status reporting.</p>
     ]]></description>
-    <category>WallSwitch<category>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

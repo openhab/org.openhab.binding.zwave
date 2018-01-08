@@ -8,7 +8,7 @@
   <thing-type id="ge_ge14294_00_000" listed="false">
     <label>GE 14294 (ZW3005) In-Wall Dimmer Switch</label>
     <description>In-Wall Dimmer Switch</description>
-    <category>WallSwitch<category>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -8,7 +8,7 @@
   <thing-type id="fibaro_fgsd002_00_000" listed="false">
     <label>FGSD002 Smoke Detector</label>
     <description>Smoke Detector</description>
-    <category>SmokeDetector<category>
+    <category>SmokeDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

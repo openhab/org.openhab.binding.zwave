@@ -8,7 +8,7 @@
   <thing-type id="leviton_vrr151lz_00_000" listed="false">
     <label>VRR15-1LZ Receptacle</label>
     <description>Receptacle</description>
-    <category>PowerOutlet<category>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
