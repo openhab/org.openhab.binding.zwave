@@ -8,6 +8,7 @@
   <thing-type id="aeon_zw100_00_000" listed="false">
     <label>ZW100 MultiSensor 6</label>
     <description>MultiSensor 6</description>
+    <category>Sensor<category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

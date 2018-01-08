@@ -8,6 +8,7 @@
   <thing-type id="leviton_vrr151lz_00_000" listed="false">
     <label>VRR15-1LZ Receptacle</label>
     <description>Receptacle</description>
+    <category>PowerOutlet<category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -30,7 +31,7 @@
       <property name="vendor">Leviton</property>
       <property name="modelId">VRR15-1LZ</property>
       <property name="manufacturerId">001D</property>
-      <property name="manufacturerRef">1603:0334</property>
+      <property name="manufacturerRef">1602:0209,1603:0334</property>
       <property name="dbReference">701</property>
     </properties>
 
