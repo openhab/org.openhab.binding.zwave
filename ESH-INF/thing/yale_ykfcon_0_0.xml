@@ -8,7 +8,7 @@
   <thing-type id="yale_ykfcon_00_000" listed="false">
     <label>YKFCON Smart Living Keyfree Smart Lock</label>
     <description>Smart Living Keyfree Smart Lock</description>
-    <category>Lock<category>
+    <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

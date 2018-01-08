@@ -8,7 +8,7 @@
   <thing-type id="qubino_zmnhda_00_000" listed="false">
     <label>ZMNHDA Flush dimmer</label>
     <description>Flush dimmer</description>
-    <category>WallSwitch<category>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

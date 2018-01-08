@@ -8,7 +8,7 @@
   <thing-type id="fibaro_fgms001_00_000" listed="false">
     <label>FGMS001 Motion Sensor</label>
     <description>Motion Sensor</description>
-    <category>MotionDetector<category>
+    <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

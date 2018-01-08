@@ -8,7 +8,7 @@
   <thing-type id="fibaro_fgd211_01_009" listed="false">
     <label>FGD211 Universal Dimmer 500W</label>
     <description>Universal Dimmer 500W</description>
-    <category>WallSwitch<category>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
