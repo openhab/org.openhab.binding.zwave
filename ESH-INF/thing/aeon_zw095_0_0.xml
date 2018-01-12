@@ -10,6 +10,7 @@
     <description><![CDATA[
 Home Energy Meter - Gen 5<br /><h1>Overview</h1><p>Aeon Labs Home Energy Meter is energy meter for the entire home. It can wirelessly report instantaneous</p> <p>Power, KWH, Voltage and Amperage measurements to Z‐Wave gateway/controller. It can send Z‐Wave</p> <p>REPORTS (Meter v3 Command Class) at any time when it receives Z‐Wave Get Commands.</p> <p>The HEM can be setup to send automatic reports to any associated nodes in association group 1 at an</p> <p>interval time</p> <p>The HEM can independently report the measurements from the Clamps via the Multi Channel Command</p> <p>Class encapsulation.</p> <p>It can be included and operated in any Z‐wave network with other Z‐wave certified devices from other</p> <p>manufacturers and/or other applications. All non‐battery operated nodes within the network will act as</p> <p>repeaters regardless of vendor to increase reliability of the network.</p> <p>It also supports Security Command Class and has the AES‐128 bit security encryption built right in. While a</p> <p>Security enabled Controller is needed in order to fully use the security feature.</p>
     ]]></description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -138,7 +139,9 @@ Home Energy Meter - Gen 5<br /><h1>Overview</h1><p>Aeon Labs Home Energy Meter i
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Energy detection mode</label>
-        <description>This parameter is used to configure the energy detection mode.</description>
+        <description><![CDATA[
+This parameter is used to configure the energy detection mode.<br /><h1>Overview</h1><p>This parameter is used to configure the energy detection mode when the parameter 101~103 have been configured:<br />0 = report Wattage and the absolute KWH value (default);<br />1 = report positive/negative Wattage and the algebraic sum KWH value;<br />2 = report positive/negative Wattage and the positive KWH value (consuming electricity);<br />3 = report positive/negative Wattage and the negative KWH value (generating electricity).</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Disabled</option>
@@ -270,7 +273,7 @@ Reset all settings to factory defaults<br /><h1>Overview</h1><p>Will reset the c
         <default>0</default>
         <options>
           <option value="0">Do nothing</option>
-          <option value="1">RESET TO FACTORY DEFAULTS</option>
+          <option value="1">Reset to Factory Defaults</option>
         </options>
         <advanced>true</advanced>
       </parameter>

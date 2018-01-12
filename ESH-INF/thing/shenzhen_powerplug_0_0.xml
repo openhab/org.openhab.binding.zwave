@@ -10,6 +10,7 @@
     <description><![CDATA[
 Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltage, current load, power consumption and energy</p> <p>consumption measuring. </p> <p><strong>Voltage</strong> – The Supply Power Voltage For Plug.</p> <p><strong>Current</strong> – The Current for the Electric Device Connect to Plug Consumption.</p> <p><strong>Power</strong> – Power Consumed by an Electric Device in an instant, unit: Watt (W).</p> <p><strong>Energy</strong> – Energy Consumed by an Electric Device through a Time Period. Most</p> <p>commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One</p> <p>Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh.</p> <br /><h2>Inclusion Information</h2><p>1. Make sure the sensor is powered.</p> <p>2. Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or</p> <p>gateway operating manual)</p> <p>3. Press the button three times within 1.5 second, the device will enter inclusion mode. And the</p> <p>LED will flash on and off with green alternately five times within 2 seconds.</p> <br /><h2>Exclusion Information</h2><p>1. Make sure the sensor is powered.</p> <p>2. Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or</p> <p>gateway operating manual)</p> <p>3. Press the button three times within 1.5 second, the device will enter exclusion mode. And</p> <p>the LED will flash on and off with yellow alternately five times within 2 seconds.</p>
     ]]></description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -56,7 +57,7 @@ Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltag
       <property name="vendor">Shenzhen Neo Electronics Co., Ltd</property>
       <property name="modelId">Power Plug</property>
       <property name="manufacturerId">0258</property>
-      <property name="manufacturerRef">0003:0087,0003:1087</property>
+      <property name="manufacturerRef">0003:0087,0003:1087,0003:1483</property>
       <property name="dbReference">397</property>
       <property name="defaultAssociations">1</property>
     </properties>
