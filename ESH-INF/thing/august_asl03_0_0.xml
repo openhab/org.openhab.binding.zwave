@@ -8,6 +8,7 @@
   <thing-type id="august_asl03_00_000" listed="false">
     <label>ASL-03 August Smart Lock Pro 3rd Gen</label>
     <description>August Smart Lock Pro 3rd Gen</description>
+    <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -35,8 +36,9 @@
       <property name="vendor">August Smart Locks</property>
       <property name="modelId">ASL-03</property>
       <property name="manufacturerId">033F</property>
-      <property name="manufacturerRef">0001:0001</property>
+      <property name="manufacturerRef">0000:DF29</property>
       <property name="dbReference">743</property>
+      <property name="defaultAssociations">1,2</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

@@ -10,6 +10,7 @@
     <description><![CDATA[
 Multisensor 4in1<br /><h1>Overview</h1><p>Contact/temperature/humidity/luminance sensor.  Can also be called Zipato Quad Sensor (Z+).</p>
     ]]></description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
