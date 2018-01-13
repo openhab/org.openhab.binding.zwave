@@ -21,6 +21,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.zwave.internal.HexToIntegerConverter;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCRC16EncapsulationCommandClass;
@@ -1319,7 +1320,8 @@ public class ZWaveNode {
         controller.sendData(encapsulate(payload, 0));
     }
 
-    public ZWaveTransactionResponse sendTransaction(ZWaveCommandClassTransactionPayload payload, int endpoint) {
+    public @Nullable ZWaveTransactionResponse sendTransaction(ZWaveCommandClassTransactionPayload payload,
+            int endpoint) {
         return controller.sendTransaction(encapsulate(payload, endpoint));
     }
 

@@ -20,6 +20,7 @@ import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionState;
@@ -522,7 +523,7 @@ public class ZWaveController {
      * @param transaction
      *            the {@link ZWaveMessagePayloadTransaction} message to enqueue.
      */
-    public ZWaveTransactionResponse sendTransaction(ZWaveMessagePayloadTransaction transaction) {
+    public @Nullable ZWaveTransactionResponse sendTransaction(ZWaveMessagePayloadTransaction transaction) {
         return transactionManager.sendTransaction(transaction);
     }
 

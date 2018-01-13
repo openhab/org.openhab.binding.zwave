@@ -252,7 +252,7 @@ public class ZWaveNodeInitStageAdvancer {
                 response = controller.sendTransaction(transaction);
             }
 
-            logger.debug("NODE {}: Node Init response ({}) {}", node.getNodeId(), retryCount, response.getState());
+            logger.debug("NODE {}: Node Init response ({}) {}", node.getNodeId(), retryCount, response);
             if (response != null && response.getState() == State.COMPLETE) {
                 break;
             }
@@ -471,7 +471,7 @@ public class ZWaveNodeInitStageAdvancer {
                 // Notify that secure inclusion failed
                 controller.notifyEventListeners(
                         new ZWaveInclusionEvent(ZWaveInclusionState.SecureIncludeFailed, node.getNodeId()));
-                logger.error("NODE {}: SECURITY_INC State=FAILED", node.getNodeId());
+                logger.info("NODE {}: SECURITY_INC State=FAILED, Reason=GET_SCHEME", node.getNodeId());
 
                 return;
             }
@@ -485,12 +485,12 @@ public class ZWaveNodeInitStageAdvancer {
                 // Notify that secure inclusion completed ok
                 controller.notifyEventListeners(
                         new ZWaveInclusionEvent(ZWaveInclusionState.SecureIncludeComplete, node.getNodeId()));
-                logger.error("NODE {}: SECURITY_INC State=COMPLETE", node.getNodeId());
+                logger.info("NODE {}: SECURITY_INC State=COMPLETE", node.getNodeId());
             } else {
                 // Notify that secure inclusion failed
                 controller.notifyEventListeners(
                         new ZWaveInclusionEvent(ZWaveInclusionState.SecureIncludeFailed, node.getNodeId()));
-                logger.error("NODE {}: SECURITY_INC State=FAILED", node.getNodeId());
+                logger.info("NODE {}: SECURITY_INC State=FAILED, Reason=SET_KEY", node.getNodeId());
 
                 return;
             }
@@ -506,7 +506,7 @@ public class ZWaveNodeInitStageAdvancer {
         // securely included
         logger.debug("NODE {}: SECURITY_INC State=SECURE_PING", node.getNodeId());
         if (processTransaction(securityCommandClass.getSecurityNonceGet(), 0, 3) == false) {
-            logger.error("NODE {}: SECURITY_INC State=FAILED", node.getNodeId());
+            logger.info("NODE {}: SECURITY_INC State=FAILED, Reason=SECURE_PING", node.getNodeId());
             return;
         }
 
@@ -606,7 +606,7 @@ public class ZWaveNodeInitStageAdvancer {
                     }
                 }
 
-                if (versionCommandClass != null && zwaveVersionClass.getVersion() == 0) {
+                if (zwaveVersionClass.getVersion() == 0) {
                     logger.debug("NODE {}: Node advancer: VERSION - queued   {}", node.getNodeId(),
                             zwaveVersionClass.getCommandClass());
 

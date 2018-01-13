@@ -15,6 +15,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.PriorityBlockingQueue;
 
+import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
@@ -1020,17 +1021,21 @@ public class ZWaveTransactionManager {
         return executor.submit(worker);
     }
 
-    public ZWaveTransactionResponse sendTransaction(ZWaveMessagePayloadTransaction transaction) {
+    /**
+     * Sends a transaction and waits for the response.
+     * 
+     * @param transaction {@link ZWaveMessagePayloadTransaction} to send
+     * @return The {@link ZWaveTransactionResponse} or null if there was an error
+     */
+    public @Nullable ZWaveTransactionResponse sendTransaction(ZWaveMessagePayloadTransaction transaction) {
         logger.debug("NODE {}: sendTransaction {}", transaction.getDestinationNode(), transaction);
 
         Future<ZWaveTransactionResponse> futureResponse = sendTransactionAsync(transaction);
         try {
             ZWaveTransactionResponse response = futureResponse.get();
             return response;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+        } catch (InterruptedException | ExecutionException e) {
+            logger.debug("NODE {}: sendTransaction interrupted", e);
         }
 
         return null;
