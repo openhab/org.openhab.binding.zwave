@@ -5,17 +5,18 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="leviton_dzs15_00_000" listed="false">
-    <label>DZS15 Scene Capable Push On/Off</label>
+  <thing-type id="leviton_dzmx1_00_000" listed="false">
+    <label>DZMX1 Scene Capable Push On/Off</label>
     <description>Scene Capable Push On/Off</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL,BASIC</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -29,10 +30,10 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Leviton</property>
-      <property name="modelId">DZS15</property>
+      <property name="modelId">DZMX1</property>
       <property name="manufacturerId">001D</property>
-      <property name="manufacturerRef">1C02:0334</property>
-      <property name="dbReference">195</property>
+      <property name="manufacturerRef">1B03:0334</property>
+      <property name="dbReference">196</property>
     </properties>
 
   </thing-type>

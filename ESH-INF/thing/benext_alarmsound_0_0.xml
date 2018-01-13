@@ -8,6 +8,7 @@
   <thing-type id="benext_alarmsound_00_000" listed="false">
     <label>Alarm Sound Alarm sound</label>
     <description>Alarm sound</description>
+    <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

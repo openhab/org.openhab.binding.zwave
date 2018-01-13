@@ -8,6 +8,7 @@
   <thing-type id="leviton_vrmx11lz_00_000" listed="false">
     <label>VRMX1 Scene Capable Push On/Off Dimmer</label>
     <description>Scene Capable Push On/Off Dimmer</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
