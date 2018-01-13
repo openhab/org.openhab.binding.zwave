@@ -104,10 +104,6 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
 
     @Override
     public ConfigDescription getConfigDescription(URI uri, Locale locale) {
-        if (uri == null) {
-            return null;
-        }
-
         if ("thing".equals(uri.getScheme()) == false) {
             return null;
         }
@@ -143,6 +139,10 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
 
         // Get its handler and node
         ZWaveControllerHandler handler = (ZWaveControllerHandler) bridge.getHandler();
+        if (handler == null) {
+            return null;
+        }
+
         ZWaveNode node = handler.getNode(nodeId);
         if (node == null) {
             logger.debug("NODE {}: Node not found in getConfigDescription", nodeId);
@@ -152,8 +152,9 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         List<ConfigDescriptionParameterGroup> groups = new ArrayList<ConfigDescriptionParameterGroup>();
         List<ConfigDescriptionParameter> parameters = new ArrayList<ConfigDescriptionParameter>();
 
-        groups.add(new ConfigDescriptionParameterGroup("actions", "", false, "Actions", null));
-        groups.add(new ConfigDescriptionParameterGroup("thingcfg", "home", false, "Device Configuration", null));
+        groups.add(new ConfigDescriptionParameterGroup("actions", "", false, "Actions", "Actions"));
+        groups.add(new ConfigDescriptionParameterGroup("thingcfg", "home", false, "Device Configuration",
+                "Device Configuration"));
 
         parameters.add(ConfigDescriptionParameterBuilder
                 .create(ZWaveBindingConstants.CONFIGURATION_NODEID, Type.INTEGER).withLabel("Node ID")
@@ -185,7 +186,8 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         ZWaveWakeUpCommandClass wakeupCmdClass = (ZWaveWakeUpCommandClass) node
                 .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP);
         if (wakeupCmdClass != null) {
-            groups.add(new ConfigDescriptionParameterGroup("wakeup", "sleep", false, "Wakeup Configuration", null));
+            groups.add(new ConfigDescriptionParameterGroup("wakeup", "sleep", false, "Wakeup Configuration",
+                    "Configuration for wakeup parameters on battery devices"));
 
             parameters.add(ConfigDescriptionParameterBuilder
                     .create(ZWaveBindingConstants.CONFIGURATION_WAKEUPINTERVAL, Type.INTEGER)
@@ -243,7 +245,8 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         ZWaveUserCodeCommandClass userCodeClass = (ZWaveUserCodeCommandClass) node
                 .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_USER_CODE);
         if (userCodeClass != null && userCodeClass.getNumberOfSupportedCodes() > 0) {
-            groups.add(new ConfigDescriptionParameterGroup("usercode", "lock", false, "User Code", null));
+            groups.add(new ConfigDescriptionParameterGroup("usercode", "lock", false, "User Code",
+                    "Define the user codes for locks"));
 
             for (int code = 1; code <= userCodeClass.getNumberOfSupportedCodes(); code++) {
                 UserCode userCode = userCodeClass.getCachedUserCode(code);
@@ -474,6 +477,9 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
 
         // Get its handler
         ZWaveControllerHandler handler = (ZWaveControllerHandler) bridge.getHandler();
+        if (handler == null) {
+            return null;
+        }
 
         boolean supportsMultiInstanceAssociation = false;
         ZWaveNode myNode = handler.getNode(nodeId);
