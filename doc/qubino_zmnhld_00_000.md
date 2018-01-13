@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: ZMNHLD - ZWave
+---
+
+{% include base.html %}
 
 # ZMNHLD Flush PWM Thermostat
 
-This describes the Z-Wave device **ZMNHLD**, manufactured by **Goap** with the thing type UID of ```qubino_zmnhld_00_000```. 
+This describes the Z-Wave device *ZMNHLD*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhld_00_000```. 
 
 Flush PWM Thermostat  
 
 
-# Overview #
+## Overview 
 
 This Z-Wave module is used to regulate temperature.
 
@@ -20,7 +26,7 @@ It is designed to act as repeater in order to improve range and stability of Z-w
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 WARNING: Service button S **must NOT be used** when module is connected to 110-230V power supply.
 
@@ -37,7 +43,7 @@ WARNING: Service button S **must NOT be used** when module is connected to 110-2
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 WARNING: Service button S **must NOT be used** when module is connected to 110-230V power supply.
 
@@ -51,6 +57,7 @@ By this function all parameters of the module are set to default values and own 
 
 NOTE: If the module is included with parameters 100 or 101 with values different to default and module reset is done, wait at least 30s before next inclusion.
 
+
 ## Channels
 The following table summarises the channels available for the ZMNHLD Flush PWM Thermostat.
 
@@ -61,7 +68,6 @@ The following table summarises the channels available for the ZMNHLD Flush PWM T
 | Thermostat setpoint | thermostat_setpoint_heating | thermostat_setpoint | Temperature | Number |
 | Temperature Sensor | sensor_temperature1 | sensor_temperature | Temperature | Number |
 | Thermostat mode | thermostat_mode1 | qubino_zmnhld_00_000_thermostat_mode | Temperature | Number |
-
 
 
 ### Sensor (temperature)
@@ -79,9 +85,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Thermostat setpoint
 
 #### Scale
@@ -97,9 +100,6 @@ Select the scale to use for setpoints.
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Temperature Sensor
 
 #### Scale
@@ -113,10 +113,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -175,8 +171,6 @@ Detailed information on each parameter can be found below.
 | 9: sensor multilevel report | Triggered at change of temperature |
 
 
-
-
 #### 1: Input I1 switch type
 
 Input I1 switch type
@@ -188,10 +182,6 @@ Input I1 switch type
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | mono-stable switch type (0) |
 |  | bi-stable switch type (1) |
-
-
-
-
 
 
 #### 2: Input I2 switch type
@@ -207,10 +197,6 @@ Input I2 switch type
 |  | bi-stable switch type (1) |
 
 
-
-
-
-
 #### 3: Input I3 switch type
 
 Input I3 switch type
@@ -224,16 +210,12 @@ Input I3 switch type
 |  | bi-stable switch type (1) |
 
 
-
-
-
-
 #### 4: Input 1 contact type
 
 Input 1 contact type  
 
 
-# Overview #
+##### Overview 
 
 This parameter has influence only when parameter no. 11 is set to value "2"  
 After setting the parameter switch the sensor once, so tha the module could determine the input state
@@ -247,16 +229,12 @@ After setting the parameter switch the sensor once, so tha the module could dete
 |  | normally closed (1) |
 
 
-
-
-
-
 #### 5: Input 2 contact type
 
 Input 2 contact type  
 
 
-# Overview #
+##### Overview 
 
 This parameter has influence only when parameter no. 12 is set to value "2000"  
 After setting the parameter switch the sensor once, so tha the module could determine the input state
@@ -270,16 +248,12 @@ After setting the parameter switch the sensor once, so tha the module could dete
 |  | normally closed (1) |
 
 
-
-
-
-
 #### 6: Input 3 contact type
 
 Input 3 contact type  
 
 
-# Overview #
+##### Overview 
 
 This parameter has influence only when parameter no. 13 is set to value "2"  
 After setting the parameter switch the sensor once, so tha the module could determine the input state
@@ -293,16 +267,12 @@ After setting the parameter switch the sensor once, so tha the module could dete
 |  | normally closed (1) |
 
 
-
-
-
-
 #### 10: Activate / deactivate ALL ON/ALL OFF
 
 Activate / deactivate ALL ON/ALL OFF  
 
 
-# Overview #
+##### Overview 
 
 Flush PWM thermostat module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controllers belonging to the system.
 
@@ -315,10 +285,6 @@ Flush PWM thermostat module responds to commands ALL ON / ALL OFF that may be se
 |  | ALL ON is not active / ALL OFF is active (1) |
 |  | ALL ON is active / ALL OFF is not active (2) |
 |  | ALL ON is active / ALL OFF is active (255) |
-
-
-
-
 
 
 #### 11: I1 Functionality selection
@@ -335,16 +301,12 @@ I1 Functionality selection
 |  | Input I1 doesnt influence on the Heat/Cool process (32767) |
 
 
-
-
-
-
 #### 12: I2 Functionality selection
 
 I2 Functionality selection  
 
 
-# Overview #
+##### Overview 
 
 0-990 - Temperature setpoint from 0,0 to 99,0 °C  
 1001-1150 - Temperature setpoint -0.1 to -15°C  
@@ -357,10 +319,6 @@ I2 Functionality selection
 | Data Type        | INTEGER || Default Value | 32767 |
 | Options | Input I2 influences the cooling value with condense sensor (2000) |
 |  | Input I2 doesnt influence on the Heat/Cool process (32767) |
-
-
-
-
 
 
 #### 13: I3 Functionality selection
@@ -377,16 +335,12 @@ I3 Functionality selection
 |  | Input I3 doesnt influence on the Heat/Cool process (32767) |
 
 
-
-
-
-
 #### 40: Power reporting in Watts on power change
 
 Power reporting in Watts on power change  
 
 
-# Overview #
+##### Overview 
 
 0 - reporting disabled  
 1-100 = 1%-100% Reporting enabled  
@@ -401,16 +355,12 @@ Power report is send only when actual power in Watts in real time changes for mo
 | Default Value | 0 |
 
 
-
-
-
-
 #### 42: Power reporting in Watts by time interval
 
 Power reporting in Watts by time interval  
 
 
-# Overview #
+##### Overview 
 
 0 - report disabled  
 1-32767 = 1 second - 32767 seconds interval. Reporting enabled with time interval
@@ -424,16 +374,12 @@ Power reporting in Watts by time interval
 | Default Value | 0 |
 
 
-
-
-
-
 #### 45: Antifreeze
 
 Antifreeze  
 
 
-# Overview #
+##### Overview 
 
 Set value means at which temperature the thermostat will be turned on even if the thermostat was manually set off  
 0-127 = 0..12.7°C  
@@ -449,16 +395,12 @@ Set value means at which temperature the thermostat will be turned on even if th
 | Default Value | 50 |
 
 
-
-
-
-
 #### 50: PWM maximum value
 
 PWM maximum value  
 
 
-# Overview #
+##### Overview 
 
 2..100 = 2..100% Maximum PWM is set by entered value
 
@@ -471,16 +413,12 @@ PWM maximum value
 | Default Value | 100 |
 
 
-
-
-
-
 #### 51: PWM minimum value
 
 PWM minimum value  
 
 
-# Overview #
+##### Overview 
 
 0..99 = 0..99% Minimum PWM is set by entered value
 
@@ -493,16 +431,12 @@ PWM minimum value
 | Default Value | 0 |
 
 
-
-
-
-
 #### 52: PWM cycle duration
 
 PWM cycle duration  
 
 
-# Overview #
+##### Overview 
 
 5..127 = 5-125 seconds. PWM cycle duration is set by entered value
 
@@ -515,16 +449,12 @@ PWM cycle duration
 | Default Value | 10 |
 
 
-
-
-
-
 #### 53: PID value inside deadband
 
 PID value inside deadband  
 
 
-# Overview #
+##### Overview 
 
 0 - PID value equals PWM minimum cycle  
 1 - PID value set to LAST VALUE
@@ -538,16 +468,12 @@ PID value inside deadband
 | Default Value | 0 |
 
 
-
-
-
-
 #### 54: PID deadband
 
 PID deadband  
 
 
-# Overview #
+##### Overview 
 
 0..127 = 0..12.7 °C  
 This parameter defines the zone where PID is not active.
@@ -561,16 +487,12 @@ This parameter defines the zone where PID is not active.
 | Default Value | 5 |
 
 
-
-
-
-
 #### 55: Integral sampling time
 
 Integral sampling time  
 
 
-# Overview #
+##### Overview 
 
 0..127 = 0..127 seconds.  
 Parameter defines the time between samples.
@@ -582,10 +504,6 @@ Parameter defines the time between samples.
 | Data Type        | INTEGER |
 | Range | 0 to 127 |
 | Default Value | 5 |
-
-
-
-
 
 
 #### 56: P parameter
@@ -601,10 +519,6 @@ P parameter
 | Default Value | 100 |
 
 
-
-
-
-
 #### 57: I parameter
 
 I parameter
@@ -616,10 +530,6 @@ I parameter
 | Data Type        | INTEGER |
 | Range | 0 to 1000 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 58: D parameter
@@ -635,10 +545,6 @@ D parameter
 | Default Value | 1 |
 
 
-
-
-
-
 #### 59: Thermostat mode
 
 Thermostat mode
@@ -652,16 +558,12 @@ Thermostat mode
 |  | Cool mode (1) |
 
 
-
-
-
-
 #### 60: Too low temperature limit
 
 Too low temperature limit  
 
 
-# Overview #
+##### Overview 
 
 0..1000 = 0.1-100.0°C  
 1001..1150 = -0.1..-15.0°C
@@ -675,16 +577,12 @@ Too low temperature limit
 | Default Value | 50 |
 
 
-
-
-
-
 #### 61: Too high temperature limit
 
 Too high temperature limit  
 
 
-# Overview #
+##### Overview 
 
 1..1000 = 0.1..100.0°C
 
@@ -697,16 +595,12 @@ Too high temperature limit
 | Default Value | 700 |
 
 
-
-
-
-
 #### 63: Output switch selection
 
 Output switch selection  
 
 
-# Overview #
+##### Overview 
 
 Set value means the type of the device that is connected to the PWM output.
 
@@ -719,16 +613,12 @@ Set value means the type of the device that is connected to the PWM output.
 |  | When the system is turned off the output is 230V (1) |
 
 
-
-
-
-
 #### 70: Input I1 status on delay
 
 Input I1 status on delay  
 
 
-# Overview #
+##### Overview 
 
 If the value of the parameter is different to 0 means that the influence of this input to heating or cooling will react after inserted time.
 
@@ -741,16 +631,12 @@ If the value of the parameter is different to 0 means that the influence of this
 | Default Value | 0 |
 
 
-
-
-
-
 #### 71: Input I1 status off delay
 
 Input I1 status off delay  
 
 
-# Overview #
+##### Overview 
 
 If the value of the parameter is different to 0 means that the influence of this input to heating or cooling will react after inserted time.
 
@@ -763,16 +649,12 @@ If the value of the parameter is different to 0 means that the influence of this
 | Default Value | 0 |
 
 
-
-
-
-
 #### 72: Input I2 status on delay
 
 Input I2 status on delay  
 
 
-# Overview #
+##### Overview 
 
 If the value of the parameter is different to 0 means that the influence of this input to heating or cooling will react after inserted time.
 
@@ -785,16 +667,12 @@ If the value of the parameter is different to 0 means that the influence of this
 | Default Value | 0 |
 
 
-
-
-
-
 #### 73: Input I2 status off delay
 
 Input I2 status off delay  
 
 
-# Overview #
+##### Overview 
 
 If the value of the parameter is different to 0 means that the influence of this input to heating or cooling will react after inserted time.
 
@@ -807,16 +685,12 @@ If the value of the parameter is different to 0 means that the influence of this
 | Default Value | 0 |
 
 
-
-
-
-
 #### 74: Input I3 status on delay
 
 Input I3 status on delay  
 
 
-# Overview #
+##### Overview 
 
 If the value of the parameter is different to 0 means that the influence of this input to heating or cooling will react after inserted time.
 
@@ -829,16 +703,12 @@ If the value of the parameter is different to 0 means that the influence of this
 | Default Value | 0 |
 
 
-
-
-
-
 #### 75: Input I3 status off delay
 
 Input I3 status off delay  
 
 
-# Overview #
+##### Overview 
 
 If the value of the parameter is different to 0 means that the influence of this input to heating or cooling will react after inserted time.
 
@@ -849,10 +719,6 @@ If the value of the parameter is different to 0 means that the influence of this
 | Data Type        | INTEGER |
 | Range | 0 to 32000 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 100: Enable/Disable Endpoint I1 or select type
@@ -874,10 +740,6 @@ Enable/Disable Endpoint I1 or select type
 |  | Sensor binary (9) |
 
 
-
-
-
-
 #### 101: Enable/Disable Endpoint I2 or select type
 
 Enable/Disable Endpoint I2 or select type
@@ -895,10 +757,6 @@ Enable/Disable Endpoint I2 or select type
 |  | Heat alarm (5) |
 |  | Smoke alarm (6) |
 |  | Sensor binary (9) |
-
-
-
-
 
 
 #### 102: Enable/Disable Endpoint I3 or select type
@@ -920,16 +778,12 @@ Enable/Disable Endpoint I3 or select type
 |  | Sensor binary (9) |
 
 
-
-
-
-
 #### 110: Temperature sensor offset settings
 
 Temperature sensor offset settings  
 
 
-# Overview #
+##### Overview 
 
 32536 = offset is 0.0°C  
 1..100 = offset is 0.1..10.0°C added to actual measuring value  
@@ -944,16 +798,12 @@ Temperature sensor offset settings
 | Default Value | 32536 |
 
 
-
-
-
-
 #### 120: Digital temperature sensor reporting
 
 Digital temperature sensor reporting  
 
 
-# Overview #
+##### Overview 
 
 If digital teperature sensor is connected, module reports measured temperature on temperture change defined by this parameter
 
@@ -964,10 +814,6 @@ If digital teperature sensor is connected, module reports measured temperature o
 | Data Type        | INTEGER |
 | Range | 0 to 127 |
 | Default Value | 5 |
-
-
-
-
 
 
 #### 121: Digital temperature sensor / setpoint selector
@@ -987,16 +833,12 @@ Digital temperature sensor / setpoint selector
 |  | temperature an setpoint are grabbed from ext batt sensor (10) |
 
 
-
-
-
-
 #### 122: Node Id of external battery powered sensor
 
 Node Id of external battery powered sensor  
 
 
-# Overview #
+##### Overview 
 
 0 - disabled
 
@@ -1011,10 +853,6 @@ Node Id of external battery powered sensor
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Lifeline group
 
 reserved for communication with the main controller
@@ -1025,10 +863,6 @@ reserved for communication with the main controller
 | Configuration ID | group_1 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 2: basic on/off (output)
@@ -1043,13 +877,7 @@ Triggered at change of the output
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Sensor_multilevel_get
-
-
 
 
 | Property         | Value    |
@@ -1057,10 +885,6 @@ Triggered at change of the output
 | Configuration ID | group_3 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 4: basic on/off (temp limit)
@@ -1075,13 +899,7 @@ triggered by Too high temperature limit
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Thermostat setpoint get
-
-
 
 
 | Property         | Value    |
@@ -1089,10 +907,6 @@ triggered by Too high temperature limit
 | Configuration ID | group_5 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 6: basic on/off (window)
@@ -1107,10 +921,6 @@ triggered by change of I1
 | Range |  to  |
 
 
-
-
-
-
 #### 7: basic on/off (condense sensor)
 
 triggered by change of I2
@@ -1121,10 +931,6 @@ triggered by change of I2
 | Configuration ID | group_7 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 8: basic on/off (flood sensor)
@@ -1139,10 +945,6 @@ triggered by change of I3
 | Range |  to  |
 
 
-
-
-
-
 #### 9: sensor multilevel report
 
 Triggered at change of temperature
@@ -1155,12 +957,7 @@ Triggered at change of temperature
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/498).
-

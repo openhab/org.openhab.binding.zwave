@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: PA-100 - ZWave
+---
+
+{% include base.html %}
 
 # PA-100 Plug-in On/Off Switch
 
-This describes the Z-Wave device **PA-100**, manufactured by **Dragon Tech Industrial, Ltd.** with the thing type UID of ```dragontech_pa100_00_000```. 
+This describes the Z-Wave device *PA-100*, manufactured by *Dragon Tech Industrial, Ltd.* with the thing type UID of ```dragontech_pa100_00_000```. 
 
 Plug-in On/Off Switch
+
 
 ## Channels
 The following table summarises the channels available for the PA-100 Plug-in On/Off Switch.
@@ -11,8 +18,6 @@ The following table summarises the channels available for the PA-100 Plug-in On/
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
-
-
 
 
 ### Device Configuration
@@ -23,8 +28,6 @@ Detailed information on each parameter can be found below.
 |-------------|-------------|
 | 3: LED Indicator | Controls LED behavior when switch state is on/off |
 | 1: Group 1 |  |
-
-
 
 
 #### 3: LED Indicator
@@ -41,13 +44,7 @@ Controls LED behavior when switch state is on/off
 |  | off (2) |
 
 
-
-
-
-
 #### 1: Group 1
-
-
 
 
 | Property         | Value    |
@@ -57,12 +54,7 @@ Controls LED behavior when switch state is on/off
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/241).
-

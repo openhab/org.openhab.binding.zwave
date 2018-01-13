@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: AD146 - ZWave
+---
+
+{% include base.html %}
 
 # AD146 In-Wall Dimmer Module
 
-This describes the Z-Wave device **AD146**, manufactured by **Everspring** with the thing type UID of ```everspring_ad146_00_000```. 
+This describes the Z-Wave device *AD146*, manufactured by *Everspring* with the thing type UID of ```everspring_ad146_00_000```. 
 
 In-Wall Dimmer Module
+
 
 ## Channels
 The following table summarises the channels available for the AD146 In-Wall Dimmer Module.
@@ -12,7 +19,6 @@ The following table summarises the channels available for the AD146 In-Wall Dimm
 |---------|------------|------------------|----------|-----------|
 | Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer |
 | Alarm (power) | alarm_power | alarm_power | Door | Switch |
-
 
 
 ### Dimmer
@@ -30,10 +36,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the AD146 In-Wall Dimmer Module.
 Detailed information on each parameter can be found below.
@@ -49,8 +51,6 @@ Detailed information on each parameter can be found below.
 | 2: Control |  |
 
 
-
-
 #### 1: Basic Set Command value
 
 Basic Set Command value. 0-99, 255
@@ -62,10 +62,6 @@ Basic Set Command value. 0-99, 255
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 255 |
-
-
-
-
 
 
 #### 2: Report time delay group 1
@@ -81,10 +77,6 @@ Delaying time to report to group 1.
 | Default Value | 3 |
 
 
-
-
-
-
 #### 3: Remember last status
 
 Remember last status after power loss.
@@ -96,10 +88,6 @@ Remember last status after power loss.
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | Do not remember (0) |
 |  | Remember (1) |
-
-
-
-
 
 
 #### 4: Switching type
@@ -115,10 +103,6 @@ Edge or toogle switch mode.
 |  | Toogle Mode (1) |
 
 
-
-
-
-
 #### 5: Output mode setting
 
 Dimming or On/Off Switch
@@ -132,13 +116,7 @@ Dimming or On/Off Switch
 |  | On/Off (1) |
 
 
-
-
-
-
 #### 1: Reports
-
-
 
 
 | Property         | Value    |
@@ -148,13 +126,7 @@ Dimming or On/Off Switch
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Control
-
-
 
 
 | Property         | Value    |
@@ -164,12 +136,7 @@ Dimming or On/Off Switch
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/24).
-

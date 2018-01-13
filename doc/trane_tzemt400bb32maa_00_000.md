@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: TZEMT400BB32MAA - ZWave
+---
+
+{% include base.html %}
 
 # TZEMT400BB32MAA Trane Z-Wave Programmable Thermostat
 
-This describes the Z-Wave device **TZEMT400BB32MAA**, manufactured by **Trane Corporation** with the thing type UID of ```trane_tzemt400bb32maa_00_000```. 
+This describes the Z-Wave device *TZEMT400BB32MAA*, manufactured by *Trane Corporation* with the thing type UID of ```trane_tzemt400bb32maa_00_000```. 
 
 Trane Z-Wave Programmable Thermostat
+
 
 ## Channels
 The following table summarises the channels available for the TZEMT400BB32MAA Trane Z-Wave Programmable Thermostat.
@@ -18,7 +25,6 @@ The following table summarises the channels available for the TZEMT400BB32MAA Tr
 | Thermostat fan mode | thermostat_fanmode | trane_tzemt400bb32maa_00_000_thermostat_fanmode | Temperature | Number |
 | Thermostat fan state | thermostat_fanstate | trane_tzemt400bb32maa_00_000_thermostat_fanstate | Temperature | Number |
 | Clock Time Offset | time_offset | time_offset | Temperature | Number |
-
 
 
 ### Sensor (temperature)
@@ -36,9 +42,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (heating)
 
 #### Scale
@@ -54,9 +57,6 @@ Select the scale to use for setpoints.
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (cooling)
 
 #### Scale
@@ -70,9 +70,6 @@ Select the scale to use for setpoints.
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
 
 
 ### Clock Time Offset
@@ -91,10 +88,6 @@ Setting this will automatically update the devices clock when the time differenc
 | Options | Disable Auto Update (0) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the TZEMT400BB32MAA Trane Z-Wave Programmable Thermostat.
 Detailed information on each parameter can be found below.
@@ -105,11 +98,7 @@ Detailed information on each parameter can be found below.
 | 1: Reports |  |
 
 
-
-
 #### 132: Schedule Mode
-
-
 
 
 | Property         | Value    |
@@ -120,13 +109,7 @@ Detailed information on each parameter can be found below.
 |  | Schedule (1) |
 
 
-
-
-
-
 #### 1: Reports
-
-
 
 
 | Property         | Value    |
@@ -136,12 +119,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/245).
-

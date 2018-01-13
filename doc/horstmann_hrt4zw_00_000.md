@@ -1,14 +1,21 @@
+---
+layout: documentation
+title: HRT4-ZW - ZWave
+---
+
+{% include base.html %}
 
 # HRT4-ZW Battery Powered Wall Thermostat
 
-This describes the Z-Wave device **HRT4-ZW**, manufactured by **Horstmann Controls Limited** with the thing type UID of ```horstmann_hrt4zw_00_000```. 
+This describes the Z-Wave device *HRT4-ZW*, manufactured by *Horstmann Controls Limited* with the thing type UID of ```horstmann_hrt4zw_00_000```. 
 
 Battery Powered Wall Thermostat  
 
 
-# Overview #
+## Overview 
 
 **Note**: This device is also sold as Secure SRT321
+
 
 ## Channels
 The following table summarises the channels available for the HRT4-ZW Battery Powered Wall Thermostat.
@@ -20,7 +27,6 @@ The following table summarises the channels available for the HRT4-ZW Battery Po
 | Thermostat mode | thermostat_mode | horstmann_hrt4zw_00_000_thermostat_mode | Temperature | Number |
 | Setpoint (heating) | thermostat_setpoint_heating | thermostat_setpoint | Temperature | Number |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Sensor (temperature)
@@ -38,9 +44,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (heating)
 
 #### Scale
@@ -54,10 +57,6 @@ Select the scale to use for setpoints.
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -76,8 +75,6 @@ Detailed information on each parameter can be found below.
 | 5: Unsolicited Sensor Multilevel Reports |  |
 
 
-
-
 #### 1: Enable Temperature Sensor
 
 Controls the use of the temperature sensor on the device
@@ -89,10 +86,6 @@ Controls the use of the temperature sensor on the device
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Disable (0) |
 |  | Enable (255) |
-
-
-
-
 
 
 #### 2: Temperature Scale
@@ -108,10 +101,6 @@ Controls the temperature sensor scale
 |  | Fahrenheit (255) |
 
 
-
-
-
-
 #### 3: Delta T
 
 Defines the temperature steps of the heating control. Steps are 0.1 K
@@ -125,13 +114,7 @@ Defines the temperature steps of the heating control. Steps are 0.1 K
 | Default Value | 10 |
 
 
-
-
-
-
 #### 1: Thermostat Mode Set
-
-
 
 
 | Property         | Value    |
@@ -141,13 +124,7 @@ Defines the temperature steps of the heating control. Steps are 0.1 K
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Binary Switch Set
-
-
 
 
 | Property         | Value    |
@@ -157,13 +134,7 @@ Defines the temperature steps of the heating control. Steps are 0.1 K
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Unsolicited Battery Level Reports
-
-
 
 
 | Property         | Value    |
@@ -173,13 +144,7 @@ Defines the temperature steps of the heating control. Steps are 0.1 K
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Thermostat Set Point Reports
-
-
 
 
 | Property         | Value    |
@@ -189,13 +154,7 @@ Defines the temperature steps of the heating control. Steps are 0.1 K
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Unsolicited Sensor Multilevel Reports
-
-
 
 
 | Property         | Value    |
@@ -205,12 +164,7 @@ Defines the temperature steps of the heating control. Steps are 0.1 K
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/20).
-

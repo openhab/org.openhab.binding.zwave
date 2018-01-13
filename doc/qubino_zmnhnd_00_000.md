@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZMNHND - ZWave
+---
+
+{% include base.html %}
 
 # ZMNHND Flush 1D relay
 
-This describes the Z-Wave device **ZMNHND**, manufactured by **Goap** with the thing type UID of ```qubino_zmnhnd_00_000```. 
+This describes the Z-Wave device *ZMNHND*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhnd_00_000```. 
 
 Flush 1D relay
+
 
 ## Channels
 The following table summarises the channels available for the ZMNHND Flush 1D relay.
@@ -17,7 +24,6 @@ The following table summarises the channels available for the ZMNHND Flush 1D re
 | Sensor Binary | sensor_binary2 | sensor_binary | Door | Switch |
 | Sensor (temperature) 2 | sensor_temperature2 | sensor_temperature | Temperature | Number |
 | Burglar | alarm_burglar2 | alarm_burglar | Door | Switch |
-
 
 
 ### Sensor (temperature)
@@ -35,9 +41,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Sensor (temperature) 2
 
 #### Scale
@@ -51,10 +54,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -82,8 +81,6 @@ Detailed information on each parameter can be found below.
 | 9: Multilevel Sensor report (triggered at change of temperature sensor) |  |
 
 
-
-
 #### 1: Input 1 switch type
 
 Input 1 switch type
@@ -97,10 +94,6 @@ Input 1 switch type
 |  | bi-stable switch type (1) |
 
 
-
-
-
-
 #### 2: Input 2 contact type
 
 Input 2 contact type
@@ -112,10 +105,6 @@ Input 2 contact type
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | NO (normaly open) input type (0) |
 |  | NC (normaly close) input type (1) |
-
-
-
-
 
 
 #### 10: Activate / deactivate functions ALL ON/ALL OFF
@@ -133,10 +122,6 @@ Flush 1D relay module responds to commands ALL ON / ALL OFF that may be sent by 
 |  | ALL ON active, ALL OFF active (255) |
 
 
-
-
-
-
 #### 11: Automatic turning off relay after set time
 
 When relay is ON it goes automatically OFF after time defined by this parameter. Timer is reset to zero each time the module receive ON command regardless from where it comes (push button, associated module, controller,..). 0 - Auto OFF disabled. 1
@@ -148,10 +133,6 @@ When relay is ON it goes automatically OFF after time defined by this parameter.
 | Data Type        | INTEGER |
 | Range | 0 to 65535 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 12: Automatic turning on relay after set time
@@ -167,10 +148,6 @@ When relay is OFF it goes automatically ON after time defined by this parameter.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 15: Automatic turning off / on seconds or milliseconds selection
 
 NOTE: Parameter is the same for turning OFF or ON.
@@ -182,10 +159,6 @@ NOTE: Parameter is the same for turning OFF or ON.
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Seconds selected (0) |
 |  | Milliseconds selected (1) |
-
-
-
-
 
 
 #### 30: Saving the state of the relay after a power failure
@@ -201,10 +174,6 @@ Saving the state of the relay after a power failure
 |  | Flush 1D relay module does not save the state after a power failure, i (1) |
 
 
-
-
-
-
 #### 63: Output Switch selection
 
 Set value means the type of the device that is connected to the output. The device type can be normally open (NO) or normally close (NC).
@@ -216,10 +185,6 @@ Set value means the type of the device that is connected to the output. The devi
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | When system is turned off the output is 0V (NC). (0) |
 |  | When system is turned off the output is 230V or 24V (NO). (1) |
-
-
-
-
 
 
 #### 100: Enable / Disable Endpoints I2 or select Notification Type and Event
@@ -241,10 +206,6 @@ Enabling I2 means that Endpoint (I2) will be present on UI. Disabling it will re
 |  | Sensor binary. (9) |
 
 
-
-
-
-
 #### 110: Temperature sensor offset settings
 
 Set value is added or subtracted to actual measured value by sensor. 32536 – offset is 0.0C From 1 to 100–value from 0.1°C to 10.0°C is added to actual measured temperature. From 1001 to 1100 – value from -0.1 °C to -10.0 °C is subtracted to actual mea
@@ -256,10 +217,6 @@ Set value is added or subtracted to actual measured value by sensor. 32536 – o
 | Data Type        | INTEGER |
 | Range | 0 to 65535 |
 | Default Value | 32536 |
-
-
-
-
 
 
 #### 120: Digital temperature sensor reporting
@@ -275,13 +232,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Default Value | 5 |
 
 
-
-
-
-
 #### 1: Lifeline to Controller (reserved for communication with the main contr
-
-
 
 
 | Property         | Value    |
@@ -291,13 +242,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Basic on/off (triggered at change of the input Q state and reflectin
-
-
 
 
 | Property         | Value    |
@@ -307,13 +252,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Basic on/off (triggered at change of the input I2 state and reflecti
-
-
 
 
 | Property         | Value    |
@@ -323,13 +262,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Notification report (triggered at change of the input I2 state and r
-
-
 
 
 | Property         | Value    |
@@ -339,13 +272,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Binary Sensor (triggered at change of the input I2 state and reflect
-
-
 
 
 | Property         | Value    |
@@ -355,13 +282,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Range |  to  |
 
 
-
-
-
-
 #### 9: Multilevel Sensor report (triggered at change of temperature sensor)
-
-
 
 
 | Property         | Value    |
@@ -371,12 +292,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/207).
-

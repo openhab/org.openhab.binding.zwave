@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZWN-RSM2 - ZWave
+---
+
+{% include base.html %}
 
 # ZWN-RSM2 Smart Dual Relay Switch Module
 
-This describes the Z-Wave device **ZWN-RSM2**, manufactured by **Wenzhou MTLC Electric Appliances Co.,Ltd.** with the thing type UID of ```enerwave_zwnrsm2_00_000```. 
+This describes the Z-Wave device *ZWN-RSM2*, manufactured by *Wenzhou MTLC Electric Appliances Co.,Ltd.* with the thing type UID of ```enerwave_zwnrsm2_00_000```. 
 
 Smart Dual Relay Switch Module
+
 
 ## Channels
 The following table summarises the channels available for the ZWN-RSM2 Smart Dual Relay Switch Module.
@@ -15,8 +22,6 @@ The following table summarises the channels available for the ZWN-RSM2 Smart Dua
 | Switch 2 | switch_binary2 | switch_binary | Switch | Switch |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the ZWN-RSM2 Smart Dual Relay Switch Module.
 Detailed information on each parameter can be found below.
@@ -24,8 +29,6 @@ Detailed information on each parameter can be found below.
 | Parameter   | Description |
 |-------------|-------------|
 | 3: Unsolicited Report Configuration | ZWN-RSM2 can send unsolicited status report to primary controller (Node ID 0X01) when swit... |
-
-
 
 
 #### 3: Unsolicited Report Configuration
@@ -41,12 +44,7 @@ ZWN-RSM2 can send unsolicited status report to primary controller (Node ID 0X01)
 | Default Value | 0 |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/465).
-

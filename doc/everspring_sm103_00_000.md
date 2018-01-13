@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: SM103 - ZWave
+---
+
+{% include base.html %}
 
 # SM103 Door/Window Contact
 
-This describes the Z-Wave device **SM103**, manufactured by **Everspring** with the thing type UID of ```everspring_sm103_00_000```. 
+This describes the Z-Wave device *SM103*, manufactured by *Everspring* with the thing type UID of ```everspring_sm103_00_000```. 
 
 Door/Window Contact
+
 
 ## Channels
 The following table summarises the channels available for the SM103 Door/Window Contact.
@@ -13,8 +20,6 @@ The following table summarises the channels available for the SM103 Door/Window 
 | Door / Window Status | sensor_door | sensor_door | Door | Contact |
 | Alarm | alarm_general | alarm_general | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -27,8 +32,6 @@ Detailed information on each parameter can be found below.
 | 2: Configuring the OFF Delay | OFF Delay in seconds |
 | 1: Tamper Event Report (Alarm Report) |  |
 | 2: Control other Z-Wave Devices |  |
-
-
 
 
 #### 1: Basic Set Level
@@ -44,10 +47,6 @@ Value to be sent with a BASIC SET command
 | Default Value | 99 |
 
 
-
-
-
-
 #### 2: Configuring the OFF Delay
 
 OFF Delay in seconds
@@ -61,13 +60,7 @@ OFF Delay in seconds
 | Default Value | 1 |
 
 
-
-
-
-
 #### 1: Tamper Event Report (Alarm Report)
-
-
 
 
 | Property         | Value    |
@@ -77,13 +70,7 @@ OFF Delay in seconds
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Control other Z-Wave Devices
-
-
 
 
 | Property         | Value    |
@@ -93,12 +80,7 @@ OFF Delay in seconds
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/35).
-

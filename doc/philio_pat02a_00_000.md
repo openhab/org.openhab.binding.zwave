@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: PAT02-A - ZWave
+---
+
+{% include base.html %}
 
 # PAT02-A Flood Multisensor (incl. humidty and temperature)
 
-This describes the Z-Wave device **PAT02-A**, manufactured by **Philio Technology Corp** with the thing type UID of ```philio_pat02a_00_000```. 
+This describes the Z-Wave device *PAT02-A*, manufactured by *Philio Technology Corp* with the thing type UID of ```philio_pat02a_00_000```. 
 
 Flood Multisensor (incl. humidty and temperature)  
 
 
-# Overview #
+## Overview 
 
 The flood multisensor PAT02 has flood, temperature and humidity, 3 sensors function in one, based on Z-WaveTM technology. It is the Z-WaveTM plus product, it support the security, OTA... Those newest features of the Z-WaveTM technology. Z-WaveTM is a wireless communication protocol designed for home automation, specifically to remotely control applications in residential and light commercial environments. The technology uses a low-power RF radio embedded or retrofitted into home electronics devices and systems, such as lighting, home access control, entertainment systems and household appliances.
 
@@ -15,7 +21,7 @@ This product can be included and operated in any Z-WaveTM network with other Z-
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 There are one tamper keys in the back side of the device, It can add, remove, reset or association from the Z-WaveTM network. 
 
@@ -30,7 +36,7 @@ Notice: Including a node ID allocated by Z-WaveTM Controller means “Add” or
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 There are one tamper keys in the back side of the device, It can add, remove, reset or association from the Z-WaveTM network. 
 
@@ -44,13 +50,14 @@ Notice: Including a node ID allocated by Z-WaveTM Controller means “Add” or
   
 
 
-## Wakeup Information ##
+### Wakeup Information 
 
 After the device adding to the network, it will wake-up once per day in default. When it wake-up it will broadcast the “Wake Up Notification” message to the network, and wake-up 10 seconds for receive the setting commands.
 
 The wake-up interval minimum setting is 30 minutes, and maximum setting is 120 hours. And the interval step is 30 minutes.
 
 Press the tamper key once. The device will wake-up 10 seconds.
+
 
 ## Channels
 The following table summarises the channels available for the PAT02-A Flood Multisensor (incl. humidty and temperature).
@@ -63,7 +70,6 @@ The following table summarises the channels available for the PAT02-A Flood Mult
 | Alarm (water) | alarm_flood | alarm_flood | Door | Switch |
 | Alarm (burglar) | alarm_burglar | alarm_burglar | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Sensor (temperature)
@@ -79,10 +85,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -107,14 +109,12 @@ Detailed information on each parameter can be found below.
 | 2: Light Control |  |
 
 
-
-
 #### 1: Basic Set OFF Level
 
 Setting the BASIC command value.  
 
 
-# Overview #
+##### Overview 
 
 Setting the BASIC command value.
 
@@ -129,16 +129,12 @@ When the flood trigger off (0x00), send the BASIC CC to the group 2
 | Default Value | 0 |
 
 
-
-
-
-
 #### 2: Basic Set ON Level
 
 Setting the BASIC command value.  
 
 
-# Overview #
+##### Overview 
 
 Setting the BASIC command value.
 
@@ -153,16 +149,12 @@ When the flood trigger on(0xFF), send the BASIC CC to the group 2.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 5: Operation Mode
 
 Parameter to set the Operation Mode.  
 
 
-# Overview #
+##### Overview 
 
 Parameter to set the Operation Mode.
 
@@ -181,16 +173,12 @@ Parameter to set the Operation Mode.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 6: Multi-Sensor Function Switch
 
 Parameter to set the sensor functions.  
 
 
-# Overview #
+##### Overview 
 
 Parameter to set the sensor functions.
 
@@ -211,16 +199,12 @@ Parameter to set the sensor functions.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 7: Customer Function
 
 Customer function switch, using bit control.  
 
 
-# Overview #
+##### Overview 
 
 Customer Function switch using bit control
 
@@ -254,16 +238,12 @@ Customer Function switch using bit control
 | Options | Preset: Notification Type &#x3D; Binary (16) |
 
 
-
-
-
-
 #### 10: Auto Report Battery Time
 
 The interval time for auto reporting the battery level.  
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto reporting the battery level.
 
@@ -279,16 +259,12 @@ The interval time for auto reporting the battery level.
 | Default Value | 12 |
 
 
-
-
-
-
 #### 13: Auto Report Temperature Time
 
 The interval time for auto reporting the temperature state.  
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto reporting the temperature state.
 
@@ -304,16 +280,12 @@ The interval time for auto reporting the temperature state.
 | Default Value | 12 |
 
 
-
-
-
-
 #### 14: Auto Report Humidity Time
 
 The interval time for auto reporting the humidity state.  
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto reporting the humidity state.
 
@@ -329,16 +301,12 @@ The interval time for auto reporting the humidity state.
 | Default Value | 12 |
 
 
-
-
-
-
 #### 15: Auto Report Flood Time
 
 The interval time for auto reporting the flood state.  
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto reporting the flood state.
 
@@ -354,16 +322,12 @@ The interval time for auto reporting the flood state.
 | Default Value | 12 |
 
 
-
-
-
-
 #### 20: Auto Report Tick Interval
 
 The interval time for auto report each tick.  
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto report each tick. Setting configuration will affect configuration no. 10, 13, 14 and 15.
 
@@ -379,16 +343,12 @@ The interval time for auto report each tick. Setting configuration will affect c
 | Default Value | 30 |
 
 
-
-
-
-
 #### 21: Temperature Differential Report
 
 The temperature differential to report.  
 
 
-# Overview #
+##### Overview 
 
 The temperature differential to report. The unit is Fahrenheit. Enable this function the device will detect every 10 seconds.
 
@@ -403,16 +363,12 @@ The temperature differential to report. The unit is Fahrenheit. Enable this func
 | Default Value | 1 |
 
 
-
-
-
-
 #### 23: Humidity Differential Report
 
 The humidity differential to report.  
 
 
-# Overview #
+##### Overview 
 
 The humidity differential to report. The unit is percentage. Enable this function the device will detect every 10 seconds.
 
@@ -427,13 +383,7 @@ The humidity differential to report. The unit is percentage. Enable this functio
 | Default Value | 5 |
 
 
-
-
-
-
 #### 1: Reports
-
-
 
 
 | Property         | Value    |
@@ -443,13 +393,7 @@ The humidity differential to report. The unit is percentage. Enable this functio
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Light Control
-
-
 
 
 | Property         | Value    |
@@ -459,12 +403,7 @@ The humidity differential to report. The unit is percentage. Enable this functio
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/261).
-

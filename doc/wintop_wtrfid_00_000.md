@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: WTRFID - ZWave
+---
+
+{% include base.html %}
 
 # WTRFID Mini Keypad RFID/Z-Wave
 
-This describes the Z-Wave device **WTRFID**, manufactured by **Wintop** with the thing type UID of ```wintop_wtrfid_00_000```. 
+This describes the Z-Wave device *WTRFID*, manufactured by *Wintop* with the thing type UID of ```wintop_wtrfid_00_000```. 
 
 Mini Keypad RFID/Z-Wave
+
 
 ## Channels
 The following table summarises the channels available for the WTRFID Mini Keypad RFID/Z-Wave.
@@ -14,8 +21,6 @@ The following table summarises the channels available for the WTRFID Mini Keypad
 | Alarm (burglar) | alarm_burglar | alarm_burglar | Door | Switch |
 | Alarm (access) | notification_access_control | notification_access_control |  | Number |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -32,8 +37,6 @@ Detailed information on each parameter can be found below.
 | 1: Group1 |  |
 
 
-
-
 #### 1: Set to Default
 
 Set all configuration values to default values (factory settings).
@@ -47,16 +50,12 @@ Set all configuration values to default values (factory settings).
 | Default Value | 1 |
 
 
-
-
-
-
 #### 2: Audible feedback config
 
 To configure the time the beep is automatically turned off in seconds.  
 
 
-# Overview #
+##### Overview 
 
 The Mini Keypad RFiD/Z-Wave supports 3 types of notification sound configurations:
 
@@ -73,16 +72,12 @@ The Mini Keypad RFiD/Z-Wave supports 3 types of notification sound configuration
 | Default Value | 15 |
 
 
-
-
-
-
 #### 3: Feedback timeout
 
 Feedback timeout  
 
 
-# Overview #
+##### Overview 
 
 To configure the timeout to wait for a WAKEUP\_NO\_MORE\_INFORMATION before the error beep is automatically sound. The error beeps are fixed 8 beeps shortly after each other.       
 
@@ -95,10 +90,6 @@ To configure the timeout to wait for a WAKEUP\_NO\_MORE\_INFORMATION before the 
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 4: Feedback beeps per Second
@@ -114,16 +105,12 @@ To configure the number of beeps per second. Every beep is fixed about 10ms.
 | Default Value | 2 |
 
 
-
-
-
-
 #### 5: Mode
 
 Configure the operating mode  
 
 
-# Overview #
+##### Overview 
 
 To configure the operating mode. If any mode other then 3, that value will be reported after a get but will be handled in SW as mode 1.
 
@@ -138,13 +125,7 @@ To configure the operating mode. If any mode other then 3, that value will be re
 | Default Value | 1 |
 
 
-
-
-
-
 #### 1: Group1
-
-
 
 
 | Property         | Value    |
@@ -154,12 +135,7 @@ To configure the operating mode. If any mode other then 3, that value will be re
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/217).
-

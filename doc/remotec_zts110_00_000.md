@@ -1,12 +1,19 @@
+---
+layout: documentation
+title: ZTS-110 - ZWave
+---
 
-# ZTS-110 Remotec ZTS-110 Z Wave Thermostat
+{% include base.html %}
 
-This describes the Z-Wave device **ZTS-110**, manufactured by **Remotec** with the thing type UID of ```remotec_zts110_00_000```. 
+# ZTS-110 ZTS-110 Z Wave Thermostat
 
-Remotec ZTS-110 Z Wave Thermostat
+This describes the Z-Wave device *ZTS-110*, manufactured by *Remotec* with the thing type UID of ```remotec_zts110_00_000```. 
+
+ZTS-110 Z Wave Thermostat
+
 
 ## Channels
-The following table summarises the channels available for the ZTS-110 Remotec ZTS-110 Z Wave Thermostat.
+The following table summarises the channels available for the ZTS-110 ZTS-110 Z Wave Thermostat.
 
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
@@ -18,7 +25,6 @@ The following table summarises the channels available for the ZTS-110 Remotec ZT
 | Thermostat fan mode | thermostat_fanmode | remotec_zts110_00_000_thermostat_fanmode | Temperature | Number |
 | Thermostat fan state | thermostat_fanstate | remotec_zts110_00_000_thermostat_fanstate | Temperature | Number |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Sensor (temperature)
@@ -36,9 +42,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (cooling)
 
 #### Scale
@@ -52,9 +55,6 @@ Select the scale to use for setpoints.
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
 
 
 ### Setpoint (heating)
@@ -72,12 +72,8 @@ Select the scale to use for setpoints.
 |  | Fahrenheit (1) |
 
 
-
-
-
-
 ### Device Configuration
-The following table provides a summary of the configuration parameters available in the ZTS-110 Remotec ZTS-110 Z Wave Thermostat.
+The following table provides a summary of the configuration parameters available in the ZTS-110 ZTS-110 Z Wave Thermostat.
 Detailed information on each parameter can be found below.
 
 | Parameter   | Description |
@@ -100,8 +96,6 @@ Detailed information on each parameter can be found below.
 | 3: Controller Update |  |
 
 
-
-
 #### 1: Swing
 
 Set Swing value from 1F/.5C to 4F/2.0C Available settings: 1 - 4
@@ -113,10 +107,6 @@ Set Swing value from 1F/.5C to 4F/2.0C Available settings: 1 - 4
 | Data Type        | INTEGER |
 | Range | 1 to 4 |
 | Default Value | 2 |
-
-
-
-
 
 
 #### 2: Differntial
@@ -132,10 +122,6 @@ Set Differential value from 1F/.5C to 4F/2.0C Available settings: 1 - 4
 | Default Value | 2 |
 
 
-
-
-
-
 #### 3: Set Filter Counter
 
 Set filter replacement timer from 500 to 4000 hours.
@@ -147,10 +133,6 @@ Set filter replacement timer from 500 to 4000 hours.
 | Data Type        | INTEGER |
 | Range | 500 to 4000 |
 | Default Value | 500 |
-
-
-
-
 
 
 #### 4: Report Filter Counter
@@ -166,10 +148,6 @@ READ ONLY: Data in hours
 | Default Value | 0 |
 
 
-
-
-
-
 #### 5: Scale of Temperature
 
 Set Temperature Scale to Farhenheit or Centigrade. DEFAULT =1 Farhenheit
@@ -181,10 +159,6 @@ Set Temperature Scale to Farhenheit or Centigrade. DEFAULT =1 Farhenheit
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | Centigrade (0) |
 |  | Farhenheit (1) |
-
-
-
-
 
 
 #### 6: Upper Limit of Setpoint A
@@ -200,10 +174,6 @@ Determines Upper Limit of set point A. Unit in celsius A=(B+2)min (37.0 C)max, U
 | Default Value | 99 |
 
 
-
-
-
-
 #### 7: Lower Limit of Setpoint B
 
 Determines Lower Limit of set point B. Unit in celsius (5.0 C to 35.0 C) Unit in Fahrenheit (41.0 F to 95.0 F)
@@ -215,10 +185,6 @@ Determines Lower Limit of set point B. Unit in celsius (5.0 C to 35.0 C) Unit in
 | Data Type        | INTEGER |
 | Range | 5 to 95 |
 | Default Value | 41 |
-
-
-
-
 
 
 #### 8: Easy Mode
@@ -234,10 +200,6 @@ Set Easy Mode 0:DISABLE 1:ENABLED DEFAULT:ENABLED
 |  | Easy Mode Enabled (1) |
 
 
-
-
-
-
 #### 9: Time Format
 
 Configures for 12 or 24 Hour format. Default is 12 Hours.
@@ -249,10 +211,6 @@ Configures for 12 or 24 Hour format. Default is 12 Hours.
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | 24 Hour Format (0) |
 |  | 12 Hour Format (1) |
-
-
-
-
 
 
 #### 10: Repeat Basic Set Counter
@@ -268,10 +226,6 @@ Thermostat sends 'Basic Set' command to its association node repeatedly ever X m
 | Default Value | 0 |
 
 
-
-
-
-
 #### 11: Trigger AUTO report if room temperature is different from last report.
 
 0 = Disabled or set value from 1 to 8 where each number corresponds to 1 Degree F or .5 Degrees Celsius.
@@ -283,10 +237,6 @@ Thermostat sends 'Basic Set' command to its association node repeatedly ever X m
 | Data Type        | INTEGER |
 | Range | 0 to 8 |
 | Default Value | 4 |
-
-
-
-
 
 
 #### 12: Sensor temperature calibration.
@@ -302,10 +252,6 @@ Thermostat sends 'Basic Set' command to its association node repeatedly ever X m
 | Default Value | 0 |
 
 
-
-
-
-
 #### 13: AUTO report by time interval.
 
 0 = Disabled or set value from 1 to 16 where 1 = .5 hours and each consecutive number increases time by .5 hours.
@@ -319,13 +265,7 @@ Thermostat sends 'Basic Set' command to its association node repeatedly ever X m
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Heat Pump
-
-
 
 
 | Property         | Value    |
@@ -335,13 +275,7 @@ Thermostat sends 'Basic Set' command to its association node repeatedly ever X m
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Compressor
-
-
 
 
 | Property         | Value    |
@@ -351,13 +285,7 @@ Thermostat sends 'Basic Set' command to its association node repeatedly ever X m
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Controller Update
-
-
 
 
 | Property         | Value    |
@@ -367,12 +295,7 @@ Thermostat sends 'Basic Set' command to its association node repeatedly ever X m
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/203).
-

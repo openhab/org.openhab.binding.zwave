@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: GWPN1 - ZWave
+---
+
+{% include base.html %}
 
 # GWPN1 Single-socket PowerNode
 
-This describes the Z-Wave device **GWPN1**, manufactured by **GreenWave Reality Inc.** with the thing type UID of ```greenwave_gwpn1_03_000```. 
+This describes the Z-Wave device *GWPN1*, manufactured by *GreenWave Reality Inc.* with the thing type UID of ```greenwave_gwpn1_03_000```. 
 
 Single-socket PowerNode  
 
 
-# Overview #
+## Overview 
 
 This Configuration is for the 1 plug version of the PowerNode.
 
@@ -15,7 +21,7 @@ It should work for both NS210 and NS310 devices.
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 On the PowerNode, press and hold the **Sync** button for approximately one second until the activity indicator displays a clockwise rotating pattern. This indicates the PowerNode is attempting inclusion. During this process, verify that the Gateway activity indicator still displays a clockwise rotating pattern.
 
@@ -26,9 +32,10 @@ If all bars on the activity indicator start flashing instead of forming a solid 
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 On the PowerNode, press and hold the **Sync** button for approximately one second until the PowerNode activity indicator begins to display a counter-clockwise rotating pattern. The PowerNode is attempting exclusion.
+
 
 ## Channels
 The following table summarises the channels available for the GWPN1 Single-socket PowerNode.
@@ -40,8 +47,6 @@ The following table summarises the channels available for the GWPN1 Single-socke
 | Electric meter (kWh) | meter_kwh | meter_kwh | Energy | Number |
 | Reset total power consumption | meter_reset | meter_reset | Energy | Switch |
 | Alarm | alarm_general | alarm_general | Door | Switch |
-
-
 
 
 ### Device Configuration
@@ -61,14 +66,12 @@ Detailed information on each parameter can be found below.
 | 4: Over-current detection |  |
 
 
-
-
 #### 0: Min. variation of load current
 
 Minimum variation in load current before a message is sent.  
 
 
-# Overview #
+##### Overview 
 
  Value in percent (30 => 30%)
 
@@ -79,10 +82,6 @@ Minimum variation in load current before a message is sent.
 | Data Type        | INTEGER |
 | Range | 0 to 100 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 1: No communication light
@@ -96,10 +95,6 @@ Minutes after which the device will flash if controller communicate is lost
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 2 |
-
-
-
-
 
 
 #### 2: Wheel position
@@ -123,10 +118,6 @@ Wheel position on the GreenWave device (read-only)
 |  | Locked (137) |
 
 
-
-
-
-
 #### 3: Power-on state
 
 Default state after power loss
@@ -139,10 +130,6 @@ Default state after power loss
 | Options | All OFF (0) |
 |  | Remember last state (1) |
 |  | All ON (2) |
-
-
-
-
 
 
 #### 4: LED for network error
@@ -158,13 +145,7 @@ If the LED should indicate a network error by flashing or not
 |  | Enable the LED for network error (1) |
 
 
-
-
-
-
 #### 1: Wheel position change
-
-
 
 
 | Property         | Value    |
@@ -174,13 +155,7 @@ If the LED should indicate a network error by flashing or not
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Current leakage on relay
-
-
 
 
 | Property         | Value    |
@@ -190,16 +165,12 @@ If the LED should indicate a network error by flashing or not
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Power level change
 
   
 
 
-# Overview #
+##### Overview 
 
 The new power reading is sent if the delta of the change is greater than the defined minimum variation.
 
@@ -211,13 +182,7 @@ The new power reading is sent if the delta of the change is greater than the def
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Over-current detection
-
-
 
 
 | Property         | Value    |
@@ -227,12 +192,7 @@ The new power reading is sent if the delta of the change is greater than the def
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/102).
-

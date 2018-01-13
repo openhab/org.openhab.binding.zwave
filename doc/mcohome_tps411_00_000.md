@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: TPS411 - ZWave
+---
+
+{% include base.html %}
 
 # TPS411 Touch Panel Switch 1 Button
 
-This describes the Z-Wave device **TPS411**, manufactured by **McoHome Technology Co., Ltd** with the thing type UID of ```mcohome_tps411_00_000```. 
+This describes the Z-Wave device *TPS411*, manufactured by *McoHome Technology Co., Ltd* with the thing type UID of ```mcohome_tps411_00_000```. 
 
 Touch Panel Switch 1 Button
+
 
 ## Channels
 The following table summarises the channels available for the TPS411 Touch Panel Switch 1 Button.
@@ -12,8 +19,6 @@ The following table summarises the channels available for the TPS411 Touch Panel
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Switch 1 | switch_binary1 | switch_binary | Switch | Switch |
-
-
 
 
 ### Device Configuration
@@ -25,8 +30,6 @@ Detailed information on each parameter can be found below.
 | 1: Saving state before power failure | Switch state saved or not when power down |
 | 1: Switch Button Group 1 |  |
 | 2: All Status Reports |  |
-
-
 
 
 #### 1: Saving state before power failure
@@ -42,13 +45,7 @@ Switch state saved or not when power down
 |  | Enabled (1) |
 
 
-
-
-
-
 #### 1: Switch Button Group 1
-
-
 
 
 | Property         | Value    |
@@ -58,13 +55,7 @@ Switch state saved or not when power down
 | Range |  to  |
 
 
-
-
-
-
 #### 2: All Status Reports
-
-
 
 
 | Property         | Value    |
@@ -74,12 +65,7 @@ Switch state saved or not when power down
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/526).
-

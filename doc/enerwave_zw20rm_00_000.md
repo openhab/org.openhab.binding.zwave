@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZW20RM - ZWave
+---
+
+{% include base.html %}
 
 # ZW20RM In-wall Smart Meter Duplex Receptacle
 
-This describes the Z-Wave device **ZW20RM**, manufactured by **Wenzhou MTLC Electric Appliances Co.,Ltd.** with the thing type UID of ```enerwave_zw20rm_00_000```. 
+This describes the Z-Wave device *ZW20RM*, manufactured by *Wenzhou MTLC Electric Appliances Co.,Ltd.* with the thing type UID of ```enerwave_zw20rm_00_000```. 
 
 In-wall Smart Meter Duplex Receptacle
+
 
 ## Channels
 The following table summarises the channels available for the ZW20RM In-wall Smart Meter Duplex Receptacle.
@@ -14,7 +21,6 @@ The following table summarises the channels available for the ZW20RM In-wall Sma
 | Sensor (power) | sensor_power | sensor_power | Energy | Number |
 | Electric meter (kWh) | meter_kwh | meter_kwh | Energy | Number |
 | Electric meter (watts) | meter_watts | meter_watts | Energy | Number |
-
 
 
 ### Dimmer
@@ -30,10 +36,6 @@ Restore Last Dimming level on ON.
 | Data Type        | BOOLEAN || Default Value | true |
 | Options | Restore Last Value (true) |
 |  | Restore Full Brightness (false) |
-
-
-
-
 
 
 ### Device Configuration
@@ -53,8 +55,6 @@ Detailed information on each parameter can be found below.
 | 3: PowerReport | Send meter power report |
 
 
-
-
 #### 1: 
 
 Synchronization of load power and LED indicator
@@ -66,10 +66,6 @@ Synchronization of load power and LED indicator
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Power on, LED off (0) |
 |  | Power on, LED on (1) |
-
-
-
-
 
 
 #### 8: 
@@ -85,10 +81,6 @@ Instant Energy Autosend Interval (send METER\_REPORT)
 | Default Value | 0 |
 
 
-
-
-
-
 #### 9: 
 
 Instant Energy Autosend interval (send SENSOR\_MULTILEVEL\_REPORT)
@@ -100,10 +92,6 @@ Instant Energy Autosend interval (send SENSOR\_MULTILEVEL\_REPORT)
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 10: 
@@ -119,16 +107,12 @@ Accumulated Energy Autosend Interval report (send METER\_REPORT)
 | Default Value | 0 |
 
 
-
-
-
-
 #### 11: 
 
 Enable automatic notifications to associated device  
 
 
-# Overview #
+##### Overview 
 
 Device will send a notification whenever the is a wattage change
 
@@ -143,16 +127,12 @@ Device will send a notification whenever the is a wattage change
 |  | Send both (3) |
 
 
-
-
-
-
 #### 12: 
 
 Minimum change in wattage report  
 
 
-# Overview #
+##### Overview 
 
 0-255: 0.0-25.5W
 
@@ -163,10 +143,6 @@ Minimum change in wattage report
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 10 |
-
-
-
-
 
 
 #### 1: Notifications
@@ -181,10 +157,6 @@ Lifeline
 | Range |  to  |
 
 
-
-
-
-
 #### 2: StatusReport
 
 Send basic report
@@ -195,10 +167,6 @@ Send basic report
 | Configuration ID | group_2 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 3: PowerReport
@@ -213,12 +181,7 @@ Send meter power report
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/383).
-

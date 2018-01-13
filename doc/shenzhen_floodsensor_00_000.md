@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: Flood sensor - ZWave
+---
+
+{% include base.html %}
 
 # Flood sensor Flood/water sensor
 
-This describes the Z-Wave device **Flood sensor**, manufactured by **Shenzhen Neo Electronics Co., Ltd** with the thing type UID of ```shenzhen_floodsensor_00_000```. 
+This describes the Z-Wave device *Flood sensor*, manufactured by *Shenzhen Neo Electronics Co., Ltd* with the thing type UID of ```shenzhen_floodsensor_00_000```. 
 
 Flood/water sensor  
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 1. Remove the sensor cover.
 
@@ -19,7 +25,7 @@ Flood/water sensor
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 1. Remove the device cover.
 
@@ -32,7 +38,7 @@ Flood/water sensor
   
 
 
-## Wakeup Information ##
+### Wakeup Information 
 
 You can press the button once to wake up the device and send wakeup notification to controller.
 
@@ -46,6 +52,7 @@ Allowable interval among each wakeup interval is 60 second, such as 360, 420, 48
 
 Note: The default value is 12 hours. This value is longer, the battery life is greater.
 
+
 ## Channels
 The following table summarises the channels available for the Flood sensor Flood/water sensor.
 
@@ -54,8 +61,6 @@ The following table summarises the channels available for the Flood sensor Flood
 | Binary Sensor | sensor_binary | sensor_binary | Door | Switch |
 | Alarm | alarm_general | alarm_general | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -70,14 +75,12 @@ Detailed information on each parameter can be found below.
 | 2: Controller updates |  |
 
 
-
-
 #### 1: Basic setting command
 
 Basic setting command to be transmitted  
 
 
-# Overview #
+##### Overview 
 
 When the water sensor trigger alarm, it will send basic setting with these parameters. The receiver will execute this parameters. For example when the lamp receive the basic setting command, the parameters decide the brightness of the lamp.
 
@@ -92,16 +95,12 @@ When the water sensor trigger alarm, it will send basic setting with these param
 |  | ON (Binary switch) (255) |
 
 
-
-
-
-
 #### 2: OFF delay
 
 The amount of delay before the OFF command is transmitted  
 
 
-# Overview #
+##### Overview 
 
 Adjust the amount of delay before the OFF command is transmitted
 
@@ -114,16 +113,12 @@ Adjust the amount of delay before the OFF command is transmitted
 | Default Value | 30 |
 
 
-
-
-
-
 #### 1: Device status
 
 Sends the BASIC SET control frame when the probe detects water  
 
 
-# Overview #
+##### Overview 
 
 Association group 1 is assigned the status of the device - it sends the BASIC SET control frame to the associated devices when the probe has detected water.
 
@@ -135,13 +130,7 @@ Association group 1 is assigned the status of the device - it sends the BASIC S
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Controller updates
-
-
 
 
 | Property         | Value    |
@@ -151,12 +140,7 @@ Association group 1 is assigned the status of the device - it sends the BASIC S
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/493).
-

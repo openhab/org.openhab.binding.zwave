@@ -1,19 +1,25 @@
+---
+layout: documentation
+title: EU-2 - ZWave
+---
+
+{% include base.html %}
 
 # EU-2 Light Switch 2 Channel
 
-This describes the Z-Wave device **EU-2**, manufactured by **Shenzhen Neo Electronics Co., Ltd** with the thing type UID of ```shenzhen_eu2_00_000```. 
+This describes the Z-Wave device *EU-2*, manufactured by *Shenzhen Neo Electronics Co., Ltd* with the thing type UID of ```shenzhen_eu2_00_000```. 
 
 Light Switch 2 Channel  
 
 
-# Overview #
+## Overview 
 
 Light Switch is an intelligent device that can be remotely controlled through Z-Wave network and radio waves. In the Z-Wave network communications, light switch can be connected to any Z-Wave gateway. When using radio waves, light switch can be used in conjunction with Z-Wave gateway. The frequency of radio waves used by gateway and switch is like this: different countries or areas, the radio frequency is different. Each light switch has a unique ID code. When we add or remove the switch from the alarm host, just place light switch in the Z-Wave network range of gateway. Then we can easily find the switch through the device ID code. In communication with gateway, light switch not only can send signals to Z-Wave gateway, but also can receive signals from it. When touch the button on light switch, it would send signals to Z-Wave gateway, then gateway can correctly display the switch on / off state; when light switch receives signals from gateway, the switch state would be remotely switched on/off.
 
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 1.  Connect switch to power source, after making it powred, please do not operate it within 20s.
 2.  Make sure Light Switch is powered.
@@ -27,12 +33,13 @@ Light Switch is an intelligent device that can be remotely controlled through Z-
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 1.  Make sure Light Switch is powered.
 2.  Set Z-Wave gateway into exclusion mode (Refer to gateway user manual)
 3.  Touch the button three times continuously within 1.5 second, then Light Switch will enter exclusion mode. Meanwhile, LED light would flash red color once then pink color 4 times on and off alternately.
 4.  Wait for gateway to delete the switch.
+
 
 ## Channels
 The following table summarises the channels available for the EU-2 Light Switch 2 Channel.
@@ -42,8 +49,6 @@ The following table summarises the channels available for the EU-2 Light Switch 
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Switch 1 | switch_binary1 | switch_binary | Switch | Switch |
 | Switch 2 | switch_binary2 | switch_binary | Switch | Switch |
-
-
 
 
 ### Device Configuration
@@ -61,14 +66,12 @@ Detailed information on each parameter can be found below.
 | 3: Group 3 | GROUP 3 allows Sending Binary Switch Report to associated devices in this group. This grou... |
 
 
-
-
 #### 1: Back light Enable
 
 Enable back light when Light Switch is powered on.  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the back light state of touch buton. The back light LED would be on when Light Switch is powered on if this parameter is set to '1'; otherwise the back light LED would be off.
 
@@ -81,16 +84,12 @@ This parameter defines the back light state of touch buton. The back light LED w
 |  | Enable back light LED (1) |
 
 
-
-
-
-
 #### 2: Relay On/Off Indicate
 
 Switch on LED indicator.  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the relay state. The LED will be turned on with pink color when the button is touched to turn on relay if this parameter is set to '1'; otherwise the LED state is not changed.
 
@@ -103,16 +102,12 @@ This parameter defines the relay state. The LED will be turned on with pink colo
 |  | Pink LED state when on (1) |
 
 
-
-
-
-
 #### 3: Relay On/Off Status Saved Enable
 
 Restore switch status on power restore.  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the on/off status of relay needs saving or not. The status will be saved when relay status is changed if this parameter is set to '1'; otherwise the relay status is not saved. The Light Switch will restore the relay status when is powered on again.
 
@@ -125,16 +120,12 @@ This parameter defines the on/off status of relay needs saving or not. The statu
 |  | Save and restore the relay On/Off status (1) |
 
 
-
-
-
-
 #### 4: Root Device Mapped Setting
 
 Endpoint device mapping setting for associated devices.  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines which endpoint is mapped to root device (Endpoint 0). Devices that send BASIC\_SET = 0xFF command to Light Switch the configured endpoints will be turned on.
 
@@ -149,10 +140,6 @@ This parameter defines which endpoint is mapped to root device (Endpoint 0). Dev
 |  | 3 - Endpoint 1 and 2 are mapped to root device (3) |
 
 
-
-
-
-
 #### 1: Lifeline
 
 GROUP 1 is lifeline service that assigned to Light Switch status. It enables Light Switch to send reports to Z-Wave Gateway whenever some button is touched. This Group Support: SWITCH\_BINARY\_REPORT, DEVICE\_RESET\_LOCALLY\_NOTIFICATION
@@ -163,10 +150,6 @@ GROUP 1 is lifeline service that assigned to Light Switch status. It enables Lig
 | Configuration ID | group_1 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 2: Group 2
@@ -181,10 +164,6 @@ GROUP 2 allows Sending Binary Switch Report to associated devices in this group.
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Group 3
 
 GROUP 3 allows Sending Binary Switch Report to associated devices in this group. This group is mapped to Endpoint 2. This Group Support: SWITCH\_BINARY\_REPORT
@@ -197,12 +176,7 @@ GROUP 3 allows Sending Binary Switch Report to associated devices in this group.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/613).
-

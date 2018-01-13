@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZME_FT - ZWave
+---
+
+{% include base.html %}
 
 # ZME_FT Floor Thermostat
 
-This describes the Z-Wave device **ZME_FT**, manufactured by **Z-Wave.Me** with the thing type UID of ```zwaveme_zmeft_00_000```. 
+This describes the Z-Wave device *ZME_FT*, manufactured by *Z-Wave.Me* with the thing type UID of ```zwaveme_zmeft_00_000```. 
 
 Floor Thermostat
+
 
 ## Channels
 The following table summarises the channels available for the ZME_FT Floor Thermostat.
@@ -14,7 +21,6 @@ The following table summarises the channels available for the ZME_FT Floor Therm
 | Thermostat mode | thermostat_mode | zwaveme_zmeft_00_000_thermostat_mode | Temperature | Number |
 | Setpoint (heating) | thermostat_setpoint_heating | thermostat_setpoint | Temperature | Number |
 | Setpoint (furnace) | thermostat_setpoint_furnace | thermostat_setpoint | Temperature | Number |
-
 
 
 ### Sensor (temperature)
@@ -32,9 +38,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (heating)
 
 #### Scale
@@ -50,9 +53,6 @@ Select the scale to use for setpoints.
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (furnace)
 
 #### Scale
@@ -66,10 +66,6 @@ Select the scale to use for setpoints.
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -88,11 +84,7 @@ Detailed information on each parameter can be found below.
 | 1: Group 1 | Unsolicited notifications about thermostat mode and setpoint temperature changes |
 
 
-
-
 #### 1: Boost Dry mode duration
-
-
 
 
 | Property         | Value    |
@@ -103,13 +95,7 @@ Detailed information on each parameter can be found below.
 | Default Value | 1800 |
 
 
-
-
-
-
 #### 2: Button mode
-
-
 
 
 | Property         | Value    |
@@ -121,13 +107,7 @@ Detailed information on each parameter can be found below.
 |  | Toggle Boost Dry (2) |
 
 
-
-
-
-
 #### 3: Basic mode
-
-
 
 
 | Property         | Value    |
@@ -141,13 +121,7 @@ Detailed information on each parameter can be found below.
 |  | Switch on/off relay directly (only if Thermostat Mode is in Off state) (4) |
 
 
-
-
-
-
 #### 4: Temperature control interval
-
-
 
 
 | Property         | Value    |
@@ -158,13 +132,7 @@ Detailed information on each parameter can be found below.
 | Default Value | 18 |
 
 
-
-
-
-
 #### 5: Maximum allowed temperature deviation
-
-
 
 
 | Property         | Value    |
@@ -173,10 +141,6 @@ Detailed information on each parameter can be found below.
 | Data Type        | INTEGER |
 | Range | 1 to 60 |
 | Default Value | 30 |
-
-
-
-
 
 
 #### 6: Maximal allowed temperature
@@ -192,10 +156,6 @@ In all modes the thermostat will switch off heating until temperature drops belo
 | Default Value | 27 |
 
 
-
-
-
-
 #### 10: Typical click timeout
 
 Typical time used to differenciate click from hold
@@ -207,10 +167,6 @@ Typical time used to differenciate click from hold
 | Data Type        | INTEGER |
 | Range | 1 to 100 |
 | Default Value | 50 |
-
-
-
-
 
 
 #### 1: Group 1
@@ -225,12 +181,7 @@ Unsolicited notifications about thermostat mode and setpoint temperature changes
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/151).
-

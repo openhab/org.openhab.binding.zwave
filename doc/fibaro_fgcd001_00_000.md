@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FGCD001 - ZWave
+---
+
+{% include base.html %}
 
 # FGCD001 Carbon Monoxide Sensor
 
-This describes the Z-Wave device **FGCD001**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgcd001_00_000```. 
+This describes the Z-Wave device *FGCD001*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgcd001_00_000```. 
 
 Carbon Monoxide Sensor
+
 
 ## Channels
 The following table summarises the channels available for the FGCD001 Carbon Monoxide Sensor.
@@ -24,7 +31,6 @@ The following table summarises the channels available for the FGCD001 Carbon Mon
 | Alarm (general) | alarm_general | alarm_general | Door | Switch |
 
 
-
 ### Sensor (temperature)
 
 #### Scale
@@ -38,10 +44,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -78,14 +80,12 @@ Detailed information on each parameter can be found below.
 | 7: Tamper Alarm BC | Sends tamper alarm and alarm cancellation frames to the associated devices. |
 
 
-
-
 #### 2: Z-Wave notifications
 
 This parameter allows to set the actions which result in sending notifications to the Z-Wave network controller.  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set the actions which result in sending notifications to the Z-Wave network controller.
 
@@ -104,16 +104,12 @@ Parameter size: 1 \[byte\]
 |  | Both actions enabled (3) |
 
 
-
-
-
-
 #### 3: LED diode indications
 
 This parameter allows to set the actions which result in LED diode indications. This parameter does not apply to the most important actions, such as CO Alarm, Malfunction Alarm and Low Battery Alarm.  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set the actions which result in LED diode indications.
 
@@ -140,16 +136,12 @@ Parameter size: 1 \[byte\]
 |  | Tampering AND Exceeding the temperature AND Lack of Z-Wave range (7) |
 
 
-
-
-
-
 #### 4: Acoustic signals
 
   
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set the actions which result in acoustic signals.
 
@@ -174,16 +166,12 @@ Parameter size: 1 \[byte\]
 |  | Tampering AND Exceeding the temperature AND Lack of Z-Wave range (7) |
 
 
-
-
-
-
 #### 7: Associations in Z-Wave network security mode
 
   
 
 
-# Overview #
+##### Overview 
 
 Parameter defines how commands are sent in specified association groups: as secure or non-secure.
 
@@ -220,16 +208,12 @@ Parameter size: 1 \[byte\]
 | Default Value | 63 |
 
 
-
-
-
-
 #### 10: Commands sent to 2nd association group (CO Alarm)
 
   
 
 
-# Overview #
+##### Overview 
 
 This parameter defines commands sent to devices associated in 2nd association group (CO Alarm).
 
@@ -249,16 +233,12 @@ Parameter size: 1 \[byte\]
 |  | BASIC ON &amp; BASIC OFF (3) |
 
 
-
-
-
-
 #### 11: Value of BASIC ON command sent to 2nd association group
 
   
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the value of BASIC ON command sent to devices in 2nd association group after the CO Alarm activation.
 
@@ -276,16 +256,12 @@ Parameter size: 2 \[bytes\]
 |  | Setting associated devices to the last remembered state or turning the (255) |
 
 
-
-
-
-
 #### 12: Value of BASIC OFF command sent to 2nd association group
 
   
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the value of BASIC OFF command sent to devices in 2nd association group after the CO Alarm cancellation.
 
@@ -314,16 +290,12 @@ Parameter size: 2 \[bytes\]
 | Default Value | 0 |
 
 
-
-
-
-
 #### 13: Commands sent to 4th association group (CO Level)
 
   
 
 
-# Overview #
+##### Overview 
 
 This parameter defines commands sent to devices associated in 4th association group (CO Level).
 
@@ -350,16 +322,12 @@ Parameter size: 1 \[byte\]
 | Default Value | 3 |
 
 
-
-
-
-
 #### 14: CO level required for sending BASIC ON command to 4th association group
 
   
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the minimum level of CO concentration which exceeding will result in starting the timer set in parameter 15.
 
@@ -380,16 +348,12 @@ Parameter size: 2 \[bytes\]
 | Default Value | 40 |
 
 
-
-
-
-
 #### 15: Time required for sending BASIC ON command to 4th association group
 
   
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the time during which the level of CO concentration should remain above the value set in parameter 14 to send the BASIC ON command to 4th association group.
 
@@ -412,16 +376,12 @@ Parameter size: 2 \[bytes\]
 | Default Value | 0 |
 
 
-
-
-
-
 #### 16: Value of BASIC ON command sent to 4th association group
 
   
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the value of BASIC ON command sent to devices in 4th association group after exceeding the CO level set in parameter 14 through the time set in parameter 15.
 
@@ -448,16 +408,12 @@ Parameter size: 2 \[bytes\]
 | Default Value | 255 |
 
 
-
-
-
-
 #### 17: CO Level required for sending BASIC OFF command to 4th association group
 
   
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the level of CO concentration below which falling will result in sending the BASIC OFF command to 4th association group. Available settings: 10-400 - CO concentration level in ppm
 
@@ -476,16 +432,12 @@ Parameter size: 2 \[bytes\]
 | Default Value | 25 |
 
 
-
-
-
-
 #### 19: Value of BASIC OFF command sent to 4th association group
 
   
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the value of BASIC OFF command sent to devices in 4th association group after falling below the CO level set in parameter 17.
 
@@ -514,16 +466,12 @@ Parameter size: 2 \[bytes\]
 | Default Value | 0 |
 
 
-
-
-
-
 #### 20: Temperature reporting time interval
 
   
 
 
-# Overview #
+##### Overview 
 
 Time interval (in seconds) between consecutive reports of temperature (done by built-in temperature sensor).
 
@@ -548,16 +496,12 @@ Parameter size: 2 \[bytes\]
 | Default Value | 0 |
 
 
-
-
-
-
 #### 21: Temperature reporting hysteresis
 
   
 
 
-# Overview #
+##### Overview 
 
 This parameter defines a minimum change in temperature resulting in a report being sent to the main Z-Wave controller.
 
@@ -576,16 +520,12 @@ Parameter size: 1 \[byte\]
 | Default Value | 2 |
 
 
-
-
-
-
 #### 22: Threshold of exceeding the temperature
 
   
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the temperature level, which exceeding will result in sending actions set in parameters 2, 3 and 4.
 
@@ -604,16 +544,12 @@ Parameter size: 1 \[byte\]
 | Default Value | 55 |
 
 
-
-
-
-
 #### 23: CO meter activation
 
   
 
 
-# Overview #
+##### Overview 
 
 This parameter activates reporting the value of CO concentration level to the main Z-Wave controller.
 
@@ -636,16 +572,12 @@ Parameter size: 1 \[byte\]
 | Default Value | 1 |
 
 
-
-
-
-
 #### 25: CO level reporting hysteresis
 
   
 
 
-# Overview #
+##### Overview 
 
 This parameter defines a minimum change in CO concentration level which results in sending a new value to the main Z-Wave controller. Available settings:2-6 (10 ppm - 30 ppm, each 5 ppm)
 
@@ -664,16 +596,12 @@ Parameter is closely related to parameter 26.
 | Default Value | 2 |
 
 
-
-
-
-
 #### 26: Threshold of CO meter activation
 
   
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the CO concentration level, which exceeding will result in sending a new value to the main Z-Wave controller, according to parameter 25 settings.
 
@@ -696,16 +624,12 @@ Parameter is closely related to parameter 25.
 | Default Value | 30 |
 
 
-
-
-
-
 #### 1: Lifeline
 
 “Lifeline” reports the device status and allows for assigning single device only (main controller by default).  
 
 
-# Overview #
+##### Overview 
 
 The device provides the association of six groups: 1st association group – “Lifeline” reports the device status and allows for assigning single device only (main controller by default).
 
@@ -729,16 +653,12 @@ Heat Alarm Overheat detected, unknown location Home Security Tampering, product 
 | Range |  to  |
 
 
-
-
-
-
 #### 2: CO Alarm
 
 Devices in this group will be switched on/off when CO Alarm status changes.  
 
 
-# Overview #
+##### Overview 
 
 2nd association group – “CO Alarm” is assigned to the device status - devices in this group will be switched on/off when CO Alarm status changes.
 
@@ -754,16 +674,12 @@ It is not recommended to associate more than 10 devices in general, as the respo
 | Range |  to  |
 
 
-
-
-
-
 #### 3: CO Alarm
 
 Devices in this group will receive notification when CO Alarm status changes.  
 
 
-# Overview #
+##### Overview 
 
 3rd association group – “CO Alarm” is assigned to the device status - devices in this group will receive notification when CO Alarm status changes. Useful for devices that can trigger alarms.
 
@@ -779,16 +695,12 @@ It is not recommended to associate more than 10 devices in general, as the respo
 | Range |  to  |
 
 
-
-
-
-
 #### 4: CO Level
 
 Devices in this group will be switched on/off after exceeding the level of CO concentration specified in parameter 14.  
 
 
-# Overview #
+##### Overview 
 
 4th association group – “CO Level” is assigned to measured CO level - devices in this group will be switched on/off after exceeding the level of CO concentration specified in parameter 14.
 
@@ -804,16 +716,12 @@ It is not recommended to associate more than 10 devices in general, as the respo
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Tamper Alarm
 
 Sends tamper alarm and cancellation frames to the associated devices.  
 
 
-# Overview #
+##### Overview 
 
 5th association group – “Tamper Alarm” is assigned to the tamper - sends tamper alarm and cancellation frames to the associated devices.
 
@@ -829,16 +737,12 @@ It is not recommended to associate more than 10 devices in general, as the respo
 | Range |  to  |
 
 
-
-
-
-
 #### 6: CO Alarm BC
 
 Devices in this group will receive sensor alarm frames when CO Alarm status changes.  
 
 
-# Overview #
+##### Overview 
 
 6th association group – “CO Alarm BC” is assigned to the device status - devices in this group will receive sensor alarm frames when CO Alarm status changes. Provides backward compatibility with controllers not supporting Z-Wave+ protocol.
 
@@ -854,16 +758,12 @@ It is not recommended to associate more than 10 devices in general, as the respo
 | Range |  to  |
 
 
-
-
-
-
 #### 7: Tamper Alarm BC
 
 Sends tamper alarm and alarm cancellation frames to the associated devices.  
 
 
-# Overview #
+##### Overview 
 
 7th association group – “Tamper Alarm BC” is assigned to the tamper - sends tamper alarm and alarm cancellation frames to the associated devices. Provides backward compatibility with controllers not supporting Z-Wave+ protocol.
 
@@ -879,12 +779,7 @@ It is not recommended to associate more than 10 devices in general, as the respo
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/711).
-

@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FGR221 - ZWave
+---
+
+{% include base.html %}
 
 # FGR221 Roller Shutter Controller
 
-This describes the Z-Wave device **FGR221**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgr221_00_000```. 
+This describes the Z-Wave device *FGR221*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgr221_00_000```. 
 
 Roller Shutter Controller
+
 
 ## Channels
 The following table summarises the channels available for the FGR221 Roller Shutter Controller.
@@ -12,7 +19,6 @@ The following table summarises the channels available for the FGR221 Roller Shut
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Blinds control | blinds_control | blinds_control | Blinds | Rollershutter |
-
 
 
 ### Blinds control
@@ -30,8 +36,6 @@ Invert the blinds control
 |  | No (false) |
 
 
-
-
 #### Invert percentage value
 
 Invert the blinds percentage value
@@ -43,8 +47,6 @@ Invert the blinds percentage value
 | Data Type        | BOOLEAN || Default Value | false |
 | Options | Yes (true) |
 |  | No (false) |
-
-
 
 
 #### Step duration
@@ -60,10 +62,6 @@ Values from 1 to 127 are defined in seconds, while values from 128 to 254 are de
 | Range | 1 to 254 || Default Value | 255 |
 | Options | Device Default (255) |
 |  | Change Instantly (0) |
-
-
-
-
 
 
 ### Device Configuration
@@ -86,8 +84,6 @@ Detailed information on each parameter can be found below.
 | 3: Controller Updates |  |
 
 
-
-
 #### 1: Enable/Disable ALL ON/OFF
 
 Activate/Deactive ALL ON/OFF
@@ -103,10 +99,6 @@ Activate/Deactive ALL ON/OFF
 |  | ALL ON active / ALL OFF disabled (2) |
 
 
-
-
-
-
 #### 10: Control key #2 behaviour
 
 Turning off the shutter positioning function
@@ -118,10 +110,6 @@ Turning off the shutter positioning function
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Turning on the shutter positioning function - Default (0) |
 |  | Turning off the shutter positioning function (1) |
-
-
-
-
 
 
 #### 14: Inputs Button/Switch configuration
@@ -138,10 +126,6 @@ Binary inputs type configuration
 |  | Single Mono-stable switch (2) |
 
 
-
-
-
-
 #### 20: Dimmer/Roller shutter control
 
 Options for changing parameter 1-99, default 16
@@ -153,10 +137,6 @@ Options for changing parameter 1-99, default 16
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 16 |
-
-
-
-
 
 
 #### 30: General Alarm
@@ -173,10 +153,6 @@ set for shutter no. 1
 |  | CLOSED SHUTTER ALARM (2) |
 
 
-
-
-
-
 #### 31: Alarm of flooding with water
 
 set for relay the shutter
@@ -189,10 +165,6 @@ set for relay the shutter
 | Options | DEACTIVATION (0) |
 |  | OPEN SHUTTER ALARM (1) |
 |  | CLOSED SHUTTER ALARM (2) |
-
-
-
-
 
 
 #### 32: Smoke, CO, CO2 Alarm.
@@ -209,10 +181,6 @@ Set for the roller shutter.
 |  | CLOSED SHUTTER ALARM (2) |
 
 
-
-
-
-
 #### 33: Temperature Alarm
 
 set for roller shutter
@@ -227,16 +195,12 @@ set for roller shutter
 |  | CLOSED SHUTTER ALARM (2) |
 
 
-
-
-
-
 #### 41: Scene activation functionality
 
 Only valid for the 1.9 version of FGR221.  
 
 
-# Overview #
+##### Overview 
 
 The device offers the possibility of sending commands compatible with Command class scene activation. Information is sent to devices assigned to association group no. 3.
 
@@ -249,13 +213,7 @@ The device offers the possibility of sending commands compatible with Command cl
 |  | Activation of functionality (1) |
 
 
-
-
-
-
 #### 1: Group 1
-
-
 
 
 | Property         | Value    |
@@ -265,13 +223,7 @@ The device offers the possibility of sending commands compatible with Command cl
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Group 2
-
-
 
 
 | Property         | Value    |
@@ -281,13 +233,7 @@ The device offers the possibility of sending commands compatible with Command cl
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Controller Updates
-
-
 
 
 | Property         | Value    |
@@ -297,12 +243,7 @@ The device offers the possibility of sending commands compatible with Command cl
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/132).
-

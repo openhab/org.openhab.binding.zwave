@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: BE369 - ZWave
+---
+
+{% include base.html %}
 
 # BE369 Keypad Deadbolt
 
-This describes the Z-Wave device **BE369**, manufactured by **Allegion** with the thing type UID of ```schlage_be369_00_000```. 
+This describes the Z-Wave device *BE369*, manufactured by *Allegion* with the thing type UID of ```schlage_be369_00_000```. 
 
 Keypad Deadbolt  
 
 
-# Overview #
+## Overview 
 
 Schlage BE369 Keypad Door Lock - 
 
@@ -15,7 +21,7 @@ Shares same hardware as FE599 lock (lever version).
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 1.  When prompted, follow the lock’s enrollment process:
     
@@ -28,7 +34,7 @@ Shares same hardware as FE599 lock (lever version).
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 1.  When prompted, follow the lock’s removal process:
     
@@ -41,9 +47,10 @@ Shares same hardware as FE599 lock (lever version).
   
 
 
-## Wakeup Information ##
+### Wakeup Information 
 
 Unknown
+
 
 ## Channels
 The following table summarises the channels available for the BE369 Keypad Deadbolt.
@@ -57,8 +64,6 @@ The following table summarises the channels available for the BE369 Keypad Deadb
 |  | battery-level | system.battery-level |  |  |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the BE369 Keypad Deadbolt.
 Detailed information on each parameter can be found below.
@@ -69,14 +74,12 @@ Detailed information on each parameter can be found below.
 | 1: Alarm Reports |  |
 
 
-
-
 #### 3: Beeper
 
 Turn key beep on or off for keypad  
 
 
-# Overview #
+##### Overview 
 
 Turn key beep on or off for keypad
 
@@ -89,13 +92,7 @@ Turn key beep on or off for keypad
 |  | Enable Beeper (1) |
 
 
-
-
-
-
 #### 1: Alarm Reports
-
-
 
 
 | Property         | Value    |
@@ -105,12 +102,7 @@ Turn key beep on or off for keypad
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/518).
-

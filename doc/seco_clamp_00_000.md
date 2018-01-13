@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: Zwave Clamp - ZWave
+---
+
+{% include base.html %}
 
 # Zwave Clamp Clamp Energy Meter
 
-This describes the Z-Wave device **Zwave Clamp**, manufactured by **Seco** with the thing type UID of ```seco_clamp_00_000```. 
+This describes the Z-Wave device *Zwave Clamp*, manufactured by *Seco* with the thing type UID of ```seco_clamp_00_000```. 
 
 Clamp Energy Meter
+
 
 ## Channels
 The following table summarises the channels available for the Zwave Clamp Clamp Energy Meter.
@@ -15,7 +22,6 @@ The following table summarises the channels available for the Zwave Clamp Clamp 
 | Electric meter (kWh) | meter_kwh | meter_kwh | Energy | Number |
 | Electric meter (volts) | meter_voltage | meter_voltage | Energy | Number |
 | Clock Time Offset | time_offset | time_offset | Temperature | Number |
-
 
 
 ### Clock Time Offset
@@ -34,10 +40,6 @@ Setting this will automatically update the devices clock when the time differenc
 | Options | Disable Auto Update (0) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the Zwave Clamp Clamp Energy Meter.
 Detailed information on each parameter can be found below.
@@ -46,10 +48,7 @@ Detailed information on each parameter can be found below.
 |-------------|-------------|
 
 
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/569).
-

@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: Molite - ZWave
+---
+
+{% include base.html %}
 
 # Molite Movement sensor with temperature and light sensor
 
-This describes the Z-Wave device **Molite**, manufactured by **BeNext** with the thing type UID of ```benext_molite_00_000```. 
+This describes the Z-Wave device *Molite*, manufactured by *BeNext* with the thing type UID of ```benext_molite_00_000```. 
 
 Movement sensor with temperature and light sensor
+
 
 ## Channels
 The following table summarises the channels available for the Molite Movement sensor with temperature and light sensor.
@@ -15,7 +22,6 @@ The following table summarises the channels available for the Molite Movement se
 | Sensor (temperature) | sensor_temperature | sensor_temperature | Temperature | Number |
 | Alarm | alarm_general | alarm_general | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Sensor (temperature)
@@ -31,10 +37,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -62,8 +64,6 @@ Detailed information on each parameter can be found below.
 | 1: Devices to be switched on when motion detected and off after on time |  |
 
 
-
-
 #### 1: Reset to factory settings
 
 Set all configuration values to default values (factory settings).
@@ -75,10 +75,6 @@ Set all configuration values to default values (factory settings).
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 2: Mode timeout
@@ -94,10 +90,6 @@ The time used in mode 2 to turn the sensor off. This time will start running as 
 | Default Value | 900 |
 
 
-
-
-
-
 #### 3: Switch off time
 
 The switch off time will start running as soon as mode timeout is done. The Motion sensor is turned on and when movement is detected again. The mode timeout (cfg param 1) will start running all over again. When switch off time is done a basic off message
@@ -111,10 +103,6 @@ The switch off time will start running as soon as mode timeout is done. The Moti
 | Default Value | 2700 |
 
 
-
-
-
-
 #### 4: sensitivity
 
 the sensitivity of the motion circuit
@@ -126,10 +114,6 @@ the sensitivity of the motion circuit
 | Data Type        | INTEGER |
 | Range | 0 to 127 |
 | Default Value | 80 |
-
-
-
-
 
 
 #### 5: The mode
@@ -146,10 +130,6 @@ The mode that is entered after detection
 |  | Mode 3: Z-Wave chip is always on to request e.g. version or manufactur (3) |
 
 
-
-
-
-
 #### 6: The temperature offset
 
 An offset for the temperature.
@@ -161,10 +141,6 @@ An offset for the temperature.
 | Data Type        | INTEGER |
 | Range | 0 to 65535 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 7: Light table 100 %
@@ -180,10 +156,6 @@ If a LDR resistance measured lower then this value the returned light percentage
 | Default Value | 17 |
 
 
-
-
-
-
 #### 8: Light table 90 %
 
 If a LDR resistance measured lower then this value the returned light percentage is 90%. See chapter light table for more information.
@@ -195,10 +167,6 @@ If a LDR resistance measured lower then this value the returned light percentage
 | Data Type        | INTEGER |
 | Range | 0 to 38 |
 | Default Value | 38 |
-
-
-
-
 
 
 #### 9: Light table 80 %
@@ -214,10 +182,6 @@ If a LDR resistance measured lower then this value the returned light percentage
 | Default Value | 85 |
 
 
-
-
-
-
 #### 10: Light table 70 %
 
 If a LDR resistance measured lower then this value the returned light percentage is 70%. See chapter light table for more information.
@@ -229,10 +193,6 @@ If a LDR resistance measured lower then this value the returned light percentage
 | Data Type        | INTEGER |
 | Range | 0 to 186 |
 | Default Value | 186 |
-
-
-
-
 
 
 #### 11: Light table 60 %
@@ -248,10 +208,6 @@ If a LDR resistance measured lower then this value the returned light percentage
 | Default Value | 407 |
 
 
-
-
-
-
 #### 12: Light table 50 %
 
 If a LDR resistance measured lower then this value the returned light percentage is 50%. See chapter light table for more information.
@@ -263,10 +219,6 @@ If a LDR resistance measured lower then this value the returned light percentage
 | Data Type        | INTEGER |
 | Range | 0 to 891 |
 | Default Value | 891 |
-
-
-
-
 
 
 #### 13: Light table 40 %
@@ -282,10 +234,6 @@ If a LDR resistance measured lower then this value the returned light percentage
 | Default Value | 1949 |
 
 
-
-
-
-
 #### 14: Light table 30 %
 
 If a LDR resistance measured lower then this value the returned light percentage is 30%. See chapter light table for more information.
@@ -297,10 +245,6 @@ If a LDR resistance measured lower then this value the returned light percentage
 | Data Type        | INTEGER |
 | Range | 0 to 4265 |
 | Default Value | 4265 |
-
-
-
-
 
 
 #### 15: Light table 20 %
@@ -316,10 +260,6 @@ If a LDR resistance measured lower then this value the returned light percentage
 | Default Value | 9332 |
 
 
-
-
-
-
 #### 16: Light table 10 %
 
 If a LDR resistance measured lower then this value the returned light percentage is 10%. See chapter light table for more information.
@@ -333,13 +273,7 @@ If a LDR resistance measured lower then this value the returned light percentage
 | Default Value | 20417 |
 
 
-
-
-
-
 #### 1: Devices to be switched on when motion detected and off after on time
-
-
 
 
 | Property         | Value    |
@@ -349,12 +283,7 @@ If a LDR resistance measured lower then this value the returned light percentage
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/374).
-

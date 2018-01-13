@@ -1,28 +1,35 @@
+---
+layout: documentation
+title: Vitrum III EU Dimmer - ZWave
+---
+
+{% include base.html %}
 
 # Vitrum III EU Dimmer
 
-This describes the Z-Wave device **Vitrum III EU Dimmer**, manufactured by **VDA** with the thing type UID of ```vda_dimmer3_00_000```. 
+This describes the Z-Wave device *Vitrum III EU Dimmer*, manufactured by *VDA* with the thing type UID of ```vda_dimmer3_00_000```. 
 
   
 
 
-# Overview #
+## Overview 
 
 When the device is in the stand-alone mode and is not included in a Z-Wave network the illuminated ring around the touch keys will light red for a moment when passing from one mode to another.
 
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 With the controller in the inclusion mode, press any of the touch keys on the device.
 
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 Press and hold the leftmost touch key for at least 8 seconds. The device will flash red three times and sound an acoustic signal to indicate that the original factory setting has been restored.
+
 
 ## Channels
 The following table summarises the channels available for the Vitrum III EU Dimmer.
@@ -33,7 +40,6 @@ The following table summarises the channels available for the Vitrum III EU Dimm
 | Dimmer 1 | switch_dimmer1 | switch_dimmer | DimmableLight | Dimmer |
 | Dimmer 2 | switch_dimmer2 | switch_dimmer | DimmableLight | Dimmer |
 | Dimmer 3 | switch_dimmer3 | switch_dimmer | DimmableLight | Dimmer |
-
 
 
 ### Dimmer
@@ -51,9 +57,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
 ### Dimmer 1
 
 #### Restore Last Value
@@ -67,9 +70,6 @@ Restore Last Dimming level on ON.
 | Data Type        | BOOLEAN || Default Value | true |
 | Options | Restore Last Value (true) |
 |  | Restore Full Brightness (false) |
-
-
-
 
 
 ### Dimmer 2
@@ -87,9 +87,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
 ### Dimmer 3
 
 #### Restore Last Value
@@ -105,10 +102,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the Vitrum III EU Dimmer.
 Detailed information on each parameter can be found below.
@@ -120,11 +113,7 @@ Detailed information on each parameter can be found below.
 | 3: Dimmer Channel 3 |  |
 
 
-
-
 #### 1: Switch channel 1
-
-
 
 
 | Property         | Value    |
@@ -134,13 +123,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Dimmer Channel 2
-
-
 
 
 | Property         | Value    |
@@ -150,13 +133,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Dimmer Channel 3
-
-
 
 
 | Property         | Value    |
@@ -166,12 +143,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/475).
-

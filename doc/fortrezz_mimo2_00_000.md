@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: MIMO2+ - ZWave
+---
+
+{% include base.html %}
 
 # MIMO2+ Dual Digital or Analog Voltage input and Dual Contact Relay
 
-This describes the Z-Wave device **MIMO2+**, manufactured by **FortrezZ LLC** with the thing type UID of ```fortrezz_mimo2_00_000```. 
+This describes the Z-Wave device *MIMO2+*, manufactured by *FortrezZ LLC* with the thing type UID of ```fortrezz_mimo2_00_000```. 
 
 Dual Digital or Analog Voltage input and Dual Contact Relay  
 
 
-# Overview #
+## Overview 
 
 The MIMO2+ module provides two analog or digital input and two relay output (isolated dry contacts, NO-COM-NC) and can be controlled by ZWaveTM.  The system includes a program switch for Z-WaveTM inclusion/exclusion and a status light (LED) for various indications. 
 
@@ -17,7 +23,7 @@ The output relay is typically commanded via Z-WaveTM commands. In addition, the 
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 1.  Set up the inclusion mode at the controller (for detailed directions, please refer to your controller user manual)
 2.  If the LED has a periodic single blink, the unit will be automatically included.  Otherwise, the button has been previously pressed and automatic inclusion mode is no longer active.  In this case, briefly press the button once and the controller will indicate that the unit has been included in the network.  Also, the Status LED will blink when the inclusion completes. Inclusion and exclusion are always done at normal transmit power mode.  
@@ -25,10 +31,11 @@ The output relay is typically commanded via Z-WaveTM commands. In addition, the 
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 1.  Set up the exclusion mode at the controller (for detailed directions, please refer to your controller user manual)
 2.  Press the button and the controller will indicate the unit has been removed from the network. The Status LED will blink when the exclusion completes. 
+
 
 ## Channels
 The following table summarises the channels available for the MIMO2+ Dual Digital or Analog Voltage input and Dual Contact Relay.
@@ -42,8 +49,6 @@ The following table summarises the channels available for the MIMO2+ Dual Digita
 | Sensor 2 | sensor_general2 | sensor_general |  | Number |
 | Relay 1 | switch_binary3 | switch_binary | Switch | Switch |
 | Relay 2 | switch_binary4 | switch_binary | Switch | Switch |
-
-
 
 
 ### Device Configuration
@@ -75,8 +80,6 @@ Detailed information on each parameter can be found below.
 | 3: Sensor 2 On Change |  |
 
 
-
-
 #### 1: Relay 1 Trigger Interval
 
 Momentary trigger time in 100ms intervals, 10=1s, 0=disable
@@ -88,10 +91,6 @@ Momentary trigger time in 100ms intervals, 10=1s, 0=disable
 | Data Type        | INTEGER |
 | Range | 0 to 31 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 1: Relay 1 Trigger Configuration
@@ -111,10 +110,6 @@ Relay 1 Trigger on Sensor Input
 |  | Trigger on Sensor 1 and/or Sensor 2 (224) |
 
 
-
-
-
-
 #### 2: Relay 2 Trigger Interval
 
 Momentary trigger time in 100ms intervals, 10=1s, 0=disable
@@ -126,10 +121,6 @@ Momentary trigger time in 100ms intervals, 10=1s, 0=disable
 | Data Type        | INTEGER |
 | Range | 0 to 31 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 2: Relay 2 Trigger Configuration
@@ -149,10 +140,6 @@ Relay 2 Trigger on Sensor Input
 |  | Trigger on Sensor 1 and/or Sensor 2 (224) |
 
 
-
-
-
-
 #### 3: Sensor 1 Report Interval
 
 Report sensor state every (30s resolution, 0=none, 1=30s, 10=5m, 63=31.5m)
@@ -164,10 +151,6 @@ Report sensor state every (30s resolution, 0=none, 1=30s, 10=5m, 63=31.5m)
 | Data Type        | INTEGER |
 | Range | 0 to 63 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 3: Sensor 1 Report Mode
@@ -183,10 +166,6 @@ Report state periodically or on change
 |  | On Change (1) |
 
 
-
-
-
-
 #### 3: Sensor 1 Trigger Mode
 
 Trigger Inside or Outside Low/High Thresholds
@@ -200,13 +179,7 @@ Trigger Inside or Outside Low/High Thresholds
 |  | Inside (1) |
 
 
-
-
-
-
 #### 4: Sensor 1 Lower Threshold High
-
-
 
 
 | Property         | Value    |
@@ -217,13 +190,7 @@ Trigger Inside or Outside Low/High Thresholds
 | Default Value | 0 |
 
 
-
-
-
-
 #### 5: Sensor 1 Lower Threshold Low
-
-
 
 
 | Property         | Value    |
@@ -234,13 +201,7 @@ Trigger Inside or Outside Low/High Thresholds
 | Default Value | 0 |
 
 
-
-
-
-
 #### 6: Sensor 1 Upper Threshold High
-
-
 
 
 | Property         | Value    |
@@ -251,13 +212,7 @@ Trigger Inside or Outside Low/High Thresholds
 | Default Value | 0 |
 
 
-
-
-
-
 #### 7: Sensor 1 Upper Threshold Low
-
-
 
 
 | Property         | Value    |
@@ -266,10 +221,6 @@ Trigger Inside or Outside Low/High Thresholds
 | Data Type        | INTEGER |
 | Range | 0 to 4095 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 9: Sensor 1 Report Interval
@@ -285,10 +236,6 @@ Report sensor state every (30s resolution, 0=none, 1=30s, 10=5m, 63=31.5m)
 | Default Value | 0 |
 
 
-
-
-
-
 #### 9: Sensor 2 Report Mode
 
 Report state periodically or on change
@@ -300,10 +247,6 @@ Report state periodically or on change
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | Periodically (0) |
 |  | On Change (1) |
-
-
-
-
 
 
 #### 9: Sensor 2 Trigger Mode
@@ -319,13 +262,7 @@ Trigger Inside or Outside Low/High Thresholds
 |  | Inside (1) |
 
 
-
-
-
-
 #### 10: Sensor 2 Lower Threshold High
-
-
 
 
 | Property         | Value    |
@@ -336,13 +273,7 @@ Trigger Inside or Outside Low/High Thresholds
 | Default Value | 0 |
 
 
-
-
-
-
 #### 11: Sensor 2 Lower Threshold Low
-
-
 
 
 | Property         | Value    |
@@ -353,13 +284,7 @@ Trigger Inside or Outside Low/High Thresholds
 | Default Value | 0 |
 
 
-
-
-
-
 #### 12: Sensor 2 Upper Threshold High
-
-
 
 
 | Property         | Value    |
@@ -370,13 +295,7 @@ Trigger Inside or Outside Low/High Thresholds
 | Default Value | 0 |
 
 
-
-
-
-
 #### 13: Sensor 2 Upper Threshold Low
-
-
 
 
 | Property         | Value    |
@@ -387,13 +306,7 @@ Trigger Inside or Outside Low/High Thresholds
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Lifeline
-
-
 
 
 | Property         | Value    |
@@ -403,13 +316,7 @@ Trigger Inside or Outside Low/High Thresholds
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Sensor 1 On Change
-
-
 
 
 | Property         | Value    |
@@ -419,13 +326,7 @@ Trigger Inside or Outside Low/High Thresholds
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Sensor 2 On Change
-
-
 
 
 | Property         | Value    |
@@ -435,12 +336,7 @@ Trigger Inside or Outside Low/High Thresholds
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/700).
-

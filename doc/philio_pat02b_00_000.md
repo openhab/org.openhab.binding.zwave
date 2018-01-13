@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: PAT02-B - ZWave
+---
+
+{% include base.html %}
 
 # PAT02-B Z-Wave room sensor
 
-This describes the Z-Wave device **PAT02-B**, manufactured by **Philio Technology Corp** with the thing type UID of ```philio_pat02b_00_000```. 
+This describes the Z-Wave device *PAT02-B*, manufactured by *Philio Technology Corp* with the thing type UID of ```philio_pat02b_00_000```. 
 
 Z-Wave room sensor
+
 
 ## Channels
 The following table summarises the channels available for the PAT02-B Z-Wave room sensor.
@@ -15,7 +22,6 @@ The following table summarises the channels available for the PAT02-B Z-Wave roo
 | Sensor (relative humidity) | sensor_relhumidity | sensor_relhumidity | Humidity | Number |
 | Alarm (burglar) | alarm_burglar | alarm_burglar | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Sensor (temperature)
@@ -31,10 +37,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -55,14 +57,12 @@ Detailed information on each parameter can be found below.
 | 2: Light Control |  |
 
 
-
-
 #### 5: Operation Mode
 
 set Operation Mode using bit to control  
 
 
-# Overview #
+##### Overview 
 
 set Operation Mode using bit to control
 
@@ -87,16 +87,12 @@ set Operation Mode using bit to control
 | Default Value | 0 |
 
 
-
-
-
-
 #### 7: Customer Function
 
 Customer Function switch using bit control  
 
 
-# Overview #
+##### Overview 
 
 Customer Function switch using bit control
 
@@ -124,16 +120,12 @@ Customer Function switch using bit control
 | Default Value | 0 |
 
 
-
-
-
-
 #### 10: Auto Report Battery Time
 
 The interval time for auto reporting the battery level.  
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto reporting the battery level.
 
@@ -149,16 +141,12 @@ The interval time for auto reporting the battery level.
 | Default Value | 12 |
 
 
-
-
-
-
 #### 13: Auto Report Temperature Time
 
 The interval time for auto reporting the temperature state.  
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto reporting the temperature state.
 
@@ -174,16 +162,12 @@ The interval time for auto reporting the temperature state.
 | Default Value | 12 |
 
 
-
-
-
-
 #### 14: Auto Report Humidity Time
 
 The interval time for auto reporting the humidity state.  
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto reporting the humidity state.
 
@@ -199,16 +183,12 @@ The interval time for auto reporting the humidity state.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 20: Auto Report Tick Interval
 
 The interval time for auto report each tick.  
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto report each tick. Units of one minute. Setting configuration will affect configuration no. 10, 13, 14 and 15.
 
@@ -224,16 +204,12 @@ The interval time for auto report each tick. Units of one minute. Setting config
 | Default Value | 30 |
 
 
-
-
-
-
 #### 21: Temperature Differential Report
 
 The temperature differential to report.  
 
 
-# Overview #
+##### Overview 
 
 The temperature differential to report.
 
@@ -249,16 +225,12 @@ The temperature differential to report.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 23: Humidity Differential Report
 
 The humidity differential to report.  
 
 
-# Overview #
+##### Overview 
 
 The humidity differential to report.
 
@@ -274,13 +246,7 @@ The humidity differential to report.
 | Default Value | 5 |
 
 
-
-
-
-
 #### 1: Reports
-
-
 
 
 | Property         | Value    |
@@ -290,13 +256,7 @@ The humidity differential to report.
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Light Control
-
-
 
 
 | Property         | Value    |
@@ -306,12 +266,7 @@ The humidity differential to report.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/533).
-

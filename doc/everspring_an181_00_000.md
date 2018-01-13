@@ -1,28 +1,35 @@
+---
+layout: documentation
+title: AN181 - ZWave
+---
+
+{% include base.html %}
 
 # AN181 Mini Plug Switch with Metering (Gen5)
 
-This describes the Z-Wave device **AN181**, manufactured by **Everspring** with the thing type UID of ```everspring_an181_00_000```. 
+This describes the Z-Wave device *AN181*, manufactured by *Everspring* with the thing type UID of ```everspring_an181_00_000```. 
 
 Mini Plug Switch with Metering (Gen5)  
 
 
-# Overview #
+## Overview 
 
 The Metering Plug is designed to control the on/off status appliances load in your house. For metering the unit can detect up to 10485.75kW\*h and can support wattage, voltage, ampere, and PF detection. The unit can also detect overload upon which the unit will switch off relay and keep LED flashing until power is off and re-applied. At 220-240V voltage, this Plug can support up to 2500W resistive. 
 
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 Press the link key three times within 1.5 seconds to put the unit into inclusion mode.
 
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 Press the link key three times within 1.5 seconds to put the unit into exclusion mode.
+
 
 ## Channels
 The following table summarises the channels available for the AN181 Mini Plug Switch with Metering (Gen5).
@@ -36,8 +43,6 @@ The following table summarises the channels available for the AN181 Mini Plug Sw
 | Electric meter (power factor) | meter_powerfactor | meter_powerfactor | Energy | Number |
 | Electric meter (volts) | meter_voltage | meter_voltage | Energy | Number |
 | Alarm | alarm_general | alarm_general | Door | Switch |
-
-
 
 
 ### Device Configuration
@@ -57,14 +62,12 @@ Detailed information on each parameter can be found below.
 | 2: Basic Set | Basic Set, Control:key1, On/Off control (Button1) |
 
 
-
-
 #### 1: Command value
 
 Set Basic Set Command value to be sent to group 2 when switch is turned on  
 
 
-# Overview #
+##### Overview 
 
 Meaningful range is 0-99 & 255 where
 
@@ -86,10 +89,6 @@ Basic Set Command = 0 (Off) will be sent to Group 2 only if the button is used t
 |  | Basic Set Command ON will be sent (255) |
 
 
-
-
-
-
 #### 2: Delaying time
 
 Set the delaying time to report to Group 1 in seconds
@@ -101,10 +100,6 @@ Set the delaying time to report to Group 1 in seconds
 | Data Type        | INTEGER |
 | Range | 3 to 25 |
 | Default Value | 3 |
-
-
-
-
 
 
 #### 3: Remember status
@@ -120,10 +115,6 @@ Set whether to remember the last status
 |  | Remember (1) |
 
 
-
-
-
-
 #### 4: Interval for wattage auto report
 
 Set the interval for wattage auto report in minutes
@@ -135,10 +126,6 @@ Set the interval for wattage auto report in minutes
 | Data Type        | INTEGER |
 | Range | 1 to 32767 || Default Value | 1 |
 | Options | Does not report automatically (0) |
-
-
-
-
 
 
 #### 5: Interval for kW*h auto report
@@ -154,10 +141,6 @@ Set the interval for kW\*h auto report in minutes
 | Options | Does not report automatically (0) |
 
 
-
-
-
-
 #### 6: Auto report load surpasses value
 
 Auto report when load surpasses the set value of wattage
@@ -169,10 +152,6 @@ Auto report when load surpasses the set value of wattage
 | Data Type        | INTEGER |
 | Range | 1 to 2500 || Default Value | 0 |
 | Options | Does not report automatically (0) |
-
-
-
-
 
 
 #### 7: Auto report change percentage
@@ -188,16 +167,12 @@ Auto report when the change of wattage surpasses the set percentage
 | Options | Does not report automatically (0) |
 
 
-
-
-
-
 #### 1: Target for automatic reports
 
 Binary Switch Report, Notification Report, Device Reset Locally Notification, Meter Report  
 
 
-# Overview #
+##### Overview 
 
 When powered on, the device will send (Notification Type = 0x08, Event = 0x01) to the node of Group 1. When overload occurs, the device will send (Notification Type = 0x08, Event = 0x08) to the node of Group 1.
 
@@ -207,10 +182,6 @@ When powered on, the device will send (Notification Type = 0x08, Event = 0x01) t
 | Configuration ID | group_1 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 2: Basic Set
@@ -225,12 +196,7 @@ Basic Set, Control:key1, On/Off control (Button1)
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/306).
-

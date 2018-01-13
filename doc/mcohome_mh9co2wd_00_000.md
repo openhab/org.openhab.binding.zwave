@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: MH9-CO2-WD - ZWave
+---
+
+{% include base.html %}
 
 # MH9-CO2-WD CO2 Monitor Air quality detector
 
-This describes the Z-Wave device **MH9-CO2-WD**, manufactured by **McoHome Technology Co., Ltd** with the thing type UID of ```mcohome_mh9co2wd_00_000```. 
+This describes the Z-Wave device *MH9-CO2-WD*, manufactured by *McoHome Technology Co., Ltd* with the thing type UID of ```mcohome_mh9co2wd_00_000```. 
 
 CO2 Monitor Air quality detector  
 
 
-# Overview #
+## Overview 
 
 MCOHome CO2 Monitor is an air quality detector which compatible with Z-Wave technology.
 
@@ -40,7 +46,7 @@ Device can be included into any Z-Wave network, and is compatible with any other
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 Activate Inclusion/Exclusion mode in the gateway.
 
@@ -53,7 +59,7 @@ Then press K2 once, “- - -” flashing and device enters into learning mode to
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 Activate Inclusion/Exclusion mode in the gateway.
 
@@ -62,6 +68,7 @@ When device is powered on, long press K2 can enter interface for inclusion or ex
 If a node ID displays, it means the device is already in a Z-Wave network.
 
 To press K2 once can remove it from the network. “- - -” displays and press K1 once can return to normal work.
+
 
 ## Channels
 The following table summarises the channels available for the MH9-CO2-WD CO2 Monitor Air quality detector.
@@ -73,7 +80,6 @@ The following table summarises the channels available for the MH9-CO2-WD CO2 Mon
 | Sensor (CO2) | sensor_co2 | sensor_co2 |  | Number |
 | Alarm (CO2) | alarm_co2 | alarm_co2 | Door | Switch |
 | Alarm (general) | alarm_general | alarm_general | Door | Switch |
-
 
 
 ### Sensor (temperature)
@@ -91,10 +97,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the MH9-CO2-WD CO2 Monitor Air quality detector.
 Detailed information on each parameter can be found below.
@@ -106,14 +108,12 @@ Detailed information on each parameter can be found below.
 | 2: Gateway report | CO2, Temperature and Humidity is reported when changed |
 
 
-
-
 #### 1: Notification Threshold
 
 CO2 Notification Threshold  
 
 
-# Overview #
+##### Overview 
 
 Sets the CO2 notification threshold for association group 1.
 
@@ -128,16 +128,12 @@ When the detected CO2 value is higher than the setting value, the device will se
 | Default Value | 1000 |
 
 
-
-
-
-
 #### 1: Notification
 
 sends report ever 30s when CO2 value above threshold  
 
 
-# Overview #
+##### Overview 
 
 Group 1 is for “Notification” purpose, which can add up to 5 Node ID. Device works in “Push” mode in “Notification Command Class”.
 
@@ -153,16 +149,12 @@ Use “Notification Set” can set this unsolicited report; this function is def
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Gateway report
 
 CO2, Temperature and Humidity is reported when changed  
 
 
-# Overview #
+##### Overview 
 
 A gateway is suggested to associate with Group 2, which can support only one Node ID. The  
 gateway can ask for detected data any time. And the device will report to this associated device  
@@ -179,12 +171,7 @@ Humidity: report when any change≥ 2%“Multilevel sensor Report (Humidity=0x05
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/455).
-

@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FGGC001 - ZWave
+---
+
+{% include base.html %}
 
 # FGGC001 Fibaro Swipe Scene Controller
 
-This describes the Z-Wave device **FGGC001**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fggc001_00_000```. 
+This describes the Z-Wave device *FGGC001*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fggc001_00_000```. 
 
 Fibaro Swipe Scene Controller
+
 
 ## Channels
 The following table summarises the channels available for the FGGC001 Fibaro Swipe Scene Controller.
@@ -12,8 +19,6 @@ The following table summarises the channels available for the FGGC001 Fibaro Swi
 |---------|------------|------------------|----------|-----------|
 | Scene Number | scene_number | scene_number |  | Number |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -56,8 +61,6 @@ Detailed information on each parameter can be found below.
 | 6: Circular Airwheel |  |
 
 
-
-
 #### 1: Device Orientation
 
 Parameter determines orientation of the Swipe in relation to its default position.
@@ -73,10 +76,6 @@ Parameter determines orientation of the Swipe in relation to its default positio
 |  | 90° counter-clockwise rotation (3) |
 
 
-
-
-
-
 #### 2: Buzzer - acoustic signal settings
 
 Acoustic signalling of gestures detection.
@@ -88,10 +87,6 @@ Acoustic signalling of gestures detection.
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | Gestures detection is not signalled (0) |
 |  | Gestures detection is signalled (1) |
-
-
-
-
 
 
 #### 3: LED diode - visual indicator settings
@@ -107,16 +102,12 @@ Visual indication of gestures detection
 |  | Gestures detection is indicated (1) |
 
 
-
-
-
-
 #### 4: Buzzer - signalling result of gesture recognition
 
 Acoustic signalling of gesture recognition result (using the built-in buzzer).  
 
 
-# Overview #
+##### Overview 
 
 Parameter 4 is relevant only if parameter 2 is set to 1.
 
@@ -128,10 +119,6 @@ Parameter 4 is relevant only if parameter 2 is set to 1.
 | Options | Only successful recognition is signalled (1) |
 |  | Only failed recognition is signalled (2) |
 |  | Successful and failed recognition is signalled (3) |
-
-
-
-
 
 
 #### 5: Powering mode - interval of updating the current mode
@@ -148,16 +135,12 @@ This parameter determines how often the device checks if the USB power supply is
 |  | Time interval (in minutes) (1) |
 
 
-
-
-
-
 #### 6: Power saving mode (battery mode)
 
 This parameter determines operation of gesture detection when battery powered.  
 
 
-# Overview #
+##### Overview 
 
 When Standby Mode is selected, hold gesture must be performed to exit power saving mode and reactivate normal gesture recognition. The device in Standby Mode consumes the least battery life.
 
@@ -173,16 +156,12 @@ When Simple Mode mode is selected, gesture recognition is always active, but onl
 |  | Swipe does not enter power saving mode (2) |
 
 
-
-
-
-
 #### 7: Hold gesture to enter the menu
 
 This parameter allows to choose if the menu can be entered using the Hold gesture.  
 
 
-# Overview #
+##### Overview 
 
 After disabling the Hold gesture in parameter 7, menu can be entered by using the B-button only!
 
@@ -195,16 +174,12 @@ After disabling the Hold gesture in parameter 7, menu can be entered by using th
 |  | Hold gesture to enter the menu disabled (1) |
 
 
-
-
-
-
 #### 10: Scenes sent to the controller
 
 Defines which actions result in sending scenes to 1st “Lifeline” group.  
 
 
-# Overview #
+##### Overview 
 
 Parameter 10 values may be combined, e.g. 1+2=3 means that scenes for flick UP and DOWN are enabled.
 
@@ -223,16 +198,12 @@ Parameter 10 values may be combined, e.g. 1+2=3 means that scenes for flick UP a
 |  | All commands enabled (63) |
 
 
-
-
-
-
 #### 11: Associations in Z-Wave network security mode
 
 Parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. It does not apply to 1st “Lifeline” association group.  
 
 
-# Overview #
+##### Overview 
 
 Parameter 11 values may be combined, e.g. 1+2=3 means that 2nd & 3rd group are sent as secure.
 
@@ -249,16 +220,12 @@ Parameter 11 values may be combined, e.g. 1+2=3 means that 2nd & 3rd group are s
 |  | 6th group &quot;Circular AirWheel” sent as secure (16) |
 
 
-
-
-
-
 #### 12: Control mode of 2nd - 5th &quot;Flick UP/DOWN/LEFT/RIGHT” association groups and scenes
 
 Parameter allows to choose control mode for 2nd-5th groups and scenes.  
 
 
-# Overview #
+##### Overview 
 
 By default, Toggle Mode is active, meaning that a single flick turns ON the group and the same flick turns it OFF, doubled flicks are inactive.
 
@@ -280,16 +247,12 @@ Parameter 12 values may be combined, e.g. 1+2=3 means that 2nd & 3rd group are s
 |  | Toggle Mode enabled for 5th association group (8) |
 
 
-
-
-
-
 #### 13: Rate of smooth level control
 
 Parameter allows to choose how long the hand has to be held near the center of the pad after "AirWheel" gesture for the associated devices to reach their maximum/minimum level.  
 
 
-# Overview #
+##### Overview 
 
 Available settings:
 
@@ -306,16 +269,12 @@ Available settings:
 | Default Value | 255 |
 
 
-
-
-
-
 #### 20: SWITCH ON control frame value for FLICK UP gesture
 
 This parameter allows to set value sent in SWITCH ON command frame to the association group.  
 
 
-# Overview #
+##### Overview 
 
 Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.
 
@@ -334,16 +293,12 @@ Commands sent to association group for turn ON/OFF can be adjusted in parameters
 | Default Value | 255 |
 
 
-
-
-
-
 #### 21: SWITCH OFF control frame value for FLICK UP gesture
 
 This parameter allows to set value sent in SWITCH OFF command frame to the association group.  
 
 
-# Overview #
+##### Overview 
 
 Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.
 
@@ -362,16 +317,12 @@ Commands sent to association group for turn ON/OFF can be adjusted in parameters
 | Default Value | 255 |
 
 
-
-
-
-
 #### 22: SWITCH ON control frame value for FLICK DOWN gesture
 
 This parameter allows to set value sent in SWITCH ON command frame to the association group.  
 
 
-# Overview #
+##### Overview 
 
 Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.
 
@@ -390,16 +341,12 @@ Commands sent to association group for turn ON/OFF can be adjusted in parameters
 | Default Value | 255 |
 
 
-
-
-
-
 #### 23: SWITCH OFF control frame value for FLICK DOWN gesture
 
 This parameter allows to set value sent in SWITCH OFF command frame to the association group.  
 
 
-# Overview #
+##### Overview 
 
 Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.
 
@@ -418,16 +365,12 @@ Commands sent to association group for turn ON/OFF can be adjusted in parameters
 | Default Value | 255 |
 
 
-
-
-
-
 #### 24: SWITCH ON control frame value for FLICK LEFT gesture
 
 This parameter allows to set value sent in SWITCH ON command frame to the association group.  
 
 
-# Overview #
+##### Overview 
 
 Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.
 
@@ -446,16 +389,12 @@ Commands sent to association group for turn ON/OFF can be adjusted in parameters
 | Default Value | 255 |
 
 
-
-
-
-
 #### 25: SWITCH OFF control frame value for FLICK LEFT gesture
 
 This parameter allows to set value sent in SWITCH OFF command frame to the association group.  
 
 
-# Overview #
+##### Overview 
 
 Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.
 
@@ -474,16 +413,12 @@ Commands sent to association group for turn ON/OFF can be adjusted in parameters
 | Default Value | 255 |
 
 
-
-
-
-
 #### 26: SWITCH ON control frame value for FLICK RIGHT gesture
 
 This parameter allows to set value sent in SWITCH ON command frame to the association group.  
 
 
-# Overview #
+##### Overview 
 
 Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.
 
@@ -502,16 +437,12 @@ Commands sent to association group for turn ON/OFF can be adjusted in parameters
 | Default Value | 255 |
 
 
-
-
-
-
 #### 27: SWITCH OFF control frame value for FLICK RIGHT gesture
 
 This parameter allows to set value sent in SWITCH OFF command frame to the association group.  
 
 
-# Overview #
+##### Overview 
 
 Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.
 
@@ -530,16 +461,12 @@ Commands sent to association group for turn ON/OFF can be adjusted in parameters
 | Default Value | 255 |
 
 
-
-
-
-
 #### 30: Sequence learning mode
 
 Parameter activated by the main Z-Wave controller. Change its value to launch sequence learning procedure for the desired slot.  
 
 
-# Overview #
+##### Overview 
 
 0 - learning mode disabled
 
@@ -556,22 +483,18 @@ Parameter activated by the main Z-Wave controller. Change its value to launch se
 | Default Value | 0 |
 
 
-
-
-
-
 #### 31: 1st gestures sequence (SLOT 1)
 
 Value containing sequence of gestures.  
 
 
-# Overview #
+##### Overview 
 
 User can create sequences of two or three gestures to expand number of possible actions. Every sequence is saved in its advanced parameter (no. 31-36) with 16 bits, every basic gesture is identified with 4 bits.
 
 Gesture Value Empty 0 ^ 1 v 2 < 3 > 4
 
-#### Rules of creating sequences: ####
+######## Rules of creating sequences: 
 
 • Maximum of six sequences can be created.
 
@@ -602,16 +525,12 @@ Value of parameter = 256 \* Value of first gesture + 16 \* Value of second gestu
 | Default Value | 0 |
 
 
-
-
-
-
 #### 32: 2nd gestures sequence (SLOT 2)
 
 Value containing sequence of gestures.  
 
 
-# Overview #
+##### Overview 
 
 User can create sequences of two or three gestures to expand number of possible actions. Every sequence is saved in its advanced parameter (no. 31-36) with 16 bits, every basic gesture is identified with 4 bits.
 
@@ -658,16 +577,12 @@ Value of parameter = 256 \* Value of first gesture + 16 \* Value of second gestu
 | Default Value | 0 |
 
 
-
-
-
-
 #### 33: 3rd gestures sequence (SLOT 3)
 
 Value containing sequence of gestures.  
 
 
-# Overview #
+##### Overview 
 
 User can create sequences of two or three gestures to expand number of possible actions. Every sequence is saved in its advanced parameter (no. 31-36) with 16 bits, every basic gesture is identified with 4 bits.
 
@@ -714,16 +629,12 @@ Value of parameter = 256 \* Value of first gesture + 16 \* Value of second gestu
 | Default Value | 0 |
 
 
-
-
-
-
 #### 34: 4th gestures sequence (SLOT 4)
 
 Value containing sequence of gestures.  
 
 
-# Overview #
+##### Overview 
 
 User can create sequences of two or three gestures to expand number of possible actions. Every sequence is saved in its advanced parameter (no. 31-36) with 16 bits, every basic gesture is identified with 4 bits.
 
@@ -770,16 +681,12 @@ Value of parameter = 256 \* Value of first gesture + 16 \* Value of second gestu
 | Default Value | 0 |
 
 
-
-
-
-
 #### 35: 5th gestures sequence (SLOT 5)
 
 Value containing sequence of gestures.  
 
 
-# Overview #
+##### Overview 
 
 User can create sequences of two or three gestures to expand number of possible actions. Every sequence is saved in its advanced parameter (no. 31-36) with 16 bits, every basic gesture is identified with 4 bits.
 
@@ -826,16 +733,12 @@ Value of parameter = 256 \* Value of first gesture + 16 \* Value of second gestu
 | Default Value | 0 |
 
 
-
-
-
-
 #### 36: 6th gestures sequence (SLOT 6)
 
 Value containing sequence of gestures.  
 
 
-# Overview #
+##### Overview 
 
 User can create sequences of two or three gestures to expand number of possible actions. Every sequence is saved in its advanced parameter (no. 31-36) with 16 bits, every basic gesture is identified with 4 bits.
 
@@ -882,16 +785,12 @@ Value of parameter = 256 \* Value of first gesture + 16 \* Value of second gestu
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Lifeline
 
   
 
 
-# Overview #
+##### Overview 
 
  Reports the device status and allows for assigning single device only (main controller by default).
 
@@ -903,16 +802,12 @@ Value of parameter = 256 \* Value of first gesture + 16 \* Value of second gestu
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Flick up gesture
 
   
 
 
-# Overview #
+##### Overview 
 
 Association ensures direct transfer of control commands between devices, is performed without participation of the main controller and requires associated device to be in the direct range.
 
@@ -932,16 +827,12 @@ States of the association groups are affected only by assigned gestures. Changin
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Flick down gesture
 
   
 
 
-# Overview #
+##### Overview 
 
 Association ensures direct transfer of control commands between devices, is performed without participation of the main controller and requires associated device to be in the direct range.
 
@@ -961,16 +852,12 @@ States of the association groups are affected only by assigned gestures. Changin
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Flick left gesture
 
   
 
 
-# Overview #
+##### Overview 
 
 Association ensures direct transfer of control commands between devices, is performed without participation of the main controller and requires associated device to be in the direct range.
 
@@ -990,16 +877,12 @@ States of the association groups are affected only by assigned gestures. Changin
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Flick right gesture
 
   
 
 
-# Overview #
+##### Overview 
 
 Association ensures direct transfer of control commands between devices, is performed without participation of the main controller and requires associated device to be in the direct range.
 
@@ -1019,16 +902,12 @@ States of the association groups are affected only by assigned gestures. Changin
 | Range |  to  |
 
 
-
-
-
-
 #### 6: Circular Airwheel
 
   
 
 
-# Overview #
+##### Overview 
 
 Association ensures direct transfer of control commands between devices, is performed without participation of the main controller and requires associated device to be in the direct range.
 
@@ -1048,12 +927,7 @@ States of the association groups are affected only by assigned gestures. Changin
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/349).
-

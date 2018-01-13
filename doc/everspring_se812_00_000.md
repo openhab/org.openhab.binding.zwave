@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: SE812 - ZWave
+---
+
+{% include base.html %}
 
 # SE812 Siren
 
-This describes the Z-Wave device **SE812**, manufactured by **Everspring** with the thing type UID of ```everspring_se812_00_000```. 
+This describes the Z-Wave device *SE812*, manufactured by *Everspring* with the thing type UID of ```everspring_se812_00_000```. 
 
 Siren
+
 
 ## Channels
 The following table summarises the channels available for the SE812 Siren.
@@ -15,8 +22,6 @@ The following table summarises the channels available for the SE812 Siren.
 |  | battery-level | system.battery-level |  |  |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the SE812 Siren.
 Detailed information on each parameter can be found below.
@@ -26,11 +31,7 @@ Detailed information on each parameter can be found below.
 | 1: Control/Report Group |  |
 
 
-
-
 #### 1: Control/Report Group
-
-
 
 
 | Property         | Value    |
@@ -40,12 +41,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/36).
-

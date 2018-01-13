@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: BE469 - ZWave
+---
+
+{% include base.html %}
 
 # BE469 Touchscreen Deadbolt
 
-This describes the Z-Wave device **BE469**, manufactured by **Allegion** with the thing type UID of ```schlage_be469_00_000```. 
+This describes the Z-Wave device *BE469*, manufactured by *Allegion* with the thing type UID of ```schlage_be469_00_000```. 
 
 Touchscreen Deadbolt
+
 
 ## Channels
 The following table summarises the channels available for the BE469 Touchscreen Deadbolt.
@@ -14,8 +21,6 @@ The following table summarises the channels available for the BE469 Touchscreen 
 | Alarm | alarm_general | alarm_general | Door | Switch |
 | Alarm (raw) | alarm_raw | alarm_raw |  | String |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -42,11 +47,7 @@ Detailed information on each parameter can be found below.
 | 1: Alarm Reports |  |
 
 
-
-
 #### 3: Beeper
-
-
 
 
 | Property         | Value    |
@@ -57,13 +58,7 @@ Detailed information on each parameter can be found below.
 |  | Enable Beeper (255) |
 
 
-
-
-
-
 #### 4: Vacation Mode
-
-
 
 
 | Property         | Value    |
@@ -74,13 +69,7 @@ Detailed information on each parameter can be found below.
 |  | Enable Vacation Mode (255) |
 
 
-
-
-
-
 #### 5: Lock &amp; Leave
-
-
 
 
 | Property         | Value    |
@@ -91,16 +80,12 @@ Detailed information on each parameter can be found below.
 |  | Enable Lock &amp; Leave (255) |
 
 
-
-
-
-
 #### 6: User Slot Status
 
   
 
 
-# Overview #
+##### Overview 
 
 Byte 1 (msb): Bit 7: User 8 Status Bit 6: User 7 Status Bit 5: User 6 Status Bit 4: User 5 Status Bit 3: User 4 Status Bit 2: User 3 Status Bit 1: User 2 Status Bit 0: User 1 Status Byte 2 : Bit 7: User 16 Status Bit 6: User 15 Status Bit 5: User 14 Status Bit 4: User 13 Status Bit 3: User 12 Status Bit 2: User 11 Status Bit 1: User 10 Status Bit 0: User 9 Status Byte 3 : Bit 7: User 24 Status Bit 6: User 23 Status Bit 5: User 22 Status Bit 4: User 21 Status Bit 3: User 20 Status Bit 2: User 19 Status Bit 1: User 18 Status Bit 0: User 17 Status Byte 4 (lsb): Bit 7: reserved Bit 6: reserved Bit 5: User 30 Status Bit 4: User 29 Status Bit 3: User 28 Status Bit 2: User 27 Status Bit 1: User 26 Status Bit 0: User 25 Status
 
@@ -111,10 +96,6 @@ Byte 1 (msb): Bit 7: User 8 Status Bit 6: User 7 Status Bit 5: User 6 Status Bit
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 7: Lock Specific Alarm Mode
@@ -132,13 +113,7 @@ BE469 Only
 |  | Forced Entry (3) |
 
 
-
-
-
-
 #### 8: Lock Specific Alarm Alert Sensitivity
-
-
 
 
 | Property         | Value    |
@@ -153,13 +128,7 @@ BE469 Only
 |  | Least Sensitive (5) |
 
 
-
-
-
-
 #### 9: Lock Specific Alarm Tamper Sensitivity
-
-
 
 
 | Property         | Value    |
@@ -172,10 +141,6 @@ BE469 Only
 |  | Medium Sensitivity (3) |
 |  | Less Sensitive (4) |
 |  | Least Sensitive (5) |
-
-
-
-
 
 
 #### 10: Lock Specific Alarm Kick Sensitivity
@@ -195,13 +160,7 @@ BE469 Only
 |  | Least Sensitive (5) |
 
 
-
-
-
-
 #### 11: Lock Specific Alarm Disable—Local Controls
-
-
 
 
 | Property         | Value    |
@@ -212,13 +171,7 @@ BE469 Only
 |  | Enable Local Control (255) |
 
 
-
-
-
-
 #### 12: Electronic Transition Count
-
-
 
 
 | Property         | Value    |
@@ -229,13 +182,7 @@ BE469 Only
 | Default Value | 0 |
 
 
-
-
-
-
 #### 13: Mechanical Transition Count
-
-
 
 
 | Property         | Value    |
@@ -246,13 +193,7 @@ BE469 Only
 | Default Value | 0 |
 
 
-
-
-
-
 #### 14: Electronic Failed Count
-
-
 
 
 | Property         | Value    |
@@ -263,13 +204,7 @@ BE469 Only
 | Default Value | 0 |
 
 
-
-
-
-
 #### 15: Auto Lock
-
-
 
 
 | Property         | Value    |
@@ -278,10 +213,6 @@ BE469 Only
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Disable Auto Lock (0) |
 |  | Enable Auto Lock (255) |
-
-
-
-
 
 
 #### 16: User Code PIN Length
@@ -300,13 +231,7 @@ User Code PIN length, a value between 4 and 8 (default 4)
 |  | Eight Digits (8) |
 
 
-
-
-
-
 #### 18: Get Bootloader Version
-
-
 
 
 | Property         | Value    |
@@ -317,13 +242,7 @@ User Code PIN length, a value between 4 and 8 (default 4)
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Alarm Reports
-
-
 
 
 | Property         | Value    |
@@ -333,12 +252,7 @@ User Code PIN length, a value between 4 and 8 (default 4)
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/303).
-

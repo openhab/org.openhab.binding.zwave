@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: CometZ - ZWave
+---
+
+{% include base.html %}
 
 # CometZ Thermostatic Valve
 
-This describes the Z-Wave device **CometZ**, manufactured by **Eurotronics** with the thing type UID of ```eurotronic_cometz_00_000```. 
+This describes the Z-Wave device *CometZ*, manufactured by *Eurotronics* with the thing type UID of ```eurotronic_cometz_00_000```. 
 
 Thermostatic Valve
+
 
 ## Channels
 The following table summarises the channels available for the CometZ Thermostatic Valve.
@@ -16,7 +23,6 @@ The following table summarises the channels available for the CometZ Thermostati
 | Temperature for Heat (Eco) | thermostat_setpoint_furnace | thermostat_setpoint | Temperature | Number |
 | Temperature for Heat (Comfort) | thermostat_setpoint_heating | thermostat_setpoint | Temperature | Number |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Openness Of The Valve
@@ -34,9 +40,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
 ### Temperature measured by the device
 
 #### Scale
@@ -50,9 +53,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
 
 
 ### Temperature for Heat (Eco)
@@ -70,9 +70,6 @@ Select the scale to use for setpoints.
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Temperature for Heat (Comfort)
 
 #### Scale
@@ -88,10 +85,6 @@ Select the scale to use for setpoints.
 |  | Fahrenheit (1) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the CometZ Thermostatic Valve.
 Detailed information on each parameter can be found below.
@@ -100,10 +93,7 @@ Detailed information on each parameter can be found below.
 |-------------|-------------|
 
 
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/372).
-

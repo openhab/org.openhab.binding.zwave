@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: Danalock V3-BTZE - ZWave
+---
+
+{% include base.html %}
 
 # Danalock V3-BTZE Z-Wave controlled door lock with Bluetooth Smart
 
-This describes the Z-Wave device **Danalock V3-BTZE**, manufactured by **Poly-control** with the thing type UID of ```polycontrol_btze_00_000```. 
+This describes the Z-Wave device *Danalock V3-BTZE*, manufactured by *Poly-control* with the thing type UID of ```polycontrol_btze_00_000```. 
 
 Z-Wave controlled door lock with Bluetooth Smart  
 
 
-# Overview #
+## Overview 
 
 Danalock supports:   
 \- S0/S2 Z-Wave Security   
@@ -19,7 +25,7 @@ Danalock supports: 
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 To add or include the Danalock into a Z-Wave network
 
@@ -30,13 +36,14 @@ To add or include the Danalock into a Z-Wave network
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 To remove or exclude the Danalock into a Z-Wave network
 
 1.  Set the controller in exclusion mode
 2.  Push the switch once.
 3.  Wait 5 seconds. 
+
 
 ## Channels
 The following table summarises the channels available for the Danalock V3-BTZE Z-Wave controlled door lock with Bluetooth Smart.
@@ -45,8 +52,6 @@ The following table summarises the channels available for the Danalock V3-BTZE Z
 |---------|------------|------------------|----------|-----------|
 | Door Lock | lock_door | lock_door | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -64,14 +69,12 @@ Detailed information on each parameter can be found below.
 | 1: Lifeline | Z-Wave Plus Lifeline |
 
 
-
-
 #### 1: Twin Assist
 
 Helps you to lock and unlock your door lock.  
 
 
-# Overview #
+##### Overview 
 
 0 -> disabled
 
@@ -86,16 +89,12 @@ Helps you to lock and unlock your door lock.
 |  | enabled (1) |
 
 
-
-
-
-
 #### 2: Hold and Release
 
 After a unlock operation the lock holds the lock, so the door can be opened  
 
 
-# Overview #
+##### Overview 
 
 0 -> disabled
 
@@ -107,10 +106,6 @@ After a unlock operation the lock holds the lock, so the door can be opened
 | Configuration ID | config_2_4 |
 | Data Type        | INTEGER || Default Value | 0 |
 | Options |  (0) |
-
-
-
-
 
 
 #### 3: Block to block
@@ -126,16 +121,12 @@ The lock will run the motor until it hits resistance.
 |  | Enabled (1) |
 
 
-
-
-
-
 #### 4: BLE Temporary Allowed
 
 The BLE is enabled for a number of seconds.  
 
 
-# Overview #
+##### Overview 
 
 0 -> Disabled
 
@@ -150,16 +141,12 @@ The BLE is enabled for a number of seconds.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 5: BLE Always Allowed
 
 BLE Always Allowed  
 
 
-# Overview #
+##### Overview 
 
 0 -> BLE Always disabled
 
@@ -174,16 +161,12 @@ BLE Always Allowed
 |  | BLE Always enabled (1) |
 
 
-
-
-
-
 #### 6: Autolock
 
 Lock after an unlock.Value is delay in sec before lock is locked again.  
 
 
-# Overview #
+##### Overview 
 
 0 -> disabled
 
@@ -198,16 +181,12 @@ Lock after an unlock.Value is delay in sec before lock is locked again.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Lifeline
 
 Z-Wave Plus Lifeline  
 
 
-# Overview #
+##### Overview 
 
 Z-Wave Plus Lifeline • Device Reset Locally: triggered upon reset. • Battery/notification: triggered upon low battery. • Door Lock operation report: triggered upon a change in door lock • Notification: triggered upon a change in door lock
 
@@ -219,12 +198,7 @@ Z-Wave Plus Lifeline • Device Reset Locally: triggered upon reset. • Battery
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/708).
-

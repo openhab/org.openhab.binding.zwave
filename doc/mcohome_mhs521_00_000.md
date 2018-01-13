@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: MH-S521 - ZWave
+---
+
+{% include base.html %}
 
 # MH-S521 Shutter Panel
 
-This describes the Z-Wave device **MH-S521**, manufactured by **McoHome Technology Co., Ltd** with the thing type UID of ```mcohome_mhs521_00_000```. 
+This describes the Z-Wave device *MH-S521*, manufactured by *McoHome Technology Co., Ltd* with the thing type UID of ```mcohome_mhs521_00_000```. 
 
 Shutter Panel
+
 
 ## Channels
 The following table summarises the channels available for the MH-S521 Shutter Panel.
@@ -18,7 +25,6 @@ The following table summarises the channels available for the MH-S521 Shutter Pa
 | Electric meter (volts) | meter_voltage | meter_voltage | Energy | Number |
 | Electric meter (amps) | meter_current | meter_current | Energy | Number |
 | Alarm | alarm_general | alarm_general | Door | Switch |
-
 
 
 ### Dimmer
@@ -36,10 +42,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the MH-S521 Shutter Panel.
 Detailed information on each parameter can be found below.
@@ -49,11 +51,7 @@ Detailed information on each parameter can be found below.
 | 1: Lifeline |  |
 
 
-
-
 #### 1: Lifeline
-
-
 
 
 | Property         | Value    |
@@ -63,12 +61,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/722).
-

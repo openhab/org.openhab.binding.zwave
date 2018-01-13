@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZME_KFOB-S - ZWave
+---
+
+{% include base.html %}
 
 # ZME_KFOB-S Secure 4 Button Key Chain Controller
 
-This describes the Z-Wave device **ZME_KFOB-S**, manufactured by **Z-Wave.Me** with the thing type UID of ```zwaveme_zmekfobs_00_000```. 
+This describes the Z-Wave device *ZME_KFOB-S*, manufactured by *Z-Wave.Me* with the thing type UID of ```zwaveme_zmekfobs_00_000```. 
 
 Secure 4 Button Key Chain Controller
+
 
 ## Channels
 The following table summarises the channels available for the ZME_KFOB-S Secure 4 Button Key Chain Controller.
@@ -12,8 +19,6 @@ The following table summarises the channels available for the ZME_KFOB-S Secure 
 |---------|------------|------------------|----------|-----------|
 | Scene Number | scene_number | scene_number |  | Number |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -39,14 +44,12 @@ Detailed information on each parameter can be found below.
 | 5: Control Group D |  |
 
 
-
-
 #### 1: Button 1 and 3 pair mode
 
 Set Button 1 and 3 pair mode  
 
 
-# Overview #
+##### Overview 
 
 In separate mode button 1 works with group A, button 3 with groups C. Click is On, Hold is dimming Up, Double click is Off, Click-Hold is dimming Down. In pair button 1/3 are Up/Down correspondingly. Click is On/Off, Hold is dimming Up/Down. Single clicks works with group A, double click with group C. Default Value: 01
 
@@ -60,16 +63,12 @@ In separate mode button 1 works with group A, button 3 with groups C. Click is O
 |  | In pair with double clicks (2) |
 
 
-
-
-
-
 #### 2: Button 2 and 4 pair mode
 
 Set Button 2 and 4 pair mode  
 
 
-# Overview #
+##### Overview 
 
 In separate mode button 2 works with control group B, button 4 with control group D. Click is On, Hold is dimming Up, Double click is Off, Click-Hold is dimming Down. In pair button B/D are Up/Down correspondingly. Click is On/Off, Hold is dimming Up/Down. Single clicks works with group B, double click with group D. Default Value: 01
 
@@ -83,16 +82,12 @@ In separate mode button 2 works with control group B, button 4 with control grou
 |  | In pair with double clicks (2) |
 
 
-
-
-
-
 #### 11: Command to Control Group A
 
 Set Command to Control Group A  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the command to be sent to devices of control group A when the related button is pressed. Default Value: 08
 
@@ -112,16 +107,12 @@ This parameter defines the command to be sent to devices of control group A when
 |  | Central Scene to Gateway (8) |
 
 
-
-
-
-
 #### 12: Command to Control Group B
 
 Set Command to Control Group B  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the command to be sent to devices of control group B when the related button is pressed. Default Value: 08
 
@@ -141,16 +132,12 @@ This parameter defines the command to be sent to devices of control group B when
 |  | Central Scene to Gateway (8) |
 
 
-
-
-
-
 #### 13: Command to Control Group C
 
 Set Command to Control Group C  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the command to be sent to devices of control group C when the related button is pressed. Default Value: 08
 
@@ -170,16 +157,12 @@ This parameter defines the command to be sent to devices of control group C when
 |  | Central Scene to Gateway (8) |
 
 
-
-
-
-
 #### 14: Command to Control Group D
 
 Set Command to Control Group D  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the command to be sent to devices of control group D when the related button is pressed. Default Value: 08
 
@@ -199,16 +182,12 @@ This parameter defines the command to be sent to devices of control group D when
 |  | Central Scene to Gateway (8) |
 
 
-
-
-
-
 #### 21: Send the following Switch All commands
 
 Set Send the following Switch All commands  
 
 
-# Overview #
+##### Overview 
 
 Send the following Switch All commands
 
@@ -222,16 +201,12 @@ Send the following Switch All commands
 |  | Switch all on and off (255) |
 
 
-
-
-
-
 #### 22: Invert buttons
 
 Invert buttons  
 
 
-# Overview #
+##### Overview 
 
 Invert buttons
 
@@ -244,16 +219,12 @@ Invert buttons
 |  | Yes (1) |
 
 
-
-
-
-
 #### 25: Blocks wakeup even when wakeup interval is set
 
 Set Blocks wakeup even when wakeup interval is set  
 
 
-# Overview #
+##### Overview 
 
 If the KFOB wakes up and there is no controller nearby, several unsuccessful communication attempts will drain battery  
 Size: 1 Byte, Default Value: 00
@@ -267,16 +238,12 @@ Size: 1 Byte, Default Value: 00
 |  | Wakeup is possible if configured accordingly (1) |
 
 
-
-
-
-
 #### 30: Send unsolicited Battery Report on Wake Up
 
 Set Send unsolicited Battery Report on Wake Up  
 
 
-# Overview #
+##### Overview 
 
 Set Send unsolicited Battery Report on Wake Up
 
@@ -290,13 +257,7 @@ Set Send unsolicited Battery Report on Wake Up
 |  | Broadcast to neighbors (2) |
 
 
-
-
-
-
 #### 1: Lifeline
-
-
 
 
 | Property         | Value    |
@@ -306,16 +267,12 @@ Set Send unsolicited Battery Report on Wake Up
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Control Group A
 
   
 
 
-# Overview #
+##### Overview 
 
 Control Group A, controlled by button 1 or single clicks of buttons
 
@@ -327,16 +284,12 @@ Control Group A, controlled by button 1 or single clicks of buttons
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Control Group B
 
   
 
 
-# Overview #
+##### Overview 
 
 Control Group B, controlled by button 2 or single clicks of buttons 2
 
@@ -348,16 +301,12 @@ Control Group B, controlled by button 2 or single clicks of buttons 2
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Control Group C
 
   
 
 
-# Overview #
+##### Overview 
 
 Control Group C, controlled by button 3 or double clicks of buttons 1
 
@@ -369,16 +318,12 @@ Control Group C, controlled by button 3 or double clicks of buttons 1
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Control Group D
 
   
 
 
-# Overview #
+##### Overview 
 
 Control Group D, controlled by button 4 or double clicks of buttons 2
 
@@ -390,12 +335,7 @@ Control Group D, controlled by button 4 or double clicks of buttons 2
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/548).
-

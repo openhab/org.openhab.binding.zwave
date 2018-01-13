@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FGK101 - ZWave
+---
+
+{% include base.html %}
 
 # FGK101 Door Opening Sensor
 
-This describes the Z-Wave device **FGK101**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgk101_03_002```. 
+This describes the Z-Wave device *FGK101*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgk101_03_002```. 
 
 Door Opening Sensor
+
 
 ## Channels
 The following table summarises the channels available for the FGK101 Door Opening Sensor.
@@ -19,7 +26,6 @@ The following table summarises the channels available for the FGK101 Door Openin
 | Alarm (general) | alarm_general | alarm_general | Door | Switch |
 
 
-
 ### Sensor (Temperature)
 
 #### Scale
@@ -33,10 +39,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -75,14 +77,12 @@ Detailed information on each parameter can be found below.
 | 5: Tamper ZW3 |  |
 
 
-
-
 #### 1: Operations mode
 
 Parameter defines device operation mode  
 
 
-# Overview #
+##### Overview 
 
 Available settings:
 
@@ -98,16 +98,12 @@ Available settings:
 | Default Value | 0 |
 
 
-
-
-
-
 #### 2: Door/Window or alarm status
 
 Parameter defines state of the sensor when the magnet ...  
 
 
-# Overview #
+##### Overview 
 
 ... is close. If the alarm sensor is connected, it determines the output type. Parameter inactive in external button mode (parameter 1 set to 1).
 
@@ -125,16 +121,12 @@ Available settings:
 | Default Value | 0 |
 
 
-
-
-
-
 #### 3: Visual LED indications
 
 This parameter defines events indicated by the visual ...  
 
 
-# Overview #
+##### Overview 
 
 ... LED indicator. Disabling events might extend battery life.
 
@@ -155,16 +147,12 @@ Available settings:
 | Default Value | 6 |
 
 
-
-
-
-
 #### 4: Range test after double click
 
 Allows to enable activation of Z-Wave range test with ...  
 
 
-# Overview #
+##### Overview 
 
 ... double click of a TMP button.
 
@@ -182,16 +170,12 @@ Available settings:
 | Default Value | 0 |
 
 
-
-
-
-
 #### 10: 2nd association group triggers
 
 Parameter defines events which result in sending on/off ...  
 
 
-# Overview #
+##### Overview 
 
 ... commands to devices added to the 2nd association group. These commands are sent alternately to switch the devices on and off. Commands represent the values of BASIC SET command frames. Parameter is inactive in external button mode (parameter 1 set to 1).
 
@@ -210,16 +194,12 @@ Available settings:
 | Default Value | 0 |
 
 
-
-
-
-
 #### 11: Commands sent to 2nd association group
 
 Command frames sent to devices added to the 2nd association group.  
 
 
-# Overview #
+##### Overview 
 
 Available settings:
 
@@ -236,16 +216,12 @@ Available settings:
 | Default Value | 2 |
 
 
-
-
-
-
 #### 12: Value of ON command frame sent to 2nd association group
 
 Value of ON command frame sent to 2nd association group  
 
 
-# Overview #
+##### Overview 
 
 The value of 0 turns OFF the device, 255 turns it On. In case of associating the Dimmer or Roller Shutter module, values 1-99 allow to set  
 an associated device to a specifed level.
@@ -259,16 +235,12 @@ an associated device to a specifed level.
 | Default Value | 255 |
 
 
-
-
-
-
 #### 13: Value of OFF command frame sent to 2nd association group
 
 The value of 0 turns OFF the device, 255 turns it ON.  
 
 
-# Overview #
+##### Overview 
 
 In case of associating the Dimmer or Roller Shutter module, values 1-99 allow to set an associated device to a specified level
 
@@ -284,10 +256,6 @@ an associated device to a specifed level.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 14: Time delay of ON command frame
 
 Time period after which ON command frame will be sent.
@@ -299,10 +267,6 @@ Time period after which ON command frame will be sent.
 | Data Type        | INTEGER |
 | Range | 0 to 32400 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 15: Time delay of OFF command frame
@@ -318,16 +282,12 @@ Time period after which OFF command frame will be sent.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 20: Type of sent alarm frames
 
 Type of control frames transmitted to the main controller ...  
 
 
-# Overview #
+##### Overview 
 
 ... and 3rd association group “Alarm”. If an external sensor is connected to IN input, it is possible to choose its functionality. Otherwise it is recommended to set this parameter to default value.
 
@@ -349,10 +309,6 @@ Available settings:
 | Default Value | 0 |
 
 
-
-
-
-
 #### 30: Delay of tamper alarm cancellation
 
 Time period after which a tamper alarm will be cancelled.
@@ -366,16 +322,12 @@ Time period after which a tamper alarm will be cancelled.
 | Default Value | 5 |
 
 
-
-
-
-
 #### 31: Reporting tamper alarm cancellation
 
 Reporting cancellation of tamper alarm to the controller ...  
 
 
-# Overview #
+##### Overview 
 
 ... and 5th association group.
 
@@ -393,16 +345,12 @@ Available settings:
 | Default Value | 1 |
 
 
-
-
-
-
 #### 50: Interval of temperature measurements
 
 This parameter defines how often the temperature will ...  
 
 
-# Overview #
+##### Overview 
 
 ... be measured. The shorter the time, the more frequently the temperature will be measured, but the battery life will shorten.
 
@@ -420,16 +368,12 @@ Available settings:
 | Default Value | 300 |
 
 
-
-
-
-
 #### 51: Temperature reports threshold
 
 This parameter defines the change of temperature in ...  
 
 
-# Overview #
+##### Overview 
 
 ...comparison with last reported, resulting in temperature report being sent to the main controller.
 
@@ -447,16 +391,12 @@ Available settings:
 | Default Value | 10 |
 
 
-
-
-
-
 #### 52: Interval of temperature reports
 
 This parameter determines how often the temperature ...  
 
 
-# Overview #
+##### Overview 
 
 ...  reports will be sent to the main controller.
 
@@ -474,16 +414,12 @@ Available settings:
 | Default Value | 0 |
 
 
-
-
-
-
 #### 53: Temperature offset
 
 The value to be added to the actual temperature, measured ...  
 
 
-# Overview #
+##### Overview 
 
 ... by the sensor (temperature compensation).
 
@@ -500,16 +436,12 @@ Available settings:
 | Default Value | 0 |
 
 
-
-
-
-
 #### 54: Temperature alarm reports
 
 Temperature alarms reported to the Z-Wave controller.  
 
 
-# Overview #
+##### Overview 
 
 Thresholds are set in parameters 55 and 56.
 
@@ -529,16 +461,12 @@ Available settings:
 | Default Value | 0 |
 
 
-
-
-
-
 #### 55: High temperature alarm threshold
 
 If temperature is higher than set value, overheat ...  
 
 
-# Overview #
+##### Overview 
 
 ... notification will be sent and high temperature scene will be triggered (if activated).
 
@@ -555,16 +483,12 @@ Available settings:
 | Default Value | 540 |
 
 
-
-
-
-
 #### 56: Low temperature alarm threshold
 
 If temperature is lower than the set value, underheat ...  
 
 
-# Overview #
+##### Overview 
 
 ... notification will be sent and low temperature scene will be triggered (if activated).
 
@@ -581,16 +505,12 @@ Available settings:
 | Default Value | 40 |
 
 
-
-
-
-
 #### 70: Scene activation functionality
 
 The device can trigger scenes using scene IDs assigned ...  
 
 
-# Overview #
+##### Overview 
 
 ... to different events. To deactivate all scenes set the value to 0. To activate all scenes set the value to 3903.
 
@@ -620,16 +540,12 @@ closed
 | Default Value | 0 |
 
 
-
-
-
-
 #### 71: Alarm broadcast
 
 Settings for broadcasting ON/OFF commands, sensor ...  
 
 
-# Overview #
+##### Overview 
 
 ... alarm and tamper alarm. Value other than 0 means alarms are sent in Broadcast Mode, to all devices only within the range of the device. They are not repeated by the mesh network.
 
@@ -649,16 +565,12 @@ Available settings:
 | Default Value | 0 |
 
 
-
-
-
-
 #### 72: Associations in Z-Wave network Security Mode
 
 This parameter defines how commands are sent in ...  
 
 
-# Overview #
+##### Overview 
 
 ... specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. It does not apply to 1st group “Lifeline”.
 
@@ -681,13 +593,7 @@ Available settings:
 | Default Value | 15 |
 
 
-
-
-
-
 #### 1: Lifeline
-
-
 
 
 | Property         | Value    |
@@ -697,13 +603,7 @@ Available settings:
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Control
-
-
 
 
 | Property         | Value    |
@@ -713,13 +613,7 @@ Available settings:
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Alarm
-
-
 
 
 | Property         | Value    |
@@ -729,13 +623,7 @@ Available settings:
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Sensor ZW3
-
-
 
 
 | Property         | Value    |
@@ -745,13 +633,7 @@ Available settings:
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Tamper ZW3
-
-
 
 
 | Property         | Value    |
@@ -761,12 +643,7 @@ Available settings:
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/381).
-

@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: RZP03 - ZWave
+---
+
+{% include base.html %}
 
 # RZP03 Scene Capable Plug-In Lamp Dimming Module
 
-This describes the Z-Wave device **RZP03**, manufactured by **Leviton** with the thing type UID of ```leviton_rzp03_00_000```. 
+This describes the Z-Wave device *RZP03*, manufactured by *Leviton* with the thing type UID of ```leviton_rzp03_00_000```. 
 
 Scene Capable Plug-In Lamp Dimming Module
+
 
 ## Channels
 The following table summarises the channels available for the RZP03 Scene Capable Plug-In Lamp Dimming Module.
@@ -12,7 +19,6 @@ The following table summarises the channels available for the RZP03 Scene Capabl
 |---------|------------|------------------|----------|-----------|
 | Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer |
 | Scene Number | scene_number | scene_number |  | Number |
-
 
 
 ### Dimmer
@@ -30,10 +36,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the RZP03 Scene Capable Plug-In Lamp Dimming Module.
 Detailed information on each parameter can be found below.
@@ -43,11 +45,7 @@ Detailed information on each parameter can be found below.
 | 1: Group 1 |  |
 
 
-
-
 #### 1: Group 1
-
-
 
 
 | Property         | Value    |
@@ -57,12 +55,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/373).
-

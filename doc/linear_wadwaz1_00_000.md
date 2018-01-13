@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: WADWAZ-1 - ZWave
+---
+
+{% include base.html %}
 
 # WADWAZ-1 Door/Windows Sensor
 
-This describes the Z-Wave device **WADWAZ-1**, manufactured by **Linear Corp** with the thing type UID of ```linear_wadwaz1_00_000```. 
+This describes the Z-Wave device *WADWAZ-1*, manufactured by *Linear Corp* with the thing type UID of ```linear_wadwaz1_00_000```. 
 
 Door/Windows Sensor  
 
 
-# Overview #
+## Overview 
 
 Linear Z-Wave products are easy to install, and allow dealers to create an integrated wireless network with nearly limitless expansion and interoperability with security and health monitoring systems, energy management, home entertainment, appliances, and more.
 
@@ -15,7 +21,7 @@ The WADWAZ-1 sensor monitors a door or window and sends Z-Wave signals when the
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 Refer to your Controller operating instructions to add this module under the command of the Wireless Controller.
 
@@ -34,12 +40,13 @@ Refer to your Controller operating instructions to add this module under the com
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 For “Exclusion” from (removing from) a network:
 
 1.  Set up the Z-WaveTM Interface Controller into “exclusion” mode, and following its instruction to delete the WADWAZ-1 from the Controller.
 2.  Press the Program switch of WADWAZ-1 for 1 second and release to be excluded. The LED light will fl ash continuously when the sensor is in the Exclusion condition.
+
 
 ## Channels
 The following table summarises the channels available for the WADWAZ-1 Door/Windows Sensor.
@@ -52,8 +59,6 @@ The following table summarises the channels available for the WADWAZ-1 Door/Wind
 |  | battery-level | system.battery-level |  |  |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the WADWAZ-1 Door/Windows Sensor.
 Detailed information on each parameter can be found below.
@@ -63,11 +68,7 @@ Detailed information on each parameter can be found below.
 | 1: Controller Updates |  |
 
 
-
-
 #### 1: Controller Updates
-
-
 
 
 | Property         | Value    |
@@ -77,12 +78,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/9).
-

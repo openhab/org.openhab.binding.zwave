@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: PST02B - ZWave
+---
+
+{% include base.html %}
 
 # PST02B Slim Multi-Sensor (PIR/Temperature/Illumination)
 
-This describes the Z-Wave device **PST02B**, manufactured by **Philio Technology Corp** with the thing type UID of ```philio_pst02b_00_000```. 
+This describes the Z-Wave device *PST02B*, manufactured by *Philio Technology Corp* with the thing type UID of ```philio_pst02b_00_000```. 
 
 Slim Multi-Sensor (PIR/Temperature/Illumination)
+
 
 ## Channels
 The following table summarises the channels available for the PST02B Slim Multi-Sensor (PIR/Temperature/Illumination).
@@ -15,7 +22,6 @@ The following table summarises the channels available for the PST02B Slim Multi-
 | Sensor (luminance) | sensor_luminance | sensor_luminance | Temperature | Number |
 | Alarm (burglar) | alarm_burglar | alarm_burglar | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Sensor (temperature)
@@ -31,10 +37,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -58,14 +60,12 @@ Detailed information on each parameter can be found below.
 | 2: Light Control |  |
 
 
-
-
 #### 2: Basic Set Level
 
 BASIC command value sent when turning on lights  
 
 
-# Overview #
+##### Overview 
 
 BASIC command value to send when turning on the light.
 
@@ -82,16 +82,12 @@ BASIC command value to send when turning on the light.
 | Default Value | -1 |
 
 
-
-
-
-
 #### 3: PIR Sensitivity
 
 PIR Sensitivity setting.  
 
 
-# Overview #
+##### Overview 
 
 Sensitivity for the PIR (Passiv Infrared) sensor
 
@@ -107,16 +103,12 @@ Sensitivity for the PIR (Passiv Infrared) sensor
 | Default Value | 70 |
 
 
-
-
-
-
 #### 4: Light Threshold
 
 Illumination threshold for turning on associated lights.  
 
 
-# Overview #
+##### Overview 
 
 When the event is triggered and the environment illumination is lower than the threshold, the device will turn on the associated lights.
 
@@ -136,16 +128,12 @@ Note: when not in test mode, only values in the range 1–99 will enable the ill
 | Default Value | 100 |
 
 
-
-
-
-
 #### 5: Operation Mode
 
 Mode of operation and enabled multisensor functions  
 
 
-# Overview #
+##### Overview 
 
 Bitfield for setting the device in certain modes and enabling or disabling specific functions of the multisensor device.
 
@@ -167,16 +155,12 @@ Bitfield for setting the device in certain modes and enabling or disabling speci
 | Default Value | 0 |
 
 
-
-
-
-
 #### 6: Multisensor Function Switch
 
 Enable or disable functions of the multisensor.  
 
 
-# Overview #
+##### Overview 
 
 Bitfield for enabling or disabling functions of the multisensor.
 
@@ -203,16 +187,12 @@ Bitfield for enabling or disabling functions of the multisensor.
 | Default Value | 4 |
 
 
-
-
-
-
 #### 7: Customer Function
 
 Enable or disable functions of the multisensor.  
 
 
-# Overview #
+##### Overview 
 
 Bitfield for enabling or disabling certain customer functions of the multisensor device.
 
@@ -237,16 +217,12 @@ Bitfield for enabling or disabling certain customer functions of the multisensor
 | Options | Preset for motion detection settings. (22) |
 
 
-
-
-
-
 #### 8: PIR Re-Detect Interval Time
 
 Time period to wait until reporting motion detected again.  
 
 
-# Overview #
+##### Overview 
 
 After sending a "motion detected" report, wait at least the configured number of seconds before sending a new "motion detected" report.
 
@@ -263,16 +239,12 @@ The timeout is the configured value multiplied with 8 seconds, i.e. value 3 (the
 | Default Value | 3 |
 
 
-
-
-
-
 #### 9: Turn Off Light Time
 
 Time to wait before sending command to turn off lights  
 
 
-# Overview #
+##### Overview 
 
 When a BASIC SET command has been sent to turn on lights and motion is no longer detected by the PIR sensor, wait the configured time before sending a "turn off light" command.
 
@@ -289,16 +261,12 @@ The timeout is the configured value multiplied with 8 seconds, i.e. value 4 (the
 | Default Value | 4 |
 
 
-
-
-
-
 #### 10: Auto Report Battery Time
 
 The interval time for auto reporting the battery level.  
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto reporting the battery level. The value is multiplied with the value of configuration parameter 20 and the unit is minutes. If the value is 0, auto reporting of battery level is turned off.
 
@@ -313,16 +281,12 @@ If this parameter has its default value (12) and parameter 20 has its default va
 | Default Value | 12 |
 
 
-
-
-
-
 #### 12: Auto Report Illumination Time
 
 The interval time for auto reporting the illumination state  
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto reporting the battery level. The value is multiplied with the value of configuration parameter 20 and the unit is minutes. If the value is 0, auto reporting of illumination is turned off.
 
@@ -337,16 +301,12 @@ If this parameter has its default value (12) and parameter 20 has its default va
 | Default Value | 12 |
 
 
-
-
-
-
 #### 13: Auto Report Temperature Time
 
 The interval time for auto reporting the temperature.  
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto reporting the temperature. The value is multiplied with the value of configuration parameter 20 and the unit is minutes. If the value is 0, auto reporting of temperature is turned off.
 
@@ -361,13 +321,7 @@ If this parameter has its default value (12) and parameter 20 has its default va
 | Default Value | 12 |
 
 
-
-
-
-
 #### 1: Reports
-
-
 
 
 | Property         | Value    |
@@ -377,13 +331,7 @@ If this parameter has its default value (12) and parameter 20 has its default va
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Light Control
-
-
 
 
 | Property         | Value    |
@@ -393,12 +341,7 @@ If this parameter has its default value (12) and parameter 20 has its default va
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/169).
-

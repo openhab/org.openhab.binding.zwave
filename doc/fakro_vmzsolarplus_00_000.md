@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: VMZ Solar z-wave plus - ZWave
+---
+
+{% include base.html %}
 
 # VMZ Solar z-wave plus Awning Blind z-wave plus version
 
-This describes the Z-Wave device **VMZ Solar z-wave plus**, manufactured by **Fakro** with the thing type UID of ```fakro_vmzsolarplus_00_000```. 
+This describes the Z-Wave device *VMZ Solar z-wave plus*, manufactured by *Fakro* with the thing type UID of ```fakro_vmzsolarplus_00_000```. 
 
 Awning Blind z-wave plus version
+
 
 ## Channels
 The following table summarises the channels available for the VMZ Solar z-wave plus Awning Blind z-wave plus version.
@@ -14,7 +21,6 @@ The following table summarises the channels available for the VMZ Solar z-wave p
 | Blinds control | blinds_control | blinds_control | Blinds | Rollershutter |
 | Alarm (power) | alarm_power | alarm_power | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Blinds control
@@ -32,8 +38,6 @@ Invert the blinds control
 |  | No (false) |
 
 
-
-
 #### Invert percentage value
 
 Invert the blinds percentage value
@@ -45,8 +49,6 @@ Invert the blinds percentage value
 | Data Type        | BOOLEAN || Default Value | false |
 | Options | Yes (true) |
 |  | No (false) |
-
-
 
 
 #### Step duration
@@ -62,10 +64,6 @@ Values from 1 to 127 are defined in seconds, while values from 128 to 254 are de
 | Range | 1 to 254 || Default Value | 255 |
 | Options | Device Default (255) |
 |  | Change Instantly (0) |
-
-
-
-
 
 
 ### Device Configuration
@@ -95,14 +93,12 @@ Detailed information on each parameter can be found below.
 | 4: BasicControl |  |
 
 
-
-
 #### 1: operating mode
 
 operating mode  
 
 
-# Overview #
+##### Overview 
 
 Operating mode. Available values:
 
@@ -122,16 +118,12 @@ Operating mode. Available values:
 |  | auto (2) |
 
 
-
-
-
-
 #### 2: winter mode
 
 Summer/Winter mode  
 
 
-# Overview #
+##### Overview 
 
 summer mode: go down if sun shines and go up if it is cloudy
 
@@ -146,16 +138,12 @@ winter mode: if temperature is below 0 deg C and sun shines then go up if it is 
 |  | winter mode (2) |
 
 
-
-
-
-
 #### 3: Delay time
 
 delay to auto shade  
 
 
-# Overview #
+##### Overview 
 
 Delay time in minutes after which the shade is open or closed in auto mode
 
@@ -168,16 +156,12 @@ Delay time in minutes after which the shade is open or closed in auto mode
 | Default Value | 0 |
 
 
-
-
-
-
 #### 4: Level of sensitivity for day
 
 Level of insolation to open/close the shades  
 
 
-# Overview #
+##### Overview 
 
 Level of insolation in mA to open/close the shades in the auto mode
 
@@ -190,16 +174,12 @@ Level of insolation in mA to open/close the shades in the auto mode
 | Default Value | 3 |
 
 
-
-
-
-
 #### 5: Temperature
 
 Temperature  
 
 
-# Overview #
+##### Overview 
 
 T\[oC\] = x minus 50
 
@@ -210,10 +190,6 @@ T\[oC\] = x minus 50
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 6: STM active
@@ -229,16 +205,12 @@ STM AutoShade active
 |  | yes (1) |
 
 
-
-
-
-
 #### 13: Restore last position
 
 Restore last position  
 
 
-# Overview #
+##### Overview 
 
 Restore last position or always go down till the end.
 
@@ -251,16 +223,12 @@ Restore last position or always go down till the end.
 |  | restore last position (2) |
 
 
-
-
-
-
 #### 17: Insolation level
 
 Current on autoshade solar panel  
 
 
-# Overview #
+##### Overview 
 
 Current from autoshade solar panel for loading battery: 0 - 255 mA
 
@@ -273,16 +241,12 @@ Current from autoshade solar panel for loading battery: 0 - 255 mA
 | Default Value | 0 |
 
 
-
-
-
-
 #### 21: Motor current
 
 Motor current  
 
 
-# Overview #
+##### Overview 
 
 Current used by motor: 10\[mA\] - 2,55\[A\]
 
@@ -295,16 +259,12 @@ Current used by motor: 10\[mA\] - 2,55\[A\]
 | Default Value | 0 |
 
 
-
-
-
-
 #### 77: CLOSE current
 
 CLOSE current  
 
 
-# Overview #
+##### Overview 
 
 CLOSE current: 1\[mA\] - 255\[mA\]
 
@@ -317,16 +277,12 @@ CLOSE current: 1\[mA\] - 255\[mA\]
 | Default Value | 1 |
 
 
-
-
-
-
 #### 78: OPEN current
 
 OPEN current  
 
 
-# Overview #
+##### Overview 
 
 OPEN current: 1\[mA\] - 255\[mA\]
 
@@ -339,16 +295,12 @@ OPEN current: 1\[mA\] - 255\[mA\]
 | Default Value | 1 |
 
 
-
-
-
-
 #### 79: CLOSE overload current
 
 CLOSE overload current  
 
 
-# Overview #
+##### Overview 
 
 CLOSE overload current: 10\[mA\] - 2,55\[A\]
 
@@ -361,16 +313,12 @@ CLOSE overload current: 10\[mA\] - 2,55\[A\]
 | Default Value | 0 |
 
 
-
-
-
-
 #### 80: OPEN overload current
 
 OPEN overload current  
 
 
-# Overview #
+##### Overview 
 
 OPEN overload current: 10\[mA\] - 2,55\[A\]
 
@@ -383,16 +331,12 @@ OPEN overload current: 10\[mA\] - 2,55\[A\]
 | Default Value | 0 |
 
 
-
-
-
-
 #### 99: Restore default config values
 
 Restore default config values  
 
 
-# Overview #
+##### Overview 
 
 Restore default config values.
 
@@ -403,10 +347,6 @@ Restore default config values.
 | Data Type        | INTEGER || Default Value | 2 |
 | Options | restore default config values (1) |
 |  | user values (2) |
-
-
-
-
 
 
 #### 100: Autoexclude
@@ -422,16 +362,12 @@ Autoexclude
 |  | on (2) |
 
 
-
-
-
-
 #### 1: Lifeline
 
   
 
 
-# Overview #
+##### Overview 
 
 <commandClass>BATTERY</commandClass>  
 <commandClass>ALARM</commandClass>  
@@ -447,16 +383,12 @@ Autoexclude
 | Range |  to  |
 
 
-
-
-
-
 #### 2: BasicRepeat
 
   
 
 
-# Overview #
+##### Overview 
 
 <commandClass>BASIC</commandClass>
 
@@ -468,16 +400,12 @@ Autoexclude
 | Range |  to  |
 
 
-
-
-
-
 #### 3: MultilevelRepeat
 
   
 
 
-# Overview #
+##### Overview 
 
 <commandClass>SWITCH\_MULTILEVEL</commandClass>
 
@@ -489,16 +417,12 @@ Autoexclude
 | Range |  to  |
 
 
-
-
-
-
 #### 4: BasicControl
 
   
 
 
-# Overview #
+##### Overview 
 
 <commandClass>BASIC</commandClass>
 
@@ -510,12 +434,7 @@ Autoexclude
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/750).
-

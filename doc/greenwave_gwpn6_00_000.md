@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: GWPN6 - ZWave
+---
+
+{% include base.html %}
 
 # GWPN6 Multi-socket PowerNode (6-plug)
 
-This describes the Z-Wave device **GWPN6**, manufactured by **GreenWave Reality Inc.** with the thing type UID of ```greenwave_gwpn6_00_000```. 
+This describes the Z-Wave device *GWPN6*, manufactured by *GreenWave Reality Inc.* with the thing type UID of ```greenwave_gwpn6_00_000```. 
 
 Multi-socket PowerNode (6-plug)  
 
 
-# Overview #
+## Overview 
 
 This Configuration is for the 6 plug version of the PowerNode.
 
@@ -15,7 +21,7 @@ It should work for both NP210 and NP310 devices (except *NP210*\-G-EN which is 5
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 On the PowerNode, press and hold the **Sync** button for approximately one second until the activity indicator displays a clockwise rotating pattern. This indicates the PowerNode is attempting inclusion. During this process, verify that the Gateway activity indicator still displays a clockwise rotating pattern.
 
@@ -26,9 +32,10 @@ If all bars on the activity indicator start flashing instead of forming a solid 
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 On the PowerNode, press and hold the **Sync** button for approximately one second until the PowerNode activity indicator begins to display a counter-clockwise rotating pattern. The PowerNode is attempting exclusion.
+
 
 ## Channels
 The following table summarises the channels available for the GWPN6 Multi-socket PowerNode (6-plug).
@@ -59,8 +66,6 @@ The following table summarises the channels available for the GWPN6 Multi-socket
 | Electric meter (kWh) 6 | meter_kwh6 | meter_kwh | Energy | Number |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the GWPN6 Multi-socket PowerNode (6-plug).
 Detailed information on each parameter can be found below.
@@ -78,14 +83,12 @@ Detailed information on each parameter can be found below.
 | 4: Over-current detection |  |
 
 
-
-
 #### 0: Min. variation of load current
 
 Minimum variation in load current before a message is sent.  
 
 
-# Overview #
+##### Overview 
 
 Minimum variation in load current before a message is sent. Value in percent (30 => 30%)
 
@@ -98,16 +101,12 @@ Minimum variation in load current before a message is sent. Value in percent (30
 | Default Value | 10 |
 
 
-
-
-
-
 #### 1: No communication light
 
 Duration (min) the device flashes after a communication error.  
 
 
-# Overview #
+##### Overview 
 
 After how many minutes the GreenWave device should start flashing if the controller didn't communicate with this device.
 
@@ -118,10 +117,6 @@ After how many minutes the GreenWave device should start flashing if the control
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 2 |
-
-
-
-
 
 
 #### 2: Wheel position
@@ -145,10 +140,6 @@ Wheel position on the GreenWave device (read-only)
 |  | Locked (137) |
 
 
-
-
-
-
 #### 3: Power-on state
 
 Default state after power loss
@@ -161,10 +152,6 @@ Default state after power loss
 | Options | All OFF (0) |
 |  | Remember last state (1) |
 |  | All ON (2) |
-
-
-
-
 
 
 #### 4: LED for network error
@@ -180,13 +167,7 @@ If the LED should indicate a network error by flashing or not
 |  | Enable the LED for network error (1) |
 
 
-
-
-
-
 #### 1: Wheel position change
-
-
 
 
 | Property         | Value    |
@@ -196,13 +177,7 @@ If the LED should indicate a network error by flashing or not
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Current leakage on relay
-
-
 
 
 | Property         | Value    |
@@ -212,16 +187,12 @@ If the LED should indicate a network error by flashing or not
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Power level change
 
   
 
 
-# Overview #
+##### Overview 
 
 The new power reading is sent if the delta of the change is greater than the defined minimum variation.
 
@@ -233,13 +204,7 @@ The new power reading is sent if the delta of the change is greater than the def
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Over-current detection
-
-
 
 
 | Property         | Value    |
@@ -249,12 +214,7 @@ The new power reading is sent if the delta of the change is greater than the def
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/100).
-

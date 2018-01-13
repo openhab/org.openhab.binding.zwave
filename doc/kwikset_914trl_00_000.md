@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: 914TRL - ZWave
+---
+
+{% include base.html %}
 
 # 914TRL Touchpad Electronic Deadbolt
 
-This describes the Z-Wave device **914TRL**, manufactured by **Black &amp; Decker** with the thing type UID of ```kwikset_914trl_00_000```. 
+This describes the Z-Wave device *914TRL*, manufactured by *Black &amp; Decker* with the thing type UID of ```kwikset_914trl_00_000```. 
 
 Touchpad Electronic Deadbolt  
 
 
-# Overview #
+## Overview 
 
 The following table provides a reference of the Alarm\_Number related messages.
 
@@ -51,16 +57,17 @@ Alarm Type    Alarm Level            Notification Event  
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
  Press button “A” on the lock one time to include it in your system.
 
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
  Press button “A” on the lock one time to exclude it in your system.
+
 
 ## Channels
 The following table summarises the channels available for the 914TRL Touchpad Electronic Deadbolt.
@@ -71,8 +78,6 @@ The following table summarises the channels available for the 914TRL Touchpad El
 | Alarm | alarm_number | alarm_number |  |  |
 | Alarm Raw | alarm_raw | alarm_raw |  | String |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -88,14 +93,12 @@ Detailed information on each parameter can be found below.
 | 1: Group 1 |  |
 
 
-
-
 #### 31: Auto Buzzer
 
 Beeping sound enabled.  
 
 
-# Overview #
+##### Overview 
 
 Beeping sound enabled. When disabled, keypad buttons light red or amber when pressed.
 
@@ -112,16 +115,12 @@ Note: It is recommended that the beeping sound is enabled during programming.
 |  | ON (1) |
 
 
-
-
-
-
 #### 31: Auto Lock
 
 Automatically re-locks door 30 seconds after unlocking.  
 
 
-# Overview #
+##### Overview 
 
 Lock automatically re-locks door 30 seconds after unlocking. OFF position is factory default. If this switch is turned on, it will be disabled if all codes are deleted from the lock.
 
@@ -134,16 +133,12 @@ Lock automatically re-locks door 30 seconds after unlocking. OFF position is fac
 |  | ON (1) |
 
 
-
-
-
-
 #### 31: Lock LED Status
 
 Door lock status LED blinks every 6 seconds.  
 
 
-# Overview #
+##### Overview 
 
 Door lock status LED blinks every 6 seconds. ON position is factory default.
 
@@ -156,16 +151,12 @@ Door lock status LED blinks every 6 seconds. ON position is factory default.
 |  | ON (1) |
 
 
-
-
-
-
 #### 40: Factory Default
 
 Reset to factory default settings.  
 
 
-# Overview #
+##### Overview 
 
 Reset factory default settings, except for the anti-theft setting.
 
@@ -178,13 +169,7 @@ Reset factory default settings, except for the anti-theft setting.
 | Options | Factory Default (1) |
 
 
-
-
-
-
 #### 1: Group 1
-
-
 
 
 | Property         | Value    |
@@ -194,12 +179,7 @@ Reset factory default settings, except for the anti-theft setting.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/283).
-

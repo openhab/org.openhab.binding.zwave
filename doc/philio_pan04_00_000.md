@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: PAN04 - ZWave
+---
+
+{% include base.html %}
 
 # PAN04 In Wall Dual Relay(1 Way) Switch Module 2x 1.5kW with power meter
 
-This describes the Z-Wave device **PAN04**, manufactured by **Philio Technology Corp** with the thing type UID of ```philio_pan04_00_000```. 
+This describes the Z-Wave device *PAN04*, manufactured by *Philio Technology Corp* with the thing type UID of ```philio_pan04_00_000```. 
 
 In Wall Dual Relay(1 Way) Switch Module 2x 1.5kW with power meter
+
 
 ## Channels
 The following table summarises the channels available for the PAN04 In Wall Dual Relay(1 Way) Switch Module 2x 1.5kW with power meter.
@@ -37,8 +44,6 @@ The following table summarises the channels available for the PAN04 In Wall Dual
 | Electric meter (watts) 3 | meter_watts3 | meter_watts | Energy | Number |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the PAN04 In Wall Dual Relay(1 Way) Switch Module 2x 1.5kW with power meter.
 Detailed information on each parameter can be found below.
@@ -60,14 +65,12 @@ Detailed information on each parameter can be found below.
 | 3: Relay 2 |  |
 
 
-
-
 #### 1: W meter report period
 
 Period for reporting W meter  
 
 
-# Overview #
+##### Overview 
 
 If the setting is configured for 1 hour (value = 720), the device will report its instant power consumption every 1 hour to Z-Wave Controller. Unit: 5 seconds
 
@@ -80,16 +83,12 @@ If the setting is configured for 1 hour (value = 720), the device will report i
 | Default Value | 720 |
 
 
-
-
-
-
 #### 2: kWh meter report period
 
 Period for reporting kWh meter  
 
 
-# Overview #
+##### Overview 
 
 If the setting is configured for 1 hour (value = 6), the device will report its total power consumption every 1 hour to Z-Wave Controller. 
 
@@ -104,16 +103,12 @@ Unit: 10 minutes
 | Default Value | 6 |
 
 
-
-
-
-
 #### 3: Selected endpoint
 
 Which endpoint is addressed by the BASIC command class  
 
 
-# Overview #
+##### Overview 
 
 If the Controller is not using Multi\_Channel command class to access the endpoint of PAN04, you may configure the endpoint value to react the Basic Command Class
 
@@ -125,10 +120,6 @@ If the Controller is not using Multi\_Channel command class to access the endpoi
 | Options | Relay 1 (1) |
 |  | Relay 2 (2) |
 |  | Relay 1 + 2 (3) |
-
-
-
-
 
 
 #### 4: Switch mode
@@ -145,10 +136,6 @@ Change the external switch mode
 |  | Edge-Toggle mode (3) |
 
 
-
-
-
-
 #### 5: Threshold of Watt for Load Caution
 
 If threshold of wattage is reached, a meter report will be generated
@@ -160,10 +147,6 @@ If threshold of wattage is reached, a meter report will be generated
 | Data Type        | INTEGER |
 | Range | 0 to 65535 |
 | Default Value | 750 |
-
-
-
-
 
 
 #### 6: Threshold of kWh for Load Caution
@@ -179,16 +162,12 @@ If threshold of kWh is reached, a Meter Report will be generated
 | Default Value | 10000 |
 
 
-
-
-
-
 #### 7: Restore switch state mode
 
 Restore switch state mode  
 
 
-# Overview #
+##### Overview 
 
 Restores the switch state setting in case the device was disconnected from the power source.
 
@@ -202,16 +181,12 @@ Restores the switch state setting in case the device was disconnected from the p
 |  | Switch On (2) |
 
 
-
-
-
-
 #### 8: Auto Off Timer
 
 Auto Off Timer  
 
 
-# Overview #
+##### Overview 
 
 Whenever the device switches to on, the auto off timer begin to count down. After the timer decrease to zero, it will switch off automatically.
 
@@ -224,16 +199,12 @@ Whenever the device switches to on, the auto off timer begin to count down. Afte
 | Default Value | 0 |
 
 
-
-
-
-
 #### 9: RF off command mode
 
 RF off command mode  
 
 
-# Overview #
+##### Overview 
 
 Whenever a switch off command, BASIC\_SET, BINARY\_SWITCH\_SET, SWITCH\_ALL\_OFF, is received, it could be interpreted as 4 kinds of commands.
 
@@ -248,16 +219,12 @@ Whenever a switch off command, BASIC\_SET, BINARY\_SWITCH\_SET, SWITCH\_ALL\_OFF
 |  | Switch On (3) |
 
 
-
-
-
-
 #### 10: Endpoint 3
 
 Endpoint 3  
 
 
-# Overview #
+##### Overview 
 
 Multi-Channel Command is a good way to control relay1 and relay2 of PAN04 individually. The endpoint3 of PAN04 is related to both relay1 and relay2. In some condition it becomes redundant in Multi-Channel Command Class.
 
@@ -270,13 +237,7 @@ Multi-Channel Command is a good way to control relay1 and relay2 of PAN04 indivi
 |  | Doesn&#x27;t Exist (2) |
 
 
-
-
-
-
 #### 1: Relay 1 + 2
-
-
 
 
 | Property         | Value    |
@@ -286,13 +247,7 @@ Multi-Channel Command is a good way to control relay1 and relay2 of PAN04 indivi
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Relay 1
-
-
 
 
 | Property         | Value    |
@@ -302,13 +257,7 @@ Multi-Channel Command is a good way to control relay1 and relay2 of PAN04 indivi
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Relay 2
-
-
 
 
 | Property         | Value    |
@@ -318,12 +267,7 @@ Multi-Channel Command is a good way to control relay1 and relay2 of PAN04 indivi
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/172).
-

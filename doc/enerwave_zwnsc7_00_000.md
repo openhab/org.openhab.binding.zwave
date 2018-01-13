@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZWN-SC7 - ZWave
+---
+
+{% include base.html %}
 
 # ZWN-SC7 Scene Controller
 
-This describes the Z-Wave device **ZWN-SC7**, manufactured by **Wenzhou MTLC Electric Appliances Co.,Ltd.** with the thing type UID of ```enerwave_zwnsc7_00_000```. 
+This describes the Z-Wave device *ZWN-SC7*, manufactured by *Wenzhou MTLC Electric Appliances Co.,Ltd.* with the thing type UID of ```enerwave_zwnsc7_00_000```. 
 
 Scene Controller
+
 
 ## Channels
 The following table summarises the channels available for the ZWN-SC7 Scene Controller.
@@ -11,8 +18,6 @@ The following table summarises the channels available for the ZWN-SC7 Scene Cont
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
 | Scene Number | scene_number | scene_number |  | Number |
-
-
 
 
 ### Device Configuration
@@ -30,11 +35,7 @@ Detailed information on each parameter can be found below.
 | 7: Group 7 |  |
 
 
-
-
 #### 1: Group 1
-
-
 
 
 | Property         | Value    |
@@ -44,13 +45,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Group 2
-
-
 
 
 | Property         | Value    |
@@ -60,13 +55,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Group 3
-
-
 
 
 | Property         | Value    |
@@ -76,13 +65,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Group 4
-
-
 
 
 | Property         | Value    |
@@ -92,13 +75,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Group 5
-
-
 
 
 | Property         | Value    |
@@ -108,13 +85,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 #### 6: Group 6
-
-
 
 
 | Property         | Value    |
@@ -124,13 +95,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 #### 7: Group 7
-
-
 
 
 | Property         | Value    |
@@ -140,12 +105,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/187).
-

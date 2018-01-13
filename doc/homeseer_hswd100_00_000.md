@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: HS-WD100+ - ZWave
+---
+
+{% include base.html %}
 
 # HS-WD100+ Scene Capable Wall Dimmer Switch
 
-This describes the Z-Wave device **HS-WD100+**, manufactured by **HomeSeer Technologies** with the thing type UID of ```homeseer_hswd100_00_000```. 
+This describes the Z-Wave device *HS-WD100+*, manufactured by *HomeSeer Technologies* with the thing type UID of ```homeseer_hswd100_00_000```. 
 
 Scene Capable Wall Dimmer Switch
+
 
 ## Channels
 The following table summarises the channels available for the HS-WD100+ Scene Capable Wall Dimmer Switch.
@@ -12,7 +19,6 @@ The following table summarises the channels available for the HS-WD100+ Scene Ca
 |---------|------------|------------------|----------|-----------|
 | Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer |
 | Scene Number | scene_number | scene_number |  | Number |
-
 
 
 ### Dimmer
@@ -30,10 +36,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the HS-WD100+ Scene Capable Wall Dimmer Switch.
 Detailed information on each parameter can be found below.
@@ -46,8 +48,6 @@ Detailed information on each parameter can be found below.
 | 9: Local Dimming Level Increment | Number of levels (1-99) to change dimming each step when controlled locally |
 | 10: Local Dimming Step Duration | Time interval (in tens of ms) of brightness change when controlled locally |
 | 1: Group 1 | Lifeline association only supports the "manual reset" event. |
-
-
 
 
 #### 4: Orientation
@@ -63,16 +63,12 @@ Controls the on/off orientation of the rocker switch
 |  | Inverted (1) |
 
 
-
-
-
-
 #### 7: Remote Dimming Level Increment
 
 Number of levels (1-99) to change dimming each step when controlled remotely  
 
 
-# Overview #
+##### Overview 
 
 This is the step value that the dimmer level is incremented or decremented for each step duration when controlled remotely.
 
@@ -87,16 +83,12 @@ This is the step value that the dimmer level is incremented or decremented for
 | Default Value | 1 |
 
 
-
-
-
-
 #### 8: Remote Dimming Step Duration
 
 Time interval (in tens of ms) of brightness change when controlled remotely  
 
 
-# Overview #
+##### Overview 
 
 Select time interval to move to the next brightness level. The larger the number, the slower the adjustment to dim levels. 
 
@@ -111,16 +103,12 @@ Select time interval to move to the next brightness level. The larger the numbe
 | Default Value | 3 |
 
 
-
-
-
-
 #### 9: Local Dimming Level Increment
 
 Number of levels (1-99) to change dimming each step when controlled locally  
 
 
-# Overview #
+##### Overview 
 
 This is the step value that the dimmer level is incremented or decremented for each step duration when controlled locally.
 
@@ -133,16 +121,12 @@ This is the step value that the dimmer level is incremented or decremented for 
 | Default Value | 1 |
 
 
-
-
-
-
 #### 10: Local Dimming Step Duration
 
 Time interval (in tens of ms) of brightness change when controlled locally  
 
 
-# Overview #
+##### Overview 
 
 Select time interval to move to the next brightness level. The larger the number, the slower the adjustment to dim levels. 
 
@@ -153,10 +137,6 @@ Select time interval to move to the next brightness level. The larger the numbe
 | Data Type        | INTEGER |
 | Range | 1 to 255 |
 | Default Value | 3 |
-
-
-
-
 
 
 #### 1: Group 1
@@ -171,12 +151,7 @@ Lifeline association only supports the "manual reset" event.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/346).
-

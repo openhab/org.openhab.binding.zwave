@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: ZWN-RSM1-PLUS - ZWave
+---
+
+{% include base.html %}
 
 # ZWN-RSM1-PLUS Smart Relay Switch Module
 
-This describes the Z-Wave device **ZWN-RSM1-PLUS**, manufactured by **Wenzhou MTLC Electric Appliances Co.,Ltd.** with the thing type UID of ```enerwave_zwnrsm1plus_00_000```. 
+This describes the Z-Wave device *ZWN-RSM1-PLUS*, manufactured by *Wenzhou MTLC Electric Appliances Co.,Ltd.* with the thing type UID of ```enerwave_zwnrsm1plus_00_000```. 
 
 Smart Relay Switch Module  
 
 
-# Overview #
+## Overview 
 
 ZWN-RSM1-Plus
 
@@ -21,7 +27,7 @@ Never worry if you accidentally left the lights on because you can turn them off
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 DEVICE INCLUSION/ EXCLUSION
 
@@ -49,14 +55,13 @@ The primary controller should indicate that the action was successful. If the co
 
 the relay to groups & scenes or change advanced functions. Refer to the Hub’s instructions for details. Step 3. Follow the On-Screen instructions in the Control Panel on adding or removing rooms, scenes, other devices, and other functions and features.
 
+
 ## Channels
 The following table summarises the channels available for the ZWN-RSM1-PLUS Smart Relay Switch Module.
 
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
-
-
 
 
 ### Device Configuration
@@ -70,14 +75,12 @@ Detailed information on each parameter can be found below.
 | 2: StatusReport_ EP | Switch Binary Report |
 
 
-
-
 #### 3: Unsolicited Report Configuration
 
 Unsolicited Report Configuration  
 
 
-# Overview #
+##### Overview 
 
 ZWN-RSM1-PLUS can send unsolicited status reports to the primary controller (Node ID 0x1) when the switch is toggled if the controller is designed as a gateway. If your controller is not a gateway or does not need the status reported or you think it could confuse your Z-Wave network, you can use Command\_Class\_Configuration to disable this function. By default this function is disabled.
 
@@ -88,10 +91,6 @@ ZWN-RSM1-PLUS can send unsolicited status reports to the primary controller (Nod
 | Data Type        | INTEGER |
 | Range | 0 to 1 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 1: LIfeline
@@ -106,10 +105,6 @@ Send device reset locally notification
 | Range |  to  |
 
 
-
-
-
-
 #### 2: StatusReport_ EP
 
 Switch Binary Report
@@ -122,12 +117,7 @@ Switch Binary Report
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/575).
-

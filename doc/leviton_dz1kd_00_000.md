@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: DZ1KD - ZWave
+---
+
+{% include base.html %}
 
 # DZ1KD 1000W Dimmer
 
-This describes the Z-Wave device **DZ1KD**, manufactured by **Leviton** with the thing type UID of ```leviton_dz1kd_00_000```. 
+This describes the Z-Wave device *DZ1KD*, manufactured by *Leviton* with the thing type UID of ```leviton_dz1kd_00_000```. 
 
 1000W Dimmer
+
 
 ## Channels
 The following table summarises the channels available for the DZ1KD 1000W Dimmer.
@@ -12,7 +19,6 @@ The following table summarises the channels available for the DZ1KD 1000W Dimmer
 |---------|------------|------------------|----------|-----------|
 | Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer |
 | Scene Number | scene_number | scene_number |  | Number |
-
 
 
 ### Dimmer
@@ -28,10 +34,6 @@ Restore Last Dimming level on ON.
 | Data Type        | BOOLEAN || Default Value | true |
 | Options | Restore Last Value (true) |
 |  | Restore Full Brightness (false) |
-
-
-
-
 
 
 ### Device Configuration
@@ -51,14 +53,12 @@ Detailed information on each parameter can be found below.
 | 1: Group 1 | Z-Wave Plus Lifeline |
 
 
-
-
 #### 1: Fade On Time
 
 Fade on time  
 
 
-# Overview #
+##### Overview 
 
  *  0: Instant on
  *  1 to 127: 1-127 seconds
@@ -73,16 +73,12 @@ Fade on time
 | Default Value | 2 |
 
 
-
-
-
-
 #### 2: Fade Off Time
 
 Fade off time  
 
 
-# Overview #
+##### Overview 
 
  *  0: Instant off
  *  1 to 127: 1-127 seconds
@@ -95,10 +91,6 @@ Fade off time
 | Data Type        | INTEGER |
 | Range | 0 to 253 |
 | Default Value | 2 |
-
-
-
-
 
 
 #### 3: Minimum Light Level
@@ -114,10 +106,6 @@ Minimum light level
 | Default Value | 10 |
 
 
-
-
-
-
 #### 4: Maximum Light Level
 
 Maximum light level
@@ -131,16 +119,12 @@ Maximum light level
 | Default Value | 100 |
 
 
-
-
-
-
 #### 5: Preset Light Level
 
 Preset light level  
 
 
-# Overview #
+##### Overview 
 
  *  0: Last dim level
  *  1 to 100: Level
@@ -154,16 +138,12 @@ Preset light level
 | Default Value | 0 |
 
 
-
-
-
-
 #### 6: LED Dim Level Indicator Timeout
 
 LED dim level indicator timeout  
 
 
-# Overview #
+##### Overview 
 
  *  0: LED indicators off
  *  1 to 254: Timeout in seconds
@@ -178,16 +158,12 @@ LED dim level indicator timeout
 | Default Value | 3 |
 
 
-
-
-
-
 #### 7: Locator LED Status
 
 Locator LED status  
 
 
-# Overview #
+##### Overview 
 
  *  0: LED off
  *  254: Status mode
@@ -202,16 +178,12 @@ Locator LED status
 | Default Value | 255 |
 
 
-
-
-
-
 #### 8: Load Type
 
 Load type  
 
 
-# Overview #
+##### Overview 
 
  *  0: Incandescent
  *  1: LED
@@ -226,16 +198,12 @@ Load type
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Group 1
 
 Z-Wave Plus Lifeline  
 
 
-# Overview #
+##### Overview 
 
 A NOTIFICATION frame is sent to the nodes in this association group when a Lifeline event occurs.
 
@@ -247,12 +215,7 @@ A NOTIFICATION frame is sent to the nodes in this association group when a Lifel
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/664).
-

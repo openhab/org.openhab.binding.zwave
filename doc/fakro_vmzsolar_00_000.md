@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: VMZ Solar - ZWave
+---
+
+{% include base.html %}
 
 # VMZ Solar Awning Blind
 
-This describes the Z-Wave device **VMZ Solar**, manufactured by **Fakro** with the thing type UID of ```fakro_vmzsolar_00_000```. 
+This describes the Z-Wave device *VMZ Solar*, manufactured by *Fakro* with the thing type UID of ```fakro_vmzsolar_00_000```. 
 
 Awning Blind
+
 
 ## Channels
 The following table summarises the channels available for the VMZ Solar Awning Blind.
@@ -13,7 +20,6 @@ The following table summarises the channels available for the VMZ Solar Awning B
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Blinds control | blinds_control | blinds_control | Blinds | Rollershutter |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Blinds control
@@ -31,8 +37,6 @@ Invert the blinds control
 |  | No (false) |
 
 
-
-
 #### Invert percentage value
 
 Invert the blinds percentage value
@@ -44,8 +48,6 @@ Invert the blinds percentage value
 | Data Type        | BOOLEAN || Default Value | false |
 | Options | Yes (true) |
 |  | No (false) |
-
-
 
 
 #### Step duration
@@ -63,10 +65,6 @@ Values from 1 to 127 are defined in seconds, while values from 128 to 254 are de
 |  | Change Instantly (0) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the VMZ Solar Awning Blind.
 Detailed information on each parameter can be found below.
@@ -81,14 +79,12 @@ Detailed information on each parameter can be found below.
 | 6: Level of sensitivity for night | Level of sensitivity for night |
 
 
-
-
 #### 1: mode
 
 operating mode  
 
 
-# Overview #
+##### Overview 
 
 Operating mode. Available values:
 
@@ -108,16 +104,12 @@ Operating mode. Available values:
 |  | auto (2) |
 
 
-
-
-
-
 #### 2: winter mode
 
 Summer/Winter mode  
 
 
-# Overview #
+##### Overview 
 
 Summer / Winter mode
 
@@ -134,10 +126,6 @@ Summer / Winter mode
 |  | Auto (summer / winter mode) (50) |
 
 
-
-
-
-
 #### 3: Measurement frequency
 
 Measurement frequency
@@ -149,10 +137,6 @@ Measurement frequency
 | Data Type        | INTEGER |
 | Range | 1 to 30 |
 | Default Value | 3 |
-
-
-
-
 
 
 #### 4: Level of sensitivity for day
@@ -168,10 +152,6 @@ Level of sensitivity for day
 | Default Value | 60 |
 
 
-
-
-
-
 #### 5: Temperature
 
 Temperature
@@ -183,10 +163,6 @@ Temperature
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 6: Level of sensitivity for night
@@ -202,12 +178,7 @@ Level of sensitivity for night
 | Default Value | 3 |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/670).
-

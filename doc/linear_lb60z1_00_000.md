@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: LB60Z-1 - ZWave
+---
+
+{% include base.html %}
 
 # LB60Z-1 Dimmable LED Light Bulb
 
-This describes the Z-Wave device **LB60Z-1**, manufactured by **Linear Corp** with the thing type UID of ```linear_lb60z1_00_000```. 
+This describes the Z-Wave device *LB60Z-1*, manufactured by *Linear Corp* with the thing type UID of ```linear_lb60z1_00_000```. 
 
 Dimmable LED Light Bulb
+
 
 ## Channels
 The following table summarises the channels available for the LB60Z-1 Dimmable LED Light Bulb.
@@ -12,7 +19,6 @@ The following table summarises the channels available for the LB60Z-1 Dimmable L
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer |
-
 
 
 ### Dimmer
@@ -30,10 +36,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the LB60Z-1 Dimmable LED Light Bulb.
 Detailed information on each parameter can be found below.
@@ -44,14 +46,12 @@ Detailed information on each parameter can be found below.
 | 1: Lifeline |  |
 
 
-
-
 #### 1: Dim Level Memory
 
 Dim Settings  
 
 
-# Overview #
+##### Overview 
 
 By default, the LB60Z-1 bulb will go to full brightness when turned on. To have the bulb turn on to the last dim level setting, set parameter 1 to 1.
 
@@ -64,13 +64,7 @@ By default, the LB60Z-1 bulb will go to full brightness when turned on. To have 
 |  | Enable dim level memory (1) |
 
 
-
-
-
-
 #### 1: Lifeline
-
-
 
 
 | Property         | Value    |
@@ -80,12 +74,7 @@ By default, the LB60Z-1 bulb will go to full brightness when turned on. To have 
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/8).
-

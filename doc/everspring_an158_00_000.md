@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: AN158 - ZWave
+---
+
+{% include base.html %}
 
 # AN158 Switch Meter Plugin
 
-This describes the Z-Wave device **AN158**, manufactured by **Everspring** with the thing type UID of ```everspring_an158_00_000```. 
+This describes the Z-Wave device *AN158*, manufactured by *Everspring* with the thing type UID of ```everspring_an158_00_000```. 
 
 Switch Meter Plugin
+
 
 ## Channels
 The following table summarises the channels available for the AN158 Switch Meter Plugin.
@@ -15,8 +22,6 @@ The following table summarises the channels available for the AN158 Switch Meter
 | Electric meter (watts) | meter_watts | meter_watts | Energy | Number |
 | Reset the meter | meter_reset | meter_reset | Energy | Switch |
 | Alarm | alarm_general | alarm_general | Door | Switch |
-
-
 
 
 ### Device Configuration
@@ -32,8 +37,6 @@ Detailed information on each parameter can be found below.
 | 2: Control |  |
 
 
-
-
 #### 1: True Period
 
 This is the time the switching status needs to remain unchanged after a change to cause the device to send out a status message
@@ -45,10 +48,6 @@ This is the time the switching status needs to remain unchanged after a change t
 | Data Type        | INTEGER |
 | Range | 0 to 254 |
 | Default Value | 10 |
-
-
-
-
 
 
 #### 2: Send Out Basic Command
@@ -64,10 +63,6 @@ Enable or Disable the status message function when the local button press change
 |  | Enabled (1) |
 
 
-
-
-
-
 #### 3: Meter Report Period
 
 The device will report its meter value within the interval set. Set to 0 will disable the autoreporting function.
@@ -81,13 +76,7 @@ The device will report its meter value within the interval set. Set to 0 will di
 | Default Value | 3 |
 
 
-
-
-
-
 #### 1: Reports
-
-
 
 
 | Property         | Value    |
@@ -97,13 +86,7 @@ The device will report its meter value within the interval set. Set to 0 will di
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Control
-
-
 
 
 | Property         | Value    |
@@ -113,12 +96,7 @@ The device will report its meter value within the interval set. Set to 0 will di
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/27).
-

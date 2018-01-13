@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: YKFCON - ZWave
+---
+
+{% include base.html %}
 
 # YKFCON Smart Living Keyfree Smart Lock
 
-This describes the Z-Wave device **YKFCON**, manufactured by **ASSA ABLOY** with the thing type UID of ```yale_ykfcon_00_000```. 
+This describes the Z-Wave device *YKFCON*, manufactured by *ASSA ABLOY* with the thing type UID of ```yale_ykfcon_00_000```. 
 
 Smart Living Keyfree Smart Lock
+
 
 ## Channels
 The following table summarises the channels available for the YKFCON Smart Living Keyfree Smart Lock.
@@ -13,8 +20,6 @@ The following table summarises the channels available for the YKFCON Smart Livin
 | Door Lock | lock_door | lock_door | Door | Switch |
 | Alarm | alarm_general | alarm_general | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -33,14 +38,12 @@ Detailed information on each parameter can be found below.
 | 1: Alarm Reports | Alarm reports are sent out to all devices in the association group |
 
 
-
-
 #### 1: Audio Volume
 
 Sets the volume level of the beeps and voice prompts  
 
 
-# Overview #
+##### Overview 
 
 1 = Silent
 
@@ -58,16 +61,12 @@ Sets the volume level of the beeps and voice prompts
 |  | High (3) |
 
 
-
-
-
-
 #### 2: Auto Re-lock
 
 When enabled, the unit will automatically re-lock  
 
 
-# Overview #
+##### Overview 
 
 0 = Off
 
@@ -80,10 +79,6 @@ When enabled, the unit will automatically re-lock
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Off (0) |
 |  | On (255) |
-
-
-
-
 
 
 #### 3: Re-lock Time
@@ -99,10 +94,6 @@ Time after unlocking that the device will lock
 | Default Value | 30 |
 
 
-
-
-
-
 #### 4: Wrong Code Entry Limit
 
 The number of invalid tries before the lock shutdowns and sends an alarm
@@ -116,16 +107,12 @@ The number of invalid tries before the lock shutdowns and sends an alarm
 | Default Value | 5 |
 
 
-
-
-
-
 #### 5: Language
 
 Language used by the voice prompts  
 
 
-# Overview #
+##### Overview 
 
 1 = English
 
@@ -143,10 +130,6 @@ Language used by the voice prompts
 |  | French (3) |
 
 
-
-
-
-
 #### 7: Shutdown Time
 
 Number of times the device is locked out after the invalid retries are exceeded
@@ -160,16 +143,12 @@ Number of times the device is locked out after the invalid retries are exceeded
 | Default Value | 30 |
 
 
-
-
-
-
 #### 8: Operating Mode
 
 Sets if the unit operates normal, or disables keypad and Z-Wave lock/unlock  
 
 
-# Overview #
+##### Overview 
 
 0 = Normal
 
@@ -187,10 +166,6 @@ Sets if the unit operates normal, or disables keypad and Z-Wave lock/unlock
 |  | Privacy Mode (2) |
 
 
-
-
-
-
 #### 1: Alarm Reports
 
 Alarm reports are sent out to all devices in the association group
@@ -203,12 +178,7 @@ Alarm reports are sent out to all devices in the association group
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/292).
-

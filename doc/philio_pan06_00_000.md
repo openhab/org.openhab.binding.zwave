@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: PAN06 - ZWave
+---
+
+{% include base.html %}
 
 # PAN06 In Wall Dual Relay(1 Way) Switch Module 2x 1.5kW
 
-This describes the Z-Wave device **PAN06**, manufactured by **Philio Technology Corp** with the thing type UID of ```philio_pan06_00_000```. 
+This describes the Z-Wave device *PAN06*, manufactured by *Philio Technology Corp* with the thing type UID of ```philio_pan06_00_000```. 
 
 In Wall Dual Relay(1 Way) Switch Module 2x 1.5kW
+
 
 ## Channels
 The following table summarises the channels available for the PAN06 In Wall Dual Relay(1 Way) Switch Module 2x 1.5kW.
@@ -17,8 +24,6 @@ The following table summarises the channels available for the PAN06 In Wall Dual
 | Switch 3 | switch_binary3 | switch_binary | Switch | Switch |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the PAN06 In Wall Dual Relay(1 Way) Switch Module 2x 1.5kW.
 Detailed information on each parameter can be found below.
@@ -30,8 +35,6 @@ Detailed information on each parameter can be found below.
 | 1: Relay 1 + 2 |  |
 | 2: Relay 1 |  |
 | 3: Relay 2 |  |
-
-
 
 
 #### 1: Selected endpoint
@@ -48,10 +51,6 @@ If Controller not using Multi\_Channel command class to access the endpoint of P
 |  | Relay 2 (3) |
 
 
-
-
-
-
 #### 2: Switch mode
 
 Change the external switch mode
@@ -66,13 +65,7 @@ Change the external switch mode
 |  | Edge-Toggle mode (3) |
 
 
-
-
-
-
 #### 1: Relay 1 + 2
-
-
 
 
 | Property         | Value    |
@@ -82,13 +75,7 @@ Change the external switch mode
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Relay 1
-
-
 
 
 | Property         | Value    |
@@ -98,13 +85,7 @@ Change the external switch mode
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Relay 2
-
-
 
 
 | Property         | Value    |
@@ -114,12 +95,7 @@ Change the external switch mode
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/173).
-

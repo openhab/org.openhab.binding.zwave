@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: CA3500 - ZWave
+---
+
+{% include base.html %}
 
 # CA3500 15 Amp Split-Duplex Receptacle
 
-This describes the Z-Wave device **CA3500**, manufactured by **Intermatic** with the thing type UID of ```intermatic_ca3500_00_000```. 
+This describes the Z-Wave device *CA3500*, manufactured by *Intermatic* with the thing type UID of ```intermatic_ca3500_00_000```. 
 
 15 Amp Split-Duplex Receptacle
+
 
 ## Channels
 The following table summarises the channels available for the CA3500 15 Amp Split-Duplex Receptacle.
@@ -11,8 +18,6 @@ The following table summarises the channels available for the CA3500 15 Amp Spli
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
-
-
 
 
 ### Device Configuration
@@ -23,10 +28,7 @@ Detailed information on each parameter can be found below.
 |-------------|-------------|
 
 
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/417).
-

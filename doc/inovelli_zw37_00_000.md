@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZW37 - ZWave
+---
+
+{% include base.html %}
 
 # ZW37 Show Home, 2 channel smart plug, ZWave Plus
 
-This describes the Z-Wave device **ZW37**, manufactured by **Inovelli** with the thing type UID of ```inovelli_zw37_00_000```. 
+This describes the Z-Wave device *ZW37*, manufactured by *Inovelli* with the thing type UID of ```inovelli_zw37_00_000```. 
 
 Show Home, 2 channel smart plug, ZWave Plus
+
 
 ## Channels
 The following table summarises the channels available for the ZW37 Show Home, 2 channel smart plug, ZWave Plus.
@@ -16,8 +23,6 @@ The following table summarises the channels available for the ZW37 Show Home, 2 
 | Switch 2 | switch_binary2 | switch_binary | Switch | Switch |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the ZW37 Show Home, 2 channel smart plug, ZWave Plus.
 Detailed information on each parameter can be found below.
@@ -26,10 +31,7 @@ Detailed information on each parameter can be found below.
 |-------------|-------------|
 
 
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/745).
-

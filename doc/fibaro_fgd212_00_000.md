@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FGD212 - ZWave
+---
+
+{% include base.html %}
 
 # FGD212 Dimmer 2
 
-This describes the Z-Wave device **FGD212**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgd212_00_000```. 
+This describes the Z-Wave device *FGD212*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgd212_00_000```. 
 
 Dimmer 2
+
 
 ## Channels
 The following table summarises the channels available for the FGD212 Dimmer 2.
@@ -16,6 +23,7 @@ The following table summarises the channels available for the FGD212 Dimmer 2.
 | Electric meter (kWh) | meter_kwh | meter_kwh | Energy | Number |
 | Electric meter (watts) | meter_watts | meter_watts | Energy | Number |
 | Reset the total power consumption | meter_reset | meter_reset | Energy | Switch |
+| Max brightness | config_decimal_param19 | config_decimal |  | Decimal |
 | Alarm | alarm_general | alarm_general | Door | Switch |
 | Dimmer | switch_dimmer1 | switch_dimmer | DimmableLight | Dimmer |
 | Sensor (power) 1 | sensor_power1 | sensor_power | Energy | Number |
@@ -26,7 +34,6 @@ The following table summarises the channels available for the FGD212 Dimmer 2.
 | Dimmer | switch_dimmer2 | switch_dimmer | DimmableLight | Dimmer |
 
 
-
 ### Dimmer
 
 #### Restore Last Value
@@ -40,27 +47,6 @@ Restore Last Dimming level on ON.
 | Data Type        | BOOLEAN || Default Value | true |
 | Options | Restore Last Value (true) |
 |  | Restore Full Brightness (false) |
-
-
-
-
-
-### Dimmer
-
-#### Restore Last Value
-
-Restore Last Dimming level on ON.
-
-
-| Property         | Value    |
-|------------------|----------|
-| Configuration ID | config_restoreLastValue |
-| Data Type        | BOOLEAN || Default Value | true |
-| Options | Restore Last Value (true) |
-|  | Restore Full Brightness (false) |
-
-
-
 
 
 ### Dimmer
@@ -78,8 +64,19 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
+### Dimmer
+
+#### Restore Last Value
+
+Restore Last Dimming level on ON.
 
 
+| Property         | Value    |
+|------------------|----------|
+| Configuration ID | config_restoreLastValue |
+| Data Type        | BOOLEAN || Default Value | true |
+| Options | Restore Last Value (true) |
+|  | Restore Full Brightness (false) |
 
 
 ### Device Configuration
@@ -145,8 +142,6 @@ Detailed information on each parameter can be found below.
 | 5: Sends BASIC SET command class frame according to the state of the devi |  |
 
 
-
-
 #### 1: Minimum brightness level
 
 The parameter is set automatically during the calibration process. The parameter can be changed manually after the calibration.
@@ -158,10 +153,6 @@ The parameter is set automatically during the calibration process. The parameter
 | Data Type        | INTEGER |
 | Range | 1 to 98 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 2: Maximum brightness level
@@ -177,10 +168,6 @@ The parameter is set automatically during the calibration process. The parameter
 | Default Value | 99 |
 
 
-
-
-
-
 #### 3: Incandescence level of dimmable compact fluorescent lamps
 
 Virtual value set as a percentage level between parameters MIN (1%) and MAX. (99%). The Dimmer will set to this value after first switch on. It is required for warming up and switching dimmable compact fluorescent lamps and certain types of light sources.
@@ -192,10 +179,6 @@ Virtual value set as a percentage level between parameters MIN (1%) and MAX. (99
 | Data Type        | INTEGER |
 | Range | 1 to 99 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 4: Incandescence time of dimmable compact fluorescent lamps
@@ -211,10 +194,6 @@ This parameter determines the time required for switching compact fluorescent la
 | Default Value | 0 |
 
 
-
-
-
-
 #### 5: Dimming Step at Automatic Control
 
 The parameter defines the percentage of a dimming step at automatic control. 1-99
@@ -226,10 +205,6 @@ The parameter defines the percentage of a dimming step at automatic control. 1-9
 | Data Type        | INTEGER |
 | Range | 1 to 99 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 6: Dimming Step Timing at Automatic Control
@@ -245,10 +220,6 @@ The parameter defines the time of a dimming step at automatic control. Available
 | Default Value | 1 |
 
 
-
-
-
-
 #### 7: Dimming Step at Manual Control
 
 The parameter defines the percentage of a dimming step at manual control. 1-99
@@ -260,10 +231,6 @@ The parameter defines the percentage of a dimming step at manual control. 1-99
 | Data Type        | INTEGER |
 | Range | 1 to 99 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 8: Dimming Step Timing at Manual Control
@@ -279,10 +246,6 @@ The parameter defines the time of a dimming step at manual control. Available se
 | Default Value | 5 |
 
 
-
-
-
-
 #### 9: Saving state before power failure
 
 Saving state before power failure
@@ -296,10 +259,6 @@ Saving state before power failure
 |  | State saved at power failure, all outputs are set to previous state up (1) |
 
 
-
-
-
-
 #### 10: Timer functionality (auto - off). 0 disables the function
 
 The parameter defines the setting of the timer. Available settings:1-32767 - time to turn off measured in seconds (1s - 9,1h)
@@ -311,10 +270,6 @@ The parameter defines the setting of the timer. Available settings:1-32767 - tim
 | Data Type        | INTEGER |
 | Range | 0 to 32767 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 11: ALL ON/ALL OFF function
@@ -332,10 +287,6 @@ The parameter specifies the available functions.
 |  | ALL ON active, ALL OFF active (255) |
 
 
-
-
-
-
 #### 13: Force auto-calibration
 
 Changing the value of this parameter to 1 will force the calibration process. During the calibration parameter is set to 1 and switched to 0 upon completion.
@@ -348,10 +299,6 @@ Changing the value of this parameter to 1 will force the calibration process. Du
 | Options | readout (0) |
 |  | force auto-calibration of the load without Fibaro Bypass (1) |
 |  | force auto-calibration of the load with Fibaro Bypass (2) |
-
-
-
-
 
 
 #### 14: Auto-calibration status (read-only parameter)
@@ -367,10 +314,6 @@ This parameter determines operating mode of the Dimmer (automatic/manual setting
 |  | Dimmer operates on auto-calibration settings (1) |
 
 
-
-
-
-
 #### 15: Burnt out bulb detection
 
 percentage value of power variation, compared to standard power consumption, measured during the calibration procedure (to be interpreted as load error/burnt out bulb). 1-99, 0 disables the function.
@@ -382,10 +325,6 @@ percentage value of power variation, compared to standard power consumption, mea
 | Data Type        | INTEGER |
 | Range | 0 to 99 |
 | Default Value | 30 |
-
-
-
-
 
 
 #### 16: Time delay of a burnt out bulb (parameter 15) or overload (parameter 39) detection
@@ -401,10 +340,6 @@ Time of delay (in seconds) for power variation detection, interpreted as a LOAD 
 | Default Value | 5 |
 
 
-
-
-
-
 #### 19: Forced switch on brightness level
 
 If the parameter is active, switching on the Dimmer 2 (S1 single click) will always set this brightness level. 0 disables the function.
@@ -416,10 +351,6 @@ If the parameter is active, switching on the Dimmer 2 (S1 single click) will alw
 | Data Type        | INTEGER |
 | Range | 0 to 99 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 20: Inputs Button/Switch configuration
@@ -436,10 +367,6 @@ Binary inputs type configuration
 |  | Roller blind switch (UP / DOWN) (2) |
 
 
-
-
-
-
 #### 21: Value sent to associated devices on single click
 
 The value sent to associated devices on single click.
@@ -451,10 +378,6 @@ The value sent to associated devices on single click.
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | 0xFF value is sent, which will set associated devices to their last sa (0) |
 |  | current Dimmer 2 state is sent, which will synchronize brightness leve (1) |
-
-
-
-
 
 
 #### 22: Change [On-Off] bi-stable keys
@@ -470,10 +393,6 @@ This function allow user to change \[On-Off\] bi-stable keys (parameter no. 14) 
 |  | Device status depends on key status; ON when the key is ON, OFF when t (1) |
 
 
-
-
-
-
 #### 23: Double click option
 
 Double-click set lighting at 100%
@@ -485,10 +404,6 @@ Double-click set lighting at 100%
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | Disable double click (0) |
 |  | Enable double click (1) |
-
-
-
-
 
 
 #### 24: Command frames sent in 2nd and 3rd association groups (S1 associations)
@@ -508,10 +423,6 @@ Parameter determines, which actions will not result in sending frames to associa
 |  | send 0xFF value on double click (16) |
 
 
-
-
-
-
 #### 25: Command frames sent in 4th and 5th association groups (S2associations)
 
 Parameter determines, which actions will not result in sending frames to association groups.
@@ -529,10 +440,6 @@ Parameter determines, which actions will not result in sending frames to associa
 |  | send 0xFF value on double click (16) |
 
 
-
-
-
-
 #### 26: The function of 3-way switch
 
 Key no. 2 controls the Dimmer additionally (in 3-way switch mode). Function disabled for parameter 20 set to 2 (roller blind switch).
@@ -544,10 +451,6 @@ Key no. 2 controls the Dimmer additionally (in 3-way switch mode). Function disa
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | 3-way switch function for S2 disabled (0) |
 |  | 3-way switch function for S2 enabled (1) |
-
-
-
-
 
 
 #### 27: Associations in Z-Wave network security mode
@@ -567,10 +470,6 @@ This parameter defines how commands are sent in specified association groups: as
 |  | all groups (II-V) sent as secure (15) |
 
 
-
-
-
-
 #### 28: Scene activation functionality
 
 SCENE ID depends on the switch type configuration
@@ -584,10 +483,6 @@ SCENE ID depends on the switch type configuration
 |  | Scene functionality activated (1) |
 
 
-
-
-
-
 #### 29: Switch functionality of S1 and S2
 
 Switch S1 and S2 buttons
@@ -599,10 +494,6 @@ Switch S1 and S2 buttons
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | standard mode (0) |
 |  | S1 operates as S2, S2 operates as S1 (1) |
-
-
-
-
 
 
 #### 30: Load control mode
@@ -619,10 +510,6 @@ The parameter defines the used control mode.
 |  | control mode selected automatically (based on auto-calibration) (2) |
 
 
-
-
-
-
 #### 31: Load control mode recognized during auto-calibration
 
 Load control mode recognized during auto-calibration
@@ -634,10 +521,6 @@ Load control mode recognized during auto-calibration
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | leading edge control (0) |
 |  | trailing edge control (1) |
-
-
-
-
 
 
 #### 32: On/Off mode
@@ -654,10 +537,6 @@ This mode is necessary while connecting non-dimmable light sources. Enabling par
 |  | mode selected automatically (2) |
 
 
-
-
-
-
 #### 33: Dimmability of the load (read only)
 
 Dimmability of the load (read only)
@@ -669,10 +548,6 @@ Dimmability of the load (read only)
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Load recognized as dimmable (0) |
 |  | Load recognized as non-dimmable (1) |
-
-
-
-
 
 
 #### 34: Soft-Start functionality
@@ -687,10 +562,6 @@ Time required to warm up the filament of halogen bulb.
 | Options | no soft-start (0) |
 |  | short soft-start (0,1s) (1) |
 |  | long soft-start (0,5s) (2) |
-
-
-
-
 
 
 #### 35: Auto-calibration after power on
@@ -709,13 +580,7 @@ This parameter determines the trigger of auto-calibration procedure, e.g. power 
 |  | Auto-calibration performed after each power on or after each LOAD ERRO (4) |
 
 
-
-
-
-
 #### 37: Behaviour of the Dimmer after overload or surge
-
-
 
 
 | Property         | Value    |
@@ -724,10 +589,6 @@ This parameter determines the trigger of auto-calibration procedure, e.g. power 
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | device permanently disabled until re-enabling by comand or push-button (0) |
 |  | three attempts to turn on the load (1) |
-
-
-
-
 
 
 #### 39: Power limit - OVERLOAD
@@ -741,10 +602,6 @@ Reaching the defined value will result in turning off the load. Parameter 39 is 
 | Data Type        | INTEGER |
 | Range | 0 to 250 |
 | Default Value | 250 |
-
-
-
-
 
 
 #### 40: General Purpose Alarm
@@ -762,10 +619,6 @@ The parameter specifies the response to an alarm.
 |  | Load blinking (3) |
 
 
-
-
-
-
 #### 41: Water Flooding Alarm
 
 The parameter specifies the response to an alarm.
@@ -779,10 +632,6 @@ The parameter specifies the response to an alarm.
 |  | Turn on the load (1) |
 |  | Turn off the load (2) |
 |  | Load blinking (3) |
-
-
-
-
 
 
 #### 42: Smoke, CO or CO2 Alarm
@@ -800,10 +649,6 @@ The parameter specifies the response to an alarm.
 |  | Load blinking (3) |
 
 
-
-
-
-
 #### 43: Temperature Alarm
 
 The parameter specifies the response to an alarm.
@@ -819,10 +664,6 @@ The parameter specifies the response to an alarm.
 |  | Load blinking (3) |
 
 
-
-
-
-
 #### 44: Time of alarm state
 
 Alarm state may be cancelled earlier, as a result of pushing the wall-switch keys or sending the Z-Wave command frame. Available settings: 1-32767 (1s - 32767s).
@@ -834,10 +675,6 @@ Alarm state may be cancelled earlier, as a result of pushing the wall-switch key
 | Data Type        | INTEGER |
 | Range | 1 to 32767 |
 | Default Value | 600 |
-
-
-
-
 
 
 #### 45: OVERLOAD alarm report
@@ -853,10 +690,6 @@ Alarm state may be cancelled earlier, as a result of pushing the wall-switch key
 |  | Send an alarm frame (1) |
 
 
-
-
-
-
 #### 46: LOAD ERROR alarm report
 
 (no load, load failure, burnt out bulb)
@@ -868,10 +701,6 @@ Alarm state may be cancelled earlier, as a result of pushing the wall-switch key
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | No reaction (0) |
 |  | Send an alarm frame (1) |
-
-
-
-
 
 
 #### 47: OVERCURRENT alarm report
@@ -887,10 +716,6 @@ Alarm state may be cancelled earlier, as a result of pushing the wall-switch key
 |  | Send an alarm frame (1) |
 
 
-
-
-
-
 #### 48: SURGE alarm report
 
 (Dimmer output overvoltage)
@@ -904,13 +729,7 @@ Alarm state may be cancelled earlier, as a result of pushing the wall-switch key
 |  | Send an alarm frame (1) |
 
 
-
-
-
-
 #### 49: OVERHEAT (critical temperature) and VOLTAGE DROP (low voltage) alarm report
-
-
 
 
 | Property         | Value    |
@@ -919,10 +738,6 @@ Alarm state may be cancelled earlier, as a result of pushing the wall-switch key
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | No reaction (0) |
 |  | Send an alarm frame (1) |
-
-
-
-
 
 
 #### 50: Active power reports
@@ -938,10 +753,6 @@ The parameter defines the power level change that will result in a new power rep
 | Default Value | 10 |
 
 
-
-
-
-
 #### 52: Periodic active power and energy reports
 
 Parameter 52 defines a time period between consecutive reports. Timer is reset and counted from zero after each report (1 sec - 32767 sec). 0 disables the function.
@@ -953,10 +764,6 @@ Parameter 52 defines a time period between consecutive reports. Timer is reset a
 | Data Type        | INTEGER |
 | Range | 0 to 32767 |
 | Default Value | 3600 |
-
-
-
-
 
 
 #### 53: Energy reports
@@ -972,10 +779,6 @@ Energy level change which will result in sending a new energy report. Available 
 | Default Value | 10 |
 
 
-
-
-
-
 #### 54: Self-measurement
 
 The Dimmer may include active power and energy used by itself in reports sent to the main controller.
@@ -987,10 +790,6 @@ The Dimmer may include active power and energy used by itself in reports sent to
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Self-measurement inactive (0) |
 |  | Self-measurement active (1) |
-
-
-
-
 
 
 #### 58: Method of calculating the active power
@@ -1007,10 +806,6 @@ This parameter defines how to calculate active power. It is useful in a case of 
 |  | approximation based on the control angle (2) |
 
 
-
-
-
-
 #### 59: Approximated power at the maximum brightness level
 
 This parameter determines the approximate value of the power that will be reported by the device at its maximum brightness level. Available settings: 0-500 (0-500W). Note: Parameter 59 works only when parameter 58 has a value other than 0.
@@ -1024,13 +819,7 @@ This parameter determines the approximate value of the power that will be report
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Lifeline - Controller Updates
-
-
 
 
 | Property         | Value    |
@@ -1040,13 +829,7 @@ This parameter determines the approximate value of the power that will be report
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Sends BASIC SET command class frame according to the state of the devi
-
-
 
 
 | Property         | Value    |
@@ -1056,13 +839,7 @@ This parameter determines the approximate value of the power that will be report
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Sends BASIC SET command class frame according to the state of the devi
-
-
 
 
 | Property         | Value    |
@@ -1072,13 +849,7 @@ This parameter determines the approximate value of the power that will be report
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Sends BASIC SET command class frame according to the state of the devi
-
-
 
 
 | Property         | Value    |
@@ -1088,13 +859,7 @@ This parameter determines the approximate value of the power that will be report
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Sends BASIC SET command class frame according to the state of the devi
-
-
 
 
 | Property         | Value    |
@@ -1104,12 +869,7 @@ This parameter determines the approximate value of the power that will be report
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/133).
-

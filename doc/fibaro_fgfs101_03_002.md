@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FGFS101 - ZWave
+---
+
+{% include base.html %}
 
 # FGFS101 Flood Sensor
 
-This describes the Z-Wave device **FGFS101**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgfs101_03_002```. 
+This describes the Z-Wave device *FGFS101*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgfs101_03_002```. 
 
 Flood Sensor
+
 
 ## Channels
 The following table summarises the channels available for the FGFS101 Flood Sensor.
@@ -16,7 +23,6 @@ The following table summarises the channels available for the FGFS101 Flood Sens
 | Alarm (flood) | alarm_flood | alarm_flood | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
 | Alarm (general) | alarm_general | alarm_general | Door | Switch |
-
 
 
 ### Sensor (temperature)
@@ -32,10 +38,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -67,14 +69,12 @@ Detailed information on each parameter can be found below.
 | 4: Tamper Alarm | Assigned to the TMP button and tilt sensor – devices in this group will receive a notifica... |
 
 
-
-
 #### 1: Alarm cancellation delay
 
 Time in seconds that the flood state is retained after flooding event  
 
 
-# Overview #
+##### Overview 
 
 Determines time period (in seconds) by which a Flood Sensor will retain the flood state after the flooding itself has ceased. The sensor will keep on reporting flooding to the main controller. This parameter setting does not affect acoustic and visual ala
 
@@ -87,16 +87,12 @@ Determines time period (in seconds) by which a Flood Sensor will retain the floo
 | Default Value | 0 |
 
 
-
-
-
-
 #### 2: Select alarm type (visual/acoustic)
 
 This parameter allows for deactivation visual and acoustic alarm.  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows for deactivation visual and acoustic alarm.
 
@@ -123,16 +119,12 @@ Parameter allows for increasing a battery life. Setting changes will not affect 
 |  | Acoustic and visual alarms active (3) |
 
 
-
-
-
-
 #### 7: Requested dimming level to 2nd assoc. group
 
 “On” level to be sent to devices from 2nd association group on flood event  
 
 
-# Overview #
+##### Overview 
 
 Requested dimming level / roller blind opening level when sending turn on / open command to 2nd association group devices.
 
@@ -151,16 +143,12 @@ Determines the requested “on” level to be sent to devices from 2nd associati
 | Default Value | 255 |
 
 
-
-
-
-
 #### 9: Device off and alarm cancellations
 
 Enable/disable device off/alarm cancellation updates to 2nd/3rd assoc groups  
 
 
-# Overview #
+##### Overview 
 
 Deactivate turning off devices in 2nd association group & alarm cancellation in 3rd group
 
@@ -181,16 +169,12 @@ Available settings:
 |  | Alarm (flooding) cancellation active (1) |
 
 
-
-
-
-
 #### 10: Temperature measurement interval
 
 Seconds between consecutive measurements of battery level/temperature  
 
 
-# Overview #
+##### Overview 
 
 Time interval (in seconds) between consecutive measurements of battery level and temperature (done by built-in temperature sensor). If the temperature differs from previously reported by a value determined in parameter 12, it will be reported to the Z-Wave controller. In battery mode more significant battery level changes will be reported. Short time intervals mean more frequent communication, which results in shortened battery life. After consecutive FAILED and SUCCESSFUL communication attempts, the Sensor will go to standby mode.
 
@@ -203,16 +187,12 @@ Time interval (in seconds) between consecutive measurements of battery level and
 | Default Value | 300 |
 
 
-
-
-
-
 #### 12: Temperature measurement hysteresis
 
 Minimum change in temperature value for report to be sent to controller  
 
 
-# Overview #
+##### Overview 
 
 Determines a minimum temperature change value (insensitivity level), resulting in a temperature report being sent to the main controller, according to the Parameter 10 settings.
 
@@ -229,16 +209,12 @@ Parameter size: **2 \[bytes\]**
 | Default Value | 50 |
 
 
-
-
-
-
 #### 50: Low temperature alarm threshold
 
 Temperature value below which visual indicator blinks  
 
 
-# Overview #
+##### Overview 
 
 The parameter stores a temperature value, below which visual indicator blinks with a colour determined by a parameter 61 settings. By default the visual indicator blinks blue.
 
@@ -257,16 +233,12 @@ The main controller does not interpret negative numbers as decimals. That’s wh
 | Default Value | 1500 |
 
 
-
-
-
-
 #### 51: High temperature alarm threshold
 
 Temperature value above which visual indicator blinks  
 
 
-# Overview #
+##### Overview 
 
 Available settings: **-10 000 to +10 000** (each 0.01°C)  
 Default setting: **3 500** (35°C)  
@@ -285,16 +257,12 @@ The main controller does not interpret negative numbers as decimals. That’s wh
 | Default Value | 3500 |
 
 
-
-
-
-
 #### 61: Low temperature alarm indicator colour
 
 Parameter stores RGB colour value.  
 
 
-# Overview #
+##### Overview 
 
 A main controller interprets colours as a sum of it component colours value. Each colours value is a number from 0 to 255.
 
@@ -311,16 +279,12 @@ Indicated colour = 65536 \* RED value + 256 \* GREEN value + BLUE value
 | Default Value | 255 |
 
 
-
-
-
-
 #### 62: High temperature alarm indicator colour
 
 Parameter stores RGB colour value.  
 
 
-# Overview #
+##### Overview 
 
 Parameter stores RGB colour value.
 
@@ -342,16 +306,12 @@ Indicated colour = 65536 \* RED value + 256 \* GREEN value + BLUE value
 | Default Value | 16711680 |
 
 
-
-
-
-
 #### 63: Visual temperature indicator
 
 Enable or disable visual temperature indicator via device's LED  
 
 
-# Overview #
+##### Overview 
 
 Parameter determines visual indicator’s operation. Setting to 0 turns the temperature LED indication off, saving battery life.
 
@@ -372,16 +332,12 @@ Parameter size: **1 \[byte\]**
 |  | Visual indicator indicates the temperature continuously (2) |
 
 
-
-
-
-
 #### 73: Temperature measurement compensation
 
 Offset to current temperature to account temperature difference  
 
 
-# Overview #
+##### Overview 
 
 Available settings: **-10 000 to +10 000**  
 Default setting: **0** (0.00°C)  
@@ -398,16 +354,12 @@ Parameter stores a temperature value to be added to or deducted from the current
 | Default Value | 0 |
 
 
-
-
-
-
 #### 74: Alarm frame for movement/tamper
 
 Movement/tamper alarm sent to 1st & 4th assoc. group  
 
 
-# Overview #
+##### Overview 
 
 Available settings:
 
@@ -431,16 +383,12 @@ The device is able to report tamper alarms resulting from sensor’s tilt/moveme
 |  | Button and movement tampers alarm active (3) |
 
 
-
-
-
-
 #### 75: Alarms signalization duration
 
 Turn off alarm after given timeout  
 
 
-# Overview #
+##### Overview 
 
 The device is capable of automatically turning off alarm signalization after a certain amount of time. Long lasting alarm may reduce battery life, when constantly signalized.
 
@@ -465,16 +413,12 @@ The parameter is ignored when Parameter 2 is set to 0.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 76: Alarm signalization reactivation period
 
 Time period after which an alarm will be turned back on  
 
 
-# Overview #
+##### Overview 
 
 Parameter determines a time period after which an alarm will be turned back on (in case it was turned off by parameter 75 setting). It will also resend commands to 2nd and 3rd association groups as if the alarm was detected again.
 
@@ -495,16 +439,12 @@ In case a time period set in parameter 76 is shorter than the one specified in p
 | Default Value | 0 |
 
 
-
-
-
-
 #### 77: Flood sensor functionality turned off
 
 Allows the internal flood sensor to be turned off.  
 
 
-# Overview #
+##### Overview 
 
 Allows to turn off the internal flood sensor. Tamper and built in temperature sensor will remain active.
 
@@ -523,16 +463,12 @@ Parameter size: **1 \[byte\]**
 |  | Built-in flood sensor TURNED OFF (1) |
 
 
-
-
-
-
 #### 78: Associations in Z-Wave network security mode
 
 Defines whether commands are sent as secure or non-secure  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. It does not apply to 1st “Lifeline “group.
 
@@ -555,10 +491,6 @@ Parameter size: **1 \[byte\]**
 |  | 4th group &quot;Tamper” sent as secure (3) |
 
 
-
-
-
-
 #### 1: Lifeline
 
 Reports the device status and allows for assigning single device only (main controller by default)
@@ -569,10 +501,6 @@ Reports the device status and allows for assigning single device only (main cont
 | Configuration ID | group_1 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 2: Flood Control
@@ -587,10 +515,6 @@ Devices in this group will be switched on or off when flood status changes (done
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Flood Alarm
 
 Assigned to the device status – devices in this group will receive notification about flood detection or cancellation. Useful for devices that can trigger alarms.
@@ -601,10 +525,6 @@ Assigned to the device status – devices in this group will receive notificatio
 | Configuration ID | group_3 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 4: Tamper Alarm
@@ -619,12 +539,7 @@ Assigned to the TMP button and tilt sensor – devices in this group will receiv
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/392).
-

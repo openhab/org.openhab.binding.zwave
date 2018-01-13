@@ -1,19 +1,25 @@
+---
+layout: documentation
+title: ZMNHBD - ZWave
+---
+
+{% include base.html %}
 
 # ZMNHBD Flush 2 relays
 
-This describes the Z-Wave device **ZMNHBD**, manufactured by **Goap** with the thing type UID of ```qubino_zmnhbd_00_000```. 
+This describes the Z-Wave device *ZMNHBD*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhbd_00_000```. 
 
 Flush 2 relays  
 
 
-# Overview #
+## Overview 
 
 This Z-Wave module is used for switching on or off two electrical devices (e.g. lights or fans,..). The module can be controlled either through Z-Wave network or through the wallswitches. The module is designed to be mounted inside a "flush mountingbox", hidden behind a traditional wall switch. Module measures power consumption of two electrical devices and supports connection of digital temperature sensor. It is designed to act as repeater in order to improve range and stability of Z-wave network.
 
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 **Module Inclusion (Adding to Z-Wave network)**
 
@@ -30,7 +36,7 @@ This Z-Wave module is used for switching on or off two electrical devices (e.g. 
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 **Module Exclusion/Reset (Removing from Z-Wavenetwork)**
 
@@ -43,6 +49,7 @@ This Z-Wave module is used for switching on or off two electrical devices (e.g. 
 By this function all parameters of the module are set to default values and own ID is deleted.
 
 If push button I1 is pressed three times within 3s (or service button S is pressed more than 2 and less than 6 seconds) module is excluded, but configuration parameters are not set to default values.
+
 
 ## Channels
 The following table summarises the channels available for the ZMNHBD Flush 2 relays.
@@ -61,7 +68,6 @@ The following table summarises the channels available for the ZMNHBD Flush 2 rel
 | Electric meter (kWh) 2 | meter_kwh2 | meter_kwh | Energy | Number |
 
 
-
 ### Sensor (temperature)
 
 #### Scale
@@ -75,10 +81,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -114,8 +116,6 @@ Detailed information on each parameter can be found below.
 | 8: Multilevel sensor |  |
 
 
-
-
 #### 1: Input 1 switch type
 
 Input 1 switch type
@@ -127,10 +127,6 @@ Input 1 switch type
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | mono-stable switch type (push button) (0) |
 |  | bi-stable switch type (1) |
-
-
-
-
 
 
 #### 2: Input 2 switch type
@@ -146,16 +142,12 @@ Input 2 switch type
 |  | bi-stable switch type (1) |
 
 
-
-
-
-
 #### 10: Functions ALL ON/ALL OFF
 
 Activate / deactivate functions ALL ON/ALL OFF  
 
 
-# Overview #
+##### Overview 
 
 Flush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.
 
@@ -170,16 +162,12 @@ Flush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by t
 |  | ALL ON active, ALL OFF active (255) |
 
 
-
-
-
-
 #### 11: Automatic turning off output Q1 after set time
 
 When relay Q1 is ON it goes automatically OFF after defined time  
 
 
-# Overview #
+##### Overview 
 
 Timer is reset to zero each time the module receive ON command regardless from where it comes  (push button, associated module, controller,..).
 
@@ -195,16 +183,12 @@ Timer is reset to zero each time the module receive ON command regardless from w
 | Default Value | 0 |
 
 
-
-
-
-
 #### 12: Automatic turning on output Q1 after set time
 
 When relay Q1 is OFF it goes automatically ON after defined time  
 
 
-# Overview #
+##### Overview 
 
 Timer is reset to zero each time the module receive OFF command regardless from where it comes (push button, associated module, controller,..).
 
@@ -220,16 +204,12 @@ Timer is reset to zero each time the module receive OFF command regardless from 
 | Default Value | 0 |
 
 
-
-
-
-
 #### 13: Automatic turning off relay Q2 after set time
 
 When relay Q2 is ON it goes automatically OFF after defined time  
 
 
-# Overview #
+##### Overview 
 
 Timer is reset to zero each time the module receive ON command regardless from where it comes (push button, associated module, controller,..).
 
@@ -245,16 +225,12 @@ Timer is reset to zero each time the module receive ON command regardless from w
 | Default Value | 0 |
 
 
-
-
-
-
 #### 14: Automatic turning on output Q2 after set time
 
 When relay Q2 is OFF it goes automatically ON after defined time  
 
 
-# Overview #
+##### Overview 
 
 Timer is reset to zero each time the module receive OFF command regardless from where it comes (push button, associated module, controller,..).
 
@@ -270,16 +246,12 @@ Timer is reset to zero each time the module receive OFF command regardless from 
 | Default Value | 0 |
 
 
-
-
-
-
 #### 15: Automatic turning off / on seconds or milliseconds selection
 
 Automatic turning off / on seconds or milliseconds selection  
 
 
-# Overview #
+##### Overview 
 
 Available configuration parameters:
 
@@ -297,10 +269,6 @@ Available configuration parameters:
 | Default Value | 0 |
 
 
-
-
-
-
 #### 30: Saving the state after a power failure
 
 Saving the state of the relays Q1 and Q2 after a power failure
@@ -314,16 +282,12 @@ Saving the state of the relays Q1 and Q2 after a power failure
 |  | Does not save the state after a power failure (1) |
 
 
-
-
-
-
 #### 40: Power reporting in Watts for Q1
 
 Power reporting in Watts on power change for Q1  
 
 
-# Overview #
+##### Overview 
 
 Set value means percentage, set value from 0 –100 = 0% -100%.
 
@@ -343,16 +307,12 @@ Available configuration parameters:
 | Default Value | 10 |
 
 
-
-
-
-
 #### 41: Power reporting in Watts for Q2
 
 Power reporting in Watts on power change for Q2  
 
 
-# Overview #
+##### Overview 
 
 Set value means percentage, set value from 0 –100 = 0% -100%. Available configuration parameters:
 
@@ -370,16 +330,12 @@ Set value means percentage, set value from 0 –100 = 0% -100%. Available config
 | Default Value | 10 |
 
 
-
-
-
-
 #### 42: Power reporting time interval for Q1
 
 Power reporting in Watts by time interval for Q1  
 
 
-# Overview #
+##### Overview 
 
 Set value means time interval (0 – 32535) in seconds, when power report is send. Available configuration parameters:
 
@@ -396,16 +352,12 @@ Set value means time interval (0 – 32535) in seconds, when power report is sen
 | Default Value | 300 |
 
 
-
-
-
-
 #### 43: Power reporting time interval for Q2
 
 Power reporting in Watts by time interval for Q2  
 
 
-# Overview #
+##### Overview 
 
 Set value means time interval (0 –32535) in seconds, when power report is send. Available configuration parameters:
 
@@ -422,13 +374,7 @@ Set value means time interval (0 –32535) in seconds, when power report is send
 | Default Value | 300 |
 
 
-
-
-
-
 #### 63: Output Q1 Switch selection
-
-
 
 
 | Property         | Value    |
@@ -439,13 +385,7 @@ Set value means time interval (0 –32535) in seconds, when power report is send
 |  | When system is turned off the output is 230V or 24V (NO) (1) |
 
 
-
-
-
-
 #### 64: Output Q2 Switch selection
-
-
 
 
 | Property         | Value    |
@@ -456,16 +396,12 @@ Set value means time interval (0 –32535) in seconds, when power report is send
 |  | When system is turned off the output is 230V or 24V (NO) (1) |
 
 
-
-
-
-
 #### 110: Temperature sensor offset
 
 Temperature sensor offset settings  
 
 
-# Overview #
+##### Overview 
 
 Set value is added or subtracted to actual measured value by sensor. Available configuration parameters:
 
@@ -483,16 +419,12 @@ Set value is added or subtracted to actual measured value by sensor. Available c
 | Default Value | 32536 |
 
 
-
-
-
-
 #### 120: Digital temperature sensor reporting
 
 Digital temperature sensor reporting  
 
 
-# Overview #
+##### Overview 
 
 If digital temperature sensor is connected, module reports measured temperature on temperature change defined by this parameter. Available configuration parameters:
 
@@ -509,13 +441,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Default Value | 5 |
 
 
-
-
-
-
 #### 1: Default Reporting Group
-
-
 
 
 | Property         | Value    |
@@ -525,13 +451,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Q1 basic on/off
-
-
 
 
 | Property         | Value    |
@@ -541,13 +461,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Q1 switch binary
-
-
 
 
 | Property         | Value    |
@@ -557,13 +471,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Q1 power meter
-
-
 
 
 | Property         | Value    |
@@ -573,13 +481,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Q2 basic on/off
-
-
 
 
 | Property         | Value    |
@@ -589,13 +491,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Range |  to  |
 
 
-
-
-
-
 #### 6: Q2 switch binary
-
-
 
 
 | Property         | Value    |
@@ -605,13 +501,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Range |  to  |
 
 
-
-
-
-
 #### 7: Q2 power meter
-
-
 
 
 | Property         | Value    |
@@ -621,13 +511,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Range |  to  |
 
 
-
-
-
-
 #### 8: Multilevel sensor
-
-
 
 
 | Property         | Value    |
@@ -637,12 +521,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/215).
-

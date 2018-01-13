@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: BTZW125 - ZWave
+---
+
+{% include base.html %}
 
 # BTZW125 Danalock v2 circle
 
-This describes the Z-Wave device **BTZW125**, manufactured by **Poly-control** with the thing type UID of ```polycontrol_btzu125_00_000```. 
+This describes the Z-Wave device *BTZW125*, manufactured by *Poly-control* with the thing type UID of ```polycontrol_btzu125_00_000```. 
 
 Danalock v2 circle
+
 
 ## Channels
 The following table summarises the channels available for the BTZW125 Danalock v2 circle.
@@ -12,8 +19,6 @@ The following table summarises the channels available for the BTZW125 Danalock v
 |---------|------------|------------------|----------|-----------|
 | Door Lock | lock_door | lock_door | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -37,14 +42,12 @@ Detailed information on each parameter can be found below.
 | 1: LifeLine | Z-Wave Plus Lifeline |
 
 
-
-
 #### 1: Direction
 
 Direction  
 
 
-# Overview #
+##### Overview 
 
 0 -> The motor goes clockwise when latched
 
@@ -59,16 +62,12 @@ Direction
 |  | The motor goes counterclockwise when latched (1) |
 
 
-
-
-
-
 #### 2: Speed (Torque)
 
 Speed (Torque)  
 
 
-# Overview #
+##### Overview 
 
 1 -> Slowest
 
@@ -92,16 +91,12 @@ Speed (Torque)
 |  | Fastest (5) |
 
 
-
-
-
-
 #### 3: Mode
 
 Mode  
 
 
-# Overview #
+##### Overview 
 
 0 -> Stepper motor mode wave drive(power saving)
 
@@ -119,16 +114,12 @@ Mode
 |  | Relay mode (2) |
 
 
-
-
-
-
 #### 4: Turn degrees
 
 Turn degrees  
 
 
-# Overview #
+##### Overview 
 
 (Default) Factor 10 turn degrees ( 1 = 10 degrees, 9 = 90 degrees etc.)
 
@@ -141,16 +132,12 @@ Turn degrees
 | Default Value | 1 |
 
 
-
-
-
-
 #### 5: Auto Latch time
 
 Auto Latch time  
 
 
-# Overview #
+##### Overview 
 
 How many seconds from the lock has been unlatched to it automatically should close again. If 0 then it is disabled.
 
@@ -163,16 +150,12 @@ How many seconds from the lock has been unlatched to it automatically should clo
 | Default Value | 0 |
 
 
-
-
-
-
 #### 6: Sound
 
 Sound  
 
 
-# Overview #
+##### Overview 
 
 Enable the beep sound from latch or unlatch operations
 
@@ -185,16 +168,12 @@ Enable the beep sound from latch or unlatch operations
 |  | Enable Sound (1) |
 
 
-
-
-
-
 #### 7: Battery Type
 
 Battery Type  
 
 
-# Overview #
+##### Overview 
 
 2 -> Mains power, changing from and to mains power requires the Danalock to be excluded and included.
 
@@ -212,16 +191,12 @@ Battery Type
 |  | Mains power (2) |
 
 
-
-
-
-
 #### 8: Battery alarm
 
 Battery alarm value  
 
 
-# Overview #
+##### Overview 
 
 When the battery level is under this value, the device will notify user with a beep sound after latch or unlatch
 
@@ -234,16 +209,12 @@ When the battery level is under this value, the device will notify user with a b
 | Default Value | 0 |
 
 
-
-
-
-
 #### 9: TurnAndGo
 
 TurnAndGo  
 
 
-# Overview #
+##### Overview 
 
 using a optional rotation sensor. Latch&Go on will turn automatically when manual turn is detected.
 
@@ -256,16 +227,12 @@ using a optional rotation sensor. Latch&Go on will turn automatically when manua
 |  | On (1) |
 
 
-
-
-
-
 #### 10: BrakeAndGoBack
 
 Turn 75 degrees back after x seconds  
 
 
-# Overview #
+##### Overview 
 
 0 -> (Default) Disabled
 
@@ -294,16 +261,12 @@ Turn 75 degrees back after x seconds
 |  | Brake for 15 seconds (15) |
 
 
-
-
-
-
 #### 11: Async
 
 Used if the lock is using an optional rotation sensor  
 
 
-# Overview #
+##### Overview 
 
 0 -> (Default) Async off
 
@@ -318,16 +281,12 @@ Used if the lock is using an optional rotation sensor
 |  | Async on (1) |
 
 
-
-
-
-
 #### 12: ReportType
 
 Door lock operation report type  
 
 
-# Overview #
+##### Overview 
 
 Door lock operation report type
 
@@ -347,10 +306,6 @@ Door lock operation report type
 |  | No reporting (2) |
 
 
-
-
-
-
 #### 1: LifeLine
 
 Z-Wave Plus Lifeline
@@ -363,12 +318,7 @@ Z-Wave Plus Lifeline
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/407).
-

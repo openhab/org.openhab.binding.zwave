@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: SES FS-ZW - ZWave
+---
+
+{% include base.html %}
 
 # SES FS-ZW Plug Actuator
 
-This describes the Z-Wave device **SES FS-ZW**, manufactured by **Diehl AKO** with the thing type UID of ```diehl_sesfszw_00_000```. 
+This describes the Z-Wave device *SES FS-ZW*, manufactured by *Diehl AKO* with the thing type UID of ```diehl_sesfszw_00_000```. 
 
 Plug Actuator  
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 The inclusion process is controlled by the central unit – refer to the documentation for the central unit.
 
@@ -23,7 +29,7 @@ During the next 5 seconds, the wireless connection is established and the inclus
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 The exclusion process is controlled by the central unit – refer to the documentation for the central unit.
 
@@ -37,6 +43,7 @@ The Status LED lights up white.
 
 The exclusion process for disconnecting the plug actuator from the central unit runs for the next 5 seconds. The Status LED flashes white 3x once the exclusion process has been successfully completed.
 
+
 ## Channels
 The following table summarises the channels available for the SES FS-ZW Plug Actuator.
 
@@ -48,8 +55,6 @@ The following table summarises the channels available for the SES FS-ZW Plug Act
 | Alarm (system) | alarm_system | alarm_system |  | Switch |
 | Alarm (heat) | alarm_heat | alarm_heat |  | Switch |
 | Alarm (power) | alarm_power | alarm_power | Door | Switch |
-
-
 
 
 ### Device Configuration
@@ -72,8 +77,6 @@ Detailed information on each parameter can be found below.
 | 1: reportd |  |
 
 
-
-
 #### 1: Default switch state
 
 Behaviour after mains failure
@@ -86,10 +89,6 @@ Behaviour after mains failure
 | Options | Plug actuator OFF (0) |
 |  | Plug actuator ON (1) |
 |  | Last status is restored (2) |
-
-
-
-
 
 
 #### 2: Energy minimum report time
@@ -105,10 +104,6 @@ Minimum time between two (non-requested) energy values
 | Default Value | 10 |
 
 
-
-
-
-
 #### 3: Energy maximum report time
 
 Maximum time between two energy values, independently of changes in the value
@@ -120,10 +115,6 @@ Maximum time between two energy values, independently of changes in the value
 | Data Type        | INTEGER |
 | Range | 0 to 32767 |
 | Default Value | 120 |
-
-
-
-
 
 
 #### 4: Power minimum report time
@@ -139,10 +130,6 @@ Minimum time between two (non-requested) power values
 | Default Value | 10 |
 
 
-
-
-
-
 #### 5: Power maximum report time
 
 Maximum time between two power values, independently of changes in the value
@@ -156,16 +143,12 @@ Maximum time between two power values, independently of changes in the value
 | Default Value | 120 |
 
 
-
-
-
-
 #### 6: Energy delta value
 
 Minimum change required for a new energy value to be transmitted.  
 
 
-# Overview #
+##### Overview 
 
 The transmission must take place in the time window between parameter 2 and 3.
 
@@ -178,16 +161,12 @@ The transmission must take place in the time window between parameter 2 and 3.
 | Default Value | 10 |
 
 
-
-
-
-
 #### 7: Power delta value
 
 Minimum change required for a new power value to be transmitted.  
 
 
-# Overview #
+##### Overview 
 
 The transmission must take place in the time window between parameter 4 and 5
 
@@ -200,16 +179,12 @@ The transmission must take place in the time window between parameter 4 and 5
 | Default Value | 150 |
 
 
-
-
-
-
 #### 8: Safety shutdown configuration
 
 Behaviour in the event of a safety shutdown  
 
 
-# Overview #
+##### Overview 
 
 The plug actuator remains OFF after 3x safety shutdowns.
 
@@ -220,10 +195,6 @@ The plug actuator remains OFF after 3x safety shutdowns.
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Plug actuator remains OFF (0) |
 |  | Automatic restart (1) |
-
-
-
-
 
 
 #### 10: Night mode
@@ -237,10 +208,6 @@ Set Night mode of the Status LED
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Night mode OFF (0) |
 |  | Night mode ON (1) |
-
-
-
-
 
 
 #### 11: Info LED colour
@@ -258,16 +225,12 @@ Set color of the Info LED
 |  | Info LED red (3) |
 
 
-
-
-
-
 #### 9: Reset of overcurrent shutdown
 
 Activation despite 3x safety shutdown  
 
 
-# Overview #
+##### Overview 
 
  Activation despite 3x safety shutdown (parameter 8 = 1)
 
@@ -282,13 +245,7 @@ Activation despite 3x safety shutdown
 |  | Reset (1) |
 
 
-
-
-
-
 #### 1: reportd
-
-
 
 
 | Property         | Value    |
@@ -298,12 +255,7 @@ Activation despite 3x safety shutdown
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/671).
-

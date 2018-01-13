@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: DMS01 - ZWave
+---
+
+{% include base.html %}
 
 # DMS01 Dome Wireless Siren
 
-This describes the Z-Wave device **DMS01**, manufactured by **Elexa Consumer Products Inc.** with the thing type UID of ```elexa_dms01_00_000```. 
+This describes the Z-Wave device *DMS01*, manufactured by *Elexa Consumer Products Inc.* with the thing type UID of ```elexa_dms01_00_000```. 
 
 Dome Wireless Siren
+
 
 ## Channels
 The following table summarises the channels available for the DMS01 Dome Wireless Siren.
@@ -13,8 +20,6 @@ The following table summarises the channels available for the DMS01 Dome Wireles
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Alarm | alarm_general | alarm_general | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -32,11 +37,7 @@ Detailed information on each parameter can be found below.
 | 7: Toggle secondary chime | Toggles between primary and secondary chime for binary switch |
 
 
-
-
 #### 1: Primary Notification Volume Level
-
-
 
 
 | Property         | Value    |
@@ -48,13 +49,7 @@ Detailed information on each parameter can be found below.
 |  | High Volume (3) |
 
 
-
-
-
-
 #### 2: Primary Notification Length
-
-
 
 
 | Property         | Value    |
@@ -67,13 +62,7 @@ Detailed information on each parameter can be found below.
 |  | Plays Until Battery Is Depleted (255) |
 
 
-
-
-
-
 #### 3: Secondary Notification Length
-
-
 
 
 | Property         | Value    |
@@ -86,13 +75,7 @@ Detailed information on each parameter can be found below.
 |  | Chime Will Not Play (255) |
 
 
-
-
-
-
 #### 4: Secondary Notification Volume Level
-
-
 
 
 | Property         | Value    |
@@ -104,16 +87,12 @@ Detailed information on each parameter can be found below.
 |  | High Volume (3) |
 
 
-
-
-
-
 #### 5: Primary Notification Sound
 
   
 
 
-# Overview #
+##### Overview 
 
 The siren offers ten different sounds to use as the Siren (primary) notification. This parameter sets the Siren (primary) notification sound.
 
@@ -134,13 +113,7 @@ The siren offers ten different sounds to use as the Siren (primary) notification
 |  | beeeep-beeeep-beeeep (10) |
 
 
-
-
-
-
 #### 6: Secondary Notification Sound
-
-
 
 
 | Property         | Value    |
@@ -159,10 +132,6 @@ The siren offers ten different sounds to use as the Siren (primary) notification
 |  | beeeep-beeeep-beeeep (10) |
 
 
-
-
-
-
 #### 7: Toggle secondary chime
 
 Toggles between primary and secondary chime for binary switch
@@ -176,12 +145,7 @@ Toggles between primary and secondary chime for binary switch
 |  | Secondary notification will play (2) |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/589).
-

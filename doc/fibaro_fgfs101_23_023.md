@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FGFS101 - ZWave
+---
+
+{% include base.html %}
 
 # FGFS101 Flood Sensor
 
-This describes the Z-Wave device **FGFS101**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgfs101_23_023```. 
+This describes the Z-Wave device *FGFS101*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgfs101_23_023```. 
 
 Flood Sensor
+
 
 ## Channels
 The following table summarises the channels available for the FGFS101 Flood Sensor.
@@ -15,7 +22,6 @@ The following table summarises the channels available for the FGFS101 Flood Sens
 | Binary Sensor (flood) | sensor_binary1 | sensor_binary | Door | Switch |
 | Sensor (temperature) | sensor_temperature2 | sensor_temperature | Temperature | Number |
 | Alarm (tamper) | alarm_tamper2 | alarm_tamper |  | Switch |
-
 
 
 ### Sensor (temperature)
@@ -31,10 +37,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -66,14 +68,12 @@ Detailed information on each parameter can be found below.
 | 3: Device Status |  |
 
 
-
-
 #### 1: Alarm Cancellation Delay
 
 Additional delay after an alarm has ceased  
 
 
-# Overview #
+##### Overview 
 
 Additional delay after an alarm has ceased. The parameter allows you to specify additional time, after which the alarm is cancelled once its violation has ceased
 
@@ -86,16 +86,12 @@ Additional delay after an alarm has ceased. The parameter allows you to specify 
 | Default Value | 0 |
 
 
-
-
-
-
 #### 2: Acoustic and visual signals On / Off in case of flooding
 
 LED indicator and acoustic alarm deactivation  
 
 
-# Overview #
+##### Overview 
 
 Parameter allows for LED indicator and acoustic alarm deactivation in case of flooding detection
 
@@ -110,16 +106,12 @@ Parameter allows for LED indicator and acoustic alarm deactivation in case of fl
 |  | Acoustic and visual alarms active (3) |
 
 
-
-
-
-
 #### 5: Type of alarm frame sent to 1-st association group (FLOOD)
 
 Command frame sent by the Sensor in case flooding  
 
 
-# Overview #
+##### Overview 
 
 Parameter determines a type of command frame sent by the Sensor in case flooding has been detected or cancelled
 
@@ -132,16 +124,12 @@ Parameter determines a type of command frame sent by the Sensor in case flooding
 |  | BASIC_SET (255) |
 
 
-
-
-
-
 #### 7: Forced Level of Dimming group 1
 
 Value of the parameter specifying linking to association group no. 1  
 
 
-# Overview #
+##### Overview 
 
 Value of the parameter specifying the forced level of dimming / opening sun blinds when comes *switch on* / *open* command to devices from association group no. 1. In the case of alarm frames the alarm priority is specified. Possible parameter settings.
 
@@ -154,16 +142,12 @@ Value of the parameter specifying the forced level of dimming / opening sun blin
 | Default Value | 255 |
 
 
-
-
-
-
 #### 9: Alarm cancelling or turning a device off
 
 Allows for deactivating device turn off and alarm cancellation functions  
 
 
-# Overview #
+##### Overview 
 
 Allows for deactivating device turn off and alarm cancellation functions for the devices assigned to 1-st association group
 
@@ -176,16 +160,12 @@ Allows for deactivating device turn off and alarm cancellation functions for the
 |  | Alarm (flooding) cancellation active (1) |
 
 
-
-
-
-
 #### 10: Interval between successive readings of temperature sensors
 
 Interval between successive readings of temperature in seconds.  
 
 
-# Overview #
+##### Overview 
 
 Interval between successive readings of temperature from all sensors connected to the device in seconds.
 
@@ -198,16 +178,12 @@ Interval between successive readings of temperature from all sensors connected t
 | Default Value | 300 |
 
 
-
-
-
-
 #### 12: Insensitiveness to temperature changes.
 
 Determines a minimum temperature change value (insensitivity level; def: 0,5C)  
 
 
-# Overview #
+##### Overview 
 
 Determines a minimum temperature change value (insensitivity level; def: 0,5C), resulting in a temperature report being sent to the main controller, according to the Parameter 10 settings
 
@@ -220,16 +196,12 @@ Determines a minimum temperature change value (insensitivity level; def: 0,5C), 
 | Default Value | 50 |
 
 
-
-
-
-
 #### 13: Alarm BROADCAST
 
 Transmitting the alarm or control frame in 'broadcast' mode  
 
 
-# Overview #
+##### Overview 
 
 Transmitting the alarm or control frame in 'broadcast' mode (i.e. to all devices within range), information sent in this mode is not repeated by the mesh network. NOTE: If the broadcast mode of information transmission is activated for a given 
 
@@ -244,16 +216,12 @@ Transmitting the alarm or control frame in 'broadcast' mode (i.e. to all devices
 |  | Flood and Tamper broadcast mode active (3) |
 
 
-
-
-
-
 #### 50: Low temperature alarm threshold
 
 The parameter stores a temperature value, below which LED indicator blinks.  
 
 
-# Overview #
+##### Overview 
 
 The parameter stores a temperature value (def. 15C), below which LED indicator blinks with a colour determined by a Parameter 61 settings. By default the LED indicator blinks blue. NOTE: The main controller does not interpret negative numbers 
 
@@ -264,10 +232,6 @@ The parameter stores a temperature value (def. 15C), below which LED indicator b
 | Data Type        | INTEGER |
 | Range | -10000 to 10000 |
 | Default Value | 1500 |
-
-
-
-
 
 
 #### 51: High temperature alarm threshold
@@ -283,16 +247,12 @@ The parameter stores a temperature value, above which LED indicator blinks.
 | Default Value | 3500 |
 
 
-
-
-
-
 #### 61: Low temperature alarm indicator colour
 
 Default is blue (0x000000FF).  
 
 
-# Overview #
+##### Overview 
 
 Default is blue (0x000000FF). NOTE: A main controller interprets colours as a sum of it component colours value. Each colours value is a number from 0 to 255. Eg: Indicated colour = 65536 \* RED value + 256 \* GREEN value + BLUE value
 
@@ -305,16 +265,12 @@ Default is blue (0x000000FF). NOTE: A main controller interprets colours as a su
 | Default Value | 255 |
 
 
-
-
-
-
 #### 62: High temperature alarm indicator colour
 
 Default is red (0x00FF0000).  
 
 
-# Overview #
+##### Overview 
 
 Default is red (0x00FF0000). NOTE: A main controller interprets colours as a sum of it component colours value. Each colours value is a number from 0 to 255. Eg: Indicated colour = 65536 \* RED value + 256 \* GREEN value + BLUE value
 
@@ -327,16 +283,12 @@ Default is red (0x00FF0000). NOTE: A main controller interprets colours as a sum
 | Default Value | 16711680 |
 
 
-
-
-
-
 #### 63: Managing a LED indicator under standard operation
 
 Parameter determines LED indicator’s operation  
 
 
-# Overview #
+##### Overview 
 
 Parameter determines LED indicator’s operation. Set to 0 turns the indicator off, saving a battery life
 
@@ -350,16 +302,12 @@ Parameter determines LED indicator’s operation. Set to 0 turns the indicator o
 |  | LED indicator indicates the temperature continuously (2) |
 
 
-
-
-
-
 #### 73: Temperature measurement compensation
 
 Parameter stores a offset value from the current temperature  
 
 
-# Overview #
+##### Overview 
 
 Parameter stores a temperature value to be added to or deducted from the current temperature measured by internal temperature sensor in order to compensate the difference between air temperature and temperature at the floor level
 
@@ -372,16 +320,12 @@ Parameter stores a temperature value to be added to or deducted from the current
 | Default Value | 0 |
 
 
-
-
-
-
 #### 74: Alarm frame sent to 2-nd Association Group activation
 
 sensor’s vibrations alarm  
 
 
-# Overview #
+##### Overview 
 
 (MOVEMENT\_TAMPER / BUTTON\_TAMPER) The device is able to turn on alarms resulting from sensor’s vibrations e.g. when the sensor is moved, or the TMP button released. 2-nd Association Group alarms are not cancelled.
 
@@ -396,16 +340,12 @@ sensor’s vibrations alarm
 |  | Button and movement tampers alarm active (3) |
 
 
-
-
-
-
 #### 75: Visual and audible alarms duration
 
 Silence the Flood Sensor.  
 
 
-# Overview #
+##### Overview 
 
 The user can silence the Flood Sensor. Because the Sensor’s alarm may last for a long time, it’s possible to turn off visual and audible alarm signaling to save battery. The parameter determines a time period after which alarm will become “quiet” - still 
 
@@ -418,16 +358,12 @@ The user can silence the Flood Sensor. Because the Sensor’s alarm may last for
 | Default Value | 0 |
 
 
-
-
-
-
 #### 76: Visual and audible alarms duration
 
 Period after which an alarm frame will be retransmitted  
 
 
-# Overview #
+##### Overview 
 
 Parameter determines a time period after which an alarm frame will be retransmitted. The value of 0 cancels an alarm frame retransmission. The value of 65535 means 'each 1 second'. NOTE: In case a time period set in this parameter is shorter th
 
@@ -440,16 +376,12 @@ Parameter determines a time period after which an alarm frame will be retransmit
 | Default Value | 0 |
 
 
-
-
-
-
 #### 77: Flood sensor functionality turned off
 
 Turning of the internal flood sensor.  
 
 
-# Overview #
+##### Overview 
 
 Allows for turning of the internal flood sensor. Tamper and built in temperature sensor will remain active
 
@@ -462,13 +394,7 @@ Allows for turning of the internal flood sensor. Tamper and built in temperature
 |  | Built in flood sensor TURNED OFF (1) |
 
 
-
-
-
-
 #### 1: Flood Alarm
-
-
 
 
 | Property         | Value    |
@@ -478,13 +404,7 @@ Allows for turning of the internal flood sensor. Tamper and built in temperature
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Tilt Sensor
-
-
 
 
 | Property         | Value    |
@@ -494,13 +414,7 @@ Allows for turning of the internal flood sensor. Tamper and built in temperature
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Device Status
-
-
 
 
 | Property         | Value    |
@@ -510,12 +424,7 @@ Allows for turning of the internal flood sensor. Tamper and built in temperature
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/408).
-

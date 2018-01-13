@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: DMWS1 - ZWave
+---
+
+{% include base.html %}
 
 # DMWS1 Dome Leak Sensor
 
-This describes the Z-Wave device **DMWS1**, manufactured by **Elexa Consumer Products Inc.** with the thing type UID of ```elexa_dmws1_00_000```. 
+This describes the Z-Wave device *DMWS1*, manufactured by *Elexa Consumer Products Inc.* with the thing type UID of ```elexa_dmws1_00_000```. 
 
 Dome Leak Sensor
+
 
 ## Channels
 The following table summarises the channels available for the DMWS1 Dome Leak Sensor.
@@ -14,8 +21,6 @@ The following table summarises the channels available for the DMWS1 Dome Leak Se
 | Alarm (flood) | alarm_flood | alarm_flood | Door | Switch |
 | Alarm (general) | alarm_general | alarm_general | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -37,14 +42,12 @@ Detailed information on each parameter can be found below.
 | 4: Sensor Binary |  |
 
 
-
-
 #### 1: Total Alarm Duration
 
 Total time the Leak Sensor will beep and light its LED in the event of a leak  
 
 
-# Overview #
+##### Overview 
 
 0: Leak Sensor beeps until water is removed
 
@@ -57,10 +60,6 @@ Total time the Leak Sensor will beep and light its LED in the event of a leak
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 120 |
-
-
-
-
 
 
 #### 2: Mute Time
@@ -76,10 +75,6 @@ Quiet time between each Reminder Alarm
 | Default Value | 1 |
 
 
-
-
-
-
 #### 3: Initial Alarm
 
 Time the Leak Sensor beeps before it is muted
@@ -91,10 +86,6 @@ Time the Leak Sensor beeps before it is muted
 | Data Type        | INTEGER |
 | Range | 10 to 255 |
 | Default Value | 60 |
-
-
-
-
 
 
 #### 4: Reminder Alarm
@@ -110,10 +101,6 @@ Length of each beep after the Initial Alarm
 | Default Value | 5 |
 
 
-
-
-
-
 #### 5: Enable/Disable Audible Alarm
 
 Enables or disables the audible alarm (“beeping”)
@@ -125,10 +112,6 @@ Enables or disables the audible alarm (“beeping”)
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | Audible Alarm Disabled (0) |
 |  | Audible Alarm Enabled (1) |
-
-
-
-
 
 
 #### 6: Enable/Disable Water Detection
@@ -144,16 +127,12 @@ If disabled, the device will not respond in any way to detected leaks.
 |  | Water Detection Enabled (1) |
 
 
-
-
-
-
 #### 7: Basic Set Level
 
 The value sent by the BASIC\_SET command to Association Group 2  
 
 
-# Overview #
+##### Overview 
 
 Determines the value to be sent in the Basic Set command to Association Group 2 when a leak is detected
 
@@ -166,16 +145,12 @@ Determines the value to be sent in the Basic Set command to Association Group 2 
 | Default Value | 255 |
 
 
-
-
-
-
 #### 1: Lifeline
 
   
 
 
-# Overview #
+##### Overview 
 
 Group 1 is the “Lifeline” group, which can hold five members, typically including the main Z-Wave controller.  The Leak Sensor sends this group a Notification Report and a Binary Sensor Report when water is detected or removed.  It also sends this group a Battery Report in reponse to Battery Get commands and a Locally Reset Notification upon local reset.
 
@@ -187,16 +162,12 @@ Group 1 is the “Lifeline” group, which can hold five members, typically incl
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Control
 
 Group to receive BASIC\_SET on leak change  
 
 
-# Overview #
+##### Overview 
 
 The Leak Sensor sends a Basic Set command to Association Group 2 (or the Control Group) to directly trigger devices (like a light, chime, etc.) in response to a detected leak. Then, after the leak is no longer detected, a BASIC\_SET(0x00) command is sent to reset the device (e.g. turn off the light.) The value of the Basic Set command (e.g. brightness of the lamp) is configured using configuration parameter 7. 
 
@@ -208,16 +179,12 @@ The Leak Sensor sends a Basic Set command to Association Group 2 (or the Control
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Notification
 
   
 
 
-# Overview #
+##### Overview 
 
 Group 3 supports up to 5 members and the Leak Sensor sends it a NOTIFICATION\_REPORT when water is detected or removed
 
@@ -229,16 +196,12 @@ Group 3 supports up to 5 members and the Leak Sensor sends it a NOTIFICATION\_RE
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Sensor Binary
 
   
 
 
-# Overview #
+##### Overview 
 
 Group 4 supports up to 5 members and the Leak Sensor sends it a SENSOR\_BINARY\_REPORT when water is detected or removed.
 
@@ -250,12 +213,7 @@ Group 4 supports up to 5 members and the Leak Sensor sends it a SENSOR\_BINARY\_
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/651).
-

@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ST812 - ZWave
+---
+
+{% include base.html %}
 
 # ST812 Flood Sensor
 
-This describes the Z-Wave device **ST812**, manufactured by **Everspring** with the thing type UID of ```everspring_st812_00_000```. 
+This describes the Z-Wave device *ST812*, manufactured by *Everspring* with the thing type UID of ```everspring_st812_00_000```. 
 
 Flood Sensor
+
 
 ## Channels
 The following table summarises the channels available for the ST812 Flood Sensor.
@@ -15,8 +22,6 @@ The following table summarises the channels available for the ST812 Flood Sensor
 | Alarm (flood) | alarm_flood | alarm_flood | Door | Switch |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the ST812 Flood Sensor.
 Detailed information on each parameter can be found below.
@@ -26,8 +31,6 @@ Detailed information on each parameter can be found below.
 | 1: Basic Level Set | The value sent with Basic commands in case of detected flood |
 | 1: Power applied and Sensor Alarm |  |
 | 2: Device control | Group to send trigger value to |
-
-
 
 
 #### 1: Basic Level Set
@@ -43,16 +46,12 @@ The value sent with Basic commands in case of detected flood
 | Default Value | 99 |
 
 
-
-
-
-
 #### 1: Power applied and Sensor Alarm
 
   
 
 
-# Overview #
+##### Overview 
 
 The Detector will send ALARM\_REPORT command to the nodes of Group 1 to inform the devices that the Detector is powered up.
 
@@ -70,16 +69,12 @@ The third type for Group 1 is ALARM\_REPORT type 0x01, Low battery
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Device control
 
 Group to send trigger value to  
 
 
-# Overview #
+##### Overview 
 
 Will send values of 0-99 to devices in Group 2.  Set the value to send in Parameter 1.
 
@@ -91,12 +86,7 @@ Will send values of 0-99 to devices in Group 2.  Set the value to send in Param
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/37).
-

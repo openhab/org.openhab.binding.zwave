@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: NE-NAS-PD01Z - ZWave
+---
+
+{% include base.html %}
 
 # NE-NAS-PD01Z PIR motion sensor and light measurement
 
-This describes the Z-Wave device **NE-NAS-PD01Z**, manufactured by **Zipato** with the thing type UID of ```zipato_nenaspd01z_00_000```. 
+This describes the Z-Wave device *NE-NAS-PD01Z*, manufactured by *Zipato* with the thing type UID of ```zipato_nenaspd01z_00_000```. 
 
 PIR motion sensor and light measurement
+
 
 ## Channels
 The following table summarises the channels available for the NE-NAS-PD01Z PIR motion sensor and light measurement.
@@ -14,8 +21,6 @@ The following table summarises the channels available for the NE-NAS-PD01Z PIR m
 | Sensor (luminance) | sensor_luminance | sensor_luminance | Temperature | Number |
 | Alarm (burglar) | alarm_burglar | alarm_burglar | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -39,14 +44,12 @@ Detailed information on each parameter can be found below.
 | 4: Group 4 | Sensor Binary Report |
 
 
-
-
 #### 1: Sensitivity level
 
 8 = Highest sensitivity, 255 = lowest sesitivity  
 
 
-# Overview #
+##### Overview 
 
 1. SENSITIVITY LEVEL SETTING
 
@@ -69,16 +72,12 @@ Default settings: 12
 | Default Value | 12 |
 
 
-
-
-
-
 #### 2: ON / OFF Duration
 
 How long should the associated devices have ON status.  
 
 
-# Overview #
+##### Overview 
 
 2. ON / OFF DURATION
 
@@ -103,16 +102,12 @@ Default setting: 30
 | Default Value | 30 |
 
 
-
-
-
-
 #### 3: BASIC SET Level
 
 BASIC SET LEVEL  
 
 
-# Overview #
+##### Overview 
 
 3. BASIC SET LEVEL BASIC\_SET command will be sent when PIR sensor is triggered. The receiver will take it into consideration; for instance, if a lamp module is receiving the BASIC\_SET command of which value is decisive as to how bright of dim level of lamp module shall be.
 
@@ -139,16 +134,12 @@ Default setting: 255
 | Default Value | 255 |
 
 
-
-
-
-
 #### 4: PIR detection ENABLED / DISABLED
 
 Enable og disable the PIR sensor  
 
 
-# Overview #
+##### Overview 
 
 4. PIR DETECTION FUNCTION ENABLED / DISABLED This parameter can enable or disable the PIR sensor detecting function. Function: Enabled / Disabled PIR function
 
@@ -169,16 +160,12 @@ Default setting: 255 
 | Default Value | 255 |
 
 
-
-
-
-
 #### 5: Ambent illumination LUX level
 
 Lux value which determines when the light sensor is activated  
 
 
-# Overview #
+##### Overview 
 
 5. AMBIENT ILLUMINATION LUX LEVEL This parameter can set Lux value which determines when the light sensor is activated. If the ambient illumination level falls bellow this value and a person moves across or within the detection area, PIR sensor will send Z-Wave ON command (i.e. BASIC\_set (value = parameter 3) to an associated device and activate it.
 
@@ -201,16 +188,12 @@ Default setting: 100 (Lux)
 | Default Value | 100 |
 
 
-
-
-
-
 #### 6: Re-Trigger Interval
 
 Adjust the interval of being re-triggered  
 
 
-# Overview #
+##### Overview 
 
 6. RE-TRIGGER INTERVAL SETTING This parameter can be used to adjust the interval of being re-triggered after the PIR sensor has been triggered. This parameter value must be less than Paramater \#2. If user sets this parameter to default by Configure CC, the parameter \#2 will be set to default value.
 
@@ -233,16 +216,12 @@ Default setting: 8
 | Default Value | 8 |
 
 
-
-
-
-
 #### 7: Light sensor polling interval
 
 How often should ambient illumination be evaluated  
 
 
-# Overview #
+##### Overview 
 
 7. LIGHT SENSOR POLLING INTERVAL This parameter can set the light sensor to measure ambient illumination level interval time. NOTE: This value must be less than Wakeup Interval Time!
 
@@ -265,16 +244,12 @@ Default setting: 180 (s)
 | Default Value | 180 |
 
 
-
-
-
-
 #### 8: LUX level function enable
 
 See overview  
 
 
-# Overview #
+##### Overview 
 
 8. LUX LEVEL FUNCTION ENABLE If this parameter is set to “1” and when Lux level is less than the value defined by parameter \#5, PIR sensor will send a BASIC\_SET command frame (i.e. BASIC\_SET (value = parameter 3) to an associated device and activate it. If Lux level is greater than the value defined by parameter \#5, PIR sensor will not send BASIC\_SET command frame.
 
@@ -297,16 +272,12 @@ Default setting: 0
 | Default Value | 0 |
 
 
-
-
-
-
 #### 9: Ambient illumination report
 
 when lux changes by the number in this setting it is reported  
 
 
-# Overview #
+##### Overview 
 
 9. AMBIENT ILLUMINATION LUX LEVEL REPORT This parameter defines by how much Lux level must change in Lux to be reported to the main controller.
 
@@ -329,16 +300,12 @@ Default setting: 1
 | Default Value | 1 |
 
 
-
-
-
-
 #### 1: Group 1
 
 lifeline service  
 
 
-# Overview #
+##### Overview 
 
 **GROUP 1** is lifeline service that is assigned to sensor status - Open/Close. It enables the sensor to send reports and readings to Z-Wave controller or Z-Wave Gateway whenever the sensor is triggered. This group supports: NOTIFICATION\_REPORT\_V4 SENSOR\_BINARY\_REPORT\_V2 SENSOR\_MULTILEVEL\_REPORT\_V7 BATTERY\_REPORT\_DEVICE\_RESET\_LOCALLY\_NOTIFICATION
 
@@ -350,16 +317,12 @@ lifeline service
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Group 2
 
 BASIC\_SET control command group  
 
 
-# Overview #
+##### Overview 
 
 **GROUP 2** allows sending control commands to associated devices such as relay module, lighting, etc. This association group is configured through the advanced parameters no. 2, 3, 5 and 8. This griup supports: BASIC\_SET
 
@@ -371,16 +334,12 @@ BASIC\_SET control command group
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Group 3
 
 NOTIFICATION\_REPORT\_V4  
 
 
-# Overview #
+##### Overview 
 
 **GROUP 3** allows sending notifications to associated devices int his group. This group supports: NOTIFICATION\_REPORT\_V4
 
@@ -392,16 +351,12 @@ NOTIFICATION\_REPORT\_V4
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Group 4
 
 Sensor Binary Report  
 
 
-# Overview #
+##### Overview 
 
 **GROUP 4** allows sending sending Sensor Binary Report to associated devices in this group. This group supports: SENSOR\_BINARY\_REPORT\_V2
 
@@ -413,12 +368,7 @@ Sensor Binary Report
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/735).
-

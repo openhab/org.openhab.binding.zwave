@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: DCH-Z510 - ZWave
+---
+
+{% include base.html %}
 
 # DCH-Z510 Siren
 
-This describes the Z-Wave device **DCH-Z510**, manufactured by **D-Link** with the thing type UID of ```dlink_dchz510_00_000```. 
+This describes the Z-Wave device *DCH-Z510*, manufactured by *D-Link* with the thing type UID of ```dlink_dchz510_00_000```. 
 
 Siren  
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 1.  Have Z-Wave Controller enter inclusion mode.
 2.  Pressing tamper key three times within 1.5 seconds to enter the inclusion mode.
@@ -15,11 +21,12 @@ Siren
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 1.  Have Z-Wave Controller enter exclusion mode.
 2.  Pressing tamper key three times within 1.5 seconds to enter the exclusion mode.
 3.  Node ID has been excluded. 
+
 
 ## Channels
 The following table summarises the channels available for the DCH-Z510 Siren.
@@ -29,8 +36,6 @@ The following table summarises the channels available for the DCH-Z510 Siren.
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Binary Sensor | sensor_binary | sensor_binary | Door | Switch |
 | Start sound | notification_send | notification_send |  | Number |
-
-
 
 
 ### Device Configuration
@@ -45,11 +50,7 @@ Detailed information on each parameter can be found below.
 | 1: Report Messages | The group 1 is for receiving the report message, like tamper event. This is the device's L... |
 
 
-
-
 #### 7: Customer Function
-
-
 
 
 | Property         | Value    |
@@ -60,13 +61,7 @@ Detailed information on each parameter can be found below.
 |  | Using Sensor Binary Report (16) |
 
 
-
-
-
-
 #### 29: Disable Alarm
-
-
 
 
 | Property         | Value    |
@@ -75,10 +70,6 @@ Detailed information on each parameter can be found below.
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Enable Alarm (0) |
 |  | Disable Alarm (1) |
-
-
-
-
 
 
 #### 31: Alarm Duration
@@ -94,10 +85,6 @@ Play alarm sound duration, 1 tick is 30 seconds. 0 means never auto stop.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Report Messages
 
 The group 1 is for receiving the report message, like tamper event. This is the device's Lifeline group. The group supports 8 nodes maximum.
@@ -110,12 +97,7 @@ The group 1 is for receiving the report message, like tamper event. This is the 
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/330).
-

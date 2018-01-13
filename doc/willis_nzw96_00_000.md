@@ -1,10 +1,16 @@
+---
+layout: documentation
+title: NZW96 - ZWave
+---
+
+{% include base.html %}
+
 # NZW96 Outdoor Plug-in Module (1-Channel)
 
-| Thing Type UID | willis_nzw96_00_000               |
-| Manufacturer   | Willis Electric Co., Ltd.  |
-| Model          | NZW96 |
+This describes the Z-Wave device *NZW96*, manufactured by *Willis Electric Co., Ltd.* with the thing type UID of ```willis_nzw96_00_000```. 
 
 Outdoor Plug-in Module (1-Channel)
+
 
 ## Channels
 The following table summarises the channels available for the NZW96 Outdoor Plug-in Module (1-Channel).
@@ -15,10 +21,9 @@ The following table summarises the channels available for the NZW96 Outdoor Plug
 | Alarm (heat) | alarm_heat | alarm_heat |  | Switch |
 
 
-
-
 ### Device Configuration
-The following table provides a summary of the configuration parameters available in the NZW96 Outdoor Plug-in Module (1-Channel). Detailed parameter information can be found below.
+The following table provides a summary of the configuration parameters available in the NZW96 Outdoor Plug-in Module (1-Channel).
+Detailed information on each parameter can be found below.
 
 | Parameter   | Description |
 |-------------|-------------|
@@ -28,56 +33,54 @@ The following table provides a summary of the configuration parameters available
 | 2: Send Baxic Set |  |
 
 
-
-
-
 #### 1: LED Indicator
 
 Change the behavior of the LED Indicator
 
-| Configuration ID | config_1_1           |
-| Data Type        | INTEGER           |
-| Range            |  to  |
-| Default Value    |         |
-| Options          | |
 
-
+| Property         | Value    |
+|------------------|----------|
+| Configuration ID | config_1_1 |
+| Data Type        | INTEGER || Default Value | 0 |
+| Options | Plug On / LED On (0) |
+|  | Plug On / LED Off (1) |
+|  | LED Disabled (2) |
 
 
 #### 2: Countdown
 
 Plug Auto Shutoff
 
-| Configuration ID | config_2_2           |
-| Data Type        | INTEGER           |
-| Range            | 0 to 36000 |
-| Default Value    |         |
 
-
+| Property         | Value    |
+|------------------|----------|
+| Configuration ID | config_2_2 |
+| Data Type        | INTEGER |
+| Range | 0 to 36000 |
+| Default Value | 0 |
 
 
 #### 1: Lifeline
 
 
-
-| Configuration ID | group_1           |
-| Data Type        | TEXT           |
-| Range            |  to  |
-| Default Value    |         |
-
-
+| Property         | Value    |
+|------------------|----------|
+| Configuration ID | group_1 |
+| Data Type        | TEXT |
+| Range |  to  |
 
 
 #### 2: Send Baxic Set
 
 
+| Property         | Value    |
+|------------------|----------|
+| Configuration ID | group_2 |
+| Data Type        | TEXT |
+| Range |  to  |
 
-| Configuration ID | group_2           |
-| Data Type        | TEXT           |
-| Range            |  to  |
-| Default Value    |         |
 
+---
 
-
-Did you spot an error in the above definition or want to improve the content? You can edit the database [here](http://www.cd-jackson.com/index.html/757).
-
+Did you spot an error in the above definition or want to improve the content?
+You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/757).

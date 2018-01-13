@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: TZDW-100 - ZWave
+---
+
+{% include base.html %}
 
 # TZDW-100 Door/window sensor
 
-This describes the Z-Wave device **TZDW-100**, manufactured by **Telldus Technologies AB** with the thing type UID of ```telldus_tzdw100_00_000```. 
+This describes the Z-Wave device *TZDW-100*, manufactured by *Telldus Technologies AB* with the thing type UID of ```telldus_tzdw100_00_000```. 
 
 Door/window sensor
+
 
 ## Channels
 The following table summarises the channels available for the TZDW-100 Door/window sensor.
@@ -13,8 +20,6 @@ The following table summarises the channels available for the TZDW-100 Door/wind
 | Door Sensor | sensor_door | sensor_door | Door | Contact |
 | Alarm | alarm_general | alarm_general | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -36,8 +41,6 @@ Detailed information on each parameter can be found below.
 | 3: Status | Sensor status |
 
 
-
-
 #### 1: 
 
 Select what type of command to be sent to nodes in association group 2
@@ -53,10 +56,6 @@ Select what type of command to be sent to nodes in association group 2
 |  | Switch Multilevel (3) |
 
 
-
-
-
-
 #### 2: 
 
 Select what value that should be sent to association group 2
@@ -70,10 +69,6 @@ Select what value that should be sent to association group 2
 | Options | Last value (255) |
 
 
-
-
-
-
 #### 3: 
 
 Type of commands to association group 2
@@ -85,10 +80,6 @@ Type of commands to association group 2
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Normal (0) |
 |  | Inverted (1) |
-
-
-
-
 
 
 #### 4: 
@@ -106,10 +97,6 @@ Select what type of command to be sent to nodes in association group 3
 |  | Switch Multilevel (3) |
 
 
-
-
-
-
 #### 5: 
 
 Select what value that should be sent to association group 3
@@ -121,10 +108,6 @@ Select what value that should be sent to association group 3
 | Data Type        | INTEGER |
 | Range | 0 to 63 || Default Value | 255 |
 | Options | Last value (255) |
-
-
-
-
 
 
 #### 6: 
@@ -140,10 +123,6 @@ Type of commands to association group 3
 |  | Inverted (1) |
 
 
-
-
-
-
 #### 7: 
 
 LED-Indicator
@@ -155,10 +134,6 @@ LED-Indicator
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | Off (0) |
 |  | On (1) |
-
-
-
-
 
 
 #### 8: 
@@ -174,10 +149,6 @@ Select the type of command to be sent in the Lifeline
 |  | Sensor binary (1) |
 
 
-
-
-
-
 #### 1: Lifeline
 
 Lifeline - Sensor status
@@ -188,10 +159,6 @@ Lifeline - Sensor status
 | Configuration ID | group_1 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 2: Status
@@ -206,10 +173,6 @@ Sensor status
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Status
 
 Sensor status
@@ -222,12 +185,7 @@ Sensor status
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/312).
-

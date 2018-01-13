@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FGS221 - ZWave
+---
+
+{% include base.html %}
 
 # FGS221 Double Relay Switch 2x1.5kW
 
-This describes the Z-Wave device **FGS221**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgs221_01_004```. 
+This describes the Z-Wave device *FGS221*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgs221_01_004```. 
 
 Double Relay Switch 2x1.5kW
+
 
 ## Channels
 The following table summarises the channels available for the FGS221 Double Relay Switch 2x1.5kW.
@@ -13,8 +20,6 @@ The following table summarises the channels available for the FGS221 Double Rela
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Switch 1 | switch_binary1 | switch_binary | Switch | Switch |
 | Switch 2 | switch_binary2 | switch_binary | Switch | Switch |
-
-
 
 
 ### Device Configuration
@@ -47,8 +52,6 @@ Detailed information on each parameter can be found below.
 | 3: Controller Updates |  |
 
 
-
-
 #### 1: Enable/Disable ALL ON/OFF
 
 Activate/Deactive ALL ON/OFF
@@ -62,10 +65,6 @@ Activate/Deactive ALL ON/OFF
 |  | ALL ON disabled/ ALL OFF active (1) |
 |  | ALL ON active / ALL OFF disabled (2) |
 |  | ALL ON active / ALL OFF active (255) |
-
-
-
-
 
 
 #### 3: Enable/Disable OFF-delay
@@ -83,10 +82,6 @@ Activate/Deactivate Automatic turning off relay after set time
 |  | Auto OFF active for both relays (3) |
 
 
-
-
-
-
 #### 4: Relay 1: OFF-delay time (10ms steps)
 
 Automatic turning off relay 1 after set time, in 10ms increments (default: 200ms)
@@ -100,10 +95,6 @@ Automatic turning off relay 1 after set time, in 10ms increments (default: 200ms
 | Default Value | 20 |
 
 
-
-
-
-
 #### 5: Relay 2: OFF-delay time (10ms steps)
 
 Automatic turning off relay 2 after set time, in 10ms increments (default: 200ms)
@@ -115,10 +106,6 @@ Automatic turning off relay 2 after set time, in 10ms increments (default: 200ms
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 20 |
-
-
-
-
 
 
 #### 6: Separation of association sending (key 1)
@@ -135,10 +122,6 @@ Activate/Deactivate association sending for group 1 - activate param \#15 for th
 |  | Map OFF status to all devices in group 1, double click on key 1 will s (2) |
 
 
-
-
-
-
 #### 7: Separation of association sending (key 2)
 
 Activate/Deactivate association sending for group 2 - activate param \#15 for this to work
@@ -151,10 +134,6 @@ Activate/Deactivate association sending for group 2 - activate param \#15 for th
 | Options | Map status to all devices in group 2 (0) |
 |  | Map OFF status to all devices in group 2, double click on key 2 will s (1) |
 |  | Map OFF status to all devices in group 2, double click on key 2 will s (2) |
-
-
-
-
 
 
 #### 13: Inputs behaviour
@@ -170,10 +149,6 @@ In case of bi-stable switches, define their behaviour (toggle or follow)
 |  | Follow switch contact (closed&#x3D;ON, open&#x3D;OFF) (1) |
 
 
-
-
-
-
 #### 14: Inputs Button/Switch configuration
 
 Binary inputs type configuration
@@ -185,10 +160,6 @@ Binary inputs type configuration
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | Mono-stable input (button) (0) |
 |  | Bi-stable input (switch) (1) |
-
-
-
-
 
 
 #### 15: Dimmer/Roller shutter control
@@ -204,10 +175,6 @@ Enable/Disable operation of dimmer or roller shutter devices associated to group
 |  | Enable Dimmer/Roller shutter control (1) |
 
 
-
-
-
-
 #### 16: Saving state before power failure
 
 Saving state before power failure
@@ -221,13 +188,7 @@ Saving state before power failure
 |  | State saved at power failure, all outputs are set to previous state up (1) |
 
 
-
-
-
-
 #### 30: Relay 1: Response to General Alarm
-
-
 
 
 | Property         | Value    |
@@ -240,13 +201,7 @@ Saving state before power failure
 |  | ALARM FLASHING - relay will turn ON and OFF periodically (see param.39 (3) |
 
 
-
-
-
-
 #### 31: Relay 1: Response to Water Flood Alarm
-
-
 
 
 | Property         | Value    |
@@ -259,13 +214,7 @@ Saving state before power failure
 |  | ALARM FLASHING - relay will turn ON and OFF periodically (see param.39 (3) |
 
 
-
-
-
-
 #### 32: Relay 1: Response to Smoke, CO, CO2 Alarm
-
-
 
 
 | Property         | Value    |
@@ -278,13 +227,7 @@ Saving state before power failure
 |  | ALARM FLASHING - relay will turn ON and OFF periodically (see param.39 (3) |
 
 
-
-
-
-
 #### 33: Relay 1: Response to Temperature Alarm
-
-
 
 
 | Property         | Value    |
@@ -295,10 +238,6 @@ Saving state before power failure
 |  | ALARM RELAY ON - relay will turn ON upon receipt of alarm frame (1) |
 |  | ALARM RELAY OFF - relay will turn OFF upon receipt of alarm frame (2) |
 |  | ALARM FLASHING - relay will turn ON and OFF periodically (see param.39 (3) |
-
-
-
-
 
 
 #### 39: ALARM FLASHING alarm time
@@ -314,13 +253,7 @@ Amount of time (ms) the device keeps on flashing after receipt of Alarm Frame
 | Default Value | 600 |
 
 
-
-
-
-
 #### 40: Relay 2: Response to General Alarm
-
-
 
 
 | Property         | Value    |
@@ -333,13 +266,7 @@ Amount of time (ms) the device keeps on flashing after receipt of Alarm Frame
 |  | ALARM FLASHING - relay will turn ON and OFF periodically (see param.39 (3) |
 
 
-
-
-
-
 #### 41: Relay 2: Response to Water Flood Alarm
-
-
 
 
 | Property         | Value    |
@@ -352,13 +279,7 @@ Amount of time (ms) the device keeps on flashing after receipt of Alarm Frame
 |  | ALARM FLASHING - relay will turn ON and OFF periodically (see param.39 (3) |
 
 
-
-
-
-
 #### 42: Relay 2: Response to Smoke, CO, CO2 Alarm
-
-
 
 
 | Property         | Value    |
@@ -371,13 +292,7 @@ Amount of time (ms) the device keeps on flashing after receipt of Alarm Frame
 |  | Alarm Flashing (3) |
 
 
-
-
-
-
 #### 43: Relay 2: Response to Temperature Alarm
-
-
 
 
 | Property         | Value    |
@@ -390,13 +305,7 @@ Amount of time (ms) the device keeps on flashing after receipt of Alarm Frame
 |  | ALARM FLASHING - relay will turn ON and OFF periodically (see param.39 (3) |
 
 
-
-
-
-
 #### 1: Switch 1
-
-
 
 
 | Property         | Value    |
@@ -406,13 +315,7 @@ Amount of time (ms) the device keeps on flashing after receipt of Alarm Frame
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Switch 2
-
-
 
 
 | Property         | Value    |
@@ -422,13 +325,7 @@ Amount of time (ms) the device keeps on flashing after receipt of Alarm Frame
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Controller Updates
-
-
 
 
 | Property         | Value    |
@@ -438,12 +335,7 @@ Amount of time (ms) the device keeps on flashing after receipt of Alarm Frame
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/121).
-

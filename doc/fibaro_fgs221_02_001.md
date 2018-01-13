@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FGS221 - ZWave
+---
+
+{% include base.html %}
 
 # FGS221 Double Relay Switch 2x1.5kW
 
-This describes the Z-Wave device **FGS221**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgs221_02_001```. 
+This describes the Z-Wave device *FGS221*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgs221_02_001```. 
 
 Double Relay Switch 2x1.5kW
+
 
 ## Channels
 The following table summarises the channels available for the FGS221 Double Relay Switch 2x1.5kW.
@@ -13,8 +20,6 @@ The following table summarises the channels available for the FGS221 Double Rela
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Switch 1 | switch_binary1 | switch_binary | Switch | Switch |
 | Switch 2 | switch_binary2 | switch_binary | Switch | Switch |
-
-
 
 
 ### Device Configuration
@@ -47,8 +52,6 @@ Detailed information on each parameter can be found below.
 | 3: Controller Updates |  |
 
 
-
-
 #### 1: Activate / deactivate functions ALL ON / ALL OFF
 
 Activate / deactivate functions ALL ON / ALL OFF
@@ -64,16 +67,12 @@ Activate / deactivate functions ALL ON / ALL OFF
 |  | ALL ON active, ALL OFF active (255) |
 
 
-
-
-
-
 #### 3: Auto off relay after specified time
 
 Auto off relay after specified time  
 
 
-# Overview #
+##### Overview 
 
 Auto off relay after specified time, with the possibility of manual override - immediate Off after button push.
 
@@ -84,10 +83,6 @@ Auto off relay after specified time, with the possibility of manual override - i
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Manual override disabled (0) |
 |  | Manual override enabled. (1) |
-
-
-
-
 
 
 #### 4: Auto off for relay 1
@@ -103,10 +98,6 @@ Time period for auto off, in miliseconds 0 - Auto off disabled
 | Default Value | 0 |
 
 
-
-
-
-
 #### 5: Auto off for relay 2
 
 Time period for auto off, in miliseconds 0 - Auto off disabled
@@ -120,16 +111,12 @@ Time period for auto off, in miliseconds 0 - Auto off disabled
 | Default Value | 0 |
 
 
-
-
-
-
 #### 6: Sending commands to group 1 devices
 
 Sending commands to group 1 devices  
 
 
-# Overview #
+##### Overview 
 
 Sending commands to control devices assigned to 1-st association group (key no. 1)  
 NOTE: Parameter 15 value must be set to 1 to work properly. This activates the double-click functionality - dimmer/roller shutter control
@@ -144,16 +131,12 @@ NOTE: Parameter 15 value must be set to 1 to work properly. This activates the d
 |  | Commands are sent when device is turned off (2) |
 
 
-
-
-
-
 #### 7: Sending commands to group 2 devices
 
 Sending commands to group 2 devices  
 
 
-# Overview #
+##### Overview 
 
 Sending commands to control devices assigned to 2-nd association group (key no. 2).  
 
@@ -169,16 +152,12 @@ Info: Parameter 15 must be set to 1 to make this parameter work properly. This a
 |  | Commands are sent when device is turned off (2) |
 
 
-
-
-
-
 #### 13: Assigns bistable key status to the device status
 
 Assigns bistable key status to the device status  
 
 
-# Overview #
+##### Overview 
 
 Info: Remote control from Fibaro System Is Still Possible. This function is useful When you want display status of external devices, e.g. Motion Sensor, in Fibaro System.
 
@@ -189,10 +168,6 @@ Info: Remote control from Fibaro System Is Still Possible. This function is usef
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | [On / Off] device changes status on key status change (0) |
 |  | Device status depends on key status (1) |
-
-
-
-
 
 
 #### 14: Switch type connector
@@ -208,16 +183,12 @@ Switch type connector, you may choose between momentary and toggle switches
 |  | Toggle switch (1) |
 
 
-
-
-
-
 #### 15: Operation of the Dimmer and Roller Shutter Controller
 
 Operation of the Dimmer and Roller Shutter Controller  
 
 
-# Overview #
+##### Overview 
 
 Operation of the Dimmer and Roller Shutter Controller - enabling this option allows the user to dim lighting/shut roller by associating dimmer/Roller Shutter Controller and holding or double press of double switch (only mono-stable switch).  
 
@@ -230,16 +201,12 @@ Operation of the Dimmer and Roller Shutter Controller - enabling this option all
 |  | Dimmer/Roller Shutter Controller control is active (1) |
 
 
-
-
-
-
 #### 16: Saving the state of the device after a power failure
 
 Fibaro Switch returns to the last position saved before a power failure  
 
 
-# Overview #
+##### Overview 
 
 Options for changing the parameter 0-1
 
@@ -252,13 +219,7 @@ Options for changing the parameter 0-1
 |  | Fibaro Switch saves its state before power failure (1) |
 
 
-
-
-
-
 #### 30: Relay 1: Response to General Alarm
-
-
 
 
 | Property         | Value    |
@@ -271,13 +232,7 @@ Options for changing the parameter 0-1
 |  | Alarm relay 1 flashing (3) |
 
 
-
-
-
-
 #### 31: Relay 1: Response to Water Flood Alarm
-
-
 
 
 | Property         | Value    |
@@ -290,13 +245,7 @@ Options for changing the parameter 0-1
 |  | Alarm relay 1 flashing (3) |
 
 
-
-
-
-
 #### 32: Relay 1: Response to Smoke, CO, CO2 Alarm
-
-
 
 
 | Property         | Value    |
@@ -309,13 +258,7 @@ Options for changing the parameter 0-1
 |  | Alarm relay 1 flashing (3) |
 
 
-
-
-
-
 #### 33: Relay 1: Response to Temperature Alarm
-
-
 
 
 | Property         | Value    |
@@ -326,10 +269,6 @@ Options for changing the parameter 0-1
 |  | Alarm relay 1 on (1) |
 |  | Alarm relay 1 off (2) |
 |  | Alarm relay 1 flashing (3) |
-
-
-
-
 
 
 #### 39: ALARM FLASHING alarm time
@@ -345,13 +284,7 @@ Amount of time (ms) the device keeps on flashing after receipt of Alarm Frame
 | Default Value | 600 |
 
 
-
-
-
-
 #### 40: Relay 2: Response to General Alarm
-
-
 
 
 | Property         | Value    |
@@ -364,13 +297,7 @@ Amount of time (ms) the device keeps on flashing after receipt of Alarm Frame
 |  | Alarm relay 2 flashing (3) |
 
 
-
-
-
-
 #### 41: Relay 2: Response to Water Flood Alarm
-
-
 
 
 | Property         | Value    |
@@ -383,13 +310,7 @@ Amount of time (ms) the device keeps on flashing after receipt of Alarm Frame
 |  | Alarm relay 2 flashing (3) |
 
 
-
-
-
-
 #### 42: Relay 2: Response to Smoke, CO, CO2 Alarm
-
-
 
 
 | Property         | Value    |
@@ -402,13 +323,7 @@ Amount of time (ms) the device keeps on flashing after receipt of Alarm Frame
 |  | Alarm relay 2 flashing (3) |
 
 
-
-
-
-
 #### 43: Relay 2: Response to Temperature Alarm
-
-
 
 
 | Property         | Value    |
@@ -421,13 +336,7 @@ Amount of time (ms) the device keeps on flashing after receipt of Alarm Frame
 |  | Alarm relay 2 flashing (3) |
 
 
-
-
-
-
 #### 1: Switch 1
-
-
 
 
 | Property         | Value    |
@@ -437,13 +346,7 @@ Amount of time (ms) the device keeps on flashing after receipt of Alarm Frame
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Switch 2
-
-
 
 
 | Property         | Value    |
@@ -453,13 +356,7 @@ Amount of time (ms) the device keeps on flashing after receipt of Alarm Frame
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Controller Updates
-
-
 
 
 | Property         | Value    |
@@ -469,12 +366,7 @@ Amount of time (ms) the device keeps on flashing after receipt of Alarm Frame
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/123).
-

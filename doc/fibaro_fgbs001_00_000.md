@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FGBS001 - ZWave
+---
+
+{% include base.html %}
 
 # FGBS001 Universal Binary Sensor
 
-This describes the Z-Wave device **FGBS001**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgbs001_00_000```. 
+This describes the Z-Wave device *FGBS001*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgbs001_00_000```. 
 
 Universal Binary Sensor
+
 
 ## Channels
 The following table summarises the channels available for the FGBS001 Universal Binary Sensor.
@@ -21,7 +28,6 @@ The following table summarises the channels available for the FGBS001 Universal 
 | Temperature 4 | sensor_temperature6 | sensor_temperature | Temperature | Number |
 
 
-
 ### Temperature 1
 
 #### Scale
@@ -35,9 +41,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
 
 
 ### Temperature 2
@@ -55,9 +58,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Temperature 3
 
 #### Scale
@@ -73,9 +73,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Temperature 4
 
 #### Scale
@@ -89,10 +86,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -120,14 +113,12 @@ Detailed information on each parameter can be found below.
 | 3: Controller Updates | Reports on the condition of the device |
 
 
-
-
 #### 1: IN1 Alarm Cancellation Delay
 
 Input I alarm cancellation delay.  
 
 
-# Overview #
+##### Overview 
 
 Additional delay after an alarm from input IN1 has ceased. The parameter allows you to specify additional time, after which the input no. 1 alarm is cancelled once its violation has ceased.
 
@@ -140,16 +131,12 @@ Additional delay after an alarm from input IN1 has ceased. The parameter allows 
 | Default Value | 0 |
 
 
-
-
-
-
 #### 2: IN2 Alarm Cancellation Delay
 
 Input 2 alarm cancellation delay.  
 
 
-# Overview #
+##### Overview 
 
 Additional delay after an alarm from input IN2 has ceased. The parameter allows you to specify additional time, after which the input no. 2 alarm is cancelled once its violation has ceased.
 
@@ -160,10 +147,6 @@ Additional delay after an alarm from input IN2 has ceased. The parameter allows 
 | Data Type        | INTEGER |
 | Range | 0 to 65535 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 3: Type of input no. 1
@@ -181,10 +164,6 @@ Type of input no. 1, what the input 1 will report if no contact is made
 |  | BISTABLE (3) |
 
 
-
-
-
-
 #### 4: Type of input no. 2
 
 Type of input no. 2, what the input 2 will report if no contact is made
@@ -200,16 +179,12 @@ Type of input no. 2, what the input 2 will report if no contact is made
 |  | BISTABLE (3) |
 
 
-
-
-
-
 #### 5: Type of transmitted control frame for association group 1
 
 Type of transmitted control frame for association group 1.  
 
 
-# Overview #
+##### Overview 
 
 Activated via input IN1. The parameter allows to specify the type of alarm frame or to force transmission of control commands (BASIC\_SET)
 
@@ -227,16 +202,12 @@ Activated via input IN1. The parameter allows to specify the type of alarm frame
 |  | BASIC_SET (255) |
 
 
-
-
-
-
 #### 6: Type of transmitted control frame for association group 2
 
 Type of transmitted control frame for association group 2  
 
 
-# Overview #
+##### Overview 
 
 Activated via input IN2. The parameter allows to specify the type of alarm frame or to force transmission of control commands (BASIC\_SET)
 
@@ -254,16 +225,12 @@ Activated via input IN2. The parameter allows to specify the type of alarm frame
 |  | BASIC_SET (255) |
 
 
-
-
-
-
 #### 7: Forced Level of Dimming group 1
 
 Value of the parameter specifying the forced levels.  
 
 
-# Overview #
+##### Overview 
 
 Value of the parameter specifying the forced levels of dimming / opening sun blinds when comes 'switch on' / 'open' command to devices from association group no. 1.<BR/>In the case of alarm frames the alarm priority is specified.
 
@@ -283,16 +250,12 @@ automatically be set to the previous condition, i.e. 30%.
 | Default Value | 255 |
 
 
-
-
-
-
 #### 8: Forced Level of Dimming group 2
 
 Value of the parameter specifying forced levels.  
 
 
-# Overview #
+##### Overview 
 
 Value of the parameter specifying the forced level of dimming /  
 opening sun blinds when comes “switch on” / ”open” command to  
@@ -316,16 +279,12 @@ automatically be set to the previous condition, i.e. 30%.
 | Default Value | 255 |
 
 
-
-
-
-
 #### 9: Deactivate transmission of frame canceling alarm
 
 Deactivating transmission of the frame cancelling the alarm  
 
 
-# Overview #
+##### Overview 
 
 or the  
 control frame deactivating the device (Basic). It allows for disabling  
@@ -354,16 +313,12 @@ sent.
 |  | Group 1 not sent, Group 2 sent. (2) |
 
 
-
-
-
-
 #### 10: Interval between successive readings of temperature sensors
 
 Interval between successive readings of temperature  
 
 
-# Overview #
+##### Overview 
 
  from all sensors connected to the device in seconds. Note: taking temperature readings from the sensor does not result in sending a temperature condition report to the central hub.
 
@@ -376,16 +331,12 @@ Interval between successive readings of temperature
 | Default Value | 20 |
 
 
-
-
-
-
 #### 11: Interval betw. forcing to send report concerning the temp.
 
 The forced report is sent immediately after  
 
 
-# Overview #
+##### Overview 
 
  the next reading of temperature from the sensor, irrespective of the settings  
 of parameter no. 12.  
@@ -408,16 +359,12 @@ value.
 | Default Value | 200 |
 
 
-
-
-
-
 #### 12: Insensitiveness to temperature changes.
 
 This is the maximum acceptable difference between  
 
 
-# Overview #
+##### Overview 
 
  the last reported temperature and the current temperature taken from the sensor. If the temperatures differ by the set value or more, then a report with the current temperature value is sent to the device
 
@@ -430,16 +377,12 @@ This is the maximum acceptable difference between
 | Default Value | 8 |
 
 
-
-
-
-
 #### 13: Transmitting the alarm or control frame broadcast mode
 
 Transmitting the alarm or control frame in 'broadcast' mode  
 
 
-# Overview #
+##### Overview 
 
  (i.e. to all devices within range), information sent in this mode is not repeated by the mesh network.<BR/><B>NOTE:</B> If the broadcast mode of information transmission is activated for a given channel, then transmission of  
 information in “singlecast” mode to devices assigned to the  
@@ -456,16 +399,12 @@ association group of this channel is deactivated.
 |  | INI and IN2 broadcast mode active (3) |
 
 
-
-
-
-
 #### 14: Scene activation
 
 Enable/Disable scene functionality.  
 
 
-# Overview #
+##### Overview 
 
 The device offers the possibility of sending commands compatible with Command class scene activation. Information is sent to devices assigned to association group no. 3.
 
@@ -478,13 +417,7 @@ The device offers the possibility of sending commands compatible with Command cl
 |  | Scenes enabled (1) |
 
 
-
-
-
-
 #### 1: Input 1
-
-
 
 
 | Property         | Value    |
@@ -494,13 +427,7 @@ The device offers the possibility of sending commands compatible with Command cl
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Input 2
-
-
 
 
 | Property         | Value    |
@@ -508,10 +435,6 @@ The device offers the possibility of sending commands compatible with Command cl
 | Configuration ID | group_2 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 3: Controller Updates
@@ -526,12 +449,7 @@ Reports on the condition of the device
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/126).
-

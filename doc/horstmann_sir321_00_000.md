@@ -1,14 +1,21 @@
+---
+layout: documentation
+title: SIR-321 - ZWave
+---
+
+{% include base.html %}
 
 # SIR-321 RF Countdown Timer
 
-This describes the Z-Wave device **SIR-321**, manufactured by **Horstmann Controls Limited** with the thing type UID of ```horstmann_sir321_00_000```. 
+This describes the Z-Wave device *SIR-321*, manufactured by *Horstmann Controls Limited* with the thing type UID of ```horstmann_sir321_00_000```. 
 
 RF Countdown Timer  
 
 
-# Overview #
+## Overview 
 
 Wirelessly controllable 3 KW wall switch timer function
+
 
 ## Channels
 The following table summarises the channels available for the SIR-321 RF Countdown Timer.
@@ -17,7 +24,6 @@ The following table summarises the channels available for the SIR-321 RF Countdo
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Temperature | sensor_temperature | sensor_temperature | Temperature | Number |
-
 
 
 ### Temperature
@@ -35,10 +41,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the SIR-321 RF Countdown Timer.
 Detailed information on each parameter can be found below.
@@ -54,8 +56,6 @@ Detailed information on each parameter can be found below.
 | 2: Group 2 | Group 2 |
 
 
-
-
 #### 1: Fail Save timer
 
 Enable/Disable the Fail save timer
@@ -67,10 +67,6 @@ Enable/Disable the Fail save timer
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 2: Temperature Scale
@@ -86,10 +82,6 @@ Set the Temperatur scale to Celsius
 | Default Value | 0 |
 
 
-
-
-
-
 #### 3: Temperature reporting intervals
 
 Define the time interval for the temperature report that is sent.
@@ -101,10 +93,6 @@ Define the time interval for the temperature report that is sent.
 | Data Type        | INTEGER |
 | Range | 0 to 32767 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 4: Delta configuration temperature reporting
@@ -120,10 +108,6 @@ Set the delta-configuration of the temperature report in Celsius or Fahrenheit
 | Default Value | 0 |
 
 
-
-
-
-
 #### 5: Temperature Cutoff
 
 Set the Cutoff in Celsius
@@ -135,10 +119,6 @@ Set the Cutoff in Celsius
 | Data Type        | INTEGER |
 | Range | 0 to 1000 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 1: Group 1
@@ -153,10 +133,6 @@ Group 1
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Group 2
 
 Group 2
@@ -169,12 +145,7 @@ Group 2
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/313).
-

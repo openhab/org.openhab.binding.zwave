@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZW500D - ZWave
+---
+
+{% include base.html %}
 
 # ZW500D Dimmer
 
-This describes the Z-Wave device **ZW500D**, manufactured by **Wenzhou MTLC Electric Appliances Co.,Ltd.** with the thing type UID of ```enerwave_zw500d_00_000```. 
+This describes the Z-Wave device *ZW500D*, manufactured by *Wenzhou MTLC Electric Appliances Co.,Ltd.* with the thing type UID of ```enerwave_zw500d_00_000```. 
 
 Dimmer
+
 
 ## Channels
 The following table summarises the channels available for the ZW500D Dimmer.
@@ -11,7 +18,6 @@ The following table summarises the channels available for the ZW500D Dimmer.
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
 | Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer |
-
 
 
 ### Dimmer
@@ -29,10 +35,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the ZW500D Dimmer.
 Detailed information on each parameter can be found below.
@@ -44,14 +46,12 @@ Detailed information on each parameter can be found below.
 | 1: Group 1 |  |
 
 
-
-
 #### 1: configure LED light state
 
 configure LED light state  
 
 
-# Overview #
+##### Overview 
 
 0 = LED off with load on
 
@@ -66,16 +66,12 @@ configure LED light state
 |  | LED on with load on (1) |
 
 
-
-
-
-
 #### 2: Reverse installed direction
 
 Control if switch up is on or off  
 
 
-# Overview #
+##### Overview 
 
 0 = normal install, up is on
 
@@ -90,13 +86,7 @@ Control if switch up is on or off
 |  | invert switch (1) |
 
 
-
-
-
-
 #### 1: Group 1
-
-
 
 
 | Property         | Value    |
@@ -106,12 +96,7 @@ Control if switch up is on or off
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/299).
-

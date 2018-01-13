@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: ZMNHCD - ZWave
+---
+
+{% include base.html %}
 
 # ZMNHCD Flush Shutter
 
-This describes the Z-Wave device **ZMNHCD**, manufactured by **Goap** with the thing type UID of ```qubino_zmnhcd_04_001```. 
+This describes the Z-Wave device *ZMNHCD*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhcd_04_001```. 
 
 Flush Shutter  
 
 
-# Overview #
+## Overview 
 
 To enable endpoint 2 (lamella tilt for venetian blinds), follow the procedure:
 
@@ -18,6 +24,7 @@ To enable endpoint 2 (lamella tilt for venetian blinds), follow the procedure:
 6.  include device to the network
 7.  add the Thing to openhab via HABmin
 8.  Be patient until the binding until processed all your nodes again
+
 
 ## Channels
 The following table summarises the channels available for the ZMNHCD Flush Shutter.
@@ -37,7 +44,6 @@ The following table summarises the channels available for the ZMNHCD Flush Shutt
 | Blinds control 2 | blinds_control2 | blinds_control | Blinds | Rollershutter |
 
 
-
 ### Blinds Control
 
 #### Invert control
@@ -53,8 +59,6 @@ Invert the blinds control
 |  | No (false) |
 
 
-
-
 #### Invert percentage value
 
 Invert the blinds percentage value
@@ -66,8 +70,6 @@ Invert the blinds percentage value
 | Data Type        | BOOLEAN || Default Value | false |
 | Options | Yes (true) |
 |  | No (false) |
-
-
 
 
 #### Step duration
@@ -83,9 +85,6 @@ Values from 1 to 127 are defined in seconds, while values from 128 to 254 are de
 | Range | 1 to 254 || Default Value | 255 |
 | Options | Device Default (255) |
 |  | Change Instantly (0) |
-
-
-
 
 
 ### Sensor (temperature)
@@ -103,9 +102,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Blinds control 1
 
 #### Invert control
@@ -121,8 +117,6 @@ Invert the blinds control
 |  | No (false) |
 
 
-
-
 #### Invert percentage value
 
 Invert the blinds percentage value
@@ -134,8 +128,6 @@ Invert the blinds percentage value
 | Data Type        | BOOLEAN || Default Value | false |
 | Options | Yes (true) |
 |  | No (false) |
-
-
 
 
 #### Step duration
@@ -151,9 +143,6 @@ Values from 1 to 127 are defined in seconds, while values from 128 to 254 are de
 | Range | 1 to 254 || Default Value | 255 |
 | Options | Device Default (255) |
 |  | Change Instantly (0) |
-
-
-
 
 
 ### Blinds control 2
@@ -171,8 +160,6 @@ Invert the blinds control
 |  | No (false) |
 
 
-
-
 #### Invert percentage value
 
 Invert the blinds percentage value
@@ -184,8 +171,6 @@ Invert the blinds percentage value
 | Data Type        | BOOLEAN || Default Value | false |
 | Options | Yes (true) |
 |  | No (false) |
-
-
 
 
 #### Step duration
@@ -201,10 +186,6 @@ Values from 1 to 127 are defined in seconds, while values from 128 to 254 are de
 | Range | 1 to 254 || Default Value | 255 |
 | Options | Device Default (255) |
 |  | Change Instantly (0) |
-
-
-
-
 
 
 ### Device Configuration
@@ -235,14 +216,12 @@ Detailed information on each parameter can be found below.
 | 5: Multilevel Trigger by Slat Position |  |
 
 
-
-
 #### 10: ALL ON/ALL OFF
 
 Responds to commands ALL ON / ALL OFF from Main Controller  
 
 
-# Overview #
+##### Overview 
 
 Module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.
 
@@ -265,16 +244,12 @@ Available config. parameters (data type is 2 Byte DEC):
 |  | 255 - ALL ON active, ALL OFF active (255) |
 
 
-
-
-
-
 #### 40: Power reporting in watts on power change
 
 Power consumption change threshold for sending updates  
 
 
-# Overview #
+##### Overview 
 
 Power report is send (push) only when actual power (in Watts) in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%.
 
@@ -295,16 +270,12 @@ NOTE: if power changed is less than 1W, the report is not send (pushed), indepen
 | Default Value | 1 |
 
 
-
-
-
-
 #### 42: Power reporting in Watts by time interval
 
 Power reporting in Watts by time interval for Q1 or Q2  
 
 
-# Overview #
+##### Overview 
 
 Set value means time interval (0 – 32767) in seconds, when power report is send. Available configuration parameters (data type is 2 Byte DEC):
 
@@ -321,16 +292,12 @@ Set value means time interval (0 – 32767) in seconds, when power report is sen
 | Default Value | 300 |
 
 
-
-
-
-
 #### 71: Operating modes
 
 Operation Mode (Shutter or Venetian)  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines selection between two available operating modes. Available configuration parameters (data type is 1 Byte DEC):
 
@@ -347,16 +314,12 @@ This parameter defines selection between two available operating modes. Availabl
 |  | 1 – Venetian mode (up/down and slate rotation) (1) |
 
 
-
-
-
-
 #### 72: Slats tilting full turn time
 
 Slat full turn time in tenths of a second.  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the time necessary for slats to make full turn (180 degrees). Available configuration parameters (data type is 2 Byte DEC):
 
@@ -375,16 +338,12 @@ NOTE: If time set is too high, this will result that after full turn, Shutter wi
 | Default Value | 150 |
 
 
-
-
-
-
 #### 73: Slats position
 
 Slats position after up/down movement.  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines slats position after up/down movement through Z-wave or push-buttons. Available configuration parameters (data type is 1 Byte DEC):
 
@@ -402,16 +361,12 @@ This parameter defines slats position after up/down movement through Z-wave or p
 |  | 1 - return to previous position in all cases (1) |
 
 
-
-
-
-
 #### 74: Motor moving up/down time
 
 Shutter motor moving time of complete opening or complete closing  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines Shutter motor moving time of complete opening or complete closing. Available configuration parameters (data type is 2 Byte DEC):
 
@@ -436,16 +391,12 @@ In case Shutter has limit switches, but anyhow you would like to limit opening/c
 | Default Value | 0 |
 
 
-
-
-
-
 #### 76: Motor operation detection
 
 Power threshold to be interpreted when motor reach the limit switch  
 
 
-# Overview #
+##### Overview 
 
 Power threshold to be interpreted when motor reach the limit switch. Available configuration parameters (data type is 1 Byte DEC):
 
@@ -463,16 +414,12 @@ NOTE: Motors with power consumption less than 0,5W could not be auto calibrated.
 | Default Value | 10 |
 
 
-
-
-
-
 #### 78: Forced Shutter calibration
 
 Enters calibration mode if set to 1  
 
 
-# Overview #
+##### Overview 
 
 By modifying the parameters setting from 0 to 1 a Shutter DC module enters the calibration mode. Available configuration parameters (data type is 1 Byte DEC):
 
@@ -488,16 +435,12 @@ By modifying the parameters setting from 0 to 1 a Shutter DC module enters the c
 |  | 1 - Start Calibration Process (1) |
 
 
-
-
-
-
 #### 80: Reporting to Controller
 
 Defines if reporting regarding power level, etc is reported to controller.  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines if reporting regarding power level, multilevel, etc,…is reported to controller or not. Available configuration parameters: default value 1
 
@@ -513,16 +456,12 @@ This parameter defines if reporting regarding power level, multilevel, etc,…is
 |  | 1 - Reporting to Controller Enabled (1) |
 
 
-
-
-
-
 #### 85: Power consumption max delay time
 
 Time delay for detecting motor errors  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the max time before motor power consumption is read after one of the relays is switched ON. If there is no power consumption during this max time (motor not connected, damaged or requires higher time to start, motor in end position,...) the relay will switch OFF. Time is defined by entering it manually. Available configuration parameters (data type is 1 Byte DEC):
 
@@ -538,16 +477,12 @@ This parameter defines the max time before motor power consumption is read after
 | Default Value | 8 |
 
 
-
-
-
-
 #### 86: Power consumption at limit switch delay time
 
 Sets the time delay for detecting limit switches  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the max time at limit switch, when power consumption is below power threshold. If the power consumption during this time is below power threshold (par. 76), the active output will switch off, means that limit switch is reached. Available configuration parameters (data type is 1 Byte DEC):
 
@@ -563,16 +498,12 @@ This parameter defines the max time at limit switch, when power consumption is b
 | Default Value | 8 |
 
 
-
-
-
-
 #### 90: Relay delay time
 
 Defines the minimum time delay between next motor movement  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the minimum time delay between next motor movement (minimum time between switching motor off and on again). Available configuration parameters (data type is 1 Byte DEC):
 
@@ -588,16 +519,12 @@ This parameter defines the minimum time delay between next motor movement (minim
 | Default Value | 5 |
 
 
-
-
-
-
 #### 110: Temperature sensor offset settings
 
 Adds or removes an offset from the measured temperature.  
 
 
-# Overview #
+##### Overview 
 
 Set value is added or subtracted to actual measured value by sensor. Available configuration parameters (data type is 2 Byte DEC):
 
@@ -615,16 +542,12 @@ Set value is added or subtracted to actual measured value by sensor. Available c
 | Default Value | 32536 |
 
 
-
-
-
-
 #### 120: Digital temperature sensor reporting
 
 Threshold for sending temperature change reports  
 
 
-# Overview #
+##### Overview 
 
 If digital temperature sensor is connected, module reports measured temperature on temperature change defined by this parameter. Available configuration parameters (data type is 1 Byte DEC):
 
@@ -641,13 +564,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Default Value | 5 |
 
 
-
-
-
-
 #### 1: Controller Updates
-
-
 
 
 | Property         | Value    |
@@ -657,13 +574,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Range |  to  |
 
 
-
-
-
-
 #### 2: On/Off Triggered by I2
-
-
 
 
 | Property         | Value    |
@@ -673,13 +584,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Range |  to  |
 
 
-
-
-
-
 #### 3: On/Off Triggered by I3
-
-
 
 
 | Property         | Value    |
@@ -689,13 +594,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Multi-level Triggerd by Shutter Position
-
-
 
 
 | Property         | Value    |
@@ -705,13 +604,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Multilevel Trigger by Slat Position
-
-
 
 
 | Property         | Value    |
@@ -721,12 +614,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/213).
-

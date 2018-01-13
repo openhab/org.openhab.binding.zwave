@@ -1,21 +1,26 @@
+---
+layout: documentation
+title: iShutter - ZWave
+---
 
-# iShutter Wintop iShutter
+{% include base.html %}
 
-This describes the Z-Wave device **iShutter**, manufactured by **Wintop** with the thing type UID of ```wintop_ishutter_00_000```. 
+# iShutter iShutter
 
-Wintop iShutter
+This describes the Z-Wave device *iShutter*, manufactured by *Wintop* with the thing type UID of ```wintop_ishutter_00_000```. 
+
+iShutter
+
 
 ## Channels
-The following table summarises the channels available for the iShutter Wintop iShutter.
+The following table summarises the channels available for the iShutter iShutter.
 
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
 
 
-
-
 ### Device Configuration
-The following table provides a summary of the configuration parameters available in the iShutter Wintop iShutter.
+The following table provides a summary of the configuration parameters available in the iShutter iShutter.
 Detailed information on each parameter can be found below.
 
 | Parameter   | Description |
@@ -36,14 +41,12 @@ Detailed information on each parameter can be found below.
 | 2: Send Reports on blind state change | Send Reports on blind state change |
 
 
-
-
 #### 1: Buttons Mode
 
 See overview  
 
 
-# Overview #
+##### Overview 
 
 0 -> One push button
 
@@ -66,10 +69,6 @@ One push button: One button is used (chose any), press while moving up and down,
 |  | Two buttons with neutral position (3) |
 
 
-
-
-
-
 #### 2: Automatically close after
 
 If not zero, automatically close blind after a user defined time
@@ -83,16 +82,12 @@ If not zero, automatically close blind after a user defined time
 | Default Value | 0 |
 
 
-
-
-
-
 #### 3: What to do on RF close command
 
 Defines how to interpret RF Off command.  
 
 
-# Overview #
+##### Overview 
 
 0 -> Close
 
@@ -115,16 +110,12 @@ Can be used in conjunction with Auto Close function: Ignore - to open the door b
 |  | Open if closed, otherwise Close (3) |
 
 
-
-
-
-
 #### 4: Typical click timeout
 
 time used to differentiate click, hold, double and triple clicks  
 
 
-# Overview #
+##### Overview 
 
 1 - 100 -> in 10ms units
 
@@ -137,16 +128,12 @@ time used to differentiate click, hold, double and triple clicks
 | Default Value | 50 |
 
 
-
-
-
-
 #### 5: Invert buttons
 
 Invert buttons  
 
 
-# Overview #
+##### Overview 
 
 0 -> No
 
@@ -161,16 +148,12 @@ Invert buttons
 |  | Yes (1) |
 
 
-
-
-
-
 #### 6: Action on button press or hold
 
 Defines which command should be sent to Association group  
 
 
-# Overview #
+##### Overview 
 
 Defines which command should be sent to Association group on button press or hold. Scene mode will send 1 for Up event, 2 for Stop, 3 for Down.
 
@@ -187,16 +170,12 @@ Defines which command should be sent to Association group on button press or hol
 |  | Send Scene (2) |
 
 
-
-
-
-
 #### 7: LED mode
 
 Set LED indication mode  
 
 
-# Overview #
+##### Overview 
 
 0 -> Disabled
 
@@ -220,16 +199,12 @@ Set LED indication mode
 |  | Indicator Command Class (4) |
 
 
-
-
-
-
 #### 10: Full close time
 
 Time to go from opened to closed state.  
 
 
-# Overview #
+##### Overview 
 
 Used to estimate the current level. Note that in Permanent motion mode the reported value would a be Closed or Opened, while all Basic and  multilevel Set values (1-99, 255) would Open except 0 value that would Close. 
 
@@ -242,16 +217,12 @@ Used to estimate the current level. Note that in Permanent motion mode the repor
 | Default Value | 60 |
 
 
-
-
-
-
 #### 11: Full open time
 
 Time to go from closed to open state  
 
 
-# Overview #
+##### Overview 
 
 Time to go from closed to open state. This value may differ from Full close time for some blinds due to gravity. Used to estimate the current level. Note that in Permanent motion mode the reported value would a be Closed or Opened, while all Basic and Multilevel Set values (1-99, 255) would Open except 0 value that would Close
 
@@ -264,16 +235,12 @@ Time to go from closed to open state. This value may differ from Full close time
 | Default Value | 60 |
 
 
-
-
-
-
 #### 12: Node Id of the blocking device
 
 Id of the device which commands would not be Open/Close, but as block/unblock.  
 
 
-# Overview #
+##### Overview 
 
 Id of the device which commands would be interpreted not as Open/Close, but as block/unblock. Usefull with door opening detector: if the door is open, block the blind not to break shades while they move.
 
@@ -286,16 +253,12 @@ Id of the device which commands would be interpreted not as Open/Close, but as b
 | Default Value | 0 |
 
 
-
-
-
-
 #### 13: which command from blocking node to enable the protection
 
 Which command from blocking device is closed door and hence, unprotected.  
 
 
-# Overview #
+##### Overview 
 
 0 -> on On
 
@@ -310,16 +273,12 @@ Which command from blocking device is closed door and hence, unprotected.
 |  | on Off (1) |
 
 
-
-
-
-
 #### 14: Invert open and close relays
 
 Allow exchanging open and close relays  
 
 
-# Overview #
+##### Overview 
 
 Allow exchanging open and close relays if blind control is wired to the motor incorrectly 
 
@@ -336,10 +295,6 @@ Allow exchanging open and close relays if blind control is wired to the motor in
 |  | Yes (1) |
 
 
-
-
-
-
 #### 1: Click, press and hold of up/down buttons
 
 Click, press and hold of up/down buttons
@@ -350,10 +305,6 @@ Click, press and hold of up/down buttons
 | Configuration ID | group_1 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 2: Send Reports on blind state change
@@ -368,12 +319,7 @@ Send Reports on blind state change
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/329).
-

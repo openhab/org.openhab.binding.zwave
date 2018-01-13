@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: HS-WS100+ - ZWave
+---
+
+{% include base.html %}
 
 # HS-WS100+ Scene Capable Wall Switch
 
-This describes the Z-Wave device **HS-WS100+**, manufactured by **HomeSeer Technologies** with the thing type UID of ```homeseer_hsws100_00_000```. 
+This describes the Z-Wave device *HS-WS100+*, manufactured by *HomeSeer Technologies* with the thing type UID of ```homeseer_hsws100_00_000```. 
 
 Scene Capable Wall Switch
+
 
 ## Channels
 The following table summarises the channels available for the HS-WS100+ Scene Capable Wall Switch.
@@ -12,8 +19,6 @@ The following table summarises the channels available for the HS-WS100+ Scene Ca
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Scene Number | scene_number | scene_number |  | Number |
-
-
 
 
 ### Device Configuration
@@ -27,14 +32,12 @@ Detailed information on each parameter can be found below.
 | 1: Group 1 | Lifeline association only supports the "manual reset" and "central scene" event. |
 
 
-
-
 #### 3: Indicator LED
 
 Defines the behavior of the indicator LED.  
 
 
-# Overview #
+##### Overview 
 
 Defines the behavior of the indicator LED.  Default is Night Light mode where LED is on when switch is off.
 
@@ -46,10 +49,6 @@ Defines the behavior of the indicator LED.  Default is Night Light mode where L
 | Options | LED on when switch is OFF (0) |
 |  | LED on when switch is ON (1) |
 |  | LED always off (2) |
-
-
-
-
 
 
 #### 4: Orientation
@@ -65,10 +64,6 @@ Controls the on/off orientation of the rocker switch
 |  | Inverted (1) |
 
 
-
-
-
-
 #### 1: Group 1
 
 Lifeline association only supports the "manual reset" and "central scene" event.
@@ -81,12 +76,7 @@ Lifeline association only supports the "manual reset" and "central scene" event.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/351).
-

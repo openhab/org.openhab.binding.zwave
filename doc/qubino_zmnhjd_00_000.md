@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZMNHJD - ZWave
+---
+
+{% include base.html %}
 
 # ZMNHJD Flush Pilot
 
-This describes the Z-Wave device **ZMNHJD**, manufactured by **Goap** with the thing type UID of ```qubino_zmnhjd_00_000```. 
+This describes the Z-Wave device *ZMNHJD*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhjd_00_000```. 
 
 Flush Pilot
+
 
 ## Channels
 The following table summarises the channels available for the ZMNHJD Flush Pilot.
@@ -16,7 +23,6 @@ The following table summarises the channels available for the ZMNHJD Flush Pilot
 | Binary Sensor 1 | sensor_binary1 | sensor_binary | Door | Switch |
 | Binary Sensor 2 | sensor_binary2 | sensor_binary | Door | Switch |
 | Binary Sensor 3 | sensor_binary3 | sensor_binary | Door | Switch |
-
 
 
 ### Dimmer
@@ -34,9 +40,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
 ### Sensor (temperature)
 
 #### Scale
@@ -50,10 +53,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -79,11 +78,7 @@ Detailed information on each parameter can be found below.
 | 5: Basic on/off | Triggered at change of the input I3 state and reflecting its state |
 
 
-
-
 #### 1: Input 1 switch type
-
-
 
 
 | Property         | Value    |
@@ -94,13 +89,7 @@ Detailed information on each parameter can be found below.
 |  | bi-stable switch type (1) |
 
 
-
-
-
-
 #### 2: Input 2 switch type
-
-
 
 
 | Property         | Value    |
@@ -111,13 +100,7 @@ Detailed information on each parameter can be found below.
 |  | bi-stable switch type (1) |
 
 
-
-
-
-
 #### 3: Input 3 switch type
-
-
 
 
 | Property         | Value    |
@@ -128,13 +111,7 @@ Detailed information on each parameter can be found below.
 |  | bi-stable switch type (1) |
 
 
-
-
-
-
 #### 4: Input 1 contact type
-
-
 
 
 | Property         | Value    |
@@ -145,13 +122,7 @@ Detailed information on each parameter can be found below.
 |  | NC (normally close) input type (1) |
 
 
-
-
-
-
 #### 5: Input 2 contact type
-
-
 
 
 | Property         | Value    |
@@ -162,13 +133,7 @@ Detailed information on each parameter can be found below.
 |  | NC (normally close) input type (1) |
 
 
-
-
-
-
 #### 6: Input 3 contact type
-
-
 
 
 | Property         | Value    |
@@ -179,13 +144,7 @@ Detailed information on each parameter can be found below.
 |  | NC (normally close) input type (1) |
 
 
-
-
-
-
 #### 11: Input 1 operation mode selection
-
-
 
 
 | Property         | Value    |
@@ -201,13 +160,7 @@ Detailed information on each parameter can be found below.
 |  | Stop (6) |
 
 
-
-
-
-
 #### 12: Input 2 operation mode selection
-
-
 
 
 | Property         | Value    |
@@ -223,13 +176,7 @@ Detailed information on each parameter can be found below.
 |  | Stop (6) |
 
 
-
-
-
-
 #### 13: Input 3 operation mode selection
-
-
 
 
 | Property         | Value    |
@@ -245,13 +192,7 @@ Detailed information on each parameter can be found below.
 |  | Stop (6) |
 
 
-
-
-
-
 #### 30: Saving the state of the device after a power failure
-
-
 
 
 | Property         | Value    |
@@ -260,10 +201,6 @@ Detailed information on each parameter can be found below.
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | The module saves its state before power failure (0) |
 |  | The module does not save the state (1) |
-
-
-
-
 
 
 #### 1: Lifeline group
@@ -278,10 +215,6 @@ Reserved for communication with the main controller
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Multilevel
 
 Triggered at changes of state/value of the Flush pilot wire
@@ -292,10 +225,6 @@ Triggered at changes of state/value of the Flush pilot wire
 | Configuration ID | group_2 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 3: Basic on/off
@@ -310,10 +239,6 @@ Triggered at change of the input I1 state and reflecting its state
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Basic on/off
 
 Triggered at change of the input I2 state and reflecting its state
@@ -324,10 +249,6 @@ Triggered at change of the input I2 state and reflecting its state
 | Configuration ID | group_4 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 5: Basic on/off
@@ -342,12 +263,7 @@ Triggered at change of the input I3 state and reflecting its state
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/273).
-

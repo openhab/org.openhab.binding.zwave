@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: HSM02 - ZWave
+---
+
+{% include base.html %}
 
 # HSM02 Door/Window Contact
 
-This describes the Z-Wave device **HSM02**, manufactured by **Everspring** with the thing type UID of ```everspring_hsm02_00_000```. 
+This describes the Z-Wave device *HSM02*, manufactured by *Everspring* with the thing type UID of ```everspring_hsm02_00_000```. 
 
 Door/Window Contact
+
 
 ## Channels
 The following table summarises the channels available for the HSM02 Door/Window Contact.
@@ -13,8 +20,6 @@ The following table summarises the channels available for the HSM02 Door/Window 
 | Door / Window Status | sensor_door | sensor_door | Door | Contact |
 | Alarm | alarm_general | alarm_general | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -30,14 +35,12 @@ Detailed information on each parameter can be found below.
 | 2: Target nodes who receive BASIC_SET command |  |
 
 
-
-
 #### 1: Basic Set Level
 
 Value to be sent with a BASIC SET command  
 
 
-# Overview #
+##### Overview 
 
 0: Off
 
@@ -52,16 +55,12 @@ Value to be sent with a BASIC SET command
 | Default Value | 99 |
 
 
-
-
-
-
 #### 2: Configuring the OFF Delay
 
 OFF Delay in seconds  
 
 
-# Overview #
+##### Overview 
 
 The Configuration parameter that can be used to adjust the amount of delay before the OFF command is transmitted. This parameter can be configured as 0-127, where 0 means sending OFF command immediately and 127 means 127 seconds of delay. 
 
@@ -74,16 +73,12 @@ The Configuration parameter that can be used to adjust the amount of delay befor
 | Default Value | 0 |
 
 
-
-
-
-
 #### 3: Staying Awake (for testing)
 
   
 
 
-# Overview #
+##### Overview 
 
 Can be used to determine if the unit stays "awake" all the time. This parameter can be configured as 0 or 1, where 1 means "enabled" and 0 stands for "disabled"
 
@@ -96,37 +91,33 @@ Can be used to determine if the unit stays "awake" all the time. This parameter 
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Target for reports
 
 Support ALARM\_REPORT, SENSOR\_BINARY\_SUPPORT  
 
 
-# Overview #
+##### Overview 
 
-# Power Applied (Alarm Report) #
+##### Power Applied (Alarm Report) 
 
 Once the power has been applied, Alarm Report Command will be sent to Nodes in Grouping 1 to confirm the power applied status for HSM02. 
 
 Power Applied Notice:**\[Command Class Alarm, Alarm Report, Alarm Type = 0x02, Alarm Level = 0x01\]**
 
-# Magnet status report (Binary Sensor Report) #
+##### Magnet status report (Binary Sensor Report) 
 
 When the magnets of HSM02 are to be opened, Binary Sensor Report Command (Value = 0xFF) will be sent to Nodes in Grouping 1, and when the magnets are to be closed, Binary Sensor Report Command (Value = 0x00) will be sent as well.
 
 Magnets to be opened: **\[Command Class Sensor Binary, Sensor Binary Report, Value = 0xFF(255)\]**  
 Magnets to be closed: **\[Command Class Sensor Binary, Sensor Binary Report, Value = 0x00(0)\]**
 
-# Low Battery Report (Alarm Report) #
+##### Low Battery Report (Alarm Report) 
 
 When HSM02 automatically wakes up, it will check the battery usage. When low battery is detected, Alarm Report Command will be sent to Nodes in Grouping 1, afterward, LED will light up for 1 sec to remind user when HSM02 is triggered due to open or close incidents.
 
 Low Battery Report : **\[Command Class Alarm, Alarm Report, Alarm Type = 0x01, Alarm Level = 0xFF\]**
 
-# Tamper Event Report (Alarm Report) #
+##### Tamper Event Report (Alarm Report) 
 
 Press and hold the tamper switch more than 10 seconds then release, the unit will send ALARM REPORT command to the nodes of Grouping 1 to inform them there is a tamper event.
 
@@ -140,18 +131,14 @@ Tamper Event Report : **\[Command Class Alarm, Alarm Report, Alarm Type = 0x01, 
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Target nodes who receive BASIC_SET command
 
   
 
 
-# Overview #
+##### Overview 
 
-# Control other Z-Wave Devices  #
+##### Control other Z-Wave Devices  
 
 When door/window is opened, the unit will send BASIC\_SET command which contains a value that is adjustable, to the nodes of Grouping 2. For instance, the brightness level of a lamp module can be fixed according to the set value. 
 
@@ -169,12 +156,7 @@ Event Clear: **\[Command Class Basic, Basic Set, Value = 0 (0x00)\] **
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/34).
-

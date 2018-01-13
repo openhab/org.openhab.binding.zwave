@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: HAC01 - ZWave
+---
+
+{% include base.html %}
 
 # HAC01 In-Wall Remote Insert
 
-This describes the Z-Wave device **HAC01**, manufactured by **Everspring** with the thing type UID of ```everspring_hac01_00_000```. 
+This describes the Z-Wave device *HAC01*, manufactured by *Everspring* with the thing type UID of ```everspring_hac01_00_000```. 
 
 In-Wall Remote Insert
+
 
 ## Channels
 The following table summarises the channels available for the HAC01 In-Wall Remote Insert.
@@ -11,8 +18,6 @@ The following table summarises the channels available for the HAC01 In-Wall Remo
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
-
-
 
 
 ### Device Configuration
@@ -26,14 +31,12 @@ Detailed information on each parameter can be found below.
 | 1: Switch Input Change | Target nodes that receive Basic Set command when the switch input changed. |
 
 
-
-
 #### 1: Basic Set Level
 
 The Basic Set Command is sent with this value.  
 
 
-# Overview #
+##### Overview 
 
 The Basic Set Command is sent with value to have the receiving device recognize the value for controlled level, for example, if the Basic Set Command sent to dimmer with value, the dimmer would activate the luminance according to the value.  
   
@@ -49,16 +52,12 @@ The Basic Set Command is sent with value to have the receiving device recognize 
 | Default Value | 99 |
 
 
-
-
-
-
 #### 2: Amount Of Delay
 
 Amount Of Delay (seconds) to send the Basic Set Off command.  
 
 
-# Overview #
+##### Overview 
 
 This is applied to determine the delay time setting to send the Basic Set Off command when the manual switch input at NO (open).  
   
@@ -75,16 +74,12 @@ Example :
 | Default Value | 1 |
 
 
-
-
-
-
 #### 1: Switch Input Change
 
 Target nodes that receive Basic Set command when the switch input changed.  
 
 
-# Overview #
+##### Overview 
 
 The remote module supports association with maximum 5 node for Grouping 1. Grouping 1 supports BASIC\_SET.
 
@@ -102,12 +97,7 @@ Manual switch input at NO: Command Class Basic, Basic Set, Value = 0x00(0)
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/270).
-

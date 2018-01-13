@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FGMS001 - ZWave
+---
+
+{% include base.html %}
 
 # FGMS001 Motion Sensor
 
-This describes the Z-Wave device **FGMS001**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgms001_03_002```. 
+This describes the Z-Wave device *FGMS001*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgms001_03_002```. 
 
 Motion Sensor
+
 
 ## Channels
 The following table summarises the channels available for the FGMS001 Motion Sensor.
@@ -20,7 +27,6 @@ The following table summarises the channels available for the FGMS001 Motion Sen
 | Alarm (general) | alarm_general | alarm_general | Door | Switch |
 
 
-
 ### Sensor (temperature)
 
 #### Scale
@@ -34,10 +40,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -83,14 +85,12 @@ Detailed information on each parameter can be found below.
 | 5: Tamper BC | Tamper BC (backward compability) |
 
 
-
-
 #### 1: Motion detection - sensitivity
 
 The lower the value, the more sensitive the PIR sensor.  
 
 
-# Overview #
+##### Overview 
 
 The lower the value, the more sensitive the PIR sensor. Available settings: 8 - 255.
 
@@ -103,16 +103,12 @@ The lower the value, the more sensitive the PIR sensor. Available settings: 8 - 
 | Default Value | 15 |
 
 
-
-
-
-
 #### 2: Motion detection - blind time
 
 Period of time through which the PIR sensor is “blind”.  
 
 
-# Overview #
+##### Overview 
 
 Period of time through which the PIR sensor is “blind” (insensitive) to motion. After this time period the PIR sensor will be again able to detect motion. The longer the insensitivity period, the longer the battery life. If the sensor is required to detect motion quickly, the time period may be shortened. The time of insensitivity should be shorter that the time period set in parameter 6.  
 Available settings: 0 - 15  
@@ -129,16 +125,12 @@ Parameter size: 1 \[byte\]
 | Default Value | 3 |
 
 
-
-
-
-
 #### 3: Motion detection - pulse counter
 
 Sets the number of moves required for the PIR sensor to report motion.  
 
 
-# Overview #
+##### Overview 
 
 Sets the number of moves required for the PIR sensor to report motion. The lower the value, the less sensitive the PIR sensor. It’s not recommended to modify this parameter settings.  
 Available settings: 0 - 3  
@@ -156,16 +148,12 @@ Parameter size: 1 \[byte\]
 |  | 4 pulses (3) |
 
 
-
-
-
-
 #### 4: Motion detection - window time
 
 The higher the value, the more sensitive the PIR sensor.  
 
 
-# Overview #
+##### Overview 
 
 Period of time during which the number of moves set in parameter 3 must be detected in order for the PIR sensor to report motion. The higher the value, the more sensitive the PIR sensor. It’s not recommended to modify this parameter setting.  
 Available settings: 0 - 3  
@@ -184,16 +172,12 @@ Parameter size: 1 \[byte\]
 |  | 16 seconds (3) |
 
 
-
-
-
-
 #### 6: Motion detection - alarm cancellation delay
 
 Period of time after wich Motion alarm will be cancelled.  
 
 
-# Overview #
+##### Overview 
 
 Motion alarm will be cancelled in the main controller and the associated devices after the period of time set in this parameter. Any motion detected during the cancellation delay time countdown will result in the countdown being restarted. In case of small values, below 10 seconds, the value of parameter 2 must be modified (PIR sensor’s “Blind Time”).  
 Available settings: 1 - 32767  
@@ -209,16 +193,12 @@ Parameter size: 2 \[bytes\]
 | Default Value | 30 |
 
 
-
-
-
-
 #### 8: Motion detection - operating mode
 
 The parameter determines the part of day in which the PIR sensor will be active.  
 
 
-# Overview #
+##### Overview 
 
 The parameter determines the part of day in which the PIR sensor will be active. This parameter influences only the motion reports and associations. Tamper, light intensity and temperature measurements will be still active, regardless of this parameter settings. 0 - PIR sensor always active 1 - PIR sensor active during the day only 2 - PIR sensor active during the night only. Default setting: 0 Parameter size: 1 \[byte\] 
 
@@ -232,16 +212,12 @@ The parameter determines the part of day in which the PIR sensor will be active.
 |  | PIR sensor active during the night only (2) |
 
 
-
-
-
-
 #### 9: Motion detection - night/day
 
 The parameter defines the difference between night and day.  
 
 
-# Overview #
+##### Overview 
 
 The parameter defines the difference between night and day, in terms of light intensity, used in parameter 8. Available settings: 1 - 32767 Default setting: 200 (200 lux) Parameter size: 2 \[bytes\]
 
@@ -254,16 +230,12 @@ The parameter defines the difference between night and day, in terms of light in
 | Default Value | 200 |
 
 
-
-
-
-
 #### 12: BASIC command class configuration
 
 Determines the command frames sent in 1-st association group.  
 
 
-# Overview #
+##### Overview 
 
 The parameter determines the command frames sent in 1-st association group, assigned to PIR sensor.  
 0 - BASIC ON and BASIC OFF command frames sent in Basic Command Class.  
@@ -282,16 +254,12 @@ Default setting: 0 Parameter size: 1 \[byte\] 
 |  | Only the BASIC OFF (2) |
 
 
-
-
-
-
 #### 14: BASIC ON command frame value
 
 The value of 255 allows to turn ON a device.  
 
 
-# Overview #
+##### Overview 
 
 The value of 255 allows to turn ON a device. In case of the Dimmer, the value of 255 means turning ON at the last memorized state, e.g. the Dimmer turned ON at 30% and turned OFF using the value of 255, and then turned OFF, will be turned ON at 30%, i.e. the last memorized state.  
 Available settings: 0 - 255  
@@ -307,16 +275,12 @@ Parameter size: 2 \[byte\]
 | Default Value | 255 |
 
 
-
-
-
-
 #### 16: BASIC OFF command frame value
 
 The value of 0 allows to turn OFF a device.  
 
 
-# Overview #
+##### Overview 
 
 The command frame sent at the moment of motion alarm cancellation, after the cancellation delay time, specified in parameter 6, has passed. The value of 0 allows to turn a device OFF while the value of 255 allows to turn ON a device. In case of the Dimmer, the value of 255 means turning ON at the last memorized state, e.g. the Dimmer turned ON at 30% and turned OFF using the value of 255, and then turned OFF, will be turned ON at 30%, i.e. the last memorized state.  
 Available settings: 0 - 255  
@@ -332,16 +296,12 @@ Parameter size: 2 \[byte\]
 | Default Value | 0 |
 
 
-
-
-
-
 #### 18: Associations in Z-Wave network Security Mode
 
 This parameter defines how commands are sent in specified association groups  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is Active only in Z-Wave network security mode. It doesn’t apply to 1st Lifeline group.
 
@@ -367,16 +327,12 @@ Parameter size: 1 \[byte\]
 | Default Value | 15 |
 
 
-
-
-
-
 #### 20: Tamper - sensitivity
 
 Change in force that will result in tamper alarm  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines the change in force acting on the device, that will result in reporting tamper alarm - g-force acceleration.
 
@@ -393,16 +349,12 @@ Parameter size: 1 \[byte\] 
 | Default Value | 20 |
 
 
-
-
-
-
 #### 22: Tamper - alarm cancellation delay
 
 Time period after which a tamper alarm will be cancelled.  
 
 
-# Overview #
+##### Overview 
 
 Time period after which a tamper alarm will be cancelled in the main controller and associated devices.
 
@@ -419,16 +371,12 @@ Parameter size: 2 \[bytes\] 
 | Default Value | 30 |
 
 
-
-
-
-
 #### 24: Tamper - operating modes
 
 This parameter determines function of the tamper and sent reports  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines function of the tamper and sent reports. It is an advanced feature serving much more functions than just detection of tampering.
 
@@ -447,16 +395,12 @@ always sent. First, right after the detection and second (value=0) after tamper 
 |  | Tamper and orientation in space (2) |
 
 
-
-
-
-
 #### 25: Tamper - alarm cancellation
 
 This parameter allows to disable cancellation of the tamper alarm.  
 
 
-# Overview #
+##### Overview 
 
 0 - Do not send tamper cancellation report  
 1 - Send tamper cancellation report
@@ -470,16 +414,12 @@ This parameter allows to disable cancellation of the tamper alarm.
 |  | Send tamper cancellation report (1) |
 
 
-
-
-
-
 #### 28: Tamper - broadcast mode
 
 Determines whether the tamper alarm frame will be sent in broadcast mode  
 
 
-# Overview #
+##### Overview 
 
 The parameter determines whether the tamper alarm frame will or will not be sent in broadcast mode. Alarm frames sent in broadcast mode can be received by all of the devices within Communication range (if they accept such frames). When Fibaro Motion Sensor is operating in protected mode (secure mode), the value should remain default. Device operating in protected mode doesn’t send frames in broadcast mode.
 
@@ -498,16 +438,12 @@ Parameter size: 1 \[byte\]
 |  | Reported in broadcast mode to 3rd association group. (1) |
 
 
-
-
-
-
 #### 29: Tamper - backward compatible broadcast mode
 
 Determines whether the tamper alarm frame will be sent in broadcast mode  
 
 
-# Overview #
+##### Overview 
 
 The parameter determines whether the tamper alarm frame will or will not be sent in broadcast mode. Alarm frames sent in broadcast mode can be received by all of the devices within Communication range (if they accept such frames). When Fibaro Motion Sensor is operating in protected mode (secure mode), the value should remain default. Device operating in protected mode doesn’t send frames in broadcast mode.
 
@@ -526,16 +462,12 @@ Parameter size: 1 \[byte\]
 |  | Reported in broadcast mode to 5th association group. (1) |
 
 
-
-
-
-
 #### 40: Illuminance report - threshold
 
 Change in light intensity level resulting in illumination report  
 
 
-# Overview #
+##### Overview 
 
 The parameter determines the change in light intensity level resulting in illumination report being sent to the main controller.
 
@@ -550,16 +482,12 @@ Available settings: 0 - 32767 (1-32767 lux; 0=reports are not sent)
 | Default Value | 200 |
 
 
-
-
-
-
 #### 42: Illuminance report - interval
 
 Time interval between consecutive illumination reports  
 
 
-# Overview #
+##### Overview 
 
 Time interval between consecutive illumination reports.  
 The reports are sent even if there are no changes in the light intensity.
@@ -576,16 +504,12 @@ Default setting: 3600
 | Default Value | 3600 |
 
 
-
-
-
-
 #### 60: Temperature report - threshold
 
 The change in temperature resulting in temperature report  
 
 
-# Overview #
+##### Overview 
 
 The parameter determines the change in level of temperature resulting in temperature report being sent to the main controller.  
 Available settings: 0 - 255 (0.1 - 25.5oC; 0 = reports are not sent)  
@@ -600,16 +524,12 @@ Default setting: 10 (1oC) Parameter size: 2 \[byte\]
 | Default Value | 20 |
 
 
-
-
-
-
 #### 62: Temperature measuring - interval
 
 How often the temperature will be measured  
 
 
-# Overview #
+##### Overview 
 
 The parameter determines how often the temperature will be measured. The shorter the time, the more frequently the temperature will be measured, but the battery life will shorten.  
 Available settings: 0 - 32767 (1 - 32767 seconds; 0 = temperature will not be measured)  
@@ -625,16 +545,12 @@ Parameter size: 2 \[bytes\]
 | Default Value | 900 |
 
 
-
-
-
-
 #### 64: Temperature report - interval
 
 How often the temperature reports will be sent  
 
 
-# Overview #
+##### Overview 
 
 The parameter determines how often the temperature reports will be sent to the main controller.  
 Available settings: 0 - 32767 (1 - 32767 seconds; 0 = no reports)  
@@ -649,19 +565,15 @@ Default setting: 0 Parameter size: 2 \[byte\] 
 | Default Value | 0 |
 
 
-
-
-
-
 #### 66: Temperature offset
 
 Value added to the actual temperature  
 
 
-# Overview #
+##### Overview 
 
 The value to be added to the actual temperature, measured by the sensor (temperature compensation).  
-Available settings: -1000 – 1000 (-100oC – 100oC)  
+Available settings: -1000 – 1000 (-1000-1000°C, 1°C step)  
 Default setting: 0 Parameter size: 2 \[bytes\]
 
 
@@ -669,12 +581,8 @@ Default setting: 0 Parameter size: 2 \[bytes\]
 |------------------|----------|
 | Configuration ID | config_66_2 |
 | Data Type        | INTEGER |
-| Range | 0 to 65535 |
+| Range | -1000 to 1000 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 80: LED - signalling mode
@@ -682,7 +590,7 @@ Default setting: 0 Parameter size: 2 \[bytes\]
 LED signalling mode  
 
 
-# Overview #
+##### Overview 
 
 The parameter determines the way in which LED diode behaves after motion has been detected.  
 Values from 1 to 9 = single long blink at the moment of reporting motion. No other motion will be indicated until alarm is cancelled.  
@@ -723,16 +631,12 @@ Values from 19 to 26 = single long blink at the moment of reporting motion and t
 |  | Magenta. (26) |
 
 
-
-
-
-
 #### 81: LED - brightness
 
 LED brightness  
 
 
-# Overview #
+##### Overview 
 
 The parameter determines the brightness of LED when indicating motion.  
 Available settings: 0 - 100 (1 - 100%; 0 = brightness determined by the ambient lighting - see parameters 82 and 83)  
@@ -747,16 +651,12 @@ Default setting: 50 Parameter size: 1 \[byte\]
 | Default Value | 50 |
 
 
-
-
-
-
 #### 82: LED - illuminance for low indicator brightness
 
 Light intensity level below which brightness of visual indicator is set to 1%.  
 
 
-# Overview #
+##### Overview 
 
 AMBIENT ILLUMINATION LEVEL BELOW WHICH LED BRIGHTNESS IS SET TO 1%
 
@@ -774,16 +674,12 @@ Parameter size: 2 \[bytes\]
 | Default Value | 100 |
 
 
-
-
-
-
 #### 83: LED - illuminance for high indicator brightness
 
 Light intensity level above which brightness of visual indicator is set to 100%.  
 
 
-# Overview #
+##### Overview 
 
 ABOVE WHICH LED BRIGHTNESS IS SET TO 100%
 
@@ -801,16 +697,12 @@ Parameter size: 2 \[bytes\]
 | Default Value | 1000 |
 
 
-
-
-
-
 #### 86: LED - temperature for blue colour
 
 Minimum temperature resulting in blue LED illumination  
 
 
-# Overview #
+##### Overview 
 
 This parameter is relevant only when parameter 80 has been properly configured.  
 Available settings: 0 to parameter 87 value (degrees celsius)  
@@ -826,16 +718,12 @@ Parameter size: 2 \[byte\]
 | Default Value | 18 |
 
 
-
-
-
-
 #### 87: LED - temperature for red colour
 
 Minimum temperature resulting in red LED illumination  
 
 
-# Overview #
+##### Overview 
 
 This parameter is relevant only when parameter 80 has been properly configured.  
 Available settings: parameter 86 value to 255 (degrees celsius)  
@@ -851,10 +739,6 @@ Parameter size: 2 \[byte\]
 | Default Value | 28 |
 
 
-
-
-
-
 #### 89: LED - tamper alarm
 
 Indicating mode resembles a police car (white, red and blue
@@ -868,16 +752,12 @@ Indicating mode resembles a police car (white, red and blue
 |  | LED indicates tamper alarm. (1) |
 
 
-
-
-
-
 #### 1: Lifeline
 
 Device status  
 
 
-# Overview #
+##### Overview 
 
 "Lifeline" is a reporting group, assigned to the device status. Main Z-Wave+ network controller should be added to this group. The "Lifeline" group can handle only one device. If Fibaro Motion Sensor operates in protected mode, outgoing messages are always encrypted.
 
@@ -889,16 +769,12 @@ Device status
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Motion
 
   
 
 
-# Overview #
+##### Overview 
 
 "Motion" is assigned to the motion sensor. At the moment of motion detection or alarm state cancellation, nodes added to this group will receive control frames. The "Motion" group can handle up to five devices (one or multi-channel). If Fibaro Motion Sensor operates in protected mode, outgoing messages are encrypted, depending on whether the added node also operates in secure mode.
 
@@ -910,16 +786,12 @@ Device status
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Tamper
 
   
 
 
-# Overview #
+##### Overview 
 
 "Tamper" is assigned to the tamper alarm. Once tampering is detected or cancelled, nodes added to this group will receive alarm frames. The "Tamper" group can handle up to five devices (one or multi-channel). If Fibaro Motion Sensor operates in protected mode, outgoing messages are always encrypted.
 
@@ -931,16 +803,12 @@ Device status
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Motion BC
 
 Motion BC (backward compatibility)  
 
 
-# Overview #
+##### Overview 
 
 "Motion BC" is assigned to the motion sensor. Once motion is detected or alarm state cancelled, nodes added to this group will receive report frames. This group aims to provide backward compatibility with controllers not supporting the Z-Wave+ protocol. Only a main controller not supporting the Z-wave+ protocol should be added to this group. The "Motion BC" group can handle up to five devices (one or multi-channel). If Fibaro Motion Sensor operates in protected mode, outgoing messages are always encrypted.
 
@@ -952,16 +820,12 @@ Motion BC (backward compatibility)
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Tamper BC
 
 Tamper BC (backward compability)  
 
 
-# Overview #
+##### Overview 
 
 "Tamper BC" is assigned to the tamper alarm. Once tampering is detected or cancelled, nodes added to this group will receive alarm frames. This group aims to provide backward compatibility with devices not supporting the Z-Wave+ protocol. Only nodes not supporting the Z-wave+ protocol should be added to this group. The "Tamper BC" group can handle up to five devices (one or multi-channel). If Fibaro Motion Sensor operates in protected mode, outgoing messages are always encrypted. The Fibaro Motion Sensor allows for controlling 5 regular and 5 multichannel devices per an association group, out of which 1 field is reserved for the Z-Wave network main controller.
 
@@ -973,12 +837,7 @@ Tamper BC (backward compability)
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/328).
-

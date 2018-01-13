@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: DL9101V - ZWave
+---
+
+{% include base.html %}
 
 # DL9101V Door Lock with Handle
 
-This describes the Z-Wave device **DL9101V**, manufactured by **Shenzhen iSurpass Technology Co. ,Ltd** with the thing type UID of ```isurpass_dl9101v_00_000```. 
+This describes the Z-Wave device *DL9101V*, manufactured by *Shenzhen iSurpass Technology Co. ,Ltd* with the thing type UID of ```isurpass_dl9101v_00_000```. 
 
 Door Lock with Handle
+
 
 ## Channels
 The following table summarises the channels available for the DL9101V Door Lock with Handle.
@@ -15,7 +22,6 @@ The following table summarises the channels available for the DL9101V Door Lock 
 | Alarm | alarm_general | alarm_general | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
 | Clock Time Offset | time_offset | time_offset | Temperature | Number |
-
 
 
 ### Clock Time Offset
@@ -34,10 +40,6 @@ Setting this will automatically update the devices clock when the time differenc
 | Options | Disable Auto Update (0) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the DL9101V Door Lock with Handle.
 Detailed information on each parameter can be found below.
@@ -47,11 +49,7 @@ Detailed information on each parameter can be found below.
 | 1: Lifeline |  |
 
 
-
-
 #### 1: Lifeline
-
-
 
 
 | Property         | Value    |
@@ -61,12 +59,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/666).
-

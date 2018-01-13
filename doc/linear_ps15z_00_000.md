@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: PS15Z - ZWave
+---
+
+{% include base.html %}
 
 # PS15Z Plug-In Appliance Module
 
-This describes the Z-Wave device **PS15Z**, manufactured by **Linear Corp** with the thing type UID of ```linear_ps15z_00_000```. 
+This describes the Z-Wave device *PS15Z*, manufactured by *Linear Corp* with the thing type UID of ```linear_ps15z_00_000```. 
 
 Plug-In Appliance Module
+
 
 ## Channels
 The following table summarises the channels available for the PS15Z Plug-In Appliance Module.
@@ -12,8 +19,6 @@ The following table summarises the channels available for the PS15Z Plug-In Appl
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Scene Number | scene_number | scene_number |  | Number |
-
-
 
 
 ### Device Configuration
@@ -25,11 +30,7 @@ Detailed information on each parameter can be found below.
 | 104: Mode |  |
 
 
-
-
 #### 104: Mode
-
-
 
 
 | Property         | Value    |
@@ -40,12 +41,7 @@ Detailed information on each parameter can be found below.
 |  | ON/OFF Operation (1) |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/352).
-

@@ -1,22 +1,27 @@
+---
+layout: documentation
+title: powerSwitch - ZWave
+---
 
-# powerSwitch BeNext Power Switch EU
+{% include base.html %}
 
-This describes the Z-Wave device **powerSwitch**, manufactured by **BeNext** with the thing type UID of ```benext_powerswitch_00_000```. 
+# powerSwitch Power Switch EU
 
-BeNext Power Switch EU
+This describes the Z-Wave device *powerSwitch*, manufactured by *BeNext* with the thing type UID of ```benext_powerswitch_00_000```. 
+
+Power Switch EU
+
 
 ## Channels
-The following table summarises the channels available for the powerSwitch BeNext Power Switch EU.
+The following table summarises the channels available for the powerSwitch Power Switch EU.
 
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
 
 
-
-
 ### Device Configuration
-The following table provides a summary of the configuration parameters available in the powerSwitch BeNext Power Switch EU.
+The following table provides a summary of the configuration parameters available in the powerSwitch Power Switch EU.
 Detailed information on each parameter can be found below.
 
 | Parameter   | Description |
@@ -28,14 +33,12 @@ Detailed information on each parameter can be found below.
 | 1: Group 1 |  |
 
 
-
-
 #### 1: Set to Default
 
 Set all configuration values to default values (factory settings)  
 
 
-# Overview #
+##### Overview 
 
 All values (0x00 – 0xFF) except for 0x55 can be used to default all the configuration params .
 
@@ -48,16 +51,12 @@ All values (0x00 – 0xFF) except for 0x55 can be used to default all the config
 | Default Value | 0 |
 
 
-
-
-
-
 #### 4: Start up with last known socket status
 
 state in what the switch is when power is supplied  
 
 
-# Overview #
+##### Overview 
 
 If 0x01–0xFF: When power applied socket is the state before power was disconnected
 
@@ -70,16 +69,12 @@ If 0x01–0xFF: When power applied socket is the state before power was disconne
 | Default Value | 0 |
 
 
-
-
-
-
 #### 9: Relay delay time
 
 When the relay is switched it can't be switched again until the configured time has passed  
 
 
-# Overview #
+##### Overview 
 
 Value \* 10 milliseconds
 
@@ -92,16 +87,12 @@ Value \* 10 milliseconds
 | Default Value | 0 |
 
 
-
-
-
-
 #### 10: Led indicator
 
 Show the led compared to the relay state  
 
 
-# Overview #
+##### Overview 
 
 If value is 0: the indicator led is never switched on If value is 1: the indicator led is switched on when relay is switched on If value is 2: the indicator led is switched on when relay is switched off
 
@@ -114,13 +105,7 @@ If value is 0: the indicator led is never switched on If value is 1: the indicat
 | Default Value | 1 |
 
 
-
-
-
-
 #### 1: Group 1
-
-
 
 
 | Property         | Value    |
@@ -130,12 +115,7 @@ If value is 0: the indicator led is never switched on If value is 1: the indicat
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/224).
-

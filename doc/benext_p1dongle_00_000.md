@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: P1-dongle - ZWave
+---
+
+{% include base.html %}
 
 # P1-dongle P1-dongle
 
-This describes the Z-Wave device **P1-dongle**, manufactured by **BeNext** with the thing type UID of ```benext_p1dongle_00_000```. 
+This describes the Z-Wave device *P1-dongle*, manufactured by *BeNext* with the thing type UID of ```benext_p1dongle_00_000```. 
 
 P1-dongle  
 
 
-# Overview #
+## Overview 
 
 The P1-dongle sends smart meter data wirelessly to your controller, helping you get insight of your consumption and things like the overall yield of your solar panels. The P1-dongle can connect to smart meters that support DSMR (Dutch Smart Meter Reader Protocol) eg. all smart meters with a P1-connector.
 
@@ -22,7 +28,7 @@ LED Status Information
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
  *  Put you controller in inclusion mode
  *  Connect the P1 Dongle to your Smart Meter (use a power source when needed)
@@ -33,13 +39,14 @@ Use the button to switch the P1 Dongle to Inclusion (LED pulse twice per second
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
  *  Put your controller and the P1 Dongle in exclusion mode (LED pulse three times per 1.5 second)
  *  The dongle will exclude from it's former network and reset to node ID zero 
  *  If the P1 Dongle wasn't included in a network before, this procedure will act as a node reset
 
 Use the button to switch the P1 Dongle to Inclusion (LED pulse twice per second) or Exclusion / Reset (LED pulse three times per 1.5 second) mode
+
 
 ## Channels
 The following table summarises the channels available for the P1-dongle P1-dongle.
@@ -55,8 +62,6 @@ The following table summarises the channels available for the P1-dongle P1-dongl
 | Gas meter (G_Cubic_Meters) 3 | meter_gas_cubic_meters3 | meter_gas_cubic_meters | Energy | Number |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the P1-dongle P1-dongle.
 Detailed information on each parameter can be found below.
@@ -66,14 +71,12 @@ Detailed information on each parameter can be found below.
 | 4: Baud Rate | Baud rate: the rate the device sends data between the smart meter and z-wave |
 
 
-
-
 #### 4: Baud Rate
 
 Baud rate: the rate the device sends data between the smart meter and z-wave  
 
 
-# Overview #
+##### Overview 
 
 Set BAUD rate value \* 100.
 
@@ -86,12 +89,7 @@ Set BAUD rate value \* 100.
 | Default Value | 1152 |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/340).
-

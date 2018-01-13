@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: SSR-302 - ZWave
+---
+
+{% include base.html %}
 
 # SSR-302 Two Channel Boiler Actuator
 
-This describes the Z-Wave device **SSR-302**, manufactured by **Horstmann Controls Limited** with the thing type UID of ```horstmann_ssr302_00_000```. 
+This describes the Z-Wave device *SSR-302*, manufactured by *Horstmann Controls Limited* with the thing type UID of ```horstmann_ssr302_00_000```. 
 
 Two Channel Boiler Actuator
+
 
 ## Channels
 The following table summarises the channels available for the SSR-302 Two Channel Boiler Actuator.
@@ -18,8 +25,6 @@ The following table summarises the channels available for the SSR-302 Two Channe
 | Thermostat mode 2 | thermostat_mode2 | horstmann_ssr302_00_000_thermostat_mode | Temperature | Number |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the SSR-302 Two Channel Boiler Actuator.
 Detailed information on each parameter can be found below.
@@ -28,10 +33,7 @@ Detailed information on each parameter can be found below.
 |-------------|-------------|
 
 
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/262).
-

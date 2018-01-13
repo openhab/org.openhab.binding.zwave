@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: WDS - ZWave
+---
+
+{% include base.html %}
 
 # WDS Universal Double Switch
 
-This describes the Z-Wave device **WDS**, manufactured by **wiDom** with the thing type UID of ```widom_wds_00_000```. 
+This describes the Z-Wave device *WDS*, manufactured by *wiDom* with the thing type UID of ```widom_wds_00_000```. 
 
 Universal Double Switch  
 
 
-# Overview #
+## Overview 
 
 Universal Double Switch is an ON/OFF control device designed to independently control two separate loads, suited for use as both a local and remote switch. Similarly to the other WiDom “in wall” devices, it can be fully integrated into pre-existing systems and configured to associate configurable behaviours to a specific number of clicks, in full integration with the Z-Wave home automation ecosystem.
 
@@ -40,7 +46,7 @@ Conformity: CE, RoHS
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 The device supports both the Network Wide Inclusion (which offers the opportunity of inclusion into a network even if the device is not directly connected to the controller) and the Normal Inclusion mechanisms.
 
@@ -51,9 +57,10 @@ INFO: Through the inclusion procedure, activated with a single click on one of t
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 Only a controller can remove a device from the network. WiDom Universal Double Switch is compatible with all Z-Wave certified controllers. After the exclusion procedure has been activated by the controller, the device can be removed, putting it in Exclusion Mode by three consecutive clicks on the (B) button or on the external switch, when available.
+
 
 ## Channels
 The following table summarises the channels available for the WDS Universal Double Switch.
@@ -66,8 +73,6 @@ The following table summarises the channels available for the WDS Universal Doub
 | Electric meter (watts) 1 | meter_watts1 | meter_watts | Energy | Number |
 | Switch 2 | switch_binary2 | switch_binary | Switch | Switch |
 | Electric meter (watts) 2 | meter_watts2 | meter_watts | Energy | Number |
-
-
 
 
 ### Device Configuration
@@ -98,16 +103,14 @@ Detailed information on each parameter can be found below.
 | 5: Dimming control (Switch 2) |  |
 
 
-
-
 #### 0: Defines how to control the devices associated to group 4 and 5.
 
 Defines how to control the devices associated to group 4 and 5.  
 
 
-# Overview #
+##### Overview 
 
-#### Configuration value and Action performed on the associated device ####
+######## Configuration value and Action performed on the associated device 
 
 #####    0 – SWITCH\_OFF #####
 
@@ -158,16 +161,12 @@ No action is taken on the associated devices
 | Default Value | 100 |
 
 
-
-
-
-
 #### 1: Outputs status upon receipt of 1 click on its command
 
 Defines the status of the output O1/O2 when the switch connected to I1/I2 receives 1 Click  
 
 
-# Overview #
+##### Overview 
 
 INFO:
 
@@ -186,10 +185,6 @@ firmware version 1.40.
 |  | IGNORE (4) |
 
 
-
-
-
-
 #### 2: Outputs status upon receipt of 2 clicks on its command
 
 Defines the status of the output O1/O2 when the switch connected to I1/I2 receives 2 Click
@@ -205,16 +200,12 @@ Defines the status of the output O1/O2 when the switch connected to I1/I2 receiv
 |  | IGNORE (4) |
 
 
-
-
-
-
 #### 3: Type of outputs
 
 Defines if the outputs are controlled individually, as a traditional device with two channels, or if its behaviour simulates a single pole double throw relay  
 
 
-# Overview #
+##### Overview 
 
 **Parameter value and** d**evice reaction**
 
@@ -246,16 +237,12 @@ firmware version 1.40.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 4: Number of clicks that activate the control of the associated devices
 
 Defines the number of clicks on the Switch 1 or Switch 2 that enable the control of the correspondent associated devices  
 
 
-# Overview #
+##### Overview 
 
 TIP:
 
@@ -270,18 +257,14 @@ Through this parameter, together the setting of the parameters 1 and 2, it is po
 |  | 2 CLICKS (2) |
 
 
-
-
-
-
 #### 5: Level used to control the devices associated to group 2 and 3
 
 Defines how to control the devices associated to group 2 and 3.  
 
 
-# Overview #
+##### Overview 
 
-#### Configuration value and Action performed on the associated device ####
+######## Configuration value and Action performed on the associated device 
 
 #####    0 – SWITCH\_OFF #####
 
@@ -332,16 +315,12 @@ No action is taken on the associated devices
 | Default Value | 100 |
 
 
-
-
-
-
 #### 10: Timer to switch OFF the Channel 1
 
 Defines the time after which the Channel 1 is switched OFF  
 
 
-# Overview #
+##### Overview 
 
 0 (Default Value): Timer disabled
 
@@ -357,16 +336,12 @@ From 1 to 32000 (seconds): After this time the relay of the Channel 1 is OFF
 | Default Value | 0 |
 
 
-
-
-
-
 #### 11: Timer to switch OFF the Channel 2
 
 Defines the time after which the Channel 2 is switched OFF  
 
 
-# Overview #
+##### Overview 
 
 0 (Default Value): Timer disabled
 
@@ -382,16 +357,12 @@ From 1 to 32000 (seconds): After this time the relay of the Channel 2 is OFF
 | Default Value | 0 |
 
 
-
-
-
-
 #### 12: Timer to switch ON the Channel 1
 
 Defines the time after which the Channel 1 is switched ON  
 
 
-# Overview #
+##### Overview 
 
 0 (Default Value): Timer disabled
 
@@ -406,16 +377,12 @@ From 1 to 32000 (seconds): After this time the relay of the Channel 1 is ON
 | Default Value | 0 |
 
 
-
-
-
-
 #### 13: Timer to switch ON the Channel 2
 
 Defines the time after which the Channel 2 is switched ON  
 
 
-# Overview #
+##### Overview 
 
 0 (Default Value): Timer disabled
 
@@ -428,10 +395,6 @@ From 1 to 32000 (seconds): After this time the relay of the Channel 2 is ON
 | Data Type        | INTEGER |
 | Range | 0 to 32000 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 20: Outputs status upon receipt of a Multi-Channel Basic Set command
@@ -449,10 +412,6 @@ The two channels can be controlled individually by Z-Wave network. The status of
 |  | IGNORE (4) |
 
 
-
-
-
-
 #### 21: Outputs status upon receipt of a Basic Set command
 
 The channels of the device can be controlled individually from all other Z-Wave devices that support the multichannel feature. In order to support also the integration with no-multichannel systems, this parameter allows to define if the receipt of a no-mu
@@ -464,10 +423,6 @@ The channels of the device can be controlled individually from all other Z-Wave 
 | Data Type        | INTEGER || Default Value | 3 |
 | Options | CHANNEL 1 (1) |
 |  | BOTH CHANNELS (3) |
-
-
-
-
 
 
 #### 60: Start-up status
@@ -486,10 +441,6 @@ Defines the status of the device following a restart.
 |  | PREVIOUS STATUS (4) |
 
 
-
-
-
-
 #### 61: Configuration reset
 
 Defines which parameters should be reset to default values
@@ -506,10 +457,6 @@ Defines which parameters should be reset to default values
 |  | IGNORE (4) |
 
 
-
-
-
-
 #### 62: Type of external switch
 
 Defines the type of external switch connected to the device
@@ -524,16 +471,12 @@ Defines the type of external switch connected to the device
 |  | SWITCH (2) |
 
 
-
-
-
-
 #### 1: LifeLine Group
 
   
 
 
-# Overview #
+##### Overview 
 
 Devices to receive notifications on: status changes; instantaneous power level; device local reset 
 
@@ -545,16 +488,12 @@ Devices to receive notifications on: status changes; instantaneous power level; 
 | Range |  to  |
 
 
-
-
-
-
 #### 2: On/Off control (Switch 1)
 
   
 
 
-# Overview #
+##### Overview 
 
 Devices controlled by switch 1
 
@@ -566,16 +505,12 @@ Devices controlled by switch 1
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Dimming control (Switch 1)
 
   
 
 
-# Overview #
+##### Overview 
 
 Devices controlled by switch 1
 
@@ -587,16 +522,12 @@ Devices controlled by switch 1
 | Range |  to  |
 
 
-
-
-
-
 #### 4: On/Off control (Switch 2)
 
   
 
 
-# Overview #
+##### Overview 
 
 Devices controlled by switch 2
 
@@ -608,16 +539,12 @@ Devices controlled by switch 2
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Dimming control (Switch 2)
 
   
 
 
-# Overview #
+##### Overview 
 
 Devices controlled by switch 2
 
@@ -629,12 +556,7 @@ Devices controlled by switch 2
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/432).
-

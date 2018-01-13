@@ -1,14 +1,20 @@
+---
+layout: documentation
+title: Spirit - ZWave
+---
+
+{% include base.html %}
 
 # Spirit Thermostatic Valve
 
-This describes the Z-Wave device **Spirit**, manufactured by **Eurotronics** with the thing type UID of ```eurotronic_spirit_00_000```. 
+This describes the Z-Wave device *Spirit*, manufactured by *Eurotronics* with the thing type UID of ```eurotronic_spirit_00_000```. 
 
 Thermostatic Valve  
 
 
-# Overview #
+## Overview 
 
-# Intelligenter Energiesparregler für Z-Wave mit wechselbaren Designblenden. #
+## Intelligenter Energiesparregler für Z-Wave mit wechselbaren Designblenden. 
 
 Die neue Energiesparreglerserie von EUROtronic steht für ein völlig neues Designkonzept. Mit wechselbare Designblenden (als Zubehör erhältlich) kann der smarte Heizkörperthermostat an den individuellen Einrichtungsgeschmack angepasst werden.
 
@@ -21,16 +27,17 @@ Durch die per LED mehrfarbig beleuchtete Mitteltaste ist eine intuitive Nutzerf�
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 Start Inclusion mode of your primary Z-Wave Controller. Press the Boost-Button. Spirit Z-Wave Plus will show the assigned NodeID.
 
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 Start Exclusion mode of your primary Z-Wave Controller. Now press and hold the boost button of the Spirit Z-Wave Plus for at least 5 seconds.
+
 
 ## Channels
 The following table summarises the channels available for the Spirit Thermostatic Valve.
@@ -48,7 +55,6 @@ The following table summarises the channels available for the Spirit Thermostati
 |  | battery-level | system.battery-level |  |  |
 
 
-
 ### Dimmer
 
 #### Restore Last Value
@@ -62,9 +68,6 @@ Restore Last Dimming level on ON.
 | Data Type        | BOOLEAN || Default Value | true |
 | Options | Restore Last Value (true) |
 |  | Restore Full Brightness (false) |
-
-
-
 
 
 ### Current temperature
@@ -82,9 +85,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (heat)
 
 #### Scale
@@ -100,9 +100,6 @@ Select the scale to use for setpoints.
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (energy heat)
 
 #### Scale
@@ -116,10 +113,6 @@ Select the scale to use for setpoints.
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -139,8 +132,6 @@ Detailed information on each parameter can be found below.
 | 1: Lifeline | Spirit Z-Wave Plus can only be associated with the Z-Wave controller. |
 
 
-
-
 #### 1: LCD Invert
 
 LCD Invert
@@ -154,16 +145,12 @@ LCD Invert
 |  | LCD-content inverted (UK Edition) (1) |
 
 
-
-
-
-
 #### 2: LCD Timeout
 
 LCD Timeout  
 
 
-# Overview #
+##### Overview 
 
 0: No Timeout LCD always on
 
@@ -176,10 +163,6 @@ LCD Timeout
 | Data Type        | INTEGER |
 | Range | 5 to 30 || Default Value | 0 |
 | Options | No Timeout LCD always on (0) |
-
-
-
-
 
 
 #### 3: Backlight
@@ -195,10 +178,6 @@ Backlight
 |  | Backlight enabled (1) |
 
 
-
-
-
-
 #### 4: Battery report
 
 Battery report
@@ -212,16 +191,12 @@ Battery report
 |  | Send battery status unsolicited once a day. (1) |
 
 
-
-
-
-
 #### 5: Measured Temperature report
 
 Measured Temperature report  
 
 
-# Overview #
+##### Overview 
 
 0: Unsolicited Temperature reporting disabled
 
@@ -238,16 +213,12 @@ default 5: report on delta T = 0,5°C
 | Default Value | 5 |
 
 
-
-
-
-
 #### 6: Valve opening percentage report
 
 Valve opening percentage report  
 
 
-# Overview #
+##### Overview 
 
 0: Unsolicited valve opening percentage reporting disabled.
 
@@ -260,10 +231,6 @@ Valve opening percentage report
 | Data Type        | INTEGER |
 | Range | 0 to 100 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 7: Window open detection
@@ -281,16 +248,12 @@ Window open detection
 |  | Sensitivity high (3) |
 
 
-
-
-
-
 #### 8: Measured Temperature offset
 
 Measured Temperature offset  
 
 
-# Overview #
+##### Overview 
 
 \-50 - +50: Offsets the measured temperature by-5,0°C – (+)5,0°C
 
@@ -305,16 +268,12 @@ Measured Temperature offset
 | Options | External temperature sensor will be used for regulation. (128) |
 
 
-
-
-
-
 #### 1: Lifeline
 
 Spirit Z-Wave Plus can only be associated with the Z-Wave controller.  
 
 
-# Overview #
+##### Overview 
 
 Commands:
 
@@ -328,12 +287,7 @@ BATTERY\_REPORT, DEVICE\_RESET\_LOCALLY\_NOTIFICATION, THERMOSTAT\_MODE\_REPORT,
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/710).
-

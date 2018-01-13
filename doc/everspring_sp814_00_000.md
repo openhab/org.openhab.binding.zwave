@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: SP814 - ZWave
+---
+
+{% include base.html %}
 
 # SP814 Motion Detector
 
-This describes the Z-Wave device **SP814**, manufactured by **Everspring** with the thing type UID of ```everspring_sp814_00_000```. 
+This describes the Z-Wave device *SP814*, manufactured by *Everspring* with the thing type UID of ```everspring_sp814_00_000```. 
 
 Motion Detector
+
 
 ## Channels
 The following table summarises the channels available for the SP814 Motion Detector.
@@ -12,8 +19,6 @@ The following table summarises the channels available for the SP814 Motion Detec
 |---------|------------|------------------|----------|-----------|
 | Binary Sensor | sensor_binary | sensor_binary | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -32,14 +37,12 @@ Detailed information on each parameter can be found below.
 | 2: Control |  |
 
 
-
-
 #### 1: Basic Set Level
 
 Basic Set Level  
 
 
-# Overview #
+##### Overview 
 
 When Basic Set Command is sent where contains a value, the receiver will take it for consideration; for instance, if a lamp module is received the Basic Set command of which value is decisive as to how bright of dim level of lamp module shall be.
 
@@ -68,10 +71,6 @@ Default: 99 
 | Default Value | 99 |
 
 
-
-
-
-
 #### 2: Enable/Disable Detecting
 
 The Detecting function can be Disabled or Enabled.
@@ -83,10 +82,6 @@ The Detecting function can be Disabled or Enabled.
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | Disabled (0) |
 |  | Enabled (1) |
-
-
-
-
 
 
 #### 3: Sensitivity Level
@@ -102,16 +97,12 @@ The Detecting function can be Disabled or Enabled.
 | Default Value | 6 |
 
 
-
-
-
-
 #### 4: Re-trigger Interval
 
 Adjust the interval of being re-triggered after a trigger  
 
 
-# Overview #
+##### Overview 
 
 The Configuration parameter that can be used to adjust the interval of being re-triggered after the detector has been triggered as Configuration Parameter \#4. No response will be made during this interval if a movement is presented. The time interval can be set between 5 secs to 3600 secs. 
 
@@ -124,16 +115,12 @@ The Configuration parameter that can be used to adjust the interval of being re-
 | Default Value | 5 |
 
 
-
-
-
-
 #### 5: Lux Level
 
 Minimum Lux Level to provoke trigger  
 
 
-# Overview #
+##### Overview 
 
 Sets minimum Lux Level of ambient illumination necessary for Motion Detector to trigger.
 
@@ -148,16 +135,12 @@ The user can set a detecting percentage of lux level which determines when the l
 | Default Value | 10 |
 
 
-
-
-
-
 #### 6: On-Off Duration
 
 On-Off Duration  
 
 
-# Overview #
+##### Overview 
 
 The function of on-off duration setting will be useful if the detector is connected with a module or lighting. The duration determines how long the module/lighting should stay ON. For instance, Lamp Module turns off 100 secs after it has been turned on. This parameter can be configured with the value of 5 through 3600, where 5 means 5 second delay and 3600 means 3600 seconds of delay
 
@@ -170,13 +153,7 @@ The function of on-off duration setting will be useful if the detector is connec
 | Default Value | 5 |
 
 
-
-
-
-
 #### 1: Reports
-
-
 
 
 | Property         | Value    |
@@ -186,13 +163,7 @@ The function of on-off duration setting will be useful if the detector is connec
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Control
-
-
 
 
 | Property         | Value    |
@@ -202,12 +173,7 @@ The function of on-off duration setting will be useful if the detector is connec
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/30).
-

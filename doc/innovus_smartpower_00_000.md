@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: SmartPower - ZWave
+---
+
+{% include base.html %}
 
 # SmartPower RAone SmartPower
 
-This describes the Z-Wave device **SmartPower**, manufactured by **INNOVUS** with the thing type UID of ```innovus_smartpower_00_000```. 
+This describes the Z-Wave device *SmartPower*, manufactured by *INNOVUS* with the thing type UID of ```innovus_smartpower_00_000```. 
 
 RAone SmartPower
+
 
 ## Channels
 The following table summarises the channels available for the SmartPower RAone SmartPower.
@@ -13,8 +20,6 @@ The following table summarises the channels available for the SmartPower RAone S
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Sensor (power) | sensor_power | sensor_power | Energy | Number |
 | Electric meter (kWh) | meter_kwh | meter_kwh | Energy | Number |
-
-
 
 
 ### Device Configuration
@@ -28,14 +33,12 @@ Detailed information on each parameter can be found below.
 | 1: Switch |  |
 
 
-
-
 #### 1: Report node
 
 Report changes in level to this node id  
 
 
-# Overview #
+##### Overview 
 
 Report Node, reports changes in level to this node id.
 
@@ -50,16 +53,12 @@ Disabled if 0. -> Copied from SmartDimmer, as there's no config information avai
 | Default Value | 0 |
 
 
-
-
-
-
 #### 2: BO IR support
 
 Enable/Disable BO IR Support  
 
 
-# Overview #
+##### Overview 
 
 BO IR support is disabled if 0 otherwise enabled. -> Copied from SmartDimmer, as there's no config information available.
 
@@ -72,13 +71,7 @@ BO IR support is disabled if 0 otherwise enabled. -> Copied from SmartDimmer, as
 |  | enabled (1) |
 
 
-
-
-
-
 #### 1: Switch
-
-
 
 
 | Property         | Value    |
@@ -88,12 +81,7 @@ BO IR support is disabled if 0 otherwise enabled. -> Copied from SmartDimmer, as
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/61).
-

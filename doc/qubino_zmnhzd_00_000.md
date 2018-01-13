@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZMNHZD - ZWave
+---
+
+{% include base.html %}
 
 # ZMNHZD Multifunctional Weather Station
 
-This describes the Z-Wave device **ZMNHZD**, manufactured by **Goap** with the thing type UID of ```qubino_zmnhzd_00_000```. 
+This describes the Z-Wave device *ZMNHZD*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhzd_00_000```. 
 
 Multifunctional Weather Station
+
 
 ## Channels
 The following table summarises the channels available for the ZMNHZD Multifunctional Weather Station.
@@ -38,7 +45,6 @@ The following table summarises the channels available for the ZMNHZD Multifuncti
 |  | battery-level10 | system.battery-level |  |  |
 
 
-
 ### Sensor (temperature)
 
 #### Scale
@@ -52,9 +58,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
 
 
 ### Thermo/ Hygro Sensor Ch1 – Temperature
@@ -72,9 +75,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Wind Gauge – Temperature
 
 #### Scale
@@ -88,9 +88,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
 
 
 ### Wind Gauge – Wind Chill
@@ -108,9 +105,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Thermo/ Hygro Sensor Ch2 – Temperature
 
 #### Scale
@@ -124,10 +118,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -157,14 +147,12 @@ Detailed information on each parameter can be found below.
 | 3: Basic on/off | triggered when the rain rate exceed the configuration parameter 2 value |
 
 
-
-
 #### 1: Wind Gauge
 
 Wind Gauge, Wind Gust Top Value  
 
 
-# Overview #
+##### Overview 
 
 Wind Gauge, Wind Gust Top Value, if the Wind Gust is Higher than the Parameter Value, a device triggers an Association
 
@@ -177,16 +165,12 @@ Wind Gauge, Wind Gust Top Value, if the Wind Gust is Higher than the Parameter V
 | Default Value | 1000 |
 
 
-
-
-
-
 #### 2: Rain Gauge
 
 Rain Rate top value  
 
 
-# Overview #
+##### Overview 
 
 If the sensor Rain Rate is higher than the parameter value, a device triggers a association.
 
@@ -199,16 +183,12 @@ If the sensor Rain Rate is higher than the parameter value, a device triggers a 
 | Default Value | 200 |
 
 
-
-
-
-
 #### 3: Wind Gauge
 
 Wind Gust  
 
 
-# Overview #
+##### Overview 
 
 0 - if the wind gauge is higher than the parameter No. 1 value, then a device sends basic set = 0x00
 
@@ -223,16 +203,12 @@ Wind Gust
 | Default Value | 1 |
 
 
-
-
-
-
 #### 4: Rain Gauge
 
 Rain Rate  
 
 
-# Overview #
+##### Overview 
 
 0 - if the rain amount is higher than the parameter No. 2 value, then a device sends basic set = 0x00
 
@@ -247,16 +223,12 @@ Rain Rate
 | Default Value | 1 |
 
 
-
-
-
-
 #### 5: End Point 1
 
 Unsolicited report  
 
 
-# Overview #
+##### Overview 
 
 0 - Unsolicited report disabled
 
@@ -271,16 +243,12 @@ Unsolicited report
 | Default Value | 1 |
 
 
-
-
-
-
 #### 6: End Point 2
 
 Unsolicited report  
 
 
-# Overview #
+##### Overview 
 
 0 - Unsolicited report disabled
 
@@ -295,16 +263,12 @@ Unsolicited report
 | Default Value | 1 |
 
 
-
-
-
-
 #### 7: End Point 3
 
 Unsolicited report  
 
 
-# Overview #
+##### Overview 
 
 0 - Unsolicited report disabled
 
@@ -319,16 +283,12 @@ Unsolicited report
 | Default Value | 1 |
 
 
-
-
-
-
 #### 8: End Point 4
 
 Unsolicited report  
 
 
-# Overview #
+##### Overview 
 
 0 - Unsolicited report disabled
 
@@ -343,16 +303,12 @@ Unsolicited report
 | Default Value | 1 |
 
 
-
-
-
-
 #### 9: End Point 5
 
 Unsolicited report  
 
 
-# Overview #
+##### Overview 
 
 0 - Unsolicited report disabled
 
@@ -367,16 +323,12 @@ Unsolicited report
 | Default Value | 1 |
 
 
-
-
-
-
 #### 10: End Point 6
 
 Unsolicited report  
 
 
-# Overview #
+##### Overview 
 
 0 - Unsolicited report disabled
 
@@ -391,16 +343,12 @@ Unsolicited report
 | Default Value | 1 |
 
 
-
-
-
-
 #### 11: End Point 7
 
 Unsolicited report  
 
 
-# Overview #
+##### Overview 
 
 0 - Unsolicited report disabled
 
@@ -415,16 +363,12 @@ Unsolicited report
 | Default Value | 1 |
 
 
-
-
-
-
 #### 12: End Point 8
 
 Unsolicited report  
 
 
-# Overview #
+##### Overview 
 
 0 - Unsolicited report disabled
 
@@ -439,16 +383,12 @@ Unsolicited report
 | Default Value | 1 |
 
 
-
-
-
-
 #### 13: End Point 9
 
 Unsolicited report  
 
 
-# Overview #
+##### Overview 
 
 0 - Unsolicited report disabled
 
@@ -463,16 +403,12 @@ Unsolicited report
 | Default Value | 1 |
 
 
-
-
-
-
 #### 14: End Point 10
 
 Unsolicited report  
 
 
-# Overview #
+##### Overview 
 
 0 - Unsolicited report disabled
 
@@ -487,16 +423,12 @@ Unsolicited report
 | Default Value | 1 |
 
 
-
-
-
-
 #### 15: Random ID enable
 
 enables/disables random ID  
 
 
-# Overview #
+##### Overview 
 
 If Random ID is disabled, the Weather Station USB Key can receive data from multiple 433 MHz Sensors on the same Channel. If the Random ID is enabled, the USB Key can receive data from only one sensor on the same channel. If the USB Key does not receive a data from a sensor on a specific channel for more than 2.5 hours, it clears the Random ID of the device and waits for a new ID. If you replace the batteries in the modules, the Random ID will change. If you want that the USB Key accept a module immediately, set the Parameter No. 15 to “0” and in the next step again to “1”.
 
@@ -509,16 +441,12 @@ If Random ID is disabled, the Weather Station USB Key can receive data from mult
 | Default Value | 0 |
 
 
-
-
-
-
 #### 250: Unsecure / Secure Inclusion
 
 Unsecure / Secure Inclusion  
 
 
-# Overview #
+##### Overview 
 
  *  default Value 0
  *  0 – Unsecure Inclusion
@@ -547,10 +475,6 @@ The same procedure is to include the module as unsecure
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Lifeline group
 
 reserved for the communication with the main controller
@@ -561,10 +485,6 @@ reserved for the communication with the main controller
 | Configuration ID | group_1 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 2: Basic on/off
@@ -579,10 +499,6 @@ triggered when the wind gust of the wind gauge exceed the configuration paramete
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Basic on/off
 
 triggered when the rain rate exceed the configuration parameter 2 value
@@ -595,12 +511,7 @@ triggered when the rain rate exceed the configuration parameter 2 value
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/364).
-

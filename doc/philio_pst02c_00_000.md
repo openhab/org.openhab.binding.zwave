@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: PST02C - ZWave
+---
+
+{% include base.html %}
 
 # PST02C Slim Multi-Sensor (Door/Temperature/Illumination)
 
-This describes the Z-Wave device **PST02C**, manufactured by **Philio Technology Corp** with the thing type UID of ```philio_pst02c_00_000```. 
+This describes the Z-Wave device *PST02C*, manufactured by *Philio Technology Corp* with the thing type UID of ```philio_pst02c_00_000```. 
 
 Slim Multi-Sensor (Door/Temperature/Illumination)  
 
 
-# Overview #
+## Overview 
 
 The slim multisensor PST02 has PIR, door/window, temperature and illumination, 4 sensors function in one, based on Z-WaveTM technology. It is the Z-WaveTM plus product, it support the security, OTA... Those newest features of the Z-WaveTM technology. Z-WaveTM is a wireless communication protocol designed for home automation, specifically to remotely control applications in residential and light commercial environments. The technology uses a low-power RF radio embedded or retrofitted into home electronics devices and systems, such as lighting, home access control, entertainment systems and household appliances.
 
@@ -17,7 +23,7 @@ The device adopt the Z-WaveTM 500 series chip, when your Z-WaveTM network system
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 There are two tamper keys in the device, one is in the back side, another is in the front side. Both of them can add, remove, reset or association from Z-WaveTM network.
 
@@ -30,7 +36,7 @@ In the first time, add the device into the Z-WaveTM network. First, make sure th
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 There are two tamper keys in the device, one is in the back side, another is in the front side. Both of them can add, remove, reset or association from Z-WaveTM network.
 
@@ -42,13 +48,14 @@ In the first time, add the device into the Z-WaveTM network. First, make sure th
   
 
 
-## Wakeup Information ##
+### Wakeup Information 
 
 After the device adding to the network, it will wake-up once per day in default. When it wake-up it will broadcast the “Wake Up Notification” message to the network, and wake-up 10 seconds for receive the setting commands.
 
 The wake-up interval minimum setting is 30 minutes, and maximum setting is 120 hours. And the interval step is 30 minutes.
 
 If the user want to wake-up the device immediately, please remove the front cover, and press the tamper key once. The device will wake-up 10 seconds.
+
 
 ## Channels
 The following table summarises the channels available for the PST02C Slim Multi-Sensor (Door/Temperature/Illumination).
@@ -60,7 +67,6 @@ The following table summarises the channels available for the PST02C Slim Multi-
 | Sensor (luminance) | sensor_luminance | sensor_luminance | Temperature | Number |
 | Door sensor | sensor_door | sensor_door | Door | Contact |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Sensor (temperature)
@@ -76,10 +82,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -106,14 +108,12 @@ Detailed information on each parameter can be found below.
 | 2: Light Control |  |
 
 
-
-
 #### 2: Basic Set Level
 
 Setting the BASIC command value to turn on the light.  
 
 
-# Overview #
+##### Overview 
 
 Setting the BASIC command value to turn on the light.
 
@@ -130,16 +130,12 @@ Setting the BASIC command value to turn on the light.
 | Default Value | -1 |
 
 
-
-
-
-
 #### 4: Light Threshold
 
 Setting the illumination threshold to turn on the light.  
 
 
-# Overview #
+##### Overview 
 
 Setting the illumination threshold to turn on the light. When the event triggers and the environment illumination is lower than the threshold, the device will turn on the light.
 
@@ -154,16 +150,12 @@ Setting the illumination threshold to turn on the light. When the event triggers
 | Default Value | 100 |
 
 
-
-
-
-
 #### 5: Operation Mode
 
 Parameter to set the Operation Mode.  
 
 
-# Overview #
+##### Overview 
 
 Parameter to set the Operation Mode.
 
@@ -185,16 +177,12 @@ Parameter to set the Operation Mode.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 6: Multi-Sensor Function Switch
 
 Parameter to set the sensor functions.  
 
 
-# Overview #
+##### Overview 
 
 Parameter to set the sensor functions.
 
@@ -225,16 +213,12 @@ Notice: If the configuration No.9 is zero, this setting is useless.
 | Default Value | 4 |
 
 
-
-
-
-
 #### 7: Customer Function
 
 Parameter to set the Customer Function.  
 
 
-# Overview #
+##### Overview 
 
 Parameter to set the Customer Function.
 
@@ -259,16 +243,12 @@ Parameter to set the Customer Function.
 | Default Value | 4 |
 
 
-
-
-
-
 #### 8: PIR Re-Detect Interval Time
 
   
 
 
-# Overview #
+##### Overview 
 
 In the normal mode, after the PIR motion detected, setting the re-detect time. 8 seconds per tick, default is 3 (24 seconds).
 
@@ -283,16 +263,12 @@ In the normal mode, after the PIR motion detected, setting the re-detect time. 8
 | Default Value | 3 |
 
 
-
-
-
-
 #### 9: Turn Off Light Time
 
   
 
 
-# Overview #
+##### Overview 
 
 After turn on the light, setting the delay time to turn off the light when the PIR motion is not detected.
 
@@ -308,16 +284,12 @@ After turn on the light, setting the delay time to turn off the light when the P
 | Default Value | 4 |
 
 
-
-
-
-
 #### 10: Auto Report Battery Time
 
   
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto reporting the battery level.
 
@@ -333,16 +305,12 @@ The interval time for auto reporting the battery level.
 | Default Value | 12 |
 
 
-
-
-
-
 #### 11: Auto Report Door/Window State Time
 
   
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto reporting the door/window state.
 
@@ -358,16 +326,12 @@ The interval time for auto reporting the door/window state.
 | Default Value | 12 |
 
 
-
-
-
-
 #### 12: Auto Report Illumination Time
 
 The Interval time for auto reporting the illumination state.  
 
 
-# Overview #
+##### Overview 
 
 The Interval time for auto reporting the illumination state.
 
@@ -383,16 +347,12 @@ The Interval time for auto reporting the illumination state.
 | Default Value | 12 |
 
 
-
-
-
-
 #### 13: Auto Report Temperature Time
 
 The interval time for auto reporting the temperature state.  
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto reporting the temperature state.
 
@@ -408,16 +368,12 @@ The interval time for auto reporting the temperature state.
 | Default Value | 12 |
 
 
-
-
-
-
 #### 20: Auto Report Tick Interval
 
 The interval time for each auto report tick.  
 
 
-# Overview #
+##### Overview 
 
 The interval time for each auto report tick. Setting this configuration will effect configuration No.10, No.11, No.12 and No.13.
 
@@ -433,16 +389,12 @@ The interval time for each auto report tick. Setting this configuration will eff
 | Default Value | 30 |
 
 
-
-
-
-
 #### 21: Temperature Differential Report
 
 The temperature differential to report.  
 
 
-# Overview #
+##### Overview 
 
 The temperature differential to report. 0 means turn off this function. The unit is Fahrenheit. Enable this function the device will detect every minutes. And when the temperature is over 140 degree Fahrenheit, it will continue report. Enable this functionality will cause some issue please see the detail in the “Temperature Report” section.
 
@@ -455,16 +407,12 @@ The temperature differential to report. 0 means turn off this function. The un
 | Default Value | 1 |
 
 
-
-
-
-
 #### 22: Illumination Differential Report
 
 The illumination differential to report.  
 
 
-# Overview #
+##### Overview 
 
 The illumination differential to report. 0 means turn off this function. The unit is percentage. Enable this function the device will detect every minutes. Enable this functionality will cause some issue please see the detail in the “Illumination Report” section.
 
@@ -477,13 +425,7 @@ The illumination differential to report. 0 means turn off this function. The u
 | Default Value | 1 |
 
 
-
-
-
-
 #### 1: Reports
-
-
 
 
 | Property         | Value    |
@@ -493,13 +435,7 @@ The illumination differential to report. 0 means turn off this function. The u
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Light Control
-
-
 
 
 | Property         | Value    |
@@ -509,12 +445,7 @@ The illumination differential to report. 0 means turn off this function. The u
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/170).
-

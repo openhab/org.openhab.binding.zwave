@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: DCH-Z110 - ZWave
+---
+
+{% include base.html %}
 
 # DCH-Z110 Door &amp; Window Sensor
 
-This describes the Z-Wave device **DCH-Z110**, manufactured by **D-Link** with the thing type UID of ```dlink_dchz110_00_000```. 
+This describes the Z-Wave device *DCH-Z110*, manufactured by *D-Link* with the thing type UID of ```dlink_dchz110_00_000```. 
 
 Door & Window Sensor
+
 
 ## Channels
 The following table summarises the channels available for the DCH-Z110 Door &amp; Window Sensor.
@@ -15,7 +22,6 @@ The following table summarises the channels available for the DCH-Z110 Door &amp
 | Sensor (temperature) | sensor_temperature | sensor_temperature | Temperature | Number |
 | Alarm | alarm_general | alarm_general | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Sensor (temperature)
@@ -31,10 +37,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -66,14 +68,12 @@ Detailed information on each parameter can be found below.
 | 2: Light Control |  |
 
 
-
-
 #### 2: Basic Set Level
 
 Setting the BASIC command value to turn on the light.  
 
 
-# Overview #
+##### Overview 
 
  *  0: Turn off the light.
  *  1 - 100: For dimmers 1 to 100 means the light level.
@@ -89,16 +89,12 @@ Setting the BASIC command value to turn on the light.
 |  | On (255) |
 
 
-
-
-
-
 #### 3: PIR Sensitivity
 
 Set the sensitivity for the PIR (Passive Infrared Sensor).  
 
 
-# Overview #
+##### Overview 
 
  *  0 = Disable the PIR motion detection.
  *  1 - 99 = 1 means the lowest sensitivity, 99 means the highest sensitivity
@@ -114,16 +110,12 @@ High sensitivity means de
 | Options | Disable (0) |
 
 
-
-
-
-
 #### 4: Light Threshold
 
 Set the illumination threshold to turn on the light.  
 
 
-# Overview #
+##### Overview 
 
 When the event triggers and the environment illumination is lower than the threshold, the device will turn on the light.
 
@@ -138,10 +130,6 @@ When the event triggers and the environment illumination is lower than the thres
 | Options | Disable (0) |
 
 
-
-
-
-
 #### 5: Operation Mode
 
 Parameter to set the Operation Mode. Bit 0: Reserved. Bit 1: 1 means enable test mode; 0 means normal mode. Notice: Ignored if DIP Switch is not set to Customer Mode. Bit 2: Disable the door/window function. 1
@@ -153,10 +141,6 @@ Parameter to set the Operation Mode. Bit 0: Reserved. Bit 1: 1 means enable test
 | Data Type        | INTEGER |
 | Range | 0 to 127 || Default Value | 0 |
 | Options | Preset: Celsius and LED on &#x3D; Bits: 00001010 &#x3D; 10 (10) |
-
-
-
-
 
 
 #### 6: Multi-Sensor Function Switch
@@ -176,16 +160,12 @@ Parameter to set the sensor functions.
 | Default Value | 4 |
 
 
-
-
-
-
 #### 7: Customer Function
 
 Parameter to set the Customer Function.  
 
 
-# Overview #
+##### Overview 
 
 l
 
@@ -198,13 +178,7 @@ l
 | Options | Preset: PIR Super Sensitivity and Binary Report &#x3D; Bits: 00010100 &#x3D; 20 (20) |
 
 
-
-
-
-
 #### 7: Disable send of BASIC OFF after door closed
-
-
 
 
 | Property         | Value    |
@@ -215,13 +189,7 @@ l
 |  | Disable (1) |
 
 
-
-
-
-
 #### 7: Notification Type
-
-
 
 
 | Property         | Value    |
@@ -232,13 +200,7 @@ l
 |  | Sensor Binary Report (1) |
 
 
-
-
-
-
 #### 7: Disable Multi CC in auto report
-
-
 
 
 | Property         | Value    |
@@ -249,13 +211,7 @@ l
 |  | Disable (1) |
 
 
-
-
-
-
 #### 7: Disable to report battery state when the device triggered
-
-
 
 
 | Property         | Value    |
@@ -264,10 +220,6 @@ l
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Enable (0) |
 |  | Disable (1) |
-
-
-
-
 
 
 #### 8: PIR Re-Detect Interval Time
@@ -284,10 +236,6 @@ In the normal mode, after the PIR motion detected, setting the re-detect time. 8
 | Data Type        | INTEGER |
 | Range | 1 to 127 |
 | Default Value | 3 |
-
-
-
-
 
 
 #### 9: Turn Off Light Time
@@ -307,10 +255,6 @@ After turn on the light, setting the delay time to turn off the light when the P
 | Default Value | 4 |
 
 
-
-
-
-
 #### 10: Auto Report Battery Time
 
 The interval time for auto reporting the battery level.  
@@ -326,10 +270,6 @@ The interval time for auto reporting the battery level.
 | Data Type        | INTEGER |
 | Range | 0 to 127 |
 | Default Value | 12 |
-
-
-
-
 
 
 #### 11: Auto Report Door/Window State Time
@@ -349,10 +289,6 @@ The interval time for auto reporting the door/window state.
 | Default Value | 12 |
 
 
-
-
-
-
 #### 12: Auto Report Illumination Time
 
 The Interval time for auto reporting the illumination state.  
@@ -365,10 +301,6 @@ The Interval time for auto reporting the illumination state.
 | Data Type        | INTEGER |
 | Range | 1 to 127 |
 | Default Value | 12 |
-
-
-
-
 
 
 #### 13: Auto Report Temperature Time
@@ -388,10 +320,6 @@ The interval time for auto reporting the temperature state.
 | Default Value | 12 |
 
 
-
-
-
-
 #### 20: Auto Report Tick Interval
 
 The interval time for each auto report tick. Setting this configuration will effect configuration No.10, No.11, No.12 and No.13. 0 = Turn off all auto report functions. 1-255 = Interval time for each tick. Default is 30. Unit is in minutes
@@ -403,10 +331,6 @@ The interval time for each auto report tick. Setting this configuration will eff
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 30 |
-
-
-
-
 
 
 #### 21: Temperature Differential Report
@@ -422,14 +346,9 @@ The temperature differential to report. The unit is Fahrenheit. When enabled, th
 | Default Value | 1 |
 
 
-
-
-
-
 #### 22: Illumination Differential Report
 
 The illumination differential to report. The unit is percentage. When enabled, the device will measure every minute. Enabling this functionality will cause some issue. Please check the “Illumination Report” section of the Multisensor manual.  
-
 
 
 | Property         | Value    |
@@ -440,13 +359,7 @@ The illumination differential to report. The unit is percentage. When enabled, t
 | Default Value | 1 |
 
 
-
-
-
-
 #### 1: Reports
-
-
 
 
 | Property         | Value    |
@@ -456,13 +369,7 @@ The illumination differential to report. The unit is percentage. When enabled, t
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Light Control
-
-
 
 
 | Property         | Value    |
@@ -472,12 +379,7 @@ The illumination differential to report. The unit is percentage. When enabled, t
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/252).
-

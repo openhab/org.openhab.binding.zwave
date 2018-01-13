@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: DZPA1 - ZWave
+---
+
+{% include base.html %}
 
 # DZPA1 Plug-in Appliance Module
 
-This describes the Z-Wave device **DZPA1**, manufactured by **Leviton** with the thing type UID of ```leviton_dzpa1_00_000```. 
+This describes the Z-Wave device *DZPA1*, manufactured by *Leviton* with the thing type UID of ```leviton_dzpa1_00_000```. 
 
 Plug-in Appliance Module
+
 
 ## Channels
 The following table summarises the channels available for the DZPA1 Plug-in Appliance Module.
@@ -11,8 +18,6 @@ The following table summarises the channels available for the DZPA1 Plug-in Appl
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
-
-
 
 
 ### Device Configuration
@@ -32,8 +37,6 @@ Detailed information on each parameter can be found below.
 | 12: ALL ON/ALL OFF Dim Rate | This value indicates in 10 millisecond resolution. |
 
 
-
-
 #### 4: Invert Switch
 
 Invert the ON/OFF Switch State.  
@@ -49,10 +52,6 @@ Note: If you invert the switches and also install the product upside down, the l
 |  | Yes (1) |
 
 
-
-
-
-
 #### 5: Ignore Start-Level (Receiving)
 
 This dimmer will start dimming from its current level.
@@ -64,10 +63,6 @@ This dimmer will start dimming from its current level.
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | No (0) |
 |  | Yes (1) |
-
-
-
-
 
 
 #### 7: Night Light
@@ -84,10 +79,6 @@ Defines the behavior of the blue LED. Default is Night Light mode where LED is o
 |  | LED on when switch is OFF (255) |
 
 
-
-
-
-
 #### 7: On/Off Command Dim Step
 
 Indicates how many levels the dimmer will change for each dimming step.
@@ -99,10 +90,6 @@ Indicates how many levels the dimmer will change for each dimming step.
 | Data Type        | INTEGER |
 | Range | 1 to 99 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 8: On/Off Command Dim Rate
@@ -119,10 +106,6 @@ This sets how often the dim level will change. For example, if you set this para
 | Default Value | 3 |
 
 
-
-
-
-
 #### 9: Local Control Dim Step
 
 Indicates how many levels the dimmer will change for each dimming step.
@@ -134,10 +117,6 @@ Indicates how many levels the dimmer will change for each dimming step.
 | Data Type        | INTEGER |
 | Range | 1 to 99 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 10: Local Control Dim Rate
@@ -154,10 +133,6 @@ This sets how often the dim level will change. For example, if you set this para
 | Default Value | 3 |
 
 
-
-
-
-
 #### 11: ALL ON/ALL OFF Dim Step
 
 Indicates how many levels the dimmer will change for each dimming step.
@@ -169,10 +144,6 @@ Indicates how many levels the dimmer will change for each dimming step.
 | Data Type        | INTEGER |
 | Range | 1 to 99 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 12: ALL ON/ALL OFF Dim Rate
@@ -189,12 +160,7 @@ This sets how often the dim level will change. For example, if you set this para
 | Default Value | 3 |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/305).
-

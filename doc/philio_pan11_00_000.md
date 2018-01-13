@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: PAN11 - ZWave
+---
+
+{% include base.html %}
 
 # PAN11 Smart Energy Plug In Switch
 
-This describes the Z-Wave device **PAN11**, manufactured by **Philio Technology Corp** with the thing type UID of ```philio_pan11_00_000```. 
+This describes the Z-Wave device *PAN11*, manufactured by *Philio Technology Corp* with the thing type UID of ```philio_pan11_00_000```. 
 
 Smart Energy Plug In Switch
+
 
 ## Channels
 The following table summarises the channels available for the PAN11 Smart Energy Plug In Switch.
@@ -18,8 +25,6 @@ The following table summarises the channels available for the PAN11 Smart Energy
 | Electric meter (watts) | meter_watts | meter_watts | Energy | Number |
 | Reset the total power consumption | meter_reset | meter_reset | Energy | Switch |
 | Alarm | alarm_general | alarm_general | Door | Switch |
-
-
 
 
 ### Device Configuration
@@ -40,14 +45,12 @@ Detailed information on each parameter can be found below.
 | 1: Reports |  |
 
 
-
-
 #### 1: W meter report period
 
 Set automatic W meter reporting interval  
 
 
-# Overview #
+##### Overview 
 
 If the setting is configured for 1hour (set value =720), the PAN11 will report its instant power consumption every 1 hour to Group1 node. The maximum interval to report its instant power consumption is 45 hours (5s\*32767/3600=45hr).
 
@@ -60,16 +63,12 @@ If the setting is configured for 1hour (set value =720), the PAN11 will report i
 | Default Value | 720 |
 
 
-
-
-
-
 #### 2: kWh meter report period
 
 Set automatic kWh meter reporting interval.  
 
 
-# Overview #
+##### Overview 
 
 If the setting is configured for 1hour (set value =6), the PAN11 will report its Accumulated Power Consumption (KW/h) every 1 hour to Group1 node. The maximum interval to report its Accumulated Power Consumption (KW/h) is 227.55 days (10min\*32767/1440=227.55 days).
 
@@ -82,16 +81,12 @@ If the setting is configured for 1hour (set value =6), the PAN11 will report its
 | Default Value | 6 |
 
 
-
-
-
-
 #### 3: Threshold of Watt for load caution
 
 Set threshold of wattage meter value for load caution .  
 
 
-# Overview #
+##### Overview 
 
 This is a warning when the current of load over the preset threshold value, if the setting value is 1300, when the load current of Relay1 over this value, PAN11 will send current meter report to warn the Group1 node, the Range of the setting value is from 10 to 1300,and the default value is 1300. 
 
@@ -104,16 +99,12 @@ This is a warning when the current of load over the preset threshold value, if t
 | Default Value | 1300 |
 
 
-
-
-
-
 #### 4: Threshold of kWh for Load Caution
 
 If threshold of kWh is reached, a Meter Report will be generated  
 
 
-# Overview #
+##### Overview 
 
 Enable automatic warning when the accumulated kWh power consumption exceeds the setting value from 1KWh ~ 10000KWh.. Set to 0 will disable kWh load caution reporting.
 
@@ -126,13 +117,7 @@ Enable automatic warning when the accumulated kWh power consumption exceeds the 
 | Default Value | 10000 |
 
 
-
-
-
-
 #### 5: Restore switch state mode
-
-
 
 
 | Property         | Value    |
@@ -144,13 +129,7 @@ Enable automatic warning when the accumulated kWh power consumption exceeds the 
 |  | Switch On (2) |
 
 
-
-
-
-
 #### 6: Mode of switch Off function
-
-
 
 
 | Property         | Value    |
@@ -161,13 +140,7 @@ Enable automatic warning when the accumulated kWh power consumption exceeds the 
 |  | SWITCH OFF commands received are honored. (1) |
 
 
-
-
-
-
 #### 7: LED indication mode
-
-
 
 
 | Property         | Value    |
@@ -177,10 +150,6 @@ Enable automatic warning when the accumulated kWh power consumption exceeds the 
 | Options | The LED follows the state of the switch. (1) |
 |  | LED off with load ON (2) |
 |  | One flash mode (3) |
-
-
-
-
 
 
 #### 8: Auto Off Timer
@@ -196,13 +165,7 @@ Auto off timer. 0 will disable the auto off function.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 9: RF Off command mode
-
-
 
 
 | Property         | Value    |
@@ -215,13 +178,7 @@ Auto off timer. 0 will disable the auto off function.
 |  | Switch On (3) |
 
 
-
-
-
-
 #### 1: Reports
-
-
 
 
 | Property         | Value    |
@@ -231,12 +188,7 @@ Auto off timer. 0 will disable the auto off function.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/177).
-

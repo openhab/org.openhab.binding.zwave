@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: ZFM-80 - ZWave
+---
+
+{% include base.html %}
 
 # ZFM-80 Fixture Switch Module
 
-This describes the Z-Wave device **ZFM-80**, manufactured by **Remotec** with the thing type UID of ```remotec_zfm80_00_000```. 
+This describes the Z-Wave device *ZFM-80*, manufactured by *Remotec* with the thing type UID of ```remotec_zfm80_00_000```. 
 
 Fixture Switch Module  
 
 
-# Overview #
+## Overview 
 
 The ZFM-80US Fixture Switch Module is a Z-Wave enabled device and fully compatible with any Z-Wave enabled network. It allows remote On/Off control of specified resistive household appliance. Each fixture switch module is designed to act as a repeater, which will re-transmit the RF signal to ensure that the signal is received by its intended destination by routing the signal around obstacle and radio dead spots.
 
@@ -33,7 +39,7 @@ Conditional trigger for "Fail Safe Installation"
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 Include or exclude the Fixture Switch Module from the existing ZWave home control network with your primary controller.
 
@@ -45,14 +51,13 @@ Include or exclude the Fixture Switch Module from the existing ZWave home contro
 
 \- Once the Fixture Switch Module is part of the network, the same basic procedure is used to add the Fixture Switch Module to groups or scenes. Refer to the primary controller's instructions for details.
 
+
 ## Channels
 The following table summarises the channels available for the ZFM-80 Fixture Switch Module.
 
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
-
-
 
 
 ### Device Configuration
@@ -68,14 +73,12 @@ Detailed information on each parameter can be found below.
 | 1: AssociationGroup |  |
 
 
-
-
 #### 1: ExternalSwitchType
 
 Set External switch type Definitions  
 
 
-# Overview #
+##### Overview 
 
 ZFM-80 provides an option to user that can add an external switch to control the On/Off function. ZFM-80US can be placed into the switch box with external wall switch cover. User can configure the external switch type through the configuration command
 
@@ -91,16 +94,12 @@ ZFM-80 provides an option to user that can add an external switch to control the
 |  | TypeD (4) |
 
 
-
-
-
-
 #### 2: Timeout
 
 Set timeout period  
 
 
-# Overview #
+##### Overview 
 
 ZFM-80US provides an advanced function "Conditional trigger for Fail Safe Installation". It can turn on or turn off the relay if ZFM-80US has not received any Z-Wave commands from a specified Z-Wave Node ID and within a specified period. For example: Z-Wave gateway can monitor a Z-Wave device status and power on equipment if this Z-Wave device is out of service.
 
@@ -115,16 +114,12 @@ ZFM-80US provides an advanced function "Conditional trigger for Fail Safe Instal
 | Default Value | 0 |
 
 
-
-
-
-
 #### 3: NodeIdNumber
 
 Configure Node ID number for Z-Wave command source  
 
 
-# Overview #
+##### Overview 
 
 ZFM-80US provides an advanced function "Conditional trigger for Fail Safe Installation". It can turn on or turn off the relay if ZFM-80US has not received any Z-Wave commands from a specified Z-Wave Node ID and within a specified period. For example: Z-Wave gateway can monitor a Z-Wave device status and power on equipment if this Z-Wave device is out of service.
 
@@ -139,16 +134,12 @@ ZFM-80US provides an advanced function "Conditional trigger for Fail Safe Insta
 | Default Value | 0 |
 
 
-
-
-
-
 #### 4: OutputStatus
 
 Set relay output status if timeout period has been reached  
 
 
-# Overview #
+##### Overview 
 
  ZFM-80US provides an advanced function "Conditional trigger for Fail Safe Installation". It can turn on or turn off the relay if ZFM-80US has not received any Z-Wave commands from a specified Z-Wave Node ID and within a specified period. For example: Z-Wave gateway can monitor a Z-Wave device status and power on equipment if this Z-Wave device is out of service.
 
@@ -165,16 +156,12 @@ Set relay output status if timeout period has been reached
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: AssociationGroup
 
   
 
 
-# Overview #
+##### Overview 
 
 Used to report the relay on/off status to specify nodes with ZFM-80US predefined association group once the relay state has been changed.
 
@@ -186,12 +173,7 @@ Used to report the relay on/off status to specify nodes with ZFM-80US predefined
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/448).
-

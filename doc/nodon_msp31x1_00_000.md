@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: MSP-3-1-X1 - ZWave
+---
+
+{% include base.html %}
 
 # MSP-3-1-X1 Z-Wave Plus Micro Smart Plug ON/OFF
 
-This describes the Z-Wave device **MSP-3-1-X1**, manufactured by **ID-RF** with the thing type UID of ```nodon_msp31x1_00_000```. 
+This describes the Z-Wave device *MSP-3-1-X1*, manufactured by *ID-RF* with the thing type UID of ```nodon_msp31x1_00_000```. 
 
 Z-Wave Plus Micro Smart Plug ON/OFF
+
 
 ## Channels
 The following table summarises the channels available for the MSP-3-1-X1 Z-Wave Plus Micro Smart Plug ON/OFF.
@@ -16,8 +23,6 @@ The following table summarises the channels available for the MSP-3-1-X1 Z-Wave 
 | Reset Meter | meter_reset | meter_reset | Energy | Switch |
 | Alarm (power) | alarm_power | alarm_power | Door | Switch |
 | Alarm (system) | alarm_system | alarm_system |  | Switch |
-
-
 
 
 ### Device Configuration
@@ -44,14 +49,12 @@ Detailed information on each parameter can be found below.
 | 6: Metering - Report | Report metering to devices in this group. |
 
 
-
-
 #### 1: Default State
 
 Status after a power outage or after being plugged  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the status of the Micro Smart Plug after a power outage or after being plugged
 
@@ -65,16 +68,12 @@ This parameter defines the status of the Micro Smart Plug after a power outage o
 |  | Status before power outage (2) |
 
 
-
-
-
-
 #### 3: Follow State
 
 Allows to enable or disable Group 2 & Group 3  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to enable or disable Group 2 & Group 3
 
@@ -91,16 +90,12 @@ The value may be the sum of available values. For example, if you want to enable
 |  | Group 2 &amp; Group 3 enable (3) |
 
 
-
-
-
-
 #### 4: Always On
 
 Forces the Micro Smart Plug status to be ON  
 
 
-# Overview #
+##### Overview 
 
 This parameter forces the Micro Smart Plug status to be ON. While enable it is not possible to switch OFF the plug (local or wireless).
 
@@ -113,16 +108,12 @@ This parameter forces the Micro Smart Plug status to be ON. While enable it is n
 |  | Always ON enable (1) |
 
 
-
-
-
-
 #### 21: Power Auto-Sending Report
 
 Power report for changes of x % W  
 
 
-# Overview #
+##### Overview 
 
 This parameter will send a power report automatically if  the power value  changes of x % W (Watt) compared to the last report.
 
@@ -145,16 +136,12 @@ This parameter will send a power report automatically if  the power value  cha
 |  | Power Auto-Polling Report Enable if 100% (100) |
 
 
-
-
-
-
 #### 22: Overload Report
 
 Switch off Micro Smart Plug in case the power is above x W  
 
 
-# Overview #
+##### Overview 
 
 This parameter will switch off the Micro Smart Plug in case the power is above  x W (Watt) and send an alarm to the primary controller. This parameter has the highest execution priority between all the metering configurations for security reason.
 
@@ -176,16 +163,12 @@ This parameter will switch off the Micro Smart Plug in case the power is above 
 |  | Overload Report enable with a upper limit of 2000 W (2000) |
 
 
-
-
-
-
 #### 23: Energy Auto-Sending Report
 
 Auto energy report if value changes of x Wh  
 
 
-# Overview #
+##### Overview 
 
 This parameter will send a new energy report automatically if the energy value changes of x Wh (Watt-hour) compared to the last report.
 
@@ -210,16 +193,12 @@ This parameter will send a new energy report automatically if the energy value c
 |  | Energy Auto-Polling Report enable if 65.535 Wh variation (65535) |
 
 
-
-
-
-
 #### 24: Metering Heartbeat
 
 Reporting intervall for power and energy to lifeline.  
 
 
-# Overview #
+##### Overview 
 
 Whatever other metering reports, this parameter will send one power and one energy report to the lifeline every x s (Seconds).
 
@@ -235,16 +214,12 @@ Whatever other metering reports, this parameter will send one power and one ener
 |  | Metering Pulse enable and send report every 12 hours (43200) |
 
 
-
-
-
-
 #### 25: Power High Threshold
 
 Defines the High Threshold value in W.  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the High Threshold power value.
 
@@ -270,16 +245,12 @@ This parameter defines the High Threshold power value.
 |  | Power High Threshold enable with the value from 2000 W (2000) |
 
 
-
-
-
-
 #### 26: Power Low Threshold
 
 Defines the Low Threshold value in W.  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the Low Threshold power value.
 
@@ -306,16 +277,12 @@ This parameter defines the Low Threshold power value.
 |  | Power Low Threshold enable with the value from 2000 W (2000) |
 
 
-
-
-
-
 #### 27: Power Threshold Action
 
 Defines actions if the power Low/High Threshold are reached.  
 
 
-# Overview #
+##### Overview 
 
 This parameter will define the Micro Smart Plug actions if the power Low and High Threshold are reached.
 
@@ -342,16 +309,12 @@ the parameter value must be 3+4=7.
 |  | Power High Group 4 ON &amp; Power Low Group 5 ON (15) |
 
 
-
-
-
-
 #### 1: Lifetime
 
 Report Information to Main Controller.  
 
 
-# Overview #
+##### Overview 
 
 This group is generally used to report information of the Micro Smart Plug to the Main Controller of the network.
 
@@ -363,16 +326,12 @@ This group is generally used to report information of the Micro Smart Plug to th
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Follow State
 
 Send status if local button is used to associated devices.  
 
 
-# Overview #
+##### Overview 
 
 When the Micro Smart Plug is switched ON (respectively OFF) using the local button, it will send ON (respectively OFF) command to the associated devices. No command is sent if the Micro Smart Plug is switched ON or OFF wirelessly.
 
@@ -386,16 +345,12 @@ This group is configurable through the parameter 3.
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Follow Comp State
 
 Send status if local button is used to associated devices.  
 
 
-# Overview #
+##### Overview 
 
 When the Micro Smart Plug is switched ON (respectively OFF) using the local button, it will send OFF (respectively ON) command to the associated devices. No command is sent if the Micro Smart Plug is switched ON or OFF wirelessly.
 
@@ -409,16 +364,12 @@ This group is configurable through the parameter 3.
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Metering High Threshold
 
 Send ON/OFF command to associated devices if threshold reached  
 
 
-# Overview #
+##### Overview 
 
 When the Micro Smart Plug reaches over the high threshold of power defined by the configuration parameter, it will send OFF or ON command to the associated devices.
 
@@ -432,16 +383,12 @@ This group is configurable through the parameter 25 and 27.
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Metering Low Threshold
 
 Send ON/OFF command to associated devices if threshold reached  
 
 
-# Overview #
+##### Overview 
 
 When the Micro Smart Plug reaches below the low threshold of power defined by the configuration parameter, it will send OFF or ON command to the associated devices.
 
@@ -455,16 +402,12 @@ This group is configurable through the parameters 26 and 27.
 | Range |  to  |
 
 
-
-
-
-
 #### 6: Metering - Report
 
 Report metering to devices in this group.  
 
 
-# Overview #
+##### Overview 
 
 All the meter reports and notifications triggered by Metering parameters will be reported to the devices present in this group.
 
@@ -478,12 +421,7 @@ This group is configurable through the parameters 21, 22, 23 and 24.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/435).
-

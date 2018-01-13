@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ST815 - ZWave
+---
+
+{% include base.html %}
 
 # ST815 Illumination Sensor
 
-This describes the Z-Wave device **ST815**, manufactured by **Everspring** with the thing type UID of ```everspring_st815_00_000```. 
+This describes the Z-Wave device *ST815*, manufactured by *Everspring* with the thing type UID of ```everspring_st815_00_000```. 
 
 Illumination Sensor
+
 
 ## Channels
 The following table summarises the channels available for the ST815 Illumination Sensor.
@@ -12,8 +19,6 @@ The following table summarises the channels available for the ST815 Illumination
 |---------|------------|------------------|----------|-----------|
 | Sensor (luminance) | sensor_luminance | sensor_luminance | Temperature | Number |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -32,14 +37,12 @@ Detailed information on each parameter can be found below.
 | 2: Control |  |
 
 
-
-
 #### 1: Basic Set Level
 
 Basic Set Level  
 
 
-# Overview #
+##### Overview 
 
 Set basic set value to be on or off.
 
@@ -54,16 +57,12 @@ Set to 0 to disable
 | Default Value | 99 |
 
 
-
-
-
-
 #### 2: Lux Trigger On Value
 
 Lux Trigger On Value  
 
 
-# Overview #
+##### Overview 
 
 Lux level when ON command is sent out.
 
@@ -82,16 +81,12 @@ Default 30
 | Default Value | 300 |
 
 
-
-
-
-
 #### 3: Lux Trigger Off Value
 
   
 
 
-# Overview #
+##### Overview 
 
 Lux level when Off command is sent out.
 
@@ -110,16 +105,12 @@ Set to 0 to disable.
 | Default Value | 500 |
 
 
-
-
-
-
 #### 4: Lux Trigger Off Timer Value.
 
 Lux Trigger Off Timer Value.  
 
 
-# Overview #
+##### Overview 
 
 Timer value in minutes.
 
@@ -138,16 +129,12 @@ Set to 0 to disable.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 5: Auto Report Time Interval
 
 Auto Report Time Interval  
 
 
-# Overview #
+##### Overview 
 
 Time interval in minutes to auto report to association group 1
 
@@ -164,16 +151,12 @@ Set to 0 to Disable
 | Default Value | 0 |
 
 
-
-
-
-
 #### 6: Auto Report Lux Interval
 
 Auto Report Lux Interval  
 
 
-# Overview #
+##### Overview 
 
 Lux interval step size to auto report to association group 1
 
@@ -190,13 +173,7 @@ Set to 0 to Disable
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Reports
-
-
 
 
 | Property         | Value    |
@@ -206,13 +183,7 @@ Set to 0 to Disable
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Control
-
-
 
 
 | Property         | Value    |
@@ -222,12 +193,7 @@ Set to 0 to Disable
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/32).
-

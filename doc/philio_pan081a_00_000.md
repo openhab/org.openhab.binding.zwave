@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: PAN08-1a - ZWave
+---
+
+{% include base.html %}
 
 # PAN08-1a Roller shutter controller
 
-This describes the Z-Wave device **PAN08-1a**, manufactured by **Philio Technology Corp** with the thing type UID of ```philio_pan081a_00_000```. 
+This describes the Z-Wave device *PAN08-1a*, manufactured by *Philio Technology Corp* with the thing type UID of ```philio_pan081a_00_000```. 
 
 Roller shutter controller  
 
 
-# Overview #
+## Overview 
 
 The in-wall Roller Shutter Controller is designed to switch rise/lower roller shutter  
 connected to its terminals using radio waves, controllers and a push button directly  
@@ -26,7 +32,7 @@ new shutter position to its controller (ex. IP-Gateway).
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 In the front casing, there is an include button with LED indicator below which is used  
 to carry out inclusion, exclusion, reset or association. When first power is applied, its  
@@ -42,7 +48,7 @@ explorer frame will be emitted once every several seconds.
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
  Put your Z-Wave controller into  
 exclusion mode by following the  
@@ -56,9 +62,10 @@ mode.
   
 
 
-## Wakeup Information ##
+### Wakeup Information 
 
 Device is not battery operated, hence no wakeup procedure.
+
 
 ## Channels
 The following table summarises the channels available for the PAN08-1a Roller shutter controller.
@@ -76,7 +83,6 @@ The following table summarises the channels available for the PAN08-1a Roller sh
 | Alarm | alarm_general | alarm_general | Door | Switch |
 
 
-
 ### Dimmer
 
 #### Restore Last Value
@@ -90,10 +96,6 @@ Restore Last Dimming level on ON.
 | Data Type        | BOOLEAN || Default Value | true |
 | Options | Restore Last Value (true) |
 |  | Restore Full Brightness (false) |
-
-
-
-
 
 
 ### Device Configuration
@@ -111,8 +113,6 @@ Detailed information on each parameter can be found below.
 | 1: Blind Control |  |
 
 
-
-
 #### 1: Watt meter report interval (5s)
 
 Interval (x5 seconds) to send out watt meter report
@@ -124,10 +124,6 @@ Interval (x5 seconds) to send out watt meter report
 | Data Type        | INTEGER |
 | Range | 1 to 32767 |
 | Default Value | 720 |
-
-
-
-
 
 
 #### 2: KWH Meter Report Interval (10min)
@@ -143,10 +139,6 @@ Interval (x10 minutes) to send out KWH Meter Report
 | Default Value | 6 |
 
 
-
-
-
-
 #### 3: Threshold for Load Caution (10mA)
 
 Threshold (x0.01A) of current for Load Caution
@@ -160,13 +152,7 @@ Threshold (x0.01A) of current for Load Caution
 | Default Value | 500 |
 
 
-
-
-
-
 #### 4: Threshold of KWh for Load Caution
-
-
 
 
 | Property         | Value    |
@@ -177,16 +163,12 @@ Threshold (x0.01A) of current for Load Caution
 | Default Value | 10000 |
 
 
-
-
-
-
 #### 5: External SwitchType
 
 Sets the type of an external switch  
 
 
-# Overview #
+##### Overview 
 
 1: One Push button
 
@@ -201,16 +183,12 @@ Sets the type of an external switch
 | Default Value | 2 |
 
 
-
-
-
-
 #### 6: Level report mode
 
 Sets the way the controller reports the shutter level  
 
 
-# Overview #
+##### Overview 
 
 1: Report destination level in 5s
 
@@ -225,13 +203,7 @@ Sets the way the controller reports the shutter level
 | Default Value | 2 |
 
 
-
-
-
-
 #### 1: Blind Control
-
-
 
 
 | Property         | Value    |
@@ -241,12 +213,7 @@ Sets the way the controller reports the shutter level
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/609).
-

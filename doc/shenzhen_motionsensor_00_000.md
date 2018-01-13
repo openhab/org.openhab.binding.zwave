@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: Motion Sensor - ZWave
+---
+
+{% include base.html %}
 
 # Motion Sensor PIR Motion Sensor
 
-This describes the Z-Wave device **Motion Sensor**, manufactured by **Shenzhen Neo Electronics Co., Ltd** with the thing type UID of ```shenzhen_motionsensor_00_000```. 
+This describes the Z-Wave device *Motion Sensor*, manufactured by *Shenzhen Neo Electronics Co., Ltd* with the thing type UID of ```shenzhen_motionsensor_00_000```. 
 
 PIR Motion Sensor  
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 1. Remove the sensor cover.
 
@@ -23,7 +29,7 @@ LED will flash on and off alternately five times..
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 1. Remove the device cover.
 
@@ -38,7 +44,7 @@ gateway operating manual)
   
 
 
-## Wakeup Information ##
+### Wakeup Information 
 
 You can press the button once to wake up the device and send wakeup notification to controller.
 
@@ -52,6 +58,7 @@ Allowable interval among each wakeup interval is 60 second, such as 360, 420, 48
 
 Note: The default value is 12 hours. This value is longer, the battery life is greater.
 
+
 ## Channels
 The following table summarises the channels available for the Motion Sensor PIR Motion Sensor.
 
@@ -62,7 +69,6 @@ The following table summarises the channels available for the Motion Sensor PIR 
 | Sensor (temperature) | sensor_temperature | sensor_temperature | Temperature | Number |
 | Alarm (burglar) | alarm_burglar | alarm_burglar | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Sensor (temperature)
@@ -78,10 +84,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -106,8 +108,6 @@ Detailed information on each parameter can be found below.
 | 4: Group 4 | Send Notification to associated devices. |
 
 
-
-
 #### 1: Sensitivity Level Setting
 
 This parameter defines the sensitivity of PIR sensor. Where 8 = highest & 255 = lowest sensitivity
@@ -121,16 +121,12 @@ This parameter defines the sensitivity of PIR sensor. Where 8 = highest & 255 = 
 | Default Value | 12 |
 
 
-
-
-
-
 #### 2: ON/OFF Duration Setting
 
 Determined how long the associated devices should stay ON status. This Parameter value must be large than Parameter 6\#.  
 
 
-# Overview #
+##### Overview 
 
 For instance, this parameter is set to 30(second), the PIR detector will send a
 
@@ -149,16 +145,12 @@ is turned off.
 | Default Value | 30 |
 
 
-
-
-
-
 #### 3: Basic Set Level
 
 Basic Set Command will be sent when the door/window is opened or closed, the receiver will take it for consideration; for instance, if a lamp module received the BSC of which value is decisive as to how bright of dim level of lamp module shall be.  
 
 
-# Overview #
+##### Overview 
 
 Available Settings:
 
@@ -177,13 +169,7 @@ Available Settings:
 | Default Value | 255 |
 
 
-
-
-
-
 #### 4: Enable/Disable PIR Function
-
-
 
 
 | Property         | Value    |
@@ -194,16 +180,12 @@ Available Settings:
 |  | Enable PIR Detector Function (255) |
 
 
-
-
-
-
 #### 5: Lux Level Set
 
 Set a lux level value which determines when the light sensor is activated.  
 
 
-# Overview #
+##### Overview 
 
 If the ambient illumination level falls below this value and a person moves
 
@@ -222,10 +204,6 @@ it.
 | Default Value | 100 |
 
 
-
-
-
-
 #### 6: Re-trigger Interval
 
 Adjust the interval of being re-triggered after the PIR detector has been triggered. No report will be sent during this interval if a movement is presented. This Parameter value must be less than Parameter 2\#.
@@ -237,10 +215,6 @@ Adjust the interval of being re-triggered after the PIR detector has been trigge
 | Data Type        | INTEGER |
 | Range | 1 to 8 |
 | Default Value | 8 |
-
-
-
-
 
 
 #### 7: Light Sensor Polling Interval
@@ -256,16 +230,12 @@ The Intervall after which the Light Sensor Measure is polled.
 | Default Value | 180 |
 
 
-
-
-
-
 #### 8: Lux Level Function Enable
 
 0 = Off, 1 =On and Lux Level must be less than \#5 -> then send Basic Set(Parameter \#3)  
 
 
-# Overview #
+##### Overview 
 
 If this parameter is set to ‘1’, and when Lux level less than the value define by parameter \#5, PIR
 
@@ -284,10 +254,6 @@ detector will not send a BASIC\_SET command frame.
 |  | Enable Lux Level Function (1) |
 
 
-
-
-
-
 #### 9: Lux Level Changed Report
 
 How much the Lux Level must change, in lux, to be reported to the main controller.
@@ -299,10 +265,6 @@ How much the Lux Level must change, in lux, to be reported to the main controlle
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 100 |
-
-
-
-
 
 
 #### 10: LED Blink Enable
@@ -318,16 +280,12 @@ Defines whether the LED blinking is on / off. 1 = enable -> blink once when moti
 |  | Enable LED blinking (1) |
 
 
-
-
-
-
 #### 1: Group 1
 
 Is assigned to the device status - OPEN/CLOSED. It enables the sensor to send reports and readings to Z-Wave Controller or Z-Wave Gateway whenever the sensor is triggered.  
 
 
-# Overview #
+##### Overview 
 
 NOTIFICATION\_REPORT
 
@@ -347,16 +305,12 @@ DEVICE\_RESET\_LOCALLY\_NOTIFICATION
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Group 2
 
 Sending Control Command to associated devices. This association group is configured through the advanced parameters no. 2, 3, 5 and 8  
 
 
-# Overview #
+##### Overview 
 
 BASIC\_SET
 
@@ -368,16 +322,12 @@ BASIC\_SET
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Group 3
 
 Send Notification to associated devices.  
 
 
-# Overview #
+##### Overview 
 
 NOTIFICATION\_REPORT\_V4
 
@@ -389,16 +339,12 @@ NOTIFICATION\_REPORT\_V4
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Group 4
 
 Send Notification to associated devices.  
 
 
-# Overview #
+##### Overview 
 
 SENSOR\_BINARY\_REPORT\_V2
 
@@ -410,12 +356,7 @@ SENSOR\_BINARY\_REPORT\_V2
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/401).
-

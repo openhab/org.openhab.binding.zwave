@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZSMOKE - ZWave
+---
+
+{% include base.html %}
 
 # ZSMOKE Smoke Alarm
 
-This describes the Z-Wave device **ZSMOKE**, manufactured by **BRK Brands, Inc.** with the thing type UID of ```brk_zsmoke_00_000```. 
+This describes the Z-Wave device *ZSMOKE*, manufactured by *BRK Brands, Inc.* with the thing type UID of ```brk_zsmoke_00_000```. 
 
 Smoke Alarm
+
 
 ## Channels
 The following table summarises the channels available for the ZSMOKE Smoke Alarm.
@@ -14,8 +21,6 @@ The following table summarises the channels available for the ZSMOKE Smoke Alarm
 |  | battery-level | system.battery-level |  |  |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the ZSMOKE Smoke Alarm.
 Detailed information on each parameter can be found below.
@@ -24,8 +29,6 @@ Detailed information on each parameter can be found below.
 |-------------|-------------|
 | 1: Send double alarms | Causes the device to send double alarm messages |
 | 1: Group 1 |  |
-
-
 
 
 #### 1: Send double alarms
@@ -41,13 +44,7 @@ Causes the device to send double alarm messages
 |  | Double Alarm (1) |
 
 
-
-
-
-
 #### 1: Group 1
-
-
 
 
 | Property         | Value    |
@@ -57,12 +54,7 @@ Causes the device to send double alarm messages
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/239).
-

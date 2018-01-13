@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: LRM-AS - ZWave
+---
+
+{% include base.html %}
 
 # LRM-AS Wall Mounted Dimmer
 
-This describes the Z-Wave device **LRM-AS**, manufactured by **Evolve** with the thing type UID of ```evolve_lrmas_00_000```. 
+This describes the Z-Wave device *LRM-AS*, manufactured by *Evolve* with the thing type UID of ```evolve_lrmas_00_000```. 
 
 Wall Mounted Dimmer
+
 
 ## Channels
 The following table summarises the channels available for the LRM-AS Wall Mounted Dimmer.
@@ -15,7 +22,6 @@ The following table summarises the channels available for the LRM-AS Wall Mounte
 | Binary Sensor | sensor_binary | sensor_binary | Door | Switch |
 | Alarm | alarm_general | alarm_general | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Dimmer
@@ -33,10 +39,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the LRM-AS Wall Mounted Dimmer.
 Detailed information on each parameter can be found below.
@@ -47,8 +49,6 @@ Detailed information on each parameter can be found below.
 | 4: Invert Switch | Change the top of the switch to OFF and the bottom of the switch to ON. |
 | 29: Load Sense |  |
 | 1: Group 1 |  |
-
-
 
 
 #### 3: Night Light
@@ -64,10 +64,6 @@ In night-light mode the LED will turn ON when the switch is turned OFF.
 |  | Yes (1) |
 
 
-
-
-
-
 #### 4: Invert Switch
 
 Change the top of the switch to OFF and the bottom of the switch to ON.
@@ -81,13 +77,7 @@ Change the top of the switch to OFF and the bottom of the switch to ON.
 |  | Yes (1) |
 
 
-
-
-
-
 #### 29: Load Sense
-
-
 
 
 | Property         | Value    |
@@ -98,13 +88,7 @@ Change the top of the switch to OFF and the bottom of the switch to ON.
 |  | Enable (1) |
 
 
-
-
-
-
 #### 1: Group 1
-
-
 
 
 | Property         | Value    |
@@ -114,12 +98,7 @@ Change the top of the switch to OFF and the bottom of the switch to ON.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/39).
-

@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: WA00Z-1 - ZWave
+---
+
+{% include base.html %}
 
 # WA00Z-1 Wall Mounted Switch
 
-This describes the Z-Wave device **WA00Z-1**, manufactured by **Linear Corp** with the thing type UID of ```linear_wa00z1_00_000```. 
+This describes the Z-Wave device *WA00Z-1*, manufactured by *Linear Corp* with the thing type UID of ```linear_wa00z1_00_000```. 
 
 Wall Mounted Switch
+
 
 ## Channels
 The following table summarises the channels available for the WA00Z-1 Wall Mounted Switch.
@@ -12,8 +19,6 @@ The following table summarises the channels available for the WA00Z-1 Wall Mount
 |---------|------------|------------------|----------|-----------|
 | Scene Number | scene_number | scene_number |  | Number |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -30,14 +35,12 @@ Detailed information on each parameter can be found below.
 | 3: Group 3 |  |
 
 
-
-
 #### 1: Activation of Central Scene
 
 Set top and bottom button scene numbers.  
 
 
-# Overview #
+##### Overview 
 
 Z-Wave Plus introduces a new process for scene activation – “Central Scene  
 Control”. Press and release the button, it will send a certain command to the  
@@ -54,16 +57,12 @@ communication pattern 6, and requires a gateway supporting Z-Wave Plus.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 2: Control Mode
 
 Control other devices or issue various scene activation...  
 
 
-# Overview #
+##### Overview 
 
 ...  commands to a central controller.
 
@@ -76,16 +75,12 @@ Control other devices or issue various scene activation...
 | Default Value | 0 |
 
 
-
-
-
-
 #### 4: Invert Switch
 
 Invert top of switch ON/OFF buttons  
 
 
-# Overview #
+##### Overview 
 
 To change the top of the switch to OFF and the bottom of the switch ON, set Parameter 4 to a value of 1.
 
@@ -98,13 +93,7 @@ To change the top of the switch to OFF and the bottom of the switch ON, set Para
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Lifeline
-
-
 
 
 | Property         | Value    |
@@ -114,13 +103,7 @@ To change the top of the switch to OFF and the bottom of the switch ON, set Para
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Group 2
-
-
 
 
 | Property         | Value    |
@@ -130,13 +113,7 @@ To change the top of the switch to OFF and the bottom of the switch ON, set Para
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Group 3
-
-
 
 
 | Property         | Value    |
@@ -146,12 +123,7 @@ To change the top of the switch to OFF and the bottom of the switch ON, set Para
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/610).
-

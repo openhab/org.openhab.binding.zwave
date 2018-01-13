@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FGKF601 - ZWave
+---
+
+{% include base.html %}
 
 # FGKF601 Keyfob
 
-This describes the Z-Wave device **FGKF601**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgkf601_00_000```. 
+This describes the Z-Wave device *FGKF601*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgkf601_00_000```. 
 
 Keyfob
+
 
 ## Channels
 The following table summarises the channels available for the FGKF601 Keyfob.
@@ -12,8 +19,6 @@ The following table summarises the channels available for the FGKF601 Keyfob.
 |---------|------------|------------------|----------|-----------|
 | Scene Number | scene_number | scene_number |  | Number |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -63,14 +68,12 @@ Detailed information on each parameter can be found below.
 | 13: Plus - Multilevel | “Plus - Multilevel” is assigned to clicking and holding the + button and is used to turn o... |
 
 
-
-
 #### 1: Lock Mode - unlocking sequence
 
 0 - Lock Mode disabled, 9-28086 - unlocking sequence  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to activate Lock Mode and set up unlocking sequence. Device will lock after time set in parameter 2 or after pressing and holding selected button. 
 
@@ -83,16 +86,12 @@ This parameter allows to activate Lock Mode and set up unlocking sequence. Devic
 | Default Value | 0 |
 
 
-
-
-
-
 #### 2: Lock Mode - time to lock and locking button
 
 0 - Lock Mode disabled, 5-1791 - calculated value  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set time that must elapse from the last press of the button to lock the device and locking button.
 
@@ -109,16 +108,12 @@ This parameter is irrelevant if parameter 1 is set to 0 (Lock Mode disable).
 | Default Value | 60 |
 
 
-
-
-
-
 #### 3: First scene sequence
 
 0 - 1st sequence disabled, 9-28086 - value of sequence  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set up sequence that activates scene with ID 7. See "Sequences" on page 10 for more information.
 
@@ -131,16 +126,12 @@ This parameter allows to set up sequence that activates scene with ID 7. See "Se
 | Default Value | 0 |
 
 
-
-
-
-
 #### 4: Second scene sequence
 
 0 - 2nd sequence disabled, 9-28086 - value of sequence  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set up sequence that activates scene with ID 8.
 
@@ -153,16 +144,12 @@ This parameter allows to set up sequence that activates scene with ID 8.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 5: Third scene sequence
 
 0 - 3rd sequence disabled, 9-28086 - value of sequence  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set up sequence that activates scene with ID 9.
 
@@ -175,16 +162,12 @@ This parameter allows to set up sequence that activates scene with ID 9.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 6: Fourth scene sequence
 
 0 - 4th sequence disabled, 9-28086 - value of sequence  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set up sequence that activates scene with ID 10. 
 
@@ -197,16 +180,12 @@ This parameter allows to set up sequence that activates scene with ID 10. 
 | Default Value | 0 |
 
 
-
-
-
-
 #### 7: Fifth scene sequence
 
 0 - 5th sequence disabled, 9-28086 - value of sequence  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set up sequence that activates scene with ID 11. 
 
@@ -219,16 +198,12 @@ This parameter allows to set up sequence that activates scene with ID 11. 
 | Default Value | 0 |
 
 
-
-
-
-
 #### 8: Sixth scene sequence
 
 0 - 6th sequence disabled, 9-28086 - value of sequence  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set up sequence that activates scene with ID 12.
 
@@ -241,16 +216,12 @@ This parameter allows to set up sequence that activates scene with ID 12.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 9: Sequences - timeout
 
 5-30 (0.5-3s, 0.1s step) - time to lock  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set time that must elapse from the last click of the button to check if the sequence is valid.
 
@@ -263,16 +234,12 @@ This parameter allows to set time that must elapse from the last click of the bu
 | Default Value | 10 |
 
 
-
-
-
-
 #### 10: Single button associations - operating mode
 
   
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to choose operating mode for single button associations. 
 
@@ -286,16 +253,12 @@ This parameter allows to choose operating mode for single button associations. 
 |  | single click turns on, double click turns off (2) |
 
 
-
-
-
-
 #### 11: Value sent to □ association group
 
 1-99 or 255 (last state)  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set value sent to devices in association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.
 
@@ -311,16 +274,12 @@ This parameter allows to set value sent to devices in association group. It will
 | Default Value | 255 |
 
 
-
-
-
-
 #### 12: Value sent to ○ association group
 
 1-99 or 255 (last state)  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set value sent to devices in association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.
 
@@ -336,16 +295,12 @@ This parameter allows to set value sent to devices in association group. It will
 | Default Value | 255 |
 
 
-
-
-
-
 #### 13: Value sent to x association group
 
 1-99 or 255 (last state)  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set value sent to devices in association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.
 
@@ -361,16 +316,12 @@ This parameter allows to set value sent to devices in association group. It will
 | Default Value | 255 |
 
 
-
-
-
-
 #### 14: Value sent to Δ association group
 
 1-99 or 255 (last state)  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set value sent to devices in association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.
 
@@ -386,16 +337,12 @@ This parameter allows to set value sent to devices in association group. It will
 | Default Value | 255 |
 
 
-
-
-
-
 #### 15: Value sent to - association group
 
 1-99 or 255 (last state)  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set value sent to devices in association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.
 
@@ -411,16 +358,12 @@ This parameter allows to set value sent to devices in association group. It will
 | Default Value | 255 |
 
 
-
-
-
-
 #### 16: Value sent to + association group
 
 1-99 or 255 (last state)  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set value sent to devices in association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.
 
@@ -436,16 +379,12 @@ This parameter allows to set value sent to devices in association group. It will
 | Default Value | 255 |
 
 
-
-
-
-
 #### 17: Paired buttons association for □ and ○
 
   
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to activate paired buttons association mode for □ and ○ buttons. Paired buttons are dependent and association are sent only to □ groups. ○ turns devices on and increases value, □ turns them off and decreases value.
 
@@ -458,16 +397,12 @@ This parameter allows to activate paired buttons association mode for □ and �
 |  | paired buttons association active (1) |
 
 
-
-
-
-
 #### 18: Paired buttons association for x and Δ
 
   
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to activate paired buttons association mode for x and Δ buttons. Paired buttons are dependent and association are sent only to x groups. Δ turns devices on and increases value, x turns them off and decreases value.
 
@@ -480,16 +415,12 @@ This parameter allows to activate paired buttons association mode for x and �
 |  | paired buttons association active (1) |
 
 
-
-
-
-
 #### 19: Paired buttons association for - and +
 
   
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to activate paired buttons association mode for - and + buttons. Paired buttons are dependent and association are sent only to - groups. + turns devices on and increases value, - turns them off and decreases value. 
 
@@ -502,16 +433,12 @@ This parameter allows to activate paired buttons association mode for - and + bu
 |  | paired buttons association active (1) |
 
 
-
-
-
-
 #### 21: Scene activation for □ button
 
 1 = 1 time, 2 = 2 times, 4 = 3 times, 8 = held down and released  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.
 
@@ -531,16 +458,12 @@ Combine multiple actions by or'ing the values.
 | Default Value | 9 |
 
 
-
-
-
-
 #### 22: Scene activation for ○ button
 
 1 = 1 time, 2 = 2 times, 4 = 3 times, 8 = held down and released  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.
 
@@ -560,16 +483,12 @@ Combine multiple actions by or'ing the values.
 | Default Value | 9 |
 
 
-
-
-
-
 #### 23: Scene activation for x button
 
 1 = 1 time, 2 = 2 times, 4 = 3 times, 8 = held down and released  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.
 
@@ -589,16 +508,12 @@ Combine multiple actions by or'ing the values.
 | Default Value | 9 |
 
 
-
-
-
-
 #### 24: Scene activation for Δ button
 
 1 = 1 time, 2 = 2 times, 4 = 3 times, 8 = held down and released  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.
 
@@ -618,16 +533,12 @@ Combine multiple actions by or'ing the values.
 | Default Value | 9 |
 
 
-
-
-
-
 #### 25: Scene activation for - button
 
 1 = 1 time, 2 = 2 times, 4 = 3 times, 8 = held down and released  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.
 
@@ -647,16 +558,12 @@ Combine multiple actions by or'ing the values.
 | Default Value | 9 |
 
 
-
-
-
-
 #### 26: Scene activation for + button
 
 1 = 1 time, 2 = 2 times, 4 = 3 times, 8 = held down and released  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.
 
@@ -676,16 +583,12 @@ Combine multiple actions by or'ing the values.
 | Default Value | 9 |
 
 
-
-
-
-
 #### 29: Associations in Z-Wave network security mode
 
   
 
 
-# Overview #
+##### Overview 
 
 Parameter defines how commands are sent in specified association groups: using Security Mode or not. Parameter is active only in Z-Wave network Security Mode. It does not apply to 1st “Lifeline” association group.
 
@@ -715,10 +618,6 @@ Set multiple values by or'ing the values together.
 | Default Value | 4095 |
 
 
-
-
-
-
 #### 1: Lifeline
 
 “Lifeline” reports the device status and allows for assigning single device only (main controller by default).
@@ -729,10 +628,6 @@ Set multiple values by or'ing the values together.
 | Configuration ID | group_1 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 2: Square - On/Off
@@ -747,10 +642,6 @@ Set multiple values by or'ing the values together.
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Square - Multilevel
 
 “Square - Multilevel” is assigned to clicking and holding the □ button and is used to turn on/off and change level of associated devices.
@@ -761,10 +652,6 @@ Set multiple values by or'ing the values together.
 | Configuration ID | group_3 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 4: Circle - On/Off
@@ -779,10 +666,6 @@ Set multiple values by or'ing the values together.
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Circle - Multilevel
 
 “Circle - Multilevel” is assigned to clicking and holding the ○ button and is used to turn on/off and change level of associated devices.
@@ -793,10 +676,6 @@ Set multiple values by or'ing the values together.
 | Configuration ID | group_5 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 6: Cross - On/Off
@@ -811,10 +690,6 @@ Set multiple values by or'ing the values together.
 | Range |  to  |
 
 
-
-
-
-
 #### 7: Cross - Multilevel
 
 “Cross - Multilevel” is assigned to clicking and holding the x button and is used to turn on/off and change level of associated devices.
@@ -825,10 +700,6 @@ Set multiple values by or'ing the values together.
 | Configuration ID | group_7 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 8: Triangle - On/Off
@@ -843,10 +714,6 @@ Set multiple values by or'ing the values together.
 | Range |  to  |
 
 
-
-
-
-
 #### 9: Triangle - Multilevel
 
 “Triangle - Multilevel” is assigned to clicking and holding the Δ button and is used to turn on/off and change level of associated devices.
@@ -857,10 +724,6 @@ Set multiple values by or'ing the values together.
 | Configuration ID | group_9 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 10: Minus - On/Off
@@ -875,10 +738,6 @@ Set multiple values by or'ing the values together.
 | Range |  to  |
 
 
-
-
-
-
 #### 11: Minus - Multilevel
 
 “Minus - Multilevel” is assigned to clicking and holding the - button and is used to turn on/off and change level of associated devices.
@@ -889,10 +748,6 @@ Set multiple values by or'ing the values together.
 | Configuration ID | group_11 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 12: Plus - On/Off
@@ -907,10 +762,6 @@ Set multiple values by or'ing the values together.
 | Range |  to  |
 
 
-
-
-
-
 #### 13: Plus - Multilevel
 
 “Plus - Multilevel” is assigned to clicking and holding the + button and is used to turn on/off and change level of associated devices.
@@ -923,12 +774,7 @@ Set multiple values by or'ing the values together.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/542).
-

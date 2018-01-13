@@ -1,12 +1,19 @@
+---
+layout: documentation
+title: doorSensor - ZWave
+---
 
-# doorSensor BeNext Door Sensor
+{% include base.html %}
 
-This describes the Z-Wave device **doorSensor**, manufactured by **BeNext** with the thing type UID of ```benext_doorsensor_00_000```. 
+# doorSensor Door Sensor
 
-BeNext Door Sensor
+This describes the Z-Wave device *doorSensor*, manufactured by *BeNext* with the thing type UID of ```benext_doorsensor_00_000```. 
+
+Door Sensor
+
 
 ## Channels
-The following table summarises the channels available for the doorSensor BeNext Door Sensor.
+The following table summarises the channels available for the doorSensor Door Sensor.
 
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
@@ -14,7 +21,6 @@ The following table summarises the channels available for the doorSensor BeNext 
 | Sensor (temperature) | sensor_temperature | sensor_temperature | Temperature | Number |
 | Alarm (CO) | alarm_co | alarm_co | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Sensor (temperature)
@@ -32,12 +38,8 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
-
 ### Device Configuration
-The following table provides a summary of the configuration parameters available in the doorSensor BeNext Door Sensor.
+The following table provides a summary of the configuration parameters available in the doorSensor Door Sensor.
 Detailed information on each parameter can be found below.
 
 | Parameter   | Description |
@@ -48,8 +50,6 @@ Detailed information on each parameter can be found below.
 | 6: Temperature offset | An offset for the temperature. |
 | 1: Send frame to every node in this group (internal contact) |  |
 | 2: Send frame to every node in this group (external contact) |  |
-
-
 
 
 #### 1: Reset to factory settings
@@ -65,10 +65,6 @@ Set all configuration values to default values (factory settings).
 | Default Value | 0 |
 
 
-
-
-
-
 #### 2: External contact behavior
 
 Configure what the external contact sends when triggered.
@@ -80,10 +76,6 @@ Configure what the external contact sends when triggered.
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Send alarm (0) |
 |  | Send basic frame (1) |
-
-
-
-
 
 
 #### 5: Operating mode.
@@ -100,10 +92,6 @@ The main operating mode for the device.
 |  | Always-on (3) |
 
 
-
-
-
-
 #### 6: Temperature offset
 
 An offset for the temperature.
@@ -117,13 +105,7 @@ An offset for the temperature.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Send frame to every node in this group (internal contact)
-
-
 
 
 | Property         | Value    |
@@ -133,13 +115,7 @@ An offset for the temperature.
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Send frame to every node in this group (external contact)
-
-
 
 
 | Property         | Value    |
@@ -149,12 +125,7 @@ An offset for the temperature.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/223).
-

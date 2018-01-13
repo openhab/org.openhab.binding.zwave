@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: PAN08 - ZWave
+---
+
+{% include base.html %}
 
 # PAN08 Relay Insert for Blind Control
 
-This describes the Z-Wave device **PAN08**, manufactured by **Philio Technology Corp** with the thing type UID of ```philio_pan08_00_000```. 
+This describes the Z-Wave device *PAN08*, manufactured by *Philio Technology Corp* with the thing type UID of ```philio_pan08_00_000```. 
 
 Relay Insert for Blind Control
+
 
 ## Channels
 The following table summarises the channels available for the PAN08 Relay Insert for Blind Control.
@@ -21,7 +28,6 @@ The following table summarises the channels available for the PAN08 Relay Insert
 | Alarm | alarm_general | alarm_general | Door | Switch |
 
 
-
 ### Blinds Control
 
 #### Invert control
@@ -37,8 +43,6 @@ Invert the blinds control
 |  | No (false) |
 
 
-
-
 #### Invert percentage value
 
 Invert the blinds percentage value
@@ -50,8 +54,6 @@ Invert the blinds percentage value
 | Data Type        | BOOLEAN || Default Value | false |
 | Options | Yes (true) |
 |  | No (false) |
-
-
 
 
 #### Step duration
@@ -69,10 +71,6 @@ Values from 1 to 127 are defined in seconds, while values from 128 to 254 are de
 |  | Change Instantly (0) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the PAN08 Relay Insert for Blind Control.
 Detailed information on each parameter can be found below.
@@ -84,8 +82,6 @@ Detailed information on each parameter can be found below.
 | 3: Threshold for Load Caution (10mA) | Threshold (x0.01A) of current for Load Caution |
 | 4: Threshold of KWh for Load Caution |  |
 | 1: Blind Control |  |
-
-
 
 
 #### 1: Watt meter report interval (5s)
@@ -101,10 +97,6 @@ Interval (x5 seconds) to send out watt meter report
 | Default Value | 720 |
 
 
-
-
-
-
 #### 2: KWH Meter Report Interval (10min)
 
 Interval (x10 minutes) to send out KWH Meter Report
@@ -116,10 +108,6 @@ Interval (x10 minutes) to send out KWH Meter Report
 | Data Type        | INTEGER |
 | Range | 1 to 32767 |
 | Default Value | 6 |
-
-
-
-
 
 
 #### 3: Threshold for Load Caution (10mA)
@@ -135,13 +123,7 @@ Threshold (x0.01A) of current for Load Caution
 | Default Value | 1100 |
 
 
-
-
-
-
 #### 4: Threshold of KWh for Load Caution
-
-
 
 
 | Property         | Value    |
@@ -152,13 +134,7 @@ Threshold (x0.01A) of current for Load Caution
 | Default Value | 10000 |
 
 
-
-
-
-
 #### 1: Blind Control
-
-
 
 
 | Property         | Value    |
@@ -168,12 +144,7 @@ Threshold (x0.01A) of current for Load Caution
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/175).
-

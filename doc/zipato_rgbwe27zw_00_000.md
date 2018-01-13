@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: RGBWE27ZW - ZWave
+---
+
+{% include base.html %}
 
 # RGBWE27ZW RGBW bulb
 
-This describes the Z-Wave device **RGBWE27ZW**, manufactured by **Zipato** with the thing type UID of ```zipato_rgbwe27zw_00_000```. 
+This describes the Z-Wave device *RGBWE27ZW*, manufactured by *Zipato* with the thing type UID of ```zipato_rgbwe27zw_00_000```. 
 
 RGBW bulb
+
 
 ## Channels
 The following table summarises the channels available for the RGBWE27ZW RGBW bulb.
@@ -13,7 +20,6 @@ The following table summarises the channels available for the RGBWE27ZW RGBW bul
 | Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer |
 | Color Control | color_color | color_color |  | Color |
 | Color Temperature | color_temperature | color_temperature | ColorLight | Dimmer |
-
 
 
 ### Dimmer
@@ -31,10 +37,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the RGBWE27ZW RGBW bulb.
 Detailed information on each parameter can be found below.
@@ -47,8 +49,6 @@ Detailed information on each parameter can be found below.
 | 4: Strobe Light Pulse Count | Values range from 0 to 250 and a special value 255 which sets infinite flashing. |
 | 5: Enable or Disable Random Strobe Pulse Colors | Values range are 0 (turn on) or 1 (turn off). |
 | 1: Lifeline |  |
-
-
 
 
 #### 1: Color temperature
@@ -64,10 +64,6 @@ Values range from 0 to 100 where 0 is cold white and 100 is warm white.
 | Default Value | 50 |
 
 
-
-
-
-
 #### 2: Shock sensor sensitivity
 
 Range from 0 to 31 where 0 is minimum sensitivity and 31 is maximum sensitivity.
@@ -79,10 +75,6 @@ Range from 0 to 31 where 0 is minimum sensitivity and 31 is maximum sensitivity.
 | Data Type        | INTEGER |
 | Range | 0 to 31 |
 | Default Value | 16 |
-
-
-
-
 
 
 #### 3: Strobe Light Interval
@@ -98,10 +90,6 @@ Values range from 0 to 25 in intervals of 100 milliseconds.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 4: Strobe Light Pulse Count
 
 Values range from 0 to 250 and a special value 255 which sets infinite flashing.
@@ -113,10 +101,6 @@ Values range from 0 to 250 and a special value 255 which sets infinite flashing.
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 5: Enable or Disable Random Strobe Pulse Colors
@@ -132,13 +116,7 @@ Values range are 0 (turn on) or 1 (turn off).
 |  | turn on (1) |
 
 
-
-
-
-
 #### 1: Lifeline
-
-
 
 
 | Property         | Value    |
@@ -148,12 +126,7 @@ Values range are 0 (turn on) or 1 (turn off).
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/237).
-

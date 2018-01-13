@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: ZW20R - ZWave
+---
+
+{% include base.html %}
 
 # ZW20R 20A Tamper Resistant Duplex Receptacle
 
-This describes the Z-Wave device **ZW20R**, manufactured by **Wenzhou MTLC Electric Appliances Co.,Ltd.** with the thing type UID of ```enerwave_zw20r_00_000```. 
+This describes the Z-Wave device *ZW20R*, manufactured by *Wenzhou MTLC Electric Appliances Co.,Ltd.* with the thing type UID of ```enerwave_zw20r_00_000```. 
 
 20A Tamper Resistant Duplex Receptacle  
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 When the controller is in inclusion mode and the blue LED blinks on the  
 ZW20R, press the program button of ZW20R, and then the controller will  
@@ -15,7 +21,7 @@ verify the inclusion
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 When the controller is in exclusion mode, press the  
 program button of ZW20R, and then the controller will remove it from the  
@@ -24,9 +30,10 @@ current Z-Wave network, and the LED will blink on the receptacle.
   
 
 
-## Wakeup Information ##
+### Wakeup Information 
 
 mains device
+
 
 ## Channels
 The following table summarises the channels available for the ZW20R 20A Tamper Resistant Duplex Receptacle.
@@ -38,8 +45,6 @@ The following table summarises the channels available for the ZW20R 20A Tamper R
 | Switch 2 | switch_binary2 | switch_binary | Switch | Switch |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the ZW20R 20A Tamper Resistant Duplex Receptacle.
 Detailed information on each parameter can be found below.
@@ -47,8 +52,6 @@ Detailed information on each parameter can be found below.
 | Parameter   | Description |
 |-------------|-------------|
 | 1: Toggle LED mode | Set to 1 for LED to be in sync with switch. |
-
-
 
 
 #### 1: Toggle LED mode
@@ -64,12 +67,7 @@ Set to 1 for LED to be in sync with switch.
 |  | 1: LED is on when switch is on (1) |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/185).
-

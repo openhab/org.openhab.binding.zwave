@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: PAT02-C - ZWave
+---
+
+{% include base.html %}
 
 # PAT02-C Flood Sensor
 
-This describes the Z-Wave device **PAT02-C**, manufactured by **Philio Technology Corp** with the thing type UID of ```philio_pat02c_00_000```. 
+This describes the Z-Wave device *PAT02-C*, manufactured by *Philio Technology Corp* with the thing type UID of ```philio_pat02c_00_000```. 
 
 Flood Sensor
+
 
 ## Channels
 The following table summarises the channels available for the PAT02-C Flood Sensor.
@@ -14,8 +21,6 @@ The following table summarises the channels available for the PAT02-C Flood Sens
 | Alarm (flood) | alarm_flood | alarm_flood | Door | Switch |
 | Alarm (burglar) | alarm_burglar | alarm_burglar | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -35,14 +40,12 @@ Detailed information on each parameter can be found below.
 | 2: Light Control |  |
 
 
-
-
 #### 1: Basic Set OFF Level
 
 Setting the BASIC command value  
 
 
-# Overview #
+##### Overview 
 
  *  Setting the BASIC command value
     
@@ -57,16 +60,12 @@ Setting the BASIC command value
 | Default Value | 0 |
 
 
-
-
-
-
 #### 2: Basic Set ON Level
 
 Setting the BASIC command value  
 
 
-# Overview #
+##### Overview 
 
  *  Setting the BASIC command value
     
@@ -81,16 +80,12 @@ Setting the BASIC command value
 | Default Value | 255 |
 
 
-
-
-
-
 #### 5: Operation Mode
 
 Operation mode. Using bit to control.  
 
 
-# Overview #
+##### Overview 
 
 Operation mode. Using bit to control.
 
@@ -113,16 +108,12 @@ Operation mode. Using bit to control.
 |  | Flood function is disabled (33) |
 
 
-
-
-
-
 #### 7: Customer Function
 
 Parameter to set the sensor functions  
 
 
-# Overview #
+##### Overview 
 
 Customer Function switch using bit control
 
@@ -156,16 +147,12 @@ Customer Function switch using bit control
 | Default Value | 0 |
 
 
-
-
-
-
 #### 10: Auto Report Battery Time
 
 The interval time for auto report the battery level.  
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto report the battery level.
 
@@ -180,16 +167,12 @@ The interval time for auto report the battery level.
 | Default Value | 12 |
 
 
-
-
-
-
 #### 15: Auto Report Flood Time
 
 The interval time for auto report the flood state.  
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto report the flood state.
 
@@ -204,16 +187,12 @@ The interval time for auto report the flood state.
 | Default Value | 12 |
 
 
-
-
-
-
 #### 20: Auto Report Tick Interval
 
 The interval time for auto reporting each tick.  
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto report each tick.
 
@@ -234,13 +213,7 @@ Caution2: The value is unsigned byte
 | Default Value | 30 |
 
 
-
-
-
-
 #### 1: Reports
-
-
 
 
 | Property         | Value    |
@@ -250,13 +223,7 @@ Caution2: The value is unsigned byte
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Light Control
-
-
 
 
 | Property         | Value    |
@@ -266,12 +233,7 @@ Caution2: The value is unsigned byte
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/178).
-

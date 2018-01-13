@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: DCH-Z120 - ZWave
+---
+
+{% include base.html %}
 
 # DCH-Z120 Battery Motion Sensor
 
-This describes the Z-Wave device **DCH-Z120**, manufactured by **D-Link** with the thing type UID of ```dlink_dchz120_00_000```. 
+This describes the Z-Wave device *DCH-Z120*, manufactured by *D-Link* with the thing type UID of ```dlink_dchz120_00_000```. 
 
 Battery Motion Sensor
+
 
 ## Channels
 The following table summarises the channels available for the DCH-Z120 Battery Motion Sensor.
@@ -15,7 +22,6 @@ The following table summarises the channels available for the DCH-Z120 Battery M
 | Sensor (temperature) | sensor_temperature | sensor_temperature | Temperature | Number |
 | Alarm | alarm_motion | alarm_motion | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Sensor (temperature)
@@ -31,10 +37,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -66,14 +68,12 @@ Detailed information on each parameter can be found below.
 | 2: Light Control |  |
 
 
-
-
 #### 2: Basic Set Level
 
 Setting the BASIC command value to turn on the light.  
 
 
-# Overview #
+##### Overview 
 
  *  0: Turn off the light.
  *  1 - 100: For dimmers 1 to 100 means the light level.
@@ -89,16 +89,12 @@ Setting the BASIC command value to turn on the light.
 |  | On (255) |
 
 
-
-
-
-
 #### 3: PIR Sensitivity
 
 Set the sensitivity for the PIR (Passive Infrared Sensor).  
 
 
-# Overview #
+##### Overview 
 
  *  0 = Disable the PIR motion detection.
  *  1 - 99 = 1 means the lowest sensitivity, 99 means the highest sensitivity
@@ -114,16 +110,12 @@ High sensitivity means can detected long distance, but if there is more noise si
 | Options | Disable (0) |
 
 
-
-
-
-
 #### 4: Light Threshold
 
 Set the illumination threshold to turn on the light.  
 
 
-# Overview #
+##### Overview 
 
 When the event triggers and the environment illumination is lower than the threshold, the device will turn on the light.
 
@@ -143,16 +135,12 @@ Notice: In none test mode, only the value in 1 to 99 will enable the illuminatio
 |  | Disable, Light ON (100) |
 
 
-
-
-
-
 #### 5: Operation Mode
 
 Parameter to set the Operation Mode.  
 
 
-# Overview #
+##### Overview 
 
 Bit0: Reserve
 
@@ -179,16 +167,12 @@ Bit7: Disable the back key release into test mode. (1:Disable, 0:Enable)
 | Default Value | 0 |
 
 
-
-
-
-
 #### 6: Multi-Sensor Function Switch
 
 Parameter to set the sensor functions.  
 
 
-# Overview #
+##### Overview 
 
 Bit0: Disable magnetic integrate illumination to turn ON the lighting nodes in the association group 2. (1:Disable, 0:Enable)
 
@@ -215,16 +199,12 @@ Bit7: Reserve.
 | Default Value | 4 |
 
 
-
-
-
-
 #### 7: Customer Function
 
 Parameter to set the Customer Function.  
 
 
-# Overview #
+##### Overview 
 
 Bit0: Reserve.
 
@@ -251,16 +231,12 @@ Bit7: Reserve.
 | Default Value | 4 |
 
 
-
-
-
-
 #### 7: Bit1: Enable sending motion OFF report.
 
 0:Disable, 1:Enable  
 
 
-# Overview #
+##### Overview 
 
 Note: Depends on the Bit4, 0: Report Notification CC, Type: 0x07, Event: 0xFE 1: Sensor Binary Report, Type: 0x0C, Value: 0x00  
 
@@ -271,10 +247,6 @@ Note: Depends on the Bit4, 0: Report Notification CC, Type: 0x07, Event: 0xFE 1:
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Disable (0) |
 |  | Enable (1) |
-
-
-
-
 
 
 #### 7: Bit2: Enable PIR super sensitivity mode.
@@ -290,10 +262,6 @@ Note: Depends on the Bit4, 0: Report Notification CC, Type: 0x07, Event: 0xFE 1:
 |  | Enable (1) |
 
 
-
-
-
-
 #### 7: Bit4: Notification Type
 
 0: Using Notification Report. 1: Using Sensor Binary Report.
@@ -305,10 +273,6 @@ Note: Depends on the Bit4, 0: Report Notification CC, Type: 0x07, Event: 0xFE 1:
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Notification Report (0) |
 |  | Sensor Binary Report (1) |
-
-
-
-
 
 
 #### 7: Bit5: Disable Multi CC in auto report.
@@ -324,10 +288,6 @@ Note: Depends on the Bit4, 0: Report Notification CC, Type: 0x07, Event: 0xFE 1:
 |  | Disable (1) |
 
 
-
-
-
-
 #### 7: Bit6: Disable to report battery state when device triggered
 
 1:Disable, 0 Enable
@@ -341,16 +301,12 @@ Note: Depends on the Bit4, 0: Report Notification CC, Type: 0x07, Event: 0xFE 1:
 |  | Disable (1) |
 
 
-
-
-
-
 #### 8: PIR Re-Detect Interval Time
 
 Set re-detect time after PIR motion triggered  
 
 
-# Overview #
+##### Overview 
 
 8 seconds per tick, default tick is 3 (24 seconds).  
 Setting the suitable value to prevent received the trigger signal too frequently. Also can save the battery energy.  
@@ -365,16 +321,12 @@ Notice: If this value bigger than the configuration setting NO. 9. There is a pe
 | Default Value | 3 |
 
 
-
-
-
-
 #### 9: Turn Off Light Time
 
 Set delay time to turn off light after motion triggered.  
 
 
-# Overview #
+##### Overview 
 
 After turn on the lighting, setting the delay time to turn off the lighting when the PIR motion is not detected.  
 8 seconds per tick, default tick is 4 (32 seconds).  
@@ -389,16 +341,12 @@ After turn on the lighting, setting the delay time to turn off the lighting when
 | Default Value | 4 |
 
 
-
-
-
-
 #### 10: Auto Report Battery Time
 
 Interval time for auto reporting the battery level  
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto report the battery level.  
 0 means turn off auto report battery. The default value is 12. The tick time can setting by the configuration No.20.  
@@ -412,16 +360,12 @@ The interval time for auto report the battery level.
 | Default Value | 12 |
 
 
-
-
-
-
 #### 12: Auto Report Illumination Time
 
 Interval time for auto reporting the illumination.  
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto report the illumination.  
 0 means turn off auto report illumination.  
@@ -436,16 +380,12 @@ The default value is 12. The tick time can setting by the configuration No.20. 
 | Default Value | 12 |
 
 
-
-
-
-
 #### 13: Auto Report Temperature Time
 
 Interval time for auto reporting the temperature.  
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto report the temperature.  
 0 means turn off auto report temperature.  
@@ -460,16 +400,12 @@ The default value is 12. The tick time can setting by the configuration No.20. 
 | Default Value | 12 |
 
 
-
-
-
-
 #### 20: Auto Report Tick Interval
 
 Interval time for auto reporting each tick.  
 
 
-# Overview #
+##### Overview 
 
 The interval time for auto report each tick. Setting this configuration will effect configuration No.10, No.11, No.12 and No.13.  
 Caution: Setting to 0 means turn off all auto report function  
@@ -483,16 +419,12 @@ Caution: Setting to 0 means turn off all auto report function  
 | Default Value | 30 |
 
 
-
-
-
-
 #### 21: Temperature Differential Report
 
 The temperature differential to report.  
 
 
-# Overview #
+##### Overview 
 
 The temperature differential to report.  
 0 means turn off this function.  
@@ -510,16 +442,12 @@ Enable this functionality will cause some issue please see the detail in the “
 | Default Value | 1 |
 
 
-
-
-
-
 #### 22: Illumination Differential Report
 
 The illumination differential to report.  
 
 
-# Overview #
+##### Overview 
 
 The illumination differential to report.  
 0 means turn off this function.  
@@ -538,13 +466,7 @@ some issue please see the detail in the
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Reports
-
-
 
 
 | Property         | Value    |
@@ -554,13 +476,7 @@ some issue please see the detail in the
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Light Control
-
-
 
 
 | Property         | Value    |
@@ -570,12 +486,7 @@ some issue please see the detail in the
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/308).
-

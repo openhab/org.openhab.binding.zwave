@@ -1,18 +1,25 @@
+---
+layout: documentation
+title: Heating Control - ZWave
+---
+
+{% include base.html %}
 
 # Heating Control Thermostat for controlling the opentherm protocol
 
-This describes the Z-Wave device **Heating Control**, manufactured by **BeNext** with the thing type UID of ```benext_heatingcontrol_00_000```. 
+This describes the Z-Wave device *Heating Control*, manufactured by *BeNext* with the thing type UID of ```benext_heatingcontrol_00_000```. 
 
 Thermostat for controlling the opentherm protocol  
 
 
-# Overview #
+## Overview 
 
 The Heating Control is the central point of your climate environment. You can overwrite the temperature setpoint of your thermostat, and this product also reports information about your thermostat or boiler. For example the room temperature, boiler pressure, modulation level or water temperature.
 
 This product can be simply placed between your thermostat and boiler. The current setup is not changed and therefore you can still use the device as you normally would do. You don’t have to replace your current thermostat.
 
 Note: This product only works if the current communication between your thermostat and boiler uses the standardized modulating protocol Open Therm. If you are not sure whether your thermostat/boiler uses Open Therm, you may find that in the manual of your thermostat/boiler. You can also find it on the internet. You can search for example on ‘Honeywell round clock open therm’.
+
 
 ## Channels
 The following table summarises the channels available for the Heating Control Thermostat for controlling the opentherm protocol.
@@ -24,7 +31,6 @@ The following table summarises the channels available for the Heating Control Th
 | Thermostat mode | thermostat_mode | benext_heatingcontrol_00_000_thermostat_mode | Temperature | Number |
 | Heating setpoint | thermostat_setpoint_1 | thermostat_setpoint | Temperature | Number |
 | Energy save setpoint | thermostat_setpoint_11 | thermostat_setpoint | Temperature | Number |
-
 
 
 ### Room temperature
@@ -42,9 +48,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Outside temperature
 
 #### Scale
@@ -58,9 +61,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
 
 
 ### Heating setpoint
@@ -78,9 +78,6 @@ Select the scale to use for setpoints.
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Energy save setpoint
 
 #### Scale
@@ -94,10 +91,6 @@ Select the scale to use for setpoints.
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -118,14 +111,12 @@ Detailed information on each parameter can be found below.
 | 1: Group 1 | Unsolicited reports |
 
 
-
-
 #### 1: Set to default
 
 Set all configuration values to default values (factory settings)  
 
 
-# Overview #
+##### Overview 
 
 If 0xFF (255) then set to default
 
@@ -137,16 +128,12 @@ If 0xFF (255) then set to default
 | Options | Reset (255) |
 
 
-
-
-
-
 #### 2: Data request interval
 
 Interval of updating data from thermostat and boiler  
 
 
-# Overview #
+##### Overview 
 
 The interval in seconds that data is requested (and therefore updated) from the thermostat and boiler. 
 
@@ -159,16 +146,12 @@ The interval in seconds that data is requested (and therefore updated) from the 
 | Default Value | 14 |
 
 
-
-
-
-
 #### 3: T room update difference
 
 Difference of temperature before new update  
 
 
-# Overview #
+##### Overview 
 
 The value that the room temperature must differ (compared to his previous send value) before an unsolicited room temperature report is send to the associated node. 
 
@@ -181,16 +164,12 @@ The value that the room temperature must differ (compared to his previous send v
 | Default Value | 1 |
 
 
-
-
-
-
 #### 4: T setpoint update difference
 
 Difference in setpoint before new update  
 
 
-# Overview #
+##### Overview 
 
 The value that the temperature setpoint must differ (compared to his previous send value) before an unsolicited temperature setpoint report is send to the associated node. 
 
@@ -203,16 +182,12 @@ The value that the temperature setpoint must differ (compared to his previous se
 | Default Value | 5 |
 
 
-
-
-
-
 #### 5: Unsolicited CRC
 
 CRC-16 encapulation  
 
 
-# Overview #
+##### Overview 
 
 Configure if the unsolicited reports are send with the CRC-16 encapsulation. Not that the receiving node should support this encapsulation to parse the Z-Wave frame! 
 
@@ -225,16 +200,12 @@ Configure if the unsolicited reports are send with the CRC-16 encapsulation. Not
 |  | On (255) |
 
 
-
-
-
-
 #### 6: Type of &#x27;special&#x27; thermostat
 
 Type of 'special' thermostat if applicable  
 
 
-# Overview #
+##### Overview 
 
 Type of 'special' thermostat. NOTE: when remeha Celcia 20 support is set than any other thermostat cannot be set (!) NOTE2: when Remeha Celcia 20 gives 'Fout 203' send cfg value again 
 
@@ -248,16 +219,12 @@ Type of 'special' thermostat. NOTE: when remeha Celcia 20 support is set than an
 |  | Honeywell (rounded temperatures) (2) |
 
 
-
-
-
-
 #### 7: Status auto report
 
 Status auto report boiler/thermostat report.  
 
 
-# Overview #
+##### Overview 
 
 Status auto report boiler/thermostat report.
 
@@ -270,16 +237,12 @@ Status auto report boiler/thermostat report.
 |  | Enable boiler/thermostat status messages auto report (255) |
 
 
-
-
-
-
 #### 9: Enable/Disable thermostat schedule
 
 Enable/Disable thermostat schedule inside the controller  
 
 
-# Overview #
+##### Overview 
 
 Enable/Disable thermostat schedule inside the heatingcontroller
 
@@ -292,16 +255,12 @@ Enable/Disable thermostat schedule inside the heatingcontroller
 |  | Enable thermostat schedule (255) |
 
 
-
-
-
-
 #### 11: Readout manual setpoint thermostat
 
 Readout manual setpoint thermostat  
 
 
-# Overview #
+##### Overview 
 
 This parameter is used to set the possible manual readout of the setpoint on the thermostat. If the thermostat is manually set to a different mode it is then possible to readout this value if enabled.
 
@@ -316,16 +275,12 @@ This parameter is used to set the possible manual readout of the setpoint on the
 |  | Readout ON (255) |
 
 
-
-
-
-
 #### 1: Group 1
 
 Unsolicited reports  
 
 
-# Overview #
+##### Overview 
 
 Every unsolicited report will be sent to the nodes in this group. 
 
@@ -337,12 +292,7 @@ Every unsolicited report will be sent to the nodes in this group. 
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/473).
-

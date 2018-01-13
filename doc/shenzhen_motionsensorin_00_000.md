@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: Motion Sensor IN - ZWave
+---
+
+{% include base.html %}
 
 # Motion Sensor IN Motion Sensor IN
 
-This describes the Z-Wave device **Motion Sensor IN**, manufactured by **Shenzhen Neo Electronics Co., Ltd** with the thing type UID of ```shenzhen_motionsensorin_00_000```. 
+This describes the Z-Wave device *Motion Sensor IN*, manufactured by *Shenzhen Neo Electronics Co., Ltd* with the thing type UID of ```shenzhen_motionsensorin_00_000```. 
 
 Motion Sensor IN
+
 
 ## Channels
 The following table summarises the channels available for the Motion Sensor IN Motion Sensor IN.
@@ -17,8 +24,6 @@ The following table summarises the channels available for the Motion Sensor IN M
 |  | battery-level | system.battery-level |  |  |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the Motion Sensor IN Motion Sensor IN.
 Detailed information on each parameter can be found below.
@@ -27,10 +32,7 @@ Detailed information on each parameter can be found below.
 |-------------|-------------|
 
 
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/478).
-

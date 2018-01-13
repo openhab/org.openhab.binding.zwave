@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: Alarm Sound - ZWave
+---
+
+{% include base.html %}
 
 # Alarm Sound Alarm sound
 
-This describes the Z-Wave device **Alarm Sound**, manufactured by **BeNext** with the thing type UID of ```benext_alarmsound_00_000```. 
+This describes the Z-Wave device *Alarm Sound*, manufactured by *BeNext* with the thing type UID of ```benext_alarmsound_00_000```. 
 
 Alarm sound
+
 
 ## Channels
 The following table summarises the channels available for the Alarm Sound Alarm sound.
@@ -12,8 +19,6 @@ The following table summarises the channels available for the Alarm Sound Alarm 
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Alarm | alarm_general | alarm_general | Door | Switch |
-
-
 
 
 ### Device Configuration
@@ -38,14 +43,12 @@ Detailed information on each parameter can be found below.
 | 2: Association group 2 | The alarm sound reports it status to the associated devices |
 
 
-
-
 #### 1: Set to Default
 
 Set all configuration values to default values (factory settings)  
 
 
-# Overview #
+##### Overview 
 
 If value is set to 255 reset to default settings.
 
@@ -58,16 +61,12 @@ If value is set to 255 reset to default settings.
 | Default Value | 1 |
 
 
-
-
-
-
 #### 2: Destination routine on/off
 
 Test connection by sending a periodic test. if the device doesn't react the user will be notified by a sound.  
 
 
-# Overview #
+##### Overview 
 
 0 this is turned off. 1-255 turn it on.
 
@@ -80,16 +79,12 @@ Test connection by sending a periodic test. if the device doesn't react the user
 | Default Value | 255 |
 
 
-
-
-
-
 #### 3: Desitnation routine succes time
 
 Time it takes to send a new frame after the last frame has succesfully send  
 
 
-# Overview #
+##### Overview 
 
 t(s) = param1 \* 6 \*60
 
@@ -102,16 +97,12 @@ t(s) = param1 \* 6 \*60
 | Default Value | 60 |
 
 
-
-
-
-
 #### 4: Destination routine failed time
 
 Time elapsed between failing to end a frame and sending a new frame.  
 
 
-# Overview #
+##### Overview 
 
 t(s) = param1 \*60
 
@@ -124,16 +115,12 @@ t(s) = param1 \*60
 | Default Value | 240 |
 
 
-
-
-
-
 #### 7: Select index sound/light mode
 
 The index of the sound mode when a switch binary/basic set frame been received  
 
 
-# Overview #
+##### Overview 
 
 0 to switch off, 1-6 to select light/sound mode.
 
@@ -148,16 +135,12 @@ If value is put higher then 5 the application will read this as 1.
 | Default Value | 1 |
 
 
-
-
-
-
 #### 8: power offline sound/light mode
 
 The sound and light mode that will be used when the device gets unplugged.  
 
 
-# Overview #
+##### Overview 
 
 0 to switch off, 1-6 to select light/sound mode.
 
@@ -172,16 +155,12 @@ If value is put higher then 5 the application will read this as 1.
 | Default Value | 6 |
 
 
-
-
-
-
 #### 10: sound/light index 1
 
 Sound/light that will be played when index 1 has been selected  
 
 
-# Overview #
+##### Overview 
 
 Params 10-27 are the values to set the sound/light (this will be set when index 1)
 
@@ -198,16 +177,12 @@ For the configuration of the light/sound mode i would like to refer to the manua
 | Default Value | 0 |
 
 
-
-
-
-
 #### 28: sound/light index 2
 
 Sound/light that will be played when index 2 has been selected  
 
 
-# Overview #
+##### Overview 
 
 Params 28-45 are the values to set the sound/light (this will be set when index 2)
 
@@ -224,16 +199,12 @@ For the configuration of the light/sound mode i would like to refer to the manua
 | Default Value | 0 |
 
 
-
-
-
-
 #### 46: sound/light index 3
 
 Sound/light that will be played when index 3 has been selected  
 
 
-# Overview #
+##### Overview 
 
 Params 45-63 are the values to set the sound/light (this will be set when index 3)
 
@@ -250,16 +221,12 @@ For the configuration of the light/sound mode i would like to refer to the manua
 | Default Value | 0 |
 
 
-
-
-
-
 #### 64: sound/light index 4
 
 Sound/light that will be played when index 4 has been selected  
 
 
-# Overview #
+##### Overview 
 
 Params 64-81 are the values to set the sound/light (this will be set when index 4)
 
@@ -276,16 +243,12 @@ For the configuration of the light/sound mode i would like to refer to the manua
 | Default Value | 0 |
 
 
-
-
-
-
 #### 82: sound/light index 5
 
 Sound/light that will be played when index 5 has been selected  
 
 
-# Overview #
+##### Overview 
 
 Params 82-99 are the values to set the sound/light (this will be set when index 5)
 
@@ -302,16 +265,12 @@ For the configuration of the light/sound mode i would like to refer to the manua
 | Default Value | 0 |
 
 
-
-
-
-
 #### 100: sound/light index 6
 
 Sound/light that will be played when index 6 has been selected  
 
 
-# Overview #
+##### Overview 
 
 Params 100-117 are the values to set the sound/light (this will be set when index 6)
 
@@ -328,16 +287,12 @@ For the configuration of the light/sound mode i would like to refer to the manua
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Association group 1
 
 Changes the LED on the device  
 
 
-# Overview #
+##### Overview 
 
 When the device receives an binary switch/ basic report, this will update the LED
 
@@ -349,16 +304,12 @@ When the device receives an binary switch/ basic report, this will update the LE
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Association group 2
 
 The alarm sound reports it status to the associated devices  
 
 
-# Overview #
+##### Overview 
 
 \- In case the device gets unplugged this shall send Alarm report (code 3, Triggered).
 
@@ -378,12 +329,7 @@ When the Device is connected to a powersupply, the device will say it has connec
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/443).
-

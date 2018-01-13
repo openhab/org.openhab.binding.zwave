@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: SP103 - ZWave
+---
+
+{% include base.html %}
 
 # SP103 Motion Detector
 
-This describes the Z-Wave device **SP103**, manufactured by **Everspring** with the thing type UID of ```everspring_sp103_00_000```. 
+This describes the Z-Wave device *SP103*, manufactured by *Everspring* with the thing type UID of ```everspring_sp103_00_000```. 
 
 Motion Detector
+
 
 ## Channels
 The following table summarises the channels available for the SP103 Motion Detector.
@@ -15,8 +22,6 @@ The following table summarises the channels available for the SP103 Motion Detec
 |  | battery-level | system.battery-level |  |  |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the SP103 Motion Detector.
 Detailed information on each parameter can be found below.
@@ -26,8 +31,6 @@ Detailed information on each parameter can be found below.
 | 1: Phase level on command | Defines which command to send when sensor triggers |
 | 2: Enable/Disable Sleeping | Enables/Disables sleeping for debug purposes |
 | 1: Triggered Report |  |
-
-
 
 
 #### 1: Phase level on command
@@ -44,10 +47,6 @@ Defines which command to send when sensor triggers
 |  | Set LAST Level (9) |
 
 
-
-
-
-
 #### 2: Enable/Disable Sleeping
 
 Enables/Disables sleeping for debug purposes
@@ -61,13 +60,7 @@ Enables/Disables sleeping for debug purposes
 |  | Enabled (1) |
 
 
-
-
-
-
 #### 1: Triggered Report
-
-
 
 
 | Property         | Value    |
@@ -77,12 +70,7 @@ Enables/Disables sleeping for debug purposes
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/29).
-

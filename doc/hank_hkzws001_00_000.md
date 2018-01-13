@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: HKZW-SO01 - ZWave
+---
+
+{% include base.html %}
 
 # HKZW-SO01 Smart Plug with two USB ports
 
-This describes the Z-Wave device **HKZW-SO01**, manufactured by **Hank** with the thing type UID of ```hank_hkzws001_00_000```. 
+This describes the Z-Wave device *HKZW-SO01*, manufactured by *Hank* with the thing type UID of ```hank_hkzws001_00_000```. 
 
 Smart Plug with two USB ports  
 
 
-# Overview #
+## Overview 
 
 Hank Smart Plug is a Z-Wave Switch plugin module specifically used to enable Z-Wave command and control (On/Off) of any plug-in tool. It can report wattage consumption or kWh energy usage. Smart Plug is also a security Z-Wave device and supports Over The Air (OTA) feature for the product's firmware upgrade.
 
@@ -25,7 +31,7 @@ Features List:
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 Manual Z-Wave network inclusion:
 
@@ -44,7 +50,7 @@ If the LED indicator not blinking when inserting a Plug into a socket, it means
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 REMOVING FROM Z-WAVE NETWORK
 
@@ -55,6 +61,7 @@ To remove Smart Plug from the Z-Wave network:
 (2) Set the Z-Wave network controller into the exclusion mode (see Z-Wave controller operating manual)
 
 (3) Triple click the Z button.
+
 
 ## Channels
 The following table summarises the channels available for the HKZW-SO01 Smart Plug with two USB ports.
@@ -70,7 +77,6 @@ The following table summarises the channels available for the HKZW-SO01 Smart Pl
 | Electric meter (watts) | meter_watts | meter_watts | Energy | Number |
 
 
-
 ### Dimmer
 
 #### Restore Last Value
@@ -84,10 +90,6 @@ Restore Last Dimming level on ON.
 | Data Type        | BOOLEAN || Default Value | true |
 | Options | Restore Last Value (true) |
 |  | Restore Full Brightness (false) |
-
-
-
-
 
 
 ### Device Configuration
@@ -109,14 +111,12 @@ Detailed information on each parameter can be found below.
 | 1: Basic Report | Sends Basic Report at On/Off event |
 
 
-
-
 #### 20: Overload Protection
 
 If current exceeds 16.5A over 5 seconds, relay will turn off.  
 
 
-# Overview #
+##### Overview 
 
 If current exceeds 16.5A over 5 seconds, relay will turn off.
 
@@ -133,16 +133,12 @@ If current exceeds 16.5A over 5 seconds, relay will turn off.
 | Default Value | 1 |
 
 
-
-
-
-
 #### 21: Device Status after Power Failure
 
 Define how the plug reacts after power failure  
 
 
-# Overview #
+##### Overview 
 
 Define how the plug reacts after power failure:
 
@@ -165,16 +161,12 @@ Connected device will be off after the power supply is reconnected.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 24: Notifcation on Load Change
 
 Smart Plug can send notifications to association device load state changes.  
 
 
-# Overview #
+##### Overview 
 
 Smart Plug can send notifications to association device load state changes.
 
@@ -193,16 +185,12 @@ Smart Plug can send notifications to association device load state changes.
 | Default Value | 1 |
 
 
-
-
-
-
 #### 27: Indicator Modes
 
 LED in the device will indicate the state of load  
 
 
-# Overview #
+##### Overview 
 
 After smart plug is included into a Z-Wave network, the LED in the device will indicate the state of load.
 
@@ -219,16 +207,12 @@ After smart plug is included into a Z-Wave network, the LED in the device will i
 | Default Value | 0 |
 
 
-
-
-
-
 #### 151: Threshold of power report
 
 Power Threshold at which to send meter report  
 
 
-# Overview #
+##### Overview 
 
 Power threshold to be interpreted, when the change value of load power exceeds the setting threshold, the smart plug will send meter report to association device (Group Lifeline).
 
@@ -247,16 +231,12 @@ Default setting: 50 (50W)
 | Default Value | 50 |
 
 
-
-
-
-
 #### 152: Percentage Threshold of Power Report
 
 Percentage Threshold at which to send meter report  
 
 
-# Overview #
+##### Overview 
 
 Power percentage threshold to be interpreted, when change value of the load power exceeds the setting threshold, the smart plug will send meter report to association device (Group Lifeline).
 
@@ -275,16 +255,12 @@ Default setting: 10 (10%)
 | Default Value | 10 |
 
 
-
-
-
-
 #### 171: Power Report Frequency
 
 The interval of sending power report to association device (Group Lifeline).  
 
 
-# Overview #
+##### Overview 
 
 The interval of sending power report to association device (Group Lifeline).
 
@@ -303,16 +279,12 @@ Default setting: 30 (30 seconds).
 | Default Value | 30 |
 
 
-
-
-
-
 #### 172: Energy Report Frequency
 
 The interval of sending energy report to association device (Group Lifeline).  
 
 
-# Overview #
+##### Overview 
 
 The interval of sending energy report to association device (Group Lifeline).
 
@@ -331,16 +303,12 @@ Default setting: 300 (300 seconds).
 | Default Value | 300 |
 
 
-
-
-
-
 #### 173: Voltage Report Frequency
 
 The interval of sending voltage report to association device (Group Lifeline)  
 
 
-# Overview #
+##### Overview 
 
 The interval of sending voltage report to association device (Group Lifeline)
 
@@ -359,16 +327,12 @@ Default setting: 0 (disabled).
 | Default Value | 0 |
 
 
-
-
-
-
 #### 174: Electricity Report Frequency
 
 Interval for sending electricity report.  
 
 
-# Overview #
+##### Overview 
 
 The interval of sending electricity report to association device (Group Lifeline).
 
@@ -387,16 +351,12 @@ Default setting: 0 (disabled).
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Basic Report
 
 Sends Basic Report at On/Off event  
 
 
-# Overview #
+##### Overview 
 
 Association command class allows Smart Plug to communicate with other Z-Wave devices directly, such as sending BASIC REPORT whenever the smart plug is turn on or off.
 
@@ -412,12 +372,7 @@ The max number of associated nodes is 5.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/570).
-

@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZMNHDA - ZWave
+---
+
+{% include base.html %}
 
 # ZMNHDA Flush dimmer
 
-This describes the Z-Wave device **ZMNHDA**, manufactured by **Goap** with the thing type UID of ```qubino_zmnhda_00_000```. 
+This describes the Z-Wave device *ZMNHDA*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhda_00_000```. 
 
 Flush dimmer
+
 
 ## Channels
 The following table summarises the channels available for the ZMNHDA Flush dimmer.
@@ -17,7 +24,6 @@ The following table summarises the channels available for the ZMNHDA Flush dimme
 | Electric meter (watts) | meter_watts | meter_watts | Energy | Number |
 | Binary Sensor 1 | sensor_binary1 | sensor_binary | Door | Switch |
 | Binary Sensor 2 | sensor_binary2 | sensor_binary | Door | Switch |
-
 
 
 ### Dimmer
@@ -35,9 +41,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
 ### Sensor (temperature)
 
 #### Scale
@@ -51,10 +54,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -80,8 +79,6 @@ Detailed information on each parameter can be found below.
 | 4: Controller updates |  |
 
 
-
-
 #### 1: Input 1 switch type
 
 Switch type (input I1)
@@ -93,10 +90,6 @@ Switch type (input I1)
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | mono-stable switch (push button) (0) |
 |  | bi-stable (toggle) switch (1) |
-
-
-
-
 
 
 #### 2: Input 2 contact type
@@ -112,10 +105,6 @@ Input 2 contact type
 |  | NC (normally close) input type (1) |
 
 
-
-
-
-
 #### 3: Input 3 contact type
 
 Input 3 contact type
@@ -127,10 +116,6 @@ Input 3 contact type
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | NO (normally open) input type (0) |
 |  | NC (normally close) input type (1) |
-
-
-
-
 
 
 #### 10: Activate / deactivate functions ALL ON/ALL OFF
@@ -148,10 +133,6 @@ Flush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by t
 |  | ALL ON active, ALL OFF active (255) |
 
 
-
-
-
-
 #### 30: Saving the state of the device after a power failure
 
 Saving the state of the device after a power failure
@@ -165,14 +146,9 @@ Saving the state of the device after a power failure
 |  | Flush dimmer module does not save the state after a power failure, it (1) |
 
 
-
-
-
-
 #### 40: Power reporting in Watts on power change for Q1
 
 Set value means percentage, set value from 0-100 = 0%-100%. Power report is sent (pushed) only when actual power in Watts in real time changed for more than set percentage comparing to previous actual power in Watts, step is 1%.  
-
 
 
 | Property         | Value    |
@@ -181,10 +157,6 @@ Set value means percentage, set value from 0-100 = 0%-100%. Power report is sent
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 5 |
-
-
-
-
 
 
 #### 42: Power reporting in Watts by time interval
@@ -204,10 +176,6 @@ Set value means time interval (0 – 65535) in seconds, when power report is sen
 | Default Value | 300 |
 
 
-
-
-
-
 #### 60: Minimum dimming value
 
 Range is 1% – 98%, step is 1%.  
@@ -222,10 +190,6 @@ NOTE: The maximum level may not be lower than the minimum level!
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 61: Maximum dimming value
@@ -244,10 +208,6 @@ NOTE: The maximum level may not be lower than the minimum level!
 | Default Value | 99 |
 
 
-
-
-
-
 #### 65: Dimming time (soft on/off)
 
 Set value means time of moving the Dimmer between min. and max. dimming values by short press of push button I1 or controlled through UI.  
@@ -261,10 +221,6 @@ Default value 100 (Dimming time between m
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 100 |
-
-
-
-
 
 
 #### 66: Dimming time when key pressed
@@ -282,13 +238,7 @@ Default value 3 (Dimming time between min. and max. dimming values is 3s)
 | Default Value | 3 |
 
 
-
-
-
-
 #### 1: multilevel (triggered at changes of state/value of the Flush dimmer)
-
-
 
 
 | Property         | Value    |
@@ -298,13 +248,7 @@ Default value 3 (Dimming time between min. and max. dimming values is 3s)
 | Range |  to  |
 
 
-
-
-
-
 #### 2: basic on/off (triggered at change of the input I2 state and reflecting
-
-
 
 
 | Property         | Value    |
@@ -314,13 +258,7 @@ Default value 3 (Dimming time between min. and max. dimming values is 3s)
 | Range |  to  |
 
 
-
-
-
-
 #### 3: basic on/off (triggered at change of the input I3 state and reflecting
-
-
 
 
 | Property         | Value    |
@@ -330,13 +268,7 @@ Default value 3 (Dimming time between min. and max. dimming values is 3s)
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Controller updates
-
-
 
 
 | Property         | Value    |
@@ -346,12 +278,7 @@ Default value 3 (Dimming time between min. and max. dimming values is 3s)
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/209).
-

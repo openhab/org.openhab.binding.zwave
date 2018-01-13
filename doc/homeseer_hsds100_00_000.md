@@ -1,19 +1,25 @@
+---
+layout: documentation
+title: HS-DS100+ - ZWave
+---
+
+{% include base.html %}
 
 # HS-DS100+ Homeseer Z-Wave Door/Window Sensor
 
-This describes the Z-Wave device **HS-DS100+**, manufactured by **HomeSeer Technologies** with the thing type UID of ```homeseer_hsds100_00_000```. 
+This describes the Z-Wave device *HS-DS100+*, manufactured by *HomeSeer Technologies* with the thing type UID of ```homeseer_hsds100_00_000```. 
 
 Homeseer Z-Wave Door/Window Sensor  
 
 
-# Overview #
+## Overview 
 
 HS-DS100+ is a battery operated sensor that is designed to issue Z-Wave commands when doors or windows are opened or closed. HSDS100+ may be associated directly with other Z-Wave devices or it may be used with a wide variety of Z-Wave hubs and controllers to trigger events, scenes and other automations.
 
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 1.  Ensure AAA batteries are installed. Pull plastic tab from battery compartment (if necessary)
 2.  Put your home automation controller into ‘inclusion’ mode. Consult your system’s manual for details.
@@ -28,11 +34,12 @@ Note: If you want this Door/window sensor to function as a security device using
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 1. Put your home automation controller into ‘exclusion’ mode. Consult your system’s manual for details.
 
 2. Triple-click the Z-Wave button inside the sensor body. If successful, the LED will turn off within 1 second. If unsuccessful, the LED with blink for 5 seconds. Should this happen, repeat the exclusion process.
+
 
 ## Channels
 The following table summarises the channels available for the HS-DS100+ Homeseer Z-Wave Door/Window Sensor.
@@ -43,8 +50,6 @@ The following table summarises the channels available for the HS-DS100+ Homeseer
 | Tamper Alarm | alarm_tamper | alarm_tamper |  | Switch |
 | Door Sensor | sensor_door | sensor_door | Door | Contact |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -60,14 +65,12 @@ Detailed information on each parameter can be found below.
 | 2: Group 2 |  |
 
 
-
-
 #### 14: Enable / Disable BASIC SET command
 
 Enable / Disable BASIC SET command  
 
 
-# Overview #
+##### Overview 
 
 A setting of “0” disables the regular reporting feature and requires the sensor to be manually woken up to send updates. 
 
@@ -80,13 +83,7 @@ A setting of “0” disables the regular reporting feature and requires the sen
 |  | Enable (1) |
 
 
-
-
-
-
 #### 15: Value of BASIC SET
-
-
 
 
 | Property         | Value    |
@@ -95,10 +92,6 @@ A setting of “0” disables the regular reporting feature and requires the sen
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Sends 255 value for open and 0 value for closed (0) |
 |  | Sends 0 value for open and 255 value for closed (1) |
-
-
-
-
 
 
 #### 32: Defines value of LOW BATTERY
@@ -114,16 +107,12 @@ Defines value of LOW BATTERY
 | Default Value | 20 |
 
 
-
-
-
-
 #### 1: Group 1
 
   
 
 
-# Overview #
+##### Overview 
 
 Group 1 reports the sensor’s condition, battery level and tamper state. 
 
@@ -135,16 +124,12 @@ Group 1 reports the sensor’s condition, battery level and tamper state. 
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Group 2
 
   
 
 
-# Overview #
+##### Overview 
 
 Group 2 sends the BASIC SET command.
 
@@ -156,12 +141,7 @@ Group 2 sends the BASIC SET command.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/732).
-

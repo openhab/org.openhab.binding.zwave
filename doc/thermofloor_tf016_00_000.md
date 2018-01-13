@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: TF016 - ZWave
+---
+
+{% include base.html %}
 
 # TF016 ZWave Thermostat
 
-This describes the Z-Wave device **TF016**, manufactured by **ThermoFloor** with the thing type UID of ```thermofloor_tf016_00_000```. 
+This describes the Z-Wave device *TF016*, manufactured by *ThermoFloor* with the thing type UID of ```thermofloor_tf016_00_000```. 
 
 ZWave Thermostat
+
 
 ## Channels
 The following table summarises the channels available for the TF016 ZWave Thermostat.
@@ -16,7 +23,6 @@ The following table summarises the channels available for the TF016 ZWave Thermo
 | Setpoint (heating) | thermostat_setpoint_heating | thermostat_setpoint | Temperature | Number |
 | Setpoint (furnace) | thermostat_setpoint_furnace | thermostat_setpoint | Temperature | Number |
 | Setpoint (economy) | thermostat_setpoint_heating_econ | thermostat_setpoint | Temperature | Number |
-
 
 
 ### Sensor (temperature)
@@ -34,9 +40,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (heating)
 
 #### Scale
@@ -50,9 +53,6 @@ Select the scale to use for setpoints.
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
 
 
 ### Setpoint (furnace)
@@ -70,9 +70,6 @@ Select the scale to use for setpoints.
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (economy)
 
 #### Scale
@@ -88,10 +85,6 @@ Select the scale to use for setpoints.
 |  | Fahrenheit (1) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the TF016 ZWave Thermostat.
 Detailed information on each parameter can be found below.
@@ -103,14 +96,12 @@ Detailed information on each parameter can be found below.
 | 2: On/Off control |  |
 
 
-
-
 #### 1: Operation mode
 
 Defines Operation Mode of thermostat  
 
 
-# Overview #
+##### Overview 
 
 0....OFF(0x00)
 
@@ -133,13 +124,7 @@ Default value 1
 |  | ENERGY SAVE HEAT (11) |
 
 
-
-
-
-
 #### 1: Lifeline
-
-
 
 
 | Property         | Value    |
@@ -149,13 +134,7 @@ Default value 1
 | Range |  to  |
 
 
-
-
-
-
 #### 2: On/Off control
-
-
 
 
 | Property         | Value    |
@@ -165,12 +144,7 @@ Default value 1
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/247).
-

@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FE599NX - ZWave
+---
+
+{% include base.html %}
 
 # FE599NX Connected Keypad with Lever
 
-This describes the Z-Wave device **FE599NX**, manufactured by **Allegion** with the thing type UID of ```schlage_fe599nx_00_000```. 
+This describes the Z-Wave device *FE599NX*, manufactured by *Allegion* with the thing type UID of ```schlage_fe599nx_00_000```. 
 
 Connected Keypad with Lever
+
 
 ## Channels
 The following table summarises the channels available for the FE599NX Connected Keypad with Lever.
@@ -15,8 +22,6 @@ The following table summarises the channels available for the FE599NX Connected 
 |  | battery-level | system.battery-level |  |  |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the FE599NX Connected Keypad with Lever.
 Detailed information on each parameter can be found below.
@@ -26,11 +31,7 @@ Detailed information on each parameter can be found below.
 | 1: Alarm Reports |  |
 
 
-
-
 #### 1: Alarm Reports
-
-
 
 
 | Property         | Value    |
@@ -40,12 +41,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/403).
-

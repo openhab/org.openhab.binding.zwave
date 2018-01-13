@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: CT100 Plus - ZWave
+---
+
+{% include base.html %}
 
 # CT100 Plus Z-Wave Thermostat
 
-This describes the Z-Wave device **CT100 Plus**, manufactured by **Radio Thermostat Company of America (RTC)** with the thing type UID of ```rtc_ct100plus_00_000```. 
+This describes the Z-Wave device *CT100 Plus*, manufactured by *Radio Thermostat Company of America (RTC)* with the thing type UID of ```rtc_ct100plus_00_000```. 
 
 Z-Wave Thermostat
+
 
 ## Channels
 The following table summarises the channels available for the CT100 Plus Z-Wave Thermostat.
@@ -38,7 +45,6 @@ The following table summarises the channels available for the CT100 Plus Z-Wave 
 | Sensor (temperature) 2 | sensor_temperature2 | sensor_temperature | Temperature | Number |
 
 
-
 ### Sensor (temperature)
 
 #### Scale
@@ -52,9 +58,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
 
 
 ### Setpoint (heating)
@@ -72,9 +75,6 @@ Select the scale to use for setpoints.
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (cooling)
 
 #### Scale
@@ -88,9 +88,6 @@ Select the scale to use for setpoints.
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
 
 
 ### Setpoint (dry air)
@@ -108,9 +105,6 @@ Select the scale to use for setpoints.
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (furnace)
 
 #### Scale
@@ -124,9 +118,6 @@ Select the scale to use for setpoints.
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
 
 
 ### Clock Time Offset
@@ -145,9 +136,6 @@ Setting this will automatically update the devices clock when the time differenc
 | Options | Disable Auto Update (0) |
 
 
-
-
-
 ### Sensor (temperature) 1
 
 #### Scale
@@ -161,9 +149,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
 
 
 ### Setpoint (heating) 1
@@ -181,9 +166,6 @@ Select the scale to use for setpoints.
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (cooling) 1
 
 #### Scale
@@ -197,9 +179,6 @@ Select the scale to use for setpoints.
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
 
 
 ### Setpoint (dry air) 1
@@ -217,9 +196,6 @@ Select the scale to use for setpoints.
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (furnace) 1
 
 #### Scale
@@ -233,9 +209,6 @@ Select the scale to use for setpoints.
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
 
 
 ### Clock Time Offset 1
@@ -254,9 +227,6 @@ Setting this will automatically update the devices clock when the time differenc
 | Options | Disable Auto Update (0) |
 
 
-
-
-
 ### Sensor (temperature) 2
 
 #### Scale
@@ -270,10 +240,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -300,14 +266,12 @@ Detailed information on each parameter can be found below.
 | 1: Group 1 | Send report about Thermostat Mode, Thermostat Operating State, Fan Mode, Fan State, Setpoi... |
 
 
-
-
 #### 1: Temperature Reporting Threshold
 
 Reporting threshold for changes in the ambient temperature  
 
 
-# Overview #
+##### Overview 
 
 This value determines the reporting threshold when association reporting is enabled. Unsupported values will be ignored.
 
@@ -323,16 +287,12 @@ This value determines the reporting threshold when association reporting is enab
 |  | 2.0° F (4) |
 
 
-
-
-
-
 #### 2: HVAC Settings
 
 Configured HVAC settings  
 
 
-# Overview #
+##### Overview 
 
 Byte 1 = HVAC Setup: Normal (0x01) or Heat Pump (0x02)  
 Byte 2 = Aux Setup (Gas (0x01) or Electric (0x02)) & Number of Auxiliary Stages (Heat Pump)/Number of Heat Stages (Normal)  
@@ -348,16 +308,12 @@ Byte 4 = Number of Cool Stages
 | Default Value | 0 |
 
 
-
-
-
-
 #### 4: Power Status
 
 C-Wire / Battery Status  
 
 
-# Overview #
+##### Overview 
 
 If 0x01, the thermostat is powered by a C-wire. If 0x02, the thermostat is powered by batteries.
 
@@ -370,16 +326,12 @@ If 0x01, the thermostat is powered by a C-wire. If 0x02, the thermostat is power
 | Default Value | 0 |
 
 
-
-
-
-
 #### 5: Humidity Reporting Threshold
 
 Reporting threshold for changes in the relative humidity  
 
 
-# Overview #
+##### Overview 
 
 This value determines the reporting threshold when association reporting is enabled. Unsupported values will be ignored.
 
@@ -394,16 +346,12 @@ This value determines the reporting threshold when association reporting is enab
 |  | 10% RH (3) |
 
 
-
-
-
-
 #### 6: Auxiliary/Emergency
 
 Enables or disables auxiliary / emergency heating  
 
 
-# Overview #
+##### Overview 
 
 If set to 0, auxiliary / emergency heat is disabled, all other values, 1-255, will enable the auxiliary / emergency heat. This can only be enabled when the thermostat is set to Heat Pump mode.
 
@@ -416,16 +364,12 @@ If set to 0, auxiliary / emergency heat is disabled, all other values, 1-255, wi
 |  | Auxiliary/Emergency heat enabled (1) |
 
 
-
-
-
-
 #### 7: Thermostat Swing Temperature
 
 Variance allowed from setpoint to engage HVAC  
 
 
-# Overview #
+##### Overview 
 
 The thermostat swing temperature is in units of 0.5 degrees Fahrenheit.
 
@@ -444,16 +388,12 @@ The thermostat swing temperature is in units of 0.5 degrees Fahrenheit.
 |  | 4.0° F (8) |
 
 
-
-
-
-
 #### 8: Thermostat Diff Temperature
 
 Configures additional stages  
 
 
-# Overview #
+##### Overview 
 
 Sets the differential temperature for multi-stage HVAC systems. The differential temperature delta defines when the thermostat will turn on additional stages. This command configures both the heat and cool differential temperatures.
 
@@ -467,16 +407,12 @@ Sets the differential temperature for multi-stage HVAC systems. The differential
 |  | 6.0° F (12) |
 
 
-
-
-
-
 #### 9: Thermostat Recovery Mode
 
 Fast or Economy recovery mode  
 
 
-# Overview #
+##### Overview 
 
 The Thermostat Recovery Mode can be either fast (1) or economy (2).
 
@@ -489,16 +425,12 @@ The Thermostat Recovery Mode can be either fast (1) or economy (2).
 |  | Economy recovery mode (2) |
 
 
-
-
-
-
 #### 10: Temperature Filter Lower Bound Unit
 
 Upper/Lower bounds for thermostat temperature reporting  
 
 
-# Overview #
+##### Overview 
 
 Specifies unit for lower bound parameter. If set to 1, lower bound is Celsius. If set to 9, lower bound is Fahrenheit.
 
@@ -511,16 +443,12 @@ Specifies unit for lower bound parameter. If set to 1, lower bound is Celsius. I
 |  | Fahreheit (9) |
 
 
-
-
-
-
 #### 10: Temperature Filter Upper Bound
 
 Upper/Lower bounds for thermostat temperature reporting  
 
 
-# Overview #
+##### Overview 
 
 The thermostat will report ambient temperature changes for temperature values greater than the upper bound. This field must be between 0F and 124F. By default, this value is 0F (report all temperature changes).
 
@@ -533,16 +461,12 @@ The thermostat will report ambient temperature changes for temperature values gr
 | Default Value | 0 |
 
 
-
-
-
-
 #### 10: Temperature Filter Upper Bound Unit
 
 Upper/Lower bounds for thermostat temperature reporting  
 
 
-# Overview #
+##### Overview 
 
 Specifies unit for upper bound parameter. If set to 1, upper bound is Celsius. If set to 9, upper bound is Fahrenheit.
 
@@ -555,16 +479,12 @@ Specifies unit for upper bound parameter. If set to 1, upper bound is Celsius. I
 |  | Fahrenheit (9) |
 
 
-
-
-
-
 #### 10: Temperature Filter Lower Bound
 
 Upper/Lower bounds for thermostat temperature reporting  
 
 
-# Overview #
+##### Overview 
 
 The thermostat will report ambient temperature changes for temperature values less than the lower bound. This field must be between 0F and 124F. By default, this value is 124F (report all temperature changes).
 
@@ -577,16 +497,12 @@ The thermostat will report ambient temperature changes for temperature values le
 | Default Value | 124 |
 
 
-
-
-
-
 #### 11: Simple UI Mode
 
 Simple mode enable/disable  
 
 
-# Overview #
+##### Overview 
 
 If the value is set to 0 then Normal Mode is enabled. If the value is set to 1 then Simple Mode is enabled.
 
@@ -599,16 +515,12 @@ If the value is set to 0 then Normal Mode is enabled. If the value is set to 1 t
 |  | Simple mode enabled (1) |
 
 
-
-
-
-
 #### 12: Multicast
 
 Enable or disables Multicast  
 
 
-# Overview #
+##### Overview 
 
 If set to 0, Multicast is disabled. If set to 1, Multicast is enabled.
 
@@ -621,16 +533,12 @@ If set to 0, Multicast is disabled. If set to 1, Multicast is enabled.
 |  | Multicast enabled (1) |
 
 
-
-
-
-
 #### 3: Utility Lock Enable/Disable
 
 Prevents setpoint changes at thermostat  
 
 
-# Overview #
+##### Overview 
 
 If set to 0, the utility lock is disabled, all other values, 1-255, will enable the utility lock. This will prevent changes to the setpoint at the thermostat screen.
 
@@ -641,10 +549,6 @@ If set to 0, the utility lock is disabled, all other values, 1-255, will enable 
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Utility lock disabled (0) |
 |  | Utility lock enabled (1) |
-
-
-
-
 
 
 #### 1: Group 1
@@ -659,12 +563,7 @@ Send report about Thermostat Mode, Thermostat Operating State, Fan Mode, Fan Sta
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/641).
-

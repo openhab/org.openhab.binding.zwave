@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZWS12 - ZWave
+---
+
+{% include base.html %}
 
 # ZWS12 Chain Actuator
 
-This describes the Z-Wave device **ZWS12**, manufactured by **Fakro** with the thing type UID of ```fakro_zws12_00_000```. 
+This describes the Z-Wave device *ZWS12*, manufactured by *Fakro* with the thing type UID of ```fakro_zws12_00_000```. 
 
 Chain Actuator
+
 
 ## Channels
 The following table summarises the channels available for the ZWS12 Chain Actuator.
@@ -12,7 +19,6 @@ The following table summarises the channels available for the ZWS12 Chain Actuat
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Blinds control | blinds_control | blinds_control | Blinds | Rollershutter |
-
 
 
 ### Blinds control
@@ -30,8 +36,6 @@ Invert the blinds control
 |  | No (false) |
 
 
-
-
 #### Invert percentage value
 
 Invert the blinds percentage value
@@ -43,8 +47,6 @@ Invert the blinds percentage value
 | Data Type        | BOOLEAN || Default Value | false |
 | Options | Yes (true) |
 |  | No (false) |
-
-
 
 
 #### Step duration
@@ -62,10 +64,6 @@ Values from 1 to 127 are defined in seconds, while values from 128 to 254 are de
 |  | Change Instantly (0) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the ZWS12 Chain Actuator.
 Detailed information on each parameter can be found below.
@@ -75,11 +73,7 @@ Detailed information on each parameter can be found below.
 | 1: Basic |  |
 
 
-
-
 #### 1: Basic
-
-
 
 
 | Property         | Value    |
@@ -89,12 +83,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/325).
-

@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FLF-ZWAVE5 R1 - ZWave
+---
+
+{% include base.html %}
 
 # FLF-ZWAVE5 R1 Z-Wave Wireless Flood/Freeze Sensor
 
-This describes the Z-Wave device **FLF-ZWAVE5 R1**, manufactured by **Ecolink** with the thing type UID of ```eco_flfzwave5r1_00_000```. 
+This describes the Z-Wave device *FLF-ZWAVE5 R1*, manufactured by *Ecolink* with the thing type UID of ```eco_flfzwave5r1_00_000```. 
 
 Z-Wave Wireless Flood/Freeze Sensor
+
 
 ## Channels
 The following table summarises the channels available for the FLF-ZWAVE5 R1 Z-Wave Wireless Flood/Freeze Sensor.
@@ -16,8 +23,6 @@ The following table summarises the channels available for the FLF-ZWAVE5 R1 Z-Wa
 |  | battery-level | system.battery-level |  |  |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the FLF-ZWAVE5 R1 Z-Wave Wireless Flood/Freeze Sensor.
 Detailed information on each parameter can be found below.
@@ -27,14 +32,12 @@ Detailed information on each parameter can be found below.
 | 1: Lifeline |  |
 
 
-
-
 #### 1: Lifeline
 
   
 
 
-# Overview #
+##### Overview 
 
 Group one is a lifeline group who will receive unsolicited messages relating to flood/freeze notifications, case tampering notifications, low-battery notifications.
 
@@ -46,12 +49,7 @@ Group one is a lifeline group who will receive unsolicited messages relating to 
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/744).
-

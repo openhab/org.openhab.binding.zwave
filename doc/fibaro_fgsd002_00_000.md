@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FGSD002 - ZWave
+---
+
+{% include base.html %}
 
 # FGSD002 Smoke Detector
 
-This describes the Z-Wave device **FGSD002**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgsd002_00_000```. 
+This describes the Z-Wave device *FGSD002*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgsd002_00_000```. 
 
 Smoke Detector
+
 
 ## Channels
 The following table summarises the channels available for the FGSD002 Smoke Detector.
@@ -18,7 +25,6 @@ The following table summarises the channels available for the FGSD002 Smoke Dete
 | Heat Alarm | alarm_heat | alarm_heat |  | Switch |
 |  | battery-level | system.battery-level |  |  |
 | Clock Time Offset | time_offset | time_offset | Temperature | Number |
-
 
 
 ### Temperature Sensor
@@ -36,9 +42,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Clock Time Offset
 
 #### Automatic Update Offset
@@ -53,10 +56,6 @@ Setting this will automatically update the devices clock when the time differenc
 | Data Type        | INTEGER |
 | Range | 10 to 600 || Default Value | 60 |
 | Options | Disable Auto Update (0) |
-
-
-
-
 
 
 ### Device Configuration
@@ -86,14 +85,12 @@ Detailed information on each parameter can be found below.
 | 5: Tamper Alarm |  |
 
 
-
-
 #### 1: Smoke Sensor sensitivity
 
 There are 3 levels of sensitivity to smoke presence.  
 
 
-# Overview #
+##### Overview 
 
 Level 1 means the highest sensitivity. Rising the parameter value lowers the sensitivity to smoke presence.
 
@@ -107,16 +104,12 @@ Level 1 means the highest sensitivity. Rising the parameter value lowers the sen
 |  | LOW Sensitivity (3) |
 
 
-
-
-
-
 #### 2: Z-Wave notifications status
 
 This parameter allows to activate excess temperature ...  
 
 
-# Overview #
+##### Overview 
 
 ...  and/or enclosure opening notifications sent to the main controller
 
@@ -131,16 +124,12 @@ This parameter allows to activate excess temperature ...
 |  | All notifications enabled (3) |
 
 
-
-
-
-
 #### 2: Z-Wave notifications status
 
 This parameter allows to activate excess temperature ...  
 
 
-# Overview #
+##### Overview 
 
 ...  and/or enclosure opening notifications sent to the main controller
 
@@ -153,16 +142,12 @@ This parameter allows to activate excess temperature ...
 | Default Value | 255 |
 
 
-
-
-
-
 #### 3: Visual indicator notifications status
 
 This parameter allows to activate visual indications  
 
 
-# Overview #
+##### Overview 
 
  but does not apply to major alarms, such as FIRE, TROUBLE and LOW BATTERY ALARM.
 
@@ -183,16 +168,12 @@ Available settings: 0 - 7
 |  | Enclosure opening notification enabled + (7) |
 
 
-
-
-
-
 #### 4: Sound notifications status
 
 This parameter allows to activate sound signals...  
 
 
-# Overview #
+##### Overview 
 
  but does not apply to major alarms, such as FIRE, TROUBLE and LOW BATTERY ALARM.
 
@@ -211,16 +192,12 @@ This parameter allows to activate sound signals...
 |  | Enclosure opening notification enabled + (7) |
 
 
-
-
-
-
 #### 10: Configuration of control frames in BASIC command class
 
 This parameter defines which frames will be sent ...  
 
 
-# Overview #
+##### Overview 
 
 in the 2-nd Association Group (FIRE ALARM). The values of BASIC ON and BASIC OFF frames may be defined as described in further parameters.
 
@@ -234,16 +211,12 @@ in the 2-nd Association Group (FIRE ALARM). The values of BASIC ON and BASIC OFF
 |  | BASIC OFF enabled (2) |
 
 
-
-
-
-
 #### 11: BASIC ON frame value
 
 BASIC ON frame is sent in case of smoke presence detection ...  
 
 
-# Overview #
+##### Overview 
 
 and FIRE ALARM triggering. Its value is defined by the parameter. Available settings: 0-99, 255. 0 - turn off the device. 1-99 - set the device to 1-99%. 255 - set the last status
 
@@ -256,16 +229,12 @@ and FIRE ALARM triggering. Its value is defined by the parameter. Available sett
 | Default Value | 255 |
 
 
-
-
-
-
 #### 12: BASIC OFF frame value
 
 BASIC OFF frame is sent in case of FIRE ALARM cancellation.  
 
 
-# Overview #
+##### Overview 
 
 Its value is defined by the parameter. Available settings: 0-99, 255. 0 - turn off the device. 1-99 - set the device to 1-99%. 255 - set the last status
 
@@ -278,16 +247,12 @@ Its value is defined by the parameter. Available settings: 0-99, 255. 0 - turn o
 | Default Value | 255 |
 
 
-
-
-
-
 #### 13: Alarm broadcast
 
 A value other than 0 means that alarms are being sent in ...  
 
 
-# Overview #
+##### Overview 
 
 broadcast mode, i.e. to all devices within a Fibaro Smoke Sensor’s range
 
@@ -302,16 +267,12 @@ broadcast mode, i.e. to all devices within a Fibaro Smoke Sensor’s range
 |  | FIRE ALARM broadcast (2-nd and 4-th Association Group) ... (3) |
 
 
-
-
-
-
 #### 20: Temperature report interval
 
 Time interval between consecutive temperature reports.  
 
 
-# Overview #
+##### Overview 
 
 Report is sent when new temperature value is different from the one previously reported - according to the set hysteresis (parameter 21). Temperature reports can be also sent as a result of polling.  
 
@@ -335,16 +296,12 @@ Parameter size: 2 \[bytes\]
 | Default Value | 1 |
 
 
-
-
-
-
 #### 21: Temperature report hysteresis
 
 The temperature report will only be sent if there is a difference ...  
 
 
-# Overview #
+##### Overview 
 
 in temperature value from the previous value reported, defined in this parameter (hysteresis). Temperature reports can be also sent as a result of polling.  
 
@@ -365,16 +322,12 @@ Parameter size: 1 \[byte\]
 | Default Value | 10 |
 
 
-
-
-
-
 #### 30: Temperature threshold
 
 Temperature threshold for activating alarms  
 
 
-# Overview #
+##### Overview 
 
 This is the temperature threshold, measured by the internal sensor above which the excess temperature notification is sent (visual indication/sound/Z-Wave report).
 
@@ -389,16 +342,12 @@ Note that the alarm will not be deactivated again until the temperature drops by
 | Default Value | 55 |
 
 
-
-
-
-
 #### 31: Excess temperature signaling interval
 
 Time interval of signaling (visual indication/sound) excess ...  
 
 
-# Overview #
+##### Overview 
 
  temperature level
 
@@ -419,16 +368,12 @@ Parameter size: 2 \[bytes\]
 | Default Value | 1 |
 
 
-
-
-
-
 #### 32: Lack of Z-Wave range indication interval
 
 Time interval of signaling (visual indication/sound) lack of ...  
 
 
-# Overview #
+##### Overview 
 
 Z-Wave range.
 
@@ -449,13 +394,7 @@ Parameter size: 2 \[bytes\]
 | Default Value | 180 |
 
 
-
-
-
-
 #### 1: Device Status
-
-
 
 
 | Property         | Value    |
@@ -465,16 +404,12 @@ Parameter size: 2 \[bytes\]
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Battery capacity low
 
   
 
 
-# Overview #
+##### Overview 
 
 The Home Control Smoke Detector continuously checks the battery capacity. If the battery capacity falls below a defined value of approx. 2.7V +-0.1V, a low battery alarm will be sent via Z-Wave®. If the capacity continues falling, the visual and acoustic battery capacity warning will be activated additionally.
 
@@ -486,13 +421,7 @@ The Home Control Smoke Detector continuously checks the battery capacity. If the
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Tamper Alarm
-
-
 
 
 | Property         | Value    |
@@ -502,13 +431,7 @@ The Home Control Smoke Detector continuously checks the battery capacity. If the
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Fire Alarm
-
-
 
 
 | Property         | Value    |
@@ -518,13 +441,7 @@ The Home Control Smoke Detector continuously checks the battery capacity. If the
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Tamper Alarm
-
-
 
 
 | Property         | Value    |
@@ -534,12 +451,7 @@ The Home Control Smoke Detector continuously checks the battery capacity. If the
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/129).
-

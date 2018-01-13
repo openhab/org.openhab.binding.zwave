@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: AD147 - ZWave
+---
+
+{% include base.html %}
 
 # AD147 Z-Wave Dimmer Plug
 
-This describes the Z-Wave device **AD147**, manufactured by **Everspring** with the thing type UID of ```everspring_ad147_00_000```. 
+This describes the Z-Wave device *AD147*, manufactured by *Everspring* with the thing type UID of ```everspring_ad147_00_000```. 
 
 Z-Wave Dimmer Plug
+
 
 ## Channels
 The following table summarises the channels available for the AD147 Z-Wave Dimmer Plug.
@@ -12,7 +19,6 @@ The following table summarises the channels available for the AD147 Z-Wave Dimme
 |---------|------------|------------------|----------|-----------|
 | Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer |
 | Alarm (general) | alarm_general | alarm_general | Door | Switch |
-
 
 
 ### Dimmer
@@ -30,10 +36,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the AD147 Z-Wave Dimmer Plug.
 Detailed information on each parameter can be found below.
@@ -46,8 +48,6 @@ Detailed information on each parameter can be found below.
 | 4: Output mode setting: Dimming, On/Off | Output mode setting: Dimming, On/Off |
 | 1: Lifeline | Provides reports |
 | 2: On/Off control | Basic Set |
-
-
 
 
 #### 1: Basic Set Command value
@@ -63,10 +63,6 @@ Basic Set Command value
 | Default Value | 255 |
 
 
-
-
-
-
 #### 2: Delaying Time to report to Group 1
 
 The delaying time to report to Group 1
@@ -80,16 +76,12 @@ The delaying time to report to Group 1
 | Default Value | 3 |
 
 
-
-
-
-
 #### 3: Remember the last status
 
 Remember the last status  
 
 
-# Overview #
+##### Overview 
 
 1 = Remember
 
@@ -104,16 +96,12 @@ Remember the last status
 | Default Value | 1 |
 
 
-
-
-
-
 #### 4: Output mode setting: Dimming, On/Off
 
 Output mode setting: Dimming, On/Off  
 
 
-# Overview #
+##### Overview 
 
 0 = Dimming
 
@@ -128,10 +116,6 @@ Output mode setting: Dimming, On/Off
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Lifeline
 
 Provides reports
@@ -142,10 +126,6 @@ Provides reports
 | Configuration ID | group_1 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 2: On/Off control
@@ -160,12 +140,7 @@ Basic Set
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/353).
-

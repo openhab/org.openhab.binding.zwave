@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: FGWP102 - ZWave
+---
+
+{% include base.html %}
 
 # FGWP102 Metered Wall Plug Switch
 
-This describes the Z-Wave device **FGWP102**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgwp102_03_002```. 
+This describes the Z-Wave device *FGWP102*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgwp102_03_002```. 
 
 Metered Wall Plug Switch  
 
 
-# Overview #
+## Overview 
 
 FIBARO Wall Plug is a universal, Z-Wave Plus compatible, remotely controlled outlet adapter. This device may be applied wherever you want to control electrical devices with up to 2500W load.
 
@@ -17,7 +23,7 @@ The Wall Plug may be operated using the B-button located on its casing or via an
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 To add the device to the Z-Wave network:
 
@@ -31,7 +37,7 @@ To add the device to the Z-Wave network:
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 To remove the device from the Z-Wave network:
 
@@ -41,6 +47,7 @@ To remove the device from the Z-Wave network:
 4.  Quickly, triple click the B-button located on the casing.
 5.  Wait for the removing process to end.
 6.  Successful removing will be confirmed by the Z-Wave controller’s message.
+
 
 ## Channels
 The following table summarises the channels available for the FGWP102 Metered Wall Plug Switch.
@@ -53,8 +60,6 @@ The following table summarises the channels available for the FGWP102 Metered Wa
 | Electric meter (kWh) | meter_kwh | meter_kwh | Energy | Number |
 | Reset the total power consumption | meter_reset | meter_reset | Energy | Switch |
 | Alarm (power) | alarm_power | alarm_power | Door | Switch |
-
-
 
 
 ### Device Configuration
@@ -90,14 +95,12 @@ Detailed information on each parameter can be found below.
 | 3: On/Off (Power) |  |
 
 
-
-
 #### 1: “Always On” mode
 
 Will turn on connected device permanently  
 
 
-# Overview #
+##### Overview 
 
 In this mode Wall Plug will turn on connected device permanently and will stop reacting to attempts of turning it off (through Z-Wave network or pushing the B-button).
 
@@ -114,16 +117,12 @@ In “Always on” mode, connected device may be turned off after exceeding the 
 |  | function activated (1) |
 
 
-
-
-
-
 #### 2: Remember device status before the power failure
 
 determines how the Wall Plug will react in the event of power supply failure  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines how the Wall Plug will react in the event of power supply failure (e.g. power outage or taking out from the electrical outlet).
 
@@ -140,16 +139,12 @@ This parameter is ignored in „Always On” mode - the device automatically tur
 |  | device restores the state from before the power failure (1) |
 
 
-
-
-
-
 #### 3: Overload safety switch
 
 allows to turn off the controlled device in case of exceeding the defined power.  
 
 
-# Overview #
+##### Overview 
 
 This function allows to turn off the controlled device in case of exceeding the defined power. Controlled device will be turned off even if “Always On” function is active (parameter 1).
 
@@ -166,16 +161,12 @@ Controlled device can be turned back on via B-button or sending a control frame.
 | Options | function inactive (0) |
 
 
-
-
-
-
 #### 10: High priority power report
 
 minimum percentage change in active power  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines the minimum percentage change in active power that will result in sending power report to the main controller with the highest priority in the Z-Wave network.
 
@@ -194,16 +185,12 @@ By default, the Wall Plug immediately sends the power report if the power load c
 | Default Value | 80 |
 
 
-
-
-
-
 #### 11: Standard power report
 
 minimum percentage change in active power  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines the minimum percentage change in active power that will result in sending power report to the main controller
 
@@ -220,16 +207,12 @@ By default changes in power load may be reported up to 5 times per 30 seconds, w
 | Default Value | 15 |
 
 
-
-
-
-
 #### 12: Power reporting interval
 
 defines the time interval of sending at most 5 standard power reports  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the time interval of sending at most 5 standard power reports when the power changes by the value set in parameter 11. The higher the value of parameter 12, the fewer reports the device will send.
 
@@ -246,16 +229,12 @@ Default: 30s
 | Default Value | 30 |
 
 
-
-
-
-
 #### 13: Energy reporting threshold
 
 specifies the minimum change in energy consumption  
 
 
-# Overview #
+##### Overview 
 
 This parameter specifies the minimum change in energy consumption (in relation to the previously reported), that will result in sending a new report.
 
@@ -273,16 +252,12 @@ Default: 10 (0.1kWh)
 | Options | energy reports inactive (0) |
 
 
-
-
-
-
 #### 14: Power and energy periodic reports
 
 defines time period between independent reports sent  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines time period between independent reports sent when changes in power load have not been recorded or if changes are insignificant. By default reports are sent every hour.
 
@@ -297,16 +272,12 @@ Default: 3600 second (1h)
 | Options | periodic reports inactive (0) |
 
 
-
-
-
-
 #### 15: Measuring energy consumed by the Wall Plug itself
 
 determines whether power metering should include the amount of power  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines whether power metering should include the amount of power consumed by the Wall Plug itself. Results are being added to the value of power consumed by controlled device.
 
@@ -319,16 +290,12 @@ This parameter determines whether power metering should include the amount of po
 |  | function activated (1) |
 
 
-
-
-
-
 #### 20: Control of „On/Off (Button)” association group (2)
 
 Control of „On/Off (Button)” association group (2) devices  
 
 
-# Overview #
+##### Overview 
 
 Controlling devices with the B-Button. This parameter is inactive in “Always On” mode (parameter 1).  
 Control as the Wall Plug:
@@ -350,16 +317,12 @@ Control opposite to the Wall Plug:
 |  | control opposite to the Wall Plug (1) |
 
 
-
-
-
-
 #### 21: DOWN value - „On/Off (Power)” association group (3)
 
 Lower power threshold, used in parameter 23  
 
 
-# Overview #
+##### Overview 
 
 Lower power threshold, used in parameter 23. DOWN value cannot be higher than a value specified in parameter 22.
 
@@ -376,16 +339,12 @@ Default: 300 (30W)
 | Default Value | 300 |
 
 
-
-
-
-
 #### 22: UP value - „On/Off (Power)” association group (3)
 
 Upper power threshold, used in parameter 23.  
 
 
-# Overview #
+##### Overview 
 
 Upper power threshold, used in parameter 23. UP value cannot belower than a value specified in parameter 21.
 
@@ -401,16 +360,12 @@ Default setting: 500 (50W)
 | Default Value | 500 |
 
 
-
-
-
-
 #### 23: The response after exceeding defined power values
 
 defines the way that 3rd association group devices are controlled.  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the way that 3rd association group devices are controlled. Depends on the actual measured power (as parameters 21 and 22 settings).
 
@@ -427,16 +382,12 @@ This parameter defines the way that 3rd association group devices are controlled
 |  | combination of 2 and 3 (6) |
 
 
-
-
-
-
 #### 24: SWITCH ON value - „On/Off” association groups
 
 SWITCH ON value - „On/Off” association groups  
 
 
-# Overview #
+##### Overview 
 
 The value of BASIC SET command frame sent to the devices associated in „On/Off” association groups (2, 3).
 
@@ -455,16 +406,12 @@ Default setting: 255
 | Options | Default (255) |
 
 
-
-
-
-
 #### 30: Active alarms
 
 Define Z-Wave network alarms to which the Wall Plug will respond  
 
 
-# Overview #
+##### Overview 
 
 Available settings:
 
@@ -490,16 +437,12 @@ Available settings:
 |  | All (63) |
 
 
-
-
-
-
 #### 31: Response to alarm frames
 
 defines how the Wall Plug will respond to alarms  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines how the Wall Plug will respond to alarms (device’s status change).
 
@@ -524,16 +467,12 @@ Available settings: 0 - no reaction,
 |  | turn connected device off (2) |
 
 
-
-
-
-
 #### 32: Alarm state duration
 
 specifies the duration of alarm state  
 
 
-# Overview #
+##### Overview 
 
 This parameter specifies the duration of alarm state. If a device sending an alarm frame through the Z-Wave network sets alarm duration as well, this settings are ignored.
 
@@ -549,16 +488,12 @@ Default setting: 600 (10min)
 | Default Value | 600 |
 
 
-
-
-
-
 #### 40: Power load for violet colour
 
 determines maximum active power value  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines maximum active power value, which when exceeded, causes the LED ring flash violet. Function is active only when parameter 41 is set to 1 or 2.
 
@@ -574,16 +509,12 @@ Default setting: 25000 (2500W)
 | Default Value | 25000 |
 
 
-
-
-
-
 #### 41: LED ring colour when controlled device is on
 
 LED ring colour when controlled device is on  
 
 
-# Overview #
+##### Overview 
 
 When set to 1 or 2, LED ring colour will change depending on active power and parameter 40. Other colours are set permanently and do not depend on power consumption.
 
@@ -604,16 +535,12 @@ When set to 1 or 2, LED ring colour will change depending on active power and pa
 |  | magenta (9) |
 
 
-
-
-
-
 #### 42: LED ring colour when controlled device is off
 
 LED ring colour when controlled device is off  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the illumination colour after turning off
 
@@ -633,16 +560,12 @@ This parameter defines the illumination colour after turning off
 |  | magenta (9) |
 
 
-
-
-
-
 #### 43: LED ring colour at the Z-Wave network alarm detection
 
 LED ring colour at the Z-Wave network alarm detection  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the illumination colour in case of Z-Wave alarm.
 
@@ -663,16 +586,12 @@ This parameter defines the illumination colour in case of Z-Wave alarm.
 |  | magenta (9) |
 
 
-
-
-
-
 #### 50: Associations in Z-Wave network security mode
 
 defines how commands are sent in specified association groups  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. This parameter does not apply to 1st „Lifeline” group
 
@@ -687,16 +606,12 @@ This parameter defines how commands are sent in specified association groups: as
 |  | 2nd and 3rd group sent as secure (3) |
 
 
-
-
-
-
 #### 1: Lifeline
 
   
 
 
-# Overview #
+##### Overview 
 
 1st Association Group – “Lifeline” reports the device status and allows for assigning single device only (main controller by default).
 
@@ -708,16 +623,12 @@ This parameter defines how commands are sent in specified association groups: as
 | Range |  to  |
 
 
-
-
-
-
 #### 2: On/Off (Button)
 
   
 
 
-# Overview #
+##### Overview 
 
 2nd Association Group – “On/Off (Button)” devices in this group will be switched on or off when relay status is changed using the B-button (uses Basic command class).
 
@@ -733,16 +644,12 @@ It is not recommended to associate more than 10 devices in general, as the respo
 | Range |  to  |
 
 
-
-
-
-
 #### 3: On/Off (Power)
 
   
 
 
-# Overview #
+##### Overview 
 
 3rd Association Group – “On/Off (Power)” devices in this group will be switched on or off depending on the current load (uses Basic command class).
 
@@ -758,12 +665,7 @@ It is not recommended to associate more than 10 devices in general, as the respo
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/513).
-

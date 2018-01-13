@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: PST02-1B - ZWave
+---
+
+{% include base.html %}
 
 # PST02-1B Multisensor
 
-This describes the Z-Wave device **PST02-1B**, manufactured by **Devolo** with the thing type UID of ```devolo_pst021b_00_000```. 
+This describes the Z-Wave device *PST02-1B*, manufactured by *Devolo* with the thing type UID of ```devolo_pst021b_00_000```. 
 
 Multisensor
+
 
 ## Channels
 The following table summarises the channels available for the PST02-1B Multisensor.
@@ -14,7 +21,6 @@ The following table summarises the channels available for the PST02-1B Multisens
 | Sensor (temperature) | sensor_temperature | sensor_temperature | Temperature | Number |
 | Sensor (luminance) | sensor_luminance | sensor_luminance | Temperature | Number |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Sensor (temperature)
@@ -30,10 +36,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -57,8 +59,6 @@ Detailed information on each parameter can be found below.
 | 2: Light Control |  |
 
 
-
-
 #### 2: Basic Set Level
 
 \-1 -> 0xFF(-1) turns on the light. 1 - 100 -> For dimmers 1 to 100 means the light strength
@@ -70,10 +70,6 @@ Detailed information on each parameter can be found below.
 | Data Type        | INTEGER |
 | Range | -1 to 100 |
 | Default Value | -1 |
-
-
-
-
 
 
 #### 3: PIR Sensitivity
@@ -89,10 +85,6 @@ parameter to set the Sensitivity for the PIR (Passiv Infrared Sensor) 0 -> 0 mea
 | Default Value | 70 |
 
 
-
-
-
-
 #### 4: Light Threshold
 
 Setting the illumination threshold to turn on the light. When the event triggered and the environment illumination lower then the threshold, the device will turn on the light 0 -> 0 means turn off illumination detected function And never turn on the
@@ -104,10 +96,6 @@ Setting the illumination threshold to turn on the light. When the event triggere
 | Data Type        | INTEGER |
 | Range | 0 to 100 |
 | Default Value | 100 |
-
-
-
-
 
 
 #### 5: Operation Mode
@@ -123,10 +111,6 @@ Bit 0: 1 means security mode; 0 means home automation mode. Bit 1: 1 means enabl
 | Default Value | 0 |
 
 
-
-
-
-
 #### 6: Multi-Sensor Function Switch
 
 Bit 0: Disable magnetic integrate illumination. Bit 1: Disable PIR integrate Illumination. Bit 2: Disable magnetic integrate PIR (Default is Disable) Bit 3: When Bit2 is 0 (Enable), the device is install in the same room with the light? 0: In the same roo
@@ -138,10 +122,6 @@ Bit 0: Disable magnetic integrate illumination. Bit 1: Disable PIR integrate Ill
 | Data Type        | INTEGER |
 | Range | 0 to 127 |
 | Default Value | 4 |
-
-
-
-
 
 
 #### 7: Customer Function
@@ -157,10 +137,6 @@ Parameter to set the Customer Function. Bit 0: Reserved. Bit 1: Enable sending m
 | Options | Preset: PIR Super Sensitivity and Binary Report and Motion Off Report (22) |
 
 
-
-
-
-
 #### 8: PIR Re-Detect Interval Time
 
 In the security mode, after the PIR motion detected, setting the re-detect time 3 8 sec - 127 8 sec -> 8 seconds per tick, and minimum time is 24 seconds, default tick is 3 (24 seconds).
@@ -172,10 +148,6 @@ In the security mode, after the PIR motion detected, setting the re-detect time 
 | Data Type        | INTEGER |
 | Range | 3 to 127 |
 | Default Value | 3 |
-
-
-
-
 
 
 #### 9: Turn Off Light Time
@@ -191,10 +163,6 @@ After turn on the light, setting the delay time to turn off the light when the P
 | Default Value | 4 |
 
 
-
-
-
-
 #### 10: Auto Report Battery Time
 
 interval time for auto report the battery level 1 30 min - 127 30 min -> 30 minutes per tick and minimum time is 30 minutes, default tick is 12 (6 hours)
@@ -206,10 +174,6 @@ interval time for auto report the battery level 1 30 min - 127 30 min -> 30 minu
 | Data Type        | INTEGER |
 | Range | 1 to 127 |
 | Default Value | 12 |
-
-
-
-
 
 
 #### 12: Auto Report Illumination Time
@@ -225,10 +189,6 @@ interval time for auto report the illumination state 1 30 min - 127 30 min -> 30
 | Default Value | 12 |
 
 
-
-
-
-
 #### 13: Auto Report Temperature Time
 
 Interval time for auto report the temperature state 1 30 min - 127 30 min -> 30 minutes per tick and minimum time is 30 minutes, default tick is 12 (6 hours)
@@ -242,13 +202,7 @@ Interval time for auto report the temperature state 1 30 min - 127 30 min -> 30 
 | Default Value | 12 |
 
 
-
-
-
-
 #### 1: Reports
-
-
 
 
 | Property         | Value    |
@@ -258,13 +212,7 @@ Interval time for auto report the temperature state 1 30 min - 127 30 min -> 30 
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Light Control
-
-
 
 
 | Property         | Value    |
@@ -274,12 +222,7 @@ Interval time for auto report the temperature state 1 30 min - 127 30 min -> 30 
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/534).
-

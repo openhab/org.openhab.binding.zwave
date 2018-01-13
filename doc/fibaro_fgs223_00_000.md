@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: FGS223 - ZWave
+---
+
+{% include base.html %}
 
 # FGS223 Double Switch 2
 
-This describes the Z-Wave device **FGS223**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgs223_00_000```. 
+This describes the Z-Wave device *FGS223*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgs223_00_000```. 
 
 Double Switch 2  
 
 
-# Overview #
+## Overview 
 
 FIBARO Switch 2 is designed to be installed in standard wall switch boxes or anywhere else where it is necessary to control electric devices. FIBARO Switch 2 allows to control connected devices either via the Z-Wave+ network or via a switch connected directly to it and is equipped with active power and energy consumption metering functionality.
 
@@ -24,23 +30,24 @@ Main features of FIBARO Switch 2:
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 Put controller into inclusion mode and triple click S1 switch
 
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 Put controller into exclusion mode and triple click S1 switch
+
 
 ## Channels
 The following table summarises the channels available for the FGS223 Double Switch 2.
 
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
-| Switch | switch_binary | switch_binary | Switch | Switch |
+|  | switch_binary | switch_binary | Switch | Switch |
 | Electric meter (kWh) | meter_kwh | meter_kwh | Energy | Number |
 | Electric meter (watts) | meter_watts | meter_watts | Energy | Number |
 | Scene Number | scene_number | scene_number |  | Number |
@@ -51,8 +58,6 @@ The following table summarises the channels available for the FGS223 Double Swit
 | Switch 2 | switch_binary2 | switch_binary | Switch | Switch |
 | Electric meter (kWh) 2 | meter_kwh2 | meter_kwh | Energy | Number |
 | Electric meter (watts) 2 | meter_watts2 | meter_watts | Energy | Number |
-
-
 
 
 ### Device Configuration
@@ -105,14 +110,12 @@ Detailed information on each parameter can be found below.
 | 5: Dimmer (S2) | Dimmer (S2) is assigned to switch connected to the S2 terminal (uses Switch Multilevel com... |
 
 
-
-
 #### 9: Restore state after power failure
 
 Restore state after power failure  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines if the device will return to state prior to the power failure after power is restored.
 
@@ -125,16 +128,12 @@ This parameter determines if the device will return to state prior to the power
 |  | restore last state (1) |
 
 
-
-
-
-
 #### 10: First channel operating mode
 
 First channel - operating mode  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to choose operating for the 1st channel controlled by the S1 switch.
 
@@ -151,16 +150,12 @@ This parameter allows to choose operating for the 1st channel controlled by the
 |  | flashing mode (5) |
 
 
-
-
-
-
 #### 11: 1st ch. reaction to switch
 
 First channel - reaction to switch for delay/auto ON/OFF modes  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines how the device in timed mode reacts to pushing the switch connected to the S1 terminal.
 
@@ -174,16 +169,12 @@ This parameter determines how the device in timed mode reacts to pushing the sw
 |  | reset timer - start counting from the beginning (2) |
 
 
-
-
-
-
 #### 12: time parameter for delay/auto ON/OFF modes
 
 First channel - time parameter for delay/auto ON/OFF modes  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set time parameter used in timed modes.
 
@@ -200,16 +191,12 @@ Default setting: 50 (50s)
 | Default Value | 50 |
 
 
-
-
-
-
 #### 13: 1st ch. pulse time for flashing mode
 
 First channel - pulse time for flashing mode  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set time of switching to opposite state in flashing mode
 
@@ -226,16 +213,12 @@ Default setting: 5 (0.5s)
 | Default Value | 5 |
 
 
-
-
-
-
 #### 15: 2nd ch. operating mode
 
 Second channel - operating mode  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to choose operating for the 1st channel controlled by the S2 switch.
 
@@ -252,10 +235,6 @@ This parameter allows to choose operating for the 1st channel controlled by the
 |  | flashing mode (5) |
 
 
-
-
-
-
 #### 16: 2nd ch. reaction to switch
 
 Second channel - reaction to switch for delay/auto ON/OFF modes
@@ -270,16 +249,12 @@ Second channel - reaction to switch for delay/auto ON/OFF modes
 |  | reset timer - start counting from the beginning (2) |
 
 
-
-
-
-
 #### 17: 2nd ch. time parameter for delay
 
 Second channel - time parameter for delay/auto ON/OFF modes  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set time parameter used in timed modes.
 
@@ -296,16 +271,12 @@ Default setting: 50 (50s)
 | Default Value | 50 |
 
 
-
-
-
-
 #### 18: 2nd ch. pulse time for flashing mode
 
 Second channel - pulse time for flashing mode  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set time of switching to opposite state in flashing mode
 
@@ -322,16 +293,12 @@ Default setting: 5 (0.5s)
 | Default Value | 5 |
 
 
-
-
-
-
 #### 20: Switch type
 
 Switch type  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines as what type the device should treat the switch connected to the S1 and S2 terminals
 
@@ -343,10 +310,6 @@ This parameter defines as what type the device should treat the switch connecte
 | Options | momentary switch (0) |
 |  | toggle switch stable (1) |
 |  | toggle switch (2) |
-
-
-
-
 
 
 #### 21: Flashing mode - reports
@@ -362,16 +325,12 @@ Flashing mode - reports
 |  | the device sends reports (1) |
 
 
-
-
-
-
 #### 27: Associations in Z-Wave network security mode
 
 Associations in Z-Wave network security mode  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. This parameter does not apply to 1st „Lifeline” group.
 
@@ -388,16 +347,12 @@ This parameter defines how commands are sent in specified association groups: a
 |  | all groups sent as secure (15) |
 
 
-
-
-
-
 #### 28: S1 switch - scenes sent
 
 S1 switch - scenes sent  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines which actions result in sending scene IDs assigned to them
 
@@ -414,16 +369,12 @@ This parameter determines which actions result in sending scene IDs assigned to
 |  | Key Hold Down and Key Released (8) |
 
 
-
-
-
-
 #### 29: S2 switch - scenes sent
 
 S2 switch - scenes sent  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines which actions result in sending scene IDs assigned to them.
 
@@ -440,16 +391,12 @@ This parameter determines which actions result in sending scene IDs assigned to
 |  | Key Hold Down and Key Released (8) |
 
 
-
-
-
-
 #### 30: S1 assocs. sent to 2nd and 3rd group
 
 S1 switch - associations sent to 2nd and 3rd association groups  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines which actions are ignored when sending commands to devices associated in 2nd and 3rd association group. All actions are active by default.
 
@@ -466,10 +413,6 @@ This parameter determines which actions are ignored when sending commands to de
 |  | ignore double click of the switch (8) |
 
 
-
-
-
-
 #### 31: S1 ON val sent to 2nd and 3rd groups
 
 S1 switch - Switch ON value sent to 2nd and 3rd association groups
@@ -483,16 +426,12 @@ S1 switch - Switch ON value sent to 2nd and 3rd association groups
 | Default Value | 255 |
 
 
-
-
-
-
 #### 32: S1 OFF val sent to 2nd and 3rd groups
 
 S1 switch - Switch ON value sent to 2nd and 3rd association groups  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines value sent with Switch OFF command to devices associated in 2nd and 3rd association group.
 
@@ -505,16 +444,12 @@ This parameter defines value sent with Switch OFF command to devices associated
 | Default Value | 0 |
 
 
-
-
-
-
 #### 33: S1 DblClick val sent to 2nd and 3rd groups
 
 S1 switch - Double Click value sent to 2nd and 3rd association groups  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines value sent with Double Click command to devices associated in 2nd and 3rd association group.
 
@@ -527,16 +462,12 @@ This parameter defines value sent with Double Click command to devices associat
 | Default Value | 99 |
 
 
-
-
-
-
 #### 35: S2 assocs. sent to 4th and 5th group
 
 S2 switch - associations sent to 4th and 5th association groups  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines which actions result in sending commands to devices associated in 4th and 5th association group. All actions are active by default.
 
@@ -553,10 +484,6 @@ This parameter determines which actions result in sending commands to devices a
 |  | ignore double click of the switch (8) |
 
 
-
-
-
-
 #### 36: S2 ON val sent to 4th and 5th groups
 
 S2 switch - Switch ON value sent to 4th and 5th association groups
@@ -570,10 +497,6 @@ S2 switch - Switch ON value sent to 4th and 5th association groups
 | Default Value | 255 |
 
 
-
-
-
-
 #### 36: S2 ON val sent to 4th and 5th groups
 
 S2 switch - Switch ON value sent to 4th and 5th association groups
@@ -585,10 +508,6 @@ S2 switch - Switch ON value sent to 4th and 5th association groups
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 255 |
-
-
-
-
 
 
 #### 37: S2 OFF val sent to 4th and 5th groups
@@ -604,13 +523,7 @@ S2 switch - Switch OFF value sent to 4th and 5th association groups
 | Default Value | 0 |
 
 
-
-
-
-
 #### 38: S2 DblClick val sent to 4th and 5th groups
-
-
 
 
 | Property         | Value    |
@@ -621,16 +534,12 @@ S2 switch - Switch OFF value sent to 4th and 5th association groups
 | Default Value | 99 |
 
 
-
-
-
-
 #### 40: Reaction to General Alarm
 
 Reaction to General Alarm  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines how the device will react to General Alarm frame.
 
@@ -643,10 +552,6 @@ This parameter determines how the device will react to General Alarm frame.
 |  | turn ON after receiving the alarm frame (1) |
 |  | turn OFF after receiving the alarm frame (2) |
 |  | flash after receiving the alarm frame (3) |
-
-
-
-
 
 
 #### 41: Reaction to Flood Alarm
@@ -664,10 +569,6 @@ Reaction to Flood Alarm
 |  | flash after receiving the alarm frame (3) |
 
 
-
-
-
-
 #### 42: Reaction to CO/CO2/Smoke Alarm
 
 Reaction to CO/CO2/Smoke Alarm
@@ -681,10 +582,6 @@ Reaction to CO/CO2/Smoke Alarm
 |  | turn ON after receiving the alarm frame (1) |
 |  | turn OFF after receiving the alarm frame (2) |
 |  | flash after receiving the alarm frame (3) |
-
-
-
-
 
 
 #### 43: Reaction to Heat Alarm
@@ -702,16 +599,12 @@ Reaction to Heat Alarm
 |  | flash after receiving the alarm frame (3) |
 
 
-
-
-
-
 #### 44: Flashing alarm duration
 
 Flashing alarm duration  
 
 
-# Overview #
+##### Overview 
 
 This parameter allows to set duration of flashing alarm mode.
 
@@ -728,16 +621,12 @@ Default setting: 600 (10min)
 | Default Value | 600 |
 
 
-
-
-
-
 #### 50: First channel - power reports
 
 First channel - power reports  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines the minimum change in consumed power that will result in sending new power report to the main controller.
 
@@ -755,16 +644,12 @@ Available settings:
 | Default Value | 20 |
 
 
-
-
-
-
 #### 51: 1st ch min time between reports
 
 First channel - minimal time between power reports  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines minimum time that has to elapse before sending new power report to the main controller.
 
@@ -785,16 +670,12 @@ Default setting: 10 (10s)
 | Default Value | 10 |
 
 
-
-
-
-
 #### 53: 1st ch energy reports
 
 First channel - energy reports  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines minimum time that has to elapse before
 
@@ -817,16 +698,12 @@ Default: 100 (1 KWh)
 | Default Value | 100 |
 
 
-
-
-
-
 #### 54: Second channel - power reports
 
 Second channel - power reports  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines the minimum change in consumed power that will result in sending new power report to the main controller.
 
@@ -844,16 +721,12 @@ Available settings:
 | Default Value | 20 |
 
 
-
-
-
-
 #### 55: 2nd ch min time between reports
 
 Second channel - minimal time between power reports  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines minimum time that has to elapse before sending new power report to the main controller.
 
@@ -874,16 +747,12 @@ Default setting: 10 (10s)
 | Default Value | 10 |
 
 
-
-
-
-
 #### 57: 2nd ch energy reports
 
 Second channel - energy reports  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines the minimum change in consumed energy that will result in sending new energy report to the main controller.
 
@@ -904,16 +773,12 @@ Default setting: 100 (1 KWh)
 | Default Value | 100 |
 
 
-
-
-
-
 #### 58: Periodic power reports
 
 Periodic power reports  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines in what time interval the periodic power reports are sent to the main controller.
 
@@ -934,16 +799,12 @@ Default setting: 3600 (1h)
 | Default Value | 3600 |
 
 
-
-
-
-
 #### 59: Periodic energy reports
 
 Periodic energy reports  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines in what time interval the periodic energy reports are sent to the main controller.
 
@@ -964,16 +825,12 @@ Default setting: 3600 (1h)
 | Default Value | 3600 |
 
 
-
-
-
-
 #### 60: Include own energy
 
 Measuring energy consumed by the device itself  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines whether energy metering should include the amount of energy consumed by the device itself. Results are being added to energy reports for first endpoint.
 
@@ -986,16 +843,12 @@ This parameter determines whether energy metering should include the amount of 
 |  | function active (1) |
 
 
-
-
-
-
 #### 1: Lifeline
 
 reports the device status and allows for assigning single device only (main controller by default).  
 
 
-# Overview #
+##### Overview 
 
 1st association group – “Lifeline” reports the device status and allows for assigning single device only (main controller by default).
 
@@ -1007,16 +860,12 @@ reports the device status and allows for assigning single device only (main cont
 | Range |  to  |
 
 
-
-
-
-
 #### 2: On/Off (S1)
 
 On/Off (S1) is assigned to switch connected to the S1 terminal (uses Basic command class)  
 
 
-# Overview #
+##### Overview 
 
 2nd association group – “On/Off (S1)” is assigned to switch connected to the S1 terminal (uses Basic command class).
 
@@ -1028,16 +877,12 @@ On/Off (S1) is assigned to switch connected to the S1 terminal (uses Basic comma
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Dimmer (S1)
 
 “Dimmer (S1)” is assigned to switch connected to the S1 terminal (uses Switch Multilevel command class)  
 
 
-# Overview #
+##### Overview 
 
 “Dimmer (S1)” is assigned to switch connected to the S1 terminal (uses Switch Multilevel command class)
 
@@ -1049,16 +894,12 @@ On/Off (S1) is assigned to switch connected to the S1 terminal (uses Basic comma
 | Range |  to  |
 
 
-
-
-
-
 #### 4: On/Off (S2)
 
 On/Off (S2) is assigned to switch connected to the S2 terminal (uses Basic command class)  
 
 
-# Overview #
+##### Overview 
 
 On/Off (S2) is assigned to switch connected to the S2 terminal (uses Basic command class)
 
@@ -1070,16 +911,12 @@ On/Off (S2) is assigned to switch connected to the S2 terminal (uses Basic comma
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Dimmer (S2)
 
 Dimmer (S2) is assigned to switch connected to the S2 terminal (uses Switch Multilevel command class)  
 
 
-# Overview #
+##### Overview 
 
 Dimmer (S2) is assigned to switch connected to the S2 terminal (uses Switch Multilevel command class)
 
@@ -1091,12 +928,7 @@ Dimmer (S2) is assigned to switch connected to the S2 terminal (uses Switch Mult
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/416).
-

@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: TP-802ZD - ZWave
+---
+
+{% include base.html %}
 
 # TP-802ZD Door/Window Sensor
 
-This describes the Z-Wave device **TP-802ZD**, manufactured by **Kaipule Technology Co., Ltd.** with the thing type UID of ```kaipule_doorwindowsensor_00_000```. 
+This describes the Z-Wave device *TP-802ZD*, manufactured by *Kaipule Technology Co., Ltd.* with the thing type UID of ```kaipule_doorwindowsensor_00_000```. 
 
 Door/Window Sensor  
 
 
-# Overview #
+## Overview 
 
 The sensor must be added to the Zwave network prior to use.
 
@@ -19,21 +25,21 @@ Press the tamper switch 6 times in 2s, it will recover to factory setting after 
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 To include the sensor in a networks start by placing the controller in inclusion mode. Then activate the inclusion mode at the sensor by pressing the tamper switch 3 times within 1.5s.
 
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 To exclude the sensor in a networks start by placing the controller in exclusion mode. Then activate the exclusion mode at the sensor by pressing the tamper switch 3 times within 1.5s.
 
   
 
 
-## Wakeup Information ##
+### Wakeup Information 
 
 a) Manual Wake-up  
 Quickly press tamper switch once, the door sensor will automatically send wake-up  
@@ -41,6 +47,7 @@ information, and there will be 10s after wake-up to receive gateway setting info
 b) Automatic Wake-up  
 Default time of automatic wake-up is 24 hours, and there will be 10s after wake-up to receive  
 gateway setting information, the max automatic report time = 24 hours, minimum=30min
+
 
 ## Channels
 The following table summarises the channels available for the TP-802ZD Door/Window Sensor.
@@ -51,8 +58,6 @@ The following table summarises the channels available for the TP-802ZD Door/Wind
 | Alarm (burglar) | alarm_burglar | alarm_burglar | Door | Switch |
 | Alarm (access) | alarm_access | alarm_access | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -68,14 +73,12 @@ Detailed information on each parameter can be found below.
 | 2: Group 2 | Sending control commands to associated devices |
 
 
-
-
 #### 1: Basic Set Level
 
 Basic Set Command will be sent when the door/window is opened or closed  
 
 
-# Overview #
+##### Overview 
 
 If there is any device under Association Group2, the door sensor will send “Basic Set = value”  
 command to control that device when the door sensor is opened.
@@ -97,16 +100,12 @@ Available settings:
 | Default Value | 255 |
 
 
-
-
-
-
 #### 2: Turn Off Light Time Configuration
 
 Turn Off Light Time  
 
 
-# Overview #
+##### Overview 
 
 If there is any device under Association Group2, the door sensor will send “Basic Set = value”  
 command to Group2, and send “Basic Set = 0x00” command to turn-off light after “t” seconds,  
@@ -121,16 +120,12 @@ Set value = “t”, means to send Basic Set command after “t” seconds.
 | Default Value | 20 |
 
 
-
-
-
-
 #### 3: Door Sensor Status Report
 
 Auto report Door/Window status time  
 
 
-# Overview #
+##### Overview 
 
 Under normal working status (without trigger), the door sensor will automatically send report  
 to the Gateway about its current tamper & open/close status. Set value = t, means “t” hours,  
@@ -145,16 +140,12 @@ to the Gateway about its current tamper & open/close status. Set value = t, mean
 | Default Value | 12 |
 
 
-
-
-
-
 #### 1: Group 1
 
 Is assigned to the device status - OPEN/CLOSED.  
 
 
-# Overview #
+##### Overview 
 
 1.It will send “NOTIFICATION\_REPORT”to the device in Group 1 when the door sensor is opened / closed, tamper switch is triggered / recovered.
 
@@ -170,16 +161,12 @@ Is assigned to the device status - OPEN/CLOSED.
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Group 2
 
 Sending control commands to associated devices  
 
 
-# Overview #
+##### Overview 
 
 When the door sensor is opened, it will send “BASIC SET” command to control these devices in Group2.
 
@@ -191,12 +178,7 @@ When the door sensor is opened, it will send “BASIC SET” command to control 
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/633).
-

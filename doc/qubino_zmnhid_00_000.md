@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZMNHID - ZWave
+---
+
+{% include base.html %}
 
 # ZMNHID Flush on/off thermostat
 
-This describes the Z-Wave device **ZMNHID**, manufactured by **Goap** with the thing type UID of ```qubino_zmnhid_00_000```. 
+This describes the Z-Wave device *ZMNHID*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhid_00_000```. 
 
 Flush on/off thermostat
+
 
 ## Channels
 The following table summarises the channels available for the ZMNHID Flush on/off thermostat.
@@ -15,7 +22,6 @@ The following table summarises the channels available for the ZMNHID Flush on/of
 | Electric meter (kWh) | meter_kwh | meter_kwh | Energy | Number |
 | Thermostat mode | thermostat_mode | qubino_zmnhid_00_000_thermostat_mode | Temperature | Number |
 | Setpoint (heating) | thermostat_setpoint_heating | thermostat_setpoint | Temperature | Number |
-
 
 
 ### Sensor (temperature)
@@ -33,9 +39,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (heating)
 
 #### Scale
@@ -49,10 +52,6 @@ Select the scale to use for setpoints.
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -85,8 +84,6 @@ Detailed information on each parameter can be found below.
 | 6: Default Reporting Group |  |
 
 
-
-
 #### 1: Input 1 switch type
 
 Input 1 switch type
@@ -98,10 +95,6 @@ Input 1 switch type
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | mono-stable switch type (push button) (0) |
 |  | bi-stable switch type (1) |
-
-
-
-
 
 
 #### 2: Input 2 switch type
@@ -117,10 +110,6 @@ Input 2 switch type
 |  | bi-stable switch type (1) |
 
 
-
-
-
-
 #### 3: Input 3 switch type
 
 Input 3 switch type
@@ -134,13 +123,7 @@ Input 3 switch type
 |  | bi-stable switch type (1) |
 
 
-
-
-
-
 #### 4: Input 2 contact type
-
-
 
 
 | Property         | Value    |
@@ -151,13 +134,7 @@ Input 3 switch type
 |  | NC (normally close) input type (1) |
 
 
-
-
-
-
 #### 5: Input 3 contact type
-
-
 
 
 | Property         | Value    |
@@ -166,10 +143,6 @@ Input 3 switch type
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | NO (normally open) input type (0) |
 |  | NC (normally close) input type (1) |
-
-
-
-
 
 
 #### 10: Activate / deactivate functions ALL ON/ALL OFF
@@ -187,16 +160,12 @@ Module responds to commands ALL ON / ALL OFF that may be sent by the main contro
 |  | ALL ON active, ALL OFF active (255) |
 
 
-
-
-
-
 #### 11: Set point set by I2
 
 Set point set by I2  
 
 
-# Overview #
+##### Overview 
 
 When I2 is pressed set point will be set according to the value of this parameter. Available config. parameters
 
@@ -217,10 +186,6 @@ From 1001 to 1150 - set point from -0.1 °C to -15.0 °C
 | Default Value | 0 |
 
 
-
-
-
-
 #### 12: Set point set by I3
 
 65535 – input I3 does not influence on the set point  
@@ -234,10 +199,6 @@ From 1001 to 1150 – set point from -0.1 °C to -15.0 °C
 | Data Type        | INTEGER |
 | Range | 0 to 65535 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 40: Power reporting in Watts on power change for Q1
@@ -257,10 +218,6 @@ Power report is sent (pushed) only when actual power in Watts in real time chang
 | Default Value | 1 |
 
 
-
-
-
-
 #### 42: Power reporting in Watts by time interval for Q1
 
 default value is 300 (power report in Watts is sent each 300s)  
@@ -278,10 +235,6 @@ default value is 300 (power report in Watts is sent each 300s)
 | Default Value | 300 |
 
 
-
-
-
-
 #### 43: Hysteresis On
 
 This parameter defines temperature min difference between real measured temperature and set-point temperature to turn device on. Parameter can be set from 0 to 255 where 0 to 127 means from 0.0 °C to 12.7 °C and from 128 to 255 means from - 0.1 °C to -12.
@@ -293,10 +246,6 @@ This parameter defines temperature min difference between real measured temperat
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 132 |
-
-
-
-
 
 
 #### 44: Hysteresis Off
@@ -312,10 +261,6 @@ This parameter defines temperature min difference between real measured temperat
 | Default Value | 5 |
 
 
-
-
-
-
 #### 45: Antifreeze
 
 Set value means at which temperature the device will be turned on even if the thermostat was manually set to off. Parameter can be set from 0 to 255 where 0 to 127 means from 0.0 °C to 12.7 °C and from 128 to 254 means from - 0.1 °C to -12.6 °C. 255 is di
@@ -327,10 +272,6 @@ Set value means at which temperature the device will be turned on even if the th
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 5 |
-
-
-
-
 
 
 #### 60: Too low temperature limit
@@ -346,10 +287,6 @@ Set value means at which temperature the device will be turned on even if the th
 | Default Value | 50 |
 
 
-
-
-
-
 #### 61: Too high temperature limit
 
 1 - 1000 = 0.1°C – 100.0°C, step is 0.1°C. Too low temperature limit is set by entered value. In case is set value out of this range, module is changing set value automatically to default value.
@@ -361,10 +298,6 @@ Set value means at which temperature the device will be turned on even if the th
 | Data Type        | INTEGER |
 | Range | 0 to 65535 |
 | Default Value | 700 |
-
-
-
-
 
 
 #### 63: Switch selection
@@ -380,13 +313,7 @@ Set value means the type of the device that is connected to the relay output. Th
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Basic on/off Q1
-
-
 
 
 | Property         | Value    |
@@ -396,13 +323,7 @@ Set value means the type of the device that is connected to the relay output. Th
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Basic on/off I2
-
-
 
 
 | Property         | Value    |
@@ -412,13 +333,7 @@ Set value means the type of the device that is connected to the relay output. Th
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Basic on/off I3
-
-
 
 
 | Property         | Value    |
@@ -428,13 +343,7 @@ Set value means the type of the device that is connected to the relay output. Th
 | Range |  to  |
 
 
-
-
-
-
 #### 4: High Temperature
-
-
 
 
 | Property         | Value    |
@@ -444,13 +353,7 @@ Set value means the type of the device that is connected to the relay output. Th
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Low Temperature
-
-
 
 
 | Property         | Value    |
@@ -460,13 +363,7 @@ Set value means the type of the device that is connected to the relay output. Th
 | Range |  to  |
 
 
-
-
-
-
 #### 6: Default Reporting Group
-
-
 
 
 | Property         | Value    |
@@ -476,12 +373,7 @@ Set value means the type of the device that is connected to the relay output. Th
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/358).
-

@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZMNHOD - ZWave
+---
+
+{% include base.html %}
 
 # ZMNHOD Flush Shutter DC
 
-This describes the Z-Wave device **ZMNHOD**, manufactured by **Goap** with the thing type UID of ```qubino_zmnhod_00_000```. 
+This describes the Z-Wave device *ZMNHOD*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhod_00_000```. 
 
 Flush Shutter DC
+
 
 ## Channels
 The following table summarises the channels available for the ZMNHOD Flush Shutter DC.
@@ -23,7 +30,6 @@ The following table summarises the channels available for the ZMNHOD Flush Shutt
 | Sensor (temperature) 2 | sensor_temperature2 | sensor_temperature | Temperature | Number |
 
 
-
 ### Blinds control
 
 #### Invert control
@@ -39,8 +45,6 @@ Invert the blinds control
 |  | No (false) |
 
 
-
-
 #### Invert percentage value
 
 Invert the blinds percentage value
@@ -52,8 +56,6 @@ Invert the blinds percentage value
 | Data Type        | BOOLEAN || Default Value | false |
 | Options | Yes (true) |
 |  | No (false) |
-
-
 
 
 #### Step duration
@@ -69,9 +71,6 @@ Values from 1 to 127 are defined in seconds, while values from 128 to 254 are de
 | Range | 1 to 254 || Default Value | 255 |
 | Options | Device Default (255) |
 |  | Change Instantly (0) |
-
-
-
 
 
 ### Sensor (temperature)
@@ -89,9 +88,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Blinds control 1
 
 #### Invert control
@@ -107,8 +103,6 @@ Invert the blinds control
 |  | No (false) |
 
 
-
-
 #### Invert percentage value
 
 Invert the blinds percentage value
@@ -120,8 +114,6 @@ Invert the blinds percentage value
 | Data Type        | BOOLEAN || Default Value | false |
 | Options | Yes (true) |
 |  | No (false) |
-
-
 
 
 #### Step duration
@@ -139,9 +131,6 @@ Values from 1 to 127 are defined in seconds, while values from 128 to 254 are de
 |  | Change Instantly (0) |
 
 
-
-
-
 ### Sensor (temperature) 2
 
 #### Scale
@@ -155,10 +144,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -192,8 +177,6 @@ Detailed information on each parameter can be found below.
 | 9: Multilevel sensor report | Triggered at change of temperature sensor |
 
 
-
-
 #### 10: Activate/deactivate functions ALL ON / ALL OFF
 
 Module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.
@@ -207,10 +190,6 @@ Module responds to commands ALL ON / ALL OFF that may be sent by the main contro
 |  | ALL ON is not active ALL OFF active (1) |
 |  | ALL ON is not active ALL OFF is not active (2) |
 |  | ALL ON active, ALL OFF active (255) |
-
-
-
-
 
 
 #### 40: Power reporting in Watts on power change for Q1 or Q2
@@ -233,10 +212,6 @@ Power report is sent only when actual power (in Watts) in real
 | Default Value | 1 |
 
 
-
-
-
-
 #### 42: Power reporting in Watts by time interval for Q1 or Q2
 
 Set value determines interval in seconds, when power report is send.  
@@ -256,10 +231,6 @@ Available configuration parameters.
 | Default Value | 300 |
 
 
-
-
-
-
 #### 71: Operating modes
 
 This parameter defines selection between two available operating modes.  
@@ -272,10 +243,6 @@ NOTE: When setting parameter, module needs to be excluded and included again! Pl
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Shutter mode. (0) |
 |  | Venetian mode (up/down and slate rotation) (1) |
-
-
-
-
 
 
 #### 72: Slats tilting full turn time
@@ -294,10 +261,6 @@ NOTE: If time set is too high, this will result that after full turn, shutter wi
 | Default Value | 150 |
 
 
-
-
-
-
 #### 73: Slats position
 
 This parameter defines slats position after up/down movement through Z-wave or push-buttons.
@@ -309,10 +272,6 @@ This parameter defines slats position after up/down movement through Z-wave or p
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | Slats return to previously set position only in case of Z-wave control (0) |
 |  | Slats return to previously set position in case of Z-wave control, pus (1) |
-
-
-
-
 
 
 #### 74: Motor moving up/down time
@@ -329,10 +288,6 @@ NOTE: If time set is too high, this will result that after full turn, shutter wi
 | Data Type        | INTEGER |
 | Range | 0 to 32767 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 76: Motor operation detection
@@ -352,10 +307,6 @@ Power threshold to be interpreted when motor reaches the limit switch.
 | Default Value | 6 |
 
 
-
-
-
-
 #### 78: Forced Shutter DC calibration
 
 Setting value 0 or 1 a Shutter DC module enters the calibration mode.  
@@ -368,10 +319,6 @@ When calibration process is finished, completing full cycle - up, down and up, s
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Default (0) |
 |  | Start calibration process. (1) |
-
-
-
-
 
 
 #### 85: Power consumption max delay time
@@ -388,10 +335,6 @@ If there is no power consumption during this max time (motor not connected, dama
 | Default Value | 8 |
 
 
-
-
-
-
 #### 86: Power consumption at limit switch delay time
 
 This parameter defines the max time at limit switch, when power consumption is below power threshold.  
@@ -404,10 +347,6 @@ If the power consumption during this time is below power threshold (par. 76), th
 | Data Type        | INTEGER |
 | Range | 3 to 50 |
 | Default Value | 8 |
-
-
-
-
 
 
 #### 90: Time delay for next motor movement
@@ -427,10 +366,6 @@ This parameter defines the minimum time delay between next motor movemen.
 | Default Value | 5 |
 
 
-
-
-
-
 #### 110: Temperature sensor offset settings
 
 Set value is added or subtracted to actual measured value by sensor. default value 32536 32536 – offset is 0.0C From 1 to 100 – value from 0.1 °C to 10.0 °C is added to actual measured temperature.
@@ -442,10 +377,6 @@ Set value is added or subtracted to actual measured value by sensor. default val
 | Data Type        | INTEGER |
 | Range | 1 to 32536 |
 | Default Value | 32536 |
-
-
-
-
 
 
 #### 120: Digital temperature sensor reporting
@@ -465,13 +396,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Default Value | 5 |
 
 
-
-
-
-
 #### 1: Default reporting group
-
-
 
 
 | Property         | Value    |
@@ -479,10 +404,6 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Configuration ID | group_1 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 2: Basic on/off
@@ -497,10 +418,6 @@ Triggered at change of the input I1 state and reflecting its state
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Basic on/off
 
 Triggered at change of the input I2 state and reflecting its state
@@ -513,16 +430,12 @@ Triggered at change of the input I2 state and reflecting its state
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Basic on/off
 
 Triggered at sensing moving direction of roller  
 
 
-# Overview #
+##### Overview 
 
 up=FF, down=0
 
@@ -534,16 +447,12 @@ up=FF, down=0
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Basic on/off
 
 Triggered at reaching roller position  
 
 
-# Overview #
+##### Overview 
 
 bottom=FF, top=0
 
@@ -555,16 +464,12 @@ bottom=FF, top=0
 | Range |  to  |
 
 
-
-
-
-
 #### 6: Basic on/off
 
 Triggered at reaching roller position  
 
 
-# Overview #
+##### Overview 
 
 bottom=FF, not bottom=0
 
@@ -574,10 +479,6 @@ bottom=FF, not bottom=0
 | Configuration ID | group_6 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 7: Multilevel set
@@ -592,10 +493,6 @@ triggered at changes of value of the Flush Shutter DC position
 | Range |  to  |
 
 
-
-
-
-
 #### 8: Multilevel set
 
 Triggered at changes of value of slats tilting position
@@ -606,10 +503,6 @@ Triggered at changes of value of slats tilting position
 | Configuration ID | group_8 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 9: Multilevel sensor report
@@ -624,12 +517,7 @@ Triggered at change of temperature sensor
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/214).
-

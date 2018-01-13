@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FGSS001 - ZWave
+---
+
+{% include base.html %}
 
 # FGSS001 Smoke Sensor
 
-This describes the Z-Wave device **FGSS001**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgss001_00_000```. 
+This describes the Z-Wave device *FGSS001*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgss001_00_000```. 
 
 Smoke Sensor
+
 
 ## Channels
 The following table summarises the channels available for the FGSS001 Smoke Sensor.
@@ -16,7 +23,6 @@ The following table summarises the channels available for the FGSS001 Smoke Sens
 | Alarm (smoke) | alarm_smoke | alarm_smoke | Door | Switch |
 | Alarm (general) | alarm_general | alarm_general | Door | Switch |
 | Alarm (heat) | alarm_heat | alarm_heat |  | Switch |
-
 
 
 ### Sensor (temperature)
@@ -34,9 +40,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Clock Time Offset
 
 #### Automatic Update Offset
@@ -51,10 +54,6 @@ Setting this will automatically update the devices clock when the time differenc
 | Data Type        | INTEGER |
 | Range | 10 to 600 || Default Value | 60 |
 | Options | Disable Auto Update (0) |
-
-
-
-
 
 
 ### Device Configuration
@@ -86,8 +85,6 @@ Detailed information on each parameter can be found below.
 | 3: Device Status |  |
 
 
-
-
 #### 1: Alarm Cancellation Delay
 
 Additional delay after an alarm has ceased. The parameter allows you to specify additional time, after which the alarm is cancelled once its violation has ceased.
@@ -99,10 +96,6 @@ Additional delay after an alarm has ceased. The parameter allows you to specify 
 | Data Type        | INTEGER |
 | Range | 0 to 3600 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 2: Acoustic and visual signals On / Off in case of alarm
@@ -120,10 +113,6 @@ parameter allows for LED indicator and acoustic alarm deactivation in case of sm
 |  | acoustic and visual alarms active (3) |
 
 
-
-
-
-
 #### 5: Type of alarm frame sent to 1-st association group (SMOKE)
 
 parameter determines a type of command frame sent by the Sensor in case smoke detection has been detected or cancelled
@@ -135,10 +124,6 @@ parameter determines a type of command frame sent by the Sensor in case smoke de
 | Data Type        | INTEGER || Default Value | 255 |
 | Options | ALARM SENSOR (SMOKE) (0) |
 |  | BASIC_SET (255) |
-
-
-
-
 
 
 #### 7: Forced Level of Dimming group 1
@@ -155,10 +140,6 @@ In the case of alarm frames the alarm priority is specified. Possible parameter 
 | Default Value | 255 |
 
 
-
-
-
-
 #### 10: Interval between successive readings of temperature sensors
 
 Interval between successive readings of temperature from all sensors connected to the device in seconds. Note: taking temperature readings from the sensor does not result in sending a temperature condition report to the central hub.
@@ -172,13 +153,7 @@ Interval between successive readings of temperature from all sensors connected t
 | Default Value | 300 |
 
 
-
-
-
-
 #### 12: Insensitiveness to temperature changes.
-
-
 
 
 | Property         | Value    |
@@ -187,10 +162,6 @@ Interval between successive readings of temperature from all sensors connected t
 | Data Type        | INTEGER |
 | Range | 0 to 100 |
 | Default Value | 20 |
-
-
-
-
 
 
 #### 13: Transmitting the alarm or control frame broadcast mode
@@ -209,10 +180,6 @@ Transmitting the alarm or control frame in 'broadcast' mode (i.e. to all devices
 |  | Smoke and Tamper broadcast mode active (3) |
 
 
-
-
-
-
 #### 73: Temperature measurement compensation
 
 Temperature value to be added to or deducted from the current measured temperature  
@@ -225,10 +192,6 @@ Temperature value to be added to or deducted from the current measured temperatu
 | Data Type        | INTEGER |
 | Range | -1000 to 1000 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 80: Z-Wave range test interval
@@ -245,10 +208,6 @@ Time period between the consecutive Z-Wave network range tests.
 | Default Value | 1 |
 
 
-
-
-
-
 #### 81: Temperature alarm threshold
 
 0 -> 0 – temperature alarm inactive  
@@ -261,10 +220,6 @@ Time period between the consecutive Z-Wave network range tests.
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 54 |
-
-
-
-
 
 
 #### 82: Smoke Sensor sensitivity
@@ -281,10 +236,6 @@ There are 3 levels of sensitivity to smoke presence. Level 1 means the highest s
 |  | Low (3) |
 
 
-
-
-
-
 #### 83: Black Box sensitivity level
 
 Parameter specifies temperature and smoke level after which the Black Box starts recording them.
@@ -297,10 +248,6 @@ Parameter specifies temperature and smoke level after which the Black Box starts
 | Options | High (1) |
 |  | Medium (2) |
 |  | Low (3) |
-
-
-
-
 
 
 #### 84: Malfunction alarm
@@ -317,10 +264,6 @@ Time interval in which malfuntion alarm, if detected, is repeated using visual a
 | Default Value | 10 |
 
 
-
-
-
-
 #### 85: Temperature alarm
 
 Time interval in which temperature alarm, if detected, is repeated using visual and acoustic alarms.  
@@ -333,10 +276,6 @@ Time interval in which temperature alarm, if detected, is repeated using visual 
 | Data Type        | INTEGER |
 | Range | -126 to 127 |
 | Default Value | 5 |
-
-
-
-
 
 
 #### 86: Lack of the Z-Wave range alarm
@@ -353,10 +292,6 @@ Time interval in which lack of the Z-Wave network alarm, if detected, is repeate
 | Default Value | 360 |
 
 
-
-
-
-
 #### 87: Low battery alarm
 
 Time interval in which low battery alarm, if detected, is repeated using visual and acoustic alarms.  
@@ -371,10 +306,6 @@ Time interval in which low battery alarm, if detected, is repeated using visual 
 | Default Value | 360 |
 
 
-
-
-
-
 #### 88: Temperature measurement compensation for report
 
 Consider temperature measurement compensation (parameter 73) when sending temperature report.
@@ -386,10 +317,6 @@ Consider temperature measurement compensation (parameter 73) when sending temper
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Ignore temperature compensation (0) |
 |  | Include temperature compensation (1) |
-
-
-
-
 
 
 #### 89: Tamper alarm
@@ -406,13 +333,7 @@ Activates/inactivates temper switch alarm
 |  | Tamper alarm active, without cancellation option (2) |
 
 
-
-
-
-
 #### 1: Fire Status
-
-
 
 
 | Property         | Value    |
@@ -422,13 +343,7 @@ Activates/inactivates temper switch alarm
 | Range |  to  |
 
 
-
-
-
-
 #### 2: TMP Button
-
-
 
 
 | Property         | Value    |
@@ -438,13 +353,7 @@ Activates/inactivates temper switch alarm
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Device Status
-
-
 
 
 | Property         | Value    |
@@ -454,12 +363,7 @@ Activates/inactivates temper switch alarm
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/134).
-

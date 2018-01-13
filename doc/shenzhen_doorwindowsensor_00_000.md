@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: Door/Window Sensor - ZWave
+---
+
+{% include base.html %}
 
 # Door/Window Sensor Door/Window Sensor
 
-This describes the Z-Wave device **Door/Window Sensor**, manufactured by **Shenzhen Neo Electronics Co., Ltd** with the thing type UID of ```shenzhen_doorwindowsensor_00_000```. 
+This describes the Z-Wave device *Door/Window Sensor*, manufactured by *Shenzhen Neo Electronics Co., Ltd* with the thing type UID of ```shenzhen_doorwindowsensor_00_000```. 
 
 Door/Window Sensor  
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 1. Remove the sensor cover.
 
@@ -23,7 +29,7 @@ LED will flash on and off alternately five times.sor.
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 1. Remove the device cover.
 
@@ -38,7 +44,7 @@ gateway operating manual)
   
 
 
-## Wakeup Information ##
+### Wakeup Information 
 
 You can press the button once to wake up the device and send wakeup notification to controller. If press successfully, the LED will blink one time.
 
@@ -50,6 +56,7 @@ Allowable min step among each wakeup interval is 60 seconds, such as 360s, 420s,
 
 Note: The default value is 12 hours. This value is longer, the battery life is greater.
 
+
 ## Channels
 The following table summarises the channels available for the Door/Window Sensor Door/Window Sensor.
 
@@ -58,8 +65,6 @@ The following table summarises the channels available for the Door/Window Sensor
 | Door/Window Sensor | sensor_door | sensor_door | Door | Contact |
 | Alarm (access) | alarm_access | alarm_access | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -76,8 +81,6 @@ Detailed information on each parameter can be found below.
 | 4: Group 4 | Send Notification to associated devices. |
 
 
-
-
 #### 1: ON/OFF Delay
 
 Adjust the delay before the OFF command is transmitted. 0 means send OFF command immediately.
@@ -91,16 +94,12 @@ Adjust the delay before the OFF command is transmitted. 0 means send OFF command
 | Default Value | 0 |
 
 
-
-
-
-
 #### 2: Basic Set Level
 
 Basic Set Command will be sent when the door/window is opened or closed, the receiver will take it for consideration; for instance, if a lamp module received the BSC of which value is decisive as to how bright of dim level of lamp module shall be.  
 
 
-# Overview #
+##### Overview 
 
 Available Settings:
 
@@ -119,16 +118,12 @@ Available Settings:
 | Default Value | 255 |
 
 
-
-
-
-
 #### 1: Group 1
 
 Is assigned to the device status - OPEN/CLOSED.  
 
 
-# Overview #
+##### Overview 
 
 It enables the sensor to send reports and readings to Z-Wave Controller or Z-Wave Gateway whenever the sensor is triggered.
 
@@ -148,16 +143,12 @@ DEVICE\_RESET\_LOCALLY\_NOTIFICATION
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Group 2
 
 Sending control commands to associated devices. This association group is configured through the advanced parameters no. 1 and 2.  
 
 
-# Overview #
+##### Overview 
 
 BASIC\_SET
 
@@ -169,16 +160,12 @@ BASIC\_SET
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Group 3
 
 Send Notification to associated devices.  
 
 
-# Overview #
+##### Overview 
 
 NOTIFICATION\_REPORT
 
@@ -190,16 +177,12 @@ NOTIFICATION\_REPORT
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Group 4
 
 Send Notification to associated devices.  
 
 
-# Overview #
+##### Overview 
 
 SENSOR\_BINARY\_REPORT
 
@@ -211,12 +194,7 @@ SENSOR\_BINARY\_REPORT
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/400).
-

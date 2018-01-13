@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: Soft Remote - ZWave
+---
+
+{% include base.html %}
 
 # Soft Remote Remote Control
 
-This describes the Z-Wave device **Soft Remote**, manufactured by **ID-RF** with the thing type UID of ```nodon_softremote_00_000```. 
+This describes the Z-Wave device *Soft Remote*, manufactured by *ID-RF* with the thing type UID of ```nodon_softremote_00_000```. 
 
 Remote Control
+
 
 ## Channels
 The following table summarises the channels available for the Soft Remote Remote Control.
@@ -12,8 +19,6 @@ The following table summarises the channels available for the Soft Remote Remote
 |---------|------------|------------------|----------|-----------|
 | Scene Number | scene_number | scene_number |  | Number |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -39,8 +44,6 @@ Detailed information on each parameter can be found below.
 | 7: Button 2 and 4 - Duo - Controlled nodes |  |
 
 
-
-
 #### 1: Buttons 1 and 3 profile
 
 To set-up the profile of buttons 1 and 3
@@ -53,10 +56,6 @@ To set-up the profile of buttons 1 and 3
 | Options | Scene (0) |
 |  | Mono (1) |
 |  | Duo (2) |
-
-
-
-
 
 
 #### 2: Buttons 2 and 4 profile
@@ -73,10 +72,6 @@ To set-up the profile of buttons 2 and 4
 |  | Duo (2) |
 
 
-
-
-
-
 #### 3: Scene Type
 
 To choose the way of sending Scene to the gateway
@@ -88,10 +83,6 @@ To choose the way of sending Scene to the gateway
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Central Scene (0) |
 |  | Scene Activation (1) |
-
-
-
-
 
 
 #### 4: Button 1 configuration
@@ -108,10 +99,6 @@ To set-up the how button 1 behaves, when set in MONO Profile
 |  | All switches OFF (2) |
 
 
-
-
-
-
 #### 5: Button 2 configuration
 
 To set-up the how button 2 behaves, when set in MONO Profile
@@ -124,10 +111,6 @@ To set-up the how button 2 behaves, when set in MONO Profile
 | Options | Control group 3 (0) |
 |  | All switches ON (1) |
 |  | All switches OFF (2) |
-
-
-
-
 
 
 #### 6: Button 3 configuration
@@ -144,10 +127,6 @@ To set-up the how button 3 behaves, when set in MONO Profile
 |  | All switches OFF (2) |
 
 
-
-
-
-
 #### 7: Button 4 configuration
 
 To set-up the how button 4 behaves, when set in MONO Profile
@@ -160,10 +139,6 @@ To set-up the how button 4 behaves, when set in MONO Profile
 | Options | Control group 5 (0) |
 |  | All switches ON (1) |
 |  | All switches OFF (2) |
-
-
-
-
 
 
 #### 8: LED Management
@@ -181,13 +156,7 @@ How to set up LED behaviour
 |  | Flash Blue after button press and blink to confirm command (3) |
 
 
-
-
-
-
 #### 1: Lifeline
-
-
 
 
 | Property         | Value    |
@@ -197,13 +166,7 @@ How to set up LED behaviour
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Button 1 - Mono - Controlled nodes
-
-
 
 
 | Property         | Value    |
@@ -213,13 +176,7 @@ How to set up LED behaviour
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Button 2 - Mono - Controlled nodes
-
-
 
 
 | Property         | Value    |
@@ -229,13 +186,7 @@ How to set up LED behaviour
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Button 3 - Mono - Controlled nodes
-
-
 
 
 | Property         | Value    |
@@ -245,13 +196,7 @@ How to set up LED behaviour
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Button 4 - Mono - Controlled nodes
-
-
 
 
 | Property         | Value    |
@@ -261,13 +206,7 @@ How to set up LED behaviour
 | Range |  to  |
 
 
-
-
-
-
 #### 6: Button 1 and 3 - Duo - Controlled nodes
-
-
 
 
 | Property         | Value    |
@@ -277,13 +216,7 @@ How to set up LED behaviour
 | Range |  to  |
 
 
-
-
-
-
 #### 7: Button 2 and 4 - Duo - Controlled nodes
-
-
 
 
 | Property         | Value    |
@@ -293,12 +226,7 @@ How to set up LED behaviour
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/250).
-

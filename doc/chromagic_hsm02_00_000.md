@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: HSM02 - ZWave
+---
+
+{% include base.html %}
 
 # HSM02 Door Window Sensor
 
-This describes the Z-Wave device **HSM02**, manufactured by **Chromagic Technologies Corporation** with the thing type UID of ```chromagic_hsm02_00_000```. 
+This describes the Z-Wave device *HSM02*, manufactured by *Chromagic Technologies Corporation* with the thing type UID of ```chromagic_hsm02_00_000```. 
 
 Door Window Sensor
+
 
 ## Channels
 The following table summarises the channels available for the HSM02 Door Window Sensor.
@@ -13,8 +20,6 @@ The following table summarises the channels available for the HSM02 Door Window 
 | Binary Sensor | sensor_binary | sensor_binary | Door | Switch |
 | Alarm | alarm_general | alarm_general | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -27,8 +32,6 @@ Detailed information on each parameter can be found below.
 | 2: Configuring the OFF Delay | OFF Delay in seconds |
 | 1: Target for reports |  |
 | 2: Target nodes who receive BASIC_SET command |  |
-
-
 
 
 #### 1: Basic Set Level
@@ -44,10 +47,6 @@ Value to be sent with a BASIC SET command
 | Default Value | 99 |
 
 
-
-
-
-
 #### 2: Configuring the OFF Delay
 
 OFF Delay in seconds
@@ -61,13 +60,7 @@ OFF Delay in seconds
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Target for reports
-
-
 
 
 | Property         | Value    |
@@ -77,13 +70,7 @@ OFF Delay in seconds
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Target nodes who receive BASIC_SET command
-
-
 
 
 | Property         | Value    |
@@ -93,12 +80,7 @@ OFF Delay in seconds
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/342).
-

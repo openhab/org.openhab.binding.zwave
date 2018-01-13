@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZW ESJ 300 - ZWave
+---
+
+{% include base.html %}
 
 # ZW ESJ 300 Duwi ZW ESJ 300 Blind Control
 
-This describes the Z-Wave device **ZW ESJ 300**, manufactured by **Reitz-Group.de** with the thing type UID of ```reitz_zwesj300_00_000```. 
+This describes the Z-Wave device *ZW ESJ 300*, manufactured by *Reitz-Group.de* with the thing type UID of ```reitz_zwesj300_00_000```. 
 
 Duwi ZW ESJ 300 Blind Control
+
 
 ## Channels
 The following table summarises the channels available for the ZW ESJ 300 Duwi ZW ESJ 300 Blind Control.
@@ -12,7 +19,6 @@ The following table summarises the channels available for the ZW ESJ 300 Duwi ZW
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Blinds Control | blinds_control | blinds_control | Blinds | Rollershutter |
-
 
 
 ### Blinds Control
@@ -30,8 +36,6 @@ Invert the blinds control
 |  | No (false) |
 
 
-
-
 #### Invert percentage value
 
 Invert the blinds percentage value
@@ -43,8 +47,6 @@ Invert the blinds percentage value
 | Data Type        | BOOLEAN || Default Value | false |
 | Options | Yes (true) |
 |  | No (false) |
-
-
 
 
 #### Step duration
@@ -62,10 +64,6 @@ Values from 1 to 127 are defined in seconds, while values from 128 to 254 are de
 |  | Change Instantly (0) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the ZW ESJ 300 Duwi ZW ESJ 300 Blind Control.
 Detailed information on each parameter can be found below.
@@ -76,14 +74,12 @@ Detailed information on each parameter can be found below.
 | 1: Stop-functionality | Adjusting the Stop-Functionality |
 
 
-
-
 #### 0: Running time
 
 Adjustment of the operating times of the sun blind control  
 
 
-# Overview #
+##### Overview 
 
 **NOTE**: The set values remain stored even after a power failure. The adjustment process of the operating times can be repeated anytime.  
 **NOTE**: Should the adjustment of the operating times take place with the help of the configuration tool of a third-party manufacturer, you can consider the following values as the basis: Please note that the adjustments should be undertaken only by well-versed technicians.
@@ -105,16 +101,12 @@ Adjustment of the operating times of the sun blind control
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Stop-functionality
 
 Adjusting the Stop-Functionality  
 
 
-# Overview #
+##### Overview 
 
 5.2.2 ADJUSTING THE STOP-FUNCTIONALITY:
 
@@ -140,12 +132,7 @@ You can also programm the shutter actuator in a way, that in case of a press in 
 |  | Enabled (default) (1) |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/563).
-

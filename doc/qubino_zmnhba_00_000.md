@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZMNHBA - ZWave
+---
+
+{% include base.html %}
 
 # ZMNHBA Flush 2 relays
 
-This describes the Z-Wave device **ZMNHBA**, manufactured by **Goap** with the thing type UID of ```qubino_zmnhba_00_000```. 
+This describes the Z-Wave device *ZMNHBA*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhba_00_000```. 
 
 Flush 2 relays
+
 
 ## Channels
 The following table summarises the channels available for the ZMNHBA Flush 2 relays.
@@ -22,7 +29,6 @@ The following table summarises the channels available for the ZMNHBA Flush 2 rel
 | Electric meter (watts) 2 | meter_watts2 | meter_watts | Energy | Number |
 
 
-
 ### Sensor (temperature)
 
 #### Scale
@@ -36,10 +42,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -63,8 +65,6 @@ Detailed information on each parameter can be found below.
 | 3: Default Reporting Group |  |
 
 
-
-
 #### 1: Input 1 switch type
 
 Input 1 switch type
@@ -76,10 +76,6 @@ Input 1 switch type
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | mono-stable switch type (push button) (0) |
 |  | bi-stable switch type (1) |
-
-
-
-
 
 
 #### 2: Input 2 switch type
@@ -95,16 +91,12 @@ Input 2 switch type
 |  | bi-stable switch type (1) |
 
 
-
-
-
-
 #### 10: Activate / deactivate functions ALL ON/ALL OFF
 
 Activate / deactivate functions ALL ON/ALL OFF  
 
 
-# Overview #
+##### Overview 
 
 Flush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.
 
@@ -119,16 +111,12 @@ Flush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by t
 |  | ALL ON active, ALL OFF active (255) |
 
 
-
-
-
-
 #### 11: Automatic turning off relay Q1 after set time
 
 Automatic turning off relay Q1 after set time  
 
 
-# Overview #
+##### Overview 
 
 Auto OFF enabled with define time, step is 10 mseconds
 
@@ -144,16 +132,12 @@ Auto OFF enabled with define time, step is 10 mseconds
 | Default Value | 0 |
 
 
-
-
-
-
 #### 12: Automatic turning off relay Q2 after set time
 
 Automatic turning off relay Q2 after set time  
 
 
-# Overview #
+##### Overview 
 
 Auto OFF enabled with define time, step is 10 mseconds
 
@@ -169,10 +153,6 @@ Auto OFF enabled with define time, step is 10 mseconds
 | Default Value | 0 |
 
 
-
-
-
-
 #### 30: Saving Q1 and Q2 after a power failure
 
 Saving the state of the relays Q1 and Q2 after a power failure
@@ -184,10 +164,6 @@ Saving the state of the relays Q1 and Q2 after a power failure
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Flush 2 relays module saves its state before power failure (it returns (0) |
 |  | Flush 2 relays module does not save the state after a power failure, i (1) |
-
-
-
-
 
 
 #### 40: Power reporting in Watts on power change for Q1
@@ -207,10 +183,6 @@ Power report is sent (pushed) only when actual power in Watts in real time chang
 | Default Value | 1 |
 
 
-
-
-
-
 #### 41: Power reporting in Watts on power change for Q2
 
 Power report is sent (pushed) only when actual power in Watts in real time changed for more than set percentage comparing to previous actual power in Watts, step is 1%.  
@@ -226,10 +198,6 @@ Power report is sent (pushed) only when actual power in Watts in real time chang
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 42: Power reporting in Watts by time interval for Q1
@@ -249,10 +217,6 @@ default value is 300 (power report in Watts is sent each 300s)
 | Default Value | 300 |
 
 
-
-
-
-
 #### 43: Power reporting in Watts by time interval for Q2
 
 default value is 300 (power report in Watts is sent each 300s)  
@@ -270,13 +234,7 @@ default value is 300 (power report in Watts is sent each 300s)
 | Default Value | 300 |
 
 
-
-
-
-
 #### 1: Basic on/off Q1
-
-
 
 
 | Property         | Value    |
@@ -286,13 +244,7 @@ default value is 300 (power report in Watts is sent each 300s)
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Basic on/off Q2
-
-
 
 
 | Property         | Value    |
@@ -302,13 +254,7 @@ default value is 300 (power report in Watts is sent each 300s)
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Default Reporting Group
-
-
 
 
 | Property         | Value    |
@@ -318,12 +264,7 @@ default value is 300 (power report in Watts is sent each 300s)
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/208).
-

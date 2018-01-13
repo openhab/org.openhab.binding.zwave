@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FGPB101 - ZWave
+---
+
+{% include base.html %}
 
 # FGPB101 A real push button (switch) available in several colors.
 
-This describes the Z-Wave device **FGPB101**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgpb101_00_000```. 
+This describes the Z-Wave device *FGPB101*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgpb101_00_000```. 
 
 A real push button (switch) available in several colors.
+
 
 ## Channels
 The following table summarises the channels available for the FGPB101 A real push button (switch) available in several colors..
@@ -13,8 +20,6 @@ The following table summarises the channels available for the FGPB101 A real pus
 | Scene Number | scene_number | scene_number |  | Number |
 | Alarm | alarm_general | alarm_general | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -45,14 +50,12 @@ Detailed information on each parameter can be found below.
 | 4: Alarm | assigned to clicking and/or holding the button (triggers are defined in parameter 30) and ... |
 
 
-
-
 #### 1: Scenes sent to the controller
 
 This parameter determines which actions result in sending scene IDs to them.  
 
 
-# Overview #
+##### Overview 
 
 This parameter determines which actions result in sending scene IDs and attributes assigned to them.
 
@@ -77,16 +80,12 @@ Values of parameter 1 may be combined, e.g. 1+2=3 means that scenes will be sent
 | Default Value | 127 |
 
 
-
-
-
-
 #### 3: Associations in Z-Wave network Security Mode
 
 This parameter defines how commands are sent in specified association groups  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network Security Mode. It does not apply to 1st „Lifeline” group.  
   
@@ -105,16 +104,12 @@ Values of parameter 3 may be combined, e.g. 1+2=3 means that 2nd & 3rd group are
 | Default Value | 7 |
 
 
-
-
-
-
 #### 10: Key Pressed 1 time – command sent to 2nd group
 
 Associated in 2nd association group after a single click.  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines commands sent to devices associated in 2nd association group after a single click.
 
@@ -134,16 +129,12 @@ Available settings:
 | Default Value | 3 |
 
 
-
-
-
-
 #### 11: Key Pressed 1 time – value of SWITCH ON sent to 2nd group
 
 Value of SWITCH ON command sent to devices in 2nd association group  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines value of SWITCH ON command sent to devices in 2nd association group after a single click.
 
@@ -160,16 +151,12 @@ Available settings:
 | Default Value | 255 |
 
 
-
-
-
-
 #### 12: Key Pressed 2 times – command sent to 2nd group
 
 Commands sent to devices associated in 2nd association group  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines commands sent to devices associated in 2nd association group after a double click.
 
@@ -189,16 +176,12 @@ Available settings:
 | Default Value | 1 |
 
 
-
-
-
-
 #### 13: Key Pressed 2 times – value of SWITCH ON sent to 2nd group
 
 SWITCH ON command in 2nd association group after double click  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines value of SWITCH ON command sent to devices in 2nd association group after a double click.
 
@@ -215,16 +198,12 @@ Available settings:
 | Default Value | 99 |
 
 
-
-
-
-
 #### 14: Key Pressed 3 times – command sent to 2nd group
 
 Commands associated in 2nd association group after a triple click.  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines commands sent to devices associated in 2nd association group after a triple click.
 
@@ -244,16 +223,12 @@ Available settings:
 | Default Value | 0 |
 
 
-
-
-
-
 #### 15: Key Pressed 3 times – value of SWITCH ON sent to 2nd group
 
 Value of SWITCH ON command sent in 2nd association group after a triple click  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines value of SWITCH ON command sent to devices in 2nd association group after a triple click.
 
@@ -270,16 +245,12 @@ Available settings:
 | Default Value | 255 |
 
 
-
-
-
-
 #### 20: Key Pressed 1 time – command sent to 3rd group
 
 Ssent to devices associated in 3rd association group after a single click.  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines commands sent to devices associated in 3rd association group after a single click.
 
@@ -299,16 +270,12 @@ Available settings:
 | Default Value | 3 |
 
 
-
-
-
-
 #### 21: Key Pressed 1 time – value of SWITCH ON sent to 3rd group
 
 Value of SWITCH ON command sent in 3rd association group after a single click.  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines value of SWITCH ON command sent to devices in 3rd association group after a single click.
 
@@ -325,16 +292,12 @@ Available settings:
 | Default Value | 255 |
 
 
-
-
-
-
 #### 22: Key Pressed 2 times – command sent to 3rd group
 
 Sent to associated in 3rd association group after a double click.  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines commands sent to devices associated in 3rd association group after a double click.
 
@@ -354,16 +317,12 @@ Available settings:
 | Default Value | 1 |
 
 
-
-
-
-
 #### 23: Key Pressed 2 times – value of SWITCH ON sent to 3rd group
 
 Value of SWITCH ON command sent in 3rd association group after a double click.  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines value of SWITCH ON command sent to devices in 3rd association group after a double click.
 
@@ -380,16 +339,12 @@ Available settings:
 | Default Value | 99 |
 
 
-
-
-
-
 #### 24: Key Pressed 3 times – command sent to 3rd group
 
 Sent to devices associated in 3rd association group after a triple click.  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines commands sent to devices associated in 3rd association group after a triple click.
 
@@ -409,16 +364,12 @@ Available settings:
 | Default Value | 0 |
 
 
-
-
-
-
 #### 25: Key Pressed 3 times – value of SWITCH ON sent to 3rd group
 
 Value SWITCH ON command sent in 3rd association group after a triple click.  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines value of SWITCH ON command sent to devices in 3rd association group after a triple click.
 
@@ -435,16 +386,12 @@ Available settings:
 | Default Value | 255 |
 
 
-
-
-
-
 #### 29: Key Held Down – command sent to 3rd group
 
 Sent associated in 3rd association group after holding the button down.  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines commands sent to devices associated in 3rd association group after holding the button down.
 
@@ -464,16 +411,12 @@ Available settings:
 | Default Value | 3 |
 
 
-
-
-
-
 #### 30: Alarm frame triggers
 
 Which actions result in sending alarm frames to 4th association group.  
 
 
-# Overview #
+##### Overview 
 
 Parameter determines which actions result in sending alarm frames to 4th association group.
 
@@ -498,10 +441,6 @@ Values of parameter 30 may be combined, e.g. 1+2=3 means that alarm frames will 
 | Default Value | 127 |
 
 
-
-
-
-
 #### 1: Lifeline
 
 reports the device status and allows for assigning single device only (main controller by default)
@@ -512,10 +451,6 @@ reports the device status and allows for assigning single device only (main cont
 | Configuration ID | group_1 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 2: On/Off
@@ -530,10 +465,6 @@ assigned to clicking the button and is used to turn on/off associated devices
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Dimmer
 
 is assigned to holding the button and is used to change level of associated devices
@@ -544,10 +475,6 @@ is assigned to holding the button and is used to change level of associated devi
 | Configuration ID | group_3 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 4: Alarm
@@ -562,12 +489,7 @@ assigned to clicking and/or holding the button (triggers are defined in paramete
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/436).
-

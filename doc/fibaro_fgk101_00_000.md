@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: FGK101 - ZWave
+---
+
+{% include base.html %}
 
 # FGK101 Door Opening Sensor
 
-This describes the Z-Wave device **FGK101**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgk101_00_000```. 
+This describes the Z-Wave device *FGK101*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgk101_00_000```. 
 
 Door Opening Sensor  
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 **Prepare the sensor:**
 
@@ -38,9 +44,10 @@ Door Opening Sensor
   
 
 
-## Wakeup Information ##
+### Wakeup Information 
 
 The default wake-up interval will drain the battery in a few weeks to months. It's advised to set a minimum wake-up interval of 3 hours to 24 hours after the device is configured correctly and a node.xml file has been created for the device.
+
 
 ## Channels
 The following table summarises the channels available for the FGK101 Door Opening Sensor.
@@ -58,7 +65,6 @@ The following table summarises the channels available for the FGK101 Door Openin
 | Temperature Sensor | sensor_temperature2 | sensor_temperature | Temperature | Number |
 
 
-
 ### Temperature Sensor
 
 #### Scale
@@ -72,10 +78,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -98,14 +100,12 @@ Detailed information on each parameter can be found below.
 | 3: Condition |  |
 
 
-
-
 #### 1: IN1 Alarm Cancellation Delay
 
 Additional delay after an alarm from input IN1 has ceased.  
 
 
-# Overview #
+##### Overview 
 
 The parameter allows you to specify additional time, after which the input no. 1 alarm is cancelled once its violation has ceased.    
 
@@ -118,13 +118,7 @@ The parameter allows you to specify additional time, after which the input no. 
 | Default Value | 0 |
 
 
-
-
-
-
 #### 2: Status change signalled by LED
-
-
 
 
 | Property         | Value    |
@@ -135,16 +129,12 @@ The parameter allows you to specify additional time, after which the input no. 
 |  | LED turned On (1) |
 
 
-
-
-
-
 #### 3: Type of input no. 1
 
 Type of IN input  
 
 
-# Overview #
+##### Overview 
 
 Default = 0- INPUT\_NC (Normally closed)
 
@@ -169,16 +159,12 @@ Available parameter settings
 |  | Bistable (3) |
 
 
-
-
-
-
 #### 5: Type of transmitted control frame for association
 
 Type of transmitted control frame for association group 1  
 
 
-# Overview #
+##### Overview 
 
 Type of transmitted control frame for association group 1, activated via input IN1. The parameter allows to specify the type of alarm frame or to force transmission of control commands (BASIC\_SET)
 
@@ -212,16 +198,12 @@ Available parameter settings
 |  | BASIC_SET (255) |
 
 
-
-
-
-
 #### 7: Forced Level of Dimming group 1
 
 Parameter for dimming/opening blinds  
 
 
-# Overview #
+##### Overview 
 
 Value of the parameter specifying the forced level of dimming/opening roller blinds when “switch on”/”open” commands are sent to devices from association group no.1. In case of alarm frames an alarm priority is specified. Default value: 255 Possible parameter settings: (1 – 99) and 255 Value of 255 makes it possible to activate a device. In case of the Dimmer module it means activating the device and setting it to the previously stored condition, e.g. when Dimmer is set to 30%, deactivated and then reactivated using 255 commend, it will be automatically set to the previous condition i.e. 30%
 
@@ -234,16 +216,12 @@ Value of the parameter specifying the forced level of dimming/opening roller bli
 | Default Value | 255 |
 
 
-
-
-
-
 #### 9: Enable/Disable transmission of frame cancelling alarm
 
 Enable/Disable transmission of frame cancelling alarm  
 
 
-# Overview #
+##### Overview 
 
 Deactivating transmission of the alarm cancelling frame or the control frame deactivating the device (Basic). It allows for disabling the function of deactivating the device and cancelling alarms for devices associated with IN input. Default value: 0
 
@@ -263,16 +241,12 @@ Parameter size: 1 \[byte\].
 |  | Group 2 sent, Group 1 not sent. (2) |
 
 
-
-
-
-
 #### 12: Sensitivity to temperature changes
 
 Sensitivity to temperature changes  
 
 
-# Overview #
+##### Overview 
 
 Sensitivity to temperature changes. The maximum acceptable difference between the last reported temperature and the current temperature read from the sensor. If the temperatures differ by the set value or more, a report with the current temperature value is sent to the device assigned to association group no. 3.
 
@@ -289,16 +263,12 @@ Available parameter settings: 0 – 255 \[0o C to 16o C\] \[32o F – 60,8o F\] 
 | Default Value | 8 |
 
 
-
-
-
-
 #### 13: Transmitting the alarm or control frame broadcast
 
 Enabling/Disabling broadcast alarm for IN and TMP  
 
 
-# Overview #
+##### Overview 
 
 Sending an alarm or control frame (for IN input, depending on parameter no.5 value), and TMP button alarm frame. The frame is sent in “broadcast” mode, i.e. to all devices within range - information sent in this mode is not repeated by the mesh network.
 
@@ -325,16 +295,12 @@ Parameter size: 1 \[byte\].
 |  | IN and TMP broadcast mode active (3) |
 
 
-
-
-
-
 #### 14: Scene activation
 
 Enable/Disable scene functionality  
 
 
-# Overview #
+##### Overview 
 
 Scene activation functionality.
 
@@ -355,13 +321,7 @@ Available parameter settings:
 |  | Enabled (1) |
 
 
-
-
-
-
 #### 1: Input IN1
-
-
 
 
 | Property         | Value    |
@@ -371,13 +331,7 @@ Available parameter settings:
 | Range |  to  |
 
 
-
-
-
-
 #### 2: TMP Button
-
-
 
 
 | Property         | Value    |
@@ -387,13 +341,7 @@ Available parameter settings:
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Condition
-
-
 
 
 | Property         | Value    |
@@ -403,12 +351,7 @@ Available parameter settings:
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/125).
-

@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FGRGBW - ZWave
+---
+
+{% include base.html %}
 
 # FGRGBW RGBW Controller
 
-This describes the Z-Wave device **FGRGBW**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgrgbw_00_000```. 
+This describes the Z-Wave device *FGRGBW*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgrgbw_00_000```. 
 
 RGBW Controller
+
 
 ## Channels
 The following table summarises the channels available for the FGRGBW RGBW Controller.
@@ -22,7 +29,6 @@ The following table summarises the channels available for the FGRGBW RGBW Contro
 | White | switch_dimmer5 | switch_dimmer | DimmableLight | Dimmer |
 
 
-
 ### Dimmer
 
 #### Restore Last Value
@@ -36,9 +42,6 @@ Restore Last Dimming level on ON.
 | Data Type        | BOOLEAN || Default Value | true |
 | Options | Restore Last Value (true) |
 |  | Restore Full Brightness (false) |
-
-
-
 
 
 ### Red
@@ -56,9 +59,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
 ### Green
 
 #### Restore Last Value
@@ -72,9 +72,6 @@ Restore Last Dimming level on ON.
 | Data Type        | BOOLEAN || Default Value | true |
 | Options | Restore Last Value (true) |
 |  | Restore Full Brightness (false) |
-
-
-
 
 
 ### Blue
@@ -92,9 +89,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
 ### White
 
 #### Restore Last Value
@@ -108,10 +102,6 @@ Restore Last Dimming level on ON.
 | Data Type        | BOOLEAN || Default Value | true |
 | Options | Restore Last Value (true) |
 |  | Restore Full Brightness (false) |
-
-
-
-
 
 
 ### Device Configuration
@@ -147,14 +137,12 @@ Detailed information on each parameter can be found below.
 | 5: Reports device status |  |
 
 
-
-
 #### 1: ALL ON / ALL OFF function activation
 
 Activation/deactivation of ALL ON/ALL OFF functions.  
 
 
-# Overview #
+##### Overview 
 
 By default, ALL ON active ALL OFF active.
 
@@ -167,10 +155,6 @@ By default, ALL ON active ALL OFF active.
 |  | ALL ON inactive ALL OFF inactive (0) |
 |  | ALL ON inactive ALL OFF active (1) |
 |  | ALL ON active ALL OFF inactive (2) |
-
-
-
-
 
 
 #### 6: Associations command class choice
@@ -189,10 +173,6 @@ Associations command class choice. By default, Normal (Dimmer) - BASIC\_SET/SWIT
 |  | Rainbow (RGBW) - COLOR_CONTROL_SET (4) |
 
 
-
-
-
-
 #### 8: Outputs state change mode
 
 MODE1, Example: change saturation level from 0% to 99% Parameter 9: Step = 5 Parameter 10: Time between steps: 10ms. Default setting: MODE1
@@ -204,10 +184,6 @@ MODE1, Example: change saturation level from 0% to 99% Parameter 9: Step = 5 Par
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | MODE1 (related parameters: 9-step value, 10-time between steps) (0) |
 |  | MODE2 (related parameters: 11-time to change value, relevant for RGB/R (1) |
-
-
-
-
 
 
 #### 9: Step value (relevant for MODE1)
@@ -225,10 +201,6 @@ Available settings: 1 - 255.
 | Default Value | 1 |
 
 
-
-
-
-
 #### 10: Time between steps (relevant for MODE1)
 
 Time between steps (relevant for MODE1).  
@@ -237,17 +209,12 @@ Default setting: 10 ms
 Available settings: 1 - 60000 ms.  
 
 
-
 | Property         | Value    |
 |------------------|----------|
 | Configuration ID | config_10_2 |
 | Data Type        | INTEGER |
 | Range | 0 to 60000 |
 | Default Value | 10 |
-
-
-
-
 
 
 #### 11: Time for changing from start to end value
@@ -268,10 +235,6 @@ Default setting: 67 (3s)
 | Default Value | 67 |
 
 
-
-
-
-
 #### 12: Maximum Brightening level
 
 Maximum Brightening level.  
@@ -287,10 +250,6 @@ Available settings: 3 - 255.
 | Default Value | 255 |
 
 
-
-
-
-
 #### 13: Minimum dim level
 
 Minimum dim level. Default setting: 2 Available settings: 3 - 255.
@@ -304,16 +263,11 @@ Minimum dim level. Default setting: 2 Available settings: 3 - 255.
 | Default Value | 2 |
 
 
-
-
-
-
 #### 14: Inputs/Outputs configuration - relevant for main controllers other than Home Center 2 only
 
 Inputs/Outputs configuration - relevant for main controllers other than Home Center 2 only.  
 Default setting: 4369  
 Controlled device: RGBW, toggle switch inputs (NORMAL MODE).  
-
 
 
 | Property         | Value    |
@@ -322,10 +276,6 @@ Controlled device: RGBW, toggle switch inputs (NORMAL MODE).
 | Data Type        | INTEGER |
 | Range | 0 to 65535 |
 | Default Value | 4369 |
-
-
-
-
 
 
 #### 16: Remember device status after power failure
@@ -339,10 +289,6 @@ Define how will the Plug react after the power supply is back on. Default settin
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | Do not remember state (0) |
 |  | Remember state before power failure (1) |
-
-
-
-
 
 
 #### 30: Alarm of any type (General alarm, flood alarm, smoke alarm: CO, CO2, temperature alarm.)
@@ -360,10 +306,6 @@ Alarm of any type (General alarm, flood alarm, smoke alarm: CO, CO2, temperature
 |  | ALARM PROGRAM - alarm sequence turns on (program selected in parameter (3) |
 
 
-
-
-
-
 #### 38: Alarm sequence program
 
 Alarm sequence program.  
@@ -377,10 +319,6 @@ Default setting: 10
 | Data Type        | INTEGER |
 | Range | 1 to 10 |
 | Default Value | 10 |
-
-
-
-
 
 
 #### 39: Active PROGRAM alarm time
@@ -398,10 +336,6 @@ Default setting: 600s
 | Default Value | 600 |
 
 
-
-
-
-
 #### 42: Command class reporting Outputs status change
 
 Command class reporting Outputs status change. Default setting: 0
@@ -416,16 +350,11 @@ Command class reporting Outputs status change. Default setting: 0
 |  | Reporting as a result of inputs actions (COLOR CONTROL) (2) |
 
 
-
-
-
-
 #### 43: Reporting 0-10v analog inputs change threshold
 
 Parameter defines a value by which input voltage must change in order to be reported to the main controller.  
 New value is calculated based on last reported value.  
 Default setting: 5  
-
 
 
 | Property         | Value    |
@@ -436,15 +365,10 @@ Default setting: 5
 | Default Value | 5 |
 
 
-
-
-
-
 #### 44: Power load reporting frequency
 
 Parameter defines Time between reports. The report will be sent if last reported value differs from the current value, else reports will also be sent in case of polling.  
 Default setting: 3 600 (s)  
-
 
 
 | Property         | Value    |
@@ -455,16 +379,11 @@ Default setting: 3 600 (s)
 | Default Value | 30 |
 
 
-
-
-
-
 #### 45: Reporting Changes in energy consumed by controlled devices
 
 Defines the required change in power to generate an unsolicited power report.  
 New, reported energy value is calculated based on last reported value.  
 Default setting: 10 (0,1 kWh).  
-
 
 
 | Property         | Value    |
@@ -473,10 +392,6 @@ Default setting: 10 (0,1 kWh).
 | Data Type        | INTEGER |
 | Range | 1 to 255 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 71: Response to BRIGHTNESS set to 0%
@@ -492,10 +407,6 @@ Response to BRIGHTNESS set to 0%. Default setting: 1
 |  | last set colour is memorized (1) |
 
 
-
-
-
-
 #### 72: Starting animation program
 
 Starting animation programm. Starting predefined program when device set to work in RGB/RGBW mode (parameter 14) - relevant for main controllers other than Home Center 2 only. Default setting: 1
@@ -507,10 +418,6 @@ Starting animation programm. Starting predefined program when device set to work
 | Data Type        | INTEGER |
 | Range | 1 to 10 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 73: Triple click action
@@ -526,13 +433,7 @@ Triple click action. Default setting: 0
 |  | starting favourite program (1) |
 
 
-
-
-
-
 #### 1: Assigned to IN1 input
-
-
 
 
 | Property         | Value    |
@@ -542,13 +443,7 @@ Triple click action. Default setting: 0
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Assigned to IN2 input
-
-
 
 
 | Property         | Value    |
@@ -558,13 +453,7 @@ Triple click action. Default setting: 0
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Assigned to IN3 input
-
-
 
 
 | Property         | Value    |
@@ -574,13 +463,7 @@ Triple click action. Default setting: 0
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Assigned to IN4 input
-
-
 
 
 | Property         | Value    |
@@ -590,13 +473,7 @@ Triple click action. Default setting: 0
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Reports device status
-
-
 
 
 | Property         | Value    |
@@ -606,12 +483,7 @@ Triple click action. Default setting: 0
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/131).
-

@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: NAS-DS01Z - ZWave
+---
+
+{% include base.html %}
 
 # NAS-DS01Z Cyrus Door Window Sensor
 
-This describes the Z-Wave device **NAS-DS01Z**, manufactured by **Shenzhen Neo Electronics Co., Ltd** with the thing type UID of ```shenzhen_nasds01z_00_000```. 
+This describes the Z-Wave device *NAS-DS01Z*, manufactured by *Shenzhen Neo Electronics Co., Ltd* with the thing type UID of ```shenzhen_nasds01z_00_000```. 
 
 Cyrus Door Window Sensor
+
 
 ## Channels
 The following table summarises the channels available for the NAS-DS01Z Cyrus Door Window Sensor.
@@ -13,8 +20,6 @@ The following table summarises the channels available for the NAS-DS01Z Cyrus Do
 | Binary Sensor | sensor_binary | sensor_binary | Door | Switch |
 | Alarm (access) | alarm_access | alarm_access | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -31,14 +36,12 @@ Detailed information on each parameter can be found below.
 | 4: Group 4 | GROUP 4 allows for Send Notification to associated devices in this group. This Group Suppo... |
 
 
-
-
 #### 1: OFF Delay
 
 Adjust the amount of delay before the OFF command is transmitted.  
 
 
-# Overview #
+##### Overview 
 
 Description This configuration parameter that can be used to adjust the amount of delay before the OFF command is transmitted. This parameter can be configured with the value of 0 through 65535, where 0 means send OFF command immediately and 65535 means 65535 seconds of delay.
 
@@ -51,13 +54,7 @@ Description This configuration parameter that can be used to adjust the amount o
 | Default Value | 0 |
 
 
-
-
-
-
 #### 2: Basic Set Level
-
-
 
 
 | Property         | Value    |
@@ -67,10 +64,6 @@ Description This configuration parameter that can be used to adjust the amount o
 | Range | -1 to 99 || Default Value | -1 |
 | Options | ON (Binary Switch Device) (-1) |
 |  | OFF, Alarm cancelling or turning a device off (0) |
-
-
-
-
 
 
 #### 1: Lifeline
@@ -85,16 +78,12 @@ GROUP 1 is lifeline service that assigned to Sensor (Door/Window detector) statu
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Group 2
 
 GROUP 2 allows for sending control commands to associated devices such as relay module, lighting, etc. This association group is configured through the advanced parameters no. 1 and 2. This Group Support: BASIC\_SET.  
 
 
-# Overview #
+##### Overview 
 
 GROUP 2 allows for sending control commands to associated devices such as relay module, lighting, etc. This association group is configured through the advanced parameters no. 1 and 2. This Group Support: BASIC\_SET.
 
@@ -104,10 +93,6 @@ GROUP 2 allows for sending control commands to associated devices such as relay 
 | Configuration ID | group_2 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 3: Group 3
@@ -122,16 +107,12 @@ GROUP 3 allows for Send Notification to associated devices in this group. This G
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Group 4
 
 GROUP 4 allows for Send Notification to associated devices in this group. This Group Support: SENSOR\_BINARY\_REPORT  
 
 
-# Overview #
+##### Overview 
 
 GROUP 4 allows for Send Notification to associated devices in this group. This Group Support: SENSOR\_BINARY\_REPORT
 
@@ -143,12 +124,7 @@ GROUP 4 allows for Send Notification to associated devices in this group. This G
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/458).
-

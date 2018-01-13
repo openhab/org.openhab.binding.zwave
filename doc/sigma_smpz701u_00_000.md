@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: SM-PZ701U - ZWave
+---
+
+{% include base.html %}
 
 # SM-PZ701U Z-Wave power plug
 
-This describes the Z-Wave device **SM-PZ701U**, manufactured by **Sigma Designs (Former Zensys)** with the thing type UID of ```sigma_smpz701u_00_000```. 
+This describes the Z-Wave device *SM-PZ701U*, manufactured by *Sigma Designs (Former Zensys)* with the thing type UID of ```sigma_smpz701u_00_000```. 
 
 Z-Wave power plug
+
 
 ## Channels
 The following table summarises the channels available for the SM-PZ701U Z-Wave power plug.
@@ -15,8 +22,6 @@ The following table summarises the channels available for the SM-PZ701U Z-Wave p
 | Switch 2 | switch_binary2 | switch_binary | Switch | Switch |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the SM-PZ701U Z-Wave power plug.
 Detailed information on each parameter can be found below.
@@ -26,11 +31,7 @@ Detailed information on each parameter can be found below.
 | 1: Lifeline |  |
 
 
-
-
 #### 1: Lifeline
-
-
 
 
 | Property         | Value    |
@@ -40,12 +41,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/602).
-

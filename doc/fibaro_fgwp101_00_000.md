@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FGWP101 - ZWave
+---
+
+{% include base.html %}
 
 # FGWP101 Metered Wall Plug Switch
 
-This describes the Z-Wave device **FGWP101**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgwp101_00_000```. 
+This describes the Z-Wave device *FGWP101*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgwp101_00_000```. 
 
 Metered Wall Plug Switch
+
 
 ## Channels
 The following table summarises the channels available for the FGWP101 Metered Wall Plug Switch.
@@ -18,8 +25,6 @@ The following table summarises the channels available for the FGWP101 Metered Wa
 | LED color when device is on | config_decimal_param61 | fibaro_fgwp101_00_000_config_decimal_param61 |  | Number |
 | LED color when device is off | config_decimal_param62 | fibaro_fgwp101_00_000_config_decimal_param62 |  | Number |
 | Start Alarm LED Illumination | notification_send | notification_send |  | Number |
-
-
 
 
 ### Device Configuration
@@ -52,14 +57,12 @@ Detailed information on each parameter can be found below.
 | 3: Controller Updates |  |
 
 
-
-
 #### 1: Always on function
 
 Once activated, Wall Plug will keep a connected device ...  
 
 
-# Overview #
+##### Overview 
 
 ... ON, will stop reacting to alarm frames and B-button push.  
 "Always on" function turns the Plug into a power and energy meter.  
@@ -80,16 +83,12 @@ is inactive. Default setting: 1
 |  | Inactive (1) |
 
 
-
-
-
-
 #### 16: Remember device status after power failure
 
 Define how will the Plug react after the power supply is back on.  
 
 
-# Overview #
+##### Overview 
 
 Default setting: 1
 
@@ -107,16 +106,12 @@ Available settings:
 |  | Remember state before power failure (1) |
 
 
-
-
-
-
 #### 34: Reaction to alarms
 
 Define Z-Wave network alarms to which the Wall Plug will respond.  
 
 
-# Overview #
+##### Overview 
 
 Default setting: 63
 
@@ -137,16 +132,12 @@ Available settings: 0 - 63.
 | Default Value | 63 |
 
 
-
-
-
-
 #### 35: Response to alarms
 
 Parameter defines how the Wall Plug will respond to alarms ...  
 
 
-# Overview #
+##### Overview 
 
 ... (device's status change) Default setting: 0  
 Available settings:  
@@ -174,16 +165,12 @@ device is set to the previous state.
 |  | Cycle ON/OFF (3) |
 
 
-
-
-
-
 #### 39: Alarm duration
 
 Wall Plug's alarm mode duration. If a device sending an ...  
 
 
-# Overview #
+##### Overview 
 
 ... alarm frame through the Z-Wave network sets alarm duration as well, this parameter's settings are ignored.  
 Default setting: 600 (seconds).  
@@ -199,16 +186,12 @@ Available settings: 1 - 65536 (seconds)
 | Default Value | 600 |
 
 
-
-
-
-
 #### 40: Immediate power report
 
 Parameter defines by how much power load must change ...  
 
 
-# Overview #
+##### Overview 
 
 ...in percents, to be reported to the main controller, with the highest  
 priority in the Z-Wave network. By default, Fibaro Wall Plug  
@@ -226,16 +209,12 @@ Value of 100 (%) means the reports are turned off.
 | Default Value | 80 |
 
 
-
-
-
-
 #### 42: Standard power load report
 
 Parameter defines by how much power load must change ..  
 
 
-# Overview #
+##### Overview 
 
 ... in percents, to be reported to the main controller. By default, Fibaro  
 Wall Plug sends power report if the power load changes by 15%.  
@@ -255,16 +234,12 @@ Value of 100 (%) means the reports are turned off
 | Default Value | 15 |
 
 
-
-
-
-
 #### 43: Power reporting frequency
 
 This parameter defines how frequently standard power ...  
 
 
-# Overview #
+##### Overview 
 
 ... (parameter 42) will be sent. By default Wall Plug sends up to 5  
 reports each 30 seconds, provided the power load changes by 15%.  
@@ -282,16 +257,12 @@ settings or in case of polling.
 | Default Value | 30 |
 
 
-
-
-
-
 #### 45: Reporting Changes in energy consumed by controlled devices
 
 Reporting changes in energy consumed by controlled devices  
 
 
-# Overview #
+##### Overview 
 
 ... New, reported energy value is calculated based on last reported  
 value. Default setting: 10 (0,1 kWh).  
@@ -308,16 +279,12 @@ Reports will be sent only in case of polling.
 | Default Value | 1 |
 
 
-
-
-
-
 #### 47: Time Period between reports on power and energy consumption
 
 Time Period between reports on power and energy ...  
 
 
-# Overview #
+##### Overview 
 
 ... consumption.
 
@@ -339,16 +306,12 @@ case of power load / energy consumption changes (parameters 40,
 | Default Value | 3600 |
 
 
-
-
-
-
 #### 49: Metering energy consumed by the Wall Plug itself.
 
 This parameter determines whether energy metering ...  
 
 
-# Overview #
+##### Overview 
 
 ... should include the amount of energy consumed by the Wall Plug itself.  
 Results are being added to energy consumed by controlled device.  
@@ -366,16 +329,12 @@ Available settings:
 |  | Activated (1) |
 
 
-
-
-
-
 #### 50: DOWN value
 
 Lower power threshold, used in parameter 52.  
 
 
-# Overview #
+##### Overview 
 
 Default setting: 300 (30 W)  
 Available settings: 0 - 25 000 (0,0W - 2 500W)  
@@ -391,16 +350,12 @@ DOWN value cannot be higher than a value specified in parameter
 | Default Value | 300 |
 
 
-
-
-
-
 #### 51: UP value
 
 Upper power threshold, used in parameter 52.  
 
 
-# Overview #
+##### Overview 
 
 Default setting: 500 (50 W)  
 Available settings: 1 - 25 000 (0,1W - 2 500W)  
@@ -415,16 +370,12 @@ UP value cannot be lower than a value specified in parameter 50.
 | Default Value | 500 |
 
 
-
-
-
-
 #### 52: Action in case defined power values exceeded
 
 Parameter defines the way 2nd association group devices ...  
 
 
-# Overview #
+##### Overview 
 
 ... are controlled, depending on the current power load.  
 Default setting: 6  
@@ -461,16 +412,12 @@ associated devices on, once the power rises above UP value
 |  | Turn devices OFF when power below DOWN ... (6) |
 
 
-
-
-
-
 #### 60: Power load to make red ring flash violet
 
 Function is active only when parameter 61 is set to 0 or 1.  
 
 
-# Overview #
+##### Overview 
 
 Default setting: 25 000 (2 500W)  
 Available settings: 1 000 - 32 000 (100W - 3200W)
@@ -484,13 +431,7 @@ Available settings: 1 000 - 32 000 (100W - 3200W)
 | Default Value | 25000 |
 
 
-
-
-
-
 #### 61: LED color when device is on
-
-
 
 
 | Property         | Value    |
@@ -509,13 +450,7 @@ Available settings: 1 000 - 32 000 (100W - 3200W)
 |  | NO illumination (9) |
 
 
-
-
-
-
 #### 62: LED color when device is off
-
-
 
 
 | Property         | Value    |
@@ -533,13 +468,7 @@ Available settings: 1 000 - 32 000 (100W - 3200W)
 |  | NO illumination (8) |
 
 
-
-
-
-
 #### 63: LED color when Z Wave alarm
-
-
 
 
 | Property         | Value    |
@@ -558,16 +487,12 @@ Available settings: 1 000 - 32 000 (100W - 3200W)
 |  | NO illumination (9) |
 
 
-
-
-
-
 #### 70: Overload safety switch
 
 This function allows for turning off the controlled device...  
 
 
-# Overview #
+##### Overview 
 
 ... in case of exceeding the defined power. Controlled device will be turned off  
 even if "always on" function is active (parameter 1).  
@@ -587,16 +512,12 @@ off, i.e. this functionality is turned off by default.
 | Default Value | 65535 |
 
 
-
-
-
-
 #### 1: Group 1 (on/off controlled devices)
 
   
 
 
-# Overview #
+##### Overview 
 
 Is assigned to the device status – sending command frames to the associated devices whenever the Wall Plug is turned ON or OFF via B-button.
 
@@ -612,16 +533,12 @@ Allows to control 5 regular and 5 multichannel devices per an association group.
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Group 2 (measured load controlled devices)
 
   
 
 
-# Overview #
+##### Overview 
 
 Is assigned to the measured active power – sending command frames to the associated devices depending on the measured load (configured via advanced parameters 50, 51 and 52).
 
@@ -637,16 +554,12 @@ Allows to control 5 regular and 5 multichannel devices per an association group.
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Controller Updates
 
   
 
 
-# Overview #
+##### Overview 
 
 Reports the device status and allows to assign single device only (the main controller by default).
 
@@ -662,12 +575,7 @@ Fibaro Association Group Info
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/130).
-

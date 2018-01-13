@@ -1,14 +1,21 @@
+---
+layout: documentation
+title: K8 - ZWave
+---
+
+{% include base.html %}
 
 # K8 Z-Wave Battery Wall Controller
 
-This describes the Z-Wave device **K8**, manufactured by **Sigma Designs (Former Zensys)** with the thing type UID of ```sigma_zwck8_00_000```. 
+This describes the Z-Wave device *K8*, manufactured by *Sigma Designs (Former Zensys)* with the thing type UID of ```sigma_zwck8_00_000```. 
 
 Z-Wave Battery Wall Controller  
 
 
-# Overview #
+## Overview 
 
 Note that this device incorrectly reports the manufacturer ID. This may be due to the device being uncertified and therefore this device may be removed from the database at some stage.
+
 
 ## Channels
 The following table summarises the channels available for the K8 Z-Wave Battery Wall Controller.
@@ -17,8 +24,6 @@ The following table summarises the channels available for the K8 Z-Wave Battery 
 |---------|------------|------------------|----------|-----------|
 | Binary Sensor | sensor_binary | sensor_binary | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -34,11 +39,7 @@ Detailed information on each parameter can be found below.
 | 5: Button pair 4 |  |
 
 
-
-
 #### 1: Lifeline
-
-
 
 
 | Property         | Value    |
@@ -48,13 +49,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Button pair 1
-
-
 
 
 | Property         | Value    |
@@ -64,13 +59,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Button pair 2
-
-
 
 
 | Property         | Value    |
@@ -80,13 +69,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Button pair 3
-
-
 
 
 | Property         | Value    |
@@ -96,13 +79,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Button pair 4
-
-
 
 
 | Property         | Value    |
@@ -112,12 +89,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/431).
-

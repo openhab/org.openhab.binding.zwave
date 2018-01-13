@@ -1,14 +1,21 @@
+---
+layout: documentation
+title: EBV-105 - ZWave
+---
+
+{% include base.html %}
 
 # EBV-105 Wireless Water Shutoff Valve
 
-This describes the Z-Wave device **EBV-105**, manufactured by **EcoNet Controls** with the thing type UID of ```econet_ebv105_00_000```. 
+This describes the Z-Wave device *EBV-105*, manufactured by *EcoNet Controls* with the thing type UID of ```econet_ebv105_00_000```. 
 
 Wireless Water Shutoff Valve  
 
 
-# Overview #
+## Overview 
 
 The EBV105 water shutoff controller is easy to install and configure. No special tools or plumbing required. The included clamp supports installation 
+
 
 ## Channels
 The following table summarises the channels available for the EBV-105 Wireless Water Shutoff Valve.
@@ -16,8 +23,6 @@ The following table summarises the channels available for the EBV-105 Wireless W
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
-
-
 
 
 ### Device Configuration
@@ -29,11 +34,7 @@ Detailed information on each parameter can be found below.
 | 1: Group 1 |  |
 
 
-
-
 #### 1: Group 1
-
-
 
 
 | Property         | Value    |
@@ -43,12 +44,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/271).
-

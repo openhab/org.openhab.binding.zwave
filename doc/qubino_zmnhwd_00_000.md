@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: ZMNHWD - ZWave
+---
+
+{% include base.html %}
 
 # ZMNHWD Qubino Flush RGBW Dimmer
 
-This describes the Z-Wave device **ZMNHWD**, manufactured by **Goap** with the thing type UID of ```qubino_zmnhwd_00_000```. 
+This describes the Z-Wave device *ZMNHWD*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhwd_00_000```. 
 
 Qubino Flush RGBW Dimmer  
 
 
-# Overview #
+## Overview 
 
 Qubino Flush RGBW module controls RGB/RGBW strips and LED strips or bulbs and has 5 special scene effects. It can also control halogen lights and fans. Its extremely small size allows for easy installation behind wall sockets and switches. Controlled devices may be powered by 12 or 24 VDC.
 
@@ -20,7 +26,7 @@ This should hopefully work with models ZMNHWD1-ZMNHWD8 (which work on different
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 To include the device, press the service button 3 times within 2 seconds. The LED will turn green if the device was properly included.
 
@@ -29,9 +35,10 @@ The device supports auto inclusion: Install the device and connect the power. Th
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 To exclude the device, press the service button 3 times within 2 seconds. The green LED will blink if the device was properly included and the device will be reset to factory defaults.
+
 
 ## Channels
 The following table summarises the channels available for the ZMNHWD Qubino Flush RGBW Dimmer.
@@ -42,7 +49,6 @@ The following table summarises the channels available for the ZMNHWD Qubino Flus
 | Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer |
 | Color Control | color_color | color_color |  | Color |
 | Color Temperature | color_temperature | color_temperature | ColorLight | Dimmer |
-
 
 
 ### Dimmer
@@ -60,10 +66,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the ZMNHWD Qubino Flush RGBW Dimmer.
 Detailed information on each parameter can be found below.
@@ -77,14 +79,12 @@ Detailed information on each parameter can be found below.
 | 1: Send basic report to this group |  |
 
 
-
-
 #### 1: Input switch type
 
 Change the type of switch (bistable/monostable)  
 
 
-# Overview #
+##### Overview 
 
 NOTE: Please power cycle the device when parameter is changed.
 
@@ -95,10 +95,6 @@ NOTE: Please power cycle the device when parameter is changed.
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | bistable switch type (1) |
 |  | monostable (push button) switch type (2) |
-
-
-
-
 
 
 #### 2: Switch mode
@@ -113,10 +109,6 @@ Choose RGBW Dimmer operation mode.
 | Options | Normal Mode (1) |
 |  | Brightness Mode (2) |
 |  | Rainbow Mode (3) |
-
-
-
-
 
 
 #### 3: Auto scene mode set
@@ -135,16 +127,12 @@ Activation of the programmed scene changing color shades.
 |  | Sun (5) |
 
 
-
-
-
-
 #### 4: Auto scene duration
 
 Change auto scene mode duration.  
 
 
-# Overview #
+##### Overview 
 
  *  1 - 127 delay duration is from 1s to 127s
  *  \-128 ~ -1 delay duration is from 1min. to 127min.
@@ -158,16 +146,12 @@ Change auto scene mode duration.
 | Default Value | 3 |
 
 
-
-
-
-
 #### 1: Send basic report to this group
 
   
 
 
-# Overview #
+##### Overview 
 
 The Module can be set 1 auto-report ID in Group 1.
 
@@ -181,12 +165,7 @@ The Module will send BASIC\_REPORT to device associated in Group 1 when correspo
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/567).
-

@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: HTP-4S1-FB - ZWave
+---
+
+{% include base.html %}
 
 # HTP-4S1-FB Four Touch Panel and Power Socket
 
-This describes the Z-Wave device **HTP-4S1-FB**, manufactured by **Hogar Controls** with the thing type UID of ```hogar_htp4s1fb_02_002```. 
+This describes the Z-Wave device *HTP-4S1-FB*, manufactured by *Hogar Controls* with the thing type UID of ```hogar_htp4s1fb_02_002```. 
 
 Four Touch Panel and Power Socket  
 
 
-# Overview #
+## Overview 
 
 The HOGAR Touch Panels features a stunning glass face with advanced capacitive touch sensor engineered with smart home wireless standards Zigbee, Z-Wave Plus and Wifi variants.
 
@@ -19,7 +25,7 @@ Please visit http://hogarcontrols.com/shop/touch-panels/four-touch-panel-socket
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 1. Tap and hold any of the touch button for few seconds (about 7 seconds).
 
@@ -32,7 +38,7 @@ Please visit http://hogarcontrols.com/shop/touch-panels/four-touch-panel-socket
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 1. Tap and hold any of the touch button for few seconds (about 7 seconds).
 
@@ -41,6 +47,7 @@ Please visit http://hogarcontrols.com/shop/touch-panels/four-touch-panel-socket
 3. At that time, release the button and tap it again only once. 
 
 4. The LED of the button will flash pink (once) indicating that the device is ready to be included.
+
 
 ## Channels
 The following table summarises the channels available for the HTP-4S1-FB Four Touch Panel and Power Socket.
@@ -54,8 +61,6 @@ The following table summarises the channels available for the HTP-4S1-FB Four To
 | Switch 4 | switch_binary4 | switch_binary | Switch | Switch |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the HTP-4S1-FB Four Touch Panel and Power Socket.
 Detailed information on each parameter can be found below.
@@ -64,10 +69,7 @@ Detailed information on each parameter can be found below.
 |-------------|-------------|
 
 
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/545).
-

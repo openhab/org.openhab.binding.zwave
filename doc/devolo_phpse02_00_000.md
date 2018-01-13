@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: ph-pse02 - ZWave
+---
+
+{% include base.html %}
 
 # ph-pse02 Multisound indoor siren (Zipato/Devolo)
 
-This describes the Z-Wave device **ph-pse02**, manufactured by **Devolo** with the thing type UID of ```devolo_phpse02_00_000```. 
+This describes the Z-Wave device *ph-pse02*, manufactured by *Devolo* with the thing type UID of ```devolo_phpse02_00_000```. 
 
 Multisound indoor siren (Zipato/Devolo)  
 
 
-# Overview #
+## Overview 
 
 **\#\#\# NOTE \#\#\#**
 
@@ -61,6 +67,7 @@ FREQUENCY
   
 Source: https://www.zipato.com/product/multisound-indoor-siren
 
+
 ## Channels
 The following table summarises the channels available for the ph-pse02 Multisound indoor siren (Zipato/Devolo).
 
@@ -72,8 +79,6 @@ The following table summarises the channels available for the ph-pse02 Multisoun
 | Alarm (burglar) | alarm_burglar | alarm_burglar | Door | Switch |
 | Alarm (general) | alarm_general | alarm_general | Door | Switch |
 | Start Sound | notification_send | notification_send |  | Number |
-
-
 
 
 ### Device Configuration
@@ -88,14 +93,12 @@ Detailed information on each parameter can be found below.
 | 1: Report Message | Report Message, e.g. tamper alarm |
 
 
-
-
 #### 7: Costumer Function
 
 NotificationReport/BinaryReport  
 
 
-# Overview #
+##### Overview 
 
 Notification Type,
 
@@ -112,16 +115,12 @@ Notification Type,
 | Default Value | 4 |
 
 
-
-
-
-
 #### 29: Disable Alarm
 
 Disable the alarm function.  
 
 
-# Overview #
+##### Overview 
 
 Disable the alarm function.
 
@@ -140,16 +139,12 @@ Caution: After the power up, this configuration is always 0.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 31: Alarm Duration
 
 Play alarm sound duration.  
 
 
-# Overview #
+##### Overview 
 
 Play alarm sound duration, 1 tick is 30 seconds.
 
@@ -166,16 +161,12 @@ Default is 3 minutes, maximum is 63.5 minutes.
 | Default Value | 6 |
 
 
-
-
-
-
 #### 1: Report Message
 
 Report Message, e.g. tamper alarm  
 
 
-# Overview #
+##### Overview 
 
 Notice: The device supports 1 group.
 
@@ -189,12 +180,7 @@ The group 1 is for receiving the report message, like tamper event. And the grou
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/453).
-

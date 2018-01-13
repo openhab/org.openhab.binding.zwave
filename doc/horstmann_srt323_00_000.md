@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: SRT323 - ZWave
+---
+
+{% include base.html %}
 
 # SRT323 Secure Z-Wave Room Thermostat
 
-This describes the Z-Wave device **SRT323**, manufactured by **Horstmann Controls Limited** with the thing type UID of ```horstmann_srt323_00_000```. 
+This describes the Z-Wave device *SRT323*, manufactured by *Horstmann Controls Limited* with the thing type UID of ```horstmann_srt323_00_000```. 
 
 Secure Z-Wave Room Thermostat
+
 
 ## Channels
 The following table summarises the channels available for the SRT323 Secure Z-Wave Room Thermostat.
@@ -15,7 +22,6 @@ The following table summarises the channels available for the SRT323 Secure Z-Wa
 | Thermostat Operating State | thermostat_state | thermostat_state | Temperature | Number |
 | Setpoint (heating) | thermostat_setpoint_heating | thermostat_setpoint | Temperature | Number |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Sensor (temperature)
@@ -33,9 +39,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (heating)
 
 #### Scale
@@ -49,10 +52,6 @@ Select the scale to use for setpoints.
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -71,8 +70,6 @@ Detailed information on each parameter can be found below.
 | 5: 5: Nodes to receive unsolicited Multilevel Sensor Reports |  |
 
 
-
-
 #### 1: 1: Temperature Sensor
 
 Disable or enable temperature sensor
@@ -84,10 +81,6 @@ Disable or enable temperature sensor
 | Data Type        | INTEGER || Default Value | 255 |
 | Options | Disabled (0) |
 |  | Enabled (255) |
-
-
-
-
 
 
 #### 2: 2: Temperature Scale
@@ -103,16 +96,12 @@ Temperature Scale
 |  | Fahrenheit (255) |
 
 
-
-
-
-
 #### 3: 3: Delta T
 
 Define the temperature steps  
 
 
-# Overview #
+##### Overview 
 
 Change between temperatures to trigger a temperature report (step 0.1) (Default 10 = 1C)
 
@@ -125,13 +114,7 @@ Change between temperatures to trigger a temperature report (step 0.1) (Default 
 | Default Value | 10 |
 
 
-
-
-
-
 #### 1: 1: Lifeline
-
-
 
 
 | Property         | Value    |
@@ -141,13 +124,7 @@ Change between temperatures to trigger a temperature report (step 0.1) (Default 
 | Range |  to  |
 
 
-
-
-
-
 #### 2: 2: Nodes to receive Thermostat Operating State reports
-
-
 
 
 | Property         | Value    |
@@ -157,13 +134,7 @@ Change between temperatures to trigger a temperature report (step 0.1) (Default 
 | Range |  to  |
 
 
-
-
-
-
 #### 3: 3: Nodes to receive unsolicited Low Battery Warnings
-
-
 
 
 | Property         | Value    |
@@ -173,13 +144,7 @@ Change between temperatures to trigger a temperature report (step 0.1) (Default 
 | Range |  to  |
 
 
-
-
-
-
 #### 4: 4: Nodes to receive unsolicited Thermostat Set Point Reports
-
-
 
 
 | Property         | Value    |
@@ -189,13 +154,7 @@ Change between temperatures to trigger a temperature report (step 0.1) (Default 
 | Range |  to  |
 
 
-
-
-
-
 #### 5: 5: Nodes to receive unsolicited Multilevel Sensor Reports
-
-
 
 
 | Property         | Value    |
@@ -205,12 +164,7 @@ Change between temperatures to trigger a temperature report (step 0.1) (Default 
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/466).
-

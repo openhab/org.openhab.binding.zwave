@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: Philio PAN07-1A - ZWave
+---
+
+{% include base.html %}
 
 # Philio PAN07-1A TWO SPDT Switch module with meter
 
-This describes the Z-Wave device **Philio PAN07-1A**, manufactured by **Philio Technology Corp** with the thing type UID of ```philio_pan071a_00_000```. 
+This describes the Z-Wave device *Philio PAN07-1A*, manufactured by *Philio Technology Corp* with the thing type UID of ```philio_pan071a_00_000```. 
 
 TWO SPDT Switch module with meter
+
 
 ## Channels
 The following table summarises the channels available for the Philio PAN07-1A TWO SPDT Switch module with meter.
@@ -37,8 +44,6 @@ The following table summarises the channels available for the Philio PAN07-1A TW
 | Electric meter (amps) 3 | meter_current3 | meter_current | Energy | Number |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the Philio PAN07-1A TWO SPDT Switch module with meter.
 Detailed information on each parameter can be found below.
@@ -47,10 +52,7 @@ Detailed information on each parameter can be found below.
 |-------------|-------------|
 
 
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/629).
-

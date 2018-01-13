@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: GoControl GC-TBZ48 - ZWave
+---
+
+{% include base.html %}
 
 # GoControl GC-TBZ48 Z-Wave Plus Thermostat
 
-This describes the Z-Wave device **GoControl GC-TBZ48**, manufactured by **Linear Corp** with the thing type UID of ```linear_gctbz48_00_000```. 
+This describes the Z-Wave device *GoControl GC-TBZ48*, manufactured by *Linear Corp* with the thing type UID of ```linear_gctbz48_00_000```. 
 
 Z-Wave Plus Thermostat
+
 
 ## Channels
 The following table summarises the channels available for the GoControl GC-TBZ48 Z-Wave Plus Thermostat.
@@ -22,7 +29,6 @@ The following table summarises the channels available for the GoControl GC-TBZ48
 | Clock Time Offset | time_offset | time_offset | Temperature | Number |
 
 
-
 ### Sensor (temperature)
 
 #### Scale
@@ -36,9 +42,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
 
 
 ### Setpoint (cooling)
@@ -56,9 +59,6 @@ Select the scale to use for setpoints.
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (heating)
 
 #### Scale
@@ -72,9 +72,6 @@ Select the scale to use for setpoints.
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
 
 
 ### Clock Time Offset
@@ -93,10 +90,6 @@ Setting this will automatically update the devices clock when the time differenc
 | Options | Disable Auto Update (0) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the GoControl GC-TBZ48 Z-Wave Plus Thermostat.
 Detailed information on each parameter can be found below.
@@ -108,11 +101,7 @@ Detailed information on each parameter can be found below.
 | 3: Group 3 |  |
 
 
-
-
 #### 1: Group 1
-
-
 
 
 | Property         | Value    |
@@ -122,13 +111,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Group 2
-
-
 
 
 | Property         | Value    |
@@ -138,13 +121,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Group 3
-
-
 
 
 | Property         | Value    |
@@ -154,12 +131,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/622).
-

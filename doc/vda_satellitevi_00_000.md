@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: Vitrum Satellite VI - ZWave
+---
+
+{% include base.html %}
 
 # Vitrum Satellite VI Vitrum touch switch satellite 6 buttons
 
-This describes the Z-Wave device **Vitrum Satellite VI**, manufactured by **VDA** with the thing type UID of ```vda_satellitevi_00_000```. 
+This describes the Z-Wave device *Vitrum Satellite VI*, manufactured by *VDA* with the thing type UID of ```vda_satellitevi_00_000```. 
 
 Vitrum touch switch satellite 6 buttons  
 
 
-# Overview #
+## Overview 
 
 When the device is in the stand-alone mode and is not included in a Z-Wave network the illuminated ring around the touch keys will light red for a moment when passing from one mode to another.
 
@@ -25,16 +31,17 @@ After mode selection, please proceed with inclusion process.
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 With the controller in the inclusion mode, press any of the touch keys on the device. Vitrum indicates that it has been included to the network by flashing the yellow LEDs three times and switching on all the lights connected to the unit.
 
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 Press and hold the leftmost touch key for at least 8 seconds. The device will flash red three times and sound an acoustic signal to indicate that the original factory setting has been restored.
+
 
 ## Channels
 The following table summarises the channels available for the Vitrum Satellite VI Vitrum touch switch satellite 6 buttons.
@@ -49,7 +56,6 @@ The following table summarises the channels available for the Vitrum Satellite V
 | Dimmer 4 | switch_dimmer4 | switch_dimmer | DimmableLight | Dimmer |
 | Dimmer 5 | switch_dimmer5 | switch_dimmer | DimmableLight | Dimmer |
 | Dimmer 6 | switch_dimmer6 | switch_dimmer | DimmableLight | Dimmer |
-
 
 
 ### Dimmer
@@ -67,9 +73,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
 ### Dimmer 1
 
 #### Restore Last Value
@@ -83,9 +86,6 @@ Restore Last Dimming level on ON.
 | Data Type        | BOOLEAN || Default Value | true |
 | Options | Restore Last Value (true) |
 |  | Restore Full Brightness (false) |
-
-
-
 
 
 ### Dimmer 2
@@ -103,9 +103,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
 ### Dimmer 3
 
 #### Restore Last Value
@@ -119,9 +116,6 @@ Restore Last Dimming level on ON.
 | Data Type        | BOOLEAN || Default Value | true |
 | Options | Restore Last Value (true) |
 |  | Restore Full Brightness (false) |
-
-
-
 
 
 ### Dimmer 4
@@ -139,9 +133,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
 ### Dimmer 5
 
 #### Restore Last Value
@@ -155,9 +146,6 @@ Restore Last Dimming level on ON.
 | Data Type        | BOOLEAN || Default Value | true |
 | Options | Restore Last Value (true) |
 |  | Restore Full Brightness (false) |
-
-
-
 
 
 ### Dimmer 6
@@ -175,10 +163,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the Vitrum Satellite VI Vitrum touch switch satellite 6 buttons.
 Detailed information on each parameter can be found below.
@@ -193,14 +177,12 @@ Detailed information on each parameter can be found below.
 | 6: Button channel 6 |  |
 
 
-
-
 #### 1: Button channel 1
 
   
 
 
-# Overview #
+##### Overview 
 
 Control up to 5 devices with this button. The kind of device controlled depends on the Button configuration.
 
@@ -212,16 +194,12 @@ Control up to 5 devices with this button. The kind of device controlled depends 
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Button channel 2
 
   
 
 
-# Overview #
+##### Overview 
 
 Control up to 5 devices with this button. The kind of device controlled depends on the Button configuration.
 
@@ -233,16 +211,12 @@ Control up to 5 devices with this button. The kind of device controlled depends 
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Button channel 3
 
   
 
 
-# Overview #
+##### Overview 
 
 Control up to 5 devices with this button. The kind of device controlled depends on the Button configuration.
 
@@ -254,16 +228,12 @@ Control up to 5 devices with this button. The kind of device controlled depends 
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Button channel 4
 
   
 
 
-# Overview #
+##### Overview 
 
 Control up to 5 devices with this button. The kind of device controlled depends on the Button configuration.
 
@@ -275,16 +245,12 @@ Control up to 5 devices with this button. The kind of device controlled depends 
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Button channel 5
 
   
 
 
-# Overview #
+##### Overview 
 
 Control up to 5 devices with this button. The kind of device controlled depends on the Button configuration.
 
@@ -296,16 +262,12 @@ Control up to 5 devices with this button. The kind of device controlled depends 
 | Range |  to  |
 
 
-
-
-
-
 #### 6: Button channel 6
 
   
 
 
-# Overview #
+##### Overview 
 
 Control up to 5 devices with this button. The kind of device controlled depends on the Button configuration.
 
@@ -317,12 +279,7 @@ Control up to 5 devices with this button. The kind of device controlled depends 
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/626).
-

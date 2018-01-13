@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: AMZ - ZWave
+---
+
+{% include base.html %}
 
 # AMZ Awning Blinds Controller
 
-This describes the Z-Wave device **AMZ**, manufactured by **Fakro** with the thing type UID of ```fakro_amz_00_000```. 
+This describes the Z-Wave device *AMZ*, manufactured by *Fakro* with the thing type UID of ```fakro_amz_00_000```. 
 
 Awning Blinds Controller
+
 
 ## Channels
 The following table summarises the channels available for the AMZ Awning Blinds Controller.
@@ -12,7 +19,6 @@ The following table summarises the channels available for the AMZ Awning Blinds 
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Blinds control | blinds_control | blinds_control | Blinds | Rollershutter |
-
 
 
 ### Blinds control
@@ -30,8 +36,6 @@ Invert the blinds control
 |  | No (false) |
 
 
-
-
 #### Invert percentage value
 
 Invert the blinds percentage value
@@ -43,8 +47,6 @@ Invert the blinds percentage value
 | Data Type        | BOOLEAN || Default Value | false |
 | Options | Yes (true) |
 |  | No (false) |
-
-
 
 
 #### Step duration
@@ -62,10 +64,6 @@ Values from 1 to 127 are defined in seconds, while values from 128 to 254 are de
 |  | Change Instantly (0) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the AMZ Awning Blinds Controller.
 Detailed information on each parameter can be found below.
@@ -74,10 +72,7 @@ Detailed information on each parameter can be found below.
 |-------------|-------------|
 
 
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/616).
-

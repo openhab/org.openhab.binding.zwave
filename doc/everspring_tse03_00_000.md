@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: TSE03 - ZWave
+---
+
+{% include base.html %}
 
 # TSE03 Door Bell
 
-This describes the Z-Wave device **TSE03**, manufactured by **Everspring** with the thing type UID of ```everspring_tse03_00_000```. 
+This describes the Z-Wave device *TSE03*, manufactured by *Everspring* with the thing type UID of ```everspring_tse03_00_000```. 
 
 Door Bell
+
 
 ## Channels
 The following table summarises the channels available for the TSE03 Door Bell.
@@ -15,8 +22,6 @@ The following table summarises the channels available for the TSE03 Door Bell.
 |  | battery-level | system.battery-level |  |  |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the TSE03 Door Bell.
 Detailed information on each parameter can be found below.
@@ -25,10 +30,7 @@ Detailed information on each parameter can be found below.
 |-------------|-------------|
 
 
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/601).
-

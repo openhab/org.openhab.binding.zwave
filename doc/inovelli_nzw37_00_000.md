@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: NZW37 - ZWave
+---
+
+{% include base.html %}
 
 # NZW37 2-Channel Dual Smart Plug
 
-This describes the Z-Wave device **NZW37**, manufactured by **Inovelli** with the thing type UID of ```inovelli_nzw37_00_000```. 
+This describes the Z-Wave device *NZW37*, manufactured by *Inovelli* with the thing type UID of ```inovelli_nzw37_00_000```. 
 
 2-Channel Dual Smart Plug
+
 
 ## Channels
 The following table summarises the channels available for the NZW37 2-Channel Dual Smart Plug.
@@ -15,8 +22,6 @@ The following table summarises the channels available for the NZW37 2-Channel Du
 | Switch 2 | switch_binary2 | switch_binary | Switch | Switch |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the NZW37 2-Channel Dual Smart Plug.
 Detailed information on each parameter can be found below.
@@ -25,10 +30,7 @@ Detailed information on each parameter can be found below.
 |-------------|-------------|
 
 
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/625).
-

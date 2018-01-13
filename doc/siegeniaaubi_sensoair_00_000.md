@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: Sensoair - ZWave
+---
+
+{% include base.html %}
 
 # Sensoair Air quality sensor for indoor use
 
-This describes the Z-Wave device **Sensoair**, manufactured by **SIEGENIA-AUBI KG** with the thing type UID of ```siegeniaaubi_sensoair_00_000```. 
+This describes the Z-Wave device *Sensoair*, manufactured by *SIEGENIA-AUBI KG* with the thing type UID of ```siegeniaaubi_sensoair_00_000```. 
 
 Air quality sensor for indoor use
+
 
 ## Channels
 The following table summarises the channels available for the Sensoair Air quality sensor for indoor use.
@@ -11,8 +18,6 @@ The following table summarises the channels available for the Sensoair Air quali
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
 | Sensor (CO2) | sensor_co2 | sensor_co2 |  | Number |
-
-
 
 
 ### Device Configuration
@@ -26,14 +31,12 @@ Detailed information on each parameter can be found below.
 | 1: Group 1 |  |
 
 
-
-
 #### 1: Device Configuration Value 1
 
 Configuration of the device operating mode  
 
 
-# Overview #
+##### Overview 
 
  *  bit 0    Unsolicited Multilevel Report Mode A    0 = disabled, 1 = **enabled**
  *  bit 1    Unsolicited Multilevel Report Mode B    0 = **disabled**, 1 = enabled
@@ -62,16 +65,12 @@ SENSOAIR sends the current CO2 value (without being requested) in an interval of
 | Default Value | 141 |
 
 
-
-
-
-
 #### 2: Interval for unsolicited Sensor Report Mode B
 
 defines how often a Sensor report is sent  
 
 
-# Overview #
+##### Overview 
 
 When enabled by parameter 1, SENSOAIR sends the current CO2 value (without being requested) in an interval of 5 - 65000 seconds. The interval (default setting = 30s) is configured as follows:
 
@@ -88,13 +87,7 @@ Device Configuration Value 2 = LSB (default 0x1e)
 | Default Value | 30 |
 
 
-
-
-
-
 #### 1: Group 1
-
-
 
 
 | Property         | Value    |
@@ -104,12 +97,7 @@ Device Configuration Value 2 = LSB (default 0x1e)
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/451).
-

@@ -1,28 +1,35 @@
+---
+layout: documentation
+title: LC-13 - ZWave
+---
+
+{% include base.html %}
 
 # LC-13 Living Connect Z Thermostat
 
-This describes the Z-Wave device **LC-13**, manufactured by **Danfoss** with the thing type UID of ```danfoss_lc13_00_000```. 
+This describes the Z-Wave device *LC-13*, manufactured by *Danfoss* with the thing type UID of ```danfoss_lc13_00_000```. 
 
 Living Connect Z Thermostat  
 
 
-# Overview #
+## Overview 
 
 Radiator Thermostat
 
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 Short push middle button
 
   
 
 
-## Wakeup Information ##
+### Wakeup Information 
 
 Short push middle button
+
 
 ## Channels
 The following table summarises the channels available for the LC-13 Living Connect Z Thermostat.
@@ -33,7 +40,6 @@ The following table summarises the channels available for the LC-13 Living Conne
 |  | battery-level | system.battery-level |  |  |
 | Clock Time Offset | time_offset | time_offset | Temperature | Number |
 | Alarm (general) | alarm_general | alarm_general | Door | Switch |
-
 
 
 ### Setpoint (heating)
@@ -49,9 +55,6 @@ Select the scale to use for setpoints.
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
 
 
 ### Clock Time Offset
@@ -70,10 +73,6 @@ Setting this will automatically update the devices clock when the time differenc
 | Options | Disable Auto Update (0) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the LC-13 Living Connect Z Thermostat.
 Detailed information on each parameter can be found below.
@@ -83,11 +82,7 @@ Detailed information on each parameter can be found below.
 | 1: Target for Wakeup and Override Notifications |  |
 
 
-
-
 #### 1: Target for Wakeup and Override Notifications
-
-
 
 
 | Property         | Value    |
@@ -97,12 +92,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/165).
-

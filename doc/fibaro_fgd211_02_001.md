@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FGD211 - ZWave
+---
+
+{% include base.html %}
 
 # FGD211 Universal Dimmer 500W
 
-This describes the Z-Wave device **FGD211**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgd211_02_001```. 
+This describes the Z-Wave device *FGD211*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgd211_02_001```. 
 
 Universal Dimmer 500W
+
 
 ## Channels
 The following table summarises the channels available for the FGD211 Universal Dimmer 500W.
@@ -13,7 +20,6 @@ The following table summarises the channels available for the FGD211 Universal D
 | Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer |
 | Scene Number | scene_number | scene_number |  | Number |
 | Updating the dimming level without switch | config_decimal_param40 | config_decimal |  | Decimal |
-
 
 
 ### Dimmer
@@ -29,10 +35,6 @@ Restore Last Dimming level on ON.
 | Data Type        | BOOLEAN || Default Value | true |
 | Options | Restore Last Value (true) |
 |  | Restore Full Brightness (false) |
-
-
-
-
 
 
 ### Device Configuration
@@ -66,8 +68,6 @@ Detailed information on each parameter can be found below.
 | 3: Controller Updates |  |
 
 
-
-
 #### 1: Enable/Disable ALL ON/OFF
 
 Activate/Deactive ALL ON/OFF
@@ -83,16 +83,12 @@ Activate/Deactive ALL ON/OFF
 |  | ALL ON active / ALL OFF active (255) |
 
 
-
-
-
-
 #### 6: Separation of association sending (key 1)
 
 Activate/Deactivate association sending for group 1 - Also see param \#16  
 
 
-# Overview #
+##### Overview 
 
 Sending commands to control devices assigned to 1-st association group (key no. 1).
 
@@ -108,16 +104,12 @@ NOTE: Parameter 15 value must be set to 1 to work properly. This activates the 
 |  | Map OFF status to all devices in group 1 - 100% state (2) |
 
 
-
-
-
-
 #### 7: Control key #2 behaviour
 
 Checking the device status before sending a control frame from the key no. 2.  
 
 
-# Overview #
+##### Overview 
 
 Info: Key no. 2 is not represented by any physical device expect of devices on association list. This functionality prevents of lack of reaction on pressing key no. 2 through polling devices from list one by one and checking thier actual states.
 
@@ -134,13 +126,7 @@ If devices state is checked before sending asociation then parameter 19 should 
 |  | Device status is checked (1) |
 
 
-
-
-
-
 #### 8: Dimming step at automatic control
-
-
 
 
 | Property         | Value    |
@@ -149,10 +135,6 @@ If devices state is checked before sending asociation then parameter 19 should 
 | Data Type        | INTEGER |
 | Range | 1 to 99 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 9: Time of MANUALLY moving between the extreme dimming values
@@ -168,16 +150,12 @@ Options for changing parameter 1-255 (10ms - 2,5s)
 | Default Value | 5 |
 
 
-
-
-
-
 #### 10: Time of AUTOMATIC moving between the extreme dimming values
 
 Time of Automatic moving the Dimmer between the extreme dimming values  
 
 
-# Overview #
+##### Overview 
 
 Options for changing parameter 0-255 (0ms – 2.5s)
 
@@ -194,10 +172,6 @@ NOTE value 0 is required for inductive and capacitive devices unsuitable for di
 | Default Value | 1 |
 
 
-
-
-
-
 #### 11: Dimming step at manual control
 
 Options for changing parameter 1-99
@@ -209,10 +183,6 @@ Options for changing parameter 1-99
 | Data Type        | INTEGER |
 | Range | 1 to 99 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 12: Maximum dimmer level control
@@ -228,10 +198,6 @@ Options for changing parameter 2-99
 | Default Value | 99 |
 
 
-
-
-
-
 #### 13: Minimum dimmer level control
 
 Options for changing parameter 1-98
@@ -243,10 +209,6 @@ Options for changing parameter 1-98
 | Data Type        | INTEGER |
 | Range | 1 to 98 |
 | Default Value | 2 |
-
-
-
-
 
 
 #### 14: Inputs Button/Switch configuration
@@ -263,10 +225,6 @@ Binary inputs type configuration
 |  | Roller blind switch (UP / DOWN) (2) |
 
 
-
-
-
-
 #### 15: Parm 15
 
 Double-click set lighting at 100%
@@ -278,10 +236,6 @@ Double-click set lighting at 100%
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | Disable double click (0) |
 |  | Enable double click (1) |
-
-
-
-
 
 
 #### 16: Saving state before power failure
@@ -297,16 +251,12 @@ Saving state before power failure
 |  | State saved at power failure. (1) |
 
 
-
-
-
-
 #### 17: 3-way switch
 
 3-way switch function  
 
 
-# Overview #
+##### Overview 
 
 The function of 3 - way switch, provides the option to double key no. 1.  
 The Dimmer may control two toggle push-buttons or an infinite number of momentary push-buttons.  
@@ -318,10 +268,6 @@ The Dimmer may control two toggle push-buttons or an infinite number of momenta
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Disable (0) |
 |  | Enable (1) |
-
-
-
-
 
 
 #### 18: Synchronizing light level for associated devices
@@ -337,16 +283,12 @@ The dimmer communicate the level to the associated devices. (default value 0)
 |  | Enable (1) |
 
 
-
-
-
-
 #### 19: Change [On-Off] bi-stable keys
 
 Assigns bistable key status to the device status.  
 
 
-# Overview #
+##### Overview 
 
 Info: Remote control from Fibaro System Is Still Possible. This function is useful When you want display status of external devices, e.g. Motion Sensor, in Fibaro System.  
 
@@ -359,16 +301,12 @@ Info: Remote control from Fibaro System Is Still Possible. This function is use
 |  | Device status depends on key status. (1) |
 
 
-
-
-
-
 #### 20: Minimum level of the Dimmer
 
 Enable decreasing the minimum level of the Dimmer  
 
 
-# Overview #
+##### Overview 
 
 This function will enable decreasing the minimum level of the Dimmer by extending the control impulse. \[100 - 170\]      
 
@@ -385,16 +323,12 @@ Not all LED bulbs available on the market have the dimmm
 | Default Value | 110 |
 
 
-
-
-
-
 #### 30: Relay 1: Response to General Alarm
 
 Resonse to alarm of any type  
 
 
-# Overview #
+##### Overview 
 
 Alarm of any type (general alarm, water flooding alarm, smoke alarm: CO, CO2, temperature alarm).  
 
@@ -407,10 +341,6 @@ Alarm of any type (general alarm, water flooding alarm, smoke alarm: CO, CO2, t
 |  | Alarm Dimmer ON (1) |
 |  | Alarm Dimmer OFF (2) |
 |  | Alarm Flashing (3) |
-
-
-
-
 
 
 #### 39: ALARM FLASHING alarm time
@@ -426,16 +356,12 @@ Amount of time (ms) the device keeps on flashing after receipt of Alarm Frame
 | Default Value | 600 |
 
 
-
-
-
-
 #### 40: Updating the dimming level without switch.
 
 Available settings: from 1 to 99.  
 
 
-# Overview #
+##### Overview 
 
 Parameter’s value changes depending on the dimming level.  
 
@@ -448,16 +374,12 @@ Parameter’s value changes depending on the dimming level.  
 | Default Value | 99 |
 
 
-
-
-
-
 #### 41: Scene activation functionality
 
 Sending commands with command class scene activation  
 
 
-# Overview #
+##### Overview 
 
 The device offers the possibility of sending commands compatible with Command class scene activation. Information is sent to devices assigned to association group no. 3. Controllers such as Home Center 2 are able to interpret such commands and based on these commands they activate scenes, to which specific scene IDs have been assigned. The user may expand the functionality of the button connected to inputs S1 and S2 by distinguishing the actions of keys connected to those inputs. For example: double click would activate the scene "goodnight" and triple click would activate the scene "morning"
 
@@ -470,13 +392,7 @@ The device offers the possibility of sending commands compatible with Command c
 |  | Scene functionality activated (1) |
 
 
-
-
-
-
 #### 1: Switch 1
-
-
 
 
 | Property         | Value    |
@@ -486,13 +402,7 @@ The device offers the possibility of sending commands compatible with Command c
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Switch 2
-
-
 
 
 | Property         | Value    |
@@ -502,13 +412,7 @@ The device offers the possibility of sending commands compatible with Command c
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Controller Updates
-
-
 
 
 | Property         | Value    |
@@ -518,12 +422,7 @@ The device offers the possibility of sending commands compatible with Command c
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/119).
-

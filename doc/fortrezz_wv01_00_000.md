@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: WV-01 - ZWave
+---
+
+{% include base.html %}
 
 # WV-01 Wireless Z-Wave Water Valve
 
-This describes the Z-Wave device **WV-01**, manufactured by **FortrezZ LLC** with the thing type UID of ```fortrezz_wv01_00_000```. 
+This describes the Z-Wave device *WV-01*, manufactured by *FortrezZ LLC* with the thing type UID of ```fortrezz_wv01_00_000```. 
 
 Wireless Z-Wave Water Valve
+
 
 ## Channels
 The following table summarises the channels available for the WV-01 Wireless Z-Wave Water Valve.
@@ -12,8 +19,6 @@ The following table summarises the channels available for the WV-01 Wireless Z-W
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Alarm | alarm_general | alarm_general | Door | Switch |
-
-
 
 
 ### Device Configuration
@@ -26,11 +31,7 @@ Detailed information on each parameter can be found below.
 | 1: WaterLevel Timeout |  |
 
 
-
-
 #### 0: Mode
-
-
 
 
 | Property         | Value    |
@@ -41,13 +42,7 @@ Detailed information on each parameter can be found below.
 |  | Level Mode (255) |
 
 
-
-
-
-
 #### 1: WaterLevel Timeout
-
-
 
 
 | Property         | Value    |
@@ -58,12 +53,7 @@ Detailed information on each parameter can be found below.
 | Default Value | 60 |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/368).
-

@@ -1,21 +1,28 @@
+---
+layout: documentation
+title: ED2.0 - ZWave
+---
+
+{% include base.html %}
 
 # ED2.0 Eneco Meter Adapter
 
-This describes the Z-Wave device **ED2.0**, manufactured by **Prodrive Technologies** with the thing type UID of ```prodrive_ed20_00_000```. 
+This describes the Z-Wave device *ED2.0*, manufactured by *Prodrive Technologies* with the thing type UID of ```prodrive_ed20_00_000```. 
 
 Eneco Meter Adapter  
 
 
-# Overview #
+## Overview 
 
 The meter adapter measures gas and electricity usage of analog and digital meters. Analog meters are read by means of optical sensors that can be placed on the meter to monitor the rotating disc or the blinking LED. In case of a digital meter, the meter adapter can be connected to the digital meter by means of a P1 digital communication interface. The meter adapter measures the cumulative and instantaneous gas and electricity consumption and sends this information to a Z-Wave enabled display (ED2.0 Display).
 
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 Press Button
+
 
 ## Channels
 The following table summarises the channels available for the ED2.0 Eneco Meter Adapter.
@@ -29,7 +36,6 @@ The following table summarises the channels available for the ED2.0 Eneco Meter 
 | Electric meter (kWh) | meter_kwh4 | meter_kwh | Energy | Number |
 | Electric meter (kWh) | meter_kwh5 | meter_kwh | Energy | Number |
 | Electric meter (kWh) | meter_kwh6 | meter_kwh | Energy | Number |
-
 
 
 ### Clock Time Offset
@@ -48,10 +54,6 @@ Setting this will automatically update the devices clock when the time differenc
 | Options | Disable Auto Update (0) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the ED2.0 Eneco Meter Adapter.
 Detailed information on each parameter can be found below.
@@ -62,8 +64,6 @@ Detailed information on each parameter can be found below.
 | 1: Gas Meter resolution | The resolution of the analog gas meter |
 | 2: Electricity metering | Enable and disable Electricity metering |
 | 3: Electricity meter resolution | The resolution of the analog electricity meter |
-
-
 
 
 #### 0: Gas Metering
@@ -79,16 +79,12 @@ Enable and disable gas metering
 |  | enable gas metering (1) |
 
 
-
-
-
-
 #### 1: Gas Meter resolution
 
 The resolution of the analog gas meter  
 
 
-# Overview #
+##### Overview 
 
 The resolution of the analog gas meter (revolutions per m³) in unsigned Q14.2 notation.
 
@@ -99,10 +95,6 @@ The resolution of the analog gas meter (revolutions per m³) in unsigned Q14.2 n
 | Data Type        | INTEGER |
 | Range | 0 to 65535 |
 | Default Value | 400 |
-
-
-
-
 
 
 #### 2: Electricity metering
@@ -118,16 +110,12 @@ Enable and disable Electricity metering
 |  | enable electricity metering (1) |
 
 
-
-
-
-
 #### 3: Electricity meter resolution
 
 The resolution of the analog electricity meter  
 
 
-# Overview #
+##### Overview 
 
 The resolution of the analog electricity meter (revolutions per kWh) in unsigned Q14.2 notation.
 
@@ -140,12 +128,7 @@ The resolution of the analog electricity meter (revolutions per kWh) in unsigned
 | Default Value | 400 |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/345).
-

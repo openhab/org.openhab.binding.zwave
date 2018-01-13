@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZMNHCA - ZWave
+---
+
+{% include base.html %}
 
 # ZMNHCA Flush Shutter
 
-This describes the Z-Wave device **ZMNHCA**, manufactured by **Goap** with the thing type UID of ```qubino_zmnhca_00_000```. 
+This describes the Z-Wave device *ZMNHCA*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhca_00_000```. 
 
 Flush Shutter
+
 
 ## Channels
 The following table summarises the channels available for the ZMNHCA Flush Shutter.
@@ -22,7 +29,6 @@ The following table summarises the channels available for the ZMNHCA Flush Shutt
 | Electric meter (kWh) | meter_kwh1 | meter_kwh | Energy | Number |
 
 
-
 ### Blinds Control
 
 #### Invert control
@@ -38,8 +44,6 @@ Invert the blinds control
 |  | No (false) |
 
 
-
-
 #### Invert percentage value
 
 Invert the blinds percentage value
@@ -51,8 +55,6 @@ Invert the blinds percentage value
 | Data Type        | BOOLEAN || Default Value | false |
 | Options | Yes (true) |
 |  | No (false) |
-
-
 
 
 #### Step duration
@@ -68,9 +70,6 @@ Values from 1 to 127 are defined in seconds, while values from 128 to 254 are de
 | Range | 1 to 254 || Default Value | 255 |
 | Options | Device Default (255) |
 |  | Change Instantly (0) |
-
-
-
 
 
 ### Sensor (temperature)
@@ -88,9 +87,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Blinds Control
 
 #### Invert control
@@ -106,8 +102,6 @@ Invert the blinds control
 |  | No (false) |
 
 
-
-
 #### Invert percentage value
 
 Invert the blinds percentage value
@@ -119,8 +113,6 @@ Invert the blinds percentage value
 | Data Type        | BOOLEAN || Default Value | false |
 | Options | Yes (true) |
 |  | No (false) |
-
-
 
 
 #### Step duration
@@ -138,9 +130,6 @@ Values from 1 to 127 are defined in seconds, while values from 128 to 254 are de
 |  | Change Instantly (0) |
 
 
-
-
-
 ### Temperatur Sensor
 
 #### Scale
@@ -154,10 +143,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -185,14 +170,12 @@ Detailed information on each parameter can be found below.
 | 5: default reporting group |  |
 
 
-
-
 #### 10: ALL ON / ALL OFF
 
 Responds to commands ALL ON / ALL OFF from Main Controller  
 
 
-# Overview #
+##### Overview 
 
 Module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.
 
@@ -215,16 +198,12 @@ Available config. parameters (data type is 2 Byte DEC):
 |  | 255 - ALL ON active, ALL OFF active (255) |
 
 
-
-
-
-
 #### 40: - Power reporting in Watts on power change for Q1 or Q2
 
 Power consumption change threshold for sending updates  
 
 
-# Overview #
+##### Overview 
 
 Power report is send (push) only when actual power (in Watts) in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%.
 
@@ -245,16 +224,12 @@ NOTE: if power changed is less than 1W, the report is not send (pushed), indepen
 | Default Value | 1 |
 
 
-
-
-
-
 #### 42: Power reporting in Watts by time interval for Q1 or Q2
 
 Power reporting in Watts by time interval for Q1 or Q2  
 
 
-# Overview #
+##### Overview 
 
 Set value means time interval (0 – 32767) in seconds, when power report is send. Available configuration parameters (data type is 2 Byte DEC):
 
@@ -271,16 +246,12 @@ Set value means time interval (0 – 32767) in seconds, when power report is sen
 | Default Value | 300 |
 
 
-
-
-
-
 #### 71: Operating modes
 
 Operation Mode (Shutter or Venetian)  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines selection between two available operating modes. Available configuration parameters (data type is 1 Byte DEC):
 
@@ -297,16 +268,12 @@ This parameter defines selection between two available operating modes. Availabl
 |  | 1 – Venetian mode (up/down and slate rotation) (1) |
 
 
-
-
-
-
 #### 72: Slats tilting full turn time
 
 Slat full turn time in tenths of a second.  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the time necessary for slats to make full turn (180 degrees). Available configuration parameters (data type is 2 Byte DEC):
 
@@ -325,16 +292,12 @@ NOTE: If time set is too high, this will result that after full turn, Shutter wi
 | Default Value | 150 |
 
 
-
-
-
-
 #### 73: Slats position
 
 Slats position  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines slats position after up/down movement through Z-wave or push-buttons. Available configuration parameters (data type is 1 Byte DEC):
 
@@ -353,16 +316,12 @@ This parameter defines slats position after up/down movement through Z-wave or p
 |  | position in case of UI control, push button (2) |
 
 
-
-
-
-
 #### 74: Motor moving up/down time
 
 Shutter motor moving time of complete opening or complete closing  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines Shutter motor moving time of complete opening or complete closing. Available configuration parameters (data type is 2 Byte DEC):
 
@@ -387,16 +346,12 @@ In case Shutter has limit switches, but anyhow you would like to limit opening/c
 | Default Value | 0 |
 
 
-
-
-
-
 #### 76: Motor operation detection
 
 Power threshold  
 
 
-# Overview #
+##### Overview 
 
 Power threshold to be interpreted when motor reach the limit switch. Available configuration parameters (data type is 1 Byte DEC):
 
@@ -414,16 +369,12 @@ NOTE: Motors with power consumption less than 0,5W could not be auto calibrated.
 | Default Value | 10 |
 
 
-
-
-
-
 #### 78: Forced Shutter calibration
 
 0 to 1 a Shutter enters the calibration mode  
 
 
-# Overview #
+##### Overview 
 
 By modifying the parameters setting from 0 to 1 a Shutter DC module enters the calibration mode. Available configuration parameters (data type is 1 Byte DEC):
 
@@ -439,16 +390,12 @@ By modifying the parameters setting from 0 to 1 a Shutter DC module enters the c
 | Default Value | 0 |
 
 
-
-
-
-
 #### 80: Reporting to controller
 
 reports regarding to main controller  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines if reporting regarding power level, multilevel, etc,…is reported to controller or not. Available configuration parameters: default value 1
 
@@ -464,16 +411,12 @@ This parameter defines if reporting regarding power level, multilevel, etc,…is
 |  | reporting to controller is enabled (1) |
 
 
-
-
-
-
 #### 85: Power consumption max delay time
 
 max time before motor power consumption is read  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the max time before motor power consumption is read after one of the relays is switched ON. If there is no power consumption during this max time (motor not connected, damaged or requires higher time to start, motor in end position,...) the relay will switch OFF. Time is defined by entering it manually. Available configuration parameters (data type is 1 Byte DEC):
 
@@ -490,16 +433,12 @@ This parameter defines the max time before motor power consumption is read after
 | Default Value | 0 |
 
 
-
-
-
-
 #### 90: Relay delay time
 
 This parameter defines the time delay between output relay switching  
 
 
-# Overview #
+##### Overview 
 
 This parameter defines the minimum time delay between next motor movement (minimum time between switching motor off and on again). Available configuration parameters (data type is 1 Byte DEC):
 
@@ -515,10 +454,6 @@ This parameter defines the minimum time delay between next motor movement (minim
 | Default Value | 5 |
 
 
-
-
-
-
 #### 1: basic on/off
 
 triggered at change of the input I1 state and reflecting its state
@@ -529,10 +464,6 @@ triggered at change of the input I1 state and reflecting its state
 | Configuration ID | group_1 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 2: basic on/of
@@ -547,10 +478,6 @@ triggered at change of the input I2 state and reflecting its state
 | Range |  to  |
 
 
-
-
-
-
 #### 3: multileve
 
 triggered at changes of value of the Flush shutter position
@@ -561,10 +488,6 @@ triggered at changes of value of the Flush shutter position
 | Configuration ID | group_3 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 4: multilevel
@@ -579,13 +502,7 @@ triggered at changes of value of slats tilting position
 | Range |  to  |
 
 
-
-
-
-
 #### 5: default reporting group
-
-
 
 
 | Property         | Value    |
@@ -595,12 +512,7 @@ triggered at changes of value of slats tilting position
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/635).
-

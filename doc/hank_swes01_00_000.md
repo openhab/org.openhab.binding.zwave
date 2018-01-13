@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: SW es01 - ZWave
+---
+
+{% include base.html %}
 
 # SW es01 Siterwell eyesonsor
 
-This describes the Z-Wave device **SW es01**, manufactured by **Hank** with the thing type UID of ```hank_swes01_00_000```. 
+This describes the Z-Wave device *SW es01*, manufactured by *Hank* with the thing type UID of ```hank_swes01_00_000```. 
 
 Siterwell eyesonsor
+
 
 ## Channels
 The following table summarises the channels available for the SW es01 Siterwell eyesonsor.
@@ -16,8 +23,6 @@ The following table summarises the channels available for the SW es01 Siterwell 
 |  | battery-level | system.battery-level |  |  |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the SW es01 Siterwell eyesonsor.
 Detailed information on each parameter can be found below.
@@ -27,11 +32,7 @@ Detailed information on each parameter can be found below.
 | 1: Lifeline |  |
 
 
-
-
 #### 1: Lifeline
-
-
 
 
 | Property         | Value    |
@@ -41,12 +42,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/707).
-

@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZIP-PAB01 - ZWave
+---
+
+{% include base.html %}
 
 # ZIP-PAB01 Zipato Micromodule Energy Meter
 
-This describes the Z-Wave device **ZIP-PAB01**, manufactured by **Philio Technology Corp** with the thing type UID of ```philio_pab01_00_000```. 
+This describes the Z-Wave device *ZIP-PAB01*, manufactured by *Philio Technology Corp* with the thing type UID of ```philio_pab01_00_000```. 
 
 Zipato Micromodule Energy Meter
+
 
 ## Channels
 The following table summarises the channels available for the ZIP-PAB01 Zipato Micromodule Energy Meter.
@@ -32,8 +39,6 @@ The following table summarises the channels available for the ZIP-PAB01 Zipato M
 | Voltage 3 (volts) | meter_voltage3 | meter_voltage | Energy | Number |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the ZIP-PAB01 Zipato Micromodule Energy Meter.
 Detailed information on each parameter can be found below.
@@ -48,14 +53,12 @@ Detailed information on each parameter can be found below.
 | 3: CT2 | Data from CT2 |
 
 
-
-
 #### 1: Power meter report period
 
 Power meter report period, in 5 seconds unit. 720 -> 1 hour  
 
 
-# Overview #
+##### Overview 
 
 If the setting is configured for 1 hour (set value 720), the module will report its instant power consumption every 1 hour to the node of the corresponding group. The maximum interval to report its instant power consumption is 45h (5s \* 32767 / 3600 = 45h)
 
@@ -68,16 +71,12 @@ If the setting is configured for 1 hour (set value 720), the module will report 
 | Default Value | 720 |
 
 
-
-
-
-
 #### 2: Energy meter report period
 
 The accumulated power consumption report period  
 
 
-# Overview #
+##### Overview 
 
 If the setting is configured for 1 hour (set value 720), the module will report its accumulated power consumption every 1 hour to the node of the corresponding group. The maximum interval to report its accumulated power consumption is 45h (5s \* 32767 / 3600 = 45h)
 
@@ -90,16 +89,12 @@ If the setting is configured for 1 hour (set value 720), the module will report 
 | Default Value | 720 |
 
 
-
-
-
-
 #### 3: Selected default endpoint
 
 1 => CT1 and CT2, 2 => CT1, 3 => CT2  
 
 
-# Overview #
+##### Overview 
 
 If Controller does not use Multi Channel command class to access the endpoint of the module, you may configure the endpoint that will react to the Basic Command Class, Binary Switch command class or Meter command class V3.
 
@@ -112,16 +107,12 @@ If Controller does not use Multi Channel command class to access the endpoint of
 | Default Value | 1 |
 
 
-
-
-
-
 #### 1: CT1 and CT2
 
 Sum of CT1 and CT2  
 
 
-# Overview #
+##### Overview 
 
 Sum of :
 
@@ -136,16 +127,12 @@ Sum of :
 | Range |  to  |
 
 
-
-
-
-
 #### 2: CT1
 
 Data from CT1  
 
 
-# Overview #
+##### Overview 
 
  *  Instant power consumption from CT1 (W)
  *  Accumulated power consumption from CT1 (kWh)
@@ -158,16 +145,12 @@ Data from CT1
 | Range |  to  |
 
 
-
-
-
-
 #### 3: CT2
 
 Data from CT2  
 
 
-# Overview #
+##### Overview 
 
 1.  Instant power consumption from CT2 (W)
 2.  Accumulated power consumption from CT2 (kWh)
@@ -180,12 +163,7 @@ Data from CT2
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/560).
-

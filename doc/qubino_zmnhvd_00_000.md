@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZMNHVD - ZWave
+---
+
+{% include base.html %}
 
 # ZMNHVD Flush Dimmer 0-10V
 
-This describes the Z-Wave device **ZMNHVD**, manufactured by **Goap** with the thing type UID of ```qubino_zmnhvd_00_000```. 
+This describes the Z-Wave device *ZMNHVD*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhvd_00_000```. 
 
 Flush Dimmer 0-10V
+
 
 ## Channels
 The following table summarises the channels available for the ZMNHVD Flush Dimmer 0-10V.
@@ -13,7 +20,6 @@ The following table summarises the channels available for the ZMNHVD Flush Dimme
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer |
 | Sensor (general) | sensor_general | sensor_general |  | Number |
-
 
 
 ### Dimmer
@@ -29,10 +35,6 @@ Restore Last Dimming level on ON.
 | Data Type        | BOOLEAN || Default Value | true |
 | Options | Restore Last Value (true) |
 |  | Restore Full Brightness (false) |
-
-
-
-
 
 
 ### Device Configuration
@@ -73,8 +75,6 @@ Detailed information on each parameter can be found below.
 | 6: multilevel sensor report | triggered at change of temperature sensor |
 
 
-
-
 #### 1: Input 1 Switch Type
 
 By this parameter the user can set input based on device type (switch, potentiometer, 0-10V sensor,...)
@@ -92,13 +92,7 @@ By this parameter the user can set input based on device type (switch, potentiom
 |  | General purpose sensor (5) |
 
 
-
-
-
-
 #### 11: Automatic turning off output after set time
-
-
 
 
 | Property         | Value    |
@@ -109,13 +103,7 @@ By this parameter the user can set input based on device type (switch, potentiom
 | Default Value | 0 |
 
 
-
-
-
-
 #### 12: Automatic turning on output after set time
-
-
 
 
 | Property         | Value    |
@@ -126,13 +114,7 @@ By this parameter the user can set input based on device type (switch, potentiom
 | Default Value | 0 |
 
 
-
-
-
-
 #### 21: Enable/Disable Double click function
-
-
 
 
 | Property         | Value    |
@@ -143,13 +125,7 @@ By this parameter the user can set input based on device type (switch, potentiom
 | Default Value | 0 |
 
 
-
-
-
-
 #### 30: Saving the state of the device after a power failure
-
-
 
 
 | Property         | Value    |
@@ -160,13 +136,7 @@ By this parameter the user can set input based on device type (switch, potentiom
 | Default Value | 0 |
 
 
-
-
-
-
 #### 52: Auto or manual selection
-
-
 
 
 | Property         | Value    |
@@ -177,13 +147,7 @@ By this parameter the user can set input based on device type (switch, potentiom
 | Default Value | 0 |
 
 
-
-
-
-
 #### 53: PID value inside deadband
-
-
 
 
 | Property         | Value    |
@@ -194,13 +158,7 @@ By this parameter the user can set input based on device type (switch, potentiom
 | Default Value | 0 |
 
 
-
-
-
-
 #### 54: PID deadband
-
-
 
 
 | Property         | Value    |
@@ -211,13 +169,7 @@ By this parameter the user can set input based on device type (switch, potentiom
 | Default Value | 1 |
 
 
-
-
-
-
 #### 55: Integral sampling time
-
-
 
 
 | Property         | Value    |
@@ -228,13 +180,7 @@ By this parameter the user can set input based on device type (switch, potentiom
 | Default Value | 5 |
 
 
-
-
-
-
 #### 56: P parameter
-
-
 
 
 | Property         | Value    |
@@ -245,13 +191,7 @@ By this parameter the user can set input based on device type (switch, potentiom
 | Default Value | 100 |
 
 
-
-
-
-
 #### 57: I parameter
-
-
 
 
 | Property         | Value    |
@@ -260,10 +200,6 @@ By this parameter the user can set input based on device type (switch, potentiom
 | Data Type        | INTEGER |
 | Range | 0 to 1000 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 58: D parameter
@@ -279,13 +215,7 @@ Available config. parameters (data type is2 Byte DEC):
 | Default Value | 1 |
 
 
-
-
-
-
 #### 60: Minimum dimming value
-
-
 
 
 | Property         | Value    |
@@ -296,13 +226,7 @@ Available config. parameters (data type is2 Byte DEC):
 | Default Value | 1 |
 
 
-
-
-
-
 #### 61: Maximum dimming value
-
-
 
 
 | Property         | Value    |
@@ -313,13 +237,7 @@ Available config. parameters (data type is2 Byte DEC):
 | Default Value | 99 |
 
 
-
-
-
-
 #### 65: Dimming time (soft on/off)
-
-
 
 
 | Property         | Value    |
@@ -330,13 +248,7 @@ Available config. parameters (data type is2 Byte DEC):
 | Default Value | 100 |
 
 
-
-
-
-
 #### 66: Dimming time when key pressed
-
-
 
 
 | Property         | Value    |
@@ -347,13 +259,7 @@ Available config. parameters (data type is2 Byte DEC):
 | Default Value | 3 |
 
 
-
-
-
-
 #### 67: Ignore start level
-
-
 
 
 | Property         | Value    |
@@ -364,13 +270,7 @@ Available config. parameters (data type is2 Byte DEC):
 | Default Value | 0 |
 
 
-
-
-
-
 #### 68: Dimming duration
-
-
 
 
 | Property         | Value    |
@@ -381,13 +281,7 @@ Available config. parameters (data type is2 Byte DEC):
 | Default Value | 0 |
 
 
-
-
-
-
 #### 110: Temperature sensor offset settings
-
-
 
 
 | Property         | Value    |
@@ -398,13 +292,7 @@ Available config. parameters (data type is2 Byte DEC):
 | Default Value | 32536 |
 
 
-
-
-
-
 #### 120: Digital temperature sensor reporting
-
-
 
 
 | Property         | Value    |
@@ -415,13 +303,7 @@ Available config. parameters (data type is2 Byte DEC):
 | Default Value | 0 |
 
 
-
-
-
-
 #### 140: Input I1 Sensor reporting
-
-
 
 
 | Property         | Value    |
@@ -432,13 +314,7 @@ Available config. parameters (data type is2 Byte DEC):
 | Default Value | 5 |
 
 
-
-
-
-
 #### 141: Input I1 0-10V reporting threshold
-
-
 
 
 | Property         | Value    |
@@ -449,13 +325,7 @@ Available config. parameters (data type is2 Byte DEC):
 | Default Value | 5 |
 
 
-
-
-
-
 #### 143: Minimum sensor range value
-
-
 
 
 | Property         | Value    |
@@ -466,13 +336,7 @@ Available config. parameters (data type is2 Byte DEC):
 | Default Value | 0 |
 
 
-
-
-
-
 #### 144: Maximum sensor range value
-
-
 
 
 | Property         | Value    |
@@ -481,10 +345,6 @@ Available config. parameters (data type is2 Byte DEC):
 | Data Type        | INTEGER |
 | Range | 0 to 20000 |
 | Default Value | 1000 |
-
-
-
-
 
 
 #### 1: Lifeline Group
@@ -499,10 +359,6 @@ reserved for communication with the main controller
 | Range |  to  |
 
 
-
-
-
-
 #### 2: basic on/off
 
 triggered at change of the input I1 state and reflecting its state
@@ -513,10 +369,6 @@ triggered at change of the input I1 state and reflecting its state
 | Configuration ID | group_2 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 3: start level change/stop level change
@@ -531,10 +383,6 @@ triggered at change of the input I1 state and reflecting its state) up to 16 nod
 | Range |  to  |
 
 
-
-
-
-
 #### 4: multilevel set
 
 triggered at changes of state/value of the Flush Dimmer 0-10V
@@ -545,10 +393,6 @@ triggered at changes of state/value of the Flush Dimmer 0-10V
 | Configuration ID | group_4 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 5: multilevel sensor report
@@ -563,10 +407,6 @@ triggered at change of analogue sensor
 | Range |  to  |
 
 
-
-
-
-
 #### 6: multilevel sensor report
 
 triggered at change of temperature sensor
@@ -579,12 +419,7 @@ triggered at change of temperature sensor
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/363).
-

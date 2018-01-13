@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZSE40 - ZWave
+---
+
+{% include base.html %}
 
 # ZSE40 Zooz 4-in-one motion/temperature/humidity/luminance sensor
 
-This describes the Z-Wave device **ZSE40**, manufactured by **Vision Security** with the thing type UID of ```vision_zse40_00_000```. 
+This describes the Z-Wave device *ZSE40*, manufactured by *Vision Security* with the thing type UID of ```vision_zse40_00_000```. 
 
 Zooz 4-in-one motion/temperature/humidity/luminance sensor
+
 
 ## Channels
 The following table summarises the channels available for the ZSE40 Zooz 4-in-one motion/temperature/humidity/luminance sensor.
@@ -16,7 +23,6 @@ The following table summarises the channels available for the ZSE40 Zooz 4-in-on
 | Sensor (temperature) | sensor_temperature | sensor_temperature | Temperature | Number |
 | Alarm (burglar) | alarm_burglar | alarm_burglar | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Sensor (temperature)
@@ -32,10 +38,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -54,8 +56,6 @@ Detailed information on each parameter can be found below.
 | 1: Receive updates | Receive sensor updates |
 
 
-
-
 #### 1: Temperature Scale
 
 Set the temperature scale
@@ -69,13 +69,7 @@ Set the temperature scale
 |  | Fahrenheit (1) |
 
 
-
-
-
-
 #### 2: Temperature offset
-
-
 
 
 | Property         | Value    |
@@ -84,10 +78,6 @@ Set the temperature scale
 | Data Type        | INTEGER |
 | Range | 0 to 50 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 3: Humidity
@@ -103,10 +93,6 @@ Configure Relative Humidity
 | Default Value | 10 |
 
 
-
-
-
-
 #### 4: Light Sensor
 
 Configure Light Sensor
@@ -120,10 +106,6 @@ Configure Light Sensor
 | Default Value | 10 |
 
 
-
-
-
-
 #### 5: Trigger Interval
 
 Set the trigger interval for motion sensor re-activation.
@@ -135,10 +117,6 @@ Set the trigger interval for motion sensor re-activation.
 | Data Type        | INTEGER |
 | Range | 1 to 255 |
 | Default Value | 180 |
-
-
-
-
 
 
 #### 6: Motion Sensor Sensitivity
@@ -159,10 +137,6 @@ Adjust sensitivity of the motion sensor.
 |  | lowest (7) |
 
 
-
-
-
-
 #### 7: LED indicator mode
 
 Select the LED indicator mode
@@ -177,10 +151,6 @@ Select the LED indicator mode
 |  | Flashing Temperature and Motion (3) |
 
 
-
-
-
-
 #### 1: Receive updates
 
 Receive sensor updates
@@ -193,12 +163,7 @@ Receive sensor updates
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/307).
-

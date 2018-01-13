@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: FGFS101 - ZWave
+---
+
+{% include base.html %}
 
 # FGFS101 Flood Sensor
 
-This describes the Z-Wave device **FGFS101**, manufactured by **Fibargroup** with the thing type UID of ```fibaro_fgfs101_00_000```. 
+This describes the Z-Wave device *FGFS101*, manufactured by *Fibargroup* with the thing type UID of ```fibaro_fgfs101_00_000```. 
 
 Flood Sensor
+
 
 ## Channels
 The following table summarises the channels available for the FGFS101 Flood Sensor.
@@ -16,7 +23,6 @@ The following table summarises the channels available for the FGFS101 Flood Sens
 | Alarm (water) | sensor_flood | sensor_flood |  | Switch |
 | Binary Sensor 1 | sensor_binary1 | sensor_binary | Door | Switch |
 | Sensor (temperature) 2 | sensor_temperature2 | sensor_temperature | Temperature | Number |
-
 
 
 ### Sensor (temperature) 2
@@ -32,10 +38,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -67,8 +69,6 @@ Detailed information on each parameter can be found below.
 | 3: Device Status |  |
 
 
-
-
 #### 1: Alarm Cancellation Delay
 
 Time period (in seconds) that an alarm will still be indicated after the alarm condition has ceased.
@@ -80,10 +80,6 @@ Time period (in seconds) that an alarm will still be indicated after the alarm c
 | Data Type        | INTEGER |
 | Range | 0 to 3600 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 2: Acoustic and visual signals On / Off in case of flooding
@@ -101,10 +97,6 @@ Parameter allows for LED indicator and acoustic alarm deactivation in case of fl
 |  | Acoustic and visual alarms active (3) |
 
 
-
-
-
-
 #### 5: Type of alarm frame sent to 1-st association group (FLOOD)
 
 Parameter determines a type of command frame sent by the Sensor in case flooding has been detected or cancelled
@@ -116,10 +108,6 @@ Parameter determines a type of command frame sent by the Sensor in case flooding
 | Data Type        | INTEGER || Default Value | 255 |
 | Options | ALARM WATER (0) |
 |  | BASIC_SET (255) |
-
-
-
-
 
 
 #### 7: Forced Level of Dimming group 1
@@ -136,10 +124,6 @@ In the case of alarm frames the alarm priority is specified. Possible parameter 
 | Default Value | 255 |
 
 
-
-
-
-
 #### 9: Alarm cancelling or turning a device off (Basic) command frame deactivation
 
 Set to 0 to disable all-clear basic set & alarm frame generation. After flooding, device will keep reporting flooding even if flooding ceased.
@@ -151,10 +135,6 @@ Set to 0 to disable all-clear basic set & alarm frame generation. After flooding
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | Alarm (flooding) cancellation inactive (0) |
 |  | Alarm (flooding) cancellation active (1) |
-
-
-
-
 
 
 #### 10: Interval between successive readings of temperature sensors
@@ -170,10 +150,6 @@ Interval between successive readings of temperature in seconds.
 | Default Value | 300 |
 
 
-
-
-
-
 #### 12: Insensitiveness to temperature changes.
 
 Determines a minimum temperature change value (insensitivity level; def: 0,5C), resulting in a temperature report being sent to the main controller, according to the Parameter 10 settings
@@ -187,16 +163,12 @@ Determines a minimum temperature change value (insensitivity level; def: 0,5C), 
 | Default Value | 50 |
 
 
-
-
-
-
 #### 13: Alarm BROADCAST
 
 Transmit the alarm or control frame in 'broadcast' mode. Information sent in this mode is not repeated by the mesh network.  
 
 
-# Overview #
+##### Overview 
 
 **NOTE:** If the broadcast mode of information transmission is activated for a given alarm, then the information **is not** relayed through the mesh network.  It is only heard by directly reachable devices.
 
@@ -211,16 +183,12 @@ Transmit the alarm or control frame in 'broadcast' mode. Information sent in thi
 |  | Flood and Tamper broadcast mode active (3) |
 
 
-
-
-
-
 #### 50: Low temperature alarm threshold
 
 The parameter stores a temperature value (def. 15C), below which LED indicator blinks with a colour determined by a Parameter 61 settings. By default the LED indicator blinks blue.  
 
 
-# Overview #
+##### Overview 
 
 Negative numbers are encoded in U2 (two's compliment) standard.
 
@@ -241,10 +209,6 @@ Negative numbers are encoded in U2 (two's compliment) standard.
 | Default Value | 1500 |
 
 
-
-
-
-
 #### 51: High temperature alarm threshold
 
 The parameter stores a temperature value (def. 35C), above which LED indicator blinks with a colour determined by the Parameter 62 settings. By default the LED indicator blinks red
@@ -258,16 +222,12 @@ The parameter stores a temperature value (def. 35C), above which LED indicator b
 | Default Value | 3500 |
 
 
-
-
-
-
 #### 61: Low temperature alarm indicator colour
 
 Default is blue (0x000000FF).  
 
 
-# Overview #
+##### Overview 
 
 **NOTE:** A main controller interprets colours as a sum of it component colours value. Each colours value is a number from 0 to 255. Eg: Indicated colour = 65536 \* RED value + 256 \* GREEN value + BLUE value
 
@@ -280,16 +240,12 @@ Default is blue (0x000000FF).
 | Default Value | 255 |
 
 
-
-
-
-
 #### 62: High temperature alarm indicator colour
 
 Default is red (0x00FF0000). 65535 \* Red + 256 \* Green + Blue  
 
 
-# Overview #
+##### Overview 
 
 **NOTE:** A main controller interprets colours as a sum of it component colours value. Each colours value is a number from 0 to 255. Eg: Indicated colour = 65536 \* RED value + 256 \* GREEN value + BLUE value
 
@@ -300,10 +256,6 @@ Default is red (0x00FF0000). 65535 \* Red + 256 \* Green + Blue
 | Data Type        | INTEGER |
 | Range | 0 to 16777215 |
 | Default Value | 16711680 |
-
-
-
-
 
 
 #### 63: Managing a LED indicator under standard operation
@@ -320,10 +272,6 @@ Parameter determines LED indicator’s operation. Set to 0 turns the indicator o
 |  | LED indicator indicates the temperature continuously (2) |
 
 
-
-
-
-
 #### 73: Temperature measurement compensation
 
 Parameter stores a temperature value to be added to or deducted from the current temperature measured by internal temperature sensor in order to compensate the difference between air temperature and temperature at the floor level
@@ -335,10 +283,6 @@ Parameter stores a temperature value to be added to or deducted from the current
 | Data Type        | INTEGER |
 | Range | -10000 to 10000 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 74: Alarm frame sent to 2-nd Association Group activation
@@ -356,16 +300,12 @@ Parameter stores a temperature value to be added to or deducted from the current
 |  | Button and movement tampers alarm active (3) |
 
 
-
-
-
-
 #### 75: Visual and audible alarms duration
 
 Visual and audible alarm duration  
 
 
-# Overview #
+##### Overview 
 
 User can silence the Flood Sensor. Because the Sensor’s alarm may last for a long time, it’s possible to turn off visual and audible alarm signaling to save battery. The parameter determines a time period after which alarm will become “quiet” - still active but the device will go into battery saving mode.  Visual or acoustic alarm will be reactivated after time period specified in parameter 76.  When alarm status ceases, alarm will be turned off immediately.
 
@@ -380,16 +320,12 @@ Value of 0 means visual and accoustic alarms are active indefinitely.  In batte
 | Default Value | 0 |
 
 
-
-
-
-
 #### 76: Alarm frame / basic set frame retransmission time when flooding
 
 Parameter determines time period after which an alarm frame will be retransmitted. Value of 0 disables alarm frame retransmission.  
 
 
-# Overview #
+##### Overview 
 
 **NOTE:** In case the time period set in this parameter is shorter than the one specified in parameter 75, the device will not quiet the alarm; it will remain active.
 
@@ -400,10 +336,6 @@ Parameter determines time period after which an alarm frame will be retransmitte
 | Data Type        | INTEGER |
 | Range | 0 to 65535 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 77: Flood sensor functionality turned off
@@ -419,13 +351,7 @@ Allows for turning of the internal flood sensor. Tamper and built in temperature
 |  | Built in flood sensor TURNED OFF (1) |
 
 
-
-
-
-
 #### 1: Flood Alarm
-
-
 
 
 | Property         | Value    |
@@ -435,13 +361,7 @@ Allows for turning of the internal flood sensor. Tamper and built in temperature
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Tilt &amp; Tamper Sensors
-
-
 
 
 | Property         | Value    |
@@ -451,13 +371,7 @@ Allows for turning of the internal flood sensor. Tamper and built in temperature
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Device Status
-
-
 
 
 | Property         | Value    |
@@ -467,12 +381,7 @@ Allows for turning of the internal flood sensor. Tamper and built in temperature
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/127).
-

@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: XLED Home 2 - ZWave
+---
+
+{% include base.html %}
 
 # XLED Home 2 PIR sensor with relay and light
 
-This describes the Z-Wave device **XLED Home 2**, manufactured by **Steinel** with the thing type UID of ```steinel_xledhome2_00_000```. 
+This describes the Z-Wave device *XLED Home 2*, manufactured by *Steinel* with the thing type UID of ```steinel_xledhome2_00_000```. 
 
 PIR sensor with relay and light
+
 
 ## Channels
 The following table summarises the channels available for the XLED Home 2 PIR sensor with relay and light.
@@ -20,8 +27,6 @@ The following table summarises the channels available for the XLED Home 2 PIR se
 | Scene Number 1 | scene_number1 | scene_number |  | Number |
 | Alarm (burglar) motion | alarm_burglar2 | alarm_burglar | Door | Switch |
 | Sensor (luminance)2 | sensor_luminance3 | sensor_luminance | Temperature | Number |
-
-
 
 
 ### Device Configuration
@@ -43,13 +48,10 @@ Detailed information on each parameter can be found below.
 | 14: OFF_ON_ BEHAVIOUR | Sequence Off-On behaviour (timeout) |
 | 15: SEQUENCE_ TIME | Sequence timing |
 | 16: MOTION_ DISABLE | Motion Off behaviour (timeout) |
-| 0: Root | Root |
 | 1: Lifeline | Lifeline |
 | 2: Control: Key01 | On/Off control (Never ever add controller, only third-party devices!) |
 | 3: Motion Begin/End (PIR/radar/iHF) | Notification: Motion |
 | 4: Ambient light | Sensor: Luminescence |
-
-
 
 
 #### 1: Time
@@ -65,16 +67,12 @@ Duration of light after motion detection.
 | Default Value | 180 |
 
 
-
-
-
-
 #### 2: LIGHT
 
 Light threshold \[lx\]:  
 
 
-# Overview #
+##### Overview 
 
 0          – run Learn ambient light sequence.  
 2000 – is used as daylight (always night mode).  
@@ -91,16 +89,12 @@ potentiometer movement rewrites the current setting
 | Default Value | 2000 |
 
 
-
-
-
-
 #### 5: SENSITIVITY
 
 Motion Radar Sensitivity \[%\]  
 
 
-# Overview #
+##### Overview 
 
 Value can be controlled via potentiometer (if present on device) – potentiom-  
 eter value is then used as the default value and any potentiometer movement  
@@ -115,16 +109,12 @@ rewrites the current setting.
 | Default Value | 100 |
 
 
-
-
-
-
 #### 6: BRIGHTNES MEAS 1 INTERVAL
 
 Brightness measuring interval \[min\]  
 
 
-# Overview #
+##### Overview 
 
 nterval for measuring ambient light when lamp is on (lamp switches off  
 briefly and measures). 0 = function is off.
@@ -138,16 +128,12 @@ briefly and measures). 0 = function is off.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 8: GLOBAL_LIGHT
 
 Use external Ambient Light value  
 
 
-# Overview #
+##### Overview 
 
 When GLOBAL\_LIGHT mode is ON – device overrides its own light sensor  
 values and uses Light Report values from any Z-Wave light sensor instead –  
@@ -164,16 +150,12 @@ value is used again until the next external value is received.
 | Default Value | 1 |
 
 
-
-
-
-
 #### 9: SLAVE_MODE
 
 Disable local control  
 
 
-# Overview #
+##### Overview 
 
 "Stupid" mode (bit 2 = 1):  
 \- has higher priority then slave mode  
@@ -228,16 +210,12 @@ mode
 | Default Value | 2 |
 
 
-
-
-
-
 #### 10: (OFF_BEHAVIOUR)
 
 Off behaviour (timeout)  
 
 
-# Overview #
+##### Overview 
 
 Behaviour after BASIC OFF (and similar commands).  
 If a transition (even with zero change) with a non-default duration is to be pro-  
@@ -267,16 +245,12 @@ motion event and works normally via current motion evaluation.
 | Options | Lamp/relay is switched off for TIME (cfg 1) (255) |
 
 
-
-
-
-
 #### 11: ON_BEHAVIOUR
 
 On behaviour (timeout)  
 
 
-# Overview #
+##### Overview 
 
 Behaviour after BASIC ON (and similar commands).  
 If a transition (even with zero change) with a non-default duration is to be  
@@ -315,16 +289,12 @@ motion event and works normally via current motion evaluation.
 | Default Value | 255 |
 
 
-
-
-
-
 #### 12: ON_TIME_OVER
 
 On behaviour time over (timeout)  
 
 
-# Overview #
+##### Overview 
 
 Time limit to stop waiting for motion after timeout of ON\_BEHAVIOUR or  
 OFF\_ON\_BEHAVIOUR (0-209) to prevent staying ON forever when there is  
@@ -349,16 +319,12 @@ no motion.
 | Default Value | 204 |
 
 
-
-
-
-
 #### 13: ON_OFF_ BEHAVIOUR
 
 Sequence On-Off behaviour (timeout)  
 
 
-# Overview #
+##### Overview 
 
 Behaviour after a rapid sequence of BASIC ON and BASIC OFF commands.  
 The intention is to use a much longer timeout value than the time after a  
@@ -375,16 +341,12 @@ except: 255 – device ignores ON - OFF sequence and uses OFF behaviour.
 | Default Value | 204 |
 
 
-
-
-
-
 #### 14: OFF_ON_ BEHAVIOUR
 
 Sequence Off-On behaviour (timeout)  
 
 
-# Overview #
+##### Overview 
 
 Behaviour after a rapid sequence of BASIC OFF and BASIC ON commands.  
 The intention is to use a much longer timeout value than the time after a sin-  
@@ -401,16 +363,12 @@ except: 255 – device ignores OFF - ON sequence and uses ON behaviour.
 | Default Value | 204 |
 
 
-
-
-
-
 #### 15: SEQUENCE_ TIME
 
 Sequence timing  
 
 
-# Overview #
+##### Overview 
 
 Time in \[100 milliseconds\] of maximum delay between BASIC ON and BASIC  
 OFF (and vice versa) to consider this as a sequence. It is typically 1 second,  
@@ -426,16 +384,12 @@ case, a longer interval can be allowed (up to 5 seconds).
 | Default Value | 10 |
 
 
-
-
-
-
 #### 16: MOTION_ DISABLE
 
 Motion Off behaviour (timeout)  
 
 
-# Overview #
+##### Overview 
 
 Motion disable timeout after BASIC SET to motion endpoint when the inter-  
 nal motion sensor is not used for evaluating the behaviour of the lamp (SLAMP)  
@@ -466,32 +420,12 @@ Timeout:
 | Default Value | 0 |
 
 
-
-
-
-
-#### 0: Root
-
-Root
-
-
-| Property         | Value    |
-|------------------|----------|
-| Configuration ID | group_0 |
-| Data Type        | TEXT |
-| Range |  to  |
-
-
-
-
-
-
 #### 1: Lifeline
 
 Lifeline  
 
 
-# Overview #
+##### Overview 
 
 \- Device Reset Locally (immediately)  
 \- Notifications:  
@@ -532,16 +466,12 @@ ENABLE
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Control: Key01
 
 On/Off control (Never ever add controller, only third-party devices!)  
 
 
-# Overview #
+##### Overview 
 
 Group 2 is used for directly controlling Z-Wave devices via BASIC SET com-  
 mands through the evaluation of movement and light, as with internal use  
@@ -566,16 +496,12 @@ endpoint.
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Motion Begin/End (PIR/radar/iHF)
 
 Notification: Motion  
 
 
-# Overview #
+##### Overview 
 
 Group 3 sends MOTION\_BEGIN and MOTION\_END frames.  
 MOTION\_BEGIN frame = Notification 0x07 (Home security) –  
@@ -602,10 +528,6 @@ endpoint.
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Ambient light
 
 Sensor: Luminescence
@@ -618,12 +540,7 @@ Sensor: Luminescence
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/688).
-

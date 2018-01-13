@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: HKZW_MS01 - ZWave
+---
+
+{% include base.html %}
 
 # HKZW_MS01 Multisensor
 
-This describes the Z-Wave device **HKZW_MS01**, manufactured by **Hank** with the thing type UID of ```hank_hkzwms01_00_000```. 
+This describes the Z-Wave device *HKZW_MS01*, manufactured by *Hank* with the thing type UID of ```hank_hkzwms01_00_000```. 
 
 Multisensor
+
 
 ## Channels
 The following table summarises the channels available for the HKZW_MS01 Multisensor.
@@ -15,7 +22,6 @@ The following table summarises the channels available for the HKZW_MS01 Multisen
 | Sensor (luminance) | sensor_luminance | sensor_luminance | Temperature | Number |
 | Alarm (burglar) | alarm_burglar | alarm_burglar | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Sensor (temperature)
@@ -33,10 +39,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the HKZW_MS01 Multisensor.
 Detailed information on each parameter can be found below.
@@ -48,8 +50,6 @@ Detailed information on each parameter can be found below.
 | 15: value of basic set command |  |
 | 1: Lifeline | Reports the motion detection and battery |
 | 2: Basic Set | assigned to send Basic Set Command |
-
-
 
 
 #### 12: Motion Sensor&#x60;s Sensitivity
@@ -71,10 +71,6 @@ The higher the value,the more sensitive the PIR sensor
 |  | 8 (8) |
 
 
-
-
-
-
 #### 14: Enable/Disable Basic Set Command
 
 The motion Sensor can reverse its value of BASIC SET when motion is triggered
@@ -88,13 +84,7 @@ The motion Sensor can reverse its value of BASIC SET when motion is triggered
 |  | Enable (1) |
 
 
-
-
-
-
 #### 15: value of basic set command
-
-
 
 
 | Property         | Value    |
@@ -105,16 +95,12 @@ The motion Sensor can reverse its value of BASIC SET when motion is triggered
 |  | send on (1) |
 
 
-
-
-
-
 #### 1: Lifeline
 
 Reports the motion detection and battery  
 
 
-# Overview #
+##### Overview 
 
 Reports the motion detection and battery
 
@@ -124,10 +110,6 @@ Reports the motion detection and battery
 | Configuration ID | group_1 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 2: Basic Set
@@ -142,12 +124,7 @@ assigned to send Basic Set Command
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/675).
-

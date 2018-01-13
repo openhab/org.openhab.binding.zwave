@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: ZSE08 - ZWave
+---
+
+{% include base.html %}
 
 # ZSE08 Zooz Z-Wave Plus Contact Sensor
 
-This describes the Z-Wave device **ZSE08**, manufactured by **Zooz** with the thing type UID of ```zooz_zoozzse08_00_000```. 
+This describes the Z-Wave device *ZSE08*, manufactured by *Zooz* with the thing type UID of ```zooz_zoozzse08_00_000```. 
 
 Zooz Z-Wave Plus Contact Sensor  
 
 
-# Overview #
+## Overview 
 
 **WELL DONE!** 
 
@@ -60,7 +66,7 @@ When your network’s primary controller is missing or otherwise inoperable, you
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 1.  Bring the Contact Sensor within direct range of your controller
 2.  Carefully remove the cover from your Contact Sensor
@@ -79,7 +85,7 @@ Tips: If you are unable to include the Z-Wave Contact Sensor to your controller,
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 1.  Make sure the Contact Sensor is powered on and located within direct range of your ZWave gateway controller
 2.  Put your Z-Wave controller into exclusion mode
@@ -91,9 +97,10 @@ If the first attempt is unsuccessful, please repeat the process following all st
   
 
 
-## Wakeup Information ##
+### Wakeup Information 
 
 If you change settings and parameters for the sensor, you may need to wake it up manually for the changes to be recorded. Press and release the Z-Wave button ONCE to wake the device up. The LED indicator will flash ONCE. The sensor’s wake-up interval is set to 12 hours by default to save battery life. Though not recommended, you can change the wake-up interval using your controller’s advanced settings if available. Minimum value: 300s (5 minutes), maximum value: 16,777,200s (around 194 days). Accepted values need to match minute intervals, so 300, 360, 420, etc.
+
 
 ## Channels
 The following table summarises the channels available for the ZSE08 Zooz Z-Wave Plus Contact Sensor.
@@ -103,8 +110,6 @@ The following table summarises the channels available for the ZSE08 Zooz Z-Wave 
 | Door / Window Status | sensor_door | sensor_door | Door | Contact |
 | Alarm (access) | alarm_access | alarm_access | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -121,14 +126,12 @@ Detailed information on each parameter can be found below.
 | 4: Binary Report | Sensor Binary Report for the status of the sensor |
 
 
-
-
 #### 1: Close Delay
 
 Delay (in seconds) before close signal will be sent  
 
 
-# Overview #
+##### Overview 
 
 Set the delay time for turning associated devices OFF based on status change of your Contact Sensor. The number entered as the value corresponds to the number of seconds. So if 0 is entered by default, the Contact Sensor will report status change and trigger an associated device to turn off instantly, without any delay. If you change this setting to 10, the sensor will only trigger the associated device after 10 seconds the status change is reported - if your door or window is closed, the light will not go off for another 10 seconds.
 
@@ -141,16 +144,12 @@ Set the delay time for turning associated devices OFF based on status change of 
 | Default Value | 0 |
 
 
-
-
-
-
 #### 2: Trigger Value
 
 The value that will be set when the sensor is triggered  
 
 
-# Overview #
+##### Overview 
 
 You can choose if your Contact Sensor turns an associated device on or off when sending the basic set command. Use value 0 to turn the associated device OFF and value 255 to turn it ON. Adjust brightness level for a Z-Wave dimmer (Multilevel switch) by putting in any value between 1 and 99.
 
@@ -165,16 +164,12 @@ Values: 0 – OFF; 1 – 99 (% of light); 255 – ON (default).
 | Default Value | 255 |
 
 
-
-
-
-
 #### 1: Status
 
 Open/Close Status of sensor  
 
 
-# Overview #
+##### Overview 
 
 Group 1 for lifeline communication of open / closed status to Z-Wave controller. Supported command classes:
 
@@ -191,16 +186,12 @@ Group 1 for lifeline communication of open / closed status to Z-Wave controller.
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Control
 
 Control a device based on the sensor's value  
 
 
-# Overview #
+##### Overview 
 
 Group 2 for control command communication to associated Z-Wave devices in the network. Use parameter 1 and parameter 2 to configure this group’s settings. Supported command classes:
 
@@ -214,16 +205,12 @@ Group 2 for control command communication to associated Z-Wave devices in the ne
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Notification
 
 Notification Report for the status of the sensor  
 
 
-# Overview #
+##### Overview 
 
 Group 3 for notifications to Z-Wave devices associated in this group. Supported command classes:
 
@@ -237,16 +224,12 @@ Group 3 for notifications to Z-Wave devices associated in this group. Supported 
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Binary Report
 
 Sensor Binary Report for the status of the sensor  
 
 
-# Overview #
+##### Overview 
 
 Group 4 for notifications to Z-Wave devices associated in this group. Supported command classes:
 
@@ -260,12 +243,7 @@ Group 4 for notifications to Z-Wave devices associated in this group. Supported 
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/514).
-

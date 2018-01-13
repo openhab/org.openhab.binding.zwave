@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZME_RC2 - ZWave
+---
+
+{% include base.html %}
 
 # ZME_RC2 Z-Wave Remote Control+
 
-This describes the Z-Wave device **ZME_RC2**, manufactured by **Z-Wave.Me** with the thing type UID of ```zwaveme_zmerc2_00_000```. 
+This describes the Z-Wave device *ZME_RC2*, manufactured by *Z-Wave.Me* with the thing type UID of ```zwaveme_zmerc2_00_000```. 
 
 Z-Wave Remote Control+
+
 
 ## Channels
 The following table summarises the channels available for the ZME_RC2 Z-Wave Remote Control+.
@@ -12,8 +19,6 @@ The following table summarises the channels available for the ZME_RC2 Z-Wave Rem
 |---------|------------|------------------|----------|-----------|
 | Scene Number | scene_number | scene_number |  | Number |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -48,8 +53,6 @@ Detailed information on each parameter can be found below.
 | 12: The buttons of All On/Off |  |
 
 
-
-
 #### 10: Command to Control Group No1 (association group 2)
 
 This parameter defines the command to be sent to devices of control group No1 when the related button is pressed (association group 2)
@@ -65,10 +68,6 @@ This parameter defines the command to be sent to devices of control group No1 wh
 |  | Switch All (3) |
 |  | Send Scenes (4) |
 |  | Send Preconfigured Scenes (5) |
-
-
-
-
 
 
 #### 11: Command to Control Group No2 (association group 3)
@@ -88,10 +87,6 @@ This parameter defines the command to be sent to devices of control group No2 wh
 |  | Send Preconfigured Scenes (5) |
 
 
-
-
-
-
 #### 12: Command to Control Group No3 (association group 4)
 
 This parameter defines the command to be sent to devices of control group No3 when the related button is pressed (association group 4)
@@ -107,10 +102,6 @@ This parameter defines the command to be sent to devices of control group No3 wh
 |  | Switch All (3) |
 |  | Send Scenes (4) |
 |  | Send Preconfigured Scenes (5) |
-
-
-
-
 
 
 #### 13: Command to Control Group No4 (association group 5)
@@ -130,10 +121,6 @@ This parameter defines the command to be sent to devices of control group No4 wh
 |  | Send Preconfigured Scenes (5) |
 
 
-
-
-
-
 #### 14: Command to Control Group No5 (association group 6)
 
 This parameter defines the command to be sent to devices of control group No5 when the related button is pressed (association group 6)
@@ -149,10 +136,6 @@ This parameter defines the command to be sent to devices of control group No5 wh
 |  | Switch All (3) |
 |  | Send Scenes (4) |
 |  | Send Preconfigured Scenes (5) |
-
-
-
-
 
 
 #### 15: Command to Control Group No6 (association group 7)
@@ -172,10 +155,6 @@ This parameter defines the command to be sent to devices of control group No6 wh
 |  | Send Preconfigured Scenes (5) |
 
 
-
-
-
-
 #### 16: Command to Control Group No7 (association group 8)
 
 This parameter defines the command to be sent to devices of control group No7 when the related button is pressed (association group 8)
@@ -191,10 +170,6 @@ This parameter defines the command to be sent to devices of control group No7 wh
 |  | Switch All (3) |
 |  | Send Scenes (4) |
 |  | Send Preconfigured Scenes (5) |
-
-
-
-
 
 
 #### 17: Command to Control Scene No1 (association group 9)
@@ -214,10 +189,6 @@ This parameter defines the command to be sent to devices of control scene group 
 |  | Send Preconfigured Scenes (5) |
 
 
-
-
-
-
 #### 18: Command to Control Scene No2 (association group 10)
 
 This parameter defines the command to be sent to devices of control scene group No2 when the related button is pressed (association group 10)
@@ -233,10 +204,6 @@ This parameter defines the command to be sent to devices of control scene group 
 |  | Switch All (3) |
 |  | Send Scenes (4) |
 |  | Send Preconfigured Scenes (5) |
-
-
-
-
 
 
 #### 19: Command to Control Scene No3 (association group 11)
@@ -256,10 +223,6 @@ This parameter defines the command to be sent to devices of control scene group 
 |  | Send Preconfigured Scenes (5) |
 
 
-
-
-
-
 #### 20: Command to Control group All On/Off (association group 12)
 
 This parameter defines the command to be sent to devices of control group All On/Off when the related button is pressed (association group 12)
@@ -277,10 +240,6 @@ This parameter defines the command to be sent to devices of control group All On
 |  | Send Preconfigured Scenes (5) |
 
 
-
-
-
-
 #### 21: Send the following Switch All commands
 
 Send the following Switch All commands
@@ -295,13 +254,7 @@ Send the following Switch All commands
 |  | Switch all on and off (255) |
 
 
-
-
-
-
 #### 1: Lifeline. Send to controller battery level and WakeUp Notification
-
-
 
 
 | Property         | Value    |
@@ -311,13 +264,7 @@ Send the following Switch All commands
 | Range |  to  |
 
 
-
-
-
-
 #### 2: The buttons of group No1
-
-
 
 
 | Property         | Value    |
@@ -327,13 +274,7 @@ Send the following Switch All commands
 | Range |  to  |
 
 
-
-
-
-
 #### 3: The buttons of group No2
-
-
 
 
 | Property         | Value    |
@@ -343,13 +284,7 @@ Send the following Switch All commands
 | Range |  to  |
 
 
-
-
-
-
 #### 4: The buttons of group No3
-
-
 
 
 | Property         | Value    |
@@ -359,13 +294,7 @@ Send the following Switch All commands
 | Range |  to  |
 
 
-
-
-
-
 #### 5: The buttons of group No4
-
-
 
 
 | Property         | Value    |
@@ -375,13 +304,7 @@ Send the following Switch All commands
 | Range |  to  |
 
 
-
-
-
-
 #### 6: The buttons of group No5
-
-
 
 
 | Property         | Value    |
@@ -391,13 +314,7 @@ Send the following Switch All commands
 | Range |  to  |
 
 
-
-
-
-
 #### 7: The buttons of group No6
-
-
 
 
 | Property         | Value    |
@@ -407,13 +324,7 @@ Send the following Switch All commands
 | Range |  to  |
 
 
-
-
-
-
 #### 8: The buttons of group No7
-
-
 
 
 | Property         | Value    |
@@ -423,13 +334,7 @@ Send the following Switch All commands
 | Range |  to  |
 
 
-
-
-
-
 #### 9: The buttons of scene No1
-
-
 
 
 | Property         | Value    |
@@ -439,13 +344,7 @@ Send the following Switch All commands
 | Range |  to  |
 
 
-
-
-
-
 #### 10: The buttons of scene No2
-
-
 
 
 | Property         | Value    |
@@ -455,13 +354,7 @@ Send the following Switch All commands
 | Range |  to  |
 
 
-
-
-
-
 #### 11: The buttons of scene No3
-
-
 
 
 | Property         | Value    |
@@ -471,13 +364,7 @@ Send the following Switch All commands
 | Range |  to  |
 
 
-
-
-
-
 #### 12: The buttons of All On/Off
-
-
 
 
 | Property         | Value    |
@@ -487,12 +374,7 @@ Send the following Switch All commands
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/149).
-

@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: WWA-02 - ZWave
+---
+
+{% include base.html %}
 
 # WWA-02 Wireless Water and Temperature Alarm
 
-This describes the Z-Wave device **WWA-02**, manufactured by **FortrezZ LLC** with the thing type UID of ```fortrezz_wwa02_00_000```. 
+This describes the Z-Wave device *WWA-02*, manufactured by *FortrezZ LLC* with the thing type UID of ```fortrezz_wwa02_00_000```. 
 
 Wireless Water and Temperature Alarm
+
 
 ## Channels
 The following table summarises the channels available for the WWA-02 Wireless Water and Temperature Alarm.
@@ -13,7 +20,6 @@ The following table summarises the channels available for the WWA-02 Wireless Wa
 | Sensor (temperature) | sensor_temperature | sensor_temperature | Temperature | Number |
 | Alarm | alarm_flood | alarm_flood | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Sensor (temperature)
@@ -31,10 +37,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the WWA-02 Wireless Water and Temperature Alarm.
 Detailed information on each parameter can be found below.
@@ -48,11 +50,7 @@ Detailed information on each parameter can be found below.
 | 3: Temperature Alarms |  |
 
 
-
-
 #### 1: Low Temperature Trigger Point
-
-
 
 
 | Property         | Value    |
@@ -63,13 +61,7 @@ Detailed information on each parameter can be found below.
 | Default Value | 4 |
 
 
-
-
-
-
 #### 2: High Temperature Trigger Point
-
-
 
 
 | Property         | Value    |
@@ -80,13 +72,7 @@ Detailed information on each parameter can be found below.
 | Default Value | 70 |
 
 
-
-
-
-
 #### 1: Water and Temperature Alarms
-
-
 
 
 | Property         | Value    |
@@ -96,13 +82,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Water Alarms
-
-
 
 
 | Property         | Value    |
@@ -112,13 +92,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Temperature Alarms
-
-
 
 
 | Property         | Value    |
@@ -128,12 +102,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/222).
-

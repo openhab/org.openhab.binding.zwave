@@ -1,19 +1,25 @@
+---
+layout: documentation
+title: IDL-101 - ZWave
+---
+
+{% include base.html %}
 
 # IDL-101 Z-Wave Lock
 
-This describes the Z-Wave device **IDL-101**, manufactured by **Alphonsus Tech** with the thing type UID of ```idlock_idl101_00_000```. 
+This describes the Z-Wave device *IDL-101*, manufactured by *Alphonsus Tech* with the thing type UID of ```idlock_idl101_00_000```. 
 
 Z-Wave Lock  
 
 
-# Overview #
+## Overview 
 
 http://idlock.no/
 
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 1.  Bring the controller as close as possible to the lock unit
 2.  Set the controller to inclusion mode
@@ -26,7 +32,7 @@ http://idlock.no/
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 1.  Set the controller to exclusion mode
 2.  Push and hold KEY button on the inside panel on the lock until all keys on the outside light up and a audible signal is given.
@@ -37,9 +43,10 @@ http://idlock.no/
   
 
 
-## Wakeup Information ##
+### Wakeup Information 
 
 This is a frequently listening device (FLIRS) which supports beaming. This means that the lock will check regularly for incoming commands, and respond quickly without the need for any user specification of wakeup intervals or physical wakeup procedures.
+
 
 ## Channels
 The following table summarises the channels available for the IDL-101 Z-Wave Lock.
@@ -55,8 +62,6 @@ The following table summarises the channels available for the IDL-101 Z-Wave Loc
 |  | battery-level | system.battery-level |  |  |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the IDL-101 Z-Wave Lock.
 Detailed information on each parameter can be found below.
@@ -68,14 +73,12 @@ Detailed information on each parameter can be found below.
 | 1: Lifeline | Notification reports are sent out to devices included in this association group |
 
 
-
-
 #### 1: Door Lock Mode
 
 Sets the door lock mode  
 
 
-# Overview #
+##### Overview 
 
 No details in manual, will update when the meaning of this parameter is uncovered.
 
@@ -88,10 +91,6 @@ No details in manual, will update when the meaning of this parameter is uncovere
 |  | Disable Away Auto Lock (1) |
 |  | Enable Away Manual Lock (2) |
 |  | Enable Away Auto Lock (3) |
-
-
-
-
 
 
 #### 2: RFID Register Mode
@@ -107,10 +106,6 @@ Sets the RFID registration mode
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Lifeline
 
 Notification reports are sent out to devices included in this association group
@@ -123,12 +118,7 @@ Notification reports are sent out to devices included in this association group
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/384).
-

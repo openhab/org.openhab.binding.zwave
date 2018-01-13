@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: MH-S411 - ZWave
+---
+
+{% include base.html %}
 
 # MH-S411 Touch Panel Switch (Single)
 
-This describes the Z-Wave device **MH-S411**, manufactured by **McoHome Technology Co., Ltd** with the thing type UID of ```mcohome_mhs411_00_000```. 
+This describes the Z-Wave device *MH-S411*, manufactured by *McoHome Technology Co., Ltd* with the thing type UID of ```mcohome_mhs411_00_000```. 
 
 Touch Panel Switch (Single)
+
 
 ## Channels
 The following table summarises the channels available for the MH-S411 Touch Panel Switch (Single).
@@ -11,8 +18,6 @@ The following table summarises the channels available for the MH-S411 Touch Pane
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
-
-
 
 
 ### Device Configuration
@@ -25,11 +30,7 @@ Detailed information on each parameter can be found below.
 | 2: Status Reports |  |
 
 
-
-
 #### 1: Switching of associated devices
-
-
 
 
 | Property         | Value    |
@@ -39,13 +40,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Status Reports
-
-
 
 
 | Property         | Value    |
@@ -55,12 +50,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/279).
-

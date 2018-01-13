@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: DTHERMZ5 - ZWave
+---
+
+{% include base.html %}
 
 # DTHERMZ5 Z-Wave room sensor
 
-This describes the Z-Wave device **DTHERMZ5**, manufactured by **Danfoss** with the thing type UID of ```danfoss_dthermz5_00_000```. 
+This describes the Z-Wave device *DTHERMZ5*, manufactured by *Danfoss* with the thing type UID of ```danfoss_dthermz5_00_000```. 
 
 Z-Wave room sensor
+
 
 ## Channels
 The following table summarises the channels available for the DTHERMZ5 Z-Wave room sensor.
@@ -15,7 +22,6 @@ The following table summarises the channels available for the DTHERMZ5 Z-Wave ro
 | Setpoint (heating) | thermostat_setpoint_heating | thermostat_setpoint | Temperature | Number |
 | Scene Number | scene_number | scene_number |  | Number |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Sensor (temperature)
@@ -33,9 +39,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (cooling)
 
 #### Scale
@@ -51,9 +54,6 @@ Select the scale to use for setpoints.
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (heating)
 
 #### Scale
@@ -67,10 +67,6 @@ Select the scale to use for setpoints.
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -92,14 +88,12 @@ Detailed information on each parameter can be found below.
 | 11: LED color | 1=Green 2=Red |
 
 
-
-
 #### 1: Temperature Report threshold
 
 Range is from 0.1 to 10°C 1=0.1°C 100=10°C  
 
 
-# Overview #
+##### Overview 
 
 Default value 5 = 0.5 °C
 
@@ -110,10 +104,6 @@ Default value 5 = 0.5 °C
 | Data Type        | INTEGER |
 | Range | 1 to 100 |
 | Default Value | 5 |
-
-
-
-
 
 
 #### 2: Set-point display resolution
@@ -129,10 +119,6 @@ range from 0.1 to 10°C 1=0.1°C 100=10°C
 | Default Value | 5 |
 
 
-
-
-
-
 #### 3: Min Set-point and override limit
 
 from min 0°C to max setpoint override limit 0=0°C 40=40°C
@@ -144,10 +130,6 @@ from min 0°C to max setpoint override limit 0=0°C 40=40°C
 | Data Type        | INTEGER |
 | Range | 0 to 40 |
 | Default Value | 12 |
-
-
-
-
 
 
 #### 4: Max Set-point and override limit
@@ -163,10 +145,6 @@ from min setpoint override limit to max 40°C 0=0°C 40=40°C
 | Default Value | 28 |
 
 
-
-
-
-
 #### 5: LED Flash period
 
 0 to 65535 seconds
@@ -178,10 +156,6 @@ from min setpoint override limit to max 40°C 0=0°C 40=40°C
 | Data Type        | INTEGER |
 | Range | 0 to 65535 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 6: Set-point control function
@@ -197,10 +171,6 @@ from min setpoint override limit to max 40°C 0=0°C 40=40°C
 |  | enabled (1) |
 
 
-
-
-
-
 #### 7: Temporarily override scheduler
 
 0=Disabled 1=Enabled
@@ -212,10 +182,6 @@ from min setpoint override limit to max 40°C 0=0°C 40=40°C
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | disabled (0) |
 |  | enabled (1) |
-
-
-
-
 
 
 #### 8: Set-point type in Thermostat_Setpoint_Reports
@@ -232,10 +198,6 @@ from min setpoint override limit to max 40°C 0=0°C 40=40°C
 |  | Auto-Changeover (10) |
 
 
-
-
-
-
 #### 9: LED on time
 
 1=100ms 5=500ms
@@ -247,10 +209,6 @@ from min setpoint override limit to max 40°C 0=0°C 40=40°C
 | Data Type        | INTEGER |
 | Range | 1 to 5 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 10: Number of LED flashes (duration)
@@ -266,10 +224,6 @@ from min setpoint override limit to max 40°C 0=0°C 40=40°C
 | Default Value | 5 |
 
 
-
-
-
-
 #### 11: LED color
 
 1=Green 2=Red
@@ -283,12 +237,7 @@ from min setpoint override limit to max 40°C 0=0°C 40=40°C
 |  | Red (2) |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/501).
-

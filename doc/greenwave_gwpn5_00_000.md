@@ -1,19 +1,25 @@
+---
+layout: documentation
+title: GWPN5 - ZWave
+---
+
+{% include base.html %}
 
 # GWPN5 Multi-socket PowerNode (5-plug)
 
-This describes the Z-Wave device **GWPN5**, manufactured by **GreenWave Reality Inc.** with the thing type UID of ```greenwave_gwpn5_00_000```. 
+This describes the Z-Wave device *GWPN5*, manufactured by *GreenWave Reality Inc.* with the thing type UID of ```greenwave_gwpn5_00_000```. 
 
 Multi-socket PowerNode (5-plug)  
 
 
-# Overview #
+## Overview 
 
 This Configuration is for the 6 plug version of the PowerNode.
 
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 On the PowerNode, press and hold the **sync** button for approximately one second until the activity indicator displays a clockwise rotating pattern. This indicates the PowerNode is attempting inclusion. During this process, verify that the Gateway activity indicator still displays a clockwise rotating pattern.
 
@@ -24,9 +30,10 @@ If all bars on the activity indicator start flashing instead of forming a solid 
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 On the PowerNode, press and hold the **Sync** button for approximately one second until the PowerNode activity indicator begins to display a counter-clockwise rotating pattern. The PowerNode is attempting exclusion.
+
 
 ## Channels
 The following table summarises the channels available for the GWPN5 Multi-socket PowerNode (5-plug).
@@ -54,8 +61,6 @@ The following table summarises the channels available for the GWPN5 Multi-socket
 | Electric meter (kWh) 5 | meter_kwh5 | meter_kwh | Energy | Number |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the GWPN5 Multi-socket PowerNode (5-plug).
 Detailed information on each parameter can be found below.
@@ -73,14 +78,12 @@ Detailed information on each parameter can be found below.
 | 4: Over-current detection |  |
 
 
-
-
 #### 0: Min. variation of load current
 
 Minimum variation in load current before a message is sent.  
 
 
-# Overview #
+##### Overview 
 
 Value in percent (30 => 30%)
 
@@ -91,10 +94,6 @@ Value in percent (30 => 30%)
 | Data Type        | INTEGER |
 | Range | 0 to 100 |
 | Default Value | 10 |
-
-
-
-
 
 
 #### 1: No communication light
@@ -108,10 +107,6 @@ Minutes after which the device will flash if controller communicate is lost
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 2 |
-
-
-
-
 
 
 #### 2: Wheel position
@@ -135,10 +130,6 @@ Wheel position on the GreenWave device (read-only)
 |  | Locked (137) |
 
 
-
-
-
-
 #### 3: Power-on state
 
 Default state after power loss
@@ -151,10 +142,6 @@ Default state after power loss
 | Options | All OFF (0) |
 |  | Remember last state (1) |
 |  | All ON (2) |
-
-
-
-
 
 
 #### 4: LED for network error
@@ -170,13 +157,7 @@ If the LED should indicate a network error by flashing or not
 |  | Enable the LED for network error (1) |
 
 
-
-
-
-
 #### 1: Wheel position change
-
-
 
 
 | Property         | Value    |
@@ -186,13 +167,7 @@ If the LED should indicate a network error by flashing or not
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Current leakage on relay
-
-
 
 
 | Property         | Value    |
@@ -200,10 +175,6 @@ If the LED should indicate a network error by flashing or not
 | Configuration ID | group_2 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 3: Power level change
@@ -218,13 +189,7 @@ The new power reading is sent if the delta of the change is greater than the def
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Over-current detection
-
-
 
 
 | Property         | Value    |
@@ -234,12 +199,7 @@ The new power reading is sent if the delta of the change is greater than the def
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/264).
-

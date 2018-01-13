@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZMNHLA - ZWave
+---
+
+{% include base.html %}
 
 # ZMNHLA Flush PWM thermostat
 
-This describes the Z-Wave device **ZMNHLA**, manufactured by **Goap** with the thing type UID of ```qubino_zmnhla_00_000```. 
+This describes the Z-Wave device *ZMNHLA*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhla_00_000```. 
 
 Flush PWM thermostat
+
 
 ## Channels
 The following table summarises the channels available for the ZMNHLA Flush PWM thermostat.
@@ -15,7 +22,6 @@ The following table summarises the channels available for the ZMNHLA Flush PWM t
 | Electric meter (kWh) | meter_kwh | meter_kwh | Energy | Number |
 | Thermostat mode | thermostat_mode | qubino_zmnhla_00_000_thermostat_mode | Temperature | Number |
 | Setpoint (heating) | thermostat_setpoint_heating | thermostat_setpoint | Temperature | Number |
-
 
 
 ### Sensor (temperature)
@@ -33,9 +39,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (heating)
 
 #### Scale
@@ -49,10 +52,6 @@ Select the scale to use for setpoints.
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -101,8 +100,6 @@ Detailed information on each parameter can be found below.
 | 6: Controller Updates |  |
 
 
-
-
 #### 1: Input 1 switch type
 
 Input 1 switch type
@@ -114,10 +111,6 @@ Input 1 switch type
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | mono-stable switch type (push button) (0) |
 |  | bi-stable switch type (1) |
-
-
-
-
 
 
 #### 2: Input 2 switch type
@@ -133,10 +126,6 @@ Input 2 switch type
 |  | bi-stable switch type (1) |
 
 
-
-
-
-
 #### 3: Input 3 switch type
 
 Input 3 switch type
@@ -148,10 +137,6 @@ Input 3 switch type
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | mono-stable switch type (push button) (0) |
 |  | bi-stable switch type (1) |
-
-
-
-
 
 
 #### 4: Input 1 contact type
@@ -167,10 +152,6 @@ Input 1 contact type
 |  | NC (normally close) input type (1) |
 
 
-
-
-
-
 #### 5: Input 2 contact type
 
 Input 2 contact type
@@ -182,10 +163,6 @@ Input 2 contact type
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | NO (normally open) input type (0) |
 |  | NC (normally close) input type (1) |
-
-
-
-
 
 
 #### 6: Input 3 contact type
@@ -201,16 +178,12 @@ Input 3 contact type
 |  | NC (normally close) input type (1) |
 
 
-
-
-
-
 #### 10: Activate / deactivate functions ALL ON/ALL OFF
 
 Respond to ALL ON/ALL OFF  
 
 
-# Overview #
+##### Overview 
 
 Flush PWM thermostat module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.           
 
@@ -223,10 +196,6 @@ Flush PWM thermostat module responds to commands ALL ON / ALL OFF that may be se
 |  | ALL ON is not active ALL OFF active (1) |
 |  | ALL ON active ALL OFF is not active (2) |
 |  | ALL ON active, ALL OFF active (255) |
-
-
-
-
 
 
 #### 11: I1 Functionality Selection
@@ -242,10 +211,6 @@ Default Value = 1. 65535 – Input I1 does not influence on the heat/cool proces
 | Default Value | 1 |
 
 
-
-
-
-
 #### 12: I2 Functionality Selection
 
 Default = 65535, 65535 - I2 does not influence on the heat/cool process, From From 0 to 990 - Temperature set point from 0.0 C to 99.0 C. When I2 is pressed, the temperature set point is automatically set to value defined here. In
@@ -257,10 +222,6 @@ Default = 65535, 65535 - I2 does not influence on the heat/cool process, From Fr
 | Data Type        | INTEGER |
 | Range | 1 to 65535 |
 | Default Value | 65535 |
-
-
-
-
 
 
 #### 13: I3 Functionality Selection
@@ -276,10 +237,6 @@ Default Value = 65535. 65535 – Input I3 does not influence on the heat/cool pr
 | Default Value | 65535 |
 
 
-
-
-
-
 #### 40: Power reporting in Watts on power change
 
 Default Value = 0. 0 – Reporting Disabled 1 - 100 = 1% - 100% Reporting enabled. Power report is sent (pushed) only when actual power in Watts in real time changes for more than set percentage comparing to previous actual power in
@@ -291,10 +248,6 @@ Default Value = 0. 0 – Reporting Disabled 1 - 100 = 1% - 100% Reporting enable
 | Data Type        | INTEGER |
 | Range | 0 to 100 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 42: Power reporting in Watts by timer interval
@@ -310,10 +263,6 @@ Default Value = 300. 0 – Reporting Disabled 1 - 32767 = 1 second - 32767 secon
 | Default Value | 300 |
 
 
-
-
-
-
 #### 45: Antifreeze
 
 Set value at which temperature the device will be turned on even if the termpearture was manually set to off. Parameter can be set from 0 to 255 where 0 to 127 means from 0.0 C to 12.7 C and from 128 to 254 means from -0.1 C to -12.6 C
@@ -325,10 +274,6 @@ Set value at which temperature the device will be turned on even if the termpear
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 50 |
-
-
-
-
 
 
 #### 50: PWM Maximum Value
@@ -344,10 +289,6 @@ Set value at which temperature the device will be turned on even if the termpear
 | Default Value | 100 |
 
 
-
-
-
-
 #### 51: PWM Minimum Value
 
 1 - 99 = 1% - 99%, step is 1% Minimum PWM set by entered value. Default = 0. The Minimum level may exceed the maximum level.
@@ -359,10 +300,6 @@ Set value at which temperature the device will be turned on even if the termpear
 | Data Type        | INTEGER |
 | Range | 0 to 99 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 52: PWM Cycle Duration
@@ -378,10 +315,6 @@ Set value at which temperature the device will be turned on even if the termpear
 | Default Value | 10 |
 
 
-
-
-
-
 #### 53: PID Value Inside Deadband
 
 When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE means PID remains on same level as was before entering into deadband.
@@ -393,10 +326,6 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | PID value equals ZERO (0) |
 |  | PID value set to LAST VALUE (1) |
-
-
-
-
 
 
 #### 54: PID Deadband
@@ -412,10 +341,6 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Default Value | 5 |
 
 
-
-
-
-
 #### 55: Integral Sampling Time
 
 0 - 127 = 0s -127s step is 1s Parameter defines the time between samples. On each sample the controller captures difference between SP-act.
@@ -427,10 +352,6 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Data Type        | INTEGER |
 | Range | 0 to 127 |
 | Default Value | 5 |
-
-
-
-
 
 
 #### 56: P Parameter
@@ -446,10 +367,6 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Default Value | 100 |
 
 
-
-
-
-
 #### 57: I Parameter
 
 0 - 1000 - 0s I value step is 1. Default = 1
@@ -461,10 +378,6 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Data Type        | INTEGER |
 | Range | 0 to 1000 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 58: D Parameter
@@ -480,13 +393,7 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Default Value | 1 |
 
 
-
-
-
-
 #### 59: Thermostat Mode
-
-
 
 
 | Property         | Value    |
@@ -495,10 +402,6 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Heat Mode (0) |
 |  | Cool Mode (1) |
-
-
-
-
 
 
 #### 60: Too low temperature limit
@@ -514,10 +417,6 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Default Value | 50 |
 
 
-
-
-
-
 #### 61: Too high temperature limit
 
 1 - 1000 = 0.1 C - 100.0 C step is 0.1 C Too high temperature limit is set by entered value. In case measured temperature is higher than set value, module sends BasicSet value. Default = 700
@@ -531,13 +430,7 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Default Value | 700 |
 
 
-
-
-
-
 #### 63: Output Switch Selection
-
-
 
 
 | Property         | Value    |
@@ -546,10 +439,6 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | When system is turned off the output is 0V (NC) (0) |
 |  | When system is turned off the output is 230V (NO) (1) |
-
-
-
-
 
 
 #### 70: Input 1 Status on delay
@@ -565,10 +454,6 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Default Value | 0 |
 
 
-
-
-
-
 #### 71: Input 1 Status off delay
 
 1 - 32000 seconds. If the value of the parameter is different to 0, means that the influence of this input to heating or cooling will react after inserted time. Parameter 11 must be set to 2!
@@ -580,10 +465,6 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Data Type        | INTEGER |
 | Range | 0 to 32000 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 72: Input 2 Status on delay
@@ -599,10 +480,6 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Default Value | 0 |
 
 
-
-
-
-
 #### 73: Input 2 Status off delay
 
 1 - 32000 seconds. If the value of the parameter is different to 0, means that the influence of this input to heating or cooling will react after inserted time. Parameter 12 must be set to 2000!
@@ -614,10 +491,6 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Data Type        | INTEGER |
 | Range | 0 to 32000 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 74: Input 3 Status on delay
@@ -633,10 +506,6 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Default Value | 0 |
 
 
-
-
-
-
 #### 75: Input 3 Status off delay
 
 1 - 32000 seconds. If the value of the parameter is different to 0, means that the influence of this input to heating or cooling will react after inserted time. Parameter 13 must be set to 2!
@@ -650,13 +519,7 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: On/Off Triggered by Q State
-
-
 
 
 | Property         | Value    |
@@ -666,13 +529,7 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Range |  to  |
 
 
-
-
-
-
 #### 2: On/Off Triggered by I2
-
-
 
 
 | Property         | Value    |
@@ -682,13 +539,7 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Range |  to  |
 
 
-
-
-
-
 #### 3: On/Off Triggered by I3
-
-
 
 
 | Property         | Value    |
@@ -698,13 +549,7 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Range |  to  |
 
 
-
-
-
-
 #### 4: On/Off Triggerd by High Temp
-
-
 
 
 | Property         | Value    |
@@ -714,13 +559,7 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Range |  to  |
 
 
-
-
-
-
 #### 5: On/Off Trigger by Low Temp
-
-
 
 
 | Property         | Value    |
@@ -730,13 +569,7 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Range |  to  |
 
 
-
-
-
-
 #### 6: Controller Updates
-
-
 
 
 | Property         | Value    |
@@ -746,12 +579,7 @@ When value is set to ZERO PID inside deadband is forced to zero. LAST VALUE mean
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/212).
-

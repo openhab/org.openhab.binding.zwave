@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: StellaZ - ZWave
+---
+
+{% include base.html %}
 
 # StellaZ Thermostatic Valve
 
-This describes the Z-Wave device **StellaZ**, manufactured by **Eurotronics** with the thing type UID of ```eurotronic_stellaz_00_000```. 
+This describes the Z-Wave device *StellaZ*, manufactured by *Eurotronics* with the thing type UID of ```eurotronic_stellaz_00_000```. 
 
 Thermostatic Valve
+
 
 ## Channels
 The following table summarises the channels available for the StellaZ Thermostatic Valve.
@@ -17,7 +24,6 @@ The following table summarises the channels available for the StellaZ Thermostat
 | Setpoint (furnace) | thermostat_setpoint_heating_econ | thermostat_setpoint | Temperature | Number |
 | Setpoint (heating) | thermostat_setpoint_heating | thermostat_setpoint | Temperature | Number |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Dimmer
@@ -35,9 +41,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
 ### Sensor (temperature)
 
 #### Scale
@@ -51,9 +54,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
 
 
 ### Setpoint (furnace)
@@ -71,9 +71,6 @@ Select the scale to use for setpoints.
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (heating)
 
 #### Scale
@@ -89,10 +86,6 @@ Select the scale to use for setpoints.
 |  | Fahrenheit (1) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the StellaZ Thermostatic Valve.
 Detailed information on each parameter can be found below.
@@ -101,10 +94,7 @@ Detailed information on each parameter can be found below.
 |-------------|-------------|
 
 
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/183).
-

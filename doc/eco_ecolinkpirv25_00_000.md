@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: Ecolink PIR v2.5 - ZWave
+---
+
+{% include base.html %}
 
 # Ecolink PIR v2.5 Z-Wave PIR Motion Sensor v2.5
 
-This describes the Z-Wave device **Ecolink PIR v2.5**, manufactured by **Ecolink** with the thing type UID of ```eco_ecolinkpirv25_00_000```. 
+This describes the Z-Wave device *Ecolink PIR v2.5*, manufactured by *Ecolink* with the thing type UID of ```eco_ecolinkpirv25_00_000```. 
 
 Z-Wave PIR Motion Sensor v2.5  
 
 
-# Overview #
+## Overview 
 
 **Overview:**
 
@@ -23,11 +29,12 @@ The device has two configuration parameters. Parameter 1 configures the sensor 
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 Initial device inclusion is started by removing the pull tab from the back of the unit.  This connects the battery and the device will immediately be eligible for inclusion.  Place your controller in inclusion mode prior to pulling the tab from the back.
 
 The manual indicates network-wide inclusion is supported, but also indicates that the device should be within 15 feet of the controller during the inclusion process.
+
 
 ## Channels
 The following table summarises the channels available for the Ecolink PIR v2.5 Z-Wave PIR Motion Sensor v2.5.
@@ -38,8 +45,6 @@ The following table summarises the channels available for the Ecolink PIR v2.5 Z
 | Alarm (power) | alarm_power | alarm_power | Door | Switch |
 | Alarm (burglar) | alarm_burglar | alarm_burglar | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -54,14 +59,12 @@ Detailed information on each parameter can be found below.
 | 2: Group 2 |  |
 
 
-
-
 #### 1: Send Basic Sets
 
 Send or do not send Basic Set commands to AG2  
 
 
-# Overview #
+##### Overview 
 
 Parameter 1 configures the sensor to send or not send Basic Set commands of 0x00 to nodes in Association group 2 turning the devices off when the sensor is in a restored state (i.e. motion not detected).  By default the sensor does NOT send Basic Set commands of 0x00.
 
@@ -82,16 +85,12 @@ Sensor sends Basic Sets of 0x00 to nodes in Association Group2 when sensor is re
 |  | Send Basic Sets (255) |
 
 
-
-
-
-
 #### 2: Send Binary Reports
 
 Send Sensor Binary Reports for backward compatibility  
 
 
-# Overview #
+##### Overview 
 
 Paremter 2 configures the sensor to either send or not to send Sensor Binary Report commands to Association Group 1 when the sensor is faulted and restored.  If the controller is fully compatible with the Notification Command Class thereby making the Sensor Binary Reports redundant, the controller  can disable the Sensor Binary Report Commands completely.
 
@@ -112,16 +111,12 @@ Sensor will send only Notification Reports and NOT Sensor Binary Reports when th
 |  | Send only Notification Reports (255) |
 
 
-
-
-
-
 #### 1: Group 1
 
   
 
 
-# Overview #
+##### Overview 
 
 Group 1 is a lifeline group who will receive unsolicited messages relating to motion detection notifications, case tampering notifications, low-battery notifications, and snsor binary reports.
 
@@ -133,16 +128,12 @@ Group 1 is a lifeline group who will receive unsolicited messages relating to mo
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Group 2
 
   
 
 
-# Overview #
+##### Overview 
 
 Group 2 is intended for devices that are to be controlled i.e. turned on or off (on only by default) with a Basic Set.  On inclusion the controller should put its node ID in group 1 but not in group 2.
 
@@ -154,12 +145,7 @@ Group 2 is intended for devices that are to be controlled i.e. turned on or off 
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/525).
-

@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: Smoke Detector - ZWave
+---
+
+{% include base.html %}
 
 # Smoke Detector Carbon monoxide detector, smoke detector
 
-This describes the Z-Wave device **Smoke Detector**, manufactured by **Shenzhen iSurpass Technology Co. ,Ltd** with the thing type UID of ```isurpass_smokedetector_00_000```. 
+This describes the Z-Wave device *Smoke Detector*, manufactured by *Shenzhen iSurpass Technology Co. ,Ltd* with the thing type UID of ```isurpass_smokedetector_00_000```. 
 
 Carbon monoxide detector, smoke detector
+
 
 ## Channels
 The following table summarises the channels available for the Smoke Detector Carbon monoxide detector, smoke detector.
@@ -15,8 +22,6 @@ The following table summarises the channels available for the Smoke Detector Car
 |  | battery-level | system.battery-level |  |  |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the Smoke Detector Carbon monoxide detector, smoke detector.
 Detailed information on each parameter can be found below.
@@ -25,10 +30,7 @@ Detailed information on each parameter can be found below.
 |-------------|-------------|
 
 
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/728).
-

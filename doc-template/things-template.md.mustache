@@ -12,13 +12,18 @@
 {{~#if options}}{{#options}}| {{#if @first}}Options{{/if}} | {{label}} ({{value}}) |
 {{/options}}{{/if}}
 {{#if readOnly}}
-**NOTE:** This parameter is read-only.{{/if}}
-{{/inline}}
-{{#thing}}# {{label}}
+**NOTE:** This parameter is read-only.{{/if}}{{/inline}}{{#thing}}---
+layout: documentation
+title: {{property.modelId}} - ZWave
+---
+
+{% include base.html %}
+
+# {{label}}
 
 This describes the Z-Wave device *{{property.modelId}}*, manufactured by *{{property.vendor}}* with the thing type UID of ```{{id}}```. 
 
-{{html2md description}}
+{{html2md description indent="#"}}
 
 ## Channels
 The following table summarises the channels available for the {{label}}.
@@ -33,7 +38,7 @@ The following table summarises the channels available for the {{label}}.
 {{#configDescription}}{{#parameter}}
 #### {{label}}
 
-{{html2md description}}
+{{html2md description  indent="####"}}
 
 {{> configuration}}
 {{/parameter}}{{/configDescription}}
@@ -52,7 +57,7 @@ Detailed information on each parameter can be found below.
 
 #### {{label}}
 
-{{html2md description}}
+{{html2md description indent="####"}}
 
 {{> configuration}}
 

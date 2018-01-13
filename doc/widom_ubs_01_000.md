@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: WiDom Universal Relay Switch - ZWave
+---
+
+{% include base.html %}
 
 # WiDom Universal Relay Switch WiDom Universal Relay Switch
 
-This describes the Z-Wave device **WiDom Universal Relay Switch**, manufactured by **wiDom** with the thing type UID of ```widom_ubs_01_000```. 
+This describes the Z-Wave device *WiDom Universal Relay Switch*, manufactured by *wiDom* with the thing type UID of ```widom_ubs_01_000```. 
 
 WiDom Universal Relay Switch
+
 
 ## Channels
 The following table summarises the channels available for the WiDom Universal Relay Switch WiDom Universal Relay Switch.
@@ -11,8 +18,6 @@ The following table summarises the channels available for the WiDom Universal Re
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
-
-
 
 
 ### Device Configuration
@@ -30,8 +35,6 @@ Detailed information on each parameter can be found below.
 | 5: Group 5 |  |
 
 
-
-
 #### 1: Device status 1 click
 
 Device status when the external switch receives 1 click
@@ -47,16 +50,12 @@ Device status when the external switch receives 1 click
 |  | IGNORE (4) |
 
 
-
-
-
-
 #### 2: Device status 2 click
 
   
 
 
-# Overview #
+##### Overview 
 
 Device status when the external switch receives 2 click
 
@@ -71,16 +70,12 @@ Device status when the external switch receives 2 click
 |  | IGNORE (4) |
 
 
-
-
-
-
 #### 1: Group 1
 
   
 
 
-# Overview #
+##### Overview 
 
 Devices that will be notified of changes in its status
 
@@ -92,16 +87,12 @@ Devices that will be notified of changes in its status
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Group 2
 
   
 
 
-# Overview #
+##### Overview 
 
 Devices that will be controlled by a single click on the external switch
 
@@ -113,16 +104,12 @@ Devices that will be controlled by a single click on the external switch
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Group 3
 
   
 
 
-# Overview #
+##### Overview 
 
 Devices that will be controlled by a double click on the external switch
 
@@ -134,16 +121,12 @@ Devices that will be controlled by a double click on the external switch
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Group 4
 
   
 
 
-# Overview #
+##### Overview 
 
 Devices that will be controlled by a triple click on the external switch
 
@@ -155,16 +138,12 @@ Devices that will be controlled by a triple click on the external switch
 | Range |  to  |
 
 
-
-
-
-
 #### 5: Group 5
 
   
 
 
-# Overview #
+##### Overview 
 
 Devices that will be controlled by hold on the external switch
 
@@ -176,12 +155,7 @@ Devices that will be controlled by hold on the external switch
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/298).
-

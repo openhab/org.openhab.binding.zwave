@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: SF812 - ZWave
+---
+
+{% include base.html %}
 
 # SF812 Smoke Sensor
 
-This describes the Z-Wave device **SF812**, manufactured by **Everspring** with the thing type UID of ```everspring_sf812_00_000```. 
+This describes the Z-Wave device *SF812*, manufactured by *Everspring* with the thing type UID of ```everspring_sf812_00_000```. 
 
 Smoke Sensor  
 
 
-# Overview #
+## Overview 
 
 The photoelectric Smoke Detector is a Z-WaveTM enabled device which is fully  
 compatible with any Z-WaveTM enabled network. Z-WaveTM enabled devices  
@@ -25,16 +31,17 @@ family to escape before a fire spreads.
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 Pressing link key three times within 1.5 second will enter inclusion mode. The Detector will stay “awake” for 10 minutes to allow time for setting and device status enquiring.
 
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 Pressing link key three times within 1.5 second will enter exclusion mode. The Detector will stay “awake” for 10 minutes to allow time for setting and device status enquiring.
+
 
 ## Channels
 The following table summarises the channels available for the SF812 Smoke Sensor.
@@ -47,8 +54,6 @@ The following table summarises the channels available for the SF812 Smoke Sensor
 | Alarm (smoke) | alarm_smoke | alarm_smoke | Door | Switch |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the SF812 Smoke Sensor.
 Detailed information on each parameter can be found below.
@@ -58,11 +63,7 @@ Detailed information on each parameter can be found below.
 | 1: Alarm notifications |  |
 
 
-
-
 #### 1: Alarm notifications
-
-
 
 
 | Property         | Value    |
@@ -72,12 +73,7 @@ Detailed information on each parameter can be found below.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/33).
-

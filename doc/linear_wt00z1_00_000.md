@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: WT00Z-1 - ZWave
+---
+
+{% include base.html %}
 
 # WT00Z-1 3-Way Wall Accessory Switch
 
-This describes the Z-Wave device **WT00Z-1**, manufactured by **Linear Corp** with the thing type UID of ```linear_wt00z1_00_000```. 
+This describes the Z-Wave device *WT00Z-1*, manufactured by *Linear Corp* with the thing type UID of ```linear_wt00z1_00_000```. 
 
 3-Way Wall Accessory Switch
+
 
 ## Channels
 The following table summarises the channels available for the WT00Z-1 3-Way Wall Accessory Switch.
@@ -12,7 +19,6 @@ The following table summarises the channels available for the WT00Z-1 3-Way Wall
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer |
-
 
 
 ### Dimmer
@@ -28,10 +34,6 @@ Restore Last Dimming level on ON.
 | Data Type        | BOOLEAN || Default Value | true |
 | Options | Restore Last Value (true) |
 |  | Restore Full Brightness (false) |
-
-
-
-
 
 
 ### Device Configuration
@@ -64,14 +66,12 @@ Detailed information on each parameter can be found below.
 | 4: Associating Group 4 |  |
 
 
-
-
 #### 1: Dim Start Level
 
 Set Ignore Start Level Bit When Transmitting Dim Commands  
 
 
-# Overview #
+##### Overview 
 
 The WT00Z-1 can send Dim commands to Z-Wave enabled dimmers.The Dim command has a start level embedded in it. A dimmer receivingthis command will start dimming from that start level. However, thecommand can be sent so that the dimmer ignores the start level andinstead starts dimming from its current level. By default, the WT00Z-1sends the command so that the dimmer will start dimming from itscurrent dim level rather than the start level embedded in the command.To change this, simply set the conﬁguration parameter to 0.
 
@@ -96,16 +96,12 @@ Any ACT Z-Wave enabled dimmers have the conﬁguration optionto ignore the start
 |  | Ignore Start Level (1) |
 
 
-
-
-
-
 #### 2: Suspend Group 4
 
 Suspend Group 4  
 
 
-# Overview #
+##### Overview 
 
 You may wish to disable transmitting commands to Z-Wave devices that are in Group 4 without “un-associating” those devices from the group. Setting parameter 2 to the value of 1 will stop the WT00Z-1 from transmitting to devices that are “associated” into Group 4.
 
@@ -124,16 +120,12 @@ You may wish to disable transmitting commands to Z-Wave devices that are in Grou
 |  | Disable Group 4 (1) |
 
 
-
-
-
-
 #### 3: Night Light
 
 Relationship between LED and status of devices in Group 1  
 
 
-# Overview #
+##### Overview 
 
 The LED on the WT00Z-1 will by default, turn ON when the status of the devices in Group 1 is ON. To make the LED turn ON when the status of Group 1 is OFF set this parameter to a value of 1.
 
@@ -152,16 +144,12 @@ The LED on the WT00Z-1 will by default, turn ON when the status of the devices 
 |  | On when load is off (1) |
 
 
-
-
-
-
 #### 4: Invert Switch
 
 Setting the relationship between the top of the transmitter to ON or OFF  
 
 
-# Overview #
+##### Overview 
 
 To change the top of the transmitter to OFF and the bottom of the transmitter to ON, set parameter 4 to 1.
 
@@ -182,16 +170,12 @@ To change back to original settings, set this parameter to the value of 0.
 |  | Bottom-ON, Top-OFF (1) |
 
 
-
-
-
-
 #### 5: Ignore start level when recieving dim commands
 
 Ignore start level when recieving dim commands  
 
 
-# Overview #
+##### Overview 
 
 The WT00Z-1 can send Dim commands to Z-Wave enabled dimmers. The Dim command has a start level embedded in it. A dimmer receiving this command will start dimming from that start level. However, the command can be sent so that the dimmer ignores the start level and instead start dimming from its current level. By default, the WT00Z-1 sends the command so that the dimmer will start dimming from its current dim level rather then the start level embedded in the command. To change this, simply set the conﬁguration parameter to 0.
 
@@ -210,10 +194,6 @@ The WT00Z-1 can send Dim commands to Z-Wave enabled dimmers. The Dim command has
 |  | Ignore start level (1) |
 
 
-
-
-
-
 #### 7: ON/OFF dim rate
 
 dim step parameter valid values: 1-99
@@ -225,10 +205,6 @@ dim step parameter valid values: 1-99
 | Data Type        | INTEGER |
 | Range | 1 to 99 |
 | Default Value | 3 |
-
-
-
-
 
 
 #### 8: ON/OFF dim rate
@@ -244,10 +220,6 @@ dim timer parameter valid values: 1-255
 | Default Value | 10 |
 
 
-
-
-
-
 #### 9: Local control dim rate
 
 dim step parameter valid values: 1-99
@@ -259,10 +231,6 @@ dim step parameter valid values: 1-99
 | Data Type        | INTEGER |
 | Range | 1 to 99 |
 | Default Value | 3 |
-
-
-
-
 
 
 #### 10: Local control dim rate
@@ -278,10 +246,6 @@ dim timer parameter valid values: 1-255
 | Default Value | 10 |
 
 
-
-
-
-
 #### 11: ALL ON/ ALL OFF dim rate
 
 dim step parameter valid values: 1-99
@@ -293,10 +257,6 @@ dim step parameter valid values: 1-99
 | Data Type        | INTEGER |
 | Range | 1 to 99 |
 | Default Value | 3 |
-
-
-
-
 
 
 #### 12: ALL ON/ ALL OFF dim rate
@@ -312,16 +272,12 @@ dim timer parameter valid values: 1-255
 | Default Value | 10 |
 
 
-
-
-
-
 #### 13: Disable group 4 during a dim command
 
 Disable group 4 during a dim command  
 
 
-# Overview #
+##### Overview 
 
 After the WT00Z-1 is commanded to stop dimming when dimming because of the DIM START command, it will then command the Z-Wave devices that are in Group 4 to its new level. To prevent the WT00Z-1 from commanding the Z-Wave devices in Group 4 during this particular occurrence, set Parameter 13 to the value of 1.
 
@@ -340,10 +296,6 @@ After the WT00Z-1 is commanded to stop dimming when dimming because of the DIM S
 |  | Disable (1) |
 
 
-
-
-
-
 #### 14: Enable Shade Control Group 2
 
 The switch can control shade control devices if this parameter is set to 1.
@@ -355,10 +307,6 @@ The switch can control shade control devices if this parameter is set to 1.
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Disable (0) |
 |  | Enable (1) |
-
-
-
-
 
 
 #### 15: Enable Shade Control Group 3
@@ -374,10 +322,6 @@ The switch can control shade control devices if this parameter is set to 1.
 |  | Enable (1) |
 
 
-
-
-
-
 #### 16: Enable Shade Control Group 1
 
 The switch can control shade control devices if this parameter is set to 1.
@@ -391,16 +335,12 @@ The switch can control shade control devices if this parameter is set to 1.
 |  | Enable (1) |
 
 
-
-
-
-
 #### 19: LED Transmission Indication
 
 LED Transmission Indication  
 
 
-# Overview #
+##### Overview 
 
 The WT00Z-1 will ﬂicker its LED when it is transmitting to any of its 4 groups. This ﬂickering can be set to not ﬂicker at all (set to 0), to ﬂicker the entire time it is transmitting (set to 1), or to ﬂicker for only 1 second when it begins transmitting (set to 2). By default, the WT00Z-1 is set to ﬂicker for only 1 second.
 
@@ -420,16 +360,12 @@ The WT00Z-1 will ﬂicker its LED when it is transmitting to any of its 4 groups
 |  | Flicker for 1 second (2) |
 
 
-
-
-
-
 #### 20: Poll: minutes
 
 Frequency that WT00Z-1 will poll first node in Group 1  
 
 
-# Overview #
+##### Overview 
 
 The WT00Z-1 will poll the ﬁrst node in Group 1 in order to keep itself synchronized with the group if this conﬁguration parameter is set to 1. How often it will poll is conﬁgured using this parameter.
 
@@ -448,16 +384,12 @@ The WT00Z-1 will poll the ﬁrst node in Group 1 in order to keep itself synchro
 | Default Value | 2 |
 
 
-
-
-
-
 #### 21: Poll first node in group 1
 
 Activate/Deactivate polling of first node in Group 1  
 
 
-# Overview #
+##### Overview 
 
 The WT00Z-1 will poll the ﬁrst node in Group 1 in order to keep itself synchronized with the group if this conﬁguration parameter is set to 1.
 
@@ -476,16 +408,12 @@ The WT00Z-1 will poll the ﬁrst node in Group 1 in order to keep itself synchro
 |  | Poll first node in group (1) |
 
 
-
-
-
-
 #### 1: Associating Group 1
 
   
 
 
-# Overview #
+##### Overview 
 
 Nodes in this group are turned ON by tapping the top of the paddle or OFF by tapping the bottom of the paddle. Nodes associated into this group are dimmed by pressing and holding the bottom of the paddle until the desired dim level is reached or brightened by pressing and holding the top of the paddle until the desired level is reached. The LED on the WT00Z-1 will indicate the status of this group ONLY.
 
@@ -497,16 +425,12 @@ Nodes in this group are turned ON by tapping the top of the paddle or OFF by tap
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Associating Group 2
 
   
 
 
-# Overview #
+##### Overview 
 
 Nodes in this group are turned ON by tapping the top of the paddle twice or OFF by tapping the bottom of the paddle twice. Nodes associated into this group are dimmed by tapping the bottom of the paddle once and then pressing and holding the bottom of the paddle until the desired dim level is reached or brightened by tapping the top  of  the  paddle  once  then  pressing and holding the top of the paddle  until the desire level is reached
 
@@ -518,16 +442,12 @@ Nodes in this group are turned ON by tapping the top of the paddle twice or OFF
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Associating Group 3
 
   
 
 
-# Overview #
+##### Overview 
 
 Nodes in this group are turned ON by tapping the top of the paddle three times or OFF by tapping the bottom of the paddle three times. Nodes associated into this group are dimmed by tapping the bottom of the paddle twice and then pressing and holding the bottom of the paddle until the desired dim level is reached or brightened by tapping the top of the paddle twice then pressing and holding the top of the paddle until the desired level is reached
 
@@ -539,16 +459,12 @@ Nodes in this group are turned ON by tapping the top of the paddle three times o
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Associating Group 4
 
   
 
 
-# Overview #
+##### Overview 
 
 Nodes in this group are turned ON or OFF or set to a speciﬁc dim level when the WT00Z-1 is controlled remotely. You can place up to 5 nodes in each group. If controlling dimmers, for best results, associate the dimmers into the group ﬁrst
 
@@ -560,12 +476,7 @@ Nodes in this group are turned ON or OFF or set to a speciﬁc dim level when 
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/13).
-

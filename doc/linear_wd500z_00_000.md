@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: WD500Z-1 - ZWave
+---
+
+{% include base.html %}
 
 # WD500Z-1 Wall Dimmer Switch
 
-This describes the Z-Wave device **WD500Z-1**, manufactured by **Linear Corp** with the thing type UID of ```linear_wd500z_00_000```. 
+This describes the Z-Wave device *WD500Z-1*, manufactured by *Linear Corp* with the thing type UID of ```linear_wd500z_00_000```. 
 
 Wall Dimmer Switch
+
 
 ## Channels
 The following table summarises the channels available for the WD500Z-1 Wall Dimmer Switch.
@@ -11,7 +18,6 @@ The following table summarises the channels available for the WD500Z-1 Wall Dimm
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
 | Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer |
-
 
 
 ### Dimmer
@@ -27,10 +33,6 @@ Restore Last Dimming level on ON.
 | Data Type        | BOOLEAN || Default Value | true |
 | Options | Restore Last Value (true) |
 |  | Restore Full Brightness (false) |
-
-
-
-
 
 
 ### Device Configuration
@@ -50,8 +52,6 @@ Detailed information on each parameter can be found below.
 | 3: Triple Tap |  |
 
 
-
-
 #### 1: Dim Start Level
 
 A dimmer receiving this command will start dimming from that start level if this bit is set to 0. If the bit is set to 1, the dimmer will ignore the start level and instead start dimming from its current level.
@@ -63,10 +63,6 @@ A dimmer receiving this command will start dimming from that start level if this
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | Use Start Level (0) |
 |  | Ignore Start Level (1) |
-
-
-
-
 
 
 #### 3: LED Indication
@@ -82,10 +78,6 @@ The WD500Z-1 will flicker its LED when it is transmitting to any of its groups.
 |  | 1 (1) |
 
 
-
-
-
-
 #### 4: Invert Switch
 
 To change the top of the switch to OFF and the bottom to ON change parameter to 1.
@@ -97,10 +89,6 @@ To change the top of the switch to OFF and the bottom to ON change parameter to 
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Top-ON, Bottom-OFF (0) |
 |  | Bottom-ON, Top-OFF (1) |
-
-
-
-
 
 
 #### 14: Enable Shade Control Group 2
@@ -116,10 +104,6 @@ The switch can control shade control devices if this parameter is set to 1
 |  | Enable (1) |
 
 
-
-
-
-
 #### 15: Enable Shade Control Group 3
 
 The switch can control shade control devices if this parameter is set to 1.
@@ -131,10 +115,6 @@ The switch can control shade control devices if this parameter is set to 1.
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Disable (0) |
 |  | Enable (1) |
-
-
-
-
 
 
 #### 19: LED Transmission Indication
@@ -151,13 +131,7 @@ The WD500Z-1 will flicker its LED when it is transmitting to any of its groups. 
 |  | Flicker for 1 second (2) |
 
 
-
-
-
-
 #### 1: UNKNOWN!!!
-
-
 
 
 | Property         | Value    |
@@ -167,13 +141,7 @@ The WD500Z-1 will flicker its LED when it is transmitting to any of its groups. 
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Double Tap
-
-
 
 
 | Property         | Value    |
@@ -183,13 +151,7 @@ The WD500Z-1 will flicker its LED when it is transmitting to any of its groups. 
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Triple Tap
-
-
 
 
 | Property         | Value    |
@@ -199,12 +161,7 @@ The WD500Z-1 will flicker its LED when it is transmitting to any of its groups. 
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/6).
-

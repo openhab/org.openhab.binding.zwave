@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: TZWP-100 - ZWave
+---
+
+{% include base.html %}
 
 # TZWP-100 Wall Plug Switch
 
-This describes the Z-Wave device **TZWP-100**, manufactured by **Telldus Technologies AB** with the thing type UID of ```telldus_tzwp100_00_000```. 
+This describes the Z-Wave device *TZWP-100*, manufactured by *Telldus Technologies AB* with the thing type UID of ```telldus_tzwp100_00_000```. 
 
 Wall Plug Switch
+
 
 ## Channels
 The following table summarises the channels available for the TZWP-100 Wall Plug Switch.
@@ -11,8 +18,6 @@ The following table summarises the channels available for the TZWP-100 Wall Plug
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
-
-
 
 
 ### Device Configuration
@@ -28,8 +33,6 @@ Detailed information on each parameter can be found below.
 | 2: Control other devices |  |
 
 
-
-
 #### 1: Countdown timer
 
 Automatic turning off in minutes, 0 to disable
@@ -41,10 +44,6 @@ Automatic turning off in minutes, 0 to disable
 | Data Type        | INTEGER |
 | Range | 0 to 254 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 2: Device status after power failure
@@ -61,10 +60,6 @@ Define how the plug will react after the power supply is back on
 |  | Always on (2) |
 
 
-
-
-
-
 #### 3: LED indicator
 
 Set the intensity of the LED indicator
@@ -78,16 +73,12 @@ Set the intensity of the LED indicator
 | Default Value | 100 |
 
 
-
-
-
-
 #### 1: Lifeline - Plug status
 
   
 
 
-# Overview #
+##### Overview 
 
 The plug will send it's status to the node in this group whenever the status of the plug changes.  
 Lifeline is normally used to send the plug status to the main controller / gateway.
@@ -100,16 +91,12 @@ Lifeline is normally used to send the plug status to the main controller / gatew
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Control other devices
 
   
 
 
-# Overview #
+##### Overview 
 
 The plug will send Basic Set control signals to the nodes in this group whenever the status of the  
 plug changes. This will work like a master/slave solution.
@@ -122,12 +109,7 @@ plug changes. This will work like a master/slave solution.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/409).
-

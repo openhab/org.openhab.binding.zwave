@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZXT-120 - ZWave
+---
+
+{% include base.html %}
 
 # ZXT-120 AC IR Remote
 
-This describes the Z-Wave device **ZXT-120**, manufactured by **Remotec** with the thing type UID of ```remotec_zxt120_00_000```. 
+This describes the Z-Wave device *ZXT-120*, manufactured by *Remotec* with the thing type UID of ```remotec_zxt120_00_000```. 
 
 AC IR Remote
+
 
 ## Channels
 The following table summarises the channels available for the ZXT-120 AC IR Remote.
@@ -16,7 +23,6 @@ The following table summarises the channels available for the ZXT-120 AC IR Remo
 | Setpoint (heating) | thermostat_setpoint_heating | thermostat_setpoint | Temperature | Number |
 | Thermostat fan mode | thermostat_fanmode | remotec_zxt120_00_000_thermostat_fanmode | Temperature | Number |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Sensor (temperature)
@@ -34,9 +40,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (cooling)
 
 #### Scale
@@ -52,9 +55,6 @@ Select the scale to use for setpoints.
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (heating)
 
 #### Scale
@@ -68,10 +68,6 @@ Select the scale to use for setpoints.
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -90,11 +86,7 @@ Detailed information on each parameter can be found below.
 | 37: Sensor temperature compensation |  |
 
 
-
-
 #### 25: Indicate a location for IR code learning and start learning
-
-
 
 
 | Property         | Value    |
@@ -105,13 +97,7 @@ Detailed information on each parameter can be found below.
 | Default Value | 1 |
 
 
-
-
-
-
 #### 26: Learning status register (Read Only)
-
-
 
 
 | Property         | Value    |
@@ -122,13 +108,7 @@ Detailed information on each parameter can be found below.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 27: IR code number for built-in code library
-
-
 
 
 | Property         | Value    |
@@ -139,13 +119,7 @@ Detailed information on each parameter can be found below.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 28: External IR Emitter power level
-
-
 
 
 | Property         | Value    |
@@ -156,13 +130,7 @@ Detailed information on each parameter can be found below.
 |  | High power mode (255) |
 
 
-
-
-
-
 #### 32: Surround IR control
-
-
 
 
 | Property         | Value    |
@@ -173,13 +141,7 @@ Detailed information on each parameter can be found below.
 |  | Disable Surround IR Emitters (0) |
 
 
-
-
-
-
 #### 33: AC function Swing control
-
-
 
 
 | Property         | Value    |
@@ -190,13 +152,7 @@ Detailed information on each parameter can be found below.
 |  | Swing Auto (1) |
 
 
-
-
-
-
 #### 35: Learn location status. Bitmask. (Read Only)
-
-
 
 
 | Property         | Value    |
@@ -207,13 +163,7 @@ Detailed information on each parameter can be found below.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 37: Sensor temperature compensation
-
-
 
 
 | Property         | Value    |
@@ -224,12 +174,7 @@ Detailed information on each parameter can be found below.
 | Default Value | 0 |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/202).
-

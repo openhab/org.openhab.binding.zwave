@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: SWM301 - ZWave
+---
+
+{% include base.html %}
 
 # SWM301 Z-Wave Module for Water Meter
 
-This describes the Z-Wave device **SWM301**, manufactured by **Horstmann Controls Limited** with the thing type UID of ```horstmann_swm301_00_000```. 
+This describes the Z-Wave device *SWM301*, manufactured by *Horstmann Controls Limited* with the thing type UID of ```horstmann_swm301_00_000```. 
 
 Z-Wave Module for Water Meter  
 
 
-# Overview #
+## Overview 
 
 SWM 301 is a battery-powered RF module using Z-Wave® technology for reporting secondary water metering readings in domestic dwellings.
 
@@ -15,7 +21,7 @@ The RF module records the meter reading by backlash-free pick-up on the litre wh
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 1.  Put network controller in Inclusion / Exclusion mode.
 2.  Hold a small magnet near to reed switch until the LED is turned on. Remove magnet right away when LED turned on. LED will remain on for next 4 seconds and then it will flash once to indicate NIF is sent.
@@ -25,11 +31,12 @@ The RF module records the meter reading by backlash-free pick-up on the litre wh
   
 
 
-## Wakeup Information ##
+### Wakeup Information 
 
 Hold a small magnet near to reed switch until the LED is turned on. Remove magnet right away when LED turned on. LED will remain on for next 4 seconds and then it will flash once to indicate NIF is sent.
 
 SWM301 will wake up for 10 seconds after sending NIF
+
 
 ## Channels
 The following table summarises the channels available for the SWM301 Z-Wave Module for Water Meter.
@@ -40,7 +47,6 @@ The following table summarises the channels available for the SWM301 Z-Wave Modu
 | Water meter (amps) | meter_water_cubic_meters | meter_water_cubic_meters | Energy | Number |
 |  | battery-level | system.battery-level |  |  |
 | Alarm (heat) | alarm_heat | alarm_heat |  | Switch |
-
 
 
 ### Sensor (temperature)
@@ -56,10 +62,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -80,14 +82,12 @@ Detailed information on each parameter can be found below.
 | 3: Temperature and low temp alarm | Group receiving temperature |
 
 
-
-
 #### 1: Meter register offset
 
 current meter reading  
 
 
-# Overview #
+##### Overview 
 
 Offset to adjust the reported to the actual meter reading.
 
@@ -100,16 +100,12 @@ Offset to adjust the reported to the actual meter reading.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 2: Meter reading reporting intervals
 
 how often meter reading is sent  
 
 
-# Overview #
+##### Overview 
 
 Defines how often the meter reading is sent.
 
@@ -122,16 +118,12 @@ Defines how often the meter reading is sent.
 | Default Value | 1440 |
 
 
-
-
-
-
 #### 3: Delta config for meter reading
 
 min. delta for automatic report  
 
 
-# Overview #
+##### Overview 
 
 Defines the minimum change of the meter reading that results in an unsolicited meter report.
 
@@ -144,13 +136,7 @@ Defines the minimum change of the meter reading that results in an unsolicited m
 | Default Value | 0 |
 
 
-
-
-
-
 #### 4: Mechanical meter serial number
-
-
 
 
 | Property         | Value    |
@@ -161,16 +147,12 @@ Defines the minimum change of the meter reading that results in an unsolicited m
 | Default Value | 0 |
 
 
-
-
-
-
 #### 5: Temperature monitor on / off
 
 enable temperature monitor  
 
 
-# Overview #
+##### Overview 
 
 Enables or disables the temperature monitor.
 
@@ -183,16 +165,12 @@ Enables or disables the temperature monitor.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 6: Temperature delta
 
 change in temperature for report  
 
 
-# Overview #
+##### Overview 
 
 Defines how much the temperature has to change for an unsolicited temperature report.
 
@@ -205,16 +183,12 @@ Defines how much the temperature has to change for an unsolicited temperature re
 | Default Value | 0 |
 
 
-
-
-
-
 #### 7: Temperature Alarm Threshold
 
 temperature triggering alarm  
 
 
-# Overview #
+##### Overview 
 
 Defines below what temperature a low temperature alarm is reported.
 
@@ -227,16 +201,12 @@ Defines below what temperature a low temperature alarm is reported.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Meter reading
 
 Group receiving meter readings  
 
 
-# Overview #
+##### Overview 
 
 Group 1 - Nodes to receive unsolicited water meter reading.
 
@@ -248,16 +218,12 @@ Group 1 - Nodes to receive unsolicited water meter reading.
 | Range |  to  |
 
 
-
-
-
-
 #### 2: low battery
 
 Group receiving battery warnings  
 
 
-# Overview #
+##### Overview 
 
 Group 2 - Nodes to receive unsolicited low battery warnings report.
 
@@ -269,16 +235,12 @@ Group 2 - Nodes to receive unsolicited low battery warnings report.
 | Range |  to  |
 
 
-
-
-
-
 #### 3: Temperature and low temp alarm
 
 Group receiving temperature  
 
 
-# Overview #
+##### Overview 
 
 Group 3 - Nodes to receive unsolicited temperature report and low temperature alarm.
 
@@ -290,12 +252,7 @@ Group 3 - Nodes to receive unsolicited temperature report and low temperature al
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/459).
-

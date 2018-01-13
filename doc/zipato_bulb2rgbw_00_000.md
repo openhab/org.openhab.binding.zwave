@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: RGBWE2 - ZWave
+---
+
+{% include base.html %}
 
 # RGBWE2 RGBW Bulb V2
 
-This describes the Z-Wave device **RGBWE2**, manufactured by **Zipato** with the thing type UID of ```zipato_bulb2rgbw_00_000```. 
+This describes the Z-Wave device *RGBWE2*, manufactured by *Zipato* with the thing type UID of ```zipato_bulb2rgbw_00_000```. 
 
 RGBW Bulb V2
+
 
 ## Channels
 The following table summarises the channels available for the RGBWE2 RGBW Bulb V2.
@@ -13,7 +20,6 @@ The following table summarises the channels available for the RGBWE2 RGBW Bulb V
 | Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer |
 | Color Control | color_color | color_color |  | Color |
 | Color Temperature | color_temperature | color_temperature | ColorLight | Dimmer |
-
 
 
 ### Dimmer
@@ -31,10 +37,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the RGBWE2 RGBW Bulb V2.
 Detailed information on each parameter can be found below.
@@ -44,11 +46,7 @@ Detailed information on each parameter can be found below.
 | 1: internal bulb temperature |  |
 
 
-
-
 #### 1: internal bulb temperature
-
-
 
 
 | Property         | Value    |
@@ -59,12 +57,7 @@ Detailed information on each parameter can be found below.
 | Default Value | 0 |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/619).
-

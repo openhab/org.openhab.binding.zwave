@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: Z-Weather - ZWave
+---
+
+{% include base.html %}
 
 # Z-Weather Z-Wave weather interface
 
-This describes the Z-Wave device **Z-Weather**, manufactured by **Z-Wave.Me** with the thing type UID of ```zwaveme_zweather_00_000```. 
+This describes the Z-Wave device *Z-Weather*, manufactured by *Z-Wave.Me* with the thing type UID of ```zwaveme_zweather_00_000```. 
 
 Z-Wave weather interface
+
 
 ## Channels
 The following table summarises the channels available for the Z-Weather Z-Wave weather interface.
@@ -22,7 +29,6 @@ The following table summarises the channels available for the Z-Weather Z-Wave w
 |  | battery-level | system.battery-level |  |  |
 
 
-
 ### Sensor (temperature)
 
 #### Scale
@@ -36,10 +42,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -56,8 +58,6 @@ Detailed information on each parameter can be found below.
 | 4: End of Dusk | At the end of the dusk if it becomes bright |
 
 
-
-
 #### 1: Wind Speed Action Threshold
 
 Available Parameters: 0 - Off 1 - 30 in milliseconds Default = 6 m/s
@@ -69,10 +69,6 @@ Available Parameters: 0 - Off 1 - 30 in milliseconds Default = 6 m/s
 | Data Type        | INTEGER |
 | Range | 0 to 30 |
 | Default Value | 6 |
-
-
-
-
 
 
 #### 2: Twilight Action Threshold
@@ -88,13 +84,7 @@ Set from 0 - 100 % Default = 37% (street lighting)
 | Default Value | 37 |
 
 
-
-
-
-
 #### 1: Life Line
-
-
 
 
 | Property         | Value    |
@@ -102,10 +92,6 @@ Set from 0 - 100 % Default = 37% (street lighting)
 | Configuration ID | group_1 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 2: Wind Speed
@@ -120,10 +106,6 @@ Wind speed is higher than 6 m/s (22 Km/h)
 | Range |  to  |
 
 
-
-
-
-
 #### 3: End of Dawn
 
 At the end of the dawn if it becomes bright
@@ -134,10 +116,6 @@ At the end of the dawn if it becomes bright
 | Configuration ID | group_3 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 4: End of Dusk
@@ -152,12 +130,7 @@ At the end of the dusk if it becomes bright
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/258).
-

@@ -1,19 +1,25 @@
+---
+layout: documentation
+title: plugInDimmer - ZWave
+---
 
-# plugInDimmer BeNext Plug-in Dimmer
+{% include base.html %}
 
-This describes the Z-Wave device **plugInDimmer**, manufactured by **BeNext** with the thing type UID of ```benext_plugindimmer_00_000```. 
+# plugInDimmer Plug-in Dimmer
 
-BeNext Plug-in Dimmer
+This describes the Z-Wave device *plugInDimmer*, manufactured by *BeNext* with the thing type UID of ```benext_plugindimmer_00_000```. 
+
+Plug-in Dimmer
+
 
 ## Channels
-The following table summarises the channels available for the plugInDimmer BeNext Plug-in Dimmer.
+The following table summarises the channels available for the plugInDimmer Plug-in Dimmer.
 
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
 | Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer |
 | Electric meter (kWh) | meter_kwh | meter_kwh | Energy | Number |
 | Electric meter (watts) | meter_watts | meter_watts | Energy | Number |
-
 
 
 ### Dimmer
@@ -31,12 +37,8 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
-
 ### Device Configuration
-The following table provides a summary of the configuration parameters available in the plugInDimmer BeNext Plug-in Dimmer.
+The following table provides a summary of the configuration parameters available in the plugInDimmer Plug-in Dimmer.
 Detailed information on each parameter can be found below.
 
 | Parameter   | Description |
@@ -55,8 +57,6 @@ Detailed information on each parameter can be found below.
 | 2: Group 2 | Receives METER and MULTILEVEL\_SWITCH commands |
 
 
-
-
 #### 1: Reset to factory settings
 
 Set all configuration values to default values (factory settings).
@@ -68,10 +68,6 @@ Set all configuration values to default values (factory settings).
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 4: Enable dimming
@@ -87,10 +83,6 @@ This parameter is used to enable the dimming option of the product. When disable
 |  | Enable (1) |
 
 
-
-
-
-
 #### 6: Maximum powerload
 
 The maximum powerload in watts when light is turned on, when measured higher then this value the Plugin Dimmer is automatically stops with dimming or is turned off.
@@ -102,10 +94,6 @@ The maximum powerload in watts when light is turned on, when measured higher the
 | Data Type        | INTEGER |
 | Range | 25 to 150 |
 | Default Value | 125 |
-
-
-
-
 
 
 #### 7: Dimming speed
@@ -121,10 +109,6 @@ The speed of dimming when activated (manual and RF). Dim speed is 1% per value (
 | Default Value | 3 |
 
 
-
-
-
-
 #### 8: Fading up speed
 
 The speed of fading up when activated (manual and RF). Fade speed is 1% per value (\* 10 ms)
@@ -136,10 +120,6 @@ The speed of fading up when activated (manual and RF). Fade speed is 1% per valu
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 11: Auto meter report: percentage
@@ -155,10 +135,6 @@ A percentage that an energy value must be different compared to a previous sent 
 | Default Value | 1 |
 
 
-
-
-
-
 #### 12: Auto meter report: watt
 
 A watt value that an energy value must be different compared to a previous sent value before an unsolicited meter report is sent. Minimum value = 5 watt Maximum value = 255 watt
@@ -170,10 +146,6 @@ A watt value that an energy value must be different compared to a previous sent 
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 5 |
-
-
-
-
 
 
 #### 13: Auto meter report: time
@@ -189,10 +161,6 @@ A time value that has to be passed compared to a previous sent value before a un
 | Default Value | 10 |
 
 
-
-
-
-
 #### 14: Last known status
 
 What to do with lamp status when power applied. If 0x00: Always switch light off when power applied. If > 0x00: Switch lamp on/off depending on last known lampstatus before power was disconnected.
@@ -204,10 +172,6 @@ What to do with lamp status when power applied. If 0x00: Always switch light off
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 15: Fading down speed
@@ -223,10 +187,6 @@ The speed of fading down when activated (manual and RF). Fade speed is 1% per va
 | Default Value | 1 |
 
 
-
-
-
-
 #### 1: Group 1
 
 Receives BASIC SET commands
@@ -237,10 +197,6 @@ Receives BASIC SET commands
 | Configuration ID | group_1 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 2: Group 2
@@ -255,12 +211,7 @@ Receives METER and MULTILEVEL\_SWITCH commands
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/226).
-

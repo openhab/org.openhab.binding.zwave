@@ -1,21 +1,28 @@
+---
+layout: documentation
+title: ZRC-100 - ZWave
+---
+
+{% include base.html %}
 
 # ZRC-100 Remote Control
 
-This describes the Z-Wave device **ZRC-100**, manufactured by **Remotec** with the thing type UID of ```remotec_zrc100_00_000```. 
+This describes the Z-Wave device *ZRC-100*, manufactured by *Remotec* with the thing type UID of ```remotec_zrc100_00_000```. 
 
 Remote Control  
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 Hold the up + down arrow keys simultaneously for 3 seconds and select "Learning Mode"
 
   
 
 
-## Wakeup Information ##
+### Wakeup Information 
 
 Manually by pressing any button
+
 
 ## Channels
 The following table summarises the channels available for the ZRC-100 Remote Control.
@@ -23,8 +30,6 @@ The following table summarises the channels available for the ZRC-100 Remote Con
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
 | Scene Number | scene_number | scene_number |  | Number |
-
-
 
 
 ### Device Configuration
@@ -35,10 +40,7 @@ Detailed information on each parameter can be found below.
 |-------------|-------------|
 
 
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/404).
-

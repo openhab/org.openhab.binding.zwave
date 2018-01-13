@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: PAN03 - ZWave
+---
+
+{% include base.html %}
 
 # PAN03 In Wall Micromodule Single Switch
 
-This describes the Z-Wave device **PAN03**, manufactured by **Philio Technology Corp** with the thing type UID of ```philio_pan03_00_000```. 
+This describes the Z-Wave device *PAN03*, manufactured by *Philio Technology Corp* with the thing type UID of ```philio_pan03_00_000```. 
 
 In Wall Micromodule Single Switch
+
 
 ## Channels
 The following table summarises the channels available for the PAN03 In Wall Micromodule Single Switch.
@@ -17,8 +24,6 @@ The following table summarises the channels available for the PAN03 In Wall Micr
 | Electric meter (amps) | meter_current | meter_current | Energy | Number |
 | Electric meter (kWh) | meter_kwh | meter_kwh | Energy | Number |
 | Alarm | alarm_general | alarm_general | Door | Switch |
-
-
 
 
 ### Device Configuration
@@ -39,14 +44,12 @@ Detailed information on each parameter can be found below.
 | 1: Group 1 | the Switch will report its latest status to Z-Wave Controller |
 
 
-
-
 #### 1: Watt Meter Report Period
 
 Watt Meter Report Period  
 
 
-# Overview #
+##### Overview 
 
 WATT METER REPORT PERIOD:
 
@@ -61,16 +64,12 @@ If the setting is configured for 1hour (set value =720), the Micromodule Single
 | Default Value | 720 |
 
 
-
-
-
-
 #### 2: KWH Meter Report Period
 
 KWH Meter Report Period (6\*10min=1 hour)  
 
 
-# Overview #
+##### Overview 
 
 KWH METER REPORT PERIOD:
 
@@ -85,16 +84,12 @@ If the setting is configured for 1hour (set value =6), the Micromodule Single S
 | Default Value | 6 |
 
 
-
-
-
-
 #### 3: Threshold of current for Load caution
 
 Threshold of current for Load caution (1100\*0.01A = 11A)  
 
 
-# Overview #
+##### Overview 
 
 THRESHOLD OF CURRENT FOR LOAD CAUTION:
 
@@ -109,16 +104,12 @@ This is a warning when the current of load over the preset threshold value, if 
 | Default Value | 1100 |
 
 
-
-
-
-
 #### 4: Threshold of KWh for Load caution
 
 Threshold of KWh for Load caution  
 
 
-# Overview #
+##### Overview 
 
 THRESHOLD OF KWH FOR LOAD CAUTION
 
@@ -133,16 +124,12 @@ This is a warning when the KWh of load over the preset threshold value, if the 
 | Default Value | 10000 |
 
 
-
-
-
-
 #### 5: Restore switch state mode
 
 Restore switch state mode  
 
 
-# Overview #
+##### Overview 
 
 RESTORE SWITCH STATE MODE:
 
@@ -158,16 +145,12 @@ Whenever the AC power return from lost, Micromodule Single Switch Max.Load: 11A
 |  | Switch on (2) |
 
 
-
-
-
-
 #### 6: Manual On/Off mode
 
 Manual On/Off mode  
 
 
-# Overview #
+##### Overview 
 
 MANUAL ON/OFF MODE:
 
@@ -180,10 +163,6 @@ The On/Off function of S1, S2 and learn switch can be disabled or enabled by thi
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Disable manual On/Off (0) |
 |  | Enable manual On/Off (1) |
-
-
-
-
 
 
 #### 7: LED indication mode
@@ -200,16 +179,12 @@ LED indication mode
 |  | One flash mode (2) |
 
 
-
-
-
-
 #### 8: Auto off timer
 
 Auto off timer  
 
 
-# Overview #
+##### Overview 
 
 AUTO OFF TIMER:
 
@@ -224,16 +199,12 @@ Whenever Micromodule Single Switch Max.Load: 11A switches to on, the auto off t
 | Default Value | 0 |
 
 
-
-
-
-
 #### 9: RF off command mode
 
 RF off command mode  
 
 
-# Overview #
+##### Overview 
 
 RF OFF COMMAND MODE:
 
@@ -250,16 +221,12 @@ Whenever a switch off command, BASIC\_SET, BINARY\_SWITCH\_SET, SWITCH\_ALL\_OFF
 |  | Switch on (3) |
 
 
-
-
-
-
 #### 1: Group 1
 
 the Switch will report its latest status to Z-Wave Controller  
 
 
-# Overview #
+##### Overview 
 
 Grouping 1 includes, SWITCH\_BINARY\_REPORT, METER\_REPORT, ALARM\_REPORT.
 
@@ -271,12 +238,7 @@ Grouping 1 includes, SWITCH\_BINARY\_REPORT, METER\_REPORT, ALARM\_REPORT.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/529).
-

@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: HSP02 - ZWave
+---
+
+{% include base.html %}
 
 # HSP02 Motion Detector
 
-This describes the Z-Wave device **HSP02**, manufactured by **Everspring** with the thing type UID of ```everspring_hsp02_00_000```. 
+This describes the Z-Wave device *HSP02*, manufactured by *Everspring* with the thing type UID of ```everspring_hsp02_00_000```. 
 
 Motion Detector
+
 
 ## Channels
 The following table summarises the channels available for the HSP02 Motion Detector.
@@ -13,8 +20,6 @@ The following table summarises the channels available for the HSP02 Motion Detec
 | Binary Sensor | sensor_binary | sensor_binary | Door | Switch |
 | Alarm | alarm_general | alarm_general | Door | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -33,8 +38,6 @@ Detailed information on each parameter can be found below.
 | 2: Target nodes who receive BASIC_SET command |  |
 
 
-
-
 #### 1: Basic Set Level
 
 Value to be sent with a BASIC SET command
@@ -48,13 +51,7 @@ Value to be sent with a BASIC SET command
 | Default Value | 99 |
 
 
-
-
-
-
 #### 2: Sensor Detecting Function
-
-
 
 
 | Property         | Value    |
@@ -66,13 +63,7 @@ Value to be sent with a BASIC SET command
 |  | Group 1 Disabled / Group 2 Disabled (3) |
 
 
-
-
-
-
 #### 3: Sensitivity Level
-
-
 
 
 | Property         | Value    |
@@ -83,13 +74,7 @@ Value to be sent with a BASIC SET command
 | Default Value | 6 |
 
 
-
-
-
-
 #### 4: Re-trigger Interval Setting
-
-
 
 
 | Property         | Value    |
@@ -98,10 +83,6 @@ Value to be sent with a BASIC SET command
 | Data Type        | INTEGER |
 | Range | 5 to 255 |
 | Default Value | 180 |
-
-
-
-
 
 
 #### 5: LUX Level
@@ -117,13 +98,7 @@ Value for what LUX level will arm the detection sensor
 | Default Value | 10 |
 
 
-
-
-
-
 #### 6: On-Off Duration
-
-
 
 
 | Property         | Value    |
@@ -134,13 +109,7 @@ Value for what LUX level will arm the detection sensor
 | Default Value | 15 |
 
 
-
-
-
-
 #### 1: Target for reports
-
-
 
 
 | Property         | Value    |
@@ -150,13 +119,7 @@ Value for what LUX level will arm the detection sensor
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Target nodes who receive BASIC_SET command
-
-
 
 
 | Property         | Value    |
@@ -166,12 +129,7 @@ Value for what LUX level will arm the detection sensor
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/22).
-

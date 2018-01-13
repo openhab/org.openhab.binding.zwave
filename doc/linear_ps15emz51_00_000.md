@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: PS15EMZ51 - ZWave
+---
+
+{% include base.html %}
 
 # PS15EMZ51 Appliance Module
 
-This describes the Z-Wave device **PS15EMZ51**, manufactured by **Linear Corp** with the thing type UID of ```linear_ps15emz51_00_000```. 
+This describes the Z-Wave device *PS15EMZ51*, manufactured by *Linear Corp* with the thing type UID of ```linear_ps15emz51_00_000```. 
 
 Appliance Module
+
 
 ## Channels
 The following table summarises the channels available for the PS15EMZ51 Appliance Module.
@@ -18,8 +25,6 @@ The following table summarises the channels available for the PS15EMZ51 Applianc
 | Electric meter (watts) | meter_watts | meter_watts | Energy | Number |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the PS15EMZ51 Appliance Module.
 Detailed information on each parameter can be found below.
@@ -28,10 +33,7 @@ Detailed information on each parameter can be found below.
 |-------------|-------------|
 
 
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/704).
-

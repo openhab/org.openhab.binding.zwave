@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: SCSC-17 - ZWave
+---
+
+{% include base.html %}
 
 # SCSC-17 7 Day Room Thermostat
 
-This describes the Z-Wave device **SCSC-17**, manufactured by **Horstmann Controls Limited** with the thing type UID of ```horstmann_scsc17_00_000```. 
+This describes the Z-Wave device *SCSC-17*, manufactured by *Horstmann Controls Limited* with the thing type UID of ```horstmann_scsc17_00_000```. 
 
 7 Day Room Thermostat
+
 
 ## Channels
 The following table summarises the channels available for the SCSC-17 7 Day Room Thermostat.
@@ -16,7 +23,6 @@ The following table summarises the channels available for the SCSC-17 7 Day Room
 | Thermostat Operating State | thermostat_state | thermostat_state | Temperature | Number |
 | Setpoint (heating) | thermostat_setpoint_heating | thermostat_setpoint | Temperature | Number |
 |  | battery-level | system.battery-level |  |  |
-
 
 
 ### Sensor (temperature)
@@ -34,9 +40,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Setpoint (heating)
 
 #### Scale
@@ -50,10 +53,6 @@ Select the scale to use for setpoints.
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -70,8 +69,6 @@ Detailed information on each parameter can be found below.
 | 2: Control |  |
 
 
-
-
 #### 1: Temperature Scale
 
 Controls the temperature sensor scale
@@ -83,10 +80,6 @@ Controls the temperature sensor scale
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Kelvin (255) |
-
-
-
-
 
 
 #### 2: Lower temperature limit
@@ -102,10 +95,6 @@ Defines the minimum temperature. Steps are 1C
 | Default Value | 5 |
 
 
-
-
-
-
 #### 3: Upper temperature limit
 
 Defines the maximum temperature. Steps are 1C
@@ -117,10 +106,6 @@ Defines the maximum temperature. Steps are 1C
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 5 |
-
-
-
-
 
 
 #### 4: Delta T
@@ -137,13 +122,7 @@ Defines the temperature steps of the heating control value is 0.1 °С.
 | Default Value | 5 |
 
 
-
-
-
-
 #### 1: Reports
-
-
 
 
 | Property         | Value    |
@@ -153,13 +132,7 @@ Defines the temperature steps of the heating control value is 0.1 °С.
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Control
-
-
 
 
 | Property         | Value    |
@@ -169,12 +142,7 @@ Defines the temperature steps of the heating control value is 0.1 °С.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/21).
-

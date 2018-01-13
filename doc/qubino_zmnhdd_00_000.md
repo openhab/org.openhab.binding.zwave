@@ -1,19 +1,25 @@
+---
+layout: documentation
+title: ZMNHDD - ZWave
+---
+
+{% include base.html %}
 
 # ZMNHDD Flush Dimmer Plus
 
-This describes the Z-Wave device **ZMNHDD**, manufactured by **Goap** with the thing type UID of ```qubino_zmnhdd_00_000```. 
+This describes the Z-Wave device *ZMNHDD*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhdd_00_000```. 
 
 Flush Dimmer Plus  
 
 
-# Overview #
+## Overview 
 
 This Z-Wave module is used for dimming the bulb or to manage the speed of a fan. The module can be controlled either through a Z-Wave network or through the wall switch. The module is designed to be mounted inside a "flush mounting box", hidden behind a traditional wall switch. Module measures power consumption of bulb or fan and supports connection of digital temperature sensor. It is designed to act as repeater in order to improve range and stability of Z-wave network.
 
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 WARNING: Service button S **must NOT be used** when module is connected to 110-230V power supply.
 
@@ -30,7 +36,7 @@ WARNING: Service button S **must NOT be used** when module is connected to 110-2
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 WARNING: Service button S **must NOT be used** when module is connected to 110-230V power supply.
 
@@ -43,6 +49,7 @@ WARNING: Service button S **must NOT be used** when module is connected to 110-2
 By this function all parameters of the module are set to default values and own ID is deleted. If push button I1 is pressed three times within 3 seconds (or service button S is pressed more than 2 and less than 6 seconds) module is excluded, but configuration parameters are not set to default values.
 
 NOTE: If the module is included with parameters 100 or 101 with values different to default and module reset is done, wait at least 30s before next inclusion.
+
 
 ## Channels
 The following table summarises the channels available for the ZMNHDD Flush Dimmer Plus.
@@ -67,7 +74,6 @@ The following table summarises the channels available for the ZMNHDD Flush Dimme
 | Alarm 3 | alarm_general3 | alarm_general | Door | Switch |
 
 
-
 ### Dimmer
 
 #### Restore Last Value
@@ -81,9 +87,6 @@ Restore Last Dimming level on ON.
 | Data Type        | BOOLEAN || Default Value | true |
 | Options | Restore Last Value (true) |
 |  | Restore Full Brightness (false) |
-
-
-
 
 
 ### Sensor (temperature)
@@ -101,9 +104,6 @@ Select the scale for temperature readings
 |  | Fahrenheit (1) |
 
 
-
-
-
 ### Dimmer 1
 
 #### Restore Last Value
@@ -117,10 +117,6 @@ Restore Last Dimming level on ON.
 | Data Type        | BOOLEAN || Default Value | true |
 | Options | Restore Last Value (true) |
 |  | Restore Full Brightness (false) |
-
-
-
-
 
 
 ### Device Configuration
@@ -164,11 +160,7 @@ Detailed information on each parameter can be found below.
 | 11: Multilevel sensor | Triggered at change of temperature sensor |
 
 
-
-
 #### 1: Input 1 switch type
-
-
 
 
 | Property         | Value    |
@@ -179,13 +171,7 @@ Detailed information on each parameter can be found below.
 |  | 1 - Bi-stable switch type (1) |
 
 
-
-
-
-
 #### 2: Input 2 switch type
-
-
 
 
 | Property         | Value    |
@@ -196,13 +182,7 @@ Detailed information on each parameter can be found below.
 |  | 1 - Bi-stable switch type (1) |
 
 
-
-
-
-
 #### 3: Input 2 contact type
-
-
 
 
 | Property         | Value    |
@@ -213,13 +193,7 @@ Detailed information on each parameter can be found below.
 |  | 1 - NC (normally closed) input type (1) |
 
 
-
-
-
-
 #### 4: Input 3 contact type
-
-
 
 
 | Property         | Value    |
@@ -230,16 +204,12 @@ Detailed information on each parameter can be found below.
 |  | 1 - NC (normally closed) input type (1) |
 
 
-
-
-
-
 #### 10: Activate / deactivate functions ALL ON / ALL OFF
 
 Flush dimmer module responds to commands ALL ON / ALL OFF  
 
 
-# Overview #
+##### Overview 
 
 Flush dimmer module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.
 
@@ -254,16 +224,12 @@ Flush dimmer module responds to commands ALL ON / ALL OFF that may be sent by th
 |  | ALL ON active, ALL OFF active (255) |
 
 
-
-
-
-
 #### 11: Automatic turning off output after set time
 
 Auto OFF enabled with defined time, step is 1 second.  
 
 
-# Overview #
+##### Overview 
 
  *  0 - Auto OFF disabled
  *  1 – 32536 = 1 second – 32536 seconds
@@ -277,16 +243,12 @@ Auto OFF enabled with defined time, step is 1 second.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 12: Automatic turning on output after set time
 
 Auto ON enabled with defined time, step is 1 second.  
 
 
-# Overview #
+##### Overview 
 
  *  0 - Auto ON disabled
  *  1 – 32536 = 1 second – 32536 seconds
@@ -300,16 +262,12 @@ Auto ON enabled with defined time, step is 1 second.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 20: Enable / Disable 3-way switch
 
 Dimming is done by push button or switch connected to I1.  
 
 
-# Overview #
+##### Overview 
 
 Dimming is done by push button or switch connected to I1 (by default).
 
@@ -322,10 +280,7 @@ Enabling 3way switch, dimming can be controlled by push button or switch connect
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | 0 - single push button (connected to I1) (0) |
 |  | 1 - 3-way switch (connected to I1 and I2) (1) |
-
-
-
-
+|  | 2 - Additional switch connected to I2 (2) |
 
 
 #### 21: Enable / Disable Double click function
@@ -333,7 +288,7 @@ Enabling 3way switch, dimming can be controlled by push button or switch connect
 A fast double click on the push button will set dimming power at maximum.  
 
 
-# Overview #
+##### Overview 
 
 If Double click function is enabled, a fast double click on the push button will set dimming power at maximum dimming value.
 
@@ -346,16 +301,12 @@ If Double click function is enabled, a fast double click on the push button will
 |  | 1 - double click enabled (1) |
 
 
-
-
-
-
 #### 30: Saving the state of the device after a power failure
 
 If enabled, flush dimmer module saves its state before power failure.  
 
 
-# Overview #
+##### Overview 
 
 If state saving is enabled, flush dimmer module saves its state before power failure (it returns to the last position saved before a power failure).
 
@@ -370,16 +321,12 @@ If state saving is disabled, flush dimmer module does not save the state after a
 |  | 1 - Save state disabled (1) |
 
 
-
-
-
-
 #### 40: Power reporting in watts on power change
 
 Set value is percentage, set value from 0 - 100 = 0% - 100%.  
 
 
-# Overview #
+##### Overview 
 
 Set value means percentage, set value from 0 - 100 = 0% - 100%. Default value is 5.
 
@@ -399,16 +346,12 @@ NOTE: if power changed is less than 1W, the report is not send (pushed), indepen
 | Default Value | 5 |
 
 
-
-
-
-
 #### 42: Power reporting in Watts by time interval
 
 Set value means time interval (0 – 32767) in seconds.  
 
 
-# Overview #
+##### Overview 
 
 Set value means time interval (0 – 32767) in seconds, when power report is sent.
 
@@ -426,16 +369,12 @@ Power report is send with time interval set by entered value.
 | Default Value | 300 |
 
 
-
-
-
-
 #### 60: Minimum dimming value
 
 Minimum dimming value is set by entered value.  
 
 
-# Overview #
+##### Overview 
 
  *  1-98 = 1% – 98%, step is 1%. Minimum dimming value is set by entered value.
 
@@ -450,16 +389,12 @@ NOTE: The minimum level may not be higher than the maximum level! 1% min. dimmin
 | Default Value | 1 |
 
 
-
-
-
-
 #### 61: Maximum dimming value
 
 Maximum dimming value is set by entered value.  
 
 
-# Overview #
+##### Overview 
 
  *  2-99 = 2% – 99%, step is 1%. Maximum dimming value is set by entered value.
 
@@ -474,16 +409,12 @@ NOTE: The maximum level may not be lower than the minimum level! 99% max. dimmin
 | Default Value | 99 |
 
 
-
-
-
-
 #### 65: Dimming time (soft on/off)
 
 Set value means time of moving the Dimmer between min. and max. dimming values  
 
 
-# Overview #
+##### Overview 
 
 Set value means time of moving the Dimmer between min. and max. dimming values by short press of push button I1 or controlled through UI (BasicSet).
 
@@ -499,16 +430,12 @@ Set value means time of moving the Dimmer between min. and max. dimming values b
 | Default Value | 100 |
 
 
-
-
-
-
 #### 66: Dimming time when key pressed
 
 Time of moving the Dimmer between min. and max dimming values  
 
 
-# Overview #
+##### Overview 
 
 Time of moving the Dimmer between min. and max dimming values by continuous hold of push button I1 or associated device.
 
@@ -524,16 +451,12 @@ Time of moving the Dimmer between min. and max dimming values by continuous hold
 | Default Value | 3 |
 
 
-
-
-
-
 #### 67: Ignore start level
 
 This parameter is used with association group 3  
 
 
-# Overview #
+##### Overview 
 
 This parameter is used with association group 3. A receiving device SHOULD respect the start level if the Ignore Start Level bit is 0. A receiving device MUST ignore the start level if the Ignore Start Level bit is 1.
 
@@ -546,16 +469,12 @@ This parameter is used with association group 3. A receiving device SHOULD resp
 |  | 1 - ignore start level (1) |
 
 
-
-
-
-
 #### 68: Dimming duration
 
 This parameter is used with association group 3  
 
 
-# Overview #
+##### Overview 
 
 This parameter is used with association group 3. The Duration field MUST specify the time that the transition should take from the current value to the new target value. A supporting device SHOULD respect the specified Duration value.
 
@@ -568,16 +487,12 @@ This parameter is used with association group 3. The Duration field MUST specify
 | Default Value | 0 |
 
 
-
-
-
-
 #### 100: Enable / Disable Endpoints I2
 
 Enabling I2 means that Endpoint (I2) will be present on UI.  
 
 
-# Overview #
+##### Overview 
 
 Enabling I2 means that Endpoint (I2) will be present on UI. Disabling it will result in hiding the endpoint according to the parameter set value. Additionally, a Notification Type and Event can be selected for the endpoint.
 
@@ -600,16 +515,12 @@ NOTE 2: When the parameter is set to value 9 the notifications are send for Home
 |  | 9 – Sensor binary (9) |
 
 
-
-
-
-
 #### 101: Enable / Disable Endpoints I3
 
 Enabling I3 means that Endpoint (I3) will be present on UI.  
 
 
-# Overview #
+##### Overview 
 
 Enabling I3 means that Endpoint (I3) will be present on UI. Disabling it will result in hiding the endpoint according to the parameter set value. Additionally, a Notification Type and Event can be selected for the endpoint.
 
@@ -632,16 +543,12 @@ NOTE 2: When the parameter is set to value 9 the notifications are send for Home
 |  | 9 – Sensor binary (9) |
 
 
-
-
-
-
 #### 110: Temperature sensor offset settings
 
 Offset to actual measured value  
 
 
-# Overview #
+##### Overview 
 
 Set value is added or subtracted to actual measured value by sensor. Available configuration parameters:
 
@@ -659,16 +566,12 @@ Set value is added or subtracted to actual measured value by sensor. Available c
 | Default Value | 32536 |
 
 
-
-
-
-
 #### 120: Digital temperature sensor reporting
 
 Module reports measured temperature on defined temperature change  
 
 
-# Overview #
+##### Overview 
 
 If digital temperature sensor is connected, module reports measured temperature on temperature change defined by this parameter. Available configuration parameters:
 
@@ -684,10 +587,6 @@ If digital temperature sensor is connected, module reports measured temperature 
 | Default Value | 5 |
 
 
-
-
-
-
 #### 1: Controller Updates
 
 Lifeline group
@@ -698,10 +597,6 @@ Lifeline group
 | Configuration ID | group_1 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 2: I1 basic on/off
@@ -716,10 +611,6 @@ Triggered at change of the input I1 state and reflecting its state
 | Range |  to  |
 
 
-
-
-
-
 #### 3: I1 start/stop level change
 
 Triggered at change of the input I1 state and reflecting its state
@@ -730,10 +621,6 @@ Triggered at change of the input I1 state and reflecting its state
 | Configuration ID | group_3 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 4: Multilevel
@@ -748,10 +635,6 @@ Triggered at changes of state/value of the Flush Dimmer
 | Range |  to  |
 
 
-
-
-
-
 #### 5: I2 basic on/off
 
 Triggered at change of the input I2 state and reflecting its state
@@ -762,10 +645,6 @@ Triggered at change of the input I2 state and reflecting its state
 | Configuration ID | group_5 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 6: I2 notification report
@@ -780,10 +659,6 @@ Triggered at change of the input I2 state and reflecting its state
 | Range |  to  |
 
 
-
-
-
-
 #### 7: I2 binary sensor
 
 Triggered at change of the input I2 state and reflecting its state
@@ -794,10 +669,6 @@ Triggered at change of the input I2 state and reflecting its state
 | Configuration ID | group_7 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 8: I3 basic on/off
@@ -812,10 +683,6 @@ Triggered at change of the input I3 state and reflecting its state
 | Range |  to  |
 
 
-
-
-
-
 #### 9: I3 notification report
 
 Triggered at change of the input I3 state and reflecting its state
@@ -826,10 +693,6 @@ Triggered at change of the input I3 state and reflecting its state
 | Configuration ID | group_9 |
 | Data Type        | TEXT |
 | Range |  to  |
-
-
-
-
 
 
 #### 10: I3 binary sensor
@@ -844,10 +707,6 @@ Triggered at change of the input I3 state and reflecting its state
 | Range |  to  |
 
 
-
-
-
-
 #### 11: Multilevel sensor
 
 Triggered at change of temperature sensor
@@ -860,12 +719,7 @@ Triggered at change of temperature sensor
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/210).
-

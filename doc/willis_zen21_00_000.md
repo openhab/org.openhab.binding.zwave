@@ -1,12 +1,18 @@
+---
+layout: documentation
+title: ZEN21 - ZWave
+---
+
+{% include base.html %}
 
 # ZEN21 Zooz Z-Wave On / Off Light Switch ZEN21
 
-This describes the Z-Wave device **ZEN21**, manufactured by **Willis Electric Co., Ltd.** with the thing type UID of ```willis_zen21_00_000```. 
+This describes the Z-Wave device *ZEN21*, manufactured by *Willis Electric Co., Ltd.* with the thing type UID of ```willis_zen21_00_000```. 
 
 Zooz Z-Wave On / Off Light Switch ZEN21  
 
 
-# Overview #
+## Overview 
 
 PRODUCT FEATURES:   
 \- Manual or remote on/off control from your mobile device or computer (when included to a Z-Wave gateway controller)   
@@ -30,7 +36,7 @@ Installation and Use: Indoor only
   
 
 
-## Inclusion Information ##
+### Inclusion Information 
 
 1. Bring your Z-Wave gateway hub or controller as close to the switch as possible
 
@@ -53,7 +59,7 @@ If you are unable to include the Z-Wave switch to your controller, please try on
   
 
 
-## Exclusion Information ##
+### Exclusion Information 
 
 1. Bring your Z-Wave gateway hub or controller as close to the switch as possible
 
@@ -68,9 +74,10 @@ Please repeat the process following all steps carefully if the first attempt is 
   
 
 
-## Wakeup Information ##
+### Wakeup Information 
 
 The switch will be reset to factory defaults only by exclusion using a Z-Wave controller. You may use any certified Z-Wave controller to exclude and reset the switch. This device may not be reset manually when the network’s primary controller is missing or otherwise inoperable. NOTE: All previously recorded activity and custom settings will be erased from the device’s memory. 
+
 
 ## Channels
 The following table summarises the channels available for the ZEN21 Zooz Z-Wave On / Off Light Switch ZEN21.
@@ -78,8 +85,6 @@ The following table summarises the channels available for the ZEN21 Zooz Z-Wave 
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
-
-
 
 
 ### Device Configuration
@@ -91,14 +96,12 @@ Detailed information on each parameter can be found below.
 | 1: Status | This device will send SWITCH BINARY REPORT to Group 1 when operated manually. |
 
 
-
-
 #### 1: Status
 
 This device will send SWITCH BINARY REPORT to Group 1 when operated manually.  
 
 
-# Overview #
+##### Overview 
 
 Depending on your Z-Wave gateway's home automation software capabilities, you may be able to associate your Z-Wave switch in groups with other Z-Wave devices to schedule scenes and create events. This on off switch supports Group 1 with up to five devices for lifeline communication. This device will send SWITCH BINARY REPORT to Group 1 when operated manually. Please refer to your controller's user guide for advanced programming instructions as they are a little different for every software.
 
@@ -110,12 +113,7 @@ Depending on your Z-Wave gateway's home automation software capabilities, you ma
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/544).
-

@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: PSE02 - ZWave
+---
+
+{% include base.html %}
 
 # PSE02 Siren
 
-This describes the Z-Wave device **PSE02**, manufactured by **Philio Technology Corp** with the thing type UID of ```philio_pse02_00_000```. 
+This describes the Z-Wave device *PSE02*, manufactured by *Philio Technology Corp* with the thing type UID of ```philio_pse02_00_000```. 
 
 Siren
+
 
 ## Channels
 The following table summarises the channels available for the PSE02 Siren.
@@ -12,8 +19,6 @@ The following table summarises the channels available for the PSE02 Siren.
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
 | Start sound | notification_send | notification_send |  | Number |
-
-
 
 
 ### Device Configuration
@@ -27,14 +32,12 @@ Detailed information on each parameter can be found below.
 | 31: Alarm Duration |  |
 
 
-
-
 #### 7: Costumer Function
 
 NotificationReport/BinaryReport  
 
 
-# Overview #
+##### Overview 
 
 Customer function switch, using bit control. 0       Bit4: Notification Type,       0: Using Notification Report.   1: Using Sensor Binary Report.
 
@@ -47,16 +50,12 @@ Customer function switch, using bit control. 0       Bit4: Notification Type
 | Default Value | 4 |
 
 
-
-
-
-
 #### 29: Disable Alarm
 
 Disable the alarm function.  
 
 
-# Overview #
+##### Overview 
 
 Disable the alarm  function. 1: Disable  Alarm, 0: Enable Alarm.  Caution: After the power  up, this configuration is  always 0.
 
@@ -69,13 +68,7 @@ Disable the alarm  function. 1: Disable  Alarm, 0: Enable Alarm.  Caution: Af
 | Default Value | 0 |
 
 
-
-
-
-
 #### 31: Alarm Duration
-
-
 
 
 | Property         | Value    |
@@ -86,12 +79,7 @@ Disable the alarm  function. 1: Disable  Alarm, 0: Enable Alarm.  Caution: Af
 | Default Value | 6 |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/320).
-

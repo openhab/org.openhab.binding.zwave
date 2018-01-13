@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: ZMNHAA - ZWave
+---
+
+{% include base.html %}
 
 # ZMNHAA Flush 1 relay
 
-This describes the Z-Wave device **ZMNHAA**, manufactured by **Goap** with the thing type UID of ```qubino_zmnhaa_00_000```. 
+This describes the Z-Wave device *ZMNHAA*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhaa_00_000```. 
 
 Flush 1 relay
+
 
 ## Channels
 The following table summarises the channels available for the ZMNHAA Flush 1 relay.
@@ -16,7 +23,6 @@ The following table summarises the channels available for the ZMNHAA Flush 1 rel
 | Electric meter (watts) | meter_watts | meter_watts | Energy | Number |
 | Binary Sensor 1 | sensor_binary1 | sensor_binary | Door | Switch |
 | Binary Sensor 2 | sensor_binary2 | sensor_binary | Door | Switch |
-
 
 
 ### Sensor (temperature)
@@ -32,10 +38,6 @@ Select the scale for temperature readings
 | Data Type        | TEXT || Default Value | 0 |
 | Options | Celsius (0) |
 |  | Fahrenheit (1) |
-
-
-
-
 
 
 ### Device Configuration
@@ -58,8 +60,6 @@ Detailed information on each parameter can be found below.
 | 4: Controller Updates |  |
 
 
-
-
 #### 1: Input 1 switch type
 
 Input 1 switch type
@@ -71,10 +71,6 @@ Input 1 switch type
 | Data Type        | INTEGER || Default Value | 1 |
 | Options | mono-stable switch type (push button) (0) |
 |  | bi-stable switch type (1) |
-
-
-
-
 
 
 #### 2: Input 2 contact type
@@ -90,10 +86,6 @@ Input 2 contact type
 |  | NC (normaly close) input type (1) |
 
 
-
-
-
-
 #### 3: Input 3 contact type
 
 Input 3 contact type
@@ -105,10 +97,6 @@ Input 3 contact type
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | NO (normaly open) input type (0) |
 |  | NC (normaly close) input type (1) |
-
-
-
-
 
 
 #### 10: Activate / deactivate functions ALL ON/ALL OFF
@@ -126,10 +114,6 @@ Flush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by t
 |  | ALL ON active, ALL OFF active (255) |
 
 
-
-
-
-
 #### 11: Automatic turning off relay after set time
 
 0 - Auto OFF disabled 1 – 65535 = 0,01second – 655,35 seconds Auto OFF enabled with define time, step is 10mseconds
@@ -141,10 +125,6 @@ Flush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by t
 | Data Type        | INTEGER |
 | Range | 0 to 65535 |
 | Default Value | 0 |
-
-
-
-
 
 
 #### 30: Saving the state of the relay after a power failure
@@ -160,10 +140,6 @@ Saving the state of the relay after a power failure
 |  | Flush 1relay module does not save the state after a power failure, it (1) |
 
 
-
-
-
-
 #### 40: Power reporting in Watts on power change
 
 0 – Reporting Disabled 1 – 100 = 1% - 100% Reporting enabled Power report is send (push) only when actual power in Watts in real time change for more than set percentage comparing to previous actual power in Watts, step is 1%. NOTE: if power chan
@@ -175,10 +151,6 @@ Saving the state of the relay after a power failure
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 3 |
-
-
-
-
 
 
 #### 42: Power reporting in Watts on power change
@@ -194,13 +166,7 @@ default value 300 (power report in Watts is send each 300s) 0 – Reporting Disa
 | Default Value | 300 |
 
 
-
-
-
-
 #### 1: basic on/off (triggered at change of the output Q state and reflecti
-
-
 
 
 | Property         | Value    |
@@ -210,13 +176,7 @@ default value 300 (power report in Watts is send each 300s) 0 – Reporting Disa
 | Range |  to  |
 
 
-
-
-
-
 #### 2: basic on/off (triggered at change of the input I2 state and reflect
-
-
 
 
 | Property         | Value    |
@@ -226,13 +186,7 @@ default value 300 (power report in Watts is send each 300s) 0 – Reporting Disa
 | Range |  to  |
 
 
-
-
-
-
 #### 3: basic on/off (triggered at change of the input I3 state and reflect
-
-
 
 
 | Property         | Value    |
@@ -242,13 +196,7 @@ default value 300 (power report in Watts is send each 300s) 0 – Reporting Disa
 | Range |  to  |
 
 
-
-
-
-
 #### 4: Controller Updates
-
-
 
 
 | Property         | Value    |
@@ -258,12 +206,7 @@ default value 300 (power report in Watts is send each 300s) 0 – Reporting Disa
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/205).
-

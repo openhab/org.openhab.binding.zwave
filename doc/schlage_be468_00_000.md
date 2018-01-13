@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: BE468 - ZWave
+---
+
+{% include base.html %}
 
 # BE468 Touchscreen Deadbolt
 
-This describes the Z-Wave device **BE468**, manufactured by **Allegion** with the thing type UID of ```schlage_be468_00_000```. 
+This describes the Z-Wave device *BE468*, manufactured by *Allegion* with the thing type UID of ```schlage_be468_00_000```. 
 
 Touchscreen Deadbolt
+
 
 ## Channels
 The following table summarises the channels available for the BE468 Touchscreen Deadbolt.
@@ -15,8 +22,6 @@ The following table summarises the channels available for the BE468 Touchscreen 
 | Alarm (power) | alarm_power | alarm_power | Door | Switch |
 | Alarm (system) | alarm_system | alarm_system |  | Switch |
 |  | battery-level | system.battery-level |  |  |
-
-
 
 
 ### Device Configuration
@@ -33,8 +38,6 @@ Detailed information on each parameter can be found below.
 | 1: Group 1 |  |
 
 
-
-
 #### 3: Beeper
 
 Audio feedback when keypad pressed during normal operation
@@ -46,10 +49,6 @@ Audio feedback when keypad pressed during normal operation
 | Data Type        | INTEGER || Default Value | 255 |
 | Options | Disable (0) |
 |  | Enable (255) |
-
-
-
-
 
 
 #### 4: Vacation Mode
@@ -65,10 +64,6 @@ Prevents all user codes from unlocking the deadbolt
 |  | Enable (255) |
 
 
-
-
-
-
 #### 5: Lock &amp; Leave
 
 Press the Schlage button to lock the deadbolt
@@ -80,10 +75,6 @@ Press the Schlage button to lock the deadbolt
 | Data Type        | INTEGER || Default Value | 255 |
 | Options | Disable (0) |
 |  | Enable (255) |
-
-
-
-
 
 
 #### 15: Auto Lock
@@ -99,10 +90,6 @@ Automatically locks 30 seconds after unlocking
 |  | Enable (255) |
 
 
-
-
-
-
 #### 16: User Code PIN Length
 
 User codes can be 4-8 digits. Changing length will delete all existing codes.
@@ -116,13 +103,7 @@ User codes can be 4-8 digits. Changing length will delete all existing codes.
 | Default Value | 4 |
 
 
-
-
-
-
 #### 1: Group 1
-
-
 
 
 | Property         | Value    |
@@ -132,12 +113,7 @@ User codes can be 4-8 digits. Changing length will delete all existing codes.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/240).
-

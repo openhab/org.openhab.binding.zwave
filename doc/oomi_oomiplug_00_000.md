@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: Oomi Plug - ZWave
+---
+
+{% include base.html %}
 
 # Oomi Plug Oomi Plug is a low-cost Z-Wave Switch plug-in module specifically used to enable Z-Wave command and control (on/off) of any plug-in tool.
 
-This describes the Z-Wave device **Oomi Plug**, manufactured by **Fantem** with the thing type UID of ```oomi_oomiplug_00_000```. 
+This describes the Z-Wave device *Oomi Plug*, manufactured by *Fantem* with the thing type UID of ```oomi_oomiplug_00_000```. 
 
 Oomi Plug is a low-cost Z-Wave Switch plug-in module specifically used to enable Z-Wave command and control (on/off) of any plug-in tool.
+
 
 ## Channels
 The following table summarises the channels available for the Oomi Plug Oomi Plug is a low-cost Z-Wave Switch plug-in module specifically used to enable Z-Wave command and control (on/off) of any plug-in tool..
@@ -22,7 +29,6 @@ The following table summarises the channels available for the Oomi Plug Oomi Plu
 | Clock Time Offset | time_offset | time_offset | Temperature | Number |
 
 
-
 ### Dimmer
 
 #### Restore Last Value
@@ -36,9 +42,6 @@ Restore Last Dimming level on ON.
 | Data Type        | BOOLEAN || Default Value | true |
 | Options | Restore Last Value (true) |
 |  | Restore Full Brightness (false) |
-
-
-
 
 
 ### Clock Time Offset
@@ -55,10 +58,6 @@ Setting this will automatically update the devices clock when the time differenc
 | Data Type        | INTEGER |
 | Range | 10 to 600 || Default Value | 60 |
 | Options | Disable Auto Update (0) |
-
-
-
-
 
 
 ### Device Configuration
@@ -97,14 +96,12 @@ Detailed information on each parameter can be found below.
 | 2: Group 2 | forwarding basic set (retransmit) |
 
 
-
-
 #### 3: Current overload protection enable
 
 Current overload protection enable  
 
 
-# Overview #
+##### Overview 
 
 Current Overload Protection. Load will be closed when the Current overrun (US: 15.5A, other country: 16.2A) and the time more than 2 minutes (0=disabled, 1=enabled).
 
@@ -117,16 +114,12 @@ Current Overload Protection. Load will be closed when the Current overrun (US: 
 |  | enabled (1) |
 
 
-
-
-
-
 #### 20: Output load after re-power
 
 Configure the output load status after re‐power  
 
 
-# Overview #
+##### Overview 
 
 Configure the output load status after re-power on  
 (0=last status, 1=always on, 2=always off)
@@ -141,16 +134,12 @@ Configure the output load status after re-power on
 |  | always off (2) |
 
 
-
-
-
-
 #### 80: Enable send to associated devices
 
 Enable to send notifications to Group 1  
 
 
-# Overview #
+##### Overview 
 
 Enable to send notifications to associated devices (Group 1) when the state of Micro Switch’s load changed (0=nothing, 1=hail CC, 2=basic CC report).
 
@@ -164,16 +153,12 @@ Enable to send notifications to associated devices (Group 1) when the state of 
 |  | basic CC report (2) |
 
 
-
-
-
-
 #### 81: Configure LED state
 
 Configure the state of the LED  
 
 
-# Overview #
+##### Overview 
 
 Configure the state of LED when it is in 3 modes below:
 
@@ -191,13 +176,7 @@ Configure the state of LED when it is in 3 modes below:
 |  | Night light mode (2) |
 
 
-
-
-
-
 #### 83: Color in night light mode
-
-
 
 
 | Property         | Value    |
@@ -208,16 +187,12 @@ Configure the state of LED when it is in 3 modes below:
 | Default Value | 0 |
 
 
-
-
-
-
 #### 83: Blue night light color value
 
 Blue night light color value  
 
 
-# Overview #
+##### Overview 
 
 Value for parameter 83, night light blue color
 
@@ -230,16 +205,12 @@ Value for parameter 83, night light blue color
 | Default Value | 221 |
 
 
-
-
-
-
 #### 83: Green night light color value
 
 Green night light color value  
 
 
-# Overview #
+##### Overview 
 
 Green color value for parameter 83, night light mode.
 
@@ -252,16 +223,12 @@ Green color value for parameter 83, night light mode.
 | Default Value | 160 |
 
 
-
-
-
-
 #### 83: Red night light color value
 
 Configure the RGB value when it is in Night light mode  
 
 
-# Overview #
+##### Overview 
 
 Configure the RGB value when it is in Night light mode.  
 Value1: Red color value  
@@ -283,13 +250,7 @@ Value3=0xDD
 | Default Value | 221 |
 
 
-
-
-
-
 #### 84: Color in energy mode
-
-
 
 
 | Property         | Value    |
@@ -300,16 +261,12 @@ Value3=0xDD
 | Default Value | 0 |
 
 
-
-
-
-
 #### 84: Green brightness in energy mode (%)
 
 Green brightness in energy mode (%)  
 
 
-# Overview #
+##### Overview 
 
 Configure the brightness level of RGB LED (0%-100%) when  
 it is in Energy Mode/momentary indicate mode.  
@@ -326,10 +283,6 @@ Value3: red color value.
 | Default Value | 50 |
 
 
-
-
-
-
 #### 84: Yellow brightness in energy mode (%)
 
 Yellow brightness in energy mode (%)
@@ -341,10 +294,6 @@ Yellow brightness in energy mode (%)
 | Data Type        | INTEGER |
 | Range | 0 to 100 |
 | Default Value | 50 |
-
-
-
-
 
 
 #### 84: Red brightness in energy mode (%)
@@ -360,16 +309,12 @@ Red brightness in energy mode (%)
 | Default Value | 50 |
 
 
-
-
-
-
 #### 90: Enable items 91 and 92
 
 Enables/disables parameter 91 and 92  
 
 
-# Overview #
+##### Overview 
 
 Enables/disables parameter 91 and 92 below (1=enabled, 0=disabled).
 
@@ -382,16 +327,12 @@ Enables/disables parameter 91 and 92 below (1=enabled, 0=disabled).
 |  | enabled (1) |
 
 
-
-
-
-
 #### 91: Wattage Threshold
 
 minimum change in wattage to trigger  
 
 
-# Overview #
+##### Overview 
 
 The value here represents minimum change in wattage (in  
 terms of wattage) for a REPORT to be sent (Valid values 0-  
@@ -406,16 +347,12 @@ terms of wattage) for a REPORT to be sent (Valid values 0-
 | Default Value | 25 |
 
 
-
-
-
-
 #### 92: Wattage Percent Change
 
 minimum change in wattage percent  
 
 
-# Overview #
+##### Overview 
 
 The value here represents minimum change in wattage  
 percent (in terms of percentage) for a REPORT to be sent  
@@ -428,10 +365,6 @@ percent (in terms of percentage) for a REPORT to be sent
 | Data Type        | INTEGER |
 | Range | 0 to 100 |
 | Default Value | 5 |
-
-
-
-
 
 
 #### 101: Values to send to group 1
@@ -451,10 +384,6 @@ Which reports need to send in Report group 1
 |  | All Values (15) |
 
 
-
-
-
-
 #### 102: Values to send to group 2
 
 Which reports need to send in Report group 2
@@ -470,10 +399,6 @@ Which reports need to send in Report group 2
 |  | Wattage (4) |
 |  | kWh (8) |
 |  | All Values (15) |
-
-
-
-
 
 
 #### 103: Values to send to group 3
@@ -493,16 +418,12 @@ Which reports need to send in Report group 3
 |  | All Values (15) |
 
 
-
-
-
-
 #### 111: Time interval for sending to group 1
 
 Group 1 automatic update interval  
 
 
-# Overview #
+##### Overview 
 
 The time interval of sending Report group 1 (Valid values 0x01-0xFFFFFFFF).
 
@@ -519,16 +440,12 @@ Note: Only up to 0x7fffffff is currently supported
 | Default Value | 3 |
 
 
-
-
-
-
 #### 112: Time interval for sending to group 2
 
 Group 2 automatic update interval  
 
 
-# Overview #
+##### Overview 
 
 The time interval of sending Report group 1 (Valid values 0x01-0xFFFFFFFF).
 
@@ -545,16 +462,12 @@ Note: Only up to 0x7fffffff is currently supported
 | Default Value | 600 |
 
 
-
-
-
-
 #### 113: Time interval for sending to group 3
 
 Group 3 automatic update interval  
 
 
-# Overview #
+##### Overview 
 
 The time interval of sending Report group 1 (Valid values 0x01-0xFFFFFFFF).
 
@@ -571,16 +484,12 @@ Note: Only up to 0x7fffffff is currently supported
 | Default Value | 2147483647 |
 
 
-
-
-
-
 #### 252: Configuration Locked
 
 Enable/disable Configuration Locked (0 =disable, 1 = enable).  
 
 
-# Overview #
+##### Overview 
 
 Enable/disable Configuration Locked (0 =disable, 1 =enable).
 
@@ -593,16 +502,12 @@ Enable/disable Configuration Locked (0 =disable, 1 =enable).
 |  | enabled (1) |
 
 
-
-
-
-
 #### 33: RGB LED color testing
 
 Set the RGB LED color value for testing.  
 
 
-# Overview #
+##### Overview 
 
 Value1: Reserved
 
@@ -621,10 +526,6 @@ Value4: Blue value
 | Default Value | 0 |
 
 
-
-
-
-
 #### 100: Set 101‐103 to default.
 
 Set 101‐103 to default.
@@ -636,10 +537,6 @@ Set 101‐103 to default.
 | Data Type        | INTEGER || Default Value | 0 |
 | Options | False (0) |
 |  | True (1) |
-
-
-
-
 
 
 #### 110: Set 111‐113 to default.
@@ -655,16 +552,12 @@ Set 111‐113 to default.
 |  | True (1) |
 
 
-
-
-
-
 #### 255: RESET
 
 Reset the device to defaults  
 
 
-# Overview #
+##### Overview 
 
 Reset configuration set up to default setting.
 
@@ -677,16 +570,12 @@ Reset configuration set up to default setting.
 | Default Value | 0 |
 
 
-
-
-
-
 #### 1: Group 1
 
 load notification type (lifeline)  
 
 
-# Overview #
+##### Overview 
 
 When the state of Smart Switch (turn on/off the load ) is changed:
 
@@ -702,16 +591,12 @@ When the state of Smart Switch (turn on/off the load ) is changed:
 | Range |  to  |
 
 
-
-
-
-
 #### 2: Group 2
 
 forwarding basic set (retransmit)  
 
 
-# Overview #
+##### Overview 
 
 Forward the Basic Set, Switch Binary Set to associated nodes in Group 2 when the Smart Switch receives the Basic Set, Switch Binary Set commands from main controller.
 
@@ -723,12 +608,7 @@ Forward the Basic Set, Switch Binary Set to associated nodes in Group 2 when th
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/730).
-

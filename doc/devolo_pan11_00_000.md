@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: PAN11 - ZWave
+---
+
+{% include base.html %}
 
 # PAN11 Smart Energy Plug-in Switch
 
-This describes the Z-Wave device **PAN11**, manufactured by **Devolo** with the thing type UID of ```devolo_pan11_00_000```. 
+This describes the Z-Wave device *PAN11*, manufactured by *Devolo* with the thing type UID of ```devolo_pan11_00_000```. 
 
 Smart Energy Plug-in Switch
+
 
 ## Channels
 The following table summarises the channels available for the PAN11 Smart Energy Plug-in Switch.
@@ -18,8 +25,6 @@ The following table summarises the channels available for the PAN11 Smart Energy
 | Electric meter (volts) | meter_voltage | meter_voltage | Energy | Number |
 
 
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the PAN11 Smart Energy Plug-in Switch.
 Detailed information on each parameter can be found below.
@@ -28,10 +33,7 @@ Detailed information on each parameter can be found below.
 |-------------|-------------|
 
 
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/509).
-

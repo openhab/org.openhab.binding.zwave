@@ -1,9 +1,16 @@
+---
+layout: documentation
+title: WD-100 - ZWave
+---
+
+{% include base.html %}
 
 # WD-100 In-Wall Dimmer
 
-This describes the Z-Wave device **WD-100**, manufactured by **Z Wave Products Inc.** with the thing type UID of ```zwaveproducts_wd100_00_000```. 
+This describes the Z-Wave device *WD-100*, manufactured by *Z Wave Products Inc.* with the thing type UID of ```zwaveproducts_wd100_00_000```. 
 
 In-Wall Dimmer
+
 
 ## Channels
 The following table summarises the channels available for the WD-100 In-Wall Dimmer.
@@ -12,7 +19,6 @@ The following table summarises the channels available for the WD-100 In-Wall Dim
 |---------|------------|------------------|----------|-----------|
 | Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer |
 | Scene Number | scene_number | scene_number |  | Number |
-
 
 
 ### Dimmer
@@ -30,10 +36,6 @@ Restore Last Dimming level on ON.
 |  | Restore Full Brightness (false) |
 
 
-
-
-
-
 ### Device Configuration
 The following table provides a summary of the configuration parameters available in the WD-100 In-Wall Dimmer.
 Detailed information on each parameter can be found below.
@@ -46,8 +48,6 @@ Detailed information on each parameter can be found below.
 | 9: Dim Level Increment | Indicates the number of levels (1-99) to change dimming each step |
 | 10: Step Duration | The number of tens of milliseconds (1-255) to delay on each dimming step. |
 | 1: Group 1 |  |
-
-
 
 
 #### 4: Orientation
@@ -63,10 +63,6 @@ Controls the on/off orientation of the rocker switch
 |  | Inverted (1) |
 
 
-
-
-
-
 #### 7: Remote dim level increment
 
 Number of dim levels to change for each dim step when remotely commanded
@@ -78,10 +74,6 @@ Number of dim levels to change for each dim step when remotely commanded
 | Data Type        | INTEGER |
 | Range | 1 to 99 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 8: Remote dim step duration
@@ -97,10 +89,6 @@ Interval between dimming steps when remotely commanded
 | Default Value | 3 |
 
 
-
-
-
-
 #### 9: Dim Level Increment
 
 Indicates the number of levels (1-99) to change dimming each step
@@ -112,10 +100,6 @@ Indicates the number of levels (1-99) to change dimming each step
 | Data Type        | INTEGER |
 | Range | 0 to 255 |
 | Default Value | 1 |
-
-
-
-
 
 
 #### 10: Step Duration
@@ -131,13 +115,7 @@ The number of tens of milliseconds (1-255) to delay on each dimming step.
 | Default Value | 3 |
 
 
-
-
-
-
 #### 1: Group 1
-
-
 
 
 | Property         | Value    |
@@ -147,12 +125,7 @@ The number of tens of milliseconds (1-255) to delay on each dimming step.
 | Range |  to  |
 
 
-
-
-
-
 ---
 
 Did you spot an error in the above definition or want to improve the content?
 You can edit the database [here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/590).
-
