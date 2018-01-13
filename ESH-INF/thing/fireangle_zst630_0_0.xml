@@ -8,6 +8,7 @@
   <thing-type id="fireangle_zst630_00_000" listed="false">
     <label>ZST-630 Thermoptek Smoke Alarm/Smoke Detector</label>
     <description>Thermoptek Smoke Alarm/Smoke Detector</description>
+    <category>SmokeDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

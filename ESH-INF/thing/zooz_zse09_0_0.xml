@@ -8,6 +8,7 @@
   <thing-type id="zooz_zse09_00_000" listed="false">
     <label>ZSE09 Motion and Light Mini Sensor</label>
     <description>Motion and Light Mini Sensor</description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

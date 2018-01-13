@@ -8,6 +8,7 @@
   <thing-type id="hank_rgbbulb_00_000" listed="false">
     <label>RGB bulb HKZW-RGB01-V1.0</label>
     <description>HKZW-RGB01-V1.0</description>
+    <category>LightBulb</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

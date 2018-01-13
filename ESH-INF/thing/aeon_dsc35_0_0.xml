@@ -8,6 +8,7 @@
   <thing-type id="aeon_dsc35_00_000" listed="false">
     <label>DSC35 Micro Double Switch</label>
     <description>Micro Double Switch</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -8,6 +8,7 @@
   <thing-type id="linear_lb60z1_00_000" listed="false">
     <label>LB60Z-1 Dimmable LED Light Bulb</label>
     <description>Dimmable LED Light Bulb</description>
+    <category>LightBulb</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -8,6 +8,7 @@
   <thing-type id="willis_zw691_00_000" listed="false">
     <label>ZW691 Show Home, In-Wall-Smart-Outlet BSI</label>
     <description>Show Home, In-Wall-Smart-Outlet BSI</description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

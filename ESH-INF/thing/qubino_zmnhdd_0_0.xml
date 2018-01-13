@@ -15,7 +15,7 @@ Flush Dimmer Plus<br /><h1>Overview</h1><p>This Z-Wave module is used for dimmin
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
-        <label></label>
+        <label>Switch</label>
         <properties>
           <property name="binding:*:OnOffType">SWITCH_BINARY</property>
         </properties>
@@ -64,7 +64,7 @@ Flush Dimmer Plus<br /><h1>Overview</h1><p>This Z-Wave module is used for dimmin
         </properties>
       </channel>
       <channel id="switch_binary1" typeId="switch_binary">
-        <label></label>
+        <label>Switch 1</label>
         <properties>
           <property name="binding:*:OnOffType">SWITCH_BINARY:1</property>
         </properties>
