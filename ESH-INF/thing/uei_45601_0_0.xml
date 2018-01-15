@@ -9,10 +9,6 @@
     <label>45601 Advanced Remote Wireless Lighting Control</label>
     <description>Advanced Remote Wireless Lighting Control</description>
 
-    <!-- CHANNEL DEFINITIONS -->
-    <channels>
-    </channels>
-
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Universal Electronics Inc.</property>

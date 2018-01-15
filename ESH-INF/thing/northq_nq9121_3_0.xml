@@ -46,12 +46,13 @@ NorthQ Q-Gas 9121 (Firmware v3, 2016)<br /><h1>Overview</h1><p>The Power Reader 
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_4" type="integer" groupName="configuration"
                  min="0" max="1000000">
         <label>1: 1: Pulse factor</label>

@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2014-2017 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -400,7 +399,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         controllerHandler.sendData(message);
                     }
                 } catch (Exception e) {
-                    logger.warn(String.format("NODE %d: Polling aborted due to exception", nodeId), e);
+                    logger.warn("NODE {}: Polling aborted due to exception", nodeId, e);
                 }
             }
         };
@@ -545,13 +544,13 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         validateConfigurationParameters(configurationParameters);
 
         if (controllerHandler == null) {
-            logger.debug("NODE {}: Configuration update not processed as no controller found", nodeId);
+            logger.debug("NODE {}: Configuration update not processed as controller not found", nodeId);
             return;
         }
 
         ZWaveNode node = controllerHandler.getNode(nodeId);
         if (node == null) {
-            logger.debug("NODE {}: Configuration update not processed as nonode not found", nodeId);
+            logger.debug("NODE {}: Configuration update not processed as node not found", nodeId);
             return;
         }
 

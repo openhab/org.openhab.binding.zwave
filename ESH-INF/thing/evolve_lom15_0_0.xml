@@ -8,6 +8,7 @@
   <thing-type id="evolve_lom15_00_000" listed="false">
     <label>LOM15 Duplex Receptacle</label>
     <description>Duplex Receptacle</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

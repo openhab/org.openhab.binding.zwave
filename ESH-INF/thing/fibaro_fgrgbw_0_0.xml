@@ -98,16 +98,22 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: ALL ON / ALL OFF function activation</label>
         <description><![CDATA[
-Activation/deactivation of ALL ON/ALL OFF functions. <br /><h1>Overview</h1><p>By default, ALL ON active ALL OFF active.</p>
+Activation/deactivation of ALL ON/ALL OFF functions.<br /><h1>Overview</h1><p>By default, ALL ON active ALL OFF active.</p>
         ]]></description>
         <default>255</default>
         <options>
@@ -299,11 +305,6 @@ Defines the required change in power to generate an unsolicited power report.<br
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Assigned to IN1 input</label>
         <multipleLimit>5</multipleLimit>

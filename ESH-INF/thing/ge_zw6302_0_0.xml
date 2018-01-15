@@ -43,12 +43,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Motion Sensor</label>
         <description><![CDATA[
@@ -94,11 +100,6 @@ Motion Sensor<br /><h1>Overview</h1><p>Detect Motion</p>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: ZW6302</label>
         <description><![CDATA[

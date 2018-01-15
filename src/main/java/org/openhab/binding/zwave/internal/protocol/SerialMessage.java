@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2014-2017 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -96,8 +95,8 @@ public class SerialMessage {
      * @param priority the message priority
      */
     public SerialMessage(int nodeId, SerialMessageClass messageClass, SerialMessageType messageType) {
-        logger.trace(String.format("NODE %d: Creating empty message of class = %s (0x%02X), type = %s (0x%02X)", nodeId,
-                messageClass, messageClass.key, messageType, messageType.ordinal()));
+        logger.trace("NODE {}: Creating empty message of class = {} (0x{}), type = {}", nodeId, messageClass,
+                Integer.toHexString(messageClass.key), messageType);
         this.messageClassKey = messageClass.getKey();
         this.messageType = messageType;
         this.messagePayload = new byte[] {};
@@ -207,7 +206,7 @@ public class SerialMessage {
         for (int i = 1; i < buffer.length - 1; i++) {
             checkSum = (byte) (checkSum ^ buffer[i]);
         }
-        logger.trace(String.format("Calculated checksum = 0x%02X", checkSum));
+        logger.trace("Calculated checksum = {}", checkSum);
         return checkSum;
     }
 
@@ -217,9 +216,24 @@ public class SerialMessage {
      */
     @Override
     public String toString() {
-        return String.format("Message: class=%s[0x%02X], type=%s[0x%02X], dest=%d, callback=%d, payload=%s",
-                SerialMessageClass.getMessageClass(messageClassKey), messageClassKey, messageType,
-                messageType.ordinal(), messageNode, callbackId, SerialMessage.bb2hex(messagePayload));
+        StringBuilder builder = new StringBuilder(120);
+        builder.append("Message: class=");
+        builder.append(SerialMessageClass.getMessageClass(messageClassKey));
+        builder.append('[');
+        builder.append(messageClassKey);
+        builder.append(']');
+        builder.append(", type=");
+        builder.append(messageType);
+        builder.append('[');
+        builder.append(messageType.ordinal());
+        builder.append(']');
+        builder.append(", dest=");
+        builder.append(messageNode);
+        builder.append(", callback=");
+        builder.append(callbackId);
+        builder.append(", payload=");
+        builder.append(SerialMessage.bb2hex(messagePayload));
+        return builder.toString();
     };
 
     /**
@@ -271,7 +285,7 @@ public class SerialMessage {
         result[result.length - 1] = 0x01;
         result[result.length - 1] = calculateChecksum(result);
 
-        logger.debug("Assembled message buffer = " + SerialMessage.bb2hex(result));
+        logger.debug("Assembled message buffer = {}", SerialMessage.bb2hex(result));
         return result;
     }
 

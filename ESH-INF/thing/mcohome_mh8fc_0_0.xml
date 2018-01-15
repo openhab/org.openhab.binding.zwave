@@ -5,9 +5,10 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="mcohome_mh8fc4_00_000" listed="false">
-    <label>MH8-FC4-EU Fan Coil Thermostat (4-Pipe)</label>
-    <description>Fan Coil Thermostat (4-Pipe)</description>
+  <thing-type id="mcohome_mh8fc_00_000" listed="false">
+    <label>MH8-FC Fan Coil Thermostat</label>
+    <description>Fan Coil Thermostat</description>
+    <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -17,7 +18,7 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="thermostat_mode" typeId="mcohome_mh8fc4_00_000_thermostat_mode">
+      <channel id="thermostat_mode" typeId="mcohome_mh8fc_00_000_thermostat_mode">
         <label>Thermostat mode</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_MODE</property>
@@ -29,25 +30,25 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_OPERATING_STATE</property>
         </properties>
       </channel>
-      <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
-        <label>Setpoint (heating)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING</property>
-        </properties>
-      </channel>
       <channel id="thermostat_setpoint_cooling" typeId="thermostat_setpoint">
         <label>Setpoint (cooling)</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=COOLING</property>
         </properties>
       </channel>
-      <channel id="thermostat_fanmode" typeId="mcohome_mh8fc4_00_000_thermostat_fanmode">
+      <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
+        <label>Setpoint (heating)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_fanmode" typeId="mcohome_mh8fc_00_000_thermostat_fanmode">
         <label>Thermostat fan mode</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_FAN_MODE</property>
         </properties>
       </channel>
-      <channel id="thermostat_fanstate" typeId="mcohome_mh8fc4_00_000_thermostat_fanstate">
+      <channel id="thermostat_fanstate" typeId="mcohome_mh8fc_00_000_thermostat_fanstate">
         <label>Thermostat fan state</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_FAN_STATE</property>
@@ -58,62 +59,62 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">McoHome Technology Co., Ltd</property>
-      <property name="modelId">MH8-FC4-EU</property>
+      <property name="modelId">MH8-FC</property>
       <property name="manufacturerId">015F</property>
-      <property name="manufacturerRef">0802:3102</property>
-      <property name="dbReference">644</property>
+      <property name="manufacturerRef">0801:3102,0801:5102,0802:3102</property>
+      <property name="dbReference">336</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- ASSOCIATION DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
       </parameter-group>
 
-      <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Gateway</label>
-        <description>Report Temperature,working mode, fan state etc.</description>
-        <multipleLimit>5</multipleLimit>
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Lifeline</label>
+        <description>For sending temperature, working mode, etc. notifications</description>
       </parameter>
 
     </config-description>
 
   </thing-type>
 
-  <channel-type id="mcohome_mh8fc4_00_000_thermostat_mode">
+  <channel-type id="mcohome_mh8fc_00_000_thermostat_mode">
     <item-type>Number</item-type>
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
-        <option value="2">Cool</option>
         <option value="6">Fan Only</option>
+        <option value="2">Cool</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
 
-  <channel-type id="mcohome_mh8fc4_00_000_thermostat_fanmode">
+  <channel-type id="mcohome_mh8fc_00_000_thermostat_fanmode">
     <item-type>Number</item-type>
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="2">ON(Medium)</option>
         <option value="1">On (Low)</option>
         <option value="3">On (high)</option>
+        <option value="">UNKNOWN_5</option>
       </options>
     </state>
   </channel-type>
 
-  <channel-type id="mcohome_mh8fc4_00_000_thermostat_fanstate">
+  <channel-type id="mcohome_mh8fc_00_000_thermostat_fanstate">
     <item-type>Number</item-type>
     <label>Thermostat Fan State</label>
     <description>Sets the thermostat fan state</description>

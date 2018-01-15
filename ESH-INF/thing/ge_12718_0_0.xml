@@ -8,6 +8,7 @@
   <thing-type id="ge_12718_00_000" listed="false">
     <label>12718 Smart Dimmer</label>
     <description>Smart Dimmer</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -32,12 +33,13 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>7: Dimmer steps</label>

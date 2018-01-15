@@ -8,10 +8,11 @@
   <thing-type id="zooz_zse09_00_000" listed="false">
     <label>ZSE09 Motion and Light Mini Sensor</label>
     <description>Motion and Light Mini Sensor</description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="sensor_binary" typeId="sensor_binary">
+      <channel id="basic_sensor_binary" typeId="sensor_binary">
         <label>sensor_binary</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_BASIC</property>
@@ -55,17 +56,23 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="8" max="255">
         <label>1: Motion Sensitivity</label>
         <description><![CDATA[
-8 = high; 255 = low <br /><h1>Overview</h1><p>Adjust detection by choosing a value from 8 to 255, where 8 stands for high sensitivity level (detection of the smallest movement) and 255 stands for very low sensitivity level</p>
+8 = high; 255 = low<br /><h1>Overview</h1><p>Adjust detection by choosing a value from 8 to 255, where 8 stands for high sensitivity level (detection of the smallest movement) and 255 stands for very low sensitivity level</p>
         ]]></description>
         <default>12</default>
       </parameter>
@@ -74,7 +81,7 @@
                  min="5" max="600">
         <label>2: Trigger ON Duration</label>
         <description><![CDATA[
-delay after motion before turning OFF <br /><h1>Overview</h1><p>Set the duration (in seconds) you want the associated device to stay ON for after being triggered by the sensor before it automatically turns OFF. Must be greater than value set in parameter 6.</p>
+delay after motion before turning OFF<br /><h1>Overview</h1><p>Set the duration (in seconds) you want the associated device to stay ON for after being triggered by the sensor before it automatically turns OFF. Must be greater than value set in parameter 6.</p>
         ]]></description>
         <default>30</default>
       </parameter>
@@ -150,11 +157,6 @@ Light level change to be reported.<br /><h1>Overview</h1><p>Choose light level (
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Status to controller</label>
         <description><![CDATA[
@@ -166,7 +168,7 @@ Light level change to be reported.<br /><h1>Overview</h1><p>Choose light level (
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: BASIC</label>
         <description><![CDATA[
-BASIC_SET Trigger associated devices <br /><h1>Overview</h1><p>control command communication to associated Z-Wave devices in the network. Use parameters 2, 3, 5, and 8 to configure this group’s settings. Supported command classes: BASIC_SET </p>
+BASIC_SET Trigger associated devices<br /><h1>Overview</h1><p>control command communication to associated Z-Wave devices in the network. Use parameters 2, 3, 5, and 8 to configure this group’s settings. Supported command classes: BASIC_SET </p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>

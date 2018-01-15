@@ -8,6 +8,7 @@
   <thing-type id="yale_yrd446_00_000" listed="false">
     <label>YRD446 Yale Real Living Key Free Touchscreen Assure Lock with Z-Wave and Bluetooth</label>
     <description>Yale Real Living Key Free Touchscreen Assure Lock with Z-Wave and Bluetooth</description>
+    <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -15,6 +16,24 @@
         <label>Door Lock</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_DOOR_LOCK,COMMAND_CLASS_BASIC</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param2" typeId="yale_yrd446_00_000_config_decimal_param2">
+        <label>Auto Relock</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=2</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param3" typeId="config_decimal">
+        <label>Auto relock time</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=3</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param8" typeId="yale_yrd446_00_000_config_decimal_param8">
+        <label>Operating mode</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=8</property>
         </properties>
       </channel>
       <channel id="alarm_access" typeId="alarm_access">
@@ -27,6 +46,18 @@
         <label>Alarm (power)</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="alarm_raw" typeId="alarm_raw">
+        <label>Alarm (raw)</label>
+        <properties>
+          <property name="binding:*:StringType">COMMAND_CLASS_ALARM</property>
+        </properties>
+      </channel>
+      <channel id="alarm_general" typeId="alarm_general">
+        <label>Alarm (general)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -55,12 +86,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Volume</label>
         <description>Volume of voice and beeps</description>
@@ -162,11 +199,6 @@ Number of incorrect PINs before lockout<br /><h1>Overview</h1><p>Number of incor
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
       </parameter>
@@ -174,5 +206,23 @@ Number of incorrect PINs before lockout<br /><h1>Overview</h1><p>Number of incor
     </config-description>
 
   </thing-type>
+
+  <channel-type id="yale_yrd446_00_000_config_decimal_param2">
+    <item-type>Number</item-type>
+    <label>Auto relock</label>
+    <state pattern="%s">
+      <options>
+        <option value="0">No auto-relock</option>
+        <option value="255">Auto relock</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="yale_yrd446_00_000_config_decimal_param3">
+    <item-type>Number</item-type>
+    <label>Auto relock time</label>
+    <state pattern="%s">
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>

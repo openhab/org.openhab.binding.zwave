@@ -10,6 +10,7 @@
     <description><![CDATA[
 Touchpad Electronic Deadbolt<br /><h1>Overview</h1><p>The following table provides a reference of the Alarm_Number related messages.</p> <p>Alarm Type    Alarm Level            Notification Event  </p> <p>021              001                      Lock Secured using Keyed cylinder or inside thumb-turn  </p> <p>022              001                      Lock Un-Secured using Keyed cylinder or inside thumb-turn  </p> <p>026              001                      Lock Auto Secured – Bolt Jammed (Not fully extended)</p> <p>027              001                      Lock Auto Secured – Successful (Fully extended)  </p> <p>017              001                      Lock Secured at Keypad – Bolt Jammed (Not fully extended)   </p> <p>018              000 or User-ID#*   Lock Secured at Keypad – Successful (Fully extended)   </p> <p>019              User-ID#*              Lock Un-Secured by User (User-ID) at Keypad  </p> <p>023              001                      Lock Secured by Controller – Bolt Jammed (Not fully extended)   </p> <p>024              001                      Lock Secured by Controller – Successful (Fully extended)   </p> <p>025              001                      Lock Un-Secured by Controller – Successful (Fully retracted)  </p> <p>112              User-ID#*              New User Code (User-ID#) added to the lock  </p> <p>032              001                      All User Codes deleted from lock   </p> <p>161              001                      Failed User Code attempt at Keypad  </p> <p>162              User-ID#*             Attempted access by user (User-ID#) outside of scheduled   </p> <p>167              001                      Low battery level   </p> <p>168              001                      Critical battery level   </p> <p>169              001                      Battery level too low to operate lock  </p> <p>* User-ID# values: 001 to 030</p> <br /><h2>Inclusion Information</h2><p> Press button “A” on the lock one time to include it in your system.</p> <br /><h2>Exclusion Information</h2><p> Press button “A” on the lock one time to exclude it in your system.</p>
     ]]></description>
+    <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -51,12 +52,23 @@ Touchpad Electronic Deadbolt<br /><h1>Overview</h1><p>The following table provid
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="actions">
+        <context>setup</context>
+        <label>Actions</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_31_1_00100000" type="integer" groupName="configuration">
         <label>31: Auto Buzzer</label>
         <description><![CDATA[
@@ -94,10 +106,6 @@ Door lock status LED blinks every 6 seconds.<br /><h1>Overview</h1><p>Door lock 
       </parameter>
 
       <!-- ACTION DEFINITIONS -->
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
 
       <parameter name="config_40_1_wo" type="integer" groupName="configuration"
                  min="0" max="1">
@@ -114,11 +122,6 @@ Reset to factory default settings.<br /><h1>Overview</h1><p>Reset factory defaul
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
         <multipleLimit>5</multipleLimit>

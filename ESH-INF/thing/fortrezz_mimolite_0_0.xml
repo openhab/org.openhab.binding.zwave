@@ -52,12 +52,18 @@ Digital or Analog Voltage input and/or Dry Contact Relay<br /><h1>Overview</h1><
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Clear_Pulse_Meter_Counts</label>
         <default>0</default>
@@ -162,11 +168,6 @@ Momentary Relay1 output enable/disable (100msec).<br /><h1>Overview</h1><p>Momen
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Binary input Set Group</label>
         <description><![CDATA[

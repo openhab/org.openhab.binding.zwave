@@ -13,7 +13,7 @@ Battery powered One paddle wall controller<br /><h2>Inclusion Information</h2><p
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_binary" typeId="switch_binary">
+      <channel id="basic_switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_BASIC</property>
@@ -39,12 +39,13 @@ Battery powered One paddle wall controller<br /><h2>Inclusion Information</h2><p
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- ASSOCIATION DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
       </parameter-group>
 
+      <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Basic On/Off Group</label>
         <multipleLimit>5</multipleLimit>

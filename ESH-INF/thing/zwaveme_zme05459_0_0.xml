@@ -40,12 +40,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: LED mode</label>
         <description>Set LED indication mode</description>
@@ -103,7 +109,7 @@ Time in seconds to go from opened to closed state.<br /><h1>Overview</h1><p>Time
                  min="0" max="255">
         <label>5: Full open time</label>
         <description><![CDATA[
-Time in seconds to go from closed to open state. <br /><h1>Overview</h1><p>Time to go from closed to open state. This value may differ from Full close time for some blinds due to gravity. Used to estimate the current level. Note that in Permanent motion mode the reported value would a be Closed or Opened, while all Basic and Multilevel Set values (1-99, 255) would Open except 0 value that would Close.</p>
+Time in seconds to go from closed to open state.<br /><h1>Overview</h1><p>Time to go from closed to open state. This value may differ from Full close time for some blinds due to gravity. Used to estimate the current level. Note that in Permanent motion mode the reported value would a be Closed or Opened, while all Basic and Multilevel Set values (1-99, 255) would Open except 0 value that would Close.</p>
         ]]></description>
         <default>60</default>
         <options>
@@ -234,7 +240,7 @@ Defines which command should be sent on button double press or press-hold.<br />
       <parameter name="config_16_1" type="integer" groupName="configuration">
         <label>16: What to do on button Down press</label>
         <description><![CDATA[
-Defines how to interpret button Down press. Depends on 'Switch by buttons' parameter. <br /><h1>Overview</h1><p>Defines how to interpret button Down press. Depends on "Switch by buttons" parameter. If not Disabled this parameter will affect the action selected by the latter parameter. Can be used in conjunction with Auto Off function.</p>
+Defines how to interpret button Down press. Depends on 'Switch by buttons' parameter.<br /><h1>Overview</h1><p>Defines how to interpret button Down press. Depends on "Switch by buttons" parameter. If not Disabled this parameter will affect the action selected by the latter parameter. Can be used in conjunction with Auto Off function.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -255,11 +261,6 @@ Defines how to interpret button Down press. Depends on 'Switch by buttons' param
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Single press and hold of up/down buttons</label>
         <multipleLimit>8</multipleLimit>

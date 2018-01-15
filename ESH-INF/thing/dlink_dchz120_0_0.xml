@@ -55,12 +55,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="1" max="100">
         <label>2: Basic Set Level</label>
@@ -92,7 +98,7 @@ Set the sensitivity for the PIR (Passive Infrared Sensor).<br /><h1>Overview</h1
                  min="1" max="99">
         <label>4: Light Threshold</label>
         <description><![CDATA[
-Set the illumination threshold to turn on the light. <br /><h1>Overview</h1><p>When the event triggers and the environment illumination is lower than the threshold, the device will turn on the light.</p> <ul><li>0 means turn off illumination detected function. And never turn on the light.</li> <li>1 means darkest. 99 means brightest.</li> <li>100 means turn off illumination detected function. And always turn on the light.  </li> </ul><p>Notice: In none test mode, only the value in 1 to 99 will enable the illumination detected function and update the illumination value.  </p>
+Set the illumination threshold to turn on the light.<br /><h1>Overview</h1><p>When the event triggers and the environment illumination is lower than the threshold, the device will turn on the light.</p> <ul><li>0 means turn off illumination detected function. And never turn on the light.</li> <li>1 means darkest. 99 means brightest.</li> <li>100 means turn off illumination detected function. And always turn on the light.  </li> </ul><p>Notice: In none test mode, only the value in 1 to 99 will enable the illumination detected function and update the illumination value.  </p>
         ]]></description>
         <default>99</default>
         <options>
@@ -188,7 +194,7 @@ Parameter to set the Customer Function.<br /><h1>Overview</h1><p>Bit0: Reserve.<
                  min="1" max="127">
         <label>8: PIR Re-Detect Interval Time</label>
         <description><![CDATA[
-Set re-detect time after PIR motion triggered <br /><h1>Overview</h1><p>8 seconds per tick, default tick is 3 (24 seconds).<br />Setting the suitable value to prevent received the trigger signal too frequently. Also can save the battery energy.<br />Notice: If this value bigger than the configuration setting NO. 9. There is a period after the light turned off and the PIR not start detecting.  </p>
+Set re-detect time after PIR motion triggered<br /><h1>Overview</h1><p>8 seconds per tick, default tick is 3 (24 seconds).<br />Setting the suitable value to prevent received the trigger signal too frequently. Also can save the battery energy.<br />Notice: If this value bigger than the configuration setting NO. 9. There is a period after the light turned off and the PIR not start detecting.  </p>
         ]]></description>
         <default>3</default>
         <limitToOptions>false</limitToOptions>
@@ -258,11 +264,6 @@ The illumination differential to report.<br /><h1>Overview</h1><p>The illuminati
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Reports</label>
         <multipleLimit>8</multipleLimit>

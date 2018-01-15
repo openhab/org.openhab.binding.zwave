@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2014-2017 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -106,7 +105,8 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
 
                         CommandClass commandClass = CommandClass.getCommandClass(data);
                         if (commandClass == null) {
-                            logger.trace(String.format("NODE %d: Command class 0x%02X is not known.", nodeId, data));
+                            logger.trace("NODE {}: Command class 0x{} is not known.", nodeId,
+                                    Integer.toHexString(data));
                             continue;
                         }
 

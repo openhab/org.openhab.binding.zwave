@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2014-2017 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -161,8 +160,8 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
         logger.trace("NODE {}: rateType  :{}", getNode().getNodeId(), rateType);
         logger.trace("NODE {}: operating :{}", getNode().getNodeId(), operatingStatus);
         logger.trace("NODE {}: dataset   :{}", getNode().getNodeId(), dataset);
-        logger.trace(String.format("NODE %d: time      :%04d-%02d-%02d %02d:%02d:%02d", this.getNode().getNodeId(),
-                year, month, day, hour, minutes, seconds));
+        logger.trace("NODE {}: time      :{}-{}-{} {}:{}:{}", this.getNode().getNodeId(), year, month, day, hour,
+                minutes, seconds);
 
         logger.trace("NODE {}: scale     :{}", getNode().getNodeId(), scaleIndex);
         logger.trace("NODE {}: presision :{}", getNode().getNodeId(), precision);

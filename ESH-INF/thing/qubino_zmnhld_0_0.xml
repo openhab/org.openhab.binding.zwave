@@ -58,12 +58,18 @@ Flush PWM Thermostat<br /><h1>Overview</h1><p>This Z-Wave module is used to regu
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Input I1 switch type</label>
         <description>Input I1 switch type</description>
@@ -464,11 +470,6 @@ Node Id of external battery powered sensor<br /><h1>Overview</h1><p>0 - disabled
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline group</label>
         <description>reserved for communication with the main controller</description>
@@ -530,8 +531,6 @@ Node Id of external battery powered sensor<br /><h1>Overview</h1><p>0 - disabled
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
     <state pattern="%s">
-      <options>
-      </options>
     </state>
   </channel-type>
 
@@ -541,8 +540,6 @@ Node Id of external battery powered sensor<br /><h1>Overview</h1><p>0 - disabled
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
     <state pattern="%s">
-      <options>
-      </options>
     </state>
   </channel-type>
 

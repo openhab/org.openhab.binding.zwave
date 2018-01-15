@@ -39,12 +39,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>1: Basic Set Command value</label>
@@ -72,17 +78,12 @@ Remember the last status<br /><h1>Overview</h1><p>1 = Remember</p> <p>0 = Do not
                  min="0" max="1">
         <label>4: Output mode setting: Dimming, On/Off</label>
         <description><![CDATA[
-Output mode setting: Dimming, On/Off <br /><h1>Overview</h1><p>0 = Dimming</p> <p>1 = On/off</p>
+Output mode setting: Dimming, On/Off<br /><h1>Overview</h1><p>0 = Dimming</p> <p>1 = On/off</p>
         ]]></description>
         <default>0</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
         <description>Provides reports</description>

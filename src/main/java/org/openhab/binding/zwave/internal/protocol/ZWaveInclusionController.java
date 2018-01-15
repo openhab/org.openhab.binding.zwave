@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2014-2017 by the respective copyright holders.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.openhab.binding.zwave.internal.protocol;
 
 import java.util.List;
@@ -56,6 +63,11 @@ public class ZWaveInclusionController implements ZWaveEventListener {
      * @param networkWide use network wide inclusion
      */
     public void startInclusion(boolean highPower, boolean networkWide) {
+        if (inclusionState != ZWaveInclusionState.Unknown) {
+            logger.debug("ZWave controller unable to start inclusion - state is {}", inclusionState);
+            return;
+        }
+        inclusionState = ZWaveInclusionState.IncludeSent;
         controller.addEventListener(this);
         logger.debug("ZWave controller start inclusion");
         startTimer(TIMER_MAIN);
@@ -66,6 +78,11 @@ public class ZWaveInclusionController implements ZWaveEventListener {
      * Starts a network exclusion process
      */
     public void startExclusion() {
+        if (inclusionState != ZWaveInclusionState.Unknown) {
+            logger.debug("ZWave controller unable to start exclusion - state is {}", inclusionState);
+            return;
+        }
+        inclusionState = ZWaveInclusionState.ExcludeSent;
         controller.addEventListener(this);
         logger.debug("ZWave controller start exclusion");
         startTimer(TIMER_MAIN);
@@ -88,6 +105,7 @@ public class ZWaveInclusionController implements ZWaveEventListener {
                 includeDone();
                 break;
 
+            case IncludeSent:
             case IncludeStart:
             case IncludeProtocolDone:
             case IncludeFail:
@@ -96,6 +114,7 @@ public class ZWaveInclusionController implements ZWaveEventListener {
                 startTimer(TIMER_END);
                 break;
 
+            case ExcludeSent:
             case ExcludeStart:
             case ExcludeFail:
                 inclusionState = ZWaveInclusionState.ExcludeDone;
@@ -287,6 +306,7 @@ public class ZWaveInclusionController implements ZWaveEventListener {
             stopTimer();
             switch (inclusionState) {
                 case Unknown:
+                case IncludeSent:
                 case IncludeStart:
                 case IncludeSlaveFound:
                 case IncludeControllerFound:
@@ -305,6 +325,7 @@ public class ZWaveInclusionController implements ZWaveEventListener {
                     // We already notified the ZWaveController we were done!
                     break;
 
+                case ExcludeSent:
                 case ExcludeStart:
                 case ExcludeNodeFound:
                 case ExcludeSlaveFound:

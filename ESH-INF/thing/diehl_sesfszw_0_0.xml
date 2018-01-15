@@ -64,12 +64,23 @@ Plug Actuator<br /><h2>Inclusion Information</h2><p>The inclusion process is con
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="actions">
+        <context>setup</context>
+        <label>Actions</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Default switch state</label>
         <description>Behaviour after mains failure</description>
@@ -162,10 +173,6 @@ Behaviour in the event of a safety shutdown<br /><h1>Overview</h1><p>The plug ac
       </parameter>
 
       <!-- ACTION DEFINITIONS -->
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
 
       <parameter name="config_9_1_wo" type="integer" groupName="configuration">
         <label>9: Reset of overcurrent shutdown</label>
@@ -180,11 +187,6 @@ Activation despite 3x safety shutdown<br /><h1>Overview</h1><p> Activation desp
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association">
         <label>1: reportd</label>
       </parameter>

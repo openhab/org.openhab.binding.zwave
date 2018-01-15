@@ -61,12 +61,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Disable Meter Functionality</label>
         <description><![CDATA[
@@ -101,7 +107,7 @@ Maximum current the plug will pass<br /><h1>Overview</h1><p>Sets the maximum cur
                  min="1" max="16">
         <label>4: Set "Alert" Current Level</label>
         <description><![CDATA[
-Current level warning threshold <br /><h1>Overview</h1><p>Sets the current level at which the On/Off Plug-In Switch will flash its LED yellow, until the current returns to below this level. It will NOT cut off current to the device; this functions as a visible warning to the user. <strong>NOTE: this value must be lower than Param 3</strong></p>
+Current level warning threshold<br /><h1>Overview</h1><p>Sets the current level at which the On/Off Plug-In Switch will flash its LED yellow, until the current returns to below this level. It will NOT cut off current to the device; this functions as a visible warning to the user. <strong>NOTE: this value must be lower than Param 3</strong></p>
         ]]></description>
         <default>12</default>
       </parameter>
@@ -166,11 +172,6 @@ Turn off the button<br /><h1>Overview</h1><p>If this parameter is enabled, the u
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[

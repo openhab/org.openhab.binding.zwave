@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2014-2017 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -287,7 +286,7 @@ public abstract class ZWaveCommandClass {
                 commandClass = CommandClass.getCommandClass(node.getManufacturer(), node.getDeviceType());
             }
             if (commandClass == null) {
-                logger.debug(String.format("NODE %d: Unknown command class 0x%02x", node.getNodeId(), classId));
+                logger.debug("NODE {}: Unknown command class 0x{}", node.getNodeId(), Integer.toHexString(classId));
                 return null;
             }
             Class<? extends ZWaveCommandClass> commandClassClass = commandClass.getCommandClassClass();
@@ -305,7 +304,8 @@ public abstract class ZWaveCommandClass {
             return constructor.newInstance(new Object[] { node, controller, endpoint });
         } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
                 | NoSuchMethodException | SecurityException e) {
-            logger.debug(String.format("NODE %d: Error instantiating command class 0x%02x", node.getNodeId(), classId));
+            logger.debug("NODE {}: Error instantiating command class 0x{}", node.getNodeId(),
+                    Integer.toHexString(classId));
             e.printStackTrace();
             return null;
         }

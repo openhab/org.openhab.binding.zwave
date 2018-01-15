@@ -9,10 +9,6 @@
     <label>MH3700-HP Programmable Thermostat</label>
     <description>Programmable Thermostat</description>
 
-    <!-- CHANNEL DEFINITIONS -->
-    <channels>
-    </channels>
-
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">McoHome Technology Co., Ltd</property>

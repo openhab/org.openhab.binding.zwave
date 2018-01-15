@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2014-2017 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,10 +54,10 @@ public class SerialApiGetCapabilitiesMessageClass extends ZWaveCommandProcessor 
         deviceType = ((incomingMessage.getMessagePayloadByte(4)) << 8) | (incomingMessage.getMessagePayloadByte(5));
         deviceId = (((incomingMessage.getMessagePayloadByte(6)) << 8) | (incomingMessage.getMessagePayloadByte(7)));
 
-        logger.debug(String.format("API Version    = %s", serialAPIVersion));
-        logger.debug(String.format("Manufacture ID = 0x%x", manufactureId));
-        logger.debug(String.format("Device Type    = 0x%x", deviceType));
-        logger.debug(String.format("Device ID      = 0x%x", deviceId));
+        logger.debug("API Version    = {}", serialAPIVersion);
+        logger.debug("Manufacture ID = 0x{}", Integer.toHexString(manufactureId));
+        logger.debug("Device Type    = 0x{}", Integer.toHexString(deviceType));
+        logger.debug("Device ID      = 0x{}", Integer.toHexString(deviceId));
 
         apiCapabilities = new HashSet<>();
         // Print the list of messages supported by this controller
@@ -68,7 +67,7 @@ public class SerialApiGetCapabilitiesMessageClass extends ZWaveCommandProcessor 
                     SerialMessage.SerialMessageClass msgClass = SerialMessage.SerialMessageClass
                             .getMessageClass(((by - 8) << 3) + bi + 1);
                     if (msgClass == null) {
-                        logger.debug(String.format("Supports: Unknown Class 0x%02x", ((by - 8) << 3) + bi + 1));
+                        logger.debug("Supports: Unknown Class {}", Integer.toHexString(((by - 8) << 3) + bi + 1));
                     } else {
                         logger.debug("Supports: {}", msgClass);
                         apiCapabilities.add(msgClass);

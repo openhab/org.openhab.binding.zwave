@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2014-2017 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,8 +39,8 @@ public class MemoryGetIdMessageClass extends ZWaveCommandProcessor {
         homeId = ((incomingMessage.getMessagePayloadByte(0)) << 24) | ((incomingMessage.getMessagePayloadByte(1)) << 16)
                 | ((incomingMessage.getMessagePayloadByte(2)) << 8) | (incomingMessage.getMessagePayloadByte(3));
         ownNodeId = incomingMessage.getMessagePayloadByte(4);
-        logger.debug(String.format("Got MessageMemoryGetId response. Home id = 0x%08X, Controller Node id = %d", homeId,
-                ownNodeId));
+        logger.debug("Got MessageMemoryGetId response. Home id = 0x{}, Controller Node id = {}",
+                Integer.toHexString(homeId), ownNodeId);
 
         transaction.setTransactionComplete();
         return true;

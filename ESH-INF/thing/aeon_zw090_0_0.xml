@@ -11,10 +11,6 @@
 Z‐Stick Gen5 USB Controller<br /><h1>Overview</h1><p>Aeon Labs Z‐Stick Gen5 is a self‐powered Z‐Wave USB adapter with remote network creation capabilities <br />(independent from external power and host microprocessor).  By being able to remotely include/remove Z‐<br />Wave devices, this greatly simplifies Z‐Wave network installation.  When connected to a host controller (via <br />USB), it enables the host controller to take part in the Z‐Wave Network. <br />It can be included and operated in any Z‐wave network with other Z‐wave certified devices from other <br />manufacturers and/or other applications. All non‐battery operated nodes within the network will act as <br />repeaters regardless of vendor to increase reliability of the network. </p> <br /><h2>Inclusion Information</h2><p>Push the include button.  Controller will blink slowly.  It is in include mode.  Press again to cancel.</p> <br /><h2>Exclusion Information</h2><p>1. Unplug the Z‐Stick from the USB connector. Then press and hold the Action Button for <br />approximately 2 seconds. (The orange LED will blinking fast.) <br />2. To remove a Z‐Wave device from the network, simply go to the device with the Z‐Stick <br />and press the Action Button on the device you wish to remove. (The LED on the Z‐Stick will <br />become blue and Immediately stay solid for 2 seconds to indicate successful removal from <br />the network.) <br />3.   The orange LED will then return to blinking fast, indicating readiness for further device <br />exclusions. Repeat step 1 for each device as you wish to exclude</p> <br /><h2>Wakeup Information</h2><p>N/A</p>
     ]]></description>
 
-    <!-- CHANNEL DEFINITIONS -->
-    <channels>
-    </channels>
-
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">AEON Labs</property>
@@ -27,12 +23,18 @@ Z‐Stick Gen5 USB Controller<br /><h1>Overview</h1><p>Aeon Labs Z‐Stick Gen5 
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_81_1" type="integer" groupName="configuration">
         <label>81: Enable/disable the LED indicator</label>
         <description><![CDATA[
@@ -58,7 +60,7 @@ RF power level<br /><h1>Overview</h1><p>Configuration of the RF power level</p> 
       <parameter name="config_242_1" type="integer" groupName="configuration">
         <label>242: Security network enabled</label>
         <description><![CDATA[
-Security network enabled <br /><h1>Overview</h1><p>Security network enabled <br />(0 =disable, 1 = enable)</p>
+Security network enabled<br /><h1>Overview</h1><p>Security network enabled <br />(0 =disable, 1 = enable)</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -87,11 +89,6 @@ Configuration lock. 1=enable, 0=disable<br /><h1>Overview</h1><p>Enable/disable 
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Z-Stick Gen5 (ZW090-A)</label>
         <description>Z-Wave Plus Lifeline</description>

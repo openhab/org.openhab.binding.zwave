@@ -10,6 +10,7 @@
     <description><![CDATA[
 Aeon Labs Garage Door Controller Gen5<br /><h1>Overview</h1><p>Aeon Labs Garage Door Controller is a smart and wireless Garage Door Control system, you can control the garage door to open, close, or stop moving via wireless signal on your gateway client or phone application.</p> <p>The Garage Door Controller allows you to configure different alarm sounds to indicate the door ’s action.</p> <p>Each action alarm sound can be customized. To change or update new alarm sounds for the Garage Door Controller, connect the Garage Door Controller to your PC host with a USB cable and download your sound files to the flash memory (128 MB) of the Garage Door Controller.</p> <p>It can be included and operated in any Z-wave network with other Z-wave certified devices from other manufacturers and/or other applications. All non-battery operated nodes within the network will act as repeaters regardless of vendor to increase reliability of the network.</p> <p>It is also a security Z-wave device and supports the Over The Air (OTA) feature for the product’s firmware upgrade.</p> <br /><h2>Inclusion Information</h2><p>Add Garage Door Controller into Z-Wave Network:</p> <ol><li>Install Garage Door Controller, and connect it to the 5V DC Adapter.</li> <li>Let the primary controller into inclusion mode (If you don’t know how to do this, please refer to its manual).</li> <li>Press the Z-Wave Button.</li> </ol><br /><h2>Exclusion Information</h2><p>Remove Garage Door Controller from Z-Wave Network:</p> <ol><li>Install Garage Door Controller, and connect it to the 5V DC Adapter.</li> <li>Let the primary controller into exclusion mode (If you don’t know how to do this, refer to its manual).</li> <li>Press the Z-Wave Button.</li> <li>If the remove is failed, please repeat the process from step 2.</li> </ol><p>Note: If Garage Door Controller is removed from Z-wave network, it will be reset to factory default.</p>
     ]]></description>
+    <category>GarageDoor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -40,12 +41,23 @@ Aeon Labs Garage Door Controller Gen5<br /><h1>Overview</h1><p>Aeon Labs Garage 
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="actions">
+        <context>setup</context>
+        <label>Actions</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_32_1" type="integer" groupName="configuration"
                  min="1" max="100">
         <label>32: Startup ringtone</label>
@@ -236,10 +248,6 @@ Enable/disable configuration<br /><h1>Overview</h1><p>Enable/disable configurati
       </parameter>
 
       <!-- ACTION DEFINITIONS -->
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
 
       <parameter name="config_34_1_wo" type="integer" groupName="configuration">
         <label>34: Sensor Calibration</label>
@@ -278,11 +286,6 @@ Set volume for test of ringtone<br /><h1>Overview</h1><p>Test the volume of the 
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
         <description><![CDATA[

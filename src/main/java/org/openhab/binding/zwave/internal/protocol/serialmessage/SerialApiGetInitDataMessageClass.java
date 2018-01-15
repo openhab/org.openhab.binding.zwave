@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2014-2017 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -71,7 +70,7 @@ public class SerialApiGetInitDataMessageClass extends ZWaveCommandProcessor {
         logger.info("ZWave Controller is {} Controller",
                 ((incomingMessage.getMessagePayloadByte(1) & 0x04) == 1) ? "Secondary" : "Primary");
         logger.info("------------Number of Nodes Found Registered to ZWave Controller------------");
-        logger.info(String.format("# Nodes = %d", zwaveNodes.size()));
+        logger.info("# Nodes = %d", zwaveNodes.size());
         logger.info("----------------------------------------------------------------------------");
 
         transaction.setTransactionComplete();

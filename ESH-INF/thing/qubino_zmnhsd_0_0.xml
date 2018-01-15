@@ -51,12 +51,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Input switch type</label>
         <default>0</default>
@@ -218,17 +224,12 @@ Set value is added or subtracted to actual measured value by sensor. Available c
                  min="0" max="127">
         <label>120: Digital temperature sensor reporting</label>
         <description><![CDATA[
-If digital temperature sensor is connected, module reports measured temperature on temperature change defined by this parameter. Available configuration parameters: <ul><li>default value 5 = 0.5°C</li> <li>0 – Reporting disabled</li> </ul>
+If digital temperature sensor is connected, module reports measured temperature on temperature change defined by this parameter. Available configuration parameters: <ul><li>default value 5 = 0.5°C</li> <li>0 – Reporting disabled</li></ul>
         ]]></description>
         <default>5</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Controller Updates</label>
       </parameter>

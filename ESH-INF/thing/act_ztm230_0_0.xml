@@ -40,12 +40,18 @@ Dual paddle wall mounted transmitter<br /><h1>Overview</h1><p>The ZTM230 Wall Mo
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Ignore Start Level Bit</label>
         <description><![CDATA[
@@ -221,11 +227,6 @@ Poll Group 2 interval (minutes).<br /><h1>Overview</h1><p>The ZTM230 will poll t
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
         <description><![CDATA[
@@ -253,7 +254,7 @@ Group 3 double tap right paddle<br /><h1>Overview</h1><p>Nodes in this group are
       <parameter name="group_4" type="text" groupName="association" multiple="true">
         <label>4: Group 4</label>
         <description><![CDATA[
-Group 4 <br /><h1>Overview</h1><p>Nodes in this group are turned ON or OFF or set to a specific dim level when the ZTM230 is controlled remotely. You can place up to 5 nodes in each group.<br />If controlling dimmers, for best results, associate the dimmers into the group first.  </p>
+Group 4<br /><h1>Overview</h1><p>Nodes in this group are turned ON or OFF or set to a specific dim level when the ZTM230 is controlled remotely. You can place up to 5 nodes in each group.<br />If controlling dimmers, for best results, associate the dimmers into the group first.  </p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>

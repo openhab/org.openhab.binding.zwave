@@ -8,6 +8,7 @@
   <thing-type id="intermatic_ha14wd_00_000" listed="false">
     <label>HA14WD Dimmer Switch</label>
     <description>Dimmer Switch</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

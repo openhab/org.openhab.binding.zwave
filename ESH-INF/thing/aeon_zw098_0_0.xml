@@ -50,12 +50,23 @@ LED Bulb<br /><h2>Inclusion Information</h2><p>Non-secure inclusion:<br />1. Pow
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="actions">
+        <context>setup</context>
+        <label>Actions</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_32_1" type="integer" groupName="configuration">
         <label>32: Toggle send report on color change</label>
         <description><![CDATA[
@@ -199,10 +210,6 @@ Color index configuration for multi mode (7,8)<br /><h1>Overview</h1><p>The colo
       </parameter>
 
       <!-- ACTION DEFINITIONS -->
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
 
       <parameter name="config_36_1_wo" type="integer" groupName="configuration">
         <label>36: Control color mode</label>
@@ -219,11 +226,6 @@ Reboot/save/exit Colorful mode<br /><h1>Overview</h1><p>Reboot/save/exit Colorfu
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
         <multipleLimit>5</multipleLimit>

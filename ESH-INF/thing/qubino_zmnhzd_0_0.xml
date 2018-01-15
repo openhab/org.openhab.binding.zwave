@@ -171,12 +171,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="0" max="8800">
         <label>1: Wind Gauge</label>
@@ -307,7 +313,7 @@ Unsolicited report<br /><h1>Overview</h1><p>0 - Unsolicited report disabled</p> 
                  min="0" max="1">
         <label>15: Random ID enable</label>
         <description><![CDATA[
-enables/disables random ID <br /><h1>Overview</h1><p>If Random ID is disabled, the Weather Station USB Key can receive data from multiple 433 MHz Sensors on the same Channel. If the Random ID is enabled, the USB Key can receive data from only one sensor on the same channel. If the USB Key does not receive a data from a sensor on a specific channel for more than 2.5 hours, it clears the Random ID of the device and waits for a new ID. If you replace the batteries in the modules, the Random ID will change. If you want that the USB Key accept a module immediately, set the Parameter No. 15 to “0” and in the next step again to “1”.</p>
+enables/disables random ID<br /><h1>Overview</h1><p>If Random ID is disabled, the Weather Station USB Key can receive data from multiple 433 MHz Sensors on the same Channel. If the Random ID is enabled, the USB Key can receive data from only one sensor on the same channel. If the USB Key does not receive a data from a sensor on a specific channel for more than 2.5 hours, it clears the Random ID of the device and waits for a new ID. If you replace the batteries in the modules, the Random ID will change. If you want that the USB Key accept a module immediately, set the Parameter No. 15 to “0” and in the next step again to “1”.</p>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -316,17 +322,12 @@ enables/disables random ID <br /><h1>Overview</h1><p>If Random ID is disabled, t
                  min="0" max="1">
         <label>250: Unsecure / Secure Inclusion</label>
         <description><![CDATA[
-Unsecure / Secure Inclusion <br /><h1>Overview</h1><ul><li>default Value 0</li> <li>0 – Unsecure Inclusion</li> <li>1 – Secure Inclusion</li> </ul><p>The Weather Station Key supports both, the secure and unsecure inclusion. Even if the controller does not support security command classes, the Key could be included as unsecure and keep all the functionality. By default, the Key includes as unsecure. To include the Key as secure follow the procedure:</p> <ol><li>Include the Key into the controller</li> <li>Set the parameter 250 to the value “1”</li> <li>Enable add/remove mode on main controller,</li> <li>Hold service button S between 1.5 and 4 seconds to exclude the module</li> <li>If the exclusion of the module was successful, the LED on the module starts blinking</li> <li>Unplug the module out of the power supply</li> <li>enable add/remove mode on main controller</li> <li>Plug the module into the power supply to star autoinclusion</li> <li>Now the module should be included as secure</li> </ol><p>The same procedure is to include the module as unsecure</p>
+Unsecure / Secure Inclusion<br /><h1>Overview</h1><ul><li>default Value 0</li> <li>0 – Unsecure Inclusion</li> <li>1 – Secure Inclusion</li> </ul><p>The Weather Station Key supports both, the secure and unsecure inclusion. Even if the controller does not support security command classes, the Key could be included as unsecure and keep all the functionality. By default, the Key includes as unsecure. To include the Key as secure follow the procedure:</p> <ol><li>Include the Key into the controller</li> <li>Set the parameter 250 to the value “1”</li> <li>Enable add/remove mode on main controller,</li> <li>Hold service button S between 1.5 and 4 seconds to exclude the module</li> <li>If the exclusion of the module was successful, the LED on the module starts blinking</li> <li>Unplug the module out of the power supply</li> <li>enable add/remove mode on main controller</li> <li>Plug the module into the power supply to star autoinclusion</li> <li>Now the module should be included as secure</li> </ol><p>The same procedure is to include the module as unsecure</p>
         ]]></description>
         <default>0</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline group</label>
         <description>reserved for the communication with the main controller</description>

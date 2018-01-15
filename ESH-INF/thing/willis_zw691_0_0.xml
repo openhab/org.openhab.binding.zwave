@@ -5,9 +5,10 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="willis_zw691bsi_00_000" listed="false">
-    <label>ZW691-BSI Show Home, In-Wall-Smart-Outlet BSI</label>
+  <thing-type id="willis_zw691_00_000" listed="false">
+    <label>ZW691 Show Home, In-Wall-Smart-Outlet BSI</label>
     <description>Show Home, In-Wall-Smart-Outlet BSI</description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -52,7 +53,7 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Willis Electric Co., Ltd.</property>
-      <property name="modelId">ZW691-BSI</property>
+      <property name="modelId">ZW691</property>
       <property name="manufacturerId">015D</property>
       <property name="manufacturerRef">1215:262C</property>
       <property name="dbReference">775</property>

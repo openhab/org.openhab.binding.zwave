@@ -37,12 +37,13 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>1: Pulse factor</label>
@@ -70,7 +71,7 @@
                  min="0" max="255">
         <label>4: IR Pulse Width</label>
         <description><![CDATA[
-Adjusts transmit signal <br /><h1>Overview</h1><p>Adjusts transmit signal so received signal will in average be equal to this values.</p>
+Adjusts transmit signal<br /><h1>Overview</h1><p>Adjusts transmit signal so received signal will in average be equal to this values.</p>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -79,7 +80,7 @@ Adjusts transmit signal <br /><h1>Overview</h1><p>Adjusts transmit signal so rec
                  min="1" max="50">
         <label>5: Poll / Wake up frequency</label>
         <description><![CDATA[
-Wake device up this many times per second. <br /><h1>Overview</h1><p>This value also controls number of measurements per second on mechanical meters.</p>
+Wake device up this many times per second.<br /><h1>Overview</h1><p>This value also controls number of measurements per second on mechanical meters.</p>
         ]]></description>
         <default>20</default>
       </parameter>
@@ -123,7 +124,7 @@ Wake device up this many times per second. <br /><h1>Overview</h1><p>This value 
                  min="0" max="65535">
         <label>11: Real-time mode</label>
         <description><![CDATA[
-Set this to enter real-time mode from remote. <br /><h1>Overview</h1><p>Contains seconds * poll frequency before going back to sleep. If you press the button once this value will be set.</p>
+Set this to enter real-time mode from remote.<br /><h1>Overview</h1><p>Contains seconds * poll frequency before going back to sleep. If you press the button once this value will be set.</p>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -148,7 +149,7 @@ Set this to enter real-time mode from remote. <br /><h1>Overview</h1><p>Contains
                  min="0" max="65535">
         <label>15: Calibration status</label>
         <description><![CDATA[
-The calibration progress is calculated <br /><h1>Overview</h1><p>The calibration progress is calculated as (value[1] - 65 + value[2] / value[3]) * 25.</p> <p>The calibration is finished successfully when value[0]  =  2 and value[2] = value[3].</p> <p>The calibration has failed if value[0] != 1 OR (value[0] = 2 AND value[2] != value[</p>
+The calibration progress is calculated<br /><h1>Overview</h1><p>The calibration progress is calculated as (value[1] - 65 + value[2] / value[3]) * 25.</p> <p>The calibration is finished successfully when value[0]  =  2 and value[2] = value[3].</p> <p>The calibration has failed if value[0] != 1 OR (value[0] = 2 AND value[2] != value[</p>
         ]]></description>
         <default>0</default>
       </parameter>

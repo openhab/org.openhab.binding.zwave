@@ -8,10 +8,7 @@
   <thing-type id="somfy_zrtsi_00_000" listed="false">
     <label>ZRTSI Z-Wave to RTS Interface Controller</label>
     <description>Z-Wave to RTS Interface Controller</description>
-
-    <!-- CHANNEL DEFINITIONS -->
-    <channels>
-    </channels>
+    <category>Blinds</category>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>

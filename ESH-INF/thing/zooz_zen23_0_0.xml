@@ -8,6 +8,7 @@
   <thing-type id="zooz_zen23_00_000" listed="false">
     <label>ZEN23 Z-Wave Plus On/Off Toggle Switch V1</label>
     <description>Z-Wave Plus On/Off Toggle Switch V1</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -32,12 +33,13 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- ASSOCIATION DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
       </parameter-group>
 
+      <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
         <multipleLimit>5</multipleLimit>

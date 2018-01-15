@@ -10,6 +10,7 @@
     <description><![CDATA[
 Wall Controller<br /><h2>Inclusion Information</h2><p>see attached file "Popp 009303 Battery Wall Controller Manual" (section Reference Documents)</p> <br /><h2>Exclusion Information</h2><p>see attached file "Popp 009303 Battery Wall Controller Manual" (section Reference Documents)</p> <br /><h2>Wakeup Information</h2><p>see attached file "Popp 009303 Battery Wall Controller Manual" (section Reference Documents)</p>
     ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -52,12 +53,18 @@ Wall Controller<br /><h2>Inclusion Information</h2><p>see attached file "Popp 00
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Button 1 and 3 pair mode</label>
         <description><![CDATA[
@@ -191,11 +198,6 @@ Button 2 and 4 pair mode.<br /><h1>Overview</h1><p>In separate mode button 2 wor
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <multipleLimit>10</multipleLimit>

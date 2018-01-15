@@ -10,6 +10,7 @@
     <description><![CDATA[
 Siren Gen5<br /><h1>Overview</h1><p>Update command classes -:<br />METER:5 :: ADD<br />METER:6 :: ADD</p> <br /><h2>Inclusion Information</h2><p>1. Install Siren, and plug it into the socket of AC Power.<br />2. Let the primary controller into inclusion mode (If you don’t know how to do this, please refer to its manual).<br />3. Press the Action Button.<br />4. If the Learning is failed, please repeat the process from step 2.</p> <br /><h2>Exclusion Information</h2><p>1. Install Siren, and plug it into the socket of AC Power.<br />2. Let the primary controller into exclusion mode (If you don’t know how to do this, refer to its manual). 3. Press the Action Button.<br />4. If the remove is failed, please repeat the process from step 2.</p> <p>Note: If Siren is removed from Z‐wave network, it will be reset to factory default.</p>
     ]]></description>
+    <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -32,7 +33,7 @@ Siren Gen5<br /><h1>Overview</h1><p>Update command classes -:<br />METER:5 :: AD
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW080</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0004:0050,0104:0050,0204:0050</property>
+      <property name="manufacturerRef">0104:0050,0204:0050</property>
       <property name="dbReference">90</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -40,12 +41,18 @@ Siren Gen5<br /><h1>Overview</h1><p>Update command classes -:<br />METER:5 :: AD
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_37_2_000000FF" type="integer" groupName="configuration"
                  min="0" max="5">
         <label>37: Siren Sound</label>
@@ -101,11 +108,6 @@ what type of notification to send to Group 1<br /><h1>Overview</h1><p>Enable to 
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
         <multipleLimit>5</multipleLimit>

@@ -21,7 +21,7 @@
         <label>Dimmer</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
     </channels>
@@ -38,16 +38,22 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Dim Start Level</label>
         <description><![CDATA[
-Set Ignore Start Level Bit When Transmitting Dim Commands <br /><h1>Overview</h1><p>The WT00Z-1 can send Dim commands to Z-Wave enabled dimmers.The Dim command has a start level embedded in it. A dimmer receivingthis command will start dimming from that start level. However, thecommand can be sent so that the dimmer ignores the start level andinstead starts dimming from its current level. By default, the WT00Z-1sends the command so that the dimmer will start dimming from itscurrent dim level rather than the start level embedded in the command.To change this, simply set the conﬁguration parameter to 0.</p> <p><b>• Parameter No: 1• </b></p> <p><b>Length: 1 Byte• </b></p> <p><b>Valid Values = 0 or 1 (default 1)</b></p> <p><b>NOTE:</b></p> <p>Any ACT Z-Wave enabled dimmers have the conﬁguration optionto ignore the start level no matter how you conﬁgure the WT00Z-1</p>  
+Set Ignore Start Level Bit When Transmitting Dim Commands<br /><h1>Overview</h1><p>The WT00Z-1 can send Dim commands to Z-Wave enabled dimmers.The Dim command has a start level embedded in it. A dimmer receivingthis command will start dimming from that start level. However, thecommand can be sent so that the dimmer ignores the start level andinstead starts dimming from its current level. By default, the WT00Z-1sends the command so that the dimmer will start dimming from itscurrent dim level rather than the start level embedded in the command.To change this, simply set the conﬁguration parameter to 0.</p> <p><b>• Parameter No: 1• </b></p> <p><b>Length: 1 Byte• </b></p> <p><b>Valid Values = 0 or 1 (default 1)</b></p> <p><b>NOTE:</b></p> <p>Any ACT Z-Wave enabled dimmers have the conﬁguration optionto ignore the start level no matter how you conﬁgure the WT00Z-1</p>  
         ]]></description>
         <default>1</default>
         <options>
@@ -223,11 +229,6 @@ Activate/Deactivate polling of first node in Group 1<br /><h1>Overview</h1><p>Th
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Associating Group 1</label>
         <description><![CDATA[

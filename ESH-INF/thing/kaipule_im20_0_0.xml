@@ -10,6 +10,7 @@
     <description><![CDATA[
 Door Sensor<br /><h1>Overview</h1><p>Factory Setting<br />Press the tamper switch 6 times in 2s, it will recover to factory setting after a period of time<br />(Please use the reset procedure only when the primary controller is missing or inoperable)</p> <br /><h2>Inclusion Information</h2><p>Enter the Inclusion Mode of gateway, and press the tamper switch 3 times within 1.5s,<br />then the door sensor will stay in enrollment state until successfully enrolled into network or<br />enrollment time out after 30s.</p> <br /><h2>Exclusion Information</h2><p>Enter the Exclusion Mode of gateway, and press the tamper switch 3 times within<br />1.5s, then the door sensor will be removed after a period of time.</p> <br /><h2>Wakeup Information</h2><p>a) Manual Wake-up<br />Quickly press tamper switch once, the door sensor will automatically send wake-up<br />information, and there will be 10s after wake-up to receive gateway setting information.<br />b) Automatic Wake-up<br />Default time of automatic wake-up is 24 hours, and there will be 10s after wake-up to receive<br />gateway setting information, the max automatic report time = 24 hours, minimum=30min</p>
     ]]></description>
+    <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -43,7 +44,7 @@ Door Sensor<br /><h1>Overview</h1><p>Factory Setting<br />Press the tamper switc
       <property name="vendor">Kaipule Technology Co., Ltd.</property>
       <property name="modelId">IM-20</property>
       <property name="manufacturerId">0214</property>
-      <property name="manufacturerRef">0002:0001,0003:0001</property>
+      <property name="manufacturerRef">0003:0001</property>
       <property name="dbReference">254</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -51,12 +52,13 @@ Door Sensor<br /><h1>Overview</h1><p>Factory Setting<br />Press the tamper switc
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- ASSOCIATION DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
       </parameter-group>
 
+      <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
         <multipleLimit>2</multipleLimit>

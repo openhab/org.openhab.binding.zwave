@@ -10,6 +10,7 @@
     <description><![CDATA[
 Smart Single Relay Switch Module<br /><h1>Overview</h1><p>Z-Wave unifies all your home electronics into an integrated wireless network and helps them talk to each other. It can be added to the network, and making your home electronics fully compatible. The ZWN-RSM1 Switch Module is a component of lighting control system, it can’t be used separately but should turn an existing switch into a Z-Wave switch. This ZWN-RSM1 module is a Z-Wave enabled device and fully interoperable with other Z-Wave certified device from other manufacturers and/or other applications. In a Z-Wave network, each device is designed to act as a wireless repeater. Once the ZWN-RSM1 module is installed and setup with in your wall, it will retransmit the RF signal from one device to another until the intended device is reached. This ensures that the signal is received by its intended destination by routing the signal around obstacles and radio dead spots.  </p> <br /><h2>Inclusion Information</h2><p>. When the controller is in add mode, and once program button is pressed and release, or Flick 3 times of the connected switch in 1.5S will also set the ZWN-RSM1 module enter into learn mode . and then the controller will verify the add.</p> <br /><h2>Exclusion Information</h2><p>When the controller is in remove mode, and once program button is pressed and release, or Flick 3 times of the connected switch in 1.5S will also set the ZWN-RSM1 module enter into learn mode . and then the controller will verify the remove.</p>
     ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -34,12 +35,13 @@ Smart Single Relay Switch Module<br /><h1>Overview</h1><p>Z-Wave unifies all you
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- ASSOCIATION DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
       </parameter-group>
 
+      <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
         <description>Lifeline: Send device reset locally notification</description>

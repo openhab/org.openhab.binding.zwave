@@ -8,6 +8,7 @@
   <thing-type id="thermofloor_tf016_00_000" listed="false">
     <label>TF016 ZWave Thermostat</label>
     <description>ZWave Thermostat</description>
+    <category>RadiatorControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -63,12 +64,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_2" type="integer" groupName="configuration">
         <label>1: Operation mode</label>
         <description><![CDATA[
@@ -84,11 +91,6 @@ Defines Operation Mode of thermostat<br /><h1>Overview</h1><p>0....OFF(0x00)</p>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <multipleLimit>8</multipleLimit>

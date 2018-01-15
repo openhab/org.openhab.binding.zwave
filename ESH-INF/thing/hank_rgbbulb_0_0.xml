@@ -8,6 +8,7 @@
   <thing-type id="hank_rgbbulb_00_000" listed="false">
     <label>RGB bulb HKZW-RGB01-V1.0</label>
     <description>HKZW-RGB01-V1.0</description>
+    <category>LightBulb</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -54,12 +55,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_21_1" type="integer" groupName="configuration">
         <label>21: Status after power failure</label>
         <description>Define how the RGB BULB will react after the power supply is back on.</description>
@@ -74,7 +81,7 @@
       <parameter name="config_24_1" type="integer" groupName="configuration">
         <label>24: Notification when Load status change</label>
         <description><![CDATA[
-RGB BULB can send notifications to associated device <br /><h1>Overview</h1><p>RGB BULB can send notifications to associated device (Group Lifeline) when the status of the RGB BULB is changed.</p>
+RGB BULB can send notifications to associated device<br /><h1>Overview</h1><p>RGB BULB can send notifications to associated device (Group Lifeline) when the status of the RGB BULB is changed.</p>
         ]]></description>
         <default>1</default>
         <options>
@@ -123,11 +130,6 @@ RGB BULB can blink or cyclic/random change color automatically at set intervals.
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <multipleLimit>5</multipleLimit>

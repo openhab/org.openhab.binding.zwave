@@ -97,12 +97,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Z-Wave notifications</label>
         <description><![CDATA[
@@ -120,7 +126,7 @@ This parameter allows to set the actions which result in sending notifications t
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: LED diode indications</label>
         <description><![CDATA[
-This parameter allows to set the actions which result in LED diode indications. This parameter does not apply to the most important actions, such as CO Alarm, Malfunction Alarm and Low Battery Alarm. <br /><h1>Overview</h1><p>This parameter allows to set the actions which result in LED diode indications.</p> <p>This parameter does not apply to the most important actions, such as CO Alarm, Malfunction Alarm and Low Battery Alarm.</p> <p>The CO Sensor allows to customize its operation to user’s needs.</p> <p>Default setting: 0</p> <p>Parameter size: 1 [byte]</p>
+This parameter allows to set the actions which result in LED diode indications. This parameter does not apply to the most important actions, such as CO Alarm, Malfunction Alarm and Low Battery Alarm.<br /><h1>Overview</h1><p>This parameter allows to set the actions which result in LED diode indications.</p> <p>This parameter does not apply to the most important actions, such as CO Alarm, Malfunction Alarm and Low Battery Alarm.</p> <p>The CO Sensor allows to customize its operation to user’s needs.</p> <p>Default setting: 0</p> <p>Parameter size: 1 [byte]</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -306,11 +312,6 @@ This parameter allows to set the actions which result in LED diode indications. 
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
         <description><![CDATA[
@@ -329,7 +330,7 @@ Devices in this group will be switched on/off when CO Alarm status changes.<br /
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: CO Alarm</label>
         <description><![CDATA[
-Devices in this group will receive notification when CO Alarm status changes. <br /><h1>Overview</h1><p>3rd association group – “CO Alarm” is assigned to the device status - devices in this group will receive notification when CO Alarm status changes. Useful for devices that can trigger alarms.</p> <p>The CO Sensor in 2nd to 7th group allows to control 5 regular or multichannel devices per an association group. </p> <p>It is not recommended to associate more than 10 devices in general, as the response time to control commands depends on the number of associated devices. In extreme cases, system response may be delayed.</p>
+Devices in this group will receive notification when CO Alarm status changes.<br /><h1>Overview</h1><p>3rd association group – “CO Alarm” is assigned to the device status - devices in this group will receive notification when CO Alarm status changes. Useful for devices that can trigger alarms.</p> <p>The CO Sensor in 2nd to 7th group allows to control 5 regular or multichannel devices per an association group. </p> <p>It is not recommended to associate more than 10 devices in general, as the response time to control commands depends on the number of associated devices. In extreme cases, system response may be delayed.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>

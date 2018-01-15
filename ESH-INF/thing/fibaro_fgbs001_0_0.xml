@@ -83,12 +83,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>1: IN1 Alarm Cancellation Delay</label>
@@ -102,7 +108,7 @@ Input I alarm cancellation delay.<br /><h1>Overview</h1><p>Additional delay afte
                  min="0" max="65535">
         <label>2: IN2 Alarm Cancellation Delay</label>
         <description><![CDATA[
-Input 2 alarm cancellation delay. <br /><h1>Overview</h1><p>Additional delay after an alarm from input IN2 has ceased. The parameter allows you to specify additional time, after which the input no. 2 alarm is cancelled once its violation has ceased.</p>
+Input 2 alarm cancellation delay.<br /><h1>Overview</h1><p>Additional delay after an alarm from input IN2 has ceased. The parameter allows you to specify additional time, after which the input no. 2 alarm is cancelled once its violation has ceased.</p>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -169,7 +175,7 @@ Type of transmitted control frame for association group 2<br /><h1>Overview</h1>
                  min="1" max="255">
         <label>7: Forced Level of Dimming group 1</label>
         <description><![CDATA[
-Value of the parameter specifying the forced levels. <br /><h1>Overview</h1><p>Value of the parameter specifying the forced levels of dimming / opening sun blinds when comes 'switch on' / 'open' command to devices from association group no. 1.&lt;BR/&gt;In the case of alarm frames the alarm priority is specified.</p> <p>Possible parameter settings: (1 – 99) and 255<br />Value of 255 makes it possible to activate the device when using<br />the Dimmer module it means activating the device and setting it to<br />the previous stored condition, e.g. when Dimmer is set to 30%, then<br />deactivated, and then reactivated using command 255, it will<br />automatically be set to the previous condition, i.e. 30%. </p>
+Value of the parameter specifying the forced levels.<br /><h1>Overview</h1><p>Value of the parameter specifying the forced levels of dimming / opening sun blinds when comes 'switch on' / 'open' command to devices from association group no. 1.&lt;BR/&gt;In the case of alarm frames the alarm priority is specified.</p> <p>Possible parameter settings: (1 – 99) and 255<br />Value of 255 makes it possible to activate the device when using<br />the Dimmer module it means activating the device and setting it to<br />the previous stored condition, e.g. when Dimmer is set to 30%, then<br />deactivated, and then reactivated using command 255, it will<br />automatically be set to the previous condition, i.e. 30%. </p>
         ]]></description>
         <default>255</default>
       </parameter>
@@ -240,7 +246,7 @@ Transmitting the alarm or control frame in 'broadcast' mode<br /><h1>Overview</h
       <parameter name="config_14_1" type="integer" groupName="configuration">
         <label>14: Scene activation</label>
         <description><![CDATA[
-Enable/Disable scene functionality. <br /><h1>Overview</h1><p>The device offers the possibility of sending commands compatible with Command class scene activation. Information is sent to devices assigned to association group no. 3.</p>
+Enable/Disable scene functionality.<br /><h1>Overview</h1><p>The device offers the possibility of sending commands compatible with Command class scene activation. Information is sent to devices assigned to association group no. 3.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -250,11 +256,6 @@ Enable/Disable scene functionality. <br /><h1>Overview</h1><p>The device offers 
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Input 1</label>
         <multipleLimit>5</multipleLimit>

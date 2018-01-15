@@ -8,6 +8,7 @@
   <thing-type id="everspring_hsp02_00_000" listed="false">
     <label>HSP02 Motion Detector</label>
     <description>Motion Detector</description>
+    <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -35,7 +36,7 @@
       <property name="vendor">Everspring</property>
       <property name="modelId">HSP02</property>
       <property name="manufacturerId">0060</property>
-      <property name="manufacturerRef">0001:0003,0001:0001</property>
+      <property name="manufacturerRef">0001:0001,0001:0003</property>
       <property name="dbReference">22</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -43,12 +44,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>1: Basic Set Level</label>
@@ -92,11 +99,6 @@
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Target for reports</label>
       </parameter>

@@ -10,6 +10,7 @@
     <description><![CDATA[
 Thermostatic Valve<br /><h1>Overview</h1><h1>Intelligenter Energiesparregler für Z-Wave mit wechselbaren Designblenden.</h1> <p>Die neue Energiesparreglerserie von EUROtronic steht für ein völlig neues Designkonzept. Mit wechselbare Designblenden (als Zubehör erhältlich) kann der smarte Heizkörperthermostat an den individuellen Einrichtungsgeschmack angepasst werden.</p> <p>Nutzern von Z-Wave bietet der neue Spirit-Z-Wave eine Vielzahl neuer Funktionen.</p> <p>Ausgestattet mit FLiRS (Frequently Listening Receiver Slave) reagiert der Energiesparregler mit einer besonders kurzen Latenzzeit auf eingehende Befehle (z.B. Temperaturänderungen). <br />Sein farbiges Display ist besonders gut ablesbar und hat eine extragroße Temperaturanzeige. <br />Durch die per LED mehrfarbig beleuchtete Mitteltaste ist eine intuitive Nutzerführung möglich, da der Nutzer durch farbige Blinkfolgen zur Interaktion mit dem Gerät aufgefordert wird.</p> <br /><h2>Inclusion Information</h2><p>Start Inclusion mode of your primary Z-Wave Controller. Press the Boost-Button. Spirit Z-Wave Plus will show the assigned NodeID.</p> <br /><h2>Exclusion Information</h2><p>Start Exclusion mode of your primary Z-Wave Controller. Now press and hold the boost button of the Spirit Z-Wave Plus for at least 5 seconds.</p>
     ]]></description>
+    <category>RadiatorControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -100,12 +101,18 @@ Thermostatic Valve<br /><h1>Overview</h1><h1>Intelligenter Energiesparregler fü
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: LCD Invert</label>
         <description>LCD Invert</description>
@@ -193,11 +200,6 @@ Measured Temperature offset<br /><h1>Overview</h1><p>-50 - +50: Offsets the meas
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
         <description><![CDATA[
