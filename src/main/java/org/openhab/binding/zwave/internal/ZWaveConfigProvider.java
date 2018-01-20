@@ -147,8 +147,8 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         List<ConfigDescriptionParameterGroup> groups = new ArrayList<ConfigDescriptionParameterGroup>();
         List<ConfigDescriptionParameter> parameters = new ArrayList<ConfigDescriptionParameter>();
 
-        groups.add(new ConfigDescriptionParameterGroup("actions", "", false, "Actions", null));
-        groups.add(new ConfigDescriptionParameterGroup("thingcfg", "home", false, "Device Configuration", null));
+        groups.add(new ConfigDescriptionParameterGroup("actions", "", false, "Actions", ""));
+        groups.add(new ConfigDescriptionParameterGroup("thingcfg", "home", false, "Device Configuration", ""));
 
         List<ParameterOption> options = new ArrayList<ParameterOption>();
         options.add(new ParameterOption("600", "10 Minutes"));
@@ -173,7 +173,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         ZWaveWakeUpCommandClass wakeupCmdClass = (ZWaveWakeUpCommandClass) node
                 .getCommandClass(ZWaveCommandClass.CommandClass.WAKE_UP);
         if (wakeupCmdClass != null) {
-            groups.add(new ConfigDescriptionParameterGroup("wakeup", "sleep", false, "Wakeup Configuration", null));
+            groups.add(new ConfigDescriptionParameterGroup("wakeup", "sleep", false, "Wakeup Configuration", ""));
 
             parameters.add(ConfigDescriptionParameterBuilder
                     .create(ZWaveBindingConstants.CONFIGURATION_WAKEUPINTERVAL, Type.INTEGER)
@@ -231,7 +231,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         ZWaveUserCodeCommandClass userCodeClass = (ZWaveUserCodeCommandClass) node
                 .getCommandClass(ZWaveCommandClass.CommandClass.USER_CODE);
         if (userCodeClass != null && userCodeClass.getNumberOfSupportedCodes() > 0) {
-            groups.add(new ConfigDescriptionParameterGroup("usercode", "lock", false, "User Code", null));
+            groups.add(new ConfigDescriptionParameterGroup("usercode", "lock", false, "User Code", ""));
 
             for (int code = 1; code <= userCodeClass.getNumberOfSupportedCodes(); code++) {
                 parameters.add(ConfigDescriptionParameterBuilder
