@@ -7,7 +7,10 @@
 
   <thing-type id="aeon_zw100_01_008" listed="false">
     <label>ZW100 MultiSensor 6</label>
-    <description>MultiSensor 6</description>
+    <description><![CDATA[
+MultiSensor 6<br /><h1>Overview</h1><p>RESET - Press and hold for 20 seconds</p> <ul><li>Reset MultiSensor to factory default:<br />1. Press and hold the Action Button for 20 seconds.<br />2. If holding time more than one second, the LED will blink faster and faster. If holding time more than<br />20 seconds, the LED will be on for 2 seconds, which indicates reset is success, otherwise please<br />repeat step 2.</li> <li>Note:<br />1, This procedure should only be used when the primary controller is inoperable.<br />2, Reset MultiSensor to factory default settings, it will:<br />a ), let the MultiSensor to be excluded in Z-Wave network;<br />b), delete the Association settings;<br />c), restore the Configuration settings to the default.  </li> </ul><br /><h2>Inclusion Information</h2><h1>Click one time</h1> <p>1. Send <strong>non-security</strong> Node Info frame  </p> <ul><li>Add MultiSensor into Z-Wave network(non-security inclusion):<br />1. Power on MultiSensor. The MultiSensor’s LED will blink slowly when you short press the Action<br />Button.<br />2. Let the primary controller into inclusion mode (If you don’t know how to do this, refer to its manual).<br />3. Press the Action Button.<br />4. If the inclusion is success, MultiSensor’s LED will be kept turning on for 8 seconds when you short<br />press the Action Button. If the LED is still in slow blink, in which you need to repeat the process from<br />step 2.</li> </ul><h1>Short press 2 times within 1 second</h1> <ul><li>1. Send <strong>Security</strong> Node Info frame.<br />2. Add MultiSensor into z-wave network(Security inclusion):<br />1. Power on MultiSensor. The MultiSensor’s LED will blink slowly when you short press the Action<br />Button.<br />2. Let the primary controller into inclusion mode (If you don’t know how to do this, refer to its manual).<br />3. Press the Action Button.<br />4. If the inclusion is success, MultiSensor’s LED will be kept turning on for 8 seconds when you short<br />press the Action Button. If the LED is still in slow blink, in which you need to repeat the process from<br />step 2. </li> </ul><br /><h2>Exclusion Information</h2><p>Remove MultiSensor from Z-wave network:<br />1. Power on MultiSensor. The MultiSensor’s LED will be kept turning on for 8 seconds when you short<br />press the Action Button.<br />2. Let the primary controller into exclusion mode (If you don’t know how to do this, refer to its manual).<br />3. Press the Action Button.<br />4. If the exclusion is success, MultiSensor’s LED will blink slowly when you short press the Action<br />Button. If MultiSensor’s LED still keeps on status, in which you need to repeat the process from step 2.  </p> <br /><h2>Wakeup Information</h2><h1>Press and hold for 3 seconds</h1> <p>Enable/disable wake up for 10 minutes.<br />(When it is enabled, the orange Led will fast blink) </p>
+    ]]></description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -67,6 +70,7 @@
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0002:0064,0102:0064,0202:0064</property>
       <property name="versionMin">1.8</property>
+      <property name="versionMax">1.9</property>
       <property name="dbReference">387</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -74,12 +78,23 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="actions">
+        <context>setup</context>
+        <label>Actions</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Stay Awake in Battery Mode</label>
         <description><![CDATA[
@@ -356,10 +371,6 @@ Enable or Disable changing of configuration parameters<br /><h1>Overview</h1><p>
       </parameter>
 
       <!-- ACTION DEFINITIONS -->
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
 
       <parameter name="config_41_2_wo" type="integer" groupName="configuration">
         <label>41: Temperature Threshold</label>
@@ -384,7 +395,7 @@ Reset 101-103 to defaults<br /><h1>Overview</h1><p>Set 101-103 to default.</p>
       <parameter name="config_110_1_wo" type="integer" groupName="configuration">
         <label>110: Set parameters 111-113 to default.</label>
         <description><![CDATA[
-Set parameters 111-113 to default. <br /><h1>Overview</h1><p>Set parameters 111-113 to default.   </p>
+Set parameters 111-113 to default.<br /><h1>Overview</h1><p>Set parameters 111-113 to default.   </p>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -400,11 +411,6 @@ Set parameters 111-113 to default. <br /><h1>Overview</h1><p>Set parameters 111-
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
         <multipleLimit>5</multipleLimit>

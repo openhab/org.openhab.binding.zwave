@@ -8,6 +8,7 @@
   <thing-type id="devolo_mt2652_00_000" listed="false">
     <label>MT2652 Scene Switch</label>
     <description>Scene Switch</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -56,12 +57,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Button 1 and 3 pair mode</label>
         <description><![CDATA[
@@ -203,13 +210,8 @@ Defines the command to be sent to devices of control group D when the related bu
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Z-Wave Plus Lifeline</label>
+        <label>1: Lifeline</label>
         <description>Z-Wave Plus Lifeline</description>
         <multipleLimit>10</multipleLimit>
       </parameter>

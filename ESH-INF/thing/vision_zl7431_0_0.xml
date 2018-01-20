@@ -8,6 +8,7 @@
   <thing-type id="vision_zl7431_00_000" listed="false">
     <label>ZL7431 In Wall Relay Switch</label>
     <description>In Wall Relay Switch</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -24,7 +25,7 @@
       <property name="vendor">Vision Security</property>
       <property name="modelId">ZL7431</property>
       <property name="manufacturerId">0109</property>
-      <property name="manufacturerRef">200C:0C02,200C:0C06,2016:1616</property>
+      <property name="manufacturerRef">200C:0C02,2016:1616</property>
       <property name="dbReference">111</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -32,12 +33,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: </label>
         <default>1</default>
@@ -48,11 +55,6 @@
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Update Controller</label>
         <multipleLimit>5</multipleLimit>

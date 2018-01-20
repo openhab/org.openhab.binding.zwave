@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2014-2017 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -215,9 +214,9 @@ public class ZWaveController {
 
         ZWaveCommandProcessor processor = ZWaveCommandProcessor.getMessageDispatcher(incomingMessage.getMessageClass());
         if (processor == null) {
-            logger.warn(String.format("TODO: Implement processing of Request Message = %s (0x%02X)",
+            logger.warn("TODO: Implement processing of Request Message = {} (0x{})",
                     incomingMessage.getMessageClass() == null ? "--" : incomingMessage.getMessageClass(),
-                    incomingMessage.getMessageClassKey()));
+                    Integer.toHexString(incomingMessage.getMessageClassKey()));
 
             return;
         }
@@ -245,8 +244,8 @@ public class ZWaveController {
 
         ZWaveCommandProcessor processor = ZWaveCommandProcessor.getMessageDispatcher(incomingMessage.getMessageClass());
         if (processor == null) {
-            logger.warn(String.format("TODO: Implement processing of Response Message = %s (0x%02X)",
-                    incomingMessage.getMessageClass(), incomingMessage.getMessageClass().getKey()));
+            logger.warn("TODO: Implement processing of Response Message = {} (0x{})", incomingMessage.getMessageClass(),
+                    Integer.toHexString(incomingMessage.getMessageClass().getKey()));
 
             return;
         }

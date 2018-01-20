@@ -8,6 +8,7 @@
   <thing-type id="hank_hkzwms02_00_000" listed="false">
     <label>HKZW_MS02 Motion Sensor</label>
     <description>Motion Sensor</description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -38,12 +39,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_12_1" type="integer" groupName="configuration">
         <label>12: Motion Sensor`s Sensitivity</label>
         <description>The higher the value,the more sensitive the PIR sensor</description>
@@ -92,11 +99,6 @@
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: report the motion detection and battery level</label>
         <multipleLimit>5</multipleLimit>

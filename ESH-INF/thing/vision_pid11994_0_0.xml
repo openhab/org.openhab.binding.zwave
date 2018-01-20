@@ -8,6 +8,7 @@
   <thing-type id="vision_pid11994_00_000" listed="false">
     <label>PID11994 Monoprice ZWave Dimmer Plugin</label>
     <description>Monoprice ZWave Dimmer Plugin</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

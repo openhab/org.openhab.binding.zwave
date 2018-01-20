@@ -9,10 +9,6 @@
     <label>ZMEERAZ2 RaZberry2</label>
     <description>RaZberry2</description>
 
-    <!-- CHANNEL DEFINITIONS -->
-    <channels>
-    </channels>
-
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">R-import Ltd.</property>

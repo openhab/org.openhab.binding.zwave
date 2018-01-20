@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2014-2017 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -119,8 +118,8 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
 
         CommandClass commandClass = CommandClass.getCommandClass(commandClassCode);
         if (commandClass == null) {
-            logger.error(String.format("NODE %d: Unsupported command class 0x%02x", getNode().getNodeId(),
-                    commandClassCode));
+            logger.error("NODE {}: Unsupported command class 0x{}", getNode().getNodeId(),
+                    Integer.toHexString(commandClassCode));
             return;
         }
 
@@ -128,8 +127,8 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
 
         ZWaveCommandClass zwaveCommandClass = getNode().getCommandClass(commandClass);
         if (zwaveCommandClass == null) {
-            logger.error(String.format("NODE %d: Unsupported command class %s (0x%02x)", getNode().getNodeId(),
-                    commandClass, commandClassCode));
+            logger.error("NODE {}: Unsupported command class {} (0x{})", getNode().getNodeId(), commandClass,
+                    Integer.toHexString(commandClassCode));
             return;
         }
 
@@ -306,27 +305,27 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
         Basic basic = getNode().getDeviceClass().getBasicDeviceClass();
         Generic generic = Generic.getGeneric(genericDeviceClass);
         if (generic == null) {
-            logger.error(
-                    String.format("NODE %d: Endpoint %d has invalid device class. generic = 0x%02x, specific = 0x%02x.",
-                            getNode().getNodeId(), endpoint.getEndpointId(), genericDeviceClass, specificDeviceClass));
+            logger.error("NODE {}: Endpoint %d has invalid device class. generic = 0x{}, specific = 0x{}.",
+                    getNode().getNodeId(), endpoint.getEndpointId(), Integer.toHexString(genericDeviceClass),
+                    Integer.toHexString(specificDeviceClass));
             return false;
         }
         Specific specific = Specific.getSpecific(generic, specificDeviceClass);
         if (specific == null) {
-            logger.error(
-                    String.format("NODE %d: Endpoint %d has invalid device class. generic = 0x%02x, specific = 0x%02x.",
-                            getNode().getNodeId(), endpoint.getEndpointId(), genericDeviceClass, specificDeviceClass));
+            logger.error("NODE {}: Endpoint {} has invalid device class. generic = 0x{}, specific = 0x{}.",
+                    getNode().getNodeId(), endpoint.getEndpointId(), Integer.toHexString(genericDeviceClass),
+                    Integer.toHexString(specificDeviceClass));
             return false;
         }
 
         logger.debug("NODE {}: Endpoint Id = {}", getNode().getNodeId(), endpoint.getEndpointId());
         logger.debug("NODE {}: Endpoints is dynamic = {}", getNode().getNodeId(), dynamic ? "true" : false);
-        logger.debug(
-                String.format("NODE %d: Basic = %s 0x%02x", getNode().getNodeId(), basic.toString(), basic.getKey()));
-        logger.debug(String.format("NODE %d: Generic = %s 0x%02x", getNode().getNodeId(), generic.toString(),
-                generic.getKey()));
-        logger.debug(String.format("NODE %d: Specific = %s 0x%02x", getNode().getNodeId(), specific.toString(),
-                specific.getKey()));
+        logger.debug("NODE {}: Basic = {} 0x{}", getNode().getNodeId(), basic.toString(),
+                Integer.toHexString(basic.getKey()));
+        logger.debug("NODE {}: Generic = {} 0x{}", getNode().getNodeId(), generic.toString(),
+                Integer.toHexString(generic.getKey()));
+        logger.debug("NODE {}: Specific = {} 0x{}", getNode().getNodeId(), specific.toString(),
+                Integer.toHexString(specific.getKey()));
 
         ZWaveDeviceClass deviceClass = endpoint.getDeviceClass();
         deviceClass.setBasicDeviceClass(basic);
@@ -417,12 +416,12 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
      * @ZWaveResponseHandler(id = MULTI_CHANNEL_ENCAP, name = "MULTI_CHANNEL_ENCAP")
      * public void handleMultiChannelEncap(ZWaveCommandClassPayload payload, int endpoint)
      * throws ZWaveSerialMessageException {
-     * 
+     *
      * CommandClass commandClass;
      * ZWaveCommandClass zwaveCommandClass;
      * int originatingEndpointId = payload.getPayloadByte(2);
      * int destinationEndpointId = payload.getPayloadByte(3);
-     * 
+     *
      * if (useDestEndpointAsSource) {
      * if (destinationEndpointId > 1) {
      * // swap specified in node options and condition satisfied:
@@ -444,48 +443,48 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
      * }
      * }
      * }
-     * 
+     *
      * ZWaveCommandClassPayload encapPayload = new ZWaveCommandClassPayload(payload, 4);
-     * 
-     * 
+     *
+     *
      * int commandClassCode = encapPayload.getPayloadByte(0);
      * commandClass = CommandClass.getCommandClass(commandClassCode);
-     * 
+     *
      * if (commandClass == null) {
      * logger.error(String.format("NODE %d: Unsupported command class 0x%02x", getNode().getNodeId(),
      * commandClassCode));
      * return;
      * }
-     * 
+     *
      * logger.debug(String.format("NODE %d: Requested Command Class = %s (0x%02x)", getNode().getNodeId(),
      * commandClass, commandClassCode));
      * ZWaveEndpoint nodeEndpoint = getNode().getEndpoint(originatingEndpointId);
-     * 
+     *
      * if (nodeEndpoint == null) {
      * logger.debug("NODE {}: Endpoint {} not found. Cannot set command classes.", getNode().getNodeId(),
      * originatingEndpointId);
      * return;
      * }
-     * 
+     *
      * zwaveCommandClass = nodeEndpoint.getCommandClass(commandClass);
-     * 
+     *
      * if (zwaveCommandClass == null) {
      * logger.debug(String.format(
      * "NODE %d: CommandClass %s (0x%02x) not implemented by endpoint %d, fallback to main node.",
      * getNode().getNodeId(), commandClass, commandClassCode, originatingEndpointId));
      * zwaveCommandClass = getNode().getCommandClass(commandClass);
      * }
-     * 
+     *
      * if (zwaveCommandClass == null) {
      * logger.debug(String.format("NODE %d: CommandClass %s (0x%02x) not implemented.", getNode().getNodeId(),
      * commandClass, commandClassCode));
      * return;
      * }
-     * 
+     *
      * logger.debug("NODE {}: Endpoint = {}, calling handleApplicationCommandRequest.", getNode().getNodeId(),
      * originatingEndpointId);
      * zwaveCommandClass.handleApplicationCommandRequest(encapPayload, originatingEndpointId);
-     * 
+     *
      * }
      */
 
@@ -651,8 +650,8 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
                 }
                 break;
             default:
-                logger.warn(String.format("NODE %d: Unknown version %d for command class %s (0x%02x)",
-                        getNode().getNodeId(), getVersion(), getCommandClass().toString(), getCommandClass().getKey()));
+                logger.warn("NODE {}: Unknown version {} for command class {} (0x{})", getNode().getNodeId(),
+                        getVersion(), getCommandClass().toString(), Integer.toHexString(getCommandClass().getKey()));
                 break;
         }
 

@@ -8,6 +8,7 @@
   <thing-type id="fibaro_fgwp101_00_000" listed="false">
     <label>FGWP101 Metered Wall Plug Switch</label>
     <description>Metered Wall Plug Switch</description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -67,7 +68,6 @@
       <property name="modelId">FGWP101</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0600:1000</property>
-      <property name="versionMax">2.0</property>
       <property name="dbReference">130</property>
       <property name="commandClass:COMMAND_CLASS_ALARM">ccAdd</property>
       <property name="defaultAssociations">3</property>
@@ -76,12 +76,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Always on function</label>
         <description><![CDATA[
@@ -299,11 +305,6 @@ This function allows for turning off the controlled device...<br /><h1>Overview<
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1 (on/off controlled devices)</label>
         <description><![CDATA[

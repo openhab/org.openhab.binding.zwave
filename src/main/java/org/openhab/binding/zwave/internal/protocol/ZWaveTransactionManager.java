@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2014-2017 by the respective copyright holders.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.openhab.binding.zwave.internal.protocol;
 
 import java.util.ArrayList;
@@ -520,8 +527,8 @@ public class ZWaveTransactionManager {
                 }
 
                 synchronized (sendQueue) {
-                    logger.debug("Checking outstanding transactions: " + outstandingTransactions.size());
-                    logger.debug("Last transaction: " + lastTransaction);
+                    logger.debug("Checking outstanding transactions: {}", outstandingTransactions.size());
+                    logger.debug("Last transaction: {}", lastTransaction);
 
                     // If we are waiting for the RESponse, then check for this first
                     // There can only be a single outstanding RESponse
@@ -580,8 +587,8 @@ public class ZWaveTransactionManager {
                             if (currentTransaction == lastTransaction
                                     && currentTransaction.requiresDataBeforeNextRelease() == false) {
                                 lastTransaction = null;
-                                logger.debug("XXXXXXXXXXXXXXXXX lastTransaction COMPLETED - at DATA - "
-                                        + currentTransaction.getCallbackId());
+                                logger.debug("XXXXXXXXXXXXXXXXX lastTransaction COMPLETED - at DATA - {}",
+                                        currentTransaction.getCallbackId());
                             } else if (currentTransaction.getWaitForResponse()) {
 
                             }
@@ -967,7 +974,7 @@ public class ZWaveTransactionManager {
                 // Remove the listener
                 RemoveTransactionListener(this);
 
-                logger.debug("********* Transaction Response Complete " + transactionId + " -- ");
+                logger.debug("********* Transaction Response Complete -- {} --", transactionId);
 
                 return response;
             }

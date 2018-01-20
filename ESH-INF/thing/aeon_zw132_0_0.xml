@@ -8,13 +8,14 @@
   <thing-type id="aeon_zw132_00_000" listed="false">
     <label>ZW132 Dual Nano Switch with Energy Metering</label>
     <description>Dual Nano Switch with Energy Metering</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -65,7 +66,7 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_CLOCK</property>
         </properties>
       </channel>
-      <channel id="switch_binary1" typeId="switch_binary">
+      <channel id="basic_switch_binary1" typeId="switch_binary">
         <label>Switch 1</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_BASIC:1</property>
@@ -101,7 +102,7 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_V</property>
         </properties>
       </channel>
-      <channel id="switch_binary2" typeId="switch_binary">
+      <channel id="basic_switch_binary2" typeId="switch_binary">
         <label>Switch 2</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_BASIC:2</property>
@@ -144,7 +145,7 @@
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW132</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0203:0084</property>
+      <property name="manufacturerRef">0103:0084,0203:0084</property>
       <property name="dbReference">724</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -152,12 +153,23 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="actions">
+        <context>setup</context>
+        <label>Actions</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Current Overload Protection.</label>
         <description>Current Overload Protection.</description>
@@ -381,10 +393,6 @@
       </parameter>
 
       <!-- ACTION DEFINITIONS -->
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
 
       <parameter name="config_100_1_wo" type="integer" groupName="configuration">
         <label>100: Set parameter 101-103 to default value</label>
@@ -399,13 +407,8 @@
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Z-Wave Plus Lifeline</label>
+        <label>1: Lifeline</label>
         <description>When the load state of Dual Nano Switch (turn on/off the load) is changed, the Hail CC and Basic Report (configured by parameter 80) can be sent to the associated nodes in this group.</description>
         <multipleLimit>5</multipleLimit>
       </parameter>

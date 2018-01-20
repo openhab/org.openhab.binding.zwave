@@ -8,6 +8,7 @@
   <thing-type id="fibaro_fgwp102_02_001" listed="false">
     <label>FGWP102 Metered Wall Plug Switch</label>
     <description>Metered Wall Plug Switch</description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -54,7 +55,7 @@
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGWP102</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0600:1000</property>
+      <property name="manufacturerRef">0602:1001</property>
       <property name="versionMin">2.1</property>
       <property name="versionMax">2.5</property>
       <property name="dbReference">464</property>
@@ -64,12 +65,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Always on function</label>
         <description><![CDATA[
@@ -281,11 +288,6 @@ This function allows for turning off the controlled device in case of exceeding 
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
         <description><![CDATA[

@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2014-2017 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -100,8 +99,8 @@ public class ZWaveVersionCommandClass extends ZWaveCommandClass {
 
         CommandClass commandClass = CommandClass.getCommandClass(commandClassCode);
         if (commandClass == null) {
-            logger.error(String.format("NODE %d: Unsupported command class 0x%02x", getNode().getNodeId(),
-                    commandClassCode));
+            logger.error("NODE {}: Unsupported command class 0x{}", getNode().getNodeId(),
+                    Integer.toHexString(commandClassCode));
             return;
         }
 
@@ -114,8 +113,8 @@ public class ZWaveVersionCommandClass extends ZWaveCommandClass {
         // command class version is queried on the node.
         ZWaveCommandClass zwaveCommandClass = getNode().getCommandClass(commandClass);
         if (zwaveCommandClass == null) {
-            logger.error(String.format("NODE %d: Unsupported command class %s (0x%02x)", getNode().getNodeId(),
-                    commandClass, commandClassCode));
+            logger.error("NODE {}: Unsupported command class {} (0x{})", getNode().getNodeId(), commandClass,
+                    Integer.toHexString(commandClassCode));
             return;
         }
 
@@ -194,10 +193,11 @@ public class ZWaveVersionCommandClass extends ZWaveCommandClass {
                 .getCommandClass(CommandClass.COMMAND_CLASS_VERSION);
 
         if (versionCommandClass == null) {
-            logger.debug(String.format(
-                    "NODE %d: Version command class not supported,"
-                            + "reverting to version 1 for command class %s (0x%02x)",
-                    getNode().getNodeId(), commandClass.getCommandClass(), commandClass.getCommandClass().getKey()));
+            logger.debug(
+                    "NODE {}: Version command class not supported,"
+                            + "reverting to version 1 for command class {} (0x{})",
+                    getNode().getNodeId(), commandClass.getCommandClass(),
+                    Integer.toHexString(commandClass.getCommandClass().getKey()));
             return null;
         }
 

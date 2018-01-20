@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2014-2017 by the respective copyright holders.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.openhab.binding.zwave.internal.protocol;
 
 import static org.junit.Assert.*;
@@ -39,8 +46,12 @@ public class ZWaveInclusionControllerTest {
 
         ZWaveMessagePayloadTransaction txFrame;
         inclusionController.startInclusion(true, true);
-        assertEquals(ZWaveInclusionState.Unknown, inclusionController.getState());
+        assertEquals(ZWaveInclusionState.IncludeSent, inclusionController.getState());
+        Mockito.verify(controller, Mockito.times(1)).addEventListener(listenerCapture.capture());
 
+        // Make sure if call startInclusion again, it doesn't send another request.
+        inclusionController.startInclusion(true, true);
+        assertEquals(ZWaveInclusionState.IncludeSent, inclusionController.getState());
         Mockito.verify(controller, Mockito.times(1)).addEventListener(listenerCapture.capture());
 
         assertEquals(1, txCapture.getAllValues().size());
@@ -102,7 +113,7 @@ public class ZWaveInclusionControllerTest {
 
         ZWaveMessagePayloadTransaction txFrame;
         inclusionController.startExclusion();
-        assertEquals(ZWaveInclusionState.Unknown, inclusionController.getState());
+        assertEquals(ZWaveInclusionState.ExcludeSent, inclusionController.getState());
 
         Mockito.verify(controller, Mockito.times(1)).addEventListener(listenerCapture.capture());
 
@@ -148,7 +159,7 @@ public class ZWaveInclusionControllerTest {
 
         ZWaveMessagePayloadTransaction txFrame;
         inclusionController.startInclusion(true, true);
-        assertEquals(ZWaveInclusionState.Unknown, inclusionController.getState());
+        assertEquals(ZWaveInclusionState.IncludeSent, inclusionController.getState());
 
         Mockito.verify(controller, Mockito.times(1)).addEventListener(listenerCapture.capture());
 
@@ -192,7 +203,7 @@ public class ZWaveInclusionControllerTest {
 
         ZWaveMessagePayloadTransaction txFrame;
         inclusionController.startInclusion(true, true);
-        assertEquals(ZWaveInclusionState.Unknown, inclusionController.getState());
+        assertEquals(ZWaveInclusionState.IncludeSent, inclusionController.getState());
 
         Mockito.verify(controller, Mockito.times(1)).addEventListener(listenerCapture.capture());
 

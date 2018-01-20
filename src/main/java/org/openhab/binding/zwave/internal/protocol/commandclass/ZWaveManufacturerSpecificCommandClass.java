@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2014-2017 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -83,12 +82,12 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
         getNode().setDeviceType(deviceType);
         getNode().setDeviceId(deviceId);
 
-        logger.debug(
-                String.format("NODE %d: Manufacturer ID = 0x%04x", getNode().getNodeId(), getNode().getManufacturer()));
-        logger.debug(
-                String.format("NODE %d: Device Type     = 0x%04x", getNode().getNodeId(), getNode().getDeviceType()));
-        logger.debug(
-                String.format("NODE %d: Device ID       = 0x%04x", getNode().getNodeId(), getNode().getDeviceId()));
+        logger.debug("NODE {}: Manufacturer ID = 0x{}", getNode().getNodeId(),
+                Integer.toHexString(getNode().getManufacturer()));
+        logger.debug("NODE {}: Device Type     = 0x{}", getNode().getNodeId(),
+                Integer.toHexString(getNode().getDeviceType()));
+        logger.debug("NODE {}: Device ID       = 0x{}", getNode().getNodeId(),
+                Integer.toHexString(getNode().getDeviceId()));
     }
 
     @ZWaveResponseHandler(id = MANUFACTURER_SPECIFIC_DEVICE_REPORT, name = "MANUFACTURER_SPECIFIC_DEVICE_REPORT")

@@ -56,12 +56,23 @@ Smart Dimmer 6<br /><h1>Overview</h1><p>Turn the primary controller of Z-Wave ne
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="actions">
+        <context>setup</context>
+        <label>Actions</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Current Overload Protection</label>
         <description><![CDATA[
@@ -135,7 +146,7 @@ Configure the RGB value when it is in Night light mode<br /><h1>Overview</h1><p>
                  min="0" max="6579300">
         <label>84: LED Brightness</label>
         <description><![CDATA[
-Brightness level of RGB LED (0%-100%) <br /><h1>Overview</h1><p>Configure the brightness level of RGB LED (0%-100%) when it is in Energy Mode/momentary indicate mode. (48-bit value)</p> <ul><li>Value1: green brightness value. (0-100) (16-bits: 32-47)</li> <li>Value2: yellow brightness value. (0-100) (16-bits: 16-31)</li> <li>Value3: red brightness value. (0-100) (16-bits: 0-15)</li> </ul><p>Default value is 50% brightness on all colors: 3289650 (0x323232)</p> <ul><li>Green=50 (0x320000)</li> <li>Yellow=50 (0x003200)</li> <li>Red=50 (0x000032)</li> </ul><p>Maximum value is 100% brightness on all colors: 6579300 (0x646464)</p> <ul><li>Green=100 (0x640000)</li> <li>Yellow=100 (0x006400)</li> <li>Red=100 (0x000064)</li> </ul>
+Brightness level of RGB LED (0%-100%)<br /><h1>Overview</h1><p>Configure the brightness level of RGB LED (0%-100%) when it is in Energy Mode/momentary indicate mode. (48-bit value)</p> <ul><li>Value1: green brightness value. (0-100) (16-bits: 32-47)</li> <li>Value2: yellow brightness value. (0-100) (16-bits: 16-31)</li> <li>Value3: red brightness value. (0-100) (16-bits: 0-15)</li> </ul><p>Default value is 50% brightness on all colors: 3289650 (0x323232)</p> <ul><li>Green=50 (0x320000)</li> <li>Yellow=50 (0x003200)</li> <li>Red=50 (0x000032)</li> </ul><p>Maximum value is 100% brightness on all colors: 6579300 (0x646464)</p> <ul><li>Green=100 (0x640000)</li> <li>Yellow=100 (0x006400)</li> <li>Red=100 (0x000064)</li> </ul>
         ]]></description>
         <default>3289650</default>
       </parameter>
@@ -254,10 +265,6 @@ Enable/disable Configuration Lock<br /><h1>Overview</h1><p>Enable/disable Config
       </parameter>
 
       <!-- ACTION DEFINITIONS -->
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
 
       <parameter name="config_90_1_wo" type="integer" groupName="configuration">
         <label>90: Enable Report triggered by minimal change of value</label>
@@ -296,11 +303,6 @@ Reset the reports time interval for each report group to default values.<br /><h
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
         <description><![CDATA[

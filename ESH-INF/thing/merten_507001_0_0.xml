@@ -8,6 +8,7 @@
   <thing-type id="merten_507001_00_000" listed="false">
     <label>507001 Switch Wall Insert 1 Gang</label>
     <description>Switch Wall Insert 1 Gang</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

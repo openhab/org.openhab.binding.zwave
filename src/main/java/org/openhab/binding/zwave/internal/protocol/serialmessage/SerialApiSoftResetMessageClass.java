@@ -34,7 +34,7 @@ public class SerialApiSoftResetMessageClass extends ZWaveCommandProcessor {
     @Override
     public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) {
-        logger.debug(String.format("Received soft reset response"));
+        logger.debug("Received soft reset response");
 
         transaction.setTransactionComplete();
         return true;

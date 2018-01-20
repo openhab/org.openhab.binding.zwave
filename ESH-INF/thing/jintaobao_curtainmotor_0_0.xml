@@ -6,8 +6,9 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="jintaobao_curtainmotor_00_000" listed="false">
-    <label>Curtain Motor jin tao bao curtain motor</label>
-    <description>jin tao bao curtain motor</description>
+    <label>Curtain Motor Curtain motor</label>
+    <description>Curtain motor</description>
+    <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -8,6 +8,7 @@
   <thing-type id="inovelli_nzw37_00_000" listed="false">
     <label>NZW37 2-Channel Dual Smart Plug</label>
     <description>2-Channel Dual Smart Plug</description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

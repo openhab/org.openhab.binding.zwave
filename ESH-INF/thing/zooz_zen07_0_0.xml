@@ -61,12 +61,13 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Metering Report</label>
         <description><![CDATA[
@@ -101,7 +102,7 @@ Maximum amount of electricity Mini Plug to handle.<br /><h1>Overview</h1><p>Use 
                  min="1" max="13">
         <label>4: Overload Protection Notification</label>
         <description><![CDATA[
-LED notifications of heavy load. <br /><h1>Overview</h1><p>Use this parameter to adjust electricity value for LED notifications of heavy load. The LED indicator on the Mini Plug will light up yellow once electricity from the load is greater than the value set in this parameter. The relay will NOT turn off. The value set in this parameter can NOT be greater than the value in parameter 3. Values: 1 – 13 (Amperes) or whatever the value set in parameter 3. 12 (Amperes) – default setting. </p>
+LED notifications of heavy load.<br /><h1>Overview</h1><p>Use this parameter to adjust electricity value for LED notifications of heavy load. The LED indicator on the Mini Plug will light up yellow once electricity from the load is greater than the value set in this parameter. The relay will NOT turn off. The value set in this parameter can NOT be greater than the value in parameter 3. Values: 1 – 13 (Amperes) or whatever the value set in parameter 3. 12 (Amperes) – default setting. </p>
         ]]></description>
         <default>12</default>
       </parameter>

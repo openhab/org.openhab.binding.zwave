@@ -8,6 +8,7 @@
   <thing-type id="leviton_dzs15_00_000" listed="false">
     <label>DZS15 Scene Capable Push On/Off</label>
     <description>Scene Capable Push On/Off</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

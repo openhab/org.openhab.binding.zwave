@@ -10,6 +10,7 @@
     <description><![CDATA[
 Switch<br /><h1>Overview</h1><h3>Inclusion/Exclusion</h3> <p>On factory default the device does not belong to any Z-Wave network. The device needs to be <b>added to an existing wireless network</b> to communicate with the devices of this network. This process is called <b>Inclusion</b>.</p> <p>Devices can also be removed from a network. This process is called <b>Exclusion</b>. Both processes are initiated by the primary controller of the Z-Wave network. This controller is turned into exclusion respective inclusion mode. Inclusion and Exclusion is then performed doing a special manual action right on the device.</p> <h4>Inclusion</h4> <p>Blinking red/green LED indicates that the device is in factory reset state. Once the controller is turned into inclusion mode <strong>triple click of the buttons on the device will include the device</strong>. A green blinking of the LED will indicate successful inclusion that will be turned off shortly afterwards. The <strong>device is excluded by triple click to one of the buttons</strong> when the controller is in exclusion mode.</p> <h4>Exclusion</h4> <p>Blinking red/green LED indicates that the device is in factory reset state. Once the controller is turned into inclusion mode <strong>triple click of the buttons on the device will include the device</strong>. A green blinking of the LED will indicate successful inclusion that will be turned off shortly afterwards. The <strong>device is excluded by triple click to one of the buttons</strong> when the controller is in exclusion mode.</p> <h3>Product Usage</h3> <p>The actuator is operated by the local switching paddles or wirelessly using Z-Wave commands (communication patterns 1, 4, 5 and 7). If the insert is mounted correctly pushing the upper part of the paddle will turn on the load; pushing the lower part of the paddle will turn off the electric load.</p> <p>The device is also able to report status changes to a controller (communication pattern 2) and to remotely operate other devices (communication pattern 5) by sending wireless Z-Wave commands. In case the remote device is a switch as well the remote operation is similar to the local operation by pushing upper to lower part of the switching paddle. However the device can also be configured with configuration parameter <strong>13</strong> and <strong>14</strong> to operate remote dimmers. To dim a remote device the paddle needs to be pushed and hold (upper part to dim up, lower part to dim down). Its furthermore possible to assign remote operation functions to the double click of the paddles.</p> <p>Configuration parameter <strong>2</strong> enables a special function of the device. Its possible to define a timeout to automatically turn off the device after it was turned on manually.</p> <h3>Quick trouble shooting</h3> <p>Here are a few hints for network installation if things dont work as expected.</p> <ol><li>Make sure a device is in factory reset state before including. In doubt exclude before include.</li> <li>If inclusion still fails, check if both devices use the same frequency.</li> <li>Remove all dead devices from associations. Otherwise you will see severe delays.</li> <li>Never use sleeping battery devices without a central controller.</li> <li>Dont poll FLIRS devices.</li> <li>Make sure to have enough mains powered device to benefit from the meshing</li> </ol><h3>Configuration Parameters</h3> <p>Z-Wave products are supposed to work out of the box after inclusion, however certain configuration can adapt the function better to user needs or unlock further enhanced features.</p> <p><b>IMPORTANT:</b> Controllers may only allow configuring signed values. In order to set values in the range 128 ... 255 the value sent in the application shall be the desired value minus 256. For example: To set a parameter to 200 it may be needed to set a value of 200 minus 256 = minus 56. In case of a two byte value the same logic applies: Values greater than 32768 may needed to be given as negative values too.</p> <br /><h2>Inclusion Information</h2><p>If the controller is in inclusion mode, press one of the buttons three times</p> <br /><h2>Exclusion Information</h2><p>If the controller is in exclusion mode, press one of the buttons three times</p>
     ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -59,12 +60,23 @@ Switch<br /><h1>Overview</h1><h3>Inclusion/Exclusion</h3> <p>On factory default 
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="actions">
+        <context>setup</context>
+        <label>Actions</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Set LED indication mode</label>
         <default>1</default>
@@ -85,7 +97,7 @@ Switch<br /><h1>Overview</h1><h3>Inclusion/Exclusion</h3> <p>On factory default 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Function of RF off command</label>
         <description><![CDATA[
-Defines how to interpret RF Off command. <br /><h1>Overview</h1><p>Defines how to interpret RF Off command. Can be used in conjunction with Auto Off function:</p> <ul><li>Ignore - to switch on the light by motion detectors and switch it off after some amount of time: in case of multiple motion detectors each would try to switch the light off that would break logics</li> <li>Switch on - to switch on the light on both On and Off paddles press on the remote and switch it off after some amount of time. Button off click will still work (if button operations are not disabled)</li> </ul>
+Defines how to interpret RF Off command.<br /><h1>Overview</h1><p>Defines how to interpret RF Off command. Can be used in conjunction with Auto Off function:</p> <ul><li>Ignore - to switch on the light by motion detectors and switch it off after some amount of time: in case of multiple motion detectors each would try to switch the light off that would break logics</li> <li>Switch on - to switch on the light on both On and Off paddles press on the remote and switch it off after some amount of time. Button off click will still work (if button operations are not disabled)</li> </ul>
         ]]></description>
         <default>0</default>
         <options>
@@ -193,7 +205,7 @@ Defines which command should be sent on button double press or press-hold<br /><
       <parameter name="config_16_1" type="integer" groupName="configuration">
         <label>16: What to do on button Down press</label>
         <description><![CDATA[
-Defines hot to interprete button Down press. <br /><h1>Overview</h1><p>Defines hot to interprete button Down press. Depends on parameters 12 and 32 "Switch by buttons" parameter. If not disabled this parameter will affect the action selected by the latter parameter. Can be used in conjunction with "Auto Off" function.</p>
+Defines hot to interprete button Down press.<br /><h1>Overview</h1><p>Defines hot to interprete button Down press. Depends on parameters 12 and 32 "Switch by buttons" parameter. If not disabled this parameter will affect the action selected by the latter parameter. Can be used in conjunction with "Auto Off" function.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -204,10 +216,6 @@ Defines hot to interprete button Down press. <br /><h1>Overview</h1><p>Defines h
       </parameter>
 
       <!-- ACTION DEFINITIONS -->
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
 
       <parameter name="config_20_2_wo" type="integer" groupName="configuration"
                  min="0" max="1800">
@@ -223,11 +231,6 @@ Specify the consumption of the loads in watts (0=disabled)<br /><h1>Overview</h1
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description>Send reports on switch state change</description>

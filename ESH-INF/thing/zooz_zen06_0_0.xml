@@ -70,12 +70,18 @@ Smart Plug with 2 USB ports<br /><h1>Overview</h1><h2>Product features: </h2> <
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_20_1" type="integer" groupName="configuration">
         <label>20: Overload Protection</label>
         <description><![CDATA[
@@ -183,11 +189,6 @@ How often to report electrical current (A) in secs<br /><h1>Overview</h1><p>Choo
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <multipleLimit>5</multipleLimit>

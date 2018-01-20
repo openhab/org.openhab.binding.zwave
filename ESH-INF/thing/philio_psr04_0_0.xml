@@ -13,7 +13,7 @@ Smart Color Button<br /><h2>Wakeup Information</h2><p>By default, this device on
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_dimmer" typeId="switch_dimmer">
+      <channel id="basic_switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BASIC</property>
@@ -45,12 +45,18 @@ Smart Color Button<br /><h2>Wakeup Information</h2><p>By default, this device on
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>1: Basic Set OFF level</label>
@@ -96,11 +102,6 @@ The interval time for auto reporting the Battery level.<br /><h1>Overview</h1><p
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Controller updates</label>
         <description>For receiving the report message, like the battery level.</description>

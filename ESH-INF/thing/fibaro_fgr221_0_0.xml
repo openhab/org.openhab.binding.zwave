@@ -8,6 +8,7 @@
   <thing-type id="fibaro_fgr221_00_000" listed="false">
     <label>FGR221 Roller Shutter Controller</label>
     <description>Roller Shutter Controller</description>
+    <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -32,7 +33,7 @@
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGR221</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0300:0104,0300:0106,0300:0107,0300:100A,0300:0109</property>
+      <property name="manufacturerRef">0300:0104,0300:0106,0300:0107,0300:0109,0300:100A,0300:0102</property>
       <property name="dbReference">132</property>
       <property name="defaultAssociations">3</property>
     </properties>
@@ -40,12 +41,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Enable/Disable ALL ON/OFF</label>
         <description>Activate/Deactive ALL ON/OFF</description>
@@ -133,7 +140,7 @@
       <parameter name="config_41_1" type="integer" groupName="configuration">
         <label>41: Scene activation functionality</label>
         <description><![CDATA[
-Only valid for the 1.9 version of FGR221. <br /><h1>Overview</h1><p>The device offers the possibility of sending commands compatible with Command class scene activation. Information is sent to devices assigned to association group no. 3.</p>
+Only valid for the 1.9 version of FGR221.<br /><h1>Overview</h1><p>The device offers the possibility of sending commands compatible with Command class scene activation. Information is sent to devices assigned to association group no. 3.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -143,11 +150,6 @@ Only valid for the 1.9 version of FGR221. <br /><h1>Overview</h1><p>The device o
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
         <multipleLimit>16</multipleLimit>

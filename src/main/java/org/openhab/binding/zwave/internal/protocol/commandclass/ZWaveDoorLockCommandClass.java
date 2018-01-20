@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2014-2017 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -130,11 +129,10 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
         int statusTimeoutSeconds = payload.getPayloadByte(6);
 
         DoorLockStateType doorLockState = DoorLockStateType.getDoorLockStateType(lockState);
-        logger.debug(String.format(
-                "NODE %d: Door-Lock state report - lockState=%s, "
-                        + "handlesMode=0x%02x, doorCondition=0x%02x, timeoutMinutes=0x%02x, " + "timeoutSeconds=0x%02x",
+        logger.debug(
+                "NODE {}: Door-Lock state report - lockState={}, handlesMode={}, doorCondition={}, timeoutMinutes={}, timeoutSeconds={}",
                 getNode().getNodeId(), doorLockState.label, handlesMode, doorCondition, statusTimeoutMinutes,
-                statusTimeoutSeconds));
+                statusTimeoutSeconds);
         ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
                 CommandClass.COMMAND_CLASS_DOOR_LOCK, lockState, Type.DOOR_LOCK_STATE);
         getController().notifyEventListeners(zEvent);

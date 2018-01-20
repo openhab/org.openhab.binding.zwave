@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2014-2017 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -71,8 +70,7 @@ public class ZWaveClockCommandClass extends ZWaveCommandClass implements ZWaveCo
         int minute = payload.getPayloadByte(3);
         String days[] = new DateFormatSymbols().getWeekdays();
         int javaDay = day == 7 ? 1 : day + 1;
-        logger.debug(String.format("NODE %d: Received clock report: %s %02d:%02d", getNode().getNodeId(), days[javaDay],
-                hour, minute));
+        logger.debug("NODE {}: Received clock report: {} {}:{}", getNode().getNodeId(), days[javaDay], hour, minute);
 
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.DAY_OF_WEEK, javaDay);

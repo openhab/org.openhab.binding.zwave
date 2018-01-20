@@ -10,6 +10,7 @@
     <description><![CDATA[
 On/Off Relay Switch<br /><h1>Overview</h1><p>Also marketed as GE / Jasco 12722.</p>
     ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -33,12 +34,13 @@ On/Off Relay Switch<br /><h1>Overview</h1><p>Also marketed as GE / Jasco 12722.<
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Night Light</label>
         <description><![CDATA[

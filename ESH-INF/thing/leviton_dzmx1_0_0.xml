@@ -5,9 +5,10 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="leviton_dzmx11lz_00_000" listed="false">
-    <label>DZMX1-1LZ Scene Capable Push On/Off</label>
+  <thing-type id="leviton_dzmx1_00_000" listed="false">
+    <label>DZMX1 Scene Capable Push On/Off</label>
     <description>Scene Capable Push On/Off</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -29,7 +30,7 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Leviton</property>
-      <property name="modelId">DZMX1-1LZ</property>
+      <property name="modelId">DZMX1</property>
       <property name="manufacturerId">001D</property>
       <property name="manufacturerRef">1B03:0334</property>
       <property name="dbReference">196</property>

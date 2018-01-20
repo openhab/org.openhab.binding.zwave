@@ -96,12 +96,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_10_2" type="integer" groupName="configuration">
         <label>10: Activate/deactivate functions ALL ON / ALL OFF</label>
         <description>Module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.</description>
@@ -231,17 +237,12 @@ This parameter defines the minimum time delay between next motor movemen.<br /> 
                  min="0" max="127">
         <label>120: Digital temperature sensor reporting</label>
         <description><![CDATA[
-If digital temperature sensor is connected, module reports measured temperature on temperature change defined by this parameter. <ul><li>Default value 5 = 0,5°C</li> <li> 32536 – offset is 0.0C</li> <li>0 – Reporting disabled</li> </ul>
+If digital temperature sensor is connected, module reports measured temperature on temperature change defined by this parameter. <ul><li>Default value 5 = 0,5°C</li> <li> 32536 – offset is 0.0C</li> <li>0 – Reporting disabled</li></ul>
         ]]></description>
         <default>5</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Default reporting group</label>
       </parameter>

@@ -9,10 +9,6 @@
     <label>iShutter iShutter</label>
     <description>iShutter</description>
 
-    <!-- CHANNEL DEFINITIONS -->
-    <channels>
-    </channels>
-
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Wintop</property>
@@ -28,12 +24,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Buttons Mode</label>
         <description><![CDATA[
@@ -58,7 +60,7 @@ See overview<br /><h1>Overview</h1><p>0 -&gt; One push button</p> <p>1 -&gt; Two
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: What to do on RF close command</label>
         <description><![CDATA[
-Defines how to interpret RF Off command. <br /><h1>Overview</h1><p>0 -&gt; Close</p> <p>1 -&gt; Ignore</p> <p>2 -&gt; Open</p> <p>3 -&gt; Open if closed, otherwise Close</p> <p>Can be used in conjunction with Auto Close function: Ignore - to open the door by motion detectors and close it back after some amount of time: in case of multiple motion detectors each would try to open that would that would break logics; Open - to open on both On and Off paddle press on the remote and close after some amount of time. Button close click will still work (if button operations are not disabled). Note that Dim Down command will still begin close motion. </p>
+Defines how to interpret RF Off command.<br /><h1>Overview</h1><p>0 -&gt; Close</p> <p>1 -&gt; Ignore</p> <p>2 -&gt; Open</p> <p>3 -&gt; Open if closed, otherwise Close</p> <p>Can be used in conjunction with Auto Close function: Ignore - to open the door by motion detectors and close it back after some amount of time: in case of multiple motion detectors each would try to open that would that would break logics; Open - to open on both On and Off paddle press on the remote and close after some amount of time. Button close click will still work (if button operations are not disabled). Note that Dim Down command will still begin close motion. </p>
         ]]></description>
         <default>0</default>
         <options>
@@ -169,11 +171,6 @@ Allow exchanging open and close relays<br /><h1>Overview</h1><p>Allow exchanging
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Click, press and hold of up/down buttons</label>
         <description>Click, press and hold of up/down buttons</description>

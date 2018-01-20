@@ -9,10 +9,6 @@
     <label>DX1WL-Z Domux Water Leakage Sensor</label>
     <description>Domux Water Leakage Sensor</description>
 
-    <!-- CHANNEL DEFINITIONS -->
-    <channels>
-    </channels>
-
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Shenzhen iSurpass Technology Co. ,Ltd</property>

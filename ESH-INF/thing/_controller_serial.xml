@@ -36,6 +36,12 @@
                 <description></description>
             </parameter-group>
 
+            <parameter-group name="actions">
+                <context></context>
+                <label>Actions</label>
+                <description></description>
+            </parameter-group>
+
             <parameter name="port" type="text" required="true"
                 groupName="port">
                 <label>Serial Port</label>
@@ -119,12 +125,6 @@
                     <option value="0">Midnight</option>
                 </options>
             </parameter>
-            
-            <parameter-group name="actions">
-                <context></context>
-                <label>Actions</label>
-                <description></description>
-            </parameter-group>
            
             <parameter name="controller_softreset" type="boolean" groupName="actions">
                 <label>Soft Reset Controller</label>

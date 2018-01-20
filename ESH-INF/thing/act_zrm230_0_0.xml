@@ -41,12 +41,18 @@ Wall Switch/Transmitter (2-gang)<br /><h1>Overview</h1><p>Radio Frequency Contro
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Ignore start level</label>
         <description><![CDATA[
@@ -145,11 +151,6 @@ Group 2 poll control.<br /><h1>Overview</h1><p>Poll Group 2, if value is 1, the 
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Left paddle (relais)</label>
         <multipleLimit>5</multipleLimit>

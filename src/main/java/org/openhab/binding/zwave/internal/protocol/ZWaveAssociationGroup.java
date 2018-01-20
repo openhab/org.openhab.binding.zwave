@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2014-2017 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +9,7 @@ package org.openhab.binding.zwave.internal.protocol;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import org.openhab.binding.zwave.internal.HexToIntegerConverter;
@@ -112,7 +112,7 @@ public class ZWaveAssociationGroup {
         int associationCnt = associations.size();
         for (int index = 0; index < associationCnt; index++) {
             ZWaveAssociation association = associations.get(index);
-            if (association.getNode() == node && association.getEndpoint() == endpoint) {
+            if (Objects.equals(association.getNode(), node) && Objects.equals(association.getEndpoint(), endpoint)) {
                 associations.remove(index);
                 return true;
             }

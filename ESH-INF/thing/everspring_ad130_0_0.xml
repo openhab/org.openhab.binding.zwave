@@ -8,6 +8,7 @@
   <thing-type id="everspring_ad130_00_000" listed="false">
     <label>AD130 Dimmer Plugin</label>
     <description>Dimmer Plugin</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -25,7 +26,7 @@
       <property name="vendor">Everspring</property>
       <property name="modelId">AD130</property>
       <property name="manufacturerId">0060</property>
-      <property name="manufacturerRef">0003:0001</property>
+      <property name="manufacturerRef">0000:0000</property>
       <property name="dbReference">23</property>
     </properties>
 

@@ -109,12 +109,23 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="actions">
+        <context>setup</context>
+        <label>Actions</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="0" max="32000">
         <label>1: Voltage</label>
@@ -126,7 +137,7 @@
                  min="0" max="15">
         <label>3: Selective Reporting</label>
         <description><![CDATA[
-Enable/disable selective reporting <br /><h1>Overview</h1><p>When selective reporting is disabled, unit will send a report every X seconds, as configured in items 101-103. When selective reporting is enabled, unit will send a report if thresholds in items 4-7, or percentages in items 8-11, are exceeded. This is used to reduce network traffic. Sum the following values for the source of the reports to be selectively reported:</p> <p>0        -&gt;   Disable Selective Reporting</p> <p>1        -&gt;   Whole HEM</p> <p>2        -&gt;   Clamp 1</p> <p>4        -&gt;   Clamp 2</p> <p>8        -&gt;   Clamp 3</p>
+Enable/disable selective reporting<br /><h1>Overview</h1><p>When selective reporting is disabled, unit will send a report every X seconds, as configured in items 101-103. When selective reporting is enabled, unit will send a report if thresholds in items 4-7, or percentages in items 8-11, are exceeded. This is used to reduce network traffic. Sum the following values for the source of the reports to be selectively reported:</p> <p>0        -&gt;   Disable Selective Reporting</p> <p>1        -&gt;   Whole HEM</p> <p>2        -&gt;   Clamp 1</p> <p>4        -&gt;   Clamp 2</p> <p>8        -&gt;   Clamp 3</p>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -233,10 +244,6 @@ Sum values of all wanted reports (see Overview)<br /><h1>Overview</h1><p>1    
       </parameter>
 
       <!-- ACTION DEFINITIONS -->
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
 
       <parameter name="config_255_4_wo" type="integer" groupName="configuration">
         <label>255: Reset to Factory</label>
@@ -252,11 +259,6 @@ Reset all settings to factory defaults<br /><h1>Overview</h1><p>Reset all settin
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Report group 1</label>
         <multipleLimit>5</multipleLimit>

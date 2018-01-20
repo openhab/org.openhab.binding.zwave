@@ -51,12 +51,18 @@ Z-Wave Module for Water Meter<br /><h1>Overview</h1><p>SWM 301 is a battery-powe
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_4" type="integer" groupName="configuration"
                  min="0" max="99999999">
         <label>1: Meter register offset</label>
@@ -118,11 +124,6 @@ temperature triggering alarm<br /><h1>Overview</h1><p>Defines below what tempera
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Meter reading</label>
         <description><![CDATA[

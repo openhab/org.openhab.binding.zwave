@@ -49,12 +49,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="8" max="255">
         <label>1: Sensitivity level</label>
@@ -69,7 +75,7 @@
                  min="5" max="600">
         <label>2: ON / OFF Duration</label>
         <description><![CDATA[
-How long should the associated devices have ON status. <br /><h1>Overview</h1><p>2. ON / OFF DURATION</p> <p>This parameter determines how long the associated devices should have ON status. For instace, if this parameter is set to 30 (sec), the PIR sensor will send a BASIC_SET command to associated device with valu BASIC_SET level if PIR sensor is triggered and associated device will be turned on 30 seconds begore it’s turned off. This parameter value must be large as Parameter #. If user set this parameter to default by Configure CC, the parameter # will be set to default value.</p> <p>Function: ON / OFF duration setting</p> <p>Parameter size: 2 byte</p> <p>Parameter number: 2</p> <p>Available settings: 5~600 (seconds)</p> <p>Default setting: 30</p>
+How long should the associated devices have ON status.<br /><h1>Overview</h1><p>2. ON / OFF DURATION</p> <p>This parameter determines how long the associated devices should have ON status. For instace, if this parameter is set to 30 (sec), the PIR sensor will send a BASIC_SET command to associated device with valu BASIC_SET level if PIR sensor is triggered and associated device will be turned on 30 seconds begore it’s turned off. This parameter value must be large as Parameter #. If user set this parameter to default by Configure CC, the parameter # will be set to default value.</p> <p>Function: ON / OFF duration setting</p> <p>Parameter size: 2 byte</p> <p>Parameter number: 2</p> <p>Available settings: 5~600 (seconds)</p> <p>Default setting: 30</p>
         ]]></description>
         <default>30</default>
         <limitToOptions>false</limitToOptions>
@@ -145,11 +151,6 @@ when lux changes by the number in this setting it is reported<br /><h1>Overview<
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
         <description><![CDATA[
@@ -177,7 +178,7 @@ NOTIFICATION_REPORT_V4<br /><h1>Overview</h1><p><strong>GROUP 3</strong> allows 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
         <label>4: Group 4</label>
         <description><![CDATA[
-Sensor Binary Report <br /><h1>Overview</h1><p><strong>GROUP 4</strong> allows sending sending Sensor Binary Report to associated devices in this group. This group supports: SENSOR_BINARY_REPORT_V2</p>
+Sensor Binary Report<br /><h1>Overview</h1><p><strong>GROUP 4</strong> allows sending sending Sensor Binary Report to associated devices in this group. This group supports: SENSOR_BINARY_REPORT_V2</p>
         ]]></description>
         <multipleLimit>4</multipleLimit>
       </parameter>

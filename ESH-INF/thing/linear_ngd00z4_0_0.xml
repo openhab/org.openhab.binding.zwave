@@ -8,6 +8,7 @@
   <thing-type id="linear_ngd00z4_00_000" listed="false">
     <label>NGD00Z-4 Garage Door Controller</label>
     <description>Garage Door Controller</description>
+    <category>GarageDoor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -32,12 +33,13 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- ASSOCIATION DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
       </parameter-group>
 
+      <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Group 1</label>
       </parameter>

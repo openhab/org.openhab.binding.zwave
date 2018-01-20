@@ -32,17 +32,24 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <!-- ACTION DEFINITIONS -->
       <parameter-group name="actions">
         <context>setup</context>
         <label>Actions</label>
       </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <!-- ACTION DEFINITIONS -->
 
       <parameter name="config_241_1_wo" type="integer" groupName="configuration">
         <label>241: Mode of Button 1 (upper left)</label>
@@ -167,11 +174,6 @@
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Scene 1</label>
         <multipleLimit>5</multipleLimit>

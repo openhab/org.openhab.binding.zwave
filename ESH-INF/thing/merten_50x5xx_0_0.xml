@@ -6,10 +6,11 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="merten_50x5xx_00_000" listed="false">
-    <label>50x5xx roller shutter push-button</label>
+    <label>50x5xx Roller shutter push-button</label>
     <description><![CDATA[
-roller shutter push-button<br /><h2>Inclusion Information</h2><p>Program (transmits Node info frame)</p> <p>Triple click on operating surface. Used for<br />include/exclude the device by the primary  </p> <br /><h2>Exclusion Information</h2><p>Reset to the factory settings; exclude  </p> <p>Triple click on operating surface. Used for<br />include/exclude the device by the primary  </p>
+Roller shutter push-button<br /><h2>Inclusion Information</h2><p>Program (transmits Node info frame)</p> <p>Triple click on operating surface. Used for<br />include/exclude the device by the primary  </p> <br /><h2>Exclusion Information</h2><p>Reset to the factory settings; exclude  </p> <p>Triple click on operating surface. Used for<br />include/exclude the device by the primary  </p>
     ]]></description>
+    <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -61,12 +62,18 @@ roller shutter push-button<br /><h2>Inclusion Information</h2><p>Program (transm
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_0_1" type="integer" groupName="configuration"
                  min="0" max="127">
         <label>0: Switching/dimming/shutters</label>
@@ -123,11 +130,6 @@ Input 2 (0 - 255)<br /><h1>Overview</h1><p>Lowering time<br />(256 * Input 1 + i
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Other device to be switched</label>
         <description><![CDATA[

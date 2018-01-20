@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2014-2017 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -77,8 +76,7 @@ public class ZWaveBinaryToggleSwitchCommandClass extends ZWaveCommandClass imple
     @ZWaveResponseHandler(id = SWITCH_TOGGLE_REPORT, name = "SWITCH_TOGGLE_REPORT")
     public void handleSwitchToggleReport(ZWaveCommandClassPayload payload, int endpoint) {
         int value = payload.getPayloadByte(2);
-        logger.debug(
-                String.format("NODE %d: Switch binary toggle report, value = 0x%02X", getNode().getNodeId(), value));
+        logger.debug("NODE {}: Switch binary toggle report, value = {}", getNode().getNodeId(), value);
         ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(this.getNode().getNodeId(), endpoint,
                 getCommandClass(), value);
         getController().notifyEventListeners(zEvent);

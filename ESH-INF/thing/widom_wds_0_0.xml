@@ -64,12 +64,18 @@ Universal Double Switch<br /><h1>Overview</h1><p>Universal Double Switch is an O
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_0_1" type="integer" groupName="configuration"
                  min="-1" max="106">
         <label>0: Defines how to control the devices associated to group 4 and 5.</label>
@@ -238,11 +244,6 @@ Defines the time after which the Channel 2 is switched ON<br /><h1>Overview</h1>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: LifeLine Group</label>
         <description><![CDATA[

@@ -8,10 +8,11 @@
   <thing-type id="zooz_zse40_00_000" listed="false">
     <label>ZSE40 4-in-1 Sensor</label>
     <description>4-in-1 Sensor</description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="sensor_binary" typeId="sensor_binary">
+      <channel id="basic_sensor_binary" typeId="sensor_binary">
         <label>Motion</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_BASIC</property>
@@ -73,12 +74,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Temperature Scale</label>
         <description>Set the temperature scale</description>
@@ -155,11 +162,6 @@ Select the LED indicator mode<br /><h1>Overview</h1><p>LED indicator will flash 
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Receive updates</label>
         <description>Receive sensor updates</description>

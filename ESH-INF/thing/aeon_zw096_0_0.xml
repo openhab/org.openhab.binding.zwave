@@ -72,12 +72,23 @@ Smart Switch 6<br /><h1>Overview</h1><p>Aeon Labs Smart Switch is a Z-Wave power
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="actions">
+        <context>setup</context>
+        <label>Actions</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Current overload protection enable</label>
         <description><![CDATA[
@@ -296,7 +307,7 @@ Group 3 automatic update interval<br /><h1>Overview</h1><p>The time interval of 
       <parameter name="config_252_1" type="integer" groupName="configuration">
         <label>252: Configuration Locked</label>
         <description><![CDATA[
-Enable/disable Configuration Locked (0 =disable, 1 = enable). <br /><h1>Overview</h1><p>Enable/disable Configuration Locked (0 =disable, 1 =enable).</p>
+Enable/disable Configuration Locked (0 =disable, 1 = enable).<br /><h1>Overview</h1><p>Enable/disable Configuration Locked (0 =disable, 1 =enable).</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -306,10 +317,6 @@ Enable/disable Configuration Locked (0 =disable, 1 = enable). <br /><h1>Overview
       </parameter>
 
       <!-- ACTION DEFINITIONS -->
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
 
       <parameter name="config_33_4_wo" type="integer" groupName="configuration"
                  min="0" max="4294967295">
@@ -351,11 +358,6 @@ Reset the device to defaults<br /><h1>Overview</h1><p>Reset configuration set up
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
         <description><![CDATA[

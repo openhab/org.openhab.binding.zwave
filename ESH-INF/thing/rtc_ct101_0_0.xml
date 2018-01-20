@@ -138,12 +138,18 @@
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
 
-      <!-- PARAMETER DEFINITIONS -->
+      <!-- GROUP DEFINITIONS -->
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Temperature Reporting Threshold</label>
         <description><![CDATA[
@@ -174,7 +180,7 @@ Prevents setpoint changes at thermostat.<br /><h1>Overview</h1><p>If set to 0, t
       <parameter name="config_7_1" type="integer" groupName="configuration">
         <label>7: Thermostat Swing Temperature</label>
         <description><![CDATA[
-Variance allowed from setpoint <br /><h1>Overview</h1><p>The thermostat swing temperature is in units of 0.5 degrees Fahrenheit. A value of 0x01 is 0.05F and 0x02 is 1.0F. The supported values may vary from thermostat to thermostat but typically the allowed values are 0.5F (0x01) to 4.0F (0x08).</p> <p>The Thermostat Swing Temperature configuration command sets swing temperature on the thermostat setpoint.</p>
+Variance allowed from setpoint<br /><h1>Overview</h1><p>The thermostat swing temperature is in units of 0.5 degrees Fahrenheit. A value of 0x01 is 0.05F and 0x02 is 1.0F. The supported values may vary from thermostat to thermostat but typically the allowed values are 0.5F (0x01) to 4.0F (0x08).</p> <p>The Thermostat Swing Temperature configuration command sets swing temperature on the thermostat setpoint.</p>
         ]]></description>
         <default>2</default>
         <options>
@@ -202,11 +208,6 @@ Fast or Economy recovery mode.<br /><h1>Overview</h1><p>The Thermostat Recovery 
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter-group name="association">
-        <context>link</context>
-        <label>Association Groups</label>
-      </parameter-group>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
         <multipleLimit>2</multipleLimit>
