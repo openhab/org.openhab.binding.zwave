@@ -22,6 +22,22 @@ The following table summarises the channels available for the AD142 Indoor Dimme
 
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
+| Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer |
+
+
+### Dimmer
+
+#### Restore Last Value
+
+Restore Last Dimming level on ON.
+
+
+| Property         | Value    |
+|------------------|----------|
+| Configuration ID | config_restoreLastValue |
+| Data Type        | BOOLEAN || Default Value | true |
+| Options | Restore Last Value (true) |
+|  | Restore Full Brightness (false) |
 
 
 ### Device Configuration

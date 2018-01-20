@@ -135,7 +135,7 @@ Detailed information on each parameter can be found below.
 | 54: Self-measurement | The Dimmer may include active power and energy used by itself in reports sent to the main ... |
 | 58: Method of calculating the active power | This parameter defines how to calculate active power. It is useful in a case of 2-wire con... |
 | 59: Approximated power at the maximum brightness level | This parameter determines the approximate value of the power that will be reported by the ... |
-| 1: Lifeline - Controller Updates |  |
+| 1: Lifeline |  |
 | 2: Sends BASIC SET command class frame according to the state of the devi |  |
 | 3: Sends BASIC SET command class frame according to the state of the devi |  |
 | 4: Sends BASIC SET command class frame according to the state of the devi |  |
@@ -819,7 +819,7 @@ This parameter determines the approximate value of the power that will be report
 | Default Value | 0 |
 
 
-#### 1: Lifeline - Controller Updates
+#### 1: Lifeline
 
 
 | Property         | Value    |

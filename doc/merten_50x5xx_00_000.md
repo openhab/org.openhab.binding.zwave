@@ -5,11 +5,11 @@ title: 50x5xx - ZWave
 
 {% include base.html %}
 
-# 50x5xx roller shutter push-button
+# 50x5xx Roller shutter push-button
 
 This describes the Z-Wave device *50x5xx*, manufactured by *Merten* with the thing type UID of ```merten_50x5xx_00_000```. 
 
-roller shutter push-button  
+Roller shutter push-button  
 
 
 ### Inclusion Information 
@@ -31,7 +31,7 @@ include/exclude the device by the primary  
 
 
 ## Channels
-The following table summarises the channels available for the 50x5xx roller shutter push-button.
+The following table summarises the channels available for the 50x5xx Roller shutter push-button.
 
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
@@ -88,7 +88,7 @@ Restore Last Dimming level on ON.
 
 
 ### Device Configuration
-The following table provides a summary of the configuration parameters available in the 50x5xx roller shutter push-button.
+The following table provides a summary of the configuration parameters available in the 50x5xx Roller shutter push-button.
 Detailed information on each parameter can be found below.
 
 | Parameter   | Description |

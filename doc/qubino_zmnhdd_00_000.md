@@ -167,7 +167,7 @@ Detailed information on each parameter can be found below.
 |------------------|----------|
 | Configuration ID | config_1_1 |
 | Data Type        | INTEGER || Default Value | 0 |
-| Options | 0 - Mono-stable switch type (push button) (0) |
+| Options | Mono-stable switch type (push button) (0) |
 |  | 1 - Bi-stable switch type (1) |
 
 
