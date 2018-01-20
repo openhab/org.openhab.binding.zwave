@@ -366,14 +366,18 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
     public static ThingType getThingType(ZWaveNode node) {
         // Check that we know about the registry
         if (thingTypeRegistry == null) {
+            logger.debug("{}: Unable to get thing type as registry not set", node.getNodeId());
             return null;
         }
 
         for (ZWaveProduct product : ZWaveConfigProvider.getProductIndex()) {
+            logger.trace("{}: Checking {}: {}", node.getNodeId(), product.getThingTypeUID(), product);
             if (product.match(node) == true) {
+                logger.trace("{}: Matched {}: {}", node.getNodeId(), product.getThingTypeUID(), product);
                 return thingTypeRegistry.getThingType(product.thingTypeUID);
             }
         }
+
         return null;
     }
 
