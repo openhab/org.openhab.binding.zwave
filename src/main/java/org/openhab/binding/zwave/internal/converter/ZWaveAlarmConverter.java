@@ -51,6 +51,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         events = new HashMap<NotificationEvent, State>();
         events.put(NotificationEvent.HOME_SECURITY__NONE, OnOffType.OFF);
         events.put(NotificationEvent.HOME_SECURITY__INTRUSION, OnOffType.ON);
+        events.put(NotificationEvent.HOME_SECURITY__INTRUSION_UNKNOWN, OnOffType.ON);
         notifications.put("alarm_burglar", events);
 
         // Smoke Alarms
@@ -93,7 +94,6 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         events = new HashMap<NotificationEvent, State>();
         events.put(NotificationEvent.HOME_SECURITY__NONE, OnOffType.OFF);
         events.put(NotificationEvent.HOME_SECURITY__TAMPER, OnOffType.ON);
-        events.put(NotificationEvent.HOME_SECURITY__TAMPER_UNKNOWN, OnOffType.ON);
         events.put(NotificationEvent.HOME_SECURITY__TAMPER_INVALID_CODE, OnOffType.ON);
         notifications.put("alarm_tamper", events);
 
@@ -414,7 +414,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
 
         HOME_SECURITY__NONE("BURGLAR", 0),
         HOME_SECURITY__INTRUSION("BURGLAR", 1),
-        HOME_SECURITY__TAMPER_UNKNOWN("BURGLAR", 2),
+        HOME_SECURITY__INTRUSION_UNKNOWN("BURGLAR", 2),
         HOME_SECURITY__TAMPER("BURGLAR", 3),
         HOME_SECURITY__TAMPER_INVALID_CODE("BURGLAR", 4),
         HOME_SECURITY__GLASS_BREAK("BURGLAR", 5),
