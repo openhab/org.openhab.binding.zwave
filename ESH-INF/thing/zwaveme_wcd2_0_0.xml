@@ -8,6 +8,7 @@
   <thing-type id="zwaveme_wcd2_00_000" listed="false">
     <label>WCD2 Double Paddle Wall Controller</label>
     <description>Double Paddle Wall Controller</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

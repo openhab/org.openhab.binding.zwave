@@ -8,6 +8,7 @@
   <thing-type id="enerwave_zw500dm_00_000" listed="false">
     <label>ZW500DM In-wall Smart Meter Dimmer Switch</label>
     <description>In-wall Smart Meter Dimmer Switch</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

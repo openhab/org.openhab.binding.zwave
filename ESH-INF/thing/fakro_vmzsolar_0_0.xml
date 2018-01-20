@@ -8,6 +8,7 @@
   <thing-type id="fakro_vmzsolar_00_000" listed="false">
     <label>VMZ Solar Awning Blind</label>
     <description>Awning Blind</description>
+    <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -8,6 +8,7 @@
   <thing-type id="linear_wa105dbz_00_000" listed="false">
     <label>Siren &amp; Strobe Alarm Siren</label>
     <description>Siren</description>
+    <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

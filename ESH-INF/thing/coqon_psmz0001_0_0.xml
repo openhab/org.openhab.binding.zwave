@@ -8,6 +8,7 @@
   <thing-type id="coqon_psmz0001_00_000" listed="false">
     <label>PSMZ0001 Plug module</label>
     <description>Plug module</description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

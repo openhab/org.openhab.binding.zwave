@@ -8,6 +8,7 @@
   <thing-type id="brk_zsmoke_00_000" listed="false">
     <label>ZSMOKE Smoke Alarm</label>
     <description>Smoke Alarm</description>
+    <category>SmokeDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

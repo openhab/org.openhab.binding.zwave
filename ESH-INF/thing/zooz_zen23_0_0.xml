@@ -8,6 +8,7 @@
   <thing-type id="zooz_zen23_00_000" listed="false">
     <label>ZEN23 Z-Wave Plus On/Off Toggle Switch V1</label>
     <description>Z-Wave Plus On/Off Toggle Switch V1</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

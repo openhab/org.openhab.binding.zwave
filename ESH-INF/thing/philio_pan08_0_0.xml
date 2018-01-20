@@ -8,6 +8,7 @@
   <thing-type id="philio_pan08_00_000" listed="false">
     <label>PAN08 Relay Insert for Blind Control</label>
     <description>Relay Insert for Blind Control</description>
+    <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

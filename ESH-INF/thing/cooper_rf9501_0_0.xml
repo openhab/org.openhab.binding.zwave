@@ -8,6 +8,7 @@
   <thing-type id="cooper_rf9501_00_000" listed="false">
     <label>RF9501 15A Light Switch</label>
     <description>15A Light Switch</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

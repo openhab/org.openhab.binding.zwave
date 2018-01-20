@@ -8,6 +8,7 @@
   <thing-type id="aeon_dsd31_00_000" listed="false">
     <label>DSD31 Outlet Plugable Siren</label>
     <description>Outlet Plugable Siren</description>
+    <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -37,13 +38,6 @@
         <context>setup</context>
         <label>Configuration Parameters</label>
       </parameter-group>
-
-      <parameter name="config_5_1" type="integer" groupName="configuration"
-                 min="1" max="0">
-        <label>5: Primary Notification Sound</label>
-        <description>The siren offers ten different sounds to use as the Siren (primary) notification. This parameter sets the Siren (primary) notification sound.</description>
-        <default>9</default>
-      </parameter>
 
       <parameter name="config_37_2" type="integer" groupName="configuration"
                  min="0" max="65535">

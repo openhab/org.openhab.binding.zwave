@@ -8,6 +8,7 @@
   <thing-type id="heiman_dx1cgz_00_000" listed="false">
     <label>DX1CG-Z CH4 Gas Sensor</label>
     <description>CH4 Gas Sensor</description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

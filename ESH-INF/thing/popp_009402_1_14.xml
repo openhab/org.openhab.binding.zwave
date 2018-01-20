@@ -8,6 +8,7 @@
   <thing-type id="popp_009402_01_014" listed="false">
     <label>009402 10 Year Smoke Detector</label>
     <description>10 Year Smoke Detector</description>
+    <category>SmokeDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

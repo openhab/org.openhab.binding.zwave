@@ -8,6 +8,7 @@
   <thing-type id="mcohome_mh10pm25wa_00_000" listed="false">
     <label>MH10-PM2.5-WA PM2.5 Monitor</label>
     <description>PM2.5 Monitor</description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -10,9 +10,16 @@
     <description><![CDATA[
 Door Window Sensor<br /><h1>Overview</h1><p>This sensor monitors door/ window and send Z-Wave signal when door or window is opened and closed.</p> <p>When the device is secure included into Z-Wave network, above communication will be encrypted.</p>
     ]]></description>
+    <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
+      <channel id="sensor_binary" typeId="sensor_binary">
+        <label>Sensor Binary</label>
+        <properties>
+          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
+        </properties>
+      </channel>
       <channel id="alarm_burglar" typeId="alarm_burglar">
         <label>Tamper Alarm</label>
         <properties>

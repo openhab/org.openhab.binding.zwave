@@ -56,6 +56,7 @@
       <property name="manufacturerId">027A</property>
       <property name="manufacturerRef">0101:000D</property>
       <property name="dbReference">758</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -101,6 +102,17 @@ Send On/Off Status Change Notifications<br /><h1>Overview</h1><p>Your Power Swit
           <option value="1">Sends notification if status is changed manually or remotely</option>
           <option value="2">Sends notification ONLY if status is changed manually</option>
         </options>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Group 1</label>
+        <multipleLimit>5</multipleLimit>
       </parameter>
 
     </config-description>

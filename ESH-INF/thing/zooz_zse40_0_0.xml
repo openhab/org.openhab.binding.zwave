@@ -8,6 +8,7 @@
   <thing-type id="zooz_zse40_00_000" listed="false">
     <label>ZSE40 4-in-1 Sensor</label>
     <description>4-in-1 Sensor</description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

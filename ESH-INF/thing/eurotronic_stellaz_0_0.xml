@@ -8,6 +8,7 @@
   <thing-type id="eurotronic_stellaz_00_000" listed="false">
     <label>StellaZ Thermostatic Valve</label>
     <description>Thermostatic Valve</description>
+    <category>RadiatorControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

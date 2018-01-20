@@ -8,6 +8,7 @@
   <thing-type id="yale_yrd110_00_000" listed="false">
     <label>YRD110 Yale button deadbolt without keyway</label>
     <description>Yale button deadbolt without keyway</description>
+    <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -5,9 +5,9 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="cooper_rf9540n_00_000" listed="false">
-    <label>RF9540-N All Load Dimmer Light Switch</label>
-    <description>All Load Dimmer Light Switch</description>
+  <thing-type id="cooper_rf9536n_00_000" listed="false">
+    <label>RF9536-N 1000W Dimmer Light Switch</label>
+    <description>1000W Dimmer Light Switch</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -25,12 +25,6 @@
           <property name="binding:*:DecimalType">SCENE_ACTIVATION</property>
         </properties>
       </channel>
-      <channel id="config_decimal_param7" typeId="config_decimal">
-        <label>Dimmer Ramp Time</label>
-        <properties>
-          <property name="binding:*:DecimalType">CONFIGURATION;parameter=7</property>
-        </properties>
-      </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
         <properties>
@@ -42,10 +36,10 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Cooper Wiring Devices</property>
-      <property name="modelId">RF9540-N</property>
+      <property name="modelId">RF9536-N</property>
       <property name="manufacturerId">001A</property>
-      <property name="manufacturerRef">4449:0101,4449:AA00</property>
-      <property name="dbReference">16</property>
+      <property name="manufacturerRef">4449:0000</property>
+      <property name="dbReference">780</property>
       <property name="defaultAssociations">1,255</property>
     </properties>
 

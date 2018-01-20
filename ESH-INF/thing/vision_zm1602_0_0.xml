@@ -8,6 +8,7 @@
   <thing-type id="vision_zm1602_00_000" listed="false">
     <label>ZM1602 AC/DC Siren</label>
     <description>AC/DC Siren</description>
+    <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

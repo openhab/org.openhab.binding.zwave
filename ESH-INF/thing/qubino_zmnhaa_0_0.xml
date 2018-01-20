@@ -8,6 +8,7 @@
   <thing-type id="qubino_zmnhaa_00_000" listed="false">
     <label>ZMNHAA Flush 1 relay</label>
     <description>Flush 1 relay</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

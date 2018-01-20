@@ -5,7 +5,7 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="mcohome_mh8fc_01_002" listed="false">
+  <thing-type id="mcohome_mh8fc_00_000" listed="false">
     <label>MH8-FC Fan Coil Thermostat</label>
     <description>Fan Coil Thermostat</description>
     <category>HVAC</category>
@@ -18,7 +18,7 @@
           <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="thermostat_mode" typeId="mcohome_mh8fc_01_002_thermostat_mode">
+      <channel id="thermostat_mode" typeId="mcohome_mh8fc_00_000_thermostat_mode">
         <label>Thermostat mode</label>
         <properties>
           <property name="binding:*:DecimalType">THERMOSTAT_MODE</property>
@@ -42,13 +42,13 @@
           <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=HEATING</property>
         </properties>
       </channel>
-      <channel id="thermostat_fanmode" typeId="mcohome_mh8fc_01_002_thermostat_fanmode">
+      <channel id="thermostat_fanmode" typeId="mcohome_mh8fc_00_000_thermostat_fanmode">
         <label>Thermostat fan mode</label>
         <properties>
           <property name="binding:*:DecimalType">THERMOSTAT_FAN_MODE</property>
         </properties>
       </channel>
-      <channel id="thermostat_fanstate" typeId="mcohome_mh8fc_01_002_thermostat_fanstate">
+      <channel id="thermostat_fanstate" typeId="mcohome_mh8fc_00_000_thermostat_fanstate">
         <label>Thermostat fan state</label>
         <properties>
           <property name="binding:*:DecimalType">THERMOSTAT_FAN_STATE</property>
@@ -61,8 +61,7 @@
       <property name="vendor">McoHome Technology Co., Ltd</property>
       <property name="modelId">MH8-FC</property>
       <property name="manufacturerId">015F</property>
-      <property name="manufacturerRef">0801:3102,0801:5102</property>
-      <property name="versionMin">1.2</property>
+      <property name="manufacturerRef">0801:3102,0801:5102,0802:3102</property>
       <property name="dbReference">336</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -77,7 +76,7 @@
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association">
-        <label>1: Gateway</label>
+        <label>1: Lifeline</label>
         <description>For sending temperature, working mode, etc. notifications</description>
       </parameter>
 
@@ -85,7 +84,7 @@
 
   </thing-type>
 
-  <channel-type id="mcohome_mh8fc_01_002_thermostat_mode">
+  <channel-type id="mcohome_mh8fc_00_000_thermostat_mode">
     <item-type>Number</item-type>
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
@@ -100,7 +99,7 @@
     </state>
   </channel-type>
 
-  <channel-type id="mcohome_mh8fc_01_002_thermostat_fanmode">
+  <channel-type id="mcohome_mh8fc_00_000_thermostat_fanmode">
     <item-type>Number</item-type>
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
@@ -114,7 +113,7 @@
     </state>
   </channel-type>
 
-  <channel-type id="mcohome_mh8fc_01_002_thermostat_fanstate">
+  <channel-type id="mcohome_mh8fc_00_000_thermostat_fanstate">
     <item-type>Number</item-type>
     <label>Thermostat Fan State</label>
     <description>Sets the thermostat fan state</description>

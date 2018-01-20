@@ -8,6 +8,7 @@
   <thing-type id="tkb_tsm02_00_000" listed="false">
     <label>TSM02 Slim Multi-Sensor</label>
     <description>Slim Multi-Sensor</description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -8,6 +8,7 @@
   <thing-type id="devolo_09813_00_000" listed="false">
     <label>09813 Home Control Smoke Detector</label>
     <description>Home Control Smoke Detector</description>
+    <category>SmokeDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

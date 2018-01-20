@@ -8,6 +8,7 @@
   <thing-type id="heiman_hs2wdz_00_000" listed="false">
     <label>HS2WDZ SmartSiren</label>
     <description>SmartSiren</description>
+    <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
