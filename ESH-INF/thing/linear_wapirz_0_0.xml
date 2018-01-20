@@ -8,6 +8,7 @@
   <thing-type id="linear_wapirz_00_000" listed="false">
     <label>WAPIRZ-1 PIR Motion Detector</label>
     <description>PIR Motion Detector</description>
+    <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

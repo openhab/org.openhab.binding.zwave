@@ -5,27 +5,21 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="isurpass_dl9101v_00_000" listed="false">
-    <label>DL9101V Door Lock with Handle</label>
-    <description>Door Lock with Handle</description>
-    <category>Lock</category>
+  <thing-type id="zwaveme_hs1ds_00_000" listed="false">
+    <label>HS1DS Window / Door Sensor</label>
+    <description>Window / Door Sensor</description>
+    <category>Window</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
+      <channel id="sensor_door" typeId="sensor_door">
+        <label>Binary Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:OpenClosedType">SENSOR_BINARY,BASIC</property>
         </properties>
       </channel>
-      <channel id="lock_door" typeId="lock_door">
-        <label>Door Lock</label>
-        <properties>
-          <property name="binding:*:OnOffType">DOOR_LOCK</property>
-        </properties>
-      </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm</label>
+      <channel id="alarm_burglar" typeId="alarm_burglar">
+        <label>Alarm (burglar)</label>
         <properties>
           <property name="binding:*:OnOffType">ALARM</property>
         </properties>
@@ -35,21 +29,15 @@
           <property name="binding:*:PercentType">BATTERY</property>
         </properties>
       </channel>
-      <channel id="time_offset" typeId="time_offset">
-        <label>Clock Time Offset</label>
-        <properties>
-          <property name="binding:*:DecimalType">TIME_PARAMETERS</property>
-        </properties>
-      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Shenzhen iSurpass Technology Co. ,Ltd</property>
-      <property name="modelId">DL9101V</property>
-      <property name="manufacturerId">021C</property>
-      <property name="manufacturerRef">5000:1000</property>
-      <property name="dbReference">666</property>
+      <property name="vendor">Z-Wave.Me</property>
+      <property name="modelId">HS1DS</property>
+      <property name="manufacturerId">0115</property>
+      <property name="manufacturerRef">0400:0001</property>
+      <property name="dbReference">783</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -63,7 +51,7 @@
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Lifeline</label>
+        <label>1: Controller Updates</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

@@ -8,6 +8,7 @@
   <thing-type id="fibaro_fgr221_00_000" listed="false">
     <label>FGR221 Roller Shutter Controller</label>
     <description>Roller Shutter Controller</description>
+    <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -32,7 +33,7 @@
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGR221</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0300:0104,0300:0106,0300:0107,0300:100A,0300:0109</property>
+      <property name="manufacturerRef">0300:0104,0300:0106,0300:0107,0300:0109,0300:100A</property>
       <property name="dbReference">132</property>
       <property name="defaultAssociations">3</property>
     </properties>

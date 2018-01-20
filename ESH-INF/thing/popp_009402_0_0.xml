@@ -8,6 +8,7 @@
   <thing-type id="popp_009402_00_000" listed="false">
     <label>009402 10 Year Smoke Detector with Siren Function</label>
     <description>10 Year Smoke Detector with Siren Function</description>
+    <category>SmokeDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

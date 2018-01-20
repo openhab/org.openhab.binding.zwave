@@ -8,13 +8,14 @@
   <thing-type id="aeon_zw132_00_000" listed="false">
     <label>ZW132 Dual Nano Switch with Energy Metering</label>
     <description>Dual Nano Switch with Energy Metering</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -144,7 +145,7 @@
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW132</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0203:0084</property>
+      <property name="manufacturerRef">0103:0084,0203:0084</property>
       <property name="dbReference">724</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -405,7 +406,7 @@
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Z-Wave Plus Lifeline</label>
+        <label>1: Lifeline</label>
         <description>When the load state of Dual Nano Switch (turn on/off the load) is changed, the Hail CC and Basic Report (configured by parameter 80) can be sent to the associated nodes in this group.</description>
         <multipleLimit>5</multipleLimit>
       </parameter>

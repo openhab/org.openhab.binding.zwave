@@ -8,6 +8,7 @@
   <thing-type id="reitz_05433_00_000" listed="false">
     <label>05433 One Paddle Wall Dimmer Insert</label>
     <description>One Paddle Wall Dimmer Insert</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

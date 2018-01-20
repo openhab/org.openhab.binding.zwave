@@ -8,6 +8,7 @@
   <thing-type id="devolo_mt2652_00_000" listed="false">
     <label>MT2652 Scene Switch</label>
     <description>Scene Switch</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -209,7 +210,7 @@ Defines the command to be sent to devices of control group D when the related bu
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Z-Wave Plus Lifeline</label>
+        <label>1: Lifeline</label>
         <description>Z-Wave Plus Lifeline</description>
         <multipleLimit>10</multipleLimit>
       </parameter>

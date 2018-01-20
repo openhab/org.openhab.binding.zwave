@@ -8,6 +8,7 @@
   <thing-type id="linear_ngd00z4_00_000" listed="false">
     <label>NGD00Z-4 Garage Door Controller</label>
     <description>Garage Door Controller</description>
+    <category>GarageDoor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

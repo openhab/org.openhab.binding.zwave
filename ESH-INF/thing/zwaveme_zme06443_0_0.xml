@@ -8,6 +8,7 @@
   <thing-type id="zwaveme_zme06443_00_000" listed="false">
     <label>ZME_06443 Single Paddle Wall Controller</label>
     <description>Single Paddle Wall Controller</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

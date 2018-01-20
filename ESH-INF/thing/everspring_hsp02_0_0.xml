@@ -8,6 +8,7 @@
   <thing-type id="everspring_hsp02_00_000" listed="false">
     <label>HSP02 Motion Detector</label>
     <description>Motion Detector</description>
+    <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -35,7 +36,7 @@
       <property name="vendor">Everspring</property>
       <property name="modelId">HSP02</property>
       <property name="manufacturerId">0060</property>
-      <property name="manufacturerRef">0001:0003,0001:0001</property>
+      <property name="manufacturerRef">0001:0001,0001:0003</property>
       <property name="dbReference">22</property>
       <property name="defaultAssociations">1</property>
     </properties>

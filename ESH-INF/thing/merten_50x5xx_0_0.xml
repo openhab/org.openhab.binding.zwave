@@ -6,10 +6,11 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="merten_50x5xx_00_000" listed="false">
-    <label>50x5xx roller shutter push-button</label>
+    <label>50x5xx Roller shutter push-button</label>
     <description><![CDATA[
-roller shutter push-button<br /><h2>Inclusion Information</h2><p>Program (transmits Node info frame)</p> <p>Triple click on operating surface. Used for<br />include/exclude the device by the primary  </p> <br /><h2>Exclusion Information</h2><p>Reset to the factory settings; exclude  </p> <p>Triple click on operating surface. Used for<br />include/exclude the device by the primary  </p>
+Roller shutter push-button<br /><h2>Inclusion Information</h2><p>Program (transmits Node info frame)</p> <p>Triple click on operating surface. Used for<br />include/exclude the device by the primary  </p> <br /><h2>Exclusion Information</h2><p>Reset to the factory settings; exclude  </p> <p>Triple click on operating surface. Used for<br />include/exclude the device by the primary  </p>
     ]]></description>
+    <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -8,6 +8,7 @@
   <thing-type id="zwaveme_zme05461_00_000" listed="false">
     <label>ZME_05461 Double switch</label>
     <description>Double switch</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

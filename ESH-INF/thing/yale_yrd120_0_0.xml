@@ -10,6 +10,7 @@
     <description><![CDATA[
 Touchscreen deadbolt without key<br /><h2>Inclusion Information</h2><p>The lock can be included in a Z-Wave Network from the touchscreen as follows:</p> <ol><li>Touch the lock screen to activate</li> <li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 1, then #</li> </ol><p>The lock will now be in inclusion mode.  Alternatively, the lock can be included by pressing and holding the radio button until the unit beeps 2 times. Release the button and the unit will enter inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>The lock can be excluded from a Z-Wave Network from the touchscreen as follows:</p> <ol><li>Touch the lock screen to activate</li> <li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 3, then #</li> </ol><p>The lock will now be in exclusion mode.  Alternatively, the lock can be excluded by pressing and holding the radio button until the unit beeps 5 times. Release the button and the unit will enter exclusion mode.</p>
     ]]></description>
+    <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -49,7 +50,7 @@ Touchscreen deadbolt without key<br /><h2>Inclusion Information</h2><p>The lock 
       <property name="vendor">ASSA ABLOY</property>
       <property name="modelId">YRD120</property>
       <property name="manufacturerId">0129</property>
-      <property name="manufacturerRef">0002:0800,0004:0800</property>
+      <property name="manufacturerRef">0002:0800</property>
       <property name="dbReference">402</property>
       <property name="defaultAssociations">1</property>
     </properties>

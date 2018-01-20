@@ -8,6 +8,7 @@
   <thing-type id="merten_507601_00_000" listed="false">
     <label>507601 Dual Pole Wall Switch</label>
     <description>Dual Pole Wall Switch</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

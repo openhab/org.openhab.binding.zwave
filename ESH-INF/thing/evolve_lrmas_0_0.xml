@@ -8,6 +8,7 @@
   <thing-type id="evolve_lrmas_00_000" listed="false">
     <label>LRM-AS Wall Mounted Dimmer</label>
     <description>Wall Mounted Dimmer</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

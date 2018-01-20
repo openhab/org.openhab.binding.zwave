@@ -8,6 +8,7 @@
   <thing-type id="ge_12718_00_000" listed="false">
     <label>12718 Smart Dimmer</label>
     <description>Smart Dimmer</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
