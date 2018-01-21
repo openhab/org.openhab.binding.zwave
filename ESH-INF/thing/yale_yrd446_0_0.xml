@@ -218,10 +218,15 @@ Number of incorrect PINs before lockout<br /><h1>Overview</h1><p>Number of incor
     </state>
   </channel-type>
 
-  <channel-type id="yale_yrd446_00_000_config_decimal_param3">
+  <channel-type id="yale_yrd446_00_000_config_decimal_param8">
     <item-type>Number</item-type>
-    <label>Auto relock time</label>
+    <label>Operating mode</label>
     <state pattern="%s">
+      <options>
+        <option value="0">Normal</option>
+        <option value="1">Vacation</option>
+        <option value="2">Privacy</option>
+      </options>
     </state>
   </channel-type>
 

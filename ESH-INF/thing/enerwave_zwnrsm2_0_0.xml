@@ -8,6 +8,7 @@
   <thing-type id="enerwave_zwnrsm2_00_000" listed="false">
     <label>ZWN-RSM2 Smart Dual Relay Switch Module</label>
     <description>Smart Dual Relay Switch Module</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -36,7 +37,7 @@
       <property name="vendor">Wenzhou MTLC Electric Appliances Co.,Ltd.</property>
       <property name="modelId">ZWN-RSM2</property>
       <property name="manufacturerId">011A</property>
-      <property name="manufacturerRef">0101:5606</property>
+      <property name="manufacturerRef">0101:5606,0111:0605</property>
       <property name="dbReference">465</property>
     </properties>
 
