@@ -8,6 +8,7 @@
   <thing-type id="cooper_rf9542_00_000" listed="false">
     <label>RF9542 Dimmer Accessory Switch</label>
     <description>Dimmer Accessory Switch</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -34,6 +35,12 @@
         <label>Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
+        </properties>
+      </channel>
+      <channel id="protection_local" typeId="protection_local">
+        <label>Local Device Protection</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION;type=PROTECTION_LOCAL</property>
         </properties>
       </channel>
     </channels>
