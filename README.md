@@ -11,7 +11,7 @@ The binding uses a standard Z-Wave serial stick to communicate with the Z-Wave d
 
 ## Supported Things
 
-The ZWave binding provides support for a large number of devices (currently 688). See the [full list of supported things](docs/things.md).
+The ZWave binding provides support for a large number of devices (currently 688). See the [full list of supported things](doc/things.md).
 
 
 ### ZWave Serial Adapter
@@ -21,7 +21,7 @@ Before the binding can be used, a serial adapter must be added. This needs to be
 
 ## Discovery
 
-Once the binding is authorized, and an adapter is added, it automatically reads all devices that are included into the network. This is read directly from the Z-Wave controller and new things are added to the Inbox. When the discovery process is started, the binding will put the controller into inclusion mode for a defined period of time to allow new devices to be discovered and added to the network. Device discovery occurs in two phases - firs the device is added to the inbox as an *Unknown Device** to provide the user immediate feedback that the device has been discovered. Once the device type is known, the inbox entry is updated with the actual device name and manufacturer. 
+Once the binding is authorized, and an adapter is added, it automatically reads all devices that are included into the network. This is read directly from the Z-Wave controller and new things are added to the Inbox. When the discovery process is started, the binding will put the controller into inclusion mode for a defined period of time to allow new devices to be discovered and added to the network. Device discovery occurs in two phases - first the device is added to the inbox as an *Unknown Device* to provide the user immediate feedback that the device has been discovered. Once the device type is known, the inbox entry is updated with the actual device name and manufacturer. 
 
 
 ## Binding Configuration
@@ -100,7 +100,7 @@ This sets the network security key used in your network for securing communicati
 
 ### Thing Configuration
 
-There are a large number of things supported by the Z-Wave binding, so configuration can not be covered here and you should refer to the device manual. A summary of supported devices can be found [here](docs/thing-list.md) and this links to the list of configuration parameters the binding provides.
+There are a large number of things supported by the Z-Wave binding, so configuration can not be covered here and you should refer to the device manual. A [summary of supported devices can be found here](doc/thing-list.md) and this links to the list of configuration parameters the binding provides.
 
 #### Textual Thing Configuration
 
@@ -133,7 +133,7 @@ The table below summarises the channels available in the controller. These provi
 
 ### Device Channels
 
-Channels supported by each device can be found in the device documentation. Refer to the [device summary](docs/thing-list.md) and select your device.
+Channels supported by each device can be found in the device documentation. Refer to the [device summary](doc/thing-list.md) and select your device.
 
 ### Device properties
 
