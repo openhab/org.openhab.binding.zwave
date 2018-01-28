@@ -8,6 +8,7 @@
   <thing-type id="cooper_rf9542_00_000" listed="false">
     <label>RF9542 Dimmer Accessory Switch</label>
     <description>Dimmer Accessory Switch</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

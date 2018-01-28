@@ -8,6 +8,7 @@
   <thing-type id="vision_zl7431_00_000" listed="false">
     <label>ZL7431 In Wall Relay Switch</label>
     <description>In Wall Relay Switch</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -24,7 +25,7 @@
       <property name="vendor">Vision Security</property>
       <property name="modelId">ZL7431</property>
       <property name="manufacturerId">0109</property>
-      <property name="manufacturerRef">200C:0C02,200C:0C06,2016:1616</property>
+      <property name="manufacturerRef">200C:0C02,2016:1616</property>
       <property name="dbReference">111</property>
       <property name="defaultAssociations">1</property>
     </properties>

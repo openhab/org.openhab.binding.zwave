@@ -10,6 +10,7 @@
     <description><![CDATA[
 Flush Shutter<br /><h1>Overview</h1><p>To enable endpoint 2 (lamella tilt for venetian blinds), follow the procedure:</p> <ol><li>set Param 71 to 0 -&gt; save ( make sure it has been set really )</li> <li>set Param 71 to 1 -&gt; save ( make sure it has been set really )</li> <li>exclude device from network and delete Node xml, stop openHAB</li> <li>switch off the power supply of the device ( according to the support team this is an alternative to wait 30s )</li> <li>switch on the power supply again and start openHAB</li> <li>include device to the network</li> <li>add the Thing to openhab via HABmin</li> <li>Be patient until the binding until processed all your nodes again</li> </ol>
     ]]></description>
+    <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -92,7 +93,7 @@ Flush Shutter<br /><h1>Overview</h1><p>To enable endpoint 2 (lamella tilt for ve
       <property name="vendor">Goap</property>
       <property name="modelId">ZMNHCD</property>
       <property name="manufacturerId">0159</property>
-      <property name="manufacturerRef">0003:0002,0003:0052</property>
+      <property name="manufacturerRef">0003:0052</property>
       <property name="versionMin">4.1</property>
       <property name="dbReference">213</property>
       <property name="defaultAssociations">1</property>

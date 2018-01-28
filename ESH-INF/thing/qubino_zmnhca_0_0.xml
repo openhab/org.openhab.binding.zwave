@@ -8,6 +8,7 @@
   <thing-type id="qubino_zmnhca_00_000" listed="false">
     <label>ZMNHCA Flush Shutter</label>
     <description>Flush Shutter</description>
+    <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

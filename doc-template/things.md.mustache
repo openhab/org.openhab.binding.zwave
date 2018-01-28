@@ -1,0 +1,19 @@
+---
+layout: documentation
+title: Things Summary - ZWave
+---
+
+{% include base.html %}
+
+# Things Supported by the Z-Wave Binding
+
+The binding supports a total of {{thingList.size}} things from a large number
+of manufacturers. The list below summarises the things currently supported,
+and links to more detailed information about each thing.
+
+| Manufacturer | Model | Version | Thing Type Id | Category |
+|--------------|-------|---------|---------------|----------|
+{{#thingList}}| {{property.vendor}} | {{label}} | {{#if property.versionMin}}{{property.versionMin}}{{#if property.versionMax}} to {{property.versionMax}}{{^}}All above {{property.versionMin}}{{/if}}{{^}}{{#if property.versionMax}}All up to {{property.versionMax}}{{^}}All{{/if}}{{/if}} | [{{id}}]({{id}}.md) | {{category}} |
+{{/thingList}}
+
+For information on adding devices to the database, refer to the [database information page](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-database-guide).
