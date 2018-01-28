@@ -7,7 +7,7 @@ title: Things Summary - ZWave
 
 # Things Supported by the Z-Wave Binding
 
-The binding supports a total of 686 things from a large number
+The binding supports a total of 688 things from a large number
 of manufacturers. The list below summarises the things currently supported,
 and links to more detailed information about each thing.
 
@@ -36,7 +36,7 @@ and links to more detailed information about each thing.
 | Goap | ZMNHLA Flush PWM thermostat | All | [qubino_zmnhla_00_000](qubino_zmnhla_00_000.md) |  |
 | AEON Labs | ZW100 Multisensor 6 | 1.10All above 1.10 | [aeon_zw100_01_010](aeon_zw100_01_010.md) | Sensor |
 | Intermatic | CA3000 Wall Switch | All | [intermatic_intermaticca3000_00_000](intermatic_intermaticca3000_00_000.md) |  |
-| Vision Security | PID11995 Monoprice ZWave On/Off Plugin | All | [vision_pid11995_00_000](vision_pid11995_00_000.md) |  |
+| Vision Security | PID11995 Monoprice ZWave On/Off Plugin | All | [vision_pid11995_00_000](vision_pid11995_00_000.md) | PowerOutlet |
 | Jasco Products | 45605 Duplex receptacle | All | [ge_45605_00_000](ge_45605_00_000.md) |  |
 | Trane Corporation | XL624 Touchscreen Comfort Control Thermostat | All | [trane_xl624_00_000](trane_xl624_00_000.md) |  |
 | Reitz-Group.de | 05433 One Paddle Wall Dimmer Insert | All | [reitz_05433_00_000](reitz_05433_00_000.md) | WallSwitch |
@@ -52,7 +52,7 @@ and links to more detailed information about each thing.
 | ID-RF | CRC-3100 Octon Remote Control | All | [nodon_crc3100_00_000](nodon_crc3100_00_000.md) |  |
 | Cooper Wiring Devices | RF9501 15A Light Switch | All | [cooper_rf9501_00_000](cooper_rf9501_00_000.md) | WallSwitch |
 | BeNext | doorSensor Door Sensor | All | [benext_doorsensor_00_000](benext_doorsensor_00_000.md) |  |
-| Goap | ZMNHCD Flush Shutter | 4.1All above 4.1 | [qubino_zmnhcd_04_001](qubino_zmnhcd_04_001.md) |  |
+| Goap | ZMNHCD Flush Shutter | 4.1All above 4.1 | [qubino_zmnhcd_04_001](qubino_zmnhcd_04_001.md) | Blinds |
 | Z-Wave.Me | KFOB 4 button keyfob | All | [zwaveme_kfob_00_000](zwaveme_kfob_00_000.md) |  |
 | Remotec | ZTS-110 ZTS-110 Z Wave Thermostat | All | [remotec_zts110_00_000](remotec_zts110_00_000.md) |  |
 | Philio Technology Corp | PAN06 In Wall Dual Relay(1 Way) Switch Module 2x 1.5kW | All | [philio_pan06_00_000](philio_pan06_00_000.md) |  |
@@ -152,10 +152,10 @@ and links to more detailed information about each thing.
 | Jasco Products | 45604 Outdoor Lighting Control Module | All | [ge_45604_00_000](ge_45604_00_000.md) |  |
 | Goap | ZMNHCD Flush Shutter | All up to 4.0 | [qubino_zmnhcd_00_000](qubino_zmnhcd_00_000.md) |  |
 | Cooper Wiring Devices | RF9534WS Smart Dimmer | All | [cooper_rf9534ws_00_000](cooper_rf9534ws_00_000.md) |  |
-| Vision Security | PID11994 Monoprice ZWave Dimmer Plugin | All | [vision_pid11994_00_000](vision_pid11994_00_000.md) |  |
+| Vision Security | PID11994 Monoprice ZWave Dimmer Plugin | All | [vision_pid11994_00_000](vision_pid11994_00_000.md) | WallSwitch |
 | Jasco Products | 32563 Smart Door Sensor | All | [ge_smartdoorsensor_00_000](ge_smartdoorsensor_00_000.md) |  |
 | Erone | HM-DW001 Door/Window Contact | All | [erone_hmdw001_00_000](erone_hmdw001_00_000.md) |  |
-| Somfy | ZRTSI Z-Wave to RTS Interface Controller | All | [somfy_zrtsi_00_000](somfy_zrtsi_00_000.md) |  |
+| Somfy | ZRTSI Z-Wave to RTS Interface Controller | All | [somfy_zrtsi_00_000](somfy_zrtsi_00_000.md) | Blinds |
 | Cooper Wiring Devices | RF9500 Battery Switch | All | [cooper_rf9500_00_000](cooper_rf9500_00_000.md) |  |
 | Vision Security | ZS6301 CO Detector | All | [vision_zs6301_00_000](vision_zs6301_00_000.md) |  |
 | Jasco Products | 28177 GE Z-Wave Plus Wireless Smart Lighting Control Appliance Module | All | [ge_28177_00_000](ge_28177_00_000.md) |  |
@@ -219,10 +219,10 @@ and links to more detailed information about each thing.
 | Goap | ZMNHOD Flush Shutter DC | All | [qubino_zmnhod_00_000](qubino_zmnhod_00_000.md) |  |
 | Fibargroup | FGS212 Relay Switch 1x2.5kW | All | [fibaro_fgs212_00_000](fibaro_fgs212_00_000.md) |  |
 | Danfoss | LC-13 Living Connect Z Thermostat | All | [danfoss_lc13_00_000](danfoss_lc13_00_000.md) |  |
-| Vision Security | ZL7431 In Wall Relay Switch | All | [vision_zl7431_00_000](vision_zl7431_00_000.md) |  |
+| Vision Security | ZL7431 In Wall Relay Switch | All | [vision_zl7431_00_000](vision_zl7431_00_000.md) | WallSwitch |
 | Vision Security | ZD2105 Recessed Door Window Sensor | All | [vision_zd2105_00_000](vision_zd2105_00_000.md) |  |
 | Popp &amp; Co | 009501 Popp 09501 Flow Stop | 1.2 to 1.2 | [popp_009501_01_002](popp_009501_01_002.md) |  |
-| Goap | ZMNHND Flush 1D relay | All | [qubino_zmnhnd_00_000](qubino_zmnhnd_00_000.md) |  |
+| Goap | ZMNHND Flush 1D relay | All | [qubino_zmnhnd_00_000](qubino_zmnhnd_00_000.md) | WallSwitch |
 | Wenzhou MTLC Electric Appliances Co.,Ltd. | ZWN-SC7 Scene Controller | All | [enerwave_zwnsc7_00_000](enerwave_zwnsc7_00_000.md) |  |
 | McoHome Technology Co., Ltd | MH8-FC4-EU Fan Coil Thermostat (4-Pipe) | All | [mcohome_mh8fc4_00_000](mcohome_mh8fc4_00_000.md) |  |
 | Residential Control Systems, Inc. (RCS) | TZ43 Thermostat | All | [rcs_tz43_00_000](rcs_tz43_00_000.md) |  |
@@ -377,16 +377,16 @@ and links to more detailed information about each thing.
 | Philio Technology Corp | PAN08 Relay Insert for Blind Control | All | [philio_pan08_00_000](philio_pan08_00_000.md) | Blinds |
 | ASSA ABLOY | YRD446 Yale Real Living Key Free Touchscreen Assure Lock with Z-Wave and Bluetooth | All | [yale_yrd446_00_000](yale_yrd446_00_000.md) | Lock |
 | BeNext | Energy Switch + Energy Switch + | All | [benext_energyswitch_00_000](benext_energyswitch_00_000.md) |  |
-| Systemair Sverige AS | 29990 Remotely Controlled Ventilation | All | [systemair_29990_00_000](systemair_29990_00_000.md) |  |
+| Systemair Sverige AS | 29990 Remotely Controlled Ventilation | All | [systemair_29990_00_000](systemair_29990_00_000.md) | HVAC |
 | Merten | 50x5xx Roller shutter push-button | All | [merten_50x5xx_00_000](merten_50x5xx_00_000.md) | Blinds |
 | Zooz | ZSE30 Water Sensor | All | [zooz_zse30_00_000](zooz_zse30_00_000.md) |  |
 | Devolo | 09813 Home Control Smoke Detector | All | [devolo_09813_00_000](devolo_09813_00_000.md) | SmokeDetector |
 | Everspring | SE812 Siren | All | [everspring_se812_00_000](everspring_se812_00_000.md) |  |
-| Cooper Wiring Devices | RF9542 Dimmer Accessory Switch | All | [cooper_rf9542_00_000](cooper_rf9542_00_000.md) |  |
+| Cooper Wiring Devices | RF9542 Dimmer Accessory Switch | All | [cooper_rf9542_00_000](cooper_rf9542_00_000.md) | WallSwitch |
 | ID-RF | CWS-3101 Wall Switch | All | [nodon_cws3101_00_000](nodon_cws3101_00_000.md) | WallSwitch |
 | Goap | ZMNHAD Flush 1 relay | All | [qubino_zmnhad_00_000](qubino_zmnhad_00_000.md) |  |
 | Philio Technology Corp | PST02A Slim Multi-Sensor (PIR/Door/Temperature/Illumination) | All | [philio_pst02a_00_000](philio_pst02a_00_000.md) |  |
-| Wenzhou MTLC Electric Appliances Co.,Ltd. | ZWN-RSM2 Smart Dual Relay Switch Module | All | [enerwave_zwnrsm2_00_000](enerwave_zwnrsm2_00_000.md) |  |
+| Wenzhou MTLC Electric Appliances Co.,Ltd. | ZWN-RSM2 Smart Dual Relay Switch Module | All | [enerwave_zwnrsm2_00_000](enerwave_zwnrsm2_00_000.md) | WallSwitch |
 | AEON Labs | ZW074 4 in One MultiSensor (G5) | All | [aeon_zw074_00_000](aeon_zw074_00_000.md) |  |
 | HomeSeer Technologies | HS-PA100+ Appliance Module | All | [homeseer_hspa100_00_000](homeseer_hspa100_00_000.md) |  |
 | FortrezZ LLC | WWA-02 Wireless Water and Temperature Alarm | All | [fortrezz_wwa02_00_000](fortrezz_wwa02_00_000.md) |  |
@@ -526,7 +526,9 @@ and links to more detailed information about each thing.
 | Wintop | Digital Home Systems In Wall Switch | All | [wintop_digitalhomesystems_00_000](wintop_digitalhomesystems_00_000.md) |  |
 | McoHome Technology Co., Ltd | MH3700-HP Programmable Thermostat | All | [mcohome__00_000](mcohome__00_000.md) |  |
 | Sigma Designs (Former Zensys) | K8 Z-Wave Battery Wall Controller | All | [sigma_zwck8_00_000](sigma_zwck8_00_000.md) |  |
-| AEON Labs | ZW075 Smart Energy Switch 3rd Edition | All | [aeon_zw075_00_000](aeon_zw075_00_000.md) |  |
+| AEON Labs | ZW075 Smart Energy Switch 3rd Edition | All | [aeon_zw075_00_000](aeon_zw075_00_000.md) | PowerOutlet |
+| Fibargroup | FGD212 Dimmer 2 | 3.5All above 3.5 | [fibaro_fgd212_03_005](fibaro_fgd212_03_005.md) | WallSwitch |
+| Willis Electric Co., Ltd. | NZW37 Inovelli Smart Plug (2 Channel with Scene Control) | All | [willis_nzw37_00_000](willis_nzw37_00_000.md) | PowerOutlet |
 | Fibargroup | FGS221 Double Relay Switch 2x1.5kW | 1.4 to 1.8 | [fibaro_fgs221_01_004](fibaro_fgs221_01_004.md) |  |
 | NorthQ | NQ-9022 Electrical Meter | All | [northq_nq9022_00_000](northq_nq9022_00_000.md) |  |
 | Merten | 508519 Switch Plug | All | [merten_508519_00_000](merten_508519_00_000.md) |  |
@@ -534,7 +536,7 @@ and links to more detailed information about each thing.
 | BRK Brands, Inc. | ZCOMBO Smoke and Carbon Monoxide Alarm | All | [brk_zcombo_00_000](brk_zcombo_00_000.md) |  |
 | Intermatic | HA14WD Dimmer Switch | All | [intermatic_ha14wd_00_000](intermatic_ha14wd_00_000.md) | WallSwitch |
 | HomeSeer Technologies | HS-WS100+ Scene Capable Wall Switch | All | [homeseer_hsws100_00_000](homeseer_hsws100_00_000.md) |  |
-| Goap | ZMNHCA Flush Shutter | All | [qubino_zmnhca_00_000](qubino_zmnhca_00_000.md) |  |
+| Goap | ZMNHCA Flush Shutter | All | [qubino_zmnhca_00_000](qubino_zmnhca_00_000.md) | Blinds |
 | Zooz | ZSE08 Zooz Z-Wave Plus Contact Sensor | All | [zooz_zoozzse08_00_000](zooz_zoozzse08_00_000.md) |  |
 | Goap | ZMNHBA Flush 2 relays | All | [qubino_zmnhba_00_000](qubino_zmnhba_00_000.md) |  |
 | Leviton | DZ1KD 1000W Dimmer | All | [leviton_dz1kd_00_000](leviton_dz1kd_00_000.md) |  |
@@ -564,7 +566,7 @@ and links to more detailed information about each thing.
 | Remotec | ZRC-90 Scene master 8 button remote | All | [remotec_zrc90_00_000](remotec_zrc90_00_000.md) |  |
 | Inovelli | NZW39 Dimmable Smart Plug | All | [inovelli_nzw39_00_000](inovelli_nzw39_00_000.md) |  |
 | Heiman Technology Co. Ltd | HS2SK-Z In-Wall Switch Module | All | [heiman_hs2skz_00_000](heiman_hs2skz_00_000.md) |  |
-| Devolo | ph-pse02 Multisound indoor siren (Zipato/Devolo) | All | [devolo_phpse02_00_000](devolo_phpse02_00_000.md) |  |
+| Devolo | ph-pse02 Multisound indoor siren (Zipato/Devolo) | All | [devolo_phpse02_00_000](devolo_phpse02_00_000.md) | Siren |
 | AEON Labs | DSB54 Recessed Door/Window Sensor | All | [aeon_dsb54_00_000](aeon_dsb54_00_000.md) |  |
 | GreenWave Reality Inc. | GWPN5 Multi-socket PowerNode (5-plug) | All | [greenwave_gwpn5_00_000](greenwave_gwpn5_00_000.md) | PowerOutlet |
 | Fibargroup | FGS223 Double Switch 2 | All | [fibaro_fgs223_00_000](fibaro_fgs223_00_000.md) | WallSwitch |
@@ -572,8 +574,8 @@ and links to more detailed information about each thing.
 | Radio Thermostat Company of America (RTC) | CT200 Vivint Element Thermostat w/ other sensors | All | [rtc_ct200_00_000](rtc_ct200_00_000.md) |  |
 | Ecolink | TILTZWAVE2 Z-Wave Garage Door Sensor | All | [eco_tiltzwave2_00_000](eco_tiltzwave2_00_000.md) |  |
 | AEON Labs | ZW116 Aeotec Nano Switch | All | [aeon_zw116_00_000](aeon_zw116_00_000.md) |  |
-| Kaipule Technology Co., Ltd. | IM-20 Door Sensor | All | [kaipule_im20_00_000](kaipule_im20_00_000.md) |  |
-| Heiman Technology Co. Ltd | HS1HT-Z Temperature/Humidity Sensor | All | [heiman_hs1htz_00_000](heiman_hs1htz_00_000.md) |  |
+| Kaipule Technology Co., Ltd. | IM-20 Door Sensor | All | [kaipule_im20_00_000](kaipule_im20_00_000.md) | Door |
+| Heiman Technology Co. Ltd | HS1HT-Z Temperature/Humidity Sensor | All | [heiman_hs1htz_00_000](heiman_hs1htz_00_000.md) | Sensor |
 | Somfy | ZRTSI-VNODE Z-Wave to RTS Interface Virtual Node | All | [somfy_zrtsivnode_00_000](somfy_zrtsivnode_00_000.md) |  |
 | Wenzhou MTLC Electric Appliances Co.,Ltd. | ZW500DM In-wall Smart Meter Dimmer Switch | All | [enerwave_zw500dm_00_000](enerwave_zw500dm_00_000.md) | WallSwitch |
 | VDA | Vitrum I EU Boiler Vitrum touch timer switch Dual Relay | All | [vda_vitrumieuboiler_00_000](vda_vitrumieuboiler_00_000.md) |  |

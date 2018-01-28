@@ -74,7 +74,6 @@ The following table summarises the channels available for the ph-pse02 Multisoun
 | Channel | Channel Id | Channel Type UID | Category | Item Type |
 |---------|------------|------------------|----------|-----------|
 | Switch | switch_binary | switch_binary | Switch | Switch |
-| Sounds | notification_send | notification_send |  | Number |
 | Binary Sensor | sensor_binary | sensor_binary | Door | Switch |
 | Alarm (burglar) | alarm_burglar | alarm_burglar | Door | Switch |
 | Alarm (general) | alarm_general | alarm_general | Door | Switch |

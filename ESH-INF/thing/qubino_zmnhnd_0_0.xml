@@ -8,6 +8,7 @@
   <thing-type id="qubino_zmnhnd_00_000" listed="false">
     <label>ZMNHND Flush 1D relay</label>
     <description>Flush 1D relay</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

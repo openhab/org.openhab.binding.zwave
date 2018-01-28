@@ -25,6 +25,12 @@
           <property name="binding:*:DecimalType">SCENE_ACTIVATION</property>
         </properties>
       </channel>
+      <channel id="config_decimal_param7" typeId="config_decimal">
+        <label>Dimmer Ramp Time</label>
+        <properties>
+          <property name="binding:*:DecimalType">CONFIGURATION;parameter=7</property>
+        </properties>
+      </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
         <properties>
