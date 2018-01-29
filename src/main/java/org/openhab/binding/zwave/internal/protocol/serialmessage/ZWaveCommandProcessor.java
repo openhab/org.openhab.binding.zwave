@@ -191,6 +191,7 @@ public abstract class ZWaveCommandProcessor {
             messageMap.put(SerialMessage.SerialMessageClass.SerialApiSoftReset, SerialApiSoftResetMessageClass.class);
             messageMap.put(SerialMessage.SerialMessageClass.SetSucNodeID, SetSucNodeMessageClass.class);
             messageMap.put(SerialMessage.SerialMessageClass.SetDefault, ControllerSetDefaultMessageClass.class);
+            messageMap.put(SerialMessage.SerialMessageClass.ApplicationCommandHandlerBridge, ApplicationCommandHandlerBridgeMessageClass.class);
         }
 
         Constructor<? extends ZWaveCommandProcessor> constructor;

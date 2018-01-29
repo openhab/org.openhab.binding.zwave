@@ -1,38 +1,32 @@
-/**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- */
 package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.ZWaveController;
-import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveNodeState;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.*;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * This class processes a serial message from the zwave controller
- *
- * @author Chris Jackson
+ * Authored by dushan.p@viewqwest.com on 2/8/17.
  */
-public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
-    private final static Logger logger = LoggerFactory.getLogger(ApplicationCommandMessageClass.class);
+public class ApplicationCommandHandlerBridgeMessageClass extends ApplicationCommandMessageClass {
 
+    private final static Logger logger = LoggerFactory.getLogger(ApplicationCommandHandlerBridgeMessageClass.class);
+
+    /**
+     * Method for handling the request from the controller
+     *
+     * @param zController     the ZWave controller
+     * @param lastSentMessage The original message we sent to the controller
+     * @param incomingMessage The response from the controller
+     * @return
+     * @throws ZWaveSerialMessageException
+     */
     @Override
-    public boolean handleRequest(ZWaveController zController, SerialMessage lastSentMessage,
-            SerialMessage incomingMessage) {
+    public boolean handleRequest(ZWaveController zController, SerialMessage lastSentMessage, SerialMessage incomingMessage) {
         try {
             logger.trace("Handle Message Application Command Request");
-            int nodeId = incomingMessage.getMessagePayloadByte(1);
+            int nodeId = incomingMessage.getMessagePayloadByte(2);
             ZWaveNode node = zController.getNode(nodeId);
 
             if (node == null) {
@@ -48,18 +42,18 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
             node.resetResendCount();
             node.incrementReceiveCount();
 
-            int commandClassCode = incomingMessage.getMessagePayloadByte(3);
+            int commandClassCode = incomingMessage.getMessagePayloadByte(4);
 
             ZWaveCommandClass zwaveCommandClass = resolveZWaveCommandClass(node, commandClassCode, zController);
             if (zwaveCommandClass == null) {
                 return false; // Error message was logged in resolveZWaveCommandClass
             }
 
-            final int commandByte = incomingMessage.getMessagePayloadByte(4);
+            final int commandByte = incomingMessage.getMessagePayloadByte(5);
             if (zwaveCommandClass instanceof ZWaveSecurityCommandClass && (ZWaveSecurityCommandClass
                     .bytesAreEqual(ZWaveSecurityCommandClass.SECURITY_MESSAGE_ENCAP, commandByte)
                     || ZWaveSecurityCommandClass
-                            .bytesAreEqual(ZWaveSecurityCommandClass.SECURITY_MESSAGE_ENCAP_NONCE_GET, commandByte))) {
+                    .bytesAreEqual(ZWaveSecurityCommandClass.SECURITY_MESSAGE_ENCAP_NONCE_GET, commandByte))) {
                 boolean isEncapNonceGet = ZWaveSecurityCommandClass
                         .bytesAreEqual(ZWaveSecurityCommandClass.SECURITY_MESSAGE_ENCAP_NONCE_GET, commandByte);
 
@@ -116,7 +110,7 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
                 } else {
                     logger.trace("NODE {}: Found Command Class {}, passing to handleApplicationCommandRequest", nodeId,
                             zwaveCommandClass.getCommandClass().getLabel());
-                    zwaveCommandClass.handleApplicationCommandRequest(incomingMessage, 4, 0);
+                    zwaveCommandClass.handleApplicationCommandRequest(incomingMessage, 5, 0);
                 }
             }
 
@@ -131,45 +125,5 @@ public class ApplicationCommandMessageClass extends ZWaveCommandProcessor {
             logger.error("Error processing frame: {} >> {}", incomingMessage.toString(), e.getMessage());
         }
         return true;
-    }
-
-    /**
-     * Takes the given commandClassCode and tries to instantiate the corresponding {@link ZWaveCommandClass}
-     * for the given node
-     *
-     * @return the zwave command class for this node or null if it is not possible
-     *
-     */
-
-    ZWaveCommandClass resolveZWaveCommandClass(ZWaveNode node, int commandClassCode,
-                                               ZWaveController zController) {
-        CommandClass commandClass = CommandClass.getCommandClass(commandClassCode);
-        if (commandClass == null) {
-            logger.debug(String.format("NODE %d: Unknown command class 0x%02x", node.getNodeId(), commandClassCode));
-            return null;
-        }
-
-        logger.debug("NODE {}: Incoming command class {}", node.getNodeId(), commandClass.getLabel(),
-                commandClass.getKey());
-        ZWaveCommandClass zwaveCommandClass = node.getCommandClass(commandClass);
-
-        // Apparently, this node supports a command class that we did not get (yet) during initialization.
-        // Let's add it now then to support handling this message.
-        if (zwaveCommandClass == null) {
-            logger.debug("NODE {}: Command class {} not found, trying to add it.", node.getNodeId(),
-                    commandClass.getLabel(), commandClass.getKey());
-
-            zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), node, zController);
-
-            if (zwaveCommandClass == null) {
-                // We got an unsupported command class, leave zwaveCommandClass as null
-                logger.debug(String.format("NODE %d: Unsupported zwave command class %s (0x%02x)", node.getNodeId(),
-                        commandClass.getLabel(), commandClassCode));
-            } else {
-                logger.debug("NODE {}: Adding command class {}", node.getNodeId(), commandClass.getLabel());
-                node.addCommandClass(zwaveCommandClass);
-            }
-        }
-        return zwaveCommandClass;
     }
 }
