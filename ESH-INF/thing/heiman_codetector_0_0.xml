@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="heiman_codetector_00_000" listed="false">
+    <label>Heiman CO Detector CO Detector</label>
+    <description><![CDATA[
+CO Detector<br /><h2>Inclusion Information</h2><p>Set the z-Wave controller to inclusion mode and then quickly triple press button behind small hole on the side of the CO-Sensor device to include. You can use a needle or an SIM card extractor to push the button behind the small hole on the side of the device.</p> <br /><h2>Exclusion Information</h2><p>Set the z-Wave controller to exclusion mode and then quickly triple press button behind small hole on the side of the CO-Sensor device to exclude. You can use a needle or an SIM card extractor to push the button behind the small hole on the side of the device.</p>
+    ]]></description>
+    <category>Sensor</category>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="sensor_binary" typeId="sensor_binary">
+        <label>Binary Sensor</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="alarm_co" typeId="alarm_co">
+        <label>Alarm (CO)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM,COMMAND_CLASS_BASIC;type=CARBON_MONOXIDE</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Heiman Technology Co. Ltd</property>
+      <property name="modelId">Heiman CO Detector</property>
+      <property name="manufacturerId">0260</property>
+      <property name="manufacturerRef">8005:1000</property>
+      <property name="dbReference">790</property>
+    </properties>
+
+  </thing-type>
+
+</thing:thing-descriptions>
