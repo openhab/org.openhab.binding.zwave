@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="willis_nzw37_00_000" listed="false">
+    <label>NZW37 Inovelli Smart Plug (2 Channel with Scene Control)</label>
+    <description><![CDATA[
+Inovelli Smart Plug (2 Channel with Scene Control)<br /><h1>Overview</h1><p>2 Controllable Outlets</p> <p>Indoor</p> <p>Wall Plug</p> <p>120 VAC, 60 Hz</p> <p>908.42 MHz</p> <p>Max Load Outlet #1 1200W (10A) Resistive</p> <p>Max Load Outlet #2 1200W (10A) Resistive</p> <p>Max Simultaneous Load 16A</p> <p>Max Range LoS 30 m</p> <p>Operating Temperature Range 0°C to 40°C</p> <p>UL E464831</p> <p>FCC ID OXGZW36</p> <br /><h2>Inclusion Information</h2><p>Auto-Inclusion 30 sec from power on</p> <p>Backup-Inclusion Press button 5 times within 1 sec</p> <p>(Tested to work with Network Wide Inclusion)</p>
+    ]]></description>
+    <category>PowerOutlet</category>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
+        </properties>
+      </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary1" typeId="switch_binary">
+        <label>Switch 1</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1,COMMAND_CLASS_BASIC:1</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary2" typeId="switch_binary">
+        <label>Switch 2</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:2,COMMAND_CLASS_BASIC:2</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Willis Electric Co., Ltd.</property>
+      <property name="modelId">NZW37</property>
+      <property name="manufacturerId">015D</property>
+      <property name="manufacturerRef">2500:2500</property>
+      <property name="dbReference">788</property>
+    </properties>
+
+  </thing-type>
+
+</thing:thing-descriptions>

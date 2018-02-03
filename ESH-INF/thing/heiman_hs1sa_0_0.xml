@@ -7,7 +7,10 @@
 
   <thing-type id="heiman_hs1sa_00_000" listed="false">
     <label>HS1SA Smoke Detector</label>
-    <description>Smoke Detector</description>
+    <description><![CDATA[
+Smoke Detector<br /><h1>Overview</h1><p>The smart smoke sensor detects smoke, and sends an alarm signals to alert of danger. When the smart smoke sensor detects smoke, it will send an alarm notification to your controller through wireless Z-Wave communication protocol.</p> <br /><h2>Inclusion Information</h2><p>Press the pin 3 times within 1.5s, Green LED is Blinking 3 times within 1 second. If Inclusion Process is successful, Green led will turn off.</p> <br /><h2>Exclusion Information</h2><p>Press the pin 3 times within 1.5s. If Exclusion Process is successful, Green led is Blinking 6 times, then turn off. </p> <br /><h2>Wakeup Information</h2><p>Wake up Notification is transmitted every 24 hours by default. Wake up Notification is transmitted after Notification Report is Transmitted.</p>
+    ]]></description>
+    <category>SmokeDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -20,7 +23,7 @@
       <channel id="alarm_smoke" typeId="alarm_smoke">
         <label>Alarm (smoke)</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=SMOKE</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM,COMMAND_CLASS_BASIC;type=SMOKE</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
