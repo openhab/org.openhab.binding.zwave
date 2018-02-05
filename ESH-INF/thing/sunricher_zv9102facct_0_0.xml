@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="sunricher_zv9102facct_00_000" listed="false">
+    <label>ZV9102FA-CCT Z-wave CCT LED controller</label>
+    <description><![CDATA[
+Z-wave CCT LED controller<br /><h1>Overview</h1><p>The SR-ZV9102FA-CCT is a dual color zwave lighting device and z wave slave that adopts z-wave RF Plus and z-wave mesh network technology with 4 channel, 5A per channel output for dual color LED lights. As a z-wave slave, the device can be added to z-wave network or removed from z-wave network by z-wave primary (master) controllers or gateway. The z wave devices are transceivers that enable to receive and transmit RF signal from the z wave remote while both of them are added to the network. The transceiver is a universal z wave slave which is compatible with universal z wave primary (master) controllers/gateway.</p>
+    ]]></description>
+    <category>LightBulb</category>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer</label>
+        <properties>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL</property>
+        </properties>
+      </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">SCENE_ACTIVATION</property>
+        </properties>
+      </channel>
+      <channel id="color_color" typeId="color_color">
+        <label>Color Control</label>
+        <properties>
+          <property name="binding:*:HSBType">COLOR;</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC;</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL;</property>
+        </properties>
+      </channel>
+      <channel id="color_temperature" typeId="color_temperature">
+        <label>Color Temperature</label>
+        <properties>
+          <property name="binding:*:PercentType">COLOR;colorMode=DIFF_WHITE</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL;</property>
+        </properties>
+      </channel>
+      <channel id="alarm_system" typeId="alarm_system">
+        <label>Alarm (system)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=SYSTEM</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Sunricher</property>
+      <property name="modelId">ZV9102FA-CCT</property>
+      <property name="manufacturerId">0330</property>
+      <property name="manufacturerRef">0200:D002</property>
+      <property name="dbReference">793</property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Lifeline</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Single Cast DEVICE_RESET_LOCALLY_NOTIFICATION (sent when factory reset the device)</p>
+        ]]></description>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>
