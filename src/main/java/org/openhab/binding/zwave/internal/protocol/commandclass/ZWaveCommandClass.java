@@ -246,9 +246,9 @@ public abstract class ZWaveCommandClass {
         } catch (InvocationTargetException e) {
             // Handle exceptions from the command class processing
             if (e.getCause() instanceof ArrayIndexOutOfBoundsException) {
-                logger.debug("NODE {}: ArrayIndexOutOfBoundsException {} V{} {} {}: {}", getNode().getNodeId(),
+                logger.debug("NODE {}: ArrayIndexOutOfBoundsException {} V{} {} {}", getNode().getNodeId(),
                         getCommandClass(), getVersion(), commands.get(payload.getCommandClassCommand()).name,
-                        SerialMessage.bb2hex(payload.getPayloadBuffer()), e.getMessage());
+                        SerialMessage.bb2hex(payload.getPayloadBuffer()));
             }
         } catch (IllegalAccessException | IllegalArgumentException e) {
             logger.error("NODE {}: Error in handleApplicationCommandRequest", getNode().getNodeId(), e);
