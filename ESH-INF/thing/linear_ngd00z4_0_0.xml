@@ -18,6 +18,12 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_BARRIER_OPERATOR</property>
         </properties>
       </channel>
+      <channel id="alarm_raw" typeId="alarm_raw">
+        <label>Alarm (raw)</label>
+        <properties>
+          <property name="binding:*:StringType">COMMAND_CLASS_ALARM</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
@@ -25,7 +31,7 @@
       <property name="vendor">Linear Corp</property>
       <property name="modelId">NGD00Z-4</property>
       <property name="manufacturerId">014F</property>
-      <property name="manufacturerRef">4744:3030,4744:3530</property>
+      <property name="manufacturerRef">4744:3030,4744:3032,4744:3530</property>
       <property name="dbReference">11</property>
       <property name="defaultAssociations">1</property>
     </properties>
