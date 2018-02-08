@@ -168,7 +168,8 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
         }
 
         // Set the parameter
-        ZWaveCommandClassTransactionPayload transaction = commandClass.setConfigMessage(configParameter);
+        ZWaveCommandClassTransactionPayload transaction = node
+                .encapsulate(commandClass.setConfigMessage(configParameter), channel.getEndpoint());
         if (transaction == null) {
             logger.warn("NODE {}: Generating message failed for command class = {}", node.getNodeId(),
                     commandClass.getCommandClass());
@@ -179,7 +180,7 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
         transactions.add(transaction);
 
         // And request a read-back
-        transaction = commandClass.getConfigMessage(paramIndex);
+        transaction = node.encapsulate(commandClass.getConfigMessage(paramIndex), channel.getEndpoint());
         transactions.add(transaction);
 
         return transactions;
