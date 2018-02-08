@@ -8,6 +8,7 @@
   <thing-type id="enerwave_zwnbpc_00_000" listed="false">
     <label>ZWN-BPC PIR Sensor</label>
     <description>PIR Sensor</description>
+    <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

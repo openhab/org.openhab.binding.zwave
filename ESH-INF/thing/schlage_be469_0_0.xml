@@ -8,6 +8,7 @@
   <thing-type id="schlage_be469_00_000" listed="false">
     <label>BE469 Touchscreen Deadbolt</label>
     <description>Touchscreen Deadbolt</description>
+    <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
