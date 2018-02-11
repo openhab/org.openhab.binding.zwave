@@ -20,16 +20,16 @@ Door Window Sensor<br /><h1>Overview</h1><p>This sensor monitors door/ window an
           <property name="binding:*:OnOffType">SENSOR_BINARY</property>
         </properties>
       </channel>
-      <channel id="alarm_burglar" typeId="alarm_burglar">
+      <channel id="alarm_tamper" typeId="alarm_tamper">
         <label>Tamper Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=BURGLAR</property>
+          <property name="binding:*:OnOffType">ALARM;type=BURGLAR, event=3</property>
         </properties>
       </channel>
       <channel id="sensor_door" typeId="sensor_door">
         <label>Door Sensor</label>
         <properties>
-          <property name="binding:*:OpenClosedType">ALARM;type=ACCESS_CONTROL</property>
+          <property name="binding:*:OpenClosedType">ALARM;type=ACCESS_CONTROL, event=2</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">

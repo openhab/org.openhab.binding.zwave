@@ -77,7 +77,7 @@ Flush 2 relays<br /><h1>Overview</h1><p>This Z-Wave module is used for switching
       <channel id="sensor_temperature3" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:3,BASIC:3</property>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:3,BASIC:3;type=TEMPERATURE</property>
         </properties>
       </channel>
     </channels>
