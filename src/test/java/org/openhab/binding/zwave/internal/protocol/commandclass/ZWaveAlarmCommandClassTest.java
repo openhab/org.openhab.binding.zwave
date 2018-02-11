@@ -14,7 +14,6 @@ import java.util.List;
 
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.AlarmType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.ReportType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.ZWaveAlarmValueEvent;
@@ -299,6 +298,46 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
         assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.ACCESS_CONTROL);
         assertEquals(event.getAlarmStatus(), 0xFF);
         assertTrue(Arrays.equals(new int[] { 0x01 }, event.getParameters()));
+    }
+
+    @Test
+    public void Alarm_DoorV2() {
+        byte[] dataDoorOpen = { 0x01, 0x10, 0x00, 0x04, 0x00, 0x17, 0x0A, 0x71, 0x05, 0x07, 0x00, 0x00, (byte) 0xFF,
+                0x07, 0x02, 0x00, 0x00, 0x7F };
+        byte[] dataDoorClosed = { 0x01, 0x10, 0x00, 0x04, 0x00, 0x17, 0x0A, 0x71, 0x05, 0x07, (byte) 0xFF, 0x00,
+                (byte) 0xFF, 0x07, 0x02, 0x00, 0x00, (byte) 0x80 };
+        byte[] dataDoorTamper = { 0x01, 0x10, 0x00, 0x04, 0x00, 0x17, 0x0A, 0x71, 0x05, 0x07, (byte) 0xFF, 0x00,
+                (byte) 0xFF, 0x07, 0x03, 0x00, 0x00, (byte) 0x81 };
+
+        List<ZWaveEvent> events;
+        ZWaveAlarmValueEvent event;
+
+        events = processCommandClassMessage(dataDoorOpen, 2);
+        assertEquals(events.size(), 1);
+        event = (ZWaveAlarmValueEvent) events.get(0);
+        assertEquals(0, event.getEndpoint());
+        assertEquals(ReportType.ALARM, event.getReportType());
+        assertEquals(AlarmType.BURGLAR, event.getAlarmType());
+        assertEquals(2, event.getAlarmEvent());
+        assertEquals(0x00, event.getAlarmStatus());
+
+        events = processCommandClassMessage(dataDoorClosed, 2);
+        assertEquals(events.size(), 1);
+        event = (ZWaveAlarmValueEvent) events.get(0);
+        assertEquals(0, event.getEndpoint());
+        assertEquals(ReportType.ALARM, event.getReportType());
+        assertEquals(AlarmType.BURGLAR, event.getAlarmType());
+        assertEquals(2, event.getAlarmEvent());
+        assertEquals(0xff, event.getAlarmStatus());
+
+        events = processCommandClassMessage(dataDoorTamper, 2);
+        assertEquals(events.size(), 1);
+        event = (ZWaveAlarmValueEvent) events.get(0);
+        assertEquals(0, event.getEndpoint());
+        assertEquals(ReportType.ALARM, event.getReportType());
+        assertEquals(AlarmType.BURGLAR, event.getAlarmType());
+        assertEquals(3, event.getAlarmEvent());
+        assertEquals(0xff, event.getAlarmStatus());
     }
 
 }

@@ -206,6 +206,12 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
             return null;
         }
 
+        // Check if an event is specified
+        if (channel.getArguments().get("event") != null
+                && eventAlarm.getAlarmEvent() != Integer.parseInt(channel.getArguments().get("event"))) {
+            return null;
+        }
+
         // Processing for special channel types
         if (channel.getUID().getId().equals("alarm_number")) {
             return new DecimalType(eventAlarm.getV1AlarmCode());

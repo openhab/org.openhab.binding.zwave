@@ -126,6 +126,16 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
             notificationStatus = v1AlarmLevel;
 
             logger.debug("NODE {}: ALARM report - {} = {}", getNode().getNodeId(), v1AlarmTypeCode, v1AlarmLevel);
+        } else if (getVersion() == 2) {
+            eventType = ReportType.ALARM;
+            notificationStatus = payload.getPayloadByte(5);
+            notificationTypeCode = payload.getPayloadByte(6);
+            notificationEvent = payload.getPayloadByte(7);
+            alarmType = AlarmType.getAlarmType(notificationTypeCode);
+
+            notificationStatus = v1AlarmLevel;
+
+            logger.debug("NODE {}: ALARM report - {} = {}", getNode().getNodeId(), v1AlarmTypeCode, v1AlarmLevel);
         } else {
             eventType = ReportType.NOTIFICATION;
             // Indicates if reports are enabled or disabled

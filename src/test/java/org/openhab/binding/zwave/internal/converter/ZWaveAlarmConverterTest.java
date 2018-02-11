@@ -25,7 +25,6 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
-import org.openhab.binding.zwave.internal.converter.ZWaveAlarmConverter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -74,6 +73,20 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         ZWaveAlarmCommandClass cls = new ZWaveAlarmCommandClass(node, controller, endpoint);
 
         return cls.new ZWaveAlarmValueEvent(1, 0, ReportType.ALARM, null, v1Code, 0, value);
+    }
+
+    @Test
+    public void Alarm_DoorV2() {
+        ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
+        ZWaveThingChannel channel = createChannel("alarm_smoke", DataType.OnOffType, AlarmType.SMOKE.toString(), "0");
+
+        ZWaveCommandClassValueEvent event = createEvent(ZWaveAlarmCommandClass.AlarmType.SMOKE, ReportType.ALARM, 0,
+                0xff);
+
+        State state = converter.handleEvent(channel, event);
+
+        assertEquals(state.getClass(), OnOffType.class);
+        assertEquals(state, OnOffType.ON);
     }
 
     @Test
@@ -268,5 +281,27 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         assertEquals(
                 "{\"notification\":\"ACCESS_CONTROL__KEYPAD_UNLOCK\",\"type\":\"ACCESS_CONTROL\",\"event\":\"6\",\"status\":\"255\"}",
                 state.toString());
+    }
+
+    @Test
+    public void AlarmV2_Door() {
+        State state;
+        ZWaveCommandClassValueEvent event;
+        ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
+        ZWaveThingChannel channel = createChannel("sensor_door", DataType.OnOffType, "BURGLAR", "2");
+
+        event = createEvent(ZWaveAlarmCommandClass.AlarmType.BURGLAR, ReportType.ALARM, 2, 0xff);
+        state = converter.handleEvent(channel, event);
+        assertEquals(OnOffType.class, state.getClass());
+        assertEquals(OnOffType.ON, state);
+
+        event = createEvent(ZWaveAlarmCommandClass.AlarmType.BURGLAR, ReportType.ALARM, 2, 0x00);
+        state = converter.handleEvent(channel, event);
+        assertEquals(OnOffType.class, state.getClass());
+        assertEquals(OnOffType.OFF, state);
+
+        event = createEvent(ZWaveAlarmCommandClass.AlarmType.BURGLAR, ReportType.ALARM, 3, 0x00);
+        state = converter.handleEvent(channel, event);
+        assertNull(state);
     }
 }
