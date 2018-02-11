@@ -8,6 +8,7 @@
   <thing-type id="yale_yrd210_00_000" listed="false">
     <label>YRD210 Push Button Deadbolt</label>
     <description>Push Button Deadbolt</description>
+    <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -19,6 +20,12 @@
       </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM,BASIC</property>
+        </properties>
+      </channel>
+      <channel id="alarm_raw" typeId="alarm_raw">
+        <label>Alarm Raw</label>
         <properties>
           <property name="binding:*:OnOffType">ALARM,BASIC</property>
         </properties>
@@ -35,7 +42,7 @@
       <property name="vendor">ASSA ABLOY</property>
       <property name="modelId">YRD210</property>
       <property name="manufacturerId">0129</property>
-      <property name="manufacturerRef">0004:0000,0004:AA00,0004:0209</property>
+      <property name="manufacturerRef">0004:0000,0004:0209,0004:AA00</property>
       <property name="dbReference">235</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -101,7 +108,9 @@
 
       <parameter name="config_8_1" type="integer" groupName="configuration">
         <label>8: Operating Mode</label>
-        <description>Normal Mode Vacation Mode - all user codes disabled Privacy Mode - all user codes disabled and RF Lock/Unlock disabled</description>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Normal Mode</p> <p>Vacation Mode - all user codes disabled</p> <p>Privacy Mode - all user codes disabled and RF Lock/Unlock disabled</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Normal</option>

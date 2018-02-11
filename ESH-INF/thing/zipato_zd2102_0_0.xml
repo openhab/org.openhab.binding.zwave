@@ -8,6 +8,7 @@
   <thing-type id="zipato_zd2102_00_000" listed="false">
     <label>ZD2102 Door window sensor</label>
     <description>Door window sensor</description>
+    <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
