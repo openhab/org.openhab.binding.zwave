@@ -8,6 +8,7 @@
   <thing-type id="fortrezz_wwa02_00_000" listed="false">
     <label>WWA-02 Wireless Water and Temperature Alarm</label>
     <description>Wireless Water and Temperature Alarm</description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

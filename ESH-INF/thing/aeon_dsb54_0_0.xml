@@ -8,6 +8,7 @@
   <thing-type id="aeon_dsb54_00_000" listed="false">
     <label>DSB54 Recessed Door/Window Sensor</label>
     <description>Recessed Door/Window Sensor</description>
+    <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
