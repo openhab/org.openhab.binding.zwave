@@ -7,15 +7,18 @@
 
   <thing-type id="zooz_zen22_00_000" listed="false">
     <label>ZEN22 Z-Wave Plus Dimmer Light Switch</label>
-    <description>Z-Wave Plus Dimmer Light Switch</description>
+    <description><![CDATA[
+Z-Wave Plus Dimmer Light Switch<br /><h1>Overview</h1><ul><li>Manual or remote on/off and dimming control from your mobile device or computer (when included to a Z-Wave gateway controller)</li> <li>Universal 3-way capability – works with existing 3-way switches as long as neutral is present</li> <li>Z-Wave Plus with improved 500 chip for faster and safer wireless communication</li> <li>Works with LED, CFL, and incandescent bulbs</li> <li>Remembers and restores on/off / brightness status after power failure</li> <li>Based on universal multilevel switch command class - supported by most Z-Wave controllers</li> <li>May be associated and grouped with other Z-Wave devices for advanced home automation</li> <li>Customizeable LED indicator</li> <li>Air-gap switch for added safety</li> <li>Modern paddle design</li> <li>Built-in Z-Wave signal repeater for a stronger, more reliable network</li> </ul><br /><h2>Inclusion Information</h2><p>1. Bring your Z-Wave gateway hub or controller as close to the switch as possible</p> <p>2. Put your Z-Wave controller into inclusion mode</p> <p>3. Tap the upper paddle of the switch 3 times very quickly to finalize the inclusion process</p> <p>4. A new dimming device will appear on your controller's device list</p> <br /><h2>Exclusion Information</h2><p>1. Bring your Z-Wave gateway hub or controller as close to the switch as possible</p> <p>2. Put your Z-Wave controller into exclusion mode</p> <p>3. Tap the lower paddle of the switch 3 times very quickly to finalize the exclusion process</p> <p>4. The device will disappear from your controller's device list </p>
+    ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL,BASIC</property>
         </properties>
       </channel>
     </channels>
@@ -27,7 +30,60 @@
       <property name="manufacturerId">027A</property>
       <property name="manufacturerRef">B112:1F1C</property>
       <property name="dbReference">706</property>
+      <property name="defaultAssociations">1</property>
     </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: Paddle Control</label>
+        <description>Choose Paddle Functionality</description>
+        <default>1</default>
+        <options>
+          <option value="0">Upper paddle turns light on, lower paddle turns light off</option>
+          <option value="1">Upper paddle turns light off, lower paddle turns light on</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration">
+        <label>2: LED Indicator Control</label>
+        <description>Choose LED Functionality</description>
+        <default>0</default>
+        <options>
+          <option value="0">LED on when switch off, LED off when switch off</option>
+          <option value="1">LED on when switch on, LED off when switch off</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration">
+        <label>3: Enable / Disable LED Indicator</label>
+        <description>Enable or disable the LED indicator</description>
+        <default>0</default>
+        <options>
+          <option value="0">LED indicator is enabled</option>
+          <option value="1">LED indicator is disabled</option>
+        </options>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+    </config-description>
 
   </thing-type>
 

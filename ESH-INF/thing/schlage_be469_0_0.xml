@@ -83,7 +83,7 @@
         </options>
       </parameter>
 
-      <parameter name="config_6_4" type="integer" groupName="configuration"
+      <parameter name="config_6_4" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="255">
         <label>6: User Slot Status</label>
         <description><![CDATA[
@@ -153,21 +153,21 @@
         </options>
       </parameter>
 
-      <parameter name="config_12_4" type="integer" groupName="configuration"
+      <parameter name="config_12_4" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="2147483647">
         <label>12: Electronic Transition Count</label>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
 
-      <parameter name="config_13_4" type="integer" groupName="configuration"
+      <parameter name="config_13_4" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="2147483647">
         <label>13: Mechanical Transition Count</label>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
 
-      <parameter name="config_14_4" type="integer" groupName="configuration"
+      <parameter name="config_14_4" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="2147483647">
         <label>14: Electronic Failed Count</label>
         <default>0</default>
@@ -196,7 +196,7 @@
         </options>
       </parameter>
 
-      <parameter name="config_18_1" type="integer" groupName="configuration"
+      <parameter name="config_18_1" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="255">
         <label>18: Get Bootloader Version</label>
         <default>0</default>

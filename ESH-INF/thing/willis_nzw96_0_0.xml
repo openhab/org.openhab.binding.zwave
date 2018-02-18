@@ -8,6 +8,7 @@
   <thing-type id="willis_nzw96_00_000" listed="false">
     <label>NZW96 Outdoor Plug-in Module (1-Channel)</label>
     <description>Outdoor Plug-in Module (1-Channel)</description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
