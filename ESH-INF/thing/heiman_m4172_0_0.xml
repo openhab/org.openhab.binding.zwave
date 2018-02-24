@@ -8,6 +8,7 @@
   <thing-type id="heiman_m4172_00_000" listed="false">
     <label>M417-2 Smart Water Leakage Sensor</label>
     <description>Smart Water Leakage Sensor</description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
