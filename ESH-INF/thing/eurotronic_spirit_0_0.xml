@@ -45,10 +45,10 @@ Thermostatic Valve<br /><h1>Overview</h1><h1>Intelligenter Energiesparregler fü
           <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=HEATING</property>
         </properties>
       </channel>
-      <channel id="thermostat_setpoint_furnace" typeId="thermostat_setpoint">
+      <channel id="thermostat_setpoint_heating_econ" typeId="thermostat_setpoint">
         <label>Setpoint (energy heat)</label>
         <properties>
-          <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=FURNACE</property>
+          <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=HEATING_ECON</property>
         </properties>
       </channel>
       <channel id="alarm_system" typeId="alarm_system">

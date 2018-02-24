@@ -8,6 +8,7 @@
   <thing-type id="isurpass_dx1wl_00_000" listed="false">
     <label>DX1WL-Z Domux Water Leakage Sensor</label>
     <description>Domux Water Leakage Sensor</description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
