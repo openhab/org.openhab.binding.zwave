@@ -8,6 +8,7 @@
   <thing-type id="cooper_rf9500_00_000" listed="false">
     <label>RF9500 Battery Switch</label>
     <description>Battery Switch</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

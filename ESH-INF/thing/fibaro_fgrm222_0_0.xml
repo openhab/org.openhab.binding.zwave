@@ -7,7 +7,9 @@
 
   <thing-type id="fibaro_fgrm222_00_000" listed="false">
     <label>FGRM222 Roller Shutter</label>
-    <description>Roller Shutter</description>
+    <description><![CDATA[
+Roller Shutter<br /><h1>Overview</h1><p>Fibaro Roller Shutter is a universal, Z-Wave compatible, electric motor controller. The device allows for controlling motors of roller blinds, awnings, venetian blinds, gates and others, which are single phase AC powered. Fibaro Roller Shutter allows for precise positioning of a roller blind or  venetian blind lamellas. Precise positioning is available for the motors equipped with mechanic and electronic end switches.</p> <p>The module may be controlled wirelessly, through the Z-Wave network main controller, or through the switch keys connected to it. It’s also possible to combine few devices into groups of devices, which then can be controlled simultaneously. In addition, Fibaro Roller Shutter is equipped with Power Metering.</p> <p><strong>ROLLER SHUTTER RESET</strong></p> <p>Reset procedure clears the modules’ EPROM memory, including all information about the Z-Wave network controller, calibration and power consumption data.</p> <ol><li>Make sure the module is connected to the power supply.</li> <li>Press and hold the B-button for ca. 14 seconds.</li> <li>LED indicator will glow yellow.</li> <li>Release the B-button and press it again, briefly.</li> <li>The Roller Shutter memory is now empty.</li> <li>The module goes into the auto inclusion mode, until any button is pushed.</li> </ol><br /><h2>Inclusion Information</h2><p>Fibaro Roller Shutter may be included into the Z-Wave network via the B-button or a push button connected to the S1 terminal. In addition, the module may be included in auto inclusion mode, by simply connecting the power supply.</p> <p><strong>Automatic Z-Wave network inclusion:</strong></p> <ol><li>Make sure the power supply is disconnected and a Roller Shutter is located within a direct Z-Wave network’s main controller communication range.</li> <li>Set the main controller into the learn mode (see main controllers operating manual).</li> <li>Connect the power supply to include the Roller Shutter in auto inclusion mode.</li> <li>Fibaro Roller Shutter will be automatically detected and included into the Z-Wave network.</li> </ol><p>To disable the auto inclusion mode, press the B-button briefly, after connecting the module to the power supply.</p> <p><strong>Manual Z-Wave network inclusion:</strong></p> <ol><li>Connect the power supply.</li> <li>Set the main controller into the learn mode (see main controllers operating manual).</li> <li>Triple click the B-button or a push button connected to the S1 terminal.</li> <li>Fibaro Roller Shutter will be detected and included into the Z-Wave network</li> </ol><br /><h2>Exclusion Information</h2><p>Excluding Fibaro Roller Shutter from the Z-Wave network:</p> <ol><li>Make sure the module is connected to the power supply.</li> <li>Set the main controller into the learn mode (see main controllers operating manual).</li> <li>Triple click the B-button or a push button connected to the S1 terminal.</li> </ol>
+    ]]></description>
     <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -145,9 +147,9 @@
         <description>Parameter influences the lamellas positioning in venetian blind mode (parameter 10 set to 2)</description>
         <default>1</default>
         <options>
-          <option value="0">Lamellas return to previously set position only in case of the main co</option>
-          <option value="1">Lamellas return to previously set position in case of the main control</option>
-          <option value="2">Lamellas return to previously set position in case of the main control</option>
+          <option value="0">Only in case of the main controller operation</option>
+          <option value="1">Controller, switch or limit switch operation</option>
+          <option value="2">Controller, switch or limit switch operation or STOP frame</option>
         </options>
       </parameter>
 
@@ -287,11 +289,17 @@
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Momentary click</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p><strong>Roller Shutter or other Z-Wave devices</strong></p> <p>Clicking "up" button, connected to S1 terminal will initiate up movement in associated Roller Shutters, or send Turn On command frame to the devices associated in I-st association group.</p> <p>Clicking "down" button, connected to S2 terminal will initiate down movement in associated Roller Shutters, or send Turn Off command frame to the devices associated in I-st association group.</p> <p><strong>Venetian Blinds</strong></p> <p>Clicking "up" button, connected to S1 terminal will initiate up movement of the connected venetian blind and other devices associated in I-st association group.</p> <p>Clicking "down" button, connected to S2 terminal will initiate down movement of the connected venetian blind and other devices associated in I-st association group.</p>
+        ]]></description>
         <multipleLimit>16</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Momentary hold</label>
+        <description><![CDATA[
+Only applies to momentary switches<br /><h1>Overview</h1><p><strong>Roller Shutter or other Z-Wave devices</strong></p> <p>Holding "up" button, connected to S1 terminal will move the connected roller blind up, and after 1 second delay initiate up movement in associated Roller Shutters, or send Turn On command frame to the devices associated in II-nd association group.</p> <p>Holding "down" button, connected to S2 terminal will move the connected rolled blind down, and after 1 second delay initiate down movement in associated Roller Shutters, or send Turn Off command frame to the devices associated in II-nd association group.</p> <p><strong>Venetian Blinds</strong></p> <p>Holding "up" button, connected to S1 terminal will initiate lamellas rotation up, of the connected venetian blind as well as the other devices associated in II-nd association group.</p> <p>Holding "down" button, connected to S2 terminal will initiate lamellas rotation down, of the connected venetian blind as well as the other devices  associated in II-nd association group.</p>
+        ]]></description>
         <multipleLimit>16</multipleLimit>
       </parameter>
 

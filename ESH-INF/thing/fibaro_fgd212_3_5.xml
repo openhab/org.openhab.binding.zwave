@@ -112,7 +112,7 @@
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGD212</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0102:1000</property>
+      <property name="manufacturerRef">0102:1000,0102:2000,0102:3000,0102:4000</property>
       <property name="versionMin">3.5</property>
       <property name="dbReference">787</property>
       <property name="defaultAssociations">1</property>
