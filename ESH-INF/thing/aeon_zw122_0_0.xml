@@ -8,6 +8,7 @@
   <thing-type id="aeon_zw122_00_000" listed="false">
     <label>ZW122 Water Sensor 6</label>
     <description>Water Sensor 6</description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -59,7 +60,7 @@
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW122</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0002:007A</property>
+      <property name="manufacturerRef">0002:007A,0102:007A</property>
       <property name="dbReference">721</property>
       <property name="defaultAssociations">1</property>
     </properties>

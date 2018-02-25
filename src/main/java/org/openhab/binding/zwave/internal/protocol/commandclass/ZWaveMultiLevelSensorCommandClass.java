@@ -301,8 +301,6 @@ public class ZWaveMultiLevelSensorCommandClass extends ZWaveCommandClass
 
     /**
      * Z-Wave SensorType enumeration. The sensor type indicates the type of sensor that is reported.
-     *
-     * @author Jan-Willem Spuij
      */
     @XStreamAlias("multilevelSensorType")
     public enum SensorType {

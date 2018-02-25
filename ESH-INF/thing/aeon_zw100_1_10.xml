@@ -102,7 +102,7 @@ Stay awake for 10 minutes at power on<br /><h1>Overview</h1><p>Enable/Disable wa
         <default>0</default>
         <options>
           <option value="0">Disable</option>
-          <option value="1">enable</option>
+          <option value="1">Enable</option>
         </options>
       </parameter>
 
@@ -145,13 +145,32 @@ Motion Sensor reset timeout<br /><h1>Overview</h1><ol><li>The default PIR time i
         <default>30</default>
       </parameter>
 
-      <parameter name="config_9_2" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_9_2" type="integer" groupName="configuration" readOnly="true"
+                 min="0" max="65535">
         <label>9: Report the current power mode</label>
         <description><![CDATA[
 Report the current power mode and the product state of battery power mode<br /><h1>Overview</h1><p>Value1 (MSB): 0x00=USB power mode, 0x01=Battery power mode</p> <p>Value2 (LSB): 0x00=keep sleep state for Battery power mode, 0x01=keep awake for 10 minutes for battery power mode</p> <p>NOTE: this parameter cannot be used as Get/Set usage</p>
         ]]></description>
         <default>0</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_9_2_00000001" type="integer" groupName="configuration" readOnly="true">
+        <label>9: Sleep State</label>
+        <default>0</default>
+        <options>
+          <option value="0">Asleep</option>
+          <option value="1">Awake</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_9_2_00000100" type="integer" groupName="configuration" readOnly="true">
+        <label>9: Power Mode</label>
+        <default>0</default>
+        <options>
+          <option value="0">USB</option>
+          <option value="1">Battery</option>
+        </options>
       </parameter>
 
       <parameter name="config_39_1" type="integer" groupName="configuration"
@@ -345,7 +364,7 @@ Recover limit value of Ultraviolet sensor<br /><h1>Overview</h1><p>Set the recov
         <default>2</default>
       </parameter>
 
-      <parameter name="config_61_1" type="integer" groupName="configuration"
+      <parameter name="config_61_1" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="255">
         <label>61: Out-of-limit state of the Sensors</label>
         <description><![CDATA[
