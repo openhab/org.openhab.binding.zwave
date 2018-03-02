@@ -223,7 +223,7 @@
         </options>
       </parameter>
 
-      <parameter name="config_14_1" type="integer" groupName="configuration">
+      <parameter name="config_14_1" type="integer" groupName="configuration" readOnly="true">
         <label>14: Auto-calibration status (read-only parameter)</label>
         <description>This parameter determines operating mode of the Dimmer (automatic/manual settings).</description>
         <default>0</default>
@@ -378,7 +378,7 @@
         </options>
       </parameter>
 
-      <parameter name="config_31_1" type="integer" groupName="configuration">
+      <parameter name="config_31_1" type="integer" groupName="configuration" readOnly="true">
         <label>31: Load control mode recognized during auto-calibration</label>
         <description>Load control mode recognized during auto-calibration</description>
         <default>0</default>
@@ -399,7 +399,7 @@
         </options>
       </parameter>
 
-      <parameter name="config_33_1" type="integer" groupName="configuration">
+      <parameter name="config_33_1" type="integer" groupName="configuration" readOnly="true">
         <label>33: Dimmability of the load (read only)</label>
         <description>Dimmability of the load (read only)</description>
         <default>0</default>
