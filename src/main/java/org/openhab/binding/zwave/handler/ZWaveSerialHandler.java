@@ -12,7 +12,6 @@ import static org.openhab.binding.zwave.ZWaveBindingConstants.*;
 import java.io.IOException;
 import java.util.TooManyListenersException;
 
-import org.eclipse.smarthome.core.i18n.TranslationProvider;
 import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.thing.Bridge;
 import org.eclipse.smarthome.core.thing.ChannelUID;
@@ -60,8 +59,8 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
 
     private ZWaveReceiveThread receiveThread;
 
-    public ZWaveSerialHandler(Bridge bridge, TranslationProvider translationProvider) {
-        super(bridge, translationProvider);
+    public ZWaveSerialHandler(Bridge bridge) {
+        super(bridge);
     }
 
     @Override
@@ -99,16 +98,16 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             initializeNetwork();
         } catch (NoSuchPortException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    getI18nConstant(ZWaveBindingConstants.OFFLINE_SERIAL_EXISTS, portId));
+                    ZWaveBindingConstants.OFFLINE_SERIAL_EXISTS);// , portId));
         } catch (PortInUseException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    getI18nConstant(ZWaveBindingConstants.OFFLINE_SERIAL_INUSE, portId));
+                    ZWaveBindingConstants.OFFLINE_SERIAL_INUSE);// , portId));
         } catch (UnsupportedCommOperationException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    getI18nConstant(ZWaveBindingConstants.OFFLINE_SERIAL_UNSUPPORTED, portId));
+                    ZWaveBindingConstants.OFFLINE_SERIAL_UNSUPPORTED);// , portId));
         } catch (TooManyListenersException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    getI18nConstant(ZWaveBindingConstants.OFFLINE_SERIAL_LISTENERS, portId));
+                    ZWaveBindingConstants.OFFLINE_SERIAL_LISTENERS);// , portId));
         }
     }
 

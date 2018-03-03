@@ -9,15 +9,16 @@ package org.openhab.binding.zwave.internal;
 
 import static org.openhab.binding.zwave.ZWaveBindingConstants.CONTROLLER_SERIAL;
 
-import org.eclipse.smarthome.core.i18n.TranslationProvider;
 import org.eclipse.smarthome.core.thing.Bridge;
 import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.thing.ThingTypeUID;
 import org.eclipse.smarthome.core.thing.binding.BaseThingHandlerFactory;
 import org.eclipse.smarthome.core.thing.binding.ThingHandler;
+import org.eclipse.smarthome.core.thing.binding.ThingHandlerFactory;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.handler.ZWaveSerialHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingHandler;
+import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,18 +28,9 @@ import org.slf4j.LoggerFactory;
  *
  * @author Chris Jackson - Initial contribution
  */
+@Component(immediate = true, service = { ThingHandlerFactory.class })
 public class ZWaveHandlerFactory extends BaseThingHandlerFactory {
     private Logger logger = LoggerFactory.getLogger(BaseThingHandlerFactory.class);
-
-    private TranslationProvider translationProvider;
-
-    protected void setTranslationProvider(TranslationProvider i18nProvider) {
-        translationProvider = i18nProvider;
-    }
-
-    protected void removeTranslationProvider(TranslationProvider i18nProvider) {
-        translationProvider = null;
-    }
 
     @Override
     public boolean supportsThingType(ThingTypeUID thingTypeUID) {
@@ -57,10 +49,10 @@ public class ZWaveHandlerFactory extends BaseThingHandlerFactory {
 
         // Handle controllers here
         if (thingTypeUID.equals(CONTROLLER_SERIAL)) {
-            return new ZWaveSerialHandler((Bridge) thing, translationProvider);
+            return new ZWaveSerialHandler((Bridge) thing);
         }
 
         // Everything else gets handled in a single handler
-        return new ZWaveThingHandler(thing, translationProvider);
+        return new ZWaveThingHandler(thing);
     }
 }

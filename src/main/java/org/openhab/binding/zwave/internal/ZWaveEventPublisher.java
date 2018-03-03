@@ -8,15 +8,19 @@
 package org.openhab.binding.zwave.internal;
 
 import org.eclipse.smarthome.core.events.EventPublisher;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
 /**
  *
  * @author Chris Jackson
  *
  */
+@Component()
 public class ZWaveEventPublisher {
     private static EventPublisher eventPublisher;
 
+    @Reference
     public void setEventPublisher(EventPublisher eventPublisher) {
         ZWaveEventPublisher.eventPublisher = eventPublisher;
     }

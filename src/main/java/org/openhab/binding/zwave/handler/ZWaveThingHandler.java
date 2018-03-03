@@ -9,7 +9,6 @@ package org.openhab.binding.zwave.handler;
 
 import java.math.BigDecimal;
 import java.text.DateFormat;
-import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,7 +30,6 @@ import org.eclipse.smarthome.config.core.status.ConfigStatusMessage;
 import org.eclipse.smarthome.config.core.validation.ConfigValidationException;
 import org.eclipse.smarthome.core.events.Event;
 import org.eclipse.smarthome.core.events.EventPublisher;
-import org.eclipse.smarthome.core.i18n.TranslationProvider;
 import org.eclipse.smarthome.core.thing.Bridge;
 import org.eclipse.smarthome.core.thing.Channel;
 import org.eclipse.smarthome.core.thing.ChannelUID;
@@ -50,7 +48,6 @@ import org.openhab.binding.zwave.event.BindingEventDTO;
 import org.openhab.binding.zwave.event.BindingEventFactory;
 import org.openhab.binding.zwave.event.BindingEventType;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
-import org.openhab.binding.zwave.internal.ZWaveActivator;
 import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
 import org.openhab.binding.zwave.internal.ZWaveEventPublisher;
 import org.openhab.binding.zwave.internal.ZWaveProduct;
@@ -121,21 +118,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     private final long REFRESH_POLL_DELAY = 50;
     private long pollingPeriod = POLLING_PERIOD_DEFAULT;
 
-    private final TranslationProvider translationProvider;
-
-    public ZWaveThingHandler(Thing zwaveDevice, TranslationProvider translationProvider) {
+    public ZWaveThingHandler(Thing zwaveDevice) {
         super(zwaveDevice);
-
-        this.translationProvider = translationProvider;
-    }
-
-    private String getI18nConstant(String constant, Object... arguments) {
-        TranslationProvider translationProviderLocal = translationProvider;
-        if (translationProviderLocal == null) {
-            return MessageFormat.format(constant, arguments);
-        }
-        return translationProviderLocal.getText(ZWaveActivator.getContext().getBundle(), constant, constant, null,
-                arguments);
     }
 
     @Override
@@ -155,8 +139,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
 
         // We need to set the status to OFFLINE so that the framework calls our notification handlers
-        updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE,
-                getI18nConstant(ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE));
+        updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE, ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE);
 
         // Make sure the thingType is set correctly from the database
         if (updateThingType() == true) {
@@ -455,7 +438,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         if (bridgeStatusInfo.getStatus() != ThingStatus.ONLINE) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE,
-                    getI18nConstant(ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE));
+                    ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE);
             logger.debug("NODE {}: Controller is not online.", nodeId, bridgeStatusInfo.getStatus());
             return;
         }
@@ -467,8 +450,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         // make sure we know the device state.
         ZWaveNode node = bridgeHandler.getNode(nodeId);
         if (node == null) {
-            updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.NONE,
-                    getI18nConstant(ZWaveBindingConstants.OFFLINE_NODE_NOTFOUND));
+            updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.NONE, ZWaveBindingConstants.OFFLINE_NODE_NOTFOUND);
         } else {
             switch (node.getNodeState()) {
                 case INITIALIZING:
@@ -478,7 +460,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 case DEAD:
                 case FAILED:
                     updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.COMMUNICATION_ERROR,
-                            getI18nConstant(ZWaveBindingConstants.OFFLINE_NODE_DEAD));
+                            ZWaveBindingConstants.OFFLINE_NODE_DEAD);
                     break;
             }
         }
@@ -1274,7 +1256,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 case FAILED:
                     logger.debug("NODE {}: Setting OFFLINE", nodeId);
                     updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.COMMUNICATION_ERROR,
-                            getI18nConstant(ZWaveBindingConstants.OFFLINE_NODE_DEAD));
+                            ZWaveBindingConstants.OFFLINE_NODE_DEAD);
                     break;
             }
 
@@ -1310,7 +1292,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     EventPublisher epHealStart = ZWaveEventPublisher.getEventPublisher();
                     if (epHealStart != null) {
                         BindingEventDTO dto = new BindingEventDTO(BindingEventType.INFO,
-                                getI18nConstant(ZWaveBindingConstants.EVENT_HEAL_START, new Integer(nodeId)));
+                                ZWaveBindingConstants.EVENT_HEAL_START);// , new Integer(nodeId));
                         Event notification = BindingEventFactory.createBindingEvent(ZWaveBindingConstants.BINDING_ID,
                                 "network", "", dto);
                         epHealStart.post(notification);
@@ -1321,7 +1303,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     EventPublisher epHealDone = ZWaveEventPublisher.getEventPublisher();
                     if (epHealDone != null) {
                         BindingEventDTO dto = new BindingEventDTO(BindingEventType.INFO,
-                                getI18nConstant(ZWaveBindingConstants.EVENT_HEAL_DONE, new Integer(nodeId)));
+                                ZWaveBindingConstants.EVENT_HEAL_DONE);// , new Integer(nodeId);
                         Event notification = BindingEventFactory.createBindingEvent(ZWaveBindingConstants.BINDING_ID,
                                 "network", "", dto);
                         epHealDone.post(notification);

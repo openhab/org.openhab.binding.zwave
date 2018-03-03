@@ -43,6 +43,8 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCom
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCommandClass.UserCode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCommandClass.UserIdStatusType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -53,6 +55,7 @@ import com.google.common.collect.ImmutableSet;
  * @author Chris Jackson
  *
  */
+@Component(immediate = true, service = { ConfigDescriptionProvider.class, ConfigOptionProvider.class })
 public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOptionProvider {
     private final static Logger logger = LoggerFactory.getLogger(ZWaveConfigProvider.class);
 
@@ -76,6 +79,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
             CommandClass.COMMAND_CLASS_THERMOSTAT_OPERATING_STATE, CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT,
             CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_MODE, CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_STATE);
 
+    @Reference
     protected void setThingRegistry(ThingRegistry thingRegistry) {
         ZWaveConfigProvider.thingRegistry = thingRegistry;
     }
@@ -84,6 +88,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         ZWaveConfigProvider.thingRegistry = null;
     }
 
+    @Reference
     protected void setThingTypeRegistry(ThingTypeRegistry thingTypeRegistry) {
         ZWaveConfigProvider.thingTypeRegistry = thingTypeRegistry;
     }
@@ -92,6 +97,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         ZWaveConfigProvider.thingTypeRegistry = null;
     }
 
+    @Reference
     protected void setConfigDescriptionRegistry(ConfigDescriptionRegistry configDescriptionRegistry) {
         ZWaveConfigProvider.configDescriptionRegistry = configDescriptionRegistry;
     }
@@ -140,6 +146,9 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
             return null;
         }
         ThingUID bridgeUID = thing.getBridgeUID();
+        if (bridgeUID == null) {
+            return null;
+        }
 
         // Get the controller for this thing
         Thing bridge = getThing(bridgeUID);

@@ -1354,6 +1354,13 @@ public class ZWaveNode {
             return;
         }
 
+        ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) getEndpoint(0)
+                .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP);
+        if (wakeUpCommandClass == null) {
+            logger.debug("NODE {}: Node doesn't support WAKEUP - ignore wakeup", getNodeId());
+            return;
+        }
+
         // Create the timer if this is our first call
         if (timer == null) {
             logger.debug("NODE {}: Creating wakeup timer", getNodeId());
@@ -1409,7 +1416,6 @@ public class ZWaveNode {
                 awake = true;
             }
 
-            logger.debug("NODE {}: Creating WakeupTimerTask", getNodeId());
             triggered = false;
         }
 
