@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-2017 by the respective copyright holders.
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,9 +43,6 @@ public class ZWaveThermostatModeConverter extends ZWaveCommandClassConverter {
         super(controller);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public List<ZWaveCommandClassTransactionPayload> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveThermostatModeCommandClass commandClass = (ZWaveThermostatModeCommandClass) node
@@ -63,9 +60,6 @@ public class ZWaveThermostatModeConverter extends ZWaveCommandClassConverter {
         return response;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public List<ZWaveCommandClassTransactionPayload> receiveCommand(ZWaveThingChannel channel, ZWaveNode node,
             Command command) {
@@ -90,9 +84,6 @@ public class ZWaveThermostatModeConverter extends ZWaveCommandClassConverter {
         return messages;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public State handleEvent(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
         return new DecimalType((Integer) event.getValue());

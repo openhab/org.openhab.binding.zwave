@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-2017 by the respective copyright holders.
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -92,20 +92,6 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass implements ZWaveC
         // timer = new Timer();
     }
 
-    /**
-     * Resolves uninitialized fields after XML Deserialization.
-     *
-     * @return The current {@link ZWaveWakeUpCommandClass} instance.
-     */
-    // private Object readResolve() {
-    // wakeUpQueue = new ArrayBlockingQueue<ZWaveCommandClassTransactionPayload>(MAX_BUFFFER_SIZE, true);
-    // timer = new Timer();
-    // return this;
-    // }
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public CommandClass getCommandClass() {
         return CommandClass.COMMAND_CLASS_WAKE_UP;
@@ -177,55 +163,6 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass implements ZWaveC
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 WAKE_UP_NO_MORE_INFORMATION).withPriority(TransactionPriority.Immediate).build();
     }
-
-    /**
-     * If the device is awake, it returns true to indicate that this message can be sent immediately. If the device is
-     * not awake, it puts the message in the wake-up queue to send the message on next wake-up.
-     * The message is only added if it's not the WAKE_UP_NO_MORE_INFORMATION message since we don't want to send this at
-     * the next wakeup.
-     * This combines the previous 'putInWakeUpQueue' with 'isAlive'.
-     *
-     * @param serialMessage the message to put in the wake-up queue.
-     * @return true if the message can be sent immediately
-     */
-    /**
-     * public boolean processOutgoingWakeupMessage(ZWaveCommandClassTransactionPayload payload) {
-     * // The message is Ok, if we're awake, send it now...
-     * if (isAwake) {
-     * // We're sending a frame, so we need to stop the timer if it's running
-     * resetSleepTimer();
-     * return true;
-     * }
-     *
-     * // Don't add any RealTime messages to the wakeup queue. This stops us delaying
-     * // messages like time set which would mean setting the time completely wrong!
-     * if (payload.getPriority() == TransactionPriority.RealTime) {
-     * logger.debug("NODE {}: Dropping RealTime message", getNode().getNodeId());
-     * return false;
-     * }
-     *
-     * // Make sure we never add the WAKE_UP_NO_MORE_INFORMATION message to the queue
-     * if (payload.getCommandClassId() == CommandClass.COMMAND_CLASS_WAKE_UP.getKey()
-     * && payload.getCommandClassCommand() == WAKE_UP_NO_MORE_INFORMATION) {
-     * logger.debug("NODE {}: WAKE_UP_NO_MORE_INFORMATION not queuing.", getNode().getNodeId());
-     * return false;
-     * }
-     *
-     * if (wakeUpQueue.contains(payload)) {
-     * logger.debug("NODE {}: Message already on the wake-up queue. Removing original.", getNode().getNodeId());
-     * wakeUpQueue.remove(payload);
-     * }
-     *
-     * // Bump the priority so that messages to battery devices are sent immediately when the device wakes
-     * payload.setPriority(TransactionPriority.Immediate);
-     *
-     * logger.debug("NODE {}: Putting message in wakeup queue.", getNode().getNodeId());
-     * wakeUpQueue.add(payload);
-     *
-     * // This message has been queued - don't send it now...
-     * return false;
-     * }
-     */
 
     /**
      * Gets a SerialMessage with the WAKE UP INTERVAL GET command
@@ -310,9 +247,6 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass implements ZWaveC
         return intervalStep;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Collection<ZWaveCommandClassTransactionPayload> initialize(boolean refresh) {
         ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>(2);
@@ -334,116 +268,6 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass implements ZWaveC
     }
 
     /**
-     * Event handler for incoming Z-Wave events. We monitor Z-Wave events for completed transactions. Once a transaction
-     * is completed for the WAKE_UP_NO_MORE_INFORMATION event, we set the node state to asleep. {@inheritDoc}
-     */
-    /**
-     * @Override
-     *           public void ZWaveIncomingEvent(ZWaveEvent event) {
-     *           if (!(event instanceof ZWaveTransactionCompletedEvent)) {
-     *           return;
-     *           }
-     *
-     *           // TODO: Find a better way to handle this. We should be able to use the transactionId.
-     *           org.openhab.binding.zwave.internal.protocol.ZWaveTransaction transaction =
-     *           ((ZWaveTransactionCompletedEvent) event)
-     *           .getCompletedTransaction();
-     *           SerialMessage serialMessage = transaction.getSerialMessage();
-     *
-     *           if (serialMessage.getMessageClass() != SerialMessageClass.SendData
-     *           && serialMessage.getMessageType() != SerialMessageType.Request) {
-     *           return;
-     *           }
-     *
-     *           byte[] payload = serialMessage.getMessagePayload();
-     *
-     *           // Check if it's addressed to this node
-     *           if (payload.length == 0 || (payload[0] & 0xFF) != getNode().getNodeId()) {
-     *           return;
-     *           }
-     *
-     *           // We now know that this is a message to this node.
-     *           // If it's not the WAKE_UP_NO_MORE_INFORMATION, then we need to set the wakeup timer
-     *           if (payload.length >= 4 && (payload[2] & 0xFF) == getCommandClass().getKey()
-     *           && (payload[3] & 0xFF) == WAKE_UP_NO_MORE_INFORMATION) {
-     *           // This is confirmation of our 'go to sleep' message
-     *           logger.debug("NODE {}: Went to sleep", getNode().getNodeId());
-     *           setAwake(false);
-     *           return;
-     *           }
-     *
-     *           // Send the next message in the wake-up queue
-     *           if (!wakeUpQueue.isEmpty()) {
-     *           // Get the next message from the queue.
-     *           // Bump it's priority to highest to try and send it while the node is awake
-     *           ZWaveCommandClassTransactionPayload nextTransaction = wakeUpQueue.poll();
-     *           getController().enqueue(nextTransaction);
-     *           } else if (isAwake() == true) {
-     *           // No more messages in the queue.
-     *           // Start a timer to send the "Go To Sleep" message
-     *           // This gives other tasks some time to do something if they want
-     *           setSleepTimer();
-     *           }
-     *           }
-     */
-
-    /**
-     * Returns whether the node is awake.
-     *
-     * @return the isAwake
-     */
-    public boolean isAwake() {
-        return isAwake;
-    }
-
-    /**
-     * Sets whether the node is awake.
-     * If the node is awake we send the first message in the wake-up queue.
-     * The remaining messages are triggered within the notification handler
-     *
-     * @param isAwake the isAwake to set
-     */
-    /*
-     * private void setAwake(boolean isAwake) {
-     * // Only do anything if the state has changed.
-     * // This prevents sending extra notifications which can cause unwanted updates - especially during
-     * // initialisation.
-     * if (this.isAwake == isAwake) {
-     * return;
-     * }
-     *
-     * this.isAwake = isAwake;
-     *
-     * if (isAwake) {
-     * logger.debug("NODE {}: Is awake with {} messages in the wake-up queue.", getNode().getNodeId(),
-     * wakeUpQueue.size());
-     *
-     * lastWakeup = Calendar.getInstance().getTime();
-     *
-     * ZWaveWakeUpEvent event = new ZWaveWakeUpEvent(getNode().getNodeId(), WAKE_UP_NOTIFICATION);
-     * getController().notifyEventListeners(event);
-     *
-     * // Handle the wake-up queue for this node.
-     * // We send the first message, and when that's ACKed, we sent the next
-     * if (!wakeUpQueue.isEmpty()) {
-     * // Get the next message from the queue.
-     * // Bump it's priority to highest to try and send it while the node is awake
-     * ZWaveCommandClassTransactionPayload nextTransaction = wakeUpQueue.poll();
-     * nextTransaction.setPriority(TransactionPriority.Immediate);
-     * getController().enqueue(nextTransaction);
-     * } else {
-     * // No messages in the queue.
-     * // Start a timer to send the "Go To Sleep" message
-     * // This gives other tasks some time to do something if they want
-     * setSleepTimer();
-     * }
-     * } else {
-     * logger.debug("NODE {}: Is sleeping", getNode().getNodeId());
-     * }
-     * }
-     */
-
-    /**
      * Sends a command to the device to set the wakeup interval and target node.
      *
      * @param nodeId the wakeup target node ID
@@ -459,15 +283,6 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass implements ZWaveC
                         .withPayload(((interval >> 16) & 0xff), ((interval >> 8) & 0xff), (interval & 0xff), nodeId)
                         .withPriority(TransactionPriority.Config).build();
     }
-
-    /**
-     * Gets the size of the wake up queue
-     *
-     * @return number of messages currently queued
-     */
-    // public int getWakeupQueueLength() {
-    // return wakeUpQueue.size();
-    // }
 
     /**
      * Gets the target node for the Wakeup command class

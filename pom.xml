@@ -17,6 +17,7 @@
     <packaging>eclipse-plugin</packaging>
 
     <properties>
+        <year>2018</year>
         <report.fail.on.error>false</report.fail.on.error>
     </properties>
 

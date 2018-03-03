@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-2017 by the respective copyright holders.
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,9 +44,6 @@ public class ZWaveTimeParametersConverter extends ZWaveCommandClassConverter {
         super(controller);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public List<ZWaveCommandClassTransactionPayload> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveTimeParametersCommandClass commandClass = (ZWaveTimeParametersCommandClass) node.resolveCommandClass(
@@ -64,9 +61,6 @@ public class ZWaveTimeParametersConverter extends ZWaveCommandClassConverter {
         return response;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public State handleEvent(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
         int offsetAllowed = Integer.MAX_VALUE;
@@ -127,9 +121,6 @@ public class ZWaveTimeParametersConverter extends ZWaveCommandClassConverter {
         return state;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public List<ZWaveCommandClassTransactionPayload> receiveCommand(ZWaveThingChannel channel, ZWaveNode node,
             Command command) {

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-2017 by the respective copyright holders.
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -123,7 +123,7 @@ public class ZWaveController {
      */
     public ZWaveController(ZWaveIoHandler handler, Map<String, String> config) {
         masterController = "true".equals(config.get("masterController"));
-        sucNode = Integer.parseInt(config.get("sucNode"));
+        sucNode = config.containsKey("sucNode") ? Integer.parseInt(config.get("sucNode")) : 0;
         softReset = "true".equals(config.get("softReset"));
         secureInclusionMode = config.containsKey("secureInclusion") ? Integer.parseInt(config.get("secureInclusion"))
                 : 0;
@@ -153,9 +153,6 @@ public class ZWaveController {
     private class InitializeDelayTask extends TimerTask {
         private final Logger logger = LoggerFactory.getLogger(InitializeDelayTask.class);
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void run() {
             logger.debug("Initialising network");
@@ -220,8 +217,7 @@ public class ZWaveController {
         try {
             processor.handleRequest(this, transaction, incomingMessage);
         } catch (ZWaveSerialMessageException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            logger.error("Exception processing frame", e);
         }
     }
 

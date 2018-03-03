@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-2017 by the respective copyright holders.
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,9 +60,6 @@ public class ZWaveVersionCommandClass extends ZWaveCommandClass {
         versionMax = MAX_SUPPORTED_VERSION;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public CommandClass getCommandClass() {
         return CommandClass.COMMAND_CLASS_VERSION;
@@ -121,26 +118,6 @@ public class ZWaveVersionCommandClass extends ZWaveCommandClass {
         // If the device reports version 0, it means it doesn't support this command class!
         if (commandClassVersion == 0) {
             logger.info("NODE {}: Command Class {} has version 0!", getNode().getNodeId(), commandClass);
-
-            // Do not remove mandatory generic command classes.
-            // for (CommandClass mandatoryCommandClass : getNode().getDeviceClass().getGenericDeviceClass()
-            // .getMandatoryCommandClasses()) {
-            // if (mandatoryCommandClass == commandClass) {
-            // commandClassVersion = 1;
-            // break;
-            // }
-            // }
-
-            // Do not remove mandatory specific command classes.
-            // if (commandClassVersion == 0) {
-            // for (CommandClass mandatoryCommandClass : getNode().getDeviceClass().getSpecificDeviceClass()
-            // .getMandatoryCommandClasses()) {
-            // if (mandatoryCommandClass == commandClass) {
-            // commandClassVersion = 1;
-            // break;
-            // }
-            // }
-            // }
 
             // Remove other command classes.
             if (commandClassVersion == 0) {
