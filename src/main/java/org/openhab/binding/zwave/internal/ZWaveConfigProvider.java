@@ -108,26 +108,32 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
 
     @Override
     public ConfigDescription getConfigDescription(URI uri, Locale locale) {
-        if ("thing".equals(uri.getScheme()) == false) {
+        if (!"thing".equals(uri.getScheme()) && !"thing-type".equals(uri.getScheme())) {
             return null;
+        }
+
+        ThingTypeUID thingTypeUID = new ThingTypeUID(uri.getSchemeSpecificPart());
+
+        // Is this a zwave thing?
+        if (!thingTypeUID.getBindingId().equals(ZWaveBindingConstants.BINDING_ID)) {
+            return null;
+        }
+
+        List<ConfigDescriptionParameter> parameters = new ArrayList<ConfigDescriptionParameter>();
+
+        if ("thing-type".equals(uri.getScheme())) {
+            parameters.add(
+                    ConfigDescriptionParameterBuilder.create(ZWaveBindingConstants.CONFIGURATION_NODEID, Type.INTEGER)
+                            .withLabel("Node ID").withMinimum(new BigDecimal("1")).withMaximum(new BigDecimal("232"))
+                            .withAdvanced(true).withReadOnly(true).withRequired(true)
+                            .withDescription("Sets the node ID<BR/>"
+                                    + "The node ID is assigned by the controller and can not be changed.")
+                            .withGroupName("thingcfg").build());
+
+            return new ConfigDescription(uri, parameters, null);
         }
 
         ThingUID thingUID = new ThingUID(uri.getSchemeSpecificPart());
-        // ThingType thingType = thingTypeRegistry.getThingType(thingUID.getThingTypeUID());
-        // if (thingType == null) {
-        // return null;
-        // }
-
-        // Is this a zwave thing?
-        if (!thingUID.getBindingId().equals(ZWaveBindingConstants.BINDING_ID)) {
-            return null;
-        }
-
-        // And make sure this is a node because we want to get the id off the end...
-        if (!thingUID.getId().startsWith("node")) {
-            return null;
-        }
-        int nodeId = Integer.parseInt(thingUID.getId().substring(4));
 
         Thing thing = getThing(thingUID);
         if (thing == null) {
@@ -140,6 +146,13 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         if (bridge == null) {
             return null;
         }
+
+        final BigDecimal cfgNodeId = (BigDecimal) thing.getConfiguration()
+                .get(ZWaveBindingConstants.CONFIGURATION_NODEID);
+        if (cfgNodeId == null) {
+            return null;
+        }
+        int nodeId = cfgNodeId.intValue();
 
         // Get its handler and node
         ZWaveControllerHandler handler = (ZWaveControllerHandler) bridge.getHandler();
@@ -154,19 +167,9 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         }
 
         List<ConfigDescriptionParameterGroup> groups = new ArrayList<ConfigDescriptionParameterGroup>();
-        List<ConfigDescriptionParameter> parameters = new ArrayList<ConfigDescriptionParameter>();
-
         groups.add(new ConfigDescriptionParameterGroup("actions", "", false, "Actions", "Actions"));
         groups.add(new ConfigDescriptionParameterGroup("thingcfg", "home", false, "Device Configuration",
                 "Device Configuration"));
-
-        parameters.add(ConfigDescriptionParameterBuilder
-                .create(ZWaveBindingConstants.CONFIGURATION_NODEID, Type.INTEGER).withLabel("Node ID")
-                .withMinimum(new BigDecimal("1")).withMaximum(new BigDecimal("232")).withAdvanced(true)
-                .withReadOnly(true).withRequired(true)
-                .withDescription(
-                        "Sets the node ID<BR/>" + "The node ID is assigned by the controller and can not be changed.")
-                .withDefault("").withGroupName("thingcfg").build());
 
         List<ParameterOption> options = new ArrayList<ParameterOption>();
         options.add(new ParameterOption("600", "10 Minutes"));
@@ -200,7 +203,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
                     .withDescription("Sets the number of seconds that the device will wakeup<BR/>"
                             + "Setting a shorter time will allow openHAB to configure the device more regularly, but may use more battery power.<BR>"
                             + "<B>Note:</B> This setting does not impact device notifications such as alarms.")
-                    .withDefault("").withGroupName("wakeup").build());
+                    .withGroupName("wakeup").build());
 
             parameters.add(ConfigDescriptionParameterBuilder
                     .create(ZWaveBindingConstants.CONFIGURATION_WAKEUPNODE, Type.INTEGER).withLabel("Wakeup Node")
@@ -209,18 +212,17 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
                             + "This should normally be set to the openHAB controller - "
                             + "if it isn't, openHAB will not receive notifications when the device wakes up, "
                             + "and will not be able to configure the device.")
-                    .withDefault("").withGroupName("wakeup").build());
+                    .withGroupName("wakeup").build());
         }
 
         // If we support the node name class, then add the configuration
         if (node.getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_NODE_NAMING) != null) {
-            parameters.add(
-                    ConfigDescriptionParameterBuilder.create(ZWaveBindingConstants.CONFIGURATION_NODENAME, Type.TEXT)
-                            .withLabel("Node Name").withDescription("Sets a string for the device name")
-                            .withGroupName("thingcfg").withDefault("").build());
+            parameters.add(ConfigDescriptionParameterBuilder
+                    .create(ZWaveBindingConstants.CONFIGURATION_NODENAME, Type.TEXT).withLabel("Node Name")
+                    .withDescription("Sets a string for the device name").withGroupName("thingcfg").build());
             parameters.add(ConfigDescriptionParameterBuilder
                     .create(ZWaveBindingConstants.CONFIGURATION_NODELOCATION, Type.TEXT)
-                    .withDescription("Sets a string for the device location").withLabel("Node Location").withDefault("")
+                    .withDescription("Sets a string for the device location").withLabel("Node Location")
                     .withGroupName("thingcfg").build());
         }
 
@@ -257,11 +259,11 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
                 parameters.add(ConfigDescriptionParameterBuilder
                         .create(ZWaveBindingConstants.CONFIGURATION_USERCODE_LABEL + code, Type.TEXT)
                         .withLabel("Code " + code + " Label").withDescription("Name for user code " + code)
-                        .withDefault("").withGroupName("usercode").build());
+                        .withGroupName("usercode").build());
                 parameters.add(ConfigDescriptionParameterBuilder
                         .create(ZWaveBindingConstants.CONFIGURATION_USERCODE_CODE + code, Type.TEXT)
                         .withLabel("Code " + code).withDescription("Set the user code (4 to 10 numbers)")
-                        .withReadOnly(userCode.getState() == UserIdStatusType.RESERVED_BY_ADMINISTRATOR).withDefault("")
+                        .withReadOnly(userCode.getState() == UserIdStatusType.RESERVED_BY_ADMINISTRATOR)
                         .withGroupName("usercode").build());
             }
         }
