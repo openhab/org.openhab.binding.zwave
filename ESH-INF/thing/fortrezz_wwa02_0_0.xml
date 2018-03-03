@@ -6,7 +6,7 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="fortrezz_wwa02_00_000" listed="false">
-    <label>WWA-02 Wireless Water and Temperature Alarm</label>
+    <label>WWA-01 / WWA-02 Wireless Water and Temperature Alarm</label>
     <description>Wireless Water and Temperature Alarm</description>
     <category>Sensor</category>
 
@@ -34,9 +34,9 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">FortrezZ LLC</property>
-      <property name="modelId">WWA-02</property>
+      <property name="modelId">WWA-01 / WWA-02</property>
       <property name="manufacturerId">0084</property>
-      <property name="manufacturerRef">0061:010C,0063:010C</property>
+      <property name="manufacturerRef">0053:0216,0061:010C,0063:010C</property>
       <property name="dbReference">222</property>
       <property name="defaultAssociations">1</property>
     </properties>

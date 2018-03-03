@@ -8,6 +8,7 @@
   <thing-type id="philio_psp05_00_000" listed="false">
     <label>PSP05 Motion Sensor</label>
     <description>Motion Sensor</description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -37,6 +38,7 @@
       <property name="manufacturerId">013C</property>
       <property name="manufacturerRef">0002:0050</property>
       <property name="dbReference">600</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -46,6 +48,11 @@
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
@@ -138,6 +145,23 @@ How frequently battery status should be reported<br /><h1>Overview</h1><p>The fr
 Interval time for sending reports<br /><h1>Overview</h1><p>This setting is used by the battery reporting interval setting. This setting defines the 'tick interval' or the number of time blocks to wait between sending reports. The default value of 30 means that a tick interval is 30 minutes.</p>
         ]]></description>
         <default>30</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: report message</label>
+        <description><![CDATA[
+The group 1 is for receiving the report message<br /><h1>Overview</h1><p>The group 1 is for receiving the report message, like triggered event, temperature, illumination etc.</p>
+        ]]></description>
+        <multipleLimit>8</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Basic Set</label>
+        <description><![CDATA[
+The group 2 is for light control<br /><h1>Overview</h1><p>The group 2 is for light control, the device will send the "Basic Set" command to this group. </p>
+        ]]></description>
+        <multipleLimit>8</multipleLimit>
       </parameter>
 
     </config-description>

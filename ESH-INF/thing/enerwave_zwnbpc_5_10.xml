@@ -6,7 +6,7 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="enerwave_zwnbpc_05_010" listed="false">
-    <label>ZWN-BPC PIR Sensor</label>
+    <label>ZWN-BPC-PLUS PIR Sensor</label>
     <description>PIR Sensor</description>
     <category>MotionDetector</category>
 
@@ -34,7 +34,7 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Wenzhou MTLC Electric Appliances Co.,Ltd.</property>
-      <property name="modelId">ZWN-BPC</property>
+      <property name="modelId">ZWN-BPC-PLUS</property>
       <property name="manufacturerId">011A</property>
       <property name="manufacturerRef">0601:0901</property>
       <property name="versionMin">5.10</property>
