@@ -8,6 +8,7 @@
   <thing-type id="popp_005107_01_001" listed="false">
     <label>005107 Solar Powered Outdoor Siren</label>
     <description>Solar Powered Outdoor Siren</description>
+    <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -74,9 +75,9 @@
         <description>Sets the tamper triggering mode when removed from the holder</description>
         <default>0</default>
         <options>
-          <option value="0">Siren triggering mode</option>
-          <option value="1">Siren triggering mode</option>
-          <option value="2">Siren triggering mode</option>
+          <option value="0">Trigger, when removed from holder</option>
+          <option value="1">Trigger, when removed, and turn off, when placed back.</option>
+          <option value="2">Don't trigger at all</option>
         </options>
       </parameter>
 
@@ -118,9 +119,9 @@ Send unsolicited temperature report after N wake up<br /><h1>Overview</h1><p>Sen
         <description>Switch mode : siren only, flash only, flash + siren</description>
         <default>2</default>
         <options>
-          <option value="0">Switch mode</option>
-          <option value="1">Switch mode</option>
-          <option value="2">Switch mode</option>
+          <option value="0">Siren only</option>
+          <option value="1">Flash only</option>
+          <option value="2">Flash + Siren (Default)</option>
         </options>
       </parameter>
 

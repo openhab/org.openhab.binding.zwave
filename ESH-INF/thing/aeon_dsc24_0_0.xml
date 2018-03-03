@@ -8,6 +8,7 @@
   <thing-type id="aeon_dsc24_00_000" listed="false">
     <label>DSC24 Smart Energy Switch G2</label>
     <description>Smart Energy Switch G2</description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -60,7 +61,7 @@
       <property name="vendor">AEON Labs</property>
       <property name="modelId">DSC24</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0003:0018,0103:004B</property>
+      <property name="manufacturerRef">0003:0018</property>
       <property name="dbReference">76</property>
       <property name="defaultAssociations">1,2</property>
     </properties>
