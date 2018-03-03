@@ -357,6 +357,16 @@ public class ZWaveNodeInitStageAdvancer {
             return;
         }
 
+        ZWaveWakeUpCommandClass wakeupCommandClass = (ZWaveWakeUpCommandClass) node
+                .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
+        if (wakeupCommandClass != null && wakeupCommandClass.getTargetNodeId() == controller.getOwnNodeId()
+                && wakeupCommandClass.getInterval() == 0) {
+            logger.debug("NODE {}: Node advancer: FAILED_CHECK - Sleeping node - terminating initialisation",
+                    node.getNodeId());
+            setCurrentStage(ZWaveNodeInitStage.DONE);
+            return;
+        }
+
         setCurrentStage(ZWaveNodeInitStage.FAILED_CHECK);
         do {
             processTransaction(new IsFailedNodeMessageClass().doRequest(node.getNodeId()));
