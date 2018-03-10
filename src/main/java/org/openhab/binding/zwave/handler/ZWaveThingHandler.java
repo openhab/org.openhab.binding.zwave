@@ -618,6 +618,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 }
 
                 ZWaveAssociationGroup currentMembers = node.getAssociationGroup(groupIndex);
+                if (currentMembers == null) currentMembers = new ZWaveAssociationGroup(groupIndex);
                 ZWaveAssociationGroup newMembers = new ZWaveAssociationGroup(groupIndex);
 
                 int totalMembers = currentMembers.getAssociationCnt();
