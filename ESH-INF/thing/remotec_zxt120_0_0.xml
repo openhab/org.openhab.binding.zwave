@@ -72,7 +72,7 @@
         <default>1</default>
       </parameter>
 
-      <parameter name="config_26_1" type="integer" groupName="configuration"
+      <parameter name="config_26_1" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="4">
         <label>26: Learning status register (Read Only)</label>
         <default>0</default>
@@ -111,7 +111,7 @@
         </options>
       </parameter>
 
-      <parameter name="config_35_4" type="integer" groupName="configuration"
+      <parameter name="config_35_4" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="65535">
         <label>35: Learn location status. Bitmask. (Read Only)</label>
         <default>0</default>

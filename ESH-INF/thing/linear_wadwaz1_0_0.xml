@@ -15,18 +15,18 @@ Door/Windows Sensor<br /><h1>Overview</h1><p>Linear Z-Wave products are easy to 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="sensor_door" typeId="sensor_door">
-        <label>Binary Sensor</label>
+        <label>Sensor (Binary)</label>
         <properties>
           <property name="binding:*:OpenClosedType">SENSOR_BINARY,BASIC</property>
         </properties>
       </channel>
       <channel id="alarm_entry" typeId="alarm_entry">
-        <label>Door Alarm</label>
+        <label>Sensor (Alarm)</label>
         <properties>
           <property name="binding:*:OnOffType">ALARM;type=BURGLAR, event=2</property>
         </properties>
       </channel>
-      <channel id="alarm_general" typeId="alarm_general">
+      <channel id="alarm_tamper" typeId="alarm_tamper">
         <label>Tamper Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">ALARM;type=BURGLAR, event=3</property>

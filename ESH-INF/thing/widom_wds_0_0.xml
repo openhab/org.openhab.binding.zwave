@@ -168,7 +168,7 @@ Defines the time after which the Channel 1 is switched ON<br /><h1>Overview</h1>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_13_2" type="integer" groupName="configuration"
+      <parameter name="config_13_2" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="32000">
         <label>13: Timer to switch ON the Channel 2</label>
         <description><![CDATA[

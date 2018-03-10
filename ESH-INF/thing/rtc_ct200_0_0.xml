@@ -170,7 +170,7 @@ Vivint Element Thermostat w/ other sensors<br /><h2>Inclusion Information</h2><p
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter name="config_2_4" type="integer" groupName="configuration"
+      <parameter name="config_2_4" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="4294967295">
         <label>2: HVAC Settings</label>
         <description><![CDATA[
@@ -179,7 +179,7 @@ Retrieves the HVAC Settings<br /><h1>Overview</h1><p>Byte 1 = HVAC Setup: Normal
         <default>0</default>
       </parameter>
 
-      <parameter name="config_4_1" type="integer" groupName="configuration">
+      <parameter name="config_4_1" type="integer" groupName="configuration" readOnly="true">
         <label>4: C-Wire/Battery Status</label>
         <description><![CDATA[
 Query power which source is in use<br /><h1>Overview</h1><p>If 0x01, the thermostat is powered by a C-wire.</p> <p>If 0x02, the thermostat is powered by batteries.</p>

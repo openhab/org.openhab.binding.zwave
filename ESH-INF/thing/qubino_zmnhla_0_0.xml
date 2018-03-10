@@ -8,6 +8,7 @@
   <thing-type id="qubino_zmnhla_00_000" listed="false">
     <label>ZMNHLA Flush PWM thermostat</label>
     <description>Flush PWM thermostat</description>
+    <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

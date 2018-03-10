@@ -212,7 +212,7 @@ The time interval of sending Report group 3.<br /><h1>Overview</h1><p>The time i
         <default>600</default>
       </parameter>
 
-      <parameter name="config_200_1" type="integer" groupName="configuration">
+      <parameter name="config_200_1" type="integer" groupName="configuration" readOnly="true">
         <label>200: Partner ID</label>
         <description><![CDATA[
 Partner ID (0= Aeon Labs Standard Product, 1= others).<br /><h1>Overview</h1><p>Partner ID<br /> (0= Aeon Labs Standard Product, 1= others). </p>
@@ -283,7 +283,7 @@ Reset the reports to send to each report group to default values.<br /><h1>Overv
         </options>
       </parameter>
 
-      <parameter name="config_110_1_wo" type="integer" groupName="configuration">
+      <parameter name="config_110_1_wo" type="integer" groupName="configuration" readOnly="true">
         <label>110: Reset Report Time Intervals for All Groups</label>
         <description><![CDATA[
 Reset the reports time interval for each report group to default values.<br /><h1>Overview</h1><p>Reset the reports to time interval for each report group to default values.<br />Set configuration parameters 111-113 to default. <br />See instruction manual for details on reporting configuration.</p>

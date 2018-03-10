@@ -5,17 +5,29 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="heiman_hs2wdz_00_000" listed="false">
-    <label>HS2WD-Z Smart Siren</label>
-    <description>Smart Siren</description>
-    <category>Siren</category>
+  <thing-type id="monoprice_10795_00_000" listed="false">
+    <label>10795 Door Window Sensor</label>
+    <description>Door Window Sensor</description>
+    <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
+      <channel id="sensor_door" typeId="sensor_door">
+        <label>Sensor (Binary)</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
+          <property name="binding:*:OpenClosedType">SENSOR_BINARY,BASIC</property>
+        </properties>
+      </channel>
+      <channel id="alarm_entry" typeId="alarm_entry">
+        <label>Sensor (Alarm)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=BURGLAR, event=2</property>
+        </properties>
+      </channel>
+      <channel id="alarm_tamper" typeId="alarm_tamper">
+        <label>Tamper Alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=BURGLAR, event=3</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -27,11 +39,11 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Heiman Technology Co. Ltd</property>
-      <property name="modelId">HS2WD-Z</property>
-      <property name="manufacturerId">0260</property>
-      <property name="manufacturerRef">8009:1000</property>
-      <property name="dbReference">771</property>
+      <property name="vendor">Monoprice</property>
+      <property name="modelId">10795</property>
+      <property name="manufacturerId">0202</property>
+      <property name="manufacturerRef">2001:0102</property>
+      <property name="dbReference">817</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -45,7 +57,7 @@
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Lifeline</label>
+        <label>1: Controller Updates</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

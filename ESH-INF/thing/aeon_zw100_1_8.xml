@@ -135,7 +135,7 @@ Motion Sensor reset timeout<br /><h1>Overview</h1><ol><li>The default PIR time i
         <default>30</default>
       </parameter>
 
-      <parameter name="config_9_2" type="integer" groupName="configuration"
+      <parameter name="config_9_2" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="1">
         <label>9: Report the current power mode</label>
         <description><![CDATA[

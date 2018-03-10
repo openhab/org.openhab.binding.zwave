@@ -31,6 +31,7 @@
       <property name="modelId">ZWN-BPC</property>
       <property name="manufacturerId">011A</property>
       <property name="manufacturerRef">0601:0901</property>
+      <property name="versionMax">5.9</property>
       <property name="dbReference">186</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -46,8 +47,7 @@
 
       <parameter name="config_0_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>0: Off time</label>
-        <description>Sets the number of minutes to wait to send the OFF command, after triggering the sensor.</description>
+        <label>0: Motion timeout</label>
         <default>1</default>
       </parameter>
 

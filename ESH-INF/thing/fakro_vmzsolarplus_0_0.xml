@@ -100,7 +100,7 @@ Level of insolation to open/close the shades<br /><h1>Overview</h1><p>Level of i
         <default>3</default>
       </parameter>
 
-      <parameter name="config_5_1" type="integer" groupName="configuration"
+      <parameter name="config_5_1" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="255">
         <label>5: Temperature</label>
         <description><![CDATA[
@@ -131,7 +131,7 @@ Restore last position<br /><h1>Overview</h1><p>Restore last position or always g
         </options>
       </parameter>
 
-      <parameter name="config_17_1" type="integer" groupName="configuration"
+      <parameter name="config_17_1" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="255">
         <label>17: Insolation level</label>
         <description><![CDATA[
@@ -140,7 +140,7 @@ Current on autoshade solar panel<br /><h1>Overview</h1><p>Current from autoshade
         <default>0</default>
       </parameter>
 
-      <parameter name="config_21_1" type="integer" groupName="configuration"
+      <parameter name="config_21_1" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="255">
         <label>21: Motor current</label>
         <description><![CDATA[

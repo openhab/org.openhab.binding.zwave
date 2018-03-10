@@ -250,7 +250,7 @@ Associations in Z-Wave network security mode<br /><h1>Overview</h1><p>This param
         </options>
       </parameter>
 
-      <parameter name="config_28_1" type="integer" groupName="configuration"
+      <parameter name="config_28_1" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="15">
         <label>28: S1 switch - scenes sent</label>
         <description><![CDATA[
@@ -457,7 +457,7 @@ First channel - energy reports<br /><h1>Overview</h1><p>This parameter determine
         <default>100</default>
       </parameter>
 
-      <parameter name="config_54_1" type="integer" groupName="configuration"
+      <parameter name="config_54_1" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="100">
         <label>54: Second channel - power reports</label>
         <description><![CDATA[

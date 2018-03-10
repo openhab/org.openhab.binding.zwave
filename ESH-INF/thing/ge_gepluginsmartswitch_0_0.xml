@@ -43,7 +43,7 @@
         <label>Actions</label>
       </parameter-group>
 
-      <parameter name="config_3_1_wo" type="integer" groupName="configuration">
+      <parameter name="config_3_1_wo" type="integer" groupName="configuration" readOnly="true">
         <label>3: LED light</label>
         <description>control LED light behavior. Default is on when connected device is off</description>
         <default>0</default>

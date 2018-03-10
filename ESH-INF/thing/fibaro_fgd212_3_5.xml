@@ -15,8 +15,14 @@
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL,BASIC</property>
+        </properties>
+      </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">SCENE_ACTIVATION</property>
         </properties>
       </channel>
       <channel id="sensor_power" typeId="sensor_power">
@@ -35,6 +41,18 @@
         <label>Electric meter (watts)</label>
         <properties>
           <property name="binding:*:DecimalType">METER;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="meter_reset" typeId="meter_reset">
+        <label>Reset the total power consumption</label>
+        <properties>
+          <property name="binding:*:OnOffType">METER</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param19" typeId="config_decimal">
+        <label>Force initial brightness</label>
+        <properties>
+          <property name="binding:*:DecimalType">CONFIGURATION;parameter=19</property>
         </properties>
       </channel>
       <channel id="alarm_heat" typeId="alarm_heat">
@@ -58,8 +76,8 @@
       <channel id="switch_dimmer1" typeId="switch_dimmer">
         <label>Dimmer 1</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:1</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:1</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:1,BASIC:1</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:1,BASIC:1</property>
         </properties>
       </channel>
       <channel id="sensor_power1" typeId="sensor_power">
@@ -101,8 +119,8 @@
       <channel id="switch_dimmer2" typeId="switch_dimmer">
         <label>Dimmer 2</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:2</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:2</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:2,BASIC:2</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:2,BASIC:2</property>
         </properties>
       </channel>
     </channels>

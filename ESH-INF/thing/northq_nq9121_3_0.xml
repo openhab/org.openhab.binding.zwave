@@ -109,7 +109,7 @@ Set this to enter real-time mode from remote. Contains seconds * poll frequency 
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_12_4" type="integer" groupName="configuration"
+      <parameter name="config_12_4" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="65535">
         <label>12: 12: Serial number</label>
         <description><![CDATA[

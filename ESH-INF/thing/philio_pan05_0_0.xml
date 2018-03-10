@@ -5,36 +5,34 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="fakro_zws12_00_000" listed="false">
-    <label>ZWS12 Chain Actuator</label>
-    <description>Chain Actuator</description>
-    <category>Blinds</category>
+  <thing-type id="philio_pan05_00_000" listed="false">
+    <label>PAN05-1B Single relay in-wall switch module</label>
+    <description>Single relay in-wall switch module</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
         </properties>
       </channel>
-      <channel id="blinds_control" typeId="blinds_control">
-        <label>Blinds control</label>
+      <channel id="alarm_general" typeId="alarm_general">
+        <label>Alarm</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:StopMoveType">SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:UpDownType">SWITCH_MULTILEVEL</property>
+          <property name="binding:*:OnOffType">ALARM</property>
         </properties>
       </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Fakro</property>
-      <property name="modelId">ZWS12</property>
-      <property name="manufacturerId">0085</property>
-      <property name="manufacturerRef">0002:0001,0003:0001,0011:0001</property>
-      <property name="dbReference">325</property>
+      <property name="vendor">Philio Technology Corp</property>
+      <property name="modelId">PAN05-1B</property>
+      <property name="manufacturerId">013C</property>
+      <property name="manufacturerRef">0001:0010</property>
+      <property name="dbReference">819</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -47,9 +45,8 @@
         <label>Association Groups</label>
       </parameter-group>
 
-      <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Basic</label>
-        <multipleLimit>5</multipleLimit>
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Group 1</label>
       </parameter>
 
     </config-description>

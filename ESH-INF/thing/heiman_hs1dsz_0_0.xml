@@ -5,29 +5,31 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="vision_zd2102_00_000" listed="false">
-    <label>ZD2102 Door Window Sensor</label>
-    <description>Door Window Sensor</description>
-    <category>Door</category>
+  <thing-type id="heiman_hs1dsz_00_000" listed="false">
+    <label>HS1DS-Z Smart Door Sensor</label>
+    <description><![CDATA[
+Smart Door Sensor<br /><h1>Overview</h1><p>Door/Window Contact.</p> <p>Same hardware as DOMUX DX1DS-Z.</p> <br /><h2>Inclusion Information</h2><ul><li>Press a Func_Button 3 time in HS1DS-Z (Door Sensor), Green LED is Blinking 3 times within 1 second.</li> <li>If Inclusion Process is successful, Green led will turn off. </li> </ul><br /><h2>Exclusion Information</h2><p>Long press Func_Button while installing batteries in HS1DS-Z.</p> <br /><h2>Wakeup Information</h2><ul><li>Wake up Notification is transmitted every 24 hours by default.</li> <li>Wake up Notification is transmitted after Notification Report is Transmitted.</li> </ul>
+    ]]></description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="sensor_door" typeId="sensor_door">
-        <label>Sensor (Binary)</label>
+        <label>Binary Sensor</label>
         <properties>
           <property name="binding:*:OpenClosedType">SENSOR_BINARY,BASIC</property>
         </properties>
       </channel>
-      <channel id="alarm_tamper" typeId="alarm_tamper">
-        <label>Tamper Alarm</label>
+      <channel id="alarm_burglar" typeId="alarm_burglar">
+        <label>Alarm (burglar)</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=BURGLAR, event=3</property>
+          <property name="binding:*:OnOffType">ALARM;type=BURGLAR</property>
         </properties>
       </channel>
-      <channel id="alarm_entry" typeId="alarm_entry">
-        <label>Sensor (Alarm)</label>
+      <channel id="alarm_access" typeId="alarm_access">
+        <label>Alarm (access)</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=ACCESS_CONTROL, event=2</property>
+          <property name="binding:*:OnOffType">ALARM;type=ACCESS_CONTROL</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -39,11 +41,11 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Vision Security</property>
-      <property name="modelId">ZD2102</property>
-      <property name="manufacturerId">0109</property>
-      <property name="manufacturerRef">2001:0101,2001:0102</property>
-      <property name="dbReference">105</property>
+      <property name="vendor">Heiman Technology Co. Ltd</property>
+      <property name="modelId">HS1DS-Z</property>
+      <property name="manufacturerId">0260</property>
+      <property name="manufacturerRef">0168:0168</property>
+      <property name="dbReference">551</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -57,7 +59,7 @@
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Control Command</label>
+        <label>1: Controller Updates</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
