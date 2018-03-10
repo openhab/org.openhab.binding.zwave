@@ -942,6 +942,16 @@
         </state>
     </channel-type>
 
+    <!-- Moisture Channel -->
+    <channel-type id="sensor_moisture">
+        <item-type>Number</item-type>
+        <label>Moisture</label>
+        <description>Indicates the current moisture level</description>
+        <category>Moisture</category>
+        <state pattern="%.1f" readOnly="true">
+        </state>
+    </channel-type>
+
     <!-- Particulate Channel -->
     <channel-type id="sensor_particulate">
         <item-type>Number</item-type>
