@@ -201,7 +201,7 @@ Pair Mode, upper two buttons<br /><h1>Overview</h1><p>Configuration of Pair Mode
         <default>50</default>
       </parameter>
 
-      <parameter name="config_8_1" type="integer" groupName="configuration"
+      <parameter name="config_8_1" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="100">
         <label>8: Percentage of light in the LED #2 when On</label>
         <description>Configure the percentage of light in LED # 2, when the LED is turned on.</description>

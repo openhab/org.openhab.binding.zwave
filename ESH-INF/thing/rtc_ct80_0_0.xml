@@ -102,7 +102,7 @@ Reporting threshold for changes in the ambient temperature.<br /><h1>Overview</h
         </options>
       </parameter>
 
-      <parameter name="config_2_4" type="integer" groupName="configuration"
+      <parameter name="config_2_4" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="4294967295">
         <label>2: HVAC Settings</label>
         <description><![CDATA[
@@ -123,7 +123,7 @@ Prevents setpoint changes at thermostat.<br /><h1>Overview</h1><p>If set to 0, t
         </options>
       </parameter>
 
-      <parameter name="config_4_1" type="integer" groupName="configuration"
+      <parameter name="config_4_1" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="255">
         <label>4: Power Status</label>
         <description><![CDATA[

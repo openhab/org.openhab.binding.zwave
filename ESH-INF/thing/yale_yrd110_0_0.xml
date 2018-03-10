@@ -103,7 +103,7 @@ Number of incorrect PINs before lockout<br /><h1>Overview</h1><p>Number of incor
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_7_1" type="integer" groupName="configuration"
+      <parameter name="config_7_1" type="integer" groupName="configuration" readOnly="true"
                  min="1" max="255">
         <label>7: Shutdown time</label>
         <description><![CDATA[

@@ -8,6 +8,7 @@
   <thing-type id="rtc_ct100plus_00_000" listed="false">
     <label>CT100 Plus Z-Wave Thermostat</label>
     <description>Z-Wave Thermostat</description>
+    <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -202,7 +203,7 @@ Reporting threshold for changes in the ambient temperature<br /><h1>Overview</h1
         </options>
       </parameter>
 
-      <parameter name="config_2_4" type="integer" groupName="configuration"
+      <parameter name="config_2_4" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="4294967295">
         <label>2: HVAC Settings</label>
         <description><![CDATA[
@@ -211,7 +212,7 @@ Configured HVAC settings<br /><h1>Overview</h1><p>Byte 1 = HVAC Setup: Normal (0
         <default>0</default>
       </parameter>
 
-      <parameter name="config_4_1" type="integer" groupName="configuration"
+      <parameter name="config_4_1" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="255">
         <label>4: Power Status</label>
         <description><![CDATA[
@@ -289,18 +290,6 @@ Fast or Economy recovery mode<br /><h1>Overview</h1><p>The Thermostat Recovery M
         </options>
       </parameter>
 
-      <parameter name="config_10_4" type="integer" groupName="configuration">
-        <label>10: Temperature Filter Lower Bound Unit</label>
-        <description><![CDATA[
-Upper/Lower bounds for thermostat temperature reporting<br /><h1>Overview</h1><p>Specifies unit for lower bound parameter. If set to 1, lower bound is Celsius. If set to 9, lower bound is Fahrenheit.</p>
-        ]]></description>
-        <default>1</default>
-        <options>
-          <option value="1">Celsius</option>
-          <option value="9">Fahreheit</option>
-        </options>
-      </parameter>
-
       <parameter name="config_10_4_000000FF" type="integer" groupName="configuration"
                  min="0" max="124">
         <label>10: Temperature Filter Upper Bound</label>
@@ -310,6 +299,18 @@ Upper/Lower bounds for thermostat temperature reporting<br /><h1>Overview</h1><p
         <default>0</default>
       </parameter>
 
+      <parameter name="config_10_4_0000F000" type="integer" groupName="configuration">
+        <label>10: Temperature Filter Lower Bound Unit</label>
+        <description><![CDATA[
+Upper/Lower bounds for thermostat temperature reporting<br /><h1>Overview</h1><p>Specifies unit for lower bound parameter. If set to 1, lower bound is Celsius. If set to 9, lower bound is Fahrenheit.</p>
+        ]]></description>
+        <default>9</default>
+        <options>
+          <option value="1">Celsius</option>
+          <option value="9">Fahreheit</option>
+        </options>
+      </parameter>
+
       <parameter name="config_10_4_0000FF00" type="integer" groupName="configuration">
         <label>10: Temperature Filter Upper Bound Unit</label>
         <description><![CDATA[
@@ -317,7 +318,7 @@ Upper/Lower bounds for thermostat temperature reporting<br /><h1>Overview</h1><p
         ]]></description>
         <default>9</default>
         <options>
-          <option value="0">Celsius</option>
+          <option value="1">Celsius</option>
           <option value="9">Fahrenheit</option>
         </options>
       </parameter>

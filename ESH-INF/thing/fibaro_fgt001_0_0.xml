@@ -152,7 +152,7 @@ This parameter allows to enable different additional functions of the device.<br
         <default>1</default>
       </parameter>
 
-      <parameter name="config_3_4" type="integer" groupName="configuration"
+      <parameter name="config_3_4" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="3">
         <label>3: Additional functions status (READ-ONLY)</label>
         <description><![CDATA[

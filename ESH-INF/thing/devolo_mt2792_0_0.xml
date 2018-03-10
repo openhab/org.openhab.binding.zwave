@@ -6,7 +6,7 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="devolo_mt2792_00_000" listed="false">
-    <label>MT2792 Home Control Metering Plug</label>
+    <label>MT02792 Home Control Metering Plug</label>
     <description>Home Control Metering Plug</description>
     <category>PowerOutlet</category>
 
@@ -83,7 +83,7 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Devolo</property>
-      <property name="modelId">MT2792</property>
+      <property name="modelId">MT02792</property>
       <property name="manufacturerId">0175</property>
       <property name="manufacturerRef">0001:0012</property>
       <property name="dbReference">618</property>

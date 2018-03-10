@@ -25,12 +25,6 @@
           <property name="binding:*:DecimalType">SCENE_ACTIVATION</property>
         </properties>
       </channel>
-      <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Binary Sensor</label>
-        <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
-        </properties>
-      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
