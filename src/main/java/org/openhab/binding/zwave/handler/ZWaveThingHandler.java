@@ -640,7 +640,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                 case "group":
                     if (cfg.length < 2) {
-                        logger.debug("NODE{}: Association invalid {}", nodeId, configurationParameter.getKey());
+                        logger.debug("NODE {}: Association invalid {}", nodeId, configurationParameter.getKey());
                         continue;
                     }
 
@@ -658,7 +658,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                     ZWaveAssociationGroup currentMembers = node.getAssociationGroup(groupIndex);
                     if (currentMembers == null) {
-                        logger.debug("NODE{}: Unknown association group {}", nodeId, groupIndex);
+                        logger.debug("NODE {}: Unknown association group {}", nodeId, groupIndex);
                         continue;
                     }
 
