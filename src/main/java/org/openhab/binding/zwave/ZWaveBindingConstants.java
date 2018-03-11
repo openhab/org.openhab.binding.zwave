@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-2017 by the respective copyright holders.
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,7 @@ public class ZWaveBindingConstants {
 
     public final static String CONFIGURATION_PORT = "port";
     public final static String CONFIGURATION_MASTER = "controller_master";
-    public final static String CONFIGURATION_SUC = "controller_suc";
+    public final static String CONFIGURATION_SISNODE = "controller_sisnode";
     public final static String CONFIGURATION_NETWORKKEY = "security_networkkey";
     public final static String CONFIGURATION_SECUREINCLUSION = "security_inclusionmode";
     public final static String CONFIGURATION_HEALTIME = "heal_time";
@@ -93,43 +93,43 @@ public class ZWaveBindingConstants {
     public final static String CHANNEL_CFG_BINDING = "binding";
     public final static String CHANNEL_CFG_COMMANDCLASS = "commandClass";
 
-    public final static String OFFLINE_CTLR_OFFLINE = "zwave.thingstate.controller_offline";
-    public final static String OFFLINE_NODE_DEAD = "zwave.thingstate.node_dead";
-    public final static String OFFLINE_NODE_NOTFOUND = "zwave.thingstate.node_notfound";
-    public final static String OFFLINE_SERIAL_EXISTS = "zwave.thingstate.serial_notfound";
-    public final static String OFFLINE_SERIAL_INUSE = "zwave.thingstate.serial_inuse";
-    public final static String OFFLINE_SERIAL_UNSUPPORTED = "zwave.thingstate.serial_unsupported";
-    public final static String OFFLINE_SERIAL_LISTENERS = "zwave.thingstate.serial_listeners";
+    public final static String OFFLINE_CTLR_OFFLINE = "@text/zwave.thingstate.controller_offline";
+    public final static String OFFLINE_NODE_DEAD = "@text/zwave.thingstate.node_dead";
+    public final static String OFFLINE_NODE_NOTFOUND = "@text/zwave.thingstate.node_notfound";
+    public final static String OFFLINE_SERIAL_EXISTS = "@text/zwave.thingstate.serial_notfound";
+    public final static String OFFLINE_SERIAL_INUSE = "@text/zwave.thingstate.serial_inuse";
+    public final static String OFFLINE_SERIAL_UNSUPPORTED = "@text/zwave.thingstate.serial_unsupported";
+    public final static String OFFLINE_SERIAL_LISTENERS = "@text/zwave.thingstate.serial_listeners";
 
-    public final static String EVENT_INCLUSION_STARTED = "zwave.event.inclusion_started";
-    public final static String EVENT_INCLUSION_COMPLETED = "zwave.event.inclusion_completed";
-    public final static String EVENT_INCLUSION_FAILED = "zwave.event.inclusion_failed";
-    public final static String EVENT_INCLUSION_SECURECOMPLETED = "zwave.event.inclusion_securecompleted";
-    public final static String EVENT_INCLUSION_SECUREFAILED = "zwave.event.inclusion_securefailed";
+    public final static String EVENT_INCLUSION_STARTED = "@text/zwave.event.inclusion_started";
+    public final static String EVENT_INCLUSION_COMPLETED = "@text/zwave.event.inclusion_completed";
+    public final static String EVENT_INCLUSION_FAILED = "@text/zwave.event.inclusion_failed";
+    public final static String EVENT_INCLUSION_SECURECOMPLETED = "@text/zwave.event.inclusion_securecompleted";
+    public final static String EVENT_INCLUSION_SECUREFAILED = "@text/zwave.event.inclusion_securefailed";
 
-    public final static String EVENT_EXCLUSION_STARTED = "zwave.event.exclusion_started";
-    public final static String EVENT_EXCLUSION_COMPLETED = "zwave.event.exclusion_completed";
-    public final static String EVENT_EXCLUSION_FAILED = "zwave.event.exclusion_failed";
-    public final static String EVENT_EXCLUSION_NODEREMOVED = "zwave.event.exclusion_failed";
+    public final static String EVENT_EXCLUSION_STARTED = "@text/zwave.event.exclusion_started";
+    public final static String EVENT_EXCLUSION_COMPLETED = "@text/zwave.event.exclusion_completed";
+    public final static String EVENT_EXCLUSION_FAILED = "@text/zwave.event.exclusion_failed";
+    public final static String EVENT_EXCLUSION_NODEREMOVED = "z@text/wave.event.exclusion_failed";
 
-    public final static String EVENT_NETWORKUPDATE_DONE = "zwave.event.networkupdate_done";
-    public final static String EVENT_NETWORKUPDATE_ABORT = "zwave.event.networkupdate_abort";
-    public final static String EVENT_NETWORKUPDATE_WAIT = "zwave.event.networkupdate_wait";
-    public final static String EVENT_NETWORKUPDATE_DISABLED = "zwave.event.networkupdate_disabled";
-    public final static String EVENT_NETWORKUPDATE_OVERFLOW = "zwave.event.networkupdate_overflow";
+    public final static String EVENT_NETWORKUPDATE_DONE = "@text/zwave.event.networkupdate_done";
+    public final static String EVENT_NETWORKUPDATE_ABORT = "@text/zwave.event.networkupdate_abort";
+    public final static String EVENT_NETWORKUPDATE_WAIT = "@text/zwave.event.networkupdate_wait";
+    public final static String EVENT_NETWORKUPDATE_DISABLED = "@text/zwave.event.networkupdate_disabled";
+    public final static String EVENT_NETWORKUPDATE_OVERFLOW = "@text/zwave.event.networkupdate_overflow";
 
-    public final static String EVENT_REMOVEFAILED_NOTFOUND = "zwave.event.removenode_notfound";
-    public final static String EVENT_REMOVEFAILED_NOTCTLR = "zwave.event.removenode_nocontroller";
-    public final static String EVENT_REMOVEFAILED_NOTREMOVED = "zwave.event.removenode_notremoved";
-    public final static String EVENT_REMOVEFAILED_NOCALLBACK = "zwave.event.removenode_nocallback";
-    public final static String EVENT_REMOVEFAILED_NODEOK = "zwave.event.removenode_nodeok";
-    public final static String EVENT_REMOVEFAILED_REMOVED = "zwave.event.removenode_removed";
-    public final static String EVENT_REMOVEFAILED_FAILED = "zwave.event.removenode_failed";
-    public final static String EVENT_REMOVEFAILED_BUSY = "zwave.event.removenode_busy";
-    public final static String EVENT_REMOVEFAILED_UNKNOWN = "zwave.event.removenode_unknown";
+    public final static String EVENT_REMOVEFAILED_NOTFOUND = "@text/zwave.event.removenode_notfound";
+    public final static String EVENT_REMOVEFAILED_NOTCTLR = "@text/zwave.event.removenode_nocontroller";
+    public final static String EVENT_REMOVEFAILED_NOTREMOVED = "@text/zwave.event.removenode_notremoved";
+    public final static String EVENT_REMOVEFAILED_NOCALLBACK = "@text/zwave.event.removenode_nocallback";
+    public final static String EVENT_REMOVEFAILED_NODEOK = "@text/zwave.event.removenode_nodeok";
+    public final static String EVENT_REMOVEFAILED_REMOVED = "@text/zwave.event.removenode_removed";
+    public final static String EVENT_REMOVEFAILED_FAILED = "@text/zwave.event.removenode_failed";
+    public final static String EVENT_REMOVEFAILED_BUSY = "@text/zwave.event.removenode_busy";
+    public final static String EVENT_REMOVEFAILED_UNKNOWN = "@text/zwave.event.removenode_unknown";
 
-    public final static String EVENT_HEAL_START = "zwave.event.heal_start";
-    public final static String EVENT_HEAL_DONE = "zwave.event.heal_done";
+    public final static String EVENT_HEAL_START = "@text/zwave.event.heal_start";
+    public final static String EVENT_HEAL_DONE = "@text/zwave.event.heal_done";
 
     public final static String CONFIG_BINDING_POLLINGPERIOD_LABEL = "@text/zwave.config.binding_pollingperiod_label";
     public final static String CONFIG_BINDING_POLLINGPERIOD_DESC = "@text/zwave.config.binding_pollingperiod_desc";

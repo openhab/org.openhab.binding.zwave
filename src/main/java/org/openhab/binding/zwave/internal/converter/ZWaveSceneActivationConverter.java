@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-2017 by the respective copyright holders.
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,6 @@ import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * ZWaveSceneConverter class. Converters between binding items and the Z-Wave API for scene controllers.
@@ -21,8 +19,6 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class ZWaveSceneActivationConverter extends ZWaveCommandClassConverter {
-
-    private final Logger logger = LoggerFactory.getLogger(ZWaveSceneActivationConverter.class);
 
     /**
      * Constructor. Creates a new instance of the {@link ZWaveConverterBase} class.

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-2017 by the respective copyright holders.
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,7 +38,6 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.AssignReturnRou
 import org.openhab.binding.zwave.internal.protocol.serialmessage.AssignSucReturnRouteMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ControllerSetDefaultMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.DeleteReturnRouteMessageClass;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.EnableSucMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.GetControllerCapabilitiesMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.GetRoutingInfoMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.GetSucNodeIdMessageClass;
@@ -72,9 +71,6 @@ public class ZWaveController {
     private final Logger logger = LoggerFactory.getLogger(ZWaveController.class);
 
     private static final int ZWAVE_RESPONSE_TIMEOUT = 5000;
-    // private static final int INITIAL_TX_QUEUE_SIZE = 128;
-    // private static final int INITIAL_RX_QUEUE_SIZE = 8;
-    // private static final long WATCHDOG_TIMER_PERIOD = 10000;
 
     public static final int TRANSMIT_OPTION_ACK = 0x01;
     public static final int TRANSMIT_OPTION_AUTO_ROUTE = 0x04;
@@ -94,7 +90,7 @@ public class ZWaveController {
     private int deviceId = 0;
     private int zwaveLibraryType = 0;
     private int sentDataPointer = 1;
-    private boolean setSUC = false;
+    private Integer sucNode = 0;
     private ZWaveDeviceType controllerType = ZWaveDeviceType.UNKNOWN;
     private int sucID = 0;
     private boolean softReset = false;
@@ -127,7 +123,7 @@ public class ZWaveController {
      */
     public ZWaveController(ZWaveIoHandler handler, Map<String, String> config) {
         masterController = "true".equals(config.get("masterController"));
-        setSUC = "true".equals(config.get("isSUC"));
+        sucNode = config.containsKey("sucNode") ? Integer.parseInt(config.get("sucNode")) : 0;
         softReset = "true".equals(config.get("softReset"));
         secureInclusionMode = config.containsKey("secureInclusion") ? Integer.parseInt(config.get("secureInclusion"))
                 : 0;
@@ -141,7 +137,7 @@ public class ZWaveController {
 
         logger.info("Starting ZWave controller");
 
-        if (timeout != null && timeout >= 1500 && timeout <= 10000) {
+        if (timeout >= 1500 && timeout <= 10000) {
             zWaveResponseTimeout = timeout;
         }
         logger.info("ZWave timeout is set to {}ms. Soft reset is {}.", zWaveResponseTimeout, softReset);
@@ -157,9 +153,6 @@ public class ZWaveController {
     private class InitializeDelayTask extends TimerTask {
         private final Logger logger = LoggerFactory.getLogger(InitializeDelayTask.class);
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void run() {
             logger.debug("Initialising network");
@@ -224,8 +217,7 @@ public class ZWaveController {
         try {
             processor.handleRequest(this, transaction, incomingMessage);
         } catch (ZWaveSerialMessageException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            logger.error("Exception processing frame", e);
         }
     }
 
@@ -265,17 +257,15 @@ public class ZWaveController {
                 // Remember the SUC ID
                 sucID = ((GetSucNodeIdMessageClass) processor).getSucNodeId();
 
-                // If we want to be the SUC, enable it here
-                if (setSUC == true && sucID == 0) {
-                    // We want to be SUC
-                    enqueue(new EnableSucMessageClass().doRequest(EnableSucMessageClass.SUCType.SERVER));
-                    enqueue(new SetSucNodeMessageClass().doRequest(ownNodeId, SetSucNodeMessageClass.SUCType.SERVER));
-                } else if (setSUC == false && sucID == ownNodeId) {
-                    // We don't want to be SUC, but we currently are!
-                    // Disable SERVER functionality, and set the node to 0
-                    enqueue(new EnableSucMessageClass().doRequest(EnableSucMessageClass.SUCType.NONE));
-                    enqueue(new SetSucNodeMessageClass().doRequest(ownNodeId, SetSucNodeMessageClass.SUCType.NONE));
+                // If there is no SUC in the network, then assign us as SUC
+                if (sucID == 0) {
+                    sucNode = getOwnNodeId();
                 }
+
+                if (sucID != sucNode) {
+                    setSucNode(sucNode);
+                }
+
                 enqueue(new GetControllerCapabilitiesMessageClass().doRequest());
                 break;
             case GetControllerCapabilities:
@@ -524,6 +514,15 @@ public class ZWaveController {
      */
     public @Nullable ZWaveTransactionResponse sendTransaction(ZWaveMessagePayloadTransaction transaction) {
         return transactionManager.sendTransaction(transaction);
+    }
+
+    /**
+     * Sets the SUC node ID. If the node ID is our node, then we enable server capabilities
+     *
+     * @param sucNodeId
+     */
+    public void setSucNode(int sucNodeId) {
+        enqueue(new SetSucNodeMessageClass().doRequest(sucNodeId, true));
     }
 
     /**

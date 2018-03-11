@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-2017 by the respective copyright holders.
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,6 @@ import java.util.Map;
 
 import org.eclipse.smarthome.config.core.Configuration;
 import org.eclipse.smarthome.config.core.status.ConfigStatusMessage;
-import org.eclipse.smarthome.core.i18n.TranslationProvider;
 import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.thing.ThingUID;
 import org.eclipse.smarthome.core.thing.binding.ThingHandlerCallback;
@@ -50,8 +49,8 @@ public class ZWaveThingHandlerTest {
 
     class ZWaveThingHandlerForTest extends ZWaveThingHandler {
 
-        public ZWaveThingHandlerForTest(Thing zwaveDevice, TranslationProvider translationProvider) {
-            super(zwaveDevice, translationProvider);
+        public ZWaveThingHandlerForTest(Thing zwaveDevice) {
+            super(zwaveDevice);
         }
 
         @Override
@@ -69,7 +68,7 @@ public class ZWaveThingHandlerTest {
         ZWaveController controller = Mockito.mock(ZWaveController.class);
 
         ThingHandlerCallback thingCallback = Mockito.mock(ThingHandlerCallback.class);
-        ZWaveThingHandler thingHandler = new ZWaveThingHandlerForTest(thing, null);
+        ZWaveThingHandler thingHandler = new ZWaveThingHandlerForTest(thing);
         thingHandler.setCallback(thingCallback);
         ArgumentCaptor<ZWaveCommandClassTransactionPayload> payloadCaptor;
         payloadCaptor = ArgumentCaptor.forClass(ZWaveCommandClassTransactionPayload.class);

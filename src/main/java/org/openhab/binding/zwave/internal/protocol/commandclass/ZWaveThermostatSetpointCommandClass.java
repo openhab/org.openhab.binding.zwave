@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-2017 by the respective copyright holders.
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -74,17 +74,11 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
         super(node, controller, endpoint);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public CommandClass getCommandClass() {
         return CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public int getMaxVersion() {
         return 2;
@@ -168,9 +162,6 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Collection<ZWaveCommandClassTransactionPayload> initialize(boolean refresh) {
         ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
@@ -180,9 +171,6 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Collection<ZWaveCommandClassTransactionPayload> getDynamicValues(boolean refresh) {
         ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();

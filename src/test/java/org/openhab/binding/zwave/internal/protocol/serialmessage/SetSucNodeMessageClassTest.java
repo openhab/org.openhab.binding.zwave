@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-2017 by the respective copyright holders.
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,8 +14,6 @@ import java.util.Arrays;
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.SetSucNodeMessageClass;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.SetSucNodeMessageClass.SUCType;
 
 /**
  * Test cases for SetSucNodeMessageClass message.
@@ -27,17 +25,17 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.SetSucNodeMessa
 public class SetSucNodeMessageClassTest {
     @Test
     public void doRequest() {
-        byte[] expectedResponseNone = { 12, 1, 0, 0 };
+        byte[] expectedResponseNone = { 12, 1, 0, 1 };
         byte[] expectedResponseBasic = { 12, 0, 0, 0 };
 
         ZWaveSerialPayload msg;
         SetSucNodeMessageClass handler = new SetSucNodeMessageClass();
 
-        msg = handler.doRequest(12, SUCType.BASIC);
+        msg = handler.doRequest(12, true);
         assertEquals(msg.getSerialMessageClass(), SerialMessageClass.SetSucNodeID);
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseNone));
 
-        msg = handler.doRequest(12, SUCType.NONE);
+        msg = handler.doRequest(12, false);
         assertEquals(msg.getSerialMessageClass(), SerialMessageClass.SetSucNodeID);
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseBasic));
     }

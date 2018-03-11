@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-2017 by the respective copyright holders.
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -277,7 +277,6 @@ public class ZWaveNodeInitStageAdvancer {
                 try {
                     Thread.sleep(backoff);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
                     break;
                 }
             }
@@ -608,7 +607,7 @@ public class ZWaveNodeInitStageAdvancer {
                                     zwaveVersionClass.setVersion(Integer.parseInt(args[1]));
                                 } catch (NumberFormatException e) {
                                     logger.error("NODE {}: Node advancer: VERSION - number format exception {}",
-                                            args[1]);
+                                            node.getNodeId(), args[1]);
                                 }
                             }
                         }
@@ -929,7 +928,7 @@ public class ZWaveNodeInitStageAdvancer {
                     // Check if there's another node set
                     if (associationGroup.getAssociationCnt() != 0) {
                         logger.debug("NODE {}: Node advancer: SET_LIFELINE - ASSOCIATION clearing group {}",
-                                node.getNodeId(), association, associationGroup.getIndex());
+                                node.getNodeId(), associationGroup.getIndex());
                         processTransaction(node.clearAssociation(associationGroup.getIndex()));
                         if (initRunning == false) {
                             return;

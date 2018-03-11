@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-2017 by the respective copyright holders.
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,17 +8,11 @@
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
 import java.security.GeneralSecurityException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
@@ -103,9 +97,6 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
         super(node, controller, endpoint);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public CommandClass getCommandClass() {
         return CommandClass.COMMAND_CLASS_SECURITY;
@@ -341,14 +332,8 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
                     SerialMessage.bb2hex((byte[]) response.get("COMMAND_BYTE")));
 
             return (byte[]) response.get("COMMAND_BYTE");
-        } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        } catch (InvalidAlgorithmParameterException e) {
-            e.printStackTrace();
         } catch (GeneralSecurityException e) {
-            e.printStackTrace();
+            logger.error("NODE {}: Error decapsulating security message", getNode().getNodeId(), e);
         }
 
         return null;
@@ -390,20 +375,8 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
             theirNonce = null;
 
             return securePayload;
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        } catch (InvalidAlgorithmParameterException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
-            e.printStackTrace();
         } catch (GeneralSecurityException e) {
-            e.printStackTrace();
+            logger.error("NODE {}: Error encapsulating security message", getNode().getNodeId(), e);
         }
         return null;
     }

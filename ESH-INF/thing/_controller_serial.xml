@@ -62,24 +62,19 @@
                 <advanced>true</advanced>
             </parameter>
 
-            <parameter name="controller_suc" type="boolean" groupName="network">
-                <label>Controller is SUC</label>
-                <description>Controller is SUC and will receive updates from other controllers in the network</description>
-                <options>
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
-                </options>
-                <default>false</default>
+            <parameter name="controller_sisnode" type="integer" groupName="network" min="1" max="232">
+                <label>SIS Node</label>
+                <description>Set node for SIS that will receive updates from other controllers in the network. If there is no SIS in the network, the controller will be set as SIS.</description>
                 <advanced>true</advanced>
             </parameter>
-            
+
             <parameter name="controller_inclusiontimeout" type="integer" groupName="network" min="20" max="300">
                 <label>Inclusion Mode Timeout</label>
                 <description>Sets the amount of time the controller will keep inclusion and exclusion mode enabled.</description>
                 <default>30</default>
                 <advanced>true</advanced>
             </parameter>
-            
+
             <parameter name="controller_wakeupperiod" type="integer" groupName="network" min="60" max="86400">
                 <label>Default Wakeup Period</label>
                 <description>Sets the system wide default wakeup period for battery devices (in seconds).</description>
@@ -201,7 +196,14 @@ In this mode, only <i>Entry Control Devices</i> such as locks will be securely i
                 <advanced>true</advanced>
                 <default></default>
             </parameter>
-            
+
+            <parameter name="node_id" type="integer" groupName="network" min="0" max="0">
+                <label>Node ID</label>
+                <description>Controller is SUC or SIS and will receive updates from other controllers in the network</description>
+                <default>0</default>
+                <advanced>true</advanced>
+            </parameter>
+
         </config-description>
     </bridge-type>
 

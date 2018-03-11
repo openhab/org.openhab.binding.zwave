@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-2017 by the respective copyright holders.
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -1307,7 +1307,7 @@ public class ZWaveNode {
             try {
                 zwaveCommandClass.handleApplicationCommandRequest(command, endpoint.getEndpointId());
             } catch (ZWaveSerialMessageException e) {
-                e.printStackTrace();
+                logger.error("Exception processing frame", e);
             }
         }
 
@@ -1351,6 +1351,13 @@ public class ZWaveNode {
         // Don't do anything if this node is listening
         if (listening == true || frequentlyListening == true) {
             logger.debug("NODE {}: Node is listening - ignore wakeup", getNodeId());
+            return;
+        }
+
+        ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) getEndpoint(0)
+                .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP);
+        if (wakeUpCommandClass == null) {
+            logger.debug("NODE {}: Node doesn't support WAKEUP - ignore wakeup", getNodeId());
             return;
         }
 
@@ -1409,7 +1416,6 @@ public class ZWaveNode {
                 awake = true;
             }
 
-            logger.debug("NODE {}: Creating WakeupTimerTask", getNodeId());
             triggered = false;
         }
 
