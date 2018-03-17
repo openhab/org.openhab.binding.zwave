@@ -8,6 +8,7 @@
   <thing-type id="aeon_dsc06_00_000" listed="false">
     <label>DSC06 Smart Energy Switch</label>
     <description>Smart Energy Switch</description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -184,10 +185,11 @@ Minimum change in wattage % to trigger event<br /><h1>Overview</h1><p>The value 
       <!-- ACTION DEFINITIONS -->
 
       <parameter name="config_100_1_wo" type="integer" groupName="configuration">
-        <label>100: Set 100 to 103 to default</label>
+        <label>100: Set 101 to 103 to default values</label>
         <default>0</default>
         <options>
-          <option value="0">Reset</option>
+          <option value="0">No change</option>
+          <option value="1">Reset</option>
         </options>
       </parameter>
 
@@ -195,7 +197,8 @@ Minimum change in wattage % to trigger event<br /><h1>Overview</h1><p>The value 
         <label>110: Set 111 to 113 to default</label>
         <default>0</default>
         <options>
-          <option value="0">Reset</option>
+          <option value="0">No change</option>
+          <option value="1">Reset</option>
         </options>
       </parameter>
 
@@ -203,7 +206,8 @@ Minimum change in wattage % to trigger event<br /><h1>Overview</h1><p>The value 
         <label>255: Device Reset</label>
         <default>0</default>
         <options>
-          <option value="0">Reset</option>
+          <option value="0">No change</option>
+          <option value="1">Reset</option>
         </options>
       </parameter>
 
