@@ -440,8 +440,7 @@ public class ZWaveTransactionManager {
                                 commands = node.processCommand(new ZWaveCommandClassPayload(incomingMessage));
                             } catch (Exception e) {
                                 commands = null;
-                                logger.error("Exception processing frame: {}", incomingMessage);
-                                logger.error("Exception processing frame: ", e);
+                                logger.error("Exception processing frame: {}: ", incomingMessage, e);
                             }
                             if (commands != null) {
                                 logger.debug("NODE {}: Commands processed {}.", nodeId, commands.size());
@@ -1030,7 +1029,7 @@ public class ZWaveTransactionManager {
 
     /**
      * Sends a transaction and waits for the response.
-     * 
+     *
      * @param transaction {@link ZWaveMessagePayloadTransaction} to send
      * @return The {@link ZWaveTransactionResponse} or null if there was an error
      */

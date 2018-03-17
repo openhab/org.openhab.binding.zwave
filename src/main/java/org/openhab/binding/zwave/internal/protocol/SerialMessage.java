@@ -432,7 +432,7 @@ public class SerialMessage {
      * @param callbackId the callbackId to set
      */
     public void setCallbackId(int callbackId) {
-        // this.callbackId = callbackId;
+        this.callbackId = callbackId;
         // callbackSequence.set(callbackId);
     }
 

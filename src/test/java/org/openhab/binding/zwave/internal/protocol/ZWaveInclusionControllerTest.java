@@ -56,7 +56,7 @@ public class ZWaveInclusionControllerTest {
 
         assertEquals(1, txCapture.getAllValues().size());
         txFrame = txCapture.getAllValues().get(0);
-        assertTrue(Arrays.equals(new byte[] { -63, 1 }, txFrame.getPayloadBuffer()));
+        assertTrue(Arrays.equals(new byte[] { -63 }, txFrame.getPayloadBuffer()));
 
         inclusionController.ZWaveIncomingEvent(new ZWaveInclusionEvent(ZWaveInclusionState.IncludeStart));
         assertEquals(ZWaveInclusionState.IncludeStart, inclusionController.getState());
@@ -83,14 +83,16 @@ public class ZWaveInclusionControllerTest {
 
         assertEquals(2, txCapture.getAllValues().size());
         txFrame = txCapture.getAllValues().get(1);
-        assertTrue(Arrays.equals(new byte[] { 5, 1 }, txFrame.getPayloadBuffer()));
+        assertTrue(Arrays.equals(new byte[] { 5 }, txFrame.getPayloadBuffer()));
+        assertTrue(txFrame.getSerialMessage().getCallbackId() != 0);
 
         inclusionController.ZWaveIncomingEvent(new ZWaveInclusionEvent(ZWaveInclusionState.IncludeDone));
         assertEquals(ZWaveInclusionState.IncludeDone, inclusionController.getState());
 
         assertEquals(3, txCapture.getAllValues().size());
         txFrame = txCapture.getAllValues().get(2);
-        assertTrue(Arrays.equals(new byte[] { 5, 0 }, txFrame.getPayloadBuffer()));
+        assertTrue(Arrays.equals(new byte[] { 5 }, txFrame.getPayloadBuffer()));
+        assertTrue(txFrame.getSerialMessage().getCallbackId() == 0);
 
         Mockito.verify(controller, Mockito.times(1)).includeDone();
         Mockito.verify(controller, Mockito.times(1)).removeEventListener(listenerCapture.capture());
@@ -119,7 +121,7 @@ public class ZWaveInclusionControllerTest {
 
         assertEquals(1, txCapture.getAllValues().size());
         txFrame = txCapture.getAllValues().get(0);
-        assertTrue(Arrays.equals(new byte[] { 1, 1 }, txFrame.getPayloadBuffer()));
+        assertTrue(Arrays.equals(new byte[] { 1 }, txFrame.getPayloadBuffer()));
 
         inclusionController.ZWaveIncomingEvent(new ZWaveInclusionEvent(ZWaveInclusionState.ExcludeStart));
         assertEquals(ZWaveInclusionState.ExcludeStart, inclusionController.getState());
@@ -136,7 +138,8 @@ public class ZWaveInclusionControllerTest {
 
         assertEquals(2, txCapture.getAllValues().size());
         txFrame = txCapture.getAllValues().get(1);
-        assertTrue(Arrays.equals(new byte[] { 5, 0 }, txFrame.getPayloadBuffer()));
+        assertTrue(Arrays.equals(new byte[] { 5 }, txFrame.getPayloadBuffer()));
+        assertTrue(txFrame.getSerialMessage().getCallbackId() == 0);
 
         Mockito.verify(controller, Mockito.times(1)).includeDone();
         Mockito.verify(controller, Mockito.times(1)).removeEventListener(listenerCapture.capture());
@@ -165,7 +168,7 @@ public class ZWaveInclusionControllerTest {
 
         assertEquals(1, txCapture.getAllValues().size());
         txFrame = txCapture.getAllValues().get(0);
-        assertTrue(Arrays.equals(new byte[] { -63, 1 }, txFrame.getPayloadBuffer()));
+        assertTrue(Arrays.equals(new byte[] { -63 }, txFrame.getPayloadBuffer()));
 
         inclusionController.ZWaveIncomingEvent(new ZWaveInclusionEvent(ZWaveInclusionState.IncludeStart));
         assertEquals(ZWaveInclusionState.IncludeStart, inclusionController.getState());
@@ -209,7 +212,7 @@ public class ZWaveInclusionControllerTest {
 
         assertEquals(1, txCapture.getAllValues().size());
         txFrame = txCapture.getAllValues().get(0);
-        assertTrue(Arrays.equals(new byte[] { -63, 1 }, txFrame.getPayloadBuffer()));
+        assertTrue(Arrays.equals(new byte[] { -63 }, txFrame.getPayloadBuffer()));
 
         inclusionController.ZWaveIncomingEvent(new ZWaveInclusionEvent(ZWaveInclusionState.IncludeStart));
         assertEquals(ZWaveInclusionState.IncludeStart, inclusionController.getState());
@@ -220,7 +223,8 @@ public class ZWaveInclusionControllerTest {
 
         assertEquals(2, txCapture.getAllValues().size());
         txFrame = txCapture.getAllValues().get(1);
-        assertTrue(Arrays.equals(new byte[] { 5, 1 }, txFrame.getPayloadBuffer()));
+        assertTrue(Arrays.equals(new byte[] { 5 }, txFrame.getPayloadBuffer()));
+        assertTrue(txFrame.getSerialMessage().getCallbackId() != 0);
     }
 
 }

@@ -21,6 +21,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionP
  */
 public class ZWaveSerialPayload implements ZWaveMessagePayloadTransaction {
     private int nodeId = 255;
+    private int callbackId = -1;
     private final byte[] payload;
     private SerialMessageClass messageClass;
     private SerialMessageClass responseClass;
@@ -76,6 +77,9 @@ public class ZWaveSerialPayload implements ZWaveMessagePayloadTransaction {
     public SerialMessage getSerialMessage() {
         SerialMessage msg = new SerialMessage(messageClass, SerialMessageType.Request);
         msg.setMessagePayload(payload);
+        if (callbackId != -1) {
+            msg.setCallbackId(callbackId);
+        }
 
         return msg;
     }
@@ -109,5 +113,9 @@ public class ZWaveSerialPayload implements ZWaveMessagePayloadTransaction {
     @Override
     public void setMaxAttempts(int maxAttempts) {
         this.maxAttempts = maxAttempts;
+    }
+
+    public void setCallbackId(int callbackId) {
+        this.callbackId = callbackId;
     }
 }
