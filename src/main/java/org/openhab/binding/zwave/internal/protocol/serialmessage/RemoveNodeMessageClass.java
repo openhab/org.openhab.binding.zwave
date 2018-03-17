@@ -42,16 +42,20 @@ public class RemoveNodeMessageClass extends ZWaveCommandProcessor {
         logger.debug("Setting controller into EXCLUSION mode.");
 
         // Create the request
-        return new ZWaveTransactionMessageBuilder(SerialMessageClass.RemoveNodeFromNetwork)
-                .withPayload(REMOVE_NODE_ANY, 1).withRequiresData(false).build();
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.RemoveNodeFromNetwork).withPayload(REMOVE_NODE_ANY)
+                .withRequiresData(false).build();
     }
 
     public ZWaveSerialPayload doRequestStop(boolean complete) {
         logger.debug("Ending EXCLUSION mode.");
 
-        // Create the request
-        return new ZWaveTransactionMessageBuilder(SerialMessageClass.RemoveNodeFromNetwork)
-                .withPayload(REMOVE_NODE_STOP, complete ? 0 : 1).withRequiresData(false).build();
+        ZWaveSerialPayload payload = new ZWaveTransactionMessageBuilder(SerialMessageClass.RemoveNodeFromNetwork)
+                .withPayload(REMOVE_NODE_STOP).withRequiresData(false).build();
+
+        if (complete) {
+            payload.setCallbackId(0);
+        }
+        return payload;
     }
 
     @Override

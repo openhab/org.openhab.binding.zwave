@@ -62,7 +62,7 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
             command |= OPTION_NETWORK_WIDE;
         }
 
-        return new ZWaveTransactionMessageBuilder(SerialMessageClass.AddNodeToNetwork).withPayload(command, 1)
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.AddNodeToNetwork).withPayload(command)
                 .withRequiresData(false).build();
     }
 
@@ -70,8 +70,13 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
         logger.debug("Ending INCLUSION mode.");
 
         // Create the request
-        return new ZWaveTransactionMessageBuilder(SerialMessageClass.AddNodeToNetwork)
-                .withPayload(ADD_NODE_STOP, complete ? 0 : 1).withRequiresData(false).build();
+        ZWaveSerialPayload payload = new ZWaveTransactionMessageBuilder(SerialMessageClass.AddNodeToNetwork)
+                .withPayload(ADD_NODE_STOP).withRequiresData(false).build();
+
+        if (complete) {
+            payload.setCallbackId(0);
+        }
+        return payload;
     }
 
     @Override
