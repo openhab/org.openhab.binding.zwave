@@ -8,6 +8,7 @@
   <thing-type id="ge_zw6302_00_000" listed="false">
     <label>ZW6302 Portable Smart Motion Sensor</label>
     <description>Portable Smart Motion Sensor</description>
+    <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
