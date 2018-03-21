@@ -181,7 +181,7 @@
       </parameter>
 
       <parameter name="config_6_2" type="integer" groupName="configuration"
-                 min="1" max="255">
+                 min="0" max="255">
         <label>6: Dimming Step Timing at Automatic Control</label>
         <description>The parameter defines the time of a dimming step at automatic control. Available settings: 0-255 (0s - 2,55s)</description>
         <default>1</default>
@@ -195,7 +195,7 @@
       </parameter>
 
       <parameter name="config_8_2" type="integer" groupName="configuration"
-                 min="1" max="255">
+                 min="0" max="255">
         <label>8: Dimming Step Timing at Manual Control</label>
         <description>The parameter defines the time of a dimming step at manual control. Available settings: 0-255 (0s - 2,55s)</description>
         <default>5</default>

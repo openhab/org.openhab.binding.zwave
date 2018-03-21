@@ -10,6 +10,7 @@
     <description><![CDATA[
 Smart Strip<br /><h1>Overview</h1><p>Update command classes -:<br />METER:5 :: ADD<br />METER:6 :: ADD</p>
     ]]></description>
+    <category>LightBulb</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
