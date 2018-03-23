@@ -168,7 +168,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         logger.debug("NODE {}: Alarm Type = {} ({})", getNode().getNodeId(), alarmType, v1AlarmTypeCode);
 
         ZWaveAlarmValueEvent event = new ZWaveAlarmValueEvent(getNode().getNodeId(), endpoint, eventType, alarmType,
-                v1AlarmTypeCode, notificationEvent, notificationStatus);
+                v1AlarmTypeCode, v1AlarmLevel, notificationEvent, notificationStatus);
         if (parameters != null) {
             event.setParameters(parameters);
         }
@@ -513,6 +513,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         private int alarmEvent;
         private int alarmStatus;
         private int v1AlarmCode;
+        private int v1AlarmLevel;
         private int[] parameters;
 
         /**
@@ -527,13 +528,14 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
          * @param alarmStatus
          */
         public ZWaveAlarmValueEvent(int nodeId, int endpoint, ReportType eventType, AlarmType alarmType,
-                int v1AlarmCode, int alarmEvent, int alarmStatus) {
+                int v1AlarmCode, int v1AlarmLevel, int alarmEvent, int alarmStatus) {
             super(nodeId, endpoint, CommandClass.COMMAND_CLASS_ALARM, alarmStatus);
             this.eventType = eventType;
             this.alarmType = alarmType;
             this.alarmEvent = alarmEvent;
             this.alarmStatus = alarmStatus;
             this.v1AlarmCode = v1AlarmCode;
+            this.v1AlarmLevel = v1AlarmLevel;
         }
 
         public void setParameters(int[] parameters) {
@@ -574,6 +576,10 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
 
         public int getV1AlarmCode() {
             return v1AlarmCode;
+        }
+
+        public int getV1AlarmLevel() {
+            return v1AlarmLevel;
         }
 
         @Override

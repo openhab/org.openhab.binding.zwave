@@ -63,7 +63,7 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         ZWaveEndpoint endpoint = Mockito.mock(ZWaveEndpoint.class);
         ZWaveAlarmCommandClass cls = new ZWaveAlarmCommandClass(node, controller, endpoint);
 
-        return cls.new ZWaveAlarmValueEvent(1, 0, reportType, type, 0, event, status);
+        return cls.new ZWaveAlarmValueEvent(1, 0, reportType, type, 0, 0, event, status);
     }
 
     private ZWaveCommandClassValueEvent createEvent(Integer v1Code, Integer value) {
@@ -72,7 +72,7 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         ZWaveEndpoint endpoint = Mockito.mock(ZWaveEndpoint.class);
         ZWaveAlarmCommandClass cls = new ZWaveAlarmCommandClass(node, controller, endpoint);
 
-        return cls.new ZWaveAlarmValueEvent(1, 0, ReportType.ALARM, null, v1Code, 0, value);
+        return cls.new ZWaveAlarmValueEvent(1, 0, ReportType.ALARM, null, v1Code, 0, 0, value);
     }
 
     @Test
@@ -279,7 +279,7 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         StringType state = (StringType) converter.handleEvent(channel, event);
 
         assertEquals(
-                "{\"notification\":\"ACCESS_CONTROL__KEYPAD_UNLOCK\",\"type\":\"ACCESS_CONTROL\",\"event\":\"6\",\"status\":\"255\"}",
+                "{\"notification\":\"ACCESS_CONTROL__KEYPAD_UNLOCK\",\"level\":\"0\",\"type\":\"ACCESS_CONTROL\",\"event\":\"6\",\"status\":\"255\"}",
                 state.toString());
     }
 

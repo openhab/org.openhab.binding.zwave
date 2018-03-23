@@ -340,4 +340,26 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
         assertEquals(0xff, event.getAlarmStatus());
     }
 
+    @Test
+    public void Notification_DoorV4() {
+        byte[] packetData = { 0x01, 0x10, 0x00, 0x04, 0x00, 0x2D, 0x0E, 0x71, 0x05, 0x13, 0x01, 0x00, (byte) 0xFF, 0x06,
+                0x06, 0x04, 0x63, 0x03, 0x01, 0x01, 0x00, 0x35 };
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData, 4);
+
+        assertEquals(events.size(), 1);
+
+        ZWaveAlarmValueEvent event = (ZWaveAlarmValueEvent) events.get(0);
+
+        // assertEquals(event.getNodeId(), 40);
+        assertEquals(event.getEndpoint(), 0);
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_ALARM);
+        assertEquals(event.getReportType(), ReportType.NOTIFICATION);
+        assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.ACCESS_CONTROL);
+        assertEquals(event.getAlarmStatus(), 0xFF);
+        assertEquals(event.getV1AlarmCode(), 19);
+        assertEquals(event.getV1AlarmLevel(), 1);
+        assertTrue(Arrays.equals(new int[] { 0x63, 0x03, 0x01, 0x01 }, event.getParameters()));
+    }
+
 }

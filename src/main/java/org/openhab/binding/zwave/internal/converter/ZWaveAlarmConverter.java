@@ -273,6 +273,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                 object.put("type", eventAlarm.getAlarmType());
                 object.put("event", eventAlarm.getAlarmEvent());
                 object.put("status", eventAlarm.getAlarmStatus());
+                object.put("level", eventAlarm.getV1AlarmLevel());
 
                 NotificationEvent notificationEvent = NotificationEvent.getEvent(eventAlarm.getAlarmType().toString(),
                         eventAlarm.getAlarmEvent());
