@@ -10,6 +10,7 @@
     <description><![CDATA[
 PIR Motion Sensor<br /><h2>Inclusion Information</h2><p>1. Remove the sensor cover.</p> <p>2. Make sure the sensor is powered.</p> <p>3. Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or</p> <p>gateway operating manual)</p> <p>4. Press the button three times within 1.5 second, the device will enter inclusion mode. And the</p> <p>LED will flash on and off alternately five times..</p> <br /><h2>Exclusion Information</h2><p>1. Remove the device cover.</p> <p>2. Make sure the sensor is powered.</p> <p>3. Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or</p> <p>gateway operating manual)</p> <p>4. Press the button three times within 1.5 second, the device will enter exclusion mode.</p> <br /><h2>Wakeup Information</h2><p>You can press the button once to wake up the device and send wakeup notification to controller.</p> <p>If press successfully, the LED will blink one time.</p> <p>The minimum wakeup interval is 300s</p> <p>The maximum wakeup interval is 16,777,200s (about 194 days)</p> <p>Allowable interval among each wakeup interval is 60 second, such as 360, 420, 480…</p> <p>Note: The default value is 12 hours. This value is longer, the battery life is greater.</p>
     ]]></description>
+    <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -49,7 +50,7 @@ PIR Motion Sensor<br /><h2>Inclusion Information</h2><p>1. Remove the sensor cov
       <property name="vendor">Shenzhen Neo Electronics Co., Ltd</property>
       <property name="modelId">Motion Sensor</property>
       <property name="manufacturerId">0258</property>
-      <property name="manufacturerRef">0003:1083</property>
+      <property name="manufacturerRef">0003:0083,0003:1083</property>
       <property name="dbReference">401</property>
       <property name="defaultAssociations">1</property>
     </properties>
