@@ -6,7 +6,7 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="permundo_psc132zw_00_000" listed="false">
-    <label>PSC132-ZW Metering Relay Switch, 16A</label>
+    <label>PSC132ZW Metering Relay Switch, 16A</label>
     <description><![CDATA[
 Metering Relay Switch, 16A<br /><h1>Overview</h1><p>The wireless flush-mount switching actuator PSC132ZW allows you to remotely control electrical appliances. It features a metering function to measure the power consumption and the accumulated energy usage of connected equipment. The built-in metering unit is of high quality: it calculates the true-power and also works for small loads from 1W upwards. This feature is important to have a correct measurement value also for electronic loads like led lamps.</p> <p>The PSC132ZW has a built-in safety features that will switch-off the output in case of too high temperature or overload.</p> <p>Additionally the PSC132 has a feature to switch the load on at zero voltage and switch the load off at zero current. This leads to a very high number of possible switching cycles also for difficult loads like led-lamps or motors, e.g. pumps.</p> <br /><h2>Inclusion Information</h2><p>When a PS132ZW that is not associated to a Z-Wave network is inserted into the mains outlet, it will flash once red followed by 2 green flashes followed by steady red flashing. The PSC132ZW can now be added to (=inclusion) or removed from (=exclusion) a Z-Wave network:</p> <ol><li>start inclusion/exclusion on the primary controller</li> <li>hold the touch button until the led shows green light</li> <li>release the touch button</li> </ol><p>The PSC132ZW will confirm successful addition to the network by 5 green flashes.</p> <br /><h2>Exclusion Information</h2><p>When a PS132ZW that is not associated to a Z-Wave network is inserted into the mains outlet, it will flash once red followed by 2 green flashes followed by steady red flashing. The PSC132ZW can now be added to (=inclusion) or removed from (=exclusion) a Z-Wave network:</p> <ol><li>start inclusion/exclusion on the primary controller</li> <li>hold the touch button until the led shows green light</li> <li>release the touch button</li> </ol><p>The PSC132ZW will confirm successful removal/exclusion by steady red flashing. At the time of exclusion the device is factory reset.</p>
     ]]></description>
@@ -37,7 +37,7 @@ Metering Relay Switch, 16A<br /><h1>Overview</h1><p>The wireless flush-mount swi
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">permundo GmbH</property>
-      <property name="modelId">PSC132-ZW</property>
+      <property name="modelId">PSC132ZW</property>
       <property name="manufacturerId">0245</property>
       <property name="manufacturerRef">0003:0002</property>
       <property name="dbReference">820</property>
