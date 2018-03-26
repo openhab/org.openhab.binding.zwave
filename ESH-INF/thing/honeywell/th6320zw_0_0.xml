@@ -116,12 +116,40 @@
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
-      <parameter name="config_2_1" type="integer" groupName="configuration"
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: Schedule Type</label>
+        <description>On-thermostat schedule type</description>
+        <default>2</default>
+        <options>
+          <option value="0">No schedule on thermostat</option>
+          <option value="1">Single schedule</option>
+          <option value="2">5-2 schedule</option>
+          <option value="3">5-1-1 schedule</option>
+          <option value="4">Every day unique schedule</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_10_1" type="integer" groupName="configuration">
+        <label>10: EM Heat Type</label>
+        <default>0</default>
+        <options>
+          <option value="0">Electric</option>
+          <option value="1">Gas/Oil</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_11_1" type="integer" groupName="configuration">
+        <label>11: Fossil Kit Control</label>
+        <default>0</default>
+        <options>
+          <option value="0">Thermostat</option>
+          <option value="1">External</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_12_1" type="integer" groupName="configuration"
                  min="0" max="1">
-        <label>2: Temperature Scale</label>
-        <description><![CDATA[
-Temperature Scale<br /><h1>Overview</h1><p>0 = Fahrenheit / 1 = Celsius</p>
-        ]]></description>
+        <label>12: Auto Changeover</label>
         <default>0</default>
       </parameter>
 

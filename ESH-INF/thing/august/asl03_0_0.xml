@@ -62,9 +62,9 @@ battery status, door lock operation status, and device reset locally<br /><h1>Ov
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: report2</label>
+        <label>2: Report 2</label>
         <description><![CDATA[
-door lock operation status<br /><h1>Overview</h1><p>The Doorlock Op group on this lock is used to report door lock operation status to nodes on the group list.</p>
+Door lock operation status<br /><h1>Overview</h1><p>The Doorlock Op group on this lock is used to report door lock operation status to nodes on the group list.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
