@@ -294,6 +294,15 @@ public class ZWaveController {
         }
     }
 
+    /**
+     * Gets the home ID associated with the controller.
+     *
+     * @return the home ID
+     */
+    public int getHomeId() {
+        return homeId;
+    }
+
     // Controller methods
 
     /**
@@ -675,7 +684,7 @@ public class ZWaveController {
                 break;
         }
 
-        inclusionController = new ZWaveInclusionController(this, inclusionMode, networkSecurityKey);
+        inclusionController = new ZWaveInclusionController(this, networkSecurityKey);
         inclusionController.startInclusion(highPower, networkWide);
     }
 
@@ -689,7 +698,7 @@ public class ZWaveController {
             return;
         }
 
-        inclusionController = new ZWaveInclusionController(this, defaultWakeupPeriod, networkSecurityKey);
+        inclusionController = new ZWaveInclusionController(this, networkSecurityKey);
         inclusionController.startExclusion();
     }
 

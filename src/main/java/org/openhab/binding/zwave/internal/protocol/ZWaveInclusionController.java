@@ -35,7 +35,6 @@ public class ZWaveInclusionController implements ZWaveEventListener {
     private final Logger logger = LoggerFactory.getLogger(ZWaveInclusionController.class);
 
     private final ZWaveController controller;
-    private final int homeId;
     private Timer timer = new Timer();
     private TimerTask timerTask = null;
     private ZWaveInclusionState inclusionState = ZWaveInclusionState.Unknown;
@@ -50,9 +49,14 @@ public class ZWaveInclusionController implements ZWaveEventListener {
     private final int TIMER_MAIN = 90000;
     private final int TIMER_END = 15000;
 
-    public ZWaveInclusionController(ZWaveController controller, int homeId, String networkSecurityKey) {
+    /**
+     * Create the inclusion controller
+     *
+     * @param controller the {@link ZWaveController} to include a device into
+     * @param networkSecurityKey the network security key
+     */
+    public ZWaveInclusionController(ZWaveController controller, String networkSecurityKey) {
         this.controller = controller;
-        this.homeId = homeId;
         this.networkSecurityKey = networkSecurityKey;
     }
 
@@ -203,7 +207,7 @@ public class ZWaveInclusionController implements ZWaveEventListener {
                 }
 
                 // Create a new node
-                ZWaveNode newNode = new ZWaveNode(homeId, nodeId, controller);
+                ZWaveNode newNode = new ZWaveNode(controller.getHomeId(), nodeId, controller);
                 ZWaveDeviceClass deviceClass = newNode.getDeviceClass();
                 deviceClass.setBasicDeviceClass(basicClass);
                 deviceClass.setGenericDeviceClass(genericClass);
