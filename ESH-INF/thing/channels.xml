@@ -1011,6 +1011,13 @@
         </state>
     </channel-type>
 
+    <!-- Sensor Report - sends a sensor reading TO a device -->
+    <channel-type id="sensor_report">
+        <item-type>Number</item-type>
+        <label>Report</label>
+        <description>Send report to device</description>
+    </channel-type>
+
     <!-- Seismic Channel -->
     <channel-type id="sensor_seismicintensity">
         <item-type>Number</item-type>

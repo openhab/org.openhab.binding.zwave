@@ -10,6 +10,7 @@
     <description><![CDATA[
 Yale Real Living Touchscreen Lever Lock<br /><h2>Inclusion Information</h2><p>To include the lock in a Z-Wave Network (taken from the installation manual:</p> <ol><li>Touch the lock screen to activate</li> <li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 1, then #</li> </ol><p>The lock will now be in inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>To exclude the lock from a Z-Wave Network (taken from the installation manual:</p> <ol><li>Touch the lock screen to activate</li> <li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 3, then #</li> </ol><p>The lock will now be in exclusion mode.</p>
     ]]></description>
+    <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -23,6 +24,12 @@ Yale Real Living Touchscreen Lever Lock<br /><h2>Inclusion Information</h2><p>To
         <label>Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
+        </properties>
+      </channel>
+      <channel id="alarm_raw" typeId="alarm_raw">
+        <label>Alarm (raw)</label>
+        <properties>
+          <property name="binding:*:StringType">COMMAND_CLASS_ALARM</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">

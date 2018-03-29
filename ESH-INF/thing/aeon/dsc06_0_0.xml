@@ -194,7 +194,7 @@ Minimum change in wattage % to trigger event<br /><h1>Overview</h1><p>The value 
       </parameter>
 
       <parameter name="config_110_1_wo" type="integer" groupName="configuration">
-        <label>110: Set 111 to 113 to default</label>
+        <label>110: Set 111 to 113 to default values</label>
         <default>0</default>
         <options>
           <option value="0">No change</option>
