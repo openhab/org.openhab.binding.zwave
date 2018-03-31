@@ -5,10 +5,10 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="qubino_zmnhld_00_000" listed="false">
-    <label>ZMNHLD Flush PWM Thermostat</label>
+  <thing-type id="qubino_zmnhkd_00_000" listed="false">
+    <label>ZMNHKD Flush Heat &amp; Cool Thermostat</label>
     <description><![CDATA[
-Flush PWM Thermostat<br /><h1>Overview</h1><p>This Z-Wave module is used to regulate temperature. Regulation is done using full wave PWM technology. The module can be controlled either through Z-wave network or through the wall switch. The module is designed to be mounted inside a “flush mounting box” and is hidden behind a traditional wall switch. Module measures power consumption of connected device. It is designed to act as repeater in order to improve range and stability of Z-wave network.</p> <br /><h2>Inclusion Information</h2><p>WARNING: Service button S <strong>must NOT be used</strong> when module is connected to 110-230V power supply.</p> <ul><li>Connect module to power supply (with temperature sensor connected - if purchased),</li> <li>Enable add/remove mode on main controller</li> <li>Auto-inclusion (works for about 5 seconds after connected to power supply) or</li> <li><strong>110V-230V power supply: </strong>Press push button I1 three times within 3 seconds (3 times change switch state within 3 seconds)</li> <li><strong>24V SELV: </strong>Press service button <strong>S</strong> for more than 2 seconds.</li> </ul><p><strong>NOTE1:</strong> For auto-inclusion procedure, first set main controller into inclusion mode and then connect module to power supply.</p> <p><strong>NOTE2:</strong> When connecting temperature sensor to module that has already been included, you have to exclude module first. Switch off power supply,connect the sensor and re-include the module.</p> <br /><h2>Exclusion Information</h2><p>WARNING: Service button S <strong>must NOT be used</strong> when module is connected to 110-230V power supply.</p> <ul><li>Connect module to power supply</li> <li>Bring module within maximum 1 meter (3 feet) of the main controller</li> <li>Enable add/remove mode on main controller</li> <li><strong>110V-230V power supply:</strong> Press push button <strong>I1</strong> five times within 3 seconds (5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply</li> <li><strong>24V SELV:</strong> Press ervice button <strong>S</strong> for more than 6 seconds.</li> </ul><p>By this function all parameters of the module are set to default values and own ID is deleted. If push button I1 is pressed three times within 3 seconds (or service button S is pressed more than 2 and less than 6 seconds) module is excluded, but configuration parameters are not set to default values.</p> <p>NOTE: If the module is included with parameters 100 or 101 with values different to default and module reset is done, wait at least 30s before next inclusion.</p>
+Flush Heat &amp; Cool Thermostat<br /><h1>Overview</h1><p>This Z-Wave module is used to regulate temperature in heating and cooling mode. Module can be controlled either through Z-Wave network or through the wall switch. The module is designed to be mounted inside a “flush mounting box” and is hidden behind a traditional wall switch. Module measures power consumption of connected device. It is designed to act as repeater in order to improve range and stability of Z-wave network.</p> <br /><h2>Inclusion Information</h2><p>WARNING: Service button S <strong>must NOT be used</strong> when module is connected to 110-230V power supply.</p> <ul><li>Connect module to power supply (with temperature sensor connected - if purchased),</li> <li>Enable add/remove mode on main controller</li> <li>Auto-inclusion (works for about 5 seconds after connected to power supply) or</li> <li><strong>110V-230V power supply: </strong>Press push button I1 three times within 3 seconds (3 times change switch state within 3 seconds)</li> <li><strong>24V SELV: </strong>Press service button <strong>S</strong> for more than 2 seconds.</li> </ul><p><strong>NOTE1:</strong> For auto-inclusion procedure, first set main controller into inclusion mode and then connect module to power supply.</p> <p><strong>NOTE2:</strong> When connecting temperature sensor to module that has already been included, you have to exclude module first. Switch off power supply,connect the sensor and re-include the module.</p> <br /><h2>Exclusion Information</h2><p>WARNING: Service button S <strong>must NOT be used</strong> when module is connected to 110-230V power supply.</p> <ul><li>Connect module to power supply</li> <li>Bring module within maximum 1 meter (3 feet) of the main controller</li> <li>Enable add/remove mode on main controller</li> <li><strong>110V-230V power supply:</strong> Press push button <strong>I1</strong> five times within 3 seconds (5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply</li> <li><strong>24V SELV:</strong> Press ervice button <strong>S</strong> for more than 6 seconds.</li> </ul><p>By this function all parameters of the module are set to default values and own ID is deleted. If push button I1 is pressed three times within 3 seconds (or service button S is pressed more than 2 and less than 6 seconds) module is excluded, but configuration parameters are not set to default values.</p> <p>NOTE: If the module is included with parameters 100 or 101 with values different to default and module reset is done, wait at least 30s before next inclusion.</p>
     ]]></description>
     <category>HVAC</category>
 
@@ -20,28 +20,34 @@ Flush PWM Thermostat<br /><h1>Overview</h1><p>This Z-Wave module is used to regu
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="thermostat_mode" typeId="qubino_zmnhld_00_000_thermostat_mode">
+      <channel id="meter_watts" typeId="meter_watts">
+        <label>Electric meter (watts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh" typeId="meter_kwh">
+        <label>Electric meter (kWh)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_mode" typeId="qubino_zmnhkd_00_000_thermostat_mode">
         <label>Thermostat mode</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_MODE</property>
         </properties>
       </channel>
       <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
-        <label>Thermostat setpoint</label>
+        <label>Setpoint (heating)</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING</property>
         </properties>
       </channel>
-      <channel id="sensor_temperature1" typeId="sensor_temperature">
-        <label>Temperature Sensor</label>
+      <channel id="thermostat_setpoint_cooling" typeId="thermostat_setpoint">
+        <label>Setpoint (cooling)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:1</property>
-        </properties>
-      </channel>
-      <channel id="thermostat_mode1" typeId="qubino_zmnhld_00_000_thermostat_mode">
-        <label>Thermostat mode</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_MODE:1</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=COOLING</property>
         </properties>
       </channel>
     </channels>
@@ -49,10 +55,10 @@ Flush PWM Thermostat<br /><h1>Overview</h1><p>This Z-Wave module is used to regu
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Goap</property>
-      <property name="modelId">ZMNHLD</property>
+      <property name="modelId">ZMNHKD</property>
       <property name="manufacturerId">0159</property>
-      <property name="manufacturerRef">0005:0053</property>
-      <property name="dbReference">498</property>
+      <property name="manufacturerRef">0005:0052</property>
+      <property name="dbReference">829</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -91,16 +97,6 @@ Flush PWM Thermostat<br /><h1>Overview</h1><p>This Z-Wave module is used to regu
         </options>
       </parameter>
 
-      <parameter name="config_3_1" type="integer" groupName="configuration">
-        <label>3: Input I3 switch type</label>
-        <description>Input I3 switch type</description>
-        <default>1</default>
-        <options>
-          <option value="0">mono-stable switch type (push button)</option>
-          <option value="1">bi-stable switch type</option>
-        </options>
-      </parameter>
-
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Input 1 contact type</label>
         <description><![CDATA[
@@ -117,18 +113,6 @@ Input 1 contact type<br /><h1>Overview</h1><p>This parameter determines how the 
         <label>5: Input 2 contact type</label>
         <description><![CDATA[
 Input 2 contact type<br /><h1>Overview</h1><p>This parameter determines how the sensor is connected (for example: door/window sensor). Set this parameter according to the type of sensor you use. </p><p>This parameter has influence only when parameter no. 12 is set to value "2000"<br />After setting the parameter switch the sensor once, so tha the module could determine the input state</p>
-        ]]></description>
-        <default>0</default>
-        <options>
-          <option value="0">normally open</option>
-          <option value="1">normally closed</option>
-        </options>
-      </parameter>
-
-      <parameter name="config_6_1" type="integer" groupName="configuration">
-        <label>6: Input 3 contact type</label>
-        <description><![CDATA[
-Input 3 contact type<br /><h1>Overview</h1><p>Available config. parameters (data type is 1 Byte DEC):<br />  default value 0<br />  0 - NO (normally open) input type<br />  1 - NC (normally close) input type<br /> NOTE: This parameter has influence only when parameter no. 13 is set to the value “2”. After setting this parameter, switch the flood sensor once, so that the module could determine the input state.<br /></p>
         ]]></description>
         <default>0</default>
         <options>
@@ -176,24 +160,11 @@ I2 Functionality selection<br /><h1>Overview</h1><p>0-990 - Temperature setpoint
         </options>
       </parameter>
 
-      <parameter name="config_13_2" type="integer" groupName="configuration">
-        <label>13: I3 Functionality selection</label>
-        <description><![CDATA[
-I3 Functionality selection<br /><h1>Overview</h1><p>default value 32767<br /> 32767 - input I3 does not influence on the heat/cool process<br /> 1 - input I3 changes the mode of the thermostat between Heat and Cool and override parameter 59. In this case function on flood sensor is disabled NOTE: After parameter change, first exclude module (without setting parameters to default value) and then re include the module!<br /> 2 - input I3 influences on heating/cooling valves according to status of flood sensor. In this case function of Heat/Cool selection by I3 is disabled<br /> NOTE1: If this parameter is changed, it is necessary to reinclude the module.<br /> NOTE2: If "Flood Sensor" selected (value set to "2"), parameter 102 (enable/disable endpoint) must be set to non zero value and module re-included!</p>
-        ]]></description>
-        <default>32767</default>
-        <options>
-          <option value="1">input I3 changes the mode of the thermostat</option>
-          <option value="2">input I3 influences on heating/cooling valves</option>
-          <option value="32767">input I3 does not influence on the heat/cool process</option>
-        </options>
-      </parameter>
-
       <parameter name="config_40_1" type="integer" groupName="configuration"
                  min="0" max="100">
-        <label>40: Power reporting in Watts on power change</label>
+        <label>40: Watt Power Consumption Reporting Threshold for Q⬆ Load</label>
         <description><![CDATA[
-Power reporting in Watts on power change<br /><h1>Overview</h1><p>Choose by how much power consumption needs to increase or decrease to be reported. Values correspond to percentages so if 10 is set, for example, the device will report any power consumption changes of 10% or more compared to the last reading. Power consumption needs to increase or decrease by at least 1 Watt to be reported, REGARDLESS of percentage set in this parameter. <br /> 0 - Power consumption reporting disabled<br /> 1 - 100 = 1% - 100% Power consumption reporting enabled. New value is reported only when Wattage in real time changes by more than the percentage value set in this parameter compared to the previous Wattage reading, starting at 1% (the lowest value possible).</p>
+Watt Power Consumption Reporting Threshold for Q⬆ Load<br /><h1>Overview</h1><p>Choose by how much power consumption needs to increase or decrease to be reported. Values correspond to percentages so if 10 is set, for example, the device will report any power consumption changes of 10% or more compared to the last reading. Power consumption needs to increase or decrease by at least 1 Watt to be reported, REGARDLESS of percentage set in this parameter. <br /> 0 - Power consumption reporting disabled<br /> 1 - 100 = 1% - 100% Power consumption reporting enabled. New value is reported only when Wattage in real time changes by more than the percentage value set in this parameter compared to the previous Wattage reading, starting at 1% (the lowest value possible).</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -204,25 +175,71 @@ Power reporting in Watts on power change<br /><h1>Overview</h1><p>Choose by how 
 
       <parameter name="config_42_2" type="integer" groupName="configuration"
                  min="0" max="32767">
-        <label>42: Power reporting in Watts by time interval</label>
+        <label>42: Watt Power Consumption Reporting Time Threshold for Q⬆</label>
         <description><![CDATA[
-Power reporting in Watts by time interval<br /><h1>Overview</h1><p>Set value refers to the time interval with which power consumption in Watts is reported (0 – 32767 seconds). If for example 300 is entered, energy consumption reports will be sent to the gateway (hub) every 300 seconds (or 5 minutes).<br /></p><p>0 - report disabled<br />1-32767 = 1 second - 32767 seconds interval. Reporting enabled with time interval</p>
+Watt Power Consumption Reporting Time Threshold for Q⬆<br /><h1>Overview</h1><p>Set value refers to the time interval with which power consumption in Watts is reported (0 – 32767 seconds). If for example 300 is entered, energy consumption reports will be sent to the gateway (hub) every 300 seconds (or 5 minutes).<br /></p><p>0 - report disabled<br />1-32767 = 1 second - 32767 seconds interval. Reporting enabled with time interval</p>
         ]]></description>
         <default>0</default>
       </parameter>
 
-      <parameter name="config_45_2" type="integer" groupName="configuration"
-                 min="0" max="1127">
-        <label>45: Antifreeze</label>
+      <parameter name="config_43_2" type="integer" groupName="configuration">
+        <label>43: Hysteresis heating On</label>
         <description><![CDATA[
-Antifreeze<br /><h1>Overview</h1><p>Set value means at which temperature the device will be turned on even if the thermostat was manually set to off. Available config. parameters (data type is 2 Byte DEC):<br />  default value 50 (5,0 °C)<br />  0 - 127 = 0,0°C … 12,7 °C<br />  1001 - 1127 = -0,1°C … - 12,6 °C<br />  255 - Antifreeze functionality disabled<br /> NOTE: Antifreeze is activated only in heating mode.</p>
+Hysteresis heating On<br /><h1>Overview</h1><p>This parameter defines temperature difference between measured temperature and set-point temperature to turn heating on. <br /> default value 1010 (-1.0 °C) <br /> 0 - 255 = 0,0°C to 25,5 °C <br /> 1001 - 1255 = - 0,1°C to - 25,5 °C</p>
+        ]]></description>
+        <default>1010</default>
+        <options>
+          <option value="0">mono-stable switch type</option>
+          <option value="1">bi-stable switch type</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_44_2" type="integer" groupName="configuration">
+        <label>44: Hysteresis Heating Off</label>
+        <description><![CDATA[
+Hysteresis Heating Off<br /><h1>Overview</h1><p>This parameter defines temperature difference between measured temperature and set-point temperature to turn heating off.<br /> • default value 2 (+0.2 °C)<br /> • 0 - 255 = 0,0°C to 25,5 °C<br /> • 1001 - 1255 = - 0,1°C to - 25,5 °C<br /></p>
+        ]]></description>
+        <default>2</default>
+        <options>
+          <option value="0">normally open</option>
+          <option value="1">normally closed</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_45_2" type="integer" groupName="configuration"
+                 min="0" max="1255">
+        <label>45: Hysteresis Cooling On</label>
+        <description><![CDATA[
+Hysteresis Cooling On<br /><h1>Overview</h1><p>This parameter defines temperature difference between measured temperature and set-point temperature to turn cooling on.<br /> • default value 5 (+0.5 °C)<br /> • 0 - 255 = 0,0°C to 25,5 °C<br /> • 1001 - 1255 = - 0,1°C to - 25,5 °C</p>
+        ]]></description>
+        <default>5</default>
+      </parameter>
+
+      <parameter name="config_46_2" type="integer" groupName="configuration">
+        <label>46: Hysteresis Cooling Off</label>
+        <description><![CDATA[
+Hysteresis Cooling Off<br /><h1>Overview</h1><p>This parameter defines temperature difference between measured temperature and set-point temperature to turn cooling off.<br /> • default value 1002 (-0.2 °C)<br /> • 0 - 255 = 0,0°C to 25,5 °C<br /> • 1001 - 1255 = - 0,1°C to - 25,5 °C</p>
+        ]]></description>
+        <default>1002</default>
+        <options>
+          <option value="1">Input I3 changes the mode between Heat and Cool</option>
+          <option value="2">Input I3 influences the heating/cooling valves</option>
+          <option value="32767">Input I3 doesnt influence on the Heat/Cool process</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_47_2" type="integer" groupName="configuration"
+                 min="0" max="1127">
+        <label>47: Antifreeze</label>
+        <description><![CDATA[
+Antifreeze<br /><h1>Overview</h1><p>Set value means at which temperature the device will be turned on even if the thermostat was manually set to off. Antifreeze is activated only in heating mode. It uses a hysteresis determined in parameters no. 43 and 44.<br /> • default value 50 (5,0 °C)<br /> • 0 - 127 = 0,0°C to 12,7 °C<br /> • 1001 - 1127 = - 0,1°C to - 12,7 °C<br /> • 255 - Antifreeze functionality disabled</p>
         ]]></description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_50_1" type="integer" groupName="configuration"
                  min="2" max="100">
-        <label>50: PWM maximum value</label>
+        <label>50: ** DELETE **</label>
         <description><![CDATA[
 PWM maximum value<br /><h1>Overview</h1><p>2..100 = 2..100% Maximum PWM is set by entered value</p>
         ]]></description>
@@ -231,7 +248,7 @@ PWM maximum value<br /><h1>Overview</h1><p>2..100 = 2..100% Maximum PWM is set b
 
       <parameter name="config_51_1" type="integer" groupName="configuration"
                  min="0" max="99">
-        <label>51: PWM minimum value</label>
+        <label>51: ** DELETE **</label>
         <description><![CDATA[
 PWM minimum value<br /><h1>Overview</h1><p>0..99 = 0..99% Minimum PWM is set by entered value</p>
         ]]></description>
@@ -240,7 +257,7 @@ PWM minimum value<br /><h1>Overview</h1><p>0..99 = 0..99% Minimum PWM is set by 
 
       <parameter name="config_52_1" type="integer" groupName="configuration"
                  min="5" max="127">
-        <label>52: PWM cycle duration</label>
+        <label>52: ** DELETE **</label>
         <description><![CDATA[
 PWM cycle duration<br /><h1>Overview</h1><p>5..127 = 5-125 seconds. PWM cycle duration is set by entered value</p>
         ]]></description>
@@ -249,7 +266,7 @@ PWM cycle duration<br /><h1>Overview</h1><p>5..127 = 5-125 seconds. PWM cycle du
 
       <parameter name="config_53_1" type="integer" groupName="configuration"
                  min="0" max="127">
-        <label>53: PID value inside deadband</label>
+        <label>53: ** DELETE **</label>
         <description><![CDATA[
 PID value inside deadband<br /><h1>Overview</h1><p>0 - PID value equals PWM minimum cycle<br />1 - PID value set to LAST VALUE</p>
         ]]></description>
@@ -258,7 +275,7 @@ PID value inside deadband<br /><h1>Overview</h1><p>0 - PID value equals PWM mini
 
       <parameter name="config_54_1" type="integer" groupName="configuration"
                  min="0" max="127">
-        <label>54: PID deadband</label>
+        <label>54: ** DELETE **</label>
         <description><![CDATA[
 PID deadband<br /><h1>Overview</h1><p>0..127 = 0..12.7 °C <br />This parameter defines the zone where PID is not active.</p>
         ]]></description>
@@ -267,7 +284,7 @@ PID deadband<br /><h1>Overview</h1><p>0..127 = 0..12.7 °C <br />This parameter 
 
       <parameter name="config_55_1" type="integer" groupName="configuration"
                  min="0" max="127">
-        <label>55: Integral sampling time</label>
+        <label>55: ** DELETE **</label>
         <description><![CDATA[
 Integral sampling time<br /><h1>Overview</h1><p>0..127 = 0..127 seconds.<br />Parameter defines the time between samples.</p>
         ]]></description>
@@ -276,35 +293,9 @@ Integral sampling time<br /><h1>Overview</h1><p>0..127 = 0..127 seconds.<br />Pa
 
       <parameter name="config_56_2" type="integer" groupName="configuration"
                  min="0" max="1000">
-        <label>56: P parameter</label>
+        <label>56: ** DELETE **</label>
         <description>P parameter</description>
         <default>100</default>
-      </parameter>
-
-      <parameter name="config_57_2" type="integer" groupName="configuration"
-                 min="0" max="1000">
-        <label>57: I parameter</label>
-        <description>I parameter</description>
-        <default>1</default>
-      </parameter>
-
-      <parameter name="config_58_2" type="integer" groupName="configuration"
-                 min="0" max="1000">
-        <label>58: D parameter</label>
-        <description>D parameter</description>
-        <default>0</default>
-      </parameter>
-
-      <parameter name="config_59_1" type="integer" groupName="configuration">
-        <label>59: Thermostat mode</label>
-        <description><![CDATA[
-Thermostat mode<br /><h1>Overview</h1><p>Available config. parameters (data type is 1 Byte DEC):<br />  default value 0<br />  0 - Heat mode<br />  1 - Cool mode<br /> If parameter changed it is necessary to re-include module.</p>
-        ]]></description>
-        <default>0</default>
-        <options>
-          <option value="0">Heat mode</option>
-          <option value="1">Cool mode</option>
-        </options>
       </parameter>
 
       <parameter name="config_60_2" type="integer" groupName="configuration"
@@ -325,10 +316,22 @@ Too high temperature limit<br /><h1>Overview</h1><p>This parameter determines th
         <default>700</default>
       </parameter>
 
-      <parameter name="config_63_1" type="integer" groupName="configuration">
-        <label>63: Output Switch selection</label>
+      <parameter name="config_64_1" type="integer" groupName="configuration">
+        <label>64: Output Switch selection Q1</label>
         <description><![CDATA[
-Output Switch selection<br /><h1>Overview</h1><p>Set value means the type of the device that is connected to the PWM output. The device type can be normally open (NO) or normally close (NC).<br /> Available config. parameters (data type is 1 Byte DEC):<br />  default value 0<br />  0 - When system is turned off the output is 0 V.<br />  1 - When system is turned off the output is 230 V.<br /></p>
+Output Switch selection Q1<br /><h1>Overview</h1><p>Set value means the type of the device that is connected to the Q1 output. The device type can be normally open (NO) or normally close (NC).</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">When the device is turned off the output is 0V</option>
+          <option value="1">When the system is turned off the output is 230V</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_65_1" type="integer" groupName="configuration">
+        <label>65: Output Switch selection Q2</label>
+        <description><![CDATA[
+Output Switch selection Q2<br /><h1>Overview</h1><p>Set value means the type of the device that is connected to the Q2 output. The device type can be normally open (NO) or normally close (NC).</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -373,18 +376,9 @@ Input I2 status off delay<br /><h1>Overview</h1><p>This parameter specifies the 
         <default>0</default>
       </parameter>
 
-      <parameter name="config_74_2" type="integer" groupName="configuration"
-                 min="0" max="32000">
-        <label>74: Input 3 status ON delay</label>
-        <description><![CDATA[
-Input 3 status ON delay<br /><h1>Overview</h1><p>This parameter specifies the delay before the device execute command after input I3 is activated.<br /> This parameter has influence only when the flood sensor functionality is selected by the parameter no. 13.</p>
-        ]]></description>
-        <default>0</default>
-      </parameter>
-
       <parameter name="config_75_2" type="integer" groupName="configuration"
                  min="0" max="32000">
-        <label>75: Input I3 status off delay</label>
+        <label>75: ** DELETE **</label>
         <description><![CDATA[
 Input I3 status off delay<br /><h1>Overview</h1><p>If the value of the parameter is different to 0 means that the influence of this input to heating or cooling will react after inserted time.</p>
         ]]></description>
@@ -406,7 +400,7 @@ Association group 2, 10 - reporting on time interval<br /><h1>Overview</h1><p>De
         <description><![CDATA[
 Association group 10 - delay before sending Basic Set ON<br /><h1>Overview</h1><p>Set a time delay before sent Basic set ON to the associated device. The same time frame also applies for the Basic set OFF.<br /> If this parameter is set, Basic Set ON/OFF Report is delayed for the time defined in this parameter.<br /> • Default value 180 = 3 minutes<br /> • 0 = Reports with no delay<br /> • 1-32767 = 1 second– 32767 seconds, reporting enabled</p>
         ]]></description>
-        <default>180</default>
+        <default>3</default>
       </parameter>
 
       <parameter name="config_78_1" type="integer" groupName="configuration">
@@ -456,7 +450,7 @@ Enable/Disable Endpoint I1 or select the Notification Type and Event<br /><h1>Ov
       </parameter>
 
       <parameter name="config_102_1" type="integer" groupName="configuration">
-        <label>102: Enable/Disable Endpoint I3 or select type</label>
+        <label>102: ** DELETE **</label>
         <description>Enable/Disable Endpoint I3 or select type</description>
         <default>0</default>
         <options>
@@ -568,21 +562,16 @@ Node Id of external battery powered sensor<br /><h1>Overview</h1><p>0 - disabled
 
   </thing-type>
 
-  <channel-type id="qubino_zmnhld_00_000_thermostat_mode">
+  <channel-type id="qubino_zmnhkd_00_000_thermostat_mode">
     <item-type>Number</item-type>
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
     <state pattern="%s">
-    </state>
-  </channel-type>
-
-  <channel-type id="qubino_zmnhld_00_000_thermostat_mode">
-    <item-type>Number</item-type>
-    <label>Thermostat Mode</label>
-    <description>Sets the thermostat mode</description>
-    <category>Temperature</category>
-    <state pattern="%s">
+      <options>
+        <option value="3">Auto</option>
+        <option value="0">Off</option>
+      </options>
     </state>
   </channel-type>
 
