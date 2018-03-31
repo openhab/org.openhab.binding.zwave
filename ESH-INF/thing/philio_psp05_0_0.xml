@@ -148,7 +148,7 @@ Interval time for sending reports<br /><h1>Overview</h1><p>This setting is used 
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: report message</label>
+        <label>1: Lifeline</label>
         <description><![CDATA[
 The group 1 is for receiving the report message<br /><h1>Overview</h1><p>The group 1 is for receiving the report message, like triggered event, temperature, illumination etc.</p>
         ]]></description>
