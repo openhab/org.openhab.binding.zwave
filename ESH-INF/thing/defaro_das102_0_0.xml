@@ -54,11 +54,9 @@ Double relay Switch 2x1.7kW<br /><h1>Overview</h1><p>https://defaro.ru/index.php
       </parameter-group>
 
       <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: Relay S1 mode</label>
-        <description><![CDATA[
-Sets switch 1 mode of operation<br /><h1>Overview</h1><p>Sets switch 1 mode of operation:</p> <p>0 - normal mode (ON-turn switch on, 1 - turn switch off) (default)</p> <p>1 - reverse mode (ON-turn switch off, 1 - turn switch on)</p> <p>2 - Blink mode (see parameters 2 and 3)</p>
-        ]]></description>
-        <default>0</default>
+        <label>1: Load type</label>
+        <description>Selects load type for dimmer</description>
+        <default>3</default>
         <options>
           <option value="0">Normal</option>
           <option value="1">Reverse</option>
