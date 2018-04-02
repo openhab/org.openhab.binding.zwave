@@ -20,7 +20,7 @@ Smart Meter<br /><h1>Overview</h1><p>This Z-Wave module is used for energy measu
         </properties>
       </channel>
       <channel id="meter_voltage" typeId="meter_voltage">
-        <label>Votage</label>
+        <label>Voltage</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_V</property>
         </properties>
@@ -38,7 +38,7 @@ Smart Meter<br /><h1>Overview</h1><p>This Z-Wave module is used for energy measu
         </properties>
       </channel>
       <channel id="meter_kvah" typeId="meter_kvah">
-        <label>Aparent Energy Consumption</label>
+        <label>Apparent Energy Consumption</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KVAh</property>
         </properties>
@@ -318,7 +318,7 @@ Relay to power off<br /><h1>Overview</h1><p>Set value selects relay to be powere
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
-        <label>1: Lifeline group</label>
+        <label>1: Lifeline</label>
         <description>Reserved for communication with the main controller</description>
       </parameter>
 
