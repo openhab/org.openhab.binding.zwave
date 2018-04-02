@@ -1198,7 +1198,6 @@ public class ZWaveNode {
         }
 
         int endpointNumber = 0;
-        int instanceNumber = 0;
 
         if (payload.getCommandClassId() == CommandClass.COMMAND_CLASS_MULTI_CHANNEL.getKey()
                 && (payload.getCommandClassCommand() == 6 || payload.getCommandClassCommand() == 13)) {
@@ -1218,7 +1217,7 @@ public class ZWaveNode {
             // Check that the length is long enough for the encapsulated command to be included
             if (payload.getCommandClassCommand() == 6 && payload.getPayloadLength() > 5) {
                 // MULTI_INSTANCE_ENCAP
-                instanceNumber = payload.getPayloadByte(1);
+                endpointNumber = payload.getPayloadByte(2);
 
                 payload = new ZWaveCommandClassPayload(payload, 3);
             } else if (payload.getCommandClassCommand() == 13 && payload.getPayloadLength() > 6) {
