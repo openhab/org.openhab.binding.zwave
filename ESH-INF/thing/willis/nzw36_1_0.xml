@@ -6,8 +6,9 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="willis_nzw36_01_000" listed="false">
-    <label>NZW36 show home, Inovelli 1 channel smart plug, ZWave Plus</label>
-    <description>show home, Inovelli 1 channel smart plug, ZWave Plus</description>
+    <label>NZW36 Show home, Inovelli 1 channel smart plug, ZWave Plus</label>
+    <description>Show home, Inovelli 1 channel smart plug, ZWave Plus</description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
