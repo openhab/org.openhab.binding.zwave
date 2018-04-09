@@ -6,7 +6,7 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="qubino_smartplug_00_000" listed="false">
-    <label>Smart Plug Smart Plug</label>
+    <label>Smart Plug 16A Smart Plug</label>
     <description><![CDATA[
 Smart Plug<br /><h1>Overview</h1><p>This Z-Wave module is used for switching and energy measurements in single-phase electrical power networks and can be used in residential, industrial and utility applications.</p> <p>Power supply: 230V +/- 10%, 50 Hz</p> <p>Power load: 15A resistive max.</p> <p>Overload protection &gt;16 A</p> <p>Power consumption &lt;1W</p> <br /><h2>Inclusion Information</h2><p>Auto inclusion (first time usage)</p> <ul><li>start inclusion mode of z-wave controller</li> <li>plug device into power outlet (5 seconds auto inclusion)</li> </ul><p>Manual inclusion</p> <ul><li>plug device into power outlet</li> <li>start inclusion mode of z-wave controller</li> <li>press the service button (S) 3 times within 3 seconds</li> </ul><br /><h2>Exclusion Information</h2><ul><li>plug device into power outlet</li> <li>ensure device is within maximum 1 meter (3 feet) of the main controller</li> <li>enable exclusion mode on main controller</li> <li>press service button (S) on module 3 times within 3 seconds (please note: configuration parameters will not be reset!)</li> </ul><br /><h2>Wakeup Information</h2><p>Press the Service button (S) 3 times within 3 seconds.</p>
     ]]></description>
@@ -55,7 +55,7 @@ Smart Plug<br /><h1>Overview</h1><p>This Z-Wave module is used for switching and
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Goap</property>
-      <property name="modelId">Smart Plug</property>
+      <property name="modelId">Smart Plug 16A</property>
       <property name="manufacturerId">0159</property>
       <property name="manufacturerRef">0002:0054</property>
       <property name="dbReference">822</property>
@@ -82,15 +82,17 @@ Smart Plug<br /><h1>Overview</h1><p>This Z-Wave module is used for switching and
         </options>
       </parameter>
 
-      <parameter name="config_11_2" type="integer" groupName="configuration">
+      <parameter name="config_11_2" type="integer" groupName="configuration"
+                 min="0" max="32535">
         <label>11: Automatic turning OFF relay after set time</label>
         <description><![CDATA[
-When the releay is turned ON, it automatically turns OFF after the time defined in the parameter. The timer is reset each time, the module receives an ON command (from push button/main controller/association).<br /><h1>Overview</h1><ul><li>0 = Auto OFF disabled</li> <li>1 - 32535 = 1 second to 32535 seconds delay. Auto OFF is enabled with defined time. Step is 1s.</li> </ul>
+When the relay is turned ON, it automatically turns OFF after the defined time<br /><h1>Overview</h1><p>The timer is reset each time, the module receives an ON command (from push button/main controller/association).</p> <ul><li>0 = Auto OFF disabled</li> <li>1 - 32535 = 1 second to 32535 seconds delay. Auto OFF is enabled with defined time. Step is 1s.</li> </ul>
         ]]></description>
         <default>0</default>
         <options>
           <option value="0">Auto OFF disabled</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration">
@@ -167,7 +169,7 @@ Send control command BASIC_SET 0x00/0xFF<br /><h1>Overview</h1><p>This group is 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Load dependent</label>
         <description><![CDATA[
-sending control commands BASIC_SET 0x00/0xFF depending on current load<br /><h1>Overview</h1><p>Thiss groups allows to send control commands BASIC_SET 0x00/0xFF to associated devices depending on the current load. This association group is configured through the parameters no. 50, 51 and 52.</p>
+sending control commands BASIC_SET 0x00/0xFF depending on current load<br /><h1>Overview</h1><p>This groups allows to send control commands BASIC_SET 0x00/0xFF to associated devices depending on the current load. This association group is configured through the parameters no. 50, 51 and 52.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
