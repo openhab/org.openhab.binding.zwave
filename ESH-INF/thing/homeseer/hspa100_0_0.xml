@@ -8,6 +8,7 @@
   <thing-type id="homeseer_hspa100_00_000" listed="false">
     <label>HS-PA100+ Appliance Module</label>
     <description>Appliance Module</description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

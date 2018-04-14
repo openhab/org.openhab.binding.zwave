@@ -10,6 +10,7 @@
     <description><![CDATA[
 Fibaro Door Window Sensor 2<br /><h2>Wakeup Information</h2><p>Available settings: 0 or 3600-64800 (in seconds (1-18h), 3600s (1h)<br />step)<br />Default setting: 21600 (6h)</p> <p><br />The Door/Window Sensor will wake up after each defined time interval and always try to connect with the main controller. After a successful communication attempt, the sensor will update configuration parameters, associations and settings and will go into standby mode.</p> <p><br />After failed communication attempt (e.g. lack of Z-Wave range) the device will go into standby mode and retry to establish connection with the main controller after the next time interval.</p> <p><br />Setting wake up interval to 0 disables sending Wake Up Notification frame automatically.</p> <p>Wake up may be still performed manually by a clicking one of the TMP buttons (while the other button is pressed).</p> <p>Longer time interval means less frequent communication and thus a longer battery life.</p>
     ]]></description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -49,7 +50,7 @@ Fibaro Door Window Sensor 2<br /><h2>Wakeup Information</h2><p>Available setting
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGDW002</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0702:1000,0702:2000</property>
+      <property name="manufacturerRef">0702:1000,0702:2000,0702:3000</property>
       <property name="dbReference">604</property>
       <property name="defaultAssociations">1</property>
     </properties>

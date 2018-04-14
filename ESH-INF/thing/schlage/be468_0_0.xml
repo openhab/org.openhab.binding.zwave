@@ -7,7 +7,10 @@
 
   <thing-type id="schlage_be468_00_000" listed="false">
     <label>BE468 Touchscreen Deadbolt</label>
-    <description>Touchscreen Deadbolt</description>
+    <description><![CDATA[
+Touchscreen Deadbolt<br /><h1>Overview</h1><p>Z-Wave Enabled residential auto-throw deadbolt</p> <br /><h2>Inclusion Information</h2><p>Extend the bolt on the lock and then perform the following:</p> <p>Enter 6 Digit Programming Code, then press 0. There will be a green check mark if enrolled or a red X if not enrolled</p> <p>To verify enrollment:</p> <p>1. Remove the battery cover. See Replacing the Batteries on page 4 of the User Guide.</p> <p>2. Disconnect the battery connector.</p> <p>3. While watching the inside Schlage button, reconnect the battery connector.</p> <p>4. The inside Schlage button will blink if the lock is enrolled.</p> <br /><h2>Exclusion Information</h2><p>Same as inclusion</p> <br /><h2>Wakeup Information</h2><p>N/A</p>
+    ]]></description>
+    <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -17,22 +20,10 @@
           <property name="binding:*:OnOffType">COMMAND_CLASS_DOOR_LOCK</property>
         </properties>
       </channel>
-      <channel id="alarm_access" typeId="alarm_access">
-        <label>Alarm (access)</label>
+      <channel id="alarm_raw" typeId="alarm_raw">
+        <label>Alarm (raw)</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
-        </properties>
-      </channel>
-      <channel id="alarm_power" typeId="alarm_power">
-        <label>Alarm (power)</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
-        </properties>
-      </channel>
-      <channel id="alarm_system" typeId="alarm_system">
-        <label>Alarm (system)</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=SYSTEM</property>
+          <property name="binding:*:StringType">COMMAND_CLASS_ALARM</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
