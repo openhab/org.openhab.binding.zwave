@@ -175,6 +175,7 @@ public class ZWaveInclusionController implements ZWaveEventListener {
             case IncludeStart:
                 break;
 
+            case IncludeControllerFound:
             case IncludeSlaveFound:
                 startTimer(TIMER_MAIN);
                 // When a device is found we get the IncludeSlaveFound notification.
