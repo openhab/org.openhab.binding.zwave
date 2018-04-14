@@ -159,7 +159,8 @@ public class ZWaveController {
         final Integer timeout = config.containsKey("timeout") ? Integer.parseInt(config.get("timeout")) : 0;
 
         defaultWakeupPeriod = config.containsKey("wakeupDefaultPeriod")
-                ? Integer.parseInt(config.get("wakeupDefaultPeriod")) : 0;
+                ? Integer.parseInt(config.get("wakeupDefaultPeriod"))
+                : 0;
 
         logger.info("Starting ZWave controller");
 
@@ -571,6 +572,7 @@ public class ZWaveController {
         if (event instanceof ZWaveInclusionEvent) {
             ZWaveInclusionEvent incEvent = (ZWaveInclusionEvent) event;
             switch (incEvent.getEvent()) {
+                case IncludeControllerFound:
                 case IncludeSlaveFound:
                     // When a device is found we get the IncludeSlaveFound notification.
                     // Here we need to end inclusion.
