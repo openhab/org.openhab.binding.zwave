@@ -22,6 +22,8 @@ import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.type.ChannelTypeUID;
 import org.eclipse.smarthome.core.types.State;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Matchers;
 import org.mockito.Mockito;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
@@ -303,5 +305,29 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         event = createEvent(ZWaveAlarmCommandClass.AlarmType.BURGLAR, ReportType.ALARM, 3, 0x00);
         state = converter.handleEvent(channel, event);
         assertNull(state);
+    }
+
+    @Test
+    public void AlarmV2Refresh_Door() {
+        ZWaveAlarmConverter converter = new ZWaveAlarmConverter(null);
+        ZWaveThingChannel channel = createChannel("sensor_door", DataType.OnOffType, "BURGLAR", "2");
+        ZWaveController controller = Mockito.mock(ZWaveController.class);
+        ZWaveNode node = Mockito.mock(ZWaveNode.class);
+        ZWaveEndpoint endpoint = Mockito.mock(ZWaveEndpoint.class);
+        ZWaveAlarmCommandClass cmdClass = new ZWaveAlarmCommandClass(node, controller, endpoint);
+        cmdClass.setVersion(2);
+
+        ArgumentCaptor<ZWaveCommandClassTransactionPayload> transactionCaptor = ArgumentCaptor
+                .forClass(ZWaveCommandClassTransactionPayload.class);
+
+        Mockito.when(node.resolveCommandClass(Matchers.any(CommandClass.class), Matchers.anyInt()))
+                .thenReturn(cmdClass);
+
+        Mockito.when(node.encapsulate(transactionCaptor.capture(), Matchers.anyInt())).thenReturn(null);
+
+        converter.executeRefresh(channel, node);
+
+        ZWaveCommandClassTransactionPayload value = transactionCaptor.getValue();
+        assertTrue(Arrays.equals(new byte[] { 113, 4, 0, 7 }, value.getPayloadBuffer()));
     }
 }

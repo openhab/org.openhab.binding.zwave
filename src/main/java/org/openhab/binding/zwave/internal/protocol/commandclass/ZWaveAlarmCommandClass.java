@@ -184,7 +184,6 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         v1Supported = (payload.getPayloadByte(2) & 0x80) == 0;
         if (v1Supported) {
             logger.debug("NODE: NOTIFICATION_SUPPORTED_REPORT reports V1 ALARM support", getNode().getNodeId());
-
         }
 
         int numBytes = payload.getPayloadByte(2) & 0x1f;
