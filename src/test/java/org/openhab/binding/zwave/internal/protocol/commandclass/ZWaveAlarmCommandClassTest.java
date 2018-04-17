@@ -362,4 +362,19 @@ public class ZWaveAlarmCommandClassTest extends ZWaveCommandClassTest {
         assertTrue(Arrays.equals(new int[] { 0x63, 0x03, 0x01, 0x01 }, event.getParameters()));
     }
 
+    @Test
+    public void Alarm_DoorV1ResponseWithCcV2() {
+        byte[] dataDoorOpen = { 0x01, 0x0A, 0x00, 0x04, 0x00, 0x7B, 0x04, 0x71, 0x05, 0x07, (byte) 0xFF, 0x02 };
+
+        List<ZWaveEvent> events;
+        ZWaveAlarmValueEvent event;
+
+        events = processCommandClassMessage(dataDoorOpen, 2);
+        assertEquals(events.size(), 1);
+        event = (ZWaveAlarmValueEvent) events.get(0);
+        assertEquals(0, event.getEndpoint());
+        assertEquals(ReportType.ALARM, event.getReportType());
+        assertEquals(AlarmType.BURGLAR, event.getAlarmType());
+        assertEquals(0xFF, event.getAlarmStatus());
+    }
 }
