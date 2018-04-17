@@ -8,6 +8,7 @@
   <thing-type id="zwaveme_wallcs_00_000" listed="false">
     <label>WALLC-S Wall Controller</label>
     <description>Wall Controller</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

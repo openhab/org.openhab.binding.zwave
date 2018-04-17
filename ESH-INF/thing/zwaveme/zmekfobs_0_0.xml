@@ -8,6 +8,7 @@
   <thing-type id="zwaveme_zmekfobs_00_000" listed="false">
     <label>ZME_KFOB-S Secure 4 Button Key Chain Controller</label>
     <description>Secure 4 Button Key Chain Controller</description>
+    <category>RemoteControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -29,7 +30,7 @@
       <property name="vendor">Z-Wave.Me</property>
       <property name="modelId">ZME_KFOB-S</property>
       <property name="manufacturerId">0115</property>
-      <property name="manufacturerRef">0100:0101,0100:0102,0100:0103</property>
+      <property name="manufacturerRef">0100:0102,0100:0103</property>
       <property name="dbReference">548</property>
       <property name="defaultAssociations">1</property>
     </properties>

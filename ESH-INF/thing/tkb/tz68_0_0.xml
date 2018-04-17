@@ -46,9 +46,8 @@ Wall Plug<br /><h1>Overview</h1><p>The TKB TZ68 is a switch plug that can be pla
         <description>defines the behavior of the blue LED</description>
         <default>1</default>
         <options>
-          <option value="0"></option>
-          <option value="0">blue indicates on</option>
-          <option value="1">blue indicates on (default)</option>
+          <option value="0">blue indicates off (default)</option>
+          <option value="1">blue indicates on</option>
         </options>
       </parameter>
 
