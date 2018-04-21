@@ -344,7 +344,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
             throws ZWaveSerialMessageException {
         for (int i = 0; i < payload.getPayloadLength() - 4; i++) {
             // Get the command class ID
-            int data = payload.getPayloadByte(4 + i);
+            int data = payload.getPayloadByte(5 + i);
             if (data == 0xef) {
                 // TODO: Implement control command classes
                 break;
