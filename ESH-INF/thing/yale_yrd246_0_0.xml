@@ -8,6 +8,7 @@
   <thing-type id="yale_yrd246_00_000" listed="false">
     <label>YRD246 Touchscreen deadbolt without keyway</label>
     <description>Touchscreen deadbolt without keyway</description>
+    <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

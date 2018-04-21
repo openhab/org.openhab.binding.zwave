@@ -57,7 +57,7 @@ Dual Nano Switch<br /><h1>Overview</h1><p>Aeotec Dual Nano Switch is a Z-Wave Sm
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW140</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0003:008C</property>
+      <property name="manufacturerRef">0003:008C,0103:008C</property>
       <property name="dbReference">813</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -170,7 +170,7 @@ Set appointment 2<br /><h1>Overview</h1><p>256 to 316 The hour value of ON time 
       </parameter>
 
       <parameter name="config_120_1" type="integer" groupName="configuration">
-        <label>120: </label>
+        <label>120: Configure the external switch mode for S1</label>
         <description>Configure the external switch mode for S1</description>
         <default>0</default>
         <options>
