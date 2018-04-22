@@ -51,6 +51,7 @@ public class ZWaveBindingConstants {
     public final static String CONFIGURATION_DOORLOCKTIMEOUT = "doorlock_timeout";
 
     public final static String CONFIGURATION_POLLPERIOD = "binding_pollperiod";
+    public final static String CONFIGURATION_CMDREPOLLPERIOD = "binding_cmdrepollperiod";
 
     public final static String ZWAVE_THING = BINDING_ID + ":device";
     public final static ThingTypeUID ZWAVE_THING_UID = new ThingTypeUID(ZWAVE_THING);
@@ -131,8 +132,10 @@ public class ZWaveBindingConstants {
     public final static String EVENT_HEAL_START = "@text/zwave.event.heal_start";
     public final static String EVENT_HEAL_DONE = "@text/zwave.event.heal_done";
 
-    public final static String CONFIG_BINDING_POLLINGPERIOD_LABEL = "@text/zwave.config.binding_pollingperiod_label";
-    public final static String CONFIG_BINDING_POLLINGPERIOD_DESC = "@text/zwave.config.binding_pollingperiod_desc";
+    public final static String CONFIG_BINDING_POLLINGPERIOD_LABEL = "Polling Period";
+    public final static String CONFIG_BINDING_POLLINGPERIOD_DESC = "Set the minimum polling period for this device (in seconds)<BR/>Note that the polling period may be longer than set since the binding treats polls as the lowest priority data within the network.";
+    public final static String CONFIG_BINDING_CMDPOLLPERIOD_LABEL = "Command Poll Period";
+    public final static String CONFIG_BINDING_CMDPOLLPERIOD_DESC = "Set the period to wait after a command is sent to a device before polling its state.";
 
     public final static Set<ThingTypeUID> SUPPORTED_BRIDGE_TYPES_UIDS = ImmutableSet.of(CONTROLLER_SERIAL);
 
