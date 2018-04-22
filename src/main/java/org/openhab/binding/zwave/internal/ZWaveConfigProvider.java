@@ -198,6 +198,15 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
                         .withMinimum(new BigDecimal(15)).withMaximum(new BigDecimal(86400)).withOptions(options)
                         .withLimitToOptions(false).withGroupName("thingcfg").build());
 
+        options = new ArrayList<ParameterOption>();
+        options.add(new ParameterOption("0", "Disable"));
+        parameters.add(ConfigDescriptionParameterBuilder
+                .create(ZWaveBindingConstants.CONFIGURATION_CMDREPOLLPERIOD, Type.INTEGER)
+                .withLabel(ZWaveBindingConstants.CONFIG_BINDING_CMDPOLLPERIOD_LABEL)
+                .withDescription(ZWaveBindingConstants.CONFIG_BINDING_CMDPOLLPERIOD_DESC).withDefault("1500")
+                .withMinimum(new BigDecimal(100)).withMaximum(new BigDecimal(15000)).withOptions(options)
+                .withLimitToOptions(false).withGroupName("thingcfg").build());
+
         // If we support the wakeup class, then add the configuration
         ZWaveWakeUpCommandClass wakeupCmdClass = (ZWaveWakeUpCommandClass) node
                 .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP);

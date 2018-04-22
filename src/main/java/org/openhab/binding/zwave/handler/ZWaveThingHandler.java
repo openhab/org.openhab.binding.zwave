@@ -118,6 +118,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     private final long REFRESH_POLL_DELAY = 50;
     private long pollingPeriod = POLLING_PERIOD_DEFAULT;
 
+    private long commandPollDelay = 1500;
+
     public ZWaveThingHandler(Thing zwaveDevice) {
         super(zwaveDevice);
     }
@@ -173,6 +175,15 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 pollingPeriod = ((BigDecimal) pollParm).intValue();
             } catch (final NumberFormatException ex) {
                 logger.warn("NODE {}: pollingPeriod ({}) cannot be parsed - using default", nodeId, pollParm);
+            }
+        }
+
+        final Object repollParm = getConfig().get(ZWaveBindingConstants.CONFIGURATION_CMDREPOLLPERIOD);
+        if (repollParm instanceof BigDecimal) {
+            try {
+                commandPollDelay = ((BigDecimal) pollParm).intValue();
+            } catch (final NumberFormatException ex) {
+                logger.warn("NODE {}: commandPollDelay ({}) cannot be parsed - using default", nodeId, pollParm);
             }
         }
 
@@ -350,6 +361,13 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     for (ZWaveThingChannel channel : thingChannelsState) {
                         if (!thingChannelsPoll.contains(channel.getUID())) {
                             // Don't poll if this channel isn't linked
+                            continue;
+                        }
+
+                        if (channel.getCommandClass().equals(CommandClass.COMMAND_CLASS_BASIC.toString())
+                                && thingChannelsState.size() > 1) {
+                            logger.debug("NODE {}: Polling skipped for {} on COMMAND_CLASS_BASIC", nodeId,
+                                    channel.getUID());
                             continue;
                         }
 
@@ -1011,6 +1029,11 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         // Send all the messages
         for (ZWaveCommandClassTransactionPayload message : messages) {
             controllerHandler.sendData(message);
+        }
+
+        // Restart the polling so we get an update on the channel shortly after this command is sent
+        if (commandPollDelay != 0) {
+            startPolling(commandPollDelay);
         }
     }
 
