@@ -32,9 +32,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
@@ -175,8 +173,32 @@ public class ZWaveMultiInstanceCommandClassTest extends ZWaveCommandClassTest {
         ZWaveDeviceClass endpointDeviceClass = mockedNode.getEndpoint(2).getDeviceClass();
         assertEquals(Basic.BASIC_TYPE_UNKNOWN, endpointDeviceClass.getBasicDeviceClass());
         assertEquals(Generic.GENERIC_TYPE_SWITCH_BINARY, endpointDeviceClass.getGenericDeviceClass());
+        assertEquals(1, commandClsCaptor.getAllValues().size());
         assertEquals(Specific.SPECIFIC_TYPE_POWER_SWITCH_BINARY, endpointDeviceClass.getSpecificDeviceClass());
         assertNotNull(commandClsCaptor.getValue());
         assertEquals(CommandClass.COMMAND_CLASS_SWITCH_BINARY, commandClsCaptor.getValue().getCommandClass());
+    }
+
+    @Test
+    public void handleMultiChannelCapabilityReport2() {
+        byte[] packetData = { 0x60, 0x0A, 0x02, 0x31, 0x01, 0x32, 0x59, 0x5E, (byte) 0x85, (byte) 0x8E };
+
+        ZWaveMultiInstanceCommandClass cls = (ZWaveMultiInstanceCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
+
+        ZWaveCommandClassPayload payload = new ZWaveCommandClassPayload(packetData);
+        try {
+            cls.handleApplicationCommandRequest(payload, 0);
+        } catch (ZWaveSerialMessageException e) {
+        }
+
+        ZWaveDeviceClass endpointDeviceClass = mockedNode.getEndpoint(2).getDeviceClass();
+        assertEquals(Basic.BASIC_TYPE_UNKNOWN, endpointDeviceClass.getBasicDeviceClass());
+        assertEquals(Generic.GENERIC_TYPE_METER, endpointDeviceClass.getGenericDeviceClass());
+        assertEquals(Specific.SPECIFIC_TYPE_SIMPLE_METER, endpointDeviceClass.getSpecificDeviceClass());
+        assertNotNull(commandClsCaptor.getValue());
+        assertEquals(5, commandClsCaptor.getAllValues().size());
+        assertEquals(CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION,
+                commandClsCaptor.getValue().getCommandClass());
     }
 }

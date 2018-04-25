@@ -908,10 +908,12 @@ public class ZWaveNode {
     }
 
     public ZWaveCommandClassTransactionPayload getAssociation(int group) {
-        ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
-                CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
-        if (multiAssociationCommandClass != null) {
-            return multiAssociationCommandClass.getAssociationMessage(group);
+        if (endpoints.size() > 1) {
+            ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
+                    CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
+            if (multiAssociationCommandClass != null) {
+                return multiAssociationCommandClass.getAssociationMessage(group);
+            }
         }
 
         ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(

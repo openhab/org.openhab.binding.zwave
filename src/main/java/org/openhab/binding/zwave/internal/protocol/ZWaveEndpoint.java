@@ -85,11 +85,7 @@ public class ZWaveEndpoint {
      * @param commandClass the command class instance to add.
      */
     public void addCommandClass(ZWaveCommandClass commandClass) {
-        CommandClass key = commandClass.getCommandClass();
-
-        if (!supportedCommandClasses.containsKey(key)) {
-            supportedCommandClasses.put(key, commandClass);
-        }
+        supportedCommandClasses.putIfAbsent(commandClass.getCommandClass(), commandClass);
     }
 
     /**
