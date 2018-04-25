@@ -138,14 +138,4 @@ public class ZWaveBindingConstants {
     public final static String CONFIG_BINDING_CMDPOLLPERIOD_DESC = "Set the period to wait after a command is sent to a device before polling its state.";
 
     public final static Set<ThingTypeUID> SUPPORTED_BRIDGE_TYPES_UIDS = ImmutableSet.of(CONTROLLER_SERIAL);
-
-    public static class I18nConstant {
-        public String key;
-        public String defaultText;
-
-        I18nConstant(String key, String defaultText) {
-            this.key = key;
-            this.defaultText = defaultText;
-        }
-    }
 }
