@@ -16,8 +16,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterCommandClass.MeterScale;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterCommandClass.ZWaveMeterValueEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
@@ -66,6 +66,17 @@ public class ZWaveMeterCommandClassTest extends ZWaveCommandClassTest {
         assertEquals(event.getMeterScale(), ZWaveMeterCommandClass.MeterScale.E_W);
         assertEquals(event.getMeterType(), ZWaveMeterCommandClass.MeterType.ELECTRIC);
         assertEquals(event.getValue(), new BigDecimal("154.653"));
+    }
+
+    @Test
+    public void Meter_Supported() {
+        byte[] packetData = { 0x32, 0x04, (byte) 0xE1, 0x35 };
+
+        ZWaveCommandClassPayload payload = new ZWaveCommandClassPayload(packetData);
+        ZWaveMeterCommandClass meterCommandClass = (ZWaveMeterCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_METER);
+        meterCommandClass.handleMeterSupportedReport(payload, 0);
+        // E_KWh, E_W, E_V, E_A
     }
 
     @Test
