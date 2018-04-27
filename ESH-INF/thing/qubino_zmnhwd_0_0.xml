@@ -10,6 +10,7 @@
     <description><![CDATA[
 Qubino Flush RGBW Dimmer<br /><h1>Overview</h1><p>Qubino Flush RGBW module controls RGB/RGBW strips and LED strips or bulbs and has 5 special scene effects. It can also control halogen lights and fans. Its extremely small size allows for easy installation behind wall sockets and switches. Controlled devices may be powered by 12 or 24 VDC.</p> <p>Supported control types:</p> <ul><li>Push button (monostable switch)</li> <li>Bistable switch</li> </ul><p>This should hopefully work with models ZMNHWD1-ZMNHWD8 (which work on different frequencies).</p> <br /><h2>Inclusion Information</h2><p>To include the device, press the service button 3 times within 2 seconds. The LED will turn green if the device was properly included.</p> <p>The device supports auto inclusion: Install the device and connect the power. The auto inclusion function will be active for about 2 minutes.</p> <br /><h2>Exclusion Information</h2><p>To exclude the device, press the service button 3 times within 2 seconds. The green LED will blink if the device was properly included and the device will be reset to factory defaults.</p>
     ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -22,14 +23,14 @@ Qubino Flush RGBW Dimmer<br /><h1>Overview</h1><p>Qubino Flush RGBW module contr
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL,BASIC</property>
         </properties>
       </channel>
       <channel id="color_color" typeId="color_color">
         <label>Color Control</label>
         <properties>
-          <property name="binding:*:HSBType">COLOR;</property>
+          <property name="binding:*:HSBType">COLOR;colorMode=RGB</property>
           <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC;</property>
           <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL;</property>
         </properties>

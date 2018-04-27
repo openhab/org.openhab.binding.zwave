@@ -38,7 +38,7 @@
       <property name="vendor">TKB Home</property>
       <property name="modelId">TZ55D</property>
       <property name="manufacturerId">0118</property>
-      <property name="manufacturerRef">0003:0004</property>
+      <property name="manufacturerRef">0003:0004,0311:0201</property>
       <property name="dbReference">516</property>
     </properties>
 
