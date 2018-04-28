@@ -7,7 +7,9 @@
 
   <thing-type id="hank_hkzwso03_00_000" listed="false">
     <label>HKZW_SO03 Smart Plug</label>
-    <description>Smart Plug</description>
+    <description><![CDATA[
+Smart Plug<br /><h1>Overview</h1><p>WELL DONE!<br /> You have picked the finest solution for your smart home, congratulations!<br /> Now it's time to enjoy these great features of your new Smart Plug:<br /> - Wireless control of floor lamps and small appliances<br /> - Energy monitoring in live mode or over time (your Z-Wave gateway needs to support this feature)<br /> - Scene inclusion for custom automation scenarios when included to a Z-Wave gateway controller<br /> - LED indicator displaying Z-Wave signal strength and power usage<br /> - Security enabled Z-Wave device with AES signal encryption (requires a security enabled gateway controller for full functionality)<br /> - Z-Wave Plus with improved 500 chip for faster and safer wireless communication<br /> - Built-in range extender for a stronger, more reliable network<br /> - 2 USB charging ports for your smart phone or tablet (no Z-Wave functionality)<br /> - Built-in overload protection in Z-Wave outlet and USB ports </p> <p>SPECIFICATIONS<br /> Model Number: ZEN06<br /> Z-Wave Signal Frequency: 908.42 MHz </p> <p>Power: 110V, 60Hz<br /> Maximum Load: 15A, 1800W<br /> USB Charging Port Power: 1A and 2.4A Operating Temperature: 14 – 104 F Range: Up to 130 feet line of sight Installation and Use: Indoor only Dimensions: 4” x 2.5” x 1.2”<br />Weight: 7oz </p> <p>Z-WAVE COMMAND CLASSES<br /> This device requires the following command classes to be supported and recognized by your Z-Wave controller:<br /> COMMAND_CLASS_ALLSWITCH<br /> COMMAND_CLASS_ASSOCIATION<br /> COMMAND_CLASS_ASSOCIATION_GROUP_INFORMATION<br /> COMMAND_CLASS_BASIC<br /> COMMAND_CLASS_CONFIGURATION<br /> COMMAND_CLASS_DEVICE_RESET_LOCAL<br /> COMMAND_CLASS_FIRMWARE_UPDATE_MD<br /> COMMAND_CLASS_MANUFACTURER_SPECIFIC<br /> COMMAND_CLASS_METER<br /> COMMAND_CLASS_POWERLEVEL<br /> COMMAND_CLASS_SCENE_ACTIVATION COMMAND_CLASS_SCENE_ACTUATOR_CONFIGURATION<br /> COMMAND_CLASS_SECURITY<br /> COMMAND_CLASS_SWITCH_BINARY<br /> COMMAND_CLASS_VERSION<br /> COMMAND_CLASS_ZWAVEPLUS_INFO </p> <br /><h2>Inclusion Information</h2><p>Z-WAVE INCLUSION </p> <p>Auto Z-Wave Inclusion<br /> 1. Put your Z-Wave controller in inclusion mode<br /> 2. Plug the smart plug into a grounded receptacle located within 3 feet from your Z-Wave gateway controller<br /> 3. LED indicator will flash blue<br /> 4. A new on / off device should be recognized by your Z-Wave controller </p> <p>Manual Z-Wave Inclusion<br /> 1. Plug the smart plug into a grounded receptacle located within 3 feet from your Z-Wave gateway controller<br /> 2. Put your Z-Wave controller in inclusion mode<br /> 3. Press and release the Z-Wave button 3 TIMES QUICKLY<br /> 4. LED indicator will flash blue </p> <p>5. A new on / off device should be recognized by your Z-Wave controller </p> <p>Secure Z-Wave Inclusion<br /> 1. Plug the smart plug into a grounded receptacle located within 3 feet from your Z-Wave gateway controller<br /> 2. Put your Z-Wave controller in secure inclusion mode<br /> 3. Press and HOLD the Z-Wave button for at least 3 seconds<br /> 4. LED indicator will flash green<br /> 5. LED indicator will turn solid green once the inclusion is completed. Please allow 5 minutes for configuration. DO NOT press any buttons or move the device during that time<br /> 6. A new secure on / off device should be recognized by your Z-Wave controller </p> <br /><h2>Exclusion Information</h2><p>Z-WAVE EXCLUSION </p> <p>1. Plug the smart plug into a grounded receptacle located within 3 feet from your Z-Wave gateway controller<br /> 2. Put your Z-Wave controller in exclusion mode<br /> 3. Press and release the Z-Wave button 3 TIMES QUICKLY </p> <p>4. LED indicator will flash orange<br /> 5. The smart plug should disappear from your controller's device list and LED indicator will remain solid orange for a few seconds to indicate exclusion </p> <p>Please repeat the process following all steps carefully if the first attempt is unsuccessful </p>
+    ]]></description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -58,6 +60,58 @@
       <property name="manufacturerRef">0101:000A</property>
       <property name="dbReference">677</property>
     </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- GROUP DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter name="config_20_1" type="integer" groupName="configuration"
+                 min="0" max="1">
+        <label>20: Overload Protection</label>
+        <description><![CDATA[
+Overload Protection<br /><h1>Overview</h1><p>16.5A for over 5 seconds when this setting is enabled. We DO NOT recommend changing this parameter’s value as it may result in device damage and malfunction.</p> <p>Values: 0 – Disabled; 1 – Enabled (default).</p> <p>Size: 1 byte dec.</p>
+        ]]></description>
+        <default>1</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_21_1" type="integer" groupName="configuration"
+                 min="0" max="1">
+        <label>21: On/Off Status Recovery After Power Failure</label>
+        <description><![CDATA[
+On/Off Status Recovery After Power Failure<br /><h1>Overview</h1><p>Parameter 21: Choose the recovery state for your Smart Plug if power outage occurs.</p> <p>Values: 0 – Smart Plug remembers the status prior to power outage and turns back to it</p> <p>(default); 1 – Smart Plug automatically turns ON once power is restored (it does not</p> <p>remember the status prior to power outage); 2 – Smart Plug automatically turns OFF once</p> <p>power is restored (it does not remember the status prior to power outage);</p> <p>Size: 1 byte dec.</p>
+        ]]></description>
+        <default>0</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_24_1" type="integer" groupName="configuration"
+                 min="0" max="2">
+        <label>24: On/Off Status Change Notifications</label>
+        <description><![CDATA[
+On/Off Status Change Notifications<br /><h1>Overview</h1><p>Parameter 24: Your Smart Plug will automatically send a notification to the controller and</p> <p>other associated devices if its status changes from on to off or the other way round. Choose</p> <p>when you want it to send the report.</p> <p>Values: 0 – disabled (it will not send status change notifications); 1 – sends notification if</p> <p>status is changed manually or remotely via Z-Wave (default); 2 – sends notification ONLY if</p> <p>status is changed manually by pressing and releasing the Z-Wave button on the Smart Plug;</p> <p>Size: 1 byte dec.</p>
+        ]]></description>
+        <default>1</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_27_1" type="integer" groupName="configuration"
+                 min="0" max="1">
+        <label>27: Led Indicator Control</label>
+        <description><![CDATA[
+Led Indicator Control<br /><h1>Overview</h1><p>Parameter 27: You can choose how the LED indicator displays power consumption on thesmart plug</p> <p>Values: 0 – LED indicator will display power consumption whenever the device is plugged in</p> <p>(LED stays on at all times – default setting); 1 – LED indicator will display the level of power</p> <p>consumption for 5 seconds only whenever the device is turned on or off (LED indicator will</p> <p>stay off for most of the time)</p> <p>Size: 1 byte dec.</p>
+        ]]></description>
+        <default>0</default>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
 
   </thing-type>
 

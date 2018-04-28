@@ -10,6 +10,7 @@
     <description><![CDATA[
 Qubino Flush RGBW Dimmer<br /><h1>Overview</h1><p>Qubino Flush RGBW module controls RGB/RGBW strips and LED strips or bulbs and has 5 special scene effects. It can also control halogen lights and fans. Its extremely small size allows for easy installation behind wall sockets and switches. Controlled devices may be powered by 12 or 24 VDC.</p> <p>Supported control types:</p> <ul><li>Push button (monostable switch)</li> <li>Bistable switch</li> </ul><p>This should hopefully work with models ZMNHWD1-ZMNHWD8 (which work on different frequencies).</p> <br /><h2>Inclusion Information</h2><p>To include the device, press the service button 3 times within 2 seconds. The LED will turn green if the device was properly included.</p> <p>The device supports auto inclusion: Install the device and connect the power. The auto inclusion function will be active for about 2 minutes.</p> <br /><h2>Exclusion Information</h2><p>To exclude the device, press the service button 3 times within 2 seconds. The green LED will blink if the device was properly included and the device will be reset to factory defaults.</p>
     ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -22,14 +23,14 @@ Qubino Flush RGBW Dimmer<br /><h1>Overview</h1><p>Qubino Flush RGBW module contr
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="color_color" typeId="color_color">
         <label>Color Control</label>
         <properties>
-          <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR;</property>
+          <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR;colorMode=RGB</property>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC;</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL;</property>
         </properties>
@@ -50,6 +51,7 @@ Qubino Flush RGBW Dimmer<br /><h1>Overview</h1><p>Qubino Flush RGBW module contr
       <property name="manufacturerId">0159</property>
       <property name="manufacturerRef">0001:0054</property>
       <property name="dbReference">567</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -68,49 +70,183 @@ Qubino Flush RGBW Dimmer<br /><h1>Overview</h1><p>Qubino Flush RGBW module contr
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: Input switch type</label>
-        <description><![CDATA[
-Change the type of switch (bistable/monostable)<br /><h1>Overview</h1><p>NOTE: Please power cycle the device when parameter is changed.</p>
-        ]]></description>
-        <default>1</default>
+        <label>1: Input IN1 configuration</label>
+        <description>Input IN1 configuration</description>
+        <default>4</default>
         <options>
-          <option value="1">bistable switch type</option>
-          <option value="2">monostable (push button) switch type</option>
+          <option value="1">NORMAL mode – momentary switch type</option>
+          <option value="2">NORMAL mode – toggle switch type</option>
+          <option value="3">NORMAL mode – toggle with memory switch type</option>
+          <option value="4">BRIGHTNESS mode – momentary switch type</option>
+          <option value="5">BRIGHTNESS mode – toggle switch type</option>
+          <option value="6">BRIGHTNESS mode – toggle with memory switch type</option>
+          <option value="7">RAINBOW mode – momentary switch type</option>
+          <option value="8">SCENE mode – momentary switch type</option>
+          <option value="9">SCENE mode – toggle switch type</option>
+          <option value="10">SCENE mode – toggle with memory switch type</option>
         </options>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
-        <label>2: Switch mode</label>
-        <description>Choose RGBW Dimmer operation mode.</description>
-        <default>1</default>
+        <label>2: Input IN2 configuration</label>
+        <description>Input IN2 configuration</description>
+        <default>7</default>
         <options>
-          <option value="1">Normal Mode</option>
-          <option value="2">Brightness Mode</option>
-          <option value="3">Rainbow Mode</option>
+          <option value="1">NORMAL mode – momentary switch type</option>
+          <option value="2">NORMAL mode – toggle switch type</option>
+          <option value="3">NORMAL mode – toggle with memory switch type</option>
+          <option value="4">BRIGHTNESS mode – momentary switch type</option>
+          <option value="5">BRIGHTNESS mode – toggle switch type</option>
+          <option value="6">BRIGHTNESS mode – toggle with memory switch type</option>
+          <option value="7">RAINBOW mode – momentary switch type</option>
+          <option value="8">SCENE mode – momentary switch type</option>
+          <option value="9">SCENE mode – toggle switch type</option>
+          <option value="10">SCENE mode – toggle with memory switch type</option>
         </options>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
-        <label>3: Auto scene mode set</label>
+        <label>3: Input IN3 configuration</label>
+        <description>Input IN3 configuration</description>
+        <default>8</default>
+        <options>
+          <option value="1">NORMAL mode – momentary switch type</option>
+          <option value="2">NORMAL mode – toggle switch type</option>
+          <option value="3">NORMAL mode – toggle with memory switch type</option>
+          <option value="4">BRIGHTNESS mode – momentary switch type</option>
+          <option value="5">BRIGHTNESS mode – toggle switch type</option>
+          <option value="6">BRIGHTNESS mode – toggle with memory switch type</option>
+          <option value="7">RAINBOW mode – momentary switch type</option>
+          <option value="8">SCENE mode – momentary switch type</option>
+          <option value="9">SCENE mode – toggle switch type</option>
+          <option value="10">SCENE mode – toggle with memory switch type</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_4_1" type="integer" groupName="configuration">
+        <label>4: Input IN4 configuration</label>
+        <description>Input IN4 configuration</description>
+        <default>1</default>
+        <options>
+          <option value="1">NORMAL mode – momentary switch type</option>
+          <option value="2">NORMAL mode – toggle switch type</option>
+          <option value="3">NORMAL mode – toggle with memory switch type</option>
+          <option value="4">BRIGHTNESS mode – momentary switch type</option>
+          <option value="5">BRIGHTNESS mode – toggle switch type</option>
+          <option value="6">BRIGHTNESS mode – toggle with memory switch type</option>
+          <option value="7">RAINBOW mode – momentary switch type</option>
+          <option value="8">SCENE mode – momentary switch type</option>
+          <option value="9">SCENE mode – toggle switch type</option>
+          <option value="10">SCENE mode – toggle with memory switch type</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_5_1" type="integer" groupName="configuration">
+        <label>5: Auto scene mode set</label>
         <description>Activation of the programmed scene changing color shades.</description>
-        <default>0</default>
+        <default>1</default>
         <options>
           <option value="1">Ocean</option>
           <option value="2">Lightning</option>
           <option value="3">Rainbow</option>
           <option value="4">Snow</option>
-          <option value="5">Sun</option>
+          <option value="5">Romantic</option>
+          <option value="6">Party scene</option>
         </options>
       </parameter>
 
-      <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="-128" max="127">
-        <label>4: Auto scene duration</label>
+      <parameter name="config_6_2" type="integer" groupName="configuration"
+                 min="1" max="1127">
+        <label>6: Auto Scene Mode</label>
         <description><![CDATA[
-Change auto scene mode duration.<br /><h1>Overview</h1><ul><li>1 - 127 delay duration is from 1s to 127s</li> <li>-128 ~ -1 delay duration is from 1min. to 127min.</li> </ul>
+Duration between Colour change<br /><h1>Overview</h1><ul><li>1-127 – delay duration is 1 sec to 127 sec </li> <li>1001-1127 – delay duration is from 1 min to 127 min. This parameter has no effect on Lighting and Party Scene. </li> </ul>
         ]]></description>
         <default>3</default>
         <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_7_1" type="integer" groupName="configuration">
+        <label>7: Memorize device status at power cut</label>
+        <description>Device will be set to status memorized before power cut.</description>
+        <default>0</default>
+        <options>
+          <option value="0">Do not memorize</option>
+          <option value="1">Memorize</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_8_2" type="integer" groupName="configuration"
+                 min="0" max="32536">
+        <label>8: Automatic turning off output after set time</label>
+        <description><![CDATA[
+Automatic turning off output after set time<br /><h1>Overview</h1><ul><li>0 – Auto OFF disabled </li> <li>1 – 32536 = 1 second – 32536 seconds Auto OFF</li> </ul>
+        ]]></description>
+        <default>0</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_9_2" type="integer" groupName="configuration"
+                 min="0" max="32536">
+        <label>9: Automatic turning on output after set time</label>
+        <description><![CDATA[
+Automatic turning on output after set time<br /><h1>Overview</h1><ul><li>0 – Auto ON disabled</li> <li>1 – 32536 = 1 second – 32536 seconds Auto ON</li> </ul>
+        ]]></description>
+        <default>0</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_10_1" type="integer" groupName="configuration"
+                 min="2" max="99">
+        <label>10: MAX dimming value</label>
+        <description><![CDATA[
+MAX dimming value<br /><h1>Overview</h1><p>2-99 = 2 % – 99 %</p>
+        ]]></description>
+        <default>99</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_11_1" type="integer" groupName="configuration"
+                 min="1" max="98">
+        <label>11: MIN dimming value</label>
+        <description><![CDATA[
+MIN dimming value<br /><h1>Overview</h1><p>1-98 = 1 % – 98 %</p>
+        ]]></description>
+        <default>1</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_12_1" type="integer" groupName="configuration"
+                 min="5" max="25">
+        <label>12: Dimming time (soft on/off)</label>
+        <description><![CDATA[
+Dimming time (soft on/off)<br /><h1>Overview</h1><ul><li>Default value 10 = 1 s </li> <li>5 – 25 = from 0.5 to 2.5 seconds </li> </ul>
+        ]]></description>
+        <default>10</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_13_1" type="integer" groupName="configuration"
+                 min="1" max="127">
+        <label>13: Dimming time when key pressed</label>
+        <description><![CDATA[
+Dimming time when key pressed<br /><h1>Overview</h1><p>1 – 127 = from 1 to 127 seconds </p> <p>NOTE: Dimming time depends also on Min and Max dimming value. </p>
+        ]]></description>
+        <default>3</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_14_1" type="integer" groupName="configuration">
+        <label>14: 4 Dimmers mode</label>
+        <description><![CDATA[
+4 Dimmers mode<br /><h1>Overview</h1><p>NOTE: If the parameter no. 14 is enabled, parameter no. 1,2,3,4 has no effect. </p> <p>NOTE: After parameter change, first exclude device (without setting parameters to default value) and then re include the device. </p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Four dimmers mode disabled</option>
+          <option value="1">Four dimmers mode enabled – momentary switch type</option>
+          <option value="2">Four dimmers mode enabled – toggle switch type</option>
+          <option value="3">Four dimmers mode enabled – toggle with memory switch type</option>
+        </options>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
