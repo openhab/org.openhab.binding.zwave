@@ -299,7 +299,9 @@ S2 switch - associations sent to 4th and 5th association groups<br /><h1>Overvie
       <parameter name="config_50_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>50: Active power reports</label>
-        <description>The parameter defines the power level change that will result in a new power report being sent. The value is a percentage of the previous report. 0 disables the function.</description>
+        <description><![CDATA[
+Power level reporting threshold.<br /><h1>Overview</h1><p>The parameter defines the power level change that will result in a new power report being sent. The value is a percentage of the previous report. 0 disables the function.</p>
+        ]]></description>
         <default>20</default>
       </parameter>
 
