@@ -10,6 +10,7 @@
     <description><![CDATA[
 Single Switch 2<br /><h1>Overview</h1><p>FIBARO Switch 2 is designed to be installed in standard wall switch boxes or anywhere else where it is necessary to control electric devices. FIBARO Switch 2 allows to control connected devices either via the Z-Wave+ network or via a switch connected directly to it and is equipped with active power and energy consumption metering functionality.</p> <p>Main features of FIBARO Switch 2:</p> <ul><li>Compatible with any Z-Wave or Z-Wave+ Controller,</li> <li>Supports protected mode (Z-Wave network security mode) with</li> <li>AES-128 encryption,</li> <li>Advanced microprocessor control,</li> <li>Active power and energy metering functionality,</li> <li>Works with various types of switches – momentary, toggle, three-way, etc,</li> <li>To be installed in wall switch boxes of dimensions allowing for installation, conforming to provisions of applicable regulations,</li> <li>FIBARO Switch 2 is an extension unit</li> </ul><br /><h2>Inclusion Information</h2><p>Put controller into inclusion mode and triple click S1 switch</p> <br /><h2>Exclusion Information</h2><p>Put controller into exclusion mode and triple click S1 switch</p>
     ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -304,7 +305,9 @@ S2 switch - associations sent to 4th and 5th association groups<br /><h1>Overvie
       <parameter name="config_50_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>50: Active power reports</label>
-        <description>The parameter defines the power level change that will result in a new power report being sent. The value is a percentage of the previous report. 0 disables the function.</description>
+        <description><![CDATA[
+Power level reporting threshold.<br /><h1>Overview</h1><p>The parameter defines the power level change that will result in a new power report being sent. The value is a percentage of the previous report. 0 disables the function.</p>
+        ]]></description>
         <default>20</default>
       </parameter>
 
