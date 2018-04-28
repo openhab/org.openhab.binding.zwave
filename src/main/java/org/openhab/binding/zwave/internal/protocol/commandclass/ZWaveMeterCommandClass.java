@@ -146,7 +146,8 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
     public void handleMeterSupportedReport(ZWaveCommandClassPayload payload, int endpoint) {
         canReset = (payload.getPayloadByte(2) & 0x80) != 0;
         int meterTypeIndex = payload.getPayloadByte(2) & 0x1F;
-        int supportedScales = payload.getPayloadByte(3);
+        int supportedScales = payload.getPayloadByte(3) & 0x7F;
+        boolean mst = (payload.getPayloadByte(3) & 0x80) != 0;
 
         // only 4 scales are supported in version 2 of the command.
         if (getVersion() == 2) {

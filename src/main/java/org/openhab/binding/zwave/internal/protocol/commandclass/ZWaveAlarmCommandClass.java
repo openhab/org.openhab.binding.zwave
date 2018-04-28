@@ -379,6 +379,15 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         return result;
     }
 
+    @Override
+    public boolean setOptions(Map<String, String> options) {
+        if ("false".equals(options.get("getSupported"))) {
+            isGetSupported = false;
+        }
+
+        return true;
+    }
+
     /**
      * Returns a {@link Set} of {@link AlarmType}s supported by this device
      *

@@ -32,7 +32,6 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 
@@ -197,7 +196,7 @@ public class ZWaveCommandClassTest {
         return processCommandClassMessage(packetData, 1);
     }
 
-    ZWaveCommandClass getCommandClass(CommandClass cls) {
+    protected ZWaveCommandClass getCommandClass(CommandClass cls) {
         ZWaveDeviceClass deviceClass = new ZWaveDeviceClass(Basic.BASIC_TYPE_UNKNOWN, Generic.GENERIC_TYPE_NOT_USED,
                 Specific.SPECIFIC_TYPE_NOT_USED);
 
