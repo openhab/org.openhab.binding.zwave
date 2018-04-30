@@ -202,8 +202,8 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         options.add(new ParameterOption("0", "Disable"));
         parameters.add(ConfigDescriptionParameterBuilder
                 .create(ZWaveBindingConstants.CONFIGURATION_CMDREPOLLPERIOD, Type.INTEGER)
-                .withLabel(ZWaveBindingConstants.CONFIG_BINDING_CMDPOLLPERIOD_LABEL)
-                .withDescription(ZWaveBindingConstants.CONFIG_BINDING_CMDPOLLPERIOD_DESC).withDefault("1500")
+                .withLabel(ZWaveBindingConstants.CONFIG_BINDING_CMDREPOLLPERIOD_LABEL)
+                .withDescription(ZWaveBindingConstants.CONFIG_BINDING_CMDREPOLLPERIOD_DESC).withDefault("1500")
                 .withMinimum(new BigDecimal(100)).withMaximum(new BigDecimal(15000)).withOptions(options)
                 .withLimitToOptions(false).withGroupName("thingcfg").build());
 

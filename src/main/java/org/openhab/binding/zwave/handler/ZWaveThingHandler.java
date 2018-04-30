@@ -118,6 +118,10 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     private final long REFRESH_POLL_DELAY = 50;
     private long pollingPeriod = POLLING_PERIOD_DEFAULT;
 
+    private final long REPOLL_PERIOD_MIN = 100;
+    private final long REPOLL_PERIOD_MAX = 15000;
+    private final long REPOLL_PERIOD_DEFAULT = 1500;
+
     private long commandPollDelay = 1500;
 
     public ZWaveThingHandler(Thing zwaveDevice) {
@@ -871,6 +875,22 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                         // Restart polling so we use the new value
                         startPolling();
+                    }
+                    if ("cmdrepollperiod".equals(cfg[1])) {
+                        commandPollDelay = REPOLL_PERIOD_DEFAULT;
+                        try {
+                            commandPollDelay = ((BigDecimal) configurationParameter.getValue()).intValue();
+                        } catch (final NumberFormatException ex) {
+                            logger.debug("NODE {}: commandPollDelay ({}) cannot be set - using default", nodeId,
+                                    configurationParameter.getValue().toString());
+                        }
+                        if (commandPollDelay < REPOLL_PERIOD_MIN) {
+                            commandPollDelay = REPOLL_PERIOD_MIN;
+                        }
+                        if (commandPollDelay > REPOLL_PERIOD_MAX) {
+                            commandPollDelay = REPOLL_PERIOD_MAX;
+                        }
+                        valueObject = new BigDecimal(commandPollDelay);
                     }
                     break;
 
