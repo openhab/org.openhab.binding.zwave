@@ -46,6 +46,7 @@ import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClass
  *
  */
 public class ZWaveThingHandlerTest {
+    private ArgumentCaptor<ZWaveCommandClassTransactionPayload> payloadCaptor;
 
     class ZWaveThingHandlerForTest extends ZWaveThingHandler {
 
@@ -58,7 +59,7 @@ public class ZWaveThingHandlerTest {
         }
     }
 
-    private List<ZWaveCommandClassTransactionPayload> doConfigurationUpdate(String param, Object value) {
+    private ZWaveThingHandler doConfigurationUpdate(String param, Object value) {
         ThingType thingType = ThingTypeBuilder.instance("bindingId", "thingTypeId", "label").build();
 
         Thing thing = ThingBuilder.create(thingType.getUID(), new ThingUID(thingType.getUID(), "thingId"))
@@ -70,7 +71,6 @@ public class ZWaveThingHandlerTest {
         ThingHandlerCallback thingCallback = Mockito.mock(ThingHandlerCallback.class);
         ZWaveThingHandler thingHandler = new ZWaveThingHandlerForTest(thing);
         thingHandler.setCallback(thingCallback);
-        ArgumentCaptor<ZWaveCommandClassTransactionPayload> payloadCaptor;
         payloadCaptor = ArgumentCaptor.forClass(ZWaveCommandClassTransactionPayload.class);
         Field fieldControllerHandler;
         try {
@@ -108,6 +108,12 @@ public class ZWaveThingHandlerTest {
         config.put(param, value);
         thingHandler.handleConfigurationUpdate(config);
 
+        return thingHandler;
+    }
+
+    private List<ZWaveCommandClassTransactionPayload> doConfigurationUpdateCommands(String param, Object value) {
+        ZWaveThingHandler thingHandler = doConfigurationUpdate(param, value);
+
         // Check that the pending status has been updated
         Collection<ConfigStatusMessage> status = thingHandler.getConfigStatus();
         assertEquals(1, status.size());
@@ -119,7 +125,7 @@ public class ZWaveThingHandlerTest {
     @Test
     public void TestConfigurationWakeup() {
         ZWaveCommandClassTransactionPayload msg;
-        List<ZWaveCommandClassTransactionPayload> response = doConfigurationUpdate(
+        List<ZWaveCommandClassTransactionPayload> response = doConfigurationUpdateCommands(
                 ZWaveBindingConstants.CONFIGURATION_WAKEUPINTERVAL, new BigDecimal(600));
 
         assertEquals(2, response.size());
@@ -130,11 +136,30 @@ public class ZWaveThingHandlerTest {
     }
 
     @Test
+    public void TestConfigurationRepollPeriod() {
+        ZWaveThingHandler handler = doConfigurationUpdate(ZWaveBindingConstants.CONFIGURATION_CMDREPOLLPERIOD,
+                new BigDecimal(600));
+        assertEquals(1, handler.getThing().getConfiguration().getProperties().size());
+        Map<String, Object> config = handler.getThing().getConfiguration().getProperties();
+        assertEquals(new BigDecimal(600), config.get(ZWaveBindingConstants.CONFIGURATION_CMDREPOLLPERIOD));
+
+        handler = doConfigurationUpdate(ZWaveBindingConstants.CONFIGURATION_CMDREPOLLPERIOD, new BigDecimal(10));
+        assertEquals(1, handler.getThing().getConfiguration().getProperties().size());
+        config = handler.getThing().getConfiguration().getProperties();
+        assertEquals(new BigDecimal(100), config.get(ZWaveBindingConstants.CONFIGURATION_CMDREPOLLPERIOD));
+
+        handler = doConfigurationUpdate(ZWaveBindingConstants.CONFIGURATION_CMDREPOLLPERIOD, new BigDecimal(1000000));
+        assertEquals(1, handler.getThing().getConfiguration().getProperties().size());
+        config = handler.getThing().getConfiguration().getProperties();
+        assertEquals(new BigDecimal(15000), config.get(ZWaveBindingConstants.CONFIGURATION_CMDREPOLLPERIOD));
+    }
+
+    @Test
     public void TestConfigurationAssociationList() {
         List<String> nodeList = new ArrayList<String>();
         nodeList.add("node_1");
         nodeList.add("node_2_1");
-        List<ZWaveCommandClassTransactionPayload> response = doConfigurationUpdate("group_1", nodeList);
+        List<ZWaveCommandClassTransactionPayload> response = doConfigurationUpdateCommands("group_1", nodeList);
 
         // Check that there are only 3 requests - the SET and GET
         // Note that these are currently null due to mocking
@@ -143,7 +168,7 @@ public class ZWaveThingHandlerTest {
 
     @Test
     public void TestConfigurationAssociationRoot() {
-        List<ZWaveCommandClassTransactionPayload> response = doConfigurationUpdate("group_1", "node_1");
+        List<ZWaveCommandClassTransactionPayload> response = doConfigurationUpdateCommands("group_1", "node_1");
 
         // Check that there are only 2 requests - the SET and GET
         // Note that these are currently null due to mocking
@@ -152,7 +177,7 @@ public class ZWaveThingHandlerTest {
 
     @Test
     public void TestConfigurationAssociationEndpoint() {
-        List<ZWaveCommandClassTransactionPayload> response = doConfigurationUpdate("group_1", "node_1_0");
+        List<ZWaveCommandClassTransactionPayload> response = doConfigurationUpdateCommands("group_1", "node_1_0");
 
         // Check that there are only 2 requests - the SET and GET
         // Note that these are currently null due to mocking
