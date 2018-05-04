@@ -513,7 +513,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
     @Override
     public void dispose() {
-        logger.debug("Handler disposed. Unregistering listener.");
+        logger.debug("NODE {}: Handler disposed. Unregistering listener.", nodeId);
         if (nodeId != 0) {
             if (controllerHandler != null) {
                 // Save the XML so that any changes to configuration is saved
