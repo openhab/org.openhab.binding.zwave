@@ -13,7 +13,12 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.measure.quantity.Temperature;
+
 import org.eclipse.smarthome.core.library.types.DecimalType;
+import org.eclipse.smarthome.core.library.types.QuantityType;
+import org.eclipse.smarthome.core.library.unit.ImperialUnits;
+import org.eclipse.smarthome.core.library.unit.SIUnits;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.type.ChannelTypeUID;
 import org.eclipse.smarthome.core.types.State;
@@ -21,7 +26,6 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
-import org.openhab.binding.zwave.internal.converter.ZWaveMultiLevelSensorConverter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -52,7 +56,7 @@ public class ZWaveMultiLevelSensorConverterTest {
         ZWaveEndpoint endpoint = Mockito.mock(ZWaveEndpoint.class);
         ZWaveMultiLevelSensorCommandClass cls = new ZWaveMultiLevelSensorCommandClass(node, controller, endpoint);
 
-        return cls.new ZWaveMultiLevelSensorValueEvent(1, 0, type, 0, value);
+        return cls.new ZWaveMultiLevelSensorValueEvent(1, 0, type, scale, value);
     }
 
     @Test
@@ -68,5 +72,25 @@ public class ZWaveMultiLevelSensorConverterTest {
 
         assertEquals(state.getClass(), DecimalType.class);
         assertEquals(((DecimalType) state).toBigDecimal(), value);
+    }
+
+    @Test
+    public void Event_Temperature() {
+        ZWaveMultiLevelSensorConverter converter = new ZWaveMultiLevelSensorConverter(null);
+        ZWaveThingChannel channel = createChannel(ZWaveMultiLevelSensorCommandClass.SensorType.TEMPERATURE.toString());
+        BigDecimal value = new BigDecimal("21.3");
+
+        ZWaveCommandClassValueEvent event = createEvent(ZWaveMultiLevelSensorCommandClass.SensorType.TEMPERATURE, 0,
+                value);
+        State state = converter.handleEvent(channel, event);
+        assertEquals(QuantityType.class, state.getClass());
+        assertEquals(SIUnits.CELSIUS, ((QuantityType<Temperature>) state).getUnit());
+        assertEquals(21.3, ((QuantityType<Temperature>) state).doubleValue(), 0.01);
+
+        event = createEvent(ZWaveMultiLevelSensorCommandClass.SensorType.TEMPERATURE, 1, value);
+        state = converter.handleEvent(channel, event);
+        assertEquals(QuantityType.class, state.getClass());
+        assertEquals(ImperialUnits.FAHRENHEIT, ((QuantityType) state).getUnit());
+        assertEquals(21.3, ((QuantityType<Temperature>) state).doubleValue(), 0.01);
     }
 }
