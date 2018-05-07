@@ -113,6 +113,15 @@ public class ZWaveThermostatSetpointConverter extends ZWaveCommandClassConverter
             scale = Integer.parseInt(scaleString);
         }
 
+        if (command instanceof QuantityType) {
+            QuantityType<?> quantity = (QuantityType<?>) command;
+            if (quantity.getUnit() == SIUnits.CELSIUS) {
+                scale = 0;
+            } else if (quantity.getUnit() == ImperialUnits.FAHRENHEIT) {
+                scale = 1;
+            }
+        }
+
         logger.debug("NODE {}: Thermostat command received for {}", node.getNodeId(), command.toString());
 
         ZWaveThermostatSetpointCommandClass commandClass = (ZWaveThermostatSetpointCommandClass) node
