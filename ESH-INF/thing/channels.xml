@@ -851,7 +851,7 @@
         <item-type>Number</item-type>
         <label>Barometric Pressure</label>
         <description>Indicates the barometric pressure</description>
-        <category>Temperature</category>
+        <category></category>
         <state pattern="%.1f" readOnly="true">
         </state>
     </channel-type>
@@ -956,7 +956,7 @@
         <item-type>Number</item-type>
         <label>Luminance</label>
         <description>Indicates the current light reading</description>
-        <category>Temperature</category>
+        <category></category>
         <state pattern="%.1f" readOnly="true">
         </state>
     </channel-type>
@@ -1004,7 +1004,7 @@
     <!-- Rain Rate Channel -->
     <channel-type id="sensor_rainrate">
         <item-type>Number</item-type>
-        <label>Humidity</label>
+        <label>Rain</label>
         <description>Indicates the current relative humidity</description>
         <category>Humidity</category>
         <state pattern="%.1f" readOnly="true">
@@ -1030,23 +1030,11 @@
 
     <!-- Temperature Channel -->
     <channel-type id="sensor_temperature">
-        <item-type>Number</item-type>
+        <item-type>Number:Temperature</item-type>
         <label>Temperature</label>
         <description>Indicates the current temperature</description>
         <category>Temperature</category>
-        <state pattern="%.1f" readOnly="true">
-        </state>
-        <config-description>
-            <parameter name="config_scale" type="text">
-                <label>Scale</label>
-                <description>Select the scale for temperature readings</description>
-                <default>0</default>
-                <options>
-                    <option value="0">Celsius</option>
-                    <option value="1">Fahrenheit</option>
-                </options>
-            </parameter>
-        </config-description>
+        <state readOnly="true" pattern="%.1f %unit%" />
     </channel-type>
 
     <!-- Ultraviolet Channel -->
@@ -1100,7 +1088,7 @@
 
     <!-- Heating Setpoint Channel -->
     <channel-type id="thermostat_setpoint">
-        <item-type>Number</item-type>
+        <item-type>Number:Temperature</item-type>
         <label>Heating Setpoint</label>
         <description>Sets the thermostat setpoint</description>
         <category>Temperature</category>

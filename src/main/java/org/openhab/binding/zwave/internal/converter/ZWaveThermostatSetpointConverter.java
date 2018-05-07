@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.smarthome.core.library.types.DecimalType;
+import org.eclipse.smarthome.core.library.types.QuantityType;
+import org.eclipse.smarthome.core.library.unit.ImperialUnits;
+import org.eclipse.smarthome.core.library.unit.SIUnits;
 import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
@@ -77,7 +80,6 @@ public class ZWaveThermostatSetpointConverter extends ZWaveCommandClassConverter
     @Override
     public State handleEvent(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
         String setpointType = channel.getArguments().get("type");
-        String setpointScale = channel.getArguments().get("config_scale");
         ZWaveThermostatSetpointValueEvent setpointEvent = (ZWaveThermostatSetpointValueEvent) event;
 
         // Don't trigger event if this item is bound to another setpoint type
@@ -86,9 +88,15 @@ public class ZWaveThermostatSetpointConverter extends ZWaveCommandClassConverter
         }
 
         BigDecimal value = (BigDecimal) event.getValue();
-        // Perform a scale conversion if needed
-        if (setpointScale != null) {
-            value = convertTemperature(setpointEvent.getScale(), Integer.parseInt(setpointScale), value);
+
+        switch (setpointEvent.getScale()) {
+            case 0:
+                return new QuantityType<>(value, SIUnits.CELSIUS);
+            case 1:
+                return new QuantityType<>(value, ImperialUnits.FAHRENHEIT);
+            default:
+                logger.debug("NODE {}: Unknown temperature scale {}", event.getNodeId(), setpointEvent.getScale());
+                break;
         }
 
         return new DecimalType(value);
@@ -103,6 +111,15 @@ public class ZWaveThermostatSetpointConverter extends ZWaveCommandClassConverter
         int scale = 0;
         if (scaleString != null) {
             scale = Integer.parseInt(scaleString);
+        }
+
+        if (command instanceof QuantityType) {
+            QuantityType<?> quantity = (QuantityType<?>) command;
+            if (quantity.getUnit() == SIUnits.CELSIUS) {
+                scale = 0;
+            } else if (quantity.getUnit() == ImperialUnits.FAHRENHEIT) {
+                scale = 1;
+            }
         }
 
         logger.debug("NODE {}: Thermostat command received for {}", node.getNodeId(), command.toString());
