@@ -45,7 +45,7 @@ Smoke Sensor<br /><h1>Overview</h1><p>ES61 is a battery powered independent phot
       <property name="modelId">ES-61</property>
       <property name="manufacturerId">0214</property>
       <property name="manufacturerRef">0002:0002,0004:0001</property>
-      <property name="versionMax">5.9</property>
+      <property name="versionMax">5.255</property>
       <property name="dbReference">559</property>
       <property name="defaultAssociations">1</property>
     </properties>

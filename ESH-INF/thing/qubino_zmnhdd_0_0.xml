@@ -367,6 +367,19 @@ Module reports measured temperature on defined temperature change<br /><h1>Overv
         <default>5</default>
       </parameter>
 
+      <parameter name="config_250_1" type="integer" groupName="configuration">
+        <label>250: Unsecure / Secure Inclusion</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>The Flush dimmer supports both, the secure and unsecure inclusion. Even if the controller does not support security command classes, a dimmer could be included as unsecure and keep all the functionality</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Unsecure Inclusion</option>
+          <option value="1">Secure Inclusion</option>
+        </options>
+        <advanced>true</advanced>
+      </parameter>
+
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter-group name="association">
         <context>link</context>
