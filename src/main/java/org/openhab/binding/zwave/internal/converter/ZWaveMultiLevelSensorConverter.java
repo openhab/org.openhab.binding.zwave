@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.smarthome.core.library.types.DecimalType;
+import org.eclipse.smarthome.core.library.types.QuantityType;
+import org.eclipse.smarthome.core.library.unit.ImperialUnits;
+import org.eclipse.smarthome.core.library.unit.SIUnits;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
@@ -73,7 +76,6 @@ public class ZWaveMultiLevelSensorConverter extends ZWaveCommandClassConverter {
     @Override
     public State handleEvent(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
         String sensorType = channel.getArguments().get("type");
-        String sensorScale = channel.getArguments().get("config_scale");
         ZWaveMultiLevelSensorValueEvent sensorEvent = (ZWaveMultiLevelSensorValueEvent) event;
 
         // Don't trigger event if this item is bound to another sensor type
@@ -89,19 +91,25 @@ public class ZWaveMultiLevelSensorConverter extends ZWaveCommandClassConverter {
         BigDecimal val = (BigDecimal) event.getValue();
 
         // Perform a scale conversion if needed
-        if (sensorScale != null) {
-            logger.debug("NODE {}: Sensor is reporting scale {}, requiring conversion to {}. Value is now {}.",
-                    event.getNodeId(), sensorEvent.getSensorScale(), sensorScale, val);
 
-            SensorType senType = SensorType.valueOf(sensorType);
-            switch (senType) {
-                case TEMPERATURE:
-                    val = convertTemperature(sensorEvent.getSensorScale(), Integer.parseInt(sensorScale), val);
-                    break;
-                default:
-                    logger.debug("NODE {}: Sensor conversion not performed for {}.", event.getNodeId(), senType);
-                    break;
-            }
+        SensorType senType = SensorType.valueOf(sensorType);
+        switch (senType) {
+            case TEMPERATURE:
+                switch (sensorEvent.getSensorScale()) {
+                    case 0:
+                        return new QuantityType<>(val, SIUnits.CELSIUS);
+                    case 1:
+                        return new QuantityType<>(val, ImperialUnits.FAHRENHEIT);
+                    default:
+                        logger.debug("NODE {}: Unknown temperature scale {}", event.getNodeId(),
+                                sensorEvent.getSensorScale());
+                        break;
+                }
+
+                break;
+            default:
+                logger.debug("NODE {}: Sensor conversion not performed for {}.", event.getNodeId(), senType);
+                break;
         }
 
         return new DecimalType(val);
