@@ -20,6 +20,30 @@ Flood/water sensor<br /><h1>Overview</h1><p>Flood/Water detection</p> <br /><h2>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
         </properties>
       </channel>
+      <channel id="config_decimal_param1" typeId="shenzhen_floodsensor_00_000_config_decimal_param1">
+        <label>Alarm Duration Time</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=1</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param2" typeId="config_decimal">
+        <label>Alarm Interval</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=2</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param3" typeId="shenzhen_floodsensor_00_000_config_decimal_param3">
+        <label>First Alarm ON Time duration</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=3</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param4" typeId="shenzhen_floodsensor_00_000_config_decimal_param4">
+        <label>Alarm ON time duration</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=4</property>
+        </properties>
+      </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
         <properties>
@@ -97,5 +121,38 @@ Sends the BASIC SET control frame when the probe detects water<br /><h1>Overview
     </config-description>
 
   </thing-type>
+
+  <channel-type id="shenzhen_floodsensor_00_000_config_decimal_param1">
+    <item-type>Number</item-type>
+    <label>Basic setting command</label>
+    <state pattern="%s">
+      <options>
+        <option value="0">OFF</option>
+        <option value="1">Dim level (lower bound) (multilevel switch)</option>
+        <option value="99">Dim level (upper bound) (multilevel switch)</option>
+        <option value="255">ON (Binary switch)</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="shenzhen_floodsensor_00_000_config_decimal_param3">
+    <item-type>Number</item-type>
+    <label>3</label>
+    <state pattern="%s">
+      <options>
+        <option value="3">3</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="shenzhen_floodsensor_00_000_config_decimal_param4">
+    <item-type>Number</item-type>
+    <label>4</label>
+    <state pattern="%s">
+      <options>
+        <option value="4">4</option>
+      </options>
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>
