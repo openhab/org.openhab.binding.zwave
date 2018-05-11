@@ -14,6 +14,12 @@ Water / Electrical Heating Thermostat<br /><h1>Overview</h1><p>MCOHome Water / E
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Heating state</label>
+        <properties>
+          <property name="binding:*:OnOffType">BASIC</property>
+        </properties>
+      </channel>
       <channel id="sensor_relhumidity" typeId="sensor_relhumidity">
         <label>Sensor (relative humidity)</label>
         <properties>
@@ -75,7 +81,7 @@ Water / Electrical Heating Thermostat<br /><h1>Overview</h1><p>MCOHome Water / E
       <property name="vendor">McoHome Technology Co., Ltd</property>
       <property name="modelId">MH7H</property>
       <property name="manufacturerId">015F</property>
-      <property name="manufacturerRef">0702:5102,0712:5102,0732:5102</property>
+      <property name="manufacturerRef">0701:5102,0702:5102,0712:5102,0732:5102</property>
       <property name="dbReference">773</property>
       <property name="defaultAssociations">1</property>
     </properties>
