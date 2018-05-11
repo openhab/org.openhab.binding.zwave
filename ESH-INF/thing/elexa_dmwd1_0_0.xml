@@ -8,6 +8,7 @@
   <thing-type id="elexa_dmwd1_00_000" listed="false">
     <label>DMWD1 Dome door &amp; window sensor</label>
     <description>Dome door &amp; window sensor</description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
