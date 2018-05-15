@@ -128,6 +128,9 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         List<ConfigDescriptionParameter> parameters = new ArrayList<ConfigDescriptionParameter>();
 
         if ("thing-type".equals(uri.getScheme())) {
+            if (uri.getSchemeSpecificPart().equals(ZWaveBindingConstants.CONTROLLER_SERIAL.toString())) {
+                return null;
+            }
             parameters.add(
                     ConfigDescriptionParameterBuilder.create(ZWaveBindingConstants.CONFIGURATION_NODEID, Type.INTEGER)
                             .withLabel("Node ID").withMinimum(new BigDecimal("1")).withMaximum(new BigDecimal("232"))
