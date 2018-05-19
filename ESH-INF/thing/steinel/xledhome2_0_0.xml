@@ -7,7 +7,10 @@
 
   <thing-type id="steinel_xledhome2_00_000" listed="false">
     <label>XLED Home 2 PIR sensor with relay and light</label>
-    <description>PIR sensor with relay and light</description>
+    <description><![CDATA[
+PIR sensor with relay and light<br /><h1>Overview</h1><p>–  Sensor-switched floodlight suitable for wall <br />mounting outdoors.<br />–  Fully swivelling LED panel and moveable sensor. <br />Movement triggers lights, alarms and many other <br />devices. With the fully swivelling panel, the flood-<br />light can be used at home to provide perfect illumi-<br />nation for lighting up property, or commercially for <br />lighting up business premises. In conjunction with <br />the opal cover, this extremely efficient technology <br />provides wide-area lighting</p> <br /><h2>Inclusion Information</h2><p>1. Set the Z-Wave controller to inclusion mode.<br />2. Press the link key once brieﬂy to set the device to inclusion mode.<br />3. Turn the knob from 0 to SET for max. 5 seconds and back. (SKNOB)<br />4. Press the link key 3x brieﬂy to set the device into inclusion mode.<br />(STOGGLE)</p> <br /><h2>Exclusion Information</h2><p>1. Set the Z-Wave controller to exclusion mode.<br />2. Press the link key once brieﬂy to set the device to exclusion<br />mode.<br />3. Turn the knob from 0 to SET for max. 5 seconds and back. (SKNOB)<br />4. Press the link key 3x brieﬂy to set the device into exclusion mode.<br />(STOGGLE)</p>
+    ]]></description>
+    <category>LightBulb</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
