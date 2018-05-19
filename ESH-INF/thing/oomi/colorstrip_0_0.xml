@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="oomi_colorstrip_00_000" listed="false">
+    <label>OOMI ColorStrip LED RGBWW Strip</label>
+    <description><![CDATA[
+LED RGBWW Strip<br /><h1>Overview</h1><p>The LED Strip is a multi-colored LED Strip which allows control of color temperature (warm/cold white), RGB, and dimming via Z-Wave commands.</p> <br /><h2>Inclusion Information</h2><p>Set your Z-Wave controller into pairing mode. Press the Action Button located on the back of the LED Strip's white controller box once (The network LED will blink green as an indication it is pairing insecurely, please refer to section "Enabling Security Encryption" in the Advanced Function section of the manual to pair it securely). If the LED Strip has been successfully added to your Z-Wave network, its Network LED will become solid. If the pairing was unsuccessful, the red LED will be on for 2 seconds and then remain a colorful gradient, repeat the instructions above from step 1.</p> <br /><h2>Exclusion Information</h2><p>Set your Z-Wave controller into device removal mode. Press the Action Button located on the back of the LED Strip's white controller box once. If the LED Strip has been successfully removed from your Z-Wave network, its Network LED will remain colorful gradient. If the removal was unsuccessful, the Network LED will still be solid, repeat the instructions above from step 1.</p>
+    ]]></description>
+    <category>LightBulb</category>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+        </properties>
+      </channel>
+      <channel id="color_color" typeId="color_color">
+        <label>Color Control</label>
+        <properties>
+          <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR;</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC;</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL;</property>
+        </properties>
+      </channel>
+      <channel id="color_temperature" typeId="color_temperature">
+        <label>Color Temperature</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_COLOR;colorMode=DIFF_WHITE</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL;</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Fantem</property>
+      <property name="modelId">OOMI ColorStrip</property>
+      <property name="manufacturerId">016A</property>
+      <property name="manufacturerRef">0003:0079</property>
+      <property name="dbReference">843</property>
+    </properties>
+
+  </thing-type>
+
+</thing:thing-descriptions>

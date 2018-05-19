@@ -7,7 +7,9 @@
 
   <thing-type id="elexa_dmms1_00_000" listed="false">
     <label>DMMS1 Dome Z-Wave Plus Motion Detector with Light Sensor and Flexible Magnetic Mount (DMMS1)</label>
-    <description>Dome Z-Wave Plus Motion Detector with Light Sensor and Flexible Magnetic Mount (DMMS1)</description>
+    <description><![CDATA[
+Dome Z-Wave Plus Motion Detector with Light Sensor and Flexible Magnetic Mount (DMMS1)<br /><h1>Overview</h1><p>Z-Wave Plus Motion Detector with Light Sensor</p> <br /><h2>Inclusion Information</h2><ol><li>Bring Motion Detector to within 10 feet (3 meters) of the controller</li> <li>Remove the cover of the Motion Detector by twisting it apart</li> <li>Put the controller into inclusion mode</li> <li>Press the Connect Button quickly 3 times in a row</li> </ol><p>The LED Indicator will flash five times indicating inclusion.</p> <br /><h2>Exclusion Information</h2><ol><li>Remove the cover of the Motion Detector by twisting apart and make sure the Motion Detector is powered</li> <li>Put the controller into exclusion mode</li> <li>Press the Connect Button quickly three times in a row</li> </ol><p>The LED Indicator will flash five times indicating exclusion/disconnection</p> <p>Factory Reset:</p> <ol><li>Remove the cover of the Motion Detector by twisting apart and make sure the Motion Detector is powered</li> <li>Hold the Connect Button for 10 seconds until the LED Indicator blinks once, then release the button.</li> </ol><br /><h2>Wakeup Information</h2><ol><li>Remove the cover of the Motion Detector by twisting apart and make sure the Motion Detector is powered</li> <li>Press the Connect Button quickly three times in a row</li> </ol>
+    ]]></description>
     <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -152,9 +154,9 @@ Light level change to be reported.<br /><h1>Overview</h1><p>Choose light level (
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Status to controller</label>
+        <label>1: Lifeline</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>lifeline communication of motion / no motion and light level status to Z-Wave controller. Supported command classes: NOTIFICATION_REPORT_V4 SENSOR_BINARY_REPORT_V2 SENSOR_MULTILEVEL_REPORT_V7 BATTERY_REPORT DEVICE_RESET_LOCALLY_NOTIFICATION</p>
+<br /><h1>Overview</h1><p>Lifeline communication of motion / no motion and light level status to Z-Wave controller. Supported command classes: NOTIFICATION_REPORT_V4 SENSOR_BINARY_REPORT_V2 SENSOR_MULTILEVEL_REPORT_V7 BATTERY_REPORT DEVICE_RESET_LOCALLY_NOTIFICATION</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
