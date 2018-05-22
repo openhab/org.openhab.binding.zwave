@@ -38,7 +38,7 @@ August Smart Lock Pro 3rd Gen<br /><h1>Overview</h1><p>Give your customer total 
       <property name="vendor">August Smart Locks</property>
       <property name="modelId">ASL-03</property>
       <property name="manufacturerId">033F</property>
-      <property name="manufacturerRef">0000:0594,0000:DF29</property>
+      <property name="manufacturerRef">0000:0594,0000:DF29,0001:0001</property>
       <property name="dbReference">743</property>
       <property name="defaultAssociations">1</property>
     </properties>

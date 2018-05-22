@@ -10,6 +10,10 @@ The binding uses a standard Z-Wave serial stick to communicate with the Z-Wave d
 
 ## Supported Things
 
+The Z-Wave binding provides support for a large number of devices (currently 696 from 109 manufacturers).
+See the [full list of supported things](doc/things.md).
+
+
 ### ZWave Serial Adapter
 
 Before the binding can be used, a serial adapter must be added. This needs to be done manually. Select `Serial ZStick`, and enter the serial port.
