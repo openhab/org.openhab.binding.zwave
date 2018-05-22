@@ -8,6 +8,7 @@
   <thing-type id="fakro_arz_00_000" listed="false">
     <label>ARZ Roller Shutter Module</label>
     <description>Roller Shutter Module</description>
+    <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
