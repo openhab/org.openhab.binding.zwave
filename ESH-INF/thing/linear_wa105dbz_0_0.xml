@@ -6,8 +6,8 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="linear_wa105dbz_00_000" listed="false">
-    <label>Siren &amp; Strobe Alarm Siren</label>
-    <description>Siren</description>
+    <label>WA105DBZ Siren and Strobe</label>
+    <description>Siren and Strobe</description>
     <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -28,7 +28,7 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Linear Corp</property>
-      <property name="modelId">Siren &amp; Strobe Alarm</property>
+      <property name="modelId">WA105DBZ</property>
       <property name="manufacturerId">014F</property>
       <property name="manufacturerRef">2005:0503,2009:0903</property>
       <property name="dbReference">365</property>

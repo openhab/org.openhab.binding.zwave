@@ -8,6 +8,7 @@
   <thing-type id="zyxel_st812_00_000" listed="false">
     <label>ST812 Flood sensor</label>
     <description>Flood sensor</description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

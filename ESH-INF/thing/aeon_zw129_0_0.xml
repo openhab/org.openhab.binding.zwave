@@ -37,6 +37,12 @@
           <property name="binding:*:DecimalType">METER;type=E_KWh</property>
         </properties>
       </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">CENTRAL_SCENE,BASIC</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
@@ -133,9 +139,9 @@ Which notification to be sent to the associated devices.<br /><h1>Overview</h1><
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association">
-        <label>1: Z-Wave Plus Lifeline</label>
+        <label>1: Lifeline</label>
         <description><![CDATA[
-Central Scene Notification<br /><h1>Overview</h1><p>When touching the Button 1 to 4, the Central Scene Notificcation command will be sent to the associated node (1) in Association group 1.</p>
+Z-Wave Plus Lifeline<br /><h1>Overview</h1><p>When touching the Button 1 to 4, the Central Scene Notificcation command will be sent to the associated node (1) in Association group 1.</p>
         ]]></description>
       </parameter>
 
