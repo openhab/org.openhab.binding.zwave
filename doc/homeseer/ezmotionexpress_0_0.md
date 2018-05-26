@@ -8,8 +8,12 @@ title: EZMotion Express - ZWave
 # EZMotion Express Wireless 3-in-1 Sensor
 This describes the Z-Wave device *EZMotion Express*, manufactured by *Express Controls* with the thing type UID of ```homeseer_ezmotionexpress_00_000```.
 
-# Overview
+<img src="http://www.cd-jackson.com/zwave_device_uploads/140/140_default.jpg" alt="EZMotion Express product image">
 
+
+## Overview
+
+No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/140) to improve the documentation.
 
 ## Channels
 
@@ -18,10 +22,17 @@ The following table summarises the channels available for the EZMotion Express
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
 | Motion Sensor | alarm_motion | Door | Switch | 
+| battery-level | system.battery-level | Battery | Number |
+| battery-level | system.battery-level | Battery | Number |
 | Illumination Sensor | sensor_luminance2 | Temperature | Number | 
+| battery-level | system.battery-level | Battery | Number |
 | Temperature Sensor | sensor_temperature3 | Temperature | Number | 
+| battery-level | system.battery-level | Battery | Number |
 
 ### Motion Sensor
+
+Indicates if a motion alarm is triggered
+        
 
 The ```alarm_motion``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -32,13 +43,41 @@ The following state translation is provided for this channel to the ```Switch```
 | OFF | Ok |
 | ON | Alarm |
 
+### Battery Level
+
+Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
+
+The ```system.battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
+
+### Battery Level
+
+Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
+
+The ```system.battery-level1``` channel supports the ```Number``` item and is in the ```Battery``` category.
+
 ### Illumination Sensor
+
+Indicates the current light reading
 
 The ```sensor_luminance2``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
+### Battery Level
+
+Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
+
+The ```system.battery-level2``` channel supports the ```Number``` item and is in the ```Battery``` category.
+
 ### Temperature Sensor
 
+Indicates the current temperature
+
 The ```sensor_temperature3``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
+
+### Battery Level
+
+Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
+
+The ```system.battery-level3``` channel supports the ```Number``` item and is in the ```Battery``` category.
 
 
 
@@ -55,6 +94,8 @@ Detailed information on each parameter can be found in the sections below.
 | 4 | Light Threshold | Light Threshold is the % of light above which the lights will not be turned on. |
 | 5 | Stay Awake | Setting Stay Awake value |
 | 6 | On Value | The value sent by the Z-Wave BASIC\_SET command when motion is detected. |
+|  | Wakeup Interval | Sets the interval at which the device will accept commands from the controller |
+|  | Wakeup Node | Sets the node ID of the device to receive the wakeup notifications |
 
 ### Parameter 1: Sensitivity
 
@@ -154,6 +195,19 @@ The manufacturer defined default value is 255.
 
 This parameter has the configuration ID ```config_6_1``` and is of type ```INTEGER```.
 
+### Wakeup Interval
+
+The wakeup interval sets the period at which the device will listen for messages from the controller. This is required for battery devices that sleep most of the time in order to conserve battery life. The device will wake up at this interval and send a message to the controller to tell it that it can accept messages - after a few seconds, it will go back to sleep if there is no further communications. 
+
+This setting is defined in *seconds*. It is advisable not to set this interval too short or it could impact battery life. A period of 1 hour (3600 seconds) is suitable in most instances.
+
+Note that this setting does not affect the devices ability to send sensor data, or notification events.
+
+### Wakeup Node
+
+When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
+In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
 
 ## Association Groups
 
@@ -222,7 +276,12 @@ This group supports 4 nodes.
 | COMMAND_CLASS_ASSOCIATION_V0| |
 | COMMAND_CLASS_VERSION_V0| |
 
+### Documentation Links
+
+* [EZMotion-100 Manual](http://www.cd-jackson.com/zwave_device_uploads/140/HomeSeer-EZMotion-100.pdf)
+* [Express Controls EZMotion SDK](http://www.cd-jackson.com/zwave_device_uploads/140/EZMotionSDK.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/140).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/140).

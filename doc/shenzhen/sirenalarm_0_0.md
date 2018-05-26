@@ -6,10 +6,14 @@ title: Siren Alarm - ZWave
 {% include base.html %}
 
 # Siren Alarm Siren Alarm
-This describes the Z-Wave device *Siren Alarm*, manufactured by *Shenzhen Neo Electronics Co., Ltd* with the thing type UID of ```shenzhen_sirenalarm_00_000```.
+This describes the Z-Wave device *Siren Alarm*, manufactured by *[Shenzhen Neo Electronics Co., Ltd](http://www.szneo.com/)* with the thing type UID of ```shenzhen_sirenalarm_00_000```.
 
-# Overview
+<img src="http://www.cd-jackson.com/zwave_device_uploads/522/522_default.png" alt="Siren Alarm product image">
 
+
+## Overview
+
+No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/522) to improve the documentation.
 
 ## Channels
 
@@ -19,12 +23,18 @@ The following table summarises the channels available for the Siren Alarm
 |---------|------------|----------|-----------|
 | Switch | switch_binary | Switch | Switch | 
 | Alarm | alarm_general | Door | Switch | 
+| battery-level | system.battery-level | Battery | Number |
 
 ### Switch
+
+Switch the power on and off
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Alarm
+
+Indicates if an alarm is triggered
+        
 
 The ```alarm_general``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -34,6 +44,12 @@ The following state translation is provided for this channel to the ```Switch```
 |-------|-----------|
 | OFF | Ok |
 | ON | Alarm |
+
+### Battery Level
+
+Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
+
+The ```system.battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
 
 
 
@@ -177,4 +193,4 @@ This group supports 5 nodes.
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/522).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/522).

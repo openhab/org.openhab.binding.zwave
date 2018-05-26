@@ -8,10 +8,16 @@ title: L 810 LED iHF - ZWave
 # L 810 LED iHF Sensor-switched outdoor up and downlighting
 This describes the Z-Wave device *L 810 LED iHF*, manufactured by *Steinel* with the thing type UID of ```steinel_l810ledihf_00_000```.
 
-The device is in the category of Light Bulb, defining Devices that illuminate something, such as bulbs, etc..
+The device is in the category of *Light Bulb*, defining Devices that illuminate something, such as bulbs, etc..
 
-# Overview
+<img src="http://www.cd-jackson.com/zwave_device_uploads/705/705_default.png" alt="L 810 LED iHF product image">
 
+
+The L 810 LED iHF does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
+
+## Overview
+
+No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/705) to improve the documentation.
 
 ## Channels
 
@@ -31,13 +37,22 @@ The following table summarises the channels available for the L 810 LED iHF
 
 ### Dimmer
 
+The brightness channel allows to control the brightness of a light.
+            It is also possible to switch the light on and off.
+        
+
 The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Scene Number
 
+Triggers when a scene button is pressed
+
 The ```scene_number``` channel supports the ```Number``` item.
 
 ### Binary Sensor
+
+Indicates if a sensor has triggered
+        
 
 The ```sensor_binary``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -50,9 +65,14 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Sensor (luminance)
 
+Indicates the current light reading
+
 The ```sensor_luminance``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Alarm (burglar)
+
+Indicates if the burglar alarm is triggered
+        
 
 The ```alarm_burglar``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -65,6 +85,9 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Alarm (system)
 
+Indicates if a system alarm is triggered
+        
+
 The ```alarm_system``` channel supports the ```Switch``` item. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
@@ -76,13 +99,22 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Dimmer 1
 
+The brightness channel allows to control the brightness of a light.
+            It is also possible to switch the light on and off.
+        
+
 The ```switch_dimmer1``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Scene Number 1
 
+Triggers when a scene button is pressed
+
 The ```scene_number1``` channel supports the ```Number``` item.
 
 ### Alarm (burglar) 2
+
+Indicates if the burglar alarm is triggered
+        
 
 The ```alarm_burglar2``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -117,6 +149,7 @@ Detailed information on each parameter can be found in the sections below.
 | 14 | Off_On_Behaviour | Sequence Off-On behaviour (timeout): |
 | 15 | Sequence_Time | Sequence timing: |
 | 16 | Motion_Disable | Motion Off behaviour (timeout): |
+|  | Switch All Mode | Set the mode for the switch when receiving SWITCH ALL commands |
 
 ### Parameter 1: Time
 
@@ -347,6 +380,18 @@ The manufacturer defined default value is 209.
 
 This parameter has the configuration ID ```config_16_2``` and is of type ```INTEGER```.
 
+### Switch All Mode
+
+Set the mode for the switch when receiving SWITCH ALL commands.
+
+The following option values may be configured -:
+| Value  | Description |
+|--------|-------------|
+| 0 | Exclude from All On and All Off groups |
+| 1 | Include in All On group |
+| 2 | Include in All Off group |
+| 255 | Include in All On and All Off groups |
+
 
 ## Association Groups
 
@@ -444,7 +489,11 @@ This group supports 16 nodes.
 | COMMAND_CLASS_ASSOCIATION_V2| |
 | COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION_V3| |
 
+### Documentation Links
+
+* [Steinel Z-Wave Interface Spezification v 1.0.0](http://www.cd-jackson.com/zwave_device_uploads/705/bdal2-110043512.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/705).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/705).

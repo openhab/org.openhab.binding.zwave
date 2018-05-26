@@ -8,10 +8,16 @@ title: EZMultiPli - ZWave
 # EZMultiPli Multi Sensor
 This describes the Z-Wave device *EZMultiPli*, manufactured by *Express Controls* with the thing type UID of ```homeseer_ezmultipli_00_000```.
 
-The device is in the category of Sensor, defining Device used to measure something.
+The device is in the category of *Sensor*, defining Device used to measure something.
 
-# Overview
+<img src="http://www.cd-jackson.com/zwave_device_uploads/268/268_default.jpg" alt="EZMultiPli product image">
 
+
+The EZMultiPli does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
+
+## Overview
+
+No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/268) to improve the documentation.
 
 ## Channels
 
@@ -26,17 +32,28 @@ The following table summarises the channels available for the EZMultiPli
 
 ### Sensor (temperature)
 
+Indicates the current temperature
+
 The ```sensor_temperature``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Sensor (luminance)
+
+Indicates the current light reading
 
 The ```sensor_luminance``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Color
 
+The color channel allows to control the color of a light.
+            It is also possible to dim values and switch the light on and off.
+        
+
 The ```color_color``` channel supports the ```Color``` item.
 
 ### Alarm
+
+Indicates if an alarm is triggered
+        
 
 The ```alarm_general``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -168,7 +185,11 @@ This group supports 4 nodes.
 | COMMAND_CLASS_ASSOCIATION_V1| |
 | COMMAND_CLASS_VERSION_V1| |
 
+### Documentation Links
+
+* [EZMultiPli Manual](http://www.cd-jackson.com/zwave_device_uploads/268/EZMultiPliOwnerManual.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/268).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/268).

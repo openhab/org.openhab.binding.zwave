@@ -6,10 +6,12 @@ title: ZMNHCD - ZWave
 {% include base.html %}
 
 # ZMNHCD Flush Shutter
-This describes the Z-Wave device *ZMNHCD*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhcd_00_000```.
+This describes the Z-Wave device *ZMNHCD*, manufactured by *[Goap](http://www.qubino.com/)* with the thing type UID of ```qubino_zmnhcd_00_000```.
 This version of the device is limited to firmware versions below 4.0
 
-# Overview
+The ZMNHCD does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
+
+## Overview
 
 ZMNHCD version S1 for version up to 4.0
 
@@ -42,37 +44,58 @@ The following table summarises the channels available for the ZMNHCD
 
 ### Switch
 
+Switch the power on and off
+
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Blinds Control
+
+Provides start / stop control of blinds
+        
 
 The ```blinds_control``` channel supports the ```Rollershutter``` item and is in the ```Blinds``` category.
 
 ### Sensor (temperature)
 
+Indicates the current temperature
+
 The ```sensor_temperature``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (watts)
+
+Indicates the instantaneous power consumption
 
 The ```meter_watts``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (kWh)
 
+Indicates the energy consumption (kWh)
+
 The ```meter_kwh``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Switch 1
+
+Switch the power on and off
 
 The ```switch_binary1``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Blinds Control 1
 
+Provides start / stop control of blinds
+        
+
 The ```blinds_control1``` channel supports the ```Rollershutter``` item and is in the ```Blinds``` category.
 
 ### Switch 2
 
+Switch the power on and off
+
 The ```switch_binary2``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Blinds Control 2
+
+Provides start / stop control of blinds
+        
 
 The ```blinds_control2``` channel supports the ```Rollershutter``` item and is in the ```Blinds``` category.
 
@@ -99,6 +122,7 @@ Detailed information on each parameter can be found in the sections below.
 | 90 | Relay delay time | Defines the minimum time delay between next motor movement |
 | 110 | Temperature sensor offset settings | Adds or removes an offset from the measured temperature. |
 | 120 | Digital temperature sensor reporting | Threshold for sending temperature change reports |
+|  | Switch All Mode | Set the mode for the switch when receiving SWITCH ALL commands |
 
 ### Parameter 10: ALL ON/ALL OFF
 
@@ -354,6 +378,18 @@ The manufacturer defined default value is 5.
 
 This parameter has the configuration ID ```config_120_1``` and is of type ```INTEGER```.
 
+### Switch All Mode
+
+Set the mode for the switch when receiving SWITCH ALL commands.
+
+The following option values may be configured -:
+| Value  | Description |
+|--------|-------------|
+| 0 | Exclude from All On and All Off groups |
+| 1 | Include in All On group |
+| 2 | Include in All Off group |
+| 255 | Include in All On and All Off groups |
+
 
 ## Association Groups
 
@@ -440,7 +476,12 @@ This group supports 16 nodes.
 | COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION_V3| |
 | COMMAND_CLASS_MARK_V1| |
 
+### Documentation Links
+
+* [ZMNHCD VERSION S1 19.08.2015](http://www.cd-jackson.com/zwave_device_uploads/614/ZMNHCD-VER-S1-19-08-2015.pdf)
+* [Qubino_Flush-Shutter-PLUS-user-manual_V1.4](http://www.cd-jackson.com/zwave_device_uploads/614/Qubino-Flush-Shutter-PLUS-user-manual-V1-4.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/614).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/614).

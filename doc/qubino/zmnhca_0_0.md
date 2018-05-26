@@ -6,12 +6,15 @@ title: ZMNHCA - ZWave
 {% include base.html %}
 
 # ZMNHCA Flush Shutter
-This describes the Z-Wave device *ZMNHCA*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhca_00_000```.
+This describes the Z-Wave device *ZMNHCA*, manufactured by *[Goap](http://www.qubino.com/)* with the thing type UID of ```qubino_zmnhca_00_000```.
 
-The device is in the category of Blinds, defining Roller shutters, window blinds, etc..
+The device is in the category of *Blinds*, defining Roller shutters, window blinds, etc..
 
-# Overview
+The ZMNHCA does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
+## Overview
+
+No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/635) to improve the documentation.
 
 ## Channels
 
@@ -32,41 +35,63 @@ The following table summarises the channels available for the ZMNHCA
 
 ### Switch
 
+Switch the power on and off
+
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Blinds Control
+
+Provides start / stop control of blinds
+        
 
 The ```blinds_control``` channel supports the ```Rollershutter``` item and is in the ```Blinds``` category.
 
 ### Sensor (temperature)
 
+Indicates the current temperature
+
 The ```sensor_temperature``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (watts)
+
+Indicates the instantaneous power consumption
 
 The ```meter_watts``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (kWh)
 
+Indicates the energy consumption (kWh)
+
 The ```meter_kwh``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### switch
+
+Switch the power on and off
 
 The ```switch_binary1``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Blinds Control
 
+Provides start / stop control of blinds
+        
+
 The ```blinds_control1``` channel supports the ```Rollershutter``` item and is in the ```Blinds``` category.
 
 ### Temperatur Sensor
+
+Indicates the current temperature
 
 The ```sensor_temperature1``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (watts)
 
+Indicates the instantaneous power consumption
+
 The ```meter_watts1``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (kWh)
+
+Indicates the energy consumption (kWh)
 
 The ```meter_kwh1``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -91,6 +116,7 @@ Detailed information on each parameter can be found in the sections below.
 | 80 | Reporting to controller | reports regarding to main controller |
 | 85 | Power consumption max delay time | max time before motor power consumption is read |
 | 90 | Relay delay time | This parameter defines the time delay between output relay switching |
+|  | Switch All Mode | Set the mode for the switch when receiving SWITCH ALL commands |
 
 ### Parameter 10: ALL ON / ALL OFF
 
@@ -311,6 +337,18 @@ The manufacturer defined default value is 5.
 
 This parameter has the configuration ID ```config_90_1``` and is of type ```INTEGER```.
 
+### Switch All Mode
+
+Set the mode for the switch when receiving SWITCH ALL commands.
+
+The following option values may be configured -:
+| Value  | Description |
+|--------|-------------|
+| 0 | Exclude from All On and All Off groups |
+| 1 | Include in All On group |
+| 2 | Include in All Off group |
+| 255 | Include in All On and All Off groups |
+
 
 ## Association Groups
 
@@ -379,7 +417,11 @@ This group supports 16 nodes.
 | COMMAND_CLASS_ASSOCIATION_V0| |
 | COMMAND_CLASS_VERSION_V1| |
 
+### Documentation Links
+
+* [Manual](http://www.cd-jackson.com/zwave_device_uploads/635/flush-shutter-ZMNHCA2.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/635).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/635).

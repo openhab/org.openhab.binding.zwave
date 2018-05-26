@@ -6,10 +6,13 @@ title: ZMNHJA - ZWave
 {% include base.html %}
 
 # ZMNHJA Flush Pilot
-This describes the Z-Wave device *ZMNHJA*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhja_00_000```.
+This describes the Z-Wave device *ZMNHJA*, manufactured by *[Goap](http://www.qubino.com/)* with the thing type UID of ```qubino_zmnhja_00_000```.
 
-# Overview
+The ZMNHJA does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
+## Overview
+
+No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/354) to improve the documentation.
 
 ## Channels
 
@@ -26,17 +29,28 @@ The following table summarises the channels available for the ZMNHJA
 
 ### Switch
 
+Switch the power on and off
+
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Dimmer
+
+The brightness channel allows to control the brightness of a light.
+            It is also possible to switch the light on and off.
+        
 
 The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Sensor (temperature)
 
+Indicates the current temperature
+
 The ```sensor_temperature``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Binary Sensor 1
+
+Indicates if a sensor has triggered
+        
 
 The ```sensor_binary1``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -49,6 +63,9 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Binary Sensor 2
 
+Indicates if a sensor has triggered
+        
+
 The ```sensor_binary2``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
@@ -59,6 +76,9 @@ The following state translation is provided for this channel to the ```Switch```
 | OFF | Untriggered |
 
 ### Binary Sensor 3
+
+Indicates if a sensor has triggered
+        
 
 The ```sensor_binary3``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -88,6 +108,7 @@ Detailed information on each parameter can be found in the sections below.
 | 12 | Input 2 operation mode selection |  |
 | 13 | Input 3 operation mode selection |  |
 | 30 | Saving the state of the device after a power failure |  |
+|  | Switch All Mode | Set the mode for the switch when receiving SWITCH ALL commands |
 
 ### Parameter 1: Input 1 switch type
 
@@ -263,6 +284,18 @@ The manufacturer defined default value is 0 (The module saves its state before p
 
 This parameter has the configuration ID ```config_30_1``` and is of type ```INTEGER```.
 
+### Switch All Mode
+
+Set the mode for the switch when receiving SWITCH ALL commands.
+
+The following option values may be configured -:
+| Value  | Description |
+|--------|-------------|
+| 0 | Exclude from All On and All Off groups |
+| 1 | Include in All On group |
+| 2 | Include in All Off group |
+| 255 | Include in All On and All Off groups |
+
 
 ## Association Groups
 
@@ -333,7 +366,12 @@ This group supports 99 nodes.
 | COMMAND_CLASS_BASIC_V0| |
 | COMMAND_CLASS_SENSOR_BINARY_V0| Linked to BASIC|
 
+### Documentation Links
+
+* [Reference document in French (not found in English)](http://www.cd-jackson.com/zwave_device_uploads/354/Qubino-Flush-Pilot-wire-user-manual-V2-0-fra.pdf)
+* [Reference of a newer module with the same parameters, in English](http://www.cd-jackson.com/zwave_device_uploads/354/Qubino-Flush-pilot-wire-PLUS-user-manual-V1-1-eng.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/354).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/354).

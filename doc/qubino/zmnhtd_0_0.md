@@ -6,11 +6,16 @@ title: ZMNHTD - ZWave
 {% include base.html %}
 
 # ZMNHTD Smart Meter
-This describes the Z-Wave device *ZMNHTD*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhtd_00_000```.
+This describes the Z-Wave device *ZMNHTD*, manufactured by *[Goap](http://www.qubino.com/)* with the thing type UID of ```qubino_zmnhtd_00_000```.
 
-The device is in the category of Sensor, defining Device used to measure something.
+The device is in the category of *Sensor*, defining Device used to measure something.
 
-# Overview
+<img src="http://www.cd-jackson.com/zwave_device_uploads/414/414_default.jpg" alt="ZMNHTD product image">
+
+
+The ZMNHTD does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
+
+## Overview
 
 This Z-Wave module is used for energy measurements in single-phase electrical power network and can be used in residential, industrial and utility applications. Meters measure energy directly in 2-wire networks according to the principle of fast sampling of voltage and current signals. A built-in microprocessor calculates energy, power and power factor from the measured signals. The module can be controlled through Z-wave network and it acts as repeater in order to improve range and stability of Z-wave network. It is designed to be mounted on DIN rail.
 
@@ -18,7 +23,7 @@ Measurements: Voltage V Current I Power – Active W Power – Active total Impo
 
 It is possible to connect two external relay to Smart Meter module. One controlled by built-in optical (IR) communication port on the side, second controlled by output on terminal 5.
 
-## Inclusion Information
+### Inclusion Information
 
 Module Inclusion (Adding to Z-wave network)
 
@@ -29,7 +34,7 @@ Module Inclusion (Adding to Z-wave network)
 
 NOTE: For auto-inclusion procedure, first set main controller into inclusion mode and then connect module to power supply.
 
-## Exclusion Information
+### Exclusion Information
 
 Module Exclusion/Reset (Removing from Z-Wave network):
 
@@ -58,37 +63,59 @@ The following table summarises the channels available for the ZMNHTD
 
 ### Power factor
 
+Indicates the instantaneous power factor
+
 The ```meter_powerfactor``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Voltage
+
+Indicates the instantaneous voltage
 
 The ```meter_voltage``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Active Power
 
+Indicates the instantaneous power consumption
+
 The ```meter_watts``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Active Energy Comsumption
+
+Indicates the energy consumption (kWh)
 
 The ```meter_kwh``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Apparent Energy Consumption
 
+Indicates the energy consumption (kVAh)
+
 The ```meter_kvah``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Current
+
+Indicates the instantaneous current consumption
 
 The ```meter_current``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Reset Meter Stats
 
+Reset the meter
+
 The ```meter_reset``` channel supports the ```Switch``` item and is in the ```Energy``` category.
 
 ### switch_binary
 
+Switch the power on and off
+
 The ```switch_binary1``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Switch Relay
+
+External relay ON
+
+External relay OFF
+
+Switch the power on and off
 
 The ```switch_binary2``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
@@ -126,6 +153,7 @@ Detailed information on each parameter can be found in the sections below.
 | 146 | Reactive power accumulated |  |
 | 147 | Apparent power accumulated |  |
 | 148 | Active power accumulated (export) |  |
+|  | Switch All Mode | Set the mode for the switch when receiving SWITCH ALL commands |
 
 ### Parameter 7: Input 1 switch function selection
 
@@ -468,6 +496,18 @@ The manufacturer defined default value is 0.
 This parameter has the configuration ID ```config_148_32``` and is of type ```INTEGER```.
 This is a read only parameter.
 
+### Switch All Mode
+
+Set the mode for the switch when receiving SWITCH ALL commands.
+
+The following option values may be configured -:
+| Value  | Description |
+|--------|-------------|
+| 0 | Exclude from All On and All Off groups |
+| 1 | Include in All On group |
+| 2 | Include in All Off group |
+| 255 | Include in All On and All Off groups |
+
 
 ## Association Groups
 
@@ -528,7 +568,13 @@ This group supports 1 nodes.
 | COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION_V3| |
 | COMMAND_CLASS_MARK_V0| |
 
+### Documentation Links
+
+* [Manual Goap Smart Meter ZMNHTD](http://www.cd-jackson.com/zwave_device_uploads/414/Qubino-Smart-Meter-PLUS-user-manual-V1-7-1.pdf)
+* [Qubino_Smart-Meter-PLUS-user-manual_V1.9_eng-1](http://www.cd-jackson.com/zwave_device_uploads/414/Qubino-Smart-Meter-PLUS-user-manual-V1-9-eng-1--1-.pdf)
+* [Qubino_Smart-Meter-PLUS-extended-manual_eng_2.3](http://www.cd-jackson.com/zwave_device_uploads/414/Qubino-Smart-Meter-PLUS-extended-manual-eng-2-3.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/414).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/414).

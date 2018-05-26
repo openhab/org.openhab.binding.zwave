@@ -6,15 +6,20 @@ title: ZMNHLD - ZWave
 {% include base.html %}
 
 # ZMNHLD Flush PWM Thermostat
-This describes the Z-Wave device *ZMNHLD*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhld_00_000```.
+This describes the Z-Wave device *ZMNHLD*, manufactured by *[Goap](http://www.qubino.com/)* with the thing type UID of ```qubino_zmnhld_00_000```.
 
-The device is in the category of HVAC, defining Air condition devices, Fans.
+The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-# Overview
+<img src="http://www.cd-jackson.com/zwave_device_uploads/498/498_default.png" alt="ZMNHLD product image">
+
+
+The ZMNHLD does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
+
+## Overview
 
 This Z-Wave module is used to regulate temperature. Regulation is done using full wave PWM technology. The module can be controlled either through Z-wave network or through the wall switch. The module is designed to be mounted inside a “flush mounting box” and is hidden behind a traditional wall switch. Module measures power consumption of connected device. It is designed to act as repeater in order to improve range and stability of Z-wave network.
 
-## Inclusion Information
+### Inclusion Information
 
 WARNING: Service button S **must NOT be used** when module is connected to 110-230V power supply.
 
@@ -28,7 +33,7 @@ WARNING: Service button S **must NOT be used** when module is connected to 110-2
 
 **NOTE2:** When connecting temperature sensor to module that has already been included, you have to exclude module first. Switch off power supply,connect the sensor and re-include the module.
 
-## Exclusion Information
+### Exclusion Information
 
 WARNING: Service button S **must NOT be used** when module is connected to 110-230V power supply.
 
@@ -56,9 +61,14 @@ The following table summarises the channels available for the ZMNHLD
 
 ### Sensor (temperature)
 
+Indicates the current temperature
+
 The ```sensor_temperature``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Thermostat mode
+
+Sets the thermostat
+        
 
 The ```thermostat_mode``` channel supports the ```Number``` item and is in the ```Temperature``` category.
 The following state translation is provided for this channel to the ```Number``` item type -:
@@ -84,13 +94,20 @@ The following state translation is provided for this channel to the ```Number```
 
 ### Thermostat setpoint
 
+Sets the thermostate setpoint
+
 The ```thermostat_setpoint``` channel supports the ```Number``` item and is in the ```Temperature``` category.
 
 ### Temperature Sensor
 
+Indicates the current temperature
+
 The ```sensor_temperature1``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Thermostat mode
+
+Sets the thermostat
+        
 
 The ```thermostat_mode1``` channel supports the ```Number``` item and is in the ```Temperature``` category.
 The following state translation is provided for this channel to the ```Number``` item type -:
@@ -165,6 +182,7 @@ Detailed information on each parameter can be found in the sections below.
 | 120 | Digital temperature sensor reporting | Digital temperature sensor reporting |
 | 121 | Digital temperature sensor / setpoint selector | Digital temperature sensor / setpoint selector |
 | 122 | Node Id of external battery powered sensor | Node Id of external battery powered sensor |
+|  | Switch All Mode | Set the mode for the switch when receiving SWITCH ALL commands |
 
 ### Parameter 1: Input I1 switch type
 
@@ -808,6 +826,18 @@ The manufacturer defined default value is 0.
 
 This parameter has the configuration ID ```config_122_1``` and is of type ```INTEGER```.
 
+### Switch All Mode
+
+Set the mode for the switch when receiving SWITCH ALL commands.
+
+The following option values may be configured -:
+| Value  | Description |
+|--------|-------------|
+| 0 | Exclude from All On and All Off groups |
+| 1 | Include in All On group |
+| 2 | Include in All Off group |
+| 255 | Include in All On and All Off groups |
+
 
 ## Association Groups
 
@@ -923,7 +953,13 @@ This group supports 16 nodes.
 |---------------|---------|
 | COMMAND_CLASS_SENSOR_MULTILEVEL_V7| |
 
+### Documentation Links
+
+* [Page 1](http://www.cd-jackson.com/zwave_device_uploads/498/qubino-zmnhld-0001.pdf)
+* [Page 2](http://www.cd-jackson.com/zwave_device_uploads/498/qubino-zmnhld-0002.pdf)
+* [ZMNHKD Quick Manual](http://www.cd-jackson.com/zwave_device_uploads/498/Qubino-Flush-Heat-Cool-Thermostat-PLUS-user-manual-V1-5-eng.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/498).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/498).

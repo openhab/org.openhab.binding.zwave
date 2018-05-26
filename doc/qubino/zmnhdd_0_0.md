@@ -6,15 +6,20 @@ title: ZMNHDD - ZWave
 {% include base.html %}
 
 # ZMNHDD Flush Dimmer Plus
-This describes the Z-Wave device *ZMNHDD*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhdd_00_000```.
+This describes the Z-Wave device *ZMNHDD*, manufactured by *[Goap](http://www.qubino.com/)* with the thing type UID of ```qubino_zmnhdd_00_000```.
 
-The device is in the category of Wall Switch, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
+The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-# Overview
+<img src="http://www.cd-jackson.com/zwave_device_uploads/210/210_default.png" alt="ZMNHDD product image">
+
+
+The ZMNHDD does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
+
+## Overview
 
 This Z-Wave module is used for dimming the bulb or to manage the speed of a fan. The module can be controlled either through a Z-Wave network or through the wall switch. The module is designed to be mounted inside a "flush mounting box", hidden behind a traditional wall switch. Module measures power consumption of bulb or fan and supports connection of digital temperature sensor. It is designed to act as repeater in order to improve range and stability of Z-wave network.
 
-## Inclusion Information
+### Inclusion Information
 
 WARNING: Service button S **must NOT be used** when module is connected to 110-230V power supply.
 
@@ -28,7 +33,7 @@ WARNING: Service button S **must NOT be used** when module is connected to 110-2
 
 **NOTE2:** When connecting temperature sensor to module that has already been included, you have to exclude module first. Switch off power supply,connect the sensor and re-include the module.
 
-## Exclusion Information
+### Exclusion Information
 
 WARNING: Service button S **must NOT be used** when module is connected to 110-230V power supply.
 
@@ -67,13 +72,22 @@ The following table summarises the channels available for the ZMNHDD
 
 ### Switch
 
+Switch the power on and off
+
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Dimmer
 
+The brightness channel allows to control the brightness of a light.
+            It is also possible to switch the light on and off.
+        
+
 The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Binary Sensor
+
+Indicates if a sensor has triggered
+        
 
 The ```sensor_binary``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -86,21 +100,32 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Sensor (temperature)
 
+Indicates the current temperature
+
 The ```sensor_temperature``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (kWh)
+
+Indicates the energy consumption (kWh)
 
 The ```meter_kwh``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (watts)
 
+Indicates the instantaneous power consumption
+
 The ```meter_watts``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Reset the total power consumption
 
+Reset the meter
+
 The ```meter_reset``` channel supports the ```Switch``` item and is in the ```Energy``` category.
 
 ### Alarm
+
+Indicates if an alarm is triggered
+        
 
 The ```alarm_general``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -113,21 +138,34 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Switch 1
 
+Switch the power on and off
+
 The ```switch_binary1``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Dimmer 1
+
+The brightness channel allows to control the brightness of a light.
+            It is also possible to switch the light on and off.
+        
 
 The ```switch_dimmer1``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Electric meter (kWh) 1
 
+Indicates the energy consumption (kWh)
+
 The ```meter_kwh1``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (watts) 1
 
+Indicates the instantaneous power consumption
+
 The ```meter_watts1``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Binary Sensor 2
+
+Indicates if a sensor has triggered
+        
 
 The ```sensor_binary2``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -140,6 +178,9 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Alarm 2
 
+Indicates if an alarm is triggered
+        
+
 The ```alarm_general2``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
@@ -151,6 +192,9 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Binary Sensor 3
 
+Indicates if a sensor has triggered
+        
+
 The ```sensor_binary3``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
@@ -161,6 +205,9 @@ The following state translation is provided for this channel to the ```Switch```
 | OFF | Untriggered |
 
 ### Alarm 3
+
+Indicates if an alarm is triggered
+        
 
 The ```alarm_general3``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -687,7 +734,12 @@ This group supports 16 nodes.
 | COMMAND_CLASS_ASSOCIATION_V1| |
 | COMMAND_CLASS_VERSION_V1| |
 
+### Documentation Links
+
+* [Qubino Flush-Dimmer PLUS user-manual V1.6-2](http://www.cd-jackson.com/zwave_device_uploads/210/Qubino-Flush-Dimmer-PLUS-user-manual-V1-6-2.pdf)
+* [Qubino_Flush-Dimmer-PLUS-user-manual_V1.9_eng-1.pdf](http://www.cd-jackson.com/zwave_device_uploads/210/Qubino-Flush-Dimmer-PLUS-user-manual-V1-9-eng-1.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/210).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/210).

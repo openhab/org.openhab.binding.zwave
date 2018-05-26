@@ -6,11 +6,16 @@ title: ZMNHWD - ZWave
 {% include base.html %}
 
 # ZMNHWD Qubino Flush RGBW Dimmer
-This describes the Z-Wave device *ZMNHWD*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhwd_00_000```.
+This describes the Z-Wave device *ZMNHWD*, manufactured by *[Goap](http://www.qubino.com/)* with the thing type UID of ```qubino_zmnhwd_00_000```.
 
-The device is in the category of Wall Switch, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
+The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-# Overview
+<img src="http://www.cd-jackson.com/zwave_device_uploads/567/567_default.jpg" alt="ZMNHWD product image">
+
+
+The ZMNHWD does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
+
+## Overview
 
 Qubino Flush RGBW module controls RGB/RGBW strips and LED strips or bulbs and has 5 special scene effects. It can also control halogen lights and fans. Its extremely small size allows for easy installation behind wall sockets and switches. Controlled devices may be powered by 12 or 24 VDC.
 
@@ -21,13 +26,13 @@ Supported control types:
 
 This should hopefully work with models ZMNHWD1-ZMNHWD8 (which work on different frequencies).
 
-## Inclusion Information
+### Inclusion Information
 
 To include the device, press the service button 3 times within 2 seconds. The LED will turn green if the device was properly included.
 
 The device supports auto inclusion: Install the device and connect the power. The auto inclusion function will be active for about 2 minutes.
 
-## Exclusion Information
+### Exclusion Information
 
 To exclude the device, press the service button 3 times within 2 seconds. The green LED will blink if the device was properly included and the device will be reset to factory defaults.
 
@@ -44,17 +49,30 @@ The following table summarises the channels available for the ZMNHWD
 
 ### Switch
 
+Switch the power on and off
+
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Dimmer
+
+The brightness channel allows to control the brightness of a light.
+            It is also possible to switch the light on and off.
+        
 
 The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Color Control
 
+The color channel allows to control the color of a light.
+            It is also possible to dim values and switch the light on and off.
+        
+
 The ```color_color``` channel supports the ```Color``` item.
 
 ### Color Temperature
+
+The color temperature channel allows to set the color
+            temperature of a light from 0 (cold) to 100 (warm).
 
 The ```color_temperature``` channel supports the ```Dimmer``` item and is in the ```ColorLight``` category.
 
@@ -351,7 +369,12 @@ This group supports 1 nodes.
 | COMMAND_CLASS_ASSOCIATION_V2| |
 | COMMAND_CLASS_VERSION_V2| |
 
+### Documentation Links
+
+* [Qubino Flush RGBW Dimmer – ZWAVE PLUS – User Manual](http://www.cd-jackson.com/zwave_device_uploads/567/Qubino-Flush-RGBW-Dimmer-PLUS-user-manual-V1-2-eng.pdf)
+* [Extended manual](http://www.cd-jackson.com/zwave_device_uploads/567/Qubino-Flush-RGBW-Dimmer-PLUS-extended-manual-eng-2-2.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/567).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/567).

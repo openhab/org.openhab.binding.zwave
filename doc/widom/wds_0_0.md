@@ -8,9 +8,14 @@ title: WDS - ZWave
 # WDS Universal Double Switch
 This describes the Z-Wave device *WDS*, manufactured by *wiDom* with the thing type UID of ```widom_wds_00_000```.
 
-The device is in the category of Wall Switch, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
+The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-# Overview
+<img src="http://www.cd-jackson.com/zwave_device_uploads/432/432_default.jpg" alt="WDS product image">
+
+
+The WDS does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
+
+## Overview
 
 Universal Double Switch is an ON/OFF control device designed to independently control two separate loads, suited for use as both a local and remote switch. Similarly to the other WiDom “in wall” devices, it can be fully integrated into pre-existing systems and configured to associate configurable behaviours to a specific number of clicks, in full integration with the Z-Wave home automation ecosystem.
 
@@ -41,7 +46,7 @@ Electrical IP Rating: IP 20
 Actuator element: Relay  
 Conformity: CE, RoHS
 
-## Inclusion Information
+### Inclusion Information
 
 The device supports both the Network Wide Inclusion (which offers the opportunity of inclusion into a network even if the device is not directly connected to the controller) and the Normal Inclusion mechanisms.
 
@@ -49,7 +54,7 @@ If the device is not included into a Z-Wave network, a single click on the (B) b
 
 INFO: Through the inclusion procedure, activated with a single click on one of the external switches, the system determines the type of external switch (see parameter No. 62).
 
-## Exclusion Information
+### Exclusion Information
 
 Only a controller can remove a device from the network. WiDom Universal Double Switch is compatible with all Z-Wave certified controllers. After the exclusion procedure has been activated by the controller, the device can be removed, putting it in Exclusion Mode by three consecutive clicks on the (B) button or on the external switch, when available.
 
@@ -68,25 +73,37 @@ The following table summarises the channels available for the WDS
 
 ### Switch
 
+Switch the power on and off
+
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Electric meter (watts)
+
+Indicates the instantaneous power consumption
 
 The ```meter_watts``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Switch 1
 
+Switch the power on and off
+
 The ```switch_binary1``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Electric meter (watts) 1
+
+Indicates the instantaneous power consumption
 
 The ```meter_watts1``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Switch 2
 
+Switch the power on and off
+
 The ```switch_binary2``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Electric meter (watts) 2
+
+Indicates the instantaneous power consumption
 
 The ```meter_watts2``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -114,6 +131,7 @@ Detailed information on each parameter can be found in the sections below.
 | 60 | Start-up status | Defines the status of the device following a restart. |
 | 61 | Configuration reset | Defines which parameters should be reset to default values |
 | 62 | Type of external switch | Defines the type of external switch connected to the device |
+|  | Switch All Mode | Set the mode for the switch when receiving SWITCH ALL commands |
 
 ### Parameter 1: Outputs status upon receipt of 1 click on its command
 
@@ -469,6 +487,18 @@ The manufacturer defined default value is 1 (BUTTON).
 
 This parameter has the configuration ID ```config_62_1``` and is of type ```INTEGER```.
 
+### Switch All Mode
+
+Set the mode for the switch when receiving SWITCH ALL commands.
+
+The following option values may be configured -:
+| Value  | Description |
+|--------|-------------|
+| 0 | Exclude from All On and All Off groups |
+| 1 | Include in All On group |
+| 2 | Include in All Off group |
+| 255 | Include in All On and All Off groups |
+
 
 ## Association Groups
 
@@ -534,7 +564,12 @@ This group supports 8 nodes.
 | COMMAND_CLASS_SWITCH_BINARY_V1| Linked to BASIC|
 | COMMAND_CLASS_METER_V3| |
 
+### Documentation Links
+
+* [User Manual (IT)](http://www.cd-jackson.com/zwave_device_uploads/432/Widom-Double-Relay-IT-0.pdf)
+* [User Manual (EN)](http://www.cd-jackson.com/zwave_device_uploads/432/Widom-Double-Relay-EN.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/432).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/432).

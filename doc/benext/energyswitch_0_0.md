@@ -6,10 +6,14 @@ title: Energy Switch + - ZWave
 {% include base.html %}
 
 # Energy Switch + Energy Switch +
-This describes the Z-Wave device *Energy Switch +*, manufactured by *BeNext* with the thing type UID of ```benext_energyswitch_00_000```.
+This describes the Z-Wave device *Energy Switch +*, manufactured by *[BeNext](http://www.benext.eu/)* with the thing type UID of ```benext_energyswitch_00_000```.
 
-# Overview
+<img src="http://www.cd-jackson.com/zwave_device_uploads/445/445_default.png" alt="Energy Switch + product image">
 
+
+## Overview
+
+No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/445) to improve the documentation.
 
 ## Channels
 
@@ -23,13 +27,19 @@ The following table summarises the channels available for the Energy Switch +
 
 ### Switch
 
+Switch the power on and off
+
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Electric meter (kWh)
 
+Indicates the energy consumption (kWh)
+
 The ```meter_kwh``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (watts)
+
+Indicates the instantaneous power consumption
 
 The ```meter_watts``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -51,6 +61,7 @@ Detailed information on each parameter can be found in the sections below.
 | 8 | Auto report time | The time between 2 of the meter rerport |
 | 9 | Relais delay time | The time that needs to pass before the next state change |
 | 10 | Led indicator | The state of the Led compared to the relais state |
+|  | Switch All Mode | Set the mode for the switch when receiving SWITCH ALL commands |
 
 ### Parameter 1: Set to Default
 
@@ -156,6 +167,18 @@ The manufacturer defined default value is 0.
 
 This parameter has the configuration ID ```config_10_1``` and is of type ```INTEGER```.
 
+### Switch All Mode
+
+Set the mode for the switch when receiving SWITCH ALL commands.
+
+The following option values may be configured -:
+| Value  | Description |
+|--------|-------------|
+| 0 | Exclude from All On and All Off groups |
+| 1 | Include in All On group |
+| 2 | Include in All Off group |
+| 255 | Include in All On and All Off groups |
+
 
 ## Association Groups
 
@@ -181,7 +204,11 @@ The device does not support associations.
 | COMMAND_CLASS_ASSOCIATION_V1| |
 | COMMAND_CLASS_VERSION_V1| |
 
+### Documentation Links
+
+* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/445/energyswitchrs.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/445).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/445).

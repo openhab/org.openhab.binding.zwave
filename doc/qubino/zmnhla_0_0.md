@@ -6,12 +6,18 @@ title: ZMNHLA - ZWave
 {% include base.html %}
 
 # ZMNHLA Flush PWM thermostat
-This describes the Z-Wave device *ZMNHLA*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhla_00_000```.
+This describes the Z-Wave device *ZMNHLA*, manufactured by *[Goap](http://www.qubino.com/)* with the thing type UID of ```qubino_zmnhla_00_000```.
 
-The device is in the category of HVAC, defining Air condition devices, Fans.
+The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-# Overview
+<img src="http://www.cd-jackson.com/zwave_device_uploads/212/212_default.png" alt="ZMNHLA product image">
 
+
+The ZMNHLA does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
+
+## Overview
+
+No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/212) to improve the documentation.
 
 ## Channels
 
@@ -27,17 +33,26 @@ The following table summarises the channels available for the ZMNHLA
 
 ### Sensor (temperature)
 
+Indicates the current temperature
+
 The ```sensor_temperature``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (watts)
+
+Indicates the instantaneous power consumption
 
 The ```meter_watts``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (kWh)
 
+Indicates the energy consumption (kWh)
+
 The ```meter_kwh``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Thermostat mode
+
+Sets the thermostat
+        
 
 The ```thermostat_mode``` channel supports the ```Number``` item and is in the ```Temperature``` category.
 The following state translation is provided for this channel to the ```Number``` item type -:
@@ -62,6 +77,8 @@ The following state translation is provided for this channel to the ```Number```
 | 31 | Manufacturer Specific |
 
 ### Setpoint (heating)
+
+Sets the thermostate setpoint
 
 The ```thermostat_setpoint``` channel supports the ```Number``` item and is in the ```Temperature``` category.
 
@@ -567,7 +584,11 @@ This group supports 1 nodes.
 | COMMAND_CLASS_ASSOCIATION_V1| |
 | COMMAND_CLASS_VERSION_V1| |
 
+### Documentation Links
+
+* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/212/z-wave-qubino-flush-pwm-thermostat-user-manual-v1-0.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/212).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/212).

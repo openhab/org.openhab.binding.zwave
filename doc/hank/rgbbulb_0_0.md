@@ -6,12 +6,15 @@ title: RGB bulb - ZWave
 {% include base.html %}
 
 # RGB bulb HKZW-RGB01-V1.0
-This describes the Z-Wave device *RGB bulb*, manufactured by *Hank* with the thing type UID of ```hank_rgbbulb_00_000```.
+This describes the Z-Wave device *RGB bulb*, manufactured by *[Hank](http://www.hank-tech.com/)* with the thing type UID of ```hank_rgbbulb_00_000```.
 
-The device is in the category of Light Bulb, defining Devices that illuminate something, such as bulbs, etc..
+The device is in the category of *Light Bulb*, defining Devices that illuminate something, such as bulbs, etc..
 
-# Overview
+The RGB bulb does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
+## Overview
+
+No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/598) to improve the documentation.
 
 ## Channels
 
@@ -26,17 +29,30 @@ The following table summarises the channels available for the RGB bulb
 
 ### Dimmer
 
+The brightness channel allows to control the brightness of a light.
+            It is also possible to switch the light on and off.
+        
+
 The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Scene Number
+
+Triggers when a scene button is pressed
 
 The ```scene_number``` channel supports the ```Number``` item.
 
 ### Color Control
 
+The color channel allows to control the color of a light.
+            It is also possible to dim values and switch the light on and off.
+        
+
 The ```color_color``` channel supports the ```Color``` item.
 
 ### Color Temperature
+
+The color temperature channel allows to set the color
+            temperature of a light from 0 (cold) to 100 (warm).
 
 The ```color_temperature``` channel supports the ```Dimmer``` item and is in the ```ColorLight``` category.
 
@@ -54,6 +70,7 @@ Detailed information on each parameter can be found in the sections below.
 | 51 | Enable/disable the function of using wall switch | Enable/disable the function of using wall switch to turn on/off RGB BULB |
 | 61 | Advance mode | RGB BULB can blink or cyclic/random change color automatically at set intervals. |
 | 255 | Resetting to factory default | RGB BULB will exclude from the Z-Wave network with this particular command |
+|  | Switch All Mode | Set the mode for the switch when receiving SWITCH ALL commands |
 
 ### Parameter 21: Status after power failure
 
@@ -141,6 +158,18 @@ The manufacturer defined default value is 1.
 
 This parameter has the configuration ID ```config_255_4``` and is of type ```INTEGER```.
 
+### Switch All Mode
+
+Set the mode for the switch when receiving SWITCH ALL commands.
+
+The following option values may be configured -:
+| Value  | Description |
+|--------|-------------|
+| 0 | Exclude from All On and All Off groups |
+| 1 | Include in All On group |
+| 2 | Include in All Off group |
+| 255 | Include in All On and All Off groups |
+
 
 ## Association Groups
 
@@ -178,7 +207,11 @@ This group supports 5 nodes.
 | COMMAND_CLASS_ASSOCIATION_V2| |
 | COMMAND_CLASS_VERSION_V2| |
 
+### Documentation Links
+
+* [Manual](http://www.cd-jackson.com/zwave_device_uploads/598/HKZW-RGB01-Manual.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/598).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/598).

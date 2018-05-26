@@ -6,12 +6,15 @@ title: ZMNHDA - ZWave
 {% include base.html %}
 
 # ZMNHDA Flush dimmer
-This describes the Z-Wave device *ZMNHDA*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhda_00_000```.
+This describes the Z-Wave device *ZMNHDA*, manufactured by *[Goap](http://www.qubino.com/)* with the thing type UID of ```qubino_zmnhda_00_000```.
 
-The device is in the category of Wall Switch, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
+The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-# Overview
+The ZMNHDA does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
+## Overview
+
+No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/209) to improve the documentation.
 
 ## Channels
 
@@ -29,25 +32,40 @@ The following table summarises the channels available for the ZMNHDA
 
 ### Switch
 
+Switch the power on and off
+
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Dimmer
+
+The brightness channel allows to control the brightness of a light.
+            It is also possible to switch the light on and off.
+        
 
 The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Sensor (temperature)
 
+Indicates the current temperature
+
 The ```sensor_temperature``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (kWh)
+
+Indicates the energy consumption (kWh)
 
 The ```meter_kwh``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (watts)
 
+Indicates the instantaneous power consumption
+
 The ```meter_watts``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Binary Sensor 1
+
+Indicates if a sensor has triggered
+        
 
 The ```sensor_binary1``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -59,6 +77,9 @@ The following state translation is provided for this channel to the ```Switch```
 | OFF | Untriggered |
 
 ### Binary Sensor 2
+
+Indicates if a sensor has triggered
+        
 
 The ```sensor_binary2``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -102,6 +123,7 @@ Detailed information on each parameter can be found in the sections below.
 | 66 | Dimming time when key pressed | Time of moving the Dimmer between min. and max dimming values by continues hold of push button I1.  
  Range is 1-255 = 1-255s, step is 1s.  
  Default value 3 (Dimming time between min. and max. dimming values is 3s) |
+|  | Switch All Mode | Set the mode for the switch when receiving SWITCH ALL commands |
 
 ### Parameter 1: Input 1 switch type
 
@@ -263,6 +285,18 @@ The manufacturer defined default value is 3.
 
 This parameter has the configuration ID ```config_66_1``` and is of type ```INTEGER```.
 
+### Switch All Mode
+
+Set the mode for the switch when receiving SWITCH ALL commands.
+
+The following option values may be configured -:
+| Value  | Description |
+|--------|-------------|
+| 0 | Exclude from All On and All Off groups |
+| 1 | Include in All On group |
+| 2 | Include in All Off group |
+| 255 | Include in All On and All Off groups |
+
 
 ## Association Groups
 
@@ -327,4 +361,4 @@ This group supports 4 nodes.
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/209).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/209).

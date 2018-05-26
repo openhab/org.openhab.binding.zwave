@@ -8,7 +8,12 @@ title: MIMOlite - ZWave
 # MIMOlite Digital or Analog Voltage input and/or Dry Contact Relay
 This describes the Z-Wave device *MIMOlite*, manufactured by *FortrezZ LLC* with the thing type UID of ```fortrezz_mimolite_00_000```.
 
-# Overview
+<img src="http://www.cd-jackson.com/zwave_device_uploads/219/219_default.jpg" alt="MIMOlite product image">
+
+
+The MIMOlite does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
+
+## Overview
 
 The MIMOlite module provides one analog or digital input and one relay output (isolated dry contacts, NO-COM-NC) and can be controlled by ZWaveTM. The system includes a program switch for Z-WaveTM inclusion/exclusion and a status light (LED) for various indications.
 
@@ -16,12 +21,12 @@ Input SIG1 is an analog input, internally pulled-up to the MIMOlite supply volta
 
 The output relay is typically commanded via Z-WaveTM commands. In addition, the user can configure the input SIG1 trigger condition to be mapped to the output relay. For example, Relay 1 can be automatically turned on based on Input SIG1 being triggered. The relay activation can be set via a jumper or via Z-WaveTM for either momentary or latched operation.
 
-## Inclusion Information
+### Inclusion Information
 
 1. Set up the inclusion mode at the controller (for detailed directions, please refer to your controller user manual)
 2. If the LED has a periodic single blink, the unit will be automatically included. Otherwise, the button has been previously pressed and automatic inclusion mode is no longer active. In this case, briefly press the button once and the controller will indicate that the unit has been included in the network. Also, the Status LED will blink when the inclusion completes. Inclusion and exclusion are always done at normal transmit power mode.
 
-## Exclusion Information
+### Exclusion Information
 
 1. Set up the exclusion mode at the controller (for detailed directions, please refer to your controller user manual)
 2. Press the MIMOlite button and the controller will indicate the unit has been removed from the network. The Status LED will blink when the exclusion completes.
@@ -39,9 +44,14 @@ The following table summarises the channels available for the MIMOlite
 
 ### Switch
 
+Switch the power on and off
+
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Binary Sensor
+
+Indicates if a sensor has triggered
+        
 
 The ```sensor_binary``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -54,9 +64,14 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Sensor (general)
 
+
+
 The ```sensor_general``` channel supports the ```Number``` item. This is a read only channel so will only be updated following state changes from the device.
 
 ### Alarm
+
+Indicates if an alarm is triggered
+        
 
 The ```alarm_general``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -295,7 +310,12 @@ This group supports 2 nodes.
 | COMMAND_CLASS_ASSOCIATION_V1| |
 | COMMAND_CLASS_VERSION_V1| |
 
+### Documentation Links
+
+* [FortrezZ MIMOlite User Manual ](http://www.cd-jackson.com/zwave_device_uploads/219/user-manual-mimolite-05may2015.pdf)
+* [FortrezZ MIMOlite Technical Appendix](http://www.cd-jackson.com/zwave_device_uploads/219/tech-appendix-mimolite-05may2015.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/219).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/219).

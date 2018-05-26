@@ -8,7 +8,9 @@ title: MIMO2+ - ZWave
 # MIMO2+ Dual Digital or Analog Voltage input and Dual Contact Relay
 This describes the Z-Wave device *MIMO2+*, manufactured by *FortrezZ LLC* with the thing type UID of ```fortrezz_mimo2_00_000```.
 
-# Overview
+The MIMO2+ does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
+
+## Overview
 
 The MIMO2+ module provides two analog or digital input and two relay output (isolated dry contacts, NO-COM-NC) and can be controlled by ZWaveTM. The system includes a program switch for Z-WaveTM inclusion/exclusion and a status light (LED) for various indications.
 
@@ -16,12 +18,12 @@ Input SIG1 and SIG2 is an analog input, internally pulled-up to the MIMO2+ suppl
 
 The output relay is typically commanded via Z-WaveTM commands. In addition, the user can configure the input SIG1 or SIG2 trigger condition to be mapped to the output relay. For example, Relay 1 or 2 can be automatically turned on based on Input SIG1 being triggered. The relay activation can be set via a jumper or via Z-WaveTM for either momentary or latched operation.
 
-## Inclusion Information
+### Inclusion Information
 
 1. Set up the inclusion mode at the controller (for detailed directions, please refer to your controller user manual)
 2. If the LED has a periodic single blink, the unit will be automatically included. Otherwise, the button has been previously pressed and automatic inclusion mode is no longer active. In this case, briefly press the button once and the controller will indicate that the unit has been included in the network. Also, the Status LED will blink when the inclusion completes. Inclusion and exclusion are always done at normal transmit power mode.
 
-## Exclusion Information
+### Exclusion Information
 
 1. Set up the exclusion mode at the controller (for detailed directions, please refer to your controller user manual)
 2. Press the button and the controller will indicate the unit has been removed from the network. The Status LED will blink when the exclusion completes.
@@ -42,13 +44,20 @@ The following table summarises the channels available for the MIMO2+
 
 ### Switch
 
+Switch the power on and off
+
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Sensor
 
+
+
 The ```sensor_general``` channel supports the ```Number``` item. This is a read only channel so will only be updated following state changes from the device.
 
 ### Alarm (power)
+
+Indicates if a power alarm is triggered
+        
 
 The ```alarm_power``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -61,17 +70,25 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Sensor 1
 
+
+
 The ```sensor_general1``` channel supports the ```Number``` item. This is a read only channel so will only be updated following state changes from the device.
 
 ### Sensor 2
+
+
 
 The ```sensor_general2``` channel supports the ```Number``` item. This is a read only channel so will only be updated following state changes from the device.
 
 ### Relay 1
 
+Switch the power on and off
+
 The ```switch_binary3``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Relay 2
+
+Switch the power on and off
 
 The ```switch_binary4``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
@@ -416,7 +433,12 @@ This group supports 2 nodes.
 | COMMAND_CLASS_SWITCH_BINARY_V1| Linked to BASIC|
 | COMMAND_CLASS_ASSOCIATION_GRP_INFO_V1| |
 
+### Documentation Links
+
+* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/700/User-Manual-MIMO2--8May2017-removed-MI-address.pdf)
+* [Technical Manual](http://www.cd-jackson.com/zwave_device_uploads/700/Tech-Appendix-MIMO2--8May2017-removed-MI-address.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/700).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/700).

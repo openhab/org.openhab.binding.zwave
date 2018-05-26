@@ -8,10 +8,11 @@ title: VMZ Solar - ZWave
 # VMZ Solar Awning Blind
 This describes the Z-Wave device *VMZ Solar*, manufactured by *Fakro* with the thing type UID of ```fakro_vmzsolar_00_000```.
 
-The device is in the category of Blinds, defining Roller shutters, window blinds, etc..
+The device is in the category of *Blinds*, defining Roller shutters, window blinds, etc..
 
-# Overview
+## Overview
 
+No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/670) to improve the documentation.
 
 ## Channels
 
@@ -21,14 +22,26 @@ The following table summarises the channels available for the VMZ Solar
 |---------|------------|----------|-----------|
 | Switch | switch_binary | Switch | Switch | 
 | Blinds control | blinds_control | Blinds | Rollershutter | 
+| battery-level | system.battery-level | Battery | Number |
 
 ### Switch
+
+Switch the power on and off
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Blinds control
 
+Provides start / stop control of blinds
+        
+
 The ```blinds_control``` channel supports the ```Rollershutter``` item and is in the ```Blinds``` category.
+
+### Battery Level
+
+Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
+
+The ```system.battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
 
 
 
@@ -45,6 +58,7 @@ Detailed information on each parameter can be found in the sections below.
 | 4 | Level of sensitivity for day | Level of sensitivity for day |
 | 5 | Temperature | Temperature |
 | 6 | Level of sensitivity for night | Level of sensitivity for night |
+|  | Switch All Mode | Set the mode for the switch when receiving SWITCH ALL commands |
 
 ### Parameter 1: mode
 
@@ -133,6 +147,18 @@ The manufacturer defined default value is 3.
 
 This parameter has the configuration ID ```config_6_1``` and is of type ```INTEGER```.
 
+### Switch All Mode
+
+Set the mode for the switch when receiving SWITCH ALL commands.
+
+The following option values may be configured -:
+| Value  | Description |
+|--------|-------------|
+| 0 | Exclude from All On and All Off groups |
+| 1 | Include in All On group |
+| 2 | Include in All Off group |
+| 255 | Include in All On and All Off groups |
+
 
 ## Association Groups
 
@@ -158,7 +184,11 @@ The device does not support associations.
 | COMMAND_CLASS_ASSOCIATION_V0| |
 | COMMAND_CLASS_VERSION_V1| |
 
+### Documentation Links
+
+* [User Manual (PL)](http://www.cd-jackson.com/zwave_device_uploads/670/VMZ-Solar-FAKRO.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/670).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/670).

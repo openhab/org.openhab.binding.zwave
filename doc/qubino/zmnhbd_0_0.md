@@ -6,15 +6,20 @@ title: ZMNHBD - ZWave
 {% include base.html %}
 
 # ZMNHBD Flush 2 relays
-This describes the Z-Wave device *ZMNHBD*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhbd_00_000```.
+This describes the Z-Wave device *ZMNHBD*, manufactured by *[Goap](http://www.qubino.com/)* with the thing type UID of ```qubino_zmnhbd_00_000```.
 
-The device is in the category of Wall Switch, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
+The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-# Overview
+<img src="http://www.cd-jackson.com/zwave_device_uploads/215/215_default.jpg" alt="ZMNHBD product image">
+
+
+The ZMNHBD does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
+
+## Overview
 
 This Z-Wave module is used for switching on or off two electrical devices (e.g. lights or fans,..). The module can be controlled either through Z-Wave network or through the wallswitches. The module is designed to be mounted inside a "flush mountingbox", hidden behind a traditional wall switch. Module measures power consumption of two electrical devices and supports connection of digital temperature sensor. It is designed to act as repeater in order to improve range and stability of Z-wave network.
 
-## Inclusion Information
+### Inclusion Information
 
 **Module Inclusion (Adding to Z-Wave network)**
 
@@ -28,7 +33,7 @@ This Z-Wave module is used for switching on or off two electrical devices (e.g. 
 
 **NOTE2:** When connecting temperature sensor to module that has already been included, you have to exclude module first. Switch off power supply , connect the sensor and re-include the module.
 
-## Exclusion Information
+### Exclusion Information
 
 **Module Exclusion/Reset (Removing from Z-Wavenetwork)**
 
@@ -62,45 +67,67 @@ The following table summarises the channels available for the ZMNHBD
 
 ### Switch
 
+Switch the power on and off
+
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Sensor (temperature)
+
+Indicates the current temperature
 
 The ```sensor_temperature``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (watts)
 
+Indicates the instantaneous power consumption
+
 The ```meter_watts``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (kWh)
+
+Indicates the energy consumption (kWh)
 
 The ```meter_kwh``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Switch 1
 
+Switch the power on and off
+
 The ```switch_binary1``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Electric meter (watts) 1
+
+Indicates the instantaneous power consumption
 
 The ```meter_watts1``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (kWh) 1
 
+Indicates the energy consumption (kWh)
+
 The ```meter_kwh1``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Switch 2
+
+Switch the power on and off
 
 The ```switch_binary2``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Electric meter (watts) 2
 
+Indicates the instantaneous power consumption
+
 The ```meter_watts2``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (kWh) 2
 
+Indicates the energy consumption (kWh)
+
 The ```meter_kwh2``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Sensor (temperature)
+
+Indicates the current temperature
 
 The ```sensor_temperature3``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -130,6 +157,7 @@ Detailed information on each parameter can be found in the sections below.
 | 64 | Output Q2 Switch selection |  |
 | 110 | Temperature sensor offset | Temperature sensor offset settings |
 | 120 | Digital temperature sensor reporting | Digital temperature sensor reporting |
+|  | Switch All Mode | Set the mode for the switch when receiving SWITCH ALL commands |
 
 ### Parameter 1: Input 1 switch type
 
@@ -395,6 +423,18 @@ The manufacturer defined default value is 5.
 
 This parameter has the configuration ID ```config_120_1``` and is of type ```INTEGER```.
 
+### Switch All Mode
+
+Set the mode for the switch when receiving SWITCH ALL commands.
+
+The following option values may be configured -:
+| Value  | Description |
+|--------|-------------|
+| 0 | Exclude from All On and All Off groups |
+| 1 | Include in All On group |
+| 2 | Include in All Off group |
+| 255 | Include in All On and All Off groups |
+
 
 ## Association Groups
 
@@ -490,7 +530,11 @@ This group supports 16 nodes.
 | COMMAND_CLASS_ASSOCIATION_V2| |
 | COMMAND_CLASS_VERSION_V2| |
 
+### Documentation Links
+
+* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/215/Qubino-Flush-2-Relays-PLUS-user-manual-eng-V1-4.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/215).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/215).

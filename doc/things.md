@@ -25,7 +25,7 @@ and links to more detailed information about each thing.
 | ACT - Advanced Control Technologies | [ZTM230](act/ztm230_0_0.md) |  | ```act_ztm230_00_000``` |  |
 | AEON Labs | [DSA03202](aeon/dsa03202_0_0.md) |  | ```aeon_dsa03202_00_000``` |  |
 | AEON Labs | [DSA38](aeon/dsa38_0_0.md) |  | ```aeon_dsa38_00_000``` |  |
-| AEON Labs | [DSB05](aeon/dsb05_0_0.md) |  | ```aeon_dsb05_00_000``` |  |
+| AEON Labs | [DSB05](aeon/dsb05_0_0.md) |  | ```aeon_dsb05_00_000``` | Motion Detector |
 | AEON Labs | [DSB09](aeon/dsb09_0_0.md) |  | ```aeon_dsb09_00_000``` |  |
 | AEON Labs | [DSB28](aeon/dsb28_0_0.md) |  | ```aeon_dsb28_00_000``` |  |
 | AEON Labs | [DSB29](aeon/dsb29_0_0.md) |  | ```aeon_dsb29_00_000``` |  |
@@ -242,7 +242,7 @@ and links to more detailed information about each thing.
 | Fibargroup | [FGS211](fibaro/fgs211_0_0.md) |  | ```fibaro_fgs211_00_000``` |  |
 | Fibargroup | [FGS212](fibaro/fgs212_0_0.md) |  | ```fibaro_fgs212_00_000``` |  |
 | Fibargroup | [FGS213](fibaro/fgs213_0_0.md) |  | ```fibaro_fgs213_00_000``` | Wall Switch |
-| Fibargroup | [FGS221](fibaro/fgs221_1_4.md) | 1.4 to 1.8 | ```fibaro_fgs221_01_004``` |  |
+| Fibargroup | [FGS221](fibaro/fgs221_1_4.md) | 1.4 to 1.8 | ```fibaro_fgs221_01_004``` | Wall Switch |
 | Fibargroup | [FGS221](fibaro/fgs221_1_9.md) | 1.9 to 1.11 | ```fibaro_fgs221_01_009``` |  |
 | Fibargroup | [FGS221](fibaro/fgs221_2_1.md) | 2.1 to 2.3 | ```fibaro_fgs221_02_001``` |  |
 | Fibargroup | [FGS222](fibaro/fgs222_0_0.md) |  | ```fibaro_fgs222_00_000``` | Wall Switch |
@@ -424,7 +424,7 @@ and links to more detailed information about each thing.
 | Linear Corp | [WA105DBZ](linear/wa105dbz_0_0.md) |  | ```linear_wa105dbz_00_000``` | Siren |
 | Linear Corp | [WADWAZ-1](linear/wadwaz1_0_0.md) |  | ```linear_wadwaz1_00_000``` | Door |
 | Linear Corp | [WAPIRZ-1](linear/wapirz_0_0.md) |  | ```linear_wapirz_00_000``` | Motion Detector |
-| Linear Corp | [WD500Z-1](linear/wd500z_0_0.md) |  | ```linear_wd500z_00_000``` |  |
+| Linear Corp | [WD500Z-1](linear/wd500z_0_0.md) |  | ```linear_wd500z_00_000``` | Wall Switch |
 | Linear Corp | [WO15Z](linear/wo15z_0_0.md) |  | ```linear_wo15z_00_000``` |  |
 | Linear Corp | [WS15Z-1](linear/ws15z_0_0.md) |  | ```linear_ws15z_00_000``` | Wall Switch |
 | Linear Corp | [WT00Z-1](linear/wt00z1_0_0.md) |  | ```linear_wt00z1_00_000``` |  |
@@ -621,7 +621,7 @@ and links to more detailed information about each thing.
 | TKB Home | [TZ04](tkb/tz04_0_0.md) |  | ```tkb_tz04_00_000``` |  |
 | TKB Home | [TZ06](tkb/tz06_0_0.md) |  | ```tkb_tz06_00_000``` |  |
 | TKB Home | [TZ08](tkb/tz08_0_0.md) |  | ```tkb_tz08_00_000``` |  |
-| TKB Home | [TZ 10](tkb/tz10_0_0.md) |  | ```tkb_tz10_00_000``` | HVAC |
+| TKB Home | [TZ10](tkb/tz10_0_0.md) |  | ```tkb_tz10_00_000``` | HVAC |
 | TKB Home | [TZ35S](tkb/tz35s_0_0.md) |  | ```tkb_tz35s_00_000``` | Wall Switch |
 | TKB Home | [TZ36D](tkb/tz36d_2_1.md) | 2.1 | ```tkb_tz36d_02_001``` |  |
 | TKB Home | [TZ37](tkb/tz37_0_0.md) |  | ```tkb_tz37_00_000``` |  |

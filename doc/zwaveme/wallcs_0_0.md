@@ -8,10 +8,14 @@ title: WALLC-S - ZWave
 # WALLC-S Wall Controller
 This describes the Z-Wave device *WALLC-S*, manufactured by *Z-Wave.Me* with the thing type UID of ```zwaveme_wallcs_00_000```.
 
-The device is in the category of Wall Switch, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
+The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-# Overview
+<img src="http://www.cd-jackson.com/zwave_device_uploads/145/145_default.jpg" alt="WALLC-S product image">
 
+
+## Overview
+
+No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/145) to improve the documentation.
 
 ## Channels
 
@@ -22,18 +26,33 @@ The following table summarises the channels available for the WALLC-S
 | Dimmer | switch_dimmer | DimmableLight | Dimmer | 
 | Scene Activation | scene_number |  | Number | 
 | Scene Number | scene_number |  | Number | 
+| battery-level | system.battery-level | Battery | Number |
 
 ### Dimmer
+
+The brightness channel allows to control the brightness of a light.
+            It is also possible to switch the light on and off.
+        
 
 The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Scene Activation
 
+Triggers when a scene button is pressed
+
 The ```scene_number``` channel supports the ```Number``` item.
 
 ### Scene Number
 
+Triggers when a scene button is pressed
+
 The ```scene_number``` channel supports the ```Number``` item.
+
+### Battery Level
+
+Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
+
+The ```system.battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
 
 
 
@@ -54,6 +73,8 @@ Detailed information on each parameter can be found in the sections below.
 | 22 | Invert buttons |  |
 | 25 | Blocks wakeup even when wakeup interval is set | If the device wakes up and there is no controller nearby, several unsuccessful communication attempts will drain battery. |
 | 30 | Send unsolicited Battery Report on Wake Up |  |
+|  | Wakeup Interval | Sets the interval at which the device will accept commands from the controller |
+|  | Wakeup Node | Sets the node ID of the device to receive the wakeup notifications |
 
 ### Parameter 1: Button 1 and 3 pair mode
 
@@ -242,6 +263,19 @@ The manufacturer defined default value is 0 (No).
 
 This parameter has the configuration ID ```config_30_1``` and is of type ```INTEGER```.
 
+### Wakeup Interval
+
+The wakeup interval sets the period at which the device will listen for messages from the controller. This is required for battery devices that sleep most of the time in order to conserve battery life. The device will wake up at this interval and send a message to the controller to tell it that it can accept messages - after a few seconds, it will go back to sleep if there is no further communications. 
+
+This setting is defined in *seconds*. It is advisable not to set this interval too short or it could impact battery life. A period of 1 hour (3600 seconds) is suitable in most instances.
+
+Note that this setting does not affect the devices ability to send sensor data, or notification events.
+
+### Wakeup Node
+
+When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
+In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
 
 ## Association Groups
 
@@ -296,7 +330,11 @@ This group supports 10 nodes.
 | COMMAND_CLASS_VERSION_V1| |
 | COMMAND_CLASS_MULTI_CMD_V1| |
 
+### Documentation Links
+
+* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/145/z-wave-me-wall-controller-set-manual.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/145).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/145).

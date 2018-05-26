@@ -6,10 +6,13 @@ title: ZMNHBA - ZWave
 {% include base.html %}
 
 # ZMNHBA Flush 2 relays
-This describes the Z-Wave device *ZMNHBA*, manufactured by *Goap* with the thing type UID of ```qubino_zmnhba_00_000```.
+This describes the Z-Wave device *ZMNHBA*, manufactured by *[Goap](http://www.qubino.com/)* with the thing type UID of ```qubino_zmnhba_00_000```.
 
-# Overview
+The ZMNHBA does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
+## Overview
+
+No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/208) to improve the documentation.
 
 ## Channels
 
@@ -30,41 +33,61 @@ The following table summarises the channels available for the ZMNHBA
 
 ### Switch
 
+Switch the power on and off
+
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Sensor (temperature)
+
+Indicates the current temperature
 
 The ```sensor_temperature``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (kWh)
 
+Indicates the energy consumption (kWh)
+
 The ```meter_kwh``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (watts)
+
+Indicates the instantaneous power consumption
 
 The ```meter_watts``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Switch 1
 
+Switch the power on and off
+
 The ```switch_binary1``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Electric meter (kWh) 1
+
+Indicates the energy consumption (kWh)
 
 The ```meter_kwh1``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (watts) 1
 
+Indicates the instantaneous power consumption
+
 The ```meter_watts1``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Switch 2
+
+Switch the power on and off
 
 The ```switch_binary2``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Electric meter (kWh) 2
 
+Indicates the energy consumption (kWh)
+
 The ```meter_kwh2``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (watts) 2
+
+Indicates the instantaneous power consumption
 
 The ```meter_watts2``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -99,6 +122,7 @@ Detailed information on each parameter can be found in the sections below.
 
 - 0 = Reporting Disabled
 - 1–65535 = 1 second – 65535 seconds. Reporting enabled. Power report is sent with time interval set by entered value. |
+|  | Switch All Mode | Set the mode for the switch when receiving SWITCH ALL commands |
 
 ### Parameter 1: Input 1 switch type
 
@@ -249,6 +273,18 @@ The manufacturer defined default value is 300.
 
 This parameter has the configuration ID ```config_43_2``` and is of type ```INTEGER```.
 
+### Switch All Mode
+
+Set the mode for the switch when receiving SWITCH ALL commands.
+
+The following option values may be configured -:
+| Value  | Description |
+|--------|-------------|
+| 0 | Exclude from All On and All Off groups |
+| 1 | Include in All On group |
+| 2 | Include in All Off group |
+| 255 | Include in All On and All Off groups |
+
 
 ## Association Groups
 
@@ -305,7 +341,11 @@ This group supports 4 nodes.
 | COMMAND_CLASS_SWITCH_BINARY_V1| Linked to BASIC|
 | COMMAND_CLASS_METER_V3| |
 
+### Documentation Links
+
+* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/208/flush-2-relays-ZMNHBA2.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/208).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/208).
