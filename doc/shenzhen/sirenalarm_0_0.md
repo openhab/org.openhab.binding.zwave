@@ -8,7 +8,7 @@ title: Siren Alarm - ZWave
 # Siren Alarm Siren Alarm
 This describes the Z-Wave device *Siren Alarm*, manufactured by *[Shenzhen Neo Electronics Co., Ltd](http://www.szneo.com/)* with the thing type UID of ```shenzhen_sirenalarm_00_000```.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/522/522_default.png" alt="Siren Alarm product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/522/522_default.png" alt="Siren Alarm product image">
 
 
 ## Overview

@@ -395,7 +395,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [Z-wave.me RC2 remote+ user manual](http://www.cd-jackson.com/zwave_device_uploads/149/zwave-me-RC2.pdf)
+* [Z-wave.me RC2 remote+ user manual](https://www.cd-jackson.com/zwave_device_uploads/149/zwave-me-RC2.pdf)
 
 ---
 

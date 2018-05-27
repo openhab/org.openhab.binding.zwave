@@ -8,7 +8,7 @@ title: WTRFID - ZWave
 # WTRFID Mini Keypad RFID/Z-Wave
 This describes the Z-Wave device *WTRFID*, manufactured by *Wintop* with the thing type UID of ```wintop_wtrfid_00_000```.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/217/217_default.jpg" alt="WTRFID product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/217/217_default.jpg" alt="WTRFID product image">
 
 
 ## Overview
@@ -231,7 +231,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [Zipato_Zwave_RFID_Tag_Reader_Installation.pdf](http://www.cd-jackson.com/zwave_device_uploads/217/Zipato-Zwave-RFID-Tag-Reader-Installation.pdf)
+* [Zipato_Zwave_RFID_Tag_Reader_Installation.pdf](https://www.cd-jackson.com/zwave_device_uploads/217/Zipato-Zwave-RFID-Tag-Reader-Installation.pdf)
 
 ---
 

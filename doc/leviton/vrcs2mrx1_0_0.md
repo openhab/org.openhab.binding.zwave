@@ -69,7 +69,7 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [Product Command Classes](http://www.cd-jackson.com/zwave_device_uploads/418/Product-Command-Classes.pdf)
+* [Product Command Classes](https://www.cd-jackson.com/zwave_device_uploads/418/Product-Command-Classes.pdf)
 
 ---
 

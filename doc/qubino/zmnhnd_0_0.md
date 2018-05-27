@@ -386,7 +386,7 @@ This group supports 16 nodes.
 
 ### Documentation Links
 
-* [Qubino ZMNHND 1D relay user manual](http://www.cd-jackson.com/zwave_device_uploads/207/Qubino-Flush-1D-relay-PLUS-user-manual-V1-4.pdf)
+* [Qubino ZMNHND 1D relay user manual](https://www.cd-jackson.com/zwave_device_uploads/207/Qubino-Flush-1D-relay-PLUS-user-manual-V1-4.pdf)
 
 ---
 

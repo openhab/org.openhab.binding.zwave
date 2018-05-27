@@ -99,7 +99,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [English Manual](http://www.cd-jackson.com/zwave_device_uploads/139/Ecolink-TILTZWAVE2-ECO-manual-rev1.pdf)
+* [English Manual](https://www.cd-jackson.com/zwave_device_uploads/139/Ecolink-TILTZWAVE2-ECO-manual-rev1.pdf)
 
 ---
 

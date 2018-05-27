@@ -10,7 +10,7 @@ This describes the Z-Wave device *ZMNHAD*, manufactured by *[Goap](http://www.qu
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/206/206_default.png" alt="ZMNHAD product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/206/206_default.png" alt="ZMNHAD product image">
 
 
 The ZMNHAD does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -580,7 +580,7 @@ This group supports 16 nodes.
 
 ### Documentation Links
 
-* [ 	Qubino-Flush-1-relay-PLUS-user-manual-V1-1.pdf](http://www.cd-jackson.com/zwave_device_uploads/206/Qubino-Flush-1-relay-PLUS-user-manual-V1-1.pdf)
+* [ 	Qubino-Flush-1-relay-PLUS-user-manual-V1-1.pdf](https://www.cd-jackson.com/zwave_device_uploads/206/Qubino-Flush-1-relay-PLUS-user-manual-V1-1.pdf)
 
 ---
 

@@ -10,7 +10,7 @@ This describes the Z-Wave device *EZMultiPli*, manufactured by *Express Controls
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/268/268_default.jpg" alt="EZMultiPli product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/268/268_default.jpg" alt="EZMultiPli product image">
 
 
 The EZMultiPli does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -187,7 +187,7 @@ This group supports 4 nodes.
 
 ### Documentation Links
 
-* [EZMultiPli Manual](http://www.cd-jackson.com/zwave_device_uploads/268/EZMultiPliOwnerManual.pdf)
+* [EZMultiPli Manual](https://www.cd-jackson.com/zwave_device_uploads/268/EZMultiPliOwnerManual.pdf)
 
 ---
 

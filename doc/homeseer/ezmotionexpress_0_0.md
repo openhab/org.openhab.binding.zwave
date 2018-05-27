@@ -8,7 +8,7 @@ title: EZMotion Express - ZWave
 # EZMotion Express Wireless 3-in-1 Sensor
 This describes the Z-Wave device *EZMotion Express*, manufactured by *Express Controls* with the thing type UID of ```homeseer_ezmotionexpress_00_000```.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/140/140_default.jpg" alt="EZMotion Express product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/140/140_default.jpg" alt="EZMotion Express product image">
 
 
 ## Overview
@@ -278,8 +278,8 @@ This group supports 4 nodes.
 
 ### Documentation Links
 
-* [EZMotion-100 Manual](http://www.cd-jackson.com/zwave_device_uploads/140/HomeSeer-EZMotion-100.pdf)
-* [Express Controls EZMotion SDK](http://www.cd-jackson.com/zwave_device_uploads/140/EZMotionSDK.pdf)
+* [EZMotion-100 Manual](https://www.cd-jackson.com/zwave_device_uploads/140/HomeSeer-EZMotion-100.pdf)
+* [Express Controls EZMotion SDK](https://www.cd-jackson.com/zwave_device_uploads/140/EZMotionSDK.pdf)
 
 ---
 

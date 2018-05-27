@@ -66,9 +66,9 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [AMZ_Z_Wave_FAKRO_EN](http://www.cd-jackson.com/zwave_device_uploads/616/AMZ-Z-WAVE-FAKRO-EN.pdf)
-* [FAKRO_Zwave_Weather_Module_ZWMP_Manual](http://www.cd-jackson.com/zwave_device_uploads/616/FAKRO-Zwave-Weather-Module-ZWMP-Manual.pdf)
-* [AMZ_Z_WAVE_FAKRO_EN](http://www.cd-jackson.com/zwave_device_uploads/616/AMZ-Z-WAVE-FAKRO-EN.pdf)
+* [AMZ_Z_Wave_FAKRO_EN](https://www.cd-jackson.com/zwave_device_uploads/616/AMZ-Z-WAVE-FAKRO-EN.pdf)
+* [FAKRO_Zwave_Weather_Module_ZWMP_Manual](https://www.cd-jackson.com/zwave_device_uploads/616/FAKRO-Zwave-Weather-Module-ZWMP-Manual.pdf)
+* [AMZ_Z_WAVE_FAKRO_EN](https://www.cd-jackson.com/zwave_device_uploads/616/AMZ-Z-WAVE-FAKRO-EN.pdf)
 
 ---
 

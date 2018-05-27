@@ -10,7 +10,7 @@ This describes the Z-Wave device *K8*, manufactured by *Sigma Designs (Former Ze
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/431/431_default.jpg" alt="K8 product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/431/431_default.jpg" alt="K8 product image">
 
 
 ## Overview
@@ -122,7 +122,7 @@ This group supports 20 nodes.
 
 ### Documentation Links
 
-* [User manual](http://www.cd-jackson.com/zwave_device_uploads/431/ZWC-K8.pdf)
+* [User manual](https://www.cd-jackson.com/zwave_device_uploads/431/ZWC-K8.pdf)
 
 ---
 

@@ -186,7 +186,7 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [User Manual (PL)](http://www.cd-jackson.com/zwave_device_uploads/670/VMZ-Solar-FAKRO.pdf)
+* [User Manual (PL)](https://www.cd-jackson.com/zwave_device_uploads/670/VMZ-Solar-FAKRO.pdf)
 
 ---
 

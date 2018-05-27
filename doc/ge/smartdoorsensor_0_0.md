@@ -8,7 +8,7 @@ title: 32563 - ZWave
 # 32563 Smart Door Sensor
 This describes the Z-Wave device *32563*, manufactured by *Jasco Products* with the thing type UID of ```ge_smartdoorsensor_00_000```.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/504/504_default.png" alt="32563 product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/504/504_default.png" alt="32563 product image">
 
 
 ## Overview
@@ -160,7 +160,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](http://www.cd-jackson.com/zwave_device_uploads/504/03d7fa20-e284-4093-b78a-d2ec8d255816-1-.pdf)
+* [Manual](https://www.cd-jackson.com/zwave_device_uploads/504/03d7fa20-e284-4093-b78a-d2ec8d255816-1-.pdf)
 
 ---
 

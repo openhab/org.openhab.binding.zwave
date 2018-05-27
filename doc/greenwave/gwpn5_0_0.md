@@ -367,8 +367,8 @@ This group supports 1 nodes.
 
 ### Documentation Links
 
-* [Owner Manual](http://www.cd-jackson.com/zwave_device_uploads/264/z-wave-greenwave-powernode-manual.pdf)
-* [Technical Manual](http://www.cd-jackson.com/zwave_device_uploads/264/Technical-Doc-for-the-powernodes.pdf)
+* [Owner Manual](https://www.cd-jackson.com/zwave_device_uploads/264/z-wave-greenwave-powernode-manual.pdf)
+* [Technical Manual](https://www.cd-jackson.com/zwave_device_uploads/264/Technical-Doc-for-the-powernodes.pdf)
 
 ---
 

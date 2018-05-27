@@ -94,7 +94,7 @@ This group supports 1 nodes.
 
 ### Documentation Links
 
-* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/15/WallMount5-SceneKeypadSpecSheet.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/15/WallMount5-SceneKeypadSpecSheet.pdf)
 
 ---
 

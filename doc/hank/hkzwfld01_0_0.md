@@ -10,7 +10,7 @@ This describes the Z-Wave device *HKZW_FLD01*, manufactured by *[Hank](http://ww
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/674/674_default.jpg" alt="HKZW_FLD01 product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/674/674_default.jpg" alt="HKZW_FLD01 product image">
 
 
 ## Overview
@@ -365,8 +365,8 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [User manual](http://www.cd-jackson.com/zwave_device_uploads/674/Hank-Flood-Sensor-User-Manual.pdf)
-* [Test report](http://www.cd-jackson.com/zwave_device_uploads/674/Hank-Flood-Sensor-Test-Report.pdf)
+* [User manual](https://www.cd-jackson.com/zwave_device_uploads/674/Hank-Flood-Sensor-User-Manual.pdf)
+* [Test report](https://www.cd-jackson.com/zwave_device_uploads/674/Hank-Flood-Sensor-Test-Report.pdf)
 
 ---
 

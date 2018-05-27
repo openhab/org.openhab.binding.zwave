@@ -8,7 +8,7 @@ title: RGBWE27ZW - ZWave
 # RGBWE27ZW RGBW bulb
 This describes the Z-Wave device *RGBWE27ZW*, manufactured by *[Zipato](http://www.zipato.com/)* with the thing type UID of ```zipato_rgbwe27zw_00_000```.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/237/237_default.png" alt="RGBWE27ZW product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/237/237_default.png" alt="RGBWE27ZW product image">
 
 
 The RGBWE27ZW does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -160,8 +160,8 @@ This group supports 7 nodes.
 
 ### Documentation Links
 
-* [English Manual V1.0](http://www.cd-jackson.com/zwave_device_uploads/237/zipabox-rgbw-bulb-manual.pdf)
-* [English Manual V1.1](http://www.cd-jackson.com/zwave_device_uploads/237/rgbwe27zw-Zipato-RGBW-Bulb-User-Manual-v1-1.pdf)
+* [English Manual V1.0](https://www.cd-jackson.com/zwave_device_uploads/237/zipabox-rgbw-bulb-manual.pdf)
+* [English Manual V1.1](https://www.cd-jackson.com/zwave_device_uploads/237/rgbwe27zw-Zipato-RGBW-Bulb-User-Manual-v1-1.pdf)
 
 ---
 

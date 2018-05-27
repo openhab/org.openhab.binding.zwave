@@ -11,7 +11,7 @@ This version of the device is limited to firmware versions below 5.9
 
 The device is in the category of *Motion Detector*, defining Motion sensors/detectors.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/186/186_default.jpg" alt="ZWN-BPC product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/186/186_default.jpg" alt="ZWN-BPC product image">
 
 
 ## Overview
@@ -115,7 +115,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/186/zwn-bpc-3-28.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/186/zwn-bpc-3-28.pdf)
 
 ---
 

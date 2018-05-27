@@ -59,7 +59,7 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [Intermatic CA3000 Manual](http://www.cd-jackson.com/zwave_device_uploads/468/Intermatic-CA3000-Manual.pdf)
+* [Intermatic CA3000 Manual](https://www.cd-jackson.com/zwave_device_uploads/468/Intermatic-CA3000-Manual.pdf)
 
 ---
 

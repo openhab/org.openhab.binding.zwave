@@ -8,7 +8,7 @@ title: DMWS1 - ZWave
 # DMWS1 Dome Leak Sensor
 This describes the Z-Wave device *DMWS1*, manufactured by *Elexa Consumer Products Inc.* with the thing type UID of ```elexa_dmws1_00_000```.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/651/651_default.jpg" alt="DMWS1 product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/651/651_default.jpg" alt="DMWS1 product image">
 
 
 ## Overview
@@ -251,7 +251,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [Operating Guide and ZWave command reference](http://www.cd-jackson.com/zwave_device_uploads/651/DMWS1-dome-z-leak-detector-operating-guide.pdf)
+* [Operating Guide and ZWave command reference](https://www.cd-jackson.com/zwave_device_uploads/651/DMWS1-dome-z-leak-detector-operating-guide.pdf)
 
 ---
 

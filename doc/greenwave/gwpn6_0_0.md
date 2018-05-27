@@ -398,8 +398,8 @@ This group supports 1 nodes.
 
 ### Documentation Links
 
-* [English Manual](http://www.cd-jackson.com/zwave_device_uploads/100/z-wave-greenwave-powernode-manual.pdf)
-* [Technical Notes for Smart Plugs](http://www.cd-jackson.com/zwave_device_uploads/100/Technical-Doc-for-the-powernodes.pdf)
+* [English Manual](https://www.cd-jackson.com/zwave_device_uploads/100/z-wave-greenwave-powernode-manual.pdf)
+* [Technical Notes for Smart Plugs](https://www.cd-jackson.com/zwave_device_uploads/100/Technical-Doc-for-the-powernodes.pdf)
 
 ---
 

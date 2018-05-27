@@ -9,7 +9,7 @@ title: HTP-4S1-FB - ZWave
 This describes the Z-Wave device *HTP-4S1-FB*, manufactured by *[Hogar Controls](http://hogarcontrols.com/)* with the thing type UID of ```hogar_htp4s1fb_02_002```.
 This version of the device is limited to firmware versions above 2.2
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/545/545_default.jpg" alt="HTP-4S1-FB product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/545/545_default.jpg" alt="HTP-4S1-FB product image">
 
 
 ## Overview

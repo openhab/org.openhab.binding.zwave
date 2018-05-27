@@ -79,7 +79,7 @@ This group supports 254 nodes.
 
 ### Documentation Links
 
-* [Product Specification and Data Sheet](http://www.cd-jackson.com/zwave_device_uploads/350/VRF-plugin-modules-techsht-BW-v1p4HR.pdf)
+* [Product Specification and Data Sheet](https://www.cd-jackson.com/zwave_device_uploads/350/VRF-plugin-modules-techsht-BW-v1p4HR.pdf)
 
 ---
 

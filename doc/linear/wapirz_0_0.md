@@ -10,7 +10,7 @@ This describes the Z-Wave device *WAPIRZ-1*, manufactured by *Linear Corp* with 
 
 The device is in the category of *Motion Detector*, defining Motion sensors/detectors.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/5/5_default.jpg" alt="WAPIRZ-1 product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/5/5_default.jpg" alt="WAPIRZ-1 product image">
 
 
 ## Overview
@@ -138,7 +138,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [Installation Guide](http://www.cd-jackson.com/zwave_device_uploads/5/WAPIRZ-install.pdf)
+* [Installation Guide](https://www.cd-jackson.com/zwave_device_uploads/5/WAPIRZ-install.pdf)
 
 ---
 

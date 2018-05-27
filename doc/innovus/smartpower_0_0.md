@@ -131,7 +131,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [Technical documentation](http://www.cd-jackson.com/zwave_device_uploads/61/smartpower-zw-tech-doc.pdf)
+* [Technical documentation](https://www.cd-jackson.com/zwave_device_uploads/61/smartpower-zw-tech-doc.pdf)
 
 ---
 

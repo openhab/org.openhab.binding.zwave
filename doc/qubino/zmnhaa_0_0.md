@@ -276,7 +276,7 @@ This group supports 1 nodes.
 
 ### Documentation Links
 
-* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/205/flush-1-relay-ZMNHAA2.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/205/flush-1-relay-ZMNHAA2.pdf)
 
 ---
 

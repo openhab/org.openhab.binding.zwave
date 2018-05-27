@@ -343,7 +343,7 @@ This group supports 4 nodes.
 
 ### Documentation Links
 
-* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/208/flush-2-relays-ZMNHBA2.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/208/flush-2-relays-ZMNHBA2.pdf)
 
 ---
 

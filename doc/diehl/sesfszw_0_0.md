@@ -333,7 +333,7 @@ This group supports 1 nodes.
 
 ### Documentation Links
 
-* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/671/SES-FS-ZW-BA-06-15-B.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/671/SES-FS-ZW-BA-06-15-B.pdf)
 
 ---
 

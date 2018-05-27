@@ -8,7 +8,7 @@ title: MIMOlite - ZWave
 # MIMOlite Digital or Analog Voltage input and/or Dry Contact Relay
 This describes the Z-Wave device *MIMOlite*, manufactured by *FortrezZ LLC* with the thing type UID of ```fortrezz_mimolite_00_000```.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/219/219_default.jpg" alt="MIMOlite product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/219/219_default.jpg" alt="MIMOlite product image">
 
 
 The MIMOlite does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -312,8 +312,8 @@ This group supports 2 nodes.
 
 ### Documentation Links
 
-* [FortrezZ MIMOlite User Manual ](http://www.cd-jackson.com/zwave_device_uploads/219/user-manual-mimolite-05may2015.pdf)
-* [FortrezZ MIMOlite Technical Appendix](http://www.cd-jackson.com/zwave_device_uploads/219/tech-appendix-mimolite-05may2015.pdf)
+* [FortrezZ MIMOlite User Manual ](https://www.cd-jackson.com/zwave_device_uploads/219/user-manual-mimolite-05may2015.pdf)
+* [FortrezZ MIMOlite Technical Appendix](https://www.cd-jackson.com/zwave_device_uploads/219/tech-appendix-mimolite-05may2015.pdf)
 
 ---
 

@@ -58,7 +58,7 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [User Manual (Danish)](http://www.cd-jackson.com/zwave_device_uploads/531/QEES-Wall--brugermanual-dk-0-3.pdf)
+* [User Manual (Danish)](https://www.cd-jackson.com/zwave_device_uploads/531/QEES-Wall--brugermanual-dk-0-3.pdf)
 
 ---
 

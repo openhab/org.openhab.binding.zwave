@@ -368,8 +368,8 @@ This group supports 99 nodes.
 
 ### Documentation Links
 
-* [Reference document in French (not found in English)](http://www.cd-jackson.com/zwave_device_uploads/354/Qubino-Flush-Pilot-wire-user-manual-V2-0-fra.pdf)
-* [Reference of a newer module with the same parameters, in English](http://www.cd-jackson.com/zwave_device_uploads/354/Qubino-Flush-pilot-wire-PLUS-user-manual-V1-1-eng.pdf)
+* [Reference document in French (not found in English)](https://www.cd-jackson.com/zwave_device_uploads/354/Qubino-Flush-Pilot-wire-user-manual-V2-0-fra.pdf)
+* [Reference of a newer module with the same parameters, in English](https://www.cd-jackson.com/zwave_device_uploads/354/Qubino-Flush-pilot-wire-PLUS-user-manual-V1-1-eng.pdf)
 
 ---
 

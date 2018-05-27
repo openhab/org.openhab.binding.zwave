@@ -122,7 +122,7 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [Technical manual](http://www.cd-jackson.com/zwave_device_uploads/440/smoothremote-00120001-tech.pdf)
+* [Technical manual](https://www.cd-jackson.com/zwave_device_uploads/440/smoothremote-00120001-tech.pdf)
 
 ---
 

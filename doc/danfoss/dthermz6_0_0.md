@@ -8,7 +8,7 @@ title: DTHERMZ6 - ZWave
 # DTHERMZ6 Living Connect Z Thermostat
 This describes the Z-Wave device *DTHERMZ6*, manufactured by *Danfoss* with the thing type UID of ```danfoss_dthermz6_00_000```.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/502/502_default.jpg" alt="DTHERMZ6 product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/502/502_default.jpg" alt="DTHERMZ6 product image">
 
 
 ## Overview
@@ -91,7 +91,7 @@ This group supports 1 nodes.
 
 ### Documentation Links
 
-* [Product Manual](http://www.cd-jackson.com/zwave_device_uploads/502/THERMZ6.pdf)
+* [Product Manual](https://www.cd-jackson.com/zwave_device_uploads/502/THERMZ6.pdf)
 
 ---
 

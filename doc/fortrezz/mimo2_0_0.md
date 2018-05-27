@@ -435,8 +435,8 @@ This group supports 2 nodes.
 
 ### Documentation Links
 
-* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/700/User-Manual-MIMO2--8May2017-removed-MI-address.pdf)
-* [Technical Manual](http://www.cd-jackson.com/zwave_device_uploads/700/Tech-Appendix-MIMO2--8May2017-removed-MI-address.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/700/User-Manual-MIMO2--8May2017-removed-MI-address.pdf)
+* [Technical Manual](https://www.cd-jackson.com/zwave_device_uploads/700/Tech-Appendix-MIMO2--8May2017-removed-MI-address.pdf)
 
 ---
 

@@ -10,7 +10,7 @@ This describes the Z-Wave device *StellaZ*, manufactured by *Eurotronics* with t
 
 The device is in the category of *Radiator Control*, defining Controls on radiators used to heat up rooms.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/183/183_default.jpg" alt="StellaZ product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/183/183_default.jpg" alt="StellaZ product image">
 
 
 ## Overview
@@ -137,7 +137,7 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/183/productattachments-files-e-u-eur-stellaz.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/183/productattachments-files-e-u-eur-stellaz.pdf)
 
 ---
 

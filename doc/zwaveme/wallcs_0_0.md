@@ -10,7 +10,7 @@ This describes the Z-Wave device *WALLC-S*, manufactured by *Z-Wave.Me* with the
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/145/145_default.jpg" alt="WALLC-S product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/145/145_default.jpg" alt="WALLC-S product image">
 
 
 ## Overview
@@ -332,7 +332,7 @@ This group supports 10 nodes.
 
 ### Documentation Links
 
-* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/145/z-wave-me-wall-controller-set-manual.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/145/z-wave-me-wall-controller-set-manual.pdf)
 
 ---
 

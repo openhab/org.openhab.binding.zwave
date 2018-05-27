@@ -10,7 +10,7 @@ This describes the Z-Wave device *ZWN-RSM2*, manufactured by *Wenzhou MTLC Elect
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/465/465_default.png" alt="ZWN-RSM2 product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/465/465_default.png" alt="ZWN-RSM2 product image">
 
 
 The ZWN-RSM2 does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -120,7 +120,7 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/465/ZWN-RSM2-Plus-0208160044-01.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/465/ZWN-RSM2-Plus-0208160044-01.pdf)
 
 ---
 

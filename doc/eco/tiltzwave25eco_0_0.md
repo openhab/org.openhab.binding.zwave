@@ -10,7 +10,7 @@ This describes the Z-Wave device *TILT-ZWAVE2.5-ECO*, manufactured by *Ecolink* 
 
 The device is in the category of *Garage Door*, defining Garage Door.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/581/581_default.jpg" alt="TILT-ZWAVE2.5-ECO product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/581/581_default.jpg" alt="TILT-ZWAVE2.5-ECO product image">
 
 
 ## Overview
@@ -209,7 +209,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [ECOLINK ZWAVE PLUS 2.5 Manual](http://www.cd-jackson.com/zwave_device_uploads/581/ecolink-z-wave-plus-garage-door-tilt-sensor-tiltzwave2-5-eco-manual.pdf)
+* [ECOLINK ZWAVE PLUS 2.5 Manual](https://www.cd-jackson.com/zwave_device_uploads/581/ecolink-z-wave-plus-garage-door-tilt-sensor-tiltzwave2-5-eco-manual.pdf)
 
 ---
 

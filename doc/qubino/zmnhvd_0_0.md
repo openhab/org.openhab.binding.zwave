@@ -428,7 +428,7 @@ This group supports 16 nodes.
 
 ### Documentation Links
 
-* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/363/Qubino-Flush-Dimmer-0-10V-PLUS-user-manual-V1-1-eng-1.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/363/Qubino-Flush-Dimmer-0-10V-PLUS-user-manual-V1-1-eng-1.pdf)
 
 ---
 

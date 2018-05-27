@@ -10,7 +10,7 @@ This describes the Z-Wave device *WADWAZ-1*, manufactured by *Linear Corp* with 
 
 The device is in the category of *Door*, defining Door sensors.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/9/9_default.jpg" alt="WADWAZ-1 product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/9/9_default.jpg" alt="WADWAZ-1 product image">
 
 
 ## Overview
@@ -157,7 +157,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [WADWAZ install manual](http://www.cd-jackson.com/zwave_device_uploads/9/WADWAZ-install.pdf)
+* [WADWAZ install manual](https://www.cd-jackson.com/zwave_device_uploads/9/WADWAZ-install.pdf)
 
 ---
 

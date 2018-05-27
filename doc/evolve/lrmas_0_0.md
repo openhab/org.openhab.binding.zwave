@@ -186,7 +186,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/39/EVLRMAS-Manual.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/39/EVLRMAS-Manual.pdf)
 
 ---
 

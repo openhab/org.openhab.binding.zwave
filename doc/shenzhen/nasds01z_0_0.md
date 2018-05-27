@@ -8,7 +8,7 @@ title: NAS-DS01Z - ZWave
 # NAS-DS01Z Cyrus Door Window Sensor
 This describes the Z-Wave device *NAS-DS01Z*, manufactured by *[Shenzhen Neo Electronics Co., Ltd](http://www.szneo.com/)* with the thing type UID of ```shenzhen_nasds01z_00_000```.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/458/458_default.jpg" alt="NAS-DS01Z product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/458/458_default.jpg" alt="NAS-DS01Z product image">
 
 
 ## Overview
@@ -164,7 +164,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [German Manual](http://www.cd-jackson.com/zwave_device_uploads/458/Tuer-Fensterkontakt-Z-Wave-manual-DE.pdf)
+* [German Manual](https://www.cd-jackson.com/zwave_device_uploads/458/Tuer-Fensterkontakt-Z-Wave-manual-DE.pdf)
 
 ---
 

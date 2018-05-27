@@ -8,7 +8,7 @@ title: DZ6HD - ZWave
 # DZ6HD 600W Dimmer
 This describes the Z-Wave device *DZ6HD*, manufactured by *Leviton* with the thing type UID of ```leviton_dz6hd_00_000```.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/556/556_default.png" alt="DZ6HD product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/556/556_default.png" alt="DZ6HD product image">
 
 
 The DZ6HD does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -208,7 +208,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](http://www.cd-jackson.com/zwave_device_uploads/556/DI-000-DZ6HD-02A-X4--1-.pdf)
+* [Manual](https://www.cd-jackson.com/zwave_device_uploads/556/DI-000-DZ6HD-02A-X4--1-.pdf)
 
 ---
 

@@ -8,7 +8,7 @@ title: KFOB - ZWave
 # KFOB 4 button keyfob
 This describes the Z-Wave device *KFOB*, manufactured by *Z-Wave.Me* with the thing type UID of ```zwaveme_kfob_00_000```.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/146/146_default.png" alt="KFOB product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/146/146_default.png" alt="KFOB product image">
 
 
 ## Overview
@@ -315,7 +315,7 @@ This group supports 8 nodes.
 
 ### Documentation Links
 
-* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/146/Manual-KFOB-POPP-C-En.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/146/Manual-KFOB-POPP-C-En.pdf)
 
 ---
 

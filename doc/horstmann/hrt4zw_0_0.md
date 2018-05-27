@@ -10,7 +10,7 @@ This describes the Z-Wave device *HRT4-ZW*, manufactured by *Horstmann Controls 
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/20/20_default.jpg" alt="HRT4-ZW product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/20/20_default.jpg" alt="HRT4-ZW product image">
 
 
 ## Overview
@@ -205,7 +205,7 @@ This group supports 4 nodes.
 
 ### Documentation Links
 
-* [User Guide](http://www.cd-jackson.com/zwave_device_uploads/20/user-and-installer-guide-HRT4-ZWweb1.pdf)
+* [User Guide](https://www.cd-jackson.com/zwave_device_uploads/20/user-and-installer-guide-HRT4-ZWweb1.pdf)
 
 ---
 

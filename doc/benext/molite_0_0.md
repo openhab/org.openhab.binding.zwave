@@ -8,7 +8,7 @@ title: Molite - ZWave
 # Molite Movement sensor with temperature and light sensor
 This describes the Z-Wave device *Molite*, manufactured by *[BeNext](http://www.benext.eu/)* with the thing type UID of ```benext_molite_00_000```.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/374/374_default.png" alt="Molite product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/374/374_default.png" alt="Molite product image">
 
 
 ## Overview
@@ -329,7 +329,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/374/molitesensor.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/374/molitesensor.pdf)
 
 ---
 

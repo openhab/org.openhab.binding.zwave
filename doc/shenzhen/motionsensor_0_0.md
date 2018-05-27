@@ -10,7 +10,7 @@ This describes the Z-Wave device *Motion Sensor*, manufactured by *[Shenzhen Neo
 
 The device is in the category of *Motion Detector*, defining Motion sensors/detectors.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/401/401_default.jpg" alt="Motion Sensor product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/401/401_default.jpg" alt="Motion Sensor product image">
 
 
 ## Overview
@@ -355,9 +355,9 @@ This group supports 4 nodes.
 
 ### Documentation Links
 
-* [Instruction Manual Motion Sensor](http://www.cd-jackson.com/zwave_device_uploads/401/Manual-for-Motion-sensor-PIR-Zwave-Neo.pdf)
-* [Motion Detector User Guide](http://www.cd-jackson.com/zwave_device_uploads/401/Motion-Detector-User-Guide.pdf)
-* [Motion Detector User Guide V_3.2](http://www.cd-jackson.com/zwave_device_uploads/401/Motion-Detector-User-Guide-EU-V3-2.pdf)
+* [Instruction Manual Motion Sensor](https://www.cd-jackson.com/zwave_device_uploads/401/Manual-for-Motion-sensor-PIR-Zwave-Neo.pdf)
+* [Motion Detector User Guide](https://www.cd-jackson.com/zwave_device_uploads/401/Motion-Detector-User-Guide.pdf)
+* [Motion Detector User Guide V_3.2](https://www.cd-jackson.com/zwave_device_uploads/401/Motion-Detector-User-Guide-EU-V3-2.pdf)
 
 ---
 

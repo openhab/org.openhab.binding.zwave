@@ -83,7 +83,7 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [iPlugDim Manual](http://www.cd-jackson.com/zwave_device_uploads/698/iplugdim.pdf)
+* [iPlugDim Manual](https://www.cd-jackson.com/zwave_device_uploads/698/iplugdim.pdf)
 
 ---
 

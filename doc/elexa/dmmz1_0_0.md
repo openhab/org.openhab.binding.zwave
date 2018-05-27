@@ -222,7 +222,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [Dome Mouser Advanced Manual](http://www.cd-jackson.com/zwave_device_uploads/684/Dome-Mouser-Advanced-Manual.pdf)
+* [Dome Mouser Advanced Manual](https://www.cd-jackson.com/zwave_device_uploads/684/Dome-Mouser-Advanced-Manual.pdf)
 
 ---
 

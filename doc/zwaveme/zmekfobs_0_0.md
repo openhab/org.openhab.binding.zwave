@@ -10,7 +10,7 @@ This describes the Z-Wave device *ZME_KFOB-S*, manufactured by *Z-Wave.Me* with 
 
 The device is in the category of *Remote Control*, defining Any portable or hand-held device that controls the status of something, e.g. remote control, keyfob etc..
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/548/548_default.png" alt="ZME_KFOB-S product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/548/548_default.png" alt="ZME_KFOB-S product image">
 
 
 ## Overview
@@ -323,7 +323,7 @@ This group supports 10 nodes.
 
 ### Documentation Links
 
-* [Manual ZME_KFOB-S.pdf](http://www.cd-jackson.com/zwave_device_uploads/548/ZME-KFOB-S.pdf)
+* [Manual ZME_KFOB-S.pdf](https://www.cd-jackson.com/zwave_device_uploads/548/ZME-KFOB-S.pdf)
 
 ---
 

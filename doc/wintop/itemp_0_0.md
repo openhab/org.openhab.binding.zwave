@@ -10,7 +10,7 @@ This describes the Z-Wave device *ITEMP*, manufactured by *Wintop* with the thin
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/216/216_default.png" alt="ITEMP product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/216/216_default.png" alt="ITEMP product image">
 
 
 ## Overview
@@ -194,7 +194,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [Wintop_Itemp_pic](http://www.cd-jackson.com/zwave_device_uploads/216/Wintop-Itemp.pdf)
+* [Wintop_Itemp_pic](https://www.cd-jackson.com/zwave_device_uploads/216/Wintop-Itemp.pdf)
 
 ---
 

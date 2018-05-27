@@ -10,7 +10,7 @@ This describes the Z-Wave device *CT100 Plus*, manufactured by *Radio Thermostat
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/641/641_default.png" alt="CT100 Plus product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/641/641_default.png" alt="CT100 Plus product image">
 
 
 ## Overview
@@ -609,7 +609,7 @@ This group supports 2 nodes.
 
 ### Documentation Links
 
-* [CT100 Plus User Guide](http://www.cd-jackson.com/zwave_device_uploads/641/CT100-Plus-UserGuide.pdf)
+* [CT100 Plus User Guide](https://www.cd-jackson.com/zwave_device_uploads/641/CT100-Plus-UserGuide.pdf)
 
 ---
 

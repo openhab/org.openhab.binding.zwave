@@ -8,7 +8,7 @@ title: DTHERMZ5 - ZWave
 # DTHERMZ5 Z-Wave room sensor
 This describes the Z-Wave device *DTHERMZ5*, manufactured by *Danfoss* with the thing type UID of ```danfoss_dthermz5_00_000```.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/501/501_default.jpg" alt="DTHERMZ5 product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/501/501_default.jpg" alt="DTHERMZ5 product image">
 
 
 ## Overview
@@ -265,7 +265,7 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [Manual](http://www.cd-jackson.com/zwave_device_uploads/501/Bedienungsanleitung-DTHERMZ5.pdf)
+* [Manual](https://www.cd-jackson.com/zwave_device_uploads/501/Bedienungsanleitung-DTHERMZ5.pdf)
 
 ---
 

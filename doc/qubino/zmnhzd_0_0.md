@@ -596,7 +596,7 @@ This group supports 16 nodes.
 
 ### Documentation Links
 
-* [Multifunctional Weather Station - ZMNHZD1](http://www.cd-jackson.com/zwave_device_uploads/364/qubino-ZMNHZD1-V1-1.pdf)
+* [Multifunctional Weather Station - ZMNHZD1](https://www.cd-jackson.com/zwave_device_uploads/364/qubino-ZMNHZD1-V1-1.pdf)
 
 ---
 

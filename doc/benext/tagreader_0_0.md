@@ -8,7 +8,7 @@ title: Tag Reader - ZWave
 # Tag Reader Tag Reader
 This describes the Z-Wave device *Tag Reader*, manufactured by *[BeNext](http://www.benext.eu/)* with the thing type UID of ```benext_tagreader_00_000```.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/444/444_default.png" alt="Tag Reader product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/444/444_default.png" alt="Tag Reader product image">
 
 
 ## Overview
@@ -245,7 +245,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [Tag reader manual NL](http://www.cd-jackson.com/zwave_device_uploads/444/tagreader-nl.pdf)
+* [Tag reader manual NL](https://www.cd-jackson.com/zwave_device_uploads/444/tagreader-nl.pdf)
 
 ---
 

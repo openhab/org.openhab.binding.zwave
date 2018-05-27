@@ -8,7 +8,7 @@ title: MH9-CO2-WD - ZWave
 # MH9-CO2-WD CO2 Monitor Air quality detector
 This describes the Z-Wave device *MH9-CO2-WD*, manufactured by *[McoHome Technology Co., Ltd](http://www.mcohome.com/)* with the thing type UID of ```mcohome_mh9co2wd_00_000```.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/455/455_default.png" alt="MH9-CO2-WD product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/455/455_default.png" alt="MH9-CO2-WD product image">
 
 
 ## Overview
@@ -178,7 +178,7 @@ This group supports 1 nodes.
 
 ### Documentation Links
 
-* [Manual](http://www.cd-jackson.com/zwave_device_uploads/455/McoHomeCO2Monitor.pdf)
+* [Manual](https://www.cd-jackson.com/zwave_device_uploads/455/McoHomeCO2Monitor.pdf)
 
 ---
 

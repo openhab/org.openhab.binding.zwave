@@ -419,7 +419,7 @@ This group supports 16 nodes.
 
 ### Documentation Links
 
-* [Manual](http://www.cd-jackson.com/zwave_device_uploads/635/flush-shutter-ZMNHCA2.pdf)
+* [Manual](https://www.cd-jackson.com/zwave_device_uploads/635/flush-shutter-ZMNHCA2.pdf)
 
 ---
 

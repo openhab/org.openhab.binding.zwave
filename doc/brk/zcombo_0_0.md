@@ -113,8 +113,8 @@ This group supports 1 nodes.
 
 ### Documentation Links
 
-* [User](http://www.cd-jackson.com/zwave_device_uploads/238/NXZCOMBO-Specifications.pdf)
-* [Instructions sheet](http://www.cd-jackson.com/zwave_device_uploads/238/first-alert-NXZCOMBO-instructions.pdf)
+* [User](https://www.cd-jackson.com/zwave_device_uploads/238/NXZCOMBO-Specifications.pdf)
+* [Instructions sheet](https://www.cd-jackson.com/zwave_device_uploads/238/first-alert-NXZCOMBO-instructions.pdf)
 
 ---
 

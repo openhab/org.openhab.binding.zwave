@@ -209,7 +209,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](http://www.cd-jackson.com/zwave_device_uploads/598/HKZW-RGB01-Manual.pdf)
+* [Manual](https://www.cd-jackson.com/zwave_device_uploads/598/HKZW-RGB01-Manual.pdf)
 
 ---
 

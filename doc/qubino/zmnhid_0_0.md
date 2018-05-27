@@ -406,7 +406,7 @@ This group supports 1 nodes.
 
 ### Documentation Links
 
-* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/358/Qubino-Flush-On-Off-Thermostat-PLUS-user-manual-V1-2.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/358/Qubino-Flush-On-Off-Thermostat-PLUS-user-manual-V1-2.pdf)
 
 ---
 

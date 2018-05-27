@@ -8,7 +8,7 @@ title: Energy Switch + - ZWave
 # Energy Switch + Energy Switch +
 This describes the Z-Wave device *Energy Switch +*, manufactured by *[BeNext](http://www.benext.eu/)* with the thing type UID of ```benext_energyswitch_00_000```.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/445/445_default.png" alt="Energy Switch + product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/445/445_default.png" alt="Energy Switch + product image">
 
 
 ## Overview
@@ -206,7 +206,7 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/445/energyswitchrs.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/445/energyswitchrs.pdf)
 
 ---
 

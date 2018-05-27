@@ -478,8 +478,8 @@ This group supports 16 nodes.
 
 ### Documentation Links
 
-* [ZMNHCD VERSION S1 19.08.2015](http://www.cd-jackson.com/zwave_device_uploads/614/ZMNHCD-VER-S1-19-08-2015.pdf)
-* [Qubino_Flush-Shutter-PLUS-user-manual_V1.4](http://www.cd-jackson.com/zwave_device_uploads/614/Qubino-Flush-Shutter-PLUS-user-manual-V1-4.pdf)
+* [ZMNHCD VERSION S1 19.08.2015](https://www.cd-jackson.com/zwave_device_uploads/614/ZMNHCD-VER-S1-19-08-2015.pdf)
+* [Qubino_Flush-Shutter-PLUS-user-manual_V1.4](https://www.cd-jackson.com/zwave_device_uploads/614/Qubino-Flush-Shutter-PLUS-user-manual-V1-4.pdf)
 
 ---
 

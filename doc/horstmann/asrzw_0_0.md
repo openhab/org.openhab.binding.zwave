@@ -84,7 +84,7 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/310/user-and-installer-guide-HRT4-ZWweb1--1-.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/310/user-and-installer-guide-HRT4-ZWweb1--1-.pdf)
 
 ---
 

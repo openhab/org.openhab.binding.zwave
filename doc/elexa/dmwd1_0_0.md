@@ -10,7 +10,7 @@ This describes the Z-Wave device *DMWD1*, manufactured by *Elexa Consumer Produc
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/608/608_default.jpg" alt="DMWD1 product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/608/608_default.jpg" alt="DMWD1 product image">
 
 
 ## Overview
@@ -166,7 +166,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [advanced manual](http://www.cd-jackson.com/zwave_device_uploads/608/dome-z-wave-plus-door-window-sensor-dmwd1-advanced-manual.pdf)
+* [advanced manual](https://www.cd-jackson.com/zwave_device_uploads/608/dome-z-wave-plus-door-window-sensor-dmwd1-advanced-manual.pdf)
 
 ---
 

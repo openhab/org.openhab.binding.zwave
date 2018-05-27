@@ -73,8 +73,8 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [Installation Instructions](http://www.cd-jackson.com/zwave_device_uploads/196/installation-instructions.pdf)
-* [Product Overview](http://www.cd-jackson.com/zwave_device_uploads/196/Leviton-DZMX1.pdf)
+* [Installation Instructions](https://www.cd-jackson.com/zwave_device_uploads/196/installation-instructions.pdf)
+* [Product Overview](https://www.cd-jackson.com/zwave_device_uploads/196/Leviton-DZMX1.pdf)
 
 ---
 

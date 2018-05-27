@@ -141,7 +141,7 @@ This group supports 16 nodes.
 
 ### Documentation Links
 
-* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/298/Widom-UBS--Operating-Manual-multiple-pages-en.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/298/Widom-UBS--Operating-Manual-multiple-pages-en.pdf)
 
 ---
 

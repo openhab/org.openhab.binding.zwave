@@ -68,7 +68,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [Product Information](http://www.cd-jackson.com/zwave_device_uploads/199/VRF-plugin-modules-techsht-BW-v1p4HR.pdf)
+* [Product Information](https://www.cd-jackson.com/zwave_device_uploads/199/VRF-plugin-modules-techsht-BW-v1p4HR.pdf)
 
 ---
 

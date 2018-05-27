@@ -10,7 +10,7 @@ This describes the Z-Wave device *Door/Window Sensor*, manufactured by *[Shenzhe
 
 The device is in the category of *Door*, defining Door sensors.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/400/400_default.jpg" alt="Door/Window Sensor product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/400/400_default.jpg" alt="Door/Window Sensor product image">
 
 
 ## Overview
@@ -203,9 +203,9 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [ Instruction Manual Door/Window Sensor](http://www.cd-jackson.com/zwave_device_uploads/400/Manual-for-Door-sensor-Z-wave-Neo.pdf)
-* [Door/Window User Guide](http://www.cd-jackson.com/zwave_device_uploads/400/Door-Window-User-Guide.pdf)
-* [Door/Window User Guide - Version from 23.09.2016](http://www.cd-jackson.com/zwave_device_uploads/400/Door-Window-User-Guide.pdf)
+* [ Instruction Manual Door/Window Sensor](https://www.cd-jackson.com/zwave_device_uploads/400/Manual-for-Door-sensor-Z-wave-Neo.pdf)
+* [Door/Window User Guide](https://www.cd-jackson.com/zwave_device_uploads/400/Door-Window-User-Guide.pdf)
+* [Door/Window User Guide - Version from 23.09.2016](https://www.cd-jackson.com/zwave_device_uploads/400/Door-Window-User-Guide.pdf)
 
 ---
 

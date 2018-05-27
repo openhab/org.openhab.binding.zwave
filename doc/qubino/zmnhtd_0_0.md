@@ -10,7 +10,7 @@ This describes the Z-Wave device *ZMNHTD*, manufactured by *[Goap](http://www.qu
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/414/414_default.jpg" alt="ZMNHTD product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/414/414_default.jpg" alt="ZMNHTD product image">
 
 
 The ZMNHTD does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -570,9 +570,9 @@ This group supports 1 nodes.
 
 ### Documentation Links
 
-* [Manual Goap Smart Meter ZMNHTD](http://www.cd-jackson.com/zwave_device_uploads/414/Qubino-Smart-Meter-PLUS-user-manual-V1-7-1.pdf)
-* [Qubino_Smart-Meter-PLUS-user-manual_V1.9_eng-1](http://www.cd-jackson.com/zwave_device_uploads/414/Qubino-Smart-Meter-PLUS-user-manual-V1-9-eng-1--1-.pdf)
-* [Qubino_Smart-Meter-PLUS-extended-manual_eng_2.3](http://www.cd-jackson.com/zwave_device_uploads/414/Qubino-Smart-Meter-PLUS-extended-manual-eng-2-3.pdf)
+* [Manual Goap Smart Meter ZMNHTD](https://www.cd-jackson.com/zwave_device_uploads/414/Qubino-Smart-Meter-PLUS-user-manual-V1-7-1.pdf)
+* [Qubino_Smart-Meter-PLUS-user-manual_V1.9_eng-1](https://www.cd-jackson.com/zwave_device_uploads/414/Qubino-Smart-Meter-PLUS-user-manual-V1-9-eng-1--1-.pdf)
+* [Qubino_Smart-Meter-PLUS-extended-manual_eng_2.3](https://www.cd-jackson.com/zwave_device_uploads/414/Qubino-Smart-Meter-PLUS-extended-manual-eng-2-3.pdf)
 
 ---
 

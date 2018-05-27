@@ -92,7 +92,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [Installation guide](http://www.cd-jackson.com/zwave_device_uploads/187/Enerwave-ZWN-SC7-InstallGuide.pdf)
+* [Installation guide](https://www.cd-jackson.com/zwave_device_uploads/187/Enerwave-ZWN-SC7-InstallGuide.pdf)
 
 ---
 

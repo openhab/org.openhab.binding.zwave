@@ -154,7 +154,7 @@ and links to more detailed information about each thing.
 | EcoNet Controls | [GR-105N](econet/gr105n_0_0.md) |  | ```econet_gr105n_00_000``` |  |
 | Elexa Consumer Products Inc. | [DMMS1](elexa/dmms1_0_0.md) |  | ```elexa_dmms1_00_000``` | Motion Detector |
 | Elexa Consumer Products Inc. | [DMMZ1](elexa/dmmz1_0_0.md) |  | ```elexa_dmmz1_00_000``` |  |
-| Elexa Consumer Products Inc. | [DMOF1](elexa/dmof1_0_0.md) |  | ```elexa_dmof1_00_000``` |  |
+| Elexa Consumer Products Inc. | [DMOF1](elexa/dmof1_0_0.md) |  | ```elexa_dmof1_00_000``` | Power Outlet |
 | Elexa Consumer Products Inc. | [DMS01](elexa/dms01_0_0.md) |  | ```elexa_dms01_00_000``` |  |
 | Elexa Consumer Products Inc. | [DMWD1](elexa/dmwd1_0_0.md) |  | ```elexa_dmwd1_00_000``` | Sensor |
 | Elexa Consumer Products Inc. | [DMWS1](elexa/dmws1_0_0.md) |  | ```elexa_dmws1_00_000``` |  |
@@ -239,7 +239,7 @@ and links to more detailed information about each thing.
 | Fibargroup | [FGR222](fibaro/fgr222_24_24.md) | 24.24 | ```fibaro_fgr222_24_024``` | Blinds |
 | Fibargroup | [FGRGBW](fibaro/fgrgbw_0_0.md) |  | ```fibaro_fgrgbw_00_000``` |  |
 | Fibargroup | [FGRM222](fibaro/fgrm222_0_0.md) | 22.22 | ```fibaro_fgrm222_00_000``` | Blinds |
-| Fibargroup | [FGS211](fibaro/fgs211_0_0.md) |  | ```fibaro_fgs211_00_000``` |  |
+| Fibargroup | [FGS211](fibaro/fgs211_0_0.md) |  | ```fibaro_fgs211_00_000``` | Wall Switch |
 | Fibargroup | [FGS212](fibaro/fgs212_0_0.md) |  | ```fibaro_fgs212_00_000``` |  |
 | Fibargroup | [FGS213](fibaro/fgs213_0_0.md) |  | ```fibaro_fgs213_00_000``` | Wall Switch |
 | Fibargroup | [FGS221](fibaro/fgs221_1_4.md) | 1.4 to 1.8 | ```fibaro_fgs221_01_004``` | Wall Switch |
@@ -464,7 +464,7 @@ and links to more detailed information about each thing.
 | Merten | [509519](merten/509519_0_0.md) |  | ```merten_509519_00_000``` |  |
 | Merten | [50x5xx](merten/50x5xx_0_0.md) |  | ```merten_50x5xx_00_000``` | Blinds |
 | Monoprice | [10795](monoprice/10795_0_0.md) |  | ```monoprice_10795_00_000``` | Door |
-| Nexia Home Intelligence | [DB100Z](nexia/db100z_0_0.md) |  | ```nexia_db100z_00_000``` |  |
+| Nexia Home Intelligence | [DB100Z](nexia/db100z_0_0.md) |  | ```nexia_db100z_00_000``` | Door |
 | ID-RF | [ASP-3-1](nodon/asp31_0_0.md) |  | ```nodon_asp31_00_000``` |  |
 | ID-RF | [CRC-3100](nodon/crc3100_0_0.md) |  | ```nodon_crc3100_00_000``` | Remote Control |
 | ID-RF | [CWS-3101](nodon/cws3101_0_0.md) |  | ```nodon_cws3101_00_000``` | Wall Switch |
@@ -676,7 +676,7 @@ and links to more detailed information about each thing.
 | Vision Security | [ZP3102](vision/zp3102_8_0.md) | 8.0 | ```vision_zp3102_08_000``` | Motion Detector |
 | Vision Security | [ZP3103](vision/zp3103_0_0.md) |  | ```vision_zp3103_00_000``` |  |
 | Vision Security | [ZS5101](vision/zs5101_0_0.md) |  | ```vision_zs5101_00_000``` |  |
-| Vision Security | [ZS6101](vision/zs6101_0_0.md) |  | ```vision_zs6101_00_000``` |  |
+| Vision Security | [ZS6101](vision/zs6101_0_0.md) |  | ```vision_zs6101_00_000``` | Smoke Detector |
 | Vision Security | [ZS6301](vision/zs6301_0_0.md) |  | ```vision_zs6301_00_000``` |  |
 | Vision Security | [ZSE40](vision/zse40_0_0.md) |  | ```vision_zse40_00_000``` | Motion Detector |
 | Vision Security | [ZW4101](vision/zw4101_0_0.md) |  | ```vision_zw4101_00_000``` |  |

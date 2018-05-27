@@ -8,7 +8,7 @@ title: DWZWAVE2 - ZWave
 # DWZWAVE2 Z-Wave Door/Window Sensor
 This describes the Z-Wave device *DWZWAVE2*, manufactured by *Ecolink* with the thing type UID of ```eco_dwzwave2_00_000```.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/138/138_default.jpg" alt="DWZWAVE2 product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/138/138_default.jpg" alt="DWZWAVE2 product image">
 
 
 ## Overview
@@ -102,8 +102,8 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/138/Ecolink-DWZWAVE2-ECO-manual-rev1.pdf)
-* [Ecolink Z-Wave Sensor Z-Wave Command Class Specification](http://www.cd-jackson.com/zwave_device_uploads/138/Advanced-Zwave-Configuration-v2.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/138/Ecolink-DWZWAVE2-ECO-manual-rev1.pdf)
+* [Ecolink Z-Wave Sensor Z-Wave Command Class Specification](https://www.cd-jackson.com/zwave_device_uploads/138/Advanced-Zwave-Configuration-v2.pdf)
 
 ---
 

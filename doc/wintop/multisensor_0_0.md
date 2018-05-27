@@ -222,7 +222,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/326/DHS-Zwave-Motion-Sensor-v1.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/326/DHS-Zwave-Motion-Sensor-v1.pdf)
 
 ---
 

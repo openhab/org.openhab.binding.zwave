@@ -10,7 +10,7 @@ This describes the Z-Wave device *YKFCON*, manufactured by *ASSA ABLOY* with the
 
 The device is in the category of *Lock*, defining Devices whose primary pupose is locking something.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/292/292_default.jpg" alt="YKFCON product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/292/292_default.jpg" alt="YKFCON product image">
 
 
 ## Overview
@@ -228,9 +228,9 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [Data Sheet](http://www.cd-jackson.com/zwave_device_uploads/292/yale-smart-living-keyfree-connected-data-sheet.pdf)
-* [User Manual](http://www.cd-jackson.com/zwave_device_uploads/292/yale-smart-living-keyfree-connected-user-manual.pdf)
-* [Technical Information](http://www.cd-jackson.com/zwave_device_uploads/292/yale-locks-info.pdf)
+* [Data Sheet](https://www.cd-jackson.com/zwave_device_uploads/292/yale-smart-living-keyfree-connected-data-sheet.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/292/yale-smart-living-keyfree-connected-user-manual.pdf)
+* [Technical Information](https://www.cd-jackson.com/zwave_device_uploads/292/yale-locks-info.pdf)
 
 ---
 

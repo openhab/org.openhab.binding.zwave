@@ -121,7 +121,7 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [Operating Instructions](http://www.cd-jackson.com/zwave_device_uploads/372/Comet-zwave-BDA-eng.pdf)
+* [Operating Instructions](https://www.cd-jackson.com/zwave_device_uploads/372/Comet-zwave-BDA-eng.pdf)
 
 ---
 

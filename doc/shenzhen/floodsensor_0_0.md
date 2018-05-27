@@ -10,7 +10,7 @@ This describes the Z-Wave device *Flood sensor*, manufactured by *[Shenzhen Neo 
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/493/493_default.jpg" alt="Flood sensor product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/493/493_default.jpg" alt="Flood sensor product image">
 
 
 ## Overview
@@ -202,7 +202,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [Shenzhen Watersensor Manual](http://www.cd-jackson.com/zwave_device_uploads/493/Shenzhen-NEO-watersensor-Z-wave.pdf)
+* [Shenzhen Watersensor Manual](https://www.cd-jackson.com/zwave_device_uploads/493/Shenzhen-NEO-watersensor-Z-wave.pdf)
 
 ---
 

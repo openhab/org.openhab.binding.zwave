@@ -49,7 +49,7 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [Manual](http://www.cd-jackson.com/zwave_device_uploads/369/ZRTSI-Instructions-1811265.pdf)
+* [Manual](https://www.cd-jackson.com/zwave_device_uploads/369/ZRTSI-Instructions-1811265.pdf)
 
 ---
 

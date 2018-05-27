@@ -68,7 +68,7 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [Z-Wave InWall Dimmer User Guide](http://www.cd-jackson.com/zwave_device_uploads/398/Z-Wave-InWall-Dimmer-User-Manual.pdf)
+* [Z-Wave InWall Dimmer User Guide](https://www.cd-jackson.com/zwave_device_uploads/398/Z-Wave-InWall-Dimmer-User-Manual.pdf)
 
 ---
 

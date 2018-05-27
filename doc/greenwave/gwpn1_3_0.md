@@ -11,7 +11,7 @@ This version of the device is limited to firmware versions above 3.0
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/102/102_default.jpg" alt="GWPN1 product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/102/102_default.jpg" alt="GWPN1 product image">
 
 
 The GWPN1 does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -242,9 +242,9 @@ This group supports 1 nodes.
 
 ### Documentation Links
 
-* [Documentation of Z-Wave settings](http://www.cd-jackson.com/zwave_device_uploads/102/z-wave-greenwave-powernode-manual.pdf)
-* [ English Manual](http://www.cd-jackson.com/zwave_device_uploads/102/z-wave-greenwave-powernode-manual.pdf)
-* [Documentation of Z-Wave settings](http://www.cd-jackson.com/zwave_device_uploads/102/Technical-Doc-for-the-powernodes.pdf)
+* [Documentation of Z-Wave settings](https://www.cd-jackson.com/zwave_device_uploads/102/z-wave-greenwave-powernode-manual.pdf)
+* [ English Manual](https://www.cd-jackson.com/zwave_device_uploads/102/z-wave-greenwave-powernode-manual.pdf)
+* [Documentation of Z-Wave settings](https://www.cd-jackson.com/zwave_device_uploads/102/Technical-Doc-for-the-powernodes.pdf)
 
 ---
 

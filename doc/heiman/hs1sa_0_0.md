@@ -10,7 +10,7 @@ This describes the Z-Wave device *HS1SA-Z*, manufactured by *[Heiman Technology 
 
 The device is in the category of *Smoke Detector*, defining Smoke detectors.
 
-<img src="http://www.cd-jackson.com/zwave_device_uploads/530/530_default.jpg" alt="HS1SA-Z product image">
+<img src="https://www.cd-jackson.com/zwave_device_uploads/530/530_default.jpg" alt="HS1SA-Z product image">
 
 
 ## Overview
@@ -127,7 +127,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [HS1SA-Z](http://www.cd-jackson.com/zwave_device_uploads/530/HS1SAZ-3381756.pdf)
+* [HS1SA-Z](https://www.cd-jackson.com/zwave_device_uploads/530/HS1SAZ-3381756.pdf)
 
 ---
 
