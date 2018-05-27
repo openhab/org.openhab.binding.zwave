@@ -135,7 +135,7 @@ The following option values may be configured -:
 | 0 | mono-stable switch type (push button) |
 | 1 | bi-stable switch type |
 
-The manufacturer defined default value is 1 (bi-stable switch type).
+The manufacturer defined default value is ```1``` (bi-stable switch type).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -151,7 +151,7 @@ The following option values may be configured -:
 | 0 | mono-stable switch type (push button) |
 | 1 | bi-stable switch type |
 
-The manufacturer defined default value is 1 (bi-stable switch type).
+The manufacturer defined default value is ```1``` (bi-stable switch type).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -169,7 +169,7 @@ The following option values may be configured -:
 | 2 | ALL ON active ALL OFF is not active |
 | 255 | ALL ON active, ALL OFF active |
 
-The manufacturer defined default value is 255 (ALL ON active, ALL OFF active).
+The manufacturer defined default value is ```255``` (ALL ON active, ALL OFF active).
 
 This parameter has the configuration ID ```config_10_1``` and is of type ```INTEGER```.
 
@@ -183,7 +183,7 @@ Auto OFF enabled with define time, step is 10 mseconds
 - 1–65535 = 0,01 second – 655,35 seconds
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_11_2``` and is of type ```INTEGER```.
 
@@ -197,7 +197,7 @@ Auto OFF enabled with define time, step is 10 mseconds
 - 1–65535 = 0,01 second – 655,35 seconds
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_12_2``` and is of type ```INTEGER```.
 
@@ -213,7 +213,7 @@ The following option values may be configured -:
 | 0 | Flush 2 relays module saves its state before power failure (it returns |
 | 1 | Flush 2 relays module does not save the state after a power failure, i |
 
-The manufacturer defined default value is 0 (Flush 2 relays module saves its state before power failure (it returns).
+The manufacturer defined default value is ```0``` (Flush 2 relays module saves its state before power failure (it returns).
 
 This parameter has the configuration ID ```config_30_1``` and is of type ```INTEGER```.
 
@@ -227,7 +227,7 @@ Power report is sent (pushed) only when actual power in Watts in real time chang
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_40_1``` and is of type ```INTEGER```.
 
@@ -241,7 +241,7 @@ Power report is sent (pushed) only when actual power in Watts in real time chang
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_41_1``` and is of type ```INTEGER```.
 
@@ -255,7 +255,7 @@ default value is 300 (power report in Watts is sent each 300s)
 
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 300.
+The manufacturer defined default value is ```300```.
 
 This parameter has the configuration ID ```config_42_2``` and is of type ```INTEGER```.
 
@@ -269,7 +269,7 @@ default value is 300 (power report in Watts is sent each 300s)
 
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 300.
+The manufacturer defined default value is ```300```.
 
 This parameter has the configuration ID ```config_43_2``` and is of type ```INTEGER```.
 
@@ -284,6 +284,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

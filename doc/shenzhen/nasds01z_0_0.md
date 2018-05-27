@@ -8,7 +8,7 @@ title: NAS-DS01Z - ZWave
 # NAS-DS01Z Cyrus Door Window Sensor
 This describes the Z-Wave device *NAS-DS01Z*, manufactured by *[Shenzhen Neo Electronics Co., Ltd](http://www.szneo.com/)* with the thing type UID of ```shenzhen_nasds01z_00_000```.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/458/458_default.jpg" alt="NAS-DS01Z product image">
+![NAS-DS01Z product image](https://www.cd-jackson.com/zwave_device_uploads/458/458_default.jpg)
 
 
 ## Overview
@@ -79,7 +79,7 @@ Adjust the amount of delay before the OFF command is transmitted.
 Description This configuration parameter that can be used to adjust the amount of delay before the OFF command is transmitted. This parameter can be configured with the value of 0 through 65535, where 0 means send OFF command immediately and 65535 means 65535 seconds of delay.
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_1_2``` and is of type ```INTEGER```.
 
@@ -95,7 +95,7 @@ The following option values may be configured, in addition to values in the rang
 | -1 | ON (Binary Switch Device) |
 | 0 | OFF, Alarm cancelling or turning a device off |
 
-The manufacturer defined default value is -1 (ON (Binary Switch Device)).
+The manufacturer defined default value is ```-1``` (ON (Binary Switch Device)).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -107,10 +107,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

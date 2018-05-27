@@ -10,7 +10,7 @@ This describes the Z-Wave device *XLED Home 2*, manufactured by *Steinel* with t
 
 The device is in the category of *Light Bulb*, defining Devices that illuminate something, such as bulbs, etc..
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/688/688_default.png" alt="XLED Home 2 product image">
+![XLED Home 2 product image](https://www.cd-jackson.com/zwave_device_uploads/688/688_default.png)
 
 
 The XLED Home 2 does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -184,7 +184,7 @@ Duration of light after motion detection.
 
 Values in the range 5 to 900 may be set.
 
-The manufacturer defined default value is 180.
+The manufacturer defined default value is ```180```.
 
 This parameter has the configuration ID ```config_1_2``` and is of type ```INTEGER```.
 
@@ -199,7 +199,7 @@ potentiometer value is then used as the default value and any
 potentiometer movement rewrites the current setting
 Values in the range 2 to 2000 may be set.
 
-The manufacturer defined default value is 2000.
+The manufacturer defined default value is ```2000```.
 
 This parameter has the configuration ID ```config_2_2``` and is of type ```INTEGER```.
 
@@ -212,7 +212,7 @@ eter value is then used as the default value and any potentiometer movement
 rewrites the current setting.
 Values in the range 2 to 100 may be set.
 
-The manufacturer defined default value is 100.
+The manufacturer defined default value is ```100```.
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -224,7 +224,7 @@ nterval for measuring ambient light when lamp is on (lamp switches off
 briefly and measures). 0 = function is off.
 Values in the range 5 to 120 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_6_1``` and is of type ```INTEGER```.
 
@@ -239,7 +239,7 @@ If the last remote light level value is older than 30 minutes, the internal ligh
 value is used again until the next external value is received.
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_8_1``` and is of type ```INTEGER```.
 
@@ -292,7 +292,7 @@ mode Slave
 mode
 Values in the range 0 to 4 may be set.
 
-The manufacturer defined default value is 2.
+The manufacturer defined default value is ```2```.
 
 This parameter has the configuration ID ```config_9_1``` and is of type ```INTEGER```.
 
@@ -324,7 +324,7 @@ The following option values may be configured, in addition to values in the rang
 |--------|-------------|
 | 255 | Lamp/relay is switched off for TIME (cfg 1) |
 
-The manufacturer defined default value is 10.
+The manufacturer defined default value is ```10```.
 
 This parameter has the configuration ID ```config_10_2``` and is of type ```INTEGER```.
 
@@ -361,7 +361,7 @@ enabled.
 motion event and works normally via current motion evaluation.
 Values in the range 2 to 209 may be set.
 
-The manufacturer defined default value is 255.
+The manufacturer defined default value is ```255```.
 
 This parameter has the configuration ID ```config_11_2``` and is of type ```INTEGER```.
 
@@ -384,7 +384,7 @@ no motion.
 255 = Never stop waiting for motion.
 Values in the range 0 to 209 may be set.
 
-The manufacturer defined default value is 204.
+The manufacturer defined default value is ```204```.
 
 This parameter has the configuration ID ```config_12_2``` and is of type ```INTEGER```.
 
@@ -399,7 +399,7 @@ The behaviour is the same as for parameter 10 (OFF\_LOCAL\_DISABLE)
 except: 255 – device ignores ON - OFF sequence and uses OFF behaviour.
 Values in the range 0 to 209 may be set.
 
-The manufacturer defined default value is 204.
+The manufacturer defined default value is ```204```.
 
 This parameter has the configuration ID ```config_13_2``` and is of type ```INTEGER```.
 
@@ -414,7 +414,7 @@ The behaviour is the same as for parameter 11 (ON\_LOCAL\_DISABLE)
 except: 255 – device ignores OFF - ON sequence and uses ON behaviour.
 Values in the range 0 to 209 may be set.
 
-The manufacturer defined default value is 204.
+The manufacturer defined default value is ```204```.
 
 This parameter has the configuration ID ```config_14_2``` and is of type ```INTEGER```.
 
@@ -428,7 +428,7 @@ but can be exceptionally longer due to retransmissions and overload – in this
 case, a longer interval can be allowed (up to 5 seconds).
 Values in the range 10 to 50 may be set.
 
-The manufacturer defined default value is 10.
+The manufacturer defined default value is ```10```.
 
 This parameter has the configuration ID ```config_15_1``` and is of type ```INTEGER```.
 
@@ -457,7 +457,7 @@ Timeout:
 255 = BASIC SET to motion endpoint ignored, motion sensor still disabled.
 Values in the range 2 to 209 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_16_2``` and is of type ```INTEGER```.
 
@@ -472,6 +472,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

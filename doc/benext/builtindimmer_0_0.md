@@ -8,7 +8,7 @@ title: builtInDimmer - ZWave
 # builtInDimmer Built-in Dimmer
 This describes the Z-Wave device *builtInDimmer*, manufactured by *[BeNext](http://www.benext.eu/)* with the thing type UID of ```benext_builtindimmer_00_000```.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/225/225_default.png" alt="builtInDimmer product image">
+![builtInDimmer product image](https://www.cd-jackson.com/zwave_device_uploads/225/225_default.png)
 
 
 The builtInDimmer does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -76,7 +76,7 @@ Set all configuration values to default values (factory settings).
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -93,7 +93,7 @@ The following option values may be configured -:
 | 1 | Toggle light when button is released, Start dimming when button presse |
 | 2 | Toggle light when button is pressed and when button is Released, start |
 
-The manufacturer defined default value is 0 (Toggle light when button is pressed, no action when button is released).
+The manufacturer defined default value is ```0``` (Toggle light when button is pressed, no action when button is released).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -109,7 +109,7 @@ The following option values may be configured -:
 | 0 | Switch own light on and send a Z-Wave message to all associated nodes |
 | 1 | Don.t switch own light on but only send a Z-Wave message to associated |
 
-The manufacturer defined default value is 0 (Switch own light on and send a Z-Wave message to all associated nodes ).
+The manufacturer defined default value is ```0``` (Switch own light on and send a Z-Wave message to all associated nodes ).
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -125,7 +125,7 @@ The following option values may be configured -:
 | 0 | Disable |
 | 1 | Enable |
 
-The manufacturer defined default value is 0 (Disable).
+The manufacturer defined default value is ```0``` (Disable).
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -136,7 +136,7 @@ The maximum powerload in watts when light is turned on, when measured higher the
 
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 200.
+The manufacturer defined default value is ```200```.
 
 This parameter has the configuration ID ```config_6_2``` and is of type ```INTEGER```.
 
@@ -147,7 +147,7 @@ The speed of dimming when activated (manual and RF). Dim speed is 1% per value (
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 3.
+The manufacturer defined default value is ```3```.
 
 This parameter has the configuration ID ```config_7_1``` and is of type ```INTEGER```.
 
@@ -158,7 +158,7 @@ The speed of fading when activated (manual and RF). Fade speed is 1% per value (
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 3.
+The manufacturer defined default value is ```3```.
 
 This parameter has the configuration ID ```config_8_1``` and is of type ```INTEGER```.
 
@@ -169,7 +169,7 @@ The time window to repress button to start dimming. Toggle time is value (\* 10m
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 50.
+The manufacturer defined default value is ```50```.
 
 This parameter has the configuration ID ```config_9_1``` and is of type ```INTEGER```.
 
@@ -180,7 +180,7 @@ A percentage that an energy value must be different compared to a previous sent 
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 20.
+The manufacturer defined default value is ```20```.
 
 This parameter has the configuration ID ```config_11_1``` and is of type ```INTEGER```.
 
@@ -191,7 +191,7 @@ A watt value that an energy value must be different compared to a previous sent 
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 10.
+The manufacturer defined default value is ```10```.
 
 This parameter has the configuration ID ```config_12_1``` and is of type ```INTEGER```.
 
@@ -202,7 +202,7 @@ A time value that has to be passed compared to a previous sent value before a un
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 10.
+The manufacturer defined default value is ```10```.
 
 This parameter has the configuration ID ```config_13_1``` and is of type ```INTEGER```.
 
@@ -213,7 +213,7 @@ What to do with lamp status when power applied. If 0x00: Always switch light off
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_14_1``` and is of type ```INTEGER```.
 
@@ -224,7 +224,7 @@ The speed of fading when activated (manual and RF). Fade speed is 1% per value (
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_15_1``` and is of type ```INTEGER```.
 

@@ -10,7 +10,7 @@ This describes the Z-Wave device *HS1DS-Z*, manufactured by *[Heiman Technology 
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/551/551_default.png" alt="HS1DS-Z product image">
+![HS1DS-Z product image](https://www.cd-jackson.com/zwave_device_uploads/551/551_default.png)
 
 
 ## Overview

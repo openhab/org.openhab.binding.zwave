@@ -8,7 +8,7 @@ title: MH9-CO2-WD - ZWave
 # MH9-CO2-WD CO2 Monitor Air quality detector
 This describes the Z-Wave device *MH9-CO2-WD*, manufactured by *[McoHome Technology Co., Ltd](http://www.mcohome.com/)* with the thing type UID of ```mcohome_mh9co2wd_00_000```.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/455/455_default.png" alt="MH9-CO2-WD product image">
+![MH9-CO2-WD product image](https://www.cd-jackson.com/zwave_device_uploads/455/455_default.png)
 
 
 ## Overview
@@ -139,7 +139,7 @@ Sets the CO2 notification threshold for association group 1.
 When the detected CO2 value is higher than the setting value, the device will send a (CO2 Detected Event) report to the Group 1. And this report will keep sending every 30 sec until the detected value is lower than the setting value.
 Values in the range 1 to 2000 may be set.
 
-The manufacturer defined default value is 1000.
+The manufacturer defined default value is ```1000```.
 
 This parameter has the configuration ID ```config_1_2``` and is of type ```INTEGER```.
 

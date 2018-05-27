@@ -10,7 +10,7 @@ This describes the Z-Wave device *DMOF1*, manufactured by *Elexa Consumer Produc
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/645/645_default.jpg" alt="DMOF1 product image">
+![DMOF1 product image](https://www.cd-jackson.com/zwave_device_uploads/645/645_default.jpg)
 
 
 The DMOF1 does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -108,7 +108,7 @@ The following option values may be configured -:
 | 0 | Disable Meter Functionality |
 | 1 | Enable Meter Functionality |
 
-The manufacturer defined default value is 1 (Enable Meter Functionality).
+The manufacturer defined default value is ```1``` (Enable Meter Functionality).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -119,7 +119,7 @@ The time between meter reports.
 This parameter sets the amount of time between each successive METER\_REPORT signal sent to Group 1 (also see Param 1 & 6.)
 Values in the range 1 to 65535 may be set.
 
-The manufacturer defined default value is 300.
+The manufacturer defined default value is ```300```.
 
 This parameter has the configuration ID ```config_2_2``` and is of type ```INTEGER```.
 
@@ -130,7 +130,7 @@ Maximum current the plug will pass
 Sets the maximum current the plug will pass before it cuts off power and sends a NOTIFICATION\_EVENT\_POWER\_ MANAGEMENT\_OVER\_LOAD\_DETECTED signal to Group 1 and a BASIC\_SET(FF) to Group 2. The LED will then blink red once per second until the current returns to normal. To clear the NOTIFICATION and start monitoring again, the BUTTON must be pushed once (only after the current is back to normal.) **NOTE: this value must be higher than Param 4**
 Values in the range 1 to 16 may be set.
 
-The manufacturer defined default value is 13.
+The manufacturer defined default value is ```13```.
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -141,7 +141,7 @@ Current level warning threshold
 Sets the current level at which the On/Off Plug-In Switch will flash its LED yellow, until the current returns to below this level. It will NOT cut off current to the device; this functions as a visible warning to the user. **NOTE: this value must be lower than Param 3**
 Values in the range 1 to 16 may be set.
 
-The manufacturer defined default value is 12.
+The manufacturer defined default value is ```12```.
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -157,7 +157,7 @@ The following option values may be configured -:
 | 0 | Disable LED |
 | 1 | Enable LED |
 
-The manufacturer defined default value is 1 (Enable LED).
+The manufacturer defined default value is ```1``` (Enable LED).
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -168,7 +168,7 @@ Report of relative change in current flow
 In addition to sending a METER\_REPORT to Group 1 in the time interval set by Param 2, the On/Off Plug-In Switch also sends a METER\_REPORT when it detects a relative change in current flow. This parameter sets this minimum current change amount, in percent, at which point the On/Off Plug-In Switch will send a METER\_REPORT to Group 1. Also see Param 1 & 2.
 Values in the range 1 to 64 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_6_1``` and is of type ```INTEGER```.
 
@@ -184,7 +184,7 @@ The following option values may be configured -:
 | 0 | Don't Remember |
 | 1 | Remember |
 
-The manufacturer defined default value is 1 (Remember).
+The manufacturer defined default value is ```1``` (Remember).
 
 This parameter has the configuration ID ```config_7_1``` and is of type ```INTEGER```.
 
@@ -200,7 +200,7 @@ The following option values may be configured -:
 | 0 | Disabled |
 | 1 | Enabled |
 
-The manufacturer defined default value is 0 (Disabled).
+The manufacturer defined default value is ```0``` (Disabled).
 
 This parameter has the configuration ID ```config_8_1``` and is of type ```INTEGER```.
 
@@ -211,7 +211,7 @@ Time before auto shut off if on.
 Sets the time interval before the On/Off Plug-In Switch automatically shuts off. See Param 8.
 Values in the range 1 to 65535 may be set.
 
-The manufacturer defined default value is 96.
+The manufacturer defined default value is ```96```.
 
 This parameter has the configuration ID ```config_9_4``` and is of type ```INTEGER```.
 
@@ -227,7 +227,7 @@ The following option values may be configured -:
 | 0 | Disable Button |
 | 1 | Enable Button |
 
-The manufacturer defined default value is 1 (Enable Button).
+The manufacturer defined default value is ```1``` (Enable Button).
 
 This parameter has the configuration ID ```config_10_1``` and is of type ```INTEGER```.
 
@@ -242,6 +242,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

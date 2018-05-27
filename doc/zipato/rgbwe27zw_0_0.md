@@ -8,7 +8,7 @@ title: RGBWE27ZW - ZWave
 # RGBWE27ZW RGBW bulb
 This describes the Z-Wave device *RGBWE27ZW*, manufactured by *[Zipato](http://www.zipato.com/)* with the thing type UID of ```zipato_rgbwe27zw_00_000```.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/237/237_default.png" alt="RGBWE27ZW product image">
+![RGBWE27ZW product image](https://www.cd-jackson.com/zwave_device_uploads/237/237_default.png)
 
 
 The RGBWE27ZW does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -71,7 +71,7 @@ Values range from 0 to 100 where 0 is cold white and 100 is warm white.
 
 Values in the range 1 to 100 may be set.
 
-The manufacturer defined default value is 50.
+The manufacturer defined default value is ```50```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -82,7 +82,7 @@ Range from 0 to 31 where 0 is minimum sensitivity and 31 is maximum sensitivity.
 
 Values in the range 0 to 31 may be set.
 
-The manufacturer defined default value is 16.
+The manufacturer defined default value is ```16```.
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -93,7 +93,7 @@ Values range from 0 to 25 in intervals of 100 milliseconds.
 
 Values in the range 0 to 25 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -104,7 +104,7 @@ Values range from 0 to 250 and a special value 255 which sets infinite flashing.
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -120,7 +120,7 @@ The following option values may be configured -:
 | 0 | turn off |
 | 1 | turn on |
 
-The manufacturer defined default value is 0 (turn off).
+The manufacturer defined default value is ```0``` (turn off).
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 

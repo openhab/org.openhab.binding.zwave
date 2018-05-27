@@ -8,7 +8,7 @@ title: Energy Switch + - ZWave
 # Energy Switch + Energy Switch +
 This describes the Z-Wave device *Energy Switch +*, manufactured by *[BeNext](http://www.benext.eu/)* with the thing type UID of ```benext_energyswitch_00_000```.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/445/445_default.png" alt="Energy Switch + product image">
+![Energy Switch + product image](https://www.cd-jackson.com/zwave_device_uploads/445/445_default.png)
 
 
 ## Overview
@@ -69,7 +69,7 @@ If value is set to 0XFF (255), device set to default
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -80,7 +80,7 @@ If value is set to 1 the info shall be presented with 1 decimal
 0,1,2,3 amount of decimals. Every Amount higher then 3 shall be printed as 3 decimals.
 Values in the range 0 to 3 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -93,7 +93,7 @@ The device will shut down when it reaches an amount higher then defined (W)
 1-4500 are acceptable values and can be used, everything above the 4500 shall be changed to 4500.
 Values in the range 0 to 4500 may be set.
 
-The manufacturer defined default value is 4500.
+The manufacturer defined default value is ```4500```.
 
 This parameter has the configuration ID ```config_3_2``` and is of type ```INTEGER```.
 
@@ -104,7 +104,7 @@ If 0 then the device will always be off, when 1-255 it will emain the last known
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -115,7 +115,7 @@ The value will change when the % is changed.
 
 Values in the range 10 to 100 may be set.
 
-The manufacturer defined default value is 20.
+The manufacturer defined default value is ```20```.
 
 This parameter has the configuration ID ```config_6_1``` and is of type ```INTEGER```.
 
@@ -126,7 +126,7 @@ The value will change when the Watt is changed.
 
 Values in the range 5 to 255 may be set.
 
-The manufacturer defined default value is 10.
+The manufacturer defined default value is ```10```.
 
 This parameter has the configuration ID ```config_7_1``` and is of type ```INTEGER```.
 
@@ -137,7 +137,7 @@ The time between 2 of the meter rerport
 
 Values in the range 10 to 255 may be set.
 
-The manufacturer defined default value is 20.
+The manufacturer defined default value is ```20```.
 
 This parameter has the configuration ID ```config_8_1``` and is of type ```INTEGER```.
 
@@ -148,7 +148,7 @@ The time that needs to pass before the next state change
 Value \* 10 miliseconds
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 50.
+The manufacturer defined default value is ```50```.
 
 This parameter has the configuration ID ```config_9_1``` and is of type ```INTEGER```.
 
@@ -163,7 +163,7 @@ The state of the Led compared to the relais state
 2 = led On when relais OFF
 Values in the range 0 to 2 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_10_1``` and is of type ```INTEGER```.
 
@@ -178,6 +178,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

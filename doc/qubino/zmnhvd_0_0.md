@@ -96,7 +96,7 @@ The following option values may be configured -:
 | 4 | Illumination sensor |
 | 5 | General purpose sensor |
 
-The manufacturer defined default value is 0 (mono-stable switch type (push button)).
+The manufacturer defined default value is ```0``` (mono-stable switch type (push button)).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -107,7 +107,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 
 Values in the range 0 to 32536 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_11_2``` and is of type ```INTEGER```.
 
@@ -118,7 +118,7 @@ This parameter has the configuration ID ```config_11_2``` and is of type ```INTE
 
 Values in the range 0 to 32535 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_12_2``` and is of type ```INTEGER```.
 
@@ -129,7 +129,7 @@ This parameter has the configuration ID ```config_12_2``` and is of type ```INTE
 
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_21_1``` and is of type ```INTEGER```.
 
@@ -140,7 +140,7 @@ This parameter has the configuration ID ```config_21_1``` and is of type ```INTE
 
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_30_1``` and is of type ```INTEGER```.
 
@@ -151,7 +151,7 @@ This parameter has the configuration ID ```config_30_1``` and is of type ```INTE
 
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_52_1``` and is of type ```INTEGER```.
 
@@ -162,7 +162,7 @@ This parameter has the configuration ID ```config_52_1``` and is of type ```INTE
 
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_53_1``` and is of type ```INTEGER```.
 
@@ -173,7 +173,7 @@ This parameter has the configuration ID ```config_53_1``` and is of type ```INTE
 
 Values in the range 0 to 100 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_54_1``` and is of type ```INTEGER```.
 
@@ -184,7 +184,7 @@ This parameter has the configuration ID ```config_54_1``` and is of type ```INTE
 
 Values in the range 0 to 127 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_55_1``` and is of type ```INTEGER```.
 
@@ -195,7 +195,7 @@ This parameter has the configuration ID ```config_55_1``` and is of type ```INTE
 
 Values in the range 0 to 1000 may be set.
 
-The manufacturer defined default value is 100.
+The manufacturer defined default value is ```100```.
 
 This parameter has the configuration ID ```config_56_2``` and is of type ```INTEGER```.
 
@@ -206,7 +206,7 @@ This parameter has the configuration ID ```config_56_2``` and is of type ```INTE
 
 Values in the range 0 to 1000 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_57_2``` and is of type ```INTEGER```.
 
@@ -217,7 +217,7 @@ Available config. parameters (data type is2 Byte DEC):
 
 Values in the range 0 to 1000 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_58_2``` and is of type ```INTEGER```.
 
@@ -228,7 +228,7 @@ This parameter has the configuration ID ```config_58_2``` and is of type ```INTE
 
 Values in the range 1 to 98 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_60_1``` and is of type ```INTEGER```.
 
@@ -239,7 +239,7 @@ This parameter has the configuration ID ```config_60_1``` and is of type ```INTE
 
 Values in the range 2 to 99 may be set.
 
-The manufacturer defined default value is 99.
+The manufacturer defined default value is ```99```.
 
 This parameter has the configuration ID ```config_61_1``` and is of type ```INTEGER```.
 
@@ -250,7 +250,7 @@ This parameter has the configuration ID ```config_61_1``` and is of type ```INTE
 
 Values in the range 1 to 255 may be set.
 
-The manufacturer defined default value is 100.
+The manufacturer defined default value is ```100```.
 
 This parameter has the configuration ID ```config_65_2``` and is of type ```INTEGER```.
 
@@ -261,7 +261,7 @@ This parameter has the configuration ID ```config_65_2``` and is of type ```INTE
 
 Values in the range 1 to 255 may be set.
 
-The manufacturer defined default value is 3.
+The manufacturer defined default value is ```3```.
 
 This parameter has the configuration ID ```config_66_1``` and is of type ```INTEGER```.
 
@@ -272,7 +272,7 @@ This parameter has the configuration ID ```config_66_1``` and is of type ```INTE
 
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_67_1``` and is of type ```INTEGER```.
 
@@ -283,7 +283,7 @@ This parameter has the configuration ID ```config_67_1``` and is of type ```INTE
 
 Values in the range 0 to 127 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_68_1``` and is of type ```INTEGER```.
 
@@ -294,7 +294,7 @@ This parameter has the configuration ID ```config_68_1``` and is of type ```INTE
 
 Values in the range 1 to 32536 may be set.
 
-The manufacturer defined default value is 32536.
+The manufacturer defined default value is ```32536```.
 
 This parameter has the configuration ID ```config_110_2``` and is of type ```INTEGER```.
 
@@ -305,7 +305,7 @@ This parameter has the configuration ID ```config_110_2``` and is of type ```INT
 
 Values in the range 0 to 127 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_120_1``` and is of type ```INTEGER```.
 
@@ -316,7 +316,7 @@ This parameter has the configuration ID ```config_120_1``` and is of type ```INT
 
 Values in the range 0 to 140 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_140_2``` and is of type ```INTEGER```.
 
@@ -327,7 +327,7 @@ This parameter has the configuration ID ```config_140_2``` and is of type ```INT
 
 Values in the range 0 to 100 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_141_1``` and is of type ```INTEGER```.
 
@@ -338,7 +338,7 @@ This parameter has the configuration ID ```config_141_1``` and is of type ```INT
 
 Values in the range 0 to 20000 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_143_2``` and is of type ```INTEGER```.
 
@@ -349,7 +349,7 @@ This parameter has the configuration ID ```config_143_2``` and is of type ```INT
 
 Values in the range 0 to 20000 may be set.
 
-The manufacturer defined default value is 1000.
+The manufacturer defined default value is ```1000```.
 
 This parameter has the configuration ID ```config_144_2``` and is of type ```INTEGER```.
 
@@ -364,6 +364,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

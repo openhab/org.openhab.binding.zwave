@@ -8,7 +8,7 @@ title: WTRFID - ZWave
 # WTRFID Mini Keypad RFID/Z-Wave
 This describes the Z-Wave device *WTRFID*, manufactured by *Wintop* with the thing type UID of ```wintop_wtrfid_00_000```.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/217/217_default.jpg" alt="WTRFID product image">
+![WTRFID product image](https://www.cd-jackson.com/zwave_device_uploads/217/217_default.jpg)
 
 
 ## Overview
@@ -127,7 +127,7 @@ Set all configuration values to default values (factory settings).
 
 Values in the range 1 to 255 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -142,7 +142,7 @@ The Mini Keypad RFiD/Z-Wave supports 3 types of notification sound configuration
 2 | Notification sound enabled (default, configuration parameter 2 set to auto-stop time).
 Values in the range 1 to 255 may be set.
 
-The manufacturer defined default value is 15.
+The manufacturer defined default value is ```15```.
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -155,7 +155,7 @@ To configure the timeout to wait for a WAKEUP\_NO\_MORE\_INFORMATION before the 
 0 -> disabled
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -166,7 +166,7 @@ To configure the number of beeps per second. Every beep is fixed about 10ms.
 
 Values in the range 1 to 255 may be set.
 
-The manufacturer defined default value is 2.
+The manufacturer defined default value is ```2```.
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -179,7 +179,7 @@ To configure the operating mode. If any mode other then 3, that value will be re
 5 | The mode DESCRIPTION: To configure the operating mode. DEFAULT: 0x01 SIZE: 1 byte\* PARAM1: MODE 1: Normal operating mode. MODE 3: Z-Wave chip is always on to request e.g. version or manufacturer id. If any mode other then 3, that value will be reported after a get but will be handled in SW as mode 1. PARAM2,3: not used.
 Values in the range 1 to 255 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -191,10 +191,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

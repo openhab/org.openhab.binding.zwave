@@ -10,7 +10,7 @@ This describes the Z-Wave device *WDS*, manufactured by *wiDom* with the thing t
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/432/432_default.jpg" alt="WDS product image">
+![WDS product image](https://www.cd-jackson.com/zwave_device_uploads/432/432_default.jpg)
 
 
 The WDS does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -152,7 +152,7 @@ The following option values may be configured -:
 | 3 | OFF |
 | 4 | IGNORE |
 
-The manufacturer defined default value is 1 (TOGGLE).
+The manufacturer defined default value is ```1``` (TOGGLE).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -170,7 +170,7 @@ The following option values may be configured -:
 | 3 | OFF |
 | 4 | IGNORE |
 
-The manufacturer defined default value is 1 (TOGGLE).
+The manufacturer defined default value is ```1``` (TOGGLE).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -201,7 +201,7 @@ Both channels can be OFF but they can never be ON simultaneously. It can be used
 **INFO:** 0 – configuration is available on WiDom Universal Double Switch starting from the firmware version 1.40.
 Values in the range 0 to 39 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -221,7 +221,7 @@ The following option values may be configured -:
 | 1 | 1 CLICK |
 | 2 | 2 CLICKS |
 
-The manufacturer defined default value is 2 (2 CLICKS).
+The manufacturer defined default value is ```2``` (2 CLICKS).
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -280,7 +280,7 @@ If the Relay 1 is ON/OFF, the associated devices are OFF/ON
 No action is taken on the associated devices
 Values in the range -1 to 106 may be set.
 
-The manufacturer defined default value is 100.
+The manufacturer defined default value is ```100```.
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -339,7 +339,7 @@ If the Relay 1 is ON/OFF, the associated devices are OFF/ON
 No action is taken on the associated devices
 Values in the range -1 to 106 may be set.
 
-The manufacturer defined default value is 100.
+The manufacturer defined default value is ```100```.
 
 This parameter has the configuration ID ```config_6_1``` and is of type ```INTEGER```.
 
@@ -353,7 +353,7 @@ Defines the time after which the Channel 1 is switched OFF
 From 1 to 32000 (seconds): After this time the relay of the Channel 1 is OFF
 Values in the range 0 to 32000 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_10_2``` and is of type ```INTEGER```.
 
@@ -367,7 +367,7 @@ Defines the time after which the Channel 2 is switched OFF
 From 1 to 32000 (seconds): After this time the relay of the Channel 2 is OFF
 Values in the range 0 to 32000 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_11_2``` and is of type ```INTEGER```.
 
@@ -380,7 +380,7 @@ Defines the time after which the Channel 1 is switched ON
 From 1 to 32000 (seconds): After this time the relay of the Channel 1 is ON
 Values in the range 0 to 32000 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_12_2``` and is of type ```INTEGER```.
 
@@ -393,7 +393,7 @@ Defines the time after which the Channel 2 is switched ON
 From 1 to 32000 (seconds): After this time the relay of the Channel 2 is ON
 Values in the range 0 to 32000 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_13_2``` and is of type ```INTEGER```.
 This is a read only parameter.
@@ -412,7 +412,7 @@ The following option values may be configured -:
 | 3 | IGNORE IF OFF |
 | 4 | IGNORE |
 
-The manufacturer defined default value is 1 (AS RECEIVED).
+The manufacturer defined default value is ```1``` (AS RECEIVED).
 
 This parameter has the configuration ID ```config_20_1``` and is of type ```INTEGER```.
 
@@ -428,7 +428,7 @@ The following option values may be configured -:
 | 1 | CHANNEL 1 |
 | 3 | BOTH CHANNELS |
 
-The manufacturer defined default value is 3 (BOTH CHANNELS).
+The manufacturer defined default value is ```3``` (BOTH CHANNELS).
 
 This parameter has the configuration ID ```config_21_2``` and is of type ```INTEGER```.
 
@@ -447,7 +447,7 @@ The following option values may be configured -:
 | 3 | ON\_ON |
 | 4 | PREVIOUS STATUS |
 
-The manufacturer defined default value is 4 (PREVIOUS STATUS).
+The manufacturer defined default value is ```4``` (PREVIOUS STATUS).
 
 This parameter has the configuration ID ```config_60_1``` and is of type ```INTEGER```.
 
@@ -466,7 +466,7 @@ The following option values may be configured -:
 | 3 | RESTART DEVICE |
 | 4 | IGNORE |
 
-The manufacturer defined default value is 4 (IGNORE).
+The manufacturer defined default value is ```4``` (IGNORE).
 
 This parameter has the configuration ID ```config_61_1``` and is of type ```INTEGER```.
 
@@ -483,7 +483,7 @@ The following option values may be configured -:
 | 1 | BUTTON |
 | 2 | SWITCH |
 
-The manufacturer defined default value is 1 (BUTTON).
+The manufacturer defined default value is ```1``` (BUTTON).
 
 This parameter has the configuration ID ```config_62_1``` and is of type ```INTEGER```.
 
@@ -498,6 +498,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

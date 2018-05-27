@@ -11,7 +11,7 @@ This version of the device is limited to firmware versions above 4.1
 
 The device is in the category of *Blinds*, defining Roller shutters, window blinds, etc..
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/213/213_default.jpg" alt="ZMNHCD product image">
+![ZMNHCD product image](https://www.cd-jackson.com/zwave_device_uploads/213/213_default.jpg)
 
 
 The ZMNHCD does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -163,7 +163,7 @@ The following option values may be configured -:
 | 2 | 2 - ALL ON is not active ALL OFF is not active |
 | 255 | 255 - ALL ON active, ALL OFF active |
 
-The manufacturer defined default value is 255 (255 - ALL ON active, ALL OFF active).
+The manufacturer defined default value is ```255``` (255 - ALL ON active, ALL OFF active).
 
 This parameter has the configuration ID ```config_10_2``` and is of type ```INTEGER```.
 
@@ -182,7 +182,7 @@ Set value means percentage, set value from 0 – 100 = 0% - 100%. Available conf
 NOTE: if power changed is less than 1W, the report is not send (pushed), independent of percentage set.
 Values in the range 0 to 100 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_40_1``` and is of type ```INTEGER```.
 
@@ -197,7 +197,7 @@ Set value means time interval (0 – 32767) in seconds, when power report is sen
 - 1 - 32767 = 1 second - 32767 seconds. Reporting enabled, power report is send with time interval set by entered value.
 Values in the range 0 to 32767 may be set.
 
-The manufacturer defined default value is 300.
+The manufacturer defined default value is ```300```.
 
 This parameter has the configuration ID ```config_42_2``` and is of type ```INTEGER```.
 
@@ -217,7 +217,7 @@ The following option values may be configured -:
 | 0 | 0 – Shutter mode |
 | 1 | 1 – Venetian mode (up/down and slate rotation) |
 
-The manufacturer defined default value is 0 (0 – Shutter mode).
+The manufacturer defined default value is ```0``` (0 – Shutter mode).
 
 This parameter has the configuration ID ```config_71_1``` and is of type ```INTEGER```.
 
@@ -234,7 +234,7 @@ This parameter defines the time necessary for slats to make full turn (180 degre
 NOTE: If time set is too high, this will result that after full turn, Shutter will start move up/down, for time remaining.
 Values in the range 0 to 32767 may be set.
 
-The manufacturer defined default value is 150.
+The manufacturer defined default value is ```150```.
 
 This parameter has the configuration ID ```config_72_2``` and is of type ```INTEGER```.
 
@@ -255,7 +255,7 @@ The following option values may be configured -:
 | 0 |  |
 | 1 | 1 - return to previous position in all cases |
 
-The manufacturer defined default value is 1 (1 - return to previous position in all cases).
+The manufacturer defined default value is ```1``` (1 - return to previous position in all cases).
 
 This parameter has the configuration ID ```config_73_1``` and is of type ```INTEGER```.
 
@@ -278,7 +278,7 @@ To change Shutter lower position below already set (manual recalibration), param
 In case Shutter has limit switches, but anyhow you would like to limit opening/closing position by time, you can still do it. In case you put time that is longer that opening/closing real time limited by limit switches, Shutter will stop at limit switch, but the module relay will switch off after define time, not by Shutter limit switch. Take in consideration that in this condition, the positioning with slider through UI will not show correct Shutter position. NOTE that is not recommended using this for slates operation since its positioning can be compromised during time.
 Values in the range 0 to 32767 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_74_2``` and is of type ```INTEGER```.
 
@@ -294,7 +294,7 @@ Power threshold to be interpreted when motor reach the limit switch. Available c
 NOTE: Motors with power consumption less than 0,5W could not be auto calibrated. In that case set time manually (par. 74).
 Values in the range 0 to 127 may be set.
 
-The manufacturer defined default value is 10.
+The manufacturer defined default value is ```10```.
 
 This parameter has the configuration ID ```config_76_1``` and is of type ```INTEGER```.
 
@@ -313,7 +313,7 @@ The following option values may be configured -:
 | 0 | 0 - Default |
 | 1 | 1 - Start Calibration Process |
 
-The manufacturer defined default value is 0 (0 - Default).
+The manufacturer defined default value is ```0``` (0 - Default).
 
 This parameter has the configuration ID ```config_78_1``` and is of type ```INTEGER```.
 
@@ -332,7 +332,7 @@ The following option values may be configured -:
 | 0 | 0 - Reporting to Controller Disabled |
 | 1 | 1 - Reporting to Controller Enabled |
 
-The manufacturer defined default value is 1 (1 - Reporting to Controller Enabled).
+The manufacturer defined default value is ```1``` (1 - Reporting to Controller Enabled).
 
 This parameter has the configuration ID ```config_80_1``` and is of type ```INTEGER```.
 
@@ -346,7 +346,7 @@ This parameter defines the max time before motor power consumption is read after
 - 3 - 50 = 0,3seconds - 5seconds (100ms resolution)
 Values in the range 0 to 50 may be set.
 
-The manufacturer defined default value is 8.
+The manufacturer defined default value is ```8```.
 
 This parameter has the configuration ID ```config_85_1``` and is of type ```INTEGER```.
 
@@ -360,7 +360,7 @@ This parameter defines the max time at limit switch, when power consumption is b
 - 3 - 50 = 0,3seconds - 5seconds (100ms resolution)
 Values in the range 3 to 50 may be set.
 
-The manufacturer defined default value is 8.
+The manufacturer defined default value is ```8```.
 
 This parameter has the configuration ID ```config_86_1``` and is of type ```INTEGER```.
 
@@ -374,7 +374,7 @@ This parameter defines the minimum time delay between next motor movement (minim
 - 1 - 30 = 0,1seconds - 3seconds (100ms resolution)
 Values in the range 1 to 30 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_90_1``` and is of type ```INTEGER```.
 
@@ -390,7 +390,7 @@ Set value is added or subtracted to actual measured value by sensor. Available c
 - From 1001 to 1100 - value from -0.1 °C to -10.0 °C is subtracted to actual measured temperature.
 Values in the range 1 to 32536 may be set.
 
-The manufacturer defined default value is 32536.
+The manufacturer defined default value is ```32536```.
 
 This parameter has the configuration ID ```config_110_2``` and is of type ```INTEGER```.
 
@@ -405,7 +405,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 - 1-127 = 0,1°C - 12,7°C, step is 0,1°C
 Values in the range 0 to 127 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_120_1``` and is of type ```INTEGER```.
 
@@ -420,6 +420,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

@@ -117,7 +117,7 @@ Available Parameters: 0 - Off 1 - 30 in milliseconds Default = 6 m/s
 
 Values in the range 0 to 30 may be set.
 
-The manufacturer defined default value is 6.
+The manufacturer defined default value is ```6```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -128,7 +128,7 @@ Set from 0 - 100 % Default = 37% (street lighting)
 
 Values in the range 0 to 100 may be set.
 
-The manufacturer defined default value is 37.
+The manufacturer defined default value is ```37```.
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -140,10 +140,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

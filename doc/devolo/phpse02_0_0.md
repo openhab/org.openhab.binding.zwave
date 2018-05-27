@@ -10,7 +10,7 @@ This describes the Z-Wave device *ph-pse02*, manufactured by *Devolo* with the t
 
 The device is in the category of *Siren*, defining Siren used by Alarm systems.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/453/453_default.jpg" alt="ph-pse02 product image">
+![ph-pse02 product image](https://www.cd-jackson.com/zwave_device_uploads/453/453_default.jpg)
 
 
 The ph-pse02 does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -222,7 +222,7 @@ Notification Type,
 1: Using Sensor Binary Report.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 4.
+The manufacturer defined default value is ```4```.
 
 This parameter has the configuration ID ```config_7_4``` and is of type ```INTEGER```.
 
@@ -239,7 +239,7 @@ Disable the alarm function.
 Caution: After the power up, this configuration is always 0.
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_29_4``` and is of type ```INTEGER```.
 
@@ -254,7 +254,7 @@ Default is 3 minutes, maximum is 63.5 minutes.
 0 means never auto stop.
 Values in the range 0 to 127 may be set.
 
-The manufacturer defined default value is 6.
+The manufacturer defined default value is ```6```.
 
 This parameter has the configuration ID ```config_31_4_0000000C``` and is of type ```INTEGER```.
 

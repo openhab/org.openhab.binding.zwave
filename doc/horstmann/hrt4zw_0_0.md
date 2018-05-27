@@ -10,7 +10,7 @@ This describes the Z-Wave device *HRT4-ZW*, manufactured by *Horstmann Controls 
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/20/20_default.jpg" alt="HRT4-ZW product image">
+![HRT4-ZW product image](https://www.cd-jackson.com/zwave_device_uploads/20/20_default.jpg)
 
 
 ## Overview
@@ -106,7 +106,7 @@ The following option values may be configured -:
 | 0 | Disable |
 | 255 | Enable |
 
-The manufacturer defined default value is 0 (Disable).
+The manufacturer defined default value is ```0``` (Disable).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -122,7 +122,7 @@ The following option values may be configured -:
 | 0 | Celsius |
 | 255 | Fahrenheit |
 
-The manufacturer defined default value is 0 (Celsius).
+The manufacturer defined default value is ```0``` (Celsius).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -133,7 +133,7 @@ Defines the temperature steps of the heating control. Steps are 0.1 K
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 10.
+The manufacturer defined default value is ```10```.
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -145,10 +145,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

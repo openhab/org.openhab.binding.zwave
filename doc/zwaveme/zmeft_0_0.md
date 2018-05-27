@@ -8,7 +8,7 @@ title: ZME_FT - ZWave
 # ZME\_FT Floor Thermostat
 This describes the Z-Wave device *ZME_FT*, manufactured by *Z-Wave.Me* with the thing type UID of ```zwaveme_zmeft_00_000```.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/151/151_default.png" alt="ZME_FT product image">
+![ZME_FT product image](https://www.cd-jackson.com/zwave_device_uploads/151/151_default.png)
 
 
 The ZME_FT does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -96,7 +96,7 @@ Detailed information on each parameter can be found in the sections below.
 
 Values in the range 0 to 1800 may be set.
 
-The manufacturer defined default value is 1800.
+The manufacturer defined default value is ```1800```.
 
 This parameter has the configuration ID ```config_1_2``` and is of type ```INTEGER```.
 
@@ -113,7 +113,7 @@ The following option values may be configured -:
 | 1 | Toggle Normal Heating / Energy Save |
 | 2 | Toggle Boost Dry |
 
-The manufacturer defined default value is 0 (Toggle Normal Heating / Off).
+The manufacturer defined default value is ```0``` (Toggle Normal Heating / Off).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -132,7 +132,7 @@ The following option values may be configured -:
 | 3 | Set Normal Heating set point temperature (in 0.1 C units) |
 | 4 | Switch on/off relay directly (only if Thermostat Mode is in Off state) |
 
-The manufacturer defined default value is 0 (Toggle Normal Heating / Off).
+The manufacturer defined default value is ```0``` (Toggle Normal Heating / Off).
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -143,7 +143,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 
 Values in the range 1 to 60 may be set.
 
-The manufacturer defined default value is 18.
+The manufacturer defined default value is ```18```.
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -154,7 +154,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 
 Values in the range 1 to 60 may be set.
 
-The manufacturer defined default value is 30.
+The manufacturer defined default value is ```30```.
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -165,7 +165,7 @@ In all modes the thermostat will switch off heating until temperature drops belo
 
 Values in the range 20 to 55 may be set.
 
-The manufacturer defined default value is 27.
+The manufacturer defined default value is ```27```.
 
 This parameter has the configuration ID ```config_6_1``` and is of type ```INTEGER```.
 
@@ -176,7 +176,7 @@ Typical time used to differenciate click from hold
 
 Values in the range 1 to 100 may be set.
 
-The manufacturer defined default value is 50.
+The manufacturer defined default value is ```50```.
 
 This parameter has the configuration ID ```config_10_1``` and is of type ```INTEGER```.
 

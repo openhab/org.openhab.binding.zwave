@@ -8,7 +8,7 @@ title: GE Plug in Smart Switch - ZWave
 # GE Plug in Smart Switch GE Plug in Smart Switch Zwave Plus
 This describes the Z-Wave device *GE Plug in Smart Switch*, manufactured by *Jasco Products* with the thing type UID of ```ge_gepluginsmartswitch_00_000```.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/517/517_default.jpg" alt="GE Plug in Smart Switch product image">
+![GE Plug in Smart Switch product image](https://www.cd-jackson.com/zwave_device_uploads/517/517_default.jpg)
 
 
 The GE Plug in Smart Switch does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -55,7 +55,7 @@ The following option values may be configured -:
 | 1 | LED is on when connected device is on |
 | 2 | LED is off at all times |
 
-The manufacturer defined default value is 0 (reset to factory default).
+The manufacturer defined default value is ```0``` (reset to factory default).
 
 This parameter has the configuration ID ```config_3_1_wo``` and is of type ```INTEGER```.
 This is a read only parameter.
@@ -72,6 +72,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

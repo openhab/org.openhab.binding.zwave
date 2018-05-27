@@ -10,7 +10,7 @@ This describes the Z-Wave device *ZMNHSD*, manufactured by *[Goap](http://www.qu
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/324/324_default.jpg" alt="ZMNHSD product image">
+![ZMNHSD product image](https://www.cd-jackson.com/zwave_device_uploads/324/324_default.jpg)
 
 
 The ZMNHSD does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -119,7 +119,7 @@ The following option values may be configured -:
 | 0 | 0 - Mono-stable switch type (push button) |
 | 1 | 1 - Bi-stable switch type |
 
-The manufacturer defined default value is 0 (0 - Mono-stable switch type (push button)).
+The manufacturer defined default value is ```0``` (0 - Mono-stable switch type (push button)).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -135,7 +135,7 @@ The following option values may be configured -:
 | 0 | Dimmer |
 | 1 | Switch |
 
-The manufacturer defined default value is 0 (Dimmer).
+The manufacturer defined default value is ```0``` (Dimmer).
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -153,7 +153,7 @@ The following option values may be configured -:
 | 2 | ALL ON active, ALL OFF is not active |
 | 255 | ALL ON active, ALL OFF active |
 
-The manufacturer defined default value is 255 (ALL ON active, ALL OFF active).
+The manufacturer defined default value is ```255``` (ALL ON active, ALL OFF active).
 
 This parameter has the configuration ID ```config_10_2``` and is of type ```INTEGER```.
 
@@ -169,7 +169,7 @@ The following option values may be configured, in addition to values in the rang
 |--------|-------------|
 | 0 | Auto off DISABLED |
 
-The manufacturer defined default value is 0 (Auto off DISABLED).
+The manufacturer defined default value is ```0``` (Auto off DISABLED).
 
 This parameter has the configuration ID ```config_11_2``` and is of type ```INTEGER```.
 
@@ -185,7 +185,7 @@ The following option values may be configured, in addition to values in the rang
 |--------|-------------|
 | 0 | Auto on DISABLED |
 
-The manufacturer defined default value is 0 (Auto on DISABLED).
+The manufacturer defined default value is ```0``` (Auto on DISABLED).
 
 This parameter has the configuration ID ```config_12_2``` and is of type ```INTEGER```.
 
@@ -201,7 +201,7 @@ The following option values may be configured -:
 | 0 | 0 - double click disabled |
 | 1 | 1 - double click enabled |
 
-The manufacturer defined default value is 0 (0 - double click disabled).
+The manufacturer defined default value is ```0``` (0 - double click disabled).
 
 This parameter has the configuration ID ```config_21_1``` and is of type ```INTEGER```.
 
@@ -217,7 +217,7 @@ The following option values may be configured -:
 | 0 | 0 - Save state enabled |
 | 1 | 1 - Save state disabled |
 
-The manufacturer defined default value is 0 (0 - Save state enabled).
+The manufacturer defined default value is ```0``` (0 - Save state enabled).
 
 This parameter has the configuration ID ```config_30_1``` and is of type ```INTEGER```.
 
@@ -228,7 +228,7 @@ Set value means percentage, set value from 0 - 100 = 0% - 100%. Default value is
 
 Values in the range 0 to 100 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_40_1``` and is of type ```INTEGER```.
 
@@ -240,7 +240,7 @@ Set value means time interval (0 – 32767) in seconds, when power report is sen
 - 1 – 32767 = 1 second – 32767 seconds. Reporting enabled. Power report is sent with time interval set by entered
 Values in the range 0 to 32767 may be set.
 
-The manufacturer defined default value is 300.
+The manufacturer defined default value is ```300```.
 
 This parameter has the configuration ID ```config_42_2``` and is of type ```INTEGER```.
 
@@ -253,7 +253,7 @@ This parameter has the configuration ID ```config_42_2``` and is of type ```INTE
 NOTE: The minimum level may not be higher than the maximum level! 1% min. dimming value is defined by Z- Wave multilevel device class.
 Values in the range 1 to 98 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_60_1``` and is of type ```INTEGER```.
 
@@ -266,7 +266,7 @@ This parameter has the configuration ID ```config_60_1``` and is of type ```INTE
 NOTE: The maximum level may not be lower than the minimum level! 99% max. dimming value is defined by Z- Wave multilevel device class.
 Values in the range 2 to 99 may be set.
 
-The manufacturer defined default value is 99.
+The manufacturer defined default value is ```99```.
 
 This parameter has the configuration ID ```config_61_1``` and is of type ```INTEGER```.
 
@@ -280,7 +280,7 @@ Set value means time of moving the Dimmer between min. and max. dimming values b
 
 Values in the range 1 to 255 may be set.
 
-The manufacturer defined default value is 100.
+The manufacturer defined default value is ```100```.
 
 This parameter has the configuration ID ```config_65_2``` and is of type ```INTEGER```.
 
@@ -292,7 +292,7 @@ Time to moving the Dimmer between min. and max values (in seconds).
 - 1- 255 = 1 second – 255 seconds.
 Values in the range 1 to 255 may be set.
 
-The manufacturer defined default value is 3.
+The manufacturer defined default value is ```3```.
 
 This parameter has the configuration ID ```config_66_2``` and is of type ```INTEGER```.
 
@@ -308,7 +308,7 @@ The following option values may be configured -:
 | 0 | 0 - respect start level |
 | 1 | 1 - ignore start level |
 
-The manufacturer defined default value is 0 (0 - respect start level).
+The manufacturer defined default value is ```0``` (0 - respect start level).
 
 This parameter has the configuration ID ```config_67_1``` and is of type ```INTEGER```.
 
@@ -319,7 +319,7 @@ This parameter is used with association group 3.
 The Duration field MUST specify the time that the transition should take from the current value to the new target value. A supporting device SHOULD respect the specified Duration value.
 Values in the range 0 to 127 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_68_1``` and is of type ```INTEGER```.
 
@@ -334,7 +334,7 @@ Set value is added or subtracted to actual measured value by sensor. Available c
 
 Values in the range 1 to 32536 may be set.
 
-The manufacturer defined default value is 32536.
+The manufacturer defined default value is ```32536```.
 
 This parameter has the configuration ID ```config_110_2``` and is of type ```INTEGER```.
 
@@ -348,7 +348,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 
 Values in the range 0 to 127 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_120_1``` and is of type ```INTEGER```.
 
@@ -363,6 +363,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

@@ -10,7 +10,7 @@ This describes the Z-Wave device *ZMNHAD*, manufactured by *[Goap](http://www.qu
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/206/206_default.png" alt="ZMNHAD product image">
+![ZMNHAD product image](https://www.cd-jackson.com/zwave_device_uploads/206/206_default.png)
 
 
 The ZMNHAD does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -222,7 +222,7 @@ The following option values may be configured -:
 | 0 | mono-stable switch type (push button) |
 | 1 | bi-stable switch type |
 
-The manufacturer defined default value is 1 (bi-stable switch type).
+The manufacturer defined default value is ```1``` (bi-stable switch type).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -238,7 +238,7 @@ The following option values may be configured -:
 | 0 | NO (normaly open) input type |
 | 1 | NC (normaly close) input type |
 
-The manufacturer defined default value is 0 (NO (normaly open) input type).
+The manufacturer defined default value is ```0``` (NO (normaly open) input type).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -254,7 +254,7 @@ The following option values may be configured -:
 | 0 | NO (normaly open) input type |
 | 1 | NC (normaly close) input type |
 
-The manufacturer defined default value is 0 (NO (normaly open) input type).
+The manufacturer defined default value is ```0``` (NO (normaly open) input type).
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -272,7 +272,7 @@ The following option values may be configured -:
 | 2 | ALL ON active ALL OFF is not active |
 | 255 | ALL ON active, ALL OFF active |
 
-The manufacturer defined default value is 255 (ALL ON active, ALL OFF active).
+The manufacturer defined default value is ```255``` (ALL ON active, ALL OFF active).
 
 This parameter has the configuration ID ```config_10_1``` and is of type ```INTEGER```.
 
@@ -283,7 +283,7 @@ When relay is ON it goes automatically OFF after time defined by this parameter.
 
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_11_2``` and is of type ```INTEGER```.
 
@@ -294,7 +294,7 @@ When relay is OFF it goes automatically ON after time defined by this parameter.
 
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_12_2``` and is of type ```INTEGER```.
 
@@ -310,7 +310,7 @@ The following option values may be configured -:
 | 0 | Seconds selected |
 | 1 | Milliseconds selected |
 
-The manufacturer defined default value is 0 (Seconds selected).
+The manufacturer defined default value is ```0``` (Seconds selected).
 
 This parameter has the configuration ID ```config_15_1``` and is of type ```INTEGER```.
 
@@ -326,7 +326,7 @@ The following option values may be configured -:
 | 0 | Flush 1relay module saves its state before power failure (it returns t |
 | 1 | Flush 1relay module does not save the state after a power failure, it |
 
-The manufacturer defined default value is 0 (Flush 1relay module saves its state before power failure (it returns t).
+The manufacturer defined default value is ```0``` (Flush 1relay module saves its state before power failure (it returns t).
 
 This parameter has the configuration ID ```config_30_1``` and is of type ```INTEGER```.
 
@@ -337,7 +337,7 @@ This parameter has the configuration ID ```config_30_1``` and is of type ```INTE
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 10.
+The manufacturer defined default value is ```10```.
 
 This parameter has the configuration ID ```config_40_1``` and is of type ```INTEGER```.
 
@@ -348,7 +348,7 @@ Set value means time interval (0 – 32535) in seconds, when power report is sen
 
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 300.
+The manufacturer defined default value is ```300```.
 
 This parameter has the configuration ID ```config_42_2``` and is of type ```INTEGER```.
 
@@ -364,7 +364,7 @@ The following option values may be configured -:
 | 0 | When system is turned off the output is 0V (NC). |
 | 1 | When system is turned off the output is 230V or 24V (NO). |
 
-The manufacturer defined default value is 0 (When system is turned off the output is 0V (NC).).
+The manufacturer defined default value is ```0``` (When system is turned off the output is 0V (NC).).
 
 This parameter has the configuration ID ```config_63_1``` and is of type ```INTEGER```.
 
@@ -386,7 +386,7 @@ The following option values may be configured -:
 | 6 | Smoke Alarm; Smoke detected, unknown loc. |
 | 9 | Sensor binary. |
 
-The manufacturer defined default value is 1 (Home Security; Motion Detection, unknown loc.).
+The manufacturer defined default value is ```1``` (Home Security; Motion Detection, unknown loc.).
 
 This parameter has the configuration ID ```config_100_1``` and is of type ```INTEGER```.
 
@@ -408,7 +408,7 @@ The following option values may be configured -:
 | 6 | Smoke Alarm; Smoke detected, unknown loc. |
 | 9 | Sensor binary. |
 
-The manufacturer defined default value is 1 (Home Security; Motion Detection, unknown loc.).
+The manufacturer defined default value is ```1``` (Home Security; Motion Detection, unknown loc.).
 
 This parameter has the configuration ID ```config_101_1``` and is of type ```INTEGER```.
 
@@ -419,7 +419,7 @@ Set value is added or subtracted to actual measured value by sensor. 32536 – o
 
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 32536.
+The manufacturer defined default value is ```32536```.
 
 This parameter has the configuration ID ```config_110_2``` and is of type ```INTEGER```.
 
@@ -430,7 +430,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 
 Values in the range 0 to 127 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_120_1``` and is of type ```INTEGER```.
 
@@ -445,6 +445,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

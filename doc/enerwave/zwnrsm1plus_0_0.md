@@ -10,7 +10,7 @@ This describes the Z-Wave device *ZWN-RSM1-PLUS*, manufactured by *Wenzhou MTLC 
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/575/575_default.png" alt="ZWN-RSM1-PLUS product image">
+![ZWN-RSM1-PLUS product image](https://www.cd-jackson.com/zwave_device_uploads/575/575_default.png)
 
 
 The ZWN-RSM1-PLUS does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -87,7 +87,7 @@ Unsolicited Report Configuration
 ZWN-RSM1-PLUS can send unsolicited status reports to the primary controller (Node ID 0x1) when the switch is toggled if the controller is designed as a gateway. If your controller is not a gateway or does not need the status reported or you think it could confuse your Z-Wave network, you can use Command\_Class\_Configuration to disable this function. By default this function is disabled.
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -102,6 +102,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

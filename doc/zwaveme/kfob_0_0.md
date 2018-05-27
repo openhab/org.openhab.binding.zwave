@@ -8,7 +8,7 @@ title: KFOB - ZWave
 # KFOB 4 button keyfob
 This describes the Z-Wave device *KFOB*, manufactured by *Z-Wave.Me* with the thing type UID of ```zwaveme_kfob_00_000```.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/146/146_default.png" alt="KFOB product image">
+![KFOB product image](https://www.cd-jackson.com/zwave_device_uploads/146/146_default.png)
 
 
 ## Overview
@@ -71,7 +71,7 @@ The following option values may be configured -:
 | 1 | In pair without double clicks |
 | 2 | In pair with double clicks |
 
-The manufacturer defined default value is 1 (In pair without double clicks).
+The manufacturer defined default value is ```1``` (In pair without double clicks).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -88,7 +88,7 @@ The following option values may be configured -:
 | 1 | In pair without double clicks |
 | 2 | In pair with double clicks |
 
-The manufacturer defined default value is 1 (In pair without double clicks).
+The manufacturer defined default value is ```1``` (In pair without double clicks).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -109,7 +109,7 @@ The following option values may be configured -:
 | 5 | Send Preconfigured Scenes |
 | 6 | Control devices in proximity |
 
-The manufacturer defined default value is 1 (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
 
 This parameter has the configuration ID ```config_11_1``` and is of type ```INTEGER```.
 
@@ -130,7 +130,7 @@ The following option values may be configured -:
 | 5 | Send Preconfigured Scenes |
 | 6 | Control devices in proximity |
 
-The manufacturer defined default value is 1 (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
 
 This parameter has the configuration ID ```config_12_1``` and is of type ```INTEGER```.
 
@@ -151,7 +151,7 @@ The following option values may be configured -:
 | 5 | Send Preconfigured Scenes |
 | 6 | Control devices in proximity |
 
-The manufacturer defined default value is 1 (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
 
 This parameter has the configuration ID ```config_13_1``` and is of type ```INTEGER```.
 
@@ -172,7 +172,7 @@ The following option values may be configured -:
 | 5 | Send Preconfigured Scenes |
 | 6 | Control devices in proximity |
 
-The manufacturer defined default value is 1 (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
 
 This parameter has the configuration ID ```config_14_1``` and is of type ```INTEGER```.
 
@@ -183,7 +183,7 @@ Typical time used to differenciate click, hold and double clicks in 10ms units
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 50.
+The manufacturer defined default value is ```50```.
 
 This parameter has the configuration ID ```config_20_1``` and is of type ```INTEGER```.
 
@@ -200,7 +200,7 @@ The following option values may be configured -:
 | 1 | NO (Normal Open) |
 | 2 | NC (Normal Close) |
 
-The manufacturer defined default value is 1 (NO (Normal Open)).
+The manufacturer defined default value is ```1``` (NO (Normal Open)).
 
 This parameter has the configuration ID ```config_21_1``` and is of type ```INTEGER```.
 
@@ -216,7 +216,7 @@ The following option values may be configured -:
 | 0 | No |
 | 1 | Yes |
 
-The manufacturer defined default value is 0 (No).
+The manufacturer defined default value is ```0``` (No).
 
 This parameter has the configuration ID ```config_22_1``` and is of type ```INTEGER```.
 
@@ -233,7 +233,7 @@ The following option values may be configured -:
 | 1 | Confirm button press |
 | 2 | Confirm button press and delivery |
 
-The manufacturer defined default value is 2 (Confirm button press and delivery).
+The manufacturer defined default value is ```2``` (Confirm button press and delivery).
 
 This parameter has the configuration ID ```config_24_1``` and is of type ```INTEGER```.
 
@@ -250,7 +250,7 @@ The following option values may be configured -:
 | 1 | To same node as wake up notification |
 | 2 | Broadcast to neighbours |
 
-The manufacturer defined default value is 0 (No).
+The manufacturer defined default value is ```0``` (No).
 
 This parameter has the configuration ID ```config_30_1``` and is of type ```INTEGER```.
 
@@ -262,10 +262,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

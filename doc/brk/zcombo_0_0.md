@@ -78,7 +78,7 @@ The following option values may be configured -:
 | 0 | Single Alarm |
 | 1 | Double Alarm |
 
-The manufacturer defined default value is 0 (Single Alarm).
+The manufacturer defined default value is ```0``` (Single Alarm).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 

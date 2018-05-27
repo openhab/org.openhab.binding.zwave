@@ -10,7 +10,7 @@ This describes the Z-Wave device *CT100 Plus*, manufactured by *Radio Thermostat
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/641/641_default.png" alt="CT100 Plus product image">
+![CT100 Plus product image](https://www.cd-jackson.com/zwave_device_uploads/641/641_default.png)
 
 
 ## Overview
@@ -313,7 +313,7 @@ The following option values may be configured -:
 | 3 | 1.5° F |
 | 4 | 2.0° F |
 
-The manufacturer defined default value is 2 (1.0° F).
+The manufacturer defined default value is ```2``` (1.0° F).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -327,7 +327,7 @@ Byte 3 = Number of Heat Pump Stages
 Byte 4 = Number of Cool Stages
 Values in the range 0 to 0 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_2_4``` and is of type ```INTEGER```.
 This is a read only parameter.
@@ -344,7 +344,7 @@ The following option values may be configured -:
 | 0 | Utility lock disabled |
 | 1 | Utility lock enabled |
 
-The manufacturer defined default value is 0 (Utility lock disabled).
+The manufacturer defined default value is ```0``` (Utility lock disabled).
 
 This parameter has the configuration ID ```config_3_1_wo``` and is of type ```INTEGER```.
 This is a write only parameter.
@@ -356,7 +356,7 @@ C-Wire / Battery Status
 If 0x01, the thermostat is powered by a C-wire. If 0x02, the thermostat is powered by batteries.
 Values in the range 0 to 0 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 This is a read only parameter.
@@ -375,7 +375,7 @@ The following option values may be configured -:
 | 2 | 5% RH |
 | 3 | 10% RH |
 
-The manufacturer defined default value is 0 (Disabled).
+The manufacturer defined default value is ```0``` (Disabled).
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -391,7 +391,7 @@ The following option values may be configured -:
 | 0 | Auxiliary/Emergency heat disabled |
 | 1 | Auxiliary/Emergency heat enabled |
 
-The manufacturer defined default value is 0 (Auxiliary/Emergency heat disabled).
+The manufacturer defined default value is ```0``` (Auxiliary/Emergency heat disabled).
 
 This parameter has the configuration ID ```config_6_1``` and is of type ```INTEGER```.
 
@@ -413,7 +413,7 @@ The following option values may be configured -:
 | 7 | 3.5° F |
 | 8 | 4.0° F |
 
-The manufacturer defined default value is 2 (1.0° F).
+The manufacturer defined default value is ```2``` (1.0° F).
 
 This parameter has the configuration ID ```config_7_1``` and is of type ```INTEGER```.
 
@@ -430,7 +430,7 @@ The following option values may be configured -:
 | 8 | 4.0° F |
 | 12 | 6.0° F |
 
-The manufacturer defined default value is 4 (2.0° F).
+The manufacturer defined default value is ```4``` (2.0° F).
 
 This parameter has the configuration ID ```config_8_1``` and is of type ```INTEGER```.
 
@@ -446,7 +446,7 @@ The following option values may be configured -:
 | 1 | Fast recovery mode |
 | 2 | Economy recovery mode |
 
-The manufacturer defined default value is 2 (Economy recovery mode).
+The manufacturer defined default value is ```2``` (Economy recovery mode).
 
 This parameter has the configuration ID ```config_9_1``` and is of type ```INTEGER```.
 
@@ -457,7 +457,7 @@ Upper/Lower bounds for thermostat temperature reporting
 The thermostat will report ambient temperature changes for temperature values greater than the upper bound. This field must be between 0F and 124F. By default, this value is 0F (report all temperature changes).
 Values in the range 0 to 124 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_10_4_000000FF``` and is of type ```INTEGER```.
 
@@ -473,7 +473,7 @@ The following option values may be configured -:
 | 1 | Celsius |
 | 9 | Fahreheit |
 
-The manufacturer defined default value is 9 (Fahreheit).
+The manufacturer defined default value is ```9``` (Fahreheit).
 
 This parameter has the configuration ID ```config_10_4_0000F000``` and is of type ```INTEGER```.
 
@@ -489,7 +489,7 @@ The following option values may be configured -:
 | 1 | Celsius |
 | 9 | Fahrenheit |
 
-The manufacturer defined default value is 9 (Fahrenheit).
+The manufacturer defined default value is ```9``` (Fahrenheit).
 
 This parameter has the configuration ID ```config_10_4_0000FF00``` and is of type ```INTEGER```.
 
@@ -500,7 +500,7 @@ Upper/Lower bounds for thermostat temperature reporting
 The thermostat will report ambient temperature changes for temperature values less than the lower bound. This field must be between 0F and 124F. By default, this value is 124F (report all temperature changes).
 Values in the range 0 to 124 may be set.
 
-The manufacturer defined default value is 124.
+The manufacturer defined default value is ```124```.
 
 This parameter has the configuration ID ```config_10_4_00FF0000``` and is of type ```INTEGER```.
 
@@ -516,7 +516,7 @@ The following option values may be configured -:
 | 0 | Normal mode enabled |
 | 1 | Simple mode enabled |
 
-The manufacturer defined default value is 1 (Simple mode enabled).
+The manufacturer defined default value is ```1``` (Simple mode enabled).
 
 This parameter has the configuration ID ```config_11_1``` and is of type ```INTEGER```.
 
@@ -532,7 +532,7 @@ The following option values may be configured -:
 | 0 | Multicast disabled |
 | 1 | Multicast enabled |
 
-The manufacturer defined default value is 0 (Multicast disabled).
+The manufacturer defined default value is ```0``` (Multicast disabled).
 
 This parameter has the configuration ID ```config_12_1``` and is of type ```INTEGER```.
 

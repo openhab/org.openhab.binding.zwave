@@ -48,7 +48,7 @@ Button Press Time, time for presses on a single button to register as seperate a
 Warning: All Configuration values have serious effects on the functioning of the device and as such shouldn't be changed unless one is certain of the consequences.
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 50.
+The manufacturer defined default value is ```50```.
 
 This parameter has the configuration ID ```config_0_1``` and is of type ```INTEGER```.
 
@@ -59,7 +59,7 @@ Button Multiple Press Time, time for presses on multiple buttons to register as 
 Warning: All Configuration values have serious effects on the functioning of the device and as such shouldn't be changed unless one is certain of the consequences.
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 100.
+The manufacturer defined default value is ```100```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -70,7 +70,7 @@ Button Hold Time, time for presses to register as being held down in 0.01s. 0 is
 Warning: All Configuration values have serious effects on the functioning of the device and as such shouldn't be changed unless one is certain of the consequences.
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 40.
+The manufacturer defined default value is ```40```.
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -81,7 +81,7 @@ Network Update Interval, time between network updates in 256 seconds. Disabled i
 Warning: All Configuration values have serious effects on the functioning of the device and as such shouldn't be changed unless one is certain of the consequences.
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 168.
+The manufacturer defined default value is ```168```.
 
 This parameter has the configuration ID ```config_3_2``` and is of type ```INTEGER```.
 
@@ -93,10 +93,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

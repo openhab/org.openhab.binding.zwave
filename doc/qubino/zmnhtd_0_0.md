@@ -10,7 +10,7 @@ This describes the Z-Wave device *ZMNHTD*, manufactured by *[Goap](http://www.qu
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/414/414_default.jpg" alt="ZMNHTD product image">
+![ZMNHTD product image](https://www.cd-jackson.com/zwave_device_uploads/414/414_default.jpg)
 
 
 The ZMNHTD does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -169,7 +169,7 @@ The following option values may be configured -:
 | 4 | External relay control – mono stable push button |
 | 5 | External relay control – bi stable switch |
 
-The manufacturer defined default value is 4 (External relay control – mono stable push button).
+The manufacturer defined default value is ```4``` (External relay control – mono stable push button).
 
 This parameter has the configuration ID ```config_7_1``` and is of type ```INTEGER```.
 
@@ -187,7 +187,7 @@ The following option values may be configured -:
 | 2 | ALL ON active, ALL OFF is not active |
 | 255 | ALL ON active, ALL OFF active |
 
-The manufacturer defined default value is 255 (ALL ON active, ALL OFF active).
+The manufacturer defined default value is ```255``` (ALL ON active, ALL OFF active).
 
 This parameter has the configuration ID ```config_10_3``` and is of type ```INTEGER```.
 
@@ -203,7 +203,7 @@ The following option values may be configured -:
 | 0 | Auto OFF disabled |
 | 32535 | Auto OFF enabled with define time, step is 1s |
 
-The manufacturer defined default value is 0 (Auto OFF disabled).
+The manufacturer defined default value is ```0``` (Auto OFF disabled).
 
 This parameter has the configuration ID ```config_11_2_00007F17``` and is of type ```INTEGER```.
 
@@ -214,7 +214,7 @@ Automatic turning on IR external relay output after set time
 When IR external relay is OFF it goes automatically ON after time defined by this Parameter. Timer is reset to zero each time the module receive OFF command regardless from where it comes (push button, associated module, controller,..). Available configuration parameters (data type is 2 Byte DEC)
 Values in the range 0 to 32535 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_12_2``` and is of type ```INTEGER```.
 
@@ -225,7 +225,7 @@ Automatic turning off External relay output after set time
 When External relay is ON it goes automatically OFF after time defined by this parameter. Timer is reset to zero each time the module receive ON command regardless from where it comes (push button, associated module, controller,..). Available configuration parameters (data type is 2 Byte DEC)
 Values in the range 0 to 32535 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_13_2``` and is of type ```INTEGER```.
 
@@ -236,7 +236,7 @@ Automatic turning on External relay after output set time
 When External relay is OFF it goes automatically ON after time defined by this parameter. Timer is reset to zero each time the module receive OFF command regardless from where it comes (push button, associated module, controller,..). Available configuration parameters (data type is 2 Byte DEC)
 Values in the range 0 to 32535 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_14_2``` and is of type ```INTEGER```.
 
@@ -251,7 +251,7 @@ Power report is send (push) only when actual power in Watts in real time changes
 NOTE: if power changed is less than 1W, the report is not send (pushed), independent of percentage set. When reporting Watts, module will automatically reports also V (Voltage), A (Amperes), Power factor, kVar (Reactive Power).
 Values in the range 0 to 100 may be set.
 
-The manufacturer defined default value is 10.
+The manufacturer defined default value is ```10```.
 
 This parameter has the configuration ID ```config_40_2``` and is of type ```INTEGER```.
 
@@ -264,7 +264,7 @@ Set value means time interval (0 – 32535) in seconds, when power report is sen
 Power report is send with time interval set by entered value. When reporting Watts, module will automatically reports also V (Voltage), A (Amperes), Power factor, kVar (Reactive Power)
 Values in the range 0 to 32535 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_42_2``` and is of type ```INTEGER```.
 
@@ -283,7 +283,7 @@ The following option values may be configured -:
 | 4 | reset counter 3 – kVAh |
 | 15 | reset ALL counters |
 
-The manufacturer defined default value is 0 (No function).
+The manufacturer defined default value is ```0``` (No function).
 
 This parameter has the configuration ID ```config_45_1``` and is of type ```INTEGER```.
 
@@ -303,7 +303,7 @@ The following option values may be configured -:
 | 2 | Endpoints IR external relay enabled, External relay disabled |
 | 3 | Endpoints IR external relay and External relay enabled |
 
-The manufacturer defined default value is 0 (Endpoints IR external relay and External relay disabled).
+The manufacturer defined default value is ```0``` (Endpoints IR external relay and External relay disabled).
 
 This parameter has the configuration ID ```config_100_1``` and is of type ```INTEGER```.
 
@@ -319,7 +319,7 @@ The following option values may be configured -:
 | 0 | No function |
 | 15000 | Maximum Power Consumption |
 
-The manufacturer defined default value is 0 (No function).
+The manufacturer defined default value is ```0``` (No function).
 
 This parameter has the configuration ID ```config_110_2``` and is of type ```INTEGER```.
 
@@ -330,7 +330,7 @@ Delay overpower off
 Set value means number of second to power off relay (defined by parameters no. 110 and 112) before restart (30 - 32535) in seconds (s). Available configuration parameters (data type is 2 Bytes DEC):
 Values in the range 0 to 32525 may be set.
 
-The manufacturer defined default value is 30.
+The manufacturer defined default value is ```30```.
 
 This parameter has the configuration ID ```config_111_2``` and is of type ```INTEGER```.
 
@@ -348,7 +348,7 @@ The following option values may be configured -:
 | 2 | always power off relay 2 (External relay) |
 | 3 | always power off both relays (relay 1 and relay 2) |
 
-The manufacturer defined default value is 0 (switch between the 2 relays).
+The manufacturer defined default value is ```0``` (switch between the 2 relays).
 
 This parameter has the configuration ID ```config_112_1``` and is of type ```INTEGER```.
 
@@ -359,7 +359,7 @@ This parameter has the configuration ID ```config_112_1``` and is of type ```INT
 
 Values in the range 0 to 0 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_130_32``` and is of type ```INTEGER```.
 This is a read only parameter.
@@ -371,7 +371,7 @@ This is a read only parameter.
 
 Values in the range 0 to 0 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_131_16``` and is of type ```INTEGER```.
 This is a read only parameter.
@@ -383,7 +383,7 @@ This is a read only parameter.
 
 Values in the range 0 to 0 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_132_16``` and is of type ```INTEGER```.
 This is a read only parameter.
@@ -395,7 +395,7 @@ This is a read only parameter.
 
 Values in the range 0 to 0 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_140_24``` and is of type ```INTEGER```.
 This is a read only parameter.
@@ -407,7 +407,7 @@ This is a read only parameter.
 
 Values in the range 0 to 0 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_141_24``` and is of type ```INTEGER```.
 This is a read only parameter.
@@ -419,7 +419,7 @@ This is a read only parameter.
 
 Values in the range 0 to 0 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_142_24``` and is of type ```INTEGER```.
 This is a read only parameter.
@@ -431,7 +431,7 @@ This is a read only parameter.
 
 Values in the range 0 to 0 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_143_24``` and is of type ```INTEGER```.
 This is a read only parameter.
@@ -443,7 +443,7 @@ This is a read only parameter.
 
 Values in the range 0 to 0 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_144_16``` and is of type ```INTEGER```.
 This is a read only parameter.
@@ -455,7 +455,7 @@ This is a read only parameter.
 
 Values in the range 0 to 0 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_145_32``` and is of type ```INTEGER```.
 This is a read only parameter.
@@ -467,7 +467,7 @@ This is a read only parameter.
 
 Values in the range 0 to 0 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_146_32``` and is of type ```INTEGER```.
 This is a read only parameter.
@@ -479,7 +479,7 @@ This is a read only parameter.
 
 Values in the range 0 to 0 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_147_32``` and is of type ```INTEGER```.
 This is a read only parameter.
@@ -491,7 +491,7 @@ This is a read only parameter.
 
 Values in the range 0 to 0 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_148_32``` and is of type ```INTEGER```.
 This is a read only parameter.
@@ -507,6 +507,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

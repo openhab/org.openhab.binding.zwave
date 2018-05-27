@@ -10,7 +10,7 @@ This describes the Z-Wave device *HKZW_FLD01*, manufactured by *[Hank](http://ww
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/674/674_default.jpg" alt="HKZW_FLD01 product image">
+![HKZW_FLD01 product image](https://www.cd-jackson.com/zwave_device_uploads/674/674_default.jpg)
 
 
 ## Overview
@@ -176,7 +176,7 @@ The following option values may be configured -:
 | 0 | Disable |
 | 1 | Enable |
 
-The manufacturer defined default value is 1 (Enable).
+The manufacturer defined default value is ```1``` (Enable).
 
 This parameter has the configuration ID ```config_14_1``` and is of type ```INTEGER```.
 
@@ -192,7 +192,7 @@ The following option values may be configured -:
 | 0 | Disable |
 | 1 | Enable |
 
-The manufacturer defined default value is 0 (Disable).
+The manufacturer defined default value is ```0``` (Disable).
 
 This parameter has the configuration ID ```config_15_1``` and is of type ```INTEGER```.
 
@@ -208,7 +208,7 @@ The following option values may be configured -:
 | 0 | Disable |
 | 1 | Enable |
 
-The manufacturer defined default value is 1 (Enable).
+The manufacturer defined default value is ```1``` (Enable).
 
 This parameter has the configuration ID ```config_17_1``` and is of type ```INTEGER```.
 
@@ -224,7 +224,7 @@ The following option values may be configured -:
 | 0 | Disable |
 | 1 | Enable |
 
-The manufacturer defined default value is 1 (Enable).
+The manufacturer defined default value is ```1``` (Enable).
 
 This parameter has the configuration ID ```config_18_1``` and is of type ```INTEGER```.
 
@@ -240,7 +240,7 @@ The following option values may be configured -:
 | 0 | Disable |
 | 1 | Enable |
 
-The manufacturer defined default value is 1 (Enable).
+The manufacturer defined default value is ```1``` (Enable).
 
 This parameter has the configuration ID ```config_19_1``` and is of type ```INTEGER```.
 
@@ -251,7 +251,7 @@ Available setting(US):-67°c to -257°c
 
 Values in the range -670 to 2570 may be set.
 
-The manufacturer defined default value is 1040.
+The manufacturer defined default value is ```1040```.
 
 This parameter has the configuration ID ```config_20_2``` and is of type ```INTEGER```.
 
@@ -267,7 +267,7 @@ The following option values may be configured -:
 | 0 | Disable |
 | 1 | Enable |
 
-The manufacturer defined default value is 0 (Disable).
+The manufacturer defined default value is ```0``` (Disable).
 
 This parameter has the configuration ID ```config_21_1``` and is of type ```INTEGER```.
 
@@ -278,7 +278,7 @@ Available setting(US):-67°c to -257°c
 
 Values in the range -670 to 2570 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_22_2``` and is of type ```INTEGER```.
 
@@ -294,7 +294,7 @@ The following option values may be configured -:
 | 0 | Disable |
 | 1 | Enable |
 
-The manufacturer defined default value is 1 (Enable).
+The manufacturer defined default value is ```1``` (Enable).
 
 This parameter has the configuration ID ```config_24_1``` and is of type ```INTEGER```.
 
@@ -305,7 +305,7 @@ This parameter defines a battery level as the "low bettery"
 
 Values in the range 10 to 50 may be set.
 
-The manufacturer defined default value is 20.
+The manufacturer defined default value is ```20```.
 
 This parameter has the configuration ID ```config_32_1``` and is of type ```INTEGER```.
 
@@ -317,10 +317,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

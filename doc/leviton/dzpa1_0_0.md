@@ -10,7 +10,7 @@ This describes the Z-Wave device *DZPA1*, manufactured by *Leviton* with the thi
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/305/305_default.jpg" alt="DZPA1 product image">
+![DZPA1 product image](https://www.cd-jackson.com/zwave_device_uploads/305/305_default.jpg)
 
 
 The DZPA1 does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -71,7 +71,7 @@ The following option values may be configured -:
 | 0 | No |
 | 1 | Yes |
 
-The manufacturer defined default value is 0 (No).
+The manufacturer defined default value is ```0``` (No).
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -87,7 +87,7 @@ The following option values may be configured -:
 | 0 | No |
 | 1 | Yes |
 
-The manufacturer defined default value is 0 (No).
+The manufacturer defined default value is ```0``` (No).
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -104,7 +104,7 @@ The following option values may be configured -:
 | 254 | LED on when switch is ON |
 | 255 | LED on when switch is OFF |
 
-The manufacturer defined default value is 255 (LED on when switch is OFF).
+The manufacturer defined default value is ```255``` (LED on when switch is OFF).
 
 This parameter has the configuration ID ```config_7_1``` and is of type ```INTEGER```.
 
@@ -115,7 +115,7 @@ Indicates how many levels the dimmer will change for each dimming step.
 
 Values in the range 1 to 99 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_7_1``` and is of type ```INTEGER```.
 
@@ -127,7 +127,7 @@ This value indicates in 10 millisecond resolution.
 
 Values in the range 1 to 255 may be set.
 
-The manufacturer defined default value is 3.
+The manufacturer defined default value is ```3```.
 
 This parameter has the configuration ID ```config_8_1``` and is of type ```INTEGER```.
 
@@ -138,7 +138,7 @@ Indicates how many levels the dimmer will change for each dimming step.
 
 Values in the range 1 to 99 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_9_1``` and is of type ```INTEGER```.
 
@@ -150,7 +150,7 @@ This value indicates in 10 millisecond resolution.
 
 Values in the range 1 to 255 may be set.
 
-The manufacturer defined default value is 3.
+The manufacturer defined default value is ```3```.
 
 This parameter has the configuration ID ```config_10_1``` and is of type ```INTEGER```.
 
@@ -161,7 +161,7 @@ Indicates how many levels the dimmer will change for each dimming step.
 
 Values in the range 1 to 99 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_11_1``` and is of type ```INTEGER```.
 
@@ -173,7 +173,7 @@ This value indicates in 10 millisecond resolution.
 
 Values in the range 1 to 255 may be set.
 
-The manufacturer defined default value is 3.
+The manufacturer defined default value is ```3```.
 
 This parameter has the configuration ID ```config_12_1``` and is of type ```INTEGER```.
 
@@ -188,6 +188,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

@@ -10,7 +10,7 @@ This describes the Z-Wave device *YKFCON*, manufactured by *ASSA ABLOY* with the
 
 The device is in the category of *Lock*, defining Devices whose primary pupose is locking something.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/292/292_default.jpg" alt="YKFCON product image">
+![YKFCON product image](https://www.cd-jackson.com/zwave_device_uploads/292/292_default.jpg)
 
 
 ## Overview
@@ -87,7 +87,7 @@ The following option values may be configured -:
 | 2 | Low |
 | 3 | High |
 
-The manufacturer defined default value is 3 (High).
+The manufacturer defined default value is ```3``` (High).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -105,7 +105,7 @@ The following option values may be configured -:
 | 0 | Off |
 | 255 | On |
 
-The manufacturer defined default value is 0 (Off).
+The manufacturer defined default value is ```0``` (Off).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -116,7 +116,7 @@ Time after unlocking that the device will lock
 
 Values in the range 5 to 255 may be set.
 
-The manufacturer defined default value is 30.
+The manufacturer defined default value is ```30```.
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -127,7 +127,7 @@ The number of invalid tries before the lock shutdowns and sends an alarm
 
 Values in the range 1 to 7 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -148,7 +148,7 @@ The following option values may be configured -:
 | 2 | Spanish |
 | 3 | French |
 
-The manufacturer defined default value is 1 (English).
+The manufacturer defined default value is ```1``` (English).
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -159,7 +159,7 @@ Number of times the device is locked out after the invalid retries are exceeded
 
 Values in the range 1 to 255 may be set.
 
-The manufacturer defined default value is 30.
+The manufacturer defined default value is ```30```.
 
 This parameter has the configuration ID ```config_7_1``` and is of type ```INTEGER```.
 
@@ -180,13 +180,15 @@ The following option values may be configured -:
 | 1 | Vacation Mode |
 | 2 | Privacy Mode |
 
-The manufacturer defined default value is 0 (Normal).
+The manufacturer defined default value is ```0``` (Normal).
 
 This parameter has the configuration ID ```config_8_1``` and is of type ```INTEGER```.
 
 ### Lock Timeout
 
 Sets the time after which the door will auto lock.
+
+This parameter has the configuration ID ```doorlock_timeout``` and is of type ```INTEGER```.
 
 
 ## Association Groups

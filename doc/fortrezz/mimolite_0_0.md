@@ -8,7 +8,7 @@ title: MIMOlite - ZWave
 # MIMOlite Digital or Analog Voltage input and/or Dry Contact Relay
 This describes the Z-Wave device *MIMOlite*, manufactured by *FortrezZ LLC* with the thing type UID of ```fortrezz_mimolite_00_000```.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/219/219_default.jpg" alt="MIMOlite product image">
+![MIMOlite product image](https://www.cd-jackson.com/zwave_device_uploads/219/219_default.jpg)
 
 
 The MIMOlite does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -112,7 +112,7 @@ The following option values may be configured -:
 |--------|-------------|
 | 0 | Clear Pulse Meter Counts |
 
-The manufacturer defined default value is 0 (Clear Pulse Meter Counts).
+The manufacturer defined default value is ```0``` (Clear Pulse Meter Counts).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -130,7 +130,7 @@ The following option values may be configured -:
 | 0 | Disabled |
 | 1 | SIG1 triggered/untriggered sets or clears Relay1 |
 
-The manufacturer defined default value is 0 (Disabled).
+The manufacturer defined default value is ```0``` (Disabled).
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -145,7 +145,7 @@ The following option values may be configured -:
 |--------|-------------|
 | 187 | Default (0xBB) |
 
-The manufacturer defined default value is 187 (Default (0xBB)).
+The manufacturer defined default value is ```187``` (Default (0xBB)).
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -160,7 +160,7 @@ The following option values may be configured -:
 |--------|-------------|
 | 171 | Default (0xAB) |
 
-The manufacturer defined default value is 171 (Default (0xAB)).
+The manufacturer defined default value is ```171``` (Default (0xAB)).
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -175,7 +175,7 @@ The following option values may be configured -:
 |--------|-------------|
 | 255 | Default (0xFF) |
 
-The manufacturer defined default value is 255 (Default (0xFF)).
+The manufacturer defined default value is ```255``` (Default (0xFF)).
 
 This parameter has the configuration ID ```config_6_1``` and is of type ```INTEGER```.
 
@@ -190,7 +190,7 @@ The following option values may be configured -:
 |--------|-------------|
 | 254 | Default (0xFE) |
 
-The manufacturer defined default value is 254 (Default (0xFE)).
+The manufacturer defined default value is ```254``` (Default (0xFE)).
 
 This parameter has the configuration ID ```config_7_1``` and is of type ```INTEGER```.
 
@@ -208,7 +208,7 @@ The following option values may be configured -:
 | 2 | DIGITAL, trigger OUTSIDE of thresholds. |
 | 3 | DIGITAL, trigger BETWEEN thresholds. |
 
-The manufacturer defined default value is 3 (DIGITAL, trigger BETWEEN thresholds.).
+The manufacturer defined default value is ```3``` (DIGITAL, trigger BETWEEN thresholds.).
 
 This parameter has the configuration ID ```config_8_1``` and is of type ```INTEGER```.
 
@@ -224,7 +224,7 @@ The following option values may be configured -:
 | 0 | Disable Automatic Reports |
 | 3 | Enable Reports every 30 seconds (Default) |
 
-The manufacturer defined default value is 3 (Enable Reports every 30 seconds (Default)).
+The manufacturer defined default value is ```3``` (Enable Reports every 30 seconds (Default)).
 
 This parameter has the configuration ID ```config_9_1``` and is of type ```INTEGER```.
 
@@ -239,7 +239,7 @@ The following option values may be configured -:
 |--------|-------------|
 | 0 | Null |
 
-The manufacturer defined default value is 0 (Null).
+The manufacturer defined default value is ```0``` (Null).
 
 This parameter has the configuration ID ```config_10_1``` and is of type ```INTEGER```.
 
@@ -255,7 +255,7 @@ The following option values may be configured -:
 | 0 | Disabled (Default) |
 | 5 | 500 milliseconds |
 
-The manufacturer defined default value is 0 (Disabled (Default)).
+The manufacturer defined default value is ```0``` (Disabled (Default)).
 
 This parameter has the configuration ID ```config_11_1``` and is of type ```INTEGER```.
 

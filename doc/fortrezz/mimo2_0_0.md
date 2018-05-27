@@ -126,7 +126,7 @@ Momentary trigger time in 100ms intervals, 10=1s, 0=disable
 
 Values in the range 0 to 31 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_1_1_0000001F``` and is of type ```INTEGER```.
 
@@ -146,7 +146,7 @@ The following option values may be configured -:
 | 128 | Trigger on Sensor 1 and Sensor 2 |
 | 224 | Trigger on Sensor 1 and/or Sensor 2 |
 
-The manufacturer defined default value is 0 (Disabled).
+The manufacturer defined default value is ```0``` (Disabled).
 
 This parameter has the configuration ID ```config_1_1_000000E0``` and is of type ```INTEGER```.
 
@@ -157,7 +157,7 @@ Momentary trigger time in 100ms intervals, 10=1s, 0=disable
 
 Values in the range 0 to 31 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_2_1_0000001F``` and is of type ```INTEGER```.
 
@@ -177,7 +177,7 @@ The following option values may be configured -:
 | 128 | Trigger on Sensor 1 and Sensor 2 |
 | 224 | Trigger on Sensor 1 and/or Sensor 2 |
 
-The manufacturer defined default value is 0 (Disabled).
+The manufacturer defined default value is ```0``` (Disabled).
 
 This parameter has the configuration ID ```config_2_1_000000E0``` and is of type ```INTEGER```.
 
@@ -188,7 +188,7 @@ Report sensor state every (30s resolution, 0=none, 1=30s, 10=5m, 63=31.5m)
 
 Values in the range 0 to 63 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_3_1_0000003F``` and is of type ```INTEGER```.
 
@@ -204,7 +204,7 @@ The following option values may be configured -:
 | 0 | Periodically |
 | 1 | On Change |
 
-The manufacturer defined default value is 1 (On Change).
+The manufacturer defined default value is ```1``` (On Change).
 
 This parameter has the configuration ID ```config_3_1_00000040``` and is of type ```INTEGER```.
 
@@ -220,7 +220,7 @@ The following option values may be configured -:
 | 0 | Outside |
 | 1 | Inside |
 
-The manufacturer defined default value is 1 (Inside).
+The manufacturer defined default value is ```1``` (Inside).
 
 This parameter has the configuration ID ```config_3_1_00000080``` and is of type ```INTEGER```.
 
@@ -231,7 +231,7 @@ This parameter has the configuration ID ```config_3_1_00000080``` and is of type
 
 Values in the range 0 to 4095 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_4_2``` and is of type ```INTEGER```.
 
@@ -242,7 +242,7 @@ This parameter has the configuration ID ```config_4_2``` and is of type ```INTEG
 
 Values in the range 0 to 4095 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_5_2``` and is of type ```INTEGER```.
 
@@ -253,7 +253,7 @@ This parameter has the configuration ID ```config_5_2``` and is of type ```INTEG
 
 Values in the range 0 to 4095 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_6_2``` and is of type ```INTEGER```.
 
@@ -264,7 +264,7 @@ This parameter has the configuration ID ```config_6_2``` and is of type ```INTEG
 
 Values in the range 0 to 4095 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_7_2``` and is of type ```INTEGER```.
 
@@ -275,7 +275,7 @@ Report sensor state every (30s resolution, 0=none, 1=30s, 10=5m, 63=31.5m)
 
 Values in the range 0 to 63 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_9_1_0000003F``` and is of type ```INTEGER```.
 
@@ -291,7 +291,7 @@ The following option values may be configured -:
 | 0 | Periodically |
 | 1 | On Change |
 
-The manufacturer defined default value is 1 (On Change).
+The manufacturer defined default value is ```1``` (On Change).
 
 This parameter has the configuration ID ```config_9_1_00000040``` and is of type ```INTEGER```.
 
@@ -307,7 +307,7 @@ The following option values may be configured -:
 | 0 | Outside |
 | 1 | Inside |
 
-The manufacturer defined default value is 1 (Inside).
+The manufacturer defined default value is ```1``` (Inside).
 
 This parameter has the configuration ID ```config_9_1_00000080``` and is of type ```INTEGER```.
 
@@ -318,7 +318,7 @@ This parameter has the configuration ID ```config_9_1_00000080``` and is of type
 
 Values in the range 0 to 4095 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_10_2``` and is of type ```INTEGER```.
 
@@ -329,7 +329,7 @@ This parameter has the configuration ID ```config_10_2``` and is of type ```INTE
 
 Values in the range 0 to 4095 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_11_2``` and is of type ```INTEGER```.
 
@@ -340,7 +340,7 @@ This parameter has the configuration ID ```config_11_2``` and is of type ```INTE
 
 Values in the range 0 to 4095 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_12_2``` and is of type ```INTEGER```.
 
@@ -351,7 +351,7 @@ This parameter has the configuration ID ```config_12_2``` and is of type ```INTE
 
 Values in the range 0 to 4095 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_13_2``` and is of type ```INTEGER```.
 

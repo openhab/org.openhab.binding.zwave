@@ -10,7 +10,7 @@ This describes the Z-Wave device *ZME_KFOB-S*, manufactured by *Z-Wave.Me* with 
 
 The device is in the category of *Remote Control*, defining Any portable or hand-held device that controls the status of something, e.g. remote control, keyfob etc..
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/548/548_default.png" alt="ZME_KFOB-S product image">
+![ZME_KFOB-S product image](https://www.cd-jackson.com/zwave_device_uploads/548/548_default.png)
 
 
 ## Overview
@@ -72,7 +72,7 @@ The following option values may be configured -:
 | 1 | In pair without double clicks |
 | 2 | In pair with double clicks |
 
-The manufacturer defined default value is 1 (In pair without double clicks).
+The manufacturer defined default value is ```1``` (In pair without double clicks).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -89,7 +89,7 @@ The following option values may be configured -:
 | 1 | In pair without double clicks |
 | 2 | In pair with double clicks |
 
-The manufacturer defined default value is 1 (In pair without double clicks).
+The manufacturer defined default value is ```1``` (In pair without double clicks).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -112,7 +112,7 @@ The following option values may be configured -:
 | 7 | Control DoorLock |
 | 8 | Central Scene to Gateway |
 
-The manufacturer defined default value is 8 (Central Scene to Gateway).
+The manufacturer defined default value is ```8``` (Central Scene to Gateway).
 
 This parameter has the configuration ID ```config_11_1``` and is of type ```INTEGER```.
 
@@ -135,7 +135,7 @@ The following option values may be configured -:
 | 7 | Control DoorLock |
 | 8 | Central Scene to Gateway |
 
-The manufacturer defined default value is 8 (Central Scene to Gateway).
+The manufacturer defined default value is ```8``` (Central Scene to Gateway).
 
 This parameter has the configuration ID ```config_12_1``` and is of type ```INTEGER```.
 
@@ -158,7 +158,7 @@ The following option values may be configured -:
 | 7 | Control DoorLock |
 | 8 | Central Scene to Gateway |
 
-The manufacturer defined default value is 8 (Central Scene to Gateway).
+The manufacturer defined default value is ```8``` (Central Scene to Gateway).
 
 This parameter has the configuration ID ```config_13_1``` and is of type ```INTEGER```.
 
@@ -181,7 +181,7 @@ The following option values may be configured -:
 | 7 | Control DoorLock |
 | 8 | Central Scene to Gateway |
 
-The manufacturer defined default value is 8 (Central Scene to Gateway).
+The manufacturer defined default value is ```8``` (Central Scene to Gateway).
 
 This parameter has the configuration ID ```config_14_1``` and is of type ```INTEGER```.
 
@@ -198,7 +198,7 @@ The following option values may be configured -:
 | 2 | Switch on only |
 | 255 | Switch all on and off |
 
-The manufacturer defined default value is 1 (Switch off only).
+The manufacturer defined default value is ```1``` (Switch off only).
 
 This parameter has the configuration ID ```config_21_1``` and is of type ```INTEGER```.
 
@@ -214,7 +214,7 @@ The following option values may be configured -:
 | 0 | No |
 | 1 | Yes |
 
-The manufacturer defined default value is 0 (No).
+The manufacturer defined default value is ```0``` (No).
 
 This parameter has the configuration ID ```config_22_1``` and is of type ```INTEGER```.
 
@@ -231,7 +231,7 @@ The following option values may be configured -:
 | 0 | Wakeup is blocked |
 | 1 | Wakeup is possible if configured accordingly |
 
-The manufacturer defined default value is 0 (Wakeup is blocked).
+The manufacturer defined default value is ```0``` (Wakeup is blocked).
 
 This parameter has the configuration ID ```config_25_1``` and is of type ```INTEGER```.
 
@@ -248,7 +248,7 @@ The following option values may be configured -:
 | 1 | To same node as wake up notification |
 | 2 | Broadcast to neighbors |
 
-The manufacturer defined default value is 1 (To same node as wake up notification).
+The manufacturer defined default value is ```1``` (To same node as wake up notification).
 
 This parameter has the configuration ID ```config_30_1``` and is of type ```INTEGER```.
 
@@ -260,10 +260,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

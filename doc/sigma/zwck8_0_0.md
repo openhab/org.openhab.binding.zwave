@@ -10,7 +10,7 @@ This describes the Z-Wave device *K8*, manufactured by *Sigma Designs (Former Ze
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/431/431_default.jpg" alt="K8 product image">
+![K8 product image](https://www.cd-jackson.com/zwave_device_uploads/431/431_default.jpg)
 
 
 ## Overview

@@ -53,7 +53,7 @@ The following option values may be configured -:
 | 2 | Switch off only |
 | 255 | Fully enabled (Default) |
 
-The manufacturer defined default value is 255 (Fully enabled (Default)).
+The manufacturer defined default value is ```255``` (Fully enabled (Default)).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -68,6 +68,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

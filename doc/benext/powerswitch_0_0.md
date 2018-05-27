@@ -49,7 +49,7 @@ Set all configuration values to default values (factory settings)
 All values (0x00 – 0xFF) except for 0x55 can be used to default all the configuration params .
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -60,7 +60,7 @@ state in what the switch is when power is supplied
 If 0x01–0xFF: When power applied socket is the state before power was disconnected
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -71,7 +71,7 @@ When the relay is switched it can't be switched again until the configured time 
 Value \* 10 milliseconds
 Values in the range 0 to 0 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_9_1``` and is of type ```INTEGER```.
 
@@ -82,7 +82,7 @@ Show the led compared to the relay state
 If value is 0: the indicator led is never switched on If value is 1: the indicator led is switched on when relay is switched on If value is 2: the indicator led is switched on when relay is switched off
 Values in the range 0 to 2 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_10_1``` and is of type ```INTEGER```.
 
@@ -97,6 +97,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

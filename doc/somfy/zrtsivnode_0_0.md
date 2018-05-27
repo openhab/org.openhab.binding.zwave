@@ -8,7 +8,7 @@ title: ZRTSI-VNODE - ZWave
 # ZRTSI-VNODE Z-Wave to RTS Interface Virtual Node
 This describes the Z-Wave device *ZRTSI-VNODE*, manufactured by *[Somfy](http://www.somfy.com/)* with the thing type UID of ```somfy_zrtsivnode_00_000```.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/370/370_default.jpg" alt="ZRTSI-VNODE product image">
+![ZRTSI-VNODE product image](https://www.cd-jackson.com/zwave_device_uploads/370/370_default.jpg)
 
 
 The ZRTSI-VNODE does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.

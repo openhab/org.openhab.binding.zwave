@@ -143,7 +143,7 @@ The following option values may be configured -:
 | 0 | Hold |
 | 1 | Schedule |
 
-The manufacturer defined default value is 0 (Hold).
+The manufacturer defined default value is ```0``` (Hold).
 
 This parameter has the configuration ID ```config_132_1``` and is of type ```INTEGER```.
 

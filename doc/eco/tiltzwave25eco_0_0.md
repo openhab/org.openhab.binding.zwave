@@ -10,7 +10,7 @@ This describes the Z-Wave device *TILT-ZWAVE2.5-ECO*, manufactured by *Ecolink* 
 
 The device is in the category of *Garage Door*, defining Garage Door.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/581/581_default.jpg" alt="TILT-ZWAVE2.5-ECO product image">
+![TILT-ZWAVE2.5-ECO product image](https://www.cd-jackson.com/zwave_device_uploads/581/581_default.jpg)
 
 
 ## Overview
@@ -134,7 +134,7 @@ The following option values may be configured -:
 | 0 | Do Not Send Basic Sets |
 | 255 | Send Basic Sets |
 
-The manufacturer defined default value is 0 (Do Not Send Basic Sets).
+The manufacturer defined default value is ```0``` (Do Not Send Basic Sets).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -150,7 +150,7 @@ The following option values may be configured -:
 | 0 | Send Sensor Binary Reports and Notification Reports |
 | 255 | Send Only Notification Reports |
 
-The manufacturer defined default value is 0 (Send Sensor Binary Reports and Notification Reports).
+The manufacturer defined default value is ```0``` (Send Sensor Binary Reports and Notification Reports).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -162,10 +162,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

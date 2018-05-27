@@ -255,7 +255,7 @@ Wind Gauge, Wind Gust Top Value
 Wind Gauge, Wind Gust Top Value, if the Wind Gust is Higher than the Parameter Value, a device triggers an Association
 Values in the range 0 to 8800 may be set.
 
-The manufacturer defined default value is 1000.
+The manufacturer defined default value is ```1000```.
 
 This parameter has the configuration ID ```config_1_2``` and is of type ```INTEGER```.
 
@@ -266,7 +266,7 @@ Rain Rate top value
 If the sensor Rain Rate is higher than the parameter value, a device triggers a association.
 Values in the range 0 to 30000 may be set.
 
-The manufacturer defined default value is 200.
+The manufacturer defined default value is ```200```.
 
 This parameter has the configuration ID ```config_2_2``` and is of type ```INTEGER```.
 
@@ -279,7 +279,7 @@ Wind Gust
 1 - if the wind gauge is higher than the parameter No. 1 value, then a device sends basic set =0xff
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -292,7 +292,7 @@ Rain Rate
 1 - if the rain amount is higher than the parameter No. 2 value, then a device sends basic set =0xff
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -305,7 +305,7 @@ Unsolicited report
 1 - Unsolicited report enabled
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -318,7 +318,7 @@ Unsolicited report
 1 - Unsolicited report enabled
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_6_1``` and is of type ```INTEGER```.
 
@@ -331,7 +331,7 @@ Unsolicited report
 1 - Unsolicited report enabled
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_7_1``` and is of type ```INTEGER```.
 
@@ -344,7 +344,7 @@ Unsolicited report
 1 - Unsolicited report enabled
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_8_1``` and is of type ```INTEGER```.
 
@@ -357,7 +357,7 @@ Unsolicited report
 1 - Unsolicited report enabled
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_9_1``` and is of type ```INTEGER```.
 
@@ -370,7 +370,7 @@ Unsolicited report
 1 - Unsolicited report enabled
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_10_1``` and is of type ```INTEGER```.
 
@@ -383,7 +383,7 @@ Unsolicited report
 1 - Unsolicited report enabled
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_11_1``` and is of type ```INTEGER```.
 
@@ -396,7 +396,7 @@ Unsolicited report
 1 - Unsolicited report enabled
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_12_1``` and is of type ```INTEGER```.
 
@@ -409,7 +409,7 @@ Unsolicited report
 1 - Unsolicited report enabled
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_13_1``` and is of type ```INTEGER```.
 
@@ -422,7 +422,7 @@ Unsolicited report
 1 - Unsolicited report enabled
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_14_1``` and is of type ```INTEGER```.
 
@@ -433,7 +433,7 @@ enables/disables random ID
 If Random ID is disabled, the Weather Station USB Key can receive data from multiple 433 MHz Sensors on the same Channel. If the Random ID is enabled, the USB Key can receive data from only one sensor on the same channel. If the USB Key does not receive a data from a sensor on a specific channel for more than 2.5 hours, it clears the Random ID of the device and waits for a new ID. If you replace the batteries in the modules, the Random ID will change. If you want that the USB Key accept a module immediately, set the Parameter No. 15 to “0” and in the next step again to “1”.
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_15_1``` and is of type ```INTEGER```.
 
@@ -460,7 +460,7 @@ The Weather Station Key supports both, the secure and unsecure inclusion. Even i
 The same procedure is to include the module as unsecure
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_250_1``` and is of type ```INTEGER```.
 

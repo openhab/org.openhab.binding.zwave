@@ -101,7 +101,7 @@ Set all config values to default values (factory settings).
 
 Values in the range 0 to 0 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -114,7 +114,7 @@ The time used in mode 2 to turn the sensor off .
 This Time will start running as soon as detection is seen.
 Values in the range 0 to 3600 may be set.
 
-The manufacturer defined default value is 900.
+The manufacturer defined default value is ```900```.
 
 This parameter has the configuration ID ```config_2_2``` and is of type ```INTEGER```.
 
@@ -125,7 +125,7 @@ Switch off time starts after timeout.
 The switch off time will start running as soon as mode timeout is done. Motion sensor is turned on and when movement is de tected again the mode timeout (cfg param 1) will start running all over again. When switch off time is done a basic off message is s
 Values in the range 0 to 7200 may be set.
 
-The manufacturer defined default value is 2700.
+The manufacturer defined default value is ```2700```.
 
 This parameter has the configuration ID ```config_3_2``` and is of type ```INTEGER```.
 
@@ -136,7 +136,7 @@ The sensitivity of the motion circuit
 
 Values in the range 0 to 127 may be set.
 
-The manufacturer defined default value is 80.
+The manufacturer defined default value is ```80```.
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -147,7 +147,7 @@ The mode that is entered after detection
 Normal operation mode is default.
 Values in the range 1 to 3 may be set.
 
-The manufacturer defined default value is 2.
+The manufacturer defined default value is ```2```.
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -158,7 +158,7 @@ An offset for the temperature.
 Param1,2: A signed integer to determine the offset off the temperature.
 Values in the range -10 to 10 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_6_2``` and is of type ```INTEGER```.
 
@@ -170,10 +170,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

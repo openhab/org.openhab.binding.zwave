@@ -84,7 +84,7 @@ The following option values may be configured -:
 | 1 | Device will be on after power supply is reconnected |
 | 2 | Device will be off after power supply is reconnected |
 
-The manufacturer defined default value is 0 (RGB BULB memorizes its state after a power failure).
+The manufacturer defined default value is ```0``` (RGB BULB memorizes its state after a power failure).
 
 This parameter has the configuration ID ```config_21_1``` and is of type ```INTEGER```.
 
@@ -101,7 +101,7 @@ The following option values may be configured -:
 | 1 | Send BASIC REPORT |
 | 2 | Send BASIC REPORT only without status change |
 
-The manufacturer defined default value is 1 (Send BASIC REPORT).
+The manufacturer defined default value is ```1``` (Send BASIC REPORT).
 
 This parameter has the configuration ID ```config_24_1``` and is of type ```INTEGER```.
 
@@ -117,7 +117,7 @@ The following option values may be configured -:
 | 0 | Disable |
 | 1 | Enable |
 
-The manufacturer defined default value is 0 (Disable).
+The manufacturer defined default value is ```0``` (Disable).
 
 This parameter has the configuration ID ```config_51_1``` and is of type ```INTEGER```.
 
@@ -139,7 +139,7 @@ The following option values may be configured -:
 | 302039040 | Breathing blink with a specific color |
 | 318816256 | Blink with a specific color |
 
-The manufacturer defined default value is 3072 (Stop changing).
+The manufacturer defined default value is ```3072``` (Stop changing).
 
 This parameter has the configuration ID ```config_61_4``` and is of type ```INTEGER```.
 
@@ -154,7 +154,7 @@ The following option values may be configured -:
 |--------|-------------|
 | 1431655765 | Resetting to the factory default |
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_255_4``` and is of type ```INTEGER```.
 
@@ -169,6 +169,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

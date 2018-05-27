@@ -10,7 +10,7 @@ This describes the Z-Wave device *EZMultiPli*, manufactured by *Express Controls
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/268/268_default.jpg" alt="EZMultiPli product image">
+![EZMultiPli product image](https://www.cd-jackson.com/zwave_device_uploads/268/268_default.jpg)
 
 
 The EZMultiPli does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -93,7 +93,7 @@ Recommended values:
 - 60 min for a library, office or other room where someone may be sitting still for a long time
 Values in the range 0 to 127 may be set.
 
-The manufacturer defined default value is 10.
+The manufacturer defined default value is ```10```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -108,7 +108,7 @@ A value of 0 will turn the lights off (not recommended). A value between 1 and 9
 A value of -1 will turn the light “on” which depends on the device but most will set the dim level to the last dim setting.
 Values in the range -1 to 99 may be set.
 
-The manufacturer defined default value is -1.
+The manufacturer defined default value is ```-1```.
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -121,7 +121,7 @@ A Luminance report is sent to the system controller every LiteMin minutes.
 A value of zero turns this mode off. Luminance values can still be obtained at any time by the home control application in this mode
 Values in the range 0 to 127 may be set.
 
-The manufacturer defined default value is 60.
+The manufacturer defined default value is ```60```.
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -134,7 +134,7 @@ A Temperature report is sent to the controller every TempMin minutes.
 A value of zero turns this mode off. Temperature values can still be obtained at any time by polling the status of the temperature sensor.
 Values in the range 0 to 127 may be set.
 
-The manufacturer defined default value is 60.
+The manufacturer defined default value is ```60```.
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -145,7 +145,7 @@ TempAdj is a twos-complement number that is used to adjust the temperature readi
 TempAdj is a twos-complement number that is used to adjust the temperature reading to make it more accurate. The value is in tenths of degree Fahrenheit. The temperature reading can be adjusted by +12.7F to -12.8F. A value of 1 will adjust the temperature reading by +0.1F. A value of -1 will adjust the temperature by -0.1F. A value of 123 will adjust the temperature by +12.3F.
 Values in the range -127 to 128 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 

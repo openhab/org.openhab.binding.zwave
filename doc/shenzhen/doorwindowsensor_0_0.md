@@ -10,7 +10,7 @@ This describes the Z-Wave device *Door/Window Sensor*, manufactured by *[Shenzhe
 
 The device is in the category of *Door*, defining Door sensors.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/400/400_default.jpg" alt="Door/Window Sensor product image">
+![Door/Window Sensor product image](https://www.cd-jackson.com/zwave_device_uploads/400/400_default.jpg)
 
 
 ## Overview
@@ -117,7 +117,7 @@ Adjust the delay before the OFF command is transmitted. 0 means send OFF command
 
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_1_2``` and is of type ```INTEGER```.
 
@@ -134,7 +134,7 @@ Available Settings:
  Dim Level (Multilevel Switch Device)
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 255.
+The manufacturer defined default value is ```255```.
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -146,10 +146,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

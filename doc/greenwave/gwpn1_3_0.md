@@ -11,7 +11,7 @@ This version of the device is limited to firmware versions above 3.0
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/102/102_default.jpg" alt="GWPN1 product image">
+![GWPN1 product image](https://www.cd-jackson.com/zwave_device_uploads/102/102_default.jpg)
 
 
 The GWPN1 does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -106,7 +106,7 @@ Minimum variation in load current before a message is sent.
  Value in percent (30 => 30%)
 Values in the range 0 to 100 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_0_1``` and is of type ```INTEGER```.
 
@@ -117,7 +117,7 @@ Minutes after which the device will flash if controller communicate is lost
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 2.
+The manufacturer defined default value is ```2```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -141,7 +141,7 @@ The following option values may be configured -:
 | 136 | Pink |
 | 137 | Locked |
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -158,7 +158,7 @@ The following option values may be configured -:
 | 1 | Remember last state |
 | 2 | All ON |
 
-The manufacturer defined default value is 2 (All ON).
+The manufacturer defined default value is ```2``` (All ON).
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -174,7 +174,7 @@ The following option values may be configured -:
 | 0 | Disable the LED for network error |
 | 1 | Enable the LED for network error |
 
-The manufacturer defined default value is 0 (Disable the LED for network error).
+The manufacturer defined default value is ```0``` (Disable the LED for network error).
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -189,6 +189,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

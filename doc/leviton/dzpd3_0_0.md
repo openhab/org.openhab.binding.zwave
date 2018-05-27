@@ -10,7 +10,7 @@ This describes the Z-Wave device *DZPD3*, manufactured by *Leviton* with the thi
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/322/322_default.jpg" alt="DZPD3 product image">
+![DZPD3 product image](https://www.cd-jackson.com/zwave_device_uploads/322/322_default.jpg)
 
 
 The DZPD3 does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -65,7 +65,7 @@ Time it takes to fade on
 0 is instant on 1-127 is in seconds 128-253 is in minutes
 Values in the range 0 to 253 may be set.
 
-The manufacturer defined default value is 2.
+The manufacturer defined default value is ```2```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -76,7 +76,7 @@ time it takes to fade off
 0 is instant on 1-127 is in seconds 128-253 is in minutes
 Values in the range 0 to 253 may be set.
 
-The manufacturer defined default value is 2.
+The manufacturer defined default value is ```2```.
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -87,7 +87,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 
 Values in the range 0 to 100 may be set.
 
-The manufacturer defined default value is 10.
+The manufacturer defined default value is ```10```.
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -98,7 +98,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 
 Values in the range 0 to 100 may be set.
 
-The manufacturer defined default value is 100.
+The manufacturer defined default value is ```100```.
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -115,7 +115,7 @@ The following option values may be configured -:
 | 254 | Status Mode |
 | 255 | Locator Mode |
 
-The manufacturer defined default value is 255 (Locator Mode).
+The manufacturer defined default value is ```255``` (Locator Mode).
 
 This parameter has the configuration ID ```config_7_1``` and is of type ```INTEGER```.
 
@@ -132,7 +132,7 @@ The following option values may be configured -:
 | 1 | LED |
 | 2 | CFL |
 
-The manufacturer defined default value is 0 (Incandescent).
+The manufacturer defined default value is ```0``` (Incandescent).
 
 This parameter has the configuration ID ```config_8_1``` and is of type ```INTEGER```.
 
@@ -147,6 +147,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

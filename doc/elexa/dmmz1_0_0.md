@@ -85,7 +85,7 @@ This parameter sets the value sent by the BASIC\_SET command to Association Grou
 FF (255/Turn On Device)
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 255.
+The manufacturer defined default value is ```255```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -105,7 +105,7 @@ The following option values may be configured -:
 | 1 | Continuous Fire |
 | 2 | Burst Fire |
 
-The manufacturer defined default value is 2 (Burst Fire).
+The manufacturer defined default value is ```2``` (Burst Fire).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -118,7 +118,7 @@ This parameter defines how long the Mouser will fire continuously before it star
 00 64 ~ 01 68 (100~360 in Seconds)
 Values in the range 64 to 168 may be set.
 
-The manufacturer defined default value is 64.
+The manufacturer defined default value is ```64```.
 
 This parameter has the configuration ID ```config_3_2``` and is of type ```INTEGER```.
 
@@ -138,7 +138,7 @@ The following option values may be configured -:
 | 0 | LED Alarm Disabled |
 | 1 | LED Alarm Enabled |
 
-The manufacturer defined default value is 1 (LED Alarm Enabled).
+The manufacturer defined default value is ```1``` (LED Alarm Enabled).
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -153,7 +153,7 @@ This parameter sets the amount of time the LED Indicator blinks after the trap i
 01~FF (1~255 in Hours)
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -165,10 +165,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

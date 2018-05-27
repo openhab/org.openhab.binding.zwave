@@ -10,7 +10,7 @@ This describes the Z-Wave device *ZMNHLA*, manufactured by *[Goap](http://www.qu
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/212/212_default.png" alt="ZMNHLA product image">
+![ZMNHLA product image](https://www.cd-jackson.com/zwave_device_uploads/212/212_default.png)
 
 
 The ZMNHLA does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -135,7 +135,7 @@ The following option values may be configured -:
 | 0 | mono-stable switch type (push button) |
 | 1 | bi-stable switch type |
 
-The manufacturer defined default value is 1 (bi-stable switch type).
+The manufacturer defined default value is ```1``` (bi-stable switch type).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -151,7 +151,7 @@ The following option values may be configured -:
 | 0 | mono-stable switch type (push button) |
 | 1 | bi-stable switch type |
 
-The manufacturer defined default value is 1 (bi-stable switch type).
+The manufacturer defined default value is ```1``` (bi-stable switch type).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -167,7 +167,7 @@ The following option values may be configured -:
 | 0 | mono-stable switch type (push button) |
 | 1 | bi-stable switch type |
 
-The manufacturer defined default value is 1 (bi-stable switch type).
+The manufacturer defined default value is ```1``` (bi-stable switch type).
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -183,7 +183,7 @@ The following option values may be configured -:
 | 0 | NO (normally open) input type |
 | 1 | NC (normally close) input type |
 
-The manufacturer defined default value is 0 (NO (normally open) input type).
+The manufacturer defined default value is ```0``` (NO (normally open) input type).
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -199,7 +199,7 @@ The following option values may be configured -:
 | 0 | NO (normally open) input type |
 | 1 | NC (normally close) input type |
 
-The manufacturer defined default value is 0 (NO (normally open) input type).
+The manufacturer defined default value is ```0``` (NO (normally open) input type).
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -215,7 +215,7 @@ The following option values may be configured -:
 | 0 | NO (normally open) input type |
 | 1 | NC (normally close) input type |
 
-The manufacturer defined default value is 0 (NO (normally open) input type).
+The manufacturer defined default value is ```0``` (NO (normally open) input type).
 
 This parameter has the configuration ID ```config_6_1``` and is of type ```INTEGER```.
 
@@ -233,7 +233,7 @@ The following option values may be configured -:
 | 2 | ALL ON active ALL OFF is not active |
 | 255 | ALL ON active, ALL OFF active |
 
-The manufacturer defined default value is 255 (ALL ON active, ALL OFF active).
+The manufacturer defined default value is ```255``` (ALL ON active, ALL OFF active).
 
 This parameter has the configuration ID ```config_10_1``` and is of type ```INTEGER```.
 
@@ -244,7 +244,7 @@ Default Value = 1. 65535 – Input I1 does not influence on the heat/cool proces
 
 Values in the range 1 to 65535 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_11_2``` and is of type ```INTEGER```.
 
@@ -255,7 +255,7 @@ Default = 65535, 65535 - I2 does not influence on the heat/cool process, From Fr
 
 Values in the range 1 to 65535 may be set.
 
-The manufacturer defined default value is 65535.
+The manufacturer defined default value is ```65535```.
 
 This parameter has the configuration ID ```config_12_2``` and is of type ```INTEGER```.
 
@@ -266,7 +266,7 @@ Default Value = 65535. 65535 – Input I3 does not influence on the heat/cool pr
 
 Values in the range 1 to 65535 may be set.
 
-The manufacturer defined default value is 65535.
+The manufacturer defined default value is ```65535```.
 
 This parameter has the configuration ID ```config_13_2``` and is of type ```INTEGER```.
 
@@ -277,7 +277,7 @@ Default Value = 0. 0 – Reporting Disabled 1 - 100 = 1% - 100% Reporting enable
 
 Values in the range 0 to 100 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_40_1``` and is of type ```INTEGER```.
 
@@ -288,7 +288,7 @@ Default Value = 300. 0 – Reporting Disabled 1 - 32767 = 1 second - 32767 secon
 
 Values in the range 0 to 32767 may be set.
 
-The manufacturer defined default value is 300.
+The manufacturer defined default value is ```300```.
 
 This parameter has the configuration ID ```config_42_2``` and is of type ```INTEGER```.
 
@@ -299,7 +299,7 @@ Set value at which temperature the device will be turned on even if the termpear
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 50.
+The manufacturer defined default value is ```50```.
 
 This parameter has the configuration ID ```config_45_1``` and is of type ```INTEGER```.
 
@@ -310,7 +310,7 @@ This parameter has the configuration ID ```config_45_1``` and is of type ```INTE
 
 Values in the range 2 to 100 may be set.
 
-The manufacturer defined default value is 100.
+The manufacturer defined default value is ```100```.
 
 This parameter has the configuration ID ```config_50_1``` and is of type ```INTEGER```.
 
@@ -321,7 +321,7 @@ This parameter has the configuration ID ```config_50_1``` and is of type ```INTE
 
 Values in the range 0 to 99 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_51_1``` and is of type ```INTEGER```.
 
@@ -332,7 +332,7 @@ This parameter has the configuration ID ```config_51_1``` and is of type ```INTE
 
 Values in the range 1 to 127 may be set.
 
-The manufacturer defined default value is 10.
+The manufacturer defined default value is ```10```.
 
 This parameter has the configuration ID ```config_52_1``` and is of type ```INTEGER```.
 
@@ -348,7 +348,7 @@ The following option values may be configured -:
 | 0 | PID value equals ZERO |
 | 1 | PID value set to LAST VALUE |
 
-The manufacturer defined default value is 0 (PID value equals ZERO).
+The manufacturer defined default value is ```0``` (PID value equals ZERO).
 
 This parameter has the configuration ID ```config_53_1``` and is of type ```INTEGER```.
 
@@ -359,7 +359,7 @@ This parameter has the configuration ID ```config_53_1``` and is of type ```INTE
 
 Values in the range 0 to 127 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_54_1``` and is of type ```INTEGER```.
 
@@ -370,7 +370,7 @@ This parameter has the configuration ID ```config_54_1``` and is of type ```INTE
 
 Values in the range 0 to 127 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_55_1``` and is of type ```INTEGER```.
 
@@ -381,7 +381,7 @@ This parameter has the configuration ID ```config_55_1``` and is of type ```INTE
 
 Values in the range 0 to 1000 may be set.
 
-The manufacturer defined default value is 100.
+The manufacturer defined default value is ```100```.
 
 This parameter has the configuration ID ```config_56_2``` and is of type ```INTEGER```.
 
@@ -392,7 +392,7 @@ This parameter has the configuration ID ```config_56_2``` and is of type ```INTE
 
 Values in the range 0 to 1000 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_57_2``` and is of type ```INTEGER```.
 
@@ -403,7 +403,7 @@ This parameter has the configuration ID ```config_57_2``` and is of type ```INTE
 
 Values in the range 0 to 1000 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_58_2``` and is of type ```INTEGER```.
 
@@ -419,7 +419,7 @@ The following option values may be configured -:
 | 0 | Heat Mode |
 | 1 | Cool Mode |
 
-The manufacturer defined default value is 0 (Heat Mode).
+The manufacturer defined default value is ```0``` (Heat Mode).
 
 This parameter has the configuration ID ```config_59_1``` and is of type ```INTEGER```.
 
@@ -430,7 +430,7 @@ This parameter has the configuration ID ```config_59_1``` and is of type ```INTE
 
 Values in the range 1 to 1000 may be set.
 
-The manufacturer defined default value is 50.
+The manufacturer defined default value is ```50```.
 
 This parameter has the configuration ID ```config_60_2``` and is of type ```INTEGER```.
 
@@ -441,7 +441,7 @@ This parameter has the configuration ID ```config_60_2``` and is of type ```INTE
 
 Values in the range 1 to 1000 may be set.
 
-The manufacturer defined default value is 700.
+The manufacturer defined default value is ```700```.
 
 This parameter has the configuration ID ```config_61_2``` and is of type ```INTEGER```.
 
@@ -457,7 +457,7 @@ The following option values may be configured -:
 | 0 | When system is turned off the output is 0V (NC) |
 | 1 | When system is turned off the output is 230V (NO) |
 
-The manufacturer defined default value is 0 (When system is turned off the output is 0V (NC)
+The manufacturer defined default value is ```0``` (When system is turned off the output is 0V (NC)
 				).
 
 This parameter has the configuration ID ```config_63_1``` and is of type ```INTEGER```.
@@ -469,7 +469,7 @@ This parameter has the configuration ID ```config_63_1``` and is of type ```INTE
 
 Values in the range 0 to 32000 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_70_2``` and is of type ```INTEGER```.
 
@@ -480,7 +480,7 @@ This parameter has the configuration ID ```config_70_2``` and is of type ```INTE
 
 Values in the range 0 to 32000 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_71_2``` and is of type ```INTEGER```.
 
@@ -491,7 +491,7 @@ This parameter has the configuration ID ```config_71_2``` and is of type ```INTE
 
 Values in the range 0 to 32000 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_72_2``` and is of type ```INTEGER```.
 
@@ -502,7 +502,7 @@ This parameter has the configuration ID ```config_72_2``` and is of type ```INTE
 
 Values in the range 0 to 32000 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_73_2``` and is of type ```INTEGER```.
 
@@ -513,7 +513,7 @@ This parameter has the configuration ID ```config_73_2``` and is of type ```INTE
 
 Values in the range 0 to 32000 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_74_2``` and is of type ```INTEGER```.
 
@@ -524,7 +524,7 @@ This parameter has the configuration ID ```config_74_2``` and is of type ```INTE
 
 Values in the range 0 to 32000 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_75_2``` and is of type ```INTEGER```.
 

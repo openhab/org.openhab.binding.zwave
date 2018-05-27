@@ -10,7 +10,7 @@ This describes the Z-Wave device *DMWD1*, manufactured by *Elexa Consumer Produc
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/608/608_default.jpg" alt="DMWD1 product image">
+![DMWD1 product image](https://www.cd-jackson.com/zwave_device_uploads/608/608_default.jpg)
 
 
 ## Overview
@@ -81,7 +81,7 @@ The delay time from when the Door/Window Sensor sends the BASIC\_SET command.
 The delay time from when the Door/Window Sensor sends the BASIC\_SET command to Association Group 2 and when the BASIC\_SET(0) is sent. It accepts a value up to 65,535, in seconds.
 Values in the range 1 to 65535 may be set.
 
-The manufacturer defined default value is 30.
+The manufacturer defined default value is ```30```.
 
 This parameter has the configuration ID ```config_1_2``` and is of type ```INTEGER```.
 
@@ -97,7 +97,7 @@ The following option values may be configured -:
 | 0 | 0/Turn Off Device |
 | 255 | Turn On Device |
 
-The manufacturer defined default value is 255 (Turn On Device).
+The manufacturer defined default value is ```255``` (Turn On Device).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -109,10 +109,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

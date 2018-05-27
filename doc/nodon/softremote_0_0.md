@@ -65,7 +65,7 @@ The following option values may be configured -:
 | 1 | Mono |
 | 2 | Duo |
 
-The manufacturer defined default value is 0 (Scene).
+The manufacturer defined default value is ```0``` (Scene).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -82,7 +82,7 @@ The following option values may be configured -:
 | 1 | Mono |
 | 2 | Duo |
 
-The manufacturer defined default value is 0 (Scene).
+The manufacturer defined default value is ```0``` (Scene).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -98,7 +98,7 @@ The following option values may be configured -:
 | 0 | Central Scene |
 | 1 | Scene Activation |
 
-The manufacturer defined default value is 0 (Central Scene).
+The manufacturer defined default value is ```0``` (Central Scene).
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -115,7 +115,7 @@ The following option values may be configured -:
 | 1 | All switches ON |
 | 2 | All switches OFF |
 
-The manufacturer defined default value is 0 (Control group 2).
+The manufacturer defined default value is ```0``` (Control group 2).
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -132,7 +132,7 @@ The following option values may be configured -:
 | 1 | All switches ON |
 | 2 | All switches OFF |
 
-The manufacturer defined default value is 0 (Control group 3).
+The manufacturer defined default value is ```0``` (Control group 3).
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -149,7 +149,7 @@ The following option values may be configured -:
 | 1 | All switches ON |
 | 2 | All switches OFF |
 
-The manufacturer defined default value is 0 (Control group 4).
+The manufacturer defined default value is ```0``` (Control group 4).
 
 This parameter has the configuration ID ```config_6_1``` and is of type ```INTEGER```.
 
@@ -166,7 +166,7 @@ The following option values may be configured -:
 | 1 | All switches ON |
 | 2 | All switches OFF |
 
-The manufacturer defined default value is 0 (Control group 5).
+The manufacturer defined default value is ```0``` (Control group 5).
 
 This parameter has the configuration ID ```config_7_1``` and is of type ```INTEGER```.
 
@@ -184,7 +184,7 @@ The following option values may be configured -:
 | 2 | Blink to confirm command |
 | 3 | Flash Blue after button press and blink to confirm command |
 
-The manufacturer defined default value is 0 (No LED).
+The manufacturer defined default value is ```0``` (No LED).
 
 This parameter has the configuration ID ```config_8_1``` and is of type ```INTEGER```.
 
@@ -196,10 +196,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

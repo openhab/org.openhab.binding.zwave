@@ -8,7 +8,7 @@ title: 32563 - ZWave
 # 32563 Smart Door Sensor
 This describes the Z-Wave device *32563*, manufactured by *Jasco Products* with the thing type UID of ```ge_smartdoorsensor_00_000```.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/504/504_default.png" alt="32563 product image">
+![32563 product image](https://www.cd-jackson.com/zwave_device_uploads/504/504_default.png)
 
 
 ## Overview
@@ -95,7 +95,7 @@ Change Open/Close Report Method
 3. Basic Report
 Values in the range 1 to 3 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_20_1``` and is of type ```INTEGER```.
 
@@ -107,10 +107,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

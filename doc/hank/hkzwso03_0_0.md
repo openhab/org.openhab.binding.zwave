@@ -10,7 +10,7 @@ This describes the Z-Wave device *HKZW_SO03*, manufactured by *[Hank](http://www
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/677/677_default.jpg" alt="HKZW_SO03 product image">
+![HKZW_SO03 product image](https://www.cd-jackson.com/zwave_device_uploads/677/677_default.jpg)
 
 
 The HKZW_SO03 does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -170,7 +170,7 @@ Values: 0 – Disabled; 1 – Enabled (default).
 Size: 1 byte dec.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_20_1``` and is of type ```INTEGER```.
 
@@ -191,7 +191,7 @@ power is restored (it does not remember the status prior to power outage);
 Size: 1 byte dec.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_21_1``` and is of type ```INTEGER```.
 
@@ -214,7 +214,7 @@ status is changed manually by pressing and releasing the Z-Wave button on the Sm
 Size: 1 byte dec.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 2 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_24_1``` and is of type ```INTEGER```.
 
@@ -235,7 +235,7 @@ stay off for most of the time)
 Size: 1 byte dec.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_27_1``` and is of type ```INTEGER```.
 
@@ -250,6 +250,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

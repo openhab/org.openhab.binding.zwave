@@ -10,7 +10,7 @@ This describes the Z-Wave device *ZMNHOD*, manufactured by *[Goap](http://www.qu
 
 The device is in the category of *Blinds*, defining Roller shutters, window blinds, etc..
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/214/214_default.jpg" alt="ZMNHOD product image">
+![ZMNHOD product image](https://www.cd-jackson.com/zwave_device_uploads/214/214_default.jpg)
 
 
 The ZMNHOD does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -184,7 +184,7 @@ The following option values may be configured -:
 | 2 | ALL ON is not active ALL OFF is not active |
 | 255 | ALL ON active, ALL OFF active |
 
-The manufacturer defined default value is 255 (ALL ON active, ALL OFF active).
+The manufacturer defined default value is ```255``` (ALL ON active, ALL OFF active).
 
 This parameter has the configuration ID ```config_10_2``` and is of type ```INTEGER```.
 
@@ -201,7 +201,7 @@ Set value 0 – 100 as percentage.
 
 Values in the range 0 to 100 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_40_1``` and is of type ```INTEGER```.
 
@@ -217,7 +217,7 @@ Set value determines interval in seconds, when power report is send.
 
 Values in the range 0 to 32767 may be set.
 
-The manufacturer defined default value is 300.
+The manufacturer defined default value is ```300```.
 
 This parameter has the configuration ID ```config_42_2``` and is of type ```INTEGER```.
 
@@ -234,7 +234,7 @@ The following option values may be configured -:
 | 0 | Shutter mode. |
 | 1 | Venetian mode (up/down and slate rotation) |
 
-The manufacturer defined default value is 0 (Shutter mode.).
+The manufacturer defined default value is ```0``` (Shutter mode.).
 
 This parameter has the configuration ID ```config_71_1``` and is of type ```INTEGER```.
 
@@ -248,7 +248,7 @@ This parameter defines the time necessary for slats to make full turn (180 degre
 
 Values in the range 0 to 32767 may be set.
 
-The manufacturer defined default value is 150.
+The manufacturer defined default value is ```150```.
 
 This parameter has the configuration ID ```config_72_2``` and is of type ```INTEGER```.
 
@@ -264,7 +264,7 @@ The following option values may be configured -:
 | 0 | Slats return to previously set position only in case of Z-wave control |
 | 1 | Slats return to previously set position in case of Z-wave control, pus |
 
-The manufacturer defined default value is 1 (Slats return to previously set position in case of Z-wave control,	pus).
+The manufacturer defined default value is ```1``` (Slats return to previously set position in case of Z-wave control,	pus).
 
 This parameter has the configuration ID ```config_73_1``` and is of type ```INTEGER```.
 
@@ -278,7 +278,7 @@ This parameter defines shutter motor moving time of complete opening or complete
 
 Values in the range 0 to 32767 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_74_2``` and is of type ```INTEGER```.
 
@@ -293,7 +293,7 @@ Power threshold to be interpreted when motor reaches the limit switch.
 
 Values in the range 0 to 100 may be set.
 
-The manufacturer defined default value is 6.
+The manufacturer defined default value is ```6```.
 
 This parameter has the configuration ID ```config_76_1``` and is of type ```INTEGER```.
 
@@ -310,7 +310,7 @@ The following option values may be configured -:
 | 0 | Default |
 | 1 | Start calibration process. |
 
-The manufacturer defined default value is 0 (Default).
+The manufacturer defined default value is ```0``` (Default).
 
 This parameter has the configuration ID ```config_78_1``` and is of type ```INTEGER```.
 
@@ -322,7 +322,7 @@ This parameter defines the max time before motor power consumption is read after
 
 Values in the range 3 to 50 may be set.
 
-The manufacturer defined default value is 8.
+The manufacturer defined default value is ```8```.
 
 This parameter has the configuration ID ```config_85_1``` and is of type ```INTEGER```.
 
@@ -334,7 +334,7 @@ This parameter defines the max time at limit switch, when power consumption is b
 
 Values in the range 3 to 50 may be set.
 
-The manufacturer defined default value is 8.
+The manufacturer defined default value is ```8```.
 
 This parameter has the configuration ID ```config_86_1``` and is of type ```INTEGER```.
 
@@ -349,7 +349,7 @@ This parameter defines the minimum time delay between next motor movemen.
 
 Values in the range 1 to 30 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_90_1``` and is of type ```INTEGER```.
 
@@ -360,7 +360,7 @@ Set value is added or subtracted to actual measured value by sensor. default val
 
 Values in the range 1 to 32536 may be set.
 
-The manufacturer defined default value is 32536.
+The manufacturer defined default value is ```32536```.
 
 This parameter has the configuration ID ```config_110_2``` and is of type ```INTEGER```.
 
@@ -375,7 +375,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 
 Values in the range 0 to 127 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_120_1``` and is of type ```INTEGER```.
 
@@ -390,6 +390,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

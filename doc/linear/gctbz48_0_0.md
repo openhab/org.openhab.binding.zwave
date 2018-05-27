@@ -10,7 +10,7 @@ This describes the Z-Wave device *GoControl GC-TBZ48*, manufactured by *Linear C
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/622/622_default.jpg" alt="GoControl GC-TBZ48 product image">
+![GoControl GC-TBZ48 product image](https://www.cd-jackson.com/zwave_device_uploads/622/622_default.jpg)
 
 
 ## Overview

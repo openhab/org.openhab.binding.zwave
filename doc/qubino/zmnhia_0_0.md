@@ -145,7 +145,7 @@ The following option values may be configured -:
 | 0 | mono-stable switch type (push button) |
 | 1 | bi-stable switch type |
 
-The manufacturer defined default value is 1 (bi-stable switch type).
+The manufacturer defined default value is ```1``` (bi-stable switch type).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -161,7 +161,7 @@ The following option values may be configured -:
 | 0 | mono-stable switch type (push button) |
 | 1 | bi-stable switch type |
 
-The manufacturer defined default value is 1 (bi-stable switch type).
+The manufacturer defined default value is ```1``` (bi-stable switch type).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -177,7 +177,7 @@ The following option values may be configured -:
 | 0 | mono-stable switch type (push button) |
 | 1 | bi-stable switch type |
 
-The manufacturer defined default value is 1 (bi-stable switch type).
+The manufacturer defined default value is ```1``` (bi-stable switch type).
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -193,7 +193,7 @@ The following option values may be configured -:
 | 0 | NO (normally open) input type |
 | 1 | NC (normally close) input type |
 
-The manufacturer defined default value is 0 (NO (normally open) input type).
+The manufacturer defined default value is ```0``` (NO (normally open) input type).
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -209,7 +209,7 @@ The following option values may be configured -:
 | 0 | NO (normally open) input type |
 | 1 | NC (normally close) input type |
 
-The manufacturer defined default value is 0 (NO (normally open) input type).
+The manufacturer defined default value is ```0``` (NO (normally open) input type).
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -227,7 +227,7 @@ The following option values may be configured -:
 | 2 | ALL ON active ALL OFF is not active |
 | 255 | ALL ON active, ALL OFF active |
 
-The manufacturer defined default value is 255 (ALL ON active, ALL OFF active).
+The manufacturer defined default value is ```255``` (ALL ON active, ALL OFF active).
 
 This parameter has the configuration ID ```config_10_1``` and is of type ```INTEGER```.
 
@@ -246,7 +246,7 @@ From 0 to 990 – set point from 0.0 °C to 99.0 °C
 From 1001 to 1150 – set point from -0.1 °C to -15.0 °C
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_11_2``` and is of type ```INTEGER```.
 
@@ -265,7 +265,7 @@ From 0 to 990 – set point from 0.0 °C to 99.0 °C
 From 1001 to 1150 – set point from -0.1 °C to -15.0 °C
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_12_2``` and is of type ```INTEGER```.
 
@@ -281,7 +281,7 @@ The following option values may be configured -:
 | 0 | Module saves its state |
 | 1 | Module does not save state |
 
-The manufacturer defined default value is 0 (Module saves its state).
+The manufacturer defined default value is ```0``` (Module saves its state).
 
 This parameter has the configuration ID ```config_30_1``` and is of type ```INTEGER```.
 
@@ -300,7 +300,7 @@ default value 3
 NOTE: If power changed is less than 1W, the report is not sent (pushed), independent of percentage set.
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_40_1``` and is of type ```INTEGER```.
 
@@ -317,7 +317,7 @@ default value 300 (power report in Watts is send each 300s)
 1 – 65535 = 1second – 65535 seconds. Reporting enabled. Power report is send with time interval set by entered value.
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 300.
+The manufacturer defined default value is ```300```.
 
 This parameter has the configuration ID ```config_42_2``` and is of type ```INTEGER```.
 
@@ -332,7 +332,7 @@ Available configuration parameters
 default value 132 (-0.5 °C)
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 132.
+The manufacturer defined default value is ```132```.
 
 This parameter has the configuration ID ```config_43_1``` and is of type ```INTEGER```.
 
@@ -347,7 +347,7 @@ Available configuration parameters
 default value 5 (+0.5 °C)
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_44_1``` and is of type ```INTEGER```.
 
@@ -364,7 +364,7 @@ default value 50 (5,0 °C)
 255 – Antifreeze functionality disabled
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_45_1``` and is of type ```INTEGER```.
 
@@ -379,7 +379,7 @@ Default value 50 (Too low temperature limit is 5.0°C)
 1 - 1000 = 0.1°C – 100.0°C, step is 0.1°C. Too low temperature limit is set by entered value. In case is set value out of this range, module is changing set value automatically to default value.
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 50.
+The manufacturer defined default value is ```50```.
 
 This parameter has the configuration ID ```config_60_2``` and is of type ```INTEGER```.
 
@@ -394,7 +394,7 @@ Default value 50 (Too low temperature limit is 5.0°C)
 1 - 1000 = 0.1°C – 100.0°C, step is 0.1°C. Too low temperature limit is set by entered value. In case is set value out of this range, module is changing set value automatically to default value.
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 700.
+The manufacturer defined default value is ```700```.
 
 This parameter has the configuration ID ```config_61_2``` and is of type ```INTEGER```.
 
@@ -411,7 +411,7 @@ default value 0
 1 - When system is turned off the output is 230 V.
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_63_2``` and is of type ```INTEGER```.
 

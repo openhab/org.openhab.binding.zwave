@@ -123,7 +123,7 @@ The following option values may be configured -:
 | 0 | mono-stable switch type (push button) |
 | 1 | bi-stable switch type |
 
-The manufacturer defined default value is 1 (bi-stable switch type).
+The manufacturer defined default value is ```1``` (bi-stable switch type).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -139,7 +139,7 @@ The following option values may be configured -:
 | 0 | mono-stable switch type (push button) |
 | 1 | bi-stable switch type |
 
-The manufacturer defined default value is 1 (bi-stable switch type).
+The manufacturer defined default value is ```1``` (bi-stable switch type).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -155,7 +155,7 @@ The following option values may be configured -:
 | 0 | mono-stable switch type (push button) |
 | 1 | bi-stable switch type |
 
-The manufacturer defined default value is 1 (bi-stable switch type).
+The manufacturer defined default value is ```1``` (bi-stable switch type).
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -171,7 +171,7 @@ The following option values may be configured -:
 | 0 | NO (normally open) input type |
 | 1 | NC (normally close) input type |
 
-The manufacturer defined default value is 0 (NO (normally open) input type).
+The manufacturer defined default value is ```0``` (NO (normally open) input type).
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -187,7 +187,7 @@ The following option values may be configured -:
 | 0 | NO (normally open) input type |
 | 1 | NC (normally close) input type |
 
-The manufacturer defined default value is 0 (NO (normally open) input type).
+The manufacturer defined default value is ```0``` (NO (normally open) input type).
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -205,7 +205,7 @@ The following option values may be configured -:
 | 2 | ALL ON active ALL OFF is not active |
 | 255 | ALL ON active, ALL OFF active |
 
-The manufacturer defined default value is 255 (ALL ON active, ALL OFF active).
+The manufacturer defined default value is ```255``` (ALL ON active, ALL OFF active).
 
 This parameter has the configuration ID ```config_10_1``` and is of type ```INTEGER```.
 
@@ -224,7 +224,7 @@ From 0 to 990 - set point from 0.0 °C to 99.0 °C
 From 1001 to 1150 - set point from -0.1 °C to -15.0 °C
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_11_2``` and is of type ```INTEGER```.
 
@@ -237,7 +237,7 @@ This parameter has the configuration ID ```config_11_2``` and is of type ```INTE
 
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_12_2``` and is of type ```INTEGER```.
 
@@ -251,7 +251,7 @@ Power report is sent (pushed) only when actual power in Watts in real time chang
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_40_1``` and is of type ```INTEGER```.
 
@@ -265,7 +265,7 @@ default value is 300 (power report in Watts is sent each 300s)
 
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 300.
+The manufacturer defined default value is ```300```.
 
 This parameter has the configuration ID ```config_42_2``` and is of type ```INTEGER```.
 
@@ -276,7 +276,7 @@ This parameter defines temperature min difference between real measured temperat
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 132.
+The manufacturer defined default value is ```132```.
 
 This parameter has the configuration ID ```config_43_1``` and is of type ```INTEGER```.
 
@@ -287,7 +287,7 @@ This parameter defines temperature min difference between real measured temperat
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_44_1``` and is of type ```INTEGER```.
 
@@ -298,7 +298,7 @@ Set value means at which temperature the device will be turned on even if the th
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_45_1``` and is of type ```INTEGER```.
 
@@ -309,7 +309,7 @@ This parameter has the configuration ID ```config_45_1``` and is of type ```INTE
 
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 50.
+The manufacturer defined default value is ```50```.
 
 This parameter has the configuration ID ```config_60_2``` and is of type ```INTEGER```.
 
@@ -320,7 +320,7 @@ This parameter has the configuration ID ```config_60_2``` and is of type ```INTE
 
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 700.
+The manufacturer defined default value is ```700```.
 
 This parameter has the configuration ID ```config_61_2``` and is of type ```INTEGER```.
 
@@ -331,7 +331,7 @@ Set value means the type of the device that is connected to the relay output. Th
 
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_63_2``` and is of type ```INTEGER```.
 
@@ -346,6 +346,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

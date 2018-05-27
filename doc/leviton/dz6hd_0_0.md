@@ -8,7 +8,7 @@ title: DZ6HD - ZWave
 # DZ6HD 600W Dimmer
 This describes the Z-Wave device *DZ6HD*, manufactured by *Leviton* with the thing type UID of ```leviton_dz6hd_00_000```.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/556/556_default.png" alt="DZ6HD product image">
+![DZ6HD product image](https://www.cd-jackson.com/zwave_device_uploads/556/556_default.png)
 
 
 The DZ6HD does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -67,7 +67,7 @@ Fade on time
 - 128 to 253: 1-126 minutes
 Values in the range 0 to 253 may be set.
 
-The manufacturer defined default value is 2.
+The manufacturer defined default value is ```2```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -80,7 +80,7 @@ Fade off time
 - 128 to 253: 1-126 minutes
 Values in the range 0 to 253 may be set.
 
-The manufacturer defined default value is 2.
+The manufacturer defined default value is ```2```.
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -91,7 +91,7 @@ Minimum light level
 
 Values in the range 0 to 100 may be set.
 
-The manufacturer defined default value is 10.
+The manufacturer defined default value is ```10```.
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -102,7 +102,7 @@ Maximum light level
 
 Values in the range 0 to 100 may be set.
 
-The manufacturer defined default value is 100.
+The manufacturer defined default value is ```100```.
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -114,7 +114,7 @@ Preset light level
 - 1 to 100: Level
 Values in the range 0 to 100 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -127,7 +127,7 @@ LED dim level indicator timeout
 - 255: Always on
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 3.
+The manufacturer defined default value is ```3```.
 
 This parameter has the configuration ID ```config_6_1``` and is of type ```INTEGER```.
 
@@ -140,7 +140,7 @@ Locator LED status
 - 255: Locator mode
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 255.
+The manufacturer defined default value is ```255```.
 
 This parameter has the configuration ID ```config_7_1``` and is of type ```INTEGER```.
 
@@ -153,7 +153,7 @@ Load type
 - 2: CFL
 Values in the range 0 to 2 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_8_1``` and is of type ```INTEGER```.
 
@@ -168,6 +168,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

@@ -147,7 +147,7 @@ The following option values may be configured -:
 | 1 | Plug actuator ON |
 | 2 | Last status is restored |
 
-The manufacturer defined default value is 2 (Last status is restored).
+The manufacturer defined default value is ```2``` (Last status is restored).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -158,7 +158,7 @@ Minimum time between two (non-requested) energy values
 
 Values in the range 0 to 32767 may be set.
 
-The manufacturer defined default value is 10.
+The manufacturer defined default value is ```10```.
 
 This parameter has the configuration ID ```config_2_2``` and is of type ```INTEGER```.
 
@@ -169,7 +169,7 @@ Maximum time between two energy values, independently of changes in the value
 
 Values in the range 0 to 32767 may be set.
 
-The manufacturer defined default value is 120.
+The manufacturer defined default value is ```120```.
 
 This parameter has the configuration ID ```config_3_2``` and is of type ```INTEGER```.
 
@@ -180,7 +180,7 @@ Minimum time between two (non-requested) power values
 
 Values in the range 0 to 32767 may be set.
 
-The manufacturer defined default value is 10.
+The manufacturer defined default value is ```10```.
 
 This parameter has the configuration ID ```config_4_2``` and is of type ```INTEGER```.
 
@@ -191,7 +191,7 @@ Maximum time between two power values, independently of changes in the value
 
 Values in the range 0 to 32767 may be set.
 
-The manufacturer defined default value is 120.
+The manufacturer defined default value is ```120```.
 
 This parameter has the configuration ID ```config_5_2``` and is of type ```INTEGER```.
 
@@ -202,7 +202,7 @@ Minimum change required for a new energy value to be transmitted.
 The transmission must take place in the time window between parameter 2 and 3.
 Values in the range 0 to 32767 may be set.
 
-The manufacturer defined default value is 10.
+The manufacturer defined default value is ```10```.
 
 This parameter has the configuration ID ```config_6_2``` and is of type ```INTEGER```.
 
@@ -213,7 +213,7 @@ Minimum change required for a new power value to be transmitted.
 The transmission must take place in the time window between parameter 4 and 5
 Values in the range 0 to 32767 may be set.
 
-The manufacturer defined default value is 150.
+The manufacturer defined default value is ```150```.
 
 This parameter has the configuration ID ```config_7_2``` and is of type ```INTEGER```.
 
@@ -229,7 +229,7 @@ The following option values may be configured -:
 | 0 | Plug actuator remains OFF |
 | 1 | Automatic restart |
 
-The manufacturer defined default value is 0 (Plug actuator remains OFF).
+The manufacturer defined default value is ```0``` (Plug actuator remains OFF).
 
 This parameter has the configuration ID ```config_8_1``` and is of type ```INTEGER```.
 
@@ -247,7 +247,7 @@ The following option values may be configured -:
 | 0 | No reset |
 | 1 | Reset |
 
-The manufacturer defined default value is 0 (No reset).
+The manufacturer defined default value is ```0``` (No reset).
 
 This parameter has the configuration ID ```config_9_1_wo``` and is of type ```INTEGER```.
 This is a write only parameter.
@@ -264,7 +264,7 @@ The following option values may be configured -:
 | 0 | Night mode OFF |
 | 1 | Night mode ON |
 
-The manufacturer defined default value is 0 (Night mode OFF).
+The manufacturer defined default value is ```0``` (Night mode OFF).
 
 This parameter has the configuration ID ```config_10_1``` and is of type ```INTEGER```.
 
@@ -282,7 +282,7 @@ The following option values may be configured -:
 | 2 | Info LED yellow |
 | 3 | Info LED red |
 
-The manufacturer defined default value is 0 (Info LED OFF).
+The manufacturer defined default value is ```0``` (Info LED OFF).
 
 This parameter has the configuration ID ```config_11_2``` and is of type ```INTEGER```.
 
@@ -297,6 +297,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

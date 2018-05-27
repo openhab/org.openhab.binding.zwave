@@ -10,7 +10,7 @@ This describes the Z-Wave device *WAPIRZ-1*, manufactured by *Linear Corp* with 
 
 The device is in the category of *Motion Detector*, defining Motion sensors/detectors.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/5/5_default.jpg" alt="WAPIRZ-1 product image">
+![WAPIRZ-1 product image](https://www.cd-jackson.com/zwave_device_uploads/5/5_default.jpg)
 
 
 ## Overview
@@ -87,7 +87,7 @@ Re-trigger Wait Time
 By default, to conserve battery life, after the WAPIRZ-1 detects motion it cannot be re-triggered by motion again for 3 minutes. Each time motion is detected (even during this wait time) the 3 minute timer starts over.
 Values in the range 1 to 255 may be set.
 
-The manufacturer defined default value is 3.
+The manufacturer defined default value is ```3```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -99,10 +99,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

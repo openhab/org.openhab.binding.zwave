@@ -8,7 +8,7 @@ title: Siren Alarm - ZWave
 # Siren Alarm Siren Alarm
 This describes the Z-Wave device *Siren Alarm*, manufactured by *[Shenzhen Neo Electronics Co., Ltd](http://www.szneo.com/)* with the thing type UID of ```shenzhen_sirenalarm_00_000```.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/522/522_default.png" alt="Siren Alarm product image">
+![Siren Alarm product image](https://www.cd-jackson.com/zwave_device_uploads/522/522_default.png)
 
 
 ## Overview
@@ -74,7 +74,7 @@ Configure Alarm music volume
 
 Values in the range 1 to 3 may be set.
 
-The manufacturer defined default value is 2.
+The manufacturer defined default value is ```2```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -85,7 +85,7 @@ Alarm music duration time
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 2.
+The manufacturer defined default value is ```2```.
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -96,7 +96,7 @@ Door bell music duration time
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -107,7 +107,7 @@ Door bell music volume
 
 Values in the range 1 to 3 may be set.
 
-The manufacturer defined default value is 2.
+The manufacturer defined default value is ```2```.
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -118,7 +118,7 @@ Alarm music index
 
 Values in the range 1 to 10 may be set.
 
-The manufacturer defined default value is 9.
+The manufacturer defined default value is ```9```.
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -129,7 +129,7 @@ Door bell music index
 
 Values in the range 1 to 10 may be set.
 
-The manufacturer defined default value is 10.
+The manufacturer defined default value is ```10```.
 
 This parameter has the configuration ID ```config_6_1``` and is of type ```INTEGER```.
 
@@ -146,7 +146,7 @@ The settings for ALARM MUSIC defines by Param #1, #2, #5.
 The settings for DOOR BELL defines by Param #3, #4, #6.
 Values in the range 1 to 2 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_7_1``` and is of type ```INTEGER```.
 

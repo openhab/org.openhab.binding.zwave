@@ -63,7 +63,7 @@ Report Node, reports changes in level to this node id.
 Disabled if 0. -> Copied from SmartDimmer, as there's no config information available.
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -79,7 +79,7 @@ The following option values may be configured -:
 | 0 | disabled |
 | 1 | enabled |
 
-The manufacturer defined default value is 1 (enabled).
+The manufacturer defined default value is ```1``` (enabled).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -94,6 +94,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

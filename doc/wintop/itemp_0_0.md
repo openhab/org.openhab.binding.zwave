@@ -10,7 +10,7 @@ This describes the Z-Wave device *ITEMP*, manufactured by *Wintop* with the thin
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/216/216_default.png" alt="ITEMP product image">
+![ITEMP product image](https://www.cd-jackson.com/zwave_device_uploads/216/216_default.png)
 
 
 ## Overview
@@ -95,7 +95,7 @@ The following option values may be configured -:
 | 0 | No (default) |
 | 1 | Execute reset |
 
-The manufacturer defined default value is 0 (No (default)).
+The manufacturer defined default value is ```0``` (No (default)).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -111,7 +111,7 @@ The following option values may be configured -:
 | 0 | Alarm Resport Type 2 (default) |
 | 1 | Basic On or Basic Off |
 
-The manufacturer defined default value is 0 (Alarm Resport Type 2 (default)).
+The manufacturer defined default value is ```0``` (Alarm Resport Type 2 (default)).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -127,7 +127,7 @@ The following option values may be configured -:
 | 1 | Normal Wakeup (default) |
 | 3 | Always awake |
 
-The manufacturer defined default value is 1 (Normal Wakeup (default)).
+The manufacturer defined default value is ```1``` (Normal Wakeup (default)).
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -138,7 +138,7 @@ Can be used to calibrate the temperature sensors function. Calibrated as factory
 
 Values in the range 0 to 15300 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_6_2``` and is of type ```INTEGER```.
 
@@ -150,10 +150,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

@@ -78,7 +78,7 @@ The following option values may be configured -:
 | 1 | semiauto |
 | 2 | auto |
 
-The manufacturer defined default value is 1 (semiauto).
+The manufacturer defined default value is ```1``` (semiauto).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -98,7 +98,7 @@ The following option values may be configured -:
 | 0 | summer mode only |
 | 50 | Auto (summer / winter mode) |
 
-The manufacturer defined default value is 50 (Auto (summer / winter mode)).
+The manufacturer defined default value is ```50``` (Auto (summer / winter mode)).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -109,7 +109,7 @@ Measurement frequency
 
 Values in the range 1 to 30 may be set.
 
-The manufacturer defined default value is 3.
+The manufacturer defined default value is ```3```.
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -120,7 +120,7 @@ Level of sensitivity for day
 
 Values in the range 1 to 99 may be set.
 
-The manufacturer defined default value is 60.
+The manufacturer defined default value is ```60```.
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -131,7 +131,7 @@ Temperature
 
 Values in the range 0 to 0 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 This is a read only parameter.
@@ -143,7 +143,7 @@ Level of sensitivity for night
 
 Values in the range 1 to 9 may be set.
 
-The manufacturer defined default value is 3.
+The manufacturer defined default value is ```3```.
 
 This parameter has the configuration ID ```config_6_1``` and is of type ```INTEGER```.
 
@@ -158,6 +158,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

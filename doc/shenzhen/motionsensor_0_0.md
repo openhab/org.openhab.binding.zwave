@@ -10,7 +10,7 @@ This describes the Z-Wave device *Motion Sensor*, manufactured by *[Shenzhen Neo
 
 The device is in the category of *Motion Detector*, defining Motion sensors/detectors.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/401/401_default.jpg" alt="Motion Sensor product image">
+![Motion Sensor product image](https://www.cd-jackson.com/zwave_device_uploads/401/401_default.jpg)
 
 
 ## Overview
@@ -147,7 +147,7 @@ Defines the sensitivity of PIR sensor. Where 8 = highest & 255 = lowest sensitiv
 
 Values in the range 8 to 255 may be set.
 
-The manufacturer defined default value is 12.
+The manufacturer defined default value is ```12```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -164,7 +164,7 @@ detector is triggered and the associated device will be turned on 30(second) bef
 is turned off.
 Values in the range 5 to 600 may be set.
 
-The manufacturer defined default value is 30.
+The manufacturer defined default value is ```30```.
 
 This parameter has the configuration ID ```config_2_2``` and is of type ```INTEGER```.
 
@@ -181,7 +181,7 @@ Available Settings:
  Dim Level (Multilevel Switch Device)
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 255.
+The manufacturer defined default value is ```255```.
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -197,7 +197,7 @@ The following option values may be configured -:
 | 0 | Disable PIR Detector Function |
 | 255 | Enable PIR Detector Function |
 
-The manufacturer defined default value is 255 (Enable PIR Detector Function).
+The manufacturer defined default value is ```255``` (Enable PIR Detector Function).
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -214,7 +214,7 @@ command(i.e. BASIC\_SET value = parameter 3#) to an associated device and activa
 it.
 Values in the range 0 to 1000 may be set.
 
-The manufacturer defined default value is 100.
+The manufacturer defined default value is ```100```.
 
 This parameter has the configuration ID ```config_5_2``` and is of type ```INTEGER```.
 
@@ -225,7 +225,7 @@ Adjust the interval of being re-triggered after the PIR detector has been trigge
 
 Values in the range 1 to 8 may be set.
 
-The manufacturer defined default value is 8.
+The manufacturer defined default value is ```8```.
 
 This parameter has the configuration ID ```config_6_1``` and is of type ```INTEGER```.
 
@@ -236,7 +236,7 @@ The Intervall after which the Light Sensor Measure is polled.
 
 Values in the range 60 to 36000 may be set.
 
-The manufacturer defined default value is 180.
+The manufacturer defined default value is ```180```.
 
 This parameter has the configuration ID ```config_7_2``` and is of type ```INTEGER```.
 
@@ -258,7 +258,7 @@ The following option values may be configured -:
 | 0 | Disable Lux Level Function |
 | 1 | Enable Lux Level Function |
 
-The manufacturer defined default value is 0 (Disable Lux Level Function).
+The manufacturer defined default value is ```0``` (Disable Lux Level Function).
 
 This parameter has the configuration ID ```config_8_1``` and is of type ```INTEGER```.
 
@@ -269,7 +269,7 @@ How much the Lux Level must change, in lux, to be reported to the main controlle
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 100.
+The manufacturer defined default value is ```100```.
 
 This parameter has the configuration ID ```config_9_2``` and is of type ```INTEGER```.
 
@@ -285,7 +285,7 @@ The following option values may be configured -:
 | 0 | Disable LED blinking |
 | 1 | Enable LED blinking |
 
-The manufacturer defined default value is 1 (Enable LED blinking).
+The manufacturer defined default value is ```1``` (Enable LED blinking).
 
 This parameter has the configuration ID ```config_10_1``` and is of type ```INTEGER```.
 
@@ -297,10 +297,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

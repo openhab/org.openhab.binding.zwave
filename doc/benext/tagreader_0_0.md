@@ -8,7 +8,7 @@ title: Tag Reader - ZWave
 # Tag Reader Tag Reader
 This describes the Z-Wave device *Tag Reader*, manufactured by *[BeNext](http://www.benext.eu/)* with the thing type UID of ```benext_tagreader_00_000```.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/444/444_default.png" alt="Tag Reader product image">
+![Tag Reader product image](https://www.cd-jackson.com/zwave_device_uploads/444/444_default.png)
 
 
 ## Overview
@@ -128,7 +128,7 @@ Set all configuration values to default values (factory settings)
 If the Value is set to 0xFF (255) this device will return to factory settings.
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -139,7 +139,7 @@ the time the beep goes to off
 0x00 = Off, 0xFF = endless
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 15.
+The manufacturer defined default value is ```15```.
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -152,7 +152,7 @@ Too configure the time-out, waiting on the wakeup\_no\_more\_information command
 0x00 = off
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -163,7 +163,7 @@ Amount of beeps a second
 To set the amount of beeps per second, every beep is around 10ms.
 Values in the range 0 to 5 may be set.
 
-The manufacturer defined default value is 2.
+The manufacturer defined default value is ```2```.
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -178,7 +178,7 @@ Mode 3 = z-wave chip is always on to be asked for information, for example versi
 Any other value will be reported after a GET, but will be seen as a mode 1.
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -193,7 +193,7 @@ The time (\*10 ms) the RFID circuit waits to start after "home" or "away" has be
 the time \*10 miliseconds, minimum = 0 seconds, max = 2,55 seconds. If the value is not in the allowed size the frame will be ignored.
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 100.
+The manufacturer defined default value is ```100```.
 
 This parameter has the configuration ID ```config_6_1``` and is of type ```INTEGER```.
 
@@ -205,10 +205,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

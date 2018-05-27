@@ -129,7 +129,7 @@ The following option values may be configured -:
 | 0 | mono-stable switch type (push button) |
 | 1 | bi-stable switch type |
 
-The manufacturer defined default value is 1 (bi-stable switch type).
+The manufacturer defined default value is ```1``` (bi-stable switch type).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -145,7 +145,7 @@ The following option values may be configured -:
 | 0 | NO (normaly open) input type |
 | 1 | NC (normaly close) input type |
 
-The manufacturer defined default value is 0 (NO (normaly open) input type).
+The manufacturer defined default value is ```0``` (NO (normaly open) input type).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -163,7 +163,7 @@ The following option values may be configured -:
 | 2 | ALL ON active ALL OFF is not active |
 | 255 | ALL ON active, ALL OFF active |
 
-The manufacturer defined default value is 255 (ALL ON active, ALL OFF active).
+The manufacturer defined default value is ```255``` (ALL ON active, ALL OFF active).
 
 This parameter has the configuration ID ```config_10_1``` and is of type ```INTEGER```.
 
@@ -174,7 +174,7 @@ When relay is ON it goes automatically OFF after time defined by this parameter.
 
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_11_2``` and is of type ```INTEGER```.
 
@@ -185,7 +185,7 @@ When relay is OFF it goes automatically ON after time defined by this parameter.
 
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_12_2``` and is of type ```INTEGER```.
 
@@ -201,7 +201,7 @@ The following option values may be configured -:
 | 0 | Seconds selected |
 | 1 | Milliseconds selected |
 
-The manufacturer defined default value is 0 (Seconds selected).
+The manufacturer defined default value is ```0``` (Seconds selected).
 
 This parameter has the configuration ID ```config_15_1``` and is of type ```INTEGER```.
 
@@ -217,7 +217,7 @@ The following option values may be configured -:
 | 0 | Flush 1D relay module saves its state before power failure (it returns |
 | 1 | Flush 1D relay module does not save the state after a power failure, i |
 
-The manufacturer defined default value is 0 (Flush 1D relay module saves its state before power failure (it returns).
+The manufacturer defined default value is ```0``` (Flush 1D relay module saves its state before power failure (it returns).
 
 This parameter has the configuration ID ```config_30_1``` and is of type ```INTEGER```.
 
@@ -233,7 +233,7 @@ The following option values may be configured -:
 | 0 | When system is turned off the output is 0V (NC). |
 | 1 | When system is turned off the output is 230V or 24V (NO). |
 
-The manufacturer defined default value is 0 (When system is turned off the output is 0V (NC).).
+The manufacturer defined default value is ```0``` (When system is turned off the output is 0V (NC).).
 
 This parameter has the configuration ID ```config_63_1``` and is of type ```INTEGER```.
 
@@ -255,7 +255,7 @@ The following option values may be configured -:
 | 6 | Smoke Alarm; Smoke detected, unknown loc. |
 | 9 | Sensor binary. |
 
-The manufacturer defined default value is 1 (Home Security; Motion Detection, unknown loc.).
+The manufacturer defined default value is ```1``` (Home Security; Motion Detection, unknown loc.).
 
 This parameter has the configuration ID ```config_100_1``` and is of type ```INTEGER```.
 
@@ -266,7 +266,7 @@ Set value is added or subtracted to actual measured value by sensor. 32536 – o
 
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 32536.
+The manufacturer defined default value is ```32536```.
 
 This parameter has the configuration ID ```config_110_2``` and is of type ```INTEGER```.
 
@@ -277,7 +277,7 @@ If digital temperature sensor is connected, module reports measured temperature 
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_120_1``` and is of type ```INTEGER```.
 
@@ -292,6 +292,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups

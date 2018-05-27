@@ -8,7 +8,7 @@ title: DMWS1 - ZWave
 # DMWS1 Dome Leak Sensor
 This describes the Z-Wave device *DMWS1*, manufactured by *Elexa Consumer Products Inc.* with the thing type UID of ```elexa_dmws1_00_000```.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/651/651_default.jpg" alt="DMWS1 product image">
+![DMWS1 product image](https://www.cd-jackson.com/zwave_device_uploads/651/651_default.jpg)
 
 
 ## Overview
@@ -106,7 +106,7 @@ Total time the Leak Sensor will beep and light its LED in the event of a leak
 1-255: 1-255 minutes
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 120.
+The manufacturer defined default value is ```120```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -117,7 +117,7 @@ Quiet time between each Reminder Alarm
 
 Values in the range 1 to 255 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -128,7 +128,7 @@ Time the Leak Sensor beeps before it is muted
 
 Values in the range 10 to 255 may be set.
 
-The manufacturer defined default value is 60.
+The manufacturer defined default value is ```60```.
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -139,7 +139,7 @@ Length of each beep after the Initial Alarm
 
 Values in the range 5 to 255 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -155,7 +155,7 @@ The following option values may be configured -:
 | 0 | Audible Alarm Disabled |
 | 1 | Audible Alarm Enabled |
 
-The manufacturer defined default value is 1 (Audible Alarm Enabled).
+The manufacturer defined default value is ```1``` (Audible Alarm Enabled).
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -171,7 +171,7 @@ The following option values may be configured -:
 | 0 | Water Detection Disabled |
 | 1 | Water Detection Enabled |
 
-The manufacturer defined default value is 1 (Water Detection Enabled).
+The manufacturer defined default value is ```1``` (Water Detection Enabled).
 
 This parameter has the configuration ID ```config_6_1``` and is of type ```INTEGER```.
 
@@ -182,7 +182,7 @@ The value sent by the BASIC\_SET command to Association Group 2
 Determines the value to be sent in the Basic Set command to Association Group 2 when a leak is detected
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 255.
+The manufacturer defined default value is ```255```.
 
 This parameter has the configuration ID ```config_7_1``` and is of type ```INTEGER```.
 
@@ -194,10 +194,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

@@ -72,7 +72,7 @@ The following option values may be configured -:
 | 4 | Send Scenes |
 | 5 | Send Preconfigured Scenes |
 
-The manufacturer defined default value is 1 (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
 
 This parameter has the configuration ID ```config_10_1``` and is of type ```INTEGER```.
 
@@ -92,7 +92,7 @@ The following option values may be configured -:
 | 4 | Send Scenes |
 | 5 | Send Preconfigured Scenes |
 
-The manufacturer defined default value is 1 (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
 
 This parameter has the configuration ID ```config_11_1``` and is of type ```INTEGER```.
 
@@ -112,7 +112,7 @@ The following option values may be configured -:
 | 4 | Send Scenes |
 | 5 | Send Preconfigured Scenes |
 
-The manufacturer defined default value is 1 (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
 
 This parameter has the configuration ID ```config_12_1``` and is of type ```INTEGER```.
 
@@ -132,7 +132,7 @@ The following option values may be configured -:
 | 4 | Send Scenes |
 | 5 | Send Preconfigured Scenes |
 
-The manufacturer defined default value is 1 (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
 
 This parameter has the configuration ID ```config_13_1``` and is of type ```INTEGER```.
 
@@ -152,7 +152,7 @@ The following option values may be configured -:
 | 4 | Send Scenes |
 | 5 | Send Preconfigured Scenes |
 
-The manufacturer defined default value is 1 (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
 
 This parameter has the configuration ID ```config_14_1``` and is of type ```INTEGER```.
 
@@ -172,7 +172,7 @@ The following option values may be configured -:
 | 4 | Send Scenes |
 | 5 | Send Preconfigured Scenes |
 
-The manufacturer defined default value is 1 (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
 
 This parameter has the configuration ID ```config_15_1``` and is of type ```INTEGER```.
 
@@ -192,7 +192,7 @@ The following option values may be configured -:
 | 4 | Send Scenes |
 | 5 | Send Preconfigured Scenes |
 
-The manufacturer defined default value is 1 (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
 
 This parameter has the configuration ID ```config_16_1``` and is of type ```INTEGER```.
 
@@ -212,7 +212,7 @@ The following option values may be configured -:
 | 4 | Send Scenes |
 | 5 | Send Preconfigured Scenes |
 
-The manufacturer defined default value is 4 (Send Scenes).
+The manufacturer defined default value is ```4``` (Send Scenes).
 
 This parameter has the configuration ID ```config_17_1``` and is of type ```INTEGER```.
 
@@ -232,7 +232,7 @@ The following option values may be configured -:
 | 4 | Send Scenes |
 | 5 | Send Preconfigured Scenes |
 
-The manufacturer defined default value is 4 (Send Scenes).
+The manufacturer defined default value is ```4``` (Send Scenes).
 
 This parameter has the configuration ID ```config_18_1``` and is of type ```INTEGER```.
 
@@ -252,7 +252,7 @@ The following option values may be configured -:
 | 4 | Send Scenes |
 | 5 | Send Preconfigured Scenes |
 
-The manufacturer defined default value is 4 (Send Scenes).
+The manufacturer defined default value is ```4``` (Send Scenes).
 
 This parameter has the configuration ID ```config_19_1``` and is of type ```INTEGER```.
 
@@ -272,7 +272,7 @@ The following option values may be configured -:
 | 4 | Send Scenes |
 | 5 | Send Preconfigured Scenes |
 
-The manufacturer defined default value is 3 (Switch All).
+The manufacturer defined default value is ```3``` (Switch All).
 
 This parameter has the configuration ID ```config_20_1``` and is of type ```INTEGER```.
 
@@ -289,7 +289,7 @@ The following option values may be configured -:
 | 2 | Switch on only |
 | 255 | Switch all on and off |
 
-The manufacturer defined default value is 255 (Switch all on and off).
+The manufacturer defined default value is ```255``` (Switch all on and off).
 
 This parameter has the configuration ID ```config_21_1``` and is of type ```INTEGER```.
 
@@ -301,10 +301,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

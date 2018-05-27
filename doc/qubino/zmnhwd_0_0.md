@@ -10,7 +10,7 @@ This describes the Z-Wave device *ZMNHWD*, manufactured by *[Goap](http://www.qu
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/567/567_default.jpg" alt="ZMNHWD product image">
+![ZMNHWD product image](https://www.cd-jackson.com/zwave_device_uploads/567/567_default.jpg)
 
 
 The ZMNHWD does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
@@ -119,7 +119,7 @@ The following option values may be configured -:
 | 9 | SCENE mode – toggle switch type |
 | 10 | SCENE mode – toggle with memory switch type |
 
-The manufacturer defined default value is 4 (BRIGHTNESS mode – momentary switch type).
+The manufacturer defined default value is ```4``` (BRIGHTNESS mode – momentary switch type).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -143,7 +143,7 @@ The following option values may be configured -:
 | 9 | SCENE mode – toggle switch type |
 | 10 | SCENE mode – toggle with memory switch type |
 
-The manufacturer defined default value is 7 (RAINBOW mode – momentary switch type).
+The manufacturer defined default value is ```7``` (RAINBOW mode – momentary switch type).
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -167,7 +167,7 @@ The following option values may be configured -:
 | 9 | SCENE mode – toggle switch type |
 | 10 | SCENE mode – toggle with memory switch type |
 
-The manufacturer defined default value is 8 (SCENE mode – momentary switch type).
+The manufacturer defined default value is ```8``` (SCENE mode – momentary switch type).
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -191,7 +191,7 @@ The following option values may be configured -:
 | 9 | SCENE mode – toggle switch type |
 | 10 | SCENE mode – toggle with memory switch type |
 
-The manufacturer defined default value is 1 (NORMAL mode – momentary switch type).
+The manufacturer defined default value is ```1``` (NORMAL mode – momentary switch type).
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -211,7 +211,7 @@ The following option values may be configured -:
 | 5 | Romantic |
 | 6 | Party scene |
 
-The manufacturer defined default value is 1 (Ocean).
+The manufacturer defined default value is ```1``` (Ocean).
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -223,7 +223,7 @@ Duration between Colour change
 - 1001-1127 – delay duration is from 1 min to 127 min. This parameter has no effect on Lighting and Party Scene.
 Values in the range 1 to 1127 may be set.
 
-The manufacturer defined default value is 3.
+The manufacturer defined default value is ```3```.
 
 This parameter has the configuration ID ```config_6_2``` and is of type ```INTEGER```.
 
@@ -239,7 +239,7 @@ The following option values may be configured -:
 | 0 | Do not memorize |
 | 1 | Memorize |
 
-The manufacturer defined default value is 0 (Do not memorize).
+The manufacturer defined default value is ```0``` (Do not memorize).
 
 This parameter has the configuration ID ```config_7_1``` and is of type ```INTEGER```.
 
@@ -251,7 +251,7 @@ Automatic turning off output after set time
 - 1 – 32536 = 1 second – 32536 seconds Auto OFF
 Values in the range 0 to 32536 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_8_2``` and is of type ```INTEGER```.
 
@@ -263,7 +263,7 @@ Automatic turning on output after set time
 - 1 – 32536 = 1 second – 32536 seconds Auto ON
 Values in the range 0 to 32536 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_9_2``` and is of type ```INTEGER```.
 
@@ -274,7 +274,7 @@ MAX dimming value
 2-99 = 2 % – 99 %
 Values in the range 2 to 99 may be set.
 
-The manufacturer defined default value is 99.
+The manufacturer defined default value is ```99```.
 
 This parameter has the configuration ID ```config_10_1``` and is of type ```INTEGER```.
 
@@ -285,7 +285,7 @@ MIN dimming value
 1-98 = 1 % – 98 %
 Values in the range 1 to 98 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_11_1``` and is of type ```INTEGER```.
 
@@ -297,7 +297,7 @@ Dimming time (soft on/off)
 - 5 – 25 = from 0.5 to 2.5 seconds
 Values in the range 5 to 25 may be set.
 
-The manufacturer defined default value is 10.
+The manufacturer defined default value is ```10```.
 
 This parameter has the configuration ID ```config_12_1``` and is of type ```INTEGER```.
 
@@ -310,7 +310,7 @@ Dimming time when key pressed
 NOTE: Dimming time depends also on Min and Max dimming value.
 Values in the range 1 to 127 may be set.
 
-The manufacturer defined default value is 3.
+The manufacturer defined default value is ```3```.
 
 This parameter has the configuration ID ```config_13_1``` and is of type ```INTEGER```.
 
@@ -330,7 +330,7 @@ The following option values may be configured -:
 | 2 | Four dimmers mode enabled – toggle switch type |
 | 3 | Four dimmers mode enabled – toggle with memory switch type |
 
-The manufacturer defined default value is 0 (Four dimmers mode disabled).
+The manufacturer defined default value is ```0``` (Four dimmers mode disabled).
 
 This parameter has the configuration ID ```config_14_1``` and is of type ```INTEGER```.
 

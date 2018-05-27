@@ -8,7 +8,7 @@ title: DTHERMZ5 - ZWave
 # DTHERMZ5 Z-Wave room sensor
 This describes the Z-Wave device *DTHERMZ5*, manufactured by *Danfoss* with the thing type UID of ```danfoss_dthermz5_00_000```.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/501/501_default.jpg" alt="DTHERMZ5 product image">
+![DTHERMZ5 product image](https://www.cd-jackson.com/zwave_device_uploads/501/501_default.jpg)
 
 
 ## Overview
@@ -86,7 +86,7 @@ Range is from 0.1 to 10°C 1=0.1°C 100=10°C
 Default value 5 = 0.5 °C
 Values in the range 1 to 100 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_1_2``` and is of type ```INTEGER```.
 
@@ -97,7 +97,7 @@ range from 0.1 to 10°C 1=0.1°C 100=10°C
 
 Values in the range 1 to 100 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_2_2``` and is of type ```INTEGER```.
 
@@ -108,7 +108,7 @@ from min 0°C to max setpoint override limit 0=0°C 40=40°C
 
 Values in the range 0 to 40 may be set.
 
-The manufacturer defined default value is 12.
+The manufacturer defined default value is ```12```.
 
 This parameter has the configuration ID ```config_3_2``` and is of type ```INTEGER```.
 
@@ -119,7 +119,7 @@ from min setpoint override limit to max 40°C 0=0°C 40=40°C
 
 Values in the range 0 to 40 may be set.
 
-The manufacturer defined default value is 28.
+The manufacturer defined default value is ```28```.
 
 This parameter has the configuration ID ```config_4_2``` and is of type ```INTEGER```.
 
@@ -130,7 +130,7 @@ This parameter has the configuration ID ```config_4_2``` and is of type ```INTEG
 
 Values in the range 0 to 65535 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_5_4``` and is of type ```INTEGER```.
 
@@ -146,7 +146,7 @@ The following option values may be configured -:
 | 0 | disabled |
 | 1 | enabled |
 
-The manufacturer defined default value is 1 (enabled).
+The manufacturer defined default value is ```1``` (enabled).
 
 This parameter has the configuration ID ```config_6_1``` and is of type ```INTEGER```.
 
@@ -162,7 +162,7 @@ The following option values may be configured -:
 | 0 | disabled |
 | 1 | enabled |
 
-The manufacturer defined default value is 1 (enabled).
+The manufacturer defined default value is ```1``` (enabled).
 
 This parameter has the configuration ID ```config_7_1``` and is of type ```INTEGER```.
 
@@ -179,7 +179,7 @@ The following option values may be configured -:
 | 2 | Cooling |
 | 10 | Auto-Changeover |
 
-The manufacturer defined default value is 1 (Heating).
+The manufacturer defined default value is ```1``` (Heating).
 
 This parameter has the configuration ID ```config_8_1``` and is of type ```INTEGER```.
 
@@ -190,7 +190,7 @@ This parameter has the configuration ID ```config_8_1``` and is of type ```INTEG
 
 Values in the range 1 to 5 may be set.
 
-The manufacturer defined default value is 1.
+The manufacturer defined default value is ```1```.
 
 This parameter has the configuration ID ```config_9_2``` and is of type ```INTEGER```.
 
@@ -201,7 +201,7 @@ This parameter has the configuration ID ```config_9_2``` and is of type ```INTEG
 
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_10_1``` and is of type ```INTEGER```.
 
@@ -217,7 +217,7 @@ The following option values may be configured -:
 | 1 | Green |
 | 2 | Red |
 
-The manufacturer defined default value is 1 (Green).
+The manufacturer defined default value is ```1``` (Green).
 
 This parameter has the configuration ID ```config_11_1``` and is of type ```INTEGER```.
 
@@ -229,10 +229,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

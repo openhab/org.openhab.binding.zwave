@@ -8,7 +8,7 @@ title: EZMotion Express - ZWave
 # EZMotion Express Wireless 3-in-1 Sensor
 This describes the Z-Wave device *EZMotion Express*, manufactured by *Express Controls* with the thing type UID of ```homeseer_ezmotionexpress_00_000```.
 
-<img src="https://www.cd-jackson.com/zwave_device_uploads/140/140_default.jpg" alt="EZMotion Express product image">
+![EZMotion Express product image](https://www.cd-jackson.com/zwave_device_uploads/140/140_default.jpg)
 
 
 ## Overview
@@ -109,7 +109,7 @@ Recommended values:
  200 = Highly sensitive for rooms where people are sitting still
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 200.
+The manufacturer defined default value is ```200```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -127,7 +127,7 @@ Recommended values:
  60 min for a library or other room where someone may be sitting still for a long time
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 20.
+The manufacturer defined default value is ```20```.
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
@@ -143,7 +143,7 @@ The following option values may be configured -:
 | 0 | Off |
 | 255 | On |
 
-The manufacturer defined default value is 255 (On).
+The manufacturer defined default value is ```255``` (On).
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -160,7 +160,7 @@ Recommended values:
 Usually a value between 40% and 60% will prevent the lights from coming on in a reasonably well light room and will turn them on as it is getting dark. Some experimentation is required with each room to determine the proper setting.
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 100.
+The manufacturer defined default value is ```100```.
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -176,7 +176,7 @@ Stay Awake is NOT set to the factory default (0) when EZMotion is Excluded (rese
 To properly have EZMotion included in the routing tables, set Stay Awake to a non-zero value, then reset EZMotion (Exclude from the network), then add it back to the network. The new routing information will be used now that the listening bit is set.
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
@@ -191,7 +191,7 @@ On Value is the value sent by the Z-Wave BASIC\_SET command when motion is detec
 A value of 255 will turn the light on.
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 255.
+The manufacturer defined default value is ```255```.
 
 This parameter has the configuration ID ```config_6_1``` and is of type ```INTEGER```.
 
@@ -203,10 +203,14 @@ This setting is defined in *seconds*. It is advisable not to set this interval t
 
 Note that this setting does not affect the devices ability to send sensor data, or notification events.
 
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 ### Wakeup Node
 
 When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
 In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
 
 
 ## Association Groups

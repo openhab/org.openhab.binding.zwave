@@ -221,7 +221,7 @@ Minimum variation in load current before a message is sent.
 Minimum variation in load current before a message is sent. Value in percent (30 => 30%)
 Values in the range 0 to 100 may be set.
 
-The manufacturer defined default value is 10.
+The manufacturer defined default value is ```10```.
 
 This parameter has the configuration ID ```config_0_1``` and is of type ```INTEGER```.
 
@@ -232,7 +232,7 @@ Duration (min) the device flashes after a communication error.
 After how many minutes the GreenWave device should start flashing if the controller didn't communicate with this device.
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 2.
+The manufacturer defined default value is ```2```.
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -256,7 +256,7 @@ The following option values may be configured -:
 | 136 | Pink |
 | 137 | Locked |
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 This is a read only parameter.
@@ -274,7 +274,7 @@ The following option values may be configured -:
 | 1 | Remember last state |
 | 2 | All ON |
 
-The manufacturer defined default value is 2 (All ON).
+The manufacturer defined default value is ```2``` (All ON).
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -290,7 +290,7 @@ The following option values may be configured -:
 | 0 | Disable the LED for network error |
 | 1 | Enable the LED for network error |
 
-The manufacturer defined default value is 1 (Enable the LED for network error).
+The manufacturer defined default value is ```1``` (Enable the LED for network error).
 
 This parameter has the configuration ID ```config_4_1``` and is of type ```INTEGER```.
 
@@ -305,6 +305,8 @@ The following option values may be configured -:
 | 1 | Include in All On group |
 | 2 | Include in All Off group |
 | 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups
