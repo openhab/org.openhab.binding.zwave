@@ -8,6 +8,7 @@
   <thing-type id="nexia_db100z_00_000" listed="false">
     <label>DB100Z Doorbell</label>
     <description>Doorbell</description>
+    <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
