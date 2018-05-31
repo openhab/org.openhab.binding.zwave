@@ -94,6 +94,7 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
                 // If the transaction needs data, then it will continue to wait for this data
                 transaction.setTransactionComplete();
                 return true;
+
             case COMPLETE_NO_ACK:
                 // Handle WAKE_UP_NO_MORE_INFORMATION differently
                 // Since the system can time out if the node goes to sleep before
@@ -110,13 +111,10 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
             case COMPLETE_FAIL:
             case COMPLETE_NOT_IDLE:
             case COMPLETE_NOROUTE:
-                try {
-                    // handleFailedSendDataRequest(zController, lastSentMessage);
-                } finally {
-                    // transactionComplete = true;
-                }
+                // handleFailedSendDataRequest(zController, transaction);
                 transaction.setTransactionCanceled();
                 break;
+
             default:
                 break;
         }
@@ -124,50 +122,9 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
         return false;
     }
 
-    /*
-     * public boolean handleFailedSendDataRequest(ZWaveController zController, SerialMessage originalMessage) {
-     * ZWaveNode node = zController.getNode(originalMessage.getMessageNode());
-     * if (node == null) {
-     * logger.error("Unknown node in handleFailedSendDataRequest");
-     * return false;
-     * }
-     *
-     * logger.debug("NODE {}: Handling failed message.", node.getNodeId());
-     *
-     * // Increment the resend count.
-     * // This will set the node to DEAD if we've exceeded the retries.
-     * node.incrementResendCount();
-     *
-     * // No retries if the node is DEAD or FAILED
-     * if (node.isDead()) {
-     * logger.error("NODE {}: Node is DEAD. Dropping message.", node.getNodeId());
-     * return false;
-     * }
-     *
-     * // If this device isn't listening, queue the message in the wakeup class
-     * if (!node.isListening() && !node.isFrequentlyListening()) {
-     * ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) node
-     * .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
-     *
-     * if (wakeUpCommandClass != null) {
-     * // It's a battery operated device, place in wake-up queue.
-     * // As this message failed, we assume the device is asleep
-     * wakeUpCommandClass.setAwake(false);
-     * // wakeUpCommandClass.processOutgoingWakeupMessage(originalMessage);
-     * return false;
-     * }
-     * }
-     *
-     * logger.error("NODE {}: Got an error while sending data. Resending message.", node.getNodeId());
-     * // zController.sendData(originalMessage);
-     * return true;
-     * }
-     */
-
     /**
      * Transmission state enumeration. Indicates the transmission state of the message to the node.
      *
-     * @author Jan-Willem Spuij
      */
     public enum TransmissionState {
         COMPLETE_OK(0x00, "Transmission complete and ACK received"),

@@ -39,6 +39,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurati
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveManufacturerSpecificCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveNoOperationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveVersionCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
@@ -367,42 +368,42 @@ public class ZWaveNodeInitStageAdvancer {
         }
 
         setCurrentStage(ZWaveNodeInitStage.FAILED_CHECK);
-        do {
-            processTransaction(new IsFailedNodeMessageClass().doRequest(node.getNodeId()));
-            if (initRunning == false) {
+        // do {
+        processTransaction(new IsFailedNodeMessageClass().doRequest(node.getNodeId()));
+        if (initRunning == false) {
+            return;
+        }
+
+        // If the node is dead, sleep for 30 seconds then try again
+        // if (node.isDead()) {
+        // try {
+        // Thread.sleep(30000);
+        // } catch (InterruptedException e) {
+        // break;
+        // }
+        // } else {
+        // break;
+        // }
+        // } while (true);
+
+        setCurrentStage(ZWaveNodeInitStage.PING);
+        ZWaveNoOperationCommandClass noOpCommandClass = (ZWaveNoOperationCommandClass) node
+                .getCommandClass(CommandClass.COMMAND_CLASS_NO_OPERATION);
+        if (noOpCommandClass != null) {
+            ZWaveCommandClassTransactionPayload msg = noOpCommandClass.getNoOperationMessage();
+            if (msg == null) {
                 return;
             }
 
-            // If the node is dead, sleep for 30 seconds then try again
-            if (node.isDead()) {
-                try {
-                    Thread.sleep(30000);
-                } catch (InterruptedException e) {
-                    break;
-                }
-            } else {
-                break;
-            }
-        } while (true);
-
-        // setCurrentStage(ZWaveNodeInitStage.PING);
-        // ZWaveNoOperationCommandClass noOpCommandClass = (ZWaveNoOperationCommandClass) node
-        // .getCommandClass(CommandClass.COMMAND_CLASS_NO_OPERATION);
-        // if (noOpCommandClass != null) {
-        // ZWaveCommandClassTransactionPayload msg = noOpCommandClass.getNoOperationMessage();
-        // if (msg == null) {
-        // return;
-        // }
-
-        // We only send out a single PING - no retries at controller level!
-        // This is to try and reduce network congestion during initialisation.
-        // For battery devices, the PING will time-out. This takes up to 5 seconds and if there are retries,
-        // it will be 15 seconds!
-        // This will block the network for a considerable time if there are a lot of battery devices
-        // (eg. 2 minutes for 8 battery devices!).
-        // msg.setMaxAttempts(1);
-        // processTransaction(msg);
-        // }
+            // We only send out a single PING - no retries at controller level!
+            // This is to try and reduce network congestion during initialisation.
+            // For battery devices, the PING will time-out. This takes up to 5 seconds and if there are retries,
+            // it will be 15 seconds!
+            // This will block the network for a considerable time if there are a lot of battery devices
+            // (eg. 2 minutes for 8 battery devices!).
+            msg.setMaxAttempts(1);
+            processTransaction(msg);
+        }
 
         setCurrentStage(ZWaveNodeInitStage.REQUEST_NIF);
         processTransaction(new RequestNodeInfoMessageClass().doRequest(node.getNodeId()));

@@ -57,7 +57,7 @@ public class SerialApiGetInitDataMessageClass extends ZWaveCommandProcessor {
                 int b1 = incomingByte & (int) Math.pow(2.0D, j);
                 int b2 = (int) Math.pow(2.0D, j);
                 if (b1 == b2) {
-                    logger.info("NODE {}: Node found", nodeId);
+                    logger.debug("NODE {}: Node found", nodeId);
 
                     zwaveNodes.add(nodeId);
                 }
@@ -65,13 +65,13 @@ public class SerialApiGetInitDataMessageClass extends ZWaveCommandProcessor {
             }
         }
 
-        logger.info("ZWave Controller using {} API",
+        logger.debug("ZWave Controller using {} API",
                 ((incomingMessage.getMessagePayloadByte(1) & 0x01) == 1) ? "Slave" : "Controller");
-        logger.info("ZWave Controller is {} Controller",
+        logger.debug("ZWave Controller is {} Controller",
                 ((incomingMessage.getMessagePayloadByte(1) & 0x04) == 1) ? "Secondary" : "Primary");
-        logger.info("------------Number of Nodes Found Registered to ZWave Controller------------");
-        logger.info("# Nodes = {}", zwaveNodes.size());
-        logger.info("----------------------------------------------------------------------------");
+        logger.debug("------------Number of Nodes Found Registered to ZWave Controller------------");
+        logger.debug("# Nodes = {}", zwaveNodes.size());
+        logger.debug("----------------------------------------------------------------------------");
 
         transaction.setTransactionComplete();
         return true;
