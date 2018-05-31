@@ -1102,7 +1102,10 @@ public class ZWaveNode {
 
     /**
      * Decapsulates a serial message for sending to a multi-instance instance/ multi-channel endpoint on a node.
-     *
+     * <p>
+     * Any command classes that are not already known (eg through the NIF or manually added through the database)
+     * are ignored. This is done to avoid adding random classes if corrupt frames are received.
+     * <p>
      * A number of Z-Wave encapsulation Command Classes exist, they MUST be applied in the following order:
      * <ol>
      * <li>Any one of the following combinations:
@@ -1278,21 +1281,9 @@ public class ZWaveNode {
             // Apparently, this endpoint supports a command class that we did not learn about during initialization.
             // Let's add it now then to support handling this message.
             if (zwaveCommandClass == null) {
-                logger.debug("NODE {}: Command class {} not found, trying to add it.", getNodeId(), commandClass,
-                        commandClass.getKey());
+                logger.debug("NODE {}: Command class {} not found.", getNodeId(), commandClass, commandClass.getKey());
 
-                zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), this, controller);
-
-                if (zwaveCommandClass == null) {
-                    // We got an unsupported command class, leave zwaveCommandClass as null
-                    logger.debug("NODE {}: Unsupported Z-Wave command class {} (0x{})", getNodeId(), commandClass,
-                            Integer.toHexString(payload.getCommandClassId()));
-                    continue;
-                }
-
-                logger.debug("NODE {}: Adding command class {} to endpoint {}", getNodeId(), commandClass,
-                        endpoint.getEndpointId());
-                addCommandClass(zwaveCommandClass);
+                continue;
             }
 
             if (securityDecapOk == false
