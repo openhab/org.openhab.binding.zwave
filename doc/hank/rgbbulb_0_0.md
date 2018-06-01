@@ -10,8 +10,6 @@ This describes the Z-Wave device *RGB bulb*, manufactured by *[Hank](http://www.
 
 The device is in the category of *Light Bulb*, defining Devices that illuminate something, such as bulbs, etc..
 
-The RGB bulb does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
-
 ## Overview
 
 No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/598) to improve the documentation.
@@ -211,7 +209,7 @@ This group supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/598/HKZW-RGB01-Manual.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/598/HKZW-RGB01-Manual.pdf)
 
 ---
 

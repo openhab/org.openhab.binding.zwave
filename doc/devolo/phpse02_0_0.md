@@ -13,8 +13,6 @@ The device is in the category of *Siren*, defining Siren used by Alarm systems.
 ![ph-pse02 product image](https://www.cd-jackson.com/zwave_device_uploads/453/453_default.jpg)
 
 
-The ph-pse02 does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
-
 ## Overview
 
 **\### NOTE ###**
@@ -296,7 +294,7 @@ This group supports 8 nodes.
 
 ### Documentation Links
 
-* [QUICK INSTALLATION GUIDE V1.2](https://www.cd-jackson.com/zwave_device_uploads/453/ph-pse02-Zipato-Siren-User-Manual-v1-2.pdf)
+* [Quick Installation Guide V1.2](https://www.cd-jackson.com/zwave_device_uploads/453/ph-pse02-Zipato-Siren-User-Manual-v1-2.pdf)
 
 ---
 

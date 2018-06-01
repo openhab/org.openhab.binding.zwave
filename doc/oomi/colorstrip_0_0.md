@@ -8,17 +8,20 @@ title: OOMI ColorStrip - ZWave
 # OOMI ColorStrip LED RGBWW Strip
 This describes the Z-Wave device *OOMI ColorStrip*, manufactured by *[Fantem](http://www.oomi.com/)* with the thing type UID of ```oomi_colorstrip_00_000```.
 
-The device is in the category of Light Bulb, defining Devices that illuminate something, such as bulbs, etc..
+The device is in the category of *Light Bulb*, defining Devices that illuminate something, such as bulbs, etc..
 
-# Overview
+![OOMI ColorStrip product image](https://www.cd-jackson.com/zwave_device_uploads/843/843_default.jpg)
+
+
+## Overview
 
 The LED Strip is a multi-colored LED Strip which allows control of color temperature (warm/cold white), RGB, and dimming via Z-Wave commands.
 
-## Inclusion Information
+### Inclusion Information
 
 Set your Z-Wave controller into pairing mode. Press the Action Button located on the back of the LED Strip's white controller box once (The network LED will blink green as an indication it is pairing insecurely, please refer to section "Enabling Security Encryption" in the Advanced Function section of the manual to pair it securely). If the LED Strip has been successfully added to your Z-Wave network, its Network LED will become solid. If the pairing was unsuccessful, the red LED will be on for 2 seconds and then remain a colorful gradient, repeat the instructions above from step 1.
 
-## Exclusion Information
+### Exclusion Information
 
 Set your Z-Wave controller into device removal mode. Press the Action Button located on the back of the LED Strip's white controller box once. If the LED Strip has been successfully removed from your Z-Wave network, its Network LED will remain colorful gradient. If the removal was unsuccessful, the Network LED will still be solid, repeat the instructions above from step 1.
 
@@ -82,7 +85,11 @@ The device does not support associations.
 | COMMAND_CLASS_MANUFACTURER_SPECIFIC_V1| |
 | COMMAND_CLASS_FIRMWARE_UPDATE_MD_V1| |
 
+### Documentation Links
+
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/843/Oomi-ColorStrip-manual.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/843).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/843).

@@ -8,9 +8,11 @@ title: ARF - ZWave
 # ARF Roller blind module
 This describes the Z-Wave device *ARF*, manufactured by *Fakro* with the thing type UID of ```fakro_arf_00_000```.
 
-The device is in the category of Blinds, defining Roller shutters, window blinds, etc..
+The device is in the category of *Blinds*, defining Roller shutters, window blinds, etc..
 
-# Overview
+## Overview
+
+No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/848) to improve the documentation.
 
 ## Channels
 
@@ -35,7 +37,11 @@ The device does not support associations.
 ### Endpoints
 
 
+### Documentation Links
+
+* [fakro arf manual EN](https://www.cd-jackson.com/zwave_device_uploads/848/ARF-ARP-Z-WAVE-EN.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/848).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/848).

@@ -9,8 +9,6 @@ title: ZMNHCD - ZWave
 This describes the Z-Wave device *ZMNHCD*, manufactured by *[Goap](http://www.qubino.com/)* with the thing type UID of ```qubino_zmnhcd_00_000```.
 This version of the device is limited to firmware versions below 4.0
 
-The ZMNHCD does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
-
 ## Overview
 
 ZMNHCD version S1 for version up to 4.0
@@ -480,8 +478,8 @@ This group supports 16 nodes.
 
 ### Documentation Links
 
-* [ZMNHCD VERSION S1 19.08.2015](https://www.cd-jackson.com/zwave_device_uploads/614/ZMNHCD-VER-S1-19-08-2015.pdf)
-* [Qubino_Flush-Shutter-PLUS-user-manual_V1.4](https://www.cd-jackson.com/zwave_device_uploads/614/Qubino-Flush-Shutter-PLUS-user-manual-V1-4.pdf)
+* [User Manual 19.08.2015](https://www.cd-jackson.com/zwave_device_uploads/614/ZMNHCD-VER-S1-19-08-2015.pdf)
+* [User Manual v1.4](https://www.cd-jackson.com/zwave_device_uploads/614/Qubino-Flush-Shutter-PLUS-user-manual-V1-4.pdf)
 
 ---
 

@@ -8,7 +8,9 @@ title: Oomi Plug - ZWave
 # Oomi Plug Oomi Plug is a low-cost Z-Wave Switch plug-in module specifically used to enable Z-Wave command and control (on/off) of any plug-in tool.
 This describes the Z-Wave device *Oomi Plug*, manufactured by *[Fantem](http://www.oomi.com/)* with the thing type UID of ```oomi_oomiplug_00_000```.
 
-# Overview
+## Overview
+
+No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/730) to improve the documentation.
 
 ## Channels
 
@@ -128,6 +130,7 @@ Detailed information on each parameter can be found in the sections below.
 | 113 | Time interval for sending to group 3 | Group 3 automatic update interval |
 | 252 | Configuration Locked | Enable/disable Configuration Locked (0 =disable, 1 = enable). |
 | 255 | RESET | Reset the device to defaults |
+|  | Switch All Mode | Set the mode for the switch when receiving SWITCH ALL commands |
 
 ### Parameter 3: Current overload protection enable
 
@@ -140,7 +143,7 @@ The following option values may be configured -:
 | 0 | disabled |
 | 1 | enabled |
 
-The manufacturer defined default value is 0 (disabled).
+The manufacturer defined default value is ```0``` (disabled).
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -158,7 +161,7 @@ The following option values may be configured -:
 | 1 | always on |
 | 2 | always off |
 
-The manufacturer defined default value is 0 (last status).
+The manufacturer defined default value is ```0``` (last status).
 
 This parameter has the configuration ID ```config_20_1``` and is of type ```INTEGER```.
 
@@ -175,7 +178,7 @@ Value3: Green value
 Value4: Blue value
 Values in the range 0 to 0 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_33_4_wo``` and is of type ```INTEGER```.
 This is a write only parameter.
@@ -193,7 +196,7 @@ The following option values may be configured -:
 | 1 | hail CC |
 | 2 | basic CC report |
 
-The manufacturer defined default value is 0 (nothing).
+The manufacturer defined default value is ```0``` (nothing).
 
 This parameter has the configuration ID ```config_80_1``` and is of type ```INTEGER```.
 
@@ -214,7 +217,7 @@ The following option values may be configured -:
 | 1 | LED follows load for 5 seconds |
 | 2 | Night light mode |
 
-The manufacturer defined default value is 0 (LED follows load).
+The manufacturer defined default value is ```0``` (LED follows load).
 
 This parameter has the configuration ID ```config_81_1``` and is of type ```INTEGER```.
 
@@ -225,7 +228,7 @@ This parameter has the configuration ID ```config_81_1``` and is of type ```INTE
 This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 16777215 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_83_3``` and is of type ```INTEGER```.
 
@@ -236,7 +239,7 @@ Blue night light color value
 Value for parameter 83, night light blue color
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 221.
+The manufacturer defined default value is ```221```.
 
 This parameter has the configuration ID ```config_83_3_000000FF``` and is of type ```INTEGER```.
 
@@ -247,7 +250,7 @@ Green night light color value
 Green color value for parameter 83, night light mode.
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 160.
+The manufacturer defined default value is ```160```.
 
 This parameter has the configuration ID ```config_83_3_0000FF00``` and is of type ```INTEGER```.
 
@@ -267,7 +270,7 @@ Value2=0xA0
 Value3=0xDD
 Values in the range 0 to 255 may be set.
 
-The manufacturer defined default value is 221.
+The manufacturer defined default value is ```221```.
 
 This parameter has the configuration ID ```config_83_3_00FF0000``` and is of type ```INTEGER```.
 
@@ -278,7 +281,7 @@ This parameter has the configuration ID ```config_83_3_00FF0000``` and is of typ
 This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 16777215 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_84_3``` and is of type ```INTEGER```.
 
@@ -293,7 +296,7 @@ Value2: yellow color value.
 Value3: red color value.
 Values in the range 0 to 100 may be set.
 
-The manufacturer defined default value is 50.
+The manufacturer defined default value is ```50```.
 
 This parameter has the configuration ID ```config_84_3_000000FF``` and is of type ```INTEGER```.
 
@@ -304,7 +307,7 @@ Yellow brightness in energy mode (%)
 
 Values in the range 0 to 100 may be set.
 
-The manufacturer defined default value is 50.
+The manufacturer defined default value is ```50```.
 
 This parameter has the configuration ID ```config_84_3_0000FF00``` and is of type ```INTEGER```.
 
@@ -315,7 +318,7 @@ Red brightness in energy mode (%)
 
 Values in the range 0 to 100 may be set.
 
-The manufacturer defined default value is 50.
+The manufacturer defined default value is ```50```.
 
 This parameter has the configuration ID ```config_84_3_00FF0000``` and is of type ```INTEGER```.
 
@@ -331,7 +334,7 @@ The following option values may be configured -:
 | 0 | disabled |
 | 1 | enabled |
 
-The manufacturer defined default value is 1 (enabled).
+The manufacturer defined default value is ```1``` (enabled).
 
 This parameter has the configuration ID ```config_90_1``` and is of type ```INTEGER```.
 
@@ -344,7 +347,7 @@ terms of wattage) for a REPORT to be sent (Valid values 0-
 60000).
 Values in the range 0 to 60000 may be set.
 
-The manufacturer defined default value is 25.
+The manufacturer defined default value is ```25```.
 
 This parameter has the configuration ID ```config_91_2``` and is of type ```INTEGER```.
 
@@ -357,7 +360,7 @@ percent (in terms of percentage) for a REPORT to be sent
 (Valid values 0-100).
 Values in the range 0 to 100 may be set.
 
-The manufacturer defined default value is 5.
+The manufacturer defined default value is ```5```.
 
 This parameter has the configuration ID ```config_92_1``` and is of type ```INTEGER```.
 
@@ -373,7 +376,7 @@ The following option values may be configured -:
 | 0 | False |
 | 1 | True |
 
-The manufacturer defined default value is 0 (False).
+The manufacturer defined default value is ```0``` (False).
 
 This parameter has the configuration ID ```config_100_1_wo``` and is of type ```INTEGER```.
 This is a write only parameter.
@@ -394,7 +397,7 @@ The following option values may be configured -:
 | 8 | kWh |
 | 15 | All Values |
 
-The manufacturer defined default value is 4 (Wattage).
+The manufacturer defined default value is ```4``` (Wattage).
 
 This parameter has the configuration ID ```config_101_4``` and is of type ```INTEGER```.
 
@@ -414,7 +417,7 @@ The following option values may be configured -:
 | 8 | kWh |
 | 15 | All Values |
 
-The manufacturer defined default value is 8 (kWh).
+The manufacturer defined default value is ```8``` (kWh).
 
 This parameter has the configuration ID ```config_102_4``` and is of type ```INTEGER```.
 
@@ -434,7 +437,7 @@ The following option values may be configured -:
 | 8 | kWh |
 | 15 | All Values |
 
-The manufacturer defined default value is 0 (Nothing).
+The manufacturer defined default value is ```0``` (Nothing).
 
 This parameter has the configuration ID ```config_103_4``` and is of type ```INTEGER```.
 
@@ -450,7 +453,7 @@ The following option values may be configured -:
 | 0 | False |
 | 1 | True |
 
-The manufacturer defined default value is 0 (False).
+The manufacturer defined default value is ```0``` (False).
 
 This parameter has the configuration ID ```config_110_1_wo``` and is of type ```INTEGER```.
 This is a write only parameter.
@@ -466,7 +469,7 @@ Default value is 3
 Note: Only up to 0x7fffffff is currently supported
 Values in the range 1 to 2147483647 may be set.
 
-The manufacturer defined default value is 3.
+The manufacturer defined default value is ```3```.
 
 This parameter has the configuration ID ```config_111_4``` and is of type ```INTEGER```.
 
@@ -481,7 +484,7 @@ Default value is 600
 Note: Only up to 0x7fffffff is currently supported
 Values in the range 1 to 2147483647 may be set.
 
-The manufacturer defined default value is 600.
+The manufacturer defined default value is ```600```.
 
 This parameter has the configuration ID ```config_112_4``` and is of type ```INTEGER```.
 
@@ -496,7 +499,7 @@ Default value is 600
 Note: Only up to 0x7fffffff is currently supported
 Values in the range 600 to 1 may be set.
 
-The manufacturer defined default value is 2147483647.
+The manufacturer defined default value is ```2147483647```.
 
 This parameter has the configuration ID ```config_113_4``` and is of type ```INTEGER```.
 
@@ -512,7 +515,7 @@ The following option values may be configured -:
 | 0 | disabled |
 | 1 | enabled |
 
-The manufacturer defined default value is 0 (disabled).
+The manufacturer defined default value is ```0``` (disabled).
 
 This parameter has the configuration ID ```config_252_1``` and is of type ```INTEGER```.
 
@@ -523,10 +526,24 @@ Reset the device to defaults
 Reset configuration set up to default setting.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 1 may be set.
 
-The manufacturer defined default value is 0.
+The manufacturer defined default value is ```0```.
 
 This parameter has the configuration ID ```config_255_1_wo``` and is of type ```INTEGER```.
 This is a write only parameter.
+
+### Switch All Mode
+
+Set the mode for the switch when receiving SWITCH ALL commands.
+
+The following option values may be configured -:
+| Value  | Description |
+|--------|-------------|
+| 0 | Exclude from All On and All Off groups |
+| 1 | Include in All On group |
+| 2 | Include in All Off group |
+| 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
 
 
 ## Association Groups
@@ -571,7 +588,11 @@ This group supports 5 nodes.
 | COMMAND_CLASS_ASSOCIATION_V2| |
 | COMMAND_CLASS_VERSION_V2| |
 
+### Documentation Links
+
+* [Oomi Plug Manual](https://www.cd-jackson.com/zwave_device_uploads/730/Oomi-Plug-manual--1-.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/730).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/730).

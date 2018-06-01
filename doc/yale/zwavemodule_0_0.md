@@ -8,9 +8,14 @@ title: Yale Smart Door Lock Z-Wave Module - ZWave
 # Yale Smart Door Lock Z-Wave Module The Yale Smart Door Lock Z-Wave module allows you to control your Yale Connected Smart Door Lock from anywhere in the world when linked to a leading Z
 This describes the Z-Wave device *Yale Smart Door Lock Z-Wave Module*, manufactured by *ASSA ABLOY* with the thing type UID of ```yale_zwavemodule_00_000```.
 
-The device is in the category of Lock, defining Devices whose primary pupose is locking something.
+The device is in the category of *Lock*, defining Devices whose primary pupose is locking something.
 
-# Overview
+![Yale Smart Door Lock Z-Wave Module product image](https://www.cd-jackson.com/zwave_device_uploads/810/810_default.jpg)
+
+
+## Overview
+
+No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/810) to improve the documentation.
 
 ## Channels
 
@@ -20,6 +25,7 @@ The following table summarises the channels available for the Yale Smart Door Lo
 |---------|------------|----------|-----------|
 | Door Lock | lock_door | Door | Switch | 
 | Alarm | alarm_general | Door | Switch | 
+| battery-level | system.battery-level | Battery | Number |
 | Clock Time Offset | time_offset | Temperature | Number | 
 
 ### Door Lock
@@ -41,6 +47,12 @@ The following state translation is provided for this channel to the ```Switch```
 |-------|-----------|
 | OFF | Ok |
 | ON | Alarm |
+
+### Battery Level
+
+Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
+
+The ```system.battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
 
 ### Clock Time Offset
 
@@ -92,7 +104,11 @@ This group supports 4 nodes.
 | COMMAND_CLASS_TIME_PARAMETERS_V1| |
 | COMMAND_CLASS_SECURITY_V1| |
 
+### Documentation Links
+
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/810/Z-Wave-Module-2-Manual.pdf)
+
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/810).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/810).

@@ -8,9 +8,11 @@ title: Vitrum Satellite IV - ZWave
 # Vitrum Satellite IV Vitrum touch switch satellite 4 buttons
 This describes the Z-Wave device *Vitrum Satellite IV*, manufactured by *VDA* with the thing type UID of ```vda_satelliteiv_00_000```.
 
-The device is in the category of Wall Switch, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
+The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-# Overview
+## Overview
+
+No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/764) to improve the documentation.
 
 ## Channels
 
@@ -163,4 +165,4 @@ This group supports 5 nodes.
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/764).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/764).

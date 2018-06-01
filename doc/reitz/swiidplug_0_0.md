@@ -8,10 +8,10 @@ title: swiidplug - ZWave
 # swiidplug SwiidPlug
 This describes the Z-Wave device *swiidplug*, manufactured by *Reitz-Group.de* with the thing type UID of ```reitz_swiidplug_00_000```.
 
+The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
+
 ![swiidplug product image](https://www.cd-jackson.com/zwave_device_uploads/49/49_default.jpg)
 
-
-The swiidplug does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 ## Overview
 
@@ -66,7 +66,7 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [POPP Manual](https://www.cd-jackson.com/zwave_device_uploads/49/Manual-IP20-POPP-En.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/49/Manual-IP20-POPP-En.pdf)
 * [User manual](https://www.cd-jackson.com/zwave_device_uploads/49/ZAP-User-s-manual-vBAT-30-11-2014.pdf)
 * [advanced-swiidplug](https://www.cd-jackson.com/zwave_device_uploads/49/advanced-swiidplug.pdf)
 

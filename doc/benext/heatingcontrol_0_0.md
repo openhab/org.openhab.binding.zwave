@@ -11,8 +11,6 @@ This describes the Z-Wave device *Heating Control*, manufactured by *[BeNext](ht
 ![Heating Control product image](https://www.cd-jackson.com/zwave_device_uploads/473/473_default.png)
 
 
-The Heating Control does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
-
 ## Overview
 
 The Heating Control is the central point of your climate environment. You can overwrite the temperature setpoint of your thermostat, and this product also reports information about your thermostat or boiler. For example the room temperature, boiler pressure, modulation level or water temperature.
