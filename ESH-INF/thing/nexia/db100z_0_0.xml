@@ -8,13 +8,14 @@
   <thing-type id="nexia_db100z_00_000" listed="false">
     <label>DB100Z Doorbell</label>
     <description>Doorbell</description>
+    <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="notification_power_management" typeId="notification_power_management">
+      <channel id="alarm_raw" typeId="alarm_raw">
         <label>Power Management Notification</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM,COMMAND_CLASS_BASIC;type=POWER_MANAGEMENT</property>
+          <property name="binding:*:StringType">COMMAND_CLASS_ALARM,COMMAND_CLASS_BASIC;type=POWER_MANAGEMENT</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">

@@ -8,6 +8,7 @@
   <thing-type id="fibaro_fgs212_00_000" listed="false">
     <label>FGS212 Relay Switch 1x2.5kW</label>
     <description>Relay Switch 1x2.5kW</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -6,7 +6,7 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="tkb_tz10_00_000" listed="false">
-    <label>TZ 10 Thermostat with LCD Screen</label>
+    <label>TZ10 Thermostat with LCD Screen</label>
     <description><![CDATA[
 Thermostat with LCD Screen<br /><h2>Inclusion Information</h2><p>Press "Manual" button three times in two seconds, "wireless" icon will start to blink</p>
     ]]></description>
@@ -49,7 +49,7 @@ Thermostat with LCD Screen<br /><h2>Inclusion Information</h2><p>Press "Manual" 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">TKB Home</property>
-      <property name="modelId">TZ 10</property>
+      <property name="modelId">TZ10</property>
       <property name="manufacturerId">0118</property>
       <property name="manufacturerRef">0201:0501</property>
       <property name="dbReference">794</property>

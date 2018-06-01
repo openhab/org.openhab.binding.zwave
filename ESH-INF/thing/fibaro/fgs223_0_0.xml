@@ -26,6 +26,12 @@ Double Switch 2<br /><h1>Overview</h1><p>FIBARO Switch 2 is designed to be insta
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
         </properties>
       </channel>
+      <channel id="meter_reset" typeId="meter_reset">
+        <label>Meter Reset</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_METER;reset=true</property>
+        </properties>
+      </channel>
       <channel id="scene_number" typeId="scene_number">
         <label>Scene Number</label>
         <properties>
@@ -518,7 +524,7 @@ Measuring energy consumed by the device itself<br /><h1>Overview</h1><p>This par
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
         <description><![CDATA[
-reports the device status and allows for assigning single device only (main controller by default).<br /><h1>Overview</h1><p>1st association group – “Lifeline” reports the device status and allows for assigning single device only (main controller by default).</p>
+Reports the device status and allows for assigning single device only (main controller by default).<br /><h1>Overview</h1><p>1st association group – “Lifeline” reports the device status and allows for assigning single device only (main controller by default).</p>
         ]]></description>
       </parameter>
 

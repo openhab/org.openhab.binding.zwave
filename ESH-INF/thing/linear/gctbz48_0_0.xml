@@ -7,7 +7,10 @@
 
   <thing-type id="linear_gctbz48_00_000" listed="false">
     <label>GoControl GC-TBZ48 Z-Wave Plus Thermostat</label>
-    <description>Z-Wave Plus Thermostat</description>
+    <description><![CDATA[
+Z-Wave Plus Thermostat<br /><h1>Overview</h1><p>The Z-Wave Thermostat (GC-TBZ48) is a programmable, Z-Wave communications thermostat. It can be powered using 24VAC (if both “R”&amp;”C”wires are available at the thermostat), or using four (4) AA batteries. Using Z-Wave technology, end users have the ability to use the 2GIG Go!Control panel to control the thermostat, configure programming setings, as well as to display current conditions in the home or office.</p>
+    ]]></description>
+    <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -77,7 +80,7 @@
       <property name="vendor">Linear Corp</property>
       <property name="modelId">GoControl GC-TBZ48</property>
       <property name="manufacturerId">014F</property>
-      <property name="manufacturerRef">5442:5436</property>
+      <property name="manufacturerRef">5442:5431,5442:5436,5442:5437</property>
       <property name="dbReference">622</property>
     </properties>
 

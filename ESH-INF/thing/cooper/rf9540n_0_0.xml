@@ -43,6 +43,12 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION;type=PROTECTION_LOCAL</property>
         </properties>
       </channel>
+      <channel id="indicator_level" typeId="indicator_level">
+        <label>Indicator Light Control</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_INDICATOR</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
