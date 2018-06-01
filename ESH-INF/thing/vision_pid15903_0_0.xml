@@ -8,6 +8,7 @@
   <thing-type id="vision_pid15903_00_000" listed="false">
     <label>PID15903 Plug In Power Monitor</label>
     <description>Plug In Power Monitor</description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

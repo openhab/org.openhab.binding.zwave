@@ -8,6 +8,8 @@ title: ZCOMBO - ZWave
 # ZCOMBO Smoke and Carbon Monoxide Alarm
 This describes the Z-Wave device *ZCOMBO*, manufactured by *BRK Brands, Inc.* with the thing type UID of ```brk_zcombo_00_000```.
 
+The ZCOMBO does not permanently listen for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
+
 ## Overview
 
 No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/238) to improve the documentation.
@@ -113,7 +115,7 @@ This group supports 1 nodes.
 
 ### Documentation Links
 
-* [User](https://www.cd-jackson.com/zwave_device_uploads/238/NXZCOMBO-Specifications.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/238/NXZCOMBO-Specifications.pdf)
 * [Instructions sheet](https://www.cd-jackson.com/zwave_device_uploads/238/first-alert-NXZCOMBO-instructions.pdf)
 
 ---

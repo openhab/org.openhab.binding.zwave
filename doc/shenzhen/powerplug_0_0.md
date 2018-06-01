@@ -13,8 +13,6 @@ The device is in the category of *Power Outlet*, defining Small devices to be pl
 ![NAS-WR01ZE product image](https://www.cd-jackson.com/zwave_device_uploads/397/397_default.jpg)
 
 
-The NAS-WR01ZE does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
-
 ## Overview
 
 This Plug provides line voltage, current load, power consumption and energy
@@ -343,8 +341,8 @@ This group supports 5 nodes.
 ### Documentation Links
 
 * [Instruction Manual Power Plug](https://www.cd-jackson.com/zwave_device_uploads/397/Manual-for-Power-plug-Z-wave-Neo.pdf)
-* [SMART PLUG USER MANUAL](https://www.cd-jackson.com/zwave_device_uploads/397/Smart-Plug-User-Guide--EU-.pdf)
-* [SMART PLUG USER MANUAL - Version from 23.09.2016](https://www.cd-jackson.com/zwave_device_uploads/397/Smart-Plug-User-Guide--EU-.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/397/Smart-Plug-User-Guide--EU-.pdf)
+* [User Manual 23.09.2016](https://www.cd-jackson.com/zwave_device_uploads/397/Smart-Plug-User-Guide--EU-.pdf)
 
 ---
 

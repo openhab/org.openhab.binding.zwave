@@ -8,6 +8,7 @@
   <thing-type id="fibaro_fgs221_02_001" listed="false">
     <label>FGS221 Double Relay Switch 2x1.5kW</label>
     <description>Double Relay Switch 2x1.5kW</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

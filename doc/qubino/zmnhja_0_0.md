@@ -8,8 +8,6 @@ title: ZMNHJA - ZWave
 # ZMNHJA Flush Pilot
 This describes the Z-Wave device *ZMNHJA*, manufactured by *[Goap](http://www.qubino.com/)* with the thing type UID of ```qubino_zmnhja_00_000```.
 
-The ZMNHJA does not permanently listening for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour. The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
-
 ## Overview
 
 No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/354) to improve the documentation.
@@ -370,8 +368,8 @@ This group supports 99 nodes.
 
 ### Documentation Links
 
-* [Reference document in French (not found in English)](https://www.cd-jackson.com/zwave_device_uploads/354/Qubino-Flush-Pilot-wire-user-manual-V2-0-fra.pdf)
-* [Reference of a newer module with the same parameters, in English](https://www.cd-jackson.com/zwave_device_uploads/354/Qubino-Flush-pilot-wire-PLUS-user-manual-V1-1-eng.pdf)
+* [User Manual [French]](https://www.cd-jackson.com/zwave_device_uploads/354/Qubino-Flush-Pilot-wire-user-manual-V2-0-fra.pdf)
+* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/354/Qubino-Flush-pilot-wire-PLUS-user-manual-V1-1-eng.pdf)
 
 ---
 

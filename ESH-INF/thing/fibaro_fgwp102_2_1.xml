@@ -78,7 +78,7 @@ Metered Wall Plug Switch<br /><h1>Overview</h1><p>FIBARO Wall Plug is a universa
         <description><![CDATA[
 Stops reacting to alarm frames and B-button pushes<br /><h1>Overview</h1><p>Once activated, Wall Plug will keep a connected device constantly ON, will stop reacting to alarm frames and B-button push.</p> <p>'Always on' function turns the Plug into a power and energy meter.</p>
         ]]></description>
-        <default>0</default>
+        <default>1</default>
         <options>
           <option value="0">Activated</option>
           <option value="1">Inactive</option>

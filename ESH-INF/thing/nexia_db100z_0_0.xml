@@ -12,7 +12,7 @@
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="notification_power_management" typeId="notification_power_management">
+      <channel id="alarm_raw" typeId="alarm_raw">
         <label>Power Management Notification</label>
         <properties>
           <property name="binding:*:OnOffType">ALARM,BASIC;type=POWER_MANAGEMENT</property>

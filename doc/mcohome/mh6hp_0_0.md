@@ -8,7 +8,9 @@ title: MH6-HP - ZWave
 # MH6-HP Programmable Thermostat
 This describes the Z-Wave device *MH6-HP*, manufactured by *[McoHome Technology Co., Ltd](http://www.mcohome.com/)* with the thing type UID of ```mcohome_mh6hp_00_000```.
 
-# Overview
+## Overview
+
+No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/729) to improve the documentation.
 
 ## Channels
 
@@ -90,15 +92,11 @@ The ```thermostat_setpoint``` channel supports the ```Number``` item and is in t
 
 ### Thermostat fan mode
 
-
-
-The ```thermostat_fanmode``` channel supports the `````` item.
+Channel type information on this channel is not found.
 
 ### Thermostat fan state
 
-
-
-The ```thermostat_fanstate``` channel supports the `````` item.
+Channel type information on this channel is not found.
 
 ### Clock Time Offset
 
@@ -155,4 +153,4 @@ This group supports 1 nodes.
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [edit the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/729).
+You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/729).
