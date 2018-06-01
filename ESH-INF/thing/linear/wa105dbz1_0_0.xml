@@ -5,10 +5,9 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="linear_wa105dbz_00_000" listed="false">
-    <label>WA105DBZ Siren and Strobe</label>
-    <description>Siren and Strobe</description>
-    <category>Siren</category>
+  <thing-type id="linear_wa105dbz1_00_000" listed="false">
+    <label>WA105DBZ-1 Siren &amp; Strobe</label>
+    <description>Siren &amp; Strobe</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -18,20 +17,15 @@
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
-        <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
-        </properties>
-      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Linear Corp</property>
-      <property name="modelId">WA105DBZ</property>
+      <property name="modelId">WA105DBZ-1</property>
       <property name="manufacturerId">014F</property>
-      <property name="manufacturerRef">2005:0503,2009:0903</property>
-      <property name="dbReference">365</property>
+      <property name="manufacturerRef">2009:0903</property>
+      <property name="dbReference">396</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -44,26 +38,23 @@
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
-      <parameter name="config_0_1" type="integer" groupName="configuration">
-        <label>0: Siren Strobe Mode</label>
-        <description>Defines the reaction of the siren</description>
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: Siren / Strobe Mode</label>
         <default>0</default>
         <options>
-          <option value="0">All Enabled</option>
-          <option value="1">Siren Only</option>
+          <option value="0">Siren and Strobe</option>
+          <option value="1">Siren Ony</option>
           <option value="2">Strobe Only</option>
         </options>
       </parameter>
 
-      <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: Alarm auto stop</label>
-        <description>Defines the auto time out of the alarm indication</description>
+      <parameter name="config_2_1" type="integer" groupName="configuration">
+        <label>2: Auto Stop Time</label>
         <default>0</default>
         <options>
-          <option value="0">30 seconds</option>
-          <option value="1">60 seconds</option>
-          <option value="2">120 seconds</option>
-          <option value="3">Continuous</option>
+          <option value="0">30 Seconds</option>
+          <option value="1">60 Seconds</option>
+          <option value="2">120 Seconds</option>
         </options>
       </parameter>
 

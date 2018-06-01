@@ -8,6 +8,7 @@
   <thing-type id="aeon_dsb05_00_000" listed="false">
     <label>DSB05 4 in One MultiSensor</label>
     <description>4 in One MultiSensor</description>
+    <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

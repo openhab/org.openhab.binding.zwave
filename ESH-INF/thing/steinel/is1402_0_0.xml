@@ -35,7 +35,7 @@ PIR sensor with relay<br /><h1>Overview</h1><p>11. Technical specifications</p> 
       <channel id="sensor_luminance" typeId="sensor_luminance">
         <label>Sensor (luminance)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=LUMINANCE</property>
         </properties>
       </channel>
       <channel id="alarm_burglar" typeId="alarm_burglar">
@@ -59,7 +59,7 @@ PIR sensor with relay<br /><h1>Overview</h1><p>11. Technical specifications</p> 
       <channel id="sensor_luminance2" typeId="sensor_luminance">
         <label>Sensor (luminance)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:2,COMMAND_CLASS_BASIC:2</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:2,COMMAND_CLASS_BASIC:2;type=LUMINANCE</property>
         </properties>
       </channel>
       <channel id="switch_binary3" typeId="switch_binary">

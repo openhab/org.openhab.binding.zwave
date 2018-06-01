@@ -8,6 +8,7 @@
   <thing-type id="fibaro_fgfs101_00_000" listed="false">
     <label>FGFS101 Flood Sensor</label>
     <description>Flood Sensor</description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -106,9 +107,7 @@
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>7: Forced Level of Dimming group 1</label>
-        <description><![CDATA[
-Value of the parameter specifying the forced level of dimming / opening sun blinds when comes 'switch on' / 'open' command to devices from association group no. 1.<br /> In the case of alarm frames the alarm priority is specified. Possible parameter setti
-        ]]></description>
+        <description>Value of the parameter specifying the forced level of dimming / opening sun blinds when comes 'switch on' / 'open' command to devices from association group 1.</description>
         <default>255</default>
       </parameter>
 

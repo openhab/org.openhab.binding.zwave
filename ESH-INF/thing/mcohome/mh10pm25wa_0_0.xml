@@ -37,7 +37,7 @@
       <property name="vendor">McoHome Technology Co., Ltd</property>
       <property name="modelId">MH10-PM2.5-WA</property>
       <property name="manufacturerId">015F</property>
-      <property name="manufacturerRef">0A05:0100,0A05:0201</property>
+      <property name="manufacturerRef">0A01:3102,0A05:0100,0A05:0201</property>
       <property name="dbReference">244</property>
       <property name="defaultAssociations">1</property>
     </properties>

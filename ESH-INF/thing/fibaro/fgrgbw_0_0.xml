@@ -8,6 +8,7 @@
   <thing-type id="fibaro_fgrgbw_00_000" listed="false">
     <label>FGRGBW RGBW Controller</label>
     <description>RGBW Controller</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

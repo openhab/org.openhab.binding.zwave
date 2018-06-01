@@ -7,7 +7,10 @@
 
   <thing-type id="ufairy_zse02_00_000" listed="false">
     <label>ZSE02 Zooz Z‑Wave Plus Motion Sensor</label>
-    <description>Zooz Z‑Wave Plus Motion Sensor</description>
+    <description><![CDATA[
+Zooz Z‑Wave Plus Motion Sensor<br /><h2>Inclusion Information</h2><p>Press the button on the motion sensor TWICE quickly to enable motion detection, make sure the button is pushed in when you finish the process. </p>
+    ]]></description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

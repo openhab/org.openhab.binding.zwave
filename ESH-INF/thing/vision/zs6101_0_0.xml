@@ -8,6 +8,7 @@
   <thing-type id="vision_zs6101_00_000" listed="false">
     <label>ZS6101 Smoke Detector</label>
     <description>Smoke Detector</description>
+    <category>SmokeDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
