@@ -13,13 +13,15 @@ The device is in the category of *Light Bulb*, defining Devices that illuminate 
 ![RGBWE2 product image](https://www.cd-jackson.com/zwave_device_uploads/619/619_default.jpg)
 
 
+The RGBWE2 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/619) to improve the documentation.
 
 ## Channels
 
-The following table summarises the channels available for the RGBWE2
+The following table summarises the channels available for the RGBWE2 -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -31,7 +33,6 @@ The following table summarises the channels available for the RGBWE2
 
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
-        
 
 The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
@@ -39,7 +40,6 @@ The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```
 
 The color channel allows to control the color of a light.
             It is also possible to dim values and switch the light on and off.
-        
 
 The ```color_color``` channel supports the ```Color``` item.
 

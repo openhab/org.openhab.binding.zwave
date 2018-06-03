@@ -13,6 +13,8 @@ The device is in the category of *Light Bulb*, defining Devices that illuminate 
 ![XLED Home 2 product image](https://www.cd-jackson.com/zwave_device_uploads/688/688_default.png)
 
 
+The XLED Home 2 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 – Sensor-switched floodlight suitable for wall   
@@ -45,7 +47,7 @@ mode.
 
 ## Channels
 
-The following table summarises the channels available for the XLED Home 2
+The following table summarises the channels available for the XLED Home 2 -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -62,20 +64,19 @@ The following table summarises the channels available for the XLED Home 2
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Scene Number
 
-Triggers when a scene button is pressed
+Triggers when a scene button is pressed.
 
 The ```scene_number``` channel supports the ```Number``` item.
 
 ### Binary Sensor
 
-Indicates if a sensor has triggered
-        
+Indicates if a sensor has triggered.
 
 The ```sensor_binary``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -88,14 +89,13 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Sensor (luminance)
 
-Indicates the current light reading
+Indicates the current light reading.
 
 The ```sensor_luminance``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Alarm (burglar)
 
-Indicates if the burglar alarm is triggered
-        
+Indicates if the burglar alarm is triggered.
 
 The ```alarm_burglar``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -108,8 +108,7 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Alarm (system)
 
-Indicates if a system alarm is triggered
-        
+Indicates if a system alarm is triggered.
 
 The ```alarm_system``` channel supports the ```Switch``` item. This is a read only channel so will only be updated following state changes from the device.
 
@@ -122,20 +121,19 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Control: Key01 lamp (on/off)
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary1``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Scene Number 1
 
-Triggers when a scene button is pressed
+Triggers when a scene button is pressed.
 
 The ```scene_number1``` channel supports the ```Number``` item.
 
 ### Alarm (burglar) motion
 
-Indicates if the burglar alarm is triggered
-        
+Indicates if the burglar alarm is triggered.
 
 The ```alarm_burglar2``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -148,7 +146,7 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Sensor (luminance)2
 
-Indicates the current light reading
+Indicates the current light reading.
 
 The ```sensor_luminance3``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 

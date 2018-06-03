@@ -13,6 +13,8 @@ The device is in the category of *Wall Switch*, defining Any device attached to 
 ![ZMNHAD product image](https://www.cd-jackson.com/zwave_device_uploads/206/206_default.png)
 
 
+The ZMNHAD supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 This Z-Wave module is used for switching on or off the electrical device (e.g. light or fan). The module can be controlled either through Z-wave network or through the wall switch. The module is designed to be mounted inside a “flush mounting box”, hidden behind a traditional wall switch. Module measures power consumption of electrical device and supports connection of digital temperature sensor. It is designed to act as repeater in order to improve range and stability of Z-wave network. Supported switches Module supports mono-stable switches (push button) and bi-stable switches. The module is factory set to operate with bi-stable switches.
@@ -47,7 +49,7 @@ If push button I1 is pressed three times within 3s (or service button S is press
 
 ## Channels
 
-The following table summarises the channels available for the ZMNHAD
+The following table summarises the channels available for the ZMNHAD -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -67,14 +69,13 @@ The following table summarises the channels available for the ZMNHAD
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Binary Sensor
 
-Indicates if a sensor has triggered
-        
+Indicates if a sensor has triggered.
 
 The ```sensor_binary``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -87,20 +88,19 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Electric meter (watts)
 
-Indicates the instantaneous power consumption
+Indicates the instantaneous power consumption.
 
 The ```meter_watts``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (kWh)
 
-Indicates the energy consumption (kWh)
+Indicates the energy consumption (kWh).
 
 The ```meter_kwh``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Alarm (power)
 
-Indicates if a power alarm is triggered
-        
+Indicates if a power alarm is triggered.
 
 The ```alarm_power``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -113,26 +113,25 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Switch 1
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary1``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Electric meter (watts) 1
 
-Indicates the instantaneous power consumption
+Indicates the instantaneous power consumption.
 
 The ```meter_watts1``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (kWh) 1
 
-Indicates the energy consumption (kWh)
+Indicates the energy consumption (kWh).
 
 The ```meter_kwh1``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Binary Sensor I2
 
-Indicates if a sensor has triggered
-        
+Indicates if a sensor has triggered.
 
 The ```sensor_binary2``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -145,8 +144,7 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Alarm (power) 2
 
-Indicates if a power alarm is triggered
-        
+Indicates if a power alarm is triggered.
 
 The ```alarm_power2``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -159,8 +157,7 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Binary Sensor I3
 
-Indicates if a sensor has triggered
-        
+Indicates if a sensor has triggered.
 
 The ```sensor_binary3``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -173,13 +170,13 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Sensor (temperature)
 
-Indicates the current temperature
+Indicates the current temperature.
 
 The ```sensor_temperature3``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Sensor (temperature)
 
-Indicates the current temperature
+Indicates the current temperature.
 
 The ```sensor_temperature4``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 

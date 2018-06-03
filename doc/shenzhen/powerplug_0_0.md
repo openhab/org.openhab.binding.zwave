@@ -13,6 +13,8 @@ The device is in the category of *Power Outlet*, defining Small devices to be pl
 ![NAS-WR01ZE product image](https://www.cd-jackson.com/zwave_device_uploads/397/397_default.jpg)
 
 
+The NAS-WR01ZE supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 This Plug provides line voltage, current load, power consumption and energy
@@ -57,7 +59,7 @@ the LED will flash on and off with yellow alternately five times within 2 second
 
 ## Channels
 
-The following table summarises the channels available for the NAS-WR01ZE
+The following table summarises the channels available for the NAS-WR01ZE -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -70,38 +72,37 @@ The following table summarises the channels available for the NAS-WR01ZE
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Electric meter (amps)
 
-Indicates the instantaneous current consumption
+Indicates the instantaneous current consumption.
 
 The ```meter_current``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (kWh)
 
-Indicates the energy consumption (kWh)
+Indicates the energy consumption (kWh).
 
 The ```meter_kwh``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (watts)
 
-Indicates the instantaneous power consumption
+Indicates the instantaneous power consumption.
 
 The ```meter_watts``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (volts)
 
-Indicates the instantaneous voltage
+Indicates the instantaneous voltage.
 
 The ```meter_voltage``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Alarm (power)
 
-Indicates if a power alarm is triggered
-        
+Indicates if a power alarm is triggered.
 
 The ```alarm_power``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 

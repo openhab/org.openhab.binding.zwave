@@ -9,6 +9,8 @@ title: ZMNHCD - ZWave
 This describes the Z-Wave device *ZMNHCD*, manufactured by *[Goap](http://www.qubino.com/)* with the thing type UID of ```qubino_zmnhcd_00_000```.
 This version of the device is limited to firmware versions below 4.0
 
+The ZMNHCD supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 ZMNHCD version S1 for version up to 4.0
@@ -26,7 +28,7 @@ To enable endpoint 2 (lamella tilt for venetian blinds), follow the procedure:
 
 ## Channels
 
-The following table summarises the channels available for the ZMNHCD
+The following table summarises the channels available for the ZMNHCD -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -42,58 +44,55 @@ The following table summarises the channels available for the ZMNHCD
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Blinds Control
 
-Provides start / stop control of blinds
-        
+Provides start / stop control of blinds.
 
 The ```blinds_control``` channel supports the ```Rollershutter``` item and is in the ```Blinds``` category.
 
 ### Sensor (temperature)
 
-Indicates the current temperature
+Indicates the current temperature.
 
 The ```sensor_temperature``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (watts)
 
-Indicates the instantaneous power consumption
+Indicates the instantaneous power consumption.
 
 The ```meter_watts``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (kWh)
 
-Indicates the energy consumption (kWh)
+Indicates the energy consumption (kWh).
 
 The ```meter_kwh``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Switch 1
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary1``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Blinds Control 1
 
-Provides start / stop control of blinds
-        
+Provides start / stop control of blinds.
 
 The ```blinds_control1``` channel supports the ```Rollershutter``` item and is in the ```Blinds``` category.
 
 ### Switch 2
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary2``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Blinds Control 2
 
-Provides start / stop control of blinds
-        
+Provides start / stop control of blinds.
 
 The ```blinds_control2``` channel supports the ```Rollershutter``` item and is in the ```Blinds``` category.
 

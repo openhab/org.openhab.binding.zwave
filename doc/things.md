@@ -7,7 +7,8 @@ title: Things Summary - ZWave
 
 # Things Supported by the Z-Wave Binding
 
-The binding supports a total of 739 things from 109 manufacturers.
+The binding supports a total of 740 things from 110 manufacturers.
+
 The list below summarises the things currently supported,
 and links to more detailed information about each thing.
 
@@ -133,6 +134,7 @@ and links to more detailed information about each thing.
 | Devolo | [ph-pse02](devolo/phpse02_0_0.md) |  | ```devolo_phpse02_00_000``` | Siren |
 | Devolo | [PST02-1B](devolo/pst021b_0_0.md) |  | ```devolo_pst021b_00_000``` |  |
 | Diehl AKO | [SES FS-ZW](diehl/sesfszw_0_0.md) |  | ```diehl_sesfszw_00_000``` |  |
+| Digital Home Systems Pty Ltd, | [DHS-WIN-BLW-DHS](digitalhome/dhswinblw_0_0.md) |  | ```digitalhome_dhswinblw_00_000``` | Blinds |
 | D-Link | [DCH-Z110](dlink/dchz110_0_0.md) |  | ```dlink_dchz110_00_000``` |  |
 | D-Link | [DCH-Z120](dlink/dchz120_0_0.md) |  | ```dlink_dchz120_00_000``` |  |
 | D-Link | [DCH-Z310](dlink/dchz310_0_0.md) |  | ```dlink_dchz310_00_000``` | Smoke Detector |
@@ -281,7 +283,7 @@ and links to more detailed information about each thing.
 | Jasco Products | [GE 14292](ge/ge14292_0_0.md) |  | ```ge_ge14292_00_000``` |  |
 | Jasco Products | [GE 14294 (ZW3005)](ge/ge14294_0_0.md) |  | ```ge_ge14294_00_000``` | Wall Switch |
 | Jasco Products | [GE 14295](ge/ge14295_0_0.md) |  | ```ge_ge14295_00_000``` |  |
-| Jasco Products | [GE/Jasco 14321](ge/ge14321_0_0.md) |  | ```ge_ge14321_00_000``` |  |
+| Jasco Products | [GE/Jasco 14321](ge/ge14321_0_0.md) |  | ```ge_ge14321_00_000``` | HVAC |
 | Jasco Products | [GE 28167 (ZW3104)](ge/ge28167zw3104_0_0.md) |  | ```ge_ge28167zw3104_00_000``` |  |
 | Jasco Products | [GE 28169](ge/ge28169_0_0.md) |  | ```ge_ge28169_00_000``` | Power Outlet |
 | Jasco Products | [GE Plug in Smart Switch](ge/gepluginsmartswitch_0_0.md) |  | ```ge_gepluginsmartswitch_00_000``` |  |
@@ -468,11 +470,11 @@ and links to more detailed information about each thing.
 | NorthQ | [NQ-9021](northq/nq9021_0_0.md) |  | ```northq_nq9021_00_000``` |  |
 | NorthQ | [NQ-9022](northq/nq9022_0_0.md) |  | ```northq_nq9022_00_000``` |  |
 | NorthQ | [NQ-9121](northq/nq9121_3_0.md) | 3.0 to 3.34 | ```northq_nq9121_03_000``` |  |
-| Fantem | [OOMI ColorStrip](oomi/colorstrip_0_0.md) |  | ```oomi_colorstrip_00_000``` | Light Bulb |
-| Fantem | [Oomi Bulb](oomi/ft098c55_4_0.md) | 4.0 to 4.0 | ```oomi_ft098c55_04_000``` | Light Bulb |
+| Fantem | [FT096](oomi/ft096_0_0.md) |  | ```oomi_ft096_00_000``` | Power Outlet |
+| Fantem | [FT098](oomi/ft098_0_0.md) |  | ```oomi_ft098_00_000``` | Light Bulb |
 | Fantem | [FT111](oomi/ft111_0_0.md) |  | ```oomi_ft111_00_000``` | Wall Switch |
+| Fantem | [FT121](oomi/ft121_0_0.md) |  | ```oomi_ft121_00_000``` | Light Bulb |
 | Fantem | [FT132](oomi/ft132_0_0.md) |  | ```oomi_ft132_00_000``` | Wall Switch |
-| Fantem | [Oomi Plug](oomi/oomiplug_0_0.md) |  | ```oomi_oomiplug_00_000``` |  |
 | permundo GmbH | [PSC132ZW](permundo/psc132zw_0_0.md) |  | ```permundo_psc132zw_00_000``` | Wall Switch |
 | permundo GmbH | [PSC152ZW](permundo/psc152zw_0_0.md) |  | ```permundo_psc152zw_00_000``` | Blinds |
 | permundo GmbH | [PSC234ZW ](permundo/psc234zw_0_0.md) |  | ```permundo_psc234zw_00_000``` | Power Outlet |

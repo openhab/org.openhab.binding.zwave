@@ -17,7 +17,7 @@ No device information is provided in the database. Consider [updating the databa
 
 ## Channels
 
-The following table summarises the channels available for the ZRTSI-VNODE
+The following table summarises the channels available for the ZRTSI-VNODE -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -27,20 +27,19 @@ The following table summarises the channels available for the ZRTSI-VNODE
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Blinds control
 
-Provides start / stop control of blinds
-        
+Provides start / stop control of blinds.
 
 The ```blinds_control``` channel supports the ```Rollershutter``` item and is in the ```Blinds``` category.
 
 ### Scene Number
 
-Triggers when a scene button is pressed
+Triggers when a scene button is pressed.
 
 The ```scene_number``` channel supports the ```Number``` item.
 

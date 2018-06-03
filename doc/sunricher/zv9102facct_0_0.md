@@ -13,6 +13,8 @@ The device is in the category of *Light Bulb*, defining Devices that illuminate 
 ![ZV9102FA-CCT product image](https://www.cd-jackson.com/zwave_device_uploads/793/793_default.png)
 
 
+The ZV9102FA-CCT supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 The SR-ZV9102FA-CCT is a dual color zwave lighting device and z wave slave that adopts z-wave RF Plus and z-wave mesh network technology with 4 channel, 5A per channel output for dual color LED lights. As a z-wave slave, the device can be added to z-wave network or removed from z-wave network by z-wave primary (master) controllers or gateway. The z wave devices are transceivers that enable to receive and transmit RF signal from the z wave remote while both of them are added to the network. The transceiver is a universal z wave slave which is compatible with universal z wave primary (master) controllers/gateway.
@@ -31,7 +33,7 @@ Click the “prog” key on the receiver -> there shall be an indication on the 
 
 ## Channels
 
-The following table summarises the channels available for the ZV9102FA-CCT
+The following table summarises the channels available for the ZV9102FA-CCT -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -45,13 +47,12 @@ The following table summarises the channels available for the ZV9102FA-CCT
 
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
-        
 
 The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Scene Number
 
-Triggers when a scene button is pressed
+Triggers when a scene button is pressed.
 
 The ```scene_number``` channel supports the ```Number``` item.
 
@@ -59,7 +60,6 @@ The ```scene_number``` channel supports the ```Number``` item.
 
 The color channel allows to control the color of a light.
             It is also possible to dim values and switch the light on and off.
-        
 
 The ```color_color``` channel supports the ```Color``` item.
 
@@ -72,8 +72,7 @@ The ```color_temperature``` channel supports the ```Dimmer``` item and is in the
 
 ### Alarm (system)
 
-Indicates if a system alarm is triggered
-        
+Indicates if a system alarm is triggered.
 
 The ```alarm_system``` channel supports the ```Switch``` item. This is a read only channel so will only be updated following state changes from the device.
 

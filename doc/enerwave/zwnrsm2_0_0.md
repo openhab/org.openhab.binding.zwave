@@ -13,13 +13,15 @@ The device is in the category of *Wall Switch*, defining Any device attached to 
 ![ZWN-RSM2 product image](https://www.cd-jackson.com/zwave_device_uploads/465/465_default.png)
 
 
+The ZWN-RSM2 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/465) to improve the documentation.
 
 ## Channels
 
-The following table summarises the channels available for the ZWN-RSM2
+The following table summarises the channels available for the ZWN-RSM2 -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -29,19 +31,19 @@ The following table summarises the channels available for the ZWN-RSM2
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Switch 1
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary1``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Switch 2
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary2``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 

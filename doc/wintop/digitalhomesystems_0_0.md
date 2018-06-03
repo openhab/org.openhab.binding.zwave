@@ -8,13 +8,15 @@ title: Digital Home Systems - ZWave
 # Digital Home Systems In Wall Switch
 This describes the Z-Wave device *Digital Home Systems*, manufactured by *Wintop* with the thing type UID of ```wintop_digitalhomesystems_00_000```.
 
+The Digital Home Systems supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/634) to improve the documentation.
 
 ## Channels
 
-The following table summarises the channels available for the Digital Home Systems
+The following table summarises the channels available for the Digital Home Systems -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -23,13 +25,13 @@ The following table summarises the channels available for the Digital Home Syste
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Scene Number
 
-Triggers when a scene button is pressed
+Triggers when a scene button is pressed.
 
 The ```scene_number``` channel supports the ```Number``` item.
 

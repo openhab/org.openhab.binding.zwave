@@ -8,13 +8,15 @@ title: SmartPower - ZWave
 # SmartPower RAone SmartPower
 This describes the Z-Wave device *SmartPower*, manufactured by *INNOVUS* with the thing type UID of ```innovus_smartpower_00_000```.
 
+The SmartPower supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/61) to improve the documentation.
 
 ## Channels
 
-The following table summarises the channels available for the SmartPower
+The following table summarises the channels available for the SmartPower -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -24,19 +26,19 @@ The following table summarises the channels available for the SmartPower
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Sensor (power)
 
-Indicates the energy consumption (kWh)
+Indicates the energy consumption (kWh).
 
 The ```sensor_power``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (kWh)
 
-Indicates the energy consumption (kWh)
+Indicates the energy consumption (kWh).
 
 The ```meter_kwh``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 

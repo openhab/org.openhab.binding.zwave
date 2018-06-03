@@ -8,13 +8,15 @@ title: CA3000 - ZWave
 # CA3000 Wall Switch
 This describes the Z-Wave device *CA3000*, manufactured by *Intermatic* with the thing type UID of ```intermatic_intermaticca3000_00_000```.
 
+The CA3000 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/468) to improve the documentation.
 
 ## Channels
 
-The following table summarises the channels available for the CA3000
+The following table summarises the channels available for the CA3000 -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -22,7 +24,7 @@ The following table summarises the channels available for the CA3000
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 

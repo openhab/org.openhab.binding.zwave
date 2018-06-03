@@ -8,13 +8,15 @@ title: powerSwitch - ZWave
 # powerSwitch Power Switch EU
 This describes the Z-Wave device *powerSwitch*, manufactured by *[BeNext](http://www.benext.eu/)* with the thing type UID of ```benext_powerswitch_00_000```.
 
+The powerSwitch supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/224) to improve the documentation.
 
 ## Channels
 
-The following table summarises the channels available for the powerSwitch
+The following table summarises the channels available for the powerSwitch -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -22,7 +24,7 @@ The following table summarises the channels available for the powerSwitch
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 

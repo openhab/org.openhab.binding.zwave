@@ -13,6 +13,8 @@ The device is in the category of *Power Outlet*, defining Small devices to be pl
 ![HKZW_SO03 product image](https://www.cd-jackson.com/zwave_device_uploads/677/677_default.jpg)
 
 
+The HKZW_SO03 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 WELL DONE!  
@@ -96,7 +98,7 @@ Please repeat the process following all steps carefully if the first attempt is 
 
 ## Channels
 
-The following table summarises the channels available for the HKZW_SO03
+The following table summarises the channels available for the HKZW_SO03 -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -109,37 +111,37 @@ The following table summarises the channels available for the HKZW_SO03
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Scene Number
 
-Triggers when a scene button is pressed
+Triggers when a scene button is pressed.
 
 The ```scene_number``` channel supports the ```Number``` item.
 
 ### Electric meter (kWh)
 
-Indicates the energy consumption (kWh)
+Indicates the energy consumption (kWh).
 
 The ```meter_kwh``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (volts)
 
-Indicates the instantaneous voltage
+Indicates the instantaneous voltage.
 
 The ```meter_voltage``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (watts)
 
-Indicates the instantaneous power consumption
+Indicates the instantaneous power consumption.
 
 The ```meter_watts``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (amps)
 
-Indicates the instantaneous current consumption
+Indicates the instantaneous current consumption.
 
 The ```meter_current``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 

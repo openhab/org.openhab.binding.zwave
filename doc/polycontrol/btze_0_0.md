@@ -13,6 +13,8 @@ The device is in the category of *Lock*, defining Devices whose primary pupose i
 ![Danalock V3-BTZE product image](https://www.cd-jackson.com/zwave_device_uploads/708/708_default.png)
 
 
+The Danalock V3-BTZE supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
+
 ## Overview
 
 Danalock supports:   
@@ -41,16 +43,16 @@ To remove or exclude the Danalock into a Z-Wave network
 
 ## Channels
 
-The following table summarises the channels available for the Danalock V3-BTZE
+The following table summarises the channels available for the Danalock V3-BTZE -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
 | Door Lock | lock_door | Door | Switch | 
-| battery-level | system.battery-level | Battery | Number |
+| Battery Level | battery-level | Battery | Number |
 
 ### Door Lock
 
-Lock and unlock the door
+Lock and unlock the door.
 
 The ```lock_door``` channel supports the ```Switch``` item and is in the ```Door``` category.
 
@@ -58,7 +60,7 @@ The ```lock_door``` channel supports the ```Switch``` item and is in the ```Door
 
 Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
 
-The ```system.battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
+The ```battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
 
 
 

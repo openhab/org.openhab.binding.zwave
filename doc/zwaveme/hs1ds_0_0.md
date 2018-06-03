@@ -16,18 +16,17 @@ No device information is provided in the database. Consider [updating the databa
 
 ## Channels
 
-The following table summarises the channels available for the HS1DS
+The following table summarises the channels available for the HS1DS -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
 | Binary Sensor | sensor_door | Door | Contact | 
 | Alarm (burglar) | alarm_burglar | Door | Switch | 
-| battery-level | system.battery-level | Battery | Number |
+| Battery Level | battery-level | Battery | Number |
 
 ### Binary Sensor
 
-Indicates if the door/window is open or closed
-        
+Indicates if the door/window is open or closed.
 
 The ```sensor_door``` channel supports the ```Contact``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -40,8 +39,7 @@ The following state translation is provided for this channel to the ```Contact``
 
 ### Alarm (burglar)
 
-Indicates if the burglar alarm is triggered
-        
+Indicates if the burglar alarm is triggered.
 
 The ```alarm_burglar``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -56,7 +54,7 @@ The following state translation is provided for this channel to the ```Switch```
 
 Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
 
-The ```system.battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
+The ```battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
 
 
 

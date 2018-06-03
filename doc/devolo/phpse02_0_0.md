@@ -13,6 +13,8 @@ The device is in the category of *Siren*, defining Siren used by Alarm systems.
 ![ph-pse02 product image](https://www.cd-jackson.com/zwave_device_uploads/453/453_default.jpg)
 
 
+The ph-pse02 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 **\### NOTE ###**
@@ -70,7 +72,7 @@ Source: https://www.zipato.com/product/multisound-indoor-siren
 
 ## Channels
 
-The following table summarises the channels available for the ph-pse02
+The following table summarises the channels available for the ph-pse02 -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -82,14 +84,13 @@ The following table summarises the channels available for the ph-pse02
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Binary Sensor
 
-Indicates if a sensor has triggered
-        
+Indicates if a sensor has triggered.
 
 The ```sensor_binary``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -102,8 +103,7 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Alarm (burglar)
 
-Indicates if the burglar alarm is triggered
-        
+Indicates if the burglar alarm is triggered.
 
 The ```alarm_burglar``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -116,8 +116,7 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Alarm (general)
 
-Indicates if an alarm is triggered
-        
+Indicates if an alarm is triggered.
 
 The ```alarm_general``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -192,8 +191,7 @@ sound
 
 silent alarm (no sound, flashing LED)
 
-Sends a notification
-        
+Sends a notification.
 
 The ```notification_send``` channel supports the ```Number``` item.
 

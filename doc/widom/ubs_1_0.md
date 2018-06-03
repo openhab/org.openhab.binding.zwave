@@ -9,13 +9,15 @@ title: WiDom Universal Relay Switch - ZWave
 This describes the Z-Wave device *WiDom Universal Relay Switch*, manufactured by *wiDom* with the thing type UID of ```widom_ubs_01_000```.
 This version of the device is limited to firmware version 1.0
 
+The WiDom Universal Relay Switch supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/298) to improve the documentation.
 
 ## Channels
 
-The following table summarises the channels available for the WiDom Universal Relay Switch
+The following table summarises the channels available for the WiDom Universal Relay Switch -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -23,7 +25,7 @@ The following table summarises the channels available for the WiDom Universal Re
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 

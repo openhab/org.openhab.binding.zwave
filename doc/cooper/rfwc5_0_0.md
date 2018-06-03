@@ -14,7 +14,7 @@ No device information is provided in the database. Consider [updating the databa
 
 ## Channels
 
-The following table summarises the channels available for the RFWC5
+The following table summarises the channels available for the RFWC5 -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -22,7 +22,7 @@ The following table summarises the channels available for the RFWC5
 
 ### Scene Number
 
-Triggers when a scene button is pressed
+Triggers when a scene button is pressed.
 
 The ```scene_number``` channel supports the ```Number``` item.
 

@@ -13,6 +13,8 @@ The device is in the category of *Power Outlet*, defining Small devices to be pl
 ![swiidplug product image](https://www.cd-jackson.com/zwave_device_uploads/49/49_default.jpg)
 
 
+The swiidplug supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 The SwiidPlug™ is designed to switch on and off remotely appliances (mainly lights) which are plugged into its female socket, The SwiidPlug™ is suitable for the wireless switching of incandescent light bulbs as well as halogen and LED lights (all transformer types). The SwiidPlug™ can be operated manually by pressing on its FUNCTION button which then acts as an on/off toggle switch and can be operated remotely and wirelessly by Z -Wave®. The SwiidPlug™ can also handle associations with other devices, both ways to and from it. Thus, your SwiidPlug™ can respond directly to a signal from another Z-Wave® device in your network, such as the triggering of a presence detector. As soon as it has been plugged into a mains socket, the SwiidPlug™ can be included into a Z-Wave® network so as to interoperate with controllers and other Z-Wave® devices.
@@ -23,7 +25,7 @@ http://www.swiid.com/medias/documents/advanced-swiidplug.pdf
 
 ## Channels
 
-The following table summarises the channels available for the swiidplug
+The following table summarises the channels available for the swiidplug -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -31,7 +33,7 @@ The following table summarises the channels available for the swiidplug
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 

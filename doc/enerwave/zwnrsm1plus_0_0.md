@@ -13,6 +13,8 @@ The device is in the category of *Wall Switch*, defining Any device attached to 
 ![ZWN-RSM1-PLUS product image](https://www.cd-jackson.com/zwave_device_uploads/575/575_default.png)
 
 
+The ZWN-RSM1-PLUS supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 ZWN-RSM1-Plus
@@ -55,7 +57,7 @@ the relay to groups & scenes or change advanced functions. Refer to the Hub’s 
 
 ## Channels
 
-The following table summarises the channels available for the ZWN-RSM1-PLUS
+The following table summarises the channels available for the ZWN-RSM1-PLUS -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -63,7 +65,7 @@ The following table summarises the channels available for the ZWN-RSM1-PLUS
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
