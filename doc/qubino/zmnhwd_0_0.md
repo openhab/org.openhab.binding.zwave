@@ -13,6 +13,8 @@ The device is in the category of *Wall Switch*, defining Any device attached to 
 ![ZMNHWD product image](https://www.cd-jackson.com/zwave_device_uploads/567/567_default.jpg)
 
 
+The ZMNHWD supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 Qubino Flush RGBW module controls RGB/RGBW strips and LED strips or bulbs and has 5 special scene effects. It can also control halogen lights and fans. Its extremely small size allows for easy installation behind wall sockets and switches. Controlled devices may be powered by 12 or 24 VDC.
@@ -36,7 +38,7 @@ To exclude the device, press the service button 3 times within 2 seconds. The gr
 
 ## Channels
 
-The following table summarises the channels available for the ZMNHWD
+The following table summarises the channels available for the ZMNHWD -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -47,7 +49,7 @@ The following table summarises the channels available for the ZMNHWD
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
@@ -55,7 +57,6 @@ The ```switch_binary``` channel supports the ```Switch``` item and is in the ```
 
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
-        
 
 The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
@@ -63,7 +64,6 @@ The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```
 
 The color channel allows to control the color of a light.
             It is also possible to dim values and switch the light on and off.
-        
 
 The ```color_color``` channel supports the ```Color``` item.
 

@@ -13,13 +13,15 @@ The device is in the category of *Sensor*, defining Device used to measure somet
 ![DX1WL-Z product image](https://www.cd-jackson.com/zwave_device_uploads/659/659_default.jpg)
 
 
+The DX1WL-Z supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/659) to improve the documentation.
 
 ## Channels
 
-The following table summarises the channels available for the DX1WL-Z
+The following table summarises the channels available for the DX1WL-Z -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|

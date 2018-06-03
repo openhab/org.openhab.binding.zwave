@@ -14,6 +14,8 @@ The device is in the category of *Power Outlet*, defining Small devices to be pl
 ![GWPN1 product image](https://www.cd-jackson.com/zwave_device_uploads/102/102_default.jpg)
 
 
+The GWPN1 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 This Configuration is for the 1 plug version of the PowerNode.
@@ -34,7 +36,7 @@ On the PowerNode, press and hold the **Sync** button for approximately one secon
 
 ## Channels
 
-The following table summarises the channels available for the GWPN1
+The following table summarises the channels available for the GWPN1 -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -46,32 +48,31 @@ The following table summarises the channels available for the GWPN1
 
 ###  Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Electric meter (watts)
 
-Indicates the instantaneous power consumption
+Indicates the instantaneous power consumption.
 
 The ```meter_watts``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (kWh)
 
-Indicates the energy consumption (kWh)
+Indicates the energy consumption (kWh).
 
 The ```meter_kwh``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Reset total power consumption
 
-Reset the meter
+Reset the meter.
 
 The ```meter_reset``` channel supports the ```Switch``` item and is in the ```Energy``` category.
 
 ### Alarm
 
-Indicates if an alarm is triggered
-        
+Indicates if an alarm is triggered.
 
 The ```alarm_general``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 

@@ -13,6 +13,8 @@ The device is in the category of *Wall Switch*, defining Any device attached to 
 ![NZW31 product image](https://www.cd-jackson.com/zwave_device_uploads/807/807_default.jpg)
 
 
+The NZW31 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 Inovelli's In-Wall Smart Dimmer not only has the ability to control lights from anywhere in the world, but it acts as a Z-Wave signal repeater, which amplifies your Z-Wave signal, growing the capabilities of your network.   
@@ -43,7 +45,7 @@ Congratulations, you now have a remote controlled switch!
 
 ## Channels
 
-The following table summarises the channels available for the NZW31
+The following table summarises the channels available for the NZW31 -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -53,7 +55,6 @@ The following table summarises the channels available for the NZW31
 
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
-        
 
 The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 

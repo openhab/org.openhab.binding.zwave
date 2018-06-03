@@ -11,13 +11,15 @@ This describes the Z-Wave device *Sensoair*, manufactured by *[SIEGENIA-AUBI KG]
 ![Sensoair product image](https://www.cd-jackson.com/zwave_device_uploads/451/451_default.jpg)
 
 
+The Sensoair supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/451) to improve the documentation.
 
 ## Channels
 
-The following table summarises the channels available for the Sensoair
+The following table summarises the channels available for the Sensoair -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -25,7 +27,7 @@ The following table summarises the channels available for the Sensoair
 
 ### Sensor (CO2)
 
-Indicates the CO2 level
+Indicates the CO2 level.
 
 The ```sensor_co2``` channel supports the ```Number``` item. This is a read only channel so will only be updated following state changes from the device.
 

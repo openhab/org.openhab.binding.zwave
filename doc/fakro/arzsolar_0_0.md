@@ -13,6 +13,8 @@ The device is in the category of *Blinds*, defining Roller shutters, window blin
 ![ARZ Solar product image](https://www.cd-jackson.com/zwave_device_uploads/853/853_default.jpg)
 
 
+The ARZ Solar supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
+
 ## Overview
 
 Roller shutter controlled by a remote control. Solar roller shutter is equipped with a control unit and accumulator. The accumulator is powered by a solar cell placed on the roller shutter. Recommended for places with no access to 230V supply.
@@ -27,17 +29,17 @@ Start EXCLUDE procedure with the controller of existing network and then press p
 
 ## Channels
 
-The following table summarises the channels available for the ARZ Solar
+The following table summarises the channels available for the ARZ Solar -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
 | Switch | switch_binary | Switch | Switch | 
 | Dimmer | switch_dimmer | DimmableLight | Dimmer | 
-| battery-level | system.battery-level | Battery | Number |
+| Battery Level | battery-level | Battery | Number |
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
@@ -45,7 +47,6 @@ The ```switch_binary``` channel supports the ```Switch``` item and is in the ```
 
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
-        
 
 The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
@@ -53,7 +54,7 @@ The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```
 
 Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
 
-The ```system.battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
+The ```battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
 
 
 

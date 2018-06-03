@@ -14,7 +14,7 @@ Switch (Top)
 
 ## Channels
 
-The following table summarises the channels available for the VRCS2-MRX
+The following table summarises the channels available for the VRCS2-MRX -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -23,13 +23,13 @@ The following table summarises the channels available for the VRCS2-MRX
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Scene Number
 
-Triggers when a scene button is pressed
+Triggers when a scene button is pressed.
 
 The ```scene_number``` channel supports the ```Number``` item.
 

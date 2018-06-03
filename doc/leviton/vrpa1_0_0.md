@@ -8,6 +8,8 @@ title: VRPA1 - ZWave
 # VRPA1 Vizia RF + Scene Capable Plug-in Module
 This describes the Z-Wave device *VRPA1*, manufactured by *Leviton* with the thing type UID of ```leviton_vrpa1_00_000```.
 
+The VRPA1 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 The Vizia RF + Scene Capable Plug-in Appliance Module (VRPA1-1LW) is ideal for any residential setting where remote ON/OFF switching of appliances, motor loads up to 1/2 HP, or freestanding lights, including Incandescent, Magnetic Low Voltage, Fluorescent and Compact Fluorescent loads is needed. Typical applications include switching of fluorescent lamps, portable fans, kitchen appliances, indoor fountains and more. The Vizia RF + Scene Capable Plug-in Appliance Module also allows users to incorporate small appliances into scene and zone home control applications.
@@ -19,7 +21,7 @@ The Vizia RF + Scene Capable Plug-in Appliance Module (VRPA1-1LW) is ideal for a
 
 ## Channels
 
-The following table summarises the channels available for the VRPA1
+The following table summarises the channels available for the VRPA1 -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -28,13 +30,13 @@ The following table summarises the channels available for the VRPA1
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Scene Number
 
-Triggers when a scene button is pressed
+Triggers when a scene button is pressed.
 
 The ```scene_number``` channel supports the ```Number``` item.
 

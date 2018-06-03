@@ -7,7 +7,9 @@
 
   <thing-type id="devolo_mt02648_00_000" listed="false">
     <label>MT02648 Door/Window Contact</label>
-    <description>Door/Window Contact</description>
+    <description><![CDATA[
+Door/Window Contact<br /><h1>Overview</h1><p> The Door/Window Contact and the Motion Detector have two additional functions integrated: temperature and illumination measurement, based on Z-WaveTM technology. </p> <br /><h2>Inclusion Information</h2><p>1. Have Z-WaveTM Controller entered inclusion mode. 2. Pressing tamper key three times within 1.5 seconds to enter the inclusion mode.<br /> 3. After inclusion successful, the device will wake to receive the setting command from Z-WaveTM Controller about 20 seconds.<br /></p> <br /><h2>Exclusion Information</h2><p> 1. Have Z-WaveTM Controller entered exclusion mode.<br /> 2. Pressing tamper key three times within 1.5 seconds to enter the exclusion mode.<br /> Node ID has been excluded. <br /><br /> Reset:<br /> Notice: Use this procedure only in the event that the primary controller is lost or otherwise inoperable.<br /> 1. Pressing tamper key four times within 1.5 seconds and do not release the tamper key in the 4th pressed, and the LED will light ON.<br /> 2. After 3 seconds the LED will turn OFF, after that within 2 seconds, release the tamper key. If successful, the LED will light ON one second. Otherwise, the LED will flash once.<br /> 3. IDs are excluded and all settings will reset to factory default. </p> <br /><h2>Wakeup Information</h2><p>to wake-up the device immediately, please remove the front cover, and press the tamper key once. The device will wake-up 10 seconds </p>
+    ]]></description>
     <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -71,7 +73,8 @@ Setting the BASIC command value to turn on the light.<br /><h1>Overview</h1><p>T
         <default>-1</default>
       </parameter>
 
-      <parameter name="config_3_1" type="integer" groupName="configuration">
+      <parameter name="config_3_1" type="integer" groupName="configuration"
+                 min="0" max="99">
         <label>3: PIR Sensitivity</label>
         <description><![CDATA[
 PIR sensitivity settings.<br /><h1>Overview</h1><p>0 means disable the PIR motion. 1 means the lowest sensitivity, 99 means the highest sensitivity. High sensitivity means can detected long distance, but if there is more noise signal in the environment, it will re-trigger too frequency. </p>
@@ -79,7 +82,10 @@ PIR sensitivity settings.<br /><h1>Overview</h1><p>0 means disable the PIR motio
         <default>70</default>
         <options>
           <option value="0">Disable PIR</option>
+          <option value="1">Lowest sensitivity</option>
+          <option value="99">Highest sensitivity</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration">

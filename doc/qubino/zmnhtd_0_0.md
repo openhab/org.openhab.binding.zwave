@@ -13,6 +13,8 @@ The device is in the category of *Sensor*, defining Device used to measure somet
 ![ZMNHTD product image](https://www.cd-jackson.com/zwave_device_uploads/414/414_default.jpg)
 
 
+The ZMNHTD supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 This Z-Wave module is used for energy measurements in single-phase electrical power network and can be used in residential, industrial and utility applications. Meters measure energy directly in 2-wire networks according to the principle of fast sampling of voltage and current signals. A built-in microprocessor calculates energy, power and power factor from the measured signals. The module can be controlled through Z-wave network and it acts as repeater in order to improve range and stability of Z-wave network. It is designed to be mounted on DIN rail.
@@ -45,7 +47,7 @@ By this function all parameters of the module are set to default values and own 
 
 ## Channels
 
-The following table summarises the channels available for the ZMNHTD
+The following table summarises the channels available for the ZMNHTD -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -61,49 +63,49 @@ The following table summarises the channels available for the ZMNHTD
 
 ### Power factor
 
-Indicates the instantaneous power factor
+Indicates the instantaneous power factor.
 
 The ```meter_powerfactor``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Voltage
 
-Indicates the instantaneous voltage
+Indicates the instantaneous voltage.
 
 The ```meter_voltage``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Active Power
 
-Indicates the instantaneous power consumption
+Indicates the instantaneous power consumption.
 
 The ```meter_watts``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Active Energy Comsumption
 
-Indicates the energy consumption (kWh)
+Indicates the energy consumption (kWh).
 
 The ```meter_kwh``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Apparent Energy Consumption
 
-Indicates the energy consumption (kVAh)
+Indicates the energy consumption (kVAh).
 
 The ```meter_kvah``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Current
 
-Indicates the instantaneous current consumption
+Indicates the instantaneous current consumption.
 
 The ```meter_current``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Reset Meter Stats
 
-Reset the meter
+Reset the meter.
 
 The ```meter_reset``` channel supports the ```Switch``` item and is in the ```Energy``` category.
 
 ### switch_binary
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary1``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
@@ -113,7 +115,7 @@ External relay ON
 
 External relay OFF
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary2``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 

@@ -11,6 +11,8 @@ This describes the Z-Wave device *Vitrum III EU Dimmer*, manufactured by *VDA* w
 ![Vitrum III EU Dimmer product image](https://www.cd-jackson.com/zwave_device_uploads/475/475_default.jpg)
 
 
+The Vitrum III EU Dimmer supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 When the device is in the stand-alone mode and is not included in a Z-Wave network the illuminated ring around the touch keys will light red for a moment when passing from one mode to another.
@@ -25,7 +27,7 @@ Press and hold the leftmost touch key for at least 8 seconds. The device will fl
 
 ## Channels
 
-The following table summarises the channels available for the Vitrum III EU Dimmer
+The following table summarises the channels available for the Vitrum III EU Dimmer -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -38,7 +40,6 @@ The following table summarises the channels available for the Vitrum III EU Dimm
 
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
-        
 
 The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
@@ -46,7 +47,6 @@ The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```
 
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
-        
 
 The ```switch_dimmer1``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
@@ -54,7 +54,6 @@ The ```switch_dimmer1``` channel supports the ```Dimmer``` item and is in the ``
 
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
-        
 
 The ```switch_dimmer2``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
@@ -62,7 +61,6 @@ The ```switch_dimmer2``` channel supports the ```Dimmer``` item and is in the ``
 
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
-        
 
 The ```switch_dimmer3``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 

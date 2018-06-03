@@ -13,13 +13,15 @@ The device is in the category of *Wall Switch*, defining Any device attached to 
 ![FGRGBW product image](https://www.cd-jackson.com/zwave_device_uploads/131/131_default.jpg)
 
 
+The FGRGBW supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/131) to improve the documentation.
 
 ## Channels
 
-The following table summarises the channels available for the FGRGBW
+The following table summarises the channels available for the FGRGBW -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -38,25 +40,24 @@ The following table summarises the channels available for the FGRGBW
 
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
-        
 
 The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Sensor (power)
 
-Indicates the energy consumption (kWh)
+Indicates the energy consumption (kWh).
 
 The ```sensor_power``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (watts)
 
-Indicates the instantaneous power consumption
+Indicates the instantaneous power consumption.
 
 The ```meter_watts``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (kWh)
 
-Indicates the energy consumption (kWh)
+Indicates the energy consumption (kWh).
 
 The ```meter_kwh``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -64,13 +65,12 @@ The ```meter_kwh``` channel supports the ```Number``` item and is in the ```Ener
 
 The color channel allows to control the color of a light.
             It is also possible to dim values and switch the light on and off.
-        
 
 The ```color_color``` channel supports the ```Color``` item.
 
 ### Start animation
 
-Triggers when a scene button is pressed
+Triggers when a scene button is pressed.
 
 The ```scene_number``` channel supports the ```Number``` item.
 
@@ -78,7 +78,6 @@ The ```scene_number``` channel supports the ```Number``` item.
 
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
-        
 
 The ```switch_dimmer2``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
@@ -86,7 +85,6 @@ The ```switch_dimmer2``` channel supports the ```Dimmer``` item and is in the ``
 
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
-        
 
 The ```switch_dimmer3``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
@@ -94,7 +92,6 @@ The ```switch_dimmer3``` channel supports the ```Dimmer``` item and is in the ``
 
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
-        
 
 The ```switch_dimmer4``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
@@ -102,7 +99,6 @@ The ```switch_dimmer4``` channel supports the ```Dimmer``` item and is in the ``
 
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
-        
 
 The ```switch_dimmer5``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 

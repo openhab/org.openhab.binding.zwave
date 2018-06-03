@@ -13,13 +13,15 @@ The device is in the category of *Blinds*, defining Roller shutters, window blin
 ![ARZ product image](https://www.cd-jackson.com/zwave_device_uploads/248/248_default.jpg)
 
 
+The ARZ supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/248) to improve the documentation.
 
 ## Channels
 
-The following table summarises the channels available for the ARZ
+The following table summarises the channels available for the ARZ -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -28,14 +30,13 @@ The following table summarises the channels available for the ARZ
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Blinds control
 
-Provides start / stop control of blinds
-        
+Provides start / stop control of blinds.
 
 The ```blinds_control``` channel supports the ```Rollershutter``` item and is in the ```Blinds``` category.
 

@@ -11,6 +11,8 @@ This describes the Z-Wave device *Heating Control*, manufactured by *[BeNext](ht
 ![Heating Control product image](https://www.cd-jackson.com/zwave_device_uploads/473/473_default.png)
 
 
+The Heating Control supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 The Heating Control is the central point of your climate environment. You can overwrite the temperature setpoint of your thermostat, and this product also reports information about your thermostat or boiler. For example the room temperature, boiler pressure, modulation level or water temperature.
@@ -21,7 +23,7 @@ Note: This product only works if the current communication between your thermost
 
 ## Channels
 
-The following table summarises the channels available for the Heating Control
+The following table summarises the channels available for the Heating Control -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -35,7 +37,7 @@ The following table summarises the channels available for the Heating Control
 
 Room temperature of the room thermostat
 
-Indicates the current temperature
+Indicates the current temperature.
 
 The ```sensor_temperature``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -43,7 +45,7 @@ The ```sensor_temperature``` channel supports the ```Number``` item and is in th
 
 The temperature outside, if reported by the boiler
 
-Indicates the current temperature
+Indicates the current temperature.
 
 The ```sensor_temperature``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -51,8 +53,7 @@ The ```sensor_temperature``` channel supports the ```Number``` item and is in th
 
 Determines the mode of the thermostat, either ON ("Heat", 1), or OFF ("Off", 0). The heating setpoint will be applied if the mode Heat is applied and the Energy saving setpoint if the mode Off is applied
 
-Sets the thermostat
-        
+Sets the thermostat.
 
 The ```thermostat_mode``` channel supports the ```Number``` item and is in the ```Temperature``` category.
 The following state translation is provided for this channel to the ```Number``` item type -:
@@ -80,7 +81,7 @@ The following state translation is provided for this channel to the ```Number```
 
 The setpoint used for the heating schedule
 
-Sets the thermostate setpoint
+Sets the thermostate setpoint.
 
 The ```thermostat_setpoint``` channel supports the ```Number``` item and is in the ```Temperature``` category.
 
@@ -88,7 +89,7 @@ The ```thermostat_setpoint``` channel supports the ```Number``` item and is in t
 
 The setpoint used for the energy save heating program
 
-Sets the thermostate setpoint
+Sets the thermostate setpoint.
 
 The ```thermostat_setpoint``` channel supports the ```Number``` item and is in the ```Temperature``` category.
 

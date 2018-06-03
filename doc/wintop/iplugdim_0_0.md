@@ -8,6 +8,8 @@ title: iPlugDim - ZWave
 # iPlugDim Wall Plug with dimming function
 This describes the Z-Wave device *iPlugDim*, manufactured by *Wintop* with the thing type UID of ```wintop_iplugdim_00_000```.
 
+The iPlugDim supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 - The iPlugDim can be remotely controlled.
@@ -37,7 +39,7 @@ The indicator gives various statuses of the device as follows:
 
 ## Channels
 
-The following table summarises the channels available for the iPlugDim
+The following table summarises the channels available for the iPlugDim -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -47,7 +49,6 @@ The following table summarises the channels available for the iPlugDim
 
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
-        
 
 The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 

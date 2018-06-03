@@ -8,13 +8,15 @@ title: AZEMT500BB32MA - ZWave
 # AZEMT500BB32MA American Standard Z-Wave Programmable Thermostat
 This describes the Z-Wave device *AZEMT500BB32MA*, manufactured by *Trane Corporation* with the thing type UID of ```trane_azemt500bb32ma_00_000```.
 
+The AZEMT500BB32MA supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/572) to improve the documentation.
 
 ## Channels
 
-The following table summarises the channels available for the AZEMT500BB32MA
+The following table summarises the channels available for the AZEMT500BB32MA -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -31,26 +33,25 @@ The following table summarises the channels available for the AZEMT500BB32MA
 
 ### Scene Number
 
-Triggers when a scene button is pressed
+Triggers when a scene button is pressed.
 
 The ```scene_number``` channel supports the ```Number``` item.
 
 ### Sensor (relative humidity)
 
-Indicates the current relative humidity
+Indicates the current relative humidity.
 
 The ```sensor_relhumidity``` channel supports the ```Number``` item and is in the ```Humidity``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Sensor (temperature)
 
-Indicates the current temperature
+Indicates the current temperature.
 
 The ```sensor_temperature``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Thermostat mode
 
-Sets the thermostat
-        
+Sets the thermostat.
 
 The ```thermostat_mode``` channel supports the ```Number``` item and is in the ```Temperature``` category.
 The following state translation is provided for this channel to the ```Number``` item type -:
@@ -76,8 +77,7 @@ The following state translation is provided for this channel to the ```Number```
 
 ### Operating State
 
-Sets the thermostat operating state
-        
+Sets the thermostat operating state.
 
 The ```thermostat_state``` channel supports the ```Number``` item and is in the ```Temperature``` category.
 The following state translation is provided for this channel to the ```Number``` item type -:
@@ -94,13 +94,13 @@ The following state translation is provided for this channel to the ```Number```
 
 ### Setpoint (heating)
 
-Sets the thermostate setpoint
+Sets the thermostate setpoint.
 
 The ```thermostat_setpoint``` channel supports the ```Number``` item and is in the ```Temperature``` category.
 
 ### Setpoint (cooling)
 
-Sets the thermostate setpoint
+Sets the thermostate setpoint.
 
 The ```thermostat_setpoint``` channel supports the ```Number``` item and is in the ```Temperature``` category.
 
@@ -114,8 +114,7 @@ Channel type information on this channel is not found.
 
 ### Clock Time Offset
 
-Provides the current time difference for the devices time
-        
+Provides the current time difference for the devices time.
 
 The ```time_offset``` channel supports the ```Number``` item and is in the ```Temperature``` category.
 

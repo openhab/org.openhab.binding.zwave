@@ -13,13 +13,15 @@ The device is in the category of *Light Bulb*, defining Devices that illuminate 
 ![L 810 LED iHF product image](https://www.cd-jackson.com/zwave_device_uploads/705/705_default.png)
 
 
+The L 810 LED iHF supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/705) to improve the documentation.
 
 ## Channels
 
-The following table summarises the channels available for the L 810 LED iHF
+The following table summarises the channels available for the L 810 LED iHF -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -37,20 +39,18 @@ The following table summarises the channels available for the L 810 LED iHF
 
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
-        
 
 The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Scene Number
 
-Triggers when a scene button is pressed
+Triggers when a scene button is pressed.
 
 The ```scene_number``` channel supports the ```Number``` item.
 
 ### Binary Sensor
 
-Indicates if a sensor has triggered
-        
+Indicates if a sensor has triggered.
 
 The ```sensor_binary``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -63,14 +63,13 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Sensor (luminance)
 
-Indicates the current light reading
+Indicates the current light reading.
 
 The ```sensor_luminance``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Alarm (burglar)
 
-Indicates if the burglar alarm is triggered
-        
+Indicates if the burglar alarm is triggered.
 
 The ```alarm_burglar``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -83,8 +82,7 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Alarm (system)
 
-Indicates if a system alarm is triggered
-        
+Indicates if a system alarm is triggered.
 
 The ```alarm_system``` channel supports the ```Switch``` item. This is a read only channel so will only be updated following state changes from the device.
 
@@ -99,20 +97,18 @@ The following state translation is provided for this channel to the ```Switch```
 
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
-        
 
 The ```switch_dimmer1``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Scene Number 1
 
-Triggers when a scene button is pressed
+Triggers when a scene button is pressed.
 
 The ```scene_number1``` channel supports the ```Number``` item.
 
 ### Alarm (burglar) 2
 
-Indicates if the burglar alarm is triggered
-        
+Indicates if the burglar alarm is triggered.
 
 The ```alarm_burglar2``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 

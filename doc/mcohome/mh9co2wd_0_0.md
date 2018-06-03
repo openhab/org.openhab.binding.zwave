@@ -66,7 +66,7 @@ To press K2 once can remove it from the network. “- - -” displays and press 
 
 ## Channels
 
-The following table summarises the channels available for the MH9-CO2-WD
+The following table summarises the channels available for the MH9-CO2-WD -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -78,26 +78,25 @@ The following table summarises the channels available for the MH9-CO2-WD
 
 ### Sensor (temperature)
 
-Indicates the current temperature
+Indicates the current temperature.
 
 The ```sensor_temperature``` channel supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Sensor (relative humidity)
 
-Indicates the current relative humidity
+Indicates the current relative humidity.
 
 The ```sensor_relhumidity``` channel supports the ```Number``` item and is in the ```Humidity``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Sensor (CO2)
 
-Indicates the CO2 level
+Indicates the CO2 level.
 
 The ```sensor_co2``` channel supports the ```Number``` item. This is a read only channel so will only be updated following state changes from the device.
 
 ### Alarm (CO2)
 
-Indicates if the carbon dioxide alarm is triggered
-        
+Indicates if the carbon dioxide alarm is triggered.
 
 The ```alarm_co2``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -110,8 +109,7 @@ The following state translation is provided for this channel to the ```Switch```
 
 ### Alarm (general)
 
-Indicates if an alarm is triggered
-        
+Indicates if an alarm is triggered.
 
 The ```alarm_general``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 

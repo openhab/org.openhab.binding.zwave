@@ -13,6 +13,8 @@ The device is in the category of *Blinds*, defining Roller shutters, window blin
 ![Shuttle S/L product image](https://www.cd-jackson.com/zwave_device_uploads/510/510_default.png)
 
 
+The Shuttle S/L supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 Role type: always on slave
@@ -35,7 +37,7 @@ Not specified
 
 ## Channels
 
-The following table summarises the channels available for the Shuttle S/L
+The following table summarises the channels available for the Shuttle S/L -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -52,7 +54,7 @@ Value:
 
 -0xFF: Open
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
@@ -80,7 +82,6 @@ Secondary switch type: 0x00 (NOT SUPPORTED)
 
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
-        
 
 The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 

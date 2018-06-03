@@ -8,6 +8,8 @@ title: MIMO2+ - ZWave
 # MIMO2+ Dual Digital or Analog Voltage input and Dual Contact Relay
 This describes the Z-Wave device *MIMO2+*, manufactured by *FortrezZ LLC* with the thing type UID of ```fortrezz_mimo2_00_000```.
 
+The MIMO2+ supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 The MIMO2+ module provides two analog or digital input and two relay output (isolated dry contacts, NO-COM-NC) and can be controlled by ZWaveTM. The system includes a program switch for Z-WaveTM inclusion/exclusion and a status light (LED) for various indications.
@@ -28,7 +30,7 @@ The output relay is typically commanded via Z-WaveTM commands. In addition, the 
 
 ## Channels
 
-The following table summarises the channels available for the MIMO2+
+The following table summarises the channels available for the MIMO2+ -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
@@ -42,7 +44,7 @@ The following table summarises the channels available for the MIMO2+
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
@@ -54,8 +56,7 @@ The ```sensor_general``` channel supports the ```Number``` item. This is a read 
 
 ### Alarm (power)
 
-Indicates if a power alarm is triggered
-        
+Indicates if a power alarm is triggered.
 
 The ```alarm_power``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
@@ -80,13 +81,13 @@ The ```sensor_general2``` channel supports the ```Number``` item. This is a read
 
 ### Relay 1
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary3``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Relay 2
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary4``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 

@@ -13,6 +13,8 @@ The device is in the category of *Siren*, defining Siren used by Alarm systems.
 ![HS2WD-Z product image](https://www.cd-jackson.com/zwave_device_uploads/771/771_default.png)
 
 
+The HS2WD-Z supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data from other devices.
+
 ## Overview
 
 Product support sound and light alarm.
@@ -29,16 +31,16 @@ Product support sound and light alarm.
 
 ## Channels
 
-The following table summarises the channels available for the HS2WD-Z
+The following table summarises the channels available for the HS2WD-Z -:
 
 | Channel | Channel Id | Category | Item Type |
 |---------|------------|----------|-----------|
 | Switch | switch_binary | Switch | Switch | 
-| battery-level | system.battery-level | Battery | Number |
+| Battery Level | battery-level | Battery | Number |
 
 ### Switch
 
-Switch the power on and off
+Switch the power on and off.
 
 The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
 
@@ -46,7 +48,7 @@ The ```switch_binary``` channel supports the ```Switch``` item and is in the ```
 
 Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
 
-The ```system.battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
+The ```battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
 
 
 
