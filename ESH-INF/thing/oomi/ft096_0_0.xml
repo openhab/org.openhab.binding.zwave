@@ -5,9 +5,12 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="oomi_oomiplug_00_000" listed="false">
-    <label>Oomi Plug Oomi Plug is a low-cost Z-Wave Switch plug-in module specifically used to enable Z-Wave command and control (on/off) of any plug-in tool.</label>
-    <description>Oomi Plug is a low-cost Z-Wave Switch plug-in module specifically used to enable Z-Wave command and control (on/off) of any plug-in tool.</description>
+  <thing-type id="oomi_ft096_00_000" listed="false">
+    <label>FT096 Plug-in Switch</label>
+    <description><![CDATA[
+Plug-in Switch<br /><h1>Overview</h1><p>Oomi Plug is a low-cost Z-Wave Switch plug-in module specifically used to enable Z-Wave command and control (on/off) of any plug-in tool.</p>
+    ]]></description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -80,7 +83,7 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Fantem</property>
-      <property name="modelId">Oomi Plug</property>
+      <property name="modelId">FT096</property>
       <property name="manufacturerId">016A</property>
       <property name="manufacturerRef">0203:0060</property>
       <property name="dbReference">730</property>
