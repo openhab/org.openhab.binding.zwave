@@ -6,9 +6,9 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="defaro_dad101_00_000" listed="false">
-    <label>DAD-101 Dimmer DAD-101 Dimmer with sensors support</label>
+    <label>DAD-101 Dimmer with sensors support</label>
     <description><![CDATA[
-DAD-101 Dimmer with sensors support<br /><h1>Overview</h1><p>https://defaro.ru/index.php/support/instructions/67-dad-101</p> <p>Please note that parameters 25-37 are missing. Given current interface usability it is real pain in the ass to add all those parameters :(</p> <br /><h2>Inclusion Information</h2><ol><li>Put controller in inclusion mode.</li> <li>Power on device. It should be added automatically (using NWI).</li> <li>If not fast press add/remove button three times.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Put controller in exclusion mode.</li> <li>Fast press add/remove button three times.</li> </ol><br /><h2>Wakeup Information</h2><p>Always listening</p>
+Dimmer with sensors support<br /><h2>Inclusion Information</h2><ol><li>Put controller in inclusion mode.</li> <li>Power on device. It should be added automatically (using NWI).</li> <li>If not fast press add/remove button three times.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Put controller in exclusion mode.</li> <li>Fast press add/remove button three times.</li> </ol><br /><h2>Wakeup Information</h2><p>Always listening</p>
     ]]></description>
     <category>WallSwitch</category>
 
@@ -39,7 +39,7 @@ DAD-101 Dimmer with sensors support<br /><h1>Overview</h1><p>https://defaro.ru/i
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Defaro</property>
-      <property name="modelId">DAD-101 Dimmer</property>
+      <property name="modelId">DAD-101</property>
       <property name="manufacturerId">032E</property>
       <property name="manufacturerRef">0060:0031</property>
       <property name="dbReference">833</property>
