@@ -8,6 +8,7 @@
   <thing-type id="fibaro_fgfs101_23_023" listed="false">
     <label>FGFS101 Flood Sensor</label>
     <description>Flood Sensor</description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

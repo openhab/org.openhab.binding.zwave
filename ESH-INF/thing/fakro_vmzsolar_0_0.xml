@@ -90,7 +90,7 @@ Summer/Winter mode<br /><h1>Overview</h1><p>Summer / Winter mode</p> <p>50 - Aut
         <default>60</default>
       </parameter>
 
-      <parameter name="config_5_1" type="integer" groupName="configuration"
+      <parameter name="config_5_1" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="255">
         <label>5: Temperature</label>
         <description>Temperature</description>

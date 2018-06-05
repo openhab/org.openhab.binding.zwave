@@ -6,8 +6,11 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="nodon_crc3100_00_000" listed="false">
-    <label>CRC-3100 Octon Remote Control</label>
-    <description>Octon Remote Control</description>
+    <label>CRC-3100 Octan Remote Control</label>
+    <description><![CDATA[
+Octan Remote Control<br /><h1>Overview</h1><p>The Octan remote is capable to launch up to 16 different scenes through your home automation gateway</p> <br /><h2>Inclusion Information</h2><p>Place your home automation gateway into “Inclusion” Mode. <br />Simultaneously push on circle button and plus button, during 1sec. The LED glows in pink to confirm the selection.<br />Push on circle button within 10 seconds. <br />The LED blinks in pink to confirm your choice<br />The LED blinks in green to confirm the procedure</p> <br /><h2>Exclusion Information</h2><p>Place your home automation gateway into “Exclusion” Mode. <br />Simultaneously push on circle button and plus button, during 1sec. The LED glows in pink to confirm the selection.<br />Push on circle button within 10 seconds. <br />The LED blinks in pink to confirm your choice<br />The LED blinks in green to confirm the procedure</p>
+    ]]></description>
+    <category>RemoteControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

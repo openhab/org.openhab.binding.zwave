@@ -8,6 +8,7 @@
   <thing-type id="tkb_tz66d_00_000" listed="false">
     <label>TZ66D Dual Paddle Wall Switch</label>
     <description>Dual Paddle Wall Switch</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

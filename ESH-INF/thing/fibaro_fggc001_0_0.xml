@@ -126,7 +126,7 @@ This parameter allows to choose if the menu can be entered using the Hold gestur
         <advanced>true</advanced>
       </parameter>
 
-      <parameter name="config_10_1" type="integer" groupName="configuration"
+      <parameter name="config_10_1" type="integer" groupName="configuration" readOnly="true"
                  min="1" max="63">
         <label>10: Scenes sent to the controller</label>
         <description><![CDATA[

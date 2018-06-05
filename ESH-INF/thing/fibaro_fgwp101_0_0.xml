@@ -7,7 +7,9 @@
 
   <thing-type id="fibaro_fgwp101_00_000" listed="false">
     <label>FGWP101 Metered Wall Plug Switch</label>
-    <description>Metered Wall Plug Switch</description>
+    <description><![CDATA[
+Metered Wall Plug Switch<br /><h1>Overview</h1><p>FIBARO Wall Plug is a universal, Z-Wave Plus compatible, remotely controlled outlet adapter. This device may be applied wherever you want to control electrical devices with up to 2500W load.<br /><br />The Wall Plug is equipped with a power and energy metering function. It uses a LED ring to visualize the current load with colour changing illumination and operating mode. This is the smallest and most attractive device of this type available in the world.<br /><br />The Wall Plug may be operated using the B-button located on its casing or via any Z-Wave compatible controller.</p> <br /><h2>Inclusion Information</h2><p>To add the device to the Z-Wave network:<br /><br />    Plug the device into a socket nearby the main Z-Wave controller.<br />    The LED ring will glow red signalling not being added (reset or remove the device otherwise).<br />    Set the main controller in (security/non-security) add mode (see the controller’s manual).<br />    Quickly, triple click the B-button located on the casing.<br />    Wait for the adding process to end.<br />    Successful adding will be confirmed by the Z-Wave controller’s message.</p> <br /><h2>Exclusion Information</h2><p>To remove the device from the Z-Wave network:<br /><br />    Plug the device into a socket nearby the main Z-Wave controller.<br />    The LED ring will glow green signalling being added (removing is not necessary otherwise).<br />    Set the main controller into remove mode (see the controller’s manual).<br />    Quickly, triple click the B-button located on the casing.<br />    Wait for the removing process to end.<br />    Successful removing will be confirmed by the Z-Wave controller’s message.</p>
+    ]]></description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -85,9 +87,9 @@
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Always on function</label>
         <description><![CDATA[
-Once activated, Wall Plug will keep a connected device ...<br /><h1>Overview</h1><p>... ON, will stop reacting to alarm frames and B-button push.<br />"Always on" function turns the Plug into a power and energy meter.<br />Also, connected device will not be turned off upon receiving an alarm<br />frame from another Z-Wave device (parameter 35 will be ignored).<br />In "Always on" mode, connected device may be turned off only after<br />user defined power has been exceeded (parameter 70). In such a<br />case, connected device can be turned on again by pushing the<br />B-button or sending a control frame. By default, overload protection<br />is inactive. Default setting: 1 </p>
+Once activated, Wall Plug will keep a connected device ...<br /><h1>Overview</h1><p>... ON, will stop reacting to alarm frames and B-button push.<br />"Always on" function turns the Plug into a power and energy meter.<br />Also, connected device will not be turned off upon receiving an alarm<br />frame from another Z-Wave device (parameter 35 will be ignored).<br />In "Always on" mode, connected device may be turned off only after<br />user defined power has been exceeded (parameter 70). In such a<br />case, connected device can be turned on again by pushing the<br />B-button or sending a control frame. By default, overload protection<br />is inactive. Default setting: 1</p>
         ]]></description>
-        <default>0</default>
+        <default>1</default>
         <options>
           <option value="0">Activated</option>
           <option value="1">Inactive</option>

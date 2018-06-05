@@ -8,7 +8,7 @@
   <thing-type id="aeon_zw100_01_007" listed="false">
     <label>ZW100 MultiSensor 6</label>
     <description><![CDATA[
-MultiSensor 6<br /><h1>Overview</h1><p>Technical Specifications: Operating distance:  Up to 500 feet/150 meters outdoors   Operating temperature: 0°C to 40°C   Relative humidity: 8% RH to 80% RH       Function of Z_Wave Button: Click one time:</p> <ol><li>Send non-security Node Info Frame</li> <li>Add MultiSensor into Z-wave network (non security inclusion)</li> <li>Remove MultiSensor from Z-wave network</li> </ol><p>  Short press 2 times within 1 second:</p> <ol><li>Send Security Node Info Frame</li> <li>Add Multisensor into Z-Wave network (security inclusion)</li> <li>Remove MultiSensor from network</li> </ol><p>  Press and hold for 3 seconds:</p> <p>Enable/Disable wake up for 10 minutes.</p> <p>(when it is enabled, the orange Led will fast blink)</p> <p>  Press and hold for 20 seconds:</p> <p>Reset MultiSensor to factory default (see documentation)</p> <br /><h2>Inclusion Information</h2><p>see "Device Overview"</p> <br /><h2>Exclusion Information</h2><p>see "Device Overview"</p>
+MultiSensor 6<br /><h1>Overview</h1><p><strong>Technical Specifications</strong></p> <p>Operating distance:  Up to 500 feet/150 meters outdoors</p> <p>Operating temperature: 0°C to 40°C</p> <p>Relative humidity: 8% RH to 80% RH</p> <p><strong>Function of Z_Wave Button</strong></p> <p>Click one time:</p> <ul><li>Send non-security Node Info Frame</li> <li>Add MultiSensor into Z-wave network (non security inclusion)</li> <li>Remove MultiSensor from Z-wave network</li> </ul><p>Short press 2 times within 1 second:</p> <ul><li>Send Security Node Info Frame</li> <li>Add Multisensor into Z-Wave network (security inclusion)</li> <li>Remove MultiSensor from network</li> </ul><p>Press and hold for 3 seconds:</p> <ul><li>Enable/Disable wake up for 10 minutes. (when it is enabled, the orange Led will fast blink)</li> </ul><p>Press and hold for 20 seconds:</p> <ul><li>Reset MultiSensor to factory default (see documentation)</li> </ul>
     ]]></description>
     <category>Sensor</category>
 
@@ -129,7 +129,7 @@ Motion Sensor reset timeout<br /><h1>Overview</h1><ol><li>The default PIR time i
         </options>
       </parameter>
 
-      <parameter name="config_9_2" type="integer" groupName="configuration"
+      <parameter name="config_9_2" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="1">
         <label>9: Report the current power mode</label>
         <description><![CDATA[
@@ -343,7 +343,7 @@ Ultraviolet Sensor Calibration<br /><h1>Overview</h1><p>Ultraviolet sensor calib
 
       <parameter name="config_252_1" type="integer" groupName="configuration">
         <label>252: Lock Configuration Parameters</label>
-        <description>Enable/disable Configuration Locked (0 =disable, 1 = enable)</description>
+        <description>Enable/disable Configuration Locked</description>
         <default>0</default>
         <options>
           <option value="0">Disable</option>

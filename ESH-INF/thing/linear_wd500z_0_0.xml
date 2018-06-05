@@ -8,6 +8,7 @@
   <thing-type id="linear_wd500z_00_000" listed="false">
     <label>WD500Z-1 Wall Dimmer Switch</label>
     <description>Wall Dimmer Switch</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

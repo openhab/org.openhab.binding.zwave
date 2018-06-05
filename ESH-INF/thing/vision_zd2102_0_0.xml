@@ -7,29 +7,27 @@
 
   <thing-type id="vision_zd2102_00_000" listed="false">
     <label>ZD2102 Door Window Sensor</label>
-    <description><![CDATA[
-Door Window Sensor<br /><h1>Overview</h1><p>This sensor monitors door/ window and send Z-Wave signal when door or window is opened and closed.</p> <p>When the device is secure included into Z-Wave network, above communication will be encrypted.</p>
-    ]]></description>
+    <description>Door Window Sensor</description>
     <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Sensor Binary</label>
+      <channel id="sensor_door" typeId="sensor_door">
+        <label>Sensor (Binary)</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
+          <property name="binding:*:OpenClosedType">SENSOR_BINARY,BASIC</property>
         </properties>
       </channel>
-      <channel id="alarm_burglar" typeId="alarm_burglar">
+      <channel id="alarm_tamper" typeId="alarm_tamper">
         <label>Tamper Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=BURGLAR</property>
+          <property name="binding:*:OnOffType">ALARM;type=BURGLAR, event=3</property>
         </properties>
       </channel>
-      <channel id="sensor_door" typeId="sensor_door">
-        <label>Door Sensor</label>
+      <channel id="alarm_entry" typeId="alarm_entry">
+        <label>Sensor (Alarm)</label>
         <properties>
-          <property name="binding:*:OpenClosedType">ALARM;type=ACCESS_CONTROL</property>
+          <property name="binding:*:OnOffType">ALARM;type=ACCESS_CONTROL, event=2</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -44,29 +42,13 @@ Door Window Sensor<br /><h1>Overview</h1><p>This sensor monitors door/ window an
       <property name="vendor">Vision Security</property>
       <property name="modelId">ZD2102</property>
       <property name="manufacturerId">0109</property>
-      <property name="manufacturerRef">2001:0102,2001:0105,2001:0106</property>
+      <property name="manufacturerRef">2001:0101,2001:0102</property>
       <property name="dbReference">105</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
-
-      <!-- PARAMETER DEFINITIONS -->
-      <parameter-group name="configuration">
-        <context>setup</context>
-        <label>Configuration Parameters</label>
-      </parameter-group>
-
-      <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: External switch</label>
-        <description>Determines if external switch can be used.</description>
-        <default>0</default>
-        <options>
-          <option value="0">Disabled</option>
-          <option value="255">Enabled</option>
-        </options>
-      </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter-group name="association">

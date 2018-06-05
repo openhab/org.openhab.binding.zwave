@@ -8,6 +8,7 @@
   <thing-type id="everspring_sm103_00_000" listed="false">
     <label>SM103 Door/Window Contact</label>
     <description>Door/Window Contact</description>
+    <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -33,7 +33,7 @@
       <channel id="sensor_luminance" typeId="sensor_luminance">
         <label>sensor_luminance</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL</property>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=LUMINANCE</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">

@@ -8,7 +8,7 @@
   <thing-type id="willis_nzw37_00_000" listed="false">
     <label>NZW37 Inovelli Smart Plug (2 Channel with Scene Control)</label>
     <description><![CDATA[
-Inovelli Smart Plug (2 Channel with Scene Control)<br /><h1>Overview</h1><p>The 2 ports smart plug provides one Z-Wave outlet for remote controlled by controller through Z-Wave gateway for internet of thing service and can be configured in Z-Wave sensor network, if Z-Wave certified controller features remote access, you can now control your device  from your mobile phone devices. the other outlet will be manual On/Off by push button on front. The outlets have maximum load for 600W Incandescent, ½ HP motor or 1200W resistive.</p>
+Inovelli Smart Plug (2 Channel with Scene Control)<br /><h1>Overview</h1><p>2 Controllable Outlets</p> <p>Indoor</p> <p>Wall Plug</p> <p>120 VAC, 60 Hz</p> <p>908.42 MHz</p> <p>Max Load Outlet #1 1200W (10A) Resistive</p> <p>Max Load Outlet #2 1200W (10A) Resistive</p> <p>Max Simultaneous Load 16A</p> <p>Max Range LoS 30 m</p> <p>Operating Temperature Range 0°C to 40°C</p> <p>UL E464831</p> <p>FCC ID OXGZW36</p> <br /><h2>Inclusion Information</h2><p>Auto-Inclusion 30 sec from power on</p> <p>Backup-Inclusion Press button 5 times within 1 sec</p> <p>(Tested to work with Network Wide Inclusion)</p>
     ]]></description>
     <category>PowerOutlet</category>
 

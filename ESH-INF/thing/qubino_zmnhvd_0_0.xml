@@ -8,6 +8,7 @@
   <thing-type id="qubino_zmnhvd_00_000" listed="false">
     <label>ZMNHVD Flush Dimmer 0-10V</label>
     <description>Flush Dimmer 0-10V</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -211,8 +212,8 @@
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association">
-        <label>1: Lifeline Group</label>
-        <description>reserved for communication with the main controller</description>
+        <label>1: Lifeline</label>
+        <description>Reserved for communication with the main controller</description>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">

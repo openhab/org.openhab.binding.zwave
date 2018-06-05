@@ -7,7 +7,9 @@
 
   <thing-type id="linear_ngd00z4_00_000" listed="false">
     <label>NGD00Z-4 Garage Door Controller</label>
-    <description>Garage Door Controller</description>
+    <description><![CDATA[
+Garage Door Controller<br /><h1>Overview</h1><p><strong>GARAGE DOOR OPENER REMOTE COMMAND TRANSCEIVER with TILT SENSOR</strong></p> <br /><h2>Inclusion Information</h2><p><strong>TO INCLUDE THE GD00Z-4 INTO YOUR CONTROLLER</strong></p> <ol><li>Place your Z-Wave Controller into Discovery or Include mode.</li> <li>Press and release the link button on the GD00Z-4.</li> <li>Confirm that the GD00Z-4 was recognized by your Z-Wave Controller.</li> </ol><br /><h2>Exclusion Information</h2><p><strong>TO EXCLUDE THE GD00Z-4 FROM YOUR CONTROLLER</strong></p> <ol><li>Place your Z-Wave Controller into Exclude mode.</li> <li>Press and release the link button on the GD00Z-4.</li> <li>Confirm that the GD00Z-4 was excluded by your Z-Wave Controller.</li> </ol>
+    ]]></description>
     <category>GarageDoor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -18,6 +20,12 @@
           <property name="binding:*:DecimalType">BARRIER_OPERATOR</property>
         </properties>
       </channel>
+      <channel id="alarm_raw" typeId="alarm_raw">
+        <label>Alarm (raw)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
@@ -25,7 +33,7 @@
       <property name="vendor">Linear Corp</property>
       <property name="modelId">NGD00Z-4</property>
       <property name="manufacturerId">014F</property>
-      <property name="manufacturerRef">4744:3030,4744:3530</property>
+      <property name="manufacturerRef">4744:3030,4744:3032,4744:3530</property>
       <property name="dbReference">11</property>
       <property name="defaultAssociations">1</property>
     </properties>

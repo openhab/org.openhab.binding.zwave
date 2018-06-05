@@ -251,7 +251,7 @@
         <label>Actions</label>
       </parameter-group>
 
-      <parameter name="config_255_1_wo" type="integer" groupName="configuration">
+      <parameter name="config_255_1_wo" type="integer" groupName="configuration" readOnly="true">
         <label>255: Factory Reset</label>
         <description><![CDATA[
 Reset all settings to factory defaults<br /><h1>Overview</h1><p>If you upgrade firmware and are seeing crazy or impossible numbers, reset to factory then reconfigure unit.</p>

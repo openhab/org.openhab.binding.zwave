@@ -8,6 +8,7 @@
   <thing-type id="fortrezz_wv01_00_000" listed="false">
     <label>WV-01 Wireless Z-Wave Water Valve</label>
     <description>Wireless Z-Wave Water Valve</description>
+    <category>Valve</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -6,8 +6,11 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="devolo_mt2792_00_000" listed="false">
-    <label>MT2792 Home Control Metering Plug</label>
-    <description>Home Control Metering Plug</description>
+    <label>MT02792 Home Control Metering Plug</label>
+    <description><![CDATA[
+Home Control Metering Plug<br /><h1>Overview</h1><p>The devolo Home Control Smart Metering Plug is an intelligent wall socket that adds useful additional functions to all wall sockets present in the household. This enables connected devices to be switched on and off based on time control, either using rules configured in the Z-Wave-compatible control unit or using the corresponding app. In addition, the devolo Home Control Smart Metering Plug has an energy consumption measurement feature.</p> <br /><h2>Inclusion Information</h2><p>The Home Control Smart Metering Plug can be included using two different procedures:<br /> Variant A: Auto Inclusion with the control unit</p> <ol><li>In the Z-Wave-compatible control unit, start the procedure for adding a new device automatically.</li> <li>Plug the Home Control Smart Metering Plug into an available power socket. The Auto Inclusion is run. During the 2-minute timeout of the Auto Inclusion, Node Information Frames are sent within a few seconds. In the auto inclusion, it is not necessary to press the ON/OFF button.</li> </ol><p><br /> Variant B: Manual Inclusion with the control unit If the time frame (2 minutes) of the Auto Inclusion procedure is exceeded, you can also include the Home Control Smart Metering Plug with the control unit manually.</p> <ol><li>In the Z-Wave -compatible control unit, start the procedure for adding a new device (inclusion).</li> <li>Press the button of the connected Smart Metering Plug 3x within 1.2 seconds to start the inclusion process with the Z-Wave-compatible control unit.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Put the Z-Wave controller in Exclusion mode.</li> <li>Press the ON/OFF button 3x within 1.2 seconds to put the device into Exclusion mode. (indicated by white LED: 0.5 sec. ON, 0.5 sec. OFF).</li> <li>Node ID is now removed. (After the removal, the device starts again with Auto Inclusion mode.) Reset: Press the ON/OFF button for at least 10 sec. to reset the device to the factory defaults. After the reboot, the device starts Auto Inclusion again.</li> </ol>
+    ]]></description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -82,7 +85,7 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Devolo</property>
-      <property name="modelId">MT2792</property>
+      <property name="modelId">MT02792</property>
       <property name="manufacturerId">0175</property>
       <property name="manufacturerRef">0001:0012</property>
       <property name="dbReference">618</property>

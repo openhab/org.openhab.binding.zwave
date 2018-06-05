@@ -8,6 +8,7 @@
   <thing-type id="qubino_zmnhod_00_000" listed="false">
     <label>ZMNHOD Flush Shutter DC</label>
     <description>Flush Shutter DC</description>
+    <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

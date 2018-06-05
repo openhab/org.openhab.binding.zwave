@@ -8,7 +8,7 @@
   <thing-type id="eurotronic_spirit_00_000" listed="false">
     <label>Spirit Thermostatic Valve</label>
     <description><![CDATA[
-Thermostatic Valve<br /><h1>Overview</h1><h1>Intelligenter Energiesparregler für Z-Wave mit wechselbaren Designblenden.</h1> <p>Die neue Energiesparreglerserie von EUROtronic steht für ein völlig neues Designkonzept. Mit wechselbare Designblenden (als Zubehör erhältlich) kann der smarte Heizkörperthermostat an den individuellen Einrichtungsgeschmack angepasst werden.</p> <p>Nutzern von Z-Wave bietet der neue Spirit-Z-Wave eine Vielzahl neuer Funktionen.</p> <p>Ausgestattet mit FLiRS (Frequently Listening Receiver Slave) reagiert der Energiesparregler mit einer besonders kurzen Latenzzeit auf eingehende Befehle (z.B. Temperaturänderungen). <br />Sein farbiges Display ist besonders gut ablesbar und hat eine extragroße Temperaturanzeige. <br />Durch die per LED mehrfarbig beleuchtete Mitteltaste ist eine intuitive Nutzerführung möglich, da der Nutzer durch farbige Blinkfolgen zur Interaktion mit dem Gerät aufgefordert wird.</p> <br /><h2>Inclusion Information</h2><p>Start Inclusion mode of your primary Z-Wave Controller. Press the Boost-Button. Spirit Z-Wave Plus will show the assigned NodeID.</p> <br /><h2>Exclusion Information</h2><p>Start Exclusion mode of your primary Z-Wave Controller. Now press and hold the boost button of the Spirit Z-Wave Plus for at least 5 seconds.</p>
+Thermostatic Valve<br /><h2>Inclusion Information</h2><p>Start Inclusion mode of your primary Z-Wave Controller. Press the Boost-Button. Spirit Z-Wave Plus will show the assigned NodeID.</p> <br /><h2>Exclusion Information</h2><p>Start Exclusion mode of your primary Z-Wave Controller. Now press and hold the boost button of the Spirit Z-Wave Plus for at least 5 seconds.</p>
     ]]></description>
     <category>RadiatorControl</category>
 
@@ -45,10 +45,10 @@ Thermostatic Valve<br /><h1>Overview</h1><h1>Intelligenter Energiesparregler fü
           <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=HEATING</property>
         </properties>
       </channel>
-      <channel id="thermostat_setpoint_furnace" typeId="thermostat_setpoint">
+      <channel id="thermostat_setpoint_heating_econ" typeId="thermostat_setpoint">
         <label>Setpoint (energy heat)</label>
         <properties>
-          <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=FURNACE</property>
+          <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=HEATING_ECON</property>
         </properties>
       </channel>
       <channel id="alarm_system" typeId="alarm_system">
@@ -220,6 +220,8 @@ Spirit Z-Wave Plus can only be associated with the Z-Wave controller.<br /><h1>O
         <option value="0">Off</option>
         <option value="11">Economy Heat</option>
         <option value="1">Heat</option>
+        <option value="15">Full Power</option>
+        <option value="31">Manual</option>
       </options>
     </state>
   </channel-type>

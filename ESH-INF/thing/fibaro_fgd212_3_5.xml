@@ -15,8 +15,14 @@
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL,BASIC</property>
+        </properties>
+      </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">SCENE_ACTIVATION</property>
         </properties>
       </channel>
       <channel id="sensor_power" typeId="sensor_power">
@@ -35,6 +41,18 @@
         <label>Electric meter (watts)</label>
         <properties>
           <property name="binding:*:DecimalType">METER;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="meter_reset" typeId="meter_reset">
+        <label>Reset the total power consumption</label>
+        <properties>
+          <property name="binding:*:OnOffType">METER</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param19" typeId="config_decimal">
+        <label>Force initial brightness</label>
+        <properties>
+          <property name="binding:*:DecimalType">CONFIGURATION;parameter=19</property>
         </properties>
       </channel>
       <channel id="alarm_heat" typeId="alarm_heat">
@@ -58,8 +76,8 @@
       <channel id="switch_dimmer1" typeId="switch_dimmer">
         <label>Dimmer 1</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:1</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:1</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:1,BASIC:1</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:1,BASIC:1</property>
         </properties>
       </channel>
       <channel id="sensor_power1" typeId="sensor_power">
@@ -101,8 +119,8 @@
       <channel id="switch_dimmer2" typeId="switch_dimmer">
         <label>Dimmer 2</label>
         <properties>
-          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:2</property>
-          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:2</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL:2,BASIC:2</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL:2,BASIC:2</property>
         </properties>
       </channel>
     </channels>
@@ -112,7 +130,7 @@
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGD212</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0102:1000</property>
+      <property name="manufacturerRef">0102:1000,0102:2000,0102:3000,0102:4000</property>
       <property name="versionMin">3.5</property>
       <property name="dbReference">787</property>
       <property name="defaultAssociations">1</property>
@@ -163,7 +181,7 @@
       </parameter>
 
       <parameter name="config_6_2" type="integer" groupName="configuration"
-                 min="1" max="255">
+                 min="0" max="255">
         <label>6: Dimming Step Timing at Automatic Control</label>
         <description>The parameter defines the time of a dimming step at automatic control. Available settings: 0-255 (0s - 2,55s)</description>
         <default>1</default>
@@ -177,7 +195,7 @@
       </parameter>
 
       <parameter name="config_8_2" type="integer" groupName="configuration"
-                 min="1" max="255">
+                 min="0" max="255">
         <label>8: Dimming Step Timing at Manual Control</label>
         <description>The parameter defines the time of a dimming step at manual control. Available settings: 0-255 (0s - 2,55s)</description>
         <default>5</default>
@@ -223,7 +241,7 @@
         </options>
       </parameter>
 
-      <parameter name="config_14_1" type="integer" groupName="configuration">
+      <parameter name="config_14_1" type="integer" groupName="configuration" readOnly="true">
         <label>14: Auto-calibration status (read-only parameter)</label>
         <description>This parameter determines operating mode of the Dimmer (automatic/manual settings).</description>
         <default>0</default>
@@ -378,7 +396,7 @@
         </options>
       </parameter>
 
-      <parameter name="config_31_1" type="integer" groupName="configuration">
+      <parameter name="config_31_1" type="integer" groupName="configuration" readOnly="true">
         <label>31: Load control mode recognized during auto-calibration</label>
         <description>Load control mode recognized during auto-calibration</description>
         <default>0</default>
@@ -399,7 +417,7 @@
         </options>
       </parameter>
 
-      <parameter name="config_33_1" type="integer" groupName="configuration">
+      <parameter name="config_33_1" type="integer" groupName="configuration" readOnly="true">
         <label>33: Dimmability of the load (read only)</label>
         <description>Dimmability of the load (read only)</description>
         <default>0</default>

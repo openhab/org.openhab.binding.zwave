@@ -186,7 +186,7 @@ Duration (min) the device flashes after a communication error.<br /><h1>Overview
         <default>2</default>
       </parameter>
 
-      <parameter name="config_2_1" type="integer" groupName="configuration">
+      <parameter name="config_2_1" type="integer" groupName="configuration" readOnly="true">
         <label>2: Wheel position</label>
         <description>Wheel position on the GreenWave device (read-only)</description>
         <default>0</default>

@@ -8,6 +8,7 @@
   <thing-type id="thermofloor_tf016_01_008" listed="false">
     <label>TF016 ZWave Thermostat</label>
     <description>ZWave Thermostat</description>
+    <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -54,7 +55,7 @@
       <property name="vendor">ThermoFloor</property>
       <property name="modelId">TF016</property>
       <property name="manufacturerId">019B</property>
-      <property name="manufacturerRef">0001:0001</property>
+      <property name="manufacturerRef">0001:0001,0003:0201</property>
       <property name="versionMin">1.8</property>
       <property name="dbReference">412</property>
       <property name="defaultAssociations">1</property>

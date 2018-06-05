@@ -24,10 +24,10 @@
           <property name="binding:*:OnOffType">SENSOR_BINARY</property>
         </properties>
       </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm (general)</label>
+      <channel id="alarm_smoke" typeId="alarm_smoke">
+        <label>Smoke Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM,BASIC;type=GENERAL</property>
+          <property name="binding:*:OnOffType">ALARM,BASIC;type=SMOKE</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
