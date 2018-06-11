@@ -14,6 +14,12 @@ ZWave Thermostat<br /><h1>Overview</h1><p>The Heatit Z-Wave is an electronic the
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Thermostat State</label>
+        <properties>
+          <property name="binding:*:OnOffType">BASIC</property>
+        </properties>
+      </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
