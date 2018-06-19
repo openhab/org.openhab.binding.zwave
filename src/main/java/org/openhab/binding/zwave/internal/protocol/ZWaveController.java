@@ -548,7 +548,7 @@ public class ZWaveController {
      *            the event to send.
      */
     public void notifyEventListeners(ZWaveEvent event) {
-        logger.debug("Notifying event listeners: {}", event.getClass().getSimpleName());
+        logger.trace("Notifying event listeners: {}", event.getClass().getSimpleName());
         ArrayList<ZWaveEventListener> copy = new ArrayList<ZWaveEventListener>(zwaveEventListeners);
         for (ZWaveEventListener listener : copy) {
             listener.ZWaveIncomingEvent(event);

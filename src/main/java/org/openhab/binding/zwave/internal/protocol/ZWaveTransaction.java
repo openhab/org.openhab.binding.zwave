@@ -287,10 +287,10 @@ public class ZWaveTransaction {
     }
 
     public boolean transactionAdvance(SerialMessage incomingMessage) {
-        logger.debug("TID {}: TransactionAdvance ST: {}", transactionId, transactionStateTracker);
-        logger.debug("TID {}: TransactionAdvance WT: {} {}", transactionId,
+        logger.trace("TID {}: TransactionAdvance ST: {}", transactionId, transactionStateTracker);
+        logger.trace("TID {}: TransactionAdvance WT: {} {}", transactionId,
                 payload.getExpectedResponseSerialMessageClass());
-        logger.debug("TID {}: TransactionAdvance RX: {}", transactionId, incomingMessage);
+        logger.trace("TID {}: TransactionAdvance RX: {}", transactionId, incomingMessage);
 
         TransactionState stateTrackerStart = transactionStateTracker;
         switch (transactionStateTracker) {
@@ -332,7 +332,7 @@ public class ZWaveTransaction {
                     break;
                 }
 
-                logger.debug("TID {}: TransactionAdvance RQ: RREQ={}, RCLS={}", transactionId, requiresResponse,
+                logger.trace("TID {}: TransactionAdvance RQ: RREQ={}, RCLS={}", transactionId, requiresResponse,
                         payload.getExpectedResponseSerialMessageClass());
 
                 // We've received our request - advance
@@ -374,7 +374,7 @@ public class ZWaveTransaction {
                 logger.error("TID {}: Unhandled transaction state {}", transactionId, transactionStateTracker);
                 break;
         }
-        logger.debug("TID {}: TransactionAdvance TO: {}", transactionId, transactionStateTracker);
+        logger.trace("TID {}: TransactionAdvance TO: {}", transactionId, transactionStateTracker);
         return transactionStateTracker != stateTrackerStart;
     }
 
