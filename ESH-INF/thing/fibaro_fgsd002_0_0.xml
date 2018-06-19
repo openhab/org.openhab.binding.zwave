@@ -7,7 +7,9 @@
 
   <thing-type id="fibaro_fgsd002_00_000" listed="false">
     <label>FGSD002 Smoke Detector</label>
-    <description>Smoke Detector</description>
+    <description><![CDATA[
+Smoke Detector<br /><h1>Overview</h1><p>The Fibaro Smoke Sensor is a universal, optical Z-Wave smoke detector. Fire alarm is signaled by sound, visual indicator blinking and by sending Z-Wave alarm and control commands</p> <br /><h2>Inclusion Information</h2><ol><li>Install the battery. Visual indicator will signal the Z-Wave network inclusion status (red - device ready for inclusion, green - device included, remove firstly - see p. II).</li> <li>Make sure the device is located within direct range of the Z-Wave controller.</li> <li>Set the main controller into the learning mode (see main controller’s operating manual).</li> <li>Quickly, triple click the B-button, located on Fibaro Smoke Sensor’s casing.</li> <li>Fibaro Smoke Sensor will be detected and included in the Z-Wave network</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Make sure the sensor is connected to battery.</li> <li>Set the main controller into the learning mode (see main controller’s operating manual)</li> <li>Quickly, triple click the B-button, located on Fibaro Smoke Sensor’s casing.</li> </ol><br /><h2>Wakeup Information</h2><p>Click the B-button once.</p>
+    ]]></description>
     <category>SmokeDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -128,7 +130,7 @@ This parameter allows to activate visual indications<br /><h1>Overview</h1><p> 
           <option value="2">Exceeding temperature threshold notification enabled</option>
           <option value="3">Enclosure opening notification enabled +</option>
           <option value="4">Lack of Z-Wave range notification</option>
-          <option value="5">Enclosure opening notification enabled +</option>
+          <option value="5">Enclosure opening notification enabled and</option>
           <option value="6">Exceeding temperature threshold notification enabled +</option>
           <option value="7">Enclosure opening notification enabled +</option>
         </options>
@@ -148,7 +150,7 @@ This parameter allows to activate sound signals...<br /><h1>Overview</h1><p> bu
           <option value="4">Lack of Z-Wave range notification</option>
           <option value="5">Enclosure opening notification enabled +</option>
           <option value="6">Exceeding temperature threshold notification enabled +</option>
-          <option value="7">Enclosure opening notification enabled +</option>
+          <option value="7">Enclosure opening notification enabled and</option>
         </options>
       </parameter>
 
@@ -186,14 +188,14 @@ BASIC OFF frame is sent in case of FIRE ALARM cancellation.<br /><h1>Overview</h
       <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Alarm broadcast</label>
         <description><![CDATA[
-A value other than 0 means that alarms are being sent in ...<br /><h1>Overview</h1><p>broadcast mode, i.e. to all devices within a Fibaro Smoke Sensor’s range</p>
+A value other than 0 means that alarms are being ...<br /><h1>Overview</h1><p> ... sent in broadcast mode, i.e. to all devices within a Fibaro Smoke Sensor’s range</p>
         ]]></description>
         <default>0</default>
         <options>
           <option value="0">broadcast inactive</option>
           <option value="1">FIRE ALARM broadcast (2-nd and 4-th Association Group) ...</option>
-          <option value="2">FIRE ALARM broadcast (2-nd and 4-th Association Group) ...</option>
-          <option value="3">FIRE ALARM broadcast (2-nd and 4-th Association Group) ...</option>
+          <option value="2">FIRE ALARM broadcast (2nd and 4th Association Group) ...</option>
+          <option value="3">FIRE ALARM broadcast (2nd and 4-th Association Group) ...</option>
         </options>
       </parameter>
 

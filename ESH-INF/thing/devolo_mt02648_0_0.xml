@@ -130,7 +130,7 @@ Parameter to set the Customer Function<br /><h1>Overview</h1><p>Bit0: Reserve.</
         ]]></description>
         <default>4</default>
         <options>
-          <option value="20">Preset: PIR Super Sensitivity and Binary Report = Bits: 00010100 = 20</option>
+          <option value="20">PIR Super Sensitivity and Binary Report</option>
         </options>
         <limitToOptions>false</limitToOptions>
       </parameter>
