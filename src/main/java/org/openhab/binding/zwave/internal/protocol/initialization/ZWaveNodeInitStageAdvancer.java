@@ -397,11 +397,7 @@ public class ZWaveNodeInitStageAdvancer {
 
             // We only send out a single PING - no retries at controller level!
             // This is to try and reduce network congestion during initialisation.
-            // For battery devices, the PING will time-out. This takes up to 5 seconds and if there are retries,
-            // it will be 15 seconds!
-            // This will block the network for a considerable time if there are a lot of battery devices
-            // (eg. 2 minutes for 8 battery devices!).
-            msg.setMaxAttempts(1);
+            // msg.setMaxAttempts(1);
             processTransaction(msg);
         }
 
