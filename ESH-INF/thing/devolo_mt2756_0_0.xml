@@ -7,7 +7,10 @@
 
   <thing-type id="devolo_mt2756_00_000" listed="false">
     <label>MT2756 MT2756 Flood Sensor</label>
-    <description>MT2756 Flood Sensor</description>
+    <description><![CDATA[
+MT2756 Flood Sensor<br /><h1>Overview</h1><p>The Home Control Water Sensor is a water sensor and warns you about flooding or leaking water. As soon as water touches the open metal contacts, the device triggers an alarm. The Home Control Water Sensor is ideal for use in locations such as under a sink, under the supply valve of a washing machine or on an aquarium. It is equipped with an integrated LED and a release button.</p>
+    ]]></description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -20,13 +23,13 @@
       <channel id="alarm_flood" typeId="alarm_flood">
         <label>Alarm (water)</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM</property>
+          <property name="binding:*:OnOffType">ALARM;type=FLOOD</property>
         </properties>
       </channel>
       <channel id="alarm_burglar" typeId="alarm_burglar">
         <label>Alarm (burglar)</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM</property>
+          <property name="binding:*:OnOffType">ALARM;type=BURGLAR</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
