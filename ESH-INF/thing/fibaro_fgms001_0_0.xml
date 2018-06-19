@@ -7,7 +7,9 @@
 
   <thing-type id="fibaro_fgms001_00_000" listed="false">
     <label>FGMS001 Motion Sensor</label>
-    <description>Motion Sensor</description>
+    <description><![CDATA[
+Motion Sensor<br /><h1>Overview</h1><p>The Fibaro Motion Sensor is a universal Z-Wave multi-sensor. Along with detecting motion the device measures the temperature and light<br />intensity.</p> <p> The sensor has a built-in accelerometer to detect any tampering of the device. The Fibaro Motion Sensor is battery powered device and designed to be installed quckly and easily on any surface. </p> <br /><h2>Inclusion Information</h2><p>1) Insert the battery into the Fibaro Motion Sensor. Enclosure lock is<br />marked with a dot. Make sure the device is located within the direct<br />range of the main controller.<br />2) Set the main controller into the learning mode (see main<br />controller’s operating manual).<br />3) Quickly, triple click the B-button - LED diode will glow blue.<br />4) Fibaro Motion Sensor will be detected and included in the Z-Wave<br />network.<br />5) Wait for the main controller to configure the sensor.<br />6) If necessary, wake up the Motion Sensor by triple clicking the<br />B-button.<br />7) LED diode will glow blue to confirm the sensor woke up, and then<br />wait for the main controller to configure the sensor</p> <br /><h2>Exclusion Information</h2><p>1) Set the main controller into the exclusion mode (see main<br />controller’s operating manual).<br />2) Quickly, triple click the B-button - LED diode will glow blue.<br />3) Fibaro Motion Sensor will be excluded from the Z-Wave<br />network.<br /><br /></p> <br /><h2>Wakeup Information</h2><p>Quickly, triple click the B-button - LED diode will glow blue.</p>
+    ]]></description>
     <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -268,7 +270,7 @@ Way in which LED diode behaves after motion has been detected.<br /><h1>Overview
         <default>10</default>
         <options>
           <option value="0">LED inactive.</option>
-          <option value="1">LED colour depends on the temperature</option>
+          <option value="1">LED colour depends on the temperature.</option>
           <option value="2">Flashlight mode - LED glows in white for 10 seconds.</option>
           <option value="3">White.</option>
           <option value="4">Red.</option>
@@ -279,21 +281,21 @@ Way in which LED diode behaves after motion has been detected.<br /><h1>Overview
           <option value="9">Magenta.</option>
           <option value="10">LED colour depends on the temperature</option>
           <option value="11">Flashlight mode</option>
-          <option value="12">White.</option>
-          <option value="13">Red.</option>
-          <option value="14">Green.</option>
-          <option value="15">Blue.</option>
-          <option value="16">Yellow.</option>
-          <option value="17">Cyan.</option>
-          <option value="18">Magenta.</option>
+          <option value="12">White</option>
+          <option value="13">Red</option>
+          <option value="14">Green</option>
+          <option value="15">Blue</option>
+          <option value="16">Yellow</option>
+          <option value="17">Cyan</option>
+          <option value="18">Magenta</option>
           <option value="19">LED colour depends on the temperature</option>
-          <option value="20">White.</option>
-          <option value="21">Red.</option>
-          <option value="22">Green.</option>
-          <option value="23">Blue.</option>
-          <option value="24">Yellow.</option>
-          <option value="25">Cyan.</option>
-          <option value="26">Magenta.</option>
+          <option value="20">White</option>
+          <option value="21">Red</option>
+          <option value="22">Green</option>
+          <option value="23">Blue</option>
+          <option value="24">Yellow</option>
+          <option value="25">Cyan</option>
+          <option value="26">Magenta</option>
         </options>
       </parameter>
 

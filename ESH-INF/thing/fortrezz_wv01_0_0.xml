@@ -7,7 +7,9 @@
 
   <thing-type id="fortrezz_wv01_00_000" listed="false">
     <label>WV-01 Wireless Z-Wave Water Valve</label>
-    <description>Wireless Z-Wave Water Valve</description>
+    <description><![CDATA[
+Wireless Z-Wave Water Valve<br /><h1>Overview</h1><p>Fortrezz WV-01 Wireless Z-Wave Water Valve is a patented, wireless water detection and automatic water shut-off system that works as an automatic valve for your home's main water supply line and can easily be installed by a certified professional plumber.</p> <p>When used in a Z-Wave home automation network, the smart valve can be used along with Z-Wave water alarm sensors to reduce or eliminate water damage caused by leaky pipes or faulty appliances. It can also be used in conjunction with remotely installed flood sensors to shut off the main water supply in case of water leakage.</p>
+    ]]></description>
     <category>Valve</category>
 
     <!-- CHANNEL DEFINITIONS -->
