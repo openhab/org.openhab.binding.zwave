@@ -725,13 +725,13 @@ public class ZWaveTransactionManager {
     }
 
     private void sendNextMessage() {
-        logger.debug("Transaction SendNextMessage {} out at start", outstandingTransactions.size());
+        logger.trace("Transaction SendNextMessage {} out at start", outstandingTransactions.size());
 
         synchronized (sendQueue) {
             // If we're currently processing the core of a transaction, or there are too many
             // outstanding transactions, then don't start another right now.
             if (lastTransaction != null) {
-                logger.debug("Transaction lastTransaction outstanding...", outstandingTransactions.size());
+                logger.trace("Transaction lastTransaction outstanding...", outstandingTransactions.size());
                 return;
             }
 
@@ -743,28 +743,28 @@ public class ZWaveTransactionManager {
                 // We assume that if the device just sent us a NONCE_REQUEST then it must be awake
                 transaction = secureQueue.poll();
                 if (transaction != null) {
-                    logger.debug("Transaction from secureQueue");
+                    logger.trace("Transaction from secureQueue");
                 } else if (outstandingTransactions.size() == 0) {
                     transaction = getMessageFromQueue(sendQueue);
                     if (transaction != null) {
-                        logger.debug("Transaction from sendQueue");
+                        logger.trace("Transaction from sendQueue");
                     }
                     if (transaction == null) {
                         transaction = controllerQueue.poll();
-                        logger.debug("Transaction from controllerQueue");
+                        logger.trace("Transaction from controllerQueue");
                     }
                 }
             }
             if (transaction == null) {
                 // Nothing to send
-                logger.debug("Transaction SendNextMessage nothing");
+                logger.trace("Transaction SendNextMessage nothing");
                 return;
             }
 
             SerialMessage serialMessage;
             // If this requires security, then check if we have a NONCE
             if (transaction.getRequiresSecurity()) {
-                logger.debug("NODE {}: Transaction requires security", transaction.getNodeId());
+                logger.trace("NODE {}: Transaction requires security", transaction.getNodeId());
                 ZWaveNode node = controller.getNode(transaction.getNodeId());
                 ZWaveSecurityCommandClass securityCommandClass = (ZWaveSecurityCommandClass) node
                         .getCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
@@ -775,7 +775,7 @@ public class ZWaveTransactionManager {
 
                 if (securityCommandClass.isNonceAvailable()) {
                     // We have a NONCE, so encapsulate and send
-                    logger.debug("NODE {}: NONCE available so encap and send.", transaction.getNodeId());
+                    logger.trace("NODE {}: NONCE available so encap and send.", transaction.getNodeId());
 
                     ZWaveCommandClassTransactionPayload securePayload = new ZWaveCommandClassTransactionPayload(
                             transaction.getNodeId(),
@@ -795,7 +795,7 @@ public class ZWaveTransactionManager {
                     serialMessage = transaction.getSerialMessage();
                 }
             } else {
-                logger.debug("getTransactionToSend 6");
+                logger.trace("getTransactionToSend 6");
                 serialMessage = transaction.getSerialMessage();
             }
 
@@ -806,19 +806,19 @@ public class ZWaveTransactionManager {
             controller.sendPacket(serialMessage);
 
             transaction.transactionStart();
-            logger.debug("Transaction SendNextMessage started: {}", transaction);
+            logger.trace("Transaction SendNextMessage started: {}", transaction);
 
-            logger.debug("Transaction SendNextMessage started: expected cmd class: {}",
+            logger.trace("Transaction SendNextMessage started: expected cmd class: {}",
                     transaction.getExpectedCommandClass());
-            logger.debug("Transaction SendNextMessage started: expected cmd: {}",
+            logger.trace("Transaction SendNextMessage started: expected cmd: {}",
                     transaction.getExpectedCommandClassCommand());
 
             outstandingTransactions.add(transaction);
-            logger.debug("Transaction SendNextMessage Transactions outstanding: {}", outstandingTransactions.size());
+            logger.trace("Transaction SendNextMessage Transactions outstanding: {}", outstandingTransactions.size());
             transaction.setTimeout(getNextTimer(transaction));
             startTransactionTimer();
             lastTransaction = transaction;
-            logger.debug("Transaction SendNextMessage lastTransaction: {}", lastTransaction);
+            logger.trace("Transaction SendNextMessage lastTransaction: {}", lastTransaction);
         }
     }
 
@@ -846,7 +846,7 @@ public class ZWaveTransactionManager {
                 // Create the timer task
                 timerTask = new ZWaveTransactionTimer();
 
-                logger.debug("Start transaction timer to {} - {}ms", nextTimer,
+                logger.trace("Start transaction timer to {} - {}ms", nextTimer,
                         (nextTimer.getTime() - System.currentTimeMillis()));
                 timer.schedule(timerTask, nextTimer);
             }
@@ -856,7 +856,7 @@ public class ZWaveTransactionManager {
     private synchronized void resetTransactionTimer() {
         // Stop any existing timer
         if (timerTask != null) {
-            logger.debug("STOP transaction timer");
+            logger.trace("STOP transaction timer");
 
             timerTask.cancel();
             timerTask = null;
@@ -873,7 +873,7 @@ public class ZWaveTransactionManager {
             // }
 
             synchronized (sendQueue) {
-                logger.debug("XXXXXXXXX Timeout.......... {} outstanding transactions", outstandingTransactions.size());
+                logger.trace("XXXXXXXXX Timeout.......... {} outstanding transactions", outstandingTransactions.size());
                 Date now = new Date();
                 // List<ZWaveTransaction> retries = new ArrayList<ZWaveTransaction>();
 
