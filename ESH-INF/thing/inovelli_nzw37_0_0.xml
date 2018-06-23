@@ -37,7 +37,7 @@
       <property name="vendor">Inovelli</property>
       <property name="modelId">NZW37</property>
       <property name="manufacturerId">0312</property>
-      <property name="manufacturerRef">B221:251C</property>
+      <property name="manufacturerRef">6100:6100,B221:251C</property>
       <property name="dbReference">625</property>
     </properties>
 

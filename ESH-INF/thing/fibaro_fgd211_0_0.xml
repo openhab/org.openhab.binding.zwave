@@ -7,7 +7,9 @@
 
   <thing-type id="fibaro_fgd211_00_000" listed="false">
     <label>FGD211 Universal Dimmer 500W</label>
-    <description>Universal Dimmer 500W</description>
+    <description><![CDATA[
+Universal Dimmer 500W<br /><h1>Overview</h1><p>Remotely controlled Dimmer designed to operate with or without neutral lead. It may be used as a switch in systems without neutral lead.</p> <p>As a Dimmer it operates under the following loads:</p> <ul><li>conventional incandescent</li> <li>Halogen 230V</li> <li>low voltage halogen 12V (with electronic transformers)</li> <li>dimmable LED</li> <li>when used with FGB001 it may operate with any dimmable load up to 500W</li> </ul><br /><h2>Inclusion Information</h2><p>The Dimmer enters the mode of inclusion after a quick pressing three times the push-button connected to S1 terminal or push-button B located inside the housing. For bi-stable switch perform 3 position changes.</p> <br /><h2>Exclusion Information</h2><p>The Dimmer enters the mode of exclusion after a quick pressing three times the push-button connected to S1 terminal or push-button B located inside the housing. For bi-stable switch perform 3 position changes</p>
+    ]]></description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -59,14 +61,16 @@
         <default>0</default>
         <options>
           <option value="0">Map status to all devices in group 1</option>
-          <option value="1">Map OFF status to all devices in group 1, Double click on key 1 will s</option>
-          <option value="2">Map OFF status to all devices in group 1, Double click on key 1 will s</option>
+          <option value="1">Map OFF status to all devices in group 1</option>
+          <option value="2">Map OFF status to all devices in group 1, 100% brightness</option>
         </options>
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
         <label>7: Control key #2 behaviour</label>
-        <description>Key no.2 is not represented by any physical device - only devices in the association list. This functionality prevents of lack of reaction on pressing key no.2 through polling devices from association list one by one and checking their</description>
+        <description><![CDATA[
+Key no. 2 is not represented by any physical device<br /><h1>Overview</h1><p>Info: Key no. 2 is not represented by any physical device expect of devices on association list. This functionality prevents of lack of reaction on pressing key no. 2 through polling devices from association list one by one and checking their actual states</p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">Device status is not checked</option>
@@ -89,8 +93,10 @@
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>10: Time of AUTOMATIC moving between the extreme dimming values</label>
-        <description>Options for changing parameter 1-255 (10ms - 2,5s) - 0: this value disables the smooth change in light intensity. NOTE: value 0 is required for inductive and capacitive devices unsuitable for dimming (e.g. fluorescent lamps, motors, etc...)</description>
+        <label>10: Time of AUTOMATIC moving between extreme dimming values</label>
+        <description><![CDATA[
+Time of autom. moving the dimmer between min/max<br /><h1>Overview</h1><p>Options for changing parameter 1-255 (10ms - 2,5s) - 0: this value disables the smooth change in light intensity. NOTE: value 0 is required for inductive and capacitive devices unsuitable for dimming (e.g. fluorescent lamps, motors, etc...)</p>
+        ]]></description>
         <default>1</default>
       </parameter>
 
@@ -140,14 +146,16 @@
         <description>Saving state before power failure</description>
         <default>1</default>
         <options>
-          <option value="0">State NOT saved at power failure, all outputs are set to OFF upon powe</option>
-          <option value="1">State saved at power failure, all outputs are set to previous state up</option>
+          <option value="0">State NOT saved at power failure</option>
+          <option value="1">State saved at power failure</option>
         </options>
       </parameter>
 
       <parameter name="config_17_1" type="integer" groupName="configuration">
         <label>17: 3-way switch</label>
-        <description>The function of 3-way switch provides the option to double key no. 1. The dimmer may control two bi-stable push-buttons or an infinite number of mono-stable push-buttons. (default value 0)</description>
+        <description><![CDATA[
+Function of 3-way switch <br /><h1>Overview</h1><p>The function of 3-way switch provides the option to double key no. 1. The dimmer may control two bi-stable push-buttons or an infinite number of mono-stable push-buttons. (default value 0)</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Disable</option>
@@ -167,18 +175,22 @@
 
       <parameter name="config_19_1" type="integer" groupName="configuration">
         <label>19: Change [On-Off] bi-stable keys</label>
-        <description>This function allow user to change [On-Off] bi-stable keys (parameter no. 14) (default value 0)</description>
+        <description><![CDATA[
+Allow user to change [On-Off] bi-stable keys <br /><h1>Overview</h1><p>This function allow user to change [On-Off] bi-stable keys (parameter no. 14) (default value 0)</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Device changes status on key status change</option>
-          <option value="1">Device status depends on key status; ON when the key is ON, OFF when t</option>
+          <option value="1">Device status depends on key status</option>
         </options>
       </parameter>
 
       <parameter name="config_20_1" type="integer" groupName="configuration"
                  min="100" max="170">
-        <label>20: Parm 20</label>
-        <description>This function will enable decreasing the minimum level of the Dimmer by extending the control impulse.[100 - 170] By changing the minimem level, the user may completely dim LED bulbs. Not all LED bulbs available on the market have the dimmm</description>
+        <label>20: Control impulse length</label>
+        <description><![CDATA[
+Change of control impulse length. <br /><h1>Overview</h1><p>This function will enable decreasing the minimum level of the Dimmer by extending the control impulse.[100 - 170].</p> <p>By changing the minimem level, the user may completely dim LED bulbs. Not all LED bulbs available on the market have the dimming capabilty.</p>
+        ]]></description>
         <default>110</default>
       </parameter>
 
@@ -187,9 +199,9 @@
         <default>3</default>
         <options>
           <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt of alarm frame</option>
-          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt of alarm frame</option>
-          <option value="3">ALARM FLASHING - relay will turn ON and OFF periodically (see param.39</option>
+          <option value="1">Alarm relay ON</option>
+          <option value="2">Alarm relay OFF</option>
+          <option value="3">ALARM FLASHING</option>
         </options>
       </parameter>
 
