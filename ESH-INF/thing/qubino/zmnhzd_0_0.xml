@@ -20,7 +20,7 @@
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL,COMMAND_CLASS_BASIC;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL,COMMAND_CLASS_BASIC;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="sensor_relhumidity" typeId="sensor_relhumidity">
@@ -49,7 +49,7 @@
       <channel id="sensor_temperature1" typeId="sensor_temperature">
         <label>Thermo/ Hygro Sensor Ch1 – Temperature</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:1,COMMAND_CLASS_BASIC:1;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:1,COMMAND_CLASS_BASIC:1;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -93,7 +93,7 @@
       <channel id="sensor_temperature5" typeId="sensor_temperature">
         <label>Wind Gauge – Temperature</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:5,COMMAND_CLASS_BASIC:5;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:5,COMMAND_CLASS_BASIC:5;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -104,7 +104,7 @@
       <channel id="sensor_temperature6" typeId="sensor_temperature">
         <label>Wind Gauge – Wind Chill</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:6,COMMAND_CLASS_BASIC:6;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:6,COMMAND_CLASS_BASIC:6;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -137,7 +137,7 @@
       <channel id="sensor_temperature9" typeId="sensor_temperature">
         <label>Thermo/ Hygro Sensor Ch2 – Temperature</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:9,COMMAND_CLASS_BASIC:9;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:9,COMMAND_CLASS_BASIC:9;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">

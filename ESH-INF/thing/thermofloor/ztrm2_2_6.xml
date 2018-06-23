@@ -47,19 +47,19 @@ Floor thermostat (supports secure inclusion and power measurement)<br /><h1>Over
       <channel id="thermostat_setpoint_furnace" typeId="thermostat_setpoint">
         <label>Setpoint (furnace)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=FURNACE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=FURNACE</property>
         </properties>
       </channel>
       <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
         <label>Setpoint (heating)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING</property>
         </properties>
       </channel>
       <channel id="thermostat_setpoint_cooling" typeId="thermostat_setpoint">
         <label>Setpoint (cooling)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=COOLING</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=COOLING</property>
         </properties>
       </channel>
       <channel id="switch_binary1" typeId="switch_binary">
@@ -89,19 +89,19 @@ Floor thermostat (supports secure inclusion and power measurement)<br /><h1>Over
       <channel id="sensor_temperature2" typeId="sensor_temperature">
         <label>Sensor (temperature) 2</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:2;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:2;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="sensor_temperature3" typeId="sensor_temperature">
         <label>Sensor (temperature) 3</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:3;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:3;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="sensor_temperature4" typeId="sensor_temperature">
         <label>Sensor (temperature) 4</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:4;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:4;type=TEMPERATURE</property>
         </properties>
       </channel>
     </channels>
@@ -135,7 +135,7 @@ Floor thermostat (supports secure inclusion and power measurement)<br /><h1>Over
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Operation mode</label>
         <description><![CDATA[
-Operation mode<br /><h1>Overview</h1><p>1. Value = 0, Off (default)<br />2. Value = 1, Heating mode<br />3. Value = 2, Cooling mode (not implemented)<br />4. Value = 11, Energy saving mode</p>
+Operation mode<br /><h1>Overview</h1><p>Value = 0, Off (default)<br />Value = 1, Heating mode<br />Value = 2, Cooling mode (not implemented)<br />Value = 11, Energy saving mode</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -149,7 +149,7 @@ Operation mode<br /><h1>Overview</h1><p>1. Value = 0, Off (default)<br />2. Valu
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Sensor mode</label>
         <description><![CDATA[
-Sensor mode<br /><h1>Overview</h1><p>1. Value = 0, F-mode, floor sensor mode<br />2. Value = 1, A-mode, internal room sensor mode (default)<br />3. Value = 2, AF-mode, internal sensor and floor sensor mode<br />4. Value = 3, A2-mode, external room sensor mode<br />5. Value = 4, P-mode, power regulator mode<br />6. Value = 5, FP-mode, floor sensor and power regulator mode</p>
+Sensor mode<br /><h1>Overview</h1><p>Value = 0, F-mode, floor sensor mode<br />Value = 1, A-mode, internal room sensor mode (default)<br />Value = 2, AF-mode, internal sensor and floor sensor mode<br />Value = 3, A2-mode, external room sensor mode<br />Value = 4, P-mode, power regulator mode<br />Value = 5, FP-mode, floor sensor and power regulator mode</p>
         ]]></description>
         <default>1</default>
         <options>
@@ -182,14 +182,9 @@ Floor sensor type<br /><h1>Overview</h1><p>1. Value = 0, 10K-NTC (default)<br />
                  min="0" max="30">
         <label>4: Temperature control hysteresis (DIFF I)</label>
         <description><![CDATA[
-Temperature control hysteresis (DIFF I)<br /><h1>Overview</h1><p>1. Value = 0 - 30, 0.3C - 3.0C (default is 0.5C)<br />2. Value = 1, Mode 1: level-controlled input<br />3. Value = 2, Mode 2: falling-edge controlled input<br />4. Value = 3, Mode 3: raising-edge controlled input (standard)<br />When using a water-based heating, the recommended hysteresis is a minimum of 1.0C</p>
+Temperature control hysteresis (DIFF I)<br /><h1>Overview</h1><p>1. Value = 0 - 30, 0.3C - 3.0C (default is 0.5C)<br />When using a water-based heating, the recommended hysteresis is a minimum of 1.0C</p>
         ]]></description>
         <default>5</default>
-        <options>
-          <option value="1">Mode 1: level-controlled input</option>
-          <option value="2">Mode 2: falling-edge controlled input</option>
-          <option value="3">Mode 3: raising-edge controlled input (standard)</option>
-        </options>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -222,9 +217,9 @@ Air minimum temperature limit (ALo)<br /><h1>Overview</h1><p>1. Value = 50 - 400
 
       <parameter name="config_8_2" type="integer" groupName="configuration"
                  min="50" max="400">
-        <label>8: Air maximum temperature limet (AHi)</label>
+        <label>8: Air maximum temperature limit (AHi)</label>
         <description><![CDATA[
-Air maximum temperature limet (AHi)<br /><h1>Overview</h1><p>1. Value = 50 - 400, 5.0C - 40.0C, default = 40.0C)</p>
+Air maximum temperature limit (AHi)<br /><h1>Overview</h1><p>1. Value = 50 - 400, 5.0C - 40.0C, default = 40.0C)</p>
         ]]></description>
         <default>400</default>
       </parameter>
@@ -349,15 +344,14 @@ Display brightness - active state<br /><h1>Overview</h1><p>1. Value = 0 - 100, 0
         <default>100</default>
       </parameter>
 
-      <parameter name="config_22_2" type="integer" groupName="configuration">
+      <parameter name="config_22_2" type="integer" groupName="configuration"
+                 min="0" max="32767">
         <label>22: Temperature report interval</label>
         <description><![CDATA[
 Temperature report interval<br /><h1>Overview</h1><p>1. Value = 0, Reporting of temperature disabled<br />2. Value = 1 - 32767, 1s - 32767s, default = 60s</p> <p>Time interval between consecutive temperature reports.<br />Temperature reports can also be sent as a result of polling.</p>
         ]]></description>
         <default>60</default>
-        <options>
-          <option value="0">Reporting of temperature disabled</option>
-        </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_23_1" type="integer" groupName="configuration"
@@ -369,15 +363,14 @@ Temperature report hysteresis<br /><h1>Overview</h1><p>1. Value = 1 - 100, 0.1C 
         <default>10</default>
       </parameter>
 
-      <parameter name="config_24_2" type="integer" groupName="configuration">
+      <parameter name="config_24_2" type="integer" groupName="configuration"
+                 min="0" max="32767">
         <label>24: Meter report interval</label>
         <description><![CDATA[
 Meter report interval<br /><h1>Overview</h1><p>1. Value = 0, Reporting of metering values is disabled<br />2. Value = 1 - 32767, 1s - 32767s, default = 60s</p> <p>Time interval between consecutive meter reports.<br />Meter reports can also be sent as a result of polling.</p>
         ]]></description>
         <default>60</default>
-        <options>
-          <option value="0">Reporting of metering values is disabled</option>
-        </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_25_1" type="integer" groupName="configuration"

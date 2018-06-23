@@ -22,7 +22,7 @@ RF Countdown Timer<br /><h1>Overview</h1><p>Wirelessly controllable 3 KW wall sw
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Temperature</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
     </channels>

@@ -83,25 +83,25 @@ DIN Mount Multiple Actuator Controller for Floor Heating<br /><h1>Overview</h1><
       <channel id="sensor_temperature11" typeId="sensor_temperature">
         <label>Input (temperature) 1</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:11,COMMAND_CLASS_BASIC:11;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:11,COMMAND_CLASS_BASIC:11;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="sensor_temperature12" typeId="sensor_temperature">
         <label>Input (temperature) 2</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:12,COMMAND_CLASS_BASIC:12;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:12,COMMAND_CLASS_BASIC:12;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="sensor_temperature13" typeId="sensor_temperature">
         <label>Input (temperature) 3</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:13,COMMAND_CLASS_BASIC:13;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:13,COMMAND_CLASS_BASIC:13;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="sensor_temperature14" typeId="sensor_temperature">
         <label>Input (temperature) 4</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:14,COMMAND_CLASS_BASIC:14;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:14,COMMAND_CLASS_BASIC:14;type=TEMPERATURE</property>
         </properties>
       </channel>
     </channels>

@@ -7,7 +7,9 @@
 
   <thing-type id="tkb_tz75_00_000" listed="false">
     <label>TZ75 Rollershutter Controller</label>
-    <description>Rollershutter Controller</description>
+    <description><![CDATA[
+Rollershutter Controller<br /><h1>Overview</h1><p>This in-wall Roller Shutter Controller is able to detect the position of the shutter by using the patterned power measuring method, so it can not only be positioned fully up or down, but can also be adjusted to any position between 0 and 100%.</p> <p>Installation hint: lt is important to carry out a shutter calibration process. Press the On/Off button over 3 seconds and release it before the 6th second, the roller shutter controller will start the shutter calibration process. The process is composed of three continue stages. The shutter move to the BOTTOM in first stage, and move to the TOP in second stage, and move to the BOTTOM again in 1-second intervals third stage. Then the TZ75 will know the total range of UP and DOWN.</p> <br /><h2>Inclusion Information</h2><p>1. Have Z-Wave controller entered inclusion mode.</p> <p>2. Pressing On/Off button three times within 1.5 seconds will enter inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>1. Have Z-Wave controller entered exclusion mode.</p> <p>2. Pressing On/Off button three times within 1.5 seconds will enter exclusion mode.</p>
+    ]]></description>
     <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -84,29 +86,37 @@
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="1" max="32767">
-        <label>1: Watt meter report periode</label>
-        <description>Watt meter report periode</description>
+        <label>1: Watt meter report period</label>
+        <description><![CDATA[
+Watt meter report period<br /><h1>Overview</h1><p>If the setting is configured for 1 hour (set value =720), the TZ75 will report its instant power consumption every 1 hour to the node of the corresponding group. The maximum interval to report its instant power consumption is 45 hours (5s*32767/3600=45h).</p>
+        ]]></description>
         <default>720</default>
       </parameter>
 
       <parameter name="config_2_2" type="integer" groupName="configuration"
                  min="1" max="32767">
         <label>2: KWH Meter Report period</label>
-        <description>KWH Meter Report period</description>
+        <description><![CDATA[
+KWH Meter Report period<br /><h1>Overview</h1><p>If the setting is configured for 1 hour (set value =6), the TZ75 will report its accumulated power consumption (KW/h) every 1 hour to the node of the corresponding group. The maximum interval to report its accumulated power consumption (KW/h) is 227.55 days (10min*32767/1440=227.55 days).</p>
+        ]]></description>
         <default>6</default>
       </parameter>
 
       <parameter name="config_3_2" type="integer" groupName="configuration"
                  min="10" max="1100">
         <label>3: Treshold of watt for load caution</label>
-        <description>Treshold of watt for load caution</description>
+        <description><![CDATA[
+Treshold of watt for load caution<br /><h1>Overview</h1><p>This is the maximum power consuption which is allowed during acivation of the Roller Shutter relays up or down. Set the threshold high enough to prevent from overloads in winter etc. when the motor needs slightly more power.</p> <p>When an overload state occurs, the TZ75 gets disabled and the LED flashes in 0.5 second intervals. The overload state can be cleared by disconnecting and reconnecting the TZ75 main power.</p>
+        ]]></description>
         <default>1100</default>
       </parameter>
 
       <parameter name="config_4_2" type="integer" groupName="configuration"
                  min="0" max="10000">
         <label>4: Treshold of KWH for load caution</label>
-        <description>Treshold of KWH for load caution</description>
+        <description><![CDATA[
+Treshold of KWH for load caution<br /><h1>Overview</h1><p>The default value 0 will disable the KWh warning.</p>
+        ]]></description>
         <default>0</default>
       </parameter>
 

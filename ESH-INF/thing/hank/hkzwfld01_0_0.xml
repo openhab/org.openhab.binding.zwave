@@ -17,7 +17,7 @@ Flood Sensor FLD01<br /><h1>Overview</h1><p>HANK Flood Sensor is a device that i
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL,COMMAND_CLASS_BASIC;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL,COMMAND_CLASS_BASIC;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="alarm_heat" typeId="alarm_heat">

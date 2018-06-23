@@ -20,7 +20,7 @@
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL,COMMAND_CLASS_BASIC;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL,COMMAND_CLASS_BASIC;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="alarm_co2" typeId="alarm_co2">
@@ -43,7 +43,7 @@
       <channel id="sensor_temperature1" typeId="sensor_temperature">
         <label>Sensor (temperature) 1</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:1,COMMAND_CLASS_BASIC:1;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:1,COMMAND_CLASS_BASIC:1;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="sensor_relhumidity2" typeId="sensor_relhumidity">

@@ -64,7 +64,7 @@ Door Opening Sensor<br /><h1>Overview</h1><p>The Fibaro Door / Window Sensor is 
       <channel id="sensor_temperature2" typeId="sensor_temperature">
         <label>Temperature Sensor</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:2,COMMAND_CLASS_BASIC:2;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:2,COMMAND_CLASS_BASIC:2;type=TEMPERATURE</property>
         </properties>
       </channel>
     </channels>

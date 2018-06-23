@@ -5,9 +5,12 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="shenzhen_sirenalarm_00_000" listed="false">
-    <label>Siren Alarm Siren Alarm</label>
-    <description>Siren Alarm</description>
+  <thing-type id="shenzhen_nasab01z_00_000" listed="false">
+    <label>NAS-AB01Z Siren Alarm</label>
+    <description><![CDATA[
+Siren Alarm<br /><h1>Overview</h1><p>Siren Alarm with ten different sounds.</p> <br /><h2>Inclusion Information</h2><p>The siren alarm can be included to the Z-wave network by pressing on the code button.</p> <ol><li>Disassemble the siren alarm and insert the battery into the siren alarm. Make sure the device is located within the direct range of the controller.</li> <li>Set the controller into the learning mode (see main controller’s operating manual).</li> <li>Quickly, triple click the code button, LED light will flash red.</li> <li>Siren alarm will be detected and included in the Z-Wave network.</li> <li>Wait for the main controller to configure the siren alarm.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Make sure the sensor is connected to power source.</li> <li>Set the main controller into the learning mode (see main controller’s operating manual).</li> <li>Quickly, triple click the code button, LED light will flash red for 5 times.</li> <li>Wait for the main controller to delete the sensor.</li> </ol><br /><h2>Wakeup Information</h2><p>Press code button once, LED will blink one time.</p>
+    ]]></description>
+    <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -15,6 +18,12 @@
         <label>Switch</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param7" typeId="config_decimal">
+        <label>Siren ON Mode</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=7</property>
         </properties>
       </channel>
       <channel id="alarm_general" typeId="alarm_general">
@@ -33,7 +42,7 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Shenzhen Neo Electronics Co., Ltd</property>
-      <property name="modelId">Siren Alarm</property>
+      <property name="modelId">NAS-AB01Z</property>
       <property name="manufacturerId">0258</property>
       <property name="manufacturerRef">0003:1088,0003:6088</property>
       <property name="dbReference">522</property>
