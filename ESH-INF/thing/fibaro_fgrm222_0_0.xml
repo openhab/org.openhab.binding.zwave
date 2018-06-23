@@ -77,31 +77,37 @@ Roller Shutter<br /><h1>Overview</h1><p>Fibaro Roller Shutter is a universal, Z-
 
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Local protection</label>
-        <description>Enables/disables local entry. If activated module stops responding to S1 and S2 push buttons, SCENE ID and association commands will not be sent. Only exception is the B-button.</description>
+        <description><![CDATA[
+Enables/disables local entry<br /><h1>Overview</h1><p>Enables/disables local entry. If activated module stops responding to S1 and S2 push buttons, SCENE ID and association commands will not be sent. Only exception is the B-button.</p>
+        ]]></description>
         <default>255</default>
         <options>
           <option value="0">No protection. Roller Shutter responds to push buttons</option>
-          <option value="2">Local protection active. Roller Shutter does not respond to push butto</option>
+          <option value="2">Local protection active</option>
         </options>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Radio protection</label>
-        <description>Enables/disables RF protection. If activated device stops responding to command frames. Configuration and polling still possible.</description>
+        <description><![CDATA[
+Enables/disables RF protection<br /><h1>Overview</h1><p>Enables/disables RF protection. If activated device stops responding to command frames. Configuration and polling still possible.</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">No protection. Roller Shutter responds to command frames.</option>
-          <option value="1">RF Protection active. Roller Shutter does not respond to the Z-Wave co</option>
+          <option value="1">RF Protection active.</option>
         </options>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Reports type</label>
-        <description>Parameters value shoud be set to 1 if the module operates in Venetian Blind mode.</description>
+        <description><![CDATA[
+Enable Venetian Blind mode<br /><h1>Overview</h1><p>Parameters value shoud be set to 1 if the module operates in Venetian Blind mode.</p>
+        ]]></description>
         <default>0</default>
         <options>
-          <option value="0">Blind position reports sent to the main controller using Z-Wave Comman</option>
-          <option value="1">Blind position reports sent to the main controller using Fibar Command</option>
+          <option value="0">Blind position reports sent using Z-Wave Commands</option>
+          <option value="1">Blind position reports sent using Fibaro Commands.</option>
         </options>
       </parameter>
 
@@ -119,14 +125,18 @@ Roller Shutter<br /><h1>Overview</h1><p>Fibaro Roller Shutter is a universal, Z-
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>12: Turning time/ delay time</label>
-        <description>In Venetian Blind mode (parameter 10 set to 2) the parameter determines time of full turn of the lamellas. In Gate Mode (parameter 10 set to 3 or 4) the parameter defines the delay time after which an open gate starts closing. Type range</description>
+        <label>12: Turning time/delay time</label>
+        <description><![CDATA[
+Time of full turn of the lamellas. <br /><h1>Overview</h1><p>In Venetian Blind mode (parameter 10 set to 2) the parameter determines time of full turn of the lamellas. In Gate Mode (parameter 10 set to 3 or 4) the parameter defines the delay time after which an open gate starts closing.</p>
+        ]]></description>
         <default>150</default>
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Lamellas positioning mode</label>
-        <description>Parameter influences the lamellas positioning in venetian blind mode (parameter 10 set to 2)</description>
+        <description><![CDATA[
+Lamellas positioning in venetian blind mode<br /><h1>Overview</h1><p>Parameter influences the lamellas positioning in venetian blind mode (parameter 10 set to 2)</p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">Only in case of the main controller operation</option>
@@ -137,7 +147,9 @@ Roller Shutter<br /><h1>Overview</h1><p>Fibaro Roller Shutter is a universal, Z-
 
       <parameter name="config_14_1" type="integer" groupName="configuration">
         <label>14: Switch type</label>
-        <description>parameter settings are relevant for Roller Blind Mode and Venetian Blind Mode (parameter 10 set to 0, 1, 2).</description>
+        <description><![CDATA[
+Parameter settings for Roller and Venetian Blind Mode<br /><h1>Overview</h1><p>Parameter settings are relevant for Roller Blind Mode and Venetian Blind Mode (parameter 10 set to 0, 1, 2).</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Momentary switches</option>
@@ -149,7 +161,9 @@ Roller Shutter<br /><h1>Overview</h1><p>Fibaro Roller Shutter is a universal, Z-
       <parameter name="config_17_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>17: Delay time after S2</label>
-        <description>In roller blind mode or venetian blind mode (parameter 10 set to 0, 1, 2) the parameter determines when the Roller Shutter relays are turned off after reaching a limit switch. In Gate Mode (parameter 10 set to 3 or 4) the parameter determines a time perio</description>
+        <description><![CDATA[
+Relays turn off time after reaching a limit switch. <br /><h1>Overview</h1><p>In roller blind mode or venetian blind mode (parameter 10 set to 0, 1, 2) the parameter determines when the Roller Shutter relays are turned off after reaching a limit switch. In Gate Mode (parameter 10 set to 3 or 4) the parameter determines a time period.</p>
+        ]]></description>
         <default>10</default>
       </parameter>
 
@@ -169,7 +183,9 @@ Roller Shutter<br /><h1>Overview</h1><p>Fibaro Roller Shutter is a universal, Z-
 
       <parameter name="config_29_1" type="integer" groupName="configuration">
         <label>29: Forced Roller Shutter calibration</label>
-        <description>Seting the parameter to 1 Roller Shutter enters the calibration mode. Parameter is only only relevant if a Roller Shutter is set to work in positioning mode (parameter 10 set to 1, 2 or 4).</description>
+        <description><![CDATA[
+Roller Shutter enters the calibration mode.<br /><h1>Overview</h1><p>Seting the parameter to 1 Roller Shutter enters the calibration mode. Parameter is only only relevant if a Roller Shutter is set to work in positioning mode (parameter 10 set to 1, 2 or 4).</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Deactivated</option>
@@ -219,7 +235,9 @@ Roller Shutter<br /><h1>Overview</h1><p>Fibaro Roller Shutter is a universal, Z-
 
       <parameter name="config_35_1" type="integer" groupName="configuration">
         <label>35: Managing lamellas in response to alarm</label>
-        <description>In Venetian Blind Mode (parameter 10 set to 2), the parameter determines how the lamellas will react upon alarm detection.</description>
+        <description><![CDATA[
+Lamellas reaction upon alarm detection.<br /><h1>Overview</h1><p>In Venetian Blind Mode (parameter 10 set to 2), the parameter determines how the lamellas will react upon alarm detection.</p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">Do not change lamellas position</option>
@@ -230,7 +248,9 @@ Roller Shutter<br /><h1>Overview</h1><p>Fibaro Roller Shutter is a universal, Z-
       <parameter name="config_40_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>40: Power reports</label>
-        <description>Power level change that will result in new power value report being sent. value is a percentage of the previous report.</description>
+        <description><![CDATA[
+Power level change resulting in new power value report<br /><h1>Overview</h1><p>Power level change that will result in new power value report being sent. Value is a percentage of the previous report.</p>
+        ]]></description>
         <default>10</default>
       </parameter>
 
@@ -244,13 +264,17 @@ Roller Shutter<br /><h1>Overview</h1><p>Fibaro Roller Shutter is a universal, Z-
       <parameter name="config_43_1" type="integer" groupName="configuration"
                  min="-126" max="127">
         <label>43: Energy reports</label>
-        <description>Energy level change which will result in new energy value report being sent. Value of 0 means the reports are turned off.</description>
+        <description><![CDATA[
+Energy level change resulting in new energy value report<br /><h1>Overview</h1><p>Energy level change which will result in new energy value report being sent. Value of 0 means the reports are turned off.</p>
+        ]]></description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_44_1" type="integer" groupName="configuration">
         <label>44: Self-measurement</label>
-        <description>Enables/disables to include the power and energy used by itself in reports to main controller.</description>
+        <description><![CDATA[
+Enables/disables power and energy report used by itself <br /><h1>Overview</h1><p>Enables/disables to include the power and energy used by itself in reports to main controller.</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Disabled</option>
@@ -259,8 +283,10 @@ Roller Shutter<br /><h1>Overview</h1><p>Fibaro Roller Shutter is a universal, Z-
       </parameter>
 
       <parameter name="config_50_1" type="integer" groupName="configuration">
-        <label>50: Scenes/ Associations activation</label>
-        <description>Parameter determines whether scenes or associations are activated by the switch keys.</description>
+        <label>50: Scenes/Associations activation</label>
+        <description><![CDATA[
+Determine whether scenes or associations are activated<br /><h1>Overview</h1><p>Parameter determines whether scenes or associations are activated by the switch keys.</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Associations Active</option>

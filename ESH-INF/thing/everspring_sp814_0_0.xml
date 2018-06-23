@@ -8,6 +8,7 @@
   <thing-type id="everspring_sp814_00_000" listed="false">
     <label>SP814 Motion Detector</label>
     <description>Motion Detector</description>
+    <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
