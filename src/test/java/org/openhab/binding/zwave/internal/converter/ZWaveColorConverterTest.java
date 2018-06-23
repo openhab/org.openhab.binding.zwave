@@ -7,9 +7,11 @@
  */
 package org.openhab.binding.zwave.internal.converter;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.smarthome.core.library.types.HSBType;
@@ -20,7 +22,6 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
-import org.openhab.binding.zwave.internal.converter.ZWaveColorConverter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -29,6 +30,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorComman
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorCommandClass.ZWaveColorValueEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
  *
@@ -66,5 +68,23 @@ public class ZWaveColorConverterTest extends ZWaveCommandClassConverterTest {
 
         assertEquals(state.getClass(), HSBType.class);
         assertEquals((state), HSBType.fromRGB(0, 0, 0));
+    }
+
+    @Test
+    public void convert() {
+        ZWaveColorConverter converter = new ZWaveColorConverter(null);
+        Map<String, String> args = new HashMap<>();
+        args.put("colorMode", "RGB");
+        ZWaveThingChannel channel = new ZWaveThingChannel(null, typeUid, uid, DataType.HSBType,
+                CommandClass.COMMAND_CLASS_SWITCH_COLOR.toString(), 0, args);
+
+        ZWaveNode node = CreateMockedNode(1);
+        List<ZWaveCommandClassTransactionPayload> transactions = converter.receiveCommand(channel, node,
+                new HSBType("360,100,100"));
+        assertEquals(1, transactions.size());
+        ZWaveCommandClassTransactionPayload transaction = transactions.get(0);
+
+        assertTrue(
+                Arrays.equals(new byte[] { 51, 5, 5, 2, -1, 3, 0, 4, 0, 0, 0, 1, 0 }, transaction.getPayloadBuffer()));
     }
 }
