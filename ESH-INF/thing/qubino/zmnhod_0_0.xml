@@ -35,7 +35,7 @@
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="meter_watts" typeId="meter_watts">
@@ -79,7 +79,7 @@
       <channel id="sensor_temperature2" typeId="sensor_temperature">
         <label>Sensor (temperature) 2</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:2,COMMAND_CLASS_BASIC:2;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:2,COMMAND_CLASS_BASIC:2;type=TEMPERATURE</property>
         </properties>
       </channel>
     </channels>

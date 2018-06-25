@@ -28,7 +28,7 @@ In-wall Dimming Switch<br /><h1>Overview</h1><p>Inovelli's In-Wall Smart DimmerÂ
       <property name="vendor">Inovelli</property>
       <property name="modelId">NZW31</property>
       <property name="manufacturerId">0312</property>
-      <property name="manufacturerRef">1F01:1F01</property>
+      <property name="manufacturerRef">1F00:1F00,1F01:1F01</property>
       <property name="dbReference">807</property>
       <property name="defaultAssociations">1</property>
     </properties>

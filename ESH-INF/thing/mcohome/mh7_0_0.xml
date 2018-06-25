@@ -14,7 +14,7 @@
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="thermostat_mode" typeId="mcohome_mh7_00_000_thermostat_mode">
@@ -32,13 +32,13 @@
       <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
         <label>Setpoint (heating)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING</property>
         </properties>
       </channel>
       <channel id="thermostat_setpoint_furnace" typeId="thermostat_setpoint">
         <label>Setpoint (furnace)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=FURNACE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=FURNACE</property>
         </properties>
       </channel>
     </channels>

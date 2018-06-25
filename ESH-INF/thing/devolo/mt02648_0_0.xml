@@ -23,7 +23,7 @@ Door/Window Contact<br /><h1>Overview</h1><p> The Door/Window Contact and the Mo
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="sensor_luminance" typeId="sensor_luminance">
@@ -136,7 +136,7 @@ Parameter to set the Customer Function<br /><h1>Overview</h1><p>Bit0: Reserve.</
         ]]></description>
         <default>4</default>
         <options>
-          <option value="20">Preset: PIR Super Sensitivity and Binary Report = Bits: 00010100 = 20</option>
+          <option value="20">PIR Super Sensitivity and Binary Report</option>
         </options>
         <limitToOptions>false</limitToOptions>
       </parameter>

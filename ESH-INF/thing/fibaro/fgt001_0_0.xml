@@ -23,7 +23,7 @@ Thermostatic Valve<br /><h1>Overview</h1><p>FIBARO Heat Controller is a remotely
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="thermostat_mode" typeId="fibaro_fgt001_00_000_thermostat_mode">
@@ -35,7 +35,7 @@ Thermostatic Valve<br /><h1>Overview</h1><p>FIBARO Heat Controller is a remotely
       <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
         <label>Setpoint (heating)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING</property>
         </properties>
       </channel>
       <channel id="alarm_power" typeId="alarm_power">
@@ -70,7 +70,7 @@ Thermostatic Valve<br /><h1>Overview</h1><p>FIBARO Heat Controller is a remotely
       <channel id="thermostat_setpoint_heating1" typeId="thermostat_setpoint">
         <label>Setpoint (heating) 1</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT:1;type=HEATING</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT:1;type=HEATING</property>
         </properties>
       </channel>
       <channel id="alarm_power1" typeId="alarm_power">
@@ -99,7 +99,7 @@ Thermostatic Valve<br /><h1>Overview</h1><p>FIBARO Heat Controller is a remotely
       <channel id="sensor_temperature2" typeId="sensor_temperature">
         <label>Sensor (temperature) 2</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:2;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:2;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="alarm_power2" typeId="alarm_power">

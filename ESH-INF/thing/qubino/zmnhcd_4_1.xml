@@ -31,7 +31,7 @@ Flush Shutter<br /><h1>Overview</h1><p>To enable endpoint 2 (lamella tilt for ve
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">

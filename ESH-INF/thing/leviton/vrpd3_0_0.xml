@@ -8,6 +8,7 @@
   <thing-type id="leviton_vrpd3_00_000" listed="false">
     <label>VRPD3 Scene Capable Plug-in Dimmer</label>
     <description>Scene Capable Plug-in Dimmer</description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

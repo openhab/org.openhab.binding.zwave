@@ -16,13 +16,13 @@ Thermostat for controlling the opentherm protocol<br /><h1>Overview</h1><p>The H
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Room temperature</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=1</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=1</property>
         </properties>
       </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Outside temperature</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=23</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=23</property>
         </properties>
       </channel>
       <channel id="thermostat_mode" typeId="benext_heatingcontrol_00_000_thermostat_mode">
@@ -34,13 +34,13 @@ Thermostat for controlling the opentherm protocol<br /><h1>Overview</h1><p>The H
       <channel id="thermostat_setpoint_1" typeId="thermostat_setpoint">
         <label>Heating setpoint</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=1</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=1</property>
         </properties>
       </channel>
       <channel id="thermostat_setpoint_11" typeId="thermostat_setpoint">
         <label>Energy save setpoint</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=11</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=11</property>
         </properties>
       </channel>
     </channels>

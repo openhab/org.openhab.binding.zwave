@@ -7,7 +7,10 @@
 
   <thing-type id="fibaro_fggc001_00_000" listed="false">
     <label>FGGC001 Fibaro Swipe Scene Controller</label>
-    <description>Fibaro Swipe Scene Controller</description>
+    <description><![CDATA[
+Fibaro Swipe Scene Controller<br /><h1>Overview</h1><p>FIBARO Swipe is a revolutionary battery gesture control pad that allows you to control devices in your Z-Wave network without actually touching anything. Swipe up, down, left, right, make a circular gesture and use sequences to get full and intuitive control of your home. </p> <br /><h2>Inclusion Information</h2><p>1. Place the Swipe within the direct range of your Z-Wave controller.<br />2. Set the main controller in (security/non-security) add mode (see the controller’s manual).<br />3. Move and hold your hand close to the center of the pad.<br />4. If the device is battery powered, high pitched beep will signal exiting the Standby Mode.<br />5. Loud sound sequence will confrm entering the menu, keep holding your hand.<br />6. After hearing two short beeps (green indicator colour), withdraw the hand and perform swiping up gesture to confrm selection (two beeps will confrm validity).<br />7. Wait for the adding process to end.<br />8. Successful adding will be confrmed by the Z-Wave controller’s message and 3 short beeps (green visual indicator colour).</p> <br /><h2>Exclusion Information</h2><p>1. Place the Swipe within the direct range of your Z-Wave controller.<br />2. Set the main controller in remove mode (see the controller’s manual).<br />3. Move and hold your hand close to the center of the pad.<br />4. If the device is battery powered, high pitched beep will signal exiting the Standby Mode.<br />5. Loud sound sequence will confrm entering the menu, keep holding your hand.<br />6. After hearing two short beeps (green indicator colour), withdraw the hand and perform swiping up gesture to confrm selection (two beeps will confrm validity).<br />7. Wait for the removing process to end.<br />8. Successful removing will be confrmed by the Z-Wave controller’s message and sequence of 2 short beeps, pause, 1 short beep (red visual indicator colour).</p> <br /><h2>Wakeup Information</h2><p>Use 1st menu position to wake up the device or click the button on the back of the device once. </p>
+    ]]></description>
+    <category>RemoteControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -51,7 +54,9 @@
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Device Orientation</label>
-        <description>Parameter determines orientation of the Swipe in relation to its default position.</description>
+        <description><![CDATA[
+Orientation in relation to default position.<br /><h1>Overview</h1><p>Parameter determines orientation of the Swipe in relation to its default position.</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Default Orientation</option>
@@ -97,7 +102,9 @@ Acoustic signalling of gesture recognition result (using the built-in buzzer).<b
       <parameter name="config_5_2" type="integer" groupName="configuration"
                  min="0" max="1080">
         <label>5: Powering mode - interval of updating the current mode</label>
-        <description>This parameter determines how often the device checks if the USB power supply is connected and updates powering mode if needed.</description>
+        <description><![CDATA[
+Check if the USB pwr supply is connected, update pwr mode<br /><h1>Overview</h1><p>This parameter determines how often the device checks if the USB power supply is connected and updates powering mode if needed.</p>
+        ]]></description>
         <default>4</default>
         <options>
           <option value="0">Powering mode is not updated</option>
@@ -122,7 +129,7 @@ This parameter determines operation of gesture detection when battery powered.<b
       <parameter name="config_7_1" type="integer" groupName="configuration">
         <label>7: Hold gesture to enter the menu</label>
         <description><![CDATA[
-This parameter allows to choose if the menu can be entered using the Hold gesture.<br /><h1>Overview</h1><p>After disabling the Hold gesture in parameter 7, menu can be entered by using the B-button only!</p>
+Choose if the menu can be entered using the Hold gesture.<br /><h1>Overview</h1><p>This parameter allows to choose if the menu can be entered using the Hold gesture.</p> <p>After disabling the Hold gesture in parameter 7, menu can be entered by using the B-button only!</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -155,7 +162,7 @@ Defines which actions result in sending scenes to 1st “Lifeline” group.<br /
                  min="1" max="31">
         <label>11: Associations in Z-Wave network security mode</label>
         <description><![CDATA[
-Parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. It does not apply to 1st “Lifeline” association group.<br /><h1>Overview</h1><p>Parameter 11 values may be combined, e.g. 1+2=3 means that 2nd &amp; 3rd group are sent as secure.</p>
+Define sent command for specified association groups.<br /><h1>Overview</h1><p>Parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. It does not apply to 1st “Lifeline” association group.</p> <p>Parameter 11 values may be combined, e.g. 1+2=3 means that 2nd &amp; 3rd group are sent as secure.</p>
         ]]></description>
         <default>31</default>
         <options>
@@ -170,9 +177,9 @@ Parameter defines how commands are sent in specified association groups: as secu
 
       <parameter name="config_12_1" type="integer" groupName="configuration"
                  min="1" max="15">
-        <label>12: Control mode of 2nd - 5th "Flick UP/DOWN/LEFT/RIGHT” association groups and scenes</label>
+        <label>12: Control mode of 2nd-5th "Flick UP/DOWN/LEFT/RIGHT”</label>
         <description><![CDATA[
-Parameter allows to choose control mode for 2nd-5th groups and scenes.<br /><h1>Overview</h1><p>By default, Toggle Mode is active, meaning that a single flick turns ON the group and the same flick turns it OFF, doubled flicks are inactive.</p> <p>After disabling Toggle Mode a single flick will turn the device ON and the same flick doubled will turn it OFF.</p> <p>Parameter 12 values may be combined, e.g. 1+2=3 means that 2nd &amp; 3rd group are selected.</p> <p><strong>N.B. Disabling Toggle Mode will introduce delay when performing single gestures.</strong></p>
+Choose control mode for 2nd-5th groups and scenes.<br /><h1>Overview</h1><p>Parameter allows to choose control mode for 2nd-5th groups and scenes.</p> <p>By default, Toggle Mode is active, meaning that a single flick turns ON the group and the same flick turns it OFF, doubled flicks are inactive.</p> <p>After disabling Toggle Mode a single flick will turn the device ON and the same flick doubled will turn it OFF.</p> <p>Parameter 12 values may be combined, e.g. 1+2=3 means that 2nd &amp; 3rd group are selected.</p> <p><strong>N.B. Disabling Toggle Mode will introduce delay when performing single gestures.</strong></p>
         ]]></description>
         <default>15</default>
         <options>
@@ -188,7 +195,7 @@ Parameter allows to choose control mode for 2nd-5th groups and scenes.<br /><h1>
                  min="0" max="255">
         <label>13: Rate of smooth level control</label>
         <description><![CDATA[
-Parameter allows to choose how long the hand has to be held near the center of the pad after "AirWheel" gesture for the associated devices to reach their maximum/minimum level.<br /><h1>Overview</h1><p>Available settings:</p> <p>0-10 - duration in seconds</p> <p>255 - default settings of controlled devices</p>
+Choose gesture time for "AirWheel" to reach max/min level.<br /><h1>Overview</h1><p>Parameter allows to choose how long the hand has to be held near the center of the pad after "AirWheel" gesture for the associated devices to reach their maximum/minimum level.</p> <p>Available settings:</p> <p>0-10 - duration in seconds</p> <p>255 - default settings of controlled devices</p>
         ]]></description>
         <default>255</default>
         <limitToOptions>false</limitToOptions>
@@ -198,7 +205,7 @@ Parameter allows to choose how long the hand has to be held near the center of t
                  min="0" max="255">
         <label>20: SWITCH ON control frame value for FLICK UP gesture</label>
         <description><![CDATA[
-This parameter allows to set value sent in SWITCH ON command frame to the association group.<br /><h1>Overview</h1><p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
+Value sent in SWITCH ON command<br /><h1>Overview</h1><p>This parameter allows to set value sent in SWITCH ON command frame to the association group.</p> <p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
         ]]></description>
         <default>255</default>
         <advanced>true</advanced>
@@ -209,7 +216,7 @@ This parameter allows to set value sent in SWITCH ON command frame to the associ
                  min="0" max="255">
         <label>21: SWITCH OFF control frame value for FLICK UP gesture</label>
         <description><![CDATA[
-This parameter allows to set value sent in SWITCH OFF command frame to the association group.<br /><h1>Overview</h1><p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
+Value sent in SWITCH OFF command frame.<br /><h1>Overview</h1><p>This parameter allows to set value sent in SWITCH OFF command frame to the association group.</p> <p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
         ]]></description>
         <default>255</default>
         <advanced>true</advanced>
@@ -220,7 +227,7 @@ This parameter allows to set value sent in SWITCH OFF command frame to the assoc
                  min="0" max="255">
         <label>22: SWITCH ON control frame value for FLICK DOWN gesture</label>
         <description><![CDATA[
-This parameter allows to set value sent in SWITCH ON command frame to the association group.<br /><h1>Overview</h1><p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
+Value sent in SWITCH ON command frame.<br /><h1>Overview</h1><p>This parameter allows to set value sent in SWITCH ON command frame to the association group.</p> <p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
         ]]></description>
         <default>255</default>
         <advanced>true</advanced>
@@ -231,7 +238,7 @@ This parameter allows to set value sent in SWITCH ON command frame to the associ
                  min="0" max="255">
         <label>23: SWITCH OFF control frame value for FLICK DOWN gesture</label>
         <description><![CDATA[
-This parameter allows to set value sent in SWITCH OFF command frame to the association group.<br /><h1>Overview</h1><p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
+Value sent in SWITCH OFF command frame.<br /><h1>Overview</h1><p>This parameter allows to set value sent in SWITCH OFF command frame to the association group.</p> <p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
         ]]></description>
         <default>255</default>
         <advanced>true</advanced>
@@ -242,7 +249,7 @@ This parameter allows to set value sent in SWITCH OFF command frame to the assoc
                  min="0" max="255">
         <label>24: SWITCH ON control frame value for FLICK LEFT gesture</label>
         <description><![CDATA[
-This parameter allows to set value sent in SWITCH ON command frame to the association group.<br /><h1>Overview</h1><p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
+Value sent in SWITCH ON command frame.<br /><h1>Overview</h1><p>This parameter allows to set value sent in SWITCH ON command frame to the association group.</p> <p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
         ]]></description>
         <default>255</default>
         <advanced>true</advanced>
@@ -253,7 +260,7 @@ This parameter allows to set value sent in SWITCH ON command frame to the associ
                  min="0" max="255">
         <label>25: SWITCH OFF control frame value for FLICK LEFT gesture</label>
         <description><![CDATA[
-This parameter allows to set value sent in SWITCH OFF command frame to the association group.<br /><h1>Overview</h1><p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
+Value sent in SWITCH OFF command frame.<br /><h1>Overview</h1><p>This parameter allows to set value sent in SWITCH OFF command frame to the association group.</p> <p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
         ]]></description>
         <default>255</default>
         <advanced>true</advanced>
@@ -264,7 +271,7 @@ This parameter allows to set value sent in SWITCH OFF command frame to the assoc
                  min="0" max="255">
         <label>26: SWITCH ON control frame value for FLICK RIGHT gesture</label>
         <description><![CDATA[
-This parameter allows to set value sent in SWITCH ON command frame to the association group.<br /><h1>Overview</h1><p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
+Value sent in SWITCH ON command frame.<br /><h1>Overview</h1><p>This parameter allows to set value sent in SWITCH ON command frame to the association group.</p> <p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
         ]]></description>
         <default>255</default>
         <advanced>true</advanced>
@@ -275,7 +282,7 @@ This parameter allows to set value sent in SWITCH ON command frame to the associ
                  min="0" max="255">
         <label>27: SWITCH OFF control frame value for FLICK RIGHT gesture</label>
         <description><![CDATA[
-This parameter allows to set value sent in SWITCH OFF command frame to the association group.<br /><h1>Overview</h1><p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
+Value sent in SWITCH OFF command frame.<br /><h1>Overview</h1><p>This parameter allows to set value sent in SWITCH OFF command frame to the association group.</p> <p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
         ]]></description>
         <default>255</default>
         <advanced>true</advanced>
@@ -286,7 +293,7 @@ This parameter allows to set value sent in SWITCH OFF command frame to the assoc
                  min="0" max="6">
         <label>30: Sequence learning mode</label>
         <description><![CDATA[
-Parameter activated by the main Z-Wave controller. Change its value to launch sequence learning procedure for the desired slot.<br /><h1>Overview</h1><p>0 - learning mode disabled</p> <p>1-6 - launch sequence learning for selected slot</p> <p><strong>N.B. Sequences do not allow to use same gestures next to each other</strong></p>
+Launch sequence learning procedure<br /><h1>Overview</h1><p>Parameter activated by the main Z-Wave controller. Change its value to launch sequence learning procedure for the desired slot.</p> <p>0 - learning mode disabled</p> <p>1-6 - launch sequence learning for selected slot</p> <p><strong>N.B. Sequences do not allow to use same gestures next to each other</strong></p>
         ]]></description>
         <default>0</default>
         <advanced>true</advanced>

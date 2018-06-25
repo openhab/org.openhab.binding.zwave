@@ -23,7 +23,7 @@ Strips Comfort/Drips Multisensor<br /><h1>Overview</h1><p>Strips, the ultra-thin
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="sensor_moisture" typeId="sensor_moisture">

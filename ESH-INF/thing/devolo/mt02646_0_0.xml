@@ -7,7 +7,9 @@
 
   <thing-type id="devolo_mt02646_00_000" listed="false">
     <label>MT02646 Home Control Metering Plug</label>
-    <description>Home Control Metering Plug</description>
+    <description><![CDATA[
+Home Control Metering Plug<br /><h1>Overview</h1><p>The Home Control Smart Metering Plug can be plugged into any wall outlet in the home. It enhances every<br />connected device with useful functions, such as time-controlled enabling and disabling or power monitoring </p> <br /><h2>Inclusion Information</h2><p>Push the front button three times rapidly within 2 seconds.</p> <br /><h2>Exclusion Information</h2><p>Push the front button three times rapidly within 2 seconds.</p>
+    ]]></description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->

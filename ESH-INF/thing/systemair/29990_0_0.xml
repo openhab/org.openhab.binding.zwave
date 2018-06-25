@@ -29,7 +29,7 @@ Remotely Controlled Ventilation<br /><h1>Overview</h1><p><strong>NB</strong>, th
       <channel id="thermostat_setpoint" typeId="thermostat_setpoint">
         <label>Thermostat Setpoint</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_SETPOINT</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT</property>
         </properties>
       </channel>
       <channel id="thermostat_fanmode" typeId="systemair_29990_00_000_thermostat_fanmode">
