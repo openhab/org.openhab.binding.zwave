@@ -138,112 +138,190 @@ Push button 6-gang<br /><h1>Overview</h1><p>The Heatit Z-Wave Scene Controller i
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
-      <parameter name="config_1_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Upper paddle buttons mode</label>
         <description><![CDATA[
 Configuration of Pair Mode for the upper two buttons (button #1 and #2)<br /><h1>Overview</h1><p>0 Separate mode (toggle mode). (Default)</p> <p>1 In pair mode, left side sends on/up commands, right side sends off/down commands.</p>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Separate mode (toggle mode). (Default)</option>
+          <option value="1">Left side ON/UP, right side OFF/DOWN</option>
+        </options>
       </parameter>
 
-      <parameter name="config_2_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Middle paddle buttons mode</label>
         <description><![CDATA[
 Configuration of Pair Mode for the middle two buttons (button #3 and #4)<br /><h1>Overview</h1><p>0 Separate mode (toggle mode). (Default)</p> <p>1 In pair mode, left side sends on/up commands, right side sends off/down commands.</p>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Separate mode (toggle mode). (Default)</option>
+          <option value="1">Left side ON/UP, right side OFF/DOWN</option>
+        </options>
       </parameter>
 
-      <parameter name="config_3_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Lower paddle buttons mode</label>
         <description><![CDATA[
 Configuration of Pair Mode for the lower two buttons (button #5 and #6)<br /><h1>Overview</h1><p>0 Separate mode (toggle mode). (Default)</p> <p>1 In pair mode, left side sends on/up commands, right side sends off/down commands.</p>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Separate mode (toggle mode). (Default)</option>
+          <option value="1">Left side ON/UP, right side OFF/DOWN</option>
+        </options>
       </parameter>
 
-      <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="0" max="7">
+      <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: LED #1 mode.</label>
         <description><![CDATA[
 Configuration of the internal operation of LED #1<br /><h1>Overview</h1><p>0 LED indication is disabled (LED can be controlled by Indicator Command Class Set commands).</p> <p>1 LED indicates the status of the corresponding button. (Default)</p> <p>2 LED indicates the status of the corresponding button, with inverted indication.</p> <p>3 LED indicates the status of corresponding paddle (in pair mode).</p> <p>4 LED indicates the status of the corresponding paddle (in pair mode), with inverted indication.</p> <p>5 LED indicates the status of the built-in relay.</p> <p>6 LED indicates the status of the built-in relay, with inverted indication.</p> <p>7 LED show a 5 seconds indication when the corresponding button is pressed.</p>
         ]]></description>
         <default>1</default>
+        <options>
+          <option value="0">LED indication is disabled</option>
+          <option value="1">Status of the corresponding button</option>
+          <option value="2">Status of the corresponding button, inverted</option>
+          <option value="3">Status of corresponding paddle (pair mode)</option>
+          <option value="4">Status of corresponding paddle (pair mode) inv</option>
+          <option value="5">Status of the built-in relay</option>
+          <option value="6">Status of the built-in relay, inverted</option>
+          <option value="7">LED activated on button press</option>
+        </options>
       </parameter>
 
-      <parameter name="config_5_1" type="integer" groupName="configuration"
-                 min="0" max="7">
+      <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: LED #2 mode</label>
         <description><![CDATA[
 Configuration of the internal operation of LED #2<br /><h1>Overview</h1><p>0 LED indication is disabled (LED can be controlled by Indicator Command Class Set commands).</p> <p>1 LED indicates the status of the corresponding button. (Default)</p> <p>2 LED indicates the status of the corresponding button, with inverted indication.</p> <p>3 LED indicates the status of corresponding paddle (in pair mode).</p> <p>4 LED indicates the status of the corresponding paddle (in pair mode), with inverted indication.</p> <p>5 LED indicates the status of the built-in relay.</p> <p>6 LED indicates the status of the built-in relay, with inverted indication.</p> <p>7 LED show a 5 seconds indication when the corresponding button is pressed.</p>
         ]]></description>
         <default>1</default>
+        <options>
+          <option value="0">LED indication is disabled</option>
+          <option value="1">Status of the corresponding button</option>
+          <option value="2">Status of the corresponding button, inverted</option>
+          <option value="3">Status of corresponding paddle (pair mode)</option>
+          <option value="4">Status of corresponding paddle (pair mode) inv</option>
+          <option value="5">Status of the built-in relay</option>
+          <option value="6">Status of the built-in relay, inverted</option>
+          <option value="7">LED activated on button press</option>
+        </options>
       </parameter>
 
-      <parameter name="config_6_1" type="integer" groupName="configuration"
-                 min="0" max="7">
+      <parameter name="config_6_1" type="integer" groupName="configuration">
         <label>6: LED #3 mode</label>
         <description><![CDATA[
 Configuration of the internal operation of LED #3<br /><h1>Overview</h1><p>0 LED indication is disabled (LED can be controlled by Indicator Command Class Set commands).</p> <p>1 LED indicates the status of the corresponding button. (Default)</p> <p>2 LED indicates the status of the corresponding button, with inverted indication.</p> <p>3 LED indicates the status of corresponding paddle (in pair mode).</p> <p>4 LED indicates the status of the corresponding paddle (in pair mode), with inverted indication.</p> <p>5 LED indicates the status of the built-in relay.</p> <p>6 LED indicates the status of the built-in relay, with inverted indication.</p> <p>7 LED show a 5 seconds indication when the corresponding button is pressed.</p>
         ]]></description>
         <default>1</default>
+        <options>
+          <option value="0">LED indication is disabled</option>
+          <option value="1">Status of the corresponding button</option>
+          <option value="2">Status of the corresponding button, inverted</option>
+          <option value="3">Status of corresponding paddle (pair mode)</option>
+          <option value="4">Status of corresponding paddle (pair mode) inv</option>
+          <option value="5">Status of the built-in relay</option>
+          <option value="6">Status of the built-in relay, inverted</option>
+          <option value="7">LED activated on button press</option>
+        </options>
       </parameter>
 
-      <parameter name="config_7_1" type="integer" groupName="configuration"
-                 min="0" max="7">
+      <parameter name="config_7_1" type="integer" groupName="configuration">
         <label>7: LED #4 mode</label>
         <description><![CDATA[
 Configuration of the internal operation of LED #4<br /><h1>Overview</h1><p>0 LED indication is disabled (LED can be controlled by Indicator Command Class Set commands).</p> <p>1 LED indicates the status of the corresponding button. (Default)</p> <p>2 LED indicates the status of the corresponding button, with inverted indication.</p> <p>3 LED indicates the status of corresponding paddle (in pair mode).</p> <p>4 LED indicates the status of the corresponding paddle (in pair mode), with inverted indication.</p> <p>5 LED indicates the status of the built-in relay.</p> <p>6 LED indicates the status of the built-in relay, with inverted indication.</p> <p>7 LED show a 5 seconds indication when the corresponding button is pressed.</p>
         ]]></description>
         <default>1</default>
+        <options>
+          <option value="0">LED indication is disabled</option>
+          <option value="1">Status of the corresponding button</option>
+          <option value="2">Status of the corresponding button, inverted</option>
+          <option value="3">Status of corresponding paddle (pair mode)</option>
+          <option value="4">Status of corresponding paddle (pair mode) inv</option>
+          <option value="5">Status of the built-in relay</option>
+          <option value="6">Status of the built-in relay, inverted</option>
+          <option value="7">LED activated on button press</option>
+        </options>
       </parameter>
 
-      <parameter name="config_8_1" type="integer" groupName="configuration"
-                 min="0" max="7">
+      <parameter name="config_8_1" type="integer" groupName="configuration">
         <label>8: LED #5 mode</label>
         <description><![CDATA[
 Configuration of the internal operation of LED #5<br /><h1>Overview</h1><p>0 LED indication is disabled (LED can be controlled by Indicator Command Class Set commands).</p> <p>1 LED indicates the status of the corresponding button. (Default)</p> <p>2 LED indicates the status of the corresponding button, with inverted indication.</p> <p>3 LED indicates the status of corresponding paddle (in pair mode).</p> <p>4 LED indicates the status of the corresponding paddle (in pair mode), with inverted indication.</p> <p>5 LED indicates the status of the built-in relay.</p> <p>6 LED indicates the status of the built-in relay, with inverted indication.</p> <p>7 LED show a 5 seconds indication when the corresponding button is pressed.</p>
         ]]></description>
         <default>1</default>
+        <options>
+          <option value="0">LED indication is disabled</option>
+          <option value="1">Status of the corresponding button</option>
+          <option value="2">Status of the corresponding button, inverted</option>
+          <option value="3">Status of corresponding paddle (pair mode)</option>
+          <option value="4">Status of corresponding paddle (pair mode) inv</option>
+          <option value="5">Status of the built-in relay</option>
+          <option value="6">Status of the built-in relay, inverted</option>
+          <option value="7">LED activated on button press</option>
+        </options>
       </parameter>
 
-      <parameter name="config_9_1" type="integer" groupName="configuration"
-                 min="0" max="7">
+      <parameter name="config_9_1" type="integer" groupName="configuration">
         <label>9: LED #6 mode</label>
         <description><![CDATA[
 Configuration of the internal operation of LED #6<br /><h1>Overview</h1><p>0 LED indication is disabled (LED can be controlled by Indicator Command Class Set commands).</p> <p>1 LED indicates the status of the corresponding button. (Default)</p> <p>2 LED indicates the status of the corresponding button, with inverted indication.</p> <p>3 LED indicates the status of corresponding paddle (in pair mode).</p> <p>4 LED indicates the status of the corresponding paddle (in pair mode), with inverted indication.</p> <p>5 LED indicates the status of the built-in relay.</p> <p>6 LED indicates the status of the built-in relay, with inverted indication.</p> <p>7 LED show a 5 seconds indication when the corresponding button is pressed.</p>
         ]]></description>
         <default>1</default>
+        <options>
+          <option value="0">LED indication is disabled</option>
+          <option value="1">Status of the corresponding button</option>
+          <option value="2">Status of the corresponding button, inverted</option>
+          <option value="3">Status of corresponding paddle (pair mode)</option>
+          <option value="4">Status of corresponding paddle (pair mode) inv</option>
+          <option value="5">Status of the built-in relay</option>
+          <option value="6">Status of the built-in relay, inverted</option>
+          <option value="7">LED activated on button press</option>
+        </options>
       </parameter>
 
-      <parameter name="config_10_1" type="integer" groupName="configuration"
-                 min="0" max="7">
+      <parameter name="config_10_1" type="integer" groupName="configuration">
         <label>10: Relay mode</label>
         <description><![CDATA[
 This parameter configures the built-in relay<br /><h1>Overview</h1><p>0 Relay is disabled.</p> <p>1 Relay is controlled by button #1 or by upper paddle when pair mode is active. (Default)</p> <p>2 Relay is controlled by button #2 or by upper paddle when pair mode is active.</p> <p>3 Relay is controlled by button #3 or by middle paddle when pair mode is active.</p> <p>4 Relay is controlled by button #4 or by middle paddle when pair mode is active.</p> <p>5 Relay is controlled by button #5 or by lower paddle when pair mode is active.</p> <p>6 Relay is controlled by button #6 or by lower paddle when pair mode is active.</p> <p>7 Relay is activated for one second and is controlled by button #1 or by upper paddle when pair mode is active.</p>
         ]]></description>
         <default>1</default>
+        <options>
+          <option value="0">Relay is disabled</option>
+          <option value="1">Controlled by button 1</option>
+          <option value="2">Controlled by button 2</option>
+          <option value="3">Controlled by button 3</option>
+          <option value="4">Controlled by button 4</option>
+          <option value="5">Controlled by button 5</option>
+          <option value="6">Controlled by button 6</option>
+          <option value="7">Controlled by button 1, 1 sec</option>
+        </options>
       </parameter>
 
-      <parameter name="config_11_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_11_1" type="integer" groupName="configuration">
         <label>11: Disable Central Scene notification</label>
         <description><![CDATA[
 Disables or enables the sending of Central Scene notifications<br /><h1>Overview</h1><p>0 Central Scene notifications are enabled. (Default)</p> <p>1 Central Scene notifications are disabled.</p>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Enabled</option>
+          <option value="1">Disabled</option>
+        </options>
       </parameter>
 
-      <parameter name="config_12_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_12_1" type="integer" groupName="configuration">
         <label>12: Disable House Cleaning Mode</label>
         <description><![CDATA[
 Disable House Cleaning Mode, double press = 100% light<br /><h1>Overview</h1><p>0 House Cleaning Mode is enabled (Default)</p> <p>1 House Cleaning Mode is disabled; double-press button scene notifications will be disabled too.</p>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">House Cleaning Mode is enabled (Default)</option>
+          <option value="1">House Cleaning Mode is disabled</option>
+        </options>
       </parameter>
 
       <parameter name="config_13_4" type="integer" groupName="configuration"
@@ -300,76 +378,100 @@ Configuration of the Multilevel Switch<br /><h1>Overview</h1><p><strong>Byte 1</
         <default>1</default>
       </parameter>
 
-      <parameter name="config_19_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_19_1" type="integer" groupName="configuration">
         <label>19: Association groups for button 1</label>
         <description><![CDATA[
 Association groups for button 1<br /><h1>Overview</h1><p>0 When commands are received by device 1, nodes in the association groups will not be switched, button activations will still send switch values.</p> <p>1 When commands are received by device 1, nodes in the association groups will be switched. (Default)</p>
         ]]></description>
         <default>1</default>
+        <options>
+          <option value="0">Not switched</option>
+          <option value="1">Switched</option>
+        </options>
       </parameter>
 
-      <parameter name="config_20_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_20_1" type="integer" groupName="configuration">
         <label>20: Association groups for button 2</label>
         <description><![CDATA[
 Association groups for button 2<br /><h1>Overview</h1><p>0 When commands are received by device 1, nodes in the association groups will not be switched, button activations will still send switch values.</p> <p>1 When commands are received by device 1, nodes in the association groups will be switched. (Default)</p>
         ]]></description>
         <default>1</default>
+        <options>
+          <option value="0">Not switched</option>
+          <option value="1">Switched</option>
+        </options>
       </parameter>
 
-      <parameter name="config_21_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_21_1" type="integer" groupName="configuration">
         <label>21: Association groups for button 3</label>
         <description><![CDATA[
 Association groups for button 3<br /><h1>Overview</h1><p>0 When commands are received by device 1, nodes in the association groups will not be switched, button activations will still send switch values.</p> <p>1 When commands are received by device 1, nodes in the association groups will be switched. (Default)</p>
         ]]></description>
         <default>1</default>
+        <options>
+          <option value="0">Not switched</option>
+          <option value="1">Switched</option>
+        </options>
       </parameter>
 
-      <parameter name="config_22_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_22_1" type="integer" groupName="configuration">
         <label>22: Association groups for button 4</label>
         <description><![CDATA[
 Association groups for button 4<br /><h1>Overview</h1><p>0 When commands are received by device 1, nodes in the association groups will not be switched, button activations will still send switch values.</p> <p>1 When commands are received by device 1, nodes in the association groups will be switched. (Default)</p>
         ]]></description>
         <default>1</default>
+        <options>
+          <option value="0">Not switched</option>
+          <option value="1">Switched</option>
+        </options>
       </parameter>
 
-      <parameter name="config_23_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_23_1" type="integer" groupName="configuration">
         <label>23: Association groups for button 5</label>
         <description><![CDATA[
 Association groups for button 5<br /><h1>Overview</h1><p>0 When commands are received by device 1, nodes in the association groups will not be switched, button activations will still send switch values.</p> <p>1 When commands are received by device 1, nodes in the association groups will be switched. (Default)</p>
         ]]></description>
         <default>1</default>
+        <options>
+          <option value="0">Not switched</option>
+          <option value="1">Switched</option>
+        </options>
       </parameter>
 
-      <parameter name="config_24_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_24_1" type="integer" groupName="configuration">
         <label>24: Association groups for button 6</label>
         <description><![CDATA[
 Association groups for button 6<br /><h1>Overview</h1><p>0 When commands are received by device 1, nodes in the association groups will not be switched, button activations will still send switch values.</p> <p>1 When commands are received by device 1, nodes in the association groups will be switched. (Default)</p>
         ]]></description>
         <default>1</default>
+        <options>
+          <option value="0">Not switched</option>
+          <option value="1">Switched</option>
+        </options>
       </parameter>
 
-      <parameter name="config_25_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_25_1" type="integer" groupName="configuration">
         <label>25: Backlight control</label>
         <description><![CDATA[
 Configuration of backlight control.<br /><h1>Overview</h1><p>0 Backlight is only controlled by Indicator Command Class – commands send to endpoint 0.</p> <p>1 Backlight is turned on for 5 seconds when a button is pressed. (Default)</p>
         ]]></description>
         <default>1</default>
+        <options>
+          <option value="0">By indicator command class</option>
+          <option value="1">5 sec when button pressed</option>
+        </options>
       </parameter>
 
-      <parameter name="config_26_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_26_1" type="integer" groupName="configuration">
         <label>26: Basic Set for endpoint 0</label>
         <description><![CDATA[
 Enable or disable that Basic Set commands to the root device<br /><h1>Overview</h1><p>Enable or disable that Basic Set commands to the root device will be able to control the backlight.</p> <p>Value Description</p> <p>0 Basic Set commands to endpoint 0 is forwarded to endpoint 1 (Default).</p> <p>1 Basic Set commands to endpoint 0 controls backlight (on/off).</p>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Forwarded to endpoint 1</option>
+          <option value="1">Controls backlight</option>
+        </options>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
