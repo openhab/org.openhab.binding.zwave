@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.eclipse.smarthome.core.library.types.HSBType;
 import org.eclipse.smarthome.core.library.types.PercentType;
@@ -110,6 +111,8 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
 
         Collection<ZWaveCommandClassTransactionPayload> rawMessages = null;
 
+        Map<ZWaveColorType, Integer> colors = new TreeMap<>();
+
         // Since we get an HSB, there is brightness information. However, we only deal with the color class here
         // so we need to scale the color and let the brightness be handled by the multi_level command class
         if ("RGB".equals(channel.getArguments().get("colorMode"))) {
@@ -121,10 +124,13 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
 
             // Queue the command
             if (color.getSaturation().equals(PercentType.ZERO)) {
-                rawMessages = commandClass.setColor(0, 0, 0, 255, 0);
+                colors.put(ZWaveColorType.RED, 0);
+                colors.put(ZWaveColorType.GREEN, 0);
+                colors.put(ZWaveColorType.BLUE, 0);
             } else {
-                rawMessages = commandClass.setColor(scaleColor(color.getRed()), scaleColor(color.getGreen()),
-                        scaleColor(color.getBlue()), 0, 0);
+                colors.put(ZWaveColorType.RED, scaleColor(color.getRed()));
+                colors.put(ZWaveColorType.GREEN, scaleColor(color.getRed()));
+                colors.put(ZWaveColorType.BLUE, scaleColor(color.getRed()));
             }
         } else if ("COLD_WHITE".equals(channel.getArguments().get("colorMode"))) {
             PercentType color = (PercentType) command;
@@ -151,6 +157,8 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
         } else {
             logger.debug("NODE {}: Unknown color mode {}.", node.getNodeId(), channel.getArguments().get("colorMode"));
         }
+
+        rawMessages = commandClass.setColor(colors);
 
         if (rawMessages == null) {
             return null;
