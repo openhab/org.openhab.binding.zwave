@@ -153,7 +153,7 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
             if (product == null) {
                 continue;
             }
-            logger.debug("NODE {}: Checking {}", node.getNodeId(), product.getThingTypeUID());
+            logger.trace("NODE {}: Checking {}", node.getNodeId(), product.getThingTypeUID());
             if (product.match(node) == true) {
                 foundProduct = product;
                 break;
