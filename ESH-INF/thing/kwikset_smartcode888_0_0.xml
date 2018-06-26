@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="kwikset_smartcode888_00_000" listed="false">
+    <label>SmartCode 888 Touchpad Electronic Deadbolt</label>
+    <description><![CDATA[
+Touchpad Electronic Deadbolt<br /><h1>Overview</h1><p>The following table provides a reference of the Alarm_Number related messages.</p> Alarm Type Alarm Level Notification Event 021 001 Lock Secured using Keyed cylinder or inside thumb-turn 022 001 Lock Un-Secured using Keyed cylinder or inside thumb-turn 026 001 Lock Auto Secured – Bolt Jammed (Not fully extended) 027 001 Lock Auto Secured – Successful (Fully extended)   017 001 Lock Secured at Keypad – Bolt Jammed (Not fully extended)   018 000 or User ID Lock Secured at Keypad – Successful (Fully extended)  019 User ID Lock Un-Secured by User (User-ID) at Keypad 023 001 Lock Secured by Controller – Bolt Jammed (Not fully extended) 024 001 Lock Secured by Controller – Successful (Fully extended)   025 001 Lock Un-Secured by Controller – Successful (Fully retracted) 112 User ID New User Code (User-ID#) added to the lock 032 001 All User Codes deleted from lock <p>161              001                      Failed User Code attempt at Keypad  </p> <p>162              User-ID#*             Attempted access by user (User-ID#) outside of scheduled   </p> <p>167              001                      Low battery level   </p> <p>168              001                      Critical battery level   </p> <p>169              001                      Battery level too low to operate lock  </p> <p>* User-ID# values: 001 to 030</p> <br /><h2>Inclusion Information</h2><p> Press button “A” on the lock one time to include it in your system.</p> <br /><h2>Exclusion Information</h2><p> Press button “A” on the lock one time to include it in your system.</p>
+    ]]></description>
+    <category>Lock</category>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="lock_door" typeId="lock_door">
+        <label>Door Lock</label>
+        <properties>
+          <property name="binding:*:OnOffType">DOOR_LOCK</property>
+        </properties>
+      </channel>
+      <channel id="alarm_access" typeId="alarm_access">
+        <label>Alarm (access)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=ACCESS_CONTROL</property>
+        </properties>
+      </channel>
+      <channel id="alarm_power" typeId="alarm_power">
+        <label>Alarm (power)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">BATTERY</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Black &amp; Decker</property>
+      <property name="modelId">SmartCode 888</property>
+      <property name="manufacturerId">0090</property>
+      <property name="manufacturerRef">0003:0541</property>
+      <property name="dbReference">864</property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_31_1_00100000" type="integer" groupName="configuration" readOnly="true">
+        <label>31: Auto Buzzer</label>
+        <description><![CDATA[
+Beeping sound enabled.<br /><h1>Overview</h1><p>Beeping sound enabled. When disabled, keypad buttons light red or amber when pressed.</p> <p>ON position is factory default.</p> <p>Note: It is recommended that the beeping sound is enabled during programming.</p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">OFF</option>
+          <option value="1">ON</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_31_1_01000000" type="integer" groupName="configuration" readOnly="true">
+        <label>31: Auto Lock</label>
+        <description><![CDATA[
+Automatically re-locks door 30 seconds after unlocking.<br /><h1>Overview</h1><p>Lock automatically re-locks door 30 seconds after unlocking. OFF position is factory default. If this switch is turned on, it will be disabled if all codes are deleted from the lock.</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">OFF</option>
+          <option value="1">ON</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_31_1_10000000" type="integer" groupName="configuration" readOnly="true">
+        <label>31: Lock LED Status</label>
+        <description><![CDATA[
+Door lock status LED blinks every 6 seconds.<br /><h1>Overview</h1><p>Door lock status LED blinks every 6 seconds. ON position is factory default.</p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">OFF</option>
+          <option value="1">ON</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_40_1" type="integer" groupName="configuration" readOnly="true">
+        <label>40: Factory Default</label>
+        <description><![CDATA[
+Reset to factory default settings<br /><h1>Overview</h1><p>Reset factory default settings, except for the anti-theft setting.</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="1">Factory Default</option>
+        </options>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Group 1</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>

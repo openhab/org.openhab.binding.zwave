@@ -8,6 +8,7 @@
   <thing-type id="eco_tiltzwave2_00_000" listed="false">
     <label>TILTZWAVE2 Z-Wave Garage Door Sensor</label>
     <description>Z-Wave Garage Door Sensor</description>
+    <category>GarageDoor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
