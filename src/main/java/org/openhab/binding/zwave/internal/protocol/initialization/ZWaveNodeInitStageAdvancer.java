@@ -386,19 +386,23 @@ public class ZWaveNodeInitStageAdvancer {
         // }
         // } while (true);
 
-        setCurrentStage(ZWaveNodeInitStage.PING);
-        ZWaveNoOperationCommandClass noOpCommandClass = (ZWaveNoOperationCommandClass) node
-                .getCommandClass(CommandClass.COMMAND_CLASS_NO_OPERATION);
-        if (noOpCommandClass != null) {
-            ZWaveCommandClassTransactionPayload msg = noOpCommandClass.getNoOperationMessage();
-            if (msg == null) {
-                return;
-            }
+        // Only perform the PING stage on devices that should be listening.
+        // Battery (ie non-Listening) devices will only be communicated with when they send a WAKEUP_NOTIFICATION
+        if (node.isListening()) {
+            setCurrentStage(ZWaveNodeInitStage.PING);
+            ZWaveNoOperationCommandClass noOpCommandClass = (ZWaveNoOperationCommandClass) node
+                    .getCommandClass(CommandClass.COMMAND_CLASS_NO_OPERATION);
+            if (noOpCommandClass != null) {
+                ZWaveCommandClassTransactionPayload msg = noOpCommandClass.getNoOperationMessage();
+                if (msg == null) {
+                    return;
+                }
 
-            // We only send out a single PING - no retries at controller level!
-            // This is to try and reduce network congestion during initialisation.
-            // msg.setMaxAttempts(1);
-            processTransaction(msg);
+                // We only send out a single PING - no retries at controller level!
+                // This is to try and reduce network congestion during initialisation.
+                // msg.setMaxAttempts(1);
+                processTransaction(msg);
+            }
         }
 
         setCurrentStage(ZWaveNodeInitStage.REQUEST_NIF);
