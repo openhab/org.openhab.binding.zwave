@@ -235,12 +235,44 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
     }
 
     /**
-     * Set the state (all colors) of the device
+     * Set the state (CW and WW) of the device
      *
      * @return collection of requests
      */
-    public Collection<ZWaveCommandClassTransactionPayload> setColor(int red, int green, int blue, int coldWhite,
-            int warmWhite) {
+    public Collection<ZWaveCommandClassTransactionPayload> setColor(int coldWhite, int warmWhite) {
+        ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
+
+        if (warmWhite > 255) {
+            warmWhite = 255;
+        }
+        if (coldWhite > 255) {
+            coldWhite = 255;
+        }
+
+        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
+        outputData.write(2);
+        outputData.write((byte) ZWaveColorType.WARM_WHITE.getKey());
+        outputData.write((byte) warmWhite);
+        outputData.write((byte) ZWaveColorType.COLD_WHITE.getKey());
+        outputData.write((byte) coldWhite);
+
+        if (getVersion() > 1) {
+            // Add the transition duration
+            outputData.write((byte) 255);
+        }
+
+        result.add(new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                SWITCH_COLOR_SET).withPayload(outputData.toByteArray()).withPriority(TransactionPriority.Set).build());
+
+        return result;
+    }
+
+    /**
+     * Set the state (R,G,B) of the device
+     *
+     * @return collection of requests
+     */
+    public Collection<ZWaveCommandClassTransactionPayload> setColor(int red, int green, int blue) {
         ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
 
         if (red > 255) {
@@ -252,25 +284,15 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
         if (green > 255) {
             green = 255;
         }
-        if (warmWhite > 255) {
-            warmWhite = 255;
-        }
-        if (coldWhite > 255) {
-            coldWhite = 255;
-        }
 
         ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write(5);
+        outputData.write(3);
         outputData.write((byte) ZWaveColorType.RED.getKey());
         outputData.write((byte) red);
         outputData.write((byte) ZWaveColorType.GREEN.getKey());
         outputData.write((byte) green);
         outputData.write((byte) ZWaveColorType.BLUE.getKey());
         outputData.write((byte) blue);
-        outputData.write((byte) ZWaveColorType.WARM_WHITE.getKey());
-        outputData.write((byte) warmWhite);
-        outputData.write((byte) ZWaveColorType.COLD_WHITE.getKey());
-        outputData.write((byte) coldWhite);
 
         if (getVersion() > 1) {
             // Add the transition duration
