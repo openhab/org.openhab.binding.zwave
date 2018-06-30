@@ -129,8 +129,8 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
                 colors.put(ZWaveColorType.BLUE, 0);
             } else {
                 colors.put(ZWaveColorType.RED, scaleColor(color.getRed()));
-                colors.put(ZWaveColorType.GREEN, scaleColor(color.getRed()));
-                colors.put(ZWaveColorType.BLUE, scaleColor(color.getRed()));
+                colors.put(ZWaveColorType.GREEN, scaleColor(color.getGreen()));
+                colors.put(ZWaveColorType.BLUE, scaleColor(color.getBlue()));
             }
         } else if ("COLD_WHITE".equals(channel.getArguments().get("colorMode"))) {
             PercentType color = (PercentType) command;
@@ -138,14 +138,14 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
                     node.getNodeId(), command.toString(), color.intValue(), channel.getUID(), channel.getEndpoint());
 
             // Queue the command
-            rawMessages = commandClass.setColor(0, 0, 0, scaleColor(color), 0);
+            colors.put(ZWaveColorType.COLD_WHITE, scaleColor(color));
         } else if ("WARM_WHITE".equals(channel.getArguments().get("colorMode"))) {
             PercentType color = (PercentType) command;
             logger.debug("NODE {}: Converted command '{}' to value {} for channel = {}, endpoint = {}.",
                     node.getNodeId(), command.toString(), color.intValue(), channel.getUID(), channel.getEndpoint());
 
             // Queue the command
-            rawMessages = commandClass.setColor(0, 0, 0, 0, scaleColor(color));
+            colors.put(ZWaveColorType.WARM_WHITE, scaleColor(color));
         } else if ("DIFF_WHITE".equals(channel.getArguments().get("colorMode"))) {
             PercentType color = (PercentType) command;
             logger.debug("NODE {}: Converted command '{}' to value {} for channel = {}, endpoint = {}.",
@@ -153,7 +153,8 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
 
             // Queue the command
             int value = scaleColor(color);
-            rawMessages = commandClass.setColor(0, 0, 0, 255 - value, value);
+            colors.put(ZWaveColorType.COLD_WHITE, 255 - value);
+            colors.put(ZWaveColorType.WARM_WHITE, value);
         } else {
             logger.debug("NODE {}: Unknown color mode {}.", node.getNodeId(), channel.getArguments().get("colorMode"));
         }
