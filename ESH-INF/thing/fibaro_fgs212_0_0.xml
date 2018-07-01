@@ -72,8 +72,8 @@ Forced auto off period<br /><h1>Overview</h1><p>If Parameter 4 states an auto of
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">Turn off with push button disabled in auto off interval</option>
-          <option value="1">Turn off with push button enabled in auto off interval</option>
+          <option value="0">Turn off with push button disabled</option>
+          <option value="1">Turn off with push button enabled</option>
         </options>
       </parameter>
 
@@ -138,8 +138,8 @@ Enable/Disable operation of dimmer or roller shutter devices ...<br /><h1>Overvi
         <description>Saving state before power failure</description>
         <default>1</default>
         <options>
-          <option value="0">State NOT saved at power failure, all outputs are set ...</option>
-          <option value="1">State saved at power failure, all outputs are set to ...</option>
+          <option value="0">State NOT saved at pwr failure, outputs set ...</option>
+          <option value="1">State saved at pwr failure, outputs are set to ...</option>
         </options>
       </parameter>
 
@@ -148,8 +148,8 @@ Enable/Disable operation of dimmer or roller shutter devices ...<br /><h1>Overvi
         <default>3</default>
         <options>
           <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt ...</option>
-          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt ...</option>
+          <option value="1">Alarm relay ON</option>
+          <option value="2">Alarm relay OFF</option>
           <option value="3">ALARM FLASHING - relay will turn ON and OFF ...</option>
         </options>
       </parameter>
@@ -159,8 +159,8 @@ Enable/Disable operation of dimmer or roller shutter devices ...<br /><h1>Overvi
         <default>2</default>
         <options>
           <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt ...</option>
-          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt ...</option>
+          <option value="1">Alarm relay ON</option>
+          <option value="2">Alarm relay OFF</option>
           <option value="3">ALARM FLASHING - relay will turn ON and OFF ...</option>
         </options>
       </parameter>
@@ -170,8 +170,8 @@ Enable/Disable operation of dimmer or roller shutter devices ...<br /><h1>Overvi
         <default>3</default>
         <options>
           <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt ...</option>
-          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt ...</option>
+          <option value="1">Alarm relay ON</option>
+          <option value="2">Alarm relay OFF</option>
           <option value="3">ALARM FLASHING - relay will turn ON and OFF ...</option>
         </options>
       </parameter>
@@ -181,8 +181,8 @@ Enable/Disable operation of dimmer or roller shutter devices ...<br /><h1>Overvi
         <default>1</default>
         <options>
           <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON - relay will turn ON upon receipt ...</option>
-          <option value="2">ALARM RELAY OFF - relay will turn OFF upon receipt ...</option>
+          <option value="1">Alarm relay ON</option>
+          <option value="2">Alarm relay OFF</option>
           <option value="3">ALARM FLASHING - relay will turn ON and OFF ...</option>
         </options>
       </parameter>

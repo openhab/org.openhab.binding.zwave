@@ -7,7 +7,9 @@
 
   <thing-type id="fibaro_fgs221_01_004" listed="false">
     <label>FGS221 Double Relay Switch 2x1.5kW</label>
-    <description>Double Relay Switch 2x1.5kW</description>
+    <description><![CDATA[
+Double Relay Switch 2x1.5kW<br /><h1>Overview</h1><p>Remotely Controlled Relay Switch of Fibaro System is designed to operate in a wall switch box or in locations where the control of an electric device (up to 3kW) is needed.<br />It is also possible to send a signal to any system that is to be integrated with Fibaro system.</p> <br /><h2>Inclusion Information</h2><p>Add Fibaro Switch to the network by pushing three times key no. 1 or push-button B located inside the housing of the device. For toggle switch perform 3 position changes.</p> <br /><h2>Exclusion Information</h2><p>Remove Fibaro Switch from the network by pushing three times key no. 1 or push-button B located inside the housing of the device. For toggle switch perform 3 position changes.</p>
+    ]]></description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
