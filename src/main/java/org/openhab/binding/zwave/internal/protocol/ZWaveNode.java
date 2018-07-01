@@ -1267,6 +1267,13 @@ public class ZWaveNode {
             return null;
         }
         for (ZWaveCommandClassPayload command : commands) {
+            // Check for WAKEUP_NOTIFICATION
+            if (payload.getCommandClassId() == CommandClass.COMMAND_CLASS_WAKE_UP.getKey()
+                    && payload.getCommandClassCommand() == 0x07) {
+                setAwake(true);
+                continue;
+            }
+
             CommandClass commandClass = CommandClass.getCommandClass(command.getCommandClassId());
             if (commandClass == null) {
                 logger.debug("NODE {}: Unknown command class 0x{}", getNodeId(),
