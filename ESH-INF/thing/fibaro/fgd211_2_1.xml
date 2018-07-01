@@ -7,7 +7,9 @@
 
   <thing-type id="fibaro_fgd211_02_001" listed="false">
     <label>FGD211 Universal Dimmer 500W</label>
-    <description>Universal Dimmer 500W</description>
+    <description><![CDATA[
+Universal Dimmer 500W<br /><h1>Overview</h1><p>Remotely controlled Dimmer is designed to operate with or without neutral lead. It may be used as a switch in systems without neutral lead.</p> <br /><h2>Inclusion Information</h2><p>The Dimmer enters the mode of inclusion after quick pressing three times the push-button connected to S1 terminal or push-button B located inside the housing.</p> <br /><h2>Exclusion Information</h2><p>The Dimmer enters the mode of exclusion after quick pressing three times the push-button connected to S1 terminal or push-button B located inside the housing.</p>
+    ]]></description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -79,8 +81,8 @@ Activate/Deactivate association sending for group 1 - Also see param #16<br /><h
         <default>0</default>
         <options>
           <option value="0">Map status to all devices in group 1</option>
-          <option value="1">Map OFF status to all devices in group 1 - last state</option>
-          <option value="2">Map OFF status to all devices in group 1 - 100% state</option>
+          <option value="1">Map OFF status to devices in group 1 - last state</option>
+          <option value="2">Map OFF status to devices in group 1 - 100% state</option>
         </options>
       </parameter>
 
@@ -104,14 +106,14 @@ Checking the device status before sending a control frame from the key no. 2.<br
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
                  min="1" max="255">
-        <label>9: Time of MANUALLY moving between the extreme dimming values</label>
+        <label>9: Time of MANUALLY moving between dimming values</label>
         <description>Options for changing parameter 1-255 (10ms - 2,5s)</description>
         <default>5</default>
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>10: Time of AUTOMATIC moving between the extreme dimming values</label>
+        <label>10: Time of AUTOMATIC moving between dimming values</label>
         <description><![CDATA[
 Time of Automatic moving the Dimmer between the extreme dimming values<br /><h1>Overview</h1><p>Options for changing parameter 0-255 (0ms – 2.5s)</p> <p>0 - this value disables the smooth change in light intensity</p> <p>NOTE value 0 is required for inductive and capacitive devices unsuitable for dimming, (e.g. fluorescent lamps , motors etc.)</p>
         ]]></description>
@@ -200,7 +202,7 @@ Assigns bistable key status to the device status.<br /><h1>Overview</h1><p>Info:
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">[On / Off] Device changes status on key status change</option>
+          <option value="0">Device changes status on key status change</option>
           <option value="1">Device status depends on key status.</option>
         </options>
       </parameter>

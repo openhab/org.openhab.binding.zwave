@@ -144,7 +144,7 @@ Thermostatic Valve<br /><h1>Overview</h1><p>FIBARO Heat Controller is a remotely
                  min="10" max="10000">
         <label>1: Override Schedule duration</label>
         <description><![CDATA[
-This parameter determines duration of Override Schedule after turning the knob while normal schedule is active (set by Schedule CC).<br /><h1>Overview</h1><p>Units = minutes</p>
+Duration of Override Schedule after turning knob<br /><h1>Overview</h1><p>This parameter determines duration of Override Schedule after turning the knob while normal schedule is active (set by Schedule CC).</p> <p>Units = minutes</p>
         ]]></description>
         <default>240</default>
       </parameter>

@@ -194,11 +194,11 @@ The parameter determines the behaviour of tamper and how it reports.<br /><h1>Ov
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">Tamper alarm is reported / Cancellation is not reported.</option>
-          <option value="1">Tamper alarm is reported / Cancellation is reported.</option>
-          <option value="2">Same as Value 0 / with unsupported Fibar Command Class.</option>
-          <option value="3">Same as Value 1 / with unsupported Fibar Command Class.</option>
-          <option value="4">The maximum level of vibrations recorded in the time period.</option>
+          <option value="0">Tamper/Cancellation alarm reporting</option>
+          <option value="1">Tamper/Cancellation alarm reporting</option>
+          <option value="2">Same as Value 0</option>
+          <option value="3">Same as Value 1</option>
+          <option value="4">The max level of vibrations recorded.</option>
         </options>
       </parameter>
 
@@ -277,7 +277,7 @@ Way in which LED diode behaves after motion has been detected.<br /><h1>Overview
         <options>
           <option value="0">LED inactive.</option>
           <option value="1">LED colour depends on the temperature.</option>
-          <option value="2">Flashlight mode - LED glows in white for 10 seconds.</option>
+          <option value="2">Flashlight mode - LED glows white 10 seconds</option>
           <option value="3">White.</option>
           <option value="4">Red.</option>
           <option value="5">Green.</option>

@@ -7,7 +7,10 @@
 
   <thing-type id="dlink_dchz120_00_000" listed="false">
     <label>DCH-Z120 Battery Motion Sensor</label>
-    <description>Battery Motion Sensor</description>
+    <description><![CDATA[
+Battery Motion Sensor<br /><h1>Overview</h1><p>The sensor DCH-Z120 has a PIR sensor integrated with temperature and illumination, which are 3 sensors function in one, based on Z-WaveTM technology.</p> <br /><h2>Inclusion Information</h2><ol><li>Have Z-WaveTM Controller entered inclusion mode.</li> <li>Pressing tamper key three times within 1.5 seconds to enter the inclusion mode.</li> <li>After add successful, the device will wake to receive the setting command from Z-WaveTM Controller about 20 seconds.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Have Z-WaveTM Controller entered exclusion mode.</li> <li>Pressing tamper key three times within 1.5 seconds to enter the exclusion mode.</li> </ol><br /><h2>Wakeup Information</h2><p>Remove the front cover and press the tamper key once. The device will wake-up 10 seconds.</p>
+    ]]></description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -162,7 +165,7 @@ Parameter to set the Customer Function.<br /><h1>Overview</h1><p>Bit0: Reserve.<
 
       <parameter name="config_7_1_00000010" type="integer" groupName="configuration">
         <label>7: Bit4: Notification Type</label>
-        <description>0: Using Notification Report. 1: Using Sensor Binary Report.</description>
+        <description>0: Notification Report. 1: Sensor Binary Report.</description>
         <default>0</default>
         <options>
           <option value="0">Notification Report</option>
@@ -181,7 +184,7 @@ Parameter to set the Customer Function.<br /><h1>Overview</h1><p>Bit0: Reserve.<
       </parameter>
 
       <parameter name="config_7_1_00000040" type="integer" groupName="configuration">
-        <label>7: Bit6: Disable to report battery state when device triggered</label>
+        <label>7: Bit6: Report battery state when device triggered</label>
         <description>1:Disable, 0 Enable</description>
         <default>0</default>
         <options>

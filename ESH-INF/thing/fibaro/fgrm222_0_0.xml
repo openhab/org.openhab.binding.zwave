@@ -100,7 +100,7 @@ Enables/disables local entry<br /><h1>Overview</h1><p>Enables/disables local ent
         ]]></description>
         <default>255</default>
         <options>
-          <option value="0">No protection. Roller Shutter responds to push buttons</option>
+          <option value="0">No protection.</option>
           <option value="2">Local protection active</option>
         </options>
       </parameter>
@@ -112,7 +112,7 @@ Enables/disables RF protection<br /><h1>Overview</h1><p>Enables/disables RF prot
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">No protection. Roller Shutter responds to command frames.</option>
+          <option value="0">No protection.</option>
           <option value="1">RF Protection active.</option>
         </options>
       </parameter>
@@ -159,7 +159,7 @@ Lamellas positioning in venetian blind mode<br /><h1>Overview</h1><p>Parameter i
         <options>
           <option value="0">Only in case of the main controller operation</option>
           <option value="1">Controller, switch or limit switch operation</option>
-          <option value="2">Controller, switch or limit switch operation or STOP frame</option>
+          <option value="2">Controller, switch, limit sw operation/STOP frame</option>
         </options>
       </parameter>
 
