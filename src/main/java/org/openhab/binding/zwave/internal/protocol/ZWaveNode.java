@@ -1267,6 +1267,13 @@ public class ZWaveNode {
             return null;
         }
         for (ZWaveCommandClassPayload command : commands) {
+            // Check for WAKEUP_NOTIFICATION
+            if (payload.getCommandClassId() == CommandClass.COMMAND_CLASS_WAKE_UP.getKey()
+                    && payload.getCommandClassCommand() == 0x07) {
+                setAwake(true);
+                continue;
+            }
+
             CommandClass commandClass = CommandClass.getCommandClass(command.getCommandClassId());
             if (commandClass == null) {
                 logger.debug("NODE {}: Unknown command class 0x{}", getNodeId(),
@@ -1346,12 +1353,12 @@ public class ZWaveNode {
             return;
         }
 
-        ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) getEndpoint(0)
-                .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP);
-        if (wakeUpCommandClass == null) {
-            logger.debug("NODE {}: Node doesn't support WAKEUP - ignore wakeup", getNodeId());
-            return;
-        }
+        // ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) getEndpoint(0)
+        // .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP);
+        // if (wakeUpCommandClass == null) {
+        // logger.debug("NODE {}: Node doesn't support WAKEUP - ignore wakeup", getNodeId());
+        // return;
+        // }
 
         // Create the timer if this is our first call
         if (timer == null) {
@@ -1404,7 +1411,7 @@ public class ZWaveNode {
             wakeUpCommandClass = (ZWaveWakeUpCommandClass) getEndpoint(0)
                     .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP);
             if (wakeUpCommandClass == null) {
-                logger.debug("NODE {}: COMMAND_CLASS_WAKE_UP not found", getNodeId());
+                logger.debug("NODE {}: COMMAND_CLASS_WAKE_UP not found - setting AWAKE", getNodeId());
                 awake = true;
             }
 
@@ -1433,12 +1440,13 @@ public class ZWaveNode {
 
             // Tell the device to go back to sleep.
             logger.debug("NODE {}: No more messages, go back to sleep", getNodeId());
-            ZWaveTransactionResponse response = sendTransaction(wakeUpCommandClass.getNoMoreInformationMessage(), 0);
-
+            if (wakeUpCommandClass != null) {
+                ZWaveTransactionResponse response = sendTransaction(wakeUpCommandClass.getNoMoreInformationMessage(),
+                        0);
+                logger.debug("NODE {}: Went to sleep {}", getNodeId(), response.getState());
+            }
             // When this transaction completes, assume we're asleep
             setAwake(false);
-
-            logger.debug("NODE {}: Went to sleep {}", getNodeId(), response.getState());
 
             // Stop the timer
             resetSleepTimer();

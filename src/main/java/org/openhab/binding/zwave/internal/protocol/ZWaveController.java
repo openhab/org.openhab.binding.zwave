@@ -480,19 +480,13 @@ public class ZWaveController {
      * Queues a message for sending on the send queue.
      * This does not wait for a response.
      *
-     * @param transaction
-     *            the {@link ZWaveMessagePayloadTransaction} message to enqueue.
+     * @param transaction the {@link ZWaveMessagePayloadTransaction} message to enqueue.
      */
     public void enqueue(ZWaveMessagePayloadTransaction transaction) {
         // Sanity check!
         if (transaction == null) {
             logger.debug("Attempt to queue null message");
             return;
-        }
-
-        // Since this method doesn't wait for a response, we tell the transaction handler not to wait for DATA
-        if (transaction instanceof ZWaveCommandClassTransactionPayload) {
-            ((ZWaveCommandClassTransactionPayload) transaction).setRequiresResponse(false);
         }
 
         transactionManager.queueTransactionForSend(transaction);

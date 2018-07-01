@@ -69,6 +69,18 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         events.put(NotificationEvent.ACCESS_CONTROL__DOOR_WINDOW_CLOSED, OpenClosedType.CLOSED);
         notifications.put("sensor_door", events);
 
+        // Entry alarms
+        events = new HashMap<NotificationEvent, State>();
+        events.put(NotificationEvent.ACCESS_CONTROL__NONE, OnOffType.ON);
+        events.put(NotificationEvent.ACCESS_CONTROL__AUTO_LOCK, OnOffType.ON);
+        events.put(NotificationEvent.ACCESS_CONTROL__REMOTE_LOCK, OnOffType.ON);
+        events.put(NotificationEvent.ACCESS_CONTROL__KEYPAD_LOCK, OnOffType.ON);
+        events.put(NotificationEvent.ACCESS_CONTROL__MANUAL_LOCK, OnOffType.ON);
+        events.put(NotificationEvent.ACCESS_CONTROL__REMOTE_UNLOCK, OnOffType.OFF);
+        events.put(NotificationEvent.ACCESS_CONTROL__KEYPAD_UNLOCK, OnOffType.OFF);
+        events.put(NotificationEvent.ACCESS_CONTROL__MANUAL_UNLOCK, OnOffType.OFF);
+        notifications.put("alarm_entry", events);
+
         // Heat alarms
         events = new HashMap<NotificationEvent, State>();
         events.put(NotificationEvent.HEAT__NONE, OnOffType.OFF);

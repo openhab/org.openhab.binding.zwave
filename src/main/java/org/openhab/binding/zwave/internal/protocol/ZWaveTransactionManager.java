@@ -236,10 +236,11 @@ public class ZWaveTransactionManager {
     }
 
     /**
-     * This method takes a {@link ZWaveMessagePayload} and creates a {@link ZWaveTransaction} for a SendData message.
+     * This method takes a {@link ZWaveMessagePayloadTransaction} and creates a {@link ZWaveTransaction} for a Security
+     * SendData message.
      *
-     * @param payload
-     * @return
+     * @param payload {@link ZWaveMessagePayloadTransaction}
+     * @return the transaction id
      */
     public long queueNonceReportForSend(ZWaveMessagePayloadTransaction payload) {
         // Create a transaction from our payload data
@@ -256,6 +257,12 @@ public class ZWaveTransactionManager {
         return transaction.getTransactionId();
     }
 
+    /**
+     * Queues a transaction for sending.
+     *
+     * @param payload
+     * @return
+     */
     public long queueTransactionForSend(ZWaveMessagePayloadTransaction payload) {
 
         // Create a transaction from our payload data
@@ -603,9 +610,6 @@ public class ZWaveTransactionManager {
                                 outstandingTransactions.remove(currentTransaction);
                             }
 
-                            // if (responseTime > longestResponseTime) {
-                            // longestResponseTime = responseTime;
-                            // }
                             logger.debug("NODE {}: Response processed after {}ms", currentTransaction.getNodeId(),
                                     currentTransaction.getElapsedTime());
 
@@ -627,23 +631,29 @@ public class ZWaveTransactionManager {
                             }
 
                             // Handle retries
-                            // if (currentTransaction.decrementAttemptsRemaining() > 0) {
-                            // logger.error("NODE {}: CANCEL while sending message. Requeueing - {} attempts left!",
-                            // currentTransaction.getNodeId(), currentTransaction.getAttemptsRemaining());
+                            if (currentTransaction.decrementAttemptsRemaining() > 0) {
+                                logger.debug("NODE {}: CANCEL while sending message. Requeueing - {} attempts left!",
+                                        currentTransaction.getNodeId(), currentTransaction.getAttemptsRemaining());
 
-                            // Reset the transaction
-                            // currentTransaction.resetTransaction();
+                                // Reset the transaction
+                                currentTransaction.resetTransaction();
 
-                            // Lower the priority since it's a retry!
-                            // lastSentMessage.setPriority(p);
-                            // enqueue(currentTransaction); TODO: Handle retries...
-                            // }
-                            // } else {
-                            // logger.debug("NODE {}: Retry count exceeded. Discarding message: {}",
-                            // currentTransaction.getNodeId(), currentTransaction.toString());
-                            // Notify our users...
-                            transactionCompleted = true;
-                            // }
+                                // Lower the priority since it's a retry!
+                                // currentTransaction.setPriority(priority);
+                                addTransactionToQueue(currentTransaction);
+                                // enqueue(currentTransaction); TODO: Handle retries...
+                                // }
+                            } else {
+                                logger.debug("NODE {}: Retry count exceeded. Discarding message: {}",
+                                        currentTransaction.getNodeId(), currentTransaction.toString());
+                                ZWaveNode node = controller.getNode(currentTransaction.getNodeId());
+                                if (node != null) {
+                                    node.setNodeState(ZWaveNodeState.DEAD);
+                                }
+
+                                // Notify our users...
+                                transactionCompleted = true;
+                            }
                             break;
 
                         default:
@@ -672,6 +682,7 @@ public class ZWaveTransactionManager {
             }
             logger.debug("**************************** Exiting Receive Thread");
         }
+
     }
 
     private Date getNextTimer(ZWaveTransaction transaction) {
