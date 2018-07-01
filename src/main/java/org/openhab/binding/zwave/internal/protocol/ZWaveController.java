@@ -489,11 +489,6 @@ public class ZWaveController {
             return;
         }
 
-        // Since this method doesn't wait for a response, we tell the transaction handler not to wait for DATA
-        // if (transaction instanceof ZWaveCommandClassTransactionPayload) {
-        // ((ZWaveCommandClassTransactionPayload) transaction).setRequiresResponse(false);
-        // }
-
         transactionManager.queueTransactionForSend(transaction);
     }
 

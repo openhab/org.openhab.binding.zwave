@@ -368,23 +368,10 @@ public class ZWaveNodeInitStageAdvancer {
         }
 
         setCurrentStage(ZWaveNodeInitStage.FAILED_CHECK);
-        // do {
         processTransaction(new IsFailedNodeMessageClass().doRequest(node.getNodeId()));
         if (initRunning == false) {
             return;
         }
-
-        // If the node is dead, sleep for 30 seconds then try again
-        // if (node.isDead()) {
-        // try {
-        // Thread.sleep(30000);
-        // } catch (InterruptedException e) {
-        // break;
-        // }
-        // } else {
-        // break;
-        // }
-        // } while (true);
 
         // Only perform the PING stage on devices that should be listening.
         // Battery (ie non-Listening) devices will only be communicated with when they send a WAKEUP_NOTIFICATION
