@@ -8,7 +8,7 @@
   <thing-type id="kwikset_smartcode888_00_000" listed="false">
     <label>SmartCode 888 Touchpad Electronic Deadbolt</label>
     <description><![CDATA[
-Touchpad Electronic Deadbolt<br /><h1>Overview</h1><p>The following table provides a reference of the Alarm_Number related messages.</p> Alarm Type Alarm Level Notification Event 021 001 Lock Secured using Keyed cylinder or inside thumb-turn 022 001 Lock Un-Secured using Keyed cylinder or inside thumb-turn 026 001 Lock Auto Secured – Bolt Jammed (Not fully extended) 027 001 Lock Auto Secured – Successful (Fully extended)   017 001 Lock Secured at Keypad – Bolt Jammed (Not fully extended)   018 000 or User ID Lock Secured at Keypad – Successful (Fully extended)  019 User ID Lock Un-Secured by User (User-ID) at Keypad 023 001 Lock Secured by Controller – Bolt Jammed (Not fully extended) 024 001 Lock Secured by Controller – Successful (Fully extended)   025 001 Lock Un-Secured by Controller – Successful (Fully retracted) 112 User ID New User Code (User-ID#) added to the lock 032 001 All User Codes deleted from lock <p>161              001                      Failed User Code attempt at Keypad  </p> <p>162              User-ID#*             Attempted access by user (User-ID#) outside of scheduled   </p> <p>167              001                      Low battery level   </p> <p>168              001                      Critical battery level   </p> <p>169              001                      Battery level too low to operate lock  </p> <p>* User-ID# values: 001 to 030</p> <br /><h2>Inclusion Information</h2><p> Press button “A” on the lock one time to include it in your system.</p> <br /><h2>Exclusion Information</h2><p> Press button “A” on the lock one time to include it in your system.</p>
+Touchpad Electronic Deadbolt<br /><h1>Overview</h1><p>The following table provides a reference of the Alarm_Number related messages.</p> <p>Alarm Type Alarm Level Notification Event<br />021 001 Lock Secured using Keyed cylinder or inside thumb-turn<br />022 001 Lock Un-Secured using Keyed cylinder or inside thumb-turn <br />026 001 Lock Auto Secured – Bolt Jammed (Not fully extended) <br />027 001 Lock Auto Secured – Successful (Fully extended)   <br />017 001 Lock Secured at Keypad – Bolt Jammed (Not fully extended)   <br />018 000 or User ID Lock Secured at Keypad – Successful (Fully extended)  <br />019 User ID Lock Un-Secured by User (User-ID) at Keypad <br />023 001 Lock Secured by Controller – Bolt Jammed (Not fully extended) <br />024 001 Lock Secured by Controller – Successful (Fully extended)   <br />025 001 Lock Un-Secured by Controller – Successful (Fully retracted) <br />112 User ID# New User Code (User-ID#) added to the lock <br />032 001 All User Codes deleted from lock</p> <p>161              001                      Failed User Code attempt at Keypad  <br />162              User-ID#*             Attempted access by user (User-ID#) outside of scheduled   <br />167              001                      Low battery level   <br />168              001                      Critical battery level  <br />169              001                      Battery level too low to operate lock  </p> <p>* User-ID# values: 001 to 030</p> <br /><h2>Inclusion Information</h2><p> Press button “A” on the lock one time to include it in your system.</p> <br /><h2>Exclusion Information</h2><p> Press button “A” on the lock one time to include it in your system.</p>
     ]]></description>
     <category>Lock</category>
 
@@ -30,6 +30,12 @@ Touchpad Electronic Deadbolt<br /><h1>Overview</h1><p>The following table provid
         <label>Alarm (power)</label>
         <properties>
           <property name="binding:*:OnOffType">ALARM;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="alarm_raw" typeId="alarm_raw">
+        <label>Alarm (number)</label>
+        <properties>
+          <property name="binding:*:OnOffType">ALARM</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -58,7 +64,7 @@ Touchpad Electronic Deadbolt<br /><h1>Overview</h1><p>The following table provid
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter name="config_31_1_00100000" type="integer" groupName="configuration" readOnly="true">
+      <parameter name="config_31_1_00100000" type="integer" groupName="configuration">
         <label>31: Auto Buzzer</label>
         <description><![CDATA[
 Beeping sound enabled.<br /><h1>Overview</h1><p>Beeping sound enabled. When disabled, keypad buttons light red or amber when pressed.</p> <p>ON position is factory default.</p> <p>Note: It is recommended that the beeping sound is enabled during programming.</p>
@@ -70,7 +76,7 @@ Beeping sound enabled.<br /><h1>Overview</h1><p>Beeping sound enabled. When disa
         </options>
       </parameter>
 
-      <parameter name="config_31_1_01000000" type="integer" groupName="configuration" readOnly="true">
+      <parameter name="config_31_1_01000000" type="integer" groupName="configuration">
         <label>31: Auto Lock</label>
         <description><![CDATA[
 Automatically re-locks door 30 seconds after unlocking.<br /><h1>Overview</h1><p>Lock automatically re-locks door 30 seconds after unlocking. OFF position is factory default. If this switch is turned on, it will be disabled if all codes are deleted from the lock.</p>
