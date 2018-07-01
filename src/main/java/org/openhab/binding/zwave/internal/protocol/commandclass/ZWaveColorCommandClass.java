@@ -32,7 +32,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 /**
- * Handles the Color command class.
+ * Handles the Color Switch command class.
  *
  * @author Chris Jackson
  */
@@ -220,7 +220,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
         ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
         if (refreshList.isEmpty() == false) {
             logger.debug("NODE {}: Color refresh is already in progress", getNode());
-            return result;
+            // return result;
         }
 
         // Request all colors supported by the bulb
@@ -370,5 +370,15 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
         public Map<ZWaveColorType, Integer> getColorMap() {
             return colorMap;
         }
+    }
+
+    /**
+     * Returns true if the requested color is supported by the device
+     * 
+     * @param color the {@link ZWaveColorType}
+     * @return true if the requested color is supported by the device
+     */
+    public boolean isColorSupported(ZWaveColorType color) {
+        return supportedColors.contains(color);
     }
 }

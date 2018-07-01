@@ -118,46 +118,40 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
         if ("RGB".equals(channel.getArguments().get("colorMode"))) {
             // Command must be color - convert to zwave format
             HSBType color = (HSBType) command;
-            logger.debug("NODE {}: Converted command '{}' to value {} {} {} for channel = {}, endpoint = {}.",
-                    node.getNodeId(), command.toString(), color.getRed().intValue(), color.getGreen().intValue(),
-                    color.getBlue().intValue(), channel.getUID(), channel.getEndpoint());
 
             // Queue the command
-            if (color.getSaturation().equals(PercentType.ZERO)) {
-                colors.put(ZWaveColorType.RED, 0);
-                colors.put(ZWaveColorType.GREEN, 0);
-                colors.put(ZWaveColorType.BLUE, 0);
-            } else {
-                colors.put(ZWaveColorType.RED, scaleColor(color.getRed()));
-                colors.put(ZWaveColorType.GREEN, scaleColor(color.getGreen()));
-                colors.put(ZWaveColorType.BLUE, scaleColor(color.getBlue()));
+            colors.put(ZWaveColorType.RED, scaleColor(color.getRed()));
+            colors.put(ZWaveColorType.GREEN, scaleColor(color.getGreen()));
+            colors.put(ZWaveColorType.BLUE, scaleColor(color.getBlue()));
+            if (commandClass.isColorSupported(ZWaveColorType.COLD_WHITE)) {
+                colors.put(ZWaveColorType.COLD_WHITE, 0);
+            }
+            if (commandClass.isColorSupported(ZWaveColorType.WARM_WHITE)) {
+                colors.put(ZWaveColorType.WARM_WHITE, 0);
             }
         } else if ("COLD_WHITE".equals(channel.getArguments().get("colorMode"))) {
             PercentType color = (PercentType) command;
-            logger.debug("NODE {}: Converted command '{}' to value {} for channel = {}, endpoint = {}.",
-                    node.getNodeId(), command.toString(), color.intValue(), channel.getUID(), channel.getEndpoint());
 
             // Queue the command
             colors.put(ZWaveColorType.COLD_WHITE, scaleColor(color));
         } else if ("WARM_WHITE".equals(channel.getArguments().get("colorMode"))) {
             PercentType color = (PercentType) command;
-            logger.debug("NODE {}: Converted command '{}' to value {} for channel = {}, endpoint = {}.",
-                    node.getNodeId(), command.toString(), color.intValue(), channel.getUID(), channel.getEndpoint());
 
             // Queue the command
             colors.put(ZWaveColorType.WARM_WHITE, scaleColor(color));
         } else if ("DIFF_WHITE".equals(channel.getArguments().get("colorMode"))) {
             PercentType color = (PercentType) command;
-            logger.debug("NODE {}: Converted command '{}' to value {} for channel = {}, endpoint = {}.",
-                    node.getNodeId(), command.toString(), color.intValue(), channel.getUID(), channel.getEndpoint());
 
             // Queue the command
             int value = scaleColor(color);
             colors.put(ZWaveColorType.COLD_WHITE, 255 - value);
             colors.put(ZWaveColorType.WARM_WHITE, value);
         } else {
-            logger.debug("NODE {}: Unknown color mode {}.", node.getNodeId(), channel.getArguments().get("colorMode"));
+            logger.warn("NODE {}: Unknown color mode {}.", node.getNodeId(), channel.getArguments().get("colorMode"));
         }
+
+        logger.debug("NODE {}: Converted command '{}' to {} for channel = {}, endpoint = {}.", node.getNodeId(),
+                command.toString(), colors, channel.getUID(), channel.getEndpoint());
 
         rawMessages = commandClass.setColor(colors);
 
