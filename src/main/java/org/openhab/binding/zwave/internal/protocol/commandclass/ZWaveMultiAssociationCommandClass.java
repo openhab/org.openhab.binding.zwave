@@ -346,4 +346,8 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
 
         return result;
     }
+
+    public int getMaxGroup() {
+        return maxGroups;
+    }
 }
