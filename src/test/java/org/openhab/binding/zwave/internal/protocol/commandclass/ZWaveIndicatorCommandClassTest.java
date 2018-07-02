@@ -10,10 +10,11 @@ package org.openhab.binding.zwave.internal.protocol.commandclass;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveIndicatorCommandClass;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
@@ -45,5 +46,26 @@ public class ZWaveIndicatorCommandClassTest extends ZWaveCommandClassTest {
         cls.setVersion(1);
         msg = cls.setValueMessage(34);
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
+    }
+
+    @Test
+    public void getSupportedIndicators() {
+        ZWaveIndicatorCommandClass cls = (ZWaveIndicatorCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_INDICATOR);
+        ZWaveCommandClassTransactionPayload msg;
+
+        byte[] expectedResponseV1 = { -121, 4, 0 };
+        cls.setVersion(1);
+        msg = cls.getSupportedIndicators(null);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
+    }
+
+    @Test
+    public void Notification_Burglar_Motion() {
+        byte[] packetData = { 0x01, 0x0C, 0x00, 0x04, 0x00, 0x11, 0x06, (byte) 0x87, 0x05, 0x43, 0x44, 0x01, 0x07,
+                0x63 };
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData, 2);
+
     }
 }

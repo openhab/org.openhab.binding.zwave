@@ -204,13 +204,6 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 SWITCH_MULTILEVEL_SUPPORTED_GET).withPriority(TransactionPriority.Config)
                         .withExpectedResponseCommand(SWITCH_MULTILEVEL_SUPPORTED_REPORT).build();
-
-        // SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-        // SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Set);
-        // byte[] newPayload = { (byte) getNode().getNodeId(), 2, (byte) getCommandClass().getKey(),
-        // (byte) SWITCH_MULTILEVEL_SUPPORTED_GET };
-        // result.setMessagePayload(newPayload);
-        // return result;
     }
 
     @Override

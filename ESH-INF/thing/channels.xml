@@ -368,6 +368,38 @@
         <category></category>
     </channel-type>
 
+    <!-- Indicator Command Class - Multichannel -->
+    <channel-type id="indicator_level">
+        <item-type>Dimmer</item-type>
+        <label>Indicator Level</label>
+        <description>Sets the indicator brightness</description>
+        <category></category>
+    </channel-type>
+
+    <!-- Indicator Command Class - Period -->
+    <channel-type id="indicator_period">
+        <item-type>Decimal</item-type>
+        <label>Indicator Period</label>
+        <description>Sets the indicator On/Off period</description>
+        <category></category>
+    </channel-type>
+
+    <!-- Indicator Command Class - Period -->
+    <channel-type id="indicator_flash">
+        <item-type>Decimal</item-type>
+        <label>Indicator Period</label>
+        <description>Sets the number of indicator flash cycles</description>
+        <category></category>
+    </channel-type>
+
+    <!-- Indicator Command Class - Raw -->
+    <channel-type id="indicator_raw">
+        <item-type>String</item-type>
+        <label>Indicator Raw Setting</label>
+        <description>Sets the indicator properties as a JSON string</description>
+        <category></category>
+    </channel-type>
+
     <!-- Color Temperature Channel -->
     <channel-type id="lock_door">
         <item-type>Switch</item-type>
