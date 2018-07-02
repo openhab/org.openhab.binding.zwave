@@ -907,19 +907,28 @@ public class ZWaveNode {
         return associationGroups;
     }
 
-    public ZWaveCommandClassTransactionPayload getAssociation(int group) {
+    /**
+     * Gets an association group
+     *
+     * @param groupId the group id
+     * @return the {@link ZWaveCommandClassTransactionPayload}
+     */
+    public ZWaveCommandClassTransactionPayload getAssociation(int groupId) {
         if (endpoints.size() > 1) {
             ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
                     CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
-            if (multiAssociationCommandClass != null) {
-                return multiAssociationCommandClass.getAssociationMessage(group);
+            if (multiAssociationCommandClass != null && groupId <= multiAssociationCommandClass.getMaxGroup()) {
+                return multiAssociationCommandClass.getAssociationMessage(groupId);
             }
         }
 
         ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_ASSOCIATION);
-        if (associationCommandClass != null) {
-            return associationCommandClass.getAssociationMessage(group);
+        if (associationCommandClass != null && groupId <= associationCommandClass.getMaxGroup()) {
+            return associationCommandClass.getAssociationMessage(groupId);
+        } else {
+            logger.debug("NODE {}: Unable to get association group {}. Association={}", groupId,
+                    associationCommandClass.getMaxGroup());
         }
 
         return null;
@@ -936,13 +945,13 @@ public class ZWaveNode {
      *
      * @param groupId the group to be set
      * @param member the {@link ZWaveAssociation} to be set to report to (receive)
-     * @return {@link ZWaveTransaction}
+     * @return {@link ZWaveCommandClassTransactionPayload}
      */
     public ZWaveCommandClassTransactionPayload setAssociation(int groupId, ZWaveAssociation member) {
         if (endpoints.size() > 1) {
             ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
                     CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
-            if (multiAssociationCommandClass != null) {
+            if (multiAssociationCommandClass != null && groupId <= multiAssociationCommandClass.getMaxGroup()) {
                 return multiAssociationCommandClass.setAssociationMessage(groupId, member.getNode(),
                         member.getEndpoint() == null ? 0 : member.getEndpoint());
             }
@@ -950,8 +959,11 @@ public class ZWaveNode {
 
         ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_ASSOCIATION);
-        if (associationCommandClass != null) {
+        if (associationCommandClass != null && groupId <= associationCommandClass.getMaxGroup()) {
             return associationCommandClass.setAssociationMessage(groupId, member.getNode());
+        } else {
+            logger.debug("NODE {}: Unable to set association group {}. Association={}", groupId,
+                    associationCommandClass.getMaxGroup());
         }
 
         return null;
@@ -970,7 +982,7 @@ public class ZWaveNode {
         if (endpoints.size() > 1) {
             ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
                     CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
-            if (multiAssociationCommandClass != null) {
+            if (multiAssociationCommandClass != null && groupId <= multiAssociationCommandClass.getMaxGroup()) {
                 return multiAssociationCommandClass.removeAssociationMessage(groupId, member.getNode(),
                         member.getEndpoint() == null ? 0 : member.getEndpoint());
             }
@@ -978,26 +990,38 @@ public class ZWaveNode {
 
         ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_ASSOCIATION);
-        if (associationCommandClass != null) {
+        if (associationCommandClass != null && groupId <= associationCommandClass.getMaxGroup()) {
             return associationCommandClass.removeAssociationMessage(groupId, member.getNode());
+        } else {
+            logger.debug("NODE {}: Unable to remove association group {}. Association={}", groupId,
+                    associationCommandClass.getMaxGroup());
         }
 
         return null;
     }
 
+    /**
+     * Clears an association group of all associations.
+     *
+     * @param groupId the group to be set
+     * @return {@link ZWaveCommandClassTransactionPayload}
+     */
     public ZWaveCommandClassTransactionPayload clearAssociation(Integer groupId) {
         if (endpoints.size() > 1) {
             ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
                     CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
-            if (multiAssociationCommandClass != null) {
+            if (multiAssociationCommandClass != null && groupId <= multiAssociationCommandClass.getMaxGroup()) {
                 return multiAssociationCommandClass.clearAssociationMessage(groupId);
             }
         }
 
         ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_ASSOCIATION);
-        if (associationCommandClass != null) {
+        if (associationCommandClass != null && groupId <= associationCommandClass.getMaxGroup()) {
             return associationCommandClass.clearAssociationMessage(groupId);
+        } else {
+            logger.debug("NODE {}: Unable to clear association group {}. Association={}", groupId,
+                    associationCommandClass.getMaxGroup());
         }
 
         return null;
