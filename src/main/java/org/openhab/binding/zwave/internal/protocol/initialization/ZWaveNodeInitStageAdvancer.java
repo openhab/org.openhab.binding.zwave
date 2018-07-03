@@ -1126,7 +1126,7 @@ public class ZWaveNodeInitStageAdvancer {
             case DYNAMIC_END:
             case HEAL_END:
             case DONE:
-                nodeSerializer.SerializeNode(node);
+                nodeSerializer.serializeNode(node);
                 break;
             default:
                 break;

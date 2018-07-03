@@ -88,7 +88,7 @@ public class ZWaveNodeSerializer {
      * @param node
      *            the node to serialize
      */
-    public void SerializeNode(ZWaveNode node) {
+    public void serializeNode(ZWaveNode node) {
         synchronized (stream) {
             // Don't serialise if the stage is not at least finished static
             // If we do serialise when we haven't completed the static stages
@@ -128,7 +128,7 @@ public class ZWaveNodeSerializer {
      *            the number of the node to deserialize
      * @return returns the Node or null in case Serialization failed.
      */
-    public ZWaveNode DeserializeNode(int homeId, int nodeId) {
+    public ZWaveNode deserializeNode(int homeId, int nodeId) {
         synchronized (stream) {
             File file = new File(folderName, String.format("network_%08x__node_%d.xml", homeId, nodeId));
             BufferedReader reader = null;
@@ -163,7 +163,7 @@ public class ZWaveNodeSerializer {
      * @param nodeId The node ID to remove
      * @return true if the file was deleted
      */
-    public boolean DeleteNode(int homeId, int nodeId) {
+    public boolean deleteNode(int homeId, int nodeId) {
         synchronized (stream) {
             File file = new File(folderName, String.format("network_%08x__node_%d.xml", homeId, nodeId));
 

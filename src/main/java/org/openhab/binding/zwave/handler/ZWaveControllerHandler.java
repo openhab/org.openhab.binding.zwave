@@ -778,4 +778,13 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         getThing().setProperty(ZWaveBindingConstants.PROPERTY_NEIGHBOURS, neighbours);
         getThing().setProperty(ZWaveBindingConstants.PROPERTY_NODEID, Integer.toString(getOwnNodeId()));
     }
+
+    /**
+     * Gets the home ID associated with the controller.
+     * 
+     * @return the home ID
+     */
+    public int getHomeId() {
+        return controller.getHomeId();
+    }
 }
