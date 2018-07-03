@@ -520,7 +520,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
                 ZWaveNode node = controllerHandler.getNode(nodeId);
                 if (node != null) {
-                    nodeSerializer.SerializeNode(node);
+                    nodeSerializer.serializeNode(node);
                 }
 
                 // Remove the event listener
@@ -907,7 +907,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                         // Delete the saved XML
                         ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
-                        nodeSerializer.DeleteNode(node.getHomeId(), nodeId);
+                        nodeSerializer.deleteNode(node.getHomeId(), nodeId);
 
                         controllerHandler.reinitialiseNode(nodeId);
                     }
@@ -1414,8 +1414,11 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             switch (incEvent.getEvent()) {
                 case ExcludeDone:
                     // Let our users know we're gone!
-                    // updateStatus(ThingStatus.REMOVED, ThingStatusDetail.NONE, "Node was excluded from the
-                    // controller");
+                    updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.NONE, "Node was excluded from the controller");
+
+                    // Remove the XML file
+                    ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
+                    nodeSerializer.deleteNode(controllerHandler.getHomeId(), nodeId);
 
                     // Stop polling
                     synchronized (pollingSync) {

@@ -27,6 +27,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClas
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInitializationStateEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkStateEvent;
@@ -388,7 +389,7 @@ public class ZWaveController {
             ZWaveNode node = null;
             try {
                 ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
-                node = nodeSerializer.DeserializeNode(homeId, nodeId);
+                node = nodeSerializer.deserializeNode(homeId, nodeId);
             } catch (Exception e) {
                 logger.error("NODE {}: Restore from config: Error deserialising XML file. {}", nodeId, e.toString());
                 node = null;
@@ -553,15 +554,7 @@ public class ZWaveController {
             ZWaveNetworkEvent networkEvent = (ZWaveNetworkEvent) event;
             switch (networkEvent.getEvent()) {
                 case DeleteNode:
-                    if (getNode(networkEvent.getNodeId()) == null) {
-                        logger.debug("NODE {}: Deleting a node that doesn't exist.", networkEvent.getNodeId());
-                        break;
-                    }
-                    this.zwaveNodes.remove(networkEvent.getNodeId());
-
-                    // Remove the XML file
-                    ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
-                    nodeSerializer.DeleteNode(homeId, event.getNodeId());
+                    removeNode(event.getNodeId());
                     break;
                 default:
                     break;
@@ -585,8 +578,21 @@ public class ZWaveController {
                     break;
                 case ALIVE:
                     break;
+                default:
+                    break;
+            }
+        } else if (event instanceof ZWaveInclusionEvent) {
+            ZWaveInclusionEvent incEvent = (ZWaveInclusionEvent) event;
+
+            switch (incEvent.getEvent()) {
+                case ExcludeDone:
+                    removeNode(event.getNodeId());
+                    break;
+                default:
+                    break;
             }
         }
+
     }
 
     /**
@@ -1006,20 +1012,20 @@ public class ZWaveController {
     /**
      * Removes the node object using it's node ID as key.
      *
-     * @param nodeId
-     *            the Node ID of the node to get.
-     * @return node object
+     * @param nodeId the Node ID of the node to get.
      */
     public void removeNode(int nodeId) {
         ZWaveNode node = getNode(nodeId);
         if (node != null) {
             node.close();
             zwaveNodes.remove(nodeId);
+        } else {
+            logger.debug("NODE {}: Deleting a node that doesn't exist.", nodeId);
         }
 
         // Remove the XML file
         ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
-        nodeSerializer.DeleteNode(homeId, nodeId);
+        nodeSerializer.deleteNode(homeId, nodeId);
     }
 
     /**
