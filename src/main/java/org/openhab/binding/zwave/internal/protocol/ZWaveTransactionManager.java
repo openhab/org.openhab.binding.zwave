@@ -459,18 +459,18 @@ public class ZWaveTransactionManager {
 
                                     synchronized (sendQueue) {
                                         for (ZWaveTransaction transaction : outstandingTransactions) {
-                                            logger.debug("NODE {}: Checking transaction {}  {}.", nodeId,
+                                            logger.trace("NODE {}: Checking transaction {}  {}.", nodeId,
                                                     transaction.getTransactionId(),
                                                     transaction.getExpectedReplyClass());
-                                            logger.debug("NODE {}: Checking transaction : state >> {}", nodeId,
+                                            logger.trace("NODE {}: Checking transaction : state >> {}", nodeId,
                                                     transaction.getTransactionState());
-                                            logger.debug("NODE {}: Checking transaction : node  >> {}", nodeId,
+                                            logger.trace("NODE {}: Checking transaction : node  >> {}", nodeId,
                                                     transaction.getNodeId());
-                                            logger.debug("NODE {}: Checking transaction : class >> {} == {}.", nodeId,
+                                            logger.trace("NODE {}: Checking transaction : class >> {} == {}.", nodeId,
                                                     command.getCommandClassId(),
                                                     transaction.getExpectedCommandClass() == null ? null
                                                             : transaction.getExpectedCommandClass().getKey());
-                                            logger.debug("NODE {}: Checking transaction : commd >> {} == {}.", nodeId,
+                                            logger.trace("NODE {}: Checking transaction : commd >> {} == {}.", nodeId,
                                                     command.getCommandClassCommand(),
                                                     transaction.getExpectedCommandClassCommand());
 
@@ -723,7 +723,7 @@ public class ZWaveTransactionManager {
 
             // Check if the node is awake
             if (node.isAwake() == false) {
-                logger.debug("NODE {}: Node not awake!", node.getNodeId());
+                logger.trace("NODE {}: Node not awake!", node.getNodeId());
                 continue;
             }
 

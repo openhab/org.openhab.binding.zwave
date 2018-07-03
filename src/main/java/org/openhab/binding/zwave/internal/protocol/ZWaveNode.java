@@ -1373,7 +1373,7 @@ public class ZWaveNode {
     public void setAwake(boolean awake) {
         // Don't do anything if this node is listening
         if (listening == true || frequentlyListening == true) {
-            logger.debug("NODE {}: Node is listening - ignore wakeup", getNodeId());
+            logger.trace("NODE {}: Node is listening - ignore wakeup", getNodeId());
             return;
         }
 
@@ -1386,7 +1386,7 @@ public class ZWaveNode {
 
         // Create the timer if this is our first call
         if (timer == null) {
-            logger.debug("NODE {}: Creating wakeup timer", getNodeId());
+            logger.trace("NODE {}: Creating wakeup timer", getNodeId());
             timer = new Timer();
         }
 
@@ -1415,7 +1415,7 @@ public class ZWaveNode {
      * @return true if the node can receive a message
      */
     public boolean isAwake() {
-        logger.debug("NODE {}: listening == {}, frequentlyListening == {}, awake == {}", getNodeId(), listening,
+        logger.trace("NODE {}: listening == {}, frequentlyListening == {}, awake == {}", getNodeId(), listening,
                 frequentlyListening, awake);
         return (listening == true || frequentlyListening == true || awake == true);
     }
@@ -1431,7 +1431,7 @@ public class ZWaveNode {
         private final ZWaveWakeUpCommandClass wakeUpCommandClass;
 
         WakeupTimerTask() {
-            logger.debug("NODE {}: Creating WakeupTimerTask", getNodeId());
+            logger.trace("NODE {}: Creating WakeupTimerTask", getNodeId());
             wakeUpCommandClass = (ZWaveWakeUpCommandClass) getEndpoint(0)
                     .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP);
             if (wakeUpCommandClass == null) {
@@ -1445,7 +1445,7 @@ public class ZWaveNode {
         @Override
         public void run() {
             if (isAwake() == false) {
-                logger.debug("NODE {}: WakeupTimerTask Already asleep", getNodeId());
+                logger.trace("NODE {}: WakeupTimerTask Already asleep", getNodeId());
                 return;
             }
 
@@ -1457,7 +1457,7 @@ public class ZWaveNode {
             }
 
             if (triggered == false) {
-                logger.debug("NODE {}: WakeupTimerTask First iteration", getNodeId());
+                logger.trace("NODE {}: WakeupTimerTask First iteration", getNodeId());
                 triggered = true;
                 return;
             }
