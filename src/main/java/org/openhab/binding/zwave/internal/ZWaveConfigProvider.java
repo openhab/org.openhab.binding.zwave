@@ -193,12 +193,13 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         options.add(new ParameterOption("43200", "12 Hours"));
         options.add(new ParameterOption("86400", "1 Day"));
         options.add(new ParameterOption("172800", "2 Days"));
+        options.add(new ParameterOption("864000", "10 Days"));
 
         parameters.add(
                 ConfigDescriptionParameterBuilder.create(ZWaveBindingConstants.CONFIGURATION_POLLPERIOD, Type.INTEGER)
                         .withLabel(ZWaveBindingConstants.CONFIG_BINDING_POLLINGPERIOD_LABEL)
                         .withDescription(ZWaveBindingConstants.CONFIG_BINDING_POLLINGPERIOD_DESC).withDefault("86400")
-                        .withMinimum(new BigDecimal(15)).withMaximum(new BigDecimal(86400)).withOptions(options)
+                        .withMinimum(new BigDecimal(15)).withMaximum(new BigDecimal(864000)).withOptions(options)
                         .withLimitToOptions(false).withGroupName("thingcfg").build());
 
         parameters.add(ConfigDescriptionParameterBuilder

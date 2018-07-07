@@ -8,6 +8,7 @@
 package org.openhab.binding.zwave.internal.protocol;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -132,10 +133,23 @@ public class ZWaveTransactionManager {
     private final int INITIAL_TX_QUEUE_SIZE = 128;
     // private final int MAX_OUTSTANDING_TRANSACTIONS = 3;
 
-    public final int TRANSMIT_OPTION_ACK = 0x01;
-    public final int TRANSMIT_OPTION_AUTO_ROUTE = 0x04;
+    private final int TRANSMIT_OPTION_ACK = 0x01;
+    private final int TRANSMIT_OPTION_AUTO_ROUTE = 0x04;
     private final int TRANSMIT_OPTION_EXPLORE = 0x20;
 
+    /**
+     * Holdoff delay in milliseconds. This is used to delay the next transaction if the controller sends an error while
+     * waiting for a response.
+     */
+    private final int HOLDOFF_DELAY = 250;
+
+    private Boolean holdoffActive = Boolean.FALSE;
+
+    private Calendar holdoffDelay = Calendar.getInstance();
+
+    /**
+     * The controller used by this transaction manager
+     */
     private ZWaveController controller;
 
     /**
@@ -260,17 +274,24 @@ public class ZWaveTransactionManager {
     /**
      * Queues a transaction for sending.
      *
-     * @param payload
-     * @return
+     * @param payload the {@link ZWaveMessagePayloadTransaction}
+     * @return the transaction ID
      */
     public long queueTransactionForSend(ZWaveMessagePayloadTransaction payload) {
-
         // Create a transaction from our payload data
         ZWaveTransaction transaction = new ZWaveTransaction(payload);
         if (payload.getMaxAttempts() != 0) {
             transaction.setAttemptsRemaining(payload.getMaxAttempts());
         }
-        // transaction.getSerialMessageClass();
+
+        if (transaction.getNodeId() != 255) {
+            ZWaveNode node = controller.getNode(transaction.getNodeId());
+            if (node != null && !node.isListening()) {
+                logger.debug("NODE {}: Bump transaction {} priority from {} to Immediate", transaction.getNodeId(),
+                        transaction.getTransactionId(), transaction.getPriority());
+                transaction.setPriority(TransactionPriority.Immediate);
+            }
+        }
 
         // Add the transaction to the queue
         addTransactionToQueue(transaction);
@@ -294,10 +315,10 @@ public class ZWaveTransactionManager {
                         || transaction.getSerialMessageClass() == SerialMessageClass.RemoveNodeFromNetwork
                         || transaction.getSerialMessageClass() == SerialMessageClass.IdentifyNode) {
                     queue = priorityControllerQueue;
-                    logger.debug("NODE {}: Adding to priority controller queue", transaction.getNodeId());
+                    logger.trace("NODE {}: Adding to priority controller queue", transaction.getNodeId());
                 } else {
                     queue = controllerQueue;
-                    logger.debug("NODE {}: Adding to controller queue", transaction.getNodeId());
+                    logger.trace("NODE {}: Adding to controller queue", transaction.getNodeId());
                 }
             }
 
@@ -306,7 +327,7 @@ public class ZWaveTransactionManager {
                 queue.remove(transaction);
             }
             queue.add(transaction);
-            logger.debug("NODE {}: Added to queue - size {}", transaction.getNodeId(), queue.size());
+            logger.trace("NODE {}: Added to queue - size {}", transaction.getNodeId(), queue.size());
         }
 
         sendNextMessage();
@@ -411,6 +432,9 @@ public class ZWaveTransactionManager {
                             continue;
                         }
 
+                        // Let's hold off sending anything for a short time to let things settle
+                        startHoldoffTimer();
+
                         // CAN means out of flow message was received by the controller
                         // It probably means we sent a message while the controller was processing the previous message.
                         logger.debug("TID {}: Resetting transaction", lastTransaction.getTransactionId());
@@ -447,7 +471,7 @@ public class ZWaveTransactionManager {
                                 commands = node.processCommand(new ZWaveCommandClassPayload(incomingMessage));
                             } catch (Exception e) {
                                 commands = null;
-                                logger.error("Exception processing frame: {}: ", incomingMessage, e);
+                                logger.debug("Exception processing frame: {}: ", incomingMessage, e);
                             }
                             if (commands != null) {
                                 logger.debug("NODE {}: Commands processed {}.", nodeId, commands.size());
@@ -475,7 +499,7 @@ public class ZWaveTransactionManager {
                                                     transaction.getExpectedCommandClassCommand());
 
                                             if (transaction.getTransactionState() != TransactionState.WAIT_DATA) {
-                                                logger.debug(
+                                                logger.trace(
                                                         "NODE {}: Ignoring transaction since not waiting for data.",
                                                         nodeId);
                                                 continue;
@@ -566,11 +590,6 @@ public class ZWaveTransactionManager {
                     }
                 }
 
-                // Just for debug.....
-                if (currentTransaction == null) {
-                    logger.debug("****************** Transaction not correlated");
-                }
-
                 // Process low level messages
                 // TODO: Maybe this should be moved?
                 controller.handleIncomingMessage(currentTransaction, incomingMessage);
@@ -584,7 +603,6 @@ public class ZWaveTransactionManager {
                                 currentTransaction.getTransactionState());
                         // Transaction has advanced - update the timer.
                         currentTransaction.setTimeout(getNextTimer(currentTransaction));
-                        // startTransactionTimer();
                     }
 
                     switch (currentTransaction.getTransactionState()) {
@@ -593,8 +611,6 @@ public class ZWaveTransactionManager {
                             if (currentTransaction == lastTransaction
                                     && currentTransaction.requiresDataBeforeNextRelease() == false) {
                                 lastTransaction = null;
-                                logger.debug("XXXXXXXXXXXXXXXXX lastTransaction COMPLETED - at DATA - {}",
-                                        currentTransaction.getCallbackId());
                             } else if (currentTransaction.getWaitForResponse()) {
 
                             }
@@ -618,6 +634,13 @@ public class ZWaveTransactionManager {
                             break;
 
                         case CANCELLED:
+                            // If the transaction failed getting the response from the controller, then add a delay
+                            // before sending more traffic to let the controller sort its self out.
+                            // We do this first to avoid any possible retransmissions.
+                            if (currentTransaction.getTransactionCancelledState() == TransactionState.WAIT_RESPONSE) {
+                                startHoldoffTimer();
+                            }
+
                             // Transaction was cancelled
                             controller.handleTransactionComplete(currentTransaction, incomingMessage);
 
@@ -630,6 +653,16 @@ public class ZWaveTransactionManager {
                                 outstandingTransactions.remove(currentTransaction);
                             }
 
+                            ZWaveNode node = controller.getNode(currentTransaction.getNodeId());
+                            if (node != null && !node.isListening() && currentTransaction
+                                    .getTransactionCancelledState() == TransactionState.WAIT_REQUEST) {
+                                // Node is not listening, and we failed waiting for a REQUEST
+                                // which means the device didn't respond. Treat as ASLEEP.
+                                logger.debug("NODE {}: Transaction failed waiting for REQUEST, assume sleeping device.",
+                                        currentTransaction.getNodeId());
+                                node.setAwake(false);
+                            }
+
                             // Handle retries
                             if (currentTransaction.decrementAttemptsRemaining() > 0) {
                                 logger.debug("NODE {}: CANCEL while sending message. Requeueing - {} attempts left!",
@@ -638,17 +671,23 @@ public class ZWaveTransactionManager {
                                 // Reset the transaction
                                 currentTransaction.resetTransaction();
 
-                                // Lower the priority since it's a retry!
+                                // TODO: Lower the priority since it's a retry!
                                 // currentTransaction.setPriority(priority);
                                 addTransactionToQueue(currentTransaction);
-                                // enqueue(currentTransaction); TODO: Handle retries...
-                                // }
                             } else {
                                 logger.debug("NODE {}: Retry count exceeded. Discarding message: {}",
                                         currentTransaction.getNodeId(), currentTransaction.toString());
-                                ZWaveNode node = controller.getNode(currentTransaction.getNodeId());
-                                if (node != null) {
-                                    node.setNodeState(ZWaveNodeState.DEAD);
+
+                                // We don't consider the failure of controller transactions to indicate the
+                                // device is dead.
+                                // Transactions that fail in the WAIT_RESPONSE are not used as this means the
+                                // failure was in communicating with the controller, not the device.
+                                if (currentTransaction.getSerialMessageClass().requiresNode() && currentTransaction
+                                        .getTransactionCancelledState() != TransactionState.WAIT_RESPONSE) {
+                                    if (node != null && node.isAwake()) {
+                                        // Node is awake, it should always respond!
+                                        node.setNodeState(ZWaveNodeState.DEAD);
+                                    }
                                 }
 
                                 // Notify our users...
@@ -657,7 +696,6 @@ public class ZWaveTransactionManager {
                             break;
 
                         default:
-                            // logger.error("Unhandled transaction state {}", lastSentMessage.getTransactionState());
                             break;
                     }
 
@@ -678,9 +716,10 @@ public class ZWaveTransactionManager {
                         logger.debug("NODE {}: TID {}: Transaction not completed", currentTransaction.getNodeId(),
                                 currentTransaction.getTransactionId());
                     }
+
                 }
             }
-            logger.debug("**************************** Exiting Receive Thread");
+            logger.debug("Exiting ZWave Receive Thread");
         }
 
     }
@@ -738,7 +777,14 @@ public class ZWaveTransactionManager {
     }
 
     private void sendNextMessage() {
-        logger.trace("Transaction SendNextMessage {} out at start", outstandingTransactions.size());
+        synchronized (holdoffActive) {
+            logger.debug("Transaction SendNextMessage {} out at start. Holdoff {}", outstandingTransactions.size(),
+                    holdoffActive);
+            if (holdoffActive) {
+                logger.debug("Holdoff Timer active - no send...");
+                return;
+            }
+        }
 
         synchronized (sendQueue) {
             // If we're currently processing the core of a transaction, or there are too many
@@ -835,10 +881,37 @@ public class ZWaveTransactionManager {
         }
     }
 
+    private void startHoldoffTimer() {
+        synchronized (holdoffActive) {
+            logger.debug("Holdoff Timer started...");
+            holdoffActive = Boolean.TRUE;
+            holdoffDelay.setTimeInMillis(System.currentTimeMillis() + HOLDOFF_DELAY);
+
+            startTransactionTimer();
+        }
+    }
+
     private void startTransactionTimer() {
         synchronized (sendQueue) {
             // Stop any existing timer
             resetTransactionTimer();
+
+            synchronized (holdoffActive) {
+                if (holdoffActive) {
+                    long delay = holdoffDelay.getTimeInMillis() - System.currentTimeMillis();
+                    if (delay > 0) {
+                        // Create the timer task
+                        timerTask = new ZWaveTransactionTimer();
+
+                        logger.debug("Holdoff Timer finishing in {}ms", delay);
+                        timer.schedule(timerTask, delay);
+
+                        return;
+                    } else {
+                        holdoffActive = Boolean.FALSE;
+                    }
+                }
+            }
 
             // Find the time till the next timer
             Date nextTimer = null;
@@ -881,12 +954,21 @@ public class ZWaveTransactionManager {
 
         @Override
         public void run() {
-            // if (true) {
-            // return;
-            // }
+            // Handle the holdoff case.
+            // This is set after a RESponse error to delay the next message
+            synchronized (holdoffActive) {
+                if (holdoffActive) {
+                    logger.debug("Holdoff Timer triggered...");
+                    holdoffActive = Boolean.FALSE;
+                    sendNextMessage();
+                    startTransactionTimer();
+                    return;
+                }
+            }
 
             synchronized (sendQueue) {
-                logger.trace("XXXXXXXXX Timeout.......... {} outstanding transactions", outstandingTransactions.size());
+                logger.trace("Transaction Timeout.......... {} outstanding transactions",
+                        outstandingTransactions.size());
                 Date now = new Date();
                 // List<ZWaveTransaction> retries = new ArrayList<ZWaveTransaction>();
 

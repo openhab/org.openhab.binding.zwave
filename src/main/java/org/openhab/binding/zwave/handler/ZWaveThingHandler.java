@@ -566,7 +566,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         Configuration configuration = editConfiguration();
         for (Entry<String, Object> configurationParameter : configurationParameters.entrySet()) {
             Object valueObject = configurationParameter.getValue();
-            logger.debug("NODE {}: Configuration update {} to {}", nodeId, configurationParameter.getKey(),
+            logger.debug("NODE {}: Configuration update set {} to {}", nodeId, configurationParameter.getKey(),
                     valueObject);
             String[] cfg = configurationParameter.getKey().split("_");
             switch (cfg[0]) {
@@ -685,8 +685,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     }
                     logger.debug("NODE {}: Current Members {}", nodeId, currentMembers);
 
-                    ZWaveAssociationGroup newMembers = new ZWaveAssociationGroup(groupIndex);
+                    logger.debug("NODE {}: Current Members {}", nodeId, currentMembers);
 
+                    ZWaveAssociationGroup newMembers = new ZWaveAssociationGroup(groupIndex);
                     int totalMembers = currentMembers.getAssociationCnt();
 
                     // Loop over all the parameters
@@ -732,6 +733,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                             totalMembers--;
                         }
                     }
+
+                    logger.debug("NODE {}: New Members {}", nodeId, newMembers);
 
                     // Now loop through the new members and add anything not in the current members list
                     for (ZWaveAssociation member : newMembers.getAssociations()) {

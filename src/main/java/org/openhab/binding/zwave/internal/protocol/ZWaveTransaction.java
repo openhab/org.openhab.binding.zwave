@@ -214,6 +214,11 @@ public class ZWaveTransaction {
         return transactionStateTracker;
     }
 
+    /**
+     * Gets the state the transaction was at when cancelled
+     * 
+     * @return the {@link TransactionState} when cancelled
+     */
     public TransactionState getTransactionCancelledState() {
         return transactionStateCancelled;
     }

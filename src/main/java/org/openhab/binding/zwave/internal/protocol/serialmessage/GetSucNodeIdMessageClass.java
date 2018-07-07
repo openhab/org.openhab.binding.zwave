@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
 public class GetSucNodeIdMessageClass extends ZWaveCommandProcessor {
     private final Logger logger = LoggerFactory.getLogger(GetSucNodeIdMessageClass.class);
 
-    int sucNode = 0;
+    private int sucNode = 0;
 
     public ZWaveSerialPayload doRequest() {
         logger.debug("Get SUC NodeID");

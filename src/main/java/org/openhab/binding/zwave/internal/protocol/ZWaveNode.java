@@ -1489,11 +1489,12 @@ public class ZWaveNode {
         // Start the timer
         // If the initialisation is complete, then use a short delay,
         // Otherwise use a longer delay...
-        if (isInitializationComplete()) {
+        if (isInitializationComplete() || controller.getSendQueueLength(getNodeId()) == 0) {
             timerDelay = sleepDelay;
         } else {
-            timerDelay = 20000;
+            timerDelay = 5000;
         }
+        logger.debug("NODE {}: Start sleep timer at {}ms", getNodeId(), timerDelay);
 
         timer.schedule(timerTask, timerDelay / 2, timerDelay / 2);
     }

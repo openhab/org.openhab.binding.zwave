@@ -111,10 +111,10 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
                         }
 
                         // Check if this is the control marker
-                        if (commandClass == CommandClass.COMMAND_CLASS_MARK) {
-                            // TODO: Implement control command classes
-                            break;
-                        }
+                        // if (commandClass == CommandClass.COMMAND_CLASS_MARK) {
+                        // TODO: Implement control command classes
+                        // break;
+                        // }
 
                         // Add the new class if it doesn't exist
                         if (node.getCommandClass(commandClass) == null) {

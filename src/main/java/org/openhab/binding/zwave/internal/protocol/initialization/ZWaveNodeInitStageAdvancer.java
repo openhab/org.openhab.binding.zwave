@@ -52,7 +52,6 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.DeleteReturnRou
 import org.openhab.binding.zwave.internal.protocol.serialmessage.DeleteSucReturnRouteMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.GetRoutingInfoMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.IdentifyNodeMessageClass;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.IsFailedNodeMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeInfoMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeNeighborUpdateMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveInclusionState;
@@ -205,8 +204,6 @@ public class ZWaveNodeInitStageAdvancer {
                 }
                 setCurrentStage(ZWaveNodeInitStage.DYNAMIC_END);
 
-                doHealStages();
-
                 setCurrentStage(ZWaveNodeInitStage.DONE);
             }
         };
@@ -339,14 +336,14 @@ public class ZWaveNodeInitStageAdvancer {
             return;
         }
 
-        setCurrentStage(ZWaveNodeInitStage.INIT_NEIGHBORS);
+        // setCurrentStage(ZWaveNodeInitStage.INIT_NEIGHBORS);
 
-        logger.debug("NODE {}: Node advancer: INIT_NEIGHBORS - send RoutingInfo", node.getNodeId());
+        // logger.debug("NODE {}: Node advancer: INIT_NEIGHBORS - send RoutingInfo", node.getNodeId());
 
-        processTransaction(new GetRoutingInfoMessageClass().doRequest(node.getNodeId()));
-        if (initRunning == false) {
-            return;
-        }
+        // processTransaction(new GetRoutingInfoMessageClass().doRequest(node.getNodeId()));
+        // if (initRunning == false) {
+        // return;
+        // }
 
         // Controllers aren't designed to allow communication with their node.
         // If this is a controller, we're done
@@ -357,6 +354,8 @@ public class ZWaveNodeInitStageAdvancer {
             return;
         }
 
+        // We don't try and initialise sleeping devices that we consider have been initialised before
+        // This means devices with an interval of 0, but the wakeup node set to the binding.
         ZWaveWakeUpCommandClass wakeupCommandClass = (ZWaveWakeUpCommandClass) node
                 .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
         if (wakeupCommandClass != null && wakeupCommandClass.getTargetNodeId() == controller.getOwnNodeId()
@@ -367,11 +366,11 @@ public class ZWaveNodeInitStageAdvancer {
             return;
         }
 
-        setCurrentStage(ZWaveNodeInitStage.FAILED_CHECK);
-        processTransaction(new IsFailedNodeMessageClass().doRequest(node.getNodeId()));
-        if (initRunning == false) {
-            return;
-        }
+        // setCurrentStage(ZWaveNodeInitStage.FAILED_CHECK);
+        // processTransaction(new IsFailedNodeMessageClass().doRequest(node.getNodeId()));
+        // if (initRunning == false) {
+        // return;
+        // }
 
         // Only perform the PING stage on devices that should be listening.
         // Battery (ie non-Listening) devices will only be communicated with when they send a WAKEUP_NOTIFICATION

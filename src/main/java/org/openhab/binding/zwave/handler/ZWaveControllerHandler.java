@@ -179,7 +179,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         config.put("networkKey", networkKey);
         config.put("wakeupDefaultPeriod", wakeupDefaultPeriod.toString());
 
-        // TODO: Handle soft reset better!
+        // TODO: Handle soft reset?
         controller = new ZWaveController(this, config);
         controller.addEventListener(this);
 
@@ -781,7 +781,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
     /**
      * Gets the home ID associated with the controller.
-     * 
+     *
      * @return the home ID
      */
     public int getHomeId() {

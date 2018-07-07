@@ -201,7 +201,8 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
      * @return the serial message
      */
     public ZWaveCommandClassTransactionPayload setAssociationMessage(int group, int node) {
-        logger.debug("NODE {}: Creating new message for application command ASSOCIATIONCMD_SET", getNode().getNodeId());
+        logger.debug("NODE {}: Creating new message for application command ASSOCIATIONCMD_SET, group={}, node={}",
+                getNode().getNodeId(), group, node);
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 ASSOCIATIONCMD_SET).withPayload((group & 0xff), (node & 0xff)).withPriority(TransactionPriority.Config)
@@ -218,8 +219,8 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
      * @return the serial message
      */
     public ZWaveCommandClassTransactionPayload removeAssociationMessage(int group, int node) {
-        logger.debug("NODE {}: Creating new message for application command ASSOCIATIONCMD_REMOVE",
-                this.getNode().getNodeId());
+        logger.debug("NODE {}: Creating new message for application command ASSOCIATIONCMD_REMOVE group={}, node={}",
+                getNode().getNodeId(), group, node);
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 ASSOCIATIONCMD_REMOVE).withPayload((group & 0xff), (node & 0xff))

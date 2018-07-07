@@ -488,13 +488,11 @@ public class SerialMessage {
                                                         // devices in network
         SerialApiApplicationNodeInfo(0x03), // Set controller node information (ie NIF)
         ApplicationCommandHandler(0x04), // Handle application command
-        GetControllerCapabilities(0x05, true, false, false), // Request controller
-                                                             // capabilities
+        GetControllerCapabilities(0x05, true, false, false), // Request controller capabilities
         // (primary role,
         // SUC/SIS availability)
         SerialApiSetTimeouts(0x06, true, false, false), // Set Serial API timeouts
-        SerialApiGetCapabilities(0x07, true, false, false), // Request Serial API
-                                                            // capabilities
+        SerialApiGetCapabilities(0x07, true, false, false), // Request Serial API capabilities
         SerialApiSoftReset(0x08, false, false, false), // Soft reset. Restarts Z-Wave chip
         RfReceiveMode(0x10), // Power down the RF section of the stick
         SetSleepMode(0x11), // Set the CPU into sleep mode
@@ -505,38 +503,36 @@ public class SerialMessage {
         SendDataAbort(0x16, false, false, false), // Abort Send data.
         RfPowerLevelSet(0x17), // Set RF Power level
         SendDataMeta(0x18),
-        GetRandom(0x1c), // Returns a random number
+        GetRandom(0x1C), // Returns a random number
         MemoryGetId(0x20, true, false, false), // ???
         MemoryGetByte(0x21), // Get a byte of memory.
         MemoryPutByte(0x22),
         ReadMemory(0x23), // Read memory.
         WriteMemory(0x24),
+        GetNetworkStats(0x3A, true, false, false),
+        GetBackgroundRssi(0x3B, true, false, false),
         SetLearnNodeState(0x40), // ???
-        IdentifyNode(0x41, true, false, false), // Get protocol info (baud rate, listening, etc.) for a
-                                                // given node
-        SetDefault(0x42, false, true, false), // Reset controller and node info to default (original)
-                                              // values
+        IdentifyNode(0x41, true, false, false), // Get protocol info (baud rate, listening, etc.) for a given node
+        SetDefault(0x42, false, true, false), // Reset controller and node info to default (original) values
         NewController(0x43), // ???
         ReplicationCommandComplete(0x44), // Replication send data complete
         ReplicationSendData(0x45), // Replication send data
-        AssignReturnRoute(0x46, true, true, true), // Assign a return route from the specified node
-                                                   // to the controller
-        DeleteReturnRoute(0x47, true, true, true), // Delete all return routes from the specified
-                                                   // node
+        AssignReturnRoute(0x46, true, true, true), // Assign a return route from the specified node to the controller
+        DeleteReturnRoute(0x47, true, true, true), // Delete all return routes from the specified node
         RequestNodeNeighborUpdate(0x48, false, true, true), // Ask the specified node to
                                                             // update its neighbors (then
                                                             // read them from the
                                                             // controller)
         ApplicationUpdate(0x49), // Get a list of supported (and controller) command classes
-        AddNodeToNetwork(0x4a, false, true, false), // Control the addnode (or addcontroller)
+        AddNodeToNetwork(0x4a, false, true, false), // Control the addnode (or add controller)
                                                     // process...start, stop, etc.
-        RemoveNodeFromNetwork(0x4b, false, true, false), // Control the removenode (or
-                                                         // removecontroller) process...start,
+        RemoveNodeFromNetwork(0x4b, false, true, false), // Control the remove node (or
+                                                         // remove controller) process...start,
                                                          // stop, etc.
-        CreateNewPrimary(0x4c), // Control the createnewprimary process...start, stop, etc.
-        ControllerChange(0x4d), // Control the transferprimary process...start, stop, etc.
-        SetLearnMode(0x50), // Put a controller into learn mode for replication/ receipt of
-                            // configuration info
+        CreateNewPrimary(0x4c), // Control the create new primary process...start, stop, etc.
+        ControllerChange(0x4d), // Control the transfer primary process...start, stop, etc.
+        SetLearnMode(0x50, false, true, false), // Put a controller into learn mode for replication / receipt of
+        // configuration info
         AssignSucReturnRoute(0x51, true, true, true), // Assign a return route to the SUC
         EnableSuc(0x52, true, false, false), // Make a controller a Static Update Controller
         RequestNetworkUpdate(0x53, true, true, false), // Network update for a SUC(?)
@@ -545,18 +541,18 @@ public class SerialMessage {
         GetSucNodeId(0x56, true, false, false), // Try to retrieve a Static Update Controller node id
                                                 // (zero if no SUC present)
         SendSucId(0x57),
-        RequestNodeNeighborUpdateOptions(0x5a), // Allow options for request node
-                                                // neighbor update
+        RequestNodeNeighborUpdateOptions(0x5a), // Allow options for request node neighbor update
         ExploreRequestInclusion(0x5e), // Initiate a Network-Wide Inclusion process
-        RequestNodeInfo(0x60, true, false, true), // Get info (supported command classes) for the
-                                                  // specified node
+        RequestNodeInfo(0x60, true, false, true), // Get info (supported command classes) for the specified node
         RemoveFailedNodeID(0x61, true, true, false), // Mark a specified node id as failed
         IsFailedNodeID(0x62, true, false, false), // Check to see if a specified node has failed
-        ReplaceFailedNode(0x63, true, true, false), // Remove a failed node from the controller's
-                                                    // list (?)
+        ReplaceFailedNode(0x63, true, true, false), // Remove a failed node from the controller's list (?)
         GetRoutingInfo(0x80, true, false, false), // Get a specified node's neighbor information from
                                                   // the controller
         LockRoute(0x90),
+        GetPriorityRoute(0x92),
+        SetPriorityRoute(0x93),
+        GetSecurityKeys(0x9C),
         SerialApiSlaveNodeInfo(0xA0), // Set application virtual slave node information
         ApplicationSlaveCommandHandler(0xA1), // Slave command handler
         SendSlaveNodeInfo(0xA2), // Send a slave node information frame
@@ -564,14 +560,17 @@ public class SerialMessage {
         SetSlaveLearnMode(0xA4), // Enter slave learn mode
         GetVirtualNodes(0xA5), // Return all virtual nodes
         IsVirtualNode(0xA6), // Virtual node test
+        SetWutTimeout(0xB4),
         WatchDogEnable(0xB6),
         WatchDogDisable(0xB7),
-        WatchDogKick(0xB6),
+        WatchDogKick(0xB8),
+        SetExtIntLevel(0xB9),
         RfPowerLevelGet(0xBA), // Get RF Power level
         GetLibraryType(0xBD), // Gets the type of ZWave library on the stick
         SendTestFrame(0xBE), // Send a test frame to a node
         GetProtocolStatus(0xBF),
         SetPromiscuousMode(0xD0), // Set controller into promiscuous mode to listen to all frames
+        SetRoutingMax(0xD4),
         PromiscuousApplicationCommandHandler(0xD1);
 
         /**
@@ -589,6 +588,7 @@ public class SerialMessage {
             this.key = key;
             this.response = false;
             this.request = false;
+            this.node = false;
         }
 
         private SerialMessageClass(int key, boolean response, boolean request, boolean node) {
