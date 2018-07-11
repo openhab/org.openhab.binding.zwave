@@ -8,6 +8,7 @@
   <thing-type id="zwaveme_kfob_00_000" listed="false">
     <label>KFOB 4 button keyfob</label>
     <description>4 button keyfob</description>
+    <category>RemoteControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

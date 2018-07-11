@@ -33,7 +33,7 @@ Wireless Z-Wave Water Valve<br /><h1>Overview</h1><p>Fortrezz WV-01 Wireless Z-W
       <property name="vendor">FortrezZ LLC</property>
       <property name="modelId">WV-01</property>
       <property name="manufacturerId">0084</property>
-      <property name="manufacturerRef">0213:0215,0233:AA06</property>
+      <property name="manufacturerRef">0213:0215,0233:AA06,0243:0300</property>
       <property name="dbReference">368</property>
     </properties>
 

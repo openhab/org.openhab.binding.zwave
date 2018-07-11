@@ -7,7 +7,10 @@
 
   <thing-type id="aeon_dsa03202_00_000" listed="false">
     <label>DSA03202 Minimote 4 button remote control</label>
-    <description>Minimote 4 button remote control</description>
+    <description><![CDATA[
+Minimote 4 button remote control<br /><h1>Overview</h1><p>The Minimote is a fully functional Z-Wave remote control capable of adding, removing and controlling other Z-Wave devices. It can also become a secondary or inclusion controller to a SIS gateway in the Z-Wave network. Form-factor, industrial design and robust functionality are the major foci. RF range is 100ft. indoors and 300ft. outdoors.</p> <p>Network setup buttons (such as adding and removing Z-Wave products to the network) are located underneath the bottom-slide door while Z-Wave scene control buttons are easily available to the user on the top of the remote controller.</p> <p>By taking advantage of the Z-Wave mesh network, commands can be routed to their destination via intermediary “listening” Z-Wave products. Products that are Z-Wave certified can be used and communicate with other Z-Wave certified devices. </p>
+    ]]></description>
+    <category>RemoteControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -26,7 +29,7 @@
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0001:0003,0006:0002</property>
       <property name="dbReference">74</property>
-      <property name="commandClass:WAKE_UP">ccAdd</property>
+      <property name="commandClass:WAKE_UP">getSupported=false</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -158,7 +161,9 @@
 
       <parameter name="config_250_1_wo" type="integer" groupName="configuration">
         <label>250: Secondary Controller Mode</label>
-        <description>When in Group Mode, the Minimote is paired directly to devices. When in Scene Mode, Minimote button presses will send SCENE_ACTIVATION commands (NOTE: SCENE_ACTIVATION will only be received if the primary controller is NODE 1).</description>
+        <description><![CDATA[
+Selects Group Mode or Scene Mode<br /><h1>Overview</h1><p>When in Group Mode, the Minimote is paired directly to devices.  When in Scene Mode, Minimote button presses will send SCENE_ACTIVATION commands (NOTE: SCENE_ACTIVATION will only be received if the primary controller is NODE 1).</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Group Mode</option>

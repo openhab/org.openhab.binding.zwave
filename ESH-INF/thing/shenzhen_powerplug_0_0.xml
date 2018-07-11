@@ -179,9 +179,9 @@ Enable/Disable top button function<br /><h1>Overview</h1><p>If this parameter is
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association">
-        <label>1: Group 1</label>
+        <label>1: L</label>
         <description><![CDATA[
-is assigned to Plugs status - On/Off. Allows for receiving control command from trigger devices whenever the Plug is turned On or Off.<br /><h1>Overview</h1><p>NOTIFICATION_REPORT_V4</p> <p>METER_REPORT_V4</p> <p>SWITCH_BINARY_REPORT</p> <p>DEVICE_RESET_LOCALLY_NOTIFICATION</p>
+Assigned to Plugs status - On/Off. Allows for receiving control command from trigger devices whenever the Plug is turned On or Off.<br /><h1>Overview</h1><p>NOTIFICATION_REPORT_V4</p> <p>METER_REPORT_V4</p> <p>SWITCH_BINARY_REPORT</p> <p>DEVICE_RESET_LOCALLY_NOTIFICATION</p>
         ]]></description>
       </parameter>
 
