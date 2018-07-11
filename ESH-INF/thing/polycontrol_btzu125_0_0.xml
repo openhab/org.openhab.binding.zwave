@@ -7,7 +7,10 @@
 
   <thing-type id="polycontrol_btzu125_00_000" listed="false">
     <label>BTZW125 Danalock v2 circle</label>
-    <description>Danalock v2 circle</description>
+    <description><![CDATA[
+Danalock v2 circle<br /><h1>Overview</h1><ul><li>Smartlock for easy and fast installation on almost any door</li> <li>Incl. adjustable cylinder</li> <li>No keys required, Operation via Danalock App / Z-Wave</li> </ul><br /><h2>Inclusion Information</h2><p>To add or include the Danalock into a Z-Wave network</p> <p>Set the controller in inclusion mode</p> <p>Push the switch once until you hear two beeps.</p> <br /><h2>Exclusion Information</h2><p>To exclude the Danalock out off the Z-Wave network</p> <p>Set the controller in inclusion mode</p> <p>Push the switch once until you hear two beeps.</p>
+    ]]></description>
+    <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -208,7 +211,7 @@ Door lock operation report type<br /><h1>Overview</h1><p>Door lock operation rep
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association">
-        <label>1: LifeLine</label>
+        <label>1: Lifeline</label>
         <description>Z-Wave Plus Lifeline</description>
       </parameter>
 

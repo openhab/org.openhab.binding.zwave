@@ -104,7 +104,7 @@ This parameter allows to activate excess temperature ...<br /><h1>Overview</h1><
         <options>
           <option value="0">All notifications disabled</option>
           <option value="1">Enclosure opening notification enabled</option>
-          <option value="2">Exceeding temperature threshold notification enabled</option>
+          <option value="2">Exceeding temp threshold notification enabled</option>
           <option value="3">All notifications enabled</option>
         </options>
       </parameter>
@@ -127,11 +127,11 @@ This parameter allows to activate visual indications<br /><h1>Overview</h1><p> 
         <options>
           <option value="0">All notifications disabled</option>
           <option value="1">Enclosure opening notification enabled</option>
-          <option value="2">Exceeding temperature threshold notification enabled</option>
+          <option value="2">Exceeding temp threshold notification enabled</option>
           <option value="3">Enclosure opening notification enabled +</option>
           <option value="4">Lack of Z-Wave range notification</option>
           <option value="5">Enclosure opening notification enabled and</option>
-          <option value="6">Exceeding temperature threshold notification enabled +</option>
+          <option value="6">Exceeding temp threshold notification enabled +</option>
           <option value="7">Enclosure opening notification enabled +</option>
         </options>
       </parameter>
@@ -145,17 +145,17 @@ This parameter allows to activate sound signals...<br /><h1>Overview</h1><p> bu
         <options>
           <option value="0">All notifications disabled</option>
           <option value="1">Enclosure opening notification enabled</option>
-          <option value="2">Exceeding temperature threshold notification enabled</option>
+          <option value="2">Exceeding temp threshold notification enabled</option>
           <option value="3">Enclosure opening notification enabled +</option>
           <option value="4">Lack of Z-Wave range notification</option>
           <option value="5">Enclosure opening notification enabled +</option>
-          <option value="6">Exceeding temperature threshold notification enabled +</option>
+          <option value="6">Exceeding temp threshold notification enabled +</option>
           <option value="7">Enclosure opening notification enabled and</option>
         </options>
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration">
-        <label>10: Configuration of control frames in BASIC command class</label>
+        <label>10: Config of control frames in BASIC command class</label>
         <description><![CDATA[
 This parameter defines which frames will be sent ...<br /><h1>Overview</h1><p>in the 2-nd Association Group (FIRE ALARM). The values of BASIC ON and BASIC OFF frames may be defined as described in further parameters.</p>
         ]]></description>
@@ -193,9 +193,9 @@ A value other than 0 means that alarms are being ...<br /><h1>Overview</h1><p> 
         <default>0</default>
         <options>
           <option value="0">broadcast inactive</option>
-          <option value="1">FIRE ALARM broadcast (2-nd and 4-th Association Group) ...</option>
-          <option value="2">FIRE ALARM broadcast (2nd and 4th Association Group) ...</option>
-          <option value="3">FIRE ALARM broadcast (2nd and 4-th Association Group) ...</option>
+          <option value="1">FIRE ALARM broadcast 2nd/4th Association Group...</option>
+          <option value="2">FIRE ALARM broadcast 2nd/4th Association Group ...</option>
+          <option value="3">FIRE ALARM broadcast 2nd/4th Association Group...</option>
         </options>
       </parameter>
 

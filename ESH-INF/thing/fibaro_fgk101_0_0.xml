@@ -149,9 +149,9 @@ Parameter for dimming/opening blinds<br /><h1>Overview</h1><p>Value of the param
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration">
-        <label>9: Enable/Disable transmission of frame cancelling alarm</label>
+        <label>9: Enable/Disable transmission cancelling alarm</label>
         <description><![CDATA[
-Enable/Disable transmission of frame cancelling alarm <br /><h1>Overview</h1><p>Deactivating transmission of the alarm cancelling frame or the control frame deactivating the device (Basic). It allows for disabling the function of deactivating the device and cancelling alarms for devices associated with IN input. Default value: 0</p> <p>Available parameter settings: 0 – for association group no. 1 information is sent 1 – for association group no.</p> <p>1 information is not sent.</p> <p>Parameter size: 1 [byte].</p>
+Enable/Disable transmission of frame cancelling alarm <br /><h1>Overview</h1><p>Deactivating transmission of the alarm cancelling frame or the control frame deactivating the device (Basic). It allows for disabling the function of deactivating the device and cancelling alarms for devices associated with IN input. Default value: 0</p> <p>Available parameter settings:</p> <p>0 – for association group no. 1 information is sent</p> <p>1 – for association group no. 1 information is not sent.</p> <p>Parameter size: 1 [byte].</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -171,15 +171,15 @@ Sensitivity to temperature changes<br /><h1>Overview</h1><p>Sensitivity to tempe
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
-        <label>13: Transmitting the alarm or control frame broadcast</label>
+        <label>13: Transmitting alarm/control frame broadcast</label>
         <description><![CDATA[
 Enabling/Disabling broadcast alarm for IN and TMP<br /><h1>Overview</h1><p>Sending an alarm or control frame (for IN input, depending on parameter no.5 value), and TMP button alarm frame. The frame is sent in “broadcast” mode, i.e. to all devices within range - information sent in this mode is not repeated by the mesh network.</p> <p>Default value: 0</p> <p>Available parameter settings: 0 – IN and TMP Broadcast mode inactive,</p> <p>1 – IN broadcast mode active, TMP broadcast mode inactive</p> <p>2 – IN broadcast mode inactive, TMP broadcast mode active</p> <p>3 – IN and TMP broadcast mode active</p> <p>Parameter size: 1 [byte].</p>
         ]]></description>
         <default>0</default>
         <options>
           <option value="0">IN and TMP Broadcast mode inactive</option>
-          <option value="1">IN broadcast mode active, TMP broadcast mode inactive</option>
-          <option value="2">IN broadcast mode inactive, TMP broadcast mode active</option>
+          <option value="1">IN broadcast active, TMP broadcast inactive</option>
+          <option value="2">IN broadcast inactive, TMP broadcast active</option>
           <option value="3">IN and TMP broadcast mode active</option>
         </options>
       </parameter>

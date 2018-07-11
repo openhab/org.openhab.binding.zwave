@@ -6,11 +6,11 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="polycontrol_danalockuniversalmodulve1_00_000" listed="false">
-    <label>Danalock Universal Module V1 Door Lock</label>
+    <label>BTZEUMV1 Danalock Universal Module V1</label>
     <description><![CDATA[
-Door Lock<br /><h1>Overview</h1><p>The universal module enables the control of existing electrical locking systems via smartphone. It is a circuit board with a relay to switch potential-free contacts. The module is connected near the lock system and actuates engine locks, garage doors, digital cylinders or the door number.</p> <br /><h2>Inclusion Information</h2><p>To add or include the Danalock into a Z-Wave network</p> <ol><li> <p>Set the controller in inclusion mode</p> </li> <li> <p>Push the switch once until you hear two beeps. </p> </li> </ol><br /><h2>Exclusion Information</h2><p>To add or exclude the Danalock into a Z-Wave network</p> <ol><li> <p>Set the controller in inclusion mode</p> </li> <li> <p>Push the switch once until you hear two beeps.</p> </li> </ol>
+Danalock Universal Module V1<br /><h1>Overview</h1><p>The universal module enables the control of existing electrical locking systems via smartphone. It is a circuit board with a relay to switch potential-free contacts. The module is connected near the lock system and actuates engine locks, garage doors, digital cylinders or the door number.</p> <br /><h2>Inclusion Information</h2><p>To add or include the Danalock into a Z-Wave network</p> <ol><li> <p>Set the controller in inclusion mode</p> </li> <li> <p>Push the switch once until you hear two beeps. </p> </li> </ol><br /><h2>Exclusion Information</h2><p>To add or exclude the Danalock into a Z-Wave network</p> <ol><li> <p>Set the controller in inclusion mode</p> </li> <li> <p>Push the switch once until you hear two beeps.</p> </li> </ol>
     ]]></description>
-    <category>Door</category>
+    <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -42,11 +42,28 @@ Door Lock<br /><h1>Overview</h1><p>The universal module enables the control of e
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Poly-control</property>
-      <property name="modelId">Danalock Universal Module V1</property>
+      <property name="modelId">BTZEUMV1</property>
       <property name="manufacturerId">010E</property>
       <property name="manufacturerRef">0008:0004</property>
       <property name="dbReference">868</property>
+      <property name="defaultAssociations">1</property>
     </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Lifeline</label>
+        <description>Z-Wave Plus Lifeline</description>
+      </parameter>
+
+    </config-description>
 
   </thing-type>
 

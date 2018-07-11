@@ -14,10 +14,10 @@ Door/Window Sensor 6<br /><h1>Overview</h1><p>This Door/ Window Sensor 6 is a s
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Binary Sensor</label>
+      <channel id="sensor_door" typeId="sensor_door">
+        <label>Door Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY,BASIC</property>
+          <property name="binding:*:OpenClosedType">SENSOR_BINARY,BASIC</property>
         </properties>
       </channel>
       <channel id="alarm_access" typeId="alarm_access">
@@ -57,7 +57,7 @@ Door/Window Sensor 6<br /><h1>Overview</h1><p>This Door/ Window Sensor 6 is a s
         <default>0</default>
         <options>
           <option value="0">On for opened, Off for closed</option>
-          <option value="1">On for opened</option>
+          <option value="1">Off for opened On for Closed</option>
         </options>
       </parameter>
 

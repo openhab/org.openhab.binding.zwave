@@ -8,7 +8,7 @@
   <thing-type id="aeon_zw132_00_000" listed="false">
     <label>ZW132 Dual Nano Switch with Energy Metering</label>
     <description><![CDATA[
-Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano Switch is a low-cost Z-Wave Switch specifically used to enable Z-Wave command and control (on/off) of any wall switches. It can report immediate wattage consumption or kWh energy usage over a period of time. In the event of power failure, non-volatile memory retains all programmed information relating to the unit’s operating status.</p> <p>It can connect to 2 external manual switches to control the load ON/OFF independently. Its surface has a pin socket, which can be used for connecting to the touch panel, so you can also use the touch panel to control the Dual Nano Switch.</p> <p>The Dual Nano Switch is also a security Z-Wave device and supports Over The Air (OTA) feature for the products firmware upgrade.</p> <p><strong>Reset your Dual Nano Switch.</strong></p> <p>If at some stage, your primary controller is missing or inoperable, you may wish to reset all of your Dual Nano Switch’s settings to their factory defaults. To do this, press and hold the Action Button for 20 seconds and then release it. Your Dual Nano Switch will now be reset to its original settings, and the green LED will be solid for 2 seconds and then remain the colourful gradient status as a confirmation.</p> <br /><h2>Inclusion Information</h2><p><strong>Including Dual Nano Switch as a non-secure device:</strong></p> <p>If you want your Dual Nano Switch as a non-secure device in your Z-Wave network, press the Action Button once on Dual Nano Switch when you pair it to your gateway. If inclusion is successful, the green LED will be on for 2 seconds, and then return to a solid indication. If inclusion is unsuccessful, the red LED will be on for 2 seconds and then return to a colourful gradient.</p> <p><strong>Including Dual Nano Switch as a secure device:</strong></p> <p>In order to take full advantage of the Dual Nano Switch, you will want your Dual Nano Switch as a security device that uses encrypted messages to communicate in your Z-wave network. A security enabled controller/gateway (or Z-Wave Plus controller) is required.</p> <ol><li>Set your Z-Wave Plus controller into pairing mode.</li> <li>Press the Action Button 2 times within 1 second on the Dual Nano Switch, the blue LED (secure indication) will blink to indicate the Dual Nano Switch is entering into secure pairing mode.</li> <li>If the Dual Nano Switch has been successfully added to your Z-Wave network, its RGB LED will be solid. If the pairing was unsuccessful, the red LED will be on for 2 seconds and then remain a colourful gradient, repeat the instructions above from step 1.</li> </ol>
+Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano Switch is a low-cost Z-Wave Switch specifically used to enable Z-Wave command and control (on/off) of any wall switches. It can report immediate wattage consumption or kWh energy usage over a period of time. In the event of power failure, non-volatile memory retains all programmed information relating to the unit’s operating status.</p> <p>It can connect to 2 external manual switches to control the load ON/OFF independently. Its surface has a pin socket, which can be used for connecting to the touch panel, so you can also use the touch panel to control the Dual Nano Switch.</p> <p>The Dual Nano Switch is also a security Z-Wave device and supports Over The Air (OTA) feature for the products firmware upgrade.</p> <p><strong>Reset your Dual Nano Switch.</strong></p> <p>If at some stage, your primary controller is missing or inoperable, you may wish to reset all of your Dual Nano Switch’s settings to their factory defaults. To do this, press and hold the Action Button for 20 seconds and then release it. Your Dual Nano Switch will now be reset to its original settings, and the green LED will be solid for 2 seconds and then remain the colourful gradient status as a confirmation.</p> <br /><h2>Inclusion Information</h2><p><strong>Including Dual Nano Switch as a non-secure device:</strong></p> <p>If you want your Dual Nano Switch as a non-secure device in your Z-Wave network, press the Action Button once on Dual Nano Switch when you pair it to your gateway. If inclusion is successful, the green LED will be on for 2 seconds, and then return to a solid indication. If inclusion is unsuccessful, the red LED will be on for 2 seconds and then return to a colourful gradient.</p> <p><strong>Including Dual Nano Switch as a secure device:</strong></p> <p>In order to take full advantage of the Dual Nano Switch, you will want your Dual Nano Switch as a security device that uses encrypted messages to communicate in your Z-wave network. A security enabled controller/gateway (or Z-Wave Plus controller) is required.</p> <ol><li>Set your Z-Wave Plus controller into pairing mode.</li> <li>Press the Action Button 2 times within 1 second on the Dual Nano Switch, the blue LED (secure indication) will blink to indicate the Dual Nano Switch is entering into secure pairing mode.</li> <li>If the Dual Nano Switch has been successfully added to your Z-Wave network, its RGB LED will be solid. If the pairing was unsuccessful, the red LED will be on for 2 seconds and then remain a colourful gradient, repeat the instructions above from step 1.</li> </ol><br /><h2>Exclusion Information</h2><p><strong>Removing Dual Nano Switch from a Z-Wave network. </strong></p> <p>Your Dual Nano Switch can be removed from your Z-Wave network at any time. You’ll need to use your Z-Wave network’s main controller. To set your Z-Wave controller/gateway into removal mode, please refer to the respective section within your controller instruction manual.</p> <ol><li>Set your Z-Wave controller into removal mode.</li> <li>Press the Action Button on the Dual Nano Switch or toggle the external manual switch 3 times in fast succession.</li> <li>If the Dual Nano Switch has been successfully removed from your Z-Wave network, its RGB LED will remain colourful gradient. If the removal was unsuccessful, the RGB LED will still be solid (following the state of the output load), repeat the instructions above from step 1.</li> </ol>
     ]]></description>
     <category>WallSwitch</category>
 
@@ -50,6 +50,12 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
           <property name="binding:*:DecimalType">METER;type=E_V</property>
         </properties>
       </channel>
+      <channel id="meter_reset" typeId="meter_reset">
+        <label>Reset Meter</label>
+        <properties>
+          <property name="binding:*:OnOffType">METER;reset=true</property>
+        </properties>
+      </channel>
       <channel id="alarm_power" typeId="alarm_power">
         <label>Alarm (power)</label>
         <properties>
@@ -75,7 +81,7 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
         </properties>
       </channel>
       <channel id="switch_binary1" typeId="switch_binary">
-        <label>Remove</label>
+        <label></label>
         <properties>
           <property name="binding:*:OnOffType">SWITCH_BINARY:1,BASIC:1</property>
         </properties>
@@ -111,7 +117,7 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
         </properties>
       </channel>
       <channel id="switch_binary2" typeId="switch_binary">
-        <label>Remove</label>
+        <label></label>
         <properties>
           <property name="binding:*:OnOffType">SWITCH_BINARY:2,BASIC:2</property>
         </properties>
@@ -163,7 +169,7 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Current Overload Protection.</label>
-        <description>Current Overload Protection.</description>
+        <description>Output load will be closed after 30 seconds if the current exceeds 10.5A</description>
         <default>1</default>
         <options>
           <option value="0">Disable</option>
@@ -173,7 +179,7 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Overheat protection</label>
-        <description>Overheat protection</description>
+        <description>Output load will be closed after 30 secs if the temp inside exceeds 100 C</description>
         <default>0</default>
         <options>
           <option value="0">Disable</option>
@@ -194,8 +200,10 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
 
       <parameter name="config_80_1" type="integer" groupName="configuration">
         <label>80: Group 1 notifications</label>
-        <description>To set which notification would be sent to the associated devices (Group 1)</description>
-        <default>0</default>
+        <description><![CDATA[
+To set which notification would be sent to the associated devices (Group 1)<br /><h1>Overview</h1><p>Note: When just only one channel load state is changed, the report message Hail CC or Basic Report CC would be Multi Channel encapsulated.</p>
+        ]]></description>
+        <default>3</default>
         <options>
           <option value="0">Send Nothing</option>
           <option value="1">Send Hail CC</option>
@@ -206,7 +214,9 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
 
       <parameter name="config_81_1" type="integer" groupName="configuration">
         <label>81: Group 3 notifications</label>
-        <description>To set which notification would be sent to association group 3</description>
+        <description><![CDATA[
+To set which notification would be sent to association group 3<br /><h1>Overview</h1><p>when using the external switch 1 to switch the loads.</p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">Send Nothing</option>
@@ -216,12 +226,34 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
 
       <parameter name="config_82_1" type="integer" groupName="configuration">
         <label>82: Group 4 notifications</label>
-        <description>To set which notification would be sent to association group 4</description>
+        <description><![CDATA[
+To set which notification would be sent to association group 4<br /><h1>Overview</h1><p>when using the external switch 2 to switch the loads.</p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">Send Nothing</option>
           <option value="1">Send Basic Set CC</option>
         </options>
+      </parameter>
+
+      <parameter name="config_83_1" type="integer" groupName="configuration">
+        <label>83: LED State</label>
+        <description>Configure the state of LED</description>
+        <default>0</default>
+        <options>
+          <option value="0">Energy mode</option>
+          <option value="1">Momentary mode</option>
+          <option value="2">Night light mode</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_84_4" type="integer" groupName="configuration"
+                 min="0" max="16843248">
+        <label>84: Night light on/off</label>
+        <description><![CDATA[
+Time to turn the light on and off<br /><h1>Overview</h1><p>0 to 60 = The minute time of OFF</p> <p>256 to 316 = The hour time of OFF</p> <p>65536 to 65596 = The minute time of ON</p> <p>16777216 to 16777276 = The hour time of ON</p>
+        ]]></description>
+        <default>0</default>
       </parameter>
 
       <parameter name="config_90_1" type="integer" groupName="configuration">
@@ -248,84 +280,96 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
         <default>5</default>
       </parameter>
 
-      <parameter name="config_101_4" type="integer" groupName="configuration">
+      <parameter name="config_101_4" type="integer" groupName="configuration"
+                 min="0" max="1776399">
         <label>101: Set group 1 reports</label>
-        <description>To set which reports need to be sent in Report group 1</description>
+        <description><![CDATA[
+To set which reports need to be sent in Report group 1<br /><h1>Overview</h1><p>Sum the values of the options you want:</p> <p>1 = Meter REPORT (kWh) of whole Channels</p> <p>2 = Meter REPORT (Watt) of whole Channels</p> <p>4 = Meter REPORT (V) of whole Channels</p> <p>8 = Meter REPORT (A) of whole Channels</p> <p>256 = Multi Channel Meter Report (W) on Channel 1</p> <p>512 = Multi Channel Meter Report (W) on Channel 2</p> <p>2048 = Multi Channel Meter Report (kWh) on Channel 1</p> <p>4096 = Multi Channel Meter Report (kWh) on Channel 2</p> <p>65536 = Multi Channel Meter Report (V) on Channel 1</p> <p>131072 = Multi Channel Meter Report (V) on Channel 2</p> <p>524288 = Multi Channel Meter Report (A) on Channel 1</p> <p>1048576 = Multi Channel Meter Report (A) on Channel 2</p> <p>1776399 = ALL ABOVE OPTIONS</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="1">Send Meter Report of energy (kWh)</option>
           <option value="2">Send Meter Report of wattage (W)</option>
           <option value="4">Send Meter Report of voltage (V)</option>
           <option value="8">Send Meter Report of current (A)</option>
-          <option value="256">Send Multi Channel Meter Report of wattage (W) on Channel 1</option>
-          <option value="512">Send Multi Channel Meter Report of wattage (W) on Channel 2</option>
-          <option value="2048">Send Multi Channel Meter Report of energy (kWh) on Channel 1</option>
-          <option value="4096">Send Multi Channel Meter Report of energy (kWh) on Channel 2</option>
-          <option value="65536">Send Multi Channel Meter Report of voltage (V) on Channel 1</option>
-          <option value="131072">Send Multi Channel Meter Report of voltage (V) on Channel 2</option>
-          <option value="524288">Send Multi Channel Meter Report of current (A) on Channel 1</option>
-          <option value="1048576">Send Multi Channel Meter Report of current (A) on Channel 2</option>
+          <option value="256">Send Multi Channel Meter Report of wattage (W) C1</option>
+          <option value="512">Send Multi Channel Meter Report of wattage (W) C2</option>
+          <option value="2048">Send Multi Channel Meter Report of energy (kWh) C1</option>
+          <option value="4096">Send Multi Channel Meter Report of energy (kWh) C2</option>
+          <option value="65536">Send Multi Channel Meter Report of voltage (V) C1</option>
+          <option value="131072">Send Multi Channel Meter Report of voltage (V) C2</option>
+          <option value="524288">Send Multi Channel Meter Report of current (A) C1</option>
+          <option value="1048576">Send Multi Channel Meter Report of current (A) C2</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_102_1" type="integer" groupName="configuration">
-        <label>102: To set which reports need to be sent in Report group 2.</label>
-        <description>To set which reports need to be sent in Report group 2.</description>
+      <parameter name="config_102_4" type="integer" groupName="configuration"
+                 min="0" max="1776399">
+        <label>102: To set which reports will be sent in Report g2</label>
+        <description><![CDATA[
+To set which reports will be sent in Report group 2. <br /><h1>Overview</h1><p><br />Sum the values of the options you want:</p> <p>1 = Meter REPORT (kWh) of whole Channels</p> <p>2 = Meter REPORT (Watt) of whole Channels</p> <p>4 = Meter REPORT (V) of whole Channels</p> <p>8 = Meter REPORT (A) of whole Channels</p> <p>256 = Multi Channel Meter Report (W) on Channel 1</p> <p>512 = Multi Channel Meter Report (W) on Channel 2</p> <p>2048 = Multi Channel Meter Report (kWh) on Channel 1</p> <p>4096 = Multi Channel Meter Report (kWh) on Channel 2</p> <p>65536 = Multi Channel Meter Report (V) on Channel 1</p> <p>131072 = Multi Channel Meter Report (V) on Channel 2</p> <p>524288 = Multi Channel Meter Report (A) on Channel 1</p> <p>1048576 = Multi Channel Meter Report (A) on Channel 2</p> <p>1776399 = ALL ABOVE OPTIONS</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="1">Send Meter Report of energy (kWh)</option>
           <option value="2">Send Meter Report of wattage (W)</option>
           <option value="4">Send Meter Report of voltage (V)</option>
           <option value="8">Send Meter Report of current (A)</option>
-          <option value="256">Send Multi Channel Meter Report of wattage (W) on Channel 1</option>
-          <option value="512">Send Multi Channel Meter Report of wattage (W) on Channel 2</option>
-          <option value="2048">Send Multi Channel Meter Report of energy (kWh) on Channel 1</option>
-          <option value="4096">Send Multi Channel Meter Report of energy (kWh) on Channel 2</option>
-          <option value="65536">Send Multi Channel Meter Report of voltage (V) on Channel 1</option>
-          <option value="131072">Send Multi Channel Meter Report of voltage (V) on Channel 2</option>
-          <option value="524288">Send Multi Channel Meter Report of current (A) on Channel 1</option>
-          <option value="1048576">Send Multi Channel Meter Report of current (A) on Channel 2</option>
+          <option value="256">Send Multi Channel Meter Report of wattage (W) C1</option>
+          <option value="512">Send Multi Channel Meter Report of wattage (W) C2</option>
+          <option value="2048">Send Multi Channel Meter Report of energy (kWh) C1</option>
+          <option value="4096">Send Multi Channel Meter Report of energy (kWh) C2</option>
+          <option value="65536">Send Multi Channel Meter Report of voltage (V) C1</option>
+          <option value="131072">Send Multi Channel Meter Report of voltage (V) C2</option>
+          <option value="524288">Send Multi Channel Meter Report of current (A) C1</option>
+          <option value="1048576">Send Multi Channel Meter Report of current (A) C2</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_103_1" type="integer" groupName="configuration">
-        <label>103: To set which reports need to be sent in Report group 3</label>
-        <description>To set which reports need to be sent in Report group 3.</description>
+      <parameter name="config_103_4" type="integer" groupName="configuration"
+                 min="0" max="1776399">
+        <label>103: To set which reports will be sent in Report g3</label>
+        <description><![CDATA[
+To set which reports need to be sent in Report group 3. <br /><h1>Overview</h1><p>Sum the values of the options you want:</p> <p>1 = Meter REPORT (kWh) of whole Channels</p> <p>2 = Meter REPORT (Watt) of whole Channels</p> <p>4 = Meter REPORT (V) of whole Channels</p> <p>8 = Meter REPORT (A) of whole Channels</p> <p>256 = Multi Channel Meter Report (W) on Channel 1</p> <p>512 = Multi Channel Meter Report (W) on Channel 2</p> <p>2048 = Multi Channel Meter Report (kWh) on Channel 1</p> <p>4096 = Multi Channel Meter Report (kWh) on Channel 2</p> <p>65536 = Multi Channel Meter Report (V) on Channel 1</p> <p>131072 = Multi Channel Meter Report (V) on Channel 2</p> <p>524288 = Multi Channel Meter Report (A) on Channel 1</p> <p>1048576 = Multi Channel Meter Report (A) on Channel 2</p> <p>1776399 = ALL ABOVE OPTIONS</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="1">Send Meter Report of voltage (V)</option>
           <option value="2">Send Meter Report of current (A)</option>
           <option value="4">Send Meter Report of wattage (W)</option>
           <option value="8">Send Meter Report of energy (kWh)</option>
-          <option value="256">Send Multi Channel Meter Report of wattage (W) on Channel 1</option>
-          <option value="512">Send Multi Channel Meter Report of wattage (W) on Channel 2</option>
-          <option value="2048">Send Multi Channel Meter Report of energy (kWh) on Channel 1</option>
-          <option value="4096">Send Multi Channel Meter Report of energy (kWh) on Channel 2</option>
-          <option value="65536">Send Multi Channel Meter Report of voltage (V) on Channel 1</option>
-          <option value="131072">Send Multi Channel Meter Report of voltage (V) on Channel 2</option>
-          <option value="524288">Send Multi Channel Meter Report of current (A) on Channel 1</option>
-          <option value="1048576">Send Multi Channel Meter Report of current (A) on Channel 2</option>
+          <option value="256">Send Multi Channel Meter Report of wattage (W) C1</option>
+          <option value="512">Send Multi Channel Meter Report of wattage (W) C2</option>
+          <option value="2048">Send Multi Channel Meter Report of energy (kWh) C1</option>
+          <option value="4096">Send Multi Channel Meter Report of energy (kWh) C2</option>
+          <option value="65536">Send Multi Channel Meter Report of voltage (V) C1</option>
+          <option value="131072">Send Multi Channel Meter Report of voltage (V) C2</option>
+          <option value="524288">Send Multi Channel Meter Report of current (A) C1</option>
+          <option value="1048576">Send Multi Channel Meter Report of current (A) C2</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_111_4" type="integer" groupName="configuration"
                  min="1" max="2147483647">
-        <label>111: Set the interval of automatic report for Report group 1.</label>
+        <label>111: Set the interval of automatic report for Report G1</label>
         <description>Set the interval of automatic report for Report group 1.</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_112_4" type="integer" groupName="configuration"
                  min="1" max="2147483647">
-        <label>112: Set the interval of automatic report for Report group 2</label>
+        <label>112: Set the interval of automatic report for Report G2</label>
         <description>Set the interval of automatic report for Report group 2.</description>
         <default>600</default>
       </parameter>
 
       <parameter name="config_113_4" type="integer" groupName="configuration"
                  min="1" max="2147483647">
-        <label>113: Set the interval of automatic report for Report group 2.</label>
-        <description>Set the interval of automatic report for Report group 2.</description>
+        <label>113: Set the interval of automatic report for Report G3</label>
+        <description>Set the interval of automatic report for Report group 3.</description>
         <default>600</default>
       </parameter>
 
@@ -334,10 +378,10 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
         <description>Configure the external switch mode for S1</description>
         <default>0</default>
         <options>
-          <option value="0">Enter automatic identification mode</option>
           <option value="1">2-state switch mode</option>
           <option value="2">3 way switch mode</option>
           <option value="3">Momentary push button mode</option>
+          <option value="4">Enter automatic identification mode</option>
         </options>
       </parameter>
 
@@ -346,10 +390,10 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
         <description>Configure the external switch mode for S2.</description>
         <default>0</default>
         <options>
-          <option value="0">Enter automatic identification mode</option>
           <option value="1">2-state switch mode</option>
           <option value="2">3 way switch mode</option>
           <option value="3">Momentary push button mode</option>
+          <option value="4">Enter automatic identification mode</option>
         </options>
       </parameter>
 
@@ -360,7 +404,7 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
         <options>
           <option value="1">control the output loads of itself.</option>
           <option value="2">control the other nodes</option>
-          <option value="3">control the output loads of itself and other nodes.</option>
+          <option value="3">control the output loads of itself and other nodes</option>
         </options>
       </parameter>
 
@@ -379,8 +423,11 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
         <description>Reset the Dual Nano Switch</description>
         <default>0</default>
         <options>
-          <option value="0">(Default) Reset all configuration parameters</option>
+          <option value="0">(Default) Nothing</option>
+          <option value="1">Reset all params to factory default</option>
+          <option value="1431655765">Reset factory settings and remove from network</option>
         </options>
+        <advanced>true</advanced>
       </parameter>
 
       <!-- ACTION DEFINITIONS -->
@@ -393,12 +440,14 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
         <label>100: Set parameter 101-103 to default value</label>
         <description>Reset the parameter 101-103</description>
         <default>0</default>
+        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_110_1_wo" type="integer" groupName="configuration">
         <label>110: Set parameter 111-113 to default value.</label>
         <description>Set parameter 111-113 to default value.</description>
         <default>0</default>
+        <advanced>true</advanced>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
