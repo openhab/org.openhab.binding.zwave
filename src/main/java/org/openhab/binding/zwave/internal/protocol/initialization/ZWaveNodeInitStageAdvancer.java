@@ -698,8 +698,8 @@ public class ZWaveNodeInitStageAdvancer {
                 if (node.getEndpoint(endpoint) != null) {
                     logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - endpoint found {}", node.getNodeId(),
                             endpoint);
-                    ZWaveCommandClass zwaveClass = node.getEndpoint(endpoint)
-                            .getCommandClass(CommandClass.getCommandClass(cmds[1]));
+                    CommandClass commandClass = CommandClass.getCommandClass(cmds[1]);
+                    ZWaveCommandClass zwaveClass = node.getEndpoint(endpoint).getCommandClass(commandClass);
 
                     // If we found the command class, then set its options
                     if (zwaveClass != null) {

@@ -33,6 +33,7 @@ import com.thoughtworks.xstream.annotations.XStreamConverter;
 @XStreamAlias("associationGroup")
 public class ZWaveAssociationGroup {
     private int index;
+    private int maxNodes;
     private String name;
 
     @XStreamConverter(HexToIntegerConverter.class)
@@ -41,7 +42,7 @@ public class ZWaveAssociationGroup {
     private Integer profile2;
     private Set<CommandClass> commands;
 
-    List<ZWaveAssociation> associations = new ArrayList<ZWaveAssociation>();
+    private final List<ZWaveAssociation> associations = new ArrayList<ZWaveAssociation>();
 
     public ZWaveAssociationGroup(int index) {
         this.index = index;
@@ -66,47 +67,17 @@ public class ZWaveAssociationGroup {
     }
 
     /**
-     * Adds an association node
-     *
-     * @param node
-     */
-    public void addAssociation(int node) {
-        addAssociation(node, null);
-    }
-
-    /**
      * Adds an association node and endpoint
-     *
-     * @param node
-     * @param endpoint
      */
-    public void addAssociation(int node, Integer endpoint) {
-        // Check if we're already associated
-        if (isAssociated(node, endpoint)) {
-            return;
+    public boolean addAssociation(ZWaveAssociation association) {
+        if (associations.contains(association)) {
+            return false;
         }
-
-        // No - add a new association
-        ZWaveAssociation newAssociation = new ZWaveAssociation(node, endpoint);
-        associations.add(newAssociation);
-    }
-
-    /**
-     * Removes an association node
-     *
-     * @param node
-     * @return
-     */
-    public boolean removeAssociation(int node) {
-        return removeAssociation(node, null);
+        return associations.add(association);
     }
 
     /**
      * Removes an association node and endpoint
-     *
-     * @param node
-     * @param endpoint
-     * @return
      */
     public boolean removeAssociation(int node, Integer endpoint) {
         int associationCnt = associations.size();
@@ -122,42 +93,20 @@ public class ZWaveAssociationGroup {
     }
 
     /**
+     * Removes an association node and endpoint
+     */
+    public void removeAssociation(ZWaveAssociation association) {
+        removeAssociation(association.getNode(), association.getEndpoint());
+    }
+
+    /**
      * Tests if a node is associated to this group
      *
      * @param node
      * @return
      */
     public boolean isAssociated(ZWaveAssociation association) {
-        return isAssociated(association.getNode(), association.getEndpoint());
-    }
-
-    /**
-     * Tests if a node is associated to this group
-     *
-     * @param node
-     * @return
-     */
-    public boolean isAssociated(int node) {
-        return isAssociated(node, null);
-    }
-
-    /**
-     * Tests if a node and endpoint are associated to this group
-     *
-     * @param node
-     * @param endpoint
-     * @return
-     */
-    public boolean isAssociated(int node, Integer endpoint) {
-        int associationCnt = associations.size();
-        for (int index = 0; index < associationCnt; index++) {
-            ZWaveAssociation association = associations.get(index);
-            if (association.getNode() == node && association.getEndpoint() == endpoint) {
-                return true;
-            }
-        }
-
-        return false;
+        return associations.contains(association);
     }
 
     /**
@@ -175,7 +124,8 @@ public class ZWaveAssociationGroup {
      * @param associations
      */
     public void setAssociations(List<ZWaveAssociation> associations) {
-        this.associations = associations;
+        this.associations.clear();
+        this.associations.addAll(associations);
     }
 
     /**
@@ -229,6 +179,14 @@ public class ZWaveAssociationGroup {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setMaxNodes(int maxNodes) {
+        this.maxNodes = maxNodes;
+    }
+
+    public int getMaxNodes() {
+        return maxNodes;
     }
 
     @Override

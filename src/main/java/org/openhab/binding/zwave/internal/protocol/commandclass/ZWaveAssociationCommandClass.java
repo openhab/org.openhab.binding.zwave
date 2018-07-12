@@ -10,6 +10,7 @@ package org.openhab.binding.zwave.internal.protocol.commandclass;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.openhab.binding.zwave.internal.protocol.ZWaveAssociation;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
@@ -127,7 +128,7 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
                 logger.debug("Node {}", node);
 
                 // Add the node to the group
-                pendingAssociation.addAssociation(node);
+                pendingAssociation.addAssociation(new ZWaveAssociation(node));
             }
         }
 

@@ -14,7 +14,6 @@ import java.util.List;
 
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveAssociationEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
@@ -127,7 +126,7 @@ public class ZWaveMultiAssociationCommandClassTest extends ZWaveCommandClassTest
         assertEquals(event.getEndpoint(), 0);
         assertEquals(event.getGroupId(), 2);
         assertEquals(event.getGroupMembers().size(), 1);
-        assertEquals(event.getGroupMembers().get(0).getNode(), 1);
-        assertEquals(event.getGroupMembers().get(0).getEndpoint(), Integer.valueOf(1));
+        assertEquals(event.getGroupMembers().iterator().next().getNode(), 1);
+        assertEquals(event.getGroupMembers().iterator().next().getEndpoint(), Integer.valueOf(1));
     }
 }

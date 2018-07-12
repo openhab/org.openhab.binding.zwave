@@ -683,6 +683,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         logger.debug("NODE {}: Unknown association group {}", nodeId, groupIndex);
                         continue;
                     }
+                    logger.debug("NODE {}: Current Members {}", nodeId, currentMembers);
 
                     ZWaveAssociationGroup newMembers = new ZWaveAssociationGroup(groupIndex);
 
@@ -690,22 +691,37 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                     // Loop over all the parameters
                     for (String paramValue : paramValues) {
-                        String[] groupCfg = paramValue.split("_");
-
-                        // Make sure this is a correctly formatted option
-                        if (!"node".equals(groupCfg[0])) {
-                            continue;
-                        }
-
-                        // Get the node Id and endpoint Id
-                        if (groupCfg.length == 2) {
-                            newMembers.addAssociation(Integer.parseInt(groupCfg[1]));
+                        // Check if this is the controller
+                        if (paramValue.equals(ZWaveBindingConstants.GROUP_CONTROLLER)) {
+                            newMembers.addAssociation(new ZWaveAssociation(controllerHandler.getOwnNodeId(), 1));
                         } else {
-                            newMembers.addAssociation(Integer.parseInt(groupCfg[1]), Integer.parseInt(groupCfg[2]));
-                        }
+                            String[] groupCfg = paramValue.split("_");
 
-                        totalMembers++;
+                            // Make sure this is a correctly formatted option
+                            if (!"node".equals(groupCfg[0])) {
+                                logger.debug("NODE{}: Invalid association {}", nodeId, paramValue);
+                                continue;
+                            }
+
+                            int groupNode = Integer.parseInt(groupCfg[1]);
+                            if (groupNode == controllerHandler.getOwnNodeId()) {
+                                logger.debug("NODE{}: Association is for controller", nodeId);
+                                newMembers.addAssociation(new ZWaveAssociation(controllerHandler.getOwnNodeId(), 1));
+                                continue;
+                            }
+
+                            // Get the node Id and endpoint Id
+                            if (groupCfg.length == 2) {
+                                newMembers.addAssociation(new ZWaveAssociation(groupNode));
+                            } else {
+                                newMembers
+                                        .addAssociation(new ZWaveAssociation(groupNode, Integer.parseInt(groupCfg[2])));
+                            }
+
+                            totalMembers++;
+                        }
                     }
+                    logger.debug("NODE {}: New Members {}", nodeId, newMembers);
 
                     // Loop through the current members and remove anything that's not in the new members list
                     for (ZWaveAssociation member : currentMembers.getAssociations()) {
@@ -722,7 +738,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         // Is the new association still in the currentMembers list?
                         if (currentMembers.isAssociated(member) == false) {
                             // No - so it needs to be added
-                            // TODO: This needs to handle the sending endpoint not being root.
                             node.sendMessage(node.setAssociation(groupIndex, member));
                             totalMembers++;
                         }
@@ -737,6 +752,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     // Request an update to the association group
                     node.sendMessage(node.getAssociation(groupIndex));
                     pendingCfg.put(configurationParameter.getKey(), valueObject);
+
+                    // Create a clean association list
+                    valueObject = getAssociationConfigList(newMembers.getAssociations());
                     break;
 
                 case "wakeup":
@@ -991,6 +1009,24 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
     }
 
+    private Object getAssociationConfigList(List<ZWaveAssociation> groupMembers) {
+        List<String> newAssociationsList = new ArrayList<String>();
+        for (ZWaveAssociation association : groupMembers) {
+            if (association.getNode() == controllerHandler.getOwnNodeId()) {
+                newAssociationsList.add(ZWaveBindingConstants.GROUP_CONTROLLER);
+            } else {
+                newAssociationsList.add(association.toString());
+            }
+        }
+        if (newAssociationsList.size() == 0) {
+            return "";
+        }
+        if (newAssociationsList.size() == 1) {
+            return newAssociationsList.get(0);
+        }
+        return newAssociationsList;
+    }
+
     @Override
     public void handleCommand(ChannelUID channelUID, Command command) {
         logger.debug("NODE {}: Command received {} --> {}", nodeId, channelUID, command);
@@ -1141,23 +1177,25 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 case COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION:
                     int groupId = ((ZWaveAssociationEvent) event).getGroupId();
                     List<ZWaveAssociation> groupMembers = ((ZWaveAssociationEvent) event).getGroupMembers();
-                    if (groupMembers != null) {
-                        logger.debug("NODE {}: Update ASSOCIATION group_{}", nodeId, groupId);
+                    // getAssociationConfigList(ZWaveAssociationGroup newMembers) ;
 
-                        List<String> group = new ArrayList<String>();
+                    // if (groupMembers != null) {
+                    // logger.debug("NODE {}: Update ASSOCIATION group_{}", nodeId, groupId);
 
-                        // Build the configuration value
-                        for (ZWaveAssociation groupMember : groupMembers) {
-                            logger.debug("NODE {}: Update ASSOCIATION group_{}: Adding {}", nodeId, groupId,
-                                    groupMember);
-                            group.add(groupMember.toString());
-                        }
-                        logger.debug("NODE {}: Update ASSOCIATION group_{}: {} members", nodeId, groupId, group.size());
+                    // List<String> group = new ArrayList<String>();
 
-                        cfgUpdated = true;
-                        configuration.put("group_" + groupId, group);
-                        pendingCfg.remove("group_" + groupId);
-                    }
+                    // Build the configuration value
+                    // for (ZWaveAssociation groupMember : groupMembers) {
+                    // logger.debug("NODE {}: Update ASSOCIATION group_{}: Adding {}", nodeId, groupId,
+                    // groupMember);
+                    // group.add(groupMember.toString());
+                    // }
+                    // logger.debug("NODE {}: Update ASSOCIATION group_{}: {} members", nodeId, groupId, group.size());
+
+                    // cfgUpdated = true;
+                    configuration.put("group_" + groupId, getAssociationConfigList(groupMembers));
+                    pendingCfg.remove("group_" + groupId);
+                    // }
                     break;
 
                 case COMMAND_CLASS_SWITCH_ALL:
@@ -1387,7 +1425,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             }
 
             if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.DeleteNode) {
-                // updateStatus(ThingStatus.REMOVED);
+                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.NONE); // TODO: Update to THING_GONE
             }
         }
 

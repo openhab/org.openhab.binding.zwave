@@ -523,7 +523,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         List<ParameterOption> options = new ArrayList<ParameterOption>();
 
         // Add the controller (ie openHAB) to the top of the list
-        options.add(new ParameterOption("node_" + handler.getOwnNodeId() + "_1", "openHAB Controller"));
+        options.add(new ParameterOption(ZWaveBindingConstants.GROUP_CONTROLLER, "Controller"));
 
         // And iterate over all its nodes
         Collection<ZWaveNode> nodes = handler.getNodes();
