@@ -90,10 +90,6 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     public void initialize() {
         logger.debug("Initializing ZWave Controller.");
 
-        // ThingType t = ZWaveConfigProvider.getThingType(new ThingTypeUID("zwave:linear_ps15emz51_00_000"));
-        ThingType t = ZWaveConfigProvider.getThingType(new ThingTypeUID("zwave:linear_ws15z_00_000"));
-        ConfigDescription cfgConfig = ZWaveConfigProvider.getThingTypeConfig(t);
-
         Object param;
         param = getConfig().get(CONFIGURATION_MASTER);
         if (param instanceof Boolean && param != null) {
