@@ -7,7 +7,9 @@
 
   <thing-type id="fibaro_fgs221_02_001" listed="false">
     <label>FGS221 Double Relay Switch 2x1.5kW</label>
-    <description>Double Relay Switch 2x1.5kW</description>
+    <description><![CDATA[
+Double Relay Switch 2x1.5kW<br /><h1>Overview</h1><p>Remotely Controlled Relay Switch of Fibaro System is designed to operate in a wall switch box or in locations where the control of an electric device (up to 3kW) is needed.<br />It is also possible to send a signal to any system that is to be integrated with Fibaro system.</p> <br /><h2>Inclusion Information</h2><p>Add Fibaro Switch to the network by pushing three times key no. 1 or push-button B located inside the housing of the device. For toggle switch perform 3 position changes.</p> <br /><h2>Exclusion Information</h2><p>Remove Fibaro Switch from the network by pushing three times key no. 1 or push-button B located inside the housing of the device. For toggle switch perform 3 position changes.</p>
+    ]]></description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -130,7 +132,7 @@ Assigns bistable key status to the device status<br /><h1>Overview</h1><p>Info: 
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">[On / Off] device changes status on key status change</option>
+          <option value="0">On/Off device changes status on key status change</option>
           <option value="1">Device status depends on key status</option>
         </options>
       </parameter>
@@ -146,25 +148,25 @@ Assigns bistable key status to the device status<br /><h1>Overview</h1><p>Info: 
       </parameter>
 
       <parameter name="config_15_1" type="integer" groupName="configuration">
-        <label>15: Operation of the Dimmer and Roller Shutter Controller</label>
+        <label>15: Operation of the Dimmer/Roller Shutter Controller</label>
         <description><![CDATA[
-Operation of the Dimmer and Roller Shutter Controller<br /><h1>Overview</h1><p>Operation of the Dimmer and Roller Shutter Controller - enabling this option allows the user to dim lighting/shut roller by associating dimmer/Roller Shutter Controller and holding or double press of double switch (only mono-stable switch).  </p>
+Operation of the Dimmer/Roller Shutter Controller<br /><h1>Overview</h1><p>Operation of the Dimmer and Roller Shutter Controller - enabling this option allows the user to dim lighting/shut roller by associating dimmer/Roller Shutter Controller and holding or double press of double switch (only mono-stable switch).  </p>
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">Dimmer/Roller Shutter Controller control is not active</option>
+          <option value="0">Dimmer/Shutter Controller control not active</option>
           <option value="1">Dimmer/Roller Shutter Controller control is active</option>
         </options>
       </parameter>
 
       <parameter name="config_16_1" type="integer" groupName="configuration">
-        <label>16: Saving the state of the device after a power failure</label>
+        <label>16: Saving state of the device after power failure</label>
         <description><![CDATA[
-Fibaro Switch returns to the last position saved before a power failure<br /><h1>Overview</h1><p>Options for changing the parameter 0-1</p>
+Returns to the last position saved<br /><h1>Overview</h1><p>Fibaro Switch returns to the last position saved before a power failure</p> <p>Options for changing the parameter 0-1</p>
         ]]></description>
         <default>1</default>
         <options>
-          <option value="0">Fibaro Switch does not save the state after a power failure</option>
+          <option value="0">Switch does not save state after power failure</option>
           <option value="1">Fibaro Switch saves its state before power failure</option>
         </options>
       </parameter>

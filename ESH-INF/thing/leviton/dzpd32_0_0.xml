@@ -7,7 +7,10 @@
 
   <thing-type id="leviton_dzpd32_00_000" listed="false">
     <label>DZPD3-2 Plug-In Dimmer</label>
-    <description>Plug-In Dimmer</description>
+    <description><![CDATA[
+Plug-In Dimmer<br /><h1>Overview</h1><p>300 Watt Scene Capable Plug-In Lamp Dimming Module with Z-Wave Technology for CFL/LED/Incandescent.</p> <p>Features: On/Off/Dim/Bright incandescent load scene and zone control switching capabilities.</p> <p>Leviton’s DZPD3 provides polarized 300W-120VAC NEMA 5-15R grounding receptacle for use with incandescent lamps. Protected memory maintains On/Off status of loads and during minor power fluctuations.</p> <br /><h2>Inclusion Information</h2><p>Leviton Decora SmartTM Z-Wave® devices support two methods of inclusion.</p> <p>When using a Z-Wave PlusTM certified controller choose Network Wide Inclusion.</p> <p><strong>Network Wide Inclusion:</strong></p> <p>Network Wide Inclusion allows your device to be added to the network using devices</p> <p>already in the network to assist with communication. Work your way from the closest</p> <p>devices to the controller outward.</p> <p>• Enter Programming Mode by holding the control button for 7 seconds, the Locator LED will blink amber.</p> <p>• Tap the control button one time. The Locator LED will quickly flash green.</p> <p>• The Decora SmartTM Z-Wave® device is ready to learn into the Z-Wave® network.</p> <p>• Follow directions in the Z-Wave® controller to complete the adding process.</p> <p>• Upon successful addition to network the LED will turn off and then blink green 3 times.</p> <p>• If the adding process is not successful the LED will flash red 3 times.</p> <p><strong>Traditional Inclusion:</strong></p> <p>For older controllers Traditional Inclusion is supported. Depending on the age of the</p> <p>controller the controller will need to be 3 to 35 feet from the device when including.</p> <p>• Enter Programming Mode by holding the control button for 7 seconds, the Locator LED will blink amber.</p> <p>• The Decora SmartTM Z-Wave® device is ready to add to the Z-Wave® network.</p> <p>• Follow directions in the Z-Wave® controller to enter learn mode.</p> <p>• Tap the control button one time. The Locator LED will quickly flash green. The Z-Wave® controller will begin to pair with the Decora SmartTM device.</p> <p>• Upon successful addition to the network the LED will turn off and then blink green 3 times.</p> <p>• If the adding process is not successful the LED will flash red 3 times.</p> <br /><h2>Exclusion Information</h2><p>When removing a device from a Z-Wave® network best practice is to use the exclusion command found in the Z-Wave® controller.</p> <p>• Enter Programming Mode by holding the control button for 7 seconds, the Locator LED will turn amber.</p> <p>• Follow directions in the Z-Wave® controller to enter exclusion mode.</p> <p>• Tap the control button one time. The Locator LED will quickly flash green. The Z-Wave® controller will exclude the Decora SmartTM device.</p> <p>• The Z-Wave® controller will confirm successful exclusion from the network.</p> <p><strong>Factory Reset</strong></p> <p>When removing a device from a network it is best practice to use the Exclusion process. In</p> <p>situations where a device needs to be returned to factory default follow the following steps.</p> <p>A reset should only be used when a controller is inoperable or missing:</p> <p>• Holding the control button for a total of 14 seconds.</p> <p>- After the first 7 seconds the LED turns amber.</p> <p>- The Locator LED will quickly flash red/amber after 14 seconds.</p> <p>• Release the control button and the device will reset.</p>
+    ]]></description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -34,6 +37,80 @@
       <property name="manufacturerRef">3501:0001</property>
       <property name="dbReference">540</property>
     </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- GROUP DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter name="config_1_1" type="integer" groupName="configuration"
+                 min="0" max="253">
+        <label>1: Fade On Time</label>
+        <description><![CDATA[
+Defines light ramp up in seconds or minutes<br /><h1>Overview</h1><p>Fade on time</p> <p>Valid values, 0 to 253, default 2</p> <ul><li>0 = instant on</li> <li>1-127 = seconds: 1-127 seconds</li> <li>128-253 = minutes: 1-126 minutes</li> </ul>
+        ]]></description>
+        <default>2</default>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration"
+                 min="0" max="253">
+        <label>2: Fade Off Time</label>
+        <description><![CDATA[
+Defines light ramp down seconds or minutes<br /><h1>Overview</h1><p>Valid values: 0 to 253, default 2</p> <ul><li>0 = instant on</li> <li>1-127 = seconds: 1-127 seconds</li> <li>128-253 = minutes: 1-126 minutes</li> </ul>
+        ]]></description>
+        <default>2</default>
+      </parameter>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration"
+                 min="0" max="100">
+        <label>3: Minimum Light Level</label>
+        <description>Defines the minimum dimmer level before off</description>
+        <default>10</default>
+      </parameter>
+
+      <parameter name="config_4_1" type="integer" groupName="configuration"
+                 min="0" max="100">
+        <label>4: Maximum Light Level</label>
+        <description>Defines the maximum dimmer level</description>
+        <default>100</default>
+      </parameter>
+
+      <parameter name="config_7_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>7: Locator LED Status</label>
+        <description><![CDATA[
+Defines the behavior of the LED behind device button<br /><h1>Overview</h1><p>Locator LED Status</p> <p>Valid values = 0 to 255</p> <ul><li>0 = LED off</li> <li>254 = Status mode</li> <li>255 = Locator Mode</li> </ul>
+        ]]></description>
+        <default>255</default>
+      </parameter>
+
+      <parameter name="config_8_1" type="integer" groupName="configuration"
+                 min="0" max="2">
+        <label>8: Load Type</label>
+        <description><![CDATA[
+Defines the type of bulb in attached device<br /><h1>Overview</h1><p>Load type</p> <ul><li>0 = incandescent</li> <li>1 = LED</li> <li>2 = CFL</li> </ul>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <description>Z-Wave Plus Lifeline: A NOTIFICATION frame is sent to the nodes</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+    </config-description>
 
   </thing-type>
 
