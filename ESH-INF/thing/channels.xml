@@ -362,7 +362,7 @@
 
     <!-- Configuration Command Class Channel - Decimal Conversion -->
     <channel-type id="config_decimal">
-        <item-type>Decimal</item-type>
+        <item-type>Number</item-type>
         <label>Parameter</label>
         <description>Generic class for configuration parameter</description>
         <category></category>
@@ -378,7 +378,7 @@
 
     <!-- Indicator Command Class - Period -->
     <channel-type id="indicator_period">
-        <item-type>Decimal</item-type>
+        <item-type>Number</item-type>
         <label>Indicator Period</label>
         <description>Sets the indicator On/Off period</description>
         <category></category>
@@ -386,7 +386,7 @@
 
     <!-- Indicator Command Class - Period -->
     <channel-type id="indicator_flash">
-        <item-type>Decimal</item-type>
+        <item-type>Number</item-type>
         <label>Indicator Period</label>
         <description>Sets the number of indicator flash cycles</description>
         <category></category>
