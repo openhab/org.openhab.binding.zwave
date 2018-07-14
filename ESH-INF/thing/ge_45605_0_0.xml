@@ -76,6 +76,7 @@ Change the top of the switch to OFF<br /><h1>Overview</h1><p>Change the top of t
   <channel-type id="ge_45605_00_000_config_decimal_param3">
     <item-type>Number</item-type>
     <label>Night Light</label>
+    <description>Defines the behavior of the blue LED. </description>
     <state pattern="%s">
       <options>
         <option value="0">LED on when switch is OFF</option>
