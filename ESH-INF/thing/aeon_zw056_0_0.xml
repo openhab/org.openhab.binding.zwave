@@ -245,10 +245,40 @@ Control current output<br /><h1>Overview</h1><p>Control items: Value=1, play Val
 
   </thing-type>
 
-  <channel-type id="aeon_zw056_00_000_config_decimal_param8">
+  <channel-type id="aeon_zw056_00_000_config_decimal_param6">
     <item-type>Number</item-type>
-    <label>Ringtone volume</label>
+    <label>Ringtone to play</label>
+    <description>Set a ringtone to play. Default=0</description>
     <state pattern="%s">
+      <options>
+        <option value="0">Stop</option>
+        <option value="255">play the default ringtone</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="aeon_zw056_00_000_config_decimal_param80">
+    <item-type>Number</item-type>
+    <label>Enable Notifications</label>
+    <description>Enable to send notifications to associated devices (Group1)</description>
+    <state pattern="%s">
+      <options>
+        <option value="0">nothing</option>
+        <option value="1">hail CC</option>
+        <option value="2">basic CC report</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="aeon_zw056_00_000_config_decimal_param42">
+    <item-type>Number</item-type>
+    <label>Get wireless button battery status</label>
+    <description>Alert for low battery</description>
+    <state pattern="%s">
+      <options>
+        <option value="0">Battery Level Good</option>
+        <option value="255">Low Battery</option>
+      </options>
     </state>
   </channel-type>
 
