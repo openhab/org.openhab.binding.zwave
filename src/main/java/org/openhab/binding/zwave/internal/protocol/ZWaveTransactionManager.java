@@ -886,33 +886,32 @@ public class ZWaveTransactionManager {
             logger.debug("Holdoff Timer started...");
             holdoffActive = Boolean.TRUE;
             holdoffDelay.setTimeInMillis(System.currentTimeMillis() + HOLDOFF_DELAY);
-
-            startTransactionTimer();
         }
+        startTransactionTimer();
     }
 
     private void startTransactionTimer() {
-        synchronized (sendQueue) {
-            // Stop any existing timer
-            resetTransactionTimer();
+        // Stop any existing timer
+        resetTransactionTimer();
 
-            synchronized (holdoffActive) {
-                if (holdoffActive) {
-                    long delay = holdoffDelay.getTimeInMillis() - System.currentTimeMillis();
-                    if (delay > 0) {
-                        // Create the timer task
-                        timerTask = new ZWaveTransactionTimer();
+        synchronized (holdoffActive) {
+            if (holdoffActive) {
+                long delay = holdoffDelay.getTimeInMillis() - System.currentTimeMillis();
+                if (delay > 0) {
+                    // Create the timer task
+                    timerTask = new ZWaveTransactionTimer();
 
-                        logger.debug("Holdoff Timer finishing in {}ms", delay);
-                        timer.schedule(timerTask, delay);
+                    logger.debug("Holdoff Timer finishing in {}ms", delay);
+                    timer.schedule(timerTask, delay);
 
-                        return;
-                    } else {
-                        holdoffActive = Boolean.FALSE;
-                    }
+                    return;
+                } else {
+                    holdoffActive = Boolean.FALSE;
                 }
             }
+        }
 
+        synchronized (sendQueue) {
             // Find the time till the next timer
             Date nextTimer = null;
             for (ZWaveTransaction transaction : outstandingTransactions) {

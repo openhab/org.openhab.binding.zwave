@@ -207,6 +207,8 @@ public class ZWaveInclusionController implements ZWaveEventListener {
                     break;
                 }
 
+                logger.debug("NODE {}: Inclusion protocol completed.", nodeId);
+
                 // Create a new node
                 ZWaveNode newNode = new ZWaveNode(controller.getHomeId(), nodeId, controller);
                 ZWaveDeviceClass deviceClass = newNode.getDeviceClass();
@@ -219,15 +221,17 @@ public class ZWaveInclusionController implements ZWaveEventListener {
                         newNode, controller));
                 newNode.addCommandClass(
                         ZWaveCommandClass.getInstance(CommandClass.COMMAND_CLASS_BASIC.getKey(), newNode, controller));
+                newNode.updateNifClasses(deviceCommands);
 
+                boolean control = false;
                 // If we have the NIF as part of the inclusion, use it
                 for (CommandClass commandClass : deviceCommands) {
-                    // We're only interested in the security command class!
-                    // We don't add other classes since the list of non-secure classes can change after inclusion
-                    // so we need to request the NIF after inclusion is complete.
-                    // if (commandClass != CommandClass.COMMAND_CLASS_SECURITY) {
-                    // continue;
-                    // }
+                    // Check if this is the control marker
+                    if (commandClass == CommandClass.COMMAND_CLASS_MARK) {
+                        control = true;
+                        continue;
+                    }
+
                     ZWaveCommandClass zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), newNode,
                             controller);
                     if (zwaveCommandClass != null) {
@@ -238,6 +242,7 @@ public class ZWaveInclusionController implements ZWaveEventListener {
                         if (commandClass == CommandClass.COMMAND_CLASS_SECURITY) {
                             ((ZWaveSecurityCommandClass) zwaveCommandClass).setNetworkKey(networkSecurityKey);
                         }
+                        zwaveCommandClass.setControlClass(control);
                         newNode.addCommandClass(zwaveCommandClass);
                     }
                 }
@@ -249,9 +254,6 @@ public class ZWaveInclusionController implements ZWaveEventListener {
                 // without some of the initial stages like PING that are designed to detect if
                 // the device is responding.
                 // This is primarily designed to speed up the secure inclusion but is valid for all.
-                // TODO: There's an assumption here that the whole NIF is provided with the inclusion method
-                // -- we might want to keep an eye on this in case it's incorrect!
-
                 controller.includeNode(newNode);
                 break;
 

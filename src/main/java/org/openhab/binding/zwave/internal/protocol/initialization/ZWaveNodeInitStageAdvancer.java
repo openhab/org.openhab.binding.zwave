@@ -726,6 +726,11 @@ public class ZWaveNodeInitStageAdvancer {
         // Update all dynamic information from command classes
         for (int endpointId = 0; endpointId < node.getEndpointCount(); endpointId++) {
             for (ZWaveCommandClass zwaveStaticClass : node.getCommandClasses(endpointId)) {
+                // Don't check control classes for their properties
+                // The device only sends commands
+                if (zwaveStaticClass.isControlClass()) {
+                    continue;
+                }
                 if (endpointId == 0) {
                     logger.debug("NODE {}: Node advancer: STATIC_VALUES - checking {}", node.getNodeId(),
                             zwaveStaticClass.getCommandClass());
@@ -761,7 +766,6 @@ public class ZWaveNodeInitStageAdvancer {
         ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) node
                 .getCommandClass(CommandClass.COMMAND_CLASS_ASSOCIATION);
         if (multiAssociationCommandClass != null || associationCommandClass != null) {
-
             thingType = ZWaveConfigProvider.getThingType(node);
             if (thingType == null) {
                 logger.debug("NODE {}: Node advancer: ASSOCIATIONS - thing is null!", node.getNodeId());
@@ -793,7 +797,6 @@ public class ZWaveNodeInitStageAdvancer {
         // This stage sets the wakeup class if we're the master controller
         // It sets the node to point to us, and the time is left along
         if (controller.isMasterController() == true && wakeupCommandClass != null) {
-
             if (wakeupCommandClass.getTargetNodeId() == controller.getOwnNodeId()) {
                 logger.debug("NODE {}: Node advancer: SET_WAKEUP - TargetNode is set to controller", node.getNodeId());
             } else {
@@ -1008,6 +1011,12 @@ public class ZWaveNodeInitStageAdvancer {
         // Update all dynamic information from command classes
         for (int endpointId = 0; endpointId < node.getEndpointCount(); endpointId++) {
             for (ZWaveCommandClass zwaveDynamicClass : node.getCommandClasses(endpointId)) {
+                // Don't check control classes for their properties
+                // The device only sends commands
+                if (zwaveDynamicClass.isControlClass()) {
+                    continue;
+                }
+
                 if (endpointId == 0) {
                     logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - checking {}", node.getNodeId(),
                             zwaveDynamicClass.getCommandClass());

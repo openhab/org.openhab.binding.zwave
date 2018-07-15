@@ -68,9 +68,7 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
                     // We've received a NIF from a node we don't know.
                     // This could happen if we add a new node using a different controller than OH.
                     // We handle this the same way as if included through an AddNode packet.
-                    // This allows everyone to be notified.
-                    // TODO: Confirm this is really a good idea!
-                    if (nodeId > 0 && nodeId <= 232) {
+                    if (nodeId >= 1 && nodeId <= 232) {
                         zController
                                 .notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionState.IncludeDone, nodeId));
                     }
@@ -84,7 +82,7 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
                 // Remember that we've received this so we can continue initialisation
                 node.setApplicationUpdateReceived(true);
 
-                // If we're finished initialisation, then we can treat this like a HAIL
+                // If we're finished initialisation, then we treat this like a HAIL
                 if (node.getNodeInitStage() == ZWaveNodeInitStage.DONE) {
                     // If this node supports associations, then assume this should be handled through that mechanism
                     if (node.getCommandClass(CommandClass.COMMAND_CLASS_ASSOCIATION) == null) {
@@ -100,6 +98,7 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
                 } else {
                     List<CommandClass> nifClasses = new ArrayList<CommandClass>();
 
+                    boolean control = false;
                     for (int i = 6; i < length + 3; i++) {
                         int data = incomingMessage.getMessagePayloadByte(i);
 
@@ -110,11 +109,14 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
                             continue;
                         }
 
+                        // Keep a record in the node - mainly useful for the XML
+                        nifClasses.add(commandClass);
+
                         // Check if this is the control marker
-                        // if (commandClass == CommandClass.COMMAND_CLASS_MARK) {
-                        // TODO: Implement control command classes
-                        // break;
-                        // }
+                        if (commandClass == CommandClass.COMMAND_CLASS_MARK) {
+                            control = true;
+                            continue;
+                        }
 
                         // Add the new class if it doesn't exist
                         if (node.getCommandClass(commandClass) == null) {
@@ -123,12 +125,10 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
                             if (zwaveCommandClass != null) {
                                 logger.debug("NODE {}: Application update is adding command class {}.", nodeId,
                                         commandClass);
+                                zwaveCommandClass.setControlClass(control);
                                 node.addCommandClass(zwaveCommandClass);
                             }
                         }
-
-                        // Keep a record in the node - mainly useful for the XML
-                        nifClasses.add(commandClass);
                     }
 
                     node.updateNifClasses(nifClasses);
