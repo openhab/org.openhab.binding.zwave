@@ -84,7 +84,6 @@ public class ZWaveColorConverterTest extends ZWaveCommandClassConverterTest {
         assertEquals(1, transactions.size());
         ZWaveCommandClassTransactionPayload transaction = transactions.get(0);
 
-        assertTrue(
-                Arrays.equals(new byte[] { 51, 5, 5, 2, -1, 3, 0, 4, 0, 0, 0, 1, 0 }, transaction.getPayloadBuffer()));
+        assertTrue(Arrays.equals(new byte[] { 51, 5, 3, 2, -1, 3, 0, 4, 0 }, transaction.getPayloadBuffer()));
     }
 }

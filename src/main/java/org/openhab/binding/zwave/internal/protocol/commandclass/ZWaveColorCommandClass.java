@@ -13,6 +13,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
@@ -31,7 +32,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 /**
- * Handles the Color command class.
+ * Handles the Color Switch command class.
  *
  * @author Chris Jackson
  */
@@ -219,7 +220,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
         ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
         if (refreshList.isEmpty() == false) {
             logger.debug("NODE {}: Color refresh is already in progress", getNode());
-            return result;
+            // return result;
         }
 
         // Request all colors supported by the bulb
@@ -239,38 +240,20 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
      *
      * @return collection of requests
      */
-    public Collection<ZWaveCommandClassTransactionPayload> setColor(int red, int green, int blue, int coldWhite,
-            int warmWhite) {
+    public Collection<ZWaveCommandClassTransactionPayload> setColor(Map<ZWaveColorType, Integer> colors) {
         ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
 
-        if (red > 255) {
-            red = 255;
-        }
-        if (blue > 255) {
-            blue = 255;
-        }
-        if (green > 255) {
-            green = 255;
-        }
-        if (warmWhite > 255) {
-            warmWhite = 255;
-        }
-        if (coldWhite > 255) {
-            coldWhite = 255;
-        }
-
         ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write(5);
-        outputData.write((byte) ZWaveColorType.RED.getKey());
-        outputData.write((byte) red);
-        outputData.write((byte) ZWaveColorType.GREEN.getKey());
-        outputData.write((byte) green);
-        outputData.write((byte) ZWaveColorType.BLUE.getKey());
-        outputData.write((byte) blue);
-        outputData.write((byte) ZWaveColorType.WARM_WHITE.getKey());
-        outputData.write((byte) warmWhite);
-        outputData.write((byte) ZWaveColorType.COLD_WHITE.getKey());
-        outputData.write((byte) coldWhite);
+        outputData.write(colors.size());
+
+        for (Entry<ZWaveColorType, Integer> color : colors.entrySet()) {
+            outputData.write((byte) color.getKey().getKey());
+            int value = color.getValue();
+            if (value > 255) {
+                value = 255;
+            }
+            outputData.write((byte) value);
+        }
 
         if (getVersion() > 1) {
             // Add the transition duration
@@ -387,5 +370,15 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
         public Map<ZWaveColorType, Integer> getColorMap() {
             return colorMap;
         }
+    }
+
+    /**
+     * Returns true if the requested color is supported by the device
+     * 
+     * @param color the {@link ZWaveColorType}
+     * @return true if the requested color is supported by the device
+     */
+    public boolean isColorSupported(ZWaveColorType color) {
+        return supportedColors.contains(color);
     }
 }
