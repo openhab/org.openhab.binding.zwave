@@ -7,7 +7,9 @@
 
   <thing-type id="cooper_rf9542_00_000" listed="false">
     <label>RF9542 Dimmer Accessory Switch</label>
-    <description>Dimmer Accessory Switch</description>
+    <description><![CDATA[
+Dimmer Accessory Switch<br /><h1>Overview</h1><p>Aspire RF smart dimmer system accessory, compatible with Aspire RF master dimmer (RF9540-N, RF9534, RF9536, RF9536-N, RF9537-N) for wireless 3-way control, eliminating the need for traditional 3-way wiring or dedicated traveller wires.</p> <br /><h2>Inclusion Information</h2><p>Put the controller into inclusion mode, press the Install button once</p> <br /><h2>Exclusion Information</h2><p>Put the controller into exclusion mode, press the Install button once</p>
+    ]]></description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -41,6 +43,12 @@
         <label>Local Device Protection</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION;type=PROTECTION_LOCAL</property>
+        </properties>
+      </channel>
+      <channel id="indicator_level" typeId="indicator_level">
+        <label>Indicator Light Control</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_INDICATOR</property>
         </properties>
       </channel>
     </channels>
