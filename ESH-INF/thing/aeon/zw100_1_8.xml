@@ -84,11 +84,6 @@ MultiSensor 6<br /><h1>Overview</h1><p>RESET - Press and hold for 20 seconds</p>
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
@@ -176,6 +171,18 @@ Select to report on thresholds<br /><h1>Overview</h1><p>Enable/disable the selec
         </options>
       </parameter>
 
+      <parameter name="config_41_2_wo" type="integer" groupName="configuration">
+        <label>41: Temperature Threshold</label>
+        <description><![CDATA[
+Temperature change threshold<br /><h1>Overview</h1><p>Threshold change in temperature to induce an automatic report.<br /><strong>Note</strong>:</p> <ol><li>The unit is Fahrenheit for US version, Celsius for EU/AU version.</li> <li>High byte is the threshold value. Low byte is the unit (0x01=Celsius, 0x02=Fahrenheit).</li> <li>The threshold value (high byte) contains one decimal point. E.g. if the value is set to 20 (0x1401), the threshold value =2.0°C (EU/AU version) or if the value is set to 20 (0x1402), the threshold value=2.0 °F (US version). When the current temperature gap is more then 2.0, which will induce a temperature report to be sent out.</li> </ol>
+        ]]></description>
+        <default>20</default>
+        <options>
+          <option value="0">Temperature Threshold Unit</option>
+        </options>
+        <advanced>true</advanced>
+      </parameter>
+
       <parameter name="config_41_2_000000FF" type="integer" groupName="configuration">
         <label>41: Temperature Threshold Unit</label>
         <description>Sets the unit of the threshold</description>
@@ -251,6 +258,14 @@ Disable/Enable LED function<br /><h1>Overview</h1><p>Disable/Enable LED function
         <default>0</default>
       </parameter>
 
+      <parameter name="config_100_1_wo" type="integer" groupName="configuration">
+        <label>100: Set parameters 101-103 to default.</label>
+        <description><![CDATA[
+Reset 101-103 to defaults<br /><h1>Overview</h1><p>Set 101-103 to default.</p>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
       <parameter name="config_101_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>101: Group 1 Periodic Reports</label>
@@ -274,6 +289,14 @@ Periodic reports to send to Group 2<br /><h1>Overview</h1><p>This value is a com
         <label>103: Group 3 Periodic Reports</label>
         <description><![CDATA[
 Periodic reports to send to Group 3<br /><h1>Overview</h1><p>This value is a combination number made up of the sum of the values for the individual sensors and battery. The sensors have these values:</p> <ul><li>Battery=1</li> <li>Ultraviolet=16</li> <li>Temperature=32</li> <li>Humidity=64</li> <li>Light=128</li> </ul>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_110_1_wo" type="integer" groupName="configuration">
+        <label>110: Set parameters 111-113 to default.</label>
+        <description><![CDATA[
+Set parameters 111-113 to default.<br /><h1>Overview</h1><p>Set parameters 111-113 to default.   </p>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -368,36 +391,6 @@ Enable or Disable changing of configuration parameters<br /><h1>Overview</h1><p>
           <option value="0">Disable</option>
           <option value="1">Enable</option>
         </options>
-      </parameter>
-
-      <!-- ACTION DEFINITIONS -->
-
-      <parameter name="config_41_2_wo" type="integer" groupName="configuration">
-        <label>41: Temperature Threshold</label>
-        <description><![CDATA[
-Temperature change threshold<br /><h1>Overview</h1><p>Threshold change in temperature to induce an automatic report.<br /><strong>Note</strong>:</p> <ol><li>The unit is Fahrenheit for US version, Celsius for EU/AU version.</li> <li>High byte is the threshold value. Low byte is the unit (0x01=Celsius, 0x02=Fahrenheit).</li> <li>The threshold value (high byte) contains one decimal point. E.g. if the value is set to 20 (0x1401), the threshold value =2.0°C (EU/AU version) or if the value is set to 20 (0x1402), the threshold value=2.0 °F (US version). When the current temperature gap is more then 2.0, which will induce a temperature report to be sent out.</li> </ol>
-        ]]></description>
-        <default>20</default>
-        <options>
-          <option value="0">Temperature Threshold Unit</option>
-        </options>
-        <advanced>true</advanced>
-      </parameter>
-
-      <parameter name="config_100_1_wo" type="integer" groupName="configuration">
-        <label>100: Set parameters 101-103 to default.</label>
-        <description><![CDATA[
-Reset 101-103 to defaults<br /><h1>Overview</h1><p>Set 101-103 to default.</p>
-        ]]></description>
-        <default>0</default>
-      </parameter>
-
-      <parameter name="config_110_1_wo" type="integer" groupName="configuration">
-        <label>110: Set parameters 111-113 to default.</label>
-        <description><![CDATA[
-Set parameters 111-113 to default.<br /><h1>Overview</h1><p>Set parameters 111-113 to default.   </p>
-        ]]></description>
-        <default>0</default>
       </parameter>
 
       <parameter name="config_255_4_wo" type="integer" groupName="configuration">

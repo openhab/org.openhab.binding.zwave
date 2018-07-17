@@ -76,11 +76,6 @@ WallMote Quad<br /><h1>Overview</h1><p>Aeotec WallMote Quad is an intelligent Z-
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
@@ -135,8 +130,6 @@ Which notification to be sent to the associated devices.<br /><h1>Overview</h1><
         <description>Set the low battery value</description>
         <default>5</default>
       </parameter>
-
-      <!-- ACTION DEFINITIONS -->
 
       <parameter name="config_255_4_wo" type="integer" groupName="configuration">
         <label>255: Reset the WallMote Quad</label>

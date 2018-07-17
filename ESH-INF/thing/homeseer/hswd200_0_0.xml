@@ -389,6 +389,7 @@
   <channel-type id="homeseer_hswd200_00_000_config_decimal_param13">
     <item-type>Number</item-type>
     <label>Status Mode</label>
+    <description>Set dimmer display mode</description>
     <state pattern="%s">
       <options>
         <option value="0">Load Status</option>
@@ -400,6 +401,7 @@
   <channel-type id="homeseer_hswd200_00_000_config_decimal_param14">
     <item-type>Number</item-type>
     <label>Load Status LED Color</label>
+    <description>Set the LED color when displaying load status</description>
     <state pattern="%s">
       <options>
         <option value="0">White</option>
@@ -416,6 +418,7 @@
   <channel-type id="homeseer_hswd200_00_000_config_decimal_param21">
     <item-type>Number</item-type>
     <label>Status LED 1 Color</label>
+    <description>Status LED 1 Color (bottom)</description>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -433,6 +436,7 @@
   <channel-type id="homeseer_hswd200_00_000_config_decimal_param22">
     <item-type>Number</item-type>
     <label>Status LED 2 Color</label>
+    <description>Status LED 2 Color</description>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -450,6 +454,7 @@
   <channel-type id="homeseer_hswd200_00_000_config_decimal_param23">
     <item-type>Number</item-type>
     <label>Status LED 3 Color</label>
+    <description>Status LED 3 Color</description>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -467,6 +472,7 @@
   <channel-type id="homeseer_hswd200_00_000_config_decimal_param24">
     <item-type>Number</item-type>
     <label>Status LED 4 Color</label>
+    <description>Status LED 4 Color</description>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -484,6 +490,7 @@
   <channel-type id="homeseer_hswd200_00_000_config_decimal_param25">
     <item-type>Number</item-type>
     <label>Status LED 5 Color</label>
+    <description>Status LED 5 Color</description>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -501,6 +508,7 @@
   <channel-type id="homeseer_hswd200_00_000_config_decimal_param26">
     <item-type>Number</item-type>
     <label>Status LED 6 Color</label>
+    <description>Status LED 6 Color</description>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -518,6 +526,7 @@
   <channel-type id="homeseer_hswd200_00_000_config_decimal_param27">
     <item-type>Number</item-type>
     <label>Status LED 7 Color</label>
+    <description>Status LED 7 Color (top)</description>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -535,6 +544,7 @@
   <channel-type id="homeseer_hswd200_00_000_config_decimal_param30">
     <item-type>Number</item-type>
     <label>Blink Frequency</label>
+    <description>Set blink frequency when displaying custom status</description>
     <state pattern="%s">
       <options>
         <option value="0">No Blink</option>
@@ -550,6 +560,7 @@
   <channel-type id="homeseer_hswd200_00_000_config_decimal_param31">
     <item-type>Number</item-type>
     <label>LED 7 Blink Status</label>
+    <description>LED 7 Blink Status (top)</description>
     <state pattern="%s">
       <options>
         <option value="0">Solid</option>

@@ -65,11 +65,6 @@ Four Way Switch<br /><h1>Overview</h1><p>Touch Panel Switch is a wall switch wit
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
@@ -116,8 +111,6 @@ Key Mode (0-4)<br /><h1>Overview</h1><p>0=single click to switch on/off status</
         <description>0 infinite 1~65535 unit "sec" 0x00</description>
         <default>0</default>
       </parameter>
-
-      <!-- ACTION DEFINITIONS -->
 
       <parameter name="config_255_1_wo" type="integer" groupName="configuration">
         <label>255: Factory setting</label>

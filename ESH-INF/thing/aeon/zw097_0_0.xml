@@ -109,11 +109,6 @@
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
@@ -173,8 +168,6 @@ Value is specified in number of seconds.<br /><h1>Overview</h1><p>Values greater
         <label>121: Send Basic report to associated devices</label>
         <default>1</default>
       </parameter>
-
-      <!-- ACTION DEFINITIONS -->
 
       <parameter name="config_122_1_wo" type="integer" groupName="configuration">
         <label>122: Notification type to send</label>

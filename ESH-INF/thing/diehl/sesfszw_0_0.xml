@@ -70,11 +70,6 @@ Plug Actuator<br /><h2>Inclusion Information</h2><p>The inclusion process is con
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
@@ -150,6 +145,18 @@ Behaviour in the event of a safety shutdown<br /><h1>Overview</h1><p>The plug ac
         </options>
       </parameter>
 
+      <parameter name="config_9_1_wo" type="integer" groupName="configuration">
+        <label>9: Reset of overcurrent shutdown</label>
+        <description><![CDATA[
+Activation despite 3x safety shutdown<br /><h1>Overview</h1><p> Activation despite 3x safety shutdown (parameter 8 = 1)</p> <p> A reset request (“Set” command) is normally executed very quickly, as a result of which a query (“Get” command) for this parameter usually returns the response “0” (no reset) for this parameter. In some cases, this can be interpreted incorrectly. Consequently, this parameter should be treated only as “write only”. </p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">No reset</option>
+          <option value="1">Reset</option>
+        </options>
+      </parameter>
+
       <parameter name="config_10_1" type="integer" groupName="configuration">
         <label>10: Night mode</label>
         <description>Set Night mode of the Status LED</description>
@@ -169,20 +176,6 @@ Behaviour in the event of a safety shutdown<br /><h1>Overview</h1><p>The plug ac
           <option value="1">Info LED green</option>
           <option value="2">Info LED yellow</option>
           <option value="3">Info LED red</option>
-        </options>
-      </parameter>
-
-      <!-- ACTION DEFINITIONS -->
-
-      <parameter name="config_9_1_wo" type="integer" groupName="configuration">
-        <label>9: Reset of overcurrent shutdown</label>
-        <description><![CDATA[
-Activation despite 3x safety shutdown<br /><h1>Overview</h1><p> Activation despite 3x safety shutdown (parameter 8 = 1)</p> <p> A reset request (“Set” command) is normally executed very quickly, as a result of which a query (“Get” command) for this parameter usually returns the response “0” (no reset) for this parameter. In some cases, this can be interpreted incorrectly. Consequently, this parameter should be treated only as “write only”. </p>
-        ]]></description>
-        <default>0</default>
-        <options>
-          <option value="0">No reset</option>
-          <option value="1">Reset</option>
         </options>
       </parameter>
 

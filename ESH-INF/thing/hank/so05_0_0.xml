@@ -70,17 +70,22 @@ Smart Plug<br /><h1>Overview</h1><p>Smart plug is a Z-Wave Switch plugin module 
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
+      <parameter name="config_20_1_wo" type="integer" groupName="configuration">
+        <label>20: Overload Protection</label>
+        <description>Turn off if the load power exceeds 0.5A for more than 5s.</description>
+        <default>1</default>
+        <options>
+          <option value="0">Function Disabled</option>
+          <option value="1">Function enabled</option>
+        </options>
+      </parameter>
+
       <parameter name="config_21_1" type="integer" groupName="configuration">
         <label>21: Device Status After Power Failure.</label>
         <description>Define how the Plug reacts after the power supply is back on.</description>
@@ -165,18 +170,6 @@ The interval of sending voltage report to association device.<br /><h1>Overview<
 The interval of sending electricity report to association device.<br /><h1>Overview</h1><p>The interval of sending electricity report to association device.</p> <p>0 = The function is disabled.</p>
         ]]></description>
         <default>0</default>
-      </parameter>
-
-      <!-- ACTION DEFINITIONS -->
-
-      <parameter name="config_20_1_wo" type="integer" groupName="configuration">
-        <label>20: Overload Protection</label>
-        <description>Turn off if the load power exceeds 0.5A for more than 5s.</description>
-        <default>1</default>
-        <options>
-          <option value="0">Function Disabled</option>
-          <option value="1">Function enabled</option>
-        </options>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

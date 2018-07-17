@@ -57,11 +57,6 @@ LED Bulb<br /><h1>Overview</h1><p>Aeon Labs LED Bulb is a switch multilevel devi
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
@@ -101,6 +96,20 @@ Allow external switch to change color<br /><h1>Overview</h1><p>Enable/disable th
         <options>
           <option value="0">disabled</option>
           <option value="1">enabled</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_36_1_wo" type="integer" groupName="configuration">
+        <label>36: Control color mode</label>
+        <description><![CDATA[
+Reboot/save/exit Colorful mode<br /><h1>Overview</h1><p>Reboot/save/exit Colorful mode.<br />0==Un-reboot Colorful mode.<br />1==Reboot Colorful mode.<br />2==Exit Colorful mode.<br />3==Save the current Colorful mode value and then exit</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">reboot normal mode</option>
+          <option value="1">boot into color programming</option>
+          <option value="2">exit color programming</option>
+          <option value="3">save and exit color programming</option>
         </options>
       </parameter>
 
@@ -207,22 +216,6 @@ Color index configuration for multi mode (7,8)<br /><h1>Overview</h1><p>The colo
         <options>
           <option value="0">disabled</option>
           <option value="1">enabled</option>
-        </options>
-      </parameter>
-
-      <!-- ACTION DEFINITIONS -->
-
-      <parameter name="config_36_1_wo" type="integer" groupName="configuration">
-        <label>36: Control color mode</label>
-        <description><![CDATA[
-Reboot/save/exit Colorful mode<br /><h1>Overview</h1><p>Reboot/save/exit Colorful mode.<br />0==Un-reboot Colorful mode.<br />1==Reboot Colorful mode.<br />2==Exit Colorful mode.<br />3==Save the current Colorful mode value and then exit</p>
-        ]]></description>
-        <default>0</default>
-        <options>
-          <option value="0">reboot normal mode</option>
-          <option value="1">boot into color programming</option>
-          <option value="2">exit color programming</option>
-          <option value="3">save and exit color programming</option>
         </options>
       </parameter>
 

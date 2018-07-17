@@ -337,6 +337,7 @@ This function allows for turning off the controlled device...<br /><h1>Overview<
   <channel-type id="fibaro_fgwp101_00_000_config_decimal_param61">
     <item-type>Number</item-type>
     <label>LED color when device is on</label>
+    <description>  </description>
     <state pattern="%s">
       <options>
         <option value="0">LED will use predefined steps depending on power</option>
@@ -356,6 +357,7 @@ This function allows for turning off the controlled device...<br /><h1>Overview<
   <channel-type id="fibaro_fgwp101_00_000_config_decimal_param62">
     <item-type>Number</item-type>
     <label>LED color when device is off</label>
+    <description>  </description>
     <state pattern="%s">
       <options>
         <option value="0">LED ring is illuminated with a color corresponding to ...</option>

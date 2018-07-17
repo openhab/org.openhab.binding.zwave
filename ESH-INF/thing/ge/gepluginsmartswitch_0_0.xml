@@ -37,14 +37,7 @@
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <!-- PARAMETER DEFINITIONS -->
-      <!-- ACTION DEFINITIONS -->
-
       <parameter name="config_3_1_wo" type="integer" groupName="configuration" readOnly="true">
         <label>3: LED light</label>
         <description>control LED light behavior. Default is on when connected device is off</description>

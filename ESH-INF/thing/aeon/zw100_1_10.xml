@@ -83,11 +83,6 @@ Multisensor 6<br /><h1>Overview</h1><p>RESET - Press and hold for 20 seconds</p>
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
@@ -194,6 +189,18 @@ Select to report on thresholds<br /><h1>Overview</h1><p>Enable/disable the selec
         </options>
       </parameter>
 
+      <parameter name="config_41_4_wo" type="integer" groupName="configuration">
+        <label>41: Temperature Threshold</label>
+        <description><![CDATA[
+Temperature change threshold<br /><h1>Overview</h1><p>Threshold change in temperature to induce an automatic report.<br /><strong>Note</strong>:</p> <ol><li>The unit is Fahrenheit for US version, Celsius for EU/AU version.</li> <li>High byte is the threshold value. Low byte is the unit (0x01=Celsius, 0x02=Fahrenheit).</li> <li>The threshold value (high byte) contains one decimal point. E.g. if the value is set to 20 (0x1401), the threshold value =2.0°C (EU/AU version) or if the value is set to 20 (0x1402), the threshold value=2.0 °F (US version). When the current temperature gap is more then 2.0, which will induce a temperature report to be sent out.</li> </ol>
+        ]]></description>
+        <default>20</default>
+        <options>
+          <option value="0">Temperature Threshold Unit</option>
+        </options>
+        <advanced>true</advanced>
+      </parameter>
+
       <parameter name="config_41_4_0000FF00" type="integer" groupName="configuration">
         <label>41: Temperature Threshold Unit</label>
         <description><![CDATA[
@@ -272,6 +279,64 @@ Send a report when the measurement is more than the upper limit value or less th
         ]]></description>
         <default>0</default>
         <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_49_4_wo" type="integer" groupName="configuration">
+        <label>49: Upper limit value of temperature sensor</label>
+        <description><![CDATA[
+Upper limit value of temperature sensor<br /><h1>Overview</h1><p>Set the upper limit value of temperature sensor. When the measurement is more than this upper limit, which will trigger to sent out a sensor report.</p> <p>High byte is the upper limit value. Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit).</p> <p>1. When unit is Celsius.</p> <p>Upper limit range: -40.0 to 100.0 ℃ (0xFE70 to 0x03E8). E.g. The default upper limit of EU/AU version is 28.0 ℃ (0x0118), when the measurement is more than 28.0℃, it will be triggered to send out a temperature sensor report.</p> <p>2. When unit is Fahrenheit.</p> <p>Upper limit range: -40.0 to 212.0 ℉ (0xFE70 to 0x0848). E.g. The default upper limit of US version is 82.4℉ (0X0338), when the measurement is more than 82.4℉, it will be triggered to send out a temperature sensor report.  </p>
+        ]]></description>
+        <default>0</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_49_4_0000FF00_wo" type="integer" groupName="configuration">
+        <label>49: Unit selection for upper limit value of temperature sensor</label>
+        <description><![CDATA[
+Unit selection for upper limit value of temperature sensor<br /><h1>Overview</h1><p>Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit). </p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="1">Celsius</option>
+          <option value="2">Fahrenheit</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_49_4_7FFF0000_wo" type="integer" groupName="configuration">
+        <label>49: Upper limit value of temperature sensor</label>
+        <description><![CDATA[
+Upper limit value of temperature sensor<br /><h1>Overview</h1><p>Set the upper limit value of temperature sensor. When the measurement is more than this upper limit, which will trigger to sent out a sensor report. High byte is the upper limit value. Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit).</p> <p>1. When unit is Celsius. Upper limit range: -40.0 to 100.0 ℃ (0xFE70 to 0x03E8).</p> <p>E.g. The default upper limit of EU/AU version is 28.0 ℃ (0x0118), when the measurement is more than 28.0℃, it will be triggered to send out a temperature sensor report.</p> <p>2. When unit is Fahrenheit. Upper limit range: -40.0 to 212.0 ℉ (0xFE70 to 0x0848).</p> <p>E.g. The default upper limit of US version is 82.4℉ (0X0338), when the measurement is more than 82.4℉, it will be triggered to send out a temperature sensor report.  </p>
+        ]]></description>
+        <default>280</default>
+      </parameter>
+
+      <parameter name="config_50_4_wo" type="integer" groupName="configuration">
+        <label>50: Lower limit value of temperature sensor</label>
+        <description><![CDATA[
+Lower limit value of temperature sensor<br /><h1>Overview</h1><p>Set the lower limit value of temperature sensor. When the measurement is less than this lower limit, which will trigger to sent out a sensor report. High byte is the lower limit value. Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit).</p> <p>1. When unit is Celsius.</p> <p>Lower limit range: -40.0 to 100.0 ℃ (0xFE70 to 0x03E8). E.g. The default lower limit of EU/AU version is 0 ℃ (0x0000), when the measurement is less than 0℃, it will be triggered to send out a temperature sensor report.</p> <p>2. When unit is Fahrenheit.</p> <p>Upper limit range: -40.0 to 212.0 ℉ (0xFE70 to 0x0848). E.g. The default lower limit of US version is 32.0℉ (0x0140), when the measurement is less than 32.0℉, it will be triggered to send out a temperature sensor report.  </p>
+        ]]></description>
+        <default>0</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_50_4_0000FF00_wo" type="integer" groupName="configuration">
+        <label>50: Unit selection for lower limit value of temperature sensor</label>
+        <description><![CDATA[
+Unit selection for lower limit value of temperature sensor<br /><h1>Overview</h1><p>Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit).  </p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="1">Celsius</option>
+          <option value="2">Fahrenheit</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_50_4_7FFF0000_wo" type="integer" groupName="configuration">
+        <label>50: Lower limit value of temperature sensor</label>
+        <description><![CDATA[
+Lower limit value of temperature sensor<br /><h1>Overview</h1><p>Set the lower limit value of temperature sensor. When the measurement is less than this lower limit, which will trigger to sent out a sensor report. High byte is the lower limit value. Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit).</p> <p>1. When unit is Celsius. Lower limit range: -40.0 to 100.0 ℃ (0xFE70 to 0x03E8).</p> <p>E.g. The default lower limit of EU/AU version is 0 ℃ (0x0000), when the measurement is less than 0℃, it will be triggered to send out a temperature sensor report.</p> <p>2. When unit is Fahrenheit. Upper limit range: -40.0 to 212.0 ℉ (0xFE70 to 0x0848).</p> <p>E.g. The default lower limit of US version is 32.0℉ (0x0140), when the measurement is less than 32.0℉, it will be triggered to send out a temperature sensor report. </p>
+        ]]></description>
+        <default>0</default>
       </parameter>
 
       <parameter name="config_51_1" type="integer" groupName="configuration"
@@ -395,6 +460,14 @@ Disable/Enable LED function<br /><h1>Overview</h1><p>Enable/disable the LED blin
         </options>
       </parameter>
 
+      <parameter name="config_100_1_wo" type="integer" groupName="configuration">
+        <label>100: Set parameters 101-103 to default.</label>
+        <description><![CDATA[
+Reset 101-103 to defaults<br /><h1>Overview</h1><p>Set 101-103 to default.</p>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
       <parameter name="config_101_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>101: Group 1 Periodic Reports</label>
@@ -418,6 +491,14 @@ Periodic reports to send to Group 2<br /><h1>Overview</h1><p>This value is a com
         <label>103: Group 3 Periodic Reports</label>
         <description><![CDATA[
 Periodic reports to send to Group 3<br /><h1>Overview</h1><p>This value is a combination number made up of the sum of the values for the individual sensors and battery. The sensors have these values:</p> <ul><li>Battery=1</li> <li>Ultraviolet=16</li> <li>Temperature=32</li> <li>Humidity=64</li> <li>Light=128</li> </ul>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_110_1_wo" type="integer" groupName="configuration">
+        <label>110: Set parameters 111-113 to default.</label>
+        <description><![CDATA[
+Set parameters 111-113 to default.<br /><h1>Overview</h1><p>Set parameters 111-113 to default.   </p>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -512,94 +593,6 @@ Enable or Disable changing of configuration parameters<br /><h1>Overview</h1><p>
           <option value="0">Disable</option>
           <option value="1">Enable</option>
         </options>
-      </parameter>
-
-      <!-- ACTION DEFINITIONS -->
-
-      <parameter name="config_41_4_wo" type="integer" groupName="configuration">
-        <label>41: Temperature Threshold</label>
-        <description><![CDATA[
-Temperature change threshold<br /><h1>Overview</h1><p>Threshold change in temperature to induce an automatic report.<br /><strong>Note</strong>:</p> <ol><li>The unit is Fahrenheit for US version, Celsius for EU/AU version.</li> <li>High byte is the threshold value. Low byte is the unit (0x01=Celsius, 0x02=Fahrenheit).</li> <li>The threshold value (high byte) contains one decimal point. E.g. if the value is set to 20 (0x1401), the threshold value =2.0°C (EU/AU version) or if the value is set to 20 (0x1402), the threshold value=2.0 °F (US version). When the current temperature gap is more then 2.0, which will induce a temperature report to be sent out.</li> </ol>
-        ]]></description>
-        <default>20</default>
-        <options>
-          <option value="0">Temperature Threshold Unit</option>
-        </options>
-        <advanced>true</advanced>
-      </parameter>
-
-      <parameter name="config_49_4_wo" type="integer" groupName="configuration">
-        <label>49: Upper limit value of temperature sensor</label>
-        <description><![CDATA[
-Upper limit value of temperature sensor<br /><h1>Overview</h1><p>Set the upper limit value of temperature sensor. When the measurement is more than this upper limit, which will trigger to sent out a sensor report.</p> <p>High byte is the upper limit value. Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit).</p> <p>1. When unit is Celsius.</p> <p>Upper limit range: -40.0 to 100.0 ℃ (0xFE70 to 0x03E8). E.g. The default upper limit of EU/AU version is 28.0 ℃ (0x0118), when the measurement is more than 28.0℃, it will be triggered to send out a temperature sensor report.</p> <p>2. When unit is Fahrenheit.</p> <p>Upper limit range: -40.0 to 212.0 ℉ (0xFE70 to 0x0848). E.g. The default upper limit of US version is 82.4℉ (0X0338), when the measurement is more than 82.4℉, it will be triggered to send out a temperature sensor report.  </p>
-        ]]></description>
-        <default>0</default>
-        <advanced>true</advanced>
-      </parameter>
-
-      <parameter name="config_49_4_0000FF00_wo" type="integer" groupName="configuration">
-        <label>49: Unit selection for upper limit value of temperature sensor</label>
-        <description><![CDATA[
-Unit selection for upper limit value of temperature sensor<br /><h1>Overview</h1><p>Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit). </p>
-        ]]></description>
-        <default>1</default>
-        <options>
-          <option value="1">Celsius</option>
-          <option value="2">Fahrenheit</option>
-        </options>
-      </parameter>
-
-      <parameter name="config_49_4_7FFF0000_wo" type="integer" groupName="configuration">
-        <label>49: Upper limit value of temperature sensor</label>
-        <description><![CDATA[
-Upper limit value of temperature sensor<br /><h1>Overview</h1><p>Set the upper limit value of temperature sensor. When the measurement is more than this upper limit, which will trigger to sent out a sensor report. High byte is the upper limit value. Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit).</p> <p>1. When unit is Celsius. Upper limit range: -40.0 to 100.0 ℃ (0xFE70 to 0x03E8).</p> <p>E.g. The default upper limit of EU/AU version is 28.0 ℃ (0x0118), when the measurement is more than 28.0℃, it will be triggered to send out a temperature sensor report.</p> <p>2. When unit is Fahrenheit. Upper limit range: -40.0 to 212.0 ℉ (0xFE70 to 0x0848).</p> <p>E.g. The default upper limit of US version is 82.4℉ (0X0338), when the measurement is more than 82.4℉, it will be triggered to send out a temperature sensor report.  </p>
-        ]]></description>
-        <default>280</default>
-      </parameter>
-
-      <parameter name="config_50_4_wo" type="integer" groupName="configuration">
-        <label>50: Lower limit value of temperature sensor</label>
-        <description><![CDATA[
-Lower limit value of temperature sensor<br /><h1>Overview</h1><p>Set the lower limit value of temperature sensor. When the measurement is less than this lower limit, which will trigger to sent out a sensor report. High byte is the lower limit value. Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit).</p> <p>1. When unit is Celsius.</p> <p>Lower limit range: -40.0 to 100.0 ℃ (0xFE70 to 0x03E8). E.g. The default lower limit of EU/AU version is 0 ℃ (0x0000), when the measurement is less than 0℃, it will be triggered to send out a temperature sensor report.</p> <p>2. When unit is Fahrenheit.</p> <p>Upper limit range: -40.0 to 212.0 ℉ (0xFE70 to 0x0848). E.g. The default lower limit of US version is 32.0℉ (0x0140), when the measurement is less than 32.0℉, it will be triggered to send out a temperature sensor report.  </p>
-        ]]></description>
-        <default>0</default>
-        <advanced>true</advanced>
-      </parameter>
-
-      <parameter name="config_50_4_0000FF00_wo" type="integer" groupName="configuration">
-        <label>50: Unit selection for lower limit value of temperature sensor</label>
-        <description><![CDATA[
-Unit selection for lower limit value of temperature sensor<br /><h1>Overview</h1><p>Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit).  </p>
-        ]]></description>
-        <default>1</default>
-        <options>
-          <option value="1">Celsius</option>
-          <option value="2">Fahrenheit</option>
-        </options>
-      </parameter>
-
-      <parameter name="config_50_4_7FFF0000_wo" type="integer" groupName="configuration">
-        <label>50: Lower limit value of temperature sensor</label>
-        <description><![CDATA[
-Lower limit value of temperature sensor<br /><h1>Overview</h1><p>Set the lower limit value of temperature sensor. When the measurement is less than this lower limit, which will trigger to sent out a sensor report. High byte is the lower limit value. Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit).</p> <p>1. When unit is Celsius. Lower limit range: -40.0 to 100.0 ℃ (0xFE70 to 0x03E8).</p> <p>E.g. The default lower limit of EU/AU version is 0 ℃ (0x0000), when the measurement is less than 0℃, it will be triggered to send out a temperature sensor report.</p> <p>2. When unit is Fahrenheit. Upper limit range: -40.0 to 212.0 ℉ (0xFE70 to 0x0848).</p> <p>E.g. The default lower limit of US version is 32.0℉ (0x0140), when the measurement is less than 32.0℉, it will be triggered to send out a temperature sensor report. </p>
-        ]]></description>
-        <default>0</default>
-      </parameter>
-
-      <parameter name="config_100_1_wo" type="integer" groupName="configuration">
-        <label>100: Set parameters 101-103 to default.</label>
-        <description><![CDATA[
-Reset 101-103 to defaults<br /><h1>Overview</h1><p>Set 101-103 to default.</p>
-        ]]></description>
-        <default>0</default>
-      </parameter>
-
-      <parameter name="config_110_1_wo" type="integer" groupName="configuration">
-        <label>110: Set parameters 111-113 to default.</label>
-        <description><![CDATA[
-Set parameters 111-113 to default.<br /><h1>Overview</h1><p>Set parameters 111-113 to default.   </p>
-        ]]></description>
-        <default>0</default>
       </parameter>
 
       <parameter name="config_255_4_wo" type="integer" groupName="configuration">

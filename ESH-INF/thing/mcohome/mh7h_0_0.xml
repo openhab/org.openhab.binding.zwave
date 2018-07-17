@@ -95,11 +95,6 @@ Water / Electrical Heating Thermostat<br /><h1>Overview</h1><p>MCOHome Water / E
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
@@ -152,8 +147,6 @@ Water / Electrical Heating Thermostat<br /><h1>Overview</h1><p>MCOHome Water / E
         <default>3</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
-
-      <!-- ACTION DEFINITIONS -->
 
       <parameter name="config_255_1_wo" type="integer" groupName="configuration">
         <label>255: Factory setting</label>

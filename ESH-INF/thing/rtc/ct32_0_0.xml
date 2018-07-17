@@ -186,11 +186,6 @@
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
@@ -209,6 +204,18 @@ Sets the reporting threshold for changes in ambient temperature.<br /><h1>Overvi
           <option value="2">1.0F</option>
           <option value="3">1.5F</option>
           <option value="4">2.0F</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_3_1_wo" type="integer" groupName="configuration">
+        <label>3: Utility Lock Enable/Disable</label>
+        <description><![CDATA[
+Enables or Disables the Utility Lock.<br /><h1>Overview</h1><p>The Utility Lock Configuration Set command enables or disables the utility lock. If the utility lock is enabled, the setpoint cannot be modified directly via the thermostat screen.</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Utility lock disable</option>
+          <option value="1">Utility lock enable</option>
         </options>
       </parameter>
 
@@ -294,20 +301,6 @@ Enables or Disables Simple UI Mode<br /><h1>Overview</h1><p>If set to 0, Simple 
         <options>
           <option value="0">Multicast Disabled</option>
           <option value="1">Function is enabled.</option>
-        </options>
-      </parameter>
-
-      <!-- ACTION DEFINITIONS -->
-
-      <parameter name="config_3_1_wo" type="integer" groupName="configuration">
-        <label>3: Utility Lock Enable/Disable</label>
-        <description><![CDATA[
-Enables or Disables the Utility Lock.<br /><h1>Overview</h1><p>The Utility Lock Configuration Set command enables or disables the utility lock. If the utility lock is enabled, the setpoint cannot be modified directly via the thermostat screen.</p>
-        ]]></description>
-        <default>0</default>
-        <options>
-          <option value="0">Utility lock disable</option>
-          <option value="1">Utility lock enable</option>
         </options>
       </parameter>
 
