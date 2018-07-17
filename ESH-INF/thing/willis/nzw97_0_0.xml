@@ -58,14 +58,7 @@ Inovelli Outdoor Smart Plug (2 Channel)<br /><h1>Overview</h1><p>2 Controllable 
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <!-- PARAMETER DEFINITIONS -->
-      <!-- ACTION DEFINITIONS -->
-
       <parameter name="config_1_1_wo" type="integer" groupName="configuration">
         <label>1: LED Indicator</label>
         <description><![CDATA[

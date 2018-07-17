@@ -58,11 +58,6 @@
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
@@ -119,6 +114,15 @@ Minimum change in wattage % to trigger event<br /><h1>Overview</h1><p>The value 
         <default>10</default>
       </parameter>
 
+      <parameter name="config_100_1_wo" type="integer" groupName="configuration">
+        <label>100: Set 101 to 103 to default values</label>
+        <default>0</default>
+        <options>
+          <option value="0">No change</option>
+          <option value="1">Reset</option>
+        </options>
+      </parameter>
+
       <parameter name="config_101_4" type="integer" groupName="configuration">
         <label>101: Group 1 report</label>
         <default>8</default>
@@ -155,6 +159,15 @@ Minimum change in wattage % to trigger event<br /><h1>Overview</h1><p>The value 
         </options>
       </parameter>
 
+      <parameter name="config_110_1_wo" type="integer" groupName="configuration">
+        <label>110: Set 111 to 113 to default values</label>
+        <default>0</default>
+        <options>
+          <option value="0">No change</option>
+          <option value="1">Reset</option>
+        </options>
+      </parameter>
+
       <parameter name="config_111_4" type="integer" groupName="configuration"
                  min="1" max="65535">
         <label>111: Interval Group 1</label>
@@ -180,26 +193,6 @@ Minimum change in wattage % to trigger event<br /><h1>Overview</h1><p>The value 
                  min="0" max="65535">
         <label>254: Device Tag</label>
         <default>0</default>
-      </parameter>
-
-      <!-- ACTION DEFINITIONS -->
-
-      <parameter name="config_100_1_wo" type="integer" groupName="configuration">
-        <label>100: Set 101 to 103 to default values</label>
-        <default>0</default>
-        <options>
-          <option value="0">No change</option>
-          <option value="1">Reset</option>
-        </options>
-      </parameter>
-
-      <parameter name="config_110_1_wo" type="integer" groupName="configuration">
-        <label>110: Set 111 to 113 to default values</label>
-        <default>0</default>
-        <options>
-          <option value="0">No change</option>
-          <option value="1">Reset</option>
-        </options>
       </parameter>
 
       <parameter name="config_255_1_wo" type="integer" groupName="configuration">

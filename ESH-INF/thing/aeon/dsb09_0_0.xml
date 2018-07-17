@@ -115,11 +115,6 @@
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
@@ -198,6 +193,16 @@ Enable/disable selective reporting<br /><h1>Overview</h1><p>When selective repor
         <default>50</default>
       </parameter>
 
+      <parameter name="config_100_4_wo" type="integer" groupName="configuration">
+        <label>100: Set parameter 101-103 to default values</label>
+        <description>Reset to default parameters number 101-103. Any value other than 0 will initiate this reset.</description>
+        <default>0</default>
+        <options>
+          <option value="0">No change</option>
+          <option value="1">Reset</option>
+        </options>
+      </parameter>
+
       <parameter name="config_101_4" type="integer" groupName="configuration"
                  min="0" max="16383">
         <label>101: Which reports need to send automatically for group 1</label>
@@ -225,6 +230,16 @@ Sum values of all wanted reports (see Overview)<br /><h1>Overview</h1><p>1    
         <default>8</default>
       </parameter>
 
+      <parameter name="config_110_4_wo" type="integer" groupName="configuration">
+        <label>110: Set parameter 111-113 to default values</label>
+        <description>Reset to default parameters number 111-113. Any value other than 0 will initiate this reset.</description>
+        <default>0</default>
+        <options>
+          <option value="0">No change</option>
+          <option value="1">Reset</option>
+        </options>
+      </parameter>
+
       <parameter name="config_111_4" type="integer" groupName="configuration"
                  min="1" max="2678400">
         <label>111: Interval to send out reports of group 1</label>
@@ -241,28 +256,6 @@ Sum values of all wanted reports (see Overview)<br /><h1>Overview</h1><p>1    
                  min="1" max="2678400">
         <label>113: Interval to send out reports of group 3</label>
         <default>720</default>
-      </parameter>
-
-      <!-- ACTION DEFINITIONS -->
-
-      <parameter name="config_100_4_wo" type="integer" groupName="configuration">
-        <label>100: Set parameter 101-103 to default values</label>
-        <description>Reset to default parameters number 101-103. Any value other than 0 will initiate this reset.</description>
-        <default>0</default>
-        <options>
-          <option value="0">No change</option>
-          <option value="1">Reset</option>
-        </options>
-      </parameter>
-
-      <parameter name="config_110_4_wo" type="integer" groupName="configuration">
-        <label>110: Set parameter 111-113 to default values</label>
-        <description>Reset to default parameters number 111-113. Any value other than 0 will initiate this reset.</description>
-        <default>0</default>
-        <options>
-          <option value="0">No change</option>
-          <option value="1">Reset</option>
-        </options>
       </parameter>
 
       <parameter name="config_255_4_wo" type="integer" groupName="configuration">

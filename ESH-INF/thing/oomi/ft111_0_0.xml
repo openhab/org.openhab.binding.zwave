@@ -96,11 +96,6 @@ Nano Dimmer<br /><h1>Overview</h1><p>Fantem Nano Dimmer is a Z-Wave Smart Dimmer
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
@@ -225,6 +220,16 @@ Threshold change in wattage (in terms of percentage)<br /><h1>Overview</h1><p>Th
         <limitToOptions>false</limitToOptions>
       </parameter>
 
+      <parameter name="config_100_1_wo" type="integer" groupName="configuration">
+        <label>100: Reset 101-103 to default</label>
+        <description>Reset parameters 101-103 to default values</description>
+        <default>0</default>
+        <options>
+          <option value="0">Reset the parameter 101-103</option>
+        </options>
+        <advanced>true</advanced>
+      </parameter>
+
       <parameter name="config_101_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>101: Set group 1 reports</label>
@@ -254,6 +259,16 @@ To set which reports need to be sent in Report group 3<br /><h1>Overview</h1><p>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
+      <parameter name="config_110_1_wo" type="integer" groupName="configuration">
+        <label>110: Reset 111-113 to default</label>
+        <description>Reset parameters 111-113 to default values</description>
+        <default>0</default>
+        <options>
+          <option value="0">Reset the parameter 111-113</option>
+        </options>
+        <advanced>true</advanced>
+      </parameter>
+
       <parameter name="config_111_4" type="integer" groupName="configuration"
                  min="1" max="2147483647">
         <label>111: Automatic report interval group 1</label>
@@ -276,6 +291,19 @@ To set which reports need to be sent in Report group 3<br /><h1>Overview</h1><p>
         <description>Set the interval of automatic report for Report group 3</description>
         <default>2147483647</default>
         <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_120_1_wo" type="integer" groupName="configuration">
+        <label>120: Configure the external switch mode for S1</label>
+        <description>Configure the external switch mode for S1</description>
+        <default>0</default>
+        <options>
+          <option value="0">(Default) Unknown mode</option>
+          <option value="1">2-state switch mode</option>
+          <option value="2">3 way switch mode</option>
+          <option value="3">Momentary push button mode</option>
+          <option value="4">Enter automatic identification mode</option>
+        </options>
       </parameter>
 
       <parameter name="config_121_1" type="integer" groupName="configuration">
@@ -410,41 +438,6 @@ To set which reports need to be sent in Report group 3<br /><h1>Overview</h1><p>
           <option value="1431655765">factory default and remove</option>
         </options>
         <advanced>true</advanced>
-      </parameter>
-
-      <!-- ACTION DEFINITIONS -->
-
-      <parameter name="config_100_1_wo" type="integer" groupName="configuration">
-        <label>100: Reset 101-103 to default</label>
-        <description>Reset parameters 101-103 to default values</description>
-        <default>0</default>
-        <options>
-          <option value="0">Reset the parameter 101-103</option>
-        </options>
-        <advanced>true</advanced>
-      </parameter>
-
-      <parameter name="config_110_1_wo" type="integer" groupName="configuration">
-        <label>110: Reset 111-113 to default</label>
-        <description>Reset parameters 111-113 to default values</description>
-        <default>0</default>
-        <options>
-          <option value="0">Reset the parameter 111-113</option>
-        </options>
-        <advanced>true</advanced>
-      </parameter>
-
-      <parameter name="config_120_1_wo" type="integer" groupName="configuration">
-        <label>120: Configure the external switch mode for S1</label>
-        <description>Configure the external switch mode for S1</description>
-        <default>0</default>
-        <options>
-          <option value="0">(Default) Unknown mode</option>
-          <option value="1">2-state switch mode</option>
-          <option value="2">3 way switch mode</option>
-          <option value="3">Momentary push button mode</option>
-          <option value="4">Enter automatic identification mode</option>
-        </options>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

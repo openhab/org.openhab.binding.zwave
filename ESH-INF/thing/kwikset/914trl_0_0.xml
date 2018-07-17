@@ -58,11 +58,6 @@ Touchpad Electronic Deadbolt<br /><h1>Overview</h1><p>The following table provid
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
@@ -104,8 +99,6 @@ Door lock status LED blinks every 6 seconds.<br /><h1>Overview</h1><p>Door lock 
           <option value="1">ON</option>
         </options>
       </parameter>
-
-      <!-- ACTION DEFINITIONS -->
 
       <parameter name="config_40_1_wo" type="integer" groupName="configuration"
                  min="0" max="1">

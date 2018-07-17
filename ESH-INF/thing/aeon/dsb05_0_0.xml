@@ -63,11 +63,6 @@
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
@@ -154,8 +149,6 @@ Group 3 automatic report list<br /><h1>Overview</h1><p>The value is a combinatio
         <label>113: Interval to send out reports of group 3</label>
         <default>720</default>
       </parameter>
-
-      <!-- ACTION DEFINITIONS -->
 
       <parameter name="config_255_1_wo" type="integer" groupName="configuration">
         <label>255: Reset to the default Configuration of all parameters</label>

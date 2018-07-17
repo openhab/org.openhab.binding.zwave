@@ -155,11 +155,6 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
@@ -279,6 +274,13 @@ Time to turn the light on and off<br /><h1>Overview</h1><p>0 to 60 = The minute 
         <default>5</default>
       </parameter>
 
+      <parameter name="config_100_1_wo" type="integer" groupName="configuration">
+        <label>100: Set parameter 101-103 to default value</label>
+        <description>Reset the parameter 101-103</description>
+        <default>0</default>
+        <advanced>true</advanced>
+      </parameter>
+
       <parameter name="config_101_4" type="integer" groupName="configuration"
                  min="0" max="1776399">
         <label>101: Set group 1 reports</label>
@@ -349,6 +351,13 @@ To set which reports need to be sent in Report group 3.<br /><h1>Overview</h1><p
           <option value="1048576">Send Multi Channel Meter Report of current (A) C2</option>
         </options>
         <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_110_1_wo" type="integer" groupName="configuration">
+        <label>110: Set parameter 111-113 to default value.</label>
+        <description>Set parameter 111-113 to default value.</description>
+        <default>0</default>
+        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_111_4" type="integer" groupName="configuration"
@@ -426,22 +435,6 @@ To set which reports need to be sent in Report group 3.<br /><h1>Overview</h1><p
           <option value="1">Reset all params to factory default</option>
           <option value="1431655765">Reset factory settings and remove from network</option>
         </options>
-        <advanced>true</advanced>
-      </parameter>
-
-      <!-- ACTION DEFINITIONS -->
-
-      <parameter name="config_100_1_wo" type="integer" groupName="configuration">
-        <label>100: Set parameter 101-103 to default value</label>
-        <description>Reset the parameter 101-103</description>
-        <default>0</default>
-        <advanced>true</advanced>
-      </parameter>
-
-      <parameter name="config_110_1_wo" type="integer" groupName="configuration">
-        <label>110: Set parameter 111-113 to default value.</label>
-        <description>Set parameter 111-113 to default value.</description>
-        <default>0</default>
         <advanced>true</advanced>
       </parameter>
 

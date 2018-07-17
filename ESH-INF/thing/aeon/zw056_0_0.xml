@@ -71,11 +71,6 @@ Doorbell<br /><h1>Overview</h1><p>Aeon Labs Doorbell is a switch binary device b
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
@@ -96,6 +91,36 @@ Set the repetitions for playing doorbell ringtone. <br /><h1>Overview</h1><p>Va
         <label>5: Default ringtone</label>
         <description>Set the default doorbell ringtone. Default=1</description>
         <default>1</default>
+      </parameter>
+
+      <parameter name="config_6_1_wo" type="integer" groupName="configuration"
+                 min="0" max="100">
+        <label>6: Ringtone to play</label>
+        <description><![CDATA[
+Set a ringtone to play. Default=0<br /><h1>Overview</h1><p>Set this to any ringtone (1-100) to have it play that ringtone.</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Stop</option>
+          <option value="255">play the default ringtone</option>
+        </options>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_7_1_wo" type="integer" groupName="configuration">
+        <label>7: Control items</label>
+        <description><![CDATA[
+Control current output<br /><h1>Overview</h1><p>Control items: Value=1, play Value=2, stop Value=3, pause Value=4, Next Value=5, Previous Other, ignore</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Ignore</option>
+          <option value="1">Play</option>
+          <option value="2">Stop</option>
+          <option value="3">Pause</option>
+          <option value="4">Next</option>
+          <option value="5">Previous</option>
+        </options>
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
@@ -194,38 +219,6 @@ Reset to factory settings<br /><h1>Overview</h1><p>1. Size=0x01， Configuration
         <default>0</default>
       </parameter>
 
-      <!-- ACTION DEFINITIONS -->
-
-      <parameter name="config_6_1_wo" type="integer" groupName="configuration"
-                 min="0" max="100">
-        <label>6: Ringtone to play</label>
-        <description><![CDATA[
-Set a ringtone to play. Default=0<br /><h1>Overview</h1><p>Set this to any ringtone (1-100) to have it play that ringtone.</p>
-        ]]></description>
-        <default>0</default>
-        <options>
-          <option value="0">Stop</option>
-          <option value="255">play the default ringtone</option>
-        </options>
-        <limitToOptions>false</limitToOptions>
-      </parameter>
-
-      <parameter name="config_7_1_wo" type="integer" groupName="configuration">
-        <label>7: Control items</label>
-        <description><![CDATA[
-Control current output<br /><h1>Overview</h1><p>Control items: Value=1, play Value=2, stop Value=3, pause Value=4, Next Value=5, Previous Other, ignore</p>
-        ]]></description>
-        <default>0</default>
-        <options>
-          <option value="0">Ignore</option>
-          <option value="1">Play</option>
-          <option value="2">Stop</option>
-          <option value="3">Pause</option>
-          <option value="4">Next</option>
-          <option value="5">Previous</option>
-        </options>
-      </parameter>
-
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
@@ -250,6 +243,7 @@ Control current output<br /><h1>Overview</h1><p>Control items: Value=1, play Val
   <channel-type id="aeon_zw056_00_000_config_decimal_param6">
     <item-type>Number</item-type>
     <label>Ringtone to play</label>
+    <description>Set a ringtone to play. Default=0</description>
     <state pattern="%s">
       <options>
         <option value="0">Stop</option>
@@ -261,6 +255,7 @@ Control current output<br /><h1>Overview</h1><p>Control items: Value=1, play Val
   <channel-type id="aeon_zw056_00_000_config_decimal_param80">
     <item-type>Number</item-type>
     <label>Enable Notifications</label>
+    <description>Enable to send notifications to associated devices (Group1)</description>
     <state pattern="%s">
       <options>
         <option value="0">nothing</option>
@@ -273,6 +268,7 @@ Control current output<br /><h1>Overview</h1><p>Control items: Value=1, play Val
   <channel-type id="aeon_zw056_00_000_config_decimal_param42">
     <item-type>Number</item-type>
     <label>Get wireless button battery status</label>
+    <description>Alert for low battery</description>
     <state pattern="%s">
       <options>
         <option value="0">Battery Level Good</option>

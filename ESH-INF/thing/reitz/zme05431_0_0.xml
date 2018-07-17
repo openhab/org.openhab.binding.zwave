@@ -66,11 +66,6 @@ Switch<br /><h1>Overview</h1><h3>Inclusion/Exclusion</h3> <p>On factory default 
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
@@ -214,8 +209,6 @@ Defines hot to interprete button Down press.<br /><h1>Overview</h1><p>Defines ho
           <option value="2">Switch on</option>
         </options>
       </parameter>
-
-      <!-- ACTION DEFINITIONS -->
 
       <parameter name="config_20_2_wo" type="integer" groupName="configuration"
                  min="0" max="1800">

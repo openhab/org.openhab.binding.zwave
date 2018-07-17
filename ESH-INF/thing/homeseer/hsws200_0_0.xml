@@ -150,6 +150,7 @@ Scene Capable Wall Switch<br /><h1>Overview</h1><p>HS-WS200+ is a Z-Wave Plus re
   <channel-type id="homeseer_hsws200_00_000_config_decimal_param13">
     <item-type>Number</item-type>
     <label>Status Mode</label>
+    <description>Sets switch mode of operation</description>
     <state pattern="%s">
       <options>
         <option value="0">Normal mode (load status)</option>
@@ -161,6 +162,7 @@ Scene Capable Wall Switch<br /><h1>Overview</h1><p>HS-WS200+ is a Z-Wave Plus re
   <channel-type id="homeseer_hsws200_00_000_config_decimal_param21">
     <item-type>Number</item-type>
     <label>Status LED Color</label>
+    <description>Sets the Status mode LED color</description>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

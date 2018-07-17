@@ -62,11 +62,6 @@ Smart Dimmer 6<br /><h1>Overview</h1><p>Turn the primary controller of Z-Wave ne
         <label>Configuration Parameters</label>
       </parameter-group>
 
-      <parameter-group name="actions">
-        <context>setup</context>
-        <label>Actions</label>
-      </parameter-group>
-
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
@@ -151,6 +146,18 @@ Brightness level of RGB LED (0%-100%)<br /><h1>Overview</h1><p>Configure the bri
         <default>3289650</default>
       </parameter>
 
+      <parameter name="config_90_1_wo" type="integer" groupName="configuration">
+        <label>90: Enable Report triggered by minimal change of value</label>
+        <description><![CDATA[
+Enables/disables parameter 91 and 92 (reporting minimum wattage)<br /><h1>Overview</h1><p>Enables/disables parameter 91 (minimum change in wattage value) and 92 (minimum change in wattage percent).</p> <p>Supported values: 1=enabled, 0=disabled</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
+        </options>
+      </parameter>
+
       <parameter name="config_91_2" type="integer" groupName="configuration"
                  min="0" max="60000">
         <label>91: Minimum Change to send Report (Watt)</label>
@@ -167,6 +174,18 @@ The minimum change in wattage value for a report to be sent<br /><h1>Overview</h
 The minimum change in wattage percentage for a report to be sent<br /><h1>Overview</h1><p>The value here represents minimum change in wattage percent (in terms of percentage) for a REPORT to be sent (Valid values 0-100).</p> <p>Default value: 5 (%) </p>
         ]]></description>
         <default>5</default>
+      </parameter>
+
+      <parameter name="config_100_1_wo" type="integer" groupName="configuration">
+        <label>100: Reset Report Assignments for All Groups</label>
+        <description><![CDATA[
+Reset the reports to send to each report group to default values.<br /><h1>Overview</h1><p>Reset the reports to send to each report group to default values.<br />Set configuration parameters 101-103 to default. <br />See instruction manual for details on reporting configuration.</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Do Nothing</option>
+          <option value="1">Reset to Defaults</option>
+        </options>
       </parameter>
 
       <parameter name="config_101_4" type="integer" groupName="configuration"
@@ -194,6 +213,18 @@ Define which reports to send in report group 2.<br /><h1>Overview</h1><p>Which r
 Define which reports to send in report group 3.<br /><h1>Overview</h1><p>Which reports need to send in Report group 3 (See flags in user manual). </p> <p>See instruction manual for details on reporting configuration.</p>
         ]]></description>
         <default>0</default>
+      </parameter>
+
+      <parameter name="config_110_1_wo" type="integer" groupName="configuration" readOnly="true">
+        <label>110: Reset Report Time Intervals for All Groups</label>
+        <description><![CDATA[
+Reset the reports time interval for each report group to default values.<br /><h1>Overview</h1><p>Reset the reports to time interval for each report group to default values.<br />Set configuration parameters 111-113 to default. <br />See instruction manual for details on reporting configuration.</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Do Nothing</option>
+          <option value="1">Reset to Defaults</option>
+        </options>
       </parameter>
 
       <parameter name="config_111_4" type="integer" groupName="configuration"
@@ -262,44 +293,6 @@ Enable/disable Configuration Lock<br /><h1>Overview</h1><p>Enable/disable Config
           <option value="0">Reset</option>
         </options>
         <advanced>true</advanced>
-      </parameter>
-
-      <!-- ACTION DEFINITIONS -->
-
-      <parameter name="config_90_1_wo" type="integer" groupName="configuration">
-        <label>90: Enable Report triggered by minimal change of value</label>
-        <description><![CDATA[
-Enables/disables parameter 91 and 92 (reporting minimum wattage)<br /><h1>Overview</h1><p>Enables/disables parameter 91 (minimum change in wattage value) and 92 (minimum change in wattage percent).</p> <p>Supported values: 1=enabled, 0=disabled</p>
-        ]]></description>
-        <default>0</default>
-        <options>
-          <option value="0">Disabled</option>
-          <option value="1">Enabled</option>
-        </options>
-      </parameter>
-
-      <parameter name="config_100_1_wo" type="integer" groupName="configuration">
-        <label>100: Reset Report Assignments for All Groups</label>
-        <description><![CDATA[
-Reset the reports to send to each report group to default values.<br /><h1>Overview</h1><p>Reset the reports to send to each report group to default values.<br />Set configuration parameters 101-103 to default. <br />See instruction manual for details on reporting configuration.</p>
-        ]]></description>
-        <default>0</default>
-        <options>
-          <option value="0">Do Nothing</option>
-          <option value="1">Reset to Defaults</option>
-        </options>
-      </parameter>
-
-      <parameter name="config_110_1_wo" type="integer" groupName="configuration" readOnly="true">
-        <label>110: Reset Report Time Intervals for All Groups</label>
-        <description><![CDATA[
-Reset the reports time interval for each report group to default values.<br /><h1>Overview</h1><p>Reset the reports to time interval for each report group to default values.<br />Set configuration parameters 111-113 to default. <br />See instruction manual for details on reporting configuration.</p>
-        ]]></description>
-        <default>0</default>
-        <options>
-          <option value="0">Do Nothing</option>
-          <option value="1">Reset to Defaults</option>
-        </options>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
