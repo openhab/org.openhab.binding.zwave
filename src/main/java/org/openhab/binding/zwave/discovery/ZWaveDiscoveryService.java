@@ -160,28 +160,24 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
             }
         }
 
-        // Create the thing UID
-        // The final thingType will be set once the device initialises
-        ThingUID thingUID = new ThingUID(new ThingTypeUID(ZWaveBindingConstants.ZWAVE_THING), bridgeUID,
-                String.format("node%d", node.getNodeId()));
-        Map<String, Object> properties = new HashMap<>(11);
-        if (discoveryServiceCallback != null && discoveryServiceCallback.getExistingDiscoveryResult(thingUID) != null) {
-            logger.debug("NODE {}: Device already known - properties will be updated.", node.getNodeId());
-
-            properties = discoveryServiceCallback.getExistingDiscoveryResult(thingUID).getProperties();
-        }
+        ThingTypeUID thingTypeUID;
 
         // If we didn't find the product, then add the unknown thing
         String label = String.format(ZWAVE_NODE_LABEL, node.getNodeId());
         if (foundProduct == null) {
-            logger.warn("NODE {}: Device discovery could not resolve to a thingType! {}:{}:{}::{}", node.getNodeId(),
-                    String.format("%04X", node.getManufacturer()), String.format("%04X", node.getDeviceType()),
-                    String.format("%04X", node.getDeviceId()), node.getApplicationVersion());
-
             if (node.getManufacturer() != Integer.MAX_VALUE) {
+                logger.warn("NODE {}: Device discovery could not resolve to a thingType! {}:{}:{}::{}",
+                        node.getNodeId(), String.format("%04X", node.getManufacturer()),
+                        String.format("%04X", node.getDeviceType()), String.format("%04X", node.getDeviceId()),
+                        node.getApplicationVersion());
+
                 label += String.format(" (%04X:%04X:%04X:%s)", node.getManufacturer(), node.getDeviceType(),
                         node.getDeviceId(), node.getApplicationVersion());
+            } else {
+                logger.warn("NODE {}: Device discovery could not resolve to a thingType! Manufacturer data not known.",
+                        node.getNodeId());
             }
+            thingTypeUID = new ThingTypeUID(ZWaveBindingConstants.ZWAVE_THING);
         } else {
             logger.debug("NODE {}: Device discovery resolved to thingType {}", node.getNodeId(),
                     foundProduct.getThingTypeUID());
@@ -189,6 +185,17 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
             // And create the new thing
             ThingType thingType = ZWaveConfigProvider.getThingType(foundProduct.getThingTypeUID());
             label += String.format(": %s", thingType.getLabel());
+
+            thingTypeUID = foundProduct.getThingTypeUID();
+        }
+
+        // Create the thing UID
+        ThingUID thingUID = new ThingUID(thingTypeUID, bridgeUID, String.format("node%d", node.getNodeId()));
+        Map<String, Object> properties = new HashMap<>(11);
+        if (discoveryServiceCallback != null && discoveryServiceCallback.getExistingDiscoveryResult(thingUID) != null) {
+            logger.debug("NODE {}: Device already known - properties will be updated.", node.getNodeId());
+
+            properties = discoveryServiceCallback.getExistingDiscoveryResult(thingUID).getProperties();
         }
 
         // Add some device properties that might be useful for the system to know
