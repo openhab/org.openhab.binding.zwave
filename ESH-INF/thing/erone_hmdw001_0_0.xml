@@ -7,14 +7,17 @@
 
   <thing-type id="erone_hmdw001_00_000" listed="false">
     <label>HM-DW001 Door/Window Contact</label>
-    <description>Door/Window Contact</description>
+    <description><![CDATA[
+Door/Window Contact<br /><h1>Overview</h1><p>The Door/Window Sensor is a Z-Wave® enabled device (interoperable, two-way RF mesh networking technology) and is fully compatible with any Z-Wave enabled network. Z-Wave enabled devices displaying the Z-Wave logo can also be used with it regardless of the manufacturer, and ours can also be used in other manufacturer’s Z-Wave enabled networks. Each mains powered module in a Network is designed to act as a repeater. Repeaters will retransmit the RF signal to ensure that the signal is received by its intended destination by routing the signal around obstacles and radio dead spots. </p> <br /><h2>Wakeup Information</h2><p>To wake up the device manually, triple-click the tamper button on the back of the device.</p>
+    ]]></description>
+    <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="sensor_binary" typeId="sensor_binary">
         <label>Binary Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
+          <property name="binding:*:OnOffType">SENSOR_BINARY,BASIC</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
