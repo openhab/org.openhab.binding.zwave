@@ -59,7 +59,89 @@ Telldus socket and energy meter<br /><h1>Overview</h1><p>Telldus Z-Wave Plug-in 
       <property name="manufacturerId">0176</property>
       <property name="manufacturerRef">0003:0003</property>
       <property name="dbReference">863</property>
+      <property name="defaultAssociations">1</property>
     </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: Overcurrent protection</label>
+        <description><![CDATA[
+If current exceeds 16A load will be switched off<br /><h1>Overview</h1><p>If the current exceeds 16A for more than 5 sec, the load will be switched off </p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration">
+        <label>2: device status after power failure</label>
+        <description>Remember device status after power failure</description>
+        <default>0</default>
+        <options>
+          <option value="0">Remember Status</option>
+          <option value="1">Always ON</option>
+          <option value="2">Always OFF</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration">
+        <label>3: Status send when load changes</label>
+        <description><![CDATA[
+Send status in Lifeline when Load status change<br /><h1>Overview</h1><p>Smart Plug can send notifications to associated devices in Lifeline when the status of the<br />plug is changed </p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">Disabled</option>
+          <option value="1">Send Basic Report</option>
+          <option value="2">Basic Report when Load status not changed by ZWave</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_4_1" type="integer" groupName="configuration">
+        <label>4: Configure LED mode</label>
+        <default>0</default>
+        <options>
+          <option value="0">The LED follows the load status</option>
+          <option value="1">When operating plug, the LED is lit for 5 seconds</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_16_2" type="integer" groupName="configuration"
+                 min="1" max="2500">
+        <label>16: Report on change of power consumption</label>
+        <description><![CDATA[
+Send report on change of power consumption (W)<br /><h1>Overview</h1><p>This parameter will send a power report automatically if the power value changes of x W (Watts) compared to the last report</p>
+        ]]></description>
+        <default>50</default>
+        <options>
+          <option value="0">Disabled</option>
+        </options>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <description>Lifeline</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+    </config-description>
 
   </thing-type>
 
