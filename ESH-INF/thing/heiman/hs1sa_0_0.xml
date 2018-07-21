@@ -76,6 +76,11 @@ smoke status as notification report and on status change of smoke detection<br /
         <multipleLimit>5</multipleLimit>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
     </config-description>
 
   </thing-type>

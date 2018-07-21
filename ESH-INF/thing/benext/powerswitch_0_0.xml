@@ -85,6 +85,11 @@ Show the led compared to the relay state<br /><h1>Overview</h1><p>If value is 0:
         <label>1: Group 1</label>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
     </config-description>
 
   </thing-type>

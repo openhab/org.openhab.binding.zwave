@@ -68,6 +68,11 @@
         <label>3: K3</label>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
     </config-description>
 
   </thing-type>

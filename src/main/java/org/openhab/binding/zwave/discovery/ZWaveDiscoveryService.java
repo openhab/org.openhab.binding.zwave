@@ -39,7 +39,7 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
 
     private final String ZWAVE_NODE_LABEL = "Z-Wave Node %03d";
 
-    private ZWaveControllerHandler controllerHandler;
+    private final ZWaveControllerHandler controllerHandler;
     private DiscoveryServiceCallback discoveryServiceCallback;
 
     public ZWaveDiscoveryService(ZWaveControllerHandler coordinatorHandler, int searchTime) {
@@ -188,9 +188,11 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
 
             thingTypeUID = foundProduct.getThingTypeUID();
         }
+        // thingTypeUID = new ThingTypeUID(ZWaveBindingConstants.ZWAVE_THING);
 
         // Create the thing UID
-        ThingUID thingUID = new ThingUID(thingTypeUID, bridgeUID, String.format("node%d", node.getNodeId()));
+        ThingUID thingUID = new ThingUID(new ThingTypeUID(ZWaveBindingConstants.ZWAVE_THING), bridgeUID,
+                String.format("node%d", node.getNodeId()));
         Map<String, Object> properties = new HashMap<>(11);
         if (discoveryServiceCallback != null && discoveryServiceCallback.getExistingDiscoveryResult(thingUID) != null) {
             logger.debug("NODE {}: Device already known - properties will be updated.", node.getNodeId());
@@ -223,8 +225,8 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
         properties.put(ZWaveBindingConstants.PROPERTY_ROUTING, Boolean.toString(node.isRouting()));
 
         // Create the discovery result and add to the inbox
-        DiscoveryResult discoveryResult = DiscoveryResultBuilder.create(thingUID).withProperties(properties)
-                .withBridge(bridgeUID).withLabel(label).build();
+        DiscoveryResult discoveryResult = DiscoveryResultBuilder.create(thingUID).withThingType(thingTypeUID)
+                .withProperties(properties).withBridge(bridgeUID).withLabel(label).build();
         thingDiscovered(discoveryResult);
 
         return;

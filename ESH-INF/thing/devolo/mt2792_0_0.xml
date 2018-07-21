@@ -212,6 +212,11 @@ Restore switch state mode.<br /><h1>Overview</h1><p>Status of the plug if it is 
         <description>Grouping 1 includes, SWITCH_BINARY_REPORT, METER_REPORT, ALARM_REPORT.</description>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
     </config-description>
 
   </thing-type>

@@ -44,7 +44,7 @@ Yale Conexis L1<br /><h1>Overview</h1><h1>The future of Door Locks is here</h1> 
       <property name="vendor">ASSA ABLOY</property>
       <property name="modelId">SD-L1000-CH</property>
       <property name="manufacturerId">0129</property>
-      <property name="manufacturerRef">6600:0000,6600:0002</property>
+      <property name="manufacturerRef">0066:0000,6600:0002</property>
       <property name="dbReference">838</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -120,6 +120,11 @@ Time after the wrong tag limit being exceeded before re-trying<br /><h1>Overview
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
         <description>Z-Wave Plus Lifeline</description>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
       </parameter>
 
     </config-description>

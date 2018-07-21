@@ -62,6 +62,11 @@ Wireless Z-Wave Water Valve<br /><h1>Overview</h1><p>Fortrezz WV-01 Wireless Z-W
         <default>60</default>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
     </config-description>
 
   </thing-type>

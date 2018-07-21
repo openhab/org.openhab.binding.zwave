@@ -45,6 +45,16 @@ Roller blind module<br /><h1>Overview</h1><p>The ARF blackout blind is a stylish
       <property name="dbReference">848</property>
     </properties>
 
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
+    </config-description>
+
   </thing-type>
 
 </thing:thing-descriptions>

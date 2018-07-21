@@ -131,6 +131,11 @@ Only applies to gas readers with firmware version 3.30 or higher configured for 
         <limitToOptions>false</limitToOptions>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
     </config-description>
 
   </thing-type>

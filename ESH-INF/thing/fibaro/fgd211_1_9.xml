@@ -261,6 +261,11 @@ Command class scene activation for group no. 3<br /><h1>Overview</h1><p>The devi
         <label>3: Controller Updates</label>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
     </config-description>
 
   </thing-type>

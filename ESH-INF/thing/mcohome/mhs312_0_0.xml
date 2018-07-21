@@ -121,6 +121,11 @@ Two Way Switch<br /><h1>Overview</h1><p>Touch Panel Switch is a wall switch with
         <label>3: All Status Reports</label>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
     </config-description>
 
   </thing-type>

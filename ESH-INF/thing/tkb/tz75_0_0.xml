@@ -125,6 +125,11 @@ Treshold of KWH for load caution<br /><h1>Overview</h1><p>The default value 0 wi
         <label>1: Group 1</label>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
     </config-description>
 
   </thing-type>

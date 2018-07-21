@@ -275,6 +275,11 @@ Sending commands with command class scene activation<br /><h1>Overview</h1><p>Th
         <label>3: Controller Updates</label>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
     </config-description>
 
   </thing-type>

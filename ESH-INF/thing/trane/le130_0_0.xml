@@ -60,6 +60,16 @@ LE130<br /><h1>Overview</h1><p>LE130 REMOTE CONTROLLER FOR SPLIT-TYPE AIR CONDIT
       <property name="dbReference">845</property>
     </properties>
 
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
+    </config-description>
+
   </thing-type>
 
   <channel-type id="trane_le130_00_000_thermostat_mode">

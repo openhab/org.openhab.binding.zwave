@@ -146,22 +146,26 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
 
         Thing thing = getThing(thingUID);
         if (thing == null) {
+            logger.debug("No thing found in getConfigDescription {}", uri);
             return null;
         }
         ThingUID bridgeUID = thing.getBridgeUID();
         if (bridgeUID == null) {
+            logger.debug("No bridgeUID found in getConfigDescription {}", uri);
             return null;
         }
 
         // Get the controller for this thing
         Thing bridge = getThing(bridgeUID);
         if (bridge == null) {
+            logger.debug("No bridge found in getConfigDescription {}", uri);
             return null;
         }
 
         final BigDecimal cfgNodeId = (BigDecimal) thing.getConfiguration()
                 .get(ZWaveBindingConstants.CONFIGURATION_NODEID);
         if (cfgNodeId == null) {
+            logger.debug("No nodeId found in getConfigDescription {}", uri);
             return null;
         }
         int nodeId = cfgNodeId.intValue();
@@ -169,6 +173,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         // Get its handler and node
         ZWaveControllerHandler handler = (ZWaveControllerHandler) bridge.getHandler();
         if (handler == null) {
+            logger.debug("NODE {}: No bridge handler found in getConfigDescription", nodeId);
             return null;
         }
 

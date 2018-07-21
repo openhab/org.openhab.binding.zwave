@@ -116,6 +116,11 @@ Defines the temperature steps of the heating control value is 0.1 °С.<br />1 0
         <multipleLimit>4</multipleLimit>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
     </config-description>
 
   </thing-type>

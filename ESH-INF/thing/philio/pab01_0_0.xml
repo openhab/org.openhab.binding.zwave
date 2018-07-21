@@ -207,6 +207,11 @@ Data from CT2<br /><h1>Overview</h1><ol><li>Instant power consumption from CT2 (
         ]]></description>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
     </config-description>
 
   </thing-type>

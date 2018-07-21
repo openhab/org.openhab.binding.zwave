@@ -109,6 +109,11 @@ Defines Operation Mode of thermostat<br /><h1>Overview</h1><p>0....OFF(0x00)</p>
         <multipleLimit>8</multipleLimit>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
     </config-description>
 
   </thing-type>

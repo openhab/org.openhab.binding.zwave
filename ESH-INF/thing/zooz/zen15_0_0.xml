@@ -116,6 +116,11 @@ Send On/Off Status Change Notifications<br /><h1>Overview</h1><p>Your Power Swit
         <multipleLimit>5</multipleLimit>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
     </config-description>
 
   </thing-type>

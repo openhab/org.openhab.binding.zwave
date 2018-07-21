@@ -99,6 +99,11 @@ Root Device group (Notification)<br /><h1>Overview</h1><p>1-Binary Sensor report
         <multipleLimit>5</multipleLimit>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
     </config-description>
 
   </thing-type>

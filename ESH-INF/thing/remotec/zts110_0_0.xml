@@ -7,7 +7,10 @@
 
   <thing-type id="remotec_zts110_00_000" listed="false">
     <label>ZTS-110 ZTS-110 Z Wave Thermostat</label>
-    <description>ZTS-110 Z Wave Thermostat</description>
+    <description><![CDATA[
+ZTS-110 Z Wave Thermostat<br /><h1>Overview</h1><p>ZTS-110 Z-Thermostat is a Z-Wave enabled programmable thermostat that allows you to control your room temperature with programmable time schedule such as WAKE, AWAY, HOME and SLEEP event which can maximize energy conservation and comfort while minimizing the effort required to maintaining the appropriate temperature in your home whether you are at home or away.</p> <p>Also, you can use the ZTS-110 to control / check your room temperature by smart phone or PC while you are at home or outside through Z-Wave gateway.</p> <p>Read following scenarios carefully before you start as it matters to the battery life under Z-Wave operation:</p> <p>ZTS-110 can be powered by 4 x AA batteries, and/or 24Vac C wire.</p> <ol><li>If it is powered by batteries or powered by batteries first then applied with 24Vac before Z-Wave inclusion, ZTS-110 will self-configure to FLiRS mode which will save battery life by sleeping.</li> <li>If it is powered by 24Vac or powered by 24Vac first then applied with batteries before Z-Wave inclusion, ZTS-110 will self-configure to Always Listening Mode which will not sleep.</li> <li>After inclusion process, ZTS-110 will not detect power source and not allow changing operation mode. You must perform exclusion process first if need to change Z-Wave operation mode.</li> <li>After Z-Wave inclusion process, if you reset ZTS-110 to default while both 24Vac and batteries are applied, ZTS-110 will take 24Vac as primary power source and self-configure to Always Listening Mode, because reset to default process will automatically exclude ZTS-110 from the Z-Wave network. You should disconnect the power source and re-apply the power so ZTS-110 can detect the power source type and self-configure to corresponding mode.</li> </ol>
+    ]]></description>
+    <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -56,6 +59,12 @@
       <channel id="battery-level" typeId="system.battery-level">
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
+        </properties>
+      </channel>
+      <channel id="time_offset" typeId="time_offset">
+        <label>Clock Time Offset</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CLOCK</property>
         </properties>
       </channel>
     </channels>
@@ -198,6 +207,11 @@
 
       <parameter name="group_3" type="text" groupName="association">
         <label>3: Controller Update</label>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
       </parameter>
 
     </config-description>

@@ -33,6 +33,16 @@ CONNECT radio flush-mounted receiver, Roller shutter<br /><h2>Inclusion Informat
       <property name="dbReference">617</property>
     </properties>
 
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
+    </config-description>
+
   </thing-type>
 
 </thing:thing-descriptions>

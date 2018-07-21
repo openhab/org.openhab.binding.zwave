@@ -93,7 +93,7 @@ public class ApplicationUpdateMessageClass extends ZWaveCommandProcessor {
 
                         // Send delayed poll event
                         zController
-                                .notifyEventListeners(new ZWaveDelayedPollEvent(nodeId, 0, 75, TimeUnit.MILLISECONDS));
+                                .notifyEventListeners(new ZWaveDelayedPollEvent(nodeId, 0, 175, TimeUnit.MILLISECONDS));
                     }
                 } else {
                     List<CommandClass> nifClasses = new ArrayList<CommandClass>();

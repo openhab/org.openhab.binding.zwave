@@ -173,6 +173,11 @@ Turn the Mini Plug with button<br /><h1>Overview</h1><p>Choose if you want to us
         </options>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
     </config-description>
 
   </thing-type>

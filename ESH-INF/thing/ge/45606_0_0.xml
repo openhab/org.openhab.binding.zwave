@@ -122,6 +122,11 @@ Sets the dim rate for the all on/off command<br /><h1>Overview</h1><p>This value
         <default>3</default>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
     </config-description>
 
   </thing-type>

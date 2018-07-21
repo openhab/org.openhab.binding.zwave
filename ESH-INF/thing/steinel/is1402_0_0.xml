@@ -238,6 +238,11 @@ Ambient light<br /><h1>Overview</h1><p>Ambient Light via Group 4 is intended to 
         <multipleLimit>15</multipleLimit>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
     </config-description>
 
   </thing-type>

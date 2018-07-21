@@ -122,6 +122,11 @@ Sends sensor report as configured in parameter 121 when the sensor is triggered<
         <multipleLimit>5</multipleLimit>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
     </config-description>
 
   </thing-type>

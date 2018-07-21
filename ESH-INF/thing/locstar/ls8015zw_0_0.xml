@@ -59,6 +59,16 @@ KAS-600 Z-Wave Electronic Lock<br /><h1>Overview</h1><p>Zwave enabled single lat
       <property name="dbReference">752</property>
     </properties>
 
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+      </parameter>
+
+    </config-description>
+
   </thing-type>
 
 </thing:thing-descriptions>

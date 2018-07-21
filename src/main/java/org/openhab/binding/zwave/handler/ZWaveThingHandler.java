@@ -246,7 +246,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     try {
                         dataType = DataType.valueOf(bindingType[2]);
                     } catch (IllegalArgumentException e) {
-                        logger.warn("NODE {}: Invalid item type defined ({}). Assuming DecimalType", nodeId, dataType);
+                        logger.warn("NODE {}: Invalid item type defined ({}). Assuming DecimalType", nodeId,
+                                bindingType[2]);
                     }
 
                     ZWaveThingChannel chan = new ZWaveThingChannel(controllerHandler, channel.getChannelTypeUID(),

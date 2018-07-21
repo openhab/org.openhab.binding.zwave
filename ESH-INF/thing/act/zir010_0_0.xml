@@ -7,7 +7,10 @@
 
   <thing-type id="act_zir010_00_000" listed="false">
     <label>ZIR010 PIR Motion Sensor</label>
-    <description>PIR Motion Sensor</description>
+    <description><![CDATA[
+PIR Motion Sensor<br /><h1>Overview</h1><p>The ZIR010 Wall Mounted Sensor is a component of the HomePro lighting control system. Inclusion of this Wall Mounted Sensor on the ZTH200 Wireless Controller menu allows remote turn-on of HomePro receivers and their connected lighting when the ZIR010 is triggered. Z-Wave nodes of other types can be added to the system and will also act as repeaters if they support this function of repeating the signal received to other modules in the system.</p> <br /><h2>Inclusion Information</h2><p>ZIR010 must be installed in its permanent location. To include or exclude the ZIR010 from the Z-Wave network, press the brown button marked “button” (inside) when prompted by a Z-Wave controller. For ZIR010 to work properly over longer distances (i.e. communicate via more nodes), add it to the network after you have added all other non-battery operated devices. Now replace the cover and screw. The ZIR010 will stay “awake” for ten minutes when power is first applied to allow time for configuration.</p> <br /><h2>Exclusion Information</h2><p>To exclude the ZIR010 from the Z-Wave network, press the brown button marked “button” (inside) when prompted by a Z-Wave controller. </p> <br /><h2>Wakeup Information</h2><p>The ZIR010 will send a Wakeup Notification Command approximately 3 minutes after power up IF and only IF it has been included into a Z-Wave network. From that point on, the ZIR010 will wake up every 4 hours and re-send the Wakeup Notification Command unless configured for another time interval. The ZIR010 will stay awake by default for 30 seconds and then go back to sleep to conserve battery life.</p> <p>The time interval between Wakeup Notification Commands can be adjusted if you have a device that supports this. Refer to that device’s instructions.</p> <p>The time the ZIR010 stays awake can be adjusted from 15 seconds to 45 seconds by sending a value of 15 to 45 to the ZIR010 using Configuration Parameter # 22 (when asked for the number of bytes, select 1). This awake time period starts over every time the ZIR010 receives a command or request.</p>
+    ]]></description>
+    <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -35,7 +38,7 @@
       <property name="vendor">ACT - Advanced Control Technologies</property>
       <property name="modelId">ZIR010</property>
       <property name="manufacturerId">0001</property>
-      <property name="manufacturerRef">4952:3130</property>
+      <property name="manufacturerRef">4952:3030,4952:3130</property>
       <property name="dbReference">189</property>
     </properties>
 
@@ -120,6 +123,11 @@ Duration ranges from 15 to 45 seconds. Valid values range from 15 to 45.<br /><h
 <br /><h1>Overview</h1> <p>Any device that is associated into Group 3 will be sent battery level indications at specific intervals. There can be up to 5 devices associated into each group. </p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
       </parameter>
 
     </config-description>
