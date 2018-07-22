@@ -131,9 +131,9 @@ load caution threshold<br /><h1>Overview</h1><p>Enable automatic warning when th
         <description>Restore switch state mode.</description>
         <default>1</default>
         <options>
-          <option value="0">Upon the return of AC power, the switch will remain Off.</option>
+          <option value="0">Switch OFF after power on</option>
           <option value="1">resume previous state</option>
-          <option value="2">Upon the return of AC power, the switch will turn On.</option>
+          <option value="2">Switch ON after power on</option>
         </options>
       </parameter>
 
@@ -174,10 +174,10 @@ load caution threshold<br /><h1>Overview</h1><p>Enable automatic warning when th
         <description>RF off command mode</description>
         <default>0</default>
         <options>
-          <option value="0">When SWITCH ALL OFF is received, the MT02646 turns Off.</option>
+          <option value="0">SWITCH ALL OFF turns Switch OFF</option>
           <option value="1">Ignore ALL OFF</option>
           <option value="2">If ALL OFF is received, turn ON if it is OFF</option>
-          <option value="3">When SWITCH ALL OFF is received, the MT02646 turns On.</option>
+          <option value="3">SWITCH ALL OFF turns Switch ON</option>
         </options>
       </parameter>
 
