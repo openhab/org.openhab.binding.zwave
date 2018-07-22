@@ -7,7 +7,10 @@
 
   <thing-type id="linear_wt00z1_00_000" listed="false">
     <label>WT00Z-1 3-Way Wall Accessory Switch</label>
-    <description>3-Way Wall Accessory Switch</description>
+    <description><![CDATA[
+3-Way Wall Accessory Switch<br /><h1>Overview</h1><p>Radio Frequency (RF) Controlled, 120 VAC, Wall Mounted Transmitter </p> <br /><h2>Inclusion Information</h2><p>Tap either the top or bottom of the WT00Z-1 once.</p> <br /><h2>Exclusion Information</h2><p>You  must  first  “RESET  UNIT”  with  your  controller  to  remove  it  from the network. Although adding it to a group includes it in the network, removing  it  from  a  group  does  not  remove  it  from  the  network.  If removed from a group, it functions as a repeater (only). “RESET UNIT” removes it completely from the network.</p>
+    ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

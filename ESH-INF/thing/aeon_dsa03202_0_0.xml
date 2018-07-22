@@ -29,7 +29,7 @@ Minimote 4 button remote control<br /><h1>Overview</h1><p>The Minimote is a full
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0001:0003,0006:0002</property>
       <property name="dbReference">74</property>
-      <property name="commandClass:WAKE_UP">getSupported=false</property>
+      <property name="commandClass:WAKE_UP">ccAdd,getSupported=false</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
