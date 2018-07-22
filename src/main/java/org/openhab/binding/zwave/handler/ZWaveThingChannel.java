@@ -31,6 +31,7 @@ public class ZWaveThingChannel {
         StringType,
         DateTimeType,
         UpDownType,
+        QuantityType,
         StopMoveType;
     }
 

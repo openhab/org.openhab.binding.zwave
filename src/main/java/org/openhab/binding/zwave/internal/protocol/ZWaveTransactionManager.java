@@ -22,6 +22,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.PriorityBlockingQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
@@ -143,9 +144,9 @@ public class ZWaveTransactionManager {
      */
     private final int HOLDOFF_DELAY = 250;
 
-    private Boolean holdoffActive = Boolean.FALSE;
+    private final AtomicBoolean holdoffActive = new AtomicBoolean(false);
 
-    private Calendar holdoffDelay = Calendar.getInstance();
+    private final Calendar holdoffDelay = Calendar.getInstance();
 
     /**
      * The controller used by this transaction manager
@@ -412,7 +413,7 @@ public class ZWaveTransactionManager {
                 try {
                     incomingMessage = recvQueue.take();
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    logger.debug("Interrupted taking message from recvQueue", e);
                     continue;
                 }
 
@@ -777,14 +778,14 @@ public class ZWaveTransactionManager {
     }
 
     private void sendNextMessage() {
-        synchronized (holdoffActive) {
-            logger.debug("Transaction SendNextMessage {} out at start. Holdoff {}", outstandingTransactions.size(),
-                    holdoffActive);
-            if (holdoffActive) {
-                logger.debug("Holdoff Timer active - no send...");
-                return;
-            }
+        // synchronized (holdoffActive) {
+        logger.debug("Transaction SendNextMessage {} out at start. Holdoff {}.", outstandingTransactions.size(),
+                holdoffActive);
+        if (holdoffActive.get()) {
+            logger.debug("Holdoff Timer active - no send...");
+            return;
         }
+        // }
 
         synchronized (sendQueue) {
             // If we're currently processing the core of a transaction, or there are too many
@@ -882,11 +883,11 @@ public class ZWaveTransactionManager {
     }
 
     private void startHoldoffTimer() {
-        synchronized (holdoffActive) {
-            logger.debug("Holdoff Timer started...");
-            holdoffActive = Boolean.TRUE;
-            holdoffDelay.setTimeInMillis(System.currentTimeMillis() + HOLDOFF_DELAY);
-        }
+        // synchronized (holdoffActive) {
+        logger.debug("Holdoff Timer started...");
+        holdoffActive.set(true);
+        holdoffDelay.setTimeInMillis(System.currentTimeMillis() + HOLDOFF_DELAY);
+        // }
         startTransactionTimer();
     }
 
@@ -894,21 +895,20 @@ public class ZWaveTransactionManager {
         // Stop any existing timer
         resetTransactionTimer();
 
-        synchronized (holdoffActive) {
-            if (holdoffActive) {
-                long delay = holdoffDelay.getTimeInMillis() - System.currentTimeMillis();
-                if (delay > 0) {
-                    // Create the timer task
-                    timerTask = new ZWaveTransactionTimer();
+        // synchronized (holdoffActive) {
+        if (holdoffActive.get()) {
+            long delay = holdoffDelay.getTimeInMillis() - System.currentTimeMillis();
+            if (delay > 0) {
+                // Create the timer task
+                timerTask = new ZWaveTransactionTimer();
 
-                    logger.debug("Holdoff Timer finishing in {}ms", delay);
-                    timer.schedule(timerTask, delay);
-
-                    return;
-                } else {
-                    holdoffActive = Boolean.FALSE;
-                }
+                logger.debug("Holdoff Timer finishing in {}ms", delay);
+                timer.schedule(timerTask, delay);
+            } else {
+                holdoffActive.set(false);
             }
+            return;
+            // }
         }
 
         synchronized (sendQueue) {
@@ -955,15 +955,14 @@ public class ZWaveTransactionManager {
         public void run() {
             // Handle the holdoff case.
             // This is set after a RESponse error to delay the next message
-            synchronized (holdoffActive) {
-                if (holdoffActive) {
-                    logger.debug("Holdoff Timer triggered...");
-                    holdoffActive = Boolean.FALSE;
-                    sendNextMessage();
-                    startTransactionTimer();
-                    return;
-                }
+            // synchronized (holdoffActive) {
+            if (holdoffActive.getAndSet(false)) {
+                logger.debug("Holdoff Timer triggered...");
+                sendNextMessage();
+                startTransactionTimer();
+                return;
             }
+            // }
 
             synchronized (sendQueue) {
                 logger.trace("Transaction Timeout.......... {} outstanding transactions",

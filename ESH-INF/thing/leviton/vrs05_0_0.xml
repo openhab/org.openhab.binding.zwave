@@ -7,7 +7,10 @@
 
   <thing-type id="leviton_vrs05_00_000" listed="false">
     <label>VRS05 Scene Capable Switch</label>
-    <description>Scene Capable Switch</description>
+    <description><![CDATA[
+Scene Capable Switch<br /><h1>Overview</h1><p>Scene Capable Incandescent Switch, Single Pole (One location) or 3-Way (Multi-location), Incandescent- 5A – 120VAC, 60Hz <br /></p> <br /><h2>Inclusion Information</h2><p>While the Controller is in the Inclusion mode and the Locator LED is ON on the switch, press the push pad to turn on the switch. The Controller will verify inclusion and the Locator LED will turn OFF.</p> <br /><h2>Exclusion Information</h2><p>While the Controller is in the Exclusion mode and the locator LED is ON on the Dimmer, press the push pad to turn on the switch. The Controller will verify Exclusion and the locator LED will turn OFF.</p>
+    ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -65,6 +68,7 @@
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

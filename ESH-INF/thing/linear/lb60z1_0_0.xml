@@ -7,7 +7,9 @@
 
   <thing-type id="linear_lb60z1_00_000" listed="false">
     <label>LB60Z-1 Dimmable LED Light Bulb</label>
-    <description>Dimmable LED Light Bulb</description>
+    <description><![CDATA[
+Dimmable LED Light Bulb<br /><h1>Overview</h1><p>Radio Frequency Controlled Smart LED Light Bulb, 750 Lumens</p> <br /><h2>Inclusion Information</h2><p>Turn the power to the light bulb socke ON</p> <br /><h2>Exclusion Information</h2><p>Set  the  Controller  into  “exclusion”  mode.<br />Reset the bulb by using the wall switch to turn the power to the bulb ON. The Smart LED Light Bulb will flash twice to confirm the exclusion</p>
+    ]]></description>
     <category>LightBulb</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -73,6 +75,7 @@ Dim Settings<br /><h1>Overview</h1><p>By default, the LB60Z-1 bulb will go to fu
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>
