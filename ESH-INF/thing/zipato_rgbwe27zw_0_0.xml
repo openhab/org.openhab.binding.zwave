@@ -8,6 +8,7 @@
   <thing-type id="zipato_rgbwe27zw_00_000" listed="false">
     <label>RGBWE27ZW RGBW bulb</label>
     <description>RGBW bulb</description>
+    <category>LightBulb</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

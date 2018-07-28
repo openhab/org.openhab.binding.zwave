@@ -5,25 +5,26 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="leviton_vrs15_00_000" listed="false">
-    <label>VRS15 Scene Capable Push On/Off</label>
+  <thing-type id="leviton_rzi061l_00_000" listed="false">
+    <label>RZI06-1L Dimmer switch 600w incandescent</label>
     <description><![CDATA[
-Scene Capable Push On/Off<br /><h1>Overview</h1><p>Vizia-RF + 15A Relay Switch for Single Pole/3-Way</p> <br /><h2>Inclusion Information</h2><ol><li>Install VRS15</li> <li>Place controller in inclusion mode</li> <li>Press on/off paddle on VRS15 to include</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Place controller in exclusion mode</li> <li>Press on/off paddle on VRS15 to exclude</li> </ol>
+Dimmer switch 600w incandescent<br /><h1>Overview</h1><p>Scene-Capable Preset Digital / Z-Wave 900MHz Incandescent Return to Neutral Dimmer. </p> <br /><h2>Inclusion Information</h2><ol><li>Install RZI06</li> <li>Place controller in inclusion mode</li> <li>Press light on/off paddle on RZI06</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Place controller in exclusion mode</li> <li>Press light on/off paddle on RZI06</li> </ol><br /><h2>Wakeup Information</h2><p>Mains connected, not applicable.</p>
     ]]></description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:PercentType">SWITCH_MULTILEVEL,BASIC</property>
+          <property name="binding:Command:OnOffType">SWITCH_MULTILEVEL,BASIC</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
         <label>Scene Number</label>
         <properties>
-          <property name="binding:*:DecimalType">SCENE_ACTIVATION,BASIC</property>
+          <property name="binding:*:DecimalType">SCENE_ACTIVATION</property>
         </properties>
       </channel>
     </channels>
@@ -31,22 +32,22 @@ Scene Capable Push On/Off<br /><h1>Overview</h1><p>Vizia-RF + 15A Relay Switch f
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Leviton</property>
-      <property name="modelId">VRS15</property>
+      <property name="modelId">RZI06-1L</property>
       <property name="manufacturerId">001D</property>
-      <property name="manufacturerRef">0301:0209,0301:0334</property>
-      <property name="dbReference">193</property>
+      <property name="manufacturerRef">0401:0206</property>
+      <property name="dbReference">877</property>
       <property name="commandClass:NO_OPERATION">setVersion=1</property>
       <property name="commandClass:BASIC">setVersion=1</property>
-      <property name="commandClass:SWITCH_BINARY">setVersion=1</property>
+      <property name="commandClass:SWITCH_MULTILEVEL">setVersion=1</property>
       <property name="commandClass:SWITCH_ALL">setVersion=1</property>
       <property name="commandClass:SCENE_ACTIVATION">setVersion=1</property>
       <property name="commandClass:SCENE_ACTUATOR_CONF">setVersion=1</property>
       <property name="commandClass:MANUFACTURER_SPECIFIC">setVersion=1</property>
       <property name="commandClass:POWERLEVEL">setVersion=1</property>
       <property name="commandClass:NODE_NAMING">setVersion=1</property>
+      <property name="commandClass:HAIL">setVersion=1</property>
       <property name="commandClass:ASSOCIATION">setVersion=1</property>
       <property name="commandClass:VERSION">setVersion=1</property>
-      <property name="commandClass:MANUFACTURER_PROPRIETARY">setVersion=0</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -59,9 +60,9 @@ Scene Capable Push On/Off<br /><h1>Overview</h1><p>Vizia-RF + 15A Relay Switch f
         <label>Association Groups</label>
       </parameter-group>
 
-      <parameter name="group_1" type="text" groupName="association" multiple="true">
+      <parameter name="group_1" type="text" groupName="association">
         <label>1: Group 1</label>
-        <multipleLimit>5</multipleLimit>
+        <description>Association group 1</description>
       </parameter>
 
     </config-description>

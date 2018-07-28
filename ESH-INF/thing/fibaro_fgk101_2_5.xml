@@ -14,10 +14,16 @@ Door/Window Sensor<br /><h1>Overview</h1><p>The Fibaro Door / Window Sensor is a
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Binary Sensor</label>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
         <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
+          <property name="binding:*:DecimalType">SCENE_ACTIVATION</property>
+        </properties>
+      </channel>
+      <channel id="sensor_door" typeId="sensor_door">
+        <label>Door Sensor</label>
+        <properties>
+          <property name="binding:*:OpenClosedType">SENSOR_BINARY</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -25,10 +31,34 @@ Door/Window Sensor<br /><h1>Overview</h1><p>The Fibaro Door / Window Sensor is a
           <property name="binding:*:PercentType">BATTERY</property>
         </properties>
       </channel>
+      <channel id="alarm_co2" typeId="alarm_co2">
+        <label>Alarm (CO2)</label>
+        <properties>
+          <property name="binding:*:OnOffType">SENSOR_ALARM;type=CARBON_DIOXIDE</property>
+        </properties>
+      </channel>
+      <channel id="alarm_general" typeId="alarm_general">
+        <label>Alarm (general)</label>
+        <properties>
+          <property name="binding:*:OnOffType">SENSOR_ALARM;type=GENERAL</property>
+        </properties>
+      </channel>
       <channel id="alarm_smoke" typeId="alarm_smoke">
         <label>Alarm (smoke)</label>
         <properties>
           <property name="binding:*:OnOffType">SENSOR_ALARM;type=SMOKE</property>
+        </properties>
+      </channel>
+      <channel id="sensor_door1" typeId="sensor_door">
+        <label>Door Sensor 1</label>
+        <properties>
+          <property name="binding:*:OpenClosedType">SENSOR_BINARY:1</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature2" typeId="sensor_temperature">
+        <label>Sensor (temperature) 2</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:2;type=TEMPERATURE</property>
         </properties>
       </channel>
     </channels>
