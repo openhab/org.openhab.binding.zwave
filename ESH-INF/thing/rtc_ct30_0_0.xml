@@ -7,7 +7,10 @@
 
   <thing-type id="rtc_ct30_00_000" listed="false">
     <label>CT30 Z-Wave Thermostat</label>
-    <description>Z-Wave Thermostat</description>
+    <description><![CDATA[
+Z-Wave Thermostat<br /><h1>Overview</h1><p>This thermostat was made by Radio Thermostat Company of America or 2Gig.  It can use either WiFi or Z-Wave or both depending on <br />which USNAP modules are installed.</p> <br /><h2>Inclusion Information</h2><p>Put your primary controller in include mode.<br />Press the MENU button<br />Tap the MATE button under the radio tower icon.  A large "r1" or "r2" wil be displayed indicating which slot the USNAP module is in.<br />Tap the MATE button under the radio tower icon again to include.</p> <br /><h2>Exclusion Information</h2><p>Put your primary controller in exclude mode.<br />Press the MENU button<br />Tap the MATE button under the radio tower icon.  A large "r1" or "r2" wil be displayed indicating which slot the USNAP module is in.<br />Tap the MATE button under the radio tower icon again to exclude.</p>
+    ]]></description>
+    <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

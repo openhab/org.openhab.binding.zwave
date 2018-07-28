@@ -248,12 +248,13 @@ To set which notification would be sent to association group 4<br /><h1>Overview
       </parameter>
 
       <parameter name="config_84_4" type="integer" groupName="configuration"
-                 min="0" max="16843248">
+                 min="0" max="593044313">
         <label>84: Night light on/off</label>
         <description><![CDATA[
-Time to turn the light on and off<br /><h1>Overview</h1><p>0 to 60 = The minute time of OFF</p> <p>256 to 316 = The hour time of OFF</p> <p>65536 to 65596 = The minute time of ON</p> <p>16777216 to 16777276 = The hour time of ON</p>
+Time to turn the light on and off<br /><h1>Overview</h1><p>value 1 = (range of 0 - 23) // ON (hour) value 2 = (range of 0 - 59) // ON (minute) value 3 = (range of 0 - 23) // OFF (hour) value 4 = (range of 0 - 59) // OFF (minute)   It would be best to convert each value into HEX and input them like this:   Parameter 84 = (value 1)(value 2)(value 3)(value 4)   Using the default values it would look like this = (12)(00)(08)(00) converted to decimal is = 301991936 </p>
         ]]></description>
-        <default>0</default>
+        <default>301991936</default>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_90_1" type="integer" groupName="configuration">

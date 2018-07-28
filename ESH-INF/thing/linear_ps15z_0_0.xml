@@ -8,6 +8,7 @@
   <thing-type id="linear_ps15z_00_000" listed="false">
     <label>PS15Z Plug-In Appliance Module</label>
     <description>Plug-In Appliance Module</description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
