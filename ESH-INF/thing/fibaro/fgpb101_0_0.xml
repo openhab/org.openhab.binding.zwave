@@ -245,6 +245,7 @@ Which actions result in sending alarm frames to 4th association group.<br /><h1>
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

@@ -51,6 +51,7 @@ Scene Capable Plug-in Dimmer<br /><h1>Overview</h1><ul><li>Smart plug-in module 
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

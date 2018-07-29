@@ -216,6 +216,7 @@ Change behavior of LED during transmission to group 1-4<br /><h1>Overview</h1><p
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

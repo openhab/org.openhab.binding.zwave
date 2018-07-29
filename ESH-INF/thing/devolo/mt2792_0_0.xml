@@ -215,6 +215,7 @@ Restore switch state mode.<br /><h1>Overview</h1><p>Status of the plug if it is 
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

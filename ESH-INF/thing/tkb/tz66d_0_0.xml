@@ -161,6 +161,7 @@ Blue LED light Behavior. Default is Night Light (led on when switch off)<br /><h
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

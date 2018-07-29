@@ -128,6 +128,7 @@ Duration ranges from 15 to 45 seconds. Valid values range from 15 to 45.<br /><h
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

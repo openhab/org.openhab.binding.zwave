@@ -37,6 +37,7 @@ CH-601 THE ELECTRIC CRANE<br /><h1>Overview</h1><p>The electric crane CH-601 is
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

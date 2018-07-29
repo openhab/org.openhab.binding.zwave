@@ -156,6 +156,7 @@ Range is from 0.1 to 10°C 1=0.1°C 100=10°C<br /><h1>Overview</h1><p>Default v
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

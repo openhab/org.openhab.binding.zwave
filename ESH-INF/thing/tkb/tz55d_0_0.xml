@@ -23,8 +23,8 @@ Dual Paddle Wall Dimmer<br /><h1>Overview</h1><p>Dual Paddle Wall Dimmer, AC230V
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Paddle 2</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -141,6 +141,7 @@ Group 4 Control<br /><h1>Overview</h1><p>Group 4 Control: If you associate a Z-W
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

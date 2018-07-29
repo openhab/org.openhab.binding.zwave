@@ -285,6 +285,7 @@ Set power level for plain switch functionality<br /><h1>Overview</h1><p>0=disabl
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

@@ -132,6 +132,7 @@ An offset for the temperature.<br /><h1>Overview</h1><p>Param1,2: A signed integ
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

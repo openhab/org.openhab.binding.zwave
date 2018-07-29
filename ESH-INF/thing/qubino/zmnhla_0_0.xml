@@ -358,6 +358,7 @@ Respond to ALL ON/ALL OFF<br /><h1>Overview</h1><p>Flush PWM thermostat module r
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

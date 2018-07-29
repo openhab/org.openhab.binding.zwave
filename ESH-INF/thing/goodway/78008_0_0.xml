@@ -171,6 +171,7 @@ BIT0: sensor1 (S1), BIT1: sensor2 (S2)<br /><h1>Overview</h1><p>BIT0: sensor1 (S
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

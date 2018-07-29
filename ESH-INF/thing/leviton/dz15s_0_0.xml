@@ -8,6 +8,7 @@
   <thing-type id="leviton_dz15s_00_000" listed="false">
     <label>DZ15S Scene Capable Push On/Off</label>
     <description>Scene Capable Push On/Off</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -70,6 +71,7 @@
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

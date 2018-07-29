@@ -460,6 +460,7 @@ Tamper BC (backward compability)<br /><h1>Overview</h1><p>"Tamper BC" is assigne
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

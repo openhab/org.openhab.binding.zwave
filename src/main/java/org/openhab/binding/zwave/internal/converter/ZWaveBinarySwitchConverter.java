@@ -90,11 +90,6 @@ public class ZWaveBinarySwitchConverter extends ZWaveCommandClassConverter {
         }
         messages.add(transaction);
 
-        transaction = node.encapsulate(commandClass.getValueMessage(), channel.getEndpoint());
-        if (transaction != null) {
-            messages.add(transaction);
-        }
-
         return messages;
     }
 }

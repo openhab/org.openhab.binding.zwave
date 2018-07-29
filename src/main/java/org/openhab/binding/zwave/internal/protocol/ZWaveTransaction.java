@@ -142,7 +142,7 @@ public class ZWaveTransaction {
     public void transactionStart() {
         startTime = System.currentTimeMillis();
 
-        logger.debug("TID {}: Transaction Start type {} ", transactionId, payload.getSerialMessageClass());
+        logger.trace("TID {}: Transaction Start type {} ", transactionId, payload.getSerialMessageClass());
 
         // We must have just sent the message
         if (payload.getSerialMessageClass().requiresResponse()) {
@@ -216,7 +216,7 @@ public class ZWaveTransaction {
 
     /**
      * Gets the state the transaction was at when cancelled
-     * 
+     *
      * @return the {@link TransactionState} when cancelled
      */
     public TransactionState getTransactionCancelledState() {
@@ -432,7 +432,8 @@ public class ZWaveTransaction {
 
     @Override
     public String toString() {
-        return "TID " + transactionId + ": [" + transactionStateTracker + "] requiresResponse=" + requiresResponse
-                + " callback: " + (serialMessage == null ? "--" : serialMessage.getCallbackId());
+        return "TID " + transactionId + ": [" + transactionStateTracker + "] priority=" + priority
+                + ", requiresResponse=" + requiresResponse + ", callback: "
+                + (serialMessage == null ? "--" : serialMessage.getCallbackId());
     }
 }

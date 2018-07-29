@@ -27,8 +27,18 @@
       <property name="vendor">Leviton</property>
       <property name="modelId">VRCS4</property>
       <property name="manufacturerId">001D</property>
-      <property name="manufacturerRef">0702:0261,0802:0261</property>
+      <property name="manufacturerRef">0702:0261,0802:0209,0802:0261</property>
       <property name="dbReference">197</property>
+      <property name="commandClass:COMMAND_CLASS_NO_OPERATION">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_BASIC">setVersion=0</property>
+      <property name="commandClass:COMMAND_CLASS_SCENE_ACTIVATION">setVersion=0</property>
+      <property name="commandClass:COMMAND_CLASS_SCENE_ACTUATOR_CONF">setVersion=0</property>
+      <property name="commandClass:COMMAND_CLASS_SCENE_CONTROLLER_CONF">setVersion=0</property>
+      <property name="commandClass:COMMAND_CLASS_MANUFACTURER_SPECIFIC">setVersion=0</property>
+      <property name="commandClass:COMMAND_CLASS_NODE_NAMING">setVersion=0</property>
+      <property name="commandClass:COMMAND_CLASS_HAIL">setVersion=0</property>
+      <property name="commandClass:COMMAND_CLASS_ASSOCIATION">setVersion=0</property>
+      <property name="commandClass:COMMAND_CLASS_VERSION">setVersion=0</property>
       <property name="defaultAssociations">1,2,3,4</property>
     </properties>
 
@@ -77,6 +87,7 @@ Button 4<br /><h1>Overview</h1><p>Fourth button on controller. Can be associate
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

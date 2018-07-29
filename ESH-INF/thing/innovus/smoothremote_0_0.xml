@@ -76,6 +76,7 @@ Network Update Interval, time between network updates in 256 seconds. Disabled i
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

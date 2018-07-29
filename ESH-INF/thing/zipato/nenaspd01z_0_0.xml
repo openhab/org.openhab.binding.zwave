@@ -186,6 +186,7 @@ Sensor Binary Report<br /><h1>Overview</h1><p><strong>GROUP 4</strong> allows se
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

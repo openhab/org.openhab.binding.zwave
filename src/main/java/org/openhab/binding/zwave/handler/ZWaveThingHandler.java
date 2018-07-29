@@ -1079,8 +1079,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             return;
         }
 
-        List<ZWaveCommandClassTransactionPayload> messages = null;
-        messages = cmdChannel.getConverter().receiveCommand(cmdChannel, node, command);
+        List<ZWaveCommandClassTransactionPayload> messages = cmdChannel.getConverter().receiveCommand(cmdChannel, node,
+                command);
 
         if (messages == null) {
             logger.debug("NODE {}: No messages returned from converter", nodeId);

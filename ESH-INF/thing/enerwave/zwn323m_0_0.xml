@@ -144,6 +144,7 @@ Minimum change in wattage report<br /><h1>Overview</h1><p>0-255: 0.0-25.5W</p>
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

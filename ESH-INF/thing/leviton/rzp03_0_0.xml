@@ -7,7 +7,10 @@
 
   <thing-type id="leviton_rzp03_00_000" listed="false">
     <label>RZP03 Scene Capable Plug-In Lamp Dimming Module</label>
-    <description>Scene Capable Plug-In Lamp Dimming Module</description>
+    <description><![CDATA[
+Scene Capable Plug-In Lamp Dimming Module<br /><h1>Overview</h1><p>Scene Capable Plug-In Lamp Dimming Module , Rated: 120VAC, 60Hz, Incandescent: 300W max., 60W min </p> <br /><h2>Inclusion Information</h2><p>Press the ON/OFF button on the module</p> <br /><h2>Exclusion Information</h2><p>Press the ON/OFF button on the module</p>
+    ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -34,6 +37,7 @@
       <property name="manufacturerRef">0201:0206</property>
       <property name="dbReference">373</property>
       <property name="commandClass:COMMAND_CLASS_BASIC">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_APPLICATION_STATUS">ccAdd</property>
       <property name="commandClass:COMMAND_CLASS_SWITCH_MULTILEVEL">setVersion=1</property>
       <property name="commandClass:COMMAND_CLASS_SWITCH_ALL">setVersion=1</property>
       <property name="commandClass:COMMAND_CLASS_SCENE_ACTIVATION">setVersion=1</property>
@@ -66,6 +70,7 @@
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

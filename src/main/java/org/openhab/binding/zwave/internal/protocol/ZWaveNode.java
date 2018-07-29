@@ -1074,7 +1074,7 @@ public class ZWaveNode {
     public ZWaveCommandClassTransactionPayload encapsulate(ZWaveCommandClassTransactionPayload transaction,
             int endpointId) {
         ZWaveMultiInstanceCommandClass multiInstanceCommandClass;
-        logger.debug("NODE {}: Encapsulating message, endpoint {}", getNodeId(), endpointId);
+        logger.trace("NODE {}: Encapsulating message, endpoint {}", getNodeId(), endpointId);
 
         if (transaction == null) {
             return null;

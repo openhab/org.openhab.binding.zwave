@@ -866,7 +866,7 @@ public class ZWaveTransactionManager {
             controller.sendPacket(serialMessage);
 
             transaction.transactionStart();
-            logger.trace("Transaction SendNextMessage started: {}", transaction);
+            logger.debug("Transaction SendNextMessage started: {}", transaction);
 
             logger.trace("Transaction SendNextMessage started: expected cmd class: {}",
                     transaction.getExpectedCommandClass());

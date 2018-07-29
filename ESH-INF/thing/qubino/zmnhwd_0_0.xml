@@ -260,6 +260,7 @@ Dimming time when key pressed<br /><h1>Overview</h1><p>1 – 127 = from 1 to 127
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

@@ -7,7 +7,9 @@
 
   <thing-type id="leviton_dzr15_00_000" listed="false">
     <label>DZR15 Scene Capable Receptacle</label>
-    <description>Scene Capable Receptacle</description>
+    <description><![CDATA[
+Scene Capable Receptacle<br /><h1>Overview</h1><p>Z-Wave Enabled 15 Amp Scene Capable Receptacle with LED Locator - White/Light Almond</p> <p>The wireless Leviton DZR15 is a Z-Wave enabled 15A tamper resistant receptacle designed for use for most residential lighting and motor applications. A large range of load types are supported including incandescent, halogen and magnetic low voltage, electronic low voltage, fluorescent, and motor loads up to ½ horse power.</p> <br /><h2>Inclusion Information</h2><p>Press and hold the button on the outlet for 7 seconds until the light starts blinking amber.</p>
+    ]]></description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -41,6 +43,7 @@
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

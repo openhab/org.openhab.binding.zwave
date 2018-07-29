@@ -87,6 +87,7 @@ Z-Wave Plus Dimmer Light Switch<br /><h1>Overview</h1><ul><li>Manual or remote o
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>
