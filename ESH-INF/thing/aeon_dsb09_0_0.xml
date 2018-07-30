@@ -368,7 +368,7 @@ Percentage change in wattage to induce an automatic report (Clamp 3)<br /><h1>Ov
         </options>
       </parameter>
 
-      <parameter name="config_102_4_00000200" type="integer" groupName="configuration" readOnly="true">
+      <parameter name="config_102_4_00000200" type="integer" groupName="configuration">
         <label>102: Report Group 2: Meter Report for Watt (clamp 2)</label>
         <default>0</default>
         <options>
@@ -505,19 +505,19 @@ Percentage change in wattage to induce an automatic report (Clamp 3)<br /><h1>Ov
 
       <parameter name="config_111_4" type="integer" groupName="configuration"
                  min="1" max="2678400">
-        <label>111: Interval to send out reports of group 1</label>
+        <label>111: Interval to send Report Group 1</label>
         <default>720</default>
       </parameter>
 
       <parameter name="config_112_4" type="integer" groupName="configuration"
                  min="1" max="2678400">
-        <label>112: Interval to send out reports of group 2</label>
+        <label>112: Interval to send Report Group 2</label>
         <default>720</default>
       </parameter>
 
       <parameter name="config_113_4" type="integer" groupName="configuration"
                  min="1" max="2678400">
-        <label>113: Interval to send out reports of group 3</label>
+        <label>113: Interval to send Report Group 3</label>
         <default>720</default>
       </parameter>
 

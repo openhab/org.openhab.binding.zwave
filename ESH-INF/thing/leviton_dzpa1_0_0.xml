@@ -17,7 +17,7 @@ Plug-in Appliance Module<br /><h1>Overview</h1><p>On/Off (binary) plug in module
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY,BASIC</property>
         </properties>
       </channel>
     </channels>
