@@ -1031,7 +1031,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     public void handleCommand(ChannelUID channelUID, Command command) {
         logger.debug("NODE {}: Command received {} --> {}", nodeId, channelUID, command);
         if (controllerHandler == null) {
-            logger.debug("Controller handler not found. Cannot handle command without ZWave controller.");
+            logger.debug("NODE {}: Controller handler not found. Cannot handle command without ZWave controller.",
+                    nodeId);
             return;
         }
 

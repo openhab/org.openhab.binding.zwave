@@ -116,7 +116,7 @@ public class ZWaveIndicatorConverter extends ZWaveCommandClassConverter {
                 property = IndicatorProperty.ON_OFF_CYCLES;
                 break;
             default:
-                logger.warn("Unknown INDICATOR channel type {}", channel.getUID().getId());
+                logger.warn("NODE {}: Unknown INDICATOR channel type {}", node.getNodeId(), channel.getUID().getId());
                 return null;
         }
 
@@ -125,9 +125,9 @@ public class ZWaveIndicatorConverter extends ZWaveCommandClassConverter {
             value = ((OnOffType) command) == OnOffType.ON ? 0xff : 0x00;
         } else if (command instanceof DecimalType) {
             value = ((DecimalType) command).intValue();
-        }
-
-        if (value == null) {
+        } else {
+            logger.warn("NODE {}: Unknown INDICATOR command type {}", node.getNodeId(),
+                    command.getClass().getSimpleName());
             return null;
         }
 
