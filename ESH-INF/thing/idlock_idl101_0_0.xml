@@ -90,13 +90,6 @@ Sets the door lock mode<br /><h1>Overview</h1><p>No details in manual, will upda
         </options>
       </parameter>
 
-      <parameter name="config_2_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
-        <label>2: RFID Register Mode</label>
-        <description>Sets the RFID registration mode</description>
-        <default>0</default>
-      </parameter>
-
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter-group name="association">
         <context>link</context>
