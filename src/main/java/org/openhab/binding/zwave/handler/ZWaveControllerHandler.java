@@ -244,6 +244,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         ZWaveController controller = this.controller;
         if (controller != null) {
             this.controller = null;
+            controller.shutdown();
             controller.removeEventListener(this);
         }
     }

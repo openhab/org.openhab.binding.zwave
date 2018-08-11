@@ -135,9 +135,6 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
 
     @Override
     public void handleCommand(ChannelUID channelUID, Command command) {
-        // if(channelUID.getId().equals(CHANNEL_1)) {
-        // TODO: handle command
-        // }
     }
 
     /**
@@ -163,7 +160,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
         private final Logger logger = LoggerFactory.getLogger(ZWaveReceiveThread.class);
 
         ZWaveReceiveThread() {
-            super("ZWaveReceiveThread");
+            super("ZWaveReceiveInputThread");
         }
 
         @Override

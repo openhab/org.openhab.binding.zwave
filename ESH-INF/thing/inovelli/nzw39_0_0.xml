@@ -28,7 +28,7 @@ Dimmable Smart Plug<br /><h1>Overview</h1><p>Z-Wave Plug/Dimmer w/Built-in Z-Wav
       <property name="vendor">Inovelli</property>
       <property name="modelId">NZW39</property>
       <property name="manufacturerId">0312</property>
-      <property name="manufacturerRef">B212:271C</property>
+      <property name="manufacturerRef">2700:2700,B212:271C</property>
       <property name="dbReference">662</property>
       <property name="defaultAssociations">1</property>
     </properties>

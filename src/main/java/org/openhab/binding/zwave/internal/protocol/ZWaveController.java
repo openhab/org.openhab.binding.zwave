@@ -114,6 +114,10 @@ public class ZWaveController {
         this(handler, new HashMap<String, String>());
     }
 
+    public void shutdown() {
+        transactionManager.shutdown();
+    }
+
     /**
      * Constructor. Creates a new instance of the ZWave controller class.
      *

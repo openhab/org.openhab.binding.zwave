@@ -80,7 +80,7 @@ public class ZWaveColorConverterTest extends ZWaveCommandClassConverterTest {
 
         ZWaveNode node = CreateMockedNode(1);
         List<ZWaveCommandClassTransactionPayload> transactions = converter.receiveCommand(channel, node,
-                new HSBType("360,100,100"));
+                new HSBType("0,100,100"));
         assertEquals(1, transactions.size());
         ZWaveCommandClassTransactionPayload transaction = transactions.get(0);
 

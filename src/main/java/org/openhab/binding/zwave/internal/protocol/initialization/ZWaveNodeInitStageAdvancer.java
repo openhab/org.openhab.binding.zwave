@@ -7,6 +7,8 @@
  */
 package org.openhab.binding.zwave.internal.protocol.initialization;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -207,7 +209,8 @@ public class ZWaveNodeInitStageAdvancer {
                 setCurrentStage(ZWaveNodeInitStage.DONE);
             }
         };
-
+        initialisationThread.setName("ZWaveNode" + node.getNodeId() + "Init"
+                + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")));
         initialisationThread.start();
     }
 

@@ -200,6 +200,14 @@ public class ZWaveTransactionManager {
         receiveThread.start();
     }
 
+    /**
+     * Shuts down the manager and frees resources
+     */
+    public void shutdown() {
+        recvQueue.notify();
+        receiveThread.interrupt();
+    }
+
     private void AddTransactionListener(TransactionListener listener) {
         synchronized (transactionListeners) {
             if (transactionListeners.contains(listener)) {
@@ -398,6 +406,10 @@ public class ZWaveTransactionManager {
     }
 
     private class ZWaveReceiveThread extends Thread {
+        ZWaveReceiveThread() {
+            super("ZWaveReceiveProcessorThread");
+        }
+
         @Override
         public void run() {
             SerialMessage incomingMessage;
@@ -778,16 +790,16 @@ public class ZWaveTransactionManager {
     }
 
     private void sendNextMessage() {
-        // synchronized (holdoffActive) {
-        logger.debug("Transaction SendNextMessage {} out at start. Holdoff {}.", outstandingTransactions.size(),
-                holdoffActive);
-        if (holdoffActive.get()) {
-            logger.debug("Holdoff Timer active - no send...");
-            return;
-        }
-        // }
-
         synchronized (sendQueue) {
+            // synchronized (holdoffActive) {
+            logger.debug("Transaction SendNextMessage {} out at start. Holdoff {}.", outstandingTransactions.size(),
+                    holdoffActive);
+            if (holdoffActive.get()) {
+                logger.debug("Holdoff Timer active - no send...");
+                return;
+            }
+            // }
+
             // If we're currently processing the core of a transaction, or there are too many
             // outstanding transactions, then don't start another right now.
             if (lastTransaction != null) {
@@ -883,35 +895,42 @@ public class ZWaveTransactionManager {
     }
 
     private void startHoldoffTimer() {
-        // synchronized (holdoffActive) {
-        logger.debug("Holdoff Timer started...");
-        holdoffActive.set(true);
-        holdoffDelay.setTimeInMillis(System.currentTimeMillis() + HOLDOFF_DELAY);
-        // }
-        startTransactionTimer();
+        synchronized (sendQueue) {
+            // synchronized (holdoffActive) {
+            logger.debug("Holdoff Timer started...");
+            holdoffActive.set(true);
+            holdoffDelay.setTimeInMillis(System.currentTimeMillis() + HOLDOFF_DELAY);
+            // }
+            startTransactionTimer();
+        }
     }
 
     private void startTransactionTimer() {
-        // Stop any existing timer
-        resetTransactionTimer();
-
-        // synchronized (holdoffActive) {
-        if (holdoffActive.get()) {
-            long delay = holdoffDelay.getTimeInMillis() - System.currentTimeMillis();
-            if (delay > 0) {
-                // Create the timer task
-                timerTask = new ZWaveTransactionTimer();
-
-                logger.debug("Holdoff Timer finishing in {}ms", delay);
-                timer.schedule(timerTask, delay);
-            } else {
-                holdoffActive.set(false);
-            }
-            return;
-            // }
-        }
-
         synchronized (sendQueue) {
+            // Stop any existing timer
+            if (timerTask != null) {
+                logger.trace("STOP transaction timer");
+
+                timerTask.cancel();
+                timerTask = null;
+            }
+
+            // synchronized (holdoffActive) {
+            if (holdoffActive.get()) {
+                long delay = holdoffDelay.getTimeInMillis() - System.currentTimeMillis();
+                if (delay > 0) {
+                    // Create the timer task
+                    timerTask = new ZWaveTransactionTimer();
+
+                    logger.debug("Holdoff Timer finishing in {}ms", delay);
+                    timer.schedule(timerTask, delay);
+                } else {
+                    holdoffActive.set(false);
+                }
+                return;
+                // }
+            }
+
             // Find the time till the next timer
             Date nextTimer = null;
             for (ZWaveTransaction transaction : outstandingTransactions) {
@@ -938,33 +957,23 @@ public class ZWaveTransactionManager {
         }
     }
 
-    private synchronized void resetTransactionTimer() {
-        // Stop any existing timer
-        if (timerTask != null) {
-            logger.trace("STOP transaction timer");
-
-            timerTask.cancel();
-            timerTask = null;
-        }
-    }
-
     private class ZWaveTransactionTimer extends TimerTask {
         private final Logger logger = LoggerFactory.getLogger(ZWaveTransactionTimer.class);
 
         @Override
         public void run() {
-            // Handle the holdoff case.
-            // This is set after a RESponse error to delay the next message
-            // synchronized (holdoffActive) {
-            if (holdoffActive.getAndSet(false)) {
-                logger.debug("Holdoff Timer triggered...");
-                sendNextMessage();
-                startTransactionTimer();
-                return;
-            }
-            // }
-
             synchronized (sendQueue) {
+                // Handle the holdoff case.
+                // This is set after a RESponse error to delay the next message
+                // synchronized (holdoffActive) {
+                if (holdoffActive.getAndSet(false)) {
+                    logger.debug("Holdoff Timer triggered...");
+                    sendNextMessage();
+                    startTransactionTimer();
+                    return;
+                }
+                // }
+
                 logger.trace("Transaction Timeout.......... {} outstanding transactions",
                         outstandingTransactions.size());
                 Date now = new Date();
