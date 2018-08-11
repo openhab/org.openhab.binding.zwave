@@ -27,8 +27,18 @@
       <property name="vendor">Leviton</property>
       <property name="modelId">VRCS4</property>
       <property name="manufacturerId">001D</property>
-      <property name="manufacturerRef">0702:0261,0802:0261</property>
+      <property name="manufacturerRef">0702:0261,0802:0209,0802:0261</property>
       <property name="dbReference">197</property>
+      <property name="commandClass:NO_OPERATION">setVersion=1</property>
+      <property name="commandClass:BASIC">setVersion=0</property>
+      <property name="commandClass:SCENE_ACTIVATION">setVersion=0</property>
+      <property name="commandClass:SCENE_ACTUATOR_CONF">setVersion=0</property>
+      <property name="commandClass:SCENE_CONTROLLER_CONF">setVersion=0</property>
+      <property name="commandClass:MANUFACTURER_SPECIFIC">setVersion=0</property>
+      <property name="commandClass:NODE_NAMING">setVersion=0</property>
+      <property name="commandClass:HAIL">setVersion=0</property>
+      <property name="commandClass:ASSOCIATION">setVersion=0</property>
+      <property name="commandClass:VERSION">setVersion=0</property>
       <property name="defaultAssociations">1,2,3,4</property>
     </properties>
 
