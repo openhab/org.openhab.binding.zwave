@@ -8,7 +8,7 @@
   <thing-type id="defaro_dad101_00_000" listed="false">
     <label>DAD-101 Dimmer with sensors support</label>
     <description><![CDATA[
-Dimmer with sensors support<br /><h2>Inclusion Information</h2><ol><li>Put controller in inclusion mode.</li> <li>Power on device. It should be added automatically (using NWI).</li> <li>If not fast press add/remove button three times.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Put controller in exclusion mode.</li> <li>Fast press add/remove button three times.</li> </ol><br /><h2>Wakeup Information</h2><p>Always listening</p>
+Dimmer with sensors support<br /><h1>Overview</h1><p>One channel dimmer with ability to add different sensors to it.</p> <br /><h2>Inclusion Information</h2><ol><li>Put controller in inclusion mode.</li> <li>Power on device. It should be added automatically (using NWI).</li> <li>If not fast press add/remove button three times.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Put controller in exclusion mode.</li> <li>Fast press add/remove button three times.</li> </ol><br /><h2>Wakeup Information</h2><p>Always listening</p>
     ]]></description>
     <category>WallSwitch</category>
 
@@ -91,6 +91,7 @@ Dimming speed<br /><h1>Overview</h1><p>Dimming speed in seconds (0 - instantly) 
         <default>5</default>
         <options>
           <option value="0">Disable</option>
+          <option value="1">Fastest</option>
         </options>
         <limitToOptions>false</limitToOptions>
       </parameter>

@@ -20,6 +20,12 @@ Dome Wireless Siren<br /><h1>Overview</h1><p>Alert you with sounds and built-in 
           <property name="binding:*:OnOffType">SWITCH_BINARY</property>
         </properties>
       </channel>
+      <channel id="config_decimal_param7" typeId="elexa_dms01_00_000_config_decimal_param7">
+        <label>Notification Sound</label>
+        <properties>
+          <property name="binding:*:DecimalType">CONFIGURATION;parameter=7</property>
+        </properties>
+      </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
         <properties>
@@ -165,5 +171,17 @@ Set the siren primary notification sound.<br /><h1>Overview</h1><p>The siren off
     </config-description>
 
   </thing-type>
+
+  <channel-type id="elexa_dms01_00_000_config_decimal_param7">
+    <item-type>Number</item-type>
+    <label>Toggle secondary chime</label>
+    <description>Toggles between primary and secondary chime for binary switch</description>
+    <state pattern="%s">
+      <options>
+        <option value="1">Primary notification will play</option>
+        <option value="2">Secondary notification will play</option>
+      </options>
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>
