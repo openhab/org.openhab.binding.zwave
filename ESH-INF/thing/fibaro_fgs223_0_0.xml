@@ -356,14 +356,6 @@ S2 switch - associations sent to 4th and 5th association groups<br /><h1>Overvie
         <default>255</default>
       </parameter>
 
-      <parameter name="config_36_2" type="integer" groupName="configuration"
-                 min="0" max="255">
-        <label>36: S2 ON val sent to 4th and 5th groups</label>
-        <description>S2 switch - Switch ON value sent to 4th and 5th association groups</description>
-        <default>255</default>
-        <limitToOptions>false</limitToOptions>
-      </parameter>
-
       <parameter name="config_37_2" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>37: S2 OFF val sent to 4th and 5th groups</label>

@@ -8,6 +8,7 @@
   <thing-type id="ge_ge14291_00_000" listed="false">
     <label>GE 14291 (ZW4005) In-Wall Paddle Switch</label>
     <description>In-Wall Paddle Switch</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -72,7 +73,7 @@
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association">
-        <label>1: Z-Wave Plus Lifeline</label>
+        <label>1: Lifeline</label>
         <description>Z-Wave Plus Lifeline</description>
       </parameter>
 

@@ -7,11 +7,19 @@
 
   <thing-type id="thermofloor_tf016_01_008" listed="false">
     <label>TF016 ZWave Thermostat</label>
-    <description>ZWave Thermostat</description>
+    <description><![CDATA[
+ZWave Thermostat<br /><h1>Overview</h1><p>The Heatit Z-Wave is designed for controlling electrical heating cables and electrical radiators/convectors. The thermostat has 2 internal temperature sensors and has 3 algorithms for temperature compensation. After you have set the temperature, the thermostat will use a hysteresis to regulate the temperature. The hysteresis is adjustable.</p> <p>The temperature shown in the display is the actual temperature for floor sensor and the external room sensor. You are able to calibrate the sensor values. When using the internal room sensor, the temperature shown is the set point. When using the internal sensor, the thermostat can seem somewhat inaccurate. This is due to heat generation inside the thermostat, draft and other external influences.</p> <p>If the thermostat is to be used with waterbased heating systems, you have to use an external sensor.</p>
+    ]]></description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Thermostat State</label>
+        <properties>
+          <property name="binding:*:OnOffType">BASIC</property>
+        </properties>
+      </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
