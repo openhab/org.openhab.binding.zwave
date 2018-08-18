@@ -593,6 +593,39 @@ public class ZWaveNode {
     }
 
     /**
+     * Gets the command class from the endpoint if it exists. IF the class does not exist within the endpoint, it is
+     * added.
+     *
+     * @param endpoint the {@link ZWaveEndpoint}
+     * @param commandClass the {@link CommandClass}
+     * @return the {@link ZWaveCommandClass} or null if the class is not supported
+     */
+    public ZWaveCommandClass getOrAddCommandClass(ZWaveEndpoint endpoint, CommandClass commandClass) {
+        ZWaveCommandClass zwaveCommandClass = endpoint.getCommandClass(commandClass);
+
+        // Apparently, this endpoint supports a command class that we did not learn about during initialization.
+        // Let's add it now then to support handling this message.
+        if (zwaveCommandClass != null) {
+            return zwaveCommandClass;
+        }
+
+        logger.debug("NODE {}: Command class {} not found, trying to add it.", getNodeId(), commandClass,
+                commandClass.getKey());
+
+        zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), this, controller);
+        if (zwaveCommandClass == null) {
+            // We got an unsupported command class, leave zwaveCommandClass as null
+            logger.debug("NODE {}: Unsupported Z-Wave command class {}", getNodeId(), commandClass);
+            return null;
+        }
+
+        logger.debug("NODE {}: Adding command class {} to endpoint {}", getNodeId(), commandClass,
+                endpoint.getEndpointId());
+        endpoint.addCommandClass(zwaveCommandClass);
+        return zwaveCommandClass;
+    }
+
+    /**
      * Removes a command class from the node.
      * This is used to remove classes that a node may report it supports
      * but it doesn't respond to.
@@ -1212,8 +1245,8 @@ public class ZWaveNode {
                 logger.debug("NODE {}: No endpoint 0!", getNodeId());
                 return null;
             }
-            ZWaveCRC16EncapsulationCommandClass crcCommandClass = (ZWaveCRC16EncapsulationCommandClass) endpoints.get(0)
-                    .getCommandClass(CommandClass.COMMAND_CLASS_CRC_16_ENCAP);
+            ZWaveCRC16EncapsulationCommandClass crcCommandClass = (ZWaveCRC16EncapsulationCommandClass) getOrAddCommandClass(
+                    endpoints.get(0), CommandClass.COMMAND_CLASS_CRC_16_ENCAP);
             if (crcCommandClass == null) {
                 logger.debug("NODE {}: COMMAND_CLASS_CRC_16_ENCAP not found", getNodeId());
                 return null;
@@ -1236,8 +1269,8 @@ public class ZWaveNode {
                 logger.debug("NODE {}: No endpoint 0!", getNodeId());
                 return null;
             }
-            ZWaveMultiInstanceCommandClass multichannelCommandClass = (ZWaveMultiInstanceCommandClass) endpoints.get(0)
-                    .getCommandClass(CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
+            ZWaveMultiInstanceCommandClass multichannelCommandClass = (ZWaveMultiInstanceCommandClass) getOrAddCommandClass(
+                    endpoints.get(0), CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
             if (multichannelCommandClass == null) {
                 logger.debug("NODE {}: COMMAND_CLASS_MULTI_CHANNEL not found", getNodeId());
                 return null;
@@ -1273,8 +1306,8 @@ public class ZWaveNode {
                 logger.debug("NODE {}: No endpoint 0!", getNodeId());
                 return null;
             }
-            ZWaveMultiCommandCommandClass multicommandCommandClass = (ZWaveMultiCommandCommandClass) endpoints.get(0)
-                    .getCommandClass(CommandClass.COMMAND_CLASS_MULTI_CMD);
+            ZWaveMultiCommandCommandClass multicommandCommandClass = (ZWaveMultiCommandCommandClass) getOrAddCommandClass(
+                    endpoints.get(0), CommandClass.COMMAND_CLASS_MULTI_CMD);
             if (multicommandCommandClass == null) {
                 logger.debug("NODE {}: COMMAND_CLASS_MULTI_CMD not found", getNodeId());
                 return null;
@@ -1307,25 +1340,8 @@ public class ZWaveNode {
 
             logger.debug("NODE {}: Incoming command class {}, endpoint {}", getNodeId(), commandClass,
                     endpoint.getEndpointId());
-            ZWaveCommandClass zwaveCommandClass = endpoint.getCommandClass(commandClass);
-
-            // Apparently, this endpoint supports a command class that we did not learn about during initialization.
-            // Let's add it now then to support handling this message.
+            ZWaveCommandClass zwaveCommandClass = getOrAddCommandClass(endpoint, commandClass);
             if (zwaveCommandClass == null) {
-                logger.debug("NODE {}: Command class {} not found, trying to add it.", getNodeId(), commandClass,
-                        commandClass.getKey());
-
-                zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), this, controller);
-
-                if (zwaveCommandClass == null) {
-                    // We got an unsupported command class, leave zwaveCommandClass as null
-                    logger.debug("NODE {}: Unsupported Z-Wave command class {} (0x{})", getNodeId(), commandClass,
-                            Integer.toHexString(payload.getCommandClassId()));
-                    continue;
-                }
-                logger.debug("NODE {}: Adding command class {} to endpoint {}", getNodeId(), commandClass,
-                        endpoint.getEndpointId());
-                addCommandClass(zwaveCommandClass);
                 continue;
             }
 
@@ -1333,7 +1349,7 @@ public class ZWaveNode {
                     && doesMessageRequireSecurityEncapsulation(endpoint.getEndpointId(), command)) {
                 // Should have been security encapsulation but wasn't!
                 logger.debug(
-                        "NODE {}: Command Class {} was required to be security encapsulation but it wasn't! Message dropped.",
+                        "NODE {}: Command Class {} was required to be security encapsulated but it wasn't! Message dropped.",
                         nodeId, zwaveCommandClass.getCommandClass());
 
                 return Collections.emptyList();
