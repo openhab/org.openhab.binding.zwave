@@ -113,6 +113,9 @@ public class ZWaveThermostatSetpointConverter extends ZWaveCommandClassConverter
             scale = Integer.parseInt(scaleString);
         }
 
+        logger.debug("NODE {}: Thermostat command received for {}", node.getNodeId(), command.toString());
+
+        BigDecimal value;
         if (command instanceof QuantityType) {
             QuantityType<?> quantity = (QuantityType<?>) command;
             if (quantity.getUnit() == SIUnits.CELSIUS) {
@@ -120,9 +123,15 @@ public class ZWaveThermostatSetpointConverter extends ZWaveCommandClassConverter
             } else if (quantity.getUnit() == ImperialUnits.FAHRENHEIT) {
                 scale = 1;
             }
-        }
+            value = quantity.toBigDecimal();
+        } else if (command instanceof DecimalType) {
+            value = ((DecimalType) command).toBigDecimal();
+        } else {
+            logger.debug("NODE {}: Thermostat command received with unsupported type {}", node.getNodeId(),
+                    command.getClass().getSimpleName());
 
-        logger.debug("NODE {}: Thermostat command received for {}", node.getNodeId(), command.toString());
+            return null;
+        }
 
         ZWaveThermostatSetpointCommandClass commandClass = (ZWaveThermostatSetpointCommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT,
@@ -130,7 +139,6 @@ public class ZWaveThermostatSetpointConverter extends ZWaveCommandClassConverter
 
         ZWaveCommandClassTransactionPayload serialMessage;
 
-        BigDecimal value = ((DecimalType) command).toBigDecimal();
         if (setpointType != null) {
             serialMessage = node.encapsulate(commandClass.setMessage(scale, SetpointType.valueOf(setpointType), value),
                     channel.getEndpoint());

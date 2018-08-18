@@ -104,7 +104,7 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
                 SetpointType setpointTypeToAdd = SetpointType.getSetpointType(index);
                 if (setpointTypeToAdd != null) {
                     Setpoint newSetpoint = new Setpoint(setpointTypeToAdd);
-                    this.setpoints.put(setpointTypeToAdd, newSetpoint);
+                    setpoints.put(setpointTypeToAdd, newSetpoint);
                     logger.debug("NODE {}: Added mode type {} ({})", this.getNode().getNodeId(),
                             setpointTypeToAdd.getLabel(), index);
                 } else {
@@ -237,7 +237,7 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
      */
     public ZWaveCommandClassTransactionPayload getSupportedMessage() {
         logger.debug("NODE {}: Creating new message for command THERMOSTAT_SETPOINT_SUPPORTED_GET",
-                this.getNode().getNodeId());
+                getNode().getNodeId());
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 THERMOSTAT_SETPOINT_SUPPORTED_GET).withPriority(TransactionPriority.Config)
@@ -255,7 +255,7 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
      * @return the serial message
      */
     public ZWaveCommandClassTransactionPayload setMessage(int scale, BigDecimal setpoint) {
-        for (Map.Entry<SetpointType, Setpoint> entry : this.setpoints.entrySet()) {
+        for (Map.Entry<SetpointType, Setpoint> entry : setpoints.entrySet()) {
             return setMessage(scale, entry.getValue().getSetpointType(), setpoint);
         }
 
@@ -388,7 +388,7 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
      * @author Chris Jackson
      */
     @XStreamAlias("setpoint")
-    private class Setpoint {
+    public class Setpoint {
         SetpointType setpointType;
         boolean initialised = false;
         int initCount = 0;

@@ -135,6 +135,12 @@ Level of low battery<br /><h1>Overview</h1><p>The low level from 10% to 50%</p>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
     </config-description>
 
   </thing-type>

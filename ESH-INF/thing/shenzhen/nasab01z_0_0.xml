@@ -44,7 +44,7 @@ Siren Alarm<br /><h1>Overview</h1><p>Siren Alarm with ten different sounds.</p> 
       <property name="vendor">Shenzhen Neo Electronics Co., Ltd</property>
       <property name="modelId">NAS-AB01Z</property>
       <property name="manufacturerId">0258</property>
-      <property name="manufacturerRef">0003:1088,0003:6088</property>
+      <property name="manufacturerRef">0003:0088,0003:1088,0003:6088</property>
       <property name="dbReference">522</property>
       <property name="defaultAssociations">1,2,3</property>
     </properties>
@@ -129,6 +129,12 @@ Default Siren on mode<br /><h1>Overview</h1><p>This parameter defines the defaul
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Group2</label>
         <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

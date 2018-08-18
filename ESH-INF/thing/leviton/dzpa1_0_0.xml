@@ -17,7 +17,7 @@ Plug-in Appliance Module<br /><h1>Overview</h1><p>On/Off (binary) plug in module
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
     </channels>
@@ -67,6 +67,12 @@ Controls state of on-device LED<br /><h1>Overview</h1><p>Defines the behavior of
 Lifeline<br /><h1>Overview</h1><p>Notification frame is sent</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

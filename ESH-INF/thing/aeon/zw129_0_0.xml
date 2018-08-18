@@ -172,6 +172,12 @@ Dim control via button 2<br /><h1>Overview</h1><p>When touching the Button 2, th
         <multipleLimit>5</multipleLimit>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
     </config-description>
 
   </thing-type>

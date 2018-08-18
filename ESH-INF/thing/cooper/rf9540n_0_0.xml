@@ -8,7 +8,7 @@
   <thing-type id="cooper_rf9540n_00_000" listed="false">
     <label>RF9540-N All Load Dimmer Light Switch</label>
     <description><![CDATA[
-All Load Dimmer Light Switch<br /><h1>Overview</h1><p><strong>OPERATION INSTRUCTIONS</strong></p> <ul><li>Press once to turn lights ON at previously selected level.</li> <li>Press again to turn lights OFF.</li> <li>When lights are OFF, press and hold for 2 seconds for full brightness.</li> <li>When lights are ON, press and hold for 2 seconds until the blue LED blinks. After the preset delay, the lights will begin fading to OFF (up to 4 minutes).</li> <li>Amber ON/OFF LED indicates that dimmer is turned on.</li> </ul><br /><h2>Inclusion Information</h2><ol><li>This product may be added to a new or existing Z-Wave network. A Cooper Wiring Devices Z-Wave device has a blue LED, which will blink when the device is not included in a Z-Wave network. The LED stops blinking when the device is in a network.</li> <li>To include this device in a Z-Wave network, select the command on your Z Wave controller for inclusion (Install, Add Device, Add Node, Include Device, etc.). Then press the device switch one time to include it in the network. The LED will stop blinking.</li> <li>To exclude this device from a Z-Wave network, select the command on your Z-Wave controller for exclusion (Uninstall, Remove Device, Remove Node, Exclude Device, etc.). Then press the device switch one time to exclude it from the network. The LED will start blinking.</li> <li>This product works with other Z-Wave products from different vendors and product categories as part of the same network.</li> <li>This product is a listening node and it will act as a repeater in the Z-Wave network. It will perform the repeater function with Z-Wave products from Cooper and from other Z-Wave vendors</li> </ol>
+All Load Dimmer Light Switch<br /><h1>Overview</h1><p><strong>OPERATION INSTRUCTIONS</strong></p> <ul><li>Press once to turn lights ON at previously selected level.</li> <li>Press again to turn lights OFF.</li> <li>When lights are OFF, press and hold for 2 seconds for full brightness.</li> <li>When lights are ON, press and hold for 2 seconds until the blue LED blinks. After the preset delay, the lights will begin fading to OFF (up to 4 minutes).</li> <li>Amber ON/OFF LED indicates that dimmer is turned on.</li> </ul><br /><h2>Inclusion Information</h2><ol><li>This product may be added to a new or existing Z-Wave network. A Cooper Wiring Devices Z-Wave device has a blue LED, which will blink when the device is not included in a Z-Wave network. The LED stops blinking when the device is in a network.</li> <li>To include this device in a Z-Wave network, select the command on your Z Wave controller for inclusion (Install, Add Device, Add Node, Include Device, etc.). Then press the device switch one time to include it in the network. The LED will stop blinking.</li> </ol><br /><h2>Exclusion Information</h2><p>To exclude this device from a Z-Wave network, select the command on your Z-Wave controller for exclusion (Uninstall, Remove Device, Remove Node, Exclude Device, etc.). Then press the device switch one time to exclude it from the network. The LED will start blinking.</p>
     ]]></description>
     <category>WallSwitch</category>
 
@@ -181,6 +181,12 @@ Turn on or off rapid start feature<br /><h1>Overview</h1><p>Ensures that LED / C
         <description><![CDATA[
 <br /><h1>Overview</h1><p>Life line to the controller</p>
         ]]></description>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

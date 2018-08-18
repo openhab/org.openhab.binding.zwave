@@ -265,6 +265,12 @@ The illumination differential to report. The unit is percentage. When enabled, t
         <multipleLimit>8</multipleLimit>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
     </config-description>
 
   </thing-type>

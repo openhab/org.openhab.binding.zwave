@@ -124,6 +124,12 @@ This value indicates in 10 millisecond resolution. <br /> This sets how often th
         <default>3</default>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
     </config-description>
 
   </thing-type>

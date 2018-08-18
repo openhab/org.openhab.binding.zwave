@@ -7,6 +7,8 @@
  */
 package org.openhab.binding.zwave.internal.protocol.initialization;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -52,7 +54,6 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.DeleteReturnRou
 import org.openhab.binding.zwave.internal.protocol.serialmessage.DeleteSucReturnRouteMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.GetRoutingInfoMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.IdentifyNodeMessageClass;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.IsFailedNodeMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeInfoMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeNeighborUpdateMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveInclusionState;
@@ -205,12 +206,11 @@ public class ZWaveNodeInitStageAdvancer {
                 }
                 setCurrentStage(ZWaveNodeInitStage.DYNAMIC_END);
 
-                doHealStages();
-
                 setCurrentStage(ZWaveNodeInitStage.DONE);
             }
         };
-
+        initialisationThread.setName("ZWaveNode" + node.getNodeId() + "Init"
+                + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")));
         initialisationThread.start();
     }
 
@@ -339,14 +339,14 @@ public class ZWaveNodeInitStageAdvancer {
             return;
         }
 
-        setCurrentStage(ZWaveNodeInitStage.INIT_NEIGHBORS);
+        // setCurrentStage(ZWaveNodeInitStage.INIT_NEIGHBORS);
 
-        logger.debug("NODE {}: Node advancer: INIT_NEIGHBORS - send RoutingInfo", node.getNodeId());
+        // logger.debug("NODE {}: Node advancer: INIT_NEIGHBORS - send RoutingInfo", node.getNodeId());
 
-        processTransaction(new GetRoutingInfoMessageClass().doRequest(node.getNodeId()));
-        if (initRunning == false) {
-            return;
-        }
+        // processTransaction(new GetRoutingInfoMessageClass().doRequest(node.getNodeId()));
+        // if (initRunning == false) {
+        // return;
+        // }
 
         // Controllers aren't designed to allow communication with their node.
         // If this is a controller, we're done
@@ -357,6 +357,8 @@ public class ZWaveNodeInitStageAdvancer {
             return;
         }
 
+        // We don't try and initialise sleeping devices that we consider have been initialised before
+        // This means devices with an interval of 0, but the wakeup node set to the binding.
         ZWaveWakeUpCommandClass wakeupCommandClass = (ZWaveWakeUpCommandClass) node
                 .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
         if (wakeupCommandClass != null && wakeupCommandClass.getTargetNodeId() == controller.getOwnNodeId()
@@ -367,11 +369,11 @@ public class ZWaveNodeInitStageAdvancer {
             return;
         }
 
-        setCurrentStage(ZWaveNodeInitStage.FAILED_CHECK);
-        processTransaction(new IsFailedNodeMessageClass().doRequest(node.getNodeId()));
-        if (initRunning == false) {
-            return;
-        }
+        // setCurrentStage(ZWaveNodeInitStage.FAILED_CHECK);
+        // processTransaction(new IsFailedNodeMessageClass().doRequest(node.getNodeId()));
+        // if (initRunning == false) {
+        // return;
+        // }
 
         // Only perform the PING stage on devices that should be listening.
         // Battery (ie non-Listening) devices will only be communicated with when they send a WAKEUP_NOTIFICATION
@@ -727,6 +729,11 @@ public class ZWaveNodeInitStageAdvancer {
         // Update all dynamic information from command classes
         for (int endpointId = 0; endpointId < node.getEndpointCount(); endpointId++) {
             for (ZWaveCommandClass zwaveStaticClass : node.getCommandClasses(endpointId)) {
+                // Don't check control classes for their properties
+                // The device only sends commands
+                if (zwaveStaticClass.isControlClass()) {
+                    continue;
+                }
                 if (endpointId == 0) {
                     logger.debug("NODE {}: Node advancer: STATIC_VALUES - checking {}", node.getNodeId(),
                             zwaveStaticClass.getCommandClass());
@@ -762,7 +769,6 @@ public class ZWaveNodeInitStageAdvancer {
         ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) node
                 .getCommandClass(CommandClass.COMMAND_CLASS_ASSOCIATION);
         if (multiAssociationCommandClass != null || associationCommandClass != null) {
-
             thingType = ZWaveConfigProvider.getThingType(node);
             if (thingType == null) {
                 logger.debug("NODE {}: Node advancer: ASSOCIATIONS - thing is null!", node.getNodeId());
@@ -794,7 +800,6 @@ public class ZWaveNodeInitStageAdvancer {
         // This stage sets the wakeup class if we're the master controller
         // It sets the node to point to us, and the time is left along
         if (controller.isMasterController() == true && wakeupCommandClass != null) {
-
             if (wakeupCommandClass.getTargetNodeId() == controller.getOwnNodeId()) {
                 logger.debug("NODE {}: Node advancer: SET_WAKEUP - TargetNode is set to controller", node.getNodeId());
             } else {
@@ -1009,6 +1014,12 @@ public class ZWaveNodeInitStageAdvancer {
         // Update all dynamic information from command classes
         for (int endpointId = 0; endpointId < node.getEndpointCount(); endpointId++) {
             for (ZWaveCommandClass zwaveDynamicClass : node.getCommandClasses(endpointId)) {
+                // Don't check control classes for their properties
+                // The device only sends commands
+                if (zwaveDynamicClass.isControlClass()) {
+                    continue;
+                }
+
                 if (endpointId == 0) {
                     logger.debug("NODE {}: Node advancer: DYNAMIC_VALUES - checking {}", node.getNodeId(),
                             zwaveDynamicClass.getCommandClass());

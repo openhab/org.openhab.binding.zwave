@@ -8,6 +8,7 @@
   <thing-type id="linear_ps15z_00_000" listed="false">
     <label>PS15Z Plug-In Appliance Module</label>
     <description>Plug-In Appliance Module</description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -51,6 +52,12 @@
           <option value="0">Flash Mode</option>
           <option value="1">ON/OFF Operation</option>
         </options>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

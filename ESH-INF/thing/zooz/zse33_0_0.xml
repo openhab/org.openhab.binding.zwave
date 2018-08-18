@@ -132,6 +132,12 @@ Enable or disable visual alarm for Chime mode. The LED will blink when triggered
         <default>1</default>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
     </config-description>
 
   </thing-type>

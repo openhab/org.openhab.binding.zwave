@@ -7,7 +7,10 @@
 
   <thing-type id="trane_tzemt400bb32maa_00_000" listed="false">
     <label>TZEMT400BB32MAA Trane Z-Wave Programmable Thermostat</label>
-    <description>Trane Z-Wave Programmable Thermostat</description>
+    <description><![CDATA[
+Trane Z-Wave Programmable Thermostat<br /><h1>Overview</h1><p>Thermostat for Heating and Cooling HVAC System control</p> <br /><h2>Inclusion Information</h2><ul><li>Press the MENU button on the thermostat.</li> <li>Scroll down to Z Wave Install, and press the Select button.</li> <li>Press the Yes button to enroll the thermostat.</li> </ul><br /><h2>Exclusion Information</h2><ul><li>Press the MENU button on the thermostat.</li> <li>Scroll down to Z Wave Install, and press the Select button.</li> <li>Press the Yes button to enroll the thermostat.</li> </ul>
+    ]]></description>
+    <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -51,6 +54,12 @@
         <label>Thermostat fan state</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_FAN_STATE</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param132" typeId="trane_tzemt400bb32maa_00_000_config_decimal_param132">
+        <label>Schedule Mode</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=132</property>
         </properties>
       </channel>
       <channel id="time_offset" typeId="time_offset">
@@ -100,6 +109,12 @@
         <label>1: Reports</label>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
     </config-description>
 
   </thing-type>
@@ -141,6 +156,17 @@
     <state pattern="%s">
       <options>
         <option value="0">Idle</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="trane_tzemt400bb32maa_00_000_config_decimal_param132">
+    <item-type>Number</item-type>
+    <label>Schedule Mode</label>
+    <state pattern="%s">
+      <options>
+        <option value="0">Hold</option>
+        <option value="1">Schedule</option>
       </options>
     </state>
   </channel-type>

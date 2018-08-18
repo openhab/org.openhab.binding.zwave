@@ -1074,7 +1074,7 @@ public class ZWaveNode {
     public ZWaveCommandClassTransactionPayload encapsulate(ZWaveCommandClassTransactionPayload transaction,
             int endpointId) {
         ZWaveMultiInstanceCommandClass multiInstanceCommandClass;
-        logger.debug("NODE {}: Encapsulating message, endpoint {}", getNodeId(), endpointId);
+        logger.trace("NODE {}: Encapsulating message, endpoint {}", getNodeId(), endpointId);
 
         if (transaction == null) {
             return null;
@@ -1312,8 +1312,20 @@ public class ZWaveNode {
             // Apparently, this endpoint supports a command class that we did not learn about during initialization.
             // Let's add it now then to support handling this message.
             if (zwaveCommandClass == null) {
-                logger.debug("NODE {}: Command class {} not found.", getNodeId(), commandClass, commandClass.getKey());
+                logger.debug("NODE {}: Command class {} not found, trying to add it.", getNodeId(), commandClass,
+                        commandClass.getKey());
 
+                zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), this, controller);
+
+                if (zwaveCommandClass == null) {
+                    // We got an unsupported command class, leave zwaveCommandClass as null
+                    logger.debug("NODE {}: Unsupported Z-Wave command class {} (0x{})", getNodeId(), commandClass,
+                            Integer.toHexString(payload.getCommandClassId()));
+                    continue;
+                }
+                logger.debug("NODE {}: Adding command class {} to endpoint {}", getNodeId(), commandClass,
+                        endpoint.getEndpointId());
+                addCommandClass(zwaveCommandClass);
                 continue;
             }
 
@@ -1489,11 +1501,12 @@ public class ZWaveNode {
         // Start the timer
         // If the initialisation is complete, then use a short delay,
         // Otherwise use a longer delay...
-        if (isInitializationComplete()) {
+        if (isInitializationComplete() || controller.getSendQueueLength(getNodeId()) == 0) {
             timerDelay = sleepDelay;
         } else {
-            timerDelay = 20000;
+            timerDelay = 5000;
         }
+        logger.debug("NODE {}: Start sleep timer at {}ms", getNodeId(), timerDelay);
 
         timer.schedule(timerTask, timerDelay / 2, timerDelay / 2);
     }

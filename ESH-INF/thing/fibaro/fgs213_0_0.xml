@@ -14,12 +14,6 @@ Single Switch 2<br /><h1>Overview</h1><p>FIBARO Switch 2 is designed to be insta
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
-        </properties>
-      </channel>
       <channel id="sensor_power" typeId="sensor_power">
         <label>Sensor (power)</label>
         <properties>
@@ -314,34 +308,44 @@ Power level reporting threshold.<br /><h1>Overview</h1><p>The parameter defines 
       <parameter name="config_51_1" type="integer" groupName="configuration"
                  min="0" max="120">
         <label>51: Minimal time between power report</label>
-        <description>This parameter determines minimum time that has to elapse before sending new power report to the main controller. 0 disables the function. 1-120s - report interval in seconds</description>
+        <description><![CDATA[
+Determines minimal time between power reports<br /><h1>Overview</h1><p>This  parameter determines minimum time that has to elapse before sending new power report to the main controller. 0 disables the function. 1-120s - report interval in seconds</p>
+        ]]></description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_53_2" type="integer" groupName="configuration"
                  min="0" max="32000">
         <label>53: Energy reports</label>
-        <description>Energy level change which will result in sending a new energy report. Available settings: 1-32000 (0.01 - 320 kWh). 0 disables the function.</description>
+        <description><![CDATA[
+Energy level change resulting in sending a new energy report.<br /><h1>Overview</h1><p>Energy level change which will result in sending a new energy report. Available settings: 1-32000 (0.01 - 320 kWh). 0 disables the function.</p>
+        ]]></description>
         <default>100</default>
       </parameter>
 
       <parameter name="config_58_2" type="integer" groupName="configuration"
                  min="0" max="32000">
         <label>58: Periodic power reports</label>
-        <description>This parameter determines in what time interval the periodic power reports are sent to the main controller. 0 - periodic reports are disabled, 1-32000 (1-32000s) - report interval</description>
+        <description><![CDATA[
+Determines time interval for periodic power reports<br /><h1>Overview</h1><p>This  parameter  determines  in  what  time  interval  the  periodic  power   reports are sent to the main controller. 0  - periodic reports are disabled, 1-32000  (1-32000s) - report interval</p>
+        ]]></description>
         <default>3600</default>
       </parameter>
 
       <parameter name="config_59_2" type="integer" groupName="configuration"
                  min="0" max="32000">
         <label>59: Periodic energy reports</label>
-        <description>This parameter determines in what time interval the periodic energy reports are sent to the main controller. 0 - periodic reports are disabled 1-32000 (1-32000s) - report interval</description>
+        <description><![CDATA[
+Determines time interval for periodic energy reports<br /><h1>Overview</h1><p>This parameter determines in what time interval the periodic energy reports are sent to the main controller. 0  - periodic reports are disabled 1-32000  (1-32000s) - report interval</p>
+        ]]></description>
         <default>3600</default>
       </parameter>
 
       <parameter name="config_60_1" type="integer" groupName="configuration">
         <label>60: Measuring energy consumed by the device itself</label>
-        <description>This parameter determines whether energy metering should include the amount of energy consumed by the device itself. Results are be - ing added to energy reports for first endpoint. 0: Function deactivated 1: Function activated</description>
+        <description><![CDATA[
+Determines if energy consumed by device should be included<br /><h1>Overview</h1><p>This parameter determines whether energy metering should include  the amount of energy consumed by the device itself. Results are be - ing added to energy reports for first endpoint. 0: Function deactivated 1: Function activated</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Self-measurement inactive</option>
@@ -386,6 +390,12 @@ Switch 2 On/Off<br /><h1>Overview</h1><p>This is assigned to the switch connecte
 Dimmer for Switch 2<br /><h1>Overview</h1><p>This is assigned to the switch connected to the S2 terminal (uses Switch Multilevel command class).</p>
         ]]></description>
         <multipleLimit>10</multipleLimit>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

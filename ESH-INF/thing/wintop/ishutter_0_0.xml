@@ -206,6 +206,12 @@ Allow exchanging open and close relays<br /><h1>Overview</h1><p>Allow exchanging
         <multipleLimit>10</multipleLimit>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
     </config-description>
 
   </thing-type>

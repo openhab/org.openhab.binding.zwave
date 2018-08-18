@@ -123,26 +123,6 @@ public class IdentifyNodeMessageClass extends ZWaveCommandProcessor {
         node.addCommandClass(
                 ZWaveCommandClass.getInstance(CommandClass.COMMAND_CLASS_BASIC.getKey(), node, zController));
 
-        // Add mandatory command classes as specified by it's generic device class.
-        // for (CommandClass commandClass : generic.getMandatoryCommandClasses()) {
-        // ZWaveCommandClass zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), node,
-        // zController);
-        // if (zwaveCommandClass != null) {
-        // zController.getNode(nodeId).addCommandClass(zwaveCommandClass);
-        // }
-        // }
-
-        // Add mandatory command classes as specified by it's specific device class.
-        // for (CommandClass commandClass : specific.getMandatoryCommandClasses()) {
-        // ZWaveCommandClass zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), node,
-        // zController);
-        // if (zwaveCommandClass != null) {
-        // node.addCommandClass(zwaveCommandClass);
-        // }
-        // }
-
-        // checkTransactionComplete(transaction, incomingMessage);
-
         transaction.setTransactionComplete();
         return true;
     }

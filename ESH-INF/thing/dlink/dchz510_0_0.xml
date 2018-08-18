@@ -8,7 +8,7 @@
   <thing-type id="dlink_dchz510_00_000" listed="false">
     <label>DCH-Z510 Siren</label>
     <description><![CDATA[
-Siren<br /><h2>Inclusion Information</h2><ol><li>Have Z-Wave Controller enter inclusion mode.</li> <li>Pressing tamper key three times within 1.5 seconds to enter the inclusion mode.</li> <li>After add successful, the LED will light ON 1 second </li> </ol><br /><h2>Exclusion Information</h2><ol><li>Have Z-Wave Controller enter exclusion mode.</li> <li>Pressing tamper key three times within 1.5 seconds to enter the exclusion mode.</li> <li>Node ID has been excluded. </li> </ol>
+Siren<br /><h1>Overview</h1><p>The DCH-Z510 mydlink Z-Wave Siren is a wireless siren.</p> <br /><h2>Inclusion Information</h2><ol><li>Have Z-Wave Controller enter inclusion mode.</li> <li>Pressing tamper key three times within 1.5 seconds to enter the inclusion mode.</li> <li>After add successful, the LED will light ON 1 second </li> </ol><br /><h2>Exclusion Information</h2><ol><li>Have Z-Wave Controller enter exclusion mode.</li> <li>Pressing tamper key three times within 1.5 seconds to enter the exclusion mode.</li> <li>Node ID has been excluded. </li> </ol>
     ]]></description>
     <category>Siren</category>
 
@@ -91,6 +91,12 @@ Siren<br /><h2>Inclusion Information</h2><ol><li>Have Z-Wave Controller enter in
         <label>1: Report Messages</label>
         <description>The group 1 is for receiving the report message, like tamper event. This is the device's Lifeline group. The group supports 8 nodes maximum.</description>
         <multipleLimit>8</multipleLimit>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

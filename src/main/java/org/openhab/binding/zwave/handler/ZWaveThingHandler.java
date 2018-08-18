@@ -246,7 +246,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     try {
                         dataType = DataType.valueOf(bindingType[2]);
                     } catch (IllegalArgumentException e) {
-                        logger.warn("NODE {}: Invalid item type defined ({}). Assuming DecimalType", nodeId, dataType);
+                        logger.warn("NODE {}: Invalid item type defined {} for {}. Assuming DecimalType.", nodeId,
+                                bindingType[2], channel.getUID());
                     }
 
                     ZWaveThingChannel chan = new ZWaveThingChannel(controllerHandler, channel.getChannelTypeUID(),
@@ -566,7 +567,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         Configuration configuration = editConfiguration();
         for (Entry<String, Object> configurationParameter : configurationParameters.entrySet()) {
             Object valueObject = configurationParameter.getValue();
-            logger.debug("NODE {}: Configuration update {} to {}", nodeId, configurationParameter.getKey(),
+            logger.debug("NODE {}: Configuration update set {} to {}", nodeId, configurationParameter.getKey(),
                     valueObject);
             String[] cfg = configurationParameter.getKey().split("_");
             switch (cfg[0]) {
@@ -685,8 +686,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     }
                     logger.debug("NODE {}: Current Members {}", nodeId, currentMembers);
 
-                    ZWaveAssociationGroup newMembers = new ZWaveAssociationGroup(groupIndex);
+                    logger.debug("NODE {}: Current Members {}", nodeId, currentMembers);
 
+                    ZWaveAssociationGroup newMembers = new ZWaveAssociationGroup(groupIndex);
                     int totalMembers = currentMembers.getAssociationCnt();
 
                     // Loop over all the parameters
@@ -732,6 +734,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                             totalMembers--;
                         }
                     }
+
+                    logger.debug("NODE {}: New Members {}", nodeId, newMembers);
 
                     // Now loop through the new members and add anything not in the current members list
                     for (ZWaveAssociation member : newMembers.getAssociations()) {
@@ -1075,8 +1079,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             return;
         }
 
-        List<ZWaveCommandClassTransactionPayload> messages = null;
-        messages = cmdChannel.getConverter().receiveCommand(cmdChannel, node, command);
+        List<ZWaveCommandClassTransactionPayload> messages = cmdChannel.getConverter().receiveCommand(cmdChannel, node,
+                command);
 
         if (messages == null) {
             logger.debug("NODE {}: No messages returned from converter", nodeId);

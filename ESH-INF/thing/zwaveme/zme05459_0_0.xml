@@ -276,6 +276,12 @@ Defines how to interpret button Down press. Depends on 'Switch by buttons' param
         <multipleLimit>8</multipleLimit>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
     </config-description>
 
   </thing-type>

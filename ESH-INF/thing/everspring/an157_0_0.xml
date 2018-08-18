@@ -7,7 +7,10 @@
 
   <thing-type id="everspring_an157_00_000" listed="false">
     <label>AN157 Switch Plugin</label>
-    <description>Switch Plugin</description>
+    <description><![CDATA[
+Switch Plugin<br /><h1>Overview</h1><p>Plug-in ON/OFF Module </p> <br /><h2>Inclusion Information</h2><p>Push the ON/OFF button three times within 1.5 seconds</p> <br /><h2>Exclusion Information</h2><p>Push the ON/OFF button three times within 1.5 seconds</p>
+    ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -27,6 +30,17 @@
       <property name="manufacturerRef">0004:0001,0104:0001</property>
       <property name="dbReference">26</property>
     </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
 
   </thing-type>
 

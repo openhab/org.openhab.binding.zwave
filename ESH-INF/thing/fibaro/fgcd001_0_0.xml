@@ -8,7 +8,7 @@
   <thing-type id="fibaro_fgcd001_00_000" listed="false">
     <label>FGCD001 Carbon Monoxide Sensor</label>
     <description><![CDATA[
-Carbon Monoxide Sensor<br /><h1>Overview</h1><p>FIBARO CO Sensor is an ultra-light, compact, battery-powered carbon monoxide detector, designed to be placed on a wall. Its high sensitivity allows to detect the presence of the carbon monoxide (CO) gas at the early stage in order to prevent carbon monoxide poisoning.</p> <br /><h2>Inclusion Information</h2><p>Quickly, triple click the button located on the casing. </p> <br /><h2>Exclusion Information</h2><p>Quickly, triple click the button located on the casing. </p> <br /><h2>Wakeup Information</h2><p>To wake up the sensor manually click the button located on the casing. </p>
+Carbon Monoxide Sensor<br /><h1>Overview</h1><p>FIBARO CO Sensor is an ultra-light, compact, battery-powered carbon monoxide detector, designed to be placed on a wall. Its high sensitivity allows to detect the presence of the carbon monoxide (CO) gas at the early stage in order to prevent carbon monoxide poisoning.</p> <br /><h2>Inclusion Information</h2><p>Quickly, triple click the button located on the casing.</p> <br /><h2>Exclusion Information</h2><p>Quickly, triple click the button located on the casing.</p> <br /><h2>Wakeup Information</h2><p>To wake up the sensor manually click the button located on the casing.</p>
     ]]></description>
     <category>Sensor</category>
 
@@ -92,7 +92,7 @@ Carbon Monoxide Sensor<br /><h1>Overview</h1><p>FIBARO CO Sensor is an ultra-lig
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGCD001</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">1201:1000</property>
+      <property name="manufacturerRef">1201:1000,1201:1001</property>
       <property name="dbReference">711</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -368,6 +368,12 @@ Devices in this group will receive sensor alarm frames when CO Alarm status chan
 Sends tamper alarm and alarm cancellation frames to the associated devices.<br /><h1>Overview</h1><p>7th association group – “Tamper Alarm BC” is assigned to the tamper - sends tamper alarm and alarm cancellation frames to the associated devices. Provides backward compatibility with controllers not supporting Z-Wave+ protocol.</p> <p>The CO Sensor in 2nd to 7th group allows to control 5 regular or multichannel devices per an association group. </p> <p>It is not recommended to associate more than 10 devices in general, as the response time to control commands depends on the number of associated devices. In extreme cases, system response may be delayed.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

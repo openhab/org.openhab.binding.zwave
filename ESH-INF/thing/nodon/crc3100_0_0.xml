@@ -181,6 +181,12 @@ Octan Remote Control<br /><h1>Overview</h1><p>The Octan remote is capable to lau
         <multipleLimit>8</multipleLimit>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
     </config-description>
 
   </thing-type>

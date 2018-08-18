@@ -57,6 +57,12 @@ Delay, from the time the siren-strobe turns on, before the Basic Set Off command
         <default>0</default>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
     </config-description>
 
   </thing-type>

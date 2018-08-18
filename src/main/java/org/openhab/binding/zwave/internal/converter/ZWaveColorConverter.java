@@ -173,6 +173,6 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
     }
 
     private int scaleColor(PercentType value) {
-        return value.intValue() * 255 / 100;
+        return (int) (value.floatValue() * 255.0 / 100.0);
     }
 }

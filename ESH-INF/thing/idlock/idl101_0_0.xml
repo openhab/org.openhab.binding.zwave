@@ -10,6 +10,7 @@
     <description><![CDATA[
 Z-Wave Lock<br /><h1>Overview</h1><p>http://idlock.no/</p> <br /><h2>Inclusion Information</h2><ol><li>Bring the controller as close as possible to the lock unit</li> <li>Set the controller to inclusion mode</li> <li>Push and hold KEY button on the inside panel on the lock until all keys on the outside light up and a audible signal is given.</li> <li>Release the KEY button on the inside panel</li> <li>Press the key 8 on the outside panel</li> <li>The LED flashes blue when inclusion is in progress</li> <li>The inclusion may take some time as security is required</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Set the controller to exclusion mode</li> <li>Push and hold KEY button on the inside panel on the lock until all keys on the outside light up and a audible signal is given.</li> <li>Release the KEY button on the inside panel</li> <li>Press the key 8 on the outside panel</li> <li>The LED flashes blue when exclusion is done</li> </ol><br /><h2>Wakeup Information</h2><p>This is a frequently listening device (FLIRS) which supports beaming. This means that the lock will check regularly for incoming commands, and respond quickly without the need for any user specification of wakeup intervals or physical wakeup procedures.</p>
     ]]></description>
+    <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -95,18 +96,17 @@ Sets the door lock mode<br /><h1>Overview</h1><p>No details in manual, will upda
         </options>
       </parameter>
 
-      <parameter name="config_2_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
-        <label>2: RFID Register Mode</label>
-        <description>Sets the RFID registration mode</description>
-        <default>0</default>
-      </parameter>
-
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description>Notification reports are sent out to devices included in this association group</description>
         <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

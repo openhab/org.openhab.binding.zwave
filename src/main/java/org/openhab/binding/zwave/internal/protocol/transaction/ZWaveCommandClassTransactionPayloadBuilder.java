@@ -9,8 +9,6 @@ package org.openhab.binding.zwave.internal.protocol.transaction;
 
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Builder class for transaction payload
@@ -23,12 +21,10 @@ public class ZWaveCommandClassTransactionPayloadBuilder {
     private CommandClass commandClass;
     private int command;
     private byte[] payload;
-    private TransactionPriority priority = TransactionPriority.Get;
+    private TransactionPriority priority = TransactionPriority.Poll;
     private CommandClass expectedResponseCommandClass;
     private int expectedResponseCommandClassCommand;
     private final boolean payloadBuilt;
-
-    private static final Logger logger = LoggerFactory.getLogger(ZWaveCommandClassTransactionPayloadBuilder.class);
 
     public ZWaveCommandClassTransactionPayloadBuilder(final int nodeId, final CommandClass commandClass,
             final int command) {
@@ -98,8 +94,6 @@ public class ZWaveCommandClassTransactionPayloadBuilder {
                 output[i] = payload[i - 2];
             }
         }
-
-        logger.debug("At build {}", expectedResponseCommandClass);
 
         return new ZWaveCommandClassTransactionPayload(nodeId, output, priority, expectedResponseCommandClass,
                 expectedResponseCommandClassCommand);

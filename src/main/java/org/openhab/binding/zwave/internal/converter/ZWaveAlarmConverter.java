@@ -195,7 +195,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         // : Integer.parseInt(channel.getArguments().get("event"));
 
         ZWaveAlarmValueEvent eventAlarm = (ZWaveAlarmValueEvent) event;
-        logger.debug("Alarm converter processing {}", eventAlarm.getReportType());
+        logger.debug("NODE {}: Alarm converter processing {}", eventAlarm.getNodeId(), eventAlarm.getReportType());
         switch (eventAlarm.getReportType()) {
             case ALARM:
                 return handleAlarmReport(channel, eventAlarm, alarmType);
@@ -244,7 +244,8 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                 state = value == 0 ? OpenClosedType.CLOSED : OpenClosedType.OPEN;
                 break;
             default:
-                logger.debug("No conversion in {} to {}", getClass().getSimpleName(), channel.getDataType());
+                logger.debug("NODE {}: No conversion in {} to {}", eventAlarm.getNodeId(), getClass().getSimpleName(),
+                        channel.getDataType());
                 break;
         }
         return state;
@@ -262,8 +263,11 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
 
         // Handle event 0 as 'clear the event'
         int event = eventAlarm.getAlarmEvent();// == 0 ? 0 : eventAlarm.getAlarmStatus();
-        logger.debug("Alarm converter NOTIFICATION event is {}, type {}", event, channel.getDataType());
+        logger.debug("NODE {}: Alarm converter NOTIFICATION event is {}, type {}", eventAlarm.getNodeId(), event,
+                channel.getDataType());
         if (notification == null) {
+            logger.debug("NODE {}: Alarm converter NOTIFICATION event has no notification for {}",
+                    eventAlarm.getNodeId(), eventAlarm.getAlarmType().toString());
             return null;
         }
 
@@ -310,8 +314,8 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
             default:
                 Map<NotificationEvent, State> events = notifications.get(channelType);
                 if (events == null) {
-                    logger.debug("Alarm converter NOTIFICATION event is {}, channel {} is not implemented.", event,
-                            channelType);
+                    logger.debug("NODE {}: Alarm converter NOTIFICATION event is {}, channel {} is not implemented.",
+                            eventAlarm.getNodeId(), event, channelType);
                     return null;
                 }
                 return events.get(notification);

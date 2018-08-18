@@ -8,6 +8,7 @@
   <thing-type id="zipato_rgbwe27zw_00_000" listed="false">
     <label>RGBWE27ZW RGBW bulb</label>
     <description>RGBW bulb</description>
+    <category>LightBulb</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -103,6 +104,12 @@
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <multipleLimit>7</multipleLimit>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

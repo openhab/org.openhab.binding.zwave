@@ -62,6 +62,12 @@ Floor thermostat (supports secure inclusion and power measurement)<br /><h1>Over
           <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=COOLING</property>
         </properties>
       </channel>
+      <channel id="config_decimal_param12" typeId="config_decimal">
+        <label>P Setting</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=12</property>
+        </properties>
+      </channel>
       <channel id="switch_binary1" typeId="switch_binary">
         <label>Switch 1</label>
         <properties>
@@ -421,6 +427,12 @@ The main thermostat device<br /><h1>Overview</h1><p>Send Multilevel Sensor Repor
 The main thermostat device<br /><h1>Overview</h1><p>Send Multilevel Sensor Reports for floor temperature sensor.</p>
         ]]></description>
         <multipleLimit>7</multipleLimit>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

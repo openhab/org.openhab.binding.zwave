@@ -43,6 +43,12 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION;type=PROTECTION_LOCAL</property>
         </properties>
       </channel>
+      <channel id="indicator_level" typeId="indicator_level">
+        <label>Indicator Light Control</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_INDICATOR</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
@@ -173,6 +179,12 @@ Turn on or off rapid start feature<br /><h1>Overview</h1><p>Ensures that LED / C
         <description><![CDATA[
 <br /><h1>Overview</h1><p>Life line to the controller</p>
         ]]></description>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

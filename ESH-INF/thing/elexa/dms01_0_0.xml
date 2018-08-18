@@ -7,7 +7,10 @@
 
   <thing-type id="elexa_dms01_00_000" listed="false">
     <label>DMS01 Dome Wireless Siren</label>
-    <description>Dome Wireless Siren</description>
+    <description><![CDATA[
+Dome Wireless Siren<br /><h1>Overview</h1><p>Alert you with sounds and built-in LED’s to security threats and problems such as leaks and fires. It can also sound a mild chime when doors or windows open to let you know when people come and go.</p> <br /><h2>Inclusion Information</h2><p>Follow the instructions for your Z-Wave certified Controller to enter inclusion mode. When prompted by the Controller: 1. For proper inclusion, bring the Siren to within 10 feet of your Controller. After inclusion, the device can be moved to any desired location. 2. Remove the Back Plate of the Siren. 3. Remove the Battery Tabs. 4. Press the Connect Button quickly 3 times in a row. The LED Ring will flash five times indicating inclusion.</p> <br /><h2>Exclusion Information</h2><p>Follow the instructions for your Z-Wave certified Controller to enter exclusion mode. When prompted by the Controller: 1. Remove the Back Plate of the Siren. 2. Press the Connect Button quickly 3 times in a row. The LED Ring will flash five times indicating exclusion/disconnection.</p> <br /><h2>Wakeup Information</h2><p>The device can be forced to wake up to submit these reports or accept new settings immediately by simply pressing and holding the CONNECT BUTTON for two seconds. The LED RING will flash once indicating successful wake up.</p>
+    ]]></description>
+    <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -37,6 +40,7 @@
       <property name="manufacturerId">021F</property>
       <property name="manufacturerRef">0003:0088</property>
       <property name="dbReference">589</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -46,6 +50,11 @@
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
@@ -75,8 +84,8 @@
         <default>1</default>
         <options>
           <option value="0">Does Not Stop</option>
-          <option value="1">1 Minute</option>
-          <option value="5">5 Minutes</option>
+          <option value="1">One Minute</option>
+          <option value="5">Five Minutes</option>
           <option value="255">Chime Will Not Play</option>
         </options>
       </parameter>
@@ -94,7 +103,7 @@
       <parameter name="config_5_2" type="integer" groupName="configuration">
         <label>5: Primary Notification Sound</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>The siren offers ten different sounds to use as the Siren (primary) notification. This parameter sets the Siren (primary) notification sound.</p>
+Set the siren primary notification sound.<br /><h1>Overview</h1><p>The siren offers ten different sounds to use as the Siren (primary) notification. This parameter sets the Siren (primary) notification sound.</p>
         ]]></description>
         <default>9</default>
         <options>
@@ -136,6 +145,28 @@
           <option value="1">Primary notification will play</option>
           <option value="2">Secondary notification will play</option>
         </options>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Binary Switch Reports</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Notification Reports</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

@@ -215,6 +215,12 @@ Enable/Disable operation of dimmer or roller shutter devices ...<br /><h1>Overvi
         <label>3: Controller Updates</label>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
     </config-description>
 
   </thing-type>

@@ -34,6 +34,17 @@
       <property name="dbReference">310</property>
     </properties>
 
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
+
   </thing-type>
 
   <channel-type id="horstmann_asrzw_00_000_thermostat_mode">

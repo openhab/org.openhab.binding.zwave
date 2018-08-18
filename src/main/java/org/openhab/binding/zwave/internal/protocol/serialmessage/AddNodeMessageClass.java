@@ -51,6 +51,11 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
     private final int OPTION_HIGH_POWER = 0x80;
     private final int OPTION_NETWORK_WIDE = 0x40;
 
+    private Basic basic;
+    private Generic generic;
+    private Specific specific;
+    private List<CommandClass> commandClasses;
+
     public ZWaveSerialPayload doRequestStart(boolean highPower, boolean networkWide) {
         logger.debug("Setting controller into INCLUSION mode, highPower:{} networkWide:{}.", highPower, networkWide);
 
@@ -100,35 +105,9 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
                     break;
                 }
                 logger.debug("NODE {}: Adding slave.", incomingMessage.getMessagePayloadByte(2));
-
-                int length = incomingMessage.getMessagePayloadByte(3);
-
-                Basic basic = Basic.getBasic(incomingMessage.getMessagePayloadByte(4));
-                Generic generic = Generic.getGeneric(incomingMessage.getMessagePayloadByte(5));
-                Specific specific = Specific.getSpecific(generic, incomingMessage.getMessagePayloadByte(6));
-
-                List<CommandClass> commandClasses = new ArrayList<CommandClass>();
-
-                for (int i = 7; i < length + 4; i++) {
-                    int data = incomingMessage.getMessagePayloadByte(i);
-
-                    CommandClass commandClass = CommandClass.getCommandClass(data);
-                    if (commandClass == null) {
-                        continue;
-                    }
-
-                    // Check if this is the control marker
-                    if (commandClass == CommandClass.COMMAND_CLASS_MARK) {
-                        // TODO: Implement control command classes
-                        break;
-                    }
-
-                    commandClasses.add(commandClass);
-                }
-
-                ZWaveInclusionEvent event = new ZWaveInclusionEvent(ZWaveInclusionState.IncludeSlaveFound,
-                        incomingMessage.getMessagePayloadByte(2), basic, generic, specific, commandClasses);
-                zController.notifyEventListeners(event);
+                processNodeInformation(incomingMessage);
+                zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionState.IncludeSlaveFound,
+                        incomingMessage.getMessagePayloadByte(2), basic, generic, specific, commandClasses));
                 break;
 
             case ADD_NODE_STATUS_ADDING_CONTROLLER:
@@ -136,8 +115,9 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
                     break;
                 }
                 logger.debug("NODE {}: Adding controller.", incomingMessage.getMessagePayloadByte(2));
+                processNodeInformation(incomingMessage);
                 zController.notifyEventListeners(new ZWaveInclusionEvent(ZWaveInclusionState.IncludeControllerFound,
-                        incomingMessage.getMessagePayloadByte(2)));
+                        incomingMessage.getMessagePayloadByte(2), basic, generic, specific, commandClasses));
                 break;
 
             case ADD_NODE_STATUS_PROTOCOL_DONE:
@@ -166,5 +146,27 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
         }
 
         return true;
+    }
+
+    private void processNodeInformation(SerialMessage incomingMessage) throws ZWaveSerialMessageException {
+        int length = incomingMessage.getMessagePayloadByte(3);
+
+        basic = Basic.getBasic(incomingMessage.getMessagePayloadByte(4));
+        generic = Generic.getGeneric(incomingMessage.getMessagePayloadByte(5));
+        specific = Specific.getSpecific(generic, incomingMessage.getMessagePayloadByte(6));
+
+        commandClasses = new ArrayList<CommandClass>();
+
+        for (int i = 7; i < length + 4; i++) {
+            int data = incomingMessage.getMessagePayloadByte(i);
+
+            CommandClass commandClass = CommandClass.getCommandClass(data);
+            if (commandClass == null) {
+                continue;
+            }
+
+            commandClasses.add(commandClass);
+        }
+
     }
 }

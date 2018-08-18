@@ -7,7 +7,10 @@
 
   <thing-type id="everspring_ad146_00_000" listed="false">
     <label>AD146 In-Wall Dimmer Module</label>
-    <description>In-Wall Dimmer Module</description>
+    <description><![CDATA[
+In-Wall Dimmer Module<br /><h1>Overview</h1><p>In-Wall Dimmer Module </p> <br /><h2>Inclusion Information</h2><p>Press the link key three times within 1.5 seconds to put the unit into inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>Press the link key three times within 1.5 seconds to put the unit into exclusion mode.</p>
+    ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -103,6 +106,12 @@
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Control</label>
         <multipleLimit>4</multipleLimit>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

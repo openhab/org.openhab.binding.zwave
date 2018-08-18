@@ -7,7 +7,10 @@
 
   <thing-type id="horstmann_scsc17_00_000" listed="false">
     <label>SCSC-17 7 Day Room Thermostat</label>
-    <description>7 Day Room Thermostat</description>
+    <description><![CDATA[
+7 Day Room Thermostat<br /><h1>Overview</h1><p>Mains Operated Programmable Room Thermostat</p> <br /><h2>Inclusion Information</h2><ul><li>On the C-Stat programmable stat, go to Zwave Menu</li> <li>Press INCLUDE/NODE RECEIVER</li> </ul><br /><h2>Exclusion Information</h2><p>not provided</p> <br /><h2>Wakeup Information</h2><p>not provided</p>
+    ]]></description>
+    <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -101,7 +104,7 @@
                  min="0" max="255">
         <label>4: Delta T</label>
         <description><![CDATA[
-Defines the temperature steps of the heating control value is 0.1 °С.<br />1 0.1 ̊C / ̊F - 50 0.1 ̊C / ̊F
+Defines the temperature steps of the heating control<br /><h1>Overview</h1><p>Defines the temperature steps of the heating control value is 0.1 °С.</p> <p>0.1 ̊C / ̊F - 50 0.1 ̊C / ̊F</p>
         ]]></description>
         <default>5</default>
       </parameter>
@@ -114,6 +117,12 @@ Defines the temperature steps of the heating control value is 0.1 °С.<br />1 0
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Control</label>
         <multipleLimit>4</multipleLimit>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

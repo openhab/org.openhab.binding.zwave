@@ -47,11 +47,6 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass implements ZWaveC
     public static final int WAKE_UP_INTERVAL_CAPABILITIES_GET = 0x09;
     public static final int WAKE_UP_INTERVAL_CAPABILITIES_REPORT = 0x0A;
 
-    // private static final int MAX_BUFFFER_SIZE = 128;
-
-    // @XStreamOmitField
-    // private ArrayBlockingQueue<ZWaveCommandClassTransactionPayload> wakeUpQueue;
-
     // From interval report
     @XStreamOmitField
     private boolean initReportDone = false;
@@ -86,10 +81,6 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass implements ZWaveC
     public ZWaveWakeUpCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
         versionMax = MAX_SUPPORTED_VERSION;
-
-        // wakeUpQueue = new ArrayBlockingQueue<ZWaveCommandClassTransactionPayload>(MAX_BUFFFER_SIZE, true);
-
-        // timer = new Timer();
     }
 
     @Override

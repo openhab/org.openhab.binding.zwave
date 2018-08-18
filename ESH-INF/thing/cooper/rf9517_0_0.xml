@@ -69,6 +69,12 @@ Accessory Switch<br /><h1>Overview</h1><p>Aspire RF Accessory Switch Compatible 
         <label>127: Group 255</label>
       </parameter>
 
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
     </config-description>
 
   </thing-type>

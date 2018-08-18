@@ -146,22 +146,26 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
 
         Thing thing = getThing(thingUID);
         if (thing == null) {
+            logger.debug("No thing found in getConfigDescription {}", uri);
             return null;
         }
         ThingUID bridgeUID = thing.getBridgeUID();
         if (bridgeUID == null) {
+            logger.debug("No bridgeUID found in getConfigDescription {}", uri);
             return null;
         }
 
         // Get the controller for this thing
         Thing bridge = getThing(bridgeUID);
         if (bridge == null) {
+            logger.debug("No bridge found in getConfigDescription {}", uri);
             return null;
         }
 
         final BigDecimal cfgNodeId = (BigDecimal) thing.getConfiguration()
                 .get(ZWaveBindingConstants.CONFIGURATION_NODEID);
         if (cfgNodeId == null) {
+            logger.debug("No nodeId found in getConfigDescription {}", uri);
             return null;
         }
         int nodeId = cfgNodeId.intValue();
@@ -169,6 +173,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         // Get its handler and node
         ZWaveControllerHandler handler = (ZWaveControllerHandler) bridge.getHandler();
         if (handler == null) {
+            logger.debug("NODE {}: No bridge handler found in getConfigDescription", nodeId);
             return null;
         }
 
@@ -193,12 +198,13 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         options.add(new ParameterOption("43200", "12 Hours"));
         options.add(new ParameterOption("86400", "1 Day"));
         options.add(new ParameterOption("172800", "2 Days"));
+        options.add(new ParameterOption("864000", "10 Days"));
 
         parameters.add(
                 ConfigDescriptionParameterBuilder.create(ZWaveBindingConstants.CONFIGURATION_POLLPERIOD, Type.INTEGER)
                         .withLabel(ZWaveBindingConstants.CONFIG_BINDING_POLLINGPERIOD_LABEL)
                         .withDescription(ZWaveBindingConstants.CONFIG_BINDING_POLLINGPERIOD_DESC).withDefault("86400")
-                        .withMinimum(new BigDecimal(15)).withMaximum(new BigDecimal(86400)).withOptions(options)
+                        .withMinimum(new BigDecimal(15)).withMaximum(new BigDecimal(864000)).withOptions(options)
                         .withLimitToOptions(false).withGroupName("thingcfg").build());
 
         parameters.add(ConfigDescriptionParameterBuilder

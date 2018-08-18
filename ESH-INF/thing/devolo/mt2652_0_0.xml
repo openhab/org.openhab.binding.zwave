@@ -7,7 +7,9 @@
 
   <thing-type id="devolo_mt2652_00_000" listed="false">
     <label>MT2652 Scene Switch</label>
-    <description>Scene Switch</description>
+    <description><![CDATA[
+Scene Switch<br /><h1>Overview</h1><p>The Home Control Wall Switch lets you control your Home Control devices at the press of a button. It has two<br />different rocker switches.</p> <br /><h2>Inclusion Information</h2><p>Activate inclusion on the device by pressing any one of the four buttons for one second.</p> <br /><h2>Exclusion Information</h2><p>Activate exclusion on the device by pressing any one of the four buttons for one second.</p> <br /><h2>Wakeup Information</h2><p>Click button 2 in management mode.</p>
+    ]]></description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -98,12 +100,12 @@ Button 2 and 4 pair mode<br /><h1>Overview</h1><p>In separate mode button 2 work
       <parameter name="config_11_1" type="integer" groupName="configuration">
         <label>11: Command to control Group A</label>
         <description><![CDATA[
-Defines the command to be sent to devices of control group A when the related button is pressed.<br /><h1>Overview</h1><p>In Switch On/Off only mode On command is sent on Dim Up, Off on Dim Down. In Scenes mode the scene ID sent is (10 * group + ActionID), where ActionID is: 1 = On, 2 = Off, 3 = Dim Up Start, 4 = Dim Down Start, 5 = Dim Up Stop, 6 = Dim Down Stop</p>
+Command sent to devices of control group A<br /><h1>Overview</h1><p>Defines the command to be sent to devices of control group A when the related button is pressed.</p> <p>In Switch On/Off only mode On command is sent on Dim Up, Off on Dim Down. In Scenes mode the scene ID sent is (10 * group + ActionID), where ActionID is: 1 = On, 2 = Off, 3 = Dim Up Start, 4 = Dim Down Start, 5 = Dim Up Stop, 6 = Dim Down Stop</p>
         ]]></description>
         <default>8</default>
         <options>
           <option value="0">Disabled</option>
-          <option value="1">Switch On/Off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch On/Off/Dim (Basic Set/Switch Multilevel)</option>
           <option value="2">Switch On/Off only (send Basic Set)</option>
           <option value="3">Switch all</option>
           <option value="4">Send Scenes</option>
@@ -117,12 +119,12 @@ Defines the command to be sent to devices of control group A when the related bu
       <parameter name="config_12_1" type="integer" groupName="configuration">
         <label>12: Command to control Group B</label>
         <description><![CDATA[
-Defines the command to be sent to devices of control group B when the related button is pressed.<br /><h1>Overview</h1><p>In Switch On/Off only mode On command is sent on Dim Up, Off on Dim Down. In Scenes mode the scene ID sent is (10 * group + ActionID), where ActionID is: 1 = On, 2 = Off, 3 = Dim Up Start, 4 = Dim Down Start, 5 = Dim Up Stop, 6 = Dim Down Stop</p>
+Command sent to devices of control group B<br /><h1>Overview</h1><p>Defines the command to be sent to devices of control group B when the related button is pressed.</p> <p>In Switch On/Off only mode On command is sent on Dim Up, Off on Dim Down. In Scenes mode the scene ID sent is (10 * group + ActionID), where ActionID is: 1 = On, 2 = Off, 3 = Dim Up Start, 4 = Dim Down Start, 5 = Dim Up Stop, 6 = Dim Down Stop</p>
         ]]></description>
         <default>8</default>
         <options>
           <option value="0">Disabled</option>
-          <option value="1">Switch On/Off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch On/Off/Dim (Basic/Switch Multilevel)</option>
           <option value="2">Switch On/Off only (send Basic Set)</option>
           <option value="3">Switch all</option>
           <option value="4">Send Scenes</option>
@@ -136,12 +138,12 @@ Defines the command to be sent to devices of control group B when the related bu
       <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Command to control Group C</label>
         <description><![CDATA[
-Defines the command to be sent to devices of control group C when the related button is pressed.<br /><h1>Overview</h1><p>In Switch On/Off only mode On command is sent on Dim Up, Off on Dim Down. In Scenes mode the scene ID sent is (10 * group + ActionID), where ActionID is: 1 = On, 2 = Off, 3 = Dim Up Start, 4 = Dim Down Start, 5 = Dim Up Stop, 6 = Dim Down Stop</p>
+Command sent to devices of control group C<br /><h1>Overview</h1><p>Defines the command to be sent to devices of control group C when the related button is pressed.</p> <p>In Switch On/Off only mode On command is sent on Dim Up, Off on Dim Down. In Scenes mode the scene ID sent is (10 * group + ActionID), where ActionID is: 1 = On, 2 = Off, 3 = Dim Up Start, 4 = Dim Down Start, 5 = Dim Up Stop, 6 = Dim Down Stop</p>
         ]]></description>
         <default>8</default>
         <options>
           <option value="0">Disabled</option>
-          <option value="1">Switch On/Off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch On/Off/Dim (Basic/Switch Multilevel)</option>
           <option value="2">Switch On/Off only (send Basic Set)</option>
           <option value="3">Switch all</option>
           <option value="4">Send Scenes</option>
@@ -155,12 +157,12 @@ Defines the command to be sent to devices of control group C when the related bu
       <parameter name="config_14_1" type="integer" groupName="configuration">
         <label>14: Command to control Group D</label>
         <description><![CDATA[
-Defines the command to be sent to devices of control group D when the related button is pressed.<br /><h1>Overview</h1><p>In Switch On/Off only mode On command is sent on Dim Up, Off on Dim Down. In Scenes mode the scene ID sent is (10 * group + ActionID), where ActionID is: 1 = On, 2 = Off, 3 = Dim Up Start, 4 = Dim Down Start, 5 = Dim Up Stop, 6 = Dim Down Stop</p>
+Command sent to devices of control group D<br /><h1>Overview</h1><p>Defines the command to be sent to devices of control group D when the related button is pressed.</p> <p>In Switch On/Off only mode On command is sent on Dim Up, Off on Dim Down. In Scenes mode the scene ID sent is (10 * group + ActionID), where ActionID is: 1 = On, 2 = Off, 3 = Dim Up Start, 4 = Dim Down Start, 5 = Dim Up Stop, 6 = Dim Down Stop</p>
         ]]></description>
         <default>8</default>
         <options>
           <option value="0">Disabled</option>
-          <option value="1">Switch On/Off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch On/Off/Dim (Basic/Switch Multilevel)</option>
           <option value="2">Switch On/Off only (send Basic Set)</option>
           <option value="3">Switch all</option>
           <option value="4">Send Scenes</option>
@@ -217,27 +219,35 @@ Defines the command to be sent to devices of control group D when the related bu
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Control Group A, controlled by button 1 or single clicks of buttons 1</label>
-        <description>Control Group A, controlled by button 1 or single clicks of buttons 1 and 3</description>
+        <label>2: Control Group A</label>
+        <description><![CDATA[
+Control Group A, controlled by button 1 or single clicks of buttons 1 and 3<br /><h1>Overview</h1><p>Control Group A, controlled by button 1 or single clicks of buttons 1</p>
+        ]]></description>
         <multipleLimit>10</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Control Group B, controlled by button 2 or single clicks of buttons 2</label>
+        <label>3: Control Group B</label>
         <description>Control Group B, controlled by button 2 or single clicks of buttons 2 and 4</description>
         <multipleLimit>10</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Control Group C, controlled by button 3 or double clicks of buttons 1</label>
+        <label>4: Control Group C</label>
         <description>Control Group C, controlled by button 3 or double clicks of buttons 1 and 3</description>
         <multipleLimit>10</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Control Group D, controlled by button 4 or double clicks of buttons 2</label>
+        <label>5: Control Group D</label>
         <description>Control Group D, controlled by button 4 or double clicks of buttons 2 and 4</description>
         <multipleLimit>10</multipleLimit>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>

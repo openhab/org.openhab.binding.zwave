@@ -70,6 +70,12 @@ public abstract class ZWaveCommandClass {
     private int version = 0;
     private int instances = 0;
 
+    /**
+     * True if this is a control only command class.
+     * This means the device will only send commands, and we shouldn't initialise it as a server
+     */
+    private boolean control = false;
+
     @XStreamOmitField
     protected int versionMax = 1;
 
@@ -171,6 +177,24 @@ public abstract class ZWaveCommandClass {
      */
     public int getMaxVersion() {
         return versionMax;
+    }
+
+    /**
+     * Set the class to be a control command class.
+     *
+     * @param control true if this is a control command class within the device
+     */
+    public void setControlClass(boolean control) {
+        this.control = control;
+    }
+
+    /**
+     * Returns true if this command class is a control only class
+     *
+     * @return true if this command class is a control only class
+     */
+    public boolean isControlClass() {
+        return control;
     }
 
     /**

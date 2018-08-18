@@ -23,8 +23,8 @@ Dual Paddle Wall Dimmer<br /><h1>Overview</h1><p>Dual Paddle Wall Dimmer, AC230V
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Paddle 2</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -136,6 +136,12 @@ Group 3 Control<br /><h1>Overview</h1><p>Group 3 Control: If you associate a Z-W
 Group 4 Control<br /><h1>Overview</h1><p>Group 4 Control: If you associate a Z-Wave device into Group 4, that device will be commanded to turn on or off when the switch is commanded to turn on or off Caution: The switch will not transmit to Z-Wave devices in Group 4 if it is already in the state that the Z-Wave command commanded it to. <br /><br />The Group4 name is wireless.(Profile MSB=0x20, Profile LSB=0x03)</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
       </parameter>
 
     </config-description>
