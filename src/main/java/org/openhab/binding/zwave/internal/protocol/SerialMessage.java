@@ -607,7 +607,8 @@ public class SerialMessage {
         SendTestFrame(0xBE, "SendTestFrame"), // Send a test frame to a node
         GetProtocolStatus(0xBF, "GetProtocolStatus"),
         SetPromiscuousMode(0xD0, "SetPromiscuousMode"), // Set controller into promiscuous mode to listen to all frames
-        PromiscuousApplicationCommandHandler(0xD1, "PromiscuousApplicationCommandHandler");
+        PromiscuousApplicationCommandHandler(0xD1, "PromiscuousApplicationCommandHandler"),
+        ApplicationCommandHandlerBridge(0xA8, "ApplicationCommandHandlerBridge");
 
         /**
          * A mapping between the integer code and its corresponding ZWaveMessage
