@@ -8,6 +8,7 @@
   <thing-type id="devolo_mt2653_00_000" listed="false">
     <label>MT2653 Keyfob</label>
     <description>Keyfob</description>
+    <category>RemoteControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

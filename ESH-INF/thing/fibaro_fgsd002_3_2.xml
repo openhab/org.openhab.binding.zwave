@@ -27,31 +27,31 @@ Smoke Detector<br /><h1>Overview</h1><p>The Fibaro Smoke Sensor is a universal, 
         </properties>
       </channel>
       <channel id="alarm_heat" typeId="alarm_heat">
-        <label>Alarm (heat)</label>
+        <label>Heat Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">ALARM;type=HEAT</property>
         </properties>
       </channel>
       <channel id="alarm_smoke" typeId="alarm_smoke">
-        <label>Alarm (smoke)</label>
+        <label>Smoke Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">ALARM;type=SMOKE</property>
         </properties>
       </channel>
       <channel id="alarm_system" typeId="alarm_system">
-        <label>Alarm (system)</label>
+        <label>Hardware Failure Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">ALARM;type=SYSTEM</property>
         </properties>
       </channel>
-      <channel id="alarm_burglar" typeId="alarm_burglar">
-        <label>Alarm (burglar)</label>
+      <channel id="alarm_tamper" typeId="alarm_tamper">
+        <label>Tamper Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">ALARM;type=BURGLAR</property>
+          <property name="binding:*:OnOffType">ALARM;type=BURGLAR, event=3</property>
         </properties>
       </channel>
-      <channel id="alarm_power" typeId="alarm_power">
-        <label>Alarm (power)</label>
+      <channel id="alarm_battery" typeId="alarm_battery">
+        <label>Low Battery Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">ALARM;type=POWER_MANAGEMENT</property>
         </properties>

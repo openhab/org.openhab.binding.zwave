@@ -54,8 +54,8 @@ Double relay Switch 2x1.7kW<br /><h1>Overview</h1><p>https://defaro.ru/index.php
       </parameter-group>
 
       <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: Load type</label>
-        <description>Selects load type for dimmer</description>
+        <label>1: Switch behavior</label>
+        <description>Selects ON/OFF/BLINK modes</description>
         <default>3</default>
         <options>
           <option value="0">Normal</option>
