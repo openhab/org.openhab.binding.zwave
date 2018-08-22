@@ -15,10 +15,10 @@ import java.util.Map;
 
 import javax.measure.quantity.Temperature;
 
-import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.library.types.QuantityType;
 import org.eclipse.smarthome.core.library.unit.ImperialUnits;
 import org.eclipse.smarthome.core.library.unit.SIUnits;
+import org.eclipse.smarthome.core.library.unit.SmartHomeUnits;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.type.ChannelTypeUID;
 import org.eclipse.smarthome.core.types.State;
@@ -70,8 +70,9 @@ public class ZWaveMultiLevelSensorConverterTest {
 
         State state = converter.handleEvent(channel, event);
 
-        assertEquals(state.getClass(), DecimalType.class);
-        assertEquals(((DecimalType) state).toBigDecimal(), value);
+        assertEquals(state.getClass(), QuantityType.class);
+        assertEquals(SmartHomeUnits.LUX, ((QuantityType) state).getUnit());
+        assertEquals(((QuantityType) state).toBigDecimal(), value);
     }
 
     @Test
