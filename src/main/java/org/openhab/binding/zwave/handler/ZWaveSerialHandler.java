@@ -58,6 +58,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
     private static final int SERIAL_RECEIVE_TIMEOUT = 250;
 
     private ZWaveReceiveThread receiveThread;
+    private SerialPortConnectorThread connectorThread;
 
     public ZWaveSerialHandler(Bridge bridge) {
         super(bridge);
@@ -75,6 +76,28 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
         }
 
         super.initialize();
+
+        connectorThread = new SerialPortConnectorThread();
+        connectorThread.start();
+    }
+
+    private class SerialPortConnectorThread extends Thread {
+        private static final int RECONNECT_INTERVAL = 5000;
+
+        @Override
+        public void run() {
+            try {
+                while (!interrupted() && !connectSerialPort()) {
+                    Thread.sleep(RECONNECT_INTERVAL);
+                }
+                connectorThread = null;
+            } catch (InterruptedException e) {
+                // Cleanly shut down if interrupted
+            }
+        }
+    }
+
+    private boolean connectSerialPort() {
         logger.info("Connecting to serial port '{}'", portId);
         try {
             CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(portId);
@@ -96,6 +119,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             logger.info("Serial port is initialized");
 
             initializeNetwork();
+            return true;
         } catch (NoSuchPortException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
                     ZWaveBindingConstants.OFFLINE_SERIAL_EXISTS);// , portId));
@@ -109,6 +133,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
                     ZWaveBindingConstants.OFFLINE_SERIAL_LISTENERS);// , portId));
         }
+        return false;
     }
 
     /**
@@ -127,6 +152,14 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
         if (serialPort != null) {
             serialPort.close();
             serialPort = null;
+        }
+        if (connectorThread != null) {
+            connectorThread.interrupt();
+            try {
+                connectorThread.join();
+            } catch(InterruptedException e) {
+            }
+            connectorThread = null;
         }
         logger.info("Stopped ZWave serial handler");
 
@@ -334,6 +367,21 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             logger.debug("Stopped ZWave thread: Receive");
 
             serialPort.removeEventListener();
+            try {
+                serialPort.close();
+            } catch (IllegalMonitorStateException e) {
+                // If serial port close() is interrupted while obtaining a lock, it will throw benign
+                // IllegalMonitorStateException. Ignore it.
+            }
+            serialPort = null;
+
+            if (!interrupted()) {
+                logger.debug("Restarting initialization of controller after error");
+                dispose();
+
+                connectorThread = new SerialPortConnectorThread();
+                connectorThread.start();
+            }
         }
     }
 
