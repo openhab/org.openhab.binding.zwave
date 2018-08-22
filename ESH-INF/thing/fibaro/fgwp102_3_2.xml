@@ -44,6 +44,18 @@ Metered Wall Plug Switch<br /><h1>Overview</h1><p>FIBARO Wall Plug is a universa
           <property name="binding:*:OnOffType">COMMAND_CLASS_METER</property>
         </properties>
       </channel>
+      <channel id="config_decimal_param41" typeId="fibaro_fgwp102_03_002_config_decimal_param41">
+        <label>LED ring colour when device is on</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=41</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param42" typeId="fibaro_fgwp102_03_002_config_decimal_param42">
+        <label>LED ring colour when device is off</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=42</property>
+        </properties>
+      </channel>
       <channel id="alarm_power" typeId="alarm_power">
         <label>Alarm (power)</label>
         <properties>
@@ -393,5 +405,44 @@ defines how commands are sent in specified association groups<br /><h1>Overview<
     </config-description>
 
   </thing-type>
+
+  <channel-type id="fibaro_fgwp102_03_002_config_decimal_param41">
+    <item-type>Number</item-type>
+    <label>LED ring colour when controlled device is on</label>
+    <description>LED ring colour when controlled device is on</description>
+    <state pattern="%s">
+      <options>
+        <option value="0">illumination turned off completely</option>
+        <option value="1">colour changes continuously depending on active power</option>
+        <option value="2">colour changes in steps depending on active power</option>
+        <option value="3">white</option>
+        <option value="4">red</option>
+        <option value="5">green</option>
+        <option value="6">blue</option>
+        <option value="7">yellow</option>
+        <option value="8">cyan</option>
+        <option value="9">magenta</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="fibaro_fgwp102_03_002_config_decimal_param42">
+    <item-type>Number</item-type>
+    <label>LED ring colour when controlled device is off</label>
+    <description>LED ring colour when controlled device is off</description>
+    <state pattern="%s">
+      <options>
+        <option value="0">illumination turned off completely</option>
+        <option value="1">LED ring is illuminated</option>
+        <option value="3">white</option>
+        <option value="4">red</option>
+        <option value="5">green</option>
+        <option value="6">blue</option>
+        <option value="7">yellow</option>
+        <option value="8">cyan</option>
+        <option value="9">magenta</option>
+      </options>
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>
