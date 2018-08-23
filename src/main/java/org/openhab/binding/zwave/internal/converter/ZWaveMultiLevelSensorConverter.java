@@ -15,6 +15,7 @@ import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.library.types.QuantityType;
 import org.eclipse.smarthome.core.library.unit.ImperialUnits;
 import org.eclipse.smarthome.core.library.unit.SIUnits;
+import org.eclipse.smarthome.core.library.unit.SmartHomeUnits;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
@@ -105,7 +106,17 @@ public class ZWaveMultiLevelSensorConverter extends ZWaveCommandClassConverter {
                                 sensorEvent.getSensorScale());
                         break;
                 }
-
+                break;
+            case LUMINANCE:
+                switch (sensorEvent.getSensorScale()) {
+                    case 0:
+                        return new QuantityType<>(val, SmartHomeUnits.LUX);
+                    case 1:
+                        return new QuantityType<>(val, SmartHomeUnits.PERCENT);
+                    default:
+                        logger.debug("NODE {}: Unknown Luminance scale {}", event.getNodeId(),
+                                sensorEvent.getSensorScale());
+                }
                 break;
             default:
                 logger.debug("NODE {}: Sensor conversion not performed for {}.", event.getNodeId(), senType);
