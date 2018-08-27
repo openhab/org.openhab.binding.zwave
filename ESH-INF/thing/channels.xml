@@ -1124,17 +1124,6 @@
         <label>Heating Setpoint</label>
         <description>Sets the thermostat setpoint</description>
         <category>Temperature</category>
-        <config-description>
-            <parameter name="config_scale" type="text">
-                <label>Scale</label>
-                <description>Select the scale to use for setpoints.</description>
-                <default>0</default>
-                <options>
-                    <option value="0">Celsius</option>
-                    <option value="1">Fahrenheit</option>
-                </options>
-            </parameter>
-        </config-description>
     </channel-type>
 
     <!-- Thermostat Fan Mode Channel -->

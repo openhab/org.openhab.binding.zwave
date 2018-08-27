@@ -263,11 +263,13 @@ public class ZWaveController {
                 sucID = ((GetSucNodeIdMessageClass) processor).getSucNodeId();
 
                 // If there is no SUC in the network, then assign us as SUC
-                if (sucID == 0) {
+                if (sucNode == 0) {
                     sucNode = getOwnNodeId();
+                    logger.debug("SUC was not defined - using controller (NODE {})", sucNode);
                 }
 
                 if (sucID != sucNode) {
+                    logger.debug("SUC was not set as required - currently {}, requires {}", sucID, sucNode);
                     setSucNode(sucNode);
                 }
 
@@ -530,6 +532,9 @@ public class ZWaveController {
      * @param sucNodeId
      */
     public void setSucNode(int sucNodeId) {
+        if (sucNodeId < 1 || sucNodeId > 232) {
+            return;
+        }
         enqueue(new SetSucNodeMessageClass().doRequest(sucNodeId, true));
     }
 

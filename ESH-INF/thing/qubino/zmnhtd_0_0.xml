@@ -110,29 +110,14 @@ IR external relay or External Relay control mode<br /><h1>Overview</h1><p>Availa
         </options>
       </parameter>
 
-      <parameter name="config_10_3" type="integer" groupName="configuration">
-        <label>10: Activate / deactivate functions ALL ON / ALL OFF</label>
-        <description><![CDATA[
-Activate / deactivate functions<br /><h1>Overview</h1><p>Smart Meter module responds to commands ALL ON/ ALL OFF that may be sent by the main controller or by other controller belonging to the system</p>
-        ]]></description>
-        <default>255</default>
-        <options>
-          <option value="0">ALL ON is not active, ALL OFF is not active</option>
-          <option value="1">ALL ON is not active, ALL OFF active</option>
-          <option value="2">ALL ON active, ALL OFF is not active</option>
-          <option value="255">ALL ON active, ALL OFF active</option>
-        </options>
-      </parameter>
-
-      <parameter name="config_11_2_00007F17" type="integer" groupName="configuration">
+      <parameter name="config_11_2" type="integer" groupName="configuration">
         <label>11: Timer turning off IR external relay</label>
         <description><![CDATA[
-Automatic turning off IR external relay output after set time<br /><h1>Overview</h1><p>When IR external relay is ON it goes automatically OFF after time defined by this Parameter. Timer is reset to zero each time the module receive ON command regardless from where it comes (push button, associated module, controller,..). Available configuration parameters (data type is 2 Byte DEC):</p>
+Automatic turning off IR external relay output after set time<br /><h1>Overview</h1><p>When External IR relay is ON it goes automatically OFF after time defined in this parameter. Timer is reset to zero each time the device receives ON command.<br />Values (size is 2 byte dec):<br />• Default value 0<br />• 0-59 = Auto OFF disabled<br />• 60-32535 = 60 seconds – 32535 seconds</p>
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">Auto OFF disabled</option>
-          <option value="32535">Auto OFF enabled with define time, step is 1s</option>
+          <option value="0">Disabled</option>
         </options>
       </parameter>
 
