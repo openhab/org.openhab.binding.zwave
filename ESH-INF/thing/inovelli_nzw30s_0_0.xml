@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="inovelli_nzw30s_00_000" listed="false">
+    <label>NZW30S In-Wall Switch (On/Off) Scene Enabled</label>
+    <description><![CDATA[
+In-Wall Switch (On/Off) Scene Enabled<br /><h1>Overview</h1><p>Turn ON/OFF manually or remotely via the Z-Wave controller<br />• Can be Included in multiple Groups and Scenes <br />• Compatible with all incandescent and CFL/ LED bulbs<br />• Blue LED indicates switch location in a dark room<br />• Z-Wave Certified for simple pairing and integrated home automation<br />• Screw Terminal Installation — requires wiring connections for Line (Hot), Load, Neutral.</p> <br /><h2>Inclusion Information</h2><ul><li>Follow the instructions for your Z-Wave certified controller to include a device to the Z-Wave network.</li> <li>Once the controller is ready to include your device, triple press the Up/Down push button to include it in the network.</li> </ul><br /><h2>Exclusion Information</h2><ul><li>Follow the instructions for your Z-Wave certified controller to exclude a device from the Z-Wave network.</li> <li>Once the controller is ready to Exclude your device, triple press the Up/Down push button to exclude it from the network.</li> </ul>
+    ]]></description>
+    <category>PowerOutlet</category>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">CENTRAL_SCENE</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Inovelli</property>
+      <property name="modelId">NZW30S</property>
+      <property name="manufacturerId">0312</property>
+      <property name="manufacturerRef">1E00:1E00</property>
+      <property name="dbReference">894</property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>An association command class that allows the device to communicate with other Z-Wave devices directly -- such as sending BASIC REPORT whenever the switch is turned on or off.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>
