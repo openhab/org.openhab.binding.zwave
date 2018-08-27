@@ -14,12 +14,6 @@ Smoke Detector<br /><h1>Overview</h1><p>The Fibaro Smoke Sensor is a universal, 
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Binary Sensor</label>
-        <properties>
-          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
-        </properties>
-      </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
@@ -59,24 +53,6 @@ Smoke Detector<br /><h1>Overview</h1><p>The Fibaro Smoke Sensor is a universal, 
       <channel id="battery-level" typeId="system.battery-level">
         <properties>
           <property name="binding:*:PercentType">BATTERY</property>
-        </properties>
-      </channel>
-      <channel id="alarm_heat" typeId="alarm_heat">
-        <label>Alarm (heat)</label>
-        <properties>
-          <property name="binding:*:OnOffType">SENSOR_ALARM;type=HEAT</property>
-        </properties>
-      </channel>
-      <channel id="alarm_smoke" typeId="alarm_smoke">
-        <label>Alarm (smoke)</label>
-        <properties>
-          <property name="binding:*:OnOffType">SENSOR_ALARM;type=SMOKE</property>
-        </properties>
-      </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm (general)</label>
-        <properties>
-          <property name="binding:*:OnOffType">SENSOR_ALARM;type=GENERAL</property>
         </properties>
       </channel>
     </channels>
