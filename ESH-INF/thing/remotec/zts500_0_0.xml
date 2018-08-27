@@ -8,7 +8,7 @@
   <thing-type id="remotec_zts500_00_000" listed="false">
     <label>ZTS-500 Thermostat</label>
     <description><![CDATA[
-Thermostat<br /><h1>Overview</h1><p>Remotec ZTS-500 Thermostat similar to ZTS-110</p> <br /><h2>Inclusion Information</h2><p>Z-Wave Inclusion and Exclusion</p> <p>When ZTS-500 is not in any Z-Wave network, "Z-Wave Disconnected" icon will show up on the standby menu, you can navigate to the Z-Wave from operation menu to do the inclusion. Or you can go to system settings menu, the first menu is for Z-Wave setup, you can do both inclusion and exclusion.</p> <p>Tap the "+" scroll key when an inclusion or exclusion request is sent by a local Z-Wave gateway, HUB, or controller. If the procedure is successful, a "" screen will display. If the procedure fails, a "" screen will display.<br /> If the ZTS-500 is included in a Z-Wave network, the "Z-Wave Disconnected" icon will no longer display in the standby menu.</p> <p>Note: All Z-Wave configuration parameter values will keep no changes after excluding the unit from the network, except for the association groups information. The ZTS-500 will retain the last selected HVAC system type.</p> <br /><h2>Exclusion Information</h2><p>Z-Wave Inclusion and Exclusion</p> <p>When ZTS-500 is not in any Z-Wave network, "Z-Wave Disconnected" icon will show up on the standby menu, you can navigate to the Z-Wave from operation menu to do the inclusion. Or you can go to system settings menu, the first menu is for Z-Wave setup, you can do both inclusion and exclusion.</p> <p>Tap the "+" scroll key when an inclusion or exclusion request is sent by a local Z-Wave gateway, HUB, or controller. If the procedure is successful, a "" screen will display. If the procedure fails, a "" screen will display.<br /> If the ZTS-500 is included in a Z-Wave network, the "Z-Wave Disconnected" icon will no longer display in the standby menu.</p> <p>Note: All Z-Wave configuration parameter values will keep no changes after excluding the unit from the network, except for the association groups information. The ZTS-500 will retain the last selected HVAC system type.</p>
+Thermostat<br /><h1>Overview</h1><p>Remotec ZTS-500 is a security Z-Wave enabled thermostat designed to control residential HVAC systems. </p> <br /><h2>Inclusion Information</h2><p>Z-Wave Inclusion and Exclusion</p> <p>When ZTS-500 is not in any Z-Wave network, "Z-Wave Disconnected" icon will show up on the standby menu, you can navigate to the Z-Wave from operation menu to do the inclusion. Or you can go to system settings menu, the first menu is for Z-Wave setup, you can do both inclusion and exclusion.</p> <p>Tap the "+" scroll key when an inclusion or exclusion request is sent by a local Z-Wave gateway, HUB, or controller. If the procedure is successful, a "" screen will display. If the procedure fails, a "" screen will display.<br /> If the ZTS-500 is included in a Z-Wave network, the "Z-Wave Disconnected" icon will no longer display in the standby menu.</p> <p>Note: All Z-Wave configuration parameter values will keep no changes after excluding the unit from the network, except for the association groups information. The ZTS-500 will retain the last selected HVAC system type.</p> <br /><h2>Exclusion Information</h2><p>Z-Wave Inclusion and Exclusion</p> <p>When ZTS-500 is not in any Z-Wave network, "Z-Wave Disconnected" icon will show up on the standby menu, you can navigate to the Z-Wave from operation menu to do the inclusion. Or you can go to system settings menu, the first menu is for Z-Wave setup, you can do both inclusion and exclusion.</p> <p>Tap the "+" scroll key when an inclusion or exclusion request is sent by a local Z-Wave gateway, HUB, or controller. If the procedure is successful, a "" screen will display. If the procedure fails, a "" screen will display.<br /> If the ZTS-500 is included in a Z-Wave network, the "Z-Wave Disconnected" icon will no longer display in the standby menu.</p> <p>Note: All Z-Wave configuration parameter values will keep no changes after excluding the unit from the network, except for the association groups information. The ZTS-500 will retain the last selected HVAC system type.</p>
     ]]></description>
     <category>HVAC</category>
 
@@ -68,12 +68,34 @@ Thermostat<br /><h1>Overview</h1><p>Remotec ZTS-500 Thermostat similar to ZTS-11
       <property name="vendor">Remotec</property>
       <property name="modelId">ZTS-500</property>
       <property name="manufacturerId">5254</property>
-      <property name="manufacturerRef">0202:8170</property>
+      <property name="manufacturerRef">0200:8170,0202:8170</property>
       <property name="dbReference">870</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
+
+      <!-- GROUP DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Lifeline</label>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Group 1</label>
+        <multipleLimit>2</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Group 2</label>
+        <multipleLimit>2</multipleLimit>
+      </parameter>
 
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
