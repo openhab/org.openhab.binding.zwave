@@ -33,7 +33,7 @@
       <property name="vendor">DynaQuip Controls</property>
       <property name="modelId">ZWACT1</property>
       <property name="manufacturerId">0132</property>
-      <property name="manufacturerRef">0084:0213</property>
+      <property name="manufacturerRef">0213:0214</property>
       <property name="dbReference">891</property>
       <property name="defaultAssociations">1</property>
     </properties>

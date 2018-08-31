@@ -8,7 +8,7 @@
   <thing-type id="qubino_zmnhcd_04_001" listed="false">
     <label>ZMNHCD Flush Shutter</label>
     <description><![CDATA[
-Flush Shutter<br /><h1>Overview</h1><p>To enable endpoint 2 (lamella tilt for venetian blinds), follow the procedure:</p> <ol><li>set Param 71 to 0 -&gt; save ( make sure it has been set really )</li> <li>set Param 71 to 1 -&gt; save ( make sure it has been set really )</li> <li>exclude device from network and delete Node xml, stop openHAB</li> <li>switch off the power supply of the device ( according to the support team this is an alternative to wait 30s )</li> <li>switch on the power supply again and start openHAB</li> <li>include device to the network</li> <li>add the Thing to openhab via HABmin</li> <li>Be patient until the binding until processed all your nodes again</li> </ol>
+Flush Shutter<br /><h1>Overview</h1><p>To enable endpoint 2 (lamella tilt for venetian blinds), follow the procedure:</p> <ol><li>set Param 71 to 0 -&gt; save ( make sure it has been set really )</li> <li>set Param 71 to 1 -&gt; save ( make sure it has been set really )</li> <li>exclude device from network and delete Node xml, stop openHAB</li> <li>switch off the power supply of the device ( according to the support team this is an alternative to wait 30s )</li> <li>switch on the power supply again and start openHAB</li> <li>include device to the network</li> <li>add the Thing to openhab via HABmin</li> <li>Be patient until the binding until processed all your nodes again</li> </ol><br /><h2>Inclusion Information</h2><p><strong>AUTOMATICALLY ADDING THE DEVICE TO A Z-WAVE NETWORK (AUTO INCLUSION)</strong></p> <ol><li>Enable add/remove mode on your Z-Wave gateway (hub)</li> <li>Connect the device to the power supply (with the temperature sensor already connected – sold separately*)</li> <li>Auto-inclusion will be initiated within 5 seconds of connection to the power supply and the device will automatically enrol in your network</li> </ol><p>MANUALLY<strong> ADDING THE DEVICE TO A Z-WAVE NETWORK (MANUAL INCLUSION)</strong></p> <ol><li>Enable add/remove mode on your Z-Wave gateway (hub)</li> <li>Connect the device to the power supply (with the temperature sensor already connected*)</li> <li>Toggle the switch connected to the I1 terminal 3 times within 3 seconds <strong>OR</strong> If the device is powered by 24 V SELV supply, press and hold the S(Service) button between 2 and 6 seconds4.</li> <li>A new multi-channel device will appear on your dashboard</li> </ol><p>*If connecting the temperature sensor, switch off the power supply and make sure the device is excluded from your network BEFORE connecting the sensor.</p> <p>ⓘ Make sure the device is excluded from your network before connecting the temperature sensor. Switch off the power supply, connect the temperature sensor, and re-include the device to your network.</p> <br /><h2>Exclusion Information</h2><p>REMOVAL FROM A ZWAVE NETWORK (Z-WAVE EXCLUSION)</p> <ol><li>Connect the device to the power supply</li> <li>Make sure the device is within direct range of your Z-Wave gateway (hub) or use a hand-held Z-Wave remote to perform exclusion</li> <li>Enable add/remove mode on your Z-Wave gateway (hub)</li> <li>Toggle the switch connected to the I1 terminal 3 times within 3 seconds OR If the device is powered by 24 V SELV supply, press and hold the S (Service) button between 2 and 6 seconds</li> <li>The device will be removed from your network but any custom configuration parameters will not be erased</li> </ol><p>FACTORY RESET</p> <ol><li>Connect the device to the power supply</li> <li>Within the first minute (60 seconds) the device is connected to the power supply, toggle the switch connected to the I1 terminal 5 times within 5 seconds (5 times change switch state) OR If the device is powered by 24 V SELV supply, press and hold the S (Service) button for at least 6 seconds</li> </ol><p><br />ⓘ By resetting the device, all custom parameters previously set on the device will return to their default values, and the owner ID will be deleted. Use this reset procedure only when the main gateway (hub) is missing or otherwise inoperable.</p>
     ]]></description>
     <category>Blinds</category>
 
@@ -121,10 +121,10 @@ Responds to commands ALL ON / ALL OFF from Main Controller<br /><h1>Overview</h1
         ]]></description>
         <default>255</default>
         <options>
-          <option value="0">0 - ALL ON is not active ALL OFF is not active</option>
-          <option value="1">1 - ALL ON is not active ALL OFF active</option>
-          <option value="2">2 - ALL ON is not active ALL OFF is not active</option>
-          <option value="255">255 - ALL ON active, ALL OFF active</option>
+          <option value="0">ALL ON is not active ALL OFF is not active</option>
+          <option value="1">ALL ON is not active ALL OFF active</option>
+          <option value="2">ALL ON is not active ALL OFF is not active</option>
+          <option value="255">ALL ON active, ALL OFF active</option>
         </options>
       </parameter>
 
@@ -153,8 +153,8 @@ Operation Mode (Shutter or Venetian)<br /><h1>Overview</h1><p>This parameter def
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">0 – Shutter mode</option>
-          <option value="1">1 – Venetian mode (up/down and slate rotation)</option>
+          <option value="0">Shutter mode</option>
+          <option value="1">Venetian mode (up/down and slate rotation)</option>
         </options>
       </parameter>
 
@@ -174,9 +174,8 @@ Slats position after up/down movement.<br /><h1>Overview</h1><p>This parameter d
         ]]></description>
         <default>1</default>
         <options>
-          <option value="0">0 - return to previous position for Z-wave control only</option>
-          <option value="0"></option>
-          <option value="1">1 - return to previous position in all cases</option>
+          <option value="0">Previous position for Z-wave control only</option>
+          <option value="1">Return to previous position in all cases</option>
         </options>
       </parameter>
 
@@ -205,8 +204,8 @@ Enters calibration mode if set to 1<br /><h1>Overview</h1><p>By modifying the pa
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">0 - Default</option>
-          <option value="1">1 - Start Calibration Process</option>
+          <option value="0">Default</option>
+          <option value="1">Start Calibration Process</option>
         </options>
       </parameter>
 
@@ -217,8 +216,8 @@ Defines if reporting regarding power level, etc is reported to controller.<br />
         ]]></description>
         <default>1</default>
         <options>
-          <option value="0">0 - Reporting to Controller Disabled</option>
-          <option value="1">1 - Reporting to Controller Enabled</option>
+          <option value="0">Reporting to Controller Disabled</option>
+          <option value="1">Reporting to Controller Enabled</option>
         </options>
       </parameter>
 
