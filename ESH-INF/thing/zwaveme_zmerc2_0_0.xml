@@ -7,7 +7,10 @@
 
   <thing-type id="zwaveme_zmerc2_00_000" listed="false">
     <label>ZME_RC2 Z-Wave Remote Control+</label>
-    <description>Z-Wave Remote Control+</description>
+    <description><![CDATA[
+Z-Wave Remote Control+<br /><h1>Overview</h1><p>The Z-Wave.Me Remote controls Z-Wave actuators such as dimmers, switches, thermostats or motor controls for blinds or jalousies and it can activate scenes in central gateways or any other Z-Wave devices. Devices can be turned on and off but dimmers and motor controls can also be turned into a desired dimming level to motor position by keeping a button pushed and releasing it. Although it is controlling other devices, the device can not act as ZWave network controller (primary or secondary) and will always need a Z-Wave network controller to be included into a Z-Wave network.</p> <p>The device can be used in different modes that are selected by configuration parameters 11-21:</p> <ol><li>Direct control of associated devices</li> <li>Control of all devices in the Z-Wave network</li> <li>Simple and enhanced scene activation</li> </ol><p>10 pair of buttons - illuminated by blue light when operated - allow to control up to 10 control groups (either association groups or scenes)</p> <br /><h2>Inclusion Information</h2><p>Bring your primary controller into inclusion mode</p> <p>For Inclusion press the "Inclusion" button 3 times. The LED will flash green for a moment for confirmation. </p> <br /><h2>Exclusion Information</h2><p>Bring your primary controller into inclusion mode</p> <p>For Exclusion press the "Exclusion" button for 5 secs. The LED will flash green for a moment for confirmation.</p> <br /><h2>Wakeup Information</h2><p>This device is battery operated and turned into deep sleep state most of the time to save battery life time. Communication with the device is limited. In order to communicate with the device, a static controller C is needed in the network. This controller will maintain a mailbox for the battery operated devices and store commands that can not be received during deep sleep state. Without such a controller, communication may become impossible and/or the battery life time is significantly decreased.</p> <p>This device will wakeup regularly and announce the wakeup state by sending out a so called Wakeup Notification. The controller can then empty the mailbox. Therefore, the device needs to be configured with the desired wakeup interval and the node ID of the controller. If the device was included by a static controller this controller will usually perform all necessary configurations. The wakeup interval is a tradeoff between maximal battery life time and the desired responses of the device.</p> <p>Pressing the "INCL." button for three times will wake up the device.</p> <p>It is possible to set the node ID to 255 to send wakeup notifications as broadcast. In this mode device takes more time to go to sleep and drains battery faster, but can notify all it's direct neighbors about a wakeup.</p>
+    ]]></description>
+    <category>RemoteControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -44,12 +47,14 @@
       </parameter-group>
 
       <parameter name="config_10_1" type="integer" groupName="configuration">
-        <label>10: Command to Control Group No1 (association group 2)</label>
-        <description>This parameter defines the command to be sent to devices of control group No1 when the related button is pressed (association group 2)</description>
+        <label>10: Command to Control Group No1 (Assoc. Group 2)</label>
+        <description><![CDATA[
+Defines the command sent to group 1 when the button is pressed (Assoc. Group 2)<br /><h1>Overview</h1><p>This parameter defines the command to be sent to devices of control group №1 when the related button is pressed (association group 2).</p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">Disabled</option>
-          <option value="1">Switch On/Off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch On/Off and Dim</option>
           <option value="2">Switch On/Off only (send Basic Set)</option>
           <option value="3">Switch All</option>
           <option value="4">Send Scenes</option>
@@ -215,7 +220,8 @@
       </parameter-group>
 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Lifeline. Send to controller battery level and WakeUp Notification</label>
+        <label>1: Lifeline</label>
+        <description>Send to controller battery level and WakeUp Notification</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
