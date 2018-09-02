@@ -39,7 +39,7 @@ Two Way Switch<br /><h1>Overview</h1><p>Touch Panel Switch is a wall switch with
       <property name="vendor">McoHome Technology Co., Ltd</property>
       <property name="modelId">MH-S312</property>
       <property name="manufacturerId">015F</property>
-      <property name="manufacturerRef">3102:0202,3121:1302,3121:5102</property>
+      <property name="manufacturerRef">3102:0202,3121:1302,3121:5102,3122:5102</property>
       <property name="dbReference">434</property>
       <property name="defaultAssociations">3</property>
     </properties>
