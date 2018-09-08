@@ -204,7 +204,9 @@ public class ZWaveTransactionManager {
      * Shuts down the manager and frees resources
      */
     public void shutdown() {
-        recvQueue.notify();
+        synchronized (recvQueue) {
+            recvQueue.notify();
+        }
         receiveThread.interrupt();
     }
 
@@ -395,10 +397,10 @@ public class ZWaveTransactionManager {
      * @param incomingMessage
      */
     public void processReceiveMessage(SerialMessage incomingMessage) {
-        logger.debug("processReceiveMessage input {}<>{} : {}", recvQueue.size(), recvQueue.remainingCapacity(),
-                incomingMessage.toString());
-
         synchronized (recvQueue) {
+            logger.debug("processReceiveMessage input {}<>{} : {}", recvQueue.size(), recvQueue.remainingCapacity(),
+                    incomingMessage.toString());
+
             logger.debug("processReceiveMessage past lock {}", incomingMessage.toString());
             recvQueue.add(incomingMessage);
             recvQueue.notify();
