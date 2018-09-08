@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,7 +37,7 @@ import com.thoughtworks.xstream.io.xml.StaxDriver;
  * @author Jan-Willem Spuij
  */
 public class ZWaveNodeSerializer {
-    private final static Logger logger = LoggerFactory.getLogger(ZWaveNodeSerializer.class);
+    private static final Logger logger = LoggerFactory.getLogger(ZWaveNodeSerializer.class);
     private final XStream stream = new XStream(new StaxDriver());
     private final String folderName;
 
@@ -89,7 +88,7 @@ public class ZWaveNodeSerializer {
      * @param node
      *            the node to serialize
      */
-    public void SerializeNode(ZWaveNode node) {
+    public void serializeNode(ZWaveNode node) {
         synchronized (stream) {
             // Don't serialise if the stage is not at least finished static
             // If we do serialise when we haven't completed the static stages
@@ -99,7 +98,8 @@ public class ZWaveNodeSerializer {
                 return;
             }
 
-            File file = new File(this.folderName, String.format("node%d.xml", node.getNodeId()));
+            File file = new File(this.folderName,
+                    String.format("network_%08x__node_%d.xml", node.getHomeId(), node.getNodeId()));
             BufferedWriter writer = null;
 
             logger.debug("NODE {}: Serializing to file {}", node.getNodeId(), file.getPath());
@@ -128,9 +128,9 @@ public class ZWaveNodeSerializer {
      *            the number of the node to deserialize
      * @return returns the Node or null in case Serialization failed.
      */
-    public ZWaveNode DeserializeNode(int nodeId) {
+    public ZWaveNode deserializeNode(int homeId, int nodeId) {
         synchronized (stream) {
-            File file = new File(this.folderName, String.format("node%d.xml", nodeId));
+            File file = new File(folderName, String.format("network_%08x__node_%d.xml", homeId, nodeId));
             BufferedReader reader = null;
 
             logger.debug("NODE {}: Serializing from file {}", nodeId, file.getPath());
@@ -163,9 +163,9 @@ public class ZWaveNodeSerializer {
      * @param nodeId The node ID to remove
      * @return true if the file was deleted
      */
-    public boolean DeleteNode(int nodeId) {
+    public boolean deleteNode(int homeId, int nodeId) {
         synchronized (stream) {
-            File file = new File(this.folderName, String.format("node%d.xml", nodeId));
+            File file = new File(folderName, String.format("network_%08x__node_%d.xml", homeId, nodeId));
 
             return file.delete();
         }

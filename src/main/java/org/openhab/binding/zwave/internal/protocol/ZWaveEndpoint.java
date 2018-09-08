@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,8 +8,10 @@
 package org.openhab.binding.zwave.internal.protocol;
 
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Generic;
@@ -32,7 +33,8 @@ public class ZWaveEndpoint {
     private final ZWaveDeviceClass deviceClass;
     private final int endpointId;
 
-    private Map<CommandClass, ZWaveCommandClass> supportedCommandClasses = new HashMap<CommandClass, ZWaveCommandClass>();
+    private final Set<CommandClass> secureCommandClasses = new HashSet<CommandClass>();
+    private final Map<CommandClass, ZWaveCommandClass> supportedCommandClasses = new ConcurrentHashMap<CommandClass, ZWaveCommandClass>();
 
     /**
      * Constructor. Creates a new instance of the ZWaveEndpoint class.
@@ -41,11 +43,9 @@ public class ZWaveEndpoint {
      * @param endpointId the endpoint ID.
      */
     public ZWaveEndpoint(int endpointId) {
-        if (endpointId == 0) {
-            throw new IllegalArgumentException("Endpoint number cannot be 0");
-        }
         this.endpointId = endpointId;
-        this.deviceClass = new ZWaveDeviceClass(Basic.NOT_KNOWN, Generic.NOT_KNOWN, Specific.NOT_USED);
+        this.deviceClass = new ZWaveDeviceClass(Basic.BASIC_TYPE_UNKNOWN, Generic.GENERIC_TYPE_NOT_USED,
+                Specific.SPECIFIC_TYPE_NOT_USED);
     }
 
     /**
@@ -85,22 +85,50 @@ public class ZWaveEndpoint {
      * @param commandClass the command class instance to add.
      */
     public void addCommandClass(ZWaveCommandClass commandClass) {
-        CommandClass key = commandClass.getCommandClass();
-
-        if (!supportedCommandClasses.containsKey(key)) {
-            supportedCommandClasses.put(key, commandClass);
-        }
+        supportedCommandClasses.putIfAbsent(commandClass.getCommandClass(), commandClass);
     }
 
     /**
-     * Removes a command class from the endpoint
+     * Adds a secure command class to the list of supported command classes by this endpoint. Does nothing if command
+     * class is already added.
      *
-     * @param commandClass the {@link CommandClass} instance to remove
+     * @param commandClass the command class instance to add.
+     */
+    public void addSecureCommandClass(CommandClass commandClass) {
+        secureCommandClasses.add(commandClass);
+    }
+
+    /**
+     * Checks if a commandClass is supported by this endpoint.
+     *
+     * @param commandClass
+     *            The command class to test.
+     * @return true if the command class is supported.
+     */
+    public boolean supportsCommandClass(CommandClass commandClass) {
+        return supportedCommandClasses.containsKey(commandClass);
+    }
+
+    /**
+     * Checks if a commandClass is supported in secure mode by this endpoint.
+     *
+     * @param commandClass
+     *            The command class to test.
+     * @return true if the command class is supported in secure mode.
+     */
+    public boolean supportsSecureCommandClass(CommandClass commandClass) {
+        return secureCommandClasses.contains(commandClass);
+    }
+
+    /**
+     * Removes a command class from the node.
+     * This is used to remove classes that a node may report it supports
+     * but it doesn't respond to.
+     *
+     * @param commandClass The command class key
      */
     public void removeCommandClass(CommandClass commandClass) {
-        if (supportedCommandClasses.containsKey(commandClass)) {
-            supportedCommandClasses.remove(commandClass);
-        }
+        supportedCommandClasses.remove(commandClass);
     }
 
     /**
@@ -110,5 +138,36 @@ public class ZWaveEndpoint {
      */
     public ZWaveDeviceClass getDeviceClass() {
         return deviceClass;
+    }
+
+    public Set<CommandClass> getSecureCommandClasses() {
+        return secureCommandClasses;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Endpoint ");
+        builder.append(endpointId);
+        builder.append(": Supported Classes[");
+        boolean first = true;
+        for (CommandClass cmdClass : supportedCommandClasses.keySet()) {
+            if (!first) {
+                builder.append(" ");
+            }
+            first = false;
+            builder.append(cmdClass);
+        }
+        builder.append("] Secure Classes[");
+        first = true;
+        for (CommandClass cmdClass : secureCommandClasses) {
+            if (!first) {
+                builder.append(" ");
+            }
+            first = false;
+            builder.append(cmdClass);
+        }
+        builder.append("]");
+        return builder.toString();
     }
 }

@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,10 +9,11 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,22 +23,19 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class GetSucNodeIdMessageClass extends ZWaveCommandProcessor {
-    private final static Logger logger = LoggerFactory.getLogger(GetSucNodeIdMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(GetSucNodeIdMessageClass.class);
 
-    int sucNode = 0;
+    private int sucNode = 0;
 
-    public SerialMessage doRequest() {
+    public ZWaveSerialPayload doRequest() {
         logger.debug("Get SUC NodeID");
 
-        // Queue the request
-        SerialMessage newMessage = new SerialMessage(SerialMessageClass.GetSucNodeId, SerialMessageType.Request,
-                SerialMessageClass.GetSucNodeId, SerialMessagePriority.High);
-
-        return newMessage;
+        // Create the request
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.GetSucNodeId).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.debug("Got SUC NodeID response.");
 
@@ -49,7 +46,8 @@ public class GetSucNodeIdMessageClass extends ZWaveCommandProcessor {
             logger.debug("No SUC Node is set");
         }
 
-        checkTransactionComplete(lastSentMessage, incomingMessage);
+        transaction.setTransactionComplete();
+
         return true;
     }
 

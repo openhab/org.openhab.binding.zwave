@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,13 +9,14 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent.State;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent.Type;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class RemoveFailedNodeMessageClass extends ZWaveCommandProcessor {
-    private final static Logger logger = LoggerFactory.getLogger(RemoveFailedNodeMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(RemoveFailedNodeMessageClass.class);
 
     private final int FAILED_NODE_REMOVE_STARTED = 0x00;
     private final int FAILED_NODE_NOT_PRIMARY_CONTROLLER = 0x02;
@@ -53,22 +53,22 @@ public class RemoveFailedNodeMessageClass extends ZWaveCommandProcessor {
         FAILED_NODE_NOT_REMOVED
     }
 
-    public SerialMessage doRequest(int nodeId) {
+    public ZWaveSerialPayload doRequest(int nodeId) {
         logger.debug("NODE {}: Marking node as having failed.", nodeId);
 
-        // Queue the request
-        SerialMessage newMessage = new SerialMessage(SerialMessageClass.RemoveFailedNodeID, SerialMessageType.Request,
-                SerialMessageClass.RemoveFailedNodeID, SerialMessagePriority.High);
-        byte[] newPayload = { (byte) nodeId, (byte) 0x01 };
-        newMessage.setMessagePayload(newPayload);
-        return newMessage;
+        // Create the request
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.RemoveFailedNodeID).withPayload(nodeId, 1).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.debug("Got RemoveFailedNode response.");
-        int nodeId = lastSentMessage.getMessagePayloadByte(0);
+        if (transaction == null) {
+            logger.debug("NODE {}: transaction not correlated for RemoveFailedNodeMessageClass");
+            return false;
+        }
+        int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         Report report = null;
         switch (incomingMessage.getMessagePayloadByte(0)) { // TODO: Should this be (&& 0x0f)?
@@ -76,35 +76,35 @@ public class RemoveFailedNodeMessageClass extends ZWaveCommandProcessor {
                 logger.debug("NODE {}: Remove failed node successfully placed on stack.", nodeId);
                 break;
             case FAILED_NODE_NOT_PRIMARY_CONTROLLER:
-                logger.debug("NODE {}: Remove failed node failed as not Primary Controller for node!", nodeId);
-                transactionComplete = true;
+                logger.error("NODE {}: Remove failed node failed as not Primary Controller for node!", nodeId);
                 report = Report.FAILED_NODE_NOT_PRIMARY_CONTROLLER;
+                transaction.setTransactionCanceled();
                 break;
             case FAILED_NODE_NO_CALLBACK_FUNCTION:
-                logger.debug("NODE {}: Remove failed node failed as no callback function!", nodeId);
-                transactionComplete = true;
+                logger.error("NODE {}: Remove failed node failed as no callback function!", nodeId);
                 report = Report.FAILED_NODE_NO_CALLBACK_FUNCTION;
+                transaction.setTransactionCanceled();
                 break;
             case FAILED_NODE_NOT_FOUND:
-                logger.debug("NODE {}: Remove failed node failed as node not found", nodeId);
-                transactionComplete = true;
+                logger.error("NODE {}: Remove failed node failed as node not found", nodeId);
                 report = Report.FAILED_NODE_NOT_FOUND;
+                transaction.setTransactionComplete();
                 break;
             case FAILED_NODE_REMOVE_PROCESS_BUSY:
-                logger.debug("NODE {}: Remove failed node failed as Controller Busy!", nodeId);
-                transactionComplete = true;
+                logger.error("NODE {}: Remove failed node failed as Controller Busy!", nodeId);
                 report = Report.FAILED_NODE_REMOVE_PROCESS_BUSY;
+                transaction.setTransactionCanceled();
                 break;
             case FAILED_NODE_REMOVE_FAIL:
-                logger.debug("NODE {}: Remove failed node failed!", nodeId);
-                transactionComplete = true;
+                logger.error("NODE {}: Remove failed node failed!", nodeId);
                 report = Report.FAILED_NODE_REMOVE_FAIL;
+                transaction.setTransactionCanceled();
                 break;
             default:
-                logger.debug("NODE {}: Remove failed node not placed on stack due to error 0x{}.", nodeId,
+                logger.error("NODE {}: Remove failed node not placed on stack due to error 0x{}.", nodeId,
                         Integer.toHexString(incomingMessage.getMessagePayloadByte(0)));
-                transactionComplete = true;
                 report = Report.FAILED_NODE_UNKNOWN_FAIL;
+                transaction.setTransactionCanceled();
                 break;
         }
 
@@ -117,37 +117,37 @@ public class RemoveFailedNodeMessageClass extends ZWaveCommandProcessor {
     }
 
     @Override
-    public boolean handleRequest(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
-        int nodeId = lastSentMessage.getMessagePayloadByte(0);
+        if (transaction == null) {
+            logger.debug("NODE {}: transaction not correlated for RemoveFailedNodeMessageClass");
+            return false;
+        }
+        int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: Got RemoveFailedNode request.", nodeId);
         ZWaveNetworkEvent.State state;
         Report report = null;
         switch (incomingMessage.getMessagePayloadByte(1)) {
             case FAILED_NODE_OK:
-                logger.debug("NODE {}: Unable to remove failed node as it has not failed!", nodeId);
-                transactionComplete = true;
+                logger.error("NODE {}: Unable to remove failed node as it has not failed!", nodeId);
                 state = ZWaveNetworkEvent.State.Failure;
                 report = Report.FAILED_NODE_OK;
                 break;
             case FAILED_NODE_REMOVED:
                 logger.debug("NODE {}: Successfully removed node from controller!", nodeId);
                 zController.notifyEventListeners(new ZWaveNetworkEvent(Type.DeleteNode, nodeId, State.Success));
-                transactionComplete = true;
                 state = ZWaveNetworkEvent.State.Success;
                 report = Report.FAILED_NODE_REMOVED;
                 break;
             case FAILED_NODE_NOT_REMOVED:
-                logger.debug("NODE {}: Unable to remove failed node!", nodeId);
-                transactionComplete = true;
+                logger.error("NODE {}: Unable to remove failed node!", nodeId);
                 state = ZWaveNetworkEvent.State.Failure;
                 report = Report.FAILED_NODE_NOT_REMOVED;
                 break;
             default:
-                logger.debug("NODE {}: Remove failed node failed with response 0x{}.", nodeId,
+                logger.error("NODE {}: Remove failed node failed with response 0x{}.", nodeId,
                         Integer.toHexString(incomingMessage.getMessagePayloadByte(1)));
-                transactionComplete = true;
                 state = ZWaveNetworkEvent.State.Failure;
                 report = Report.FAILED_NODE_UNKNOWN_FAIL;
                 break;
@@ -156,6 +156,7 @@ public class RemoveFailedNodeMessageClass extends ZWaveCommandProcessor {
         zController.notifyEventListeners(
                 new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.RemoveFailedNodeID, nodeId, state, report));
 
+        transaction.setTransactionComplete();
         return true;
     }
 }

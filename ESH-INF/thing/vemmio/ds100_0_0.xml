@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="vemmio_ds100_00_000" listed="false">
+    <label>DS100 Double Switch in a dual relay in-wall module.</label>
+    <description>Double Switch in a dual relay in-wall module.</description>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
+        </properties>
+      </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SCENE_ACTIVATION</property>
+        </properties>
+      </channel>
+      <channel id="meter_powerfactor" typeId="meter_powerfactor">
+        <label>Electric meter (power factor)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_Power_Factor</property>
+        </properties>
+      </channel>
+      <channel id="meter_voltage" typeId="meter_voltage">
+        <label>Electric meter (volts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_V</property>
+        </properties>
+      </channel>
+      <channel id="meter_current" typeId="meter_current">
+        <label>Electric meter (amps)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_A</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts" typeId="meter_watts">
+        <label>Electric meter (watts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh" typeId="meter_kwh">
+        <label>Electric meter (kWh)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="alarm_general" typeId="alarm_general">
+        <label>Alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary1" typeId="switch_binary">
+        <label>Switch 1</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1,COMMAND_CLASS_BASIC:1</property>
+        </properties>
+      </channel>
+      <channel id="meter_powerfactor1" typeId="meter_powerfactor">
+        <label>Electric meter (power factor) 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_Power_Factor</property>
+        </properties>
+      </channel>
+      <channel id="meter_voltage1" typeId="meter_voltage">
+        <label>Electric meter (volts) 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_V</property>
+        </properties>
+      </channel>
+      <channel id="meter_current1" typeId="meter_current">
+        <label>Electric meter (amps) 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_A</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts1" typeId="meter_watts">
+        <label>Electric meter (watts) 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh1" typeId="meter_kwh">
+        <label>Electric meter (kWh) 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary2" typeId="switch_binary">
+        <label>Switch 2</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:2,COMMAND_CLASS_BASIC:2</property>
+        </properties>
+      </channel>
+      <channel id="meter_powerfactor2" typeId="meter_powerfactor">
+        <label>Electric meter (power factor) 2</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_Power_Factor</property>
+        </properties>
+      </channel>
+      <channel id="meter_voltage2" typeId="meter_voltage">
+        <label>Electric meter (volts) 2</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_V</property>
+        </properties>
+      </channel>
+      <channel id="meter_current2" typeId="meter_current">
+        <label>Electric meter (amps) 2</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_A</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts2" typeId="meter_watts">
+        <label>Electric meter (watts) 2</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh2" typeId="meter_kwh">
+        <label>Electric meter (kWh) 2</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary3" typeId="switch_binary">
+        <label>Switch 3</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:3,COMMAND_CLASS_BASIC:3</property>
+        </properties>
+      </channel>
+      <channel id="meter_powerfactor3" typeId="meter_powerfactor">
+        <label>Electric meter (power factor) 3</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:3;type=E_Power_Factor</property>
+        </properties>
+      </channel>
+      <channel id="meter_voltage3" typeId="meter_voltage">
+        <label>Electric meter (volts) 3</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:3;type=E_V</property>
+        </properties>
+      </channel>
+      <channel id="meter_current3" typeId="meter_current">
+        <label>Electric meter (amps) 3</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:3;type=E_A</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts3" typeId="meter_watts">
+        <label>Electric meter (watts) 3</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:3;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh3" typeId="meter_kwh">
+        <label>Electric meter (kWh) 3</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:3;type=E_KWh</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Vemmio</property>
+      <property name="modelId">DS100</property>
+      <property name="manufacturerId">030F</property>
+      <property name="manufacturerRef">0001:0001</property>
+      <property name="dbReference">672</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- GROUP DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter name="config_0_2" type="integer" groupName="configuration"
+                 min="1" max="32767">
+        <label>0: Watt Meter Report Period</label>
+        <description>720*5s=3600s=1hour</description>
+        <default>720</default>
+      </parameter>
+
+      <parameter name="config_2_2" type="integer" groupName="configuration"
+                 min="1" max="32767">
+        <label>2: KWH Meter Report Period</label>
+        <description>6*10 min = 1 hour</description>
+        <default>6</default>
+      </parameter>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration"
+                 min="1" max="3">
+        <label>3: Selected Relay</label>
+        <description>1: Relay 1, 2: Relay 2, 3: Relay 1 &amp; Relay 2</description>
+        <default>1</default>
+      </parameter>
+
+      <parameter name="config_4_1" type="integer" groupName="configuration"
+                 min="1" max="3">
+        <label>4: Edge or Pulse mode or Edge-Toggle mode</label>
+        <description>1: Edge mode, 2: Pulse mode, 3: Edge-Toggle mode</description>
+        <default>1</default>
+      </parameter>
+
+      <parameter name="config_5_2" type="integer" groupName="configuration"
+                 min="10" max="750">
+        <label>5: Threshold of current for load caution</label>
+        <description>750*0.01A=7.5A</description>
+        <default>750</default>
+      </parameter>
+
+      <parameter name="config_6_2" type="integer" groupName="configuration"
+                 min="1" max="10000">
+        <label>6: Threshold of KWH for load caution</label>
+        <default>10000</default>
+      </parameter>
+
+      <parameter name="config_7_1" type="integer" groupName="configuration"
+                 min="0" max="2">
+        <label>7: Restore switch state mode</label>
+        <description>0: Switch off, 1: Last switch, 2: Switch on</description>
+        <default>1</default>
+      </parameter>
+
+      <parameter name="config_8_2" type="integer" groupName="configuration"
+                 min="0" max="32767">
+        <label>8: Auto off timer</label>
+        <description>0: Disable auto off function, 1: 0x0-0x7FFF 1s-32767s</description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_9_1" type="integer" groupName="configuration"
+                 min="0" max="3">
+        <label>9: RF off command mode</label>
+        <description>0: Switch off, 1: Ignore, 2: Switch toggle, 3: Switch on</description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_10_1" type="integer" groupName="configuration"
+                 min="1" max="2">
+        <label>10: Existence of endpoint 3</label>
+        <description>1: endpoint 3 exists, 2: No endpoint 3</description>
+        <default>1</default>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>

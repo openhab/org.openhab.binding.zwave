@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,13 +15,13 @@ import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveConfigurationParameter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurationCommandClass.ZWaveConfigurationParameterEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,7 +32,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
 
-    private final static Logger logger = LoggerFactory.getLogger(ZWaveConfigurationConverter.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveConfigurationConverter.class);
 
     /**
      * Constructor. Creates a new instance of the {@link ZWaveConfigurationConverter} class.
@@ -43,19 +42,16 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
         super(controller);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    public List<SerialMessage> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
+    public List<ZWaveCommandClassTransactionPayload> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveConfigurationCommandClass commandClass = (ZWaveConfigurationCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.CONFIGURATION, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_CONFIGURATION, channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
 
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
-                commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                commandClass.getCommandClass(), channel.getEndpoint());
         String parmNumber = channel.getArguments().get("parameter");
         if (parmNumber == null) {
             logger.debug("NODE {}: 'parameter' option must be specified.", node.getNodeId());
@@ -67,16 +63,13 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
             return null;
         }
 
-        SerialMessage serialMessage = node.encapsulate(commandClass.getConfigMessage(parmValue), commandClass,
+        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(commandClass.getConfigMessage(parmValue),
                 channel.getEndpoint());
-        List<SerialMessage> response = new ArrayList<SerialMessage>(1);
-        response.add(serialMessage);
+        List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>(1);
+        response.add(transaction);
         return response;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public State handleEvent(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
         String parmNumber = channel.getArguments().get("parameter");
@@ -103,11 +96,9 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
         return state;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    public List<SerialMessage> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
+    public List<ZWaveCommandClassTransactionPayload> receiveCommand(ZWaveThingChannel channel, ZWaveNode node,
+            Command command) {
 
         String parmNumber = channel.getArguments().get("parameter");
         if (parmNumber == null) {
@@ -148,7 +139,7 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
          */
 
         ZWaveConfigurationCommandClass commandClass = (ZWaveConfigurationCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.CONFIGURATION, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_CONFIGURATION, channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
@@ -168,20 +159,21 @@ public class ZWaveConfigurationConverter extends ZWaveCommandClassConverter {
         }
 
         // Set the parameter
-        SerialMessage serialMessage = commandClass.setConfigMessage(configParameter);
-        if (serialMessage == null) {
+        ZWaveCommandClassTransactionPayload transaction = node
+                .encapsulate(commandClass.setConfigMessage(configParameter), channel.getEndpoint());
+        if (transaction == null) {
             logger.warn("NODE {}: Generating message failed for command class = {}", node.getNodeId(),
-                    commandClass.getCommandClass().getLabel());
+                    commandClass.getCommandClass());
             return null;
         }
 
-        List<SerialMessage> messages = new ArrayList<SerialMessage>();
-        messages.add(serialMessage);
+        List<ZWaveCommandClassTransactionPayload> transactions = new ArrayList<ZWaveCommandClassTransactionPayload>();
+        transactions.add(transaction);
 
         // And request a read-back
-        serialMessage = commandClass.getConfigMessage(paramIndex);
-        messages.add(serialMessage);
+        transaction = node.encapsulate(commandClass.getConfigMessage(paramIndex), channel.getEndpoint());
+        transactions.add(transaction);
 
-        return messages;
+        return transactions;
     }
 }

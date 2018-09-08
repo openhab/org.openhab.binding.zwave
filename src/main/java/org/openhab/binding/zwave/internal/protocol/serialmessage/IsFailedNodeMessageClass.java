@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,12 +9,13 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNodeState;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,38 +27,35 @@ import org.slf4j.LoggerFactory;
  * @author Wez Hunter
  */
 public class IsFailedNodeMessageClass extends ZWaveCommandProcessor {
-    private final static Logger logger = LoggerFactory.getLogger(IsFailedNodeMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(IsFailedNodeMessageClass.class);
 
-    public SerialMessage doRequest(int nodeId) {
+    public ZWaveSerialPayload doRequest(int nodeId) {
         logger.debug("NODE {}: Requesting IsFailedNode status from controller.", nodeId);
-        SerialMessage newMessage = new SerialMessage(SerialMessageClass.IsFailedNodeID, SerialMessageType.Request,
-                SerialMessageClass.IsFailedNodeID, SerialMessagePriority.High);
-        byte[] newPayload = { (byte) nodeId };
-        newMessage.setMessagePayload(newPayload);
-        return newMessage;
+
+        // Create the request
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.IsFailedNodeID).withPayload(nodeId).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
-        int nodeId = lastSentMessage.getMessagePayloadByte(0);
+        int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         ZWaveNode node = zController.getNode(nodeId);
         if (node == null) {
             logger.debug("NODE {}: Failed node message for unknown node", nodeId);
-            incomingMessage.setTransactionCanceled();
             return false;
         }
 
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
-            logger.warn("NODE {}: Is currently marked as failed by the controller!", nodeId);
-            node.setNodeState(ZWaveNodeState.FAILED);
+            logger.debug("NODE {}: Is currently marked as failed by the controller!", nodeId);
+            // node.setNodeState(ZWaveNodeState.FAILED);
         } else {
             logger.debug("NODE {}: Is currently marked as healthy by the controller", nodeId);
+            node.setNodeState(ZWaveNodeState.ALIVE);
         }
 
-        checkTransactionComplete(lastSentMessage, incomingMessage);
-
+        transaction.setTransactionComplete();
         return true;
     }
 }

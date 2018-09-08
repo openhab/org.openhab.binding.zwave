@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,21 +7,19 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,11 +33,10 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author sankala
  *
  */
-@XStreamAlias("barrierOperatorCommandClass")
-public class ZWaveBarrierOperatorCommandClass extends ZWaveCommandClass
-        implements ZWaveGetCommands, ZWaveSetCommands, ZWaveCommandClassDynamicState {
+@XStreamAlias("COMMAND_CLASS_BARRIER_OPERATOR")
+public class ZWaveBarrierOperatorCommandClass extends ZWaveCommandClass implements ZWaveCommandClassDynamicState {
 
-    private final static Logger logger = LoggerFactory.getLogger(ZWaveBarrierOperatorCommandClass.class);
+    private static final Logger logger = LoggerFactory.getLogger(ZWaveBarrierOperatorCommandClass.class);
 
     public static final int BARRIER_OPERATOR_SET = 1;
     public static final int BARRIER_OPERATOR_GET = 2;
@@ -60,71 +56,45 @@ public class ZWaveBarrierOperatorCommandClass extends ZWaveCommandClass
 
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.BARRIER_OPERATOR;
+        return CommandClass.COMMAND_CLASS_BARRIER_OPERATOR;
     }
 
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received BARRIER_OPERATOR command V{}", getNode().getNodeId(), getVersion());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case BARRIER_OPERATOR_REPORT:
-                logger.trace("Process Barrier Operator Report");
-                int value = serialMessage.getMessagePayloadByte(offset + 1);
-                logger.debug("NODE {}: Barrier Operator report, value = {}", getNode().getNodeId(), value);
+    @ZWaveResponseHandler(id = BARRIER_OPERATOR_REPORT, name = "BARRIER_OPERATOR_REPORT")
+    public void handleBarrierOperatorReport(ZWaveCommandClassPayload payload, int endpoint) {
+        logger.trace("Process Barrier Operator Report");
+        int value = payload.getPayloadByte(2);
+        logger.debug("NODE {}: Barrier Operator report, value = {}", getNode().getNodeId(), value);
 
-                ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
-                        getCommandClass(), BarrierOperatorStateType.getBarrierOperatorStateType(value));
+        ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
+                getCommandClass(), BarrierOperatorStateType.getBarrierOperatorStateType(value));
 
-                getController().notifyEventListeners(zEvent);
-                break;
-            default:
-                logger.debug(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
-                        getCommandClass().getLabel(), getCommandClass().getKey()));
-        }
+        getController().notifyEventListeners(zEvent);
     }
 
-    @Override
-    public SerialMessage setValueMessage(int value) {
+    public ZWaveCommandClassTransactionPayload setValueMessage(int value) {
         logger.debug("NODE {}: Creating new message for application command BARRIER_OPERATOR_SET",
                 getNode().getNodeId());
-        SerialMessage message = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Set);
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write((byte) getNode().getNodeId());
-        outputData.write(3);
-        outputData.write((byte) getCommandClass().getKey());
-        outputData.write(BARRIER_OPERATOR_SET);
-        outputData.write(value > 0 ? 0xFF : 0x00);
-        message.setMessagePayload(outputData.toByteArray());
 
-        return message;
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                BARRIER_OPERATOR_SET).withPayload(value > 0 ? 0xFF : 0x00).withPriority(TransactionPriority.Set)
+                        .build();
+    }
+
+    public ZWaveCommandClassTransactionPayload getValueMessage() {
+        logger.debug("NODE {}: Creating new message for command BARRIER_OPERATOR_GET", this.getNode().getNodeId());
+
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                BARRIER_OPERATOR_GET).withExpectedResponseCommand(BARRIER_OPERATOR_REPORT)
+                        .withPriority(TransactionPriority.Get).build();
     }
 
     @Override
-    public SerialMessage getValueMessage() {
-        logger.debug("NODE {}: Creating new message for command BARRIER_OPERATOR_GET", getNode().getNodeId());
-        SerialMessage message = new SerialMessage(getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write((byte) getNode().getNodeId());
-        outputData.write(2);
-        outputData.write((byte) getCommandClass().getKey());
-        outputData.write(BARRIER_OPERATOR_GET);
-        message.setMessagePayload(outputData.toByteArray());
-
-        return message;
-    }
-
-    @Override
-    public Collection<SerialMessage> getDynamicValues(boolean refresh) {
+    public Collection<ZWaveCommandClassTransactionPayload> getDynamicValues(boolean refresh) {
         if (refresh == true || dynamicDone == false) {
             return null;
         }
 
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+        ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
         result.add(getValueMessage());
         return result;
     }

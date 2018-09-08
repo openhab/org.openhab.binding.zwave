@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +7,7 @@
  */
 package org.openhab.binding.zwave.discovery;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -35,14 +35,18 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class ZWaveDiscoveryService extends AbstractDiscoveryService implements ExtendedDiscoveryService {
-    private final static Logger logger = LoggerFactory.getLogger(ZWaveDiscoveryService.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveDiscoveryService.class);
 
-    private ZWaveControllerHandler controllerHandler;
+    private final String ZWAVE_NODE_LABEL = "Z-Wave Node %03d";
+
+    private final ZWaveControllerHandler controllerHandler;
     private DiscoveryServiceCallback discoveryServiceCallback;
 
     public ZWaveDiscoveryService(ZWaveControllerHandler coordinatorHandler, int searchTime) {
         super(searchTime);
         this.controllerHandler = coordinatorHandler;
+        logger.debug("Creating ZWave discovery service for {} with scan time of {}",
+                controllerHandler.getThing().getUID(), searchTime);
     }
 
     public void activate() {
@@ -121,9 +125,10 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
 
         Map<String, Object> properties = new HashMap<>(1);
         properties.put(ZWaveBindingConstants.PROPERTY_NODEID, Integer.toString(nodeId));
+        properties.put(ZWaveBindingConstants.CONFIGURATION_NODEID, new BigDecimal(nodeId));
 
         DiscoveryResult discoveryResult = DiscoveryResultBuilder.create(thingUID).withBridge(bridgeUID)
-                .withProperties(properties).withLabel(String.format("Node %d", nodeId)).build();
+                .withProperties(properties).withLabel(String.format(ZWAVE_NODE_LABEL, nodeId)).build();
 
         thingDiscovered(discoveryResult);
     }
@@ -150,15 +155,44 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
             if (product == null) {
                 continue;
             }
-            logger.debug("NODE {}: Checking {}", node.getNodeId(), product.getThingTypeUID());
+            logger.trace("NODE {}: Checking {}", node.getNodeId(), product.getThingTypeUID());
             if (product.match(node) == true) {
                 foundProduct = product;
                 break;
             }
         }
 
+        ThingTypeUID thingTypeUID;
+
+        // If we didn't find the product, then add the unknown thing
+        String label = String.format(ZWAVE_NODE_LABEL, node.getNodeId());
+        if (foundProduct == null) {
+            if (node.getManufacturer() != Integer.MAX_VALUE) {
+                logger.warn("NODE {}: Device discovery could not resolve to a thingType! {}:{}:{}::{}",
+                        node.getNodeId(), String.format("%04X", node.getManufacturer()),
+                        String.format("%04X", node.getDeviceType()), String.format("%04X", node.getDeviceId()),
+                        node.getApplicationVersion());
+
+                label += String.format(" (%04X:%04X:%04X:%s)", node.getManufacturer(), node.getDeviceType(),
+                        node.getDeviceId(), node.getApplicationVersion());
+            } else {
+                logger.warn("NODE {}: Device discovery could not resolve to a thingType! Manufacturer data not known.",
+                        node.getNodeId());
+            }
+            thingTypeUID = new ThingTypeUID(ZWaveBindingConstants.ZWAVE_THING);
+        } else {
+            logger.debug("NODE {}: Device discovery resolved to thingType {}", node.getNodeId(),
+                    foundProduct.getThingTypeUID());
+
+            // And create the new thing
+            ThingType thingType = ZWaveConfigProvider.getThingType(foundProduct.getThingTypeUID());
+            label += String.format(": %s", thingType.getLabel());
+
+            thingTypeUID = foundProduct.getThingTypeUID();
+        }
+        // thingTypeUID = new ThingTypeUID(ZWaveBindingConstants.ZWAVE_THING);
+
         // Create the thing UID
-        // The final thingType will be set once the device initialises
         ThingUID thingUID = new ThingUID(new ThingTypeUID(ZWaveBindingConstants.ZWAVE_THING), bridgeUID,
                 String.format("node%d", node.getNodeId()));
         Map<String, Object> properties = new HashMap<>(11);
@@ -168,28 +202,8 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
             properties = discoveryServiceCallback.getExistingDiscoveryResult(thingUID).getProperties();
         }
 
-        // If we didn't find the product, then add the unknown thing
-        String label = String.format("Z-Wave Node %d", node.getNodeId());
-        if (foundProduct == null) {
-            logger.warn("NODE {}: Device discovery could not resolve to a thingType! {}:{}:{}::{}", node.getNodeId(),
-                    String.format("%04X", node.getManufacturer()), String.format("%04X", node.getDeviceType()),
-                    String.format("%04X", node.getDeviceId()), node.getApplicationVersion());
-
-            if (node.getManufacturer() != Integer.MAX_VALUE) {
-                label += String.format(" (%04X:%04X:%04X:%s)", node.getManufacturer(), node.getDeviceType(),
-                        node.getDeviceId(), node.getApplicationVersion());
-            }
-        } else {
-            logger.debug("NODE {}: Device discovery resolved to thingType {}", node.getNodeId(),
-                    foundProduct.getThingTypeUID());
-
-            // And create the new thing
-            ThingType thingType = ZWaveConfigProvider.getThingType(foundProduct.getThingTypeUID());
-            label += String.format(": %s", thingType.getLabel());
-        }
-
         // Add some device properties that might be useful for the system to know
-        properties.put(ZWaveBindingConstants.PROPERTY_NODEID, Integer.toString(node.getNodeId()));
+        properties.put(ZWaveBindingConstants.CONFIGURATION_NODEID, new BigDecimal(node.getNodeId()));
 
         // Don't add the device information if we don't know it yet
         // This should also prevent it from being overwritten if it was added previously
@@ -213,8 +227,8 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
         properties.put(ZWaveBindingConstants.PROPERTY_ROUTING, Boolean.toString(node.isRouting()));
 
         // Create the discovery result and add to the inbox
-        DiscoveryResult discoveryResult = DiscoveryResultBuilder.create(thingUID).withProperties(properties)
-                .withBridge(bridgeUID).withLabel(label).build();
+        DiscoveryResult discoveryResult = DiscoveryResultBuilder.create(thingUID).withThingType(thingTypeUID)
+                .withProperties(properties).withBridge(bridgeUID).withLabel(label).build();
         thingDiscovered(discoveryResult);
 
         return;

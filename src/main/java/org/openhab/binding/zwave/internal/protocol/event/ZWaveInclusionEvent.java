@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +15,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Generic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveInclusionState;
 
 /**
  * This event signals a node being included or excluded into the network.
@@ -23,12 +23,12 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClas
  * @author Chris Jackson
  */
 public class ZWaveInclusionEvent extends ZWaveEvent {
-    private Type type;
+    private ZWaveInclusionState type;
     private final Date includedAt;
     List<CommandClass> commandClasses = new ArrayList<CommandClass>();
-    Basic basic = Basic.NOT_KNOWN;
-    Generic generic = Generic.NOT_KNOWN;
-    Specific specific = Specific.NOT_USED;
+    Basic basic = Basic.BASIC_TYPE_UNKNOWN;
+    Generic generic = Generic.GENERIC_TYPE_NOT_USED;
+    Specific specific = Specific.SPECIFIC_TYPE_NOT_USED;
 
     /**
      * Constructor. Creates a new instance of the ZWaveInclusionEvent
@@ -36,19 +36,19 @@ public class ZWaveInclusionEvent extends ZWaveEvent {
      *
      * @param nodeId the nodeId of the event.
      */
-    public ZWaveInclusionEvent(Type type) {
+    public ZWaveInclusionEvent(ZWaveInclusionState type) {
         super(255);
         this.includedAt = new Date();
         this.type = type;
     }
 
-    public ZWaveInclusionEvent(Type type, int nodeId) {
+    public ZWaveInclusionEvent(ZWaveInclusionState type, int nodeId) {
         super(nodeId);
         this.includedAt = new Date();
         this.type = type;
     }
 
-    public ZWaveInclusionEvent(Type type, int nodeId, Basic basic, Generic generic, Specific specific,
+    public ZWaveInclusionEvent(ZWaveInclusionState type, int nodeId, Basic basic, Generic generic, Specific specific,
             List<CommandClass> commandClasses) {
         super(nodeId);
         this.includedAt = new Date();
@@ -63,7 +63,7 @@ public class ZWaveInclusionEvent extends ZWaveEvent {
         return includedAt;
     }
 
-    public Type getEvent() {
+    public ZWaveInclusionState getEvent() {
         return type;
     }
 
@@ -81,18 +81,5 @@ public class ZWaveInclusionEvent extends ZWaveEvent {
 
     public List<CommandClass> getCommandClasses() {
         return commandClasses;
-    }
-
-    public enum Type {
-        IncludeStart,
-        IncludeSlaveFound,
-        IncludeControllerFound,
-        IncludeFail,
-        IncludeDone,
-        ExcludeStart,
-        ExcludeSlaveFound,
-        ExcludeControllerFound,
-        ExcludeFail,
-        ExcludeDone,
     }
 }

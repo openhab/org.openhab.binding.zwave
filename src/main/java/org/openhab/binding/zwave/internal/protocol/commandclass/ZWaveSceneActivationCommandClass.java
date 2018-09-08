@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +7,7 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -26,11 +25,11 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  */
 
-@XStreamAlias("sceneActivationCommandClass")
+@XStreamAlias("COMMAND_CLASS_SCENE_ACTIVATION")
 public class ZWaveSceneActivationCommandClass extends ZWaveCommandClass {
 
     @XStreamOmitField
-    private final static Logger logger = LoggerFactory.getLogger(ZWaveBasicCommandClass.class);
+    private static final Logger logger = LoggerFactory.getLogger(ZWaveSceneActivationCommandClass.class);
 
     private static final int SCENEACTIVATION_SET = 0x01;
 
@@ -45,34 +44,9 @@ public class ZWaveSceneActivationCommandClass extends ZWaveCommandClass {
         super(node, controller, endpoint);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.SCENE_ACTIVATION;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug(String.format("Received Scene Activation for Node ID = %d", this.getNode().getNodeId()));
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case SCENEACTIVATION_SET:
-                logger.debug("Scene Activation Set");
-
-                processSceneActivationSet(serialMessage, offset, endpoint);
-                break;
-            default:
-                logger.warn(String.format("Unsupported Command %d for command class %s (0x%02X).", command,
-                        this.getCommandClass().getLabel(), this.getCommandClass().getKey()));
-        }
+        return CommandClass.COMMAND_CLASS_SCENE_ACTIVATION;
     }
 
     /**
@@ -83,23 +57,22 @@ public class ZWaveSceneActivationCommandClass extends ZWaveCommandClass {
      * @param endpoint the endpoint or instance number this message is meant for.
      * @throws ZWaveSerialMessageException
      */
-    protected void processSceneActivationSet(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        int sceneId = serialMessage.getMessagePayloadByte(offset + 1);
+    @ZWaveResponseHandler(id = SCENEACTIVATION_SET, name = "SCENEACTIVATION_SET")
+    public void handleProtectionReport(ZWaveCommandClassPayload payload, int endpoint) {
+        int sceneId = payload.getPayloadByte(2);
         int sceneTime = 0;
 
         // TODO: Aeon Minimote fw 1.19 sends SceneActivationSet without Time parameter - to database parm
-        if (serialMessage.getMessagePayload().length > (offset + 2)) {
-            sceneTime = serialMessage.getMessagePayloadByte(offset + 2);
+        if (payload.getPayloadLength() > 3) {
+            sceneTime = payload.getPayloadByte(3);
         }
 
-        logger.debug(String.format("Scene activation node from node %d: Scene %d, Time %d", this.getNode().getNodeId(),
-                sceneId, sceneTime));
+        logger.debug("NODE {}: Scene activation: Scene {}, Time {}", getNode().getNodeId(), sceneId, sceneTime);
 
         // Ignore the time for now at least!
 
-        ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(this.getNode().getNodeId(), endpoint,
-                this.getCommandClass(), sceneId);
-        this.getController().notifyEventListeners(zEvent);
+        ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
+                getCommandClass(), sceneId);
+        getController().notifyEventListeners(zEvent);
     }
 }

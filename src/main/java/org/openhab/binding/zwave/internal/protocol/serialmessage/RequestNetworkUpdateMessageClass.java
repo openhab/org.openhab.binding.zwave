@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,11 +9,12 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class RequestNetworkUpdateMessageClass extends ZWaveCommandProcessor {
-    private final static Logger logger = LoggerFactory.getLogger(RequestNetworkUpdateMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(RequestNetworkUpdateMessageClass.class);
 
     private final int ZW_SUC_UPDATE_DONE = 0x00;
     private final int ZW_SUC_UPDATE_ABORT = 0x01;
@@ -32,19 +32,14 @@ public class RequestNetworkUpdateMessageClass extends ZWaveCommandProcessor {
     private final int ZW_SUC_UPDATE_DISABLED = 0x03;
     private final int ZW_SUC_UPDATE_OVERFLOW = 0x04;
 
-    public SerialMessage doRequest() {
+    public ZWaveSerialPayload doRequest() {
         logger.debug("Request network update.");
 
-        // Queue the request
-        SerialMessage newMessage = new SerialMessage(SerialMessageClass.RequestNetworkUpdate, SerialMessageType.Request,
-                SerialMessageClass.RequestNetworkUpdate, SerialMessagePriority.High);
-        byte[] newPayload = { (byte) 0x01 };
-        newMessage.setMessagePayload(newPayload);
-        return newMessage;
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.RequestNetworkUpdate).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.debug("Got RequestNetworkUpdate response.");
 
@@ -52,14 +47,13 @@ public class RequestNetworkUpdateMessageClass extends ZWaveCommandProcessor {
             logger.debug("RequestNetworkUpdate started.");
         } else {
             logger.warn("RequestNetworkUpdate not placed on stack.");
-            transactionComplete = true;
         }
 
         return true;
     }
 
     @Override
-    public boolean handleRequest(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
 
         logger.debug("Got RequestNetworkUpdate request.");
@@ -68,32 +62,26 @@ public class RequestNetworkUpdateMessageClass extends ZWaveCommandProcessor {
             case ZW_SUC_UPDATE_DONE:
                 // The node is working properly (removed from the failed nodes list). Replace process is stopped.
                 logger.debug("Network updated.");
-                transactionComplete = true;
                 state = ZWaveNetworkEvent.State.Success;
                 break;
             case ZW_SUC_UPDATE_ABORT:
-                logger.debug("The update process aborted because of an error.");
-                transactionComplete = true;
+                logger.error("The update process aborted because of an error.");
                 state = ZWaveNetworkEvent.State.Failure;
                 break;
             case ZW_SUC_UPDATE_WAIT:
-                logger.debug("The SUC node is busy.");
-                transactionComplete = true;
+                logger.error("The SUC node is busy.");
                 state = ZWaveNetworkEvent.State.Failure;
                 break;
             case ZW_SUC_UPDATE_DISABLED:
-                logger.debug("The SUC functionality is disabled.");
-                transactionComplete = true;
+                logger.error("The SUC functionality is disabled.");
                 state = ZWaveNetworkEvent.State.Failure;
                 break;
             case ZW_SUC_UPDATE_OVERFLOW:
-                logger.debug("The controller requested an update after more than 64 changes.");
-                transactionComplete = true;
+                logger.error("The SUC node is busy.");
                 state = ZWaveNetworkEvent.State.Failure;
                 break;
             default:
-                logger.info("Unknown error");
-                transactionComplete = true;
+                logger.info("The controller requested an update after more than 64 changes");
                 state = ZWaveNetworkEvent.State.Failure;
                 break;
         }

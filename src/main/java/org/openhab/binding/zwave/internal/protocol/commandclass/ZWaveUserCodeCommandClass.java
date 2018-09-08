@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,24 +7,22 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.commandclass.impl.CommandClassUserCodeV1;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,28 +35,22 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  * @author Dave Badia
  */
-@XStreamAlias("userCodeCommandClass")
+@XStreamAlias("COMMAND_CLASS_USER_CODE")
 public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
         implements ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
 
-    private final static Logger logger = LoggerFactory.getLogger(ZWaveUserCodeCommandClass.class);
+    private static final Logger logger = LoggerFactory.getLogger(ZWaveUserCodeCommandClass.class);
     public static final int USER_CODE_MIN_LENGTH = 4;
     public static final int USER_CODE_MAX_LENGTH = 10;
-
-    private static final int USER_CODE_SET = 0x01;
-    private static final int USER_CODE_GET = 0x02;
-    private static final int USER_CODE_REPORT = 0x03;
 
     /**
      * Request the number of user codes that can be stored
      */
-    private static final int USER_NUMBER_GET = 0x04;
-    private static final int USER_NUMBER_REPORT = 0x05;
 
     private static final int UNKNOWN = -1;
 
     /**
-     * The total number of users that the device supports as determined by {@link #USER_NUMBER_REPORT}
+     * The total number of users that the device supports
      */
     private int numberOfUsersSupported = UNKNOWN;
 
@@ -79,137 +70,129 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
         super(node, controller, endpoint);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.USER_CODE;
+        return CommandClass.COMMAND_CLASS_USER_CODE;
+    }
+
+    @ZWaveResponseHandler(id = CommandClassUserCodeV1.USERS_NUMBER_REPORT, name = "USERS_NUMBER_REPORT")
+    public void handleUserNumberReportReport(ZWaveCommandClassPayload payload, int endpoint) {
+        Map<String, Object> response = CommandClassUserCodeV1.handleUsersNumberReport(payload.getPayloadBuffer());
+        numberOfUsersSupported = (int) response.get("SUPPORTED_USERS");
+        logger.debug("NODE {}: UserCode numberOfUsersSupported={}", getNode().getNodeId(), numberOfUsersSupported);
+    }
+
+    @ZWaveResponseHandler(id = CommandClassUserCodeV1.USER_CODE_REPORT, name = "USER_CODE_REPORT")
+    public void handleUserCodeReportReport(ZWaveCommandClassPayload payload, int endpoint) {
+        Map<String, Object> response = CommandClassUserCodeV1.handleUserCodeReport(payload.getPayloadBuffer());
+        int id = (int) response.get("USER_IDENTIFIER");
+        UserIdStatusType status = UserIdStatusType.valueOf((String) response.get("USER_ID_STATUS"));
+        logger.debug("NODE {}: USER_CODE_REPORT {} is {}", getNode().getNodeId(), id, status);
+
+        byte[] code = (byte[]) response.get("USER_CODE");
+
+        // Check if this code only contains ASCII numbers - as per the current standard
+        boolean isAscii = true;
+        for (byte b : code) {
+            if (b < '0' || b > '9') {
+                isAscii = false;
+                break;
+            }
+        }
+
+        String asciiCode;
+        if (isAscii) {
+            try {
+                asciiCode = new String(code, "ASCII");
+            } catch (UnsupportedEncodingException e) {
+                logger.debug("Encoding unsupported reading user code");
+                asciiCode = "";
+            }
+        } else {
+            StringBuilder builder = new StringBuilder();
+            boolean first = true;
+            for (byte b : code) {
+                if (!first) {
+                    builder.append(" ");
+                }
+                first = false;
+                builder.append(String.format("%02X", b));
+            }
+
+            asciiCode = builder.toString();
+        }
+
+        userCodeList.put(id, new UserCode(status, asciiCode));
+        ZWaveUserCodeValueEvent zEvent = new ZWaveUserCodeValueEvent(getNode().getNodeId(), endpoint, id, asciiCode,
+                status);
+        getController().notifyEventListeners(zEvent);
+    }
+
+    public ZWaveCommandClassTransactionPayload getSupported() {
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
+                CommandClassUserCodeV1.getUsersNumberGet())
+                        .withExpectedResponseCommand(CommandClassUserCodeV1.USERS_NUMBER_REPORT)
+                        .withPriority(TransactionPriority.Get).build();
+    }
+
+    public ZWaveCommandClassTransactionPayload getUserCode(int id) {
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
+                CommandClassUserCodeV1.getUserCodeGet(id))
+                        .withExpectedResponseCommand(CommandClassUserCodeV1.USER_CODE_REPORT)
+                        .withPriority(TransactionPriority.Config).build();
     }
 
     /**
-     * {@inheritDoc}
      *
-     * @throws ZWaveSerialMessageException
+     * @param id
+     * @param asciiCode
+     * @return
      */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received UserCode Request", this.getNode().getNodeId());
-        final int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case USER_NUMBER_REPORT:
-                numberOfUsersSupported = serialMessage.getMessagePayloadByte(offset + 1);
-                logger.debug("NODE {}: UserCode numberOfUsersSupported={}", getNode().getNodeId(),
-                        numberOfUsersSupported);
-                break;
-            case USER_CODE_REPORT:
-                int id = serialMessage.getMessagePayloadByte(offset + 1);
-                UserIdStatusType status = UserIdStatusType
-                        .getDoorLockStateType(serialMessage.getMessagePayloadByte(offset + 2));
-                logger.debug("NODE {}: USER_CODE_REPORT {} is {}", getNode().getNodeId(), id, status);
-                String code = "";
-                int size = serialMessage.getMessagePayload().length - 7;
-                if (size > USER_CODE_MAX_LENGTH) {
-                    logger.debug("NODE {}: UserCode({}) length is too long ({} bytes)", getNode().getNodeId(), id,
-                            size);
-                    size = USER_CODE_MAX_LENGTH;
-                }
-                if (status == UserIdStatusType.OCCUPIED) {
-                    byte[] strBuffer = Arrays.copyOfRange(serialMessage.getMessagePayload(), offset + 3,
-                            offset + 3 + size);
-                    try {
-                        code = new String(strBuffer, "ASCII");
-                    } catch (UnsupportedEncodingException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                    logger.debug("NODE {}: USER_CODE_REPORT {} is {} [{}]", getNode().getNodeId(), id, status, code);
-                }
-                userCodeList.put(id, new UserCode(status, code));
-                ZWaveUserCodeValueEvent zEvent = new ZWaveUserCodeValueEvent(this.getNode().getNodeId(), endpoint, id,
-                        code, status);
-                getController().notifyEventListeners(zEvent);
-                break;
-            default:
-                logger.warn(String.format("NODE %d: Unsupported Command 0x%02X for command class %s (0x%02X): %s",
-                        getNode().getNodeId(), command, this.getCommandClass().getLabel(),
-                        this.getCommandClass().getKey(), SerialMessage.bb2hex(serialMessage.getMessagePayload())));
-                break;
-        }
-    }
+    public ZWaveCommandClassTransactionPayload setUserCode(int id, String asciiCode) {
+        byte[] code;
+        UserIdStatusType status;
 
-    public SerialMessage getSupported() {
-        logger.debug("NODE {}: Creating new message for application command USER_NUMBER_GET",
-                this.getNode().getNodeId());
-        SerialMessage message = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write((byte) this.getNode().getNodeId());
-        outputData.write(2);
-        outputData.write((byte) getCommandClass().getKey());
-        outputData.write((byte) USER_NUMBER_GET);
-        message.setMessagePayload(outputData.toByteArray());
-        return message;
-    }
+        // Check if this is an ASCII code, or a Hex code
+        String tmpCode = asciiCode.trim();
 
-    public SerialMessage getUserCode(int id) {
-        logger.debug("NODE {}: Creating new message for application command USER_CODE_GET({})",
-                this.getNode().getNodeId(), id);
-        SerialMessage message = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write((byte) this.getNode().getNodeId());
-        outputData.write(3);
-        outputData.write((byte) getCommandClass().getKey());
-        outputData.write((byte) USER_CODE_GET);
-        outputData.write((byte) (id));
-        message.setMessagePayload(outputData.toByteArray());
-        return message;
-    }
+        if (tmpCode == null || tmpCode.length() == 0) {
+            status = UserIdStatusType.AVAILABLE;
+            code = new byte[0];
+        } else {
+            status = UserIdStatusType.OCCUPIED;
 
-    public SerialMessage setUserCode(int id, String code) {
-        boolean codeIsZeros = true;
+            String[] codeElements = tmpCode.split(" ");
+            if (codeElements.length > 1) {
+                // HEX
+                code = new byte[codeElements.length];
 
-        // Zeros means delete the code
-        try {
-            codeIsZeros = Integer.parseInt(code) == 0;
-        } catch (NumberFormatException e) {
-            logger.debug("NODE {}: Error parsing user code. Code will be removed");
-        }
-
-        if (codeIsZeros) {
-            code = ""; // send no code since we will set UserIdStatusType.AVAILBLE
-        }
-
-        if (codeIsZeros || userCodeIsValid(code)) {
-            logger.debug("NODE {}: {} user code for {}", this.getNode().getNodeId(),
-                    codeIsZeros ? "Removing" : "Setting", id);
-            SerialMessage message = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                    SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Get);
-            ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-            outputData.write((byte) this.getNode().getNodeId());
-            outputData.write(4 + code.length());
-            outputData.write((byte) getCommandClass().getKey());
-            outputData.write(USER_CODE_SET);
-            outputData.write(id); // identifier, must be 1 or higher
-            if (codeIsZeros) {
-                outputData.write(UserIdStatusType.AVAILABLE.key); // status
-            } else {
-                outputData.write(UserIdStatusType.OCCUPIED.key); // status
                 try {
-                    for (Byte aCodeDigit : code.getBytes("UTF-8")) {
-                        outputData.write(aCodeDigit);
+                    int cnt = 0;
+                    for (String element : codeElements) {
+                        code[cnt++] = (byte) Integer.parseInt(element, 16);
+                    }
+                } catch (NumberFormatException e) {
+                    logger.error("NumberFormatException converting user code: {}", asciiCode);
+                    return null;
+                }
+            } else {
+                // ASCII
+                code = new byte[asciiCode.length()];
+
+                try {
+                    int cnt = 0;
+                    for (Byte aCodeDigit : asciiCode.getBytes("UTF-8")) {
+                        code[cnt++] = aCodeDigit;
                     }
                 } catch (UnsupportedEncodingException e) {
-                    logger.error("Got UnsupportedEncodingException", e);
+                    logger.error("UnsupportedEncodingException converting user code: {}", asciiCode);
                 }
             }
-            message.setMessagePayload(outputData.toByteArray());
-            return message;
         }
 
-        return null;
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
+                CommandClassUserCodeV1.getUserCodeSet(id, status.toString(), code))
+                        .withPriority(TransactionPriority.Config).build();
     }
 
     public boolean userCodeIsValid(String userCode) {
@@ -231,20 +214,19 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
     }
 
     @Override
-    public Collection<SerialMessage> initialize(boolean refresh) {
+    public Collection<ZWaveCommandClassTransactionPayload> initialize(boolean refresh) {
         logger.debug("NODE {}: User Code initialize", getNode().getNodeId());
-        Collection<SerialMessage> result = new ArrayList<SerialMessage>();
+        Collection<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
         if (numberOfUsersSupported == UNKNOWN || refresh == true) {
             // Request it and wait for response
             logger.debug("NODE {}: numberOfUsersSupported=-1, refreshing", getNode().getNodeId());
-            SerialMessage message = getSupported();
-            result.add(message);
+            result.add(getSupported());
         }
         return result;
     }
 
     @Override
-    public Collection<SerialMessage> getDynamicValues(boolean refresh) {
+    public Collection<ZWaveCommandClassTransactionPayload> getDynamicValues(boolean refresh) {
         logger.debug("NODE {}: User Code initialize starting, refresh={}", getNode().getNodeId(), refresh);
         if (dynamicDone == true || refresh == false) {
             return null;
@@ -254,10 +236,9 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
         dynamicDone = true;
 
         // Request all user codes
-        Collection<SerialMessage> result = new ArrayList<SerialMessage>();
+        Collection<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
         for (int cnt = 1; cnt <= numberOfUsersSupported; cnt++) {
-            SerialMessage message = getUserCode(cnt);
-            result.add(message);
+            result.add(getUserCode(cnt));
         }
         return result;
     }
@@ -272,6 +253,16 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
     }
 
     /**
+     * Gets a user code from the cache
+     *
+     * @param code the code to return;
+     * @return {@link UserCode} or null if code not known
+     */
+    public UserCode getCachedUserCode(int code) {
+        return userCodeList.get(code);
+    }
+
+    /**
      * Z-Wave UserIDStatus enumeration. The user ID status type indicates
      * the state of the user ID.
      *
@@ -279,11 +270,11 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
      * @see {@link ZWaveUserCodeCommandClass#USER_CODE_SET}
      */
     @XStreamAlias("userIdStatusType")
-    static enum UserIdStatusType {
+    public static enum UserIdStatusType {
         AVAILABLE(0x00, "Available (not set)"),
         OCCUPIED(0x01, "Occupied"),
         RESERVED_BY_ADMINISTRATOR(0x02, "Reserved by administrator"),
-        STATUS_NOT_AVAILABLE(0x11, "Status not available"),;
+        STATUS_NOT_AVAILABLE(0xFE, "Status not available"),;
         /**
          * A mapping between the integer code and its corresponding door
          * lock state type to facilitate lookup by code.
@@ -344,11 +335,11 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
             this.code = code;
         }
 
-        String getCode() {
+        public String getCode() {
             return code;
         }
 
-        UserIdStatusType getState() {
+        public UserIdStatusType getState() {
             return state;
         }
     }
@@ -358,9 +349,10 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
         private String code;
         private UserIdStatusType status;
 
-        private ZWaveUserCodeValueEvent(int nodeId, int endpoint, int id, String code, UserIdStatusType status) {
-            super(nodeId, endpoint, CommandClass.USER_CODE, code);
+        private ZWaveUserCodeValueEvent(int nodeId, int endpoint, int id, String bs, UserIdStatusType status) {
+            super(nodeId, endpoint, CommandClass.COMMAND_CLASS_USER_CODE, bs);
             this.id = id;
+            this.code = bs;
             this.status = status;
         }
 
