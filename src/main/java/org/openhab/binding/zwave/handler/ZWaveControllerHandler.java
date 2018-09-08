@@ -75,7 +75,9 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     private Integer healTime;
     private Integer wakeupDefaultPeriod;
 
-    private final int SEARCHTIME_DEFAULT = 120;
+    private final int SEARCHTIME_MINIMUM = 20;
+    private final int SEARCHTIME_DEFAULT = 30;
+    private final int SEARCHTIME_MAXIMUM = 300;
     private int searchTime;
 
     private ScheduledFuture<?> healJob = null;
@@ -107,6 +109,10 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         if (param instanceof BigDecimal) {
             searchTime = ((BigDecimal) param).intValue();
         } else {
+            searchTime = SEARCHTIME_DEFAULT;
+        }
+
+        if (searchTime < SEARCHTIME_MINIMUM || searchTime > SEARCHTIME_MAXIMUM) {
             searchTime = SEARCHTIME_DEFAULT;
         }
 

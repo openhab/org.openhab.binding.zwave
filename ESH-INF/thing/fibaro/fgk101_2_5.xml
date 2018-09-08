@@ -68,7 +68,7 @@ Door/Window Sensor<br /><h1>Overview</h1><p>The Fibaro Door / Window Sensor is a
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGK101</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0700:1000,0700:2000</property>
+      <property name="manufacturerRef">0700:1000,0700:2000,0700:3000</property>
       <property name="versionMin">2.5</property>
       <property name="versionMax">2.5</property>
       <property name="dbReference">847</property>
@@ -150,14 +150,14 @@ Parameter for dimming/opening blinds<br /><h1>Overview</h1><p>Value of the param
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration">
-        <label>9: Enable/Disable transmission of frame cancelling alarm</label>
+        <label>9: Enable/Disable cancelling alarm</label>
         <description><![CDATA[
 Enable/Disable transmission of frame cancelling alarm<br /><h1>Overview</h1><p>Deactivating transmission of the alarm cancelling frame or the control frame deactivating the device (Basic).</p> <p>It allows for disabling the function of deactivating the device and cancelling alarms for devices associated with IN input.</p> <p>Available parameter settings:</p> <p><strong>0</strong> – for association group no. 1 information is sent</p> <p><strong>1</strong> – for association group no. 1 information is not sent.</p> <p>Default value: <strong>0</strong></p> <p>The parameter cancels alarms only. Information on alarm violation or activation commands for devices from association groups are always sent.</p>
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">for association group no. 1 information is sent</option>
-          <option value="1">for association group no. 1 information is not sent</option>
+          <option value="0">Group no. 1 information is sent</option>
+          <option value="1">Group no. 1 information is not sent</option>
         </options>
       </parameter>
 
@@ -191,8 +191,8 @@ Enabling/Disabling broadcast alarm for IN and TMP<br /><h1>Overview</h1><p>Sendi
         <default>0</default>
         <options>
           <option value="0">IN and TMP Broadcast mode inactive</option>
-          <option value="1">IN broadcast mode active, TMP broadcast mode inactive</option>
-          <option value="2">IN broadcast mode inactive, TMP broadcast mode active</option>
+          <option value="1">IN broadcast active, TMP broadcast inactive</option>
+          <option value="2">IN broadcast inactive, TMP broadcast active</option>
           <option value="3">IN and TMP broadcast mode active</option>
         </options>
       </parameter>

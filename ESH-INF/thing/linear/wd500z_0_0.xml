@@ -64,8 +64,8 @@ Start dimming from that start level or current level<br /><h1>Overview</h1><p>A 
         <description>The WD500Z-1 will flicker its LED when it is transmitting to any of its groups.</description>
         <default>0</default>
         <options>
-          <option value="0">0</option>
-          <option value="1">1</option>
+          <option value="0">LED ON - Switch ON</option>
+          <option value="1">LED ON - Switch OFF</option>
         </options>
       </parameter>
 

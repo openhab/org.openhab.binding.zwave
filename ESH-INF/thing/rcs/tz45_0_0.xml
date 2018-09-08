@@ -10,6 +10,7 @@
     <description><![CDATA[
 Thermostat<br /><h2>Inclusion Information</h2><p>General Programming Procedure (for controllers supporting the thermostat device class): 1. Set your primary controller to Include mode, to add the thermostat as a node on your network (see your controller’s user manual for detailed instructions). 2. In the Thermostat’s Main Menu, scroll down to the ZWave Install item. Select the item. 3. Press the YES button in the ZWave Install screen.</p>
     ]]></description>
+    <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -68,7 +69,7 @@ Thermostat<br /><h2>Inclusion Information</h2><p>General Programming Procedure (
       <property name="vendor">Residential Control Systems, Inc. (RCS)</property>
       <property name="modelId">TZ45</property>
       <property name="manufacturerId">0010</property>
-      <property name="manufacturerRef">0001:000B</property>
+      <property name="manufacturerRef">0001:0009,0001:000B</property>
       <property name="dbReference">685</property>
     </properties>
 
