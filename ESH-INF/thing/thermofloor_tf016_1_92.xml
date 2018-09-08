@@ -5,28 +5,34 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="thermofloor_tf016_01_008" listed="false">
+  <thing-type id="thermofloor_tf016_01_092" listed="false">
     <label>TF016 ZWave Thermostat</label>
     <description><![CDATA[
-ZWave Thermostat<br /><h1>Overview</h1><p>The Heatit Z-Wave is designed for controlling electrical heating cables and electrical radiators/convectors. The thermostat has 2 internal temperature sensors and has 3 algorithms for temperature compensation. After you have set the temperature, the thermostat will use a hysteresis to regulate the temperature. The hysteresis is adjustable.</p> <p>The temperature shown in the display is the actual temperature for floor sensor and the external room sensor. You are able to calibrate the sensor values. When using the internal room sensor, the temperature shown is the set point. When using the internal sensor, the thermostat can seem somewhat inaccurate. This is due to heat generation inside the thermostat, draft and other external influences.</p> <p>If the thermostat is to be used with waterbased heating systems, you have to use an external sensor.</p>
+ZWave Thermostat<br /><h1>Overview</h1><p>The Heatit Z-Wave is designed for controlling electrical heating cables and electrical radiators/convectors. The thermostat has 2 internal temperature sensors and has 3 algorithms for temperature compensation. After you have set the temperature, the thermostat will use a hysteresis to regulate the temperature. The hysteresis is adjustable.</p> <p>The temperature shown in the display is the actual temperature for floor sensor and the external room sensor. You are able to calibrate the sensor values. When using the internal room sensor, the temperature shown is the set point. When using the internal sensor, the thermostat can seem somewhat inaccurate. This is due to heat generation inside the thermostat, draft and other external influences.</p> <p>1.92 is an unofficial firmware upgrade with the following changes:</p> <p>* Reporting of the relay status is fixed.</p> <p>* All temperature sensors can be reported (internal, floor, external) via its association groups</p> <br /><h2>Inclusion Information</h2><p>To include the thermostat to your home automation gateway, press Center (confirm) for 10 seconds. The display will show OFF. Press Right (down) 4 times till you see Con in the display. Now start add device in your home automation software. Start inclusion mode by pressing Center (confirm) for approximately 2 seconds. The inclusion/exclusion icon will appear in the display. Confirmation will show Inc/EcL in the display. If inclusion fails, Err (error) will appear. Leave programming mode by choosing ESC in menu. Your thermostat is ready for use with default settings</p> <br /><h2>Exclusion Information</h2><p>See information for inclusion.</p> <br /><h2>Wakeup Information</h2><p>Not applicable</p>
     ]]></description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
-        <label>Thermostat State</label>
+        <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">BASIC</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="sensor_binary" typeId="sensor_binary">
+        <label>Binary Sensor</label>
+        <properties>
+          <property name="binding:*:OnOffType">SENSOR_BINARY</property>
         </properties>
       </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
-          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL</property>
         </properties>
       </channel>
-      <channel id="thermostat_mode" typeId="thermofloor_tf016_01_008_thermostat_mode">
+      <channel id="thermostat_mode" typeId="thermofloor_tf016_01_092_thermostat_mode">
         <label>Thermostat mode</label>
         <properties>
           <property name="binding:*:DecimalType">THERMOSTAT_MODE</property>
@@ -38,10 +44,10 @@ ZWave Thermostat<br /><h1>Overview</h1><p>The Heatit Z-Wave is designed for cont
           <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=HEATING</property>
         </properties>
       </channel>
-      <channel id="thermostat_setpoint_heating_econ" typeId="thermostat_setpoint">
-        <label>Setpoint (heating economy)</label>
+      <channel id="thermostat_setpoint_cooling" typeId="thermostat_setpoint">
+        <label>Setpoint (cooling)</label>
         <properties>
-          <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=HEATING_ECON</property>
+          <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=COOLING</property>
         </properties>
       </channel>
       <channel id="thermostat_setpoint_furnace" typeId="thermostat_setpoint">
@@ -50,10 +56,28 @@ ZWave Thermostat<br /><h1>Overview</h1><p>The Heatit Z-Wave is designed for cont
           <property name="binding:*:DecimalType">THERMOSTAT_SETPOINT;type=FURNACE</property>
         </properties>
       </channel>
-      <channel id="config_decimal_param2" typeId="thermofloor_tf016_01_008_config_decimal_param2">
-        <label>Sensor mode</label>
+      <channel id="switch_binary1" typeId="switch_binary">
+        <label>Switch 1</label>
         <properties>
-          <property name="binding:*:DecimalType">CONFIGURATION;parameter=2</property>
+          <property name="binding:*:OnOffType">SWITCH_BINARY:1,BASIC:1</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature2" typeId="sensor_temperature">
+        <label>Sensor (temperature) 2</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:2,BASIC:2;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature3" typeId="sensor_temperature">
+        <label>Sensor (temperature) 3</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:3,BASIC:3;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature4" typeId="sensor_temperature">
+        <label>Sensor (temperature) 4</label>
+        <properties>
+          <property name="binding:*:DecimalType">SENSOR_MULTILEVEL:4,BASIC:4;type=TEMPERATURE</property>
         </properties>
       </channel>
     </channels>
@@ -63,10 +87,9 @@ ZWave Thermostat<br /><h1>Overview</h1><p>The Heatit Z-Wave is designed for cont
       <property name="vendor">ThermoFloor</property>
       <property name="modelId">TF016</property>
       <property name="manufacturerId">019B</property>
-      <property name="manufacturerRef">0001:0001,0003:0201</property>
-      <property name="versionMin">1.8</property>
-      <property name="versionMax">1.91</property>
-      <property name="dbReference">412</property>
+      <property name="manufacturerRef">0003:0201</property>
+      <property name="versionMin">1.92</property>
+      <property name="dbReference">896</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -81,38 +104,45 @@ ZWave Thermostat<br /><h1>Overview</h1><p>The Heatit Z-Wave is designed for cont
 
       <parameter name="config_1_2" type="integer" groupName="configuration">
         <label>1: Operation mode</label>
+        <description><![CDATA[
+Defines operation mode of the thermostat<br /><h1>Overview</h1><table><tr><td>Defines Operation Mode of thermostat</td> </tr></table><p>0....OFF(0x00)</p> <p>1.....HEAT (0x01)</p> <p>2.....COOL (0x02)</p> <p>11....ENERGY SAVE HEAT (0x0B)</p> <p>Energy Save heat is a mode with larger hystersis.</p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">OFF</option>
           <option value="1">HEAT</option>
           <option value="2">COOL</option>
-          <option value="11">ENERGY SAVE HEAT</option>
+          <option value="11">ECO</option>
         </options>
       </parameter>
 
       <parameter name="config_2_2" type="integer" groupName="configuration">
         <label>2: Sensor mode</label>
+        <description>Determines which sensor is in use</description>
         <default>1</default>
         <options>
-          <option value="0">F-mode</option>
-          <option value="1">A-mode</option>
-          <option value="2">AF-mode</option>
-          <option value="3">A2-mode</option>
-          <option value="4">P-mode</option>
-          <option value="5">FP-mode</option>
+          <option value="0">F</option>
+          <option value="1">A</option>
+          <option value="2">AF</option>
+          <option value="3">A2</option>
+          <option value="4">P</option>
+          <option value="5">FP</option>
         </options>
       </parameter>
 
       <parameter name="config_3_2" type="integer" groupName="configuration">
         <label>3: Floor sensor type</label>
+        <description><![CDATA[
+The resistance (type) of the external room sensor.<br /><h1>Overview</h1><p>Set this according to the actual floor sensor that is attached to the thermostat.</p>
+        ]]></description>
         <default>0</default>
         <options>
-          <option value="0">10k NTC</option>
-          <option value="1">12k NTC</option>
-          <option value="2">15k NTC</option>
-          <option value="3">22k NTC</option>
-          <option value="4">33k NTC</option>
-          <option value="5">47k NTC</option>
+          <option value="0">10K NTC</option>
+          <option value="1">12K NTC</option>
+          <option value="2">15K NTC</option>
+          <option value="3">22K NTC</option>
+          <option value="4">33K NTC</option>
+          <option value="5">47K NTC</option>
         </options>
       </parameter>
 
@@ -120,7 +150,7 @@ ZWave Thermostat<br /><h1>Overview</h1><p>The Heatit Z-Wave is designed for cont
                  min="3" max="30">
         <label>4: DIFF l. Temperature control Hysteresis</label>
         <description><![CDATA[
-Range 3-30 (0.3°C 3.0°C)<br /><h1>Overview</h1><p>In this mode you are able to make changes to the hysteresis in the thermostat. This means that you can changes the hysteresis from 0.2°C up to max 3.0°C. Default setting is 0.5°C. When using a waterbased heating, the recommended hysteresis is a minimum of 1.0°C.</p>
+Range 3-30 (0.3°C 3.0°C)<br /><h1>Overview</h1><p>In this mode you are able to make changes to the hysteresis in the thermostat. This means that you can changes the hysteresis from 0.2°C up to max 3.0°C.  Default setting is 0.5°C. When using a waterbased heating, the recommended hysteresis is a minimum of 1.0°C.</p>
         ]]></description>
         <default>5</default>
       </parameter>
@@ -135,14 +165,12 @@ Range 3-30 (0.3°C 3.0°C)<br /><h1>Overview</h1><p>In this mode you are able to
       <parameter name="config_6_2" type="integer" groupName="configuration"
                  min="50" max="400">
         <label>6: FHi, Floor max limit</label>
-        <description>Range 50-400 (5.0°C 40.0°C)</description>
         <default>400</default>
       </parameter>
 
       <parameter name="config_7_2" type="integer" groupName="configuration"
                  min="50" max="400">
         <label>7: ALo, Air min limit</label>
-        <description>Range 50-400 (5.0°C 40.0°C)</description>
         <default>50</default>
       </parameter>
 
@@ -162,7 +190,7 @@ Range 3-30 (0.3°C 3.0°C)<br /><h1>Overview</h1><p>In this mode you are able to
       <parameter name="config_10_2" type="integer" groupName="configuration"
                  min="50" max="400">
         <label>10: CO mode setpoint</label>
-        <description>Range 50-400 (5.0°C 40.0°C)</description>
+        <description>Temperature setpoint in comfort mode</description>
         <default>210</default>
       </parameter>
 
@@ -176,6 +204,7 @@ Range 3-30 (0.3°C 3.0°C)<br /><h1>Overview</h1><p>In this mode you are able to
       <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="0" max="10">
         <label>12: P setting</label>
+        <description>Power mode. 0 is always off, 10 is always on.</description>
         <default>2</default>
       </parameter>
 
@@ -199,6 +228,24 @@ Range 3-30 (0.3°C 3.0°C)<br /><h1>Overview</h1><p>In this mode you are able to
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: On/Off control</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>When heating is activated, ON is sent to this channel, and when turned off (due to reaching setpoint), OFF will be sent.</p>
+        ]]></description>
+        <multipleLimit>8</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Internal temperature sensor</label>
+        <multipleLimit>8</multipleLimit>
+      </parameter>
+
+      <parameter name="group_4" type="text" groupName="association" multiple="true">
+        <label>4: External temperature sensor</label>
+        <multipleLimit>8</multipleLimit>
+      </parameter>
+
+      <parameter name="group_5" type="text" groupName="association" multiple="true">
+        <label>5: Floor temperature sensor</label>
         <multipleLimit>8</multipleLimit>
       </parameter>
 
@@ -206,32 +253,17 @@ Range 3-30 (0.3°C 3.0°C)<br /><h1>Overview</h1><p>In this mode you are able to
 
   </thing-type>
 
-  <channel-type id="thermofloor_tf016_01_008_thermostat_mode">
+  <channel-type id="thermofloor_tf016_01_092_thermostat_mode">
     <item-type>Number</item-type>
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="2">Cool</option>
-        <option value="11">Economy Heat</option>
         <option value="0">Off</option>
         <option value="1">Heat</option>
-      </options>
-    </state>
-  </channel-type>
-
-  <channel-type id="thermofloor_tf016_01_008_config_decimal_param2">
-    <item-type>Number</item-type>
-    <label>Sensor mode</label>
-    <state pattern="%s">
-      <options>
-        <option value="0">F-mode</option>
-        <option value="1">A-mode</option>
-        <option value="2">AF-mode</option>
-        <option value="3">A2-mode</option>
-        <option value="4">P-mode</option>
-        <option value="5">FP-mode</option>
+        <option value="11">Economy Heat</option>
+        <option value="2">Cool</option>
       </options>
     </state>
   </channel-type>
