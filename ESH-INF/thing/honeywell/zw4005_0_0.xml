@@ -5,10 +5,10 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="ge_45609_00_000" listed="false">
-    <label>45609 On/Off Relay Switch</label>
+  <thing-type id="honeywell_zw4005_00_000" listed="false">
+    <label>ZW4005 In Wall Paddle</label>
     <description><![CDATA[
-On/Off Relay Switch<br /><h1>Overview</h1><p>Wall mounted On/Off switch. Control the On/Off status of permanently installed lighting, fans and more!</p> <br /><h2>Inclusion Information</h2><p>When prompted by your primary controller, tap the top or bottom of the rocker</p> <br /><h2>Exclusion Information</h2><p>Once the controller is ready to Exclude your device, press and release the top or bottom of the wireless smart switch (rocker) to exclude it from the network</p>
+In Wall Paddle<br /><h1>Overview</h1><p>On/Off Power Switch </p> <br /><h2>Inclusion Information</h2><p>Once the controller is ready to include your device, press and release the top or bottom of the wireless smart switch (rocker) to include it in the network. </p> <br /><h2>Exclusion Information</h2><p>Once the controller is ready to Exclude your device, press and release the top or bottom of the wireless smart switch (rocker) to exclude it from the network. </p>
     ]]></description>
     <category>WallSwitch</category>
 
@@ -17,18 +17,25 @@ On/Off Relay Switch<br /><h1>Overview</h1><p>Wall mounted On/Off switch. Control
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SCENE_ACTIVATION</property>
         </properties>
       </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Jasco Products</property>
-      <property name="modelId">45609</property>
-      <property name="manufacturerId">0063</property>
-      <property name="manufacturerRef">5257:3533,6363:3533</property>
-      <property name="dbReference">40</property>
+      <property name="vendor">Honeywell</property>
+      <property name="modelId">ZW4005</property>
+      <property name="manufacturerId">0039</property>
+      <property name="manufacturerRef">4952:3036</property>
+      <property name="dbReference">895</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -40,12 +47,15 @@ On/Off Relay Switch<br /><h1>Overview</h1><p>Wall mounted On/Off switch. Control
         <label>Configuration Parameters</label>
       </parameter-group>
 
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Night Light</label>
-        <description><![CDATA[
-Defines the behavior of the blue LED.<br /><h1>Overview</h1><p>Default is Night Light mode where LED is on when switch is off.</p>
-        ]]></description>
+        <description>Defines the behavior of the blue LED. Default is on when switch is off.</description>
         <default>0</default>
         <options>
           <option value="0">LED on when switch is OFF</option>
@@ -56,14 +66,18 @@ Defines the behavior of the blue LED.<br /><h1>Overview</h1><p>Default is Night 
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Invert Switch</label>
-        <description><![CDATA[
-Change the top of the switch to OFF and the bottom of the switch to ON.<br /><h1>Overview</h1><p>Note: If you invert the switches and also install the product upside down, remember the load will now be controlled by the right, not the left switch.</p>
-        ]]></description>
+        <description>Invert the ON/OFF Switch State.</description>
         <default>0</default>
         <options>
           <option value="0">No</option>
           <option value="1">Yes</option>
         </options>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Lifeline</label>
+        <description>Z-Wave Plus Lifeline</description>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

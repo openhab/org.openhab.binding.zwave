@@ -68,6 +68,12 @@ Floor thermostat (supports secure inclusion and power measurement)<br /><h1>Over
           <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=12</property>
         </properties>
       </channel>
+      <channel id="config_decimal_param20" typeId="config_decimal">
+        <label>Display brightness</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=20</property>
+        </properties>
+      </channel>
       <channel id="switch_binary1" typeId="switch_binary">
         <label>Switch 1</label>
         <properties>

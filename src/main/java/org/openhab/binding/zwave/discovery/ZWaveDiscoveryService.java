@@ -45,6 +45,8 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
     public ZWaveDiscoveryService(ZWaveControllerHandler coordinatorHandler, int searchTime) {
         super(searchTime);
         this.controllerHandler = coordinatorHandler;
+        logger.debug("Creating ZWave discovery service for {} with scan time of {}",
+                controllerHandler.getThing().getUID(), searchTime);
     }
 
     public void activate() {
