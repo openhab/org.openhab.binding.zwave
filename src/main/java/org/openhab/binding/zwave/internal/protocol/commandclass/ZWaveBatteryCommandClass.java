@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,15 +11,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,12 +33,11 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  * @author Jan-Willem Spuij
  */
-@XStreamAlias("batteryCommandClass")
-public class ZWaveBatteryCommandClass extends ZWaveCommandClass
-        implements ZWaveGetCommands, ZWaveCommandClassDynamicState {
+@XStreamAlias("COMMAND_CLASS_BATTERY")
+public class ZWaveBatteryCommandClass extends ZWaveCommandClass implements ZWaveCommandClassDynamicState {
 
     @XStreamOmitField
-    private final static Logger logger = LoggerFactory.getLogger(ZWaveBatteryCommandClass.class);
+    private static final Logger logger = LoggerFactory.getLogger(ZWaveBatteryCommandClass.class);
 
     private static final int BATTERY_GET = 0x02;
     private static final int BATTERY_REPORT = 0x03;
@@ -64,56 +61,31 @@ public class ZWaveBatteryCommandClass extends ZWaveCommandClass
         super(node, controller, endpoint);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.BATTERY;
+        return CommandClass.COMMAND_CLASS_BATTERY;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @throws ZWaveSerialMessageException
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint)
-            throws ZWaveSerialMessageException {
-        logger.debug("NODE {}: Received Battery Request", this.getNode().getNodeId());
-        int command = serialMessage.getMessagePayloadByte(offset);
-        switch (command) {
-            case BATTERY_REPORT:
-                logger.trace("Process Battery Report");
+    @ZWaveResponseHandler(id = BATTERY_REPORT, name = "BATTERY_REPORT")
+    public void handleBatteryReport(ZWaveCommandClassPayload payload, int endpoint) {
+        batteryLevel = payload.getPayloadByte(2);
+        logger.debug("NODE {}: Battery report value = {}", getNode().getNodeId(), batteryLevel);
 
-                if (serialMessage.getMessagePayload().length < offset + 1) {
-                    logger.debug("NODE {}: Battery report length too short");
-                    return;
-                }
-
-                batteryLevel = serialMessage.getMessagePayloadByte(offset + 1);
-                logger.debug("NODE {}: Battery report value = {}", this.getNode().getNodeId(), batteryLevel);
-
-                // A Battery level of 255 means battery low.
-                // Set battery level to 0
-                if (batteryLevel == 255) {
-                    batteryLevel = 0;
-                    batteryLow = true;
-                    logger.warn("NODE {}: BATTERY LOW!", this.getNode().getNodeId());
-                } else {
-                    batteryLow = false;
-                }
-
-                ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(this.getNode().getNodeId(),
-                        endpoint, this.getCommandClass(), batteryLevel);
-                this.getController().notifyEventListeners(zEvent);
-
-                dynamicDone = true;
-                break;
-            default:
-                logger.debug(String.format("Unsupported Command 0x%02X for command class %s (0x%02X).", command,
-                        this.getCommandClass().getLabel(), this.getCommandClass().getKey()));
+        // A Battery level of 255 means battery low.
+        // Set battery level to 0
+        if (batteryLevel == 255) {
+            batteryLevel = 0;
+            batteryLow = true;
+            logger.debug("NODE {}: BATTERY LOW!", getNode().getNodeId());
+        } else {
+            batteryLow = false;
         }
+
+        ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
+                getCommandClass(), batteryLevel);
+        getController().notifyEventListeners(zEvent);
+
+        dynamicDone = true;
     }
 
     /**
@@ -121,20 +93,13 @@ public class ZWaveBatteryCommandClass extends ZWaveCommandClass
      *
      * @return the serial message
      */
-    @Override
-    public SerialMessage getValueMessage() {
+    public ZWaveCommandClassTransactionPayload getValueMessage() {
         if (isGetSupported == false) {
             logger.debug("NODE {}: Node doesn't support get requests", this.getNode().getNodeId());
             return null;
         }
-
-        logger.debug("NODE {}: Creating new message for application command BATTERY_GET", this.getNode().getNodeId());
-        SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.ApplicationCommandHandler, SerialMessagePriority.Get);
-        byte[] newPayload = { (byte) this.getNode().getNodeId(), 2, (byte) getCommandClass().getKey(),
-                (byte) BATTERY_GET };
-        result.setMessagePayload(newPayload);
-        return result;
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), BATTERY_GET)
+                .withExpectedResponseCommand(BATTERY_REPORT).withPriority(TransactionPriority.Get).build();
     }
 
     @Override
@@ -146,11 +111,8 @@ public class ZWaveBatteryCommandClass extends ZWaveCommandClass
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    public Collection<SerialMessage> getDynamicValues(boolean refresh) {
+    public Collection<ZWaveCommandClassTransactionPayload> getDynamicValues(boolean refresh) {
         if (refresh == true) {
             dynamicDone = false;
         }
@@ -159,7 +121,7 @@ public class ZWaveBatteryCommandClass extends ZWaveCommandClass
             return null;
         }
 
-        ArrayList<SerialMessage> result = new ArrayList<SerialMessage>();
+        ArrayList<ZWaveCommandClassTransactionPayload> result = new ArrayList<ZWaveCommandClassTransactionPayload>();
         result.add(getValueMessage());
         return result;
     }

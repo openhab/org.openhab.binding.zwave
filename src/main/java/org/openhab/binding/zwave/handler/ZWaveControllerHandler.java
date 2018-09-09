@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,13 +10,15 @@ package org.openhab.binding.zwave.handler;
 import static org.openhab.binding.zwave.ZWaveBindingConstants.*;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-import org.eclipse.smarthome.config.core.ConfigDescription;
 import org.eclipse.smarthome.config.core.Configuration;
 import org.eclipse.smarthome.config.core.validation.ConfigValidationException;
 import org.eclipse.smarthome.config.discovery.DiscoveryService;
@@ -27,32 +28,27 @@ import org.eclipse.smarthome.core.thing.Bridge;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.ThingStatus;
 import org.eclipse.smarthome.core.thing.ThingStatusDetail;
-import org.eclipse.smarthome.core.thing.ThingTypeUID;
 import org.eclipse.smarthome.core.thing.UID;
 import org.eclipse.smarthome.core.thing.binding.BaseBridgeHandler;
-import org.eclipse.smarthome.core.thing.type.ThingType;
 import org.eclipse.smarthome.core.types.Command;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
-import org.openhab.binding.zwave.ZWaveBindingConstants.I18nConstant;
 import org.openhab.binding.zwave.discovery.ZWaveDiscoveryService;
 import org.openhab.binding.zwave.event.BindingEventDTO;
 import org.openhab.binding.zwave.event.BindingEventFactory;
 import org.openhab.binding.zwave.event.BindingEventType;
-import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
 import org.openhab.binding.zwave.internal.ZWaveEventPublisher;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEventListener;
 import org.openhab.binding.zwave.internal.protocol.ZWaveIoHandler;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInitializationStateEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkStateEvent;
-import org.openhab.binding.zwave.internal.protocol.initialization.ZWaveNodeInitStage;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RemoveFailedNodeMessageClass.Report;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.osgi.framework.ServiceRegistration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -73,14 +69,18 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     private volatile ZWaveController controller;
 
     private Boolean isMaster;
-    private Boolean isSUC;
+    private Integer sucNode;
     private String networkKey;
     private Integer secureInclusionMode;
     private Integer healTime;
     private Integer wakeupDefaultPeriod;
 
+    private final int SEARCHTIME_MINIMUM = 20;
     private final int SEARCHTIME_DEFAULT = 30;
+    private final int SEARCHTIME_MAXIMUM = 300;
     private int searchTime;
+
+    private ScheduledFuture<?> healJob = null;
 
     public ZWaveControllerHandler(Bridge bridge) {
         super(bridge);
@@ -88,50 +88,55 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
     @Override
     public void initialize() {
-        logger.debug("Initializing ZWave Controller.");
+        logger.debug("Initializing ZWave Controller {}.", getThing().getUID());
 
         Object param;
         param = getConfig().get(CONFIGURATION_MASTER);
-        if (param instanceof Boolean && param != null) {
+        if (param instanceof Boolean) {
             isMaster = (Boolean) param;
         } else {
             isMaster = true;
         }
 
         param = getConfig().get(CONFIGURATION_SECUREINCLUSION);
-        if (param instanceof BigDecimal && param != null) {
+        if (param instanceof BigDecimal) {
             secureInclusionMode = ((BigDecimal) param).intValue();
         } else {
             secureInclusionMode = 0;
         }
 
         param = getConfig().get(CONFIGURATION_INCLUSIONTIMEOUT);
-        if (param instanceof BigDecimal && param != null) {
+        if (param instanceof BigDecimal) {
             searchTime = ((BigDecimal) param).intValue();
         } else {
             searchTime = SEARCHTIME_DEFAULT;
         }
 
-        param = getConfig().get(CONFIGURATION_INCLUSIONTIMEOUT);
-        if (param instanceof BigDecimal && param != null) {
+        if (searchTime < SEARCHTIME_MINIMUM || searchTime > SEARCHTIME_MAXIMUM) {
+            searchTime = SEARCHTIME_DEFAULT;
+        }
+
+        param = getConfig().get(CONFIGURATION_DEFAULTWAKEUPPERIOD);
+        if (param instanceof BigDecimal) {
             wakeupDefaultPeriod = ((BigDecimal) param).intValue();
         } else {
             wakeupDefaultPeriod = 0;
         }
 
-        param = getConfig().get(CONFIGURATION_SUC);
-        if (param instanceof Boolean && param != null) {
-            isSUC = (Boolean) param;
+        param = getConfig().get(CONFIGURATION_SISNODE);
+        if (param instanceof BigDecimal) {
+            sucNode = ((BigDecimal) param).intValue();
         } else {
-            isSUC = false;
+            sucNode = 0;
         }
 
         param = getConfig().get(CONFIGURATION_NETWORKKEY);
-        if (param instanceof String && param != null) {
+        if (param instanceof String) {
             networkKey = (String) param;
         }
-
         if (networkKey.length() == 0) {
+            logger.debug("No network key set by user - using random value.");
+
             // Create random network key
             networkKey = "";
             for (int cnt = 0; cnt < 16; cnt++) {
@@ -148,13 +153,20 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                 // If the thing is defined statically, then this will fail and we will never start!
                 updateConfiguration(configuration);
             } catch (IllegalStateException e) {
-                // Eat it for now...
+                // Eat it...
             }
         }
 
+        param = getConfig().get(CONFIGURATION_HEALTIME);
+        if (param instanceof BigDecimal) {
+            healTime = ((BigDecimal) param).intValue();
+        } else {
+            healTime = -1;
+        }
+        initializeHeal();
+
         // We must set the state
-        updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE,
-                ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE));
+        updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE, ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE);
     }
 
     /**
@@ -168,33 +180,14 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         // Create config parameters
         Map<String, String> config = new HashMap<String, String>();
         config.put("masterController", isMaster.toString());
-        config.put("isSUC", isSUC ? "true" : "false");
+        config.put("sucNode", sucNode.toString());
         config.put("secureInclusion", secureInclusionMode.toString());
         config.put("networkKey", networkKey);
         config.put("wakeupDefaultPeriod", wakeupDefaultPeriod.toString());
 
-        // MAJOR BODGE
-        // The security class uses a static member to set the key so for now
-        // lets do the same, but it needs to be moved into the network initialisation
-        // so different networks can have different keys
-        if (networkKey.length() > 0) {
-            ZWaveSecurityCommandClass.setRealNetworkKey(networkKey);
-        }
-
-        // TODO: Handle soft reset better!
+        // TODO: Handle soft reset?
         controller = new ZWaveController(this, config);
         controller.addEventListener(this);
-
-        // if (aliveCheckPeriod != null) {
-        // networkMonitor.setPollPeriod(aliveCheckPeriod);
-        // }
-        // if (softReset != false) {
-        // this.networkMonitor.resetOnError(softReset);
-        // }
-
-        // The config service needs to know the controller and the network monitor...
-        // this.zConfigurationService = new ZWaveConfiguration(this.zController, this.networkMonitor);
-        // zController.addEventListener(this.zConfigurationService);
 
         // Start the discovery service
         discoveryService = new ZWaveDiscoveryService(this, searchTime);
@@ -205,8 +198,46 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                 new Hashtable<String, Object>());
     }
 
+    private void initializeHeal() {
+        if (healJob != null) {
+            healJob.cancel(true);
+            healJob = null;
+        }
+
+        if (healTime >= 0 && healTime <= 23) {
+            Runnable healRunnable = new Runnable() {
+                @Override
+                public void run() {
+                    if (controller == null) {
+                        return;
+                    }
+                    logger.debug("Starting network mesh heal for controller {}.", getThing().getUID());
+                    for (ZWaveNode node : controller.getNodes()) {
+                        logger.debug("Starting network mesh heal for controller {}.", getThing().getUID());
+                        node.healNode();
+                    }
+                }
+            };
+
+            Calendar cal = Calendar.getInstance();
+            int hours = healTime - cal.get(Calendar.HOUR_OF_DAY);
+            if (hours < 0) {
+                hours += 24;
+            }
+
+            logger.debug("Scheduling network mesh heal for {} hours time.", hours);
+
+            healJob = scheduler.scheduleAtFixedRate(healRunnable, hours, 24, TimeUnit.HOURS);
+        }
+    }
+
     @Override
     public void dispose() {
+        if (healJob != null) {
+            healJob.cancel(true);
+            healJob = null;
+        }
+
         // Remove the discovery service
         if (discoveryService != null) {
             discoveryService.deactivate();
@@ -216,13 +247,10 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             discoveryRegistration.unregister();
         }
 
-        // if (this.converterHandler != null) {
-        // this.converterHandler = null;
-        // }
-
         ZWaveController controller = this.controller;
         if (controller != null) {
             this.controller = null;
+            controller.shutdown();
             controller.removeEventListener(this);
         }
     }
@@ -241,6 +269,10 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         for (Entry<String, Object> configurationParameter : configurationParameters.entrySet()) {
             Object value = configurationParameter.getValue();
             logger.debug("Controller Configuration update {} to {}", configurationParameter.getKey(), value);
+            if (value == null) {
+                continue;
+            }
+
             String[] cfg = configurationParameter.getKey().split("_");
             if ("controller".equals(cfg[0])) {
                 if (controller == null) {
@@ -269,36 +301,39 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             if ("security".equals(cfg[0])) {
                 if (cfg[1].equals("networkkey")) {
                     // Format the key here so it's presented nicely and consistently to the user!
-                    if (value != null) {
-                        String hexString = (String) value;
-                        hexString = hexString.replace("0x", "");
-                        hexString = hexString.replace(",", "");
-                        hexString = hexString.replace(" ", "");
-                        hexString = hexString.toUpperCase();
-                        if ((hexString.length() % 2) != 0) {
-                            hexString += "0";
-                        }
-
-                        int arrayLength = (int) Math.ceil(((hexString.length() / 2)));
-                        String[] result = new String[arrayLength];
-
-                        int j = 0;
-                        StringBuilder builder = new StringBuilder();
-                        int lastIndex = result.length - 1;
-                        for (int i = 0; i < lastIndex; i++) {
-                            builder.append(hexString.substring(j, j + 2) + " ");
-                            j += 2;
-                        }
-                        builder.append(hexString.substring(j));
-                        value = builder.toString();
-
-                        ZWaveSecurityCommandClass.setRealNetworkKey((String) value);
+                    String hexString = (String) value;
+                    hexString = hexString.replace("0x", "");
+                    hexString = hexString.replace(",", "");
+                    hexString = hexString.replace(" ", "");
+                    hexString = hexString.toUpperCase();
+                    if ((hexString.length() % 2) != 0) {
+                        hexString += "0";
                     }
+
+                    int arrayLength = (int) Math.ceil(((hexString.length() / 2)));
+                    String[] result = new String[arrayLength];
+
+                    int j = 0;
+                    StringBuilder builder = new StringBuilder();
+                    int lastIndex = result.length - 1;
+                    for (int i = 0; i < lastIndex; i++) {
+                        builder.append(hexString.substring(j, j + 2) + " ");
+                        j += 2;
+                    }
+                    builder.append(hexString.substring(j));
+                    value = builder.toString();
+
+                    reinitialise = true;
                 }
             }
 
             if ("port".equals(cfg[0])) {
                 reinitialise = true;
+            }
+
+            if ("heal".equals(cfg[0])) {
+                healTime = ((BigDecimal) value).intValue();
+                initializeHeal();
             }
 
             configuration.put(configurationParameter.getKey(), value);
@@ -315,9 +350,6 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
     @Override
     public void handleCommand(ChannelUID channelUID, Command command) {
-        // if(channelUID.getId().equals(CHANNEL_1)) {
-        // TODO: handle command
-        // }
     }
 
     public void startDeviceDiscovery() {
@@ -327,7 +359,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
         int inclusionMode = 2;
         Object param = getConfig().get(CONFIGURATION_INCLUSION_MODE);
-        if (param instanceof BigDecimal && param != null) {
+        if (param instanceof BigDecimal) {
             inclusionMode = ((BigDecimal) param).intValue();
         }
 
@@ -341,10 +373,21 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         controller.requestInclusionStop();
     }
 
+    private void updateControllerProperties() {
+        Configuration configuration = editConfiguration();
+        configuration.put(ZWaveBindingConstants.CONFIGURATION_SISNODE, controller.getSucId());
+        try {
+            // If the thing is defined statically, then this will fail and we will never start!
+            updateConfiguration(configuration);
+        } catch (IllegalStateException e) {
+            // Eat it...
+        }
+    }
+
     @Override
     public void ZWaveIncomingEvent(ZWaveEvent event) {
         // If this event requires us to let the users know something, then we create a notification
-        I18nConstant eventKey = null;
+        String eventKey = null;
         BindingEventType eventState = null;
         String eventEntity = null;
         String eventId = null;
@@ -355,9 +398,10 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                     ((ZWaveNetworkStateEvent) event).getNetworkState());
             if (((ZWaveNetworkStateEvent) event).getNetworkState() == true) {
                 updateStatus(ThingStatus.ONLINE);
+                updateControllerProperties();
             } else {
                 updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE,
-                        ZWaveBindingConstants.getI18nConstant(ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE));
+                        ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE);
             }
         }
 
@@ -515,11 +559,22 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                     break;
                 case IncludeDone:
                     // Ignore node 0 - this just indicates inclusion is finished
-                    if (incEvent.getNodeId() != 0) {
-                        discoveryService.deviceDiscovered(event.getNodeId());
+                    if (incEvent.getNodeId() == 0) {
+                        break;
                     }
+                    discoveryService.deviceDiscovered(event.getNodeId());
                     eventKey = ZWaveBindingConstants.EVENT_INCLUSION_COMPLETED;
                     eventState = BindingEventType.SUCCESS;
+                    break;
+                case SecureIncludeComplete:
+                    eventKey = ZWaveBindingConstants.EVENT_INCLUSION_SECURECOMPLETED;
+                    eventState = BindingEventType.SUCCESS;
+                    eventArgs = new Integer(incEvent.getNodeId());
+                    break;
+                case SecureIncludeFailed:
+                    eventKey = ZWaveBindingConstants.EVENT_INCLUSION_SECUREFAILED;
+                    eventState = BindingEventType.ERROR;
+                    eventArgs = new Integer(incEvent.getNodeId());
                     break;
                 case ExcludeStart:
                     eventKey = ZWaveBindingConstants.EVENT_EXCLUSION_STARTED;
@@ -535,6 +590,15 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                     break;
                 case ExcludeControllerFound:
                 case ExcludeSlaveFound:
+                    // Ignore node 0 - this just indicates exclusion finished
+                    if (incEvent.getNodeId() == 0) {
+                        break;
+                    }
+
+                    eventKey = ZWaveBindingConstants.EVENT_EXCLUSION_NODEREMOVED;
+                    eventState = BindingEventType.SUCCESS;
+                    eventArgs = new Integer(incEvent.getNodeId());
+                    break;
                 case IncludeControllerFound:
                 case IncludeSlaveFound:
                     break;
@@ -562,7 +626,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             EventPublisher ep = ZWaveEventPublisher.getEventPublisher();
             if (ep != null) {
                 BindingEventDTO dto = new BindingEventDTO(eventState,
-                        ZWaveBindingConstants.getI18nConstant(eventKey, eventArgs));
+                        BindingEventFactory.formatEvent(eventKey, eventArgs));
                 Event notification = BindingEventFactory.createBindingEvent(ZWaveBindingConstants.BINDING_ID,
                         eventEntity, eventId, dto);
                 ep.post(notification);
@@ -589,15 +653,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         if (discoveryService == null) {
             return;
         }
-        // ThingUID newThing =
         discoveryService.deviceAdded(node);
-        // if (newThing == null) {
-        // return;
-        // }
-
-        // ThingType thingType = ZWaveConfigProvider.getThingType(newThing.getThingTypeUID());
-
-        // thingType.getProperties()
     }
 
     public int getOwnNodeId() {
@@ -622,15 +678,23 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         return controller.getNodes();
     }
 
-    public void sendData(SerialMessage message) {
+    /**
+     * Transmits the {@link ZWaveCommandClassTransactionPayload} to a Node.
+     * This will not wait for the transaction response.
+     *
+     * @param transaction
+     *            the {@link ZWaveCommandClassTransactionPayload} message to send.
+     */
+    public void sendData(ZWaveCommandClassTransactionPayload transaction) {
         if (controller == null) {
             return;
         }
-        controller.sendData(message);
+        controller.sendData(transaction);
     }
 
     public boolean addEventListener(ZWaveThingHandler zWaveThingHandler) {
         if (controller == null) {
+            logger.debug("Attempting to add listener when controller is null");
             return false;
         }
         controller.addEventListener(zWaveThingHandler);
@@ -643,6 +707,15 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         }
         controller.removeEventListener(zWaveThingHandler);
         return true;
+    }
+
+    /**
+     * Gets the default wakeup period configured for this network
+     *
+     * @return the default wakeup, or null if not set
+     */
+    public Integer getDefaultWakeupPeriod() {
+        return wakeupDefaultPeriod;
     }
 
     public UID getUID() {
@@ -687,13 +760,8 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             return false;
         }
 
-        // Only set the HEAL stage if the node is in DONE state
-        if (node.getNodeInitStage() != ZWaveNodeInitStage.DONE) {
-            logger.debug("NODE {}: Can't start heal when device initialisation is not complete", nodeId);
-            return false;
-        }
+        node.healNode();
 
-        node.setNodeStage(ZWaveNodeInitStage.HEAL_START);
         return true;
     }
 
@@ -716,5 +784,14 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         }
         getThing().setProperty(ZWaveBindingConstants.PROPERTY_NEIGHBOURS, neighbours);
         getThing().setProperty(ZWaveBindingConstants.PROPERTY_NODEID, Integer.toString(getOwnNodeId()));
+    }
+
+    /**
+     * Gets the home ID associated with the controller.
+     *
+     * @return the home ID
+     */
+    public int getHomeId() {
+        return controller.getHomeId();
     }
 }

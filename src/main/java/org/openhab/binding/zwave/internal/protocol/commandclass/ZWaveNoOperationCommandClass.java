@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,13 +7,11 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,11 +26,10 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Chris Jackson
  * @author Jan-Willem Spuij
  */
-@XStreamAlias("noOperationCommandClass")
+@XStreamAlias("COMMAND_CLASS_NO_OPERATION")
 public class ZWaveNoOperationCommandClass extends ZWaveCommandClass {
-
     @XStreamOmitField
-    private final static Logger logger = LoggerFactory.getLogger(ZWaveNoOperationCommandClass.class);
+    private static final Logger logger = LoggerFactory.getLogger(ZWaveNoOperationCommandClass.class);
 
     /**
      * Creates a new instance of the ZWaveNoOperationCommandClass class.
@@ -45,24 +41,14 @@ public class ZWaveNoOperationCommandClass extends ZWaveCommandClass {
     public ZWaveNoOperationCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
 
-        // We don't want to request the version since some nodes won't respond and there's little point anyway!
+        // We don't want to request the version since some nodes won't respond
+        // There's also no point as this class must be implemented and there's only 1 version
         setVersion(1);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public CommandClass getCommandClass() {
-        return CommandClass.NO_OPERATION;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void handleApplicationCommandRequest(SerialMessage serialMessage, int offset, int endpoint) {
-        logger.debug("NODE {}: Received NO_OPERATION command", getNode().getNodeId());
+        return CommandClass.COMMAND_CLASS_NO_OPERATION;
     }
 
     /**
@@ -70,12 +56,13 @@ public class ZWaveNoOperationCommandClass extends ZWaveCommandClass {
      *
      * @return the serial message
      */
-    public SerialMessage getNoOperationMessage() {
-        logger.debug("NODE {}: Creating new message for command No Operation", this.getNode().getNodeId());
-        SerialMessage result = new SerialMessage(this.getNode().getNodeId(), SerialMessageClass.SendData,
-                SerialMessageType.Request, SerialMessageClass.SendData, SerialMessagePriority.Poll);
-        byte[] newPayload = { (byte) this.getNode().getNodeId(), 1, (byte) getCommandClass().getKey() };
-        result.setMessagePayload(newPayload);
-        return result;
+    public ZWaveCommandClassTransactionPayload getNoOperationMessage() {
+        logger.debug("NODE {}: Creating new message for command NO_OPERATION_PING", getNode().getNodeId());
+
+        // return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass())
+        // .withPriority(TransactionPriority.Poll).build();
+
+        return new ZWaveCommandClassTransactionPayload(getNode().getNodeId(),
+                new byte[] { (byte) getCommandClass().getKey() }, TransactionPriority.Poll, null, 0);
     }
 }

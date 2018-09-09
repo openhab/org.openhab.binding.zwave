@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +9,7 @@ package org.openhab.binding.zwave.internal.protocol;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import org.openhab.binding.zwave.internal.HexToIntegerConverter;
@@ -21,10 +21,10 @@ import com.thoughtworks.xstream.annotations.XStreamConverter;
 /**
  * This class provides a storage class for zwave association groups
  * within the node class. This is then serialised to XML.
- *
+ * <p>
  * The class consolidates information from the different association classes -
  * ASSOCIATION, MULTI_INSTANCE_ASSOCIATION, and ASSOCIATION_GROUP_INFO.
- *
+ * <p>
  * This is necessary since ASSOCIATION, MULTI_INSTANCE_ASSOCIATION provide the same
  * information and overlap in their responses
  *
@@ -33,6 +33,7 @@ import com.thoughtworks.xstream.annotations.XStreamConverter;
 @XStreamAlias("associationGroup")
 public class ZWaveAssociationGroup {
     private int index;
+    private int maxNodes;
     private String name;
 
     @XStreamConverter(HexToIntegerConverter.class)
@@ -41,7 +42,7 @@ public class ZWaveAssociationGroup {
     private Integer profile2;
     private Set<CommandClass> commands;
 
-    List<ZWaveAssociation> associations = new ArrayList<ZWaveAssociation>();
+    private final List<ZWaveAssociation> associations = new ArrayList<ZWaveAssociation>();
 
     public ZWaveAssociationGroup(int index) {
         this.index = index;
@@ -66,53 +67,23 @@ public class ZWaveAssociationGroup {
     }
 
     /**
-     * Adds an association node
-     *
-     * @param node
-     */
-    public void addAssociation(int node) {
-        addAssociation(node, 0);
-    }
-
-    /**
      * Adds an association node and endpoint
-     *
-     * @param node
-     * @param endpoint
      */
-    public void addAssociation(int node, int endpoint) {
-        // Check if we're already associated
-        if (isAssociated(node, endpoint)) {
-            return;
+    public boolean addAssociation(ZWaveAssociation association) {
+        if (associations.contains(association)) {
+            return false;
         }
-
-        // No - add a new association
-        ZWaveAssociation newAssociation = new ZWaveAssociation(node, endpoint);
-        associations.add(newAssociation);
-    }
-
-    /**
-     * Removes an association node
-     *
-     * @param node
-     * @return
-     */
-    public boolean removeAssociation(int node) {
-        return removeAssociation(node, 0);
+        return associations.add(association);
     }
 
     /**
      * Removes an association node and endpoint
-     *
-     * @param node
-     * @param endpoint
-     * @return
      */
-    public boolean removeAssociation(int node, int endpoint) {
+    public boolean removeAssociation(int node, Integer endpoint) {
         int associationCnt = associations.size();
         for (int index = 0; index < associationCnt; index++) {
             ZWaveAssociation association = associations.get(index);
-            if (association.getNode() == node && association.getEndpoint() == endpoint) {
+            if (Objects.equals(association.getNode(), node) && Objects.equals(association.getEndpoint(), endpoint)) {
                 associations.remove(index);
                 return true;
             }
@@ -122,32 +93,20 @@ public class ZWaveAssociationGroup {
     }
 
     /**
+     * Removes an association node and endpoint
+     */
+    public void removeAssociation(ZWaveAssociation association) {
+        removeAssociation(association.getNode(), association.getEndpoint());
+    }
+
+    /**
      * Tests if a node is associated to this group
      *
      * @param node
      * @return
      */
-    public boolean isAssociated(int node) {
-        return isAssociated(node, 0);
-    }
-
-    /**
-     * Tests if a node and endpoint are associated to this group
-     *
-     * @param node
-     * @param endpoint
-     * @return
-     */
-    public boolean isAssociated(int node, int endpoint) {
-        int associationCnt = associations.size();
-        for (int index = 0; index < associationCnt; index++) {
-            ZWaveAssociation association = associations.get(index);
-            if (association.getNode() == node && association.getEndpoint() == endpoint) {
-                return true;
-            }
-        }
-
-        return false;
+    public boolean isAssociated(ZWaveAssociation association) {
+        return associations.contains(association);
     }
 
     /**
@@ -165,7 +124,8 @@ public class ZWaveAssociationGroup {
      * @param associations
      */
     public void setAssociations(List<ZWaveAssociation> associations) {
-        this.associations = associations;
+        this.associations.clear();
+        this.associations.addAll(associations);
     }
 
     /**
@@ -185,11 +145,23 @@ public class ZWaveAssociationGroup {
         this.commands = commands;
     }
 
+    public boolean isProfileKnown() {
+        return profile1 != null;
+    }
+
     public Integer getProfile1() {
+        if (profile1 == null) {
+            // Default profile to General:NA
+            return 0;
+        }
         return profile1;
     }
 
     public Integer getProfile2() {
+        if (profile2 == null) {
+            // Default profile to General:NA
+            return 0;
+        }
         return profile2;
     }
 
@@ -207,5 +179,19 @@ public class ZWaveAssociationGroup {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setMaxNodes(int maxNodes) {
+        this.maxNodes = maxNodes;
+    }
+
+    public int getMaxNodes() {
+        return maxNodes;
+    }
+
+    @Override
+    public String toString() {
+        return "ZWaveAssociationGroup [index=" + index + ", name=" + name + ", profile1=" + profile1 + ", profile2="
+                + profile2 + ", associations=" + associations + "]";
     }
 }

@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.eclipse.smarthome.core.library.types.HSBType;
 import org.eclipse.smarthome.core.library.types.PercentType;
@@ -19,13 +19,13 @@ import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorCommandClass.ZWaveColorType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorCommandClass.ZWaveColorValueEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +37,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ZWaveColorConverter extends ZWaveCommandClassConverter {
 
-    private final static Logger logger = LoggerFactory.getLogger(ZWaveColorConverter.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveColorConverter.class);
 
     /**
      * Constructor. Creates a new instance of the {@link ZWaveColorConverter} class.
@@ -47,32 +47,26 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
         super(controller);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    public List<SerialMessage> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
+    public List<ZWaveCommandClassTransactionPayload> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
         ZWaveColorCommandClass commandClass = (ZWaveColorCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.COLOR, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_SWITCH_COLOR, channel.getEndpoint());
         if (commandClass == null) {
             return null;
         }
 
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
-                commandClass.getCommandClass().getLabel(), channel.getEndpoint());
+                commandClass.getCommandClass(), channel.getEndpoint());
 
         // Add a poll to update the color
-        List<SerialMessage> messages = new ArrayList<SerialMessage>();
-        Collection<SerialMessage> rawMessages = commandClass.getColor();
-        for (SerialMessage msg : rawMessages) {
-            messages.add(node.encapsulate(msg, commandClass, channel.getEndpoint()));
+        List<ZWaveCommandClassTransactionPayload> messages = new ArrayList<ZWaveCommandClassTransactionPayload>();
+        Collection<ZWaveCommandClassTransactionPayload> transactions = commandClass.getColor();
+        for (ZWaveCommandClassTransactionPayload msg : transactions) {
+            messages.add(node.encapsulate(msg, channel.getEndpoint()));
         }
         return messages;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public State handleEvent(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
         ZWaveColorValueEvent colorEvent = null;
@@ -109,70 +103,76 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
         return state;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    public List<SerialMessage> receiveCommand(ZWaveThingChannel channel, ZWaveNode node, Command command) {
+    public List<ZWaveCommandClassTransactionPayload> receiveCommand(ZWaveThingChannel channel, ZWaveNode node,
+            Command command) {
         ZWaveColorCommandClass commandClass = (ZWaveColorCommandClass) node
-                .resolveCommandClass(ZWaveCommandClass.CommandClass.COLOR, channel.getEndpoint());
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_SWITCH_COLOR, channel.getEndpoint());
 
-        Collection<SerialMessage> rawMessages = null;
+        Collection<ZWaveCommandClassTransactionPayload> rawMessages = null;
+
+        Map<ZWaveColorType, Integer> colors = new TreeMap<>();
 
         // Since we get an HSB, there is brightness information. However, we only deal with the color class here
         // so we need to scale the color and let the brightness be handled by the multi_level command class
         if ("RGB".equals(channel.getArguments().get("colorMode"))) {
             // Command must be color - convert to zwave format
             HSBType color = (HSBType) command;
-            logger.debug("NODE {}: Converted command '{}' to value {} {} {} for channel = {}, endpoint = {}.",
-                    node.getNodeId(), command.toString(), color.getRed().intValue(), color.getGreen().intValue(),
-                    color.getBlue().intValue(), channel.getUID(), channel.getEndpoint());
 
             // Queue the command
-            if (color.getSaturation().equals(PercentType.ZERO)) {
-                rawMessages = commandClass.setColor(0, 0, 0, 255, 0);
-            } else {
-                rawMessages = commandClass.setColor(color.getRed().intValue(), color.getGreen().intValue(),
-                        color.getBlue().intValue(), 0, 0);
+            colors.put(ZWaveColorType.RED, scaleColor(color.getRed()));
+            colors.put(ZWaveColorType.GREEN, scaleColor(color.getGreen()));
+            colors.put(ZWaveColorType.BLUE, scaleColor(color.getBlue()));
+            if (commandClass.isColorSupported(ZWaveColorType.COLD_WHITE)) {
+                colors.put(ZWaveColorType.COLD_WHITE, 0);
+            }
+            if (commandClass.isColorSupported(ZWaveColorType.WARM_WHITE)) {
+                colors.put(ZWaveColorType.WARM_WHITE, 0);
             }
         } else if ("COLD_WHITE".equals(channel.getArguments().get("colorMode"))) {
             PercentType color = (PercentType) command;
-            logger.debug("NODE {}: Converted command '{}' to value {} for channel = {}, endpoint = {}.",
-                    node.getNodeId(), command.toString(), color.intValue(), channel.getUID(), channel.getEndpoint());
 
             // Queue the command
-            rawMessages = commandClass.setColor(0, 0, 0, color.intValue(), 0);
+            colors.put(ZWaveColorType.COLD_WHITE, scaleColor(color));
         } else if ("WARM_WHITE".equals(channel.getArguments().get("colorMode"))) {
             PercentType color = (PercentType) command;
-            logger.debug("NODE {}: Converted command '{}' to value {} for channel = {}, endpoint = {}.",
-                    node.getNodeId(), command.toString(), color.intValue(), channel.getUID(), channel.getEndpoint());
 
             // Queue the command
-            rawMessages = commandClass.setColor(0, 0, 0, 0, color.intValue());
+            colors.put(ZWaveColorType.WARM_WHITE, scaleColor(color));
         } else if ("DIFF_WHITE".equals(channel.getArguments().get("colorMode"))) {
             PercentType color = (PercentType) command;
-            logger.debug("NODE {}: Converted command '{}' to value {} for channel = {}, endpoint = {}.",
-                    node.getNodeId(), command.toString(), color.intValue(), channel.getUID(), channel.getEndpoint());
 
             // Queue the command
-            int value = (int) (color.intValue() * 2.55);
-            rawMessages = commandClass.setColor(0, 0, 0, 255 - value, value);
+            int value = scaleColor(color);
+            colors.put(ZWaveColorType.COLD_WHITE, 255 - value);
+            colors.put(ZWaveColorType.WARM_WHITE, value);
+        } else {
+            logger.warn("NODE {}: Unknown color mode {}.", node.getNodeId(), channel.getArguments().get("colorMode"));
         }
+
+        logger.debug("NODE {}: Converted command '{}' to {} for channel = {}, endpoint = {}.", node.getNodeId(),
+                command.toString(), colors, channel.getUID(), channel.getEndpoint());
+
+        rawMessages = commandClass.setColor(colors);
 
         if (rawMessages == null) {
             return null;
         }
 
-        List<SerialMessage> messages = new ArrayList<SerialMessage>();
-        for (SerialMessage msg : rawMessages) {
-            messages.add(node.encapsulate(msg, commandClass, channel.getEndpoint()));
+        List<ZWaveCommandClassTransactionPayload> messages = new ArrayList<ZWaveCommandClassTransactionPayload>();
+        for (ZWaveCommandClassTransactionPayload msg : rawMessages) {
+            messages.add(node.encapsulate(msg, channel.getEndpoint()));
         }
 
         // Add a poll to update the color
         rawMessages = commandClass.getColor();
-        for (SerialMessage msg : rawMessages) {
-            messages.add(node.encapsulate(msg, commandClass, channel.getEndpoint()));
+        for (ZWaveCommandClassTransactionPayload msg : rawMessages) {
+            messages.add(node.encapsulate(msg, channel.getEndpoint()));
         }
         return messages;
+    }
+
+    private int scaleColor(PercentType value) {
+        return (int) (value.floatValue() * 255.0 / 100.0);
     }
 }

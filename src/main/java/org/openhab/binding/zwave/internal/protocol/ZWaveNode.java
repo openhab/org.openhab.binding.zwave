@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,29 +12,32 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.ConcurrentHashMap;
 
+import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.zwave.internal.HexToIntegerConverter;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
-import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Generic;
-import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCRC16EncapsulationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiAssociationCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiCommandCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveVersionCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.impl.CommandClassSecurityV1;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNodeStatusEvent;
 import org.openhab.binding.zwave.internal.protocol.initialization.ZWaveNodeInitStage;
 import org.openhab.binding.zwave.internal.protocol.initialization.ZWaveNodeInitStageAdvancer;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -53,9 +55,8 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveNode {
 
     @XStreamOmitField
-    private final static Logger logger = LoggerFactory.getLogger(ZWaveNode.class);
+    private static final Logger logger = LoggerFactory.getLogger(ZWaveNode.class);
 
-    private final ZWaveDeviceClass deviceClass;
     @XStreamOmitField
     private ZWaveController controller;
     @XStreamOmitField
@@ -75,7 +76,7 @@ public class ZWaveNode {
     @XStreamConverter(HexToIntegerConverter.class)
     private int deviceType = Integer.MAX_VALUE;
 
-    private String deviceFactoryId;
+    // private String deviceFactoryId;
     private String deviceSerialId;
 
     private boolean listening; // i.e. sleeping
@@ -87,15 +88,25 @@ public class ZWaveNode {
     @SuppressWarnings("unused")
     private int maxBaudRate;
 
+    @XStreamOmitField
+    private Timer timer = null;
+    @XStreamOmitField
+    private TimerTask timerTask = null;
+    @XStreamOmitField
+    private boolean awake = false;
+
+    // The period to wait before telling a sleeping node to sleep again
+    private int sleepDelay = 1000;
+
     // Keep the NIF - just used for information and debug in the XML
     @SuppressWarnings("unused")
     private List<CommandClass> nodeInformationFrame = null;
 
-    private Map<CommandClass, ZWaveCommandClass> supportedCommandClasses = new HashMap<CommandClass, ZWaveCommandClass>();
-    private final Set<CommandClass> securedCommandClasses = new HashSet<CommandClass>();
-
     // Stores the list of association groups
-    private Map<Integer, ZWaveAssociationGroup> associationGroups = new HashMap<Integer, ZWaveAssociationGroup>();
+    private Map<Integer, ZWaveAssociationGroup> associationGroups = new ConcurrentHashMap<Integer, ZWaveAssociationGroup>();
+
+    // Endpoint
+    private final Map<Integer, ZWaveEndpoint> endpoints = new ConcurrentHashMap<Integer, ZWaveEndpoint>();
 
     private List<Integer> nodeNeighbors = new ArrayList<Integer>();
     private Date lastSent = null;
@@ -118,6 +129,9 @@ public class ZWaveNode {
     @XStreamOmitField
     private int retryCount = 0;
 
+    @XStreamOmitField
+    Long inclusionTimer = null;
+
     /**
      * Constructor. Creates a new instance of the ZWaveNode class.
      *
@@ -126,12 +140,24 @@ public class ZWaveNode {
      * @param controller the wave controller instance
      */
     public ZWaveNode(int homeId, int nodeId, ZWaveController controller) {
-        nodeState = ZWaveNodeState.INITIALIZING;
+        nodeState = ZWaveNodeState.ALIVE; // TODO: ??? INITIALIZING;
         this.homeId = homeId;
         this.nodeId = nodeId;
         this.controller = controller;
         this.nodeInitStageAdvancer = new ZWaveNodeInitStageAdvancer(this, controller);
-        this.deviceClass = new ZWaveDeviceClass(Basic.NOT_KNOWN, Generic.NOT_KNOWN, Specific.NOT_USED);
+
+        ZWaveEndpoint endpoint0 = new ZWaveEndpoint(0);
+        endpoints.put(0, endpoint0);
+    }
+
+    /**
+     * Closes the node and stops any running processes
+     */
+    public void close() {
+        if (nodeInitStageAdvancer != null) {
+            nodeInitStageAdvancer.stopInitialisation();
+            nodeInitStageAdvancer = null;
+        }
     }
 
     /**
@@ -143,14 +169,13 @@ public class ZWaveNode {
      * @param controller the wave controller instance
      */
     public void setRestoredFromConfigfile(ZWaveController controller) {
-        nodeState = ZWaveNodeState.INITIALIZING;
+        nodeState = ZWaveNodeState.ALIVE;
 
         this.controller = controller;
 
         // Create the initialisation advancer and tell it we've loaded from file
         nodeInitStageAdvancer = new ZWaveNodeInitStageAdvancer(this, controller);
         nodeInitStageAdvancer.setRestoredFromConfigfile();
-        nodeInitStageAdvancer.startInitialisation(ZWaveNodeInitStage.EMPTYNODE);
     }
 
     /**
@@ -230,7 +255,19 @@ public class ZWaveNode {
             return;
         }
 
+        // Notify the listeners
+        ZWaveEvent zEvent = new ZWaveNodeStatusEvent(getNodeId(), state);
+        controller.notifyEventListeners(zEvent);
+
         switch (state) {
+            case AWAKE:
+                state = ZWaveNodeState.ALIVE;
+                break;
+
+            case ASLEEP:
+                state = ZWaveNodeState.ALIVE;
+                break;
+
             case ALIVE:
                 logger.debug("NODE {}: Node is ALIVE. Init stage is {}.", nodeId, getNodeInitStage().toString());
 
@@ -249,12 +286,10 @@ public class ZWaveNode {
                 deadTime = Calendar.getInstance().getTime();
                 logger.debug("NODE {}: Node is DEAD.", nodeId);
                 break;
+
             case INITIALIZING:
                 break;
         }
-
-        ZWaveEvent zEvent = new ZWaveNodeStatusEvent(this.getNodeId(), state);
-        controller.notifyEventListeners(zEvent);
 
         nodeState = state;
     }
@@ -355,6 +390,9 @@ public class ZWaveNode {
      * @return the nodeStage
      */
     public ZWaveNodeInitStage getNodeInitStage() {
+        if (nodeInitStageAdvancer == null) {
+            return ZWaveNodeInitStage.EMPTYNODE;
+        }
         return nodeInitStageAdvancer.getCurrentStage();
     }
 
@@ -364,6 +402,9 @@ public class ZWaveNode {
      * @return true if initialization has been completed
      */
     public boolean isInitializationComplete() {
+        if (nodeInitStageAdvancer == null) {
+            return false;
+        }
         return nodeInitStageAdvancer.isInitializationComplete();
     }
 
@@ -401,7 +442,7 @@ public class ZWaveNode {
      */
     public String getApplicationVersion() {
         ZWaveVersionCommandClass versionCmdClass = (ZWaveVersionCommandClass) this
-                .getCommandClass(CommandClass.VERSION);
+                .getCommandClass(CommandClass.COMMAND_CLASS_VERSION);
         if (versionCmdClass == null) {
             return "0.0";
         }
@@ -456,16 +497,36 @@ public class ZWaveNode {
     }
 
     /**
-     * Resets the resend counter and possibly resets the
-     * node stage to DONE when previous initialization was
-     * complete.
+     * Resets the resend counter and possibly resets the node stage to DONE when previous initialization was complete.
      * Note that if the node is DEAD, then the nodeStage stays DEAD
      */
     public void resetResendCount() {
         resendCount = 0;
-        if (nodeInitStageAdvancer.isInitializationComplete() && isDead() == false) {
-            nodeInitStageAdvancer.startInitialisation(ZWaveNodeInitStage.DONE);
+        if (nodeInitStageAdvancer.isInitializationComplete() == true && isDead() == false) {
+            logger.debug("NODE {}: resetResendCount initComplete={} isDead={}", nodeId,
+                    nodeInitStageAdvancer.isInitializationComplete(), isDead());
         }
+    }
+
+    public ZWaveEndpoint getEndpoint(int endpoint) {
+        return endpoints.get(endpoint);
+    }
+
+    public ZWaveEndpoint addEndpoint(int endpointNumber) {
+        if (endpoints.containsKey(endpointNumber)) {
+            logger.debug("NODE {}: Endpoint {} already exists", nodeId, endpointNumber);
+            return endpoints.get(endpointNumber);
+        }
+        ZWaveEndpoint endpoint = new ZWaveEndpoint(endpointNumber);
+        endpoints.put(endpointNumber, endpoint);
+
+        logger.debug("NODE {}: Endpoint {} added", nodeId, endpointNumber);
+
+        return endpoint;
+    }
+
+    public int getEndpointCount() {
+        return endpoints.size();
     }
 
     /**
@@ -474,7 +535,7 @@ public class ZWaveNode {
      * @return the deviceClass
      */
     public ZWaveDeviceClass getDeviceClass() {
-        return deviceClass;
+        return endpoints.get(0).getDeviceClass();
     }
 
     /**
@@ -482,8 +543,8 @@ public class ZWaveNode {
      *
      * @return the command classes.
      */
-    public Collection<ZWaveCommandClass> getCommandClasses() {
-        return supportedCommandClasses.values();
+    public Collection<ZWaveCommandClass> getCommandClasses(int endpoint) {
+        return endpoints.get(endpoint).getCommandClasses();
     }
 
     /**
@@ -494,7 +555,7 @@ public class ZWaveNode {
      * @return the command class.
      */
     public ZWaveCommandClass getCommandClass(CommandClass commandClass) {
-        return supportedCommandClasses.get(commandClass);
+        return endpoints.get(0).getCommandClass(commandClass);
     }
 
     /**
@@ -504,7 +565,7 @@ public class ZWaveNode {
      * @return true if the command class is supported, false otherwise.
      */
     public boolean supportsCommandClass(CommandClass commandClass) {
-        return supportedCommandClasses.containsKey(commandClass);
+        return endpoints.get(0).supportsCommandClass(commandClass);
     }
 
     /**
@@ -514,17 +575,54 @@ public class ZWaveNode {
      * @param commandClass the command class instance to add.
      */
     public void addCommandClass(ZWaveCommandClass commandClass) {
-        CommandClass key = commandClass.getCommandClass();
+        if (commandClass == null) {
+            logger.debug("NODE {}: Attempt to add NULL command class", nodeId);
+            return;
+        }
 
-        if (!supportedCommandClasses.containsKey(key)) {
+        if (!endpoints.get(0).getCommandClasses().contains(commandClass)) {
             logger.debug("NODE {}: Adding command class {} to the list of supported command classes.", nodeId,
-                    commandClass.getCommandClass().getLabel());
-            supportedCommandClasses.put(key, commandClass);
+                    commandClass.getCommandClass());
+            endpoints.get(0).addCommandClass(commandClass);
 
+            // Register an event listener for this class if it is listening for them
             if (commandClass instanceof ZWaveEventListener) {
-                this.controller.addEventListener((ZWaveEventListener) commandClass);
+                controller.addEventListener((ZWaveEventListener) commandClass);
             }
         }
+    }
+
+    /**
+     * Gets the command class from the endpoint if it exists. IF the class does not exist within the endpoint, it is
+     * added.
+     *
+     * @param endpoint the {@link ZWaveEndpoint}
+     * @param commandClass the {@link CommandClass}
+     * @return the {@link ZWaveCommandClass} or null if the class is not supported
+     */
+    public ZWaveCommandClass getOrAddCommandClass(ZWaveEndpoint endpoint, CommandClass commandClass) {
+        ZWaveCommandClass zwaveCommandClass = endpoint.getCommandClass(commandClass);
+
+        // Apparently, this endpoint supports a command class that we did not learn about during initialization.
+        // Let's add it now then to support handling this message.
+        if (zwaveCommandClass != null) {
+            return zwaveCommandClass;
+        }
+
+        logger.debug("NODE {}: Command class {} not found, trying to add it.", getNodeId(), commandClass,
+                commandClass.getKey());
+
+        zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), this, controller);
+        if (zwaveCommandClass == null) {
+            // We got an unsupported command class, leave zwaveCommandClass as null
+            logger.debug("NODE {}: Unsupported Z-Wave command class {}", getNodeId(), commandClass);
+            return null;
+        }
+
+        logger.debug("NODE {}: Adding command class {} to endpoint {}", getNodeId(), commandClass,
+                endpoint.getEndpointId());
+        endpoint.addCommandClass(zwaveCommandClass);
+        return zwaveCommandClass;
     }
 
     /**
@@ -535,7 +633,7 @@ public class ZWaveNode {
      * @param commandClass The command class key
      */
     public void removeCommandClass(CommandClass commandClass) {
-        supportedCommandClasses.remove(commandClass);
+        endpoints.get(0).removeCommandClass(commandClass);
     }
 
     /**
@@ -556,34 +654,11 @@ public class ZWaveNode {
             return null;
         }
 
-        if (endpointId == 0) {
-            return getCommandClass(commandClass);
-        }
-
-        ZWaveMultiInstanceCommandClass multiInstanceCommandClass = (ZWaveMultiInstanceCommandClass) supportedCommandClasses
-                .get(CommandClass.MULTI_INSTANCE);
-        if (multiInstanceCommandClass == null) {
+        if (endpoints.get(endpointId) == null) {
             return null;
-        } else if (multiInstanceCommandClass.getVersion() == 2) {
-            ZWaveEndpoint endpoint = multiInstanceCommandClass.getEndpoint(endpointId);
-
-            if (endpoint != null) {
-                ZWaveCommandClass result = endpoint.getCommandClass(commandClass);
-                if (result != null) {
-                    return result;
-                }
-            }
-        } else if (multiInstanceCommandClass.getVersion() == 1) {
-            ZWaveCommandClass result = getCommandClass(commandClass);
-            if (result != null && endpointId <= result.getInstances()) {
-                return result;
-            }
-        } else {
-            logger.warn("NODE {}: Unsupported multi instance command version: {}.", nodeId,
-                    multiInstanceCommandClass.getVersion());
         }
-
-        return null;
+        // TODO: Note that this doesn't support multi-instance - only multi-channel!
+        return endpoints.get(endpointId).getCommandClass(commandClass);
     }
 
     /**
@@ -598,54 +673,17 @@ public class ZWaveNode {
     }
 
     /**
-     * Encapsulates a serial message for sending to a
-     * multi-instance instance/ multi-channel endpoint on
-     * a node.
-     *
-     * @param serialMessage the serial message to encapsulate
-     * @param commandClass the command class used to generate the message.
-     * @param endpointId the instance / endpoint to encapsulate the message for
-     * @param node the destination node.
-     * @return SerialMessage on success, null on failure.
+     * Heal the node
      */
-    public SerialMessage encapsulate(SerialMessage serialMessage, ZWaveCommandClass commandClass, int endpointId) {
-        ZWaveMultiInstanceCommandClass multiInstanceCommandClass;
-
-        if (serialMessage == null) {
-            return null;
+    public void healNode() {
+        if (nodeInitStageAdvancer.isInitializationComplete() == false) {
+            logger.debug("NODE {}: Can not start heal as initialisation is not complete ({}).", getNodeId(),
+                    nodeInitStageAdvancer.getCurrentStage());
+            return;
         }
 
-        // no encapsulation necessary.
-        if (endpointId == 0) {
-            return serialMessage;
-        }
-
-        multiInstanceCommandClass = (ZWaveMultiInstanceCommandClass) this.getCommandClass(CommandClass.MULTI_INSTANCE);
-
-        if (multiInstanceCommandClass != null) {
-            logger.debug("NODE {}: Encapsulating message, instance / endpoint {}", this.getNodeId(), endpointId);
-            switch (multiInstanceCommandClass.getVersion()) {
-                case 2:
-                    if (commandClass.getEndpoint() != null) {
-                        serialMessage = multiInstanceCommandClass.getMultiChannelEncapMessage(serialMessage,
-                                commandClass.getEndpoint());
-                        return serialMessage;
-                    }
-                    break;
-                case 1:
-                default:
-                    if (commandClass.getInstances() >= endpointId) {
-                        serialMessage = multiInstanceCommandClass.getMultiInstanceEncapMessage(serialMessage,
-                                endpointId);
-                        return serialMessage;
-                    }
-                    break;
-            }
-        }
-
-        logger.warn("NODE {}: Encapsulating message, instance / endpoint {} failed, will discard message.",
-                this.getNodeId(), endpointId);
-        return null;
+        logger.debug("NODE {}: Starting network mesh heal.", getNodeId());
+        nodeInitStageAdvancer.startInitialisation(ZWaveNodeInitStage.HEAL_START);
     }
 
     /**
@@ -697,7 +735,8 @@ public class ZWaveNode {
         }
 
         // Add the wakeup destination node to the list for battery devices
-        ZWaveWakeUpCommandClass wakeupCmdClass = (ZWaveWakeUpCommandClass) getCommandClass(CommandClass.WAKE_UP);
+        ZWaveWakeUpCommandClass wakeupCmdClass = (ZWaveWakeUpCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_WAKE_UP);
         if (wakeupCmdClass != null) {
             Integer wakeupNodeId = wakeupCmdClass.getTargetNodeId();
             routedNodes.add(wakeupNodeId);
@@ -799,7 +838,7 @@ public class ZWaveNode {
 
     @Override
     public String toString() {
-        return String.format("Node %d. Manufacturer %04X, Type %04X, Id %04X", nodeId, manufacturer, deviceType,
+        return String.format("Node %d: Manufacturer=%04X, Type=%04X, Id=%04X", nodeId, manufacturer, deviceType,
                 deviceId);
     }
 
@@ -814,6 +853,10 @@ public class ZWaveNode {
 
     public void setSecurity(boolean security) {
         this.security = security;
+    }
+
+    public boolean isSecure() {
+        return endpoints.get(0).getSecureCommandClasses().size() != 0;
     }
 
     /**
@@ -838,128 +881,35 @@ public class ZWaveNode {
         this.maxBaudRate = maxBaudRate;
     }
 
-    /**
-     * Invoked by {@link ZWaveSecurityCommandClass} when a
-     * {@link ZWaveSecurityCommandClass#SECURITY_SUPPORTED_REPORT} is received.
-     *
-     * @param data the class id for each class which must be encrypted in transmission
-     */
-    public void setSecuredClasses(byte[] data) {
-        logger.debug("NODE {}:  Setting secured command classes for node with {}", this.getNodeId(),
-                SerialMessage.bb2hex(data));
-        boolean afterMark = false;
-        securedCommandClasses.clear(); // reset the existing list
-        for (final byte aByte : data) {
-            // TODO: DB support extended commandClass format by checking for 0xF1 - 0xFF
-            if (ZWaveSecurityCommandClass.bytesAreEqual(aByte, ZWaveSecurityCommandClass.COMMAND_CLASS_MARK)) {
-                /**
-                 * Marks the end of the list of supported command classes. The remaining classes are those
-                 * that can be controlled by the device. These classes are created without values.
-                 * Messages received cause notification events instead.
-                 */
-                afterMark = true;
-                continue;
-            }
+    public boolean doesMessageRequireSecurityEncapsulation(int endpoint, ZWaveCommandClassPayload payload) {
+        // Does this node support security at all?
+        if (endpoints.get(0).getCommandClass(CommandClass.COMMAND_CLASS_SECURITY) == null) {
+            logger.debug("NODE {}: SECURITY not supported", nodeId);
+            return false;
+        }
 
-            // Check if this is a commandClass that is already registered with the node
-            final CommandClass commandClass = CommandClass.getCommandClass((aByte & 0xFF));
-            if (commandClass == null) {
-                // Not supported by OpenHab
-                logger.error(
-                        "NODE {}: setSecuredClasses requested secure "
-                                + "class NOT supported by OpenHab: {}   afterMark={}",
-                        this.getNodeId(), commandClass, afterMark);
-            } else {
-                // Sometimes security will be transmitted as a secure class, but it
-                // can't be set that way since it's the one doing the encryption work So ignore that.
-                if (commandClass == CommandClass.SECURITY) {
-                    continue;
-                } else if (afterMark) {
-                    // Nothing to do, we don't track devices that control other devices
-                    logger.info("NODE {}: is after mark for commandClass {}", this.getNodeId(), commandClass);
-                    break;
-                } else {
-                    if (!this.supportsCommandClass(commandClass)) {
-                        logger.info(
-                                "NODE {}: Adding secured command class to supported that wasn't in original list {}",
-                                this.getNodeId(), commandClass.getLabel());
-                        final ZWaveCommandClass classInstance = ZWaveCommandClass.getInstance((aByte & 0xFF), this,
-                                controller);
-                        if (classInstance != null) {
-                            addCommandClass(classInstance);
-                        }
-                    }
-                    securedCommandClasses.add(commandClass);
-                    logger.info("NODE {}: (Secured) {}", this.getNodeId(), commandClass.getLabel());
-                }
-            }
-        }
-        if (logger.isInfoEnabled()) {
-            // show which classes are still insecure after the update
-            final StringBuilder buf = new StringBuilder(
-                    "NODE " + this.getNodeId() + ": After update, INSECURE command classes are: ");
-            for (final ZWaveCommandClass zwCommandClass : this.getCommandClasses()) {
-                if (!securedCommandClasses.contains(zwCommandClass.getCommandClass())) {
-                    buf.append(zwCommandClass.getCommandClass() + ", ");
-                }
-            }
-            logger.info(buf.toString().substring(0, buf.toString().length() - 1));
-        }
-    }
+        final CommandClass commandClass = CommandClass.getCommandClass(payload.getCommandClassId());
 
-    public boolean doesMessageRequireSecurityEncapsulation(SerialMessage serialMessage) {
-        boolean result = false;
-        if (serialMessage.getMessageClass() != SerialMessageClass.SendData) {
-            result = false;
-        } else if (!supportedCommandClasses.containsKey(CommandClass.SECURITY)) {
-            // Does this node support security at all?
-            result = false;
-        } else {
-            int commandClassCode;
-            try {
-                commandClassCode = (byte) serialMessage.getMessagePayloadByte(2) & 0xFF;
-            } catch (ZWaveSerialMessageException e) {
-                logger.error("NODE {}: Exception processing message. Treating as INSECURE %s", getNodeId(),
-                        e.getMessage());
-                return false;
-            }
-            final CommandClass commandClassOfMessage = CommandClass.getCommandClass(commandClassCode);
-            if (commandClassOfMessage == null) {
-                // not sure how we would ever get here
-                logger.warn(String.format("NODE %d: CommandClass not found for 0x%02X so treating as INSECURE %s",
-                        getNodeId(), commandClassCode, serialMessage));
-                result = false;
-            } else if (CommandClass.SECURITY == commandClassOfMessage) {
-                // CommandClass.SECURITY is a special case because only some commands get encrypted
-                try {
-                    final Byte messageCode = Byte.valueOf((byte) (serialMessage.getMessagePayloadByte(3) & 0xFF));
-                    result = ZWaveSecurityCommandClass.doesCommandRequireSecurityEncapsulation(messageCode);
-                } catch (ZWaveSerialMessageException e) {
-                    logger.error("NODE {}: Exception processing message. Treating as INSECURE %s", getNodeId(),
-                            e.getMessage());
-                    return false;
-                }
-            } else if (commandClassOfMessage == CommandClass.NO_OPERATION) { // TODO: DB
-                // On controller startup, PING seems to fail whenever it's encrypted, so don't
-                // TODO: DB try again
-                result = false;
-            } else {
-                result = securedCommandClasses.contains(commandClassOfMessage);
-                if (!result) {
-                    // Certain messages must always be sent securely per the Z-Wave spec
-                    if (commandClassOfMessage == CommandClass.DOOR_LOCK
-                            || commandClassOfMessage == CommandClass.USER_CODE) { // TODO: DB what else?
-                        logger.warn("NODE {}: CommandClass {} is not marked as secure but should be, forcing secure",
-                                getNodeId(), commandClassOfMessage);
-                        result = true;
-                    }
-                }
-            }
-            if (result) {
-                logger.trace("NODE {}: Message {} requires security encapsulation", getNodeId(), serialMessage);
-            }
+        if (CommandClass.COMMAND_CLASS_SECURITY == commandClass) {
+            logger.debug("NODE {}: SECURITY check internal", nodeId);
+            // CommandClass.SECURITY is a special case because only some commands get encrypted
+            return ZWaveSecurityCommandClass.doesCommandRequireSecurityEncapsulation(payload.getCommandClassCommand());
         }
-        return result;
+
+        // PING should not be encrypted
+        if (commandClass == CommandClass.COMMAND_CLASS_NO_OPERATION) {
+            logger.debug("NODE {}: SECURITY doesn't encrypt PING", nodeId);
+            return false;
+        }
+
+        // Does this endpoint support this class secure
+        if (endpoints.get(endpoint).supportsSecureCommandClass(commandClass)) {
+            logger.debug("NODE {}: SECURITY required on {}", nodeId, commandClass);
+            return true;
+        }
+
+        logger.debug("NODE {}: SECURITY NOT required on {}", nodeId, commandClass);
+        return false;
     }
 
     /**
@@ -990,17 +940,28 @@ public class ZWaveNode {
         return associationGroups;
     }
 
-    public SerialMessage getAssociation(int group) {
-        ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
-                CommandClass.MULTI_INSTANCE_ASSOCIATION);
-        if (multiAssociationCommandClass != null) {
-            return multiAssociationCommandClass.getAssociationMessage(group);
+    /**
+     * Gets an association group
+     *
+     * @param groupId the group id
+     * @return the {@link ZWaveCommandClassTransactionPayload}
+     */
+    public ZWaveCommandClassTransactionPayload getAssociation(int groupId) {
+        if (endpoints.size() > 1) {
+            ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
+                    CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
+            if (multiAssociationCommandClass != null && groupId <= multiAssociationCommandClass.getMaxGroup()) {
+                return multiAssociationCommandClass.getAssociationMessage(groupId);
+            }
         }
 
         ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(
-                CommandClass.ASSOCIATION);
-        if (associationCommandClass != null) {
-            return associationCommandClass.getAssociationMessage(group);
+                CommandClass.COMMAND_CLASS_ASSOCIATION);
+        if (associationCommandClass != null && groupId <= associationCommandClass.getMaxGroup()) {
+            return associationCommandClass.getAssociationMessage(groupId);
+        } else {
+            logger.debug("NODE {}: Unable to get association group {}. Association={}", groupId,
+                    associationCommandClass.getMaxGroup());
         }
 
         return null;
@@ -1015,61 +976,85 @@ public class ZWaveNode {
      * if the device endpoint is the root node, and the receive endpoint is 0, we use the
      * single instance command class, otherwise we use the multi instance class if it exists.
      *
-     * @param endpoint the endpoint required to send the reports
      * @param groupId the group to be set
-     * @param nodeId the node to be set to report to (receive)
-     * @param endpointId the endpoint to be set to report to (receive)
-     * @return
+     * @param member the {@link ZWaveAssociation} to be set to report to (receive)
+     * @return {@link ZWaveCommandClassTransactionPayload}
      */
-    public SerialMessage setAssociation(ZWaveEndpoint endpoint, int groupId, int nodeId, int endpointId) {
-        ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
-                CommandClass.MULTI_INSTANCE_ASSOCIATION);
-        if (multiAssociationCommandClass != null) {
-            ZWaveAssociationGroup group = getAssociationGroup(groupId);
-            // Associations to endpoint 0 are only allowed if version is greater than 3
-            // Here we check that this is a lifeline group
-            if ((endpointId == 0 && multiAssociationCommandClass.getVersion() >= 3 && group != null
-                    && group.getProfile2() != null && group.getProfile2() == 1) || endpointId != 0) {
-                return multiAssociationCommandClass.setAssociationMessage(groupId, nodeId, endpointId);
+    public ZWaveCommandClassTransactionPayload setAssociation(int groupId, ZWaveAssociation member) {
+        if (endpoints.size() > 1) {
+            ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
+                    CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
+            if (multiAssociationCommandClass != null && groupId <= multiAssociationCommandClass.getMaxGroup()) {
+                return multiAssociationCommandClass.setAssociationMessage(groupId, member.getNode(),
+                        member.getEndpoint() == null ? 0 : member.getEndpoint());
             }
         }
 
         ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(
-                CommandClass.ASSOCIATION);
-        if (associationCommandClass != null) {
-            return associationCommandClass.setAssociationMessage(groupId, nodeId);
+                CommandClass.COMMAND_CLASS_ASSOCIATION);
+        if (associationCommandClass != null && groupId <= associationCommandClass.getMaxGroup()) {
+            return associationCommandClass.setAssociationMessage(groupId, member.getNode());
+        } else {
+            logger.debug("NODE {}: Unable to set association group {}. Association={}", groupId,
+                    associationCommandClass.getMaxGroup());
         }
 
         return null;
     }
 
-    public SerialMessage removeAssociation(Integer groupId, int nodeId, int endpointId) {
-        ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
-                CommandClass.MULTI_INSTANCE_ASSOCIATION);
-        if (multiAssociationCommandClass != null) {
-            return multiAssociationCommandClass.removeAssociationMessage(groupId, nodeId, endpointId);
+    /**
+     * Removes an association.
+     * This method chooses the appropriate association command class to use for the device
+     * and the endpoint.
+     *
+     * @param groupId the group to be set
+     * @param member the {@link ZWaveAssociation} to be set to report to (receive)
+     * @return {@link ZWaveCommandClassTransactionPayload}
+     */
+    public ZWaveCommandClassTransactionPayload removeAssociation(Integer groupId, ZWaveAssociation member) {
+        if (endpoints.size() > 1) {
+            ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
+                    CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
+            if (multiAssociationCommandClass != null && groupId <= multiAssociationCommandClass.getMaxGroup()) {
+                return multiAssociationCommandClass.removeAssociationMessage(groupId, member.getNode(),
+                        member.getEndpoint() == null ? 0 : member.getEndpoint());
+            }
         }
 
         ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(
-                CommandClass.ASSOCIATION);
-        if (associationCommandClass != null) {
-            return associationCommandClass.removeAssociationMessage(groupId, nodeId);
+                CommandClass.COMMAND_CLASS_ASSOCIATION);
+        if (associationCommandClass != null && groupId <= associationCommandClass.getMaxGroup()) {
+            return associationCommandClass.removeAssociationMessage(groupId, member.getNode());
+        } else {
+            logger.debug("NODE {}: Unable to remove association group {}. Association={}", groupId,
+                    associationCommandClass.getMaxGroup());
         }
 
         return null;
     }
 
-    public SerialMessage clearAssociation(Integer groupId) {
-        ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
-                CommandClass.MULTI_INSTANCE_ASSOCIATION);
-        if (multiAssociationCommandClass != null) {
-            return multiAssociationCommandClass.clearAssociationMessage(groupId);
+    /**
+     * Clears an association group of all associations.
+     *
+     * @param groupId the group to be set
+     * @return {@link ZWaveCommandClassTransactionPayload}
+     */
+    public ZWaveCommandClassTransactionPayload clearAssociation(Integer groupId) {
+        if (endpoints.size() > 1) {
+            ZWaveMultiAssociationCommandClass multiAssociationCommandClass = (ZWaveMultiAssociationCommandClass) getCommandClass(
+                    CommandClass.COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION);
+            if (multiAssociationCommandClass != null && groupId <= multiAssociationCommandClass.getMaxGroup()) {
+                return multiAssociationCommandClass.clearAssociationMessage(groupId);
+            }
         }
 
         ZWaveAssociationCommandClass associationCommandClass = (ZWaveAssociationCommandClass) getCommandClass(
-                CommandClass.ASSOCIATION);
-        if (associationCommandClass != null) {
+                CommandClass.COMMAND_CLASS_ASSOCIATION);
+        if (associationCommandClass != null && groupId <= associationCommandClass.getMaxGroup()) {
             return associationCommandClass.clearAssociationMessage(groupId);
+        } else {
+            logger.debug("NODE {}: Unable to clear association group {}. Association={}", groupId,
+                    associationCommandClass.getMaxGroup());
         }
 
         return null;
@@ -1089,5 +1074,464 @@ public class ZWaveNode {
 
     public String getSerialNumber() {
         return deviceSerialId;
+    }
+
+    /**
+     * Encapsulates a serial message for sending to a multi-instance instance/ multi-channel endpoint on a node.
+     *
+     * A number of Z-Wave encapsulation Command Classes exist, they MUST be applied in the following order:
+     * <ol>
+     * <li>Any one of the following combinations:
+     * <ol>
+     * <li>Transport Service followed by Security
+     * <li>Transport Service
+     * <li>Security
+     * <li>CRC16
+     * </ol>
+     * <li>Multi Channel
+     * <li>Supervision
+     * <li>Multi Command
+     * <li>Schedule
+     * <li>Command Class (payload), e.g. Basic Get
+     * </ol>
+     * Note: The Transport Service and CRC16 Command Classes are mutually exclusive as well as Security and CRC16.
+     *
+     * Security encapsulation is performed in the transaction manager since it needs to manage the NONCE and
+     * encapsulation needs to be done at the time the message is sent.
+     *
+     * @param transaction the {@link ZWaveCommandClassTransactionPayload} to encapsulate
+     * @param commandClass the command class used to generate the message.
+     * @param endpointId the instance / endpoint to encapsulate the message for
+     * @return SerialMessage on success, null on failure.
+     */
+    public ZWaveCommandClassTransactionPayload encapsulate(ZWaveCommandClassTransactionPayload transaction,
+            int endpointId) {
+        ZWaveMultiInstanceCommandClass multiInstanceCommandClass;
+        logger.trace("NODE {}: Encapsulating message, endpoint {}", getNodeId(), endpointId);
+
+        if (transaction == null) {
+            return null;
+        }
+
+        // Encapsulation the COMMAND_CLASS_SCHEDULE class
+
+        // Encapsulation the COMMAND_CLASS_MULTI_CMD class
+
+        // Encapsulation the COMMAND_CLASS_SUPERVISION class
+
+        // Encapsulation the COMMAND_CLASS_MULTI_CHANNEL class
+        if (endpointId != 0) {
+            multiInstanceCommandClass = (ZWaveMultiInstanceCommandClass) getCommandClass(
+                    CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
+
+            if (multiInstanceCommandClass == null) {
+                logger.warn("NODE {}: Encapsulating message, instance / endpoint {} failed, will discard message.",
+                        getNodeId(), endpointId);
+                return null;
+            }
+
+            logger.debug("NODE {}: Encapsulating message, instance / endpoint {}", getNodeId(), endpointId);
+            switch (multiInstanceCommandClass.getVersion()) {
+                case 1:
+                    transaction = multiInstanceCommandClass.getMultiInstanceEncapMessage(transaction, endpointId);
+                    break;
+                default:
+                case 2:
+                    transaction = multiInstanceCommandClass.getMultiChannelEncapMessage(transaction, endpointId);
+                    break;
+            }
+        }
+
+        // Check if we need to secure this message
+        if (doesMessageRequireSecurityEncapsulation(0, transaction)) {
+            logger.debug("NODE {}: Command Class {} is required to be secured", nodeId,
+                    CommandClass.getCommandClass(transaction.getCommandClassId()));
+
+            transaction.setRequiresSecurity();
+        } else {
+            logger.debug("NODE {}: Command Class {} is NOT required to be secured", nodeId,
+                    CommandClass.getCommandClass(transaction.getCommandClassId()));
+            // Encapsulation the COMMAND_CLASS_CRC16 class if we don't utilise security
+        }
+
+        return transaction;
+    }
+
+    /**
+     * Decapsulates a serial message for sending to a multi-instance instance/ multi-channel endpoint on a node.
+     * <p>
+     * Any command classes that are not already known (eg through the NIF or manually added through the database)
+     * are ignored. This is done to avoid adding random classes if corrupt frames are received.
+     * <p>
+     * A number of Z-Wave encapsulation Command Classes exist, they MUST be applied in the following order:
+     * <ol>
+     * <li>Any one of the following combinations:
+     * <ol>
+     * <li>Transport Service followed by Security
+     * <li>Transport Service
+     * <li>Security
+     * <li>CRC16
+     * </ol>
+     * <li>Multi Channel
+     * <li>Supervision
+     * <li>Multi Command
+     * <li>Schedule
+     * <li>Command Class (payload), e.g. Basic Get
+     * </ol>
+     * Note: The Transport Service and CRC16 Command Classes are mutually exclusive as well as Security and CRC16.
+     *
+     * @param transaction the {@link ZWaveCommandClassPayload} to process
+     * @param commandClass the command class used to generate the message.
+     * @param endpointId the instance / endpoint to encapsulate the message for
+     * @return list of raw commands that were processed on success, null on failure.
+     */
+    public List<ZWaveCommandClassPayload> processCommand(ZWaveCommandClassPayload payload) {
+        // Sanity check incoming message
+        if (payload == null || payload.getPayloadLength() == 0) {
+            return null;
+        }
+
+        // We've just received a message from a node, therefore it's ALIVE!
+        setNodeState(ZWaveNodeState.ALIVE);
+
+        resetResendCount();
+        incrementReceiveCount();
+
+        boolean securityDecapOk = false;
+
+        if (payload.getCommandClassId() == CommandClass.COMMAND_CLASS_TRANSPORT_SERVICE.getKey()) {
+            logger.debug("NODE {}: Decapsulating COMMAND_CLASS_TRANSPORT_SERVICE", getNodeId());
+
+        } else if (payload.getCommandClassId() == CommandClass.COMMAND_CLASS_SECURITY.getKey()
+                && (payload.getCommandClassCommand() == CommandClassSecurityV1.SECURITY_MESSAGE_ENCAPSULATION || payload
+                        .getCommandClassCommand() == CommandClassSecurityV1.SECURITY_MESSAGE_ENCAPSULATION_NONCE_GET)) {
+            logger.debug("NODE {}: Decapsulating COMMAND_CLASS_SECURITY", getNodeId());
+
+            if (endpoints.get(0) == null) {
+                logger.debug("NODE {}: No endpoint 0!", getNodeId());
+                return null;
+            }
+
+            ZWaveSecurityCommandClass securityCommandClass = (ZWaveSecurityCommandClass) endpoints.get(0)
+                    .getCommandClass(CommandClass.COMMAND_CLASS_SECURITY);
+            if (securityCommandClass == null) {
+                logger.debug("NODE {}: COMMAND_CLASS_SECURITY not found in endpoint 0", getNodeId());
+
+                securityCommandClass = (ZWaveSecurityCommandClass) ZWaveCommandClass
+                        .getInstance(CommandClass.COMMAND_CLASS_SECURITY.getKey(), this, controller);
+                if (securityCommandClass != null) {
+                    logger.debug("NODE {}: Adding COMMAND_CLASS_SECURITY", nodeId);
+                    securityCommandClass.setNetworkKey(controller.getSecurityKey());
+                    addCommandClass(securityCommandClass);
+                } else {
+                    logger.debug("NODE {}: Unable to instantiate COMMAND_CLASS_SECURITY", nodeId);
+                    return null;
+                }
+            }
+
+            byte[] cleartextData = securityCommandClass.getSecurityMessageDecapsulation(payload.getPayloadBuffer());
+            if (cleartextData == null) {
+                return null;
+            }
+
+            payload = new ZWaveCommandClassPayload(cleartextData);
+
+            securityDecapOk = true;
+        } else if (payload.getCommandClassId() == CommandClass.COMMAND_CLASS_CRC_16_ENCAP.getKey()
+                && payload.getCommandClassCommand() == 1) {
+            logger.debug("NODE {}: Decapsulating COMMAND_CLASS_CRC_16_ENCAP", getNodeId());
+
+            if (endpoints.get(0) == null) {
+                logger.debug("NODE {}: No endpoint 0!", getNodeId());
+                return null;
+            }
+            ZWaveCRC16EncapsulationCommandClass crcCommandClass = (ZWaveCRC16EncapsulationCommandClass) getOrAddCommandClass(
+                    endpoints.get(0), CommandClass.COMMAND_CLASS_CRC_16_ENCAP);
+            if (crcCommandClass == null) {
+                logger.debug("NODE {}: COMMAND_CLASS_CRC_16_ENCAP not found", getNodeId());
+                return null;
+            }
+
+            payload = crcCommandClass.handleCrcEncap(payload);
+            if (payload == null) {
+                // CRC Failed
+                return null;
+            }
+        }
+
+        int endpointNumber = 0;
+
+        if (payload.getCommandClassId() == CommandClass.COMMAND_CLASS_MULTI_CHANNEL.getKey()
+                && (payload.getCommandClassCommand() == 6 || payload.getCommandClassCommand() == 13)) {
+            logger.debug("NODE {}: Decapsulating COMMAND_CLASS_MULTI_CHANNEL", getNodeId());
+
+            if (endpoints.get(0) == null) {
+                logger.debug("NODE {}: No endpoint 0!", getNodeId());
+                return null;
+            }
+            ZWaveMultiInstanceCommandClass multichannelCommandClass = (ZWaveMultiInstanceCommandClass) getOrAddCommandClass(
+                    endpoints.get(0), CommandClass.COMMAND_CLASS_MULTI_CHANNEL);
+            if (multichannelCommandClass == null) {
+                logger.debug("NODE {}: COMMAND_CLASS_MULTI_CHANNEL not found", getNodeId());
+                return null;
+            }
+
+            // Check that the length is long enough for the encapsulated command to be included
+            if (payload.getCommandClassCommand() == 6 && payload.getPayloadLength() > 5) {
+                // MULTI_INSTANCE_ENCAP
+                endpointNumber = payload.getPayloadByte(2);
+
+                payload = new ZWaveCommandClassPayload(payload, 3);
+            } else if (payload.getCommandClassCommand() == 13 && payload.getPayloadLength() > 6) {
+                // MULTI_CHANNEL_ENCAP
+                endpointNumber = multichannelCommandClass.getSourceEndpoint(payload);
+                payload = new ZWaveCommandClassPayload(payload, 4);
+            } else {
+                logger.debug("NODE {}: COMMAND_CLASS_MULTI_CHANNEL corrupted payload {}", getNodeId(),
+                        SerialMessage.bb2hex(payload.getPayloadBuffer()));
+                return null;
+            }
+        }
+
+        if (payload.getCommandClassId() == CommandClass.COMMAND_CLASS_SUPERVISION.getKey()) {
+            logger.debug("NODE {}: Decapsulating COMMAND_CLASS_SUPERVISION", getNodeId());
+        }
+
+        List<ZWaveCommandClassPayload> commands = new ArrayList<ZWaveCommandClassPayload>();
+
+        if (payload.getCommandClassId() == CommandClass.COMMAND_CLASS_MULTI_CMD.getKey()) {
+            logger.debug("NODE {}: Decapsulating COMMAND_CLASS_MULTI_CMD", getNodeId());
+
+            if (endpoints.get(0) == null) {
+                logger.debug("NODE {}: No endpoint 0!", getNodeId());
+                return null;
+            }
+            ZWaveMultiCommandCommandClass multicommandCommandClass = (ZWaveMultiCommandCommandClass) getOrAddCommandClass(
+                    endpoints.get(0), CommandClass.COMMAND_CLASS_MULTI_CMD);
+            if (multicommandCommandClass == null) {
+                logger.debug("NODE {}: COMMAND_CLASS_MULTI_CMD not found", getNodeId());
+                return null;
+            }
+
+            commands.addAll(multicommandCommandClass.handleMultiCommandEncap(payload));
+        } else {
+            commands.add(payload);
+        }
+
+        ZWaveEndpoint endpoint = getEndpoint(endpointNumber);
+        if (endpoint == null) {
+            logger.debug("NODE {}: No endpoint {}!", getNodeId(), endpointNumber);
+            return null;
+        }
+        for (ZWaveCommandClassPayload command : commands) {
+            // Check for WAKEUP_NOTIFICATION
+            if (payload.getCommandClassId() == CommandClass.COMMAND_CLASS_WAKE_UP.getKey()
+                    && payload.getCommandClassCommand() == 0x07) {
+                setAwake(true);
+                continue;
+            }
+
+            CommandClass commandClass = CommandClass.getCommandClass(command.getCommandClassId());
+            if (commandClass == null) {
+                logger.debug("NODE {}: Unknown command class 0x{}", getNodeId(),
+                        Integer.toHexString(payload.getCommandClassId()));
+                continue;
+            }
+
+            logger.debug("NODE {}: Incoming command class {}, endpoint {}", getNodeId(), commandClass,
+                    endpoint.getEndpointId());
+            ZWaveCommandClass zwaveCommandClass = getOrAddCommandClass(endpoint, commandClass);
+            if (zwaveCommandClass == null) {
+                continue;
+            }
+
+            if (securityDecapOk == false
+                    && doesMessageRequireSecurityEncapsulation(endpoint.getEndpointId(), command)) {
+                // Should have been security encapsulation but wasn't!
+                logger.debug(
+                        "NODE {}: Command Class {} was required to be security encapsulated but it wasn't! Message dropped.",
+                        nodeId, zwaveCommandClass.getCommandClass());
+
+                return Collections.emptyList();
+            }
+
+            try {
+                zwaveCommandClass.handleApplicationCommandRequest(command, endpoint.getEndpointId());
+            } catch (ZWaveSerialMessageException e) {
+                logger.error("Exception processing frame", e);
+            }
+        }
+
+        // Return the list of commands we've processed
+        return commands;
+    }
+
+    public void sendMessage(ZWaveCommandClassTransactionPayload payload) {
+        controller.sendData(encapsulate(payload, 0));
+    }
+
+    public @Nullable ZWaveTransactionResponse sendTransaction(ZWaveCommandClassTransactionPayload payload,
+            int endpoint) {
+        return controller.sendTransaction(encapsulate(payload, endpoint));
+    }
+
+    /**
+     * Returns the number of nanoseconds since the device was included, or Long.MAX_VALUE if the device has not recently
+     * been included.
+     *
+     * @return number of nano seconds since inclusion completed
+     */
+    public long getInclusionTimer() {
+        if (inclusionTimer == null) {
+            return Long.MAX_VALUE;
+        }
+
+        return System.nanoTime() - inclusionTimer;
+    }
+
+    public void setInclusionTimer() {
+        inclusionTimer = System.nanoTime();
+    }
+
+    /**
+     * Sets the device as awake if the device is normally not listening.
+     *
+     * @param awake boolean true if the device is currently awake
+     */
+    public void setAwake(boolean awake) {
+        // Don't do anything if this node is listening
+        if (listening == true || frequentlyListening == true) {
+            logger.trace("NODE {}: Node is listening - ignore wakeup", getNodeId());
+            return;
+        }
+
+        // ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) getEndpoint(0)
+        // .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP);
+        // if (wakeUpCommandClass == null) {
+        // logger.debug("NODE {}: Node doesn't support WAKEUP - ignore wakeup", getNodeId());
+        // return;
+        // }
+
+        // Create the timer if this is our first call
+        if (timer == null) {
+            logger.trace("NODE {}: Creating wakeup timer", getNodeId());
+            timer = new Timer();
+        }
+
+        // Start the timer
+        if (!this.awake) {
+            // We're awake
+            logger.debug("NODE {}: Is awake with {} messages in the queue", getNodeId(),
+                    controller.getSendQueueLength(getNodeId()));
+
+            setSleepTimer();
+
+            // Notify application
+            ZWaveEvent event = new ZWaveNodeStatusEvent(getNodeId(), ZWaveNodeState.AWAKE);
+            controller.notifyEventListeners(event);
+        } else if (!awake) {
+            resetSleepTimer();
+        }
+        this.awake = awake;
+    }
+
+    /**
+     * Checks if the device is able to receive messages
+     * If this device is always listening, then it will always return true, otherwise it will return true if the device
+     * is awake.
+     *
+     * @return true if the node can receive a message
+     */
+    public boolean isAwake() {
+        logger.trace("NODE {}: listening == {}, frequentlyListening == {}, awake == {}", getNodeId(), listening,
+                frequentlyListening, awake);
+        return (listening == true || frequentlyListening == true || awake == true);
+    }
+
+    /**
+     * The following timer implements a re-triggerable timer. The timer is triggered when there are no more messages to
+     * be sent in the wake-up queue. When the timer times out it will send the 'Go To Sleep' message to the node.
+     * The timer just provides some time for anything further to be sent as a result of any processing.
+     */
+    private class WakeupTimerTask extends TimerTask {
+        // Two cycles through the loop are required to send a device to sleep
+        private boolean triggered;
+        private final ZWaveWakeUpCommandClass wakeUpCommandClass;
+
+        WakeupTimerTask() {
+            logger.trace("NODE {}: Creating WakeupTimerTask", getNodeId());
+            wakeUpCommandClass = (ZWaveWakeUpCommandClass) getEndpoint(0)
+                    .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP);
+            if (wakeUpCommandClass == null) {
+                logger.debug("NODE {}: COMMAND_CLASS_WAKE_UP not found - setting AWAKE", getNodeId());
+                awake = true;
+            }
+
+            triggered = false;
+        }
+
+        @Override
+        public void run() {
+            if (isAwake() == false) {
+                logger.trace("NODE {}: WakeupTimerTask Already asleep", getNodeId());
+                return;
+            }
+
+            logger.debug("NODE {}: WakeupTimerTask {} Messages waiting, state {}", getNodeId(),
+                    controller.getSendQueueLength(getNodeId()), getNodeInitStage());
+            if (controller.getSendQueueLength(getNodeId()) != 0) {
+                triggered = false;
+                return;
+            }
+
+            if (triggered == false) {
+                logger.trace("NODE {}: WakeupTimerTask First iteration", getNodeId());
+                triggered = true;
+                return;
+            }
+
+            // Tell the device to go back to sleep.
+            logger.debug("NODE {}: No more messages, go back to sleep", getNodeId());
+            if (wakeUpCommandClass != null) {
+                ZWaveTransactionResponse response = sendTransaction(wakeUpCommandClass.getNoMoreInformationMessage(),
+                        0);
+                logger.debug("NODE {}: Went to sleep {}", getNodeId(), response.getState());
+            }
+            // When this transaction completes, assume we're asleep
+            setAwake(false);
+
+            // Stop the timer
+            resetSleepTimer();
+        }
+    }
+
+    private synchronized void setSleepTimer() {
+        // Stop any existing timer
+        resetSleepTimer();
+
+        // Create the timer task
+        timerTask = new WakeupTimerTask();
+
+        int timerDelay;
+
+        // Start the timer
+        // If the initialisation is complete, then use a short delay,
+        // Otherwise use a longer delay...
+        if (isInitializationComplete() || controller.getSendQueueLength(getNodeId()) == 0) {
+            timerDelay = sleepDelay;
+        } else {
+            timerDelay = 5000;
+        }
+        logger.debug("NODE {}: Start sleep timer at {}ms", getNodeId(), timerDelay);
+
+        timer.schedule(timerTask, timerDelay / 2, timerDelay / 2);
+    }
+
+    private synchronized void resetSleepTimer() {
+        // Stop any existing timer
+        if (timerTask != null) {
+            timerTask.cancel();
+        }
+        timerTask = null;
     }
 }

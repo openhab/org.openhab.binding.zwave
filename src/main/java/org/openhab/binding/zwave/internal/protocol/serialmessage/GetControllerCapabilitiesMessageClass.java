@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,11 +9,12 @@ package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class GetControllerCapabilitiesMessageClass extends ZWaveCommandProcessor {
-    private final static Logger logger = LoggerFactory.getLogger(GetControllerCapabilitiesMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(GetControllerCapabilitiesMessageClass.class);
 
     private final byte CONTROLLER_IS_SECONDARY = 0x01;
     private final byte CONTROLLER_ON_OTHER_NETWORK = 0x02;
@@ -38,14 +38,15 @@ public class GetControllerCapabilitiesMessageClass extends ZWaveCommandProcessor
     private boolean isRealPrimary = false;
     private boolean isSUC = false;
 
-    public SerialMessage doRequest() {
+    public ZWaveSerialPayload doRequest() {
         logger.debug("Creating GET_CONTROLLER_CAPABILITIES message");
-        return new SerialMessage(SerialMessageClass.GetControllerCapabilities, SerialMessageType.Request,
-                SerialMessageClass.GetControllerCapabilities, SerialMessagePriority.High);
+
+        // Create the request
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.GetControllerCapabilities).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.trace("Handle Message Get Controller Capabilities - Length {}",
                 incomingMessage.getMessagePayload().length);
@@ -64,8 +65,7 @@ public class GetControllerCapabilitiesMessageClass extends ZWaveCommandProcessor
         logger.debug("Controller is real primary = {}", isRealPrimary);
         logger.debug("Controller is SUC = {}", isSUC);
 
-        checkTransactionComplete(lastSentMessage, incomingMessage);
-
+        transaction.setTransactionComplete();
         return true;
     }
 

@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,15 +7,14 @@
  */
 package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
-import java.io.ByteArrayOutputStream;
-
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,45 +24,47 @@ import org.slf4j.LoggerFactory;
  * @author Jorg de Jong
  */
 public class DeleteSucReturnRouteMessageClass extends ZWaveCommandProcessor {
-    private final static Logger logger = LoggerFactory.getLogger(DeleteSucReturnRouteMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(DeleteSucReturnRouteMessageClass.class);
 
-    public SerialMessage doRequest(int nodeId) {
+    public ZWaveSerialPayload doRequest(int nodeId) {
         logger.debug("NODE {}: Deleting SUC return routes", nodeId);
 
-        // Queue the request
-        SerialMessage newMessage = new SerialMessage(SerialMessageClass.DeleteSUCReturnRoute, SerialMessageType.Request,
-                SerialMessageClass.DeleteSUCReturnRoute, SerialMessagePriority.High);
-
-        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        outputData.write(nodeId);
-        outputData.write(0x01); // callback id
-        newMessage.setMessagePayload(outputData.toByteArray());
-
-        return newMessage;
+        // Create the request
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.DeleteSUCReturnRoute).withResponseNodeId(nodeId)
+                .withPayload(nodeId).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
-        int nodeId = lastSentMessage.getMessagePayloadByte(0);
+        if (transaction == null) {
+            logger.debug("NODE {}: transaction not correlated for DeleteSucReturnRouteMessageClass");
+            return false;
+        }
+        int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: Got DeleteSUCReturnRoute response.", nodeId);
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
-            lastSentMessage.setAckRecieved();
+            // lastSentMessage.setAckRecieved();
             logger.debug("NODE {}: DeleteSUCReturnRoute command in progress.", nodeId);
         } else {
             logger.debug("NODE {}: DeleteSUCReturnRoute command failed.", nodeId);
             zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.DeleteSucReturnRoute, nodeId,
                     ZWaveNetworkEvent.State.Failure));
+            transaction.setTransactionCanceled();
         }
 
         return true;
     }
 
     @Override
-    public boolean handleRequest(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
-        int nodeId = lastSentMessage.getMessagePayloadByte(0);
+        if (transaction == null) {
+            logger.debug("NODE {}: transaction not correlated for DeleteSucReturnRouteMessageClass");
+            return false;
+        }
+        int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
 
         logger.debug("NODE {}: Got DeleteSUCReturnRoute request.", nodeId);
         if (incomingMessage.getMessagePayloadByte(1) != 0x00) {
@@ -76,8 +76,7 @@ public class DeleteSucReturnRouteMessageClass extends ZWaveCommandProcessor {
                     ZWaveNetworkEvent.State.Success));
         }
 
-        checkTransactionComplete(lastSentMessage, incomingMessage);
-
+        transaction.setTransactionComplete();
         return true;
     }
 }

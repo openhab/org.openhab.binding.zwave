@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,10 +12,11 @@ import java.util.Set;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessagePriority;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,7 +28,7 @@ import com.google.common.collect.ImmutableSet;
  * @author Chris Jackson
  */
 public class SerialApiGetCapabilitiesMessageClass extends ZWaveCommandProcessor {
-    private final static Logger logger = LoggerFactory.getLogger(SerialApiGetCapabilitiesMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(SerialApiGetCapabilitiesMessageClass.class);
 
     private String serialAPIVersion = "Unknown";
     private int manufactureId = 0;
@@ -37,13 +37,13 @@ public class SerialApiGetCapabilitiesMessageClass extends ZWaveCommandProcessor 
 
     private Set<SerialMessage.SerialMessageClass> apiCapabilities = new HashSet<>();
 
-    public SerialMessage doRequest() {
-        return new SerialMessage(SerialMessageClass.SerialApiGetCapabilities, SerialMessageType.Request,
-                SerialMessageClass.SerialApiGetCapabilities, SerialMessagePriority.High);
+    public ZWaveSerialPayload doRequest() {
+        // Create the request
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.SerialApiGetCapabilities).build();
     }
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.trace("Handle Message Serial API Get Capabilities - Length {}",
                 incomingMessage.getMessagePayload().length);
@@ -54,10 +54,10 @@ public class SerialApiGetCapabilitiesMessageClass extends ZWaveCommandProcessor 
         deviceType = ((incomingMessage.getMessagePayloadByte(4)) << 8) | (incomingMessage.getMessagePayloadByte(5));
         deviceId = (((incomingMessage.getMessagePayloadByte(6)) << 8) | (incomingMessage.getMessagePayloadByte(7)));
 
-        logger.debug(String.format("API Version    = %s", serialAPIVersion));
-        logger.debug(String.format("Manufacture ID = 0x%x", manufactureId));
-        logger.debug(String.format("Device Type    = 0x%x", deviceType));
-        logger.debug(String.format("Device ID      = 0x%x", deviceId));
+        logger.debug("API Version    = {}", serialAPIVersion);
+        logger.debug("Manufacture ID = 0x{}", Integer.toHexString(manufactureId));
+        logger.debug("Device Type    = 0x{}", Integer.toHexString(deviceType));
+        logger.debug("Device ID      = 0x{}", Integer.toHexString(deviceId));
 
         apiCapabilities = new HashSet<>();
         // Print the list of messages supported by this controller
@@ -67,17 +67,16 @@ public class SerialApiGetCapabilitiesMessageClass extends ZWaveCommandProcessor 
                     SerialMessage.SerialMessageClass msgClass = SerialMessage.SerialMessageClass
                             .getMessageClass(((by - 8) << 3) + bi + 1);
                     if (msgClass == null) {
-                        logger.debug(String.format("Supports: Unknown Class 0x%02x", ((by - 8) << 3) + bi + 1));
+                        logger.trace("Supports: Unknown Class {}", Integer.toHexString(((by - 8) << 3) + bi + 1));
                     } else {
-                        logger.debug("Supports: {}", msgClass.getLabel());
+                        logger.trace("Supports: {}", msgClass);
                         apiCapabilities.add(msgClass);
                     }
                 }
             }
         }
 
-        checkTransactionComplete(lastSentMessage, incomingMessage);
-
+        transaction.setTransactionComplete();
         return true;
     }
 

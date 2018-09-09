@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
- *
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,8 +15,8 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNodeState;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,25 +27,24 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson
  */
 public class SendDataMessageClass extends ZWaveCommandProcessor {
-    private final static Logger logger = LoggerFactory.getLogger(SendDataMessageClass.class);
+    private final Logger logger = LoggerFactory.getLogger(SendDataMessageClass.class);
 
     @Override
-    public boolean handleResponse(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.trace("Handle Message Send Data Response");
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
-            logger.debug("NODE {}: Sent Data successfully placed on stack.", lastSentMessage.getMessageNode());
+            logger.debug("NODE {}: sentData successfully placed on stack.", transaction.getNodeId());
 
             // This response is our controller ACK
-            lastSentMessage.setAckRecieved();
+            // lastSentMessage.setAckRecieved();
         } else {
-            // This is an error. This means that the transaction is complete!
+            // The packet was not accepted! It should be retried.
             // Set the flag, and return false.
-            logger.debug("NODE {}: Sent Data was not placed on stack due to error {}.",
-                    lastSentMessage.getMessageNode(), incomingMessage.getMessagePayloadByte(0));
+            logger.debug("NODE {}: sentData was not placed on stack.", transaction.getNodeId());
 
             // We ought to cancel the transaction
-            lastSentMessage.setTransactionCanceled();
+            transaction.setTransactionCanceled();
 
             return false;
         }
@@ -55,11 +53,16 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
     }
 
     @Override
-    public boolean handleRequest(ZWaveController zController, SerialMessage lastSentMessage,
+    public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
+        // SendData REQuests must be associated with a transaction
+        if (transaction == null) {
+            return false;
+        }
+
         logger.trace("Handle Message Send Data Request");
 
-        int callbackId = incomingMessage.getMessagePayloadByte(0);
+        // int callbackId = incomingMessage.getMessagePayloadByte(0);
         TransmissionState status = TransmissionState.getTransmissionState(incomingMessage.getMessagePayloadByte(1));
 
         if (status == null) {
@@ -67,20 +70,14 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
             return false;
         }
 
-        ZWaveNode node = zController.getNode(lastSentMessage.getMessageNode());
+        ZWaveNode node = zController.getNode(transaction.getNodeId());
         if (node == null) {
-            logger.warn("Node {} not found!", lastSentMessage.getMessageNode());
+            logger.debug("Node {} not found!", transaction.getNodeId());
             return false;
         }
 
-        logger.debug("NODE {}: SendData Request. CallBack ID = {}, Status = {}({})", node.getNodeId(), callbackId,
-                status.getLabel(), status.getKey());
-
-        if (lastSentMessage == null || lastSentMessage.getCallbackId() != callbackId) {
-            logger.warn("NODE {}: Already processed another send data request for this callback Id, ignoring.",
-                    node.getNodeId());
-            return false;
-        }
+        logger.debug("NODE {}: SendData Request. CallBack ID = {}, Status = {}({})", node.getNodeId(),
+                incomingMessage.getCallbackId(), status.getLabel(), status.getKey());
 
         switch (status) {
             case COMPLETE_OK:
@@ -93,31 +90,31 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
                 } else {
                     node.resetResendCount();
                 }
-                checkTransactionComplete(lastSentMessage, incomingMessage);
+                // Mark the transaction as DONE.
+                // If the transaction needs data, then it will continue to wait for this data
+                transaction.setTransactionComplete();
                 return true;
+
             case COMPLETE_NO_ACK:
                 // Handle WAKE_UP_NO_MORE_INFORMATION differently
                 // Since the system can time out if the node goes to sleep before
                 // we get the response, then don't treat this like a timeout
-                byte[] payload = lastSentMessage.getMessagePayload();
-                if (payload.length >= 4 && (payload[2] & 0xFF) == ZWaveCommandClass.CommandClass.WAKE_UP.getKey()
+                byte[] payload = transaction.getSerialMessage().getMessagePayload();
+                if (payload.length >= 4
+                        && (payload[2] & 0xFF) == ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP.getKey()
                         && (payload[3] & 0xFF) == ZWaveWakeUpCommandClass.WAKE_UP_NO_MORE_INFORMATION) {
-                    checkTransactionComplete(lastSentMessage, incomingMessage);
 
                     logger.debug("NODE {}: WAKE_UP_NO_MORE_INFORMATION. Treated as ACK.", node.getNodeId());
-
                     return true;
                 }
 
             case COMPLETE_FAIL:
             case COMPLETE_NOT_IDLE:
             case COMPLETE_NOROUTE:
-                try {
-                    handleFailedSendDataRequest(zController, lastSentMessage);
-                } finally {
-                    transactionComplete = true;
-                }
+                // handleFailedSendDataRequest(zController, transaction);
+                transaction.setTransactionCanceled();
                 break;
+
             default:
                 break;
         }
@@ -125,49 +122,9 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
         return false;
     }
 
-    public boolean handleFailedSendDataRequest(ZWaveController zController, SerialMessage originalMessage) {
-
-        ZWaveNode node = zController.getNode(originalMessage.getMessageNode());
-        if (node == null) {
-            logger.debug("Unknown node in handleFailedSendDataRequest");
-            return false;
-        }
-
-        logger.trace("NODE {}: Handling failed message.", node.getNodeId());
-
-        // Increment the resend count.
-        // This will set the node to DEAD if we've exceeded the retries.
-        node.incrementResendCount();
-
-        // No retries if the node is DEAD or FAILED
-        if (node.isDead()) {
-            logger.debug("NODE {}: Node is DEAD. Dropping message.", node.getNodeId());
-            return false;
-        }
-
-        // If this device isn't listening, queue the message in the wakeup class
-        if (!node.isListening() && !node.isFrequentlyListening()) {
-            ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) node
-                    .getCommandClass(CommandClass.WAKE_UP);
-
-            if (wakeUpCommandClass != null) {
-                // It's a battery operated device, place in wake-up queue.
-                // As this message failed, we assume the device is asleep
-                wakeUpCommandClass.setAwake(false);
-                wakeUpCommandClass.processOutgoingWakeupMessage(originalMessage);
-                return false;
-            }
-        }
-
-        logger.debug("NODE {}: Got an error while sending data. Resending message.", node.getNodeId());
-        zController.sendData(originalMessage);
-        return true;
-    }
-
     /**
      * Transmission state enumeration. Indicates the transmission state of the message to the node.
      *
-     * @author Jan-Willem Spuij
      */
     public enum TransmissionState {
         COMPLETE_OK(0x00, "Transmission complete and ACK received"),
