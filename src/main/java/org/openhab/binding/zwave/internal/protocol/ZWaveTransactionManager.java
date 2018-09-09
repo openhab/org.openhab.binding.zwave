@@ -401,7 +401,6 @@ public class ZWaveTransactionManager {
             logger.debug("processReceiveMessage input {}<>{} : {}", recvQueue.size(), recvQueue.remainingCapacity(),
                     incomingMessage.toString());
 
-            logger.debug("processReceiveMessage past lock {}", incomingMessage.toString());
             recvQueue.add(incomingMessage);
             recvQueue.notify();
         }
@@ -771,8 +770,7 @@ public class ZWaveTransactionManager {
         for (ZWaveTransaction tmp : queue) {
             ZWaveNode node = controller.getNode(tmp.getNodeId());
             if (node == null) {
-                logger.debug("NODE {}: Node not found - has this node been removed?!? Dropping transaction {}.",
-                        tmp.getNodeId(), tmp);
+                logger.debug("NODE {}: Node not found. Dropping transaction {}.", tmp.getNodeId(), tmp);
                 queue.remove(tmp);
                 continue;
             }
@@ -797,7 +795,7 @@ public class ZWaveTransactionManager {
             logger.debug("Transaction SendNextMessage {} out at start. Holdoff {}.", outstandingTransactions.size(),
                     holdoffActive);
             if (holdoffActive.get()) {
-                logger.debug("Holdoff Timer active - no send...");
+                logger.trace("Holdoff Timer active - no send...");
                 return;
             }
             // }
@@ -924,7 +922,7 @@ public class ZWaveTransactionManager {
                     // Create the timer task
                     timerTask = new ZWaveTransactionTimer();
 
-                    logger.debug("Holdoff Timer finishing in {}ms", delay);
+                    logger.trace("Holdoff Timer finishing in {}ms", delay);
                     timer.schedule(timerTask, delay);
                 } else {
                     holdoffActive.set(false);
@@ -969,7 +967,7 @@ public class ZWaveTransactionManager {
                 // This is set after a RESponse error to delay the next message
                 // synchronized (holdoffActive) {
                 if (holdoffActive.getAndSet(false)) {
-                    logger.debug("Holdoff Timer triggered...");
+                    logger.trace("Holdoff Timer triggered...");
                     sendNextMessage();
                     startTransactionTimer();
                     return;
@@ -1077,7 +1075,7 @@ public class ZWaveTransactionManager {
                 // Remove the listener
                 RemoveTransactionListener(this);
 
-                logger.debug("********* Transaction Response Complete -- {} --", transactionId);
+                logger.trace("********* Transaction Response Complete -- {} --", transactionId);
 
                 return response;
             }
@@ -1120,7 +1118,6 @@ public class ZWaveTransactionManager {
                 }
                 response = new ZWaveTransactionResponse(state);
 
-                logger.debug("NODE {}: -- To notify -- {}", transaction.getDestinationNode(), state);
                 synchronized (this) {
                     notify();
                 }
