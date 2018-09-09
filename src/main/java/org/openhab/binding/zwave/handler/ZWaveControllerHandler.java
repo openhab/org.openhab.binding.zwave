@@ -241,10 +241,12 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         // Remove the discovery service
         if (discoveryService != null) {
             discoveryService.deactivate();
+            discoveryService = null;
         }
 
         if (discoveryRegistration != null) {
             discoveryRegistration.unregister();
+            discoveryRegistration = null;
         }
 
         ZWaveController controller = this.controller;
