@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.smarthome.config.discovery.AbstractDiscoveryService;
 import org.eclipse.smarthome.config.discovery.DiscoveryResult;
@@ -50,12 +51,12 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
     }
 
     public void activate() {
-        logger.debug("Activating ZWave discovery service for {}", controllerHandler.getThing().getUID());
+        logger.debug("ZWave discovery: Active {}", controllerHandler.getThing().getUID());
     }
 
     @Override
     public void deactivate() {
-        logger.debug("Deactivating ZWave discovery service for {}", controllerHandler.getThing().getUID());
+        logger.debug("ZWave discovery: Deactivate {}", controllerHandler.getThing().getUID());
     }
 
     @Override
@@ -70,25 +71,41 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
 
     @Override
     public void startScan() {
-        logger.debug("Starting ZWave inclusion scan for {}", controllerHandler.getThing().getUID());
-
-        // Add all existing devices
-        for (ZWaveNode node : controllerHandler.getNodes()) {
-            deviceAdded(node);
-        }
+        logger.debug("ZWave discovery: Start {}", controllerHandler.getThing().getUID());
 
         // Start the search for new devices
         controllerHandler.startDeviceDiscovery();
+
+        Runnable pollingRunnable = new Runnable() {
+            @Override
+            public void run() {
+                // Add all existing devices
+                for (ZWaveNode node : controllerHandler.getNodes()) {
+                    ThingUID thingUID = new ThingUID(new ThingTypeUID(ZWaveBindingConstants.ZWAVE_THING),
+                            controllerHandler.getThing().getUID(), String.format("node%d", node.getNodeId()));
+                    if (discoveryServiceCallback == null) {
+                        deviceAdded(node);
+                    } else if (discoveryServiceCallback.getExistingDiscoveryResult(thingUID) == null
+                            && discoveryServiceCallback.getExistingThing(thingUID) == null) {
+                        deviceAdded(node);
+                    }
+                }
+            }
+        };
+
+        scheduler.schedule(pollingRunnable, 2, TimeUnit.SECONDS);
     }
 
     @Override
     public synchronized void abortScan() {
+        logger.debug("ZWave discovery: Abort {}", controllerHandler.getThing().getUID());
         controllerHandler.stopDeviceDiscovery();
         super.abortScan();
     }
 
     @Override
     protected synchronized void stopScan() {
+        logger.debug("ZWave discovery: Stop {}", controllerHandler.getThing().getUID());
         controllerHandler.stopDeviceDiscovery();
         super.stopScan();
     }
