@@ -133,7 +133,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
             return;
         }
 
-        logger.info("NODE {}: Color report {} {}", getNode().getNodeId(), colorType.toString(), level);
+        logger.debug("NODE {}: Color report {} {}", getNode().getNodeId(), colorType.toString(), level);
 
         // Update our knowledge of the color
         colorMap.put(colorType, level);
@@ -143,7 +143,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
         if (refreshList.isEmpty()) {
             // Yes - notify of a new color
 
-            logger.info("NODE {}: Color report finished {}", getNode().getNodeId(), colorMap);
+            logger.debug("NODE {}: Color report finished {}", getNode().getNodeId(), colorMap);
             ZWaveCommandClassValueEvent zEvent = new ZWaveColorValueEvent(getNode().getNodeId(), endpoint, colorMap);
             getController().notifyEventListeners(zEvent);
         }
@@ -374,7 +374,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
 
     /**
      * Returns true if the requested color is supported by the device
-     * 
+     *
      * @param color the {@link ZWaveColorType}
      * @return true if the requested color is supported by the device
      */
