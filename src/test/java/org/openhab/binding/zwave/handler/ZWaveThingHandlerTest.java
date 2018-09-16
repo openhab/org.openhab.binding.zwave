@@ -139,16 +139,6 @@ public class ZWaveThingHandlerTest {
         byte[] expectedResponse = { 0x77, 0x04, 0x00, 0x54, 0x65, 0x73, 0x74, 0x69, 0x6E, 0x67 };
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse));
     }
-    
-    public String print(byte[] bytes) {
-    StringBuilder sb = new StringBuilder();
-    sb.append("[ ");
-    for (byte b : bytes) {
-        sb.append(String.format("0x%02X ", b));
-    }
-    sb.append("]");
-    return sb.toString();
-}
 
     @Test
     public void testConfigurationWakeup() {
