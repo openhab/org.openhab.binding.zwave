@@ -14,26 +14,20 @@ Flood Sensor<br /><h1>Overview</h1><p>FIBARO Flood Sensor is a universal, Z-Wave
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Binary Sensor</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY,COMMAND_CLASS_BASIC</property>
-        </properties>
-      </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">
-        <label>Sensor (temperature)</label>
+        <label>Temperature Sensor</label>
         <properties>
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="alarm_burglar" typeId="alarm_burglar">
-        <label>Alarm (burglar)</label>
+      <channel id="alarm_tamper" typeId="alarm_tamper">
+        <label>Tamper Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
         </properties>
       </channel>
       <channel id="alarm_flood" typeId="alarm_flood">
-        <label>Alarm (flood)</label>
+        <label>Flood Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=FLOOD</property>
         </properties>
@@ -41,12 +35,6 @@ Flood Sensor<br /><h1>Overview</h1><p>FIBARO Flood Sensor is a universal, Z-Wave
       <channel id="battery-level" typeId="system.battery-level">
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
-        </properties>
-      </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm (general)</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_ALARM;type=GENERAL</property>
         </properties>
       </channel>
     </channels>
