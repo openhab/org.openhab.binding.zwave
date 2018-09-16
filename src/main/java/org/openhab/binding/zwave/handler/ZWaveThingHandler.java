@@ -567,8 +567,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         Configuration configuration = editConfiguration();
         for (Entry<String, Object> configurationParameter : configurationParameters.entrySet()) {
             Object valueObject = configurationParameter.getValue();
-            logger.debug("NODE {}: Configuration update set {} to {}", nodeId, configurationParameter.getKey(),
-                    valueObject);
+            logger.debug("NODE {}: Configuration update set {} to {} ({})", nodeId, configurationParameter.getKey(),
+                    valueObject, valueObject == null ? "null" : valueObject.getClass().getSimpleName());
             String[] cfg = configurationParameter.getKey().split("_");
             switch (cfg[0]) {
                 case "config":
@@ -796,13 +796,19 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         continue;
                     }
 
+                    if (configurationParameter.getValue() == null
+                            || !(configurationParameter.getValue() instanceof String)) {
+                        logger.debug("NODE {}: Error setting NodeNamingCommandClass {} to invalid value {}", nodeId,
+                                cfg[1], configurationParameter.getValue(), configurationParameter.getValue());
+                        continue;
+                    }
+
                     if ("name".equals(cfg[1])) {
-                        controllerHandler.sendData(node.encapsulate(
-                                nameCommandClass.setNameMessage(configurationParameter.getValue().toString()), 0));
+                        node.sendMessage(nameCommandClass.setNameMessage(configurationParameter.getValue().toString()));
                     }
                     if ("location".equals(cfg[1])) {
-                        controllerHandler.sendData(node.encapsulate(
-                                nameCommandClass.setLocationMessage(configurationParameter.getValue().toString()), 0));
+                        node.sendMessage(
+                                nameCommandClass.setLocationMessage(configurationParameter.getValue().toString()));
                     }
                     pendingCfg.put(configurationParameter.getKey(), valueObject);
                     break;

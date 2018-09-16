@@ -36,6 +36,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveNodeNamingCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
@@ -77,8 +78,8 @@ public class ZWaveThingHandlerTest {
         Field fieldControllerHandler;
         try {
             ZWaveWakeUpCommandClass wakeupClass = new ZWaveWakeUpCommandClass(node, controller, null);
-
             ZWaveAssociationCommandClass associationClass = new ZWaveAssociationCommandClass(node, controller, null);
+            ZWaveNodeNamingCommandClass namingClass = new ZWaveNodeNamingCommandClass(node, controller, null);
 
             Mockito.doNothing().when(node).sendMessage(payloadCaptor.capture());
             Mockito.doNothing().when(thingCallback).thingUpdated(Matchers.any(Thing.class));
@@ -95,6 +96,8 @@ public class ZWaveThingHandlerTest {
             Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_WAKE_UP))).thenReturn(wakeupClass);
             Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_ASSOCIATION)))
                     .thenReturn(associationClass);
+            Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_NODE_NAMING)))
+                    .thenReturn(namingClass);
         } catch (NoSuchFieldException | SecurityException e) {
             e.printStackTrace();
         } catch (IllegalArgumentException e) {
@@ -124,7 +127,31 @@ public class ZWaveThingHandlerTest {
     }
 
     @Test
-    public void TestConfigurationWakeup() {
+    public void testConfigurationLocation() {
+        ZWaveCommandClassTransactionPayload msg;
+        doConfigurationUpdate(ZWaveBindingConstants.CONFIGURATION_NODELOCATION, null);
+        doConfigurationUpdate(ZWaveBindingConstants.CONFIGURATION_NODELOCATION, Integer.valueOf(1));
+
+        List<ZWaveCommandClassTransactionPayload> response = doConfigurationUpdateCommands(
+                ZWaveBindingConstants.CONFIGURATION_NODELOCATION, "Testing");
+        assertEquals(1, response.size());
+        msg = response.get(0);
+        byte[] expectedResponse = { 0x77, 0x04, 0x00, 0x54, 0x65, 0x73, 0x74, 0x69, 0x6E, 0x67 };
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponse));
+    }
+    
+    public String print(byte[] bytes) {
+    StringBuilder sb = new StringBuilder();
+    sb.append("[ ");
+    for (byte b : bytes) {
+        sb.append(String.format("0x%02X ", b));
+    }
+    sb.append("]");
+    return sb.toString();
+}
+
+    @Test
+    public void testConfigurationWakeup() {
         ZWaveCommandClassTransactionPayload msg;
         List<ZWaveCommandClassTransactionPayload> response = doConfigurationUpdateCommands(
                 ZWaveBindingConstants.CONFIGURATION_WAKEUPINTERVAL, new BigDecimal(600));
@@ -137,7 +164,7 @@ public class ZWaveThingHandlerTest {
     }
 
     @Test
-    public void TestConfigurationRepollPeriod() {
+    public void testConfigurationRepollPeriod() {
         ZWaveThingHandler handler = doConfigurationUpdate(ZWaveBindingConstants.CONFIGURATION_CMDREPOLLPERIOD,
                 new BigDecimal(600));
         assertEquals(1, handler.getThing().getConfiguration().getProperties().size());
@@ -156,7 +183,7 @@ public class ZWaveThingHandlerTest {
     }
 
     @Test
-    public void TestConfigurationAssociationList() {
+    public void testConfigurationAssociationList() {
         List<String> nodeList = new ArrayList<String>();
         nodeList.add("node_1");
         nodeList.add("node_2_1");
@@ -175,7 +202,7 @@ public class ZWaveThingHandlerTest {
     }
 
     @Test
-    public void TestConfigurationAssociationListController() {
+    public void testConfigurationAssociationListController() {
         List<String> nodeList = new ArrayList<String>();
         nodeList.add("controller");
         nodeList.add("node_2_1");
@@ -192,7 +219,7 @@ public class ZWaveThingHandlerTest {
     }
 
     @Test
-    public void TestConfigurationAssociationRoot() {
+    public void testConfigurationAssociationRoot() {
         List<ZWaveCommandClassTransactionPayload> response = doConfigurationUpdateCommands("group_1", "node_1");
 
         // Check that there are only 2 requests - the SET and GET
@@ -201,7 +228,7 @@ public class ZWaveThingHandlerTest {
     }
 
     @Test
-    public void TestConfigurationAssociationEndpoint() {
+    public void testConfigurationAssociationEndpoint() {
         List<ZWaveCommandClassTransactionPayload> response = doConfigurationUpdateCommands("group_1", "node_1_0");
 
         // Check that there are only 2 requests - the SET and GET
