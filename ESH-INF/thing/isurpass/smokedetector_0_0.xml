@@ -5,9 +5,9 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="zipato_hmhs1ca_00_000" listed="false">
-    <label>HM-HS1CA CO Sensor with acoustic alarm</label>
-    <description>CO Sensor with acoustic alarm</description>
+  <thing-type id="isurpass_smokedetector_00_000" listed="false">
+    <label>Smoke Detector Carbon monoxide detector, smoke detector</label>
+    <description>Carbon monoxide detector, smoke detector</description>
     <category>SmokeDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -18,10 +18,10 @@
           <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
         </properties>
       </channel>
-      <channel id="alarm_co" typeId="alarm_co">
-        <label>Alarm (CO)</label>
+      <channel id="alarm_smoke" typeId="alarm_smoke">
+        <label>Alarm (smoke)</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=CARBON_MONOXIDE</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=SMOKE</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -33,11 +33,11 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Zipato</property>
-      <property name="modelId">HM-HS1CA</property>
-      <property name="manufacturerId">0131</property>
-      <property name="manufacturerRef">8005:1000</property>
-      <property name="dbReference">741</property>
+      <property name="vendor">Shenzhen iSurpass Technology Co. ,Ltd</property>
+      <property name="modelId">Smoke Detector</property>
+      <property name="manufacturerId">021C</property>
+      <property name="manufacturerRef">8002:1000</property>
+      <property name="dbReference">728</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

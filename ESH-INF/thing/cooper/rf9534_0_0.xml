@@ -38,7 +38,7 @@
       <property name="vendor">Cooper Wiring Devices</property>
       <property name="modelId">RF9534</property>
       <property name="manufacturerId">001A</property>
-      <property name="manufacturerRef">4449:0002</property>
+      <property name="manufacturerRef">4449:0001,4449:0002</property>
       <property name="dbReference">467</property>
     </properties>
 

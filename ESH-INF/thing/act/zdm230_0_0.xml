@@ -10,6 +10,7 @@
     <description><![CDATA[
 HomePro Wall Dimmer ZDM230<br /><h1>Overview</h1><p>Radio Frequency (RF) Controlled, 500W, 230 VAC, European Wall Mounted, 3-Way Dimmer Receiver, Dual Switch, Release 1.1</p>
     ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

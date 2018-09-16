@@ -8,6 +8,7 @@
   <thing-type id="philio_pse02_00_000" listed="false">
     <label>PSE02 Siren</label>
     <description>Siren</description>
+    <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

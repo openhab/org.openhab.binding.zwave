@@ -5,29 +5,19 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="philio_pab01_00_000" listed="false">
-    <label>ZIP-PAB01 Zipato Micromodule Energy Meter</label>
-    <description>Zipato Micromodule Energy Meter</description>
+  <thing-type id="zipato_zippab01_00_000" listed="false">
+    <label>ZIP-PAB01 Micro Module Energy Meter</label>
+    <description><![CDATA[
+Micro Module Energy Meter<br /><h1>Overview</h1><ul><li>Slim, compact remote Z-Wave module measures power parameters of connected device</li> <li>Dual power meter function</li> <li>Instant power wattage and</li> <li>Accumulated power consumption KWh report</li> <li>Amper meter clamp included in the box</li> <li>Maximum current measure 60A</li> <li>Higher output power enhances communication range(+2.5dBm output power compared to -2.5dBm 300 series)</li> <li>New Z-Wave 500 series chip supports multichannel operation and higher data rates (9.6/40/100kbps)</li> <li>Very low power power consumption</li> <li>Over-the-air firmware update Easy installation</li> </ul><br /><h2>Inclusion Information</h2><p>In the front casing, there is an On/Off button with LED indicator which is used to carry out inclusion, exclusion, reset or association. After being excluded, its LED flashes on and off alternately and repeatedly at 2-second intervals. It implies that it has not been assigned a node ID and cannot work with Z-Wave enabled devices.</p> <p><strong>AUTO INCLUSION</strong></p> <p>The function of auto inclusion will be executed as long as the Micromodule does not have Node ID and is plugged into a wall outlet. When first power is applied, its LED flashes on and off alternately and repeatedly at 0.5 second intervals. It implies that it is in learning mode now.</p> <p>Note: Auto inclusion timeout lasts 2 minutes during which the node information of explorer frame will be emitted once per every 5 seconds. Unlike “inclusion” function as shown in the table below, auto inclusion doesn’t require pressing on/off buttons on the switch.</p> <br /><h2>Exclusion Information</h2><p>Pressing On/Off (Include) button three times within 2 seconds will enter exclusion mode.</p>
+    ]]></description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="meter_current" typeId="meter_current">
-        <label>Intensty meter 0 (amps)</label>
+      <channel id="meter_voltage" typeId="meter_voltage">
+        <label>Electric meter (volts)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_A</property>
-        </properties>
-      </channel>
-      <channel id="meter_powerfactor" typeId="meter_powerfactor">
-        <label>Power factor 0</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_Power_Factor</property>
-        </properties>
-      </channel>
-      <channel id="meter_watts" typeId="meter_watts">
-        <label>Power meter 0 (watts)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_V</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
@@ -36,111 +26,123 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
         </properties>
       </channel>
-      <channel id="meter_voltage" typeId="meter_voltage">
-        <label>Line voltage (volts)</label>
+      <channel id="meter_current" typeId="meter_current">
+        <label>Electric meter (amps)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_V</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_A</property>
+        </properties>
+      </channel>
+      <channel id="meter_powerfactor" typeId="meter_powerfactor">
+        <label>Electric meter (power factor)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_Power_Factor</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts" typeId="meter_watts">
+        <label>Electric meter (watts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="meter_voltage1" typeId="meter_voltage">
+        <label>Electric meter (volts) 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_V</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh1" typeId="meter_kwh">
+        <label>Electric meter (kWh) 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_KWh</property>
         </properties>
       </channel>
       <channel id="meter_current1" typeId="meter_current">
-        <label>Intensity meter 1 (amps)</label>
+        <label>Electric meter (amps) 1</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_A</property>
         </properties>
       </channel>
       <channel id="meter_powerfactor1" typeId="meter_powerfactor">
-        <label>Power factor meter 1</label>
+        <label>Electric meter (power factor) 1</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_Power_Factor</property>
         </properties>
       </channel>
       <channel id="meter_watts1" typeId="meter_watts">
-        <label>Power meter 1 (watts)</label>
+        <label>Electric meter (watts) 1</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_W</property>
         </properties>
       </channel>
-      <channel id="meter_kwh1" typeId="meter_kwh">
-        <label>Energy meter 1 (kWh)</label>
+      <channel id="meter_voltage2" typeId="meter_voltage">
+        <label>Electric meter (volts) 2</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_V</property>
         </properties>
       </channel>
-      <channel id="meter_voltage1" typeId="meter_voltage">
-        <label>Line voltage (volts)</label>
+      <channel id="meter_kwh2" typeId="meter_kwh">
+        <label>Electric meter (kWh) 2</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_V</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_KWh</property>
         </properties>
       </channel>
       <channel id="meter_current2" typeId="meter_current">
-        <label>Intensity meter 2 (amps)</label>
+        <label>Electric meter (amps) 2</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_A</property>
         </properties>
       </channel>
       <channel id="meter_powerfactor2" typeId="meter_powerfactor">
-        <label>power factor 2</label>
+        <label>Electric meter (power factor) 2</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_Power_Factor</property>
         </properties>
       </channel>
       <channel id="meter_watts2" typeId="meter_watts">
-        <label>Power meter 2 (watts)</label>
+        <label>Electric meter (watts) 2</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_W</property>
         </properties>
       </channel>
-      <channel id="meter_kwh2" typeId="meter_kwh">
-        <label>Energy meter 2 (kWh)</label>
+      <channel id="meter_voltage3" typeId="meter_voltage">
+        <label>Electric meter (volts) 3</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:3;type=E_V</property>
         </properties>
       </channel>
-      <channel id="meter_voltage2" typeId="meter_voltage">
-        <label>Line voltage 2 (volts)</label>
+      <channel id="meter_kwh3" typeId="meter_kwh">
+        <label>Electric meter (kWh) 3</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_V</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:3;type=E_KWh</property>
         </properties>
       </channel>
       <channel id="meter_current3" typeId="meter_current">
-        <label>Intensity meter 3 (amps)</label>
+        <label>Electric meter (amps) 3</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER:3;type=E_A</property>
         </properties>
       </channel>
       <channel id="meter_powerfactor3" typeId="meter_powerfactor">
-        <label>Power factor 3</label>
+        <label>Electric meter (power factor) 3</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER:3;type=E_Power_Factor</property>
         </properties>
       </channel>
       <channel id="meter_watts3" typeId="meter_watts">
-        <label>Power meter 3 (watts)</label>
+        <label>Electric meter (watts) 3</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER:3;type=E_W</property>
-        </properties>
-      </channel>
-      <channel id="meter_kwh3" typeId="meter_kwh">
-        <label>Energy meter 3 (kWh)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:3;type=E_KWh</property>
-        </properties>
-      </channel>
-      <channel id="meter_voltage3" typeId="meter_voltage">
-        <label>Voltage 3 (volts)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:3;type=E_V</property>
         </properties>
       </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Philio Technology Corp</property>
+      <property name="vendor">Zipato</property>
       <property name="modelId">ZIP-PAB01</property>
-      <property name="manufacturerId">013C</property>
+      <property name="manufacturerId">0131</property>
       <property name="manufacturerRef">0006:001A</property>
-      <property name="dbReference">560</property>
+      <property name="dbReference">899</property>
       <property name="defaultAssociations">1,2,3</property>
     </properties>
 

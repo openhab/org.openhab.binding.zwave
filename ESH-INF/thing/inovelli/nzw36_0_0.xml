@@ -39,12 +39,25 @@ On/Off Smart Plug + Signal Repeater (Z-Wave Plus)<br /><h1>Overview</h1><p><stro
       <property name="vendor">Inovelli</property>
       <property name="modelId">NZW36</property>
       <property name="manufacturerId">0312</property>
-      <property name="manufacturerRef">2400:2400</property>
+      <property name="manufacturerRef">2400:2400,B211:241C</property>
       <property name="dbReference">831</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
+
+      <!-- GROUP DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
 
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
