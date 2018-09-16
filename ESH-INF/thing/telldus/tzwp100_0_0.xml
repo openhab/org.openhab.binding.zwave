@@ -7,7 +7,9 @@
 
   <thing-type id="telldus_tzwp100_00_000" listed="false">
     <label>TZWP-100 Wall Plug Switch</label>
-    <description>Wall Plug Switch</description>
+    <description><![CDATA[
+Wall Plug Switch<br /><h1>Overview</h1><p>Plug­in switch, controls lighting and other electronic equipment up to 2000 W (resistive load). </p> <br /><h2>Inclusion Information</h2><p>Press the button on the device three times fast.</p> <br /><h2>Exclusion Information</h2><p>Press the button on the device three times fast.</p>
+    ]]></description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -25,7 +27,7 @@
       <property name="vendor">Telldus Technologies AB</property>
       <property name="modelId">TZWP-100</property>
       <property name="manufacturerId">0176</property>
-      <property name="manufacturerRef">0003:0001</property>
+      <property name="manufacturerRef">0003:0001,0003:0002</property>
       <property name="dbReference">409</property>
       <property name="defaultAssociations">1</property>
     </properties>

@@ -7,7 +7,10 @@
 
   <thing-type id="elexa_dmws1_00_000" listed="false">
     <label>DMWS1 Dome Leak Sensor</label>
-    <description>Dome Leak Sensor</description>
+    <description><![CDATA[
+Dome Leak Sensor<br /><h1>Overview</h1><p>The Dome Leak Sensor is a battery powered Z-Wave Plus device that can detect wetness and send a notification when it does so. The Leak Sensor consists of two parts—the “SENSOR ASSEMBLY,” and the optional “REMOTE SENSOR PROBE.” They both detect water similarly, using three visible “LEAD.” The moment water touches any of the LEAD, the device will beep and send a notification with its moisture status to its Z-Wave controller.</p> <br /><h2>Inclusion Information</h2><p>Put controller in inclusion mode.</p> <p>Remove cover from device, remove tab from battery (if present), and press button 3 times rapidly.</p> <br /><h2>Exclusion Information</h2><p>Put controller in exclusion mode.</p> <p>Remove cover from device and press button 3 times rapidly.</p> <br /><h2>Wakeup Information</h2><p>Remove cover from device, then press and hold the button for two seconds. The LED INDICATOR will flash once indicating successful wake up.</p>
+    ]]></description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
