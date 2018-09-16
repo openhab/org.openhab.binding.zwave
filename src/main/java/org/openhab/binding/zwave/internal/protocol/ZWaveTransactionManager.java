@@ -310,7 +310,7 @@ public class ZWaveTransactionManager {
         return transaction.getTransactionId();
     }
 
-    void addTransactionToQueue(ZWaveTransaction transaction) {
+    private void addTransactionToQueue(ZWaveTransaction transaction) {
         synchronized (sendQueue) {
             PriorityBlockingQueue<ZWaveTransaction> queue;
 
@@ -333,12 +333,11 @@ public class ZWaveTransactionManager {
                 }
             }
 
-            if (queue.contains(transaction)) {
-                logger.debug("NODE {}: Transaction already in queue - removing original", transaction.getNodeId());
-                queue.remove(transaction);
+            if (queue.remove(transaction)) {
+                logger.debug("NODE {}: Transaction already in queue - removed original", transaction.getNodeId());
             }
             queue.add(transaction);
-            logger.trace("NODE {}: Added to queue - size {}", transaction.getNodeId(), queue.size());
+            logger.debug("NODE {}: Added to queue - size {}", transaction.getNodeId(), queue.size());
         }
 
         sendNextMessage();
@@ -791,19 +790,17 @@ public class ZWaveTransactionManager {
 
     private void sendNextMessage() {
         synchronized (sendQueue) {
-            // synchronized (holdoffActive) {
             logger.debug("Transaction SendNextMessage {} out at start. Holdoff {}.", outstandingTransactions.size(),
                     holdoffActive);
             if (holdoffActive.get()) {
                 logger.trace("Holdoff Timer active - no send...");
                 return;
             }
-            // }
 
             // If we're currently processing the core of a transaction, or there are too many
             // outstanding transactions, then don't start another right now.
             if (lastTransaction != null) {
-                logger.trace("Transaction lastTransaction outstanding...", outstandingTransactions.size());
+                logger.trace("Transaction lastTransaction outstanding...");
                 return;
             }
 
@@ -820,10 +817,8 @@ public class ZWaveTransactionManager {
                     transaction = getMessageFromQueue(sendQueue);
                     if (transaction != null) {
                         logger.trace("Transaction from sendQueue");
-                    }
-                    if (transaction == null) {
+                    } else {
                         transaction = controllerQueue.poll();
-                        logger.trace("Transaction from controllerQueue");
                     }
                 }
             }
@@ -896,11 +891,9 @@ public class ZWaveTransactionManager {
 
     private void startHoldoffTimer() {
         synchronized (sendQueue) {
-            // synchronized (holdoffActive) {
             logger.debug("Holdoff Timer started...");
             holdoffActive.set(true);
             holdoffDelay.setTimeInMillis(System.currentTimeMillis() + HOLDOFF_DELAY);
-            // }
             startTransactionTimer();
         }
     }
@@ -915,7 +908,6 @@ public class ZWaveTransactionManager {
                 timerTask = null;
             }
 
-            // synchronized (holdoffActive) {
             if (holdoffActive.get()) {
                 long delay = holdoffDelay.getTimeInMillis() - System.currentTimeMillis();
                 if (delay > 0) {
@@ -928,7 +920,6 @@ public class ZWaveTransactionManager {
                     holdoffActive.set(false);
                 }
                 return;
-                // }
             }
 
             // Find the time till the next timer
@@ -965,14 +956,12 @@ public class ZWaveTransactionManager {
             synchronized (sendQueue) {
                 // Handle the holdoff case.
                 // This is set after a RESponse error to delay the next message
-                // synchronized (holdoffActive) {
                 if (holdoffActive.getAndSet(false)) {
                     logger.trace("Holdoff Timer triggered...");
                     sendNextMessage();
                     startTransactionTimer();
                     return;
                 }
-                // }
 
                 logger.trace("Transaction Timeout.......... {} outstanding transactions",
                         outstandingTransactions.size());
