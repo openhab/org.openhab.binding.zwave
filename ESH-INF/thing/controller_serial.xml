@@ -19,25 +19,21 @@
 
         <config-description>
             <parameter-group name="port">
-                <context>communication</context>
                 <label>Port Configuration</label>
                 <description></description>
             </parameter-group>
 
             <parameter-group name="network">
-                <context>wireless</context>
                 <label>Z-Wave Network Settings</label>
                 <description></description>
             </parameter-group>
 
             <parameter-group name="heal">
-                <context>health</context>
                 <label>Z-Wave Network Heal</label>
                 <description></description>
             </parameter-group>
 
             <parameter-group name="actions">
-                <context></context>
                 <label>Actions</label>
                 <description></description>
             </parameter-group>
