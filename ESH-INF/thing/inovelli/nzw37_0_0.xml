@@ -7,7 +7,9 @@
 
   <thing-type id="inovelli_nzw37_00_000" listed="false">
     <label>NZW37 2-Channel Dual Smart Plug</label>
-    <description>2-Channel Dual Smart Plug</description>
+    <description><![CDATA[
+2-Channel Dual Smart Plug<br /><h1>Overview</h1><p>Remotely control 2 individual Smart Outlets</p> <br /><h2>Inclusion Information</h2><p>Press the Middle Button on the front of your NZW37 3-5 times within 3 seconds to activate inclusion</p> <br /><h2>Exclusion Information</h2><p>Press the Middle Button on the front of your NZW37 3-5 times within 3 seconds to activate exclusion</p>
+    ]]></description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -37,12 +39,25 @@
       <property name="vendor">Inovelli</property>
       <property name="modelId">NZW37</property>
       <property name="manufacturerId">0312</property>
-      <property name="manufacturerRef">6100:6100,B221:251C</property>
+      <property name="manufacturerRef">2500:2500,6100:6100,B221:251C</property>
       <property name="dbReference">625</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
+
+      <!-- GROUP DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <multipleLimit>2</multipleLimit>
+      </parameter>
 
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">

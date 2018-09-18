@@ -6,8 +6,9 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="wintop_wtrfid_00_000" listed="false">
-    <label>WTRFID Mini Keypad RFID/Z-Wave</label>
-    <description>Mini Keypad RFID/Z-Wave</description>
+    <label>WTRFID Mini Keypad RFID</label>
+    <description>Mini Keypad RFID</description>
+    <category>RemoteControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

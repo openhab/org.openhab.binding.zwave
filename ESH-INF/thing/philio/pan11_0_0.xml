@@ -8,6 +8,7 @@
   <thing-type id="philio_pan11_00_000" listed="false">
     <label>PAN11 Smart Energy Plug In Switch</label>
     <description>Smart Energy Plug In Switch</description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

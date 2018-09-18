@@ -8,7 +8,7 @@
   <thing-type id="willis_nzw37_00_000" listed="false">
     <label>NZW37 Inovelli Smart Plug (2 Channel with Scene Control)</label>
     <description><![CDATA[
-Inovelli Smart Plug (2 Channel with Scene Control)<br /><h1>Overview</h1><p>2 Controllable Outlets</p> <p>Indoor</p> <p>Wall Plug</p> <p>120 VAC, 60 Hz</p> <p>908.42 MHz</p> <p>Max Load Outlet #1 1200W (10A) Resistive</p> <p>Max Load Outlet #2 1200W (10A) Resistive</p> <p>Max Simultaneous Load 16A</p> <p>Max Range LoS 30 m</p> <p>Operating Temperature Range 0°C to 40°C</p> <p>UL E464831</p> <p>FCC ID OXGZW36</p> <br /><h2>Inclusion Information</h2><p>Auto-Inclusion 30 sec from power on</p> <p>Backup-Inclusion Press button 5 times within 1 sec</p> <p>(Tested to work with Network Wide Inclusion)</p>
+Inovelli Smart Plug (2 Channel with Scene Control)<br /><h1>Overview</h1><ul><li>2 Controllable Outlets</li> <li>Indoor</li> <li>Wall Plug</li> <li>120 VAC, 60 Hz</li> <li>908.42 MHz</li> <li>Max Load Outlet #1 1200W (10A) Resistive</li> <li>Max Load Outlet #2 1200W (10A) Resistive</li> <li>Max Simultaneous Load 16A</li> <li>Max Range LoS 30 m</li> <li>Operating Temperature Range 0°C to 40°C</li> <li>UL E464831</li> <li>FCC ID OXGZW36</li> </ul><br /><h2>Inclusion Information</h2><p>Auto-Inclusion 30 sec from power on, backup-Inclusion press center button 3-5 times within 3 sec (Tested to work with Network Wide Inclusion)</p> <br /><h2>Exclusion Information</h2><p>Press the center button 3-5 times within 3 seconds to exclude it from the network.</p>
     ]]></description>
     <category>PowerOutlet</category>
 
@@ -47,10 +47,23 @@ Inovelli Smart Plug (2 Channel with Scene Control)<br /><h1>Overview</h1><p>2 Co
       <property name="manufacturerId">015D</property>
       <property name="manufacturerRef">2500:2500</property>
       <property name="dbReference">788</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
+
+      <!-- GROUP DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <multipleLimit>2</multipleLimit>
+      </parameter>
 
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">

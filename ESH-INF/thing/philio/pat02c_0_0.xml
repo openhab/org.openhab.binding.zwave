@@ -8,6 +8,7 @@
   <thing-type id="philio_pat02c_00_000" listed="false">
     <label>PAT02-C Flood Sensor</label>
     <description>Flood Sensor</description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

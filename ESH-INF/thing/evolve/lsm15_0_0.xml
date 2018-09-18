@@ -8,6 +8,7 @@
   <thing-type id="evolve_lsm15_00_000" listed="false">
     <label>LSM-15 Wall Mounted Switch</label>
     <description>Wall Mounted Switch</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

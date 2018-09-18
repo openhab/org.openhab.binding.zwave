@@ -8,6 +8,7 @@
   <thing-type id="everspring_ad147_00_000" listed="false">
     <label>AD147 Z-Wave Dimmer Plug</label>
     <description>Z-Wave Dimmer Plug</description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

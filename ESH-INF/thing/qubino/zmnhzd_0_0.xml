@@ -52,7 +52,8 @@
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:1,COMMAND_CLASS_BASIC:1;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level1" typeId="system.battery-level">
+        <label>Battery Level 1</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
@@ -63,7 +64,8 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:2,COMMAND_CLASS_BASIC:2;type=DIRECTION</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level2" typeId="system.battery-level">
+        <label>Battery Level 2</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
@@ -74,7 +76,8 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:3,COMMAND_CLASS_BASIC:3;type=VELOCITY</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level3" typeId="system.battery-level">
+        <label>Battery Level 3</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
@@ -85,7 +88,8 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:4,COMMAND_CLASS_BASIC:4;type=VELOCITY</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level4" typeId="system.battery-level">
+        <label>Battery Level 4</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
@@ -96,7 +100,8 @@
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:5,COMMAND_CLASS_BASIC:5;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level5" typeId="system.battery-level">
+        <label>Battery Level 5</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
@@ -107,7 +112,8 @@
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:6,COMMAND_CLASS_BASIC:6;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level6" typeId="system.battery-level">
+        <label>Battery Level 6</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
@@ -118,7 +124,8 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:7,COMMAND_CLASS_BASIC:7;type=RAIN_RATE</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level7" typeId="system.battery-level">
+        <label>Battery Level 7</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
@@ -129,7 +136,8 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:8,COMMAND_CLASS_BASIC:8;type=RELATIVE_HUMIDITY</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level8" typeId="system.battery-level">
+        <label>Battery Level 8</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
@@ -140,7 +148,8 @@
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:9,COMMAND_CLASS_BASIC:9;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level9" typeId="system.battery-level">
+        <label>Battery Level 9</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
@@ -151,7 +160,8 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:10,COMMAND_CLASS_BASIC:10;type=RELATIVE_HUMIDITY</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level10" typeId="system.battery-level">
+        <label>Battery Level 10</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>

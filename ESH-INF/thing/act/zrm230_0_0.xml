@@ -10,6 +10,7 @@
     <description><![CDATA[
 Wall Switch/Transmitter (2-gang)<br /><h1>Overview</h1><p>Radio Frequency Controlled, 6A, 230 VAC, European Wall Mounted 3-Way Switch, Dual Switch, Release 1.1  </p> <p>The ZRM230 Wall Mounted 3-Way Switch is a component of the HomePro lighting control system. This Wall Mounted Switch is designed to work with other Z-Wave enabled devices. Z-Wave nodes of other types can be added to the system and will also act as repeaters if they support this function of repeating the signal received to other modules in the system.  </p> <br /><h2>Inclusion Information</h2><p>Including to the Network (Must be installed in permanent location, not on test bench).<br />1. Setup the controller you are using to include a device into network.<br />2. Tap either the top or bottom of the left switch once  </p> <br /><h2>Exclusion Information</h2><p>1. Setup the controller you are using to exclude a device from the network.<br />2. Tap either the top or the bottom of the left switch once.  </p>
     ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

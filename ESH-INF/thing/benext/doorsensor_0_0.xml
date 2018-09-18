@@ -8,6 +8,7 @@
   <thing-type id="benext_doorsensor_00_000" listed="false">
     <label>doorSensor Door Sensor</label>
     <description>Door Sensor</description>
+    <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
