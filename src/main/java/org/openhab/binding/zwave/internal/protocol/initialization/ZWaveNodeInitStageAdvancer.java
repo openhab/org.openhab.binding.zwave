@@ -695,6 +695,19 @@ public class ZWaveNodeInitStageAdvancer {
 
                 logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - len {}", node.getNodeId(), cmds.length);
 
+                // Command class isn't found! Do we want to add it?
+                // TODO: Does this need to account for multiple endpoints!?!
+                if (optionMap.containsKey("ccAdd")) {
+                    logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - add", node.getNodeId());
+                    ZWaveCommandClass commandClass = ZWaveCommandClass
+                            .getInstance(CommandClass.getCommandClass(cmds[1]).getKey(), node, controller);
+                    if (commandClass != null) {
+                        logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - adding {}", node.getNodeId(),
+                                CommandClass.getCommandClass(cmds[1]));
+                        node.getEndpoint(endpoint).addCommandClass(commandClass);
+                    }
+                }
+
                 // Get the command class
                 logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - endpoint {}", node.getNodeId(), endpoint);
                 if (node.getEndpoint(endpoint) != null) {
@@ -707,19 +720,6 @@ public class ZWaveNodeInitStageAdvancer {
                     if (zwaveClass != null) {
                         zwaveClass.setOptions(optionMap);
                         continue;
-                    }
-                }
-
-                // Command class isn't found! Do we want to add it?
-                // TODO: Does this need to account for multiple endpoints!?!
-                if (optionMap.containsKey("ccAdd")) {
-                    logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - add", node.getNodeId());
-                    ZWaveCommandClass commandClass = ZWaveCommandClass
-                            .getInstance(CommandClass.getCommandClass(cmds[1]).getKey(), node, controller);
-                    if (commandClass != null) {
-                        logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - adding {}", node.getNodeId(),
-                                CommandClass.getCommandClass(cmds[1]));
-                        node.getEndpoint(endpoint).addCommandClass(commandClass);
                     }
                 }
             }
