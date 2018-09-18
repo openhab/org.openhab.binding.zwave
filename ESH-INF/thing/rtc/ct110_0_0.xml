@@ -142,7 +142,8 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_FAN_STATE:1</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level1" typeId="system.battery-level">
+        <label>Battery Level 1</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>

@@ -8,6 +8,7 @@
   <thing-type id="rtc_ct101_00_000" listed="false">
     <label>CT101 Z-Wave Thermostat</label>
     <description>Z-Wave Thermostat</description>
+    <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -106,7 +107,8 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_FAN_STATE:1</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level1" typeId="system.battery-level">
+        <label>Battery Level 1</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>

@@ -85,7 +85,8 @@ Thermostatic Valve<br /><h1>Overview</h1><p>FIBARO Heat Controller is a remotely
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:1;type=SYSTEM</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level1" typeId="system.battery-level">
+        <label>Battery Level 1</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
@@ -108,7 +109,8 @@ Thermostatic Valve<br /><h1>Overview</h1><p>FIBARO Heat Controller is a remotely
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:2;type=POWER_MANAGEMENT</property>
         </properties>
       </channel>
-      <channel id="battery-level" typeId="system.battery-level">
+      <channel id="battery-level2" typeId="system.battery-level">
+        <label>Battery Level 2</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>

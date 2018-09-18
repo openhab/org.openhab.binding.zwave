@@ -15,7 +15,7 @@ Smoke Detector<br /><h1>Overview</h1><p>The Fibaro Smoke Sensor is a universal, 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="sensor_temperature" typeId="sensor_temperature">
-        <label>Sensor (temperature)</label>
+        <label>Temperature Sensor</label>
         <properties>
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>

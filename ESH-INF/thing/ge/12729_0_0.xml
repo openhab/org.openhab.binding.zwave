@@ -10,6 +10,7 @@
     <description><![CDATA[
 In-Wall Smart Dimmer<br /><h2>Inclusion Information</h2><p>1. Follow the instructions for your Z-wave certified controller to include a device to the Z-wave network.</p> <p>2. Once the controller is ready to include your device, press up and release the toggle switch to include it in the network.</p> <p>Note: Your controller may need to be within 10 feet of the device to be included.</p> <p>3. Once your controller has confirmed that the device has been included, refresh the Z-wave network to optimize performance.</p>
     ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

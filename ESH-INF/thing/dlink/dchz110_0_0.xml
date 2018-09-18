@@ -8,6 +8,7 @@
   <thing-type id="dlink_dchz110_00_000" listed="false">
     <label>DCH-Z110 Door &amp; Window Sensor</label>
     <description>Door &amp; Window Sensor</description>
+    <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

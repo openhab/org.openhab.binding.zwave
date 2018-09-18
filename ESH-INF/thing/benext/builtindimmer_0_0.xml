@@ -8,6 +8,7 @@
   <thing-type id="benext_builtindimmer_00_000" listed="false">
     <label>builtInDimmer Built-in Dimmer</label>
     <description>Built-in Dimmer</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
