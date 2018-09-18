@@ -912,7 +912,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                             logger.debug("NODE {}: commandPollDelay ({}) cannot be set - using default", nodeId,
                                     configurationParameter.getValue().toString());
                         }
-                        if (commandPollDelay < REPOLL_PERIOD_MIN) {
+                        if (commandPollDelay != 0 && commandPollDelay < REPOLL_PERIOD_MIN) {
                             commandPollDelay = REPOLL_PERIOD_MIN;
                         }
                         if (commandPollDelay > REPOLL_PERIOD_MAX) {
