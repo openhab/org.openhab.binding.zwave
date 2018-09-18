@@ -185,9 +185,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         final Object repollParm = getConfig().get(ZWaveBindingConstants.CONFIGURATION_CMDREPOLLPERIOD);
         if (repollParm instanceof BigDecimal) {
             try {
-                commandPollDelay = ((BigDecimal) pollParm).intValue();
+                commandPollDelay = ((BigDecimal) repollParm).intValue();
             } catch (final NumberFormatException ex) {
-                logger.warn("NODE {}: commandPollDelay ({}) cannot be parsed - using default", nodeId, pollParm);
+                logger.warn("NODE {}: commandPollDelay ({}) cannot be parsed - using default", nodeId, repollParm);
             }
         }
 
