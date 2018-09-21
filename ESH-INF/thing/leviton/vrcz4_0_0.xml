@@ -27,7 +27,7 @@
       <property name="vendor">Leviton</property>
       <property name="modelId">VRCZ4</property>
       <property name="manufacturerId">001D</property>
-      <property name="manufacturerRef">0701:0206,0801:0206</property>
+      <property name="manufacturerRef">0701:0206,0702:0261,0801:0206</property>
       <property name="dbReference">879</property>
       <property name="defaultAssociations">1,2,3,4</property>
     </properties>

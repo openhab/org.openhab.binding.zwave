@@ -103,14 +103,15 @@ IR external relay or External Relay control mode<br /><h1>Overview</h1><p>Availa
         <default>4</default>
         <options>
           <option value="0">disabled</option>
-          <option value="2">IR external relay control – mono stable push button</option>
+          <option value="2">IR external control – mono stable push button</option>
           <option value="3">IR external relay control - bi stable switch</option>
           <option value="4">External relay control – mono stable push button</option>
           <option value="5">External relay control – bi stable switch</option>
         </options>
       </parameter>
 
-      <parameter name="config_11_2" type="integer" groupName="configuration">
+      <parameter name="config_11_2" type="integer" groupName="configuration"
+                 min="0" max="32535">
         <label>11: Timer turning off IR external relay</label>
         <description><![CDATA[
 Automatic turning off IR external relay output after set time<br /><h1>Overview</h1><p>When External IR relay is ON it goes automatically OFF after time defined in this parameter. Timer is reset to zero each time the device receives ON command.<br />Values (size is 2 byte dec):<br />• Default value 0<br />• 0-59 = Auto OFF disabled<br />• 60-32535 = 60 seconds – 32535 seconds</p>
@@ -119,6 +120,7 @@ Automatic turning off IR external relay output after set time<br /><h1>Overview<
         <options>
           <option value="0">Disabled</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
@@ -188,14 +190,15 @@ Enable / Disable endpoints IR external relay and External relay<br /><h1>Overvie
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">Endpoints IR external relay and External relay disabled</option>
-          <option value="1">Endpoints IR external relay disabled, External relay enabled</option>
-          <option value="2">Endpoints IR external relay enabled, External relay disabled</option>
-          <option value="3">Endpoints IR external relay and External relay enabled</option>
+          <option value="0">EP IR external relay and External relay disabled</option>
+          <option value="1">EP IR external relay dsbld, External relay enbld</option>
+          <option value="2">EP IR external relay enbld, External relay dsbld</option>
+          <option value="3">EP IR external relay and External relay enabled</option>
         </options>
       </parameter>
 
-      <parameter name="config_110_2" type="integer" groupName="configuration">
+      <parameter name="config_110_2" type="integer" groupName="configuration"
+                 min="0" max="15000">
         <label>110: Maximum Power auto off</label>
         <description><![CDATA[
 Maximum Power auto off<br /><h1>Overview</h1><p>Set value means Maximum Power Consumption (0 - 15000) in watts (W), when relays are turned off according to parameters no. 111 and 112. Available configuration parameters (data type is 2 Bytes DEC</p>
@@ -205,6 +208,7 @@ Maximum Power auto off<br /><h1>Overview</h1><p>Set value means Maximum Power Co
           <option value="0">No function</option>
           <option value="15000">Maximum Power Consumption</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_111_2" type="integer" groupName="configuration"
