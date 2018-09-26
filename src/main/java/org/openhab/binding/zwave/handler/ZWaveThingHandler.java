@@ -762,6 +762,11 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     break;
 
                 case "wakeup":
+                    if (configurationParameter.getValue() == null) {
+                        logger.debug("NODE {}: Error converting wakeup value null", nodeId);
+                        continue;
+                    }
+
                     Integer wakeupValue = null;
                     try {
                         wakeupValue = ((BigDecimal) configurationParameter.getValue()).intValue();
