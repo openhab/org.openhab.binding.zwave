@@ -8,6 +8,7 @@
   <thing-type id="fibaro_fgkf601_00_000" listed="false">
     <label>FGKF601 Keyfob</label>
     <description>Keyfob</description>
+    <category>RemoteControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -29,7 +30,7 @@
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGKF601</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">1001:1000,1001:3000</property>
+      <property name="manufacturerRef">1001:1000,1001:2000,1001:3000</property>
       <property name="dbReference">542</property>
       <property name="defaultAssociations">1</property>
     </properties>
