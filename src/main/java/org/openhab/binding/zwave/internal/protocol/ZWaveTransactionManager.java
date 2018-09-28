@@ -9,6 +9,7 @@ package org.openhab.binding.zwave.internal.protocol;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -131,6 +132,7 @@ import org.slf4j.LoggerFactory;
 public class ZWaveTransactionManager {
     private Logger logger = LoggerFactory.getLogger(ZWaveTransactionManager.class);
 
+    private final int INITIAL_RX_QUEUE_SIZE = 128;
     private final int INITIAL_TX_QUEUE_SIZE = 128;
     // private final int MAX_OUTSTANDING_TRANSACTIONS = 3;
 
@@ -171,15 +173,15 @@ public class ZWaveTransactionManager {
     private final Timer timer = new Timer();
     private TimerTask timerTask = null;
 
-    private final BlockingQueue<SerialMessage> recvQueue;
+    private final BlockingQueue<SerialMessage> recvQueue = new ArrayBlockingQueue<>(INITIAL_RX_QUEUE_SIZE);
 
-    private final PriorityBlockingQueue<ZWaveTransaction> sendQueue = new PriorityBlockingQueue<ZWaveTransaction>(
+    private final PriorityBlockingQueue<ZWaveTransaction> sendQueue = new PriorityBlockingQueue<>(INITIAL_TX_QUEUE_SIZE,
+            new ZWaveTransactionComparator());
+    private final PriorityBlockingQueue<ZWaveTransaction> secureQueue = new PriorityBlockingQueue<>(
             INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator());
-    private final PriorityBlockingQueue<ZWaveTransaction> secureQueue = new PriorityBlockingQueue<ZWaveTransaction>(
+    private final PriorityBlockingQueue<ZWaveTransaction> controllerQueue = new PriorityBlockingQueue<>(
             INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator());
-    private final PriorityBlockingQueue<ZWaveTransaction> controllerQueue = new PriorityBlockingQueue<ZWaveTransaction>(
-            INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator());
-    private final PriorityBlockingQueue<ZWaveTransaction> priorityControllerQueue = new PriorityBlockingQueue<ZWaveTransaction>(
+    private final PriorityBlockingQueue<ZWaveTransaction> priorityControllerQueue = new PriorityBlockingQueue<>(
             INITIAL_TX_QUEUE_SIZE, new ZWaveTransactionComparator());
 
     private ZWaveReceiveThread receiveThread;
@@ -193,8 +195,6 @@ public class ZWaveTransactionManager {
 
     public ZWaveTransactionManager(ZWaveController controller) {
         this.controller = controller;
-
-        recvQueue = new ArrayBlockingQueue<SerialMessage>(INITIAL_TX_QUEUE_SIZE);
 
         receiveThread = new ZWaveReceiveThread();
         receiveThread.start();
@@ -337,7 +337,8 @@ public class ZWaveTransactionManager {
                 logger.debug("NODE {}: Transaction already in queue - removed original", transaction.getNodeId());
             }
             queue.add(transaction);
-            logger.debug("NODE {}: Added to queue - size {}", transaction.getNodeId(), queue.size());
+            logger.debug("NODE {}: Added {} to queue - size {}", transaction.getNodeId(),
+                    transaction.getTransactionId(), queue.size());
         }
 
         sendNextMessage();
@@ -766,26 +767,33 @@ public class ZWaveTransactionManager {
     }
 
     private ZWaveTransaction getMessageFromQueue(PriorityBlockingQueue<ZWaveTransaction> queue) {
-        for (ZWaveTransaction tmp : queue) {
-            ZWaveNode node = controller.getNode(tmp.getNodeId());
+        Collection<ZWaveTransaction> returns = new ArrayList<>();
+        ZWaveTransaction transaction;
+        // Note that using the iterator here is not possible since it will not respect the priority
+        // We instead use the poll method, and any frames for nodes that can't currently be sent are
+        // placed into a separate list, and added to the queue again at the end.
+        // This might not be the best approach, but avoids the iterator problem!
+        while ((transaction = queue.poll()) != null) {
+            ZWaveNode node = controller.getNode(transaction.getNodeId());
             if (node == null) {
-                logger.debug("NODE {}: Node not found. Dropping transaction {}.", tmp.getNodeId(), tmp);
-                queue.remove(tmp);
+                logger.debug("NODE {}: Node not found. Dropping transaction {}.", transaction.getNodeId(), transaction);
                 continue;
             }
 
             // Check if the node is awake
             if (node.isAwake() == false) {
                 logger.trace("NODE {}: Node not awake!", node.getNodeId());
+                returns.add(transaction);
                 continue;
             }
 
-            // Node is awake - remove this transaction and return it
-            queue.remove(tmp);
-            return tmp;
+            break;
         }
 
-        return null;
+        // Put the returns back on the queue
+        queue.addAll(returns);
+
+        return transaction;
     }
 
     private void sendNextMessage() {
