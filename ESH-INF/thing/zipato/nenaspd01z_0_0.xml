@@ -8,6 +8,7 @@
   <thing-type id="zipato_nenaspd01z_00_000" listed="false">
     <label>NE-NAS-PD01Z PIR motion sensor and light measurement</label>
     <description>PIR motion sensor and light measurement</description>
+    <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -41,7 +42,7 @@
       <property name="vendor">Zipato</property>
       <property name="modelId">NE-NAS-PD01Z</property>
       <property name="manufacturerId">0131</property>
-      <property name="manufacturerRef">0003:1083</property>
+      <property name="manufacturerRef">0003:1089</property>
       <property name="dbReference">735</property>
       <property name="defaultAssociations">1</property>
     </properties>

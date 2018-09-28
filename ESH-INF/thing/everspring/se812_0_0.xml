@@ -8,6 +8,7 @@
   <thing-type id="everspring_se812_00_000" listed="false">
     <label>SE812 Siren</label>
     <description>Siren</description>
+    <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

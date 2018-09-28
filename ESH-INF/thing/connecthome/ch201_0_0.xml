@@ -224,6 +224,53 @@
         <default>300</default>
       </parameter>
 
+      <parameter name="config_15_1" type="integer" groupName="configuration">
+        <label>15: TYPE OF SWITCH 1 (THERMOSTAT OPERATING MODE)</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Monostable: for a switch of a return type or for a button, each press switches the device to the opposite state.</p> <p>Bistable: for conventional switches with two fixed positions Enabled and Disabled.</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Monostable</option>
+          <option value="1">Bistable, fixed position 1</option>
+          <option value="2">Bistable, fixed position 2</option>
+          <option value="3">Bistable</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_16_1" type="integer" groupName="configuration">
+        <label>16: TYPE OF SWITCH 2 (TURBO MODE).</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Monostable: for a switch of a return type or for a button, each press switches the device to the opposite state.</p> <p>Bistable: for conventional switches with two fixed positions Enabled and Disabled.</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Monostable</option>
+          <option value="1">Bistable, fixed position 1</option>
+          <option value="2">Bistable, fixed position 2</option>
+          <option value="3">Bistable</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_40_1" type="integer" groupName="configuration">
+        <label>40: ADJUSTMENT OF THE TEMPERATURE SENSOR</label>
+        <description>In some cases, the location of the temperature sensor, the measured values must be adjusted.</description>
+        <default>0</default>
+        <options>
+          <option value="0">Send the actual temperature (further t);</option>
+          <option value="1">t +1°С</option>
+          <option value="2">t +2°С</option>
+          <option value="3">t +3°С</option>
+          <option value="4">t +4°С</option>
+          <option value="5">t +5°С</option>
+          <option value="6">t -1°С</option>
+          <option value="7">t -2°С;</option>
+          <option value="8">t -3°С;</option>
+          <option value="9">t -4°С</option>
+          <option value="10">t -5°С;</option>
+        </options>
+      </parameter>
+
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>
