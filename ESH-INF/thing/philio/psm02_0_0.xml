@@ -8,6 +8,7 @@
   <thing-type id="philio_psm02_00_000" listed="false">
     <label>PSM02 Slim Multi-Sensor</label>
     <description>Slim Multi-Sensor</description>
+    <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
