@@ -44,6 +44,7 @@ Import-Package: com.google.common.collect,
  org.mockito.stubbing;resolution:=optional,
  org.mockito.verification;resolution:=optional,
  org.objenesis;resolution:=optional,
+ net.bytebuddy.dynamic.loading;resolution:=optional,
  org.osgi.framework,
  org.slf4j
 Service-Component: OSGI-INF/*.xml

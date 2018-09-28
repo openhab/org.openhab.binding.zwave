@@ -701,13 +701,13 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                             // Make sure this is a correctly formatted option
                             if (!"node".equals(groupCfg[0])) {
-                                logger.debug("NODE{}: Invalid association {}", nodeId, paramValue);
+                                logger.debug("NODE {}: Invalid association {}", nodeId, paramValue);
                                 continue;
                             }
 
                             int groupNode = Integer.parseInt(groupCfg[1]);
                             if (groupNode == controllerHandler.getOwnNodeId()) {
-                                logger.debug("NODE{}: Association is for controller", nodeId);
+                                logger.debug("NODE {}: Association is for controller", nodeId);
                                 newMembers.addAssociation(new ZWaveAssociation(controllerHandler.getOwnNodeId(), 1));
                                 continue;
                             }
@@ -951,7 +951,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     break;
 
                 default:
-                    logger.debug("NODE{}: Configuration invalid {}", nodeId, configurationParameter.getKey());
+                    logger.debug("NODE {}: Configuration invalid {}", nodeId, configurationParameter.getKey());
             }
 
             configuration.put(configurationParameter.getKey(), valueObject);

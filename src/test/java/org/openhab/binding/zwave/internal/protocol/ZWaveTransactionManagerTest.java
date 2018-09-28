@@ -10,15 +10,17 @@ package org.openhab.binding.zwave.internal.protocol;
 import static org.junit.Assert.*;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Calendar;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
-import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
@@ -104,15 +106,16 @@ public class ZWaveTransactionManagerTest {
         Mockito.when(controller.getNode(Mockito.anyInt())).thenReturn(node);
         ZWaveTransactionManager manager = new ZWaveTransactionManager(controller);
 
+        // Set holdoff to prevent messages being sent
         Field holdoffDelay = manager.getClass().getDeclaredField("holdoffDelay");
         holdoffDelay.setAccessible(true);
         Calendar holdoff = Calendar.getInstance();
         holdoff.setTimeInMillis(System.currentTimeMillis() + 999999);
         holdoffDelay.set(manager, holdoff);
-
         Field holdoffActive = manager.getClass().getDeclaredField("holdoffActive");
         holdoffActive.setAccessible(true);
         holdoffActive.set(manager, new AtomicBoolean(true));
+
         ExecutorService es = Executors.newCachedThreadPool();
         for (int i = 0; i < 18; i++) {
             es.execute(new test(manager, i));
@@ -130,6 +133,53 @@ public class ZWaveTransactionManagerTest {
         assertEquals(1, manager.getSendQueueLength(8));
         assertEquals(1, manager.getSendQueueLength(9));
         assertEquals(1, manager.getSendQueueLength(10));
+    }
+
+    @Test
+    public void getMessageFromQueue() throws NoSuchMethodException, SecurityException, IllegalAccessException,
+            IllegalArgumentException, InvocationTargetException, NoSuchFieldException {
+        ZWaveController controller = Mockito.mock(ZWaveController.class);
+        ZWaveNode node1 = Mockito.mock(ZWaveNode.class);
+        Mockito.when(node1.isAwake()).thenReturn(true);
+        Mockito.when(controller.getNode(1)).thenReturn(node1);
+        Mockito.when(node1.isAwake()).thenReturn(false);
+        Mockito.when(node1.isListening()).thenReturn(true);
+        ZWaveNode node2 = Mockito.mock(ZWaveNode.class);
+        Mockito.when(node2.isAwake()).thenReturn(true);
+        Mockito.when(controller.getNode(2)).thenReturn(node2);
+        Mockito.when(node2.isAwake()).thenReturn(true);
+        Mockito.when(node2.isListening()).thenReturn(true);
+        ZWaveTransactionManager manager = new ZWaveTransactionManager(controller);
+
+        PriorityBlockingQueue<ZWaveTransaction> queue = new PriorityBlockingQueue<>(10,
+                new ZWaveTransactionComparator());
+
+        queue.add(new ZWaveTransaction(new ZWaveCommandClassTransactionPayloadBuilder(1,
+                org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass.COMMAND_CLASS_BASIC,
+                1).withPriority(TransactionPriority.Get).build()));
+        queue.add(new ZWaveTransaction(new ZWaveCommandClassTransactionPayloadBuilder(1,
+                org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass.COMMAND_CLASS_BASIC,
+                2).withPriority(TransactionPriority.Set).build()));
+        queue.add(new ZWaveTransaction(new ZWaveCommandClassTransactionPayloadBuilder(2,
+                org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass.COMMAND_CLASS_BASIC,
+                1).withPriority(TransactionPriority.Get).build()));
+        queue.add(new ZWaveTransaction(new ZWaveCommandClassTransactionPayloadBuilder(2,
+                org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass.COMMAND_CLASS_BASIC,
+                2).withPriority(TransactionPriority.Set).build()));
+
+        Method method = manager.getClass().getDeclaredMethod("getMessageFromQueue", PriorityBlockingQueue.class);
+        method.setAccessible(true);
+
+        ZWaveTransaction transaction = (ZWaveTransaction) method.invoke(manager, queue);
+        assertNotNull(transaction);
+        assertEquals(TransactionPriority.Set, transaction.getPriority());
+
+        transaction = (ZWaveTransaction) method.invoke(manager, queue);
+        assertNotNull(transaction);
+        assertEquals(TransactionPriority.Get, transaction.getPriority());
+
+        transaction = (ZWaveTransaction) method.invoke(manager, queue);
+        assertNull(transaction);
     }
 
     class test implements Runnable {
