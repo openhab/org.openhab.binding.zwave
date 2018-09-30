@@ -68,7 +68,7 @@ Smoke Detector<br /><h1>Overview</h1><p>The Fibaro Smoke Sensor is a universal, 
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGSD002</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0C02:1002</property>
+      <property name="manufacturerRef">0C02:1002,0C02:1003</property>
       <property name="versionMax">3.1</property>
       <property name="dbReference">129</property>
       <property name="defaultAssociations">1</property>
