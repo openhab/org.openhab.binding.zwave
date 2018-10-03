@@ -63,6 +63,24 @@ Dimmer 2<br /><h1>Overview</h1><p>FIBARO Dimmer 2 remotely controlled light dimm
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
         </properties>
       </channel>
+      <channel id="alarm_system" typeId="alarm_system">
+        <label>Alarm (Hardware Fail)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=SYSTEM</property>
+        </properties>
+      </channel>
+      <channel id="alarm_power" typeId="alarm_power">
+        <label>Alarm (Power)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="alarm_heat" typeId="alarm_heat">
+        <label>Alarm (Heat)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=HEAT</property>
+        </properties>
+      </channel>
       <channel id="switch_dimmer1" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
@@ -98,6 +116,24 @@ Dimmer 2<br /><h1>Overview</h1><p>FIBARO Dimmer 2 remotely controlled light dimm
         <label>Send notification</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_ALARM:1;event1=SMOKE:1,event2=ACCESS_CONTROL:22,event3=BURGLAR:1,event4=EMERGENCY:1,event5=EMERGENCY:2,event6=EMERGENCY:3</property>
+        </properties>
+      </channel>
+      <channel id="alarm_system1" typeId="alarm_system">
+        <label>Alarm (Hardware Fail)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:1;type=SYSTEM</property>
+        </properties>
+      </channel>
+      <channel id="alarm_power1" typeId="alarm_power">
+        <label>Alarm (Power)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:1;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="alarm_heat1" typeId="alarm_heat">
+        <label>Alarm (Heat)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:1;type=HEAT</property>
         </properties>
       </channel>
       <channel id="switch_dimmer2" typeId="switch_dimmer">

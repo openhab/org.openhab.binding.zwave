@@ -175,18 +175,18 @@ This parameter defines how frequently standard power ...<br /><h1>Overview</h1><
 
       <parameter name="config_45_1" type="integer" groupName="configuration"
                  min="1" max="255">
-        <label>45: Reporting Changes in energy consumed by controlled devices</label>
+        <label>45: Changes in energy consumed by controlled devices</label>
         <description><![CDATA[
-Reporting changes in energy consumed by controlled devices<br /><h1>Overview</h1><p>... New, reported energy value is calculated based on last reported<br />value. Default setting: 10 (0,1 kWh).<br />Available settings: 1 - 254 (0,01kWh - 2,54kWh).<br />Value of 255 - changes in consumed energy will not be reported.<br />Reports will be sent only in case of polling. </p>
+Reporting changes in energy consumed by controlled devices<br /><h1>Overview</h1><p>Reported energy value is calculated based on last reported value. Default setting: 10 (0,1 kWh).</p> <ul><li>Available settings: 1 - 254 (0,01kWh - 2,54kWh).</li> <li>Value of 255 - changes in consumed energy will not be reported.</li> <li>Reports will be sent only in case of polling.</li> </ul>
         ]]></description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_47_2" type="integer" groupName="configuration"
                  min="1" max="65534">
-        <label>47: Time Period between reports on power and energy consumption</label>
+        <label>47: Time between reports on power/energy consumption</label>
         <description><![CDATA[
-Time Period between reports on power and energy ...<br /><h1>Overview</h1><p>... consumption.</p> <p>Parameter defines time period between reports sent when changes<br />in power load have not been recorded. By default, if power load<br />changes have not been recorded, reports are sent every hour.<br />Default setting: 3 600 (s),<br />Available settings: 1 - 65534 (s)<br />Value of 65535 - no periodic reports. Reports will be sent only in<br />case of power load / energy consumption changes (parameters 40,<br />42, 43,45) or in case of polling.</p>
+Time Period between reports on power and energy ...<br /><h1>Overview</h1><p>... consumption.</p> <p>Parameter defines time period between reports sent when changes in power load have not been recorded. By default, if power load changes have not been recorded, reports are sent every hour.</p> <ul><li>Default setting: 3 600 (s),</li> <li>Available settings: 1 - 65534 (s)</li> <li>Value of 65535 - no periodic reports. Reports will be sent only in case of power load / energy consumption changes (parameters 40,<br />42, 43,45) or in case of polling.</li> </ul>
         ]]></description>
         <default>3600</default>
       </parameter>
@@ -268,7 +268,7 @@ Function is active only when parameter 61 is set to 0 or 1.<br /><h1>Overview</h
         <label>62: LED color when device is off</label>
         <default>8</default>
         <options>
-          <option value="0">LED ring is illuminated with a color corresponding to ...</option>
+          <option value="0">LED ring illuminated with color before turned off</option>
           <option value="1">White illumination</option>
           <option value="2">Red illumination</option>
           <option value="3">Green illumination</option>
@@ -366,7 +366,7 @@ This function allows for turning off the controlled device...<br /><h1>Overview<
     <description>  </description>
     <state pattern="%s">
       <options>
-        <option value="0">LED ring is illuminated with a color corresponding to ...</option>
+        <option value="0">LED ring illuminated with color before turned off</option>
         <option value="1">White illumination</option>
         <option value="2">Red illumination</option>
         <option value="3">Green illumination</option>

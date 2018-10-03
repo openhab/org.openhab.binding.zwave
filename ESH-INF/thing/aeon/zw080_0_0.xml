@@ -98,11 +98,11 @@ what type of notification to send to Group 1<br /><h1>Overview</h1><p>Enable to 
 
       <parameter name="config_252_1" type="integer" groupName="configuration"
                  min="0" max="1">
-        <label>252: Enable/disable Lock Configuration</label>
+        <label>252: Enable/disable Configuration Updates</label>
         <default>0</default>
         <options>
-          <option value="0">Setting of configuration parameters is allowed</option>
-          <option value="1">All configuration parameters cannot be set (Locked)</option>
+          <option value="0">Enabled</option>
+          <option value="1">Disabled</option>
         </options>
         <limitToOptions>false</limitToOptions>
       </parameter>
