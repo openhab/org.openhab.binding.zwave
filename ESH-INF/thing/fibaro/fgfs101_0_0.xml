@@ -7,7 +7,9 @@
 
   <thing-type id="fibaro_fgfs101_00_000" listed="false">
     <label>FGFS101 Flood Sensor</label>
-    <description>Flood Sensor</description>
+    <description><![CDATA[
+Flood Sensor<br /><h1>Overview</h1><p>Fibaro Flood Sensor is a universal flood and temperature sensor. Device can be battery (ca. 2 years battery life) or VDC powered (12 or 24 VDC).</p> <br /><h2>Inclusion Information</h2><p>Connect a DC power source to include the Fibaro Flood Sensor into the Z-Wave network in autoinclusion mode or triple click TMP button for manual inclusion.</p> <br /><h2>Exclusion Information</h2><p>Triple click TMP button</p> <br /><h2>Wakeup Information</h2><p>Triple click TMP button</p>
+    ]]></description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -78,13 +80,17 @@
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="0" max="3600">
         <label>1: Alarm Cancellation Delay</label>
-        <description>Time period (in seconds) that an alarm will still be indicated after the alarm condition has ceased.</description>
+        <description><![CDATA[
+Time alarm still indicated after alarm condition has ceased<br /><h1>Overview</h1><p>Time period (in seconds) that an alarm will still be indicated after the alarm condition has ceased.</p>
+        ]]></description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
-        <label>2: Acoustic and visual signals On / Off in case of flooding</label>
-        <description>Parameter allows for LED indicator and acoustic alarm deactivation in case of flooding detection</description>
+        <label>2: Acoustic/visual signals On/Off in case of flooding</label>
+        <description><![CDATA[
+LED indicator/acoustic alarm deactivation<br /><h1>Overview</h1><p>Parameter allows for LED indicator and acoustic alarm deactivation in case of flooding detection</p>
+        ]]></description>
         <default>3</default>
         <options>
           <option value="0">Acoustic and visual alarms inactive</option>
@@ -95,8 +101,10 @@
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
-        <label>5: Type of alarm frame sent to 1-st association group (FLOOD)</label>
-        <description>Parameter determines a type of command frame sent by the Sensor in case flooding has been detected or cancelled</description>
+        <label>5: Type alarm frame sent to 1-st assoc group</label>
+        <description><![CDATA[
+Type of cmd frame sent in case of flooding<br /><h1>Overview</h1><p>Parameter determines a type of command frame sent by the Sensor in case flooding has been detected or cancelled</p>
+        ]]></description>
         <default>255</default>
         <options>
           <option value="0">ALARM WATER</option>
@@ -107,13 +115,17 @@
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>7: Forced Level of Dimming group 1</label>
-        <description>Value of the parameter specifying the forced level of dimming / opening sun blinds when comes 'switch on' / 'open' command to devices from association group 1.</description>
+        <description><![CDATA[
+Parameter specifying forced level of dimming f. asoc grp 1<br /><h1>Overview</h1><p>Value of the parameter specifying the forced level of dimming / opening sun blinds when comes 'switch on' / 'open' command to devices from association group 1.</p>
+        ]]></description>
         <default>255</default>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration">
-        <label>9: Alarm cancelling or turning a device off (Basic) command frame deactivation</label>
-        <description>Set to 0 to disable all-clear basic set &amp; alarm frame generation. After flooding, device will keep reporting flooding even if flooding ceased.</description>
+        <label>9: Alarm cancelling or turning a device off</label>
+        <description><![CDATA[
+Disable all-clear basic set &amp; alarm frame generation<br /><h1>Overview</h1><p>Set to 0 to disable all-clear basic set &amp; alarm frame generation.  After flooding, device will keep reporting flooding even if flooding ceased.</p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">Alarm (flooding) cancellation inactive</option>
@@ -123,28 +135,32 @@
 
       <parameter name="config_10_2" type="integer" groupName="configuration"
                  min="1" max="32767">
-        <label>10: Interval between successive readings of temperature sensors</label>
-        <description>Interval between successive readings of temperature in seconds.</description>
+        <label>10: Interval betw. successive readings of temp sensors</label>
+        <description><![CDATA[
+Interval betw. successive readings of temperature<br /><h1>Overview</h1><p>Interval between successive readings of temperature in seconds.</p>
+        ]]></description>
         <default>300</default>
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="0" max="1000">
         <label>12: Insensitiveness to temperature changes.</label>
-        <description>Determines a minimum temperature change value (insensitivity level; def: 0,5C), resulting in a temperature report being sent to the main controller, according to the Parameter 10 settings</description>
+        <description><![CDATA[
+Minimum temperature change value<br /><h1>Overview</h1><p>Determines a minimum temperature change value (insensitivity level; def: 0,5C), resulting in a temperature report being sent to the main controller, according to the Parameter 10 settings</p>
+        ]]></description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Alarm BROADCAST</label>
         <description><![CDATA[
-Transmit the alarm or control frame in 'broadcast' mode. Information sent in this mode is not repeated by the mesh network.<br /><h1>Overview</h1><p><strong>NOTE:</strong> If the broadcast mode of information transmission is activated for a given alarm, then the information <strong>is not</strong> relayed through the mesh network.  It is only heard by directly reachable devices.</p>
+Transmit the alarm or control frame in 'broadcast' mode<br /><h1>Overview</h1><p>Transmit the alarm or control frame in 'broadcast' mode.  Information sent in this mode is not repeated by the mesh network.</p> <p><strong>NOTE:</strong> If the broadcast mode of information transmission is activated for a given alarm, then the information <strong>is not</strong> relayed through the mesh network.  It is only heard by directly reachable devices.</p>
         ]]></description>
         <default>0</default>
         <options>
           <option value="0">Broadcast inactive</option>
-          <option value="1">Flood broadcast mode active, Tamper broadcast mode inactive</option>
-          <option value="2">Flood broadcast mode inactive, Tamper broadcast mode active</option>
+          <option value="1">Flood broadcast active, Tamper broadcast inactive</option>
+          <option value="2">Flood broadcast inactive, Tamper broadcast active</option>
           <option value="3">Flood and Tamper broadcast mode active</option>
         </options>
       </parameter>
@@ -153,7 +169,7 @@ Transmit the alarm or control frame in 'broadcast' mode. Information sent in thi
                  min="-10000" max="10000">
         <label>50: Low temperature alarm threshold</label>
         <description><![CDATA[
-The parameter stores a temperature value (def. 15C), below which LED indicator blinks with a colour determined by a Parameter 61 settings. By default the LED indicator blinks blue.<br /><h1>Overview</h1><p>Negative numbers are encoded in U2 (two's compliment) standard.</p> <p>-1 actual temperature = 65535 reported</p> <p>-10000 = 55536</p> <p>-32768 = 32768</p> <p>32767 = 32767</p>
+Temperature value below which LED indicator blinks<br /><h1>Overview</h1><p>The parameter stores a temperature value (def. 15C), below which LED indicator blinks with a colour determined by a Parameter 61 settings. By default the LED indicator blinks blue.</p> <p>Negative numbers are encoded in U2 (two's compliment) standard.</p> <ul><li>-1 actual temperature = 65535 reported</li> <li>-10000 = 55536</li> <li>-32768 = 32768</li> <li>32767 = 32767</li> </ul>
         ]]></description>
         <default>1500</default>
       </parameter>
@@ -161,7 +177,9 @@ The parameter stores a temperature value (def. 15C), below which LED indicator b
       <parameter name="config_51_2" type="integer" groupName="configuration"
                  min="-10000" max="10000">
         <label>51: High temperature alarm threshold</label>
-        <description>The parameter stores a temperature value (def. 35C), above which LED indicator blinks with a colour determined by the Parameter 62 settings. By default the LED indicator blinks red</description>
+        <description><![CDATA[
+Temperature value above which LED indicator blinks<br /><h1>Overview</h1><p>The parameter stores a temperature value (def. 35C), above which LED indicator blinks with a colour determined by the Parameter 62 settings. By default the LED indicator blinks red</p>
+        ]]></description>
         <default>3500</default>
       </parameter>
 
@@ -185,25 +203,31 @@ Default is red (0x00FF0000). 65535 * Red + 256 * Green + Blue<br /><h1>Overview<
 
       <parameter name="config_63_1" type="integer" groupName="configuration">
         <label>63: Managing a LED indicator under standard operation</label>
-        <description>Parameter determines LED indicator’s operation. Set to 0 turns the indicator off, saving a battery life</description>
+        <description><![CDATA[
+Parameter determines LED indicator’s operation<br /><h1>Overview</h1><p>Parameter determines LED indicator’s operation. Set to 0 turns the indicator off, saving a battery life</p>
+        ]]></description>
         <default>2</default>
         <options>
           <option value="0">LED indicator doesn’t indicate the temperature</option>
-          <option value="1">LED indicator blinks temperature every measurement</option>
-          <option value="2">LED indicator indicates the temperature continuously</option>
+          <option value="1">LED blinks temperature every measurement</option>
+          <option value="2">LED indicates the temperature continuously</option>
         </options>
       </parameter>
 
       <parameter name="config_73_2" type="integer" groupName="configuration"
                  min="-10000" max="10000">
         <label>73: Temperature measurement compensation</label>
-        <description>Parameter stores a temperature value to be added to or deducted from the current temperature measured by internal temperature sensor in order to compensate the difference between air temperature and temperature at the floor level</description>
+        <description><![CDATA[
+Temperature value to compensate between air temp<br /><h1>Overview</h1><p>Parameter stores a temperature value to be added to or deducted from the current temperature measured by internal temperature sensor in order to compensate the difference between air temperature and temperature at the floor level</p>
+        ]]></description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_74_1" type="integer" groupName="configuration">
-        <label>74: Alarm frame sent to 2-nd Association Group activation</label>
-        <description>(MOVEMENT_TAMPER / BUTTON_TAMPER) The device is able to turn on alarms resulting from sensor’s vibrations e.g. when the sensor is moved, or the TMP button released. 2-nd Association Group alarms are not cancelled.</description>
+        <label>74: Alarm frame sent to 2-nd Assoc Grp</label>
+        <description><![CDATA[
+Aalarms resulting from sensor’s vibrations<br /><h1>Overview</h1><p>(MOVEMENT_TAMPER / BUTTON_TAMPER) The device is able to turn on alarms resulting from sensor’s vibrations e.g. when the sensor is moved, or the TMP button released. 2-nd Association Group alarms are not cancelled.</p>
+        ]]></description>
         <default>2</default>
         <options>
           <option value="0">Tamper alarms inactive</option>
@@ -224,19 +248,21 @@ Visual and audible alarm duration<br /><h1>Overview</h1><p>User can silence the 
 
       <parameter name="config_76_2" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>76: Alarm frame / basic set frame retransmission time when flooding</label>
+        <label>76: Alarm/basic retransmission time when flooding</label>
         <description><![CDATA[
-Parameter determines time period after which an alarm frame will be retransmitted. Value of 0 disables alarm frame retransmission.<br /><h1>Overview</h1><p><strong>NOTE:</strong> In case the time period set in this parameter is shorter than the one specified in parameter 75, the device will not quiet the alarm; it will remain active.</p>
+Time period after which alarm frames will be retransmitted<br /><h1>Overview</h1><p>Parameter determines time period after which an alarm frame will be retransmitted. Value of 0 disables alarm frame retransmission.</p> <p><strong>NOTE:</strong> In case the time period set in this parameter is shorter than the one specified in parameter 75, the device will not quiet the alarm; it will remain active.</p>
         ]]></description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_77_1" type="integer" groupName="configuration">
         <label>77: Flood sensor functionality turned off</label>
-        <description>Allows for turning of the internal flood sensor. Tamper and built in temperature sensor will remain active</description>
+        <description><![CDATA[
+Allows for turning of the internal flood sensor<br /><h1>Overview</h1><p>Allows for turning of the internal flood sensor. Tamper and built in temperature sensor will remain active</p>
+        ]]></description>
         <default>0</default>
         <options>
-          <option value="0">Default flood sensor operation (flood detection, reactions)</option>
+          <option value="0">Default flood sensor operation</option>
           <option value="1">Built in flood sensor TURNED OFF</option>
         </options>
       </parameter>

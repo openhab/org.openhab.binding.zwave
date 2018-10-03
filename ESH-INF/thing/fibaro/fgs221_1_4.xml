@@ -175,10 +175,10 @@ Enable/Disable operation associated to group 1<br /><h1>Overview</h1><p>Enable/D
         <label>30: Relay 1: Response to General Alarm</label>
         <default>3</default>
         <options>
-          <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON</option>
-          <option value="2">ALARM RELAY OFF</option>
-          <option value="3">ALARM FLASHING</option>
+          <option value="0">Deactivation - no response to alarm frames</option>
+          <option value="1">Alarm Relay ON</option>
+          <option value="2">Alarm Relay OFF</option>
+          <option value="3">Alarm Flashing</option>
         </options>
       </parameter>
 
@@ -186,9 +186,9 @@ Enable/Disable operation associated to group 1<br /><h1>Overview</h1><p>Enable/D
         <label>31: Relay 1: Response to Water Flood Alarm</label>
         <default>2</default>
         <options>
-          <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON</option>
-          <option value="2">ALARM RELAY OFF</option>
+          <option value="0">Deactivation - no response to alarm frames</option>
+          <option value="1">Alarm Relay ON</option>
+          <option value="2">Alarm Relay OFF</option>
           <option value="3">ALARM FLASHING</option>
         </options>
       </parameter>
@@ -198,8 +198,8 @@ Enable/Disable operation associated to group 1<br /><h1>Overview</h1><p>Enable/D
         <default>3</default>
         <options>
           <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON</option>
-          <option value="2">ALARM RELAY OFF</option>
+          <option value="1">Alarm Relay ON</option>
+          <option value="2">Alarm Relay OFF</option>
           <option value="3">ALARM FLASHING</option>
         </options>
       </parameter>
@@ -209,8 +209,8 @@ Enable/Disable operation associated to group 1<br /><h1>Overview</h1><p>Enable/D
         <default>1</default>
         <options>
           <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON</option>
-          <option value="2">ALARM RELAY OFF</option>
+          <option value="1">Alarm Relay ON</option>
+          <option value="2">Alarm Relay OFF</option>
           <option value="3">ALARM FLASHING</option>
         </options>
       </parameter>
@@ -227,8 +227,8 @@ Enable/Disable operation associated to group 1<br /><h1>Overview</h1><p>Enable/D
         <default>3</default>
         <options>
           <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON</option>
-          <option value="2">ALARM RELAY OFF</option>
+          <option value="1">Alarm Relay ON</option>
+          <option value="2">Alarm Relay OFF</option>
           <option value="3">ALARM FLASHING</option>
         </options>
       </parameter>
@@ -238,8 +238,8 @@ Enable/Disable operation associated to group 1<br /><h1>Overview</h1><p>Enable/D
         <default>2</default>
         <options>
           <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON</option>
-          <option value="2">ALARM RELAY OFF</option>
+          <option value="1">Alarm Relay ON</option>
+          <option value="2">Alarm Relay OFF</option>
           <option value="3">ALARM FLASHING</option>
         </options>
       </parameter>
@@ -260,8 +260,8 @@ Enable/Disable operation associated to group 1<br /><h1>Overview</h1><p>Enable/D
         <default>1</default>
         <options>
           <option value="0">DEACTIVATION - no response to alarm frames</option>
-          <option value="1">ALARM RELAY ON</option>
-          <option value="2">ALARM RELAY OFF</option>
+          <option value="1">Alarm Relay ON</option>
+          <option value="2">Alarm Relay OFF</option>
           <option value="3">ALARM FLASHING</option>
         </options>
       </parameter>
