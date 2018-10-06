@@ -194,7 +194,7 @@ Set automatically during the calibration process.<br /><h1>Overview</h1><p>The p
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="1" max="99">
-        <label>3: Incandescence level of dimmable compact fluorescent lamps</label>
+        <label>3: Incandescence level of dimmable fluorescent lamps</label>
         <description><![CDATA[
 Dimmer will set to this value after first switch on.<br /><h1>Overview</h1><p>Virtual value set as a percentage level between parameters MIN (1%) and MAX. (99%). The Dimmer will set to this value after first switch on. It is required for warming up and switching dimmable compact fluorescent lamps and certain types of light sources.</p>
         ]]></description>
@@ -203,7 +203,7 @@ Dimmer will set to this value after first switch on.<br /><h1>Overview</h1><p>Vi
 
       <parameter name="config_4_2" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>4: Incandescence time of dimmable compact fluorescent lamps</label>
+        <label>4: Incandescence time of dimmable fluorescent lamps</label>
         <description><![CDATA[
 Time for switching fluorescent lamps and certain light sources.<br /><h1>Overview</h1><p>This parameter determines the time required for switching compact fluorescent lamps and certain types of light sources. Setting this parameter to 0 will disable the incandescence functionality. Available settings: 0-255 (0s - 25,5s)</p>
         ]]></description>
@@ -258,9 +258,9 @@ Time of a dimming step at manual control.<br /><h1>Overview</h1><p>The parameter
 
       <parameter name="config_10_2" type="integer" groupName="configuration"
                  min="0" max="32767">
-        <label>10: Timer functionality (auto - off). 0 disables the function</label>
+        <label>10: Timer functionality (auto - off).</label>
         <description><![CDATA[
-Setting of the timer.<br /><h1>Overview</h1><p>The parameter defines the setting of the timer. Available settings:1-32767 - time to turn off measured in seconds (1s - 9,1h)</p>
+Setting of the timer.<br /><h1>Overview</h1><p>The parameter defines the setting of the timer.</p> <p>Available settings:</p> <ul><li>1-32767 - time to turn off measured in seconds (1s - 9,1h)</li> <li>0 disables the function</li> </ul>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -285,8 +285,8 @@ Force the calibration process<br /><h1>Overview</h1><p>Changing the value of thi
         <default>0</default>
         <options>
           <option value="0">readout</option>
-          <option value="1">force auto-calibration of the load without Fibaro Bypass</option>
-          <option value="2">force auto-calibration of the load with Fibaro Bypass</option>
+          <option value="1">Force auto-calibration of the load w/o Bypass</option>
+          <option value="2">Force auto-calibration of the load with Bypass</option>
         </options>
       </parameter>
 
@@ -313,7 +313,7 @@ Percentage value of power variation<br /><h1>Overview</h1><p>Percentage value of
 
       <parameter name="config_16_2" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>16: Time delay of a burnt out bulb or overload detection</label>
+        <label>16: Time delay of burnt out bulb/overload detection</label>
         <description><![CDATA[
 Delay for power variation detection<br /><h1>Overview</h1><p>Time of delay (in seconds) for power variation detection, interpreted as a LOAD ERROR or OVERLOAD detection (too much power connected to the Dimmer 2). 0 disables the function.</p>
         ]]></description>
@@ -373,7 +373,7 @@ Allow user to change [On-Off] bi-stable keys<br /><h1>Overview</h1><p>This funct
       </parameter>
 
       <parameter name="config_24_1" type="integer" groupName="configuration">
-        <label>24: Command frames sent in 2nd and 3rd association groups</label>
+        <label>24: Command frames sent in 2nd and 3rd assoc groups</label>
         <description><![CDATA[
 Actions not resulting in sending frames to association groups<br /><h1>Overview</h1><p>Parameter determines, which actions will not result in sending frames to association groups.</p>
         ]]></description>
@@ -389,7 +389,7 @@ Actions not resulting in sending frames to association groups<br /><h1>Overview<
       </parameter>
 
       <parameter name="config_25_1" type="integer" groupName="configuration">
-        <label>25: Command frames sent in 4th and 5th association groups</label>
+        <label>25: Command frames sent in 4th and 5th assoc groups</label>
         <description><![CDATA[
 Actions not resulting in sending frames to association groups<br /><h1>Overview</h1><p>Parameter determines, which actions will not result in sending frames to association groups.</p>
         ]]></description>
@@ -464,7 +464,7 @@ Param. sent in specified assoc. groups: secure or non-secure<br /><h1>Overview</
       </parameter>
 
       <parameter name="config_31_1" type="integer" groupName="configuration" readOnly="true">
-        <label>31: Load control mode recognized during auto-calibration</label>
+        <label>31: Load control mode recognized during auto-calibr.</label>
         <description>Load control mode recognized during auto-calibration</description>
         <default>0</default>
         <options>
@@ -517,8 +517,8 @@ Determine the trigger of auto-calibration procedure<br /><h1>Overview</h1><p>Thi
           <option value="0">No auto-calibration of the load after power on</option>
           <option value="1">Auto-calibration performed after first power on</option>
           <option value="2">Auto-calibration performed after each power on</option>
-          <option value="3">Auto-calibration performed after first power on/Load error</option>
-          <option value="4">Auto-calibration performed after power on/LOAD ERROR</option>
+          <option value="3">Auto-calibr. perfrmd after first pwr on/Load error</option>
+          <option value="4">Auto-calibr. perfrmd after pwr on/LOAD ERROR</option>
         </options>
       </parameter>
 

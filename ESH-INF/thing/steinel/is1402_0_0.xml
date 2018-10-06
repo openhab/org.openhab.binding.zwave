@@ -50,8 +50,8 @@ PIR sensor with relay<br /><h1>Overview</h1><p>PIR sensor with relay, mains powe
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
         </properties>
       </channel>
-      <channel id="alarm_burglar1" typeId="alarm_burglar">
-        <label>Alarm (burglar) motion</label>
+      <channel id="alarm_motion1" typeId="alarm_motion">
+        <label>Motion Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:1,COMMAND_CLASS_BASIC:1</property>
         </properties>
