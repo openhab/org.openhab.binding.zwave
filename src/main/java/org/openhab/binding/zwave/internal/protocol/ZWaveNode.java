@@ -291,6 +291,7 @@ public class ZWaveNode {
                 break;
         }
 
+        controller.notifyEventListeners(new ZWaveNodeStatusEvent(getNodeId(), state));
         nodeState = state;
     }
 
