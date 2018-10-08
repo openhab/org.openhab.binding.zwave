@@ -742,7 +742,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         if (controller == null) {
             return;
         }
-        controller.requestRemoveFailedNode(nodeId);
+        controller.requestSetFailedNode(nodeId);
     }
 
     public void reinitialiseNode(int nodeId) {
