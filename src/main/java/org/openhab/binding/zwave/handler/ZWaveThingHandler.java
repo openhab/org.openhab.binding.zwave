@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TimeZone;
 import java.util.concurrent.ScheduledFuture;
@@ -567,6 +568,14 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         Configuration configuration = editConfiguration();
         for (Entry<String, Object> configurationParameter : configurationParameters.entrySet()) {
             Object valueObject = configurationParameter.getValue();
+            // Ignore any configuration parameters that have not changed
+            if (Objects.equals(configurationParameter.getValue(), configuration.get(configurationParameter.getKey()))) {
+                logger.debug("NODE {}: Configuration update ignored {} to {} ({})", nodeId,
+                        configurationParameter.getKey(), valueObject,
+                        valueObject == null ? "null" : valueObject.getClass().getSimpleName());
+                continue;
+            }
+
             logger.debug("NODE {}: Configuration update set {} to {} ({})", nodeId, configurationParameter.getKey(),
                     valueObject, valueObject == null ? "null" : valueObject.getClass().getSimpleName());
             String[] cfg = configurationParameter.getKey().split("_");

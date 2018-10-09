@@ -269,8 +269,8 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
         logger.debug("NODE {}: Creating new message for command MULTI_ASSOCIATIONCMD_REMOVE", getNode().getNodeId());
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
-                MULTI_ASSOCIATIONCMD_REMOVE).withPayload(group, 0, node, endpoint).withPriority(TransactionPriority.Get)
-                        .build();
+                MULTI_ASSOCIATIONCMD_REMOVE).withPayload(group, 0, node, endpoint)
+                        .withPriority(TransactionPriority.Config).build();
     }
 
     /**
