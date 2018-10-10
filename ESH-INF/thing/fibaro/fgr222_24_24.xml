@@ -93,6 +93,30 @@ Roller Shutter 2<br /><h1>Overview</h1><p>The device allows for controlling moto
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: Local protection</label>
+        <description><![CDATA[
+Enables/disables local protection<br /><h1>Overview</h1><p>Enables/disables protection of local push button.<br />Once the local protection is activated, the module stops responding to S1 and S2 push buttons. SCENE ID and association commands will not be sent as well. The only exception is the B-button. Menu and Z-Wave network inclusion, after the B-button or S1 push button triple click, are still active.</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">No protection</option>
+          <option value="2">Local protection active</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration">
+        <label>2: Radio protection</label>
+        <description><![CDATA[
+Enables/disables RF protection<br /><h1>Overview</h1><p>Enables/disables RF protection. If activated device stops responding to command frames. Configuration and polling still possible.</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">No protection</option>
+          <option value="2">RF protection active</option>
+        </options>
+      </parameter>
+
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Reports type</label>
         <description>value should be set to 1 if the module operates in Venetian Blind mode.</description>
