@@ -33,7 +33,7 @@ FUGA Wall 4-way Switch with LED + Relay<br /><h1>Overview</h1><p>ZHC5010 is a wa
           <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
         </properties>
       </channel>
-      <channel id="indicator" typeId="indicator">
+      <channel id="indicator_raw" typeId="indicator_raw">
         <label>Button 1 Indicator</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_INDICATOR</property>
@@ -218,7 +218,7 @@ Pair Mode, upper two buttons<br /><h1>Overview</h1><p>Configuration of Pair Mode
         <default>50</default>
       </parameter>
 
-      <parameter name="config_8_1" type="integer" groupName="configuration" readOnly="true"
+      <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>8: Percentage of light in the LED #2 when On</label>
         <description>Configure the percentage of light in LED # 2, when the LED is turned on.</description>
@@ -287,7 +287,7 @@ How built-in relay is controlled<br /><h1>Overview</h1><p>This parameter configu
           <option value="10">Relay follows the state of button #2</option>
           <option value="11">Relay follows the state of button #3</option>
           <option value="12">Relay follows the state of button #4</option>
-          <option value="13">Relay is only controlled by commands sent to the root device</option>
+          <option value="13">Relay is controlled by commands to root device</option>
         </options>
       </parameter>
 
@@ -298,8 +298,8 @@ set the current light level for the actual LED or the level value can be stored<
         ]]></description>
         <default>1</default>
         <options>
-          <option value="0">Indicator Set level used to control the LED.</option>
-          <option value="1">Indicator Set level values and internal LED activations.</option>
+          <option value="0">Indicator Set used to control the LED.</option>
+          <option value="1">Indicator Set values and internal activations.</option>
         </options>
       </parameter>
 
@@ -584,12 +584,13 @@ Allow sending non-secure commands to association members if added securely<br />
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Sends Binary Switch Set (On/Off) when button #1 is used.</label>
+        <label>4: Sends Binary Switch Set when button #1 is used.</label>
+        <description>Sends Binary Switch Set (On/Off) when button #1 is used.</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Send Binary Toggle Switch Set when button #1 is used.</label>
+        <label>5: Send Binary Toggle Switch Set when button #1 used.</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
@@ -610,12 +611,13 @@ Allow sending non-secure commands to association members if added securely<br />
       </parameter>
 
       <parameter name="group_9" type="text" groupName="association" multiple="true">
-        <label>9: Sends Binary Switch Set (On/Off) when button #2 is used.</label>
+        <label>9: Sends Binary Switch Set when button #2 is used.</label>
+        <description>Sends Binary Switch Set (On/Off) when button #2 is used.</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_10" type="text" groupName="association" multiple="true">
-        <label>10: Send Binary Toggle Switch Set when button #2 is used.</label>
+        <label>10: Send Binary Toggle Switch Set when button #2 used.</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
@@ -636,12 +638,14 @@ Allow sending non-secure commands to association members if added securely<br />
       </parameter>
 
       <parameter name="group_14" type="text" groupName="association" multiple="true">
-        <label>14: Sends Binary Switch Set (On/Off) when button #3 is used.</label>
+        <label>14: Sends Binary Switch Set when button #3 is used.</label>
+        <description>Sends Binary Switch Set (On/Off) when button #3 is used.</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_15" type="text" groupName="association" multiple="true">
-        <label>15: Send Binary Toggle Switch Set when button #3 is used.</label>
+        <label>15: Send Binary Toggle Switch Set when button #3 used.</label>
+        <description>Send Binary Toggle Switch Set when button #3 is used.</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
@@ -662,12 +666,13 @@ Allow sending non-secure commands to association members if added securely<br />
       </parameter>
 
       <parameter name="group_19" type="text" groupName="association" multiple="true">
-        <label>19: Sends Binary Switch Set (On/Off) when button #4 is used</label>
+        <label>19: Sends Binary Switch Set when button #4 is used</label>
+        <description>Sends Binary Switch Set (On/Off) when button #4 is used</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_20" type="text" groupName="association" multiple="true">
-        <label>20: Send Binary Toggle Switch Set when button #4 is used</label>
+        <label>20: Send Binary Toggle Switch Set when button #4 used</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

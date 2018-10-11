@@ -6,7 +6,7 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="zwaveme_fgr316_00_000" listed="false">
-    <label>Haseman FGR-316-DIN DIN Rail 6x2kW Universal Switch / 4xInputs</label>
+    <label>FGR-316 DIN Rail 6x2kW Universal Switch / 4xInputs</label>
     <description><![CDATA[
 DIN Rail 6x2kW Universal Switch / 4xInputs<br /><h1>Overview</h1><ul><li>6CH relay switch (max. 16A)</li> <li>Digital temperature sensor</li> <li>Digital input</li> <li>2x analogue inputs 0-10V and 4-20mA (for general use)</li> </ul><br /><h2>Inclusion Information</h2><p>Push 3 times</p> <br /><h2>Exclusion Information</h2><p>Push 3 times</p> <br /><h2>Wakeup Information</h2><p>Push 3 times</p>
     ]]></description>
@@ -120,9 +120,9 @@ DIN Rail 6x2kW Universal Switch / 4xInputs<br /><h1>Overview</h1><ul><li>6CH rel
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Z-Wave.Me</property>
-      <property name="modelId">Haseman FGR-316-DIN</property>
+      <property name="modelId">FGR-316</property>
       <property name="manufacturerId">0115</property>
-      <property name="manufacturerRef">0110:0001,0115:0001</property>
+      <property name="manufacturerRef">0111:0001,0116:0001</property>
       <property name="dbReference">734</property>
     </properties>
 

@@ -96,7 +96,7 @@ Roller Shutter<br /><h1>Overview</h1><p>Fibaro Roller Shutter is a universal, Z-
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Local protection</label>
         <description><![CDATA[
-Enables/disables local entry<br /><h1>Overview</h1><p>Enables/disables local entry. If activated module stops responding to S1 and S2 push buttons, SCENE ID and association commands will not be sent. Only exception is the B-button.</p>
+Enables/disables local protection<br /><h1>Overview</h1><p>Enables/disables local entry. If activated module stops responding to S1 and S2 push buttons, SCENE ID and association commands will not be sent. Only exception is the B-button.</p>
         ]]></description>
         <default>255</default>
         <options>
