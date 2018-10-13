@@ -78,6 +78,21 @@
         </state>
     </channel-type>
 
+    <!-- Emergency Alarm Channel -->
+    <channel-type id="alarm_emergency">
+        <item-type>Switch</item-type>
+        <label>Emergency alarm</label>
+        <description>Indicates Police, Fire, or Medical services should be contacted
+        </description>
+        <category></category>
+        <state readOnly="true">
+            <options>
+                <option value="ON">EMERGENCY</option>
+                <option value="OFF">OK</option>
+            </options>
+        </state>
+    </channel-type>
+
     <!-- Entry Alarm Channel -->
     <channel-type id="alarm_entry">
         <item-type>Switch</item-type>
@@ -92,7 +107,6 @@
             </options>
         </state>
     </channel-type>
-
 
     <!-- Flood Alarm Channel -->
     <channel-type id="alarm_flood">

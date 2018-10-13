@@ -139,6 +139,14 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         events.put(NotificationEvent.CO2__CO2_DETECTED_UNKNOWN, OnOffType.ON);
         events.put(NotificationEvent.CO2__CO2_ALARM_TEST, OnOffType.ON);
         notifications.put("alarm_co2", events);
+
+        // Emergency alarms
+        events = new HashMap<NotificationEvent, State>();
+        events.put(NotificationEvent.EMERGENCY__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.EMERGENCY__CONTACT_FIRE, OnOffType.ON);
+        events.put(NotificationEvent.EMERGENCY__CONTACT_POLICE, OnOffType.ON);
+        events.put(NotificationEvent.EMERGENCY__CONTACT_MEDICAL, OnOffType.ON);
+        notifications.put("alarm_emergency", events);
     }
 
     /**
