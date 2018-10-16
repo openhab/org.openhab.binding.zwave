@@ -1386,11 +1386,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         }
                     }
 
-                    // Set ourselves online if we have the final thing type set
                     if (finalTypeSet) {
-                        logger.debug("NODE {}: Setting ONLINE", nodeId);
-                        updateStatus(ThingStatus.ONLINE);
-
                         // Now that this node is initialised, we want to re-process all channels
                         initialiseNode();
                     }
