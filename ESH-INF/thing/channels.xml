@@ -414,12 +414,18 @@
         <category></category>
     </channel-type>
 
-    <!-- Color Temperature Channel -->
+    <!-- Door Lock Channel -->
     <channel-type id="lock_door">
         <item-type>Switch</item-type>
         <label>Door Lock</label>
         <description>Lock and unlock the door</description>
         <category>Door</category>
+        <state>
+            <options>
+                <option value="ON">Locked</option>
+                <option value="OFF">Unlocked</option>
+            </options>
+        </state>
     </channel-type>
 
     <!-- Energy - Current Consumption -->
