@@ -37,11 +37,14 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
         implements ZWaveCommandClassInitialization, ZWaveCommandClassDynamicState {
     public enum Type {
+        DOOR_CONDITION,
         DOOR_LOCK_STATE,
         DOOR_LOCK_TIMEOUT
     }
 
     private static final Logger logger = LoggerFactory.getLogger(ZWaveDoorLockCommandClass.class);
+
+    private static final int MAX_SUPPORTED_VERSION = 1;
 
     static final int DOOR_LOCK_SET = 1;
     /**
@@ -83,6 +86,7 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
      */
     public ZWaveDoorLockCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
+        versionMax = MAX_SUPPORTED_VERSION;
     }
 
     @Override
@@ -119,19 +123,22 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
     public void handleDoorLockReport(ZWaveCommandClassPayload payload, int endpoint) {
         dynamicDone = true;
 
-        int lockState = payload.getPayloadByte(2);
+        int lockMode = payload.getPayloadByte(2);
         int handlesMode = payload.getPayloadByte(3);
         int doorCondition = payload.getPayloadByte(4);
         int statusTimeoutMinutes = payload.getPayloadByte(5);
         int statusTimeoutSeconds = payload.getPayloadByte(6);
 
-        DoorLockStateType doorLockState = DoorLockStateType.getDoorLockStateType(lockState);
+        DoorLockStateType doorLockState = DoorLockStateType.getDoorLockStateType(lockMode);
         logger.debug(
                 "NODE {}: Door-Lock state report - lockState={}, handlesMode={}, doorCondition={}, timeoutMinutes={}, timeoutSeconds={}",
                 getNode().getNodeId(), doorLockState.label, handlesMode, doorCondition, statusTimeoutMinutes,
                 statusTimeoutSeconds);
         ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
-                CommandClass.COMMAND_CLASS_DOOR_LOCK, lockState, Type.DOOR_LOCK_STATE);
+                CommandClass.COMMAND_CLASS_DOOR_LOCK, lockMode, Type.DOOR_LOCK_STATE);
+        getController().notifyEventListeners(zEvent);
+        zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint, CommandClass.COMMAND_CLASS_DOOR_LOCK,
+                doorCondition, Type.DOOR_CONDITION);
         getController().notifyEventListeners(zEvent);
     }
 

@@ -1428,7 +1428,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 case SUC_ROUTE:
                 case DELETE_ROUTES:
                 case RETURN_ROUTES:
+                    break;
                 case DONE:
+                    updateStatus(ThingStatus.ONLINE);
                     break;
                 default:
                     if (finalTypeSet) {

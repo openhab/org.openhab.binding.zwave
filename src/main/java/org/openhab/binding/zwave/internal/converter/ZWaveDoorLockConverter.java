@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.smarthome.core.library.types.OnOffType;
+import org.eclipse.smarthome.core.library.types.OpenClosedType;
 import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
@@ -57,21 +58,48 @@ public class ZWaveDoorLockConverter extends ZWaveCommandClassConverter {
 
     @Override
     public State handleEvent(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
-        if (event.getType() != ZWaveDoorLockCommandClass.Type.DOOR_LOCK_STATE) {
+        logger.debug("NODE {}: Handle door lock event {}", event.getNodeId(), event.getType());
+
+        switch ((ZWaveDoorLockCommandClass.Type) event.getType()) {
+            case DOOR_LOCK_STATE:
+                return handleEventLockState(channel, event);
+            case DOOR_CONDITION:
+                return handleEventCondition(channel, event);
+            default:
+                return null;
+        }
+    }
+
+    private State handleEventLockState(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
+        if (!channel.getUID().getId().equals("lock_door")) {
             return null;
         }
 
-        State state = null;
         switch (channel.getDataType()) {
             case OnOffType:
-                state = (Integer) event.getValue() == 0x00 ? OnOffType.OFF : OnOffType.ON;
-                break;
+                return (Integer) event.getValue() == 0x00 ? OnOffType.OFF : OnOffType.ON;
             default:
                 logger.warn("No conversion in {} to {}", this.getClass().getSimpleName(), channel.getDataType());
                 break;
         }
 
-        return state;
+        return null;
+    }
+
+    private State handleEventCondition(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
+        if (!channel.getUID().getId().equals("sensor_door")) {
+            return null;
+        }
+
+        switch (channel.getDataType()) {
+            case OpenClosedType:
+                return ((Integer) event.getValue() & 0x01) == 0x00 ? OpenClosedType.OPEN : OpenClosedType.CLOSED;
+            default:
+                logger.warn("No conversion in {} to {}", this.getClass().getSimpleName(), channel.getDataType());
+                break;
+        }
+
+        return null;
     }
 
     @Override
