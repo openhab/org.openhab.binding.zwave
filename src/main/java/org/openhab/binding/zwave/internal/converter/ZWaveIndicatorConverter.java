@@ -44,6 +44,23 @@ public class ZWaveIndicatorConverter extends ZWaveCommandClassConverter {
     }
 
     @Override
+    public List<ZWaveCommandClassTransactionPayload> executeRefresh(ZWaveThingChannel channel, ZWaveNode node) {
+        ZWaveIndicatorCommandClass commandClass = (ZWaveIndicatorCommandClass) node
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_INDICATOR, channel.getEndpoint());
+        if (commandClass == null) {
+            return null;
+        }
+
+        logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
+                commandClass.getCommandClass(), channel.getEndpoint());
+        ZWaveCommandClassTransactionPayload serialMessage = node.encapsulate(commandClass.getValueMessage(),
+                channel.getEndpoint());
+        List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>(1);
+        response.add(serialMessage);
+        return response;
+    }
+
+    @Override
     public State handleEvent(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
         String indicatorType = channel.getArguments().get("type");
 
