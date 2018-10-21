@@ -86,8 +86,8 @@ Defines the status of the output O1/O2 after 1 Click<br /><h1>Overview</h1><p>De
         <options>
           <option value="0">IN_OUT</option>
           <option value="1">TOGGLE</option>
-          <option value="2">ON</option>
-          <option value="3">OFF</option>
+          <option value="2">On</option>
+          <option value="3">Off</option>
           <option value="4">IGNORE</option>
         </options>
       </parameter>
@@ -100,8 +100,8 @@ Defines the status of the output O1/O2 after 2 Clicks<br /><h1>Overview</h1><p>D
         <default>1</default>
         <options>
           <option value="1">TOGGLE</option>
-          <option value="2">ON</option>
-          <option value="3">OFF</option>
+          <option value="2">On</option>
+          <option value="3">Off</option>
           <option value="4">IGNORE</option>
         </options>
       </parameter>

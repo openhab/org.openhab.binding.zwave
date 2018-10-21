@@ -100,8 +100,8 @@ turns relay off once voltage exceeds 16.5A for over 5 secs if enabled<br /><h1>O
         <default>0</default>
         <options>
           <option value="0">Previous setting</option>
-          <option value="1">ON</option>
-          <option value="2">OFF</option>
+          <option value="1">On</option>
+          <option value="2">Off</option>
         </options>
       </parameter>
 

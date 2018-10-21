@@ -99,8 +99,8 @@ Range is from 0.1 to 10°C 1=0.1°C 100=10°C<br /><h1>Overview</h1><p>Default v
         <description>0=Disabled 1=Enabled</description>
         <default>1</default>
         <options>
-          <option value="0">disabled</option>
-          <option value="1">enabled</option>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
         </options>
       </parameter>
 
@@ -109,8 +109,8 @@ Range is from 0.1 to 10°C 1=0.1°C 100=10°C<br /><h1>Overview</h1><p>Default v
         <description>0=Disabled 1=Enabled</description>
         <default>1</default>
         <options>
-          <option value="0">disabled</option>
-          <option value="1">enabled</option>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
         </options>
       </parameter>
 

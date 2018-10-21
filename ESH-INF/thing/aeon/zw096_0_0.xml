@@ -92,8 +92,8 @@ Current overload protection enable<br /><h1>Overview</h1><p>Current Overload Pro
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">disabled</option>
-          <option value="1">enabled</option>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
         </options>
       </parameter>
 
@@ -217,8 +217,8 @@ Enables/disables parameter 91 and 92<br /><h1>Overview</h1><p>Enables/disables p
         ]]></description>
         <default>1</default>
         <options>
-          <option value="0">disabled</option>
-          <option value="1">enabled</option>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
         </options>
       </parameter>
 
@@ -337,8 +337,8 @@ Enable/disable Configuration Locked (0 =disable, 1 = enable).<br /><h1>Overview<
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">disabled</option>
-          <option value="1">enabled</option>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
         </options>
       </parameter>
 

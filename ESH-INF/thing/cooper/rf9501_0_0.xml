@@ -94,8 +94,8 @@ Value to be transmitted to devices in association group<br /><h1>Overview</h1><p
         <description>Power Up State of the switch</description>
         <default>1</default>
         <options>
-          <option value="1">OFF</option>
-          <option value="2">ON</option>
+          <option value="1">Off</option>
+          <option value="2">On</option>
           <option value="3">Last State</option>
         </options>
       </parameter>
@@ -105,8 +105,8 @@ Value to be transmitted to devices in association group<br /><h1>Overview</h1><p
         <description>Enables this switch to participate in panic mode</description>
         <default>1</default>
         <options>
-          <option value="1">OFF</option>
-          <option value="2">ON</option>
+          <option value="1">Off</option>
+          <option value="2">On</option>
         </options>
       </parameter>
 

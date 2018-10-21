@@ -140,8 +140,8 @@ All ON/OFF behaviour<br /><h1>Overview</h1><p>0 - React on All ON/All OFF</p> <p
         <description>Autolevel behavior</description>
         <default>0</default>
         <options>
-          <option value="0">OFF</option>
-          <option value="1">ON</option>
+          <option value="0">Off</option>
+          <option value="1">On</option>
           <option value="2">Use with motion sensor</option>
         </options>
         <advanced>true</advanced>
@@ -272,7 +272,7 @@ Sets sensor for dimmer control<br /><h1>Overview</h1><p>0 - off</p> <p>1 - senso
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">OFF</option>
+          <option value="0">Off</option>
           <option value="1">Sensor 1</option>
           <option value="2">Sensor 2</option>
         </options>

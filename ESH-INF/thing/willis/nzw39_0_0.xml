@@ -75,8 +75,8 @@ Dimming Plug<br /><h1>Overview</h1><p>Z-Wave Plug/Dimmer w/Built-in Z-Wave Repea
         <description>Turn LED indicator ON when light is ON (paddle switch only)</description>
         <default>1</default>
         <options>
-          <option value="0">OFF</option>
-          <option value="1">ON</option>
+          <option value="0">Off</option>
+          <option value="1">On</option>
           <option value="2">Disabled</option>
           <option value="3">Always ON</option>
         </options>

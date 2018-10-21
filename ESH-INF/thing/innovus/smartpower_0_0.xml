@@ -72,8 +72,8 @@ Enable/Disable BO IR Support<br /><h1>Overview</h1><p>BO IR support is disabled 
         ]]></description>
         <default>1</default>
         <options>
-          <option value="0">disabled</option>
-          <option value="1">enabled</option>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
         </options>
       </parameter>
 
