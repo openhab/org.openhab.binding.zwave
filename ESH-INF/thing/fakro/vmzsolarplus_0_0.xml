@@ -208,8 +208,8 @@ Restore default config values<br /><h1>Overview</h1><p>Restore default config va
         <description>Autoexclude</description>
         <default>1</default>
         <options>
-          <option value="1">off</option>
-          <option value="2">on</option>
+          <option value="1">Off</option>
+          <option value="2">On</option>
         </options>
       </parameter>
 

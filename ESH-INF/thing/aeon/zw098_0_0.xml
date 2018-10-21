@@ -82,8 +82,8 @@ Allow external switch to toggle bulb<br /><h1>Overview</h1><p>Enable/disable the
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">disabled</option>
-          <option value="1">enabled</option>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
         </options>
       </parameter>
 
@@ -94,8 +94,8 @@ Allow external switch to change color<br /><h1>Overview</h1><p>Enable/disable th
         ]]></description>
         <default>1</default>
         <options>
-          <option value="0">disabled</option>
-          <option value="1">enabled</option>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
         </options>
       </parameter>
 
@@ -214,8 +214,8 @@ Color index configuration for multi mode (7,8)<br /><h1>Overview</h1><p>The colo
         <description>Enable/disable the ability to configure the device.</description>
         <default>0</default>
         <options>
-          <option value="0">disabled</option>
-          <option value="1">enabled</option>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
         </options>
       </parameter>
 

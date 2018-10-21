@@ -32,12 +32,6 @@ Motion Sensor<br /><h1>Overview</h1><p>Door/Window Contact and Motion Detector w
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="lock_door" typeId="lock_door">
-        <label></label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_DOOR_LOCK</property>
-        </properties>
-      </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
         <properties>

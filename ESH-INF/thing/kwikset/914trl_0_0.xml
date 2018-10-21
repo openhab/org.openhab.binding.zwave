@@ -71,8 +71,8 @@ Beeping sound enabled.<br /><h1>Overview</h1><p>Beeping sound enabled. When disa
         ]]></description>
         <default>1</default>
         <options>
-          <option value="0">OFF</option>
-          <option value="1">ON</option>
+          <option value="0">Off</option>
+          <option value="1">On</option>
         </options>
       </parameter>
 
@@ -83,8 +83,8 @@ Automatically re-locks door 30 seconds after unlocking.<br /><h1>Overview</h1><p
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">OFF</option>
-          <option value="1">ON</option>
+          <option value="0">Off</option>
+          <option value="1">On</option>
         </options>
       </parameter>
 
@@ -95,8 +95,8 @@ Door lock status LED blinks every 6 seconds.<br /><h1>Overview</h1><p>Door lock 
         ]]></description>
         <default>1</default>
         <options>
-          <option value="0">OFF</option>
-          <option value="1">ON</option>
+          <option value="0">Off</option>
+          <option value="1">On</option>
         </options>
       </parameter>
 

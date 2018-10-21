@@ -86,8 +86,8 @@ Disabling the zir010 trom sending commands unsolicited<br /><h1>Overview</h1><p>
         ]]></description>
         <default>1</default>
         <options>
-          <option value="0">disabled</option>
-          <option value="1">enabled</option>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
         </options>
       </parameter>
 

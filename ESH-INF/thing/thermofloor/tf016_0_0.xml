@@ -91,7 +91,7 @@ Defines Operation Mode of thermostat<br /><h1>Overview</h1><p>0....OFF(0x00)</p>
         ]]></description>
         <default>1</default>
         <options>
-          <option value="0">OFF</option>
+          <option value="0">Off</option>
           <option value="1">Heat</option>
           <option value="2">Cool</option>
           <option value="11">Energy Save Heat</option>

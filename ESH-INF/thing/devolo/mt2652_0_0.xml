@@ -27,12 +27,6 @@ Scene Switch<br /><h1>Overview</h1><p>The Home Control Wall Switch lets you cont
           <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
         </properties>
       </channel>
-      <channel id="lock_door" typeId="lock_door">
-        <label></label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_DOOR_LOCK</property>
-        </properties>
-      </channel>
       <channel id="battery-level" typeId="system.battery-level">
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>

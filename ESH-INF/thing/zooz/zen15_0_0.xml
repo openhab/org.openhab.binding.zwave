@@ -101,8 +101,8 @@ Overload protection.<br /><h1>Overview</h1><p>Overload protection will turn the 
         <default>0</default>
         <options>
           <option value="0">Previous state</option>
-          <option value="1">ON</option>
-          <option value="2">OFF</option>
+          <option value="1">On</option>
+          <option value="2">Off</option>
         </options>
       </parameter>
 

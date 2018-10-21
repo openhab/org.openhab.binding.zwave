@@ -59,7 +59,7 @@ Basic setting command to be transmitted<br /><h1>Overview</h1><p>When the water 
         ]]></description>
         <default>99</default>
         <options>
-          <option value="0">OFF</option>
+          <option value="0">Off</option>
           <option value="1">Dim level (lower bound) (multilevel switch)</option>
           <option value="99">Dim level (upper bound) (multilevel switch)</option>
           <option value="255">ON (Binary switch)</option>

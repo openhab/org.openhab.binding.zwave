@@ -51,7 +51,7 @@
         <options>
           <option value="0">off/on</option>
           <option value="1">on/off</option>
-          <option value="2">off</option>
+          <option value="2">Off</option>
         </options>
       </parameter>
 

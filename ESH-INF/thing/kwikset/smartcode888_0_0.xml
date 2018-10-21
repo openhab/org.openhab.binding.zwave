@@ -99,8 +99,8 @@ Allows user to get/set the value for the Interior Status LED control<br /><h1>Ov
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">OFF</option>
-          <option value="1">ON</option>
+          <option value="0">Off</option>
+          <option value="1">On</option>
         </options>
       </parameter>
 
@@ -111,8 +111,8 @@ Enables or disables automatically re-locking of door<br /><h1>Overview</h1><p>Th
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">OFF</option>
-          <option value="1">ON</option>
+          <option value="0">Off</option>
+          <option value="1">On</option>
         </options>
       </parameter>
 
@@ -138,8 +138,8 @@ Allows the user to get/set the audio feed back command<br /><h1>Overview</h1><p>
         ]]></description>
         <default>1</default>
         <options>
-          <option value="0">OFF</option>
-          <option value="1">ON</option>
+          <option value="0">Off</option>
+          <option value="1">On</option>
         </options>
       </parameter>
 
@@ -162,8 +162,8 @@ Allows the device to send motor load alarms<br /><h1>Overview</h1><p>The configu
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">OFF</option>
-          <option value="1">ON</option>
+          <option value="0">Off</option>
+          <option value="1">On</option>
         </options>
       </parameter>
 

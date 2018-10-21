@@ -169,7 +169,7 @@ Available configuration parameters for input switch I1<br /><h1>Overview</h1><ul
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">disabled</option>
+          <option value="0">Disabled</option>
           <option value="2">IR ext relay ctrl – mono stable push btn</option>
           <option value="3">IR external relay control – bi-stable switch</option>
           <option value="4">External relay control – mono stable push button</option>
