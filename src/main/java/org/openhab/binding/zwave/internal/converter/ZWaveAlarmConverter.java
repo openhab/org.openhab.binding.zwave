@@ -105,9 +105,11 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         // Tamper alarms
         events = new HashMap<NotificationEvent, State>();
         events.put(NotificationEvent.HOME_SECURITY__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.SYSTEM__NONE, OnOffType.OFF);
         events.put(NotificationEvent.HOME_SECURITY__TAMPER, OnOffType.ON);
         events.put(NotificationEvent.HOME_SECURITY__TAMPER_MOVED, OnOffType.ON);
         events.put(NotificationEvent.HOME_SECURITY__TAMPER_INVALID_CODE, OnOffType.ON);
+        events.put(NotificationEvent.SYSTEM__TAMPERING, OnOffType.ON);
         notifications.put("alarm_tamper", events);
 
         // Battery alarms
@@ -467,7 +469,10 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         SYSTEM__HARDWARE_FAILURE("SYSTEM", 1),
         SYSTEM__SOFTWARE_FAILURE("SYSTEM", 2),
         SYSTEM__HARDWARE_FAILURE_MANUFACTURER_CODE("SYSTEM", 3),
-        SYSTEM__SOFTWARE_FAILURE_MANUFACTURER_CODE("SYSTEM", 3),
+        SYSTEM__SOFTWARE_FAILURE_MANUFACTURER_CODE("SYSTEM", 4),
+        SYSTEM__HEARTBEAT("SYSTEM", 5),
+        SYSTEM__TAMPERING("SYSTEM", 6),
+        SYSTEM__EMERGENCY_SHUTOFF("SYSTEM", 7),
 
         EMERGENCY__NONE("EMERGENCY", 0),
         EMERGENCY__CONTACT_POLICE("EMERGENCY", 1),

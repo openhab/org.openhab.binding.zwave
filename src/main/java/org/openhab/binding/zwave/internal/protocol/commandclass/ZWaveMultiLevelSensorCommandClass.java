@@ -8,6 +8,7 @@
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -240,6 +241,34 @@ public class ZWaveMultiLevelSensorCommandClass extends ZWaveCommandClass
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 SENSOR_MULTILEVEL_GET).withPayload(outputData.toByteArray()).withPriority(TransactionPriority.Get)
                         .withExpectedResponseCommand(SENSOR_MULTILEVEL_REPORT).build();
+    }
+
+    /**
+     * Sends a sensor report
+     *
+     * @param sensorType
+     * @param scale
+     * @param value
+     * @return
+     */
+    public ZWaveCommandClassTransactionPayload getReportMessage(SensorType sensorType, int scale, BigDecimal value) {
+        logger.debug("NODE {}: Creating new message for command SENSOR_MULTILEVEL_REPORT, Set {} to {} with scale {}",
+                getNode().getNodeId(), sensorType, value, scale);
+
+        ByteArrayOutputStream outputData = new ByteArrayOutputStream();
+        outputData.write(sensorType.getKey());
+        try {
+            byte[] encodedValue = encodeValue(value);
+            encodedValue[0] |= (scale << 3) & 0x18;
+            outputData.write(encodedValue);
+        } catch (ArithmeticException | IOException e) {
+            logger.debug("Error converting {}. ", value, e);
+            return null;
+        }
+
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                SENSOR_MULTILEVEL_REPORT).withPayload(outputData.toByteArray()).withPriority(TransactionPriority.Set)
+                        .build();
     }
 
     @Override
