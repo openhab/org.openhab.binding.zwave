@@ -18,8 +18,8 @@
           <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
         </properties>
       </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm</label>
+      <channel id="alarm_motion" typeId="alarm_motion">
+        <label>Motion Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
         </properties>
@@ -69,14 +69,19 @@ Motion Sensor<br /><h1>Overview</h1><p>Detect Motion</p>
         </options>
       </parameter>
 
-      <parameter name="config_18_1" type="integer" groupName="configuration">
+      <parameter name="config_18_1" type="integer" groupName="configuration"
+                 min="1" max="60">
         <label>18: PIR Timeout Duration</label>
-        <description>PIR Timeout Duration</description>
+        <description>PIR Timeout Duration in Minutes</description>
         <default>60</default>
         <options>
-          <option value="1">1 min to 60 min</option>
-          <option value="255">5 seconds</option>
+          <option value="1">1 Minute</option>
+          <option value="2">2 Minutes</option>
+          <option value="5">5 Minutes</option>
+          <option value="10">10 Minutes</option>
+          <option value="255">Test Mode [5 seconds]</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_20_1" type="integer" groupName="configuration">

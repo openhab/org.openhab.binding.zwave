@@ -8,6 +8,7 @@
   <thing-type id="somfy_zrtsivnode_00_000" listed="false">
     <label>ZRTSI-VNODE Z-Wave to RTS Interface Virtual Node</label>
     <description>Z-Wave to RTS Interface Virtual Node</description>
+    <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
