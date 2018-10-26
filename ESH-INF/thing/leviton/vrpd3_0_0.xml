@@ -28,7 +28,7 @@ Scene Capable Plug-in Dimmer<br /><h1>Overview</h1><ul><li>Smart plug-in module 
       <property name="vendor">Leviton</property>
       <property name="modelId">VRPD3</property>
       <property name="manufacturerId">001D</property>
-      <property name="manufacturerRef">1705:0334,1706:0334</property>
+      <property name="manufacturerRef">1705:0334,1706:0334,5893:0820</property>
       <property name="dbReference">199</property>
       <property name="defaultAssociations">1</property>
     </properties>

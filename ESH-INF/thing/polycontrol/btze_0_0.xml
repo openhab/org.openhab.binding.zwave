@@ -8,7 +8,7 @@
   <thing-type id="polycontrol_btze_00_000" listed="false">
     <label>Danalock V3-BTZE Z-Wave controlled door lock with Bluetooth Smart</label>
     <description><![CDATA[
-Z-Wave controlled door lock with Bluetooth Smart<br /><h1>Overview</h1><p>Danalock supports:</p> <ul><li>S0/S2 Z-Wave Security</li> <li>Bluetooth Smart</li> <li>Twist Assist</li> <li>Auto Lock</li> <li>Hold And Release</li> <li>Back To Back </li> </ul><br /><h2>Inclusion Information</h2><p>To add or include the Danalock into a Z-Wave network</p> <ol><li> <p>Set the controller in inclusion mode</p> </li> <li> <p>Push the switch once.</p> </li> <li> <p>Wait 5 seconds. </p> </li> </ol><br /><h2>Exclusion Information</h2><p>To remove or exclude the Danalock into a Z-Wave network</p> <ol><li> <p>Set the controller in exclusion mode</p> </li> <li> <p>Push the switch once.</p> </li> <li> <p>Wait 5 seconds. </p> </li> </ol>
+Z-Wave controlled door lock with Bluetooth Smart<br /><h1>Overview</h1><p>Danalock supports:</p> <ul><li>S0/S2 Z-Wave Security</li> <li>Bluetooth Smart</li> <li>Twist Assist</li> <li>Auto Lock</li> <li>Hold And Release</li> <li>Back To Back </li> </ul><br /><h2>Inclusion Information</h2><p>To add or include the Danalock into a Z-Wave network</p> <ol><li>Pair the lock with bluetooth first</li> <li> <p>Set the controller in inclusion mode</p> </li> <li> <p>Push the switch once.</p> </li> <li> <p>Wait 5 seconds. </p> </li> </ol><br /><h2>Exclusion Information</h2><p>To remove or exclude the Danalock into a Z-Wave network</p> <ol><li>Delete the lock within the app (bluetooth)</li> <li> <p>Set the controller in exclusion mode</p> </li> <li> <p>Push the switch once.</p> </li> <li> <p>Wait 5 seconds. </p> </li> </ol>
     ]]></description>
     <category>Lock</category>
 
