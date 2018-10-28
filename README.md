@@ -384,4 +384,4 @@ log4j2.appender.Zwave.strategy.type = DefaultRolloverStrategy
 log4j2.appender.Zwave.strategy.max = 10
 ```
 
-An online logviewer that presents the log file in a clearer way in order to help understanding the logs is available [here](https://www.cd-jackson.com/index.php/openhab/zwave-log-viewer).
+An online logviewer that presents the log file in a clearer way in order to help their understanding, is available [here](https://www.cd-jackson.com/index.php/openhab/zwave-log-viewer).
