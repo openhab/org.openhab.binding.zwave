@@ -8,6 +8,7 @@
   <thing-type id="aeon_dsb29_00_000" listed="false">
     <label>DSB29 Door/Window sensor Gen2</label>
     <description>Door/Window sensor Gen2</description>
+    <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

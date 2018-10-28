@@ -8,6 +8,7 @@
   <thing-type id="enerwave_zw20rm_00_000" listed="false">
     <label>ZW20RM In-wall Smart Meter Duplex Receptacle</label>
     <description>In-wall Smart Meter Duplex Receptacle</description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -64,7 +65,7 @@
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: </label>
+        <label>1: Synchronization of load power and LED indicator</label>
         <description>Synchronization of load power and LED indicator</description>
         <default>0</default>
         <options>
@@ -75,27 +76,27 @@
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>8: </label>
+        <label>8: Instant Meter Autosend Interval</label>
         <description>Instant Energy Autosend Interval (send METER_REPORT)</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>9: </label>
+        <label>9: Instant Sensor Autosend interval</label>
         <description>Instant Energy Autosend interval (send SENSOR_MULTILEVEL_REPORT)</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>10: </label>
+        <label>10: Accumulated Meter Autosend Interval</label>
         <description>Accumulated Energy Autosend Interval report (send METER_REPORT)</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration">
-        <label>11: </label>
+        <label>11: Enable automatic notifications</label>
         <description><![CDATA[
 Enable automatic notifications to associated device<br /><h1>Overview</h1><p>Device will send a notification whenever the is a wattage change</p>
         ]]></description>
@@ -110,7 +111,7 @@ Enable automatic notifications to associated device<br /><h1>Overview</h1><p>Dev
 
       <parameter name="config_12_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>12: </label>
+        <label>12: Minimum change to report</label>
         <description><![CDATA[
 Minimum change in wattage report<br /><h1>Overview</h1><p>0-255: 0.0-25.5W</p>
         ]]></description>

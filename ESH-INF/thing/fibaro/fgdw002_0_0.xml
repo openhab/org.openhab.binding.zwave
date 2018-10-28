@@ -15,27 +15,33 @@ Fibaro Door Window Sensor 2<br /><h1>Overview</h1><p>FIBARO Door/Window Sensor 2
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="sensor_temperature" typeId="sensor_temperature">
-        <label>Sensor (temperature)</label>
+        <label>Sensor (Temperature)</label>
         <properties>
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="alarm_tamper" typeId="alarm_tamper">
-        <label>Tamper alarm</label>
+        <label>Alarm (Tamper)</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR, event=3</property>
         </properties>
       </channel>
       <channel id="sensor_door" typeId="sensor_door">
-        <label>Door sensor</label>
+        <label>Sensor (Door)</label>
         <properties>
           <property name="binding:*:OpenClosedType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
         </properties>
       </channel>
       <channel id="alarm_power" typeId="alarm_power">
-        <label>Alarm (power)</label>
+        <label>Alarm (Power)</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="alarm_heat" typeId="alarm_heat">
+        <label>Alarm (Heat)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=HEAT</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -147,7 +153,7 @@ Associations in Z-Wave network Security Mode<br /><h1>Overview</h1><p>This param
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>12: Value of ON command frame sent to 2nd association group</label>
+        <label>12: Value of ON command sent to 2nd association group</label>
         <description><![CDATA[
 Value of ON command frame sent to 2nd association group<br /><h1>Overview</h1><p>Value sent to devices in 2nd association group when opening is detected The value of 0 turns OFF the device, 255 turns it ON. In case of associating devices allowing smooth control, values 1-99 allow to set an associated device to a specified level.</p>
         ]]></description>
@@ -156,7 +162,7 @@ Value of ON command frame sent to 2nd association group<br /><h1>Overview</h1><p
 
       <parameter name="config_13_2" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>13: Value of OFF command frame sent to 2nd association group</label>
+        <label>13: Value of OFF command sent to 2nd association group</label>
         <description><![CDATA[
 Value of OFF command frame sent to 2nd association group<br /><h1>Overview</h1><p>Value sent to devices in 2nd association group when closing is detected The value of 0 turns OFF the device, 255 turns it ON. In case of associating devices allowing smooth control, values 1-99 allow to set an associated device to a specified level.</p>
         ]]></description>
