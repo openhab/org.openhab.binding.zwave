@@ -5,10 +5,10 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="fibaro_fgs211_00_000" listed="false">
+  <thing-type id="fibaro_fgs211_02_001" listed="false">
     <label>FGS211 Relay Switch 1x3kW</label>
     <description><![CDATA[
-Relay Switch 1x3kW<br /><h1>Overview</h1><p>Remotely Controlled Relay Switch of Fibaro System is designed to operate in a wall switch box or in locations where the control of an electric device (up to 3kW) is needed.<br />It is also possible to send a signal to any system that is to be integrated with Fibaro system.</p> <br /><h2>Inclusion Information</h2><p>Add Fibaro Switch to the network by pushing three times key no. 1 or push-button B located inside the housing of the device. For toggle switch perform 3 position changes.</p> <br /><h2>Exclusion Information</h2><p>Remove Fibaro Switch from the network by pushing three times key no. 1 or push-button B located inside the housing of the device. For toggle switch perform 3 position changes.</p>
+Relay Switch 1x3kW<br /><h1>Overview</h1><p>Remotely Controlled Relay Switch of Fibaro System is designed to operate in a wall switch box or in locations where the control of an electric device is needed.</p> <p>It is also possible to send a signal to any system that is to be integrated with Fibaro system.</p> <br /><h2>Inclusion Information</h2><p>Add Fibaro Switch to the network by pushing three times key no. 1 or push-button B located inside the housing of the device. For toggle switch perform 3 position changes.</p> <br /><h2>Exclusion Information</h2><p>Remove Fibaro Switch from the network by pushing three times key no. 1 or push-button B located inside the housing of the device. For toggle switch perform 3 position changes.</p>
     ]]></description>
     <category>WallSwitch</category>
 
@@ -34,8 +34,8 @@ Relay Switch 1x3kW<br /><h1>Overview</h1><p>Remotely Controlled Relay Switch of 
       <property name="modelId">FGS211</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0400:0102,0400:0104,0400:0105,0400:0106,0400:0107,0400:0108,0400:0109,0400:100A,0400:300A,0402:3002</property>
-      <property name="versionMax">2.0</property>
-      <property name="dbReference">120</property>
+      <property name="versionMin">2.1</property>
+      <property name="dbReference">920</property>
       <property name="defaultAssociations">3</property>
     </properties>
 
@@ -76,13 +76,13 @@ Relay Switch 1x3kW<br /><h1>Overview</h1><p>Remotely Controlled Relay Switch of 
         </options>
       </parameter>
 
-      <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="0" max="255">
-        <label>4: Relay 1: OFF-delay time (10ms steps)</label>
+      <parameter name="config_4_2" type="integer" groupName="configuration"
+                 min="0" max="65535">
+        <label>4: Relay 1: OFF-delay time (100ms steps)</label>
         <description><![CDATA[
-Automatic turning off relay 1 after set time<br /><h1>Overview</h1><p>Automatic turning off relay 1 after set time, in 10ms increments (default: 200ms)</p>
+Automatic turning off relay 1 after set time<br /><h1>Overview</h1><p>Automatic turning off relay 1 after set time, in 100ms increments: 0=disabled (default), 65535=6535,5 secs</p>
         ]]></description>
-        <default>20</default>
+        <default>0</default>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
