@@ -371,8 +371,8 @@ log4j2.logger.Zwave.appenderRef.Zwave.ref = ZWAVE
 ### Zwave custom appender
 log4j2.appender.Zwave.name = ZWAVE
 log4j2.appender.Zwave.type = RollingRandomAccessFile
-log4j2.appender.Zwave.fileName = /opt/openhab2/userdata/logs/zwave.log
-log4j2.appender.Zwave.filePattern = /opt/openhab2/userdata/logs/zwave.log.%i
+log4j2.appender.Zwave.fileName = ${openhab.logdir}/zwave.log
+log4j2.appender.Zwave.filePattern = ${openhab.logdir}/zwave.log.%i
 log4j2.appender.Zwave.immediateFlush = true
 log4j2.appender.Zwave.append = true
 log4j2.appender.Zwave.layout.type = PatternLayout
@@ -384,4 +384,4 @@ log4j2.appender.Zwave.strategy.type = DefaultRolloverStrategy
 log4j2.appender.Zwave.strategy.max = 10
 ```
 
-An online logviewer that helps understanding the logs is available [here](https://www.cd-jackson.com/index.php/openhab/zwave-log-viewer).
+An online viewer that presents the logs in a clearer way in order to help with their understanding, is available [here](https://www.cd-jackson.com/index.php/openhab/zwave-log-viewer).
