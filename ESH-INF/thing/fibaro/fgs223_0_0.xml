@@ -93,7 +93,7 @@ Double Switch 2<br /><h1>Overview</h1><p>FIBARO Switch 2 is designed to be insta
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGS223</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0203:1000,0203:2000,0203:3000</property>
+      <property name="manufacturerRef">0203:1000,0203:2000,0203:3000,0203:4000</property>
       <property name="dbReference">416</property>
       <property name="defaultAssociations">1</property>
     </properties>
