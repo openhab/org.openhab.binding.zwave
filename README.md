@@ -344,13 +344,21 @@ If the device is listed as *Unknown*, then the device has not been fully discove
 
 Z-Wave is a complex protocol, and there are many manufacturers producing thousands of devices that are expected to interact seemlessly. In the most part, this does work as hoped, however there are always devices with bugs, or features that don't work as expected. When this happens, the debug logging from the binding is the key to understanding, and ultimately solving, any issues.
 
+When providing a debug log, provide the full log; don't filter anything out. Provide the log with plenty of context before and after the event you're trying to troubleshoot. Sometimes the root cause of the problem happens considerably beforehand. If the log file is too big to include in your forum post, place it on a file-sharing service, and include a link to the file in your post.
+
 To enable debug logging, log on to the console and enter the following command -:
 
 ```
-log:set debug org.openhab.binding.zwave
+log:set DEBUG org.openhab.binding.zwave
 ```
 
-This will put all logging into the standard ```openhab.log``` file.  If you prefer to have all ZWave logging in a separate file, put this in your ```userdata/etc/org.ops4j.pax.logging.cfg``` file.
+To disable debug logging, enter the following command -:
+
+```
+log:set INFO org.openhab.binding.zwave
+```
+
+By default, this will put all logging into the standard ```openhab.log``` file.  If you prefer to have all ZWave logging in a separate file, put this in your ```userdata/etc/org.ops4j.pax.logging.cfg``` file.
 
 ```
 ### Zwave custom logger
@@ -373,7 +381,7 @@ log4j2.appender.Zwave.policies.type = Policies
 log4j2.appender.Zwave.policies.size.type = SizeBasedTriggeringPolicy
 log4j2.appender.Zwave.policies.size.size = 10MB
 log4j2.appender.Zwave.strategy.type = DefaultRolloverStrategy
-log4j2.appender.Zwave.strategy.max = 20
+log4j2.appender.Zwave.strategy.max = 10
 ```
 
 An online logviewer that helps understanding the logs is available [here](https://www.cd-jackson.com/index.php/openhab/zwave-log-viewer).
