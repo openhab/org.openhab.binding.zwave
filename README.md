@@ -346,7 +346,7 @@ Z-Wave is a complex protocol, and there are many manufacturers producing thousan
 
 When providing a debug log, provide the full log; don't filter anything out. Provide the log with plenty of context before and after the event you're trying to troubleshoot. Sometimes the root cause of the problem happens considerably beforehand. If the log file is too big to include in your forum post, place it on a file-sharing service, and include a link to the file in your post.
 
-To enable debug logging, log on to the console and enter the following command -:
+To enable debug logging, log on to the [console](https://www.openhab.org/docs/administration/console.html) and enter the following command -:
 
 ```
 log:set DEBUG org.openhab.binding.zwave
