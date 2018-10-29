@@ -6,20 +6,14 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeotec_zwa005_00_000" listed="false">
-    <label>ZWA005 TriSensor</label>
+    <label>ZWA005 Motion, light, and temperature sensor</label>
     <description><![CDATA[
-TriSensor<br /><h1>Overview</h1><p>Aeotec TriSensor is a universal Z-Wave Plus compatible product, consists of temperature, lighting and motion sensors, powered by a CR123A battery. It can be included and operated in any Z-Wave network with other Z-Wave certified devices from other manufacturers and/or other applications. By the built-in motion sensor, an alarm will be sent to the gateway when the motion sensor is triggered.</p> <br /><h2>Inclusion Information</h2><p>Press once TriSensor’s Action Button. If it is the first installation, the yellow LED will keep solid until whole network processing is complete. If successful, the LED will flash white -&gt; green -&gt; white -&gt; green, after 2 seconds finished. If failed, the yellow LED lasts for 30 seconds, then the green LED flashes once. If it is the S2 encryption network, please enter the first 5 digits of DSK.</p> <br /><h2>Exclusion Information</h2><p>Press once TriSensor’s Action Button, the Purple LED will keep solid until whole network processing is complete. If the exclusion is successful, the LED will flash white -&gt; green - &gt;white -&gt; green and then LED will pulse a blue. If failed, the yellow LED lasts for 30 seconds, then the green LED flashes once.</p> <br /><h2>Wakeup Information</h2><p>Press and hold the button at least 2s until Red Led is on and then release the button,device will send wakeup notification to controller if device is in a Z-Wave network.</p>
+Motion, light, and temperature sensor<br /><h1>Overview</h1><p>Aeotec TriSensor is a universal Z-Wave Plus compatible product, consists of temperature, lighting and motion sensors, powered by a CR123A battery. It can be included and operated in any Z-Wave network with other Z-Wave certified devices from other manufacturers and/or other applications. By the built-in motion sensor, an alarm will be sent to the gateway when the motion sensor is triggered.</p> <br /><h2>Inclusion Information</h2><p>Press once TriSensor’s Action Button. If it is the first installation, the yellow LED will keep solid until whole network processing is complete. If successful, the LED will flash white -&gt; green -&gt; white -&gt; green, after 2 seconds finished. If failed, the yellow LED lasts for 30 seconds, then the green LED flashes once. If it is the S2 encryption network, please enter the first 5 digits of DSK.</p> <br /><h2>Exclusion Information</h2><p>Press once TriSensor’s Action Button, the Purple LED will keep solid until whole network processing is complete. If the exclusion is successful, the LED will flash white -&gt; green - &gt;white -&gt; green and then LED will pulse a blue. If failed, the yellow LED lasts for 30 seconds, then the green LED flashes once.</p> <br /><h2>Wakeup Information</h2><p>Press and hold the button at least 2s until Red Led is on and then release the button,device will send wakeup notification to controller if device is in a Z-Wave network.</p>
     ]]></description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Binary Sensor</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
-        </properties>
-      </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
@@ -32,8 +26,8 @@ TriSensor<br /><h1>Overview</h1><p>Aeotec TriSensor is a universal Z-Wave Plus c
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=LUMINANCE</property>
         </properties>
       </channel>
-      <channel id="alarm_burglar" typeId="alarm_burglar">
-        <label>Alarm (burglar)</label>
+      <channel id="alarm_motion" typeId="alarm_motion">
+        <label>Motion Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
         </properties>
@@ -52,6 +46,7 @@ TriSensor<br /><h1>Overview</h1><p>Aeotec TriSensor is a universal Z-Wave Plus c
       <property name="manufacturerId">0371</property>
       <property name="manufacturerRef">0102:0005,0202:0005</property>
       <property name="dbReference">921</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -311,7 +306,7 @@ Calibration coefficient for light measurements<br /><h1>Overview</h1><p>This con
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Controlling Group</label>
+        <label>2: Motion Alarm</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p>Group 2 is controlling group, all nodes associated in this group will be controlled through BASIC_SET command by the device when device detects a movement event. Basic Set Value is decided by Configuration Parameter 6.</p>
         ]]></description>
@@ -319,7 +314,7 @@ Calibration coefficient for light measurements<br /><h1>Overview</h1><p>This con
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Controlling Group</label>
+        <label>3: Temperature Alarm</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p>Group 3 is controlling group, all nodes associated in this group will be controlled through BASIC_SET command by the device when device detects a movement event. Basic Set Value is decided by Configuration Parameter 6.</p>
         ]]></description>
