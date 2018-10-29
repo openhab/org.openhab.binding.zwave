@@ -8,7 +8,7 @@
   <thing-type id="tkb_tz74_00_000" listed="false">
     <label>TZ74 Insert two channel switch module</label>
     <description><![CDATA[
-Insert two channel switch module<br /><h2>Inclusion Information</h2><p>Have Z-Wave Controller entered inclusion mode. Pressing On/Off button three times within 1.5 seconds will enter inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>Have Z-Zwave controller entered exclusion mode. Pressing On/Off button three times within 1.5 seconds will enter exclusion mode.</p>
+Insert two channel switch module<br /><h2>Inclusion Information</h2><p>Have Z-Wave Controller entered inclusion mode. Pressing On/Off button three times within 1.5 seconds will enter inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>Have Z-Wave controller entered exclusion mode. Pressing On/Off button three times within 1.5 seconds will enter exclusion mode.</p>
     ]]></description>
     <category>WallSwitch</category>
 
