@@ -153,7 +153,7 @@ Multi-socket PowerNode (6-plug)<br /><h1>Overview</h1><p>This Configuration is f
       <property name="vendor">GreenWave Reality Inc.</property>
       <property name="modelId">GWPN6</property>
       <property name="manufacturerId">0099</property>
-      <property name="manufacturerRef">0003:0004</property>
+      <property name="manufacturerRef">0003:0004,0003:0006</property>
       <property name="dbReference">100</property>
       <property name="commandClass:COMMAND_CLASS_MULTI_CHANNEL">useDestination=true</property>
       <property name="defaultAssociations">3</property>

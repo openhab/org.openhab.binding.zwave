@@ -5,19 +5,20 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="philio_pan08_00_000" listed="false">
-    <label>PAN08 Relay Insert for Blind Control</label>
-    <description>Relay Insert for Blind Control</description>
+  <thing-type id="zipato_pan08_00_000" listed="false">
+    <label>PAN08 roller shutter</label>
+    <description><![CDATA[
+roller shutter<br /><h1>Overview</h1><p>Roller shutter micromodule</p> <br /><h2>Inclusion Information</h2><p>Put your Z-Wave controller into inclusion mode by following the instructions provided by the controller manufacturer.</p> <p>Pressing Include button three times within 2 seconds will enter inclusion mode. </p> <br /><h2>Exclusion Information</h2><p>Put the Z-Wave Controller in exclusion mode.</p> <p>Pressing Include button three times within 2 seconds will enter exclusion mode.</p> <p>Node ID has been excluded.</p>
+    ]]></description>
     <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="blinds_control" typeId="blinds_control">
-        <label>Blinds Control</label>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:StopMoveType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:UpDownType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -32,6 +33,18 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
         </properties>
       </channel>
+      <channel id="meter_current" typeId="meter_current">
+        <label>Electric meter (amps)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_A</property>
+        </properties>
+      </channel>
+      <channel id="meter_voltage" typeId="meter_voltage">
+        <label>Electric meter (volts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_V</property>
+        </properties>
+      </channel>
       <channel id="meter_watts" typeId="meter_watts">
         <label>Electric meter (watts)</label>
         <properties>
@@ -44,18 +57,6 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_Power_Factor</property>
         </properties>
       </channel>
-      <channel id="meter_voltage" typeId="meter_voltage">
-        <label>Electric meter (volts)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_V</property>
-        </properties>
-      </channel>
-      <channel id="meter_current" typeId="meter_current">
-        <label>Electric meter (amps)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_A</property>
-        </properties>
-      </channel>
       <channel id="alarm_general" typeId="alarm_general">
         <label>Alarm</label>
         <properties>
@@ -66,11 +67,11 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Philio Technology Corp</property>
+      <property name="vendor">Zipato</property>
       <property name="modelId">PAN08</property>
-      <property name="manufacturerId">013C</property>
-      <property name="manufacturerRef">0001:0006</property>
-      <property name="dbReference">175</property>
+      <property name="manufacturerId">0131</property>
+      <property name="manufacturerRef">0001:0015</property>
+      <property name="dbReference">924</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
