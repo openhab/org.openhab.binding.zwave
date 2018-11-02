@@ -176,9 +176,6 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
         lockTimeoutSet = timeoutEnabled;
         if (lockTimeoutSet == true) {
             lockTimeoutMinutes = timeoutValue / 60;
-            if (lockTimeoutMinutes == 0) {
-                lockTimeoutMinutes = 0xfe;
-            }
             lockTimeoutSeconds = timeoutValue % 60;
         } else {
             lockTimeout = 0;
