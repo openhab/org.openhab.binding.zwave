@@ -8,7 +8,7 @@
   <thing-type id="aeon_zw100_01_010" listed="false">
     <label>ZW100 Multisensor 6</label>
     <description><![CDATA[
-Multisensor 6<br /><h1>Overview</h1><p>RESET - Press and hold for 20 seconds</p> <ul><li>Reset MultiSensor to factory default:<br />1. Press and hold the Action Button for 20 seconds.<br />2. If holding time more than one second, the LED will blink faster and faster. If holding time more than<br />20 seconds, the LED will be on for 2 seconds, which indicates reset is success, otherwise please<br />repeat step 2.</li> <li>Note:<br />1, This procedure should only be used when the primary controller is inoperable.<br />2, Reset MultiSensor to factory default settings, it will:<br />a ), let the MultiSensor to be excluded in Z-Wave network;<br />b), delete the Association settings;<br />c), restore the Configuration settings to the default.  </li> </ul><br /><h2>Inclusion Information</h2><h1>Click one time</h1> <p>1. Send non-security Node Info frame  </p> <ul><li>Add MultiSensor into Z-Wave network(non-security inclusion):<br />1. Power on MultiSensor. The MultiSensor’s LED will blink slowly when you short press the Action<br />Button.<br />2. Let the primary controller into inclusion mode (If you don’t know how to do this, refer to its manual).<br />3. Press the Action Button.<br />4. If the inclusion is success, MultiSensor’s LED will be kept turning on for 8 seconds when you short<br />press the Action Button. If the LED is still in slow blink, in which you need to repeat the process from<br />step 2.</li> </ul><h1>Short press 2 times within 1 second</h1> <ul><li>1. Send Security Node Info frame.<br />2. Add MultiSensor into z-wave network(Security inclusion):<br />1. Power on MultiSensor. The MultiSensor’s LED will blink slowly when you short press the Action<br />Button.<br />2. Let the primary controller into inclusion mode (If you don’t know how to do this, refer to its manual).<br />3. Press the Action Button.<br />4. If the inclusion is success, MultiSensor’s LED will be kept turning on for 8 seconds when you short<br />press the Action Button. If the LED is still in slow blink, in which you need to repeat the process from<br />step 2. </li> </ul><br /><h2>Exclusion Information</h2><p>Remove MultiSensor from Z-wave network:<br />1. Power on MultiSensor. The MultiSensor’s LED will be kept turning on for 8 seconds when you short<br />press the Action Button.<br />2. Let the primary controller into exclusion mode (If you don’t know how to do this, refer to its manual).<br />3. Press the Action Button.<br />4. If the exclusion is success, MultiSensor’s LED will blink slowly when you short press the Action<br />Button. If MultiSensor’s LED still keeps on status, in which you need to repeat the process from step 2.  </p> <br /><h2>Wakeup Information</h2><h1>Press and hold for 3 seconds</h1> <p>Enable/disable wake up for 10 minutes.<br />(When it is enabled, the orange Led will fast blink) </p>
+Multisensor 6<br /><h1>Overview</h1><p>Battery or USB powered PIR motion sensor, operating distance: Up to 500 feet/150 metres outdoors.</p> <br /><h2>Inclusion Information</h2><p>Click one time</p> <p>Send non-security Node Info frame, add MultiSensor into Z-Wave network (non-securre inclusion):</p> <ol><li>Power on MultiSensor. The MultiSensor’s LED will blink slowly when you short press the Action Button.</li> <li>Let the primary controller into inclusion mode (If you don’t know how to do this, refer to its manual).</li> <li>Press the Action Button.</li> <li>If the inclusion is success, MultiSensor’s LED will be kept turning on for 8 seconds when you short press the Action Button. If the LED is still in slow blink, in which you need to repeat the process from step 2.</li> </ol><p>Short press 2 times within 1 second</p> <p>Send Security Node Info frame, add MultiSensor into z-wave network (seciure inclusion):</p> <ol><li>Power on MultiSensor. The MultiSensor’s LED will blink slowly when you short press the Action Button.</li> <li>Let the primary controller into inclusion mode (If you don’t know how to do this, refer to its manual).</li> <li>Press the Action Button.</li> <li>If the inclusion is success, MultiSensor’s LED will be kept turning on for 8 seconds when you short press the Action Button. If the LED is still in slow blink, in which you need to repeat the process from step 2.</li> </ol><br /><h2>Exclusion Information</h2><p>Remove MultiSensor from Z-wave network:</p> <ol><li>Power on MultiSensor. The MultiSensor’s LED will be kept turning on for 8 seconds when you short press the Action Button.</li> <li>Let the primary controller into exclusion mode (If you don’t know how to do this, refer to its manual).</li> <li>Press the Action Button.</li> <li>If the exclusion is success, MultiSensor’s LED will blink slowly when you short press the Action Button. If MultiSensor’s LED still keeps on status, in which you need to repeat the process from step 2.</li> </ol><br /><h2>Wakeup Information</h2><p>Press and hold for 3 seconds: Enable/disable wake up for 10 minutes (when it is enabled, the orange Led will fast blink)</p>
     ]]></description>
     <category>Sensor</category>
 
@@ -99,7 +99,7 @@ Stay awake for 10 minutes at power on<br /><h1>Overview</h1><p>Enable/Disable wa
                  min="10" max="3600">
         <label>3: Motion Sensor reset timeout</label>
         <description><![CDATA[
-Motion Sensor reset timeout<br /><h1>Overview</h1><ol><li>The default PIR time is 4 minutes. The Multisensor will send BASIC SET CC (0x00) to the associated nodes if no motion is triggered again in 4 minutes.</li> <li>Range: 10~3600.</li> </ol><p><strong>Note</strong>:</p> <ol><li>The time unit is second if the value range is in 10 to 255.</li> <li>If the value range is in 256 to 3600, the time unit will be minute and its value should follow the below rules:<br />a), Interval time =Value/60, if the interval time can be divided by 60 and without remainder.<br />b), Interval time= (Value/60) +1, if the interval time can be divided by 60 and has remainder.</li> <li>Other values will be ignored.</li> </ol>
+Motion Sensor reset timeout<br /><h1>Overview</h1><ol><li>The default PIR time is 4 minutes. The Multisensor will send BASIC SET CC (0x00) to the associated nodes if no motion is triggered again in 4 minutes.</li> <li>Range: 10~3600.</li> </ol><p><strong>Note</strong>:</p> <ol><li>The time unit is second if the value range is in 10 to 255.</li> <li>If the value range is in 256 to 3600, the time unit will be minute and its value should follow the below rules:<br />a) Interval time =Value/60, if the interval time can be divided by 60 and without remainder.<br />b) Interval time= (Value/60) +1, if the interval time can be divided by 60 and has remainder.</li> <li>Other values will be ignored.</li> </ol>
         ]]></description>
         <default>240</default>
       </parameter>
@@ -138,7 +138,7 @@ Motion Sensor reset timeout<br /><h1>Overview</h1><ol><li>The default PIR time i
                  min="0" max="65535">
         <label>9: Report the current power mode</label>
         <description><![CDATA[
-Report the current power mode and the product state of battery power mode<br /><h1>Overview</h1><p>Value1 (MSB): 0x00=USB power mode, 0x01=Battery power mode</p> <p>Value2 (LSB): 0x00=keep sleep state for Battery power mode, 0x01=keep awake for 10 minutes for battery power mode</p> <p>NOTE: this parameter cannot be used as Get/Set usage</p>
+Report the current power mode and the product state of battery power mode<br /><h1>Overview</h1><p>Value1 (MSB): 0x00=USB power mode, 0x01=Battery power mode<br />Value2 (LSB): 0x00=keep sleep state for Battery power mode, 0x01=keep awake for 10 minutes for battery power mode</p> <p>NOTE: this parameter cannot be used as Get/Set usage</p>
         ]]></description>
         <default>0</default>
         <advanced>true</advanced>
@@ -189,16 +189,13 @@ Select to report on thresholds<br /><h1>Overview</h1><p>Enable/disable the selec
 Temperature change threshold<br /><h1>Overview</h1><p>Threshold change in temperature to induce an automatic report.<br /><strong>Note</strong>:</p> <ol><li>The unit is Fahrenheit for US version, Celsius for EU/AU version.</li> <li>High byte is the threshold value. Low byte is the unit (0x01=Celsius, 0x02=Fahrenheit).</li> <li>The threshold value (high byte) contains one decimal point. E.g. if the value is set to 20 (0x1401), the threshold value =2.0°C (EU/AU version) or if the value is set to 20 (0x1402), the threshold value=2.0 °F (US version). When the current temperature gap is more then 2.0, which will induce a temperature report to be sent out.</li> </ol>
         ]]></description>
         <default>20</default>
-        <options>
-          <option value="0">Temperature Threshold Unit</option>
-        </options>
         <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_41_4_0000FF00" type="integer" groupName="configuration">
         <label>41: Temperature Threshold Unit</label>
         <description><![CDATA[
-Sets the unit of the threshold<br /><h1>Overview</h1><p>According to specs, only 2 values are allowed in the lower word:</p> <p>(0x0100=Celsius, 0x0200=Fahrenheit). </p> <p>This translates to the fact, that only the upper byte of the lower word is used with only 2 values allowed:</p> <p>1= Celsius</p> <p>2= Fahrenheit</p>
+Sets the unit of the threshold<br /><h1>Overview</h1><p>0x0100=Celsius, 0x0200=Fahrenheit, 1= Celsius, 2= Fahrenheit</p>
         ]]></description>
         <default>1</default>
         <options>
@@ -211,7 +208,7 @@ Sets the unit of the threshold<br /><h1>Overview</h1><p>According to specs, only
                  min="0" max="100">
         <label>41: Temperature Threshold</label>
         <description><![CDATA[
-Threshold change in temperature to induce an automatic report.<br /><h1>Overview</h1><p>It seems that only the lower byte of the upper word is used for temperature threshold.</p>
+Threshold change in temperature to induce an automatic report.<br /><h1>Overview</h1><p>Lower byte of the upper word is used for temperature threshold.</p>
         ]]></description>
         <default>0</default>
         <limitToOptions>false</limitToOptions>
@@ -269,25 +266,25 @@ Send an alarm report if temperature is less than -15 °C<br /><h1>Overview</h1><
                  min="0" max="255">
         <label>48: Send a report if the measurement is out of limits</label>
         <description><![CDATA[
-Send a report when the measurement is more than the upper limit value or less than the lower limit value.<br /><h1>Overview</h1><p>Enable/disable to send a report when the measurement is more than the upper limit value or less than the lower limit value.</p> <p>Bit mask = 0, disable.</p> <p>Bit mask = 1, enable.</p> <p>Bit 0 = temperature.</p> <p>Bit 1 = humidity.</p> <p>Bit 2 = luminance.</p> <p>Bit 3 = ultraviolet.</p> <p>The above bit masks are used to enable/disable to send out a report when the measurement is less than the lower limit value. The below bit masks are used to enable/disable to send out a report when the measurement is more than the upper limit value</p> <p>Bit 4 = temperature.</p> <p>Bit 5 = humidity.</p> <p>Bit 6 = luminance.</p> <p>Bit 7 = ultraviolet.</p> <p><em>Note:</em> If USB power, the Sensor will check the limit every 10 seconds. If battery power, the Sensor will check the limit when it is waken up. </p>
+Send report when measurement is at upper/lower limit<br /><h1>Overview</h1><p>Enable/disable to send a report when the measurement is more than the upper limit value or less than the lower limit value.<br />Bit mask = 0, disable.<br />Bit mask = 1, enable.<br />Bit 0 = temperature.<br />Bit 1 = humidity.<br />Bit 2 = luminance.<br />Bit 3 = ultraviolet.</p> <p>The above bit masks are used to enable/disable to send out a report when the measurement is less than the lower limit value. The below bit masks are used to enable/disable to send out a report when the measurement is more than the upper limit value<br />Bit 4 = temperature.<br />Bit 5 = humidity.<br />Bit 6 = luminance.<br />Bit 7 = ultraviolet.</p> <p><em>Note:</em> If USB power, the Sensor will check the limit every 10 seconds. If battery power, the Sensor will check the limit when it is waken up. </p>
         ]]></description>
         <default>0</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_49_4_wo" type="integer" groupName="configuration">
-        <label>49: Upper limit value of temperature sensor</label>
+        <label>49: Upper limit value of temp sensor</label>
         <description><![CDATA[
-Upper limit value of temperature sensor<br /><h1>Overview</h1><p>Set the upper limit value of temperature sensor. When the measurement is more than this upper limit, which will trigger to sent out a sensor report.</p> <p>High byte is the upper limit value. Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit).</p> <p>1. When unit is Celsius.</p> <p>Upper limit range: -40.0 to 100.0 ℃ (0xFE70 to 0x03E8). E.g. The default upper limit of EU/AU version is 28.0 ℃ (0x0118), when the measurement is more than 28.0℃, it will be triggered to send out a temperature sensor report.</p> <p>2. When unit is Fahrenheit.</p> <p>Upper limit range: -40.0 to 212.0 ℉ (0xFE70 to 0x0848). E.g. The default upper limit of US version is 82.4℉ (0X0338), when the measurement is more than 82.4℉, it will be triggered to send out a temperature sensor report.  </p>
+Upper limit value of temperature sensor<br /><h1>Overview</h1><p>Set the upper limit value of temperature sensor. When the measurement is more than this upper limit, which will trigger to sent out a sensor report.</p> <p>High byte is the upper limit value. Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit).</p> <p>When unit is Celsius:<br />Upper limit range: -40.0 to 100.0 ℃ (0xFE70 to 0x03E8). E.g. The default upper limit of EU/AU version is 28.0 ℃ (0x0118), when the measurement is more than 28.0℃, it will be triggered to send out a temperature sensor report.</p> <p>When unit is Fahrenheit:<br />Upper limit range: -40.0 to 212.0 ℉ (0xFE70 to 0x0848). E.g. The default upper limit of US version is 82.4℉ (0X0338), when the measurement is more than 82.4℉, it will be triggered to send out a temperature sensor report.</p>
         ]]></description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_49_4_0000FF00_wo" type="integer" groupName="configuration">
-        <label>49: Unit selection for upper limit value of temperature sensor</label>
+        <label>49: Unit for upper limit value of temp sensor</label>
         <description><![CDATA[
-Unit selection for upper limit value of temperature sensor<br /><h1>Overview</h1><p>Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit). </p>
+Unit selection for upper limit value of temperature sensor<br /><h1>Overview</h1><p>Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit).</p>
         ]]></description>
         <default>1</default>
         <options>
@@ -297,9 +294,9 @@ Unit selection for upper limit value of temperature sensor<br /><h1>Overview</h1
       </parameter>
 
       <parameter name="config_49_4_7FFF0000_wo" type="integer" groupName="configuration">
-        <label>49: Upper limit value of temperature sensor</label>
+        <label>49: Upper limit value of temp sensor</label>
         <description><![CDATA[
-Upper limit value of temperature sensor<br /><h1>Overview</h1><p>Set the upper limit value of temperature sensor. When the measurement is more than this upper limit, which will trigger to sent out a sensor report. High byte is the upper limit value. Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit).</p> <p>1. When unit is Celsius. Upper limit range: -40.0 to 100.0 ℃ (0xFE70 to 0x03E8).</p> <p>E.g. The default upper limit of EU/AU version is 28.0 ℃ (0x0118), when the measurement is more than 28.0℃, it will be triggered to send out a temperature sensor report.</p> <p>2. When unit is Fahrenheit. Upper limit range: -40.0 to 212.0 ℉ (0xFE70 to 0x0848).</p> <p>E.g. The default upper limit of US version is 82.4℉ (0X0338), when the measurement is more than 82.4℉, it will be triggered to send out a temperature sensor report.  </p>
+Upper limit value of temperature sensor<br /><h1>Overview</h1><p>Set the upper limit value of temperature sensor. When the measurement is more than this upper limit, which will trigger to sent out a sensor report. High byte is the upper limit value. Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit).</p> <p>When unit is Celsius:<br /> Upper limit range: -40.0 to 100.0 ℃ (0xFE70 to 0x03E8).<br />E.g. The default upper limit of EU/AU version is 28.0 ℃ (0x0118), when the measurement is more than 28.0℃, it will be triggered to send out a temperature sensor report.</p> <p>When unit is Fahrenheit:<br />Upper limit range: -40.0 to 212.0 ℉ (0xFE70 to 0x0848).<br />E.g. The default upper limit of US version is 82.4℉ (0X0338), when the measurement is more than 82.4℉, it will be triggered to send out a temperature sensor report.  </p>
         ]]></description>
         <default>280</default>
       </parameter>
@@ -307,14 +304,14 @@ Upper limit value of temperature sensor<br /><h1>Overview</h1><p>Set the upper l
       <parameter name="config_50_4_wo" type="integer" groupName="configuration">
         <label>50: Lower limit value of temperature sensor</label>
         <description><![CDATA[
-Lower limit value of temperature sensor<br /><h1>Overview</h1><p>Set the lower limit value of temperature sensor. When the measurement is less than this lower limit, which will trigger to sent out a sensor report. High byte is the lower limit value. Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit).</p> <p>1. When unit is Celsius.</p> <p>Lower limit range: -40.0 to 100.0 ℃ (0xFE70 to 0x03E8). E.g. The default lower limit of EU/AU version is 0 ℃ (0x0000), when the measurement is less than 0℃, it will be triggered to send out a temperature sensor report.</p> <p>2. When unit is Fahrenheit.</p> <p>Upper limit range: -40.0 to 212.0 ℉ (0xFE70 to 0x0848). E.g. The default lower limit of US version is 32.0℉ (0x0140), when the measurement is less than 32.0℉, it will be triggered to send out a temperature sensor report.  </p>
+Lower limit value of temperature sensor<br /><h1>Overview</h1><p>Set the lower limit value of temperature sensor. When the measurement is less than this lower limit, which will trigger to sent out a sensor report. High byte is the lower limit value. Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit).</p> <p>When unit is Celsius:<br />Lower limit range: -40.0 to 100.0 ℃ (0xFE70 to 0x03E8). E.g. The default lower limit of EU/AU version is 0 ℃ (0x0000), when the measurement is less than 0℃, it will be triggered to send out a temperature sensor report.</p> <p>When unit is Fahrenheit:<br />Upper limit range: -40.0 to 212.0 ℉ (0xFE70 to 0x0848). E.g. The default lower limit of US version is 32.0℉ (0x0140), when the measurement is less than 32.0℉, it will be triggered to send out a temperature sensor report.  </p>
         ]]></description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_50_4_0000FF00_wo" type="integer" groupName="configuration">
-        <label>50: Unit selection for lower limit value of temperature sensor</label>
+        <label>50: Unit for lower limit value of temp sensor</label>
         <description><![CDATA[
 Unit selection for lower limit value of temperature sensor<br /><h1>Overview</h1><p>Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit).  </p>
         ]]></description>
@@ -328,7 +325,7 @@ Unit selection for lower limit value of temperature sensor<br /><h1>Overview</h1
       <parameter name="config_50_4_7FFF0000_wo" type="integer" groupName="configuration">
         <label>50: Lower limit value of temperature sensor</label>
         <description><![CDATA[
-Lower limit value of temperature sensor<br /><h1>Overview</h1><p>Set the lower limit value of temperature sensor. When the measurement is less than this lower limit, which will trigger to sent out a sensor report. High byte is the lower limit value. Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit).</p> <p>1. When unit is Celsius. Lower limit range: -40.0 to 100.0 ℃ (0xFE70 to 0x03E8).</p> <p>E.g. The default lower limit of EU/AU version is 0 ℃ (0x0000), when the measurement is less than 0℃, it will be triggered to send out a temperature sensor report.</p> <p>2. When unit is Fahrenheit. Upper limit range: -40.0 to 212.0 ℉ (0xFE70 to 0x0848).</p> <p>E.g. The default lower limit of US version is 32.0℉ (0x0140), when the measurement is less than 32.0℉, it will be triggered to send out a temperature sensor report. </p>
+Lower limit value of temperature sensor<br /><h1>Overview</h1><p>Set the lower limit value of temperature sensor. When the measurement is less than this lower limit, which will trigger to sent out a sensor report. High byte is the lower limit value. Low bytes represent the unit (0x0100=Celsius, 0x0200=Fahrenheit).</p> <p>When unit is Celsius:<br /> Lower limit range: -40.0 to 100.0 ℃ (0xFE70 to 0x03E8).<br />E.g. The default lower limit of EU/AU version is 0 ℃ (0x0000), when the measurement is less than 0℃, it will be triggered to send out a temperature sensor report.</p> <p>When unit is Fahrenheit:<br /> Upper limit range: -40.0 to 212.0 ℉ (0xFE70 to 0x0848).<br />E.g. The default lower limit of US version is 32.0℉ (0x0140), when the measurement is less than 32.0℉, it will be triggered to send out a temperature sensor report. </p>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -391,7 +388,7 @@ Lower limit value of ultraviolet sensor<br /><h1>Overview</h1><p>Set the lower l
                  min="0" max="65535">
         <label>57: Recover limit value of temperature sensor</label>
         <description><![CDATA[
-Recover limit value of temperature sensor<br /><h1>Overview</h1><p>Set the recover limit value of temperature sensor.</p> <p><em>Note</em>:</p> <p>1. When the current measurement &lt;= (Upper limit – Recover limit), the upper limit report is enabled and then it would send out a sensor report when the next measurement is more than the upper limit. After that the upper limit report would be disabled again until the measurement &lt;= (Upper limit – Recover limit).</p> <p>2. When the current measurement &gt;= (Lower limit + Recover limit), the lower limit report is enabled and then it would send out a sensor report when the next measurement is less than the lower limit. After that the lower limit report would be disabled again until the measurement &gt;= (Lower limit + Recover limit).</p> <p>3. High byte is the recover limit value. Low byte is the unit (0x01=Celsius, 0x02=Fahrenheit).</p> <p>4. Recover limit range: 1.0 to 25.5 ℃/ ℉ (0x0101 to 0xFF01 or 0x0102 to 0xFF02).</p> <p>E.g. The default recover limit value is 2.0 ℃/℉ (0x1401/0x1402), when the measurement is less than (Upper limit – 2), the upper limit report would be enabled one time or when the measurement is more</p>
+Recover limit value of temperature sensor<br /><h1>Overview</h1><p>Set the recover limit value of temperature sensor.</p> <p><em>Note</em>:</p> <ol><li>When the current measurement &lt;= (Upper limit – Recover limit), the upper limit report is enabled and then it would send out a sensor report when the next measurement is more than the upper limit. After that the upper limit report would be disabled again until the measurement &lt;= (Upper limit – Recover limit).</li> <li>When the current measurement &gt;= (Lower limit + Recover limit), the lower limit report is enabled and then it would send out a sensor report when the next measurement is less than the lower limit. After that the lower limit report would be disabled again until the measurement &gt;= (Lower limit + Recover limit).</li> <li>High byte is the recover limit value. Low byte is the unit (0x01=Celsius, 0x02=Fahrenheit).</li> <li>Recover limit range: 1.0 to 25.5 ℃/ ℉ (0x0101 to 0xFF01 or 0x0102 to 0xFF02).</li> <li>E.g. The default recover limit value is 2.0 ℃/℉ (0x1401/0x1402), when the measurement is less than (Upper limit – 2), the upper limit report would be enabled one time</li> </ol>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -400,7 +397,7 @@ Recover limit value of temperature sensor<br /><h1>Overview</h1><p>Set the recov
                  min="1" max="50">
         <label>58: Recover limit value of humidity sensor</label>
         <description><![CDATA[
-Recover limit value of humidity sensor<br /><h1>Overview</h1><p>Set the recover limit value of humidity sensor.</p> <p><em>Note</em>:</p> <p>1. When the current measurement &lt;= (Upper limit – Recover limit), the upper limit report is enabled and then it would send out a sensor report when the next measurement is more than the upper limit. After that the upper limit report would be disabled again until the measurement &lt;= (Upper limit – Recover limit).</p> <p>2. When the current measurement &gt;= (Lower limit + Recover limit), the lower limit report is enabled and then it would send out a sensor report when the next measurement is less than the lower limit. After that the lower limit report would be disabled again until the measurement &gt;= (Lower limit + Recover limit).</p> <p>3. Recover limit range: 1 to 50% (0x01 to 0x32).</p> <p>E.g. The default recover limit value is 5%, when the measurement is less than (Upper limit – 5), the upper limit report would be enabled one time or when the measurement is more than (Lower limit + 5), the lower limit report would be enabled one time. </p>
+Recover limit value of humidity sensor<br /><h1>Overview</h1><p>Set the recover limit value of humidity sensor.</p> <p>Note:</p> <ol><li>When the current measurement &lt;= (Upper limit – Recover limit), the upper limit report is enabled and then it would send out a sensor report when the next measurement is more than the upper limit. After that the upper limit report would be disabled again until the measurement &lt;= (Upper limit – Recover limit).</li> <li>When the current measurement &gt;= (Lower limit + Recover limit), the lower limit report is enabled and then it would send out a sensor report when the next measurement is less than the lower limit. After that the lower limit report would be disabled again until the measurement &gt;= (Lower limit + Recover limit).</li> <li>Recover limit range: 1 to 50% (0x01 to 0x32).</li> <li>E.g. The default recover limit value is 5%, when the measurement is less than (Upper limit – 5), the upper limit report would be enabled one time or when the measurement is more than (Lower limit + 5), the lower limit report would be enabled one time. </li> </ol>
         ]]></description>
         <default>5</default>
       </parameter>
@@ -409,7 +406,7 @@ Recover limit value of humidity sensor<br /><h1>Overview</h1><p>Set the recover 
                  min="1" max="255">
         <label>59: Recover limit value of Lighting sensor.</label>
         <description><![CDATA[
-Recover limit value of Lighting sensor.<br /><h1>Overview</h1><p>Set the recover limit value of Lighting sensor.</p> <p><em>Note</em>:</p> <p>1. When the current measurement &lt;= (Upper limit – Recover limit), the upper limit report is enabled and then it would send out a sensor report when the next measurement is more than the upper limit. After that the upper limit report would be disabled again until the measurement &lt;= (Upper limit – Recover limit).</p> <p>2. When the current measurement &gt;= (Lower limit + Recover limit), the lower limit report is enabled and then it would send out a sensor report when the next measurement is less than the lower limit. After that the lower limit report would be disabled again until the measurement &gt;= (Lower limit + Recover limit).</p> <p>3. Unit = 10×Recover limit (Lux)</p> <p>4. <strong>Recover limit range: 10 to 2550Lux (0x01 to 0xFF). </strong></p> <p>E.g. The default recover limit value is 100 Lux, when the measurement is less than (Upper limit – 100), the upper limit report would be enabled one time or when the measurement is more than (Lower limit + 100), the lower limit report would be enabled one time. </p>
+Recover limit value of Lighting sensor.<br /><h1>Overview</h1><p>Set the recover limit value of Lighting sensor.</p> <p><em>Note</em>:</p> <ol><li>When the current measurement &lt;= (Upper limit – Recover limit), the upper limit report is enabled and then it would send out a sensor report when the next measurement is more than the upper limit. After that the upper limit report would be disabled again until the measurement &lt;= (Upper limit – Recover limit).</li> <li>When the current measurement &gt;= (Lower limit + Recover limit), the lower limit report is enabled and then it would send out a sensor report when the next measurement is less than the lower limit. After that the lower limit report would be disabled again until the measurement &gt;= (Lower limit + Recover limit).</li> <li>Unit = 10×Recover limit (Lux)</li> <li><strong>Recover limit range: 10 to 2550Lux (0x01 to 0xFF). </strong></li> <li>E.g. The default recover limit value is 100 Lux, when the measurement is less than (Upper limit – 100), the upper limit report would be enabled one time or when the measurement is more than (Lower limit + 100), the lower limit report would be enabled one time. </li> </ol>
         ]]></description>
         <default>10</default>
       </parameter>
@@ -418,7 +415,7 @@ Recover limit value of Lighting sensor.<br /><h1>Overview</h1><p>Set the recover
                  min="1" max="5">
         <label>60: Recover limit value of Ultraviolet sensor</label>
         <description><![CDATA[
-Recover limit value of Ultraviolet sensor<br /><h1>Overview</h1><p>Set the recover limit value of Ultraviolet sensor.</p> <p><em>Note</em>:</p> <p>1. When the current measurement &lt;= (Upper limit – Recover limit), the upper limit report is enabled and then it would send out a sensor report when the next measurement is more than the upper limit. After that the upper limit report would be disabled again until the measurement &lt;= (Upper limit – Recover limit).</p> <p>2. When the current measurement &gt;= (Lower limit + Recover limit), the lower limit report is enabled and then it would send out a sensor report when the next measurement is less than the lower limit. After that the lower limit report would be disabled again until the measurement &gt;= (Lower limit + Recover limit).</p> <p>3. Recover limit range: 1 to 5 (0x01 to 0x05).</p> <p>E.g. The default recover limit value is 2, when the measurement is less than (Upper limit – 2), the upper limit report would be enabled one time or when the measurement is more than (Lower limit + 2), the lower limit report would be enabled one time.  </p>
+Recover limit value of Ultraviolet sensor<br /><h1>Overview</h1><p>Set the recover limit value of Ultraviolet sensor.</p> <p><em>Note</em>:</p> <ol><li>When the current measurement &lt;= (Upper limit – Recover limit), the upper limit report is enabled and then it would send out a sensor report when the next measurement is more than the upper limit. After that the upper limit report would be disabled again until the measurement &lt;= (Upper limit – Recover limit).</li> <li>When the current measurement &gt;= (Lower limit + Recover limit), the lower limit report is enabled and then it would send out a sensor report when the next measurement is less than the lower limit. After that the lower limit report would be disabled again until the measurement &gt;= (Lower limit + Recover limit).</li> <li>Recover limit range: 1 to 5 (0x01 to 0x05).</li> <li>E.g. The default recover limit value is 2, when the measurement is less than (Upper limit – 2), the upper limit report would be enabled one time or when the measurement is more than (Lower limit + 2), the lower limit report would be enabled one time.  </li> </ol>
         ]]></description>
         <default>2</default>
       </parameter>
@@ -427,7 +424,7 @@ Recover limit value of Ultraviolet sensor<br /><h1>Overview</h1><p>Set the recov
                  min="0" max="255">
         <label>61: Out-of-limit state of the Sensors</label>
         <description><![CDATA[
-Out-of-limit state of the Sensors<br /><h1>Overview</h1><p>Get the out-of-limit state of the Sensors.</p> <p>Bit mask = 0, within the limit.</p> <p>Bit mask = 1, out of the limit.</p> <p>Bit 0 = temperature.</p> <p>Bit 1 = humidity.</p> <p>Bit 2 = luminance.</p> <p>Bit 3 = ultraviolet.</p> <p>The above bit masks are used to indicate whether the current measurements of the Sensors are out of the lower limit.. The below bit masks are used to indicate whether the current measurements of the Sensors are out of the upper limit.</p> <p>Bit 4 = temperature.</p> <p>Bit 5 = humidity.</p> <p>Bit 6 = luminance.</p> <p>Bit 7 = ultraviolet</p>
+Out-of-limit state of the Sensors<br /><h1>Overview</h1><p>Get the out-of-limit state of the Sensors.</p> <ul><li>Bit mask = 0, within the limit.</li> <li>Bit mask = 1, out of the limit.</li> <li>Bit 0 = temperature.</li> <li>Bit 1 = humidity.</li> <li>Bit 2 = luminance.</li> <li>Bit 3 = ultraviolet.</li> </ul><p>The above bit masks are used to indicate whether the current measurements of the Sensors are out of the lower limit.. The below bit masks are used to indicate whether the current measurements of the Sensors are out of the upper limit.</p> <ul><li>Bit 4 = temperature.</li> <li>Bit 5 = humidity.</li> <li>Bit 6 = luminance.</li> <li>Bit 7 = ultraviolet</li> </ul>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -578,9 +575,9 @@ Ultraviolet Sensor Calibration<br /><h1>Overview</h1><p>Ultraviolet sensor calib
       </parameter>
 
       <parameter name="config_252_1" type="integer" groupName="configuration">
-        <label>252: Lock Configuration Parameters</label>
+        <label>252: Disable/Enable Configuration Lock</label>
         <description><![CDATA[
-Enable or Disable changing of configuration parameters<br /><h1>Overview</h1><p>Enable/disable Configuration Locked (0 =disable, 1 = enable).</p>
+Disable/Enable Configuration Lock (0=Disable, 1=Enable)<br /><h1>Overview</h1><p>Enable/disable Configuration Locked (0 =disable, 1 = enable).</p>
         ]]></description>
         <default>0</default>
         <options>
