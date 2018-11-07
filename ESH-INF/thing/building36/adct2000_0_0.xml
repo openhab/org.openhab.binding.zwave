@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="building36_adct2000_00_000" listed="false">
+    <label>ADC-T 2000 Alarm.com Smart Thermostat</label>
+    <description><![CDATA[
+Alarm.com Smart Thermostat<br /><h1>Overview</h1><ul><li> Intelligently Connected with Alarm.com (Alarm.com account required) </li> <li> Remote Access and Control </li> <li> Custom Schedules </li> <li> Critical Temperature Alerts and Geo-Services Automation </li> <li> Can be paired with Alarm.com Temperature Sensor ADC-S2000-T-RA for enhanced climate control and improved energy savings (sold separately) </li> </ul><br /><h2>Inclusion Information</h2><p>Put thermostat in OFF mode (no mode icons are lit)</p> <p>Press and hold the DOWN button to begin inclusion mode. Release when the RADIO icon lights up.</p> <p>When the RADIO icon becomes solid, the thermostat has been included.</p> <br /><h2>Exclusion Information</h2><p>Put thermostat in OFF mode (no mode icons are lit)</p> <p>Press and hold the DOWN button to begin exclusion mode. Release when the RADIO icon lights up.</p> <p>When the RADIO icon flashes red, the thermostat has been excluded.</p>
+    ]]></description>
+    <category>HVAC</category>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="sensor_temperature" typeId="sensor_temperature">
+        <label>Sensor (temperature)</label>
+        <properties>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="sensor_relhumidity" typeId="sensor_relhumidity">
+        <label>Sensor (relative humidity)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=RELATIVE_HUMIDITY</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_mode" typeId="building36_adct2000_00_000_thermostat_mode">
+        <label>Thermostat mode</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_MODE</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_state" typeId="thermostat_state">
+        <label>Thermostat Operating State</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_OPERATING_STATE</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
+        <label>Setpoint (heating)</label>
+        <properties>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_setpoint_cooling" typeId="thermostat_setpoint">
+        <label>Setpoint (cooling)</label>
+        <properties>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=COOLING</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_fanmode" typeId="building36_adct2000_00_000_thermostat_fanmode">
+        <label>Thermostat fan mode</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_FAN_MODE</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_fanstate" typeId="building36_adct2000_00_000_thermostat_fanstate">
+        <label>Thermostat fan state</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_FAN_STATE</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
+        </properties>
+      </channel>
+      <channel id="time_offset" typeId="time_offset">
+        <label>Clock Time Offset</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CLOCK</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Building 36 Technologies</property>
+      <property name="modelId">ADC-T 2000</property>
+      <property name="manufacturerId">0190</property>
+      <property name="manufacturerRef">0001:0001</property>
+      <property name="dbReference">926</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+  <channel-type id="building36_adct2000_00_000_thermostat_mode">
+    <item-type>Number</item-type>
+    <label>Thermostat Mode</label>
+    <description>Sets the thermostat mode</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+        <option value="3">Auto</option>
+        <option value="1">Heat</option>
+        <option value="0">Off</option>
+        <option value="2">Cool</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="building36_adct2000_00_000_thermostat_fanmode">
+    <item-type>Number</item-type>
+    <label>Thermostat Fan Mode</label>
+    <description>Sets the thermostat fan mode</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+        <option value="1">On (Low)</option>
+        <option value="6">Circulate</option>
+        <option value="0">Auto (Low)</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="building36_adct2000_00_000_thermostat_fanstate">
+    <item-type>Number</item-type>
+    <label>Thermostat Fan State</label>
+    <description>Sets the thermostat fan state</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+        <option value="0">Idle</option>
+      </options>
+    </state>
+  </channel-type>
+
+</thing:thing-descriptions>

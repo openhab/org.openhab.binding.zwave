@@ -86,6 +86,11 @@ public class ZWaveMultiLevelSensorConverter extends ZWaveCommandClassConverter {
             return null;
         }
 
+        // Report channels aren't updated
+        if (!channel.getChannelTypeUID().getId().equals("sensor_report")) {
+            return null;
+        }
+
         if (SensorType.valueOf(sensorType) != sensorEvent.getSensorType()) {
             return null;
         }

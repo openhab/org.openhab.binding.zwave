@@ -44,7 +44,7 @@ Motion, light, and temperature sensor<br /><h1>Overview</h1><p>Aeotec TriSensor 
       <property name="vendor">Aeotec Limited</property>
       <property name="modelId">ZWA005</property>
       <property name="manufacturerId">0371</property>
-      <property name="manufacturerRef">0102:0005,0202:0005</property>
+      <property name="manufacturerRef">0002:0005,0102:0005,0202:0005</property>
       <property name="dbReference">921</property>
       <property name="defaultAssociations">1</property>
     </properties>
