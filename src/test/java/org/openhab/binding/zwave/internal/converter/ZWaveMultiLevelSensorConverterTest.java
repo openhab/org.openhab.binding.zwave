@@ -45,7 +45,7 @@ import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueE
  */
 public class ZWaveMultiLevelSensorConverterTest {
     final ChannelUID uid = new ChannelUID("zwave:node:bridge:channel");
-    final ChannelTypeUID typeUid = new ChannelTypeUID("zwave:sensor_report");
+    final ChannelTypeUID typeUid = new ChannelTypeUID("zwave:sensor_value");
 
     private ZWaveControllerHandler controller;
     private ZWaveThingChannel channel;
