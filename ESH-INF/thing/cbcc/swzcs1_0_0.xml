@@ -8,6 +8,7 @@
   <thing-type id="cbcc_swzcs1_00_000" listed="false">
     <label>SW-ZCS-1 Cord Switch</label>
     <description>Cord Switch</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
