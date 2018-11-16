@@ -1582,7 +1582,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             }
         }
 
-        properties.remove("zwave_lastheat");
         update = true;
 
         if (update == true) {
