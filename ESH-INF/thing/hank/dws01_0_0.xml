@@ -10,6 +10,7 @@
     <description><![CDATA[
 Door and Window Sensor<br /><h1>Overview</h1><p>Unit is labeled with HKZW-DWS01</p> <p>But, also sold as "MONOPRICE Door and Window Sensor P/N 24259"</p>
     ]]></description>
+    <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -8,6 +8,7 @@
   <thing-type id="popp_05438_00_000" listed="false">
     <label>05438 Indoor/Outdoor Wall Plug Switch</label>
     <description>Indoor/Outdoor Wall Plug Switch</description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
