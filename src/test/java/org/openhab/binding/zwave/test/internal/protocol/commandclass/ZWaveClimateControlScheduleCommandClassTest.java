@@ -8,6 +8,8 @@
  */
 package org.openhab.binding.zwave.test.internal.protocol.commandclass;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveClimateControlScheduleCommandClass;
@@ -15,9 +17,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveClimateCont
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveClimateControlScheduleCommandClass.ScheduleState;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveClimateControlScheduleCommandClass.ScheduleStateState;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
-
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClassTest;
 
 /**
  * Test cases for {@link ZWaveClimateControlScheduleCommandClass}.
@@ -28,14 +28,19 @@ public class ZWaveClimateControlScheduleCommandClassTest extends ZWaveCommandCla
 
     @Test
     public void getScheduleStateFor() {
-        assertEquals(new ScheduleState(ScheduleStateState.SETBACK, -128), ScheduleState.getScheduleStateFor((byte) 0x80));
+        assertEquals(new ScheduleState(ScheduleStateState.SETBACK, -128),
+                ScheduleState.getScheduleStateFor((byte) 0x80));
         assertEquals(new ScheduleState(ScheduleStateState.SETBACK, -1), ScheduleState.getScheduleStateFor((byte) 0xFF));
         assertEquals(new ScheduleState(ScheduleStateState.SETBACK, 0), ScheduleState.getScheduleStateFor((byte) 0x00));
         assertEquals(new ScheduleState(ScheduleStateState.SETBACK, 1), ScheduleState.getScheduleStateFor((byte) 0x01));
-        assertEquals(new ScheduleState(ScheduleStateState.SETBACK, 120), ScheduleState.getScheduleStateFor((byte) 0x78));
-        assertEquals(new ScheduleState(ScheduleStateState.FROST_PROTECTION, 0), ScheduleState.getScheduleStateFor((byte) 0x79));
-        assertEquals(new ScheduleState(ScheduleStateState.ENERGY_SAVING, 0), ScheduleState.getScheduleStateFor((byte) 0x7A));
-        assertEquals(new ScheduleState(ScheduleStateState.RESERVED1, 0), ScheduleState.getScheduleStateFor((byte) 0x7B));
+        assertEquals(new ScheduleState(ScheduleStateState.SETBACK, 120),
+                ScheduleState.getScheduleStateFor((byte) 0x78));
+        assertEquals(new ScheduleState(ScheduleStateState.FROST_PROTECTION, 0),
+                ScheduleState.getScheduleStateFor((byte) 0x79));
+        assertEquals(new ScheduleState(ScheduleStateState.ENERGY_SAVING, 0),
+                ScheduleState.getScheduleStateFor((byte) 0x7A));
+        assertEquals(new ScheduleState(ScheduleStateState.RESERVED1, 0),
+                ScheduleState.getScheduleStateFor((byte) 0x7B));
         assertEquals(new ScheduleState(ScheduleStateState.UNUSED, 0), ScheduleState.getScheduleStateFor((byte) 0x7F));
     }
 
@@ -49,9 +54,10 @@ public class ZWaveClimateControlScheduleCommandClassTest extends ZWaveCommandCla
 
     @Test
     public void getScheduleChangedReportMessage() {
-        ZWaveClimateControlScheduleCommandClass cls = (ZWaveClimateControlScheduleCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_CLIMATE_CONTROL_SCHEDULE);
+        ZWaveClimateControlScheduleCommandClass cls = (ZWaveClimateControlScheduleCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_CLIMATE_CONTROL_SCHEDULE);
 
-        byte[] expectedResponse = {99, 3, 70, 5, 0};
+        byte[] expectedResponse = { 99, 3, 70, 5, 0 };
 
         SerialMessage msg = cls.getScheduleChangedReportMessage((byte) 0).getSerialMessage();
 
