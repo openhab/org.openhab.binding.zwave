@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="ring_bhapir001_00_000" listed="false">
+    <label>BHAPIR001 Motion Detector</label>
+    <description><![CDATA[
+Motion Detector<br /><h1>Overview</h1><p>Ring Alarm Motion Sensor: Expand your Ring Alarm system to secure each room, and get alerts as soon as motion is detected.</p> <br /><h2>Inclusion Information</h2><p>1. Activate inclusion mode on controller<br />2. Pull tab/quickly disconnect and reconnect battery<br />3. Device should appear in Inbox</p> <br /><h2>Exclusion Information</h2><p>Initiate exclusion mode on controller</p> <p>1. Open contact sensor’s cover Remove and replace battery quickly</p> <p>Reset:</p> <p>1. Open contact sensor’s cover<br />2. Press and hold the reset button on sensor circuitry<br />3. Remove and replace battery quickly – Blue LED will start to blink rapidly<br />4. Wait for the blue LED to stop blinking</p> <br /><h2>Wakeup Information</h2><p>By opening the top cover, the sensor will get to tamper state and stay awake.</p>
+    ]]></description>
+    <category>MotionDetector</category>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Ring</property>
+      <property name="modelId">BHAPIR001</property>
+      <property name="manufacturerId">0346</property>
+      <property name="manufacturerRef">0346:0000,0301:0201</property>
+      <property name="dbReference">944</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>
