@@ -100,7 +100,8 @@
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: report the motion detection and battery level</label>
+        <label>1: Lifeline</label>
+        <description>Report the motion detection and battery level</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
