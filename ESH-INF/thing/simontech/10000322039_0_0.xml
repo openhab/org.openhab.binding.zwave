@@ -33,7 +33,7 @@ Switch IO: On/Off Power Switch<br /><h1>Overview</h1><p>Simon Electronic Switch 
       <property name="vendor">SimonTech S.L.U</property>
       <property name="modelId">10000322-039</property>
       <property name="manufacturerId">0267</property>
-      <property name="manufacturerRef">0001:00DA</property>
+      <property name="manufacturerRef">0001:00DA,0001:0107</property>
       <property name="dbReference">925</property>
       <property name="defaultAssociations">1</property>
     </properties>
