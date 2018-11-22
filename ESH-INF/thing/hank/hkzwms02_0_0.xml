@@ -30,7 +30,7 @@
       <property name="vendor">Hank</property>
       <property name="modelId">HKZW_MS02</property>
       <property name="manufacturerId">0208</property>
-      <property name="manufacturerRef">0201:0012</property>
+      <property name="manufacturerRef">0200:0012,0201:0012</property>
       <property name="dbReference">676</property>
       <property name="commandClass:COMMAND_CLASS_ASSOCIATION">14</property>
       <property name="defaultAssociations">1,2</property>
@@ -100,7 +100,8 @@
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: report the motion detection and battery level</label>
+        <label>1: Lifeline</label>
+        <description>Report the motion detection and battery level</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

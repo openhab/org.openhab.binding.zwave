@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="building36_adcs2000tra_00_000" listed="false">
+    <label>ADC-S2000-T-RA Temperature Sensor</label>
+    <description><![CDATA[
+Temperature Sensor<br /><h1>Overview</h1><p>Provides temperature reading from another location so Smart Thermostat can take smarter actions to maximize comfort and energy saving.</p> <br /><h2>Inclusion Information</h2><p>Press the Pairing button on the Temperature Sensor to add it to the Z-Wave network.You will see the light on the Temperature Sensor turn solid white when it has been successfully added.</p> <br /><h2>Exclusion Information</h2><p>Press the Pairing button on the Temperature Sensor to delete it from the Z-Wave network. The light on the Temperature Sensor will start flashing to indicate it has been successfully deleted.</p> <br /><h2>Wakeup Information</h2><p>Every 4 hours.</p>
+    ]]></description>
+    <category>Sensor</category>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="sensor_binary" typeId="sensor_binary">
+        <label>Binary Sensor</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature" typeId="sensor_temperature">
+        <label>Sensor (temperature)</label>
+        <properties>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Building 36 Technologies</property>
+      <property name="modelId">ADC-S2000-T-RA</property>
+      <property name="manufacturerId">0190</property>
+      <property name="manufacturerRef">0003:0001</property>
+      <property name="dbReference">931</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>

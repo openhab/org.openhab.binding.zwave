@@ -56,6 +56,12 @@ ZWave Thermostat<br /><h1>Overview</h1><p>The Heatit Z-Wave is designed for cont
           <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=2</property>
         </properties>
       </channel>
+      <channel id="config_decimal_param11" typeId="config_decimal">
+        <label>Eco mode setpoint</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=11</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
@@ -89,7 +95,7 @@ ZWave Thermostat<br /><h1>Overview</h1><p>The Heatit Z-Wave is designed for cont
         <label>1: Operation mode</label>
         <default>1</default>
         <options>
-          <option value="0">OFF</option>
+          <option value="0">Off</option>
           <option value="1">HEAT</option>
           <option value="2">COOL</option>
           <option value="11">ENERGY SAVE HEAT</option>

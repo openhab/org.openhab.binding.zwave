@@ -140,8 +140,8 @@ Sets if the unit operates normal, or disables keypad and Z-Wave lock/unlock<br /
         <label>11: One Touch Locking</label>
         <default>255</default>
         <options>
-          <option value="0">OFF</option>
-          <option value="255">ON</option>
+          <option value="0">Off</option>
+          <option value="255">On</option>
         </options>
       </parameter>
 
@@ -149,8 +149,8 @@ Sets if the unit operates normal, or disables keypad and Z-Wave lock/unlock<br /
         <label>12: Privacy Button</label>
         <default>0</default>
         <options>
-          <option value="0">OFF</option>
-          <option value="255">ON</option>
+          <option value="0">Off</option>
+          <option value="255">On</option>
         </options>
       </parameter>
 
@@ -158,8 +158,8 @@ Sets if the unit operates normal, or disables keypad and Z-Wave lock/unlock<br /
         <label>13: Lock Status LED</label>
         <default>0</default>
         <options>
-          <option value="0">OFF</option>
-          <option value="255">ON</option>
+          <option value="0">Off</option>
+          <option value="255">On</option>
         </options>
       </parameter>
 

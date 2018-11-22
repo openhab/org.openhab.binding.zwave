@@ -8,6 +8,7 @@
   <thing-type id="schlage_fe599nx_00_000" listed="false">
     <label>FE599NX Connected Keypad with Lever</label>
     <description>Connected Keypad with Lever</description>
+    <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -89,7 +89,7 @@ Thermostatic Valve<br /><h1>Overview</h1><p>Spirit Z-Wave Plus is a Z-Wave radio
       <property name="commandClass:COMMAND_CLASS_ALARM">Informs the controller about critical system events/errors</property>
       <property name="commandClass:COMMAND_CLASS_MANUFACTURER_SPECIFIC">Provides information about Manufacturer and Product</property>
       <property name="commandClass:COMMAND_CLASS_POWERLEVEL">Used to alter the rf-power(required by Z-Wave).</property>
-      <property name="commandClass:COMMAND_CLASS_PROTECTION">Allows to lock the device(child protection).</property>
+      <property name="commandClass:COMMAND_CLASS_PROTECTION">Allows to lock the device (child protection).</property>
       <property name="commandClass:COMMAND_CLASS_FIRMWARE_UPDATE_MD">Allows Over the Air Update of the device.</property>
       <property name="commandClass:COMMAND_CLASS_BATTERY">Returns the current battery level of the device.</property>
       <property name="commandClass:COMMAND_CLASS_ASSOCIATION">Allows to associate with other Z-Wave devices.</property>

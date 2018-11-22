@@ -8,6 +8,7 @@
   <thing-type id="aeon_zw074_00_000" listed="false">
     <label>ZW074 4 in One MultiSensor (G5)</label>
     <description>4 in One MultiSensor (G5)</description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

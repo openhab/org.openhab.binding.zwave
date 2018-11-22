@@ -16,6 +16,7 @@ import org.eclipse.smarthome.core.library.types.QuantityType;
 import org.eclipse.smarthome.core.library.unit.ImperialUnits;
 import org.eclipse.smarthome.core.library.unit.SIUnits;
 import org.eclipse.smarthome.core.library.unit.SmartHomeUnits;
+import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
@@ -85,6 +86,11 @@ public class ZWaveMultiLevelSensorConverter extends ZWaveCommandClassConverter {
             return null;
         }
 
+        // Report channels aren't updated
+        if (channel.getChannelTypeUID().getId().equals("sensor_report")) {
+            return null;
+        }
+
         if (SensorType.valueOf(sensorType) != sensorEvent.getSensorType()) {
             return null;
         }
@@ -125,4 +131,54 @@ public class ZWaveMultiLevelSensorConverter extends ZWaveCommandClassConverter {
 
         return new DecimalType(val);
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<ZWaveCommandClassTransactionPayload> receiveCommand(ZWaveThingChannel channel, ZWaveNode node,
+            Command command) {
+        if (!channel.getChannelTypeUID().getId().equals("sensor_report")) {
+            return null;
+        }
+
+        ZWaveMultiLevelSensorCommandClass commandClass = (ZWaveMultiLevelSensorCommandClass) node.resolveCommandClass(
+                ZWaveCommandClass.CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL, channel.getEndpoint());
+        if (commandClass == null) {
+            return null;
+        }
+
+        if (!(command instanceof DecimalType)) {
+            return null;
+        }
+
+        String sensorType = channel.getArguments().get("type");
+        if (sensorType == null) {
+            logger.debug("NODE {}: No sensorType set for channel {}", node.getNodeId(), channel.getUID());
+            return null;
+        }
+
+        int sensorScale = 0;
+        String sensorScaleConfig = channel.getArguments().get("config_scale");
+        if (sensorScaleConfig != null) {
+            sensorScale = Integer.parseInt(sensorScaleConfig);
+        }
+
+        BigDecimal value = ((DecimalType) command).toBigDecimal();
+
+        ZWaveCommandClassTransactionPayload payload = node.encapsulate(
+                commandClass.getReportMessage(SensorType.valueOf(sensorType), sensorScale, value),
+                channel.getEndpoint());
+
+        if (payload == null) {
+            logger.warn("NODE {}: Generating message failed for command class = {}, endpoint = {}", node.getNodeId(),
+                    commandClass.getCommandClass(), channel.getEndpoint());
+            return null;
+        }
+
+        List<ZWaveCommandClassTransactionPayload> messages = new ArrayList<ZWaveCommandClassTransactionPayload>();
+        messages.add(payload);
+        return messages;
+    }
+
 }

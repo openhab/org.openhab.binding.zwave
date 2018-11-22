@@ -85,8 +85,8 @@ Maximum dim level<br /><h1>Overview</h1><p>Maximum Level, a limit on the maximum
         <description>B&amp;O IR support is disabled if 0 otherwise enabled.</description>
         <default>1</default>
         <options>
-          <option value="0">disabled</option>
-          <option value="1">enabled</option>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
         </options>
       </parameter>
 

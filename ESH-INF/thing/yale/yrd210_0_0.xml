@@ -13,7 +13,7 @@
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="lock_door" typeId="lock_door">
-        <label></label>
+        <label>Door Lock</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_DOOR_LOCK</property>
         </properties>

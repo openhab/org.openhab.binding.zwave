@@ -17,33 +17,44 @@ The Danalock V3-BTZE supports routing. This allows the device to communicate usi
 
 ## Overview
 
-Danalock supports:   
-- S0/S2 Z-Wave Security   
-- Bluetooth Smart   
-- Twist Assist   
-- Auto Lock   
-- Hold And Release   
-- Back To Back 
+Danalock supports:
+
+  * S0/S2 Z-Wave Security
+  * Bluetooth Smart
+  * Twist Assist
+  * Auto Lock
+  * Hold And Release
+  * Back To Back 
 
 ### Inclusion Information
 
 To add or include the Danalock into a Z-Wave network
 
-  1. Set the controller in inclusion mode
+  1. Pair the lock with bluetooth first
+  2. Set the controller in inclusion mode
 
-  2. Push the switch once.
+  3. Push the switch once.
 
-  3. Wait 5 seconds. 
+  4. Wait 5 seconds. 
 
 ### Exclusion Information
 
 To remove or exclude the Danalock into a Z-Wave network
 
-  1. Set the controller in exclusion mode
+  1. Delete the lock within the app (bluetooth)
+  2. Set the controller in exclusion mode
 
-  2. Push the switch once.
+  3. Push the switch once.
 
-  3. Wait 5 seconds. 
+  4. Wait 5 seconds. 
+
+### General Usage Information
+
+Additional hints:
+
+**Inclusion**: Do **not** include the lock to a Z-Wave network before it has been paired through bluetooth. Otherwise the lock is blocked and you are not able to pair through bluetooth. If you are not able to pair through the app then there is still z-wave information that has not been erased. A factory reset does not delete this Z-Wave information. You must exclude.
+
+**Exclusion**: Delete the lock from the app before you exclude. Otherwise it won’t work. Exclusion is successful when the green light stops lightning immediately. If you use the Aeotec Z-Stick Gen5 it is easier to exclude with the USB stick detached. Inclusion of course with the stick attached to the PC. You can use any kind of controller to exclude - no matter with which controller it has been paired before.
 
 ## Channels
 
@@ -59,6 +70,12 @@ The following table summarises the channels available for the Danalock V3-BTZE -
 Lock and unlock the door.
 
 The ```lock_door``` channel supports the ```Switch``` item and is in the ```Door``` category.
+The following state translation is provided for this channel to the ```Switch``` item type -:
+
+| Value | Label     |
+|-------|-----------|
+| ON | Locked |
+| OFF | Unlocked |
 
 ### Battery Level
 
@@ -93,8 +110,8 @@ The following option values may be configured -:
 
 | Value  | Description |
 |--------|-------------|
-| 0 | disabled |
-| 1 | enabled |
+| 0 | Disabled |
+| 1 | Enabled |
 
 The manufacturer defined default value is ```0``` (disabled).
 
@@ -194,7 +211,12 @@ The Danalock V3-BTZE supports 1 association group.
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
 Z-Wave Plus Lifeline
-Z-Wave Plus Lifeline • Device Reset Locally: triggered upon reset. • Battery/notification: triggered upon low battery. • Door Lock operation report: triggered upon a change in door lock • Notification: triggered upon a change in door lock
+Z-Wave Plus Lifeline
+
+  * Device Reset Locally: triggered upon reset.
+  * Battery/notification: triggered upon low battery.
+  * Door Lock operation report: triggered upon a change in door lock
+  * Notification: triggered upon a change in door lock
 
 Association group 1 supports 1 node.
 

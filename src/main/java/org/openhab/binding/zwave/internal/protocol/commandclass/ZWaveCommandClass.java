@@ -408,7 +408,6 @@ public abstract class ZWaveCommandClass {
      * @param index the value index
      * @return the value buffer
      * @throws ArithmeticException when the supplied value is out of range.
-     * @since 1.4.0
      */
     protected byte[] encodeValue(BigDecimal value) throws ArithmeticException {
 

@@ -26,12 +26,6 @@ ZWave Thermostat<br /><h1>Overview</h1><p>The Heatit Z-Wave is designed for cont
           <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
         </properties>
       </channel>
-      <channel id="sensor_temperature" typeId="sensor_temperature">
-        <label>Sensor (temperature)</label>
-        <properties>
-          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL</property>
-        </properties>
-      </channel>
       <channel id="thermostat_mode" typeId="thermofloor_tf016_01_092_thermostat_mode">
         <label>Thermostat mode</label>
         <properties>
@@ -56,26 +50,32 @@ ZWave Thermostat<br /><h1>Overview</h1><p>The Heatit Z-Wave is designed for cont
           <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=FURNACE</property>
         </properties>
       </channel>
+      <channel id="config_decimal_param12" typeId="config_decimal">
+        <label>Power setting value</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=12</property>
+        </properties>
+      </channel>
       <channel id="switch_binary1" typeId="switch_binary">
-        <label>Switch 1</label>
+        <label>Relay state</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1,COMMAND_CLASS_BASIC:1</property>
         </properties>
       </channel>
       <channel id="sensor_temperature2" typeId="sensor_temperature">
-        <label>Sensor (temperature) 2</label>
+        <label>Air temperature sensor</label>
         <properties>
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:2,COMMAND_CLASS_BASIC:2;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="sensor_temperature3" typeId="sensor_temperature">
-        <label>Sensor (temperature) 3</label>
+        <label>External temperature sensor</label>
         <properties>
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:3,COMMAND_CLASS_BASIC:3;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="sensor_temperature4" typeId="sensor_temperature">
-        <label>Sensor (temperature) 4</label>
+        <label>Floor temperature sensor</label>
         <properties>
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:4,COMMAND_CLASS_BASIC:4;type=TEMPERATURE</property>
         </properties>
@@ -115,7 +115,7 @@ Defines operation mode of the thermostat<br /><h1>Overview</h1><table><tr><td>De
         ]]></description>
         <default>1</default>
         <options>
-          <option value="0">OFF</option>
+          <option value="0">Off</option>
           <option value="1">HEAT</option>
           <option value="2">COOL</option>
           <option value="11">ECO</option>

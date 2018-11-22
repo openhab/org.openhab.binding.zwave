@@ -14,12 +14,6 @@ Relay Switch 1x3kW<br /><h1>Overview</h1><p>Remotely Controlled Relay Switch of 
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
-        </properties>
-      </channel>
       <channel id="switch_binary1" typeId="switch_binary">
         <label>Switch 1</label>
         <properties>
@@ -40,6 +34,7 @@ Relay Switch 1x3kW<br /><h1>Overview</h1><p>Remotely Controlled Relay Switch of 
       <property name="modelId">FGS211</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">0400:0102,0400:0104,0400:0105,0400:0106,0400:0107,0400:0108,0400:0109,0400:100A,0400:300A,0402:3002</property>
+      <property name="versionMax">2.0</property>
       <property name="dbReference">120</property>
       <property name="defaultAssociations">3</property>
     </properties>

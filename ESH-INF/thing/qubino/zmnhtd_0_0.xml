@@ -102,7 +102,7 @@ IR external relay or External Relay control mode<br /><h1>Overview</h1><p>Availa
         ]]></description>
         <default>4</default>
         <options>
-          <option value="0">disabled</option>
+          <option value="0">Disabled</option>
           <option value="2">IR external control – mono stable push button</option>
           <option value="3">IR external relay control - bi stable switch</option>
           <option value="4">External relay control – mono stable push button</option>

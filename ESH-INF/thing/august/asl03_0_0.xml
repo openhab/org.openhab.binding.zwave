@@ -14,6 +14,12 @@ August Smart Lock Pro 3rd Gen<br /><h1>Overview</h1><p>Give your customer total 
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
+      <channel id="sensor_door" typeId="sensor_door">
+        <label>Door State Sensor</label>
+        <properties>
+          <property name="binding:*:OpenClosedType">COMMAND_CLASS_DOOR_LOCK</property>
+        </properties>
+      </channel>
       <channel id="lock_door" typeId="lock_door">
         <label>Door Lock</label>
         <properties>

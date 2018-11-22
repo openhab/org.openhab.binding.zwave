@@ -117,7 +117,7 @@ Water / Electrical Heating Thermostat<br /><h1>Overview</h1><p>MCOHome Water / E
         <description>Upload temperature and humidity automatically</description>
         <default>3</default>
         <options>
-          <option value="0">OFF</option>
+          <option value="0">Off</option>
           <option value="1">Upload the difference value only</option>
           <option value="2">Timing upload mode only</option>
           <option value="3">Upload the difference+timing upload mode</option>
