@@ -7,19 +7,18 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveClockCommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
-import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
-import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
+import static org.junit.Assert.*;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
+import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 
 /**
  * Test cases for {@link ZWaveClockCommandClass}.
@@ -28,7 +27,6 @@ import static org.junit.Assert.*;
  * @author Chris Jackson
  */
 public class ZWaveClockCommandClassTest extends ZWaveCommandClassTest {
-
     @Test
     public void reportTime() {
         byte[] packetData = { 0x01, 0x0F, 0x00, 0x04, 0x00, 0x07, 0x06, (byte) 0x81, 0x06, -127, 4, 127, 0, -120 };
@@ -69,7 +67,7 @@ public class ZWaveClockCommandClassTest extends ZWaveCommandClassTest {
     public void getReportMessage() {
         ZWaveClockCommandClass cls = (ZWaveClockCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_CLOCK);
 
-        byte[] expectedResponse = {99, 4, -127, 6, -128, 0};
+        byte[] expectedResponse = { 99, 4, -127, 6, -128, 0 };
 
         Calendar utc = Calendar.getInstance();
         utc.setTimeZone(TimeZone.getTimeZone("UTC"));
