@@ -80,6 +80,13 @@ public class ZWaveClockCommandClass extends ZWaveCommandClass implements ZWaveCo
 
     }
 
+    @ZWaveResponseHandler(id = CLOCK_GET, name = "CLOCK_GET")
+    public void handleClockGetRequest(ZWaveCommandClassPayload payload, int endpoint) {
+        Calendar calendar = Calendar.getInstance();
+        logger.debug("NODE {}: Answering with {}", getNode().getNodeId(), calendar);
+        getController().enqueue(getReportMessage(calendar));
+    }
+
     /**
      * Gets a SerialMessage with the CLOCK_GET command
      *
@@ -100,13 +107,16 @@ public class ZWaveClockCommandClass extends ZWaveCommandClass implements ZWaveCo
     public ZWaveCommandClassTransactionPayload getSetMessage(Calendar cal) {
         logger.debug("NODE {}: Creating new message for command CLOCK_SET", getNode().getNodeId());
 
-        int day = cal.get(Calendar.DAY_OF_WEEK) == 1 ? 7 : cal.get(Calendar.DAY_OF_WEEK) - 1;
-        int hour = cal.get(Calendar.HOUR_OF_DAY);
-        int minute = cal.get(Calendar.MINUTE);
-
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), CLOCK_SET)
-                .withPayload((day << 5) | hour, minute).withPriority(TransactionPriority.RealTime)
+                .withPayload(getTimePayload(cal)).withPriority(TransactionPriority.RealTime)
                 .withExpectedResponseCommand(CLOCK_REPORT).build();
+    }
+
+    public ZWaveCommandClassTransactionPayload getReportMessage(Calendar cal) {
+        logger.debug("NODE {}: Creating new message for command CLOCK_REPORT", getNode().getNodeId());
+
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), CLOCK_REPORT)
+                .withPayload(getTimePayload(cal)).withPriority(TransactionPriority.RealTime).build();
     }
 
     @Override
@@ -116,5 +126,13 @@ public class ZWaveClockCommandClass extends ZWaveCommandClass implements ZWaveCo
             result.add(getValueMessage());
         }
         return result;
+    }
+
+    private int[] getTimePayload(Calendar cal) {
+        int day = cal.get(Calendar.DAY_OF_WEEK) == 1 ? 7 : cal.get(Calendar.DAY_OF_WEEK) - 1;
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        int minute = cal.get(Calendar.MINUTE);
+
+        return new int[] { (day << 5) | hour, minute };
     }
 }
