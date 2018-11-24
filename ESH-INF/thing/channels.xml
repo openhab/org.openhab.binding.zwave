@@ -24,7 +24,7 @@
         <label>Low battery alarm</label>
         <description>Indicates if the low battery alarm is triggered
         </description>
-        <category></category>
+        <category>LowBattery</category>
         <state readOnly="true">
             <options>
                 <option value="OFF">OK</option>
@@ -54,7 +54,7 @@
         <label>Carbon-monoxide alarm</label>
         <description>Indicates if the carbon monoxide alarm is triggered
         </description>
-        <category>Door</category>
+        <category></category>
         <state readOnly="true">
             <options>
                 <option value="OFF">OK</option>
@@ -69,7 +69,7 @@
         <label>Carbon-dioxide alarm</label>
         <description>Indicates if the carbon dioxide alarm is triggered
         </description>
-        <category>Door</category>
+        <category>CarbonDioxide</category>
         <state readOnly="true">
             <options>
                 <option value="OFF">OK</option>
@@ -84,7 +84,7 @@
         <label>Emergency alarm</label>
         <description>Indicates Police, Fire, or Medical services should be contacted
         </description>
-        <category></category>
+        <category>Alarm</category>
         <state readOnly="true">
             <options>
                 <option value="ON">EMERGENCY</option>
@@ -114,7 +114,7 @@
         <label>Flood alarm</label>
         <description>Indicates if the flood alarm is triggered
         </description>
-        <category>Door</category>
+        <category>Water</category>
         <state readOnly="true">
             <options>
                 <option value="OFF">OK</option>
@@ -129,7 +129,7 @@
         <label>General alarm</label>
         <description>Indicates if an alarm is triggered
         </description>
-        <category>Door</category>
+        <category>Alarm</category>
         <state readOnly="true">
             <options>
                 <option value="OFF">OK</option>
@@ -144,7 +144,7 @@
         <label>Heat alarm</label>
         <description>Indicates if a heat alarm is triggered
         </description>
-        <category></category>
+        <category>Fire</category>
         <state readOnly="true">
             <options>
                 <option value="OFF">OK</option>
@@ -159,7 +159,7 @@
         <label>Motion alarm</label>
         <description>Indicates if a motion alarm is triggered
         </description>
-        <category>Door</category>
+        <category>Motion</category>
         <state readOnly="true">
             <options>
                 <option value="OFF">OK</option>
@@ -184,7 +184,7 @@
         <label>Power alarm</label>
         <description>Indicates if a power alarm is triggered
         </description>
-        <category>Door</category>
+        <category>Energy</category>
         <state readOnly="true">
             <options>
                 <option value="OFF">OK</option>
@@ -362,7 +362,8 @@
         <label>Color</label>
         <description>The color channel allows to control the color of a light.
             It is also possible to dim values and switch the light on and off.
-        </description> 
+        </description>
+        <category>ColorLight</category>
     </channel-type>
 
     <!-- Color Temperature Channel -->
@@ -531,7 +532,7 @@
         <item-type>Number</item-type>
         <label>Water consumption in cubic meters</label>
         <description>Indicates the instantaneous water consumption</description>
-        <category>Energy</category>
+        <category>Water</category>
         <state pattern="%.1f" readOnly="true">
         </state>
     </channel-type>
@@ -541,7 +542,7 @@
         <item-type>Number</item-type>
         <label>Water consumption in cubic feet</label>
         <description>Indicates the instantaneous water consumption</description>
-        <category>Energy</category>
+        <category>Water</category>
         <state pattern="%.1f" readOnly="true">
         </state>
     </channel-type>
@@ -551,7 +552,7 @@
         <item-type>Number</item-type>
         <label>Water consumption in gallons</label>
         <description>Indicates the instantaneous water consumption</description>
-        <category>Energy</category>
+        <category>Water</category>
         <state pattern="%.1f" readOnly="true">
         </state>
     </channel-type>
@@ -561,7 +562,7 @@
         <item-type>Number</item-type>
         <label>Water consumption in pulses</label>
         <description>Indicates the instantaneous water consumption</description>
-        <category>Energy</category>
+        <category>Water</category>
         <state pattern="%.1f" readOnly="true">
         </state>
     </channel-type>
@@ -903,7 +904,7 @@
         <item-type>Number</item-type>
         <label>Barometric Pressure</label>
         <description>Indicates the barometric pressure</description>
-        <category></category>
+        <category>Pressure</category>
         <state pattern="%.1f" readOnly="true">
         </state>
     </channel-type>
@@ -914,7 +915,7 @@
         <label>Binary Sensor</label>
         <description>Indicates if a sensor has triggered
         </description>
-        <category>Door</category>
+        <category></category>
         <state readOnly="true">
             <options>
                 <option value="ON">Triggered</option>
@@ -938,7 +939,7 @@
         <item-type>Number</item-type>
         <label>Carbon Dioxide Sensor</label>
         <description>Indicates the CO2 level</description>
-        <category></category>
+        <category>CarbonDioxide</category>
         <state pattern="%.1f" readOnly="true">
         </state>
     </channel-type>
@@ -984,7 +985,7 @@
         <item-type>Switch</item-type>
         <label>Flood Sensor</label>
         <description>Indicates a flood sensor is activated</description>
-        <category></category>
+        <category>Water</category>
         <state readOnly="true">
             <options>
                 <option value="ON">Flood</option>
@@ -1075,7 +1076,7 @@
         <item-type>Number</item-type>
         <label>Seismic Intensity</label>
         <description>Indicates the current seismic intensity level</description>
-        <category>Humidity</category>
+        <category></category>
         <state pattern="%.1f" readOnly="true">
         </state>
     </channel-type>
@@ -1094,7 +1095,7 @@
         <item-type>Number</item-type>
         <label>Ultraviolet level</label>
         <description>Indicates the current ultraviolet level</description>
-        <category>Temperature</category>
+        <category></category>
         <state pattern="%.1f" readOnly="true">
         </state>
     </channel-type>
@@ -1143,7 +1144,7 @@
         <item-type>Number:Temperature</item-type>
         <label>Heating Setpoint</label>
         <description>Sets the thermostat setpoint</description>
-        <category>Temperature</category>
+        <category>Heating</category>
     </channel-type>
 
     <!-- Thermostat Fan Mode Channel -->
