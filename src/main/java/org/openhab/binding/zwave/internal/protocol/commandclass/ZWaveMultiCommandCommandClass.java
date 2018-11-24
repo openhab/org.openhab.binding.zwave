@@ -71,45 +71,6 @@ public class ZWaveMultiCommandCommandClass extends ZWaveCommandClass {
 
             // Step over this class
             offset += payload.getPayloadByte(offset) + 1;
-
-            /*
-             * CommandClass commandClass;
-             * ZWaveCommandClass zwaveCommandClass;
-             * int commandClassCode = commandClassPayload.getCommandClassId();
-             * commandClass = CommandClass.getCommandClass(commandClassCode);
-             * if (commandClass == null) {
-             * logger.error(String.format("NODE %d: Unknown command class 0x%02x", getNode().getNodeId(),
-             * commandClassCode));
-             * } else {
-             * logger.debug("NODE {}: Incoming command class {}", getNode().getNodeId(), commandClass);
-             * zwaveCommandClass = getNode().getCommandClass(commandClass);
-             *
-             * // Apparently, this node supports a command class that we did not get (yet) during initialization.
-             * // Let's add it now then to support handling this message.
-             * if (zwaveCommandClass == null) {
-             * logger.debug("NODE {}: Command class {} not found, trying to add it.", getNode().getNodeId(),
-             * commandClass, commandClass.getKey());
-             *
-             * zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), getNode(),
-             * getController());
-             *
-             * if (zwaveCommandClass != null) {
-             * logger.debug("NODE {}: Adding command class %s", getNode().getNodeId(), commandClass);
-             * getNode().addCommandClass(zwaveCommandClass);
-             * }
-             * }
-             *
-             * if (zwaveCommandClass == null) {
-             * logger.error("NODE {}: CommandClass %s not implemented.", getNode().getNodeId(), commandClass);
-             * } else {
-             * logger.debug("NODE {}: Calling handleApplicationCommandRequest.", getNode().getNodeId());
-             * zwaveCommandClass.handleApplicationCommandRequest(commandClassPayload, endpoint);
-             * }
-             * }
-             */
-
-            // Step over this class
-            // offset += payload.getPayloadByte(offset) + 1;
         }
 
         return commandList;
