@@ -7,17 +7,22 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
-import org.openhab.binding.zwave.internal.protocol.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
+import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
+import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 /**
  * Handles the climate control schedule command class.
@@ -41,6 +46,7 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
     private static final int SCHEDULE_SET = 0x01;
 
     private static final byte SCHEDULE_CHANGE_TEMPORARILY_DISABLED = 0;
+
     /**
      * Creates a new instance of the ZWaveClimateControlCommandClass class.
      *
@@ -59,7 +65,7 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
 
     @ZWaveResponseHandler(id = SCHEDULE_CHANGED_GET, name = "SCHEDULE_CHANGED_GET")
     public void handleScheduleChangedGet(ZWaveCommandClassPayload payload, int endpoint) {
-        logger.debug("NODE {}: Answering with noop SCHEDULE_CHANGED_REPORT", this.getNode().getNodeId());
+        logger.debug("NODE {}: Answering with noop SCHEDULE_CHANGED_REPORT", getNode().getNodeId());
         getController().enqueue(getScheduleChangedReportMessage(SCHEDULE_CHANGE_TEMPORARILY_DISABLED));
     }
 
@@ -67,16 +73,17 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
     public void handleScheduleOverrideReport(ZWaveCommandClassPayload payload, int endpoint) {
         OverrideType overrideType = OverrideType.getOverrideTypeFor((byte) (payload.getPayloadByte(2) & 0x03));
         ScheduleState scheduleState = ScheduleState.getScheduleStateFor((byte) payload.getPayloadByte(3));
-        logger.info("NODE {} reported: Override type: {}, ScheduleState: {}", this.getNode().getNodeId(), overrideType, scheduleState);
+        logger.info("NODE {} reported: Override type: {}, ScheduleState: {}", getNode().getNodeId(), overrideType,
+                scheduleState);
     }
 
     // Visible for Testing
     public ZWaveCommandClassTransactionPayload getScheduleChangedReportMessage(byte scheduleChangeCounter) {
         logger.debug("NODE {}: Creating new message for command SCHEDULE_CHANGED_REPORT", getNode().getNodeId());
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), SCHEDULE_CHANGED_REPORT)
-                .withPayload(scheduleChangeCounter).withPriority(ZWaveTransaction.TransactionPriority.RealTime)
-                .build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                SCHEDULE_CHANGED_REPORT).withPayload(scheduleChangeCounter)
+                        .withPriority(ZWaveTransaction.TransactionPriority.RealTime).build();
 
     }
 
@@ -174,11 +181,14 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
             ScheduleState that = (ScheduleState) o;
-            return setBack == that.setBack &&
-                    state == that.state;
+            return setBack == that.setBack && state == that.state;
         }
 
         @Override
