@@ -89,24 +89,25 @@ public class IdentifyNodeMessageClass extends ZWaveCommandProcessor {
 
         Basic basic = Basic.getBasic(incomingMessage.getMessagePayloadByte(3));
         if (basic == null) {
-            logger.debug("NODE {}: Basic device class {} not found", nodeId, incomingMessage.getMessagePayloadByte(3));
-            return false;
+            logger.debug("NODE {}: Basic device class {} not found. Setting to BASIC_TYPE_UNKNOWN.", nodeId,
+                    incomingMessage.getMessagePayloadByte(3));
+            basic = Basic.BASIC_TYPE_UNKNOWN;
         }
         logger.debug("NODE {}: Basic    = {}", nodeId, basic.toString());
 
         Generic generic = Generic.getGeneric(incomingMessage.getMessagePayloadByte(4));
         if (generic == null) {
-            logger.debug("NODE {}: Generic device class {} not found", nodeId,
+            logger.debug("NODE {}: Generic device class {} not found. Setting to GENERIC_TYPE_NOT_USED.", nodeId,
                     incomingMessage.getMessagePayloadByte(4));
-            return false;
+            generic = Generic.GENERIC_TYPE_NOT_USED;
         }
         logger.debug("NODE {}: Generic  = {}", nodeId, generic.toString());
 
         Specific specific = Specific.getSpecific(generic, incomingMessage.getMessagePayloadByte(5));
         if (specific == null) {
-            logger.debug("NODE {}: Specific device class {} not found", nodeId,
+            logger.debug("NODE {}: Specific device class {} not found. Setting to SPECIFIC_TYPE_NOT_USED.", nodeId,
                     incomingMessage.getMessagePayloadByte(5));
-            return false;
+            specific = Specific.SPECIFIC_TYPE_NOT_USED;
         }
         logger.debug("NODE {}: Specific = {}", nodeId, specific.toString());
 
