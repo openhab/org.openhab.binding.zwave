@@ -10,8 +10,6 @@ package org.openhab.binding.zwave.handler;
 import static org.openhab.binding.zwave.ZWaveBindingConstants.*;
 
 import java.math.BigDecimal;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
@@ -137,23 +135,17 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             networkKey = (String) param;
         }
         if (networkKey.length() == 0) {
-            logger.debug("No network key set by user - using secure random value.");
+            logger.debug("No network key set by user - using random value.");
 
-            // Create network key
-            byte[] networkKeyBytes = new byte[16];
-            try {
-                SecureRandom.getInstanceStrong().nextBytes(networkKeyBytes);
-            } catch (NoSuchAlgorithmException e) {
-                logger.debug("SecureRandom strong init failed - falling back to default SecureRandom.", e);
-                new SecureRandom().nextBytes(networkKeyBytes);
+            // Create random network key
+            networkKey = "";
+            for (int cnt = 0; cnt < 16; cnt++) {
+                int value = (int) Math.floor((Math.random() * 255));
+                if (cnt != 0) {
+                    networkKey += " ";
+                }
+                networkKey += String.format("%02X", value);
             }
-
-            StringBuilder buf = new StringBuilder();
-            for (byte aByte : networkKeyBytes) {
-                buf.append(String.format("%02X ", aByte));
-            }
-            networkKey = buf.toString().trim();
-
             // Persist the value
             Configuration configuration = editConfiguration();
             configuration.put(ZWaveBindingConstants.CONFIGURATION_NETWORKKEY, networkKey);
@@ -693,7 +685,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
      * This will not wait for the transaction response.
      *
      * @param transaction
-     *                        the {@link ZWaveCommandClassTransactionPayload} message to send.
+     *            the {@link ZWaveCommandClassTransactionPayload} message to send.
      */
     public void sendData(ZWaveCommandClassTransactionPayload transaction) {
         if (controller == null) {
