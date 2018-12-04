@@ -6,9 +6,9 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeotec_zwa001_00_000" listed="false">
-    <label>ZWA001</label>
+    <label>ZWA001 Aeotec Bulb 6 Multi-White Aeotec Bulb 6 Multi-White</label>
     <description><![CDATA[
-<br /><h1>Overview</h1><p>Standard form factor and appearance of the light bulb with 800 lm output Tunable white: dimmable from 5% to 100%, tunable from 2700K to 6500K. Possible to be included in groups, scenes, or schedules Suitable for indoor lighting: Corridors, Bedroom, Living Room, etc.</p> <p>Reset the device :</p> <ul><li>Please use this procedure only when the network primary controller is missing or otherwise inoperable.</li> <li>Led bulb re-power 6 times (between 0.5-2 seconds each time); If the 6th power on, the led bulb flashes twice, which means that the resetting is successful.</li> </ul><br /><h2>Inclusion Information</h2><p>Add for inclusion:</p> <ul><li>Set the Z-Wave network main controller into adding mode.</li> <li>Power cycle once for led bulb(OFF-&gt;ON).The led bulb will flash twice and send node info frame.</li> <li>Wait a moment, the led bulb should be added to the controller.Then the led bulb will flash once when it has been included into the network.</li> </ul><br /><h2>Exclusion Information</h2><p>Remove for exclusion:</p> <ul><li>Set the Z-Wave network main controller into removing mode.</li> <li>Led bulb re-power 3 times (between 0.5-2 seconds each time).</li> <li>Wait a moment, the led bulb should be removed from the controller.Then the led bulb will flash once, dim to 5% first, and then increased to 100% after 5 seconds.</li> </ul>
+Aeotec Bulb 6 Multi-White<br /><h1>Overview</h1><p>Standard form factor and appearance of the light bulb with 800 lm output Tunable white: dimmable from 5% to 100%, tunable from 2700K to 6500K. Possible to be included in groups, scenes, or schedules Suitable for indoor lighting: Corridors, Bedroom, Living Room, etc.</p> <p>Reset the device :</p> <ul><li>Please use this procedure only when the network primary controller is missing or otherwise inoperable.</li> <li>Led bulb re-power 6 times (between 0.5-2 seconds each time); If the 6th power on, the led bulb flashes twice, which means that the resetting is successful.</li> </ul><br /><h2>Inclusion Information</h2><p>Add for inclusion:</p> <ul><li>Set the Z-Wave network main controller into adding mode.</li> <li>Power cycle once for led bulb(OFF-&gt;ON).The led bulb will flash twice and send node info frame.</li> <li>Wait a moment, the led bulb should be added to the controller.Then the led bulb will flash once when it has been included into the network.</li> </ul><br /><h2>Exclusion Information</h2><p>Remove for exclusion:</p> <ul><li>Set the Z-Wave network main controller into removing mode.</li> <li>Led bulb re-power 3 times (between 0.5-2 seconds each time).</li> <li>Wait a moment, the led bulb should be removed from the controller.Then the led bulb will flash once, dim to 5% first, and then increased to 100% after 5 seconds.</li> </ul>
     ]]></description>
     <category>LightBulb</category>
 
@@ -47,7 +47,7 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Aeotec Limited</property>
-      <property name="modelId">ZWA001</property>
+      <property name="modelId">ZWA001 Aeotec Bulb 6 Multi-White</property>
       <property name="manufacturerId">0371</property>
       <property name="manufacturerRef">0103:0001</property>
       <property name="dbReference">942</property>

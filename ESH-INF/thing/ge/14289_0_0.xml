@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="ge_14289_00_000" listed="false">
+    <label>GE 14289 (ZW3009) In-Wall Touch Sensing Dimmer</label>
+    <description><![CDATA[
+In-Wall Touch Sensing Dimmer<br /><h1>Overview</h1><p>Put smart lighting control at your fingertips with the GE Z-Wave Plus Touch Sensing Dimmer. Control your lights with simple one touch dimming at the wall, by a mobile device from virtually anywhere, or by voice with Amazon Alexa or Google Assistant. The GE Z-Wave Plus Touch Dimmer offers extremely smooth and precise dimming control to detect different gestures such touch, hold, and swipe. Tap anywhere on the capacitive touch sensor to turn lights on or off and slide your finger up or down to seamlessly and smoothly adjust the brightness level of dimmable lights. The GE Touch Dimmer remembers your last brightness setting and automatically returns your lights to that level when turned on again. On, off and brightness levels can also be controlled and scheduled from anywhere! Along with conveniently saving you time and energy costs, the GE Z-Wave dimmer switch can replace any existing light switch in your home, and can be used in 2-, 3- and 4-way applications. You may also coordinate the Z-Wave dimmer with your home’s decor using the included white and light almond touch pad. Experience the comfort of smart home automation with the GE Z-Wave Plus In-Wall Touch Sensing Smart Dimmer.</p> <br /><h2>Inclusion Information</h2><ol><li>Follow the instructions for your Z-Wave controller to add a device tothe Z-Wave network.</li> <li>Once the controller is ready to add your device, press and release anywhere on the touch panel.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Follow the instructions for your Z-Wave controller to remove a device from the Z-Wave network.</li> <li>Once the controller is ready to remove your device, press and hold the side button (G) of the smart dimmer. While holding, press and release anywhere on the touchpanel, then release the side button to remove it from the network.</li> </ol>
+    ]]></description>
+    <category>WallSwitch</category>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+        </properties>
+      </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SCENE_ACTIVATION</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Jasco Products</property>
+      <property name="modelId">GE 14289 (ZW3009)</property>
+      <property name="manufacturerId">0063</property>
+      <property name="manufacturerRef">4944:3233</property>
+      <property name="dbReference">946</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>

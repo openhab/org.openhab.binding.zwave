@@ -53,7 +53,7 @@ Four Way Switch<br /><h1>Overview</h1><p>Touch Panel Switch is a wall switch wit
       <property name="manufacturerId">015F</property>
       <property name="manufacturerRef">3102:0204,3141:1302,3141:5102</property>
       <property name="dbReference">433</property>
-      <property name="defaultAssociations">5</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -120,28 +120,28 @@ Key Mode (0-4)<br /><h1>Overview</h1><p>0=single click to switch on/off status</
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Switch Button Group 1</label>
-        <multipleLimit>5</multipleLimit>
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: All Status Reports</label>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Switch Button Group 2</label>
+        <label>2: Switch Button Group 1</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
-      <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Switch Button Group 3</label>
+      <parameter name="group_5" type="text" groupName="association" multiple="true">
+        <label>5: Switch Button Group 2</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
-      <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Switch Button Group 4</label>
+      <parameter name="group_8" type="text" groupName="association" multiple="true">
+        <label>8: Switch Button Group 3</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
-      <parameter name="group_5" type="text" groupName="association">
-        <label>5: All Status Reports</label>
+      <parameter name="group_11" type="text" groupName="association" multiple="true">
+        <label>11: Switch Button Group 4</label>
+        <multipleLimit>5</multipleLimit>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

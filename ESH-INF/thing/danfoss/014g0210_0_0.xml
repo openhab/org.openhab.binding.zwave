@@ -56,6 +56,12 @@ HC-Z Hydronic Floor Heating Controller<br /><h1>Overview</h1><p>Product informat
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:1</property>
         </properties>
       </channel>
+      <channel id="indicator_flash1" typeId="indicator_flash">
+        <label>Indicator 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_INDICATOR:1</property>
+        </properties>
+      </channel>
       <channel id="thermostat_mode2" typeId="danfoss_014g0210_00_000_thermostat_mode">
         <label>Thermostat mode 2</label>
         <properties>
@@ -239,6 +245,7 @@ HC-Z Hydronic Floor Heating Controller<br /><h1>Overview</h1><p>Product informat
       <property name="manufacturerId">0002</property>
       <property name="manufacturerRef">0002:400A</property>
       <property name="dbReference">935</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -248,6 +255,11 @@ HC-Z Hydronic Floor Heating Controller<br /><h1>Overview</h1><p>Product informat
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
@@ -286,6 +298,14 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
           <option value="1">30 minutes</option>
           <option value="2">60 minutes</option>
         </options>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Lifeline</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>One group supported: 1 with profile "General-Life-line"</p> <ul><li>Lifeline for endpoints</li> <li>Unsolicited reports: <ul><li>Device Reset Locally Notification</li> <li>Notification Report (Thermostat 1 only)</li> </ul></li> </ul>
+        ]]></description>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

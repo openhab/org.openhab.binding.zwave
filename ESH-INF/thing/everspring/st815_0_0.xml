@@ -8,6 +8,7 @@
   <thing-type id="everspring_st815_00_000" listed="false">
     <label>ST815 Illumination Sensor</label>
     <description>Illumination Sensor</description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

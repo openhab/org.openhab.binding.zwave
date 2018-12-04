@@ -174,6 +174,15 @@ This parameter defines which frames will be sent ...<br /><h1>Overview</h1><p>in
         </options>
       </parameter>
 
+      <parameter name="config_10_1" type="integer" groupName="configuration"
+                 min="0" max="127">
+        <label>10: Auto Report Battery Time</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>The interval time for auto report the battery level.</p>
+        ]]></description>
+        <default>127</default>
+      </parameter>
+
       <parameter name="config_11_2" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>11: BASIC ON frame value</label>

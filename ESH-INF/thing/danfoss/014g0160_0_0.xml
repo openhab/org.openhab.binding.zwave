@@ -6,9 +6,9 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="danfoss_014g0160_00_000" listed="false">
-    <label>014G0160 Z-Wave room sensor</label>
+    <label>014G0160 Room Thermostat</label>
     <description><![CDATA[
-Z-Wave room sensor<br /><h2>Inclusion Information</h2><p>Push one time LED Button</p> <br /><h2>Exclusion Information</h2><p>Push one time LED Button</p> <br /><h2>Wakeup Information</h2><p>Any button (LED, Temp+ or Temp-)</p>
+Room Thermostat<br /><h2>Inclusion Information</h2><p>Push one time LED Button</p> <br /><h2>Exclusion Information</h2><p>Push one time LED Button</p> <br /><h2>Wakeup Information</h2><p>Any button (LED, Temp+ or Temp-)</p>
     ]]></description>
     <category>HVAC</category>
 

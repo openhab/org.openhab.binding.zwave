@@ -14,12 +14,6 @@ Simon IO: Roller Blind<br /><h1>Overview</h1><p>Roller Blind IO is ready to oper
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
-        </properties>
-      </channel>
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
