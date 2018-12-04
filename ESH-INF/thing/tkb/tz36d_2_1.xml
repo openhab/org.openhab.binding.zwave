@@ -10,15 +10,10 @@
     <description><![CDATA[
 Dual Paddle Wall Switch<br /><h2>Inclusion Information</h2><p>Note: This module must be "Included in the Network" only where it will be permanently installed. The proper operation of this node in the mesh network is dependent on it knowing its location with respect to other nodes. You cannot "test bench" configure this module and the install it.</p>
     ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
-        </properties>
-      </channel>
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
@@ -38,7 +33,7 @@ Dual Paddle Wall Switch<br /><h2>Inclusion Information</h2><p>Note: This module 
       <property name="vendor">TKB Home</property>
       <property name="modelId">TZ36D</property>
       <property name="manufacturerId">0118</property>
-      <property name="manufacturerRef">0003:0003</property>
+      <property name="manufacturerRef">0003:0003,0311:0202</property>
       <property name="versionMin">2.1</property>
       <property name="dbReference">605</property>
       <property name="defaultAssociations">1,2,3,4</property>

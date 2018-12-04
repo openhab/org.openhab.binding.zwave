@@ -101,6 +101,15 @@
         <default>99</default>
       </parameter>
 
+      <parameter name="config_10_1" type="integer" groupName="configuration"
+                 min="0" max="127">
+        <label>10: Auto Report Battery Time</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>The interval time for auto report the battery level.</p>
+        ]]></description>
+        <default>127</default>
+      </parameter>
+
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>

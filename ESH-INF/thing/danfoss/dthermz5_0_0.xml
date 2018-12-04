@@ -61,13 +61,22 @@
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
+      <parameter name="config_1_0" type="integer" groupName="configuration"
+                 min="0" max="4294967295">
+        <label>1: Valve Type</label>
+        <description><![CDATA[
+Type of Valve being controlled<br /><h1>Overview</h1><p>Parameter 1: Valve type:</p> <ul><li>0 = Normal Closed (NC) default</li> <li>1 = Normal Open (NO)</li> </ul><p>Mix of NC and NO types of valves is not supported</p> <p>Most systems use NC valves</p>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
       <parameter name="config_1_2" type="integer" groupName="configuration"
-                 min="1" max="100">
+                 min="0" max="1">
         <label>1: Temperature Report threshold</label>
         <description><![CDATA[
 Range is from 0.1 to 10°C 1=0.1°C 100=10°C<br /><h1>Overview</h1><p>Default value 5 = 0.5 °C</p>
         ]]></description>
-        <default>5</default>
+        <default>0</default>
       </parameter>
 
       <parameter name="config_2_2" type="integer" groupName="configuration"

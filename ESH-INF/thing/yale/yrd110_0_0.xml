@@ -74,7 +74,6 @@
         <description>Volume of beeps</description>
         <default>1</default>
         <options>
-          <option value="0"></option>
           <option value="1">Loud</option>
           <option value="3">Silent</option>
         </options>
