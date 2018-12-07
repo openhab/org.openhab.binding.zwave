@@ -8,6 +8,7 @@
   <thing-type id="vision_zm1601_00_000" listed="false">
     <label>ZM1601 Battery Operated Siren</label>
     <description>Battery Operated Siren</description>
+    <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

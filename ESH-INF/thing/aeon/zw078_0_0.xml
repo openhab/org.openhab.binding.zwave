@@ -44,6 +44,12 @@ Heavy Duty Switch<br /><h1>Overview</h1><p>Wall mounted switch for high current 
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
         </properties>
       </channel>
+      <channel id="meter_reset" typeId="meter_reset">
+        <label>Reset Meter</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_METER;reset=true</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
@@ -176,17 +182,6 @@ see overview<br /><h1>Overview</h1><p>The value is a combination number made up 
                  min="1" max="2678400">
         <label>113: Interval to send out reports of group 3</label>
         <default>600</default>
-      </parameter>
-
-      <parameter name="config_120_1" type="integer" groupName="configuration">
-        <label>120: Turn External Button Mode</label>
-        <description>Parameter to set External button type</description>
-        <default>255</default>
-        <options>
-          <option value="0">Momentary Button Mode</option>
-          <option value="1">2 State Switch Mode</option>
-          <option value="2">3 Way Switch Mode</option>
-        </options>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

@@ -128,6 +128,12 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_V</property>
         </properties>
       </channel>
+      <channel id="meter_reset2" typeId="meter_reset">
+        <label>Reset Meter 2</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_METER:2;reset=true</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->

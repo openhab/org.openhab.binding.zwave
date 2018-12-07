@@ -8,7 +8,7 @@
   <thing-type id="shenzhen_powerplug_00_000" listed="false">
     <label>NAS-WR01ZE Metered Wall Plug Switch</label>
     <description><![CDATA[
-Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltage, current load, power consumption and energy</p> <p>consumption measuring. </p> <p><strong>Voltage</strong> – The Supply Power Voltage For Plug.</p> <p><strong>Current</strong> – The Current for the Electric Device Connect to Plug Consumption.</p> <p><strong>Power</strong> – Power Consumed by an Electric Device in an instant, unit: Watt (W).</p> <p><strong>Energy</strong> – Energy Consumed by an Electric Device through a Time Period. Most</p> <p>commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One</p> <p>Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh.</p> <br /><h2>Inclusion Information</h2><p>1. Make sure the sensor is powered.</p> <p>2. Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or</p> <p>gateway operating manual)</p> <p>3. Press the button three times within 1.5 second, the device will enter inclusion mode. And the</p> <p>LED will flash on and off with green alternately five times within 2 seconds.</p> <br /><h2>Exclusion Information</h2><p>1. Make sure the sensor is powered.</p> <p>2. Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or</p> <p>gateway operating manual)</p> <p>3. Press the button three times within 1.5 second, the device will enter exclusion mode. And</p> <p>the LED will flash on and off with yellow alternately five times within 2 seconds.</p>
+Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltage, current load, power consumption and energy consumption measuring. </p> <ul><li><strong>Voltage</strong> – The Supply Power Voltage For Plug.</li> <li><strong>Current</strong> – The Current for the Electric Device Connect to Plug Consumption.</li> <li><strong>Power</strong> – Power Consumed by an Electric Device in an instant, unit: Watt (W).</li> <li><strong>Energy</strong> – Energy Consumed by an Electric Device through a Time Period. Most commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh.</li> </ul><br /><h2>Inclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off with green alternately five times within 2 seconds.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter exclusion mode. And the LED will flash on and off with yellow alternately five times within 2 seconds.</li> </ol>
     ]]></description>
     <category>PowerOutlet</category>
 
@@ -100,7 +100,7 @@ Interval time reporting data to controller<br /><h1>Overview</h1><p>This paramet
                  min="1" max="16">
         <label>3: Maxium over-load current</label>
         <description><![CDATA[
-maximum current the plug can provide to load<br /><h1>Overview</h1><p>This parameter defines maximum current the plug can provide to load that be connected to plug. If the current consumed by load greater than maximum current, the plug will cut off power and send alarm.</p> <p>send Alarm NOTIFICATION_EVENT_POWER_MANAGEMENT_OVER_LOAD_DETECTED to associated</p> <p>devices in lifeline. Red Led will blink every seconds until current is normal (less than Parameter</p> <p>#3). You must remove the loader and turn on the Plug (press the button once) to enable current</p> <p>monitor and clear NOTIFICATION ALARM.</p> <p>This parameter value must be great than #4. If user set this parameter to default by Configure CC,</p> <p>the parameter #4 will be set to default value.</p>
+maximum current the plug can provide to load<br /><h1>Overview</h1><p>This parameter defines maximum current the plug can provide to load that be connected to plug. If the current consumed by load greater than maximum current, the plug will cut off power and send alarm.<br />Send Alarm NOTIFICATION_EVENT_POWER_MANAGEMENT_OVER_LOAD_DETECTED to associated devices in lifeline. Red Led will blink every seconds until current is normal (less than Parameter #3). You must remove the loader and turn on the Plug (press the button once) to enable current monitor and clear NOTIFICATION ALARM. This parameter value must be great than #4. If user set this parameter to default by Configure CC, the parameter #4 will be set to default value.</p>
         ]]></description>
         <default>13</default>
       </parameter>
@@ -136,7 +136,7 @@ Power consumed change to be reported<br /><h1>Overview</h1><p>How much the power
       <parameter name="config_7_1" type="integer" groupName="configuration">
         <label>7: Remember Relay ON/OFF status after power failure.</label>
         <description><![CDATA[
-Plug state after power-on<br /><h1>Overview</h1><p> Define how will the Plug react after the power supply is back on.  0 = will be off after the power supply is reconnected.  Others = remember relay status</p>
+Plug state after power-on<br /><h1>Overview</h1><p>Define how will the Plug react after the power supply is back on.  0 = will be off after the power supply is reconnected.  Others = remember relay status</p>
         ]]></description>
         <default>1</default>
         <options>
@@ -169,7 +169,7 @@ Delay time after the plug is switched off<br /><h1>Overview</h1><p>This paramete
       <parameter name="config_10_1" type="integer" groupName="configuration">
         <label>10: Button On/Off Enable</label>
         <description><![CDATA[
-Enable/Disable top button function<br /><h1>Overview</h1><p>If this parameter is set to ‘1’, users can turn on and off the wall plug by pressing the button on the top of the wall plug.If this parameter is set to ‘0’, the wall plug cannot be turned on and off by pressing the button.</p>
+Enable/Disable top button function<br /><h1>Overview</h1><p>If this parameter is set to ‘1’, users can turn on and off the wall plug by pressing the button on the top of the wall plug. If this parameter is set to ‘0’, the wall plug cannot be turned on and off by pressing the button.</p>
         ]]></description>
         <default>1</default>
         <options>
@@ -180,9 +180,9 @@ Enable/Disable top button function<br /><h1>Overview</h1><p>If this parameter is
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
-        <label>1: L</label>
+        <label>1: Lifeline</label>
         <description><![CDATA[
-Assigned to Plugs status - On/Off. Allows for receiving control command from trigger devices whenever the Plug is turned On or Off.<br /><h1>Overview</h1><p>NOTIFICATION_REPORT_V4</p> <p>METER_REPORT_V4</p> <p>SWITCH_BINARY_REPORT</p> <p>DEVICE_RESET_LOCALLY_NOTIFICATION</p>
+Assigned to Plugs status - On/Off. Allows for receiving control command from trigger devices whenever the Plug is turned On or Off.<br /><h1>Overview</h1><ul><li>NOTIFICATION_REPORT_V4</li> <li>METER_REPORT_V4</li> <li>SWITCH_BINARY_REPORT</li> <li>DEVICE_RESET_LOCALLY_NOTIFICATION</li> </ul>
         ]]></description>
       </parameter>
 
