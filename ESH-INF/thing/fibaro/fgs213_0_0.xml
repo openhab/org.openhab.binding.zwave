@@ -296,6 +296,98 @@ S2 switch - associations sent to 4th and 5th association groups<br /><h1>Overvie
         <limitToOptions>false</limitToOptions>
       </parameter>
 
+      <parameter name="config_36_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>36: S2 switch ON value sent to 4th and 5th ass. groups</label>
+        <description><![CDATA[
+S2 switch - Switch ON value sent to 4th and 5th association groups<br /><h1>Overview</h1><p>This parameter defines value sent with Switch On command to devices associated in 4th and 5th association group. </p>
+        ]]></description>
+        <default>255</default>
+      </parameter>
+
+      <parameter name="config_37_2" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>37: S2 switch OFF sent to 4th and 5th groups</label>
+        <description><![CDATA[
+S2 switch - Switch OFF value sent to 4th and 5th association groups<br /><h1>Overview</h1><p>This parameter defines value sent with Switch OFF command to devices associated in 4th and 5th association group. </p>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_38_2" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>38: S2 double click sent to 4th and 5th ass. grps.</label>
+        <description><![CDATA[
+S2 switch - Double Click value sent to 4th and 5th association groups<br /><h1>Overview</h1><p>This parameter defines value sent with Double Click command to devices associated in 4th and 5th association group. </p>
+        ]]></description>
+        <default>99</default>
+      </parameter>
+
+      <parameter name="config_40_1" type="integer" groupName="configuration">
+        <label>40: Reaction to General Alarm</label>
+        <description><![CDATA[
+Reaction to General Alarm<br /><h1>Overview</h1><p>This parameter determines how the device will react to General Alarm frame. </p>
+        ]]></description>
+        <default>3</default>
+        <options>
+          <option value="0">Ignore</option>
+          <option value="1">Turn ON</option>
+          <option value="2">Turn OFF</option>
+          <option value="40">Flash</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_41_1" type="integer" groupName="configuration">
+        <label>41: Reaction to Flood Alarm</label>
+        <description><![CDATA[
+Reaction to Flood Alarm<br /><h1>Overview</h1><p>This parameter determines how the device will react to Flood Alarm frame. </p>
+        ]]></description>
+        <default>2</default>
+        <options>
+          <option value="0">Ignore</option>
+          <option value="1">Turn ON</option>
+          <option value="2">Turn OFF</option>
+          <option value="3">Flash</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_42_1" type="integer" groupName="configuration">
+        <label>42: CO/CO2/Smoke Alarm</label>
+        <description><![CDATA[
+Reaction to CO/CO2/Smoke Alarm<br /><h1>Overview</h1><p>This parameter determines how the device will react to CO, CO2 or Smoke frame. </p>
+        ]]></description>
+        <default>3</default>
+        <options>
+          <option value="0">Ignore</option>
+          <option value="1">Turn ON</option>
+          <option value="2">Turn OFF</option>
+          <option value="3">Flash</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_43_1" type="integer" groupName="configuration">
+        <label>43: Reaction to Heat Alarm</label>
+        <description><![CDATA[
+Reaction to Heat Alarm<br /><h1>Overview</h1><p>This parameter determines how the device will react to Heat Alarm frame. </p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">Ignore</option>
+          <option value="1">Turn ON</option>
+          <option value="2">Turn OFF</option>
+          <option value="3">Flash</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_44_2" type="integer" groupName="configuration"
+                 min="1" max="32000">
+        <label>44: Flashing alarm duration</label>
+        <description><![CDATA[
+Flashing alarm duration<br /><h1>Overview</h1><p>This parameter allows to set duration of flashing alarm mode.  (1-32000s duration, 1s step). The default value (600) represents 10 minutes.</p>
+        ]]></description>
+        <default>600</default>
+      </parameter>
+
       <parameter name="config_50_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>50: Active power reports</label>
