@@ -39,6 +39,7 @@
       <property name="manufacturerId">011A</property>
       <property name="manufacturerRef">0101:5606,0111:0605</property>
       <property name="dbReference">465</property>
+      <property name="commandClass:COMMAND_CLASS_CONFIGURATION">ccAdd</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

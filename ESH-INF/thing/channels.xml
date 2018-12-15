@@ -994,6 +994,14 @@
         </state>
     </channel-type>
 
+    <!-- Sensor - Frequency -->
+    <channel-type id="sensor_frequency">
+        <item-type>Number</item-type>
+        <label>Frequency Sensor</label>
+        <description>Indicates the frequency</description>
+        <category></category>
+    </channel-type>
+
     <!-- General Sensor -->
     <channel-type id="sensor_general">
         <item-type>Number</item-type>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="popp_pope700397_00_000" listed="false">
+    <label>POPE700397 Popp Smart Outdoor Plug - IP44 rated</label>
+    <description><![CDATA[
+Popp Smart Outdoor Plug - IP44 rated<br /><h1>Overview</h1><p>The Wall Plug Switch Outdoor can be placed between a wall outlet for plugs type F and electric devices, plugged in by a cord. It can switch all loads up to 3500 W. The plug switch is IP 44 rated and can, therefore, be used both in dry as well as humid environments in- and outdoor.</p> <p>Switching is controlled by the local button or wirelessly. The use of the local button and the behavior on wireless commands can be configured using configuration parameters. When detached from the control of local leads the button on the device can be used to trigger scenes in a central gateway. A single click and double click are distinguished.</p> <p>The device is also measuring the mains voltage supply reporting mains voltage and mains frequency. Additionally, the power consumption of the attached load is monitored as well.</p> <p>All metering values can be requested from the central controller and will be reported unsolicited if configured. </p> <br /><h2>Inclusion Information</h2><p>Tripple Click the button for inclusion. </p> <br /><h2>Exclusion Information</h2><p>Tripple Click the button for exclusion.</p>
+    ]]></description>
+    <category>PowerOutlet</category>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="sensor_frequency" typeId="sensor_frequency">
+        <label>Frequency</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL</property>
+        </properties>
+      </channel>
+      <channel id="meter_powerfactor" typeId="meter_powerfactor">
+        <label>Electric meter (power factor)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_Power_Factor</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts" typeId="meter_watts">
+        <label>Electric meter (watts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="meter_voltage" typeId="meter_voltage">
+        <label>Electric meter (volts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_V</property>
+        </properties>
+      </channel>
+      <channel id="meter_current" typeId="meter_current">
+        <label>Electric meter (amps)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_A</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh" typeId="meter_kwh">
+        <label>Electric meter (kWh)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Popp &amp; Co</property>
+      <property name="modelId">POPE700397</property>
+      <property name="manufacturerId">0154</property>
+      <property name="manufacturerRef">0003:000A</property>
+      <property name="dbReference">969</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>

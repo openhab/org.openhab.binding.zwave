@@ -17,7 +17,7 @@ Water Sensor<br /><h2>Wakeup Information</h2><p>To wake up the sensor, <em>don't
       <channel id="sensor_binary" typeId="sensor_binary">
         <label>Binary Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="alarm_flood" typeId="alarm_flood">
