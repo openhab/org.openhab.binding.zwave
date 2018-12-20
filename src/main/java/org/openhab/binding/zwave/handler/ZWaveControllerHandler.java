@@ -767,6 +767,10 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         return true;
     }
 
+    public boolean isControllerMaster() {
+        return isMaster;
+    }
+
     private void updateNeighbours() {
         if (controller == null) {
             return;
