@@ -111,6 +111,12 @@ Dimmer 2<br /><h1>Overview</h1><p>Remotely controlled light dimming module is de
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:1;type=SYSTEM</property>
         </properties>
       </channel>
+      <channel id="notification_send1" typeId="notification_send">
+        <label>Send Notification</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_ALARM:1</property>
+        </properties>
+      </channel>
       <channel id="switch_dimmer2" typeId="switch_dimmer">
         <label>Dimmer 2</label>
         <properties>
