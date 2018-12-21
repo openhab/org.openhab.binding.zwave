@@ -5,10 +5,10 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="shenzhen_motionsensor_00_000" listed="false">
-    <label>Motion Sensor PIR Motion Sensor</label>
+  <thing-type id="shenzhen_pd03z_03_080" listed="false">
+    <label>PD03Z PIR Motion Sensor with Temperature Sensor</label>
     <description><![CDATA[
-PIR Motion Sensor<br /><h1>Overview</h1><p>This product can be included and operated in any Z‐Wave network with other Z‐Wave certified devices from other manufacturers and/or other applications. All non‐battery operated nodes within the network will act as repeaters regardless of vendor to increase reliability of the network.<br />In the Back casing, there is a button that is used to carry out include, exclude, wakeup device or reset factory default settings.<br />When power is first supplied, the LED will flash on and off alternately at one second intervals within 5 seconds if the detector has not been added a Z‐Wave network. Please get familiar with the terms below before starting the operations.</p> <br /><h2>Inclusion Information</h2><ol><li>Remove the sensor cover.</li> <li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off alternately five times..</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Remove the device cover.</li> <li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter exclusion mode.</li> </ol><br /><h2>Wakeup Information</h2><p>You can press the button once to wake up the device and send wakeup notification to controller. If press successfully, the LED will blink one time. The minimum wakeup interval is 300s, the maximum wakeup interval is 16,777,200s (about 194 days). Allowable interval among each wakeup interval is 60 second, such as 360, 420, 480…<br />Note: The default value is 12 hours. This value is longer, the battery life is greater.</p>
+PIR Motion Sensor with Temperature Sensor<br /><h1>Overview</h1><p>This product can be included and operated in any Z‐Wave network with other Z‐Wave certified devices from other manufacturers and/or other applications. All non‐battery operated nodes within the network will act as repeaters regardless of vendor to increase reliability of the network.</p> <p>In the Back casing, there is a button that is used to carry out include, exclude, wakeup device or reset factory default settings.</p> <p>When power is first supplied, the LED will flash on and off alternately at one second intervals within 5 seconds if the detector has not been added a Z‐Wave network. Please get familiar with the terms below before starting the operations.</p> <br /><h2>Inclusion Information</h2><ol><li>Remove the sensor cover.</li> <li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off alternately five times..</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Remove the device cover.</li> <li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter exclusion mode.</li> </ol><br /><h2>Wakeup Information</h2><p>You can press the button once to wake up the device and send wakeup notification to controller. If press successfully, the LED will blink one time. The minimum wakeup interval is 300s, the maximum wakeup interval is 16,777,200s (about 194 days). Allowable interval among each wakeup interval is 60 second, such as 360, 420, 480…<br />Note: The default value is 12 hours. This value is longer, the battery life is greater.</p>
     ]]></description>
     <category>MotionDetector</category>
 
@@ -42,11 +42,11 @@ PIR Motion Sensor<br /><h1>Overview</h1><p>This product can be included and oper
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Shenzhen Neo Electronics Co., Ltd</property>
-      <property name="modelId">Motion Sensor</property>
+      <property name="modelId">PD03Z</property>
       <property name="manufacturerId">0258</property>
-      <property name="manufacturerRef">0003:0083,0003:008D,0003:1083,0003:108D</property>
-      <property name="versionMax">3.79</property>
-      <property name="dbReference">401</property>
+      <property name="manufacturerRef">0003:108D</property>
+      <property name="versionMin">3.80</property>
+      <property name="dbReference">973</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -147,8 +147,17 @@ How much the Lux Level must change<br /><h1>Overview</h1><p>How much the Lux Lev
         <default>100</default>
       </parameter>
 
-      <parameter name="config_10_1" type="integer" groupName="configuration">
-        <label>10: LED Blink Enable</label>
+      <parameter name="config_10_1" type="integer" groupName="configuration"
+                 min="0" max="127">
+        <label>10: Temperature Report</label>
+        <description><![CDATA[
+Ambient Temperature Differential Report<br /><h1>Overview</h1><p>This parameter is configured the value that differential between current measured and previous report value. If the differential value larger than the settings, device will report this measured temperature value to nodes associated in lifeline. Differential Value = [Value] × 0.1℃</p>
+        ]]></description>
+        <default>5</default>
+      </parameter>
+
+      <parameter name="config_11_1" type="integer" groupName="configuration">
+        <label>11: LED Blink Enable</label>
         <description><![CDATA[
 Defines whether the LED blinking is on / off<br /><h1>Overview</h1><p> 1 = enable -&gt; blink once when motion sensor detect movement,  0= disabled</p>
         ]]></description>
@@ -156,6 +165,18 @@ Defines whether the LED blinking is on / off<br /><h1>Overview</h1><p> 1 = enab
         <options>
           <option value="0">Disable LED blinking</option>
           <option value="1">Enable LED blinking</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_12_1" type="integer" groupName="configuration">
+        <label>12: Motion Event Report One Time Enable</label>
+        <description><![CDATA[
+Motion Event Report One Time Enable<br /><h1>Overview</h1><p>‘1’ – The motion detected event will be sent to controller only once until device report motion cleared event.</p> <p>‘0’ – The motion detected event will be sent to controller when device detects a movement event.</p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">Disable One time Motion Function</option>
+          <option value="1">Enable One time Motion Function</option>
         </options>
       </parameter>
 

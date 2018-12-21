@@ -6,7 +6,7 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="simontech_10000322039_00_000" listed="false">
-    <label>10000322-03X Switch IO: On/Off Power Switch</label>
+    <label>10002034-13X Switch IO: On/Off Power Switch</label>
     <description><![CDATA[
 Switch IO: On/Off Power Switch<br /><h1>Overview</h1><p>Simon Electronic Switch IO integrated by Electronic Switch that provides power Switch and Rocker that provides Z-Wave communication attributes.</p> <br /><h2>Inclusion Information</h2><ol><li>Put controller into inclusion mode.</li> <li>When the pushbutton is released after a press of (2sec&lt;T&lt;20sec) the device will send a NIF to include the device to the Z-Wave network. Main LED will blink with 0,3 sec period.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Put controller into exclusion mode.</li> <li>When the pushbutton is released after a press of (2sec&lt;T&lt;20sec) the device will send a NIF to exclude the device from the Z-Wave network. Main LED will blink with 0,3 sec period.</li> </ol>
     ]]></description>
@@ -31,9 +31,9 @@ Switch IO: On/Off Power Switch<br /><h1>Overview</h1><p>Simon Electronic Switch 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">SimonTech S.L.U</property>
-      <property name="modelId">10000322-03X</property>
+      <property name="modelId">10002034-13X</property>
       <property name="manufacturerId">0267</property>
-      <property name="manufacturerRef">0001:00DA,0001:0107,0001:0477</property>
+      <property name="manufacturerRef">0001:0000,0001:00DA,0001:0107,0001:0477</property>
       <property name="dbReference">925</property>
       <property name="defaultAssociations">1</property>
     </properties>
