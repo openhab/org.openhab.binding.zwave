@@ -27,19 +27,19 @@ HomeSeer Z-Wave Plus Leak Sensor<br /><h1>Overview</h1><p>Homeseer HS-LS100+ is 
         </properties>
       </channel>
       <channel id="alarm_heat" typeId="alarm_heat">
-        <label>Alarm (heat)</label>
+        <label>Heat Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=HEAT</property>
         </properties>
       </channel>
       <channel id="alarm_flood" typeId="alarm_flood">
-        <label>Alarm (flood)</label>
+        <label>Flood Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=FLOOD</property>
         </properties>
       </channel>
-      <channel id="alarm_burglar" typeId="alarm_burglar">
-        <label>Alarm (burglar)</label>
+      <channel id="alarm_tamper" typeId="alarm_tamper">
+        <label>Tamper Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
         </properties>

@@ -93,7 +93,7 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
     public void handleMeterReport(ZWaveCommandClassPayload payload, int endpoint) {
         // Sanity check
         if (payload.getPayloadLength() < 4) {
-            logger.error("NODE {}: Meter Report: Buffer too short: length={}, required={}", getNode().getNodeId(),
+            logger.warn("NODE {}: Meter Report: Buffer too short: length={}, required={}", getNode().getNodeId(),
                     payload.getPayloadLength(), 4);
             return;
         }
@@ -517,8 +517,8 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
      */
     public class ZWaveMeterValueEvent extends ZWaveCommandClassValueEvent {
 
-        private MeterType meterType;
-        private MeterScale meterScale;
+        private final MeterType meterType;
+        private final MeterScale meterScale;
 
         /**
          * Constructor. Creates a instance of the ZWaveMeterValueEvent class.
