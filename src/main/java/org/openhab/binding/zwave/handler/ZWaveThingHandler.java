@@ -95,7 +95,7 @@ import com.google.common.collect.Sets;
 public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWaveEventListener {
     public final static Set<ThingTypeUID> SUPPORTED_THING_TYPES = Sets.newHashSet();
 
-    private Logger logger = LoggerFactory.getLogger(ZWaveThingHandler.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveThingHandler.class);
 
     private ZWaveControllerHandler controllerHandler;
 
@@ -107,8 +107,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
     private final Set<ChannelUID> thingChannelsPoll = new HashSet<ChannelUID>();
 
-    private Map<Integer, ZWaveConfigSubParameter> subParameters = new HashMap<Integer, ZWaveConfigSubParameter>();
-    private Map<String, Object> pendingCfg = new HashMap<String, Object>();
+    private final Map<Integer, ZWaveConfigSubParameter> subParameters = new HashMap<Integer, ZWaveConfigSubParameter>();
+    private final Map<String, Object> pendingCfg = new HashMap<String, Object>();
 
     private final Object pollingSync = new Object();
     private ScheduledFuture<?> pollingJob = null;
@@ -504,7 +504,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         // Add the listener for ZWave events.
         // This ensures we get called whenever there's an event we might be interested in
         if (bridgeHandler.addEventListener(this) == false) {
-            logger.debug("NODE {}: Controller failed to register event handler.", nodeId);
+            logger.error("NODE {}: Controller failed to register event handler.", nodeId);
             return;
         }
 
