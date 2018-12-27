@@ -15,7 +15,7 @@ Door Window Sensor<br /><h1>Overview</h1><p>Wireless Door/ Window Sensor</p> <br
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="sensor_door" typeId="sensor_door">
-        <label>Sensor (Alarm)</label>
+        <label>Door Sensor</label>
         <properties>
           <property name="binding:*:OpenClosedType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL, event=23</property>
         </properties>
@@ -23,7 +23,7 @@ Door Window Sensor<br /><h1>Overview</h1><p>Wireless Door/ Window Sensor</p> <br
       <channel id="alarm_tamper" typeId="alarm_tamper">
         <label>Tamper Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;BURGLAR</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">

@@ -6,9 +6,9 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="elexa_dmms1_00_000" listed="false">
-    <label>DMMS1 Dome Z-Wave Plus Motion Detector with Light Sensor and Flexible Magnetic Mount (DMMS1)</label>
+    <label>DMMS1 Dome Z-Wave Plus Motion Detector with Light Sensor and Flexible Magnetic Mount</label>
     <description><![CDATA[
-Dome Z-Wave Plus Motion Detector with Light Sensor and Flexible Magnetic Mount (DMMS1)<br /><h1>Overview</h1><p>Z-Wave Plus Motion Detector with Light Sensor</p> <br /><h2>Inclusion Information</h2><ol><li>Bring Motion Detector to within 10 feet (3 meters) of the controller</li> <li>Remove the cover of the Motion Detector by twisting it apart</li> <li>Put the controller into inclusion mode</li> <li>Press the Connect Button quickly 3 times in a row</li> </ol><p>The LED Indicator will flash five times indicating inclusion.</p> <br /><h2>Exclusion Information</h2><ol><li>Remove the cover of the Motion Detector by twisting apart and make sure the Motion Detector is powered</li> <li>Put the controller into exclusion mode</li> <li>Press the Connect Button quickly three times in a row</li> </ol><p>The LED Indicator will flash five times indicating exclusion/disconnection</p> <p>Factory Reset:</p> <ol><li>Remove the cover of the Motion Detector by twisting apart and make sure the Motion Detector is powered</li> <li>Hold the Connect Button for 10 seconds until the LED Indicator blinks once, then release the button.</li> </ol><br /><h2>Wakeup Information</h2><ol><li>Remove the cover of the Motion Detector by twisting apart and make sure the Motion Detector is powered</li> <li>Press the Connect Button quickly three times in a row</li> </ol>
+Dome Z-Wave Plus Motion Detector with Light Sensor and Flexible Magnetic Mount<br /><h1>Overview</h1><p>Z-Wave Plus Motion Detector with Light Sensor</p> <br /><h2>Inclusion Information</h2><ol><li>Bring Motion Detector to within 10 feet (3 meters) of the controller</li> <li>Remove the cover of the Motion Detector by twisting it apart</li> <li>Put the controller into inclusion mode</li> <li>Press the Connect Button quickly 3 times in a row</li> </ol><p>The LED Indicator will flash five times indicating inclusion.</p> <br /><h2>Exclusion Information</h2><ol><li>Remove the cover of the Motion Detector by twisting apart and make sure the Motion Detector is powered</li> <li>Put the controller into exclusion mode</li> <li>Press the Connect Button quickly three times in a row</li> </ol><p>The LED Indicator will flash five times indicating exclusion/disconnection</p> <p>Factory Reset:</p> <ol><li>Remove the cover of the Motion Detector by twisting apart and make sure the Motion Detector is powered</li> <li>Hold the Connect Button for 10 seconds until the LED Indicator blinks once, then release the button.</li> </ol><br /><h2>Wakeup Information</h2><ol><li>Remove the cover of the Motion Detector by twisting apart and make sure the Motion Detector is powered</li> <li>Press the Connect Button quickly three times in a row</li> </ol>
     ]]></description>
     <category>MotionDetector</category>
 
@@ -26,10 +26,16 @@ Dome Z-Wave Plus Motion Detector with Light Sensor and Flexible Magnetic Mount (
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=LUMINANCE</property>
         </properties>
       </channel>
-      <channel id="alarm_burglar" typeId="alarm_burglar">
-        <label>Alarm (burglar)</label>
+      <channel id="alarm_tamper" typeId="alarm_tamper">
+        <label>Tamper Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
+        </properties>
+      </channel>
+      <channel id="alarm_motion" typeId="alarm_motion">
+        <label>Motion Alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
