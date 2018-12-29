@@ -95,20 +95,20 @@ public class ZWaveNode {
     @XStreamOmitField
     private boolean awake = false;
 
-    // The period to wait before telling a sleeping node to sleep again
-    private int sleepDelay = 1000;
+    // Half the period to wait before telling a sleeping node to sleep again
+    private final int sleepDelay = 1000;
 
     // Keep the NIF - just used for information and debug in the XML
     @SuppressWarnings("unused")
     private List<CommandClass> nodeInformationFrame = null;
 
     // Stores the list of association groups
-    private Map<Integer, ZWaveAssociationGroup> associationGroups = new ConcurrentHashMap<Integer, ZWaveAssociationGroup>();
+    private final Map<Integer, ZWaveAssociationGroup> associationGroups = new ConcurrentHashMap<Integer, ZWaveAssociationGroup>();
 
     // Endpoint
     private final Map<Integer, ZWaveEndpoint> endpoints = new ConcurrentHashMap<Integer, ZWaveEndpoint>();
 
-    private List<Integer> nodeNeighbors = new ArrayList<Integer>();
+    private final List<Integer> nodeNeighbors = new ArrayList<Integer>();
     private Date lastSent = null;
     private Date lastReceived = null;
 
@@ -1480,11 +1480,6 @@ public class ZWaveNode {
 
             logger.debug("NODE {}: WakeupTimerTask {} Messages waiting, state {}", getNodeId(),
                     controller.getSendQueueLength(getNodeId()), getNodeInitStage());
-            if (controller.getSendQueueLength(getNodeId()) != 0) {
-                triggered = false;
-                return;
-            }
-
             if (triggered == false) {
                 logger.trace("NODE {}: WakeupTimerTask First iteration", getNodeId());
                 triggered = true;
@@ -1521,7 +1516,7 @@ public class ZWaveNode {
         if (isInitializationComplete() || controller.getSendQueueLength(getNodeId()) == 0) {
             timerDelay = sleepDelay;
         } else {
-            timerDelay = 5000;
+            timerDelay = 2500;
         }
         logger.debug("NODE {}: Start sleep timer at {}ms", getNodeId(), timerDelay);
 
