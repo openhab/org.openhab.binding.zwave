@@ -38,9 +38,9 @@ import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.thing.ThingStatus;
 import org.eclipse.smarthome.core.thing.ThingStatusDetail;
 import org.eclipse.smarthome.core.thing.ThingStatusInfo;
-import org.eclipse.smarthome.core.thing.ThingTypeUID;
 import org.eclipse.smarthome.core.thing.binding.ConfigStatusThingHandler;
 import org.eclipse.smarthome.core.thing.binding.ThingHandler;
+import org.eclipse.smarthome.core.thing.type.ThingType;
 import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.RefreshType;
 import org.eclipse.smarthome.core.types.State;
@@ -84,8 +84,6 @@ import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClass
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.collect.Sets;
-
 /**
  * Thing Handler for ZWave devices
  *
@@ -93,8 +91,6 @@ import com.google.common.collect.Sets;
  *
  */
 public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWaveEventListener {
-    public final static Set<ThingTypeUID> SUPPORTED_THING_TYPES = Sets.newHashSet();
-
     private final Logger logger = LoggerFactory.getLogger(ZWaveThingHandler.class);
 
     private ZWaveControllerHandler controllerHandler;
@@ -685,7 +681,21 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     if (parameter instanceof List) {
                         paramValues.addAll((List) configurationParameter.getValue());
                     } else if (parameter instanceof String) {
-                        paramValues.add((String) parameter);
+                        String strParam = ((String) parameter).trim();
+                        // Some UIs seem to be sending arrays as strings!!!
+                        // It's a kludge, but let's try and handle this format...
+                        if (strParam.startsWith("[") && strParam.endsWith("]")) {
+                            strParam = strParam.substring(1, strParam.length() - 1);
+
+                            if (strParam.contains(",")) {
+                                String[] splits = strParam.split(",");
+                                for (String split : splits) {
+                                    paramValues.add(split.trim());
+                                }
+                            }
+                        } else {
+                            paramValues.add(strParam);
+                        }
                     }
 
                     ZWaveAssociationGroup currentMembers = node.getAssociationGroup(groupIndex);
@@ -693,8 +703,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         logger.debug("NODE {}: Unknown association group {}", nodeId, groupIndex);
                         continue;
                     }
-                    logger.debug("NODE {}: Current Members {}", nodeId, currentMembers);
-
                     logger.debug("NODE {}: Current Members {}", nodeId, currentMembers);
 
                     ZWaveAssociationGroup newMembers = new ZWaveAssociationGroup(groupIndex);
@@ -710,7 +718,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                             // Make sure this is a correctly formatted option
                             if (!"node".equals(groupCfg[0])) {
-                                logger.debug("NODE {}: Invalid association {}", nodeId, paramValue);
+                                logger.debug("NODE {}: Invalid association {} ({})", nodeId, paramValue, groupCfg[0]);
                                 continue;
                             }
 
@@ -753,6 +761,33 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                             // No - so it needs to be added
                             node.sendMessage(node.setAssociation(groupIndex, member));
                             totalMembers++;
+                        }
+                    }
+
+                    if (controllerHandler.isControllerMaster()) {
+                        logger.debug("NODE {}: Controller is master - forcing associations", nodeId);
+                        // Check if this is the lifeline profile
+                        if (newMembers.getProfile1() == 0x00 && newMembers.getProfile2() == 0x01) {
+                            logger.debug("NODE {}: Group is lifeline - forcing association", nodeId);
+                            newMembers.addAssociation(new ZWaveAssociation(controllerHandler.getOwnNodeId(), 1));
+                        }
+
+                        ThingType thingType = ZWaveConfigProvider.getThingType(node);
+                        if (thingType == null) {
+                            logger.debug("NODE {}: Thing type not found for association check", node.getNodeId());
+                        } else {
+                            String associations = thingType.getProperties()
+                                    .get(ZWaveBindingConstants.PROPERTY_XML_ASSOCIATIONS);
+                            if (associations == null || associations.length() == 0) {
+                                logger.debug("NODE {}: Thing has no default associations", node.getNodeId());
+                            } else {
+                                String defaultGroups[] = associations.split(",");
+                                if (Arrays.asList(defaultGroups).contains(cfg[1])) {
+                                    logger.debug("NODE {}: Group is controller - forcing association", nodeId);
+                                    newMembers
+                                            .addAssociation(new ZWaveAssociation(controllerHandler.getOwnNodeId(), 1));
+                                }
+                            }
                         }
                     }
 

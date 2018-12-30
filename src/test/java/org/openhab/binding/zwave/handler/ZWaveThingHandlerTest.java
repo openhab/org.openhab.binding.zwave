@@ -71,6 +71,8 @@ public class ZWaveThingHandlerTest {
         ZWaveController controller = Mockito.mock(ZWaveController.class);
         ZWaveControllerHandler controllerHandler = Mockito.mock(ZWaveControllerHandler.class);
 
+        Mockito.when(controllerHandler.isControllerMaster()).thenReturn(false);
+
         ThingHandlerCallback thingCallback = Mockito.mock(ThingHandlerCallback.class);
         ZWaveThingHandler thingHandler = new ZWaveThingHandlerForTest(thing);
         thingHandler.setCallback(thingCallback);
@@ -82,7 +84,6 @@ public class ZWaveThingHandlerTest {
             ZWaveNodeNamingCommandClass namingClass = new ZWaveNodeNamingCommandClass(node, controller, null);
 
             Mockito.doNothing().when(node).sendMessage(payloadCaptor.capture());
-            Mockito.doNothing().when(thingCallback).thingUpdated(Matchers.any(Thing.class));
 
             fieldControllerHandler = ZWaveThingHandler.class.getDeclaredField("controllerHandler");
             fieldControllerHandler.setAccessible(true);
@@ -224,5 +225,16 @@ public class ZWaveThingHandlerTest {
         // Check that there are only 2 requests - the SET and GET
         // Note that these are currently null due to mocking
         assertEquals(2, response.size());
+    }
+
+    @Test
+    public void testConfigurationAssociationStringArray() {
+        List<ZWaveCommandClassTransactionPayload> response = doConfigurationUpdateCommands("group_1", "[node_1]");
+
+        // Check that there are only 2 requests - the SET and GET
+        // Note that these are currently null due to mocking
+        assertEquals(2, response.size());
+
+        response = doConfigurationUpdateCommands("group_1", "[node_1, node_2_1, node_2]");
     }
 }
