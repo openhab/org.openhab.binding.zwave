@@ -59,7 +59,7 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
     @XStreamOmitField
     private boolean initialiseDone = false;
     @XStreamOmitField
-    private boolean dynamicDone = false;
+    private final boolean dynamicDone = false;
 
     private boolean isGetSupported = true;
 
@@ -296,8 +296,6 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
 
     /**
      * Z-Wave SetpointType enumeration. The setpoint type indicates the type of setpoint that is reported.
-     *
-     * @author Matthew Bowman
      */
     @XStreamAlias("setpointType")
     public enum SetpointType {
@@ -309,7 +307,9 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
         AUTO_CHANGEOVER(10, "Auto Changeover"),
         HEATING_ECON(11, "Heating Economical"),
         COOLING_ECON(12, "Cooling Economical"),
-        AWAY_HEATING(13, "Away Heating");
+        AWAY_HEATING(13, "Away Heating"),
+        AWAY_COOLING(14, "Away Cooling"),
+        FULL_POWER(15, "Full Power");
 
         /**
          * A mapping between the integer code and its corresponding setpoint type
@@ -427,8 +427,8 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
      */
     public class ZWaveThermostatSetpointValueEvent extends ZWaveCommandClassValueEvent {
 
-        private SetpointType setpointType;
-        private int scale;
+        private final SetpointType setpointType;
+        private final int scale;
 
         /**
          * Constructor. Creates a instance of the ZWaveThermostatSetpointValueEvent class.
