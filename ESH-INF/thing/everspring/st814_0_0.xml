@@ -14,6 +14,12 @@ Temperature and Humidity Sensor<br /><h1>Overview</h1><p>The Temperature/Humidit
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
+      <channel id="basic_switch_binary" typeId="switch_binary">
+        <label>Binary Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_BASIC</property>
+        </properties>
+      </channel>
       <channel id="sensor_relhumidity" typeId="sensor_relhumidity">
         <label>Sensor (relative humidity)</label>
         <properties>
@@ -24,6 +30,30 @@ Temperature and Humidity Sensor<br /><h1>Overview</h1><p>The Temperature/Humidit
         <label>Sensor (temperature)</label>
         <properties>
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL,COMMAND_CLASS_BASIC;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param2" typeId="everspring_st814_00_000_config_decimal_param2">
+        <label>Temperature trigger ON value</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=2</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param3" typeId="everspring_st814_00_000_config_decimal_param3">
+        <label>Temperature trigger OFF value</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=3</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param6" typeId="everspring_st814_00_000_config_decimal_param6">
+        <label>Humidity trigger ON value</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=6</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param5" typeId="everspring_st814_00_000_config_decimal_param5">
+        <label>Humidity trigger OFF value</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=5</property>
         </properties>
       </channel>
       <channel id="alarm_co2" typeId="alarm_co2">
@@ -197,5 +227,49 @@ Sets the humidity change causing a sensor report.<br /><h1>Overview</h1><p>0 = D
     </config-description>
 
   </thing-type>
+
+  <channel-type id="everspring_st814_00_000_config_decimal_param2">
+    <item-type>Number</item-type>
+    <label>Temperature Trigger ON value</label>
+    <description>Temperature level when a ON command is sent out. Set to 99 to disable.</description>
+    <state pattern="%s">
+      <options>
+        <option value="99">Disable</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="everspring_st814_00_000_config_decimal_param3">
+    <item-type>Number</item-type>
+    <label>Temperature Trigger OFF value</label>
+    <description>Temperature level when a OFF command is sent out. Set to 99 to disable.</description>
+    <state pattern="%s">
+      <options>
+        <option value="99">Disable</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="everspring_st814_00_000_config_decimal_param6">
+    <item-type>Number</item-type>
+    <label>Auto report time</label>
+    <description>Sets the time interval when a sensor report is sent</description>
+    <state pattern="%s">
+      <options>
+        <option value="0">Disable</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="everspring_st814_00_000_config_decimal_param5">
+    <item-type>Number</item-type>
+    <label>Humidity Trigger OFF value</label>
+    <description>Humidity level when a OFF command is sent out. Set to 99 to disable.</description>
+    <state pattern="%s">
+      <options>
+        <option value="99">Disable</option>
+      </options>
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>
