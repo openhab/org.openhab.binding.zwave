@@ -313,6 +313,12 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                                 object.put("code", eventAlarm.getParameters()[0]);
                                 break;
                             default:
+                                // Include any parameters present.
+                                // Expand array since propertiesToJson does not support arrays.
+                                int[] params = eventAlarm.getParameters();
+                                for (int i = 0; i < params.length; i++) {
+                                    object.put("parameter-" + (i + 1), params[i]);
+                                }
                                 break;
                         }
                     }
