@@ -8,6 +8,7 @@
   <thing-type id="zwaveproducts_wd100_00_000" listed="false">
     <label>WD-100 In-Wall Dimmer</label>
     <description>In-Wall Dimmer</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
