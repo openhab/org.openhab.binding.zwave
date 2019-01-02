@@ -15,7 +15,7 @@ In-Wall Smart Motion Switch<br /><h1>Overview</h1><p>The switch enables wireless
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
+        <label>Switch [Deprecated]</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
@@ -27,7 +27,7 @@ In-Wall Smart Motion Switch<br /><h1>Overview</h1><p>The switch enables wireless
         </properties>
       </channel>
       <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Binary Sensor</label>
+        <label>Binary Sensor [Deprecated]</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
         </properties>
@@ -38,8 +38,8 @@ In-Wall Smart Motion Switch<br /><h1>Overview</h1><p>The switch enables wireless
           <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=6</property>
         </properties>
       </channel>
-      <channel id="alarm_burglar" typeId="alarm_burglar">
-        <label>Alarm (burglar)</label>
+      <channel id="alarm_motion" typeId="alarm_motion">
+        <label>Motion Alarm [Deprecated]</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
         </properties>
@@ -50,8 +50,8 @@ In-Wall Smart Motion Switch<br /><h1>Overview</h1><p>The switch enables wireless
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1,COMMAND_CLASS_BASIC:1</property>
         </properties>
       </channel>
-      <channel id="alarm_burglar2" typeId="alarm_burglar">
-        <label>Alarm (burglar) 2</label>
+      <channel id="alarm_motion2" typeId="alarm_motion">
+        <label>Motion Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:2,COMMAND_CLASS_BASIC:2;type=BURGLAR</property>
         </properties>
