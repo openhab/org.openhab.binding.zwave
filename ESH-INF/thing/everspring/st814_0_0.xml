@@ -57,13 +57,13 @@ Temperature and Humidity Sensor<br /><h1>Overview</h1><p>The Temperature/Humidit
         </properties>
       </channel>
       <channel id="alarm_co2" typeId="alarm_co2">
-        <label>Alarm (CO2)</label>
+        <label>Alarm (CO2) [Deprecated]</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=CARBON_MONOXIDE</property>
         </properties>
       </channel>
       <channel id="alarm_smoke" typeId="alarm_smoke">
-        <label>Alarm (smoke)</label>
+        <label>Alarm (smoke) [Deprecated]</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=SMOKE</property>
         </properties>

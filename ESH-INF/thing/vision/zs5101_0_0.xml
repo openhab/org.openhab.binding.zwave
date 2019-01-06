@@ -15,12 +15,12 @@ Shock Sensor<br /><h1>Overview</h1><p>ZS5101 detects the vibrations made by an i
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Binary Sensor</label>
+        <label>Binary Sensor [Deprecated]</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
         </properties>
       </channel>
-      <channel id="alarm_access" typeId="alarm_access">
+      <channel id="alarm_burglar" typeId="alarm_burglar">
         <label>Shock Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR, event=2</property>
