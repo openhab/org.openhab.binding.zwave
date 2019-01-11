@@ -39,7 +39,7 @@ Double Relay Switch 2x1.5kW<br /><h1>Overview</h1><p>Remotely Controlled Relay S
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGS222</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0202:1002,0202:4002</property>
+      <property name="manufacturerRef">0202:1002,0202:4002,0202:6002</property>
       <property name="dbReference">124</property>
       <property name="defaultAssociations">3</property>
     </properties>

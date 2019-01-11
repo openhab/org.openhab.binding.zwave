@@ -15,7 +15,7 @@ Motion/Temperature Sensor<br /><h1>Overview</h1><p>The ZP3102 is a Z-Wave enable
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Binary Sensor</label>
+        <label>Binary Sensor [Deprecated]</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
@@ -29,7 +29,13 @@ Motion/Temperature Sensor<br /><h1>Overview</h1><p>The ZP3102 is a Z-Wave enable
       <channel id="alarm_burglar" typeId="alarm_burglar">
         <label>Alarm (burglar)</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR, event=8</property>
+        </properties>
+      </channel>
+      <channel id="alarm_tamper" typeId="alarm_tamper">
+        <label>Alarm (tamper)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR, event=3</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
