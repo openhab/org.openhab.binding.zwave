@@ -163,6 +163,26 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
     }
 
+    protected Map<String, String> getZWaveProperties(String properties) {
+        Map<String, String> argumentMap = new HashMap<>();
+        String[] arguments = properties.split(",");
+        properties.split(",");
+        for (String arg : arguments) {
+            String[] prop = arg.split("=");
+            if (prop[0].length() == 0) {
+                continue;
+            }
+
+            if (prop.length == 1 || (prop.length == 2 && prop[1] == null)) {
+                argumentMap.put(prop[0].trim(), null);
+            } else {
+                argumentMap.put(prop[0].trim(), prop[1].trim());
+            }
+        }
+
+        return argumentMap;
+    }
+
     void initialiseNode() {
         logger.debug("NODE {}: Initialising Thing Node...", nodeId);
 
@@ -216,11 +236,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 // - comma separated list of arguments "arg1=val1, arg2=val2"
                 Map<String, String> argumentMap = new HashMap<String, String>();
                 if (bindingProperties.length == 2) {
-                    String[] arguments = bindingProperties[1].split(",");
-                    for (String arg : arguments) {
-                        String[] prop = arg.split("=");
-                        argumentMap.put(prop[0].trim(), prop[1] == null ? null : prop[1].trim());
-                    }
+                    argumentMap = getZWaveProperties(bindingProperties[1]);
                 }
 
                 // Process the user configuration and add it to the argument map
@@ -1841,7 +1857,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
      * Return an ISO 8601 combined date and time string for specified date/time
      *
      * @param date
-     *            Date
+     *                 Date
      * @return String with format "yyyy-MM-dd'T'HH:mm:ss'Z'"
      */
     private static String getISO8601StringForDate(Date date) {
