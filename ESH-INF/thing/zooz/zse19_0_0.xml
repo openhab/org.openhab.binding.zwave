@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="zooz_zse19_00_000" listed="false">
+    <label>ZSE19 S2 Multisiren</label>
+    <description><![CDATA[
+S2 Multisiren<br /><h1>Overview</h1><p>FEATURES</p> <p>Audio and visual alarm triggered by other Z-Wave devices</p> <p>Configurable siren alarm duration</p> <p>Built-in temperature and humidity sensor</p> <p>(if Multilevel Sensor is supported)</p> <p>Audio Speaker for custom sound playback</p> <p>(if Sound Switch is supported)</p> <p>S2 security protocol and the latest 500 Z-Wave chip for faster and safer</p> <p>wireless communication</p> <p>Tamper protection, low-battery alerts</p> <p>Model Number: ZSE19</p> <p>Z-Wave Signal Frequency: 908.42 MHz</p> <p>Power: 4 x LR14 (C Cell) battery</p> <p>Range: Up to 100 feet line of sight</p> <p>Operating Temperature: 14-104° F (-10-40° C)</p> <p>Operating Humidity: 0-80%</p> <p>Installation and Use: Indoor only</p> <br /><h2>Inclusion Information</h2><p>MANUAL INCLUSION</p> <p>Put your Z-Wave hub into inclusion mode and click</p> <p>the Z-Wave button 3 times quickly</p> <br /><h2>Exclusion Information</h2><p>1. Bring the Multisiren within direct range of your Z-Wave gateway (hub).</p> <p>2. Put the Z-Wave hub into exclusion mode (not sure how to do that?</p> <p>ask@getzooz.com).</p> <p>3. Click the Z-Wave button on the Multisiren 3 times quickly to finalize</p> <p>the process.</p> <p>4. Your hub will confirm exclusion and the device will disappear from</p> <p>your controller's device list.</p>
+    ]]></description>
+    <category>Siren</category>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature" typeId="sensor_temperature">
+        <label>Sensor (temperature)</label>
+        <properties>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="sensor_relhumidity" typeId="sensor_relhumidity">
+        <label>Sensor (relative humidity)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=RELATIVE_HUMIDITY</property>
+        </properties>
+      </channel>
+      <channel id="alarm_burglar" typeId="alarm_burglar">
+        <label>Alarm (burglar)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
+        </properties>
+      </channel>
+      <channel id="alarm_power" typeId="alarm_power">
+        <label>Alarm (power)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Zooz</property>
+      <property name="modelId">ZSE19</property>
+      <property name="manufacturerId">027A</property>
+      <property name="manufacturerRef">000C:0003</property>
+      <property name="dbReference">991</property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- GROUP DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Lifeline</label>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>

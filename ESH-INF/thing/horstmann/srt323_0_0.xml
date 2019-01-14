@@ -48,7 +48,7 @@
       <property name="vendor">Horstmann Controls Limited</property>
       <property name="modelId">SRT323</property>
       <property name="manufacturerId">0059</property>
-      <property name="manufacturerRef">0001:0004,0001:0005</property>
+      <property name="manufacturerRef">0001:0004</property>
       <property name="dbReference">466</property>
       <property name="defaultAssociations">1</property>
     </properties>
