@@ -658,7 +658,7 @@ Time period between consecutive reports.<br /><h1>Overview</h1><p>Parameter 52 d
       </parameter>
 
       <parameter name="config_53_2" type="integer" groupName="configuration"
-                 min="1" max="255">
+                 min="0" max="255">
         <label>53: Energy reports</label>
         <description><![CDATA[
 Energy level change resulting in sending a new energy report.<br /><h1>Overview</h1><p>Energy level change which will result in sending a new energy report. Available settings: 1-255 (0,01 - 2,55 kWh). 0 disables the function.</p>

@@ -94,13 +94,18 @@ Setting the BASIC command value.<br /><h1>Overview</h1><p>Setting the BASIC comm
         <default>255</default>
       </parameter>
 
-      <parameter name="config_5_1" type="integer" groupName="configuration"
-                 min="0" max="127">
+      <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Operation Mode</label>
         <description><![CDATA[
-Parameter to set the Operation Mode.<br /><h1>Overview</h1><p>Parameter to set the Operation Mode.</p> <ul><li>Bit 0: Disable the Flood function</li> <li>Bit 1: Reserved.</li> <li>Bit 2: Reserved.</li> <li>Bit 3: Set the temperature scale. 0: Fahrenheit, 1:Celsius</li> <li>Bit 4: Reserved.</li> </ul>
+Parameter to set the Operation Mode.<br /><h1>Overview</h1><p>Parameter to set the Operation Mode.</p> <ul><li>Bit 0: Disable the Flood function</li> <li>Bit 1: Reserved.</li> <li>Bit 2: Reserved.</li> <li>Bit 3: Set the temperature scale. 0: Fahrenheit, 1:Celsius</li> <li>Bit 4: Reserved.</li> <li>Bit 5: Disable the temperature report after event triggered. (1:Disable, 0:Enable) </li> <li>Bit 6: Reserved.</li> <li>Bit 7: Reserved.</li> </ul>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Fahrenheit + Enable report after event</option>
+          <option value="8">Celsius + Enable report after event</option>
+          <option value="32">Fahrenheit + Disable report after event</option>
+          <option value="40">Celsius + Disable report after event</option>
+        </options>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"

@@ -63,7 +63,7 @@ Two Way Switch<br /><h1>Overview</h1><p>Touch Panel Switch is a wall switch with
                  min="0" max="1">
         <label>2: Switch state saved or not when power failure</label>
         <description><![CDATA[
-0=Saved 1=not saved<br /><h1>Overview</h1><p>0= not saved，switch will be off when powered again</p> <p>1= saved，switch will keep the same state when powered again</p>
+1=Saved 0=not saved<br /><h1>Overview</h1><p>0= not saved，switch will be off when powered again</p> <p>1= saved，switch will keep the same state when powered again</p>
         ]]></description>
         <default>1</default>
       </parameter>
@@ -72,7 +72,7 @@ Two Way Switch<br /><h1>Overview</h1><p>Touch Panel Switch is a wall switch with
                  min="0" max="1">
         <label>2: Switch state saved or not when power failure</label>
         <description><![CDATA[
-0=Saved 1=not saved<br /><h1>Overview</h1><p>0= not saved，switch will be off when powered again</p> <p>1= saved，switch will keep the same state when powered again</p>
+1=Saved 0=not saved<br /><h1>Overview</h1><p>0= not saved，switch will be off when powered again</p> <p>1= saved，switch will keep the same state when powered again</p>
         ]]></description>
         <default>1</default>
       </parameter>
@@ -120,8 +120,9 @@ Two Way Switch<br /><h1>Overview</h1><p>Touch Panel Switch is a wall switch with
         <label>1: All Status Reports</label>
       </parameter>
 
-      <parameter name="group_2" type="text" groupName="association">
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Switch Button Group 1</label>
+        <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">

@@ -7,7 +7,10 @@
 
   <thing-type id="leviton_vrf01_00_000" listed="false">
     <label>VRF01 Scene Capable Quiet Fan Speed Control</label>
-    <description>Scene Capable Quiet Fan Speed Control</description>
+    <description><![CDATA[
+Scene Capable Quiet Fan Speed Control<br /><h1>Overview</h1><p>Vizia RF + 1.5A Scene Capable Quiet Fan Speed Control</p> <br /><h2>Inclusion Information</h2><p>Install Switch</p> <p>Place controller in inclusion mode</p> <p>Press on/off paddle on the Switch to include</p> <br /><h2>Exclusion Information</h2><p>Place controller in exclusion mode</p> <p>Press on/off paddle on the Switch to exclude</p>
+    ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -45,10 +48,24 @@
       <property name="commandClass:COMMAND_CLASS_ASSOCIATION">setVersion=1</property>
       <property name="commandClass:COMMAND_CLASS_VERSION">setVersion=1</property>
       <property name="commandClass:COMMAND_CLASS_MANUFACTURER_PROPRIETARY">setVersion=0</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
+
+      <!-- GROUP DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Group 1</label>
+        <description>Lifeline</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
 
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">

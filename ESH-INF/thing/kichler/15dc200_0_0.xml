@@ -8,6 +8,7 @@
   <thing-type id="kichler_15dc200_00_000" listed="false">
     <label>15DC200 200W Design Pro LED Controller</label>
     <description>200W Design Pro LED Controller</description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
