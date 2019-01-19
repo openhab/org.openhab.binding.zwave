@@ -78,10 +78,13 @@ Define which sequences of clicks control the load connected to Channel 1/2.<br /
         ]]></description>
         <default>7</default>
         <options>
-          <option value="0">DISABLED - Local Control disabled</option>
-          <option value="1">ONE_CLICK- 1 click controls the local load</option>
-          <option value="2">TWO_CLICKS - 2 clicks control the local load</option>
-          <option value="4">THREE_CLICKS - 3 clicks control the local load</option>
+          <option value="0">Disabled</option>
+          <option value="1">ONE_CLICK</option>
+          <option value="2">TWO_CLICKS</option>
+          <option value="3">ONE_CLICK or TWO_CLICKS</option>
+          <option value="4">THREE_CLICKS</option>
+          <option value="5">ONE_CLICK or THREE_CLICKS</option>
+          <option value="6">TWO_CLICKS or THREE_CLICKS</option>
           <option value="7">ONE_CLICK, TWO_CLICKS or THREE_CLICKS</option>
         </options>
       </parameter>
@@ -91,10 +94,14 @@ Define which sequences of clicks control the load connected to Channel 1/2.<br /
         <description>Define which sequences of click control the load connected to Channel 2</description>
         <default>8</default>
         <options>
-          <option value="0">DISABLED - Local Control disabled</option>
-          <option value="1">ONE_CLICK - 1 click controls the local load</option>
-          <option value="2">TWO_CLICKS - 2 clicks control the local load</option>
-          <option value="4">THREE_CLICKS - 3 clicks control the local load</option>
+          <option value="0">Disabled</option>
+          <option value="1">ONE_CLICK</option>
+          <option value="2">TWO_CLICKS</option>
+          <option value="3">ONE_CLICK or TWO_CLICKS</option>
+          <option value="4">THREE_CLICKS</option>
+          <option value="5">ONE_CLICK or THREE_CLICKS</option>
+          <option value="6">TWO_CLICKS or THREE_CLICKS</option>
+          <option value="7">ONE_CLICK, TWO_CLICKS or THREE_CLICKS</option>
           <option value="8">EQUAL_TO_CHANNEL_1</option>
         </options>
       </parameter>
@@ -179,17 +186,17 @@ Define which sequences of clicks control the load connected to Channel 1/2.<br /
         <default>0</default>
       </parameter>
 
-      <parameter name="config_11_2" type="integer" groupName="configuration"
-                 min="0" max="32000">
-        <label>11: Timer to switch ON the Channel 2</label>
-        <description>Defines the time after which the Channel 2 is switched ON</description>
-        <default>0</default>
-      </parameter>
-
       <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="0" max="32000">
         <label>12: Timer to switch ON the Channel 1</label>
         <description>Defines the time after which the Channel 1 is switched ON</description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_13_2" type="integer" groupName="configuration"
+                 min="0" max="32000">
+        <label>13: Timer to switch ON the Channel 2</label>
+        <description>Defines the time after which the Channel 2 is switched ON</description>
         <default>0</default>
       </parameter>
 

@@ -85,7 +85,7 @@ Plug-in Switch<br /><h1>Overview</h1><p>Oomi Plug is a low-cost Z-Wave Switch pl
       <property name="vendor">Fantem</property>
       <property name="modelId">FT096</property>
       <property name="manufacturerId">016A</property>
-      <property name="manufacturerRef">0203:0060</property>
+      <property name="manufacturerRef">0003:0060,0203:0060</property>
       <property name="dbReference">730</property>
       <property name="defaultAssociations">1</property>
     </properties>

@@ -15,7 +15,7 @@ Door/Window Sensor<br /><h1>Overview</h1><p>The NEO Coolcam Door/Window Sensor p
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Binary Sensor</label>
+        <label>Binary Sensor [Deprecated]</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
         </properties>

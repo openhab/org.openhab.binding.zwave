@@ -105,13 +105,13 @@ Floor thermostat<br /><h1>Overview</h1><h3>FEATURES</h3> <ul><li>Floor sensor</l
         </properties>
       </channel>
       <channel id="sensor_temperature2" typeId="sensor_temperature">
-        <label>Sensor (temperature) 2</label>
+        <label>External sensor</label>
         <properties>
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:2;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="sensor_temperature3" typeId="sensor_temperature">
-        <label>Sensor (temperature) 3</label>
+        <label>Floor sensor</label>
         <properties>
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:3;type=TEMPERATURE</property>
         </properties>

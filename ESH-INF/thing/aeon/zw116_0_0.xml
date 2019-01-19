@@ -257,7 +257,8 @@ Set the OFF time of output load<br /><h1>Overview</h1><p>256 to 316 The hour val
         <default>0</default>
       </parameter>
 
-      <parameter name="config_101_4" type="integer" groupName="configuration">
+      <parameter name="config_101_4" type="integer" groupName="configuration"
+                 min="0" max="15">
         <label>101: Set group 1 reports</label>
         <description>To set which reports need to be sent in Report group 1.</description>
         <default>0</default>
@@ -267,9 +268,11 @@ Set the OFF time of output load<br /><h1>Overview</h1><p>256 to 316 The hour val
           <option value="4">Send Meter Report of voltage (V)</option>
           <option value="8">Send Meter Report of current (A)</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_102_4" type="integer" groupName="configuration">
+      <parameter name="config_102_4" type="integer" groupName="configuration"
+                 min="0" max="15">
         <label>102: Set group 2 reports</label>
         <description>To set which reports need to be sent in Report group 2.</description>
         <default>0</default>
@@ -279,9 +282,11 @@ Set the OFF time of output load<br /><h1>Overview</h1><p>256 to 316 The hour val
           <option value="4">Send Meter Report of voltage (V)</option>
           <option value="8">Send Meter Report of current (A)</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_103_4" type="integer" groupName="configuration">
+      <parameter name="config_103_4" type="integer" groupName="configuration"
+                 min="0" max="15">
         <label>103: Set group 3 reports</label>
         <description>To set which reports need to be sent in Report group 3.</description>
         <default>0</default>
@@ -291,6 +296,7 @@ Set the OFF time of output load<br /><h1>Overview</h1><p>256 to 316 The hour val
           <option value="4">Send Meter Report of wattage (W)</option>
           <option value="8">Send Meter Report of energy (kWh)</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_110_1" type="integer" groupName="configuration"

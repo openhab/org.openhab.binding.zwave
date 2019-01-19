@@ -81,13 +81,13 @@ Floor thermostat<br /><h1>Overview</h1><p>FEATURES</p> <ul><li>Floor sensor</li>
         </properties>
       </channel>
       <channel id="sensor_temperature2" typeId="sensor_temperature">
-        <label>Sensor (temperature) 2</label>
+        <label>External sensor</label>
         <properties>
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:2;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="sensor_temperature3" typeId="sensor_temperature">
-        <label>Sensor (temperature) 3</label>
+        <label>Floor sensor</label>
         <properties>
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:3;type=TEMPERATURE</property>
         </properties>
@@ -365,43 +365,40 @@ Meter report delta value<br /><h1>Overview</h1><p>1. Value = 0 - 127, 0kWh - 12.
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_0" type="text" groupName="association">
+        <label>0: DELETE</label>
+      </parameter>
+
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
-The main thermostat device<br /><h1>Overview</h1><p>Lifeline. (Normally used by the Z-Wave Controller)<br />Sends:<br />- Thermostat Setpoint Reports<br />- Thermostat Mode Reports</p>
+The main thermostat device<br /><h1>Overview</h1><p>Lifeline. (Normally used by the Z-Wave Controller) Sends:</p> <ul><li>Device Reset Notifications.</li> <li>Thermostat Setpoint Reports</li> <li>Thermostat Mode Reports</li> <li>Basic Reports</li> <li>Meter Reports</li> </ul>
         ]]></description>
+        <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Thermostat device 0</label>
+        <label>2: External temperature</label>
         <description><![CDATA[
-The main thermostat device<br /><h1>Overview</h1><p>Send Binary Switch Set commands representing the status of the internal relay.</p>
+<br /><h1>Overview</h1><p>Send Multilevel Sensor Reports for external temperature sensor.</p>
         ]]></description>
-        <multipleLimit>7</multipleLimit>
+        <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Thermostat device 0</label>
+        <label>3: Floor temperature</label>
         <description><![CDATA[
-The main thermostat device<br /><h1>Overview</h1><p>Send Multilevel Sensor Reports for internal temperature sensor.</p>
+<br /><h1>Overview</h1><p>Send Multilevel Sensor Reports for floor temperature sensor.</p>
         ]]></description>
-        <multipleLimit>7</multipleLimit>
+        <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Thermostat device 0</label>
+        <label>4: Internal relay status</label>
         <description><![CDATA[
-The main thermostat device<br /><h1>Overview</h1><p>Send Multilevel Sensor Reports for external temperature sensor.</p>
+<br /><h1>Overview</h1><p>Send Binary Switch Set commands representing the status of the internal relay.</p>
         ]]></description>
-        <multipleLimit>7</multipleLimit>
-      </parameter>
-
-      <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Thermostat device 0</label>
-        <description><![CDATA[
-The main thermostat device<br /><h1>Overview</h1><p>Send Multilevel Sensor Reports for floor temperature sensor.</p>
-        ]]></description>
-        <multipleLimit>7</multipleLimit>
+        <multipleLimit>5</multipleLimit>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->
