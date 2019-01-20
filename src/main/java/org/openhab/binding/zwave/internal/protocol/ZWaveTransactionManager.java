@@ -33,6 +33,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionS
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse.State;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveCommandProcessor;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
@@ -727,8 +728,18 @@ public class ZWaveTransactionManager {
                         // Notify the controller
                         controller.handleTransactionComplete(currentTransaction, incomingMessage);
                     } else {
-                        logger.debug("NODE {}: TID {}: Transaction not completed", currentTransaction.getNodeId(),
-                                currentTransaction.getTransactionId());
+                        byte[] message = currentTransaction.getSerialMessage().getMessagePayload();
+                        if (message.length > 2 && message[0] == CommandClass.COMMAND_CLASS_WAKE_UP.getKey()
+                                && message[1] == ZWaveWakeUpCommandClass.WAKE_UP_NO_MORE_INFORMATION) {
+                            // Failed WAKE_UP_NO_MORE_INFORMATION treated as the node going to sleep
+                            logger.debug("NODE {}: TID {}: Failed WAKE_UP_NO_MORE_INFORMATION treated as complete",
+                                    currentTransaction.getNodeId(), currentTransaction.getTransactionId());
+                            notifyTransactionComplete(currentTransaction);
+                            controller.handleTransactionComplete(currentTransaction, incomingMessage);
+                        } else {
+                            logger.debug("NODE {}: TID {}: Transaction not completed", currentTransaction.getNodeId(),
+                                    currentTransaction.getTransactionId());
+                        }
                     }
 
                 }
