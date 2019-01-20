@@ -28,7 +28,7 @@ import org.eclipse.smarthome.core.thing.type.ThingType;
 import org.eclipse.smarthome.core.thing.type.ThingTypeBuilder;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
@@ -91,13 +91,14 @@ public class ZWaveThingHandlerTest {
 
             Mockito.when(controller.getOwnNodeId()).thenReturn(1);
             Mockito.when(controllerHandler.getOwnNodeId()).thenReturn(1);
-            Mockito.when(controllerHandler.getNode(Matchers.anyInt())).thenReturn(node);
+            Mockito.when(controllerHandler.getNode(ArgumentMatchers.anyInt())).thenReturn(node);
             Mockito.when(node.getNodeId()).thenReturn(1);
-            Mockito.when(node.getAssociationGroup(Matchers.anyInt())).thenReturn(new ZWaveAssociationGroup(1));
-            Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_WAKE_UP))).thenReturn(wakeupClass);
-            Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_ASSOCIATION)))
+            Mockito.when(node.getAssociationGroup(ArgumentMatchers.anyInt())).thenReturn(new ZWaveAssociationGroup(1));
+            Mockito.when(node.getCommandClass(ArgumentMatchers.eq(CommandClass.COMMAND_CLASS_WAKE_UP)))
+                    .thenReturn(wakeupClass);
+            Mockito.when(node.getCommandClass(ArgumentMatchers.eq(CommandClass.COMMAND_CLASS_ASSOCIATION)))
                     .thenReturn(associationClass);
-            Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_NODE_NAMING)))
+            Mockito.when(node.getCommandClass(ArgumentMatchers.eq(CommandClass.COMMAND_CLASS_NODE_NAMING)))
                     .thenReturn(namingClass);
         } catch (NoSuchFieldException | SecurityException e) {
             e.printStackTrace();
@@ -236,5 +237,41 @@ public class ZWaveThingHandlerTest {
         assertEquals(2, response.size());
 
         response = doConfigurationUpdateCommands("group_1", "[node_1, node_2_1, node_2]");
+    }
+
+    @Test
+    public void getZWaveProperties() {
+        ZWaveThingHandler thingHandler = new ZWaveThingHandlerForTest(Mockito.mock(Thing.class));
+
+        Map<String, String> properties;
+
+        properties = thingHandler.getZWaveProperties("");
+        assertEquals(0, properties.size());
+
+        properties = thingHandler.getZWaveProperties("arg");
+        assertEquals(1, properties.size());
+        assertTrue(properties.containsKey("arg"));
+        assertNull(properties.get("arg"));
+
+        properties = thingHandler.getZWaveProperties("arg=");
+        assertEquals(1, properties.size());
+        assertTrue(properties.containsKey("arg"));
+        assertNull(properties.get("arg"));
+
+        properties = thingHandler.getZWaveProperties("arg=val");
+        assertEquals(1, properties.size());
+        assertTrue(properties.containsKey("arg"));
+        assertEquals("val", properties.get("arg"));
+
+        properties = thingHandler.getZWaveProperties("arg1=val1,arg2=val2 , arg3 = val3 , arg4");
+        assertEquals(4, properties.size());
+        assertTrue(properties.containsKey("arg1"));
+        assertEquals("val1", properties.get("arg1"));
+        assertTrue(properties.containsKey("arg2"));
+        assertEquals("val2", properties.get("arg2"));
+        assertTrue(properties.containsKey("arg3"));
+        assertEquals("val3", properties.get("arg3"));
+        assertTrue(properties.containsKey("arg4"));
+        assertNull(properties.get("arg4"));
     }
 }
