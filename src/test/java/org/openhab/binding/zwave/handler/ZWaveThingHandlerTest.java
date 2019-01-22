@@ -28,7 +28,7 @@ import org.eclipse.smarthome.core.thing.type.ThingType;
 import org.eclipse.smarthome.core.thing.type.ThingTypeBuilder;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
-import org.mockito.ArgumentMatchers;
+import org.mockito.Matchers;
 import org.mockito.Mockito;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
@@ -39,6 +39,8 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClas
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveNodeNamingCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+
+import jdk.nashorn.internal.ir.annotations.Ignore;
 
 /**
  * Test of the ZWaveThingHandler
@@ -91,14 +93,14 @@ public class ZWaveThingHandlerTest {
 
             Mockito.when(controller.getOwnNodeId()).thenReturn(1);
             Mockito.when(controllerHandler.getOwnNodeId()).thenReturn(1);
-            Mockito.when(controllerHandler.getNode(ArgumentMatchers.anyInt())).thenReturn(node);
+            Mockito.when(controllerHandler.getNode(Matchers.anyInt())).thenReturn(node);
             Mockito.when(node.getNodeId()).thenReturn(1);
-            Mockito.when(node.getAssociationGroup(ArgumentMatchers.anyInt())).thenReturn(new ZWaveAssociationGroup(1));
-            Mockito.when(node.getCommandClass(ArgumentMatchers.eq(CommandClass.COMMAND_CLASS_WAKE_UP)))
+            Mockito.when(node.getAssociationGroup(Matchers.anyInt())).thenReturn(new ZWaveAssociationGroup(1));
+            Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_WAKE_UP)))
                     .thenReturn(wakeupClass);
-            Mockito.when(node.getCommandClass(ArgumentMatchers.eq(CommandClass.COMMAND_CLASS_ASSOCIATION)))
+            Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_ASSOCIATION)))
                     .thenReturn(associationClass);
-            Mockito.when(node.getCommandClass(ArgumentMatchers.eq(CommandClass.COMMAND_CLASS_NODE_NAMING)))
+            Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_NODE_NAMING)))
                     .thenReturn(namingClass);
         } catch (NoSuchFieldException | SecurityException e) {
             e.printStackTrace();
