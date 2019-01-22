@@ -26,10 +26,10 @@ Z-Wave Door/Window Sensor<br /><h1>Overview</h1><p>Z-Wave+ enabled device which 
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
         </properties>
       </channel>
-      <channel id="alarm_burglar" typeId="alarm_burglar">
-        <label>Alarm (burglar)</label>
+      <channel id="sensor_door" typeId="sensor_door">
+        <label>Sensor (Binary)</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
+          <property name="binding:*:OpenClosedType">COMMAND_CLASS_ALARM</property>
         </properties>
       </channel>
       <channel id="alarm_power" typeId="alarm_power">
