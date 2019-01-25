@@ -393,27 +393,38 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
             return;
         }
 
-        String hexString = value.replace("0x", "");
+        byte[] keyBytes = parseNetworkKeyAsHexString(value);
+
+        if(keyBytes!=null) {
+            networkKey = new SecretKeySpec(keyBytes, AES);
+            logger.debug("NODE {}: Updated networkKey", getNode().getNodeId());
+
+            setupNetworkKey(false);
+        }
+    }
+
+    private byte[] parseNetworkKeyAsHexString(String hexString) {
+        hexString = hexString.replace("0x", "");
         hexString = hexString.replace(",", "");
         hexString = hexString.replace(" ", "");
 
         if ((hexString.length() % 2) != 0) {
             logger.debug("Network key must contain an even number of characters");
-            return;
+            return null;
         }
 
-        byte keyBytes[] = new byte[hexString.length() / 2];
-        char enc[] = hexString.toCharArray();
-        for (int i = 0; i < enc.length; i += 2) {
-            StringBuilder curr = new StringBuilder(2);
-            curr.append(enc[i]).append(enc[i + 1]);
-            keyBytes[i / 2] = (byte) Integer.parseInt(curr.toString(), 16);
+        try {
+            byte keyBytes[] = new byte[hexString.length() / 2];
+            char enc[] = hexString.toCharArray();
+            for (int i = 0; i < enc.length; i += 2) {
+                StringBuilder curr = new StringBuilder(2);
+                curr.append(enc[i]).append(enc[i + 1]);
+                keyBytes[i / 2] = (byte) Integer.parseInt(curr.toString(), 16);
+            }
+            return keyBytes;
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("Error parsing network key as an hex string. Parsed string was "+hexString,e);
         }
-
-        networkKey = new SecretKeySpec(keyBytes, AES);
-        logger.debug("NODE {}: Updated networkKey", getNode().getNodeId());
-
-        setupNetworkKey(false);
     }
 
     private void setupNetworkKey(boolean useSchemeZero) {
@@ -473,8 +484,8 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
     /**
      * Generate the MAC (Message Authentication Code) for an encrypted message
      *
-     * @param commandByte the security command we're sending
-     * @param ciphertext
+     * @param key
+     * @param payload
      * @param sendingNode
      * @param receivingNode
      * @param iv
