@@ -25,6 +25,12 @@ Keyfob<br /><h1>Overview</h1><p>FIBARO KeyFob is a Z-Wave Plus compatible, batte
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
       </channel>
+      <channel id="protection_local" typeId="protection_local">
+        <label>Local Device Protection</label>
+        <properties>
+        <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION;type=PROTECTION_LOCAL</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
