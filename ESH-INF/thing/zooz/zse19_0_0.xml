@@ -32,6 +32,12 @@ S2 Multisiren<br /><h1>Overview</h1><ul><li>Audio and visual alarm triggered by 
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=RELATIVE_HUMIDITY</property>
         </properties>
       </channel>
+      <channel id="config_decimal_param3" typeId="config_decimal">
+        <label>Custom Sound Selection for Audio Speaker [Deprecated]</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=3</property>
+        </properties>
+      </channel>
       <channel id="alarm_burglar" typeId="alarm_burglar">
         <label>Alarm (burglar)</label>
         <properties>

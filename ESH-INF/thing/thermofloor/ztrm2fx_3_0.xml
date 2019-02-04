@@ -32,50 +32,44 @@ Floor thermostat<br /><h1>Overview</h1><p>FEATURES</p> <ul><li>Floor sensor</li>
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
         </properties>
       </channel>
-      <channel id="thermostat_mode" typeId="thermofloor_ztrm2fx_03_000_thermostat_mode">
-        <label>Thermostat mode</label>
+      <channel id="config_decimal_param10" typeId="config_decimal">
+        <label>Energy Saving Mode Setpoint (ECO)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_MODE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=10</property>
         </properties>
       </channel>
-      <channel id="thermostat_setpoint_cooling" typeId="thermostat_setpoint">
-        <label>Setpoint (cooling)</label>
+      <channel id="config_decimal_param9" typeId="config_decimal">
+        <label>Heating mode setpoint (Comfort)</label>
         <properties>
-          <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=COOLING</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=9</property>
         </properties>
       </channel>
-      <channel id="thermostat_setpoint_furnace" typeId="thermostat_setpoint">
-        <label>Setpoint (furnace)</label>
+      <channel id="config_decimal_param17" typeId="config_decimal">
+        <label>Display brightness - dimmed</label>
         <properties>
-          <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=FURNACE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=17</property>
         </properties>
       </channel>
-      <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
-        <label>Setpoint (heating)</label>
+      <channel id="config_decimal_param15" typeId="config_decimal">
+        <label>Button brightness - dimmed</label>
         <properties>
-          <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=15</property>
         </properties>
       </channel>
       <channel id="thermostat_mode1" typeId="thermofloor_ztrm2fx_03_000_thermostat_mode">
-        <label>Thermostat mode 1</label>
+        <label>Thermostat mode</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_MODE:1</property>
         </properties>
       </channel>
       <channel id="thermostat_setpoint_cooling1" typeId="thermostat_setpoint">
-        <label>Setpoint (cooling) 1</label>
+        <label>Setpoint (cooling)</label>
         <properties>
           <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT:1;type=COOLING</property>
         </properties>
       </channel>
-      <channel id="thermostat_setpoint_furnace1" typeId="thermostat_setpoint">
-        <label>Setpoint (furnace) 1</label>
-        <properties>
-          <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT:1;type=FURNACE</property>
-        </properties>
-      </channel>
       <channel id="thermostat_setpoint_heating1" typeId="thermostat_setpoint">
-        <label>Setpoint (heating) 1</label>
+        <label>Setpoint (heating)</label>
         <properties>
           <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT:1;type=HEATING</property>
         </properties>
@@ -90,12 +84,6 @@ Floor thermostat<br /><h1>Overview</h1><p>FEATURES</p> <ul><li>Floor sensor</li>
         <label>Floor sensor</label>
         <properties>
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:3;type=TEMPERATURE</property>
-        </properties>
-      </channel>
-      <channel id="switch_binary4" typeId="switch_binary">
-        <label>Switch 4</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:4</property>
         </properties>
       </channel>
       <channel id="meter_voltage4" typeId="meter_voltage">
@@ -365,10 +353,6 @@ Meter report delta value<br /><h1>Overview</h1><p>1. Value = 0 - 127, 0kWh - 12.
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_0" type="text" groupName="association">
-        <label>0: DELETE</label>
-      </parameter>
-
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
@@ -410,21 +394,6 @@ The main thermostat device<br /><h1>Overview</h1><p>Lifeline. (Normally used by 
     </config-description>
 
   </thing-type>
-
-  <channel-type id="thermofloor_ztrm2fx_03_000_thermostat_mode">
-    <item-type>Number</item-type>
-    <label>Thermostat Mode</label>
-    <description>Sets the thermostat mode</description>
-    <category>Temperature</category>
-    <state pattern="%s">
-      <options>
-        <option value="2">Cool</option>
-        <option value="1">Heat</option>
-        <option value="11">Economy Heat</option>
-        <option value="0">Off</option>
-      </options>
-    </state>
-  </channel-type>
 
   <channel-type id="thermofloor_ztrm2fx_03_000_thermostat_mode">
     <item-type>Number</item-type>

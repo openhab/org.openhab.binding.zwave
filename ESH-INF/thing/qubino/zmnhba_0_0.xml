@@ -164,8 +164,8 @@ Automatic turning off relay Q2 after set time<br /><h1>Overview</h1><p>Auto OFF 
         <description>Saving the state of the relays Q1 and Q2 after a power failure</description>
         <default>0</default>
         <options>
-          <option value="0">Flush 2 relays module saves its state before power failure (it returns</option>
-          <option value="1">Flush 2 relays module does not save the state after a power failure, i</option>
+          <option value="0">Saves state before power failure</option>
+          <option value="1">Do not save state after a power failure</option>
         </options>
       </parameter>
 
@@ -173,7 +173,7 @@ Automatic turning off relay Q2 after set time<br /><h1>Overview</h1><p>Auto OFF 
                  min="0" max="255">
         <label>40: Power reporting in Watts on power change for Q1</label>
         <description><![CDATA[
-Power report is sent (pushed) only when actual power in Watts in real time changed for more than set percentage comparing to previous actual power in Watts, step is 1%.<br /><ul><li>0 = Reporting Disabled</li> <li>1–100 = 1% - 100% Reporti</li></ul>
+Power reporting in Watts on power change for Q1<br /><h1>Overview</h1><p>Power report is sent (pushed) only when actual power in Watts in real time changed for more than set percentage comparing to previous actual power in Watts, step is 1%.</p> <ul><li>0 = Reporting Disabled</li> <li>1–100 = 1% - 100% Reporting enabled</li> </ul>
         ]]></description>
         <default>1</default>
       </parameter>
@@ -182,7 +182,7 @@ Power report is sent (pushed) only when actual power in Watts in real time chang
                  min="0" max="255">
         <label>41: Power reporting in Watts on power change for Q2</label>
         <description><![CDATA[
-Power report is sent (pushed) only when actual power in Watts in real time changed for more than set percentage comparing to previous actual power in Watts, step is 1%.<br /><ul><li>0 = Reporting Disabled</li> <li>1–100 = 1% - 100% Reporti</li></ul>
+Power reporting in Watts on power change for Q2<br /><h1>Overview</h1><p>Power report is sent (pushed) only when actual power in Watts in real time changed for more than set percentage comparing to previous actual power in Watts, step is 1%.</p> <ul><li>0 = Reporting Disabled</li> <li>1–100 = 1% - 100% Reporti</li> </ul>
         ]]></description>
         <default>1</default>
       </parameter>
@@ -191,7 +191,7 @@ Power report is sent (pushed) only when actual power in Watts in real time chang
                  min="0" max="65535">
         <label>42: Power reporting in Watts by time interval for Q1</label>
         <description><![CDATA[
-default value is 300 (power report in Watts is sent each 300s)<br /><ul><li>0 = Reporting Disabled</li> <li>1–65535 = 1 second – 65535 seconds. Reporting enabled. Power report is sent with time interval set by entered value.</li></ul>
+Power reporting in Watts by time interval for Q1<br /><h1>Overview</h1><p>Default value is 300 (power report in Watts is sent each 300s)</p> <ul><li>0 = Reporting Disabled</li> <li>1–65535 = 1 second – 65535 seconds. Reporting enabled.</li> </ul><p>Power report is sent with time interval set by entered value.</p>
         ]]></description>
         <default>300</default>
       </parameter>
@@ -200,7 +200,7 @@ default value is 300 (power report in Watts is sent each 300s)<br /><ul><li>0 = 
                  min="0" max="65535">
         <label>43: Power reporting in Watts by time interval for Q2</label>
         <description><![CDATA[
-default value is 300 (power report in Watts is sent each 300s)<br /><ul><li>0 = Reporting Disabled</li> <li>1–65535 = 1 second – 65535 seconds. Reporting enabled. Power report is sent with time interval set by entered value.</li></ul>
+Power reporting in Watts by time interval for Q2<br /><h1>Overview</h1><p>Default value is 300 (power report in Watts is sent each 300s)</p> <ul><li>0 = Reporting Disabled</li> <li>1–65535 = 1 second – 65535 seconds. Reporting enabled.  </li> </ul><p>Power report is sent with time interval set by entered value.</p>
         ]]></description>
         <default>300</default>
       </parameter>

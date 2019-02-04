@@ -111,7 +111,8 @@ Threshold temperature to send unsolicited report. 10 = 1°C<br /><h1>Overview</h
         <default>10</default>
       </parameter>
 
-      <parameter name="config_4_2" type="integer" groupName="configuration">
+      <parameter name="config_4_2" type="integer" groupName="configuration"
+                 min="0" max="65535">
         <label>4: temperature report</label>
         <description><![CDATA[
 Send unsolicited temperature report after N wake up<br /><h1>Overview</h1><p>Send unsolicited  temperature report after N wake up</p> <p>If the value is set, after N wake up number (measurement is every 4 minutes) the  temperature report will be sent.</p> <p>By default it's 15 = every 1 hour, 0 is disabled </p>
@@ -120,6 +121,7 @@ Send unsolicited temperature report after N wake up<br /><h1>Overview</h1><p>Sen
         <options>
           <option value="0">Disable report</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
