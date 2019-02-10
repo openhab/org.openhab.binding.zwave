@@ -31,10 +31,20 @@ WallMote Quad<br /><h1>Overview</h1><p>Aeotec WallMote Quad is an intelligent Z-
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
       </channel>
+      <channel id="switch_startstop1" typeId="switch_startstop">
+        <label>Swipe Switch 1</label>
+        <properties>
+        </properties>
+      </channel>
       <channel id="scene_number1" typeId="scene_number">
         <label>Scene Number 1</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE:1</property>
+        </properties>
+      </channel>
+      <channel id="switch_startstop2" typeId="switch_startstop">
+        <label>Swipe Switch 2</label>
+        <properties>
         </properties>
       </channel>
       <channel id="scene_number2" typeId="scene_number">
@@ -43,10 +53,20 @@ WallMote Quad<br /><h1>Overview</h1><p>Aeotec WallMote Quad is an intelligent Z-
           <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE:2</property>
         </properties>
       </channel>
+      <channel id="switch_startstop3" typeId="switch_startstop">
+        <label>Swipe Switch 3</label>
+        <properties>
+        </properties>
+      </channel>
       <channel id="scene_number3" typeId="scene_number">
         <label>Scene Number 3</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE:3</property>
+        </properties>
+      </channel>
+      <channel id="switch_startstop4" typeId="switch_startstop">
+        <label>Swipe Switch 4</label>
+        <properties>
         </properties>
       </channel>
       <channel id="scene_number4" typeId="scene_number">
