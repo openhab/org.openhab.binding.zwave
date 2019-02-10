@@ -188,13 +188,13 @@ Valve opening percentage report<br /><h1>Overview</h1><p>0: Unsolicited valve op
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="-50" max="50">
-        <label>8: Measured Temperature offset</label>
+        <label>8: Temperature Offset</label>
         <description><![CDATA[
-Measured Temperature offset<br /><h1>Overview</h1><p>-50 - +50: Offsets the measured temperature by-5,0°C – (+)5,0°C</p> <p>128: External temperature sensor will be used for regulation.</p>
+Measured Temperature offset<br /><h1>Overview</h1><p>-50 - +50: Offsets the measured temp by-5,0°C – (+)5,0°C</p> <p>128: External temp sensor will be used for regul.</p>
         ]]></description>
         <default>0</default>
         <options>
-          <option value="128">External temperature sensor will be used for regulation.</option>
+          <option value="128">Ext temp sensor be used for regul</option>
         </options>
         <limitToOptions>false</limitToOptions>
       </parameter>

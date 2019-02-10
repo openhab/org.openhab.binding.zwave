@@ -128,7 +128,7 @@ Restore state after power failure<br /><h1>Overview</h1><p>This parameter determ
       <parameter name="config_10_1" type="integer" groupName="configuration">
         <label>10: First channel operating mode</label>
         <description><![CDATA[
-First channel - operating mode<br /><h1>Overview</h1><p>This parameter allows to choose operating for the 1st channel controlled by the S1 switch.</p>
+First channel - operating mode<br /><h1>Overview</h1><p>This parameter allows to choose operating for the 1st channel controlled by the S1 switch.</p> <p>NOTE<br />When parameter 10 value is set to 5, then parameter 11 value must be set to 0.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -144,7 +144,7 @@ First channel - operating mode<br /><h1>Overview</h1><p>This parameter allows to
       <parameter name="config_11_1" type="integer" groupName="configuration">
         <label>11: 1st ch. reaction to switch</label>
         <description><![CDATA[
-First channel - reaction to switch for delay/auto ON/OFF modes<br /><h1>Overview</h1><p>This parameter determines how the device in timed mode reacts to pushing the switch connected to the S1 terminal.</p>
+First channel - reaction to switch for delay/auto ON/OFF modes<br /><h1>Overview</h1><p>This parameter determines how the device in timed mode reacts to pushing the switch connected to the S1 terminal.</p> <p>NOTE<br />When parameter 10 value is set to 5, then parameter 11 value must be set to 0.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -175,7 +175,7 @@ First channel - pulse time for flashing mode<br /><h1>Overview</h1><p>This param
       <parameter name="config_15_1" type="integer" groupName="configuration">
         <label>15: 2nd ch. operating mode</label>
         <description><![CDATA[
-Second channel - operating mode<br /><h1>Overview</h1><p>This parameter allows to choose operating for the 1st channel controlled by the S2 switch.</p>
+Second channel - operating mode<br /><h1>Overview</h1><p>This parameter allows to choose operating for the 1st channel controlled by the S2 switch.</p> <p>NOTE<br />When parameter 15 value is set to 5, then parameter 16 value must be set to 0.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -190,7 +190,9 @@ Second channel - operating mode<br /><h1>Overview</h1><p>This parameter allows t
 
       <parameter name="config_16_1" type="integer" groupName="configuration">
         <label>16: 2nd ch. reaction to switch</label>
-        <description>Second channel - reaction to switch for delay/auto ON/OFF modes</description>
+        <description><![CDATA[
+Second channel - reaction to switch for delay/auto ON/OFF modes<br /><h1>Overview</h1><p>This parameter determines how the device in timed mode reacts to pushing the switch connected to the S2 terminal.</p> <p>NOTE<br />When parameter 15 value is set to 5, then parameter 16 value must be set to 0.</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">cancel mode and set target state</option>
@@ -240,10 +242,11 @@ Switch type<br /><h1>Overview</h1><p>This parameter defines as what type the dev
         </options>
       </parameter>
 
-      <parameter name="config_27_1" type="integer" groupName="configuration">
+      <parameter name="config_27_1" type="integer" groupName="configuration"
+                 min="1" max="15">
         <label>27: Associations in Z-Wave network security mode</label>
         <description><![CDATA[
-Associations in Z-Wave network security mode<br /><h1>Overview</h1><p>This parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. This parameter does not apply to 1st „Lifeline” group.</p>
+Associations in Z-Wave network security mode<br /><h1>Overview</h1><p>This parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. This parameter does not apply to 1st „Lifeline” group.</p> <p>Available settings:</p> <ul><li>1 - 2nd group sent as secure</li> <li>2 - 3rd group sent as secure</li> <li>4 - 4th group sent as secure</li> <li>8 - 5th group sent as secure</li> </ul><p>Parameter 27 values may be combined, e.g. 1+2=3 means that 2nd &amp; 3rd groups are sent as secure.</p>
         ]]></description>
         <default>15</default>
         <options>
@@ -254,13 +257,14 @@ Associations in Z-Wave network security mode<br /><h1>Overview</h1><p>This param
           <option value="8">5th group sent as secure</option>
           <option value="15">all groups sent as secure</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_28_1" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="15">
         <label>28: S1 switch - scenes sent</label>
         <description><![CDATA[
-S1 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which actions result in sending scene IDs assigned to them</p>
+S1 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which actions result in sending scene IDs assigned to them.</p> <p>Available settings:</p> <ul><li>1 - Key pressed 1 time</li> <li>2 - Key pressed 2 times</li> <li>4 - Key pressed 3 times</li> <li>8 - Key Hold Down and Key Released</li> </ul><p>Parameter 28 values may be combined, e.g. 1+2=3 means that scenes for single and double click are sent.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -269,6 +273,7 @@ S1 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which
           <option value="2">Key pressed 2 times</option>
           <option value="4">Key pressed 3 times</option>
           <option value="8">Key Hold Down and Key Released</option>
+          <option value="15">In all cases a scene ID will be sent</option>
         </options>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -277,7 +282,7 @@ S1 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which
                  min="0" max="15">
         <label>29: S2 switch - scenes sent</label>
         <description><![CDATA[
-S2 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which actions result in sending scene IDs assigned to them.</p>
+S2 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which actions result in sending scene IDs assigned to them.</p> <p>Available settings:</p> <ul><li>1 - Key pressed 1 time</li> <li>2 - Key pressed 2 times</li> <li>4 - Key pressed 3 times</li> <li>8 - Key Hold Down and Key Released</li> </ul><p>Parameter 29 values may be combined, e.g. 1+2=3 means that scenes for single and double click are sent.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -286,6 +291,7 @@ S2 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which
           <option value="2">Key pressed 2 times</option>
           <option value="4">Key pressed 3 times</option>
           <option value="8">Key Hold Down and Key Released</option>
+          <option value="15">In all cases a scene ID will be sent</option>
         </options>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -294,7 +300,7 @@ S2 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which
                  min="0" max="15">
         <label>30: S1 assocs. sent to 2nd and 3rd group</label>
         <description><![CDATA[
-S1 switch - associations sent to 2nd and 3rd association groups<br /><h1>Overview</h1><p>This parameter determines which actions are ignored when sending commands to devices associated in 2nd and 3rd association group. All actions are active by default.</p>
+S1 switch - associations sent to 2nd and 3rd association groups<br /><h1>Overview</h1><p>This parameter determines which actions are ignored when sending commands to devices associated in 2nd and 3rd association group. All actions are active by default.</p> <p>Available settings:</p> <ul><li>1 - ignore turning On with 1 click of the switch</li> <li>2 - ignore turning OFF with 1 click of the switch</li> <li>4 - ignore holding and releasing the switch*</li> <li>8 - ignore double click of the switch**</li> </ul><p>Parameter 30 values may be combined, e.g. 1+2=3 means that associations for turning On and OFF are not sent.</p> <p>NOTE:<br />*Hold and release is inactive when parameter 20 is set to 1 or 2.<br />**Double click is inactive when parameter 20 is set to 1.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -310,7 +316,9 @@ S1 switch - associations sent to 2nd and 3rd association groups<br /><h1>Overvie
       <parameter name="config_31_2" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>31: S1 ON val sent to 2nd and 3rd groups</label>
-        <description>S1 switch - Switch ON value sent to 2nd and 3rd association groups</description>
+        <description><![CDATA[
+S1 switch - Switch ON value sent to 2nd and 3rd association groups<br /><h1>Overview</h1><p>NOTE:</p> <p>Setting parameters 31-33, 36-38 to appropriate value should result in:</p> <p><strong>0 </strong>- turning off associated devices</p> <p><strong>1-99</strong> - forcing level of associated devices</p> <p><strong>255</strong> - setting associated devices to the last remembered state or turning them on</p>
+        ]]></description>
         <default>255</default>
       </parameter>
 
@@ -318,7 +326,7 @@ S1 switch - associations sent to 2nd and 3rd association groups<br /><h1>Overvie
                  min="0" max="255">
         <label>32: S1 OFF val sent to 2nd and 3rd groups</label>
         <description><![CDATA[
-S1 switch - Switch ON value sent to 2nd and 3rd association groups<br /><h1>Overview</h1><p>This parameter defines value sent with Switch OFF command to devices associated in 2nd and 3rd association group.</p>
+S1 switch - Switch ON value sent to 2nd and 3rd association groups<br /><h1>Overview</h1><p>This parameter defines value sent with Switch OFF command to devices associated in 2nd and 3rd association group.</p> <p>NOTE:</p> <p>Setting parameters 31-33, 36-38 to appropriate value should result in:</p> <p><strong>0</strong> - turning off associated devices</p> <p><strong>1-99 </strong> - forcing level of associated devices</p> <p><strong>255</strong> - setting associated devices to the last remembered state or turning them on</p>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -327,7 +335,7 @@ S1 switch - Switch ON value sent to 2nd and 3rd association groups<br /><h1>Over
                  min="0" max="255">
         <label>33: S1 DblClick val sent to 2nd and 3rd groups</label>
         <description><![CDATA[
-S1 switch - Double Click value sent to 2nd and 3rd association groups<br /><h1>Overview</h1><p>This parameter defines value sent with Double Click command to devices associated in 2nd and 3rd association group.</p>
+S1 switch - Double Click value sent to 2nd and 3rd association groups<br /><h1>Overview</h1><p>This parameter defines value sent with Double Click command to devices associated in 2nd and 3rd association group.</p> <p>NOTE:</p> <p>Setting parameters 31-33, 36-38 to appropriate value should result in:</p> <p><strong>0</strong> - turning off associated devices</p> <p><strong>1-99 </strong> - forcing level of associated devices</p> <p><strong>255</strong> - setting associated devices to the last remembered state or turning them on</p>
         ]]></description>
         <default>99</default>
       </parameter>
@@ -336,7 +344,7 @@ S1 switch - Double Click value sent to 2nd and 3rd association groups<br /><h1>O
                  min="0" max="15">
         <label>35: S2 assocs. sent to 4th and 5th group</label>
         <description><![CDATA[
-S2 switch - associations sent to 4th and 5th association groups<br /><h1>Overview</h1><p>This parameter determines which actions result in sending commands to devices associated in 4th and 5th association group. All actions are active by default.</p>
+S2 switch - associations sent to 4th and 5th association groups<br /><h1>Overview</h1><p>This parameter determines which actions result in sending commands to devices associated in 4th and 5th association group. All actions are active by default.</p> <p>Available settings:</p> <ul><li>1 - ignore turning On with 1 click of the switch</li> <li>2 - ignore turning OFF with 1 click of the switch</li> <li>4 - ignore holding and releasing the switch*</li> <li>8 - ignore double click of the switch**</li> </ul><p>Parameter 35 values may be combined, e.g. 1+2=3 means that associations for turning On and OFF are not sent.</p> <p>NOTE:</p> <p>*Hold and release is inactive when param-eter 20 is set to 1 or 2.</p> <p>**Double click is inac-tive when parameter 20 is set to 1.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -352,20 +360,27 @@ S2 switch - associations sent to 4th and 5th association groups<br /><h1>Overvie
       <parameter name="config_36_2" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>36: S2 ON val sent to 4th and 5th groups</label>
-        <description>S2 switch - Switch ON value sent to 4th and 5th association groups</description>
+        <description><![CDATA[
+S2 switch - Switch ON value sent to 4th and 5th association groups<br /><h1>Overview</h1><p>This parameter defines value sent with Switch On command to devic-es associated in 4th and 5th association group.</p> <p>NOTE:</p> <p>Setting parameters 31-33, 36-38 to appropriate value should result in:</p> <p><strong>0</strong> - turning off associated devices</p> <p><strong>1-99 </strong> - forcing level of associated devices</p> <p><strong>255</strong> - setting associated devices to the last remembered state or turning them on</p>
+        ]]></description>
         <default>255</default>
       </parameter>
 
       <parameter name="config_37_2" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>37: S2 OFF val sent to 4th and 5th groups</label>
-        <description>S2 switch - Switch OFF value sent to 4th and 5th association groups</description>
+        <description><![CDATA[
+S2 switch - Switch OFF value sent to 4th and 5th association groups<br /><h1>Overview</h1><p>This parameter defines value sent with Switch OFF command to de-vices associated in 4th and 5th association group.</p> <p>NOTE:</p> <p>Setting parameters 31-33, 36-38 to appropriate value should result in:</p> <p><strong>0</strong> - turning off associated devices</p> <p><strong>1-99 </strong> - forcing level of associated devices</p> <p><strong>255</strong> - setting associated devices to the last remembered state or turning them on</p>
+        ]]></description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_38_2" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>38: S2 DblClick val sent to 4th and 5th groups</label>
+        <description><![CDATA[
+S2 switch - Double Click value sent to 4th and 5th association groups<br /><h1>Overview</h1><p>This parameter defines value sent with Double Click command to de-vices associated in 4th and 5th association group.</p> <p>NOTE:</p> <p>Setting parameters 31-33, 36-38 to appropriate value should result in:</p> <p><strong>0</strong> - turning off associated devices</p> <p><strong>1-99 </strong> - forcing level of associated devices</p> <p><strong>255</strong> - setting associated devices to the last remembered state or turning them on</p>
+        ]]></description>
         <default>99</default>
       </parameter>
 

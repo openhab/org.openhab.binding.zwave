@@ -21,6 +21,18 @@ Widom Smart Dimmer<br /><h1>Overview</h1><p>WiDom Smart TE Dimmer is an "in-wall
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
+      <channel id="meter_watts" typeId="meter_watts">
+        <label>Meter(watts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh" typeId="meter_kwh">
+        <label>Meter(KWh)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
