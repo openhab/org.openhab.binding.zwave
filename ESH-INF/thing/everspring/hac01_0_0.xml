@@ -8,6 +8,7 @@
   <thing-type id="everspring_hac01_00_000" listed="false">
     <label>HAC01 In-Wall Remote Insert</label>
     <description>In-Wall Remote Insert</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -26,6 +27,8 @@
       <property name="manufacturerId">0060</property>
       <property name="manufacturerRef">0010:0001</property>
       <property name="dbReference">270</property>
+      <property name="commandClass:COMMAND_CLASS_SWITCH_BINARY">setVersion=1</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
