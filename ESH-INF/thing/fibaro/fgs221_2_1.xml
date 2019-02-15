@@ -279,6 +279,7 @@ Returns to the last position saved<br /><h1>Overview</h1><p>Fibaro Switch return
 
       <parameter name="group_3" type="text" groupName="association">
         <label>3: Controller Updates</label>
+        <description>Reports state of devices.</description>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

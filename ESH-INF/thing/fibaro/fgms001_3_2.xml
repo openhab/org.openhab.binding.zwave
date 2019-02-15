@@ -169,7 +169,7 @@ The parameter defines the difference between night and day.<br /><h1>Overview</h
       <parameter name="config_12_1" type="integer" groupName="configuration">
         <label>12: BASIC command class configuration</label>
         <description><![CDATA[
-Determines the command frames sent in 1-st association group.<br /><h1>Overview</h1><p>The parameter determines the command frames sent in 1-st association group, assigned to PIR sensor.<br />0 - BASIC ON and BASIC OFF command frames sent in Basic Command Class.<br />1 - only the BASIC ON command frame sent in Basic Command Class.<br />2 - only the BASIC OFF command frame sent in Basic CommandClass.<br />Values of BASIC ON and BASIC OFF command frames may be modified by dedicated parameters.<br />Default setting: 0 Parameter size: 1 [byte] </p>
+Determines the command frames sent in 2nd association group.<br /><h1>Overview</h1><p>The parameter determines the command frames sent in 2nd association group, assigned to PIR sensor.<br />0 - BASIC ON and BASIC OFF command frames sent in Basic Command Class.<br />1 - only the BASIC ON command frame sent in Basic Command Class.<br />2 - only the BASIC OFF command frame sent in Basic CommandClass.<br />Values of BASIC ON and BASIC OFF command frames may be modified by dedicated parameters.<br />Default setting: 0 Parameter size: 1 [byte] </p>
         ]]></description>
         <default>0</default>
         <options>
@@ -257,7 +257,7 @@ Determines whether the tamper alarm frame will be sent in broadcast mode<br /><h
         <default>0</default>
         <options>
           <option value="0">Reported to association groups.</option>
-          <option value="1">Reported in broadcast mode to 3rd association group.</option>
+          <option value="1">Reported in broadcast mode to 3rd assoc grp</option>
         </options>
       </parameter>
 
@@ -269,7 +269,7 @@ Determines whether the tamper alarm frame will be sent in broadcast mode<br /><h
         <default>0</default>
         <options>
           <option value="0">Reported to association groups.</option>
-          <option value="1">Reported in broadcast mode to 5th association group.</option>
+          <option value="1">Reported in broadcast mode to 5th assoc grp</option>
         </options>
       </parameter>
 
@@ -336,7 +336,7 @@ LED signalling mode<br /><h1>Overview</h1><p>The parameter determines the way in
         <options>
           <option value="0">LED inactive.</option>
           <option value="1">LED colour depends on the temperature</option>
-          <option value="2">Flashlight mode - LED glows in white for 10 seconds.</option>
+          <option value="2">Flashlight mode - LED glows white for 10 sec</option>
           <option value="3">White.</option>
           <option value="4">Red.</option>
           <option value="5">Green.</option>

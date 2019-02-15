@@ -164,7 +164,7 @@ This parameter allows to activate sound signals...<br /><h1>Overview</h1><p> bu
       <parameter name="config_10_1" type="integer" groupName="configuration">
         <label>10: Config of control frames in BASIC command class</label>
         <description><![CDATA[
-This parameter defines which frames will be sent ...<br /><h1>Overview</h1><p>in the 2-nd Association Group (FIRE ALARM). The values of BASIC ON and BASIC OFF frames may be defined as described in further parameters.</p>
+This parameter defines which frames will be sent ...<br /><h1>Overview</h1><p>in the 2-nd Association Group (SMOKE ALARM). The values of BASIC ON and BASIC OFF frames may be defined as described in further parameters.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -172,15 +172,6 @@ This parameter defines which frames will be sent ...<br /><h1>Overview</h1><p>in
           <option value="1">BASIC ON enabled</option>
           <option value="2">BASIC OFF enabled</option>
         </options>
-      </parameter>
-
-      <parameter name="config_10_1" type="integer" groupName="configuration"
-                 min="0" max="127">
-        <label>10: Auto Report Battery Time</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>The interval time for auto report the battery level.</p>
-        ]]></description>
-        <default>127</default>
       </parameter>
 
       <parameter name="config_11_2" type="integer" groupName="configuration"
@@ -262,29 +253,38 @@ Time interval of signaling (visual indication/sound) lack of ...<br /><h1>Overvi
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
-        <label>1: Device Status</label>
+        <label>1: Lifeline</label>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Battery capacity low</label>
+        <label>2: Smoke Alarm</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>The Home Control Smoke Detector continuously checks the battery capacity. If the battery capacity falls below a defined value of approx. 2.7V +-0.1V, a low battery alarm will be sent via Z-Wave®. If the capacity continues falling, the visual and acoustic battery capacity warning will be activated additionally.</p>
+<br /><h1>Overview</h1><p>Sending the BASIC SET control command once smoke is detected. Its value may be modified in advanced parameters (see section XVI in manual). Group may control up to five on/off devices.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Tamper Alarm</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Sending the notification NOTIFICATION REPORT (TYPE =BURGLAR, EVENT = PRODUCT COVERING REMOVED) to associated devices once casing opening is detected. Up to five devices supporting casing opening command (NOTIFICATION REPORT) may be included in this group.</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
         <label>4: Fire Alarm</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Sending the notification SENSOR ALARM REPORT (TYPE= SMOKE ALARM) to associated devices once smoke is detected. Up to five devices supporting SMOKE ALARM command may be included in this group</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
         <label>5: Tamper Alarm</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Sending SENSOR ALARM REPORT notification (TYPE =GENERAL) to associated devices once casing opening is detected. Up to five devices supporting SENSOR ALARM REPORT command may be included in this group.</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
