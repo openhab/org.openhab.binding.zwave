@@ -161,7 +161,7 @@ Timer plug OFF after time period<br /><h1>Overview</h1><p>Defines if the timer f
                  min="1" max="65535">
         <label>9: Time switch Period</label>
         <description><![CDATA[
-Delay time after the plug is switched off<br /><h1>Overview</h1><p>This parameter defines the time after the plug is switched off. If Parameter 8# is set to ‘1’, and relay is turn ON, the relay will be turn OFF after delay this parameter.</p>
+Delay time after the plug is switched off (in minutes)<br /><h1>Overview</h1><p>This parameter defines the time after the plug is switched off. If Parameter 8# is set to ‘1’, and relay is turn ON, the relay will be turn OFF after delay this parameter.</p>
         ]]></description>
         <default>150</default>
       </parameter>

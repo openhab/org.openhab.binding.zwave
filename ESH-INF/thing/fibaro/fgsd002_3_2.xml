@@ -256,29 +256,38 @@ Time interval of signaling (visual indication/sound) lack of ...<br /><h1>Overvi
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
-        <label>1: Device Status</label>
+        <label>1: Lifeline</label>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Battery capacity low</label>
+        <label>2: Smoke Alarm</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>The Home Control Smoke Detector continuously checks the battery capacity. If the battery capacity falls below a defined value of approx. 2.7V +-0.1V, a low battery alarm will be sent via Z-Wave®. If the capacity continues falling, the visual and acoustic battery capacity warning will be activated additionally.</p>
+<br /><h1>Overview</h1><p>Sending the BASIC SET control command once smoke is detected. Its value may be modified in advanced parameters. Group may control up to five on/off devices.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Tamper Alarm</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Sending the notification NOTIFICATION REPORT (TYPE = BURGLAR, EVENT = PRODUCT COVERING REMOVED) to associated devices once casing opening is detected. Up to five devices supporting casing opening command (NOTIFICATION REPORT) may be included in this group.</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
         <label>4: Fire Alarm</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Sending the notification SENSOR ALARM REPORT (TYPE= SMOKE ALARM) to associated devices once smoke is detected. Up to five devices supporting SMOKE ALARM command may be included in this group</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
         <label>5: Tamper Alarm</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Sending SENSOR ALARM REPORT notification (TYPE = GENERAL) to associated devices once casing opening is detected. Up to five devices supporting SENSOR ALARM REPORT command may be included in this group.</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
