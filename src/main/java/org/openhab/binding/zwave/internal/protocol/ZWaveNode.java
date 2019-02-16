@@ -135,8 +135,8 @@ public class ZWaveNode {
     /**
      * Constructor. Creates a new instance of the ZWaveNode class.
      *
-     * @param homeId the home ID to use.
-     * @param nodeId the node ID to use.
+     * @param homeId     the home ID to use.
+     * @param nodeId     the node ID to use.
      * @param controller the wave controller instance
      */
     public ZWaveNode(int homeId, int nodeId, ZWaveController controller) {
@@ -225,7 +225,7 @@ public class ZWaveNode {
      * side.
      *
      * @param frequentlyListening indicating whether the node is frequently
-     *            listening or not.
+     *                                listening or not.
      */
     public void setFrequentlyListening(boolean frequentlyListening) {
         this.frequentlyListening = frequentlyListening;
@@ -597,7 +597,7 @@ public class ZWaveNode {
      * Gets the command class from the endpoint if it exists. IF the class does not exist within the endpoint, it is
      * added.
      *
-     * @param endpoint the {@link ZWaveEndpoint}
+     * @param endpoint     the {@link ZWaveEndpoint}
      * @param commandClass the {@link CommandClass}
      * @return the {@link ZWaveCommandClass} or null if the class is not supported
      */
@@ -647,7 +647,7 @@ public class ZWaveNode {
      * Returns null if a command class is not found.
      *
      * @param commandClass The command class to resolve.
-     * @param endpointId the endpoint / instance to resolve this command class for.
+     * @param endpointId   the endpoint / instance to resolve this command class for.
      * @return the command class.
      */
     public ZWaveCommandClass resolveCommandClass(CommandClass commandClass, int endpointId) {
@@ -978,7 +978,7 @@ public class ZWaveNode {
      * single instance command class, otherwise we use the multi instance class if it exists.
      *
      * @param groupId the group to be set
-     * @param member the {@link ZWaveAssociation} to be set to report to (receive)
+     * @param member  the {@link ZWaveAssociation} to be set to report to (receive)
      * @return {@link ZWaveCommandClassTransactionPayload}
      */
     public ZWaveCommandClassTransactionPayload setAssociation(int groupId, ZWaveAssociation member) {
@@ -1009,7 +1009,7 @@ public class ZWaveNode {
      * and the endpoint.
      *
      * @param groupId the group to be set
-     * @param member the {@link ZWaveAssociation} to be set to report to (receive)
+     * @param member  the {@link ZWaveAssociation} to be set to report to (receive)
      * @return {@link ZWaveCommandClassTransactionPayload}
      */
     public ZWaveCommandClassTransactionPayload removeAssociation(Integer groupId, ZWaveAssociation member) {
@@ -1100,9 +1100,9 @@ public class ZWaveNode {
      * Security encapsulation is performed in the transaction manager since it needs to manage the NONCE and
      * encapsulation needs to be done at the time the message is sent.
      *
-     * @param transaction the {@link ZWaveCommandClassTransactionPayload} to encapsulate
+     * @param transaction  the {@link ZWaveCommandClassTransactionPayload} to encapsulate
      * @param commandClass the command class used to generate the message.
-     * @param endpointId the instance / endpoint to encapsulate the message for
+     * @param endpointId   the instance / endpoint to encapsulate the message for
      * @return SerialMessage on success, null on failure.
      */
     public ZWaveCommandClassTransactionPayload encapsulate(ZWaveCommandClassTransactionPayload transaction,
@@ -1181,9 +1181,9 @@ public class ZWaveNode {
      * </ol>
      * Note: The Transport Service and CRC16 Command Classes are mutually exclusive as well as Security and CRC16.
      *
-     * @param transaction the {@link ZWaveCommandClassPayload} to process
+     * @param transaction  the {@link ZWaveCommandClassPayload} to process
      * @param commandClass the command class used to generate the message.
-     * @param endpointId the instance / endpoint to encapsulate the message for
+     * @param endpointId   the instance / endpoint to encapsulate the message for
      * @return list of raw commands that were processed on success, null on failure.
      */
     public List<ZWaveCommandClassPayload> processCommand(ZWaveCommandClassPayload payload) {
@@ -1406,13 +1406,6 @@ public class ZWaveNode {
             return;
         }
 
-        // ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) getEndpoint(0)
-        // .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP);
-        // if (wakeUpCommandClass == null) {
-        // logger.debug("NODE {}: Node doesn't support WAKEUP - ignore wakeup", getNodeId());
-        // return;
-        // }
-
         // Create the timer if this is our first call
         if (timer == null) {
             logger.trace("NODE {}: Creating wakeup timer", getNodeId());
@@ -1513,10 +1506,10 @@ public class ZWaveNode {
         // Start the timer
         // If the initialisation is complete, then use a short delay,
         // Otherwise use a longer delay...
-        if (isInitializationComplete() || controller.getSendQueueLength(getNodeId()) == 0) {
+        if (isInitializationComplete()) {
             timerDelay = sleepDelay;
         } else {
-            timerDelay = 2500;
+            timerDelay = 5000;
         }
         logger.debug("NODE {}: Start sleep timer at {}ms", getNodeId(), timerDelay);
 
