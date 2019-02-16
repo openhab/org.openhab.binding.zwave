@@ -8,11 +8,14 @@
 package org.openhab.binding.zwave.internal.converter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.smarthome.core.library.types.OnOffType;
 import org.eclipse.smarthome.core.library.types.PercentType;
 import org.eclipse.smarthome.core.library.types.StopMoveType;
+import org.eclipse.smarthome.core.library.types.StringType;
 import org.eclipse.smarthome.core.library.types.UpDownType;
 import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
@@ -22,6 +25,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBatteryCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSwitchCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSwitchCommandClass.ZWaveStartStopEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
@@ -68,6 +72,9 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
         boolean configInvertControl = "true".equalsIgnoreCase(channel.getArguments().get("config_invert_control"));
         boolean configInvertPercent = "true".equalsIgnoreCase(channel.getArguments().get("config_invert_percent"));
 
+        if (event instanceof ZWaveStartStopEvent) {
+            return handleStartStopEvent(channel, (ZWaveStartStopEvent) event);
+        }
         int value = (int) event.getValue();
 
         // A value of 254 means the device doesn't know it's current position
@@ -120,6 +127,17 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
         }
 
         return state;
+    }
+
+    private State handleStartStopEvent(ZWaveThingChannel channel, ZWaveStartStopEvent event) {
+        if (channel.getUID().getId().equals("switch_startstop")) {
+            Map<String, Object> object = new HashMap<String, Object>();
+            object.put("direction", event.direction);
+
+            return new StringType(propertiesToJson(object));
+        }
+
+        return null;
     }
 
     @Override

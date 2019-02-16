@@ -1126,6 +1126,14 @@
         <category>Switch</category>
     </channel-type>
 
+    <!-- Switch Start/Stop Channel -->
+    <channel-type id="switch_startstop">
+        <item-type>String</item-type>
+        <label>StartStop Switch</label>
+        <description>Switch indicating direction</description>
+        <category>Switch</category>
+    </channel-type>
+
     <!-- Brightness (Dimmer) Channel -->
     <channel-type id="switch_dimmer">
         <item-type>Dimmer</item-type>
