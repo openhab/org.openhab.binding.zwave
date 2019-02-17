@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2018 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,10 +44,10 @@ public class ZWaveSwitchAllCommandClass extends ZWaveCommandClass implements ZWa
     private static final int SWITCH_ALL_OFF = 5;
 
     public enum SwitchAllMode {
-        SWITCH_ALL_EXCLUDED(0x00, "not included in either All On or All Off groups"),
-        SWITCH_ALL_INCLUDE_ON_ONLY(0x01, "device included in All On group"),
-        SWITCH_ALL_INCLUDE_OFF_ONLY(0x02, "device included in All Off group"),
-        SWITCH_ALL_INCLUDE_ON_OFF(0xFF, "device included in All On and All Off group");
+        SWITCH_ALL_EXCLUDED(0x00, "device ignores any All ON and All OFF commands"),
+        SWITCH_ALL_INCLUDE_OFF_ONLY(0x01, "device only listens to All OFF commands"),
+        SWITCH_ALL_INCLUDE_ON_ONLY(0x02, "device only listens to All ON commands"),
+        SWITCH_ALL_INCLUDE_ON_OFF(0xFF, "device listens to both All ON and All OFF commands");
 
         int mode;
         String description;
@@ -75,9 +75,9 @@ public class ZWaveSwitchAllCommandClass extends ZWaveCommandClass implements ZWa
                 case 0x00:
                     return SWITCH_ALL_EXCLUDED;
                 case 0x01:
-                    return SWITCH_ALL_INCLUDE_ON_ONLY;
-                case 0x02:
                     return SWITCH_ALL_INCLUDE_OFF_ONLY;
+                case 0x02:
+                    return SWITCH_ALL_INCLUDE_ON_ONLY;
                 case 0xFF:
                     return SWITCH_ALL_INCLUDE_ON_OFF;
             }
@@ -146,8 +146,8 @@ public class ZWaveSwitchAllCommandClass extends ZWaveCommandClass implements ZWa
      * Create a new SwitchAll set message
      *
      * @param newMode
-     *            as (0x00 - Exclude, 0x01 Only All On, 0x02 Only All Off, 0xFF
-     *            Both All on and All off)
+     *            as (0x00 - Exclude, 0x01 Only All Off, 0x02 Only All On, 0xFF
+     *            Both All On and All Off)
      * @return SerialMessage
      */
     public ZWaveCommandClassTransactionPayload setValueMessage(int newMode) {
