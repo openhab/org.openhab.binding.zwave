@@ -32,7 +32,7 @@ Water Leak Sensor Alarm<br /><h1>Overview</h1><p>Water sensor powered by two AAA
       <property name="vendor">UFairy G.R. Tech</property>
       <property name="modelId">Topvico TP-819ZW</property>
       <property name="manufacturerId">0152</property>
-      <property name="manufacturerRef">0500:0000</property>
+      <property name="manufacturerRef">0500:0000,0505:0001</property>
       <property name="dbReference">909</property>
       <property name="defaultAssociations">1</property>
     </properties>
