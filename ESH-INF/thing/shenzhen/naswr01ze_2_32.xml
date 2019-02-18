@@ -5,25 +5,19 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="shenzhen_powerplug_00_000" listed="false">
+  <thing-type id="shenzhen_naswr01ze_02_032" listed="false">
     <label>NAS-WR01ZE Metered Wall Plug Switch</label>
     <description><![CDATA[
-Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltage, current load, power consumption and energy consumption measuring. </p> <ul><li><strong>Voltage</strong> – The Supply Power Voltage For Plug.</li> <li><strong>Current</strong> – The Current for the Electric Device Connect to Plug Consumption.</li> <li><strong>Power</strong> – Power Consumed by an Electric Device in an instant, unit: Watt (W).</li> <li><strong>Energy</strong> – Energy Consumed by an Electric Device through a Time Period. Most commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh.</li> </ul><br /><h2>Inclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off with green alternately five times within 2 seconds.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter exclusion mode. And the LED will flash on and off with yellow alternately five times within 2 seconds.</li> </ol>
+Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltage, current load, power consumption and energy consumption measuring. </p> <ul><li><strong>Voltage</strong> – The Supply Power Voltage For Plug.</li> <li><strong>Current</strong> – The Current for the Electric Device Connect to Plug Consumption.</li> <li><strong>Power</strong> – Power Consumed by an Electric Device in an instant, unit: Watt (W).</li> <li><strong>Energy</strong> – Energy Consumed by an Electric Device through a Time Period. Most commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh. </li> </ul><br /><h2>Inclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off with green alternately five times within 2 seconds.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter exclusion mode. And the LED will flash on and off with yellow alternately five times within 2 seconds.</li> </ol>
     ]]></description>
-    <category>PowerOutlet</category>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
-        </properties>
-      </channel>
-      <channel id="meter_current" typeId="meter_current">
-        <label>Electric meter (amps)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_A</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
@@ -36,6 +30,12 @@ Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltag
         <label>Electric meter (watts)</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="meter_current" typeId="meter_current">
+        <label>Electric meter (amps)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_A</property>
         </properties>
       </channel>
       <channel id="meter_voltage" typeId="meter_voltage">
@@ -57,8 +57,10 @@ Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltag
       <property name="vendor">Shenzhen Neo Electronics Co., Ltd</property>
       <property name="modelId">NAS-WR01ZE</property>
       <property name="manufacturerId">0258</property>
-      <property name="manufacturerRef">0003:0087,0003:1087,0003:1483</property>
-      <property name="dbReference">397</property>
+      <property name="manufacturerRef">0200:1027</property>
+      <property name="versionMin">2.32</property>
+      <property name="versionMax">2.32</property>
+      <property name="dbReference">1014</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

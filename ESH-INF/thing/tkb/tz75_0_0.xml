@@ -8,7 +8,7 @@
   <thing-type id="tkb_tz75_00_000" listed="false">
     <label>TZ75 Rollershutter Controller</label>
     <description><![CDATA[
-Rollershutter Controller<br /><h1>Overview</h1><p>This in-wall Roller Shutter Controller is able to detect the position of the shutter by using the patterned power measuring method, so it can not only be positioned fully up or down, but can also be adjusted to any position between 0 and 100%.</p> <p>Installation hint: lt is important to carry out a shutter calibration process. Press the On/Off button over 3 seconds and release it before the 6th second, the roller shutter controller will start the shutter calibration process. The process is composed of three continue stages. The shutter move to the BOTTOM in first stage, and move to the TOP in second stage, and move to the BOTTOM again in 1-second intervals third stage. Then the TZ75 will know the total range of UP and DOWN.</p> <br /><h2>Inclusion Information</h2><p>1. Have Z-Wave controller entered inclusion mode.</p> <p>2. Pressing On/Off button three times within 1.5 seconds will enter inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>1. Have Z-Wave controller entered exclusion mode.</p> <p>2. Pressing On/Off button three times within 1.5 seconds will enter exclusion mode.</p>
+Rollershutter Controller<br /><h1>Overview</h1><p>This in-wall Roller Shutter Controller is able to detect the position of the shutter by using the patterned power measuring method, so it can not only be positioned fully up or down, but can also be adjusted to any position between 0 and 100%.</p> <p>Installation hint: lt is important to carry out a shutter calibration process. Press the On/Off button over 3 seconds and release it before the 6th second, the roller shutter controller will start the shutter calibration process. The process is composed of three continue stages. The shutter move to the BOTTOM in first stage, and move to the TOP in second stage, and move to the BOTTOM again in 1-second intervals third stage. Then the TZ75 will know the total range of UP and DOWN.</p> <br /><h2>Inclusion Information</h2><ol><li>Have Z-Wave controller entered inclusion mode.</li> <li>Pressing On/Off button three times within 1.5 seconds will enter inclusion mode.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Have Z-Wave controller entered exclusion mode.</li> <li>Pressing On/Off button three times within 1.5 seconds will enter exclusion mode.</li> </ol>
     ]]></description>
     <category>Blinds</category>
 
@@ -20,11 +20,12 @@ Rollershutter Controller<br /><h1>Overview</h1><p>This in-wall Roller Shutter C
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
         </properties>
       </channel>
-      <channel id="switch_dimmer" typeId="switch_dimmer">
-        <label>Dimmer</label>
+      <channel id="blinds_control" typeId="blinds_control">
+        <label>Blinds Control</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:StopMoveType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:UpDownType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="meter_powerfactor" typeId="meter_powerfactor">

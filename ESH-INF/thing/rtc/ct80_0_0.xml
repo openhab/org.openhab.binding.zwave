@@ -10,6 +10,7 @@
     <description><![CDATA[
 Z-Wave Thermostat<br /><h2>Inclusion Information</h2><p>Push Menu button, choose network, choose Z-Wave Radio, push "Mate" (only usable with Z-Wave Module)</p>
     ]]></description>
+    <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -73,7 +74,7 @@ Z-Wave Thermostat<br /><h2>Inclusion Information</h2><p>Push Menu button, choose
       <property name="vendor">Radio Thermostat Company of America (RTC)</property>
       <property name="modelId">CT80</property>
       <property name="manufacturerId">0098</property>
-      <property name="manufacturerRef">5002:0100,5003:0109</property>
+      <property name="manufacturerRef">5002:0100,5002:0108,5003:0109</property>
       <property name="dbReference">97</property>
       <property name="defaultAssociations">1</property>
     </properties>
