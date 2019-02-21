@@ -395,7 +395,7 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 
         byte[] keyBytes = parseNetworkKeyAsHexString(value);
 
-        if(keyBytes!=null) {
+        if (keyBytes != null) {
             networkKey = new SecretKeySpec(keyBytes, AES);
             logger.debug("NODE {}: Updated networkKey", getNode().getNodeId());
 
@@ -423,7 +423,7 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
             }
             return keyBytes;
         } catch (NumberFormatException e) {
-            throw new RuntimeException("Error parsing network key as an hex string. Parsed string was "+hexString,e);
+            throw new RuntimeException("Error parsing network key as an hex string. Parsed string was " + hexString, e);
         }
     }
 

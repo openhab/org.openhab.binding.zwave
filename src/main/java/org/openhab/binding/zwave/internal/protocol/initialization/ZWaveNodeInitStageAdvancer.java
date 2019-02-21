@@ -209,7 +209,7 @@ public class ZWaveNodeInitStageAdvancer {
 
                     setCurrentStage(ZWaveNodeInitStage.DONE);
                 } catch (Exception e) {
-                    logger.error("NODE {}: Error in initialization thread",node.getNodeId(),e);
+                    logger.error("NODE {}: Error in initialization thread", node.getNodeId(), e);
                 }
             }
         };
