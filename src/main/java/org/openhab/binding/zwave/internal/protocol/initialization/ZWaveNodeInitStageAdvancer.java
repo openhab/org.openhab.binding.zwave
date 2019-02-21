@@ -172,41 +172,45 @@ public class ZWaveNodeInitStageAdvancer {
         initialisationThread = new Thread() {
             @Override
             public void run() {
-                if (node.getInclusionTimer() < INCLUSION_TIMER) {
-                    logger.debug("NODE {}: Node advancer: Node just included ({})", node.getNodeId(),
-                            node.getInclusionTimer());
-                    doInitialInclusionStages();
-                } else if (currentStage == ZWaveNodeInitStage.HEAL_START) {
-                    doHealStages();
+                try {
+                    if (node.getInclusionTimer() < INCLUSION_TIMER) {
+                        logger.debug("NODE {}: Node advancer: Node just included ({})", node.getNodeId(),
+                                node.getInclusionTimer());
+                        doInitialInclusionStages();
+                    } else if (currentStage == ZWaveNodeInitStage.HEAL_START) {
+                        doHealStages();
+                        setCurrentStage(ZWaveNodeInitStage.DONE);
+                        return;
+                    } else {
+                        doInitialStages();
+                    }
+
+                    if (currentStage == ZWaveNodeInitStage.DONE) {
+                        return;
+                    }
+
+                    // If restored from a config file, jump to the dynamic node stage.
+                    if (isRestoredFromConfigfile()) {
+                        logger.debug("NODE {}: Node advancer: Restored from file - skipping static initialisation",
+                                node.getNodeId());
+                        currentStage = ZWaveNodeInitStage.SESSION_START;
+                    }
+                    if (currentStage.ordinal() <= ZWaveNodeInitStage.INCLUSION_START.ordinal()) {
+                        doSecureStages();
+                    }
+                    if (currentStage.ordinal() <= ZWaveNodeInitStage.STATIC_VALUES.ordinal()) {
+                        doStaticStages();
+                    }
+                    setCurrentStage(ZWaveNodeInitStage.STATIC_END);
+                    if (currentStage.ordinal() <= ZWaveNodeInitStage.DYNAMIC_VALUES.ordinal()) {
+                        doDynamicStages();
+                    }
+                    setCurrentStage(ZWaveNodeInitStage.DYNAMIC_END);
+
                     setCurrentStage(ZWaveNodeInitStage.DONE);
-                    return;
-                } else {
-                    doInitialStages();
+                } catch (Exception e) {
+                    logger.error("NODE {}: Error in initialization thread", node.getNodeId(), e);
                 }
-
-                if (currentStage == ZWaveNodeInitStage.DONE) {
-                    return;
-                }
-
-                // If restored from a config file, jump to the dynamic node stage.
-                if (isRestoredFromConfigfile()) {
-                    logger.debug("NODE {}: Node advancer: Restored from file - skipping static initialisation",
-                            node.getNodeId());
-                    currentStage = ZWaveNodeInitStage.SESSION_START;
-                }
-                if (currentStage.ordinal() <= ZWaveNodeInitStage.INCLUSION_START.ordinal()) {
-                    doSecureStages();
-                }
-                if (currentStage.ordinal() <= ZWaveNodeInitStage.STATIC_VALUES.ordinal()) {
-                    doStaticStages();
-                }
-                setCurrentStage(ZWaveNodeInitStage.STATIC_END);
-                if (currentStage.ordinal() <= ZWaveNodeInitStage.DYNAMIC_VALUES.ordinal()) {
-                    doDynamicStages();
-                }
-                setCurrentStage(ZWaveNodeInitStage.DYNAMIC_END);
-
-                setCurrentStage(ZWaveNodeInitStage.DONE);
             }
         };
         initialisationThread.setName("ZWaveNode" + node.getNodeId() + "Init"
