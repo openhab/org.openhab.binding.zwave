@@ -20,28 +20,10 @@ Touchscreen Deadbolt Z-Wave Plus<br /><h1>Overview</h1><p>Touchscreen Deadbolt w
           <property name="binding:*:OnOffType">COMMAND_CLASS_DOOR_LOCK</property>
         </properties>
       </channel>
-      <channel id="alarm_power" typeId="alarm_power">
-        <label>Alarm (power)</label>
+      <channel id="alarm_raw" typeId="alarm_raw">
+        <label>Alarm (raw)</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
-        </properties>
-      </channel>
-      <channel id="alarm_burglar" typeId="alarm_burglar">
-        <label>Alarm (burglar)</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
-        </properties>
-      </channel>
-      <channel id="alarm_system" typeId="alarm_system">
-        <label>Alarm (system)</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=SYSTEM</property>
-        </properties>
-      </channel>
-      <channel id="alarm_access" typeId="alarm_access">
-        <label>Alarm (access)</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
+          <property name="binding:*:StringType">COMMAND_CLASS_ALARM</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -81,10 +63,10 @@ Touchscreen Deadbolt Z-Wave Plus<br /><h1>Overview</h1><p>Touchscreen Deadbolt w
         <description><![CDATA[
 Keypad beeper to be turned ON or OFF<br /><h1>Overview</h1><p>This configuration setting controls the keypad beeper of the deadbolt allowing the keypad beeper to be turned ON or OFF </p>
         ]]></description>
-        <default>-1</default>
+        <default>0</default>
         <options>
-          <option value="-1">Enable Beeper</option>
           <option value="0">Disable Beeper</option>
+          <option value="255">Enable Beeper</option>
         </options>
       </parameter>
 
@@ -95,8 +77,8 @@ Vacation Mode<br /><h1>Overview</h1><p>This configuration setting controls the k
         ]]></description>
         <default>0</default>
         <options>
-          <option value="-1">Enable Vacation Mode</option>
           <option value="0">Disable Vacation Mode</option>
+          <option value="255">Enable Vacation Mode</option>
         </options>
       </parameter>
 
@@ -105,10 +87,10 @@ Vacation Mode<br /><h1>Overview</h1><p>This configuration setting controls the k
         <description><![CDATA[
 Controls button push for throwing the deadbolt.<br /><h1>Overview</h1><p>This configuration setting controls the use of the u0022Schlageu0022 button on the keypad for single button push for throwing the deadbolt. </p>
         ]]></description>
-        <default>-1</default>
+        <default>0</default>
         <options>
-          <option value="-1">Enable Lock and Leave Mode</option>
           <option value="0">Disable Lock and Leave Mode</option>
+          <option value="255">Enable Lock and Leave Mode</option>
         </options>
       </parameter>
 
@@ -185,10 +167,10 @@ Lock Specific Alarm Kick Sensitivity<br /><h1>Overview</h1><p>This configuration
         <description><![CDATA[
 Lock Specific Alarm Disable Local Controls<br /><h1>Overview</h1><p>This configuration setting controls the ability to ENABLE or DISABLE local control of the built-in alarm function. </p>
         ]]></description>
-        <default>-1</default>
+        <default>0</default>
         <options>
-          <option value="-1">Alarm Enable Local Controls</option>
           <option value="0">Alarm Disable Local Controls</option>
+          <option value="255">Alarm Enable Local Controls</option>
         </options>
       </parameter>
 
@@ -226,8 +208,8 @@ Automatically throws the deadbolt 30 after seconds<br /><h1>Overview</h1><p>This
         ]]></description>
         <default>0</default>
         <options>
-          <option value="-1">Enable Auto Lock</option>
           <option value="0">Disable Auto Lock</option>
+          <option value="255">Enable Auto Lock</option>
         </options>
       </parameter>
 

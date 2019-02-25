@@ -8,6 +8,7 @@
   <thing-type id="vision_zs6301_00_000" listed="false">
     <label>ZS6301 CO Detector</label>
     <description>CO Detector</description>
+    <category>SmokeDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

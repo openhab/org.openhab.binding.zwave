@@ -260,7 +260,7 @@ Associations in Z-Wave network security mode<br /><h1>Overview</h1><p>This param
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_28_1" type="integer" groupName="configuration" readOnly="true"
+      <parameter name="config_28_1" type="integer" groupName="configuration"
                  min="0" max="15">
         <label>28: S1 switch - scenes sent</label>
         <description><![CDATA[
