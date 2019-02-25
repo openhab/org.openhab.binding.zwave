@@ -72,9 +72,15 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
         boolean configInvertControl = "true".equalsIgnoreCase(channel.getArguments().get("config_invert_control"));
         boolean configInvertPercent = "true".equalsIgnoreCase(channel.getArguments().get("config_invert_percent"));
 
+        logger.debug("NODE {}: ZWaveMultiLevelSwitchConverter.handleEvent({}, {});", event.getNodeId(),
+                channel.getChannelTypeUID(), event.getClass().getSimpleName());
+
         if (event instanceof ZWaveStartStopEvent) {
+            logger.debug("NODE {}: ZWaveMultiLevelSwitchConverter.handleEvent() <<ZWaveStartStopEvent>>",
+                    event.getNodeId());
             return handleStartStopEvent(channel, (ZWaveStartStopEvent) event);
         }
+
         int value = (int) event.getValue();
 
         // A value of 254 means the device doesn't know it's current position
@@ -130,9 +136,14 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
     }
 
     private State handleStartStopEvent(ZWaveThingChannel channel, ZWaveStartStopEvent event) {
+        logger.debug("NODE {}: ZWaveMultiLevelSwitchConverter.handleEvent() <<{}>>", event.getNodeId(),
+                channel.getUID().getId());
         if (channel.getUID().getId().equals("switch_startstop")) {
             Map<String, Object> object = new HashMap<String, Object>();
             object.put("direction", event.direction);
+
+            logger.debug("NODE {}: ZWaveMultiLevelSwitchConverter.handleEvent() <<{}>>", event.getNodeId(),
+                    propertiesToJson(object));
 
             return new StringType(propertiesToJson(object));
         }
