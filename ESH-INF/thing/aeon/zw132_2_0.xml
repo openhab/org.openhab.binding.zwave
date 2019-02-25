@@ -5,37 +5,25 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="aeon_zw132_00_000" listed="false">
+  <thing-type id="aeon_zw132_02_000" listed="false">
     <label>ZW132 Dual Nano Switch with Energy Metering</label>
     <description><![CDATA[
-Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano Switch is a low-cost Z-Wave Switch specifically used to enable Z-Wave command and control (on/off) of any wall switches. It can report immediate wattage consumption or kWh energy usage over a period of time. In the event of power failure, non-volatile memory retains all programmed information relating to the unit’s operating status.</p> <p>It can connect to 2 external manual switches to control the load ON/OFF independently. Its surface has a pin socket, which can be used for connecting to the touch panel, so you can also use the touch panel to control the Dual Nano Switch.</p> <p>The Dual Nano Switch is also a security Z-Wave device and supports Over The Air (OTA) feature for the products firmware upgrade.</p> <p><strong>Reset your Dual Nano Switch.</strong></p> <p>If at some stage, your primary controller is missing or inoperable, you may wish to reset all of your Dual Nano Switch’s settings to their factory defaults. To do this, press and hold the Action Button for 20 seconds and then release it. Your Dual Nano Switch will now be reset to its original settings, and the green LED will be solid for 2 seconds and then remain the colourful gradient status as a confirmation.</p> <br /><h2>Inclusion Information</h2><p><strong>Including Dual Nano Switch as a non-secure device:</strong></p> <p>If you want your Dual Nano Switch as a non-secure device in your Z-Wave network, press the Action Button once on Dual Nano Switch when you pair it to your gateway. If inclusion is successful, the green LED will be on for 2 seconds, and then return to a solid indication. If inclusion is unsuccessful, the red LED will be on for 2 seconds and then return to a colourful gradient.</p> <p><strong>Including Dual Nano Switch as a secure device:</strong></p> <p>In order to take full advantage of the Dual Nano Switch, you will want your Dual Nano Switch as a security device that uses encrypted messages to communicate in your Z-wave network. A security enabled controller/gateway (or Z-Wave Plus controller) is required.</p> <ol><li>Set your Z-Wave Plus controller into pairing mode.</li> <li>Press the Action Button 2 times within 1 second on the Dual Nano Switch, the blue LED (secure indication) will blink to indicate the Dual Nano Switch is entering into secure pairing mode.</li> <li>If the Dual Nano Switch has been successfully added to your Z-Wave network, its RGB LED will be solid. If the pairing was unsuccessful, the red LED will be on for 2 seconds and then remain a colourful gradient, repeat the instructions above from step 1.</li> </ol><br /><h2>Exclusion Information</h2><p><strong>Removing Dual Nano Switch from a Z-Wave network. </strong></p> <p>Your Dual Nano Switch can be removed from your Z-Wave network at any time. You’ll need to use your Z-Wave network’s main controller. To set your Z-Wave controller/gateway into removal mode, please refer to the respective section within your controller instruction manual.</p> <ol><li>Set your Z-Wave controller into removal mode.</li> <li>Press the Action Button on the Dual Nano Switch or toggle the external manual switch 3 times in fast succession.</li> <li>If the Dual Nano Switch has been successfully removed from your Z-Wave network, its RGB LED will remain colourful gradient. If the removal was unsuccessful, the RGB LED will still be solid (following the state of the output load), repeat the instructions above from step 1.</li> </ol>
+Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><table><tr><td> <p><br />Aeotec Dual Nano Switch is a low-cost Z-Wave Switch specifically used to enable Z-Wave command and control (on/off) of any wall switches. It can report immediate wattage consumption or kWh energy usage over a period of time. In the event of power failure, non-volatile memory retains all programmed information relating to the unit’s operating status.</p> <p>It can connect to 2 external manual switches to control the load ON/OFF independently. Its surface has a pin socket, which can be used for connecting to the touch panel, so you can also use the touch panel to control the Dual Nano Switch.</p> <p>The Dual Nano Switch is also a security Z-Wave device and supports Over The Air (OTA) feature for the products firmware upgrade.</p> <p><strong>Reset your Dual Nano Switch.</strong></p> <p>If at some stage, your primary controller is missing or inoperable, you may wish to reset all of your Dual Nano Switch’s settings to their factory defaults. To do this, press and hold the Action Button for 20 seconds and then release it. Your Dual Nano Switch will now be reset to its original settings, and the green LED will be solid for 2 seconds and then remain the colourful gradient status as a confirmation.</p> </td> </tr></table><br /><h2>Inclusion Information</h2><p><strong>Including Dual Nano Switch as a non-secure device:</strong></p> <p>If you want your Dual Nano Switch as a non-secure device in your Z-Wave network, press the Action Button once on Dual Nano Switch when you pair it to your gateway. If inclusion is successful, the green LED will be on for 2 seconds, and then return to a solid indication. If inclusion is unsuccessful, the red LED will be on for 2 seconds and then return to a colourful gradient.</p> <p><strong>Including Dual Nano Switch as a secure device:</strong></p> <p>In order to take full advantage of the Dual Nano Switch, you will want your Dual Nano Switch as a security device that uses encrypted messages to communicate in your Z-wave network. A security enabled controller/gateway (or Z-Wave Plus controller) is required.</p> <ol><li>Set your Z-Wave Plus controller into pairing mode.</li> <li>Press the Action Button 2 times within 1 second on the Dual Nano Switch, the blue LED (secure indication) will blink to indicate the Dual Nano Switch is entering into secure pairing mode.</li> <li>If the Dual Nano Switch has been successfully added to your Z-Wave network, its RGB LED will be solid. If the pairing was unsuccessful, the red LED will be on for 2 seconds and then remain a colourful gradient, repeat the instructions above from step 1.</li> </ol><br /><h2>Exclusion Information</h2><p><strong>Removing Dual Nano Switch from a Z-Wave network.</strong></p> <p>Your Dual Nano Switch can be removed from your Z-Wave network at any time. You’ll need to use your Z-Wave network’s main controller. To set your Z-Wave controller/gateway into removal mode, please refer to the respective section within your controller instruction manual.</p> <ol><li>Set your Z-Wave controller into removal mode.</li> <li>Press the Action Button on the Dual Nano Switch or toggle the external manual switch 3 times in fast succession.</li> <li>If the Dual Nano Switch has been successfully removed from your Z-Wave network, its RGB LED will remain colourful gradient. If the removal was unsuccessful, the RGB LED will still be solid (following the state of the output load), repeat the instructions above from step 1.</li> </ol>
     ]]></description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
+        </properties>
+      </channel>
       <channel id="scene_number" typeId="scene_number">
         <label>Scene Number</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SCENE_ACTIVATION</property>
-        </properties>
-      </channel>
-      <channel id="meter_kwh" typeId="meter_kwh">
-        <label>Electric meter (kWh)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
-        </properties>
-      </channel>
-      <channel id="meter_watts" typeId="meter_watts">
-        <label>Electric meter (watts)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
-        </properties>
-      </channel>
-      <channel id="meter_current" typeId="meter_current">
-        <label>Electric meter (amps)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_A</property>
         </properties>
       </channel>
       <channel id="meter_voltage" typeId="meter_voltage">
@@ -44,8 +32,26 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_V</property>
         </properties>
       </channel>
+      <channel id="meter_watts" typeId="meter_watts">
+        <label>Electric meter (watts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh" typeId="meter_kwh">
+        <label>Electric meter (kWh)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_current" typeId="meter_current">
+        <label>Electric meter (amps)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_A</property>
+        </properties>
+      </channel>
       <channel id="meter_reset" typeId="meter_reset">
-        <label>Reset Meter</label>
+        <label>Reset Meter [Deprecated]</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_METER;reset=true</property>
         </properties>
@@ -71,25 +77,7 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
       <channel id="switch_binary1" typeId="switch_binary">
         <label>Switch 1</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1,COMMAND_CLASS_BASIC:1</property>
-        </properties>
-      </channel>
-      <channel id="meter_kwh1" typeId="meter_kwh">
-        <label>Electric meter (kWh) 1</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_KWh</property>
-        </properties>
-      </channel>
-      <channel id="meter_watts1" typeId="meter_watts">
-        <label>Electric meter (watts) 1</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_W</property>
-        </properties>
-      </channel>
-      <channel id="meter_current1" typeId="meter_current">
-        <label>Electric meter (amps) 1</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_A</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1</property>
         </properties>
       </channel>
       <channel id="meter_voltage1" typeId="meter_voltage">
@@ -98,28 +86,28 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_V</property>
         </properties>
       </channel>
+      <channel id="meter_watts1" typeId="meter_watts">
+        <label>Electric meter (watts) 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh1" typeId="meter_kwh">
+        <label>Electric meter (kWh) 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_current1" typeId="meter_current">
+        <label>Electric meter (amps) 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_A</property>
+        </properties>
+      </channel>
       <channel id="switch_binary2" typeId="switch_binary">
         <label>Switch 2</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:2,COMMAND_CLASS_BASIC:2</property>
-        </properties>
-      </channel>
-      <channel id="meter_kwh2" typeId="meter_kwh">
-        <label>Electric meter (kWh) 2</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_KWh</property>
-        </properties>
-      </channel>
-      <channel id="meter_watts2" typeId="meter_watts">
-        <label>Electric meter (watts) 2</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_W</property>
-        </properties>
-      </channel>
-      <channel id="meter_current2" typeId="meter_current">
-        <label>Electric meter (amps) 2</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_A</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:2</property>
         </properties>
       </channel>
       <channel id="meter_voltage2" typeId="meter_voltage">
@@ -128,10 +116,22 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_V</property>
         </properties>
       </channel>
-      <channel id="meter_reset2" typeId="meter_reset">
-        <label>Reset Meter 2</label>
+      <channel id="meter_watts2" typeId="meter_watts">
+        <label>Electric meter (watts) 2</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_METER:2;reset=true</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh2" typeId="meter_kwh">
+        <label>Electric meter (kWh) 2</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_current2" typeId="meter_current">
+        <label>Electric meter (amps) 2</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_A</property>
         </properties>
       </channel>
     </channels>
@@ -141,9 +141,9 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Aeotec Dual Nano 
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW132</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0003:0084,0103:0084,0203:0084</property>
-      <property name="versionMax">1.9</property>
-      <property name="dbReference">724</property>
+      <property name="manufacturerRef">0103:0084</property>
+      <property name="versionMin">2.0</property>
+      <property name="dbReference">1017</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -388,6 +388,7 @@ To set which reports need to be sent in Report group 3.<br /><h1>Overview</h1><p
         <description>Configure the external switch mode for S1</description>
         <default>0</default>
         <options>
+          <option value="0">Unidentified mode</option>
           <option value="1">2-state switch mode</option>
           <option value="2">3 way switch mode</option>
           <option value="3">Momentary push button mode</option>
@@ -400,6 +401,7 @@ To set which reports need to be sent in Report group 3.<br /><h1>Overview</h1><p
         <description>Configure the external switch mode for S2.</description>
         <default>0</default>
         <options>
+          <option value="0">Unidentified mode</option>
           <option value="1">2-state switch mode</option>
           <option value="2">3 way switch mode</option>
           <option value="3">Momentary push button mode</option>
@@ -408,13 +410,48 @@ To set which reports need to be sent in Report group 3.<br /><h1>Overview</h1><p
       </parameter>
 
       <parameter name="config_122_1" type="integer" groupName="configuration">
-        <label>122: Set the control destination for external switch</label>
-        <description>Set the control destination for external switch</description>
+        <label>122: Set the control destination for external switch 1</label>
+        <description>Set the control destination for external switch 1</description>
         <default>3</default>
         <options>
           <option value="1">control the output loads of itself.</option>
           <option value="2">control the other nodes</option>
           <option value="3">control the output loads of itself and other nodes</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_123_1" type="integer" groupName="configuration">
+        <label>123: Set the control destination for external switch 2</label>
+        <description>Set the control destination for external switch 2</description>
+        <default>3</default>
+        <options>
+          <option value="1">control the output loads of itself</option>
+          <option value="2">control the other nodes</option>
+          <option value="3">control the output loads of itself and other nodes</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_144_1" type="integer" groupName="configuration" readOnly="true">
+        <label>144: Get the connection state of WallSwipe</label>
+        <description>Get the connection state of WallSwipe</description>
+        <default>0</default>
+        <options>
+          <option value="0">disconnected</option>
+          <option value="1">connected</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_247_1" type="integer" groupName="configuration">
+        <label>247: S1/S2 Switch mode</label>
+        <description><![CDATA[
+Set the working way for S1/S2 when the Switch mode is 2 state switch mode<br /><h1>Overview</h1><p>Set the working way for S1/S2 when the Switch mode is 2 state switch mode. Bit 0 =0, S1 is a toggle switch. Bit 0 =1, S1 is an On/Off switch, the out load state and S1 switch state would be in sync when using S1 to control the output load. Bit 1 =0, S2 is a toggle switch. Bit 1 =1, S2 is an On/Off switch, the out load state and S2 switch state would be in sync when using S2 to control the output load. Bit 2- Bit 7, reserved.</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">S1/S2 toggle switch</option>
+          <option value="1">S1 On/Off and S2 Toggle</option>
+          <option value="2">S1 toggle and S2 On/Off</option>
+          <option value="3">S1/S2 On/Off</option>
         </options>
       </parameter>
 

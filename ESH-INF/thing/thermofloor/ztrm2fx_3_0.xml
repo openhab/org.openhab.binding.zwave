@@ -86,6 +86,12 @@ Floor thermostat<br /><h1>Overview</h1><p>FEATURES</p> <ul><li>Floor sensor</li>
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:3;type=TEMPERATURE</property>
         </properties>
       </channel>
+      <channel id="switch_binary4" typeId="switch_binary">
+        <label>Switch binary</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:4</property>
+        </properties>
+      </channel>
       <channel id="meter_voltage4" typeId="meter_voltage">
         <label>Electric meter (volts) 4</label>
         <properties>

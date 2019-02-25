@@ -190,15 +190,15 @@ Time period after which a tamper alarm will be cancelled.<br /><h1>Overview</h1>
       <parameter name="config_24_1" type="integer" groupName="configuration">
         <label>24: Tamper Operating Modes</label>
         <description><![CDATA[
-The parameter determines the behaviour of tamper and how it reports.<br /><h1>Overview</h1><p>The parameter determines the behaviour of tamper and how it reports. </p> <p>0 – Tamper alarm is reported in Sensor Alarm command class / Cancellation is not reported.</p> <p>1 – Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm commad class after the time period set in parameter 22 (Tamper Alarm Cancellation Delay) 2 - Tamper alarm is reported in Sensor Alarm command class / Cancellation is not reported. Sensor’s orientation in space is reported in Fibar Commad Class after the time period set in paramer 22.</p> 3 - Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm commad class after the time period set in parameter 22. Sensor’s orientation in space is reported in Fibar Commad Class after the time period set in paramer 22.   4 - The maximum level of vibrations recorded in the time period set in parameter 22 is reported. Reports stop being sent when the vibrations cease. The reports are sent in Sensor Alarm command class. Value displayed in the “value” field (0 - 100) depends on the vibrations force. Reports to the association groups are sent using Sensor Alarm command class.   Available settings: 0 or 255 Default setting: 0 Parameter size: 1 [byte] 
+The parameter determines the behaviour of tamper and how it reports.<br /><h1>Overview</h1><p>The parameter determines the behaviour of tamper and how it reports. </p> <ol><li>Tamper alarm is reported in Sensor Alarm command class / Cancellation is not reported.</li> <li>Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm commad class after the time period set in parameter 22 (Tamper Alarm Cancellation Delay) 2 - Tamper alarm is reported in Sensor Alarm command class / Cancellation is not reported. Sensor’s orientation in space is reported in Fibar Commad Class after the time period set in paramer 22.</li> <li>Tamper alarm is reported in Sensor Alarm command class / Cancellation is reported in Sensor Alarm commad class after the time period set in parameter 22. Sensor’s orientation in space is reported in Fibar Commad Class after the time period set in paramer 22.  </li> <li>The maximum level of vibrations recorded in the time period set in parameter 22 is reported. Reports stop being sent when the vibrations cease. The reports are sent in Sensor Alarm command class. Value displayed in the “value” field (0 - 100) depends on the vibrations force. Reports to the association groups are sent using Sensor Alarm command class.   <br />Available settings: 0 or 255 Default setting: 0 Parameter size: 1 [byte] </li> </ol>
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">Tamper/Cancellation alarm reporting</option>
-          <option value="1">Tamper/Cancellation alarm reporting</option>
-          <option value="2">Same as Value 0</option>
-          <option value="3">Same as Value 1</option>
-          <option value="4">The max level of vibrations recorded.</option>
+          <option value="0">Tamper Report/No Cancellation Report</option>
+          <option value="1">Tamper and Cancellation Report</option>
+          <option value="2">Tamper/No cancellation plus Orientation in space</option>
+          <option value="3">Tamper/Cancellation plus Orientation in space</option>
+          <option value="4">Max level of vibrations recorded (Earthquake)</option>
         </options>
       </parameter>
 

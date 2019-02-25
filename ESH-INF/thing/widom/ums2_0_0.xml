@@ -14,12 +14,6 @@ WiDom Smart Roller Shutter<br /><h1>Overview</h1><p>WiDom Smart Roller Shutter i
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
-        </properties>
-      </channel>
       <channel id="blinds_control" typeId="blinds_control">
         <label>Blinds control</label>
         <properties>
@@ -29,15 +23,21 @@ WiDom Smart Roller Shutter<br /><h1>Overview</h1><p>WiDom Smart Roller Shutter i
         </properties>
       </channel>
       <channel id="meter_watts" typeId="meter_watts">
-        <label>Meter(watts)</label>
+        <label>Meter (watts)</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
-        <label>Meter (Kwh)</label>
+        <label>Meter (KWh)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWH</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_reset" typeId="meter_reset">
+        <label>Meter Reset</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_METER;reset=true</property>
         </properties>
       </channel>
     </channels>
@@ -120,7 +120,7 @@ Value for Group 3 with 2 clicks on UP button<br /><h1>Overview</h1><p> Value us
         <default>-1</default>
       </parameter>
 
-      <parameter name="config_7_1" type="integer" groupName="configuration" readOnly="true"
+      <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="-1" max="99">
         <label>7: Value for Group 3 with 2 clicks on DOWN button</label>
         <description><![CDATA[
@@ -138,8 +138,8 @@ Value for Group 4 with 3 clicks on UP button<br /><h1>Overview</h1><p>Value used
         <default>-1</default>
       </parameter>
 
-      <parameter name="config_9_0" type="integer" groupName="configuration"
-                 min="0" max="4294967295">
+      <parameter name="config_9_1" type="integer" groupName="configuration"
+                 min="-1" max="99">
         <label>9: Value for Group 4 with 3 clicks on DOWN button</label>
         <description><![CDATA[
 Value for Group 4 with 3 clicks on DOWN button<br /><h1>Overview</h1><p>Value used for devices belonging to Group 4 when DOWN button receive 3 Clicks</p>
