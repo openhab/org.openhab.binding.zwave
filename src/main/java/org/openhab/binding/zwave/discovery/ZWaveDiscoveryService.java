@@ -16,8 +16,6 @@ import java.util.concurrent.TimeUnit;
 import org.eclipse.smarthome.config.discovery.AbstractDiscoveryService;
 import org.eclipse.smarthome.config.discovery.DiscoveryResult;
 import org.eclipse.smarthome.config.discovery.DiscoveryResultBuilder;
-import org.eclipse.smarthome.config.discovery.DiscoveryServiceCallback;
-import org.eclipse.smarthome.config.discovery.ExtendedDiscoveryService;
 import org.eclipse.smarthome.core.thing.ThingTypeUID;
 import org.eclipse.smarthome.core.thing.ThingUID;
 import org.eclipse.smarthome.core.thing.type.ThingType;
@@ -35,13 +33,12 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson - Initial contribution
  *
  */
-public class ZWaveDiscoveryService extends AbstractDiscoveryService implements ExtendedDiscoveryService {
+public class ZWaveDiscoveryService extends AbstractDiscoveryService {
     private final Logger logger = LoggerFactory.getLogger(ZWaveDiscoveryService.class);
 
     private final String ZWAVE_NODE_LABEL = "Z-Wave Node %03d";
 
     private final ZWaveControllerHandler controllerHandler;
-    private DiscoveryServiceCallback discoveryServiceCallback;
 
     public ZWaveDiscoveryService(ZWaveControllerHandler coordinatorHandler, int searchTime) {
         super(searchTime);
@@ -57,11 +54,6 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
     @Override
     public void deactivate() {
         logger.debug("ZWave discovery: Deactivate {}", controllerHandler.getThing().getUID());
-    }
-
-    @Override
-    public void setDiscoveryServiceCallback(DiscoveryServiceCallback discoveryServiceCallback) {
-        this.discoveryServiceCallback = discoveryServiceCallback;
     }
 
     @Override
@@ -81,14 +73,7 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
             public void run() {
                 // Add all existing devices
                 for (ZWaveNode node : controllerHandler.getNodes()) {
-                    ThingUID thingUID = new ThingUID(new ThingTypeUID(ZWaveBindingConstants.ZWAVE_THING),
-                            controllerHandler.getThing().getUID(), String.format("node%d", node.getNodeId()));
-                    if (discoveryServiceCallback == null) {
-                        deviceAdded(node);
-                    } else if (discoveryServiceCallback.getExistingDiscoveryResult(thingUID) == null
-                            && discoveryServiceCallback.getExistingThing(thingUID) == null) {
-                        deviceAdded(node);
-                    }
+                    deviceAdded(node);
                 }
             }
         };
@@ -130,13 +115,6 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
         ThingUID bridgeUID = controllerHandler.getThing().getUID();
         ThingUID thingUID = new ThingUID(new ThingTypeUID(ZWaveBindingConstants.ZWAVE_THING), bridgeUID,
                 String.format("node%d", nodeId));
-
-        if (discoveryServiceCallback != null && discoveryServiceCallback.getExistingDiscoveryResult(thingUID) != null) {
-            // Ignore this node as we already know about it
-            logger.debug("NODE {}: Device already known.", nodeId);
-
-            return;
-        }
 
         logger.debug("NODE {}: Device discovered", nodeId);
 
@@ -212,14 +190,9 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
         // Create the thing UID
         ThingUID thingUID = new ThingUID(new ThingTypeUID(ZWaveBindingConstants.ZWAVE_THING), bridgeUID,
                 String.format("node%d", node.getNodeId()));
-        Map<String, Object> properties = new HashMap<>(11);
-        if (discoveryServiceCallback != null && discoveryServiceCallback.getExistingDiscoveryResult(thingUID) != null) {
-            logger.debug("NODE {}: Device already known - properties will be updated.", node.getNodeId());
-
-            properties = discoveryServiceCallback.getExistingDiscoveryResult(thingUID).getProperties();
-        }
 
         // Add some device properties that might be useful for the system to know
+        Map<String, Object> properties = new HashMap<>(11);
         properties.put(ZWaveBindingConstants.CONFIGURATION_NODEID, new BigDecimal(node.getNodeId()));
 
         // Don't add the device information if we don't know it yet
