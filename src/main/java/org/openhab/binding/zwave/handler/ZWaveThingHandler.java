@@ -1186,8 +1186,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
             String commandClass = event.getCommandClass().toString();
 
-            logger.debug(
-                    "NODE {}: Got a value event from Z-Wave network, endpoint = {}, command class = {}, value = {}",
+            logger.debug("NODE {}: Got a value event from Z-Wave network, endpoint={}, command class={}, value={}",
                     nodeId, event.getEndpoint(), commandClass, event.getValue());
 
             // If this is a configuration parameter update, process it before the channels
@@ -1335,7 +1334,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
             // Process the channels to see if we're interested
             for (ZWaveThingChannel channel : thingChannelsState) {
-                // logger.debug("NODE {}: Checking channel {}", nodeId, channel.getUID());
+                logger.trace("NODE {}: Checking channel={}, cmdClass={}, endpoint={}", nodeId, channel.getUID(),
+                        channel.getCommandClass(), channel.getEndpoint());
 
                 if (channel.getEndpoint() != event.getEndpoint()) {
                     continue;
