@@ -8,7 +8,7 @@
   <thing-type id="fibaro_fgms001_03_002" listed="false">
     <label>FGMS001 Motion Sensor</label>
     <description><![CDATA[
-Motion Sensor<br /><h1>Overview</h1><p>FIBARO Motion Sensor is a universal Z-Wave multi-sensor. Along with detecting motion the device measures the temperature and light intensity. The sensor has a built-in accelerometer to detect any tampering of the device. FIBARO Motion Sensor is battery powered device and designed to be installed quickly and easily on any surface.<br />The LED indicator signals motion, temperature level, operating mode and can be used to see if device is within the Z-Wave network. The motion sensor can be used for lighting scenes and presence monitoring systems.</p> <br /><h2>Inclusion Information</h2><p>Quickly, three times press the B-button</p> <br /><h2>Exclusion Information</h2><p>Quickly, three times press the B-button</p> <br /><h2>Wakeup Information</h2><p>Press the B-button once</p>
+Motion Sensor<br /><h1>Overview</h1><p>FIBARO Motion Sensor is a universal Z-Wave multi-sensor. Along with detecting motion the device measures the temperature and light intensity. The sensor has a built-in accelerometer to detect any tampering of the device. FIBARO Motion Sensor is battery powered device and designed to be installed quickly and easily on any surface.</p> <p>The LED indicator signals motion, temperature level, operating mode and can be used to see if device is within the Z-Wave network. The motion sensor can be used for lighting scenes and presence monitoring systems.</p> <br /><h2>Inclusion Information</h2><p>Quickly, three times press the B-button</p> <br /><h2>Exclusion Information</h2><p>Quickly, three times press the B-button</p> <br /><h2>Wakeup Information</h2><p>Press the B-button once</p>
     ]]></description>
     <category>MotionDetector</category>
 
@@ -68,7 +68,7 @@ Motion Sensor<br /><h1>Overview</h1><p>FIBARO Motion Sensor is a universal Z-Wav
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGMS001</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0801:1001,0801:1002,0801:2001,0801:2002,0801:3001,0801:4001,8800:3001</property>
+      <property name="manufacturerRef">0801:1001,0801:1002,0801:2001,0801:2002,0801:3001,0801:3002,0801:4001,8800:3001</property>
       <property name="versionMin">3.2</property>
       <property name="dbReference">328</property>
       <property name="defaultAssociations">1</property>

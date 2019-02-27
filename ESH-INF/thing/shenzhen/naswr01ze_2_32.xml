@@ -17,7 +17,7 @@ Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltag
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
@@ -183,6 +183,30 @@ Enable/Disable top button function<br /><h1>Overview</h1><p>If this parameter is
         <options>
           <option value="0">Disable Button</option>
           <option value="1">Enable Button</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_11_1" type="integer" groupName="configuration">
+        <label>11: Clear Accumulated Energy</label>
+        <description><![CDATA[
+Clear accumulated energy<br /><h1>Overview</h1><p>If this parameter is set to '0' or default, the accumulated energy saved in the plug will be cleared by '0'.<br />Other values will not change current accumulated energy value.<br />This parameter value cannot be saved in NVR mounted in the plug. The accumulated energy consumed will not be changed when the plug is added or removed from the Z-Wave network, but this value will be cleared after resetting the plug to factory default settings.</p> <p>Note: Users can also send METER_RESET (Meter Command Class) command to clear accumulated energy.</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Save accumulated energy</option>
+          <option value="1">Clear Accumulated Energy</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_12_1" type="integer" groupName="configuration">
+        <label>12: Meter Enable</label>
+        <description><![CDATA[
+Enables the meter function<br /><h1>Overview</h1><p>'1' enables the meter function; '0' disables the meter function (includes metering current, voltage, power, accumulated power).<br />This configuration does not influence over-current protect monitor and energy accumulated.</p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">Disable metering</option>
+          <option value="1">Enable metering</option>
         </options>
       </parameter>
 

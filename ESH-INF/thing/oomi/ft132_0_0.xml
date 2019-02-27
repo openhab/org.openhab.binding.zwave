@@ -135,7 +135,7 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Fantech Dual Nano
       <property name="vendor">Fantem</property>
       <property name="modelId">FT132</property>
       <property name="manufacturerId">016A</property>
-      <property name="manufacturerRef">0203:0084</property>
+      <property name="manufacturerRef">0003:008C,0203:0084</property>
       <property name="dbReference">852</property>
       <property name="defaultAssociations">1</property>
     </properties>
