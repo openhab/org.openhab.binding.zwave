@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="aeotec_zwa003_00_000" listed="false">
+    <label>Aeotec NanoMote Quad NanoMote Quad</label>
+    <description><![CDATA[
+NanoMote Quad<br /><h1>Overview</h1><p>Aeotec NanoMote Quad has been crafted to control connected lighting using Z-Wave Plus as a Z-Wave S2 device. It is powered by Aeotec’s Gen5 technology. You can find out more about NanoMote Quad by following that link.</p> <p><br />To see whether NanoMote Quad is known to be compatible with your Z-Wave system or not, please reference our Z-Wave gateway comparison listing. The technical specifications of NanoMote Quad can be viewed at that link.</p> <p>1. Z-Wave Plus certified for good compatibility (500 serials chipset)</p> <p>2. Z-Wave S2 system<br />3. Support remote control anywhere and anytime<br />4. Program up to 4 customized scenes<br />5. The battery is rechargeable and replacable, will run for three months per charge<br />6. Support low battery alarm with buzzer<br />7. Support Child Lock function<br />8. Supports OTA firmware update</p> <br /><h2>Inclusion Information</h2><p><strong>Adding your NanoMote Quad to your Z-Wave network.</strong></p> <p>With your  NanoMote Quad now powered, it’s time to add it to your Z-Wave network.</p> <p><strong>1. </strong>Place your Z-Wave primary controller/gateway enter into pairing/inclusion mode. </p> <p><strong>2. </strong>Take your NanoMote near to your primary controller.  </p> <p><strong>3.</strong> Double click the NanoMote button (can be any button), the LED will blink rapidly with a white color. </p> <p><strong>4.</strong> If your NanoMote has been successfully added to your Z-Wave  network, its white LED will be solid for about 10 seconds, then flash green to indicate it is awake. If the adding was unsuccessful and the red LED will be solid for 2 seconds and then off, repeat the above steps.</p> <p><strong>5. </strong>If your NanoMote does not go to sleep on its own, press and hold for 2 seconds (or until LED turns orange) then release its button to put your NanoMote to sleep.</p> <br /><h2>Exclusion Information</h2><p>Your NanoMote can be removed from your Z-Wave network at any time. You'll need to use your Z-Wave network's main controller/gateway. To do this, please refer to the part of their respective manuals that tell you how to remove devices from your network.</p> <p><strong>1. </strong>Put your primary controller into device removal mode.</p> <p><strong>2. </strong>Take your NanoMote near to your primary controller.  </p> <p><strong>3.</strong> Double click the NanoMote button (can be any button), the LED will become a solid green color.</p> <p><strong>4.</strong> If your NanoMote has been removed from your Z-Wave  network, its LED will begin cycling through rainbow colors. </p> <br /><h2>Wakeup Information</h2><p><strong>Send a wake up notification.</strong></p> <p>In order to send your NanoMote Quad new configuration commands, OTA, or receive other commands from your Z-Wave controller or gateway, it will need to be woken up.</p> <p>Enable Wakeup:</p> <ol><li>Press and hold button (any button) for 5 seconds or until LED turns to a green color<br /><br />LED will change from:<br /><br />Orange<br />Green //at 5 seconds.<br /><br /></li> <li>Release the button and the LED will flash green rapidly to indicate it is in an awake state.</li> </ol><p>Disable Wakeup:</p> <ol><li>Press and hold button (any button) for 2 seconds or until LED turns to a orange/red color</li> <li>Release the button and the LED should be deactivated</li> </ol>
+    ]]></description>
+    <category>WallSwitch</category>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+        </properties>
+      </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Aeotec Limited</property>
+      <property name="modelId">Aeotec NanoMote Quad</property>
+      <property name="manufacturerId">0371</property>
+      <property name="manufacturerRef">0102:0003</property>
+      <property name="dbReference">1006</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>

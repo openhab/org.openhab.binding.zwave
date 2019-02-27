@@ -51,9 +51,9 @@ Aeotec Nano Switch<br /><h1>Overview</h1><p>Aeotec Nano Switch is a Z-Wave Smart
         </properties>
       </channel>
       <channel id="meter_reset" typeId="meter_reset">
-        <label>Reset Meter [Deprecated]</label>
+        <label>Reset Meter</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_METER</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_METER;reset=true</property>
         </properties>
       </channel>
       <channel id="alarm_power" typeId="alarm_power">
