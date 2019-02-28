@@ -212,16 +212,22 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         thingChannelsCmd = new ArrayList<ZWaveThingChannel>();
         thingChannelsState = new ArrayList<ZWaveThingChannel>();
         for (Channel channel : getThing().getChannels()) {
+            logger.trace("NODE {}: Processing channel: {} == {}", nodeId, channel.getUID(),
+                    channel.getChannelTypeUID());
+
             // Process the channel properties and configuration
             Map<String, String> properties = channel.getProperties();
             Configuration configuration = channel.getConfiguration();
 
             for (String key : properties.keySet()) {
+                logger.trace("NODE {}: Processing channel: {} == {}", nodeId, key, properties.get(key));
                 String[] bindingType = key.split(":");
                 if (bindingType.length != 3) {
+                    logger.trace("NODE {}: binding string != 3", nodeId);
                     continue;
                 }
                 if (!ZWaveBindingConstants.CHANNEL_CFG_BINDING.equals(bindingType[0])) {
+                    logger.trace("NODE {}: binding string != CFG_BINDING", nodeId);
                     continue;
                 }
 
