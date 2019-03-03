@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="heltun_hezwthermfl2_00_000" listed="false">
+    <label>HE-ZW-THERM-FL2 Wall Heating Thermostat</label>
+    <description><![CDATA[
+Wall Heating Thermostat<br /><h1>Overview</h1><p>The Heltun Heating Thermostat is built control the heating and mesures not only the room temperature with the build in sensor, but also humidity and the floor temperature if a sensor is attached.</p> <br /><h2>Inclusion Information</h2><p><strong>To include the thermostat in the Z-Wave network</strong></p> <ol><li>Go to the “SETTINGS” mode by pressing and holding the settings button for 3 seconds</li> <li>Go to “Parameter 29 – nEt” of the menu by using the heating button for scrolling up and the “MODE” key for scrolling down in parameters.</li> <li>In the value position will be seen the current state of the network. It should be ECL. If Inc is indicated, anexclusion must be first performed.</li> <li>Start the inclusion mode from the gateway</li> <li>Press “+” key to start inclusion process. Lines will be moving in value position.</li> <li>The “Inc” should appear in the value position if the inclusion has been successful. The “Err” will appear if the inclusion was not completed.</li> </ol><p><strong>Note:</strong> In case the device has been part of the Z-Wave network before and not excluded since, inclusion is not possible. In this case, exclusion must be performed before inclusion. If the thermostat is included in the network, in the bottom right corner of the main screen the<br />antenna icon will be displayed with connection lines. If not on the network then it will be displayed without lines.</p> <p><strong>Security:</strong> S0, S2 unauthorized and S2 authorized inclusion modes are supported. If you use S2 authorized inclusion mode the security key should be used in inclusion process.</p> <p><strong>NOTE:</strong> Be sure to save this key. Without the key it is impossible to perform an inclusion in S2 authorized mode.</p> <br /><h2>Exclusion Information</h2><p><strong>To exclude the thermostat from the Z-Wave network</strong></p> <ol><li>Go to “SETTINGS” mode by pressing and holding the settings button for 3 seconds</li> <li>Go to “Parameter 29 – nEt” of the menu</li> <li>In the value position the current state of network state will be displayed. It should be “Inc”. if the “ECL” is indicated the device is already excluded.</li> <li>Start the exclusion from the gateway.</li> <li>Press the “–” key to start the exclusion process. Lines will be moving in the value position.</li> <li>The “Ecl” should appear with successful deletion. If the “Err” appear then start the exclusion process again.</li> </ol>
+    ]]></description>
+    <category>HVAC</category>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="sensor_luminance" typeId="sensor_luminance">
+        <label>Sensor (luminance)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=LUMINANCE</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature" typeId="sensor_temperature">
+        <label>Sensor (temperature)</label>
+        <properties>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="sensor_relhumidity" typeId="sensor_relhumidity">
+        <label>Sensor (relative humidity)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=RELATIVE_HUMIDITY</property>
+        </properties>
+      </channel>
+      <channel id="sensor_soiltemperature" typeId="sensor_temperature">
+        <label>Sensor (soil temperature)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=SOIL_TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh" typeId="meter_kwh">
+        <label>Electric meter (kWh)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts" typeId="meter_watts">
+        <label>Electric meter (watts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_mode" typeId="heltun_hezwthermfl2_00_000_thermostat_mode">
+        <label>Thermostat mode</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_MODE</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_state" typeId="thermostat_state">
+        <label>Thermostat Operating State</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_OPERATING_STATE</property>
+        </properties>
+      </channel>
+      <channel id="thermostat_setpoint_heating" typeId="thermostat_setpoint">
+        <label>Setpoint (heating)</label>
+        <properties>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING</property>
+        </properties>
+      </channel>
+      <channel id="time_offset" typeId="time_offset">
+        <label>Clock Time Offset</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CLOCK</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Heltun</property>
+      <property name="modelId">HE-ZW-THERM-FL2</property>
+      <property name="manufacturerId">0344</property>
+      <property name="manufacturerRef">0003:0001</property>
+      <property name="dbReference">1023</property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- GROUP DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <description>Used to connect Z-Wave gateway</description>
+        <multipleLimit>10</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Basic Set command</label>
+        <description>It sends Basic Set command with value 0 (Off state) when thermostat goes to IDLE mode and sends 255 (ON state) when the thermostat goes to HEATING mode.</description>
+        <multipleLimit>10</multipleLimit>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+  <channel-type id="heltun_hezwthermfl2_00_000_thermostat_mode">
+    <item-type>Number</item-type>
+    <label>Thermostat Mode</label>
+    <description>Sets the thermostat mode</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+        <option value="">FULL_POWER</option>
+        <option value="8">Dry Air</option>
+        <option value="13">Away</option>
+        <option value="10">Auto Changeover</option>
+        <option value="11">Economy Heat</option>
+        <option value="0">Off</option>
+      </options>
+    </state>
+  </channel-type>
+
+</thing:thing-descriptions>

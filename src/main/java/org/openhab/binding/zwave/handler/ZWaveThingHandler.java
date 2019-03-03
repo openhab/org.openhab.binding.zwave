@@ -719,18 +719,19 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                             paramValues.add(strParam);
                         }
                     }
+                    logger.debug("NODE {}: Association {} consolidated to {}", nodeId, paramValues);
 
                     ZWaveAssociationGroup currentMembers = node.getAssociationGroup(groupIndex);
                     if (currentMembers == null) {
                         logger.debug("NODE {}: Unknown association group {}", nodeId, groupIndex);
                         continue;
                     }
-                    logger.debug("NODE {}: Current Members {}", nodeId, currentMembers);
+                    logger.debug("NODE {}: Current members before update {}", nodeId, currentMembers);
 
                     ZWaveAssociationGroup newMembers = new ZWaveAssociationGroup(groupIndex);
                     int totalMembers = currentMembers.getAssociationCnt();
 
-                    // Loop over all the parameters
+                    // Loop over all the values
                     for (String paramValue : paramValues) {
                         // Check if this is the controller
                         if (paramValue.equals(ZWaveBindingConstants.GROUP_CONTROLLER)) {
@@ -762,29 +763,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                             totalMembers++;
                         }
                     }
-                    logger.debug("NODE {}: New Members {}", nodeId, newMembers);
-
-                    // Loop through the current members and remove anything that's not in the new members list
-                    for (ZWaveAssociation member : currentMembers.getAssociations()) {
-                        // Is the current association still in the newMembers list?
-                        if (newMembers.isAssociated(member) == false) {
-                            // No - so it needs to be removed
-                            node.sendMessage(node.removeAssociation(groupIndex, member));
-                            totalMembers--;
-                        }
-                    }
-
-                    logger.debug("NODE {}: New Members {}", nodeId, newMembers);
-
-                    // Now loop through the new members and add anything not in the current members list
-                    for (ZWaveAssociation member : newMembers.getAssociations()) {
-                        // Is the new association still in the currentMembers list?
-                        if (currentMembers.isAssociated(member) == false) {
-                            // No - so it needs to be added
-                            node.sendMessage(node.setAssociation(groupIndex, member));
-                            totalMembers++;
-                        }
-                    }
+                    logger.debug("NODE {}: Members after config update {}", nodeId, newMembers);
 
                     if (controllerHandler.isControllerMaster()) {
                         logger.debug("NODE {}: Controller is master - forcing associations", nodeId);
@@ -811,12 +790,38 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                                 }
                             }
                         }
+                        logger.debug("NODE {}: Members after controller update {}", nodeId, newMembers);
                     }
 
                     // If there are no known associations in the group, then let's clear the group completely
                     // This ensures we don't end up with strange ghost associations
                     if (totalMembers == 0) {
+                        logger.debug("NODE {}: Association group {} contains no members. Clearing.", nodeId,
+                                groupIndex);
                         node.sendMessage(node.clearAssociation(groupIndex));
+                    } else {
+                        // Loop through the current members and remove anything that's not in the new members list
+                        for (ZWaveAssociation member : currentMembers.getAssociations()) {
+                            // Is the current association still in the newMembers list?
+                            if (newMembers.isAssociated(member) == false) {
+                                logger.debug("NODE {}: Removing {} from association group {}", nodeId, member,
+                                        groupIndex);
+                                // No - so it needs to be removed
+                                node.sendMessage(node.removeAssociation(groupIndex, member));
+                                totalMembers--;
+                            }
+                        }
+
+                        // Now loop through the new members and add anything not in the current members list
+                        for (ZWaveAssociation member : newMembers.getAssociations()) {
+                            // Is the new association still in the currentMembers list?
+                            if (currentMembers.isAssociated(member) == false) {
+                                logger.debug("NODE {}: Adding {} to association group {}", nodeId, member, groupIndex);
+                                // No - so it needs to be added
+                                node.sendMessage(node.setAssociation(groupIndex, member));
+                                totalMembers++;
+                            }
+                        }
                     }
 
                     // Request an update to the association group
