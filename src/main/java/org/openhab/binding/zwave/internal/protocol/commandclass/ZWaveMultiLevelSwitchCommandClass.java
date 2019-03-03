@@ -97,6 +97,11 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
     @ZWaveResponseHandler(id = SWITCH_MULTILEVEL_REPORT, name = "SWITCH_MULTILEVEL_REPORT")
     public void handleSwitchMultilevelReport(ZWaveCommandClassPayload payload, int endpoint) {
         int value = payload.getPayloadByte(2);
+        if (getVersion() == 4) {
+            // Version 4 includes a target rather than the current value.
+            // This fits better with the OH concepts
+            value = payload.getPayloadByte(3);
+        }
         logger.debug("NODE {}: Switch Multi Level report, value = {}", getNode().getNodeId(), value);
         ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
                 getCommandClass(), value);
