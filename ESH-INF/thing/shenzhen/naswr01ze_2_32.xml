@@ -8,7 +8,7 @@
   <thing-type id="shenzhen_naswr01ze_02_032" listed="false">
     <label>NAS-WR01ZE Metered Wall Plug Switch</label>
     <description><![CDATA[
-Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltage, current load, power consumption and energy consumption measuring. </p> <ul><li><strong>Voltage</strong> – The Supply Power Voltage For Plug.</li> <li><strong>Current</strong> – The Current for the Electric Device Connect to Plug Consumption.</li> <li><strong>Power</strong> – Power Consumed by an Electric Device in an instant, unit: Watt (W).</li> <li><strong>Energy</strong> – Energy Consumed by an Electric Device through a Time Period. Most commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh. </li> </ul><br /><h2>Inclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off with green alternately five times within 2 seconds.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter exclusion mode. And the LED will flash on and off with yellow alternately five times within 2 seconds.</li> </ol>
+Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltage, current load, power consumption and energy consumption measuring. </p> <ul><li>Voltage – The Supply Power Voltage For Plug.</li> <li>Current – The Current for the Electric Device Connect to Plug Consumption.</li> <li>Power – Power Consumed by an Electric Device in an instant, unit: Watt (W).</li> <li>Energy – Energy Consumed by an Electric Device through a Time Period. Most commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh. </li> </ul><br /><h2>Inclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off with green alternately five times within 2 seconds.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter exclusion mode. And the LED will flash on and off with yellow alternately five times within 2 seconds.</li> </ol>
     ]]></description>
     <category>WallSwitch</category>
 
@@ -86,104 +86,88 @@ Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltag
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: Meter Report Enable</label>
-        <description>This parameter defines Disable/Enable meter report measure data to controller.</description>
+        <label>1: Relay On/Off State Saved Disable</label>
+        <description>Relay On/Off State Saved Disable</description>
         <default>1</default>
         <options>
-          <option value="0">Disable Report</option>
-          <option value="1">Enable Report</option>
+          <option value="0">Do not save Relay State</option>
+          <option value="1">Save Relay State</option>
         </options>
       </parameter>
 
-      <parameter name="config_2_2" type="integer" groupName="configuration"
-                 min="1" max="65535">
-        <label>2: Meter Report Interval</label>
-        <description><![CDATA[
-Interval time reporting data to controller<br /><h1>Overview</h1><p>This parameter defines interval time (in seconds) that Meter report data to main controller.</p>
-        ]]></description>
+      <parameter name="config_2_1" type="integer" groupName="configuration">
+        <label>2: Button Switch Function Disable</label>
+        <description>Button Switch Function Disable</description>
+        <default>1</default>
+        <options>
+          <option value="0">Button disabled</option>
+          <option value="1">Button enabled</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration">
+        <label>3: LED indication Disable</label>
+        <description>LED indication Disable</description>
+        <default>1</default>
+        <options>
+          <option value="0">Disable LED</option>
+          <option value="1">Enable LED</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_4_1" type="integer" groupName="configuration">
+        <label>4: Timer Enable</label>
+        <description>Timer Enable</description>
+        <default>0</default>
+        <options>
+          <option value="0">Timer Disable</option>
+          <option value="1">Timer Enable</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_5_2" type="integer" groupName="configuration"
+                 min="0" max="32767">
+        <label>5: Timing Length Setting</label>
+        <description>Timing Length Setting</description>
+        <default>120</default>
+      </parameter>
+
+      <parameter name="config_6_1" type="integer" groupName="configuration">
+        <label>6: Meter reporting function</label>
+        <description>Meter reporting function</description>
+        <default>1</default>
+        <options>
+          <option value="0">Disable Meter Report</option>
+          <option value="1">Enable Meter Report</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_7_2" type="integer" groupName="configuration"
+                 min="30" max="32767">
+        <label>7: Interval of meter reporting setting</label>
+        <description>Interval of meter reporting setting</description>
         <default>300</default>
       </parameter>
 
-      <parameter name="config_3_1" type="integer" groupName="configuration"
+      <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="1" max="16">
-        <label>3: Maxium over-load current</label>
-        <description><![CDATA[
-maximum current the plug can provide to load<br /><h1>Overview</h1><p>This parameter defines maximum current the plug can provide to load that be connected to plug. If the current consumed by load greater than maximum current, the plug will cut off power and send alarm.<br />Send Alarm NOTIFICATION_EVENT_POWER_MANAGEMENT_OVER_LOAD_DETECTED to associated devices in lifeline. Red Led will blink every seconds until current is normal (less than Parameter #3). You must remove the loader and turn on the Plug (press the button once) to enable current monitor and clear NOTIFICATION ALARM. This parameter value must be great than #4. If user set this parameter to default by Configure CC, the parameter #4 will be set to default value.</p>
-        ]]></description>
-        <default>13</default>
-      </parameter>
-
-      <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="1" max="15">
-        <label>4: Maximum alarm current</label>
-        <description><![CDATA[
-Max current for over-current notification<br /><h1>Overview</h1><p>Defines maximum current, if the current plug provide to load great than this parameter, the plug will send over-current notification to main controller and the LED will be turn RED, but plug cannot cut-off power. Value must be less than parameter 3#.</p>
-        ]]></description>
-        <default>12</default>
-      </parameter>
-
-      <parameter name="config_5_1" type="integer" groupName="configuration">
-        <label>5: LED enable</label>
-        <description>This parameter defines the LED indication Function ON/OFF.</description>
-        <default>1</default>
-        <options>
-          <option value="0">Disable LED indication Function</option>
-          <option value="1">Enable LED indication Function</option>
-        </options>
-      </parameter>
-
-      <parameter name="config_6_1" type="integer" groupName="configuration"
-                 min="1" max="100">
-        <label>6: Power Report Threshold</label>
-        <description><![CDATA[
-Power consumed change to be reported<br /><h1>Overview</h1><p>How much the power consumed must change to be reported. If the rate of power consumed change ratio is greater than this parameter, the plug will report the results, voltage, current, power and energy.</p>
-        ]]></description>
-        <default>5</default>
-      </parameter>
-
-      <parameter name="config_7_1" type="integer" groupName="configuration">
-        <label>7: Remember Relay ON/OFF status after power failure.</label>
-        <description><![CDATA[
-Plug state after power-on<br /><h1>Overview</h1><p>Define how will the Plug react after the power supply is back on.  0 = will be off after the power supply is reconnected.  Others = remember relay status</p>
-        ]]></description>
-        <default>1</default>
-        <options>
-          <option value="0">Don’t remember relay state</option>
-          <option value="1">Remember the Relay Status.</option>
-        </options>
-      </parameter>
-
-      <parameter name="config_8_1" type="integer" groupName="configuration">
-        <label>8: Plug Time switch Function</label>
-        <description><![CDATA[
-Timer plug OFF after time period<br /><h1>Overview</h1><p>Defines if the timer function is enabled/disabled to switch the Plug OFF after the time period, which is defined in parameter 9#.</p>
-        ]]></description>
-        <default>0</default>
-        <options>
-          <option value="0">Time switch Disable</option>
-          <option value="1">Time switch Enable</option>
-        </options>
+        <label>8: Maximum output current setting</label>
+        <description>Maximum output current setting</description>
+        <default>16</default>
       </parameter>
 
       <parameter name="config_9_2" type="integer" groupName="configuration"
-                 min="1" max="65535">
-        <label>9: Time switch Period</label>
-        <description><![CDATA[
-Delay time after the plug is switched off (in minutes)<br /><h1>Overview</h1><p>This parameter defines the time after the plug is switched off. If Parameter 8# is set to ‘1’, and relay is turn ON, the relay will be turn OFF after delay this parameter.</p>
-        ]]></description>
-        <default>150</default>
+                 min="1" max="1600">
+        <label>9: Current Differential Setting</label>
+        <description>Current Differential Setting</description>
+        <default>50</default>
       </parameter>
 
-      <parameter name="config_10_1" type="integer" groupName="configuration">
-        <label>10: Button On/Off Enable</label>
-        <description><![CDATA[
-Enable/Disable top button function<br /><h1>Overview</h1><p>If this parameter is set to ‘1’, users can turn on and off the wall plug by pressing the button on the top of the wall plug. If this parameter is set to ‘0’, the wall plug cannot be turned on and off by pressing the button.</p>
-        ]]></description>
-        <default>1</default>
-        <options>
-          <option value="0">Disable Button</option>
-          <option value="1">Enable Button</option>
-        </options>
+      <parameter name="config_10_1" type="integer" groupName="configuration"
+                 min="1" max="15">
+        <label>10: Current Alarm Value</label>
+        <description>Current Alarm Value</description>
+        <default>13</default>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration">
@@ -195,18 +179,6 @@ Clear accumulated energy<br /><h1>Overview</h1><p>If this parameter is set to '0
         <options>
           <option value="0">Save accumulated energy</option>
           <option value="1">Clear Accumulated Energy</option>
-        </options>
-      </parameter>
-
-      <parameter name="config_12_1" type="integer" groupName="configuration">
-        <label>12: Meter Enable</label>
-        <description><![CDATA[
-Enables the meter function<br /><h1>Overview</h1><p>'1' enables the meter function; '0' disables the meter function (includes metering current, voltage, power, accumulated power).<br />This configuration does not influence over-current protect monitor and energy accumulated.</p>
-        ]]></description>
-        <default>1</default>
-        <options>
-          <option value="0">Disable metering</option>
-          <option value="1">Enable metering</option>
         </options>
       </parameter>
 
