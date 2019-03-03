@@ -684,8 +684,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
      * Transmits the {@link ZWaveCommandClassTransactionPayload} to a Node.
      * This will not wait for the transaction response.
      *
-     * @param transaction
-     *            the {@link ZWaveCommandClassTransactionPayload} message to send.
+     * @param transaction the {@link ZWaveCommandClassTransactionPayload} message to send.
      */
     public void sendData(ZWaveCommandClassTransactionPayload transaction) {
         if (controller == null) {
@@ -742,7 +741,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         if (controller == null) {
             return;
         }
-        controller.requestRemoveFailedNode(nodeId);
+        controller.requestSetFailedNode(nodeId);
     }
 
     public void reinitialiseNode(int nodeId) {
