@@ -522,8 +522,8 @@ Measuring energy consumed by the device itself<br /><h1>Overview</h1><p>This par
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">function inactive</option>
-          <option value="1">function active</option>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
         </options>
       </parameter>
 
