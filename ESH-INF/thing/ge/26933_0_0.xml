@@ -27,6 +27,12 @@
           <property name="binding:*:DecimalType">COMMAND_CLASS_SCENE_ACTIVATION</property>
         </properties>
       </channel>
+      <channel id="config_decimal_param3" typeId="ge_26933_00_000_config_decimal_param3">
+        <label>Operation Mode [Deprecated]</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=3</property>
+        </properties>
+      </channel>
       <channel id="alarm_burglar" typeId="alarm_burglar">
         <label>Alarm (burglar)</label>
         <properties>
@@ -40,8 +46,8 @@
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
         </properties>
       </channel>
-      <channel id="alarm_burglar2" typeId="alarm_burglar">
-        <label>Alarm (burglar) 2</label>
+      <channel id="alarm_motion2" typeId="alarm_motion">
+        <label>Motion Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:2,COMMAND_CLASS_BASIC:2</property>
         </properties>
@@ -291,5 +297,18 @@ Set power level for plain switch functionality<br /><h1>Overview</h1><p>0=disabl
     </config-description>
 
   </thing-type>
+
+  <channel-type id="ge_26933_00_000_config_decimal_param3">
+    <item-type>Number</item-type>
+    <label>Operation Mode</label>
+    <description>Sets how the light responds to motion</description>
+    <state pattern="%s">
+      <options>
+        <option value="1">Manual</option>
+        <option value="2">Vacancy</option>
+        <option value="3">Occupancy</option>
+      </options>
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>

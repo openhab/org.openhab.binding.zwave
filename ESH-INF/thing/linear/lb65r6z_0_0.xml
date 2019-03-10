@@ -17,8 +17,8 @@ LB65R6Z-1<br /><h1>Overview</h1><p>Smart Retrofit Lighting Kit with Z-Wave radio
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
     </channels>
@@ -48,13 +48,16 @@ LB65R6Z-1<br /><h1>Overview</h1><p>Smart Retrofit Lighting Kit with Z-Wave radio
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
-      <parameter name="config_1_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Dim level when the light bulb is turned On</label>
         <description><![CDATA[
 Turn Dim Level Memory ON/OFF<br /><h1>Overview</h1><p>The brightness level will be resume to full brightness when the dt Smart Bulb is turned ON every time.</p>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Disable dim level memory</option>
+          <option value="1">Enable dim level memory</option>
+        </options>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
@@ -70,7 +73,7 @@ Dimming/Brightening Step Level<br /><h1>Overview</h1><p>A low value provides gra
                  min="1" max="10">
         <label>10: Dim / Bright Speed</label>
         <description>How fast the brightness will change with each dimming step</description>
-        <default>1</default>
+        <default>3</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
