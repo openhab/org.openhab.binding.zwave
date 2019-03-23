@@ -6,9 +6,9 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="shenzhen_powerplug_00_000" listed="false">
-    <label>NAS-WR01ZE Metered Wall Plug Switch</label>
+    <label>NAS-WR01ZE Wall Plug Switch</label>
     <description><![CDATA[
-Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltage, current load, power consumption and energy consumption measuring. </p> <ul><li><strong>Voltage</strong> – The Supply Power Voltage For Plug.</li> <li><strong>Current</strong> – The Current for the Electric Device Connect to Plug Consumption.</li> <li><strong>Power</strong> – Power Consumed by an Electric Device in an instant, unit: Watt (W).</li> <li><strong>Energy</strong> – Energy Consumed by an Electric Device through a Time Period. Most commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh.</li> </ul><br /><h2>Inclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off with green alternately five times within 2 seconds.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter exclusion mode. And the LED will flash on and off with yellow alternately five times within 2 seconds.</li> </ol>
+Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltage, current load, power consumption and energy consumption measuring. </p> <ul><li><strong>Voltage</strong> – The Supply Power Voltage For Plug.</li> <li><strong>Current</strong> – The Current for the Electric Device Connect to Plug Consumption.</li> <li><strong>Power</strong> – Power Consumed by an Electric Device in an instant, unit: Watt (W).</li> <li><strong>Energy</strong> – Energy Consumed by an Electric Device through a Time Period. Most commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh.</li> </ul><br /><h2>Inclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off with green alternately five times within 2 seconds.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter exclusion mode. And the LED will flash on and off with yellow alternately five times within 2 seconds.</li> </ol>
     ]]></description>
     <category>PowerOutlet</category>
 
@@ -42,6 +42,12 @@ Metered Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltag
         <label>Electric meter (volts)</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_V</property>
+        </properties>
+      </channel>
+      <channel id="meter_reset" typeId="meter_reset">
+        <label>Clear Accumulated Energy</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_METER</property>
         </properties>
       </channel>
       <channel id="alarm_power" typeId="alarm_power">

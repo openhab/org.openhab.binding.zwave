@@ -51,7 +51,7 @@ Widom Smart Double Switch<br /><h1>Overview</h1><p>WiDom Smart Double Switch is 
       <property name="vendor">wiDom</property>
       <property name="modelId">WDS2</property>
       <property name="manufacturerId">0149</property>
-      <property name="manufacturerRef">1214:0B00</property>
+      <property name="manufacturerRef">1214:0B00,1214:0C00</property>
       <property name="dbReference">986</property>
       <property name="defaultAssociations">1</property>
     </properties>
