@@ -5,7 +5,7 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="shenzhen_naswr01ze_02_032" listed="false">
+  <thing-type id="shenzhen_coolcampwrplug_02_032" listed="false">
     <label>NAS-WR01ZE Wall Plug Switch</label>
     <description><![CDATA[
 Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltage, current load, power consumption and energy consumption measuring. </p> <ul><li>Voltage – The Supply Power Voltage For Plug.</li> <li>Current – The Current for the Electric Device Connect to Plug Consumption.</li> <li>Power – Power Consumed by an Electric Device in an instant, unit: Watt (W).</li> <li>Energy – Energy Consumed by an Electric Device through a Time Period. Most commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh. </li> </ul><br /><h2>Inclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off with green alternately five times within 2 seconds.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter exclusion mode. And the LED will flash on and off with yellow alternately five times within 2 seconds.</li> </ol>

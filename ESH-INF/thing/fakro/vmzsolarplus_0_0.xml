@@ -8,6 +8,7 @@
   <thing-type id="fakro_vmzsolarplus_00_000" listed="false">
     <label>VMZ Solar z-wave plus Awning Blind z-wave plus version</label>
     <description>Awning Blind z-wave plus version</description>
+    <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -216,9 +217,6 @@ Restore default config values<br /><h1>Overview</h1><p>Restore default config va
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>&lt;commandClass&gt;BATTERY&lt;/commandClass&gt;<br />&lt;commandClass&gt;ALARM&lt;/commandClass&gt;<br />&lt;commandClass&gt;DEVICE_RESET_LOCALLY&lt;/commandClass&gt;<br />&lt;commandClass&gt;BASIC&lt;/commandClass&gt;<br /> </p>
-        ]]></description>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
