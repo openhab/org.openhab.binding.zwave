@@ -7,7 +7,10 @@
 
   <thing-type id="northq_nq9022_00_000" listed="false">
     <label>NQ-9022 Electrical Meter</label>
-    <description>Electrical Meter</description>
+    <description><![CDATA[
+Electrical Meter<br /><h1>Overview</h1><p>The basic purpose of the device is to count impulses / flashes from a metering device and to save impulse count in nonvolatile memory with 15 minutes interval.</p> <br /><h2>Inclusion Information</h2><p>3 times press on the button to include</p> <br /><h2>Exclusion Information</h2><p>3 times press on the button to exclude</p> <br /><h2>Wakeup Information</h2><p>Press the sensor button 1 time to enter Wakeup (real-time) mode </p>
+    ]]></description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -44,11 +47,11 @@
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
-      <parameter name="config_1_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+      <parameter name="config_1_4" type="integer" groupName="configuration"
+                 min="0" max="655350">
         <label>1: Pulse factor</label>
         <description>Impulse or Rotation factor per KWh * 10</description>
-        <default>1024</default>
+        <default>10000</default>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
@@ -107,7 +110,7 @@ Wake device up this many times per second.<br /><h1>Overview</h1><p>This value a
       </parameter>
 
       <parameter name="config_9_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="2147483647">
         <label>9: Pulse count</label>
         <description>Total pulse count (Meter reading / impulse factor)</description>
         <default>0</default>

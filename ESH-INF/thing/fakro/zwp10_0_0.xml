@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="fakro_zwp10_00_000" listed="false">
+    <label>ZWP10 Z-Wave Controller</label>
+    <description><![CDATA[
+Z-Wave Controller<br /><h1>Overview</h1><p>The<strong> ZWP10</strong> multi-channel remote control enables radio control of FAKRO electrical accessories and of other manufacturers which are compatible with the Z-Wave communication module. The ZWP10 remote control can be used to operate up to 10 devices individually on five channels (two devices per channel). It also allows the creation of 10 independent groups. Each group can contain several devices operated simultaneously.</p> <p>The controller's memory can contain up to 231 devices</p> <p>The ZWP10 remote control can serve as the basic controller (PRIMARY) and additional controller (SECONDARY). The PRIMARY controller allows to integrate numerous devices into one radio network, while the SECONDARY controller acts as additional controller in an already existing network.</p> <p>In addition to Basic control mode, i.e.: ?, ⏹️, ?, the ZWP10 remote control also features Multilevel mode which allows e.g. for smooth dimming of light or smooth operation of roller shutters and blinds (by keeping the ? or ? button pressed). For convenience the ZWP10 remote can be magnetically attached to a wall mounted holder.</p>     <br /><h2>Inclusion Information</h2><p>By default the ZWP10 is the primary controller. Inclusion mode is enabled by pressing once the IN/EX button at the back of the remote control. LEDs 1 and 4 will turn on. Follow the instructions on the device to be included (within 10 seconds). Upon successful inclusion, LEDs 2 &amp; 3 will briefly turn on.</p> <p>In case the ZWP10 is added to an existing network: set the primary controller in INCLUDE mode. Press three times the IN/EX button at the back of the remote control until LEDs 1 and 3 turn on. Upon completion, LEDs 2 &amp; 4 will briefly turn on.</p>     <br /><h2>Exclusion Information</h2><p>When the ZWP10 is the primary controller: press twice the IN/EX button at the back of the remote control until LEDs 1 and 3 turn on. Follow the instructions on the device to be excluded (within 10 seconds). Upon successful inclusion, LEDs 1 &amp; 4 will briefly turn on.</p>     <br /><h2>Wakeup Information</h2><p>The user manual doesn't provide information about waking up the ZWP10 portable remote. However, pressing the SELECT button for at least 3 seconds will initiate communication with the controller. LEDs 1, 2, 3 and 4 will blink simultaneously until the communication is finished.</p>    
+    ]]></description>
+    <category>RemoteControl</category>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Fakro</property>
+      <property name="modelId">ZWP10</property>
+      <property name="manufacturerId">0085</property>
+      <property name="manufacturerRef">0001:0001</property>
+      <property name="dbReference">1035</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- GROUP DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Association Group 1</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>The ZWP10 portable remote supports up to 10 association groups.</p>        
+        ]]></description>
+        <multipleLimit>232</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Association Group 2</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>The ZWP10 portable remote supports up to 10 association groups.</p>    
+        ]]></description>
+        <multipleLimit>232</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Association Group 3</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>The ZWP10 portable remote supports up to 10 association groups.</p>    
+        ]]></description>
+        <multipleLimit>232</multipleLimit>
+      </parameter>
+
+      <parameter name="group_4" type="text" groupName="association" multiple="true">
+        <label>4: Association Group 4</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>The ZWP10 portable remote supports up to 10 association groups.</p>    
+        ]]></description>
+        <multipleLimit>232</multipleLimit>
+      </parameter>
+
+      <parameter name="group_5" type="text" groupName="association" multiple="true">
+        <label>5: Association Group 5</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>The ZWP10 portable remote supports up to 10 association groups.</p>    
+        ]]></description>
+        <multipleLimit>232</multipleLimit>
+      </parameter>
+
+      <parameter name="group_6" type="text" groupName="association" multiple="true">
+        <label>6: Association Group 6</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>The ZWP10 portable remote supports up to 10 association groups.</p>    
+        ]]></description>
+        <multipleLimit>232</multipleLimit>
+      </parameter>
+
+      <parameter name="group_7" type="text" groupName="association" multiple="true">
+        <label>7: Association Group 7</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>The ZWP10 portable remote supports up to 10 association groups.</p>    
+        ]]></description>
+        <multipleLimit>232</multipleLimit>
+      </parameter>
+
+      <parameter name="group_8" type="text" groupName="association" multiple="true">
+        <label>8: Association Group 8</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>The ZWP10 portable remote supports up to 10 association groups.</p>    
+        ]]></description>
+        <multipleLimit>232</multipleLimit>
+      </parameter>
+
+      <parameter name="group_9" type="text" groupName="association" multiple="true">
+        <label>9: Association Group 9</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>The ZWP10 portable remote supports up to 10 association groups.</p>    
+        ]]></description>
+        <multipleLimit>232</multipleLimit>
+      </parameter>
+
+      <parameter name="group_10" type="text" groupName="association" multiple="true">
+        <label>10: Association Group 10</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>The ZWP10 portable remote supports up to 10 association groups.</p>    
+        ]]></description>
+        <multipleLimit>232</multipleLimit>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>
