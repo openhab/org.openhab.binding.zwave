@@ -33,7 +33,7 @@ Vizia RF + 2-Button Scene Controller with Switches<br /><h1>Overview</h1><p>Levi
       <property name="vendor">Leviton</property>
       <property name="modelId">VRCS2-MRX</property>
       <property name="manufacturerId">001D</property>
-      <property name="manufacturerRef">001D:0000</property>
+      <property name="manufacturerRef">001D:0000,001D:1102</property>
       <property name="dbReference">418</property>
     </properties>
 
