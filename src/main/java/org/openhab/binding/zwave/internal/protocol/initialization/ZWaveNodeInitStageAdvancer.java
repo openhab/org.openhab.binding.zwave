@@ -118,8 +118,8 @@ public class ZWaveNodeInitStageAdvancer {
 
     private static final ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
 
-    private ZWaveNode node;
-    private ZWaveController controller;
+    private final ZWaveNode node;
+    private final ZWaveController controller;
     private boolean restoredFromConfigfile = false;
 
     private Thread initialisationThread;
@@ -137,9 +137,9 @@ public class ZWaveNodeInitStageAdvancer {
      * Constructor. Creates a new instance of the ZWaveNodeStageAdvancer class.
      *
      * @param node
-     *            the node this advancer belongs to.
+     *                       the node this advancer belongs to.
      * @param controller
-     *            the controller to use
+     *                       the controller to use
      */
     public ZWaveNodeInitStageAdvancer(ZWaveNode node, ZWaveController controller) {
         this.node = node;
@@ -302,7 +302,7 @@ public class ZWaveNodeInitStageAdvancer {
      * Move all the messages in a collection to the queue
      *
      * @param transactions
-     *            the message collection
+     *                         the message collection
      */
     private void processTransactions(Collection<ZWaveCommandClassTransactionPayload> transactions) {
         if (transactions == null) {
@@ -320,9 +320,9 @@ public class ZWaveNodeInitStageAdvancer {
      * Move all the messages in a collection to the queue and encapsulates them
      *
      * @param transactions
-     *            the message collection
+     *                         the message collection
      * @param endpointId
-     *            the endpoint number
+     *                         the endpoint number
      */
     private void processTransactions(Collection<ZWaveCommandClassTransactionPayload> transactions, int endpointId) {
         if (transactions == null) {
@@ -533,12 +533,15 @@ public class ZWaveNodeInitStageAdvancer {
                 .getCommandClass(CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC);
 
         if (manufacturerSpecific != null) {
-            // If this node implements the Manufacturer Specific command
-            // class, we use it to get manufacturer info.
-            logger.debug("NODE {}: Node advancer: MANUFACTURER - send ManufacturerSpecific", node.getNodeId());
-            processTransaction(manufacturerSpecific.getManufacturerSpecificMessage());
-            if (initRunning == false) {
-                return;
+            // If we already known the manufacturer information, then don't request again
+            if (manufacturerSpecific.getDeviceManufacturer() == Integer.MAX_VALUE) {
+                // If this node implements the Manufacturer Specific command
+                // class, we use it to get manufacturer info.
+                logger.debug("NODE {}: Node advancer: MANUFACTURER - send ManufacturerSpecific", node.getNodeId());
+                processTransaction(manufacturerSpecific.getManufacturerSpecificMessage());
+                if (initRunning == false) {
+                    return;
+                }
             }
         }
 
@@ -1152,7 +1155,7 @@ public class ZWaveNodeInitStageAdvancer {
      * Sets the time stamp the node was last queried.
      *
      * @param queryStageTimeStamp
-     *            the queryStageTimeStamp to set
+     *                                the queryStageTimeStamp to set
      */
     public Date getQueryStageTimeStamp() {
         return queryStageTimeStamp;
