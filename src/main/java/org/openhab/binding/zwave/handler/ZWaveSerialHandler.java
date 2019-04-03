@@ -18,19 +18,17 @@ import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.ThingStatus;
 import org.eclipse.smarthome.core.thing.ThingStatusDetail;
 import org.eclipse.smarthome.core.types.Command;
+import org.eclipse.smarthome.io.transport.serial.PortInUseException;
+import org.eclipse.smarthome.io.transport.serial.SerialPort;
+import org.eclipse.smarthome.io.transport.serial.SerialPortEvent;
+import org.eclipse.smarthome.io.transport.serial.SerialPortEventListener;
+import org.eclipse.smarthome.io.transport.serial.SerialPortIdentifier;
+import org.eclipse.smarthome.io.transport.serial.SerialPortManager;
+import org.eclipse.smarthome.io.transport.serial.UnsupportedCommOperationException;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import gnu.io.CommPort;
-import gnu.io.CommPortIdentifier;
-import gnu.io.NoSuchPortException;
-import gnu.io.PortInUseException;
-import gnu.io.SerialPort;
-import gnu.io.SerialPortEvent;
-import gnu.io.SerialPortEventListener;
-import gnu.io.UnsupportedCommOperationException;
 
 /**
  * The {@link ZWaveSerialHandler} is responsible for the serial communications to the ZWave stick.
@@ -44,9 +42,11 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
 
     private Logger logger = LoggerFactory.getLogger(ZWaveSerialHandler.class);
 
+    private SerialPortManager serialPortManager;
+
     private String portId;
 
-    private SerialPort serialPort;
+    private org.eclipse.smarthome.io.transport.serial.SerialPort serialPort;
 
     private int SOFCount = 0;
     private int CANCount = 0;
@@ -63,6 +63,11 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
         super(bridge);
     }
 
+    public ZWaveSerialHandler(Bridge thing, SerialPortManager serialPortManager) {
+        super(thing);
+        this.serialPortManager = serialPortManager;
+    }
+
     @Override
     public void initialize() {
         logger.debug("Initializing ZWave serial controller.");
@@ -77,9 +82,9 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
         super.initialize();
         logger.info("Connecting to serial port '{}'", portId);
         try {
-            CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(portId);
-            CommPort commPort = portIdentifier.open("org.openhab.binding.zwave", 2000);
-            serialPort = (SerialPort) commPort;
+            SerialPortIdentifier portIdentifier = serialPortManager.getIdentifier(portId);
+            SerialPort commPort = portIdentifier.open("org.openhab.binding.zwave", 2000);
+            serialPort = commPort;
             serialPort.setSerialPortParams(115200, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
                     SerialPort.PARITY_NONE);
             serialPort.enableReceiveThreshold(1);
@@ -96,18 +101,15 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             logger.info("Serial port is initialized");
 
             initializeNetwork();
-        } catch (NoSuchPortException e) {
-            updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    ZWaveBindingConstants.OFFLINE_SERIAL_EXISTS);// , portId));
         } catch (PortInUseException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    ZWaveBindingConstants.OFFLINE_SERIAL_INUSE);// , portId));
+                    ZWaveBindingConstants.OFFLINE_SERIAL_INUSE);
         } catch (UnsupportedCommOperationException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    ZWaveBindingConstants.OFFLINE_SERIAL_UNSUPPORTED);// , portId));
+                    ZWaveBindingConstants.OFFLINE_SERIAL_UNSUPPORTED);
         } catch (TooManyListenersException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    ZWaveBindingConstants.OFFLINE_SERIAL_LISTENERS);// , portId));
+                    ZWaveBindingConstants.OFFLINE_SERIAL_LISTENERS);
         }
     }
 
@@ -176,7 +178,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
          * Sends 1 byte frame response.
          *
          * @param response
-         *            the response code to send.
+         *                     the response code to send.
          */
         private void sendResponse(int response) {
             try {
