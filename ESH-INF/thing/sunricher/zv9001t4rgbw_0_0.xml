@@ -29,10 +29,57 @@ Touch Panel RGBW Z Wave Wall Controller<br /><h1>Overview</h1><p>SR-ZV9001T4-RGB
       <property name="manufacturerId">0330</property>
       <property name="manufacturerRef">0300:A107</property>
       <property name="dbReference">981</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
+
+      <!-- GROUP DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Lifeline</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><ol><li>Send “Command Class Device Reset Locally” to associated devices of this group to report factory reset information when factory reset the wall controller.</li> <li>Double click a group number of the wall controller to send command to associated devices of this group using “Command Class Central Scene”.</li> </ol>
+        ]]></description>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Launch 1</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Press button "1" to activate group.</p> <ol><li>Press and hold down button "1" to switch the associated devices with a Basic Set commands.</li> <li>Press PWM1-PWM4 buttons, direct control of associated devices using Color Switch Set commands.</li> <li>Press and hold down PWM1-PWM4 buttons, direct control of associated devices using Color Switch Start Level Change commands.</li> <li>Short touch or slide touch the “Color Wheel”, direct control of associated devices using Color Switch Set commands.</li> <li>Press and hold down brightness button, direct control of associated devices using Multilevel Switch Start Level Change commands.</li> <li>Short press "play/pause" button, direct control of associated devices using Configuration Set commands with Parameter Number = 5, Size = 1, toggling through values (1-0-2-0-3-0-4-0-5-0-6-0-1-...). Press and hold down "play/pause" button direct control of associated devices using Configuration Set commands with Parameter Number = 6, Size = 1 with varying values .</li> </ol>
+        ]]></description>
+        <multipleLimit>12</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Launch 2</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Press button "2" to activate group.</p> <ol><li>Press and hold down button "2" to switch the associated devices with a Basic Set commands. </li> <li>Press PWM1-PWM4 buttons, direct control of associated devices using Color Switch Set commands.</li> <li>Press and hold down PWM1-PWM4 buttons, direct control of associated devices using Color Switch Start Level Change commands.</li> <li>Short touch or slide touch the “Color Wheel”, direct control of associated devices using Color Switch Set commands.</li> <li>Press and hold down brightness button, direct control of associated devices using Multilevel Switch Start Level Change commands.</li> <li>Short press "play/pause" button, direct control of associated devices using Configuration Set commands with Parameter Number = 5, Size = 1, toggling through values (1-0-2-0-3-0-4-0-5-0-6-0-1-...). Press and hold down "play/pause" button direct control of associated devices using Configuration Set commands with Parameter Number = 6, Size = 1 with varying values .</li> </ol>
+        ]]></description>
+        <multipleLimit>12</multipleLimit>
+      </parameter>
+
+      <parameter name="group_4" type="text" groupName="association" multiple="true">
+        <label>4: Launch 3</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Press button "3" to activate group.</p> <ol><li>Press and hold down button "3" to switch the associated devices with a Basic Set commands.</li> <li>Press PWM1-PWM4 buttons, direct control of associated devices using Color Switch Set commands.</li> <li>Press and hold down PWM1-PWM4 buttons, direct control of associated devices using Color Switch Start Level Change commands.</li> <li>Short touch or slide touch the “Color Wheel”, direct control of associated devices using Color Switch Set commands.</li> <li>Press and hold down brightness button, direct control of associated devices using Multilevel Switch Start Level Change commands.</li> <li>Short press "play/pause" button, direct control of associated devices using Configuration Set commands with Parameter Number = 5, Size = 1, toggling through values (1-0-2-0-3-0-4-0-5-0-6-0-1-...). Press and hold down "play/pause" button direct control of associated devices using Configuration Set commands with Parameter Number = 6, Size = 1 with varying values .</li> </ol>
+        ]]></description>
+        <multipleLimit>12</multipleLimit>
+      </parameter>
+
+      <parameter name="group_5" type="text" groupName="association" multiple="true">
+        <label>5: Launch 4</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Press button "4" to activate group.</p> <ol><li>Press and hold down button "4" to switch the associated devices with a Basic Set commands.</li> <li>Press PWM1-PWM4 buttons, direct control of associated devices using Color Switch Set commands.</li> <li>Press and hold down PWM1-PWM4 buttons, direct control of associated devices using Color Switch Start Level Change commands.</li> <li>Short touch or slide touch the “Color Wheel”, direct control of associated devices using Color Switch Set commands.</li> <li>Press and hold down brightness button, direct control of associated devices using Multilevel Switch Start Level Change commands.</li> </ol>
+        ]]></description>
+        <multipleLimit>12</multipleLimit>
+      </parameter>
 
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">

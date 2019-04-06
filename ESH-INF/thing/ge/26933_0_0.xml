@@ -28,7 +28,7 @@
         </properties>
       </channel>
       <channel id="config_decimal_param3" typeId="ge_26933_00_000_config_decimal_param3">
-        <label>Operation Mode [Deprecated]</label>
+        <label>Operation Mode</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=3</property>
         </properties>
