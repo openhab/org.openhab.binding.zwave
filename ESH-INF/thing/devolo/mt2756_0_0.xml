@@ -130,8 +130,11 @@ The interval time for auto reporting each tick.<br /><ul><li>0 = Turn off all au
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Reports</label>
-        <multipleLimit>8</multipleLimit>
+        <label>1: Lifeline</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>The device sends a notification report of the command class Battery report, notification report, and local device reset Notification, Binary Report.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
