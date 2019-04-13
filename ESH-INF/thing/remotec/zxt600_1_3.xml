@@ -51,7 +51,7 @@ AC Master<br /><h1>Overview</h1><p>ZXT-600 AC Master is a Z-Wave plus certified 
       <property name="vendor">Remotec</property>
       <property name="modelId">ZXT-600</property>
       <property name="manufacturerId">5254</property>
-      <property name="manufacturerRef">0101:8490,0102:8490</property>
+      <property name="manufacturerRef">0101:8490,0102:8490,0100:8490</property>
       <property name="versionMin">1.3</property>
       <property name="dbReference">875</property>
       <property name="defaultAssociations">1</property>
