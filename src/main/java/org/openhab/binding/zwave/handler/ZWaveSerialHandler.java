@@ -40,7 +40,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ZWaveSerialHandler extends ZWaveControllerHandler {
 
-    private Logger logger = LoggerFactory.getLogger(ZWaveSerialHandler.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveSerialHandler.class);
 
     private SerialPortManager serialPortManager;
 
@@ -83,6 +83,11 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
         logger.info("Connecting to serial port '{}'", portId);
         try {
             SerialPortIdentifier portIdentifier = serialPortManager.getIdentifier(portId);
+            if (portIdentifier == null) {
+                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
+                        ZWaveBindingConstants.OFFLINE_SERIAL_EXISTS);
+                return;
+            }
             SerialPort commPort = portIdentifier.open("org.openhab.binding.zwave", 2000);
             serialPort = commPort;
             serialPort.setSerialPortParams(115200, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
