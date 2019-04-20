@@ -62,6 +62,12 @@ Smart Meter<br /><h1>Overview</h1><p>This Z-Wave module is used for energy measu
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1,COMMAND_CLASS_BASIC:1</property>
         </properties>
       </channel>
+      <channel id="meter_powerfactor1" typeId="meter_powerfactor">
+        <label>Power factor [Deprecated]</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_Power_Factor</property>
+        </properties>
+      </channel>
       <channel id="switch_binary2" typeId="switch_binary">
         <label>Switch Relay</label>
         <properties>

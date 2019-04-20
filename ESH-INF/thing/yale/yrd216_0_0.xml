@@ -37,22 +37,29 @@ Yale Real Living Assure Lock Push Button Deadbolt<br /><h1>Overview</h1><p>Yale 
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
-      <parameter name="config_1_1" type="integer" groupName="configuration"
-                 min="1" max="3">
+      <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Silent mode on/off</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>YRD216 - Level control, 1 = High Volume, 3 = Silent.</p> <p><strong>Default is 1 or High Volume</strong></p>
+<br /><h1>Overview</h1><p><strong>Default is 1 or High Volume</strong></p>
         ]]></description>
         <default>1</default>
+        <options>
+          <option value="1">Loud</option>
+          <option value="2">Quiet</option>
+          <option value="3">Off</option>
+        </options>
       </parameter>
 
-      <parameter name="config_2_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+      <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Auto Relock on/off</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>0x00 = OFF, 0xFF = ON</p> <p><strong>default is 0x00 or OFF</strong></p>
+<br /><h1>Overview</h1><p><strong>default is 0x00 or OFF</strong></p>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Auto relock off</option>
+          <option value="255">Auto relock on</option>
+        </options>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
@@ -73,13 +80,17 @@ Yale Real Living Assure Lock Push Button Deadbolt<br /><h1>Overview</h1><p>Yale 
         <default>5</default>
       </parameter>
 
-      <parameter name="config_5_1" type="integer" groupName="configuration"
-                 min="1" max="3">
+      <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Language</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p>1=English, 2=Spanish, 3=French</p> <p><strong>default is 1= English</strong></p>
         ]]></description>
         <default>1</default>
+        <options>
+          <option value="1">English</option>
+          <option value="2">Spanish</option>
+          <option value="3">French</option>
+        </options>
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
@@ -91,13 +102,17 @@ Yale Real Living Assure Lock Push Button Deadbolt<br /><h1>Overview</h1><p>Yale 
         <default>60</default>
       </parameter>
 
-      <parameter name="config_8_1" type="integer" groupName="configuration"
-                 min="0" max="2">
+      <parameter name="config_8_1" type="integer" groupName="configuration">
         <label>8: Operating mode</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p>00 = normal mode (this is the default mode)</p> <p>01 = vacation mode, keypad lockout</p> <p>02 = privacy mode, no keypad. RF Unlock will work</p>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Normal</option>
+          <option value="1">Vacation</option>
+          <option value="2">Privacy</option>
+        </options>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"

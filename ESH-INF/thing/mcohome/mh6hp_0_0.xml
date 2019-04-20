@@ -7,7 +7,10 @@
 
   <thing-type id="mcohome_mh6hp_00_000" listed="false">
     <label>MH6-HP Programmable Thermostat</label>
-    <description>Programmable Thermostat</description>
+    <description><![CDATA[
+Programmable Thermostat<br /><h1>Overview</h1><p>MH6-HP programmable thermostat is a Z-Wave Plus enabled device for indoor temperature control. It is mainly applied to heat pump system for heating/cooling, with 3 modes easily switchable: Schedule, Hold and Holiday. The device is of high reliability and practicability, and it can support up to 3H/2C system. This product can be included and operated in any Z-Wave network with other Z-Wave certified devices from any other manufacturers.</p> <br /><h2>Inclusion Information</h2><p>In normal display, press and hold ^ button to enter interface for adding Z-Wave network. Before device added into network, “- - -” will display on the screen. Then press ^ once, device will enter learning mode to get a node ID. If adding is successful, a Node ID will display on the screen in a few seconds.</p> <br /><h2>Exclusion Information</h2><p>In normal display, press and hold ^ button to enter interface for removing of Z-Wave network. A Node ID will display on the screen. Then press ^ button once, “- - -” will display on the screen to show removal was successful.</p>
+    ]]></description>
+    <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -20,7 +23,7 @@
       <channel id="thermostat_mode" typeId="mcohome_mh6hp_00_000_thermostat_mode">
         <label>Thermostat mode</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_MODE,COMMAND_CLASS_BASIC</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_MODE</property>
         </properties>
       </channel>
       <channel id="thermostat_state" typeId="thermostat_state">
@@ -66,8 +69,8 @@
       <property name="vendor">McoHome Technology Co., Ltd</property>
       <property name="modelId">MH6-HP</property>
       <property name="manufacturerId">015F</property>
-      <property name="manufacturerRef">0604:5101</property>
-      <property name="dbReference">729</property>
+      <property name="manufacturerRef">0604:0101</property>
+      <property name="dbReference">1044</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -103,9 +106,9 @@
     <state pattern="%s">
       <options>
         <option value="2">Cool</option>
-        <option value="0">Off</option>
-        <option value="1">Heat</option>
         <option value="3">Auto</option>
+        <option value="1">Heat</option>
+        <option value="0">Off</option>
       </options>
     </state>
   </channel-type>
@@ -130,6 +133,7 @@
     <category>Temperature</category>
     <state pattern="%s">
       <options>
+        <option value="1">Running</option>
         <option value="0">Idle</option>
       </options>
     </state>
