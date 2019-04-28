@@ -8,9 +8,19 @@
   <thing-type id="yale_yrd216_00_000" listed="false">
     <label>YRD216 Yale Real Living Assure Lock Push Button Deadbolt</label>
     <description><![CDATA[
-Yale Real Living Assure Lock Push Button Deadbolt<br /><h1>Overview</h1><p>Yale Assure Lock</p> <ul><li>Push Button keypad with backlit numbers that won’t wear off</li> <li>Mechanical key override</li> <li>Manage up to 25 unique codes to share with friends and family</li> <li>Weather Protection Gasket</li> <li>One-touch locking and keypad wake-up</li> <li>Privacy Mode – privacy button located on the interior side of the lock enables users to temporarily disable user codes</li> <li>Tamper Resistant Battery Cover</li> <li>Tamper Alert – audible alarm sounds if there is an attempt to forcibly remove the lock</li> <li>Automatically relocks after 30 seconds</li> <li>Simple to install on standard doors and replaces your existing deadbolt in minutes with just a screwdriver</li> <li>Certified ANSI/BHMA A156.36, Grade 2</li> <li>Lifetime limited warranty for finish and mechanical, one year electronics</li> </ul><br /><h2>Inclusion Information</h2><p>To join the lock in a Z-Wave Network (taken from the installation manual)</p> <ol><li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 1, then #</li> </ol><p>The lock will now be in inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>To exit the Z-Wave Network (taken from the installation manual)</p> <ol><li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 3, then #</li> </ol><p>The lock will now be in exclusion mode.</p>
+Yale Real Living Assure Lock Push Button Deadbolt<br /><h1>Overview</h1><p>Yale Assure Lock</p> <ul><li>Push Button keypad with backlit numbers that won’t wear off</li> <li>Mechanical key override</li> <li>Manage up to 25 unique codes to share with friends and family</li> <li>Weather Protection Gasket</li> <li>One-touch locking and keypad wake-up</li> <li>Privacy Mode – privacy button located on the interior side of the lock enables users to temporarily disable user codes</li> <li>Tamper Resistant Battery Cover</li> <li>Tamper Alert – audible alarm sounds if there is an attempt to forcibly remove the lock</li> <li>Automatically relocks after 30 seconds</li> <li>Simple to install on standard doors and replaces your existing deadbolt in minutes with just a screwdriver</li> <li>Certified ANSI/BHMA A156.36, Grade 2</li> <li>Lifetime limited warranty for finish and mechanical, one year electronics</li> </ul><p>Zwave alliance information: https://products.z-wavealliance.org/products/1971</p> <br /><h2>Inclusion Information</h2><p>To join the lock in a Z-Wave Network (taken from the installation manual)</p> <ol><li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 1, then #</li> </ol><p>The lock will now be in inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>To exit the Z-Wave Network (taken from the installation manual)</p> <ol><li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 3, then #</li> </ol><p>The lock will now be in exclusion mode.</p>
     ]]></description>
     <category>Lock</category>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="lock_door" typeId="lock_door">
+        <label>Door Lock</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_DOOR_LOCK</property>
+        </properties>
+      </channel>
+    </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
@@ -38,9 +48,9 @@ Yale Real Living Assure Lock Push Button Deadbolt<br /><h1>Overview</h1><p>Yale 
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: Silent mode on/off</label>
+        <label>1: Silent mode</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p><strong>Default is 1 or High Volume</strong></p>
+Silent mode on/off<br /><h1>Overview</h1><p>Default is 1 or High Volume</p>
         ]]></description>
         <default>1</default>
         <options>
@@ -51,9 +61,9 @@ Yale Real Living Assure Lock Push Button Deadbolt<br /><h1>Overview</h1><p>Yale 
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
-        <label>2: Auto Relock on/off</label>
+        <label>2: Auto Relock</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p><strong>default is 0x00 or OFF</strong></p>
+Auto Relock on/off<br /><h1>Overview</h1><p>default is 0x00 or OFF</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -66,7 +76,7 @@ Yale Real Living Assure Lock Push Button Deadbolt<br /><h1>Overview</h1><p>Yale 
                  min="10" max="180">
         <label>3: Auto Relock Time</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>10 to 180 seconds</p> <p><strong>default is 30 seconds</strong></p>
+Auto Relock Time<br /><h1>Overview</h1><p>10 to 180 seconds (default is 30 seconds)</p>
         ]]></description>
         <default>30</default>
       </parameter>
@@ -75,7 +85,7 @@ Yale Real Living Assure Lock Push Button Deadbolt<br /><h1>Overview</h1><p>Yale 
                  min="3" max="10">
         <label>4: Wrong code Entry Limit</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>3 to 10</p> <p><strong>default is 5 times</strong></p>
+Wrong code Entry Limit<br /><h1>Overview</h1><p>3 to 10 (default is 5 times)</p>
         ]]></description>
         <default>5</default>
       </parameter>
@@ -83,7 +93,7 @@ Yale Real Living Assure Lock Push Button Deadbolt<br /><h1>Overview</h1><p>Yale 
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Language</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>1=English, 2=Spanish, 3=French</p> <p><strong>default is 1= English</strong></p>
+Language<br /><h1>Overview</h1><p>1=English, 2=Spanish, 3=French (default is 1= English)</p>
         ]]></description>
         <default>1</default>
         <options>
@@ -95,9 +105,9 @@ Yale Real Living Assure Lock Push Button Deadbolt<br /><h1>Overview</h1><p>Yale 
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="10" max="180">
-        <label>7: Shut down time (after wrong code entries)</label>
+        <label>7: Shut down time</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>10 to 180 seconds</p> <p><strong>default is 60 seconds</strong></p>
+Shut down time after wrong code entries<br /><h1>Overview</h1><p>10 to 180 seconds (default is 60 seconds)</p>
         ]]></description>
         <default>60</default>
       </parameter>
@@ -105,7 +115,7 @@ Yale Real Living Assure Lock Push Button Deadbolt<br /><h1>Overview</h1><p>Yale 
       <parameter name="config_8_1" type="integer" groupName="configuration">
         <label>8: Operating mode</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>00 = normal mode (this is the default mode)</p> <p>01 = vacation mode, keypad lockout</p> <p>02 = privacy mode, no keypad. RF Unlock will work</p>
+Operating mode<br /><h1>Overview</h1><p>00 = normal mode (this is the default mode)<br />01 = vacation mode, keypad lockout<br />02 = privacy mode, no keypad. RF Unlock will work</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -119,7 +129,7 @@ Yale Real Living Assure Lock Push Button Deadbolt<br /><h1>Overview</h1><p>Yale 
                  min="0" max="255">
         <label>11: One touch locking</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>0x00 = OFF, 0xFF = ON</p> <p><strong>default is 0xFF or ON.</strong></p>
+One touch locking<br /><h1>Overview</h1><p>0x00 = OFF, 0xFF = ON (default)</p>
         ]]></description>
         <default>255</default>
       </parameter>
@@ -128,7 +138,7 @@ Yale Real Living Assure Lock Push Button Deadbolt<br /><h1>Overview</h1><p>Yale 
                  min="0" max="255">
         <label>12: Privacy button</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>0x00 = OFF, 0xFF = ON</p> <p><strong>default is 0x00 or OFF</strong></p>
+Privacy button<br /><h1>Overview</h1><p>0x00 = OFF (default), 0xFF = ON</p>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -137,7 +147,7 @@ Yale Real Living Assure Lock Push Button Deadbolt<br /><h1>Overview</h1><p>Yale 
                  min="0" max="255">
         <label>13: Lock status LED</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>0x00 = OFF, 0xFF = ON</p> <p><strong>default is 0x00 or OFF</strong></p>
+Lock status LED<br /><h1>Overview</h1><p>0x00 = OFF (default), 0xFF = ON</p>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -146,7 +156,7 @@ Yale Real Living Assure Lock Push Button Deadbolt<br /><h1>Overview</h1><p>Yale 
                  min="0" max="1">
         <label>15: Reset to factory default</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>01 = Lock will execute Reset To Factory.</p> <p>No default value</p>
+Reset to factory default<br /><h1>Overview</h1><p>01 = Lock will execute Reset To Factory.</p>
         ]]></description>
         <default>0</default>
       </parameter>

@@ -32,7 +32,7 @@ Smart Lock<br /><h1>Overview</h1><p>Kwikset®, the leader in residential securit
       <property name="vendor">Black &amp; Decker</property>
       <property name="modelId">Kwikset 914C Convert Smart Lock</property>
       <property name="manufacturerId">0090</property>
-      <property name="manufacturerRef">0003:0446</property>
+      <property name="manufacturerRef">0003:0446,0003:0642</property>
       <property name="dbReference">992</property>
       <property name="defaultAssociations">1,2</property>
     </properties>
