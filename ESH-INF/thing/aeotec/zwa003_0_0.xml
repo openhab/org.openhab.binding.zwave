@@ -17,8 +17,8 @@ NanoMote Quad<br /><h1>Overview</h1><p>Aeotec NanoMote Quad has been crafted to 
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -41,10 +41,94 @@ NanoMote Quad<br /><h1>Overview</h1><p>Aeotec NanoMote Quad has been crafted to 
       <property name="manufacturerId">0371</property>
       <property name="manufacturerRef">0102:0003</property>
       <property name="dbReference">1006</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
+
+      <!-- GROUP DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter name="config_32_1" type="integer" groupName="configuration"
+                 min="10" max="50">
+        <label>32: Level for low battery</label>
+        <description>Set the level for "low battery" alert</description>
+        <default>20</default>
+      </parameter>
+
+      <parameter name="config_43_1" type="integer" groupName="configuration">
+        <label>43: Low battery buzzer</label>
+        <description>Enable/disable low battery buzzer</description>
+        <default>0</default>
+        <options>
+          <option value="0">Disable</option>
+          <option value="1">Enable</option>
+        </options>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Lifeline</label>
+        <description>Central scene notification</description>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Button 1 basic</label>
+        <description>On/off control via button 1</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Button 1 multilevel</label>
+        <description>Dim control via button 1</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_4" type="text" groupName="association" multiple="true">
+        <label>4: Button 2 basic</label>
+        <description>On/off control via button 2</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_5" type="text" groupName="association" multiple="true">
+        <label>5: Button 2 multilevel</label>
+        <description>Dim control via button 2</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_6" type="text" groupName="association" multiple="true">
+        <label>6: Button 3 basic</label>
+        <description>On/off control via button 3</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_7" type="text" groupName="association" multiple="true">
+        <label>7: Button 3 multilevel</label>
+        <description>Dim control via button 3</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_8" type="text" groupName="association" multiple="true">
+        <label>8: Button 4 basic</label>
+        <description>On/off control via button 4</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_9" type="text" groupName="association" multiple="true">
+        <label>9: Button 4 multilevel</label>
+        <description>Dim control via button 4</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
 
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">

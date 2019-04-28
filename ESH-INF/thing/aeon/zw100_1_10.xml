@@ -593,22 +593,11 @@ Disable/Enable Configuration Lock (0=Disable, 1=Enable)<br /><h1>Overview</h1><p
           <option value="1">Resets all configuration parameters to defaults</option>
           <option value="1431655765">Reset to default factory settings and be excluded</option>
         </options>
-        <advanced>true</advanced>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Group 1</label>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Group 2</label>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Group 3</label>
+        <label>1: Lifeline</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
