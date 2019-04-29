@@ -1,192 +1,134 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.openhab</groupId>
-        <artifactId>pom-tycho</artifactId>
-        <version>2.5.0-SNAPSHOT</version>
-        <relativePath/>
-    </parent>
-
-    <groupId>org.openhab.binding</groupId>
-    <artifactId>org.openhab.binding.zwave</artifactId>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.openhab.addons.bundles</groupId>
+    <artifactId>org.openhab.addons.reactor.bundles</artifactId>
     <version>2.5.0-SNAPSHOT</version>
-    <!-- do not delete the version here as it is required by the release process -->
-    <name>ZWave Binding</name>
+    <relativePath />
+  </parent>
 
-    <packaging>eclipse-plugin</packaging>
+  <artifactId>org.openhab.binding.zwave</artifactId>
+  <version>2.5.0-SNAPSHOT</version>
+  <!-- do not delete the version here as it is required by the release process -->
+  <name>openHAB Add-ons :: Bundles :: ZWave Binding</name>
 
-    <properties>
-        <report.fail.on.error>false</report.fail.on.error>
-    </properties>
+  <properties>
+    <report.fail.on.error>false</report.fail.on.error>
+  </properties>
 
-    <scm>
-        <connection>scm:git:${scm.gitBaseUrl}/org.openhab.binding.zwave.git</connection>
-        <developerConnection>scm:git:${scm.gitBaseUrl}/org.openhab.binding.zwave.git</developerConnection>
-        <url>https://github.com/openhab/org.openhab.binding.zwave</url>
-        <tag>HEAD</tag>
-    </scm>
-    
-    <distributionManagement>
-        <repository>
-            <id>bintray</id>
-            <url>https://api.bintray.com/maven/openhab/mvn/org.openhab.binding.zwave/;publish=1</url>
-        </repository>
-        <snapshotRepository>
-            <id>jfrog</id>
-            <url>https://openhab.jfrog.io/openhab/libs-snapshot-local</url>
-        </snapshotRepository>
-    </distributionManagement>
+  <scm>
+    <connection>scm:git:${scm.gitBaseUrl}/org.openhab.binding.zwave.git</connection>
+    <developerConnection>scm:git:${scm.gitBaseUrl}/org.openhab.binding.zwave.git</developerConnection>
+    <url>https://github.com/openhab/org.openhab.binding.zwave</url>
+    <tag>HEAD</tag>
+  </scm>
 
-    <build>
-        <testSourceDirectory>src/test</testSourceDirectory>
-        
-        <plugins>
-            <plugin>
-              <groupId>org.openhab.tools.sat</groupId>
-              <artifactId>sat-plugin</artifactId>
+  <distributionManagement>
+    <repository>
+      <id>bintray</id>
+      <url>https://api.bintray.com/maven/openhab/mvn/org.openhab.binding.zwave/;publish=1</url>
+    </repository>
+    <snapshotRepository>
+      <id>jfrog</id>
+      <url>https://openhab.jfrog.io/openhab/libs-snapshot-local</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>18.0</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.openhab.tools.sat</groupId>
+          <artifactId>sat-plugin</artifactId>
+          <version>0.6.1</version>
+          <executions>
+            <execution>
+              <id>sat-all</id>
               <configuration>
                 <checkstyleProperties>tools/static-code-analysis/checkstyle/ruleset.properties</checkstyleProperties>
                 <checkstyleFilter>tools/static-code-analysis/checkstyle/suppressions.xml</checkstyleFilter>
               </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
-                <executions>
-                    <execution>
-                        <id>test</id>
-                        <phase>test</phase>
-                        <configuration>
-                            <includes>
-                                <include>**/*Test.java</include>
-                            </includes>
-                        </configuration>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>compiletests</id>
-                        <phase>test-compile</phase>
-                        <goals>
-                            <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-    
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.10.19</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.7.2</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+            </execution>
+          </executions>
+          <configuration>
+            <checkstyleProperties>tools/static-code-analysis/checkstyle/ruleset.properties</checkstyleProperties>
+            <checkstyleFilter>tools/static-code-analysis/checkstyle/suppressions.xml</checkstyleFilter>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.commonjava.maven.plugins</groupId>
+        <artifactId>directory-maven-plugin</artifactId>
+        <version>0.3.1</version>
+        <executions>
+          <execution>
+            <id>directories</id>
+            <phase>none</phase>
+            <goals>
+              <goal>directory-of</goal>
+            </goals>
+            <configuration>
+              <property>basedirRoot</property>
+              <project>
+                <groupId>org.openhab.addons</groupId>
+                <artifactId>org.openhab.addons.reactor</artifactId>
+              </project>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
-    <pluginRepositories>
-      <pluginRepository>
-            <id>jcenter</id>
-            <name>JCenter Repository</name>
-            <url>https://jcenter.bintray.com/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-      </pluginRepository>
-      <pluginRepository>
-          <id>artifactory</id>
-          <name>JFrog Artifactory Repository</name>
-          <url>https://openhab.jfrog.io/openhab/libs-release</url>
-          <releases>
-              <enabled>true</enabled>
-              <updatePolicy>never</updatePolicy>
-          </releases>
-          <snapshots>
-              <enabled>false</enabled>
-          </snapshots>
-      </pluginRepository>
-    </pluginRepositories>
+  <repositories>
+    <repository>
+      <id>jcenter</id>
+      <name>JCenter Repository</name>
+      <url>https://jcenter.bintray.com</url>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
 
-    <repositories>
-        
-        <!-- releases -->
-        <repository>
-            <id>jcenter</id>
-            <name>JCenter Repository</name>
-            <url>https://jcenter.bintray.com/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
+    <repository>
+      <id>openhab-artifactory-release</id>
+      <name>JFrog Artifactory Repository</name>
+      <url>https://openhab.jfrog.io/openhab/libs-release</url>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
 
-        <repository>
-            <id>openhab-artifactory-release</id>
-            <name>JFrog Artifactory Repository</name>
-            <url>https://openhab.jfrog.io/openhab/libs-release</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-
-        <!-- snapshots -->
-        <repository>
-            <id>openhab-artifactory-snapshot</id>
-            <name>JFrog Artifactory Repository</name>
-            <url>https://openhab.jfrog.io/openhab/libs-snapshot</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-
-        <!-- openHAB dependencies p2 repository -->
-        <repository>
-            <id>p2-openhab-deps-repo</id>
-            <url>https://dl.bintray.com/openhab/p2/openhab-deps-repo/${ohdr.version}</url>
-            <layout>p2</layout>
-        </repository>
-
-    </repositories>
-
+  <pluginRepositories>
+    <pluginRepository>
+      <id>jcenter</id>
+      <url>https://jcenter.bintray.com</url>
+    </pluginRepository>
+    <pluginRepository>
+      <id>openhab-artifactory-release</id>
+      <url>https://openhab.jfrog.io/openhab/libs-release</url>
+    </pluginRepository>
+  </pluginRepositories>
 </project>
