@@ -7,8 +7,10 @@
  */
 package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
@@ -19,8 +21,6 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.common.collect.ImmutableSet;
 
 /**
  * This class processes a serial message from the zwave controller
@@ -97,6 +97,6 @@ public class SerialApiGetCapabilitiesMessageClass extends ZWaveCommandProcessor 
     }
 
     public Set<SerialMessageClass> getApiCapabilities() {
-        return ImmutableSet.copyOf(apiCapabilities);
+        return Collections.unmodifiableSet(apiCapabilities.stream().collect(Collectors.toSet()));
     }
 }

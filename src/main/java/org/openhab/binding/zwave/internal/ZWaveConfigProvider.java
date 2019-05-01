@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.eclipse.smarthome.config.core.ConfigDescription;
 import org.eclipse.smarthome.config.core.ConfigDescriptionParameter;
@@ -48,8 +50,6 @@ import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.collect.ImmutableSet;
-
 /**
  *
  * @author Chris Jackson
@@ -71,13 +71,14 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
     // The following is a list of classes that are controllable.
     // This is used to filter endpoints so that when we display a list of nodes/endpoints
     // for configuring associations, we only list endpoints that are useful
-    private static final Set<ZWaveCommandClass.CommandClass> controllableClasses = ImmutableSet.of(
-            CommandClass.COMMAND_CLASS_BASIC, CommandClass.COMMAND_CLASS_SWITCH_BINARY,
-            CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL, CommandClass.COMMAND_CLASS_SWITCH_TOGGLE_BINARY,
-            CommandClass.COMMAND_CLASS_SWITCH_TOGGLE_MULTILEVEL, CommandClass.COMMAND_CLASS_CHIMNEY_FAN,
-            CommandClass.COMMAND_CLASS_THERMOSTAT_HEATING, CommandClass.COMMAND_CLASS_THERMOSTAT_MODE,
-            CommandClass.COMMAND_CLASS_THERMOSTAT_OPERATING_STATE, CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT,
-            CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_MODE, CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_STATE);
+    private static final Set<ZWaveCommandClass.CommandClass> controllableClasses = Collections
+            .unmodifiableSet(Stream.of(CommandClass.COMMAND_CLASS_BASIC, CommandClass.COMMAND_CLASS_SWITCH_BINARY,
+                    CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL, CommandClass.COMMAND_CLASS_SWITCH_TOGGLE_BINARY,
+                    CommandClass.COMMAND_CLASS_SWITCH_TOGGLE_MULTILEVEL, CommandClass.COMMAND_CLASS_CHIMNEY_FAN,
+                    CommandClass.COMMAND_CLASS_THERMOSTAT_HEATING, CommandClass.COMMAND_CLASS_THERMOSTAT_MODE,
+                    CommandClass.COMMAND_CLASS_THERMOSTAT_OPERATING_STATE,
+                    CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT, CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_MODE,
+                    CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_STATE).collect(Collectors.toSet()));
 
     @Reference
     protected void setThingRegistry(ThingRegistry thingRegistry) {
