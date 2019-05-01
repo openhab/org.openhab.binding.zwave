@@ -8,9 +8,8 @@
 package org.openhab.binding.zwave.event;
 
 import java.text.MessageFormat;
+import java.util.Collections;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.eclipse.smarthome.core.events.AbstractEventFactory;
 import org.eclipse.smarthome.core.events.Event;
@@ -46,7 +45,7 @@ public class BindingEventFactory extends AbstractEventFactory {
     }
 
     public BindingEventFactory() {
-        super(Stream.of(BindingEvent.TYPE).collect(Collectors.toSet()));
+        super(Collections.singleton(BindingEvent.TYPE));
     }
 
     @Override
