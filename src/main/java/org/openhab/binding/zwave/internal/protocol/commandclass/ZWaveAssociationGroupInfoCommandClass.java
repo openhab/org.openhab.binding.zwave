@@ -13,8 +13,11 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
@@ -27,7 +30,6 @@ import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClass
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.collect.ImmutableSet;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
@@ -69,13 +71,14 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
 
     // List of command classes that are eligible for auto subscription.
     @XStreamOmitField
-    private Set<CommandClass> autoCCs = ImmutableSet.of(COMMAND_CLASS_DEVICE_RESET_LOCALLY, COMMAND_CLASS_BATTERY,
-            COMMAND_CLASS_CONFIGURATION, COMMAND_CLASS_METER, COMMAND_CLASS_THERMOSTAT_OPERATING_STATE,
-            COMMAND_CLASS_THERMOSTAT_MODE, COMMAND_CLASS_THERMOSTAT_FAN_MODE, COMMAND_CLASS_SENSOR_MULTILEVEL,
-            COMMAND_CLASS_SENSOR_ALARM, COMMAND_CLASS_THERMOSTAT_FAN_STATE, COMMAND_CLASS_THERMOSTAT_SETPOINT,
-            COMMAND_CLASS_SENSOR_BINARY, COMMAND_CLASS_ALARM, COMMAND_CLASS_SWITCH_COLOR,
-            COMMAND_CLASS_SCENE_ACTIVATION, COMMAND_CLASS_CENTRAL_SCENE, COMMAND_CLASS_DOOR_LOCK,
-            COMMAND_CLASS_METER_TBL_MONITOR, COMMAND_CLASS_METER_PULSE);
+    private Set<CommandClass> autoCCs = Collections
+            .unmodifiableSet(Stream.of(COMMAND_CLASS_DEVICE_RESET_LOCALLY, COMMAND_CLASS_BATTERY,
+                    COMMAND_CLASS_CONFIGURATION, COMMAND_CLASS_METER, COMMAND_CLASS_THERMOSTAT_OPERATING_STATE,
+                    COMMAND_CLASS_THERMOSTAT_MODE, COMMAND_CLASS_THERMOSTAT_FAN_MODE, COMMAND_CLASS_SENSOR_MULTILEVEL,
+                    COMMAND_CLASS_SENSOR_ALARM, COMMAND_CLASS_THERMOSTAT_FAN_STATE, COMMAND_CLASS_THERMOSTAT_SETPOINT,
+                    COMMAND_CLASS_SENSOR_BINARY, COMMAND_CLASS_ALARM, COMMAND_CLASS_SWITCH_COLOR,
+                    COMMAND_CLASS_SCENE_ACTIVATION, COMMAND_CLASS_CENTRAL_SCENE, COMMAND_CLASS_DOOR_LOCK,
+                    COMMAND_CLASS_METER_TBL_MONITOR, COMMAND_CLASS_METER_PULSE).collect(Collectors.toSet()));
 
     /**
      * Creates a new instance of the ZwaveAssociationGroupInfoCommandClass class.

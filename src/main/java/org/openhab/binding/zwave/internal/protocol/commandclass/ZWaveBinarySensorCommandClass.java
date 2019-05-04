@@ -9,10 +9,12 @@ package org.openhab.binding.zwave.internal.protocol.commandclass;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
@@ -25,7 +27,6 @@ import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClass
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.collect.ImmutableSet;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
@@ -223,7 +224,7 @@ public class ZWaveBinarySensorCommandClass extends ZWaveCommandClass
      * @return the supported sensor types
      */
     public Set<SensorType> getSupportedTypes() {
-        return ImmutableSet.copyOf(types);
+        return Collections.unmodifiableSet(types.stream().collect(Collectors.toSet()));
     }
 
     /**

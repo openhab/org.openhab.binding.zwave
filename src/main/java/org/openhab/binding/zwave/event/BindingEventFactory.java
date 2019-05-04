@@ -8,6 +8,7 @@
 package org.openhab.binding.zwave.event;
 
 import java.text.MessageFormat;
+import java.util.Collections;
 import java.util.Set;
 
 import org.eclipse.smarthome.core.events.AbstractEventFactory;
@@ -17,8 +18,6 @@ import org.eclipse.smarthome.core.i18n.TranslationProvider;
 import org.openhab.binding.zwave.internal.ZWaveActivator;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
-
-import com.google.common.collect.Sets;
 
 /**
  *
@@ -46,7 +45,7 @@ public class BindingEventFactory extends AbstractEventFactory {
     }
 
     public BindingEventFactory() {
-        super(Sets.newHashSet(BindingEvent.TYPE));
+        super(Collections.singleton(BindingEvent.TYPE));
     }
 
     @Override

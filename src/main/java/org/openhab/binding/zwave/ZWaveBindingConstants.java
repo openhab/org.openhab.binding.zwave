@@ -7,11 +7,10 @@
  */
 package org.openhab.binding.zwave;
 
+import java.util.Collections;
 import java.util.Set;
 
 import org.eclipse.smarthome.core.thing.ThingTypeUID;
-
-import com.google.common.collect.ImmutableSet;
 
 /**
  * The {@link ZWaveBindingConstants} class defines common constants, which are
@@ -139,5 +138,5 @@ public class ZWaveBindingConstants {
 
     public final static String GROUP_CONTROLLER = "controller";
 
-    public final static Set<ThingTypeUID> SUPPORTED_BRIDGE_TYPES_UIDS = ImmutableSet.of(CONTROLLER_SERIAL);
+    public final static Set<ThingTypeUID> SUPPORTED_BRIDGE_TYPES_UIDS = Collections.singleton(CONTROLLER_SERIAL);
 }
