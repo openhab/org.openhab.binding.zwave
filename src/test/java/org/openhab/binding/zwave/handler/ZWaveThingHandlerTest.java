@@ -40,8 +40,6 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveNodeNamingC
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
-
 /**
  * Test of the ZWaveThingHandler
  *
