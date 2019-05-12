@@ -51,7 +51,7 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><table><tr><td> <p><
         </properties>
       </channel>
       <channel id="meter_reset" typeId="meter_reset">
-        <label>Reset Meter [Deprecated]</label>
+        <label>Reset Meter</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_METER;reset=true</property>
         </properties>

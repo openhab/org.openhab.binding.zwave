@@ -7,7 +7,9 @@
 
   <thing-type id="philio_psp05_00_000" listed="false">
     <label>PSP05 Motion Sensor</label>
-    <description>Motion Sensor</description>
+    <description><![CDATA[
+Motion Sensor<br /><h1>Overview</h1><p>Zwave plus battery operated motion sensor.</p> <br /><h2>Inclusion Information</h2><ol><li>Have Z-WaveTM Controller entered inclusion mode.</li> <li>Pressing button once to enter the inclusion mode.</li> <li>After add successful, the device will wake to receive the setting command from Z-WaveTM Controller about 20 seconds.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Have Z-WaveTM Controller entered exclusion mode.</li> <li>Pressing button once to enter the exclusion mode.</li> <li>Node ID has been excluded</li> </ol><br /><h2>Wakeup Information</h2><p>Open the cover and press the button once.</p>
+    ]]></description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -56,6 +58,13 @@
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
+      <parameter name="config_2_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>2: Basic Set Level</label>
+        <description>Setting the BASIC command value to turn on the light.</description>
+        <default>255</default>
+      </parameter>
+
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>3: PIR Sensitivity</label>
@@ -65,8 +74,23 @@ Adjust the PIR Sensitivity<br /><h1>Overview</h1><p>This setting sets the sensit
         <default>80</default>
       </parameter>
 
-      <parameter name="config_7_1_00000010" type="integer" groupName="configuration">
-        <label>7: Motion OFF Reporting</label>
+      <parameter name="config_6_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>6: Multi-Sensor Function Switch</label>
+        <description>Parameter to set the sensor functions.</description>
+        <default>5</default>
+      </parameter>
+
+      <parameter name="config_7_1" type="integer" groupName="configuration"
+                 min="0" max="127">
+        <label>7: Customer Function</label>
+        <description>Parameter to set the Customer Function.</description>
+        <default>4</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_7_1_00000002" type="integer" groupName="configuration">
+        <label>7: Bit 1: Motion OFF Reporting</label>
         <description><![CDATA[
 Sends notification when motion has completed.<br /><h1>Overview</h1><p>Sends notification when motion has completed.</p>
         ]]></description>
@@ -77,8 +101,18 @@ Sends notification when motion has completed.<br /><h1>Overview</h1><p>Sends not
         </options>
       </parameter>
 
-      <parameter name="config_7_1_00001000" type="integer" groupName="configuration">
-        <label>7: Notification Type</label>
+      <parameter name="config_7_1_00000004" type="integer" groupName="configuration">
+        <label>7: Bit 2: Enable PIR super sensitivity mode.</label>
+        <description>Enable PIR super sensitivity mode</description>
+        <default>1</default>
+        <options>
+          <option value="0">Disable</option>
+          <option value="1">Enable</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_7_1_00000010" type="integer" groupName="configuration">
+        <label>7: Bit 4: Notification Type</label>
         <description><![CDATA[
 Method used to send notifications on motion<br /><h1>Overview</h1><p>Indicates method used to send notifications in the event of motion being triggered. Either Binary Sensor or Notification</p>
         ]]></description>
@@ -89,20 +123,20 @@ Method used to send notifications on motion<br /><h1>Overview</h1><p>Indicates m
         </options>
       </parameter>
 
-      <parameter name="config_7_1_00010000" type="integer" groupName="configuration">
-        <label>7: Send Multi CC in auto report</label>
+      <parameter name="config_7_1_00000020" type="integer" groupName="configuration">
+        <label>7: Bit 5: Send Multi CC in auto report</label>
         <description><![CDATA[
 Send Multi CC in auto report<br /><h1>Overview</h1><p>Investigation required to determine purpose of this.</p>
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">Disable</option>
-          <option value="1">Enable</option>
+          <option value="0">Enable</option>
+          <option value="1">Disable</option>
         </options>
       </parameter>
 
-      <parameter name="config_7_1_00100000" type="integer" groupName="configuration">
-        <label>7: Send Battery Report when Triggered</label>
+      <parameter name="config_7_1_00000040" type="integer" groupName="configuration">
+        <label>7: Bit 6: Send Battery Report when Triggered</label>
         <description>Whether or not a battery status report should be sent when triggered</description>
         <default>0</default>
         <options>
@@ -139,7 +173,7 @@ How frequently battery status should be reported<br /><h1>Overview</h1><p>The fr
       </parameter>
 
       <parameter name="config_20_1" type="integer" groupName="configuration"
-                 min="0" max="127">
+                 min="0" max="255">
         <label>20: Tick Interval</label>
         <description><![CDATA[
 Interval time for sending reports<br /><h1>Overview</h1><p>This setting is used by the battery reporting interval setting. This setting defines the 'tick interval' or the number of time blocks to wait between sending reports. The default value of 30 means that a tick interval is 30 minutes.</p>
