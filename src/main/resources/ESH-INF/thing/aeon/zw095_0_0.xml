@@ -150,8 +150,10 @@ This parameter is used to configure the energy detection mode.<br /><h1>Overview
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">Disabled</option>
-          <option value="1">Enabled</option>
+          <option value="0">Energy absolute value</option>
+          <option value="1">Algebraic sum energy</option>
+          <option value="2">Consuming electricity</option>
+          <option value="3">Generating electricity</option>
         </options>
       </parameter>
 

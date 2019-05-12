@@ -59,7 +59,7 @@ Roller Shutter<br /><h1>Overview</h1><p>Fibaro Roller Shutter is a universal, Z-
         </properties>
       </channel>
       <channel id="blinds_shutter" typeId="blinds_shutter">
-        <label>Shutter position</label>
+        <label>Shutter position [Deprecated]</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_MANUFACTURER_PROPRIETARY</property>
         </properties>

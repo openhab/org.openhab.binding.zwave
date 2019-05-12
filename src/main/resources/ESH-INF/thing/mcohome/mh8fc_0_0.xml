@@ -63,7 +63,7 @@ Fan Coil Thermostat<br /><h1>Overview</h1><p>MCOHome Fan Coil Thermostat is a Z-
       <property name="vendor">McoHome Technology Co., Ltd</property>
       <property name="modelId">MH8-FC</property>
       <property name="manufacturerId">015F</property>
-      <property name="manufacturerRef">0801:3102,0801:5102,0802:3102,0802:5102</property>
+      <property name="manufacturerRef">0801:3102,0801:5102,0802:3102,0802:5102,0803:5102</property>
       <property name="dbReference">336</property>
       <property name="defaultAssociations">1</property>
     </properties>
