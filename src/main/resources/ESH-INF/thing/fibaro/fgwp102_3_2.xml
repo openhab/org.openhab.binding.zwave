@@ -110,7 +110,7 @@ determines how the Wall Plug will react in the event of power supply failure<br 
         <default>1</default>
         <options>
           <option value="0">device remains switched off</option>
-          <option value="1">device restores the state from before the power failure</option>
+          <option value="1">Remember state before power failure</option>
         </options>
       </parameter>
 
@@ -193,7 +193,7 @@ determines whether power metering should include the amount of power<br /><h1>Ov
       </parameter>
 
       <parameter name="config_20_1" type="integer" groupName="configuration">
-        <label>20: Control of „On/Off (Button)” association group (2)</label>
+        <label>20: „On/Off (Button)” association group (2)</label>
         <description><![CDATA[
 Control of „On/Off (Button)” association group (2) devices<br /><h1>Overview</h1><p>Controlling devices with the B-Button. This parameter is inactive in “Always On” mode (parameter 1).<br />Control as the Wall Plug:</p> <ul><li>switching the Wall Plug on – switch the devices on (parameter 24)<br />switching the Wall Plug off – switch the devices off (parameter 24)</li> </ul><p>Control opposite to the Wall Plug:</p> <ul><li>switching the Wall Plug on – switch the devices off</li> <li>switching the Wall Plug off – switch the devices on</li> </ul>
         ]]></description>
@@ -206,18 +206,18 @@ Control of „On/Off (Button)” association group (2) devices<br /><h1>Overview
 
       <parameter name="config_21_2" type="integer" groupName="configuration"
                  min="0" max="24900">
-        <label>21: DOWN value - „On/Off (Power)” association group (3)</label>
+        <label>21: DOWN value - association group (3)</label>
         <description><![CDATA[
-Lower power threshold, used in parameter 23<br /><h1>Overview</h1><p>Lower power threshold, used in parameter 23. DOWN value cannot be higher than a value specified in parameter 22.</p> <p>Setting: 0-24900 (0.0-2490.0W, step 0.1W)</p> <p>Default: 300 (30W)</p>
+DOWN value - „On/Off (Power)” for association group (3)<br /><h1>Overview</h1><p>Lower power threshold, used in parameter 23. DOWN value cannot be higher than a value specified in parameter 22.</p> <p>Setting: 0-24900 (0.0-2490.0W, step 0.1W)</p> <p>Default: 300 (30W)</p>
         ]]></description>
         <default>300</default>
       </parameter>
 
       <parameter name="config_22_2" type="integer" groupName="configuration"
                  min="100" max="25000">
-        <label>22: UP value - „On/Off (Power)” association group (3)</label>
+        <label>22: UP value - association group (3)</label>
         <description><![CDATA[
-Upper power threshold, used in parameter 23.<br /><h1>Overview</h1><p>Upper power threshold, used in parameter 23. UP value cannot belower than a value specified in parameter 21.</p> <p>Available settings: 100-25000 (10.0-2500.0W, step 0.1W)<br />Default setting: 500 (50W)</p>
+UP value - „On/Off (Power)” for association group (3)<br /><h1>Overview</h1><p>Upper power threshold, used in parameter 23. UP value cannot belower than a value specified in parameter 21.</p> <p>Available settings: 100-25000 (10.0-2500.0W, step 0.1W)<br />Default setting: 500 (50W)</p>
         ]]></description>
         <default>500</default>
       </parameter>
@@ -238,7 +238,8 @@ defines the way that 3rd association group devices are controlled.<br /><h1>Over
         </options>
       </parameter>
 
-      <parameter name="config_24_2" type="integer" groupName="configuration">
+      <parameter name="config_24_2" type="integer" groupName="configuration"
+                 min="0" max="255">
         <label>24: SWITCH ON value - „On/Off” association groups</label>
         <description><![CDATA[
 SWITCH ON value - „On/Off” association groups<br /><h1>Overview</h1><p>The value of BASIC SET command frame sent to the devices associated in „On/Off” association groups (2, 3).</p> <p>„On/Off (Button)” association group - in accordance with parameter 20.<br />„On/Off (Power)” association group - in accordance with parameter 23.</p> <p>Available settings: 0-99 or255</p> <p>Default setting: 255</p>
@@ -247,6 +248,7 @@ SWITCH ON value - „On/Off” association groups<br /><h1>Overview</h1><p>The v
         <options>
           <option value="255">Default</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_30_1" type="integer" groupName="configuration">
@@ -300,14 +302,14 @@ determines maximum active power value<br /><h1>Overview</h1><p>This parameter de
       </parameter>
 
       <parameter name="config_41_1" type="integer" groupName="configuration">
-        <label>41: LED ring colour when controlled device is on</label>
+        <label>41: LED ring colour (device is ON)</label>
         <description><![CDATA[
 LED ring colour when controlled device is on<br /><h1>Overview</h1><p>When set to 1 or 2, LED ring colour will change depending on active power and parameter 40. Other colours are set permanently and do not depend on power consumption.</p>
         ]]></description>
         <default>1</default>
         <options>
           <option value="0">illumination turned off completely</option>
-          <option value="1">colour changes continuously depending on active power</option>
+          <option value="1">colour changes depending on active power</option>
           <option value="2">colour changes in steps depending on active power</option>
           <option value="3">white</option>
           <option value="4">red</option>
@@ -320,7 +322,7 @@ LED ring colour when controlled device is on<br /><h1>Overview</h1><p>When set t
       </parameter>
 
       <parameter name="config_42_1" type="integer" groupName="configuration">
-        <label>42: LED ring colour when controlled device is off</label>
+        <label>42: LED ring colour (device is OFF)</label>
         <description><![CDATA[
 LED ring colour when controlled device is off<br /><h1>Overview</h1><p>This parameter defines the illumination colour after turning off</p>
         ]]></description>
@@ -339,7 +341,7 @@ LED ring colour when controlled device is off<br /><h1>Overview</h1><p>This para
       </parameter>
 
       <parameter name="config_43_1" type="integer" groupName="configuration">
-        <label>43: LED ring colour at the Z-Wave network alarm detection</label>
+        <label>43: LED ring colour (alarm detection)</label>
         <description><![CDATA[
 LED ring colour at the Z-Wave network alarm detection<br /><h1>Overview</h1><p>This parameter defines the illumination colour in case of Z-Wave alarm.</p>
         ]]></description>
@@ -408,12 +410,12 @@ defines how commands are sent in specified association groups<br /><h1>Overview<
 
   <channel-type id="fibaro_fgwp102_03_002_config_decimal_param41">
     <item-type>Number</item-type>
-    <label>LED ring colour when controlled device is on</label>
+    <label>LED ring colour (device is ON)</label>
     <description>LED ring colour when controlled device is on</description>
     <state pattern="%s">
       <options>
         <option value="0">illumination turned off completely</option>
-        <option value="1">colour changes continuously depending on active power</option>
+        <option value="1">colour changes depending on active power</option>
         <option value="2">colour changes in steps depending on active power</option>
         <option value="3">white</option>
         <option value="4">red</option>
@@ -428,7 +430,7 @@ defines how commands are sent in specified association groups<br /><h1>Overview<
 
   <channel-type id="fibaro_fgwp102_03_002_config_decimal_param42">
     <item-type>Number</item-type>
-    <label>LED ring colour when controlled device is off</label>
+    <label>LED ring colour (device is OFF)</label>
     <description>LED ring colour when controlled device is off</description>
     <state pattern="%s">
       <options>
