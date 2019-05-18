@@ -32,7 +32,7 @@ Motion Sensor<br /><h1>Overview</h1><p>Motion sensor is a universal Z-Wave Senso
       <property name="vendor">Hank</property>
       <property name="modelId">HKZW_MS02</property>
       <property name="manufacturerId">0208</property>
-      <property name="manufacturerRef">0200:0012,0201:0012</property>
+      <property name="manufacturerRef">0200:0012,0201:0012,0300:0012</property>
       <property name="dbReference">676</property>
       <property name="commandClass:COMMAND_CLASS_ASSOCIATION">14</property>
       <property name="defaultAssociations">1,2</property>
