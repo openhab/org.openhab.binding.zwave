@@ -128,6 +128,7 @@
                 <label>Hard Reset Controller</label>
                 <description>Hard resets the Z-Wave stick - this will erase all configuration from the controller!</description>
                 <advanced>true</advanced>
+                <verify>true</verify>
                 <default>false</default>
             </parameter>
 
