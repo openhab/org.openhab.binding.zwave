@@ -35,7 +35,8 @@ public class RequestNodeNeighborUpdateMessageClass extends ZWaveCommandProcessor
 
         // Create the request - note the long timeout
         return new ZWaveTransactionMessageBuilder(SerialMessageClass.RequestNodeNeighborUpdate).withPayload(nodeId)
-                .withResponseNodeId(nodeId).withTimeout(75000).build();
+                .withExpectedResponseClass(SerialMessageClass.RequestNodeNeighborUpdate).withResponseNodeId(nodeId)
+                .withTimeout(75000).build();
     }
 
     @Override
