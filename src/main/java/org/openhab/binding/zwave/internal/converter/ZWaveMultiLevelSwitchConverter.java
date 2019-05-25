@@ -19,6 +19,7 @@ import org.eclipse.smarthome.core.library.types.StringType;
 import org.eclipse.smarthome.core.library.types.UpDownType;
 import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
+import org.eclipse.smarthome.core.types.UnDefType;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -80,8 +81,7 @@ public class ZWaveMultiLevelSwitchConverter extends ZWaveCommandClassConverter {
 
         // A value of 254 means the device doesn't know it's current position
         if (value == 254) {
-            // TODO: Should this return UNDEFINED?
-            return null;
+            return UnDefType.UNDEF;
         }
 
         // If we read greater than 99%, then change it to 100%
