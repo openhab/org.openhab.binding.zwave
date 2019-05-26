@@ -57,7 +57,7 @@ Smart meter switch<br /><h1>Overview</h1><p>TZ69 is an ON/OFF Z-Wave switch.</p>
       <property name="vendor">TKB Home</property>
       <property name="modelId">TZ69</property>
       <property name="manufacturerId">0118</property>
-      <property name="manufacturerRef">0004:0002,0311:0103</property>
+      <property name="manufacturerRef">0004:0002,0116:3119,0311:0103</property>
       <property name="dbReference">474</property>
       <property name="defaultAssociations">1</property>
     </properties>
