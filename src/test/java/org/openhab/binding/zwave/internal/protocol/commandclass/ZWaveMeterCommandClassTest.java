@@ -80,6 +80,17 @@ public class ZWaveMeterCommandClassTest extends ZWaveCommandClassTest {
     }
 
     @Test
+    public void Meter_SupportedV3() {
+        byte[] packetData = { 0x32, 0x04, (byte) 0xE1, (byte) 0xC7, 0x01, 0x03 };
+
+        ZWaveCommandClassPayload payload = new ZWaveCommandClassPayload(packetData);
+        ZWaveMeterCommandClass meterCommandClass = (ZWaveMeterCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_METER);
+        meterCommandClass.handleMeterSupportedReport(payload, 0);
+        // [E_KWh, E_W, E_KVARH, E_KVAh, E_Power_Factor]
+    }
+
+    @Test
     public void setValueMessage() {
         ZWaveMeterCommandClass cls = (ZWaveMeterCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_METER);
         ZWaveCommandClassTransactionPayload msg;
