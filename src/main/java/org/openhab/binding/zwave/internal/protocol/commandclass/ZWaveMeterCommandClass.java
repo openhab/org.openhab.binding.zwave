@@ -73,11 +73,11 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
      * Creates a new instance of the ZWaveMeterCommandClass class.
      *
      * @param node
-     *            the node this command class belongs to
+     *                       the node this command class belongs to
      * @param controller
-     *            the controller to use
+     *                       the controller to use
      * @param endpoint
-     *            the endpoint this Command class belongs to
+     *                       the endpoint this Command class belongs to
      */
     public ZWaveMeterCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
@@ -146,12 +146,19 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
     public void handleMeterSupportedReport(ZWaveCommandClassPayload payload, int endpoint) {
         canReset = (payload.getPayloadByte(2) & 0x80) != 0;
         int meterTypeIndex = payload.getPayloadByte(2) & 0x1F;
-        int supportedScales = payload.getPayloadByte(3) & 0x7F;
+        long supportedScales = payload.getPayloadByte(3) & 0x7F;
         boolean mst = (payload.getPayloadByte(3) & 0x80) != 0;
 
         // only 4 scales are supported in version 2 of the command.
         if (getVersion() == 2) {
             supportedScales &= 0x0F;
+        }
+
+        if (mst) {
+            int numberOfScales = payload.getPayloadByte(4);
+            for (int cnt = 0; cnt < numberOfScales; cnt++) {
+                supportedScales += payload.getPayloadByte(5 + cnt) << ((cnt + 1) * 8);
+            }
         }
 
         if (meterTypeIndex >= MeterType.values().length) {
@@ -163,7 +170,7 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
         logger.debug("NODE {}: Identified meter type {}({})", getNode().getNodeId(), meterType.getLabel(),
                 meterTypeIndex);
 
-        for (int i = 0; i < 8; ++i) {
+        for (int i = 0; i < 16; ++i) {
             // scale is supported
             if ((supportedScales & (1 << i)) == (1 << i)) {
                 MeterScale scale = MeterScale.getMeterScale(meterType, i);
@@ -316,13 +323,14 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
     /**
      * Z-Wave MeterType enumeration. The meter type indicates the type of meter that is reported.
      *
-     * @author Ben Jones
      */
     public enum MeterType {
         UNKNOWN(0, "Unknown"),
         ELECTRIC(1, "Electric"),
         GAS(2, "Gas"),
-        WATER(3, "Water");
+        WATER(3, "Water"),
+        HEATING(4, "Heating"),
+        COOLING(5, "Cooling");
 
         /**
          * A mapping between the integer code and its corresponding Meter type
@@ -350,7 +358,7 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
          * code does not exist.
          *
          * @param i
-         *            the code to lookup
+         *              the code to lookup
          * @return enumeration value of the meter type.
          */
         public static MeterType getMeterType(int i) {
@@ -378,8 +386,6 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
 
     /**
      * Z-Wave MeterScale enumeration. The meter scale indicates the meter scale that is reported.
-     *
-     * @author Jan-Willem Spuij
      */
     @XStreamAlias("meterScale")
     public enum MeterScale {
@@ -390,13 +396,17 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
         E_V(4, MeterType.ELECTRIC, "V", "Voltage"),
         E_A(5, MeterType.ELECTRIC, "A", "Current"),
         E_Power_Factor(6, MeterType.ELECTRIC, "Power Factor", "Power Factor"),
+        E_KVAR(7, MeterType.ELECTRIC, "", ""),
+        E_KVARH(8, MeterType.ELECTRIC, "", ""),
         G_Cubic_Meters(0, MeterType.GAS, "Cubic Meters", "Volume"),
         G_Cubic_Feet(1, MeterType.GAS, "Cubic Feet", "Volume"),
         G_Pulses(3, MeterType.GAS, "Pulses", "Count"),
         W_Cubic_Meters(0, MeterType.WATER, "Cubic Meters", "Volume"),
         W_Cubic_Feet(1, MeterType.WATER, "Cubic Feet", "Volume"),
         W_Gallons(2, MeterType.WATER, "US gallons", "Volume"),
-        W_Pulses(3, MeterType.WATER, "Pulses", "Count");
+        W_Pulses(3, MeterType.WATER, "Pulses", "Count"),
+        HEATING_KWH(3, MeterType.HEATING, "kWh", "Energy"),
+        COOLING_KWH(3, MeterType.COOLING, "kWh", "Energy");
 
         private final int scale;
         private final MeterType meterType;
@@ -417,10 +427,10 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
         /**
          * Constructor. Creates a new enumeration value.
          *
-         * @param scale the scale number
+         * @param scale     the scale number
          * @param meterType the meter type
-         * @param unit the unit
-         * @param label the label.
+         * @param unit      the unit
+         * @param label     the label.
          */
         private MeterScale(int scale, MeterType meterType, String unit, String label) {
             this.scale = scale;
@@ -445,7 +455,7 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
          * Lookup function based on the meter type and code. Returns null if the code does not exist.
          *
          * @param meterType the meter type to use to lookup the scale
-         * @param i the code to lookup
+         * @param i         the code to lookup
          * @return enumeration value of the meter scale.
          */
         public static MeterScale getMeterScale(MeterType meterType, int i) {
@@ -513,7 +523,6 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
 
     /**
      * Z-Wave Meter value Event class. Indicates that a meter value changed.
-     *
      */
     public class ZWaveMeterValueEvent extends ZWaveCommandClassValueEvent {
 
@@ -524,15 +533,15 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
          * Constructor. Creates a instance of the ZWaveMeterValueEvent class.
          *
          * @param nodeId
-         *            the nodeId of the event
+         *                      the nodeId of the event
          * @param endpoint
-         *            the endpoint of the event.
+         *                      the endpoint of the event.
          * @param meterType
-         *            the meter type that triggered the event;
+         *                      the meter type that triggered the event;
          * @param meterType
-         *            the meter scale for the event;
+         *                      the meter scale for the event;
          * @param value
-         *            the value for the event.
+         *                      the value for the event.
          */
         public ZWaveMeterValueEvent(int nodeId, int endpoint, MeterType meterType, MeterScale meterScale,
                 Object value) {
