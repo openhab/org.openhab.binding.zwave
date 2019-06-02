@@ -67,7 +67,7 @@ public class RequestNodeNeighborUpdateMessageClass extends ZWaveCommandProcessor
 
                 zController.notifyEventListeners(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.NodeNeighborUpdate,
                         nodeId, ZWaveNetworkEvent.State.Failure));
-                transaction.setTransactionComplete();
+                transaction.setTransactionCanceled();
                 break;
         }
         return true;

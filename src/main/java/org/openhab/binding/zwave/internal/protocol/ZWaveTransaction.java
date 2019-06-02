@@ -31,7 +31,7 @@ public class ZWaveTransaction {
     private final long transactionId = sequence.getAndIncrement();
     private boolean waitForResponse = true;
 
-    private int DEFAULT_TIMEOUT = 5000;
+    private final int DEFAULT_TIMEOUT = 5000;
 
     private ZWaveMessagePayloadTransaction payload;
 
@@ -262,11 +262,6 @@ public class ZWaveTransaction {
     }
 
     public void setTransactionComplete() {
-        // If we're waiting for data, then don't complete the transaction
-        if (payload.getExpectedResponseSerialMessageClass() != null) {
-            return;
-        }
-
         logger.debug("TID {}: Transaction COMPLETED", transactionId);
         transactionStateTracker = TransactionState.DONE;
     }
