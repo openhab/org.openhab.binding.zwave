@@ -97,7 +97,10 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
                 }
                 // Mark the transaction as DONE.
                 // If the transaction needs data, then it will continue to wait for this data
-                transaction.setTransactionComplete();
+                // If we're waiting for data, then don't complete the transaction
+                if (transaction.getExpectedReplyClass() == null) {
+                    transaction.setTransactionComplete();
+                }
                 return true;
 
             case COMPLETE_NO_ACK:
@@ -144,8 +147,8 @@ public class SendDataMessageClass extends ZWaveCommandProcessor {
          */
         private static Map<Integer, TransmissionState> codeToTransmissionStateMapping;
 
-        private int key;
-        private String label;
+        private final int key;
+        private final String label;
 
         private TransmissionState(int key, String label) {
             this.key = key;

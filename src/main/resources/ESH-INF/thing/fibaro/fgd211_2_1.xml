@@ -40,7 +40,7 @@ Universal Dimmer 500W<br /><h1>Overview</h1><p>Remotely controlled Dimmer is des
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGD211</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0100:0104,0100:0106,0100:0107,0100:0109,0100:100A,0100:300A</property>
+      <property name="manufacturerRef">0100:0104,0100:0106,0100:0107,0100:0109,0100:100A,0100:300A,0100:400A</property>
       <property name="versionMin">2.1</property>
       <property name="dbReference">119</property>
       <property name="defaultAssociations">3</property>
