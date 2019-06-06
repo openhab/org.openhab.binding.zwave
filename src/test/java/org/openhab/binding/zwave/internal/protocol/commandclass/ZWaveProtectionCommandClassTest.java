@@ -20,8 +20,8 @@ import java.util.List;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveProtectionCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveProtectionCommandClass.LocalProtectionType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveProtectionCommandClass.RfProtectionType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveProtectionCommandClass.Type;
@@ -85,16 +85,62 @@ public class ZWaveProtectionCommandClassTest extends ZWaveCommandClassTest {
     }
 
     @Test
-    public void setProtection() {
+    public void setProtectionV1() {
         ZWaveProtectionCommandClass cls = (ZWaveProtectionCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_PROTECTION);
-        cls.setVersion(cls.getMaxVersion());
+        cls.setVersion(1);
+
+        byte[] expectedResponse = { 99, 3, 117, 1, 1 };
+        SerialMessage msg = cls.setValueMessage(LocalProtectionType.SEQUENCE, RfProtectionType.NORFRESPONSE)
+                .getSerialMessage();
+
+        assertTrue(Arrays.equals(msg.getMessagePayload(), expectedResponse));
+    }
+
+    @Test
+    public void setProtectionV2() {
+        ZWaveProtectionCommandClass cls = (ZWaveProtectionCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_PROTECTION);
+        cls.setVersion(2);
 
         byte[] expectedResponse = { 99, 4, 117, 1, 1, 2 };
         SerialMessage msg = cls.setValueMessage(LocalProtectionType.SEQUENCE, RfProtectionType.NORFRESPONSE)
                 .getSerialMessage();
 
         assertTrue(Arrays.equals(msg.getMessagePayload(), expectedResponse));
+    }
+
+    @Test
+    public void setLocalProtectionV2_withRfDefault() {
+        ZWaveProtectionCommandClass cls = (ZWaveProtectionCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_PROTECTION);
+        cls.setVersion(2);
+        setDefaultProtectionTypes(cls, LocalProtectionType.UNPROTECTED, RfProtectionType.NORFCONTROL);
+
+        byte[] expectedResponse = { 99, 4, 117, 1, 1, 1 };
+        SerialMessage msg = cls.setValueMessage(LocalProtectionType.SEQUENCE, null).getSerialMessage();
+
+        assertTrue(Arrays.equals(msg.getMessagePayload(), expectedResponse));
+    }
+
+    @Test
+    public void setRfProtectionV2_withLocalDefault() {
+        ZWaveProtectionCommandClass cls = (ZWaveProtectionCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_PROTECTION);
+        cls.setVersion(2);
+        setDefaultProtectionTypes(cls, LocalProtectionType.PROTECTED, RfProtectionType.UNPROTECTED);
+
+        byte[] expectedResponse = { 99, 4, 117, 1, 2, 1 };
+        SerialMessage msg = cls.setValueMessage(null, RfProtectionType.NORFCONTROL).getSerialMessage();
+
+        assertTrue(Arrays.equals(msg.getMessagePayload(), expectedResponse));
+    }
+
+    private void setDefaultProtectionTypes(ZWaveProtectionCommandClass cls, LocalProtectionType localType,
+            RfProtectionType rfType) {
+        ZWaveCommandClassPayload payload = new ZWaveCommandClassPayload(
+                new byte[] { 75, 3, (byte) localType.ordinal(), (byte) rfType.ordinal() });
+        cls.handleProtectionReport(payload, 1);
     }
 
 }
