@@ -63,7 +63,7 @@ Heavy Duty Switch<br /><h1>Overview</h1><p>Wall mounted switch for high current 
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW078</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0003:004E,0103:004E,0203:004E</property>
+      <property name="manufacturerRef">0003:004E,0103:004E,0203:004E,1A03:004E</property>
       <property name="dbReference">65</property>
       <property name="defaultAssociations">1</property>
     </properties>
