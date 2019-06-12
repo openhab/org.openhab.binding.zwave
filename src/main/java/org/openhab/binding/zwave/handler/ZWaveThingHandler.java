@@ -724,7 +724,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                             paramValues.add(strParam);
                         }
                     }
-                    logger.debug("NODE {}: Association {} consolidated to {}", nodeId, paramValues);
+                    logger.debug("NODE {}: Association {} consolidated to {}", nodeId,groupIndex, paramValues);
 
                     ZWaveAssociationGroup currentMembers = node.getAssociationGroup(groupIndex);
                     if (currentMembers == null) {
