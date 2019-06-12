@@ -734,7 +734,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     logger.debug("NODE {}: Current members before update {}", nodeId, currentMembers);
 
                     ZWaveAssociationGroup newMembers = new ZWaveAssociationGroup(groupIndex);
-                    int totalMembers = currentMembers.getAssociationCnt();
 
                     // Loop over all the values
                     for (String paramValue : paramValues) {
@@ -764,8 +763,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                                 newMembers
                                         .addAssociation(new ZWaveAssociation(groupNode, Integer.parseInt(groupCfg[2])));
                             }
-
-                            totalMembers++;
                         }
                     }
                     logger.debug("NODE {}: Members after config update {}", nodeId, newMembers);
@@ -800,7 +797,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                     // If there are no known associations in the group, then let's clear the group completely
                     // This ensures we don't end up with strange ghost associations
-                    if (totalMembers == 0) {
+                    if (newMembers.getAssociationCnt() == 0) {
                         logger.debug("NODE {}: Association group {} contains no members. Clearing.", nodeId,
                                 groupIndex);
                         node.sendMessage(node.clearAssociation(groupIndex));
@@ -813,7 +810,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                                         groupIndex);
                                 // No - so it needs to be removed
                                 node.sendMessage(node.removeAssociation(groupIndex, member));
-                                totalMembers--;
                             }
                         }
 
@@ -824,7 +820,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                                 logger.debug("NODE {}: Adding {} to association group {}", nodeId, member, groupIndex);
                                 // No - so it needs to be added
                                 node.sendMessage(node.setAssociation(groupIndex, member));
-                                totalMembers++;
                             }
                         }
                     }
