@@ -630,6 +630,8 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         }
 
         if (eventKey != null) {
+            logger.debug("Sending user event {}", eventKey);
+
             EventPublisher ep = ZWaveEventPublisher.getEventPublisher();
             if (ep != null) {
                 BindingEventDTO dto = new BindingEventDTO(eventState,
@@ -638,6 +640,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                         eventEntity, eventId, dto);
                 ep.post(notification);
             }
+            logger.debug("User event sent {}", eventKey);
         }
     }
 
