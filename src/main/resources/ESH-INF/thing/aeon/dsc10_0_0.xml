@@ -27,7 +27,7 @@ Heavy Duty Smart Switch<br /><h1>Overview</h1><p><strong>Aeotec by Aeon Labs Hea
       <property name="vendor">AEON Labs</property>
       <property name="modelId">DSC10</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0003:000A,1A03:004E</property>
+      <property name="manufacturerRef">0003:000A</property>
       <property name="dbReference">285</property>
       <property name="defaultAssociations">1</property>
     </properties>
