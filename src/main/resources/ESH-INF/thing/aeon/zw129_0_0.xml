@@ -45,6 +45,11 @@ Dual Wallmote<br /><h1>Overview</h1><p>Aeotec WallMote is an intelligent Z-Wave 
           <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->

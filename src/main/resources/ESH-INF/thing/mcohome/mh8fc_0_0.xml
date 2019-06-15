@@ -64,6 +64,7 @@ Fan Coil Thermostat<br /><h1>Overview</h1><p>MCOHome Fan Coil Thermostat is a Z-
       <property name="modelId">MH8-FC</property>
       <property name="manufacturerId">015F</property>
       <property name="manufacturerRef">0801:3102,0801:5102,0802:3102,0802:5102,0803:5102</property>
+      <property name="versionMax">2.9</property>
       <property name="dbReference">336</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -117,7 +118,7 @@ Fan Coil Thermostat<br /><h1>Overview</h1><p>MCOHome Fan Coil Thermostat is a Z-
       <options>
         <option value="1">On (Low)</option>
         <option value="3">On (high)</option>
-        <option value="">UNKNOWN_5</option>
+        <option value=""></option>
       </options>
     </state>
   </channel-type>
