@@ -724,7 +724,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                             paramValues.add(strParam);
                         }
                     }
-                    logger.debug("NODE {}: Association {} consolidated to {}", nodeId,groupIndex, paramValues);
+                    logger.debug("NODE {}: Association {} consolidated to {}", nodeId, groupIndex, paramValues);
 
                     ZWaveAssociationGroup currentMembers = node.getAssociationGroup(groupIndex);
                     if (currentMembers == null) {
@@ -1673,8 +1673,14 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
             // Build the configuration value
             for (ZWaveAssociation groupMember : group.getAssociations()) {
-                logger.debug("NODE {}: Update ASSOCIATION group_{}: Adding {}", nodeId, group, groupMember);
-                members.add(groupMember.toString());
+                if (groupMember.getNode() == controllerHandler.getOwnNodeId()) {
+                    logger.debug("NODE {}: Update ASSOCIATION group_{}: Adding Controller ({})", nodeId, group,
+                            groupMember);
+                    members.add(ZWaveBindingConstants.GROUP_CONTROLLER);
+                } else {
+                    logger.debug("NODE {}: Update ASSOCIATION group_{}: Adding {}", nodeId, group, groupMember);
+                    members.add(groupMember.toString());
+                }
             }
 
             config.put("group_" + group.getIndex(), members);
