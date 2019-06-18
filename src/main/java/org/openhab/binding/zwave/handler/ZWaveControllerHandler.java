@@ -18,15 +18,16 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Hashtable;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.smarthome.config.core.Configuration;
 import org.eclipse.smarthome.config.core.validation.ConfigValidationException;
-import org.eclipse.smarthome.config.discovery.DiscoveryService;
 import org.eclipse.smarthome.core.events.Event;
 import org.eclipse.smarthome.core.events.EventPublisher;
 import org.eclipse.smarthome.core.thing.Bridge;
@@ -37,7 +38,6 @@ import org.eclipse.smarthome.core.thing.UID;
 import org.eclipse.smarthome.core.thing.binding.BaseBridgeHandler;
 import org.eclipse.smarthome.core.types.Command;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
-import org.openhab.binding.zwave.discovery.ZWaveDiscoveryService;
 import org.openhab.binding.zwave.event.BindingEventDTO;
 import org.openhab.binding.zwave.event.BindingEventFactory;
 import org.openhab.binding.zwave.event.BindingEventType;
@@ -54,7 +54,6 @@ import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkStateEvent;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RemoveFailedNodeMessageClass.Report;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
-import org.osgi.framework.ServiceRegistration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -68,10 +67,9 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
     private final Logger logger = LoggerFactory.getLogger(ZWaveControllerHandler.class);
 
-    private ZWaveDiscoveryService discoveryService;
-    private ServiceRegistration discoveryRegistration;
-
     private volatile ZWaveController controller;
+
+    private Set<ZWaveEventListener> listeners = new HashSet<ZWaveEventListener>();
 
     private Boolean isMaster;
     private Integer sucNode;
@@ -87,7 +85,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
     private ScheduledFuture<?> healJob = null;
 
-    public ZWaveControllerHandler(Bridge bridge) {
+    public ZWaveControllerHandler(@NonNull Bridge bridge) {
         super(bridge);
     }
 
@@ -194,13 +192,13 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         controller = new ZWaveController(this, config);
         controller.addEventListener(this);
 
-        // Start the discovery service
-        discoveryService = new ZWaveDiscoveryService(this, searchTime);
-        discoveryService.activate();
+        // Add any listeners that were registered before the manager was registered
+        synchronized (listeners) {
+            for (ZWaveEventListener listener : listeners) {
+                controller.addEventListener(listener);
+            }
+        }
 
-        // And register it as an OSGi service
-        discoveryRegistration = bundleContext.registerService(DiscoveryService.class.getName(), discoveryService,
-                new Hashtable<String, Object>());
     }
 
     private void initializeHeal() {
@@ -243,22 +241,16 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             healJob = null;
         }
 
-        // Remove the discovery service
-        if (discoveryService != null) {
-            discoveryService.deactivate();
-            discoveryService = null;
-        }
-
-        if (discoveryRegistration != null) {
-            discoveryRegistration.unregister();
-            discoveryRegistration = null;
-        }
-
         ZWaveController controller = this.controller;
         if (controller != null) {
             this.controller = null;
-            controller.shutdown();
+            synchronized (listeners) {
+                for (ZWaveEventListener listener : listeners) {
+                    controller.removeEventListener(listener);
+                }
+            }
             controller.removeEventListener(this);
+            controller.shutdown();
         }
     }
 
@@ -569,7 +561,6 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                     if (incEvent.getNodeId() == 0) {
                         break;
                     }
-                    discoveryService.deviceDiscovered(event.getNodeId());
                     eventKey = ZWaveBindingConstants.EVENT_INCLUSION_COMPLETED;
                     eventState = BindingEventType.SUCCESS;
                     break;
@@ -612,23 +603,6 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             }
         }
 
-        if (event instanceof ZWaveInitializationStateEvent) {
-            ZWaveInitializationStateEvent initEvent = (ZWaveInitializationStateEvent) event;
-            switch (initEvent.getStage()) {
-                case DISCOVERY_COMPLETE:
-                    // At this point we know enough information about the device to advise the discovery
-                    // service that there's a new thing.
-                    // We need to do this here as we needed to know the device information such as manufacturer,
-                    // type, id and version
-                    ZWaveNode node = controller.getNode(initEvent.getNodeId());
-                    if (node != null) {
-                        deviceAdded(node);
-                    }
-                default:
-                    break;
-            }
-        }
-
         if (eventKey != null) {
             logger.debug("Sending user event {}", eventKey);
 
@@ -649,21 +623,6 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             return;
         }
         controller.incomingPacket(serialMessage);
-    }
-
-    @Override
-    public void deviceDiscovered(int nodeId) {
-        if (discoveryService == null) {
-            return;
-        }
-        // discoveryService.deviceDiscovered(nodeId);
-    }
-
-    public void deviceAdded(ZWaveNode node) {
-        if (discoveryService == null) {
-            return;
-        }
-        discoveryService.deviceAdded(node);
     }
 
     public int getOwnNodeId() {
@@ -701,20 +660,28 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         controller.sendData(transaction);
     }
 
-    public boolean addEventListener(ZWaveThingHandler zWaveThingHandler) {
+    public boolean addEventListener(ZWaveEventListener listener) {
+        synchronized (listeners) {
+            listeners.add(listener);
+        }
+
         if (controller == null) {
             logger.error("Attempting to add listener when controller is null");
             return false;
         }
-        controller.addEventListener(zWaveThingHandler);
+        controller.addEventListener(listener);
         return true;
     }
 
-    public boolean removeEventListener(ZWaveThingHandler zWaveThingHandler) {
+    public boolean removeEventListener(ZWaveEventListener listener) {
+        synchronized (listeners) {
+            listeners.remove(listener);
+        }
+
         if (controller == null) {
             return false;
         }
-        controller.removeEventListener(zWaveThingHandler);
+        controller.removeEventListener(listener);
         return true;
     }
 

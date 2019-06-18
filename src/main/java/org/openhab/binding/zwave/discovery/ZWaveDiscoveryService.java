@@ -28,7 +28,12 @@ import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
 import org.openhab.binding.zwave.internal.ZWaveProduct;
+import org.openhab.binding.zwave.internal.protocol.ZWaveEventListener;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveInitializationStateEvent;
+import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveInclusionState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,7 +43,7 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson - Initial contribution
  *
  */
-public class ZWaveDiscoveryService extends AbstractDiscoveryService {
+public class ZWaveDiscoveryService extends AbstractDiscoveryService implements ZWaveEventListener {
     private final Logger logger = LoggerFactory.getLogger(ZWaveDiscoveryService.class);
 
     private final String ZWAVE_NODE_LABEL = "Z-Wave Node %03d";
@@ -54,11 +59,13 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService {
 
     public void activate() {
         logger.debug("ZWave discovery: Active {}", controllerHandler.getThing().getUID());
+        controllerHandler.addEventListener(this);
     }
 
     @Override
     public void deactivate() {
         logger.debug("ZWave discovery: Deactivate {}", controllerHandler.getThing().getUID());
+        controllerHandler.removeEventListener(this);
     }
 
     @Override
@@ -227,5 +234,31 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService {
         thingDiscovered(discoveryResult);
 
         return;
+    }
+
+    @Override
+    public void ZWaveIncomingEvent(ZWaveEvent event) {
+        if (event instanceof ZWaveInclusionEvent) {
+            ZWaveInclusionEvent incEvent = (ZWaveInclusionEvent) event;
+            if (incEvent.getEvent() == ZWaveInclusionState.IncludeDone && incEvent.getNodeId() != 0) {
+                deviceDiscovered(event.getNodeId());
+            }
+        }
+        if (event instanceof ZWaveInitializationStateEvent) {
+            ZWaveInitializationStateEvent initEvent = (ZWaveInitializationStateEvent) event;
+            switch (initEvent.getStage()) {
+                case DISCOVERY_COMPLETE:
+                    // At this point we know enough information about the device to advise the discovery
+                    // service that there's a new thing.
+                    // We need to do this here as we needed to know the device information such as manufacturer,
+                    // type, id and version
+                    ZWaveNode node = controllerHandler.getNode(initEvent.getNodeId());
+                    if (node != null) {
+                        deviceAdded(node);
+                    }
+                default:
+                    break;
+            }
+        }
     }
 }

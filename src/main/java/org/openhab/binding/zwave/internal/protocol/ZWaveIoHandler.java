@@ -18,7 +18,5 @@ package org.openhab.binding.zwave.internal.protocol;
  *
  */
 public interface ZWaveIoHandler {
-    void deviceDiscovered(int node);
-
     void sendPacket(SerialMessage message);
 }

@@ -17,6 +17,7 @@ import static org.openhab.binding.zwave.ZWaveBindingConstants.*;
 import java.io.IOException;
 import java.util.TooManyListenersException;
 
+import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.thing.Bridge;
 import org.eclipse.smarthome.core.thing.ChannelUID;
@@ -68,7 +69,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
         super(bridge);
     }
 
-    public ZWaveSerialHandler(Bridge thing, SerialPortManager serialPortManager) {
+    public ZWaveSerialHandler(@NonNull Bridge thing, SerialPortManager serialPortManager) {
         super(thing);
         this.serialPortManager = serialPortManager;
     }

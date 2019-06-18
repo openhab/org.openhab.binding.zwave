@@ -337,11 +337,6 @@ public class ZWaveController {
         ZWaveEvent zEvent = new ZWaveInitializationStateEvent(nodeId, ZWaveNodeInitStage.EMPTYNODE);
         notifyEventListeners(zEvent);
 
-        // if (nodeId != 6) {
-        // return;
-        // }
-
-        ioHandler.deviceDiscovered(nodeId);
         ZWaveInitNodeThread thread = new ZWaveInitNodeThread(this, nodeId);
         thread.setName("Node_" + nodeId + "_init");
         thread.start();
