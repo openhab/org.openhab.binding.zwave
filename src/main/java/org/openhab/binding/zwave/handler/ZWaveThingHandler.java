@@ -944,23 +944,25 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         continue;
                     }
 
-                    try {
-                        int code = Integer.parseInt(cfg[2]);
-                        if (code == 0 || code > userCodeCommandClass.getNumberOfSupportedCodes()) {
-                            logger.debug("NODE {}: Attempt to set code ID outside of range", nodeId);
-                            continue;
+                    if ("code".equals(cfg[1])) {
+                        try {
+                            int code = Integer.parseInt(cfg[2]);
+                            if (code == 0 || code > userCodeCommandClass.getNumberOfSupportedCodes()) {
+                                logger.debug("NODE {}: Attempt to set code ID outside of range", nodeId);
+                                continue;
+                            }
+                            if (valueObject instanceof String) {
+                                controllerHandler.sendData(node
+                                        .encapsulate(userCodeCommandClass.setUserCode(code, (String) valueObject), 0));
+                                controllerHandler.sendData(node.encapsulate(userCodeCommandClass.getUserCode(code), 0));
+                                pendingCfg.put(configurationParameter.getKey(), valueObject);
+                            } else {
+                                logger.error("Value format error processing user code {}", valueObject);
+                            }
+                        } catch (NumberFormatException e) {
+                            logger.error("Number format exception parsing user code ID '{}'",
+                                    configurationParameter.getKey());
                         }
-                        if (valueObject instanceof String) {
-                            controllerHandler.sendData(
-                                    node.encapsulate(userCodeCommandClass.setUserCode(code, (String) valueObject), 0));
-                            controllerHandler.sendData(node.encapsulate(userCodeCommandClass.getUserCode(code), 0));
-                            pendingCfg.put(configurationParameter.getKey(), valueObject);
-                        } else {
-                            logger.error("Value format error processing user code {}", valueObject);
-                        }
-                    } catch (NumberFormatException e) {
-                        logger.error("Number format exception parsing user code ID '{}'",
-                                configurationParameter.getKey());
                     }
                     break;
 
