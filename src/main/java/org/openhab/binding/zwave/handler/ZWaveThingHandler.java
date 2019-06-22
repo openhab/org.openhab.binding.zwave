@@ -34,8 +34,6 @@ import java.util.concurrent.TimeUnit;
 import org.eclipse.smarthome.config.core.Configuration;
 import org.eclipse.smarthome.config.core.status.ConfigStatusMessage;
 import org.eclipse.smarthome.config.core.validation.ConfigValidationException;
-import org.eclipse.smarthome.core.events.Event;
-import org.eclipse.smarthome.core.events.EventPublisher;
 import org.eclipse.smarthome.core.thing.Bridge;
 import org.eclipse.smarthome.core.thing.Channel;
 import org.eclipse.smarthome.core.thing.ChannelUID;
@@ -50,12 +48,8 @@ import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.RefreshType;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
-import org.openhab.binding.zwave.event.BindingEventDTO;
-import org.openhab.binding.zwave.event.BindingEventFactory;
-import org.openhab.binding.zwave.event.BindingEventType;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
-import org.openhab.binding.zwave.internal.ZWaveEventPublisher;
 import org.openhab.binding.zwave.internal.ZWaveProduct;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociation;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
@@ -454,8 +448,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
             pollingJob = scheduler.scheduleAtFixedRate(pollingRunnable, initialPeriod, pollingPeriod * 1000,
                     TimeUnit.MILLISECONDS);
-            logger.debug("NODE {}: Polling intialised at {} seconds - start in {} milliseconds.", nodeId, pollingPeriod,
-                    initialPeriod);
+            logger.debug("NODE {}: Polling initialised at {} seconds - start in {} milliseconds.", nodeId,
+                    pollingPeriod, initialPeriod);
         }
     }
 
@@ -1460,25 +1454,25 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     }
                     break;
                 case HEAL_START:
-                    EventPublisher epHealStart = ZWaveEventPublisher.getEventPublisher();
-                    if (epHealStart != null) {
-                        BindingEventDTO dto = new BindingEventDTO(BindingEventType.INFO,
-                                ZWaveBindingConstants.EVENT_HEAL_START);// , new Integer(nodeId));
-                        Event notification = BindingEventFactory.createBindingEvent(ZWaveBindingConstants.BINDING_ID,
-                                "network", "", dto);
-                        epHealStart.post(notification);
-                    }
+                    // EventPublisher epHealStart = ZWaveEventPublisher.getEventPublisher();
+                    // if (epHealStart != null) {
+                    // BindingEventDTO dto = new BindingEventDTO(BindingEventType.INFO,
+                    // ZWaveBindingConstants.EVENT_HEAL_START);// , new Integer(nodeId));
+                    // Event notification = BindingEventFactory.createBindingEvent(ZWaveBindingConstants.BINDING_ID,
+                    // "network", "", dto);
+                    // epHealStart.post(notification);
+                    // }
                     break;
                 case HEAL_END:
-                    updateNodeNeighbours();
-                    EventPublisher epHealDone = ZWaveEventPublisher.getEventPublisher();
-                    if (epHealDone != null) {
-                        BindingEventDTO dto = new BindingEventDTO(BindingEventType.INFO,
-                                ZWaveBindingConstants.EVENT_HEAL_DONE);// , new Integer(nodeId);
-                        Event notification = BindingEventFactory.createBindingEvent(ZWaveBindingConstants.BINDING_ID,
-                                "network", "", dto);
-                        epHealDone.post(notification);
-                    }
+                    // updateNodeNeighbours();
+                    // EventPublisher epHealDone = ZWaveEventPublisher.getEventPublisher();
+                    // if (epHealDone != null) {
+                    // BindingEventDTO dto = new BindingEventDTO(BindingEventType.INFO,
+                    // ZWaveBindingConstants.EVENT_HEAL_DONE);// , new Integer(nodeId);
+                    // Event notification = BindingEventFactory.createBindingEvent(ZWaveBindingConstants.BINDING_ID,
+                    // "network", "", dto);
+                    // epHealDone.post(notification);
+                    // }
 
                     Map<String, String> properties = editProperties();
                     properties.put(ZWaveBindingConstants.PROPERTY_LASTHEAL, getISO8601StringForCurrentDate());
