@@ -31,6 +31,8 @@ import java.util.TimeZone;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import org.eclipse.smarthome.config.core.ConfigDescription;
+import org.eclipse.smarthome.config.core.ConfigDescriptionParameter;
 import org.eclipse.smarthome.config.core.Configuration;
 import org.eclipse.smarthome.config.core.status.ConfigStatusMessage;
 import org.eclipse.smarthome.config.core.validation.ConfigValidationException;
@@ -104,6 +106,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
     private final Map<Integer, ZWaveConfigSubParameter> subParameters = new HashMap<Integer, ZWaveConfigSubParameter>();
     private final Map<String, Object> pendingCfg = new HashMap<String, Object>();
+
+    private Map<String, ConfigDescriptionParameter> parametersMap = new HashMap<String, ConfigDescriptionParameter>();
 
     private final Object pollingSync = new Object();
     private ScheduledFuture<?> pollingJob = null;
@@ -717,6 +721,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                                 for (String split : splits) {
                                     paramValues.add(split.trim());
                                 }
+                            } else {
+                                paramValues.add(strParam.trim());
                             }
                         } else {
                             paramValues.add(strParam);
@@ -748,6 +754,11 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                             }
 
                             int groupNode = Integer.parseInt(groupCfg[1]);
+                            if (controllerHandler.getNode(groupNode) == null) {
+                                logger.debug("NODE {}: Invalid association {} ({})", nodeId, paramValue, groupCfg[0]);
+                                continue;
+                            }
+
                             if (groupNode == controllerHandler.getOwnNodeId()) {
                                 logger.debug("NODE {}: Association is for controller", nodeId);
                                 newMembers.addAssociation(new ZWaveAssociation(controllerHandler.getOwnNodeId(), 1));
@@ -763,15 +774,29 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                             }
                         }
                     }
+
+                    boolean multipleAssociations = true;
+                    if (parametersMap.containsKey("group_" + groupIndex)) {
+                        // check if group accepts more than one member
+                        multipleAssociations = parametersMap.get("group_" + groupIndex).isMultiple();
+                        if (newMembers.getAssociationCnt() > 1
+                                && !parametersMap.get("group_" + groupIndex).isMultiple()) {
+
+                            logger.warn(
+                                    "NODE {}: requested to set multiple associations for single member group group_{}, keeping only first",
+                                    nodeId, groupIndex);
+
+                            List<ZWaveAssociation> associations = newMembers.getAssociations();
+                            for (int i = 1; i < associations.size(); i++) {
+                                associations.remove(i);
+                            }
+                        }
+                    }
+
                     logger.debug("NODE {}: Members after config update {}", nodeId, newMembers);
 
-                    if (controllerHandler.isControllerMaster()) {
+                    if (controllerHandler.isControllerMaster() && newMembers.getAssociationCnt() == 0) {
                         logger.debug("NODE {}: Controller is master - forcing associations", nodeId);
-                        // Check if this is the lifeline profile
-                        if (newMembers.getProfile1() == 0x00 && newMembers.getProfile2() == 0x01) {
-                            logger.debug("NODE {}: Group is lifeline - forcing association", nodeId);
-                            newMembers.addAssociation(new ZWaveAssociation(controllerHandler.getOwnNodeId(), 1));
-                        }
 
                         ThingType thingType = ZWaveConfigProvider.getThingType(node);
                         if (thingType == null) {
@@ -787,10 +812,17 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                                     logger.debug("NODE {}: Group is controller - forcing association", nodeId);
                                     newMembers
                                             .addAssociation(new ZWaveAssociation(controllerHandler.getOwnNodeId(), 1));
+                                } else {
+                                    logger.debug("NODE {}: Thing has no default associations", node.getNodeId());
                                 }
                             }
                         }
                         logger.debug("NODE {}: Members after controller update {}", nodeId, newMembers);
+                    }
+
+                    if (newMembers.getAssociations().equals(currentMembers.getAssociations())) {
+                        logger.debug("NODE {}: Association members are the same! Don't update.", nodeId);
+                        continue;
                     }
 
                     // If there are no known associations in the group, then let's clear the group completely
@@ -827,7 +859,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     pendingCfg.put(configurationParameter.getKey(), valueObject);
 
                     // Create a clean association list
-                    valueObject = getAssociationConfigList(newMembers.getAssociations());
+                    valueObject = getAssociationConfigList(newMembers.getAssociations(), multipleAssociations);
                     break;
 
                 case "wakeup":
@@ -1095,7 +1127,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
     }
 
-    private Object getAssociationConfigList(List<ZWaveAssociation> groupMembers) {
+    private Object getAssociationConfigList(List<ZWaveAssociation> groupMembers, boolean multipleAssociations) {
         List<String> newAssociationsList = new ArrayList<String>();
         for (ZWaveAssociation association : groupMembers) {
             if (association.getNode() == controllerHandler.getOwnNodeId()) {
@@ -1104,10 +1136,10 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 newAssociationsList.add(association.toString());
             }
         }
-        if (newAssociationsList.size() == 0) {
+        if (!multipleAssociations && newAssociationsList.size() == 0) {
             return "";
         }
-        if (newAssociationsList.size() == 1) {
+        if (!multipleAssociations && newAssociationsList.size() == 1) {
             return newAssociationsList.get(0);
         }
         return newAssociationsList;
@@ -1264,25 +1296,13 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 case COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION:
                     int groupId = ((ZWaveAssociationEvent) event).getGroupId();
                     List<ZWaveAssociation> groupMembers = ((ZWaveAssociationEvent) event).getGroupMembers();
-                    // getAssociationConfigList(ZWaveAssociationGroup newMembers) ;
-
-                    // if (groupMembers != null) {
-                    // logger.debug("NODE {}: Update ASSOCIATION group_{}", nodeId, groupId);
-
-                    // List<String> group = new ArrayList<String>();
-
-                    // Build the configuration value
-                    // for (ZWaveAssociation groupMember : groupMembers) {
-                    // logger.debug("NODE {}: Update ASSOCIATION group_{}: Adding {}", nodeId, groupId,
-                    // groupMember);
-                    // group.add(groupMember.toString());
-                    // }
-                    // logger.debug("NODE {}: Update ASSOCIATION group_{}: {} members", nodeId, groupId, group.size());
-
-                    // cfgUpdated = true;
-                    configuration.put("group_" + groupId, getAssociationConfigList(groupMembers));
+                    cfgUpdated = true;
+                    boolean multipleAssociations = true;
+                    if (parametersMap.containsKey("group_" + groupId)) {
+                        multipleAssociations = parametersMap.get("group_" + groupId).isMultiple();
+                    }
+                    configuration.put("group_" + groupId, getAssociationConfigList(groupMembers, multipleAssociations));
                     pendingCfg.remove("group_" + groupId);
-                    // }
                     break;
 
                 case COMMAND_CLASS_SWITCH_ALL:
@@ -1633,6 +1653,15 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             updateProperties(properties);
         }
 
+        logger.debug("NODE {}: Setting up configuration parameter map", nodeId);
+        ConfigDescription thingTypeConfig = ZWaveConfigProvider
+                .getThingTypeConfig(ZWaveConfigProvider.getThingType(node));
+        if (thingTypeConfig != null) {
+            parametersMap = thingTypeConfig.toParametersMap();
+        } else {
+            logger.debug("NODE {}: No configuration found");
+        }
+
         // We need to synchronise the configuration between the ZWave library and ESH.
         // This is especially important when the device is first added as the ESH representation of the config
         // will be set to defaults. We will also not have any defaults for association groups, wakeup etc.
@@ -1651,21 +1680,12 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         // Process ASSOCIATION
         for (ZWaveAssociationGroup group : node.getAssociationGroups().values()) {
-            List<String> members = new ArrayList<String>();
-
-            // Build the configuration value
-            for (ZWaveAssociation groupMember : group.getAssociations()) {
-                if (groupMember.getNode() == controllerHandler.getOwnNodeId()) {
-                    logger.debug("NODE {}: Update ASSOCIATION group_{}: Adding Controller ({})", nodeId, group,
-                            groupMember);
-                    members.add(ZWaveBindingConstants.GROUP_CONTROLLER);
-                } else {
-                    logger.debug("NODE {}: Update ASSOCIATION group_{}: Adding {}", nodeId, group, groupMember);
-                    members.add(groupMember.toString());
-                }
+            boolean multipleAssociations = true;
+            if (parametersMap.containsKey("group_" + group.getIndex())) {
+                multipleAssociations = parametersMap.get("group_" + group.getIndex()).isMultiple();
             }
-
-            config.put("group_" + group.getIndex(), members);
+            config.put("group_" + group.getIndex(),
+                    getAssociationConfigList(group.getAssociations(), multipleAssociations));
         }
 
         // Process WAKE_UP
