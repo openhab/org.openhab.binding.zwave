@@ -84,6 +84,15 @@ Saving load state before power failure<br /><h1>Overview</h1><p>Parameter number
         <default>0</default>
       </parameter>
 
+      <parameter name="config_2_1" type="integer" groupName="configuration"
+                 min="0" max="2">
+        <label>2: Saving load state</label>
+        <description><![CDATA[
+Saving load state before power failure<br /><h1>Overview</h1><p>Info: Saving load state before power failure 0 – shutoff load 1 – turn on load 2 – save load state before power failure</p>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>3: Enable/disable basic report</label>

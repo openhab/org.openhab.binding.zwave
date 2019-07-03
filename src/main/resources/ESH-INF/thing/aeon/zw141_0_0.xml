@@ -48,7 +48,7 @@ ZW141<br /><h1>Overview</h1><p>Aeotec Nano Shutter is a Z-Wave motor controller 
       <property name="vendor">AEON Labs</property>
       <property name="modelId">Nano Shutter Controller</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0003:008D</property>
+      <property name="manufacturerRef">0003:008D,0103:008D</property>
       <property name="dbReference">912</property>
       <property name="defaultAssociations">1</property>
     </properties>
