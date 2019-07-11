@@ -5,10 +5,10 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="homeseer_hsfs100l_00_000" listed="false">
-    <label>HS-FS100-L Homeseer Z-Wave Indicator Light Sensor</label>
+  <thing-type id="homeseer_hsfs100flex_05_018" listed="false">
+    <label>HS-FS100+ Flex Flex Sensor</label>
     <description><![CDATA[
-Homeseer Z-Wave Indicator Light Sensor<br /><h1>Overview</h1><p>HS-FS100-L is a sensor designed to monitor indicator lights on appliances and other equipment in your home. It will send Z-Wave commands to your smart home system when things turn on, turn off or change their status.</p> <p><strong>Main Features</strong></p> <ul><li>Indicator Light Sensor</li> <li>Temperature Sensor</li> <li>Z-Wave Controllable Buzzer</li> <li>Acts as a Z-Wave repeater when used on line power</li> </ul><br /><h2>Inclusion Information</h2><ol><li>Attach the included light or water sensor cable. Put your home automation controller into Z-Wave ‘inclusion’ mode.</li> <li>Press the Z-Wave network button on the front of the unit one time. Wait for the inclusion process to finish. This may take some time.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Put your home automation controller into Z-Wave ‘exclusion’ mode.</li> <li>Press the Z-Wave network button on the front of the unit one time. Wait for the exclusion process to finish. This may take some time.</li> </ol><br /><h2>Wakeup Information</h2><p>Flex Sensor can be programmed to wake up and send its battery status based on the polling interval set. The polling interval is set to 12 hours by default when the unit is added on battery power. When on line power, wake up is not supported.</p> <p>Wake up interval</p> <p>Available settings: 6-1500 (minutes)Default setting: 0 -A setting of “0” disables the regular reporting feature and requires the sensor to be manually woken up to send updates.</p> <p>Default setting when added to HomeSeer systems: 12 hours</p>
+Flex Sensor<br /><h1>Overview</h1><p>HS-FS100+ (“Flex Sensor”) is a multi functional module that includes a temperature sensor, controllable buzzer, and a port to connect external light or water sensors.</p> <br /><h2>Inclusion Information</h2><ol><li>Attach the included light or water sensor cable. Put your home automation controller into Z-Wave ‘inclusion’ mode.</li> <li>Press the Z-Wave network button on the front of the unit one time. Wait for the inclusion process to finish. This may take some time.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Put your home automation controller into Z-Wave ‘exclusion’ mode.</li> <li>Press the Z-Wave network button on the front of the unit one time. Wait for the exclusion process to finish. This may take some time.</li> </ol>
     ]]></description>
     <category>Sensor</category>
 
@@ -43,11 +43,11 @@ Homeseer Z-Wave Indicator Light Sensor<br /><h1>Overview</h1><p>HS-FS100-L is a 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">HomeSeer Technologies</property>
-      <property name="modelId">HS-FS100-L</property>
+      <property name="modelId">HS-FS100+ Flex</property>
       <property name="manufacturerId">000C</property>
       <property name="manufacturerRef">0202:0001</property>
-      <property name="versionMax">5.17</property>
-      <property name="dbReference">1026</property>
+      <property name="versionMin">5.18</property>
+      <property name="dbReference">1069</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -102,12 +102,26 @@ Enable Notfcaton Buzzer<br /><h1>Overview</h1><p>0 = Disabled<br />1 = Enabled (
         <default>1</default>
       </parameter>
 
+      <parameter name="config_5_1" type="integer" groupName="configuration"
+                 min="0" max="20">
+        <label>5: Flashing LED detection delay</label>
+        <description><![CDATA[
+Flashing LED detection delay<br /><h1>Overview</h1><p>Set delay to avoid continuous notifications when detecting flashing LED’s. Flex Sensor will not send notification until flashing LED status changes.</p>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p>Flex Sensor supports Group 1 association. Group 1 reports the sensor’s status and battery if running on batteries.</p>
         ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Basic Set Commands</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
