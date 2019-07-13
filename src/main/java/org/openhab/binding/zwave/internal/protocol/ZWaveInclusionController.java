@@ -57,7 +57,7 @@ public class ZWaveInclusionController implements ZWaveEventListener {
     /**
      * Create the inclusion controller
      *
-     * @param controller         the {@link ZWaveController} to include a device into
+     * @param controller the {@link ZWaveController} to include a device into
      * @param networkSecurityKey the network security key
      */
     public ZWaveInclusionController(ZWaveController controller, String networkSecurityKey) {
@@ -68,7 +68,7 @@ public class ZWaveInclusionController implements ZWaveEventListener {
     /**
      * Starts a network inclusion process.
      *
-     * @param highPower   use high power inclusion
+     * @param highPower use high power inclusion
      * @param networkWide use network wide inclusion
      */
     public void startInclusion(boolean highPower, boolean networkWide) {
@@ -237,8 +237,14 @@ public class ZWaveInclusionController implements ZWaveEventListener {
                         continue;
                     }
 
-                    ZWaveCommandClass zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), newNode,
-                            controller);
+                    ZWaveCommandClass zwaveCommandClass;
+                    if (commandClass == CommandClass.COMMAND_CLASS_SECURITY_2) {
+                        // S0 is mandatory when S2 is supported, so we add that instead for now
+                        zwaveCommandClass = ZWaveCommandClass.getInstance(CommandClass.COMMAND_CLASS_SECURITY.getKey(),
+                                newNode, controller);
+                    } else {
+                        zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), newNode, controller);
+                    }
                     if (zwaveCommandClass != null) {
                         logger.debug("NODE {}: Inclusion is adding command class {}.", incEvent.getNodeId(),
                                 commandClass);

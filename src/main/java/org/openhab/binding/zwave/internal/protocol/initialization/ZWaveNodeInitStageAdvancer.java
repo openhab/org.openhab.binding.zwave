@@ -141,10 +141,8 @@ public class ZWaveNodeInitStageAdvancer {
     /**
      * Constructor. Creates a new instance of the ZWaveNodeStageAdvancer class.
      *
-     * @param node
-     *                       the node this advancer belongs to.
-     * @param controller
-     *                       the controller to use
+     * @param node the node this advancer belongs to.
+     * @param controller the controller to use
      */
     public ZWaveNodeInitStageAdvancer(ZWaveNode node, ZWaveController controller) {
         this.node = node;
@@ -231,7 +229,7 @@ public class ZWaveNodeInitStageAdvancer {
     }
 
     private boolean processTransaction(ZWaveMessagePayloadTransaction transaction) {
-        return processTransaction(transaction, 0, 10);
+        return processTransaction(transaction, 0, 5);
     }
 
     private boolean processTransaction(ZWaveMessagePayloadTransaction transaction, long timeout, int retries) {
@@ -306,8 +304,7 @@ public class ZWaveNodeInitStageAdvancer {
     /**
      * Move all the messages in a collection to the queue
      *
-     * @param transactions
-     *                         the message collection
+     * @param transactions the message collection
      */
     private void processTransactions(Collection<ZWaveCommandClassTransactionPayload> transactions) {
         if (transactions == null) {
@@ -324,10 +321,8 @@ public class ZWaveNodeInitStageAdvancer {
     /**
      * Move all the messages in a collection to the queue and encapsulates them
      *
-     * @param transactions
-     *                         the message collection
-     * @param endpointId
-     *                         the endpoint number
+     * @param transactions the message collection
+     * @param endpointId the endpoint number
      */
     private void processTransactions(Collection<ZWaveCommandClassTransactionPayload> transactions, int endpointId) {
         if (transactions == null) {
@@ -1159,8 +1154,7 @@ public class ZWaveNodeInitStageAdvancer {
     /**
      * Sets the time stamp the node was last queried.
      *
-     * @param queryStageTimeStamp
-     *                                the queryStageTimeStamp to set
+     * @param queryStageTimeStamp the queryStageTimeStamp to set
      */
     public Date getQueryStageTimeStamp() {
         return queryStageTimeStamp;
