@@ -28,7 +28,7 @@ Simon IO: Roller Blind<br /><h1>Overview</h1><p>Roller Blind IO is ready to oper
       <property name="vendor">SimonTech S.L.U</property>
       <property name="modelId">10002080-13x</property>
       <property name="manufacturerId">0267</property>
-      <property name="manufacturerRef">0004:0022</property>
+      <property name="manufacturerRef">0004:0000,0004:0022</property>
       <property name="dbReference">930</property>
       <property name="defaultAssociations">2</property>
     </properties>
