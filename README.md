@@ -56,7 +56,7 @@ Sets the controller as a Static Update Controller within the network
 
 #### Heal Time [heal_time]
 
-Sets the nightly heal time (in hours).
+Sets the nightly heal time (in hours). This is best set to disabled unless your network has routing issues. Be aware that a full network heal may cause more issues than you already have so it may be better to tackle the nodes that have issues. The setting can be found under the controller node in things in HABmin. To heal an individaul node there is a command under tools advanced settings in HABmin. It should not be necessary to use heal in a stable network and particularly in a Z-Wave+ network. see Mesh Heal later on this page for more details.
 
 
 #### Inclusion Mode [inclusion_mode]
@@ -283,13 +283,13 @@ A special type of battery device is a *FLiRS* device. These devices do not sleep
 
 ### Polling
 
-The binding supports periodic polling. This has two purposes - firstly to ensure that a device is still responding, and secondly to update the bindings representation of the state of the device.  Where possible *associations* should be used to update the device state - this will keep network traffic to a minimum, which will improve the network latency, and it will be faster since *associations* send updates to the controller immediately where polling will always be noticeably slower.
+The binding supports periodic polling. This has two purposes - firstly to ensure that a device is still responding, and secondly to update the bindings representation of the state of the device.  Where possible *associations* should be used to update the device state and polling set to days or weeks - this will keep network traffic to a minimum, which will improve the network latency, and it will be faster since *associations* send updates to the controller immediately where polling will always be noticeably slower.
 
 If a device fails to respond to a poll, then it will be marked as DEAD and shown as offline. For battery devices, if they do no provide a wakeup within a period of twice the wakeup period, then they will also be considered dead and taken offline.
 
-Keep the polling at a slow rate unless your device doesn't support *associations*. This will reduce network traffic, reduce the chance of timeouts and retries, and therefore improve the overall performance of the network.
+Keep the polling at a slow rate many hours, days or weeks unless your device doesn't support *associations*. This will reduce network traffic, reduce the chance of timeouts and retries, and therefore improve the overall performance of the network.
 
-The binding can perform a poll of the device shortly after sending a command to make sure that the command was implemented, and the binding has the correct view of the devices state. This is called "Command Poll Period" and may need adjustment for some devices that may update their state slowly (e.g. dimmers that have a slow transition). This is defined in milliseconds, and can be set to 0 to disable this polling.
+The binding can perform a poll of the device shortly after sending a command to make sure that the command was implemented, and the binding has the correct view of the devices state. This is called "Command Poll Period" and may need adjustment for some devices that may update their state slowly (e.g. dimmers that have a slow transition). This is defined in milliseconds, and can be set to 0 to disable this polling. Again polling for most devices is not required and should only be set if there is a noticable issue with reporting from the device.
 
 
 ### Binding Maintenance Functions
@@ -343,6 +343,23 @@ If the device is listed as *Unknown*, then the device has not been fully discove
 * **The device is not in the database.** If the device attributes show that this device has a valid manufacturer ID, device ID and type, then this is likely the case (eg. you see a label like "*Z-Wave node 1 (0082:6015:020D::2.0)*"). Even if the device appears to be in the database, some manufacturers use multiple sets of references for different regions or versions, and your device references may not be in the database. In either case, the database must be updated and you should raise an issue to get this addressed.
 * **The device initialisation is not complete.** Once the device is included into the network, the binding must interrogate it to find out what type of device it is. One part of this process is to get the manufacturer information required to identify the device, and until this is done, the device will remain unknown. For mains powered devices, this will normally occur quickly, however for battery devices the device must be woken up a number of  times to allow the discovery phase to complete. This must be performed with the device close to the controller and you should refer to the device manual for information on waking up the device.  
 
+## Network bandwidth, volume of messages and timeouts
+
+When configuring individual devices and writing automation scripts the following may help avoid a common pitfall of transmitting too much data in a short time.
+
+The controller stick can only be sent one message at a time from the binding to be transmitted to the network.  Any command sent when another message is being transmitted is placed in a queue in the binding.
+
+A message can take anything from just over 50 ms to many 100s of ms to be transmitted and a response to come back from the node across the network. There is therefore a finite number of messages that can be sent and received in a second while maintaining a sensible depth of queue. If too many messages are sent for too long a period then there will be noticeable pause when manually controlling devices.
+
+If a queue has many messages from an automation script, a user should not be surprised if there is a delay when interactively controlling nodes while the script runs. If the automation will run during a period when manual control may also be used, a pause between each command sent by the automation will improve user experience as it makes it less likely that the interactive command is queued behind many commands.
+
+In reverse, when nodes are transmitting information back to the controller or to another node, the network can become congested and again delays can sometimes be seen. If the congestion is particularly bad, this may even end in timeout of outgoing commands and retries.
+
+In general only configure devices to send reports needed at the lowest frequency they are useful and disable any reports of values not needed. Most modern device allow configuration of the time interval or amount of change in a value to trigger a report. Some even allow the specification of the minimum time between consecutive reports. It is better to be conservative with these values as a network is built to avoid a lot of tuning and configuration later.
+
+When a node fails in some way, the bandwidth becomes strangled even further due to the long time a stick tries to talk to the failed node. The stick will try several times to talk to the failed node each with a timeout before returning a failure to the Z-wave binding. While this is happening no other message can be transmitted. If the device is in a long term failed sate this long pause will be repeated as the OpenHAB binding also issues a retries. If there is a lot of regular traffic when this happens very undesirable results are often observed with many devices appearing to have issues despite the issue possibly being caused by a single device.
+
+It is therefore best to make sure bandwidth is not wasted as it increases the resilience of your home automation.
 
 ## When things don't go as planned
 
