@@ -197,7 +197,8 @@ Configuration report for the tamper switch State<br /><h1>Overview</h1><p>Config
         <default>0</default>
       </parameter>
 
-      <parameter name="config_42_1_wo" type="integer" groupName="configuration" readOnly="true">
+      <parameter name="config_42_1" type="integer" groupName="configuration" readOnly="true"
+                 min="0" max="16">
         <label>42: Battery state</label>
         <description><![CDATA[
 Configuration report for the battery state of Sensor<br /><h1>Overview</h1><p>Configuration report for the battery state of Sensor:<br />1, Value=0x00: battery power is nominal.<br />2, Value=0x0F: battery power of Sensor is in low battery.<br />It will report the battery power state to associated nodes automatically when the battery power is in low battery.</p>

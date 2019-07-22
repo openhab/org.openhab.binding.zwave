@@ -7,7 +7,10 @@
 
   <thing-type id="aeon_dsc27_00_000" listed="false">
     <label>DSC27 Micro Illuminator G2</label>
-    <description>Micro Illuminator G2</description>
+    <description><![CDATA[
+Micro Illuminator G2<br /><h1>Overview</h1><p>It has long been thought that a house becomes a home when we make it reflect who we are, when we personalise it, when we fill it with objects we treasure. And all of that remains true, but it no longer needs to be just the objects we put in our home that personalises it. Like the music that gently fills the background of your favourite restaurant, Aeotec’s Micro Switches create the perfect ambiance for your home, and then some. They also give you the perfect control and the perfect, intelligent automation.</p>
+    ]]></description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -47,7 +50,9 @@
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_80_1" type="integer" groupName="configuration">
         <label>80: Notification on Status Change</label>
-        <description>Parameter to Enable to send notification to associated devices (Group 1) when the state of Micro Dimmer's load changed</description>
+        <description><![CDATA[
+Send notification to Group 1 when the load has changed<br /><h1>Overview</h1><p>Parameter to Enable to send notification to associated devices (Group 1) when the state of Micro Dimmer's load changed</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Deactivate</option>

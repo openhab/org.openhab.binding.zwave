@@ -14,14 +14,8 @@ Smart Implant<br /><h1>Overview</h1><p>allows to enhance the functionality of wi
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
-        </properties>
-      </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">
-        <label>Sensor (temperature)</label>
+        <label>Sensor (temperature) Internal</label>
         <properties>
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
@@ -32,28 +26,148 @@ Smart Implant<br /><h1>Overview</h1><p>allows to enhance the functionality of wi
           <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
         </properties>
       </channel>
-      <channel id="alarm_burglar" typeId="alarm_burglar">
-        <label>Alarm (burglar)</label>
+      <channel id="alarm_burglar1" typeId="alarm_burglar">
+        <label>Input 1 Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:1,COMMAND_CLASS_BASIC:1;type=BURGLAR</property>
         </properties>
       </channel>
-      <channel id="switch_binary1" typeId="switch_binary">
-        <label>Input 1</label>
+      <channel id="alarm_burglar2" typeId="alarm_burglar">
+        <label>Input 2 Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:1,COMMAND_CLASS_BASIC:1</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:2,COMMAND_CLASS_BASIC:2;type=BURGLAR</property>
         </properties>
       </channel>
-      <channel id="switch_binary2" typeId="switch_binary">
-        <label>Input 2</label>
+      <channel id="meter_voltage3" typeId="meter_voltage">
+        <label>Input 1 Voltage</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:2</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:3,COMMAND_CLASS_BASIC:3;type=VOLTAGE</property>
         </properties>
       </channel>
-      <channel id="sensor_temperature7" typeId="sensor_temperature">
-        <label>Sensor (temperature) 7</label>
+      <channel id="meter_voltage4" typeId="meter_voltage">
+        <label>Input 2 Voltage</label>
         <properties>
-          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:7;type=TEMPERATURE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:4,COMMAND_CLASS_BASIC:4;type=VOLTAGE</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary5" typeId="switch_binary">
+        <label>Switch Output 1</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:5,COMMAND_CLASS_BASIC:5</property>
+        </properties>
+      </channel>
+      <channel id="protection_local5" typeId="protection_local">
+        <label>Protection Local Output 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION:5;type=PROTECTION_LOCAL</property>
+        </properties>
+      </channel>
+      <channel id="protection_rf5" typeId="protection_rf">
+        <label>Protection RF Output 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION:5;type=PROTECTION_LOCAL</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary6" typeId="switch_binary">
+        <label>Switch Output 2</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:6,COMMAND_CLASS_BASIC:6</property>
+        </properties>
+      </channel>
+      <channel id="protection_local6" typeId="protection_local">
+        <label>Protection Local Output 2</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION:6;type=PROTECTION_LOCAL</property>
+        </properties>
+      </channel>
+      <channel id="protection_rf6" typeId="protection_rf">
+        <label>Protection RF Output 2</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION:6;type=PROTECTION_LOCAL</property>
+        </properties>
+      </channel>
+      <channel id="alarm_heat7" typeId="alarm_heat">
+        <label>Sensor (temperature) Device Overheat</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:7;type=HEAT</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature8" typeId="sensor_temperature">
+        <label>Sensor (temperature) 1</label>
+        <properties>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:8;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="notification_system8" typeId="notification_system">
+        <label>Sensor (temperature) 1 Device Error</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:8</property>
+        </properties>
+      </channel>
+      <channel id="sensor_relhumidity9" typeId="sensor_relhumidity">
+        <label>Relative Humidity 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:9;type=HUMIDITY</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature9" typeId="sensor_temperature">
+        <label>Sensor (temperature) 2</label>
+        <properties>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:9;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="notification_system9" typeId="notification_system">
+        <label>Sensor (temperature) 2 Device Error</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:9</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature10" typeId="sensor_temperature">
+        <label>Sensor (temperature) 3</label>
+        <properties>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:10;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="notification_system10" typeId="notification_system">
+        <label>Sensor (temperature) 3 Device Error</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:10</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature11" typeId="sensor_temperature">
+        <label>Sensor (temperature) 4</label>
+        <properties>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:11;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="notification_system11" typeId="notification_system">
+        <label>Sensor (temperature) 4 Device Error</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:11</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature12" typeId="sensor_temperature">
+        <label>Sensor (temperature) 5</label>
+        <properties>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:12;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="notification_system12" typeId="notification_system">
+        <label>Sensor (temperature) 5 Device Error</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:12</property>
+        </properties>
+      </channel>
+      <channel id="sensor_temperature13" typeId="sensor_temperature">
+        <label>Sensor (temperature) 6</label>
+        <properties>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:13;type=TEMPERATURE</property>
+        </properties>
+      </channel>
+      <channel id="notification_system13" typeId="notification_system">
+        <label>Sensor (temperature) 6 Device Error</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:13</property>
         </properties>
       </channel>
     </channels>
@@ -63,9 +177,32 @@ Smart Implant<br /><h1>Overview</h1><p>allows to enhance the functionality of wi
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGBS222</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0502:1000</property>
+      <property name="manufacturerRef">0502:1000,0502:2000</property>
       <property name="dbReference">1005</property>
-      <property name="defaultAssociations">0</property>
+      <property name="commandClass:COMMAND_CLASS_ALARM">DELETE SAME AS ENDPOINT 1</property>
+      <property name="commandClass:COMMAND_CLASS_BASIC:1">DELETE</property>
+      <property name="commandClass:COMMAND_CLASS_PROTECTION:1">DELETE</property>
+      <property name="commandClass:COMMAND_CLASS_BASIC:2">DELETE</property>
+      <property name="commandClass:COMMAND_CLASS_PROTECTION:2">DELETE</property>
+      <property name="commandClass:COMMAND_CLASS_BASIC:3">DELETE</property>
+      <property name="commandClass:COMMAND_CLASS_SENSOR_MULTILEVEL:3">type=VOLTAGE</property>
+      <property name="commandClass:COMMAND_CLASS_BASIC:4">DELETE</property>
+      <property name="commandClass:COMMAND_CLASS_SENSOR_MULTILEVEL:4">type=VOLTAGE</property>
+      <property name="commandClass:COMMAND_CLASS_BASIC:5">DELETE</property>
+      <property name="commandClass:COMMAND_CLASS_BASIC:6">DELETE</property>
+      <property name="commandClass:COMMAND_CLASS_BASIC:7">DELETE</property>
+      <property name="commandClass:COMMAND_CLASS_SENSOR_MULTILEVEL:7">DELETE MAPPED TO ROOT</property>
+      <property name="commandClass:COMMAND_CLASS_ALARM:7">type=SYSTEM</property>
+      <property name="commandClass:COMMAND_CLASS_SENSOR_MULTILEVEL:8">type=TEMPERATURE</property>
+      <property name="commandClass:COMMAND_CLASS_ALARM:8">type=SYSTEM</property>
+      <property name="commandClass:COMMAND_CLASS_ALARM:9">type=SYSTEM</property>
+      <property name="commandClass:COMMAND_CLASS_SENSOR_MULTILEVEL:10">type=TEMPERATURE</property>
+      <property name="commandClass:COMMAND_CLASS_SENSOR_MULTILEVEL:11">type=TEMPERATURE</property>
+      <property name="commandClass:COMMAND_CLASS_SENSOR_MULTILEVEL:12">type=TEMPERATURE</property>
+      <property name="commandClass:COMMAND_CLASS_ALARM:12">type=SYSTEM</property>
+      <property name="commandClass:COMMAND_CLASS_SENSOR_MULTILEVEL:13">type=TEMPERATURE</property>
+      <property name="commandClass:COMMAND_CLASS_ALARM:13">type=SYSTEM</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -143,7 +280,7 @@ reversing operation of OUT1 and OUT2 outputs<br /><h1>Overview</h1><p>This param
                  min="0" max="127">
         <label>40: Input 1 - sent scenes</label>
         <description><![CDATA[
-sending scene ID<br /><h1>Overview</h1><p>This parameter defines which actions result in sending scene ID and attribute assigned to them. Parameter is relevant only if parameter 20 is set to 2 or 3.</p>
+sending scene ID<br /><h1>Overview</h1><p>This parameter defines which actions result in sending scene ID and attribute assigned to them. Parameter is relevant only if parameter 20 is set to 2 or 3.</p> <p>This is a BIT flag allowing all options to be set. Sum the values of the options required to activate those actions that should be enabled.</p> <p>For example:</p> <p>to enable single and double click set the value to 3</p> <p>to enable single and triple set the value to 5</p> <p>All combinations are valid.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -159,7 +296,7 @@ sending scene ID<br /><h1>Overview</h1><p>This parameter defines which actions r
                  min="0" max="127">
         <label>41: Input 2 - sent scenes</label>
         <description><![CDATA[
-sending scene ID<br /><h1>Overview</h1><p>This parameter defines which actions result in sending scene ID and attribute assigned to them. Parameter is relevant only if parameter 20 is set to 2 or 3.</p>
+sending scene ID<br /><h1>Overview</h1><p>This parameter defines which actions result in sending scene ID and attribute assigned to them. Parameter is relevant only if parameter 20 is set to 2 or 3.</p> <p>This is a BIT flag allowing all options to be set. Sum the values of the options required to activate those actions that should be enabled.</p> <p>For example:</p> <p>to enable single and double click set the value to 3</p> <p>to enable single and triple set the value to 5</p> <p>All combinations are valid.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -344,19 +481,19 @@ OUT2 automatically deactivated<br /><h1>Overview</h1><p>This parameter defines t
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_0" type="text" groupName="association">
-        <label>0: Lifeline</label>
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Lifeline</label>
         <description>reports the device status and allows for assigning single device only (main controller by default).</description>
       </parameter>
 
-      <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: On/Off (IN1)</label>
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: On/Off (IN1)</label>
         <description>is assigned to IN1 input terminal (uses Basic command class).</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
-      <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: On/Off (IN2)</label>
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: On/Off (IN2)</label>
         <description>is assigned to IN2 input terminal (uses Basic command class).</description>
         <multipleLimit>5</multipleLimit>
       </parameter>

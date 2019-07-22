@@ -20,13 +20,6 @@ Wall Switch/Transmitter (2-gang)<br /><h1>Overview</h1><p>Radio Frequency Contro
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
-      <channel id="switch_dimmer" typeId="switch_dimmer">
-        <label>Dimmer</label>
-        <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-        </properties>
-      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->

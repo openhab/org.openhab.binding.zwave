@@ -8,7 +8,7 @@
   <thing-type id="aeon_dsc11_00_000" listed="false">
     <label>DSC11 Smart Strip</label>
     <description><![CDATA[
-Smart Strip<br /><h1>Overview</h1><p>Update command classes -:<br />METER:5 :: ADD<br />METER:6 :: ADD</p>
+Smart Strip<br /><h1>Overview</h1><p>Aeotec by Aeon Labs Smart Strip is a power board with 6 power points of which 4 can be wireless controlled. Customer can turn on/off their electrics when needed with manually operation or Z‐wave wireless control. Smart Strip has plenty of functions, for example the Over Current Protection and Surge Protection, these functions can efficiently protect people’s various electrics from damage.</p> <br /><h2>Inclusion Information</h2><p>Tap the Action Button.</p> <p>The Main (blue) LED will be on steady when successfully included.</p> <br /><h2>Exclusion Information</h2><p>Tap the Action Button.</p> <p>The Main (blue) LED will be flashing when successfully excluded.</p>
     ]]></description>
     <category>LightBulb</category>
 
@@ -331,13 +331,11 @@ Get temperature of Smart Strip<br /><h1>Overview</h1><p>Get temperature of Smart
         <default>0</default>
       </parameter>
 
-      <parameter name="config_100_1" type="integer" groupName="configuration">
+      <parameter name="config_100_1" type="integer" groupName="configuration"
+                 min="0" max="255">
         <label>100: Reset 0x65~0x67 to default value</label>
         <description>Reset 0x65~0x67 to default value</description>
         <default>0</default>
-        <options>
-          <option value="0">Reset</option>
-        </options>
       </parameter>
 
       <parameter name="config_101_4_000000FF" type="integer" groupName="configuration"
