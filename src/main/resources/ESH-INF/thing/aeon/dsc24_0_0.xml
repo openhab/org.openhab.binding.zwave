@@ -7,7 +7,9 @@
 
   <thing-type id="aeon_dsc24_00_000" listed="false">
     <label>DSC24 Smart Energy Switch G2</label>
-    <description>Smart Energy Switch G2</description>
+    <description><![CDATA[
+Smart Energy Switch G2<br /><h1>Overview</h1><p>There are appliances that we turn on and off in our homes each day. And, despite the fact that it'd save us money, there are those that we could turn off if only it was easier. Aeotec by Aeon Labs’ Smart Switch (2nd Edition) and Switch (2nd Edition) package convenience, control and money saving considerations into one, small, plug-in tool. A tool that can be programmed, scheduled, controlled and communicated with from anywhere in the wor</p> <br /><h2>Inclusion Information</h2><ol><li>Press the Action Button on your switch.</li> <li>If your switch has been successfully linked to your network, its LED will no longer blink. If the linking was unsuccessful the LED will continue to blink. </li> </ol><br /><h2>Exclusion Information</h2><ol><li>Press the Action Button on your switch.</li> <li>If your switch has been successfully removed from your network, its LED will blink. If the removal was unsuccessful its LED will not blink</li> </ol>
+    ]]></description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -95,7 +97,9 @@
 
       <parameter name="config_80_1" type="integer" groupName="configuration">
         <label>80: Automatic Notifications</label>
-        <description>Enables automatic notifications to associated devices whenever there is a state change</description>
+        <description><![CDATA[
+Enables automatic notifications to associated devices<br /><h1>Overview</h1><p>Enables automatic notifications to associated devices whenever there is a state change</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Nothing</option>
@@ -117,23 +121,21 @@
       <parameter name="config_91_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>91: Minimum change in wattage</label>
-        <description>The value here represents minimum change in wattage (in terms of wattage) for a REPORT to be sent.</description>
+        <description>Minimum change in wattage for a REPORT to be sent.</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_92_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>92: Minimum change in wattage %</label>
-        <description>The value here represents minimum change in wattage percent (in terms of percentage) for a REPORT to be sent.</description>
+        <description>Minimum change in wattage percent for a REPORT to be sent.</description>
         <default>10</default>
       </parameter>
 
-      <parameter name="config_100_1" type="integer" groupName="configuration">
+      <parameter name="config_100_1" type="integer" groupName="configuration"
+                 min="0" max="255">
         <label>100: Set 100 to 103 to default</label>
         <default>0</default>
-        <options>
-          <option value="0">Reset</option>
-        </options>
       </parameter>
 
       <parameter name="config_101_4" type="integer" groupName="configuration">
@@ -166,12 +168,10 @@
         </options>
       </parameter>
 
-      <parameter name="config_110_1" type="integer" groupName="configuration">
+      <parameter name="config_110_1" type="integer" groupName="configuration"
+                 min="0" max="255">
         <label>110: Set 111 to 113 to default</label>
         <default>0</default>
-        <options>
-          <option value="0">Reset</option>
-        </options>
       </parameter>
 
       <parameter name="config_111_4" type="integer" groupName="configuration"
@@ -201,12 +201,10 @@
         <default>0</default>
       </parameter>
 
-      <parameter name="config_255_1" type="integer" groupName="configuration">
+      <parameter name="config_255_1" type="integer" groupName="configuration"
+                 min="0" max="255">
         <label>255: Device Reset</label>
         <default>0</default>
-        <options>
-          <option value="0">Reset</option>
-        </options>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

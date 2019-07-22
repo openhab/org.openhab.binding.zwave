@@ -6,8 +6,11 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="act_zdw120_00_000" listed="false">
-    <label>ZDW120 Two Wire Wall Dimer</label>
-    <description>Two Wire Wall Dimer</description>
+    <label>ZDW120 Two Wire Wall Dimmer</label>
+    <description><![CDATA[
+Two Wire Wall Dimmer<br /><h1>Overview</h1><p>The ZDW120 Wall Mounted Dimmer is a component of the HomePro lighting control system. Wire the Wall Mounted Dimmer in place of the standard wall switch according to the diagram above and program from the Wireless Controller to operate loads. Inclusion of the ZDW120 Wall Mounted Dimmer on the ZTH100 Wireless Controller menu allows remote ON/OFF control and dimming of lights connected</p> <br /><h2>Inclusion Information</h2><p>Tap either the top or the bottom of the ZDW20 switch once.</p> <br /><h2>Exclusion Information</h2><p>Tap either the top or the bottom of the ZDW20 switch once.</p>
+    ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -46,7 +49,7 @@
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: Set Ignore Start Level Bit When Transmitting Dim Commands</label>
+        <label>1: Ignore Start Level Bit When Dimming</label>
         <description><![CDATA[
 Defines the behavior when transmitting dim commands<br /><h1>Overview</h1><p>The ZDW120 can send Dim commands to Z-Wave enabled dimmers. The Dim command has a start level embedded in it. A dimmer receiving this command will start dimming from that start level. However, the command also has a bit that indicates whether the dimmer should ignore the start level. If the bit is set to 1, the dimmer will ignore the start level and instead start dimming from its current level. To clear this bit, configure this parameter to the value of 0.</p>
         ]]></description>
@@ -104,7 +107,7 @@ Change the top of the switch to OFF and the bottom of the switch to ON.<br /><h1
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
-        <label>6: Don’t Send Level Command After Transmitting Dim Commands</label>
+        <label>6: Don’t Send Level Command after Dim</label>
         <description><![CDATA[
 Change behavior of dim level information update<br /><h1>Overview</h1><p>When you press and hold the bottom of the ZDW120 paddle once, the Z-Wave devices that are associated into Group 1 are sent the Dim command. After you release the paddle, the ZDW120 follows up by commanding the devices to go to the same level of the ZDW120. By default, the ZDW120 is set not to do this. To enable ZDW120 to do this set this parameter to 0.</p>
         ]]></description>

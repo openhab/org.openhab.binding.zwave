@@ -52,6 +52,7 @@ Door/Window Sensor 7<br /><h1>Overview</h1><p>Aeotec Door/ Window Sensor 7 is a 
       <property name="manufacturerId">0371</property>
       <property name="manufacturerRef">0002:0007</property>
       <property name="dbReference">1065</property>
+      <property name="commandClass:COMMAND_CLASS_SECURITY">setVersion=1</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

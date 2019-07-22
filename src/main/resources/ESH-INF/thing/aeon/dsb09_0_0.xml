@@ -258,7 +258,7 @@ Percentage change in wattage to induce an automatic report (Clamp 3)<br /><h1>Ov
       </parameter>
 
       <parameter name="config_101_4_00000002" type="integer" groupName="configuration">
-        <label>101: Report Group 1: MultiSensor Report for Watt (whole HEM)</label>
+        <label>101: Group 1: MultiSensor Report for Watt (whole HEM)</label>
         <default>0</default>
         <options>
           <option value="0">Disable</option>
@@ -267,7 +267,7 @@ Percentage change in wattage to induce an automatic report (Clamp 3)<br /><h1>Ov
       </parameter>
 
       <parameter name="config_101_4_00000004" type="integer" groupName="configuration">
-        <label>101: Report Group 1: Meter Report for Watt (whole device)</label>
+        <label>101: Group 1: Meter Report for Watt (whole device)</label>
         <default>0</default>
         <options>
           <option value="0">Disable</option>
@@ -276,7 +276,7 @@ Percentage change in wattage to induce an automatic report (Clamp 3)<br /><h1>Ov
       </parameter>
 
       <parameter name="config_101_4_00000008" type="integer" groupName="configuration">
-        <label>101: Report Group 1: Meter Report for kWh (whole HEM)</label>
+        <label>101: Group 1: Meter Report for kWh (whole HEM)</label>
         <default>0</default>
         <options>
           <option value="0">Disable</option>
@@ -285,7 +285,7 @@ Percentage change in wattage to induce an automatic report (Clamp 3)<br /><h1>Ov
       </parameter>
 
       <parameter name="config_101_4_00000100" type="integer" groupName="configuration">
-        <label>101: Report Group 1: Meter Report for Watt (clamp 1)</label>
+        <label>101: Group 1: Meter Report for Watt (clamp 1)</label>
         <default>0</default>
         <options>
           <option value="0">Disable</option>
@@ -294,7 +294,7 @@ Percentage change in wattage to induce an automatic report (Clamp 3)<br /><h1>Ov
       </parameter>
 
       <parameter name="config_101_4_00000200" type="integer" groupName="configuration">
-        <label>101: Report Group 1: Meter Report for Watt (clamp 2)</label>
+        <label>101: Group 1: Meter Report for Watt (clamp 2)</label>
         <default>0</default>
         <options>
           <option value="0">Disable</option>
@@ -348,7 +348,7 @@ Percentage change in wattage to induce an automatic report (Clamp 3)<br /><h1>Ov
       </parameter>
 
       <parameter name="config_102_4_00000002" type="integer" groupName="configuration">
-        <label>102: Report Group 2: MultiSensor Report for Watt (whole HEM)</label>
+        <label>102: Group 2: MultiSensor Report for Watt (whole HEM)</label>
         <default>0</default>
         <options>
           <option value="0">Disable</option>
@@ -357,7 +357,7 @@ Percentage change in wattage to induce an automatic report (Clamp 3)<br /><h1>Ov
       </parameter>
 
       <parameter name="config_102_4_00000004" type="integer" groupName="configuration">
-        <label>102: Report Group 2: Meter Report for Watt (whole device)</label>
+        <label>102: Group 2: Meter Report for Watt (whole device)</label>
         <default>0</default>
         <options>
           <option value="0">Disable</option>
@@ -366,7 +366,7 @@ Percentage change in wattage to induce an automatic report (Clamp 3)<br /><h1>Ov
       </parameter>
 
       <parameter name="config_102_4_00000008" type="integer" groupName="configuration">
-        <label>102: Report Group 2: Meter Report for kWh (whole HEM)</label>
+        <label>102: Group 2: Meter Report for kWh (whole HEM)</label>
         <default>0</default>
         <options>
           <option value="0">Disable</option>
@@ -438,7 +438,7 @@ Percentage change in wattage to induce an automatic report (Clamp 3)<br /><h1>Ov
       </parameter>
 
       <parameter name="config_103_4_00000002" type="integer" groupName="configuration">
-        <label>103: Report Group 3: MultiSensor Report for Watt (whole HEM)</label>
+        <label>103: Group 3: MultiSensor Report for Watt (whole HEM)</label>
         <default>0</default>
         <options>
           <option value="0">Disable</option>
@@ -447,7 +447,7 @@ Percentage change in wattage to induce an automatic report (Clamp 3)<br /><h1>Ov
       </parameter>
 
       <parameter name="config_103_4_00000004" type="integer" groupName="configuration">
-        <label>103: Report Group 3: Meter Report for Watt (whole device)</label>
+        <label>103: Group 3: Meter Report for Watt (whole device)</label>
         <default>0</default>
         <options>
           <option value="0">Disable</option>

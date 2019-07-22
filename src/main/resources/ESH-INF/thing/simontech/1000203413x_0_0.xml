@@ -14,11 +14,12 @@ Simon IO: Roller Blind<br /><h1>Overview</h1><p>Roller Blind IO is ready to oper
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_dimmer" typeId="switch_dimmer">
-        <label>Dimmer</label>
+      <channel id="blinds_control" typeId="blinds_control">
+        <label>Blinds Control</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:StopMoveType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:UpDownType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
     </channels>

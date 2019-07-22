@@ -8,6 +8,7 @@
   <thing-type id="aeon_dsa38_00_000" listed="false">
     <label>DSA38 Panic Button Key Fob</label>
     <description>Panic Button Key Fob</description>
+    <category>RemoteControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

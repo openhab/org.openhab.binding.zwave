@@ -7,7 +7,9 @@
 
   <thing-type id="permundo_psc234zw_00_000" listed="false">
     <label>PSC234ZW Metering Plug switching 16A</label>
-    <description>Metering Plug switching 16A</description>
+    <description><![CDATA[
+Metering Plug switching 16A<br /><h1>Overview</h1><p>The wireless plug socket PSC234ZW allows you to remotely control electrical appliances.</p> <p>It features a metering function to measure the power consumption and the accumulated energy usage of connected equipment. The built-in metering unit is of high quality: it calculates the true-power and also works for small loads from 1W upwards. This feature is important to have a correct measurement value also for electronic loads like led lamps. </p> <p><br />The PSC234ZW has a built-in safety features that will switch-off the output in case of too high temperature or overload. </p> <p>Additionally the PSC234 has a feature to switch the load on at zero voltage and switch the load off at zero current. This leads to a very high number of possible switching cycles also for difficult loads like led-lamps or motors, e.g. pumps. </p> <br /><h2>Inclusion Information</h2><p>When a PSC234 that is not associated to a Z-Wave Network, is inserted into the mains outlet, it will flash once red followed by 2 green flashed followed by steady red flashing. The PSC234 can now be added to (=inclusion) or removed from (=exclusion) a Z-Wave network:</p> <ol><li>Hold the touch button until the led shows green light</li> <li>Release the touch button</li> </ol><p>The PSC234 will confirm successful addition to the network by 5 green flashes.</p> <br /><h2>Exclusion Information</h2><p>When a PSC234 that is not associated to a Z-Wave network, is inserted into the mains outlet, it will flash once red followed by 2 green flashed followed by steady red flashing. The PSC234 can now be added to (=inclusion) or removed from (=exclusion) a Z-Wave network:</p> <ol><li>Hold the touch button until the led shows green light</li> <li>Release the touch button</li> </ol><p> The PSC234 will confirm successful removal/exclusion by steady red flashing. At the time of exclusion the device is factory reset. </p>
+    ]]></description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -15,7 +17,7 @@
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
@@ -64,6 +66,7 @@ Disable local control of plug<br /><h1>Overview</h1><p>31d Size:1 Default: 00d</
         ]]></description>
         <default>0</default>
         <options>
+          <option value="0">Enable Local Control</option>
           <option value="1">Disable Local Control</option>
         </options>
       </parameter>

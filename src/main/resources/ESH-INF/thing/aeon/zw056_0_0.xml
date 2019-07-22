@@ -137,8 +137,8 @@ Define functions of “Button ‐”  and “Button+”.<br /><h1>Overview</h
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">“Button ‐” is previous, “Button+” is next</option>
-          <option value="1">“Button ‐” is next, “Button+” is previous</option>
+          <option value="0">“‐” is previous, “+” is next</option>
+          <option value="1">"‐” is next, “+” is previous</option>
         </options>
       </parameter>
 
@@ -149,8 +149,8 @@ Define short/long button presses<br /><h1>Overview</h1><p>0: short pressing chan
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">short press changes vol, long press changes default ringtone</option>
-          <option value="1">long press changes vol, short press changes default ringtone</option>
+          <option value="0">short changes vol, long changes ringtone</option>
+          <option value="1">long changes vol, short changes ringtone</option>
         </options>
       </parameter>
 

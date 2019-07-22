@@ -7,7 +7,9 @@
 
   <thing-type id="aeon_zw074_00_000" listed="false">
     <label>ZW074 4 in One MultiSensor (G5)</label>
-    <description>4 in One MultiSensor (G5)</description>
+    <description><![CDATA[
+4 in One MultiSensor (G5)<br /><h1>Overview</h1><p>The Aeotec by Aeon Labs MultiSensor Gen5 looks like a motion sensor and it acts like one too. But it’s also so much more. Installing this 1 piece of Z-Wave technology is the same as installing 4 pieces of Z-Wave technology. Your home control network will immediately understand motion, temperature, humidity and light readings wherever Multisensor installed. Those intelligent readings will equate to intelligence automation. And intelligent automation will give you the perfect, smart home</p> <br /><h2>Inclusion Information</h2><p>Press the Z-Wave button under the Battery Cover to begin the Z-Wave pairing process.</p> <p>If the MultiSensor was not successfully paired into any Z-Wave network the LED on the MultiSensor will blink when pressing the Z-Wave button. If the MultiSensor was successfully paired into a Z-Wave network, the LED will stay solid for a few seconds when pressing the Z-Wave button.</p> <br /><h2>Exclusion Information</h2><p>Press the Z-Wave button under the Battery Cover to begin the Z-Wave exclusion process.</p> <p>If the MultiSensor was successfully removed from the Z-Wave network, pressing the Z-Wave button will cause the LED to blink. If the MultiSensor was not successfully removed from the Z-Wave network the LED will stay solid for a few seconds</p> <br /><h2>Wakeup Information</h2><p>Press and hold the Z-Wave button for 3 seconds will trigger sending the Wake up notification command. If press the Z-Wave button 3 times, the MultiSensor will wake up for 10 minutes.</p>
+    ]]></description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -83,7 +85,9 @@
       <parameter name="config_3_2" type="integer" groupName="configuration"
                  min="1" max="15300">
         <label>3: On time</label>
-        <description>How long should the device associated to multi sensor keep state On before sending it Off command (if the value is bigger than 255, the value would be rounded to next integer in minutes)</description>
+        <description><![CDATA[
+Time to keep state On before sending Off command<br /><h1>Overview</h1><p>How long should the device associated to multi sensor keep state On before sending it Off command (if the value is bigger than 255, the value would be rounded to next integer in minutes)</p>
+        ]]></description>
         <default>240</default>
       </parameter>
 
@@ -109,7 +113,7 @@
       <parameter name="config_40_1" type="integer" groupName="configuration">
         <label>40: Enable/disable the selective reporting</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>Enable/disable the selective reporting only when measurements reach a certain threshold or percentage set in 41‐44 below.</p> <p>This is used to reduce network traffic.</p>
+Enable/disable the selective reporting<br /><h1>Overview</h1><p>Enable/disable the selective reporting only when measurements reach a certain threshold or percentage set in 41‐44 below.</p> <p>This is used to reduce network traffic.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -120,59 +124,76 @@
 
       <parameter name="config_41_2" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>41: Threshold for changes in temperature to trigger a report.</label>
-        <description>1. When the unit is Celsius, threshold=Value. 2. When the unit is Fahrenheit, threshold=Value*1.8. The accuracy is 0.1. 3. The high byte is the part of integer, the low byte is the fractional part.</description>
+        <label>41: Temperature threshold to trigger a report.</label>
+        <description><![CDATA[
+Temperature threshold to trigger a report.<br /><h1>Overview</h1><ol><li>When the unit is Celsius, threshold=Value.</li> <li>When the unit is Fahrenheit, threshold=Value*1.8. The accuracy is 0.1.</li> <li>The high byte is the part of integer, the low byte is the fractional part.</li> </ol>
+        ]]></description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_42_2" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>42: Threshold for change in humidity to trigger a report.</label>
-        <description>The accuracy is 0.1. The high byte is the part of integer, the low byte is the fractional part.</description>
+        <label>42: Humidity threshold to trigger a report.</label>
+        <description><![CDATA[
+Threshold for change in humidity to trigger a report.<br /><h1>Overview</h1><p>The accuracy is 0.1.</p> <p>The high byte is the part of integer, the low byte is the fractional part.</p>
+        ]]></description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_43_2" type="integer" groupName="configuration"
                  min="0" max="1000">
         <label>43: luminance report threshold</label>
-        <description>Threshold for changes in luminance to trigger a report. Note the sensor range is just 1-1000 lux !</description>
+        <description><![CDATA[
+luminance report threshold<br /><h1>Overview</h1><p>Threshold for changes in luminance to trigger a report. Note the sensor range is just 1-1000 lux !</p>
+        ]]></description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_44_2" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>44: Threshold change in battery level to induce an automatic report.</label>
-        <description>The accuracy is 0.1. The high byte is the part of integer, the low byte is the fractional part.</description>
+        <label>44: Battery level to induce an automatic report.</label>
+        <description><![CDATA[
+Battery level to induce an automatic report.<br /><h1>Overview</h1><p>The accuracy is 0.1.</p> <p>The high byte is the part of integer, the low byte is the fractional part.</p>
+        ]]></description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_46_1" type="integer" groupName="configuration">
-        <label>46: Enable/disable to send the alarm report of low temperature(‐15C)</label>
+        <label>46: Enable/disable low temperature alarm report</label>
+        <description><![CDATA[
+Enable/disable low temperature alarm report<br /><h1>Overview</h1><p>Enable/disable to send the alarm report of low temperature(‐15C)</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Disable</option>
-          <option value="1">Enabled (The MultiSensor will report the Multi Level Temperature CC wi</option>
+          <option value="1">Enabled</option>
         </options>
       </parameter>
 
       <parameter name="config_101_4" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>101: Which reports need to send automatically in timing intervals for group 1</label>
-        <description>The value is a combination number made up of the sum of the values for the individual sensors and battery. The sensors have the values: Temperature=32, Humidity=64, Lightlevel=128, Battery=1. Therefore if you want all sensors and the batte</description>
+        <label>101: Reports sent automatically for group 1</label>
+        <description><![CDATA[
+Reports sent automatically for group 1<br /><h1>Overview</h1><p>The value is a combination number made up of the sum of the values for the individual sensors and battery. The sensors have the values:</p> <ul><li>Temperature=32</li> <li>Humidity=64</li> <li>Lightlevel=128</li> <li>Battery=1</li> </ul>
+        ]]></description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_102_4" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>102: Which reports need to send automatically in timing intervals for group 2</label>
-        <description>The value is a combination number made up of the sum of the values for the individual sensors and battery. The sensors have the values: Temperature=32, Humidity=64, Lightlevel=128, Battery=1. Therefore if you want all sensors and the batte</description>
+        <label>102: Reports sent automatically for group 2</label>
+        <description><![CDATA[
+Reports sent automatically for group 2<br /><h1>Overview</h1><p>The value is a combination number made up of the sum of the values for the individual sensors and battery.</p> <p>The sensors have the values:</p> <ul><li>Temperature=32</li> <li>Humidity=64</li> <li>Lightlevel=128</li> <li>Battery=1</li> </ul>
+        ]]></description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_103_4" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>103: Which reports need to send automatically in timing intervals for group 3</label>
-        <description>The value is a combination number made up of the sum of the values for the individual sensors and battery. The sensors have the values: Temperature=32, Humidity=64, Lightlevel=128, Battery=1. Therefore if you want all sensors and the batte</description>
+        <label>103: Reports sent automatically for group 3</label>
+        <description><![CDATA[
+Reports sent automatically for group 3<br /><h1>Overview</h1><p>The value is a combination number made up of the sum of the values for the individual sensors and battery.</p> <p>The sensors have the values:</p> <ul><li>Temperature=32</li> <li>Humidity=64</li> <li>Lightlevel=128</li> <li>Battery=1</li> </ul>
+        ]]></description>
         <default>0</default>
       </parameter>
 
@@ -207,8 +228,8 @@
         <label>255: Reset to default factory setting.</label>
         <default>1</default>
         <options>
-          <option value="1">Resets all configuration parameters to default setting.</option>
-          <option value="1431655765">Reset the product to default factory setting and be excluded from the</option>
+          <option value="1">Reset all configuration to default</option>
+          <option value="1431655765">Reset to default exclude from the network</option>
         </options>
       </parameter>
 

@@ -78,7 +78,7 @@ Universal Double Switch<br /><h1>Overview</h1><p>Universal Double Switch is an O
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: Outputs status upon receipt of 1 click on its command</label>
+        <label>1: Status upon receipt of 1 click</label>
         <description><![CDATA[
 Defines the status of the output O1/O2 after 1 Click<br /><h1>Overview</h1><p>Defines the status of the output O1/O2 when the switch connected to I1/I2 receives 1 Click</p> <p>INFO:</p> <p>0 – IN_OUT configuration is available on WiDom Universal Double Switch starting from the<br />firmware version 1.40.</p>
         ]]></description>
@@ -93,7 +93,7 @@ Defines the status of the output O1/O2 after 1 Click<br /><h1>Overview</h1><p>De
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
-        <label>2: Outputs status upon receipt of 2 clicks on its command</label>
+        <label>2: Status upon receipt of 2 clicks</label>
         <description><![CDATA[
 Defines the status of the output O1/O2 after 2 Clicks<br /><h1>Overview</h1><p>Defines the status of the output O1/O2 when the switch connected to I1/I2 receives 2 Clicks</p>
         ]]></description>
@@ -116,14 +116,14 @@ Defines how the outputs are controlled<br /><h1>Overview</h1><p>Defines if the o
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
-        <label>4: Clicks that activate the control of the associated devices</label>
+        <label>4: Number of clicks that control the device</label>
         <description><![CDATA[
 Defines the Clicks on the Switches that control associated devices<br /><h1>Overview</h1><p>Defines the number of clicks on the Switch 1 or Switch 2 that enable the control of the correspondent associated devices</p> <p><strong>TIP</strong>:</p> <p>Through this parameter, together the setting of the parameters 1 and 2, it is possible to control simultaneously the local load and the associated devices (e.g. 1 click control both local load and associated devices) or in totally independent way (e.g. 1 click control only the local load, 2 clicks control only the associated devices).</p>
         ]]></description>
         <default>2</default>
         <options>
-          <option value="1">1 CLICK</option>
-          <option value="2">2 CLICKS</option>
+          <option value="1">Controlled by 1 Click</option>
+          <option value="2">Controlled by 2 Clicks</option>
         </options>
       </parameter>
 
@@ -188,15 +188,15 @@ Defines the time after which the Channel 2 is switched ON<br /><h1>Overview</h1>
       </parameter>
 
       <parameter name="config_20_1" type="integer" groupName="configuration">
-        <label>20: Outputs status after Multi-Channel Basic Set command</label>
+        <label>20: Status after Multi-Channel Basic Set command</label>
         <description><![CDATA[
 Defines how Basic Set commands controlling outputs<br /><h1>Overview</h1><p>The two channels can be controlled individually by Z-Wave network. The status of the channels upon receipt of a Multi-Channel Basic Set command is defined by the value set on the parameter.</p>
         ]]></description>
         <default>1</default>
         <options>
-          <option value="1">AS RECEIVED</option>
-          <option value="2">IGNORE IF ON</option>
-          <option value="3">IGNORE IF OFF</option>
+          <option value="1">As Received</option>
+          <option value="2">Ignore if ON</option>
+          <option value="3">Ignore if OFF</option>
           <option value="4">IGNORE</option>
         </options>
       </parameter>
