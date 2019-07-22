@@ -45,7 +45,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author Chris Jackson - Initial contribution
  */
-@Component(immediate = true, service = { ThingHandlerFactory.class })
+@Component(service = ThingHandlerFactory.class)
 public class ZWaveHandlerFactory extends BaseThingHandlerFactory {
     private Logger logger = LoggerFactory.getLogger(BaseThingHandlerFactory.class);
 
