@@ -452,7 +452,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         }
 
         if (controller == null) {
-            logger.error("Attempting to add listener when controller is null");
+            logger.info("Attempting to add listener when controller is null");
             return false;
         }
         controller.addEventListener(listener);

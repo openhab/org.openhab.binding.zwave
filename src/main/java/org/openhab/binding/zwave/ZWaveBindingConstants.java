@@ -101,10 +101,13 @@ public class ZWaveBindingConstants {
     public final static String OFFLINE_CTLR_OFFLINE = "@text/zwave.thingstate.controller_offline";
     public final static String OFFLINE_NODE_DEAD = "@text/zwave.thingstate.node_dead";
     public final static String OFFLINE_NODE_NOTFOUND = "@text/zwave.thingstate.node_notfound";
-    public final static String OFFLINE_SERIAL_EXISTS = "@text/zwave.thingstate.serial_notfound";
+    public final static String OFFLINE_SERIAL_NOTFOUND = "@text/zwave.thingstate.serial_notfound";
     public final static String OFFLINE_SERIAL_INUSE = "@text/zwave.thingstate.serial_inuse";
     public final static String OFFLINE_SERIAL_UNSUPPORTED = "@text/zwave.thingstate.serial_unsupported";
     public final static String OFFLINE_SERIAL_LISTENERS = "@text/zwave.thingstate.serial_listeners";
+    public final static String OFFLINE_PORT_UNSET = "@text/zwave.thingstate.port_unset";
+    public final static String OFFLINE_NODEID_UNSET = "@text/zwave.thingstate.nodeid_unset";
+    public final static String OFFLINE_NODEID_INVALID = "@text/zwave.thingstate.nodeid_invalid";
 
     public final static String EVENT_INCLUSION_STARTED = "@text/zwave.event.inclusion_started";
     public final static String EVENT_INCLUSION_COMPLETED = "@text/zwave.event.inclusion_completed";
@@ -115,7 +118,7 @@ public class ZWaveBindingConstants {
     public final static String EVENT_EXCLUSION_STARTED = "@text/zwave.event.exclusion_started";
     public final static String EVENT_EXCLUSION_COMPLETED = "@text/zwave.event.exclusion_completed";
     public final static String EVENT_EXCLUSION_FAILED = "@text/zwave.event.exclusion_failed";
-    public final static String EVENT_EXCLUSION_NODEREMOVED = "z@text/wave.event.exclusion_failed";
+    public final static String EVENT_EXCLUSION_NODEREMOVED = "z@text/wave.event.exclusion_noderemoved";
 
     public final static String EVENT_NETWORKUPDATE_DONE = "@text/zwave.event.networkupdate_done";
     public final static String EVENT_NETWORKUPDATE_ABORT = "@text/zwave.event.networkupdate_abort";

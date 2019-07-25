@@ -81,7 +81,9 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
         portId = (String) getConfig().get(CONFIGURATION_PORT);
 
         if (portId == null || portId.length() == 0) {
-            logger.error("ZWave port is not set.");
+            logger.debug("ZWave port is not set.");
+            updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.CONFIGURATION_ERROR,
+                    ZWaveBindingConstants.OFFLINE_PORT_UNSET);
             return;
         }
 
@@ -91,7 +93,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             SerialPortIdentifier portIdentifier = serialPortManager.getIdentifier(portId);
             if (portIdentifier == null) {
                 updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                        ZWaveBindingConstants.OFFLINE_SERIAL_EXISTS);
+                        ZWaveBindingConstants.OFFLINE_SERIAL_NOTFOUND + " [\"" + portId + "\"]");
                 return;
             }
             SerialPort commPort = portIdentifier.open("org.openhab.binding.zwave", 2000);
@@ -114,13 +116,13 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             initializeNetwork();
         } catch (PortInUseException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    ZWaveBindingConstants.OFFLINE_SERIAL_INUSE);
+                    ZWaveBindingConstants.OFFLINE_SERIAL_INUSE + " [\"" + portId + "\"]");
         } catch (UnsupportedCommOperationException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    ZWaveBindingConstants.OFFLINE_SERIAL_UNSUPPORTED);
+                    ZWaveBindingConstants.OFFLINE_SERIAL_UNSUPPORTED + " [\"" + portId + "\"]");
         } catch (TooManyListenersException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    ZWaveBindingConstants.OFFLINE_SERIAL_LISTENERS);
+                    ZWaveBindingConstants.OFFLINE_SERIAL_LISTENERS + " [\"" + portId + "\"]");
         }
     }
 
@@ -141,7 +143,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             serialPort.close();
             serialPort = null;
         }
-        logger.info("Stopped ZWave serial handler");
+        logger.debug("Stopped ZWave serial handler");
 
         super.dispose();
     }
@@ -189,7 +191,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
          * Sends 1 byte frame response.
          *
          * @param response
-         *                     the response code to send.
+         *            the response code to send.
          */
         private void sendResponse(int response) {
             try {
@@ -199,7 +201,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                     logger.trace("Response SENT {}", response);
                 }
             } catch (IOException e) {
-                logger.error("Exception during send", e);
+                logger.debug("Exception during send", e);
             }
         }
 
@@ -238,7 +240,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                             continue;
                         }
                     } catch (IOException e) {
-                        logger.error("Got I/O exception {} during receiving. exiting thread.", e.getLocalizedMessage());
+                        logger.debug("Got I/O exception {} during receiving. exiting thread.", e.getLocalizedMessage());
                         break;
                     }
 
@@ -342,7 +344,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
 
                 }
             } catch (Exception e) {
-                logger.error("Exception during ZWave thread. ", e);
+                logger.debug("Exception during ZWave thread. ", e);
             }
             logger.debug("Stopped ZWave thread: Receive");
 
@@ -369,7 +371,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                 logger.debug("Message SENT");
             }
         } catch (IOException e) {
-            logger.error("Got I/O exception {} during sending. exiting thread.", e.getLocalizedMessage());
+            logger.debug("Got I/O exception {} during sending. exiting thread.", e.getLocalizedMessage());
         }
     }
 }
