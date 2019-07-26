@@ -20,6 +20,7 @@ import java.util.Map;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.smarthome.config.discovery.DiscoveryService;
+import org.eclipse.smarthome.core.scheduler.CronScheduler;
 import org.eclipse.smarthome.core.thing.Bridge;
 import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.thing.ThingTypeUID;
@@ -52,6 +53,7 @@ public class ZWaveHandlerFactory extends BaseThingHandlerFactory {
     private Map<ThingUID, ServiceRegistration<?>> discoveryServiceRegs = new HashMap<>();
 
     private @NonNullByDefault({}) SerialPortManager serialPortManager;
+    private @NonNullByDefault({}) CronScheduler cronScheduler;
 
     @Reference
     protected void setSerialPortManager(final SerialPortManager serialPortManager) {
@@ -60,6 +62,15 @@ public class ZWaveHandlerFactory extends BaseThingHandlerFactory {
 
     protected void unsetSerialPortManager(final SerialPortManager serialPortManager) {
         this.serialPortManager = null;
+    }
+
+    @Reference
+    protected void setCronScheduler(final CronScheduler cronScheduler) {
+        this.cronScheduler = cronScheduler;
+    }
+
+    protected void unsetCronScheduler(final CronScheduler cronScheduler) {
+        this.cronScheduler = null;
     }
 
     @Override
@@ -81,7 +92,7 @@ public class ZWaveHandlerFactory extends BaseThingHandlerFactory {
 
         // Handle controllers here
         if (thingTypeUID.equals(CONTROLLER_SERIAL)) {
-            controller = new ZWaveSerialHandler((Bridge) thing, serialPortManager);
+            controller = new ZWaveSerialHandler((Bridge) thing, serialPortManager, cronScheduler);
         }
 
         if (controller != null) {

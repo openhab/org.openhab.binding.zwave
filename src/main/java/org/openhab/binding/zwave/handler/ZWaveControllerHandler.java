@@ -15,7 +15,6 @@ package org.openhab.binding.zwave.handler;
 import static org.openhab.binding.zwave.ZWaveBindingConstants.*;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -28,6 +27,8 @@ import java.util.concurrent.TimeUnit;
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.smarthome.config.core.Configuration;
 import org.eclipse.smarthome.config.core.validation.ConfigValidationException;
+import org.eclipse.smarthome.core.scheduler.CronScheduler;
+import org.eclipse.smarthome.core.scheduler.SchedulerRunnable;
 import org.eclipse.smarthome.core.thing.Bridge;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.ThingStatus;
@@ -53,14 +54,17 @@ import org.slf4j.LoggerFactory;
  * sent to one of the channels.
  *
  * @author Chris Jackson - Initial contribution
+ * @author Hilbrand Bouwkamp - Changed to not add listeners directly to the controller, but call from here
  */
 public abstract class ZWaveControllerHandler extends BaseBridgeHandler implements ZWaveEventListener, ZWaveIoHandler {
+
+    private static final String HEAL_CRON_EXPRESSION = "0 0 %s ? * * *";
 
     private final Logger logger = LoggerFactory.getLogger(ZWaveControllerHandler.class);
 
     private volatile ZWaveController controller;
 
-    private Set<ZWaveEventListener> listeners = new HashSet<ZWaveEventListener>();
+    private final Set<ZWaveEventListener> listeners = new HashSet<ZWaveEventListener>();
 
     private Boolean isMaster;
     private Integer sucNode;
@@ -75,9 +79,11 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     private int searchTime;
 
     private ScheduledFuture<?> healJob = null;
+    private CronScheduler healScheduler;
 
-    public ZWaveControllerHandler(@NonNull Bridge bridge) {
+    public ZWaveControllerHandler(@NonNull Bridge bridge, CronScheduler cronScheduler) {
         super(bridge);
+        healScheduler = cronScheduler;
     }
 
     @Override
@@ -168,7 +174,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
      * Called by bridges after they have initialised their interfaces.
      *
      */
-    protected void initializeNetwork() {
+    protected void initializeController() {
         logger.debug("Initialising ZWave controller");
 
         // Create config parameters
@@ -182,14 +188,14 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         // TODO: Handle soft reset?
         controller = new ZWaveController(this, config);
         controller.addEventListener(this);
+    }
 
-        // Add any listeners that were registered before the manager was registered
-        synchronized (listeners) {
-            for (ZWaveEventListener listener : listeners) {
-                controller.addEventListener(listener);
-            }
+    protected void initializeNetwork() {
+        // We have a delay in running the initialisation sequence to allow any frames queued in the controller to be
+        // received before sending the init sequence. This avoids protocol errors (CAN errors).
+        if (controller != null) {
+            scheduler.schedule(controller::initialize, 3, TimeUnit.SECONDS);
         }
-
     }
 
     private void initializeHeal() {
@@ -199,29 +205,18 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         }
 
         if (healTime >= 0 && healTime <= 23) {
-            Runnable healRunnable = new Runnable() {
-                @Override
-                public void run() {
-                    if (controller == null) {
-                        return;
-                    }
+            SchedulerRunnable healRunnable = () -> {
+                if (controller == null) {
+                    return;
+                }
+                logger.debug("Starting network mesh heal for controller {}.", getThing().getUID());
+                for (ZWaveNode node : controller.getNodes()) {
                     logger.debug("Starting network mesh heal for controller {}.", getThing().getUID());
-                    for (ZWaveNode node : controller.getNodes()) {
-                        logger.debug("Starting network mesh heal for controller {}.", getThing().getUID());
-                        node.healNode();
-                    }
+                    node.healNode();
                 }
             };
-
-            Calendar cal = Calendar.getInstance();
-            int hours = healTime - cal.get(Calendar.HOUR_OF_DAY);
-            if (hours < 0) {
-                hours += 24;
-            }
-
-            logger.debug("Scheduling network mesh heal for {} hours time.", hours);
-
-            healJob = scheduler.scheduleAtFixedRate(healRunnable, hours, 24, TimeUnit.HOURS);
+            logger.debug("Scheduling network mesh heal at {}:00 hour.", healTime);
+            healJob = healScheduler.schedule(healRunnable, String.format(HEAL_CRON_EXPRESSION, healTime));
         }
     }
 
@@ -235,11 +230,6 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         ZWaveController controller = this.controller;
         if (controller != null) {
             this.controller = null;
-            synchronized (listeners) {
-                for (ZWaveEventListener listener : listeners) {
-                    controller.removeEventListener(listener);
-                }
-            }
             controller.removeEventListener(this);
             controller.shutdown();
         }
@@ -402,6 +392,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                     break;
             }
         }
+        listeners.forEach(l -> l.ZWaveIncomingEvent(event));
     }
 
     protected void incomingMessage(SerialMessage serialMessage) {
@@ -450,12 +441,6 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         synchronized (listeners) {
             listeners.add(listener);
         }
-
-        if (controller == null) {
-            logger.error("Attempting to add listener when controller is null");
-            return false;
-        }
-        controller.addEventListener(listener);
         return true;
     }
 
@@ -463,11 +448,6 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         synchronized (listeners) {
             listeners.remove(listener);
         }
-
-        if (controller == null) {
-            return false;
-        }
-        controller.removeEventListener(listener);
         return true;
     }
 

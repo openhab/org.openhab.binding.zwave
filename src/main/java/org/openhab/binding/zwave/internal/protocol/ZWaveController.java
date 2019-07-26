@@ -19,8 +19,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -153,21 +151,6 @@ public class ZWaveController {
         logger.info("ZWave timeout is set to {}ms. Soft reset is {}.", zWaveResponseTimeout, softReset);
 
         ioHandler = handler;
-
-        // We have a delay in running the initialisation sequence to allow any frames queued in the controller to be
-        // received before sending the init sequence. This avoids protocol errors (CAN errors).
-        Timer initTimer = new Timer();
-        initTimer.schedule(new InitializeDelayTask(), 3000);
-    }
-
-    private class InitializeDelayTask extends TimerTask {
-        private final Logger logger = LoggerFactory.getLogger(InitializeDelayTask.class);
-
-        @Override
-        public void run() {
-            logger.debug("Initialising network");
-            initialize();
-        }
     }
 
     // Incoming message handlers
@@ -611,6 +594,7 @@ public class ZWaveController {
      *
      */
     public void initialize() {
+        logger.debug("Initialising network");
         enqueue(new GetVersionMessageClass().doRequest());
         enqueue(new MemoryGetIdMessageClass().doRequest());
         enqueue(new SerialApiGetCapabilitiesMessageClass().doRequest());
