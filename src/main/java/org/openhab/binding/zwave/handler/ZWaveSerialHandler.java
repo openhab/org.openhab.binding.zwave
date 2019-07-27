@@ -143,7 +143,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             serialPort.close();
             serialPort = null;
         }
-        logger.debug("Stopped ZWave serial handler");
+        logger.info("Stopped ZWave serial handler");
 
         super.dispose();
     }
@@ -201,7 +201,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                     logger.trace("Response SENT {}", response);
                 }
             } catch (IOException e) {
-                logger.debug("Exception during send", e);
+                logger.warn("Exception during send", e);
             }
         }
 
@@ -240,7 +240,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                             continue;
                         }
                     } catch (IOException e) {
-                        logger.debug("Got I/O exception {} during receiving. exiting thread.", e.getLocalizedMessage());
+                        logger.warn("Got I/O exception {} during receiving. exiting thread.", e.getLocalizedMessage());
                         break;
                     }
 
@@ -344,7 +344,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
 
                 }
             } catch (Exception e) {
-                logger.debug("Exception during ZWave thread. ", e);
+                logger.warn("Exception during ZWave thread. ", e);
             }
             logger.debug("Stopped ZWave thread: Receive");
 
@@ -371,7 +371,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                 logger.debug("Message SENT");
             }
         } catch (IOException e) {
-            logger.debug("Got I/O exception {} during sending. exiting thread.", e.getLocalizedMessage());
+            logger.warn("Got I/O exception {} during sending. exiting thread.", e.getLocalizedMessage());
         }
     }
 }
