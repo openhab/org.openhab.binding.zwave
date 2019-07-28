@@ -1,9 +1,14 @@
 /**
- * Copyright (c) 2010-2018 by the respective copyright holders.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * Copyright (c) 2010-2019 Contributors to the openHAB project
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.zwave.internal.protocol;
 
@@ -1278,12 +1283,12 @@ public class ZWaveNode {
             }
 
             // Check that the length is long enough for the encapsulated command to be included
-            if (payload.getCommandClassCommand() == 6 && payload.getPayloadLength() > 5) {
+            if (payload.getCommandClassCommand() == 6 && payload.getPayloadLength() > 4) {
                 // MULTI_INSTANCE_ENCAP
                 endpointNumber = payload.getPayloadByte(2);
 
                 payload = new ZWaveCommandClassPayload(payload, 3);
-            } else if (payload.getCommandClassCommand() == 13 && payload.getPayloadLength() > 6) {
+            } else if (payload.getCommandClassCommand() == 13 && payload.getPayloadLength() > 5) {
                 // MULTI_CHANNEL_ENCAP
                 endpointNumber = multichannelCommandClass.getSourceEndpoint(payload);
                 payload = new ZWaveCommandClassPayload(payload, 4);
@@ -1406,13 +1411,6 @@ public class ZWaveNode {
             return;
         }
 
-        // ZWaveWakeUpCommandClass wakeUpCommandClass = (ZWaveWakeUpCommandClass) getEndpoint(0)
-        // .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP);
-        // if (wakeUpCommandClass == null) {
-        // logger.debug("NODE {}: Node doesn't support WAKEUP - ignore wakeup", getNodeId());
-        // return;
-        // }
-
         // Create the timer if this is our first call
         if (timer == null) {
             logger.trace("NODE {}: Creating wakeup timer", getNodeId());
@@ -1513,10 +1511,10 @@ public class ZWaveNode {
         // Start the timer
         // If the initialisation is complete, then use a short delay,
         // Otherwise use a longer delay...
-        if (isInitializationComplete() || controller.getSendQueueLength(getNodeId()) == 0) {
+        if (isInitializationComplete()) {
             timerDelay = sleepDelay;
         } else {
-            timerDelay = 2500;
+            timerDelay = 5000;
         }
         logger.debug("NODE {}: Start sleep timer at {}ms", getNodeId(), timerDelay);
 

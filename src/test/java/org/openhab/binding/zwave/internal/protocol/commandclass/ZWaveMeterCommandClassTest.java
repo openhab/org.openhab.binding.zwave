@@ -1,9 +1,14 @@
 /**
- * Copyright (c) 2010-2018 by the respective copyright holders.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * Copyright (c) 2010-2019 Contributors to the openHAB project
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
@@ -77,6 +82,17 @@ public class ZWaveMeterCommandClassTest extends ZWaveCommandClassTest {
                 CommandClass.COMMAND_CLASS_METER);
         meterCommandClass.handleMeterSupportedReport(payload, 0);
         // E_KWh, E_W, E_V, E_A
+    }
+
+    @Test
+    public void Meter_SupportedV3() {
+        byte[] packetData = { 0x32, 0x04, (byte) 0xE1, (byte) 0xC7, 0x01, 0x03 };
+
+        ZWaveCommandClassPayload payload = new ZWaveCommandClassPayload(packetData);
+        ZWaveMeterCommandClass meterCommandClass = (ZWaveMeterCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_METER);
+        meterCommandClass.handleMeterSupportedReport(payload, 0);
+        // [E_KWh, E_W, E_KVARH, E_KVAh, E_Power_Factor]
     }
 
     @Test

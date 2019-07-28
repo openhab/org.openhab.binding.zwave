@@ -1,9 +1,14 @@
 /**
- * Copyright (c) 2010-2018 by the respective copyright holders.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * Copyright (c) 2010-2019 Contributors to the openHAB project
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
@@ -68,6 +73,9 @@ public class ZWaveProtectionCommandClass extends ZWaveCommandClass
     @XStreamOmitField
     private LocalProtectionType currentLocalMode;
 
+    @XStreamOmitField
+    private RfProtectionType currentRfMode;
+
     private List<LocalProtectionType> localModes = new ArrayList<>();
     private List<RfProtectionType> rfModes = new ArrayList<>();
 
@@ -101,8 +109,9 @@ public class ZWaveProtectionCommandClass extends ZWaveCommandClass
         if (getVersion() > 1) {
             int rfMode = payload.getPayloadByte(3) & 0x0f;
             if (rfMode < RfProtectionType.values().length) {
+                currentRfMode = RfProtectionType.values()[rfMode];
                 ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
-                        getCommandClass(), RfProtectionType.values()[rfMode], Type.PROTECTION_RF);
+                        getCommandClass(), currentRfMode, Type.PROTECTION_RF);
                 getController().notifyEventListeners(zEvent);
             }
             logger.debug("NODE {}: Received protection report local:{} rf:{}", getNode().getNodeId(),
@@ -182,13 +191,14 @@ public class ZWaveProtectionCommandClass extends ZWaveCommandClass
         logger.debug("NODE {}: Creating new message for command PROTECTION_SET", getNode().getNodeId());
 
         LocalProtectionType newLocalMode = localMode != null ? localMode : currentLocalMode;
+        RfProtectionType newRfMode = rfMode != null ? rfMode : currentRfMode;
 
         ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        if (getVersion() < 2 || rfMode == null) {
+        if (getVersion() < 2) {
             outputData.write(newLocalMode.ordinal());
         } else {
             outputData.write(newLocalMode.ordinal());
-            outputData.write(rfMode.ordinal());
+            outputData.write(newRfMode.ordinal());
         }
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), PROTECTION_SET)

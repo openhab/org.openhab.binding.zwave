@@ -1,9 +1,14 @@
 /**
- * Copyright (c) 2010-2018 by the respective copyright holders.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * Copyright (c) 2010-2019 Contributors to the openHAB project
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
@@ -52,6 +57,10 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
     private static final int SWITCH_MULTILEVEL_SUPPORTED_GET = 0x06;
     private static final int SWITCH_MULTILEVEL_SUPPORTED_REPORT = 0x07;
 
+    private static final int START_LEVEL_INCREASE = 0;
+    private static final int START_LEVEL_DECREASE = 0x40;
+    private static final int START_LEVEL_IGNORE_LEVEL = 0x20;
+
     private SwitchType switchTypePrimary = null;
     private SwitchType switchTypeSecondary = null;
 
@@ -66,9 +75,9 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
     /**
      * Creates a new instance of the ZWaveMultiLevelSwitchCommandClass class.
      *
-     * @param node the node this command class belongs to
+     * @param node       the node this command class belongs to
      * @param controller the controller to use
-     * @param endpoint the endpoint this Command class belongs to
+     * @param endpoint   the endpoint this Command class belongs to
      */
     public ZWaveMultiLevelSwitchCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
@@ -93,9 +102,41 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
     @ZWaveResponseHandler(id = SWITCH_MULTILEVEL_REPORT, name = "SWITCH_MULTILEVEL_REPORT")
     public void handleSwitchMultilevelReport(ZWaveCommandClassPayload payload, int endpoint) {
         int value = payload.getPayloadByte(2);
+        if (getVersion() == 4) {
+            // Version 4 includes a target rather than the current value.
+            // This fits better with the OH concepts
+            value = payload.getPayloadByte(3);
+        }
         logger.debug("NODE {}: Switch Multi Level report, value = {}", getNode().getNodeId(), value);
         ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
                 getCommandClass(), value);
+
+        getController().notifyEventListeners(zEvent);
+
+        dynamicDone = true;
+    }
+
+    @ZWaveResponseHandler(id = SWITCH_MULTILEVEL_START_LEVEL_CHANGE, name = "SWITCH_MULTILEVEL_START_LEVEL_CHANGE")
+    public void handleSwitchMultilevelStartLevelChanel(ZWaveCommandClassPayload payload, int endpoint) {
+        StartStopDirection direction = ((payload.getPayloadByte(2) & START_LEVEL_DECREASE) != 0)
+                ? StartStopDirection.DECREASE
+                : StartStopDirection.INCREASE;
+
+        logger.debug("NODE {}: Switch Multi Level start level change, direction = {}", getNode().getNodeId(),
+                direction);
+        ZWaveCommandClassValueEvent zEvent = new ZWaveStartStopEvent(getNode().getNodeId(), endpoint, getCommandClass(),
+                direction);
+
+        getController().notifyEventListeners(zEvent);
+
+        dynamicDone = true;
+    }
+
+    @ZWaveResponseHandler(id = SWITCH_MULTILEVEL_STOP_LEVEL_CHANGE, name = "SWITCH_MULTILEVEL_STOP_LEVEL_CHANGE")
+    public void handleSwitchMultilevelStopLevelChanel(ZWaveCommandClassPayload payload, int endpoint) {
+        logger.debug("NODE {}: Switch Multi Level stop level change", getNode().getNodeId());
+        ZWaveCommandClassValueEvent zEvent = new ZWaveStartStopEvent(getNode().getNodeId(), endpoint, getCommandClass(),
+                StartStopDirection.STOP);
 
         getController().notifyEventListeners(zEvent);
 
@@ -179,10 +220,12 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
                 getNode().getNodeId());
         byte[] newPayload = { 0, 0, 0 };
         if (increase) {
-            newPayload[0] = 32;
+            newPayload[0] = START_LEVEL_INCREASE;
         } else {
-            newPayload[0] = 96;
+            newPayload[0] = START_LEVEL_DECREASE;
         }
+        newPayload[0] |= START_LEVEL_IGNORE_LEVEL;
+
         newPayload[1] = 0; // Start level - ignored (for now!)
         newPayload[2] = (byte) duration;
 
@@ -287,4 +330,25 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
             return value;
         }
     }
+
+    public enum StartStopDirection {
+        INCREASE,
+        DECREASE,
+        STOP
+    }
+
+    /**
+     * Z-Wave Alarm Event class. Indicates that an alarm value changed.
+     */
+    public static class ZWaveStartStopEvent extends ZWaveCommandClassValueEvent {
+        public StartStopDirection direction;
+
+        public ZWaveStartStopEvent(int nodeId, int endpoint, CommandClass commandClass, StartStopDirection direction) {
+            super(nodeId, endpoint, commandClass, direction);
+
+            this.direction = direction;
+        }
+
+    }
+
 }

@@ -7,6 +7,7 @@ title: MH8-FC - ZWave
 
 # MH8-FC Fan Coil Thermostat
 This describes the Z-Wave device *MH8-FC*, manufactured by *[McoHome Technology Co., Ltd](http://www.mcohome.com/)* with the thing type UID of ```mcohome_mh8fc_00_000```.
+This version of the device is limited to firmware versions below 2.9
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
@@ -67,27 +68,25 @@ A node ID can always inform us whether the device is in the network or not.
 
 The following table summarises the channels available for the MH8-FC -:
 
-| Channel | Channel Id | Category | Item Type |
-|---------|------------|----------|-----------|
-| Sensor (temperature) | sensor_temperature | Temperature | Number:Temperature | 
-| Thermostat mode | thermostat_mode | Temperature | Number | 
-| Operating State | thermostat_state | Temperature | Number | 
-| Setpoint (cooling) | thermostat_setpoint | Temperature | Number:Temperature | 
-| Setpoint (heating) | thermostat_setpoint | Temperature | Number:Temperature | 
-| Thermostat fan mode | thermostat_fanmode |  |  | 
-| Thermostat fan state | thermostat_fanstate |  |  | 
+| Channel Name | Channel ID | Channel Type | Category | Item Type |
+|--------------|------------|--------------|----------|-----------|
+| Sensor (temperature) | sensor_temperature | sensor_temperature | Temperature | Number:Temperature | 
+| Thermostat mode | thermostat_mode | thermostat_mode | Temperature | Number | 
+| Operating State | thermostat_state | thermostat_state | Temperature | Number | 
+| Setpoint (cooling) | thermostat_setpoint | thermostat_setpoint | Heating | Number:Temperature | 
+| Setpoint (heating) | thermostat_setpoint | thermostat_setpoint | Heating | Number:Temperature | 
+| Thermostat fan mode | thermostat_fanmode | thermostat_fanmode |  |  | 
+| Thermostat fan state | thermostat_fanstate | thermostat_fanstate |  |  | 
 
 ### Sensor (temperature)
-
 Indicates the current temperature.
 
-The ```sensor_temperature``` channel supports the ```Number:Temperature``` item and is in the ```Temperature``` category.
+The ```sensor_temperature``` channel is of type ```sensor_temperature``` and supports the ```Number:Temperature``` item and is in the ```Temperature``` category.
 
 ### Thermostat mode
-
 Sets the thermostat.
 
-The ```thermostat_mode``` channel supports the ```Number``` item and is in the ```Temperature``` category.
+The ```thermostat_mode``` channel is of type ```thermostat_mode``` and supports the ```Number``` item and is in the ```Temperature``` category.
 The following state translation is provided for this channel to the ```Number``` item type -:
 
 | Value | Label     |
@@ -108,10 +107,9 @@ The following state translation is provided for this channel to the ```Number```
 | 13 | Away |
 
 ### Operating State
-
 Sets the thermostat operating state.
 
-The ```thermostat_state``` channel supports the ```Number``` item and is in the ```Temperature``` category.
+The ```thermostat_state``` channel is of type ```thermostat_state``` and supports the ```Number``` item and is in the ```Temperature``` category.
 The following state translation is provided for this channel to the ```Number``` item type -:
 
 | Value | Label     |
@@ -125,23 +123,19 @@ The following state translation is provided for this channel to the ```Number```
 | 6 | Vent / Economiser |
 
 ### Setpoint (cooling)
-
 Sets the thermostat setpoint.
 
-The ```thermostat_setpoint``` channel supports the ```Number:Temperature``` item and is in the ```Temperature``` category.
+The ```thermostat_setpoint``` channel is of type ```thermostat_setpoint``` and supports the ```Number:Temperature``` item and is in the ```Heating``` category.
 
 ### Setpoint (heating)
-
 Sets the thermostat setpoint.
 
-The ```thermostat_setpoint``` channel supports the ```Number:Temperature``` item and is in the ```Temperature``` category.
+The ```thermostat_setpoint``` channel is of type ```thermostat_setpoint``` and supports the ```Number:Temperature``` item and is in the ```Heating``` category.
 
 ### Thermostat fan mode
-
 Channel type information on this channel is not found.
 
 ### Thermostat fan state
-
 Channel type information on this channel is not found.
 
 

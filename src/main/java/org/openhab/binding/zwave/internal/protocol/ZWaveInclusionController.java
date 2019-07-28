@@ -1,9 +1,14 @@
 /**
- * Copyright (c) 2010-2018 by the respective copyright holders.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * Copyright (c) 2010-2019 Contributors to the openHAB project
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.zwave.internal.protocol;
 
@@ -232,8 +237,14 @@ public class ZWaveInclusionController implements ZWaveEventListener {
                         continue;
                     }
 
-                    ZWaveCommandClass zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), newNode,
-                            controller);
+                    ZWaveCommandClass zwaveCommandClass;
+                    if (commandClass == CommandClass.COMMAND_CLASS_SECURITY_2) {
+                        // S0 is mandatory when S2 is supported, so we add that instead for now
+                        zwaveCommandClass = ZWaveCommandClass.getInstance(CommandClass.COMMAND_CLASS_SECURITY.getKey(),
+                                newNode, controller);
+                    } else {
+                        zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), newNode, controller);
+                    }
                     if (zwaveCommandClass != null) {
                         logger.debug("NODE {}: Inclusion is adding command class {}.", incEvent.getNodeId(),
                                 commandClass);
@@ -367,6 +378,7 @@ public class ZWaveInclusionController implements ZWaveEventListener {
     private void stopTimer() {
         if (timerTask != null) {
             timerTask.cancel();
+            timerTask = null;
         }
     }
 }

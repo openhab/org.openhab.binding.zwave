@@ -1,9 +1,14 @@
 /**
- * Copyright (c) 2010-2018 by the respective copyright holders.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * Copyright (c) 2010-2019 Contributors to the openHAB project
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
@@ -13,8 +18,11 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
@@ -27,7 +35,6 @@ import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClass
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.collect.ImmutableSet;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
@@ -69,13 +76,14 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
 
     // List of command classes that are eligible for auto subscription.
     @XStreamOmitField
-    private Set<CommandClass> autoCCs = ImmutableSet.of(COMMAND_CLASS_DEVICE_RESET_LOCALLY, COMMAND_CLASS_BATTERY,
-            COMMAND_CLASS_CONFIGURATION, COMMAND_CLASS_METER, COMMAND_CLASS_THERMOSTAT_OPERATING_STATE,
-            COMMAND_CLASS_THERMOSTAT_MODE, COMMAND_CLASS_THERMOSTAT_FAN_MODE, COMMAND_CLASS_SENSOR_MULTILEVEL,
-            COMMAND_CLASS_SENSOR_ALARM, COMMAND_CLASS_THERMOSTAT_FAN_STATE, COMMAND_CLASS_THERMOSTAT_SETPOINT,
-            COMMAND_CLASS_SENSOR_BINARY, COMMAND_CLASS_ALARM, COMMAND_CLASS_SWITCH_COLOR,
-            COMMAND_CLASS_SCENE_ACTIVATION, COMMAND_CLASS_CENTRAL_SCENE, COMMAND_CLASS_DOOR_LOCK,
-            COMMAND_CLASS_METER_TBL_MONITOR, COMMAND_CLASS_METER_PULSE);
+    private Set<CommandClass> autoCCs = Collections
+            .unmodifiableSet(Stream.of(COMMAND_CLASS_DEVICE_RESET_LOCALLY, COMMAND_CLASS_BATTERY,
+                    COMMAND_CLASS_CONFIGURATION, COMMAND_CLASS_METER, COMMAND_CLASS_THERMOSTAT_OPERATING_STATE,
+                    COMMAND_CLASS_THERMOSTAT_MODE, COMMAND_CLASS_THERMOSTAT_FAN_MODE, COMMAND_CLASS_SENSOR_MULTILEVEL,
+                    COMMAND_CLASS_SENSOR_ALARM, COMMAND_CLASS_THERMOSTAT_FAN_STATE, COMMAND_CLASS_THERMOSTAT_SETPOINT,
+                    COMMAND_CLASS_SENSOR_BINARY, COMMAND_CLASS_ALARM, COMMAND_CLASS_SWITCH_COLOR,
+                    COMMAND_CLASS_SCENE_ACTIVATION, COMMAND_CLASS_CENTRAL_SCENE, COMMAND_CLASS_DOOR_LOCK,
+                    COMMAND_CLASS_METER_TBL_MONITOR, COMMAND_CLASS_METER_PULSE).collect(Collectors.toSet()));
 
     /**
      * Creates a new instance of the ZwaveAssociationGroupInfoCommandClass class.

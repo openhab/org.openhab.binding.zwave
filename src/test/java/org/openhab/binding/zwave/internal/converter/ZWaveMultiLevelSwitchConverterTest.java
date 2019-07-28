@@ -1,9 +1,14 @@
 /**
- * Copyright (c) 2010-2018 by the respective copyright holders.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * Copyright (c) 2010-2019 Contributors to the openHAB project
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.zwave.internal.converter;
 
@@ -16,16 +21,20 @@ import java.util.Map;
 
 import org.eclipse.smarthome.core.library.types.OnOffType;
 import org.eclipse.smarthome.core.library.types.PercentType;
+import org.eclipse.smarthome.core.library.types.StringType;
+import org.eclipse.smarthome.core.thing.ChannelUID;
+import org.eclipse.smarthome.core.thing.type.ChannelTypeUID;
 import org.eclipse.smarthome.core.types.State;
 import org.junit.Before;
 import org.junit.Test;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
-import org.openhab.binding.zwave.internal.converter.ZWaveMultiLevelSwitchConverter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSwitchCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSwitchCommandClass.StartStopDirection;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSwitchCommandClass.ZWaveStartStopEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
@@ -42,6 +51,16 @@ public class ZWaveMultiLevelSwitchConverterTest {
     private ZWaveNode node;
     private PercentType percentType;
     private ZWaveMultiLevelSwitchCommandClass commandClass;
+
+    private ZWaveThingChannel createChannel(String channelType, DataType dataType) {
+        ChannelUID uid = new ChannelUID("zwave:node:bridge:" + channelType);
+        ChannelTypeUID typeUid = new ChannelTypeUID("zwave:" + channelType);
+
+        Map<String, String> args = new HashMap<String, String>();
+
+        return new ZWaveThingChannel(null, typeUid, uid, dataType, CommandClass.COMMAND_CLASS_MULTI_CMD.toString(), 0,
+                args);
+    }
 
     @Before
     public void setup() {
@@ -228,6 +247,36 @@ public class ZWaveMultiLevelSwitchConverterTest {
                 .thenReturn(commandClass);
         when(node.encapsulate(any(ZWaveCommandClassTransactionPayload.class), anyInt()))
                 .thenReturn(new ZWaveCommandClassTransactionPayload(0, null, null, null, 0));
+    }
+
+    @Test
+    public void handleEvent_Decrease() {
+        ZWaveMultiLevelSwitchConverter sut = new ZWaveMultiLevelSwitchConverter(controller);
+        event = new ZWaveStartStopEvent(0, 0, null, StartStopDirection.DECREASE);
+
+        channel = createChannel("switch_startstop", DataType.StringType);
+        State state = sut.handleEvent(channel, event);
+        assertEquals(new StringType("{\"direction\":\"DECREASE\"}"), state);
+    }
+
+    @Test
+    public void handleEvent_Increase() {
+        ZWaveMultiLevelSwitchConverter sut = new ZWaveMultiLevelSwitchConverter(controller);
+        event = new ZWaveStartStopEvent(0, 0, null, StartStopDirection.INCREASE);
+
+        channel = createChannel("switch_startstop", DataType.StringType);
+        State state = sut.handleEvent(channel, event);
+        assertEquals(new StringType("{\"direction\":\"INCREASE\"}"), state);
+    }
+
+    @Test
+    public void handleEvent_Stop() {
+        ZWaveMultiLevelSwitchConverter sut = new ZWaveMultiLevelSwitchConverter(controller);
+        event = new ZWaveStartStopEvent(0, 0, null, StartStopDirection.STOP);
+
+        channel = createChannel("switch_startstop", DataType.StringType);
+        State state = sut.handleEvent(channel, event);
+        assertEquals(new StringType("{\"direction\":\"STOP\"}"), state);
     }
 
 }

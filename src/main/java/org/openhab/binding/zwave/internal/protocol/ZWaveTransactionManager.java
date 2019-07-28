@@ -1,9 +1,14 @@
 /**
- * Copyright (c) 2010-2018 by the respective copyright holders.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * Copyright (c) 2010-2019 Contributors to the openHAB project
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.zwave.internal.protocol;
 
@@ -33,6 +38,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionS
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse.State;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveCommandProcessor;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
@@ -727,8 +733,18 @@ public class ZWaveTransactionManager {
                         // Notify the controller
                         controller.handleTransactionComplete(currentTransaction, incomingMessage);
                     } else {
-                        logger.debug("NODE {}: TID {}: Transaction not completed", currentTransaction.getNodeId(),
-                                currentTransaction.getTransactionId());
+                        byte[] message = currentTransaction.getSerialMessage().getMessagePayload();
+                        if (message.length > 2 && message[0] == CommandClass.COMMAND_CLASS_WAKE_UP.getKey()
+                                && message[1] == ZWaveWakeUpCommandClass.WAKE_UP_NO_MORE_INFORMATION) {
+                            // Failed WAKE_UP_NO_MORE_INFORMATION treated as the node going to sleep
+                            logger.debug("NODE {}: TID {}: Failed WAKE_UP_NO_MORE_INFORMATION treated as complete",
+                                    currentTransaction.getNodeId(), currentTransaction.getTransactionId());
+                            notifyTransactionComplete(currentTransaction);
+                            controller.handleTransactionComplete(currentTransaction, incomingMessage);
+                        } else {
+                            logger.debug("NODE {}: TID {}: Transaction not completed", currentTransaction.getNodeId(),
+                                    currentTransaction.getTransactionId());
+                        }
                     }
 
                 }

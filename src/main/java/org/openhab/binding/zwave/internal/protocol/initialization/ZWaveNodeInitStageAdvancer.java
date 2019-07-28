@@ -1,9 +1,14 @@
 /**
- * Copyright (c) 2010-2018 by the respective copyright holders.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * Copyright (c) 2010-2019 Contributors to the openHAB project
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.zwave.internal.protocol.initialization;
 
@@ -118,8 +123,8 @@ public class ZWaveNodeInitStageAdvancer {
 
     private static final ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
 
-    private ZWaveNode node;
-    private ZWaveController controller;
+    private final ZWaveNode node;
+    private final ZWaveController controller;
     private boolean restoredFromConfigfile = false;
 
     private Thread initialisationThread;
@@ -136,10 +141,8 @@ public class ZWaveNodeInitStageAdvancer {
     /**
      * Constructor. Creates a new instance of the ZWaveNodeStageAdvancer class.
      *
-     * @param node
-     *            the node this advancer belongs to.
-     * @param controller
-     *            the controller to use
+     * @param node the node this advancer belongs to.
+     * @param controller the controller to use
      */
     public ZWaveNodeInitStageAdvancer(ZWaveNode node, ZWaveController controller) {
         this.node = node;
@@ -172,41 +175,45 @@ public class ZWaveNodeInitStageAdvancer {
         initialisationThread = new Thread() {
             @Override
             public void run() {
-                if (node.getInclusionTimer() < INCLUSION_TIMER) {
-                    logger.debug("NODE {}: Node advancer: Node just included ({})", node.getNodeId(),
-                            node.getInclusionTimer());
-                    doInitialInclusionStages();
-                } else if (currentStage == ZWaveNodeInitStage.HEAL_START) {
-                    doHealStages();
+                try {
+                    if (node.getInclusionTimer() < INCLUSION_TIMER) {
+                        logger.debug("NODE {}: Node advancer: Node just included ({})", node.getNodeId(),
+                                node.getInclusionTimer());
+                        doInitialInclusionStages();
+                    } else if (currentStage == ZWaveNodeInitStage.HEAL_START) {
+                        doHealStages();
+                        setCurrentStage(ZWaveNodeInitStage.DONE);
+                        return;
+                    } else {
+                        doInitialStages();
+                    }
+
+                    if (currentStage == ZWaveNodeInitStage.DONE) {
+                        return;
+                    }
+
+                    // If restored from a config file, jump to the dynamic node stage.
+                    if (isRestoredFromConfigfile()) {
+                        logger.debug("NODE {}: Node advancer: Restored from file - skipping static initialisation",
+                                node.getNodeId());
+                        currentStage = ZWaveNodeInitStage.SESSION_START;
+                    }
+                    if (currentStage.ordinal() <= ZWaveNodeInitStage.INCLUSION_START.ordinal()) {
+                        doSecureStages();
+                    }
+                    if (currentStage.ordinal() <= ZWaveNodeInitStage.STATIC_VALUES.ordinal()) {
+                        doStaticStages();
+                    }
+                    setCurrentStage(ZWaveNodeInitStage.STATIC_END);
+                    if (currentStage.ordinal() <= ZWaveNodeInitStage.DYNAMIC_VALUES.ordinal()) {
+                        doDynamicStages();
+                    }
+                    setCurrentStage(ZWaveNodeInitStage.DYNAMIC_END);
+
                     setCurrentStage(ZWaveNodeInitStage.DONE);
-                    return;
-                } else {
-                    doInitialStages();
+                } catch (Exception e) {
+                    logger.error("NODE {}: Error in initialization thread", node.getNodeId(), e);
                 }
-
-                if (currentStage == ZWaveNodeInitStage.DONE) {
-                    return;
-                }
-
-                // If restored from a config file, jump to the dynamic node stage.
-                if (isRestoredFromConfigfile()) {
-                    logger.debug("NODE {}: Node advancer: Restored from file - skipping static initialisation",
-                            node.getNodeId());
-                    currentStage = ZWaveNodeInitStage.SESSION_START;
-                }
-                if (currentStage.ordinal() <= ZWaveNodeInitStage.INCLUSION_START.ordinal()) {
-                    doSecureStages();
-                }
-                if (currentStage.ordinal() <= ZWaveNodeInitStage.STATIC_VALUES.ordinal()) {
-                    doStaticStages();
-                }
-                setCurrentStage(ZWaveNodeInitStage.STATIC_END);
-                if (currentStage.ordinal() <= ZWaveNodeInitStage.DYNAMIC_VALUES.ordinal()) {
-                    doDynamicStages();
-                }
-                setCurrentStage(ZWaveNodeInitStage.DYNAMIC_END);
-
-                setCurrentStage(ZWaveNodeInitStage.DONE);
             }
         };
         initialisationThread.setName("ZWaveNode" + node.getNodeId() + "Init"
@@ -222,7 +229,7 @@ public class ZWaveNodeInitStageAdvancer {
     }
 
     private boolean processTransaction(ZWaveMessagePayloadTransaction transaction) {
-        return processTransaction(transaction, 0, 10);
+        return processTransaction(transaction, 0, 5);
     }
 
     private boolean processTransaction(ZWaveMessagePayloadTransaction transaction, long timeout, int retries) {
@@ -297,8 +304,7 @@ public class ZWaveNodeInitStageAdvancer {
     /**
      * Move all the messages in a collection to the queue
      *
-     * @param transactions
-     *            the message collection
+     * @param transactions the message collection
      */
     private void processTransactions(Collection<ZWaveCommandClassTransactionPayload> transactions) {
         if (transactions == null) {
@@ -315,10 +321,8 @@ public class ZWaveNodeInitStageAdvancer {
     /**
      * Move all the messages in a collection to the queue and encapsulates them
      *
-     * @param transactions
-     *            the message collection
-     * @param endpointId
-     *            the endpoint number
+     * @param transactions the message collection
+     * @param endpointId the endpoint number
      */
     private void processTransactions(Collection<ZWaveCommandClassTransactionPayload> transactions, int endpointId) {
         if (transactions == null) {
@@ -529,12 +533,15 @@ public class ZWaveNodeInitStageAdvancer {
                 .getCommandClass(CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC);
 
         if (manufacturerSpecific != null) {
-            // If this node implements the Manufacturer Specific command
-            // class, we use it to get manufacturer info.
-            logger.debug("NODE {}: Node advancer: MANUFACTURER - send ManufacturerSpecific", node.getNodeId());
-            processTransaction(manufacturerSpecific.getManufacturerSpecificMessage());
-            if (initRunning == false) {
-                return;
+            // If we already known the manufacturer information, then don't request again
+            if (manufacturerSpecific.getDeviceManufacturer() == Integer.MAX_VALUE) {
+                // If this node implements the Manufacturer Specific command
+                // class, we use it to get manufacturer info.
+                logger.debug("NODE {}: Node advancer: MANUFACTURER - send ManufacturerSpecific", node.getNodeId());
+                processTransaction(manufacturerSpecific.getManufacturerSpecificMessage());
+                if (initRunning == false) {
+                    return;
+                }
             }
         }
 
@@ -1147,8 +1154,7 @@ public class ZWaveNodeInitStageAdvancer {
     /**
      * Sets the time stamp the node was last queried.
      *
-     * @param queryStageTimeStamp
-     *            the queryStageTimeStamp to set
+     * @param queryStageTimeStamp the queryStageTimeStamp to set
      */
     public Date getQueryStageTimeStamp() {
         return queryStageTimeStamp;

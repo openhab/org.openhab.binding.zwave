@@ -1,9 +1,14 @@
 /**
- * Copyright (c) 2010-2018 by the respective copyright holders.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * Copyright (c) 2010-2019 Contributors to the openHAB project
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.zwave.handler;
 
@@ -12,25 +17,24 @@ import static org.openhab.binding.zwave.ZWaveBindingConstants.*;
 import java.io.IOException;
 import java.util.TooManyListenersException;
 
+import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.thing.Bridge;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.ThingStatus;
 import org.eclipse.smarthome.core.thing.ThingStatusDetail;
 import org.eclipse.smarthome.core.types.Command;
+import org.eclipse.smarthome.io.transport.serial.PortInUseException;
+import org.eclipse.smarthome.io.transport.serial.SerialPort;
+import org.eclipse.smarthome.io.transport.serial.SerialPortEvent;
+import org.eclipse.smarthome.io.transport.serial.SerialPortEventListener;
+import org.eclipse.smarthome.io.transport.serial.SerialPortIdentifier;
+import org.eclipse.smarthome.io.transport.serial.SerialPortManager;
+import org.eclipse.smarthome.io.transport.serial.UnsupportedCommOperationException;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import gnu.io.CommPort;
-import gnu.io.CommPortIdentifier;
-import gnu.io.NoSuchPortException;
-import gnu.io.PortInUseException;
-import gnu.io.SerialPort;
-import gnu.io.SerialPortEvent;
-import gnu.io.SerialPortEventListener;
-import gnu.io.UnsupportedCommOperationException;
 
 /**
  * The {@link ZWaveSerialHandler} is responsible for the serial communications to the ZWave stick.
@@ -42,11 +46,13 @@ import gnu.io.UnsupportedCommOperationException;
  */
 public class ZWaveSerialHandler extends ZWaveControllerHandler {
 
-    private Logger logger = LoggerFactory.getLogger(ZWaveSerialHandler.class);
+    private final Logger logger = LoggerFactory.getLogger(ZWaveSerialHandler.class);
+
+    private SerialPortManager serialPortManager;
 
     private String portId;
 
-    private SerialPort serialPort;
+    private org.eclipse.smarthome.io.transport.serial.SerialPort serialPort;
 
     private int SOFCount = 0;
     private int CANCount = 0;
@@ -63,6 +69,11 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
         super(bridge);
     }
 
+    public ZWaveSerialHandler(@NonNull Bridge thing, SerialPortManager serialPortManager) {
+        super(thing);
+        this.serialPortManager = serialPortManager;
+    }
+
     @Override
     public void initialize() {
         logger.debug("Initializing ZWave serial controller.");
@@ -70,16 +81,23 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
         portId = (String) getConfig().get(CONFIGURATION_PORT);
 
         if (portId == null || portId.length() == 0) {
-            logger.error("ZWave port is not set.");
+            logger.debug("ZWave port is not set.");
+            updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.CONFIGURATION_ERROR,
+                    ZWaveBindingConstants.OFFLINE_PORT_UNSET);
             return;
         }
 
         super.initialize();
         logger.info("Connecting to serial port '{}'", portId);
         try {
-            CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(portId);
-            CommPort commPort = portIdentifier.open("org.openhab.binding.zwave", 2000);
-            serialPort = (SerialPort) commPort;
+            SerialPortIdentifier portIdentifier = serialPortManager.getIdentifier(portId);
+            if (portIdentifier == null) {
+                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
+                        ZWaveBindingConstants.OFFLINE_SERIAL_NOTFOUND + " [\"" + portId + "\"]");
+                return;
+            }
+            SerialPort commPort = portIdentifier.open("org.openhab.binding.zwave", 2000);
+            serialPort = commPort;
             serialPort.setSerialPortParams(115200, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
                     SerialPort.PARITY_NONE);
             serialPort.enableReceiveThreshold(1);
@@ -96,18 +114,15 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             logger.info("Serial port is initialized");
 
             initializeNetwork();
-        } catch (NoSuchPortException e) {
-            updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    ZWaveBindingConstants.OFFLINE_SERIAL_EXISTS);// , portId));
         } catch (PortInUseException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    ZWaveBindingConstants.OFFLINE_SERIAL_INUSE);// , portId));
+                    ZWaveBindingConstants.OFFLINE_SERIAL_INUSE + " [\"" + portId + "\"]");
         } catch (UnsupportedCommOperationException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    ZWaveBindingConstants.OFFLINE_SERIAL_UNSUPPORTED);// , portId));
+                    ZWaveBindingConstants.OFFLINE_SERIAL_UNSUPPORTED + " [\"" + portId + "\"]");
         } catch (TooManyListenersException e) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                    ZWaveBindingConstants.OFFLINE_SERIAL_LISTENERS);// , portId));
+                    ZWaveBindingConstants.OFFLINE_SERIAL_LISTENERS + " [\"" + portId + "\"]");
         }
     }
 
@@ -186,7 +201,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                     logger.trace("Response SENT {}", response);
                 }
             } catch (IOException e) {
-                logger.error("Exception during send", e);
+                logger.warn("Exception during send", e);
             }
         }
 
@@ -225,7 +240,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                             continue;
                         }
                     } catch (IOException e) {
-                        logger.error("Got I/O exception {} during receiving. exiting thread.", e.getLocalizedMessage());
+                        logger.warn("Got I/O exception {} during receiving. exiting thread.", e.getLocalizedMessage());
                         break;
                     }
 
@@ -329,7 +344,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
 
                 }
             } catch (Exception e) {
-                logger.error("Exception during ZWave thread. ", e);
+                logger.warn("Exception during ZWave thread. ", e);
             }
             logger.debug("Stopped ZWave thread: Receive");
 
@@ -356,7 +371,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                 logger.debug("Message SENT");
             }
         } catch (IOException e) {
-            logger.error("Got I/O exception {} during sending. exiting thread.", e.getLocalizedMessage());
+            logger.warn("Got I/O exception {} during sending. exiting thread.", e.getLocalizedMessage());
         }
     }
 }

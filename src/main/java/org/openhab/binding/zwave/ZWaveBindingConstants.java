@@ -1,17 +1,21 @@
 /**
- * Copyright (c) 2010-2018 by the respective copyright holders.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * Copyright (c) 2010-2019 Contributors to the openHAB project
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.zwave;
 
+import java.util.Collections;
 import java.util.Set;
 
 import org.eclipse.smarthome.core.thing.ThingTypeUID;
-
-import com.google.common.collect.ImmutableSet;
 
 /**
  * The {@link ZWaveBindingConstants} class defines common constants, which are
@@ -97,10 +101,13 @@ public class ZWaveBindingConstants {
     public final static String OFFLINE_CTLR_OFFLINE = "@text/zwave.thingstate.controller_offline";
     public final static String OFFLINE_NODE_DEAD = "@text/zwave.thingstate.node_dead";
     public final static String OFFLINE_NODE_NOTFOUND = "@text/zwave.thingstate.node_notfound";
-    public final static String OFFLINE_SERIAL_EXISTS = "@text/zwave.thingstate.serial_notfound";
+    public final static String OFFLINE_SERIAL_NOTFOUND = "@text/zwave.thingstate.serial_notfound";
     public final static String OFFLINE_SERIAL_INUSE = "@text/zwave.thingstate.serial_inuse";
     public final static String OFFLINE_SERIAL_UNSUPPORTED = "@text/zwave.thingstate.serial_unsupported";
     public final static String OFFLINE_SERIAL_LISTENERS = "@text/zwave.thingstate.serial_listeners";
+    public final static String OFFLINE_PORT_UNSET = "@text/zwave.thingstate.port_unset";
+    public final static String OFFLINE_NODEID_UNSET = "@text/zwave.thingstate.nodeid_unset";
+    public final static String OFFLINE_NODEID_INVALID = "@text/zwave.thingstate.nodeid_invalid";
 
     public final static String EVENT_INCLUSION_STARTED = "@text/zwave.event.inclusion_started";
     public final static String EVENT_INCLUSION_COMPLETED = "@text/zwave.event.inclusion_completed";
@@ -111,7 +118,7 @@ public class ZWaveBindingConstants {
     public final static String EVENT_EXCLUSION_STARTED = "@text/zwave.event.exclusion_started";
     public final static String EVENT_EXCLUSION_COMPLETED = "@text/zwave.event.exclusion_completed";
     public final static String EVENT_EXCLUSION_FAILED = "@text/zwave.event.exclusion_failed";
-    public final static String EVENT_EXCLUSION_NODEREMOVED = "z@text/wave.event.exclusion_failed";
+    public final static String EVENT_EXCLUSION_NODEREMOVED = "z@text/wave.event.exclusion_noderemoved";
 
     public final static String EVENT_NETWORKUPDATE_DONE = "@text/zwave.event.networkupdate_done";
     public final static String EVENT_NETWORKUPDATE_ABORT = "@text/zwave.event.networkupdate_abort";
@@ -139,5 +146,5 @@ public class ZWaveBindingConstants {
 
     public final static String GROUP_CONTROLLER = "controller";
 
-    public final static Set<ThingTypeUID> SUPPORTED_BRIDGE_TYPES_UIDS = ImmutableSet.of(CONTROLLER_SERIAL);
+    public final static Set<ThingTypeUID> SUPPORTED_BRIDGE_TYPES_UIDS = Collections.singleton(CONTROLLER_SERIAL);
 }

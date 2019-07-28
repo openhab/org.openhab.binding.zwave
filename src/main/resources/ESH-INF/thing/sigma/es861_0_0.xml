@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="sigma_es861_00_000" listed="false">
+    <label>** DELETE ** Temperature Sensor</label>
+    <description><![CDATA[
+Temperature Sensor<br /><h1>Overview</h1><p>The ES861- is a battery-powered, accurate, wireless temperature sensor designed for installation in low-energy installation systems based on Z-Wave. The sensor element can be mounted externally as a line sensor if, for example, it is to be measured in a ventilation duct. The temperature sensor measures the temperature and transmits the information wirelessly to a central unit. Only major changes in temperature are transmitted and this gives the temperature sensor a very low power consumption. The measurement interval is set from the central unit. At low battery level in the sensor, the control panel is notified so that the user is advised and can replace the battery. The sensor is approved and certified by Zensys, which must approve all products with Z-Wave integrated. Z-Wave is a standard that gathers communication between electronic devices into a central control unit that has the overall control and control of the function. The program in the control panel can, based on the temperature level, activate ventilation, heating or cooling as required. This provides an optimal system for control and regulation of comfort and energy consumption in buildings with intelligent installations. There is a lot to save by controlling electricity and heat consumption intelligently.</p> <br /><h2>Inclusion Information</h2><p>The configuration button is used for in/excluding to z-wave network.</p> <table><tr><td><strong>Function</strong></td> <td><strong>Button Press </strong></td> <td><strong>Description</strong></td> </tr><tr><td>Include/Exclude</td> <td>Short press</td> <td>Wake up</td> </tr><tr><td>Sensor report</td> <td>Pin leave</td> <td>Start learn mode</td> </tr></table>
+    ]]></description>
+    <category>Sensor</category>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Sigma Designs (Former Zensys)</property>
+      <property name="modelId">** DELETE **</property>
+      <property name="manufacturerId">0000</property>
+      <property name="manufacturerRef">0001:0001</property>
+      <property name="dbReference">394</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>

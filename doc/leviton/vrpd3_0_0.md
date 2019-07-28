@@ -47,7 +47,6 @@ The following table summarises the channels available for the VRPD3 -:
 | Dimmer | switch_dimmer | DimmableLight | Dimmer | 
 
 ### Dimmer
-
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
 

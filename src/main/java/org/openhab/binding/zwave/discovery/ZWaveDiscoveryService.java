@@ -1,9 +1,14 @@
 /**
- * Copyright (c) 2010-2018 by the respective copyright holders.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * Copyright (c) 2010-2019 Contributors to the openHAB project
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.zwave.discovery;
 
@@ -16,8 +21,6 @@ import java.util.concurrent.TimeUnit;
 import org.eclipse.smarthome.config.discovery.AbstractDiscoveryService;
 import org.eclipse.smarthome.config.discovery.DiscoveryResult;
 import org.eclipse.smarthome.config.discovery.DiscoveryResultBuilder;
-import org.eclipse.smarthome.config.discovery.DiscoveryServiceCallback;
-import org.eclipse.smarthome.config.discovery.ExtendedDiscoveryService;
 import org.eclipse.smarthome.core.thing.ThingTypeUID;
 import org.eclipse.smarthome.core.thing.ThingUID;
 import org.eclipse.smarthome.core.thing.type.ThingType;
@@ -25,7 +28,12 @@ import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
 import org.openhab.binding.zwave.internal.ZWaveProduct;
+import org.openhab.binding.zwave.internal.protocol.ZWaveEventListener;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveInitializationStateEvent;
+import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveInclusionState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,13 +43,12 @@ import org.slf4j.LoggerFactory;
  * @author Chris Jackson - Initial contribution
  *
  */
-public class ZWaveDiscoveryService extends AbstractDiscoveryService implements ExtendedDiscoveryService {
+public class ZWaveDiscoveryService extends AbstractDiscoveryService implements ZWaveEventListener {
     private final Logger logger = LoggerFactory.getLogger(ZWaveDiscoveryService.class);
 
     private final String ZWAVE_NODE_LABEL = "Z-Wave Node %03d";
 
     private final ZWaveControllerHandler controllerHandler;
-    private DiscoveryServiceCallback discoveryServiceCallback;
 
     public ZWaveDiscoveryService(ZWaveControllerHandler coordinatorHandler, int searchTime) {
         super(searchTime);
@@ -52,16 +59,13 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
 
     public void activate() {
         logger.debug("ZWave discovery: Active {}", controllerHandler.getThing().getUID());
+        controllerHandler.addEventListener(this);
     }
 
     @Override
     public void deactivate() {
         logger.debug("ZWave discovery: Deactivate {}", controllerHandler.getThing().getUID());
-    }
-
-    @Override
-    public void setDiscoveryServiceCallback(DiscoveryServiceCallback discoveryServiceCallback) {
-        this.discoveryServiceCallback = discoveryServiceCallback;
+        controllerHandler.removeEventListener(this);
     }
 
     @Override
@@ -81,14 +85,7 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
             public void run() {
                 // Add all existing devices
                 for (ZWaveNode node : controllerHandler.getNodes()) {
-                    ThingUID thingUID = new ThingUID(new ThingTypeUID(ZWaveBindingConstants.ZWAVE_THING),
-                            controllerHandler.getThing().getUID(), String.format("node%d", node.getNodeId()));
-                    if (discoveryServiceCallback == null) {
-                        deviceAdded(node);
-                    } else if (discoveryServiceCallback.getExistingDiscoveryResult(thingUID) == null
-                            && discoveryServiceCallback.getExistingThing(thingUID) == null) {
-                        deviceAdded(node);
-                    }
+                    deviceAdded(node);
                 }
             }
         };
@@ -130,13 +127,6 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
         ThingUID bridgeUID = controllerHandler.getThing().getUID();
         ThingUID thingUID = new ThingUID(new ThingTypeUID(ZWaveBindingConstants.ZWAVE_THING), bridgeUID,
                 String.format("node%d", nodeId));
-
-        if (discoveryServiceCallback != null && discoveryServiceCallback.getExistingDiscoveryResult(thingUID) != null) {
-            // Ignore this node as we already know about it
-            logger.debug("NODE {}: Device already known.", nodeId);
-
-            return;
-        }
 
         logger.debug("NODE {}: Device discovered", nodeId);
 
@@ -212,14 +202,9 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
         // Create the thing UID
         ThingUID thingUID = new ThingUID(new ThingTypeUID(ZWaveBindingConstants.ZWAVE_THING), bridgeUID,
                 String.format("node%d", node.getNodeId()));
-        Map<String, Object> properties = new HashMap<>(11);
-        if (discoveryServiceCallback != null && discoveryServiceCallback.getExistingDiscoveryResult(thingUID) != null) {
-            logger.debug("NODE {}: Device already known - properties will be updated.", node.getNodeId());
-
-            properties = discoveryServiceCallback.getExistingDiscoveryResult(thingUID).getProperties();
-        }
 
         // Add some device properties that might be useful for the system to know
+        Map<String, Object> properties = new HashMap<>(11);
         properties.put(ZWaveBindingConstants.CONFIGURATION_NODEID, new BigDecimal(node.getNodeId()));
 
         // Don't add the device information if we don't know it yet
@@ -249,5 +234,31 @@ public class ZWaveDiscoveryService extends AbstractDiscoveryService implements E
         thingDiscovered(discoveryResult);
 
         return;
+    }
+
+    @Override
+    public void ZWaveIncomingEvent(ZWaveEvent event) {
+        if (event instanceof ZWaveInclusionEvent) {
+            ZWaveInclusionEvent incEvent = (ZWaveInclusionEvent) event;
+            if (incEvent.getEvent() == ZWaveInclusionState.IncludeDone && incEvent.getNodeId() != 0) {
+                deviceDiscovered(event.getNodeId());
+            }
+        }
+        if (event instanceof ZWaveInitializationStateEvent) {
+            ZWaveInitializationStateEvent initEvent = (ZWaveInitializationStateEvent) event;
+            switch (initEvent.getStage()) {
+                case DISCOVERY_COMPLETE:
+                    // At this point we know enough information about the device to advise the discovery
+                    // service that there's a new thing.
+                    // We need to do this here as we needed to know the device information such as manufacturer,
+                    // type, id and version
+                    ZWaveNode node = controllerHandler.getNode(initEvent.getNodeId());
+                    if (node != null) {
+                        deviceAdded(node);
+                    }
+                default:
+                    break;
+            }
+        }
     }
 }
