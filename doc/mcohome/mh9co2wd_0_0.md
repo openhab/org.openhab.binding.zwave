@@ -8,6 +8,8 @@ title: MH9-CO2-WD - ZWave
 # MH9-CO2-WD CO2 Monitor Air quality detector
 This describes the Z-Wave device *MH9-CO2-WD*, manufactured by *[McoHome Technology Co., Ltd](http://www.mcohome.com/)* with the thing type UID of ```mcohome_mh9co2wd_00_000```.
 
+The device is in the category of *Sensor*, defining Device used to measure something.
+
 ![MH9-CO2-WD product image](https://www.cd-jackson.com/zwave_device_uploads/455/455_default.png)
 
 
@@ -74,37 +76,33 @@ The wakeup period does not impact the devices ability to report events or sensor
 
 The following table summarises the channels available for the MH9-CO2-WD -:
 
-| Channel | Channel Id | Category | Item Type |
-|---------|------------|----------|-----------|
-| Sensor (temperature) | sensor_temperature | Temperature | Number:Temperature | 
-| Sensor (relative humidity) | sensor_relhumidity | Humidity | Number | 
-| Sensor (CO2) | sensor_co2 |  | Number | 
-| Alarm (CO2) | alarm_co2 | Door | Switch | 
-| Alarm (general) | alarm_general | Door | Switch | 
+| Channel Name | Channel ID | Channel Type | Category | Item Type |
+|--------------|------------|--------------|----------|-----------|
+| Sensor (temperature) | sensor_temperature | sensor_temperature | Temperature | Number:Temperature | 
+| Sensor (relative humidity) | sensor_relhumidity | sensor_relhumidity | Humidity | Number | 
+| Sensor (CO2) | sensor_co2 | sensor_co2 | CarbonDioxide | Number | 
+| Alarm (CO2) | alarm_co2 | alarm_co2 | CarbonDioxide | Switch | 
+| Alarm (general) | alarm_general | alarm_general | Alarm | Switch | 
 
 ### Sensor (temperature)
-
 Indicates the current temperature.
 
-The ```sensor_temperature``` channel supports the ```Number:Temperature``` item and is in the ```Temperature``` category.
+The ```sensor_temperature``` channel is of type ```sensor_temperature``` and supports the ```Number:Temperature``` item and is in the ```Temperature``` category.
 
 ### Sensor (relative humidity)
-
 Indicates the current relative humidity.
 
-The ```sensor_relhumidity``` channel supports the ```Number``` item and is in the ```Humidity``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```sensor_relhumidity``` channel is of type ```sensor_relhumidity``` and supports the ```Number``` item and is in the ```Humidity``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Sensor (CO2)
-
 Indicates the CO2 level.
 
-The ```sensor_co2``` channel supports the ```Number``` item. This is a read only channel so will only be updated following state changes from the device.
+The ```sensor_co2``` channel is of type ```sensor_co2``` and supports the ```Number``` item and is in the ```CarbonDioxide``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Alarm (CO2)
-
 Indicates if the carbon dioxide alarm is triggered.
 
-The ```alarm_co2``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```alarm_co2``` channel is of type ```alarm_co2``` and supports the ```Switch``` item and is in the ```CarbonDioxide``` category. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
 
@@ -114,10 +112,9 @@ The following state translation is provided for this channel to the ```Switch```
 | ON | Alarm |
 
 ### Alarm (general)
-
 Indicates if an alarm is triggered.
 
-The ```alarm_general``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```alarm_general``` channel is of type ```alarm_general``` and supports the ```Switch``` item and is in the ```Alarm``` category. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
 

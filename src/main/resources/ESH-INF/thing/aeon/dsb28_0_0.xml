@@ -8,7 +8,7 @@
   <thing-type id="aeon_dsb28_00_000" listed="false">
     <label>DSB28 Home Energy Meter G2</label>
     <description><![CDATA[
-Home Energy Meter G2<br /><h1>Overview</h1><p>Aeon Labs Home Energy Meter is a kind of energy meter for the entire home electric power consumption. It can report immediate wattage and kWh and voltage and amperage usage of the AC mains to a Z-Wave gateway wirelessly.</p> <p>It can send Z-Wave REPORTS (Meter v3 Command Class) to response Z-Wave GET command at any time.</p> <p>HEM can also be configured as sending unsolicited reports periodically to the associated nodes (within an association group). The time interval of reports can also be configured HEM can also send report of each individual channel with corresponding current clamp via the command of “Multi Channel Command Class Encapsulation ”.</p> <p>To reduce the network traffic, HEM can send reports only when the loads significant change occurred(by percentage or Wattage value change, which can be configured)</p> <br /><h2>Inclusion Information</h2><p>1. Connect HEM G2 to power and install the device properly (according to the Installation instruction, if necessary, please ask an electrician for help) , at beginning its LED blink slowly.</p> <p>2. Let the primary controller of existing Z-Wave network into inclusion mode (If you don’t know how to do this, refer to its manual).</p> <p>3. Press the Z-Wave button of HEM G2.</p> <p>4. If learning success, HEM G2 LED will stop slow blink, or it will still slow blink, please repeat the process from step 2. </p> <br /><h2>Exclusion Information</h2><p>1. Make sure the HEM G2 is powered, its LED be light on steadily.</p> <p>2. Let the primary controller of existing Z-Wave network into remove mode (If you don’t know how to do this, refer to its manual).</p> <p>3. Press the Z-Wave button.</p> <p>4. If exclusion success, HEM G2 LED will blink slowly or its LED still be on, please repeat the process from step 2.</p>
+Home Energy Meter G2<br /><h1>Overview</h1><p>Aeon Labs Home Energy Meter is a kind of energy meter for the entire home electric power consumption. It can report immediate wattage and kWh and voltage and amperage usage of the AC mains to a Z-Wave gateway wirelessly.</p> <p>It can send Z-Wave REPORTS (Meter v3 Command Class) to response Z-Wave GET command at any time.</p> <p>HEM can also be configured as sending unsolicited reports periodically to the associated nodes (within an association group). The time interval of reports can also be configured HEM can also send report of each individual channel with corresponding current clamp via the command of “Multi Channel Command Class Encapsulation ”.</p> <p>To reduce the network traffic, HEM can send reports only when the loads significant change occurred(by percentage or Wattage value change, which can be configured)</p> <br /><h2>Inclusion Information</h2><ol><li>Connect HEM G2 to power and install the device properly (according to the Installation instruction, if necessary, please ask an electrician for help) , at beginning its LED blink slowly.</li> <li>Let the primary controller of existing Z-Wave network into inclusion mode (If you don’t know how to do this, refer to its manual).</li> <li>Press the Z-Wave button of HEM G2.</li> <li>If learning success, HEM G2 LED will stop slow blink, or it will still slow blink, please repeat the process from step 2. </li> </ol><br /><h2>Exclusion Information</h2><ol><li>Make sure the HEM G2 is powered, its LED be light on steadily.</li> <li>Let the primary controller of existing Z-Wave network into remove mode (If you don’t know how to do this, refer to its manual).</li> <li>Press the Z-Wave button.</li> <li>If exclusion success, HEM G2 LED will blink slowly or its LED still be on, please repeat the process from step 2.</li> </ol>
     ]]></description>
     <category>Sensor</category>
 
@@ -125,6 +125,7 @@ Home Energy Meter G2<br /><h1>Overview</h1><p>Aeon Labs Home Energy Meter is a k
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0002:001C</property>
       <property name="dbReference">85</property>
+      <property name="defaultAssociations">1,2,3</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -235,22 +236,28 @@ Percentage change in power to induce a automatic report (Clamp 3).<br /><h1>Over
 
       <parameter name="config_101_4" type="integer" groupName="configuration"
                  min="0" max="1061109568">
-        <label>101: Which reports need to send automatically for group 1</label>
-        <description>1 -&gt; Battery Report2 -&gt; MultiSensor Report for the whole device4 -&gt; Meter Report for Watt for the whole device8 -&gt; Meter Report for kWh for the whole device256 -&gt; Meter Report for Watt for clamp 1512 -&gt; Meter Report for W</description>
+        <label>101: Reports for group 1</label>
+        <description><![CDATA[
+Reports for group 1<br /><h1>Overview</h1><p>1 -&gt; Battery Report<br /><br />2 -&gt; MultiSensor Report for the whole device<br /><br />4 -&gt; Meter Report for Watt for the whole device<br /><br />8 -&gt; Meter Report for kWh for the whole device<br /><br />256 -&gt; Meter Report for Watt for clamp 1<br /><br />512 -&gt; Meter Report for W</p>
+        ]]></description>
         <default>8</default>
       </parameter>
 
       <parameter name="config_102_4" type="integer" groupName="configuration"
                  min="0" max="1061109568">
-        <label>102: Which reports need to send automatically for group 2</label>
-        <description>1 -&gt; Battery Report2 -&gt; MultiSensor Report for the whole device4 -&gt; Meter Report for Watt for the whole device8 -&gt; Meter Report for kWh for the whole device256 -&gt; Meter Report for Watt for clamp 1512 -&gt; Meter Report for W</description>
+        <label>102: Reports for group 2</label>
+        <description><![CDATA[
+Reports for group 2<br /><h1>Overview</h1><p>1 -&gt; Battery Report<br /><br />2 -&gt; MultiSensor Report for the whole device<br /><br />4 -&gt; Meter Report for Watt for the whole device<br /><br />8 -&gt; Meter Report for kWh for the whole device<br /><br />256 -&gt; Meter Report for Watt for clamp 1<br /><br />512 -&gt; Meter Report for W</p>
+        ]]></description>
         <default>8</default>
       </parameter>
 
       <parameter name="config_103_4" type="integer" groupName="configuration"
                  min="0" max="1061109568">
-        <label>103: Which reports need to send automatically for group 3</label>
-        <description>1 -&gt; Battery Report2 -&gt; MultiSensor Report for the whole device4 -&gt; Meter Report for Watt for the whole device8 -&gt; Meter Report for kWh for the whole device256 -&gt; Meter Report for Watt for clamp 1512 -&gt; Meter Report for W</description>
+        <label>103: Reports for group 3</label>
+        <description><![CDATA[
+Reports for group 3<br /><h1>Overview</h1><p>1 -&gt; Battery Report<br /><br />2 -&gt; MultiSensor Report for the whole device<br /><br />4 -&gt; Meter Report for Watt for the whole device<br /><br />8 -&gt; Meter Report for kWh for the whole device<br /><br />256 -&gt; Meter Report for Watt for clamp 1<br /><br />512 -&gt; Meter Report for W</p>
+        ]]></description>
         <default>8</default>
       </parameter>
 

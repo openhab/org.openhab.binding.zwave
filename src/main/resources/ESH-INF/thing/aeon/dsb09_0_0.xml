@@ -17,7 +17,7 @@ Home Energy Meter<br /><h1>Overview</h1><p>Your Home Energy Meter can be reset t
       <channel id="sensor_power" typeId="sensor_power">
         <label>Sensor (power)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=POWER</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL,COMMAND_CLASS_BASIC;type=POWER</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
@@ -46,7 +46,7 @@ Home Energy Meter<br /><h1>Overview</h1><p>Your Home Energy Meter can be reset t
       <channel id="sensor_power1" typeId="sensor_power">
         <label>Sensor (power) 1</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:1;type=POWER</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:1,COMMAND_CLASS_BASIC:1;type=POWER</property>
         </properties>
       </channel>
       <channel id="meter_kwh1" typeId="meter_kwh">
@@ -64,7 +64,7 @@ Home Energy Meter<br /><h1>Overview</h1><p>Your Home Energy Meter can be reset t
       <channel id="sensor_power2" typeId="sensor_power">
         <label>Sensor (power) 2</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:2;type=POWER</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:2,COMMAND_CLASS_BASIC:2;type=POWER</property>
         </properties>
       </channel>
       <channel id="meter_kwh2" typeId="meter_kwh">
@@ -82,7 +82,7 @@ Home Energy Meter<br /><h1>Overview</h1><p>Your Home Energy Meter can be reset t
       <channel id="sensor_power3" typeId="sensor_power">
         <label>Sensor (power) 3</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:3;type=POWER</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:3,COMMAND_CLASS_BASIC:3;type=POWER</property>
         </properties>
       </channel>
       <channel id="meter_kwh3" typeId="meter_kwh">

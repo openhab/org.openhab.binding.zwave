@@ -7,7 +7,9 @@
 
   <thing-type id="benext_alarmsound_00_000" listed="false">
     <label>Alarm Sound Alarm sound</label>
-    <description>Alarm sound</description>
+    <description><![CDATA[
+Alarm sound<br /><h1>Overview</h1><p>The Alarm Sound is a plug&amp;play product developed by BeNext. Depending on present situations and scenes it sets off an alarm sound warning you and your family or scaring off unwanted activities. Use the Alarm Sound for security purposes and notifications indoors.</p> <p>Use the Alarm Sound in combination with the Door Sensor or MoLite Sensor to alert you when someone undesirably enters your home or work-space. The Alarm Sound possesses six different sound- and lighting-configurations to scare off any possible intruder. You can also customize personal preferred ‘scenes’ and ‘rules’ in our free of charge online manager in order to give the Alarm Sound dual functionality. You can even choose to create a new kind of alarm clock, which in combination with the Door Sensor or MoLite Sensor gives a wake up alarm if you haven’t left your bedroom after 09:00 am.</p> <br /><h2>Inclusion Information</h2><p>Press and hold the push button until the indicator light is blinking than release the button to start the inclusion or exclusion process</p> <br /><h2>Exclusion Information</h2><p>Press and hold the push button until the indicator light is blinking than release the button to start the inclusion or exclusion process</p>
+    ]]></description>
     <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -63,7 +65,7 @@ Set all configuration values to default values (factory settings)<br /><h1>Overv
                  min="0" max="255">
         <label>2: Destination routine on/off</label>
         <description><![CDATA[
-Test connection by sending a periodic test. if the device doesn't react the user will be notified by a sound.<br /><h1>Overview</h1><p>0 this is turned off. 1-255 turn it on.</p>
+Test connection by sending a periodic test with sound on failure<br /><h1>Overview</h1><p>Test connection by sending a periodic test. if the device doesn't react the user will be notified by a sound.</p> <p>0 this is turned off. 1-255 turn it on.</p>
         ]]></description>
         <default>255</default>
       </parameter>

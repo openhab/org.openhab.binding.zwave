@@ -7,7 +7,9 @@
 
   <thing-type id="aeon_dsc17_00_000" listed="false">
     <label>DSC17 Micro Double Smart Switch</label>
-    <description>Micro Double Smart Switch</description>
+    <description><![CDATA[
+Micro Double Smart Switch<br /><h1>Overview</h1><p>The Aeon Labs Micro Double SES is a power binary switch device based on Z-wave routing slave library V5.02 Patch3</p> <br /><h2>Inclusion Information</h2><p>Toggle external button or push internal button.</p> <br /><h2>Exclusion Information</h2><p>Toggle external button 10 times in quick succession to initiate removing from the Z-Wave network or push internal button. </p>
+    ]]></description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->

@@ -17,7 +17,7 @@ PIR Motion Sensor<br /><h1>Overview</h1><p>The ZIR010 Wall Mounted Sensor is a c
       <channel id="sensor_binary" typeId="sensor_binary">
         <label>Binary Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="alarm_general" typeId="alarm_general">
@@ -40,6 +40,7 @@ PIR Motion Sensor<br /><h1>Overview</h1><p>The ZIR010 Wall Mounted Sensor is a c
       <property name="manufacturerId">0001</property>
       <property name="manufacturerRef">4952:3030,4952:3130</property>
       <property name="dbReference">189</property>
+      <property name="defaultAssociations">1,2,3</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -120,7 +121,7 @@ Duration ranges from 15 to 45 seconds. Valid values range from 15 to 45.<br /><h
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Battery</label>
         <description><![CDATA[
-<br /><h1>Overview</h1> <p>Any device that is associated into Group 3 will be sent battery level indications at specific intervals. There can be up to 5 devices associated into each group. </p>
+<br /><h1>Overview</h1> <p>Any device that is associated into Group 3 will be sent battery level indications at specific intervals. There can be up to 5 devices associated into each group. <br /></p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>

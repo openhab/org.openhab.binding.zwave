@@ -83,7 +83,7 @@ Applies only when the Color Transition Style is set to Fade Out/In<br /><h1>Over
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0"></option>
+          <option value="0">Constant Speed</option>
         </options>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -128,7 +128,7 @@ Defines the mode for determining colors used in color transitions<br /><h1>Overv
         <options>
           <option value="0">Inactive (keep the current configuration value)</option>
           <option value="1">Rainbow mode</option>
-          <option value="2">Multi color mode (colors cycle between selected colors)</option>
+          <option value="2">Multi color mode</option>
           <option value="3">Random mode</option>
           <option value="4">Single color mode</option>
         </options>

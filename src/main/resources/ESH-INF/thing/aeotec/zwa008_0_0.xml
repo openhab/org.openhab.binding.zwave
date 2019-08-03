@@ -8,7 +8,7 @@
   <thing-type id="aeotec_zwa008_00_000" listed="false">
     <label>ZWA008 Door/Window Sensor 7</label>
     <description><![CDATA[
-Door/Window Sensor 7<br /><h1>Overview</h1><p>Aeotec Door/ Window Sensor 7 is a small window position sensor for your smart home, it monitors window and their exact opening position and lets your know when a window is tilted or completely opened. It also supports connecting external binary sensors through the dry binary contact of the Door/ Window sensor.</p> <br /><h2>Inclusion Information</h2><p>Inclusion:<br />Tripple click the tamper switch<br /><br /></p> <br /><h2>Exclusion Information</h2><p>Exclusion:<br />Tripple click the tamper switch </p> <br /><h2>Wakeup Information</h2><p>Hit the tamper switch once.</p>
+Door/Window Sensor 7<br /><h1>Overview</h1><p>Aeotec Door/ Window Sensor 7 is a small window position sensor for your smart home, it monitors window and their exact opening position and lets your know when a window is tilted or completely opened. It also supports connecting external binary sensors through the dry binary contact of the Door/ Window sensor.</p> <br /><h2>Inclusion Information</h2><p>Tripple click the tamper switch<br /><br /></p> <br /><h2>Exclusion Information</h2><p>Tripple click the tamper switch </p> <br /><h2>Wakeup Information</h2><p>Hit the tamper switch once.</p>
     ]]></description>
     <category>Sensor</category>
 
@@ -50,7 +50,7 @@ Door/Window Sensor 7<br /><h1>Overview</h1><p>Aeotec Door/ Window Sensor 7 is a 
       <property name="vendor">Aeotec Limited</property>
       <property name="modelId">ZWA008</property>
       <property name="manufacturerId">0371</property>
-      <property name="manufacturerRef">0002:0007</property>
+      <property name="manufacturerRef">0002:0007,0102:0007</property>
       <property name="dbReference">1065</property>
       <property name="commandClass:COMMAND_CLASS_SECURITY">setVersion=1</property>
       <property name="defaultAssociations">1</property>
@@ -71,47 +71,71 @@ Door/Window Sensor 7<br /><h1>Overview</h1><p>Aeotec Door/ Window Sensor 7 is a 
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
-      <parameter name="config_1_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Sensor Operation Mode</label>
         <description><![CDATA[
 Defines if internal magnet sensor or the external terminal input is detected<br /><h1>Overview</h1><p>This parameter defines if the internal magnet sensor or the external terminal input is detected and used to issue alarm notification. There is always one input active only. The other sensor input the deactivated. </p>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Internal Magnet Sensor Used</option>
+          <option value="1">External Terminal Inputs Used</option>
+        </options>
       </parameter>
 
-      <parameter name="config_2_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Sensor State Polarity</label>
         <description>Defines the polarity of the magnet sensor</description>
         <default>0</default>
+        <options>
+          <option value="0">Closed when Magnet in proximity</option>
+          <option value="1">Opened when Magnet in proximity</option>
+        </options>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="1" max="31">
         <label>3: Visual LED Indications</label>
         <description><![CDATA[
-Defines when the red LED will indicate events.<br /><h1>Overview</h1><p>Disabling all indications may extend battery life.</p>
+Defines when the red LED will indicate events.<br /><h1>Overview</h1><p>Disabling all indications may extend battery life.</p> <table><tr><td><strong>Setting</strong></td> <td><strong>Description</strong></td> </tr><tr><td>Byte 1: 00000001 </td> <td>No Indications</td> </tr><tr><td>Byte 1: 00000010 </td> <td>Open/Close Status Change </td> </tr><tr><td>Byte 1: 00000100 </td> <td>Wake Up </td> </tr><tr><td>Byte 1: 00010000</td> <td>Device Tampering </td> </tr></table>
         ]]></description>
         <default>7</default>
       </parameter>
 
-      <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Range Test after double click</label>
         <description><![CDATA[
 Allows to enable the activation of a Z-Wave range.<br /><h1>Overview</h1><p>Allows to enable the activation of a Z-Wave range test with double clicking the tamper switch. </p>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
+        </options>
       </parameter>
 
-      <parameter name="config_5_1" type="integer" groupName="configuration"
-                 min="0" max="2">
+      <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: 2nd Association Group Trigger</label>
         <description><![CDATA[
 Sending a BASIC command to all devices of Association Group 2<br /><h1>Overview</h1><p>This parameter defines the status of the magnet switch that causes sending a BASIC command to all devices of Association Group 2 </p>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Switch after ‘Open‘ and ‘Close‘</option>
+          <option value="1">Switch after ‘Open‘</option>
+          <option value="2">Switch after ‘Close‘</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_6_1" type="integer" groupName="configuration">
+        <label>6: Command Sent to Devices of Association Group 2</label>
+        <description>This parameter defines which commands is sent to 2nd Association Group</description>
+        <default>2</default>
+        <options>
+          <option value="0">On</option>
+          <option value="1">Off</option>
+          <option value="2">On and Off</option>
+        </options>
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
@@ -149,25 +173,34 @@ Sending a BASIC command to all devices of Association Group 2<br /><h1>Overview<
         <default>0</default>
       </parameter>
 
-      <parameter name="config_12_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_12_1" type="integer" groupName="configuration">
         <label>12: Reporting Tamper Alarm Cancellation</label>
         <description>Reporting Tamper Alarm Cancellation</description>
         <default>1</default>
+        <options>
+          <option value="0">Do not send Report</option>
+          <option value="1">Send Report</option>
+        </options>
       </parameter>
 
-      <parameter name="config_13_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Central Scene Event Functionality</label>
         <description>Central Scene Event Functionality</description>
         <default>0</default>
+        <options>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
+        </options>
       </parameter>
 
-      <parameter name="config_14_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_14_1" type="integer" groupName="configuration">
         <label>14: Tilt Sensor Functionality</label>
         <description>Tilt Sensor Functionality</description>
         <default>1</default>
+        <options>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
+        </options>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

@@ -15,7 +15,7 @@ Dual paddle wall mounted transmitter<br /><h1>Overview</h1><p>The ZTM230 Wall Mo
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
+        <label>Switch [Deprecated]</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
         </properties>
@@ -23,8 +23,8 @@ Dual paddle wall mounted transmitter<br /><h1>Overview</h1><p>The ZTM230 Wall Mo
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
     </channels>
@@ -36,6 +36,7 @@ Dual paddle wall mounted transmitter<br /><h1>Overview</h1><p>The ZTM230 Wall Mo
       <property name="manufacturerId">0001</property>
       <property name="manufacturerRef">544D:3330</property>
       <property name="dbReference">524</property>
+      <property name="defaultAssociations">1,2,3,4</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

@@ -17,7 +17,7 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><table><tr><td> <p><
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -77,7 +77,7 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><table><tr><td> <p><
       <channel id="switch_binary1" typeId="switch_binary">
         <label>Switch 1</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1,COMMAND_CLASS_BASIC:1</property>
         </properties>
       </channel>
       <channel id="meter_voltage1" typeId="meter_voltage">
@@ -107,7 +107,7 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><table><tr><td> <p><
       <channel id="switch_binary2" typeId="switch_binary">
         <label>Switch 2</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:2</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:2,COMMAND_CLASS_BASIC:2</property>
         </properties>
       </channel>
       <channel id="meter_voltage2" typeId="meter_voltage">
