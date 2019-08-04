@@ -29,6 +29,7 @@ Wall Mounted 3-Way Switch<br /><h1>Overview</h1><p><b>ZRW230 WALL MOUNTED SWITCH
       <property name="manufacturerId">0001</property>
       <property name="manufacturerRef">5257:3330</property>
       <property name="dbReference">546</property>
+      <property name="defaultAssociations">1,2,3,4</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

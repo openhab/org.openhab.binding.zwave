@@ -71,8 +71,10 @@ Value sent when the Magnet is triggered On/Off.<br /><h1>Overview</h1><p>Which v
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
-        <label>2: Enable wake up 10 minutes when re-power on the sensor</label>
-        <description>Default setting: Disable</description>
+        <label>2: Wake up 10 minutes</label>
+        <description><![CDATA[
+Default setting: Disable<br /><h1>Overview</h1><p>Wake up 10 minutes when re-power on the sensor</p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">Disable</option>
