@@ -335,6 +335,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
                 return new StringType(propertiesToJson(object));
             case "alarm_number":
             case "notification_access_control":
+            case "notification_power_management":
                 return new DecimalType(eventAlarm.getAlarmEvent());
             default:
                 Map<NotificationEvent, State> events = notifications.get(channelType);
