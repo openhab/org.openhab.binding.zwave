@@ -17,7 +17,7 @@ Micro Smart Energy Switch G2<br /><h1>Overview</h1><p>The Aeotec Micro Smart Ene
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="meter_watts" typeId="meter_watts">

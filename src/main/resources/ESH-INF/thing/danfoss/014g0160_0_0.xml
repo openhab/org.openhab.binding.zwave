@@ -8,7 +8,7 @@
   <thing-type id="danfoss_014g0160_00_000" listed="false">
     <label>014G0160 Room Thermostat</label>
     <description><![CDATA[
-Room Thermostat<br /><h2>Inclusion Information</h2><p>Push one time LED Button</p> <br /><h2>Exclusion Information</h2><p>Push one time LED Button</p> <br /><h2>Wakeup Information</h2><p>Any button (LED, Temp+ or Temp-)</p>
+Room Thermostat<br /><h1>Overview</h1><p>The Danfoss Link™ RS (Room Sensor) has a built-in temperature sensor, which measures the ambient temperature. It allows you to control the heating, based on room temperature in the room where installed. With the Danfoss Link™ RS you can also adjust the temperature.</p> <br /><h2>Inclusion Information</h2><p>Push one time LED Button</p> <br /><h2>Exclusion Information</h2><p>Push one time LED Button</p> <br /><h2>Wakeup Information</h2><p>Any button (LED, Temp+ or Temp-)</p>
     ]]></description>
     <category>HVAC</category>
 

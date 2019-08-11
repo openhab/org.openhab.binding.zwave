@@ -68,7 +68,7 @@ MT2756 Flood Sensor<br /><h1>Overview</h1><p>The Home Control Water Sensor is a 
                  min="0" max="255">
         <label>1: Basic Set OFF Level</label>
         <description><![CDATA[
-Setting the BASIC command value<br /><ul><li>When the flood trigger off(0x00), send the BASIC CC to the group 2</li></ul>
+Basic Set OFF Level<br /><h1>Overview</h1><p>Setting the BASIC command value</p> <ul><li>When the flood trigger off(0x00), send the BASIC CC to the group 2</li> </ul>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -77,7 +77,7 @@ Setting the BASIC command value<br /><ul><li>When the flood trigger off(0x00), s
                  min="0" max="255">
         <label>2: Basic Set ON Level</label>
         <description><![CDATA[
-Setting the BASIC command value<br /><ul><li>When the flood trigger on(0xFF), send the BASIC CC to the group 2</li></ul>
+Basic Set ON Level<br /><h1>Overview</h1><p>Setting the BASIC command value</p> <ul><li>When the flood trigger on(0xFF), send the BASIC CC to the group 2</li> </ul>
         ]]></description>
         <default>255</default>
       </parameter>
@@ -85,7 +85,7 @@ Setting the BASIC command value<br /><ul><li>When the flood trigger on(0xFF), se
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Disable the Flood function</label>
         <description><![CDATA[
-Operation mode<br /><ul><li>0: Flood function is enabled</li> <li>1: Flood function is disabled</li></ul>
+Disable the Flood function<br /><h1>Overview</h1><p>Operation mode</p> <ul><li>0: Flood function is enabled</li> <li>1: Flood function is disabled</li> </ul>
         ]]></description>
         <default>0</default>
         <options>
@@ -97,7 +97,9 @@ Operation mode<br /><ul><li>0: Flood function is enabled</li> <li>1: Flood funct
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>7: Customer Function</label>
-        <description>Parameter to set the sensor functionsBit 0: ReserveBit 1: ReserveBit 2: ReserveBit 3: Disable send out BASIC OFF after the flood event clearedBit 4: Notification Type. 0:Using Notification Report, 1:Using Sensor Binary ReportBit 5: Disable Multi CC in aut</description>
+        <description><![CDATA[
+Customer Function<br /><h1>Overview</h1><p>Parameter to set the sensor functions</p> <ul><li>Bit 0: Reserve</li> <li>Bit 1: Reserve</li> <li>Bit 2: Reserve</li> <li>Bit 3: Disable send out BASIC OFF after the flood event cleared</li> <li>Bit 4: Notification Type. <ul><li>0:Using Notification Report,</li> <li>1:Using Sensor Binary Report</li> </ul></li> <li>Bit 5: Disable Multi CC in aut</li> </ul>
+        ]]></description>
         <default>0</default>
       </parameter>
 
@@ -105,7 +107,7 @@ Operation mode<br /><ul><li>0: Flood function is enabled</li> <li>1: Flood funct
                  min="0" max="127">
         <label>10: Auto Report Battery Time</label>
         <description><![CDATA[
-The interval time for auto reporting the battery level<br /><ul><li>0 = Turn off auto report battery.</li> <li>1-127 = Number of ticks. The default value is 12. The tick time can be set by configuration No. 20.</li></ul>
+Auto Report Battery Time<br /><h1>Overview</h1><p>The interval time for auto reporting the battery level</p> <ul><li>0 = Turn off auto report battery.</li> <li>1-127 = Number of ticks.</li> </ul><p>The default value is 12. The tick time can be set by configuration No. 20.</p>
         ]]></description>
         <default>12</default>
       </parameter>
@@ -114,7 +116,7 @@ The interval time for auto reporting the battery level<br /><ul><li>0 = Turn off
                  min="0" max="127">
         <label>15: Auto Report Flood Time</label>
         <description><![CDATA[
-The interval time for auto report the flood state<br /><ul><li>0 = Turn off auto report</li> <li>1-127 = Number of ticks. The default value is 12. The tick time can be set by configuration No. 20.</li></ul>
+Auto Report Flood Time<br /><h1>Overview</h1><p>The interval time for auto report the flood state</p> <ul><li>0 = Turn off auto report</li> <li>1-127 = Number of ticks.</li> </ul><p>The default value is 12. The tick time can be set by configuration No. 20</p>
         ]]></description>
         <default>12</default>
       </parameter>
@@ -123,7 +125,7 @@ The interval time for auto report the flood state<br /><ul><li>0 = Turn off auto
                  min="0" max="255">
         <label>20: Auto Report Tick Interval</label>
         <description><![CDATA[
-The interval time for auto reporting each tick.<br /><ul><li>0 = Turn off all auto report function.</li> <li>1-255 = Number of ticks. Setting this configuration will effect configuration Nr. 10 and No. 15.</li></ul>
+Auto Report Tick Interval<br /><h1>Overview</h1><p>The interval time for auto reporting each tick.</p> <ul><li>0 = Turn off all auto report function.</li> <li>1-255 = Number of ticks.</li> </ul><p>Setting this configuration will effect configuration Nr. 10 and No. 15.</p>
         ]]></description>
         <default>30</default>
       </parameter>

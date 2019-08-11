@@ -7,7 +7,9 @@
 
   <thing-type id="yale_yrd446_00_000" listed="false">
     <label>YRD446 Yale Real Living Key Free Touchscreen Assure Lock with Z-Wave and Bluetooth</label>
-    <description>Yale Real Living Key Free Touchscreen Assure Lock with Z-Wave and Bluetooth</description>
+    <description><![CDATA[
+Yale Real Living Key Free Touchscreen Assure Lock with Z-Wave and Bluetooth<br /><h1>Overview</h1><p>This device is a security enabled Z-Wave Plus product that is able to use encrypted ZWave Plus messages to communicate to other security enabled Z-Wave Plus products. This device must be used in conjunction with a Security Enabled Z-Wave Controller in order to fully utilize all implemented functions. This product can be operated in any ZWave network with other Z-Wave certified devices from other manufacturers. All nonbattery operated nodes within the network will act as repeaters regardless of vendor to increase reliability of the network. </p> <br /><h2>Inclusion Information</h2><p><strong>Note:</strong> In these instructions the <strong>Setup</strong> key is the one that has a hollow gear symbol on it.</p> <ul><li>Enter the 4 - 8 digit Master PIN  code followed by the <strong>Setup</strong> key.</li> <li>Press the <strong>7</strong> key followed by the <strong>Setup</strong> key.</li> <li>Press the <strong>1</strong> key followed by the <strong>Setup</strong> key.</li> </ul><br /><h2>Exclusion Information</h2><p><strong>Note:</strong> In these instructions the <strong>Setup</strong> key is the one that has a hollow gear symbol on it.</p> <ul><li>Enter the 4 - 8 digit Master PIN  code followed by the <strong>Setup</strong> key.</li> <li>Press the <strong>7</strong> key followed by the <strong>Setup</strong> key.</li> <li>Press the <b>3</b> key followed by the <strong>Setup</strong> key.</li> </ul>
+    ]]></description>
     <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -190,12 +192,14 @@ Number of incorrect PINs before lockout<br /><h1>Overview</h1><p>Number of incor
         </options>
       </parameter>
 
-      <parameter name="config_15_1" type="integer" groupName="configuration">
+      <parameter name="config_15_1" type="integer" groupName="configuration"
+                 min="0" max="1">
         <label>15: Reset To Factory Defaults</label>
         <default>0</default>
         <options>
           <option value="1">Factory Reset</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

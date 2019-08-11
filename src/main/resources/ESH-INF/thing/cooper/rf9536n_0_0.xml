@@ -7,7 +7,9 @@
 
   <thing-type id="cooper_rf9536n_00_000" listed="false">
     <label>RF9536-N 1000W Dimmer Light Switch</label>
-    <description>1000W Dimmer Light Switch</description>
+    <description><![CDATA[
+1000W Dimmer Light Switch<br /><h1>Overview</h1><ul><li>ASPIRE RF Dimmers replace regular switches to provide local and remote ON/OFF/DIM/BRIGHT control and are compatible with Incandescent, Magnetic Low-Voltage lighting loads.</li> <li>ASPIRE RF Dimmers provide other programmable functions (scenes, events, association, child lockout, etc.) when used with ASPIRE RF or other Z-Wave compliant controllers*. Each dimmer can be manually and remotely controlled by commands sent from an ASPIRE RF controller (RFTDCSG, RFHDCSG, RFBER) or other Z-Wave compatible controllers or programs.</li> <li>ASPIRE RF Dimmers utilize existing 120V/AC, 60Hz standard house wiring and fit into standard wallboxes. No new wiring needed.</li> </ul><p>(*Note: some specific ASPIRE RF features may not be programmable)</p> <br /><h2>Inclusion Information</h2><p>Press the device switch one time to include it in the network. The LED will stop blinking.</p> <br /><h2>Exclusion Information</h2><p>Press the device switch one time to exclude it in the network. The LED will start blinking.</p>
+    ]]></description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->

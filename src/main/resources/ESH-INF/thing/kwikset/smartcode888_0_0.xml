@@ -150,9 +150,9 @@ Reset to factory default settings<br /><h1>Overview</h1><p>Reset factory default
         ]]></description>
         <default>0</default>
         <options>
+          <option value="0">Normal</option>
           <option value="1">Factory Default</option>
         </options>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_47_1" type="integer" groupName="configuration">

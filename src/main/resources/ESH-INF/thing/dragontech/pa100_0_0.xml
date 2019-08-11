@@ -7,14 +7,17 @@
 
   <thing-type id="dragontech_pa100_00_000" listed="false">
     <label>PA-100 Plug-in On/Off Switch</label>
-    <description>Plug-in On/Off Switch</description>
+    <description><![CDATA[
+Plug-in On/Off Switch<br /><h1>Overview</h1><p>PA-100 can be used to turn On or Off lamps or AC operated appliances.</p> <br /><h2>Inclusion Information</h2><p>Single click the button on the front of the PA-100</p> <br /><h2>Exclusion Information</h2><p>Single click the button on the front of the PA-100</p>
+    ]]></description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
     </channels>
