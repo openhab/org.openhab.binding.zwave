@@ -77,6 +77,7 @@ CH-201 Thermostat<br /><h1>Overview</h1><p>The CH-201 thermostat is a Z-Wave dev
       <property name="manufacturerId">0179</property>
       <property name="manufacturerRef">0013:0021</property>
       <property name="dbReference">582</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

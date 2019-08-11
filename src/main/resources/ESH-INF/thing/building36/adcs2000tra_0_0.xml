@@ -23,7 +23,7 @@ Temperature Sensor<br /><h1>Overview</h1><p>Provides temperature reading from an
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
-          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL,COMMAND_CLASS_BASIC;type=TEMPERATURE</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">

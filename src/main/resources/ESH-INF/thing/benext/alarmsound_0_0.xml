@@ -35,6 +35,7 @@ Alarm sound<br /><h1>Overview</h1><p>The Alarm Sound is a plug&amp;play product 
       <property name="manufacturerId">008A</property>
       <property name="manufacturerRef">0005:0101</property>
       <property name="dbReference">443</property>
+      <property name="defaultAssociations">2</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

@@ -7,7 +7,10 @@
 
   <thing-type id="benext_powerswitch_00_000" listed="false">
     <label>powerSwitch Power Switch EU</label>
-    <description>Power Switch EU</description>
+    <description><![CDATA[
+Power Switch EU<br /><h1>Overview</h1><p>Basic operations</p> <ul><li>The Power Switch can be remotely controlled.</li> <li>The Power Switch can be controlled by the push button on the front of the device.</li> <li>The Power Switch’s indicator light can indicate the status of the switch (ON or OFF).</li> </ul><p>How it operates</p> <p>Control and monitor your lightning or any other appliance. Easy plug and play. </p> <br /><h2>Inclusion Information</h2><p>Press and hold the push button until the indicator light is blinking than release the button to start the inclusion or exclusion process.</p> <br /><h2>Exclusion Information</h2><p>Press and hold the push button until the indicator light is blinking than release the button to start the inclusion or exclusion process.</p>
+    ]]></description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -66,9 +69,9 @@ state in what the switch is when power is supplied<br /><h1>Overview</h1><p>If 0
                  min="0" max="255">
         <label>9: Relay delay time</label>
         <description><![CDATA[
-When the relay is switched it can't be switched again until the configured time has passed<br /><h1>Overview</h1><p>Value * 10 milliseconds</p>
+Relay delay time<br /><h1>Overview</h1><p>When the relay is switched it can't be switched again until the configured time has passed</p> <p>Value * 10 milliseconds</p>
         ]]></description>
-        <default>0</default>
+        <default>50</default>
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"

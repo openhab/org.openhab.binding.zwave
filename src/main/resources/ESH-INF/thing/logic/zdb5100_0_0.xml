@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="logic_zdb5100_00_000" listed="false">
+    <label>ZDB5100 MATRIX Switch with Dimmer and Backlight</label>
+    <description><![CDATA[
+MATRIX Switch with Dimmer and Backlight<br /><h1>Overview</h1><p>MATRIX type ZDB5100 is a multifunction switch that can be mounted in a modular wall-box, with built-in light dimmer and four configurable pushbuttons with RGB indicators.</p> <p>The built-in light dimmer is per default attached to pushbutton 1. This attachment can be configured, thus it can be configured to not be controlled by any the four pushbuttons, so it can be independent of the local operation and thereby only be controllable from the Z-Wave network.</p> <p>Furthermore, the pushbuttons can be configured to work together in pairs; thereby it can be possible to have one pushbutton to dim the light up, and another pushbutton to dim the light down.</p> <p>The four RGB indicators, one for each pushbutton, can be used for different purposes, for example as orientation light, status light, different kind of indications, etc. The colour of the light and the control of it is fully controllable from the Z-Wave network.</p> <p>MATRIX is also working as a repeater for the Z-Wave network and therefore expands the Z-Wave network coverage.</p> <br /><h2>Inclusion Information</h2><p>MATRIX’ add function is initiated by pressing once on the centre switch (I) (under the pushbutton cover). The LED’s in pushbutton 1 will start blinking. If MATRIX already belongs to a Z-Wave network, the remove process must be performed before adding it into a new network. Otherwise, the adding of the device will fail.</p> <br /><h2>Exclusion Information</h2><p>MATRIX’ remove function is initiated by pressing once on the centre switch (I) (under the pushbutton cover). The LED’s in pushbutton 1 will start blinking.</p> <p><strong>Factory Reset</strong></p> <p>MATRIX can be factory reset by holding the centre switch (I) under the pushbutton cover, for at least 10 seconds. By following this procedure, all configuration parameters and the device network address will be reset back to the values they had when the device was manufactured.</p>
+    ]]></description>
+    <category>WallSwitch</category>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+        </properties>
+      </channel>
+      <channel id="color_color" typeId="color_color">
+        <label>Color Control</label>
+        <properties>
+          <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR;</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC;</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL;</property>
+        </properties>
+      </channel>
+      <channel id="color_temperature" typeId="color_temperature">
+        <label>Color Temperature</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_COLOR;colorMode=DIFF_WHITE</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL;</property>
+        </properties>
+      </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary1" typeId="switch_binary">
+        <label>Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1,COMMAND_CLASS_BASIC:1</property>
+        </properties>
+      </channel>
+      <channel id="color_color1" typeId="color_color">
+        <label>Color</label>
+        <properties>
+          <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR:1;xxxxx</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC;:1</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL;:1</property>
+        </properties>
+      </channel>
+      <channel id="color_temperature1" typeId="color_temperature">
+        <label>Color Temperature</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_COLOR:1;</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL;:1</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Logic Group</property>
+      <property name="modelId">ZDB5100</property>
+      <property name="manufacturerId">0234</property>
+      <property name="manufacturerRef">0003:0121</property>
+      <property name="dbReference">1091</property>
+      <property name="commandClass:COMMAND_CLASS_SWITCH_BINARY:1">switch_binary</property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- GROUP DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter name="config_1_1" type="integer" groupName="configuration"
+                 min="0" max="15">
+        <label>1: Operating pushbutton(s) for dimmer</label>
+        <description><![CDATA[
+This parameter specifies which pushbutton(s) that controls the built-in dimmer.<br /><h1>Overview</h1><p> The parameter is a bitmask, so each of the values can be added up in order to have several pushbuttons to operate the dimmer.</p> <table><tr><td>0</td> <td>No local operation of the dimmer.</td> </tr><tr><td>1</td> <td>Pushbutton 1 controls the dimmer. (Default)</td> </tr><tr><td>2</td> <td>Pushbutton 2 controls the dimmer.</td> </tr><tr><td>4</td> <td>Pushbutton 3 controls the dimmer.</td> </tr><tr><td>8</td> <td>Pushbutton 4 controls the dimmer.</td> </tr></table>
+        ]]></description>
+        <default>1</default>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>2: Duration of dimming</label>
+        <description><![CDATA[
+Specifies the duration of a full regulation of the light from 0% to 100%<br /><h1>Overview</h1><p>A regulation of the light with 1% will take 1/100 of the specified duration. This is used when a pushbutton is held-down for controlling the dimming, and when the dimming is fulfilled from other Z-Wave devices when specifying factory default duration.</p> <p>Value Description</p> <table><tr><td>0</td> <td>Immediately</td> </tr><tr><td>1 - 127</td> <td>Duration in seconds. (Default is 5 seconds)</td> </tr><tr><td>128 - 255</td> <td>Duration in minutes (minus 127) from 1 – 128 minutes, where 128 is 1 minute.</td> </tr></table>
+        ]]></description>
+        <default>5</default>
+      </parameter>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>3: Duration of on/off.</label>
+        <description><![CDATA[
+This parameter specifies the duration when turning the light on or off.<br /><h1>Overview</h1><table><tr><td>0</td> <td>Immediately. (Default).</td> </tr><tr><td>1 - 127</td> <td>Time in seconds. </td> </tr><tr><td>128 - 255</td> <td>Time in minutes (minus 127) from 1 – 128 minutes, where 128 is 1 minute</td> </tr></table>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_4_1" type="integer" groupName="configuration">
+        <label>4: Dimmer mode.</label>
+        <description>The dimmer can work in different modes.</description>
+        <default>1</default>
+        <options>
+          <option value="0">No dimming, only on/off (0%/100%).</option>
+          <option value="1">Trailing edge dimming. (Default)</option>
+          <option value="2">Leading edge dimming.</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_5_1" type="integer" groupName="configuration"
+                 min="0" max="99">
+        <label>5: Dimmer minimum level.</label>
+        <description>This parameter specifies the actual level of the dimmer output when set to 0%.</description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_6_1" type="integer" groupName="configuration"
+                 min="1" max="99">
+        <label>6: Dimmer maximum level.</label>
+        <description>This parameter specifies the actual level of the dimmer output when set to 99%</description>
+        <default>99</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <description>Sends Device Reset notifications, and Central Scene notifications.</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>
