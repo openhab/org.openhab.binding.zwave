@@ -120,16 +120,22 @@ public class ZWaveController {
     }
 
     public void shutdown() {
+        logger.trace("Shutting down ZWave controller");
         transactionManager.shutdown();
+        for (ZWaveNode node : zwaveNodes.values()) {
+            node.close();
+        }
+        zwaveNodes.clear();
+        logger.trace("ZWave controller shutdown");
     }
 
     /**
      * Constructor. Creates a new instance of the ZWave controller class.
      *
      * @param handler the io handler to use for communication with the ZWave controller stick.
-     * @param config  a map of configuration parameters
+     * @param config a map of configuration parameters
      * @throws SerialInterfaceException
-     *                                      when a connection error occurs.
+     *             when a connection error occurs.
      */
     public ZWaveController(ZWaveIoHandler handler, Map<String, String> config) {
         masterController = "true".equals(config.get("masterController"));
@@ -182,7 +188,7 @@ public class ZWaveController {
      * that are a response to our own requests, or the stick asking us information.
      *
      * @param incomingMessage
-     *                            the incoming message to process.
+     *            the incoming message to process.
      */
     public void handleIncomingMessage(ZWaveTransaction currentTransaction, SerialMessage incomingMessage) {
         logger.debug("Incoming Message: {}", incomingMessage.toString());
@@ -208,9 +214,9 @@ public class ZWaveController {
      * message initiated by a node or the controller.
      *
      * @param transaction
-     *                            the transaction associated with this message
+     *            the transaction associated with this message
      * @param incomingMessage
-     *                            the incoming message to process.
+     *            the incoming message to process.
      */
     private void handleIncomingRequestMessage(ZWaveTransaction transaction, SerialMessage incomingMessage) {
         logger.trace("Incoming Message type = REQUEST");
@@ -236,9 +242,9 @@ public class ZWaveController {
      * response, based one of our own requests.
      *
      * @param transaction
-     *                            the transaction associated with this message
+     *            the transaction associated with this message
      * @param incomingMessage
-     *                            the response message to process.
+     *            the response message to process.
      */
     private void handleIncomingResponseMessage(ZWaveTransaction transaction, SerialMessage incomingMessage)
             throws ZWaveSerialMessageException {
@@ -331,7 +337,7 @@ public class ZWaveController {
      * Add a node to the controller
      *
      * @param nodeId
-     *                   the node number to add
+     *            the node number to add
      */
     private ZWaveInitNodeThread addNode(int nodeId) {
         ZWaveEvent zEvent = new ZWaveInitializationStateEvent(nodeId, ZWaveNodeInitStage.EMPTYNODE);
@@ -504,7 +510,7 @@ public class ZWaveController {
      * This does not wait for a response.
      *
      * @param transaction
-     *                        the {@link ZWaveMessagePayloadTransaction} message to enqueue.
+     *            the {@link ZWaveMessagePayloadTransaction} message to enqueue.
      */
     public void enqueueNonce(ZWaveMessagePayloadTransaction transaction) {
         // Sanity check!
@@ -520,7 +526,7 @@ public class ZWaveController {
      * Queues a message for sending and returns the response once received.
      *
      * @param transaction
-     *                        the {@link ZWaveMessagePayloadTransaction} message to enqueue.
+     *            the {@link ZWaveMessagePayloadTransaction} message to enqueue.
      */
     public @Nullable ZWaveTransactionResponse sendTransaction(ZWaveMessagePayloadTransaction transaction) {
         return transactionManager.sendTransaction(transaction);
@@ -549,7 +555,7 @@ public class ZWaveController {
      * Notify our own event listeners of a ZWave event.
      *
      * @param event
-     *                  the event to send.
+     *            the event to send.
      */
     public void notifyEventListeners(ZWaveEvent event) {
         logger.trace("Notifying event listeners: {}", event.getClass().getSimpleName());
@@ -622,7 +628,7 @@ public class ZWaveController {
      * Send Identify Node message to the controller.
      *
      * @param nodeId
-     *                   the nodeId of the node to identify
+     *            the nodeId of the node to identify
      *
      */
     public void identifyNode(int nodeId) {
@@ -633,7 +639,7 @@ public class ZWaveController {
      * Request the node routing information.
      *
      * @param nodeId
-     *                   The address of the node to update
+     *            The address of the node to update
      *
      */
     public void requestNodeRoutingInfo(int nodeId) {
@@ -646,7 +652,7 @@ public class ZWaveController {
      * to update the data in the binding.
      *
      * @param nodeId
-     *                   The address of the node to update
+     *            The address of the node to update
      *
      */
     public void requestNodeNeighborUpdate(int nodeId) {
@@ -657,12 +663,12 @@ public class ZWaveController {
      * Puts the controller into inclusion mode to add new nodes
      *
      * @param inclusionMode the mode to use for inclusion.
-     *                          <br>
-     *                          0=Low Power Inclusion
-     *                          <br>
-     *                          1=High Power Inclusion
-     *                          <br>
-     *                          2=Network Wide Inclusion
+     *            <br>
+     *            0=Low Power Inclusion
+     *            <br>
+     *            1=High Power Inclusion
+     *            <br>
+     *            2=Network Wide Inclusion
      *
      */
     public void requestAddNodesStart(int inclusionMode) {
@@ -802,7 +808,7 @@ public class ZWaveController {
      * Request if the node is currently marked as failed by the controller.
      *
      * @param nodeId
-     *                   The address of the node to check
+     *            The address of the node to check
      */
     public void requestIsFailedNode(int nodeId) {
         enqueue(new IsFailedNodeMessageClass().doRequest(nodeId));
@@ -813,7 +819,7 @@ public class ZWaveController {
      * that have not failed.
      *
      * @param nodeId
-     *                   The address of the node to remove
+     *            The address of the node to remove
      */
     public void requestRemoveFailedNode(int nodeId) {
         enqueue(new RemoveFailedNodeMessageClass().doRequest(nodeId));
@@ -823,7 +829,7 @@ public class ZWaveController {
      * Marks a node as failed
      *
      * @param nodeId
-     *                   The address of the node to set failed
+     *            The address of the node to set failed
      */
     public void requestSetFailedNode(int nodeId) {
         enqueue(new ReplaceFailedNodeMessageClass().doRequest(nodeId));
@@ -843,9 +849,9 @@ public class ZWaveController {
      * Request the controller to set the return route between two nodes
      *
      * @param nodeId
-     *                          Source node
+     *            Source node
      * @param destinationId
-     *                          Destination node
+     *            Destination node
      */
     public void requestAssignReturnRoute(int nodeId, int destinationId) {
         enqueue(new AssignReturnRouteMessageClass().doRequest(nodeId, destinationId));
@@ -856,7 +862,7 @@ public class ZWaveController {
      * controller
      *
      * @param nodeId
-     *                   Source node
+     *            Source node
      */
     public void requestAssignSucReturnRoute(int nodeId) {
         enqueue(new AssignSucReturnRouteMessageClass().doRequest(nodeId));
@@ -866,7 +872,7 @@ public class ZWaveController {
      * Transmits the {@link ZWaveCommandClassTransactionPayload} to a single ZWave Node.
      *
      * @param payload
-     *                    the {@link ZWaveCommandClassTransactionPayload} message to send.
+     *            the {@link ZWaveCommandClassTransactionPayload} message to send.
      */
     public void sendData(ZWaveCommandClassTransactionPayload transaction) {
         if (transaction == null) {
@@ -879,7 +885,7 @@ public class ZWaveController {
      * Add a listener for ZWave events to this controller.
      *
      * @param eventListener
-     *                          the event listener to add.
+     *            the event listener to add.
      */
     public void addEventListener(ZWaveEventListener eventListener) {
         synchronized (zwaveEventListeners) {
@@ -897,7 +903,7 @@ public class ZWaveController {
      * Remove a listener for ZWave events to this controller.
      *
      * @param eventListener
-     *                          the event listener to remove.
+     *            the event listener to remove.
      */
     public void removeEventListener(ZWaveEventListener eventListener) {
         synchronized (zwaveEventListeners) {
@@ -991,7 +997,7 @@ public class ZWaveController {
      * Checks if the serial API supports the given capability.
      *
      * @param capability
-     *                       the capability to check
+     *            the capability to check
      * @return true if the controller API support the capability
      */
     public boolean hasApiCapability(SerialMessageClass capability) {
@@ -1013,7 +1019,7 @@ public class ZWaveController {
      * Gets the node object using it's node ID as key. Returns null if the node is not found
      *
      * @param nodeId
-     *                   the Node ID of the node to get.
+     *            the Node ID of the node to get.
      * @return node object
      */
     public ZWaveNode getNode(int nodeId) {

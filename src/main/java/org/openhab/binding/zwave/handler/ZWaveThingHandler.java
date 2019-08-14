@@ -481,16 +481,28 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     public void bridgeStatusChanged(ThingStatusInfo bridgeStatusInfo) {
         logger.debug("NODE {}: Controller status changed to {}.", nodeId, bridgeStatusInfo.getStatus());
 
+        ZWaveControllerHandler bridgeHandler = (ZWaveControllerHandler) getBridge().getHandler();
+
         if (bridgeStatusInfo.getStatus() != ThingStatus.ONLINE) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE,
                     ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE);
             logger.debug("NODE {}: Controller is not online.", nodeId, bridgeStatusInfo.getStatus());
+            synchronized (pollingSync) {
+                if (pollingJob != null) {
+                    pollingJob.cancel(true);
+                    pollingJob = null;
+                }
+            }
+            controllerHandler = null;
+            if (bridgeHandler != null) {
+                bridgeHandler.removeEventListener(this);
+            }
+
             return;
         }
 
         logger.debug("NODE {}: Controller is ONLINE. Starting device initialisation.", nodeId);
 
-        ZWaveControllerHandler bridgeHandler = (ZWaveControllerHandler) getBridge().getHandler();
         // We might not be notified that the controller is online until it's completed a lot of initialisation, so
         // make sure we know the device state.
         ZWaveNode node = bridgeHandler.getNode(nodeId);

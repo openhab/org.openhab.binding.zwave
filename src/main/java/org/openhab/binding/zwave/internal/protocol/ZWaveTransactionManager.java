@@ -199,9 +199,12 @@ public class ZWaveTransactionManager {
 
     private ZWaveTransaction lastTransaction = null;
 
+    private boolean running = true;
+
     public ZWaveTransactionManager(ZWaveController controller) {
         this.controller = controller;
 
+        running = true;
         receiveThread = new ZWaveReceiveThread();
         receiveThread.start();
     }
@@ -210,10 +213,30 @@ public class ZWaveTransactionManager {
      * Shuts down the manager and frees resources
      */
     public void shutdown() {
+        logger.trace("Shutting down transaction manager");
+        running = false;
+
         synchronized (recvQueue) {
             recvQueue.notify();
         }
-        receiveThread.interrupt();
+
+        clearSendQueue();
+        outstandingTransactions.clear();
+
+        if (receiveThread != null) {
+            receiveThread.interrupt();
+            try {
+                receiveThread.join();
+            } catch (InterruptedException e) {
+            }
+            receiveThread = null;
+        }
+
+        if (timerTask != null) {
+            timerTask.cancel();
+            timerTask = null;
+        }
+        logger.trace("Transaction manager shutdown");
     }
 
     private void AddTransactionListener(TransactionListener listener) {
@@ -421,6 +444,10 @@ public class ZWaveTransactionManager {
         public void run() {
             SerialMessage incomingMessage;
             while (!interrupted()) {
+                if (!running) {
+                    break;
+                }
+
                 if (recvQueue.isEmpty()) {
                     logger.debug("ZWaveReceiveThread queue empty");
 
@@ -432,7 +459,7 @@ public class ZWaveTransactionManager {
                 try {
                     incomingMessage = recvQueue.take();
                 } catch (InterruptedException e) {
-                    logger.debug("Interrupted taking message from recvQueue", e);
+                    logger.debug("Interrupted taking message from recvQueue");
                     continue;
                 }
 
@@ -750,6 +777,7 @@ public class ZWaveTransactionManager {
                 }
             }
             logger.debug("Exiting ZWave Receive Thread");
+            running = false;
         }
 
     }
@@ -896,6 +924,11 @@ public class ZWaveTransactionManager {
                     .setTransmitOptions(TRANSMIT_OPTION_ACK | TRANSMIT_OPTION_AUTO_ROUTE | TRANSMIT_OPTION_EXPLORE);
             controller.sendPacket(serialMessage);
 
+            if (!running) {
+                transaction.setTransactionAborted();
+                return;
+            }
+
             transaction.transactionStart();
             logger.debug("Transaction SendNextMessage started: {}", transaction);
 
@@ -995,6 +1028,10 @@ public class ZWaveTransactionManager {
                 // Loop through all outstanding transactions to see if any have timed out
                 Iterator<ZWaveTransaction> iterator = outstandingTransactions.iterator();
                 while (iterator.hasNext()) {
+                    if (!running) {
+                        logger.trace("Stop looping through oustanding transactions"); // Change to trace
+                        return;
+                    }
                     ZWaveTransaction transaction = iterator.next();
                     Date timer = transaction.getTimeout();
                     if (timer != null && timer.after(now) == false) {
@@ -1154,8 +1191,10 @@ public class ZWaveTransactionManager {
         try {
             ZWaveTransactionResponse response = futureResponse.get();
             return response;
-        } catch (InterruptedException | ExecutionException e) {
-            logger.debug("NODE {}: sendTransaction interrupted", e);
+        } catch (InterruptedException e) {
+            logger.debug("NODE {}: sendTransaction interrupted", transaction.getDestinationNode());
+        } catch (ExecutionException e) {
+            logger.debug("NODE {}: sendTransaction exception", transaction.getDestinationNode(), e);
         }
 
         return null;

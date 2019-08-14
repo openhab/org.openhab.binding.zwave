@@ -157,7 +157,6 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         } else {
             healTime = -1;
         }
-        initializeHeal();
 
         // We must set the state
         updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE, ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE);
@@ -190,6 +189,33 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             }
         }
 
+        initializeHeal();
+
+    }
+
+    /**
+     * Common stopping point for all ZWave controllers.
+     * Called by bridges when their interfaces are unavailable.
+     */
+    protected void stopNetwork() {
+        logger.trace("Stopping ZWave network");
+        if (healJob != null) {
+            healJob.cancel(true);
+            healJob = null;
+        }
+
+        ZWaveController controller = this.controller;
+        if (controller != null) {
+            this.controller = null;
+            synchronized (listeners) {
+                for (ZWaveEventListener listener : listeners) {
+                    controller.removeEventListener(listener);
+                }
+            }
+            controller.removeEventListener(this);
+            controller.shutdown();
+        }
+        logger.trace("ZWave network stopped");
     }
 
     private void initializeHeal() {
