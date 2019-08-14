@@ -188,7 +188,7 @@ public class ZWaveNodeInitStageAdvancer {
                         doInitialStages();
                     }
 
-                    if (currentStage == ZWaveNodeInitStage.DONE) {
+                    if (currentStage == ZWaveNodeInitStage.DONE || stopInitialising()) {
                         return;
                     }
 
@@ -198,15 +198,30 @@ public class ZWaveNodeInitStageAdvancer {
                                 node.getNodeId());
                         currentStage = ZWaveNodeInitStage.SESSION_START;
                     }
+                    if (stopInitialising()) {
+                        return;
+                    }
+
                     if (currentStage.ordinal() <= ZWaveNodeInitStage.INCLUSION_START.ordinal()) {
                         doSecureStages();
                     }
+                    if (stopInitialising()) {
+                        return;
+                    }
+
                     if (currentStage.ordinal() <= ZWaveNodeInitStage.STATIC_VALUES.ordinal()) {
                         doStaticStages();
                     }
+                    if (stopInitialising()) {
+                        return;
+                    }
+
                     setCurrentStage(ZWaveNodeInitStage.STATIC_END);
                     if (currentStage.ordinal() <= ZWaveNodeInitStage.DYNAMIC_VALUES.ordinal()) {
                         doDynamicStages();
+                    }
+                    if (stopInitialising()) {
+                        return;
                     }
                     setCurrentStage(ZWaveNodeInitStage.DYNAMIC_END);
 
@@ -226,6 +241,23 @@ public class ZWaveNodeInitStageAdvancer {
      */
     public void stopInitialisation() {
         initRunning = false;
+
+        if (initialisationThread != null) {
+            initialisationThread.interrupt();
+            try {
+                initialisationThread.join();
+            } catch (InterruptedException e) {
+            }
+            initialisationThread = null;
+        }
+    }
+
+    private boolean stopInitialising() {
+        if (initRunning == false) {
+            logger.debug("NODE {}: Skipping initialization thread, process stopped by controller", node.getNodeId());
+            return true;
+        }
+        return false;
     }
 
     private boolean processTransaction(ZWaveMessagePayloadTransaction transaction) {
@@ -245,7 +277,7 @@ public class ZWaveNodeInitStageAdvancer {
         int backoff = 250;
         int retryCount = 0;
         ZWaveTransactionResponse response = null;
-        do {
+        while (initRunning) {
             if (timeout > 0 && System.nanoTime() - timerStart > timeout) {
                 logger.debug("NODE {}: timed out after {} / {}", node.getNodeId(), System.nanoTime() - timerStart,
                         timeout);
@@ -257,6 +289,10 @@ public class ZWaveNodeInitStageAdvancer {
                 response = node.sendTransaction((ZWaveCommandClassTransactionPayload) transaction, 0);
             } else {
                 response = controller.sendTransaction(transaction);
+            }
+
+            if (initRunning == false) {
+                break;
             }
 
             logger.debug("NODE {}: Node Init response ({}) {}", node.getNodeId(), retryCount, response);
@@ -285,10 +321,11 @@ public class ZWaveNodeInitStageAdvancer {
                 try {
                     Thread.sleep(backoff);
                 } catch (InterruptedException e) {
+                    logger.debug("NODE {}: processTransaction sleep interrupted", node.getNodeId());
                     break;
                 }
             }
-        } while (initRunning);
+        }
 
         if (response == null) {
             logger.debug("NODE {}: Node Init transaction completed with response null", node.getNodeId());
@@ -395,6 +432,9 @@ public class ZWaveNodeInitStageAdvancer {
                 // This is to try and reduce network congestion during initialisation.
                 // msg.setMaxAttempts(1);
                 processTransaction(msg);
+                if (initRunning == false) {
+                    return;
+                }
             }
         }
 
@@ -758,6 +798,9 @@ public class ZWaveNodeInitStageAdvancer {
                         zwaveStaticClass.getCommandClass(), endpointId);
                 if (instances == 1) {
                     processTransactions(zdds.initialize(true), endpointId);
+                    if (initRunning == false) {
+                        return;
+                    }
                 } else {
                     for (int i = 1; i <= instances; i++) {
                         processTransactions(zdds.initialize(true), i);
@@ -1044,6 +1087,9 @@ public class ZWaveNodeInitStageAdvancer {
                         zwaveDynamicClass.getCommandClass(), endpointId);
                 if (instances == 1) {
                     processTransactions(zdds.getDynamicValues(true), endpointId);
+                    if (initRunning == false) {
+                        return;
+                    }
                 } else {
                     for (int i = 1; i <= instances; i++) {
                         processTransactions(zdds.getDynamicValues(true), i);
