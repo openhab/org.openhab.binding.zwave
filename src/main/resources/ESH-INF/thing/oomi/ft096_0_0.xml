@@ -8,14 +8,14 @@
   <thing-type id="oomi_ft096_00_000" listed="false">
     <label>FT096 Plug-in Switch</label>
     <description><![CDATA[
-Plug-in Switch<br /><h1>Overview</h1><p>Oomi Plug is a low-cost Z-Wave Switch plug-in module specifically used to enable Z-Wave command and control (on/off) of any plug-in tool.</p>
+Plug-in Switch<br /><h1>Overview</h1><p>Oomi Plug is a low-cost Z-Wave Switch plug-in module specifically used to enable Z-Wave command and control (on/off) of any plug-in tool.</p> <br /><h2>Inclusion Information</h2><p>Press the Action Button on your Plug.</p> <p>If Plug has been successfully added to your Z-Wave network, its RGB LED will be solid. If the adding was unsuccessful, the red LED will be on for 2 seconds and then remain colourful gradient status, repeat the inclusion</p> <br /><h2>Exclusion Information</h2><p>If at some stage, your primary controller is missing or inoperable, you may wish to reset all of your Oomi Plug’s settings to their factory defaults. To do this, press and hold the Action Button for 20 seconds and then release it. Your Oomi Plug will now be reset to its original settings, and the green LED will be solid for 2 seconds and then remain the colourful gradient status as a confirmation.</p>
     ]]></description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
+        <label>Switch [Deprecated]</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>

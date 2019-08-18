@@ -133,7 +133,7 @@ Changes speaker settigs<br /><h1>Overview</h1><ol><li>High Volume</li> <li>Low V
         <label>13: Lock Status LED</label>
         <default>0</default>
         <options>
-          <option value="0">-128</option>
+          <option value="-128">LED On</option>
           <option value="0">LED Off</option>
         </options>
       </parameter>

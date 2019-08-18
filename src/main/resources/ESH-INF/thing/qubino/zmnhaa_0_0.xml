@@ -7,7 +7,9 @@
 
   <thing-type id="qubino_zmnhaa_00_000" listed="false">
     <label>ZMNHAA Flush 1 relay</label>
-    <description>Flush 1 relay</description>
+    <description><![CDATA[
+Flush 1 relay<br /><h1>Overview</h1><p>This Z-Wave module is used for switching on or off the electrical device (e.g. light, fan, etc ...). The module can be controlled either through Z-wave network or through the wall switch.</p> <br /><h2>Inclusion Information</h2><ul><li>press service button S for more than 2 second or</li> <li>press push button I1 three times within 3s (3 times change switch state within 3 seconds).</li> </ul><br /><h2>Exclusion Information</h2><ul><li>press service button S for more than 6 second or</li> <li>press push button I1 five times within 3s (5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply.</li> </ul>
+    ]]></description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -107,7 +109,9 @@
 
       <parameter name="config_10_1" type="integer" groupName="configuration">
         <label>10: Activate / deactivate functions ALL ON/ALL OFF</label>
-        <description>Flush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.</description>
+        <description><![CDATA[
+ctivate / deactivate functions ALL ON/ALL OFF<br /><h1>Overview</h1><p>Flush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.</p>
+        ]]></description>
         <default>255</default>
         <options>
           <option value="0">ALL ON is not active ALL OFF is not active</option>
@@ -120,48 +124,59 @@
       <parameter name="config_11_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>11: Automatic turning off relay after set time</label>
-        <description>0 - Auto OFF disabled 1 – 65535 = 0,01second – 655,35 seconds Auto OFF enabled with define time, step is 10mseconds</description>
+        <description><![CDATA[
+Automatic turning off relay after set time<br /><h1>Overview</h1><p>Default value 0</p> <ul><li> 0 - Auto OFF disabled</li> <li> 1 – 65535 = 0,01second – 655,35 seconds Auto OFF enabled with define time, step is 10mseconds.</li> </ul>
+        ]]></description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_30_1" type="integer" groupName="configuration">
-        <label>30: Saving the state of the relay after a power failure</label>
-        <description>Saving the state of the relay after a power failure</description>
+        <label>30: Relay state after a power failure</label>
+        <description>Relay state after a power failure</description>
         <default>0</default>
         <options>
-          <option value="0">Flush 1relay module saves its state before power failure (it returns t</option>
-          <option value="1">Flush 1relay module does not save the state after a power failure, it</option>
+          <option value="0">Last saved state</option>
+          <option value="1">Power OFF</option>
         </options>
       </parameter>
 
       <parameter name="config_40_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>40: Power reporting in Watts on power change</label>
-        <description>0 – Reporting Disabled 1 – 100 = 1% - 100% Reporting enabled Power report is send (push) only when actual power in Watts in real time change for more than set percentage comparing to previous actual power in Watts, step is 1%. NOTE: if power chan</description>
+        <description><![CDATA[
+Power reporting in Watts on power change<br /><h1>Overview</h1><ul><li>0 – Reporting Disabled</li> <li>1 – 100 = 1% - 100% Reporting enabled</li> </ul><p>Power report is send (push) only when actual power in Watts in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%</p>
+        ]]></description>
         <default>3</default>
       </parameter>
 
       <parameter name="config_42_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>42: Power reporting in Watts on power change</label>
-        <description>default value 300 (power report in Watts is send each 300s) 0 – Reporting Disabled 1 – 65535 = 1second – 65535 seconds. Reporting enabled. Power report is send with time interval set by entered value.</description>
+        <description><![CDATA[
+Power reporting in Watts on power change<br /><h1>Overview</h1><ul><li>default value 300 (power report in Watts is send each 300s)</li> <li>0 – Reporting Disabled</li> <li>1 – 65535 = 1second – 65535 seconds.</li> </ul><p>Reporting enabled. Power report is send with time interval set by entered value. </p>
+        ]]></description>
         <default>300</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: basic on/off (triggered at change of the output Q state and reflecti</label>
-        <multipleLimit>4</multipleLimit>
+        <label>1: basic on/off</label>
+        <description><![CDATA[
+triggered at change of the output Q state and reflecting its state<br /><h1>Overview</h1><p>e</p>
+        ]]></description>
+        <multipleLimit>16</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: basic on/off (triggered at change of the input I2 state and reflect</label>
-        <multipleLimit>4</multipleLimit>
+        <label>2: basic on/off</label>
+        <description>(triggered at change of the input I2 state and reflecting its state)</description>
+        <multipleLimit>16</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: basic on/off (triggered at change of the input I3 state and reflect</label>
-        <multipleLimit>4</multipleLimit>
+        <label>3: basic on/off</label>
+        <description>ttriggered at change of the input I3 state and reflecting its state)</description>
+        <multipleLimit>16</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association">

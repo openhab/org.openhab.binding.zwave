@@ -7,7 +7,10 @@
 
   <thing-type id="everspring_hsm02_00_000" listed="false">
     <label>HSM02 Door/Window Contact</label>
-    <description>Door/Window Contact</description>
+    <description><![CDATA[
+Door/Window Contact<br /><h1>Overview</h1><p>Mini Door / Window Contact Detector</p> <br /><h2>Inclusion Information</h2><p>Pressing tamper switch three times within 1.5 second will enter inclusion mode. </p> <br /><h2>Exclusion Information</h2><p>Pressing tamper switch three times within 1.5 second will enter exclusion mode. </p> <br /><h2>Wakeup Information</h2><p>if set up is still needed, the user can press Tamper once more for HSM02 to be awake for another 30 sec.</p>
+    ]]></description>
+    <category>Window</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -35,7 +38,7 @@
       <property name="vendor">Everspring</property>
       <property name="modelId">HSM02</property>
       <property name="manufacturerId">0060</property>
-      <property name="manufacturerRef">0202:0001,0002:0002</property>
+      <property name="manufacturerRef">0002:0002,0202:0001</property>
       <property name="dbReference">34</property>
       <property name="defaultAssociations">1,2</property>
     </properties>
@@ -77,7 +80,7 @@ OFF Delay in seconds<br /><h1>Overview</h1><p>The Configuration parameter that c
                  min="0" max="1">
         <label>3: Staying Awake (for testing)</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>Can be used to determine if the unit stays "awake" all the time. This parameter can be configured as 0 or 1, where 1 means "enabled" and 0 stands for "disabled"</p>
+Staying Awake (for testing)<br /><h1>Overview</h1><p>Can be used to determine if the unit stays "awake" all the time. This parameter can be configured as 0 or 1, where 1 means "enabled" and 0 stands for "disabled"</p>
         ]]></description>
         <default>0</default>
         <advanced>true</advanced>

@@ -41,7 +41,7 @@ Chain actuator - window opener (2019)<br /><h1>Overview</h1><p>FAKRO ZWS12 chain
       <property name="vendor">Fakro</property>
       <property name="modelId">ZWS12</property>
       <property name="manufacturerId">0085</property>
-      <property name="manufacturerRef">0002:0100</property>
+      <property name="manufacturerRef">0002:0010,0002:0100</property>
       <property name="dbReference">1081</property>
       <property name="defaultAssociations">1</property>
     </properties>

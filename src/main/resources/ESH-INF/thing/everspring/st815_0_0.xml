@@ -7,7 +7,9 @@
 
   <thing-type id="everspring_st815_00_000" listed="false">
     <label>ST815 Illumination Sensor</label>
-    <description>Illumination Sensor</description>
+    <description><![CDATA[
+Illumination Sensor<br /><h1>Overview</h1><p>The Illumination Sensor is designed to monitor the current illumination of ambient environment. The reading of illumination can be reported to you on a regular base at your disposal. If illumination reaches set points, the sensor will send alerts to associated devices for further execution (such as trigger on connected lightings). The Illumination Sensor is suitable for use in darkness and outdoor. </p> <br /><h2>Inclusion Information</h2><p>Pressing ESC key 3 times within 1.5 seconds will enter inclusion mode. </p> <br /><h2>Exclusion Information</h2><p>Pressing ESC key 3 times within 1.5 seconds will enter exclusion mode. </p> <br /><h2>Wakeup Information</h2><p>Not Provided</p>
+    ]]></description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -72,7 +74,7 @@ Lux Trigger On Value<br /><h1>Overview</h1><p>Lux level when ON command is sent 
                  min="0" max="1000">
         <label>3: Lux Trigger Off Value</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>Lux level when Off command is sent out.</p> <p>Values 30-1000 or 0</p> <p>Default 500</p> <p>Set to 0 to disable.</p>
+Lux Trigger Off Value<br /><h1>Overview</h1><p>Lux level when Off command is sent out.</p> <p>Values 30-1000 or 0</p> <p>Default 500</p> <p>Set to 0 to disable.</p>
         ]]></description>
         <default>500</default>
       </parameter>
