@@ -57,7 +57,7 @@ Popp Smart Outdoor Plug - IP44 rated<br /><h1>Overview</h1><p>The Wall Plug Swit
         </properties>
       </channel>
       <channel id="meter_reset" typeId="meter_reset">
-        <label>Reset Meter</label>
+        <label>Clear Accumulated Energy</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_METER</property>
         </properties>

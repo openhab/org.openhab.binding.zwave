@@ -7,7 +7,9 @@
 
   <thing-type id="everspring_ad147_00_000" listed="false">
     <label>AD147 Z-Wave Dimmer Plug</label>
-    <description>Z-Wave Dimmer Plug</description>
+    <description><![CDATA[
+Z-Wave Dimmer Plug<br /><h1>Overview</h1><p>The mini Dimmer Plug is a Z-WaveTM enabled device which is fully compatible with any Z-WaveTM enabled network. Z-WaveTM enabled devices displaying the Z-WaveTM logo can also be used with it regardless of the manufacturer, and ours can also be used in other manufacturer’s Z-WaveTM enabled networks. Inclusion of this unit on other manufacturer’s Wireless Controller menu allows remote operation of the unit and the connected load.</p> <p>The mini Dimmer Plug is designed to control the on/off status of lighting and appliance load in your house. The unit also provides dimmer function which is only applicable to light bulbs. At 220-240V voltage, this Dimmer Plug can support connected load of 6W - 250W</p> <br /><h2>Inclusion Information</h2><p>Press the link key three times within 1.5 seconds to put the unit into inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>Press the link key three times within 1.5 seconds to put the unit into exclusion mode</p>
+    ]]></description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -15,8 +17,8 @@
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="alarm_general" typeId="alarm_general">

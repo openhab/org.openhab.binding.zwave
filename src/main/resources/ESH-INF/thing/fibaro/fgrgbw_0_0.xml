@@ -43,8 +43,8 @@ RGBW Controller<br /><h1>Overview</h1><p>Fibaro RGBW Controller is a universal, 
         <label>Color</label>
         <properties>
           <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR;colorMode=RGB</property>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC;</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL;</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="scene_number_param72" typeId="scene_number">
@@ -129,14 +129,16 @@ Activation/deactivation of ALL ON/ALL OFF functions.<br /><h1>Overview</h1><p>By
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
         <label>6: Associations command class choice</label>
-        <description>Associations command class choice. By default, Normal (Dimmer) - BASIC_SET/SWITCH_MULTILEVEL_START/STOP. Default setting: Normal (Dimmer) - BASIC_SET/SWITCH_MULTILEVEL_START/STOP</description>
+        <description><![CDATA[
+Associations command class choice<br /><h1>Overview</h1><p>Associations command class choice.</p> <p>By default, Normal (Dimmer) - BASIC_SET/SWITCH_MULTILEVEL_START/STOP</p>
+        ]]></description>
         <default>0</default>
         <options>
-          <option value="0">Normal (Dimmer) - BASIC_SET/SWITCH_MULTILEVEL_START/STOP</option>
-          <option value="1">Normal (RGBW) - COLOR_CONTROL_SET/START/STOP_STATE_CHANGE</option>
+          <option value="0">Normal (Dimmer)</option>
+          <option value="1">Normal (RGBW)</option>
           <option value="2">Normal (RGBW) - COLOR_CONTROL_SET</option>
-          <option value="3">Brightness - BASIC_SET/SWITCH_MULTILEVEL_START/STOP</option>
-          <option value="4">Rainbow (RGBW) - COLOR_CONTROL_SET</option>
+          <option value="3">Brightness</option>
+          <option value="4">Rainbow (RGBW)</option>
         </options>
       </parameter>
 
@@ -147,15 +149,15 @@ MODE1, Example: change saturation level from 0% to 99%<br /><h1>Overview</h1><p>
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">MODE1 (related parameters: 9-step value, 10-time between steps)</option>
-          <option value="1">MODE2 (related parameters: 11-time to change value, relevant for RGB/R</option>
+          <option value="0">MODE1</option>
+          <option value="1">MODE2</option>
         </options>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
                  min="1" max="255">
-        <label>9: Step value (relevant for MODE1)</label>
-        <description>Step value (relevant for MODE1). Default setting: 1, available settings: 1 - 255.</description>
+        <label>9: Step value (for MODE1)</label>
+        <description>Step value (relevant for MODE1)</description>
         <default>1</default>
       </parameter>
 
@@ -197,16 +199,18 @@ Minimum dim level.<br /><h1>Overview</h1><p>Default setting: 2, available settin
 
       <parameter name="config_14_2" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>14: Inputs/Outputs configuration - relevant for main controllers other than Home Center 2 only</label>
+        <label>14: Inputs/Outputs configuration</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>Inputs/Outputs configuration - relevant for main controllers other than Home Center 2 only.<br />Default setting: 4369, Controlled device: RGBW, toggle switch inputs (NORMAL MODE).</p>
+Relevant for main controllers other than Home Center 2 only<br /><h1>Overview</h1><p>Inputs/Outputs configuration - relevant for main controllers other than Home Center 2 only.<br />Default setting: 4369, Controlled device: RGBW, toggle switch inputs (NORMAL MODE).</p>
         ]]></description>
         <default>4369</default>
       </parameter>
 
       <parameter name="config_16_1" type="integer" groupName="configuration">
         <label>16: Remember device status after power failure</label>
-        <description>Define how will the Plug react after the power supply is back on. Default setting: 1 Available settings: 0 - Device does not memorize its state aft</description>
+        <description><![CDATA[
+Define how will the Plug react after the power supply is back on.<br /><h1>Overview</h1><p>Define how will the Plug react after the power supply is back on.</p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">Do not remember state</option>
@@ -215,14 +219,16 @@ Minimum dim level.<br /><h1>Overview</h1><p>Default setting: 2, available settin
       </parameter>
 
       <parameter name="config_30_1" type="integer" groupName="configuration">
-        <label>30: Alarm of any type (General alarm, flood alarm, smoke alarm: CO, CO2, temperature alarm.)</label>
-        <description>Alarm of any type (General alarm, flood alarm, smoke alarm: CO, CO2, temperature alarm.) Default setting: INACTIVE</description>
+        <label>30: Alarm response</label>
+        <description><![CDATA[
+Alarm response<br /><h1>Overview</h1><p>Alarm of any type (General alarm, flood alarm, smoke alarm: CO, CO2, temperature alarm.)                             </p> <p>Default setting: INACTIVE</p>
+        ]]></description>
         <default>0</default>
         <options>
-          <option value="0">INACTIVE - the device doesn't respond to alarm frames</option>
-          <option value="1">ALARM ON - the device turns on once alarm is detected (all channels se</option>
-          <option value="2">ALARM OFF - the device turns off once alarm is detected (all channels</option>
-          <option value="3">ALARM PROGRAM - alarm sequence turns on (program selected in parameter</option>
+          <option value="0">INACTIVE</option>
+          <option value="1">ALARM ON</option>
+          <option value="2">ALARM OFF</option>
+          <option value="3">ALARM PROGRAM</option>
         </options>
       </parameter>
 
@@ -246,12 +252,12 @@ Active PROGRAM alarm time.<br /><h1>Overview</h1><p>Default setting: 600s, 1-655
 
       <parameter name="config_42_1" type="integer" groupName="configuration">
         <label>42: Command class reporting Outputs status change</label>
-        <description>Command class reporting Outputs status change. Default setting: 0</description>
+        <description>Command class reporting Outputs status change.</description>
         <default>0</default>
         <options>
-          <option value="0">Reporting as a result of inputs and controllers actions (SWITCH MULTIL</option>
-          <option value="1">Reporting as a result of inputs actions (SWITCH MULTILEVEL)</option>
-          <option value="2">Reporting as a result of inputs actions (COLOR CONTROL)</option>
+          <option value="0">Inputs and controllers actions (SWITCH MULTILEVEL)</option>
+          <option value="1">Inputs actions (SWITCH MULTILEVEL)</option>
+          <option value="2">Inputs actions (COLOR CONTROL)</option>
         </options>
       </parameter>
 
@@ -275,19 +281,19 @@ Parameter defines Time between reports.<br /><h1>Overview</h1><p>Parameter defin
 
       <parameter name="config_45_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>45: Reporting Changes in energy consumed by controlled devices</label>
+        <label>45: Reporting energy consumption changes</label>
         <description><![CDATA[
-Required change in power to generate an unsolicited power report.<br /><h1>Overview</h1><p>Defines the required change in power to generate an unsolicited power report. New, reported energy value is calculated based on last reported value. Default setting: 10 (0,1 kWh).</p>
+Reporting energy consumption changes<br /><h1>Overview</h1><p>Defines the required change in power to generate an unsolicited power report. New, reported energy value is calculated based on last reported value. Default setting: 10 (0,1 kWh).</p>
         ]]></description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_71_1" type="integer" groupName="configuration">
         <label>71: Response to BRIGHTNESS set to 0%</label>
-        <description>Response to BRIGHTNESS set to 0%. Default setting: 1</description>
+        <description>Response to BRIGHTNESS set to 0%.</description>
         <default>1</default>
         <options>
-          <option value="0">illumination colour set to white (all channels controlled together)</option>
+          <option value="0">Set to white (all channels controlled together)</option>
           <option value="1">last set colour is memorized</option>
         </options>
       </parameter>

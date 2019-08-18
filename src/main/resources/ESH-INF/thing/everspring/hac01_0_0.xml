@@ -7,7 +7,9 @@
 
   <thing-type id="everspring_hac01_00_000" listed="false">
     <label>HAC01 In-Wall Remote Insert</label>
-    <description>In-Wall Remote Insert</description>
+    <description><![CDATA[
+In-Wall Remote Insert<br /><h1>Overview</h1><p>There are many application for the module ,</p> <p>one application is connect the 2 wire of manual switch input to most of the wall switch sell in the market , while the connected wall switch been switched ON or OFF , the module will send the correspond signal to the associated devices like Z-Wave switch module HAN01 or any Z-Wave ON/OFF or dimmer modul</p> <p>Another application is connect this module to any traditional wire sensor which has NC/NO manual switch input output, and this will easily convert those wire sensors into wireless Z-wave sensors. </p> <br /><h2>Inclusion Information</h2><p>Pressing link button three times within 1.5 seconds will enter inclusion mode. </p> <br /><h2>Exclusion Information</h2><p>Pressing link button three times within 1.5 seconds will enter exclusion mode.</p>
+    ]]></description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->

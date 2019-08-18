@@ -107,7 +107,7 @@ Smart Implant<br /><h1>Overview</h1><p>allows to enhance the functionality of wi
       <channel id="sensor_relhumidity9" typeId="sensor_relhumidity">
         <label>Relative Humidity 1</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:9;type=HUMIDITY</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:9;type=RELATIVE_HUMIDITY</property>
         </properties>
       </channel>
       <channel id="sensor_temperature9" typeId="sensor_temperature">
