@@ -321,7 +321,7 @@ public class ZWaveNodeInitStageAdvancer {
                 try {
                     Thread.sleep(backoff);
                 } catch (InterruptedException e) {
-                    logger.debug("NODE {}: processTransaction sleep interrupted", node.getNodeId());
+                    logger.trace("NODE {}: processTransaction sleep interrupted", node.getNodeId());
                     break;
                 }
             }
