@@ -198,7 +198,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
      * Called by bridges when their interfaces are unavailable.
      */
     protected void stopNetwork() {
-        logger.trace("Stopping ZWave network");
+        logger.debug("Stopping ZWave network");
         if (healJob != null) {
             healJob.cancel(true);
             healJob = null;
@@ -215,7 +215,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             controller.removeEventListener(this);
             controller.shutdown();
         }
-        logger.trace("ZWave network stopped");
+        logger.debug("ZWave network stopped");
     }
 
     private void initializeHeal() {

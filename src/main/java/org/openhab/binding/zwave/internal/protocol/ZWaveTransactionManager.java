@@ -213,7 +213,7 @@ public class ZWaveTransactionManager {
      * Shuts down the manager and frees resources
      */
     public void shutdown() {
-        logger.trace("Shutting down transaction manager");
+        logger.debug("Shutting down transaction manager");
         running = false;
 
         synchronized (recvQueue) {
@@ -236,7 +236,7 @@ public class ZWaveTransactionManager {
             timerTask.cancel();
             timerTask = null;
         }
-        logger.trace("Transaction manager shutdown");
+        logger.debug("Transaction manager shutdown");
     }
 
     private void AddTransactionListener(TransactionListener listener) {
@@ -459,7 +459,7 @@ public class ZWaveTransactionManager {
                 try {
                     incomingMessage = recvQueue.take();
                 } catch (InterruptedException e) {
-                    logger.debug("Interrupted taking message from recvQueue");
+                    logger.trace("Interrupted taking message from recvQueue");
                     continue;
                 }
 
@@ -1029,7 +1029,7 @@ public class ZWaveTransactionManager {
                 Iterator<ZWaveTransaction> iterator = outstandingTransactions.iterator();
                 while (iterator.hasNext()) {
                     if (!running) {
-                        logger.trace("Stop looping through oustanding transactions"); // Change to trace
+                        logger.trace("Stop looping through oustanding transactions");
                         return;
                     }
                     ZWaveTransaction transaction = iterator.next();
@@ -1192,7 +1192,7 @@ public class ZWaveTransactionManager {
             ZWaveTransactionResponse response = futureResponse.get();
             return response;
         } catch (InterruptedException e) {
-            logger.debug("NODE {}: sendTransaction interrupted", transaction.getDestinationNode());
+            logger.trace("NODE {}: sendTransaction interrupted", transaction.getDestinationNode());
         } catch (ExecutionException e) {
             logger.debug("NODE {}: sendTransaction exception", transaction.getDestinationNode(), e);
         }
