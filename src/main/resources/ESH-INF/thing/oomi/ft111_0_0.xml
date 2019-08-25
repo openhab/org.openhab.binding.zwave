@@ -214,7 +214,8 @@ Threshold change in wattage (in terms of percentage)<br /><h1>Overview</h1><p>Th
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_100_1_wo" type="integer" groupName="configuration">
+      <parameter name="config_100_1_wo" type="integer" groupName="configuration"
+                 min="0" max="255">
         <label>100: Reset 101-103 to default</label>
         <description>Reset parameters 101-103 to default values</description>
         <default>0</default>
@@ -222,6 +223,7 @@ Threshold change in wattage (in terms of percentage)<br /><h1>Overview</h1><p>Th
           <option value="0">Reset the parameter 101-103</option>
         </options>
         <advanced>true</advanced>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_101_1" type="integer" groupName="configuration"
@@ -245,15 +247,16 @@ To set which reports need to be sent in Report group 2<br /><h1>Overview</h1><p>
 
       <parameter name="config_103_1" type="integer" groupName="configuration"
                  min="0" max="15">
-        <label>103: To set which reports need to be sent in Report group 3</label>
+        <label>103: Reports sent to Report group 3</label>
         <description><![CDATA[
-To set which reports need to be sent in Report group 3<br /><h1>Overview</h1><p>1     Send Meter Report of voltage (V)<br />2     Send Meter Report of current (A)<br />4     Send Meter Report of wattage (W)<br />8     Send Meter Report of energy (kWh)</p>
+Reports sent to Report group 3<br /><h1>Overview</h1><p>1     Send Meter Report of voltage (V)<br />2     Send Meter Report of current (A)<br />4     Send Meter Report of wattage (W)<br />8     Send Meter Report of energy (kWh)</p>
         ]]></description>
         <default>0</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_110_1_wo" type="integer" groupName="configuration">
+      <parameter name="config_110_1_wo" type="integer" groupName="configuration"
+                 min="0" max="255">
         <label>110: Reset 111-113 to default</label>
         <description>Reset parameters 111-113 to default values</description>
         <default>0</default>
@@ -261,6 +264,7 @@ To set which reports need to be sent in Report group 3<br /><h1>Overview</h1><p>
           <option value="0">Reset the parameter 111-113</option>
         </options>
         <advanced>true</advanced>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_111_4" type="integer" groupName="configuration"
@@ -330,7 +334,7 @@ To set which reports need to be sent in Report group 3<br /><h1>Overview</h1><p>
         <options>
           <option value="1">control the output loads of itself</option>
           <option value="2">control the other nodes</option>
-          <option value="3">(Default) control the output loads of itself and other nodes</option>
+          <option value="3">Control the output loads of itself and others</option>
         </options>
       </parameter>
 
@@ -341,7 +345,7 @@ To set which reports need to be sent in Report group 3<br /><h1>Overview</h1><p>
         <options>
           <option value="1">control the output loads of itself</option>
           <option value="2">control the other nodes</option>
-          <option value="3">(Default) control the output loads of itself and other nodes</option>
+          <option value="3">Control the output loads of itself and others</option>
         </options>
       </parameter>
 
@@ -375,8 +379,8 @@ To set which reports need to be sent in Report group 3<br /><h1>Overview</h1><p>
       </parameter>
 
       <parameter name="config_130_1" type="integer" groupName="configuration">
-        <label>130: To get what type of load the Dimmer is connected to</label>
-        <description>To get what type of load the Dimmer is connected to.</description>
+        <label>130: Type of load the Dimmer is connected to</label>
+        <description>Type of load the Dimmer is connected to</description>
         <default>0</default>
         <options>
           <option value="0">(Default) Unknown load</option>
@@ -388,16 +392,16 @@ To set which reports need to be sent in Report group 3<br /><h1>Overview</h1><p>
 
       <parameter name="config_131_1" type="integer" groupName="configuration"
                  min="0" max="99">
-        <label>131: Set the min brightness level that the load can reach to</label>
-        <description>Set the min brightness level that the load can reach to</description>
+        <label>131: Set the min brightness level</label>
+        <description>Set the min brightness level</description>
         <default>99</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_132_1" type="integer" groupName="configuration"
                  min="0" max="99">
-        <label>132: Set the max brightness level that the load can reach to</label>
-        <description>Set the max brightness level that the load can reach to</description>
+        <label>132: Set the max brightness level</label>
+        <description>Set the max brightness level</description>
         <default>99</default>
         <limitToOptions>false</limitToOptions>
       </parameter>

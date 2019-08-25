@@ -305,17 +305,7 @@ Reset all settings to factory defaults<br /><h1>Overview</h1><p>Will reset the c
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Group 1</label>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Group 2</label>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Group 3</label>
+        <label>1: Lifeline</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

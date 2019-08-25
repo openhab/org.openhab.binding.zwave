@@ -141,7 +141,7 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><table><tr><td> <p><
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW132</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0103:0084,0203:0084</property>
+      <property name="manufacturerRef">0003:0084,0103:0084,0203:0084</property>
       <property name="versionMin">2.0</property>
       <property name="dbReference">1017</property>
       <property name="defaultAssociations">1</property>

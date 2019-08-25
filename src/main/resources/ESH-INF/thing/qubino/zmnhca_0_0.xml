@@ -7,7 +7,9 @@
 
   <thing-type id="qubino_zmnhca_00_000" listed="false">
     <label>ZMNHCA Flush Shutter</label>
-    <description>Flush Shutter</description>
+    <description><![CDATA[
+Flush Shutter<br /><h1>Overview</h1><p>Flush Shutter module is used to control the motor of blinds, rollers, shades, garage doors, gates, venetian blinds (including slates tilting positioning), etc… The module can be controlled either through a Z-Wave network or through the wall switch.</p> <br /><h2>Inclusion Information</h2><ul><li>press service button S for more than 2 second or</li> <li>press push button I1 three times within 3s (3 times change switch state within 3 seconds)</li> </ul><br /><h2>Exclusion Information</h2><ul><li>press service button S for more than 6 second or</li> <li>press push button I1 five times within 3s (5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply</li> </ul><br /><h2>Wakeup Information</h2><p>Not provided</p>
+    ]]></description>
     <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -110,16 +112,16 @@ Responds to commands ALL ON / ALL OFF from Main Controller<br /><h1>Overview</h1
         ]]></description>
         <default>255</default>
         <options>
-          <option value="0">0 - ALL ON is not active ALL OFF is not active</option>
-          <option value="1">1 - ALL ON is not active ALL OFF active</option>
-          <option value="2">2 - ALL ON is not active ALL OFF is not active</option>
-          <option value="255">255 - ALL ON active, ALL OFF active</option>
+          <option value="0">ALL ON is not active ALL OFF is not active</option>
+          <option value="1">ALL ON is not active ALL OFF active</option>
+          <option value="2">ALL ON is inactive ALL OFF is inactive</option>
+          <option value="255">ALL ON active, ALL OFF active</option>
         </options>
       </parameter>
 
       <parameter name="config_40_1" type="integer" groupName="configuration"
                  min="1" max="100">
-        <label>40: - Power reporting in Watts on power change for Q1 or Q2</label>
+        <label>40: Reporting in Watts on power change for Q1 or Q2</label>
         <description><![CDATA[
 Power consumption change threshold for sending updates<br /><h1>Overview</h1><p>Power report is send (push) only when actual power (in Watts) in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%.</p> <p>Set value means percentage, set value from 0 – 100 = 0% - 100%. Available configuration parameters (data type is 1 Byte DEC):</p> <ul><li> default value 1</li> <li> 0 - reporting disabled</li> <li> 1 - 100 = 1% - 100% Reporting enabled.</li> </ul><p>NOTE: if power changed is less than 1W, the report is not send (pushed), independent of percentage set.</p>
         ]]></description>
@@ -128,7 +130,7 @@ Power consumption change threshold for sending updates<br /><h1>Overview</h1><p>
 
       <parameter name="config_42_2" type="integer" groupName="configuration"
                  min="0" max="32767">
-        <label>42: Power reporting in Watts by time interval for Q1 or Q2</label>
+        <label>42: Reporting in Watts by time interval for Q1 or Q2</label>
         <description><![CDATA[
 Power reporting in Watts by time interval for Q1 or Q2<br /><h1>Overview</h1><p>Set value means time interval (0 – 32767) in seconds, when power report is send. Available configuration parameters (data type is 2 Byte DEC):</p> <ul><li> default value 300 = 300s</li> <li> 0 - Reporting Disabled</li> <li> 1 - 32767 = 1 second - 32767 seconds. Reporting enabled, power report is send with time interval set by entered value.</li> </ul>
         ]]></description>
@@ -142,8 +144,8 @@ Operation Mode (Shutter or Venetian)<br /><h1>Overview</h1><p>This parameter def
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">0 – Shutter mode</option>
-          <option value="1">1 – Venetian mode (up/down and slate rotation)</option>
+          <option value="0">Shutter mode</option>
+          <option value="1">Venetian mode (up/down and slate rotation)</option>
         </options>
       </parameter>
 

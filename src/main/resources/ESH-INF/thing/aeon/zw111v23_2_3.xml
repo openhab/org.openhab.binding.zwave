@@ -5,10 +5,10 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="aeon_zw111_00_000" listed="false">
+  <thing-type id="aeon_zw111v23_02_003" listed="false">
     <label>ZW111 Nano Dimmer</label>
     <description><![CDATA[
-Nano Dimmer<br /><h1>Overview</h1><p>Aeotec Nano Dimmer is a Z-Wave Smart Dimmer specifically used to enable Z-Wave command and control (on/off/dim) of any wall switches. It can report immediate wattage consumption or kWh energy usage over a period of time. In the event of power failure, non-volatile memory retains all programmed information relating to the unit’s operating status. <br />It can connect to 2 external manual switches to control the load ON/OFF independently. Its surface has a pin socket, which can be used for connecting to the touch panel, so you can also use the touch panel to control the Nano Dimmer. <br />The Nano Dimmer is also a security Z-Wave plus device and supports Over The Air (OTA) feature for the products firmware upgrade.</p> <br /><h2>Inclusion Information</h2><p>Including Nano Dimmer as a non-secure device:</p> <p>If you want your Nano Dimmer as a non-secure device in your Z-Wave network, press the Action Button once on Nano Dimmer when you pair it to your gateway. If inclusion is successful, the green LED will be on for 2 seconds, and then return to a solid indication. If inclusion is unsuccessful, the red LED will be on for 2 seconds and then return to a colourful gradient.</p> <p>Including Nano Dimmer as a secure device:</p> <p>In order to take full advantage of the Nano Dimmer, you will want your Nano Dimmer as a security device that uses encrypted messages to communicate in your Z-wave network. A security enabled controller/ gateway (or Z-Wave Plus controller) is required.</p> <ol><li>Set your Z-Wave Plus controller into pairing mode.</li> <li>Press the Action Button 2 times within 1 second on the Nano Dimmer, the blue LED (secure indication) will blink to indicate the Nano Dimmer is entering into secure pairing mode.</li> <li>If the Nano Dimmer has been successfully added to your Z-Wave network, its RGB LED will be solid. If the pairing was unsuccessful, the red LED will be on for 2 seconds and then remain a colourful gradient, repeat the instructions above from step 1.</li> </ol><br /><h2>Exclusion Information</h2><p>Your Nano Dimmer can be removed from your Z-Wave network at any time. You’ll need to use your Z-Wave network’s main controller. To set your Z-Wave controller/gateway into removal mode, please refer to the respective section within your controller instruction manual.</p> <ol><li>Set your Z-Wave controller into removal mode.</li> <li>Press the Action Button on the Nano Dimmer or toggle the external manual switch 2 times in fast succession.</li> <li>If the Nano Dimmer has been successfully removed from your Z-Wave network, its RGB LED will remain colourful gradient. If the removal was unsuccessful, the RGB LED will still be solid (following the state of the output load), repeat the instructions above from step 1.</li> </ol>
+Nano Dimmer<br /><h1>Overview</h1><p>Aeotec Nano Dimmer is a Z-Wave Smart Dimmer specifically used to enable Z-Wave command and control (on/off/dim) of any wall switches. It can report immediate wattage consumption or kWh energy usage over a period of time. In the event of power failure, non-volatile memory retains all programmed information relating to the unit’s operating status. <br />It can connect to 2 external manual switches to control the load ON/OFF independently. Its surface has a pin socket, which can be used for connecting to the touch panel, so you can also use the touch panel to control the Nano Dimmer. <br />The Nano Dimmer is also a security Z-Wave plus device and supports Over The Air (OTA) feature for the products firmware upgrade.</p> <br /><h2>Inclusion Information</h2><p>Including Nano Dimmer as a non-secure device:</p> <p>If you want your Nano Dimmer as a non-secure device in your Z-Wave network, press the Action Button once on Nano Dimmer when you pair it to your gateway. If inclusion is successful, the green LED will be on for 2 seconds, and then return to a solid indication. If inclusion is unsuccessful, the red LED will be on for 2 seconds and then return to a colourful gradient.</p> <p>Including Nano Dimmer as a secure device:</p> <p>In order to take full advantage of the Nano Dimmer, you will want your Nano Dimmer as a security device that uses encrypted messages to communicate in your Z-wave network. A security enabled controller/ gateway (or Z-Wave Plus controller) is required.</p> <ol><li>Set your Z-Wave Plus controller into pairing mode.</li> <li>Press the Action Button 2 times within 1 second on the Nano Dimmer, the blue LED (secure indication) will blink to indicate the Nano Dimmer is entering into secure pairing mode.</li> <li>If the Nano Dimmer has been successfully added to your Z-Wave network, its RGB LED will be solid. If the pairing was unsuccessful, the red LED will be on for 2 seconds and then remain a colourful gradient, repeat the instructions above from step 1.</li> </ol><br /><h2>Exclusion Information</h2><p>Your Nano Dimmer can be removed from your Z-Wave network at any time. You’ll need to use your Z-Wave network’s main controller. To set your Z-Wave controller/gateway into removal mode, please refer to the respective section within your controller instruction manual.</p> <ol><li>Set your Z-Wave controller into removal mode.</li> <li>Press the Action Button on the Nano Dimmer or toggle the external manual switch 2 times in fast succession.</li> <li>If the Nano Dimmer has been successfully removed from your Z-Wave network, its RGB LED will remain colourful gradient. If the removal was unsuccessful, the RGB LED will still be solid (following the state of the output load), repeat the instructions above from step 1.</li> </ol>
     ]]></description>
     <category>WallSwitch</category>
 
@@ -33,10 +33,10 @@ Nano Dimmer<br /><h1>Overview</h1><p>Aeotec Nano Dimmer is a Z-Wave Smart Dimmer
           <property name="binding:*:DecimalType">COMMAND_CLASS_SCENE_ACTIVATION</property>
         </properties>
       </channel>
-      <channel id="meter_kwh" typeId="meter_kwh">
-        <label>Electric meter (kWh)</label>
+      <channel id="meter_current" typeId="meter_current">
+        <label>Electric meter (amps)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_A</property>
         </properties>
       </channel>
       <channel id="meter_watts" typeId="meter_watts">
@@ -51,16 +51,10 @@ Nano Dimmer<br /><h1>Overview</h1><p>Aeotec Nano Dimmer is a Z-Wave Smart Dimmer
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_V</property>
         </properties>
       </channel>
-      <channel id="meter_current" typeId="meter_current">
-        <label>Electric meter (amps)</label>
+      <channel id="meter_kwh" typeId="meter_kwh">
+        <label>Electric meter (kWh)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_A</property>
-        </properties>
-      </channel>
-      <channel id="meter_reset" typeId="meter_reset">
-        <label>Clear Accumulated Energy</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_METER</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
         </properties>
       </channel>
       <channel id="alarm_power" typeId="alarm_power">
@@ -88,9 +82,9 @@ Nano Dimmer<br /><h1>Overview</h1><p>Aeotec Nano Dimmer is a Z-Wave Smart Dimmer
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW111</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0003:006F,0103:006F,0203:006F</property>
-      <property name="versionMax">2.2</property>
-      <property name="dbReference">576</property>
+      <property name="manufacturerRef">01F3:000F,01F3:006F</property>
+      <property name="versionMin">2.3</property>
+      <property name="dbReference">1096</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -140,6 +134,113 @@ Nano Dimmer<br /><h1>Overview</h1><p>Aeotec Nano Dimmer is a Z-Wave Smart Dimmer
         </options>
       </parameter>
 
+      <parameter name="config_21_4_000000FF" type="integer" groupName="configuration">
+        <label>21: WallSwipe IR sensor</label>
+        <description>scene control functionality</description>
+        <default>1</default>
+        <options>
+          <option value="0">disable the scene control</option>
+          <option value="1">enable the scene control</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_21_4_0000FF00" type="integer" groupName="configuration">
+        <label>21: WallSwipe IR sensor</label>
+        <description>scene control functionality for Left/Right wave</description>
+        <default>0</default>
+        <options>
+          <option value="0">disable the scene control</option>
+          <option value="1">enable the scene control</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_21_4_00FF0000" type="integer" groupName="configuration">
+        <label>21: WallSwipe IR sensor</label>
+        <description>Wave Options</description>
+        <default>1</default>
+        <options>
+          <option value="0">Wave Option 1 is selected</option>
+          <option value="1">Wave Option 2 is selected</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_21_4_0F000000" type="integer" groupName="configuration">
+        <label>21: WallSwipe IR sensor</label>
+        <description>WallSwipe IR sensor</description>
+        <default>0</default>
+        <options>
+          <option value="0">Disable the IR Sensor</option>
+          <option value="1">Enable the IR Sensor</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_64_4" type="integer" groupName="configuration"
+                 min="0" max="2147483647">
+        <label>64: WallSwipe button color</label>
+        <description><![CDATA[
+WallSwipe button color<br /><h1>Overview</h1><p>Set the button color of WallSwipe.</p> <ul><li>Value 1= Level.</li> <li>Value 2= the color value of Red.</li> <li>Value 3= the color value of Green.</li> <li>Value 4= the color value of Blue.</li> </ul>
+        ]]></description>
+        <default>184549375</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_65_4" type="integer" groupName="configuration"
+                 min="0" max="2147483647">
+        <label>65: WallSwipe LED Up gesture action</label>
+        <description><![CDATA[
+WallSwipe LED Up gesture action<br /><h1>Overview</h1><p>Set the LED indication color of WallSwipe when the gesture action is UP.</p> <ul><li>Value 1= Reserved.</li> <li>Value 2= the color value of Red.</li> <li>Value 3= the color value of Green.</li> <li>Value 4= the color value of Blue.</li> </ul>
+        ]]></description>
+        <default>855638015</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_66_4" type="integer" groupName="configuration"
+                 min="0" max="2147483647">
+        <label>66: WallSwipe LED Down gesture action</label>
+        <description><![CDATA[
+WallSwipe LED Down gesture action<br /><h1>Overview</h1><p>Set the LED indication color of WallSwipe when the gesture action is Down.</p> <ul><li>Value 1= Level.</li> <li>Value 2= the color value of Red.</li> <li>Value 3= the color value of Green.</li> <li>Value 4= the color value of Blue</li> </ul>
+        ]]></description>
+        <default>855638015</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_67_4" type="integer" groupName="configuration"
+                 min="0" max="2147483647">
+        <label>67: WallSwipe LED Left gesture action</label>
+        <description><![CDATA[
+WallSwipe LED Left gesture action<br /><h1>Overview</h1><p>Set the LED indication color of WallSwipe when the gesture action is Left.</p> <ul><li>Value 1= Level.</li> <li>Value 2= the color value of Red.</li> <li>Value 3= the color value of Green.</li> <li>Value 4= the color value of Blue.</li> </ul>
+        ]]></description>
+        <default>855638015</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_68_4" type="integer" groupName="configuration"
+                 min="0" max="2147483647">
+        <label>68: WallSwipe LED Right gesture action</label>
+        <description><![CDATA[
+WallSwipe LED Right gesture action<br /><h1>Overview</h1><p>Set the LED indication color of WallSwipe when the gesture action is Right.</p> <ul><li>Value 1= Level.</li> <li>Value 2= the color value of Red.</li> <li>Value 3= the color value of Green.</li> <li>Value 4= the color value of Blue.</li> </ul>
+        ]]></description>
+        <default>855638015</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_69_4" type="integer" groupName="configuration"
+                 min="0" max="2147483647">
+        <label>69: WallSwipe Night light</label>
+        <description><![CDATA[
+WallSwipe Night light<br /><h1>Overview</h1><p>Set the LED indication color of WallSwipe when it is in Night light state.</p> <p>Value 1= Level.</p> <p>Value 2= the color value of Red.</p> <p>Value 3= the color value of Green.</p> <p>Value 4= the color value of Blue.</p>
+        ]]></description>
+        <default>184483840</default>
+      </parameter>
+
+      <parameter name="config_71_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>71: WallSwipe sensitivity</label>
+        <description>Set the sensitivity of WallSwipe</description>
+        <default>0</default>
+        <advanced>true</advanced>
+      </parameter>
+
       <parameter name="config_80_1" type="integer" groupName="configuration">
         <label>80: Group 1 notification</label>
         <description><![CDATA[
@@ -177,6 +278,26 @@ Set notification sent to associated nodes (group 4)<br /><h1>Overview</h1><p>To 
           <option value="0">Send Nothing</option>
           <option value="1">(Default) Send Basic Set CC</option>
         </options>
+      </parameter>
+
+      <parameter name="config_83_1" type="integer" groupName="configuration">
+        <label>83: LED status</label>
+        <description>LED status</description>
+        <default>0</default>
+        <options>
+          <option value="0">The LED will follow the status</option>
+          <option value="1">Follow the status &amp; turn off after 5 sec.</option>
+          <option value="2">Night light mode</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_84_4" type="integer" groupName="configuration"
+                 min="0" max="2147483647">
+        <label>84: Time set for Night light mode</label>
+        <description><![CDATA[
+Time set for Night light mode<br /><h1>Overview</h1><ul><li>Value1: Hour of ON.</li> <li>Value2: Minute of ON.</li> <li>Value3: Hour of OFF.</li> <li>Value4: Minute of OFF.</li> </ul><p>E.g. The default setting is the Night light mode is enabled at 12: 00 and disabled at 8:00 0x12000800.</p>
+        ]]></description>
+        <default>301991936</default>
       </parameter>
 
       <parameter name="config_85_4" type="integer" groupName="configuration"
@@ -417,6 +538,26 @@ To set which reports need to be sent in Report group 3<br /><h1>Overview</h1><p>
         <description>Set the max brightness level that the load can reach to</description>
         <default>99</default>
         <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_247_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>247: Working way for S1/S2</label>
+        <description><![CDATA[
+Working way for S1/S2<br /><h1>Overview</h1><p>Set the working way for S1/S2 when the Switch mode is 2 state switch mode.</p> <ul><li>Bit 0 =0, S1 is a toggle switch.</li> <li>Bit 0 =1, S1 is an On/Off switch, the out load state and S1 switch state would be in sync when using S1 to control the output load.</li> <li>Bit 1 =0, S2 is a toggle switch.</li> <li>Bit 1 =1, S2 is an On/Off switch, the out load state and S2 switch state would be in sync when using S2 to control the output load.</li> <li>Bit 2- Bit 7, reserved.</li> </ul>
+        ]]></description>
+        <default>0</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_248_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>248: Function of S1/S2</label>
+        <description><![CDATA[
+Function of S1/S2<br /><h1>Overview</h1><p>Set the function of S1/S2.</p> <ul><li>Bit 0 = 0, the function of sending NIF is disabled.</li> <li>Bit 0 = 1, the function of sending NIF is enabled.</li> <li>Bit 1 = 0, the function of entering RF power level test mode is disabled.</li> <li>Bit 1 = 1, the function of entering RF power level test mode is enabled.</li> <li>Bit 2 = 0, the function of factory reset is disabled.</li> <li>Bit 2 = 1, the function of factory reset is enabled.</li> <li>Bit 3- Bit 6 = reserved.</li> <li>Bit 7 = 0, the setting for Bit 0 -Bit 2 are ineffective.</li> <li>Bit 7 = 1, the setting for Bit 0 -Bit 2 are effective</li> </ul>
+        ]]></description>
+        <default>131</default>
+        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_249_1" type="integer" groupName="configuration">
