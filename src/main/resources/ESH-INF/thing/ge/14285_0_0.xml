@@ -63,7 +63,7 @@ Direct Wire Indoor/Outdoor Smart Switch<br /><h1>Overview</h1><p><strong>SPECIFI
       <property name="vendor">Jasco Products</property>
       <property name="modelId">GE/Jasco 14285</property>
       <property name="manufacturerId">0063</property>
-      <property name="manufacturerRef">4F44:3032</property>
+      <property name="manufacturerRef">4F44:3032,5042:4004</property>
       <property name="dbReference">897</property>
     </properties>
 

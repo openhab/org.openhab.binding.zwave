@@ -15,7 +15,7 @@ Flush Dimmer Plus<br /><h1>Overview</h1><p>This Z-Wave module is used for dimmin
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
+        <label>Switch [Deprecated]</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
         </properties>
@@ -24,7 +24,7 @@ Flush Dimmer Plus<br /><h1>Overview</h1><p>This Z-Wave module is used for dimmin
         <label>Dimmer</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="sensor_binary" typeId="sensor_binary">
@@ -64,7 +64,7 @@ Flush Dimmer Plus<br /><h1>Overview</h1><p>This Z-Wave module is used for dimmin
         </properties>
       </channel>
       <channel id="switch_binary1" typeId="switch_binary">
-        <label>Switch 1</label>
+        <label>Switch 1 [Deprecated]</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1</property>
         </properties>
@@ -73,7 +73,7 @@ Flush Dimmer Plus<br /><h1>Overview</h1><p>This Z-Wave module is used for dimmin
         <label>Dimmer 1</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
         </properties>
       </channel>
       <channel id="meter_kwh1" typeId="meter_kwh">
@@ -144,7 +144,7 @@ Flush Dimmer Plus<br /><h1>Overview</h1><p>This Z-Wave module is used for dimmin
         <default>0</default>
         <options>
           <option value="0">Mono-stable switch type (push button)</option>
-          <option value="1">1 - Bi-stable switch type</option>
+          <option value="1">Bi-stable switch type</option>
         </options>
       </parameter>
 
@@ -152,8 +152,8 @@ Flush Dimmer Plus<br /><h1>Overview</h1><p>This Z-Wave module is used for dimmin
         <label>2: Input 2 switch type</label>
         <default>0</default>
         <options>
-          <option value="0">0 - Mono-stable switch type (push button)</option>
-          <option value="1">1 - Bi-stable switch type</option>
+          <option value="0">Mono-stable switch type (push button)</option>
+          <option value="1">Bi-stable switch type</option>
         </options>
       </parameter>
 
@@ -161,8 +161,8 @@ Flush Dimmer Plus<br /><h1>Overview</h1><p>This Z-Wave module is used for dimmin
         <label>3: Input 2 contact type</label>
         <default>0</default>
         <options>
-          <option value="0">0 - NO (normally open) input type</option>
-          <option value="1">1 - NC (normally closed) input type</option>
+          <option value="0">NO (normally open) input type</option>
+          <option value="1">NC (normally closed) input type</option>
         </options>
       </parameter>
 
@@ -170,8 +170,8 @@ Flush Dimmer Plus<br /><h1>Overview</h1><p>This Z-Wave module is used for dimmin
         <label>4: Input 3 contact type</label>
         <default>0</default>
         <options>
-          <option value="0">0 - NO (normally open) input type</option>
-          <option value="1">1 - NC (normally closed) input type</option>
+          <option value="0">NO (normally open) input type</option>
+          <option value="1">NC (normally closed) input type</option>
         </options>
       </parameter>
 
@@ -214,9 +214,9 @@ Dimming is done by push button or switch connected to I1.<br /><h1>Overview</h1>
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">0 - single push button (connected to I1)</option>
-          <option value="1">1 - 3-way switch (connected to I1 and I2)</option>
-          <option value="2">2 - Additional switch connected to I2</option>
+          <option value="0">single push button (connected to I1)</option>
+          <option value="1">3-way switch (connected to I1 and I2)</option>
+          <option value="2">Additional switch connected to I2</option>
         </options>
       </parameter>
 
@@ -227,20 +227,20 @@ A fast double click on the push button will set dimming power at maximum.<br /><
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">0 - double click disabled</option>
-          <option value="1">1 - double click enabled</option>
+          <option value="0">double click disabled</option>
+          <option value="1">double click enabled</option>
         </options>
       </parameter>
 
       <parameter name="config_30_1" type="integer" groupName="configuration">
-        <label>30: Saving the state of the device after a power failure</label>
+        <label>30: Saving the state after a power failure</label>
         <description><![CDATA[
-If enabled, flush dimmer module saves its state before power failure.<br /><h1>Overview</h1><p>If state saving is enabled, flush dimmer module saves its state before power failure (it returns to the last position saved before a power failure).</p> <p>If state saving is disabled, flush dimmer module does not save the state after a power failure.</p>
+Saving the state after a power failure<br /><h1>Overview</h1><p>If state saving is enabled, flush dimmer module saves its state before power failure (it returns to the last position saved before a power failure).</p> <p>If state saving is disabled, flush dimmer module does not save the state after a power failure.</p>
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">0 - Save state enabled</option>
-          <option value="1">1 - Save state disabled</option>
+          <option value="0">Save state enabled</option>
+          <option value="1">Save state disabled</option>
         </options>
       </parameter>
 
@@ -305,8 +305,8 @@ This parameter is used with association group 3<br /><h1>Overview</h1><p>This pa
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">0 - respect start level</option>
-          <option value="1">1 - ignore start level</option>
+          <option value="0">respect start level</option>
+          <option value="1">ignore start level</option>
         </options>
       </parameter>
 
@@ -326,14 +326,14 @@ Enabling I2 means that Endpoint (I2) will be present on UI.<br /><h1>Overview</h
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">0 – Disabled</option>
-          <option value="1">1 – Home Security</option>
-          <option value="2">2 – Carbon Monoxide</option>
-          <option value="3">3 – Carbon Dioxide</option>
-          <option value="4">4 – Water Alarm</option>
-          <option value="5">5 – Heat Alarm</option>
-          <option value="6">6 - Smoke Alarm</option>
-          <option value="9">9 – Sensor binary</option>
+          <option value="0">Disabled</option>
+          <option value="1">Home Security</option>
+          <option value="2">Carbon Monoxide</option>
+          <option value="3">Carbon Dioxide</option>
+          <option value="4">Water Alarm</option>
+          <option value="5">Heat Alarm</option>
+          <option value="6">Smoke Alarm</option>
+          <option value="9">Sensor binary</option>
         </options>
       </parameter>
 
@@ -344,14 +344,14 @@ Enabling I3 means that Endpoint (I3) will be present on UI.<br /><h1>Overview</h
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">0 – Disabled</option>
-          <option value="1">1 – Home Security</option>
-          <option value="2">2 – Carbon Monoxide</option>
-          <option value="3">3 – Carbon Dioxide</option>
-          <option value="4">4 – Water Alarm</option>
-          <option value="5">5 – Heat Alarm</option>
-          <option value="6">6 - Smoke Alarm</option>
-          <option value="9">9 – Sensor binary</option>
+          <option value="0">Disabled</option>
+          <option value="1">Home Security</option>
+          <option value="2">Carbon Monoxide</option>
+          <option value="3">Carbon Dioxide</option>
+          <option value="4">Water Alarm</option>
+          <option value="5">Heat Alarm</option>
+          <option value="6">Smoke Alarm</option>
+          <option value="9">Sensor binary</option>
         </options>
       </parameter>
 
@@ -376,7 +376,7 @@ Module reports measured temperature on defined temperature change<br /><h1>Overv
       <parameter name="config_250_1" type="integer" groupName="configuration">
         <label>250: Unsecure / Secure Inclusion</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>The Flush dimmer supports both, the secure and unsecure inclusion. Even if the controller does not support security command classes, a dimmer could be included as unsecure and keep all the functionality</p>
+Unsecure / Secure Inclusion<br /><h1>Overview</h1><p>The Flush dimmer supports both, the secure and unsecure inclusion. Even if the controller does not support security command classes, a dimmer could be included as unsecure and keep all the functionality</p>
         ]]></description>
         <default>0</default>
         <options>

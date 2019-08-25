@@ -14,28 +14,6 @@ MATRIX Switch with Dimmer and Backlight<br /><h1>Overview</h1><p>MATRIX type ZDB
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_dimmer" typeId="switch_dimmer">
-        <label>Dimmer</label>
-        <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-        </properties>
-      </channel>
-      <channel id="color_color" typeId="color_color">
-        <label>Color Control</label>
-        <properties>
-          <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR;colorMode=RGB</property>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-        </properties>
-      </channel>
-      <channel id="color_temperature" typeId="color_temperature">
-        <label>Color Temperature</label>
-        <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_COLORcolorMode=DIFF_WHITE</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-        </properties>
-      </channel>
       <channel id="scene_number" typeId="scene_number">
         <label>Scene Number</label>
         <properties>
@@ -45,7 +23,7 @@ MATRIX Switch with Dimmer and Backlight<br /><h1>Overview</h1><p>MATRIX type ZDB
       <channel id="switch_binary1" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1,COMMAND_CLASS_BASIC:1</property>
         </properties>
       </channel>
       <channel id="color_color1" typeId="color_color">
@@ -59,7 +37,7 @@ MATRIX Switch with Dimmer and Backlight<br /><h1>Overview</h1><p>MATRIX type ZDB
       <channel id="switch_binary2" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:2</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:2,COMMAND_CLASS_BASIC:2</property>
         </properties>
       </channel>
       <channel id="color_color2" typeId="color_color">
@@ -73,7 +51,7 @@ MATRIX Switch with Dimmer and Backlight<br /><h1>Overview</h1><p>MATRIX type ZDB
       <channel id="switch_binary3" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:3</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:3,COMMAND_CLASS_BASIC:3</property>
         </properties>
       </channel>
       <channel id="color_color3" typeId="color_color">
@@ -87,7 +65,7 @@ MATRIX Switch with Dimmer and Backlight<br /><h1>Overview</h1><p>MATRIX type ZDB
       <channel id="switch_binary4" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:4</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:4,COMMAND_CLASS_BASIC:4</property>
         </properties>
       </channel>
       <channel id="color_color4" typeId="color_color">
@@ -115,7 +93,7 @@ MATRIX Switch with Dimmer and Backlight<br /><h1>Overview</h1><p>MATRIX type ZDB
       <property name="manufacturerRef">0003:0121</property>
       <property name="dbReference">1091</property>
       <property name="commandClass:COMMAND_CLASS_SWITCH_BINARY:1">switch_binary</property>
-      <property name="defaultAssociations">1,2,3,4,14</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -250,13 +228,6 @@ Time that a button must be activated before it is accepted as “held-down".<br 
         <default>50</default>
       </parameter>
 
-      <parameter name="config_16_1" type="integer" groupName="configuration"
-                 min="0" max="4">
-        <label>16: **delete**</label>
-        <description>This parameter specifies the functionality of pushbutton 1.</description>
-        <default>0</default>
-      </parameter>
-
       <parameter name="config_20_1" type="integer" groupName="configuration">
         <label>20: Pushbutton 1 LED indication</label>
         <description>This parameter specifies how the LED indication is controlled.</description>
@@ -287,26 +258,6 @@ Time that a button must be activated before it is accepted as “held-down".<br 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description>Sends Device Reset notifications, and Central Scene notifications.</description>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: **delete**</label>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: **delete**</label>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: **delete**</label>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_14" type="text" groupName="association" multiple="true">
-        <label>14: **delete**</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
