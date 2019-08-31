@@ -6,8 +6,10 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="heiman_m4172_00_000" listed="false">
-    <label>M417-2 Smart Water Leakage Sensor</label>
-    <description>Smart Water Leakage Sensor</description>
+    <label>HS3WL-Z Smart Water Leakage Sensor</label>
+    <description><![CDATA[
+Smart Water Leakage Sensor<br /><h1>Overview</h1><p>The device will report alarm information if detect the status change of water and no water after press Networking_Button. Red LED blinks once when sensor detects water or no water.</p> <br /><h2>Inclusion Information</h2><ul><li>Press the Networking_Button 3 times within 1.5s, Green LED is Blinking 4 times within 1 second.</li> <li>If Inclusion Process is successful, Green led will turn off.</li> </ul><br /><h2>Exclusion Information</h2><ul><li>Press the Networking_Button 3 times within 1.5s</li> <li>If Exclusion Process is successful, Green led is Blinking 6 times, then turn off.</li> </ul><br /><h2>Wakeup Information</h2><p>Not provided</p>
+    ]]></description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -40,7 +42,7 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Heiman Technology Co. Ltd</property>
-      <property name="modelId">M417-2</property>
+      <property name="modelId">HS3WL-Z</property>
       <property name="manufacturerId">0260</property>
       <property name="manufacturerRef">8004:1000</property>
       <property name="dbReference">738</property>

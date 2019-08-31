@@ -87,9 +87,9 @@ After force to wake up, delay time to enter standby mode again<br /><h1>Overview
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="1" max="255">
-        <label>4: In standby, delay time to enter standby after wake up</label>
+        <label>4: Delay time to enter standby after wake up</label>
         <description><![CDATA[
-In standby mode, after wake up, delay time for standby again<br /><h1>Overview</h1><p>In standby mode, after wake up, delay time for standby again</p>
+Delay time to enter standby after wake up<br /><h1>Overview</h1><p>In standby mode, after wake up, delay time for standby again</p>
         ]]></description>
         <default>5</default>
       </parameter>
@@ -141,9 +141,9 @@ The interval time of sending battery report<br /><h1>Overview</h1><p>The interva
         ]]></description>
         <default>3</default>
         <options>
-          <option value="3">3 minutes</option>
-          <option value="5">5 minutes</option>
-          <option value="10">10 minutes</option>
+          <option value="3">Report every 3 minutes</option>
+          <option value="5">Report every 5 minutes</option>
+          <option value="10">Report every 10 minutes</option>
         </options>
       </parameter>
 

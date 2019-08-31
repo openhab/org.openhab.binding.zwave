@@ -254,6 +254,72 @@ Time that a button must be activated before it is accepted as “held-down".<br 
         </options>
       </parameter>
 
+      <parameter name="config_22_4" type="integer" groupName="configuration"
+                 min="0" max="65535">
+        <label>22: ON indication RGB-saturation for pushbutton 1</label>
+        <description><![CDATA[
+ON indication RGB-saturation for pushbutton 1<br /><h1>Overview</h1><p>This parameter specifies the saturation levels for the red, green and blue LEDs, when ON status is indicated. (Default is the ON-state indicated by a 50% blue colour).</p> <table><tr><td><strong>Byte 1</strong></td> <td><strong>Colour saturation, red.</strong></td> </tr><tr><td> <p>0-255</p> </td> <td> <p>Specifies the saturation for the red LEDs. (Default is 0)</p> </td> </tr><tr><td><strong>Byte 2</strong></td> <td><strong>Colour saturation, green.</strong></td> </tr><tr><td> <p>0 – 255</p> </td> <td> <p>Specifies the saturation for the green LEDs. (Default is 0)</p> </td> </tr><tr><td><strong>Byte 3</strong></td> <td><strong>Colour saturation, blue</strong></td> </tr><tr><td>0 - 255</td> <td> <p>Specifies the saturation for the blue LEDs. (Default is 127)</p> </td> </tr><tr><td><strong>Byte 4</strong></td> <td><strong>Led Control.</strong></td> </tr><tr><td>0 - 255</td> <td> <p>LED indicator control; see the application note about this parameter. (Default is 0)</p> </td> </tr></table>
+        ]]></description>
+        <default>0</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_23_4" type="integer" groupName="configuration"
+                 min="0" max="65535">
+        <label>23: OFF indication RGB-saturation for pushbutton 1</label>
+        <description><![CDATA[
+OFF indication RGB-saturation for pushbutton 1<br /><h1>Overview</h1><p>This parameter specifies the saturation levels for the red, green and blue LEDs, when OFF status is indicated. (Default is the OFF-state indicated as a low white light on 5%).</p> <table><tr><td><strong>Byte 1</strong></td> <td><strong>Colour saturation, red.</strong></td> </tr><tr><td>0 - 255</td> <td>Specifies the saturation for the red LEDs. (Default is 47).</td> </tr><tr><td><strong>Byte 2</strong></td> <td><strong>Colour saturation, green. </strong></td> </tr><tr><td>0 – 255 </td> <td>Specifies the saturation for the green LEDs. (Default is 47) </td> </tr><tr><td><strong>Byte 3</strong></td> <td><strong>Colour saturation, blue. </strong></td> </tr><tr><td>0 - 255</td> <td>Specifies the saturation for the blue LEDs. (Default is 47)</td> </tr><tr><td><strong>Byte 4</strong></td> <td><strong>LED control.</strong></td> </tr><tr><td>0 - 255 </td> <td>LED indicator control; see the application note about this parameter. (Default is 0)</td> </tr></table>
+        ]]></description>
+        <default>0</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_24_1" type="integer" groupName="configuration">
+        <label>24: Pushbutton 2 functionality</label>
+        <description>Pushbutton 2 functionality</description>
+        <default>0</default>
+        <options>
+          <option value="0">Standard toggle-function</option>
+          <option value="1">Automatic turn off after the time has expired</option>
+          <option value="2">Automatic turn on after the time has expired</option>
+          <option value="3">Always turn off or dim down</option>
+          <option value="4">Always turn on or dim up</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_25_2" type="integer" groupName="configuration"
+                 min="0" max="43200">
+        <label>25: Timer value for pushbutton 2</label>
+        <description><![CDATA[
+Timer value for pushbutton 2<br /><h1>Overview</h1><p>This parameter specifies the time used by the previous configuration parameter.</p> <table><tr><td>0 – 43200 </td> <td>Specifies the time in seconds. Default is 300 = 5 minutes.</td> </tr></table>
+        ]]></description>
+        <default>300</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_26_4" type="integer" groupName="configuration"
+                 min="0" max="65535">
+        <label>26: Multi-Level Switch Set values for pushbutton 2.</label>
+        <description><![CDATA[
+Multi-Level Switch Set values for pushbutton 2.<br /><h1>Overview</h1><table><tr><td><strong>Byte 1</strong></td> <td><strong>Enable / Disable</strong></td> </tr><tr><td>0</td> <td> <p>Disabled – A single activation of the pushbutton will not send commands to devices in association group 4.</p> </td> </tr><tr><td>1</td> <td> <p>Enabled – A single activation will send commands to devices in association group 4. Devices will receive commands with the values set in Byte 2 and 3 (Default).</p> </td> </tr><tr><td><strong>Byte 2</strong></td> <td><strong>Upper switch value</strong></td> </tr><tr><td> <p>0 - 99, 255</p> </td> <td> <p>When single pressing the pushbutton for ON, a Multilevel Switch Set with this value will be send to devices in association group 4. (Default = 255)</p> </td> </tr><tr><td><strong>Byte 3</strong></td> <td><strong>Lower switch value</strong></td> </tr><tr><td>0 - 99</td> <td> <p>hen single pressing the pushbutton for OFF, a Multilevel Switch Set with this value will be send to devices in association group 4. (Default = 0)</p> </td> </tr><tr><td><strong>Byte 4</strong></td> <td><strong>Not used</strong></td> </tr><tr><td>0</td> <td>must be set to 0.</td> </tr></table>
+        ]]></description>
+        <default>0</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_27_1" type="integer" groupName="configuration">
+        <label>27: Binary Switch Set support for pushbutton 2</label>
+        <description><![CDATA[
+Binary Switch Set support for pushbutton 2<br /><h1>Overview</h1><p>This parameter specifies how received Binary Switch Set commands are handled.</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">control pushbutton indicator LEDs</option>
+          <option value="1">Controls LED's and state</option>
+          <option value="2">As activated the pushbutton</option>
+        </options>
+      </parameter>
+
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>

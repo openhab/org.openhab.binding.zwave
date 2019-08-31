@@ -7,7 +7,10 @@
 
   <thing-type id="hank_hkzwms01_00_000" listed="false">
     <label>HKZW_MS01 Multisensor</label>
-    <description>Multisensor</description>
+    <description><![CDATA[
+Multisensor<br /><h1>Overview</h1><p>Detects motion, temperature, humidity, and luminance</p> <br /><h2>Inclusion Information</h2><p>Triple click the Z-Button</p> <p>Hold Z-button for 3 seconds for secure inclusion</p> <br /><h2>Exclusion Information</h2><p>Triple click the Z-Button</p> <br /><h2>Wakeup Information</h2><p>Press the Z-Button</p>
+    ]]></description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -72,14 +75,14 @@
         <description>The higher the value,the more sensitive the PIR sensor</description>
         <default>8</default>
         <options>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
+          <option value="1">Sensitivity 1</option>
+          <option value="2">Sensitivity 2</option>
+          <option value="3">Sensitivity 3</option>
+          <option value="4">Sensitivity 4</option>
+          <option value="5">Sensitivity 5</option>
+          <option value="6">Sensitivity 6</option>
+          <option value="7">Sensitivity 7</option>
+          <option value="8">Sensitivity 8</option>
         </options>
       </parameter>
 
