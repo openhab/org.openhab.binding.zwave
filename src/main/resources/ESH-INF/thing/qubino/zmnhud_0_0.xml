@@ -7,7 +7,10 @@
 
   <thing-type id="qubino_zmnhud_00_000" listed="false">
     <label>ZMNHUD Flush pilot (DIN version)</label>
-    <description>Flush pilot (DIN version)</description>
+    <description><![CDATA[
+Flush pilot (DIN version)<br /><h1>Overview</h1><p>The ZMNHUD is used to control electric Radiators with 6 different working modes by pilot wire control signal. The module can be controlled either through a Z-Wave network or through the wall switch.<br />The module is designed to be mounted inside an electrical cabinet onto DIN rail.</p> <br /><h2>Inclusion Information</h2><p>Press the S button for 2 seconds</p> <br /><h2>Exclusion Information</h2><p>Press the S button for 6 seconds</p>
+    ]]></description>
+    <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -21,7 +24,7 @@
         <label>Dimmer</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="sensor_binary" typeId="sensor_binary">
@@ -154,7 +157,8 @@
       </parameter>
 
       <parameter name="config_30_1" type="integer" groupName="configuration">
-        <label>30: Saving the state of the device after a power failure</label>
+        <label>30: Device state after pwr failure</label>
+        <description>Saving the state of the device after a power failure</description>
         <default>0</default>
         <options>
           <option value="0">The module saves its state before power failure</option>
@@ -164,7 +168,7 @@
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
-        <label>1: Lifeline group</label>
+        <label>1: Lifeline</label>
         <description>Reserved for communication with the main controller</description>
       </parameter>
 

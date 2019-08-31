@@ -7,7 +7,9 @@
 
   <thing-type id="hank_rgbbulb_00_000" listed="false">
     <label>RGB bulb HKZW-RGB01-V1.0</label>
-    <description>HKZW-RGB01-V1.0</description>
+    <description><![CDATA[
+HKZW-RGB01-V1.0<br /><h1>Overview</h1><p>A smart bulb with over 16 million colors</p> <br /><h2>Inclusion Information</h2><p>Toggle the wall switch off and on 3 times quickly (within 3 seconds) ending with On</p> <br /><h2>Exclusion Information</h2><p>Toggle the wall switch off and on 3 times quickly (within 3 seconds) ending with On</p>
+    ]]></description>
     <category>LightBulb</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -16,7 +18,7 @@
         <label>Dimmer</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -29,15 +31,15 @@
         <label>Color Control</label>
         <properties>
           <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR;colorMode=RGB</property>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC;</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL;</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="color_temperature" typeId="color_temperature">
         <label>Color Temperature</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_COLOR;colorMode=DIFF_WHITE</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL;</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_COLORcolorMode=DIFF_WHITE</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
     </channels>
@@ -72,9 +74,9 @@
         <description>Define how the RGB BULB will react after the power supply is back on.</description>
         <default>0</default>
         <options>
-          <option value="0">RGB BULB memorizes its state after a power failure</option>
-          <option value="1">Device will be on after power supply is reconnected</option>
-          <option value="2">Device will be off after power supply is reconnected</option>
+          <option value="0">Memorizes its state</option>
+          <option value="1">On</option>
+          <option value="2">Off</option>
         </options>
       </parameter>
 
@@ -120,13 +122,15 @@ RGB BULB can blink or cyclic/random change color automatically at set intervals.
         <advanced>true</advanced>
       </parameter>
 
-      <parameter name="config_255_4" type="integer" groupName="configuration">
+      <parameter name="config_255_4" type="integer" groupName="configuration"
+                 min="1" max="1431655765">
         <label>255: Resetting to factory default</label>
         <description>RGB BULB will exclude from the Z-Wave network with this particular command</description>
         <default>1</default>
         <options>
           <option value="1431655765">Resetting to the factory default</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

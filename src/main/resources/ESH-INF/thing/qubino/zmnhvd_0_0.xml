@@ -7,7 +7,9 @@
 
   <thing-type id="qubino_zmnhvd_00_000" listed="false">
     <label>ZMNHVD Flush Dimmer 0-10V</label>
-    <description>Flush Dimmer 0-10V</description>
+    <description><![CDATA[
+Flush Dimmer 0-10V<br /><h1>Overview</h1><p>Universal dimmer module with a standard 0-10V output and a multi-function input, which may be a push button / switch, a potentiometer or 0-10V signal </p> <br /><h2>Inclusion Information</h2><ul><li>press service button S for more than 2 second or</li> <li>press push button I1 three times within 3s (3 times change switch state within 3 seconds)</li> </ul><br /><h2>Exclusion Information</h2><ul><li>press service button S for more than 6 second or</li> <li>press push button I1 five times within 3s ( 5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply</li> </ul>
+    ]]></description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -66,7 +68,9 @@
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Input 1 Switch Type</label>
-        <description>By this parameter the user can set input based on device type (switch, potentiometer, 0-10V sensor,...)</description>
+        <description><![CDATA[
+Input 1 Switch Type<br /><h1>Overview</h1><p>By this parameter the user can set input based on device type (switch, potentiometer, 0-10V sensor,...)</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">mono-stable switch type (push button)</option>
@@ -96,10 +100,13 @@
         <default>0</default>
       </parameter>
 
-      <parameter name="config_30_1" type="integer" groupName="configuration"
-                 min="0" max="1">
-        <label>30: Saving the state of the device after a power failure</label>
+      <parameter name="config_30_1" type="integer" groupName="configuration">
+        <label>30: Saving the state after a power failure</label>
         <default>0</default>
+        <options>
+          <option value="0">Module saves it state</option>
+          <option value="1">Module turns OFF</option>
+        </options>
       </parameter>
 
       <parameter name="config_52_1" type="integer" groupName="configuration"

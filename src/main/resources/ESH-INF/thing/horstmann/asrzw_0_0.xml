@@ -8,6 +8,7 @@
   <thing-type id="horstmann_asrzw_00_000" listed="false">
     <label>ASR-ZW Thermostat Receiver</label>
     <description>Thermostat Receiver</description>
+    <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

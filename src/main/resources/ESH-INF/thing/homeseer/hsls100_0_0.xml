@@ -147,8 +147,8 @@ Set the low temperature alarm trigger value<br /><h1>Overview</h1><p>The smaller
       </parameter>
 
       <parameter name="config_24_1" type="integer" groupName="configuration">
-        <label>24: Enable/Disable blinking LED when alarm being triggered</label>
-        <description>Enable/Disable blinking LED when alarm being triggered</description>
+        <label>24: Enable/Disable blinking alarm LED</label>
+        <description>Enable/Disable blinking alarm LED</description>
         <default>1</default>
         <options>
           <option value="0">Disable</option>
