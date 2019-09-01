@@ -43,6 +43,7 @@ Roller Shutter Module<br /><h1>Overview</h1><p>The ARZ Z-Wave roller shutters ar
       <property name="manufacturerRef">0003:0111</property>
       <property name="versionMin">1.1</property>
       <property name="dbReference">1031</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

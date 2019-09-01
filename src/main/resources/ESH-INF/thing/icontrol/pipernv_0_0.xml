@@ -5,20 +5,19 @@
   xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
-  <thing-type id="danfoss_hrvccm_00_000" listed="false">
-    <label>HRVCCM Air CCM</label>
+  <thing-type id="icontrol_pipernv_00_000" listed="false">
+    <label>Piper NV Piper NV Security camera / sensor</label>
     <description><![CDATA[
-Air CCM<br /><h1>Overview</h1><p>Manages the HRV unit based on algorithms and input from the HRV AirDial and the optional HRV PC Tool</p> <p><strong>For use only with Danfoss Air Dial controllers.</strong></p> <br /><h2>Inclusion Information</h2><p><strong>For use only with Danfoss Air Dial controllers.</strong></p> <br /><h2>Exclusion Information</h2><p><strong>For use only with Danfoss Air Dial controllers.</strong></p>
+Piper NV Security camera / sensor<br /><h1>Overview</h1><p>Piper is a smart home security system with no required monthly fees that you control from your mobile device. It combines advanced video monitoring technology with valuable sensor information to immediately alert you of what’s going on while you’re away.</p>
     ]]></description>
-    <category>HVAC</category>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Danfoss</property>
-      <property name="modelId">HRVCCM</property>
-      <property name="manufacturerId">0002</property>
-      <property name="manufacturerRef">8007:0200,8007:0202</property>
-      <property name="dbReference">166</property>
+      <property name="vendor">Icontrol Networks</property>
+      <property name="modelId">Piper NV</property>
+      <property name="manufacturerId">0106</property>
+      <property name="manufacturerRef">0003:0002</property>
+      <property name="dbReference">538</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

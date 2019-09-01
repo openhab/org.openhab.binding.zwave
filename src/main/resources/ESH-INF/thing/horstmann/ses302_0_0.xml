@@ -7,7 +7,9 @@
 
   <thing-type id="horstmann_ses302_00_000" listed="false">
     <label>SES 302 Temperature sensor</label>
-    <description>Temperature sensor</description>
+    <description><![CDATA[
+Temperature sensor<br /><h1>Overview</h1><p> The SES 302 measures temperature whilst the SES 303 measures temperature and humidity. The sensors are battery-operated devices which transmit information to an associated device in a network.</p> <br /><h2>Inclusion Information</h2><p>Press and hold SES 302/ SES 303 button for more than 1 second and then release.</p> <br /><h2>Exclusion Information</h2><p>Not Provided</p> <br /><h2>Wakeup Information</h2><p>Sending Node Information</p> <p>Press and hold SES 302/303 button for more than 1 second and then release.</p>
+    ]]></description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -56,6 +58,7 @@
       <property name="manufacturerId">0059</property>
       <property name="manufacturerRef">000D:0002</property>
       <property name="dbReference">505</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -65,6 +68,11 @@
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
@@ -84,6 +92,15 @@ Precision of measured temperature (delta)<br /><h1>Overview</h1><p>Configuration
 Reporting interval in minutes<br /><h1>Overview</h1><p>IMPORTANT: Controllers may only allow configuring signed values. In order to set values in the range 128...255, the value sent in the application shall be equal to desired value minus 256. For example, to set Delta Temperature to 130, it may be needed to set a value 130−256=−126.<br /><br /></p> <p>Zero configuration means that the corresponding functionality is disabled.</p>
         ]]></description>
         <default>5</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Z-Wave Plus Lifeline, in which multilevel sensor report, Battery low alarm are reported. Each endpoint supports 1 association group.</p>
+        ]]></description>
+        <multipleLimit>2</multipleLimit>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->
