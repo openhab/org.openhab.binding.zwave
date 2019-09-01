@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
+                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+
+  <thing-type id="ingersollecolink_tiltzwave1_00_000" listed="false">
+    <label>TILTZWAVE1 Z-Wave Garage Door Sensor</label>
+    <description><![CDATA[
+Z-Wave Garage Door Sensor<br /><h1>Overview</h1><ul><li>Z-Wave PlusTM enabled device which transmits when a garage door is opened or closed</li> <li>Uses a tilt sensor to detect the angle of a door and transmits open/closed status</li> <li>Reports tamper condition if cover is removed</li> </ul><br /><h2>Inclusion Information</h2><ul><li>Activate inclusion mode for the sensor by inserting the battery.</li> <li>When the inclusion process is complete the red LED will turn on for approximately 10 seconds and then it will go out.</li> <li>If the LED continues to flash, repeat the inclusion process.</li> </ul><br /><h2>Exclusion Information</h2><ul><li>Activate exclusion mode for the sensor by inserting the battery.</li> <li>When the exclusion process is complete the red LED will flash continuously.</li> </ul>
+    ]]></description>
+    <category>GarageDoor</category>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Ingersoll Rand (was Ecolink)</property>
+      <property name="modelId">TILTZWAVE1</property>
+      <property name="manufacturerId">011F</property>
+      <property name="manufacturerRef">0001:0003</property>
+      <property name="dbReference">136</property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- GROUP DEFINITIONS -->
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Group 2</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>
