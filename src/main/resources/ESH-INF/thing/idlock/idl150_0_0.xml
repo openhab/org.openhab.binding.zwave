@@ -57,6 +57,7 @@ Z wave module for ID Lock 150 and 101<br /><h1>Overview</h1><p>The ID Lock Z-wav
       <property name="modelId">ID-150</property>
       <property name="manufacturerId">0373</property>
       <property name="manufacturerRef">0003:0001</property>
+      <property name="versionMax">1.5</property>
       <property name="dbReference">887</property>
       <property name="defaultAssociations">1</property>
     </properties>

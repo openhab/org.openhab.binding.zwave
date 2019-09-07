@@ -42,10 +42,57 @@ Duplex receptacle<br /><h1>Overview</h1><p>The Aspire RF 15A split receptacle re
     <config-description>
 
       <!-- GROUP DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
       </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter name="config_2_1" type="integer" groupName="configuration"
+                 min="-128" max="127">
+        <label>2: Panic ON time</label>
+        <description><![CDATA[
+Panic ON time<br /><h1>Overview</h1><p>The amount of time in seconds the switch will turn on for when panic mode is triggered. </p> <table><tr><td><strong>Value</strong></td> <td><strong>Time</strong></td> </tr><tr><td>0 to 127</td> <td>0 to 127 seconds</td> </tr><tr><td>-128 to -1</td> <td>128 to 255 seconds</td> </tr></table>
+        ]]></description>
+        <default>0</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration"
+                 min="-128" max="127">
+        <label>3: Panic OFF time</label>
+        <description><![CDATA[
+Panic OFF time<br /><h1>Overview</h1><p>The amount of time in seconds the switch will turn off when panic mode is triggered. </p> <table><tr><td><strong>Value</strong></td> <td><strong>Time</strong></td> </tr><tr><td>0 to 127</td> <td>0 to 127 seconds</td> </tr><tr><td>-128 to -1</td> <td>128 to 255 seconds</td> </tr></table>
+        ]]></description>
+        <default>0</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_5_1" type="integer" groupName="configuration">
+        <label>5: Power Up State</label>
+        <description>Power up state of the device after power loss</description>
+        <default>3</default>
+        <options>
+          <option value="1">Off</option>
+          <option value="2">On</option>
+          <option value="3">Last state</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_6_1" type="integer" groupName="configuration">
+        <label>6: Panic mode enable</label>
+        <description>Enables this device to participate in panic mode</description>
+        <default>0</default>
+        <options>
+          <option value="0">Off</option>
+          <option value="1">On</option>
+        </options>
+      </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">

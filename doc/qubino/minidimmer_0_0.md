@@ -420,7 +420,7 @@ Values:
 • 1 - 127 (from 1 to 127 seconds)
 
 **NOTE: Parameter is valid only in Dimmer mode. In Switch mode the parameter has no effect.**
-Values in the range 1 to 127 may be set.
+Values in the range 0 to 127 may be set.
 
 The manufacturer defined default value is ```0```.
 

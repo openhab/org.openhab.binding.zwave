@@ -7,7 +7,10 @@
 
   <thing-type id="intermatic_ha04_00_000" listed="false">
     <label>HA04 Outdoor Module</label>
-    <description>Outdoor Module</description>
+    <description><![CDATA[
+Outdoor Module<br /><h1>Overview</h1><p>Plug-in outdoor lighting module; switch; 15A</p>
+    ]]></description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

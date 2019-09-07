@@ -7,7 +7,9 @@
 
   <thing-type id="philio_pan11_00_000" listed="false">
     <label>PAN11 Smart Energy Plug In Switch</label>
-    <description>Smart Energy Plug In Switch</description>
+    <description><![CDATA[
+Smart Energy Plug In Switch<br /><h1>Overview</h1><p>This smart energy plug-in switch is able to detect voltage, current, power factor, Instant power wattage (5~3150W) and overload wattage (3010~3300W) of connected light or appliances. When detecting overload state, the Module will be disabled and its On/Off button will be lockout of which LED will flash quickly for 30 seconds. However, unplug and re-connect the Module will reset its overload condition to normal status.</p> <p>This plug-in switch can active sent out instant power wattage when variation over 5% or active sent out state change when manually push the ON/OFF button , this allows the controller to avoid polling the reading wattage value and state of the switch and can increase the efficiency of controlle</p> <br /><h2>Inclusion Information</h2><p>Tripple Click the button on the device confirms inclusion and exclusion.</p> <br /><h2>Exclusion Information</h2><p>Tripple Click the button on the device confirms inclusion and exclusion.</p>
+    ]]></description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
