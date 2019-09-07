@@ -213,7 +213,7 @@ Ignore start level<br /><h1>Overview</h1><p>Choose whether the device should use
       </parameter>
 
       <parameter name="config_68_1" type="integer" groupName="configuration"
-                 min="1" max="127">
+                 min="0" max="127">
         <label>68: Dimming duration</label>
         <description><![CDATA[
 Dimming duration<br /><h1>Overview</h1><p>Choose the time during which the device will transition from the current value to the new target value. This parameter applies to the association group 3.</p> <p><br />Values:<br />• default value 0 (dimming duration according to parameter 66)<br />• 1 - 127 (from 1 to 127 seconds)</p> <p><strong>NOTE: Parameter is valid only in Dimmer mode. In Switch mode the parameter has no effect.</strong></p>

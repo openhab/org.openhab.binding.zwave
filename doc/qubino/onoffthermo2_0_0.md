@@ -1,19 +1,19 @@
 ---
 layout: documentation
-title: Flush OnOff Thermostat 2 - ZWave
+title: ZMNKID - ZWave
 ---
 
 {% include base.html %}
 
-# Flush OnOff Thermostat 2 ZMNKID
-This describes the Z-Wave device *Flush OnOff Thermostat 2*, manufactured by *[Goap](http://www.qubino.com/)* with the thing type UID of ```qubino_onoffthermo2_00_000```.
+# ZMNKID Flush OnOff Thermostat 2
+This describes the Z-Wave device *ZMNKID*, manufactured by *[Goap](http://www.qubino.com/)* with the thing type UID of ```qubino_onoffthermo2_00_000```.
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-![Flush OnOff Thermostat 2 product image](https://www.cd-jackson.com/zwave_device_uploads/1101/1101_default.png)
+![ZMNKID product image](https://www.cd-jackson.com/zwave_device_uploads/1101/1101_default.png)
 
 
-The Flush OnOff Thermostat 2 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
+The ZMNKID supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
@@ -74,7 +74,7 @@ If the device is powered by 24 V SELV supply, press and hold the S (Service) but
 
 ## Channels
 
-The following table summarises the channels available for the Flush OnOff Thermostat 2 -:
+The following table summarises the channels available for the ZMNKID -:
 
 | Channel Name | Channel ID | Channel Type | Category | Item Type |
 |--------------|------------|--------------|----------|-----------|
@@ -161,7 +161,7 @@ The following state translation is provided for this channel to the ```Switch```
 
 ## Device Configuration
 
-The following table provides a summary of the 14 configuration parameters available in the Flush OnOff Thermostat 2.
+The following table provides a summary of the 14 configuration parameters available in the ZMNKID.
 Detailed information on each parameter can be found in the sections below.
 
 | Param | Name  | Description |
@@ -496,7 +496,7 @@ This parameter has the configuration ID ```config_120_2``` and is of type ```INT
 
 Association groups allow the device to send unsolicited reports to the controller, or other devices in the network. Using association groups can allow you to eliminate polling, providing instant feedback of a device state change without unnecessary network traffic.
 
-The Flush OnOff Thermostat 2 supports 4 association groups.
+The ZMNKID supports 4 association groups.
 
 ### Group 1: Lifeline
 

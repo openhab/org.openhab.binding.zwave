@@ -7,7 +7,10 @@
 
   <thing-type id="ge_45606_00_000" listed="false">
     <label>45606 2-Way Dimmer Switch</label>
-    <description>2-Way Dimmer Switch</description>
+    <description><![CDATA[
+2-Way Dimmer Switch<br /><h1>Overview</h1><p>Wireless Lighting Control, On/Off/Dim Dimmer Switch</p> <br /><h2>Inclusion Information</h2><p>Tap the top or bottom of the rocker</p> <br /><h2>Exclusion Information</h2><p>Tap the top or bottom of the rocker</p>
+    ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -15,7 +18,7 @@
         <label>Dimmer</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
     </channels>

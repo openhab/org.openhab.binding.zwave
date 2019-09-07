@@ -7,7 +7,10 @@
 
   <thing-type id="innovus_smartpower_00_000" listed="false">
     <label>SmartPower RAone SmartPower</label>
-    <description>RAone SmartPower</description>
+    <description><![CDATA[
+RAone SmartPower<br /><h1>Overview</h1><p>For the further reduction of energy consumption INNOVUS offers "RAone SmartPower". This module is an on / off module, which is used in particular to reduce the energy consumption of devices that unnecessarily consume power in "stand-by mode". This module also has a fingertip panel and is also equipped with an internal power meter. </p> <br /><h2>Inclusion Information</h2><p>The device is put into learn mode by touching the touchplate.</p> <br /><h2>Exclusion Information</h2><p>The device is put into learn mode by touching the touchplate.</p>
+    ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -36,7 +39,7 @@
       <property name="vendor">INNOVUS</property>
       <property name="modelId">SmartPower</property>
       <property name="manufacturerId">0077</property>
-      <property name="manufacturerRef">0010:0001,0001:0002</property>
+      <property name="manufacturerRef">0001:0002,0010:0001</property>
       <property name="dbReference">61</property>
       <property name="defaultAssociations">1</property>
     </properties>
