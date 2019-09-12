@@ -7,7 +7,10 @@
 
   <thing-type id="popp_005206_00_000" listed="false">
     <label>005206 Z-Weather</label>
-    <description>Z-Weather</description>
+    <description><![CDATA[
+Z-Weather<br /><h1>Overview</h1><p>Z-Weather is a cup anemometer for Z-Wave installations. It continually measures the wind speed and can, for example, trigger closing of the awning and blinds if it is too windy. It also measures the amount of rotation, enabling calculation of the wind yield per day or per year. In addition, Z-Weather includes sensors for humidity, temperature, pressure and dew point, essentially providing the core sensors of a weather station. </p> <br /><h2>Inclusion Information</h2><p>Push the button 3 times within 1.5 seconds</p> <br /><h2>Exclusion Information</h2><p>Push the button 3 times within 1.5 seconds</p> <br /><h2>Wakeup Information</h2><p>Push the button once within 1.5 seconds</p>
+    ]]></description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -112,8 +115,9 @@
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
-        <label>1: Life Line</label>
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">

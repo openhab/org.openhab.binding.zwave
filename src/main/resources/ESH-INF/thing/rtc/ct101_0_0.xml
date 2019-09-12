@@ -7,7 +7,9 @@
 
   <thing-type id="rtc_ct101_00_000" listed="false">
     <label>CT101 Z-Wave Thermostat</label>
-    <description>Z-Wave Thermostat</description>
+    <description><![CDATA[
+Z-Wave Thermostat<br /><h1>Overview</h1><p>Z-wave enabled thermostat</p> <br /><h2>Inclusion Information</h2><p>Click "Manage" button alongside this device, click "Add Device" device</p> <br /><h2>Exclusion Information</h2><p>Click "Manage" button alongside this device, click "Remove" device </p>
+    ]]></description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
