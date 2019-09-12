@@ -84,7 +84,9 @@ Z-Wave Thermostat<br /><h1>Overview</h1><p>This thermostat was made by Radio The
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Temperature Reporting Threshold</label>
-        <description>Sets the reporting threshold for changes in the ambient temperature as detected by the thermostat.</description>
+        <description><![CDATA[
+Temperature Reporting Threshold<br /><h1>Overview</h1><p>Sets the reporting threshold for changes in the ambient temperature as detected by the thermostat.</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Disabled</option>
@@ -97,7 +99,9 @@ Z-Wave Thermostat<br /><h1>Overview</h1><p>This thermostat was made by Radio The
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Utility Lock Enable/Disable</label>
-        <description>The Utility Lock Configuration Set command enables or disables the utility lock. If the utility lock is enabled, the setpoint cannot be modified directly via the thermostat screen.</description>
+        <description><![CDATA[
+Utility Lock Enable/Disable<br /><h1>Overview</h1><p>The Utility Lock Configuration Set command enables or disables the utility lock. If the utility lock is enabled, the setpoint cannot be modified directly via the thermostat screen.</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Utility lock disable</option>
@@ -107,7 +111,9 @@ Z-Wave Thermostat<br /><h1>Overview</h1><p>This thermostat was made by Radio The
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Humidity Reporting Threshold</label>
-        <description>The Humidity Threshold Configuration Set Command sets the reporting threshold for changes in the relative humidity as detected by the thermostat.</description>
+        <description><![CDATA[
+Humidity Reporting Threshold<br /><h1>Overview</h1><p>The Humidity Threshold Configuration Set Command sets the reporting threshold for changes in the relative humidity as detected by the thermostat.</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Disabled</option>
@@ -119,7 +125,9 @@ Z-Wave Thermostat<br /><h1>Overview</h1><p>This thermostat was made by Radio The
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
         <label>6: Auxiliary/Emergency</label>
-        <description>The Auxiliary/Emergency configuration command enables or disables auxiliary / emergency heating in the thermostat. Auxiliary / emergency heating is only available if the thermostat is configured in heat pump mode and with at least one stage of auxiliary h</description>
+        <description><![CDATA[
+Auxiliary/Emergency<br /><h1>Overview</h1><p>The Auxiliary/Emergency configuration command enables or disables auxiliary / emergency heating in the thermostat. Auxiliary / emergency heating is only available if the thermostat is configured in heat pump mode and with at least one stage of auxiliary heat.</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Auxiliary/Emergency heat disabled</option>
@@ -129,7 +137,9 @@ Z-Wave Thermostat<br /><h1>Overview</h1><p>This thermostat was made by Radio The
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
         <label>7: Thermostat Swing Temperature</label>
-        <description>The Thermostat Swing Temperature configuration command sets swing temperature on the thermostat. The swing temperature is applied to the setpoint to determine when the thermostat will turn on the HVAC system. If the thermostat is heating, the swing temper</description>
+        <description><![CDATA[
+Thermostat Swing Temperature<br /><h1>Overview</h1><p>The Thermostat Swing Temperature configuration command sets swing temperature on the thermostat. The swing temperature is applied to the setpoint to determine when the thermostat will turn on the HVAC system. If the thermostat is heating, the swing temper</p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="1">0.05F</option>
@@ -140,7 +150,9 @@ Z-Wave Thermostat<br /><h1>Overview</h1><p>This thermostat was made by Radio The
 
       <parameter name="config_8_1" type="integer" groupName="configuration">
         <label>8: Thermostat Diff Temperature</label>
-        <description>The Thermostat Differential Temperature configuration command sets the differential temperature for multi-stage HVAC systems. The differential temperature delta defines when the thermostat will turn on additional stages. There are two differential tempera</description>
+        <description><![CDATA[
+Thermostat Diff Temperature<br /><h1>Overview</h1><p>The Thermostat Differential Temperature configuration command sets the differential temperature for multi-stage HVAC systems. The differential temperature delta defines when the thermostat will turn on additional stages. There are two differential tempera</p>
+        ]]></description>
         <default>4</default>
         <options>
           <option value="4">2.0 F</option>
