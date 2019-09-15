@@ -57,6 +57,7 @@ The following table summarises the channels available for the ID-150 -:
 | Channel Name | Channel ID | Channel Type | Category | Item Type |
 |--------------|------------|--------------|----------|-----------|
 | Door Lock | lock_door | lock_door | Door | Switch | 
+| Door State | sensor_door | sensor_door | Door | Contact | 
 | Alarm (access) | alarm_access | alarm_access | Door | Switch | 
 | Battery Level | battery-level | system.battery_level | Battery | Number |
 
@@ -70,6 +71,18 @@ The following state translation is provided for this channel to the ```Switch```
 |-------|-----------|
 | ON | Locked |
 | OFF | Unlocked |
+
+### Door State
+Indicates if the door/window is open or closed.
+
+The ```sensor_door``` channel is of type ```sensor_door``` and supports the ```Contact``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
+
+The following state translation is provided for this channel to the ```Contact``` item type -:
+
+| Value | Label     |
+|-------|-----------|
+| OPEN | Open |
+| CLOSED | Closed |
 
 ### Alarm (access)
 Indicates if the access control alarm is triggered.
