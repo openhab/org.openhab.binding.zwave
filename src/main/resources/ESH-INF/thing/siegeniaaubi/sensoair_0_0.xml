@@ -7,7 +7,10 @@
 
   <thing-type id="siegeniaaubi_sensoair_00_000" listed="false">
     <label>Sensoair Air quality sensor for indoor use</label>
-    <description>Air quality sensor for indoor use</description>
+    <description><![CDATA[
+Air quality sensor for indoor use<br /><h1>Overview</h1><p>This device measures levels og carbon dioxide &amp; VOCs.</p> <br /><h2>Inclusion Information</h2><p>Press the push-button on the bottom of the unit once.</p> <br /><h2>Exclusion Information</h2><p>Press the push-button on the bottom of the unit once.</p>
+    ]]></description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
