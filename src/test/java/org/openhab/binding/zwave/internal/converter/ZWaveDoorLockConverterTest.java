@@ -82,5 +82,17 @@ public class ZWaveDoorLockConverterTest extends ZWaveCommandClassConverterTest {
         state = converter.handleEvent(channel, event);
         assertEquals(OpenClosedType.class, state.getClass());
         assertEquals(state, OpenClosedType.CLOSED);
+
+        event = new ZWaveCommandClassValueEvent(1, 0, CommandClass.COMMAND_CLASS_DOOR_LOCK, 2,
+                ZWaveDoorLockCommandClass.Type.DOOR_CONDITION);
+        state = converter.handleEvent(channel, event);
+        assertEquals(OpenClosedType.class, state.getClass());
+        assertEquals(state, OpenClosedType.OPEN);
+
+        event = new ZWaveCommandClassValueEvent(1, 0, CommandClass.COMMAND_CLASS_DOOR_LOCK, 3,
+                ZWaveDoorLockCommandClass.Type.DOOR_CONDITION);
+        state = converter.handleEvent(channel, event);
+        assertEquals(OpenClosedType.class, state.getClass());
+        assertEquals(state, OpenClosedType.CLOSED);
     }
 }
