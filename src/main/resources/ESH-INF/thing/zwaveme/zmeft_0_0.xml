@@ -8,6 +8,7 @@
   <thing-type id="zwaveme_zmeft_00_000" listed="false">
     <label>ZME_FT Floor Thermostat</label>
     <description>Floor Thermostat</description>
+    <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -42,7 +42,7 @@
       <property name="vendor">Devolo</property>
       <property name="modelId">09813</property>
       <property name="manufacturerId">0175</property>
-      <property name="manufacturerRef">2004:04A4</property>
+      <property name="manufacturerRef">2004:04A4,0502:1000</property>
       <property name="dbReference">615</property>
     </properties>
 

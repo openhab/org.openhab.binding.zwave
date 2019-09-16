@@ -108,7 +108,7 @@ DIN Mount Multiple Actuator Controller for Floor Heating<br /><h1>Overview</h1><
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Logic Home Control</property>
+      <property name="vendor">Logic Group</property>
       <property name="modelId">LHC5031</property>
       <property name="manufacturerId">0234</property>
       <property name="manufacturerRef">0003:0111</property>

@@ -7,7 +7,10 @@
 
   <thing-type id="telldus_tzdw100_00_000" listed="false">
     <label>TZDW-100 Door/window sensor</label>
-    <description>Door/window sensor</description>
+    <description><![CDATA[
+Door/window sensor<br /><h1>Overview</h1><p>This magnet sensor contains the latest Z-Wave technology with the ability to remotely control other Z-Wave units available in your network. The fact that it is battery operated and so small you can virtually place it anywhere you want – on doors, windows or drawers, without the need of wiring. Screw or tape up the holder and then click the sensor in place. Done! The sensor is designed to be seen as little as possible and we have made it significantly smaller than other sensors. It consists of two parts that will merge into a stylish unit when the sensor is closed</p> <br /><h2>Inclusion Information</h2><p>Press the button on the device three times fast.</p> <br /><h2>Exclusion Information</h2><p>Press the button on the device three times fast.</p> <br /><h2>Wakeup Information</h2><p>Press the button on the sensor one time short to wake up the device. </p>
+    ]]></description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -56,7 +59,7 @@
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: </label>
+        <label>1: Group 2 Command Type</label>
         <description>Select what type of command to be sent to nodes in association group 2</description>
         <default>0</default>
         <options>
@@ -69,7 +72,7 @@
 
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="0" max="63">
-        <label>2: </label>
+        <label>2: Group 2 Value</label>
         <description>Select what value that should be sent to association group 2</description>
         <default>255</default>
         <options>
@@ -79,7 +82,7 @@
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
-        <label>3: </label>
+        <label>3: Group 2 Signal Type</label>
         <description>Type of commands to association group 2</description>
         <default>0</default>
         <options>
@@ -89,7 +92,7 @@
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
-        <label>4: </label>
+        <label>4: Group 3 Command Type</label>
         <description>Select what type of command to be sent to nodes in association group 3</description>
         <default>0</default>
         <options>
@@ -102,7 +105,7 @@
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
                  min="0" max="63">
-        <label>5: </label>
+        <label>5: Group 3 Value</label>
         <description>Select what value that should be sent to association group 3</description>
         <default>255</default>
         <options>
@@ -112,7 +115,7 @@
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
-        <label>6: </label>
+        <label>6: Group 2 Signal Type</label>
         <description>Type of commands to association group 3</description>
         <default>0</default>
         <options>
@@ -122,7 +125,7 @@
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
-        <label>7: </label>
+        <label>7: LED-Indicator</label>
         <description>LED-Indicator</description>
         <default>1</default>
         <options>
@@ -132,7 +135,7 @@
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration">
-        <label>8: </label>
+        <label>8: Lifeline command Type</label>
         <description>Select the type of command to be sent in the Lifeline</description>
         <default>0</default>
         <options>
