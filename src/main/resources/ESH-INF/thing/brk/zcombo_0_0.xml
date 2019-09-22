@@ -50,7 +50,7 @@ Smoke and Carbon Monoxide Alarm<br /><h1>Overview</h1><p>Z-wave compatible smoke
       <property name="vendor">BRK Brands, Inc.</property>
       <property name="modelId">ZCOMBO</property>
       <property name="manufacturerId">0138</property>
-      <property name="manufacturerRef">0001:0002</property>
+      <property name="manufacturerRef">0001:0002,000C:0001</property>
       <property name="dbReference">238</property>
       <property name="defaultAssociations">1</property>
     </properties>

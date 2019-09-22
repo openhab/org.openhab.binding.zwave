@@ -115,7 +115,7 @@ DIN-rail module with 10 digital ouputs and 4 digital inputs<br /><h1>Overview</h
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Logic Home Control</property>
+      <property name="vendor">Logic Group</property>
       <property name="modelId">LHC5020</property>
       <property name="manufacturerId">0234</property>
       <property name="manufacturerRef">0003:010D</property>

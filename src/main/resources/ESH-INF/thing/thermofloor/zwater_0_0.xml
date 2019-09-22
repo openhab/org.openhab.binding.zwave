@@ -292,113 +292,105 @@ Time interval between consecutive temperature reports.<br /><h1>Overview</h1><p>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Control device 0</label>
+        <label>1: Lifeline</label>
         <description><![CDATA[
-Main control device<br /><h1>Overview</h1><p>Lifeline.</p> <p>Sends Device Reset notifications and Basic Report On / Off when relay output 1 is activated.</p> <p>Max. nodes in the group: 5</p>
+<br /><h1>Overview</h1><p>Sends Device Reset notifications, Central Scene notifications and Basic Report On / Off to the controller</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Control device 0</label>
+        <label>2: Input 1</label>
         <description><![CDATA[
-Main control device<br /><h1>Overview</h1><p>Lifeline.</p> <p>Sends Basic Report On / Off when relay output 2 is activated.</p> <p>Max. nodes in the group: 5</p>
+Basic Set On / Off<br /><h1>Overview</h1><p>Sends Basic Set On / Off when input 1 is activated.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Control device 0</label>
+        <label>3: Input 1</label>
         <description><![CDATA[
-Main control device<br /><h1>Overview</h1><p>Lifeline.</p> <p>Sends Basic Report On / Off when relay output 3 is activated.</p> <p>Max. nodes in the group: 5</p>
+Switch Binary Set On / Off<br /><h1>Overview</h1><p>Sends Switch Binary Set On / Off when input 1 is activated.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Control device 0</label>
+        <label>4: Input 1</label>
         <description><![CDATA[
-Main control device<br /><h1>Overview</h1><p>Lifeline.</p> <p>Sends Basic Report On / Off when relay output 4 is activated.</p> <p>Max. nodes in the group: 5</p>
+Multilevel Switch Set<br /><h1>Overview</h1><p>Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 1 is activated. Is typically used for controlling light dimmers, curtain controllers, etc</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Control device 0</label>
+        <label>5: Input 2</label>
         <description><![CDATA[
-Main control device<br /><h1>Overview</h1><p>Lifeline.</p> <p>Sends Basic Report On / Off when relay output 5 is activated.</p> <p>Max. nodes in the group: 5</p>
+Basic Set On / Off<br /><h1>Overview</h1><p>Sends Basic Set On / Off when input 2 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_6" type="text" groupName="association" multiple="true">
-        <label>6: Control device 0</label>
+        <label>6: Input 2</label>
         <description><![CDATA[
-Main control device<br /><h1>Overview</h1><p>Lifeline.</p> <p>Sends Basic Report On / Off when relay output 6 is activated.</p> <p>Max. nodes in the group: 5</p>
+Switch Binary Set On / Off<br /><h1>Overview</h1><p>Sends Switch Binary Set On / Off when input 2 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules. </p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_7" type="text" groupName="association" multiple="true">
-        <label>7: Control device 0</label>
+        <label>7: Input 2</label>
         <description><![CDATA[
-Main control device<br /><h1>Overview</h1><p>Lifeline.</p> <p>Sends Basic Report On / Off when relay output 7 is activated.</p> <p>Max. nodes in the group: 5</p>
+Multilevel Switch Set<br /><h1>Overview</h1><p>Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 2 is activated. Is typically used for controlling light dimmers, curtain controllers, etc.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_8" type="text" groupName="association" multiple="true">
-        <label>8: Control device 0</label>
+        <label>8: Input 3</label>
         <description><![CDATA[
-Main control device<br /><h1>Overview</h1><p>Lifeline.</p> <p>Sends Basic Report On / Off when relay output 8 is activated.</p> <p>Max. nodes in the group: 5</p>
+Basic Set On / Off<br /><h1>Overview</h1><p>Sends Basic Set On / Off when input 3 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules. </p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_9" type="text" groupName="association" multiple="true">
-        <label>9: Control device 0</label>
+        <label>9: Input 3</label>
         <description><![CDATA[
-Main control device<br /><h1>Overview</h1><p>Lifeline.</p> <p>Sends Basic Report On / Off when relay output 9 is activated.</p> <p>Max. nodes in the group: 5</p>
+Switch Binary Set On / Off<br /><h1>Overview</h1><p>Sends Switch Binary Set On / Off when input 3 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules. </p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_10" type="text" groupName="association" multiple="true">
-        <label>10: Control device 0</label>
+        <label>10: Input 3</label>
         <description><![CDATA[
-Main control device<br /><h1>Overview</h1><p>Lifeline.</p> <p>Sends Basic Report On / Off when relay output 10 is activated.</p> <p>Max. nodes in the group: 5</p>
+Multilevel Switch Set<br /><h1>Overview</h1><p>Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 3 is activated. Is typically used for controlling light dimmers, curtain controllers, etc. </p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_11" type="text" groupName="association" multiple="true">
-        <label>11: Control device 0</label>
+        <label>11: Input 4</label>
         <description><![CDATA[
-Main control device<br /><h1>Overview</h1><p>Sends Multilevel Sensor Reports for input 1. Max. nodes in the group: 5</p>
+Basic Set On / Off<br /><h1>Overview</h1><p>Sends Basic Set On / Off when input 4 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules. </p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_12" type="text" groupName="association" multiple="true">
-        <label>12: Control device 0</label>
+        <label>12: Input 4</label>
         <description><![CDATA[
-Main control device<br /><h1>Overview</h1><p>Sends Multilevel Sensor Reports for input 2. Max. nodes in the group: 5</p>
+Switch Binary Set On / Off<br /><h1>Overview</h1><p>Sends Switch Binary Set On / Off when input 4 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules. </p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_13" type="text" groupName="association" multiple="true">
-        <label>13: Control device 0</label>
+        <label>13: Input 4</label>
         <description><![CDATA[
-Main control device<br /><h1>Overview</h1><p>Sends Multilevel Sensor Reports for input 3. Max. nodes in the group: 5</p>
-        ]]></description>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_14" type="text" groupName="association" multiple="true">
-        <label>14: Control device 0</label>
-        <description><![CDATA[
-Main control device<br /><h1>Overview</h1><p>Sends Multilevel Sensor Reports for input 4. Max. nodes in the group: 5</p>
+Multilevel Switch Set<br /><h1>Overview</h1><p>Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 4 is activated. Is typically used for controlling light dimmers, curtain controllers, etc. </p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>

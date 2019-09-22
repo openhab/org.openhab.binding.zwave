@@ -59,6 +59,8 @@ Dual Nano Switch<br /><h1>Overview</h1><p>Aeotec Dual Nano Switch is a Z-Wave Sm
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:008C,0103:008C</property>
       <property name="dbReference">813</property>
+      <property name="commandClass:COMMAND_CLASS_SWITCH_BINARY:1">ccAdd</property>
+      <property name="commandClass:COMMAND_CLASS_SWITCH_BINARY:2">ccAdd</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

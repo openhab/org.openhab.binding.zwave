@@ -121,7 +121,7 @@ Z-Wave transmission LED settings.<br /><h1>Overview</h1><p>The ZRM230 will flick
         <default>2</default>
         <options>
           <option value="0">No flicker</option>
-          <option value="1">Flicker for 1 second</option>
+          <option value="1">Flicker for 1 second (default)</option>
           <option value="2">Flicker for 2 second</option>
         </options>
       </parameter>

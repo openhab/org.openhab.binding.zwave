@@ -21,7 +21,7 @@ Z wave module for ID Lock 150 and 101<br /><h1>Overview</h1><p>The ID Lock Z-wav
         </properties>
       </channel>
       <channel id="sensor_door" typeId="sensor_door">
-        <label>Door State [Deprecated]</label>
+        <label>Door State</label>
         <properties>
           <property name="binding:*:OpenClosedType">COMMAND_CLASS_DOOR_LOCK</property>
         </properties>

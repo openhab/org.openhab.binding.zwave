@@ -18,7 +18,7 @@ Z-Wave Dimmer Plug<br /><h1>Overview</h1><p>The mini Dimmer Plug is a Z-WaveTM e
         <label>Dimmer</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="alarm_general" typeId="alarm_general">
