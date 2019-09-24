@@ -1413,6 +1413,7 @@ public class ZWaveNode {
 
         // Create the timer if this is our first call
         if (timer == null) {
+            controller.kickQueue();
             logger.trace("NODE {}: Creating wakeup timer", getNodeId());
             timer = new Timer();
         }

@@ -95,7 +95,7 @@ public class ReplaceFailedNodeMessageClass extends ZWaveCommandProcessor {
                 break;
             case FAILED_NODE_NOT_FOUND:
                 // The replacing process aborted because the node was found, thereby not a failing node.
-                logger.error("NODE {}: Replace failed node failed as node if functioning!", nodeId);
+                logger.error("NODE {}: Replace failed node failed as node is functioning!", nodeId);
                 transaction.setTransactionCanceled();
                 report = Report.FAILED_NODE_NOT_FOUND;
                 break;
