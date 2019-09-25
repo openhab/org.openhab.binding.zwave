@@ -316,6 +316,13 @@ public class ZWaveTransactionManager {
         return transaction.getTransactionId();
     }
 
+    /**
+     * Restarts the queue if it is currently waiting
+     */
+    public void kickQueue() {
+        sendNextMessage();
+    }
+
     private void addTransactionToQueue(ZWaveTransaction transaction) {
         synchronized (sendQueue) {
             PriorityBlockingQueue<ZWaveTransaction> queue;
