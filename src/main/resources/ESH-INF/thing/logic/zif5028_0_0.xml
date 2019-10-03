@@ -408,14 +408,14 @@ Output 6 can be controlled via Z-Wave or Input 6.<br /><h1>Overview</h1><p>Choos
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
-        <label>1: RELAY OUTPUT</label>
+        <label>1: Lifeline</label>
         <description><![CDATA[
-Lifeline. Basic Report On/Off when relay output is activated.<br /><h1>Overview</h1><p>Lifeline. Lifeline group for the entire module.<br />Sends <strong>Basic Report On / Off</strong> when relay output 1 is activated.<br />This group is typically used for reporting the actual status of the output to the Controller to let the Controller visualize the output in its user interface.</p>
+RELAY OUTPUT. Basic Report On/Off when relay output is activated.<br /><h1>Overview</h1><p>Lifeline. Lifeline group for the entire module.<br />Sends <strong>Basic Report On / Off</strong> when relay output 1 is activated.<br />This group is typically used for reporting the actual status of the output to the Controller to let the Controller visualize the output in its user interface.</p>
         ]]></description>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: DIGITAL INPUT 1</label>
+        <label>2: Basic Set On / Off Input 1</label>
         <description><![CDATA[
 Sends Basic Set On / Off when input 1 is activated.<br /><h1>Overview</h1><p>Sends <strong>Basic Set On / Off</strong> when input 1 is activated.<br />For example, used to control relay modules or for visualization in the central controller unit (e.g., Fibaro Home Center)</p>
         ]]></description>
@@ -423,7 +423,7 @@ Sends Basic Set On / Off when input 1 is activated.<br /><h1>Overview</h1><p>Sen
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: DIGITAL INPUT 1</label>
+        <label>3: Binary Switch Set On / Off Input 1</label>
         <description><![CDATA[
 Sends Binary Switch Set On / Off when input 1 is activated.<br /><h1>Overview</h1><p>Sends <strong>Binary Switch Set On / Off</strong> when input 1 is activated.<br /> For example, used to control relay modules.</p>
         ]]></description>
@@ -431,7 +431,7 @@ Sends Binary Switch Set On / Off when input 1 is activated.<br /><h1>Overview</h
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: DIGITAL INPUT 1</label>
+        <label>4: Multilevel Switch Set Input 1</label>
         <description><![CDATA[
 Sends Multilevel Switch Set / etc... when input 1 is activated.<br /><h1>Overview</h1><p>Sends <strong>Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change</strong> when input 1 is activated.<br /> Typically used to control dimmers, curtain controls, etc.</p>
         ]]></description>
@@ -439,7 +439,7 @@ Sends Multilevel Switch Set / etc... when input 1 is activated.<br /><h1>Overvie
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: DIGITAL INPUT 2</label>
+        <label>5: Basic Set On / Off Input 2</label>
         <description><![CDATA[
 Sends Basic Set On / Off when input 2 is activated.<br /><h1>Overview</h1><p>Sends <strong>Basic Set On / Off</strong> when input 2 is activated.<br /> For example, used to control relay modules or for visualization in the central controller unit (E.g. Fibaro Home Center).</p>
         ]]></description>
@@ -447,7 +447,7 @@ Sends Basic Set On / Off when input 2 is activated.<br /><h1>Overview</h1><p>Sen
       </parameter>
 
       <parameter name="group_6" type="text" groupName="association" multiple="true">
-        <label>6: DIGITAL INPUT 2</label>
+        <label>6: Binary Switch Set On / Off Input 2</label>
         <description><![CDATA[
 Sends Binary Switch Set On / Off when input 2 is activated.<br /><h1>Overview</h1><p>Sends <strong>Binary Switch Set On / Off</strong> when input 2 is activated.<br /> For example, used to control relay modules.</p>
         ]]></description>
@@ -455,7 +455,7 @@ Sends Binary Switch Set On / Off when input 2 is activated.<br /><h1>Overview</h
       </parameter>
 
       <parameter name="group_7" type="text" groupName="association" multiple="true">
-        <label>7: DIGITAL INPUT 2</label>
+        <label>7: Multilevel Switch Set Input 2</label>
         <description><![CDATA[
 Sends Multilevel Switch Set / etc... when input 2 is activated.<br /><h1>Overview</h1><p>Sends <strong>Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change</strong> when input 2 is activated.<br /> Typically used to control dimmers, curtain controls, etc.</p>
         ]]></description>
@@ -463,7 +463,7 @@ Sends Multilevel Switch Set / etc... when input 2 is activated.<br /><h1>Overvie
       </parameter>
 
       <parameter name="group_8" type="text" groupName="association" multiple="true">
-        <label>8: DIGITAL INPUT 3</label>
+        <label>8: Basic Set On / Off Input 3</label>
         <description><![CDATA[
 Sends Basic Set On / Off when input 3 is activated.<br /><h1>Overview</h1><p>Sends <strong>Basic Set On / Off</strong> when input 3 is activated.<br />For example, used to control relay modules or for visualization in the central controller unit (E.g. Fibaro Home Center).</p>
         ]]></description>
@@ -471,7 +471,7 @@ Sends Basic Set On / Off when input 3 is activated.<br /><h1>Overview</h1><p>Sen
       </parameter>
 
       <parameter name="group_9" type="text" groupName="association" multiple="true">
-        <label>9: DIGITAL INPUT 3</label>
+        <label>9: Binary Switch Set On / Off Input 3</label>
         <description><![CDATA[
 Sends Binary Switch Set On / Off when input 3 is activated.<br /><h1>Overview</h1><p>Sends <strong>Binary Switch Set On / Off</strong> when input 3 is activated.<br /> For example, used to control relay modules.</p>
         ]]></description>
@@ -479,7 +479,7 @@ Sends Binary Switch Set On / Off when input 3 is activated.<br /><h1>Overview</h
       </parameter>
 
       <parameter name="group_10" type="text" groupName="association" multiple="true">
-        <label>10: DIGITAL INPUT 3</label>
+        <label>10: Multilevel Switch Set Input 3</label>
         <description><![CDATA[
 Sends Multilevel Switch Set / etc... when input 3 is activated.<br /><h1>Overview</h1><p>Sends <strong>Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change</strong> when input 3 is activated.<br /> Typically used to control dimmers, curtain controls, etc.</p>
         ]]></description>
@@ -487,7 +487,7 @@ Sends Multilevel Switch Set / etc... when input 3 is activated.<br /><h1>Overvie
       </parameter>
 
       <parameter name="group_11" type="text" groupName="association" multiple="true">
-        <label>11: DIGITAL INPUT 4</label>
+        <label>11: Basic Set On / Off Input 4</label>
         <description><![CDATA[
 Sends Basic Set On / Off when input 4 is activated.<br /><h1>Overview</h1><p>Sends <strong>Basic Set On / Off</strong> when input 4 is activated.<br />For example, used to control relay modules or for visualization in the central controller unit (E.g. Fibaro Home Center).</p>
         ]]></description>
@@ -495,7 +495,7 @@ Sends Basic Set On / Off when input 4 is activated.<br /><h1>Overview</h1><p>Sen
       </parameter>
 
       <parameter name="group_12" type="text" groupName="association" multiple="true">
-        <label>12: DIGITAL INPUT 4</label>
+        <label>12: Binary Switch Set On / Off Input 4</label>
         <description><![CDATA[
 Sends Binary Switch Set On / Off when input 4 is activated.<br /><h1>Overview</h1><p>Sends <strong>Binary Switch Set On / Off</strong> when input 4 is activated.<br /> For example, used to control relay modules.</p>
         ]]></description>
@@ -503,7 +503,7 @@ Sends Binary Switch Set On / Off when input 4 is activated.<br /><h1>Overview</h
       </parameter>
 
       <parameter name="group_13" type="text" groupName="association" multiple="true">
-        <label>13: DIGITAL INPUT 4</label>
+        <label>13: Multilevel Switch Set Input 4</label>
         <description><![CDATA[
 Sends Multilevel Switch Set / etc... when input 4 is activated.<br /><h1>Overview</h1><p>Sends <strong>Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change</strong> when input 4 is activated.<br /> Typically used to control dimmers, curtain controls, etc.</p>
         ]]></description>
@@ -511,7 +511,7 @@ Sends Multilevel Switch Set / etc... when input 4 is activated.<br /><h1>Overvie
       </parameter>
 
       <parameter name="group_14" type="text" groupName="association" multiple="true">
-        <label>14: DIGITAL INPUT 5</label>
+        <label>14: Basic Set On / Off Input 5</label>
         <description><![CDATA[
 Sends Basic Set On / Off when input 5 is activated.<br /><h1>Overview</h1><p>Sends <strong>Basic Set On / Off</strong> when input 5 is activated.<br />For example, used to control relay modules or for visualization in the central controller unit (E.g. Fibaro Home Center).</p>
         ]]></description>
@@ -519,7 +519,7 @@ Sends Basic Set On / Off when input 5 is activated.<br /><h1>Overview</h1><p>Sen
       </parameter>
 
       <parameter name="group_15" type="text" groupName="association" multiple="true">
-        <label>15: DIGITAL INPUT 5</label>
+        <label>15: Binary Switch Set On / Off Input 5</label>
         <description><![CDATA[
 Sends Binary Switch Set On / Off when input 5 is activated.<br /><h1>Overview</h1><p>Sends <strong>Binary Switch Set On / Off</strong> when input 5 is activated.<br /> For example, used to control relay modules.</p>
         ]]></description>
@@ -527,7 +527,7 @@ Sends Binary Switch Set On / Off when input 5 is activated.<br /><h1>Overview</h
       </parameter>
 
       <parameter name="group_16" type="text" groupName="association" multiple="true">
-        <label>16: DIGITAL INPUT 5</label>
+        <label>16: Multilevel Switch Set Input 5</label>
         <description><![CDATA[
 Sends Multilevel Switch Set / etc... when input 5 is activated.<br /><h1>Overview</h1><p>Sends <strong>Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change</strong> when input 5 is activated.<br /> Typically used to control dimmers, curtain controls, etc.</p>
         ]]></description>
@@ -535,7 +535,7 @@ Sends Multilevel Switch Set / etc... when input 5 is activated.<br /><h1>Overvie
       </parameter>
 
       <parameter name="group_17" type="text" groupName="association" multiple="true">
-        <label>17: DIGITAL INPUT 6</label>
+        <label>17: Basic Report On / Off Input 6</label>
         <description><![CDATA[
 Sends Basic Set On / Off when input 6 is activated.<br /><h1>Overview</h1><p>Sends <strong>Basic Set On / Off</strong> when input 6 is activated.<br />For example, used to control relay modules or for visualization in the central controller unit (E.g. Fibaro Home Center).</p>
         ]]></description>
@@ -543,7 +543,7 @@ Sends Basic Set On / Off when input 6 is activated.<br /><h1>Overview</h1><p>Sen
       </parameter>
 
       <parameter name="group_18" type="text" groupName="association" multiple="true">
-        <label>18: DIGITAL INPUT 6</label>
+        <label>18: Basic Set On / Off Input 6</label>
         <description><![CDATA[
 Sends Binary Switch Set On / Off when input 6 is activated.<br /><h1>Overview</h1><p>Sends <strong>Binary Switch Set On / Off</strong> when input 6 is activated.<br /> For example, used to control relay modules.</p>
         ]]></description>
@@ -551,7 +551,7 @@ Sends Binary Switch Set On / Off when input 6 is activated.<br /><h1>Overview</h
       </parameter>
 
       <parameter name="group_19" type="text" groupName="association" multiple="true">
-        <label>19: DIGITAL INPUT 6</label>
+        <label>19: Multilevel Switch Set Input 6</label>
         <description><![CDATA[
 Sends Multilevel Switch Set / etc... when input 6 is activated.<br /><h1>Overview</h1><p>Sends <strong>Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change</strong> when input 6 is activated.<br /> Typically used to control dimmers, curtain controls, etc.</p>
         ]]></description>

@@ -403,41 +403,41 @@ Meter report delta value<br /><h1>Overview</h1><p>1. Value = 0 - 255, 0kWh - 25.
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Thermostat device 0</label>
+        <label>1: Lifeline</label>
         <description><![CDATA[
-Main thermostat device<br /><h1>Overview</h1><p>Lifeline. (Normally used by the Z-Wave Controller)<br />Sends:<br />- Device Reset Notifications<br />- Thermostat Setpoint Reports<br />- Thermostat Mode Reports</p>
+<br /><h1>Overview</h1><p>Lifeline. (Normally used by the Z-Wave Controller)<br />Sends:<br />- Device Reset Notifications<br />- Thermostat Setpoint Reports<br />- Thermostat Mode Reports</p>
         ]]></description>
         <multipleLimit>7</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Thermostat device 0</label>
+        <label>2: Thermostat Binary Switch Set</label>
         <description><![CDATA[
-The main thermostat device<br /><h1>Overview</h1><p>Send Binary Switch Set commands representing the status of the internal relay.</p>
+<br /><h1>Overview</h1><p>Send Binary Switch Set commands representing the status of the internal relay.</p>
         ]]></description>
         <multipleLimit>7</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Thermostat device 0</label>
+        <label>3: Thermostat Internal Multilevel Sensor Reports</label>
         <description><![CDATA[
-The main thermostat device<br /><h1>Overview</h1><p>Send Multilevel Sensor Reports for internal temperature sensor.</p>
+<br /><h1>Overview</h1><p>Send Multilevel Sensor Reports for internal temperature sensor.</p>
         ]]></description>
         <multipleLimit>7</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Thermostat device 0</label>
+        <label>4: Thermostat External Multilevel Sensor Reports</label>
         <description><![CDATA[
-The main thermostat device<br /><h1>Overview</h1><p>Send Multilevel Sensor Reports for external temperature sensor.</p>
+<br /><h1>Overview</h1><p>Send Multilevel Sensor Reports for external temperature sensor.</p>
         ]]></description>
         <multipleLimit>7</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Thermostat device 0</label>
+        <label>5: Thermostat Floor Multilevel Sensor Reports</label>
         <description><![CDATA[
-The main thermostat device<br /><h1>Overview</h1><p>Send Multilevel Sensor Reports for floor temperature sensor.</p>
+<br /><h1>Overview</h1><p>Send Multilevel Sensor Reports for floor temperature sensor.</p>
         ]]></description>
         <multipleLimit>7</multipleLimit>
       </parameter>
