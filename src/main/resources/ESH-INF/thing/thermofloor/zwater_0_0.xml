@@ -300,97 +300,97 @@ Time interval between consecutive temperature reports.<br /><h1>Overview</h1><p>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Input 1</label>
+        <label>2: Input 1 Basic Set On / Off</label>
         <description><![CDATA[
-Basic Set On / Off<br /><h1>Overview</h1><p>Sends Basic Set On / Off when input 1 is activated.</p>
+<br /><h1>Overview</h1><p>Sends Basic Set On / Off when input 1 is activated.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Input 1</label>
+        <label>3: Input 1 Switch Binary Set On / Off</label>
         <description><![CDATA[
-Switch Binary Set On / Off<br /><h1>Overview</h1><p>Sends Switch Binary Set On / Off when input 1 is activated.</p>
+<br /><h1>Overview</h1><p>Sends Switch Binary Set On / Off when input 1 is activated.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Input 1</label>
+        <label>4: Input 1 Multilevel Switch Set</label>
         <description><![CDATA[
-Multilevel Switch Set<br /><h1>Overview</h1><p>Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 1 is activated. Is typically used for controlling light dimmers, curtain controllers, etc</p>
+<br /><h1>Overview</h1><p>Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 1 is activated. Is typically used for controlling light dimmers, curtain controllers, etc</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Input 2</label>
+        <label>5: Input 2 Basic Set On / Off</label>
         <description><![CDATA[
-Basic Set On / Off<br /><h1>Overview</h1><p>Sends Basic Set On / Off when input 2 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules.</p>
+<br /><h1>Overview</h1><p>Sends Basic Set On / Off when input 2 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_6" type="text" groupName="association" multiple="true">
-        <label>6: Input 2</label>
+        <label>6: Input 2 Switch Binary Set On / Off</label>
         <description><![CDATA[
-Switch Binary Set On / Off<br /><h1>Overview</h1><p>Sends Switch Binary Set On / Off when input 2 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules. </p>
+<br /><h1>Overview</h1><p>Sends Switch Binary Set On / Off when input 2 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_7" type="text" groupName="association" multiple="true">
-        <label>7: Input 2</label>
+        <label>7: Input 2 Multilevel Switch Set</label>
         <description><![CDATA[
-Multilevel Switch Set<br /><h1>Overview</h1><p>Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 2 is activated. Is typically used for controlling light dimmers, curtain controllers, etc.</p>
+<br /><h1>Overview</h1><p>Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 2 is activated. Is typically used for controlling light dimmers, curtain controllers, etc.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_8" type="text" groupName="association" multiple="true">
-        <label>8: Input 3</label>
+        <label>8: Input 3 Basic Set On / Off</label>
         <description><![CDATA[
-Basic Set On / Off<br /><h1>Overview</h1><p>Sends Basic Set On / Off when input 3 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules. </p>
+<br /><h1>Overview</h1><p>Sends Basic Set On / Off when input 3 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_9" type="text" groupName="association" multiple="true">
-        <label>9: Input 3</label>
+        <label>9: Input 3 Switch Binary Set On / Off</label>
         <description><![CDATA[
-Switch Binary Set On / Off<br /><h1>Overview</h1><p>Sends Switch Binary Set On / Off when input 3 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules. </p>
+<br /><h1>Overview</h1><p>Sends Switch Binary Set On / Off when input 3 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_10" type="text" groupName="association" multiple="true">
-        <label>10: Input 3</label>
+        <label>10: Input 3 Multilevel Switch Set</label>
         <description><![CDATA[
-Multilevel Switch Set<br /><h1>Overview</h1><p>Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 3 is activated. Is typically used for controlling light dimmers, curtain controllers, etc. </p>
+<br /><h1>Overview</h1><p>Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 3 is activated. Is typically used for controlling light dimmers, curtain controllers, etc.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_11" type="text" groupName="association" multiple="true">
-        <label>11: Input 4</label>
+        <label>11: Input 4 Basic Set On / Off</label>
         <description><![CDATA[
-Basic Set On / Off<br /><h1>Overview</h1><p>Sends Basic Set On / Off when input 4 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules. </p>
+<br /><h1>Overview</h1><p>Sends Basic Set On / Off when input 4 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_12" type="text" groupName="association" multiple="true">
-        <label>12: Input 4</label>
+        <label>12: Input 4 Switch Binary Set On / Off</label>
         <description><![CDATA[
-Switch Binary Set On / Off<br /><h1>Overview</h1><p>Sends Switch Binary Set On / Off when input 4 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules. </p>
+<br /><h1>Overview</h1><p>Sends Switch Binary Set On / Off when input 4 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_13" type="text" groupName="association" multiple="true">
-        <label>13: Input 4</label>
+        <label>13: Input 4 Multilevel Switch Set</label>
         <description><![CDATA[
-Multilevel Switch Set<br /><h1>Overview</h1><p>Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 4 is activated. Is typically used for controlling light dimmers, curtain controllers, etc. </p>
+<br /><h1>Overview</h1><p>Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 4 is activated. Is typically used for controlling light dimmers, curtain controllers, etc.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>

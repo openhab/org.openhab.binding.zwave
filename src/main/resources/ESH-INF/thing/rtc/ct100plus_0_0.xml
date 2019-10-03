@@ -310,42 +310,9 @@ Fast or Economy recovery mode<br /><h1>Overview</h1><p>The Thermostat Recovery M
         </options>
       </parameter>
 
-      <parameter name="config_10_4_000000FF" type="integer" groupName="configuration"
+      <parameter name="config_10_4" type="integer" groupName="configuration"
                  min="0" max="124">
-        <label>10: Temperature Filter Upper Bound</label>
-        <description><![CDATA[
-Upper/Lower bounds for thermostat temperature reporting<br /><h1>Overview</h1><p>The thermostat will report ambient temperature changes for temperature values greater than the upper bound. This field must be between 0F and 124F. By default, this value is 0F (report all temperature changes).</p>
-        ]]></description>
-        <default>0</default>
-      </parameter>
-
-      <parameter name="config_10_4_0000F000" type="integer" groupName="configuration">
-        <label>10: Temperature Filter Lower Bound Unit</label>
-        <description><![CDATA[
-Upper/Lower bounds for thermostat temperature reporting<br /><h1>Overview</h1><p>Specifies unit for lower bound parameter. If set to 1, lower bound is Celsius. If set to 9, lower bound is Fahrenheit.</p>
-        ]]></description>
-        <default>9</default>
-        <options>
-          <option value="1">Celsius</option>
-          <option value="9">Fahreheit</option>
-        </options>
-      </parameter>
-
-      <parameter name="config_10_4_0000FF00" type="integer" groupName="configuration">
-        <label>10: Temperature Filter Upper Bound Unit</label>
-        <description><![CDATA[
-Upper/Lower bounds for thermostat temperature reporting<br /><h1>Overview</h1><p>Specifies unit for upper bound parameter. If set to 1, upper bound is Celsius. If set to 9, upper bound is Fahrenheit.</p>
-        ]]></description>
-        <default>9</default>
-        <options>
-          <option value="1">Celsius</option>
-          <option value="9">Fahrenheit</option>
-        </options>
-      </parameter>
-
-      <parameter name="config_10_4_00FF0000" type="integer" groupName="configuration"
-                 min="0" max="124">
-        <label>10: Temperature Filter Lower Bound</label>
+        <label>10: Temperature Reporting Filter</label>
         <description><![CDATA[
 Upper/Lower bounds for thermostat temperature reporting<br /><h1>Overview</h1><p>The thermostat will report ambient temperature changes for temperature values less than the lower bound. This field must be between 0F and 124F. By default, this value is 124F (report all temperature changes).</p>
         ]]></description>

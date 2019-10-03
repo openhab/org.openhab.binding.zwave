@@ -115,49 +115,63 @@ Operation Mode<br /><h1>Overview</h1><h1>Bit 0:</h1> <ul><li>1 means security mo
       <parameter name="config_6_1" type="integer" groupName="configuration"
                  min="0" max="127">
         <label>6: Multi-Sensor Function Switch</label>
-        <description>Bit 0: Disable magnetic integrate illumination. Bit 1: Disable PIR integrate Illumination. Bit 2: Disable magnetic integrate PIR (Default is Disable) Bit 3: When Bit2 is 0 (Enable), the device is install in the same room with the light? 0: In the same roo</description>
+        <description><![CDATA[
+Multi-Sensor Function Switch<br /><h1>Overview</h1><ul><li>Bit 0: Disable magnetic integrate illumination.</li> <li>Bit 1: Disable PIR integrate Illumination.</li> <li>Bit 2: Disable magnetic integrate PIR (Default is Disable)</li> <li>Bit 3: When Bit2 is 0 (Enable), the device is install in the same room with the light? <ul><li>0: In the same room(Default),</li> <li>1: In the different room.</li> </ul></li> <li>Bit4: Disable delay 5 seconds to turn off the light, when door/window closed.</li> <li>Bit5: Disable auto turn off the light, after door/window opened to turn on the light.</li> <li>Bit6:Enable temperature monitoring. When this bit enable, the temperature changed 3 degree Fahrenheit, it will report.</li> </ul><p>And also the temperature over 140 degree Fahrenheit, it will report every 64 seconds.</p> <p><strong>Notice</strong>: If bit2 is zero, this setting is useless</p>
+        ]]></description>
         <default>4</default>
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="3" max="127">
         <label>8: PIR Re-Detect Interval Time</label>
-        <description>In the security mode, after the PIR motion detected, setting the re-detect time 3 8 sec - 127 8 sec -&gt; 8 seconds per tick, and minimum time is 24 seconds, default tick is 3 (24 seconds).</description>
+        <description><![CDATA[
+PIR Re-Detect Interval Time<br /><h1>Overview</h1><p>In the security mode, after the PIR motion detected, setting the re-detect time. 8 seconds per tick, and minimum time is 24 seconds, default tick is 3 (24 seconds).</p> <p>Setting the suitable value to prevent received the trigger signal too frequency. Also can save the battery energy.</p> <p><strong>Notice</strong>: If this value bigger than the configuration setting NO. 9. There is a period after the light turned off and the PIR not detecting</p>
+        ]]></description>
         <default>3</default>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
                  min="4" max="127">
         <label>9: Turn Off Light Time</label>
-        <description>After turn on the light, setting the delay time to turn off the light when the PIR motion is not detected 4 8 sec - 127 8 sec -&gt; 8 seconds per tick, and minimum time is 32 seconds, default tick is 4 (32 seconds)</description>
+        <description><![CDATA[
+Turn Off Light Time<br /><h1>Overview</h1><p>After turn on the light, setting the delay time to turn off the light when the PIR motion is not detected. 8 seconds per tick, and minimum time is 32 seconds, default tick is 4 (32 seconds)</p>
+        ]]></description>
         <default>4</default>
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="1" max="127">
         <label>10: Auto Report Battery Time</label>
-        <description>interval time for auto report the battery level 1 30 min - 127 30 min -&gt; 30 minutes per tick and minimum time is 30 minutes, default tick is 12 (6 hours)</description>
+        <description><![CDATA[
+Auto Report Battery Time<br /><h1>Overview</h1><p>The interval time for auto report the battery level. 30 minutes per tick and minimum time is 30 minutes, default tick is 12 (6 hours). </p>
+        ]]></description>
         <default>12</default>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
                  min="1" max="127">
         <label>11: Auto Report Door/Window State Time</label>
-        <description>interval time for auto report the door/window state 1 30 min - 127 30 min -&gt; 30 minutes per tick and minimum time is 30 minutes, default tick is 12 (6 hours)</description>
+        <description><![CDATA[
+Auto Report Door/Window State Time<br /><h1>Overview</h1><p>The interval time for auto report the door/window state. 30 minutes per tick and minimum time is 30 minutes, default tick is 12 (6 hours).</p>
+        ]]></description>
         <default>12</default>
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration"
                  min="1" max="127">
         <label>12: Auto Report Illumination Time</label>
-        <description>interval time for auto report the illumination state 1 30 min - 127 30 min -&gt; 30 minutes per tick and minimum time is 30 minutes, default tick is 12 (6 hours)</description>
+        <description><![CDATA[
+Auto Report Illumination Time<br /><h1>Overview</h1><p>The interval time for auto report the illumination. 30 minutes per tick and minimum time is 30 minutes, default tick is 12 (6 hours).</p>
+        ]]></description>
         <default>12</default>
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration"
                  min="1" max="127">
         <label>13: Auto Report Temperature Time</label>
-        <description>Interval time for auto report the temperature state 1 30 min - 127 30 min -&gt; 30 minutes per tick and minimum time is 30 minutes, default tick is 12 (6 hours)</description>
+        <description><![CDATA[
+Auto Report Temperature Time<br /><h1>Overview</h1><p>The interval time for auto report the temperature. 30 minutes per tick and minimum time is 30 minutes, default tick is 12 (6 hours).</p>
+        ]]></description>
         <default>12</default>
       </parameter>
 
