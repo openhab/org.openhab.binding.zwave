@@ -7,7 +7,10 @@
 
   <thing-type id="zwaveme_zme05459_00_000" listed="false">
     <label>ZME_05459 Blinds controller</label>
-    <description>Blinds controller</description>
+    <description><![CDATA[
+Blinds controller<br /><h1>Overview</h1><p>The Z-Wave.Me Flush Mountable Motor Control is a wireless actuator able to control 230 V powered motors for blinds and jalousies.</p> <p>The device is delivered as a complete set with ush mountable insert, paddle and mounting frame compatible to the design of the switching series DURO 2000 SI in color pearl white from Busch Jaeger. The paddle of the device is used to control the device itself but can also be congured to activate scenes in a central IP gateway or controller.</p> <p>The status of the motor control is indicated on a dual color LED for test purposes and every status change is - if congured - reported to a central IP gateway or controller. The function of the local paddle can be congured as detached from the local operation. In this local control different devices are controlled by Z-Wave while the local actuator is controlled by other devices using Z-Wave.</p> <p>This device is designed for a 3 wire system and needs a neutral wire in the wall box</p> <br /><h2>Inclusion Information</h2><p>Triple click one of the buttons on the device will include the device</p> <br /><h2>Exclusion Information</h2><p>The device is excluded by triple click to one of the buttons.</p>
+    ]]></description>
+    <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -32,7 +35,7 @@
       <property name="vendor">Z-Wave.Me</property>
       <property name="modelId">ZME_05459</property>
       <property name="manufacturerId">0115</property>
-      <property name="manufacturerRef">1000:0003</property>
+      <property name="manufacturerRef">FFFF:FFFF</property>
       <property name="dbReference">144</property>
       <property name="defaultAssociations">3</property>
     </properties>
@@ -132,8 +135,10 @@ Id of the device which can block the blinds<br /><h1>Overview</h1><p>Id of the d
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
-        <label>7: On which command from blocking node to enable the protection</label>
-        <description>Defines which command from blocking device to interpret as closed door and hence, unprotected.</description>
+        <label>7: Unprotected command</label>
+        <description><![CDATA[
+Unprotected command<br /><h1>Overview</h1><p>Denes which command from blocking device to interpret as closed door and hence, unprotected. </p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">on On</option>
@@ -156,7 +161,9 @@ Defines behaviour on open press while closing and vice versa.<br /><h1>Overview<
 
       <parameter name="config_9_1" type="integer" groupName="configuration">
         <label>9: Invert open and close relays</label>
-        <description>Allows exchanging open and close relays if blind control is wired to the motor incorrectly</description>
+        <description><![CDATA[
+Invert open and close relays<br /><h1>Overview</h1><p>Allows exchanging open and close relays if blind control is wired to the motor incorrectly</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">No</option>
@@ -167,7 +174,9 @@ Defines behaviour on open press while closing and vice versa.<br /><h1>Overview<
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>10: Typical click timeout</label>
-        <description>Typical time used to differentiate click, hold and double and triple clicks in 10ms units</description>
+        <description><![CDATA[
+Typical click timeout<br /><h1>Overview</h1><p>Typical time used to differentiate click, hold and double and triple clicks in 10ms units</p>
+        ]]></description>
         <default>50</default>
       </parameter>
 
@@ -205,7 +214,7 @@ Defines which command should be sent on button single press or hold.<br /><h1>Ov
           <option value="1">Switch On/Off (send Basic Set)</option>
           <option value="2">Switch All</option>
           <option value="3">Send Scenes</option>
-          <option value="4">Switch On/Off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="4">Switch On/Off and Dim</option>
           <option value="5">Send Preconfigured Scenes</option>
         </options>
       </parameter>
@@ -221,7 +230,7 @@ Defines which command should be sent on button double press or press-hold.<br />
           <option value="1">Switch On/Off (send Basic Set)</option>
           <option value="2">Switch All</option>
           <option value="3">Send Scenes</option>
-          <option value="4">Switch On/Off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="4">Switch On/Off and Dim</option>
           <option value="5">Send Preconfigured Scenes</option>
         </options>
       </parameter>
@@ -240,7 +249,7 @@ Defines which command should be sent on button double press or press-hold.<br />
       <parameter name="config_16_1" type="integer" groupName="configuration">
         <label>16: What to do on button Down press</label>
         <description><![CDATA[
-Defines how to interpret button Down press. Depends on 'Switch by buttons' parameter.<br /><h1>Overview</h1><p>Defines how to interpret button Down press. Depends on "Switch by buttons" parameter. If not Disabled this parameter will affect the action selected by the latter parameter. Can be used in conjunction with Auto Off function.</p>
+What to do on button Down press<br /><h1>Overview</h1><p>Defines how to interpret button Down press. Depends on "Switch by buttons" parameter. If not Disabled this parameter will affect the action selected by the latter parameter. Can be used in conjunction with Auto Off function.</p>
         ]]></description>
         <default>0</default>
         <options>

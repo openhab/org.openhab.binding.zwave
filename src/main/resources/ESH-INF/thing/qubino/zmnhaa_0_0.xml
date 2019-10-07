@@ -142,9 +142,9 @@ Automatic turning off relay after set time<br /><h1>Overview</h1><p>Default valu
 
       <parameter name="config_40_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>40: Power reporting in Watts on power change</label>
+        <label>40: Power reporting in Watts on percentage change</label>
         <description><![CDATA[
-Power reporting in Watts on power change<br /><h1>Overview</h1><ul><li>0 – Reporting Disabled</li> <li>1 – 100 = 1% - 100% Reporting enabled</li> </ul><p>Power report is send (push) only when actual power in Watts in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%</p>
+Power reporting in Watts on percentage change<br /><h1>Overview</h1><ul><li>0 – Reporting Disabled</li> <li>1 – 100 = 1% - 100% Reporting enabled</li> </ul><p>Power report is send (push) only when actual power in Watts in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%</p>
         ]]></description>
         <default>3</default>
       </parameter>
@@ -168,13 +168,13 @@ triggered at change of the output Q state and reflecting its state<br /><h1>Over
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: basic on/off</label>
+        <label>2: basic on/off - input I2</label>
         <description>(triggered at change of the input I2 state and reflecting its state)</description>
         <multipleLimit>16</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: basic on/off</label>
+        <label>3: basic on/off - input I3</label>
         <description>ttriggered at change of the input I3 state and reflecting its state)</description>
         <multipleLimit>16</multipleLimit>
       </parameter>

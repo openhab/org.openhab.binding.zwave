@@ -257,19 +257,19 @@ Digital temperature sensor reporting<br /><h1>Overview</h1><p>If digital tempera
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Basic on/off</label>
+        <label>2: Basic on/off - input I1</label>
         <description>Triggered at change of the input I1 state and reflecting its state</description>
         <multipleLimit>16</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Basic on/off</label>
+        <label>3: Basic on/off - input I2</label>
         <description>Triggered at change of the input I2 state and reflecting its state</description>
         <multipleLimit>16</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Basic on/off</label>
+        <label>4: Basic on/off - direction of roller</label>
         <description><![CDATA[
 Triggered at sensing moving direction of roller<br /><h1>Overview</h1><p>up=FF, down=0</p>
         ]]></description>
@@ -277,7 +277,7 @@ Triggered at sensing moving direction of roller<br /><h1>Overview</h1><p>up=FF, 
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Basic on/off</label>
+        <label>5: Basic on/off - roller position</label>
         <description><![CDATA[
 Triggered at reaching roller position<br /><h1>Overview</h1><p>bottom=FF, top=0</p>
         ]]></description>

@@ -14,12 +14,6 @@ Flush pilot (DIN version)<br /><h1>Overview</h1><p>The ZMNHUD is used to control
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
-        </properties>
-      </channel>
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
@@ -179,19 +173,19 @@ Flush pilot (DIN version)<br /><h1>Overview</h1><p>The ZMNHUD is used to control
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Basic on/off</label>
+        <label>3: Basic on/off - input I1</label>
         <description>Triggered at change of the input I1 state and reflecting its state</description>
         <multipleLimit>99</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Basic on/off</label>
+        <label>4: Basic on/off - input I2</label>
         <description>Triggered at change of the input I2 state and reflecting its state</description>
         <multipleLimit>99</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Basic on/off</label>
+        <label>5: Basic on/off - input I3</label>
         <description>Triggered at change of the input I3 state and reflecting its state</description>
         <multipleLimit>99</multipleLimit>
       </parameter>

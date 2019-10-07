@@ -334,7 +334,7 @@ Set appointment 2<br /><h1>Overview</h1><p>0 to 99     The brightness level<b
 
       <parameter name="config_92_1" type="integer" groupName="configuration"
                  min="0" max="100">
-        <label>92: Set the threshold value of wattage</label>
+        <label>92: Set the threshold value of percent power</label>
         <description><![CDATA[
 Threshold change in wattage (in terms of percentage)<br /><h1>Overview</h1><p>Threshold change in wattage (in terms of percentage) to induce an automatic report</p>
         ]]></description>

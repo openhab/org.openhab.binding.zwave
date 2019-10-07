@@ -7,7 +7,9 @@
 
   <thing-type id="zwaveme_kfob_00_000" listed="false">
     <label>KFOB 4 button keyfob</label>
-    <description>4 button keyfob</description>
+    <description><![CDATA[
+4 button keyfob<br /><h1>Overview</h1><p>The Secure Key Fob Controller is a 4 button Z-Wave device capable to act both as primary or secondary controller. The four buttons can control other Z-Wave devices such as switches, dimmer and even door locks directly. Various options - configurable by Z-Wave configuration commands - define the actions and the commands used for this control. It is possible to use two sets of buttons (one of on/open/up and one for off/closed/down) or 4 single buttons to control 4 different groups of devices.<br /><br />The controller also allows triggering scenes in a central controller. Again different modes can be configured to adapt to the various implementations of scenes in different central controllers in the market.<br /><br />Control options also include special modes like 'all on/off' or always controlling the Z-Wave device in proximity to the fob. The device supports secure communication when included with enhanced security option and when communicating to a device also supporting enhanced security option. Otherwise the device will automatically turn into normal communication. to maintain backward compatibility.</p> <br /><h2>Inclusion Information</h2><p>When in factory default push Button 3 (secure) or Button 4 (normal) for one second to enter inclusion mode. </p> <p>The inclusion mode is indicated by a blinking green LED. From second device on you need to enter management mode  push all four buttons together for one second - green led blinks slowly), hit button 3 ( enter primary controller functions - green led blinks faster) and then button 1 (secure) or button 2 (normal).</p> <br /><h2>Exclusion Information</h2><ol><li>Enter management mode  by push all four buttons together for one second - green led blinks slowly), </li> <li>hit button 3 ( enter primary controller functions - green led blinks faster) and </li> <li>then button 3 again.</li> </ol><br /><h2>Wakeup Information</h2><ol><li>Enter management mode  by push all four buttons together for one second - green led blinks slowly), </li> <li>then hit button 2 .</li> </ol>
+    ]]></description>
     <category>RemoteControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -32,6 +34,7 @@
       <property name="manufacturerId">0115</property>
       <property name="manufacturerRef">0100:0001,0100:0002</property>
       <property name="dbReference">146</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -51,7 +54,9 @@
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Button 1 and 3 pair mode</label>
-        <description>In separate mode button 1 works with group 1, button 3 with groups 3. Click is On, Hold is dimming Up, Double click is Off, Click-Hold is dimming Down. In pair button 1/3 are Up/Down correspondingly. Click is On/Off, Hold is dimming Up/Down. Single clicks</description>
+        <description><![CDATA[
+Button 1 and 3 pair mode<br /><h1>Overview</h1><ul><li>In separate mode button 1 works with Group A, button 3 with Group C. Click is ON, Hold is dimming UP, Double click is OFF, Click-Hold is dimming DOWN.</li> <li>In pair button 1/3 are UP/DOWN correspondingly. Click is ON/OFF, Hold is dimming UP/DOWN. Single clicks works with Group A, double click with Group C</li> </ul>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">Separately</option>
@@ -62,7 +67,9 @@
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Button 2 and 4 pair mode</label>
-        <description>In separate mode button 1 works with group 2, button 4 with groups 3. Click is On, Hold is dimming Up, Double click is Off, Click-Hold is dimming Down. In pair button 2/4 are Up/Down correspondingly. Click is On/Off, Hold is dimming Up/Down. Single clicks</description>
+        <description><![CDATA[
+Button 2 and 4 pair mode<br /><h1>Overview</h1><ul><li>In separate mode button 2 works with control group B, button 4 with control group D. Click is ON, Hold is dimming UP, Double click is OFF, Click-Hold is dimming DOWN.</li> <li>In pair button B/D are UP/DOWN correspondingly. Click is ON/OFF, Hold is dimming UP/DOWN. Single clicks works with Group B, double click with Group D.</li> </ul>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">Separately</option>
@@ -72,12 +79,14 @@
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration">
-        <label>11: Action on group 1</label>
-        <description>In Switch On/Off only mode On command is sent on Dim Up, Off on Dim Down. In Scenes mode the scene ID sent is (10 * group + ActionID), where ActionID is: 1 = On, 2 = Off, 3 = Dim Up Start, 4 = Dim Down Start, 5 = Dim Up Stop, 6 = Dim Down Stop</description>
+        <label>11: Action on group A</label>
+        <description><![CDATA[
+Action on group A<br /><h1>Overview</h1><p>This parameter defines the command to be sent to devices of control group A when the related button is pressed.</p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">Disabled</option>
-          <option value="1">Switch On/Off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch On/Off and Dim</option>
           <option value="2">Switch On/Off only (send Basic Set)</option>
           <option value="3">Switch all</option>
           <option value="4">Send Scenes</option>
@@ -87,12 +96,14 @@
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration">
-        <label>12: Action on group 2</label>
-        <description>In Switch On/Off only mode On command is sent on Dim Up, Off on Dim Down. In Scenes mode the scene ID sent is (10 * group + ActionID), where ActionID is: 1 = On, 2 = Off, 3 = Dim Up Start, 4 = Dim Down Start, 5 = Dim Up Stop, 6 = Dim Down Stop</description>
+        <label>12: Action on group B</label>
+        <description><![CDATA[
+Action on group B<br /><h1>Overview</h1><p>This parameter defines the command to be sent to devices of control group B when the related button is pressed.</p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">Disabled</option>
-          <option value="1">Switch On/Off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch On/Off and Dim</option>
           <option value="2">Switch On/Off only (send Basic Set)</option>
           <option value="3">Switch all</option>
           <option value="4">Send Scenes</option>
@@ -102,12 +113,14 @@
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
-        <label>13: Action on group 3</label>
-        <description>In Switch On/Off only mode On command is sent on Dim Up, Off on Dim Down. In Scenes mode the scene ID sent is (10 * group + ActionID), where ActionID is: 1 = On, 2 = Off, 3 = Dim Up Start, 4 = Dim Down Start, 5 = Dim Up Stop, 6 = Dim Down Stop</description>
+        <label>13: Action on group C</label>
+        <description><![CDATA[
+Action on group C<br /><h1>Overview</h1><p>This parameter defines the command to be sent to devices of control group C when the related button is pressed</p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">Disabled</option>
-          <option value="1">Switch On/Off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch On/Off and Dim</option>
           <option value="2">Switch On/Off only (send Basic Set)</option>
           <option value="3">Switch all</option>
           <option value="4">Send Scenes</option>
@@ -117,12 +130,14 @@
       </parameter>
 
       <parameter name="config_14_1" type="integer" groupName="configuration">
-        <label>14: Action on group 4</label>
-        <description>In Switch On/Off only mode On command is sent on Dim Up, Off on Dim Down. In Scenes mode the scene ID sent is (10 * group + ActionID), where ActionID is: 1 = On, 2 = Off, 3 = Dim Up Start, 4 = Dim Down Start, 5 = Dim Up Stop, 6 = Dim Down Stop</description>
+        <label>14: Action on group D</label>
+        <description><![CDATA[
+Action on group D<br /><h1>Overview</h1><p>This parameter defines the command to be sent to devices of control group D when the related button is pressed</p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">Disabled</option>
-          <option value="1">Switch On/Off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch On/Off and Dim</option>
           <option value="2">Switch On/Off only (send Basic Set)</option>
           <option value="3">Switch all</option>
           <option value="4">Send Scenes</option>
@@ -179,23 +194,32 @@
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Controlled by button 1 or single clicks of buttons 1 and 3</label>
-        <multipleLimit>8</multipleLimit>
+        <label>1: Lifeline</label>
+        <multipleLimit>10</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Controlled by button 3 or double clicks of buttons 1 and 3</label>
-        <multipleLimit>8</multipleLimit>
+        <label>2: Group A</label>
+        <description>Controlled by button 1 or single clicks of buttons 1 and 3</description>
+        <multipleLimit>10</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Controlled by button 2 or single clicks of buttons 2 and 4</label>
-        <multipleLimit>8</multipleLimit>
+        <label>3: Group B</label>
+        <description>Ccontrolled by button 2 or single clicks of buttons 2 and 4</description>
+        <multipleLimit>10</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Controlled by button 4 or double clicks of buttons 2 and 4</label>
-        <multipleLimit>8</multipleLimit>
+        <label>4: Group C</label>
+        <description>Controlled by button 3 or single clicks of buttons 1 and 3</description>
+        <multipleLimit>10</multipleLimit>
+      </parameter>
+
+      <parameter name="group_5" type="text" groupName="association" multiple="true">
+        <label>5: Group D</label>
+        <description>Controlled by button 4 or double clicks of buttons 2 and 4</description>
+        <multipleLimit>10</multipleLimit>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

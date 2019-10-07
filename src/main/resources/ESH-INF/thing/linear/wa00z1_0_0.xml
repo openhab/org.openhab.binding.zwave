@@ -7,7 +7,10 @@
 
   <thing-type id="linear_wa00z1_00_000" listed="false">
     <label>WA00Z-1 Wall Mounted Switch</label>
-    <description>Wall Mounted Switch</description>
+    <description><![CDATA[
+Wall Mounted Switch<br /><h1>Overview</h1><p>The WA00Z-1 Wall Mounted Switch is simple to set up and can be installed anywhere to operate other load bearing Z-Wave devices. </p> <br /><h2>Inclusion Information</h2><p>press either button on the WA00Z-1. The green LED should fl ash twice.</p> <br /><h2>Exclusion Information</h2><p>Remove the switch by pressing either button on the WA00Z-1. The LED will fl ash twice indicating that it has been removed.</p> <br /><h2>Wakeup Information</h2><p>Not provided</p>
+    ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

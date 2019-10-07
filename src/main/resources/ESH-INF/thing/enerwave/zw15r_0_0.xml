@@ -7,7 +7,10 @@
 
   <thing-type id="enerwave_zw15r_00_000" listed="false">
     <label>ZW15R Duplex receptacle</label>
-    <description>Duplex receptacle</description>
+    <description><![CDATA[
+Duplex receptacle<br /><h1>Overview</h1><p>Wireless Lighting Control Duplex Receptacle</p> <br /><h2>Inclusion Information</h2><p>press and hold the manual ON/OFF Button on the receptacle 3 seconds</p> <br /><h2>Exclusion Information</h2><p>press and hold the manual ON/OFF Button on the receptacle 3 seconds</p>
+    ]]></description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -30,6 +33,23 @@
 
     <!-- CONFIGURATION DESCRIPTIONS -->
     <config-description>
+
+      <!-- GROUP DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: configure LED light state</label>
+        <description>configure LED light state</description>
+        <default>0</default>
+        <options>
+          <option value="0">Power on, LED off</option>
+          <option value="1">Power on, LED on</option>
+        </options>
+      </parameter>
 
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">

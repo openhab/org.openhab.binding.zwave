@@ -62,33 +62,33 @@ Flood Sensor<br /><h1>Overview</h1><p>The SHWM10000 consists of a base unit (det
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Root-Device-Group (Binary Sensor)</label>
+        <label>2: Group 2</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>Binary Sensor Command Class: Compatible with 300 Series</p> <ul><li>Sensor indicates the status of the open or closed door via lifeline.</li> <li>When the sensor changes state between closedand door is opened, the device is triggered.</li> </ul>
+Root-Device-Group (Binary Sensor)<br /><h1>Overview</h1><p>Binary Sensor Command Class: Compatible with 300 Series</p> <ul><li>Sensor indicates the status of the open or closed door via lifeline.</li> <li>When the sensor changes state between closedand door is opened, the device is triggered.</li> </ul>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Root device group</label>
+        <label>3: Group 3</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>Binary Sensor Command Class: Compatible with 300 Series</p> <ul><li>Sensor indicates the status, door sensor has been removed.</li> <li>Device triggers when the sensor changes state tamper button detects.</li> </ul>
+Root device group<br /><h1>Overview</h1><p>Binary Sensor Command Class: Compatible with 300 Series</p> <ul><li>Sensor indicates the status, door sensor has been removed.</li> <li>Device triggers when the sensor changes state tamper button detects.</li> </ul>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Root device group (notification)</label>
+        <label>4: Group 4</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><ul><li>Notification Open or Closed Status via Lifeline</li> <li>Device triggers when the sensor has a status change between closed and opened door recognizes.</li> </ul>
+Root device group (notification)<br /><h1>Overview</h1><ul><li>Notification Open or Closed Status via Lifeline</li> <li>Device triggers when the sensor has a status change between closed and opened door recognizes.</li> </ul>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Root device group (notification)</label>
+        <label>5: Group 5</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><ul><li>Sensor reports the status door sensor has been removed.</li> <li>The device triggers when the sensor changes state tamper button detects.</li> </ul>
+Root device group (notification)<br /><h1>Overview</h1><ul><li>Sensor reports the status door sensor has been removed.</li> <li>The device triggers when the sensor changes state tamper button detects.</li> </ul>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>

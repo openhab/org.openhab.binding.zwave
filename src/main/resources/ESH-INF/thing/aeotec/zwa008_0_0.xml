@@ -154,8 +154,8 @@ Sending a BASIC command to all devices of Association Group 2<br /><h1>Overview<
 
       <parameter name="config_9_2" type="integer" groupName="configuration"
                  min="0" max="32400">
-        <label>9: Time Delay of ‘Off‘ command frame</label>
-        <description>Time Delay of ‘Off‘ command frame</description>
+        <label>9: Time Delay of ‘On‘ command frame</label>
+        <description>Time Delay of ‘On‘ command frame</description>
         <default>0</default>
       </parameter>
 

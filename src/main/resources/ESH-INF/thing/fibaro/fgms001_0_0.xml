@@ -316,7 +316,7 @@ The parameter determines the brightness of LED when indicating motion.<br /><h1>
 
       <parameter name="config_82_2" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>82: Ambient Illumination Level</label>
+        <label>82: Lower Ambient Illumination Level</label>
         <description><![CDATA[
 Below which LED brightness is set to 1%<br /><h1>Overview</h1><p>The parameter is relevant only when the parameter 81 is set to 0.</p> <p>Available settings: 0 to parameter 83 value<br />Default setting: 100 (100 lux)<br />Parameter size: 2 [bytes]</p>
         ]]></description>
@@ -325,7 +325,7 @@ Below which LED brightness is set to 1%<br /><h1>Overview</h1><p>The parameter i
 
       <parameter name="config_83_2" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>83: Ambient Illumination Level</label>
+        <label>83: Upper Ambient Illumination Level</label>
         <description><![CDATA[
 Above which LED brightness is set to 100%<br /><h1>Overview</h1><p>The parameter is relevant only when the parameter 81 is set to 0.</p> <p>Available settings: parameter 82 value to 65535<br />Default setting: 1 000 (1 000 lux)<br />Parameter size: 2 [bytes]</p>
         ]]></description>

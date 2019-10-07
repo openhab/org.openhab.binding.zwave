@@ -215,38 +215,6 @@ Restore switch state mode.<br /><h1>Overview</h1><p>Status of the plug if it is 
         <multipleLimit>5</multipleLimit>
       </parameter>
 
-      <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Root-Device-group (Binary Sensor)</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Binary Sensor Command Class: Compatible with 300 Series</p> <ul><li>Sensor reports the status of the open or closed door via Lifeline.</li> <li>If the sensor detects a status change between closed and open door, the device is triggered.</li> </ul>
-        ]]></description>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Root-Device-group</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Binary Sensor Command Class: Compatible with 300 Series</p> <ul><li>Sensor indicates the status, door sensor has been removed.</li> <li>Device triggers when the sensor changes state tamper button detects.</li> </ul>
-        ]]></description>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Root device group (notification)</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><ul><li>Notification Open or Closed Status via Lifeline</li> <li>Device triggers when the sensor has a status change between closed and opened door recognizes.</li> </ul>
-        ]]></description>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Root device group (notification)</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><ul><li>Sensor reports the status door sensor has been removed.</li> <li>The device triggers when the sensor changes state tamper button detects.</li> </ul>
-        ]]></description>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>

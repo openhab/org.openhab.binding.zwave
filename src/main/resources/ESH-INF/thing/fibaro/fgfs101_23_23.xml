@@ -241,7 +241,7 @@ Silence the Flood Sensor.<br /><h1>Overview</h1><p>The user can silence the Floo
 
       <parameter name="config_76_2" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>76: Visual and audible alarms duration</label>
+        <label>76: Visual and audible alarms retransmit</label>
         <description><![CDATA[
 Period after which an alarm frame will be retransmitted<br /><h1>Overview</h1><p>Parameter determines a time period after which an alarm frame will be retransmitted. The value of 0 cancels an alarm frame retransmission. The value of 65535 means 'each 1 second'. NOTE: In case a time period set in this parameter is shorter th</p>
         ]]></description>

@@ -185,7 +185,7 @@ Dual Digital or Analog Voltage input and Dual Contact Relay<br /><h1>Overview</h
 
       <parameter name="config_9_1_0000003F" type="integer" groupName="configuration"
                  min="0" max="63">
-        <label>9: Sensor 1 Report Interval</label>
+        <label>9: Sensor 2 Report Interval</label>
         <description>Report sensor state every (30s resolution, 0=none, 1=30s, 10=5m, 63=31.5m)</description>
         <default>0</default>
         <limitToOptions>false</limitToOptions>

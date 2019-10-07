@@ -8,7 +8,7 @@
   <thing-type id="willis_nzw31_00_000" listed="false">
     <label>NZW31 In-wall Dimming Switch</label>
     <description><![CDATA[
-In-wall Dimming Switch<br /><h1>Overview</h1><p>Z-Wave Plus dimming switch with instant status reporting.</p>
+In-wall Dimming Switch<br /><h1>Overview</h1><p>Z-Wave Plus dimming switch with instant status reporting.</p> <br /><h2>Inclusion Information</h2><p> Press the top (UP) button 6x within 2 seconds</p> <br /><h2>Exclusion Information</h2><p> triple press the Up/Down push button to exclude it from the network</p>
     ]]></description>
     <category>WallSwitch</category>
 

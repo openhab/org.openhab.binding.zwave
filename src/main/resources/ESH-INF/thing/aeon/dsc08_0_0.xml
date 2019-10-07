@@ -173,14 +173,14 @@ Minimum percent change in wattage for a REPORT to be sent.<br /><h1>Overview</h1
 
       <parameter name="config_112_4" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>112: Interval group 1</label>
+        <label>112: Interval group 2</label>
         <description>The time interval of sending Report group 2</description>
         <default>600</default>
       </parameter>
 
       <parameter name="config_113_4" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>113: Interval group 1</label>
+        <label>113: Interval group 3</label>
         <description>The time interval of sending Report group 3</description>
         <default>600</default>
       </parameter>
