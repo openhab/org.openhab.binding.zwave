@@ -234,7 +234,7 @@ Set the OFF time of output load<br /><h1>Overview</h1><p>256 to 316 The hour val
 
       <parameter name="config_92_1" type="integer" groupName="configuration"
                  min="0" max="100">
-        <label>92: Set the threshold value of wattage</label>
+        <label>92: Set the threshold value of percent power</label>
         <description>Threshold percentage change in wattage for an automatic report</description>
         <default>5</default>
       </parameter>

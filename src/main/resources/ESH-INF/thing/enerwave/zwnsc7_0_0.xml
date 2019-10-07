@@ -8,6 +8,7 @@
   <thing-type id="enerwave_zwnsc7_00_000" listed="false">
     <label>ZWN-SC7 Scene Controller</label>
     <description>Scene Controller</description>
+    <category>RemoteControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

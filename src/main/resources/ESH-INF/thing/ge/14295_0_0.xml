@@ -8,7 +8,7 @@
   <thing-type id="ge_14295_00_000" listed="false">
     <label>GE 14295 In-Wall Dimmer Switch</label>
     <description><![CDATA[
-In-Wall Dimmer Switch<br /><h1>Overview</h1><p>Transform any home into a smart home with the GE Z-Wave In-Wall Smart Toggle Dimmer. The dimmer enables wireless control of on/off and dim functions of hard-wired dimmable LED/CFL and incandescent lighting. The dimmer replaces your current light switch, uses your existing wiring, and provides Z-Wave wireless and in-wall control of overhead lighting. Use the dimmer feature to customize the lighting output and create the perfect ambiance for any room. Providing ultimate flexibility, the In-Wall Smart Dimmer allows you to operate the switch by itself or easily integrate the switch three-way or four-way wiring configurations by adding the GE Add-On Switch. Single Pole wiring configuration controls the light from one location. Three-way wiring configuration controls the light from two separate locations. Four-way wiring configuration controls the light from three separate locations. The GE Add-On Switch is required for three-way or four-way installations. Take control of your home lighting with GE Z-Wave Wireless Lighting Controls!</p> <br /><h2>Inclusion Information</h2><p>1. Follow the instructions for your Z-Wave certified controller to include a device to the Z-Wave network.</p> <p>2. Once the controller is ready to include your device, press and release the top or bottom of the wireless smart dimmer(rocker) to include it in the network. </p> <br /><h2>Exclusion Information</h2><p>1. Follow the instructions for your Z-Wave certified controller to exclude a device from the Z-Wave network.</p> <p>2. Once the controller is ready to Exclude your device, press and release the top or bottom of the wireless smart dimmer (rocker) to exclude it from the network. </p>
+In-Wall Dimmer Switch<br /><h1>Overview</h1><p>Transform any home into a smart home with the GE Z-Wave In-Wall Smart Toggle Dimmer. The dimmer enables wireless control of on/off and dim functions of hard-wired dimmable LED/CFL and incandescent lighting. The dimmer replaces your current light switch, uses your existing wiring, and provides Z-Wave wireless and in-wall control of overhead lighting. Use the dimmer feature to customize the lighting output and create the perfect ambiance for any room. Providing ultimate flexibility, the In-Wall Smart Dimmer allows you to operate the switch by itself or easily integrate the switch three-way or four-way wiring configurations by adding the GE Add-On Switch. Single Pole wiring configuration controls the light from one location. Three-way wiring configuration controls the light from two separate locations. Four-way wiring configuration controls the light from three separate locations. The GE Add-On Switch is required for three-way or four-way installations. Take control of your home lighting with GE Z-Wave Wireless Lighting Controls!</p> <br /><h2>Inclusion Information</h2><ol><li>Follow the instructions for your Z-Wave certified controller to include a device to the Z-Wave network.</li> <li>Once the controller is ready to include your device, press and release the top or bottom of the wireless smart dimmer(rocker) to include it in the network. </li> </ol><br /><h2>Exclusion Information</h2><ol><li>Follow the instructions for your Z-Wave certified controller to exclude a device from the Z-Wave network.</li> <li>Once the controller is ready to Exclude your device, press and release the top or bottom of the wireless smart dimmer (rocker) to exclude it from the network. </li> </ol>
     ]]></description>
     <category>WallSwitch</category>
 
@@ -66,42 +66,42 @@ In-Wall Dimmer Switch<br /><h1>Overview</h1><p>Transform any home into a smart h
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="1" max="99">
-        <label>7: Dim Rate Adjustments</label>
+        <label>7: Dim Rate Steps</label>
         <description>Number of steps or levels</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_8_2" type="integer" groupName="configuration"
                  min="1" max="255">
-        <label>8: Dim Rate Adjustments</label>
+        <label>8: Dim Rate step timing</label>
         <description>Timing of steps or levels</description>
         <default>3</default>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
                  min="1" max="99">
-        <label>9: Dim Rate Adjustments</label>
+        <label>9: Dim 2 Rate Steps</label>
         <description>Number of steps or levels</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_10_2" type="integer" groupName="configuration"
                  min="1" max="255">
-        <label>10: Dim Rate Adjustments</label>
+        <label>10: Dim 2 Step Timing</label>
         <description>Timing of steps</description>
         <default>3</default>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
                  min="1" max="99">
-        <label>11: Dim Rate Adjustments</label>
+        <label>11: Dim 3 Rate Steps</label>
         <description>Number of steps or levels</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="1" max="255">
-        <label>12: Dim Rate Adjustments</label>
+        <label>12: Dim 3 Rate Timing</label>
         <description>Timing of steps or levels</description>
         <default>3</default>
       </parameter>

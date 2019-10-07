@@ -271,7 +271,7 @@ Time to turn the light on and off<br /><h1>Overview</h1><p>value 1 = (range of 0
 
       <parameter name="config_92_1" type="integer" groupName="configuration"
                  min="0" max="100">
-        <label>92: Set the threshold value of wattage.</label>
+        <label>92: Set the threshold percent power</label>
         <description>Set the threshold value of wattage.</description>
         <default>5</default>
       </parameter>

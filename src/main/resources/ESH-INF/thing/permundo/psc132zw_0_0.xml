@@ -17,7 +17,7 @@ Metering Relay Switch, 16A<br /><h1>Overview</h1><p>The wireless flush-mount swi
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="meter_watts" typeId="meter_watts">

@@ -702,33 +702,33 @@ Approximated power at the maximum brightness level<br /><h1>Overview</h1><p>This
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Sends BASIC SET command class</label>
+        <label>2: Group 2</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>Sends BASIC SET command class frame according to the state of the device</p>
+Sends BASIC SET command class<br /><h1>Overview</h1><p>Sends BASIC SET command class frame according to the state of the device</p>
         ]]></description>
         <multipleLimit>10</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Sends BASIC SET command class</label>
+        <label>3: Group 3</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>Sends BASIC SET command class frame according to the state of the device</p>
+Sends BASIC SET command class<br /><h1>Overview</h1><p>Sends BASIC SET command class frame according to the state of the device</p>
         ]]></description>
         <multipleLimit>10</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Sends BASIC SET command class</label>
+        <label>4: Group 4</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>Sends BASIC SET command class frame according to the state of the device</p>
+Sends BASIC SET command class<br /><h1>Overview</h1><p>Sends BASIC SET command class frame according to the state of the device</p>
         ]]></description>
         <multipleLimit>10</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Sends BASIC SET command class</label>
+        <label>5: Group 5</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>Sends BASIC SET command class frame according to the state of the device</p>
+Sends BASIC SET command class<br /><h1>Overview</h1><p>Sends BASIC SET command class frame according to the state of the device</p>
         ]]></description>
         <multipleLimit>10</multipleLimit>
       </parameter>

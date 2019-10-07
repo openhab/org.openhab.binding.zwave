@@ -65,33 +65,33 @@ Smart Door Sensor<br /><h1>Overview</h1><p>Door/Window Contact.</p> <p>Same hard
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Root Device group (Binary Sensor)</label>
+        <label>2: Binary Door status change</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>Description: Binary Sensor Command Classes:Compatible with 300 series<br />1-Binary Sensor reports status of open or close door via Lifeline.<br />2-When the sensor detects status change between close door and open door, the device will be triggered. </p>
+<br /><h1>Overview</h1><p>Description: Binary Sensor Command Classes:Compatible with 300 series<br />1-Binary Sensor reports status of open or close door via Lifeline.<br />2-When the sensor detects status change between close door and open door, the device will be triggered.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Root Device group (Binary Sensor)</label>
+        <label>3: Binary Tamper</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>Description: Binary Sensor Command Classes:Compatible with 300 series<br />1-Binary Sensor reports the removed status of door sensor.<br />2-When the sensor detects status change of tamper, the device will be triggered. </p>
+<br /><h1>Overview</h1><p>Description: Binary Sensor Command Classes:Compatible with 300 series<br />1-Binary Sensor reports the removed status of door sensor.<br />2-When the sensor detects status change of tamper, the device will be triggered.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Root Device group (Notification)</label>
+        <label>4: Notification Door status change</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>1-Notification report open door or close status via Lifeline.<br />2- When the sensor detects status change between close door and open door, the device will be triggered </p>
+<br /><h1>Overview</h1><p>1-Notification report open door or close status via Lifeline.<br />2- When the sensor detects status change between close door and open door, the device will be triggered</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Root Device group (Notification)</label>
+        <label>5: Notification Tamper</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>1-Binary Sensor reports the removed status of door sensor.<br />2- When the sensor detects status change of tamper, the device will be triggered </p>
+<br /><h1>Overview</h1><p>1-Binary Sensor reports the removed status of door sensor.<br />2- When the sensor detects status change of tamper, the device will be triggered</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>

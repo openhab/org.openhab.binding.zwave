@@ -55,13 +55,13 @@ Weather Resistant Outdoor Switch<br /><h1>Overview</h1><p>Maximum load for the Z
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Basic Set</label>
+        <label>2: Group 2</label>
         <description>Association Group 2 supports Basic Set and is controlled by pressing the On or Off button with the local load</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Basic Set</label>
+        <label>3: Group 3</label>
         <description>Association Group 3 supports Basic Set and is controlled by double pressing the On or Off button</description>
         <multipleLimit>5</multipleLimit>
       </parameter>

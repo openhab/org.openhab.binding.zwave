@@ -165,9 +165,9 @@ Node Id of the blocking device<br /><h1>Overview</h1><p>Id of the device which c
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
-        <label>13: On which command from blocking node to enable the protection</label>
+        <label>13: Blocking mode command</label>
         <description><![CDATA[
-On which command from blocking node to enable the protection<br /><h1>Overview</h1><p>Defines which command from blocking device to interpret as closed door and hence, unprotected.</p>
+Blocking mode command<br /><h1>Overview</h1><p>Defines which command from blocking device to interpret as closed door and hence, unprotected.</p>
         ]]></description>
         <default>0</default>
         <options>

@@ -6,7 +6,7 @@
                       http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgt001_00_000" listed="false">
-    <label>FGT-001 Thermostatic Valve</label>
+    <label>FGT001 Thermostatic Valve</label>
     <description><![CDATA[
 Thermostatic Valve<br /><h1>Overview</h1><p>FIBARO Heat Controller is a remotely controlled thermostatic head to control temperature in the room. It measures the temperature and automatically adjust the heat level. It can be mounted without tools on three types of thermostatic radiator valves. It is also possible to create schedules via app to easily manage temperature throughout the week. <br />Main features:</p> <ul><li>to be installed on three types of valves: M30 x 1.5, Danfoss RTD-N and Danfoss RA-N,</li> <li>compatible with any Z-Wave or Z-Wave+ Controller,</li> <li>supports Z-Wave network Security Modes: S0 with AES-128 encryption and S2 with PRNG-based encryption,</li> <li>built-in battery recharged through standard micro-USB port,</li> <li>easy installation - no tools required,</li> <li>can use dedicated temperature sensor,</li> <li>supports heating schedules,</li> <li>automatic calibration,</li> <li>anti-freeze function,</li> <li>decalc function,</li> <li>unconstrained rotation spherical knob to set desired temperature.</li> </ul><br /><h2>Inclusion Information</h2><p>Add the device to the Z-Wave network:</p> <ol><li>Make sure the device is within the direct range of your Z-Wave controller.</li> <li>Set the main controller in (security/non-security) add mode.</li> <li>Use the included key to quickly triple click the button on the thermostatic head.</li> <li>The LED ring will start blinking white.</li> <li>If you are adding in S2 authenticated mode, type in the device pin code (underlined part of the public key on the label).</li> <li>Wait for the adding process to end.</li> <li>Successful adding will be confirmed by the Z-Wave controller.</li> </ol><br /><h2>Exclusion Information</h2><p>To remove the device from the Z-Wave network:</p> <ol><li>Make sure the device is within the direct range of your Z-Wave controller.</li> <li>Set the main controller into remove mode.</li> <li>Use the included key to quickly triple click the button on the thermostatic head.</li> <li>The LED ring will start blinking white.</li> <li>Wait for the removing process to end.</li> <li>Successful removing will be confirmed by the Z-Wave controller.</li> </ol><br /><h2>Wakeup Information</h2><p>FIBARO Heat Controller is a FLiRS device. The FLiRS device alternates between sleep mode and a partially awake mode in which it is listening beam signal. When device receives this beam, it immediately fully wakes up and then communicates with the controller or other Z-Wave device.</p>
     ]]></description>
@@ -120,7 +120,7 @@ Thermostatic Valve<br /><h1>Overview</h1><p>FIBARO Heat Controller is a remotely
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Fibargroup</property>
-      <property name="modelId">FGT-001</property>
+      <property name="modelId">FGT001</property>
       <property name="manufacturerId">010F</property>
       <property name="manufacturerRef">1301:1000</property>
       <property name="dbReference">749</property>

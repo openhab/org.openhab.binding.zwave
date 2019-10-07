@@ -246,9 +246,9 @@ H Delta Aux ON<br /><h1>Overview</h1><p>Sets the delta from setpoint that stage 
 
       <parameter name="config_16_1" type="integer" groupName="configuration"
                  min="0" max="7">
-        <label>16: H Delta Stage 2 OFF</label>
+        <label>16: H Delta Stage 3 OFF</label>
         <description><![CDATA[
-H Delta Stage 2 OFF<br /><h1>Overview</h1><p>Sets the delta from setpoint that stage 3 heating stops</p>
+H Delta Stage 3 OFF<br /><h1>Overview</h1><p>Sets the delta from setpoint that stage 3 heating stops</p>
         ]]></description>
         <default>0</default>
       </parameter>

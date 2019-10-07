@@ -62,7 +62,7 @@ Water Sensor 6<br /><h1>Overview</h1><p>The ZW122  contains 4 sensing points, w
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW122</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0002:007A,0102:007A</property>
+      <property name="manufacturerRef">0002:007A,0102:007A,0202:007A</property>
       <property name="dbReference">721</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -166,7 +166,7 @@ Set the low battery value. (Range: 10% to 50%)<br /><h1>Overview</h1><p>Set the 
 
       <parameter name="config_49_4" type="integer" groupName="configuration"
                  min="0" max="2147483647">
-        <label>49: Set the upper limit value</label>
+        <label>49: Set the upper limit value (overheat)</label>
         <description>Set the upper limit value (overheat)</description>
         <default>0</default>
         <advanced>true</advanced>
@@ -195,14 +195,14 @@ Temperature value<br /><h1>Overview</h1><p>US Version: 0x04100100 (104 °F), oth
 
       <parameter name="config_50_4" type="integer" groupName="configuration"
                  min="0" max="2147483647">
-        <label>50: Set the lower limit value</label>
+        <label>50: Set the lower limit value (underheat)</label>
         <description>Set the lower limit value (underheat)</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_50_4_0000FF00" type="integer" groupName="configuration">
-        <label>50: Temperature unit</label>
+        <label>50: Temperature underheat unit</label>
         <description><![CDATA[
 Celsius or Fahrenheit<br /><h1>Overview</h1><p>0=Celsius, 1=Fahrenheit</p>
         ]]></description>
@@ -215,9 +215,9 @@ Celsius or Fahrenheit<br /><h1>Overview</h1><p>0=Celsius, 1=Fahrenheit</p>
 
       <parameter name="config_50_4_7FFF0000" type="integer" groupName="configuration"
                  min="0" max="32767">
-        <label>50: Temperature value</label>
+        <label>50: Temperature limit value</label>
         <description><![CDATA[
-Temperature value<br /><h1>Overview</h1><p>US Version: 0x01400100 (32 °F), other versions: 0x00000000 (0 °C)</p>
+Temperature limit value<br /><h1>Overview</h1><p>US Version: 0x01400100 (32 °F), other versions: 0x00000000 (0 °C)</p>
         ]]></description>
         <default>1</default>
       </parameter>
@@ -231,7 +231,7 @@ Temperature value<br /><h1>Overview</h1><p>US Version: 0x01400100 (32 °F), othe
       </parameter>
 
       <parameter name="config_57_2_0000000F" type="integer" groupName="configuration">
-        <label>57: Temperature unit</label>
+        <label>57: Temperature recover unit</label>
         <description><![CDATA[
 Celsius or Fahrenheit<br /><h1>Overview</h1><p>0=Celsius, 1=Fahrenheit</p>
         ]]></description>

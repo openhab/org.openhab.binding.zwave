@@ -52,15 +52,24 @@
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association">
-        <label>2: Basic Set Off frame</label>
+        <label>2: Group 2</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Association Group 2 is assigned to sending the Basic Set Off frame to associated device (e.g. another SHDL) while the SHDL is unlocked and sending the Basic Set On frame to associated device while the SHDL is locked with security transport if SHDL was added to network as security node or with non-security transport if SHDL was added to network as non-security node</p>
+        ]]></description>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association">
-        <label>3: Basic Set On frame</label>
+        <label>3: Group 3</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Association Group 3 is assigned to sending the Basic Set On frame to associated devices with non-security transport while the SHDL is unlocked. </p>
+        ]]></description>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association">
-        <label>4: Basic Set Off frame</label>
+        <label>4: Group 4</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Association Group 3 is assigned to sending the Basic Set On frame to associated devices with non-security transport while the SHDL is unlocked. </p>
+        ]]></description>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

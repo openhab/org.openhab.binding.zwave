@@ -71,16 +71,16 @@ Button 1 Partner-Id<br /><h1>Overview</h1><ul><li>When setting Button (EP) to bl
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
+          <option value="0">Partner-Id 0</option>
+          <option value="1">Partner-Id 1</option>
+          <option value="2">Partner-Id 2</option>
+          <option value="3">Partner-Id 3</option>
+          <option value="4">Partner-Id 4</option>
+          <option value="5">Partner-Id 5</option>
+          <option value="6">Partner-Id 6</option>
+          <option value="7">Partner-Id 7</option>
+          <option value="8">Partner-Id 8</option>
+          <option value="9">Partner-Id 9</option>
         </options>
       </parameter>
 
@@ -89,12 +89,12 @@ Button 1 Partner-Id<br /><h1>Overview</h1><ul><li>When setting Button (EP) to bl
         <description>Button 1 Blind Duration</description>
         <default>0</default>
         <options>
-          <option value="3">3 Seconds</option>
-          <option value="10">10 Seconds</option>
-          <option value="30">30 Seconds</option>
-          <option value="60">60 Seconds</option>
-          <option value="90">90 Seconds</option>
-          <option value="120">120 Seconds</option>
+          <option value="3">Duration 3 Seconds</option>
+          <option value="10">Duration 10 Seconds</option>
+          <option value="30">Duration 30 Seconds</option>
+          <option value="60">Duration 60 Seconds</option>
+          <option value="90">Duration 90 Seconds</option>
+          <option value="120">Duration 120 Seconds</option>
         </options>
       </parameter>
 
@@ -151,16 +151,16 @@ Button 2 Partner-Id<br /><h1>Overview</h1><ul><li>When setting Button (EP) to bl
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
+          <option value="0">Partner-Id 0</option>
+          <option value="1">Partner-Id 1</option>
+          <option value="2">Partner-Id 2</option>
+          <option value="3">Partner-Id 3</option>
+          <option value="4">Partner-Id 4</option>
+          <option value="5">Partner-Id 5</option>
+          <option value="6">Partner-Id 6</option>
+          <option value="7">Partner-Id 7</option>
+          <option value="8">Partner-Id 8</option>
+          <option value="9">Partner-Id 9</option>
         </options>
       </parameter>
 
@@ -171,12 +171,12 @@ Button 2 Blind Duration<br /><h1>Overview</h1><p>Possible values</p> <p>3-127</p
         ]]></description>
         <default>0</default>
         <options>
-          <option value="3">3 Seconds</option>
-          <option value="10">10 Seconds</option>
-          <option value="30">30 Seconds</option>
-          <option value="60">60 Seconds</option>
-          <option value="90">90 Seconds</option>
-          <option value="120">120 Seconds</option>
+          <option value="3">Duration 3 Seconds</option>
+          <option value="10">Duration10 Seconds</option>
+          <option value="30">Duration 30 Seconds</option>
+          <option value="60">Duration 60 Seconds</option>
+          <option value="90">Duration 90 Seconds</option>
+          <option value="120">Duration 120 Seconds</option>
         </options>
       </parameter>
 
@@ -231,16 +231,16 @@ Button 3 Partner-Id<br /><h1>Overview</h1><ul><li>When setting Button (EP) to bl
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
+          <option value="0">Partner-Id 0</option>
+          <option value="1">Partner-Id 1</option>
+          <option value="2">Partner-Id 2</option>
+          <option value="3">Partner-Id 3</option>
+          <option value="4">Partner-Id 4</option>
+          <option value="5">Partner-Id 5</option>
+          <option value="6">Partner-Id 6</option>
+          <option value="7">Partner-Id 7</option>
+          <option value="8">Partner-Id 8</option>
+          <option value="9">Partner-Id 9</option>
         </options>
       </parameter>
 
@@ -249,17 +249,17 @@ Button 3 Partner-Id<br /><h1>Overview</h1><ul><li>When setting Button (EP) to bl
         <description>Button 3 Blind Duration</description>
         <default>0</default>
         <options>
-          <option value="3">3 Seconds</option>
-          <option value="30">30 Seconds</option>
-          <option value="60">60 Seconds</option>
-          <option value="90">90 Seconds</option>
-          <option value="120">120 Seconds</option>
+          <option value="3">Duration 3 Seconds</option>
+          <option value="30">Duration 30 Seconds</option>
+          <option value="60">Duration 60 Seconds</option>
+          <option value="90">Duration 90 Seconds</option>
+          <option value="120">Duration 120 Seconds</option>
         </options>
       </parameter>
 
       <parameter name="config_14_1" type="integer" groupName="configuration">
-        <label>14: Button 1 Output</label>
-        <description>Button 1 Output</description>
+        <label>14: Button 3 Output</label>
+        <description>Button 3 Output</description>
         <default>3</default>
         <options>
           <option value="0">No output</option>
@@ -309,15 +309,15 @@ Button 4 Partner-Id<br /><h1>Overview</h1><ul><li>When setting Button (EP) to bl
         <default>0</default>
         <options>
           <option value="0">None</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
+          <option value="1">Partner-Id 1</option>
+          <option value="2">Partner-Id 2</option>
+          <option value="3">Partner-Id 3</option>
+          <option value="4">Partner-Id 4</option>
+          <option value="5">Partner-Id 5</option>
+          <option value="6">Partner-Id 6</option>
+          <option value="7">Partner-Id 7</option>
+          <option value="8">Partner-Id 8</option>
+          <option value="9">Partner-Id 9</option>
         </options>
       </parameter>
 
@@ -326,11 +326,11 @@ Button 4 Partner-Id<br /><h1>Overview</h1><ul><li>When setting Button (EP) to bl
         <description>Button 4 Blind Duration</description>
         <default>0</default>
         <options>
-          <option value="3">3 Seconds</option>
-          <option value="30">30 Seconds</option>
-          <option value="60">60 Seconds</option>
-          <option value="90">90 Seconds</option>
-          <option value="120">120 Seconds</option>
+          <option value="3">Duration 3 Seconds</option>
+          <option value="30">Duration 30 Seconds</option>
+          <option value="60">Duration 60 Seconds</option>
+          <option value="90">Duration 90 Seconds</option>
+          <option value="120">Duration 120 Seconds</option>
         </options>
       </parameter>
 
@@ -386,15 +386,15 @@ Button 5 Partner-Id<br /><h1>Overview</h1><ul><li>When setting Button (EP) to bl
         <default>0</default>
         <options>
           <option value="0">None</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
+          <option value="1">Partner-Id 1</option>
+          <option value="2">Partner-Id 2</option>
+          <option value="3">Partner-Id 3</option>
+          <option value="4">Partner-Id 4</option>
+          <option value="5">Partner-Id 5</option>
+          <option value="6">Partner-Id 6</option>
+          <option value="7">Partner-Id 7</option>
+          <option value="8">Partner-Id 8</option>
+          <option value="9">Partner-Id 9</option>
         </options>
       </parameter>
 
@@ -403,11 +403,11 @@ Button 5 Partner-Id<br /><h1>Overview</h1><ul><li>When setting Button (EP) to bl
         <description>Button 5 Blind Duration</description>
         <default>0</default>
         <options>
-          <option value="3">Seconds</option>
-          <option value="30">30 Seconds</option>
-          <option value="60">60 Seconds</option>
-          <option value="90">90 Seconds</option>
-          <option value="120">120 Seconds</option>
+          <option value="3">Duration 3 Seconds</option>
+          <option value="30">Duration 30 Seconds</option>
+          <option value="60">Duration 60 Seconds</option>
+          <option value="90">Duration 90 Seconds</option>
+          <option value="120">Duration 120 Seconds</option>
         </options>
       </parameter>
 
@@ -463,15 +463,15 @@ Button 6 Partner-Id<br /><h1>Overview</h1><ul><li>When setting Button (EP) to bl
         <default>0</default>
         <options>
           <option value="0">None</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
+          <option value="1">Partner-Id 1</option>
+          <option value="2">Partner-Id 2</option>
+          <option value="3">Partner-Id 3</option>
+          <option value="4">Partner-Id 4</option>
+          <option value="5">Partner-Id 5</option>
+          <option value="6">Partner-Id 6</option>
+          <option value="7">Partner-Id 7</option>
+          <option value="8">Partner-Id 8</option>
+          <option value="9">Partner-Id 9</option>
         </options>
       </parameter>
 
@@ -480,11 +480,11 @@ Button 6 Partner-Id<br /><h1>Overview</h1><ul><li>When setting Button (EP) to bl
         <description>Button 6 Blind Duration</description>
         <default>0</default>
         <options>
-          <option value="3">3 Seconds</option>
-          <option value="30">30 Seconds</option>
-          <option value="60">60 Seconds</option>
-          <option value="90">90 Seconds</option>
-          <option value="120">120 Seconds</option>
+          <option value="3">Duration 3 Seconds</option>
+          <option value="30">Duration 30 Seconds</option>
+          <option value="60">Duration 60 Seconds</option>
+          <option value="90">Duration 90 Seconds</option>
+          <option value="120">Duration 120 Seconds</option>
         </options>
       </parameter>
 
@@ -540,15 +540,15 @@ Button 7 Partner-Id<br /><h1>Overview</h1><ul><li>When setting Button (EP) to bl
         <default>0</default>
         <options>
           <option value="0">None</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
+          <option value="1">Partner-Id 1</option>
+          <option value="2">Partner-Id 2</option>
+          <option value="3">Partner-Id 3</option>
+          <option value="4">Partner-Id 4</option>
+          <option value="5">Partner-Id 5</option>
+          <option value="6">Partner-Id 6</option>
+          <option value="7">Partner-Id 7</option>
+          <option value="8">Partner-Id 8</option>
+          <option value="9">Partner-Id 9</option>
         </options>
       </parameter>
 
@@ -557,11 +557,11 @@ Button 7 Partner-Id<br /><h1>Overview</h1><ul><li>When setting Button (EP) to bl
         <description>Button 7 Blind Duration</description>
         <default>0</default>
         <options>
-          <option value="3">3 Seconds</option>
-          <option value="30">30 Seconds</option>
-          <option value="60">60 Seconds</option>
-          <option value="90">90 Seconds</option>
-          <option value="120">120 Seconds</option>
+          <option value="3">Duration 3 Seconds</option>
+          <option value="30">Duration 30 Seconds</option>
+          <option value="60">Duration 60 Seconds</option>
+          <option value="90">Duration 90 Seconds</option>
+          <option value="120">Duration 120 Seconds</option>
         </options>
       </parameter>
 
@@ -617,15 +617,15 @@ Button 8 Partner-Id<br /><h1>Overview</h1><ul><li>When setting Button (EP) to bl
         <default>0</default>
         <options>
           <option value="0">None</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
+          <option value="1">Partner-Id 1</option>
+          <option value="2">Partner-Id 2</option>
+          <option value="3">Partner-Id 3</option>
+          <option value="4">Partner-Id 4</option>
+          <option value="5">Partner-Id 5</option>
+          <option value="6">Partner-Id 6</option>
+          <option value="7">Partner-Id 7</option>
+          <option value="8">Partner-Id 8</option>
+          <option value="9">Partner-Id 9</option>
         </options>
       </parameter>
 
@@ -634,11 +634,11 @@ Button 8 Partner-Id<br /><h1>Overview</h1><ul><li>When setting Button (EP) to bl
         <description>Button 8 Blind Duration</description>
         <default>0</default>
         <options>
-          <option value="3">3 Seconds</option>
-          <option value="30">30 Seconds</option>
-          <option value="60">60 Seconds</option>
-          <option value="90">90 Seconds</option>
-          <option value="120">120 Seconds</option>
+          <option value="3">Duration 3 Seconds</option>
+          <option value="30">Duration 30 Seconds</option>
+          <option value="60">Duration 60 Seconds</option>
+          <option value="90">Duration 90 Seconds</option>
+          <option value="120">Duration 120 Seconds</option>
         </options>
       </parameter>
 
@@ -695,15 +695,15 @@ Button 9 Partner-Id<br /><h1>Overview</h1><ul><li>When setting Button (EP) to bl
         <default>0</default>
         <options>
           <option value="0">None</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
+          <option value="1">Partner-Id 1</option>
+          <option value="2">Partner-Id 2</option>
+          <option value="3">Partner-Id 3</option>
+          <option value="4">Partner-Id 4</option>
+          <option value="5">Partner-Id 5</option>
+          <option value="6">Partner-Id 6</option>
+          <option value="7">Partner-Id 7</option>
+          <option value="8">Partner-Id 8</option>
+          <option value="9">Partner-Id 9</option>
         </options>
       </parameter>
 
@@ -712,11 +712,11 @@ Button 9 Partner-Id<br /><h1>Overview</h1><ul><li>When setting Button (EP) to bl
         <description>Button 9 Blind Duration</description>
         <default>0</default>
         <options>
-          <option value="3">3 Seconds</option>
-          <option value="30">30 Seconds</option>
-          <option value="60">60 Seconds</option>
-          <option value="90">90 Seconds</option>
-          <option value="120">120 Seconds</option>
+          <option value="3">Duration 3 Seconds</option>
+          <option value="30">Duration 30 Seconds</option>
+          <option value="60">Duration 60 Seconds</option>
+          <option value="90">Duration 90 Seconds</option>
+          <option value="120">Duration 120 Seconds</option>
         </options>
       </parameter>
 
@@ -796,7 +796,7 @@ Save and Reset<br /><h1>Overview</h1><p>255 = save and reset</p>
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">0</option>
+          <option value="0">Do NOT Save and Reset</option>
           <option value="255">Save and Reset</option>
         </options>
       </parameter>
@@ -808,218 +808,290 @@ Save and Reset<br /><h1>Overview</h1><p>255 = save and reset</p>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: SWITCH_BINARY_SET</label>
-        <description>EP1_SWITCH_BINARY_SET</description>
+        <label>2: EP1_SWITCH_BINARY_SET</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_BINARY_SET</p> <p>EP1_SWITCH_BINARY_SET</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: SWITCH_BINARY_REPORT</label>
-        <description>EP1_SWITCH_BINARY_REPORT</description>
+        <label>3: EP1_SWITCH_BINARY_REPORT</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_BINARY_REPORT </p> <p>EP1_SWITCH_BINARY_REPORT</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: SWITCH_MULTILEVEL_SET</label>
-        <description>EP1_SWITCH_MULTILEVEL_SET</description>
+        <label>4: EP1_SWITCH_MULTILEVEL_SET</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_MULTILEVEL_SET</p> <p>EP1_SWITCH_MULTILEVEL_SET</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: SWITCH_MULTILEVEL_REPORT</label>
-        <description>EP1_SWITCH_MULTILEVEL_REPORT</description>
+        <label>5: EP1_SWITCH_MULTILEVEL_REPORT</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_MULTILEVEL_REPORT</p> <p>EP1_SWITCH_MULTILEVEL_REPORT</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_6" type="text" groupName="association" multiple="true">
-        <label>6: SWITCH_BINARY_SET</label>
-        <description>EP2_SWITCH_BINARY_SET</description>
+        <label>6: EP2_SWITCH_BINARY_SET</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_BINARY_SET</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_7" type="text" groupName="association" multiple="true">
-        <label>7: SWITCH_BINARY_REPORT</label>
-        <description>EP2_SWITCH_BINARY_REPORT</description>
+        <label>7: EP2_SWITCH_BINARY_REPORT</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_BINARY_REPORT</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_8" type="text" groupName="association" multiple="true">
-        <label>8: SWITCH_MULTILEVEL_SET</label>
-        <description>EP2_SWITCH_MULTILEVEL_SET</description>
+        <label>8: EP2_SWITCH_MULTILEVEL_SET</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_MULTILEVEL_SET</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_9" type="text" groupName="association" multiple="true">
-        <label>9: SWITCH_MULTILEVEL_REPORT</label>
-        <description>EP2_SWITCH_MULTILEVEL_REPORT</description>
+        <label>9: EP2_SWITCH_MULTILEVEL_REPORT</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_MULTILEVEL_REPORT</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_10" type="text" groupName="association" multiple="true">
-        <label>10: SWITCH_BINARY_SET</label>
-        <description>EP3_SWITCH_BINARY_SET</description>
+        <label>10: EP3_SWITCH_BINARY_SET</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_BINARY_SET</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_11" type="text" groupName="association" multiple="true">
-        <label>11: SWITCH_BINARY_REPORT</label>
-        <description>EP3_SWITCH_BINARY_REPORT</description>
+        <label>11: EP3_SWITCH_BINARY_REPORT</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_BINARY_REPORT</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_12" type="text" groupName="association" multiple="true">
-        <label>12: SWITCH_MULTILEVEL_SET</label>
-        <description>EP3_SWITCH_MULTILEVEL_SET</description>
+        <label>12: EP3_SWITCH_MULTILEVEL_SET</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_MULTILEVEL_SET</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_13" type="text" groupName="association" multiple="true">
-        <label>13: SWITCH_MULTILEVEL_REPORT</label>
-        <description>EP3_SWITCH_MULTILEVEL_REPORT</description>
+        <label>13: EP3_SWITCH_MULTILEVEL_REPORT</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_MULTILEVEL_REPORT</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_14" type="text" groupName="association" multiple="true">
-        <label>14: SWITCH_BINARY_SET</label>
-        <description>EP4_SWITCH_BINARY_SET</description>
+        <label>14: EP4_SWITCH_BINARY_SET</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_BINARY_SET</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_15" type="text" groupName="association" multiple="true">
-        <label>15: SWITCH_BINARY_REPORT</label>
-        <description>EP4_SWITCH_BINARY_REPORT</description>
+        <label>15: EP4_SWITCH_BINARY_REPORT</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_BINARY_REPORT</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_16" type="text" groupName="association" multiple="true">
-        <label>16: SWITCH_MULTILEVEL_SET</label>
-        <description>EP4_SWITCH_MULTILEVEL_SET</description>
+        <label>16: EP4_SWITCH_MULTILEVEL_SET</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_MULTILEVEL_SET</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_17" type="text" groupName="association" multiple="true">
-        <label>17: SWITCH_MULTILEVEL_REPORT</label>
-        <description>EP4_SWITCH_MULTILEVEL_REPORT</description>
+        <label>17: EP4_SWITCH_MULTILEVEL_REPORT</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_MULTILEVEL_REPORT</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_18" type="text" groupName="association" multiple="true">
-        <label>18: SWITCH_BINARY_SET</label>
-        <description>EP5_SWITCH_BINARY_SET</description>
+        <label>18: EP5_SWITCH_BINARY_SET</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_BINARY_SET</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_19" type="text" groupName="association" multiple="true">
-        <label>19: SWITCH_BINARY_REPORT</label>
-        <description>EP5_SWITCH_BINARY_REPORT</description>
+        <label>19: EP5_SWITCH_BINARY_REPORT</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_BINARY_REPORT</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_20" type="text" groupName="association" multiple="true">
-        <label>20: SWITCH_MULTILEVEL_SET</label>
-        <description>EP5_SWITCH_MULTILEVEL_SET</description>
+        <label>20: EP5_SWITCH_MULTILEVEL_SET</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_MULTILEVEL_SET</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_21" type="text" groupName="association" multiple="true">
-        <label>21: SWITCH_MULTILEVEL_REPORT</label>
-        <description>EP5_SWITCH_MULTILEVEL_REPORT</description>
+        <label>21: EP5_SWITCH_MULTILEVEL_REPORT</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_MULTILEVEL_REPORT</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_22" type="text" groupName="association" multiple="true">
-        <label>22: SWITCH_BINARY_SET</label>
-        <description>EP6_SWITCH_BINARY_SET</description>
+        <label>22: EP6_SWITCH_BINARY_SET</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_BINARY_SET</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_23" type="text" groupName="association" multiple="true">
-        <label>23: SWITCH_BINARY_REPORT</label>
-        <description>EP6_SWITCH_BINARY_REPORT</description>
+        <label>23: EP6_SWITCH_BINARY_REPORT</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_BINARY_REPORT</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_24" type="text" groupName="association" multiple="true">
-        <label>24: SWITCH_MULTILEVEL_SET</label>
-        <description>EP6_SWITCH_MULTILEVEL_SET</description>
+        <label>24: EP6_SWITCH_MULTILEVEL_SET</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_MULTILEVEL_SET</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_25" type="text" groupName="association" multiple="true">
-        <label>25: SWITCH_MULTILEVEL_REPORT</label>
-        <description>EP6_SWITCH_MULTILEVEL_REPORT</description>
+        <label>25: EP6_SWITCH_MULTILEVEL_REPORT</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_MULTILEVEL_REPORT</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_26" type="text" groupName="association" multiple="true">
-        <label>26: SWITCH_BINARY_SET</label>
-        <description>EP7_ SWITCH_BINARY_SET</description>
+        <label>26: EP7_ SWITCH_BINARY_SET</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_BINARY_SET</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_27" type="text" groupName="association" multiple="true">
-        <label>27: SWITCH_BINARY_REPORT</label>
-        <description>EP7_SWITCH_BINARY_REPORT</description>
+        <label>27: EP7_SWITCH_BINARY_REPORT</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_BINARY_REPORT</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_28" type="text" groupName="association" multiple="true">
-        <label>28: SWITCH_MULTILEVEL_SET</label>
-        <description>EP7_ SWITCH_MULTILEVEL_SET</description>
+        <label>28: EP7_ SWITCH_MULTILEVEL_SET</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_MULTILEVEL_SET</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_29" type="text" groupName="association" multiple="true">
-        <label>29: SWITCH_MULTILEVEL_REPORT</label>
-        <description>EP7_ SWITCH_MULTILEVEL_REPORT</description>
+        <label>29: EP7_ SWITCH_MULTILEVEL_REPORT</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_MULTILEVEL_REPORT</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_30" type="text" groupName="association" multiple="true">
-        <label>30: SWITCH_BINARY_SET</label>
-        <description>EP8_SWITCH_BINARY_SET</description>
+        <label>30: EP8_SWITCH_BINARY_SET</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_BINARY_SET</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_31" type="text" groupName="association" multiple="true">
-        <label>31: SWITCH_BINARY_REPORT</label>
-        <description>EP8_ SWITCH_BINARY_REPORT</description>
+        <label>31: EP8_ SWITCH_BINARY_REPORT</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_BINARY_REPORT</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_32" type="text" groupName="association" multiple="true">
-        <label>32: SWITCH_MULTILEVEL_SET</label>
-        <description>EP8_ SWITCH_MULTILEVEL_SET</description>
+        <label>32: EP8_ SWITCH_MULTILEVEL_SET</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_MULTILEVEL_SET</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_33" type="text" groupName="association" multiple="true">
-        <label>33: SWITCH_MULTILEVEL_REPORT</label>
-        <description>EP8_ SWITCH_MULTILEVEL_REPORT</description>
+        <label>33: EP8_ SWITCH_MULTILEVEL_REPORT</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_MULTILEVEL_REPORT</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_34" type="text" groupName="association" multiple="true">
-        <label>34: SWITCH_BINARY_SET</label>
-        <description>EP9_ SWITCH_BINARY_SET</description>
+        <label>34: EP9_ SWITCH_BINARY_SET</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_BINARY_SET</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_35" type="text" groupName="association" multiple="true">
-        <label>35: SWITCH_BINARY_REPORT</label>
-        <description>EP9_SWITCH_BINARY_REPORT</description>
+        <label>35: EP9_SWITCH_BINARY_REPORT</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_BINARY_REPORT</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_36" type="text" groupName="association" multiple="true">
-        <label>36: SWITCH_MULTILEVEL_SET</label>
-        <description>EP9_ SWITCH_MULTILEVEL_SET</description>
+        <label>36: EP9_ SWITCH_MULTILEVEL_SET</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_MULTILEVEL_SET</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_37" type="text" groupName="association" multiple="true">
-        <label>37: SWITCH_MULTILEVEL_REPORT</label>
-        <description>EP9_ SWITCH_MULTILEVEL_REPORT</description>
+        <label>37: EP9_ SWITCH_MULTILEVEL_REPORT</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>SWITCH_MULTILEVEL_REPORT</p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

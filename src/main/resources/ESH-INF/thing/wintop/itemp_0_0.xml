@@ -7,7 +7,9 @@
 
   <thing-type id="wintop_itemp_00_000" listed="false">
     <label>ITEMP Contact and temperature sensor</label>
-    <description>Contact and temperature sensor</description>
+    <description><![CDATA[
+Contact and temperature sensor<br /><h1>Overview</h1><p>Binary &amp; Temperature sensor</p> <br /><h2>Inclusion Information</h2><p>Remove the cover and press the tamper switch for 3 seconds until the red LED blinks.</p> <br /><h2>Exclusion Information</h2><p>Remove the cover and press the tamper switch for 3 seconds until the red LED blinks.</p> <br /><h2>Wakeup Information</h2><p>Remove the cover and press the tamper switch for 3 seconds until the red LED blinks.</p>
+    ]]></description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -83,7 +85,9 @@
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Operating Mode</label>
-        <description>Defines if the sensor is in normal wakeup mode or always on (drains battery fast)</description>
+        <description><![CDATA[
+Operating Mode<br /><h1>Overview</h1><p>Defines if the sensor is in normal wakeup mode or always on (drains battery fast)</p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="1">Normal Wakeup (default)</option>
@@ -94,7 +98,9 @@
       <parameter name="config_6_2" type="integer" groupName="configuration"
                  min="0" max="15300">
         <label>6: Temperature Offset</label>
-        <description>Can be used to calibrate the temperature sensors function. Calibrated as factory default.</description>
+        <description><![CDATA[
+Temperature Offset<br /><h1>Overview</h1><p>Can be used to calibrate the temperature sensors function. Calibrated as factory default.</p>
+        ]]></description>
         <default>0</default>
       </parameter>
 

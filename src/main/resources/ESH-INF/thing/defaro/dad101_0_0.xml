@@ -192,7 +192,7 @@ Sets turn on delay<br /><h1>Overview</h1><p>In seconds</p>
 
       <parameter name="config_13_2" type="integer" groupName="configuration"
                  min="0" max="1800">
-        <label>13: Smart delay</label>
+        <label>13: Smart delay for dimmer</label>
         <description><![CDATA[
 Smart delay for dimmer<br /><h1>Overview</h1><p>In seconds (see Parameter 14)</p>
         ]]></description>
@@ -206,7 +206,7 @@ Smart delay for dimmer<br /><h1>Overview</h1><p>In seconds (see Parameter 14)</p
 
       <parameter name="config_14_1" type="integer" groupName="configuration"
                  min="0" max="2">
-        <label>14: Smart delay</label>
+        <label>14: Smart delay mode</label>
         <description><![CDATA[
 Smart delay mode<br /><h1>Overview</h1><p>DAD-101</p> <p>0 - implicit smart delay</p> <p>1 - use smart delay for all devices NOT in Group 1. Also smart delay ignored for controller and button issued commands</p> <p>2 - use smart delay for all devices IN Group 1. Also smart delay will be used for controller and button issued commands</p>
         ]]></description>

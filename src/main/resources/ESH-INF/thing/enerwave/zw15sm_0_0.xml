@@ -78,9 +78,9 @@ Binary Switch + Meter<br /><h1>Overview</h1><p>The on/off switch replaces your c
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>8: Instant Energy Autosend Interval</label>
+        <label>8: METER_REPORT Instant Energy Interval</label>
         <description><![CDATA[
-Instant Energy Autosend Interval (METER_REPORT)<br /><h1>Overview</h1><p>Send METER_REPORT at this interval</p> <p>0 means to not send</p>
+METER_REPORT Instant Energy Interval<br /><h1>Overview</h1><p>Send METER_REPORT at this interval</p> <p>0 means to not send</p>
         ]]></description>
         <default>0</default>
       </parameter>
