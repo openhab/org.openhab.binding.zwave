@@ -70,15 +70,15 @@ public class ZWaveProtectionConverter extends ZWaveCommandClassConverter {
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_PROTECTION, channel.getEndpoint());
 
         if (commandClass == null) {
+            logger.debug("NODE {}: Protection command class not found", node.getNodeId());
             return null;
         }
+        logger.debug("NODE {}: Protection command {} received for {}", node.getNodeId(), type, command.toString());
 
         ZWaveCommandClassTransactionPayload serialMessage = null;
 
         if (type != null) {
-            if (Type.PROTECTION_LOCAL.name().equals(type)) {
-                logger.debug("NODE {}: Local Protection command received for {}", node.getNodeId(), command.toString());
-
+            if (Type.PROTECTION_LOCAL.name().equalsIgnoreCase(type)) {
                 int value = ((DecimalType) command).intValue();
                 if (value >= 0 && value < LocalProtectionType.values().length) {
                     serialMessage = node.encapsulate(
@@ -87,9 +87,7 @@ public class ZWaveProtectionConverter extends ZWaveCommandClassConverter {
                 }
 
             }
-            if (Type.PROTECTION_RF.name().equals(type)) {
-                logger.debug("NODE {}: rf Protection command received for {}", node.getNodeId(), command.toString());
-
+            if (Type.PROTECTION_RF.name().equalsIgnoreCase(type)) {
                 int value = ((DecimalType) command).intValue();
                 if (value >= 0 && value < RfProtectionType.values().length) {
                     serialMessage = node.encapsulate(
