@@ -158,9 +158,9 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
      */
     private class ZWaveReceiveThread extends Thread implements SerialPortEventListener {
 
-        private final int SEARCH_SOF = 0;
-        private final int SEARCH_LEN = 1;
-        private final int SEARCH_DAT = 2;
+        private static final int SEARCH_SOF = 0;
+        private static final int SEARCH_LEN = 1;
+        private static final int SEARCH_DAT = 2;
 
         private int rxState = SEARCH_SOF;
         private int messageLength;
