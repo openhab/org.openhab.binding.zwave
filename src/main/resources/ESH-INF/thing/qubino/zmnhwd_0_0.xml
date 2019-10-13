@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="qubino_zmnhwd_00_000" listed="false">
     <label>ZMNHWD Qubino Flush RGBW Dimmer</label>
@@ -15,7 +15,7 @@ Qubino Flush RGBW Dimmer<br /><h1>Overview</h1><p>Qubino Flush RGBW module contr
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
+        <label>Switch [Deprecated]</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
         </properties>
@@ -40,6 +40,18 @@ Qubino Flush RGBW Dimmer<br /><h1>Overview</h1><p>Qubino Flush RGBW module contr
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_COLORcolorMode=DIFF_WHITE</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param5" typeId="qubino_zmnhwd_00_000_config_decimal_param5">
+        <label>Scene</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=5</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param6" typeId="config_decimal">
+        <label>Scene Color Change Duration</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=6</property>
         </properties>
       </channel>
       <channel id="switch_dimmer1" typeId="switch_dimmer">
@@ -294,5 +306,21 @@ Dimming time when key pressed<br /><h1>Overview</h1><p>1 – 127 = from 1 to 127
     </config-description>
 
   </thing-type>
+
+  <channel-type id="qubino_zmnhwd_00_000_config_decimal_param5">
+    <item-type>Number</item-type>
+    <label>Auto scene mode set</label>
+    <description>Activation of the programmed scene changing color shades.</description>
+    <state pattern="%s">
+      <options>
+        <option value="1">Ocean</option>
+        <option value="2">Lightning</option>
+        <option value="3">Rainbow</option>
+        <option value="4">Snow</option>
+        <option value="5">Romantic</option>
+        <option value="6">Party scene</option>
+      </options>
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>

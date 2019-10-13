@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="cooper_rf9540n_00_000" listed="false">
     <label>RF9540-N All Load Dimmer Light Switch</label>
@@ -58,7 +58,7 @@ All Load Dimmer Light Switch<br /><h1>Overview</h1><p><strong>OPERATION INSTRUCT
       <property name="vendor">Cooper Wiring Devices</property>
       <property name="modelId">RF9540-N</property>
       <property name="manufacturerId">001A</property>
-      <property name="manufacturerRef">4449:0101,4449:AA00</property>
+      <property name="manufacturerRef">4449:0101,4449:AA00,4449:FF00</property>
       <property name="dbReference">16</property>
       <property name="defaultAssociations">1,255</property>
     </properties>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="reitz_05431_00_000" listed="false">
     <label>Reitz 05431 Duewi ZW BJ ES 1000 / Reitz 05431 / ZWave.me 05457 Single button wall switch</label>
@@ -92,9 +92,9 @@ Switch on dimming by buttons<br /><h1>Overview</h1><p>Defines if the switch shou
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
-        <label>5: Switch on dimming by buttons</label>
+        <label>5: restore switch state</label>
         <description><![CDATA[
-Switch on dimming by buttons<br /><h1>Overview</h1><p>Defines if the switch should restore switch state to the last state prior to device power off (power cycle).</p>
+restore switch state<br /><h1>Overview</h1><p>Defines if the switch should restore switch state to the last state prior to device power off (power cycle).</p>
         ]]></description>
         <default>1</default>
         <options>

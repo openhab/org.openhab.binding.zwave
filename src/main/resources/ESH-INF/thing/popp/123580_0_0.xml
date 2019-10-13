@@ -131,7 +131,7 @@ Baby dimming time<br /><h1>Overview</h1><p>Time to dim on double click Off butto
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
                  min="0" max="100">
-        <label>9: Baby target level</label>
+        <label>9: Baby target light level</label>
         <description><![CDATA[
 Baby target level<br /><h1>Overview</h1><p>Target percentage level on which to stop while executing Baby Dimming. Can be 0 to completely switch off the light.</p>
         ]]></description>
@@ -140,7 +140,7 @@ Baby target level<br /><h1>Overview</h1><p>Target percentage level on which to s
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="0" max="100">
-        <label>10: Baby target level</label>
+        <label>10: Baby target time level</label>
         <description><![CDATA[
 Baby target level<br /><h1>Overview</h1><p>Typical time used to differentiate click, hold, double and triple clicks.</p> <p>Set in 10ms steps.</p>
         ]]></description>

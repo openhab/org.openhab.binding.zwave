@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgbs222_00_000" listed="false">
     <label>FGBS222 Smart Implant</label>
@@ -65,7 +65,7 @@ Smart Implant<br /><h1>Overview</h1><p>Allows to enhance the functionality of wi
       <channel id="protection_rf5" typeId="protection_rf">
         <label>Protection RF Output 1</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION:5;type=PROTECTION_LOCAL</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION:5;type=PROTECTION_RF</property>
         </properties>
       </channel>
       <channel id="switch_binary6" typeId="switch_binary">
@@ -83,7 +83,7 @@ Smart Implant<br /><h1>Overview</h1><p>Allows to enhance the functionality of wi
       <channel id="protection_rf6" typeId="protection_rf">
         <label>Protection RF Output 2</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION:6;type=PROTECTION_LOCAL</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION:6;type=PROTECTION_RF</property>
         </properties>
       </channel>
       <channel id="alarm_heat7" typeId="alarm_heat">
