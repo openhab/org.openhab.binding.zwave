@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="yale_yrl256_01_078" listed="false">
-    <label>YRL256 Yale Assure Key Free Touchscreen Lever Lock</label>
+    <label>US2.0 CP2-5-3 Yale Real Living™ Z-Wave Module</label>
     <description><![CDATA[
-Yale Assure Key Free Touchscreen Lever Lock<br /><h1>Overview</h1><p>Yale Assure Key Free Touchscreen Lever Lock</p> <br /><h2>Inclusion Information</h2><p>To include the lock in a Z-Wave Network:</p> <ol><li>Touch the Yale Icon on the touchscreen to activate</li> <li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 1, then #</li> </ol><p>The lock will now be in inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>To exclude the lock in a Z-Wave Network:</p> <ol><li>Touch the Yale Icon on the touchscreen to activate</li> <li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 3, then #</li> </ol><p>The lock will now be in exclusion mode.</p>
+Yale Real Living™ Z-Wave Module<br /><h1>Overview</h1><ul><li>Adds Z-wave connectivity to compatible Yale Real Living locks. Must be paired with a Z-wave controller (sold separately) in order to add remote control and access functionality to your Yale lock.</li> <li>Compatible with these deadbolt and lever locks: YRD210, YRD220, YRD240, YRL210, YRL220</li> <li>Not compatible with Yale Assure Locks or NexTouch Locks. Also not compatible with Apple Home Kit</li> </ul><br /><h2>Inclusion Information</h2><p>To include the lock in a Z-Wave Network:</p> <ol><li>Touch the Yale Icon on the touchscreen to activate</li> <li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 1, then #</li> </ol><p>The lock will now be in inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>To exclude the lock in a Z-Wave Network:</p> <ol><li>Touch the Yale Icon on the touchscreen to activate</li> <li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 3, then #</li> </ol><p>The lock will now be in exclusion mode.</p>
     ]]></description>
     <category>Lock</category>
 
@@ -54,7 +54,7 @@ Yale Assure Key Free Touchscreen Lever Lock<br /><h1>Overview</h1><p>Yale Assure
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">ASSA ABLOY</property>
-      <property name="modelId">YRL256</property>
+      <property name="modelId">US2.0 CP2-5-3</property>
       <property name="manufacturerId">0129</property>
       <property name="manufacturerRef">800C:0F00</property>
       <property name="versionMin">1.78</property>
