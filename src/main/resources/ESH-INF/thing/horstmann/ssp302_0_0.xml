@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="horstmann_ssp302_00_000" listed="false">
     <label>SSP302 Switch Meter Plugin</label>
@@ -63,7 +63,7 @@ Switch Meter Plugin<br /><h1>Overview</h1><p>ON/OFF module with energy metering<
       <property name="vendor">Horstmann Controls Limited</property>
       <property name="modelId">SSP302</property>
       <property name="manufacturerId">0059</property>
-      <property name="manufacturerRef">0011:0001</property>
+      <property name="manufacturerRef">000E:0001,0011:0001</property>
       <property name="dbReference">1121</property>
       <property name="defaultAssociations">1</property>
     </properties>

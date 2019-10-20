@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeotec_zw164_00_000" listed="false">
     <label>ZW164 Indoor Siren 6 and Doorbell 6</label>
@@ -81,7 +81,7 @@ Indoor Siren 6 and Doorbell 6<br /><h1>Overview</h1><p>Siren 6 is your home’s 
       <property name="vendor">Aeotec Limited</property>
       <property name="modelId">ZW164</property>
       <property name="manufacturerId">0371</property>
-      <property name="manufacturerRef">0003:00A4,0103:00A2,0103:00A4,0203:00A4</property>
+      <property name="manufacturerRef">0003:00A2,0003:00A4,0103:00A2,0103:00A4,0203:00A4</property>
       <property name="dbReference">1089</property>
       <property name="defaultAssociations">1</property>
     </properties>
