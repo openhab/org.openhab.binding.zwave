@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zooz_zse08_00_000" listed="false">
     <label>ZSE08 Z-Wave Plus Contact Sensor</label>
@@ -80,7 +80,7 @@ The value that will be set when the sensor is triggered<br /><h1>Overview</h1><p
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Status</label>
         <description><![CDATA[
-Open/Close Status of sensor<br /><h1>Overview</h1><p>Group 1 for lifeline communication of open / closed status to Z-Wave controller. Supported command classes:</p> <ul><li>NOTIFICATION_REPORT</li> <li>BATTERY_REPORT</li> <li>SENSOR_BINARY_REPORT</li> <li>DEVICE_RESET_LOCALLY_NOTIFICATION</li> </ul>
+Lifeline<br /><h1>Overview</h1><p>Group 1 for lifeline communication of open / closed status to Z-Wave controller. Supported command classes:</p> <ul><li>NOTIFICATION_REPORT</li> <li>BATTERY_REPORT</li> <li>SENSOR_BINARY_REPORT</li> <li>DEVICE_RESET_LOCALLY_NOTIFICATION</li> </ul>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>

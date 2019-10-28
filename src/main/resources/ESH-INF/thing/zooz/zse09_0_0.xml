@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zooz_zse09_00_000" listed="false">
     <label>ZSE09 Motion and Light Mini Sensor</label>
@@ -154,7 +154,7 @@ Light level change to be reported.<br /><h1>Overview</h1><p>Choose light level (
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Status to controller</label>
+        <label>1: Lifeline</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p>lifeline communication of motion / no motion and light level status to Z-Wave controller. Supported command classes: NOTIFICATION_REPORT_V4 SENSOR_BINARY_REPORT_V2 SENSOR_MULTILEVEL_REPORT_V7 BATTERY_REPORT DEVICE_RESET_LOCALLY_NOTIFICATION</p>
         ]]></description>

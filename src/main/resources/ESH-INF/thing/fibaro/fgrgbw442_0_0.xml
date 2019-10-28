@@ -94,7 +94,7 @@ RGBW CONTROLLER 2<br /><h1>Overview</h1><p>FIBARO RGBW Controller 2 uses PWM out
       <channel id="color_color1" typeId="color_color">
         <label>Color Control 1</label>
         <properties>
-          <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR:1</property>
+          <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR:1;colorMode=RGB</property>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
         </properties>
