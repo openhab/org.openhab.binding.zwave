@@ -63,7 +63,7 @@ Switch Meter Plugin<br /><h1>Overview</h1><p>ON/OFF module with energy metering<
       <property name="vendor">Horstmann Controls Limited</property>
       <property name="modelId">SSP302</property>
       <property name="manufacturerId">0059</property>
-      <property name="manufacturerRef">000E:0001,0011:0001</property>
+      <property name="manufacturerRef">0011:0001</property>
       <property name="dbReference">1121</property>
       <property name="defaultAssociations">1</property>
     </properties>
