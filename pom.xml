@@ -21,6 +21,7 @@
     <report.fail.on.error>false</report.fail.on.error>
     <spotless.version>1.24.3</spotless.version>
     <spotless.check.skip>true</spotless.check.skip> <!-- Spotless disabled for now -->
+    <sat.version>0.8.0</sat.version>
   </properties>
 
   <scm>
@@ -68,7 +69,7 @@
         <plugin>
           <groupId>org.openhab.tools.sat</groupId>
           <artifactId>sat-plugin</artifactId>
-          <version>0.6.1</version>
+          <version>${sat.version}</version>
           <executions>
             <execution>
               <id>sat-all</id>
@@ -148,9 +149,9 @@
           </configuration>
           <dependencies>
             <dependency>
-              <groupId>org.openhab.core.tools.codestyle</groupId>
-              <artifactId>org.openhab.core.reactor.tools.codestyle</artifactId>
-              <version>${project.version}</version>
+              <groupId>org.openhab.tools</groupId>
+              <artifactId>openhab-codestyle</artifactId>
+              <version>${sat.version}</version>
             </dependency>
           </dependencies>
           <executions>
