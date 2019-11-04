@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeotec_zwa008_00_000" listed="false">
     <label>ZWA008 Door/Window Sensor 7</label>
@@ -201,6 +201,15 @@ Sending a BASIC command to all devices of Association Group 2<br /><h1>Overview<
           <option value="0">Disabled</option>
           <option value="1">Enabled</option>
         </options>
+      </parameter>
+
+      <parameter name="config_15_1" type="integer" groupName="configuration"
+                 min="1" max="100">
+        <label>15: Tilt sensitivity</label>
+        <description><![CDATA[
+Tilt sensitivity adjustment<br /><h1>Overview</h1><p>You can use this parameter to adjust the tilt sensitivity if the tilt is too low or too high.<br />100 high sensitivity, 1 very low. The default is 50.</p>
+        ]]></description>
+        <default>50</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
