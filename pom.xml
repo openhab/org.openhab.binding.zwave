@@ -14,11 +14,14 @@
   <artifactId>org.openhab.binding.zwave</artifactId>
   <version>2.5.0-SNAPSHOT</version>
   <!-- do not delete the version here as it is required by the release process -->
-  
+
   <name>openHAB Add-ons :: Bundles :: ZWave Binding</name>
 
   <properties>
     <report.fail.on.error>false</report.fail.on.error>
+    <spotless.version>1.24.3</spotless.version>
+    <spotless.check.skip>true</spotless.check.skip> <!-- Spotless disabled for now -->
+    <sat.version>0.8.0</sat.version>
   </properties>
 
   <scm>
@@ -66,7 +69,7 @@
         <plugin>
           <groupId>org.openhab.tools.sat</groupId>
           <artifactId>sat-plugin</artifactId>
-          <version>0.8.0</version>
+          <version>${sat.version}</version>
           <executions>
             <execution>
               <id>sat-all</id>
@@ -90,6 +93,76 @@
             </archive>
             <skipIfEmpty>true</skipIfEmpty>
           </configuration>
+        </plugin>
+        <plugin>
+          <groupId>com.diffplug.spotless</groupId>
+          <artifactId>spotless-maven-plugin</artifactId>
+          <version>${spotless.version}</version>
+          <configuration>
+            <java>
+              <eclipse>
+                <file>openhab_codestyle.xml</file>
+                <version>4.11.0</version>
+              </eclipse>
+              <removeUnusedImports></removeUnusedImports>
+              <importOrder>
+                <file>openhab.importorder</file>
+              </importOrder>
+              <endWithNewline />
+            </java>
+            <formats>
+              <format>
+                <!-- *.xml -->
+                <includes>
+                  <include>src/**/*.xml</include>
+                </includes>
+                <excludes>
+                  <exclude>src/main/resources/ESH-INF/thing/**/*.xml</exclude>
+                  <exclude>**/pom.xml</exclude>
+                </excludes>
+                <eclipseWtp>
+                  <type>XML</type>
+                  <files>
+                    <file>openhab_wst_xml_files.prefs</file>
+                  </files>
+                  <version>4.12.0</version>
+                </eclipseWtp>
+                <trimTrailingWhitespace />
+                <endWithNewline />
+              </format>
+              <format>
+                <!-- pom.xml -->
+                <includes>
+                  <include>pom.xml</include>
+                </includes>
+                <eclipseWtp>
+                  <type>XML</type>
+                  <files>
+                    <file>openhab_wst_pom_file.prefs</file>
+                  </files>
+                  <version>4.12.0</version>
+                </eclipseWtp>
+                <trimTrailingWhitespace />
+                <endWithNewline />
+              </format>
+            </formats>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>org.openhab.tools</groupId>
+              <artifactId>openhab-codestyle</artifactId>
+              <version>${sat.version}</version>
+            </dependency>
+          </dependencies>
+          <executions>
+            <execution>
+              <id>codestyle_check</id>
+              <goals>
+                <goal>check</goal>
+              </goals>
+              <phase>initialize</phase>
+            </execution>
+          </executions>
         </plugin>
       </plugins>
     </pluginManagement>
