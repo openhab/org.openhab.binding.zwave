@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="inovelli_lzw30sn_00_000" listed="false">
     <label>LZW30-SN Red Series On/Off switch</label>
@@ -181,7 +181,7 @@ LED Indicator Intensity (When Off)<br /><h1>Overview</h1><p>This is the intensit
                  min="0" max="83823359">
         <label>8: LED Strip Effect</label>
         <description><![CDATA[
-LED Strip Effect<br /><h1>Overview</h1><p>This will allow you to add some sweet effects to your LED bar (ie: pulse, chase, solid, etc)</p> <p>Byte 1 = Color.  This will set the color of the LED bar.  Calculated by using a hue color circle (Value / 255 * 360).</p> <p>Byte 2 = Brightness.  Sets the brightness in 10% increments.</p> <p>Byte 3 = Duration. </p> <p>Byte 4 = Effect. Sets the effect: 0 = Off, 1 = Solid, 2 = Fast Blink, 3 = Slow Blink, 4 = Pulse</p>
+LED Strip Effect<br /><h1>Overview</h1><p>This will allow you to add some sweet effects to your LED bar (ie: pulse, chase, solid, etc)</p> <p>Byte 1 = Color.  This will set the color of the LED bar.  Calculated by using a hue color circle (Value / 255 * 360).</p> <p>Byte 2 = Brightness.  Sets the brightness in 10% increments.</p> <p>Byte 3 = Duration. </p> <p>Byte 4 = Effect. Sets the effect: 0 = Off, 1 = Solid, 2 = Fast Blink, 3 = Slow Blink, 4 = Pulse</p> <p>Addition:  To get the final code for the desired color/effect/duration, use this calculator:  https://nathanfiscus.github.io/inovelli-notification-calc/</p>
         ]]></description>
         <default>0</default>
         <advanced>true</advanced>

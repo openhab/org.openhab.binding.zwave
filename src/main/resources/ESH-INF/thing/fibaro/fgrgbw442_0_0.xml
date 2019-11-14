@@ -542,7 +542,7 @@ Start programmed sequence<br /><h1>Overview</h1><p>Setting this parameter will s
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: RGBW Sync</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>allows to synchronize state of other FIBARO RGBW Controller devices (FGRGBW-442 and FGRGBWM- 441)</p> <p><strong> - do not use with other devices.</strong></p>
+<br /><h1>Overview</h1><p>allows to synchronize state of other FIBARO RGBW Controller devices (FGRGBW-442 and FGRGBWM- 441)</p> <p>- do not use with other devices.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
