@@ -101,7 +101,7 @@ Smart Implant<br /><h1>Overview</h1><p>Allows to enhance the functionality of wi
       <channel id="notification_system8" typeId="notification_system">
         <label>Sensor (temperature) 1 Device Error</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:8</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:8;type=SYSTEM</property>
         </properties>
       </channel>
       <channel id="sensor_relhumidity9" typeId="sensor_relhumidity">
@@ -119,7 +119,7 @@ Smart Implant<br /><h1>Overview</h1><p>Allows to enhance the functionality of wi
       <channel id="notification_system9" typeId="notification_system">
         <label>Sensor (temperature) 2 Device Error</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:9</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:9;type=SYSTEM</property>
         </properties>
       </channel>
       <channel id="sensor_temperature10" typeId="sensor_temperature">
@@ -131,7 +131,7 @@ Smart Implant<br /><h1>Overview</h1><p>Allows to enhance the functionality of wi
       <channel id="notification_system10" typeId="notification_system">
         <label>Sensor (temperature) 3 Device Error</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:10</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:10;type=SYSTEM</property>
         </properties>
       </channel>
       <channel id="sensor_temperature11" typeId="sensor_temperature">
@@ -143,7 +143,7 @@ Smart Implant<br /><h1>Overview</h1><p>Allows to enhance the functionality of wi
       <channel id="notification_system11" typeId="notification_system">
         <label>Sensor (temperature) 4 Device Error</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:11</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:11;type=SYSTEM</property>
         </properties>
       </channel>
       <channel id="sensor_temperature12" typeId="sensor_temperature">
@@ -155,7 +155,7 @@ Smart Implant<br /><h1>Overview</h1><p>Allows to enhance the functionality of wi
       <channel id="notification_system12" typeId="notification_system">
         <label>Sensor (temperature) 5 Device Error</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:12</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:12;type=SYSTEM</property>
         </properties>
       </channel>
       <channel id="sensor_temperature13" typeId="sensor_temperature">
@@ -167,7 +167,7 @@ Smart Implant<br /><h1>Overview</h1><p>Allows to enhance the functionality of wi
       <channel id="notification_system13" typeId="notification_system">
         <label>Sensor (temperature) 6 Device Error</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:13</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:13;type=SYSTEM</property>
         </properties>
       </channel>
     </channels>
