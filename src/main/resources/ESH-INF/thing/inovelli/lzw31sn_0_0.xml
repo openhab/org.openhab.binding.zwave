@@ -45,6 +45,18 @@ Red Series Dimmer<br /><h1>Overview</h1><p>Inovelli’s new dimmer switch is pac
           <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=16</property>
         </properties>
       </channel>
+      <channel id="config_decimal_param9" typeId="config_decimal">
+        <label>Default Level (Local)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=9</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param13" typeId="config_decimal">
+        <label>LED Indicator Color</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=13</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
@@ -74,32 +86,32 @@ Red Series Dimmer<br /><h1>Overview</h1><p>Inovelli’s new dimmer switch is pac
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="0" max="100">
-        <label>1: Dimming Speed</label>
-        <description>Dimming Speed</description>
+        <label>1: Dimming Speed (Z-Wave)</label>
+        <description>Dimming Speed (Z-Wave)</description>
         <default>3</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="0" max="101">
-        <label>2: Dimming Speed (Z-Wave)</label>
-        <description>Dimming Speed (Z-Wave)</description>
+        <label>2: Dimming Speed (from switch)</label>
+        <description>Dimming Speed (from switch)</description>
         <default>101</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="0" max="101">
-        <label>3: Ramp Rate</label>
-        <description>Ramp Rate</description>
+        <label>3: Ramp Rate (Z-Wave)</label>
+        <description>Ramp Rate (Z-Wave)</description>
         <default>101</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="101">
-        <label>4: Ramp Rate (Z-Wave)</label>
-        <description>Ramp Rate (Z-Wave)</description>
+        <label>4: Ramp Rate (from switch)</label>
+        <description>Ramp Rate (from switch)</description>
         <default>101</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -168,6 +180,16 @@ Power On State<br /><h1>Overview</h1><p>When power is restored, the switch rever
         <limitToOptions>false</limitToOptions>
       </parameter>
 
+      <parameter name="config_12_1" type="integer" groupName="configuration"
+                 min="0" max="15">
+        <label>12: Association Behavior</label>
+        <description><![CDATA[
+Association Behavior<br /><h1>Overview</h1><p>When should the switch send commands to the associated devices:</p> <p>01 = Local, 02 = 3-Way, 03 = 3-Way &amp; Local, 04 = Z-Wave Hub, 05 = Z-Wave Hub &amp; Local, 06 = Z-Wave Hub &amp; 3-Way, 07 = Z-Wave Hub &amp; Local &amp; 3-Way, 08 = Timer, 09 = Timer &amp; Local, 10 = Timer &amp; 3-Way, 11 =Timer &amp; 3-Way &amp; Local, 12 = Timer &amp; Z-Wave Hub, 13 = Timer &amp; Z-Wave Hub &amp; Local, 14 = Timer &amp; Z-Wave Hub &amp; 3-Way, 15 = All</p>
+        ]]></description>
+        <default>15</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
       <parameter name="config_13_2" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>13: LED Indicator Color</label>
@@ -197,7 +219,7 @@ LED Indicator Intensity (When Off)<br /><h1>Overview</h1><p>This is the intensit
       </parameter>
 
       <parameter name="config_16_4" type="integer" groupName="configuration"
-                 min="0" max="83823359">
+                 min="0" max="100600575">
         <label>16: LED Strip Effect</label>
         <description>LED Strip Effect</description>
         <default>0</default>
