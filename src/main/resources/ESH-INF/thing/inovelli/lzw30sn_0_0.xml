@@ -44,6 +44,12 @@ Red Series On/Off switch<br /><h1>Overview</h1><p>Inovelli’s new on/off switch
           <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=8</property>
         </properties>
       </channel>
+      <channel id="config_decimal_param5" typeId="inovelli_lzw30sn_00_000_config_decimal_param5">
+        <label>LED Indicator Color</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=5</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
@@ -304,6 +310,16 @@ Energy Reports<br /><h1>Overview</h1><p>The energy level change that will result
         <limitToOptions>false</limitToOptions>
       </parameter>
 
+      <parameter name="config_12_1" type="integer" groupName="configuration"
+                 min="0" max="15">
+        <label>12: *DELETE ME* was added to wrong device</label>
+        <description><![CDATA[
+Association Behavior<br /><h1>Overview</h1><p>When should the switch send commands to the associated devices:</p> <p>01 = Local, 02 = 3-Way, 03 = 3-Way &amp; Local, 04 = Z-Wave Hub, 05 = Z-Wave Hub &amp; Local, 06 = Z-Wave Hub &amp; 3-Way, 07 = Z-Wave Hub &amp; Local &amp; 3-Way, 08 = Timer, 09 = Timer &amp; Local, 10 = Timer &amp; 3-Way, 11 =Timer &amp; 3-Way &amp; Local, 12 = Timer &amp; Z-Wave Hub, 13 = Timer &amp; Z-Wave Hub &amp; Local, 14 = Timer &amp; Z-Wave Hub &amp; 3-Way, 15 = All</p>
+        ]]></description>
+        <default>15</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
@@ -342,6 +358,24 @@ Energy Reports<br /><h1>Overview</h1><p>The energy level change that will result
         <option value="2">Fast Blink</option>
         <option value="3">Slow Blink</option>
         <option value="4">Pulse</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="inovelli_lzw30sn_00_000_config_decimal_param5">
+    <item-type>Number</item-type>
+    <label>LED Indicator Color</label>
+    <description>LED Indicator Color</description>
+    <state pattern="%s">
+      <options>
+        <option value="0">Red</option>
+        <option value="21">Orange</option>
+        <option value="42">Yellow</option>
+        <option value="85">Green</option>
+        <option value="127">Cyan</option>
+        <option value="170">Blue</option>
+        <option value="212">Violet</option>
+        <option value="234">Pink</option>
       </options>
     </state>
   </channel-type>

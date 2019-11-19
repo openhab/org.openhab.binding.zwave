@@ -5,7 +5,7 @@
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
                       https://openhab.org/schemas/thing-description/v1.0.0">
 
-  <thing-type id="eurotronic_spirit_00_000" listed="false">
+  <thing-type id="aeotec_spirit_00_000" listed="false">
     <label>Spirit Thermostatic Valve</label>
     <description><![CDATA[
 Thermostatic Valve<br /><h1>Overview</h1><p>Spirit Z-Wave Plus is a Z-Wave radio standard compatible energy-saving radiator thermostat.</p> <p>FLiRS (Frequently Listening Receiver Slave): Spirit Z-Wave uses FLiRS to provide short latency and short responding times.</p> <br /><h2>Inclusion Information</h2><p>Start Inclusion mode of your primary Z-Wave Controller. Press the Boost-Button. Spirit Z-Wave Plus will show the assigned NodeID.</p> <br /><h2>Exclusion Information</h2><p>Start Exclusion mode of your primary Z-Wave Controller. Now press and hold the boost button of the Spirit Z-Wave Plus for at least 5 seconds.</p>
@@ -33,7 +33,7 @@ Thermostatic Valve<br /><h1>Overview</h1><p>Spirit Z-Wave Plus is a Z-Wave radio
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="thermostat_mode" typeId="eurotronic_spirit_00_000_thermostat_mode">
+      <channel id="thermostat_mode" typeId="aeotec_spirit_00_000_thermostat_mode">
         <label>Thermostat mode</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_MODE</property>
@@ -72,11 +72,11 @@ Thermostatic Valve<br /><h1>Overview</h1><p>Spirit Z-Wave Plus is a Z-Wave radio
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Eurotronics</property>
+      <property name="vendor">Aeotec Limited</property>
       <property name="modelId">Spirit</property>
-      <property name="manufacturerId">0148</property>
-      <property name="manufacturerRef">0003:0001,0003:0003</property>
-      <property name="dbReference">710</property>
+      <property name="manufacturerId">0371</property>
+      <property name="manufacturerRef">0002:0015</property>
+      <property name="dbReference">1150</property>
       <property name="commandClass:COMMAND_CLASS_BASIC">Provides access to basic functionality</property>
       <property name="commandClass:COMMAND_CLASS_SWITCH_MULTILEVEL">Provides or sets the valve opening degree of the valve Controlling  the valve opening degree requires manufacturer specific mode</property>
       <property name="commandClass:COMMAND_CLASS_SENSOR_MULTILEVEL">Provides the measured room temperature</property>
@@ -217,7 +217,7 @@ Spirit Z-Wave Plus can only be associated with the Z-Wave controller.<br /><h1>O
 
   </thing-type>
 
-  <channel-type id="eurotronic_spirit_00_000_thermostat_mode">
+  <channel-type id="aeotec_spirit_00_000_thermostat_mode">
     <item-type>Number</item-type>
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
