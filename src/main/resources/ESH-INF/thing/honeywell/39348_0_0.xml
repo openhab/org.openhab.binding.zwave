@@ -5,10 +5,10 @@
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
                       https://openhab.org/schemas/thing-description/v1.0.0">
 
-  <thing-type id="ge_46201_00_000" listed="false">
-    <label>46201 GE Quick-fit Smart In-Wall Paddle Switch</label>
+  <thing-type id="honeywell_39348_00_000" listed="false">
+    <label>39348 In-Wall Smart Switch</label>
     <description><![CDATA[
-GE Quick-fit Smart In-Wall Paddle Switch<br /><h1>Overview</h1><p>In-Wall Smart Switch</p> <br /><h2>Inclusion Information</h2><p>Press and release the top or bottom of the wireless smart switch (rocker).</p> <br /><h2>Exclusion Information</h2><p>Press and release the top or bottom of the wireless smart switch (rocker).</p>
+In-Wall Smart Switch<br /><h1>Overview</h1><p>Honeywell Z-Wave Plus On/Off Smart Light Switch, In-Wall Paddle, Interchangeable White &amp; Almond | Built-In Repeater &amp; Range Extender | Model 39348</p> <br /><h2>Inclusion Information</h2><ol><li>Follow the instructions for your Z-Wave certified controller to add a device to the Z-Wave network.</li> <li>Once the controller is ready to add your device, press and release the top or bottom of the wireless smart fan control (rocker) to add it in the network.</li> </ol><p><br />Now you have complete control to turn your fixture ON/OFF according to groups, scenes, schedules and interactive automations programmed by your controller. If your Z-Wave certified controller features remote access, you can now control your fixture from your mobile devices.</p> <br /><h2>Exclusion Information</h2><ol><li>Follow the instructions for your Z-Wave certified controller to remove a device from the Z-Wave network.</li> <li>Once the controller is ready to remove your device, press and release the top or bottom of the wireless smart fan control (rocker) to remove it from the network.</li> </ol><p>RETURNING SWITCH TO FACTORY DEFAULTS</p> <p>Quickly press ON (Top) button three (3) times then immediately press the OFF (Bottom) button three (3) times. The LED will flash ON/OFF 5 times when completed successfully.<br />Note: This should only be used in the event your network’s primary controller is missing or otherwise inoperable.</p>
     ]]></description>
     <category>WallSwitch</category>
 
@@ -23,18 +23,18 @@ GE Quick-fit Smart In-Wall Paddle Switch<br /><h1>Overview</h1><p>In-Wall Smart 
       <channel id="scene_number" typeId="scene_number">
         <label>Scene Number</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SCENE_ACTIVATION</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
         </properties>
       </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Jasco Products</property>
-      <property name="modelId">46201</property>
-      <property name="manufacturerId">0063</property>
+      <property name="vendor">Honeywell</property>
+      <property name="modelId">39348</property>
+      <property name="manufacturerId">0039</property>
       <property name="manufacturerRef">4952:3135</property>
-      <property name="dbReference">1093</property>
+      <property name="dbReference">1158</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

@@ -5,19 +5,19 @@
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
                       https://openhab.org/schemas/thing-description/v1.0.0">
 
-  <thing-type id="ge_46202_00_000" listed="false">
-    <label>GE 46202 GE Enbrighten Z-Wave Plus Smart Switch</label>
+  <thing-type id="ge_14298_00_000" listed="false">
+    <label>GE 14298/ZW4202 Outdoor Plug-In On/Off Module</label>
     <description><![CDATA[
-GE Enbrighten Z-Wave Plus Smart Switch<br /><h1>Overview</h1><p>Home automation is even smarter with the GE Enbrighten Z-Wave Plus In-Wall Smart Switch with QuickFit™ and SimpleWire™. When paired with a compatible hub, the hardwired smart switch operates wall, ceiling and accent lighting through individual commands and programmed settings. Wirelessly control and schedule indoor or outdoor fixtures for effortless management of your home. Your automation possibilities are seemingly infinite when connected to hubs from Ring, Wink, SmartThings, HomeSeer, Vera, Nexia and more.</p> <br /><h2>Inclusion Information</h2><ol><li>Once the controller is ready to include your device, press up and release on the toggle to include it in the network. </li> <li>Once your controller has confirmed that the device has been included, refresh the Z-Wave network to optimize performance. </li> </ol><br /><h2>Exclusion Information</h2><p>Once the controller is ready to exclude your device, press up and release on the toggle to exclude it from the network. </p>
+Outdoor Plug-In On/Off Module<br /><h1>Overview</h1><p>Outdoor Plug-In On/Off Module, 600W incandescent, 1800W (15A) resistive or 1/2HP motor</p> <ul><li>One Z-Wave controlled grounded outlet for lighting &amp; small appliances</li> <li>Remote ON/OFF control via the Z-Wave controller</li> <li>Manual ON/OFF control with the manual/program button</li> <li>Adjustable status LED</li> <li>Grounded 3-wire power connection for safety</li> <li>Weather- and impact-resistant housing; suitable for outdoors in wet or damp conditions </li> </ul><br /><h2>Inclusion Information</h2><p>Press and release the top or bottom switch (rocker)</p> <br /><h2>Exclusion Information</h2><p>Press and release the top or bottom switch (rocker)</p>
     ]]></description>
-    <category>WallSwitch</category>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -31,10 +31,10 @@ GE Enbrighten Z-Wave Plus Smart Switch<br /><h1>Overview</h1><p>Home automation 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Jasco Products</property>
-      <property name="modelId">GE 46202</property>
+      <property name="modelId">GE 14298/ZW4202</property>
       <property name="manufacturerId">0063</property>
-      <property name="manufacturerRef">4952:3137</property>
-      <property name="dbReference">1109</property>
+      <property name="manufacturerRef">4F50:3034</property>
+      <property name="dbReference">1157</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -53,33 +53,43 @@ GE Enbrighten Z-Wave Plus Smart Switch<br /><h1>Overview</h1><p>Home automation 
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
-      <parameter name="config_4_1" type="integer" groupName="configuration">
-        <label>4: Invert Switch</label>
-        <description><![CDATA[
-Invert Switch<br /><h1>Overview</h1><p>If the switch is accidentally installed upside down with “On” at the bottom and “Off” at the top, the default On/Off rocker settings can be reversed by changing parameter 4’s value to “1”.</p>
-        ]]></description>
+      <parameter name="config_3_1" type="integer" groupName="configuration">
+        <label>3: LED Indication Configuration</label>
+        <description>LED Indication Configuration</description>
+        <default>1</default>
+        <options>
+          <option value="0">LED ON when device OFF, LED is OFF when device ON</option>
+          <option value="1">LED ON when device ON, LED is OFF when device OFF</option>
+          <option value="2">LED always OFF</option>
+          <option value="3">LED always ON</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_19_1" type="integer" groupName="configuration">
+        <label>19: Alternate Exclusion</label>
+        <description>Alternate Exclusion</description>
         <default>0</default>
         <options>
-          <option value="0">Normal Switch Install</option>
-          <option value="1">Inverted Switch Install</option>
+          <option value="0">Press any button on the switch</option>
+          <option value="1">Press two times ON button and two time OFF button</option>
         </options>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
-        <description>Lifeline</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Group 2</label>
-        <description>Basic Set single click</description>
+        <description>Single Press on Button</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Basic Set double click</label>
+        <label>3: Group 3</label>
+        <description>Double Press on Button</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
