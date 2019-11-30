@@ -78,15 +78,6 @@ Fibaro Walli Dimmer<br /><h1>Overview</h1><p>FIBARO Walli Dimmer is a smart wa
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
-      <parameter name="config_0_1" type="integer" groupName="configuration"
-                 min="0" max="2">
-        <label>0: ON/OFF mode</label>
-        <description><![CDATA[
-ON/OFF mode<br /><h1>Overview</h1><p>This mode is necessary while connecting non-dimmable light sources. Setting this parameter to 1 automatically ignores brightening/dimming time settings. Forced auto-calibration will set this parameter’s value to 2.</p> <p>Parameter size: 1B</p> <p>Default value: 2</p> <p>Available values:</p> <p>0 – ON/OFF mode disabled (dimming is possible)</p> <p>1 – ON/OFF mode enabled (dimming is not possible)</p> <p>2 – mode selected automatically</p>
-        ]]></description>
-        <default>2</default>
-      </parameter>
-
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Remember device state</label>
         <description><![CDATA[
@@ -103,7 +94,7 @@ Determines how the device will react in the event of power supply failure<br /><
                  min="0" max="5000">
         <label>2: Overload safety switch</label>
         <description><![CDATA[
-Turn off the controlled device in case of exceeding the defined power<br /><h1>Overview</h1><p>This function allows to turn off the controlled device in case of exceeding the defined power. Controlled device can be turned back on via the button or sending a control frame.</p>
+Turn off the controlled device in case of exceeding the defined power<br /><h1>Overview</h1><p>This function allows to turn off the controlled device in case of exceeding the defined power. Controlled device can be turned back on via the button or sending a control frame.</p> <p>0 – function disabled<br />10-5000 (1.0-500.0W, step 0.1W) – power  threshold</p>
         ]]></description>
         <default>3500</default>
       </parameter>
@@ -460,6 +451,15 @@ Load control mode<br /><h1>Overview</h1><p>This parameter allows to set the desi
 Load control mode recognized during auto-calibration<br /><h1>Overview</h1><p>This parameter allows to read load control mode that was set during auto-calibration.</p> <p>Parameter size: 1B</p> <p>Default value: –</p> <p>Available values:</p> <p>0 – leading edge</p> <p>1 – trailing edge</p>
         ]]></description>
         <default>0</default>
+      </parameter>
+
+      <parameter name="config_172_1" type="integer" groupName="configuration"
+                 min="0" max="2">
+        <label>172: ON/OFF mode</label>
+        <description><![CDATA[
+ON/OFF mode<br /><h1>Overview</h1><p>This mode is necessary while connecting non-dimmable light sources. Setting this parameter to 1 automatically ignores brightening/dimming time settings. Forced auto-calibration will set this parameter’s value to 2.</p> <p>Parameter size: 1B</p> <p>Default value: 2</p> <p>Available values:</p> <p>0 – ON/OFF mode disabled (dimming is possible)</p> <p>1 – ON/OFF mode enabled (dimming is not possible)</p> <p>2 – mode selected automatically</p>
+        ]]></description>
+        <default>2</default>
       </parameter>
 
       <parameter name="config_173_1" type="integer" groupName="configuration" readOnly="true"

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="willis_zen24_00_000" listed="false">
-    <label>Zen24 Toggle Dimmer</label>
+    <label>ZEN24 Toggle Dimmer</label>
     <description><![CDATA[
 Toggle Dimmer<br /><h1>Overview</h1><p> Replace a classic dimmer switch with this smart Z-Wave Plus ZEN24 equivalent and control lighting, adjust brightness, or recreate settings remotely.</p> <br /><h2>Inclusion Information</h2><p>. Toggle the switch up and down quickly 3 times to finalize the inclusion process</p> <br /><h2>Exclusion Information</h2><p> Toggle the switch up and down quickly 3 times to complete the exclusion process</p>
     ]]></description>
@@ -26,7 +26,7 @@ Toggle Dimmer<br /><h1>Overview</h1><p> Replace a classic dimmer switch with th
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Willis Electric Co., Ltd.</property>
-      <property name="modelId">Zen24</property>
+      <property name="modelId">ZEN24</property>
       <property name="manufacturerId">015D</property>
       <property name="manufacturerRef">0111:1F1C</property>
       <property name="dbReference">483</property>
