@@ -139,7 +139,7 @@ Scene Capable Wall Dimmer Switch<br /><h1>Overview</h1><p>HS-WD200+ is a Z-Wave 
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Orientation</label>
-        <description>Set paddle's load orientation</description>
+        <description>Set paddle load orientation</description>
         <default>0</default>
         <options>
           <option value="0">Top of Paddle turns load ON</option>
@@ -469,7 +469,7 @@ Scene Capable Wall Dimmer Switch<br /><h1>Overview</h1><p>HS-WD200+ is a Z-Wave 
   <channel-type id="homeseer_hswd200511_05_011_config_decimal_param4">
     <item-type>Number</item-type>
     <label>Orientation</label>
-    <description>Set paddle's load orientation</description>
+    <description>Set paddle load orientation</description>
     <state pattern="%s">
       <options>
         <option value="0">Top of Paddle turns load ON</option>

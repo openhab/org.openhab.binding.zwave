@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeon_zw111_02_003" listed="false">
     <label>ZW111 Nano Dimmer</label>
@@ -76,7 +76,7 @@ Nano Dimmer<br /><h1>Overview</h1><p>Aeotec Nano Dimmer is a Z-Wave Smart Dimmer
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW111</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0003:006F,0103:006F,01F3:000F,01F3:006F</property>
+      <property name="manufacturerRef">0003:006F,0103:006F,01F3:000F,01F3:006F,0203:006F</property>
       <property name="versionMin">2.3</property>
       <property name="dbReference">1096</property>
       <property name="defaultAssociations">1</property>
