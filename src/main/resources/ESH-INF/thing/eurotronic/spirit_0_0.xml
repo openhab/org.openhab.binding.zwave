@@ -68,11 +68,17 @@ Thermostatic Valve<br /><h1>Overview</h1><p>Spirit Z-Wave Plus is a Z-Wave radio
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
       </channel>
+      <channel id="basic_mode" typeId="eurotronic_spirit_00_000_basic_mode">
+        <label>Basic mode</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_BASIC</property>
+        </properties>
+      </channel>      
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Eurotronics</property>
+      <property name="vendor">Eurotronic</property>
       <property name="modelId">Spirit</property>
       <property name="manufacturerId">0148</property>
       <property name="manufacturerRef">0003:0001,0003:0003</property>
@@ -231,6 +237,21 @@ Spirit Z-Wave Plus can only be associated with the Z-Wave controller.<br /><h1>O
         <option value="31">Manual</option>
       </options>
     </state>
+  </channel-type>
+  
+  <channel-type id="eurotronic_spirit_00_000_basic_mode">
+    <item-type>Number</item-type>
+    <label>Basic Mode</label>
+    <description>Sets the Basic mode</description>
+    <category>Temperature</category>
+    <state pattern="%s">
+      <options>
+        <option value="15">Off</option>
+        <option value="0">Economy Heat</option>
+        <option value="255">Heat</option>
+        <option value="240">Full Power</option>
+        <option value="254">Manual</option>
+      </options>
   </channel-type>
 
 </thing:thing-descriptions>
