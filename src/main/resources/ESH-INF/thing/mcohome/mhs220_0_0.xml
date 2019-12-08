@@ -89,36 +89,35 @@ External switch type<br /><h1>Overview</h1><p>0x00 Button (Momentary buttons )</
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="2">
         <label>4: Report from Switch 1 to Association Group 1</label>
-        <description><![CDATA[
-Report from Switch 1 to Association Group 1<br /><h1>Overview</h1><p>0x00 report ON/ OFF operation of Switch 1 to AG 1</p> <p>0x01 only report ON operation of Switch 1 to AG 1</p> <p>0x02 only report OFF operation of Switch 1 to AG 1</p>
-        ]]></description>
+        <description>Report from Switch 1 to Association Group 1</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>5: OFF timer</label>
-        <description><![CDATA[
-OFF timer<br /><h1>Overview</h1><p>0x00 forbid manually operation</p> <p>0x01 allow manually operation</p>
-        ]]></description>
+        <description>OFF timer</description>
         <default>1</default>
+      </parameter>
+
+      <parameter name="config_6_2" type="integer" groupName="configuration"
+                 min="0" max="65535">
+        <label>6: Timing function</label>
+        <description>Timing function</description>
+        <default>0</default>
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>7: Operation mode of Switch 1</label>
-        <description><![CDATA[
-Operation mode of Switch 1<br /><h1>Overview</h1><p>0x00 switching immediately</p> <p>0x01 Zero-crossing switch</p>
-        ]]></description>
+        <description>Operation mode of Switch 1</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="0" max="2">
-        <label>8: Report from Switch 2 to Asso Group 2</label>
-        <description><![CDATA[
-Operation report from Switch 2 to Association Group 2<br /><h1>Overview</h1><p>0x00 report ON/ OFF operation of Switch 2 to AG 2</p> <p>0x01 only report ON operation of Switch 2 to AG 2</p> <p>0x02 only report OFF operation of Switch 2 to AG 2</p>
-        ]]></description>
+        <label>8: Operation report from Sw 2 to Assoc Group 2</label>
+        <description>Operation report from Switch 2 to Association Group 2</description>
         <default>0</default>
       </parameter>
 
@@ -133,7 +132,7 @@ Factory setting<br /><h1>Overview</h1><p>Set parameter ID 0xFF as 0x55 will rest
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Group 1</label>
+        <label>1: SW 1</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p>Used for switching associated devices（switch 1 controlling group 1)</p>
         ]]></description>
@@ -141,7 +140,7 @@ Factory setting<br /><h1>Overview</h1><p>Set parameter ID 0xFF as 0x55 will rest
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Group 2</label>
+        <label>2: SW 2</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p>Used for switching associated devices（switch 2 controlling group 2)</p>
         ]]></description>
