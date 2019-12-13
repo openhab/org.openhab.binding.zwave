@@ -27,21 +27,27 @@ Scene Capable Wall Switch<br /><h1>Overview</h1><p>HS-WS200+ is a Z-Wave Plus re
         </properties>
       </channel>
       <channel id="config_decimal_param13" typeId="homeseer_hsws200_05_012_config_decimal_param13">
-        <label>Mode of Operation [Deprecated]</label>
+        <label>Mode of Operation</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=13</property>
         </properties>
       </channel>
       <channel id="config_decimal_param21" typeId="homeseer_hsws200_05_012_config_decimal_param21">
-        <label>Status LED Color [Deprecated]</label>
+        <label>Status LED Color</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=21</property>
         </properties>
       </channel>
       <channel id="config_decimal_param31" typeId="homeseer_hsws200_05_012_config_decimal_param31">
-        <label>Switch LED Blink Frequency [Deprecated]</label>
+        <label>Switch LED Blink Frequency</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=31</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param6" typeId="homeseer_hsws200_05_012_config_decimal_param6">
+        <label>Scene Control</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=6</property>
         </properties>
       </channel>
     </channels>
@@ -210,6 +216,18 @@ Enable or Disable Scene Control<br /><h1>Overview</h1><p>This parameter allows t
       <options>
         <option value="0">No blink</option>
         <option value="1">100ms ON then 100ms OFF</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="homeseer_hsws200_05_012_config_decimal_param6">
+    <item-type>Number</item-type>
+    <label>Scene Control</label>
+    <description>Enable or Disable Scene Control</description>
+    <state pattern="%s">
+      <options>
+        <option value="0">Disabled</option>
+        <option value="1">Enabled</option>
       </options>
     </state>
   </channel-type>
