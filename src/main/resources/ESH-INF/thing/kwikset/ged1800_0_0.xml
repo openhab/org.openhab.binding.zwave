@@ -15,27 +15,15 @@ SmartCode 10 Touchpad Electronic Deadbolt<br /><h1>Overview</h1><ul><li>Dramatic
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="lock_door" typeId="lock_door">
-        <label>Door Lock [Deprecated]</label>
+        <label>Door Lock</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_DOOR_LOCK</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_DOOR_LOCK,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
-      <channel id="alarm_power" typeId="alarm_power">
-        <label>Alarm - Power Management</label>
+      <channel id="alarm_raw" typeId="alarm_raw">
+        <label>Alarm Raw</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
-        </properties>
-      </channel>
-      <channel id="alarm_access" typeId="alarm_access">
-        <label>Alarm - Access Control</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
-        </properties>
-      </channel>
-      <channel id="alarm_burglar" typeId="alarm_burglar">
-        <label>Alarm - Burglar</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
+          <property name="binding:*:StringType">COMMAND_CLASS_ALARM</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">

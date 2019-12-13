@@ -124,6 +124,7 @@ Double Plug<br /><h1>Overview</h1><p>The Double Plug works great as a low profil
       <property name="modelId">ZEN25</property>
       <property name="manufacturerId">027A</property>
       <property name="manufacturerRef">A000:A003</property>
+      <property name="versionMax">1.255</property>
       <property name="dbReference">1019</property>
       <property name="defaultAssociations">1</property>
     </properties>

@@ -42,7 +42,7 @@ RGBW Dimmer for LED Strips<br /><h1>Overview</h1><ul><li>Manual or Z-Wave on/off
       <channel id="color_color" typeId="color_color">
         <label>Color Control</label>
         <properties>
-          <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR</property>
+          <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR;colorMode=RGB</property>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
@@ -94,7 +94,7 @@ RGBW Dimmer for LED Strips<br /><h1>Overview</h1><ul><li>Manual or Z-Wave on/off
       <channel id="color_color1" typeId="color_color">
         <label>Color Control 1</label>
         <properties>
-          <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR:1</property>
+          <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR:1;colorMode=RGB</property>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
         </properties>
