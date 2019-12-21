@@ -195,6 +195,8 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
                 "Device Configuration"));
 
         List<ParameterOption> options = new ArrayList<ParameterOption>();
+        options.add(new ParameterOption("60", "1 Minute"));
+        options.add(new ParameterOption("300", "5 Minutes"));
         options.add(new ParameterOption("600", "10 Minutes"));
         options.add(new ParameterOption("1800", "30 Minutes"));
         options.add(new ParameterOption("3600", "1 Hour"));
