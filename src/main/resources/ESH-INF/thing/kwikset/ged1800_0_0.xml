@@ -17,7 +17,7 @@ SmartCode 10 Touchpad Electronic Deadbolt<br /><h1>Overview</h1><ul><li>Dramatic
       <channel id="lock_door" typeId="lock_door">
         <label>Door Lock</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_DOOR_LOCK,COMMAND_CLASS_BASIC</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_DOOR_LOCK</property>
         </properties>
       </channel>
       <channel id="alarm_raw" typeId="alarm_raw">
