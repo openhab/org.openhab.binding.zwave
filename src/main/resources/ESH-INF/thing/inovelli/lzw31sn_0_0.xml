@@ -8,7 +8,7 @@
   <thing-type id="inovelli_lzw31sn_00_000" listed="false">
     <label>LZW31-SN Red Series Dimmer</label>
     <description><![CDATA[
-Red Series Dimmer<br /><h1>Overview</h1><p>Inovelli’s new dimmer switch is packed with features and designed with your house in mind.</p> <p>From a hardware side we’ve upgraded our Z-Wave module for better distance and there is no longer a need for a neutral wire. The switch can be used in any 3-Way or 4-Way setting and allows you to use either an auxiliary switch, a smart switch or your existing dumb switch (NOTE: this only applies if a neutral wire is installed. If there is no neutral wire, the switch only works in a single-pole setting).</p> <p>From a firmware side, this switch has it all (literally). Scene control, notifications (flashes if your garage door is left open) and can be configured on any HUB.</p> <br /><h2>Inclusion Information</h2><p>Once the inclusion process has started press the config button 3X and the LED bar will flash blue.  If the switch was included successfully the bar will turn GREEN, however if the switch was not included successfully it will turn RED.</p> <br /><h2>Exclusion Information</h2><p>Put your HUB in Exclusion mode and press the Config Button 3X until your HUB says the device is excluded.</p>
+Red Series Dimmer<br /><h1>Overview</h1><p>Inovelli’s new dimmer switch is packed with features and designed with your house in mind.</p> <p>From a hardware side we’ve upgraded our Z-Wave module for better distance and there is no longer a need for a neutral wire. The switch can be used in any 3-Way or 4-Way setting and allows you to use either an auxiliary switch, a smart switch or your existing dumb switch (NOTE: this only applies if a neutral wire is installed. If there is no neutral wire, the switch only works in a single-pole setting).</p> <p>From a firmware side, this switch has it all (literally). Scene control, notifications (flashes if your garage door is left open) and can be configured on any HUB.</p> <p>==</p> <p>Important:  If you have a neutral wire, set parameter 21 correctly.  If setting the switch up in a 3-way configuration, set parameter 22 (you may need to enable advanced settings to see this).</p> <br /><h2>Inclusion Information</h2><p>Once the inclusion process has started press the config button 3X and the LED bar will flash blue.  If the switch was included successfully the bar will turn GREEN, however if the switch was not included successfully it will turn RED.</p> <br /><h2>Exclusion Information</h2><p>Put your HUB in Exclusion mode and press the Config Button 3X until your HUB says the device is excluded.</p>
     ]]></description>
     <category>WallSwitch</category>
 
@@ -221,7 +221,9 @@ LED Indicator Intensity (When Off)<br /><h1>Overview</h1><p>This is the intensit
       <parameter name="config_16_4" type="integer" groupName="configuration"
                  min="0" max="100600575">
         <label>16: LED Strip Effect</label>
-        <description>LED Strip Effect</description>
+        <description><![CDATA[
+LED Strip Effect<br /><h1>Overview</h1><p>Addition:  To get the final code for the desired color/effect/duration, use this calculator:  https://nathanfiscus.github.io/inovelli-notification-calc/</p>
+        ]]></description>
         <default>0</default>
         <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>

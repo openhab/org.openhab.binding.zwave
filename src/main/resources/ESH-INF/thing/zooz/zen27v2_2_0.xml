@@ -8,7 +8,7 @@
   <thing-type id="zooz_zen27v2_02_000" listed="false">
     <label>ZEN27 Z-Wave Plus S2 Dimmer Light Switch V2</label>
     <description><![CDATA[
-Z-Wave Plus S2 Dimmer Light Switch V2<br /><h1>Overview</h1><ul><li>Manual or Z-Wave on/off and brightness control</li> <li>Simple Direct 3-Way: connect with existing on/off switches in 3-way,4-way, and 5-way set-ups, no add-on needed (neutral wire required)</li> <li>Fully adjustable ramp rate for just the right on/off speed</li> <li>Double tap to full brightness feature</li> <li>Remembers and restores on/off status a?er power failure</li> <li>Built-in Z-Wave Plus signal repeater to extend network range</li> <li>Extended compatibility with LED bulbs, no more flickering!</li> <li>S2 security protocol and the latest 500 Z-Wave chip</li> <li>Customizable LED indicator and air-gap switch for added safety</li> </ul><br /><h2>Inclusion Information</h2><ol><li>Initiate inclusion (pairing) in the app (or web interface).</li> <li>Finalize inclusion at the switch. TAP 3 TIMES QUICKLY. The LED indicator will blink to signal communication and remain on for 2 seconds to confirm inclusion.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Bring your Z-Wave gateway (hub) close to the switch if possible</li> <li>Put the Z-Wave hub into exclusion mode</li> <li>Tap the lower paddle on the switch 3 times quickly</li> <li>Your hub will confirm exclusion and the device will disappear from your controller's device list</li> </ol>
+Z-Wave Plus S2 Dimmer Light Switch V2<br /><h1>Overview</h1><ul><li>Manual or Z-Wave on/off and brightness control</li> <li>Simple Direct 3-Way: connect with existing on/off switches in 3-way,4-way, and 5-way set-ups, no add-on needed (neutral wire required) </li> <li>Fully adjustable ramp rate for just the right on/off speed</li> <li>Double tap to full brightness feature</li> <li>Remembers and restores on/off status after power failure</li> <li>Built-in Z-Wave Plus signal repeater to extend network range</li> <li>Extended compatibility with LED bulbs, no more flickering!</li> <li>S2 security protocol and the latest 500 Z-Wave chip</li> <li>Customizable LED indicator and air-gap switch for added safety</li> </ul><br /><h2>Inclusion Information</h2><ol><li>Initiate inclusion (pairing) in the app (or web interface).</li> <li>Finalize inclusion at the switch. TAP 3 TIMES QUICKLY. The LED indicator will blink to signal communication and remain on for 2 seconds to confirm inclusion.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Bring your Z-Wave gateway (hub) close to the switch if possible</li> <li>Put the Z-Wave hub into exclusion mode</li> <li>Tap the lower paddle on the switch 3 times quickly</li> <li>Your hub will confirm exclusion and the device will disappear from your controller's device list</li> </ol>
     ]]></description>
     <category>WallSwitch</category>
 
@@ -25,6 +25,12 @@ Z-Wave Plus S2 Dimmer Light Switch V2<br /><h1>Overview</h1><ul><li>Manual or Z-
         <label>Scene Number</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param18" typeId="config_decimal">
+        <label>Custom Brightness Level</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=18</property>
         </properties>
       </channel>
     </channels>
@@ -148,10 +154,10 @@ Set the on off status for the switch after power failure.<br /><h1>Overview</h1>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
-                 min="1" max="99">
+                 min="0" max="99">
         <label>9: Ramp Rate Control</label>
         <description><![CDATA[
-Adjust the ramp rate for your dimmer<br /><h1>Overview</h1><p>Adjust the ramp rate for your dimmer (fade-in / fade-out effect for on / off operation). Values correspond to the number of seconds</p> <p>it takes for the dimmer to reach full brightness or turn off when operated manually.</p> <p>Values: 1 – 99 (seconds). Default set to 1.</p> <p>Size: 1 byte dec.</p>
+Adjust the ramp rate for your dimmer<br /><h1>Overview</h1><p>Adjust the ramp rate for your dimmer (fade-in / fade-out effect for on / off operation). Values correspond to the number of seconds</p> <p>it takes for the dimmer to reach full brightness or turn off when operated manually.</p> <p>Values: 0 – 99 (seconds). Default set to 1.</p> <p>Size: 1 byte dec.</p>
         ]]></description>
         <default>1</default>
         <limitToOptions>false</limitToOptions>
