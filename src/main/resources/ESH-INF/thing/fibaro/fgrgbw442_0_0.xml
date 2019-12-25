@@ -43,14 +43,14 @@ RGBW CONTROLLER 2<br /><h1>Overview</h1><p>FIBARO RGBW Controller 2 uses PWM out
         <label>Color Control</label>
         <properties>
           <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR</property>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="color_temperature" typeId="color_temperature">
         <label>Color Temperature</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_COLORcolorMode=DIFF_WHITE</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_COLOR;colorMode=DIFF_WHITE</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
@@ -95,14 +95,14 @@ RGBW CONTROLLER 2<br /><h1>Overview</h1><p>FIBARO RGBW Controller 2 uses PWM out
         <label>Color Control 1</label>
         <properties>
           <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR:1;colorMode=RGB</property>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
         </properties>
       </channel>
       <channel id="color_temperature1" typeId="color_temperature">
         <label>Color Temperature 1</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_COLOR:1colorMode=DIFF_WHITE</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_COLOR:1;colorMode=DIFF_WHITE</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
         </properties>
       </channel>

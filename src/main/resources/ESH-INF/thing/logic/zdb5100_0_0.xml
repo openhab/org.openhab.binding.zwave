@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="logic_zdb5100_00_000" listed="false">
     <label>ZDB5100 MATRIX Switch with Dimmer and Backlight</label>
@@ -54,7 +54,7 @@ MATRIX Switch with Dimmer and Backlight<br /><h1>Overview</h1><p>MATRIX type ZDB
         <label>Color, pushbutton 1</label>
         <properties>
           <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR:1;colorMode=RGB</property>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
         </properties>
       </channel>
@@ -68,7 +68,7 @@ MATRIX Switch with Dimmer and Backlight<br /><h1>Overview</h1><p>MATRIX type ZDB
         <label>Color, pushbutton 2</label>
         <properties>
           <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR:2;colorMode=RGB</property>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:2,COMMAND_CLASS_BASIC:2</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:2</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:2</property>
         </properties>
       </channel>
@@ -82,7 +82,7 @@ MATRIX Switch with Dimmer and Backlight<br /><h1>Overview</h1><p>MATRIX type ZDB
         <label>Color, pushbutton 3</label>
         <properties>
           <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR:3;colorMode=RGB</property>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:3,COMMAND_CLASS_BASIC:3</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:3</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:3</property>
         </properties>
       </channel>
@@ -96,7 +96,7 @@ MATRIX Switch with Dimmer and Backlight<br /><h1>Overview</h1><p>MATRIX type ZDB
         <label>Color, pushbutton 4</label>
         <properties>
           <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR:4;colorMode=RGB</property>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:4,COMMAND_CLASS_BASIC:4</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:4</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:4</property>
         </properties>
       </channel>

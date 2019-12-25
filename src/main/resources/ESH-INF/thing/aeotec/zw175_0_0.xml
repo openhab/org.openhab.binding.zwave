@@ -140,7 +140,8 @@ What do to when an alarm is recieved<br /><h1>Overview</h1><p>Set the response o
         </options>
       </parameter>
 
-      <parameter name="config_9_2" type="integer" groupName="configuration">
+      <parameter name="config_9_2" type="integer" groupName="configuration"
+                 min="0" max="32513">
         <label>9: Alarm reaction when received</label>
         <description><![CDATA[
 Configure what alarms Smart Switch 7 will react to from other Z-Wave devices.<br /><h1>Overview</h1><table><tr><td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>0</td> <td>The alarm will be triggered by open state, and be disabled by closed state.</td> </tr><tr><td>1</td> <td>The alarm will be triggered by closed state, and be disabled by open state.</td> </tr><tr><td>256</td> <td>Smoke alarm.</td> </tr><tr><td>512</td> <td>CO Alarm</td> </tr><tr><td>1024</td> <td>CO2 Alarm</td> </tr><tr><td>2048</td> <td>Heat Alarm</td> </tr><tr><td>4096</td> <td>Water Alarm</td> </tr><tr><td>8192</td> <td>Access Control</td> </tr><tr><td>16384</td> <td>Home Security</td> </tr></table><p>Value 0 and 1 cannot be used at the same time, choose one as a part of your calculation.</p> <p>Use the sum of values to determine what alarms trigger your Smart Switch 7.</p> <p>For example:</p> <p>Value = 0 + 256 + 512 + 1024 = 1792<br />0 = sets the control scheme to turn on Smart Switch 7 when open alarm state happens</p> <p>256 = allows Smoke Alarm signals to control SS7</p> <p>512 = allows CO Alarm signals to control SS7</p> <p>1024 = allows CO2 Alarm signals to control SS7</p>
@@ -157,6 +158,8 @@ Configure what alarms Smart Switch 7 will react to from other Z-Wave devices.<br
           <option value="8192">Access Control</option>
           <option value="16384">Home Security</option>
         </options>
+        <advanced>true</advanced>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
