@@ -14,7 +14,7 @@ package org.openhab.binding.zwave.internal;
 
 import static org.junit.Assert.*;
 
-import org.eclipse.smarthome.core.thing.ThingTypeUID;
+import org.openhab.core.thing.ThingTypeUID;
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.ZWaveProduct;
 

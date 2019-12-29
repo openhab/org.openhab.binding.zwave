@@ -17,8 +17,8 @@ import static org.junit.Assert.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import org.eclipse.smarthome.config.core.ConfigDescription;
-import org.eclipse.smarthome.config.core.ConfigDescriptionParameter;
+import org.openhab.core.config.core.ConfigDescription;
+import org.openhab.core.config.core.ConfigDescriptionParameter;
 import org.junit.Test;
 
 /**
