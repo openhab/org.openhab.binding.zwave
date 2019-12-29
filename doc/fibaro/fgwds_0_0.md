@@ -6,8 +6,7 @@ title: FGWDS - ZWave
 {% include base.html %}
 
 # FGWDS WALLI SWITCH FIBARO SINGLE SWITCH
-This describes the Z-Wave device *FGWDS*, manufactured by *[Fibargroup](http://www.fibaro.com/)* with the thing type UID of ```fibaro_fgwds_05_001```.
-This version of the device is limited to firmware versions above 5.1
+This describes the Z-Wave device *FGWDS*, manufactured by *[Fibargroup](http://www.fibaro.com/)* with the thing type UID of ```fibaro_fgwds_00_000```.
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
@@ -92,14 +91,24 @@ The following table summarises the channels available for the FGWDS -:
 
 | Channel Name | Channel ID | Channel Type | Category | Item Type |
 |--------------|------------|--------------|----------|-----------|
-| Switch Binary  [Deprecated]| switch_binary | switch_binary | Switch | Switch | 
+| Switch Binary | switch_binary | switch_binary | Switch | Switch | 
+| Electric meter (kWh) | meter_kwh | meter_kwh | Energy | Number | 
+| Electric meter (watts) | meter_watts | meter_watts | Energy | Number | 
 
-### Switch Binary [Deprecated]
+### Switch Binary
 Switch the power on and off.
 
 The ```switch_binary``` channel is of type ```switch_binary``` and supports the ```Switch``` item and is in the ```Switch``` category.
 
-**Note:** This channel is marked as deprecated so should not be used.
+### Electric meter (kWh)
+Indicates the energy consumption (kWh).
+
+The ```meter_kwh``` channel is of type ```meter_kwh``` and supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
+
+### Electric meter (watts)
+Indicates the instantaneous power consumption.
+
+The ```meter_watts``` channel is of type ```meter_watts``` and supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 
 
