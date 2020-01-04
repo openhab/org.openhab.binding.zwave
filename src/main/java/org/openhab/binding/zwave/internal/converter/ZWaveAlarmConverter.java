@@ -123,7 +123,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         events.put(NotificationEvent.POWER_MANAGEMENT__REPLACE_BATTERY_NOW, OnOffType.ON);
         notifications.put("alarm_battery", events);
 
-        // Battery alarms
+        // Power alarms
         events = new HashMap<NotificationEvent, State>();
         events.put(NotificationEvent.POWER_MANAGEMENT__NONE, OnOffType.OFF);
         events.put(NotificationEvent.POWER_MANAGEMENT__MAINS_DISCONNECTED, OnOffType.ON);
@@ -146,6 +146,14 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         events.put(NotificationEvent.CO2__CO2_DETECTED_UNKNOWN, OnOffType.ON);
         events.put(NotificationEvent.CO2__CO2_ALARM_TEST, OnOffType.ON);
         notifications.put("alarm_co2", events);
+
+        // Combustible gas alarms
+        events = new HashMap<NotificationEvent, State>();
+        events.put(NotificationEvent.GAS__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.GAS__COMBUSTIBLE_DETECTED, OnOffType.ON);
+        events.put(NotificationEvent.GAS__COMBUSTIBLE_DETECTED_UNKNOWN, OnOffType.ON);
+        events.put(NotificationEvent.GAS__ALARM_TEST, OnOffType.ON);
+        notifications.put("alarm_combustiblegas", events);
 
         // Emergency alarms
         events = new HashMap<NotificationEvent, State>();
@@ -528,7 +536,15 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         HOME_HEALTH__LYING_ON_BED("HOME_HEALTH", 3),
         HOME_HEALTH__POSTURE_CHANGED("HOME_HEALTH", 4),
         HOME_HEALTH__SITTING_ON_BED_EDGE("HOME_HEALTH", 5),
-        HOME_HEALTH__VOC_LEVEL("HOME_HEALTH", 6);
+        HOME_HEALTH__VOC_LEVEL("HOME_HEALTH", 6),
+
+        GAS__NONE("GAS", 0),
+        GAS__COMBUSTIBLE_DETECTED("GAS", 1),
+        GAS__COMBUSTIBLE_DETECTED_UNKNOWN("GAS", 2),
+        GAS__TOXIC_DETECTED("GAS", 3),
+        GAS__TOXIC_DETECTED_UNKNOWN("GAS", 4),
+        GAS__ALARM_TEST("GAS", 5),
+        GAS__MAINTENANCE_REPLACEMENT("GAS", 5);
 
         private static Map<Integer, NotificationEvent> codeHashMap;
 
