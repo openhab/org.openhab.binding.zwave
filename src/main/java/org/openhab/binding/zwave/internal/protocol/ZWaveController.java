@@ -120,7 +120,13 @@ public class ZWaveController {
     }
 
     public void shutdown() {
+        logger.debug("Shutting down ZWave controller");
         transactionManager.shutdown();
+        for (ZWaveNode node : zwaveNodes.values()) {
+            node.close();
+        }
+        zwaveNodes.clear();
+        logger.debug("ZWave controller shutdown");
     }
 
     /**
