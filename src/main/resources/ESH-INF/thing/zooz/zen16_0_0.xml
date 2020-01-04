@@ -104,7 +104,7 @@ Choose the wall switch type you want to connect to the Sw2 terminal<br /><h1>Ove
         </options>
       </parameter>
 
-      <parameter name="config_4_1" type="integer" groupName="configuration" readOnly="true">
+      <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Switch Type for Relay 3 (Sw3)</label>
         <description><![CDATA[
 Choose the wall switch type you want to connect to the Sw3 terminal.<br /><h1>Overview</h1><p>Click-click-click’n’hold the Z-Wave button for 5 seconds to change mode manually</p>
@@ -124,7 +124,7 @@ LED Indicator Control<br /><h1>Overview</h1><p>Choose if you want the LED indica
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">ON when all relays OFF</option>
+          <option value="0">ON when all relays OFF (default)</option>
           <option value="1">ON when any relay ON</option>
           <option value="2">LED indicator is always OFF</option>
           <option value="3">LED indicator is always ON</option>
@@ -217,7 +217,7 @@ Enable/Disable Manual Control for Sw1<br /><h1>Overview</h1><p>Enable or disable
         <default>1</default>
         <options>
           <option value="0">Disable</option>
-          <option value="1">Enable</option>
+          <option value="1">Enable (default)</option>
         </options>
       </parameter>
 
@@ -229,7 +229,7 @@ Enable/Disable Manual Control for Sw2<br /><h1>Overview</h1><p>Enable or disable
         <default>1</default>
         <options>
           <option value="0">Disable</option>
-          <option value="1">Enable</option>
+          <option value="1">Enable (default)</option>
         </options>
       </parameter>
 
@@ -241,7 +241,7 @@ Enable/Disable Manual Control for Sw3<br /><h1>Overview</h1><p>Enable or disable
         <default>1</default>
         <options>
           <option value="0">Disable</option>
-          <option value="1">Enable</option>
+          <option value="1">Enable (default)</option>
         </options>
       </parameter>
 

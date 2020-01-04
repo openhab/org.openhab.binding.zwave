@@ -14,16 +14,10 @@ Knob Smart Dimmer<br /><h1>Overview</h1><p>Z-Wave rotary dimmer for different li
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
-        </properties>
-      </channel>
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
@@ -85,7 +79,7 @@ Defines the value of connected load<br /><h1>Overview</h1><table><tr><td>Value</
                  min="1" max="98">
         <label>2: Minimum Dim level</label>
         <description><![CDATA[
-efines the lowest dimming level<br /><h1>Overview</h1><p>This parameter defines the lowest dimming level of the dimmer.</p> <p>The value must be lower than parameter 3 ”Maximum Dim Level”. </p> <table><tr><td>Value</td> <td>Description</td> </tr><tr><td>1-98</td> <td>1% - 98% Default is 20 (20%)</td> </tr></table>
+Defines the lowest dimming level<br /><h1>Overview</h1><p>This parameter defines the lowest dimming level of the dimmer.</p> <p>The value must be lower than parameter 3 ”Maximum Dim Level”. </p> <table><tr><td>Value</td> <td>Description</td> </tr><tr><td>1-98</td> <td>1% - 98% Default is 20 (20%)</td> </tr></table>
         ]]></description>
         <default>20</default>
       </parameter>

@@ -34,7 +34,7 @@ Plug-In Smart Dimmer<br /><h1>Overview</h1><p>Transform any home into a smart ho
       <property name="vendor">Jasco Products</property>
       <property name="modelId">GE 28167 (ZW3104)</property>
       <property name="manufacturerId">0063</property>
-      <property name="manufacturerRef">5044:3038</property>
+      <property name="manufacturerRef">5044:3037,5044:3038</property>
       <property name="dbReference">577</property>
       <property name="defaultAssociations">1</property>
     </properties>

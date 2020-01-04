@@ -567,7 +567,7 @@ Single Click ON Trigger (IN4)<br /><h1>Overview</h1><p>Set the status or brightn
       <parameter name="config_157_1" type="integer" groupName="configuration">
         <label>157: Preset Programs</label>
         <description><![CDATA[
-Enable one of the preset animated color programs to set the mood with a click<br /><h1>Overview</h1><p>Enable one of the preset animated color programs to set the mood with a click.</p>
+Enable one of the preset animated color programs to set the mood with a click<br /><h1>Overview</h1><p>0 - Preset programs disabled</p> <p>6 - Fireplace</p> <p>7 - Storm</p> <p>8 - Rainbow</p> <p>9 - Polar lights</p> <p>10 - Police (strobing red, white and blue)</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -576,7 +576,7 @@ Enable one of the preset animated color programs to set the mood with a click<br
           <option value="7">Storm</option>
           <option value="8">Rainbow</option>
           <option value="9">Polar Lights</option>
-          <option value="10">Police (strobing red, white, and blue)</option>
+          <option value="10">Police (strobing red, white and blue)</option>
         </options>
       </parameter>
 
@@ -678,7 +678,7 @@ Brightness (dimming) sync from input IN4<br /><h1>Overview</h1><p>Brightness (di
         <option value="7">Storm</option>
         <option value="8">Rainbow</option>
         <option value="9">Polar Lights</option>
-        <option value="10">Police (strobing red, white, and blue)</option>
+        <option value="10">Police (strobing red, white and blue)</option>
       </options>
     </state>
   </channel-type>
