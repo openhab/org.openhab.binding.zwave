@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeotec_zwa008_00_000" listed="false">
     <label>ZWA008 Door/Window Sensor 7</label>
@@ -26,10 +26,10 @@ Door/Window Sensor 7<br /><h1>Overview</h1><p>Aeotec Door/ Window Sensor 7 is a 
           <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
         </properties>
       </channel>
-      <channel id="alarm_access" typeId="alarm_access">
-        <label>Alarm (access)</label>
+      <channel id="sensor_door" typeId="sensor_door">
+        <label>Door Sensor</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
+          <property name="binding:*:OpenClosedType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
         </properties>
       </channel>
       <channel id="alarm_burglar" typeId="alarm_burglar">
@@ -50,9 +50,9 @@ Door/Window Sensor 7<br /><h1>Overview</h1><p>Aeotec Door/ Window Sensor 7 is a 
       <property name="vendor">Aeotec Limited</property>
       <property name="modelId">ZWA008</property>
       <property name="manufacturerId">0371</property>
-      <property name="manufacturerRef">0002:0007,0102:0007</property>
+      <property name="manufacturerRef">0002:0007,0102:0007,0202:0007</property>
       <property name="dbReference">1065</property>
-      <property name="commandClass:COMMAND_CLASS_SECURITY">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_SECURITY">setVersion=2</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -154,8 +154,8 @@ Sending a BASIC command to all devices of Association Group 2<br /><h1>Overview<
 
       <parameter name="config_9_2" type="integer" groupName="configuration"
                  min="0" max="32400">
-        <label>9: Time Delay of ‘Off‘ command frame</label>
-        <description>Time Delay of ‘Off‘ command frame</description>
+        <label>9: Time Delay of ‘On‘ command frame</label>
+        <description>Time Delay of ‘On‘ command frame</description>
         <default>0</default>
       </parameter>
 
@@ -201,6 +201,13 @@ Sending a BASIC command to all devices of Association Group 2<br /><h1>Overview<
           <option value="0">Disabled</option>
           <option value="1">Enabled</option>
         </options>
+      </parameter>
+
+      <parameter name="config_15_1" type="integer" groupName="configuration"
+                 min="0" max="100">
+        <label>15: Tilt Sensor Sensitivity</label>
+        <description>Tilt Sensor Sensitivity</description>
+        <default>50</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgms001_00_000" listed="false">
     <label>FGMS001 Motion Sensor</label>
@@ -260,10 +260,10 @@ How often temperature reports will be sent to the main controller.<br /><h1>Over
       </parameter>
 
       <parameter name="config_66_2" type="integer" groupName="configuration"
-                 min="-100" max="100">
+                 min="0" max="65535">
         <label>66: Temperature Offset</label>
         <description><![CDATA[
-The value to be added to the actual measured temperature.<br /><h1>Overview</h1><p>The value to be added to the actual temperature, measured by the sensor (temperature compensation).<br />Available settings: -100 to 100 degrees Celsius<br />Default setting: 0 Parameter size: 2 [bytes]</p>
+The value to be added to the actual measured temperature.<br /><h1>Overview</h1><p>The value to be added to the actual temperature, measured by the sensor (temperature compensation).<br /> Available settings: 0 - 100 (0 to 100oC) or 64536 - 65535 (-100 to -0.10oC)<br />Default setting: 0 Parameter size: 2 [bytes]</p>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -316,7 +316,7 @@ The parameter determines the brightness of LED when indicating motion.<br /><h1>
 
       <parameter name="config_82_2" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>82: Ambient Illumination Level</label>
+        <label>82: Lower Ambient Illumination Level</label>
         <description><![CDATA[
 Below which LED brightness is set to 1%<br /><h1>Overview</h1><p>The parameter is relevant only when the parameter 81 is set to 0.</p> <p>Available settings: 0 to parameter 83 value<br />Default setting: 100 (100 lux)<br />Parameter size: 2 [bytes]</p>
         ]]></description>
@@ -325,7 +325,7 @@ Below which LED brightness is set to 1%<br /><h1>Overview</h1><p>The parameter i
 
       <parameter name="config_83_2" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>83: Ambient Illumination Level</label>
+        <label>83: Upper Ambient Illumination Level</label>
         <description><![CDATA[
 Above which LED brightness is set to 100%<br /><h1>Overview</h1><p>The parameter is relevant only when the parameter 81 is set to 0.</p> <p>Available settings: parameter 82 value to 65535<br />Default setting: 1 000 (1 000 lux)<br />Parameter size: 2 [bytes]</p>
         ]]></description>

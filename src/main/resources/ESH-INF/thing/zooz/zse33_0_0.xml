@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zooz_zse33_00_000" listed="false">
     <label>ZSE33 Smart Chime/Alarm</label>
     <description><![CDATA[
-Smart Chime/Alarm<br /><h1>Overview</h1><p>- Audio and visual notifications triggered by other Z-Wave devices or scheduled in your routine</p> <p>- Choose from 10 different sounds for chime and siren modes</p> <p>- Advanced configuration available</p> <p>- Powerful long-lasting batteries</p> <p>- Z-Wave Plus with improved 500 chip for faster and safer wireless communication</p> <p>- Small size and quick installation</p> <p>Model Number: ZSE33</p> <p>Z-Wave Signal Frequency: 908.42 MHz</p> <p>Power: 2 CR123 batteries (included)</p> <p>Power Consumption: 2W</p> <p>Operating Temperature: 32 – 104 F</p> <p>Range: Up to 100 feet line of sight</p> <p>Installation and Use: Indoor only</p> <p>Dimensions: 2.7” x 1.2”</p> <p>Weight: 3 oz</p> <br /><h2>Inclusion Information</h2><p>Auto Inclusion:</p> <p>1. Put your Z-Wave controller in inclusion mode</p> <p>2. Carefully remove the cover from the device</p> <p>3. Remove the plastic pull-tab from the battery slot – the Chime will automatically enter inclusion mode for 20 seconds</p> <p>4. A new alarm siren / doorbell device will appear on your controller's device list</p> <p>Manual Inclusion:</p> <p>1. Bring the Smart Chime within direct range of your controller</p> <p>2. Carefully remove the cover from the device</p> <p>3. Remove the plastic pull-tab from the battery slot. The LED indicator will blink slowly</p> <p>4. Put your Z-Wave controller in inclusion mode</p> <p>5. Press and release the Z-Wave button on the Smart Chime 3 TIMES quickly. The LED indicator</p> <p>will flash quickly</p> <p>6. A new alarm siren / doorbell device will appear on your controller's device list (if it connects as an on/off switch, you may need to change the device type manually. Contact us for instructions).</p> <br /><h2>Exclusion Information</h2><p>1. Make sure the Smart Chime is powered on and located within direct range of your Z-Wave gateway controller</p> <p>2. Put your Z-Wave controller in exclusion mode</p> <p>3. Press and release the Z-Wave button 3 TIMES quickly. The LED indicator will flash quickly</p> <p>4. The Smart Chime should disappear from your controller's device list</p> <p>If the first attempt is unsuccessful, please repeat the process following all steps carefully.</p>
+Smart Chime/Alarm<br /><h1>Overview</h1><p>Smart Chime/Alarm</p> <ul><li>Audio and visual notifications triggered by other Z-Wave devices or scheduled in your routine</li> <li>Choose from 10 different sounds for chime and siren modes</li> <li>Advanced configuration available</li> <li>Powerful long-lasting batteries</li> <li>Z-Wave Plus with improved 500 chip for faster and safer wireless communication</li> <li>Small size and quick installation</li> <li>Z-Wave Signal Frequency: 908.42 MHz</li> <li>Power: 2 CR123 batteries (included)</li> <li>Power Consumption: 2W</li> <li>Operating Temperature: 32 – 104 F</li> <li>Range: Up to 100 feet line of sight</li> <li>Installation and Use: Indoor only</li> <li>Dimensions: 2.7” x 1.2”</li> <li>Weight: 3 oz</li> </ul><br /><h2>Inclusion Information</h2><p>Auto Inclusion:</p> <ol><li>Put your Z-Wave controller in inclusion mode</li> <li>Carefully remove the cover from the device</li> <li>Remove the plastic pull-tab from the battery slot – the Chime will automatically enter inclusion mode for 20 seconds</li> <li>A new alarm siren / doorbell device will appear on your controller's device list</li> </ol><p>Manual Inclusion:</p> <ol><li>Bring the Smart Chime within direct range of your controller</li> <li>Carefully remove the cover from the device</li> <li>Remove the plastic pull-tab from the battery slot. The LED indicator will blink slowly</li> <li>Put your Z-Wave controller in inclusion mode</li> <li>Press and release the Z-Wave button on the Smart Chime 3 TIMES quickly. The LED indicator will flash quickly</li> <li>A new alarm siren / doorbell device will appear on your controller's device list (if it connects as an on/off switch, you may need to change the device type manually. Contact us for instructions).</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Make sure the Smart Chime is powered on and located within direct range of your Z-Wave gateway controller</li> <li>Put your Z-Wave controller in exclusion mode</li> <li>Press and release the Z-Wave button 3 TIMES quickly. The LED indicator will flash quickly</li> <li>The Smart Chime should disappear from your controller's device list</li> </ol><p>If the first attempt is unsuccessful, please repeat the process following all steps carefully.</p>
     ]]></description>
+    <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -39,6 +40,7 @@ Smart Chime/Alarm<br /><h1>Overview</h1><p>- Audio and visual notifications trig
       <property name="manufacturerId">027A</property>
       <property name="manufacturerRef">0003:0088</property>
       <property name="dbReference">638</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -48,6 +50,11 @@ Smart Chime/Alarm<br /><h1>Overview</h1><p>- Audio and visual notifications trig
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
@@ -73,7 +80,7 @@ Smart Chime/Alarm<br /><h1>Overview</h1><p>- Audio and visual notifications trig
                  min="0" max="255">
         <label>3: Chime Sound Duration</label>
         <description><![CDATA[
-how many times the chime should repeat the doorbell sound once triggered by a BASIC_SET alarm command from a door sensor.<br /><h1>Overview</h1><p>Values: 0 – chime is off, 1 – 254 (cycles); 255 – chime</p> <p>sound continues until battery drains; 2 – default setting.</p>
+Chime Sound Duration<br /><h1>Overview</h1><p>how many times the chime should repeat the doorbell sound once triggered by a BASIC_SET alarm command from a door sensor.</p> <p>Values: 0 – chime is off, 1 – 254 (cycles); 255 – chime</p> <p>sound continues until battery drains; 2 – default setting.</p>
         ]]></description>
         <default>2</default>
       </parameter>
@@ -89,7 +96,7 @@ how many times the chime should repeat the doorbell sound once triggered by a BA
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
                  min="1" max="10">
-        <label>5: </label>
+        <label>5: Siren Alarm Tone</label>
         <description><![CDATA[
 10 different tones for alarm siren<br /><h1>Overview</h1><p>Values: 1-10; 10 – default setting.</p>
         ]]></description>
@@ -109,7 +116,7 @@ how many times the chime should repeat the doorbell sound once triggered by a BA
                  min="1" max="2">
         <label>7: Siren Alarm or Chime Mode</label>
         <description><![CDATA[
-Switch between Siren Alarm (configu-red by parameters 1, 2, 5, 8) and Chime / Doorbell (parameters 3, 4, 6, 9) modes.<br /><h1>Overview</h1><p>Values: 1 – Siren Alarm enabled; 2 – Chime enabled (default).</p>
+Siren Alarm or Chime Mode<br /><h1>Overview</h1><p>Switch between Siren Alarm (configu-red by parameters 1, 2, 5, 8) and Chime / Doorbell (parameters 3, 4, 6, 9) modes.</p> <p>Values: 1 – Siren Alarm enabled; 2 – Chime enabled (default).</p>
         ]]></description>
         <default>2</default>
       </parameter>
@@ -118,7 +125,7 @@ Switch between Siren Alarm (configu-red by parameters 1, 2, 5, 8) and Chime / Do
                  min="0" max="1">
         <label>8: LED Notifications for Siren Alarm</label>
         <description><![CDATA[
-Enable or disable visual alarm for Siren mode. The LED will blink when triggered.<br /><h1>Overview</h1><p>Values: 0 – LED disabled; 1 – LED enabled (default).</p>
+LED Notifications for Siren Alarm<br /><h1>Overview</h1><p>Enable or disable visual alarm for Siren mode. The LED will blink when triggered.</p> <p>Values: 0 – LED disabled; 1 – LED enabled (default).</p>
         ]]></description>
         <default>1</default>
       </parameter>
@@ -127,9 +134,31 @@ Enable or disable visual alarm for Siren mode. The LED will blink when triggered
                  min="0" max="1">
         <label>9: LED Notifications for Chime</label>
         <description><![CDATA[
-Enable or disable visual alarm for Chime mode. The LED will blink when triggered.<br /><h1>Overview</h1><p>Values: 0 – LED disabled (default); 1 – LED enabled.</p>
+LED Notifications for Chime<br /><h1>Overview</h1><p>Enable or disable visual alarm for Chime mode. The LED will blink when triggered.</p> <p>Values: 0 – LED disabled (default); 1 – LED enabled.</p>
         ]]></description>
         <default>1</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Group 2</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Group 2 for status notifications to Z-Wave devices associated in this group.</p> <p>Supported command classes: SWITCH_BINARY_REPORT</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Group 3</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Group 3 for notifications to Z-Wave devices associated in this group.</p> <p>Supported command classes: NOTIFICATION_REPORT</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="devolo_mt2792_00_000" listed="false">
     <label>MT02792 Home Control Metering Plug</label>
@@ -142,7 +142,7 @@ number of 10 minute intervals<br /><h1>Overview</h1><p>Enable automatic interval
 
       <parameter name="config_4_2" type="integer" groupName="configuration"
                  min="1" max="10000">
-        <label>4: Definition of warning of load fuse protection (kWh)</label>
+        <label>4: load caution threshold</label>
         <description><![CDATA[
 load caution threshold<br /><h1>Overview</h1><p>Enable automatic warning when the accumulated kWh power consumption exceeds the setting value from 1KWh ~ 10000KWh.. Set to 0 will disable kWh load caution reporting.</p>
         ]]></description>
@@ -156,9 +156,9 @@ Restore switch state mode.<br /><h1>Overview</h1><p>Status of the plug if it is 
         ]]></description>
         <default>1</default>
         <options>
-          <option value="0">Upon the return of AC power, the switch will remain Off.</option>
+          <option value="0">Switch will remain Off.</option>
           <option value="1">resume previous state</option>
-          <option value="2">Upon the return of AC power, the switch will turn On.</option>
+          <option value="2">Switch will turn On.</option>
         </options>
       </parameter>
 
@@ -199,10 +199,10 @@ Restore switch state mode.<br /><h1>Overview</h1><p>Status of the plug if it is 
         <description>RF off command mode</description>
         <default>0</default>
         <options>
-          <option value="0">When SWITCH ALL OFF is received, the MT2792 turns Off.</option>
+          <option value="0">When ALL OFF is received, MT2792 goes Off.</option>
           <option value="1">Ignore ALL OFF</option>
           <option value="2">If ALL OFF is received, turn ON if it is OFF</option>
-          <option value="3">When SWITCH ALL OFF is received, the MT2792 turns On.</option>
+          <option value="3">WhenALL OFF is received, the MT2792 goes On.</option>
         </options>
       </parameter>
 
@@ -211,38 +211,6 @@ Restore switch state mode.<br /><h1>Overview</h1><p>Status of the plug if it is 
         <label>1: Lifeline</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p>The device sends a notification report of the command class battery report, notification report, and local device reset notification, binary report.</p>
-        ]]></description>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Root-Device-group (Binary Sensor)</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Binary Sensor Command Class: Compatible with 300 Series</p> <ul><li>Sensor reports the status of the open or closed door via Lifeline.</li> <li>If the sensor detects a status change between closed and open door, the device is triggered.</li> </ul>
-        ]]></description>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Root-Device-group</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Binary Sensor Command Class: Compatible with 300 Series</p> <ul><li>Sensor indicates the status, door sensor has been removed.</li> <li>Device triggers when the sensor changes state tamper button detects.</li> </ul>
-        ]]></description>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Root device group (notification)</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><ul><li>Notification Open or Closed Status via Lifeline</li> <li>Device triggers when the sensor has a status change between closed and opened door recognizes.</li> </ul>
-        ]]></description>
-        <multipleLimit>5</multipleLimit>
-      </parameter>
-
-      <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Root device group (notification)</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><ul><li>Sensor reports the status door sensor has been removed.</li> <li>The device triggers when the sensor changes state tamper button detects.</li> </ul>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>

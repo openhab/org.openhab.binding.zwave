@@ -19,26 +19,48 @@ The ZME_KFOB-S does not permanently listen for messages sent from the controller
 
 ## Overview
 
+The Z-Wave.Me Key Fob is a Z-Wave device that can both control other Z-Wave devices and activate predefined scenes in an IP gateway. Although it is controlling other devices the fob can?t act as Z-Wave network controller (primary or secondary) and will always need a Z-Wave network controller to be included into a Z-Wave network. The Key Fob can be used in five different modes that are picked by configuration commands:
+
+  1. Direct Control of associated Devices with On/Off/Dim commands
+  2. Direct Control of associated Devices with On/Off commands
+  3. Switch All On/Off
+  4. Scene Activation in IP Gateway
+  5. Direct Activation of preconfigured Scenes
+  6. Direct Control of Devices in proximity
+
+### Inclusion Information
+
+  1. Pushing all four buttons for 5 sec. will turn the fob into management mode. Management mode will time out after 10 sec
+  2.  Button 3 confirms standard inclusion/exclusion by a primary controller,
+
+### Exclusion Information
+
+  1. Pushing all four buttons for 5 sec. will turn the fob into management mode. Management mode will time out after 10 sec
+  2.  Button 3 confirms standard inclusion/exclusion by a primary controller,
+
 ### Wakeup Information
 
 The ZME_KFOB-S does not permanently listen for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour.
 
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
+
+  1. Pushing all four buttons for 5 sec. will turn the fob into management mode. Management mode will time out after 10 sec
+  2. Button 2 issues a node information frame or wakeup notification
+
 ## Channels
 
 The following table summarises the channels available for the ZME_KFOB-S -:
 
-| Channel | Channel Id | Category | Item Type |
-|---------|------------|----------|-----------|
-| Scene Number | scene_number |  | Number | 
-| Battery Level | battery-level | Battery | Number |
+| Channel Name | Channel ID | Channel Type | Category | Item Type |
+|--------------|------------|--------------|----------|-----------|
+| Scene Number | scene_number | scene_number |  | Number | 
+| Battery Level | battery-level | system.battery_level | Battery | Number |
 
 ### Scene Number
-
 Triggers when a scene button is pressed.
 
-The ```scene_number``` channel supports the ```Number``` item.
+The ```scene_number``` channel is of type ```scene_number``` and supports the ```Number``` item.
 This channel provides the scene, and the event as a decimal value in the form ```<scene>.<event>```. The scene number is set by the device, and the event is as follows -:
 
 | Event ID | Event Description  |
@@ -52,11 +74,10 @@ This channel provides the scene, and the event as a decimal value in the form ``
 | 6        | 5 x keypress       |
 
 ### Battery Level
-
 Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
 
-The ```battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
-
+The ```system.battery-level``` channel is of type ```system.battery-level``` and supports the ```Number``` item and is in the ```Battery``` category.
+This channel provides the battery level as a percentage and also reflects the low battery warning state. If the battery state is in low battery warning state, this will read 0%.
 
 
 ## Device Configuration
@@ -122,7 +143,7 @@ The following option values may be configured -:
 | Value  | Description |
 |--------|-------------|
 | 0 | Disabled |
-| 1 | Switch On/Off and Dim (send Basic Set and Switch Multilevel) |
+| 1 | Switch On/Off and Dim |
 | 2 | Switch On/Off only (send Basic Set) |
 | 3 | Switch All |
 | 4 | Send Scenes |
@@ -145,7 +166,7 @@ The following option values may be configured -:
 | Value  | Description |
 |--------|-------------|
 | 0 | Disabled |
-| 1 | Switch On/Off and Dim (send Basic Set and Switch Multilevel) |
+| 1 | Switch On/Off and Dim |
 | 2 | Switch On/Off only (send Basic Set) |
 | 3 | Switch All |
 | 4 | Send Scenes |
@@ -168,7 +189,7 @@ The following option values may be configured -:
 | Value  | Description |
 |--------|-------------|
 | 0 | Disabled |
-| 1 | Switch On/Off and Dim (send Basic Set and Switch Multilevel) |
+| 1 | Switch On/Off and Dim |
 | 2 | Switch On/Off only (send Basic Set) |
 | 3 | Switch All |
 | 4 | Send Scenes |
@@ -191,7 +212,7 @@ The following option values may be configured -:
 | Value  | Description |
 |--------|-------------|
 | 0 | Disabled |
-| 1 | Switch On/Off and Dim (send Basic Set and Switch Multilevel) |
+| 1 | Switch On/Off and Dim |
 | 2 | Switch On/Off only (send Basic Set) |
 | 3 | Switch All |
 | 4 | Send Scenes |

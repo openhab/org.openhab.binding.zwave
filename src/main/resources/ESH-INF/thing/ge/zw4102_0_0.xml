@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="ge_zw4102_00_000" listed="false">
     <label>ZW4102 Energy Monitoring Appliance Module</label>
-    <description>Energy Monitoring Appliance Module</description>
+    <description><![CDATA[
+Energy Monitoring Appliance Module<br /><h1>Overview</h1><p>RF controlled, energy monitoring plug-in relay</p> <br /><h2>Inclusion Information</h2><p>Tap the button (press and release) </p> <br /><h2>Exclusion Information</h2><p>Tap the button (press and release)</p>
+    ]]></description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

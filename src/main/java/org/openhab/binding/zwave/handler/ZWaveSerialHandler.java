@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2019 Contributors to the openHAB project
+ * Copyright (c) 2010-2020 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -248,9 +248,9 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
 
         private final Logger logger = LoggerFactory.getLogger(ZWaveReceiveThread.class);
 
-        private final int SEARCH_SOF = 0;
-        private final int SEARCH_LEN = 1;
-        private final int SEARCH_DAT = 2;
+        private static final int SEARCH_SOF = 0;
+        private static final int SEARCH_LEN = 1;
+        private static final int SEARCH_DAT = 2;
 
         private int rxState = SEARCH_SOF;
         private int messageLength;

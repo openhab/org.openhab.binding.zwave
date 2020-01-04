@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zwaveme_zmekfobs_00_000" listed="false">
     <label>ZME_KFOB-S Secure 4 Button Key Chain Controller</label>
-    <description>Secure 4 Button Key Chain Controller</description>
+    <description><![CDATA[
+Secure 4 Button Key Chain Controller<br /><h1>Overview</h1><p>The Z-Wave.Me Key Fob is a Z-Wave device that can both control other Z-Wave devices and activate predefined scenes in an IP gateway. Although it is controlling other devices the fob can?t act as Z-Wave network controller (primary or secondary) and will always need a Z-Wave network controller to be included into a Z-Wave network. The Key Fob can be used in five different modes that are picked by configuration commands:</p> <ol><li>Direct Control of associated Devices with On/Off/Dim commands</li> <li>Direct Control of associated Devices with On/Off commands</li> <li>Switch All On/Off</li> <li>Scene Activation in IP Gateway</li> <li>Direct Activation of preconfigured Scenes</li> <li>Direct Control of Devices in proximity</li> </ol><br /><h2>Inclusion Information</h2><ol><li>Pushing all four buttons for 5 sec. will turn the fob into management mode. Management mode will time out after 10 sec</li> <li> Button 3 confirms standard inclusion/exclusion by a primary controller,</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Pushing all four buttons for 5 sec. will turn the fob into management mode. Management mode will time out after 10 sec</li> <li> Button 3 confirms standard inclusion/exclusion by a primary controller,</li> </ol><br /><h2>Wakeup Information</h2><ol><li>Pushing all four buttons for 5 sec. will turn the fob into management mode. Management mode will time out after 10 sec</li> <li>Button 2 issues a node information frame or wakeup notification</li> </ol>
+    ]]></description>
     <category>RemoteControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -84,7 +86,7 @@ Set Command to Control Group A<br /><h1>Overview</h1><p>This parameter defines t
         <default>8</default>
         <options>
           <option value="0">Disabled</option>
-          <option value="1">Switch On/Off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch On/Off and Dim</option>
           <option value="2">Switch On/Off only (send Basic Set)</option>
           <option value="3">Switch All</option>
           <option value="4">Send Scenes</option>
@@ -103,7 +105,7 @@ Set Command to Control Group B<br /><h1>Overview</h1><p>This parameter defines t
         <default>8</default>
         <options>
           <option value="0">Disabled</option>
-          <option value="1">Switch On/Off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch On/Off and Dim</option>
           <option value="2">Switch On/Off only (send Basic Set)</option>
           <option value="3">Switch All</option>
           <option value="4">Send Scenes</option>
@@ -122,7 +124,7 @@ Set Command to Control Group C<br /><h1>Overview</h1><p>This parameter defines t
         <default>8</default>
         <options>
           <option value="0">Disabled</option>
-          <option value="1">Switch On/Off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch On/Off and Dim</option>
           <option value="2">Switch On/Off only (send Basic Set)</option>
           <option value="3">Switch All</option>
           <option value="4">Send Scenes</option>
@@ -141,7 +143,7 @@ Set Command to Control Group D<br /><h1>Overview</h1><p>This parameter defines t
         <default>8</default>
         <options>
           <option value="0">Disabled</option>
-          <option value="1">Switch On/Off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch On/Off and Dim</option>
           <option value="2">Switch On/Off only (send Basic Set)</option>
           <option value="3">Switch All</option>
           <option value="4">Send Scenes</option>

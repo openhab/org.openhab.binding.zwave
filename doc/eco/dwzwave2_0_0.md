@@ -19,27 +19,45 @@ The DWZWAVE2 does not permanently listen for messages sent from the controller -
 
 ## Overview
 
+  * Z-Wave enabled device which provides open/closed status
+  * Transmits open/closed status
+  * Reports tamper condition when cover is open
+
+### Inclusion Information
+
+  1. Remove the battery for at least 5 seconds,
+  2. Reinstall the battery
+  3. Replace the sensor cover
+
+### Exclusion Information
+
+  1. Remove the battery from the Sensor.
+  2. Leave the battery out for at least ten (10) seconds.
+  3. Reinstall the battery into the Sensor.
+
 ### Wakeup Information
 
 The DWZWAVE2 does not permanently listen for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour.
 
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
+
+Press the "+" button once.
+
 ## Channels
 
 The following table summarises the channels available for the DWZWAVE2 -:
 
-| Channel | Channel Id | Category | Item Type |
-|---------|------------|----------|-----------|
-| Binary Sensor | sensor_door | Door | Contact | 
-| Alarm | alarm_general | Door | Switch | 
-| Battery Level | battery-level | Battery | Number |
+| Channel Name | Channel ID | Channel Type | Category | Item Type |
+|--------------|------------|--------------|----------|-----------|
+| Binary Sensor | sensor_door | sensor_door | Door | Contact | 
+| Alarm | alarm_general | alarm_general | Alarm | Switch | 
+| Battery Level | battery-level | system.battery_level | Battery | Number |
 
 ### Binary Sensor
-
 Indicates if the door/window is open or closed.
 
-The ```sensor_door``` channel supports the ```Contact``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```sensor_door``` channel is of type ```sensor_door``` and supports the ```Contact``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Contact``` item type -:
 
@@ -49,10 +67,9 @@ The following state translation is provided for this channel to the ```Contact``
 | CLOSED | Closed |
 
 ### Alarm
-
 Indicates if an alarm is triggered.
 
-The ```alarm_general``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```alarm_general``` channel is of type ```alarm_general``` and supports the ```Switch``` item and is in the ```Alarm``` category. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
 
@@ -62,16 +79,72 @@ The following state translation is provided for this channel to the ```Switch```
 | ON | Alarm |
 
 ### Battery Level
-
 Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
 
-The ```battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
-
+The ```system.battery-level``` channel is of type ```system.battery-level``` and supports the ```Number``` item and is in the ```Battery``` category.
+This channel provides the battery level as a percentage and also reflects the low battery warning state. If the battery state is in low battery warning state, this will read 0%.
 
 
 ## Device Configuration
 
-The device has no configuration parameters defined.
+The following table provides a summary of the 2 configuration parameters available in the DWZWAVE2.
+Detailed information on each parameter can be found in the sections below.
+
+| Param | Name  | Description |
+|-------|-------|-------------|
+| 1 | Sending Basic Sets to Association group 2 | Sending Basic Sets to Association group 2 |
+| 2 | Sending sensor binary report | Sending sensor binary report |
+|  | Wakeup Interval | Sets the interval at which the device will accept commands from the controller |
+|  | Wakeup Node | Sets the node ID of the device to receive the wakeup notifications |
+
+### Parameter 1: Sending Basic Sets to Association group 2
+
+Sending Basic Sets to Association group 2
+
+The following option values may be configured -:
+
+| Value  | Description |
+|--------|-------------|
+| 0 | Off |
+| 255 | On |
+
+The manufacturer defined default value is ```0``` (Off).
+
+This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
+
+
+### Parameter 2: Sending sensor binary report
+
+Sending sensor binary report
+
+The following option values may be configured -:
+
+| Value  | Description |
+|--------|-------------|
+| 0 | Off |
+| 255 | On |
+
+The manufacturer defined default value is ```0``` (Off).
+
+This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
+
+### Wakeup Interval
+
+The wakeup interval sets the period at which the device will listen for messages from the controller. This is required for battery devices that sleep most of the time in order to conserve battery life. The device will wake up at this interval and send a message to the controller to tell it that it can accept messages - after a few seconds, it will go back to sleep if there is no further communications. 
+
+This setting is defined in *seconds*. It is advisable not to set this interval too short or it could impact battery life. A period of 1 hour (3600 seconds) is suitable in most instances.
+
+Note that this setting does not affect the devices ability to send sensor data, or notification events.
+
+This parameter has the configuration ID ```wakeup_interval``` and is of type ```INTEGER```.
+
+### Wakeup Node
+
+When sleeping devices wake up, they send a notification to a listening device. Normally, this device is the network controller, and normally the controller will set this automatically to its own address.
+In the event that the network contains multiple controllers, it may be necessary to configure this to a node that is not the main controller. This is an advanced setting and should not be changed without a full understanding of the impact.
+
+This parameter has the configuration ID ```wakeup_node``` and is of type ```INTEGER```.
+
 
 ## Association Groups
 

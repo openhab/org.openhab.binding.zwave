@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeon_zw132_02_000" listed="false">
     <label>ZW132 Dual Nano Switch with Energy Metering</label>
@@ -141,7 +141,7 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><table><tr><td> <p><
       <property name="vendor">AEON Labs</property>
       <property name="modelId">ZW132</property>
       <property name="manufacturerId">0086</property>
-      <property name="manufacturerRef">0103:0084,0203:0084</property>
+      <property name="manufacturerRef">0003:0084,0103:0084,0203:0084</property>
       <property name="versionMin">2.0</property>
       <property name="dbReference">1017</property>
       <property name="defaultAssociations">1</property>
@@ -271,7 +271,7 @@ Time to turn the light on and off<br /><h1>Overview</h1><p>value 1 = (range of 0
 
       <parameter name="config_92_1" type="integer" groupName="configuration"
                  min="0" max="100">
-        <label>92: Set the threshold value of wattage.</label>
+        <label>92: Set the threshold percent power</label>
         <description>Set the threshold value of wattage.</description>
         <default>5</default>
       </parameter>

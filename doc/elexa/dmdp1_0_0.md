@@ -423,18 +423,17 @@ Table 3 - Button Behavior
 
 The following table summarises the channels available for the DMDP1 -:
 
-| Channel | Channel Id | Category | Item Type |
-|---------|------------|----------|-----------|
-| Binary Sensor | sensor_binary | Door | Switch | 
-| Alarm (access) | alarm_access | Door | Switch | 
-| Alarm (burglar) | alarm_burglar | Door | Switch | 
-| Battery Level | battery-level | Battery | Number |
+| Channel Name | Channel ID | Channel Type | Category | Item Type |
+|--------------|------------|--------------|----------|-----------|
+| Binary Sensor | sensor_binary | sensor_binary |  | Switch | 
+| Alarm (access) | alarm_access | alarm_access | Door | Switch | 
+| Alarm (burglar) | alarm_burglar | alarm_burglar | Door | Switch | 
+| Battery Level | battery-level | system.battery_level | Battery | Number |
 
 ### Binary Sensor
-
 Indicates if a sensor has triggered.
 
-The ```sensor_binary``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```sensor_binary``` channel is of type ```sensor_binary``` and supports the ```Switch``` item. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
 
@@ -444,10 +443,9 @@ The following state translation is provided for this channel to the ```Switch```
 | OFF | Untriggered |
 
 ### Alarm (access)
-
 Indicates if the access control alarm is triggered.
 
-The ```alarm_access``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```alarm_access``` channel is of type ```alarm_access``` and supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
 
@@ -457,10 +455,9 @@ The following state translation is provided for this channel to the ```Switch```
 | ON | Alarm |
 
 ### Alarm (burglar)
-
 Indicates if the burglar alarm is triggered.
 
-The ```alarm_burglar``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```alarm_burglar``` channel is of type ```alarm_burglar``` and supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
 
@@ -470,11 +467,10 @@ The following state translation is provided for this channel to the ```Switch```
 | ON | Alarm |
 
 ### Battery Level
-
 Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
 
-The ```battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
-
+The ```system.battery-level``` channel is of type ```system.battery-level``` and supports the ```Number``` item and is in the ```Battery``` category.
+This channel provides the battery level as a percentage and also reflects the low battery warning state. If the battery state is in low battery warning state, this will read 0%.
 
 
 ## Device Configuration
@@ -491,7 +487,7 @@ Detailed information on each parameter can be found in the sections below.
 | 5 | Temperature offset | Temperature offset |
 | 6 | Temperature Units | Temperature Units |
 | 7 | Basic Set Value (Group 2) | Basic Set Value (Group 2) |
-| 8 | Basic Set Value (Group 2) | Basic Set Value (Group 2) |
+| 8 | Basic Set Value (Group 3) | Basic Set Value (Group 3) |
 | 9 | Basic Set Value (Group 4) | Basic Set Value (Group 4) |
 |  | Wakeup Interval | Sets the interval at which the device will accept commands from the controller |
 |  | Wakeup Node | Sets the node ID of the device to receive the wakeup notifications |
@@ -864,10 +860,10 @@ The manufacturer defined default value is ```0```.
 This parameter has the configuration ID ```config_7_1``` and is of type ```INTEGER```.
 
 
-### Parameter 8: Basic Set Value (Group 2)
+### Parameter 8: Basic Set Value (Group 3)
 
-Basic Set Value (Group 2)
-This parameter sets the value sent by the Basic Set command to Association Group 4. The Door/Window Sensor sends a Basic Set command to Association Group 4 when the door or window opens (for more information, see “Association Group Info”.)
+Basic Set Value (Group 3)
+This parameter sets the value sent by the Basic Set command to Association Group 3. The Door/Window Sensor sends a Basic Set command to Association Group 4 when the door or window opens (for more information, see “Association Group Info”.)
 
 <table>
   <tr>

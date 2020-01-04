@@ -63,20 +63,20 @@ B. Manual/Program button
 
 The following table summarises the channels available for the GE Outdoor Switch -:
 
-| Channel | Channel Id | Category | Item Type |
-|---------|------------|----------|-----------|
-| Switch | switch_binary | Switch | Switch | 
-| Scene Number | scene_number |  | Number | 
+| Channel Name | Channel ID | Channel Type | Category | Item Type |
+|--------------|------------|--------------|----------|-----------|
+| Switch | switch_binary | switch_binary | Switch | Switch | 
+| Scene Number | scene_number | scene_number |  | Number | 
 
 ### Switch
 Switch the power on and off.
 
-The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
+The ```switch_binary``` channel is of type ```switch_binary``` and supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Scene Number
 Triggers when a scene button is pressed.
 
-The ```scene_number``` channel supports the ```Number``` item.
+The ```scene_number``` channel is of type ```scene_number``` and supports the ```Number``` item.
 
 
 
@@ -97,13 +97,13 @@ Association Group 1 supports Lifeline, Binary Switch Report
 
 Association group 1 supports 5 nodes.
 
-### Group 2: Basic Set
+### Group 2: Group 2
 
 Association Group 2 supports Basic Set and is controlled by pressing the On or Off button with the local load
 
 Association group 2 supports 5 nodes.
 
-### Group 3: Basic Set
+### Group 3: Group 3
 
 Association Group 3 supports Basic Set and is controlled by double pressing the On or Off button
 

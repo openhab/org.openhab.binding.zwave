@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="sunricher_heatit_00_000" listed="false">
     <label>Heatit Z-Push Button 8 Wall Mounted Switch</label>
@@ -41,10 +41,26 @@ Wall Mounted Switch<br /><h1>Overview</h1><p>Heatit Z-Push Button 8 is a battery
     <config-description>
 
       <!-- GROUP DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
       <parameter-group name="association">
         <context>link</context>
         <label>Association Groups</label>
       </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter name="config_1_2" type="integer" groupName="configuration">
+        <label>1: factory reset</label>
+        <description>factory reset</description>
+        <default>0</default>
+        <options>
+          <option value="0">normal operation</option>
+          <option value="21930">factory reset</option>
+        </options>
+      </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">

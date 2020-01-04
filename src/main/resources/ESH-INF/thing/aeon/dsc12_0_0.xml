@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeon_dsc12_00_000" listed="false">
     <label>DSC12 Micro Smart Energy Switch</label>
     <description><![CDATA[
-Micro Smart Energy Switch<br /><h1>Overview</h1><p>The Aeon Labs Micro SES is a binary power switch device based on Zwave enhanced slave library V5.02P3.</p>
+Micro Smart Energy Switch<br /><h1>Overview</h1><p>The Aeon Labs Micro SES is a binary power switch device based on Zwave enhanced slave library V5.02P3.</p> <br /><h2>Inclusion Information</h2><p>Click the button once.</p> <br /><h2>Exclusion Information</h2><p>Click the button once.</p>
     ]]></description>
     <category>WallSwitch</category>
 
@@ -17,7 +17,7 @@ Micro Smart Energy Switch<br /><h1>Overview</h1><p>The Aeon Labs Micro SES is a 
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="sensor_power" typeId="sensor_power">

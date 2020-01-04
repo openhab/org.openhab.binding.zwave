@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="oomi_ft116_00_000" listed="false">
     <label>FT116 In-Wall Smart Switch</label>
@@ -234,7 +234,7 @@ Set the OFF time of output load<br /><h1>Overview</h1><p>256 to 316 The hour val
 
       <parameter name="config_92_1" type="integer" groupName="configuration"
                  min="0" max="100">
-        <label>92: Set the threshold value of wattage</label>
+        <label>92: Set the threshold value of percent power</label>
         <description>Threshold percentage change in wattage for an automatic report</description>
         <default>5</default>
       </parameter>

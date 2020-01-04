@@ -19,8 +19,6 @@ The HM-HS1WL-Z does not permanently listen for messages sent from the controller
 
 ## Overview
 
-INTRODUCTION
-
 Smart Water Leakage sensor adopts Z-Wave wireless module. Super low power consumption circuit design ensures the long battery lifespan. Separate design of body and sensor efficiently prevents the influence resulted from high humidity. High precision and sensitivity applicable for basement, machine room, hotel, water tower, pool, swimming pool, solar, kitchen, bathroom and other places may have water leakage or water overflow.
 
 SPECIFICATION
@@ -35,67 +33,17 @@ Working humidity: max 95%RH
 Body dimensions: 76 x 36.6 x 16.5 mm  
 Sensor dimensions: 28.3 x 26.5 x 12.2 mm
 
-WARNINGS  
-1. Install water leakage sensor at areas where it may leak.  
-2. Don’t install water leakage sensor at position of rainwater, lampblack, water vapor, etc.  
-3. Don’t install water leakage sensor at water immersed position.
-
-ASSOCIATION & ASSOCIATION GROUP INFORMATION  
-- Lifeline between controller and Water Leak Sensor  
-- Supported command classes Battery report, Notification report, and Device Reset Locally notification, Binary report.
-
-- Association Group description  
-  
-• Association group 1: Lifeline association group  
-- Maximum supported nodes are  
-1. Include command classes: Battery report, Notification report, and Device Reset Locally notification, Binary report.  
-  
-• Association group 2: Root Device group (Binary Sensor)  
-- Maximum supported nodes are 5.  
-1-Binary Sensor Command Class: Compatible with 300 series  
-2-Binary Sensor reports status of water or no water via Lifeline.  
-3-When the sensor detects status change between water and no water, the device will be triggered.
-
-• Association group 3: Root Device group (Binary Sensor)  
-- Maximum supported nodes are 5.  
-- Binary Sensor Command Class:Compatible with 300 series  
-1-Binary Sensor reports the removed status of water sensor.  
-2-When the sensor detects status change of tamper, the device will be triggered.  
-  
-• Association group 4: Root Device group (Notification)  
-- Maximum supported nodes are 5.  
-1-Notification reports reports status of detect water or no water via Lifeline.  
-2-When the sensor detects status change between water and no water, the device will be triggered.  
-  
-• Association group 5: Root Device group (Notification)  
-- Maximum supported nodes are 5.  
-1-Binary Sensor reports the removed status of water sensor  
-1-When the sensor detects status change of tamper, the device will be triggered.
-
-4-Association & Association Group Information  
-- Lifeline between controller and the product  
-- Supported command classes: Battery report, multilevel sensor, and Device Reset Locally notification.
-
 ### Inclusion Information
 
-INSTALLATION STEP 1:   
-Remove battery insulation film to power it on
-
-INSTALLATION STEP 2:  
-1. DEVICE INCLUSION  
-- Click [Add] icon in Z-Wave PC Controller Program.  
-- Press the networking button 3 times within 1.5s, Green LED is blinking 3 times within 1 second.  
-- If Inclusion Process is successful, Green led will turn off.
+  * Click [Add] icon in Z-Wave PC Controller Program.
+  * Press the networking button 3 times within 1.5s, Green LED is blinking 3 times within 1 second.
+  * If Inclusion Process is successful, Green led will turn off.
 
 ### Exclusion Information
 
-DEVICE EXCLUSION  
-- Click [Remove] icon in Z-Wave PC Controller Program  
-- Press the networking button 3 times within 1.5s  
-- If Exclusion Process is successful, Green led is Blinking 6 times, then turn off.
-
-FACTORY RESET  
-Long press the networking button, then power on (put into the battery), ID code is clear and reset to factory settings.
+  * Click [Remove] icon in Z-Wave PC Controller Program
+  * Press the networking button 3 times within 1.5s
+  * If Exclusion Process is successful, Green led is Blinking 6 times, then turn off.
 
 ### Wakeup Information
 
@@ -106,6 +54,11 @@ The wakeup period does not impact the devices ability to report events or sensor
 
 The manual doesn't say, but I've found that tapping the tamper sensor once makes the device blink and that seems to wake it up.
 
+### General Usage Information
+
+FACTORY RESET  
+Long press the networking button, then power on (put into the battery), ID code is clear and reset to factory settings.
+
 ## Channels
 
 The following table summarises the channels available for the HM-HS1WL-Z -:
@@ -115,12 +68,12 @@ The following table summarises the channels available for the HM-HS1WL-Z -:
 | Binary Sensor | sensor_binary | sensor_binary |  | Switch | 
 | Alarm (burglar) | alarm_burglar | alarm_burglar | Door | Switch | 
 | Alarm (flood) | alarm_flood | alarm_flood | Water | Switch | 
-| Battery Level | battery-level | Battery | Number |
+| Battery Level | battery-level | system.battery_level | Battery | Number |
 
 ### Binary Sensor
 Indicates if a sensor has triggered.
 
-The ```sensor_binary``` channel and is of type ```sensor_binary``` and supports the ```Switch``` item. This is a read only channel so will only be updated following state changes from the device.
+The ```sensor_binary``` channel is of type ```sensor_binary``` and supports the ```Switch``` item. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
 
@@ -132,7 +85,7 @@ The following state translation is provided for this channel to the ```Switch```
 ### Alarm (burglar)
 Indicates if the burglar alarm is triggered.
 
-The ```alarm_burglar``` channel and is of type ```alarm_burglar``` and supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```alarm_burglar``` channel is of type ```alarm_burglar``` and supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
 
@@ -144,7 +97,7 @@ The following state translation is provided for this channel to the ```Switch```
 ### Alarm (flood)
 Indicates if the flood alarm is triggered.
 
-The ```alarm_flood``` channel and is of type ```alarm_flood``` and supports the ```Switch``` item and is in the ```Water``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```alarm_flood``` channel is of type ```alarm_flood``` and supports the ```Switch``` item and is in the ```Water``` category. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
 
@@ -154,8 +107,10 @@ The following state translation is provided for this channel to the ```Switch```
 | ON | Alarm |
 
 ### Battery Level
-Channel type information on this channel is not found.
+Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
 
+The ```system.battery-level``` channel is of type ```system.battery-level``` and supports the ```Number``` item and is in the ```Battery``` category.
+This channel provides the battery level as a percentage and also reflects the low battery warning state. If the battery state is in low battery warning state, this will read 0%.
 
 
 ## Device Configuration
@@ -181,7 +136,7 @@ Binary report. 
 
 Association group 1 supports 5 nodes.
 
-### Group 2: Root Device group (Binary Sensor)
+### Group 2: Group 2
 
 Root Device group (Binary Sensor)
 1-Binary Sensor Command Class: Compatible with 300 series   
@@ -190,7 +145,7 @@ Root Device group (Binary Sensor)
 
 Association group 2 supports 5 nodes.
 
-### Group 3: Root Device group (Binary Sensor) 
+### Group 3: Group 3
 
 Root Device group (Binary Sensor)
 - Binary Sensor Command Class:Compatible with 300 series   
@@ -199,7 +154,7 @@ Root Device group (Binary Sensor)
 
 Association group 3 supports 5 nodes.
 
-### Group 4: Root Device group (Notification) 
+### Group 4: Group 4
 
 Root Device group (Notification)
 1-Notification reports reports status of detect water or no water via Lifeline.   
@@ -207,7 +162,7 @@ Root Device group (Notification)
 
 Association group 4 supports 5 nodes.
 
-### Group 5: Root Device group (Notification) 
+### Group 5: Group 5
 
 Root Device group (Notification)
 1-Binary Sensor reports the removed status of water sensor   

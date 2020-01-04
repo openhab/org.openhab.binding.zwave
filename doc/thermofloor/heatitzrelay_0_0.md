@@ -67,74 +67,74 @@ The Heatit Z-Relay monitors the current used by the load connected to the relay 
 
 The following table summarises the channels available for the HEATIT Z-RELAY -:
 
-| Channel | Channel Id | Category | Item Type |
-|---------|------------|----------|-----------|
-| Switch | switch_binary | Switch | Switch | 
-| Electric meter (amps) | meter_current | Energy | Number | 
-| Electric meter (kWh) | meter_kwh | Energy | Number | 
-| Electric meter (watts) | meter_watts | Energy | Number | 
-| Switch 1 | switch_binary1 | Switch | Switch | 
-| Electric meter (amps) 1 | meter_current1 | Energy | Number | 
-| Electric meter (kWh) 1 | meter_kwh1 | Energy | Number | 
-| Electric meter (watts) 1 | meter_watts1 | Energy | Number | 
-| Sensor (temperature) 2 | sensor_temperature2 | Temperature | Number:Temperature | 
-| Sensor (temperature) 3 | sensor_temperature3 | Temperature | Number:Temperature | 
-| Alarm 4 | alarm_general4 | Door | Switch | 
+| Channel Name | Channel ID | Channel Type | Category | Item Type |
+|--------------|------------|--------------|----------|-----------|
+| Switch | switch_binary | switch_binary | Switch | Switch | 
+| Electric meter (amps) | meter_current | meter_current | Energy | Number | 
+| Electric meter (kWh) | meter_kwh | meter_kwh | Energy | Number | 
+| Electric meter (watts) | meter_watts | meter_watts | Energy | Number | 
+| Switch 1 | switch_binary1 | switch_binary | Switch | Switch | 
+| Electric meter (amps) 1 | meter_current1 | meter_current | Energy | Number | 
+| Electric meter (kWh) 1 | meter_kwh1 | meter_kwh | Energy | Number | 
+| Electric meter (watts) 1 | meter_watts1 | meter_watts | Energy | Number | 
+| Sensor (temperature) 2 | sensor_temperature2 | sensor_temperature | Temperature | Number:Temperature | 
+| Sensor (temperature) 3 | sensor_temperature3 | sensor_temperature | Temperature | Number:Temperature | 
+| Alarm 4 | alarm_general4 | alarm_general | Alarm | Switch | 
 
 ### Switch
 Switch the power on and off.
 
-The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
+The ```switch_binary``` channel is of type ```switch_binary``` and supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Electric meter (amps)
 Indicates the instantaneous current consumption.
 
-The ```meter_current``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```meter_current``` channel is of type ```meter_current``` and supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (kWh)
 Indicates the energy consumption (kWh).
 
-The ```meter_kwh``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```meter_kwh``` channel is of type ```meter_kwh``` and supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (watts)
 Indicates the instantaneous power consumption.
 
-The ```meter_watts``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```meter_watts``` channel is of type ```meter_watts``` and supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Switch 1
 Switch the power on and off.
 
-The ```switch_binary1``` channel supports the ```Switch``` item and is in the ```Switch``` category.
+The ```switch_binary1``` channel is of type ```switch_binary``` and supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Electric meter (amps) 1
 Indicates the instantaneous current consumption.
 
-The ```meter_current1``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```meter_current1``` channel is of type ```meter_current``` and supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (kWh) 1
 Indicates the energy consumption (kWh).
 
-The ```meter_kwh1``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```meter_kwh1``` channel is of type ```meter_kwh``` and supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Electric meter (watts) 1
 Indicates the instantaneous power consumption.
 
-The ```meter_watts1``` channel supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```meter_watts1``` channel is of type ```meter_watts``` and supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Sensor (temperature) 2
 Indicates the current temperature.
 
-The ```sensor_temperature2``` channel supports the ```Number:Temperature``` item and is in the ```Temperature``` category.
+The ```sensor_temperature2``` channel is of type ```sensor_temperature``` and supports the ```Number:Temperature``` item and is in the ```Temperature``` category.
 
 ### Sensor (temperature) 3
 Indicates the current temperature.
 
-The ```sensor_temperature3``` channel supports the ```Number:Temperature``` item and is in the ```Temperature``` category.
+The ```sensor_temperature3``` channel is of type ```sensor_temperature``` and supports the ```Number:Temperature``` item and is in the ```Temperature``` category.
 
 ### Alarm 4
 Indicates if an alarm is triggered.
 
-The ```alarm_general4``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```alarm_general4``` channel is of type ```alarm_general``` and supports the ```Switch``` item and is in the ```Alarm``` category. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
 
@@ -411,37 +411,38 @@ Association groups allow the device to send unsolicited reports to the controlle
 
 The HEATIT Z-RELAY supports 6 association groups.
 
-### Group 1: RELAY OUTPUT
+### Group 1: Lifeline
 
-Lifeline. Lifeline group for the entire module. Sends Basic Report On / Off when the relay is turned on or off. Sends Meter Report with energy data for the load connected to the relay output.
+The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
+Lifeline group for the entire module. Sends Basic Report On / Off when the relay is turned on or off. Sends Meter Report with energy data for the load connected to the relay output.
 
 Association group 1 supports 1 node.
 
-### Group 2: TEMPERATURE INPUT 1 
+### Group 2: Sensor Multilevel Report Input 1
 
 Sends Sensor Multilevel Report for input 1. Nodes in this group will receive information of the current temperature measured by the NTC connected to input 1.
 
 Association group 2 supports 5 nodes.
 
-### Group 3: TEMPERATURE INPUT 2 
+### Group 3: Sensor Multilevel Report for Input 2
 
 Sends Sensor Multilevel Report for input 2. Nodes in this group will receive information of the current temperature measured by the NTC connected to input 2.
 
 Association group 3 supports 5 nodes.
 
-### Group 4: FLOOD SENSOR INPUT 
+### Group 4: Basic Report On / Off
 
 Nodes in this group receives Basic Report On / Off when the flood sensor detects a flood. Normally used for visualization in the Controller.
 
 Association group 4 supports 5 nodes.
 
-### Group 5: FLOOD SENSOR INPUT 
+### Group 5: Basic Set On / Off
 
 Nodes in this group receives Basic Set On / Off when the flood sensor detects a flood.
 
 Association group 5 supports 5 nodes.
 
-### Group 6: FLOOD SENSOR INPUT
+### Group 6: Notification Report
 
 Nodes in this group receives Notification Report when the flood sensor detects a flood. The notification events reported are: ”Water leak detected ”0x02 and ”ldle” 0x00.
 

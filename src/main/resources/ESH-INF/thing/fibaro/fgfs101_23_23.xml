@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgfs101_23_023" listed="false">
     <label>FGFS101 Flood Sensor</label>
-    <description>Flood Sensor</description>
+    <description><![CDATA[
+Flood Sensor<br /><h1>Overview</h1><p><strong>FIBARO Flood Sensor</strong> is a universal, Z-Wave Plus compatible, flood and temperature sensor. The device can be powered using battery, 12/24V DC power supply or both. Flood alarm is sent to the Z-Wave network devices or additionally to any external system through opening a NC contact using the external power supply.</p> <p>The device has built in temperature sensor that allows to monitor ambient temperature. FIBARO Flood Sensor is designed to be placed on the floor or mounted on a wall (in this case Flood Sensor probes should be extended using addition wire). The device has a built-in visual LED indicator and an acoustic alarm.</p> <p>In addition, the sensor is equipped with a tilt sensor reporting tilt or movement to the main controller e.g. when someone has taken the Sensor from its original location. </p> <p>FIBARO Flood Sensor is sink-proof, which means it drifts on the water surface and keeps on sending alarm signal in case of substantial inundation of water.</p> <br /><h2>Inclusion Information</h2><ol><li>Open the cover.</li> <li>Place the Sensor within the direct range of your Z-Wave controller.</li> <li>Set the main controller in (security/non-security) add mode (see the controller’s manual).</li> <li>Quickly, three times press the TMP button.</li> </ol><br /><h2>Exclusion Information</h2><p>Quickly, three times press the TMP button.</p> <br /><h2>Wakeup Information</h2><p>Quickly, three times press the TMP button.</p>
+    ]]></description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -48,7 +50,7 @@
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGFS101</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0B00:1001,0B00:2001,1003:0B01</property>
+      <property name="manufacturerRef">0B00:1001,0B00:2001,0B01:1003</property>
       <property name="versionMin">23.23</property>
       <property name="dbReference">408</property>
       <property name="commandClass:COMMAND_CLASS_SENSOR_ALARM:2">add</property>
@@ -80,7 +82,7 @@ Additional delay after an alarm has ceased<br /><h1>Overview</h1><p>Additional d
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
-        <label>2: Acoustic and visual signals On / Off in case of flooding</label>
+        <label>2: Flooding Signals</label>
         <description><![CDATA[
 LED indicator and acoustic alarm deactivation<br /><h1>Overview</h1><p>Parameter allows for LED indicator and acoustic alarm deactivation in case of flooding detection</p>
         ]]></description>
@@ -94,7 +96,7 @@ LED indicator and acoustic alarm deactivation<br /><h1>Overview</h1><p>Parameter
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
-        <label>5: Type of alarm frame sent to 1-st association group (FLOOD)</label>
+        <label>5: Type of alarm frame for 1st group (FLOOD)</label>
         <description><![CDATA[
 Command frame sent by the Sensor in case flooding<br /><h1>Overview</h1><p>Parameter determines a type of command frame sent by the Sensor in case flooding has been detected or cancelled</p>
         ]]></description>
@@ -128,7 +130,7 @@ Allows for deactivating device turn off and alarm cancellation functions<br /><h
 
       <parameter name="config_10_2" type="integer" groupName="configuration"
                  min="1" max="32767">
-        <label>10: Interval between successive readings of temperature sensors</label>
+        <label>10: Temperature reading Interval</label>
         <description><![CDATA[
 Interval between successive readings of temperature in seconds.<br /><h1>Overview</h1><p>Interval between successive readings of temperature from all sensors connected to the device in seconds.</p>
         ]]></description>
@@ -152,8 +154,8 @@ Transmitting the alarm or control frame in 'broadcast' mode<br /><h1>Overview</h
         <default>0</default>
         <options>
           <option value="0">Broadcast inactive</option>
-          <option value="1">Flood broadcast mode active, Tamper broadcast mode inactive</option>
-          <option value="2">Tamper broadcast mode inactive, Tamper broadcast mode active</option>
+          <option value="1">Flood mode active, Tamper mode inactive</option>
+          <option value="2">Tamper mode inactive, Tamper mode active</option>
           <option value="3">Flood and Tamper broadcast mode active</option>
         </options>
       </parameter>
@@ -201,7 +203,7 @@ Parameter determines LED indicator’s operation<br /><h1>Overview</h1><p>Parame
         <options>
           <option value="0">LED indicator doesn’t indicate the temperature</option>
           <option value="1">LED indicator indicates the temperature (blink)</option>
-          <option value="2">LED indicator indicates the temperature continuously</option>
+          <option value="2">LED indicates temperature continuously</option>
         </options>
       </parameter>
 
@@ -215,7 +217,7 @@ Parameter stores a offset value from the current temperature<br /><h1>Overview</
       </parameter>
 
       <parameter name="config_74_1" type="integer" groupName="configuration">
-        <label>74: Alarm frame sent to 2-nd Association Group activation</label>
+        <label>74: Alarm frame sent to 2nd Group activation</label>
         <description><![CDATA[
 sensor’s vibrations alarm<br /><h1>Overview</h1><p>(MOVEMENT_TAMPER / BUTTON_TAMPER) The device is able to turn on alarms resulting from sensor’s vibrations e.g. when the sensor is moved, or the TMP button released. 2-nd Association Group alarms are not cancelled.</p>
         ]]></description>
@@ -239,7 +241,7 @@ Silence the Flood Sensor.<br /><h1>Overview</h1><p>The user can silence the Floo
 
       <parameter name="config_76_2" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>76: Visual and audible alarms duration</label>
+        <label>76: Visual and audible alarms retransmit</label>
         <description><![CDATA[
 Period after which an alarm frame will be retransmitted<br /><h1>Overview</h1><p>Parameter determines a time period after which an alarm frame will be retransmitted. The value of 0 cancels an alarm frame retransmission. The value of 65535 means 'each 1 second'. NOTE: In case a time period set in this parameter is shorter th</p>
         ]]></description>
@@ -253,7 +255,7 @@ Turning of the internal flood sensor.<br /><h1>Overview</h1><p>Allows for turnin
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">Default flood sensor operation (flood detection, reactions)</option>
+          <option value="0">Default (flood detection, reactions)</option>
           <option value="1">Built in flood sensor TURNED OFF</option>
         </options>
       </parameter>

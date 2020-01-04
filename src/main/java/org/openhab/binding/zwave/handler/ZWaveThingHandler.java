@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2019 Contributors to the openHAB project
+ * Copyright (c) 2010-2020 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -108,7 +108,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     private final Object pollingSync = new Object();
     private ScheduledFuture<?> pollingJob = null;
     private final long POLLING_PERIOD_MIN = 15;
-    private final long POLLING_PERIOD_MAX = 86400;
+    private final long POLLING_PERIOD_MAX = 864000;
     private final long POLLING_PERIOD_DEFAULT = 1800;
     private final long DELAYED_POLLING_PERIOD_MAX = 10;
     private final long REFRESH_POLL_DELAY = 50;

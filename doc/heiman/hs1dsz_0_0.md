@@ -47,17 +47,17 @@ The wakeup period does not impact the devices ability to report events or sensor
 
 The following table summarises the channels available for the HS1DS-Z -:
 
-| Channel | Channel Id | Category | Item Type |
-|---------|------------|----------|-----------|
-| Binary Sensor  [Deprecated]| sensor_binary | Door | Switch | 
-| Tamper Alarm | alarm_tamper |  | Switch | 
-| Door Sensor | sensor_door | Door | Contact | 
-| Battery Level | battery-level | Battery | Number |
+| Channel Name | Channel ID | Channel Type | Category | Item Type |
+|--------------|------------|--------------|----------|-----------|
+| Binary Sensor  [Deprecated]| sensor_binary | sensor_binary |  | Switch | 
+| Tamper Alarm | alarm_tamper | alarm_tamper |  | Switch | 
+| Door Sensor | sensor_door | sensor_door | Door | Contact | 
+| Battery Level | battery-level | system.battery_level | Battery | Number |
 
 ### Binary Sensor [Deprecated]
 Indicates if a sensor has triggered.
 
-The ```sensor_binary``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```sensor_binary``` channel is of type ```sensor_binary``` and supports the ```Switch``` item. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
 
@@ -71,7 +71,7 @@ The following state translation is provided for this channel to the ```Switch```
 ### Tamper Alarm
 Indicates if the tamper alarm is triggered.
 
-The ```alarm_tamper``` channel supports the ```Switch``` item. This is a read only channel so will only be updated following state changes from the device.
+The ```alarm_tamper``` channel is of type ```alarm_tamper``` and supports the ```Switch``` item. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
 
@@ -83,7 +83,7 @@ The following state translation is provided for this channel to the ```Switch```
 ### Door Sensor
 Indicates if the door/window is open or closed.
 
-The ```sensor_door``` channel supports the ```Contact``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```sensor_door``` channel is of type ```sensor_door``` and supports the ```Contact``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Contact``` item type -:
 
@@ -95,8 +95,8 @@ The following state translation is provided for this channel to the ```Contact``
 ### Battery Level
 Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
 
-The ```battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
-
+The ```system.battery-level``` channel is of type ```system.battery-level``` and supports the ```Number``` item and is in the ```Battery``` category.
+This channel provides the battery level as a percentage and also reflects the low battery warning state. If the battery state is in low battery warning state, this will read 0%.
 
 
 ## Device Configuration
@@ -115,7 +115,7 @@ The Lifeline association group reports device status to a hub and is not designe
 
 Association group 1 supports 5 nodes.
 
-### Group 2: Root Device group (Binary Sensor)
+### Group 2: Binary Door status change
 
 Description: Binary Sensor Command Classes:Compatible with 300 series  
 1-Binary Sensor reports status of open or close door via Lifeline.  
@@ -123,7 +123,7 @@ Description: Binary Sensor Command Classes:Compatible with 300 series
 
 Association group 2 supports 5 nodes.
 
-### Group 3: Root Device group (Binary Sensor)
+### Group 3: Binary Tamper
 
 Description: Binary Sensor Command Classes:Compatible with 300 series  
 1-Binary Sensor reports the removed status of door sensor.  
@@ -131,14 +131,14 @@ Description: Binary Sensor Command Classes:Compatible with 300 series
 
 Association group 3 supports 5 nodes.
 
-### Group 4: Root Device group (Notification)
+### Group 4: Notification Door status change
 
 1-Notification report open door or close status via Lifeline.  
 2- When the sensor detects status change between close door and open door, the device will be triggered
 
 Association group 4 supports 5 nodes.
 
-### Group 5: Root Device group (Notification)
+### Group 5: Notification Tamper
 
 1-Binary Sensor reports the removed status of door sensor.  
 2- When the sensor detects status change of tamper, the device will be triggered

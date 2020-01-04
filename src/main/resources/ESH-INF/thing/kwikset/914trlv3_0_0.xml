@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="kwikset_914trlv3_00_000" listed="false">
     <label>914TRLv3 Touchpad Electronic Deadbolt</label>
     <description><![CDATA[
-Touchpad Electronic Deadbolt<br /><h1>Overview</h1><ul><li>One touch locking</li> <li>Dramatically reduced, all-metal interior </li> <li>30 user codes plus master code </li> <li>BHMA grade 2 certified </li> <li>20 minute fire rating - UL certified </li> <li>Full 128-bit encryption security </li> <li>SmartKey: Re-key the lock in seconds</li> </ul><br /><h2>Inclusion Information</h2><p>Press button “A” on the lock one time to include it in your system.</p> <br /><h2>Exclusion Information</h2><p>Press button “A” on the lock one time to exclude it from your system.</p>
+Touchpad Electronic Deadbolt<br /><h1>Overview</h1><ul><li>One touch locking</li> <li>Dramatically reduced, all-metal interior </li> <li>30 user codes plus master code </li> <li>BHMA grade 2 certified </li> <li>20 minute fire rating - UL certified </li> <li>Full 128-bit encryption security </li> <li>SmartKey: Re-key the lock in seconds</li> </ul><br /><h2>Inclusion Information</h2><p>Press button “A” on the lock one time to include it in your system.</p> <br /><h2>Exclusion Information</h2><p>Press button “A” on the lock one time to exclude it from your system.</p> <br /><h2>Wakeup Information</h2><p>N/A</p>
     ]]></description>
     <category>Lock</category>
 

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="enerwave_zwnbpc_05_010" listed="false">
     <label>ZWN-BPC-PLUS PIR Sensor</label>
-    <description>PIR Sensor</description>
+    <description><![CDATA[
+PIR Sensor<br /><h1>Overview</h1><p>This sensor acts as a security device by detecting changes in infrared radiation levels. when some body moves within or across the detection of coverage, one triggering signal will be transmitted to associated Z-Wave devices</p> <br /><h2>Inclusion Information</h2><p>press and hold the program button of ZWN-BPC for 2 second,</p> <br /><h2>Exclusion Information</h2><p>press and hold the program button of ZWN-BPC for 2 second,</p> <br /><h2>Wakeup Information</h2><p>press the program button</p>
+    ]]></description>
     <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->

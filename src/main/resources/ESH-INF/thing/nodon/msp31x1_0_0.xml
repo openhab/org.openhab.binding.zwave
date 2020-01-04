@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="nodon_msp31x1_00_000" listed="false">
     <label>MSP-3-1-X1 Z-Wave Plus Micro Smart Plug ON/OFF</label>
-    <description>Z-Wave Plus Micro Smart Plug ON/OFF</description>
+    <description><![CDATA[
+Z-Wave Plus Micro Smart Plug ON/OFF<br /><h1>Overview</h1><p>The NodOn Micro Smart Plug can be controlled by any kind of Z-Wave® (or Z-Wave Plus®) gateway or other Z-Wave® controller (standalone mode) such as the NodOn® Soft Remote or Octan Remote. <br />It existed in both standard, Type E (French) or Schuko (German). Its very small design and volume allow easy integration, without obstructing nearby power holes on a power strip. Furthermore, it can perform Power and Energy Metering. <br />The NodOn Smart Plug is based on brand new 500 series Z-Wave® module from Sigma Designs®, and support all the new features of Z-Wave Plus® standard: <br />Longer range (up to 40m), lower power consumption, higher data rate transmission, and many more new features.</p> <br /><h2>Inclusion Information</h2><p>To include/add to the Z-Wave network, long press during 2 seconds to send several NIF during 30 seconds or a triple press to send a single NIF </p> <br /><h2>Exclusion Information</h2><p>To exclude/remove from the Z-Wave network, long press during 2 seconds to send several NIF during 30 seconds or a triple press to send a single NIF </p>
+    ]]></description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -151,9 +154,9 @@ Switch off Micro Smart Plug in case the power is above x W<br /><h1>Overview</h1
           <option value="200">Overload Report enable with a upper limit of 200 W</option>
           <option value="250">Overload Report enable with a upper limit of 250 W</option>
           <option value="500">Overload Report enable with a upper limit of 500 W</option>
-          <option value="1000">Overload Report enable with a upper limit of 1000 W</option>
-          <option value="1500">Overload Report enable with a upper limit of 1500 W</option>
-          <option value="2000">Overload Report enable with a upper limit of 2000 W</option>
+          <option value="1000">Upper limit of 1000 W</option>
+          <option value="1500">Upper limit of 1500 W</option>
+          <option value="2000">Upper limit of 2000 W</option>
         </options>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -167,18 +170,18 @@ Auto energy report if value changes of x Wh<br /><h1>Overview</h1><p>This parame
         <default>1000</default>
         <options>
           <option value="0">Energy Auto-Polling Report Disable</option>
-          <option value="1000">Energy Auto-Polling Report enable if 1000 Wh variation</option>
-          <option value="2000">Energy Auto-Polling Report enable if 2000 Wh variation</option>
-          <option value="3000">Energy Auto-Polling Report enable if 3000 Wh variation</option>
-          <option value="4000">Energy Auto-Polling Report enable if 4000 Wh variation</option>
-          <option value="5000">Energy Auto-Polling Report enable if 5000 Wh variation</option>
-          <option value="10000">Energy Auto-Polling Report enable if 10.000 Wh variation</option>
-          <option value="20000">Energy Auto-Polling Report enable if 20.000 Wh variation</option>
-          <option value="30000">Energy Auto-Polling Report enable if 30.000 Wh variation</option>
-          <option value="40000">Energy Auto-Polling Report enable if 40.000 Wh variation</option>
-          <option value="50000">Energy Auto-Polling Report enable if 50.000 Wh variation</option>
-          <option value="60000">Energy Auto-Polling Report enable if 60.000 Wh variation</option>
-          <option value="65535">Energy Auto-Polling Report enable if 65.535 Wh variation</option>
+          <option value="1000">Enable if 1000 Wh variation</option>
+          <option value="2000">Enable if 2000 Wh variation</option>
+          <option value="3000">Enable if 3000 Wh variation</option>
+          <option value="4000">Enable if 4000 Wh variation</option>
+          <option value="5000">Enable if 5000 Wh variation</option>
+          <option value="10000">Enable if 10.000 Wh variation</option>
+          <option value="20000">Enable if 20.000 Wh variation</option>
+          <option value="30000">Enable if 30.000 Wh variation</option>
+          <option value="40000">Enable if 40.000 Wh variation</option>
+          <option value="50000">Enable if 50.000 Wh variation</option>
+          <option value="60000">Enable if 60.000 Wh variation</option>
+          <option value="65535">Enable if 65.535 Wh variation</option>
         </options>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -193,8 +196,8 @@ Reporting intervall for power and energy to lifeline.<br /><h1>Overview</h1><p>W
         <options>
           <option value="0">Metering Pulse disable</option>
           <option value="3600">Metering Pulse enable and send report every hour</option>
-          <option value="21600">Metering Pulse enable and send report every 6 hours</option>
-          <option value="43200">Metering Pulse enable and send report every 12 hours</option>
+          <option value="21600">Enable and send report every 6 hours</option>
+          <option value="43200">Enable and send report every 12 hours</option>
         </options>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -208,19 +211,19 @@ Defines the High Threshold value in W.<br /><h1>Overview</h1><p>This parameter d
         <default>20</default>
         <options>
           <option value="0">Power High Threshold disable</option>
-          <option value="10">Power High Threshold enable with the value from 10 W</option>
-          <option value="20">Power High Threshold enable with the value from 20 W</option>
-          <option value="30">Power High Threshold enable with the value from 30 W</option>
-          <option value="40">Power High Threshold enable with the value from 40 W</option>
-          <option value="50">Power High Threshold enable with the value from 50 W</option>
-          <option value="100">Power High Threshold enable with the value from 100 W</option>
-          <option value="200">Power High Threshold enable with the value from 200 W</option>
-          <option value="300">Power High Threshold enable with the value from 300 W</option>
-          <option value="400">Power High Threshold enable with the value from 400 W</option>
-          <option value="500">Power High Threshold enable with the value from 500 W</option>
-          <option value="1000">Power High Threshold enable with the value from 1000 W</option>
-          <option value="1500">Power High Threshold enable with the value from 1500 W</option>
-          <option value="2000">Power High Threshold enable with the value from 2000 W</option>
+          <option value="10">Power High Threshold enable 10 W</option>
+          <option value="20">Power High Threshold enable 20 W</option>
+          <option value="30">Power High Threshold enable 30 W</option>
+          <option value="40">Power High Threshold enable 40 W</option>
+          <option value="50">Power High Threshold enable 50 W</option>
+          <option value="100">Power High Threshold enable 100 W</option>
+          <option value="200">Power High Threshold enable 200 W</option>
+          <option value="300">Power High Threshold enable 300 W</option>
+          <option value="400">Power High Threshold enable 400 W</option>
+          <option value="500">Power High Threshold enable 500 W</option>
+          <option value="1000">Power High Threshold enable 1000 W</option>
+          <option value="1500">Power High Threshold enable 1500 W</option>
+          <option value="2000">Power High Threshold enable 2000 W</option>
         </options>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -234,20 +237,20 @@ Defines the Low Threshold value in W.<br /><h1>Overview</h1><p>This parameter de
         <default>5</default>
         <options>
           <option value="0">Power Low Threshold disable</option>
-          <option value="5">Power Low Threshold enable with the value from 5 W</option>
-          <option value="10">Power Low Threshold enable with the value from 10 W</option>
-          <option value="20">Power Low Threshold enable with the value from 20 W</option>
-          <option value="30">Power Low Threshold enable with the value from 30 W</option>
-          <option value="40">Power Low Threshold enable with the value from 40 W</option>
-          <option value="50">Power Low Threshold enable with the value from 50 W</option>
-          <option value="100">Power Low Threshold enable with the value from 100 W</option>
-          <option value="200">Power Low Threshold enable with the value from 200 W</option>
-          <option value="300">Power Low Threshold enable with the value from 300 W</option>
-          <option value="400">Power Low Threshold enable with the value from 400 W</option>
-          <option value="500">Power Low Threshold enable with the value from 500 W</option>
-          <option value="1000">Power Low Threshold enable with the value from 1000 W</option>
-          <option value="1500">Power Low Threshold enable with the value from 1500 W</option>
-          <option value="2000">Power Low Threshold enable with the value from 2000 W</option>
+          <option value="5">Power Low Threshold enable 5 W</option>
+          <option value="10">Power Low Threshold enable 10 W</option>
+          <option value="20">Power Low Threshold enable 20 W</option>
+          <option value="30">Power Low Threshold enable 30 W</option>
+          <option value="40">Power Low Threshold enable 40 W</option>
+          <option value="50">Power Low Threshold enable 50 W</option>
+          <option value="100">Power Low Threshold enable 100 W</option>
+          <option value="200">Power Low Threshold enable 200 W</option>
+          <option value="300">Power Low Threshold enable 300 W</option>
+          <option value="400">Power Low Threshold enable 400 W</option>
+          <option value="500">Power Low Threshold enable 500 W</option>
+          <option value="1000">Power Low Threshold enable 1000 W</option>
+          <option value="1500">Power Low Threshold enable 1500 W</option>
+          <option value="2000">Power Low Threshold enable 2000 W</option>
         </options>
         <limitToOptions>false</limitToOptions>
       </parameter>

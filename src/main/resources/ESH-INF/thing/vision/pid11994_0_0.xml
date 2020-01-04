@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="vision_pid11994_00_000" listed="false">
     <label>PID11994 Monoprice ZWave Dimmer Plugin</label>
-    <description>Monoprice ZWave Dimmer Plugin</description>
+    <description><![CDATA[
+Monoprice ZWave Dimmer Plugin<br /><h1>Overview</h1><p>Lamp Dimmer Module</p> <br /><h2>Inclusion Information</h2><p>Press and hold the program button on the front for about 1 second to include the device in the Z-Wave network.</p> <br /><h2>Exclusion Information</h2><p>Press and hold the program button on the front for about 1 second to exclude the device from the Z-Wave network.</p>
+    ]]></description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -16,7 +18,7 @@
         <label>Dimmer</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
     </channels>

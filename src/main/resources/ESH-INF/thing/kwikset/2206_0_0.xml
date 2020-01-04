@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="kwikset_2206_00_000" listed="false">
     <label>Kwikset Obsidian 954 Obsidian Touchscreen Electronic Deadbolt</label>
@@ -109,7 +109,7 @@ Configuration parameter<br /><h1>Overview</h1><p>is a one byte read only bit mas
 
       <parameter name="config_33_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
-        <label>33: SKU</label>
+        <label>33: first four most significant bytes of the SKU</label>
         <description><![CDATA[
 contains the first four most significant bytes of the SKU<br /><h1>Overview</h1><p>When setting the SKU, it must be done in two set commands, one for each parameter. The order of programming the SKU does not matter. Setting parameter 33 will program the first four bytes of the SKU. Setting parameter 34 will program the last 4 bytes of the SKU. Most printable values are accepted for the set command. When getting the SKU, it must be done in two get commands, one for each parameter. The order of getting the SKU does not matter. Getting parameter 33 will retrieve the first four bytes of the SKU. Getting parameter 34 will retrieve the last 4 bytes of the SKU.</p>
         ]]></description>
@@ -120,7 +120,7 @@ contains the first four most significant bytes of the SKU<br /><h1>Overview</h1>
 
       <parameter name="config_34_8" type="integer" groupName="configuration"
                  min="0" max="4294967295">
-        <label>34: SKU</label>
+        <label>34: four least significant bytes of the SKU</label>
         <description><![CDATA[
 the four least significant bytes of the SKU<br /><h1>Overview</h1><p>When setting the SKU, it must be done in two set commands, one for each parameter. The order of programming the SKU does not matter. Setting parameter 33 will program the first four bytes of the SKU. Setting parameter 34 will program the last 4 bytes of the SKU. Most printable values are accepted for the set command. When getting the SKU, it must be done in two get commands, one for each parameter. The order of getting the SKU does not matter. Getting parameter 33 will retrieve the first four bytes of the SKU. Getting parameter 34 will retrieve the last 4 bytes of the SKU.</p>
         ]]></description>

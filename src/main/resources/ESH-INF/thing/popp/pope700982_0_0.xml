@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="popp_pope700982_00_000" listed="false">
     <label>POPE700982 POPP Door / Window Sensor</label>
@@ -167,9 +167,9 @@ value sent in case of Off event<br /><h1>Overview</h1><p>This is the BASIC comma
 
       <parameter name="config_9_2" type="integer" groupName="configuration"
                  min="0" max="32400">
-        <label>9: Time Delay of Off command frame</label>
+        <label>9: Time Delay of On command frame</label>
         <description><![CDATA[
-sent after a delay<br /><h1>Overview</h1><p>Off command is sent after a delay deﬁned in this parameter. Size: 2 Byte, Default Value: 0</p>
+sent after a delay<br /><h1>Overview</h1><p>On command is sent after a delay deﬁned in this parameter. Size: 2 Byte, Default Value: 0</p>
         ]]></description>
         <default>0</default>
       </parameter>

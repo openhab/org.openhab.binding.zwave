@@ -42,6 +42,14 @@ In management mode the following actions can be performed:
 
 The device can be set back to factory defaults without performing an exclusion process. Please executes the following steps: (1) Turn the device into Management Mode, (2) click on Button 3, (3) keep button 4 pushed for 4 seconds.
 
+### Inclusion Information
+
+ Push button 1 in management mode
+
+### Exclusion Information
+
+ Push button 1 in management mode
+
 ### Wakeup Information
 
 The WALLC-S does not permanently listen for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour.
@@ -55,24 +63,22 @@ It is possible to manually wake up the device by pushing button 2 in management 
 
 The following table summarises the channels available for the WALLC-S -:
 
-| Channel | Channel Id | Category | Item Type |
-|---------|------------|----------|-----------|
-| Dimmer | switch_dimmer | DimmableLight | Dimmer | 
-| Scene Number | scene_number |  | Number | 
-| Battery Level | battery-level | Battery | Number |
+| Channel Name | Channel ID | Channel Type | Category | Item Type |
+|--------------|------------|--------------|----------|-----------|
+| Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer | 
+| Scene Number | scene_number | scene_number |  | Number | 
+| Battery Level | battery-level | system.battery_level | Battery | Number |
 
 ### Dimmer
-
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
 
-The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
+The ```switch_dimmer``` channel is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Scene Number
-
 Triggers when a scene button is pressed.
 
-The ```scene_number``` channel supports the ```Number``` item.
+The ```scene_number``` channel is of type ```scene_number``` and supports the ```Number``` item.
 This channel provides the scene, and the event as a decimal value in the form ```<scene>.<event>```. The scene number is set by the device, and the event is as follows -:
 
 | Event ID | Event Description  |
@@ -86,11 +92,10 @@ This channel provides the scene, and the event as a decimal value in the form ``
 | 6        | 5 x keypress       |
 
 ### Battery Level
-
 Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
 
-The ```battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
-
+The ```system.battery-level``` channel is of type ```system.battery-level``` and supports the ```Number``` item and is in the ```Battery``` category.
+This channel provides the battery level as a percentage and also reflects the low battery warning state. If the battery state is in low battery warning state, this will read 0%.
 
 
 ## Device Configuration
@@ -100,23 +105,24 @@ Detailed information on each parameter can be found in the sections below.
 
 | Param | Name  | Description |
 |-------|-------|-------------|
-| 1 | Button 1 and 3 pair mode | In separate mode button 1 works with group 1, button 3 with groups 3. Click is On, Hold is dimming Up, Double click is Off, Click-Hold is dimming Down. In pair button 1/3 are Up/Down correspondingly. Click is On/Off, Hold is dimming Up/Down. Single clicks |
-| 2 | Button 2 and 4 pair mode | In separate mode button 1 works with group 2, button 4 with groups 3. Click is On, Hold is dimming Up, Double click is Off, Click-Hold is dimming Down. In pair button 2/4 are Up/Down correspondingly. Click is On/Off, Hold is dimming Up/Down. Single clicks |
-| 11 | Action on group 1 | In Switch On/Off only mode On command is sent on Dim Up, Off on Dim Down. In Scenes mode the scene ID sent is (10 * group + ActionID), where ActionID is: 1 = On, 2 = Off, 3 = Dim Up Start, 4 = Dim Down Start, 5 = Dim Up Stop, 6 = Dim Down Stop |
-| 12 | Action on group 2 | In Switch On/Off only mode On command is sent on Dim Up, Off on Dim Down. In Scenes mode the scene ID sent is (10 * group + ActionID), where ActionID is: 1 = On, 2 = Off, 3 = Dim Up Start, 4 = Dim Down Start, 5 = Dim Up Stop, 6 = Dim Down Stop |
-| 13 | Action on group 3 | In Switch On/Off only mode On command is sent on Dim Up, Off on Dim Down. In Scenes mode the scene ID sent is (10 * group + ActionID), where ActionID is: 1 = On, 2 = Off, 3 = Dim Up Start, 4 = Dim Down Start, 5 = Dim Up Stop, 6 = Dim Down Stop |
-| 14 | Action on group 4 | In Switch On/Off only mode On command is sent on Dim Up, Off on Dim Down. In Scenes mode the scene ID sent is (10 * group + ActionID), where ActionID is: 1 = On, 2 = Off, 3 = Dim Up Start, 4 = Dim Down Start, 5 = Dim Up Stop, 6 = Dim Down Stop |
+| 1 | Button 1 and 3 pair mode | Button 1 and 3 pair mode |
+| 2 | Button 2 and 4 pair mode | Button 2 and 4 pair mode |
+| 11 | Action on group A | Action on group A |
+| 12 | Action on group B | Action on group B |
+| 13 | Action on group C | Action on group C |
+| 14 | Action on group D | Action on group D |
 | 21 | Send the following Switch All commands |  |
 | 22 | Invert buttons |  |
-| 25 | Blocks wakeup even when wakeup interval is set | If the device wakes up and there is no controller nearby, several unsuccessful communication attempts will drain battery. |
+| 25 | Blocks wakeup even when wakeup interval is set | Blocks wakeup even when wakeup interval is set |
 | 30 | Send unsolicited Battery Report on Wake Up |  |
 |  | Wakeup Interval | Sets the interval at which the device will accept commands from the controller |
 |  | Wakeup Node | Sets the node ID of the device to receive the wakeup notifications |
 
 ### Parameter 1: Button 1 and 3 pair mode
 
-In separate mode button 1 works with group 1, button 3 with groups 3. Click is On, Hold is dimming Up, Double click is Off, Click-Hold is dimming Down. In pair button 1/3 are Up/Down correspondingly. Click is On/Off, Hold is dimming Up/Down. Single clicks
-
+Button 1 and 3 pair mode
+  * In separate mode button 1 works with group A, button 3 with groups C. Click is On, Hold is dimming Up, Double click is Off, Click-Hold is dimming Down.
+  * In pair button 1/3 are Up/Down correspondingly. Click is On/Off, Hold is dimming Up/Down. Single clicks works with group A, double click with group C. 
 The following option values may be configured -:
 
 | Value  | Description |
@@ -132,8 +138,9 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 
 ### Parameter 2: Button 2 and 4 pair mode
 
-In separate mode button 1 works with group 2, button 4 with groups 3. Click is On, Hold is dimming Up, Double click is Off, Click-Hold is dimming Down. In pair button 2/4 are Up/Down correspondingly. Click is On/Off, Hold is dimming Up/Down. Single clicks
-
+Button 2 and 4 pair mode
+  * In separate mode button 2 works with control group B, button 4 with control group D. Click is On, Hold is dimming Up, Double click is Off, Click-Hold is dimming Down.
+  * In pair button B/D are Up/Down correspondingly. Click is On/Off, Hold is dimming Up/Down. Single clicks works with group B, double click with group D. 
 The following option values may be configured -:
 
 | Value  | Description |
@@ -147,16 +154,16 @@ The manufacturer defined default value is ```1``` (In pair without double clicks
 This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
 
-### Parameter 11: Action on group 1
+### Parameter 11: Action on group A
 
-In Switch On/Off only mode On command is sent on Dim Up, Off on Dim Down. In Scenes mode the scene ID sent is (10 * group + ActionID), where ActionID is: 1 = On, 2 = Off, 3 = Dim Up Start, 4 = Dim Down Start, 5 = Dim Up Stop, 6 = Dim Down Stop
-
+Action on group A
+This parameter defines the command to be sent to devices of control group A when the related button is pressed
 The following option values may be configured -:
 
 | Value  | Description |
 |--------|-------------|
 | 0 | Disabled |
-| 1 | Switch On/Off and Dim (send Basic Set and Switch Multilevel) |
+| 1 | Switch On/Off and Dim |
 | 2 | Switch On/Off only (send Basic Set) |
 | 3 | Switch all |
 | 4 | Send Scenes |
@@ -164,21 +171,21 @@ The following option values may be configured -:
 | 7 | Control Door Lock |
 | 8 | Central Scene to Gateway |
 
-The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim).
 
 This parameter has the configuration ID ```config_11_1``` and is of type ```INTEGER```.
 
 
-### Parameter 12: Action on group 2
+### Parameter 12: Action on group B
 
-In Switch On/Off only mode On command is sent on Dim Up, Off on Dim Down. In Scenes mode the scene ID sent is (10 * group + ActionID), where ActionID is: 1 = On, 2 = Off, 3 = Dim Up Start, 4 = Dim Down Start, 5 = Dim Up Stop, 6 = Dim Down Stop
-
+Action on group B
+This parameter defines the command to be sent to devices of control group B when the related button is pressed 
 The following option values may be configured -:
 
 | Value  | Description |
 |--------|-------------|
 | 0 | Disabled |
-| 1 | Switch On/Off and Dim (send Basic Set and Switch Multilevel) |
+| 1 | Switch On/Off and Dim |
 | 2 | Switch On/Off only (send Basic Set) |
 | 3 | Switch all |
 | 4 | Send Scenes |
@@ -186,21 +193,21 @@ The following option values may be configured -:
 | 7 | Control Door Lock |
 | 8 | Central Scene to Gateway |
 
-The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim ).
 
 This parameter has the configuration ID ```config_12_1``` and is of type ```INTEGER```.
 
 
-### Parameter 13: Action on group 3
+### Parameter 13: Action on group C
 
-In Switch On/Off only mode On command is sent on Dim Up, Off on Dim Down. In Scenes mode the scene ID sent is (10 * group + ActionID), where ActionID is: 1 = On, 2 = Off, 3 = Dim Up Start, 4 = Dim Down Start, 5 = Dim Up Stop, 6 = Dim Down Stop
-
+Action on group C
+This parameter defines the command to be sent to devices of control group C when the related button is pressed
 The following option values may be configured -:
 
 | Value  | Description |
 |--------|-------------|
 | 0 | Disabled |
-| 1 | Switch On/Off and Dim (send Basic Set and Switch Multilevel) |
+| 1 | Switch On/Off and Dim |
 | 2 | Switch On/Off only (send Basic Set) |
 | 3 | Switch all |
 | 4 | Send Scenes |
@@ -208,21 +215,21 @@ The following option values may be configured -:
 | 7 | Control Door Lock |
 | 8 | Central Scene to Gateway |
 
-The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim ).
 
 This parameter has the configuration ID ```config_13_1``` and is of type ```INTEGER```.
 
 
-### Parameter 14: Action on group 4
+### Parameter 14: Action on group D
 
-In Switch On/Off only mode On command is sent on Dim Up, Off on Dim Down. In Scenes mode the scene ID sent is (10 * group + ActionID), where ActionID is: 1 = On, 2 = Off, 3 = Dim Up Start, 4 = Dim Down Start, 5 = Dim Up Stop, 6 = Dim Down Stop
-
+Action on group D
+This parameter defines the command to be sent to devices of control group D when the related button is pressed 
 The following option values may be configured -:
 
 | Value  | Description |
 |--------|-------------|
 | 0 | Disabled |
-| 1 | Switch On/Off and Dim (send Basic Set and Switch Multilevel) |
+| 1 | Switch On/Off and Dim |
 | 2 | Switch On/Off only (send Basic Set) |
 | 3 | Switch all |
 | 4 | Send Scenes |
@@ -230,7 +237,7 @@ The following option values may be configured -:
 | 7 | Control Door Lock |
 | 8 | Central Scene to Gateway |
 
-The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim ).
 
 This parameter has the configuration ID ```config_14_1``` and is of type ```INTEGER```.
 
@@ -270,8 +277,8 @@ This parameter has the configuration ID ```config_22_1``` and is of type ```INTE
 
 ### Parameter 25: Blocks wakeup even when wakeup interval is set
 
+Blocks wakeup even when wakeup interval is set
 If the device wakes up and there is no controller nearby, several unsuccessful communication attempts will drain battery.
-
 The following option values may be configured -:
 
 | Value  | Description |
@@ -330,22 +337,22 @@ The Lifeline association group reports device status to a hub and is not designe
 
 Association group 1 supports 10 nodes.
 
-### Group 2: Group 1
+### Group 2: Group A
 
 
 Association group 2 supports 10 nodes.
 
-### Group 3: Group 2
+### Group 3: Group B
 
 
 Association group 3 supports 10 nodes.
 
-### Group 4: Group 3
+### Group 4: Group C
 
 
 Association group 4 supports 10 nodes.
 
-### Group 5: Group 4
+### Group 5: Group D
 
 
 Association group 5 supports 10 nodes.

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="shenzhen_pd03z_00_000" listed="false">
     <label>PD03Z PIR Motion Sensor with Temperature Sensor</label>
@@ -44,7 +44,7 @@ PIR Motion Sensor with Temperature Sensor<br /><h1>Overview</h1><p>This product 
       <property name="vendor">Shenzhen Neo Electronics Co., Ltd</property>
       <property name="modelId">PD03Z</property>
       <property name="manufacturerId">0258</property>
-      <property name="manufacturerRef">0003:108D</property>
+      <property name="manufacturerRef">0003:108D,0003:208D</property>
       <property name="dbReference">973</property>
       <property name="defaultAssociations">1</property>
     </properties>

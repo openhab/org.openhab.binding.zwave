@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="vemmio_ds100_00_000" listed="false">
     <label>DS100 Double Switch in a dual relay in-wall module.</label>
-    <description>Double Switch in a dual relay in-wall module.</description>
+    <description><![CDATA[
+Double Switch in a dual relay in-wall module.<br /><h1>Overview</h1><p>Vemmio Double Switch is a dual relay in-wall module. The product works as a transceiver and is a Z-Wave Plus enabled device. Mini size design lets the module be easily hidden into the wall box to do not interfere with house decoration. One of many uses of the Double Switch is to turn on or off the connected fittings and monitor power consumption in real time. The new smart relay calibration technology can work perfectly with many kinds of lights like: incandescent, fluorescent and LED lights.</p> <br /><h2>Inclusion Information</h2><p>Pressing Z-Wave button three times within 2 seconds will enter inclusion mode.</p> <br /><h2>Exclusion Information</h2><p> Pressing Z-Wave button three times within 2 seconds will enter exclusion mode.</p>
+    ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -176,6 +179,7 @@
       <property name="manufacturerId">030F</property>
       <property name="manufacturerRef">0001:0001</property>
       <property name="dbReference">672</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -185,6 +189,11 @@
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
@@ -255,6 +264,25 @@
         <label>10: Existence of endpoint 3</label>
         <description>1: endpoint 3 exists, 2: No endpoint 3</description>
         <default>1</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Lifeline</label>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association">
+        <label>2: Group 2</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>For group 2, the Switch will report</p> <ol><li>ON/OFF status of Relay1 </li> <li>Instant Power Consumption (Watt) of Relay1</li> <li>Accumulated Power Consumption (KWh) of Relay1 to Z-Wave Controller.</li> </ol>
+        ]]></description>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association">
+        <label>3: Group 3</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>For group 3, the Switch will report</p> <ol><li>ON/OFF status of Relay2</li> <li>Instant Power Consumption (Watt) of Relay2</li> <li>Accumulated Power Consumption (KWh) of Relay2 to Z-Wave Controller.</li> </ol>
+        ]]></description>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

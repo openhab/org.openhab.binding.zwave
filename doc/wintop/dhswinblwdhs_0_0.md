@@ -40,30 +40,27 @@ The shutter controller can act as a wireless repeater to ensure that commands in
 
 The following table summarises the channels available for the DHS-WIN-BLW-DHS -:
 
-| Channel | Channel Id | Category | Item Type |
-|---------|------------|----------|-----------|
-| Switch | switch_binary | Switch | Switch | 
-| Dimmer | switch_dimmer | DimmableLight | Dimmer | 
-| Scene Number | scene_number |  | Number | 
+| Channel Name | Channel ID | Channel Type | Category | Item Type |
+|--------------|------------|--------------|----------|-----------|
+| Switch | switch_binary | switch_binary | Switch | Switch | 
+| Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer | 
+| Scene Number | scene_number | scene_number |  | Number | 
 
 ### Switch
-
 Switch the power on and off.
 
-The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
+The ```switch_binary``` channel is of type ```switch_binary``` and supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Dimmer
-
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
 
-The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
+The ```switch_dimmer``` channel is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Scene Number
-
 Triggers when a scene button is pressed.
 
-The ```scene_number``` channel supports the ```Number``` item.
+The ```scene_number``` channel is of type ```scene_number``` and supports the ```Number``` item.
 
 
 
@@ -84,7 +81,7 @@ Detailed information on each parameter can be found in the sections below.
 | 10 | Full close time | Time to go from opened to closed state |
 | 11 | Full open time | Time to go from closed to open state |
 | 12 | Node Id of the blocking device | Node Id of the blocking device |
-| 13 | On which command from blocking node to enable the protection | On which command from blocking node to enable the protection |
+| 13 | Blocking mode command | Blocking mode command |
 | 14 | Invert open and close relays | Invert open and close relays |
 |  | Switch All Mode | Set the mode for the switch when receiving SWITCH ALL commands |
 
@@ -233,9 +230,9 @@ The manufacturer defined default value is ```0```.
 This parameter has the configuration ID ```config_12_1``` and is of type ```INTEGER```.
 
 
-### Parameter 13: On which command from blocking node to enable the protection
+### Parameter 13: Blocking mode command
 
-On which command from blocking node to enable the protection
+Blocking mode command
 Defines which command from blocking device to interpret as closed door and hence, unprotected.
 The following option values may be configured -:
 

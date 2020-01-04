@@ -33,38 +33,39 @@ Start Exclusion mode of your primary Z-Wave Controller. Now press and hold the b
 
 The following table summarises the channels available for the Spirit -:
 
-| Channel | Channel Id | Category | Item Type |
-|---------|------------|----------|-----------|
-| Dimmer | switch_dimmer | DimmableLight | Dimmer | 
-| Current temperature | sensor_temperature | Temperature | Number:Temperature | 
-| External temperature | sensor_report |  | Number | 
-| Thermostat mode | thermostat_mode | Temperature | Number | 
-| Setpoint (heat) | thermostat_setpoint | Temperature | Number:Temperature | 
-| Setpoint (energy heat) | thermostat_setpoint | Temperature | Number:Temperature | 
-| Alarm (system) | alarm_system |  | Switch | 
-| Alarm (power) | alarm_power | Door | Switch | 
-| Battery Level | battery-level | Battery | Number |
+| Channel Name | Channel ID | Channel Type | Category | Item Type |
+|--------------|------------|--------------|----------|-----------|
+| Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer | 
+| Current temperature | sensor_temperature | sensor_temperature | Temperature | Number:Temperature | 
+| External temperature | sensor_report | sensor_report |  | Number | 
+| Thermostat mode | thermostat_mode | thermostat_mode | Temperature | Number | 
+| Setpoint (heat) | thermostat_setpoint | thermostat_setpoint | Heating | Number:Temperature | 
+| Setpoint (energy heat) | thermostat_setpoint | thermostat_setpoint | Heating | Number:Temperature | 
+| Alarm (system) | alarm_system | alarm_system |  | Switch | 
+| Alarm (power) | alarm_power | alarm_power | Energy | Switch | 
+| Local Device Protection  [Deprecated]| protection_local | protection_local |  | Number | 
+| Battery Level | battery-level | system.battery_level | Battery | Number |
 
 ### Dimmer
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
 
-The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
+The ```switch_dimmer``` channel is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Current temperature
 Indicates the current temperature.
 
-The ```sensor_temperature``` channel supports the ```Number:Temperature``` item and is in the ```Temperature``` category.
+The ```sensor_temperature``` channel is of type ```sensor_temperature``` and supports the ```Number:Temperature``` item and is in the ```Temperature``` category.
 
 ### External temperature
 Send report to device.
 
-The ```sensor_report``` channel supports the ```Number``` item.
+The ```sensor_report``` channel is of type ```sensor_report``` and supports the ```Number``` item.
 
 ### Thermostat mode
 Sets the thermostat.
 
-The ```thermostat_mode``` channel supports the ```Number``` item and is in the ```Temperature``` category.
+The ```thermostat_mode``` channel is of type ```thermostat_mode``` and supports the ```Number``` item and is in the ```Temperature``` category.
 The following state translation is provided for this channel to the ```Number``` item type -:
 
 | Value | Label     |
@@ -89,19 +90,19 @@ Precision 0,1 and 2 Scale Celsius and Fahrenheit Temp. Range 8°C-28°C
 
 Sets the thermostat setpoint.
 
-The ```thermostat_setpoint``` channel supports the ```Number:Temperature``` item and is in the ```Temperature``` category.
+The ```thermostat_setpoint``` channel is of type ```thermostat_setpoint``` and supports the ```Number:Temperature``` item and is in the ```Heating``` category.
 
 ### Setpoint (energy heat)
 Precision 0,1 and 2 Scale Celsius and Fahrenheit Temp. Range 8°C-28°C
 
 Sets the thermostat setpoint.
 
-The ```thermostat_setpoint``` channel supports the ```Number:Temperature``` item and is in the ```Temperature``` category.
+The ```thermostat_setpoint``` channel is of type ```thermostat_setpoint``` and supports the ```Number:Temperature``` item and is in the ```Heating``` category.
 
 ### Alarm (system)
 Indicates if a system alarm is triggered.
 
-The ```alarm_system``` channel supports the ```Switch``` item. This is a read only channel so will only be updated following state changes from the device.
+The ```alarm_system``` channel is of type ```alarm_system``` and supports the ```Switch``` item. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
 
@@ -113,7 +114,7 @@ The following state translation is provided for this channel to the ```Switch```
 ### Alarm (power)
 Indicates if a power alarm is triggered.
 
-The ```alarm_power``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```alarm_power``` channel is of type ```alarm_power``` and supports the ```Switch``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
 
@@ -122,11 +123,25 @@ The following state translation is provided for this channel to the ```Switch```
 | OFF | OK |
 | ON | Alarm |
 
+### Local Device Protection [Deprecated]
+Sets the local protection mode.
+
+The ```protection_local``` channel is of type ```protection_local``` and supports the ```Number``` item.
+The following state translation is provided for this channel to the ```Number``` item type -:
+
+| Value | Label     |
+|-------|-----------|
+| 0 | Unprotected |
+| 1 | Protection by sequence |
+| 2 | No operation possible |
+
+**Note:** This channel is marked as deprecated so should not be used.
+
 ### Battery Level
 Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
 
-The ```battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
-
+The ```system.battery-level``` channel is of type ```system.battery-level``` and supports the ```Number``` item and is in the ```Battery``` category.
+This channel provides the battery level as a percentage and also reflects the low battery warning state. If the battery state is in low battery warning state, this will read 0%.
 
 
 ## Device Configuration
@@ -141,9 +156,9 @@ Detailed information on each parameter can be found in the sections below.
 | 3 | Backlight | Backlight |
 | 4 | Battery report | Battery report |
 | 5 | Measured  Temperature report | Measured Temperature report |
-| 6 | Valve opening  percentage report | Valve opening percentage report |
+| 6 | Valve opening percentage report | Valve opening percentage report |
 | 7 | Window open detection | Window open detection |
-| 8 | Temperature Offset | Measured Temperature offset |
+| 8 | Temperature Offset | Measured temperature offset |
 
 ### Parameter 1: LCD Invert
 
@@ -225,7 +240,7 @@ The manufacturer defined default value is ```5```.
 This parameter has the configuration ID ```config_5_1``` and is of type ```INTEGER```.
 
 
-### Parameter 6: Valve opening  percentage report
+### Parameter 6: Valve opening percentage report
 
 Valve opening percentage report
 0: Unsolicited valve opening percentage reporting disabled.
@@ -258,15 +273,15 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 
 ### Parameter 8: Temperature Offset
 
-Measured Temperature offset
--50 - +50: Offsets the measured temp by-5,0°C – (+)5,0°C
+Measured temperature offset
+-50 ... +50: Offsets the measured temp by -5,0°C ... +5,0°C
 
-128: External temp sensor will be used for regul.
+128: External temp sensor will be used for regulation.
 The following option values may be configured, in addition to values in the range -50 to 50 -:
 
 | Value  | Description |
 |--------|-------------|
-| 128 | Ext temp sensor be used for regul |
+| 128 | Use ext. temp. sensor |
 
 The manufacturer defined default value is ```0```.
 

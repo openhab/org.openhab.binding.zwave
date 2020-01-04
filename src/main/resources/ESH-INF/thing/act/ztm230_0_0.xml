@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="act_ztm230_00_000" listed="false">
     <label>ZTM230 Dual paddle wall mounted transmitter</label>
@@ -24,7 +24,7 @@ Dual paddle wall mounted transmitter<br /><h1>Overview</h1><p>The ZTM230 Wall Mo
         <label>Dimmer</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
     </channels>
@@ -55,7 +55,7 @@ Dual paddle wall mounted transmitter<br /><h1>Overview</h1><p>The ZTM230 Wall Mo
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: Ignore Start Level Bit</label>
+        <label>1: Ignore Transmitting Start Level Bit</label>
         <description><![CDATA[
 Set Ignore Start Level Bit When Transmitting Dim Commands<br /><h1>Overview</h1><p>The ZTM230 can send Dim commands to Z-Wave enabled dimmers. The Dim command has a start level embedded in it. A dimmer receiving this command will start dimming from that start level. However, the command can be sent so that the dimmer ignores the start level and instead start dimming from its current level. By default, the ZTM230 sends the command so that the dimmer will start dimming from its current dim level rather then the start level embedded in the command. To change this, simply set the configuration parameter above to 0.  </p>
         ]]></description>
@@ -95,7 +95,7 @@ Switch paddle behaviour<br /><h1>Overview</h1><p>To change the top of the transm
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
                  min="0" max="1">
-        <label>5: Ignore Start Level Bit</label>
+        <label>5: Ignore Receiving Start Level Bit</label>
         <description><![CDATA[
 Ignore Start Level When Receiving Dim Commands<br /><h1>Overview</h1><p>The ZTM230 can send Dim commands to Z-Wave enabled dimmers. The Dim command has a start level embedded in it. A dimmer receiving this command will start dimming from that start level. However, the command can be sent so that the dimmer ignores the start level and instead start dimming from its current level. By default, the ZTM230 sends the command so that the dimmer will start dimming from its current dim level rather then the start level embedded in the command. To change this, simply set the configuration parameter above to 0</p> <p><strong>Note that this only affects a level that is reported or possibly sent by the ZTM230 since the ZTM230 does not control a load.</strong></p>
         ]]></description>

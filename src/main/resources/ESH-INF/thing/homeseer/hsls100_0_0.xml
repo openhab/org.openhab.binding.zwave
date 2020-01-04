@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="homeseer_hsls100_00_000" listed="false">
     <label>HS-LS100+ HomeSeer Z-Wave Plus Leak Sensor</label>
@@ -147,8 +147,8 @@ Set the low temperature alarm trigger value<br /><h1>Overview</h1><p>The smaller
       </parameter>
 
       <parameter name="config_24_1" type="integer" groupName="configuration">
-        <label>24: Enable/Disable blinking LED when alarm being triggered</label>
-        <description>Enable/Disable blinking LED when alarm being triggered</description>
+        <label>24: Enable/Disable blinking alarm LED</label>
+        <description>Enable/Disable blinking alarm LED</description>
         <default>1</default>
         <options>
           <option value="0">Disable</option>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="kwikset_914c_00_000" listed="false">
     <label>Kwikset 914C Convert Smart Lock Smart Lock</label>
@@ -69,20 +69,22 @@ Dipswitch Settings<br /><h1>Overview</h1><p>Configuration parameter is a one byt
 
       <parameter name="config_33_4" type="integer" groupName="configuration"
                  min="32" max="126">
-        <label>33: SKU</label>
+        <label>33: First 4 bytes of SKU</label>
         <description><![CDATA[
 SKU (length = 8 bytes)<br /><h1>Overview</h1><p>The configuration parameters 33 and 34 are used to set and get the SKU part numbers. The SKU is made up of 8 bytes. Each parameter consists of four bytes of data. Parameter 33 contains the first four most significant bytes of the SKU, while parameter 34 contains the four least significant bytes of the SKU.</p> <p>When setting the SKU, it must be done in two set commands, one for each parameter. The order of programming the SKU does not matter.</p> <p>Setting parameter 33 will program the first four bytes of the SKU. Setting parameter 34 will program the last 4 bytes of the SKU. Most printable values are accepted for the set command.</p> <p>When getting the SKU, it must be done in two get commands, one for each parameter. The order of getting the SKU does not matter.</p> <p>Getting parameter 33 will retrieve the first four bytes of the SKU. Getting parameter 34 will retrieve the last 4 bytes of the SKU. </p>
         ]]></description>
         <default>32</default>
+        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_34_4" type="integer" groupName="configuration"
                  min="32" max="126">
-        <label>34: SKU</label>
+        <label>34: Last 4 bytes of SKU</label>
         <description><![CDATA[
 SKU (length = 8 bytes)<br /><h1>Overview</h1><p>The configuration parameters 33 and 34 are used to set and get the SKU part numbers. The SKU is made up of 8 bytes. Each parameter consists of four bytes of data. Parameter 33 contains the first four most significant bytes of the SKU, while parameter 34 contains the four least significant bytes of the SKU.</p> <p>When setting the SKU, it must be done in two set commands, one for each parameter. The order of programming the SKU does not matter.</p> <p>Setting parameter 33 will program the first four bytes of the SKU. Setting parameter 34 will program the last 4 bytes of the SKU. Most printable values are accepted for the set command.</p> <p>When getting the SKU, it must be done in two get commands, one for each parameter. The order of getting the SKU does not matter.</p> <p>Getting parameter 33 will retrieve the first four bytes of the SKU. Getting parameter 34 will retrieve the last 4 bytes of the SKU. </p>
         ]]></description>
         <default>32</default>
+        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_35_2" type="integer" groupName="configuration" readOnly="true"

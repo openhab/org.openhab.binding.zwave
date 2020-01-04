@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="elexa_dmdp1_00_000" listed="false">
     <label>DMDP1 Dome Window and Door Sensor Pro</label>
@@ -146,9 +146,9 @@ Basic Set Value (Group 2)<br /><h1>Overview</h1><p>This parameter sets the value
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>8: Basic Set Value (Group 2)</label>
+        <label>8: Basic Set Value (Group 3)</label>
         <description><![CDATA[
-Basic Set Value (Group 2)<br /><h1>Overview</h1><p>This parameter sets the value sent by the Basic Set command to Association Group 4. The Door/Window Sensor sends a Basic Set command to Association Group 4 when the door or window opens (for more information, see “Association Group Info”.)</p> <table><tr><td>Size</td> <td>Name</td> <td>Available Values</td> <td>Default Value</td> </tr><tr><td>01</td> <td>Basic Set Value (Group 2)</td> <td>00 (0/Turn Off Device)<br />01 ~ 63 (0-99)<br />FF (255/Turn On Device)</td> <td>FF <br /> (255/Turn On Device) </td> </tr></table>
+Basic Set Value (Group 3)<br /><h1>Overview</h1><p>This parameter sets the value sent by the Basic Set command to Association Group 3. The Door/Window Sensor sends a Basic Set command to Association Group 4 when the door or window opens (for more information, see “Association Group Info”.)</p> <table><tr><td>Size</td> <td>Name</td> <td>Available Values</td> <td>Default Value</td> </tr><tr><td>01</td> <td>Basic Set Value (Group 2)</td> <td>00 (0/Turn Off Device)<br />01 ~ 63 (0-99)<br />FF (255/Turn On Device)</td> <td>FF <br /> (255/Turn On Device)</td> </tr></table>
         ]]></description>
         <default>0</default>
         <limitToOptions>false</limitToOptions>

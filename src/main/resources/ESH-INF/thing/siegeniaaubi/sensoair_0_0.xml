@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="siegeniaaubi_sensoair_00_000" listed="false">
     <label>Sensoair Air quality sensor for indoor use</label>
-    <description>Air quality sensor for indoor use</description>
+    <description><![CDATA[
+Air quality sensor for indoor use<br /><h1>Overview</h1><p>This device measures levels og carbon dioxide &amp; VOCs.</p> <br /><h2>Inclusion Information</h2><p>Press the push-button on the bottom of the unit once.</p> <br /><h2>Exclusion Information</h2><p>Press the push-button on the bottom of the unit once.</p>
+    ]]></description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

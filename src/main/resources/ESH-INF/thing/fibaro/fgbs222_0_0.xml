@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgbs222_00_000" listed="false">
     <label>FGBS222 Smart Implant</label>
     <description><![CDATA[
-Smart Implant<br /><h1>Overview</h1><p>allows to enhance the functionality of wired sensors and other devices by adding Z-Wave network communication. You can connect binary sensors, analog sensors, DS18B20 temperature sensors or DHT22 humidity and temperature sensor to report their readings to the Z-Wave controller. It can also control devices by opening/closing output contacts independently of the inputs.</p> <br /><h2>Inclusion Information</h2><p>To add the device to the Z-Wave network manually:</p> <ol><li>Power the device.</li> <li>Set the main controller in (Security/non-Security Mode) add mode (see the controller’s manual).</li> <li>Quickly, triple click button on the device housing or switch connected to IN1 or IN2.</li> <li>If you are adding in Security S2 Authenticated, scan the DSK QR code or input the 5-digit PIN code (label on the bottom of the box).</li> <li>LED will start blinking yellow, wait for the adding process to end.</li> <li>Successful adding will be confirmed by the Z-Wave controller’s message.</li> </ol><br /><h2>Exclusion Information</h2><p>To remove the device from the Z-Wave network:</p> <ol><li>Power the device.</li> <li>Set the main controller into remove mode (see the controller’s manual).</li> <li>Quickly, triple click button on the device housing or switch connected to IN1 or IN2.</li> <li>LED will start blinking yellow, wait for the removing process to end.</li> <li>Successful removing will be confirmed by the Z-Wave controller’s message.</li> </ol><p><strong>Note:</strong> Removing also results in resetting the device to factory defaults.</p> <p><strong>Note: </strong>Removing using switch connected to IN1 or IN2 works only if parameter 20 (IN1) or 21 (IN2) is set to 3 or 4 and parameter 40 (IN1) or 41 (IN2) does not allow sending scenes for triple click.</p>
+Smart Implant<br /><h1>Overview</h1><p>Allows to enhance the functionality of wired sensors and other devices by adding Z-Wave network communication. You can connect binary sensors, analog sensors, DS18B20 temperature sensors or DHT22 humidity and temperature sensor to report their readings to the Z-Wave controller. It can also control devices by opening/closing output contacts independently of the inputs.</p> <br /><h2>Inclusion Information</h2><p>To add the device to the Z-Wave network manually:</p> <ol><li>Power the device.</li> <li>Set the main controller in (Security/non-Security Mode) add mode (see the controller’s manual).</li> <li>Quickly, triple click button on the device housing or switch connected to IN1 or IN2.</li> <li>If you are adding in Security S2 Authenticated, scan the DSK QR code or input the 5-digit PIN code (label on the bottom of the box).</li> <li>LED will start blinking yellow, wait for the adding process to end.</li> <li>Successful adding will be confirmed by the Z-Wave controller’s message.</li> </ol><br /><h2>Exclusion Information</h2><p>To remove the device from the Z-Wave network:</p> <ol><li>Power the device.</li> <li>Set the main controller into remove mode (see the controller’s manual).</li> <li>Quickly, triple click button on the device housing or switch connected to IN1 or IN2.</li> <li>LED will start blinking yellow, wait for the removing process to end.</li> <li>Successful removing will be confirmed by the Z-Wave controller’s message.</li> </ol><p><strong>Note:</strong> Removing also results in resetting the device to factory defaults.</p> <p><strong>Note: </strong>Removing using switch connected to IN1 or IN2 works only if parameter 20 (IN1) or 21 (IN2) is set to 3 or 4 and parameter 40 (IN1) or 41 (IN2) does not allow sending scenes for triple click.</p>
     ]]></description>
     <category>Sensor</category>
 
@@ -65,7 +65,7 @@ Smart Implant<br /><h1>Overview</h1><p>allows to enhance the functionality of wi
       <channel id="protection_rf5" typeId="protection_rf">
         <label>Protection RF Output 1</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION:5;type=PROTECTION_LOCAL</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION:5;type=PROTECTION_RF</property>
         </properties>
       </channel>
       <channel id="switch_binary6" typeId="switch_binary">
@@ -83,7 +83,7 @@ Smart Implant<br /><h1>Overview</h1><p>allows to enhance the functionality of wi
       <channel id="protection_rf6" typeId="protection_rf">
         <label>Protection RF Output 2</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION:6;type=PROTECTION_LOCAL</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION:6;type=PROTECTION_RF</property>
         </properties>
       </channel>
       <channel id="alarm_heat7" typeId="alarm_heat">
@@ -101,13 +101,13 @@ Smart Implant<br /><h1>Overview</h1><p>allows to enhance the functionality of wi
       <channel id="notification_system8" typeId="notification_system">
         <label>Sensor (temperature) 1 Device Error</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:8</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:8;type=SYSTEM</property>
         </properties>
       </channel>
       <channel id="sensor_relhumidity9" typeId="sensor_relhumidity">
         <label>Relative Humidity 1</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:9;type=HUMIDITY</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:9;type=RELATIVE_HUMIDITY</property>
         </properties>
       </channel>
       <channel id="sensor_temperature9" typeId="sensor_temperature">
@@ -119,7 +119,7 @@ Smart Implant<br /><h1>Overview</h1><p>allows to enhance the functionality of wi
       <channel id="notification_system9" typeId="notification_system">
         <label>Sensor (temperature) 2 Device Error</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:9</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:9;type=SYSTEM</property>
         </properties>
       </channel>
       <channel id="sensor_temperature10" typeId="sensor_temperature">
@@ -131,7 +131,7 @@ Smart Implant<br /><h1>Overview</h1><p>allows to enhance the functionality of wi
       <channel id="notification_system10" typeId="notification_system">
         <label>Sensor (temperature) 3 Device Error</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:10</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:10;type=SYSTEM</property>
         </properties>
       </channel>
       <channel id="sensor_temperature11" typeId="sensor_temperature">
@@ -143,7 +143,7 @@ Smart Implant<br /><h1>Overview</h1><p>allows to enhance the functionality of wi
       <channel id="notification_system11" typeId="notification_system">
         <label>Sensor (temperature) 4 Device Error</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:11</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:11;type=SYSTEM</property>
         </properties>
       </channel>
       <channel id="sensor_temperature12" typeId="sensor_temperature">
@@ -155,7 +155,7 @@ Smart Implant<br /><h1>Overview</h1><p>allows to enhance the functionality of wi
       <channel id="notification_system12" typeId="notification_system">
         <label>Sensor (temperature) 5 Device Error</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:12</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:12;type=SYSTEM</property>
         </properties>
       </channel>
       <channel id="sensor_temperature13" typeId="sensor_temperature">
@@ -167,7 +167,7 @@ Smart Implant<br /><h1>Overview</h1><p>allows to enhance the functionality of wi
       <channel id="notification_system13" typeId="notification_system">
         <label>Sensor (temperature) 6 Device Error</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:13</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:13;type=SYSTEM</property>
         </properties>
       </channel>
     </channels>
@@ -177,7 +177,7 @@ Smart Implant<br /><h1>Overview</h1><p>allows to enhance the functionality of wi
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGBS222</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0502:1000,0502:2000</property>
+      <property name="manufacturerRef">0502:1000,0502:2000,0502:3000</property>
       <property name="dbReference">1005</property>
       <property name="commandClass:COMMAND_CLASS_ALARM">DELETE SAME AS ENDPOINT 1</property>
       <property name="commandClass:COMMAND_CLASS_BASIC:1">DELETE</property>

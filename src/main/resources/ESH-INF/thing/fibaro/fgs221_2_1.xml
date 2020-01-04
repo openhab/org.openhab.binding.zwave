@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgs221_02_001" listed="false">
     <label>FGS221 Double Relay Switch 2x1.5kW</label>
     <description><![CDATA[
-Double Relay Switch 2x1.5kW<br /><h1>Overview</h1><p>Remotely Controlled Relay Switch of Fibaro System is designed to operate in a wall switch box or in locations where the control of an electric device (up to 3kW) is needed.<br />It is also possible to send a signal to any system that is to be integrated with Fibaro system.</p> <br /><h2>Inclusion Information</h2><p>Add Fibaro Switch to the network by pushing three times key no. 1 or push-button B located inside the housing of the device. For toggle switch perform 3 position changes.</p> <br /><h2>Exclusion Information</h2><p>Remove Fibaro Switch from the network by pushing three times key no. 1 or push-button B located inside the housing of the device. For toggle switch perform 3 position changes.</p>
+Double Relay Switch 2x1.5kW<br /><h1>Overview</h1><p>Remotely Controlled Relay Switch of Fibaro System is designed to operate in a wall switch box or in locations where the control of an electric device (up to 3kW) is needed.<br />It is also possible to send a signal to any system that is to be integrated with Fibaro system.</p> <br /><h2>Inclusion Information</h2><p>Add Fibaro Switch to the network by pushing three times key no. 1 or push-button B located inside the housing of the device. For toggle switch perform 3 position changes.</p> <br /><h2>Exclusion Information</h2><p>Remove Fibaro Switch from the network by pushing three times key no. 1 or push-button B located inside the housing of the device. For toggle switch perform 3 position changes.</p> <br /><h2>Wakeup Information</h2><p>Not applicable</p>
     ]]></description>
     <category>WallSwitch</category>
 

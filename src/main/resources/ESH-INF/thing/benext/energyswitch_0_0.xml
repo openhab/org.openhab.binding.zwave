@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="benext_energyswitch_00_000" listed="false">
     <label>Energy Switch + Energy Switch +</label>
-    <description>Energy Switch +</description>
+    <description><![CDATA[
+Energy Switch +<br /><h1>Overview</h1><p>Control and monitor your lightning or any other appliance.</p> <p>During operation mode it will measure the instance and accumulated energy consumption of the applied appliance.</p> <p>Easy plug and play.</p> <br /><h2>Inclusion Information</h2><p>Press and hold the push button until the indicator light is blinking than release the button</p> <br /><h2>Exclusion Information</h2><p>Press and hold the push button until the indicator light is blinking than release the button</p>
+    ]]></description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -38,6 +41,7 @@
       <property name="manufacturerId">008A</property>
       <property name="manufacturerRef">0020:0001</property>
       <property name="dbReference">445</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -47,6 +51,11 @@
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
@@ -78,7 +87,9 @@ The device will shut down when it reaches an amount higher then defined (W)<br /
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>4: Start up with last known socket status</label>
-        <description>If 0 then the device will always be off, when 1-255 it will emain the last known state</description>
+        <description><![CDATA[
+Start up with last known socket status<br /><h1>Overview</h1><ul><li>If 0 then the device will always be off, when</li> <li>If 1-255 hen the device will remain the last known state</li> </ul>
+        ]]></description>
         <default>0</default>
       </parameter>
 
@@ -119,6 +130,11 @@ The time that needs to pass before the next state change<br /><h1>Overview</h1><
 The state of the Led compared to the relais state<br /><h1>Overview</h1><p>0 = Indication Led never off</p> <p>1 = led ON when relais ON</p> <p>2 = led On when relais OFF</p>
         ]]></description>
         <default>0</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Report</label>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

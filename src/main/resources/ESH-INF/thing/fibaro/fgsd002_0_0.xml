@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgsd002_00_000" listed="false">
     <label>FGSD002 Smoke Detector</label>
@@ -265,7 +265,7 @@ Time interval of signaling (visual indication/sound) lack of ...<br /><h1>Overvi
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Tamper Alarm</label>
+        <label>3: Tamper Alarm TYPE =BURGLAR, EVENT</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p>Sending the notification NOTIFICATION REPORT (TYPE =BURGLAR, EVENT = PRODUCT COVERING REMOVED) to associated devices once casing opening is detected. Up to five devices supporting casing opening command (NOTIFICATION REPORT) may be included in this group.</p>
         ]]></description>
@@ -281,7 +281,7 @@ Time interval of signaling (visual indication/sound) lack of ...<br /><h1>Overvi
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Tamper Alarm</label>
+        <label>5: Tamper Alarm TYPE =GENERAL</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p>Sending SENSOR ALARM REPORT notification (TYPE =GENERAL) to associated devices once casing opening is detected. Up to five devices supporting SENSOR ALARM REPORT command may be included in this group.</p>
         ]]></description>

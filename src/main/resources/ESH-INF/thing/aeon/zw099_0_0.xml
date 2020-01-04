@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeon_zw099_00_000" listed="false">
     <label>ZW099 Smart Dimmer 6</label>
@@ -18,7 +18,7 @@ Smart Dimmer 6<br /><h1>Overview</h1><p>Aeotec Smart Dimmer 6 is a low-cost Z-Wa
         <label>Dimmer</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
@@ -36,9 +36,9 @@ Smart Dimmer 6<br /><h1>Overview</h1><p>Aeotec Smart Dimmer 6 is a low-cost Z-Wa
       <channel id="color_color" typeId="color_color">
         <label>Night mode color</label>
         <properties>
-          <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR;</property>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC;</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL;</property>
+          <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
     </channels>
@@ -286,13 +286,11 @@ Enable/disable Configuration Lock<br /><h1>Overview</h1><p>Enable/disable Config
         <default>0</default>
       </parameter>
 
-      <parameter name="config_255_1" type="integer" groupName="configuration">
+      <parameter name="config_255_1" type="integer" groupName="configuration"
+                 min="0" max="255">
         <label>255: Reset to Factory Default Settings</label>
         <description>Reset to Factory Default Settings</description>
         <default>0</default>
-        <options>
-          <option value="0">Reset</option>
-        </options>
         <advanced>true</advanced>
       </parameter>
 

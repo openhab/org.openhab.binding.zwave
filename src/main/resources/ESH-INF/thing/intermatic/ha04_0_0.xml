@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="intermatic_ha04_00_000" listed="false">
     <label>HA04 Outdoor Module</label>
-    <description>Outdoor Module</description>
+    <description><![CDATA[
+Outdoor Module<br /><h1>Overview</h1><p>Plug-in outdoor lighting module; switch; 15A</p> <br /><h2>Inclusion Information</h2><p>press and release the PROGRAM button (the black button) on the module till the lamp comes ON. The green LED on the module will blink.</p> <br /><h2>Exclusion Information</h2><p>press and release the PROGRAM button (the black button) on the module till the lamp comes ON.</p>
+    ]]></description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

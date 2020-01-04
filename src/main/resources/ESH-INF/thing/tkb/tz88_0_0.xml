@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="tkb_tz88_00_000" listed="false">
     <label>TZ88 Energy Monitoring Wall Plug</label>
-    <description>Energy Monitoring Wall Plug</description>
+    <description><![CDATA[
+Energy Monitoring Wall Plug<br /><h1>Overview</h1><p>This plug-in ON/OFF switch TZ88 is a security enabled wireless switch, based on Z-Wave Plus technology. Z-Wave Plus™ enabled devices displaying the Z-Wave Plus™ logo can also be used with it regardless of the manufacturer, and can also be used in other manufacturer’s Z-Wave™ enabled network</p> <br /><h2>Inclusion Information</h2><p>Pressing On/Off button three times within 2 seconds will enter inclusion mode. </p> <br /><h2>Exclusion Information</h2><p>Pressing On/Off button three times within 2 seconds will enter exclusion mode.</p>
+    ]]></description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

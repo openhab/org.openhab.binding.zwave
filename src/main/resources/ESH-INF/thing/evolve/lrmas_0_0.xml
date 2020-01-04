@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="evolve_lrmas_00_000" listed="false">
     <label>LRM-AS Wall Mounted Dimmer</label>
-    <description>Wall Mounted Dimmer</description>
+    <description><![CDATA[
+Wall Mounted Dimmer<br /><h1>Overview</h1><p>Scene Capable Wall Switch DimmerThe LRM-AS Wall Mounted Dimmer is a component of the Evolve lighting control system. Inclusion of the LRM-AS Wall Mounted Dimmer allows remote ON/ OFF control and dimming of lights connected. </p> <br /><h2>Inclusion Information</h2><p>Tap the button.</p> <br /><h2>Exclusion Information</h2><p>Tap the button 3 times, then press and hold (Ex. tap, tap, tap, hold)</p>
+    ]]></description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
+        <label>Switch [Deprecated]</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
         </properties>

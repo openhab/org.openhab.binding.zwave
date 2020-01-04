@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="popp_009303_00_000" listed="false">
     <label>009303 Wall Controller</label>
     <description><![CDATA[
-Wall Controller<br /><h2>Inclusion Information</h2><p>see attached file "Popp 009303 Battery Wall Controller Manual" (section Reference Documents)</p> <br /><h2>Exclusion Information</h2><p>see attached file "Popp 009303 Battery Wall Controller Manual" (section Reference Documents)</p> <br /><h2>Wakeup Information</h2><p>see attached file "Popp 009303 Battery Wall Controller Manual" (section Reference Documents)</p>
+Wall Controller<br /><h1>Overview</h1><p>The Wall Controller is a 4 button Z-Wave device capable to act both as primary or secondary controller. The four buttons can control other Z-Wave devices such as switches, dimmer and even door locks directly. Various options – configurable by Z-Wave configuration commands – define the actions and the commands used for this control. It is possible to use two sets of buttons (one for on/open/up and one for off/closed/down) or four single buttons to control four different groups of devices.</p> <p>The controller also allows triggering scenes in a central controller. Again different modes can be configured to adapt to the various implementations of scenes in different central controllers in the market. Control options also include special modes like „all on/off“ or always controlling the Z-Wave device in proximity to the controller. </p> <br /><h2>Inclusion Information</h2><p>see attached file "Popp 009303 Battery Wall Controller Manual" (section Reference Documents)</p> <br /><h2>Exclusion Information</h2><p>see attached file "Popp 009303 Battery Wall Controller Manual" (section Reference Documents)</p> <br /><h2>Wakeup Information</h2><p>see attached file "Popp 009303 Battery Wall Controller Manual" (section Reference Documents)</p>
     ]]></description>
     <category>WallSwitch</category>
 
@@ -18,7 +18,7 @@ Wall Controller<br /><h2>Inclusion Information</h2><p>see attached file "Popp 00
         <label>Dimmer</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -87,11 +87,13 @@ Button 2 and 4 pair mode.<br /><h1>Overview</h1><p>In separate mode button 2 wor
 
       <parameter name="config_11_1" type="integer" groupName="configuration">
         <label>11: Command to control Group A</label>
-        <description>Defines the command to be sent to devices of control group A when the related button is pressed.</description>
+        <description><![CDATA[
+Command to control Group A<br /><h1>Overview</h1><p>Defines the command to be sent to devices of control group A when the related button is pressed.</p>
+        ]]></description>
         <default>8</default>
         <options>
           <option value="0">Disable</option>
-          <option value="1">Switch on/off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch on/off and Dim</option>
           <option value="2">Switch on/off only (send Basic Set)</option>
           <option value="3">Switch all</option>
           <option value="4">Send scenes</option>
@@ -104,11 +106,13 @@ Button 2 and 4 pair mode.<br /><h1>Overview</h1><p>In separate mode button 2 wor
 
       <parameter name="config_12_1" type="integer" groupName="configuration">
         <label>12: Command to control Group B</label>
-        <description>Defines the command to be sent to devices of control group B when the related button is pressed.</description>
+        <description><![CDATA[
+Command to control Group B<br /><h1>Overview</h1><p>Defines the command to be sent to devices of control group B when the related button is pressed.</p>
+        ]]></description>
         <default>8</default>
         <options>
           <option value="0">Disable</option>
-          <option value="1">Switch on/off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch on/off and Dim</option>
           <option value="2">Switch on/off only (send Basic Set)</option>
           <option value="3">Switch all</option>
           <option value="4">Send scenes</option>
@@ -121,11 +125,13 @@ Button 2 and 4 pair mode.<br /><h1>Overview</h1><p>In separate mode button 2 wor
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Command to control Group C</label>
-        <description>Defines the command to be sent to devices of control group C when the related button is pressed.</description>
+        <description><![CDATA[
+Command to control Group C<br /><h1>Overview</h1><p>Defines the command to be sent to devices of control group C when the related button is pressed.</p>
+        ]]></description>
         <default>8</default>
         <options>
           <option value="0">Disable</option>
-          <option value="1">Switch on/off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch on/off and Dim</option>
           <option value="2">Switch on/off only (send Basic Set)</option>
           <option value="3">Switch all</option>
           <option value="4">Send scenes</option>
@@ -138,11 +144,13 @@ Button 2 and 4 pair mode.<br /><h1>Overview</h1><p>In separate mode button 2 wor
 
       <parameter name="config_14_1" type="integer" groupName="configuration">
         <label>14: Command to control Group D</label>
-        <description>Defines the command to be sent to devices of control group D when the related button is pressed.</description>
+        <description><![CDATA[
+Command to control Group D<br /><h1>Overview</h1><p>Defines the command to be sent to devices of control group D when the related button is pressed.</p>
+        ]]></description>
         <default>8</default>
         <options>
           <option value="0">Disable</option>
-          <option value="1">Switch on/off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch on/off and Dim</option>
           <option value="2">Switch on/off only (send Basic Set)</option>
           <option value="3">Switch all</option>
           <option value="4">Send scenes</option>
@@ -177,7 +185,7 @@ Button 2 and 4 pair mode.<br /><h1>Overview</h1><p>In separate mode button 2 wor
         <default>0</default>
         <options>
           <option value="0">Wake up is blocked (default)</option>
-          <option value="1">Wake up is possible if configured accordingly</option>
+          <option value="1">Wake up is possible</option>
         </options>
       </parameter>
 
@@ -186,7 +194,7 @@ Button 2 and 4 pair mode.<br /><h1>Overview</h1><p>In separate mode button 2 wor
         <default>0</default>
         <options>
           <option value="0">No</option>
-          <option value="1">To same node as Wake Up Notification (default)</option>
+          <option value="1">To same node as Wake Up Notification</option>
           <option value="2">Broadcast to neighbors</option>
         </options>
       </parameter>

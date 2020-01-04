@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="rtc_ct32_00_000" listed="false">
     <label>CT32 Z-Wave Thermostat</label>
-    <description>Z-Wave Thermostat</description>
+    <description><![CDATA[
+Z-Wave Thermostat<br /><h1>Overview</h1><p>The Z-Wave enabled CT32 thermostat is a compact, easy-to-use thermostat that is packed with functionality. The CT32 has a responsive touchscreen interface, easy-to-read backlight display, and 7-day programmability. It features a system lock to avoid unintentional changes for maximum efficiency, a filter change indicator to keep your HVAC system running efficiently, wide temperature operation range, and room temperature calibration for precise control.</p> <br /><h2>Inclusion Information</h2><p>Go to Menu screen, and press INCLUDE icon.</p> <br /><h2>Exclusion Information</h2><p>Go to Menu screen, and press EXCLUDE icon.</p> <br /><h2>Wakeup Information</h2><p>When included into a Z-Wave network on battery power, this device is a FLiRS device. The Thermostat will wake up for communication when it receives a valid Z-Wave beam.</p>
+    ]]></description>
+    <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -173,7 +176,7 @@
       <property name="vendor">Radio Thermostat Company of America (RTC)</property>
       <property name="modelId">CT32</property>
       <property name="manufacturerId">0098</property>
-      <property name="manufacturerRef">2002:0100,2002:0102,0002:0100</property>
+      <property name="manufacturerRef">0002:0100,2002:0100,2002:0102</property>
       <property name="dbReference">99</property>
       <property name="defaultAssociations">1</property>
     </properties>

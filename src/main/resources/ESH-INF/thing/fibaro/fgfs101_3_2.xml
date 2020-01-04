@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgfs101_03_002" listed="false">
     <label>FGFS101 Flood Sensor</label>
@@ -171,9 +171,9 @@ Enable or disable visual temperature indicator via device's LED<br /><h1>Overvie
         ]]></description>
         <default>2</default>
         <options>
-          <option value="0">Visual indicator does not indicate the temperature</option>
-          <option value="1">Indicator at every temperature measurement and wake up</option>
-          <option value="2">Visual indicator indicates the temperature continuously</option>
+          <option value="0">No temperature indication</option>
+          <option value="1">Every measurement (Battery)</option>
+          <option value="2">Evert measurement (Power mode)</option>
         </options>
       </parameter>
 
@@ -225,7 +225,7 @@ Allows the internal flood sensor to be turned off.<br /><h1>Overview</h1><p>Allo
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">Default flood sensor operation (flood detection, reactions)</option>
+          <option value="0">Flood sensor On (default)</option>
           <option value="1">Built-in flood sensor TURNED OFF</option>
         </options>
       </parameter>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="tkb_tz36d_02_001" listed="false">
     <label>TZ36D Dual Paddle Wall Switch</label>
     <description><![CDATA[
-Dual Paddle Wall Switch<br /><h2>Inclusion Information</h2><p>Note: This module must be "Included in the Network" only where it will be permanently installed. The proper operation of this node in the mesh network is dependent on it knowing its location with respect to other nodes. You cannot "test bench" configure this module and the install it.</p>
+Dual Paddle Wall Switch<br /><h1>Overview</h1><p>The TKB Z-Wave dual wall switch is switching attached loads and is controlled either by the local switching paddle or remotely via the Z-Wave wireless protocol<br />It is included and controlled in a Z-Wave network by a remote control, a wireless control centre or any other kind of Z-Wave controller including a PC-software.</p> <br /><h2>Inclusion Information</h2><p>Press On/Off button three times within 1.5 seconds.</p> <br /><h2>Exclusion Information</h2><p>Press On/Off button three times within 1.5 seconds.</p>
     ]]></description>
     <category>WallSwitch</category>
 
@@ -93,12 +93,12 @@ Swap top and bottom switch/button.<br /><h1>Overview</h1><p>To switch top and bo
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: LED transmission indication</label>
         <description><![CDATA[
-Tranmission indication behaviour control.<br /><h1>Overview</h1><p>This parameter controls the LED behaviour when transmitting data to any of the group members.</p>
+LED transmission indication<br /><h1>Overview</h1><p>Tranmission indication behaviour control.</p> <p>This parameter controls the LED behaviour when transmitting data to any of the group members.</p>
         ]]></description>
         <default>1</default>
         <options>
           <option value="0">Do not flicker.</option>
-          <option value="1">Flicker for 1 second at the beginning of transmission.</option>
+          <option value="1">Flicker for 1 second at the beginning</option>
           <option value="2">Flicker entire time when transmitting.</option>
         </options>
       </parameter>

@@ -60,23 +60,21 @@ It is possible to set the node ID to 255 to send wakeup notifications as broadca
 
 The following table summarises the channels available for the ZME_RC2 -:
 
-| Channel | Channel Id | Category | Item Type |
-|---------|------------|----------|-----------|
-| Scene Number | scene_number |  | Number | 
-| Battery Level | battery-level | Battery | Number |
+| Channel Name | Channel ID | Channel Type | Category | Item Type |
+|--------------|------------|--------------|----------|-----------|
+| Scene Number | scene_number | scene_number |  | Number | 
+| Battery Level | battery-level | system.battery_level | Battery | Number |
 
 ### Scene Number
-
 Triggers when a scene button is pressed.
 
-The ```scene_number``` channel supports the ```Number``` item.
+The ```scene_number``` channel is of type ```scene_number``` and supports the ```Number``` item.
 
 ### Battery Level
-
 Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
 
-The ```battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
-
+The ```system.battery-level``` channel is of type ```system.battery-level``` and supports the ```Number``` item and is in the ```Battery``` category.
+This channel provides the battery level as a percentage and also reflects the low battery warning state. If the battery state is in low battery warning state, this will read 0%.
 
 
 ## Device Configuration
@@ -87,16 +85,16 @@ Detailed information on each parameter can be found in the sections below.
 | Param | Name  | Description |
 |-------|-------|-------------|
 | 10 | Command to Control Group No1 (Assoc. Group 2) | Defines the command sent to group 1 when the button is pressed (Assoc. Group 2) |
-| 11 | Command to Control Group No2 (association group 3) | This parameter defines the command to be sent to devices of control group No2 when the related button is pressed (association group 3) |
-| 12 | Command to Control Group No3 (association group 4) | This parameter defines the command to be sent to devices of control group No3 when the related button is pressed (association group 4) |
-| 13 | Command to Control Group No4 (association group 5) | This parameter defines the command to be sent to devices of control group No4 when the related button is pressed (association group 5) |
-| 14 | Command to Control Group No5 (association group 6) | This parameter defines the command to be sent to devices of control group No5 when the related button is pressed (association group 6) |
-| 15 | Command to Control Group No6 (association group 7) | This parameter defines the command to be sent to devices of control group No6 when the related button is pressed (association group 7) |
-| 16 | Command to Control Group No7 (association group 8) | This parameter defines the command to be sent to devices of control group No7 when the related button is pressed (association group 8) |
-| 17 | Command to Control Scene No1 (association group 9) | This parameter defines the command to be sent to devices of control scene group No1 when the related button is pressed (association group 9) |
-| 18 | Command to Control Scene No2 (association group 10) | This parameter defines the command to be sent to devices of control scene group No2 when the related button is pressed (association group 10) |
-| 19 | Command to Control Scene No3 (association group 11) | This parameter defines the command to be sent to devices of control scene group No3 when the related button is pressed (association group 11) |
-| 20 | Command to Control group All On/Off (association group 12) | This parameter defines the command to be sent to devices of control group All On/Off when the related button is pressed (association group 12) |
+| 11 | Command to Control Group No2 (association group 3) | Command to Control Group No2 (association group 3) |
+| 12 | Command to Control Group No3 (association group 4) | Command to Control Group No3 (association group 4) |
+| 13 | Command to Control Group No4 (association group 5) | Command to Control Group No4 (association group 5) |
+| 14 | Command to Control Group No5 (association group 6) | Command to Control Group No5 (association group 6) |
+| 15 | Command to Control Group No6 (association group 7) | Command to Control Group No6 (association group 7) |
+| 16 | Command to Control Group No7 (association group 8) | Command to Control Group No7 (association group 8) |
+| 17 | Command to Control Scene No1 (association group 9) | Command to Control Scene No1 (association group 9) |
+| 18 | Command to Control Scene No2 | Command to Control Scene No2 |
+| 19 | Command to Control Scene No3  | Command to Control Scene No3 |
+| 20 | Command to Control group All On/Off | Command to Control group All On/Off |
 | 21 | Send the following Switch All commands | Send the following Switch All commands |
 |  | Wakeup Interval | Sets the interval at which the device will accept commands from the controller |
 |  | Wakeup Node | Sets the node ID of the device to receive the wakeup notifications |
@@ -123,134 +121,134 @@ This parameter has the configuration ID ```config_10_1``` and is of type ```INTE
 
 ### Parameter 11: Command to Control Group No2 (association group 3)
 
+Command to Control Group No2 (association group 3)
 This parameter defines the command to be sent to devices of control group No2 when the related button is pressed (association group 3)
-
 The following option values may be configured -:
 
 | Value  | Description |
 |--------|-------------|
 | 0 | Disabled |
-| 1 | Switch On/Off and Dim (send Basic Set and Switch Multilevel) |
+| 1 | Switch On/Off and Dim |
 | 2 | Switch On/Off only (send Basic Set) |
 | 3 | Switch All |
 | 4 | Send Scenes |
 | 5 | Send Preconfigured Scenes |
 
-The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim ).
 
 This parameter has the configuration ID ```config_11_1``` and is of type ```INTEGER```.
 
 
 ### Parameter 12: Command to Control Group No3 (association group 4)
 
+Command to Control Group No3 (association group 4)
 This parameter defines the command to be sent to devices of control group No3 when the related button is pressed (association group 4)
-
 The following option values may be configured -:
 
 | Value  | Description |
 |--------|-------------|
 | 0 | Disabled |
-| 1 | Switch On/Off and Dim (send Basic Set and Switch Multilevel) |
+| 1 | Switch On/Off and Dim |
 | 2 | Switch On/Off only (send Basic Set) |
 | 3 | Switch All |
 | 4 | Send Scenes |
 | 5 | Send Preconfigured Scenes |
 
-The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim ).
 
 This parameter has the configuration ID ```config_12_1``` and is of type ```INTEGER```.
 
 
 ### Parameter 13: Command to Control Group No4 (association group 5)
 
+Command to Control Group No4 (association group 5)
 This parameter defines the command to be sent to devices of control group No4 when the related button is pressed (association group 5)
-
 The following option values may be configured -:
 
 | Value  | Description |
 |--------|-------------|
 | 0 | Disabled |
-| 1 | Switch On/Off and Dim (send Basic Set and Switch Multilevel) |
+| 1 | Switch On/Off and Dim |
 | 2 | Switch On/Off only (send Basic Set) |
 | 3 | Switch All |
 | 4 | Send Scenes |
 | 5 | Send Preconfigured Scenes |
 
-The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim ).
 
 This parameter has the configuration ID ```config_13_1``` and is of type ```INTEGER```.
 
 
 ### Parameter 14: Command to Control Group No5 (association group 6)
 
+Command to Control Group No5 (association group 6)
 This parameter defines the command to be sent to devices of control group No5 when the related button is pressed (association group 6)
-
 The following option values may be configured -:
 
 | Value  | Description |
 |--------|-------------|
 | 0 | Disabled |
-| 1 | Switch On/Off and Dim (send Basic Set and Switch Multilevel) |
+| 1 | Switch On/Off and Dim |
 | 2 | Switch On/Off only (send Basic Set) |
 | 3 | Switch All |
 | 4 | Send Scenes |
 | 5 | Send Preconfigured Scenes |
 
-The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim).
 
 This parameter has the configuration ID ```config_14_1``` and is of type ```INTEGER```.
 
 
 ### Parameter 15: Command to Control Group No6 (association group 7)
 
+Command to Control Group No6 (association group 7)
 This parameter defines the command to be sent to devices of control group No6 when the related button is pressed (association group 7)
-
 The following option values may be configured -:
 
 | Value  | Description |
 |--------|-------------|
 | 0 | Disabled |
-| 1 | Switch On/Off and Dim (send Basic Set and Switch Multilevel) |
+| 1 | Switch On/Off and Dim |
 | 2 | Switch On/Off only (send Basic Set) |
 | 3 | Switch All |
 | 4 | Send Scenes |
 | 5 | Send Preconfigured Scenes |
 
-The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim ).
 
 This parameter has the configuration ID ```config_15_1``` and is of type ```INTEGER```.
 
 
 ### Parameter 16: Command to Control Group No7 (association group 8)
 
+Command to Control Group No7 (association group 8)
 This parameter defines the command to be sent to devices of control group No7 when the related button is pressed (association group 8)
-
 The following option values may be configured -:
 
 | Value  | Description |
 |--------|-------------|
 | 0 | Disabled |
-| 1 | Switch On/Off and Dim (send Basic Set and Switch Multilevel) |
+| 1 | Switch On/Off and Dim |
 | 2 | Switch On/Off only (send Basic Set) |
 | 3 | Switch All |
 | 4 | Send Scenes |
 | 5 | Send Preconfigured Scenes |
 
-The manufacturer defined default value is ```1``` (Switch On/Off and Dim (send Basic Set and Switch Multilevel)).
+The manufacturer defined default value is ```1``` (Switch On/Off and Dim).
 
 This parameter has the configuration ID ```config_16_1``` and is of type ```INTEGER```.
 
 
 ### Parameter 17: Command to Control Scene No1 (association group 9)
 
+Command to Control Scene No1 (association group 9)
 This parameter defines the command to be sent to devices of control scene group No1 when the related button is pressed (association group 9)
-
 The following option values may be configured -:
 
 | Value  | Description |
 |--------|-------------|
 | 0 | Disabled |
-| 1 | Switch On/Off and Dim (send Basic Set and Switch Multilevel) |
+| 1 | Switch On/Off and Dim |
 | 2 | Switch On/Off only (send Basic Set) |
 | 3 | Switch All |
 | 4 | Send Scenes |
@@ -261,16 +259,16 @@ The manufacturer defined default value is ```4``` (Send Scenes).
 This parameter has the configuration ID ```config_17_1``` and is of type ```INTEGER```.
 
 
-### Parameter 18: Command to Control Scene No2 (association group 10)
+### Parameter 18: Command to Control Scene No2
 
+Command to Control Scene No2
 This parameter defines the command to be sent to devices of control scene group No2 when the related button is pressed (association group 10)
-
 The following option values may be configured -:
 
 | Value  | Description |
 |--------|-------------|
 | 0 | Disabled |
-| 1 | Switch On/Off and Dim (send Basic Set and Switch Multilevel) |
+| 1 | Switch On/Off and Dim |
 | 2 | Switch On/Off only (send Basic Set) |
 | 3 | Switch All |
 | 4 | Send Scenes |
@@ -281,16 +279,16 @@ The manufacturer defined default value is ```4``` (Send Scenes).
 This parameter has the configuration ID ```config_18_1``` and is of type ```INTEGER```.
 
 
-### Parameter 19: Command to Control Scene No3 (association group 11)
+### Parameter 19: Command to Control Scene No3 
 
+Command to Control Scene No3
 This parameter defines the command to be sent to devices of control scene group No3 when the related button is pressed (association group 11)
-
 The following option values may be configured -:
 
 | Value  | Description |
 |--------|-------------|
 | 0 | Disabled |
-| 1 | Switch On/Off and Dim (send Basic Set and Switch Multilevel) |
+| 1 | Switch On/Off and Dim |
 | 2 | Switch On/Off only (send Basic Set) |
 | 3 | Switch All |
 | 4 | Send Scenes |
@@ -301,16 +299,16 @@ The manufacturer defined default value is ```4``` (Send Scenes).
 This parameter has the configuration ID ```config_19_1``` and is of type ```INTEGER```.
 
 
-### Parameter 20: Command to Control group All On/Off (association group 12)
+### Parameter 20: Command to Control group All On/Off
 
+Command to Control group All On/Off
 This parameter defines the command to be sent to devices of control group All On/Off when the related button is pressed (association group 12)
-
 The following option values may be configured -:
 
 | Value  | Description |
 |--------|-------------|
 | 0 | Disabled |
-| 1 | Switch On/Off and Dim (send Basic Set and Switch Multilevel) |
+| 1 | Switch On/Off and Dim |
 | 2 | Switch On/Off only (send Basic Set) |
 | 3 | Switch All |
 | 4 | Send Scenes |

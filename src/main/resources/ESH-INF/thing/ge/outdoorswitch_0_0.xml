@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="ge_outdoorswitch_00_000" listed="false">
     <label>GE Outdoor Switch Weather Resistant Outdoor Switch</label>
@@ -55,13 +55,13 @@ Weather Resistant Outdoor Switch<br /><h1>Overview</h1><p>Maximum load for the Z
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Basic Set</label>
+        <label>2: Group 2</label>
         <description>Association Group 2 supports Basic Set and is controlled by pressing the On or Off button with the local load</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Basic Set</label>
+        <label>3: Group 3</label>
         <description>Association Group 3 supports Basic Set and is controlled by double pressing the On or Off button</description>
         <multipleLimit>5</multipleLimit>
       </parameter>

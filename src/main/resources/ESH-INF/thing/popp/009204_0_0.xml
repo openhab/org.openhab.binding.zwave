@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="popp_009204_00_000" listed="false">
     <label>009204 KFOB-C Remote-Control</label>
-    <description>KFOB-C Remote-Control</description>
+    <description><![CDATA[
+KFOB-C Remote-Control<br /><h1>Overview</h1><p>The Secure Key Fob Controller is a 4 button Z-Wave device capable to act both as primary or secondary controller. The four buttons can control other Z-Wave devices such as switches, dimmer and even door locks directly. Various options - configurable by Z-Wave configuration commands - define the actions and the commands used for this control. It is possible to use two sets of buttons (one of on/open/up and one for off/closed/down) or 4 single buttons to control 4 different groups of devices.<br /><br />The controller also allows triggering scenes in a central controller. Again different modes can be configured to adapt to the various implementations of scenes in different central controllers in the market.<br /><br />Control options also include special modes like "all on/off" or always controlling the Z-Wave device in proximity to the fob.</p> <br /><h2>Inclusion Information</h2><p>When in factory default push Button 3 (secure) or Button 4 (normal) for one second to enter inclusion mode. The inclusion mode is indicated by a blinking green LED. From second device on you need to enter management mode  push all four buttons together for one second - green led blinks slowly), hit button 3 ( enter primary controller functions - green led blinks faster) and then button 1 (secure) or button 2 (normal).</p> <br /><h2>Exclusion Information</h2><p>Enter management mode  by push all four buttons together for one second - green led blinks slowly), hit button 3 ( enter primary controller functions - green led blinks faster) and then button 3 again.</p> <br /><h2>Wakeup Information</h2><p>Enter management mode  by push all four buttons together for one second - green led blinks slowly), then hit button 2 .</p>
+    ]]></description>
+    <category>RemoteControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -31,6 +34,7 @@
       <property name="manufacturerId">0154</property>
       <property name="manufacturerRef">0100:0103</property>
       <property name="dbReference">415</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -82,7 +86,7 @@ This parameter defines the command to be sent to devices of control group A<br /
         <default>8</default>
         <options>
           <option value="0">Disabled</option>
-          <option value="1">Switch On/Off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch On/Off and Dim</option>
           <option value="2">Switch On/Off only (send Basic Set)</option>
           <option value="3">Switch all</option>
           <option value="4">Send Scenes</option>
@@ -101,7 +105,7 @@ This parameter defines the command to be sent to devices of control group B<br /
         <default>8</default>
         <options>
           <option value="0">Disabled</option>
-          <option value="1">Switch On/Off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch On/Off and Dim</option>
           <option value="2">Switch On/Off only (send Basic Set)</option>
           <option value="3">Switch all</option>
           <option value="4">Send Scenes</option>
@@ -120,7 +124,7 @@ This parameter defines the command to be sent to devices of control group C<br /
         <default>8</default>
         <options>
           <option value="0">Disabled</option>
-          <option value="1">Switch On/Off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch On/Off and Dim</option>
           <option value="2">Switch On/Off only (send Basic Set)</option>
           <option value="3">Switch all</option>
           <option value="4">Send Scenes</option>
@@ -139,7 +143,7 @@ This parameter defines the command to be sent to devices of control group D<br /
         <default>8</default>
         <options>
           <option value="0">Disabled</option>
-          <option value="1">Switch On/Off and Dim (send Basic Set and Switch Multilevel)</option>
+          <option value="1">Switch On/Off and Dim</option>
           <option value="2">Switch On/Off only (send Basic Set)</option>
           <option value="3">Switch all</option>
           <option value="4">Send Scenes</option>
@@ -172,7 +176,7 @@ This parameter defines the command to be sent to devices of control group D<br /
       <parameter name="config_25_1" type="integer" groupName="configuration">
         <label>25: Blocks wake up even when Wake Up Interval is set</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>If the KFOB wakes up and there is no controller nearby, several unsuccessful communication attempts will drain battery.</p>
+Blocks wake up even when Wake Up Interval is set<br /><h1>Overview</h1><p>If the KFOB wakes up and there is no controller nearby, several unsuccessful communication attempts will drain battery.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -184,7 +188,7 @@ This parameter defines the command to be sent to devices of control group D<br /
       <parameter name="config_30_1" type="integer" groupName="configuration">
         <label>30: Send unsolicited Battery Report on Wake Up</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>If the KFOB wakes up and there is no controller nearby, several unsuccessful communication attempts will drain battery. Value</p>
+Send unsolicited Battery Report on Wake Up<br /><h1>Overview</h1><p>If the KFOB wakes up and there is no controller nearby, several unsuccessful communication attempts will drain battery. Value</p>
         ]]></description>
         <default>1</default>
         <options>
@@ -196,23 +200,40 @@ This parameter defines the command to be sent to devices of control group D<br /
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Controlled by button 1 or single clicks of buttons 1 and 3</label>
-        <multipleLimit>8</multipleLimit>
+        <label>1: Lifeline</label>
+        <multipleLimit>10</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Controlled by button 3 or double clicks of buttons 1 and 3</label>
-        <multipleLimit>8</multipleLimit>
+        <label>2: Control Group A</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>controlled by button 1 or single clicks of buttons 1 and 3 </p>
+        ]]></description>
+        <multipleLimit>10</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Controlled by button 2 or single clicks of buttons 2 and 4</label>
-        <multipleLimit>8</multipleLimit>
+        <label>3: Control Group B</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p> controlled by button 2 or single clicks of buttons 2 and 4 </p>
+        ]]></description>
+        <multipleLimit>10</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Controlled by button 4 or double clicks of buttons 2 and 4</label>
-        <multipleLimit>8</multipleLimit>
+        <label>4: Control Group C</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p> controlled by button 3 or double clicks of buttons 1 and 3</p>
+        ]]></description>
+        <multipleLimit>10</multipleLimit>
+      </parameter>
+
+      <parameter name="group_5" type="text" groupName="association" multiple="true">
+        <label>5: Control Group D</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>controlled by button 4 or double clicks of buttons 2 and 4</p>
+        ]]></description>
+        <multipleLimit>10</multipleLimit>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

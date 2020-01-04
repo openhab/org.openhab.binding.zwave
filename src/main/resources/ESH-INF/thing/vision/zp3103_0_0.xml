@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="vision_zp3103_00_000" listed="false">
     <label>ZP3103 Shock Sensor</label>
-    <description>Shock Sensor</description>
+    <description><![CDATA[
+Shock Sensor<br /><h2>Inclusion Information</h2><p>Press and hold the Program/Tamper switch on the sensor for about 1 second.</p> <br /><h2>Exclusion Information</h2><p>Press and hold the Program/Tamper switch on the sensor for about 1 second.</p> <br /><h2>Wakeup Information</h2><p>When the cover is removed from the sensor, it is in "awake" mode</p>
+    ]]></description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

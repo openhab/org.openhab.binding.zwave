@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="polycontrol_btzu125_00_000" listed="false">
     <label>BTZW125 Danalock v2 circle</label>
@@ -167,7 +167,7 @@ Turn 75 degrees back after x seconds<br /><h1>Overview</h1><p>0 -&gt; (Default)
         <default>0</default>
         <options>
           <option value="0">Disabled</option>
-          <option value="1">1 second</option>
+          <option value="1">Brake for 1 second</option>
           <option value="2">Brake for 2 seconds</option>
           <option value="3">Brake for 3 seconds</option>
           <option value="4">Brake for 4 seconds</option>

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="innovus_00110001_01_000" listed="false">
     <label>SmartDimmer RAone SmartDimmer</label>
-    <description>RAone SmartDimmer</description>
+    <description><![CDATA[
+RAone SmartDimmer<br /><h1>Overview</h1><p>The "RAone Smart Dimmer" offers extensive application possibilities. Equipped with a fingertip panel, many lighting scenarios can be covered and also reduce the energy consumption caused by the lamps. Some application examples are the time-controlled, gradual reduction of the light intensity, eg in the children's bedroom or hallways etc. </p> <p>The Smart Dimmer can be controlled via various remote controls, such as Bang &amp; Olufsen, Logitech 895 or the INNOVUS "SmoothRemote". The dimmers are also equipped with an integrated "power meter", which determines the energy consumption of the lamps. Connected to the House Control system, the power consumption of all devices connected to the dimmer can be measured.</p> <br /><h2>Inclusion Information</h2><p> The device is put into learn mode by touching the touchplate. </p> <br /><h2>Exclusion Information</h2><p> The device is put into learn mode by touching the touchplate.</p>
+    ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -15,7 +18,7 @@
         <label>Dimmer</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="sensor_power" typeId="sensor_power">
@@ -43,7 +46,7 @@
       <property name="vendor">INNOVUS</property>
       <property name="modelId">SmartDimmer</property>
       <property name="manufacturerId">0077</property>
-      <property name="manufacturerRef">0011:0001,0001:0001</property>
+      <property name="manufacturerRef">0001:0001,0011:0001</property>
       <property name="versionMin">1.0</property>
       <property name="dbReference">62</property>
       <property name="defaultAssociations">1</property>

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="vision_zp3102_00_000" listed="false">
     <label>ZP3102 Motion Sensor</label>
-    <description>Motion Sensor</description>
+    <description><![CDATA[
+Motion Sensor<br /><h1>Overview</h1><p>The ZP3102 is a Z-Wave enabled motion detector and temperature sensor. The motion detector has 120 degrees of horizontal visibility and 60 degrees of vertical visibility. The temperature sensor that is built in to the ZP3102 is capable of reporting in both Celsius and Fahrenheit scales, and may be queried for the temperature and it will report it automatically when it detects changes. The sensor is battery operated and includes the ability to report the battery level and will transmit an alert signal if the battery assumes a critically low level. The ZP3102 is future-proofed by also supporting the ability to have its firmware updated over the Z-Wave network.</p> <br /><h2>Inclusion Information</h2><p>Press the program switch of ZP3102 once. The LED on the ZP3102 should stop flashing, if not, please try again.</p> <br /><h2>Exclusion Information</h2><p>Press the program switch of ZP3102 once to be excluded. The LED on the ZP3102 should start to flash</p> <br /><h2>Wakeup Information</h2><p>Note: ”<strong>Awake</strong>” mode: it is to leave the “Sleep” mode by removing the cover of ZP3102, to allow the Z-Wave TM Interface Controller to do “Association”.</p>
+    ]]></description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="widom_wds2_00_000" listed="false">
     <label>WDS2 Widom Smart Double Switch</label>
@@ -227,7 +227,7 @@ Defines the behavior of the device Channels<br /><h1>Overview</h1><p>Defines the
       </parameter>
 
       <parameter name="config_62_1" type="integer" groupName="configuration">
-        <label>62: Type of external switch</label>
+        <label>62: Type of external switch both inputs</label>
         <description><![CDATA[
 Defines the type of external switch connected both to input 1 and input 2.<br /><h1>Overview</h1><p>Defines the type of external switch connected both to input 1 and input 2, if parameter No. 63 is set in its default value. Otherwise parameter No. 62 defines only the switch connected to the input 1 and parameter No. 63 the switch connected to the input 2.</p>
         ]]></description>
@@ -240,7 +240,7 @@ Defines the type of external switch connected both to input 1 and input 2.<br />
       </parameter>
 
       <parameter name="config_63_1" type="integer" groupName="configuration">
-        <label>63: Type of external switch</label>
+        <label>63: Type of external switch input 2</label>
         <description>Define the switch type connected to the input 2</description>
         <default>3</default>
         <options>

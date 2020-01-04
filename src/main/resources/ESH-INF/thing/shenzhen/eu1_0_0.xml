@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="shenzhen_eu1_00_000" listed="false">
     <label>EU-1 Light Switch 1 Channel</label>
     <description><![CDATA[
 Light Switch 1 Channel<br /><h1>Overview</h1><p>Light Switch is an intelligent device that can be remotely controlled through Z-Wave network and radio waves. In the Z-Wave network communications, light switch can be connected to any Z-Wave gateway. When using radio waves, light switch can be used in conjunction with Z-Wave gateway. The frequency of radio waves used by gateway and switch is like this: different countries or areas, the radio frequency is different. Each light switch has a unique ID code. When we add or remove the switch from the alarm host, just place light switch in the Z-Wave network range of gateway. Then we can easily find the switch through the device ID code. In communication with gateway, light switch not only can send signals to Z-Wave gateway, but also can receive signals from it. When touch the button on light switch, it would send signals to Z-Wave gateway, then gateway can correctly display the switch on / off state; when light switch receives signals from gateway, the switch state would be remotely switched on/off.</p> <br /><h2>Inclusion Information</h2><ol><li>Connect switch to power source, after making it powred, please do not operate it within 20s.</li> <li>Make sure Light Switch is powered.</li> <li>Set Z-Wave gateway into inclusion mode (Refer to gateway user manual)</li> <li>Touch the button three times continuously within 1.5 second, then Light Switch will enter inclusion mode. Meanwhile, LED light would flash red color five times on and off alternately.</li> <li>Light Switch will be detected and included in the Z-Wave network.</li> <li>Wait for gateway to configure the switch.</li> </ol><p><strong>Note:</strong> If Light Switch has not been added to Z-Wave network, it can enter inclusion mode automatically when it is powered on. But in order to run this function, should let the controller enter into inclusion first before making Light Switch powered on.</p> <br /><h2>Exclusion Information</h2><ol><li>Make sure Light Switch is powered.</li> <li>Set Z-Wave gateway into exclusion mode (Refer to gateway user manual)</li> <li>Touch the button three times continuously within 1.5 second, then Light Switch will enter exclusion mode. Meanwhile, LED light would flash red color once then pink color 4 times on and off alternately.</li> <li>Wait for gateway to delete the switch.</li> </ol>
     ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

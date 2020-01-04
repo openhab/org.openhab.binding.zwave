@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="ge_26933_00_000" listed="false">
     <label>In-Wall Smart Motion Dimmer 26932/26933/ZW3008 In-Wall Smart Motion Dimmer</label>
@@ -18,7 +18,7 @@
         <label>Dimmer</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -43,7 +43,7 @@
         <label>Switch 1</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
         </properties>
       </channel>
       <channel id="alarm_motion2" typeId="alarm_motion">
@@ -254,7 +254,7 @@ Set power level for plain switch functionality<br /><h1>Overview</h1><p>0=disabl
         <label>18: Dim Up Rate</label>
         <default>0</default>
         <options>
-          <option value="0">Dim up the light to the default level quickly (Default)</option>
+          <option value="0">Dim up the light quickly (Default)</option>
           <option value="1">Dim up the light to the default level slowly</option>
         </options>
       </parameter>
@@ -263,8 +263,8 @@ Set power level for plain switch functionality<br /><h1>Overview</h1><p>0=disabl
         <label>19: Exclusion mode</label>
         <default>0</default>
         <options>
-          <option value="0">Press and release any button on the switch (Default)</option>
-          <option value="1">Press and release “X” btn and repeat for “ON“ btn</option>
+          <option value="0">Press and release any button (Default)</option>
+          <option value="1">Press &amp; release “X” btn &amp; then “ON“ btn</option>
         </options>
         <advanced>true</advanced>
       </parameter>

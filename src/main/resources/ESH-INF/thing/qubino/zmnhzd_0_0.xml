@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="qubino_zmnhzd_00_000" listed="false">
     <label>ZMNHZD Multifunctional Weather Station</label>
@@ -198,7 +198,7 @@ Multifunctional Weather Station<br /><h1>Overview</h1><p>Weather Station is used
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="0" max="8800">
-        <label>1: Wind Gauge</label>
+        <label>1: Wind Gauge - Gust Top Value</label>
         <description><![CDATA[
 Wind Gauge, Wind Gust Top Value<br /><h1>Overview</h1><p>Wind Gauge, Wind Gust Top Value, if the Wind Gust is Higher than the Parameter Value, a device triggers an Association</p>
         ]]></description>
@@ -207,7 +207,7 @@ Wind Gauge, Wind Gust Top Value<br /><h1>Overview</h1><p>Wind Gauge, Wind Gust T
 
       <parameter name="config_2_2" type="integer" groupName="configuration"
                  min="0" max="30000">
-        <label>2: Rain Gauge</label>
+        <label>2: Rain Gauge - Rate top value</label>
         <description><![CDATA[
 Rain Rate top value<br /><h1>Overview</h1><p>If the sensor Rain Rate is higher than the parameter value, a device triggers a association.</p>
         ]]></description>
@@ -347,13 +347,13 @@ Unsecure / Secure Inclusion<br /><h1>Overview</h1><ul><li>default Value 0</li> <
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Basic on/off</label>
+        <label>2: Basic on/off - wind</label>
         <description>triggered when the wind gust of the wind gauge exceed the configuration parameter 1 value</description>
         <multipleLimit>16</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Basic on/off</label>
+        <label>3: Basic on/off - rain</label>
         <description>triggered when the rain rate exceed the configuration parameter 2 value</description>
         <multipleLimit>16</multipleLimit>
       </parameter>

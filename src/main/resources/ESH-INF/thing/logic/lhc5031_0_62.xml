@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="logic_lhc5031_00_062" listed="false">
     <label>LHC5031 DIN Mount Multiple Actuator Controller for Floor Heating</label>
@@ -108,7 +108,7 @@ DIN Mount Multiple Actuator Controller for Floor Heating<br /><h1>Overview</h1><
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Logic Home Control</property>
+      <property name="vendor">Logic Group</property>
       <property name="modelId">LHC5031</property>
       <property name="manufacturerId">0234</property>
       <property name="manufacturerRef">0003:0111</property>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgwpb121_00_000" listed="false">
     <label>FGWPB-121 Fibaro Wall Plug</label>
@@ -98,7 +98,7 @@ Overload safety switch.<br /><h1>Overview</h1><p><strong>0</strong> - function i
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
                  min="0" max="100">
-        <label>11: Reporting</label>
+        <label>11: PowerReporting</label>
         <description><![CDATA[
 Power reporting.<br /><h1>Overview</h1><p><strong>0</strong> - power reports inactive.</p> <p><strong>1-100</strong> - power change in percent; <strong>default 15%</strong>.</p> <p>This parameter determines the minimum percentage change in active power consumption (in relation to the previously reported) that will result in sending new power report. </p>
         ]]></description>
@@ -111,7 +111,7 @@ Power reporting.<br /><h1>Overview</h1><p><strong>0</strong> - power reports ina
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="0" max="500">
-        <label>12: Reporting</label>
+        <label>12: EnergyReportingThreshold</label>
         <description><![CDATA[
 Energy reporting threshold.<br /><h1>Overview</h1><p><strong>0</strong> - energy reports inactive.</p> <p><strong>1-500</strong> - (0.01-5kWh, step 0.01kWh) - threshold; <strong>default 10 (0.1kWh)</strong>.</p>
         ]]></description>
@@ -124,7 +124,7 @@ Energy reporting threshold.<br /><h1>Overview</h1><p><strong>0</strong> - energy
 
       <parameter name="config_13_2" type="integer" groupName="configuration"
                  min="0" max="32400">
-        <label>13: Reporting</label>
+        <label>13: ReportingInterval</label>
         <description><![CDATA[
 Periodic power reporting.<br /><h1>Overview</h1><p><strong>0</strong> - periodic reports inactive.</p> <p><strong>30-32400</strong> - In seconds; <strong>default 3600 (1h).</strong></p> <p>This parameter defines time period between independent reports sent when changes in power load have not been recorded or if changes are insignificant. By default reports are sent every hour.</p>
         ]]></description>
@@ -137,7 +137,7 @@ Periodic power reporting.<br /><h1>Overview</h1><p><strong>0</strong> - periodic
 
       <parameter name="config_14_2" type="integer" groupName="configuration"
                  min="0" max="32400">
-        <label>14: Reporting</label>
+        <label>14: ReportingEnergyInterval</label>
         <description><![CDATA[
 Periodic energy reporting.<br /><h1>Overview</h1><p><strong>0</strong> - periodic reports inactive.</p> <p><strong>30-32400</strong> - In seconds; <strong>default 3600 (1h)</strong>.</p> <p>This parameter defines time period between independent reports sent when changes in power load have not been recorded or if changes are insignificant. By default reports are sent every hour.</p>
         ]]></description>

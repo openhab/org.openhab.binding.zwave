@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeon_zw116_00_000" listed="false">
     <label>ZW116 Aeotec Nano Switch</label>
@@ -193,23 +193,21 @@ Configure the state of LED when it is in 3 modes<br /><h1>Overview</h1><p>Config
       </parameter>
 
       <parameter name="config_84_4" type="integer" groupName="configuration"
-                 min="0" max="4294967295">
+                 min="0" max="2147483647">
         <label>84: Night light mode LED state</label>
         <description><![CDATA[
 Set the ON/OFF time of the LED when it is in Night light mode<br /><h1>Overview</h1><p>0 to 60 The minute time of OFF 256 to 316 The hour time of OFF 65536 to 65596 The minute time of ON 16777216 to 16777276 The hour time of ON</p>
         ]]></description>
         <default>301991936</default>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_86_4" type="integer" groupName="configuration"
-                 min="0" max="4294967295">
+                 min="0" max="8327680">
         <label>86: Set appointment 1</label>
         <description><![CDATA[
 Set the ON time of output load.<br /><h1>Overview</h1><p>65536 to 65543 The day value (Mon to Sun) 16777216 Enable the setting. 256 to 316 The hour value of ON time 16777215 Disable the setting. 0 to 60 The minute value of ON time</p>
         ]]></description>
         <default>8327680</default>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_87_4" type="integer" groupName="configuration"
@@ -240,15 +238,9 @@ Set the OFF time of output load<br /><h1>Overview</h1><p>256 to 316 The hour val
 
       <parameter name="config_92_1" type="integer" groupName="configuration"
                  min="0" max="100">
-        <label>92: Set the threshold value of wattage</label>
+        <label>92: Set the threshold value of percent power</label>
         <description>Threshold percentage change in wattage for an automatic report</description>
         <default>5</default>
-      </parameter>
-
-      <parameter name="config_100_1_wo" type="integer" groupName="configuration">
-        <label>100: Set parameter 101-103 to default value</label>
-        <description>Reset the parameter 101-103</description>
-        <default>0</default>
       </parameter>
 
       <parameter name="config_100_1_wo" type="integer" groupName="configuration">
@@ -299,8 +291,7 @@ Set the OFF time of output load<br /><h1>Overview</h1><p>256 to 316 The hour val
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_110_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+      <parameter name="config_110_1_wo" type="integer" groupName="configuration">
         <label>110: Reset the parameter 111-113</label>
         <description>Set parameter 111-113 to default value.</description>
         <default>0</default>
@@ -310,7 +301,7 @@ Set the OFF time of output load<br /><h1>Overview</h1><p>256 to 316 The hour val
                  min="1" max="2147483647">
         <label>111: Interval for automatic report group 1.</label>
         <description>Set the interval of automatic report for Report group 1.</description>
-        <default>600</default>
+        <default>10</default>
       </parameter>
 
       <parameter name="config_112_4" type="integer" groupName="configuration"
@@ -379,6 +370,7 @@ Set the OFF time of output load<br /><h1>Overview</h1><p>256 to 316 The hour val
           <option value="0">(Default) Reset all configuration parameters</option>
           <option value="1431655765">Reset and remove from network</option>
         </options>
+        <advanced>true</advanced>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
@@ -403,6 +395,11 @@ Set the OFF time of output load<br /><h1>Overview</h1><p>256 to 316 The hour val
         <description><![CDATA[
 <br /><h1>Overview</h1><p>Send Basic Set (configured by parameter 0x51 ) to the associated nodes in Group 3 when the external switch S1 is operated.<br />Note: The Switch Mode of external switch S1 should be identified successfully, which means that the value of Configuration parameter 0x78 should be non-zero, then the Basic Set can be sent to the associated nodes in Group 3 via triggering the S1 switch.</p>
         ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_4" type="text" groupName="association" multiple="true">
+        <label>4: Send Basic Set to Group 4</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

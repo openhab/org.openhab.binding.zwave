@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="evolve_ltm5_00_000" listed="false">
     <label>LTM-5 Wall Mount Accessory Switch</label>
-    <description>Wall Mount Accessory Switch</description>
+    <description><![CDATA[
+Wall Mount Accessory Switch<br /><h1>Overview</h1><p>The 3-Way Wall Mounted Switch (LTM-5) is the Evolve in-wall accessory switch, used for creating virtual 3-way and 4-way circuits, as well as wirelessly controlling Evolve lighting devices and plug-in modules.  The LTM-5 does not directly control a load. Instead, it communicates with other load controlling devices or plug-in modules. <br /> <br />There is a small LED on the device, which remains illuminated and flickers when sending a command to another Evolve device.</p>
+    ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="logic_zhc5010_02_000" listed="false">
     <label>ZHC5010 FUGA Wall 4-way Switch with LED + Relay</label>
@@ -95,7 +95,7 @@ FUGA Wall 4-way Switch with LED + Relay<br /><h1>Overview</h1><p>ZHC5010 is a wa
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Logic Home Control</property>
+      <property name="vendor">Logic Group</property>
       <property name="modelId">ZHC5010</property>
       <property name="manufacturerId">0234</property>
       <property name="manufacturerRef">0003:010A</property>
@@ -339,7 +339,7 @@ Disable House Cleaning Mode.<br /><h1>Overview</h1><p>This parameter is able to 
 
       <parameter name="config_19_4_0000FF00" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>19: Multilevel Switch - Upper switch value</label>
+        <label>19: Upper switch value - (button #1)</label>
         <description><![CDATA[
 Multilevel Switch - Upper switch value - (button #1)<br /><h1>Overview</h1><p>When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)</p>
         ]]></description>
@@ -348,7 +348,7 @@ Multilevel Switch - Upper switch value - (button #1)<br /><h1>Overview</h1><p>Wh
 
       <parameter name="config_19_4_00FF0000" type="integer" groupName="configuration"
                  min="0" max="99">
-        <label>19: Multilevel Switch - Lower switch value</label>
+        <label>19: Lower switch value - (button #1)</label>
         <description><![CDATA[
 Multilevel Switch - Lower switch value - (button #1)<br /><h1>Overview</h1><p>When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)</p>
         ]]></description>
@@ -367,7 +367,7 @@ Multilevel Switch - Lower switch value - (button #1)<br /><h1>Overview</h1><p>Wh
 
       <parameter name="config_20_4_0000FF00" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>20: Multilevel Switch - Upper switch value</label>
+        <label>20: Upper switch value - (button #2)</label>
         <description><![CDATA[
 Multilevel Switch - Upper switch value - (button #2)<br /><h1>Overview</h1><p>When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)</p>
         ]]></description>
@@ -376,7 +376,7 @@ Multilevel Switch - Upper switch value - (button #2)<br /><h1>Overview</h1><p>Wh
 
       <parameter name="config_20_4_00FF0000" type="integer" groupName="configuration"
                  min="0" max="99">
-        <label>20: Multilevel Switch - Lower switch value</label>
+        <label>20: Lower switch value - (button #2)</label>
         <description><![CDATA[
 Multilevel Switch - Lower switch value - (button #2)<br /><h1>Overview</h1><p>When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)</p>
         ]]></description>
@@ -395,7 +395,7 @@ Multilevel Switch - Lower switch value - (button #2)<br /><h1>Overview</h1><p>Wh
 
       <parameter name="config_21_4_0000FF00" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>21: Multilevel Switch - Upper switch value</label>
+        <label>21: Upper switch value - (button #3)</label>
         <description><![CDATA[
 Multilevel Switch - Upper switch value - (button #3)<br /><h1>Overview</h1><p>When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)</p>
         ]]></description>
@@ -404,7 +404,7 @@ Multilevel Switch - Upper switch value - (button #3)<br /><h1>Overview</h1><p>Wh
 
       <parameter name="config_21_4_00FF0000" type="integer" groupName="configuration"
                  min="0" max="99">
-        <label>21: Multilevel Switch - Lower switch value</label>
+        <label>21: Lower switch value - (button #3)</label>
         <description><![CDATA[
 Multilevel Switch - Lower switch value - (button #3)<br /><h1>Overview</h1><p>When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)</p>
         ]]></description>
@@ -423,7 +423,7 @@ Multilevel Switch - Lower switch value - (button #3)<br /><h1>Overview</h1><p>Wh
 
       <parameter name="config_22_4_0000FF00" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>22: Multilevel Switch - Upper switch value</label>
+        <label>22: Upper switch value - (button #4)</label>
         <description><![CDATA[
 Multilevel Switch - Upper switch value - (button #4)<br /><h1>Overview</h1><p>When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)</p>
         ]]></description>
@@ -432,7 +432,7 @@ Multilevel Switch - Upper switch value - (button #4)<br /><h1>Overview</h1><p>Wh
 
       <parameter name="config_22_4_00FF0000" type="integer" groupName="configuration"
                  min="0" max="99">
-        <label>22: Multilevel Switch - Lower switch value</label>
+        <label>22: Lower switch value - (button #4)</label>
         <description><![CDATA[
 Multilevel Switch - Lower switch value - (button #4)<br /><h1>Overview</h1><p>When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)</p>
         ]]></description>

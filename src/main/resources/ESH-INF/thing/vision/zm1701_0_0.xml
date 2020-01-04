@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="vision_zm1701_00_000" listed="false">
     <label>ZM1701 Monoprice keypad door lock</label>
     <description><![CDATA[
-Monoprice keypad door lock<br /><h1>Overview</h1><p>Device is OEMed as Monoprice 10798.</p>
+Monoprice keypad door lock<br /><h1>Overview</h1><p>Device is OEMed as Monoprice 10798.</p> <br /><h2>Inclusion Information</h2><p>Iinsert the following Key sequence on the key pad: 'C' + '8' + '8' + '8' than manually turn the door lock from inside. The operation is confirmed by a long beep.</p> <br /><h2>Exclusion Information</h2><p>Iinsert the following Key sequence on the key pad: 'C' + '8' + '8' + '8' than manually turn the door lock from inside. The operation is confirmed by a long beep.</p>
     ]]></description>
     <category>Lock</category>
 

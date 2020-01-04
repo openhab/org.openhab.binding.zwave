@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="qubino_zmnhia_00_000" listed="false">
     <label>ZMNHIA Flush on/off thermostat</label>
-    <description>Flush on/off thermostat</description>
+    <description><![CDATA[
+Flush on/off thermostat<br /><h1>Overview</h1><p>This Z-Wave module is used to regulate temperature. The module can be controlled either through Z-wave network or through the wall switch</p> <br /><h2>Inclusion Information</h2><ul><li>press service button S for more than 2 second or</li> <li>press push button I1 three times within 3s (3 times change switch state within 3 seconds</li> </ul><br /><h2>Exclusion Information</h2><ul><li>press service button S for more than 6 second or</li> <li>press push button I1 five times within 3s (5 times change switch state within 3 seconds).</li> </ul>
+    ]]></description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -162,8 +164,8 @@ Set point set by I3<br /><h1>Overview</h1><p>When I3 is pressed set point will b
       </parameter>
 
       <parameter name="config_30_1" type="integer" groupName="configuration">
-        <label>30: Saving the state of the relay after a power failure</label>
-        <description>Saving the state of the relay after a power failure</description>
+        <label>30: Saving the state after a power failure</label>
+        <description>Saving the state after a power failure</description>
         <default>0</default>
         <options>
           <option value="0">Module saves its state</option>

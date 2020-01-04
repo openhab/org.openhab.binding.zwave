@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="mcohome_tps411_00_000" listed="false">
     <label>TPS411 Touch Panel Switch 1 Button</label>
@@ -34,7 +34,7 @@ Touch Panel Switch 1 Button<br /><h1>Overview</h1><p><strong>Touch Panel Switch<
       <property name="modelId">TPS411</property>
       <property name="manufacturerId">015F</property>
       <property name="manufacturerRef">4111:1302,4111:5102</property>
-      <property name="versionMax">5.2</property>
+      <property name="versionMax">5.5</property>
       <property name="dbReference">526</property>
       <property name="defaultAssociations">2</property>
     </properties>

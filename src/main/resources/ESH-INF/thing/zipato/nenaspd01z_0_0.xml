@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zipato_nenaspd01z_00_000" listed="false">
     <label>NE-NAS-PD01Z PIR motion sensor and light measurement</label>
-    <description>PIR motion sensor and light measurement</description>
+    <description><![CDATA[
+PIR motion sensor and light measurement<br /><h1>Overview</h1><p>Zipato PIR Motion Sensor is a passive infrared detector or physical sensor, the sensor doesn’t emit any energy, but only passively receive and detect infrared radiation. Sensor sends messages via Z-Wave network to the Z-Wave main controller. In the communication between the PIR and Z-Wave main controller, PIR sensor can only send messages and not receive them. When sensor is triggered, it will send message to the main controller and associate devices to work through the Z-Wave main controller. Sensor is battery powered, small and can be installed easily</p> <br /><h2>Inclusion Information</h2><p> Press the button 3 times within 1.5 seconds and the device will enter inclusion mode. LED will flash on and off 5 times.</p> <br /><h2>Exclusion Information</h2><p> Press the button 3 times within 1.5 seconds and the device will enter exclusion mode.</p> <br /><h2>Wakeup Information</h2><p>You can press the button once to wake up the device and send wakeup notification to controller. LED will blink once.</p>
+    ]]></description>
     <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->

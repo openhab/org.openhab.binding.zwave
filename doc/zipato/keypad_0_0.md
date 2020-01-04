@@ -27,24 +27,6 @@ Separately from working with RFID Tags, the Tag Reader also has a numerical keyp
 
 By using the Tag Reader intelligently you can secure your house and save money on your energy bill at the same time. You can actually let your house ‘fall asleep’ when enabling the ‘Away Scene’. This is especially noted when u are using energy saving products of BeNext such as Radiator Control and of course a Energy Switch.
 
-  * Class: 0x85 COMMAND\_CLASS\_ASSOCIATION
-  * Class: 0x80 COMMAND\_CLASS\_BATTERY
-  * Class: 0x84 COMMAND\_CLASS\_WAKE_UP
-  * Class: 0x86 COMMAND\_CLASS\_VERSION
-  * Class: 0x72 COMMAND\_CLASS\_MANUFACTURER\_SPECIFIC\_V2
-  * Class: 0x71 COMMAND\_CLASS\_ALARM_V2
-  * Class: 0x70 COMMAND\_CLASS\_CONFIGURATION
-  * Class: 0x25 COMMAND\_CLASS\_SWITCH_BINARY
-  * Class: 0x63 COMMAND\_CLASS\_USER_CODE
-
-Some link
-
-http://www.openzwave.com/device-database/0097%3A4501%3A6131
-
-http://www.fhemwiki.de/wiki/Z-Wave-ZIP\_WT-RFID\_Keypad
-
-HASH DEVICE 0097:4501:6131
-
 ### Inclusion Information
 
 Press and hold the tamper for 1 seconds and release to start the inclusion/exclusion process.
@@ -62,28 +44,36 @@ The wakeup period does not impact the devices ability to report events or sensor
 
 Tap a button. The always awake mode can be activated by: CONFIGURATION_SET / Parameter: 0x05 / Size: 0x01 (can’t be different from 1) / Value: 0x03 (mode 3)
 
+### General Usage Information
+
+Some link
+
+http://www.openzwave.com/device-database/0097%3A4501%3A6131
+
+http://www.fhemwiki.de/wiki/Z-Wave-ZIP\_WT-RFID\_Keypad
+
+HASH DEVICE 0097:4501:6131
+
 ## Channels
 
 The following table summarises the channels available for the MINI KEYPAD RFID -:
 
-| Channel | Channel Id | Category | Item Type |
-|---------|------------|----------|-----------|
-| Switch | switch_binary | Switch | Switch | 
-| Alarm (access) | alarm_access | Door | Switch | 
-| Alarm (burglar) | alarm_burglar | Door | Switch | 
-| Battery Level | battery-level | Battery | Number |
+| Channel Name | Channel ID | Channel Type | Category | Item Type |
+|--------------|------------|--------------|----------|-----------|
+| Switch | switch_binary | switch_binary | Switch | Switch | 
+| Alarm (access) | alarm_access | alarm_access | Door | Switch | 
+| Alarm (burglar) | alarm_burglar | alarm_burglar | Door | Switch | 
+| Battery Level | battery-level | system.battery_level | Battery | Number |
 
 ### Switch
-
 Switch the power on and off.
 
-The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
+The ```switch_binary``` channel is of type ```switch_binary``` and supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Alarm (access)
-
 Indicates if the access control alarm is triggered.
 
-The ```alarm_access``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```alarm_access``` channel is of type ```alarm_access``` and supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
 
@@ -93,10 +83,9 @@ The following state translation is provided for this channel to the ```Switch```
 | ON | Alarm |
 
 ### Alarm (burglar)
-
 Indicates if the burglar alarm is triggered.
 
-The ```alarm_burglar``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```alarm_burglar``` channel is of type ```alarm_burglar``` and supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
 
@@ -106,11 +95,10 @@ The following state translation is provided for this channel to the ```Switch```
 | ON | Alarm |
 
 ### Battery Level
-
 Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
 
-The ```battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
-
+The ```system.battery-level``` channel is of type ```system.battery-level``` and supports the ```Number``` item and is in the ```Battery``` category.
+This channel provides the battery level as a percentage and also reflects the low battery warning state. If the battery state is in low battery warning state, this will read 0%.
 
 
 ## Device Configuration
@@ -132,7 +120,7 @@ Detailed information on each parameter can be found in the sections below.
 
 Set all configuration to factory settings
 
-The following option values may be configured -:
+The following option values may be configured, in addition to values in the range -128 to 127 -:
 
 | Value  | Description |
 |--------|-------------|

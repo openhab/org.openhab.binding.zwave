@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
+
+  <thing-type id="_fxa0404_05_000" listed="false">
+    <label>FXA-0404 Touch Panel- 4 Dimmers plus 4 ON-OFF- 5 Scenes</label>
+    <description><![CDATA[
+Touch Panel- 4 Dimmers plus 4 ON-OFF- 5 Scenes<br /><h1>Overview</h1><p>Panel: 4 Dimmers + 4 Relays (Touch Panel) / (Max Power: 20A / 2,5A Max per Channel) / 4 Scenes + ALL OFF EZ program / Digital Clock / Timer / SECURITY Feature (turns ON Dimmer 1 automatically every 6hrs simulating presence) / DIM FADE setup per Channel (0, 3, 6 or 15 sec.)/ IR Interface built in/ FlexNet serial Interface / J-Box 4x6 / Panel with 172x120mm</p> <p>Product name: FXA-0404 <br />Manufacturer: Z-Wave Technologia</p> <p>Basic Device Class <br />BASIC_TYPE_ROUTING_SLAVE (0x4)</p> <p>Generic Device Class <br />GENERIC_TYPE_SWITCH_BINARY (0x10)</p> <p>Specific Device Class <br />SPECIFIC_TYPE_SCENE_SWITCH_BINARY (0x3)</p> <p>Command Class <br />COMMAND_CLASS_ZWAVEPLUS_INFO (0x5e) <br />COMMAND_CLASS_VERSION (0x86) <br />COMMAND_CLASS_MANUFACTURER_SPECIFIC (0x72) <br />COMMAND_CLASS_DEVICE_RESET_LOCALLY (0x5a) <br />COMMAND_CLASS_ASSOCIATION (0x85) <br />COMMAND_CLASS_ASSOCIATION_GRP_INFO (0x59) <br />COMMAND_CLASS_POWERLEVEL (0x73) <br />COMMAND_CLASS_BASIC (0x20) <br />COMMAND_CLASS_FIRMWARE_UPDATE_MD (0x7a) <br />COMMAND_CLASS_MULTI_CHANNEL_V2 (0x60) <br />COMMAND_CLASS_SWITCH_BINARY (0x25) <br />COMMAND_CLASS_SWITCH_ALL (0x27) <br />COMMAND_CLASS_SCENE_ACTIVATION (0x2b) <br />COMMAND_CLASS_SCENE_CONTROLLER_CONF (0x2d) <br />COMMAND_CLASS_PROPRIETARY (0x88) <br />COMMAND_CLASS_CONFIGURATION (0x70) <br />COMMAND_CLASS_NODE_NAMING (0x77) <br />COMMAND_CLASS_CLOCK (0x81) <br />COMMAND_CLASS_APPLICATION_STATUS (0x22) <br />Channel 1 <br />GENERIC_TYPE_SWITCH_MULTILEVEL <br />SPECIFIC_TYPE_POWER_SWITCH_MULTILEVEL <br />Channel 2 <br />GENERIC_TYPE_SWITCH_MULTILEVEL <br />SPECIFIC_TYPE_POWER_SWITCH_MULTILEVEL <br />Channel 3 <br />GENERIC_TYPE_SWITCH_MULTILEVEL <br />SPECIFIC_TYPE_POWER_SWITCH_MULTILEVEL <br />Channel 4 <br />GENERIC_TYPE_SWITCH_MULTILEVEL <br />SPECIFIC_TYPE_POWER_SWITCH_MULTILEVEL <br />Channel 5 <br />SPECIFIC_TYPE_POWER_SWITCH_MULTILEVEL <br />SPECIFIC_TYPE_POWER_SWITCH_BINARY <br />Channel 6 <br />SPECIFIC_TYPE_POWER_SWITCH_MULTILEVEL <br />SPECIFIC_TYPE_POWER_SWITCH_BINARY <br />Channel 7 <br />SPECIFIC_TYPE_POWER_SWITCH_MULTILEVEL <br />SPECIFIC_TYPE_POWER_SWITCH_BINARY <br />Channel 8 <br />SPECIFIC_TYPE_POWER_SWITCH_MULTILEVEL <br />SPECIFIC_TYPE_POWER_SWITCH_BINARY <br />Manufacturer key <br />79 <br />Firmware Version <br />8 <br />Product key <br />1 <br />Number of channels <br />8</p> <br /><h2>Inclusion Information</h2><p>Add device into Z-Wave Network: Enter your Z-Wave Controller into Inclusion/Add Mode. Press the Lighting Panel "Scene1" button more than 3 times within 1 second.</p> <p>Network Wide Inclusion - NWI: NWI can be used every time you power on the device. It will be activated during 4 seconds. </p> <br /><h2>Exclusion Information</h2><p>Remove device from Z-Wave Network: Enter your Z-Wave Controller into Exclusion/Remove Mode. Press the Lighting Panel "Scene1" button more than 3 times within 1 second.</p>
+    ]]></description>
+    <category>WallSwitch</category>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Z-Wave Technologia</property>
+      <property name="modelId">FXA-0404</property>
+      <property name="manufacturerId">004F</property>
+      <property name="manufacturerRef">0000:0000</property>
+      <property name="versionMin">5.0</property>
+      <property name="versionMax">8.0</property>
+      <property name="dbReference">1061</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- GROUP DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter name="config_1_1" type="integer" groupName="configuration"
+                 min="0" max="1">
+        <label>1: Set Buzzer</label>
+        <description>Turn On or Off the Flex Panel Buzzer</description>
+        <default>1</default>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="shenzhen_floodsensor_00_000" listed="false">
     <label>Flood sensor Flood/water sensor</label>
@@ -34,7 +34,7 @@ Flood/water sensor<br /><h1>Overview</h1><p>Flood/Water detection</p> <br /><h2>
       <property name="manufacturerId">0258</property>
       <property name="manufacturerRef">0003:0085,0003:1085</property>
       <property name="dbReference">493</property>
-      <property name="defaultAssociations">2</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -52,51 +52,92 @@ Flood/water sensor<br /><h1>Overview</h1><p>Flood/Water detection</p> <br /><h2>
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
-      <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: Basic setting command</label>
+      <parameter name="config_1_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>1: Alarm Duration Time</label>
         <description><![CDATA[
-Basic setting command to be transmitted<br /><h1>Overview</h1><p>When the water sensor trigger alarm, it will send basic setting with these parameters. The receiver will execute this parameters. For example when the lamp receive the basic setting command, the parameters decide the brightness of the lamp.</p>
+Alarm Duration Time<br /><h1>Overview</h1><p>This configuration parameter that can be used to adjust the time for beep and LED turned on when water leakage is detected.</p> <p>If this parameter is set to ‘0’, the beep and LED will be turn on always until water leakage is not detected</p>
         ]]></description>
-        <default>99</default>
-        <options>
-          <option value="0">Off</option>
-          <option value="1">Dim level (lower bound) (multilevel switch)</option>
-          <option value="99">Dim level (upper bound) (multilevel switch)</option>
-          <option value="255">ON (Binary switch)</option>
-        </options>
+        <default>120</default>
       </parameter>
 
       <parameter name="config_2_2" type="integer" groupName="configuration"
-                 min="1" max="65535">
-        <label>2: OFF delay</label>
+                 min="1" max="255">
+        <label>2: Alarm Interval</label>
         <description><![CDATA[
-The amount of delay before the OFF command is transmitted<br /><h1>Overview</h1><p>Adjust the amount of delay before the OFF command is transmitted</p>
+Alarm Interval<br /><h1>Overview</h1><p>This Parameter defines beep on /off interval time when water leakage is detected.</p>
         ]]></description>
-        <default>30</default>
+        <default>1</default>
+      </parameter>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration"
+                 min="10" max="255">
+        <label>3: First Alarm On Time Duration</label>
+        <description><![CDATA[
+First Alarm On Time Duration<br /><h1>Overview</h1><p>This parameter defines beep on duration first time when water leakage is detected.</p>
+        ]]></description>
+        <default>60</default>
+      </parameter>
+
+      <parameter name="config_4_1" type="integer" groupName="configuration"
+                 min="5" max="255">
+        <label>4: Alarm on Time Duration</label>
+        <description><![CDATA[
+Alarm on Time Duration<br /><h1>Overview</h1><p>This parameter defines beep on duration after first beep on when water leakage is detected.</p>
+        ]]></description>
+        <default>5</default>
+      </parameter>
+
+      <parameter name="config_5_1" type="integer" groupName="configuration">
+        <label>5: Alarm Enable/Disable</label>
+        <description><![CDATA[
+Alarm Enable/Disable<br /><h1>Overview</h1><p>This parameter defines beep on is enabled or disabled when water leakage is detected.</p> <ul><li>‘0’ indicate beep on is disable, but LED will be turned on when water leakage detected.</li> <li>‘1’ indicate beep on is enabled, the BEEP and LED will be turned on when water leakage detected.</li> </ul>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">Beep Disabled</option>
+          <option value="1">Beep Enabled</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_6_1" type="integer" groupName="configuration">
+        <label>6: Water Leakage Detection</label>
+        <description><![CDATA[
+Water Leakage Detection<br /><h1>Overview</h1><p>This parameter defines the function than water leakage detect is enabled or disabled.</p> <ul><li>‘0’ indicate disable water leakage detect,</li> <li>‘1’ indicate enable water  leakage detect.</li> </ul>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_7_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>7: Basic Set Level</label>
+        <description><![CDATA[
+Basic Set Level<br /><h1>Overview</h1><p>Basic Set Command will be sent where contains a value when the door/window is opened or closed, the receiver will take it for consideration; for instance, if a lamp module is received the Basic Set Command of which value is decisive as to how bright of dim level of lamp module shall be.</p>
+        ]]></description>
+        <default>255</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Device status</label>
-        <description><![CDATA[
-Sends the BASIC SET control frame when the probe detects water<br /><h1>Overview</h1><p>Association group 1 is assigned the status of the device - it sends the BASIC SET control frame to the associated devices when the probe has detected water.</p>
-        ]]></description>
+        <label>1: Lifeline</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association">
-        <label>2: Controller updates</label>
+        <label>2: BASIC_SET</label>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Send Notification Report</label>
-        <description>Allows sending notification reports</description>
+        <label>3: NOTIFICATION_REPORT_V4</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Send Basic Report</label>
-        <description>Allows sending basic reports</description>
+        <label>4: SENSOR_BINARY_REPORT_V2</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

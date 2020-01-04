@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="yale_yrd216_00_000" listed="false">
     <label>YRD216 Yale Real Living Assure Lock Push Button Deadbolt</label>
     <description><![CDATA[
-Yale Real Living Assure Lock Push Button Deadbolt<br /><h1>Overview</h1><p>Yale Assure Lock</p> <ul><li>Push Button keypad with backlit numbers that won’t wear off</li> <li>Mechanical key override</li> <li>Manage up to 25 unique codes to share with friends and family</li> <li>Weather Protection Gasket</li> <li>One-touch locking and keypad wake-up</li> <li>Privacy Mode – privacy button located on the interior side of the lock enables users to temporarily disable user codes</li> <li>Tamper Resistant Battery Cover</li> <li>Tamper Alert – audible alarm sounds if there is an attempt to forcibly remove the lock</li> <li>Automatically relocks after 30 seconds</li> <li>Simple to install on standard doors and replaces your existing deadbolt in minutes with just a screwdriver</li> <li>Certified ANSI/BHMA A156.36, Grade 2</li> <li>Lifetime limited warranty for finish and mechanical, one year electronics</li> </ul><p>Zwave alliance information: https://products.z-wavealliance.org/products/1971</p> <br /><h2>Inclusion Information</h2><p>To join the lock in a Z-Wave Network (taken from the installation manual)</p> <ol><li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 1, then #</li> </ol><p>The lock will now be in inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>To exit the Z-Wave Network (taken from the installation manual)</p> <ol><li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 3, then #</li> </ol><p>The lock will now be in exclusion mode.</p>
+Yale Real Living Assure Lock Push Button Deadbolt<br /><h1>Overview</h1><p>Yale Assure Lock</p> <ul><li>Push Button keypad with backlit numbers that won’t wear off</li> <li>Mechanical key override</li> <li>Manage up to 25 unique codes to share with friends and family</li> <li>Weather Protection Gasket</li> <li>One-touch locking and keypad wake-up</li> <li>Privacy Mode – privacy button located on the interior side of the lock enables users to temporarily disable user codes</li> <li>Tamper Resistant Battery Cover</li> <li>Tamper Alert – audible alarm sounds if there is an attempt to forcibly remove the lock</li> <li>Automatically relocks after 30 seconds</li> <li>Simple to install on standard doors and replaces your existing deadbolt in minutes with just a screwdriver</li> <li>Certified ANSI/BHMA A156.36, Grade 2</li> <li>Lifetime limited warranty for finish and mechanical, one year electronics</li> </ul><br /><h2>Inclusion Information</h2><p>To join the lock in a Z-Wave Network (taken from the installation manual)</p> <ol><li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 1, then #</li> </ol><p>The lock will now be in inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>To exit the Z-Wave Network (taken from the installation manual)</p> <ol><li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 3, then #</li> </ol><p>The lock will now be in exclusion mode.</p>
     ]]></description>
     <category>Lock</category>
 
@@ -18,6 +18,23 @@ Yale Real Living Assure Lock Push Button Deadbolt<br /><h1>Overview</h1><p>Yale 
         <label>Door Lock</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_DOOR_LOCK</property>
+        </properties>
+      </channel>
+      <channel id="alarm_general" typeId="alarm_general">
+        <label>Alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
+        </properties>
+      </channel>
+      <channel id="alarm_raw" typeId="alarm_raw">
+        <label>Alarm (raw)</label>
+        <properties>
+          <property name="binding:*:StringType">COMMAND_CLASS_ALARM</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
         </properties>
       </channel>
     </channels>

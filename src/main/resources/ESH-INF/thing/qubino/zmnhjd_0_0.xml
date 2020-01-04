@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="qubino_zmnhjd_00_000" listed="false">
     <label>ZMNHJD Flush Pilot</label>
-    <description>Flush Pilot</description>
+    <description><![CDATA[
+Flush Pilot<br /><h1>Overview</h1><p>This Z-Wave module is used to control electric Radiators with 6 different working modes by pilot wire control signal. The module can be controlled either through a Z-Wave network or through the wall switch.</p> <br /><h2>Inclusion Information</h2><ul><li>press service button S for more than 2 second or</li> <li>press push button I1 three times within 3s (3 times change switch state within 3 seconds). </li> </ul><br /><h2>Exclusion Information</h2><ul><li>press service button S for more than 6 second or</li> <li>press push button I1 five times within 3s ( 5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply.</li> </ul>
+    ]]></description>
+    <category>RadiatorControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
+        <label>Switch [Deprecated]</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
         </properties>
@@ -172,7 +175,8 @@
       </parameter>
 
       <parameter name="config_30_1" type="integer" groupName="configuration">
-        <label>30: Saving the state of the device after a power failure</label>
+        <label>30: Saving the state after a power failure</label>
+        <description>Saving the state after a power failure</description>
         <default>0</default>
         <options>
           <option value="0">The module saves its state before power failure</option>
@@ -182,7 +186,7 @@
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
-        <label>1: Lifeline group</label>
+        <label>1: Lifeline</label>
         <description>Reserved for communication with the main controller</description>
       </parameter>
 
@@ -199,13 +203,13 @@
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Basic on/off</label>
+        <label>4: Basic on/off - input I2</label>
         <description>Triggered at change of the input I2 state and reflecting its state</description>
         <multipleLimit>99</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Basic on/off</label>
+        <label>5: Basic on/off - input I3</label>
         <description>Triggered at change of the input I3 state and reflecting its state</description>
         <multipleLimit>99</multipleLimit>
       </parameter>

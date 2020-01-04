@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgcd001_00_000" listed="false">
     <label>FGCD001 Carbon Monoxide Sensor</label>
@@ -311,7 +311,7 @@ Defines CO concentration level sending a new value to controller<br /><h1>Overvi
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: CO Alarm</label>
+        <label>2: CO Alarm Status</label>
         <description><![CDATA[
 Devices in this group will be switched on/off when CO Alarm status changes.<br /><h1>Overview</h1><p>2nd association group – “CO Alarm” is assigned to the device status - devices in this group will be switched on/off when CO Alarm status changes.</p> <p>The CO Sensor in 2nd to 7th group allows to control 5 regular or multichannel devices per an association group.</p> <p>It is not recommended to associate more than 10 devices in general, as the response time to control commands depends on the number of associated devices. In extreme cases, system response may be delayed.</p>
         ]]></description>

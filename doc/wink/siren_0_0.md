@@ -64,23 +64,21 @@ Only do this if the controller is missing or otherwise unreachable!
 
 The following table summarises the channels available for the Siren -:
 
-| Channel | Channel Id | Category | Item Type |
-|---------|------------|----------|-----------|
-| Switch | switch_binary | Switch | Switch | 
-| Alarm | alarm_general | Door | Switch | 
-| Battery Level | battery-level | Battery | Number |
+| Channel Name | Channel ID | Channel Type | Category | Item Type |
+|--------------|------------|--------------|----------|-----------|
+| Switch | switch_binary | switch_binary | Switch | Switch | 
+| Alarm | alarm_general | alarm_general | Alarm | Switch | 
+| Battery Level | battery-level | system.battery_level | Battery | Number |
 
 ### Switch
-
 Switch the power on and off.
 
-The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
+The ```switch_binary``` channel is of type ```switch_binary``` and supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Alarm
-
 Indicates if an alarm is triggered.
 
-The ```alarm_general``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```alarm_general``` channel is of type ```alarm_general``` and supports the ```Switch``` item and is in the ```Alarm``` category. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
 
@@ -90,11 +88,10 @@ The following state translation is provided for this channel to the ```Switch```
 | ON | Alarm |
 
 ### Battery Level
-
 Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
 
-The ```battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
-
+The ```system.battery-level``` channel is of type ```system.battery-level``` and supports the ```Number``` item and is in the ```Battery``` category.
+This channel provides the battery level as a percentage and also reflects the low battery warning state. If the battery state is in low battery warning state, this will read 0%.
 
 
 ## Device Configuration
@@ -158,11 +155,11 @@ The following option values may be configured -:
 |--------|-------------|
 | -1 | Chime Will Not Play |
 | 0 | Does Not Stop |
-| 1 | 1 min |
-| 2 | 2 Min |
-| 5 | 5 Min |
+| 1 | Time 1 min |
+| 2 | Time 2 Min |
+| 5 | Time 5 Min |
 
-The manufacturer defined default value is ```1``` (1 min).
+The manufacturer defined default value is ```1``` (Time 1 min).
 
 This parameter has the configuration ID ```config_3_1``` and is of type ```INTEGER```.
 
@@ -272,13 +269,13 @@ Group 1 is the “Lifeline” group, which can hold five members, typically incl
 
 Association group 1 supports 5 nodes.
 
-### Group 2: Siren
+### Group 2: Group 2
 
 Group 2 can hold five members, and the Siren sends a single command to this Association Group, the Binary Switch Report, whenever the Siren is turned on or off
 
 Association group 2 supports 5 nodes.
 
-### Group 3: Siren
+### Group 3: Group 3
 
 Group 2 can hold five members, and the Siren sends a single command to this Association Group, a Notification Report, whenever the Siren is turned on or off
 

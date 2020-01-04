@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="ge_zw3106_05_023" listed="false">
     <label>GE 28175 (ZW3106) Plug-In Dual Smart Dimmer</label>
     <description><![CDATA[
-Plug-In Dual Smart Dimmer<br /><h1>Overview</h1><p>• Remote Control - Turn ON/OFF and control the brightness level of the connected lighting manually or remotely</p> <p>• Multi-Purpose - 2 USB ports (3.4A total) on each side of the device</p> <p>• Dual Outlets -  Wirelessly control both outlets independently </p> <p>• Built-in Z-Wave range extender</p> <p>• OTA (Over-the-Air) Updateable - Utilizes the Z-Wave Firmware Update Meta Data command class </p> <p>Maximum load (Total): 120VAC, 300W (2.5A) Tungsten, 300W Incandescent, 100W Dimmable CFL/LED</p> <p>For Indoor Use Only</p> <br /><h2>Inclusion Information</h2><p>Quickly press and release the button on the top of the device to enter inclusion mode.</p>
+Plug-In Dual Smart Dimmer<br /><h1>Overview</h1><p>• Remote Control - Turn ON/OFF and control the brightness level of the connected lighting manually or remotely</p> <p>• Multi-Purpose - 2 USB ports (3.4A total) on each side of the device</p> <p>• Dual Outlets -  Wirelessly control both outlets independently </p> <p>• Built-in Z-Wave range extender</p> <p>• OTA (Over-the-Air) Updateable - Utilizes the Z-Wave Firmware Update Meta Data command class </p> <p>Maximum load (Total): 120VAC, 300W (2.5A) Tungsten, 300W Incandescent, 100W Dimmable CFL/LED</p> <p>For Indoor Use Only</p> <br /><h2>Inclusion Information</h2><p>Quickly press and release the button on the top of the device to enter inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>Quickly press and release the button on the top of the device to enter exclusion mode.</p>
     ]]></description>
     <category>PowerOutlet</category>
 
@@ -18,7 +18,7 @@ Plug-In Dual Smart Dimmer<br /><h1>Overview</h1><p>• Remote Control - Turn ON
         <label>Dimmer (Both Outlets)</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -31,14 +31,14 @@ Plug-In Dual Smart Dimmer<br /><h1>Overview</h1><p>• Remote Control - Turn ON
         <label>Left Dimmer</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
         </properties>
       </channel>
       <channel id="switch_dimmer2" typeId="switch_dimmer">
         <label>Right Dimmer</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:2,COMMAND_CLASS_BASIC:2</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:2,COMMAND_CLASS_BASIC:2</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:2</property>
         </properties>
       </channel>
     </channels>

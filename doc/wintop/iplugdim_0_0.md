@@ -8,6 +8,11 @@ title: iPlugDim - ZWave
 # iPlugDim Wall Plug with dimming function
 This describes the Z-Wave device *iPlugDim*, manufactured by *Wintop* with the thing type UID of ```wintop_iplugdim_00_000```.
 
+The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
+
+![iPlugDim product image](https://www.cd-jackson.com/zwave_device_uploads/698/698_default.jpg)
+
+
 The iPlugDim supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
@@ -19,7 +24,8 @@ The iPlugDim supports routing. This allows the device to communicate using other
 
 Press and release the push button of the iPlugDim to switch on/off the load of socket, press and hold the push button to dim the load of the socket.
 
-**Indication modes**
+**Indication modes  
+** 
 
 The indicator gives various statuses of the device as follows:
 
@@ -31,34 +37,72 @@ The indicator gives various statuses of the device as follows:
 
 ### Inclusion Information
 
-  1. Make sure your Z‐Wave controller is in the right operation mode (include or exclude). 
+  1. Make sure your Z‐Wave controller is in the right operation mode (include or exclude).
 
-  2. Press and hold the push button for 4 seconds and release to start the inclusion or exclusion process 
+  2. Press and hold the push button for 4 seconds and release to start the inclusion or exclusion process
     
-    (indication mode: Ready for learn mode). 
+    (indication mode: Ready for learn mode).
 
   3. (The product will start NWI automatically after unsuccessful normal inclusion) 
+
+### Exclusion Information
+
+Press and hold the push button for 4 seconds and release to start the inclusion or exclusion process
 
 ## Channels
 
 The following table summarises the channels available for the iPlugDim -:
 
-| Channel | Channel Id | Category | Item Type |
-|---------|------------|----------|-----------|
-| Dimmer | switch_dimmer | DimmableLight | Dimmer | 
+| Channel Name | Channel ID | Channel Type | Category | Item Type |
+|--------------|------------|--------------|----------|-----------|
+| Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer | 
 
 ### Dimmer
-
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
 
-The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
+The ```switch_dimmer``` channel is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 
 
 ## Device Configuration
 
-The device has no configuration parameters defined.
+The following table provides a summary of the 1 configuration parameters available in the iPlugDim.
+Detailed information on each parameter can be found in the sections below.
+
+| Param | Name  | Description |
+|-------|-------|-------------|
+| 1 | Set to Default | Set to Default |
+|  | Switch All Mode | Set the mode for the switch when receiving SWITCH ALL commands |
+
+### Parameter 1: Set to Default
+
+Set to Default
+
+The following option values may be configured, in addition to values in the range 0 to 255 -:
+
+| Value  | Description |
+|--------|-------------|
+| 1 | Set all config values to default values |
+
+The manufacturer defined default value is ```85```.
+
+This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
+
+### Switch All Mode
+
+Set the mode for the switch when receiving SWITCH ALL commands.
+
+The following option values may be configured -:
+| Value  | Description |
+|--------|-------------|
+| 0 | Exclude from All On and All Off groups |
+| 1 | Include in All On group |
+| 2 | Include in All Off group |
+| 255 | Include in All On and All Off groups |
+
+This parameter has the configuration ID ```switchall_mode``` and is of type ```INTEGER```.
+
 
 ## Association Groups
 

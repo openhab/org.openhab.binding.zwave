@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="simontech_1000204113x_00_000" listed="false">
-    <label>10002041-13X iO Cover for the Simon 100 schuko plug socket</label>
+    <label>10002041-13X iO Cover for the Simon 100 Schuko Plug Socket</label>
     <description><![CDATA[
-iO Cover for the Simon 100 schuko plug socket<br /><h1>Overview</h1><p>Once plugged to 10002432-039 This Front permits the direct control of a load plugged toggling it each time that the pushbutton is. It is also possible to control the load using Z- Wave devices.</p> <br /><h2>Inclusion Information</h2><p>KeyPad long press (2s&lt;t&lt;30s) -&gt; Central LED blinks until release of Pushbutton -&gt; The Node Information Frame is sent via Z- Wave.</p> <br /><h2>Exclusion Information</h2><p>KeyPad long press (2s&lt;t&lt;30s) -&gt; Central LED blinks until release of Pushbutton -&gt; The Node Information Frame is sent via Z- Wave.</p>
+iO Cover for the Simon 100 Schuko Plug Socket<br /><h1>Overview</h1><p>Once plugged to 10002432-039 this front permits the direct control of a load plugged toggling it each time that the pushbutton is pressed. It is also possible to control the load using Z- Wave devices.</p> <br /><h2>Inclusion Information</h2><p>KeyPad long press (2s&lt;t&lt;30s) -&gt; Central LED blinks until release of Pushbutton -&gt; The Node Information Frame is sent via Z- Wave.</p> <br /><h2>Exclusion Information</h2><p>KeyPad long press (2s&lt;t&lt;30s) -&gt; Central LED blinks until release of Pushbutton -&gt; The Node Information Frame is sent via Z- Wave.</p>
     ]]></description>
     <category>PowerOutlet</category>
 
@@ -45,9 +45,9 @@ iO Cover for the Simon 100 schuko plug socket<br /><h1>Overview</h1><p>Once plug
       <property name="vendor">SimonTech S.L.U</property>
       <property name="modelId">10002041-13X</property>
       <property name="manufacturerId">0267</property>
-      <property name="manufacturerRef">0009:0022</property>
+      <property name="manufacturerRef">0009:0022,0009:007C</property>
       <property name="dbReference">974</property>
-      <property name="defaultAssociations">2</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -75,19 +75,17 @@ iO Cover for the Simon 100 schuko plug socket<br /><h1>Overview</h1><p>Once plug
         </options>
       </parameter>
 
-      <parameter name="config_2_2" type="integer" groupName="configuration">
+      <parameter name="config_2_2" type="integer" groupName="configuration"
+                 min="0" max="65535">
         <label>2: Custom consumption limit</label>
         <description><![CDATA[
 Custom consumption limit<br /><h1>Overview</h1><p>0x0001 - 0xFFFF -&gt; Sets the power in Watts that is supported. (once the load is over, it is disconnected).</p>
         ]]></description>
         <default>0</default>
-        <options>
-          <option value="0">Default</option>
-          <option value="255">Power in Watts</option>
-        </options>
       </parameter>
 
-      <parameter name="config_3_1" type="integer" groupName="configuration">
+      <parameter name="config_3_1" type="integer" groupName="configuration"
+                 min="0" max="99">
         <label>3: Beacon</label>
         <description><![CDATA[
 Beacon LEDs<br /><h1>Overview</h1><p>0x01-0x63 (1-100%) -&gt; Sets the intensity of the beacon LEDs.</p>
@@ -96,6 +94,7 @@ Beacon LEDs<br /><h1>Overview</h1><p>0x01-0x63 (1-100%) -&gt; Sets the intensity
         <options>
           <option value="0">Disables the beacon function</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
@@ -140,7 +139,7 @@ Activation TIME<br /><h1>Overview</h1><ul><li>0x00 -&gt; (Default) Disables timi
         <description>Reset default</description>
         <default>0</default>
         <options>
-          <option value="0">All parameters except Long Pulse Lock.</option>
+          <option value="17170">All parameters except Long Pulse Lock.</option>
           <option value="39015">Restored to default</option>
         </options>
       </parameter>
@@ -158,13 +157,13 @@ Delay OFF<br /><h1>Overview</h1><ul><li>0x00 -&gt; (Default) Disables timing</li
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
-Group 1 (Lifeline) -&gt; Name “lifeline”<br /><h1>Overview</h1><p><strong>COMMAND_CLASS_BASIC_REPORT</strong></p> <p>It is sent to the associated nodes when the load changes state:</p> <ul><li>ON -&gt; 0xFF</li> <li>OFF -&gt; 0x00</li> </ul><p><strong>COMMAND_CLASS_METER_REPORT_V4</strong></p> <p>It is sent to the associated nodes when the power consumed varies more than 10%</p> <p>“Electric meter”, “Consumed”, “Watts”, Size 4, Precision 1, Value (W)</p> <p><strong>COMMAND_CLASS_DEVICE_RESET_LOCALLY_ NOTIFICATION</strong></p> <p>The associated nodes are sent when the device is deleted from the Z-Wave network</p>
+Group 1 (Lifeline) -&gt; Name “lifeline”<br /><h1>Overview</h1><p>COMMAND_CLASS_BASIC_REPORT</p> <p>It is sent to the associated nodes when the load changes state:</p> <ul><li>ON -&gt; 0xFF</li> <li>OFF -&gt; 0x00</li> </ul><p>COMMAND_CLASS_METER_REPORT_V4</p> <p>It is sent to the associated nodes when the power consumed varies more than 10%</p> <p>“Electric meter”, “Consumed”, “Watts”, Size 4, Precision 1, Value (W)</p> <p>COMMAND_CLASS_DEVICE_RESET_LOCALLY_ NOTIFICATION</p> <p>The associated nodes are sent when the device is deleted from the Z-Wave network</p>
         ]]></description>
         <multipleLimit>3</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: ctrl</label>
+        <label>2: Group 2</label>
         <description><![CDATA[
 Group 2 (Control) -&gt; Name “ctrl"<br /><h1>Overview</h1><p>COMMAND_CLASS_BASIC_REPORT</p> <p>It is sent to the associated nodes when the load changes state:</p> <ul><li>ON -&gt; 0xFF</li> <li>OFF -&gt; 0x00</li> </ul>
         ]]></description>

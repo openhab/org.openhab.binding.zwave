@@ -8,6 +8,11 @@ title: ZWN-SC7 - ZWave
 # ZWN-SC7 Scene Controller
 This describes the Z-Wave device *ZWN-SC7*, manufactured by *Wenzhou MTLC Electric Appliances Co.,Ltd.* with the thing type UID of ```enerwave_zwnsc7_00_000```.
 
+The device is in the category of *Remote Control*, defining Any portable or hand-held device that controls the status of something, e.g. remote control, keyfob etc..
+
+![ZWN-SC7 product image](https://www.cd-jackson.com/zwave_device_uploads/187/187_default.png)
+
+
 ## Overview
 
 No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/187) to improve the documentation.
@@ -16,15 +21,14 @@ No device information is provided in the database. Consider [updating the databa
 
 The following table summarises the channels available for the ZWN-SC7 -:
 
-| Channel | Channel Id | Category | Item Type |
-|---------|------------|----------|-----------|
-| Scene Number | scene_number |  | Number | 
+| Channel Name | Channel ID | Channel Type | Category | Item Type |
+|--------------|------------|--------------|----------|-----------|
+| Scene Number | scene_number | scene_number |  | Number | 
 
 ### Scene Number
-
 Triggers when a scene button is pressed.
 
-The ```scene_number``` channel supports the ```Number``` item.
+The ```scene_number``` channel is of type ```scene_number``` and supports the ```Number``` item.
 
 
 

@@ -6,7 +6,7 @@ title: Heatit Z-Scene Controller - ZWave
 {% include base.html %}
 
 # Heatit Z-Scene Controller Push button 6-gang
-This describes the Z-Wave device *Heatit Z-Scene Controller*, manufactured by *[Logic Home Control](http://logichome.dk/)* with the thing type UID of ```logic_scenecontroller_00_000```.
+This describes the Z-Wave device *Heatit Z-Scene Controller*, manufactured by *[Logic Group](http://www.logic-group.com)* with the thing type UID of ```logic_scenecontroller_00_000```.
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
@@ -39,42 +39,41 @@ The wakeup period does not impact the devices ability to report events or sensor
 
 The following table summarises the channels available for the Heatit Z-Scene Controller -:
 
-| Channel | Channel Id | Category | Item Type |
-|---------|------------|----------|-----------|
-| Switch | switch_binary | Switch | Switch | 
-| Dimmer | switch_dimmer | DimmableLight | Dimmer | 
-| Scene Number | scene_number |  | Number | 
-| Switch 1 | switch_binary1 | Switch | Switch | 
-| Dimmer 1 | switch_dimmer1 | DimmableLight | Dimmer | 
-| Switch 2 | switch_binary2 | Switch | Switch | 
-| Dimmer 2 | switch_dimmer2 | DimmableLight | Dimmer | 
-| Switch 3 | switch_binary3 | Switch | Switch | 
-| Dimmer 3 | switch_dimmer3 | DimmableLight | Dimmer | 
-| Switch 4 | switch_binary4 | Switch | Switch | 
-| Dimmer 4 | switch_dimmer4 | DimmableLight | Dimmer | 
-| Switch 5 | switch_binary5 | Switch | Switch | 
-| Dimmer 5 | switch_dimmer5 | DimmableLight | Dimmer | 
-| Switch 6 | switch_binary6 | Switch | Switch | 
-| Dimmer 6 | switch_dimmer6 | DimmableLight | Dimmer | 
+| Channel Name | Channel ID | Channel Type | Category | Item Type |
+|--------------|------------|--------------|----------|-----------|
+| Switch  [Deprecated]| switch_binary | switch_binary | Switch | Switch | 
+| Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer | 
+| Scene Number | scene_number | scene_number |  | Number | 
+| Switch 1  [Deprecated]| switch_binary1 | switch_binary | Switch | Switch | 
+| Dimmer 1 | switch_dimmer1 | switch_dimmer | DimmableLight | Dimmer | 
+| Switch 2  [Deprecated]| switch_binary2 | switch_binary | Switch | Switch | 
+| Dimmer 2 | switch_dimmer2 | switch_dimmer | DimmableLight | Dimmer | 
+| Switch 3  [Deprecated]| switch_binary3 | switch_binary | Switch | Switch | 
+| Dimmer 3 | switch_dimmer3 | switch_dimmer | DimmableLight | Dimmer | 
+| Switch 4  [Deprecated]| switch_binary4 | switch_binary | Switch | Switch | 
+| Dimmer 4 | switch_dimmer4 | switch_dimmer | DimmableLight | Dimmer | 
+| Switch 5  [Deprecated]| switch_binary5 | switch_binary | Switch | Switch | 
+| Dimmer 5 | switch_dimmer5 | switch_dimmer | DimmableLight | Dimmer | 
+| Switch 6  [Deprecated]| switch_binary6 | switch_binary | Switch | Switch | 
+| Dimmer 6 | switch_dimmer6 | switch_dimmer | DimmableLight | Dimmer | 
 
-### Switch
-
+### Switch [Deprecated]
 Switch the power on and off.
 
-The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
+The ```switch_binary``` channel is of type ```switch_binary``` and supports the ```Switch``` item and is in the ```Switch``` category.
+
+**Note:** This channel is marked as deprecated so should not be used.
 
 ### Dimmer
-
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
 
-The ```switch_dimmer``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
+The ```switch_dimmer``` channel is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Scene Number
-
 Triggers when a scene button is pressed.
 
-The ```scene_number``` channel supports the ```Number``` item.
+The ```scene_number``` channel is of type ```scene_number``` and supports the ```Number``` item.
 This channel provides the scene, and the event as a decimal value in the form ```<scene>.<event>```. The scene number is set by the device, and the event is as follows -:
 
 | Event ID | Event Description  |
@@ -87,83 +86,83 @@ This channel provides the scene, and the event as a decimal value in the form ``
 | 5        | 4 x keypress       |
 | 6        | 5 x keypress       |
 
-### Switch 1
-
+### Switch 1 [Deprecated]
 Switch the power on and off.
 
-The ```switch_binary1``` channel supports the ```Switch``` item and is in the ```Switch``` category.
+The ```switch_binary1``` channel is of type ```switch_binary``` and supports the ```Switch``` item and is in the ```Switch``` category.
+
+**Note:** This channel is marked as deprecated so should not be used.
 
 ### Dimmer 1
-
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
 
-The ```switch_dimmer1``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
+The ```switch_dimmer1``` channel is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
-### Switch 2
-
+### Switch 2 [Deprecated]
 Switch the power on and off.
 
-The ```switch_binary2``` channel supports the ```Switch``` item and is in the ```Switch``` category.
+The ```switch_binary2``` channel is of type ```switch_binary``` and supports the ```Switch``` item and is in the ```Switch``` category.
+
+**Note:** This channel is marked as deprecated so should not be used.
 
 ### Dimmer 2
-
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
 
-The ```switch_dimmer2``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
+The ```switch_dimmer2``` channel is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
-### Switch 3
-
+### Switch 3 [Deprecated]
 Switch the power on and off.
 
-The ```switch_binary3``` channel supports the ```Switch``` item and is in the ```Switch``` category.
+The ```switch_binary3``` channel is of type ```switch_binary``` and supports the ```Switch``` item and is in the ```Switch``` category.
+
+**Note:** This channel is marked as deprecated so should not be used.
 
 ### Dimmer 3
-
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
 
-The ```switch_dimmer3``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
+The ```switch_dimmer3``` channel is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
-### Switch 4
-
+### Switch 4 [Deprecated]
 Switch the power on and off.
 
-The ```switch_binary4``` channel supports the ```Switch``` item and is in the ```Switch``` category.
+The ```switch_binary4``` channel is of type ```switch_binary``` and supports the ```Switch``` item and is in the ```Switch``` category.
+
+**Note:** This channel is marked as deprecated so should not be used.
 
 ### Dimmer 4
-
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
 
-The ```switch_dimmer4``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
+The ```switch_dimmer4``` channel is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
-### Switch 5
-
+### Switch 5 [Deprecated]
 Switch the power on and off.
 
-The ```switch_binary5``` channel supports the ```Switch``` item and is in the ```Switch``` category.
+The ```switch_binary5``` channel is of type ```switch_binary``` and supports the ```Switch``` item and is in the ```Switch``` category.
+
+**Note:** This channel is marked as deprecated so should not be used.
 
 ### Dimmer 5
-
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
 
-The ```switch_dimmer5``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
+The ```switch_dimmer5``` channel is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
-### Switch 6
-
+### Switch 6 [Deprecated]
 Switch the power on and off.
 
-The ```switch_binary6``` channel supports the ```Switch``` item and is in the ```Switch``` category.
+The ```switch_binary6``` channel is of type ```switch_binary``` and supports the ```Switch``` item and is in the ```Switch``` category.
+
+**Note:** This channel is marked as deprecated so should not be used.
 
 ### Dimmer 6
-
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
 
-The ```switch_dimmer6``` channel supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
+The ```switch_dimmer6``` channel is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 
 

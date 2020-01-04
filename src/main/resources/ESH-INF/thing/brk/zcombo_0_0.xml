@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="brk_zcombo_00_000" listed="false">
     <label>ZCOMBO Smoke and Carbon Monoxide Alarm</label>
@@ -50,7 +50,7 @@ Smoke and Carbon Monoxide Alarm<br /><h1>Overview</h1><p>Z-wave compatible smoke
       <property name="vendor">BRK Brands, Inc.</property>
       <property name="modelId">ZCOMBO</property>
       <property name="manufacturerId">0138</property>
-      <property name="manufacturerRef">0001:0002</property>
+      <property name="manufacturerRef">0001:0002,000C:0001</property>
       <property name="dbReference">238</property>
       <property name="defaultAssociations">1</property>
     </properties>

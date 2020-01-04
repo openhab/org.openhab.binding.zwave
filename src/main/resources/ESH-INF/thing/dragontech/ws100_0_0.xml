@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="dragontech_ws100_00_000" listed="false">
     <label>WS-100 Wall On/Off Switch</label>
-    <description>Wall On/Off Switch</description>
+    <description><![CDATA[
+Wall On/Off Switch<br /><h1>Overview</h1><p>FEATURES</p> <ul><li>Works with incandescent, florescent (CFL), or LED lighting and appliance</li> <li>ON/OFF status and location LED indicator</li> <li>Can be controlled wirelessly or manually</li> <li>Fits into standard single or multiple gang junction box and standard wall plates</li> <li>Decorative keypad can be replaced manually to match color with other wall switches</li> <li>Over-­‐The-­‐Air firmware upgrade available with compatible gateway, Z-­‐Wave® static controller, PC and software</li> <li>Z-­‐Wave 500 Series module inside</li> <li>Internal resettable fuse to protect from surge current</li> <li>manual reset capability</li> </ul><br /><h2>Inclusion Information</h2><p>Single click and release the rocker switch</p> <br /><h2>Exclusion Information</h2><p>Single click and release the rocker switch</p>
+    ]]></description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

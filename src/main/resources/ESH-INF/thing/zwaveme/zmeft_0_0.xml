@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zwaveme_zmeft_00_000" listed="false">
     <label>ZME_FT Floor Thermostat</label>
-    <description>Floor Thermostat</description>
+    <description><![CDATA[
+Floor Thermostat<br /><h1>Overview</h1><p>Underfloor heating thermostat allows you to control the heating mat or other load in the on / off mode to maintain the set temperature. The device can operate in two control circuits:</p> <ul><li>autonomous maintenance of the set floor temperature<br /></li> <li>controlled by Z-Wave to maintain the set room temperature (requires an external Z-Wave thermostat,installed indoors)</li> </ul><p>The kit includes a temperature sensor. In all modes, the thermostat protects the floor structure from overheating, turning off load when the temperature threshold is reached</p> <br /><h2>Inclusion Information</h2><p>press and hold the central round mode change button for 5 seconds</p> <br /><h2>Exclusion Information</h2><p>press and hold the central round mode change button for 5 seconds</p>
+    ]]></description>
+    <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -84,8 +87,8 @@
           <option value="0">Toggle Normal Heating / Off</option>
           <option value="1">Toggle Normal Heating / Energy Save</option>
           <option value="2">Toggle Boost Dry</option>
-          <option value="3">Set Normal Heating set point temperature (in 0.1 C units)</option>
-          <option value="4">Switch on/off relay directly (only if Thermostat Mode is in Off state)</option>
+          <option value="3">Set Normal Heating set point temperature</option>
+          <option value="4">Switch on/off relay directly</option>
         </options>
       </parameter>
 
@@ -104,7 +107,9 @@
       <parameter name="config_6_1" type="integer" groupName="configuration"
                  min="20" max="55">
         <label>6: Maximal allowed temperature</label>
-        <description>In all modes the thermostat will switch off heating until temperature drops below this limit. For wooden and laminate floor maximal allowed temperature is 27 degree. For tile and concrete floor maximal allowed temperature value is 45 degree.</description>
+        <description><![CDATA[
+Maximal allowed temperature<br /><h1>Overview</h1><p>In all modes the thermostat will switch off heating until temperature drops below this limit. For wooden and laminate floor maximal allowed temperature is 27 degree. For tile and concrete floor maximal allowed temperature value is 45 degree.</p>
+        ]]></description>
         <default>27</default>
       </parameter>
 

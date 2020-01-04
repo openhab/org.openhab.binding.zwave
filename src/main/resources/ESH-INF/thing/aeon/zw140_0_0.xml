@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeon_zw140_00_000" listed="false">
     <label>ZW140 Dual Nano Switch</label>
@@ -59,6 +59,8 @@ Dual Nano Switch<br /><h1>Overview</h1><p>Aeotec Dual Nano Switch is a Z-Wave Sm
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:008C,0103:008C</property>
       <property name="dbReference">813</property>
+      <property name="commandClass:COMMAND_CLASS_SWITCH_BINARY:1">ccAdd</property>
+      <property name="commandClass:COMMAND_CLASS_SWITCH_BINARY:2">ccAdd</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

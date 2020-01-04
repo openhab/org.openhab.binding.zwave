@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="enerwave_zw20rm_00_000" listed="false">
     <label>ZW20RM In-wall Smart Meter Duplex Receptacle</label>
-    <description>In-wall Smart Meter Duplex Receptacle</description>
+    <description><![CDATA[
+In-wall Smart Meter Duplex Receptacle<br /><h1>Overview</h1><p>The ZW20RM TR Duplex Receptacle is a perfect wireless manual and remote on/off control replacement of regular receptacles, controlling table and floor lamps, small appliances, etc. This ZW20RM TR Duplex Receptacle provides two different type outlets. One outlet with Z-Wave mark has programmable functions such as scenes, association, schedule event, etc. It can be added to most Z-Wave compliant controllers, and a Blue LED on the face cover indicates the status of the controlled outlet and acts as a night light. The other outlet with Tamper-Resistant feature provides constant power, helps you and your families prevent electrical injuries.</p> <br /><h2>Inclusion Information</h2><p>press the program button of ZW20RM</p> <br /><h2>Exclusion Information</h2><p>press the program button of ZW20RM</p>
+    ]]></description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->

@@ -42,61 +42,79 @@ The following table summarises the channels available for the ZMNHWD -:
 
 | Channel Name | Channel ID | Channel Type | Category | Item Type |
 |--------------|------------|--------------|----------|-----------|
-| Switch | switch_binary | switch_binary | Switch | Switch | 
+| Switch  [Deprecated]| switch_binary | switch_binary | Switch | Switch | 
 | Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer | 
 | Color Control | color_color | color_color | ColorLight | Color | 
 | Color Temperature | color_temperature | color_temperature | ColorLight | Dimmer | 
+| Scene | config_decimal | config_decimal |  | Number | 
+| Scene Color Change Duration | config_decimal | config_decimal |  | Number | 
 | Brightness 1 | switch_dimmer1 | switch_dimmer | DimmableLight | Dimmer | 
 | Brightness 2 | switch_dimmer2 | switch_dimmer | DimmableLight | Dimmer | 
 | Brightness 3 | switch_dimmer3 | switch_dimmer | DimmableLight | Dimmer | 
 | Brightness 4 | switch_dimmer4 | switch_dimmer | DimmableLight | Dimmer | 
 
-### Switch
+### Switch [Deprecated]
 Switch the power on and off.
 
-The ```switch_binary``` channel and is of type ```switch_binary``` and supports the ```Switch``` item and is in the ```Switch``` category.
+The ```switch_binary``` channel is of type ```switch_binary``` and supports the ```Switch``` item and is in the ```Switch``` category.
+
+**Note:** This channel is marked as deprecated so should not be used.
 
 ### Dimmer
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
 
-The ```switch_dimmer``` channel and is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
+The ```switch_dimmer``` channel is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Color Control
 The color channel allows to control the color of a light.
             It is also possible to dim values and switch the light on and off.
 
-The ```color_color``` channel and is of type ```color_color``` and supports the ```Color``` item and is in the ```ColorLight``` category.
+The ```color_color``` channel is of type ```color_color``` and supports the ```Color``` item and is in the ```ColorLight``` category.
 
 ### Color Temperature
 The color temperature channel allows to set the color
             temperature of a light from 0 (cold) to 100 (warm).
 
-The ```color_temperature``` channel and is of type ```color_temperature``` and supports the ```Dimmer``` item and is in the ```ColorLight``` category.
+The ```color_temperature``` channel is of type ```color_temperature``` and supports the ```Dimmer``` item and is in the ```ColorLight``` category.
+
+### Scene
+Select one of 6 pre-defined scenes; 1 – Ocean (soft flowing between shades of blue color) 2 – Lightning (fast flashing of white color) 3 – Rainbow (flowing between colors of rainbow) 4 – Snow (flowing between shades of white and cyan color) 5 – Romantic (soft flowing of the red color) 6 – Party scene (random flashing between colors)
+
+Generic class for configuration parameter.
+
+The ```config_decimal``` channel is of type ```config_decimal``` and supports the ```Number``` item.
+
+### Scene Color Change Duration
+Duration between color change in scenes. Has no effect on Lighting and Party Scene. 1-127 – delay duration is 1 sec to 127 sec 1001-1127 – delay duration is from 1 min to 127 min.
+
+Generic class for configuration parameter.
+
+The ```config_decimal``` channel is of type ```config_decimal``` and supports the ```Number``` item.
 
 ### Brightness 1
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
 
-The ```switch_dimmer1``` channel and is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
+The ```switch_dimmer1``` channel is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Brightness 2
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
 
-The ```switch_dimmer2``` channel and is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
+The ```switch_dimmer2``` channel is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Brightness 3
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
 
-The ```switch_dimmer3``` channel and is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
+The ```switch_dimmer3``` channel is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Brightness 4
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
 
-The ```switch_dimmer4``` channel and is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
+The ```switch_dimmer4``` channel is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 
 
@@ -159,7 +177,7 @@ The following option values may be configured -:
 | 3 | NORMAL mode – toggle with memory switch type |
 | 4 | BRIGHTNESS mode – momentary switch type |
 | 5 | BRIGHTNESS mode – toggle switch type |
-| 6 | BRIGHTNESS mode – toggle with memory switch type |
+| 6 | BRIGHTNESS – toggle with memory switch |
 | 7 | RAINBOW mode – momentary switch type |
 | 8 | SCENE mode – momentary switch type |
 | 9 | SCENE mode – toggle switch type |
@@ -348,9 +366,9 @@ The following option values may be configured -:
 | Value  | Description |
 |--------|-------------|
 | 0 | Four dimmers mode disabled |
-| 1 | Four dimmers mode enabled – momentary switch type |
-| 2 | Four dimmers mode enabled – toggle switch type |
-| 3 | Four dimmers mode enabled – toggle with memory switch type |
+| 1 | 4 dimmers mode – momentary switch type |
+| 2 | 4 dimmers mode – toggle switch |
+| 3 | 4 dimmers mode – toggle with memory switch |
 
 The manufacturer defined default value is ```0``` (Four dimmers mode disabled).
 

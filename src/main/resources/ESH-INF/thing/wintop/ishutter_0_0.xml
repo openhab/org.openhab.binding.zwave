@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="wintop_ishutter_00_000" listed="false">
     <label>iShutter iShutter</label>
-    <description>iShutter</description>
+    <description><![CDATA[
+iShutter<br /><h1>Overview</h1><p>Shutter Control</p> <br /><h2>Inclusion Information</h2><p>Continuously switch on and switch off the external switch 3 times quickly to start the inclusion or exclusion process</p> <br /><h2>Exclusion Information</h2><p>Continuously switch on and switch off the external switch 3 times quickly to start the inclusion or exclusion process</p> <br /><h2>Wakeup Information</h2><p>Always awake.</p>
+    ]]></description>
     <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -170,9 +172,9 @@ Id of the device which commands would not be Open/Close, but as block/unblock.<b
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
-        <label>13: which command from blocking node to enable the protection</label>
+        <label>13: Protected command</label>
         <description><![CDATA[
-Which command from blocking device is closed door and hence, unprotected.<br /><h1>Overview</h1><p>0 -&gt; on On</p> <p>1 -&gt; on Off</p>
+Protected command<br /><h1>Overview</h1><p>Which command from blocking device is closed door and hence, unprotected.</p> <p>0 -&gt; on On</p> <p>1 -&gt; on Off</p>
         ]]></description>
         <default>0</default>
         <options>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="eurotronic_spirit_00_000" listed="false">
     <label>Spirit Thermostatic Valve</label>
@@ -61,6 +61,12 @@ Thermostatic Valve<br /><h1>Overview</h1><p>Spirit Z-Wave Plus is a Z-Wave radio
         <label>Alarm (power)</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="protection_local" typeId="protection_local">
+        <label>Local Device Protection [Deprecated]</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION;type=PROTECTION_LOCAL</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
@@ -190,11 +196,11 @@ Valve opening percentage report<br /><h1>Overview</h1><p>0: Unsolicited valve op
                  min="-50" max="50">
         <label>8: Temperature Offset</label>
         <description><![CDATA[
-Measured Temperature offset<br /><h1>Overview</h1><p>-50 - +50: Offsets the measured temp by-5,0°C – (+)5,0°C</p> <p>128: External temp sensor will be used for regul.</p>
+Measured temperature offset<br /><h1>Overview</h1><p>-50 ... +50: Offsets the measured temp by -5,0°C ... +5,0°C</p> <p>128: External temp sensor will be used for regulation.</p>
         ]]></description>
         <default>0</default>
         <options>
-          <option value="128">Ext temp sensor be used for regul</option>
+          <option value="128">Use ext. temp. sensor</option>
         </options>
         <limitToOptions>false</limitToOptions>
       </parameter>

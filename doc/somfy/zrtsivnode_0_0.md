@@ -15,35 +15,46 @@ The device is in the category of *Blinds*, defining Roller shutters, window blin
 
 ## Overview
 
-No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/370) to improve the documentation.
+The Somfy Z-Wave to Radio Technology Somfy Interface (ZRTSI) is a Z-Wave bridge controller that receives Z-Wave transmissions and translates them to motor control commands for Somfy's range of Radio Technology Somfy (RTS) motors. The ZRTSI resides as a bridge controller node within a Z-Wave Network and becomes a repeating node in the mesh network. The ZRTSI also features Network Wide Inclusion (NWI) which allows inclusion and exclusion to take advantage of the mesh topology of Z-Wave networks. Z-wave devices from all manufacturers can be used in the same network togethe
+
+### Inclusion Information
+
+  1. From the ZRTSI's Home Screen, navigate to the Base Node Include screen.
+  2. Enable Inclusion Mode on the Primary Z-Wave Controller.
+  3. On the ZRTSI, Activate the “Base Node Include” command by pressing the Select Button.
+  4. The LCD Screen will display “BASE NODE INCLUDING” then either “BASE INCLUDE SUCCESS!” or “BASE INCLUDE FAIL” and return to the Base Node Sub Menu.  
+
+### Exclusion Information
+
+  1. Enable the Exclusion Mode on the Primary Z-Wave Controller.
+  2. From the ZRTSI's Home Screen, navigate to the Base Node Exclude screen
+  3. Activate the “Base Node Exclude” command by pressing the Select Button.
+  4. The LCD Screen will display “BASE NODE EXCLUDING” and then either “BASE EXCLUDE SUCCESS!” or “BASE EXCLUDE FAIL” and return to the Base Node Sub Menu. 
 
 ## Channels
 
 The following table summarises the channels available for the ZRTSI-VNODE -:
 
-| Channel | Channel Id | Category | Item Type |
-|---------|------------|----------|-----------|
-| Switch | switch_binary | Switch | Switch | 
-| Blinds control | blinds_control | Blinds | Rollershutter | 
-| Scene Number | scene_number |  | Number | 
+| Channel Name | Channel ID | Channel Type | Category | Item Type |
+|--------------|------------|--------------|----------|-----------|
+| Switch | switch_binary | switch_binary | Switch | Switch | 
+| Blinds control | blinds_control | blinds_control | Blinds | Rollershutter | 
+| Scene Number | scene_number | scene_number |  | Number | 
 
 ### Switch
-
 Switch the power on and off.
 
-The ```switch_binary``` channel supports the ```Switch``` item and is in the ```Switch``` category.
+The ```switch_binary``` channel is of type ```switch_binary``` and supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Blinds control
-
 Provides start / stop control of blinds.
 
-The ```blinds_control``` channel supports the ```Rollershutter``` item and is in the ```Blinds``` category.
+The ```blinds_control``` channel is of type ```blinds_control``` and supports the ```Rollershutter``` item and is in the ```Blinds``` category.
 
 ### Scene Number
-
 Triggers when a scene button is pressed.
 
-The ```scene_number``` channel supports the ```Number``` item.
+The ```scene_number``` channel is of type ```scene_number``` and supports the ```Number``` item.
 
 
 

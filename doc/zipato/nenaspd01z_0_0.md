@@ -19,28 +19,40 @@ The NE-NAS-PD01Z does not permanently listen for messages sent from the controll
 
 ## Overview
 
+Zipato PIR Motion Sensor is a passive infrared detector or physical sensor, the sensor doesn’t emit any energy, but only passively receive and detect infrared radiation. Sensor sends messages via Z-Wave network to the Z-Wave main controller. In the communication between the PIR and Z-Wave main controller, PIR sensor can only send messages and not receive them. When sensor is triggered, it will send message to the main controller and associate devices to work through the Z-Wave main controller. Sensor is battery powered, small and can be installed easily
+
+### Inclusion Information
+
+ Press the button 3 times within 1.5 seconds and the device will enter inclusion mode. LED will flash on and off 5 times.
+
+### Exclusion Information
+
+ Press the button 3 times within 1.5 seconds and the device will enter exclusion mode.
+
 ### Wakeup Information
 
 The NE-NAS-PD01Z does not permanently listen for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. The wakeup period can be configured in the user interface - it is advisable not to make this too short as it will impact battery life - a reasonable compromise is 1 hour.
 
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
+
+You can press the button once to wake up the device and send wakeup notification to controller. LED will blink once.
+
 ## Channels
 
 The following table summarises the channels available for the NE-NAS-PD01Z -:
 
-| Channel | Channel Id | Category | Item Type |
-|---------|------------|----------|-----------|
-| Binary Sensor | sensor_binary | Door | Switch | 
-| Sensor (luminance) | sensor_luminance |  | Number | 
-| Alarm (burglar) | alarm_burglar | Door | Switch | 
-| Battery Level | battery-level | Battery | Number |
+| Channel Name | Channel ID | Channel Type | Category | Item Type |
+|--------------|------------|--------------|----------|-----------|
+| Binary Sensor | sensor_binary | sensor_binary |  | Switch | 
+| Sensor (luminance) | sensor_luminance | sensor_luminance |  | Number | 
+| Alarm (burglar) | alarm_burglar | alarm_burglar | Door | Switch | 
+| Battery Level | battery-level | system.battery_level | Battery | Number |
 
 ### Binary Sensor
-
 Indicates if a sensor has triggered.
 
-The ```sensor_binary``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```sensor_binary``` channel is of type ```sensor_binary``` and supports the ```Switch``` item. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
 
@@ -50,16 +62,14 @@ The following state translation is provided for this channel to the ```Switch```
 | OFF | Untriggered |
 
 ### Sensor (luminance)
-
 Indicates the current light reading.
 
-The ```sensor_luminance``` channel supports the ```Number``` item. This is a read only channel so will only be updated following state changes from the device.
+The ```sensor_luminance``` channel is of type ```sensor_luminance``` and supports the ```Number``` item. This is a read only channel so will only be updated following state changes from the device.
 
 ### Alarm (burglar)
-
 Indicates if the burglar alarm is triggered.
 
-The ```alarm_burglar``` channel supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
+The ```alarm_burglar``` channel is of type ```alarm_burglar``` and supports the ```Switch``` item and is in the ```Door``` category. This is a read only channel so will only be updated following state changes from the device.
 
 The following state translation is provided for this channel to the ```Switch``` item type -:
 
@@ -69,11 +79,10 @@ The following state translation is provided for this channel to the ```Switch```
 | ON | Alarm |
 
 ### Battery Level
-
 Represents the battery level as a percentage (0-100%). Bindings for things supporting battery level in a different format (e.g. 4 levels) should convert to a percentage to provide a consistent battery level reading.
 
-The ```battery-level``` channel supports the ```Number``` item and is in the ```Battery``` category.
-
+The ```system.battery-level``` channel is of type ```system.battery-level``` and supports the ```Number``` item and is in the ```Battery``` category.
+This channel provides the battery level as a percentage and also reflects the low battery warning state. If the battery state is in low battery warning state, this will read 0%.
 
 
 ## Device Configuration

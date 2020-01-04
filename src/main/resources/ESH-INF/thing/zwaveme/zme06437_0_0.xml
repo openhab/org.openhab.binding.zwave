@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zwaveme_zme06437_00_000" listed="false">
     <label>ZME_06437 Wall Plug Switch</label>
-    <description>Wall Plug Switch</description>
+    <description><![CDATA[
+Wall Plug Switch<br /><h1>Overview</h1><p>This is a plug switch that can be placed between a wall outlet for Schuko plugs (plug type F) and electric devices, plugged in by cord. It can switch all loads up to 3500 W. The device is IP 44 rated and can therefore be used both in dry environments as well as humid environments and outdoor. Switching is controlled wirelessly using Z-Wave or locally applying a button. A multi color LED indicates the switching status and the assignment of the colors to the switching status can be defined by the user. The device will report any change of the switching status to a central gateway regardless the origin of the switch (local or wireless). A built in virtual power meter will report the power consumption of the load attached. However the user must configure the assumed constant power draw of the load. The local button can control the local load but can also be used to control other functions in a Z-Wave network. The device is certified and tested against all important European Safety Regulations and fully complies with the Z-Wave Plus standard. The device supports secure communication and the firmware can be upgraded over the air (OTA)</p> <br /><h2>Inclusion Information</h2><p>Inclusion and Exclusion are confirmed by a triple click on the button</p> <br /><h2>Exclusion Information</h2><p>Inclusion and Exclusion are confirmed by a triple click on the button</p>
+    ]]></description>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -75,7 +78,9 @@
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Function of RF off command</label>
-        <description>Defines how to interpret RF Off command. Can be used in conjunction with Auto Off function: Ignore - to switch on the light by motion detectors and switch it off after some amount of time: in case of multiple motion detectors each would try to switch the</description>
+        <description><![CDATA[
+Function of RF off command<br /><h1>Overview</h1><p>Defines how to interpret RF Off-Command. Can be used in conjunction with Auto Off function: Ignore – to switch on the light by motion detectors and switch it off after some amount of time: in case of multiple motion detectors each would try to switch the light off that would break logics; Switch on – to switch on the light on both ON and OFF paddle press on the remote and switch it off after some amount of time. Button OFF click will still work (if button operations are not disabled)</p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">Switch OFF</option>
@@ -87,7 +92,9 @@
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Restore switch state after power cycle</label>
-        <description>Defines if the switch should restore switch state to the last state prior to device power off (power cycle).</description>
+        <description><![CDATA[
+Restore switch state after power cycle<br /><h1>Overview</h1><p>Defines if the switch should restore switch state to the last state prior to device power off (power cycle).</p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">No, turn off</option>
@@ -98,7 +105,9 @@
       <parameter name="config_20_2" type="integer" groupName="configuration"
                  min="0" max="1800">
         <label>20: Energy consumption</label>
-        <description>Specify the consumption of the load in watts, for the calculation of power consumption. Max load 1800 W.</description>
+        <description><![CDATA[
+Energy consumption<br /><h1>Overview</h1><p>Specify the consumption of the load in watts, for the calculation of power consumption. Max load 1800 W.</p>
+        ]]></description>
         <default>0</default>
       </parameter>
 

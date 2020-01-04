@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fakro_zws12n_00_000" listed="false">
     <label>ZWS12n Chain actuator - window opener</label>
@@ -20,11 +20,12 @@ Chain actuator - window opener<br /><h1>Overview</h1><p>FAKRO ZWS12 chain motor 
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
         </properties>
       </channel>
-      <channel id="switch_dimmer" typeId="switch_dimmer">
-        <label>Dimmer</label>
+      <channel id="blinds_control" typeId="blinds_control">
+        <label>Blinds Control</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:StopMoveType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:UpDownType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="alarm_power" typeId="alarm_power">
@@ -66,6 +67,15 @@ Chain actuator - window opener<br /><h1>Overview</h1><p>FAKRO ZWS12 chain motor 
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
+      <parameter name="config_7_1" type="integer" groupName="configuration"
+                 min="1" max="4">
+        <label>7: Motor speed I</label>
+        <description><![CDATA[
+Motor speed I<br /><h1>Overview</h1><p>1- the lowest speed</p> <p>2- default</p> <p>4 - the higest speed</p>
+        ]]></description>
+        <default>2</default>
+      </parameter>
+
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="1" max="4">
         <label>7: Motor speed I</label>

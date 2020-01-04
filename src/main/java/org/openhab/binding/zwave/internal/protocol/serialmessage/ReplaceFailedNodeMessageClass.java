@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2019 Contributors to the openHAB project
+ * Copyright (c) 2010-2020 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -95,7 +95,7 @@ public class ReplaceFailedNodeMessageClass extends ZWaveCommandProcessor {
                 break;
             case FAILED_NODE_NOT_FOUND:
                 // The replacing process aborted because the node was found, thereby not a failing node.
-                logger.error("NODE {}: Replace failed node failed as node if functioning!", nodeId);
+                logger.error("NODE {}: Replace failed node failed as node is functioning!", nodeId);
                 transaction.setTransactionCanceled();
                 report = Report.FAILED_NODE_NOT_FOUND;
                 break;

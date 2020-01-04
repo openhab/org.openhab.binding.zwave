@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="vemmio_mt100_00_000" listed="false">
     <label>MT-100 Motion and Light Mini Sensor</label>
@@ -138,7 +138,7 @@ Set the light sensor measure ambient illumination level interval time<br /><h1>O
                  min="0" max="1">
         <label>8: Lux Level Function Enable</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>If this parameter is set to ‘1’, and when Lux level less than the value define by parameter #5, PIR detector will send a BASIC_SET command frame (i.e. BASIC_SET (value = parameter 3) to an associated device and activate it. If Lux Level greater than the value define by parameter #5, PIR detector will not send a BASIC_SET command frame.</p>
+Lux Level Function Enable<br /><h1>Overview</h1><p>If this parameter is set to ‘1’, and when Lux level less than the value define by parameter #5, PIR detector will send a BASIC_SET command frame (i.e. BASIC_SET (value = parameter 3) to an associated device and activate it. If Lux Level greater than the value define by parameter #5, PIR detector will not send a BASIC_SET command frame.</p>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -147,7 +147,7 @@ Set the light sensor measure ambient illumination level interval time<br /><h1>O
                  min="0" max="255">
         <label>9: Ambient illumination Lux Level Report</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>This parameter defines by how much Lux Level must change, in lux, to be reported to the main controller.</p>
+Ambient illumination Lux Level Report<br /><h1>Overview</h1><p>This parameter defines by how much Lux Level must change, in lux, to be reported to the main controller.</p>
         ]]></description>
         <default>100</default>
       </parameter>
@@ -189,7 +189,7 @@ allows for Send Notification to associated devices<br /><h1>Overview</h1><p>GROU
       <parameter name="group_4" type="text" groupName="association" multiple="true">
         <label>4: GROUP 4</label>
         <description><![CDATA[
-allows for Send Sensor Binary Report to associated devices<br /><h1>Overview</h1><p>ROUP 4 allows for Send Sensor Binary Report to associated devices in this group. This Group Supports:</p> <ul><li>SENSOR_BINARY_REPORT_V2</li> </ul>
+allows for Send Sensor Binary Report to associated devices<br /><h1>Overview</h1><p>GROUP 4 allows for Send Sensor Binary Report to associated devices in this group. This Group Supports:</p> <ul><li>SENSOR_BINARY_REPORT_V2</li> </ul>
         ]]></description>
         <multipleLimit>4</multipleLimit>
       </parameter>

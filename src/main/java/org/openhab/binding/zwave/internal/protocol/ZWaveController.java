@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2019 Contributors to the openHAB project
+ * Copyright (c) 2010-2020 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -530,6 +530,14 @@ public class ZWaveController {
      */
     public @Nullable ZWaveTransactionResponse sendTransaction(ZWaveMessagePayloadTransaction transaction) {
         return transactionManager.sendTransaction(transaction);
+    }
+
+    /**
+     * Kicks the transaction queue. This may be used if the system has been waiting for an event that has now occurred
+     * and we now need to get things moving even if not new transactions have been added to the send queue.
+     */
+    public void kickQueue() {
+        transactionManager.kickQueue();
     }
 
     /**

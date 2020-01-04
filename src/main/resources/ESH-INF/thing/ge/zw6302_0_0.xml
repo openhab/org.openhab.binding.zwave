@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="ge_zw6302_00_000" listed="false">
     <label>ZW6302 Portable Smart Motion Sensor</label>
-    <description>Portable Smart Motion Sensor</description>
+    <description><![CDATA[
+Portable Smart Motion Sensor<br /><h1>Overview</h1><p>Make the move toward convenience with the Z-Wave Portable Smart Motion Sensor for your home.  This Z-Wave compatible device boosts the safety of your home by working with your home’s gateway  to wirelessly trigger scenes and send alerts to your smartphone or tablet whenever motion is detected. <br />Use the included batteries for easy placement anywhere, plug into the wall using a AC adapter and  USB cable – never replace batteries again. </p> <br /><h2>Inclusion Information</h2><p>Once the controller is ready to include your motion sensor, press and release the button on the sensor to include it in the network</p> <br /><h2>Exclusion Information</h2><p>Once the controller is ready to exclude your motion sensor, press and release the button on the sensor to exclude it from the network. </p> <br /><h2>Wakeup Information</h2><p>Press and release the button on the sensor</p>
+    ]]></description>
     <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -75,10 +77,10 @@ Motion Sensor<br /><h1>Overview</h1><p>Detect Motion</p>
         <description>PIR Timeout Duration in Minutes</description>
         <default>60</default>
         <options>
-          <option value="1">1 Minute</option>
-          <option value="2">2 Minutes</option>
-          <option value="5">5 Minutes</option>
-          <option value="10">10 Minutes</option>
+          <option value="1">One Minute</option>
+          <option value="2">Two Minutes</option>
+          <option value="5">Five Minutes</option>
+          <option value="10">Ten Minutes</option>
           <option value="255">Test Mode [5 seconds]</option>
         </options>
         <limitToOptions>false</limitToOptions>
@@ -96,8 +98,10 @@ Motion Sensor<br /><h1>Overview</h1><p>Detect Motion</p>
       </parameter>
 
       <parameter name="config_28_1" type="integer" groupName="configuration">
-        <label>28: Enable &amp; Disable the LED indication when PIR is triggered</label>
-        <description>Enable &amp; Disable the LED indication when PIR is triggered</description>
+        <label>28: Enable &amp; Disable the LED indication</label>
+        <description><![CDATA[
+Enable &amp; Disable the LED indication<br /><h1>Overview</h1><p>Enable &amp; Disable the LED indication when PIR is triggered</p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">Disable</option>

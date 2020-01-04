@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgd212_03_005" listed="false">
     <label>FGD212 Dimmer 2</label>
@@ -72,7 +72,7 @@ Dimmer 2<br /><h1>Overview</h1><p>Remotely controlled light dimming module is de
         <label>Dimmer 1</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
         </properties>
       </channel>
       <channel id="sensor_power1" typeId="sensor_power">
@@ -121,7 +121,7 @@ Dimmer 2<br /><h1>Overview</h1><p>Remotely controlled light dimming module is de
         <label>Dimmer 2</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:2,COMMAND_CLASS_BASIC:2</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:2,COMMAND_CLASS_BASIC:2</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:2</property>
         </properties>
       </channel>
     </channels>
@@ -131,7 +131,7 @@ Dimmer 2<br /><h1>Overview</h1><p>Remotely controlled light dimming module is de
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGD212</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0102:1000,0102:2000,0102:3000,0102:4000</property>
+      <property name="manufacturerRef">0102:1000,0102:2000,0102:3000,0102:4000,0102:6000</property>
       <property name="versionMin">3.5</property>
       <property name="dbReference">787</property>
       <property name="commandClass:COMMAND_CLASS_SCENE_ACTIVATION">ccAdd</property>
@@ -702,33 +702,33 @@ Approximated power at the maximum brightness level<br /><h1>Overview</h1><p>This
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Sends BASIC SET command class</label>
+        <label>2: Group 2</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>Sends BASIC SET command class frame according to the state of the device</p>
+Sends BASIC SET command class<br /><h1>Overview</h1><p>Sends BASIC SET command class frame according to the state of the device</p>
         ]]></description>
         <multipleLimit>10</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Sends BASIC SET command class</label>
+        <label>3: Group 3</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>Sends BASIC SET command class frame according to the state of the device</p>
+Sends BASIC SET command class<br /><h1>Overview</h1><p>Sends BASIC SET command class frame according to the state of the device</p>
         ]]></description>
         <multipleLimit>10</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Sends BASIC SET command class</label>
+        <label>4: Group 4</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>Sends BASIC SET command class frame according to the state of the device</p>
+Sends BASIC SET command class<br /><h1>Overview</h1><p>Sends BASIC SET command class frame according to the state of the device</p>
         ]]></description>
         <multipleLimit>10</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Sends BASIC SET command class</label>
+        <label>5: Group 5</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>Sends BASIC SET command class frame according to the state of the device</p>
+Sends BASIC SET command class<br /><h1>Overview</h1><p>Sends BASIC SET command class frame according to the state of the device</p>
         ]]></description>
         <multipleLimit>10</multipleLimit>
       </parameter>

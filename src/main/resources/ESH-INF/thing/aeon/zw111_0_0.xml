@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeon_zw111_00_000" listed="false">
     <label>ZW111 Nano Dimmer</label>
@@ -15,7 +15,7 @@ Nano Dimmer<br /><h1>Overview</h1><p>Aeotec Nano Dimmer is a Z-Wave Smart Dimmer
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
+        <label>Switch [Deprecated]</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
         </properties>
@@ -24,7 +24,7 @@ Nano Dimmer<br /><h1>Overview</h1><p>Aeotec Nano Dimmer is a Z-Wave Smart Dimmer
         <label>Dimmer</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -89,6 +89,7 @@ Nano Dimmer<br /><h1>Overview</h1><p>Aeotec Nano Dimmer is a Z-Wave Smart Dimmer
       <property name="modelId">ZW111</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:006F,0103:006F,0203:006F</property>
+      <property name="versionMax">2.2</property>
       <property name="dbReference">576</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -218,7 +219,7 @@ Set appointment 2<br /><h1>Overview</h1><p>0 to 99     The brightness level<b
 
       <parameter name="config_92_1" type="integer" groupName="configuration"
                  min="0" max="100">
-        <label>92: Set the threshold value of wattage</label>
+        <label>92: Set the threshold value of percent power</label>
         <description><![CDATA[
 Threshold change in wattage (in terms of percentage)<br /><h1>Overview</h1><p>Threshold change in wattage (in terms of percentage) to induce an automatic report</p>
         ]]></description>
@@ -226,7 +227,8 @@ Threshold change in wattage (in terms of percentage)<br /><h1>Overview</h1><p>Th
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_100_1_wo" type="integer" groupName="configuration">
+      <parameter name="config_100_1_wo" type="integer" groupName="configuration"
+                 min="0" max="255">
         <label>100: Reset 101-103 to default</label>
         <description>Reset parameters 101-103 to default values</description>
         <default>0</default>
@@ -234,6 +236,7 @@ Threshold change in wattage (in terms of percentage)<br /><h1>Overview</h1><p>Th
           <option value="0">Reset the parameter 101-103</option>
         </options>
         <advanced>true</advanced>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_101_1" type="integer" groupName="configuration"
@@ -265,7 +268,8 @@ To set which reports need to be sent in Report group 3<br /><h1>Overview</h1><p>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_110_1_wo" type="integer" groupName="configuration">
+      <parameter name="config_110_1_wo" type="integer" groupName="configuration"
+                 min="0" max="255">
         <label>110: Reset 111-113 to default</label>
         <description>Reset parameters 111-113 to default values</description>
         <default>0</default>
@@ -273,6 +277,7 @@ To set which reports need to be sent in Report group 3<br /><h1>Overview</h1><p>
           <option value="0">Reset the parameter 111-113</option>
         </options>
         <advanced>true</advanced>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_111_4" type="integer" groupName="configuration"

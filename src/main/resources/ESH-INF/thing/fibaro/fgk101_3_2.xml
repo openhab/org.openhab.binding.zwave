@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgk101_03_002" listed="false">
     <label>FGK101 Door Opening Sensor</label>
-    <description>Door Opening Sensor</description>
+    <description><![CDATA[
+Door Opening Sensor<br /><h1>Overview</h1><p><strong>FIBARO Door/Window Sensor</strong> is a wireless, battery powered reed sensor compatible with the Z-Wave standard. Changing the device’s status will automatically send signal to the Z-Wave controller and associated devices. </p> <p>Sensor can be used to trigger scenes and everywhere there is a need for information about opening or closing of doors, windows, garage doors, etc. Opening is detected by separating the sensor’s body and the magnet.</p> <p>In addition the FIBARO Door/Window Sensor supports one DS18B20 temperature sensor and has one potential free input.</p> <br /><h2>Inclusion Information</h2><p>Quickly, three times press the TMP button. </p> <br /><h2>Exclusion Information</h2><p>Quickly, three times press the TMP button. </p> <br /><h2>Wakeup Information</h2><p>To wake up the sensor manually, click one of the TMP buttons (while the other button is pressed).</p>
+    ]]></description>
     <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -137,16 +139,16 @@ Command frames sent to devices added to the 2nd association group.<br /><h1>Over
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>12: Value of ON command frame sent to 2nd association group</label>
+        <label>12: ON command sent to 2nd assoc. group</label>
         <description><![CDATA[
-Value of ON command frame sent to 2nd association group<br /><h1>Overview</h1><p>The value of 0 turns OFF the device, 255 turns it On. In case of associating the Dimmer or Roller Shutter module, values 1-99 allow to set<br />an associated device to a specifed level. </p>
+Value of ON command frame sent to 2nd association group<br /><h1>Overview</h1><p>The value of 0 turns OFF the device, 255 turns it On. In case of associating the Dimmer or Roller Shutter module, values 1-99 allow to set<br />an associated device to a specifed level.</p>
         ]]></description>
         <default>255</default>
       </parameter>
 
       <parameter name="config_13_2" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>13: Value of OFF command frame sent to 2nd association group</label>
+        <label>13: OFF command sent to 2nd assoc. group</label>
         <description><![CDATA[
 The value of 0 turns OFF the device, 255 turns it ON.<br /><h1>Overview</h1><p>In case of associating the Dimmer or Roller Shutter module, values 1-99 allow to set an associated device to a specified level</p> <p>The value of 0 turns OFF the device, 255 turns it On. In case of associating the Dimmer or Roller Shutter module, values 1-99 allow to set<br />an associated device to a specifed level.</p>
         ]]></description>

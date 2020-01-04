@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="defaro_dad101_00_000" listed="false">
     <label>DAD-101 Dimmer with sensors support</label>
@@ -18,7 +18,7 @@ Dimmer with sensors support<br /><h1>Overview</h1><p>One channel dimmer with abi
         <label>Dimmer</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="sensor_power" typeId="sensor_power">
@@ -31,7 +31,7 @@ Dimmer with sensors support<br /><h1>Overview</h1><p>One channel dimmer with abi
         <label>Dimmer</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
         </properties>
       </channel>
     </channels>
@@ -192,7 +192,7 @@ Sets turn on delay<br /><h1>Overview</h1><p>In seconds</p>
 
       <parameter name="config_13_2" type="integer" groupName="configuration"
                  min="0" max="1800">
-        <label>13: Smart delay</label>
+        <label>13: Smart delay for dimmer</label>
         <description><![CDATA[
 Smart delay for dimmer<br /><h1>Overview</h1><p>In seconds (see Parameter 14)</p>
         ]]></description>
@@ -206,7 +206,7 @@ Smart delay for dimmer<br /><h1>Overview</h1><p>In seconds (see Parameter 14)</p
 
       <parameter name="config_14_1" type="integer" groupName="configuration"
                  min="0" max="2">
-        <label>14: Smart delay</label>
+        <label>14: Smart delay mode</label>
         <description><![CDATA[
 Smart delay mode<br /><h1>Overview</h1><p>DAD-101</p> <p>0 - implicit smart delay</p> <p>1 - use smart delay for all devices NOT in Group 1. Also smart delay ignored for controller and button issued commands</p> <p>2 - use smart delay for all devices IN Group 1. Also smart delay will be used for controller and button issued commands</p>
         ]]></description>

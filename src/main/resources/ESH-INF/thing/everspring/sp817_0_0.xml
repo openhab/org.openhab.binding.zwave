@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <thing:thing-descriptions bindingId="zwave"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
-  xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0
-                      http://eclipse.org/smarthome/schemas/thing-description/v1.0.0">
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="everspring_sp817_00_000" listed="false">
     <label>SP817 SP817 Motion Sensor</label>
@@ -40,6 +40,7 @@ SP817 Motion Sensor<br /><h1>Overview</h1><p>The detector can be used as a secur
       <property name="manufacturerId">0060</property>
       <property name="manufacturerRef">0001:0006</property>
       <property name="dbReference">1028</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -49,6 +50,11 @@ SP817 Motion Sensor<br /><h1>Overview</h1><p>The detector can be used as a secur
       <parameter-group name="configuration">
         <context>setup</context>
         <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
@@ -95,6 +101,19 @@ Lux Level<br /><h1>Overview</h1><p>Sets minimum Lux Level of ambient illuminatio
 On-Off Duration<br /><h1>Overview</h1><p>The function of on-off duration setting will be useful if the detector is connected with a module or lighting. The duration determines how long the module/lighting should stay ON. For instance, Lamp Module turns off 100 secs after it has been turned on. This parameter can be configured with the value of 5 through 3600, where 5 means 5 second delay and 3600 means 3600 seconds of delay</p>
         ]]></description>
         <default>15</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association">
+        <label>1: Lifeline</label>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Devices</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>When the detector is triggered, the uni will send BASIC_SET command which contains a value to the nodes of Group 2.</p>
+        ]]></description>
+        <multipleLimit>4</multipleLimit>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->
