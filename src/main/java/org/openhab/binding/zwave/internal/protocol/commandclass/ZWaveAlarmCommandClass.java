@@ -439,7 +439,16 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         EMERGENCY(10),
         CLOCK(11),
         APPLIANCE(12),
-        HOME_HEALTH(13);
+        HOME_HEALTH(13),
+        SIREN(14),
+        WATER_VALVE(15),
+        WEATHER(16),
+        IRRIGATION(17),
+        GAS(18),
+        PEST_CONTROL(19),
+        LIGHT_SENSOR(20),
+        WATER_QUALITY(21),
+        HOME_MONITORING(22);
 
         /**
          * A mapping between the integer code and its corresponding Alarm type to facilitate lookup by code.
