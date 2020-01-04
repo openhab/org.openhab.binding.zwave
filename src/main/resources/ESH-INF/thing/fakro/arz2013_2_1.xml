@@ -37,6 +37,7 @@ Roller Shutter<br /><h1>Overview</h1><p>This represents the <strong>2013 revisio
       <property name="manufacturerId">0085</property>
       <property name="manufacturerRef">0003:0001</property>
       <property name="versionMin">2.1</property>
+      <property name="versionMax">3.255</property>
       <property name="dbReference">1036</property>
     </properties>
 
