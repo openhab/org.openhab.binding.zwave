@@ -44,6 +44,12 @@ Indoor Siren 6 and Doorbell 6<br /><h1>Overview</h1><p>Siren 6 is your home’s 
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:3;type=POWER_MANAGEMENT</property>
         </properties>
       </channel>
+      <channel id="notification_siren3" typeId="notification_siren">
+        <label>Siren Notification</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:3</property>
+        </properties>
+      </channel>
       <channel id="alarm_power4" typeId="alarm_power">
         <label>Alarm (power) 4</label>
         <properties>

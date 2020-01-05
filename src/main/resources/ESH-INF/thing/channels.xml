@@ -885,6 +885,18 @@
         </description>
     </channel-type>
 
+
+    <!-- Siren Notification Channel -->
+    <channel-type id="notification_siren">
+        <item-type>Switch</item-type>
+        <label>Siren Notification</label>
+        <description>Indicates the siren notification has been triggered
+        </description>
+        <category></category>
+        <state readOnly="true">
+        </state>
+    </channel-type>
+
     <!-- Local Protection Channel -->
     <channel-type id="protection_local" advanced="true">
         <item-type>Number</item-type>

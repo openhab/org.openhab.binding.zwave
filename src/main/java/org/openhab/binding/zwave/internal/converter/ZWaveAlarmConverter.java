@@ -162,6 +162,12 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         events.put(NotificationEvent.EMERGENCY__CONTACT_POLICE, OnOffType.ON);
         events.put(NotificationEvent.EMERGENCY__CONTACT_MEDICAL, OnOffType.ON);
         notifications.put("alarm_emergency", events);
+
+        // Siren Notification
+        events = new HashMap<NotificationEvent, State>();
+        events.put(NotificationEvent.SIREN__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.SIREN__ACTIVE, OnOffType.ON);
+        notifications.put("notification_siren", events);
     }
 
     /**
@@ -537,6 +543,9 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         HOME_HEALTH__POSTURE_CHANGED("HOME_HEALTH", 4),
         HOME_HEALTH__SITTING_ON_BED_EDGE("HOME_HEALTH", 5),
         HOME_HEALTH__VOC_LEVEL("HOME_HEALTH", 6),
+
+        SIREN__NONE("SIREN", 0),
+        SIREN__ACTIVE("SIREN", 1),
 
         GAS__NONE("GAS", 0),
         GAS__COMBUSTIBLE_DETECTED("GAS", 1),
