@@ -93,6 +93,8 @@ Beacon LEDs<br /><h1>Overview</h1><p>0x01-0x63 (1-100%) -&gt; Sets the intensity
         <default>0</default>
         <options>
           <option value="0">Disables the beacon function</option>
+          <option value="49">Beacon LED at 50%</option>
+          <option value="99">Beacon LED at 100%</option>
         </options>
         <limitToOptions>false</limitToOptions>
       </parameter>

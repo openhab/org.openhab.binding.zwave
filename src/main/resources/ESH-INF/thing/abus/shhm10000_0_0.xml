@@ -134,10 +134,6 @@ Behaviour of the LED display with device status "On".<br /><h1>Overview</h1><p>B
 The threshold value serves as an additional condition for the time-based report.<br /><h1>Overview</h1><p>The threshold value serves as an additional condition for the time-based report.<br />If the threshold value was not exceeded, the time-based report is not sent. <br />The value 0 deactivates the power report threshold.</p> <ul><li>Adjustable from 0 – 65535 in Watt</li> </ul><p>(Hexadecimal: 0x00 – 0xFFFF)</p>
         ]]></description>
         <default>50</default>
-        <options>
-          <option value="0">Watt</option>
-        </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_17_1" type="integer" groupName="configuration"
