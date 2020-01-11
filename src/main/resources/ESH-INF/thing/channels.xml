@@ -1297,7 +1297,7 @@
         <label>Time Offset</label>
         <description>Provides the current time difference for the devices time
         </description>
-        <category>Temperature</category>
+        <category>Time</category>
         <config-description>
             <parameter name="config_offset" type="integer" min="10" max="600">
                 <label>Automatic Update Offset</label>
