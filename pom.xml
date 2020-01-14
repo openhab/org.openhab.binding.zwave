@@ -115,7 +115,7 @@
                   <include>src/**/*.xml</include>
                 </includes>
                 <excludes>
-                  <exclude>src/main/resources/ESH-INF/thing/**/*.xml</exclude>
+                  <exclude>src/main/resources/OH-INF/thing/**/*.xml</exclude>
                   <exclude>**/pom.xml</exclude>
                 </excludes>
                 <eclipseWtp>
