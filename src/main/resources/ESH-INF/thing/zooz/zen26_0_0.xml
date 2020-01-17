@@ -28,6 +28,7 @@ Z-Wave Plus S2 ON/OFF Switch<br /><h1>Overview</h1><p>Manual or Z-Wave on/off co
       <property name="modelId">ZEN26</property>
       <property name="manufacturerId">027A</property>
       <property name="manufacturerRef">A000:A001</property>
+      <property name="versionMax">1.9</property>
       <property name="dbReference">959</property>
       <property name="defaultAssociations">2</property>
     </properties>
@@ -48,50 +49,48 @@ Z-Wave Plus S2 ON/OFF Switch<br /><h1>Overview</h1><p>Manual or Z-Wave on/off co
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: Paddle Control</label>
+        <label>1: Paddle control</label>
         <description><![CDATA[
-Choose Paddle Functionality (Invert)<br /><h1>Overview</h1><p>Choose if you want the upper paddle to turn the light on or turn the light off when tapped</p>
+Choose paddle functionality (invert)<br /><h1>Overview</h1><p>Choose if you want the upper paddle to turn the light ON or turn the light OFF when tapped</p>
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">Top on, Bottom off</option>
-          <option value="1">Top off, Bottom on</option>
+          <option value="0">Top ON, bottom OFF</option>
+          <option value="1">Top OFF, bottom ON</option>
         </options>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
-        <label>2: LED Indicator Control</label>
+        <label>2: LED indicator control</label>
         <description><![CDATA[
-Change behavior of the LED indicator<br /><h1>Overview</h1><p>Choose if you want the LED indicator to turn on when the switch (light) is on or off, or if you want it to remain on or off at all times</p> <p>OR</p> <p>6 x TAP PADDLE to change the LED indicator mode</p>
+Change behavior of the LED indicator<br /><h1>Overview</h1><p>Choose if you want the LED indicator to turn on when the switch (light) is ON or OFF, or if you want it to remain ON or OIFF at all times. 6 x TAP PADDLE to manually change the LED indicator mode.</p>
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">LED on when switch off</option>
-          <option value="1">LED on when switch on</option>
-          <option value="2">LED off</option>
-          <option value="3">LED on</option>
+          <option value="0">LED ON when switch OFF</option>
+          <option value="1">LED ON when switch ON</option>
+          <option value="2">LED OFF</option>
+          <option value="3">LED ON</option>
         </options>
       </parameter>
 
       <parameter name="config_3_2" type="integer" groupName="configuration"
                  min="0" max="32768">
-        <label>3: Auto Turn-Off Timer</label>
+        <label>3: Auto turn-OFF timer</label>
         <description><![CDATA[
-enable the Auto Turn-Off Timer<br /><h1>Overview</h1><p>Use this parameter to set the time which you want the switch to automatically turn off once it has been turned on. The number entered as value corresponds to the number of seconds.</p>
+Enable the auto turn-OFF timer<br /><h1>Overview</h1><p>Use this parameter to set the time which you want the switch to automatically turn OFF once it has been turned ON. The number entered as value corresponds to the number of seconds.</p>
         ]]></description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
-        <label>5: On Off Status After Power Failure</label>
-        <description><![CDATA[
-Set the on off status for the switch after power failure.<br /><h1>Overview</h1><p>Set the on off status for the switch after power failure.</p>
-        ]]></description>
+        <label>5: ON/OFF status after power failure</label>
+        <description>Set the ON/OFF status for the switch after power failure</description>
         <default>2</default>
         <options>
           <option value="0">Off</option>
           <option value="1">On</option>
-          <option value="2">last state</option>
+          <option value="2">Restore last state</option>
         </options>
       </parameter>
 
