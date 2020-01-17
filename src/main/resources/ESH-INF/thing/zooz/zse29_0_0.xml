@@ -38,6 +38,12 @@ Outdoor Motion Sensor<br /><h1>Overview</h1><p>OUTDOOR SENSOR: Introducing the f
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR,event=3</property>
         </properties>
       </channel>
+      <channel id="alarm_burglar" typeId="alarm_burglar">
+        <label>Alarm (burglar)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
+        </properties>
+      </channel>
       <channel id="battery-level" typeId="system.battery-level">
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
@@ -51,6 +57,7 @@ Outdoor Motion Sensor<br /><h1>Overview</h1><p>OUTDOOR SENSOR: Introducing the f
       <property name="modelId">ZSE29</property>
       <property name="manufacturerId">027A</property>
       <property name="manufacturerRef">0001:0005</property>
+      <property name="versionMax">1.9</property>
       <property name="dbReference">970</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -72,7 +79,9 @@ Outdoor Motion Sensor<br /><h1>Overview</h1><p>OUTDOOR SENSOR: Introducing the f
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Group 2</label>
-        <description>Basic Set commands PIR Control</description>
+        <description><![CDATA[
+Basic Set commands PIR Control<br /><h1>Overview</h1><p>The Outdoor Motion Sensor supports Group 1 with 1 Controller node for lifeline communication and Group 2 with up to 4 devices for PIR Control. This device will send a Notification Report to Group 1 and BASIC_SET command to Group 2 whenever it detects motion.</p>
+        ]]></description>
         <multipleLimit>4</multipleLimit>
       </parameter>
 

@@ -58,6 +58,7 @@ Touchpad Electronic Deadbolt<br /><h1>Overview</h1><ul><li>One touch locking</li
       <property name="manufacturerId">0090</property>
       <property name="manufacturerRef">0003:0440</property>
       <property name="dbReference">1062</property>
+      <property name="commandClass:COMMAND_CLASS_SECURITY">setVersion=1</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
