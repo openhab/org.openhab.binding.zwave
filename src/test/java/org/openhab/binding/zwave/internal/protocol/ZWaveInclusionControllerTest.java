@@ -12,13 +12,13 @@
  */
 package org.openhab.binding.zwave.internal.protocol;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;

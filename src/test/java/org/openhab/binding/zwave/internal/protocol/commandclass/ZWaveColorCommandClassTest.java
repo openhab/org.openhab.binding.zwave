@@ -12,13 +12,12 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorCommandClass;
+import org.junit.jupiter.api.Test;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorCommandClass.ZWaveColorType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorCommandClass.ZWaveColorValueEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;

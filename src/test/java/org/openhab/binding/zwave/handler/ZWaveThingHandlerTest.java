@@ -12,7 +12,7 @@
  */
 package org.openhab.binding.zwave.handler;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
@@ -23,17 +23,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.smarthome.config.core.Configuration;
-import org.eclipse.smarthome.config.core.status.ConfigStatusMessage;
-import org.eclipse.smarthome.core.thing.Thing;
-import org.eclipse.smarthome.core.thing.ThingUID;
-import org.eclipse.smarthome.core.thing.binding.ThingHandlerCallback;
-import org.eclipse.smarthome.core.thing.binding.builder.ThingBuilder;
-import org.eclipse.smarthome.core.thing.type.ThingType;
-import org.eclipse.smarthome.core.thing.type.ThingTypeBuilder;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
@@ -44,6 +36,14 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClas
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveNodeNamingCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.core.config.core.Configuration;
+import org.openhab.core.config.core.status.ConfigStatusMessage;
+import org.openhab.core.thing.Thing;
+import org.openhab.core.thing.ThingUID;
+import org.openhab.core.thing.binding.ThingHandlerCallback;
+import org.openhab.core.thing.binding.builder.ThingBuilder;
+import org.openhab.core.thing.type.ThingType;
+import org.openhab.core.thing.type.ThingTypeBuilder;
 
 /**
  * Test of the ZWaveThingHandler
@@ -96,14 +96,14 @@ public class ZWaveThingHandlerTest {
 
             Mockito.when(controller.getOwnNodeId()).thenReturn(1);
             Mockito.when(controllerHandler.getOwnNodeId()).thenReturn(1);
-            Mockito.when(controllerHandler.getNode(Matchers.anyInt())).thenReturn(node);
+            Mockito.when(controllerHandler.getNode(ArgumentMatchers.anyInt())).thenReturn(node);
             Mockito.when(node.getNodeId()).thenReturn(1);
-            Mockito.when(node.getAssociationGroup(Matchers.anyInt())).thenReturn(new ZWaveAssociationGroup(1));
-            Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_WAKE_UP)))
+            Mockito.when(node.getAssociationGroup(ArgumentMatchers.anyInt())).thenReturn(new ZWaveAssociationGroup(1));
+            Mockito.when(node.getCommandClass(ArgumentMatchers.eq(CommandClass.COMMAND_CLASS_WAKE_UP)))
                     .thenReturn(wakeupClass);
-            Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_ASSOCIATION)))
+            Mockito.when(node.getCommandClass(ArgumentMatchers.eq(CommandClass.COMMAND_CLASS_ASSOCIATION)))
                     .thenReturn(associationClass);
-            Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_NODE_NAMING)))
+            Mockito.when(node.getCommandClass(ArgumentMatchers.eq(CommandClass.COMMAND_CLASS_NODE_NAMING)))
                     .thenReturn(namingClass);
         } catch (NoSuchFieldException | SecurityException e) {
             e.printStackTrace();

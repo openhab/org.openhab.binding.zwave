@@ -12,14 +12,14 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Test;
-import org.mockito.Matchers;
+import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
@@ -27,8 +27,6 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationGroupInfoCommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
@@ -62,7 +60,8 @@ public class ZWaveAssociationGroupInfoCommandClassTest extends ZWaveCommandClass
 
         ZWaveCommandClass reset = ZWaveCommandClass
                 .getInstance(CommandClass.COMMAND_CLASS_DEVICE_RESET_LOCALLY.getKey(), node, null);
-        when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_DEVICE_RESET_LOCALLY))).thenReturn(reset);
+        when(node.getCommandClass(ArgumentMatchers.eq(CommandClass.COMMAND_CLASS_DEVICE_RESET_LOCALLY)))
+                .thenReturn(reset);
 
         // Our test subject
         ZWaveAssociationGroupInfoCommandClass cls = (ZWaveAssociationGroupInfoCommandClass) ZWaveCommandClass

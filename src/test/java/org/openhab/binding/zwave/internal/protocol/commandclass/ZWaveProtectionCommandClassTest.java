@@ -12,13 +12,13 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
@@ -59,7 +59,7 @@ public class ZWaveProtectionCommandClassTest extends ZWaveCommandClassTest {
         assertEquals(rfEvent.getValue(), RfProtectionType.UNPROTECTED);
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void reportProtectionSupported() {
         byte[] packetData = { 0x01, 0x0D, 0x00, 0x04, 0x00, 0x0A, 0x04, 0x75, 0x05, 0x00, 0x05, 0x00, 0x03, 0x00,

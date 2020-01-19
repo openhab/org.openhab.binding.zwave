@@ -12,17 +12,15 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Ignore;
-import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.ReportType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.ZWaveAlarmValueEvent;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBasicCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.impl.CommandClassManufacturerProprietaryFibaroFgrm222V1;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
@@ -34,7 +32,7 @@ import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
  */
 public class ZWaveManufacturerProprietaryCommandClassFibaroFGRM222Test extends ZWaveCommandClassTest {
 
-    @Ignore
+    @Disabled
     @Test
     public void getValueMessage() {
         byte[] payload = CommandClassManufacturerProprietaryFibaroFgrm222V1.getFgrm222Get();
@@ -43,7 +41,7 @@ public class ZWaveManufacturerProprietaryCommandClassFibaroFGRM222Test extends Z
         assertTrue(Arrays.equals(payload, expectedResponse));
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void getShutterMessage() {
         byte[] payload = CommandClassManufacturerProprietaryFibaroFgrm222V1.getFgrm222Set("SHUTTER", 0, 0);
@@ -52,7 +50,7 @@ public class ZWaveManufacturerProprietaryCommandClassFibaroFGRM222Test extends Z
         assertTrue(Arrays.equals(payload, expectedResponse));
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void getLamellaMessage() {
         byte[] payload = CommandClassManufacturerProprietaryFibaroFgrm222V1.getFgrm222Set("LAMELLA", 0, 0);
@@ -61,7 +59,7 @@ public class ZWaveManufacturerProprietaryCommandClassFibaroFGRM222Test extends Z
         assertTrue(Arrays.equals(payload, expectedResponse));
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void Notification_Burglar_Motion() {
         byte[] packetData = { 0x01, 0x0F, 0x00, 0x13, 0x71, 0x08, (byte) 0x91, 0x01, 0x0F, 0x26, 0x01, 0x01, 0x00, 0x01,

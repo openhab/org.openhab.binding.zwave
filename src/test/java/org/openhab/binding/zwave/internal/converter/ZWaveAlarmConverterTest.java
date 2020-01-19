@@ -12,23 +12,16 @@
  */
 package org.openhab.binding.zwave.internal.converter;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.smarthome.core.library.types.DecimalType;
-import org.eclipse.smarthome.core.library.types.OnOffType;
-import org.eclipse.smarthome.core.library.types.OpenClosedType;
-import org.eclipse.smarthome.core.library.types.StringType;
-import org.eclipse.smarthome.core.thing.ChannelUID;
-import org.eclipse.smarthome.core.thing.type.ChannelTypeUID;
-import org.eclipse.smarthome.core.types.State;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
@@ -41,6 +34,13 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmComman
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.core.library.types.DecimalType;
+import org.openhab.core.library.types.OnOffType;
+import org.openhab.core.library.types.OpenClosedType;
+import org.openhab.core.library.types.StringType;
+import org.openhab.core.thing.ChannelUID;
+import org.openhab.core.thing.type.ChannelTypeUID;
+import org.openhab.core.types.State;
 
 /**
  *
@@ -325,10 +325,10 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         ArgumentCaptor<ZWaveCommandClassTransactionPayload> transactionCaptor = ArgumentCaptor
                 .forClass(ZWaveCommandClassTransactionPayload.class);
 
-        Mockito.when(node.resolveCommandClass(Matchers.any(CommandClass.class), Matchers.anyInt()))
+        Mockito.when(node.resolveCommandClass(ArgumentMatchers.any(CommandClass.class), ArgumentMatchers.anyInt()))
                 .thenReturn(cmdClass);
 
-        Mockito.when(node.encapsulate(transactionCaptor.capture(), Matchers.anyInt())).thenReturn(null);
+        Mockito.when(node.encapsulate(transactionCaptor.capture(), ArgumentMatchers.anyInt())).thenReturn(null);
 
         converter.executeRefresh(channel, node);
 

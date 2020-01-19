@@ -12,13 +12,13 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
@@ -31,7 +31,7 @@ import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
  */
 public class ZWaveCrc16EncapsulationCommandClassTest extends ZWaveCommandClassTest {
     // This test uses the data from the spec
-    @Ignore
+    @Disabled
     @Test
     public void ProcessMessageZWaveSpec() {
         byte[] packetData = { 0x01, 0x0d, 0x00, 0x04, 0x00, 0x07, 0x07, 0x56, 0x01, 0x20, 0x02, 0x4d, 0x26,

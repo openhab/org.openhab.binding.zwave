@@ -12,7 +12,7 @@
  */
 package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.mockito.Mockito;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
@@ -22,7 +22,6 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveMessagePayloadTransactio
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveCommandProcessor;
 
 public class ZWaveCommandProcessorTest {
 

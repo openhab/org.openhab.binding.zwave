@@ -12,16 +12,16 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
@@ -95,7 +95,7 @@ public class ZWaveMultiInstanceCommandClassTest extends ZWaveCommandClassTest {
             endpoints.put(3, mockedEndpoint);
 
             // Mockito.when(node.getEndpoint(Matchers.anyInt())).thenReturn(endpoint);
-            Mockito.when(mockedEndpoint.getCommandClass(Matchers.any(CommandClass.class)))
+            Mockito.when(mockedEndpoint.getCommandClass(ArgumentMatchers.any(CommandClass.class)))
                     .thenAnswer(new Answer<ZWaveCommandClass>() {
                         @Override
                         public ZWaveCommandClass answer(InvocationOnMock invocation) {

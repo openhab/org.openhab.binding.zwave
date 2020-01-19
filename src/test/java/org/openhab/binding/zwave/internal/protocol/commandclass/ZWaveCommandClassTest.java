@@ -12,7 +12,7 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.mockito.ArgumentCaptor;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
@@ -126,7 +126,7 @@ public class ZWaveCommandClassTest {
             assertNotNull(cls);
             cls.setVersion(version);
 
-            Mockito.when(mockedEndpoint0.getCommandClass(Matchers.any(CommandClass.class)))
+            Mockito.when(mockedEndpoint0.getCommandClass(ArgumentMatchers.any(CommandClass.class)))
                     .thenAnswer(new Answer<ZWaveCommandClass>() {
                         @Override
                         public ZWaveCommandClass answer(InvocationOnMock invocation) {
@@ -138,7 +138,7 @@ public class ZWaveCommandClassTest {
                                     mockedNode, mockedController);
                         }
                     });
-            Mockito.when(mockedEndpoint1.getCommandClass(Matchers.any(CommandClass.class)))
+            Mockito.when(mockedEndpoint1.getCommandClass(ArgumentMatchers.any(CommandClass.class)))
                     .thenAnswer(new Answer<ZWaveCommandClass>() {
                         @Override
                         public ZWaveCommandClass answer(InvocationOnMock invocation) {
@@ -150,7 +150,7 @@ public class ZWaveCommandClassTest {
                                     mockedNode, mockedController);
                         }
                     });
-            Mockito.when(mockedEndpoint2.getCommandClass(Matchers.any(CommandClass.class)))
+            Mockito.when(mockedEndpoint2.getCommandClass(ArgumentMatchers.any(CommandClass.class)))
                     .thenAnswer(new Answer<ZWaveCommandClass>() {
                         @Override
                         public ZWaveCommandClass answer(InvocationOnMock invocation) {
@@ -162,7 +162,7 @@ public class ZWaveCommandClassTest {
                                     mockedNode, mockedController);
                         }
                     });
-            Mockito.when(mockedEndpoint3.getCommandClass(Matchers.any(CommandClass.class)))
+            Mockito.when(mockedEndpoint3.getCommandClass(ArgumentMatchers.any(CommandClass.class)))
                     .thenAnswer(new Answer<ZWaveCommandClass>() {
                         @Override
                         public ZWaveCommandClass answer(InvocationOnMock invocation) {
@@ -211,7 +211,7 @@ public class ZWaveCommandClassTest {
         ZWaveEndpoint endpoint = Mockito.mock(ZWaveEndpoint.class);
         Mockito.when(mockedNode.getNodeId()).thenReturn(99);
         Mockito.when(mockedNode.getDeviceClass()).thenReturn(deviceClass);
-        Mockito.when(mockedNode.getEndpoint(Matchers.anyInt())).thenReturn(endpoint);
+        Mockito.when(mockedNode.getEndpoint(ArgumentMatchers.anyInt())).thenReturn(endpoint);
         ZWaveDeviceClass endpointDeviceClass = new ZWaveDeviceClass(Basic.BASIC_TYPE_UNKNOWN,
                 Generic.GENERIC_TYPE_NOT_USED, Specific.SPECIFIC_TYPE_NOT_USED);
         Mockito.when(endpoint.getDeviceClass()).thenReturn(endpointDeviceClass);

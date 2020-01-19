@@ -12,12 +12,12 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass.security;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
@@ -48,7 +48,7 @@ public class ZWaveSecurityCommandClassTest {
         // assertTrue(Arrays.equals(expectedBytes, actualBytes));
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void testEncapsulatePayload() throws Exception {
         byte nodeId = 0x01;

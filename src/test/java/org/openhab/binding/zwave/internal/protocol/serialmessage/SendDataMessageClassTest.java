@@ -12,8 +12,7 @@
  */
 package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
-import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.SendDataMessageClass;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test cases for SendDataMessageClass message.

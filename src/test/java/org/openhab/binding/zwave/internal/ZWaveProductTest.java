@@ -12,11 +12,10 @@
  */
 package org.openhab.binding.zwave.internal;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.eclipse.smarthome.core.thing.ThingTypeUID;
-import org.junit.Test;
-import org.openhab.binding.zwave.internal.ZWaveProduct;
+import org.junit.jupiter.api.Test;
+import org.openhab.core.thing.ThingTypeUID;
 
 /**
  * Test product matches

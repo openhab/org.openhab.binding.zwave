@@ -12,7 +12,7 @@
  */
 package org.openhab.binding.zwave.internal.converter;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import java.lang.reflect.Field;
@@ -20,10 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.smarthome.core.library.types.DecimalType;
-import org.eclipse.smarthome.core.thing.ChannelUID;
-import org.eclipse.smarthome.core.thing.type.ChannelTypeUID;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
@@ -35,6 +32,9 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveThermostatS
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveThermostatSetpointCommandClass.Setpoint;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveThermostatSetpointCommandClass.SetpointType;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.core.library.types.DecimalType;
+import org.openhab.core.thing.ChannelUID;
+import org.openhab.core.thing.type.ChannelTypeUID;
 
 /**
  *
@@ -80,12 +80,12 @@ public class ZWaveThermostatSetpointConverterTest {
         ZWaveThingChannel channel = createChannel();
         ZWaveNode node = Mockito.mock(ZWaveNode.class);
         ZWaveThermostatSetpointCommandClass cls = getCommandClass(node);
-        when(node.resolveCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT), Matchers.anyInt()))
-                .thenReturn(cls);
+        when(node.resolveCommandClass(ArgumentMatchers.eq(CommandClass.COMMAND_CLASS_THERMOSTAT_SETPOINT),
+                ArgumentMatchers.anyInt())).thenReturn(cls);
 
-        when(node.encapsulate(Matchers.any(), Matchers.any())).thenAnswer(i -> i.getArguments()[0]);
+        when(node.encapsulate(ArgumentMatchers.any(), ArgumentMatchers.any())).thenAnswer(i -> i.getArguments()[0]);
 
-        Mockito.when(node.encapsulate(Matchers.any(), Matchers.any()))
+        Mockito.when(node.encapsulate(ArgumentMatchers.any(), ArgumentMatchers.any()))
                 .thenAnswer(new Answer<ZWaveCommandClassTransactionPayload>() {
                     @Override
                     public ZWaveCommandClassTransactionPayload answer(InvocationOnMock invocation) throws Throwable {

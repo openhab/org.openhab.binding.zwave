@@ -12,23 +12,19 @@
  */
 package org.openhab.binding.zwave.internal.protocol;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Ignore;
-import org.junit.Test;
-import org.mockito.Matchers;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionState;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionManager;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.AddNodeMessageClass;
@@ -44,7 +40,7 @@ import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClass
 
 public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTest {
 
-    @Ignore
+    @Disabled
     @Test
     public void TestSendQueue() {
         ZWaveTransactionManager manager = getTransactionManager();
@@ -146,7 +142,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(TransactionState.CANCELLED, transactionCompleteCapture.getValue().getTransactionState());
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void TestTimeout1Retry() {
         ZWaveTransactionManager manager = getTransactionManagerForTimeout();
@@ -176,7 +172,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(TransactionState.CANCELLED, transactionCompleteCapture.getValue().getTransactionState());
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void TestTimeout1RetryIncorrectPacketReceived() {
         byte[] invalidPacket = { 0x01, 0x0A, 0x00, 0x04, 0x00, 0x05, 0x04, 0x73, 0x03, 0x00, 0x00, (byte) 0x80 };
@@ -215,7 +211,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(TransactionState.CANCELLED, transactionCompleteCapture.getValue().getTransactionState());
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void TestTimeout2() {
         ZWaveTransactionManager manager = getTransactionManagerForTimeout();
@@ -244,7 +240,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(TransactionState.CANCELLED, transactionCompleteCapture.getValue().getTransactionState());
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void TestTimeout3() {
         byte[] responsePacket1 = { 0x01, 0x04, 0x01, 0x13, 0x01, (byte) 0xE8 };
@@ -290,7 +286,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(TransactionState.CANCELLED, transactionCompleteCapture.getValue().getTransactionState());
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void TestTransactionType1() {
         SerialMessage message;
@@ -315,7 +311,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(TransactionState.DONE, transactionCompleteCapture.getValue().getTransactionState());
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void TestTransactionType1IncorrectPacketReceived() {
         SerialMessage message;
@@ -347,7 +343,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(TransactionState.DONE, transactionCompleteCapture.getValue().getTransactionState());
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void TestTransactionType2() {
         SerialMessage message;
@@ -372,7 +368,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(TransactionState.DONE, transactionCompleteCapture.getValue().getTransactionState());
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void TestTransactionType2Multi() {
         SerialMessage message;
@@ -418,7 +414,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(TransactionState.DONE, transactionCompleteCapture.getValue().getTransactionState());
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void TestTransactionType3() {
         SerialMessage message;
@@ -456,7 +452,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
     /**
      * Tests a single type 4 transaction - sending a command class request, and receiving the data from the device.
      */
-    @Ignore
+    @Disabled
     @Test
     public void TestTransactionType4() {
         byte[] responsePacket1 = { 0x01, 0x04, 0x01, 0x13, 0x01, (byte) 0xE8 };
@@ -515,7 +511,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
      * Two transactions are queued to different nodes. The first should be sent immediately, and the second should be
      * sent after the response is received to the first transaction.
      */
-    @Ignore
+    @Disabled
     @Test
     public void TestTransactionType4Multi() {
         byte[] t1ResponsePacket1 = { 0x01, 0x04, 0x01, 0x13, 0x01, (byte) 0xE8 };
@@ -608,7 +604,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
      * sent after the data response is received to the first transaction.
      * We use the controller as the node here.
      */
-    @Ignore
+    @Disabled
     @Test
     public void TestTransactionType4MultiSameNode() {
         byte[] t1ResponsePacket1 = { 0x01, 0x05, 0x00, 0x48, 0x48, 0x21, (byte) 0xDB };
@@ -725,7 +721,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
     /**
      * Tests the binding initialisation sequence
      */
-    @Ignore
+    @Disabled
     @Test
     public void TestInitialization() {
         byte[] responsePacket1 = { 0x01, 0x10, 0x01, 0x15, 0x5A, 0x2D, 0x57, 0x61, 0x76, 0x65, 0x20, 0x33, 0x2E, 0x39,
@@ -767,7 +763,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
      * A METER request is sent. Once the ACK is received a PING is sent to a different node
      * and the METER reading is received between responses
      */
-    @Ignore
+    @Disabled
     @Test
     public void TestPingFailure1() {
         byte[] responsePacket1 = { 0x01, 0x04, 0x01, 0x13, 0x01, (byte) 0xE8 };
@@ -845,7 +841,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         assertEquals(0, transactionCompleteCapture.getAllValues().size());
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void TestTimeoutRestarts() {
         ZWaveTransactionManager manager = getTransactionManagerForTimeout();
@@ -881,7 +877,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
      * sent after the response is received to the first transaction.
      * We don't send the responses for the second, and the retry timer should pick it up.
      */
-    @Ignore
+    @Disabled
     @Test
     public void TestTransactionType4MultiTimeout() {
         byte[] t1ResponsePacket1 = { 0x01, 0x04, 0x01, 0x13, 0x01, (byte) 0xE8 };
@@ -983,7 +979,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
      * Tests a single type 4 transaction - sending a command class request, and receiving the data from the device.
      * The device has the WAKEUP command class so message should not be sent until the device wakes up.
      */
-    @Ignore
+    @Disabled
     @Test
     public void TestTransactionType4Wakeup() {
         // Test transaction
@@ -999,8 +995,8 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         ZWaveWakeUpCommandClass wakeupCommandClass = new ZWaveWakeUpCommandClass(node, controller, null);
         Mockito.when(node.isListening()).thenReturn(false);
         Mockito.when(node.isFrequentlyListening()).thenReturn(false);
-        Mockito.when(node.getCommandClass(Matchers.any(CommandClass.class))).thenReturn(wakeupCommandClass);
-        Mockito.when(controller.getNode(Matchers.anyInt())).thenReturn(node);
+        Mockito.when(node.getCommandClass(ArgumentMatchers.any(CommandClass.class))).thenReturn(wakeupCommandClass);
+        Mockito.when(controller.getNode(ArgumentMatchers.anyInt())).thenReturn(node);
 
         Mockito.doAnswer((new Answer<Void>() {
             @Override
@@ -1008,7 +1004,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
                 manager.queueTransactionForSend((ZWaveCommandClassTransactionPayload) invocation.getArguments()[0]);
                 return null;
             }
-        })).when(controller).enqueue(Matchers.any(ZWaveCommandClassTransactionPayload.class));
+        })).when(controller).enqueue(ArgumentMatchers.any(ZWaveCommandClassTransactionPayload.class));
 
         manager.queueTransactionForSend(payload);
 

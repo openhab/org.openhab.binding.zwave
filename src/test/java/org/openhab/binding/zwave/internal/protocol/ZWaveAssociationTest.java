@@ -12,10 +12,9 @@
  */
 package org.openhab.binding.zwave.internal.protocol;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.ZWaveAssociation;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests for the Association group

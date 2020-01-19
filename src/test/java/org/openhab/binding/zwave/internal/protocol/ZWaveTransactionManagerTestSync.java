@@ -12,16 +12,13 @@
  */
 package org.openhab.binding.zwave.internal.protocol;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Ignore;
-import org.junit.Test;
-import org.mockito.Matchers;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionState;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionManager;
-import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeInfoMessageClass;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
@@ -42,7 +39,7 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
     /**
      * Tests a single type 4 transaction - sending a command class request, and receiving the data from the device.
      */
-    @Ignore
+    @Disabled
     @Test
     public void TestTransactionType4() {
         final byte[] responsePacket1 = { 0x01, 0x04, 0x01, 0x13, 0x01, (byte) 0xE8 };
@@ -130,7 +127,7 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
     /**
      * Tests a single type 4 transaction - sending a command class request, and receiving the data from the device.
      */
-    @Ignore
+    @Disabled
     @Test
     public void TestTransactionType4Timeout() {
         final byte[] responsePacket1 = { 0x01, 0x04, 0x01, 0x13, 0x01, (byte) 0xE8 };
@@ -205,7 +202,7 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
         assertEquals(ZWaveTransactionResponse.State.TIMEOUT_WAITING_FOR_RESPONSE, response1.getState());
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void TestMultipleNIFRequests() {
         final byte[] unrelatedPacket = { 0x01, 0x14, 0x00, 0x04, 0x00, 0x2C, 0x0E, 0x32, 0x02, 0x21, 0x34, 0x00, 0x00,
@@ -233,7 +230,8 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
 
         syncThread1.start();
         // Give time for the first transaction to send - to be sure we know which one started
-        Mockito.verify(controller, Mockito.timeout(5000).times(1)).sendPacket(Matchers.any(SerialMessage.class));
+        Mockito.verify(controller, Mockito.timeout(5000).times(1))
+                .sendPacket(ArgumentMatchers.any(SerialMessage.class));
         syncThread2.start();
 
         // Check that this frame was sent

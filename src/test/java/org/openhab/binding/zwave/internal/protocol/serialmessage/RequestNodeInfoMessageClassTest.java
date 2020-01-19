@@ -12,13 +12,12 @@
  */
 package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeInfoMessageClass;
 
 /**
  * Test cases for RequestNodeInfoMessageClass message.

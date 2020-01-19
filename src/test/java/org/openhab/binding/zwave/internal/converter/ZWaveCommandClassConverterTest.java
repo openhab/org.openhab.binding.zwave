@@ -16,11 +16,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.mockito.AdditionalAnswers;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
-import org.openhab.binding.zwave.internal.converter.ZWaveCommandClassConverter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
@@ -42,10 +41,10 @@ public class ZWaveCommandClassConverterTest {
         final Map<Integer, ZWaveCommandClass> classes = new HashMap<Integer, ZWaveCommandClass>();
         final ZWaveNode node = Mockito.mock(ZWaveNode.class);
         final ZWaveController controller = Mockito.mock(ZWaveController.class);
-        Mockito.when(node.encapsulate(Matchers.any(ZWaveCommandClassTransactionPayload.class), Matchers.anyInt()))
-                .then(AdditionalAnswers.returnsFirstArg());
+        Mockito.when(node.encapsulate(ArgumentMatchers.any(ZWaveCommandClassTransactionPayload.class),
+                ArgumentMatchers.anyInt())).then(AdditionalAnswers.returnsFirstArg());
 
-        Mockito.when(node.resolveCommandClass(Matchers.any(CommandClass.class), Matchers.anyInt()))
+        Mockito.when(node.resolveCommandClass(ArgumentMatchers.any(CommandClass.class), ArgumentMatchers.anyInt()))
                 .thenAnswer(new Answer<ZWaveCommandClass>() {
                     @Override
                     public ZWaveCommandClass answer(InvocationOnMock invocation) {
