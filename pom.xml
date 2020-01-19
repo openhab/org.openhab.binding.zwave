@@ -19,7 +19,7 @@
     <report.fail.on.error>false</report.fail.on.error>
     <spotless.version>1.24.3</spotless.version>
     <spotless.check.skip>true</spotless.check.skip> <!-- Spotless disabled for now -->
-    <sat.version>0.8.0</sat.version>
+    <sat.version>0.9.0</sat.version>
   </properties>
 
   <scm>
@@ -205,6 +205,13 @@
         </executions>
       </plugin>
     </plugins>
+    <extensions>
+       <extension>
+          <groupId>org.openhab.tools.sat</groupId>
+          <artifactId>sat-extension</artifactId>
+          <version>${sat.version}</version>
+       </extension>
+    </extensions>
   </build>
 
   <repositories>
