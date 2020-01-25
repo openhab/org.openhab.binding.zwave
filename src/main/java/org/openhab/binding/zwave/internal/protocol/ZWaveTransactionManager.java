@@ -169,7 +169,7 @@ public class ZWaveTransactionManager {
     /**
      * Timeout in which we expect the request from the controller
      */
-    private final long timer2 = 5000;
+    private final long timer2 = 10000;
 
     /**
      * Timeout waiting to cancel a transaction once we've aborted it
