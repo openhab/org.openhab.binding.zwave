@@ -38,6 +38,12 @@ Flush 1D relay<br /><h1>Overview</h1><p>This Z-Wave module is used for switching
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1,COMMAND_CLASS_BASIC:1</property>
         </properties>
       </channel>
+      <channel id="sensor_temperature1" typeId="sensor_temperature">
+        <label>Sensor (temperature) 1</label>
+        <properties>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:1;type=TEMPERATURE</property>
+        </properties>
+      </channel>
       <channel id="sensor_binary2" typeId="sensor_binary">
         <label>Sensor Binary</label>
         <properties>

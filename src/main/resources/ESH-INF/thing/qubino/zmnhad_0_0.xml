@@ -68,6 +68,12 @@ Flush 1 relay<br /><h1>Overview</h1><p>This Z-Wave module is used for switching 
           <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY:2,COMMAND_CLASS_BASIC:2</property>
         </properties>
       </channel>
+      <channel id="sensor_temperature2" typeId="sensor_temperature">
+        <label>Sensor (temperature) [Deprecated]</label>
+        <properties>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:2;type=TEMPERATURE</property>
+        </properties>
+      </channel>
       <channel id="alarm_power2" typeId="alarm_power">
         <label>Alarm (power) 2</label>
         <properties>

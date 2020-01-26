@@ -8,7 +8,7 @@
   <thing-type id="tkb_tz55d_00_000" listed="false">
     <label>TZ55D Dual Paddle Wall Dimmer</label>
     <description><![CDATA[
-Dual Paddle Wall Dimmer<br /><h1>Overview</h1><p>Dual Paddle Wall Dimmer, AC230V 50Hz, 1380W×2</p> <br /><h2>Inclusion Information</h2><p>Pressing On/Off button three times within 1.5 seconds will enter inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>Pressing On/Off button three times within 1.5 seconds will enter exclusion mode.</p> <br /><h2>Wakeup Information</h2><p>When a controller prompts you to “Send Node ID” or to “Press Button on Unit”,quickly tap the switch on or off three times to satisfy those instructions.</p>
+Dual Paddle Wall Dimmer<br /><h1>Overview</h1><p>Dual Paddle Wall Dimmer, AC230V 50Hz, 1380W×2</p>The device can control only one attached load and dim/brighten associated Z-Wave dimmers <br /><h2>Inclusion Information</h2><p>Pressing On/Off button three times within 1.5 seconds will enter inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>Pressing On/Off button three times within 1.5 seconds will enter exclusion mode.</p> <br /><h2>Wakeup Information</h2><p>When a controller prompts you to “Send Node ID” or to “Press Button on Unit”,quickly tap the switch on or off three times to satisfy those instructions.</p>
     ]]></description>
     <category>WallSwitch</category>
 

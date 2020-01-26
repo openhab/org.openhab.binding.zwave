@@ -94,6 +94,12 @@ Flush Dimmer Plus<br /><h1>Overview</h1><p>This Z-Wave module is used for dimmin
           <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY:2,COMMAND_CLASS_BASIC:2</property>
         </properties>
       </channel>
+      <channel id="sensor_temperature2" typeId="sensor_temperature">
+        <label>Sensor (temperature) 2</label>
+        <properties>
+          <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL:2;type=TEMPERATURE</property>
+        </properties>
+      </channel>
       <channel id="alarm_general2" typeId="alarm_general">
         <label>Alarm 2</label>
         <properties>
