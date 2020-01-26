@@ -153,6 +153,48 @@ Treshold time for power reporting [Watt]<br /><h1>Overview</h1><p>Set value refe
         <default>0</default>
       </parameter>
 
+      <parameter name="config_42_2" type="integer" groupName="configuration"
+                 min="0" max="32535">
+        <label>42: Power Consumption Reporting Time Threshold</label>
+        <description><![CDATA[
+Power Consumption Reporting Time Threshold [Watt]<br /><h1>Overview</h1><p>Set value refers to the time interval with which power consumption in Watts is reported (0 – 32535 seconds).</p> <p>If 300 is entered (by default), energy consumption reports will be sent to the gateway (hub) every 300 seconds (or 5 minutes).</p> <p>Values :</p> <ul><li>0 : Power consumption reporting disabled </li> <li>30 - 32535 : 30 - 32535 seconds. Power consumption reporting enabled. Report is sent according to time interval (value) set here. </li> </ul>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_50_2" type="integer" groupName="configuration"
+                 min="0" max="4000">
+        <label>50: Down value</label>
+        <description><![CDATA[
+Down value [watt]<br /><h1>Overview</h1><p>Lower power threshold used in parameter no. 52. </p> <p>Values:</p> <ul><li>default value 30 : 30 W <br /></li> <li>0 – 4000 : 0W – 4000 W <br /></li> </ul><p>Down value cannot be higher than a value specified in parameter no. 51 <br /></p> <p>NOTE:</p> <ul><li>if parameter no. 50 value is 100W and if measured power is lower than 100W, the association is send association is send again if measured power will rise above 105W</li> <li>Power threshold step is 1W <br /></li> </ul>
+        ]]></description>
+        <default>30</default>
+      </parameter>
+
+      <parameter name="config_51_2" type="integer" groupName="configuration"
+                 min="0" max="4000">
+        <label>51: Up value</label>
+        <description><![CDATA[
+Upper power threshold used in parameter no. 52<br /><h1>Overview</h1><p>Values</p> <ul><li>default value 50 : 50 W</li> <li>0 – 4000 : 0 W – 400 W </li> </ul><p>Up value cannot be lower than a value specified in the parameter no. 50.</p> <p>NOTE:</p> <ul><li>If parameter no. 51 value is 200W and if measured power is higher than 200W the association is send</li> <li>Association is send again if measured power will fall below 190W</li> <li>Power threshold step is 1W </li> </ul>
+        ]]></description>
+        <default>50</default>
+      </parameter>
+
+      <parameter name="config_52_1" type="integer" groupName="configuration">
+        <label>52: Action in case of exceeding defined power values</label>
+        <description>Action in case of exceeding defined power values (parameters 50 and 51)</description>
+        <default>6</default>
+        <options>
+          <option value="0">Inactive</option>
+          <option value="1">Turn the associated devices on if underpowered</option>
+          <option value="2">Turn the associated devices off if underpowered</option>
+          <option value="3">Turn the associated devices on if overpowered</option>
+          <option value="4">Turn the associated devices off if overpowered</option>
+          <option value="5">Turn the associated devices on/off</option>
+          <option value="6">Turn the associated devices off/on</option>
+        </options>
+      </parameter>
+
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
