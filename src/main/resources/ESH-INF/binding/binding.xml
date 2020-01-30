@@ -4,17 +4,7 @@
 	xsi:schemaLocation="http://eclipse.org/smarthome/schemas/binding/v1.0.0 http://eclipse.org/smarthome/schemas/binding-1.0.0.xsd">
 
 	<name>Z-Wave Binding</name>
-	<description>
-	   <![CDATA[
-	   The ZWave binding supports an interface to a wireless Z-Wave home automation network. 
-<br>
-ZWave is a wireless home automation protocol with reliable two way communications between nodes. It supports a mesh network where mains powered nodes can route messages between nodes that could otherwise not communicate with each other. The network supports hop distances of up to four hops.
-<br>
-A wide range of devices are supported from lights, switches and sensors to smoke alarms, window coverings and keyfobs. Z-Wave certification guarantees that certified devices will be compatible with each other and the network.
-<br>
-The binding uses a standard Z-Wave serial stick to communicate with the Z-Wave devices. There are many sticks available, and they all support the same interface so the binding does not distinguish between them.	   
-	   ]]> 
-	</description>
+	<description>The Z-Wave binding supports an interface to a wireless Z-Wave home automation network. ZWave is a wireless home automation protocol with reliable two way communications between nodes.</description>
 	<author>Chris Jackson</author>
 
 </binding:binding>
