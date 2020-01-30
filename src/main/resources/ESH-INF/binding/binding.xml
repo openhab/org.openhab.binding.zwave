@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://eclipse.org/smarthome/schemas/binding/v1.0.0 http://eclipse.org/smarthome/schemas/binding-1.0.0.xsd">
 
 	<name>Z-Wave Binding</name>
-	<description>The Z-Wave binding supports an interface to a wireless Z-Wave home automation network. ZWave is a wireless home automation protocol with reliable two way communications between nodes.</description>
+	<description>The Z-Wave binding supports an interface to a wireless Z-Wave home automation network. Z-Wave is a wireless home automation protocol with reliable two way communications between nodes.</description>
 	<author>Chris Jackson</author>
 
 </binding:binding>
