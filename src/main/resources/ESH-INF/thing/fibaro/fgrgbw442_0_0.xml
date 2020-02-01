@@ -45,19 +45,25 @@ RGBW CONTROLLER 2<br /><h1>Overview</h1><p>FIBARO RGBW Controller 2 uses PWM out
           <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR</property>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-        </properties>
+,COMMAND_CLASS_BASIC        </properties>
       </channel>
       <channel id="color_temperature" typeId="color_temperature">
         <label>Color Temperature</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_COLOR;colorMode=DIFF_WHITE</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-        </properties>
+,COMMAND_CLASS_BASIC        </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
         <label>Scene Number</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param157" typeId="fibaro_fgrgbw442_00_000_config_decimal_param157">
+        <label>Start programmed sequence</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=157</property>
         </properties>
       </channel>
       <channel id="alarm_power" typeId="alarm_power">
@@ -75,7 +81,7 @@ RGBW CONTROLLER 2<br /><h1>Overview</h1><p>FIBARO RGBW Controller 2 uses PWM out
       <channel id="switch_dimmer1" typeId="switch_dimmer">
         <label>Dimmer 1</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
         </properties>
       </channel>
@@ -121,53 +127,53 @@ RGBW CONTROLLER 2<br /><h1>Overview</h1><p>FIBARO RGBW Controller 2 uses PWM out
       <channel id="switch_dimmer2" typeId="switch_dimmer">
         <label>Dimmer 2</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:2</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:2,COMMAND_CLASS_BASIC:2</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:2</property>
         </properties>
       </channel>
       <channel id="switch_dimmer3" typeId="switch_dimmer">
         <label>Dimmer 3</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:3</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:3,COMMAND_CLASS_BASIC:3</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:3</property>
         </properties>
       </channel>
       <channel id="switch_dimmer4" typeId="switch_dimmer">
         <label>Dimmer 4</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:4</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:4,COMMAND_CLASS_BASIC:4</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:4</property>
         </properties>
       </channel>
       <channel id="switch_dimmer5" typeId="switch_dimmer">
         <label>Dimmer 5</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:5</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:5,COMMAND_CLASS_BASIC:5</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:5</property>
         </properties>
       </channel>
       <channel id="sensor_voltage6" typeId="sensor_voltage">
         <label>Sensor (voltage) 6</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:6;type=VOLTAGE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:6,COMMAND_CLASS_BASIC:6;type=VOLTAGE</property>
         </properties>
       </channel>
       <channel id="sensor_voltage7" typeId="sensor_voltage">
         <label>Sensor (voltage) 7</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:7;type=VOLTAGE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:7,COMMAND_CLASS_BASIC:7;type=VOLTAGE</property>
         </properties>
       </channel>
       <channel id="sensor_voltage8" typeId="sensor_voltage">
         <label>Sensor (voltage) 8</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:8;type=VOLTAGE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:8,COMMAND_CLASS_BASIC:8;type=VOLTAGE</property>
         </properties>
       </channel>
       <channel id="sensor_voltage9" typeId="sensor_voltage">
         <label>Sensor (voltage) 9</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:9;type=VOLTAGE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:9,COMMAND_CLASS_BASIC:9;type=VOLTAGE</property>
         </properties>
       </channel>
     </channels>
@@ -620,5 +626,26 @@ Start programmed sequence<br /><h1>Overview</h1><p>Setting this parameter will s
     </config-description>
 
   </thing-type>
+
+  <channel-type id="fibaro_fgrgbw442_00_000_config_decimal_param157">
+    <item-type>Number</item-type>
+    <label>Start programmed sequence</label>
+    <description>Start programmed sequence</description>
+    <state pattern="%s">
+      <options>
+        <option value="0">sequence inactive</option>
+        <option value="1">user-defined sequence 1</option>
+        <option value="2">user-defined sequence 2</option>
+        <option value="3">user-defined sequence 3</option>
+        <option value="4">user-defined sequence 4</option>
+        <option value="5">user-defined sequence 5</option>
+        <option value="6">Fireplace sequence</option>
+        <option value="7">Storm sequence</option>
+        <option value="8">Rainbow sequence</option>
+        <option value="9">Aurora sequence</option>
+        <option value="10">Police (red-white-blue) sequence</option>
+      </options>
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>

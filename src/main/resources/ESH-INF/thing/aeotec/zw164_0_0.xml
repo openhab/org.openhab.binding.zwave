@@ -118,7 +118,6 @@ Indoor Siren 6 and Doorbell 6<br /><h1>Overview</h1><p>Siren 6 is your home’s 
           <option value="3">List random playback for auto-selecting tone</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_1_4_7F000000" type="integer" groupName="configuration">
@@ -135,7 +134,6 @@ Indoor Siren 6 and Doorbell 6<br /><h1>Overview</h1><p>Siren 6 is your home’s 
           <option value="64">#7 Light Effect, mapping to Parameter 22 .</option>
           <option value="127">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_2_4_000000FF" type="integer" groupName="configuration"
@@ -150,7 +148,6 @@ Tone Play Count for Endpoint 2 (Tampering)<br /><h1>Overview</h1><table><tr><td>
           <option value="1">(1) time (default)</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -165,7 +162,6 @@ Interval between 2 tones for Endpoint 2 (Tampering)<br /><h1>Overview</h1><h1>In
           <option value="0">No interval. (default)</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -180,7 +176,6 @@ Intercepting duration of a tone for Endpoint 2 (Tampering)<br /><h1>Overview</h1
           <option value="0">No Interception (default)</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -200,7 +195,6 @@ Light Effect for EP 2 (Tampering)<br /><h1>Overview</h1><p>Light Effect Index fo
           <option value="64">#7 Light Effect, mapping to Parameter 22.</option>
           <option value="127">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_3_4_000000FF" type="integer" groupName="configuration"
@@ -215,7 +209,6 @@ Tone Play Count for EP3 (Doorbell 1)<br /><h1>Overview</h1><h1>Tone Play Count f
           <option value="1">(1) Time (default)</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -230,7 +223,6 @@ Interval between 2 tones for EP3 (Doorbell 1)<br /><h1>Overview</h1><h1>Interval
           <option value="0">No interval.</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -245,7 +237,6 @@ Intercepting duration of a tone Endpoint 3(Doorbell 1)<br /><h1>Overview</h1><h1
           <option value="0">Keep the original duration of a tone</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -263,7 +254,6 @@ Intercepting duration of a tone Endpoint 3(Doorbell 1)<br /><h1>Overview</h1><h1
           <option value="64">#7 Light Effect, mapping to Parameter 22.</option>
           <option value="127">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_4_4_000000FF" type="integer" groupName="configuration"
@@ -278,7 +268,6 @@ Tone Play Count for EP4 (Doorbell 2)<br /><h1>Overview</h1><h1>Tone Play Count f
           <option value="1">(1) Time (default)</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -293,7 +282,6 @@ Tone Interval for EP4 (Doorbell 2)<br /><h1>Overview</h1><h1>Interval between 2 
           <option value="0">No interval. (default)</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -308,7 +296,6 @@ Duration of Tone for EP4(Doorbell 2)<br /><h1>Overview</h1><h1>Intercepting Dura
           <option value="0">Keep the original duration of a tone</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -328,7 +315,6 @@ Light Effect for EP 4 (Doorbell 2)<br /><h1>Overview</h1><p>Light Effect Index f
           <option value="64">#7 Light Effect, mapping to Parameter 22.</option>
           <option value="127">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_5_4_000000FF" type="integer" groupName="configuration"
@@ -343,7 +329,6 @@ Tone Play Count for EP5 (Doorbell 3)<br /><h1>Overview</h1><h1>Tone Play Count f
           <option value="1">(1) time (default)</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -358,7 +343,6 @@ Interval between 2 tones for EP5 (Doorbell 3)<br /><h1>Overview</h1><h1>Interval
           <option value="0">No interval. (default)</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -373,7 +357,6 @@ Intercepting tone duration for EP5 (Doorbell 3)<br /><h1>Overview</h1><h1>Interc
           <option value="0">Keep the original duration of a tone</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -393,7 +376,6 @@ Light Effect for EP 5 (Doorbell 3) .<br /><h1>Overview</h1><p>Light Effect Index
           <option value="64">#7 Light Effect, mapping to Parameter 22.</option>
           <option value="127">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_6_4_000000FF" type="integer" groupName="configuration"
@@ -407,7 +389,6 @@ Tone Play Count for EP 6 (Environment)<br /><h1>Overview</h1><p>Tone Play Count 
           <option value="0">Unlimited playback until stop by user.</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -422,7 +403,6 @@ Interval between 2 tones for EP 6 (Environment)<br /><h1>Overview</h1><h1>Interv
           <option value="0">No interval.</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -437,7 +417,6 @@ Duration of a tone for EP 6 (Environment)<br /><h1>Overview</h1><h1>Duration of 
           <option value="0">Keep the original duration of a tone</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -457,7 +436,6 @@ Light Effect for EP 6 (Environment)<br /><h1>Overview</h1><p>Light Effect for En
           <option value="64">#7 Light Effect, mapping to Parameter 22.</option>
           <option value="127">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_7_4_000000FF" type="integer" groupName="configuration"
@@ -471,7 +449,6 @@ Tone play count for EP7 (Security)<br /><h1>Overview</h1><h1>Tone play count for
           <option value="0">Unlimited playback until stop by user.</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -486,7 +463,6 @@ Interval between 2 tones for EP7 (Security)<br /><h1>Overview</h1><h1>Interval b
           <option value="0">No interval. (default)</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -501,7 +477,6 @@ Duration of a tone for EP 7 (Security)<br /><h1>Overview</h1><h1>Intercepting du
           <option value="0">Keep the original duration of a tone</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -521,7 +496,6 @@ Light Effect for EP 7 (Security)<br /><h1>Overview</h1><p>Light Effect Index for
           <option value="64">#7 Light Effect, mapping to Parameter 22.</option>
           <option value="127">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_8_4_000000FF" type="integer" groupName="configuration"
@@ -535,7 +509,6 @@ Tone Play Count for EP8 (Emergency)<br /><h1>Overview</h1><h1>Tone Play Count fo
           <option value="0">Unlimited playback until stop by user.</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -550,7 +523,6 @@ Interval between 2 tones for EP8 (Emergency)<br /><h1>Overview</h1><h1>Interval 
           <option value="0">No interval. (default)</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -565,7 +537,6 @@ Tone Duration for EP8 (Emergency)<br /><h1>Overview</h1><h1>Intercepting duratio
           <option value="0">Keep the original duration of a tone</option>
           <option value="255">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -585,7 +556,6 @@ Light Effect for EP8 (Emergency)<br /><h1>Overview</h1><p>Light Effect Index for
           <option value="64">#7 Light Effect, mapping to Parameter 22.</option>
           <option value="127">Use the last valid configuration value.</option>
         </options>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_16_4_000000FF" type="integer" groupName="configuration"
@@ -595,7 +565,6 @@ Light Effect for EP8 (Emergency)<br /><h1>Overview</h1><p>Light Effect Index for
 Time Off for Light Effect #1<br /><h1>Overview</h1><h1>Keep extinguished duration for Light Effect #1</h1> <table><tr><td>0 .. 255</td> <td>The time of Indicator Light keep extinguished. (Unit = 100ms)</td> </tr></table>
         ]]></description>
         <default>3</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_16_4_0000FF00" type="integer" groupName="configuration"
@@ -605,7 +574,6 @@ Time Off for Light Effect #1<br /><h1>Overview</h1><h1>Keep extinguished duratio
 Time On for Light Effect #1<br /><h1>Overview</h1><h1>Keep bright duration for Light Effect #1</h1> <table><tr><td>0 .. 255</td> <td>The time of Indicator Light keep bright. (Unit = 100ms)</td> </tr></table>
         ]]></description>
         <default>20</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_16_4_007F0000" type="integer" groupName="configuration"
@@ -615,7 +583,6 @@ Time On for Light Effect #1<br /><h1>Overview</h1><h1>Keep bright duration for L
 Dim Off duration for Light Effect #1<br /><h1>Overview</h1><h1>Gradually extinguished duration for Light Effect #1</h1> <table><tr><td>0 .. 127</td> <td>The time from Indicator Light bright to extinguished. (Unit = 20ms)</td> </tr></table>
         ]]></description>
         <default>25</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_16_4_7F000000" type="integer" groupName="configuration"
@@ -625,7 +592,6 @@ Dim Off duration for Light Effect #1<br /><h1>Overview</h1><h1>Gradually extingu
 Dim On Duration for Light Effect #1<br /><h1>Overview</h1><h1>Gradually bright duration for Light Effect #1</h1> <table><tr><td>0 .. 127</td> <td>The time from Indicator Light extinguished to bright. (Unit = 20ms)</td> </tr></table>
         ]]></description>
         <default>75</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_17_4_000000FF" type="integer" groupName="configuration"
@@ -635,7 +601,6 @@ Dim On Duration for Light Effect #1<br /><h1>Overview</h1><h1>Gradually bright d
 Light Off Duration for Light Effect #2<br /><h1>Overview</h1><h1>Keep extinguished duration for Light Effect #2</h1> <table><tr><td>0 .. 255</td> <td>The time of Indicator Light keep extinguished. (Unit = 100ms)</td> </tr></table>
         ]]></description>
         <default>3</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_17_4_0000FF00" type="integer" groupName="configuration"
@@ -645,7 +610,6 @@ Light Off Duration for Light Effect #2<br /><h1>Overview</h1><h1>Keep extinguish
 Light On duration for Light Effect #2<br /><h1>Overview</h1><h1>Keep bright duration for Light Effect #2</h1> <table><tr><td>0 .. 255</td> <td>The time of Indicator Light keep bright. (Unit = 100ms)</td> </tr></table>
         ]]></description>
         <default>0</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_17_4_007F0000" type="integer" groupName="configuration"
@@ -655,7 +619,6 @@ Light On duration for Light Effect #2<br /><h1>Overview</h1><h1>Keep bright dura
 Dim Off duration for Light Effect #2<br /><h1>Overview</h1><h1>Gradually extinguished duration for Light Effect #2</h1> <table><tr><td>0 .. 127</td> <td>The time from Indicator Light bright to extinguished. (Unit = 20ms)</td> </tr></table>
         ]]></description>
         <default>50</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_17_4_7F000000" type="integer" groupName="configuration"
@@ -665,7 +628,6 @@ Dim Off duration for Light Effect #2<br /><h1>Overview</h1><h1>Gradually extingu
 Dim On duration for Light Effect #2<br /><h1>Overview</h1><h1>Gradually bright duration for Light Effect #2</h1> <table><tr><td>0 .. 127</td> <td>The time from Indicator Light extinguished to bright. (Unit = 20ms)</td> </tr></table>
         ]]></description>
         <default>50</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_18_4_000000FF" type="integer" groupName="configuration"
@@ -675,7 +637,6 @@ Dim On duration for Light Effect #2<br /><h1>Overview</h1><h1>Gradually bright d
 Light Off duration for Light Effect #3<br /><h1>Overview</h1><h1>Keep extinguished duration for Light Effect #3</h1> <table><tr><td>0 .. 255</td> <td>The time of Indicator Light keep extinguished. (Unit = 100ms)</td> </tr></table>
         ]]></description>
         <default>3</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_18_4_0000FF00" type="integer" groupName="configuration"
@@ -685,7 +646,6 @@ Light Off duration for Light Effect #3<br /><h1>Overview</h1><h1>Keep extinguish
 Light On duration for Light Effect #3<br /><h1>Overview</h1><h1>Keep bright duration for Light Effect #3</h1> <table><tr><td>0 .. 255</td> <td>The time of Indicator Light keep bright. (Unit = 100ms)</td> </tr></table>
         ]]></description>
         <default>1</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_18_4_007F0000" type="integer" groupName="configuration"
@@ -695,7 +655,6 @@ Light On duration for Light Effect #3<br /><h1>Overview</h1><h1>Keep bright dura
 Dim Off duration for Light Effect #3<br /><h1>Overview</h1><h1>Gradually extinguished duration for Light Effect #3</h1> <table><tr><td>0 .. 127</td> <td>The time from Indicator Light bright to extinguished. (Unit = 20ms)</td> </tr></table>
         ]]></description>
         <default>33</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_18_4_7F000000" type="integer" groupName="configuration"
@@ -705,7 +664,6 @@ Dim Off duration for Light Effect #3<br /><h1>Overview</h1><h1>Gradually extingu
 Dim On duration for Light Effect #3<br /><h1>Overview</h1><h1>Gradually bright duration for Light Effect #3</h1> <table><tr><td>0 .. 127</td> <td>The time from Indicator Light extinguished to bright. (Unit = 20ms)</td> </tr></table>
         ]]></description>
         <default>0</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_19_4_000000FF" type="integer" groupName="configuration"
@@ -715,7 +673,6 @@ Dim On duration for Light Effect #3<br /><h1>Overview</h1><h1>Gradually bright d
 Light Off duration for Light Effect #4<br /><h1>Overview</h1><h1>Keep extinguished duration for Light Effect #4</h1> <table><tr><td>0 .. 255</td> <td>The time of Indicator Light keep extinguished. (Unit = 100ms)</td> </tr></table>
         ]]></description>
         <default>3</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_19_4_0000FF00" type="integer" groupName="configuration"
@@ -725,7 +682,6 @@ Light Off duration for Light Effect #4<br /><h1>Overview</h1><h1>Keep extinguish
 Light On duration for Light Effect #4<br /><h1>Overview</h1><h1>Keep bright duration for Light Effect #4</h1> <table><tr><td>0 .. 255</td> <td>The time of Indicator Light keep bright. (Unit = 100ms)</td> </tr></table>
         ]]></description>
         <default>0</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_19_4_007F0000" type="integer" groupName="configuration"
@@ -735,7 +691,6 @@ Light On duration for Light Effect #4<br /><h1>Overview</h1><h1>Keep bright dura
 Dim Off duration for Light Effect #4<br /><h1>Overview</h1><h1>Gradually extinguished duration for Light Effect #4</h1> <table><tr><td>0 .. 127</td> <td>The time from Indicator Light bright to extinguished. (Unit = 20ms)</td> </tr></table>
         ]]></description>
         <default>0</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_19_4_7F000000" type="integer" groupName="configuration"
@@ -745,7 +700,6 @@ Dim Off duration for Light Effect #4<br /><h1>Overview</h1><h1>Gradually extingu
 Dim On duration for Light Effect #4<br /><h1>Overview</h1><h1>Gradually bright duration for Light Effect #4</h1> <table><tr><td>0 .. 127</td> <td>The time from Indicator Light extinguished to bright. (Unit = 20ms)</td> </tr></table>
         ]]></description>
         <default>33</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_20_4_000000FF" type="integer" groupName="configuration"
@@ -755,7 +709,6 @@ Dim On duration for Light Effect #4<br /><h1>Overview</h1><h1>Gradually bright d
 Light Off duration for Light Effect #5<br /><h1>Overview</h1><h1>Keep extinguished duration for Light Effect #5</h1> <table><tr><td>0 .. 255</td> <td>The time of Indicator Light keep extinguished. (Unit = 100ms)</td> </tr></table>
         ]]></description>
         <default>10</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_20_4_0000FF00" type="integer" groupName="configuration"
@@ -765,7 +718,6 @@ Light Off duration for Light Effect #5<br /><h1>Overview</h1><h1>Keep extinguish
 Light On duration for Light Effect #5<br /><h1>Overview</h1><h1>Keep bright duration for Light Effect #5</h1> <table><tr><td>0 .. 255</td> <td>The time of Indicator Light keep bright. (Unit = 100ms)</td> </tr></table>
         ]]></description>
         <default>0</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_20_4_007F0000" type="integer" groupName="configuration"
@@ -775,7 +727,6 @@ Light On duration for Light Effect #5<br /><h1>Overview</h1><h1>Keep bright dura
 Dim Off duration for Light Effect #5<br /><h1>Overview</h1><h1>Gradually extinguished duration for Light Effect #5</h1> <table><tr><td>0 .. 127</td> <td>The time from Indicator Light bright to extinguished. (Unit = 20ms)</td> </tr></table>
         ]]></description>
         <default>0</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_20_4_7F000000" type="integer" groupName="configuration"
@@ -785,7 +736,6 @@ Dim Off duration for Light Effect #5<br /><h1>Overview</h1><h1>Gradually extingu
 Dim On duration for Light Effect #5<br /><h1>Overview</h1><h1>Gradually bright duration for Light Effect #5</h1> <table><tr><td>0 .. 127</td> <td>The time from Indicator Light extinguished to bright. (Unit = 20ms)</td> </tr></table>
         ]]></description>
         <default>0</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_21_4_000000FF" type="integer" groupName="configuration"
@@ -795,7 +745,6 @@ Dim On duration for Light Effect #5<br /><h1>Overview</h1><h1>Gradually bright d
 Light Off duration for Light Effect #6<br /><h1>Overview</h1><h1>Keep extinguished duration for Light Effect #6</h1> <table><tr><td>0 .. 255</td> <td>The time of Indicator Light keep extinguished. (Unit = 100ms)</td> </tr></table>
         ]]></description>
         <default>0</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_21_4_0000FF00" type="integer" groupName="configuration"
@@ -805,7 +754,6 @@ Light Off duration for Light Effect #6<br /><h1>Overview</h1><h1>Keep extinguish
 Light On duration for Light Effect #6<br /><h1>Overview</h1><h1>Keep bright duration for Light Effect #6</h1> <table><tr><td>0 .. 255</td> <td>The time of Indicator Light keep bright. (Unit = 100ms)</td> </tr></table>
         ]]></description>
         <default>10</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_21_4_007F0000" type="integer" groupName="configuration"
@@ -815,7 +763,6 @@ Light On duration for Light Effect #6<br /><h1>Overview</h1><h1>Keep bright dura
 Dim Off duration for Light Effect #6<br /><h1>Overview</h1><h1>Gradually extinguished duration for Light Effect #6</h1> <table><tr><td>0 .. 127</td> <td>The time from Indicator Light bright to extinguished. (Unit = 20ms)</td> </tr></table>
         ]]></description>
         <default>0</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_21_4_7F000000" type="integer" groupName="configuration"
@@ -825,7 +772,6 @@ Dim Off duration for Light Effect #6<br /><h1>Overview</h1><h1>Gradually extingu
 Dim On duration for Light Effect #6<br /><h1>Overview</h1><h1>Gradually bright duration for Light Effect #6</h1> <table><tr><td>0 .. 127</td> <td>The time from Indicator Light extinguished to bright. (Unit = 20ms)</td> </tr></table>
         ]]></description>
         <default>0</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_22_4_000000FF" type="integer" groupName="configuration"
@@ -835,7 +781,6 @@ Dim On duration for Light Effect #6<br /><h1>Overview</h1><h1>Gradually bright d
 Light Off duration for Light Effect #7<br /><h1>Overview</h1><h1>Keep extinguished duration for Light Effect #7</h1> <table><tr><td>0 .. 255</td> <td>The time of Indicator Light keep extinguished. (Unit = 100ms)</td> </tr></table>
         ]]></description>
         <default>1</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_22_4_0000FF00" type="integer" groupName="configuration"
@@ -845,7 +790,6 @@ Light Off duration for Light Effect #7<br /><h1>Overview</h1><h1>Keep extinguish
 Light On duration for Light Effect #7<br /><h1>Overview</h1><h1>Keep bright duration for Light Effect #7</h1> <table><tr><td>0 .. 255</td> <td>The time of Indicator Light keep bright. (Unit = 100ms)</td> </tr></table>
         ]]></description>
         <default>0</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_22_4_007F0000" type="integer" groupName="configuration"
@@ -855,7 +799,6 @@ Light On duration for Light Effect #7<br /><h1>Overview</h1><h1>Keep bright dura
 Dim Off duration for Light Effect #7<br /><h1>Overview</h1><h1>Gradually extinguished duration for Light Effect #7</h1> <table><tr><td>0 .. 127</td> <td>The time from Indicator Light bright to extinguished. (Unit = 20ms)</td> </tr></table>
         ]]></description>
         <default>0</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_22_4_7F000000" type="integer" groupName="configuration"
@@ -865,7 +808,6 @@ Dim Off duration for Light Effect #7<br /><h1>Overview</h1><h1>Gradually extingu
 Dim On duration for Light Effect #7<br /><h1>Overview</h1><h1>Gradually bright duration for Light Effect #7</h1> <table><tr><td>0 .. 127</td> <td>The time from Indicator Light extinguished to bright. (Unit = 20ms)</td> </tr></table>
         ]]></description>
         <default>33</default>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_32_1" type="integer" groupName="configuration">
@@ -987,7 +929,6 @@ Trigger Unpairing Button Mode (Write Only)<br /><h1>Overview</h1><h1>Note:</h1> 
           <option value="6">Trigger Unpairing #3 and #2 Button Mode.</option>
           <option value="7">Trigger Unpairing #3, #2 and #1 Button Mode.</option>
         </options>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_49_1_wo" type="integer" groupName="configuration">
@@ -1002,7 +943,6 @@ Trigger Pairing Button Mode (Write Only)<br /><h1>Overview</h1><p>Note:</p> <ol>
           <option value="2">Trigger Pairing #2 Button Mode .</option>
           <option value="4">Trigger Pairing #3 Button Mode .</option>
         </options>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_50_1" type="integer" groupName="configuration" readOnly="true">
@@ -1047,7 +987,6 @@ Button #1 Software Version<br /><h1>Overview</h1><table><tr><td><strong>Value</s
         <options>
           <option value="0">Button is Unpaired</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -1074,7 +1013,6 @@ Button #2 Software Version<br /><h1>Overview</h1><table><tr><td><strong>Value</s
         <options>
           <option value="0">Button is unpaired.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -1101,7 +1039,6 @@ Button #3 Software Version<br /><h1>Overview</h1><table><tr><td><strong>Value</s
         <options>
           <option value="0">Button is unpaired.</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
