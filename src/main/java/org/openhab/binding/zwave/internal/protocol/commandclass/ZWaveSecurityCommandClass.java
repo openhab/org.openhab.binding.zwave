@@ -81,6 +81,11 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
     @XStreamOmitField
     private byte lastTheirNonceId = (byte) 0xFF;
 
+    // The last nonce GET time
+    private static final long MINIMUM_NONCE_INTERVAL = 500;
+    @XStreamOmitField
+    private long lastNonceRequestReceived;
+
     private static final String AES = "AES";
 
     private static final List<Byte> securityRequired = Arrays.asList(new Byte[] {
@@ -271,6 +276,12 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 
     @ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_NONCE_GET, name = "SECURITY_NONCE_GET")
     public void handleSecurityNonceGet(ZWaveCommandClassPayload payload, int endpoint) {
+        if (lastNonceRequestReceived > System.currentTimeMillis() - MINIMUM_NONCE_INTERVAL) {
+            logger.debug("NODE {}: Ignoring NONCE Request received after {}ms", getNode().getNodeId(),
+                    System.currentTimeMillis() - MINIMUM_NONCE_INTERVAL);
+            return;
+        }
+        lastNonceRequestReceived = System.currentTimeMillis();
         ourNonce = new ZWaveNonce();
         getController().enqueueNonce(new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
                 CommandClassSecurityV1.getSecurityNonceReport(ourNonce.getNonceBytes()))
