@@ -77,6 +77,28 @@ Outdoor Motion Sensor V2<br /><h1>Overview</h1><p>OUTDOOR SENSOR: Introducing th
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
+      <parameter name="config_1_1" type="integer" groupName="configuration"
+                 min="0" max="99">
+        <label>1: Basic Set Report Value Sent to Associated Devices</label>
+        <description><![CDATA[
+Basic Set Report Value Sent to Associated Devices<br /><h1>Overview</h1><p>Set the value of basic set report sent to the light associated with the sensor in Group 2 (so the light turns on to the selected brightness level). 99 is the equivalent of full brightness in Z-Wave terms.</p>
+        ]]></description>
+        <default>99</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration">
+        <label>2: Enable / Disable Motion Reports</label>
+        <description><![CDATA[
+Enable / Disable Motion Reports<br /><h1>Overview</h1><p>Enable or disable motion reports completely. If motion sensor is disabled, the device will not report motion at all to your hub.</p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">Motion reports disabled</option>
+          <option value="1">Motion reports enabled (default)</option>
+        </options>
+      </parameter>
+
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="1" max="10">
         <label>3: Motion sensitivity</label>
@@ -88,7 +110,7 @@ Motion sensitivity<br /><h1>Overview</h1><p>Adjust motion sensitivity where 10 i
       </parameter>
 
       <parameter name="config_4_2" type="integer" groupName="configuration"
-                 min="0" max="900">
+                 min="10" max="900">
         <label>4: Lux level trigger</label>
         <description><![CDATA[
 Lux level trigger<br /><h1>Overview</h1><p>Set lux level trigger with 10 being the lowest reported value and 900 being the highest reported value. The sensor will report motion to the hub and associated devices only if the brightness (lux) level is below the set trigger value.</p> <p>0 - set manually by lux knob (default)</p> <p>1 - ignore lux readings and always report motion</p> <p>10-900 - set custom trigger</p>
@@ -122,6 +144,24 @@ Lux reporting frequency<br /><h1>Overview</h1><p>Set lux reporting frequency to 
         ]]></description>
         <default>30</default>
         <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_7_2" type="integer" groupName="configuration"
+                 min="5" max="720">
+        <label>7: Reading from physical motion clear knob</label>
+        <description><![CDATA[
+Reading from physical motion clear knob<br /><h1>Overview</h1><p><strong>READ ONLY. </strong>Read the values for the timer (motion clear) knob set physically at the sensor.</p> <p><strong>Values: </strong>5 (at T position / test mode); 30; 60; 300; 600; 720 (seconds).</p>
+        ]]></description>
+        <default>5</default>
+      </parameter>
+
+      <parameter name="config_8_2" type="integer" groupName="configuration" readOnly="true"
+                 min="10" max="900">
+        <label>8: Reading from physical low lux trigger knob</label>
+        <description><![CDATA[
+Reading from physical low lux trigger knob<br /><h1>Overview</h1><p><strong>READ ONLY. </strong>Read the values for the lux trigger knob set physically at the sensor.</p> <p><strong>Values: </strong>10; 50; 100; 200; 300; 900 lux (at T position / test mode).</p>
+        ]]></description>
+        <default>900</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

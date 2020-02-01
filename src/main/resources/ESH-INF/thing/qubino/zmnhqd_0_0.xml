@@ -36,8 +36,8 @@ Qubino LUXY Smart Light<br /><h1>Overview</h1><p>The Qubino LUXY Smart Light i
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm</label>
+      <channel id="notification_siren" typeId="notification_siren">
+        <label>Alarm (SIREN) 0</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
         </properties>

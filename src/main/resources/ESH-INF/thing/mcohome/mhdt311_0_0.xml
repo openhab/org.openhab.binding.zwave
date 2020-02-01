@@ -138,6 +138,97 @@ LED Backlit brightness level<br /><h1>Overview</h1><p>0 - LED disabled </p> <p
         <default>63</default>
       </parameter>
 
+      <parameter name="config_7_2" type="integer" groupName="configuration"
+                 min="0" max="2550">
+        <label>7: Single dimming step time (Manual)</label>
+        <description>Single dimming step time (Manual)</description>
+        <default>30</default>
+      </parameter>
+
+      <parameter name="config_8_1" type="integer" groupName="configuration"
+                 min="1" max="99">
+        <label>8: Single dimming step size (Manual)</label>
+        <description>Single dimming step size (Manual)</description>
+        <default>1</default>
+      </parameter>
+
+      <parameter name="config_9_2" type="integer" groupName="configuration"
+                 min="0" max="2550">
+        <label>9: Single dimming step time (Auto)</label>
+        <description>Single dimming step time (Auto)</description>
+        <default>30</default>
+      </parameter>
+
+      <parameter name="config_10_1" type="integer" groupName="configuration"
+                 min="0" max="99">
+        <label>10: Single dimming step size (Auto)</label>
+        <description>Single dimming step size (Auto)</description>
+        <default>1</default>
+      </parameter>
+
+      <parameter name="config_11_1" type="integer" groupName="configuration"
+                 min="0" max="99">
+        <label>11: The dimming percentage single touch</label>
+        <description>The dimming percentage single touch</description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_12_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>12: Reporting interval for dimming level</label>
+        <description>Reporting interval for dimming level</description>
+        <default>10</default>
+      </parameter>
+
+      <parameter name="config_13_1" type="integer" groupName="configuration"
+                 min="0" max="1">
+        <label>13: External switch type</label>
+        <description>External switch type</description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_14_1" type="integer" groupName="configuration"
+                 min="0" max="4">
+        <label>14: External switch input</label>
+        <description>External switch input</description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_15_1" type="integer" groupName="configuration"
+                 min="0" max="15">
+        <label>15: Energy meter reporting</label>
+        <description>Energy meter reporting</description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_16_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>16: Energy meter reporting interval</label>
+        <description>Energy meter reporting interval</description>
+        <default>16</default>
+      </parameter>
+
+      <parameter name="config_17_1" type="integer" groupName="configuration"
+                 min="0" max="1">
+        <label>17: Beep</label>
+        <description>Beep</description>
+        <default>1</default>
+      </parameter>
+
+      <parameter name="config_32_2" type="integer" groupName="configuration"
+                 min="0" max="20480">
+        <label>32: Ampere alarm threshold</label>
+        <description>Ampere alarm threshold</description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_33_2" type="integer" groupName="configuration"
+                 min="0" max="65535">
+        <label>33: Voltage alarm threshold</label>
+        <description>Voltage alarm threshold</description>
+        <default>0</default>
+      </parameter>
+
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
