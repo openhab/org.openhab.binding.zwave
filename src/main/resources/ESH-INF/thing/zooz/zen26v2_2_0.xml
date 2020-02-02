@@ -125,6 +125,32 @@ Length of time before switch turns ON<br /><h1>Overview</h1><p>Use this paramete
         <limitToOptions>false</limitToOptions>
       </parameter>
 
+      <parameter name="config_7_1" type="integer" groupName="configuration">
+        <label>7: Association reports</label>
+        <description><![CDATA[
+Association reports<br /><h1>Overview</h1><p>Choose which physical and Z-Wave triggers should prompt the switch to send a status change report to associated devices.</p> <p><strong>Values: </strong></p> <p>0 – none</p> <p>1 – physical tap on ZEN26 only</p> <p>2 – physical tap on connected 3-way switch only</p> <p>3 – physical tap on ZEN26 or connected 3-way switch</p> <p>4 – Z-Wave command from hub</p> <p>5 – physical tap on ZEN26 or Z-Wave command from hub</p> <p>6 – physical tap on connected 3-way switch or Z-Wave command from hub</p> <p>7 – physical tap on ZEN26 / connected 3-way switch or Z-Wave command from hub</p> <p>8 – timer only; 9 – physical tap on ZEN26 or timer</p> <p>10 – physical tap on connected 3-way switch or timer</p> <p>11 – physical tap on ZEN26 / connected 3-way switch or timer</p> <p>12 – Z-Wave command from hub or timer</p> <p>13 – physical tap on ZEN26, Z-Wave command from hub, or timer</p> <p>14 – physical tap on ZEN26 / connected 3-way switch, Z-Wave command from hub, or timer</p> <p>15 – all of the above (default)</p>
+        ]]></description>
+        <default>15</default>
+        <options>
+          <option value="0">None</option>
+          <option value="1">Physical tap ZEN26 only</option>
+          <option value="2">Physical tap 3-way switch only</option>
+          <option value="3">Physical tap ZEN26 or 3-way switch</option>
+          <option value="4">Z-Wave command</option>
+          <option value="5">Physical tap ZEN26 or Z-Wave</option>
+          <option value="6">Physical tap 3-way switch or Z-Wave</option>
+          <option value="7">Physical tap ZEN26, 3-way switch or Z-Wave</option>
+          <option value="8">Timer only</option>
+          <option value="9">Physical tap ZEN26 or timer</option>
+          <option value="10">Physical tap 3-way switch or timer</option>
+          <option value="11">Physical tap ZEN26, 3-way switch or timer</option>
+          <option value="12">Z-Wave command or timer</option>
+          <option value="13">Physical tap ZEN26, Z-Wave or timer</option>
+          <option value="14">Physical tap ZEN26, 3-way switch, Z-Wave or timer</option>
+          <option value="15">All of the above</option>
+        </options>
+      </parameter>
+
       <parameter name="config_8_1" type="integer" groupName="configuration">
         <label>8: ON/OFF status after power failure</label>
         <description>Set the ON/OFF status for the switch after power failure</description>

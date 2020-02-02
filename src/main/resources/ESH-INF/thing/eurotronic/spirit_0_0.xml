@@ -14,6 +14,12 @@ Thermostatic Valve<br /><h1>Overview</h1><p>Spirit Z-Wave Plus is a Z-Wave radio
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
+      <channel id="basic_basic_number" typeId="basic_number">
+        <label>Basic [Deprecated]</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_BASIC</property>
+        </properties>
+      </channel>
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
@@ -64,7 +70,7 @@ Thermostatic Valve<br /><h1>Overview</h1><p>Spirit Z-Wave Plus is a Z-Wave radio
         </properties>
       </channel>
       <channel id="protection_local" typeId="protection_local">
-        <label>Local Device Protection [Deprecated]</label>
+        <label>Local Device Protection</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION;type=PROTECTION_LOCAL</property>
         </properties>

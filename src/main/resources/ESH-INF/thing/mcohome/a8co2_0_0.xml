@@ -50,7 +50,7 @@ Multi-purpose sensor<br /><h1>Overview</h1><p>MCOHome A8-9 is a Z-Wave enabled m
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="sensor_binary" typeId="sensor_binary">
+      <channel id="sensor_power" typeId="sensor_power">
         <label>Sensor (loudness)</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=LOUDNESS</property>
@@ -100,6 +100,199 @@ Multi-purpose sensor<br /><h1>Overview</h1><p>MCOHome A8-9 is a Z-Wave enabled m
         <label>1: PM25 Delta Level</label>
         <description>PM25 Delta Level</description>
         <default>0</default>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration"
+                 min="0" max="127">
+        <label>2: CO2 Delta Level</label>
+        <description>=0 Turn off report | &gt;=1 Report when change &gt; n * 5ppm</description>
+        <default>0</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration"
+                 min="0" max="127">
+        <label>3: Temperature Delta Level</label>
+        <description>=0 Turn off report | &gt;=1 Report when change &gt; n*0.5°C</description>
+        <default>0</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_4_1" type="integer" groupName="configuration"
+                 min="0" max="127">
+        <label>4: Humidity Delta Level</label>
+        <description>=0 Turn off report | &gt;=1 Report when change &gt;n%</description>
+        <default>0</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_5_1" type="integer" groupName="configuration"
+                 min="0" max="127">
+        <label>5: VOC Delta Level</label>
+        <description>=0 Turn off report | &gt;=1-127*5ppb Reportchange</description>
+        <default>0</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_6_2" type="integer" groupName="configuration"
+                 min="0" max="32767">
+        <label>6: Lux Delta Level</label>
+        <description>=0 Turn off report | &gt;=1 Report when change &gt; n*1 Lux</description>
+        <default>0</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_7_1" type="integer" groupName="configuration"
+                 min="0" max="127">
+        <label>7: dB Delta Level</label>
+        <description>=0 Turn off report | &gt;=1 Report when change &gt; n*1dB</description>
+        <default>0</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_8_1" type="integer" groupName="configuration"
+                 min="0" max="1">
+        <label>8: PIR Delta Level</label>
+        <description>=0 Turn off report | =1 Report change</description>
+        <default>0</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_9_1" type="integer" groupName="configuration"
+                 min="0" max="1">
+        <label>9: Smoke Delta Level</label>
+        <description>=0 Turn off report | =1 Report change</description>
+        <default>1</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_10_2" type="integer" groupName="configuration"
+                 min="0" max="32767">
+        <label>10: Smoke Timer</label>
+        <description>=0 Turn off report | &gt;=35 Report every interval n*1s</description>
+        <default>60</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_11_2" type="integer" groupName="configuration"
+                 min="0" max="32767">
+        <label>11: PIR Timer</label>
+        <description>=0 Turn off report | &gt;=35 Report every interval n*1s</description>
+        <default>60</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_12_2" type="integer" groupName="configuration"
+                 min="0" max="32767">
+        <label>12: PM2.5 Timer</label>
+        <description>=0 Turn off report &gt;=35Report every interval n * 1s</description>
+        <default>120</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_13_2" type="integer" groupName="configuration"
+                 min="0" max="32767">
+        <label>13: CO2 Timer</label>
+        <description>=0 Turn off report</description>
+        <default>120</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_14_2" type="integer" groupName="configuration"
+                 min="0" max="32767">
+        <label>14: Temperature Timer</label>
+        <description>=0 Turn off report | &gt;=35 Report every interval</description>
+        <default>180</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_15_2" type="integer" groupName="configuration"
+                 min="0" max="32767">
+        <label>15: Humidity Timer</label>
+        <description>=0 Turn off report | &gt;=35 Report every interval</description>
+        <default>180</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_16_2" type="integer" groupName="configuration"
+                 min="0" max="32767">
+        <label>16: VOC Timer</label>
+        <description>=0 Turn off report | &gt;=35 Report every interval</description>
+        <default>180</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_17_2" type="integer" groupName="configuration"
+                 min="0" max="32767">
+        <label>17: Lux Timer</label>
+        <description>=0 Turn off report | &gt;=35 Report every interval</description>
+        <default>180</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_18_2" type="integer" groupName="configuration"
+                 min="0" max="32767">
+        <label>18: dB Timer</label>
+        <description>=0 Turn off report | &gt;=35 Report every interval</description>
+        <default>180</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_47_1" type="integer" groupName="configuration"
+                 min="0" max="1">
+        <label>47: Temperature Unit</label>
+        <description>=0 °C | =1 °F</description>
+        <default>0</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_50_1" type="integer" groupName="configuration"
+                 min="-128" max="127">
+        <label>50: T_Offset</label>
+        <default>100</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_51_1" type="integer" groupName="configuration"
+                 min="0" max="40">
+        <label>51: RH_OffSet</label>
+        <default>20</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_52_2" type="integer" groupName="configuration"
+                 min="0" max="1000">
+        <label>52: CO2_OffSet</label>
+        <default>500</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_53_1" type="integer" groupName="configuration"
+                 min="-128" max="127">
+        <label>53: PM2.5_OffSet</label>
+        <default>100</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_54_2" type="integer" groupName="configuration"
+                 min="0" max="10000">
+        <label>54: Lux_OffSet</label>
+        <default>5000</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_55_1" type="integer" groupName="configuration"
+                 min="-128" max="127">
+        <label>55: VOC_Correct</label>
+        <default>100</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_56_1" type="integer" groupName="configuration"
+                 min="0" max="100">
+        <label>56: dB_Correct</label>
+        <default>50</default>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

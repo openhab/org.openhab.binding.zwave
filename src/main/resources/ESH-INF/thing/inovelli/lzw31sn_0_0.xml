@@ -57,6 +57,12 @@ Red Series Dimmer<br /><h1>Overview</h1><p>Inovelli’s new dimmer switch is pac
           <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=13</property>
         </properties>
       </channel>
+      <channel id="protection_local" typeId="protection_local">
+        <label>Protection Local</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION;type=PROTECTION_LOCAL</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
@@ -297,7 +303,7 @@ LED Indicator Timeout<br /><h1>Overview</h1><p>Changes the amount of time the RG
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Basic Set</label>
         <description><![CDATA[
-<br /><h1>Overview</h1><p>Sends start and stop level change to associated devices.</p> <p>Single press UP button sends BasicSet (0xFF) and single press Down sends BasicSet (0x00)</p>
+<br /><h1>Overview</h1><p>Single press UP button sends BasicSet (0xFF) and single press Down sends BasicSet (0x00)</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>

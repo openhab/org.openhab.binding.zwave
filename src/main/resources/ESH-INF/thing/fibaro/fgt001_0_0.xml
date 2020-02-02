@@ -122,7 +122,7 @@ Thermostatic Valve<br /><h1>Overview</h1><p>FIBARO Heat Controller is a remotely
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGT001</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">1301:1000</property>
+      <property name="manufacturerRef">1301:1000,1301:1001</property>
       <property name="dbReference">749</property>
       <property name="defaultAssociations">1</property>
     </properties>
