@@ -278,7 +278,7 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
     public void handleSecurityNonceGet(ZWaveCommandClassPayload payload, int endpoint) {
         if (ourNonce != null && lastNonceRequestReceived > System.currentTimeMillis() - MINIMUM_NONCE_INTERVAL) {
             logger.debug("NODE {}: Ignoring NONCE Request received after {}ms", getNode().getNodeId(),
-                    System.currentTimeMillis() - MINIMUM_NONCE_INTERVAL);
+                    System.currentTimeMillis() - lastNonceRequestReceived);
             return;
         }
         lastNonceRequestReceived = System.currentTimeMillis();

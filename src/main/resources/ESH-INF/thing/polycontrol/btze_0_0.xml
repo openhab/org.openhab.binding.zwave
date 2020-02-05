@@ -20,6 +20,12 @@ Z-Wave controlled door lock with Bluetooth Smart<br /><h1>Overview</h1><p>Danalo
           <property name="binding:*:OnOffType">COMMAND_CLASS_DOOR_LOCK</property>
         </properties>
       </channel>
+      <channel id="alarm_entry" typeId="alarm_entry">
+        <label>Entry Alarm</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
+        </properties>
+      </channel>
       <channel id="battery-level" typeId="system.battery-level">
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
