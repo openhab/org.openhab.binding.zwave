@@ -26,18 +26,6 @@ Multi-purpose sensor<br /><h1>Overview</h1><p>MCOHome A8-9 is a Z-Wave enabled m
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=RELATIVE_HUMIDITY</property>
         </properties>
       </channel>
-      <channel id="scene_number" typeId="scene_number">
-        <label>Sensor (VOLATILE_ORGANIC_COMPOUND)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=VOLATILE_ORGANIC_COMPOUND</property>
-        </properties>
-      </channel>
-      <channel id="sensor_general" typeId="sensor_general">
-        <label>Sensor (general)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=GENERAL</property>
-        </properties>
-      </channel>
       <channel id="sensor_luminance" typeId="sensor_luminance">
         <label>Sensor (luminance)</label>
         <properties>
@@ -50,19 +38,7 @@ Multi-purpose sensor<br /><h1>Overview</h1><p>MCOHome A8-9 is a Z-Wave enabled m
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="sensor_power" typeId="sensor_power">
-        <label>Sensor (loudness)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=LOUDNESS</property>
-        </properties>
-      </channel>
-      <channel id="sensor_particulate" typeId="sensor_particulate">
-        <label>Sensor (PARTICULATE_MATTER)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=PARTICULATE_MATTER</property>
-        </properties>
-      </channel>
-      <channel id="sensor_co2" typeId="sensor_co2">
+      <channel id="alarm_co2" typeId="alarm_co2">
         <label>Sensor (CO2)</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=CO2</property>
