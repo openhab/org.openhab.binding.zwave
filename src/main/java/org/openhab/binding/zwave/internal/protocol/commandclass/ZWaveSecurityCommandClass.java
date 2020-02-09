@@ -330,7 +330,7 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
 
             if ((Integer) response.get("RECEIVERS_NONCE_IDENTIFIER") != ourNonce.getId()) {
                 logger.debug("NODE {}: SECURITY_ERR NONCE ID invalid! {}<>{}", getNode().getNodeId(),
-                        (int) response.get("RECEIVERS_NONCE_IDENTIFIER") & 0xff, ourNonce.getId());
+                        (int) response.get("RECEIVERS_NONCE_IDENTIFIER") & 0xff, ourNonce.getId() & 0xff);
                 return null;
             }
 

@@ -44,7 +44,7 @@ public class RequestNodeInfoMessageClass extends ZWaveCommandProcessor {
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
             logger.debug("Request node info successfully placed on stack.");
         } else {
-            logger.error("Request node info not placed on stack due to error.");
+            logger.debug("Request node info not placed on stack due to error.");
             transaction.setTransactionCanceled();
         }
 
