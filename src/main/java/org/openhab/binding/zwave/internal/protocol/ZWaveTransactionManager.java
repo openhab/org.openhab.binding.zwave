@@ -167,11 +167,6 @@ public class ZWaveTransactionManager {
     private final long timer1 = 2000;
 
     /**
-     * Timeout in which we expect the request from the controller
-     */
-    private final long timer2 = 5000;
-
-    /**
      * Timeout waiting to cancel a transaction once we've aborted it
      */
     private final long timerAbort = 12000;
@@ -800,7 +795,7 @@ public class ZWaveTransactionManager {
                 nextTimer = System.currentTimeMillis() + timer1;
                 break;
             case WAIT_REQUEST:
-                nextTimer = System.currentTimeMillis() + timer2;
+                nextTimer = System.currentTimeMillis() + transaction.getDataTimeout();
                 break;
             case WAIT_DATA:
                 nextTimer = System.currentTimeMillis() + transaction.getDataTimeout();
