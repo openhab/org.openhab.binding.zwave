@@ -39,7 +39,7 @@ Light Switch 2 Channel<br /><h1>Overview</h1><p>Light Switch is an intelligent d
       <property name="vendor">Shenzhen Neo Electronics Co., Ltd</property>
       <property name="modelId">EU-2</property>
       <property name="manufacturerId">0258</property>
-      <property name="manufacturerRef">0003:008B,0003:108B</property>
+      <property name="manufacturerRef">0003:008B,0003:108B,0003:208B</property>
       <property name="dbReference">613</property>
       <property name="defaultAssociations">1</property>
     </properties>

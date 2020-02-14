@@ -63,7 +63,7 @@ Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltage, curre
       <property name="vendor">Shenzhen Neo Electronics Co., Ltd</property>
       <property name="modelId">NAS-WR01ZE</property>
       <property name="manufacturerId">0258</property>
-      <property name="manufacturerRef">0100:1027,0200:1027</property>
+      <property name="manufacturerRef">0100:1027,0200:1027,0300:1027</property>
       <property name="dbReference">1014</property>
       <property name="defaultAssociations">1</property>
     </properties>
