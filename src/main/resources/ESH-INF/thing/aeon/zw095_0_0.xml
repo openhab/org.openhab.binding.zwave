@@ -146,7 +146,7 @@ Home Energy Meter - Gen 5<br /><h1>Overview</h1><p>Aeon Labs Home Energy Meter i
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Energy detection mode</label>
         <description><![CDATA[
-This parameter is used to configure the energy detection mode.<br /><h1>Overview</h1><p>This parameter is used to configure the energy detection mode when the parameter 101~103 have been configured:<br />0 = report Wattage and the absolute KWH value (default);<br />1 = report positive/negative Wattage and the algebraic sum KWH value;<br />2 = report positive/negative Wattage and the positive KWH value (consuming electricity);<br />3 = report positive/negative Wattage and the negative KWH value (generating electricity).</p>
+This parameter is used to configure the energy detection mode.<br /><h1>Overview</h1><p>This parameter is used to configure the energy detection mode when the parameter 101~103 have been configured:<br />0 = Report power, energy absolute value (default);<br />1 = Report positive/negative power, report the algebraic sum energy;<br />2 = Report positive/negative power, only report energy positive part (consuming electricity);<br />3 = Report positive/negative power, only report energy negative part (generating electricity).</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -157,40 +157,43 @@ This parameter is used to configure the energy detection mode.<br /><h1>Overview
         </options>
       </parameter>
 
-      <parameter name="config_3_1" type="integer" groupName="configuration"
-                 min="0" max="16">
+      <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Selective Reporting</label>
         <description><![CDATA[
-Enable selective reporting.<br /><h1>Overview</h1><p>Enable selective reporting only when power change reaches</p> <p>a certain threshold or percentage set in 4‐10 below. This is</p> <p>used to reduce network traffic. (0 == disable, 1 == enable)</p>
+Enable selective reporting.<br /><h1>Overview</h1><p>Enable selective reporting only when power change reaches a certain threshold or percentage set in 4‐10 below. This is used to reduce network traffic. (0 == disable, 1 == enable)</p>
         ]]></description>
         <default>1</default>
+        <options>
+          <option value="0">Disable</option>
+          <option value="1">Enable</option>
+        </options>
       </parameter>
 
       <parameter name="config_4_2" type="integer" groupName="configuration"
                  min="0" max="60000">
         <label>4: Current Threshold - Whole HEM</label>
-        <description>Threshold change in wattage (Whole HEM).</description>
+        <description>Threshold change in wattage to induce an automatic report (Whole HEM).</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_5_2" type="integer" groupName="configuration"
                  min="0" max="60000">
         <label>5: Current Threshold - Clamp 1</label>
-        <description>Threshold change in wattage (Clamp 1).</description>
+        <description>Threshold change in wattage to induce an automatic report (Clamp 1).</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_6_2" type="integer" groupName="configuration"
                  min="0" max="60000">
         <label>6: Current Threshold - Clamp 2</label>
-        <description>Threshold change in wattage (Clamp 2).</description>
+        <description>Threshold change in wattage to induce an automatic report (Clamp 2).</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_7_2" type="integer" groupName="configuration"
                  min="0" max="60000">
         <label>7: Current Threshold - Clamp 3</label>
-        <description>Threshold change in wattage (Clamp 3).</description>
+        <description>Threshold change in wattage to induce an automatic report (Clamp 3).</description>
         <default>50</default>
       </parameter>
 
@@ -261,7 +264,7 @@ Which reports need to send in Report group 3<br /><h1>Overview</h1><p>See Report
       <parameter name="config_111_4" type="integer" groupName="configuration"
                  min="1" max="2147483647">
         <label>111: Interval to send out reports of group 1</label>
-        <default>60</default>
+        <default>5</default>
       </parameter>
 
       <parameter name="config_112_4" type="integer" groupName="configuration"

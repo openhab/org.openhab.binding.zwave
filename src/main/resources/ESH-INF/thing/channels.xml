@@ -1125,6 +1125,16 @@
         </state>
     </channel-type>
 
+    <!-- Seismic Channel -->
+    <channel-type id="sensor_smoke">
+        <item-type>Number</item-type>
+        <label>Smoke Level</label>
+        <description>Indicates the current smoke level</description>
+        <category></category>
+        <state pattern="%.1f" readOnly="true">
+        </state>
+    </channel-type>
+
     <!-- Temperature Channel -->
     <channel-type id="sensor_temperature">
         <item-type>Number:Temperature</item-type>

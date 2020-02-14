@@ -27,7 +27,7 @@ Light Switch 1 Channel<br /><h1>Overview</h1><p>Light Switch is an intelligent d
       <property name="vendor">Shenzhen Neo Electronics Co., Ltd</property>
       <property name="modelId">EU-1</property>
       <property name="manufacturerId">0258</property>
-      <property name="manufacturerRef">0003:108C</property>
+      <property name="manufacturerRef">0003:108C,0003:208C</property>
       <property name="dbReference">679</property>
       <property name="defaultAssociations">1</property>
     </properties>
