@@ -14,10 +14,10 @@ Multi-purpose sensor<br /><h1>Overview</h1><p>MCOHome A8-9 is a Z-Wave enabled m
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="alarm_smoke" typeId="alarm_smoke">
+      <channel id="sensor_smoke" typeId="sensor_smoke">
         <label>Sensor (smoke)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=SMOKE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=SMOKE_DENSITY</property>
         </properties>
       </channel>
       <channel id="sensor_relhumidity" typeId="sensor_relhumidity">
@@ -38,7 +38,7 @@ Multi-purpose sensor<br /><h1>Overview</h1><p>MCOHome A8-9 is a Z-Wave enabled m
           <property name="binding:*:QuantityType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
         </properties>
       </channel>
-      <channel id="alarm_co2" typeId="alarm_co2">
+      <channel id="sensor_co2" typeId="sensor_co2">
         <label>Sensor (CO2)</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=CO2</property>

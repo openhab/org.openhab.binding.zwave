@@ -50,7 +50,7 @@ Flood Sensor<br /><h1>Overview</h1><p><strong>FIBARO Flood Sensor</strong> is a 
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGFS101</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0B00:1001,0B00:2001,0B01:1003</property>
+      <property name="manufacturerRef">0B00:1001,0B00:2001,0B01:1003,0B00:4001</property>
       <property name="versionMin">23.23</property>
       <property name="dbReference">408</property>
       <property name="commandClass:COMMAND_CLASS_SENSOR_ALARM:2">add</property>

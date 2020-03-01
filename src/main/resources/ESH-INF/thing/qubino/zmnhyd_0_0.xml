@@ -146,9 +146,9 @@ Change of power consumption [Watt] reporting threshold<br /><h1>Overview</h1><p>
 
       <parameter name="config_41_2" type="integer" groupName="configuration"
                  min="0" max="32535">
-        <label>41: Treshold time for power reporting</label>
+        <label>41: Threshold time for power reporting</label>
         <description><![CDATA[
-Treshold time for power reporting [Watt]<br /><h1>Overview</h1><p>Set value refers to the time interval with which power consumption in Watts is reported (0 – 32535 seconds). If 300 is entered (by default), energy consumption reports will be sent to the gateway (hub) every 300 seconds (or 5 minutes).</p> <ul><li>0 - Power consumption reporting disabled</li> <li>30 - 32535 = 30 - 32535 seconds. Power consumption reporting enabled. Report is sent according to time interval (value) set here.</li> </ul><p>The device is reporting the following values (if there was a change): Power [W], Voltage [V] and Current [A]</p>
+Threshold time for power reporting [Seconds]<br /><h1>Overview</h1><p>Set value refers to the time interval with which power consumption in Watts is reported (0 – 32535 seconds). If 300 is entered (by default), energy consumption reports will be sent to the gateway (hub) every 300 seconds (or 5 minutes).</p> <ul><li>0 - Power consumption reporting disabled</li> <li>30 - 32535 = 30 - 32535 seconds. Power consumption reporting enabled. Report is sent according to time interval (value) set here.</li> </ul><p>The device is reporting the following values (if there was a change): Power [W], Voltage [V] and Current [A]</p>
         ]]></description>
         <default>0</default>
       </parameter>
@@ -157,7 +157,7 @@ Treshold time for power reporting [Watt]<br /><h1>Overview</h1><p>Set value refe
                  min="0" max="32535">
         <label>42: Power Consumption Reporting Time Threshold</label>
         <description><![CDATA[
-Power Consumption Reporting Time Threshold [Watt]<br /><h1>Overview</h1><p>Set value refers to the time interval with which power consumption in Watts is reported (0 – 32535 seconds).</p> <p>If 300 is entered (by default), energy consumption reports will be sent to the gateway (hub) every 300 seconds (or 5 minutes).</p> <p>Values :</p> <ul><li>0 : Power consumption reporting disabled </li> <li>30 - 32535 : 30 - 32535 seconds. Power consumption reporting enabled. Report is sent according to time interval (value) set here. </li> </ul>
+Power Consumption Reporting Time Threshold [Seconds]<br /><h1>Overview</h1><p>Set value refers to the time interval with which power consumption in Watts is reported (0 – 32535 seconds).</p> <p>If 300 is entered (by default), energy consumption reports will be sent to the gateway (hub) every 300 seconds (or 5 minutes).</p> <p>Values :</p> <ul><li>0 : Power consumption reporting disabled</li> <li>30 - 32535 : 30 - 32535 seconds. Power consumption reporting enabled. Report is sent according to time interval (value) set here.</li> </ul>
         ]]></description>
         <default>0</default>
       </parameter>

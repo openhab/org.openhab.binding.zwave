@@ -32,6 +32,12 @@ Red Series On/Off switch<br /><h1>Overview</h1><p>Inovelli’s new on/off switch
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
         </properties>
       </channel>
+      <channel id="meter_reset" typeId="meter_reset">
+        <label>Reset Meter [Deprecated]</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_METER</property>
+        </properties>
+      </channel>
       <channel id="scene_number" typeId="scene_number">
         <label>Scene Number</label>
         <properties>
@@ -307,16 +313,6 @@ Periodic Power &amp; Energy Reports<br /><h1>Overview</h1><p>Time period between
 Energy Reports<br /><h1>Overview</h1><p>The energy level change that will result in a new energy report being sent (% of previous report)</p> <p>0 = Disabled</p> <p>10 = 10% of previous report</p> <p>100 = 100% of previous report</p>
         ]]></description>
         <default>10</default>
-        <limitToOptions>false</limitToOptions>
-      </parameter>
-
-      <parameter name="config_12_1" type="integer" groupName="configuration"
-                 min="0" max="15">
-        <label>12: *DELETE ME* was added to wrong device</label>
-        <description><![CDATA[
-Association Behavior<br /><h1>Overview</h1><p>When should the switch send commands to the associated devices:</p> <p>01 = Local, 02 = 3-Way, 03 = 3-Way &amp; Local, 04 = Z-Wave Hub, 05 = Z-Wave Hub &amp; Local, 06 = Z-Wave Hub &amp; 3-Way, 07 = Z-Wave Hub &amp; Local &amp; 3-Way, 08 = Timer, 09 = Timer &amp; Local, 10 = Timer &amp; 3-Way, 11 =Timer &amp; 3-Way &amp; Local, 12 = Timer &amp; Z-Wave Hub, 13 = Timer &amp; Z-Wave Hub &amp; Local, 14 = Timer &amp; Z-Wave Hub &amp; 3-Way, 15 = All</p>
-        ]]></description>
-        <default>15</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 

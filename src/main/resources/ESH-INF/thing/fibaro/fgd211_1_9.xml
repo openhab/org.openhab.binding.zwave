@@ -141,6 +141,7 @@ Options for changing parameter 1-255<br /><h1>Overview</h1><p>Options for changi
         <options>
           <option value="0">Mono-stable input (button)</option>
           <option value="1">Bi-stable input (switch)</option>
+          <option value="2">Roller Blind Switch</option>
         </options>
       </parameter>
 
