@@ -32,6 +32,12 @@ Fibaro Wall Plug<br /><h1>Overview</h1><p>FIBARO Wall Plug is a universal, Z-Wav
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
         </properties>
       </channel>
+      <channel id="meter_reset" typeId="meter_reset">
+        <label>Reset Meter</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_METER</property>
+        </properties>
+      </channel>
       <channel id="alarm_system" typeId="alarm_system">
         <label>Alarm (system)</label>
         <properties>
@@ -42,6 +48,66 @@ Fibaro Wall Plug<br /><h1>Overview</h1><p>FIBARO Wall Plug is a universal, Z-Wav
         <label>Alarm (power)</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary1" typeId="switch_binary">
+        <label>Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1,COMMAND_CLASS_BASIC:1</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh1" typeId="meter_kwh">
+        <label>Electric meter (kWh)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts1" typeId="meter_watts">
+        <label>Electric meter (watts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="meter_reset1" typeId="meter_reset">
+        <label>Reset Meter</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_METER:1</property>
+        </properties>
+      </channel>
+      <channel id="alarm_system1" typeId="alarm_system">
+        <label>Alarm (system)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:1;type=SYSTEM</property>
+        </properties>
+      </channel>
+      <channel id="alarm_power1" typeId="alarm_power">
+        <label>Alarm (power)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:1;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="protection_local1" typeId="protection_local">
+        <label>Protection Local</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_PROTECTION:1;type=PROTECTION_LOCAL</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh2" typeId="meter_kwh">
+        <label>Electric meter (kWh)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts2" typeId="meter_watts">
+        <label>Electric meter (watts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="meter_reset2" typeId="meter_reset">
+        <label>Reset Meter</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_METER:2</property>
         </properties>
       </channel>
     </channels>
@@ -87,7 +153,7 @@ Remember device status before the power failure.<br /><h1>Overview</h1><p>This p
                  min="0" max="18000">
         <label>3: Overload</label>
         <description><![CDATA[
-Overload safety switch.<br /><h1>Overview</h1><p><strong>0</strong> - function inactive (<strong>default</strong>).</p> <p><strong>10-18000</strong> - (1.0-1800.0W, step 0.1W) - power threshold.</p> <p>This function allows to turn off the controlled device in case of exceeding the defined power. Controlled device can be turned back on via button or sending a control frame. By default this function is inactive. </p>
+Overload safety switch.<br /><h1>Overview</h1><p>0 - function inactive (default).</p> <p>10-18000 - (1.0-1800.0W, step 0.1W) - power threshold.</p> <p>This function allows to turn off the controlled device in case of exceeding the defined power. Controlled device can be turned back on via button or sending a control frame. By default this function is inactive. </p>
         ]]></description>
         <default>0</default>
         <options>
@@ -100,7 +166,7 @@ Overload safety switch.<br /><h1>Overview</h1><p><strong>0</strong> - function i
                  min="0" max="100">
         <label>11: PowerReporting</label>
         <description><![CDATA[
-Power reporting.<br /><h1>Overview</h1><p><strong>0</strong> - power reports inactive.</p> <p><strong>1-100</strong> - power change in percent; <strong>default 15%</strong>.</p> <p>This parameter determines the minimum percentage change in active power consumption (in relation to the previously reported) that will result in sending new power report. </p>
+Power reporting.<br /><h1>Overview</h1><p>0 - power reports inactive.</p> <p>1-100 - power change in percent; default 15%.</p> <p>This parameter determines the minimum percentage change in active power consumption (in relation to the previously reported) that will result in sending new power report. </p>
         ]]></description>
         <default>15</default>
         <options>
@@ -113,7 +179,7 @@ Power reporting.<br /><h1>Overview</h1><p><strong>0</strong> - power reports ina
                  min="0" max="500">
         <label>12: EnergyReportingThreshold</label>
         <description><![CDATA[
-Energy reporting threshold.<br /><h1>Overview</h1><p><strong>0</strong> - energy reports inactive.</p> <p><strong>1-500</strong> - (0.01-5kWh, step 0.01kWh) - threshold; <strong>default 10 (0.1kWh)</strong>.</p>
+Energy reporting threshold.<br /><h1>Overview</h1><p>0 - energy reports inactive.</p> <p>1-500 - (0.01-5kWh, step 0.01kWh) - threshold; default 10 (0.1kWh).</p>
         ]]></description>
         <default>10</default>
         <options>
@@ -126,7 +192,7 @@ Energy reporting threshold.<br /><h1>Overview</h1><p><strong>0</strong> - energy
                  min="0" max="32400">
         <label>13: ReportingInterval</label>
         <description><![CDATA[
-Periodic power reporting.<br /><h1>Overview</h1><p><strong>0</strong> - periodic reports inactive.</p> <p><strong>30-32400</strong> - In seconds; <strong>default 3600 (1h).</strong></p> <p>This parameter defines time period between independent reports sent when changes in power load have not been recorded or if changes are insignificant. By default reports are sent every hour.</p>
+Periodic power reporting.<br /><h1>Overview</h1><p>0 - periodic reports inactive.</p> <p>30-32400 - In seconds; default 3600 (1h).</p> <p>This parameter defines time period between independent reports sent when changes in power load have not been recorded or if changes are insignificant. By default reports are sent every hour.</p>
         ]]></description>
         <default>3600</default>
         <options>
@@ -139,7 +205,7 @@ Periodic power reporting.<br /><h1>Overview</h1><p><strong>0</strong> - periodic
                  min="0" max="32400">
         <label>14: ReportingEnergyInterval</label>
         <description><![CDATA[
-Periodic energy reporting.<br /><h1>Overview</h1><p><strong>0</strong> - periodic reports inactive.</p> <p><strong>30-32400</strong> - In seconds; <strong>default 3600 (1h)</strong>.</p> <p>This parameter defines time period between independent reports sent when changes in power load have not been recorded or if changes are insignificant. By default reports are sent every hour.</p>
+Periodic energy reporting.<br /><h1>Overview</h1><p>0 - periodic reports inactive.</p> <p>30-32400 - In seconds; default 3600 (1h).</p> <p>This parameter defines time period between independent reports sent when changes in power load have not been recorded or if changes are insignificant. By default reports are sent every hour.</p>
         ]]></description>
         <default>3600</default>
         <options>
@@ -164,7 +230,7 @@ Measuring energy consumed by the Wall Plug itself.<br /><h1>Overview</h1><p>This
                  min="100" max="18000">
         <label>21: Up Value</label>
         <description><![CDATA[
-Upper power threshold.<br /><h1>Overview</h1><p><strong>[UP value - "On/Off (Power)" association group (3) .]</strong></p> <p><strong>100-18000</strong> - (10.0-1800.0W, step 0.1W); <strong>default 500 (50W)</strong>.</p> <p>Upper power threshold, used in parameter 23. UP value cannot be lower than a value specified in parameter 22.</p>
+Upper power threshold.<br /><h1>Overview</h1><p>[UP value - "On/Off (Power)" association group (3) .]</p> <p>100-18000 - (10.0-1800.0W, step 0.1W); default 500 (50W).</p> <p>Upper power threshold, used in parameter 23. UP value cannot be lower than a value specified in parameter 22.</p>
         ]]></description>
         <default>500</default>
         <limitToOptions>false</limitToOptions>
@@ -174,7 +240,7 @@ Upper power threshold.<br /><h1>Overview</h1><p><strong>[UP value - "On/Off (Pow
                  min="0" max="17900">
         <label>22: Down value</label>
         <description><![CDATA[
-Lower power threshold.<br /><h1>Overview</h1><p><strong>[DOWN value - "On/Off (Power)" association group (3).]</strong></p> <p><strong>0-17900</strong> - (0.0-1790.0W, step 0.1W); <strong>default 300 (30W)</strong>.</p> <p>Lower power threshold, used in parameter 23. DOWN value cannot be higher than a value specified in parameter 21.</p>
+Lower power threshold.<br /><h1>Overview</h1><p>[DOWN value - "On/Off (Power)" association group (3).]</p> <p>0-17900 - (0.0-1790.0W, step 0.1W); default 300 (30W).</p> <p>Lower power threshold, used in parameter 23. DOWN value cannot be higher than a value specified in parameter 21.</p>
         ]]></description>
         <default>300</default>
         <limitToOptions>false</limitToOptions>
@@ -183,7 +249,7 @@ Lower power threshold.<br /><h1>Overview</h1><p><strong>[DOWN value - "On/Off (P
       <parameter name="config_23_1" type="integer" groupName="configuration">
         <label>23: Controlling</label>
         <description><![CDATA[
-Controlling 3rd association group devices.<br /><h1>Overview</h1><p><strong>[Controlling "On/Off (Power)" association group (3).]</strong></p> <p>This parameter defines the way that 3rd association group devices are controlled. Depends on the actual measured power (according to parameters 21 and 22 settings).</p>
+Controlling 3rd association group devices.<br /><h1>Overview</h1><p>[Controlling "On/Off (Power)" association group (3).]</p> <p>This parameter defines the way that 3rd association group devices are controlled. Depends on the actual measured power (according to parameters 21 and 22 settings).</p>
         ]]></description>
         <default>3</default>
         <options>
@@ -197,7 +263,7 @@ Controlling 3rd association group devices.<br /><h1>Overview</h1><p><strong>[Con
                  min="0" max="255">
         <label>24: Switch On</label>
         <description><![CDATA[
-Command frame sent to devices in 2nd group.<br /><h1>Overview</h1><p><strong> [SWITCH ON value - "On/Off (Button)" association group (2).]</strong></p> <p><strong>1-99</strong> - forcing level of associated devices.</p> <p>The value of BASIC SET command frame sent to the devices associated in 2nd group "On/Off (Button)" when turning the device ON using the button.</p>
+Command frame sent to devices in 2nd group.<br /><h1>Overview</h1><p> [SWITCH ON value - "On/Off (Button)" association group (2).]</p> <p>1-99 - forcing level of associated devices.</p> <p>The value of BASIC SET command frame sent to the devices associated in 2nd group "On/Off (Button)" when turning the device ON using the button.</p>
         ]]></description>
         <default>255</default>
         <options>
@@ -211,7 +277,7 @@ Command frame sent to devices in 2nd group.<br /><h1>Overview</h1><p><strong> [
                  min="0" max="255">
         <label>25: Switch Off</label>
         <description><![CDATA[
-Command frame sent to devices in 2nd group.<br /><h1>Overview</h1><p> <strong>[SWITCH OFF value - "On/Off (Button)" association group (2).]</strong></p> <p><b>1-99 </b>- forcing level of associated devices.</p> <p>The value of BASIC SET command frame sent to the devices associated in 2nd group "On/Off (Button)" when turning the device OFF using the button.</p>
+Command frame sent to devices in 2nd group.<br /><h1>Overview</h1><p> [SWITCH OFF value - "On/Off (Button)" association group (2).]</p> <p>1-99 - forcing level of associated devices.</p> <p>The value of BASIC SET command frame sent to the devices associated in 2nd group "On/Off (Button)" when turning the device OFF using the button.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -225,7 +291,7 @@ Command frame sent to devices in 2nd group.<br /><h1>Overview</h1><p> <strong>[
                  min="0" max="255">
         <label>26: Threshold Up.</label>
         <description><![CDATA[
-Command frame sent to the devices in 3rd group.<br /><h1>Overview</h1><p><strong>[THRESHOLD UP value - "On/Off (Power)" association group (3).]</strong></p> <p><b>1-99 </b>- forcing level of associated devices.</p> <p>The value of BASIC SET command frame sent to the devices associated in 3rd group "On/Off (Power)" if power exceeded value of parameter 21.</p>
+Command frame sent to the devices in 3rd group.<br /><h1>Overview</h1><p>[THRESHOLD UP value - "On/Off (Power)" association group (3).]</p> <p>1-99 - forcing level of associated devices.</p> <p>The value of BASIC SET command frame sent to the devices associated in 3rd group "On/Off (Power)" if power exceeded value of parameter 21.</p>
         ]]></description>
         <default>255</default>
         <options>
@@ -239,7 +305,7 @@ Command frame sent to the devices in 3rd group.<br /><h1>Overview</h1><p><strong
                  min="0" max="255">
         <label>27: Threshold Down.</label>
         <description><![CDATA[
-Command frame sent to the devices in 3rd group.<br /><h1>Overview</h1><p><strong> [THRESHOLD DOWN value - "On/Off (Power)" association group (3).]</strong></p> <p><b>1-99 </b>- forcing level of associated devices.</p> <p>The value of BASIC SET command frame sent to the devices associated in 3rd group "On/Off (Power)" if power dropped below value of parameter 22.</p>
+Command frame sent to the devices in 3rd group.<br /><h1>Overview</h1><p> [THRESHOLD DOWN value - "On/Off (Power)" association group (3).]</p> <p>1-99 - forcing level of associated devices.</p> <p>The value of BASIC SET command frame sent to the devices associated in 3rd group "On/Off (Power)" if power dropped below value of parameter 22.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -270,7 +336,7 @@ Network alarms to which the Wall Plug will respond.<br /><h1>Overview</h1><p>Def
                  min="0" max="50">
         <label>31: Response to alarm frames.</label>
         <description><![CDATA[
-Wall plug response to alarms.<br /><h1>Overview</h1><p><strong>5-50</strong> (0.5-5.0s, step 0.1s) - cyclically change device state with set period.</p> <p>This parameter defines how the Wall Plug will respond to alarms (device’s status change). In case of values 1 or 2 the Wall Plug is operating normally and LED frame signals an alarm through time defined in parameter 32 or until the alarm is canceled. In case of values 5 to 50 the Wall Plug does not report status change, power changes, ignores BASIC SET command frames. After time defined in parameter 32 or after the alarm cancellation, connected device is set to the previous state.</p>
+Wall plug response to alarms.<br /><h1>Overview</h1><p>5-50 (0.5-5.0s, step 0.1s) - cyclically change device state with set period.</p> <p>This parameter defines how the Wall Plug will respond to alarms (device’s status change). In case of values 1 or 2 the Wall Plug is operating normally and LED frame signals an alarm through time defined in parameter 32 or until the alarm is canceled. In case of values 5 to 50 the Wall Plug does not report status change, power changes, ignores BASIC SET command frames. After time defined in parameter 32 or after the alarm cancellation, connected device is set to the previous state.</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -285,7 +351,7 @@ Wall plug response to alarms.<br /><h1>Overview</h1><p><strong>5-50</strong> (0.
                  min="1" max="32400">
         <label>32: Alarm state duration.</label>
         <description><![CDATA[
-Specifies the duration of the alarm state.<br /><h1>Overview</h1><p><strong>1-32400</strong> (in seconds).</p> <p><strong>600 (default).</strong></p> <p>This parameter specifies the duration of alarm state. If a device sending an alarm frame through the Z-Wave network sets alarm duration as well, this settings are ignored.</p> <p><strong>NOTE</strong>: The alarm may be canceled by pressing and holding the button.</p>
+Specifies the duration of the alarm state.<br /><h1>Overview</h1><p>1-32400 (in seconds).</p> <p>600 (default).</p> <p>This parameter specifies the duration of alarm state. If a device sending an alarm frame through the Z-Wave network sets alarm duration as well, this settings are ignored.</p> <p>NOTE: The alarm may be canceled by pressing and holding the button.</p>
         ]]></description>
         <default>600</default>
         <limitToOptions>false</limitToOptions>
@@ -295,7 +361,7 @@ Specifies the duration of the alarm state.<br /><h1>Overview</h1><p><strong>1-32
                  min="1000" max="18000">
         <label>40: Power load for violet color.</label>
         <description><![CDATA[
-Maximum active power to flash the LED frame Violet.<br /><h1>Overview</h1><p><strong>1000-18000</strong> (100.0-1800.0W, step 0.1W).</p> <p><strong>18000 (1800W; Default).</strong></p> <p>This parameter determines maximum active power value, which when exceeded, causes the LED frame to flash violet. Function is active only when parameter 41 is set to 1 or 2.</p>
+Maximum active power to flash the LED frame Violet.<br /><h1>Overview</h1><p>1000-18000 (100.0-1800.0W, step 0.1W).</p> <p>18000 (1800W; Default).</p> <p>This parameter determines maximum active power value, which when exceeded, causes the LED frame to flash violet. Function is active only when parameter 41 is set to 1 or 2.</p>
         ]]></description>
         <default>18000</default>
         <limitToOptions>false</limitToOptions>
@@ -364,14 +430,14 @@ Z-Wave alarm illumination.<br /><h1>Overview</h1><p>This parameter defines the i
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
         <description><![CDATA[
-Reports the device status.<br /><h1>Overview</h1><p><strong>1st Association Group – “Lifeline”</strong> (for root, endpoint 1 and 2) reports the device status and allows for assigning single device only (main controller by default).</p>
+Reports the device status.<br /><h1>Overview</h1><p>1st Association Group – “Lifeline” (for root, endpoint 1 and 2) reports the device status and allows for assigning single device only (main controller by default).</p>
         ]]></description>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: On/Off (Button)</label>
         <description><![CDATA[
-On or off when relay status is changed using the button.<br /><h1>Overview</h1><p><strong>2nd Association Group – “On/Off (Button)”</strong> (for root and endpoint 1) devices in this group will be switched on or off when relay status is changed using the button (uses Basic command class). </p>
+On or off when relay status is changed using the button.<br /><h1>Overview</h1><p>2nd Association Group – “On/Off (Button)” (for root and endpoint 1) devices in this group will be switched on or off when relay status is changed using the button (uses Basic command class). </p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
@@ -379,7 +445,7 @@ On or off when relay status is changed using the button.<br /><h1>Overview</h1><
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: On/Off (Plug power)</label>
         <description><![CDATA[
-Switched On/Off based on the current load of plugged device.<br /><h1>Overview</h1><p><strong>3rd Association Group – “On/Off (Plug power)”</strong> (for root and endpoint 1) devices in this group will be switched on or off depending on the current load of plugged device (uses Basic command class).</p>
+Switched On/Off based on the current load of plugged device.<br /><h1>Overview</h1><p>3rd Association Group – “On/Off (Plug power)” (for root and endpoint 1) devices in this group will be switched on or off depending on the current load of plugged device (uses Basic command class).</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
