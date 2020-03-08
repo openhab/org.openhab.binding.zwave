@@ -652,6 +652,110 @@ OFF indication RGB-saturation for pushbutton 4.<br /><h1>Overview</h1><p>This pa
         <multipleLimit>5</multipleLimit>
       </parameter>
 
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Basic Report, Pushbutton 1</label>
+        <description><![CDATA[
+Basic Report, Pushbutton 1<br /><h1>Overview</h1><p>Nodes in this group also receive Basic Report with the actual state of pushbutton 1. It can be used by other MATRIX devices to update their internal pushbutton states. Normally the state is reported by the controlled device, but in cases where this is not possible, the MATRIX devices can get synchronised by reporting to each other.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Binary Switch Report, Pushbutton 1</label>
+        <description><![CDATA[
+Binary Switch Report, Pushbutton 1<br /><h1>Overview</h1><p>Nodes in this group receive Binary Switch Set commands when pushbutton 1 is operated. It can be used for controlling other Z-Wave devices, e.g. a relay module.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_4" type="text" groupName="association" multiple="true">
+        <label>4: Multi-Level Report, Pushbutton 1</label>
+        <description><![CDATA[
+Multi-Level Report, Pushbutton 1<br /><h1>Overview</h1><p>Nodes in this group receive Multi-Level Switch Set / Multi-Level Switch Start Level Change / Multi-Level Switch Stop Level Change when pushbutton 1 is operated. It can, as an example, be used for controlling light dimmers.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_5" type="text" groupName="association" multiple="true">
+        <label>5: Basic Report, Pushbutton 2</label>
+        <description><![CDATA[
+<br /><h1>Overview</h1><p>Nodes in this group also receives Basic Report with the actual state of pushbutton 2. It can be used by other MATRIX devices to update their internal pushbutton states. Normally the state is reported by the controlled device, but in cases where this is not possible, the MATRIX devices can get synchronised by reporting to each other.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_6" type="text" groupName="association" multiple="true">
+        <label>6: Binary Switch Report, Pushbutton 2</label>
+        <description><![CDATA[
+Binary Switch Report, Pushbutton 2<br /><h1>Overview</h1><p>Nodes in this group receives Binary Switch Set commands when pushbutton 2 is operated. It can be used for controlling other Z-Wave devices, e.g. a relay module.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_7" type="text" groupName="association" multiple="true">
+        <label>7: Multi-Level Report, Pushbutton 2</label>
+        <description><![CDATA[
+Multi-Level Report, Pushbutton 2<br /><h1>Overview</h1><p>Nodes in this group receives Multi-Level Switch Set / Multi-Level Switch Start Level Change / Multi-Level Switch Stop Level Change when pushbutton 2 is operated. It can, as an example, be used for controlling light dimmers.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_8" type="text" groupName="association" multiple="true">
+        <label>8: Basic Report, Pushbutton 3</label>
+        <description><![CDATA[
+Basic Report, Pushbutton 3<br /><h1>Overview</h1><p>Nodes in this group also receives Basic Report with the actual state of pushbutton 3. It can be used by other MATRIX devices to update their internal pushbutton states. Normally the state is reported by the controlled device, but in cases where this is not possible, the MATRIX devices can get synchronised by reporting to each other.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_9" type="text" groupName="association" multiple="true">
+        <label>9: Binary Switch Report, Pushbutton 3</label>
+        <description><![CDATA[
+Binary Switch Report, Pushbutton 3<br /><h1>Overview</h1><p>Nodes in this group receives Binary Switch Set commands when pushbutton 3 is operated. It can be used for controlling other Z-Wave devices, e.g. a relay module.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_10" type="text" groupName="association" multiple="true">
+        <label>10: Multi-Level Report, Pushbutton 3</label>
+        <description><![CDATA[
+Multi-Level Report, Pushbutton 3<br /><h1>Overview</h1><p>Nodes in this group receives Multi-Level Switch Set / Multi-Level Switch Start Level Change / Multi-Level Switch Stop Level Change when pushbutton 3 is operated. It can, as an example, be used for controlling light dimmers.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_11" type="text" groupName="association" multiple="true">
+        <label>11: Basic Report, Pushbutton 4</label>
+        <description><![CDATA[
+Basic Report, Pushbutton 4<br /><h1>Overview</h1><p>Nodes in this group also receives Basic Report with the actual state of pushbutton 4. It can be used by other MATRIX devices to update their internal pushbutton states. Normally the state is reported by the controlled device, but in cases where this is not possible, the MATRIX devices can get synchronised by reporting to each other.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_12" type="text" groupName="association" multiple="true">
+        <label>12: Binary Switch Report, Pushbutton 4</label>
+        <description><![CDATA[
+Binary Switch Report, Pushbutton 4<br /><h1>Overview</h1><p>Nodes in this group receives Binary Switch Set commands when pushbutton 4 is operated. It can be used for controlling other Z-Wave devices, e.g. a relay module.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_13" type="text" groupName="association" multiple="true">
+        <label>13: Multi-Level Report, Pushbutton 4</label>
+        <description><![CDATA[
+Multi-Level Report, Pushbutton 4<br /><h1>Overview</h1><p>Nodes in this group receives Multi-Level Switch Set / Multi-Level Switch Start Level Change / Multi-Level Switch Stop Level Change when pushbutton 4 is operated. It can, as an example, be used for controlling light dimmers.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_14" type="text" groupName="association" multiple="true">
+        <label>14: Dimmer Basic Report</label>
+        <description><![CDATA[
+Dimmer Basic Report<br /><h1>Overview</h1><p>Sends Basic Report with information about the actual level for the dimmer. This report is used by other MATRIX devices that are used for controlling this dimmer.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
       <!-- STATIC DEFINITIONS -->
       <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
         <label>Node ID</label>

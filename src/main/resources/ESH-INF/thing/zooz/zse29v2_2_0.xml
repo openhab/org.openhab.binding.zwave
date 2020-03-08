@@ -146,7 +146,7 @@ Lux reporting frequency<br /><h1>Overview</h1><p>Set lux reporting frequency to 
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_7_2" type="integer" groupName="configuration"
+      <parameter name="config_7_2" type="integer" groupName="configuration" readOnly="true"
                  min="5" max="720">
         <label>7: Reading from physical motion clear knob</label>
         <description><![CDATA[

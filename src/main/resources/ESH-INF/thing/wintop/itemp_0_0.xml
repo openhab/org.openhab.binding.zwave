@@ -44,8 +44,9 @@ Contact and temperature sensor<br /><h1>Overview</h1><p>Binary &amp; Temperature
       <property name="vendor">Wintop</property>
       <property name="modelId">ITEMP</property>
       <property name="manufacturerId">0097</property>
-      <property name="manufacturerRef">1182:4501,1188:4501</property>
+      <property name="manufacturerRef">1182:4501,1188:4501,1188:5101</property>
       <property name="dbReference">216</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
