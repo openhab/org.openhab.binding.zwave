@@ -75,6 +75,32 @@ Aeotec LED Strip<br /><h1>Overview</h1><p>Aeotec LED Strip has been crafted to p
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
+      <parameter name="config_34_1" type="integer" groupName="configuration">
+        <label>34: Enable/disable last brightness level</label>
+        <description><![CDATA[
+Enable/disable last brightness level when using the Color Switch Set CC<br /><h1>Overview</h1><p>Enable/disable to turn on the last brightness level of the LED Strip when using the Color Switch Set CC to change its color.</p> <p>0=disable.</p> <p>1=enable.</p> <p>Others=ignore. </p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">disable</option>
+          <option value="1">enable</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_36_1" type="integer" groupName="configuration">
+        <label>36: Reboot/save/exit Colorful mode.</label>
+        <description><![CDATA[
+Reboot/save/exit Colorful mode.<br /><h1>Overview</h1><p>Reboot/save/exit Colorful mode.</p> <p>0=Un-reboot Colorful mode.</p> <p>1=Reboot Colorful mode.</p> <p>2=Exit Colorful mode.</p> <p>3=Save the current Colorful mode value and then to be exited. </p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Un-reboot Colorful mode</option>
+          <option value="1">Reboot Colorful mode</option>
+          <option value="2">Exit Colorful mode</option>
+          <option value="3">Save the current Colorful mode value</option>
+        </options>
+      </parameter>
+
       <parameter name="config_37_4_0000001F" type="integer" groupName="configuration"
                  min="0" max="30">
         <label>37: Color Change Speed Level</label>
@@ -157,6 +183,15 @@ Defines how the strip transitions between colors<br /><h1>Overview</h1><p>Note t
         </options>
       </parameter>
 
+      <parameter name="config_38_4" type="integer" groupName="configuration"
+                 min="0" max="4294967295">
+        <label>38: Change speed</label>
+        <description><![CDATA[
+Change speed<br /><h1>Overview</h1><p>Change speed:</p> <p>Value 1: The speed from OFF to ON.</p> <p>Value 2: The speed from ON to OFF.</p> <p>Value 3: Pause time of ON.</p> <p>Value 4: Pause time of OFF.  </p>
+        ]]></description>
+        <default>0</default>
+      </parameter>
+
       <parameter name="config_39_4_000000FF" type="integer" groupName="configuration"
                  min="0" max="5">
         <label>39: Multi Color, Single Color or Random Mode - Byte 4</label>
@@ -185,6 +220,21 @@ Defines how the strip transitions between colors<br /><h1>Overview</h1><p>Note t
         <default>3</default>
       </parameter>
 
+      <parameter name="config_40_1" type="integer" groupName="configuration">
+        <label>40: Colorful mode configuration</label>
+        <description><![CDATA[
+Colorful mode configuration<br /><h1>Overview</h1><p>Colorful mode configuration.</p> <p>1 = Rainbow mode.</p> <p>2 = Multi color mode.</p> <p>3 = Fade out and fade in (Red).</p> <p>4 = Fade out and fade in (Green).</p> <p>5 = Fade out and fade in (Blue).</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="1">Rainbow mode</option>
+          <option value="2">Multi color mode</option>
+          <option value="3">Fade out and fade in (Red)</option>
+          <option value="4">Fade out and fade in (Green)</option>
+          <option value="5">Fade out and fade in (Blue)</option>
+        </options>
+      </parameter>
+
       <parameter name="config_80_1" type="integer" groupName="configuration">
         <label>80: Notifications for Association Group 1</label>
         <description>Send notifications about strip state changes to association group 1</description>
@@ -193,6 +243,20 @@ Defines how the strip transitions between colors<br /><h1>Overview</h1><p>Note t
           <option value="0">No notifications</option>
           <option value="1">Hail CC</option>
           <option value="2">Basic CC report</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_112_1" type="integer" groupName="configuration">
+        <label>112: Dimmer mode</label>
+        <description><![CDATA[
+Dimmer mode:<br /><h1>Overview</h1><p>Dimmer mode:</p> <p>0 = Parabolic curve.</p> <p>1 = Index curve.</p> <p>2 = (Parabolic + Index)/2.</p> <p>3 = Linear. </p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Parabolic curve</option>
+          <option value="1">Index curve</option>
+          <option value="2">(Parabolic + Index)/2</option>
+          <option value="3">Linear</option>
         </options>
       </parameter>
 
