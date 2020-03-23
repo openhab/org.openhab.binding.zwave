@@ -27,7 +27,7 @@ Zooz Z-Wave On / Off Light Switch<br /><h1>Overview</h1><p>PRODUCT FEATURES: <b
       <property name="vendor">Willis Electric Co., Ltd.</property>
       <property name="modelId">ZEN21</property>
       <property name="manufacturerId">015D</property>
-      <property name="manufacturerRef">0111:231C</property>
+      <property name="manufacturerRef">0111:231C,B111:1E1C</property>
       <property name="dbReference">544</property>
       <property name="defaultAssociations">1</property>
     </properties>

@@ -28,7 +28,7 @@ Smart Dimmer Switch 200W LED<br /><h1>Overview</h1><p>Remotely controlled multi 
       <property name="vendor">EcoBright</property>
       <property name="modelId">EcoDim07</property>
       <property name="manufacturerId">0431</property>
-      <property name="manufacturerRef">0202:0001</property>
+      <property name="manufacturerRef">0202:0001,0202:0002</property>
       <property name="dbReference">1114</property>
       <property name="defaultAssociations">1</property>
     </properties>

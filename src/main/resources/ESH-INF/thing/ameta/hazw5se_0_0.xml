@@ -26,10 +26,10 @@ Door/Window Sensor<br /><h1>Overview</h1><ul><li>The AIBASE Door/Window Sensor c
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
         </properties>
       </channel>
-      <channel id="alarm_access" typeId="alarm_access">
-        <label>Alarm (access)</label>
+      <channel id="sensor_door" typeId="sensor_door">
+        <label>Sensor Door</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
+          <property name="binding:*:OpenClosedType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
