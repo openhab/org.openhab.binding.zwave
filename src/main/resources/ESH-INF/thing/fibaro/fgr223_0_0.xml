@@ -99,7 +99,7 @@ Roller Shutter 3<br /><h1>Overview</h1><p>FIBARO Roller Shutter 3 is a device d
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGR223</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0303:1000</property>
+      <property name="manufacturerRef">0303:1000,0303:3000</property>
       <property name="dbReference">983</property>
       <property name="defaultAssociations">1</property>
     </properties>
