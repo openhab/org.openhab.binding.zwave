@@ -17,7 +17,7 @@
       <channel id="scene_number" typeId="scene_number">
         <label>Scene Number</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SCENE_ACTIVATION,COMMAND_CLASS_BASIC</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SCENE_ACTIVATION,COMMAND_CLASS_BASIC;FORCEVERSION</property>
         </properties>
       </channel>
     </channels>
@@ -29,6 +29,16 @@
       <property name="manufacturerId">001D</property>
       <property name="manufacturerRef">0701:0206,0702:0209,0702:0261,0801:0206</property>
       <property name="dbReference">879</property>
+      <property name="commandClass:COMMAND_CLASS_NO_OPERATION">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_BASIC">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_SCENE_ACTIVATION">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_SCENE_ACTUATOR_CONF">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_SCENE_CONTROLLER_CONF">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_MANUFACTURER_SPECIFIC">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_NODE_NAMING">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_HAIL">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_ASSOCIATION">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_VERSION">setVersion=1</property>
       <property name="defaultAssociations">1,2,3,4</property>
     </properties>
 

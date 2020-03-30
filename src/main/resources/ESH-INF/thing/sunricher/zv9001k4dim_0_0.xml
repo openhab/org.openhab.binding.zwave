@@ -45,7 +45,7 @@
       <property name="vendor">Sunricher</property>
       <property name="modelId">ZV9001K4-DIM</property>
       <property name="manufacturerId">0330</property>
-      <property name="manufacturerRef">0300:A306</property>
+      <property name="manufacturerRef">0300:A306,0300:A310</property>
       <property name="dbReference">1191</property>
       <property name="defaultAssociations">1</property>
     </properties>
