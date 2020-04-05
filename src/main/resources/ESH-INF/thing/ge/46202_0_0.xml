@@ -23,7 +23,7 @@ GE Enbrighten Z-Wave Plus Smart Switch<br /><h1>Overview</h1><p>Home automation 
       <channel id="scene_number" typeId="scene_number">
         <label>Scene Number</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SCENE_ACTIVATION</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
         </properties>
       </channel>
     </channels>
@@ -53,6 +53,20 @@ GE Enbrighten Z-Wave Plus Smart Switch<br /><h1>Overview</h1><p>Home automation 
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
+      <parameter name="config_3_1" type="integer" groupName="configuration">
+        <label>3: LED Mode</label>
+        <description><![CDATA[
+LED Indication Configuration<br /><h1>Overview</h1><p>Sets mode for LED inside toggle switch</p>
+        ]]></description>
+        <default>2</default>
+        <options>
+          <option value="0">LED ON when switch is OFF</option>
+          <option value="1">LED ON when switch is ON</option>
+          <option value="2">LED always OFF</option>
+          <option value="3">LED Always ON</option>
+        </options>
+      </parameter>
+
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Invert Switch</label>
         <description><![CDATA[
@@ -62,6 +76,16 @@ Invert Switch<br /><h1>Overview</h1><p>If the switch is accidentally installed u
         <options>
           <option value="0">Normal Switch Install</option>
           <option value="1">Inverted Switch Install</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_19_1" type="integer" groupName="configuration">
+        <label>19: Alternate Exclusion</label>
+        <description>Set Alternate Exclusion Mode</description>
+        <default>0</default>
+        <options>
+          <option value="0">Press any button on the switch</option>
+          <option value="1">Alternate Exclusion</option>
         </options>
       </parameter>
 
