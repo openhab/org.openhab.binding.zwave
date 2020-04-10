@@ -14,12 +14,14 @@ Nano Shutter<br /><h1>Overview</h1><p>Aeotec Nano Shutter is a Z-Wave motor cont
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="blinds_control" typeId="blinds_control">
+      <channel id=" switch_dimmer" typeId=" switch_dimmer">
+        <label>Dimmer [Deprecated]</label>
+        <properties>
+        </properties>
+      </channel>
+      <channel id="blinds_control " typeId="blinds_control ">
         <label>Blinds Control</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:StopMoveType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:UpDownType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">

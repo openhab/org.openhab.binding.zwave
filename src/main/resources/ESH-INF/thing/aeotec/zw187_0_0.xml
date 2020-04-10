@@ -14,28 +14,10 @@ Recessed Door Sensor 7<br /><h1>Overview</h1><p>Aeotec Recessed Door Sensor (Gen
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Binary Sensor</label>
+      <channel id="sensor_door" typeId="sensor_door">
+        <label>Door State</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
-        </properties>
-      </channel>
-      <channel id="alarm_system" typeId="alarm_system">
-        <label>Alarm (system)</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=SYSTEM</property>
-        </properties>
-      </channel>
-      <channel id="alarm_access" typeId="alarm_access">
-        <label>Alarm (access)</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
-        </properties>
-      </channel>
-      <channel id="alarm_power" typeId="alarm_power">
-        <label>Alarm (power)</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
+          <property name="binding:*:OpenClosedType">COMMAND_CLASS_ALARM</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
