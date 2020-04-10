@@ -1058,6 +1058,16 @@
         </state>
     </channel-type>
 
+    <!-- Loudness Channel -->
+    <channel-type id="sensor_loudness">
+        <item-type>Number</item-type>
+        <label>Loudness</label>
+        <description>Indicates the loudness</description>
+        <category></category>
+        <state pattern="%.1f" readOnly="true">
+        </state>
+    </channel-type>
+
     <!-- Moisture Channel -->
     <channel-type id="sensor_moisture">
         <item-type>Number</item-type>
@@ -1159,6 +1169,16 @@
         <item-type>Number</item-type>
         <label>Velocity</label>
         <description>Indicates the current velocity</description>
+        <category></category>
+        <state pattern="%.1f" readOnly="true">
+        </state>
+    </channel-type>
+    
+    <!-- Volatile Organic Compounds Channel -->
+    <channel-type id="sensor_voc">
+        <item-type>Number</item-type>
+        <label>VOC</label>
+        <description>Indicates the Volatile Organic Compound level</description>
         <category></category>
         <state pattern="%.1f" readOnly="true">
         </state>

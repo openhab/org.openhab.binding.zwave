@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
+
+  <thing-type id="nietech_ms11z_04_000" listed="false">
+    <label>MS11Z Smart Dimmer Switch</label>
+    <description><![CDATA[
+Smart Dimmer Switch<br /><h1>Overview</h1><p>This product can be operated in any Z-Wave network with other Z-Wave certified devices from other manufacturers. All non-battery operated nodes within the network will act as repeaters regardless of vendor to increase reliability of the network.Each module is designed to act as a repeater,which will re-transmit a radio frequency (RF) signal by routing the signal ,around obstacles and radio dead spots to ensure that the signal is received at its intended destination.</p> <br /><h2>Inclusion Information</h2><p>ADD  the MS13Z from the existing Z-Wave home control network with your primary controller.</p> <p> ---Refer to your primary controller instructions to process the inclusion / exclusion setup procedure.</p> <p> ---When prompted by your primary controller, click the Up or Down button three times in one second.</p> <p>Include MS13Z to/from a Z-Wave Gateway with supporting Security.The MS13Z can support the Primary Controller that implemented the security S2.</p> <br /><h2>Exclusion Information</h2><p>Remove the MS13Z from the existing Z-Wave home control network with your primary controller.</p> <p> ---Refer to your primary controller instructions to process the inclusion / exclusion setup procedure.</p> <p> ---When prompted by your primary controller, click the Up or Down button three times in one second.</p> <p>Include MS13Z to/from a Z-Wave Gateway with supporting Security.The MS13Z can support the Primary Controller that implemented the security S2.</p>
+    ]]></description>
+    <category>WallSwitch</category>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+        </properties>
+      </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">NIE Technology</property>
+      <property name="modelId">MS11Z</property>
+      <property name="manufacturerId">0312</property>
+      <property name="manufacturerRef">FF00:FF04</property>
+      <property name="versionMin">4.0</property>
+      <property name="versionMax">4.0</property>
+      <property name="dbReference">1231</property>
+      <property name="defaultAssociations">1</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- GROUP DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter name="config_1_1" type="integer" groupName="configuration"
+                 min="0" max="1">
+        <label>1: Locally button function</label>
+        <description>Locally button function</description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration"
+                 min="0" max="3">
+        <label>2: LED indicator</label>
+        <description>LED indicator</description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_4_4" type="integer" groupName="configuration"
+                 min="0" max="65535">
+        <label>4: Auto turn off timer</label>
+        <description>Auto turn off timer</description>
+        <default>0</default>
+      </parameter>
+
+      <parameter name="config_6_1" type="integer" groupName="configuration"
+                 min="0" max="2">
+        <label>6: Restore state after power failure</label>
+        <description>Restore state after power failure</description>
+        <default>2</default>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Lifeline</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>
