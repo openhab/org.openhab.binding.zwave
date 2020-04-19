@@ -209,13 +209,13 @@ The illumination differential to report. Not applicable to TSP01.<br /><h1>Overv
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
-        <label>1: Reports</label>
-        <multipleLimit>7</multipleLimit>
+        <label>1: Lifeline</label>
+        <multipleLimit>8</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Light Control</label>
-        <multipleLimit>7</multipleLimit>
+        <multipleLimit>8</multipleLimit>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

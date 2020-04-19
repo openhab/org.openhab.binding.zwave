@@ -8,7 +8,7 @@
   <thing-type id="inovelli_lzw60_00_000" listed="false">
     <label>LZW60 4-in-1 motion sensor</label>
     <description><![CDATA[
-4-in-1 motion sensor<br /><h1>Overview</h1><ul><li>Light: Save energy by making sure lights don’t turn on if it’s bright enough.</li> <li>Motion: Be notified when you’re away and automate your lighting.</li> <li>Humidity: To avoid excess moisture, trigger fans and dehumidifiers.</li> <li>Temperature: Smarter climate control by monitoring every room in your home.</li> </ul><br /><h2>Inclusion Information</h2><p>Put your hub into inclusion mode and press the button on the back of the 4-in-1 sensor one time.</p> <br /><h2>Exclusion Information</h2><p>Put your hub into exclusion mode and press the button on the back of the 4-in-1 sensor one time.</p> <br /><h2>Wakeup Information</h2><p>To wake up the sensor so that your hub can send it configuration parameters quickly press on the button on the back 3 times.</p>
+4-in-1 motion sensor<br /><h1>Overview</h1><ul><li>Light: Save energy by making sure lights don’t turn on if it’s bright enough.</li> <li>Motion: Be notified when you’re away and automate your lighting.</li> <li>Humidity: To avoid excess moisture, trigger fans and dehumidifiers.</li> <li>Temperature: Smarter climate control by monitoring every room in your home.</li> </ul><br /><h2>Inclusion Information</h2><p>Put your hub into inclusion mode and press the button on the back of the 4-in-1 sensor one time.</p> <br /><h2>Exclusion Information</h2><p>Put your hub into exclusion mode and press the button on the back of the 4-in-1 sensor one time. </p> <br /><h2>Wakeup Information</h2><p>To wake up the sensor so that your hub can send it configuration parameters quickly press on the button on the back 3 times.</p>
     ]]></description>
     <category>MotionDetector</category>
 
@@ -163,9 +163,9 @@ Battery Reporting Interval<br /><h1>Overview</h1><p>The interval between when b
 
       <parameter name="config_110_1" type="integer" groupName="configuration"
                  min="0" max="1">
-        <label>110: Change Parameters 111-114 Back to Default Settings</label>
+        <label>110: Send Reports According to Threshold</label>
         <description><![CDATA[
-Change Parameters 111-114 Back to Default Settings<br /><h1>Overview</h1><p>If changes are made to parameters 111-114, you can set parameter 110 to 1 to reset 111-114 back to default.</p>
+Only send sensor reports if the below thresholds are met<br /><h1>Overview</h1><p>Only send sensor reports if the below thresholds are met. 1:Yes, 0:No</p>
         ]]></description>
         <default>0</default>
       </parameter>
