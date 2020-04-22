@@ -70,7 +70,8 @@ public class ZWaveIndicatorConverter extends ZWaveCommandClassConverter {
 
         switch (channel.getChannelTypeUID().getId()) {
             case "indicator_level":
-                if (indicator.property != IndicatorProperty.MULTILEVEL) {
+                if (indicator.property != IndicatorProperty.MULTILEVEL
+                        && indicator.property != IndicatorProperty.BINARY) {
                     return null;
                 }
                 state = new PercentType(indicator.value);
@@ -100,6 +101,7 @@ public class ZWaveIndicatorConverter extends ZWaveCommandClassConverter {
             Command command) {
 
         String indicatorStringType = channel.getArguments().get("type");
+        String indicatorStringProperty = channel.getArguments().get("property");
 
         ZWaveIndicatorCommandClass commandClass = (ZWaveIndicatorCommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_INDICATOR, channel.getEndpoint());
@@ -113,6 +115,9 @@ public class ZWaveIndicatorConverter extends ZWaveCommandClassConverter {
         switch (channel.getChannelTypeUID().getId()) {
             case "indicator_level":
                 property = IndicatorProperty.MULTILEVEL;
+                if ("BINARY".equalsIgnoreCase(indicatorStringProperty)) {
+                    property = IndicatorProperty.BINARY;
+                }
                 break;
             case "indicator_period":
                 property = IndicatorProperty.ON_OFF_PERIOD;
