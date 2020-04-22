@@ -68,7 +68,7 @@ public class ZWaveIndicatorConverter extends ZWaveCommandClassConverter {
             return null;
         }
 
-        switch (channel.getUID().getId()) {
+        switch (channel.getChannelTypeUID().getId()) {
             case "indicator_level":
                 if (indicator.property != IndicatorProperty.MULTILEVEL) {
                     return null;
@@ -88,7 +88,7 @@ public class ZWaveIndicatorConverter extends ZWaveCommandClassConverter {
                 state = new DecimalType(indicator.value);
                 break;
             default:
-                logger.warn("Unknown INDICATOR channel type {}", channel.getUID().getId());
+                logger.warn("Unknown INDICATOR channel type {}", channel.getChannelTypeUID().getId());
                 return null;
         }
 
@@ -110,7 +110,7 @@ public class ZWaveIndicatorConverter extends ZWaveCommandClassConverter {
 
         IndicatorProperty property = null;
 
-        switch (channel.getUID().getId()) {
+        switch (channel.getChannelTypeUID().getId()) {
             case "indicator_level":
                 property = IndicatorProperty.MULTILEVEL;
                 break;
@@ -121,7 +121,8 @@ public class ZWaveIndicatorConverter extends ZWaveCommandClassConverter {
                 property = IndicatorProperty.ON_OFF_CYCLES;
                 break;
             default:
-                logger.warn("NODE {}: Unknown INDICATOR channel type {}", node.getNodeId(), channel.getUID().getId());
+                logger.warn("NODE {}: Unknown INDICATOR channel type {}", node.getNodeId(),
+                        channel.getChannelTypeUID().getId());
                 return null;
         }
 
