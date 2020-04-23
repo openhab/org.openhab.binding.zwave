@@ -68,9 +68,10 @@ public class ZWaveIndicatorConverter extends ZWaveCommandClassConverter {
             return null;
         }
 
-        switch (channel.getUID().getId()) {
+        switch (channel.getChannelTypeUID().getId()) {
             case "indicator_level":
-                if (indicator.property != IndicatorProperty.MULTILEVEL) {
+                if (indicator.property != IndicatorProperty.MULTILEVEL
+                        && indicator.property != IndicatorProperty.BINARY) {
                     return null;
                 }
                 state = new PercentType(indicator.value);
@@ -88,7 +89,7 @@ public class ZWaveIndicatorConverter extends ZWaveCommandClassConverter {
                 state = new DecimalType(indicator.value);
                 break;
             default:
-                logger.warn("Unknown INDICATOR channel type {}", channel.getUID().getId());
+                logger.warn("Unknown INDICATOR channel type {}", channel.getChannelTypeUID().getId());
                 return null;
         }
 
@@ -100,6 +101,7 @@ public class ZWaveIndicatorConverter extends ZWaveCommandClassConverter {
             Command command) {
 
         String indicatorStringType = channel.getArguments().get("type");
+        String indicatorStringProperty = channel.getArguments().get("property");
 
         ZWaveIndicatorCommandClass commandClass = (ZWaveIndicatorCommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_INDICATOR, channel.getEndpoint());
@@ -110,9 +112,12 @@ public class ZWaveIndicatorConverter extends ZWaveCommandClassConverter {
 
         IndicatorProperty property = null;
 
-        switch (channel.getUID().getId()) {
+        switch (channel.getChannelTypeUID().getId()) {
             case "indicator_level":
                 property = IndicatorProperty.MULTILEVEL;
+                if ("BINARY".equalsIgnoreCase(indicatorStringProperty)) {
+                    property = IndicatorProperty.BINARY;
+                }
                 break;
             case "indicator_period":
                 property = IndicatorProperty.ON_OFF_PERIOD;
@@ -121,7 +126,8 @@ public class ZWaveIndicatorConverter extends ZWaveCommandClassConverter {
                 property = IndicatorProperty.ON_OFF_CYCLES;
                 break;
             default:
-                logger.warn("NODE {}: Unknown INDICATOR channel type {}", node.getNodeId(), channel.getUID().getId());
+                logger.warn("NODE {}: Unknown INDICATOR channel type {}", node.getNodeId(),
+                        channel.getChannelTypeUID().getId());
                 return null;
         }
 
