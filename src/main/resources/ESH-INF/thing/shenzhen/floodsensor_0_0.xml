@@ -127,8 +127,9 @@ Basic Set Level<br /><h1>Overview</h1><p>Basic Set Command will be sent where co
         <multipleLimit>5</multipleLimit>
       </parameter>
 
-      <parameter name="group_2" type="text" groupName="association">
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: BASIC_SET</label>
+        <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">

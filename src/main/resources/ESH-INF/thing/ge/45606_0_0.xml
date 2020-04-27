@@ -6,7 +6,7 @@
                       https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="ge_45606_00_000" listed="false">
-    <label>45606 2-Way Dimmer Switch</label>
+    <label>45606, ZW3003 2-Way Dimmer Switch</label>
     <description><![CDATA[
 2-Way Dimmer Switch<br /><h1>Overview</h1><p>Wireless Lighting Control, On/Off/Dim Dimmer Switch</p> <br /><h2>Inclusion Information</h2><p>Tap the top or bottom of the rocker</p> <br /><h2>Exclusion Information</h2><p>Tap the top or bottom of the rocker</p>
     ]]></description>
@@ -26,7 +26,7 @@
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
       <property name="vendor">Jasco Products</property>
-      <property name="modelId">45606</property>
+      <property name="modelId">45606, ZW3003</property>
       <property name="manufacturerId">0063</property>
       <property name="manufacturerRef">4457:3230</property>
       <property name="dbReference">41</property>

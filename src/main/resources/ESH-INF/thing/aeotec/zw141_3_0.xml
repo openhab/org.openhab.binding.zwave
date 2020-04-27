@@ -14,16 +14,12 @@ Nano Shutter<br /><h1>Overview</h1><p>Aeotec Nano Shutter is a Z-Wave motor cont
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_dimmer" typeId="switch_dimmer">
-        <label>Dimmer [Deprecated]</label>
-        <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-        </properties>
-      </channel>
-      <channel id="blinds_control " typeId="blinds_control ">
+      <channel id="blinds_control" typeId="blinds_control">
         <label>Blinds Control</label>
         <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:StopMoveType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:UpDownType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -71,20 +67,25 @@ Nano Shutter<br /><h1>Overview</h1><p>Aeotec Nano Shutter is a Z-Wave motor cont
         </options>
       </parameter>
 
-      <parameter name="config_22_1" type="integer" groupName="configuration"
-                 min="0" max="2">
+      <parameter name="config_22_1" type="integer" groupName="configuration">
         <label>22: Motor Direction</label>
         <description><![CDATA[
-Determine motor run direction<br /><h1>Overview</h1><table><tr><td>2</td> <td> <p>Change the mapping of output and motor running direction<br />between the 2 directions below:</p> <p>a. Out1 maps forward and Out2 maps reverse<br />b. Out1 maps reverse and Out2 maps forward</p> </td> </tr></table>
+Determine motor run direction for Shutter Mode and Venetian Mode<br /><h1>Overview</h1><p>Determine motor run direction for Shutter mode and Venetian Mode:</p> <table><tr><td>Mode / Value</td> <td>Function</td> </tr><tr><td>0</td> <td>Shutter mode / Venetian mode :Out 1= Up moving/ Multilevel<br />switch = 99%, Out 2= Down moving/ Multilevel switch = 0%</td> </tr><tr><td>1</td> <td>Shutter mode : Out 1= Down moving/ Multilevel switch = 0%,<br />Out 2= Up moving/ Multilevel switch = 99%.<br />Venetian mode :Out 1= Up moving/ Multilevel switch = 99%, Out<br />2= Down moving/ Multilevel switch = 0%</td> </tr><tr><td>2</td> <td>Shutter mode : Out 1= Up moving/ Multilevel switch = 99%, Out<br />2= Down moving/ Multilevel switch = 0%<br />Venetian mode: Out 1= Down moving/ Multilevel switch = 0%,<br />Out 2= Up moving/ Multilevel switch = 99%.</td> </tr><tr><td>3</td> <td>Shutter mode / Venetian mode : Out 1= Down moving/<br />Multilevel switch = 0%, Out 2= Up moving/ Multilevel switch =<br />99%.</td> </tr></table><p>Note:<br />1.Motor will stop when receiving this command in moving;<br />2.This configuration will not change after network exclusion.</p>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Mode 0 (Default)</option>
+          <option value="1">Mode 1</option>
+          <option value="2">Mode 2</option>
+          <option value="3">Mode 3</option>
+        </options>
       </parameter>
 
       <parameter name="config_34_2" type="integer" groupName="configuration"
                  min="10" max="32767">
         <label>34: Blade Turn Time</label>
         <description><![CDATA[
-Blade Turn Time (Unit = 0.01 seconds)<br /><h1>Overview</h1><p>Note:</p> <ul><li>For Venetian, if this value is set too large for blade turning, curtain may move upwards or downwards.</li> <li>Calibration need to work correctly.Or this setting will force the curtain to move up or down.</li> <li>This configuration will not change after network exclusion or Configuration Reset.</li> </ul>
+Blade Turn Time (Unit = 0.01 seconds)<br /><h1>Overview</h1><p>Note:</p> <ul><li>For Venetian, if this value is set too large for blade turning, curtain may move upwards or downwards.</li> <li>Calibration need to work correctly.Or this setting will force the curtain to move up or down.</li> <li>This configuration will not change after network exclusion</li> </ul>
         ]]></description>
         <default>150</default>
       </parameter>
@@ -93,7 +94,7 @@ Blade Turn Time (Unit = 0.01 seconds)<br /><h1>Overview</h1><p>Note:</p> <ul><li
                  min="500" max="32767">
         <label>35: Curtain Trip Time (Unit = 0.01 seconds)</label>
         <description><![CDATA[
-Curtain Trip Time<br /><h1>Overview</h1><p>Note:</p> <ul><li>For Venetian, if this value is set too large for curtain trip, blade turn positioning may cause errors.</li> <li>This configuration will not change after network exclusion or Configuration Reset.</li> </ul>
+Curtain Trip Time<br /><h1>Overview</h1><p>Note:</p> <ul><li>For Venetian, if this value is set too large for curtain trip, blade turn positioning may cause errors.</li> <li>This configuration will not change after network exclusion</li> </ul>
         ]]></description>
         <default>15000</default>
       </parameter>
@@ -109,7 +110,6 @@ Enter/Exit Calibration<br /><h1>Overview</h1><p>Note:</p> <p>Product will enter 
           <option value="1">Enter Shutter Mode Calibration</option>
           <option value="2">Enter Venetian Mode Calibration</option>
         </options>
-        <advanced>true</advanced>
       </parameter>
 
       <parameter name="config_37_1" type="integer" groupName="configuration">
@@ -139,7 +139,7 @@ Enter/Exit Calibration<br /><h1>Overview</h1><p>Note:</p> <p>Product will enter 
       <parameter name="config_39_1" type="integer" groupName="configuration">
         <label>39: Curtain Mode</label>
         <description><![CDATA[
-Set curtain mode<br /><h1>Overview</h1><p>Note:<br />1. This Operation will enter repositioning automatically;<br />2. This configuration will not change after network exclusion or Configuration Reset.</p>
+Set curtain mode<br /><h1>Overview</h1><p>Note:<br />1. This Operation will enter repositioning automatically;<br />2. This configuration will not change after network exclusion</p>
         ]]></description>
         <default>0</default>
         <options>
@@ -191,11 +191,14 @@ Set curtain mode<br /><h1>Overview</h1><p>Note:<br />1. This Operation will ente
 
       <parameter name="config_85_1" type="integer" groupName="configuration">
         <label>85: External Switch Mode</label>
-        <description>Set external switch mode</description>
+        <description><![CDATA[
+Set External Button Operation Mode<br /><h1>Overview</h1><p>Set Extern Button Operation Mode</p> <table><tr><td>Value</td> <td>Function</td> </tr><tr><td>0</td> <td>S1/S2 map to Z-Wave Button</td> </tr><tr><td>1</td> <td> <p>S1 = Open or Stop<br />S2 = Close or Stop</p> <p>Note:Operation will not change the curtain mode, including<br />press and hold ,short press.</p> </td> </tr><tr><td>2</td> <td> <ol><li>When configuration 0x78/79 = 03:<br />Press and hold S1 :blade folds to 180°<br />Press and hold S2：Blade folds to 0°<br />Short press S1：Blinds go downwards<br />Short press S2：Blinds go upwards<br />Note: The device will change its curtain mode if it does not<br />match the current mode.</li> <li>When Configuration 0x78/79 = others:<br />S1 = Open or Stop<br />S2 = Close or Stop ,operation will not<br />change the curtain mode.</li> </ol></td> </tr></table><p>Note: when setting value to 2, we advice not to set only one external switch<br />to push button, do remember to change the controller channel before<br />operating push button, or the curtain level will be wrong.</p>
+        ]]></description>
         <default>0</default>
         <options>
-          <option value="0">Mode 1 (Default)</option>
-          <option value="1">Mode 2</option>
+          <option value="0">Mode 0 (Default)</option>
+          <option value="1">Mode 1</option>
+          <option value="2">Mode 2</option>
         </options>
       </parameter>
 
@@ -229,6 +232,13 @@ Set Switch Type of External Switch 2<br /><h1>Overview</h1><p>Report automatical
         </options>
       </parameter>
 
+      <parameter name="config_243_16" type="integer" groupName="configuration" readOnly="true"
+                 min="0" max="4294967295">
+        <label>243: Get DSK from product</label>
+        <description>To Get DSK from product</description>
+        <default>0</default>
+      </parameter>
+
       <parameter name="config_248_1" type="integer" groupName="configuration">
         <label>248: Enable/Disable External Switches</label>
         <description>Enable/disable function of external switches S1 &amp; S2</description>
@@ -248,14 +258,14 @@ Reset to Factory / Exclusion Function<br /><h1>Overview</h1><p>Enable/disable re
         <default>1</default>
         <options>
           <option value="0">Disable</option>
-          <option value="1">Enable (Defaul)</option>
+          <option value="1">Enable (Default)</option>
         </options>
       </parameter>
 
       <parameter name="config_255_4_wo" type="integer" groupName="configuration">
         <label>255: Reset function</label>
         <description><![CDATA[
-Reset function<br /><h1>Overview</h1><p>Note:<br />Parameter 0x16, 0x22, 0x23, 0x24, 0x25, 0x27, 0x28 will not reset to default<br />value by this command.</p>
+Reset function<br /><h1>Overview</h1><p>When the command be valid：<br />1.The Re-Calibration task and Calibration task will be abort if they are<br />running.<br />2.The motor will stop if it's working</p>
         ]]></description>
         <default>0</default>
         <options>
