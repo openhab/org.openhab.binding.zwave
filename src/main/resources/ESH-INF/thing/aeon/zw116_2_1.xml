@@ -5,10 +5,10 @@
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
                       https://openhab.org/schemas/thing-description/v1.0.0">
 
-  <thing-type id="aeon_zw116_00_000" listed="false">
+  <thing-type id="aeon_zw116_02_001" listed="false">
     <label>ZW116 Aeotec Nano Switch</label>
     <description><![CDATA[
-Aeotec Nano Switch<br /><h1>Overview</h1><p>Aeotec Nano Switch is a Z-Wave Smart Switch specifically used to enable Z-Wave command and control (on/off) of any wall switches. It can report immediate wattage consumption or kWh energy usage over a period of time. In the event of power failure, non-volatile memory retains all programmed information relating to the unit’s operating status.</p> <p>It can connect to 2 external manual switches to control the load ON/OFF independently. Its surface has a pin socket, which can be used for connecting to the touch panel, so you can also use the touch panel to control the Dual Nano Switch. <br />The Nano Switch is also a security Z-Wave device and supports Over The Air (OTA) feature for the products firmware upgrade.</p> <br /><h2>Inclusion Information</h2><p><strong>Including Nano Switch as a non-secure device</strong></p> <p>If you want your Nano Switch as a non-secure device in your Z-Wave network, press the Action Button once on Nano Switch when you pair it to your gateway. If inclusion is successful, the green LED will be on for 2 seconds, and then return to a solid indication. If inclusion is unsuccessful, the red LED will be on for 2 seconds and then return to a colourful gradient.</p> <p><strong>Including Nano Switch as a secure device</strong></p> <p>In order to take full advantage of the Nano Switch, you will want your Nano Switch as a security device that uses encrypted messages to communicate in your Z-wave network. A security enabled controller/ gateway (or Z-Wave Plus controller) is required.</p> <ol><li>Set your Z-Wave Plus controller into pairing mode.</li> <li>Press the Action Button 2 times within 1 second on the Nano Switch, the blue LED (secure indication) will blink to indicate the Nano Switch is entering into secure pairing mode.</li> <li>If the Nano Switch has been successfully added to your Z-Wave network, its RGB LED will be solid. If the pairing was unsuccessful, the red LED will be on for 2 seconds and then remain a colourful gradient, repeat the instructions above from step 1.</li> </ol><br /><h2>Exclusion Information</h2><p>Your Nano Switch can be removed from your Z-Wave network at any time. You’ll need to use your Z-Wave network’s main controller. To set your Z-Wave controller/gateway into removal mode, please refer to the respective section within your controller instruction manual.</p> <ol><li>Set your Z-Wave controller into removal mode.</li> <li>Press the Action Button on the Nano Switch or toggle the external manual switch 3 times in fast succession.</li> <li>If the Nano Switch has been successfully removed from your Z-Wave network, its RGB LED will remain colourful gradient. If the removal was unsuccessful, the RGB LED will still be solid (following the state of the output load), repeat the instructions above from step 1. 1.</li> </ol>
+Aeotec Nano Switch<br /><h1>Overview</h1><p>Aeotec Nano Switch is a Z-Wave Smart Switch specifically used to enable Z-Wave command and control (on/off) of any wall switches. It can report immediate wattage consumption or kWh energy usage over a period of time. In the event of power failure, non-volatile memory retains all programmed information relating to the unit’s operating status.</p> <p>It can connect to 2 external manual switches to control the load ON/OFF independently. Its surface has a pin socket, which can be used for connecting to the touch panel, so you can also use the touch panel to control the Dual Nano Switch. <br />The Nano Switch is also a security Z-Wave device and supports Over The Air (OTA) feature for the products firmware upgrade.</p> <br /><h2>Inclusion Information</h2><p><strong>Including Nano Switch as a non-secure device</strong></p> <p>If you want your Nano Switch as a non-secure device in your Z-Wave network, press the Action Button once on Nano Switch when you pair it to your gateway. If inclusion is successful, the green LED will be on for 2 seconds, and then return to a solid indication. If inclusion is unsuccessful, the red LED will be on for 2 seconds and then return to a colourful gradient.</p> <p><strong>Including Nano Switch as a secure device</strong></p> <p>In order to take full advantage of the Nano Switch, you will want your Nano Switch as a security device that uses encrypted messages to communicate in your Z-wave network. A security enabled controller/ gateway (or Z-Wave Plus controller) is required.</p> <ol><li>Set your Z-Wave Plus controller into pairing mode.</li> <li>Press the Action Button 2 times within 1 second on the Nano Switch, the blue LED (secure indication) will blink to indicate the Nano Switch is entering into secure pairing mode.</li> <li>If the Nano Switch has been successfully added to your Z-Wave network, its RGB LED will be solid. If the pairing was unsuccessful, the red LED will be on for 2 seconds and then remain a colourful gradient, repeat the instructions above from step 1.</li> </ol><br /><h2>Exclusion Information</h2><p>Your Nano Switch can be removed from your Z-Wave network at any time. You’ll need to use your Z-Wave network’s main controller. To set your Z-Wave controller/gateway into removal mode, please refer to the respective section within your controller instruction manual.</p> <ol><li>Set your Z-Wave controller into removal mode.</li> <li>Press the Action Button on the Nano Switch or toggle the external manual switch 3 times in fast succession.</li> <li>If the Nano Switch has been successfully removed from your Z-Wave network, its RGB LED will remain colourful gradient. If the removal was unsuccessful, the RGB LED will still be solid (following the state of the output load), repeat the instructions above from step 1.</li> </ol>
     ]]></description>
     <category>WallSwitch</category>
 
@@ -32,10 +32,10 @@ Aeotec Nano Switch<br /><h1>Overview</h1><p>Aeotec Nano Switch is a Z-Wave Smart
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
         </properties>
       </channel>
-      <channel id="meter_voltage" typeId="meter_voltage">
-        <label>Electric meter (volts)</label>
+      <channel id="meter_current" typeId="meter_current">
+        <label>Electric meter (amps)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_V</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_A</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
@@ -44,10 +44,10 @@ Aeotec Nano Switch<br /><h1>Overview</h1><p>Aeotec Nano Switch is a Z-Wave Smart
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
         </properties>
       </channel>
-      <channel id="meter_current" typeId="meter_current">
-        <label>Electric meter (amps)</label>
+      <channel id="meter_voltage" typeId="meter_voltage">
+        <label>Electric meter (volts)</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_A</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_V</property>
         </properties>
       </channel>
       <channel id="meter_reset" typeId="meter_reset">
@@ -56,16 +56,16 @@ Aeotec Nano Switch<br /><h1>Overview</h1><p>Aeotec Nano Switch is a Z-Wave Smart
           <property name="binding:*:OnOffType">COMMAND_CLASS_METER;reset=true</property>
         </properties>
       </channel>
-      <channel id="alarm_power" typeId="alarm_power">
-        <label>Alarm (power)</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
-        </properties>
-      </channel>
       <channel id="alarm_heat" typeId="alarm_heat">
         <label>Alarm (heat)</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=HEAT</property>
+        </properties>
+      </channel>
+      <channel id="alarm_power" typeId="alarm_power">
+        <label>Alarm (power)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
         </properties>
       </channel>
       <channel id="time_offset" typeId="time_offset">
@@ -82,8 +82,8 @@ Aeotec Nano Switch<br /><h1>Overview</h1><p>Aeotec Nano Switch is a Z-Wave Smart
       <property name="modelId">ZW116</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0002:0074,0003:0074,0103:0074,0203:0074</property>
-      <property name="versionMax">2.0</property>
-      <property name="dbReference">591</property>
+      <property name="versionMin">2.1</property>
+      <property name="dbReference">1246</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -351,6 +351,26 @@ Set the OFF time of output load<br /><h1>Overview</h1><p>256 to 316 The hour val
           <option value="1">control the output loads of itself</option>
           <option value="2">control the other nodes</option>
           <option value="3">control the output loads of itself and other nodes</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_247_1_0000000F" type="integer" groupName="configuration">
+        <label>247: Set S1 switching behaviour</label>
+        <description>Set S1 switching behaviour when the Switch mode is 2 state switch mode.</description>
+        <default>0</default>
+        <options>
+          <option value="0">S1 is a toggle switch</option>
+          <option value="1">S1 is an on/off switch</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_247_1_000000F0" type="integer" groupName="configuration">
+        <label>247: Set S2 switching behaviour</label>
+        <description>Set S2 switching behaviour when the Switch mode is 2 state switch mode.</description>
+        <default>0</default>
+        <options>
+          <option value="0">S2 is a toggle switch</option>
+          <option value="1">S2 is an on/off switch</option>
         </options>
       </parameter>
 

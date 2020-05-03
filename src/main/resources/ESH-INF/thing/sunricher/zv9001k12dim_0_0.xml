@@ -32,7 +32,7 @@ Dim Remote Control<br /><h1>Overview</h1><p>The remote control is a Z-Wave devic
       <property name="vendor">Sunricher</property>
       <property name="modelId">ZV9001K12-DIM</property>
       <property name="manufacturerId">0330</property>
-      <property name="manufacturerRef">0300:A301,0300:A302</property>
+      <property name="manufacturerRef">0300:A301,0300:A302,0300:B302</property>
       <property name="dbReference">1184</property>
       <property name="defaultAssociations">1</property>
     </properties>

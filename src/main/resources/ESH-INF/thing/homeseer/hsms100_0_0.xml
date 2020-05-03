@@ -8,7 +8,7 @@
   <thing-type id="homeseer_hsms100_00_000" listed="false">
     <label>HS-MS100+ HomeSeer Z-Wave Plus Motion Sensor</label>
     <description><![CDATA[
-HomeSeer Z-Wave Plus Motion Sensor<br /><h1>Overview</h1><p>Motion sensor can be included and operated in any Z-Wave network with other Z-Wave certified devices. <br />The features list: <br />1) Z-Wave Plus certified for wide compatibility (500 serials product)<br />2) Supports security 0 and security 2 protected mode with AES-128 encryption. <br />3) Motion sensor. <br />4) Tamper alarm by shock sensor. <br />5) The battery life is up to 1 year. <br />6) Low battery alarm. <br />7) Support firmware OTA.</p> <br /><h2>Inclusion Information</h2><p>1) Open the cover</p> <p>2) Place the device withing the direct range of your Z-Wave controller</p> <p>3) Set the main controller into inclusion mode</p> <p>4a) "Secure Inclusion". Hold Z-button for 5 sec and then release. The LED indicator should blink fast.</p> <p>4b) "Non-secure Inclusion". Press Z-button once. The LED indicator should blink fast.</p> <p>5) Wait for the adding process to end</p> <br /><h2>Exclusion Information</h2><p>1) Open the cover</p> <p>2) Place the device withing the direct range of your Z-Wave controller</p> <p>3) Set the main controller into exclusion mode</p> <p>4a) Triple click Z-button quickly. The LED indicator should blink fast.</p> <p>5) Wait for the removing process to end</p> <br /><h2>Wakeup Information</h2><p>Press and hold Z button for more than 5 seconds and release</p>
+HomeSeer Z-Wave Plus Motion Sensor<br /><h1>Overview</h1><p>Motion sensor can be included and operated in any Z-Wave network with other Z-Wave certified devices. <br />The features list:</p> <ol><li>Z-Wave Plus certified for wide compatibility (500 serials product)</li> <li>Supports security 0 and security 2 protected mode with AES-128 encryption.</li> <li>Motion sensor.</li> <li>Tamper alarm by shock sensor.</li> <li>The battery life is up to 1 year.</li> <li>Low battery alarm.</li> <li>Support firmware OTA.</li> </ol><br /><h2>Inclusion Information</h2><ol><li>Open the cover</li> <li>Place the device withing the direct range of your Z-Wave controller</li> <li>Set the main controller into inclusion mode <ol><li>"Secure Inclusion". Hold Z-button for 5 sec and then release. The LED indicator should blink fast.</li> <li>"Non-secure Inclusion". Press Z-button once. The LED indicator should blink fast.</li> </ol></li> <li>Wait for the adding process to end</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Open the cover</li> <li>Place the device withing the direct range of your Z-Wave controller</li> <li>Set the main controller into exclusion mode <ol><li>Triple click Z-button quickly. The LED indicator should blink fast.</li> </ol></li> <li>Wait for the removing process to end</li> </ol><br /><h2>Wakeup Information</h2><p>Press and hold Z button for more than 5 seconds and release</p>
     ]]></description>
     <category>MotionDetector</category>
 
@@ -17,13 +17,13 @@ HomeSeer Z-Wave Plus Motion Sensor<br /><h1>Overview</h1><p>Motion sensor can be
       <channel id="alarm_motion" typeId="alarm_motion">
         <label>Motion Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY;type=MOTION</property>
         </properties>
       </channel>
       <channel id="alarm_tamper" typeId="alarm_tamper">
         <label>Tamper Alarm</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY;type=TAMPER</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
