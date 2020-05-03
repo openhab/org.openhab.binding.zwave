@@ -15,7 +15,7 @@ Roller Shutter 3<br /><h1>Overview</h1><p>FIBARO Roller Shutter 3 is a device d
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="blinds_control" typeId="blinds_control">
-        <label>Blinds Control</label>
+        <label>Blinds Control [Deprecated]</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
           <property name="binding:Command:StopMoveType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
@@ -53,7 +53,7 @@ Roller Shutter 3<br /><h1>Overview</h1><p>FIBARO Roller Shutter 3 is a device d
         </properties>
       </channel>
       <channel id="blinds_control1" typeId="blinds_control">
-        <label>Blinds Control 1</label>
+        <label>Blinds Control</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
           <property name="binding:Command:StopMoveType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
@@ -85,7 +85,7 @@ Roller Shutter 3<br /><h1>Overview</h1><p>FIBARO Roller Shutter 3 is a device d
         </properties>
       </channel>
       <channel id="blinds_control2" typeId="blinds_control">
-        <label>Blinds Control 2</label>
+        <label>Lamella Control</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:2</property>
           <property name="binding:Command:StopMoveType">COMMAND_CLASS_SWITCH_MULTILEVEL:2</property>

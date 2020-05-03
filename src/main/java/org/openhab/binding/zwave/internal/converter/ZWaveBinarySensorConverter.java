@@ -96,7 +96,7 @@ public class ZWaveBinarySensorConverter extends ZWaveCommandClassConverter {
             case OpenClosedType:
                 return sensorEvent.getValue() == 0 ? OpenClosedType.CLOSED : OpenClosedType.OPEN;
             default:
-                logger.debug("Unknwon data type {} for BinarySensor", channel.getDataType());
+                logger.debug("Unknown data type {} for BinarySensor", channel.getDataType());
                 break;
         }
 
