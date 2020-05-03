@@ -78,7 +78,7 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
     public void handleScheduleOverrideReport(ZWaveCommandClassPayload payload, int endpoint) {
         OverrideType overrideType = OverrideType.getOverrideTypeFor((byte) (payload.getPayloadByte(2) & 0x03));
         ScheduleState scheduleState = ScheduleState.getScheduleStateFor((byte) payload.getPayloadByte(3));
-        logger.info("NODE {} reported: Override type: {}, ScheduleState: {}", getNode().getNodeId(), overrideType,
+        logger.debug("NODE {}: Override type: {}, ScheduleState: {}", getNode().getNodeId(), overrideType,
                 scheduleState);
     }
 
