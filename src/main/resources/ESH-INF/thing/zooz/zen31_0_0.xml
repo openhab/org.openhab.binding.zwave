@@ -14,50 +14,16 @@ RGBW Dimmer for LED Strips<br /><h1>Overview</h1><ul><li>Manual or Z-Wave on/off
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="switch_dimmer" typeId="switch_dimmer">
-        <label>Dimmer</label>
-        <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-        </properties>
-      </channel>
       <channel id="sensor_voltage" typeId="sensor_voltage">
         <label>Sensor (voltage)</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=VOLTAGE</property>
         </properties>
       </channel>
-      <channel id="meter_watts" typeId="meter_watts">
-        <label>Electric meter (watts)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
-        </properties>
-      </channel>
-      <channel id="meter_kwh" typeId="meter_kwh">
-        <label>Electric meter (kWh)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
-        </properties>
-      </channel>
-      <channel id="color_color" typeId="color_color">
-        <label>Color Control</label>
-        <properties>
-          <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR;colorMode=RGB</property>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-        </properties>
-      </channel>
-      <channel id="color_temperature" typeId="color_temperature">
-        <label>Color Temperature</label>
-        <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_COLOR;colorMode=DIFF_WHITE</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-        </properties>
-      </channel>
       <channel id="scene_number" typeId="scene_number">
         <label>Scene Number</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="config_decimal_param157" typeId="zooz_zen31_00_000_config_decimal_param157">
@@ -66,22 +32,10 @@ RGBW Dimmer for LED Strips<br /><h1>Overview</h1><ul><li>Manual or Z-Wave on/off
           <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=157</property>
         </properties>
       </channel>
-      <channel id="alarm_system" typeId="alarm_system">
-        <label>Alarm (system)</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=SYSTEM</property>
-        </properties>
-      </channel>
-      <channel id="alarm_power" typeId="alarm_power">
-        <label>Alarm (power)</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
-        </properties>
-      </channel>
       <channel id="switch_dimmer1" typeId="switch_dimmer">
-        <label>Dimmer 1</label>
+        <label>Dimmer (brightness)</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1,COMMAND_CLASS_BASIC:1</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
         </properties>
       </channel>
@@ -98,7 +52,7 @@ RGBW Dimmer for LED Strips<br /><h1>Overview</h1><ul><li>Manual or Z-Wave on/off
         </properties>
       </channel>
       <channel id="color_color1" typeId="color_color">
-        <label>Color Control 1</label>
+        <label>Color Control</label>
         <properties>
           <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR:1;colorMode=RGB</property>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
@@ -106,7 +60,7 @@ RGBW Dimmer for LED Strips<br /><h1>Overview</h1><ul><li>Manual or Z-Wave on/off
         </properties>
       </channel>
       <channel id="color_temperature1" typeId="color_temperature">
-        <label>Color Temperature 1</label>
+        <label>Color Temperature</label>
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_COLOR:1;colorMode=DIFF_WHITE</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
@@ -125,55 +79,31 @@ RGBW Dimmer for LED Strips<br /><h1>Overview</h1><ul><li>Manual or Z-Wave on/off
         </properties>
       </channel>
       <channel id="switch_dimmer2" typeId="switch_dimmer">
-        <label>Dimmer 2</label>
+        <label>Dimmer (red)</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:2</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:2,COMMAND_CLASS_BASIC:2</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:2</property>
         </properties>
       </channel>
       <channel id="switch_dimmer3" typeId="switch_dimmer">
-        <label>Dimmer 3</label>
+        <label>Dimmer (green)</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:3</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:3,COMMAND_CLASS_BASIC:3</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:3</property>
         </properties>
       </channel>
       <channel id="switch_dimmer4" typeId="switch_dimmer">
-        <label>Dimmer 4</label>
+        <label>Dimmer (blue)</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:4</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:4,COMMAND_CLASS_BASIC:4</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:4</property>
         </properties>
       </channel>
       <channel id="switch_dimmer5" typeId="switch_dimmer">
-        <label>Dimmer 5</label>
+        <label>Dimmer (white)</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:5</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:5,COMMAND_CLASS_BASIC:5</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:5</property>
-        </properties>
-      </channel>
-      <channel id="sensor_voltage6" typeId="sensor_voltage">
-        <label>Sensor (voltage) 6</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:6;type=VOLTAGE</property>
-        </properties>
-      </channel>
-      <channel id="sensor_voltage7" typeId="sensor_voltage">
-        <label>Sensor (voltage) 7</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:7;type=VOLTAGE</property>
-        </properties>
-      </channel>
-      <channel id="sensor_voltage8" typeId="sensor_voltage">
-        <label>Sensor (voltage) 8</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:8;type=VOLTAGE</property>
-        </properties>
-      </channel>
-      <channel id="sensor_voltage9" typeId="sensor_voltage">
-        <label>Sensor (voltage) 9</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:9;type=VOLTAGE</property>
         </properties>
       </channel>
     </channels>

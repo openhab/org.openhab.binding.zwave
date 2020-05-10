@@ -21,7 +21,7 @@ Touch Pad Keyed Entry Lever<br /><h1>Overview</h1><p>The SmartCode touchpad smar
         </properties>
       </channel>
       <channel id="alarm_access" typeId="alarm_access">
-        <label>Alarm (access)</label>
+        <label>Alarm (access) [Deprecated]</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=ACCESS_CONTROL</property>
         </properties>
@@ -36,6 +36,12 @@ Touch Pad Keyed Entry Lever<br /><h1>Overview</h1><p>The SmartCode touchpad smar
         <label>Alarm (burglar)</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR</property>
+        </properties>
+      </channel>
+      <channel id="alarm_entry" typeId="alarm_entry">
+        <label>Entry Notification</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
