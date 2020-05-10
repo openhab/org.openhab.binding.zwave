@@ -57,6 +57,7 @@ Aeotec LED Strip<br /><h1>Overview</h1><p>Aeotec LED Strip has been crafted to p
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:0079,0103:0079,0203:0079</property>
       <property name="dbReference">639</property>
+      <property name="commandClass:COMMAND_CLASS_SECURITY">setVersion=1</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
