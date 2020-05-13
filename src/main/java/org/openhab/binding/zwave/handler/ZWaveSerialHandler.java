@@ -104,6 +104,10 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
      * @return a serial port identifier or null
      */
     private @Nullable SerialPortIdentifier getSerialPortIdentifier(final String name) {
+        if (name.startsWith("rfc2217://")) {
+            return serialPortManager.getIdentifier(name);
+        }
+
         Optional<SerialPortIdentifier> opt = serialPortManager.getIdentifiers().filter(id -> id.getName().equals(name))
                 .findFirst();
         if (opt.isPresent()) {
@@ -133,8 +137,16 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             SerialPort commPort = portIdentifier.open("org.openhab.binding.zwave", 2000);
             serialPort = commPort;
             commPort.setSerialPortParams(115200, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
-            commPort.enableReceiveThreshold(1);
-            commPort.enableReceiveTimeout(SERIAL_RECEIVE_TIMEOUT);
+            try {
+                commPort.enableReceiveThreshold(1);
+            } catch (UnsupportedCommOperationException e) {
+                logger.debug("Enabling receive threshold is unsupported");
+            }
+            try {
+                commPort.enableReceiveTimeout(SERIAL_RECEIVE_TIMEOUT);
+            } catch (UnsupportedCommOperationException e) {
+                logger.debug("Enabling receive timeout is unsupported");
+            }
             inputStream = commPort.getInputStream();
             outputStream = commPort.getOutputStream();
             logger.debug("Starting receive thread");
