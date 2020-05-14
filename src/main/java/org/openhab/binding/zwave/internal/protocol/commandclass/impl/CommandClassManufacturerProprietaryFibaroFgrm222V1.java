@@ -286,9 +286,9 @@ public class CommandClassManufacturerProprietaryFibaroFgrm222V1 {
      * @param payload the {@link byte[]} payload data to process
      * @return a {@link Map} of processed response data
      */
-    public static Map<String, Object> handleFgrm222Report(byte[] payload) {
+    public static Map<String, String> handleFgrm222Report(byte[] payload) {
         // Create our response map
-        Map<String, Object> response = new HashMap<String, Object>();
+        Map<String, String> response = new HashMap<String, String>();
 
         // Process 'Constant1'
 
@@ -297,10 +297,10 @@ public class CommandClassManufacturerProprietaryFibaroFgrm222V1 {
         // Process 'Constant3'
 
         // Process 'Shutter Position'
-        response.put("SHUTTER_POSITION", Integer.valueOf(payload[6]));
+        response.put("SHUTTER_POSITION", Integer.valueOf(payload[6]).toString());
 
         // Process 'Lamella Position'
-        response.put("LAMELLA_POSITION", Integer.valueOf(payload[7]));
+        response.put("LAMELLA_POSITION", Integer.valueOf(payload[7]).toString());
 
         // Return the map of processed response data;
         return response;

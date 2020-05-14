@@ -18,6 +18,8 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.commandclass.impl.CommandClassManufacturerProprietaryFibaroFgrm222V1;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveValueEvent;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
@@ -55,6 +57,16 @@ public class ZWaveManufacturerProprietaryCommandClass extends ZWaveCommandClass 
         if (classType == null) {
             return;
         }
+    }
+
+    @ZWaveResponseHandler(id = 1, name = "PROPRIETARY_HANDLER")
+    public void handleManufacturerProprietaryReport(ZWaveCommandClassPayload payload, int endpoint) {
+        Map<String, String> values = CommandClassManufacturerProprietaryFibaroFgrm222V1
+                .handleFgrm222Report(payload.getPayloadBuffer());
+
+        ZWaveValueEvent zEvent = new ZWaveValueEvent(getNode().getNodeId(), endpoint, getCommandClass(), values);
+
+        getController().notifyEventListeners(zEvent);
     }
 
     @Override
