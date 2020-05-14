@@ -81,4 +81,14 @@ public class ZWaveManufacturerProprietaryCommandClassFibaroFGRM222Test extends Z
         assertEquals(event.getAlarmEvent(), 8);
         assertEquals(event.getAlarmStatus(), 0xFF);
     }
+
+    @Test
+    public void ReceiveReportMessage() {
+        byte[] packetData = { 0x01, 0x0E, 0x00, 0x04, 0x00, 0x0B, 0x08, (byte) 0x91, 0x01, 0x0F, 0x26, 0x03, 0x03, 0x16,
+                0x63, 0x3A };
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData);
+
+        assertEquals(events.size(), 1);
+    }
 }
