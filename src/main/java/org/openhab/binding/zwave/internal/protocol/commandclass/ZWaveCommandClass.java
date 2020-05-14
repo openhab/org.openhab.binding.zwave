@@ -311,9 +311,7 @@ public abstract class ZWaveCommandClass {
             ZWaveEndpoint endpoint) {
         try {
             CommandClass commandClass = CommandClass.getCommandClass(classId);
-            if (commandClass != null && commandClass.equals(CommandClass.COMMAND_CLASS_MANUFACTURER_PROPRIETARY)) {
-                commandClass = CommandClass.getCommandClass(node.getManufacturer(), node.getDeviceType());
-            }
+
             if (commandClass == null) {
                 logger.debug("NODE {}: Unknown command class 0x{}", node.getNodeId(), Integer.toHexString(classId));
                 return null;
@@ -654,17 +652,6 @@ public abstract class ZWaveCommandClass {
             }
 
             return codeToCommandClassMapping.get(i);
-        }
-
-        /**
-         * Lookup function based on the manufacturer and device ID.
-         *
-         * @param manufacturer the manufacturer ID
-         * @param deviceId the device ID
-         * @return enumeration value of the command class or null if there is no command class.
-         */
-        public static CommandClass getCommandClass(int manufacturer, int deviceId) {
-            return getCommandClass(getKeyFromManufacturerAndDeviceId(manufacturer, deviceId));
         }
 
         /**
