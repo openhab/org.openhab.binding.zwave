@@ -43,6 +43,7 @@
                 <context>serial-port</context>
                 <description>Set the serial port used to access the Z-Wave stick</description>
                 <default></default>
+                <limitToOptions>false</limitToOptions>
             </parameter>
 
             <parameter name="controller_master" type="boolean" groupName="network">

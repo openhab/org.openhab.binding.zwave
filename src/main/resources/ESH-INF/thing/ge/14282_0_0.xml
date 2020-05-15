@@ -49,10 +49,12 @@ GE Plug in Smart Switch Zwave Plus<br /><h1>Overview</h1><p>Transform any home i
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: LED light</label>
-        <description>control LED light behavior. Default is on when connected device is off</description>
+        <description><![CDATA[
+Control LED light behavior<br /><h1>Overview</h1><p>Default is on when connected device is off.</p>
+        ]]></description>
         <default>0</default>
         <options>
-          <option value="0">reset to factory default</option>
+          <option value="0">LED is on when connected device is off</option>
           <option value="1">LED is on when connected device is on</option>
           <option value="2">LED is off at all times</option>
         </options>
