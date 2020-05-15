@@ -102,11 +102,11 @@ LED Light Control<br /><h1>Overview</h1><p>When shipped from the factory, the LE
         <default>1</default>
       </parameter>
 
-      <parameter name="config_13_2" type="integer" groupName="configuration"
+      <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="1" max="255">
-        <label>13: Dim Rate Adjustments (All-On/Off Command, Timing)</label>
+        <label>12: Dim Rate Adjustments (All-On/Off Command, Timing)</label>
         <description>Timing of steps</description>
-        <default>4</default>
+        <default>3</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

@@ -17,7 +17,7 @@ Smart Dimmer Switch<br /><h1>Overview</h1><p>This product can be operated in any
       <channel id="switch_dimmer" typeId="switch_dimmer">
         <label>Dimmer</label>
         <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
         </properties>
       </channel>
@@ -56,24 +56,38 @@ Smart Dimmer Switch<br /><h1>Overview</h1><p>This product can be operated in any
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
-      <parameter name="config_1_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Locally button function</label>
-        <description>Locally button function</description>
+        <description><![CDATA[
+Locally button function<br /><h1>Overview</h1><p>Parameter=1 Size=1 Value=0 Up Button:On Down Button: Off Value=1 Up Button:Off Down Button: On Default = 0</p>
+        ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Up Button:On Down Button: Off</option>
+          <option value="1">Up Button:Off Down Button: On</option>
+        </options>
       </parameter>
 
-      <parameter name="config_2_1" type="integer" groupName="configuration"
-                 min="0" max="3">
+      <parameter name="config_2_1_wo" type="integer" groupName="configuration">
         <label>2: LED indicator</label>
-        <description>LED indicator</description>
+        <description><![CDATA[
+LED indicator<br /><h1>Overview</h1><p>Parameter=2 Size=1 Value=0 On when Off and Off when On Value=1 On when On and Off when Off Value=2 Always Off Value=3 Always On Default =0 </p>
+        ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">On when Off and Off when On</option>
+          <option value="1">On when On and Off when Off</option>
+          <option value="2">Always Off</option>
+          <option value="3">Always On</option>
+        </options>
       </parameter>
 
       <parameter name="config_4_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>4: Auto turn off timer</label>
-        <description>Auto turn off timer</description>
+        <description><![CDATA[
+Auto turn off timer<br /><h1>Overview</h1><p> 0 – 65535 (M); default 0M</p>
+        ]]></description>
         <default>0</default>
       </parameter>
 
@@ -88,6 +102,10 @@ Smart Dimmer Switch<br /><h1>Overview</h1><p>This product can be operated in any
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association">
+        <label>2: Send Basic Set ON/OFF</label>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

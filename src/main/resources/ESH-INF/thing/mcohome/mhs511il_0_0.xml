@@ -8,6 +8,7 @@
   <thing-type id="mcohome_mhs511il_00_000" listed="false">
     <label>MH-S511-IL MCOHome touch switch Relay</label>
     <description>MCOHome touch switch Relay</description>
+    <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
