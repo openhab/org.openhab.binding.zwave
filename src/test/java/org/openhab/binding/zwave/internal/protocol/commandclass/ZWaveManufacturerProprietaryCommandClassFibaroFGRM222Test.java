@@ -19,13 +19,12 @@ import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.ReportType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.ZWaveAlarmValueEvent;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBasicCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.impl.CommandClassManufacturerProprietaryFibaroFgrm222V1;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveValueEvent;
 
 /**
  * Test cases for {@link ZWaveBasicCommandClass}.
@@ -89,6 +88,9 @@ public class ZWaveManufacturerProprietaryCommandClassFibaroFGRM222Test extends Z
 
         List<ZWaveEvent> events = processCommandClassMessage(packetData);
 
-        assertEquals(events.size(), 1);
+        assertEquals(1, events.size());
+        ZWaveValueEvent event = (ZWaveValueEvent) events.get(0);
+        assertEquals("22", event.getValue("SHUTTER_POSITION"));
+        assertEquals("99", event.getValue("LAMELLA_POSITION"));
     }
 }
