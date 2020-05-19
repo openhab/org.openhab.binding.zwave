@@ -20,6 +20,8 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.impl.CommandClassManufacturerProprietaryFibaroFgrm222V1;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveValueEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
@@ -32,6 +34,8 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  */
 @XStreamAlias("COMMAND_CLASS_MANUFACTURER_PROPRIETARY")
 public class ZWaveManufacturerProprietaryCommandClass extends ZWaveCommandClass {
+    private static final Logger logger = LoggerFactory.getLogger(ZWaveManufacturerProprietaryCommandClass.class);
+
     private ManufacturerProprietaryClass classType;
 
     /**
@@ -61,6 +65,7 @@ public class ZWaveManufacturerProprietaryCommandClass extends ZWaveCommandClass 
 
     @ZWaveResponseHandler(id = 1, name = "PROPRIETARY_HANDLER")
     public void handleManufacturerProprietaryReport(ZWaveCommandClassPayload payload, int endpoint) {
+        logger.debug("handling manufacturer proprietary report");
         Map<String, String> values = CommandClassManufacturerProprietaryFibaroFgrm222V1
                 .handleFgrm222Report(payload.getPayloadBuffer());
 

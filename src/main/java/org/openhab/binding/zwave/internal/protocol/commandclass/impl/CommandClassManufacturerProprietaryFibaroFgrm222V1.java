@@ -287,6 +287,8 @@ public class CommandClassManufacturerProprietaryFibaroFgrm222V1 {
      * @return a {@link Map} of processed response data
      */
     public static Map<String, String> handleFgrm222Report(byte[] payload) {
+        logger.debug("parsing received message FGRM222_REPORT version 1");
+
         // Create our response map
         Map<String, String> response = new HashMap<String, String>();
 
