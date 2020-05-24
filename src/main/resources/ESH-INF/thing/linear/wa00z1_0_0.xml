@@ -52,31 +52,45 @@ Wall Mounted Switch<br /><h1>Overview</h1><p>The WA00Z-1 Wall Mounted Switch is 
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
-      <parameter name="config_1_1" type="integer" groupName="configuration"
-                 min="0" max="99">
+      <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Activation of Central Scene</label>
         <description><![CDATA[
 Set top and bottom button scene numbers.<br /><h1>Overview</h1><p>Z-Wave Plus introduces a new process for scene activation – “Central Scene <br />Control”. Press and release the button, it will send a certain command to the <br />central controller via the lifeline association group 1. This allows the controller <br />to react to both a button press and a button release. This mode implements <br />communication pattern 6, and requires a gateway supporting Z-Wave Plus.</p>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Top 1, bottom 2</option>
+          <option value="1">Top 3, bottom 4</option>
+          <option value="2">Top 5, bottom 6</option>
+          <option value="3">Top 7, bottom 8</option>
+          <option value="4">Top 9, bottom 10</option>
+          <option value="99">Top 199, bottom 200</option>
+        </options>
       </parameter>
 
-      <parameter name="config_2_1" type="integer" groupName="configuration"
-                 min="0" max="2">
+      <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Control Mode</label>
         <description><![CDATA[
-Control other devices or issue various scene activation...<br /><h1>Overview</h1><p>...  commands to a central controller.</p>
+Control other devices or issue scene commands<br /><h1>Overview</h1><p>You can set the WA00Z-1 to control other devices or issue various scene activation commands to a central controller.</p>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Scene control + association groups</option>
+          <option value="1">Scene control only</option>
+          <option value="2">Associated devices only</option>
+        </options>
       </parameter>
 
-      <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+      <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Invert Switch</label>
         <description><![CDATA[
 Invert top of switch ON/OFF buttons<br /><h1>Overview</h1><p>To change the top of the switch to OFF and the bottom of the switch ON, set Parameter 4 to a value of 1.</p>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Top ON, bottom OFF</option>
+          <option value="1">Bottom ON, top OFF</option>
+        </options>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

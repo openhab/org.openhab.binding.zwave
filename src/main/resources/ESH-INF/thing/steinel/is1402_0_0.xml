@@ -77,7 +77,7 @@ PIR sensor with relay<br /><h1>Overview</h1><p>PIR sensor with relay, mains powe
       <property name="manufacturerId">0271</property>
       <property name="manufacturerRef">0002:1A72,0002:6770</property>
       <property name="dbReference">630</property>
-      <property name="defaultAssociations">0,1</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -238,11 +238,6 @@ Motion Off behaviour (timeout)<br /><h1>Overview</h1><p>Motion disable timeout a
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_0" type="text" groupName="association">
-        <label>0: Root</label>
-        <description>Root</description>
-      </parameter>
-
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
         <description><![CDATA[
