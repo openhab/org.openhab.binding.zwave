@@ -27,7 +27,7 @@ In-Wall Smart Switch with QuickFit and SimpleWire enhancements.<br /><h1>Overvie
       <property name="vendor">Jasco Products</property>
       <property name="modelId">43072/ZW4008DV</property>
       <property name="manufacturerId">0063</property>
-      <property name="manufacturerRef">4952:3139</property>
+      <property name="manufacturerRef">4952:3136,4952:3139</property>
       <property name="dbReference">1155</property>
       <property name="defaultAssociations">1</property>
     </properties>
