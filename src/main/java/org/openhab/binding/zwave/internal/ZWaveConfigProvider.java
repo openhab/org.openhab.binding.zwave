@@ -26,6 +26,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.eclipse.smarthome.config.core.ConfigDescription;
+import org.eclipse.smarthome.config.core.ConfigDescriptionBuilder;
 import org.eclipse.smarthome.config.core.ConfigDescriptionParameter;
 import org.eclipse.smarthome.config.core.ConfigDescriptionParameter.Type;
 import org.eclipse.smarthome.config.core.ConfigDescriptionParameterBuilder;
@@ -145,7 +146,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
                                     + "The node ID is assigned by the controller and can not be changed.")
                             .withGroupName("thingcfg").build());
 
-            return new ConfigDescription(uri, parameters, null);
+            return ConfigDescriptionBuilder.create(uri).withParameters(parameters).build();
         }
 
         ThingUID thingUID = new ThingUID(uri.getSchemeSpecificPart());
@@ -322,7 +323,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
                 .add(ConfigDescriptionParameterBuilder.create("action_heal", Type.BOOLEAN).withLabel("Heal the device")
                         .withAdvanced(true).withOptions(options).withDefault("false").withGroupName("actions").build());
 
-        return new ConfigDescription(uri, parameters, groups);
+        return ConfigDescriptionBuilder.create(uri).withParameters(parameters).withParameterGroups(groups).build();
     }
 
     private static void initialiseZWaveThings() {
