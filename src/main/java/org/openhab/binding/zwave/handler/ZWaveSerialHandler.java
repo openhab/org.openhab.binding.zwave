@@ -78,6 +78,8 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
     private @Nullable ZWaveReceiveThread receiveThread;
     private @NonNullByDefault({}) ScheduledFuture<?> watchdog;
 
+    private boolean receiveTimeoutEnabled = false;
+
     public ZWaveSerialHandler(Bridge thing, SerialPortManager serialPortManager) {
         super(thing);
         this.serialPortManager = serialPortManager;
@@ -104,6 +106,10 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
      * @return a serial port identifier or null
      */
     private @Nullable SerialPortIdentifier getSerialPortIdentifier(final String name) {
+        if (name.startsWith("rfc2217://")) {
+            return serialPortManager.getIdentifier(name);
+        }
+
         Optional<SerialPortIdentifier> opt = serialPortManager.getIdentifiers().filter(id -> id.getName().equals(name))
                 .findFirst();
         if (opt.isPresent()) {
@@ -120,8 +126,6 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                 if (serialPort != null) {
                     onSerialPortError(ZWaveBindingConstants.OFFLINE_SERIAL_NOTFOUND);
                 }
-                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                        ZWaveBindingConstants.OFFLINE_SERIAL_NOTFOUND + " [\"" + portId + "\"]");
                 return;
             }
 
@@ -130,11 +134,28 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             }
 
             logger.debug("Connecting to serial port '{}'", portId);
-            SerialPort commPort = portIdentifier.open("org.openhab.binding.zwave", 2000);
+            SerialPort commPort;
+            try {
+                commPort = portIdentifier.open("org.openhab.binding.zwave", 2000);
+            } catch (IllegalStateException e) {
+                if (serialPort != null) {
+                    onSerialPortError(ZWaveBindingConstants.OFFLINE_SERIAL_NOTFOUND);
+                }
+                return;
+            }
             serialPort = commPort;
             commPort.setSerialPortParams(115200, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
-            commPort.enableReceiveThreshold(1);
-            commPort.enableReceiveTimeout(SERIAL_RECEIVE_TIMEOUT);
+            try {
+                commPort.enableReceiveThreshold(1);
+            } catch (UnsupportedCommOperationException e) {
+                logger.debug("Enabling receive threshold is unsupported");
+            }
+            try {
+                commPort.enableReceiveTimeout(SERIAL_RECEIVE_TIMEOUT);
+                receiveTimeoutEnabled = true;
+            } catch (UnsupportedCommOperationException e) {
+                logger.debug("Enabling receive timeout is unsupported");
+            }
             inputStream = commPort.getInputStream();
             outputStream = commPort.getOutputStream();
             logger.debug("Starting receive thread");
@@ -185,12 +206,14 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
      * Stops resources when serial port is disconnected.
      */
     private void onSerialPortError(String errorMessage) {
+        if (thing.getStatus().equals(ThingStatus.ONLINE)) {
+            updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
+                    errorMessage + " [\"" + portId + "\"]");
+        }
+
         stopNetwork();
         disposeReceiveThread();
         disposeSerialConnection();
-
-        updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.OFFLINE.COMMUNICATION_ERROR,
-                errorMessage + " [\"" + portId + "\"]");
     }
 
     /**
@@ -319,8 +342,12 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                         nextByte = inputStream.read();
                         // logger.debug("SERIAL:: STATE {}, nextByte {}, count {} ", rxState, nextByte, rxLength);
 
-                        // If byte value is -1, this is a timeout
+                        // If receiveTimeout is enabled, a -1 byte value means a timeout
+                        // Otherwise, there is an error in the serial connection
                         if (nextByte == -1) {
+                            if (!receiveTimeoutEnabled) {
+                                break;
+                            }
                             if (rxState != SEARCH_SOF) {
                                 // If we're not searching for a new frame when we get a timeout, something bad happened
                                 logger.debug("Receive Timeout - Sending NAK");
@@ -436,8 +463,8 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                 logger.warn("Exception during ZWave thread. ", e);
             } finally {
                 logger.debug("Stopped ZWave thread: Receive");
-                if (serialPort != null) {
-                    serialPort.removeEventListener();
+                if (thing.getStatus().equals(ThingStatus.ONLINE)) {
+                    onSerialPortError(ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE);
                 }
             }
         }
