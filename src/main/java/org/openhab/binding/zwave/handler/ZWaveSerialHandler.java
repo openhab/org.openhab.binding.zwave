@@ -108,11 +108,10 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             try {
                 commPort = portIdentifier.open("org.openhab.binding.zwave", 2000);
             } catch (IllegalStateException e) {
-                if (serialPort != null) {
-                    onSerialPortError(ZWaveBindingConstants.OFFLINE_SERIAL_NOTFOUND);
-                }
+                watchdog = scheduler.schedule(this::watchSerialPort, WATCHDOG_CHECK_SECONDS, TimeUnit.SECONDS);
                 return;
             }
+
             serialPort = commPort;
             commPort.setSerialPortParams(115200, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
             try {
@@ -126,6 +125,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             } catch (UnsupportedCommOperationException e) {
                 logger.debug("Enabling receive timeout is unsupported");
             }
+
             inputStream = commPort.getInputStream();
             outputStream = commPort.getOutputStream();
             logger.debug("Starting receive thread");
@@ -311,6 +311,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                         if (serialPort == null) {
                             break;
                         }
+
                         nextByte = inputStream.read();
                         // logger.debug("SERIAL:: STATE {}, nextByte {}, count {} ", rxState, nextByte, rxLength);
 
