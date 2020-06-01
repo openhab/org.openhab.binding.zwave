@@ -68,7 +68,8 @@ public class ZWaveCommandClassTest {
      * @param version commandclass version
      * @return List of ZWaveEvent(s)
      */
-    protected List<ZWaveEvent> processCommandClassMessage(byte[] packetData, int version) {
+    protected List<ZWaveEvent> processCommandClassMessage(byte[] packetData, int version, int manufacturer,
+            int deviceType, Map<String, String> commandClassOptions) {
         try {
 
             SerialMessage msg = new SerialMessage(packetData);
@@ -83,6 +84,8 @@ public class ZWaveCommandClassTest {
             argument = ArgumentCaptor.forClass(ZWaveEvent.class);
             Mockito.doNothing().when(mockedController).notifyEventListeners(argument.capture());
             mockedNode = new ZWaveNode(0, 0, mockedController);
+            mockedNode.setManufacturer(manufacturer);
+            mockedNode.setDeviceType(deviceType);
             ZWaveEndpoint mockedEndpoint0 = Mockito.mock(ZWaveEndpoint.class);
             ZWaveEndpoint mockedEndpoint1 = Mockito.mock(ZWaveEndpoint.class);
             ZWaveEndpoint mockedEndpoint2 = Mockito.mock(ZWaveEndpoint.class);
@@ -125,6 +128,7 @@ public class ZWaveCommandClassTest {
                     mockedController);
             assertNotNull(cls);
             cls.setVersion(version);
+            cls.setOptions(commandClassOptions);
 
             Mockito.when(mockedEndpoint0.getCommandClass(Matchers.any(CommandClass.class)))
                     .thenAnswer(new Answer<ZWaveCommandClass>() {
@@ -186,6 +190,10 @@ public class ZWaveCommandClassTest {
         return argument.getAllValues();
     }
 
+    protected List<ZWaveEvent> processCommandClassMessage(byte[] packetData, int version) {
+        return processCommandClassMessage(packetData, version, Integer.MAX_VALUE, Integer.MAX_VALUE, null);
+    }
+
     /**
      * Helper class to create everything we need to test a command class message.
      *
@@ -198,7 +206,7 @@ public class ZWaveCommandClassTest {
      * @return List of ZWaveEvent(s)
      */
     protected List<ZWaveEvent> processCommandClassMessage(byte[] packetData) {
-        return processCommandClassMessage(packetData, 1);
+        return processCommandClassMessage(packetData, 1, Integer.MAX_VALUE, Integer.MAX_VALUE, null);
     }
 
     protected ZWaveCommandClass getCommandClass(CommandClass cls) {
