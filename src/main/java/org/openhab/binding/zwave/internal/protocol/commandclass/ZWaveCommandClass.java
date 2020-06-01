@@ -267,16 +267,16 @@ public abstract class ZWaveCommandClass {
         }
 
         logger.debug("NODE {}: Received {} V{} {}", getNode().getNodeId(), getCommandClass(), getVersion(),
-                commands.get(payload.getCommandClassCommand()).name);
+                commandMethod.name);
 
         Object[] parms = { payload, endpoint };
         try {
-            commands.get(payload.getCommandClassCommand()).method.invoke(this, parms);
+            commandMethod.method.invoke(this, parms);
         } catch (InvocationTargetException e) {
             // Handle exceptions from the command class processing
             if (e.getCause() instanceof ArrayIndexOutOfBoundsException) {
                 logger.debug("NODE {}: ArrayIndexOutOfBoundsException {} V{} {} {}", getNode().getNodeId(),
-                        getCommandClass(), getVersion(), commands.get(payload.getCommandClassCommand()).name,
+                        getCommandClass(), getVersion(), commandMethod.name,
                         SerialMessage.bb2hex(payload.getPayloadBuffer()));
             }
         } catch (IllegalAccessException | IllegalArgumentException e) {
