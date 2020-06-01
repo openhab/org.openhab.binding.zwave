@@ -26,7 +26,6 @@ import org.eclipse.smarthome.core.types.State;
 import org.junit.Test;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
-import org.openhab.binding.zwave.internal.converter.ZWaveManufacturerProprietaryConverter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveValueEvent;
@@ -52,9 +51,9 @@ public class ZWaveManufacturerProprietaryFibaroFgrm222ConverterTest extends ZWav
         State state;
         ZWaveValueEvent event;
 
-        Map<String, String> values = new HashMap<String, String>();
-        values.put("LAMELLA_POSITION", "62");
-        values.put("SHUTTER_POSITION", "12");
+        Map<String, Object> values = new HashMap<String, Object>();
+        values.put("LAMELLA_POSITION", 62);
+        values.put("SHUTTER_POSITION", 12);
         event = new ZWaveValueEvent(1, 0, CommandClass.COMMAND_CLASS_MANUFACTURER_PROPRIETARY, values);
         state = converter.handleEvent(channel, event);
         assertEquals(state.getClass(), PercentType.class);
@@ -72,9 +71,9 @@ public class ZWaveManufacturerProprietaryFibaroFgrm222ConverterTest extends ZWav
         State state;
         ZWaveValueEvent event;
 
-        Map<String, String> values = new HashMap<String, String>();
-        values.put("LAMELLA_POSITION", "62");
-        values.put("SHUTTER_POSITION", "12");
+        Map<String, Object> values = new HashMap<String, Object>();
+        values.put("LAMELLA_POSITION", 62);
+        values.put("SHUTTER_POSITION", 12);
         event = new ZWaveValueEvent(1, 0, CommandClass.COMMAND_CLASS_MANUFACTURER_PROPRIETARY, values);
         state = converter.handleEvent(channel, event);
         assertEquals(state.getClass(), PercentType.class);
