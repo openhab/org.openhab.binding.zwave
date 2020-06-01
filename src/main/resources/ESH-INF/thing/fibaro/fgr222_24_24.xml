@@ -76,6 +76,7 @@ Roller Shutter 2<br /><h1>Overview</h1><p>The device allows for controlling moto
       <property name="dbReference">413</property>
       <property name="commandClass:COMMAND_CLASS_SWITCH_MULTILEVEL">ccAdd</property>
       <property name="defaultAssociations">3</property>
+      <property name="commandClass:COMMAND_CLASS_MANUFACTURER_PROPRIETARY">ccAdd,className=FIBARO_FGRM222_V1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

@@ -76,6 +76,7 @@ Roller Shutter<br /><h1>Overview</h1><p>Fibaro Roller Shutter is a universal, Z-
       <property name="dbReference">116</property>
       <property name="commandClass:COMMAND_CLASS_SWITCH_MULTILEVEL">ccAdd</property>
       <property name="defaultAssociations">3</property>
+      <property name="commandClass:COMMAND_CLASS_MANUFACTURER_PROPRIETARY">ccAdd,className=FIBARO_FGRM222_V1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
