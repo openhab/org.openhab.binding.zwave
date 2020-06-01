@@ -592,6 +592,8 @@ public abstract class ZWaveCommandClass {
         COMMAND_CLASS_NON_INTEROPERABLE(0xF0, null),
 
         // MANUFACTURER_PROPRIETARY class definitions are defined by the manufacturer and device id
+        COMMAND_CLASS_MANUFACTURER_PROPRIETARY_FGRM222(0x010f, 0x0301, "FIBARO_FGRM_222",
+                ZWaveManufacturerProprietaryCommandClass.class),
         COMMAND_CLASS_MANUFACTURER_PROPRIETARY_FGR222(0x010f, 0x0302, "FIBARO_FGR_222",
                 ZWaveManufacturerProprietaryCommandClass.class);
 
