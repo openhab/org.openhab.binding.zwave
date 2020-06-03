@@ -128,7 +128,9 @@ public class ZWaveCommandClassTest {
                     mockedController);
             assertNotNull(cls);
             cls.setVersion(version);
-            cls.setOptions(commandClassOptions);
+            if (commandClassOptions != null) {
+                cls.setOptions(commandClassOptions);
+            }
 
             Mockito.when(mockedEndpoint0.getCommandClass(Matchers.any(CommandClass.class)))
                     .thenAnswer(new Answer<ZWaveCommandClass>() {
