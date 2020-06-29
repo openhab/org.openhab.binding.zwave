@@ -245,8 +245,14 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
             boolean dynamic) {
         Basic basic = getNode().getDeviceClass().getBasicDeviceClass();
         Generic generic = Generic.getGeneric(genericDeviceClass);
+
+        logger.debug("NODE {}: Endpoint Id = {}", getNode().getNodeId(), endpoint.getEndpointId());
+        logger.debug("NODE {}: Endpoints is dynamic = {}", getNode().getNodeId(), dynamic ? "true" : false);
+        logger.debug("NODE {}: Basic = {} 0x{}", getNode().getNodeId(), basic.toString(),
+                Integer.toHexString(basic.getKey()));
+
         if (generic == null) {
-            logger.error("NODE {}: Endpoint %d has invalid device class. generic = 0x{}, specific = 0x{}.",
+            logger.error("NODE {}: Endpoint {} has invalid device class. generic = 0x{}, specific = 0x{}.",
                     getNode().getNodeId(), endpoint.getEndpointId(), Integer.toHexString(genericDeviceClass),
                     Integer.toHexString(specificDeviceClass));
             return false;
@@ -259,10 +265,6 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
             return false;
         }
 
-        logger.debug("NODE {}: Endpoint Id = {}", getNode().getNodeId(), endpoint.getEndpointId());
-        logger.debug("NODE {}: Endpoints is dynamic = {}", getNode().getNodeId(), dynamic ? "true" : false);
-        logger.debug("NODE {}: Basic = {} 0x{}", getNode().getNodeId(), basic.toString(),
-                Integer.toHexString(basic.getKey()));
         logger.debug("NODE {}: Generic = {} 0x{}", getNode().getNodeId(), generic.toString(),
                 Integer.toHexString(generic.getKey()));
         logger.debug("NODE {}: Specific = {} 0x{}", getNode().getNodeId(), specific.toString(),
