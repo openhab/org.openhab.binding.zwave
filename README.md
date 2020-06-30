@@ -105,16 +105,17 @@ There are a large number of things supported by the Z-Wave binding, so configura
 
 #### Textual Thing Configuration
 
-Things configured manually through text files require the following minimum configuration to be set. -:
-
-| Configuration      | Description                                                                                                   |
-|--------------------|---------------------------------------------------------------------------------------------------------------|
-| zwave_nodeid       | Sets the node id of the node within the network.                                                              |
-| zwave_manufacturer | Sets the manufacturer ID for this device (as decimal). This is used to get the thing type from the database.  |
-| zwave_deviceid     | Specifies the device ID for this device (as decimal). This is used to get the thing type from the database.   |
-| zwave_devicetype   | Specifies the device type for this device (as decimal). This is used to get the thing type from the database. |
-| zwave_version      | Specifies the application version for this device. This is used to get the thing type from the database.      |
-
+Things configured manually through text files must define a Bridge for the controller and all devices under that. 
+Follow this sample format:
+```
+Bridge zwave:serial_zstick:controller "ZWave Controller" [ port="/dev/ttyACM0", controller_softreset="false", controller_master="true", heal_enable="true", security_networkkey="XXX" ]
+{
+	aeon_zw100_01_008 sensor1 "Sensor 1" [ node_id=1 ]
+	august_asl03_00_000 frontDoor "Front Door Lock" [ node_id=2 ]	
+}
+```
+`serial_zstick` is the type of your controller. `controller` defines your controller's thing name. Replace `XXX` with your network key. 
+Check [here](https://community.openhab.org/t/zwave-manual-thing-configuration/26542) for additional details. 
 
 ## Channels
 
