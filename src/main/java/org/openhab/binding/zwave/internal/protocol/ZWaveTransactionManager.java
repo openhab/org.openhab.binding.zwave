@@ -28,6 +28,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.PriorityBlockingQueue;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.jdt.annotation.Nullable;
@@ -187,7 +189,7 @@ public class ZWaveTransactionManager {
 
     private ZWaveReceiveThread receiveThread;
 
-    ExecutorService executor = Executors.newCachedThreadPool();
+    private ExecutorService executor = Executors.newCachedThreadPool(new ZWaveThreadFactory());
     final List<TransactionListener> transactionListeners = new ArrayList<TransactionListener>();
 
     private final List<ZWaveTransaction> outstandingTransactions = new ArrayList<ZWaveTransaction>();
@@ -230,6 +232,16 @@ public class ZWaveTransactionManager {
         if (timerTask != null) {
             timerTask.cancel();
             timerTask = null;
+        }
+        executor.shutdown();
+        try {
+            if (!executor.awaitTermination(5, TimeUnit.SECONDS)) {
+                logger.debug("ZWave Transaction manager failed to terminate properly, forcing shutdown");
+                executor.shutdownNow();
+            }
+        } catch (InterruptedException ex) {
+            executor.shutdownNow();
+            Thread.currentThread().interrupt();
         }
         logger.debug("Transaction manager shutdown");
     }
@@ -781,7 +793,6 @@ public class ZWaveTransactionManager {
             logger.debug("Exiting ZWave Receive Thread");
             running = false;
         }
-
     }
 
     private Date getNextTimer(ZWaveTransaction transaction) {
@@ -1204,5 +1215,14 @@ public class ZWaveTransactionManager {
 
     interface TransactionListener {
         void transactionEvent(ZWaveTransaction transaction);
+    }
+
+    class ZWaveThreadFactory implements ThreadFactory {
+
+        private int threadCounter = 0;
+
+        public Thread newThread(Runnable r) {
+            return new Thread(r, "ZWaveTransactionManager-" + (threadCounter++));
+        }
     }
 }
