@@ -90,7 +90,8 @@ Association Behaviour<br /><h1>Overview</h1><p>1 = Local; 2 = 3-Way; 3 = 3-Way +
         <default>15</default>
       </parameter>
 
-      <parameter name="config_5_2" type="integer" groupName="configuration">
+      <parameter name="config_5_2" type="integer" groupName="configuration"
+                 min="0" max="255">
         <label>5: LED Indicator Color</label>
         <description><![CDATA[
 LED Indicator Color<br /><h1>Overview</h1><p>0 to 255 Hue Color Circle</p> <p>170 - Blue - Default</p> <p>This will set the default color of the LED bar.  Calculated by using a hue color circle (Value / 255 * 360</p> <p>0 = Red</p> <p>21 = Orange</p> <p>42 = Yellow</p> <p>85 = Green</p> <p>127 = Cyan</p> <p>170 = Blue</p> <p>212 = Violet</p> <p>234 = Pink</p>
@@ -105,7 +106,9 @@ LED Indicator Color<br /><h1>Overview</h1><p>0 to 255 Hue Color Circle</p> <p>17
           <option value="170">Blue</option>
           <option value="212">Violet</option>
           <option value="234">Pink</option>
+          <option value="255">White</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
@@ -158,6 +161,18 @@ Calculated sum of parameters as per overview section<br /><h1>Overview</h1><p>En
         ]]></description>
         <default>0</default>
         <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_51_1" type="integer" groupName="configuration">
+        <label>51: Enable Instant On</label>
+        <description><![CDATA[
+Enable Instant On<br /><h1>Overview</h1><p>Enable instant on (ie: disable the 700ms delay) for physical switch.</p> <p>0: No Delay 1: 700ms Delay (default)</p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="0">No delay</option>
+          <option value="1">700ms delay</option>
+        </options>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

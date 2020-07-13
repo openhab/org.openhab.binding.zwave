@@ -33,7 +33,7 @@ Weather Resistant Outdoor Switch<br /><h1>Overview</h1><p>Maximum load for the Z
       <property name="vendor">Jasco Products</property>
       <property name="modelId">GE Outdoor Switch</property>
       <property name="manufacturerId">0063</property>
-      <property name="manufacturerRef">4F50:3032</property>
+      <property name="manufacturerRef">4F50:3032,4F50:3033</property>
       <property name="dbReference">643</property>
       <property name="defaultAssociations">1</property>
     </properties>

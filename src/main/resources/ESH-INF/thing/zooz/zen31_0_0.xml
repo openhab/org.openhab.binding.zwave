@@ -452,7 +452,7 @@ Adjust the ramp rate of your RGBW dimmer when operated remotely through openHAB<
       </parameter>
 
       <parameter name="config_154_4_000000FF" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="255">
         <label>154: Single Click ON Trigger (IN1)</label>
         <description><![CDATA[
 Single Click ON Trigger (IN1)<br /><h1>Overview</h1><p>Set the status or brightness level triggering other associated devices in your network if the dimmer is turned ON with a single click. Each of the 4 available bytes refers to one channel, starting with IN1 and ending with IN4. This setting applies to basic set and switch multilevel commands sent to associated devices in the appropriate association group.</p> <p>Allow value: 0 - 99, 255 (ON)</p>
@@ -465,7 +465,7 @@ Single Click ON Trigger (IN1)<br /><h1>Overview</h1><p>Set the status or brightn
       </parameter>
 
       <parameter name="config_154_4_0000FF00" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="255">
         <label>154: Single Click ON Trigger (IN2)</label>
         <description><![CDATA[
 Single Click ON Trigger (IN2)<br /><h1>Overview</h1><p>Set the status or brightness level triggering other associated devices in your network if the dimmer is turned ON with a single click. Each of the 4 available bytes refers to one channel, starting with IN1 and ending with IN4. This setting applies to basic set and switch multilevel commands sent to associated devices in the appropriate association group.</p> <p>Allow value: 0 - 99, 255 (ON)</p>
@@ -475,7 +475,7 @@ Single Click ON Trigger (IN2)<br /><h1>Overview</h1><p>Set the status or brightn
       </parameter>
 
       <parameter name="config_154_4_00FF0000" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="255">
         <label>154: Single Click ON Trigger (IN3)</label>
         <description><![CDATA[
 Single Click ON Trigger (IN3)<br /><h1>Overview</h1><p>Set the status or brightness level triggering other associated devices in your network if the dimmer is turned ON with a single click. Each of the 4 available bytes refers to one channel, starting with IN1 and ending with IN4. This setting applies to basic set and switch multilevel commands sent to associated devices in the appropriate association group.</p> <p>Allow value: 0 - 99, 255 (ON)</p>
@@ -485,7 +485,7 @@ Single Click ON Trigger (IN3)<br /><h1>Overview</h1><p>Set the status or brightn
       </parameter>
 
       <parameter name="config_154_4_7F000000" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="255">
         <label>154: Single Click ON Trigger (IN4)</label>
         <description><![CDATA[
 Single Click ON Trigger (IN4)<br /><h1>Overview</h1><p>Set the status or brightness level triggering other associated devices in your network if the dimmer is turned ON with a single click. Each of the 4 available bytes refers to one channel, starting with IN1 and ending with IN4. This setting applies to basic set and switch multilevel commands sent to associated devices in the appropriate association group.</p> <p>Allow value: 0 - 99, 255 (ON)</p>

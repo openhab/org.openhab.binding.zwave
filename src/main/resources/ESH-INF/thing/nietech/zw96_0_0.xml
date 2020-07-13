@@ -27,7 +27,7 @@ Smart Plug Outdoor<br /><h1>Overview</h1><p>Outdoor Z-Wave Plus On/Off Light and
       <property name="vendor">NIE Technology</property>
       <property name="modelId">ZW96</property>
       <property name="manufacturerId">0312</property>
-      <property name="manufacturerRef">C000:C003,C000:C007</property>
+      <property name="manufacturerRef">C000:C003</property>
       <property name="dbReference">1244</property>
       <property name="defaultAssociations">1</property>
     </properties>

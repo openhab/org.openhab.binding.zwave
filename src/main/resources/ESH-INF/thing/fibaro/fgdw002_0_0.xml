@@ -56,7 +56,7 @@ Fibaro Door Window Sensor 2<br /><h1>Overview</h1><p>FIBARO Door/Window Sensor 2
       <property name="vendor">Fibargroup</property>
       <property name="modelId">FGDW002</property>
       <property name="manufacturerId">010F</property>
-      <property name="manufacturerRef">0702:1000,0702:2000,0702:3000,0702:7000</property>
+      <property name="manufacturerRef">0702:1000,0702:2000,0702:3000,0702:4000,0702:7000</property>
       <property name="dbReference">604</property>
       <property name="defaultAssociations">1</property>
     </properties>
