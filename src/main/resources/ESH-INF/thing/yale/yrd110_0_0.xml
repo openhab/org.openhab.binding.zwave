@@ -38,6 +38,11 @@ Yale button deadbolt without keyway<br /><h1>Overview</h1><p>Security Keyless Pu
           <property name="binding:*:StringType">COMMAND_CLASS_ALARM</property>
         </properties>
       </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
+        </properties>
+      </channel>
       <channel id="time_offset" typeId="time_offset">
         <label>Clock Time Offset</label>
         <properties>
