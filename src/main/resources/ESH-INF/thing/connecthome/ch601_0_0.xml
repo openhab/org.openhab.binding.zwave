@@ -29,6 +29,7 @@ CH-601 THE ELECTRIC CRANE<br /><h1>Overview</h1><p>The electric crane CH-601 is
       <property name="manufacturerId">0179</property>
       <property name="manufacturerRef">0021:0011</property>
       <property name="dbReference">865</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
