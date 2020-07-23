@@ -58,7 +58,7 @@ Smart Energy Switch 3rd Edition<br /><h1>Overview</h1><p>Smart Energy Switch 3rd
       <property name="modelId">ZW075</property>
       <property name="manufacturerId">0086</property>
       <property name="manufacturerRef">0003:004B,0103:004B,0203:004B</property>
-      <property name="versionMax">3.999</property>
+      <property name="versionMax">3.255</property>
       <property name="dbReference">83</property>
       <property name="defaultAssociations">1</property>
     </properties>
