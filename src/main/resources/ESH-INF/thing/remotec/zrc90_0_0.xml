@@ -34,6 +34,7 @@ Scene master 8 button remote<br /><h1>Overview</h1><p>Central Scene Controller w
       <property name="manufacturerId">5254</property>
       <property name="manufacturerRef">0000:8510,0001:8510,0002:8510,000B:8510</property>
       <property name="dbReference">361</property>
+      <property name="commandClass:COMMAND_CLASS_WAKE_UP">getSupported=false</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

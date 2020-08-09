@@ -17,7 +17,7 @@ WALLI SWITCH FIBARO SINGLE SWITCH<br /><h1>Overview</h1><p>FIBARO Walli Single S
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch Binary</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
@@ -121,10 +121,10 @@ LED frame – brightness<br /><h1>Overview</h1><table><tr><td>0</td> <td>LED dis
       </parameter>
 
       <parameter name="config_20_1" type="integer" groupName="configuration"
-                 min="1" max="2">
+                 min="1" max="3">
         <label>20: Buttons operation</label>
         <description><![CDATA[
-Buttons operation<br /><h1>Overview</h1><table><tr><td>1 (default)</td> <td>1 st and 2nd button toggle the load</td> </tr><tr><td>2</td> <td>1st button turns the load ON, 2nd button turns the load OFF</td> </tr></table>
+Buttons operation<br /><h1>Overview</h1><table><tr><td>1 (default)</td> <td>1 st and 2nd button toggle the load</td> </tr><tr><td>2</td> <td>1st button turns the load ON, 2nd button turns the load OFF</td> </tr><tr><td>3</td> <td> device works in 2-way/3-way switch configuration</td> </tr></table>
         ]]></description>
         <default>1</default>
       </parameter>

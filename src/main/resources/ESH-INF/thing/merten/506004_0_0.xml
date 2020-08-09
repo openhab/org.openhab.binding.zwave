@@ -14,10 +14,56 @@ Transmitter Flush-Mounted 4-Gang Switch<br /><h1>Overview</h1><p>The flush-mount
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer 1</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+        </properties>
+      </channel>
       <channel id="sensor_binary" typeId="sensor_binary">
-        <label>state</label>
+        <label>Binary Sensor 1</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="switch_dimmer1" typeId="switch_dimmer">
+        <label>Dimmer 2</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
+        </properties>
+      </channel>
+      <channel id="sensor_binary1" typeId="sensor_binary">
+        <label>Binary Sensor 2</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY:1</property>
+        </properties>
+      </channel>
+      <channel id="switch_dimmer2" typeId="switch_dimmer">
+        <label>Dimmer 3</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:2</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:2</property>
+        </properties>
+      </channel>
+      <channel id="sensor_binary2" typeId="sensor_binary">
+        <label>Binary Sensor 3</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY:2</property>
+        </properties>
+      </channel>
+      <channel id="switch_dimmer3" typeId="switch_dimmer">
+        <label>Dimmer 4</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:3</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:3</property>
+        </properties>
+      </channel>
+      <channel id="sensor_binary3" typeId="sensor_binary">
+        <label>Binary Sensor 4</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY:3</property>
         </properties>
       </channel>
     </channels>
@@ -97,18 +143,6 @@ Transmitter Flush-Mounted 4-Gang Switch<br /><h1>Overview</h1><p>The flush-mount
           <option value="54">Move roller shutter single-surface</option>
           <option value="55">RAISE roller shutter as long as button is pressed</option>
         </options>
-      </parameter>
-
-      <parameter name="config_98_1" type="integer" groupName="configuration"
-                 min="0" max="127">
-        <label>98: not used (delete)</label>
-        <default>0</default>
-      </parameter>
-
-      <parameter name="config_99_0" type="integer" groupName="configuration"
-                 min="0" max="4294967295">
-        <label>99: not used</label>
-        <default>0</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
