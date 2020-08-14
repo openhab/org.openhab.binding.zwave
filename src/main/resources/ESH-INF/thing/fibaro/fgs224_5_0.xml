@@ -514,7 +514,7 @@ value to 3rd association group<br /><h1>Overview</h1><p><strong>S2 input – Dou
       <parameter name="config_162_1" type="integer" groupName="configuration">
         <label>162: Q/Q1 output type</label>
         <description><![CDATA[
-This parameter determines type of Q2 output.<br /><h1>Overview</h1><p>Q/Q1 output type Description</p> <p>This parameter determines type of Q/Q1 output. Parameter size 1B</p> <p>Default value 0 (Normally Open)</p> <p>Available values</p> <p>0 – Normally Open (relay contacts opened turned off, closed when turned on)</p> <p>1 – Normally Closed (relay contacts closed turned off, opened when turned on)</p>
+This parameter determines type of Q1 output.<br /><h1>Overview</h1><p>Q/Q1 output type Description</p> <p>This parameter determines type of Q/Q1 output. Parameter size 1B</p> <p>Default value 0 (Normally Open)</p> <p>Available values</p> <p>0 – Normally Open (relay contacts opened turned off, closed when turned on)</p> <p>1 – Normally Closed (relay contacts closed turned off, opened when turned on)</p>
         ]]></description>
         <default>0</default>
         <options>
