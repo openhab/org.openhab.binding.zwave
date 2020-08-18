@@ -6,9 +6,9 @@
                       https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zooz_zen21_00_000" listed="false">
-    <label>ZEN21 Light Switch</label>
+    <label>ZEN21 Paddle Switch</label>
     <description><![CDATA[
-Light Switch<br /><h1>Overview</h1><p>Z-WAVE ON/OFF SWITCH</p> <br /><h2>Inclusion Information</h2><ol><li>Bring your Z-Wave gateway hub or controller as close to the switch as possible</li> <li>Put your Z-Wave controller into inclusion mode</li> <li>Tap the upper paddle of the switch 3 times very quickly to finalize the inclusion process</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Bring your Z-Wave gateway hub or controller as close to the switch as possible</li> <li>Put your Z-Wave controller into exclusion mode</li> <li>Tap the lower paddle of the switch 3 times very quickly to finalize the exclusion process</li> </ol>
+Paddle Switch<br /><h1>Overview</h1><p>Z-WAVE ON/OFF SWITCH</p> <br /><h2>Inclusion Information</h2><ol><li>Bring your Z-Wave gateway hub or controller as close to the switch as possible</li> <li>Put your Z-Wave controller into inclusion mode</li> <li>Tap the upper paddle of the switch 3 times very quickly to finalize the inclusion process</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Bring your Z-Wave gateway hub or controller as close to the switch as possible</li> <li>Put your Z-Wave controller into exclusion mode</li> <li>Tap the lower paddle of the switch 3 times very quickly to finalize the exclusion process</li> </ol>
     ]]></description>
     <category>WallSwitch</category>
 

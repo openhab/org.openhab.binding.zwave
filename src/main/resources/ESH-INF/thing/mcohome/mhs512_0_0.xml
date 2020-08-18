@@ -46,6 +46,7 @@ Touch Panel Switch 2-Way<br /><h1>Overview</h1><p>Touch Panel Switch is a wall p
       <property name="modelId">MH-S512</property>
       <property name="manufacturerId">015F</property>
       <property name="manufacturerRef">5121:5103</property>
+      <property name="versionMax">4.255</property>
       <property name="dbReference">1066</property>
       <property name="defaultAssociations">1</property>
     </properties>

@@ -82,6 +82,7 @@ Choose the wall switch type you want to connect to the Sw1 terminal<br /><h1>Ove
           <option value="0">Momentary switch</option>
           <option value="1">Normal</option>
           <option value="2">Toggle switch (default)</option>
+          <option value="3">garage door</option>
         </options>
       </parameter>
 
@@ -95,6 +96,7 @@ Choose the wall switch type you want to connect to the Sw2 terminal<br /><h1>Ove
           <option value="0">Momentary switch</option>
           <option value="1">Normal</option>
           <option value="2">Toggle switch (default)</option>
+          <option value="3">garage door</option>
         </options>
       </parameter>
 
@@ -108,6 +110,7 @@ Choose the wall switch type you want to connect to the Sw3 terminal.<br /><h1>Ov
           <option value="0">Momentary switch</option>
           <option value="1">Normal</option>
           <option value="2">Toggle switch (default)</option>
+          <option value="3">garage door</option>
         </options>
       </parameter>
 

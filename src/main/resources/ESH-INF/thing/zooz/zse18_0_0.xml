@@ -6,9 +6,9 @@
                       https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zooz_zse18_00_000" listed="false">
-    <label>ZSE18 Motion and Vibration Sensor</label>
+    <label>ZSE18 Motion &amp; Vibration Sensor</label>
     <description><![CDATA[
-Motion and Vibration Sensor<br /><h1>Overview</h1><p>Motion detection, built-in vibration sensor, S2 security protocol and AES-128 signal encryption, 2 alternative power sources: 1 CR123A battery or micro USB, auto-inclusion for instant set-up, visual range test tool, magnetic mount, adjustable LED indicator, low battery alerts, Z-Wave Plus </p> <br /><h2>Inclusion Information</h2><ul><li>For USB power, in stay awake mode, press and hold the button. <strong>NOTE</strong>: The device will continue in stay awake mode even if later moved to battery power.</li> <li>Press and release the Z-Wave button 3 times quickly for battery mode. </li> </ul><br /><h2>Exclusion Information</h2><p>Press and release the Z-Wave button on the sensor 3 times as quickly as possible.</p> <br /><h2>Wakeup Information</h2><p>Press and release the Z-Wave button on the sensor 3 times as quickly as possible.</p>
+Motion &amp; Vibration Sensor<br /><h1>Overview</h1><p>Motion detection, built-in vibration sensor, S2 security protocol and AES-128 signal encryption, 2 alternative power sources: 1 CR123A battery or micro USB, auto-inclusion for instant set-up, visual range test tool, magnetic mount, adjustable LED indicator, low battery alerts, Z-Wave Plus </p> <br /><h2>Inclusion Information</h2><ul><li>For USB power, in stay awake mode, press and hold the button. <strong>NOTE</strong>: The device will continue in stay awake mode even if later moved to battery power.</li> <li>Press and release the Z-Wave button 3 times quickly for battery mode. </li> </ul><br /><h2>Exclusion Information</h2><p>Press and release the Z-Wave button on the sensor 3 times as quickly as possible.</p> <br /><h2>Wakeup Information</h2><p>Press and release the Z-Wave button on the sensor 3 times as quickly as possible.</p>
     ]]></description>
     <category>Sensor</category>
 
