@@ -19,7 +19,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.apache.commons.lang.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -158,7 +157,7 @@ public class SerialMessage {
         }
         messageType = buffer[2] == 0x00 ? SerialMessageType.Request : SerialMessageType.Response;
         messageClassKey = buffer[3] & 0xFF;
-        messagePayload = ArrayUtils.subarray(buffer, 4, messageLength + 1);
+        messagePayload = Arrays.copyOfRange(buffer, 4, messageLength + 1);
         messageNode = nodeId;
 
         // TODO: This check isn't 100% correct - at least not for ApplicationUpdate as it has no callback id

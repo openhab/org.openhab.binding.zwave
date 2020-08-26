@@ -12,7 +12,8 @@
  */
 package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
-import org.apache.commons.lang.ArrayUtils;
+import java.util.Arrays;
+
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
@@ -43,7 +44,7 @@ public class GetVersionMessageClass extends ZWaveCommandProcessor {
     public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         ZWaveLibraryType = incomingMessage.getMessagePayloadByte(12);
-        zWaveVersion = new String(ArrayUtils.subarray(incomingMessage.getMessagePayload(), 0, 11));
+        zWaveVersion = new String(Arrays.copyOfRange(incomingMessage.getMessagePayload(), 0, 11));
         logger.debug("Got MessageGetVersion response. Version={}, Library Type={}", zWaveVersion, ZWaveLibraryType);
 
         transaction.setTransactionComplete();

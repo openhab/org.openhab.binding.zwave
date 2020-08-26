@@ -22,7 +22,6 @@ import java.util.TooManyListenersException;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.io.IOUtils;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.smarthome.core.library.types.DecimalType;
@@ -222,11 +221,19 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
     private void disposeSerialConnection() {
         logger.debug("Disposing serial connection");
         if (inputStream != null) {
-            IOUtils.closeQuietly(inputStream);
+            try {
+                inputStream.close();
+            } catch (IOException e) {
+                logger.debug("Error while closing the input stream: {}", e.getMessage());
+            }
             inputStream = null;
         }
         if (outputStream != null) {
-            IOUtils.closeQuietly(outputStream);
+            try {
+                outputStream.close();
+            } catch (IOException e) {
+                logger.debug("Error while closing the output stream: {}", e.getMessage());
+            }
             outputStream = null;
         }
 
